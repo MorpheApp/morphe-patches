@@ -522,6 +522,10 @@ Selepas video dengan butang Ask dibuka sekali, ciri ini berfungsi dengan semua v
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Tunjukkan jumlah suka pada pengecil feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Tunjukkan peratusan suka pada pengecil feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Kedudukan suka miniatur feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Sebelah jumlah tontonan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Tengah kanan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Atas kiri</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Cari komen</string>
   <string name="morphe_search_comments_summary">Ketik butang carian dalam komen untuk menunjukkan hanya komen yang dimuatkan yang mengandungi semua perkataan yang dicari. Letakkan perkataan dalam tanda petikan untuk mencari frasa</string>
@@ -1038,6 +1042,8 @@ Untuk mengakses Tetapan, aktifkan butang Tetapan melalui Umum → Bar Alat → T
   <string name="morphe_navigation_bar_glass_summary">Memaparkan bar navigasi sebagai kapsul lut sinar yang terapung dan bulat. Tidak tersedia dengan gaya bar navigasi Legap</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Kelegapan kaca</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Melaraskan tahap kelutsinaran bar navigasi kaca (0 ialah lut sinar, 100 ialah legap)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Bar pandu arah kaca bulat</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Memberikan hujung bulat pada bar pandu arah kaca, berbanding bucu seperti pemain mini kaca</string>
   <string name="morphe_navigation_bar_glass_size_title">Saiz bar pandu arah kaca</string>
   <string name="morphe_navigation_bar_glass_size_summary">Laraskan ketinggian, lebar dan jarak butang bar pandu arah kaca, dengan pratonton. Butang yang tidak muat dalam lebar skrin akan disembunyikan</string>
   <string name="morphe_navigation_bar_glass_size_height">Ketinggian</string>
@@ -1378,6 +1384,8 @@ Tata letak automotif
   <string name="morphe_miniplayer_swipe_up_expand_summary">Meleret pemain kecil ke atas akan mengembangkan pemain, bukannya memindahkan pemain kecil ke bahagian atas skrin</string>
   <string name="morphe_miniplayer_docked_title">Pemain kecil didokkan</string>
   <string name="morphe_miniplayer_docked_summary">Melekatkan pemain kecil pada bar navigasi dan bahagian tepi skrin, bukannya terapung di atasnya</string>
+  <string name="morphe_miniplayer_glass_title">Pemain mini kaca</string>
+  <string name="morphe_miniplayer_glass_summary">Memaparkan pemain mini sebagai kaca lut sinar dengan bucu bulat, seperti bar pandu arah kaca. Memerlukan bar pandu arah kaca</string>
   <string name="morphe_miniplayer_type_entry_0">Dilumpuhkan</string>
   <string name="morphe_miniplayer_type_entry_1">Lalai</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalis</string>
@@ -1814,6 +1822,8 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_niconico_comments_screen_title">Komen Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Tunjukkan sembang langsung dan ulangan sembang sebagai komen yang skrol merentasi video</string>
   <string name="morphe_niconico_comments_summary">Menunjukkan butang tindanan dalam pemain video. Ketik untuk menunjukkan atau menyembunyikan komen, ketik dan tahan untuk tetapan pantas</string>
+  <string name="morphe_niconico_comments_pip_title">Tunjukkan dalam gambar-dalam-gambar</string>
+  <string name="morphe_niconico_comments_pip_summary">Komen dikecilkan untuk dimuatkan dalam tetingkap</string>
   <string name="morphe_niconico_comments_appearance_title">Penampilan</string>
   <string name="morphe_niconico_comments_portrait_category_title">Potret</string>
   <string name="morphe_niconico_comments_video_types_title">Jenis video</string>

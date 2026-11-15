@@ -167,6 +167,28 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 • Setelan Morphe Anda tidak akan mengimpor/mengekspor autentikasi Android VR
 • Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan menghapus autentikasi ini
 • Anda perlu masuk kembali jika Anda mengubah kata sandi Google Anda atau menghapus pendaftaran perangkat ini dari setelan Google Anda"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Login Web Seluler</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opsional: masuk ke situs web YouTube untuk memutar video dengan akun Anda. Ketuk di sini untuk melanjutkan</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Saat ini sedang masuk ke Mobile Web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' ke Web Seluler</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Login ke Web Seluler</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web Seluler memutar video saat keluar, atau login ke situs web YouTube
+
+• Saat login, video yang membutuhkan akun dapat diputar, seperti video dengan batasan usia
+• Halaman login Google terbuka di aplikasi ini
+• Login hanya digunakan untuk mendapatkan video yang Anda putar
+• Login hanya disimpan di perangkat ini
+
+Untuk login, tekan lanjutkan di bawah"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Masuk tersimpan
+
+• Pengaturan Morphe Anda tidak akan mengimpor/mengekspor masuk Web Seluler
+• Jika Google mengakhiri sesi masuk, video akan diputar tanpa masuk sampai Anda masuk kembali
+• Keluar juga akan mengeluarkan perangkat ini dari situs web YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Masuk ke Web Seluler telah kadaluwarsa, coba masuk ke Web Seluler lagi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Keluar dari Web Seluler</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView tidak tersedia. Instal atau aktifkan untuk masuk</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 sementara tidak tersedia (API kehabisan waktu)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Masuk ke Android VR telah kadaluwarsa, coba masuk ke VR lagi</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 untuk sementara tidak tersedia (status %s)</string>

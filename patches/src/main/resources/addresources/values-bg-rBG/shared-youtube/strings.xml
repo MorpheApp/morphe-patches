@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • Настройките за Morphe няма да бъдат импортирани/експортирани за Android VR автентификация
 • Ако приложението не се използва в продължение на 6 месеца, Google ще премахне тази автентификация
 • Ще трябва да се впишете отново, ако промените своя Google парола или изключите това устройство от Google настройки"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вход в мобилната уеб версия</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">По желание: влезте в сайта на YouTube, за да възпроизвеждате видеоклипове с вашия акаунт. Докоснете тук, за да продължите</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Входът в Mobile Web е активен</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">За да използвате тази функционалност, променете \'Стандартен клиент\' на Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Влезте в Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web възпроизвежда видеоклипове без вход или при вход в уебсайта на YouTube
+
+• При вход могат да се възпроизвеждат видеоклипове, които изискват акаунт, например такива с възрастови ограничения
+• Страницата за вход в Google се отваря в това приложение
+• Входът се използва само за получаване на видеоклиповете, които възпроизвеждате
+• Входът се запазва само на това устройство
+
+За да влезете, натиснете „Продължи“ по-долу"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Входът е запазен
+
+• Настройките на Morphe няма да импортират/експортират входа за мобилния уеб
+• Ако Google прекрати сесията, видеоклиповете ще се възпроизвеждат без вход, докато влезете отново
+• Излизането от профила също излиза това устройство от уебсайта на YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Входът за мобилния уеб е изтекъл, опитайте се да влезете в мобилния уеб отново</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Излязване от мобилния уеб</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView не е наличен. Инсталирайте го или го активирайте, за да влезете</string>
   <string name="morphe_oauth2_connection_failure_timeout">Временно не е възможно OAuth2 (изтекло време на API).</string>
   <string name="morphe_oauth2_connection_failure_status_400">Входът за Android VR е изтекъл, опитайте се да влезете в VR отново</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 временно не е достъпен (статус %s).</string>

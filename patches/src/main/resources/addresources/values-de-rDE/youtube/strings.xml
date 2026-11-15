@@ -523,6 +523,10 @@ Nachdem ein Video mit der Ask-Schaltfläche einmal geöffnet wurde, funktioniert
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Like-Anzahl in Feed-Vorschaubildern anzeigen</string>
   <string name="morphe_ryd_feed_like_ratio_title">Like-Verhältnis in Feed-Vorschaubildern anzeigen</string>
+  <string name="morphe_ryd_feed_counts_position_title">Position des Feed-Miniaturbild-Likes</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Neben der Anzahl der Aufrufe</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Mitte rechts</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Oben links</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Kommentare durchsuchen</string>
   <string name="morphe_search_comments_summary">Tippe auf die Suchschaltfläche in den Kommentaren, um nur die geladenen Kommentare anzuzeigen, die alle gesuchten Wörter enthalten. Setze Wörter in Anführungszeichen, um nach einer Phrase zu suchen</string>
@@ -1038,6 +1042,8 @@ Um auf die Einstellungen zuzugreifen, aktiviere den Einstellungen-Button über A
   <string name="morphe_navigation_bar_glass_summary">Zeigt die Navigationsleiste als schwebende, abgerundete, halbtransparente Kapsel an. Nicht verfügbar bei dem Stil „Undurchsichtige Navigationsleiste“</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Deckkraft des Glases</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Passt die Deckkraft der Glas-Navigationsleiste an (0 ist transparent, 100 ist undurchsichtig)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Abgerundete Glas-Navigationsleiste</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Verleiht der Glas-Navigationsleiste abgerundete Enden anstelle von Ecken wie beim Glas-Miniplayer</string>
   <string name="morphe_navigation_bar_glass_size_title">Größe der Glas-Navigationsleiste</string>
   <string name="morphe_navigation_bar_glass_size_summary">Passe die Höhe, die Breite und den Schaltflächenabstand der Glas-Navigationsleiste mithilfe einer Vorschau an. Schaltflächen, die nicht in die Bildschirmbreite passen, werden ausgeblendet</string>
   <string name="morphe_navigation_bar_glass_size_height">Höhe</string>
@@ -1378,6 +1384,8 @@ Automobil-Layout
   <string name="morphe_miniplayer_swipe_up_expand_summary">Durch Hochwischen des Miniplayers wird der Player erweitert, anstatt den Miniplayer an den oberen Bildschirmrand zu verschieben</string>
   <string name="morphe_miniplayer_docked_title">Andockbarer Miniplayer</string>
   <string name="morphe_miniplayer_docked_summary">Heftet den Miniplayer an die Navigationsleiste und die Seiten des Bildschirms, anstatt über diesen zu schweben</string>
+  <string name="morphe_miniplayer_glass_title">Glas-Miniplayer</string>
+  <string name="morphe_miniplayer_glass_summary">Zeigt den Miniplayer als halbtransparentes Glas mit abgerundeten Ecken an, ähnlich der Glas-Navigationsleiste. Erfordert die Glas-Navigationsleiste</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiviert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1812,6 +1820,8 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder w
   <string name="morphe_niconico_comments_screen_title">Niconico-Kommentare</string>
   <string name="morphe_niconico_comments_screen_summary">Zeigt den Live-Chat und die Chat-Wiederholung als Kommentare an, die über das Video scrollen</string>
   <string name="morphe_niconico_comments_summary">Zeigt eine Overlay-Schaltfläche im Videoplayer an. Tippen, um die Kommentare ein- oder auszublenden; gedrückt halten für Schnelleinstellungen</string>
+  <string name="morphe_niconico_comments_pip_title">Im Bild-im-Bild-Modus anzeigen</string>
+  <string name="morphe_niconico_comments_pip_summary">Kommentare werden skaliert, um in das Fenster zu passen</string>
   <string name="morphe_niconico_comments_appearance_title">Darstellung</string>
   <string name="morphe_niconico_comments_portrait_category_title">Hochformat</string>
   <string name="morphe_niconico_comments_video_types_title">Videotypen</string>

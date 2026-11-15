@@ -522,6 +522,10 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Mostra il conteggio dei mi piace nella miniature del feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Mostra la percentuale di mi piace nella miniature del feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Posizione del like della miniatura del feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Accanto al numero di visualizzazioni</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Centro destra</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">In alto a sinistra</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Cerca nei commenti</string>
   <string name="morphe_search_comments_summary">Tocca il pulsante di ricerca nei commenti per mostrare solo i commenti caricati che contengono tutte le parole cercate. Metti le parole tra virgolette per cercare una frase</string>
@@ -1037,6 +1041,8 @@ Per accedere alle Impostazioni, abilita il pulsante Impostazioni tramite General
   <string name="morphe_navigation_bar_glass_summary">Mostra la barra di navigazione come una capsula traslucida, arrotondata e fluttuante. Non disponibile con lo stile della barra di navigazione Opaca</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacità glass</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Regola il livello di trasparenza della barra di navigazione glass (0 è trasparente, 100 è opaco)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Barra di navigazione in vetro arrotondata</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Rende le estremità della barra di navigazione in vetro arrotondate, invece di angoli come il miniplayer in vetro</string>
   <string name="morphe_navigation_bar_glass_size_title">Dimensioni barra di navigazione glass</string>
   <string name="morphe_navigation_bar_glass_size_summary">Regola l\'altezza, la larghezza e la spaziatura dei pulsanti della barra di navigazione glass, con un\'anteprima. I pulsanti che non rientrano nella larghezza dello schermo vengono nascosti</string>
   <string name="morphe_navigation_bar_glass_size_height">Altezza</string>
@@ -1376,6 +1382,8 @@ Layout automotive
   <string name="morphe_miniplayer_swipe_up_expand_summary">Lo swipe verso l\'alto del miniplayer espande il player, invece di spostare il miniplayer nella parte superiore dello schermo</string>
   <string name="morphe_miniplayer_docked_title">Miniplayer agganciato</string>
   <string name="morphe_miniplayer_docked_summary">Aggancia il miniplayer alla barra di navigazione e ai lati dello schermo, invece di farlo fluttuare sopra di essi</string>
+  <string name="morphe_miniplayer_glass_title">Miniplayer in vetro</string>
+  <string name="morphe_miniplayer_glass_summary">Mostra il miniplayer come vetro traslucido con angoli arrotondati, come la barra di navigazione in vetro. Richiede la barra di navigazione in vetro</string>
   <string name="morphe_miniplayer_type_entry_0">Disattivato</string>
   <string name="morphe_miniplayer_type_entry_1">Predefinito</string>
   <string name="morphe_miniplayer_type_entry_2">Minimale</string>
@@ -1812,6 +1820,8 @@ La registrazione automatica è facoltativa. Si arresta in modalità incognito o 
   <string name="morphe_niconico_comments_screen_title">Commenti Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Mostra la chat dal vivo e il replay della chat come commenti che scorrono attraverso il video</string>
   <string name="morphe_niconico_comments_summary">Mostra un pulsante in sovrapposizione nel lettore video. Tocca per mostrare o nascondere i commenti, tocca e tieni premuto per le impostazioni rapide</string>
+  <string name="morphe_niconico_comments_pip_title">Mostra in Picture-in-Picture</string>
+  <string name="morphe_niconico_comments_pip_summary">I commenti sono ridimensionati per adattarsi alla finestra</string>
   <string name="morphe_niconico_comments_appearance_title">Aspetto</string>
   <string name="morphe_niconico_comments_portrait_category_title">Verticale</string>
   <string name="morphe_niconico_comments_video_types_title">Tipi di video</string>

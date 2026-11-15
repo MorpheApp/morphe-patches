@@ -522,6 +522,10 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Vis antall likerklikk på feedens miniatyrbilde</string>
   <string name="morphe_ryd_feed_like_ratio_title">Vis like-prosent på feedens miniatyrbilde</string>
+  <string name="morphe_ryd_feed_counts_position_title">Posisjon for like på feed-miniatyrbilde</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Ved siden av visningstall</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Midten til høyre</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Øverst til venstre</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Søk i kommentarer</string>
   <string name="morphe_search_comments_summary">Trykk på søkeknappen i kommentarene for å vise kun lastede kommentarer som inneholder alle søkeordene. Sett ord i anførselstegn for å søke etter en frase</string>
@@ -1037,6 +1041,8 @@ For å få tilgang til Innstillinger, aktiver Innstillinger-knappen via Generelt
   <string name="morphe_navigation_bar_glass_summary">Viser navigasjonsfeltet som en flytende, avrundet, gjennomsiktig kapsel. Ikke tilgjengelig med stilen for ugjennomsiktig navigasjonsfelt</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Glassopasitet</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Juster gjennomsiktighetsnivået for glassnavigasjonsfeltet (0 er gjennomsiktig, 100 er ugjennomsiktig)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Rund glassnavigasjonslinje</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Gir glassnavigasjonslinjen runde ender, i stedet for hjørner som glassminispilleren</string>
   <string name="morphe_navigation_bar_glass_size_title">Størrelse på glassnavigasjonsfelt</string>
   <string name="morphe_navigation_bar_glass_size_summary">Juster høyden, bredden og knappavstanden til glassnavigasjonsfeltet, med en forhåndsvisning. Knapper som ikke passer innenfor skjermbredden skjules</string>
   <string name="morphe_navigation_bar_glass_size_height">Høyde</string>
@@ -1377,6 +1383,8 @@ Bilvisning
   <string name="morphe_miniplayer_swipe_up_expand_summary">Ved å sveipe minispilleren opp utvides spilleren, i stedet for å flytte minispilleren til toppen av skjermen</string>
   <string name="morphe_miniplayer_docked_title">Dokket minispiller</string>
   <string name="morphe_miniplayer_docked_summary">Festing av minispilleren til navigasjonsfeltet og sidene av skjermen, i stedet for at den flyter over dem</string>
+  <string name="morphe_miniplayer_glass_title">Glassminispiller</string>
+  <string name="morphe_miniplayer_glass_summary">Viser minispilleren som gjennomsiktig glass med avrundede hjørner, som glassnavigasjonslinjen. Krever glassnavigasjonslinje</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktivert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1813,6 +1821,8 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_niconico_comments_screen_title">Niconico-kommentarer</string>
   <string name="morphe_niconico_comments_screen_summary">Vis live-chat og chat-avspilling som kommentarer som ruller over videoen</string>
   <string name="morphe_niconico_comments_summary">Viser en overlay-knapp i videospilleren. Trykk for å vise eller skjule kommentarer, trykk og hold for hurtiginnstillinger</string>
+  <string name="morphe_niconico_comments_pip_title">Vis i bilde-i-bilde</string>
+  <string name="morphe_niconico_comments_pip_summary">Kommentarer blir skalert ned for å passe til vinduet</string>
   <string name="morphe_niconico_comments_appearance_title">Utseende</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portrett</string>
   <string name="morphe_niconico_comments_video_types_title">Videotyper</string>

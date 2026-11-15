@@ -61,6 +61,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowTitleIcon;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
@@ -140,6 +141,19 @@ public final class RestoreOriginalTitlesPatch {
      * which has the description state, but the top bar does not show the title.
      */
     private static final String SHORTS_TOP_BAR_IDENTIFIER = "top_bar.eml";
+
+    /**
+     * Video of the card layout, such as the feed videos of a newer A/B test.
+     * Its accessibility label is in the renderer context of the view model, two messages below the view model
+     * that includes the title, and not a field of the view model as in the other video components.
+     */
+    private static final String LOCKUP_IDENTIFIER = "lockup.eml";
+
+    /**
+     * Messages between the view model of {@link #LOCKUP_IDENTIFIER} and its accessibility label
+     * (renderer context, then accessibility context).
+     */
+    private static final int LOCKUP_LABEL_DEPTH = 2;
 
     /**
      * Accessibility id of the link of a Short to a related video, such as the full video of the Short.
@@ -246,7 +260,26 @@ public final class RestoreOriginalTitlesPatch {
 
         @Override
         public boolean isOutdated() {
-            return showsOriginalTitle == (selectedOriginalTitle(videoId) == null);
+            return showsOriginalTitle == (selectedOriginalTitle(videoId) == null) || changedTitle() != null;
+        }
+
+        /**
+         * @return The title shown instead after the titles of the video were fetched again following a vote
+         *         on its DeArrow titles, or null if the title did not change. If DeArrow now keeps
+         *         the original title, then the original title is shown if it was fetched.
+         */
+        @Nullable
+        String changedTitle() {
+            OriginalTitleRequest.Titles titles = OriginalTitleRequest.getIfFetched(videoId);
+            if (titles == null) {
+                return null;
+            }
+            String title = titles.deArrowTitle();
+            if (title == null) {
+                OriginalTitleRequest.OriginalVideo original = OriginalTitleRequest.getOriginalIfFetched(videoId);
+                title = original == null ? null : original.title();
+            }
+            return title == null || title.trim().equals(deArrowTitle) ? null : title;
         }
     }
 
@@ -838,14 +871,38 @@ public final class RestoreOriginalTitlesPatch {
     }
 
     /**
-     * @return The text with the other title if its DeArrow icon was tapped meanwhile, or the same text.
+     * @return The text with the other title if its DeArrow icon was tapped meanwhile,
+     *         the text with the title that won the vote on the DeArrow titles, or the same text.
      */
     private static CharSequence updatedDeArrowTitle(CharSequence text) {
         DeArrowIconSpan[] spans = ((Spanned) text).getSpans(0, text.length(), DeArrowIconSpan.class);
         if (spans.length == 0 || !spans[0].isOutdated()) {
             return text;
         }
-        return titleText(text, spans[0].deArrowTitle);
+        String changedTitle = spans[0].changedTitle();
+        return titleText(text, changedTitle != null ? changedTitle : spans[0].deArrowTitle);
+    }
+
+    /**
+     * Fetches the titles of the video again after a vote on its DeArrow titles,
+     * and lays out the shown titles again when fetched. Can be called on any thread.
+     */
+    public static void fetchTitlesAgain(String videoId) {
+        if (USE_DEARROW) {
+            OriginalTitleRequest.fetchAgain(videoId).thenRun(LithoRelayoutPatch::relayoutOutdatedTexts);
+        } else {
+            DeArrowBrandingRequest.removeFromCache(videoId);
+        }
+    }
+
+    /**
+     * Fetches the original title if it was not fetched before.
+     *
+     * @return The title as set by the uploader, which is not translated,
+     *         or null if the video has no available title, or it failed to fetch.
+     */
+    public static CompletableFuture<String> fetchOriginalTitle(String videoId) {
+        return OriginalTitleRequest.fetchOriginalTitleIfNeeded(videoId);
     }
 
     /**
@@ -1835,7 +1892,7 @@ public final class RestoreOriginalTitlesPatch {
                 () -> {
                     String layoutTitle = videoId.equals(openedVideoId) ? findOpenedVideoTitle(textNodes, texts) : null;
                     return layoutTitle == null && elementVideoId
-                            ? findLabeledCandidateTitle(textNodes, texts)
+                            ? findLabeledCandidateTitle(textNodes, texts, component)
                             : layoutTitle;
                 },
                 () -> findCandidateTitle(textNodes, nodeTexts, texts, videoId, elementVideoId, component),
@@ -1957,7 +2014,7 @@ public final class RestoreOriginalTitlesPatch {
                 return null;
             }
 
-            title = findLabeledCandidateTitle(textNodes, texts);
+            title = findLabeledCandidateTitle(textNodes, texts, component);
             if (title == null) {
                 // The title at the title path learned for the component.
                 List<String> paths = TitleLayouts.fieldPaths(textNodes);
@@ -1983,7 +2040,7 @@ public final class RestoreOriginalTitlesPatch {
      * @return The title that starts the accessibility label of the video, or null if none.
      */
     @Nullable
-    private static String findLabeledCandidateTitle(List<ProtoNode> textNodes, Set<String> texts) {
+    private static String findLabeledCandidateTitle(List<ProtoNode> textNodes, Set<String> texts, String component) {
         String[] labelAndTitle = findLabeledTitle(texts);
         String labeledLabel = labelAndTitle == null ? null : labelAndTitle[0];
         String labeledTitle = labelAndTitle == null ? null : labelAndTitle[1];
@@ -2002,6 +2059,14 @@ public final class RestoreOriginalTitlesPatch {
                 titleNodes.add(node);
             } else if (text.equals(labeledLabel) && node.getParent() != null) {
                 labelMessages.add(node.getParent());
+                if (component.startsWith(LOCKUP_IDENTIFIER)) {
+                    // The label is in the renderer context of the view model that includes the title.
+                    ProtoNode labelMessage = node.getParent();
+                    for (int depth = 0; depth < LOCKUP_LABEL_DEPTH && labelMessage.getParent() != null; depth++) {
+                        labelMessage = labelMessage.getParent();
+                    }
+                    labelMessages.add(labelMessage);
+                }
             }
         }
         boolean labelOfTitle = false;

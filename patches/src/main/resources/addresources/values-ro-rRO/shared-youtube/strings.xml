@@ -167,6 +167,28 @@ Pentru a te autentifica, apasă butonul Continuă de mai jos"</string>
 • Configurațiile Morphe nu vor importa/exporta autentificarea Android VR
 • Dacă această aplicație nu este folosită timp de 6 luni, Google va șterge această autentificare
 • Dacă schimbi parola Google sau elimini acest dispozitiv din setările Google, va trebui să te autentifici din nou"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Autentificare în versiunea web mobilă</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opțional: autentifică-te pe site-ul YouTube pentru a reda videoclipuri cu contul tău. Apasă aici pentru a continua</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">În prezent, ești autentificat în versiunea web mobilă</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Pentru a utiliza această funcție, schimbă „Client implicit” în Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Conectează-te la Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web redă videoclipurile fără a fi conectat sau fiind conectat la site-ul YouTube
+
+• Fiind conectat, pot fi redate videoclipurile care necesită un cont, cum ar fi cele cu restricții de vârstă
+• Pagina de autentificare Google se deschide în această aplicație
+• Autentificarea este utilizată doar pentru a obține videoclipurile pe care le redai
+• Autentificarea este salvată doar pe acest dispozitiv
+
+Pentru a te conecta, apasă continuă mai jos"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Autentificarea a fost salvată
+
+• Setările Morphe nu vor importa/exporta autentificarea pentru Web mobil
+• Dacă Google încheie sesiunea de autentificare, videoclipurile vor fi redate fără autentificare până când te autentifici din nou
+• Dezautentificarea va scoate dispozitivul din cont și pe site-ul YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Sesiunea de autentificare Mobile Web a expirat, încearcă din nou să te autentifichi în Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Te-ai deconectat din Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView nu este disponibil. Instalează-l sau activează-l pentru a te autentifica</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 este momentan indisponibil (API a expirat)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Autentificarea la Android VR a expirat, încearcă din nou</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 temporar indisponibil (status %s)</string>

@@ -167,6 +167,28 @@ Sisse logimiseks vajutage allpoolset nuppu Jätka"</string>
 • Teie Morphe seaded ei importeeri ega eksporteeri Android VR autentimist
 • Kui seda rakendust ei kasutata 6 kuud, eemaldab Google selle autentimise
 • Peate uuesti sisse logima, kui muudate oma Google'i parooli või eemaldate selle seadme oma Google'i seadetest"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobiiliveebi sisselogimine</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valikuline: logige sisse YouTube\'i veebilehele, et videoid oma kontoga esitada. Jätkamiseks puudutage siia</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hetkel on sisse logitud mobiiliveebi kaudu</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Selle funktsiooni kasutamiseks muutke \'Vaikimisi klient\' Mobile Webiks</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logige sisse Mobile Webis</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web esitab videoid ilma sisselogimiseta või YouTube'i veebilehe sisselogitud kontoga
+
+• Sisselogitud olekul saab esitada videoid, mille jaoks on vaja kontot, näiteks vanusepiiranguga videoid
+• Google'i sisselogimisleht avaneb selles rakenduses
+• Sisselogimist kasutatakse ainult esitatavate videode saamiseks
+• Sisselogimine salvestatakse ainult selles seadmes
+
+Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sisselogimine salvestatud
+
+• Teie Morphe seaded ei importeeri/eksporteeri Mobile Web sisselogimist
+• Kui Google lõpetab sisselogimise, esitatakse videoid ilma sisselogimiseta, kuni logite uuesti sisse
+• Väljalogimine logib sellest seadmest välja ka YouTube veebilehelt"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web sisselogimine aegus, proovige Mobile Web sisselogimist uuesti</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web-ist logitud välja</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView pole saadaval. Sisselogimiseks installige või aktiveerige see</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ei ole hetkel saadaval (API aeg läks läbi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR sisselogimine aegus, proovige VR-i uuesti sisse logida</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ei ole ajutiselt saadaval (staatus %s)</string>

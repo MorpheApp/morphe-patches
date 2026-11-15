@@ -166,6 +166,28 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
 • Przy imporcie/eksporcie ustawień Morphe autoryzacja Android VR jest pomijana
 • Jeśli aplikacja nie będzie używana przez 6 miesięcy, Google usunie autoryzację
 • W przypadku zmiany hasła lub wyrejestrowania urządzenia w ustawieniach konta Google konieczne będzie ponowne zalogowanie się"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logowanie w Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcjonalnie: zaloguj się na stronie internetowej YouTube, aby odtwarzać filmy przy użyciu swojego konta. Dotknij tutaj, aby kontynuować</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Obecnie zalogowano w Mobile Web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Aby używać tej funkcji, zmień \"Domyślny klient\" na Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Zaloguj się do Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web odtwarza filmy bez logowania lub po zalogowaniu na stronie internetowej YouTube
+
+• Po zalogowaniu można odtwarzać filmy wymagające konta, np. z ograniczeniem wiekowym
+• Strona logowania Google otwiera się w tej aplikacji
+• Logowanie służy wyłącznie do pobierania odtwarzanych filmów
+• Logowanie jest zapisywane tylko na tym urządzeniu
+
+Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Zapisano logowanie
+
+• Twoje ustawienia Morphe nie będą importować ani eksportować logowania w Mobile Web
+• Jeśli Google zakończy sesję logowania, filmy będą odtwarzane bez zalogowania, dopóki nie zalogujesz się ponownie
+• Wylogowanie powoduje również wylogowanie tego urządzenia ze strony internetowej YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Logowanie w Mobile Web wygasło, spróbuj zalogować się w Mobile Web ponownie</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Wylogowano z Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView jest niedostępny. Zainstaluj lub włącz go, aby się zalogować</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 jest tymczasowo niedostępny (API nie reaguje)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Sesja logowania Android VR wygasła, spróbuj zalogować się ponownie</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 jest tymczasowo niedostępny (status %s)</string>

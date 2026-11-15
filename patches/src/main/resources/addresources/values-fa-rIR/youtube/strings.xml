@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">نمایش تعداد لایک‌های بندانگشتی فید</string>
   <string name="morphe_ryd_feed_like_ratio_title">نمایش درصد لایک‌های بندانگشتی فید</string>
+  <string name="morphe_ryd_feed_counts_position_title">موقعیت لایک در پیش‌نمایش فید</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">کنار تعداد بازدید</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">وسط راست</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">بالا چپ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">جست‌وجوی نظرات</string>
   <string name="morphe_search_comments_summary">روی دکمهٔ جست‌وجو در نظرات ضربه بزنید تا فقط نظرات بارگذاری‌شده‌ای که شامل تمام کلمات جست‌وجوشده هستند نمایش داده شوند. برای جست‌وجوی یک عبارت، کلمات را داخل علامت نقل‌قول قرار دهید</string>
@@ -1038,6 +1042,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">نوار پیمایش را به صورت یک کپسول شناور، گرد و نیمه‌شفاف نمایش می‌دهد. با استایل نوار پیمایش کدر در دسترس نیست</string>
   <string name="morphe_navigation_bar_glass_opacity_title">شفافیت شیشه</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">سطح شفافیت نوار پیمایش شیشه‌ای را تنظیم کنید (۰ شفاف و ۱۰۰ کدر است)</string>
+  <string name="morphe_navigation_bar_glass_round_title">نوار پیمایش شیشه‌ای گرد</string>
+  <string name="morphe_navigation_bar_glass_round_summary">به جای گوشه‌هایی مانند مینی‌پلیر شیشه‌ای، به نوار پیمایش شیشه‌ای لبه‌های گرد می‌دهد</string>
   <string name="morphe_navigation_bar_glass_size_title">اندازه‌ی نوار پیمایش شیشه‌ای</string>
   <string name="morphe_navigation_bar_glass_size_summary">تنظیم ارتفاع، عرض و فاصله‌ی دکمه‌های نوار پیمایش شیشه‌ای به همراه پیش‌نمایش. دکمه‌هایی که در عرض صفحه‌ی نمایش جای نمی‌گیرند، پنهان می‌شوند</string>
   <string name="morphe_navigation_bar_glass_size_height">ارتفاع</string>
@@ -1377,6 +1383,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">کشیدن پخش‌کننده کوچک به بالا، به جای انتقال آن به بالای صفحه، پخش‌کننده را گسترش می‌دهد</string>
   <string name="morphe_miniplayer_docked_title">پخش‌کننده کوچک متصل</string>
   <string name="morphe_miniplayer_docked_summary">پخش‌کننده کوچک را به نوار پیمایش و کناره‌های صفحه متصل می‌کند، به جای اینکه روی آن‌ها شناور باشد</string>
+  <string name="morphe_miniplayer_glass_title">مینی‌پلیر شیشه‌ای</string>
+  <string name="morphe_miniplayer_glass_summary">مینی‌پلیر را به صورت شیشه‌ای نیمه‌شفاف با گوشه‌های گرد، مانند نوار پیمایش شیشه‌ای نمایش می‌دهد. نیازمند نوار پیمایش شیشه‌ای است</string>
   <string name="morphe_miniplayer_type_entry_0">غیرفعال</string>
   <string name="morphe_miniplayer_type_entry_1">پیش‌فرض</string>
   <string name="morphe_miniplayer_type_entry_2">حداقلی</string>
@@ -1813,6 +1821,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">دیدگاه‌های Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">نمایش چت زنده و بازپخش چت به صورت دیدگاه‌هایی که روی ویدیو حرکت می‌کنند</string>
   <string name="morphe_niconico_comments_summary">یک دکمه روی پخش‌کننده ویدیو نمایش می‌دهد. برای نمایش یا پنهان کردن دیدگاه‌ها ضربه بزنید و برای تنظیمات سریع لمس کرده و نگه دارید</string>
+  <string name="morphe_niconico_comments_pip_title">نمایش در تصویر-در-تصویر</string>
+  <string name="morphe_niconico_comments_pip_summary">اندازه کامنت‌ها برای تناسب با پنجره کاهش می‌یابد</string>
   <string name="morphe_niconico_comments_appearance_title">ظاهر</string>
   <string name="morphe_niconico_comments_portrait_category_title">عمودی</string>
   <string name="morphe_niconico_comments_video_types_title">انواع ویدیو</string>

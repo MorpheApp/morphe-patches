@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Ցուցադրել հոսքի նկարահատվածի հավանումների քանակը</string>
   <string name="morphe_ryd_feed_like_ratio_title">Ցուցադրել հոսքի նկարահատվածի հավանումների տոկոսը</string>
+  <string name="morphe_ryd_feed_counts_position_title">Հոսքի նկարահատվածի հավանումների դիրքը</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Դիտումների քանակի կողքին</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Միջին աջ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Վերևի ձախ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Փնտրել մեկնաբանություններում</string>
   <string name="morphe_search_comments_summary">Սեղմեք մեկնաբանությունների որոնման կոճակը, որպեսզի ցուցադրվեն միայն բեռնված այն մեկնաբանությունները, որոնք պարունակում են բոլոր փնտրվող բառերը: Արտահայտություն փնտրելու համար դրեք բառերը չակերտների մեջ</string>
@@ -1037,6 +1041,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Ցուցադրում է նավիգացիոն վահանակը որպես լողացող, կլորացված, կիսաթափանցիկ պատյան: Հասանելի չէ «Անթափանցիկ» նավիգացիոն վահանակի ոճի դեպքում</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Ապակեթափանցիկություն</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Կարգավորեք ապակե նավիգացիոն վահանակի թափանցիկության մակարդակը (0-ն թափանցիկ է, 100-ը՝ անթափանցիկ)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Ապակե նավիգացիայի շերտի կլորացում</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Ապակե նավիգացիայի շերտին հաղորդում է կլոր ծայրեր՝ ապակե մինի-նվագարկիչի անկյունների փոխարեն</string>
   <string name="morphe_navigation_bar_glass_size_title">Ապակե նավիգացիոն վահանակի չափսը</string>
   <string name="morphe_navigation_bar_glass_size_summary">Կարգավորեք ապակե նավիգացիոն վահանակի բարձրությունը, լայնությունը և կոճակների հեռավորությունը՝ նախնական դիտման հնարավորությամբ: Էկրանի լայնությանը չհամապատասխանող կոճակները թաքցվում են</string>
   <string name="morphe_navigation_bar_glass_size_height">Բարձրություն</string>
@@ -1377,6 +1383,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">Մինի-նվագարկիչը վերև սահեցնելը ընդլայնում է նվագարկիչը, փոխարեն տեղափոխելու մինի-նվագարկիչը էկրանի վերև</string>
   <string name="morphe_miniplayer_docked_title">Ֆիքսված մինի-նվագարկիչ</string>
   <string name="morphe_miniplayer_docked_summary">Կցում է մինի-նվագարկիչը նավիգացիոն վահանակին և էկրանի կողմերին, փոխարեն դրանց վրա լողալու</string>
+  <string name="morphe_miniplayer_glass_title">Ապակե մինի-նվագարկիչ</string>
+  <string name="morphe_miniplayer_glass_summary">Ցուցադրում է մինի-նվագարկիչը որպես կիսաթափանցիկ ապակի՝ կլորացված անկյուններով, ինչպես ապակե նավիգացիայի շերտը: Պահանջվում է ապակե նավիգացիայի շերտ</string>
   <string name="morphe_miniplayer_type_entry_0">Անջատված</string>
   <string name="morphe_miniplayer_type_entry_1">Լռելյայն</string>
   <string name="morphe_miniplayer_type_entry_2">Մինիմալ</string>
@@ -1813,6 +1821,8 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_niconico_comments_screen_title">Niconico-ի մեկնաբանություններ</string>
   <string name="morphe_niconico_comments_screen_summary">Ցուցադրել ուղիղ չատը և չատի կրկնությունը որպես մեկնաբանություններ, որոնք սահում են տեսանյութի վրայով</string>
   <string name="morphe_niconico_comments_summary">Ցուցադրում է վերադրված կոճակ տեսանյութի նվագարկիչում: Հպեք՝ մեկնաբանությունները ցուցադրելու կամ թաքցնելու համար, սեղմեք և պահեք՝ արագ կարգավորումների համար</string>
+  <string name="morphe_niconico_comments_pip_title">Ցուցադրել պատկեր-պատկերի մեջ</string>
+  <string name="morphe_niconico_comments_pip_summary">Մեկնաբանությունները փոքրացվում են՝ պատուհանին համապատասխանեցնելու համար</string>
   <string name="morphe_niconico_comments_appearance_title">Արտաքին տեսք</string>
   <string name="morphe_niconico_comments_portrait_category_title">Դիմանկար</string>
   <string name="morphe_niconico_comments_video_types_title">Տեսանյութերի տեսակներ</string>

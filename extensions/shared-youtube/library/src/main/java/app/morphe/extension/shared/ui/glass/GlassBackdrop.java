@@ -20,6 +20,8 @@ import android.view.View;
 import androidx.annotation.ColorInt;
 import androidx.annotation.RequiresApi;
 
+import java.util.List;
+
 /**
  * The content behind a glass capsule, recorded again for each frame into a blurred render node.
  * The node only refers to the drawings of the views, so it is fast. Drawn by
@@ -93,6 +95,34 @@ public final class GlassBackdrop {
             recording.drawColor(background);
             recording.translate(sourceLocation[0] - targetLocation[0], sourceLocation[1] - targetLocation[1]);
             source.draw(recording);
+        } finally {
+            node.endRecording();
+        }
+        canvas.drawRenderNode(node);
+    }
+
+    /**
+     * Draws the sources blurred, over a background color, where they are behind the target.
+     *
+     * @param sources The views behind the target, in the order they are drawn. None may hold the target.
+     */
+    public void draw(Canvas canvas, View target, List<View> sources, @ColorInt int background) {
+        final int width = target.getWidth();
+        final int height = target.getHeight();
+        if (width <= 0 || height <= 0) return;
+
+        target.getLocationInWindow(targetLocation);
+        node.setPosition(0, 0, width, height);
+        RecordingCanvas recording = node.beginRecording(width, height);
+        try {
+            recording.drawColor(background);
+            for (View source : sources) {
+                source.getLocationInWindow(sourceLocation);
+                final int saveCount = recording.save();
+                recording.translate(sourceLocation[0] - targetLocation[0], sourceLocation[1] - targetLocation[1]);
+                source.draw(recording);
+                recording.restoreToCount(saveCount);
+            }
         } finally {
             node.endRecording();
         }

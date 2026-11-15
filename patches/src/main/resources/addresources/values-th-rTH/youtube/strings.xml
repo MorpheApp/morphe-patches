@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">แสดงจำนวนคนกดถูกใจของรูปภาพขนาดย่อในฟีด</string>
   <string name="morphe_ryd_feed_like_ratio_title">แสดงอัตราส่วนการกดถูกใจของรูปภาพขนาดย่อในฟีด</string>
+  <string name="morphe_ryd_feed_counts_position_title">ตำแหน่งปุ่มไลก์บนรูปขนาดย่อของฟีด</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ถัดจากจำนวนการดู</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">ตรงกลางขวา</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">บนซ้าย</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">ค้นหาความคิดเห็น</string>
   <string name="morphe_search_comments_summary">แตะปุ่มค้นหาในความคิดเห็นเพื่อแสดงเฉพาะความคิดเห็นที่โหลดไว้ซึ่งมีคำที่ค้นหาครบทุกคำ ใส่คำในเครื่องหมายอัญประกาศเพื่อค้นหาวลี</string>
@@ -1038,6 +1042,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">แสดงแถบนำทางเป็นแคปซูลแบบโปร่งแสง ขอบมน และลอยอยู่ ไม่สามารถใช้งานร่วมกับสไตล์แถบนำทางแบบทึบแสงได้</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ความทึบแสงของกระจก</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ปรับระดับความโปร่งใสของแถบนำทางแบบกระจก (0 คือโปร่งใส, 100 คือทึบแสง)</string>
+  <string name="morphe_navigation_bar_glass_round_title">แถบนำทางแบบกระจกขอบมน</string>
+  <string name="morphe_navigation_bar_glass_round_summary">ทำให้แถบนำทางแบบกระจกมีปลายมน แทนที่จะเป็นมุมเหมือนกับมินิเพลเยอร์แบบกระจก</string>
   <string name="morphe_navigation_bar_glass_size_title">ขนาดแถบนำทางแบบกระจก</string>
   <string name="morphe_navigation_bar_glass_size_summary">ปรับความสูง ความกว้าง และระยะห่างระหว่างปุ่มของแถบนำทางแบบกระจก พร้อมการแสดงตัวอย่าง ปุ่มที่ไม่พอดีกับความกว้างของหน้าจอจะถูกซ่อนไว้</string>
   <string name="morphe_navigation_bar_glass_size_height">ความสูง</string>
@@ -1378,6 +1384,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">การปัดเครื่องเล่นย่อขนาดขึ้นจะขยายเครื่องเล่น แทนที่จะเป็นการย้ายเครื่องเล่นย่อขนาดไปที่ด้านบนของหน้าจอ</string>
   <string name="morphe_miniplayer_docked_title">เครื่องเล่นย่อขนาดแบบยึด</string>
   <string name="morphe_miniplayer_docked_summary">ยึดเครื่องเล่นย่อขนาดเข้ากับแถบนำทางและด้านข้างของหน้าจอ แทนที่จะลอยอยู่เหนือสิ่งเหล่านั้น</string>
+  <string name="morphe_miniplayer_glass_title">มินิเพลเยอร์แบบกระจก</string>
+  <string name="morphe_miniplayer_glass_summary">แสดงมินิเพลเยอร์เป็นกระจกโปร่งแสงพร้อมมุมมน เช่นเดียวกับแถบนำทางแบบกระจก จำเป็นต้องใช้แถบนำทางแบบกระจก</string>
   <string name="morphe_miniplayer_type_entry_0">ปิดการใช้งานอยู่</string>
   <string name="morphe_miniplayer_type_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_miniplayer_type_entry_2">น้อยที่สุด</string>
@@ -1814,6 +1822,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">ความคิดเห็นแบบ Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">แสดงแชทสดและแชทรีเพลย์เป็นความคิดเห็นที่เลื่อนผ่านวิดีโอ</string>
   <string name="morphe_niconico_comments_summary">แสดงปุ่มโอเวอร์เลย์ในเครื่องเล่นวิดีโอ แตะเพื่อแสดงหรือซ่อนความคิดเห็น แตะค้างไว้เพื่อเข้าสู่การตั้งค่าด่วน</string>
+  <string name="morphe_niconico_comments_pip_title">แสดงในโหมดภาพซ้อนภาพ</string>
+  <string name="morphe_niconico_comments_pip_summary">ความคิดเห็นจะถูกย่อขนาดลงเพื่อให้พอดีกับหน้าต่าง</string>
   <string name="morphe_niconico_comments_appearance_title">หน้าตา</string>
   <string name="morphe_niconico_comments_portrait_category_title">แนวตั้ง</string>
   <string name="morphe_niconico_comments_video_types_title">ประเภทวิดีโอ</string>

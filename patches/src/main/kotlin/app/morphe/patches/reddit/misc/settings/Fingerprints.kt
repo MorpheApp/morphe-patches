@@ -59,7 +59,7 @@ internal const val USER_SETTINGS_SECTION_CLASS =
     "Lcom/reddit/settings/usersettings/UserSettingsSection;"
 
 /**
- * Constructor of the Compose settings row "Privacy policy", which becomes the Morphe settings row.
+ * Constructor of the Compose settings row "Privacy policy", which is copied as the Morphe settings row.
  * The class is shared with other rows of the About section, such as "User agreement".
  *
  * 2026.30.0+
@@ -112,6 +112,45 @@ internal object PrivacyPolicySettingRowContentFingerprint : Fingerprint(
 )
 
 /**
+ * Section of the settings row.
+ *
+ * 2026.30.0+
+ */
+internal object SettingRowSectionFingerprint : Fingerprint(
+    classFingerprint = PrivacyPolicySettingRowConstructorFingerprint,
+    isStatic = false,
+    returnType = USER_SETTINGS_SECTION_CLASS,
+    parameters = listOf()
+)
+
+/**
+ * Order of the settings row in its section.
+ *
+ * 2026.30.0+
+ */
+internal object SettingRowOrderFingerprint : Fingerprint(
+    classFingerprint = PrivacyPolicySettingRowConstructorFingerprint,
+    name = "getOrder",
+    returnType = "I",
+    parameters = listOf()
+)
+
+/**
+ * Constructor of the registry of all Compose settings rows and sections.
+ * (rows, sections) It throws if two rows have the same key.
+ *
+ * 2026.30.0+
+ */
+internal object UserSettingsRegistryConstructorFingerprint : Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    parameters = listOf("Ljava/util/Set;", "Ljava/util/Set;"),
+    filters = listOf(
+        newInstance("Lcom/reddit/settings/usersettings/UserSettingsContributionException;")
+    )
+)
+
+/**
  * Icon data of the Reddit icon set, a vector drawable resource and its size.
  * The constructor is (packed size, drawable resource id, auto mirrored).
  *
@@ -138,7 +177,7 @@ internal class IconComposableFingerprint(iconDataType: String) : Fingerprint(
     parameters = listOf(iconDataType, "Ljava/lang/String;", "L", "J", "Z", "L", "I", "I")
 )
 
-// 2026.25.0 - 2026.29.0, and the fallback if the Compose settings row is not found.
+// 2026.25.0 - 2026.29.0
 internal object StartUrlActivityFingerprint : Fingerprint(
     isStatic = true,
     parameters = listOf(
@@ -250,4 +289,18 @@ internal object CheckIntegrityPlayStoreFingerprint : Fingerprint(
     filters = listOf(
         string("com.android.vending")
     )
+)
+
+internal object IsModernStyleFingerprint : Fingerprint(
+    definingClass = SETTINGS_STYLE_EXTENSION_CLASS,
+    name = "isModernStyle",
+    returnType = "Z",
+    parameters = listOf()
+)
+
+internal object IsPrivacyPolicyReplacedFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "isPrivacyPolicyReplaced",
+    returnType = "Z",
+    parameters = listOf()
 )

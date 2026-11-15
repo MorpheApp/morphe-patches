@@ -253,6 +253,11 @@ public final class FeedVideoActionsPatch {
         final ThumbnailButtonContainer buttons = new ThumbnailButtonContainer();
         /** Top of the thumbnail in the host, or -1 if it is not known. */
         int thumbnailTop = -1;
+        /**
+         * Space between the end of the button and the edge of the host, without the margin of the button,
+         * such as of the cards of the "Feed card layout" patch, whose thumbnail is inside the card.
+         */
+        int thumbnailInset;
 
         @Nullable
         View getMenuButton() {
@@ -280,24 +285,19 @@ public final class FeedVideoActionsPatch {
             queueButton.setCallback(this);
         }
 
-        void place(ComponentHost host, @Nullable View side, int thumbnailTop) {
+        void place(ComponentHost host, @Nullable View side, int thumbnailTop, int thumbnailInset) {
             if (isOnPlaylistPage(host)) {
                 remove();
                 return;
             }
             final int size = dp(host, BADGE_SIZE_DP);
             int top = thumbnailTop + dp(host, BADGE_MARGIN_DP);
-            int right = host.getWidth() - dp(host, BADGE_RIGHT_MARGIN_DP);
+            int right = host.getWidth() - thumbnailInset - dp(host, BADGE_RIGHT_MARGIN_DP);
             View owner = side == null ? host : side;
             if (side != null) {
                 // The image, including its overlay, moves with the native swipe-to-remove row.
                 top = dp(host, BADGE_MARGIN_DP);
                 right = side.getWidth() - dp(host, BADGE_RIGHT_MARGIN_DP);
-            } else {
-                Rect thumbnail = FeedViewCountPatch.findThumbnailFrame(host).thumbnail();
-                if (thumbnail != null) {
-                    right = thumbnail.right - dp(host, BADGE_RIGHT_MARGIN_DP);
-                }
             }
             final boolean showWatchLater = watchLater.isShown();
             int visibleButtonCount = 0;
@@ -712,10 +712,31 @@ public final class FeedVideoActionsPatch {
      * Thumbnails can be square, such as of music, so a thumbnail is at the top of the card
      * unless a text is shown above it.
      *
+     * <p>
+     * The thumbnail of the cards of the "Feed card layout" patch is narrower than the host,
+     * and its duration can be drawn by the host of the whole thumbnail, so it is found
+     * the same way as for the view count badge.
+     *
+     * @param inset Set to the space between the end of the button and the edge of the host,
+     *              without the margin of the button.
      * @return The top of the thumbnail in the host, or -1 if it is not known.
      */
-    private static int findThumbnailTop(ComponentHost host, View menuButton) {
+    private static int findThumbnailTop(ComponentHost host, View menuButton, int[] inset) {
         final int width = host.getWidth();
+        inset[0] = 0;
+        FeedViewCountPatch.ThumbnailFrame frame = FeedViewCountPatch.findThumbnailFrame(host);
+        Rect thumbnail = frame.thumbnail();
+        if (thumbnail != null && thumbnail.top >= 0 && thumbnail.width() < width
+                && thumbnail.width() > width * 3 / 4) {
+            Rect duration = frame.duration();
+            // The end of the button lines up with the end of the duration badge.
+            inset[0] = duration != null && !FeedViewCountPatch.isRtl(host)
+                    && duration.right <= thumbnail.right && duration.right > thumbnail.centerX()
+                    ? width - duration.right - dp(host, BADGE_RIGHT_MARGIN_DP)
+                    : width - thumbnail.right;
+            return thumbnail.top;
+        }
+
         final int thumbnailHeight = Math.round(width * THUMBNAIL_RATIO);
         Rect rect = new Rect();
         final int durationBottom = findDurationBottom(host, host, rect);
@@ -991,14 +1012,17 @@ public final class FeedVideoActionsPatch {
         final boolean sameMenuButton = card.menuButtonRef.get() == menuButton;
         card.menuButtonRef = new WeakReference<>(menuButton);
         if (WATCH_LATER_BUTTON || QUEUE_BUTTON_ENABLED) {
-            final int thumbnailTop = sideThumbnail == null ? findThumbnailTop(host, menuButton) : 0;
+            final int[] thumbnailInset = new int[1];
+            final int thumbnailTop = sideThumbnail == null
+                    ? findThumbnailTop(host, menuButton, thumbnailInset) : 0;
             // Litho mounts only the part of a card that is shown, so the duration badge
             // may not be mounted. The thumbnail of the same video does not move.
             if (thumbnailTop >= 0 || !sameMenuButton) {
                 card.thumbnailTop = thumbnailTop;
+                card.thumbnailInset = thumbnailInset[0];
             }
             if (card.thumbnailTop >= 0) {
-                card.buttons.place(host, sideThumbnail, card.thumbnailTop);
+                card.buttons.place(host, sideThumbnail, card.thumbnailTop, card.thumbnailInset);
                 final String videoId = findCardVideoId(host);
                 if (!TextUtils.equals(card.buttons.videoId, videoId)) {
                     card.buttons.videoId = videoId;

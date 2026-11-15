@@ -111,6 +111,21 @@ val ambientModePatch = patch(
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_enhanced_ambient_mode", summary = true),
+                    NonInteractivePreference(
+                        key = "morphe_enhanced_ambient_mode_strength",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_enhanced_ambient_mode_smoothing",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_enhanced_ambient_mode_blur",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
+                    ),
                     SwitchPreference("morphe_enhanced_ambient_mode_readable_text", summary = true),
                     SwitchPreference("morphe_enhanced_ambient_mode_dim_while_scrolling", summary = true),
                     NonInteractivePreference(
@@ -130,6 +145,21 @@ val ambientModePatch = patch(
         //
         lithoDrawableColorHook("$EXTENSION_ENHANCED_AMBIENT_MODE_CLASS->getLithoColor(Landroid/graphics/drawable/Drawable;I)I")
         videoTimeHook(EXTENSION_ENHANCED_AMBIENT_MODE_CLASS, "setVideoTime")
+        // Without this the rows of the playlist panel keep their plain background.
+        TouchFeedbackDrawableDrawFingerprint.let {
+            it.methodOrNull?.apply {
+                val index = it.instructionMatches.first().index
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+
+                replaceInstruction(
+                    index,
+                    "invoke-static { v${instruction.registerC}, v${instruction.registerD}, p0 }, " +
+                            "$EXTENSION_ENHANCED_AMBIENT_MODE_CLASS->drawTouchFeedbackBackground(" +
+                            "Landroid/graphics/drawable/Drawable;Landroid/graphics/Canvas;" +
+                            "Landroid/graphics/drawable/Drawable;)V"
+                )
+            }
+        }
         AmbientModeToggleFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index

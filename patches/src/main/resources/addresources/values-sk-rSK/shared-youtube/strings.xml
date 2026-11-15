@@ -167,6 +167,28 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
 • Nastavenia Morphe nebudú importovať/exportovať overenie pre Android VR
 • Po 6 mesiacoch od posledného použitia tejto aplikácie Google odstráni toto overenie
 • Budete sa musieť znova prihlásiť, ak zmeníte svoje heslo Google alebo zrušíte registráciu tohto zariadenia v nastaveniach Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prihlásenie cez mobilný web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Voliteľné: prihláste sa na webovú stránku YouTube, aby ste mohli prehrávať videá so svojím účtom. Pokračujte Ťuknutím sem</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálne prihlásené do mobilnej webovej verzie</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Na používanie tejto funkcie zmeňte \'Predvolený klient\' na Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prihláste sa do Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web prehráva videá bez prihlásenia alebo pri prihlásení na webovú stránku YouTube
+
+• Po prihlásení je možné prehrávať videá, ktoré vyžadujú účet, napríklad videá s obmedzením veku
+• Stránka prihlásenia do Google sa otvorí v tejto aplikácii
+• Prihlásenie slúži len na získanie videí, ktoré prehrávate
+• Prihlásenie sa ukladá len v tomto zariadení
+
+Ak sa chcete prihlásiť, stlačte nižšie tlačidlo pokračovať"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Prihlásenie bolo uložené
+
+• Nastavenia Morphe nebudú importovať/exportovať prihlásenie do mobilného webu
+• Ak Google prihlásenie ukončí, videá sa budú prehrávať bez prihlásenia, kým sa znova prihlásite
+• Odhlásením sa toto zariadenie odhlási aj z webovej stránky YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Vypršala platnosť prihlásenia do mobilného webu, skúste sa do mobilného webu prihlásiť znova</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odhlásené z mobilného webu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView nie je k dispozícii. Ak sa chcete prihlásiť, nainštalujte ho alebo zapnite</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 je dočasne nedostupné (časový limit API vypršal)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Vypršala platnosť prihlásenia Android VR, skúste sa znova prihlásiť do VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 je dočasne nedostupné (stav %s)</string>

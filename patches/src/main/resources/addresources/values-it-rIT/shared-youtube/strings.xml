@@ -167,6 +167,28 @@ Per accedere, premi su Continua di seguito"</string>
 • Le tue impostazioni Morphe non importeranno o esporteranno l'autenticazione per Android VR
 • Se questa app non verrà utilizzata per 6 mesi, Google rimuoverà questa autenticazione
 • In caso di cambio password dell'account Google o deregistrazione di questo dispositivo dalle impostazioni Google, dovrai accedere nuovamente"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Accesso via Web mobile</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Facoltativo: accedi al sito web di YouTube per riprodurre i video con il tuo account. Tocca qui per continuare</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hai eseguito l\'accesso con Web mobile</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Per utilizzare questa funzione, rendi Mobile Web il \'Client predefinito\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Accedi a Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web riproduce i video senza l'accesso o dopo l'accesso al sito web di YouTube
+
+• Se hai effettuato l'accesso, puoi riprodurre i video che richiedono un account, come quelli con restrizioni di età
+• La pagina di accesso di Google si apre in questa app
+• L'accesso viene utilizzato solo per ottenere i video che riproduci
+• L'accesso viene salvato solo su questo dispositivo
+
+Per accedere, premi continua qui sotto"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Accesso salvato
+
+• Le impostazioni di Morphe non importeranno/esporteranno l'accesso al Web mobile
+• Se Google termina l'accesso, i video verranno riprodotti senza l'accesso finché non effettuerai nuovamente l'accesso
+• La disconnessione disconnetterà anche questo dispositivo dal sito web di YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Accesso al Web mobile scaduto, prova ad accedere nuovamente al Web mobile</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Disconnesso dal Web mobile</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView non è disponibile. Installalo o abilitalo per effettuare l\'accesso</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 è temporaneamente non disponibile (API scaduta)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Accesso ad Android VR scaduto, prova ad accedere nuovamente</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 è temporaneamente non disponibile (stato %s)</string>

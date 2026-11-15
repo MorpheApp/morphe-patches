@@ -522,6 +522,10 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Zobrazit počet lajků u miniatury kanálu</string>
   <string name="morphe_ryd_feed_like_ratio_title">Zobrazit procento lajků u miniatury kanálu</string>
+  <string name="morphe_ryd_feed_counts_position_title">Pozice lajků u miniatury kanálu</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Vedle počtu zhlédnutí</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Uprostřed vpravo</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Vlevo nahoře</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Hledat v komentářích</string>
   <string name="morphe_search_comments_summary">Klepnutím na tlačítko vyhledávání v komentářích zobrazíte pouze načtené komentáře, které obsahují všechna vyhledávaná slova. Pro vyhledávání konkrétní fráze uveďte slova do uvozovek</string>
@@ -1037,6 +1041,8 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_navigation_bar_glass_summary">Zobrazí navigační panel jako plovoucí, zaoblenou a poloprůhlednou kapsli. Není k dispozici u stylu neprůhledného navigačního panelu</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Neprůhlednost skla</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Upravte úroveň průhlednosti skleněného navigačního panelu (0 je průhledné, 100 je neprůhledné)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Kulatá skleněná navigační lišta</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Dodá skleněné navigační liště kulaté konce namísto rohů, jako u skleněného miniplayeru</string>
   <string name="morphe_navigation_bar_glass_size_title">Velikost skleněné navigační lišty</string>
   <string name="morphe_navigation_bar_glass_size_summary">Upravte výšku, šířku a rozestupy tlačítek skleněné navigační lišty s náhledem. Tlačítka, která se nevejdou do šířky obrazovky, jsou skryta</string>
   <string name="morphe_navigation_bar_glass_size_height">Výška</string>
@@ -1376,6 +1382,8 @@ Automobilní rozvržení
   <string name="morphe_miniplayer_swipe_up_expand_summary">Potažením minimalizovaného přehrávače nahoru se přehrávač rozbalí, namísto toho, aby se minimalizovaný přehrávač pouze přesunul na horní část obrazovky</string>
   <string name="morphe_miniplayer_docked_title">Přikotvený minimalizovaný přehrávač</string>
   <string name="morphe_miniplayer_docked_summary">Přichytí minimalizovaný přehrávač k navigační liště a okrajům obrazovky, místo aby nad nimi plaval</string>
+  <string name="morphe_miniplayer_glass_title">Skleněný miniplayer</string>
+  <string name="morphe_miniplayer_glass_summary">Zobrazí miniplayer jako průsvitné sklo se zaoblenými rohy, podobně jako u skleněné navigační lišty. Vyžaduje skleněnou navigační lištu</string>
   <string name="morphe_miniplayer_type_entry_0">Vypnuto</string>
   <string name="morphe_miniplayer_type_entry_1">Výchozí</string>
   <string name="morphe_miniplayer_type_entry_2">Minimální</string>
@@ -1811,6 +1819,8 @@ Automatické nahrávání je volitelné. Zastavuje se v anonymním režimu nebo 
   <string name="morphe_niconico_comments_screen_title">Komentáře Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Zobrazit živý chat a opakování chatu jako komentáře, které přejíždějí přes video</string>
   <string name="morphe_niconico_comments_summary">Zobrazí překryvné tlačítko ve videopřehrávači. Klepnutím zobrazíte nebo skryjete komentáře, dlouhým stisknutím otevřete rychlé nastavení</string>
+  <string name="morphe_niconico_comments_pip_title">Zobrazit v režimu obraz v obraze</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentáře jsou zmenšeny, aby vyhověly oknu</string>
   <string name="morphe_niconico_comments_appearance_title">Vzhled</string>
   <string name="morphe_niconico_comments_portrait_category_title">Na výšku</string>
   <string name="morphe_niconico_comments_video_types_title">Typy videí</string>

@@ -167,6 +167,28 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
 • Morphe 설정에서 Android VR 인증을 가져오거나 내보낼 수 없습니다
 • 이 앱을 6개월 동안 사용하지 않으면 Google에서 이 인증을 취소합니다
 • Google 암호를 변경하거나 Google 설정에서 이 기기 등록을 해제하면 다시 로그인해야 합니다"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">모바일 웹 로그인</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">선택 사항: 계정으로 동영상을 재생하려면 YouTube 웹사이트에 로그인하세요. 여기를 탭하여 계속하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">현재 모바일 웹에 로그인되어 있습니다</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">이 기능을 사용하려면 \'기본 클라이언트\'를 Mobile Web으로 변경하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web에 로그인</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web은 로그아웃 상태 또는 YouTube 웹사이트에 로그인된 상태로 동영상을 재생합니다
+
+• 로그인하면 연령 제한 동영상과 같이 계정이 필요한 동영상을 재생할 수 있습니다
+• 이 앱에서 Google 로그인 페이지가 열립니다
+• 로그인은 재생하려는 동영상을 가져오는 용도로만 사용됩니다
+• 로그인 정보는 이 기기에만 저장됩니다
+
+로그인하려면 아래의 계속 버튼을 누르세요"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"로그인이 저장되었습니다
+
+• Morphe 설정에서는 모바일 웹 로그인을 가져오거나 내보내지 않습니다
+• Google에서 로그인을 종료하면 다시 로그인할 때까지 로그아웃된 상태로 동영상이 재생됩니다
+• 로그아웃하면 이 기기의 YouTube 웹사이트에서도 로그아웃됩니다"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">모바일 웹 로그인이 만료되었습니다. 모바일 웹에 다시 로그인하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">모바일 웹에서 로그아웃되었습니다</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView를 사용할 수 없습니다. 로그인하려면 설치하거나 활성화하세요</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2를 일시적으로 사용할 수 없습니다 (API 시간 초과)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR 로그인이 만료되었습니다. VR에 다시 로그인하세요</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2을 일시적으로 사용할 수 없습니다 (상태 코드: %s)</string>

@@ -522,6 +522,10 @@ Efter at en video med Ask-knappen er åbnet én gang, fungerer funktionen med al
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Vis antal likes på feed-miniaturebilledet</string>
   <string name="morphe_ryd_feed_like_ratio_title">Vis like-procent for feed-miniaturebilledet</string>
+  <string name="morphe_ryd_feed_counts_position_title">Placering af likes på feed-miniaturebillede</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Ved siden af antal visninger</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Midt til højre</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Øverst til venstre</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Søg i kommentarer</string>
   <string name="morphe_search_comments_summary">Tryk på søgeknappen i kommentarerne for kun at vise de indlæste kommentarer, der indeholder alle de søgte ord. Sæt ord i citationstegn for at søge efter en frase</string>
@@ -1038,6 +1042,8 @@ For at få adgang til Indstillinger skal du aktivere Indstillingsknappen via Gen
   <string name="morphe_navigation_bar_glass_summary">Viser navigationslinjen som en flydende, afrundet, gennemsigtig kapsel. Ikke tilgængelig med den uigennemsigtige navigationslinjestil</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Glass-uigennemsigtighed</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Juster gennemsigtigheden af glass-navigationslinjen (0 er gennemsigtig, 100 er uigennemsigtig)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Rund glasnavigationsbjælke</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Giver glasnavigationsbjælken runde ender i stedet for hjørner som glas-miniplayeren</string>
   <string name="morphe_navigation_bar_glass_size_title">Glass-navigationslinjens størrelse</string>
   <string name="morphe_navigation_bar_glass_size_summary">Juster højden, bredden og knapafstanden for glass-navigationslinjen med en forhåndsvisning. Knapper, der ikke passer i skærmens bredde, skjules</string>
   <string name="morphe_navigation_bar_glass_size_height">Højde</string>
@@ -1378,6 +1384,8 @@ Automotive-layout
   <string name="morphe_miniplayer_swipe_up_expand_summary">Hvis du swiper miniafspilleren op, udvides afspilleren, i stedet for at flytte miniafspilleren til toppen af skærmen</string>
   <string name="morphe_miniplayer_docked_title">Fastgjort miniafspiller</string>
   <string name="morphe_miniplayer_docked_summary">Fastgør miniafspilleren til navigationslinjen og siderne af skærmen, i stedet for at den svæver over dem</string>
+  <string name="morphe_miniplayer_glass_title">Glas-miniplayer</string>
+  <string name="morphe_miniplayer_glass_summary">Viser miniplayeren som gennemsigtigt glas med afrundede hjørner, ligesom glasnavigationsbjælken. Kræver glasnavigationsbjælken</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiveret</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1814,6 +1822,8 @@ Automatisk optagelse er valgfri. Den stopper i inkognito eller når kontoen ænd
   <string name="morphe_niconico_comments_screen_title">Niconico-kommentarer</string>
   <string name="morphe_niconico_comments_screen_summary">Vis live-chat og chat-genafspilning som kommentarer, der ruller hen over videoen</string>
   <string name="morphe_niconico_comments_summary">Viser en overlay-knap i videofafspilleren. Tryk for at vise eller skjule kommentarerne, tryk og hold for hurtige indstillinger</string>
+  <string name="morphe_niconico_comments_pip_title">Vis i billede-i-billede</string>
+  <string name="morphe_niconico_comments_pip_summary">Kommentarer skaleres ned for at passe til vinduet</string>
   <string name="morphe_niconico_comments_appearance_title">Udseende</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portræt</string>
   <string name="morphe_niconico_comments_video_types_title">Videotyper</string>

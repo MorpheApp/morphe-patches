@@ -68,6 +68,30 @@ internal class DividerItemOffsetsFingerprint(dividerInfoLookupMethod: MethodRefe
 
 
 /**
+ * toString of the layout of a section of a list: column count, gaps between rows and columns, and margins.
+ * Not available on 21.13 and older.
+ */
+internal object SectionLayoutDescriptorToStringFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("SectionLayoutDescriptor(columnCount=")
+    )
+)
+
+/**
+ * Constructor of the layout of a section: column count, row gap, column gap, start, end, top and bottom margin
+ * (in dp), and section id.
+ */
+internal object SectionLayoutDescriptorConstructorFingerprint : Fingerprint(
+    classFingerprint = SectionLayoutDescriptorToStringFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("I", "F", "F", "F", "F", "F", "F", "I")
+)
+
+/**
  * Returns the engagement panel controller of a surface: the controller of the watch page,
  * or the controller of the feed, search and Shorts, which shows its panels over the feed.
  * The fourth match reads the provider of the controller of the feed.

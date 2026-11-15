@@ -167,6 +167,28 @@ Ji bo têketinê, li jêr bitikîne 'Berdewam bike'"</string>
 • Mîhengên Morphe rastandina Android VR import/export nakin
 • Heke ev serlêdan 6 mehan neyê bikaranîn, Google dê vê rastandinê rake
 • Heke şîfreya Google-a xwe biguherînî an vê alavê ji mîhengên Google-ê rakî, wê demê divê tu dîsa têkevî"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Têketina Webê ya Mobil</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Hêvîdar: ji bo ku hûn vîdyoyan bi hesabê xwe lêbidin, di malpera YouTube de têketin bikin. Ji bo berdewamkirinê li vir bitikînin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Niha li Webê ya Mobil têketî ye</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ji bo bikaranîna vê taybetmendiyê, \'Klyenta xwerû\' bike Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Di Mobile Web de têkeve</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web vîdyoyan bêyî têketinê, an jî bi têketina malpera YouTube lî dike
+
+• Gava tu têkçûyî bî, vîdyoyên ku hesab pêwîst in dikarin bên lîkirin, wekî vîdyoyên ku sînorê temenê wan heye
+• Rûpela têketina Google di vê aplikasyonê de vedibe
+• Têketin tenê ji bo gihîştina vîdyoyên ku tu lî dikî tê bikaranîn
+• Têketin tenê li ser vê amûrê têne savekirin
+
+Ji bo têketinê, li jêr li ser berdewamkirinê bitikîne"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Têketin hat savekirin
+
+• Mîhengên we yên Morphe dê têketina Mobile Web import/export nekin
+• Ger Google têketinê bidawênîse, vîdyo heta hûn dîsa têkevin wekî ne-têketî tên lîkirin
+• Derketina ji têketinê, vê amûrê jî ji malpera YouTube derdixe"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Têketina Mobile Web qediya, dîsa hewildînin ku hûn li Mobile Web têkevin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Ji Mobile Web derket</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView bernivîs nayê dîtin. Ji bo têketinê wê install bikin yan jî çalak bikin</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 niha bi demkî ne amade ye (dema API qediya)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Têketina Android VR qediya, dîsa li VR-ê têkevin</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 bi demî neyê gihîştin (statû %s)</string>

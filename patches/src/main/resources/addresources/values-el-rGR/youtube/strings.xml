@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Εμφάνιση μετρητή «Μου αρέσει» στις μικρογραφίες της ροής</string>
   <string name="morphe_ryd_feed_like_ratio_title">Εμφάνιση ποσοστού «Μου αρέσει» στις μικρογραφίες της ροής</string>
+  <string name="morphe_ryd_feed_counts_position_title">Θέση «Μου αρέσει» στη μικρογραφία της ροής</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Δίπλα στον αριθμό προβολών</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Μέσο δεξιά</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Πάνω αριστερά</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Αναζήτηση σχολίων</string>
   <string name="morphe_search_comments_summary">Πατήστε το κουμπί αναζήτησης στα σχόλια για να εμφανίσετε μόνο τα φορτωμένα σχόλια που περιέχουν όλες τις λέξεις αναζήτησης. Τοποθετήστε λέξεις σε εισαγωγικά για να αναζητήσετε μια φράση</string>
@@ -1037,6 +1041,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Εμφανίζει τη γραμμή πλοήγησης ως μια πλωτή, στρογγυλεμένη, ημιδιαφανής κάψουλα. Δεν είναι διαθέσιμο με το στιλ αδιαφανούς γραμμής πλοήγησης</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Αδιαφάνεια γυαλιού</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Προσαρμόστε το επίπεδο διαφάνειας της γυάλινης γραμμής πλοήγησης (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Στρογγυλεμένη γυάλινη γραμμή πλοήγησης</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Δίνει στη γυάλινη γραμμή πλοήγησης στρογγυλεμένες άκρες, αντί για γωνίες όπως στο γυάλινο ελαχιστοποιημένο πρόγραμμα αναπαραγωγής</string>
   <string name="morphe_navigation_bar_glass_size_title">Μέγεθος γυάλινης γραμμής πλοήγησης</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ρυθμίστε το ύψος, το πλάτος και την απόσταση των κουμπιών της γυάλινης γραμμής πλοήγησης, με προεπισκόπηση. Τα κουμπιά που δεν χωράνε στο πλάτος της οθόνης κρύβονται</string>
   <string name="morphe_navigation_bar_glass_size_height">Ύψος</string>
@@ -1377,6 +1383,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">Το σύρσιμο του ελαχιστοποιημένου προγράμματος αναπαραγωγής προς τα πάνω το επεκτείνει, αντί να μετακινεί το ελαχιστοποιημένο πρόγραμμα αναπαραγωγής στο πάνω μέρος της οθόνης</string>
   <string name="morphe_miniplayer_docked_title">Στερεωμένο ελαχιστοποιημένο πρόγραμμα αναπαραγωγής</string>
   <string name="morphe_miniplayer_docked_summary">Προσαρμόζει το ελαχιστοποιημένο πρόγραμμα αναπαραγωγής στη γραμμή πλοήγησης και στις πλευρές της οθόνης, αντί να αιωρείται πάνω από αυτές</string>
+  <string name="morphe_miniplayer_glass_title">Γυάλινο ελαχιστοποιημένο πρόγραμμα αναπαραγωγής</string>
+  <string name="morphe_miniplayer_glass_summary">Εμφανίζει το ελαχιστοποιημένο πρόγραμμα αναπαραγωγής ως ημιδιαφανές γυαλί με στρογγυλεμένες γωνίες, όπως η γυάλινη γραμμή πλοήγησης. Απαιτεί τη γυάλινη γραμμή πλοήγησης</string>
   <string name="morphe_miniplayer_type_entry_0">Απενεργοποιημένη</string>
   <string name="morphe_miniplayer_type_entry_1">Προεπιλογή</string>
   <string name="morphe_miniplayer_type_entry_2">Μινιμαλιστική</string>
@@ -1811,6 +1819,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Σχόλια Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Εμφάνιση της ζωντανής συνομιλίας και της επανάληψης της συνομιλίας ως σχόλια που κυλούν πάνω από το βίντεο</string>
   <string name="morphe_niconico_comments_summary">Εμφανίζει ένα κουμπί επικάλυψης στο πρόγραμμα αναπαραγωγής βίντεο. Πατήστε για να εμφανίσετε ή να κρύψετε τα σχόλια, πατήστε και κρατήστε για γρήγορες ρυθμίσεις</string>
+  <string name="morphe_niconico_comments_pip_title">Εμφάνιση σε εικόνα-trong-εικόνα</string>
+  <string name="morphe_niconico_comments_pip_summary">Τα σχόλια έχουν ανα scaling για να ταιριάζουν στο παράθυρο</string>
   <string name="morphe_niconico_comments_appearance_title">Εμφάνιση</string>
   <string name="morphe_niconico_comments_portrait_category_title">Κατακόρυφη</string>
   <string name="morphe_niconico_comments_video_types_title">Τύποι βίντεο</string>

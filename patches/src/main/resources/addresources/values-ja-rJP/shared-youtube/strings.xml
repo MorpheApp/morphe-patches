@@ -167,6 +167,28 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
 • Morphe の設定のインポート / エクスポートには Android VR 認証は含まれません
 • このアプリが 6 ヶ月間使用されなかった場合、Google はこの認証を削除します
 • Google アカウントのパスワードを変更した場合、または Google アカウントの設定からこのデバイスの登録を解除した場合は、再度ログインする必要があります"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">モバイルウェブでのログイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">オプション：YouTube ウェブサイトにログインすると、アカウントを使用して動画を再生できます。続行するにはここをタップしてください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">現在、モバイルウェブにログインしています</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を Mobile Web に変更してください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web にサインイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web では、サインアウトした状態、または YouTube ウェブサイトにサインインした状態で動画を再生します
+
+• サインインすると、年齢制限付き動画など、アカウントが必要な動画を再生できます
+• このアプリで Google サインインページが開きます
+• サインインは、再生する動画を取得するためだけに使用されます
+• サインイン情報は、このデバイスにのみ保存されます
+
+サインインするには、下の [続行] を押してください"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"サインインが保存されました
+
+• Morphe の設定ではモバイル Web のサインインはインポート/エクスポートされません
+• Google がサインインを終了した場合、再度サインインするまでビデオはサインアウト状態で再生されます
+• サインアウトすると、このデバイスの YouTube ウェブサイトからもサインアウトされます"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">モバイル Web へのログインが期限切れです。再度モバイル Web にログインしてください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">モバイル Web からサインアウトしました</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView が利用できません。サインインするには、インストールまたは有効にしてください</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 は一時的に利用できません (API タイムアウト)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR へのログインが期限切れです。再度ログインしてください</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 は現在利用できません (ステータス %s)</string>

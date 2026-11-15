@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Лентадағы превьюда лайк санын көрсету</string>
   <string name="morphe_ryd_feed_like_ratio_title">Лентадағы превьюда лайк пайызын көрсету</string>
+  <string name="morphe_ryd_feed_counts_position_title">Лентадағы превью лайк позициясы</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Көру санының жанында</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Ортаңғы оң жақ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Жоғарғы сол жақ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Пікірлерді іздеу</string>
   <string name="morphe_search_comments_summary">Пікірлердегі іздеу батырмасын басып, жүктелген пікірлердің ішінен барлық ізделген сөздері бар пікірлерді ғана көрсетіңіз. Фразаны іздеу үшін сөздерді тырнақшаға алыңыз</string>
@@ -1037,6 +1041,8 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_navigation_bar_glass_summary">Навигациялық панельді қалқымалы, дөңгелек, жартылай мөлдір капсула ретінде көрсетеді. Мөлдір емес навигациялық панель стилімен қолжетімді емес</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Шыны мөлдірлігі</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Шыны навигациялық панельдің мөлдірлік деңгейін реттеңіз (0 — мөлдір, 100 — мөлдір емес)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Дөңгелек шыны навигациялық панель</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Шыны миниплеердегі бұрыштардың орнына, шыны навигациялық панельдің шеттерін дөңгелектейді</string>
   <string name="morphe_navigation_bar_glass_size_title">Шыны навигациялық панельдің өлшемі</string>
   <string name="morphe_navigation_bar_glass_size_summary">Шыны навигациялық панельдің биіктігін, енін және батырмалар арасындағы қашықтықты алдын ала қарау арқылы реттеңіз. Экран еніне сыймайтын батырмалар жасырылады</string>
   <string name="morphe_navigation_bar_glass_size_height">Биіктігі</string>
@@ -1377,6 +1383,8 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_miniplayer_swipe_up_expand_summary">Миниплеерді жоғары сырғыту оны экранның жоғарғы жағына жылжытудың орнына, плеерді кеңейтеді</string>
   <string name="morphe_miniplayer_docked_title">Бекітілген миниплеер</string>
   <string name="morphe_miniplayer_docked_summary">Миниплеерді олардың үстінде қалқытып тұрудың орнына, навигациялық панельге және экранның шеттеріне бекітеді</string>
+  <string name="morphe_miniplayer_glass_title">Шыны миниплеер</string>
+  <string name="morphe_miniplayer_glass_summary">Миниплеерді шыны навигациялық панель сияқты бұрыштары дөңгеленген жартылай мөлдір шыны ретінде көрсетеді. Шыны навигациялық панельді қажет етеді</string>
   <string name="morphe_miniplayer_type_entry_0">Өшірілген</string>
   <string name="morphe_miniplayer_type_entry_1">Әдепкі</string>
   <string name="morphe_miniplayer_type_entry_2">Минималистік</string>
@@ -1812,6 +1820,8 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_niconico_comments_screen_title">Niconico пікірлері</string>
   <string name="morphe_niconico_comments_screen_summary">Тікелей чат пен чат қайталануын бейнебаян бойымен жылжитын пікірлер ретінде көрсету</string>
   <string name="morphe_niconico_comments_summary">Бейнеойнатқышта қабат батырмасын көрсетеді. Пікірлерді көрсету немесе жасыру үшін түртіңіз, жылдам параметрлер үшін басып тұрыңыз</string>
+  <string name="morphe_niconico_comments_pip_title">Суретте-сурет режимінде көрсету</string>
+  <string name="morphe_niconico_comments_pip_summary">Пікірлер терезеге сәйкес келуі үшін кішірейтілді</string>
   <string name="morphe_niconico_comments_appearance_title">Сыртқы түрі</string>
   <string name="morphe_niconico_comments_portrait_category_title">Портрет</string>
   <string name="morphe_niconico_comments_video_types_title">Бейне түрлері</string>

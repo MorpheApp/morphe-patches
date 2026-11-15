@@ -25,6 +25,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -174,6 +175,18 @@ val feedCardLayoutPatch = patch(
                     )
                 }
             }
+        }
+
+        // Some lists, such as the Home feed of the accounts of a newer A/B test, add a gap between the rows
+        // of a section, and the cards have their own spacing.
+        if (is_21_14_or_greater) {
+            SectionLayoutDescriptorConstructorFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { p1, p2 }, $EXTENSION_CLASS->getSectionRowGap(IF)F
+                    move-result p2
+                """
+            )
         }
 
         mutableClassDefBy(RECYCLER_VIEW_CLASS).apply {

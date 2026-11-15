@@ -522,6 +522,10 @@ När en video med Ask-knappen har öppnats en gång fungerar funktionen med alla
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Visa antal gillningar för miniatyrbilder i flödet</string>
   <string name="morphe_ryd_feed_like_ratio_title">Visa procentandel gillningar för miniatyrbilder i flödet</string>
+  <string name="morphe_ryd_feed_counts_position_title">Position för gillningar på miniatyrbilder i flödet</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Bredvid antal visningar</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Mitten till höger</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Uppe till vänster</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Sök i kommentarer</string>
   <string name="morphe_search_comments_summary">Tryck på sökknappen i kommentarerna för att endast visa de laddade kommentarerna som innehåller alla sökord. Sätt ord inom citattecken för att söka efter en fras</string>
@@ -1038,6 +1042,8 @@ För att komma åt Inställningar, aktivera knappen Inställningar via Allmänt 
   <string name="morphe_navigation_bar_glass_summary">Visar navigeringsfältet som en flytande, rundad och genomskinlig kapsel. Inte tillgänglig med stilen Ogenomskinlig för navigeringsfältet</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Glasets opacitet</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Justera genomskinlighetsnivån för glasnavigeringsfältet (0 är genomskinligt, 100 är ogenomskinligt)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Rund glashaltig navigeringsfält</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Ger det glashaltiga navigeringsfältet rundade ändar, istället för hörn som den glashaltiga miniplayern</string>
   <string name="morphe_navigation_bar_glass_size_title">Storlek på glasnavigeringsfältet</string>
   <string name="morphe_navigation_bar_glass_size_summary">Justera höjden, bredden och knappavståndet för glasnavigeringsfältet, med en förhandsvisning. Knappar som inte får plats inom skärmens bredd döljs</string>
   <string name="morphe_navigation_bar_glass_size_height">Höjd</string>
@@ -1378,6 +1384,8 @@ Billayout
   <string name="morphe_miniplayer_swipe_up_expand_summary">Genom att svepa minispelaren uppåt expanderas spelaren, istället för att minispelaren flyttas till skärmens överkant</string>
   <string name="morphe_miniplayer_docked_title">Fastlåst minispelare</string>
   <string name="morphe_miniplayer_docked_summary">Fäster minispelaren vid navigeringsfältet och skärmens sidor, istället för att den svävar ovanför dem</string>
+  <string name="morphe_miniplayer_glass_title">Glashaltig miniplayer</string>
+  <string name="morphe_miniplayer_glass_summary">Visar miniplayern som glashaltig och genomskinlig med rundade hörn, likt det glashaltiga navigeringsfältet. Kräver det glashaltiga navigeringsfältet</string>
   <string name="morphe_miniplayer_type_entry_0">Inaktiverad</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1814,6 +1822,8 @@ Automatisk inspelning är valfri. Den stoppas i inkognito-läge eller när konto
   <string name="morphe_niconico_comments_screen_title">Niconico-kommentarer</string>
   <string name="morphe_niconico_comments_screen_summary">Visa livechatt och chattuppspelning som kommentarer som rullar över videon</string>
   <string name="morphe_niconico_comments_summary">Visar en overlay-knapp i videospelaren. Tryck för att visa eller dölja kommentarer, tryck och håll kvar för snabbinställningar</string>
+  <string name="morphe_niconico_comments_pip_title">Visa i bild-i-bild</string>
+  <string name="morphe_niconico_comments_pip_summary">Kommentarerna skalas ner för att passa fönstret</string>
   <string name="morphe_niconico_comments_appearance_title">Utseende</string>
   <string name="morphe_niconico_comments_portrait_category_title">Stående</string>
   <string name="morphe_niconico_comments_video_types_title">Videotyper</string>

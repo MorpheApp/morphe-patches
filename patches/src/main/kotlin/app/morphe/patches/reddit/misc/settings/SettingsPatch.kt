@@ -53,13 +53,16 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
-import java.util.logging.Logger
 
-private const val EXTENSION_CLASS =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
 
-private const val SETTINGS_STYLE_EXTENSION_CLASS =
+private const val EXTENSION_SETTING_ROW_INTERFACE =
+    "Lapp/morphe/extension/reddit/settings/RedditActivityHook\$ComposeSettingRow;"
+
+internal const val SETTINGS_STYLE_EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/preference/RedditSettingsStyle;"
 
 private const val APP_DOWNGRADE_EXTENSION_CLASS =
@@ -69,8 +72,6 @@ private const val APP_DOWNGRADE_EXTENSION_CLASS =
  * Order of the Morphe row in the first settings section. The rows of the app start at 0.
  */
 private const val MORPHE_SETTING_ROW_ORDER = -1000
-
-private val logger = Logger.getLogger("RedditSettingsPatch")
 
 /**
  * Packed size of a 20dp icon, the size of the Reddit settings icons (width shl 32 or height).
@@ -164,17 +165,15 @@ val settingsPatch = patch(
 
         if (is_2026_25_0_or_greater) {
             // The app settings use Compose since 2026.25.0. Use the same style for the Morphe settings.
-            mutableClassDefBy(SETTINGS_STYLE_EXTENSION_CLASS).methods
-                .single { it.name == "isModernStyle" }
-                .returnEarly(true)
+            IsModernStyleFingerprint.method.returnEarly(true)
         }
 
-        if (is_2026_25_0_or_greater && !hookComposeSettingRow()) {
-            if (is_2026_30_0_or_greater) {
-                logger.warning(
-                    "Could not find the Compose settings row. Using the privacy policy link instead."
-                )
-            }
+        if (is_2026_30_0_or_greater) {
+            addComposeSettingRow()
+        } else if (is_2026_25_0_or_greater) {
+            // The privacy policy link of the settings opens the Morphe settings,
+            // so the Morphe settings show the privacy policy link instead.
+            IsPrivacyPolicyReplacedFingerprint.method.returnEarly(true)
 
             // Change menu item title to Morphe.
             // This also renames the privacy policy link of the community drawer.
@@ -330,23 +329,80 @@ val settingsPatch = patch(
 }
 
 /**
- * Turns the "Privacy policy" row of the Compose settings into the Morphe settings row,
+ * Adds a copy of the "Privacy policy" row of the Compose settings as the Morphe settings row,
  * with the Morphe title, icon and click action, at the top of the first section.
  *
- * Unlike relabeling the privacy policy string and intercepting its URL, this only changes the
- * settings row, so other privacy policy links of the app keep working.
+ * Unlike relabeling the privacy policy string and intercepting its URL, this keeps the
+ * privacy policy row and the other privacy policy links of the app working.
  *
  * 2026.30.0+
- *
- * @return If the row was found and hooked.
  */
-private fun hookComposeSettingRow(): Boolean {
-    val constructorMatch = PrivacyPolicySettingRowConstructorFingerprint.matchOrNull() ?: return false
-    val contentMatch = PrivacyPolicySettingRowContentFingerprint.matchOrNull() ?: return false
-    val keyField = constructorMatch.instructionMatches[1].fieldReference
+private fun addComposeSettingRow() {
+    val keyField = PrivacyPolicySettingRowConstructorFingerprint.instructionMatches[1].fieldReference
+
+    // Interface to read the key of a row and to copy it with another key.
+    PrivacyPolicySettingRowConstructorFingerprint.classDef.apply {
+        interfaces.add("Ljava/lang/Cloneable;")
+        interfaces.add(EXTENSION_SETTING_ROW_INTERFACE)
+
+        methods.add(
+            ImmutableMethod(
+                type,
+                "patch_getKey",
+                listOf(),
+                "Ljava/lang/String;",
+                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                null,
+                null,
+                MutableMethodImplementation(2)
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        iget-object v0, p0, $keyField
+                        return-object v0
+                    """
+                )
+            }
+        )
+
+        // A shallow copy keeps the section, the order and the content of the original row.
+        methods.add(
+            ImmutableMethod(
+                type,
+                "patch_copyWithKey",
+                listOf(ImmutableMethodParameter("Ljava/lang/String;", null, "key")),
+                "Ljava/lang/Object;",
+                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                null,
+                null,
+                MutableMethodImplementation(3)
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        invoke-super { p0 }, $superclass->clone()Ljava/lang/Object;
+                        move-result-object v0
+                        check-cast v0, $type
+                        iput-object p1, v0, $keyField
+                        return-object v0
+                    """
+                )
+            }
+        )
+    }
+
+    // Add the Morphe row to the rows of the app.
+    UserSettingsRegistryConstructorFingerprint.method.addInstructions(
+        0,
+        """
+            invoke-static { p1 }, $EXTENSION_CLASS->addMorpheSettingRow(Ljava/util/Set;)Ljava/util/Set;
+            move-result-object p1
+        """
+    )
 
     // Title, click action and icon.
-    contentMatch.let {
+    PrivacyPolicySettingRowContentFingerprint.let {
         val callIndex = it.instructionMatches.last().index
         it.method.apply {
             val call = getInstruction<RegisterRangeInstruction>(callIndex)
@@ -354,55 +410,47 @@ private fun hookComposeSettingRow(): Boolean {
             val onClickRegister = call.startRegister + 1
             val iconRegister = call.startRegister + 5
 
-            val iconInstructions = if (implementSettingIconComposable()) {
-                """
-                    invoke-static { }, $EXTENSION_CLASS->getSettingIconComposable()Lkotlin/jvm/functions/Function2;
-                    move-result-object v$iconRegister
-                """
-            } else {
-                logger.warning(
-                    "Could not find the Reddit icon composable. The settings row keeps the original icon."
-                )
-                ""
-            }
+            implementSettingIconComposable()
 
-            addInstructions(
+            // The class is shared by several rows. Only change the Morphe row.
+            val free = findFreeRegister(callIndex, titleRegister, onClickRegister, iconRegister)
+            addInstructionsWithLabels(
                 callIndex,
                 """
+                    invoke-virtual/range { p0 .. p0 }, $definingClass->patch_getKey()Ljava/lang/String;
+                    move-result-object v$free
+                    invoke-static/range { v$free .. v$free }, $EXTENSION_CLASS->isMorpheSettingRow(Ljava/lang/String;)Z
+                    move-result v$free
+                    if-eqz v$free, :original
                     invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
                     move-result-object v$titleRegister
                     invoke-static/range { v$onClickRegister .. v$onClickRegister }, $EXTENSION_CLASS->getSettingOnClick(Lkotlin/jvm/functions/Function0;)Lkotlin/jvm/functions/Function0;
                     move-result-object v$onClickRegister
-                    $iconInstructions
+                    invoke-static { }, $EXTENSION_CLASS->getSettingIconComposable()Lkotlin/jvm/functions/Function2;
+                    move-result-object v$iconRegister
+                    :original
+                    nop
                 """
             )
         }
     }
 
     // Position. Rows are sorted by the order of the section, then by the order of the row.
-    constructorMatch.classDef.methods.let { methods ->
-        fun MutableMethod.isGetter(returnType: String) = this.returnType == returnType &&
-                parameterTypes.isEmpty() && !AccessFlags.STATIC.isSet(accessFlags)
+    SettingRowSectionFingerprint.method.overrideForMorpheRow(
+        keyField,
+        """
+            sget-object v0, $USER_SETTINGS_SECTION_CLASS->General:$USER_SETTINGS_SECTION_CLASS
+            return-object v0
+        """
+    )
 
-        methods.singleOrNull { it.isGetter(USER_SETTINGS_SECTION_CLASS) }?.overrideForMorpheRow(
-            keyField,
-            """
-                sget-object v0, $USER_SETTINGS_SECTION_CLASS->General:$USER_SETTINGS_SECTION_CLASS
-                return-object v0
-            """
-        ) ?: logger.warning("Could not find the section of the settings row")
-
-        (methods.singleOrNull { it.name == "getOrder" && it.isGetter("I") }
-            ?: methods.singleOrNull { it.name != "hashCode" && it.isGetter("I") })?.overrideForMorpheRow(
-            keyField,
-            """
-                const/16 v0, $MORPHE_SETTING_ROW_ORDER
-                return v0
-            """
-        ) ?: logger.warning("Could not find the order of the settings row")
-    }
-
-    return true
+    SettingRowOrderFingerprint.method.overrideForMorpheRow(
+        keyField,
+        """
+            const/16 v0, $MORPHE_SETTING_ROW_ORDER
+            return v0
+        """
+    )
 }
 
 /**
@@ -435,18 +483,10 @@ private fun MutableMethod.overrideForMorpheRow(
 /**
  * Implements the extension placeholder that draws the Morphe icon in the settings row,
  * with the icon composable of the Reddit icon set. The icon set loads a vector drawable resource.
- *
- * @return If the icon composable of the app was found.
  */
-private fun implementSettingIconComposable(): Boolean {
-    val iconDataClass = IconDataToStringFingerprint.originalClassDefOrNull ?: return false
-    val iconDataType = iconDataClass.type
-    val hasExpectedConstructor = iconDataClass.methods.any {
-        MethodUtil.isConstructor(it) && it.parameterTypes.map(CharSequence::toString) == listOf("J", "I", "Z")
-    }
-    if (!hasExpectedConstructor) return false
-
-    val iconComposable = IconComposableFingerprint(iconDataType).originalMethodOrNull ?: return false
+private fun implementSettingIconComposable() {
+    val iconDataType = IconDataToStringFingerprint.originalClassDef.type
+    val iconComposable = IconComposableFingerprint(iconDataType).originalMethod
     val composerType = iconComposable.parameterTypes[5]
 
     mutableClassDefBy(EXTENSION_CLASS).apply {
@@ -481,6 +521,4 @@ private fun implementSettingIconComposable(): Boolean {
             placeholder.accessFlags
         )
     }
-
-    return true
 }

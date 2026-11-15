@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">عرض عدد الإعجابات في الصورة المصغرة بالخلاصة</string>
   <string name="morphe_ryd_feed_like_ratio_title">عرض نسبة الإعجابات في الصورة المصغرة بالخلاصة</string>
+  <string name="morphe_ryd_feed_counts_position_title">موضع الإعجاب في الصورة المصغرة بالخلاصة</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">بجانب عدد المشاهدات</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">الوسط جهة اليمين</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">أعلى اليسار</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">البحث في التعليقات</string>
   <string name="morphe_search_comments_summary">انقر على زر البحث في التعليقات لعرض التعليقات المحمَّلة فقط التي تحتوي على كل الكلمات التي تم البحث عنها. ضع الكلمات بين علامات الاقتباس للبحث عن عبارة محددة</string>
@@ -1042,6 +1046,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_glass_summary">يظهر شريط التنقل ككبسولة عائمة ومستديرة وشفافة. غير متوفر مع نمط شريط التنقل المعتم</string>
   <string name="morphe_navigation_bar_glass_opacity_title">شفافية الزجاج</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ضبط مستوى الشفافية لشريط التنقل الزجاجي (0 شفاف، 100 معتم)</string>
+  <string name="morphe_navigation_bar_glass_round_title">شريط تنقل زجاجي دائري</string>
+  <string name="morphe_navigation_bar_glass_round_summary">يجعل أطراف شريط التنقل الزجاجي دائرية، بدلاً من الزوايا كما في المشغل المصغر الزجاجي</string>
   <string name="morphe_navigation_bar_glass_size_title">حجم شريط التنقل الزجاجي</string>
   <string name="morphe_navigation_bar_glass_size_summary">ضبط ارتفاع, عرض وتباعد أزرار شريط التنقل الزجاجي، مع المعاينة. يتم إخفاء الأزرار التي لا تتناسب مع عرض الشاشة</string>
   <string name="morphe_navigation_bar_glass_size_height">الارتفاع</string>
@@ -1214,7 +1220,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_disable_player_popup_panels_summary">يعطل فتح اللوحات الخاصة بقائمة التشغيل والمحادثة المباشرة تلقائيًا</string>
   <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
   <string name="morphe_fullscreen_playlist_panel_title">عرض لوحة قائمة التشغيل في وضع ملء الشاشة</string>
-  <string name="morphe_fullscreen_playlist_panel_summary_on">تفتح لوحة قائمة التشغيل فوق مشغل ملء الشاشة</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">تفتح لوحة قائمة التشغيل فوق المشغل بملء الشاشة</string>
   <string name="morphe_fullscreen_playlist_panel_summary_off">تخرج لوحة قائمة التشغيل من وضع ملء الشاشة على الأجهزة اللوحية</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">تعطيل تشغيل قوائم التشغيل تلقائيًا</string>
@@ -1228,7 +1234,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_autoplay_mode_entry_3">متوقف</string>
   <string name="morphe_autoplay_mix_stop_after_title">طول المزيج</string>
   <string name="morphe_autoplay_mix_stop_after_summary">في الوضع التلقائي، يتوقف المزيج بعد هذا العدد من الفيديوهات. 0 = لا يوجد حد</string>
-  <string name="morphe_autoplay_mix_length">مزيج: %s من مقاطع الفيديو</string>
+  <string name="morphe_autoplay_mix_length">مزيج: %s من الفيديوهات</string>
   <string name="morphe_autoplay_mix_no_limit">مزيج: بلا حدود</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">الرسالة المنبثقة \'متابعة المشاهدة؟\'</string>
@@ -1382,6 +1388,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_swipe_up_expand_summary">يؤدي سحب المشغل المصغر للأعلى إلى توسيع المشغل، بدلًا من نقل المشغل المصغر إلى أعلى الشاشة</string>
   <string name="morphe_miniplayer_docked_title">المشغل المصغر المثبت</string>
   <string name="morphe_miniplayer_docked_summary">يربط المشغل المصغر بشريط التنقل وجوانب الشاشة، بدلًا من جعله يطفو فوقهما</string>
+  <string name="morphe_miniplayer_glass_title">مشغل مصغر زجاجي</string>
+  <string name="morphe_miniplayer_glass_summary">يظهر المشغل المصغر كزجاج شبه شفاف بزوايا مستديرة، مثل شريط التنقل الزجاجي. يتطلب تفعيل شريط التنقل الزجاجي</string>
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
   <string name="morphe_miniplayer_type_entry_1">الافتراضي</string>
   <string name="morphe_miniplayer_type_entry_2">بسيط</string>
@@ -1546,10 +1554,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">عرض زر سرعة التشغيل</string>
   <string name="morphe_playback_speed_dialog_button_summary">اضغط مع الاستمرار لإعادة السرعة إلى الوضع الافتراضي</string>
-  <string name="morphe_playback_speed_button_cycle_title">اضغط على زر سرعة التشغيل للتنقل بين السرعات</string>
-  <string name="morphe_playback_speed_button_cycle_summary">ينقلك الضغط إلى السرعة التالية في القائمة. يفتح الضغط مع الاستمرار قائمة السرعات</string>
+  <string name="morphe_playback_speed_button_cycle_title">انقر على زر سرعة التشغيل للتنقل بين السرعات</string>
+  <string name="morphe_playback_speed_button_cycle_summary">ينقلك النقر إلى السرعة التالية في القائمة. يفتح الضغط مع الاستمرار قائمة السرعات</string>
   <string name="morphe_playback_speed_button_cycle_speeds_title">سرعات زر سرعة التشغيل</string>
-  <string name="morphe_playback_speed_button_cycle_speeds_summary">السرعات التي يتم التنقل بينها عند الضغط، واحدة في كل سطر. بعد السرعة الأخيرة، يعود الضغط إلى السرعة الأولى</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">السرعات التي يتم التنقل بينها عند النقر، واحدة في كل سطر. بعد السرعة الأخيرة، يعود النقر إلى السرعة الأولى</string>
   <string name="morphe_playback_speed_button_cycle_speeds_invalid">قائمة دورة السرعة غير صالحة، تم إعادة الضبط إلى الافتراضي</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">عرض زر الجودة</string>
@@ -1818,6 +1826,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">تعليقات Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">عرض المحادثة المباشرة وإعادة تشغيل المحادثة كتعليقات تمر عبر الفيديو</string>
   <string name="morphe_niconico_comments_summary">يعرض زر متراكب في مشغل الفيديو. انقر لإظهار أو إخفاء التعليقات، واضغط مع الاستمرار للوصول إلى الإعدادات السريعة</string>
+  <string name="morphe_niconico_comments_pip_title">عرض التعليقات في وضع صورة داخل صورة</string>
+  <string name="morphe_niconico_comments_pip_summary">يتم تصغير حجم التعليقات لتناسب النافذة</string>
   <string name="morphe_niconico_comments_appearance_title">المظهر</string>
   <string name="morphe_niconico_comments_portrait_category_title">بالطول</string>
   <string name="morphe_niconico_comments_video_types_title">أنواع الفيديو</string>

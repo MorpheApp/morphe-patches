@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Показывать количество лайков под миниатюрой в ленте</string>
   <string name="morphe_ryd_feed_like_ratio_title">Показывать процент лайков под миниатюрой в ленте</string>
+  <string name="morphe_ryd_feed_counts_position_title">Позиция лайка на миниатюре ленты</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Рядом с количеством просмотров</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Справа посередине</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Слева вверху</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Поиск комментариев</string>
   <string name="morphe_search_comments_summary">Нажмите кнопку поиска в комментариях, чтобы отобразить только те загруженные комментарии, которые содержат все искомые слова. Чтобы найти фразу, заключите слова в кавычки</string>
@@ -1038,6 +1042,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Отображает панель навигации в виде плавающей скругленной полупрозрачной капсулы. Недоступно при использовании непрозрачного стиля панели навигации</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Непрозрачность стекла</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Настройте уровень прозрачности стеклянной панели навигации (0 — прозрачная, 100 — непрозрачная)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Стеклянная панель навигации с закруглением</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Делает края стеклянной панели навигации круглыми, в отличие от углов стеклянного миниплеера</string>
   <string name="morphe_navigation_bar_glass_size_title">Размер стеклянной панели навигации</string>
   <string name="morphe_navigation_bar_glass_size_summary">Настройка высоты, ширины и интервала между кнопками стеклянной панели навигации с предварительным просмотром. Кнопки, которые не помещаются по ширине экрана, скрываются</string>
   <string name="morphe_navigation_bar_glass_size_height">Высота</string>
@@ -1224,6 +1230,7 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mode_entry_3">Выключено</string>
   <string name="morphe_autoplay_mix_stop_after_title">Длина микса</string>
   <string name="morphe_autoplay_mix_stop_after_summary">В автоматическом режиме Микс останавливается после такого количества видео. 0 = без ограничений</string>
+  <string name="morphe_autoplay_mix_length">Смешивание: %s видео</string>
   <string name="morphe_autoplay_mix_no_limit">Микс: без ограничений</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Запрос «Продолжить просмотр»</string>
@@ -1377,6 +1384,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">Свайп вверх по миниплееру разворачивает плеер вместо того, чтобы переместить миниплеер в верхнюю часть экрана</string>
   <string name="morphe_miniplayer_docked_title">Прикрепленный миниплеер</string>
   <string name="morphe_miniplayer_docked_summary">Прикрепляет миниплеер к панели навигации и краям экрана вместо того, чтобы он парил над ними</string>
+  <string name="morphe_miniplayer_glass_title">Стеклянный миниплеер</string>
+  <string name="morphe_miniplayer_glass_summary">Отображает миниплеер в виде полупрозрачного стекла с закругленными углами, как стеклянную панель навигации. Требуется стеклянная панель навигации</string>
   <string name="morphe_miniplayer_type_entry_0">Отключено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартный</string>
   <string name="morphe_miniplayer_type_entry_2">Минимальный</string>
@@ -1813,6 +1822,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Комментарии Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Показывать живой чат и повтор чата в виде комментариев, проплывающих по видео</string>
   <string name="morphe_niconico_comments_summary">Показывает кнопку поверх видеоплеера. Нажмите, чтобы показать или скрыть комментарии, или зажмите для быстрого доступа к настройкам</string>
+  <string name="morphe_niconico_comments_pip_title">Показывать в режиме «картинка в картинке»</string>
+  <string name="morphe_niconico_comments_pip_summary">Комментарии масштабируются под размер окна</string>
   <string name="morphe_niconico_comments_appearance_title">Внешний вид</string>
   <string name="morphe_niconico_comments_portrait_category_title">Портрет</string>
   <string name="morphe_niconico_comments_video_types_title">Типы видео</string>

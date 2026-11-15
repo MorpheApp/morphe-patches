@@ -522,6 +522,10 @@ Après avoir ouvert une fois une vidéo avec le bouton 'Posez une question', la 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Afficher le nombre j\'aime sur les miniatures du flux</string>
   <string name="morphe_ryd_feed_like_ratio_title">Afficher le pourcentage de j\'aime sur les miniatures du flux</string>
+  <string name="morphe_ryd_feed_counts_position_title">Position des j\'aime sur la miniature du flux</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">À côté du nombre de vues</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Au milieu à droite</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">En haut à gauche</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Rechercher des commentaires</string>
   <string name="morphe_search_comments_summary">Appuyez sur le bouton de recherche dans les commentaires pour afficher uniquement les commentaires déjà chargés qui contiennent tous les mots recherchés. Placez les mots entre guillemets pour rechercher une expression exacte</string>
@@ -697,7 +701,7 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_play_all_button_type_entry_12">Diffusion en direct réservé aux membres uniquement</string>
   <string name="morphe_play_all_button_not_available_toast">Impossible de générer la playlist en raison d\'une incompatibilité d\'identifiant de chaîne</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
-  <string name="morphe_playlist_panel_button_title">Afficher le bouton \'Playlist\'</string>
+  <string name="morphe_playlist_panel_button_title">Afficher un bouton \'Playlist\'</string>
   <string name="morphe_playlist_panel_button_summary">Appuyez pour ouvrir le panneau de la playlist. Affiché uniquement lors de la lecture d\'une playlist</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Afficher un bouton \'Recharger la vidéo\'</string>
@@ -1038,6 +1042,8 @@ Pour accéder aux Paramètres, activez le bouton 'Paramètres' via 'Général' �
   <string name="morphe_navigation_bar_glass_summary">Affiche la barre de navigation sous la forme d\'une capsule flottante, arrondie et translucide. Non disponible avec le style de barre de navigation opaque</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacité du verre</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Ajustez le niveau de transparence de la barre de navigation en verre (0 est transparent, 100 est opaque)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Barre de navigation en verre arrondie</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Donne à la barre de navigation en verre des extrémités arrondies, au lieu de coins comme le mini-lecteur en verre</string>
   <string name="morphe_navigation_bar_glass_size_title">Taille de la barre de navigation en verre</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajustez la hauteur, la largeur et l\'espacement des boutons de la barre de navigation en verre, avec un aperçu. Les boutons qui ne tiennent pas dans la largeur de l\'écran sont masqués</string>
   <string name="morphe_navigation_bar_glass_size_height">Hauteur</string>
@@ -1211,20 +1217,20 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <string name="morphe_disable_player_popup_panels_summary">Empêche l\'ouverture automatique des panneaux de playlist et de chat en direct</string>
   <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
   <string name="morphe_fullscreen_playlist_panel_title">Afficher le panneau de la playlist en plein écran</string>
-  <string name="morphe_fullscreen_playlist_panel_summary_on">Le panneau de la playlist s\'ouvre sur le lecteur en plein écran</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Le panneau de la playlist s\'ouvre par-dessus le lecteur en plein écran</string>
   <string name="morphe_fullscreen_playlist_panel_summary_off">Le panneau de la playlist quitte le plein écran sur les tablettes</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Désactiver la lecture automatique de la playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Empêche les playlists de passer automatiquement à la vidéo suivante</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Contrôle de la lecture auto</string>
-  <string name="morphe_autoplay_control_summary">Ajoute un bouton de lecture et une règle pour la vidéo suivante. Les playlists et les files d\'attente continuent, un Mix s\'arrête après un certain nombre de vidéos, une vidéo suggérée ne s\'est jamais lancée. Appuyez sur le bouton pour le mode suivant, maintenez appuyé pour la liste</string>
+  <string name="morphe_autoplay_control_summary">Ajoute un bouton au lecteur et une règle pour la vidéo suivante. Les playlists et les files d\'attente continuent, un Mix s\'arrête après un certain nombre de vidéos, une vidéo suggérée ne se lance jamais. Appuyez sur le bouton pour passer au mode suivant, ou appuyez longuement pour la liste</string>
   <string name="morphe_autoplay_mode_title">Mode de lecture auto</string>
   <string name="morphe_autoplay_mode_entry_1">Auto</string>
   <string name="morphe_autoplay_mode_entry_2">Unique</string>
   <string name="morphe_autoplay_mode_entry_3">Désactivée</string>
   <string name="morphe_autoplay_mix_stop_after_title">Durée du Mix</string>
-  <string name="morphe_autoplay_mix_stop_after_summary">En mode Automatique, un Mix s\'arrête après ce nombre de vidéos. 0 = aucune limite</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">En mode Auto, un Mix s\'arrête après ce nombre de vidéos. 0 = aucune limite</string>
   <string name="morphe_autoplay_mix_length">Mix : %s vidéos</string>
   <string name="morphe_autoplay_mix_no_limit">Mix : aucune limite</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
@@ -1379,6 +1385,8 @@ Mise en page pour automobile
   <string name="morphe_miniplayer_swipe_up_expand_summary">Le balayage du mini-lecteur vers le haut agrandit le lecteur, au lieu de déplacer le mini-lecteur vers le haut de l\'écran</string>
   <string name="morphe_miniplayer_docked_title">Mini-lecteur ancré</string>
   <string name="morphe_miniplayer_docked_summary">Ancre le mini-lecteur à la barre de navigation et aux côtés de l\'écran, au lieu de le laisser flotter au-dessus de ceux-ci</string>
+  <string name="morphe_miniplayer_glass_title">Mini-lecteur en verre</string>
+  <string name="morphe_miniplayer_glass_summary">Affiche le mini-lecteur comme un verre translucide avec des coins arrondis, comme la barre de navigation en verre. Nécessite la barre de navigation en verre</string>
   <string name="morphe_miniplayer_type_entry_0">Désactivé</string>
   <string name="morphe_miniplayer_type_entry_1">Par défaut</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaliste</string>
@@ -1543,11 +1551,11 @@ Les vidéos sont recherchées à l'aide d'un court préfixe de l'identifiant vid
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Afficher un bouton de \'Vitesse de lecture\'</string>
   <string name="morphe_playback_speed_dialog_button_summary">Appuyez longuement pour réinitialiser la vitesse par défaut</string>
-  <string name="morphe_playback_speed_button_cycle_title">Appuyez sur le bouton Vitesse de lecture pour faire défiler les vitesses</string>
-  <string name="morphe_playback_speed_button_cycle_summary">Un appui passe à la vitesse suivante de la liste. Un appui prolongé ouvre le menu des vitesses</string>
-  <string name="morphe_playback_speed_button_cycle_speeds_title">Vitesses du bouton Vitesse de lecture</string>
+  <string name="morphe_playback_speed_button_cycle_title">Appuyez sur le bouton \'Vitesse de lecture\' pour faire défiler les vitesses</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Appuyer passe à la vitesse suivante de la liste. Appuyer longuement ouvre le menu de vitesse</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Vitesses du bouton de vitesse de lecture</string>
   <string name="morphe_playback_speed_button_cycle_speeds_summary">Vitesses défilées par appui, une par ligne. Après la dernière vitesse, un appui revient à la première</string>
-  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Liste de cycle de vitesse invalide, réinitialisation aux valeurs par défaut</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Liste de vitesses invalide, réinitialisation par défaut</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Afficher un bouton \'Qualité\'</string>
   <string name="morphe_video_quality_dialog_button_summary">Appuyez longuement pour réinitialiser la qualité par défaut</string>
@@ -1815,6 +1823,8 @@ L'enregistrement automatique est facultatif. Il s'arrête en navigation privée 
   <string name="morphe_niconico_comments_screen_title">Commentaires Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Afficher le chat en direct et le replay du chat sous forme de commentaires qui défilent sur la vidéo</string>
   <string name="morphe_niconico_comments_summary">Affiche un bouton en superposition dans le lecteur vidéo. Appuyez pour afficher ou masquer les commentaires, ou maintenez-le enfoncé pour accéder rapidement aux paramètres.</string>
+  <string name="morphe_niconico_comments_pip_title">Afficher en mode image dans l\'image</string>
+  <string name="morphe_niconico_comments_pip_summary">Les commentaires sont réduits pour s\'adapter à la fenêtre</string>
   <string name="morphe_niconico_comments_appearance_title">Apparence</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portrait</string>
   <string name="morphe_niconico_comments_video_types_title">Types de vidéo</string>

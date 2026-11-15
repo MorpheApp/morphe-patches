@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • ການຕັ້ງຄ່າ Morphe ຂອງທ່ານຈະບໍ່ນຳເຂົ້າ/ສົ່ງອອກ ການຢືນຢັນຕົວຕົນ Android VR
 • ຖ້າແອັບນີ້ບໍ່ໄດ້ຖືກນຳໃຊ້ເປັນເວລາ 6 ເດືອນ Google ຈະລຶບການຢືນຢັນຕົວຕົນນີ້ອອກ
 • ທ່ານຈະຕ້ອງເຂົ້າສູ່ລະບົບຄືນໃໝ່ ຖ້າທ່ານປ່ຽນລະຫັດຜ່ານ Google ຫຼື ຍົກເລີກການລົງທະບຽນອຸປະກອນນີ້ຈາກການຕັ້ງຄ່າ Google ຂອງທ່ານ"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ລົງຊື່ເຂົ້າໃຊ້ເວັບໄຊທ໌ຜ່ານມືຖື</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ທາງເລືອກ: ລົງຊື່ເຂົ້າໃຊ້ເວັບໄຊທ໌ YouTube ເພື່ອຫຼິ້ນວິດີໂອດ້ວຍບັນຊີຂອງທ່ານ. ແຕະບ່ອນນີ້ເພື່ອສືບຕໍ່</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ປັດຈຸບັນໄດ້ລົງຊື່ເຂົ້າໃຊ້ເວັບໄຊທ໌ຜ່ານມືຖືແລ້ວ</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ເພື່ອໃຊ້ງານຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'ລູກຄ້າເລີ່ມຕົ້ນ\' ເປັນ Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ເຂົ້າສູ່ລະບົບໃນ Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web ຫຼິ້ນວິດີໂອໂດຍບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ, ຫຼື ເຂົ້າສູ່ລະບົບໃນເວັບໄຊທ໌ YouTube
+
+• ເມື່ອເຂົ້າສູ່ລະບົບ, ວິດີໂອທີ່ຕ້ອງມີບັນຊີຈຶ່ງຈະຫຼິ້ນໄດ້, ເຊັ່ນ ວິດີໂອທີ່ຈຳກັດອາຍຸ
+• ໜ້າເຂົ້າສູ່ລະບົບ Google ຈະເປີດໃນແອັບນີ້
+• ການເຂົ້າສູ່ລະບົບແມ່ນໃຊ້ເພື່ອດຶງຂໍ້ມູນວິດີໂອທີ່ທ່ານຫຼິ້ນເທົ່ານັ້ນ
+• ການເຂົ້າສູ່ລະບົບຈະຖືກບັນທຶກໄວ້ໃນອຸປະກອນນີ້ເທົ່ານັ້ນ
+
+ເພື່ອເຂົ້າສູ່ລະບົບ, ໃຫ້ກົດດຳເນີນການຕໍ່ລຸ່ມນີ້"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ບັນທຶກການເຂົ້າສູ່ລະບົບແລ້ວ
+
+• ການຕັ້ງຄ່າ Morphe ຂອງທ່ານຈະບໍ່ນຳເຂົ້າ/ສົ່ງອອກ ການເຂົ້າສູ່ລະບົບຂອງ Mobile Web
+• ຖ້າ Google ຍົກເລີກການເຂົ້າສູ່ລະບົບ, ວິດີໂອຈະຖືກຫຼິ້ນໂດຍບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ ຈົນກວ່າທ່ານຈະເຂົ້າສູ່ລະບົບອີກຄັ້ງ
+• ການອອກຈາກລະບົບ ຈະເຮັດໃຫ້ອຸປະກອນນີ້ອອກຈາກລະບົບຂອງເວັບໄຊທ໌ YouTube ນຳດ້ວຍ"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ການເຂົ້າສູ່ລະບົບ Mobile Web ໝົດອາຍຸແລ້ວ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ Mobile Web ອີກຄັ້ງ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ອອກຈາກລະບົບ Mobile Web ແລ້ວ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">ບໍ່ສາມາດນຳໃຊ້ Android System WebView ໄດ້. ກະລຸນາຕິດຕັ້ງ ຫຼື ເປີດໃຊ້ງານເພື່ອເຂົ້າສູ່ລະບົບ</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (API ໝົດເວລາ)</string>
   <string name="morphe_oauth2_connection_failure_status_400">ການເຂົ້າສູ່ລະບົບ Android VR ໝົດອາຍຸ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ VR ອີກຄັ້ງ</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (ສະຖານະ %s)</string>

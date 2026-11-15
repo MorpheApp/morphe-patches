@@ -523,6 +523,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">پیشاندانی ژمارەی لایکی وێنەی پێشەکی فید</string>
   <string name="morphe_ryd_feed_like_ratio_title">ڕێژەی لایکی وێنەی پێشەکی فید پیشان بدە</string>
+  <string name="morphe_ryd_feed_counts_position_title">شوێنی لایکی وێنەی پێشوەختەی فید</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">لای ژمارەی بینەران</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">ناوەند لای ڕاست</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">سەرەوە لای چەپ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">گەڕان لە کۆمێنتەکان</string>
   <string name="morphe_search_comments_summary">کلیک بکە لەسەر دوگمەی گەڕان لە کۆمێنتەکاندا بۆ ئەوەی تەنها ئەو کۆمێنتانە پیشان بدات کە هەموو وشەکانی گەڕانەکەیان تێدایە. وشەکان لە نێو \"...\" دابنێ بۆ گەڕان بەدوای دەستەواژەیەکدا</string>
@@ -1039,6 +1043,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">شریتی گەشتکردن وەک کەپسوڵێکی شناوری، گرد و نیم-ڕوون نیشان دەدات. لەگەڵ شێوازی ناڕوونی شریتی گەشتکردندا بەردەست نییە</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ڕوونی شووشەیی</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ئاستی شەفافیەتی شریتی گەشتکردنی شووشەیی ڕێکبخە (0 شەفافە، 100 ناڕوونە)</string>
+  <string name="morphe_navigation_bar_glass_round_title">شریتی گەشتکردنی شووشەیی بازنەیی</string>
+  <string name="morphe_navigation_bar_glass_round_summary">کۆتاییەکانی شریتی گەشتکردنی شووشەیی دەکات بە بازنەیی، لەجیاتی گۆشە وەک مینی پلەیەری شووشەیی</string>
   <string name="morphe_navigation_bar_glass_size_title">قەبارەی شریتی گەشتکردنی شووشەیی</string>
   <string name="morphe_navigation_bar_glass_size_summary">بە پێشوەکشانێک، بەرزی، پانی و بۆشایی دوگمەکانی شریتی گەشتکردنی شووشەیی ڕێکبخە. ئەو دوگمانەی لە پانی شاشەکەدا جێگەیان نابێت دەشاردرێنەوە</string>
   <string name="morphe_navigation_bar_glass_size_height">بەرزی</string>
@@ -1379,6 +1385,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">ڕاکێشانی مینی پلەیەرەکە بۆ سەرەوە پلەیەرەکە فراوان دەکات، لەجیاتی ئەوەی مینی پلەیەرەکە ببات بۆ سەری شاشەکە</string>
   <string name="morphe_miniplayer_docked_title">مینی پلەیەری جێگیر</string>
   <string name="morphe_miniplayer_docked_summary">مینی پلەیەرەکە دەبەستێتەوە بە شریتی گەشتکردن و لایەکانی شاشەکە، لەجیاتی ئەوەی لەسەریان سەوار بێت</string>
+  <string name="morphe_miniplayer_glass_title">مینی پلەیەری شووشەیی</string>
+  <string name="morphe_miniplayer_glass_summary">مینی پلەیەرەکە وەک شووشەیەکی ڕوون و گۆشە بازنەییدار پیشان دەدات، وەک شریتی گەشتکردنی شووشەیی. پێویستی بە شریتی گەشتکردنی شووشەیی هەیە</string>
   <string name="morphe_miniplayer_type_entry_0">ناچالاک</string>
   <string name="morphe_miniplayer_type_entry_1">بنەڕەتی</string>
   <string name="morphe_miniplayer_type_entry_2">کەم</string>
@@ -1815,6 +1823,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">کۆمێنتەکانی Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">چاتی ڕاستەوخۆ و دووبارە لێدانی چات وەک کۆمێنت پیشان بدە کە لەسەر ڤیدیۆکە دەجوڵێن</string>
   <string name="morphe_niconico_comments_summary">دوگمەیەکی سەرپۆش لەسەر لێدەرە ڤیدیۆییەکە پیشان دەدات. بۆ پیشاندان یان شاردنەوەی کۆمێنتەکان کلیک بکە، بۆ ڕێکخستنی خێرا کلیک بکە و بیگرە</string>
+  <string name="morphe_niconico_comments_pip_title">نیشان بدە لە وێنە-لە-ناو-وێنە</string>
+  <string name="morphe_niconico_comments_pip_summary">کۆمێنتەکان بچووک دەکرێنەوە بۆ ئەوەی لەگەڵ پەنجەرەکە بگونجێن</string>
   <string name="morphe_niconico_comments_appearance_title">دەرکەوتن</string>
   <string name="morphe_niconico_comments_portrait_category_title">ستوونی</string>
   <string name="morphe_niconico_comments_video_types_title">جۆرەکانی ڤیدیۆ</string>

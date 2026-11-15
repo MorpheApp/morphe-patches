@@ -167,6 +167,28 @@ Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
 • Morphe sozlamalaringiz Android VR kimlik tasdiqlanishini import yoki eksport qilmaydi
 • Agar ushbu ilovadan 6 oy davomida foydalanilmasa, Google ushbu kimlik tasdiqlanishini olib tashlaydi
 • Google parolingizni o'zgartirsangiz yoki ushbu qurilmani Google sozlamalaridan olib tashlasangiz, qayta kirishingiz kerak"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobil veb-versiyada tizimga kirish</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Ixtiyoriy: videolarni o\"z hisobingiz orqali ko\"rish uchun YouTube veb-saytiga kiring. Davom etish uchun bu yerni bosing</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hozirda Mobil veb-versiyada tizimga kirilgan</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ushbu funksiyadan foydalanish uchun, \'Standart mijoz\'ni Mobile Web ga o\'zgartiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-ga kiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web videolarni tizimga kirmagan holda yoki YouTube veb-saytiga kirgan holda ijro etadi
+
+• Tizimga kirgan holda, hisob talab qiladigan videolarni, masalan, yosh cheklovi mavjud videolarni ko'rish mumkin
+• Google tizimga kirish sahifasi ushbu ilovada ochiladi
+• Tizimga kirish faqat siz ijro etadigan videolarni olish uchun ishlatiladi
+• Tizimga kirish ma'lumotlari faqat ushbu qurilmada saqlanadi
+
+Tizimga kirish uchun quyidagining 'davom etish' tugmasini bosing"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kirish ma'lumotlari saqlandi
+
+• Morphe sozlamalari Mobile Web kirish ma'lumotlarini import/eksport qilmaydi
+• Agar Google kirish seansini tugatsa, qayta kirguningizga qadar videolar tizimga kirmagan holda ijro etiladi
+• Tizimdan chiqish ushbu qurilmani YouTube veb-saytidan ham chiqaradi"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web kirish muddati tugadi, Mobile Web\'ga qayta kirishga harakat qiling</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web tizimidan chiqildi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView mavjud emas. Kirish uchun uni o\'rnating yoki yoqing</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 vaqtinchalik mavjud emas (API vaqti tugadi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR ga kirish muddati tugadi, VR ga yana kirishni sinab ko‘ring</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 vaqtincha mavjud emas (status %s)</string>

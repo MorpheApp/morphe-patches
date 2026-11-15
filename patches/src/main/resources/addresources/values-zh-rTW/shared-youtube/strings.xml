@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • 你的 Morphe 設定不會匯入/匯出 Android VR 驗證資訊。
 • 如果這個應用程式超過 6 個月未使用，Google 將會移除這個驗證授權。
 • 如果你變更 Google 密碼，或在 Google 設定中取消註冊這個裝置，則需要重新登入。"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">行動裝置網頁登入</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">選填：登入 YouTube 網站以使用您的帳戶播放影片。點擊此處繼續</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">目前已登入行動裝置網頁</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">如要使用這項功能，請將「預設用戶端」改為 Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">登入 Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web 可在登出狀態下或登入 YouTube 網站後播放影片
+
+• 登入後，即可播放需要帳戶的影片，例如年齡限制的影片
+• Google 登入頁面將在此應用程式中開啟
+• 登入僅用於獲取您播放的影片
+• 登入資訊僅儲存在此裝置上
+
+如要登入，請按下下方的繼續"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"登入資訊已儲存
+
+• 您的 Morphe 設定不會匯入/匯出行動版網頁登入狀態
+• 如果 Google 結束登入，在您再次登入之前，影片將在登出狀態下播放
+• 登出同時也會將此裝置從 YouTube 網站登出"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">行動版網頁登入已逾期，請嘗試再次登入行動版網頁</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">已登出行動版網頁</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView 無法使用。請安裝或啟用以進行登入</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暫時不可用（API 已逾時）</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR 登入逾期，請再次登入 VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 暫時無法使用（狀態 %s）</string>

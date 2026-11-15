@@ -167,6 +167,28 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
 • የMorphe ቅንብሮች የAndroid VR ማረጋገጫን ወደ ውስጥ አያስገቡም/ወደ ውጭ አይልኩም
 • ይህ መተግበሪያ ለ6 ወራት ጥቅም ላይ ካልዋለ Google ይህን ማረጋገጫ ያስወግደዋል
 • የGoogle የይለፍ ቃልዎን ከቀየሩ ወይም ይህን መሣሪያ ከGoogle ቅንብሮችዎ ካስወገዱ እንደገና መግባት ይኖርብዎታል"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">በሞባይል ድረ-ገጽ መግቢያ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">አማራጭ፦ በ አካውንትዎ ቪዲዮዎችን ለማጫወት በ YouTube ድረ-ገጽ ላይ ይግቡ። ለመቀጠል እዚህ ይጫኑ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">በአሁኑ ጊዜ በሞባይል ድረ-ገጽ ውስጥ ገብተዋል</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ይህን ባህሪ ለመጠቀም \'መደበኛ ደንበኛ\'ን ወደ ሞባይል ዌብ ይቀይሩ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ወደ ሞባይል ዌብ ይግቡ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"ሞባይል ዌብ ቪዲዮዎችን ያለ አካውንት ወይም ወደ YouTube ድረ-ገጽ በመግባት ያጫውታል
+
+• ሲገቡ፣ እንደ የዕድሜ ገደብ ያላቸው ቪዲዮዎች ያሉ አካውንት የሚጠይቁ ቪዲዮዎችን ማጫወት ይቻላል
+• የGoogle መግቢያ ገጽ በዚህ መተግበሪያ ውስጥ ይከፈታል
+• መግቢያው የሚያጫውቷቸውን ቪዲዮዎች ለማግኘት ብቻ ጥቅም ላይ ይውላል
+• መግቢያው በዚህ መሳሪያ ላይ ብቻ ይቀመጣል
+
+ለመግባት፣ ከታች ያለውን ቀጥል የሚለውን ይጫኑ"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"መግቢያ ተቀምጧል
+
+• የMorphe ቅንብሮች የሞባይል ዌብ መግቢያን አያስገቡም/አላስወጡም
+• Google መግቢያውን ካበቃ፣ እንደገና እስኪገቡ ድረስ ቪዲዮዎች ያለ አካውንት ይጫወታሉ
+• መውጣት በዚህ መሳሪያ ላይ ከYouTube ድረ-ገጽም እንዲወጡ ያደርጋል"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">የሞባይል ዌብ መግቢያ ጊዜው አብቅቷል፣ እባክዎ እንደገና ወደ ሞባይል ዌብ ለመግባት ይሞክሩ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ከሞባይል ዌብ ወጥተዋል</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView አይገኝም። ለመግባት እባክዎ ይጫኑት ወይም ያብሩት</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ለጊዜው ዝግጁ አይደለም (የAPI ጊዜው አልፏል)</string>
   <string name="morphe_oauth2_connection_failure_status_400">የAndroid VR መግቢያ ጊዜ አልፏል፣ እባክዎ በድጋሚ ወደ VR ለመግባት ይሞክሩ</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ለጊዜው አይገኝም (ሁኔታ %s)</string>

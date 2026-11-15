@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • Ваша Morphe подешавања неће увозити/извозити ауторизацију за Android VR
 • Ако се ова апликација не користи 6 месеци, Google ће уклонити ту ауторизацију
 • Мораћете поново да се пријавите ако промените Google лозинку или уклоните овај уређај из Google подешавања"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Пријављивање путем мобилне веб верзије</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Опционо: пријавите се на YouTube веб сајт да бисте пустили видео снимке са својим налогом. Додирните овде да наставите</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Тренутно сте пријављени на мобилну веб верзију</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Да бисте користили ову функцију, промените „Подразумевани клијент“ на Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Пријавите се на Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web пушта видео-записе када нисте пријављени или када сте пријављени на YouTube веб-сајт
+
+• Када сте пријављени, могу се пуштати видео-записи који захтевају налог, као што су видео-записи са ограничењем по години
+• Страница за Google пријављивање отвара се у овој апликацији
+• Пријављивање се користи само за преузимање видео-записа које пуштате
+• Пријављивање се чува само на овом уређају
+
+Да бисте се пријавили, притисните „Настави“ испод"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Пријава је сачувана
+
+• Ваша Morphe подешавања неће увези/извези пријаву за мобилну веб верзију
+• Ако Google заврши пријаву, видео снимци се репродуктују без пријављености док се поново не пријавите
+• Одјава такође одјављује овај уређај са YouTube веб сајта"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Пријава на мобилну веб верзију је истекла, покушајте поново да се пријавите на мобилну веб верзију</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Одјављено са мобилне веб верзије</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView није доступан. Инсталирајте га или омогућите да бисте се пријавили</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 привремено није доступан (API је истекао)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Пријава на Android VR је истекла, покушајте поново да се пријавите на VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 је привремено недоступан (статус %s)</string>

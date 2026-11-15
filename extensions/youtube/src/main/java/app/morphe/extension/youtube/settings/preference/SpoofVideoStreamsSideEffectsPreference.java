@@ -94,15 +94,15 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
                             + '\n' + str("morphe_spoof_video_streams_about_no_av1")
                             + '\n' + str("morphe_spoof_video_streams_about_720p_max")
                             + '\n' + str("morphe_spoof_video_streams_about_no_force_original_audio");
-            // Android XR, Android XR Downgraded, and visionOS 1.03 are not exposed in the UI and should never be reached here.
+            // The Android XR and visionOS AV1 clients are not exposed in the UI and should never be reached here.
             case ANDROID_VR_DASH, ANDROID_XR_DASH ->
                     summary = str("morphe_spoof_video_streams_about_no_audio_tracks")
                             + '\n' + str("morphe_spoof_video_streams_about_no_stable_volume")
                             + '\n' + str("morphe_spoof_video_streams_about_sign_in_to_vr_required");
-            case ANDROID_VR_SABR, ANDROID_VR_EXPERIMENTAL, ANDROID_XR_SABR ->
+            case ANDROID_VR_SABR, ANDROID_VR_EXPERIMENTAL, ANDROID_XR_SABR, ANDROID_XR_EXPERIMENTAL ->
                     summary = str("morphe_spoof_video_streams_about_no_stable_volume")
                             + '\n' + str("morphe_spoof_video_streams_about_sign_in_to_vr_required");
-            case VISIONOS_1_02, VISIONOS_1_03, VISIONOS_1_06 ->
+            case VISIONOS_1_02, VISIONOS_1_03, VISIONOS_1_06, VISIONOS_1_06_AV1 ->
                     summary = str("morphe_spoof_video_streams_about_failure")
                             + '\n' + str("morphe_spoof_video_streams_about_end_early");
             case TV_SABR, TV_SABR_WII_U, TV_DASH, TV_SIMPLY, MWEB -> {

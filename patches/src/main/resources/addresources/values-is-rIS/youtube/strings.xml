@@ -522,6 +522,10 @@ Eftir að myndskeið með Ask-hnappnum hefur verið opnað einu sinni virkar eig
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Sýna fjölda líka á smámynd í straumi</string>
   <string name="morphe_ryd_feed_like_ratio_title">Sýna hlutfall líka á smámynd í straumi</string>
+  <string name="morphe_ryd_feed_counts_position_title">Staða líka á smámynd í straumi</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Hliðar fylgiskip fyrir fjölda skoðana</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Miðsúga til hægri</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Efst til vinstra</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Leita í athugasmdum</string>
   <string name="morphe_search_comments_summary">Snertu leitarhnappinn í athugasemdunum til að sýna aðeins hlaðnar athugasemdir sem innihalda öll leitarorðin. Settu orð í gæsalappir til að leita að setningu</string>
@@ -1037,6 +1041,8 @@ Til að opna stillingar skaltu virkja stillingahnappinn undir Almennt → Tækja
   <string name="morphe_navigation_bar_glass_summary">Sýnir leiðsögustikuna sem fljótandi, ávalt, hálfgegnsætt hylki. Ekki í boði með ógegnsæjum leiðsögustíl</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Gegnsæi glers</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Stilltu gegnsæi glerleiðsögustikunnar (0 er gegnsætt, 100 er ógegnsætt)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Hringlaga glerleiðsögustika</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Gefur glerleiðsögustikunni hringlaga enda í stað hornanna eins og á gler-lítla spilaranum</string>
   <string name="morphe_navigation_bar_glass_size_title">Stærð glerleiðsögustikunnar</string>
   <string name="morphe_navigation_bar_glass_size_summary">Stilltu hæð, breidd og hnappabil glerleiðsögustikunnar með forskoðun. Hnappar sem komast ekki fyrir í breidd skjásins eru faldir</string>
   <string name="morphe_navigation_bar_glass_size_height">Hæð</string>
@@ -1377,6 +1383,8 @@ Bílaútlit
   <string name="morphe_miniplayer_swipe_up_expand_summary">Að strjúka lágmarksspilaranum upp stækkar spilarann, í stað þess að færa lágmarksspilarann efst á skjáinn</string>
   <string name="morphe_miniplayer_docked_title">Fastur lágmarkspilari</string>
   <string name="morphe_miniplayer_docked_summary">Festir lágmarksspilara við leiðsögustikuna og hliðar skjásins, í stað þess að svífa yfir þeim</string>
+  <string name="morphe_miniplayer_glass_title">Gler-lítill spilari</string>
+  <string name="morphe_miniplayer_glass_summary">Sýnir lítla spilarann sem gjalhægt gler með runda horn, eins og glerleiðsögustikuna. Krefst þess að glerleiðsögustika sé virk</string>
   <string name="morphe_miniplayer_type_entry_0">Óvirkt</string>
   <string name="morphe_miniplayer_type_entry_1">Sjálfgefið</string>
   <string name="morphe_miniplayer_type_entry_2">Lágmarks</string>
@@ -1813,6 +1821,8 @@ Sjálfvirk skráning er valfrjáls. Hún stöðvast í huliðsham eða þegar re
   <string name="morphe_niconico_comments_screen_title">Niconico-athugasemdir</string>
   <string name="morphe_niconico_comments_screen_summary">Sýna beint spjall og endurspilun spjalls sem athugasemdir sem renna yfir myndskeiðið</string>
   <string name="morphe_niconico_comments_summary">Sýnir yfirlagshnapp í myndskeiðsspilaranum. Ýttu til að sýna eða fela athugasemdir, ýttu og haltu fyrir flýtistillingar</string>
+  <string name="morphe_niconico_comments_pip_title">Sýna athugasemdir í mynd-í-mynd</string>
+  <string name="morphe_niconico_comments_pip_summary">Athugasemdir eru skornar niður til að passa við gluggann</string>
   <string name="morphe_niconico_comments_appearance_title">Útlitsstillingar</string>
   <string name="morphe_niconico_comments_portrait_category_title">Lóðrétt</string>
   <string name="morphe_niconico_comments_video_types_title">Vídegerðir</string>

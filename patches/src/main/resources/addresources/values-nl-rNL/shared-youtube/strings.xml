@@ -167,6 +167,28 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
 • Je Morphe-instellingen importeren of exporteren de Android VR-authenticatie niet
 • Als deze app 6 maanden niet wordt gebruikt, verwijdert Google deze authenticatie
 • Je moet opnieuw inloggen als je je Google-wachtwoord wijzigt of dit apparaat verwijdert uit je Google-instellingen"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Aanmelden via mobiel web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Optioneel: meld je aan bij de YouTube-website om video\'s met je account af te spelen. Tik hier om door te gaan</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Momenteel aangemeld via mobiel web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om deze functie te gebruiken, wijzig \'Standaard client\' naar Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Meld u aan bij Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web speelt video's af zonder aanmelding, of aangemeld bij de YouTube-website
+
+• Wanneer u bent aangemeld, kunnen video's die een account vereisen worden afgespeeld, zoals video's met een leeftijdsbeperking
+• De Google-aanmeldingspagina wordt in deze app geopend
+• De aanmelding wordt alleen gebruikt om de video's op te halen die u afspeelt
+• De aanmelding wordt alleen op dit apparaat opgeslagen
+
+Om u aan te melden, drukt u hieronder op doorgaan"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Aanmelding opgeslagen
+
+• Je Morphe-instellingen importeren/exporteren de aanmelding voor Mobile Web niet
+• Als Google de aanmelding beëindigt, worden video's afgespeeld zonder aanmelding totdat je opnieuw aanmeldt
+• Afmelden meldt dit apparaat ook af van de YouTube-website"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Aanmelding voor Mobile Web is verlopen, probeer opnieuw aan te melden bij Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Afgemeld bij Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView is niet beschikbaar. Installeer of schakel het in om aan te melden</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is tijdelijk niet beschikbaar (API heeft time-out)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR inloggen is verlopen, probeer het nog eens</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 is tijdelijk niet beschikbaar (status %s)</string>

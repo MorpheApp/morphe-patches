@@ -167,6 +167,28 @@ Saioa hasteko, sakatu behean jarraitu"</string>
 • Morphe konfigurazioek ez dute Android VR autentifikazioa inportatu/esportatuko
 • Aplikazio hau 6 hilabetez erabili gabe badago, Googlek autentifikazio hau kenduko du
 • Google pasahitza aldatzen baduzu edo gailu hau Google ezarpenetatik kentzen baduzu, berriro saioa hasi beharko duzu"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web Mobile bidez saioa hasi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Aukeratua: saioa hasi YouTube webgunetan zure kontuarekin bideoaka izateko. Egun hemen jarraitzeko</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Gaur egun Web Mobile bidez saioa hasita dago</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ezaugarri hau erabiltzeko, aldatu \'Bezero lehenetsia\' Mobile Web-era</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Sartu Mobile Web-en</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web-ek bideoak errepasatzen ditu saioa itxituta, edo YouTube webgunean saioa hasituta
+
+• Saioa hasituta, kontu bat behar duten bideoak errepasatu daitezke, adina mugatutako bideoak adibidez
+• Google-en sarrera orria aplikazio honetan irekitzen da
+• Sarrera erabilitzen da errepasatzen dituzun bideoak lortzeko soilik
+• Sarrera gailu honetan soilik gordetzen da
+
+Sartzeko, sakatu beheko jarraitu botoia"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sarrera gordeta da
+
+• Zure Morphe konfigurazioek ez dute Mobile Web sarrera inportatuko/esportatuko
+• Googlek sarrera amaituen gero, bideoak saioa hasi gabea izango dira berriz saioa hasi arte
+• Saioa amaitzeak gailu hau YouTube webgunean ere amaituko du"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web sarrera iraungi da, saiatu berriro Mobile Web-en saioa hasten</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web saioa amaituta</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView ez dago eskuragarri. Instalatu edo aktibatu saioa hasteko</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 une batez ez dago erabilgarri (APIak denbora gehiegi behar izan du)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR saioa iraungi da, saiatu berriro VR-n saioa hasten</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 une batez ez dago erabilgarri (egoera %s)</string>

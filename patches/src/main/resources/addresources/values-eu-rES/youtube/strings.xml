@@ -522,6 +522,10 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Erakutsi feed-eko miniaturaren gustu kopurua</string>
   <string name="morphe_ryd_feed_like_ratio_title">Erakutsi feed-eko miniaturaren gustu ehunekoa</string>
+  <string name="morphe_ryd_feed_counts_position_title">Feed-eko miniaturaren atsegin-botoiaren kokapena</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Ikustaldien kopuruaren ondoan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Erdian eskuinean</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Goian eskerrean</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Bilatu iruzkinak</string>
   <string name="morphe_search_comments_summary">Sakatu iruzkinen bilaketa botoia kargatutako iruzkin bakarrik erakusteko, bilatutako hitz guztiak dituztenak. Esaldi bat bilatzeko, jarri hitzak komilla artean</string>
@@ -1038,6 +1042,8 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_navigation_bar_glass_summary">Nabigazio barra kapsula flotatzaile, biribil eta translucidu gisa erakusten du. Ez dago erabilgarri Nabigazio barra opakua estiloarekin</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Beira opakutasuna</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Doitu beira nabigazio barraren gardentasun maila (0 gardena da, 100 opakua)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Nabigazio barra beirazkoa birbildua</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Nabigazio barra beirazkoari amaierak birbilduen ematen dizkio, beira-miniplayer-aren bezalako gainetak izateko ordez</string>
   <string name="morphe_navigation_bar_glass_size_title">Nabigazio barra beiraren tamaina</string>
   <string name="morphe_navigation_bar_glass_size_summary">Doitu nabigazio barra beiraren altuera, zabalera eta botoien arteko espazioa, aurrebistarekin. Pantailaren zabalerara egokitzen ez diren botoiak ezkutatzen dira</string>
   <string name="morphe_navigation_bar_glass_size_height">Altitudea</string>
@@ -1378,6 +1384,8 @@ Automobilen diseinua
   <string name="morphe_miniplayer_swipe_up_expand_summary">Miniplayer-a gora irristatzean, playerra zabaltzen da, miniplayer-a pantailaren goialdera mugitu beharrean</string>
   <string name="morphe_miniplayer_docked_title">Finkatutako miniplayer-a</string>
   <string name="morphe_miniplayer_docked_summary">Miniplayer-a nabigazio barrari eta pantailaren alboei lotzen die, haien gainean flotatu beharrean</string>
+  <string name="morphe_miniplayer_glass_title">Beira-miniplayer-a</string>
+  <string name="morphe_miniplayer_glass_summary">Miniplayer-a beira tranparentzente gisa erakusten du gainetak birbilduarekin, nabigazio barra beirazkoaren bezala. Nabigazio barra beirazkoa behar du</string>
   <string name="morphe_miniplayer_type_entry_0">Desaktibatuta</string>
   <string name="morphe_miniplayer_type_entry_1">Lehenetsia</string>
   <string name="morphe_miniplayer_type_entry_2">Minimoa</string>
@@ -1814,6 +1822,8 @@ Grabaketa automatikoa aukerakoa da. Inkognito moduan edo kontua aldatzean geldit
   <string name="morphe_niconico_comments_screen_title">Niconico komentarioak</string>
   <string name="morphe_niconico_comments_screen_summary">Erakutsi zuzeneko txata eta txat-erreprodukzioa bideoaren gainean zehar mugitzen diren iruzkin gisa</string>
   <string name="morphe_niconico_comments_summary">Erreproduzigailuan gainjartze botoi bat erakusten du. Ukitu iruzkinak erakusteko edo ezkutatzeko, eta sakatu eta eutsi ezarpen azkarrak irekitzeko</string>
+  <string name="morphe_niconico_comments_pip_title">Erakutsi irudian-irudian</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentarioak txikitu dira leihoan egokitzeko</string>
   <string name="morphe_niconico_comments_appearance_title">Itxura</string>
   <string name="morphe_niconico_comments_portrait_category_title">Bertikal</string>
   <string name="morphe_niconico_comments_video_types_title">Bideo motak</string>

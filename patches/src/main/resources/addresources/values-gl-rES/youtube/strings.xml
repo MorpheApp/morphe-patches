@@ -522,6 +522,10 @@ Despois de abrir unha vez un vídeo co botón Preguntar, a función funciona con
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Amosar a contaxe de likes da miniatura do feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Amosar a porcentaxe de likes na miniatura do feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Posición do like da miniatura do feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Xunto ao reconto de visualizacións</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Centro dereita</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Superior esquerda</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Buscar nos comentarios</string>
   <string name="morphe_search_comments_summary">Toca o botón de busca nos comentarios para amosar só os comentarios cargados que contiñan todas as palabras buscadas. Pon as palabras entre aspas para buscar unha frase</string>
@@ -1038,6 +1042,8 @@ Para acceder aos Axustes, activa o botón de Axustes a través de Xeral → Barr
   <string name="morphe_navigation_bar_glass_summary">Mostra a barra de navegación como unha cápsula flotante, arredondeada e translúcida. Non dispoñible co estilo de barra de navegación opaca</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacidade do vidro</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Axusta o nivel de transparencia da barra de navegación de vidro (0 é transparente, 100 é opaco)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Barra de navegación de vidro arredondada</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Dalle extremos arredondados á barra de navegación de vidro, en lugar de esquinas como o miniplayer de vidro</string>
   <string name="morphe_navigation_bar_glass_size_title">Tamaño da barra de navegación de vidro</string>
   <string name="morphe_navigation_bar_glass_size_summary">Axusta a altura, a largura e o espaciado dos botóns da barra de navegación de vidro, cunha vista previa. Os botóns que non caben na largura da pantalla ocúltanse</string>
   <string name="morphe_navigation_bar_glass_size_height">Altura</string>
@@ -1378,6 +1384,8 @@ Disposición para automóbil
   <string name="morphe_miniplayer_swipe_up_expand_summary">Deslizar o reproductor minimizado cara arriba expande o reproductor, en lugar de mover o reproductor minimizado á parte superior da pantalla</string>
   <string name="morphe_miniplayer_docked_title">Reproductor minimizado ancorado</string>
   <string name="morphe_miniplayer_docked_summary">Ancora o reproductor minimizado á barra de navegación e aos lados da pantalla, en lugar de floutar sobre eles</string>
+  <string name="morphe_miniplayer_glass_title">Miniplayer de vidro</string>
+  <string name="morphe_miniplayer_glass_summary">Mostra o miniplayer como vidro translúcido con esquinas arredondadas, como a barra de navegación de vidro. Require a barra de navegación de vidro</string>
   <string name="morphe_miniplayer_type_entry_0">Desactivado</string>
   <string name="morphe_miniplayer_type_entry_1">Predefinido</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalista</string>
@@ -1814,6 +1822,8 @@ A gravación automática é opcional. Detense en modo incógnito ou cando cambie
   <string name="morphe_niconico_comments_screen_title">Comentarios de Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Amosar o chat en directo e a reprodución do chat como comentarios que se desprazan polo vídeo</string>
   <string name="morphe_niconico_comments_summary">Amosa un botón de superposición no reproductor de vídeo. Toca para amosar ou ocultar os comentarios, mantén premido para a configuración rápida</string>
+  <string name="morphe_niconico_comments_pip_title">Amosar en picture-in-picture</string>
+  <string name="morphe_niconico_comments_pip_summary">Os comentarios redúcense para axustarse á ventá</string>
   <string name="morphe_niconico_comments_appearance_title">Apariencia</string>
   <string name="morphe_niconico_comments_portrait_category_title">Vertical</string>
   <string name="morphe_niconico_comments_video_types_title">Tipos de vídeo</string>

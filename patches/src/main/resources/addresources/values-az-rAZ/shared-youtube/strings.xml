@@ -167,6 +167,28 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
 • Morphe tənzimləmələriniz Android VR təsdiqlənməsini idxal/ixrac etməyəcək
 • Bu tətbiq 6 ay ərzində istifadə olunmazsa, Google bu təsdiqlənməni siləcək
 • Google parolunuzu dəyişdirsəniz və ya bu cihazı Google tənzimləmələrinizdən çıxarsanız, təkrar daxil olmalı olacaqsınız"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobil Web Girişi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Könüllü: Hesabınızla videoları oynatmaq üçün YouTube veb saytına daxil olun. Davam etmək üçün bura toxun</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hazırda Mobil Web\'ə daxil olunub</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Bu xüsusiyyəti istifadə etmək üçün, \"İlkin qəbuledici\"-ni Mobil Web-ə dəyişdir</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobil Web\'ə Daxil Ol</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"​Mobile Web videoları hesabdan çıxmış və ya YouTube veb saytına daxil olmuş vəziyyətdə oynadır
+
+​• Daxil olduqda hesab tələb edən videolar, məsələn, yaş məhdudiyyətli videolar oynadıla bilər
+• Google giriş səhifəsi bu tətbiqdə açılır
+• Giriş yalnız oynatdığınız videoları əldə etmək üçün istifadə olunur
+• Giriş yalnız bu cihazda saxlanılır
+
+​Daxil olmaq üçün aşağıdakı davam edinə toxun"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Giriş saxlanıldı
+
+​• Morphe tənzimləmələriniz Mobile Web girişini idxal/ixrac etməyəcək
+• Google girişi sonlandırarsa, siz təkrar daxil olana qədər videolar hesabdan çıxmış kimi oynadılır
+• Çıxmaq bu cihazı həm də YouTube veb saytından çıxarır"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web girişinin vaxtı bitdi, Mobile Web-ə təkrar daxil olmağa cəhd et</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web-dən Çıxıldı</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView mövcud deyil. Daxil olmaq üçün quraşdır və ya aktivləşdir</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 keçici olaraq əlçatan deyil (API vaxtı bitdi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR girişi sonlandı, VR-a təkrar daxil olmağa cəhd et</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 keçici olaraq əlçatan deyil (vəziyyət %s)</string>

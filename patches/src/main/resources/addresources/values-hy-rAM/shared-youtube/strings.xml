@@ -167,6 +167,21 @@ Second \"item\" text"</string>
 • Ձեր Morphe կարգավորումները չեն ներմուծի/արտահանի Android VR հավաստիացումը
 • Եթե այս հավելվածը չօգտագործվի 6 ամիս, Google-ը կհեռացնի այս հավաստիացումը
 • Ձեզ պետք կլինի նորից մուտք գործել, եթե փոխեք Google-ի ձեր գաղտնաբառը կամ հեռացնեք այս սարքը Google-ի ձեր կարգավորումներից"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Մուտք 모բիլ վեբ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Կամընտիր․ մուտք գործեք YouTube կայք, որպեսզի տեսանյութերը դիտեք ձեր հաշվով: Շարունակելու համար հպեք այստեղ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Այս պահին մուտք եք գործել մոբիլ վեբ</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Այս ֆունկցիան օգտագործելու համար փոխեք «Լռելյայն հաճախորդը» Mobile Web-ի</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Մուտք գործեք Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web-ը նվագում է տեսանյութերը առանց մուտք գործելու կամ մուտք գործելով YouTube կայք"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Մուտքը պահպանվեց
+
+• Ձեր Morphe կարգավորումները չեն ներմուծի/արտահանի Mobile Web-ի մուտքի տվյալները
+• Եթե Google-ը ավարտի սեանսը, տեսանյութերը կնվագվեն առանց մուտքի, մինչև նորից մուտք գործեք
+• Ելքելով՝ դուք նաև կելքեք YouTube կայքից այս սարքի միջոցով"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web-ի մուտքի ժամկետն անցել է, փորձեք նորից մուտք գործել Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Ելք եք գործել Mobile Web-ից</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView-ը հասանելի չէ: Տեղադրեք կամ միացրեք այն մուտք գործելու համար</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2-ը ժամանակավորապես հասանելի չէ (API-ի ժամանակը սպառվել է)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-ի մուտքի ժամկետն անցել է, փորձեք նորից մուտք գործել VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2-ը ժամանակավորապես հասանելի չէ (կարգավիճակ %s)</string>

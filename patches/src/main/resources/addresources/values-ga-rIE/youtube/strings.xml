@@ -522,6 +522,10 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Taispeáin líon na n-aonán ar mhionsamhail sa bhfotha</string>
   <string name="morphe_ryd_feed_like_ratio_title">Taispeáin mionsamhail beatha cosúil le céatadán</string>
+  <string name="morphe_ryd_feed_counts_position_title">Suíomh cosúil le mionsamhail beatha</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">In aice le líon na n-amharcanna</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Lár chlaon ar anlár</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Barr chlaon ar an chlé</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Cuardaigh tuairimí</string>
   <string name="morphe_search_comments_summary">Tapáil an cnaipe cuardaigh sna tráchtanna chun gan ach na tráchtanna atá luchtaithe agus ina bhfuil na focail chuardaigh ar fad a thaispeáint. Cuir focail idir comharthaí athfhriotail chun frása a chuardach</string>
@@ -1038,6 +1042,8 @@ Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí 
   <string name="morphe_navigation_bar_glass_summary">Taispeánann sé an barra nascleanúna mar chapsúl tréshoilseach, cruinnithe, ag snámh. Níl sé ar fáil leis an stíl barra nascleanúna Teimhneach</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Teimhneacht ghloine</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Coigeartaigh leibhéal trédhearcachta barra nascleanúna gloine (is é 0 trédhearcach, is é 100 teimhneach)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Barra nascleanúna gloine cruinn</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Tugann sé ceannta cruinne don bharra nascleanúna gloine, in ionad cornra mar atá sa mhini-imreora gloine</string>
   <string name="morphe_navigation_bar_glass_size_title">Méid an bharra nascleanúna gloine</string>
   <string name="morphe_navigation_bar_glass_size_summary">Coigeartaigh airde, leithead agus spásáil cnaipí an bharra nascleanúna ghloine, agus féach ar réamhamharc. Déantar cnaipí nach n-oireann laistigh de leithead an scáileáin a cheilt.</string>
   <string name="morphe_navigation_bar_glass_size_height">Airde</string>
@@ -1378,6 +1384,8 @@ Leagan amach feithicleach
   <string name="morphe_miniplayer_swipe_up_expand_summary">Trí an miniimreoir a shleamhnú suas, leathnaítear an t-imreoir, seachas é a bhogadh go barr an scáileáin.</string>
   <string name="morphe_miniplayer_docked_title">Mionimreoir dugtha</string>
   <string name="morphe_miniplayer_docked_summary">Ceanglaíonn sé an mionimreoir leis an mbarra nascleanúna agus le taobhanna an scáileáin, in áit a bheith ar snámh os a gcionn.</string>
+  <string name="morphe_miniplayer_glass_title">Mini-imreora gloine</string>
+  <string name="morphe_miniplayer_glass_summary">Taispeánann sé an mini-imreora mar ghloine thrasluchta le cornra cruinn, cosúil leis an bhbarra nascleanúna gloine. Teastaíonn an barra nascleanúna gloine</string>
   <string name="morphe_miniplayer_type_entry_0">Díchumasaithe</string>
   <string name="morphe_miniplayer_type_entry_1">Réamhshocrú</string>
   <string name="morphe_miniplayer_type_entry_2">Íosta</string>
@@ -1814,6 +1822,8 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_niconico_comments_screen_title">Tuairimí Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Taispeáin comhrá beo agus athsheinm comhrá mar thuairimí a scrollaíonn trasna an fhíseáin</string>
   <string name="morphe_niconico_comments_summary">Taispeánann sé cnaipe forleagtha sa seinnteoir físeáin. Beartaigh chun na tuairimí a thaispeáint nó a cheilt; beartaigh agus coinnigh chun rochtain a fháil ar shocruithe tapa</string>
+  <string name="morphe_niconico_comments_pip_title">Taispeáin commenting i bpirseal pictiúr-i-bpictiúr</string>
+  <string name="morphe_niconico_comments_pip_summary">Tá commenting scálaithe síos chun freastal ar an bhfuinneog</string>
   <string name="morphe_niconico_comments_appearance_title">Dealramh</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portráid</string>
   <string name="morphe_niconico_comments_video_types_title">Cineálacha físeán</string>

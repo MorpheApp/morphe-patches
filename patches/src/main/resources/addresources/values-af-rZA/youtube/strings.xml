@@ -522,6 +522,10 @@ Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met a
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Wys like-tellings op voerduimnaels</string>
   <string name="morphe_ryd_feed_like_ratio_title">Wys like-persentasie op voerduimnaels</string>
+  <string name="morphe_ryd_feed_counts_position_title">Voerduimnael like-posisie</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Langs vertoon telling</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Middel regs</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Bo links</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Soek kommentaar</string>
   <string name="morphe_search_comments_summary">Tik op die soekknoppie in die kommentaar om slegs die gelaaide kommentaar te wys wat al die gesoekte woorde bevat. Sit woorde in aanhalingstekens om vir \'n frase te soek</string>
@@ -1038,6 +1042,8 @@ Om toegang tot Instellings te kry, aktiveer die Instellings-knoppie via Algemeen
   <string name="morphe_navigation_bar_glass_summary">Wys die navigasiebalk as \'n drywende, afgeronde, semi-deursigtige kapsule. Nie beskikbaar met die Opake navigasiebalk-styl nie</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Glas-opasiteit</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Pas die deursigtigheidsvlak van die glas-navigasiebalk aan (0 is deursigtig, 100 is opak)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Ronde glasnavigasiebalk</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Gee die glasnavigasiebalk ronde punte, in plaas van hoeke soos die glas-miniplayer</string>
   <string name="morphe_navigation_bar_glass_size_title">Glas-navigasiebalk grootte</string>
   <string name="morphe_navigation_bar_glass_size_summary">Pas die hoogte, die breedte en die knoppiespasiëring van die glas-navigasiebalk aan, met \'n voorbeeld. Knoppies wat nie in die breedte van die skerm pas nie, word versteek</string>
   <string name="morphe_navigation_bar_glass_size_height">Hoogte</string>
@@ -1378,6 +1384,8 @@ Automotive-uitleg
   <string name="morphe_miniplayer_swipe_up_expand_summary">Om die minispeler op te veeg, brei die speler uit, in plaas daarvan om die minispeler na die bokant van die skerm te skuif</string>
   <string name="morphe_miniplayer_docked_title">Gedokte minispeler</string>
   <string name="morphe_miniplayer_docked_summary">Koppel die minispeler aan die navigasiebalk en die kante van die skerm, in plaas daarvan om bo-oor hulle te dryf</string>
+  <string name="morphe_miniplayer_glass_title">Glas-miniplayer</string>
+  <string name="morphe_miniplayer_glass_summary">Wys die miniplayer as semi-deursigtige glas met afgeronde hoeke, soos die glasnavigasiebalk. Vereis die glasnavigasiebalk</string>
   <string name="morphe_miniplayer_type_entry_0">Gedeaktiveer</string>
   <string name="morphe_miniplayer_type_entry_1">Verstek</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaal</string>
@@ -1814,6 +1822,8 @@ Automaties opname is opsioneel. Dit stop in incognito of wanneer die rekening ve
   <string name="morphe_niconico_comments_screen_title">Niconico-kommentare</string>
   <string name="morphe_niconico_comments_screen_summary">Wys regstreekse kletsteks en kletsteks-herhaling as kommentare wat oor die video rol</string>
   <string name="morphe_niconico_comments_summary">Wys \'n oorleg-knoppie in die videospeler. Tik om kommentare te wys of weg te steek, tik en hou in vir vinnige instellings</string>
+  <string name="morphe_niconico_comments_pip_title">Wys in prent-in-prent</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentare word afgeskaal om by die venster te pas</string>
   <string name="morphe_niconico_comments_appearance_title">Voorkoms</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
   <string name="morphe_niconico_comments_video_types_title">Videotipes</string>

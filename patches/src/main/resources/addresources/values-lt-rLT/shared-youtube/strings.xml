@@ -167,6 +167,28 @@ Norėdami prisijungti, žemiau bakstelėkite „Tęsti“"</string>
 • Jūsų „Morphe“ nustatymai neimportuos ir neeksportuos „Android VR“ autentifikavimo
 • Jei ši programa nenaudojama 6 mėnesius, „Google“ pašalins šį autentifikavimą
 • Turėsite prisijungti iš naujo, jei pakeisite „Google“ slaptažodį arba išregistruosite šį įrenginį „Google“ nustatymuose"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prisijungimas per mobiliąją naršyklę</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Neprivaloma: prisijunkite prie „YouTube“ svetainės, kad galėtumėte žiūrėti vaizdo įrašus su savo paskyra. Norėdami tęsti, bakstelėkite čia</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Šiuo metu prisijungta per mobiliąją naršyklę</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Norėdami naudotis šia funkcija, pakeiskite „Pagrindinį klientą“ į „Mobiliąją interneto versiją“</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prisijungti prie mobiliosios interneto versijos</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobilioji interneto versija leidžia žiūrėti vaizdo įrašus neprisijungus arba prisijungus prie „YouTube“ svetainės
+
+• Prisijungus galima žiūrėti vaizdo įrašus, kuriems reikia paskyros, pavyzdžiui, vaizdo įrašus su amžiaus apribojimu
+• „Google“ prisijungimo puslapis atsidaro šioje programėlėje
+• Prisijungimas naudojamas tik norint gauti vaizdo įrašus, kuriuos peržiūrite
+• Prisijungimas išsaugomas tik šioje įrenginyje
+
+Norėdami prisijungti, paspauskite žemiau esantį mygtuką „Tęsti“"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Prisijungimas išsaugotas
+
+• Jūsų „Morphe“ nustatymai neimportuos ir neeksportuos prisijungimo prie mobiliosios interneto versijos
+• Jei „Google“ nutrauks sesiją, vaizdo įrašai bus leidžiami neprisijungus, kol prisijungsite vėl
+• Atsijungus bus atjungta ir ši įrenginio paskyra iš „YouTube“ svetainės"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobiliojo tinklo prisijungimas baigėsi, pabandykite prisijungti prie mobiliojo tinklo dar kartą</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Atsijungta nuo mobiliojo tinklo</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">„Android System WebView“ neprie galima. Norėdami prisijungti, įsidinkite arba įjunkite jį</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 laikinai nepasiekiamas (API laikas baigėsi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR prisijungimas baigė galioti. Bandykite prisijungti prie VR dar kartą</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 laikinai nepasiekiamas (būsena %s)</string>

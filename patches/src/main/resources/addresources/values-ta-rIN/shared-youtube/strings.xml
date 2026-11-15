@@ -66,6 +66,28 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-க்கு தனி உள்நுழைவு தேவை. தொடர இங்கே தட்டவும்</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">மொபைல் வெப் உள்நுழைவு</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">விருப்பத்தேர்வு: உங்கள் கணக்கைப் பயன்படுத்தி வீடியோக்களை இயக்க YouTube இணையதளத்தில் உள்நுழையவும். தொடர இங்கே தட்டவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">தற்போது மொபைல் வெப்பில் உள்நுழையப்பட்டுள்ளது</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">இந்த அம்சத்தைப் பயன்படுத்த, \'Default client\'-ஐ Mobile Web என மாற்றவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-இல் உள்நுழையவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web உள்நுழையாமல் அல்லது YouTube இணையதளத்தில் உள்நுழைந்து வீடியோக்களை இயக்கும்
+
+• உள்நுழைந்திருந்தால், வயது வரம்பு கட்டுப்படுத்தப்பட்ட வீடியோக்கள் போன்ற கணக்கு தேவைப்படும் வீடியோக்களை இயக்க முடியும்
+• இந்த செயலியில் Google உள்நுழைவு பக்கம் திறக்கும்
+• நீங்கள் இயக்கும் வீடியோக்களைப் பெறுவதற்கு மட்டுமே உள்நுழைவு பயன்படுத்தப்படுகிறது
+• உள்நுழைவு இந்த சாதனத்தில் மட்டுமே சேமிக்கப்படும்
+
+உள்நுழைய, கீழே உள்ள தொடர பொத்தானை அழுத்தவும்"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"உள்நுழைவு சேமிக்கப்பட்டது
+
+• உங்களது Morphe அமைப்புகள் Mobile Web உள்நுழைவை இறக்குமதி/ஏற்றுமதி செய்யாது
+• Google உள்நுழைவை முடித்தால், நீங்கள் மீண்டும் உள்நுழையும் வரை வீடியோக்கள் உள்நுழையாமல் இயக்கப்படும்
+• உள்நுழைவை நீக்குவது இந்த சாதனத்தை YouTube இணையதளத்திலிருந்தும் வெளியேற்றும்"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">மொபைல் வெப் உள்நுழைவு காலாவதி ஆகிவிட்டது, மீண்டும் மொபைல் வெப்பில் உள்நுழைய முயற்சிக்கவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">மொபைல் வெப்பில் இருந்து வெளியேறப்பட்டது</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView கிடைக்கவில்லை. உள்நுழைய அதை நிறுவவும் அல்லது இயக்கவும்</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

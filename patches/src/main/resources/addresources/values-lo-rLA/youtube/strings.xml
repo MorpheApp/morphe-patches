@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ສະແດງຈຳນວນການຖືກໃຈຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
   <string name="morphe_ryd_feed_like_ratio_title">ສະແດງເປີເຊັນການຖືກໃຈຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
+  <string name="morphe_ryd_feed_counts_position_title">ຕຳແໜ່ງໄລຄ໌ຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ຖັດຈາກຈຳນວນການເບິ່ງ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">ກາງຂວາ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">ເທິງຊ້າຍ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
   <string name="morphe_search_comments_summary">ແຕະປຸ່ມຄົ້ນຫາໃນຄຳຄິດເຫັນ ເພື່ອສະແດງສະເພາະຄຳຄິດເຫັນທີ່ໂຫຼດແລ້ວ ເຊິ່ງມີຄຳທີ່ຄົ້ນຫາທັງໝົດ. ໃສ່ຄຳສັບໃນເຄື່ອງໝາຍຄຳເວົ້າ ເພື່ອຄົ້ນຫາເປັນວະລີ</string>
@@ -1038,6 +1042,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">ສະແດງແຖບນຳທາງເປັນແບບແຄບຊູນໂຄ້ງ, ລອຍໄດ້ ແລະ ໂປ່ງໃສ. ບໍ່ສາມາດໃຊ້ໄດ້ກັບຮູບແບບແຖບນຳທາງແບບທຶບ</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ຄວາມທຶບຂອງແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສຂອງແຖບນຳທາງແບບແກ້ວ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
+  <string name="morphe_navigation_bar_glass_round_title">ແຖບນຳທາງແບບແກ້ວມົນ</string>
+  <string name="morphe_navigation_bar_glass_round_summary">ເຮັດໃຫ້ປາຍຂອງແຖບນຳທາງແບບແກ້ວມີລັກສະນະມົນ, ແທນທີ່ຈະເປັນມຸມຄືກັບເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍແບບແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_size_title">ຂະໜາດຂອງແຖບນຳທາງແບບແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ ແລະ ໄລຍະຫ່າງຂອງປຸ່ມຂອງແຖບນຳທາງແບບແກ້ວ, ພ້ອມກັບການເບິ່ງຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
   <string name="morphe_navigation_bar_glass_size_height">ຄວາມສູງ</string>
@@ -1378,6 +1384,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">ການປັດເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍຂຶ້ນເທິງ ຈະຂະຫຍາຍເຄື່ອງຫຼິ້ນ, ແທນທີ່ຈະຍ້າຍເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍໄປໄວ້ທາງເທິງຂອງໜ້າຈໍ</string>
   <string name="morphe_miniplayer_docked_title">ເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍແບບຕິດຄົງທີ່</string>
   <string name="morphe_miniplayer_docked_summary">ຕິດເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍເຂົ້າກັບແຖບນຳທາງ ແລະ ດ້ານຂ້າງຂອງໜ້າຈໍ, ແທນທີ່ຈະລອຍຢູ່ເໜືອສິ່ງເຫຼົ່ານັ້ນ</string>
+  <string name="morphe_miniplayer_glass_title">ເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍແບບແກ້ວ</string>
+  <string name="morphe_miniplayer_glass_summary">ສະແດງເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍເປັນແກ້ວໂປ່ງໃສທີ່ມີມຸມມົນ, ຄືກັບແຖບນຳທາງແບບແກ້ວ. ຮຽກຮ້ອງໃຫ້ມີແຖບນຳທາງແບບແກ້ວ</string>
   <string name="morphe_miniplayer_type_entry_0">ປິດການໃຊ້ງານ</string>
   <string name="morphe_miniplayer_type_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
   <string name="morphe_miniplayer_type_entry_2">ແບບລຽບງ່າຍ</string>
@@ -1814,6 +1822,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">ຄຳຄິດເຫັນແບບ Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">ສະແດງແຊັດສົດ ແລະ ການຫຼິ້ນແຊັດຄືນໃໝ່ເປັນຄຳຄິດເຫັນທີ່ເລື່ອນຜ່ານວິດີໂອ</string>
   <string name="morphe_niconico_comments_summary">ສະແດງປຸ່ມຊ້ອນທັບໃນເຄື່ອງຫຼິ້ນວິດີໂອ. ແຕະເພື່ອສະແດງ ຫຼື ຊ່ອນຄຳຄິດເຫັນ, ແຕະຄ້າງໄວ້ສຳລັບການຕັ້ງຄ່າແບບດ່ວນ</string>
+  <string name="morphe_niconico_comments_pip_title">ສະແດງໃນຮູບແບບ picture-in-picture</string>
+  <string name="morphe_niconico_comments_pip_summary">ຄຳຄິດເຫັນຈະຖືກປັບຂະໜາດລົງເພື່ອໃຫ້ພໍດີກັບໜ້າຕ່າງ</string>
   <string name="morphe_niconico_comments_appearance_title">ຮູບລັກສະນະ</string>
   <string name="morphe_niconico_comments_portrait_category_title">ແນວຕັ້ງ</string>
   <string name="morphe_niconico_comments_video_types_title">ປະເພດວິດີໂອ</string>

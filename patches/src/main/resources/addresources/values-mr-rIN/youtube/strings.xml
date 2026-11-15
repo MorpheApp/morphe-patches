@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">फीड थंबनेल लाईक संख्या दाखवा</string>
   <string name="morphe_ryd_feed_like_ratio_title">फीड थंबनेल लाईक टक्केवारी दाखवा</string>
+  <string name="morphe_ryd_feed_counts_position_title">फीड थंबनेल सारखी स्थिती</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">व्ह्यू काउंटच्या शेजारी</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">मध्यभागी उजवीकडे</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">वरच्या बाजूला डावीकडे</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">कमेंट्स शोधा</string>
   <string name="morphe_search_comments_summary">केवळ शोधलेले सर्व शब्द असलेल्या लोड केलेल्या कमेंट्स दाखवण्यासाठी कमेंट्समधील सर्च बटणावर टॅप करा. वाक्यांश शोधण्यासाठी शब्द अवतरण चिन्हात लिहा</string>
@@ -1038,6 +1042,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_navigation_bar_glass_summary">नेव्हिगेशन बार एक तरंगता, गोलाकार, अर्धपारदर्शक कॅप्सूल म्हणून दर्शवतो. ओपेक नेव्हिगेशन बार स्टाईलसह उपलब्ध नाही</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ग्लास अपॅसिटी</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ग्लास नेव्हिगेशन बारची पारदर्शकता पातळी समायोजित करा (० पारदर्शक आहे, १०० अपॅक आहे)</string>
+  <string name="morphe_navigation_bar_glass_round_title">राउंड ग्लास नेव्हिगेशन बार</string>
+  <string name="morphe_navigation_bar_glass_round_summary">ग्लास मिनीप्लेयरप्रमाणे कोपऱ्यांऐवजी, ग्लास नेव्हिगेशन बारला गोलाकार टोके देते</string>
   <string name="morphe_navigation_bar_glass_size_title">ग्लास नेव्हिगेशन बारचा आकार</string>
   <string name="morphe_navigation_bar_glass_size_summary">प्रिव्ह्यूसह ग्लास नेव्हिगेशन बारची उंची, रुंदी आणि बटण स्पेसिंग समायोजित करा. स्क्रीनच्या रुंदीत न बसणारी बटणे लपवली जातात</string>
   <string name="morphe_navigation_bar_glass_size_height">उंची</string>
@@ -1378,6 +1384,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_miniplayer_swipe_up_expand_summary">मिनीप्लेयर वरच्या दिशेला स्वाइप केल्याने तो स्क्रीनच्या वरच्या बाजूला जाण्याऐवजी विस्तारला जातो</string>
   <string name="morphe_miniplayer_docked_title">डॉक केलेला मिनीप्लेयर</string>
   <string name="morphe_miniplayer_docked_summary">मिनीप्लेयरला नेव्हिगेशन बार आणि स्क्रीनच्या कडांना जोडते, ज्यामुळे तो त्यांच्या वर तरंगत न राहता स्थिर होतो</string>
+  <string name="morphe_miniplayer_glass_title">ग्लास मिनीप्लेयर</string>
+  <string name="morphe_miniplayer_glass_summary">ग्लास नेव्हिगेशन बारप्रमाणे, मिनीप्लेयर गोलाकार कोपऱ्यांसह अर्धपारदर्शक ग्लास म्हणून दर्शवते. यासाठी ग्लास नेव्हिगेशन बार आवश्यक आहे</string>
   <string name="morphe_miniplayer_type_entry_0">अक्षम</string>
   <string name="morphe_miniplayer_type_entry_1">डीफॉल्ट</string>
   <string name="morphe_miniplayer_type_entry_2">किमान</string>
@@ -1814,6 +1822,8 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_niconico_comments_screen_title">Niconico टिप्पण्या</string>
   <string name="morphe_niconico_comments_screen_summary">लाईव्ह चॅट आणि चॅट रिप्ले व्हिडिओवरून स्क्रोल होणाऱ्या टिप्पण्या म्हणून दाखवा</string>
   <string name="morphe_niconico_comments_summary">व्हिडिओ प्लेयरमध्ये एक ओव्हरले बटण दाखवते. टिप्पण्या दाखवण्यासाठी किंवा लपवण्यासाठी टॅप करा, क्विक सेटिंग्ससाठी टॅप करून धरा</string>
+  <string name="morphe_niconico_comments_pip_title">पिक्चर-इन-पिक्चर मध्ये दाखवा</string>
+  <string name="morphe_niconico_comments_pip_summary">विंडोमध्ये बसवण्यासाठी कमेंट्सचे स्केल कमी केले आहे</string>
   <string name="morphe_niconico_comments_appearance_title">देखावा</string>
   <string name="morphe_niconico_comments_portrait_category_title">पोर्ट्रेट</string>
   <string name="morphe_niconico_comments_video_types_title">व्हिडिओ प्रकार</string>

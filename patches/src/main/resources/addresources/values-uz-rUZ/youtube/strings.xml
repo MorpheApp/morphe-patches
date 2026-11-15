@@ -522,6 +522,10 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Lenta kichik rasmlarida layklar sonini ko\'rsatish</string>
   <string name="morphe_ryd_feed_like_ratio_title">Lenta miniatyuralarida layklar foizini ko\'rsatish</string>
+  <string name="morphe_ryd_feed_counts_position_title">Lentaning kichik rasmi yonidagi layk pozitsiyasi</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Ko\'rishlar soni yonida</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">O\'rtadagi o\'ng tomonda</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Yuqori chap tomonda</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Izohlarni qidirish</string>
   <string name="morphe_search_comments_summary">Faqat qidirilgan barcha so\'zlarni o\'z ichiga olgan yuklangan izohlarni ko\'rsatish uchun izohlardagi qidiruv tugmasini bosing. Frazani qidirish uchun so\'zlarni qo\'shtirnoqqa oling</string>
@@ -1035,6 +1039,8 @@ Sozlamalarga kirish uchun General → Toolbar → Show Settings button orqali So
   <string name="morphe_navigation_bar_glass_summary">Navigatsiya panelini suzuvchi, yumaloq, yarim shaffof kapsula ko\'rinishida ko\'rsatadi. Opaque navigatsiya paneli uslubi bilan mavjud emas</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Shishaning shaffofligi</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Shishasimon navigatsiya panelining shaffoflik darajasini sozlang (0 - shaffof, 100 - opak)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Dumaloq shishali navigatsiya paneli</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Shishali miniplayer kabi burchaklar o\'rniga, shishali navigatsiya paneliga dumaloq uchlarni beradi</string>
   <string name="morphe_navigation_bar_glass_size_title">Shishasimon navigatsiya paneli o\'lchami</string>
   <string name="morphe_navigation_bar_glass_size_summary">Shishasimon navigatsiya panelining balandligi, kengligi va tugmalar oralig\'ini oldindan ko\'rish imkoniyati bilan sozlang. Ekran kengligiga sig\'magan tugmalar yashiriladi</string>
   <string name="morphe_navigation_bar_glass_size_height">Balandligi</string>
@@ -1375,6 +1381,8 @@ Avtomobil maketi
   <string name="morphe_miniplayer_swipe_up_expand_summary">Miniplayerni yuqoriga surish uni ekranning yuqori qismiga ko\'chirish o\'rniga, pleyerni kengaytiradi</string>
   <string name="morphe_miniplayer_docked_title">Yopishgan miniplayer</string>
   <string name="morphe_miniplayer_docked_summary">Miniplayerni suzib yurish o\'rniga, navigatsiya paneli va ekranning yon tomonlariga yopishtiradi</string>
+  <string name="morphe_miniplayer_glass_title">Shishali miniplayer</string>
+  <string name="morphe_miniplayer_glass_summary">Miniplayer-ni shishali navigatsiya paneli kabi yumaloq burchakli yarim shaffof shisha ko\'rinishida ko\'rsatadi. Shishali navigatsiya paneli talab qilinadi</string>
   <string name="morphe_miniplayer_type_entry_0">O\'chirilgan</string>
   <string name="morphe_miniplayer_type_entry_1">Standart</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1811,6 +1819,8 @@ Avtomatik yozib olish ixtiyoriy. U inkognito rejimida yoki akkaunt o'zgarganda t
   <string name="morphe_niconico_comments_screen_title">Niconico izohlari</string>
   <string name="morphe_niconico_comments_screen_summary">Jonli chat va chat takrorini video bo\'ylab harakatlanuvchi izohlar sifatida ko\'rsatish</string>
   <string name="morphe_niconico_comments_summary">Video pleyerda ustki tugmani ko\'rsatadi. Izohlarni ko\'rsatish yoki yashirish uchun bosing, tezkor sozlamalar uchun esa bosib turing</string>
+  <string name="morphe_niconico_comments_pip_title">Rasm ichidagi rasmda ko\'rsatish</string>
+  <string name="morphe_niconico_comments_pip_summary">Izohlar oynaga mos kelishi uchun kichraytirilgan</string>
   <string name="morphe_niconico_comments_appearance_title">Tashqi ko\'rinish</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
   <string name="morphe_niconico_comments_video_types_title">Video turlari</string>
