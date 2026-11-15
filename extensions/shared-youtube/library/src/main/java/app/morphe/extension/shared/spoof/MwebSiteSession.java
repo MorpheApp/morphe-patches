@@ -22,6 +22,7 @@ import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.RenderProcessGoneDetail;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -156,6 +157,12 @@ public final class MwebSiteSession {
      * so the next client still has time to fetch them.
      */
     private static final long TIMEOUT_MILLISECONDS = 12 * 1000;
+
+    /**
+     * Pages opened for the session of a video. A page that fails, such as when its renderer is gone
+     * or it cannot be loaded, is replaced by a new page, in the time of {@link #TIMEOUT_MILLISECONDS}.
+     */
+    private static final int MAX_PAGE_ATTEMPTS = 3;
 
     /**
      * A started fetch is used by the fetch of the streams of its video only for this long.
@@ -311,6 +318,15 @@ public final class MwebSiteSession {
         }
     }
 
+    /**
+     * The page failed, and another page can make the session.
+     */
+    private static final class PageFailedException extends Exception {
+        PageFailedException(String message) {
+            super(message);
+        }
+    }
+
     private record StartedFetch(Future<Session> future, long startTime) {
     }
 
@@ -462,54 +478,61 @@ public final class MwebSiteSession {
     @Nullable
     private static Session load(String videoId) {
         final long start = System.currentTimeMillis();
-        CompletableFuture<PageLoad> pageLoadFuture = new CompletableFuture<>();
-        Utils.runOnMainThread(() -> {
-            Page page = null;
-            try {
-                page = takePage();
-                pageLoadFuture.complete(new PageLoad(page, page.load(videoId)));
-            } catch (Exception ex) {
-                if (page != null) {
-                    releasePage(page, false);
+        for (int attempt = 1; ; attempt++) {
+            CompletableFuture<PageLoad> pageLoadFuture = new CompletableFuture<>();
+            Utils.runOnMainThread(() -> {
+                Page page = null;
+                try {
+                    page = takePage();
+                    pageLoadFuture.complete(new PageLoad(page, page.load(videoId)));
+                } catch (Exception ex) {
+                    if (page != null) {
+                        releasePage(page, false);
+                    }
+                    pageLoadFuture.completeExceptionally(ex);
                 }
-                pageLoadFuture.completeExceptionally(ex);
+            });
+            Page page = null;
+            boolean pageWorks = false;
+            try {
+                PageLoad pageLoad = pageLoadFuture.get(Math.max(TIMEOUT_MILLISECONDS
+                        - (System.currentTimeMillis() - start), 0), TimeUnit.MILLISECONDS);
+                page = pageLoad.page;
+                final long remaining = TIMEOUT_MILLISECONDS - (System.currentTimeMillis() - start);
+                Session session = pageLoad.session.get(Math.max(remaining, 0), TimeUnit.MILLISECONDS);
+                pageWorks = true;
+                final int blocked = page.blockedRequests.getAndSet(0);
+                final boolean inPage = page.loadedInPage;
+                Logger.printDebug(() -> "Website session of " + videoId + " in "
+                        + (System.currentTimeMillis() - start) + " ms" + (inPage ? " (loaded in the page)" : "")
+                        + ", PoToken bytes: "
+                        + (session.poToken == null ? 0 : session.poToken.length)
+                        + ", ustreamer config: " + (session.ustreamerConfig != null)
+                        + ", client: " + (session.clientInfo != null)
+                        + ", blocked page requests: " + blocked);
+                return session;
+            } catch (Exception ex) {
+                Logger.printInfo(() -> "The website gave no session for " + videoId + " in "
+                        + (System.currentTimeMillis() - start) + " ms", ex);
+                // A page that showed an ad is not stuck, and its player can load the next video.
+                pageWorks = page != null && page.adShown;
+                if (attempt >= MAX_PAGE_ATTEMPTS || !(ex.getCause() instanceof PageFailedException)
+                        || System.currentTimeMillis() - start >= TIMEOUT_MILLISECONDS) {
+                    return null;
+                }
+            } finally {
+                if (page != null) {
+                    final Page usedPage = page;
+                    final boolean keep = pageWorks;
+                    // A page that gave no session can be stuck, so it is closed.
+                    Utils.runOnMainThread(() -> releasePage(usedPage, keep));
+                } else {
+                    // The page was not ready in time, and it is closed when it is.
+                    pageLoadFuture.thenAccept(pageLoad ->
+                            Utils.runOnMainThread(() -> releasePage(pageLoad.page, false)));
+                }
             }
-        });
-        Page page = null;
-        boolean pageWorks = false;
-        try {
-            PageLoad pageLoad = pageLoadFuture.get(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS);
-            page = pageLoad.page;
-            final long remaining = TIMEOUT_MILLISECONDS - (System.currentTimeMillis() - start);
-            Session session = pageLoad.session.get(Math.max(remaining, 0), TimeUnit.MILLISECONDS);
-            pageWorks = true;
-            final int blocked = page.blockedRequests.getAndSet(0);
-            final boolean inPage = page.loadedInPage;
-            Logger.printDebug(() -> "Website session of " + videoId + " in "
-                    + (System.currentTimeMillis() - start) + " ms" + (inPage ? " (loaded in the page)" : "")
-                    + ", PoToken bytes: "
-                    + (session.poToken == null ? 0 : session.poToken.length)
-                    + ", ustreamer config: " + (session.ustreamerConfig != null)
-                    + ", client: " + (session.clientInfo != null)
-                    + ", blocked page requests: " + blocked);
-            return session;
-        } catch (Exception ex) {
-            Logger.printInfo(() -> "The website gave no session for " + videoId + " in "
-                    + (System.currentTimeMillis() - start) + " ms", ex);
-            // A page that showed an ad is not stuck, and its player can load the next video.
-            pageWorks = page != null && page.adShown;
-            return null;
-        } finally {
-            if (page != null) {
-                final Page usedPage = page;
-                final boolean keep = pageWorks;
-                // A page that gave no session can be stuck, so it is closed.
-                Utils.runOnMainThread(() -> releasePage(usedPage, keep));
-            } else {
-                // The page was not ready in time, and it is closed when it is.
-                pageLoadFuture.thenAccept(pageLoad ->
-                        Utils.runOnMainThread(() -> releasePage(pageLoad.page, false)));
-            }
+            Logger.printDebug(() -> "Website session: opening another page for " + videoId);
         }
     }
 
@@ -520,9 +543,12 @@ public final class MwebSiteSession {
         mainHandler.removeCallbacks(closeIdlePages);
         Page page;
         synchronized (freePages) {
-            page = freePages.poll();
+            // The renderer is shared by all pages, so pages that are not used can be gone as well.
+            while ((page = freePages.poll()) != null && page.rendererGone) {
+                page.close();
+            }
         }
-        if (page == null && warmUpPage != null) {
+        if (page == null && warmUpPage != null && !warmUpPage.rendererGone) {
             // The page made while the app starts, which loads the video in its player
             // even if BotGuard has not made its first PoToken yet.
             page = warmUpPage;
@@ -700,9 +726,36 @@ public final class MwebSiteSession {
                     rendererGone = true;
                     CompletableFuture<Session> future = pending;
                     if (future != null) {
-                        future.completeExceptionally(new IllegalStateException("The page renderer is gone"));
+                        future.completeExceptionally(new PageFailedException("The page renderer is gone"));
                     }
                     return true;
+                }
+
+                @Override
+                public void onReceivedError(WebView v, WebResourceRequest request, WebResourceError error) {
+                    onMainFrameError(request, "error " + error.getErrorCode());
+                }
+
+                @Override
+                public void onReceivedHttpError(WebView v, WebResourceRequest request,
+                                                WebResourceResponse response) {
+                    onMainFrameError(request, "HTTP status " + response.getStatusCode());
+                }
+
+                /**
+                 * The watch page of the pending video cannot be loaded, for example without a network,
+                 * so the session fails now, instead of after the timeout.
+                 */
+                private void onMainFrameError(WebResourceRequest request, String error) {
+                    CompletableFuture<Session> future = pending;
+                    String videoId = pendingVideoId;
+                    // A page that is opened again stops the load of the page before it.
+                    if (future == null || videoId == null || !request.isForMainFrame()
+                            || !videoId.equals(request.getUrl().getQueryParameter("v"))) {
+                        return;
+                    }
+                    Logger.printInfo(() -> "Website session: the watch page cannot be loaded, " + error);
+                    future.completeExceptionally(new PageFailedException("The watch page cannot be loaded"));
                 }
 
                 @Nullable
