@@ -3,6 +3,7 @@ package app.morphe.extension.reddit.patches.nsfw;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.io.Reader;
 import java.util.Locale;
 import java.util.function.BooleanSupplier;
 
@@ -16,6 +17,7 @@ import okhttp3.ResponseBody;
 /** Candidate OkHttp boundary; does not claim to cover Cronet, WebViews or local databases. */
 public final class RedditNsfwInterceptor implements Interceptor {
     private static final long MAX_JSON_BYTES = 16 * 1024 * 1024;
+    private static final int MAX_JSON_CHARACTERS = 8 * 1024 * 1024;
     private final BooleanSupplier enabled;
 
     public RedditNsfwInterceptor(BooleanSupplier enabled) {
@@ -43,11 +45,7 @@ public final class RedditNsfwInterceptor implements Interceptor {
             if (response.header("Content-Encoding") != null) {
                 throw new IOException("Cannot inspect encoded Reddit JSON");
             }
-            body.source().request(MAX_JSON_BYTES + 1);
-            if (body.source().getBuffer().size() > MAX_JSON_BYTES) {
-                throw new IOException("Reddit JSON exceeds filter limit");
-            }
-            String input = body.string();
+            String input = readJson(body);
             // Preferences aren't content entities. Do not classify an account preference as a post.
             if (request.url().encodedPath().equals("/api/v1/me/prefs")) {
                 org.json.JSONObject prefs = new org.json.JSONObject(input);
@@ -66,6 +64,23 @@ public final class RedditNsfwInterceptor implements Interceptor {
         } catch (JSONException e) {
             // Never return the uninspected original JSON after a filtering failure.
             throw new IOException("Cannot inspect Reddit content", e);
+        }
+    }
+
+    private static String readJson(ResponseBody body) throws IOException {
+        if (body.contentLength() > MAX_JSON_BYTES) throw new IOException("Reddit JSON exceeds filter limit");
+        // Reddit obfuscates Okio. Keep all extension calls on OkHttp's stable Java APIs.
+        try (Reader reader = body.charStream()) {
+            StringBuilder text = new StringBuilder();
+            char[] buffer = new char[8192];
+            int count;
+            while ((count = reader.read(buffer)) != -1) {
+                if (text.length() + count > MAX_JSON_CHARACTERS) {
+                    throw new IOException("Reddit JSON exceeds filter limit");
+                }
+                text.append(buffer, 0, count);
+            }
+            return text.toString();
         }
     }
 
