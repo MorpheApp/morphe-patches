@@ -198,6 +198,7 @@ final class LyricsGlyphMaskCache {
                 @NonNull ColorFilter filter,
                 float alpha,
                 @Nullable PorterDuff.Mode blendMode) {
+            maskPaint.setColor(Color.WHITE);
             maskPaint.setColorFilter(filter);
             maskPaint.setAlpha(Math.max(0, Math.min(255, Math.round(alpha * 255f))));
             maskPaint.setXfermode(blendMode != null ? new PorterDuffXfermode(blendMode) : null);
@@ -237,6 +238,7 @@ final class LyricsGlyphMaskCache {
 
             layerBounds.set(0f, 0f, w, h);
             int saveCount = canvas.saveLayer(layerBounds, layerPaint);
+            maskPaint.setColor(Color.WHITE);
             maskPaint.setColorFilter(null);
             maskPaint.setAlpha(255);
             maskPaint.setXfermode(null);
@@ -263,24 +265,29 @@ final class LyricsGlyphMaskCache {
     }
 
     @Nullable
-    public static RasterResult rasterize(@NonNull Layout subLayout, float padPx, float scale) {
+    private static RasterResult allocateMaskBitmap(@NonNull Layout subLayout, float padPx, float scale) {
         float lw = Math.max(1f, subLayout.getWidth() + padPx * 2f);
         float lh = Math.max(1f, subLayout.getHeight() + padPx * 2f);
         float s = Math.min(scale, MAX_MASK_SIDE / Math.max(lw, lh));
         int w = Math.max(1, Math.min((int) MAX_MASK_SIDE, (int) Math.ceil(lw * s)));
         int h = Math.max(1, Math.min((int) MAX_MASK_SIDE, (int) Math.ceil(lh * s)));
-
-        final Bitmap bmp;
         try {
-            bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+            // Single-channel alpha masks cut native bitmap footprint and GC pressure by 4x.
+            Bitmap bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ALPHA_8);
+            return bmp != null ? new RasterResult(bmp, s) : null;
         } catch (OutOfMemoryError ignored) {
             return null;
         }
-        if (bmp == null) {
+    }
+
+    @Nullable
+    public static RasterResult rasterize(@NonNull Layout subLayout, float padPx, float scale) {
+        RasterResult allocated = allocateMaskBitmap(subLayout, padPx, scale);
+        if (allocated == null) {
             return null;
         }
-        Canvas c = new Canvas(bmp);
-        c.scale(s, s);
+        Canvas c = new Canvas(allocated.bitmap);
+        c.scale(allocated.scale, allocated.scale);
         c.translate(padPx, padPx);
 
         TextPaint paint = subLayout.getPaint();
@@ -293,28 +300,17 @@ final class LyricsGlyphMaskCache {
         paint.setColor(prevColor);
         paint.setShader(prevShader);
 
-        return new RasterResult(bmp, s);
+        return allocated;
     }
 
     @Nullable
     public static RasterResult rasterizeGlow(@NonNull Layout subLayout, float padPx, float blurRadius, float scale) {
-        float lw = Math.max(1f, subLayout.getWidth() + padPx * 2f);
-        float lh = Math.max(1f, subLayout.getHeight() + padPx * 2f);
-        float s = Math.min(scale, MAX_MASK_SIDE / Math.max(lw, lh));
-        int w = Math.max(1, Math.min((int) MAX_MASK_SIDE, (int) Math.ceil(lw * s)));
-        int h = Math.max(1, Math.min((int) MAX_MASK_SIDE, (int) Math.ceil(lh * s)));
-
-        final Bitmap bmp;
-        try {
-            bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        } catch (OutOfMemoryError ignored) {
+        RasterResult allocated = allocateMaskBitmap(subLayout, padPx, scale);
+        if (allocated == null) {
             return null;
         }
-        if (bmp == null) {
-            return null;
-        }
-        Canvas c = new Canvas(bmp);
-        c.scale(s, s);
+        Canvas c = new Canvas(allocated.bitmap);
+        c.scale(allocated.scale, allocated.scale);
         c.translate(padPx, padPx);
 
         TextPaint paint = subLayout.getPaint();
@@ -337,6 +333,6 @@ final class LyricsGlyphMaskCache {
         paint.setColor(prevColor);
         paint.setShader(prevShader);
 
-        return new RasterResult(bmp, s);
+        return allocated;
     }
 }

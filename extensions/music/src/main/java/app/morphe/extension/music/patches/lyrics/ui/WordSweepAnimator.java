@@ -24,7 +24,9 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import app.morphe.extension.music.patches.lyrics.ui.LyricsGlyphMaskCache.ClusterMaskCache;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.ActiveSylInfo;
@@ -33,6 +35,7 @@ import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.CharPosit
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.ClusterMeta;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.ClusterStatics;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.ColorAlphaCache;
+import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.FormattedMainText;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.ReconstructedWord;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.RomanStatics;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.RomanizedWordCluster;
@@ -104,6 +107,30 @@ public final class WordSweepAnimator {
         float sp = emphasisSpringProgress(t, response);
         out.lift = sp;
         out.pulse = sp * (1f - emphasisSpringProgress(t - hold, response));
+    }
+
+    @Nullable
+    private float[] ensureEmphasisTable(int idx, @NonNull VisualCluster vc) {
+        if (!vc.isHeavy) {
+            return null;
+        }
+        float[] table = emphasisTables[idx];
+        if (table == null) {
+            table = buildEmphasisTable(vc);
+            emphasisTables[idx] = table;
+        }
+        return table;
+    }
+
+    /** Whether clearing exiting syllable romanization/ruby requires remeasuring main line layout. */
+    boolean needsExitLayoutRebuild() {
+        return hasSyllableRomanization
+                || hasRuby
+                || lazyExitingSyllableRomanization
+                || lazyExitingRubyActive
+                || hasRomanShift
+                || extraRomanHeightPx > 0
+                || extraRubyHeightPx > 0;
     }
 
     @NonNull
@@ -191,8 +218,8 @@ public final class WordSweepAnimator {
     @Nullable
     public final List<WordTimestamp> shapedRomanizedWords;
     public final boolean isBackground;
-    public final boolean showSyllableRomanization;
-    public final boolean hasSyllableRomanization;
+    public boolean showSyllableRomanization;
+    public boolean hasSyllableRomanization;
     public final float fontSizePx;
     public final float gradientWidth;
     public final float elevationAmount;
@@ -201,7 +228,7 @@ public final class WordSweepAnimator {
     public final float emphasisRiseEm = 0.035f;
     public final float emphasisShiftEm = 0.05f;
     public final float emphasisScaleGain = 0.1f;
-    public final float lineExtraHeight;
+    public float lineExtraHeight;
     public final float glowBlurRadius;
     public final float shadowBlurRadius;
     public final Layout.Alignment alignment;
@@ -220,10 +247,10 @@ public final class WordSweepAnimator {
     public final List<AlignedSyllable> alignedSyllables;
     public List<RomanizedWordCluster> romanClusters;
     public List<RomanizedWordCluster> rubyClusters;
-    public final boolean hasRuby;
-    public final float firstLineRubyOffset;
-    public final int extraRomanHeightPx;
-    public final int extraRubyHeightPx;
+    public boolean hasRuby;
+    public float firstLineRubyOffset;
+    public int extraRomanHeightPx;
+    public int extraRubyHeightPx;
     public List<ReconstructedWord> reconstructedWords;
     public float[] charXMap;
     public float[] romanStartShift;
@@ -244,7 +271,7 @@ public final class WordSweepAnimator {
     public final int lastSylIdx;
     public final long lineStartMs;
     public final int measuredWidth;
-    public final int measuredHeight;
+    public int measuredHeight;
 
     public final boolean isArabicOrRtl;
     public boolean[] clusterMotionOff;
@@ -328,14 +355,48 @@ public final class WordSweepAnimator {
     public boolean glowPossible;
     public ClusterMaskCache maskCacheStore;
 
+    /** Cached invariant text layouts harvested from an evicted animator across region toggles. */
+    public static final class ReuseHint {
+        final int widthPx;
+        final float fontSizePx;
+        final int accentColor;
+        final boolean hasJoining;
+        final Layout.Alignment alignment;
+        @Nullable
+        final Layout unformattedLayout;
+        @Nullable
+        final Map<String, Layout> subLayouts;
+
+        ReuseHint(
+                int widthPx,
+                float fontSizePx,
+                int accentColor,
+                boolean hasJoining,
+                @NonNull Layout.Alignment alignment,
+                @Nullable Layout unformattedLayout,
+                @Nullable Map<String, Layout> subLayouts) {
+            this.widthPx = widthPx;
+            this.fontSizePx = fontSizePx;
+            this.accentColor = accentColor;
+            this.hasJoining = hasJoining;
+            this.alignment = alignment;
+            this.unformattedLayout = unformattedLayout;
+            this.subLayouts = subLayouts;
+        }
+    }
+
     @Nullable
     private TextPaint lazyBasePaint;
     @Nullable
     private final String lazyRomanizedText;
     private final int lazyExpressiveAccent;
     private final boolean lazyHasJoining;
-    private final boolean lazyExitingSyllableRomanization;
-    private final boolean lazyExitingRubyActive;
+    private boolean lazyExitingSyllableRomanization;
+    private boolean lazyExitingRubyActive;
+    @Nullable
+    private Layout unromanLayoutCache;
+    @Nullable
+    private ReuseHint pendingReuseHint;
     private boolean renderStateBuilt = false;
     private boolean unromanPositionsBuilt = false;
     private boolean hasRomanShift = false;
@@ -404,6 +465,29 @@ public final class WordSweepAnimator {
             int widthPx,
             int expressiveAccent,
             boolean prewarmMasks) {
+        this(mainText, rawWords, rawRomanizedWords, romanizedText,
+                showSyllableRomanization, rubyActive, exitingSyllableRomanization, exitingRubyActive,
+                isBackground, adjustedEndTimeMs, basePaint, alignment, widthPx, expressiveAccent,
+                prewarmMasks, null);
+    }
+
+    public WordSweepAnimator(
+            @NonNull String mainText,
+            @NonNull List<WordTimestamp> rawWords,
+            @Nullable List<WordTimestamp> rawRomanizedWords,
+            @Nullable String romanizedText,
+            boolean showSyllableRomanization,
+            boolean rubyActive,
+            boolean exitingSyllableRomanization,
+            boolean exitingRubyActive,
+            boolean isBackground,
+            @Nullable Long adjustedEndTimeMs,
+            @NonNull TextPaint basePaint,
+            @NonNull Layout.Alignment alignment,
+            int widthPx,
+            int expressiveAccent,
+            boolean prewarmMasks,
+            @Nullable ReuseHint reuseHint) {
         this.mainText = mainText;
         this.isBackground = isBackground;
         this.alignment = alignment;
@@ -426,13 +510,23 @@ public final class WordSweepAnimator {
         }
         this.showSyllableRomanization = showSyllableRomanization;
 
-        this.formattedMainText = WordAnimationUtils.formatMainText(
+        FormattedMainText fmt = WordAnimationUtils.formatMainTextWithResult(
                 mainText, shapedWords, shapedRomanizedWords, romanizedText,
                 showSyllableRomanization, rubyActive, basePaint, widthPx);
+        this.formattedMainText = fmt.text;
 
         boolean isMainRtl = LyricsSpanBuilder.isRtlText(formattedMainText);
-        this.textLayoutResult = WordAnimationUtils.createStaticLayout(
-                formattedMainText, basePaint, widthPx, alignment, isMainRtl);
+        if (formattedMainText.equals(mainText) && reuseHint != null
+                && reuseHint.unformattedLayout != null
+                && reuseHint.widthPx == widthPx
+                && Math.abs(reuseHint.fontSizePx - fontSizePx) < 0.5f
+                && reuseHint.alignment == alignment
+                && reuseHint.unformattedLayout.getText().toString().equals(mainText)) {
+            this.textLayoutResult = reuseHint.unformattedLayout;
+        } else {
+            this.textLayoutResult = WordAnimationUtils.createStaticLayout(
+                    formattedMainText, basePaint, widthPx, alignment, isMainRtl);
+        }
 
         this.lineCount = textLayoutResult.getLineCount();
         this.lineLefts = new float[lineCount];
@@ -457,16 +551,14 @@ public final class WordSweepAnimator {
         }
         this.totalWidth = cum;
 
-        this.alignedSyllables = WordAnimationUtils.alignSyllablesForFormatting(shapedWords, formattedMainText);
+        this.alignedSyllables = (fmt.alignedIfUnchanged != null && formattedMainText.equals(mainText))
+                ? fmt.alignedIfUnchanged
+                : WordAnimationUtils.alignSyllablesForFormatting(shapedWords, formattedMainText);
         this.hasSyllableRomanization = showSyllableRomanization
                 && WordAnimationUtils.hasAnyRomanizedSyllables(
                         alignedSyllables, shapedRomanizedWords, romanizedText, formattedMainText);
         this.hasRuby = rubyActive
                 && WordAnimationUtils.hasAnyRubySyllables(true, alignedSyllables, formattedMainText);
-        float lineRomanExtra = hasSyllableRomanization ? (fontSizePx * 0.80f) : 0f;
-        float lineRubyExtra = hasRuby ? (fontSizePx * 0.70f) : 0f;
-        this.firstLineRubyOffset = lineRubyExtra;
-        this.lineExtraHeight = lineRomanExtra + (lineCount > 1 ? lineRubyExtra : 0f);
 
         this.lineStartTime = shapedWords.isEmpty() ? 0L : (long) (shapedWords.get(0).startTime * 1000.0);
         this.lineEndTime = shapedWords.isEmpty() ? 0L : (long) (shapedWords.get(shapedWords.size() - 1).endTime * 1000.0);
@@ -489,13 +581,102 @@ public final class WordSweepAnimator {
         this.lazyHasJoining = LyricsTextUtils.containsJoiningScript(formattedMainText);
         this.lazyExitingSyllableRomanization = exitingSyllableRomanization;
         this.lazyExitingRubyActive = exitingRubyActive;
+        this.measuredWidth = widthPx;
+        if (formattedMainText.equals(mainText)) {
+            this.unromanLayoutCache = this.textLayoutResult;
+        } else if (reuseHint != null
+                && reuseHint.unformattedLayout != null
+                && reuseHint.widthPx == widthPx
+                && Math.abs(reuseHint.fontSizePx - fontSizePx) < 0.5f
+                && reuseHint.alignment == alignment
+                && reuseHint.unformattedLayout.getText().toString().equals(mainText)) {
+            this.unromanLayoutCache = reuseHint.unformattedLayout;
+        }
+        if (reuseHint != null
+                && reuseHint.accentColor == expressiveAccent
+                && reuseHint.hasJoining == lazyHasJoining
+                && Math.abs(reuseHint.fontSizePx - fontSizePx) < 0.5f) {
+            this.pendingReuseHint = reuseHint;
+        }
+        recomputeVerticalMetrics();
+    }
 
+    private void recomputeVerticalMetrics() {
+        float lineRomanExtra = hasSyllableRomanization ? (fontSizePx * 0.80f) : 0f;
+        float lineRubyExtra = hasRuby ? (fontSizePx * 0.70f) : 0f;
+        this.firstLineRubyOffset = lineRubyExtra;
+        this.lineExtraHeight = lineRomanExtra + (lineCount > 1 ? lineRubyExtra : 0f);
         int bottomMargin = hasSyllableRomanization ? (int) (fontSizePx * 0.10f) : 0;
         this.extraRomanHeightPx = Math.round(hasSyllableRomanization ? (lineCount * (fontSizePx * 0.80f) + bottomMargin) : 0f);
         this.extraRubyHeightPx = Math.round(hasRuby ? (lineCount * (fontSizePx * 0.70f)) : 0f);
         int totalExtraPx = (int) (lineCount * lineExtraHeight + firstLineRubyOffset);
-        this.measuredWidth = widthPx;
         this.measuredHeight = textLayoutResult.getHeight() + totalExtraPx + bottomMargin;
+    }
+
+    /**
+     * Harvests invariant sub-layouts so a follow-up animator built after toggling romanization
+     * or ruby avoids re-shaping every character/word cluster and the base main layout.
+     */
+    @NonNull
+    public ReuseHint extractReuseHint() {
+        Map<String, Layout> map = null;
+        if (renderStateBuilt && clusters != null && !clusters.isEmpty()) {
+            map = new HashMap<>(clusters.size() * 2 + 1);
+            int textLen = formattedMainText.length();
+            for (int i = 0; i < clusters.size(); i++) {
+                VisualCluster vc = clusters.get(i);
+                if (vc.subLayout == null || vc.start < 0 || vc.end > textLen || vc.start >= vc.end) {
+                    continue;
+                }
+                map.putIfAbsent(formattedMainText.substring(vc.start, vc.end), vc.subLayout);
+            }
+        } else if (pendingReuseHint != null && pendingReuseHint.subLayouts != null) {
+            map = pendingReuseHint.subLayouts;
+        }
+        return new ReuseHint(
+                measuredWidth, fontSizePx, lazyExpressiveAccent, lazyHasJoining,
+                alignment, unromanLayoutCache, map);
+    }
+
+    /**
+     * Transitions active vs. exiting region flags in-place when cluster vertical coordinates
+     * remain invariant (all single-line rows without ruby, or any row before render state built).
+     */
+    public boolean canTransitionInPlace(boolean newShowSylRoma, boolean newRubyActive,
+                                        boolean newExitSylRoma, boolean newExitRuby) {
+        boolean newHasRuby = newRubyActive
+                && WordAnimationUtils.hasAnyRubySyllables(true, alignedSyllables, formattedMainText);
+        if (hasRuby || newHasRuby || lazyExitingRubyActive) {
+            return false;
+        }
+        if (!formattedMainText.equals(mainText)) {
+            return false;
+        }
+        if (!renderStateBuilt) {
+            return lineCount <= 1;
+        }
+        if (lineCount <= 1) {
+            return true;
+        }
+        boolean newHasSyl = newShowSylRoma
+                && WordAnimationUtils.hasAnyRomanizedSyllables(
+                        alignedSyllables, shapedRomanizedWords, lazyRomanizedText, formattedMainText);
+        float newExtra = newHasSyl ? (fontSizePx * 0.80f) : 0f;
+        return Math.abs(newExtra - lineExtraHeight) < 0.01f;
+    }
+
+    /** Updates active/exiting flags and recomputes extra height in-place when invariant. */
+    public void updateTransitionModes(boolean newShowSylRoma, boolean newRubyActive,
+                                      boolean newExitSylRoma, boolean newExitRuby) {
+        this.showSyllableRomanization = newShowSylRoma;
+        this.hasSyllableRomanization = newShowSylRoma
+                && WordAnimationUtils.hasAnyRomanizedSyllables(
+                        alignedSyllables, shapedRomanizedWords, lazyRomanizedText, formattedMainText);
+        this.hasRuby = newRubyActive
+                && WordAnimationUtils.hasAnyRubySyllables(true, alignedSyllables, formattedMainText);
+        this.lazyExitingSyllableRomanization = newExitSylRoma;
+        this.lazyExitingRubyActive = newExitRuby;
+        recomputeVerticalMetrics();
     }
 
     /**
@@ -589,6 +770,7 @@ public final class WordSweepAnimator {
         this.rubyLines = WordAnimationUtils.groupRomanClustersByLine(rubyClusters, lineCount);
 
         this.clusters = buildClusters(basePaint, lazyExpressiveAccent, lazyHasJoining);
+        this.pendingReuseHint = null;
         this.statics = WordAnimationUtils.buildClusterStatics(
                 clusters, romanStartShift, lineExtraHeight, firstLineRubyOffset, lineIsRtl,
                 lineLefts, lineRights, lineStarts, lineWidths, fontSizePx);
@@ -604,13 +786,11 @@ public final class WordSweepAnimator {
         this.clusterSpanMs = new float[n];
         for (int i = 0; i < n; i++) {
             VisualCluster vc = clusters.get(i);
-            if (vc.isHeavy) {
-                emphasisTables[i] = buildEmphasisTable(vc);
-                clusterSpanMs[i] = emphasisSpanMs(vc.wordStartMs, vc.wordEndMs, vc.charTranslateYPeak);
-            } else {
-                emphasisTables[i] = null;
-                clusterSpanMs[i] = 1f;
-            }
+            // Defer buildEmphasisTable(vc) until a heavy cluster actually draws with emphasis
+            // so toggle rebuilds do not compute 61-sample exp tables for offscreen/inactive lines.
+            clusterSpanMs[i] = vc.isHeavy
+                    ? emphasisSpanMs(vc.wordStartMs, vc.wordEndMs, vc.charTranslateYPeak)
+                    : 1f;
         }
 
         this.clusterGroupPos = new int[n];
@@ -724,6 +904,12 @@ public final class WordSweepAnimator {
                         lineLefts, lineStarts, lineCount, fontSizePx, lineExtraHeight, firstLineRubyOffset,
                         totalWidth, extraPaddingPx, lineRights, lineIsRtl, isRight)
                 : new RomanStatics(new WordAnimationUtils.RomanLineStatics[0], extraPaddingPx);
+    }
+
+    private float transReveal = 1f;
+
+    public void setTransReveal(float reveal) {
+        this.transReveal = Math.max(0f, Math.min(1f, reveal));
     }
 
     public void setRomaReveal(float reveal) {
@@ -880,6 +1066,8 @@ public final class WordSweepAnimator {
             }
         }
 
+        TextPaint clusterRunPaint = WordAnimationUtils.createConfiguredRunPaint(basePaint, expressiveAccent, hasJoining);
+        Map<String, Layout> reusedLayouts = (pendingReuseHint != null) ? pendingReuseHint.subLayouts : null;
         int[] sylPointer = new int[]{0};
         int lastSylOnLine = -1;
         int curClusterLine = -1;
@@ -895,7 +1083,7 @@ public final class WordSweepAnimator {
                 String runText = formattedMainText.substring(
                         Math.max(0, Math.min(textLen, m.start)),
                         Math.max(0, Math.min(textLen, m.end)));
-                Layout subLayout = WordAnimationUtils.measureRun(runText, basePaint, expressiveAccent, hasJoining);
+                Layout subLayout = measureClusterSubLayout(runText, clusterRunPaint, hasJoining, reusedLayouts);
                 float clusterY = lineBaselines[m.lineIdx] - subLayout.getLineBaseline(0);
                 int sIdx = sylIndexFor(m, sylPointer);
                 if (sIdx >= 0) lastSylOnLine = sIdx;
@@ -931,7 +1119,7 @@ public final class WordSweepAnimator {
                 String runText = formattedMainText.substring(
                         Math.max(0, Math.min(textLen, m.start)),
                         Math.max(0, Math.min(textLen, last.end)));
-                Layout subLayout = WordAnimationUtils.measureRun(runText, basePaint, expressiveAccent, hasJoining);
+                Layout subLayout = measureClusterSubLayout(runText, clusterRunPaint, hasJoining, reusedLayouts);
                 float clusterY = lineBaselines[m.lineIdx] - subLayout.getLineBaseline(0);
                 int sIdx = sylIndexFor(m, sylPointer);
                 if (sIdx >= 0) lastSylOnLine = sIdx;
@@ -968,7 +1156,7 @@ public final class WordSweepAnimator {
                 String runText = formattedMainText.substring(
                         Math.max(0, Math.min(textLen, m.start)),
                         Math.max(0, Math.min(textLen, last.end)));
-                Layout subLayout = WordAnimationUtils.measureRun(runText, basePaint, expressiveAccent, hasJoining);
+                Layout subLayout = measureClusterSubLayout(runText, clusterRunPaint, hasJoining, reusedLayouts);
                 float clusterY = lineBaselines[m.lineIdx] - subLayout.getLineBaseline(0);
                 list.add(new VisualCluster(
                         m.start, last.end, m.lineIdx, runLeft, clusterY, runRight - runLeft,
@@ -982,6 +1170,21 @@ public final class WordSweepAnimator {
             }
         }
         return list;
+    }
+
+    @NonNull
+    private static Layout measureClusterSubLayout(
+            @NonNull String runText,
+            @NonNull TextPaint clusterRunPaint,
+            boolean hasJoining,
+            @Nullable Map<String, Layout> reusedLayouts) {
+        if (reusedLayouts != null) {
+            Layout cached = reusedLayouts.get(runText);
+            if (cached != null) {
+                return cached;
+            }
+        }
+        return WordAnimationUtils.measureRunWithConfiguredPaint(runText, clusterRunPaint, hasJoining);
     }
 
     private static int metaLowerBound(@NonNull List<ClusterMeta> metaList, int pos) {
@@ -1460,7 +1663,7 @@ public final class WordSweepAnimator {
         float safeSpeed = Math.max(0.1f, playbackSpeed);
 
         final boolean smoothSweep = Settings.LYRICS_WORD_SMOOTH_SWEEP.get();
-        if (smoothSweep && (isActiveLine || (prewarmMasks && romaReveal >= 0.99f))) {
+        if (smoothSweep && (isActiveLine || (prewarmMasks && romaReveal >= 0.99f && transReveal >= 0.99f))) {
             maskCacheStore.prewarmStep(
                     clusters.size(),
                     1_500_000L,
@@ -1612,8 +1815,12 @@ public final class WordSweepAnimator {
         } else {
             TextPaint paint = lazyBasePaint != null ? lazyBasePaint : new TextPaint();
             boolean isMainRtl = LyricsSpanBuilder.isRtlText(mainText);
-            Layout unromanLayout = WordAnimationUtils.createStaticLayout(
-                    mainText, paint, measuredWidth, alignment, isMainRtl);
+            Layout unromanLayout = unromanLayoutCache;
+            if (unromanLayout == null) {
+                unromanLayout = WordAnimationUtils.createStaticLayout(
+                        mainText, paint, measuredWidth, alignment, isMainRtl);
+                unromanLayoutCache = unromanLayout;
+            }
             int[] fmtToMain = WordAnimationUtils.mapFormattedToMainOffsets(formattedMainText, mainText);
             int mainLen = mainText.length();
             int maxMainChar = Math.max(0, mainLen - 1);
@@ -1694,11 +1901,19 @@ public final class WordSweepAnimator {
         }
     }
 
+    private boolean shouldRasterizeMaskNow() {
+        return romaReveal >= 0.99f
+                && transReveal >= 0.99f
+                && !lazyExitingSyllableRomanization
+                && !lazyExitingRubyActive
+                && Math.abs(romaScaleProgress - 1f) < 0.01f;
+    }
+
     private boolean ensureStaticMainMask() {
         if (staticMainMask != null) {
             return !staticMainMask.isRecycled();
         }
-        if (staticMainMaskAttempted || clusters == null || clusters.isEmpty()) {
+        if (!shouldRasterizeMaskNow() || staticMainMaskAttempted || clusters == null || clusters.isEmpty()) {
             return false;
         }
         staticMainMaskAttempted = true;
@@ -1762,6 +1977,7 @@ public final class WordSweepAnimator {
             int lineColor,
             float curSimpleState,
             int expressiveAccent) {
+        final boolean allowMask = shouldRasterizeMaskNow();
         if (!romanStatics.isEmpty() && romaReveal > 0f) {
             WordAnimationUtils.drawRomanizedWordClusters(
                     canvas, romanStatics, showWipe, wipeSylIdx, wipeLineIdx, curGX,
@@ -1769,7 +1985,7 @@ public final class WordSweepAnimator {
                     scaleAlpha(pastColor, romaReveal), scaleAlpha(unlitColor, romaReveal), scaleAlpha(litColor, romaReveal),
                     showWipe ? Color.TRANSPARENT : scaleAlpha(lineColor, romaReveal),
                     curSimpleState, scaleAlpha(expressiveAccent, romaReveal),
-                    romaScaleProgress, fontSizePx * 0.14f, alignment, measuredWidth);
+                    romaScaleProgress, fontSizePx * 0.14f, alignment, measuredWidth, allowMask);
         }
         if (!rubyStatics.isEmpty() && romaReveal > 0f) {
             WordAnimationUtils.drawRomanizedWordClusters(
@@ -1778,7 +1994,7 @@ public final class WordSweepAnimator {
                     scaleAlpha(pastColor, romaReveal), scaleAlpha(unlitColor, romaReveal), scaleAlpha(litColor, romaReveal),
                     showWipe ? Color.TRANSPARENT : scaleAlpha(lineColor, romaReveal),
                     curSimpleState, scaleAlpha(expressiveAccent, romaReveal),
-                    romaScaleProgress, -fontSizePx * 0.14f, alignment, measuredWidth);
+                    romaScaleProgress, -fontSizePx * 0.14f, alignment, measuredWidth, allowMask);
         }
     }
 
@@ -1881,8 +2097,9 @@ public final class WordSweepAnimator {
             float growFraction = notStartedYet ? 0f : clusterGrowValues[idx];
             boolean isEmphasised = false;
 
-            if (isGrowableWord && emphasisTables[idx] != null) {
-                sampleEmphasisCached(emphasisTables[idx], growFraction, sampleScratch);
+            final float[] emphasisTable = isGrowableWord ? ensureEmphasisTable(idx, vc) : null;
+            if (emphasisTable != null) {
+                sampleEmphasisCached(emphasisTable, growFraction, sampleScratch);
                 isEmphasised = growFraction > 0f && growFraction < 1f;
                 if (isEmphasised) anyRunningAnim = true;
 

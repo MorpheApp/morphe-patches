@@ -20,6 +20,8 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.music.interaction.crossfade.PauseVideoFingerprint
+import app.morphe.patches.music.interaction.crossfade.PlayVideoFingerprint
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.mediasession.addSetMetadataHook
@@ -491,5 +493,13 @@ val lyricsPatch = patch(
             "$LOCKSCREEN_CLASS->onMediaSessionSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
         )
         addSetPlaybackStateHook("$EXTENSION_CLASS->onSetPlaybackState(Landroid/media/session/PlaybackState;)V")
+        PauseVideoFingerprint.method.addInstruction(
+            0,
+            "invoke-static {}, $EXTENSION_CLASS->onPauseVideo()V",
+        )
+        PlayVideoFingerprint.method.addInstruction(
+            0,
+            "invoke-static {}, $EXTENSION_CLASS->onPlayVideo()V",
+        )
     }
 }

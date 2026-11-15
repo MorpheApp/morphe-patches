@@ -589,8 +589,8 @@ final class LyricsScrollEngine {
         if (viewportH <= 0 || validRows.isEmpty()) return;
         float now = nowMs();
         int scrollY = scrollView.getScrollY();
-        final int minVis = -viewportH;
-        final int maxVis = viewportH * 2;
+        final int minVis = -viewportH / 3;
+        final int maxVis = viewportH + viewportH / 3;
         boolean anyActive = false;
 
         for (int i = 0; i < validRows.size(); i++) {

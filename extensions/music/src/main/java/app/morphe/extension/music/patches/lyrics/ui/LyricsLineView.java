@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Arrays;
@@ -93,18 +94,63 @@ final class LyricsLineView extends TextView {
     /** The hand-built layout of a line drawn with WordSweepAnimator or syllable readings, see {@link #syllableCacheFor}. */
     @Nullable
     private SyllableRomanCache syllableCache;
+    @Nullable
+    private SyllableRomanCache pendingReusableCache;
     private boolean prewarmMasks = false;
     @Nullable
     private Long adjustedEndTimeMs = null;
     private long lastDrawnClockPos = Long.MIN_VALUE;
 
     private void releaseSyllableCache() {
+        discardCache(syllableCache);
+        syllableCache = null;
+    }
+
+    private boolean preserveReusableCacheOnDetach;
+    private boolean deferSyllableBuild;
+
+    void setDeferSyllableBuild(boolean defer) {
+        this.deferSyllableBuild = defer;
+    }
+
+    private void stashCurrentSyllableCache() {
         if (syllableCache != null) {
-            if (syllableCache.animator != null) {
-                syllableCache.animator.release();
+            if (pendingReusableCache != syllableCache) {
+                discardCache(pendingReusableCache);
             }
+            pendingReusableCache = syllableCache;
             syllableCache = null;
         }
+    }
+
+    void releasePendingReusableCache() {
+        preserveReusableCacheOnDetach = false;
+        discardCache(pendingReusableCache);
+        pendingReusableCache = null;
+    }
+
+    void stashSyllableCacheForReuse() {
+        preserveReusableCacheOnDetach = true;
+        stashCurrentSyllableCache();
+    }
+
+    /** Preserves existing animator/layout caches before an in-place text/bounds update. */
+    void prepareForInPlaceUpdate() {
+        stashCurrentSyllableCache();
+        preserveReusableCacheOnDetach = false;
+    }
+
+    void adoptPendingReusableCache(@Nullable LyricsLineView prevView) {
+        if (prevView == null) {
+            return;
+        }
+        prevView.preserveReusableCacheOnDetach = false;
+        if (prevView.pendingReusableCache == null) {
+            return;
+        }
+        releasePendingReusableCache();
+        pendingReusableCache = prevView.pendingReusableCache;
+        prevView.pendingReusableCache = null;
     }
 
     public void setPrewarmMasks(boolean prewarm) {
@@ -525,7 +571,7 @@ final class LyricsLineView extends TextView {
             reportSecondaryLayoutHeight();
             requestLayout();
 
-            LyricsSpring spring = new LyricsSpring(baseDuration);
+            LyricsSpring spring = SpringEasing.springFor(Math.round(baseDuration), 0L);
             long inScaleMs = Math.max(1L, Math.round(spring.totalMs));
             float alphaDelayMs = Math.min(60f, baseDuration * 0.08f);
             float alphaDurMs = Math.max(240f, Math.min(420f, baseDuration * 0.72f));
@@ -957,18 +1003,20 @@ final class LyricsLineView extends TextView {
     private final LyricsViewSupport.BlurTarget blurTarget = new LyricsViewSupport.BlurTarget(this);
 
     void animateBlur(float targetRadius, boolean instant) {
-        blurTarget.animateTo(targetRadius, instant, hasExitingRegionOverlay());
+        blurTarget.animateTo(targetRadius, instant, hasActiveRegionTransition());
     }
 
-    private boolean hasExitingRegionOverlay() {
+    private boolean hasActiveRegionTransition() {
         return (exitingTransText != null && transReveal > 0f)
                 || (exitingRomaText != null && romaReveal > 0f)
                 || (exitingShowSyllableRomanization && romaReveal > 0f)
-                || (exitingRubyActive && romaReveal > 0f);
+                || (exitingRubyActive && romaReveal > 0f)
+                || (transStart >= 0 && transReveal < 0.999f)
+                || ((hasRomanizationRegion() || rubyActive) && romaReveal < 0.999f);
     }
 
     void setBlurRadius(float radius) {
-        blurTarget.setRadius(radius, hasExitingRegionOverlay());
+        blurTarget.setRadius(radius, hasActiveRegionTransition());
     }
 
     @Override
@@ -977,6 +1025,9 @@ final class LyricsLineView extends TextView {
         cancelScaleAnimation();
         cancelRevealAnimators();
         releaseSyllableCache();
+        if (!preserveReusableCacheOnDetach) {
+            releasePendingReusableCache();
+        }
         blurTarget.cancel();
         if (secondaryAnimator != null) {
             secondaryAnimator.cancel();
@@ -1053,6 +1104,9 @@ final class LyricsLineView extends TextView {
         if (trans) {
             transReveal = reveal;
             transScaleProgress = scaleProg;
+            if (syllableCache != null && syllableCache.animator != null) {
+                syllableCache.animator.setTransReveal(reveal);
+            }
         } else {
             romaReveal = reveal;
             romaScaleProgress = scaleProg;
@@ -1089,31 +1143,104 @@ final class LyricsLineView extends TextView {
 
     @Nullable
     String extractTranslationText() {
-        if (syllableCache != null && syllableCache.transText != null && !syllableCache.transText.isEmpty()) {
-            return syllableCache.transText;
-        }
-        CharSequence cs = getText();
-        if (cs != null && transStart >= 0 && transEnd > transStart && transStart < cs.length()) {
-            String s = cs.subSequence(transStart, Math.min(transEnd, cs.length())).toString().trim();
-            return s.isEmpty() ? null : s;
-        }
-        return exitingTransText;
+        return extractRegionText(
+                syllableCache != null ? syllableCache.transText : null,
+                pendingReusableCache != null ? pendingReusableCache.transText : null,
+                transStart, transEnd, exitingTransText);
     }
 
     @Nullable
     String extractRomanizationText() {
-        if (syllableCache != null && syllableCache.romaText != null && !syllableCache.romaText.isEmpty()) {
-            return syllableCache.romaText;
-        }
-        CharSequence cs = getText();
-        if (cs != null && romaStart >= 0 && romaEnd > romaStart && romaStart < cs.length()) {
-            String s = cs.subSequence(romaStart, Math.min(romaEnd, cs.length())).toString().trim();
-            return s.isEmpty() ? null : s;
-        }
-        return exitingRomaText;
+        return extractRegionText(
+                syllableCache != null ? syllableCache.romaText : null,
+                pendingReusableCache != null ? pendingReusableCache.romaText : null,
+                romaStart, romaEnd, exitingRomaText);
     }
 
-    void captureExitingTranslationFrom(@Nullable LyricsLineView prevView) {
+    @Nullable
+    private String extractRegionText(
+            @Nullable String activeCachedText,
+            @Nullable String reusableCachedText,
+            int regionStart,
+            int regionEnd,
+            @Nullable String exitingText) {
+        if (activeCachedText != null && !activeCachedText.isEmpty()) {
+            return activeCachedText;
+        }
+        if (reusableCachedText != null && !reusableCachedText.isEmpty()) {
+            return reusableCachedText;
+        }
+        CharSequence cs = getText();
+        if (cs != null && regionStart >= 0 && regionEnd > regionStart && regionStart < cs.length()) {
+            String s = cs.subSequence(regionStart, Math.min(regionEnd, cs.length())).toString().trim();
+            return s.isEmpty() ? null : s;
+        }
+        return exitingText;
+    }
+
+    private float batchTransFromReveal;
+    private float batchTransFromScale;
+    private float batchRomaFromReveal;
+    private float batchRomaFromScale;
+
+    void prepareBatchRegionIn(boolean trans) {
+        final int kind = trans ? REVEAL_TRANS : REVEAL_ROMA;
+        ValueAnimator running = revealAnimator(kind);
+        if (running != null) {
+            setRevealAnimator(kind, null);
+            running.cancel();
+        }
+        clearExitingRegionFields(kind);
+        if (trans) {
+            batchTransFromReveal = transReveal;
+            batchTransFromScale = transScaleProgress;
+        } else {
+            batchRomaFromReveal = romaReveal;
+            batchRomaFromScale = romaScaleProgress;
+        }
+        blurTarget.clearEffect();
+    }
+
+    void applyBatchRegionEnterFrame(boolean trans, float springVal, float easedAlpha) {
+        final float fromScale = trans ? batchTransFromScale : batchRomaFromScale;
+        final float fromReveal = trans ? batchTransFromReveal : batchRomaFromReveal;
+        setRegionAnimProgress(trans,
+                fromReveal + (1f - fromReveal) * easedAlpha,
+                fromScale + (1f - fromScale) * springVal);
+    }
+
+    void applyBatchRegionExitFrame(boolean trans, float easedOut) {
+        final float fromScale = trans ? batchTransFromScale : batchRomaFromScale;
+        final float fromReveal = trans ? batchTransFromReveal : batchRomaFromReveal;
+        setRegionAnimProgress(trans,
+                fromReveal * (1f - easedOut),
+                fromScale * (1f - easedOut));
+    }
+
+    void finishBatchRegionIn(boolean trans) {
+        setRegionAnimProgress(trans, 1f, 1f);
+        blurTarget.refresh(hasActiveRegionTransition());
+    }
+
+    /** @return true if clearing exiting state requires relayout/reflow. */
+    boolean finishBatchRegionOutSilent(boolean trans) {
+        setRegionAnimProgress(trans, 0f, 0f);
+        boolean rebuild = clearExitingRegionState(trans ? REVEAL_TRANS : REVEAL_ROMA);
+        if (rebuild) {
+            requestLayout();
+        }
+        return rebuild;
+    }
+
+    void captureExitingTranslationInPlace() {
+        captureExitingTranslationFrom(this, false);
+    }
+
+    void captureExitingRomanizationInPlace() {
+        captureExitingRomanizationFrom(this, false);
+    }
+
+    void captureExitingTranslationFrom(@Nullable LyricsLineView prevView, boolean startAnimator) {
         if (prevView == null) return;
         String prevTrans = prevView.extractTranslationText();
         if (prevTrans == null || prevTrans.isEmpty()) return;
@@ -1123,11 +1250,15 @@ final class LyricsLineView extends TextView {
         this.exitingTransWidth = -1;
         this.transReveal = Math.max(0.05f, prevView.transReveal);
         this.transScaleProgress = Math.max(0.05f, prevView.transScaleProgress);
+        this.batchTransFromReveal = this.transReveal;
+        this.batchTransFromScale = this.transScaleProgress;
         blurTarget.clearEffect();
-        animateRegionOut(true);
+        if (startAnimator) {
+            animateRegionOut(true);
+        }
     }
 
-    void captureExitingRomanizationFrom(@Nullable LyricsLineView prevView) {
+    void captureExitingRomanizationFrom(@Nullable LyricsLineView prevView, boolean startAnimator) {
         if (prevView == null) return;
         String prevRoma = prevView.extractRomanizationText();
         boolean hadSylRoma = prevView.showSyllableRomanization || prevView.exitingShowSyllableRomanization;
@@ -1142,31 +1273,52 @@ final class LyricsLineView extends TextView {
         this.exitingRubyActive = hadRuby;
         this.romaReveal = Math.max(0.05f, prevView.romaReveal);
         this.romaScaleProgress = Math.max(0.05f, prevView.romaScaleProgress);
+        this.batchRomaFromReveal = this.romaReveal;
+        this.batchRomaFromScale = this.romaScaleProgress;
         blurTarget.clearEffect();
         releaseSyllableCache();
-        animateRegionOut(false);
+        if (startAnimator) {
+            animateRegionOut(false);
+        }
     }
 
-    private void clearExitingRegion(int kind) {
+    private void clearExitingRegionFields(int kind) {
         if (kind == REVEAL_TRANS) {
             exitingTransText = null;
             exitingTransLayout = null;
             exitingTransWidth = -1;
         } else if (kind == REVEAL_ROMA) {
-            boolean rebuildCache = exitingShowSyllableRomanization || exitingRubyActive;
             exitingRomaText = null;
             exitingRomaLayout = null;
             exitingRomaWidth = -1;
             exitingRomaTimings = Collections.emptyList();
             exitingShowSyllableRomanization = false;
             exitingRubyActive = false;
+        }
+    }
+
+    private boolean clearExitingRegionState(int kind) {
+        boolean rebuildCache = false;
+        if (kind == REVEAL_ROMA) {
+            rebuildCache = (exitingShowSyllableRomanization || exitingRubyActive)
+                    && (syllableCache == null
+                    || !syllableCache.active
+                    || syllableCache.animator == null
+                    || syllableCache.animator.needsExitLayoutRebuild());
             if (rebuildCache) {
-                releaseSyllableCache();
-                requestLayout();
-                if (scrollEngine != null) scrollEngine.requestRebuildReflow();
+                stashCurrentSyllableCache();
             }
         }
-        blurTarget.refresh(hasExitingRegionOverlay());
+        clearExitingRegionFields(kind);
+        blurTarget.refresh(hasActiveRegionTransition());
+        return rebuildCache;
+    }
+
+    private void clearExitingRegion(int kind) {
+        if (clearExitingRegionState(kind)) {
+            requestLayout();
+            if (scrollEngine != null) scrollEngine.requestRebuildReflow();
+        }
     }
 
     @Nullable
@@ -1305,7 +1457,7 @@ final class LyricsLineView extends TextView {
                 : (float) SECONDARY_EXPAND_MILLISECONDS;
 
         if (entering) {
-            final LyricsSpring spring = new LyricsSpring(baseDuration);
+            final LyricsSpring spring = SpringEasing.springFor(Math.round(baseDuration), 0L);
             final long inScaleMs = Math.max(1L, Math.round(spring.totalMs));
             final long inAlphaMs = Math.max(300L, Math.min(450L, Math.round(baseDuration * 0.95f)));
             final long totalMs = Math.max(inScaleMs, inAlphaMs);
@@ -2053,6 +2205,9 @@ final class LyricsLineView extends TextView {
     @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Override
     protected void onDraw(Canvas canvas) {
+        if (deferSyllableBuild) {
+            deferSyllableBuild = false;
+        }
         if (shouldUseSyllableCache()) {
             final int width = getWidth() - getPaddingLeft() - getPaddingRight();
             CharSequence text = getText();
@@ -2446,6 +2601,27 @@ final class LyricsLineView extends TextView {
         final int mainTopY;
         final int totalHeightPx;
         final int mainLayoutHeight;
+        @Nullable
+        final String rawMainTextKey;
+        @Nullable
+        final String animatorRomArgKey;
+        final boolean showSyllableRomanizationKey;
+        final boolean rubyActiveKey;
+        final boolean exitSylRomaKey;
+        final boolean exitRubyKey;
+        final boolean isSecondaryKey;
+        final boolean isRightAlignedKey;
+        final boolean isCenteredKey;
+        @Nullable
+        final Long adjEndKey;
+        final int accentColorKey;
+        final float textSizeSpKey;
+        final List<WordTimestamp> rawWordsKey;
+        @Nullable
+        final List<WordTimestamp> rawRomWordsKey;
+        final boolean pendingDeferredAnimator;
+        @Nullable
+        final Layout deferredMainLayout;
 
         SyllableRomanCache(
                 int widthPx,
@@ -2466,7 +2642,66 @@ final class LyricsLineView extends TextView {
                 int transTopY,
                 int mainTopY,
                 int totalHeightPx,
-                int mainLayoutHeight) {
+                int mainLayoutHeight,
+                @Nullable String rawMainTextKey,
+                @Nullable String animatorRomArgKey,
+                boolean showSyllableRomanizationKey,
+                boolean rubyActiveKey,
+                boolean exitSylRomaKey,
+                boolean exitRubyKey,
+                boolean isSecondaryKey,
+                boolean isRightAlignedKey,
+                boolean isCenteredKey,
+                @Nullable Long adjEndKey,
+                int accentColorKey,
+                float textSizeSpKey,
+                List<WordTimestamp> rawWordsKey,
+                @Nullable List<WordTimestamp> rawRomWordsKey) {
+            this(widthPx, fontSizePx, active, hasSyllableRomanization, hasRuby, animator, mainText,
+                    alignedSyllables, extraRomanHeightPx, extraRubyHeightPx, romaText, romaLayout,
+                    romaTopY, transText, transLayout, transTopY, mainTopY, totalHeightPx,
+                    mainLayoutHeight, rawMainTextKey, animatorRomArgKey,
+                    showSyllableRomanizationKey, rubyActiveKey, exitSylRomaKey, exitRubyKey,
+                    isSecondaryKey, isRightAlignedKey, isCenteredKey, adjEndKey, accentColorKey,
+                    textSizeSpKey, rawWordsKey, rawRomWordsKey, false, null);
+        }
+
+        SyllableRomanCache(
+                int widthPx,
+                float fontSizePx,
+                boolean active,
+                boolean hasSyllableRomanization,
+                boolean hasRuby,
+                @Nullable WordSweepAnimator animator,
+                @Nullable String mainText,
+                List<AlignedSyllable> alignedSyllables,
+                int extraRomanHeightPx,
+                int extraRubyHeightPx,
+                @Nullable String romaText,
+                @Nullable StaticLayout romaLayout,
+                int romaTopY,
+                @Nullable String transText,
+                @Nullable StaticLayout transLayout,
+                int transTopY,
+                int mainTopY,
+                int totalHeightPx,
+                int mainLayoutHeight,
+                @Nullable String rawMainTextKey,
+                @Nullable String animatorRomArgKey,
+                boolean showSyllableRomanizationKey,
+                boolean rubyActiveKey,
+                boolean exitSylRomaKey,
+                boolean exitRubyKey,
+                boolean isSecondaryKey,
+                boolean isRightAlignedKey,
+                boolean isCenteredKey,
+                @Nullable Long adjEndKey,
+                int accentColorKey,
+                float textSizeSpKey,
+                List<WordTimestamp> rawWordsKey,
+                @Nullable List<WordTimestamp> rawRomWordsKey,
+                boolean pendingDeferredAnimator,
+                @Nullable Layout deferredMainLayout) {
             this.widthPx = widthPx;
             this.fontSizePx = fontSizePx;
             this.active = active;
@@ -2486,6 +2721,124 @@ final class LyricsLineView extends TextView {
             this.mainTopY = mainTopY;
             this.totalHeightPx = totalHeightPx;
             this.mainLayoutHeight = mainLayoutHeight;
+            this.rawMainTextKey = rawMainTextKey;
+            this.animatorRomArgKey = animatorRomArgKey;
+            this.showSyllableRomanizationKey = showSyllableRomanizationKey;
+            this.rubyActiveKey = rubyActiveKey;
+            this.exitSylRomaKey = exitSylRomaKey;
+            this.exitRubyKey = exitRubyKey;
+            this.isSecondaryKey = isSecondaryKey;
+            this.isRightAlignedKey = isRightAlignedKey;
+            this.isCenteredKey = isCenteredKey;
+            this.adjEndKey = adjEndKey;
+            this.accentColorKey = accentColorKey;
+            this.textSizeSpKey = textSizeSpKey;
+            this.rawWordsKey = rawWordsKey;
+            this.rawRomWordsKey = rawRomWordsKey;
+            this.pendingDeferredAnimator = pendingDeferredAnimator;
+            this.deferredMainLayout = deferredMainLayout;
+        }
+
+        private boolean matchesInvariantKeys(
+                int widthPx,
+                float fontSizePx,
+                float textSizeSp,
+                String rawMainText,
+                @Nullable String animatorRomArg,
+                boolean isSecondary,
+                boolean isRightAligned,
+                boolean isCentered,
+                @Nullable Long adjEnd,
+                int accentColor,
+                List<WordTimestamp> rawWords,
+                @Nullable List<WordTimestamp> rawRomWords) {
+            return animator != null
+                    && this.widthPx == widthPx
+                    && Math.abs(this.fontSizePx - fontSizePx) < 0.5f
+                    && Math.abs(this.textSizeSpKey - textSizeSp) < 0.01f
+                    && this.isSecondaryKey == isSecondary
+                    && this.isRightAlignedKey == isRightAligned
+                    && this.isCenteredKey == isCentered
+                    && this.accentColorKey == accentColor
+                    && Objects.equals(this.adjEndKey, adjEnd)
+                    && Objects.equals(this.rawMainTextKey, rawMainText)
+                    && Objects.equals(this.animatorRomArgKey, animatorRomArg)
+                    && wordListsEqual(this.rawWordsKey, rawWords)
+                    && wordListsEqual(this.rawRomWordsKey, rawRomWords);
+        }
+
+        boolean canReuseAnimator(
+                int widthPx,
+                float fontSizePx,
+                float textSizeSp,
+                String rawMainText,
+                @Nullable String animatorRomArg,
+                boolean showSyllableRomanization,
+                boolean rubyActive,
+                boolean exitSylRoma,
+                boolean exitRuby,
+                boolean isSecondary,
+                boolean isRightAligned,
+                boolean isCentered,
+                @Nullable Long adjEnd,
+                int accentColor,
+                List<WordTimestamp> rawWords,
+                @Nullable List<WordTimestamp> rawRomWords) {
+            return this.showSyllableRomanizationKey == showSyllableRomanization
+                    && this.rubyActiveKey == rubyActive
+                    && this.exitSylRomaKey == exitSylRoma
+                    && this.exitRubyKey == exitRuby
+                    && matchesInvariantKeys(
+                            widthPx, fontSizePx, textSizeSp, rawMainText, animatorRomArg,
+                            isSecondary, isRightAligned, isCentered, adjEnd, accentColor,
+                            rawWords, rawRomWords);
+        }
+
+        boolean canTransitionInPlace(
+                int widthPx,
+                float fontSizePx,
+                float textSizeSp,
+                String rawMainText,
+                @Nullable String animatorRomArg,
+                boolean showSyllableRomanization,
+                boolean rubyActive,
+                boolean exitSylRoma,
+                boolean exitRuby,
+                boolean isSecondary,
+                boolean isRightAligned,
+                boolean isCentered,
+                @Nullable Long adjEnd,
+                int accentColor,
+                List<WordTimestamp> rawWords,
+                @Nullable List<WordTimestamp> rawRomWords) {
+            return animator != null
+                    && (this.showSyllableRomanizationKey || this.exitSylRomaKey) == (showSyllableRomanization || exitSylRoma)
+                    && (this.rubyActiveKey || this.exitRubyKey) == (rubyActive || exitRuby)
+                    && matchesInvariantKeys(
+                            widthPx, fontSizePx, textSizeSp, rawMainText, animatorRomArg,
+                            isSecondary, isRightAligned, isCentered, adjEnd, accentColor,
+                            rawWords, rawRomWords)
+                    && animator.canTransitionInPlace(
+                            showSyllableRomanization, rubyActive, exitSylRoma, exitRuby);
+        }
+
+        private static boolean wordListsEqual(@Nullable List<WordTimestamp> a, @Nullable List<WordTimestamp> b) {
+            if (a == b) return true;
+            if (a == null || b == null || a.size() != b.size()) return false;
+            for (int i = 0; i < a.size(); i++) {
+                WordTimestamp wa = a.get(i);
+                WordTimestamp wb = b.get(i);
+                if (Double.compare(wa.startTime, wb.startTime) != 0
+                        || Double.compare(wa.endTime, wb.endTime) != 0
+                        || wa.hasTrailingSpace != wb.hasTrailingSpace
+                        || wa.isBackground != wb.isBackground
+                        || !Objects.equals(wa.text, wb.text)
+                        || !Objects.equals(wa.romanized, wb.romanized)
+                        || !Objects.equals(wa.ruby, wb.ruby)) {
+                    return false;
+                }
+            }
+            return true;
         }
 
         void ensureSyllableHitBounds() {
@@ -2539,7 +2892,9 @@ final class LyricsLineView extends TextView {
             return new SyllableRomanCache(
                     widthPx, fontSizePx, false, false, false, null, null,
                     Collections.emptyList(), 0, 0,
-                    null, null, 0, null, null, 0, 0, 0, 0);
+                    null, null, 0, null, null, 0, 0, 0, 0,
+                    null, null, false, false, false, false, false, false, false,
+                    null, 0, 0f, Collections.emptyList(), null);
         }
     }
 
@@ -2547,19 +2902,72 @@ final class LyricsLineView extends TextView {
     private SyllableRomanCache syllableCacheFor(int widthPx, CharSequence fullText) {
         final float fontSizePx = getTextSize();
         if (syllableCache == null || syllableCache.widthPx != widthPx
-                || Math.abs(syllableCache.fontSizePx - fontSizePx) >= 0.5f) {
+                || Math.abs(syllableCache.fontSizePx - fontSizePx) >= 0.5f
+                || (syllableCache.pendingDeferredAnimator && !deferSyllableBuild)) {
             if (syllableCache != null) {
-                if (syllableCache.animator != null) {
-                    syllableCache.animator.release();
+                if (syllableCache.pendingDeferredAnimator) {
+                    stashCurrentSyllableCache();
+                } else {
+                    releaseSyllableCache();
                 }
-                syllableCache = null;
             }
             syllableCache = buildSyllableCache(widthPx, fontSizePx, fullText.toString());
         }
         return syllableCache.active ? syllableCache : null;
     }
 
+    private static void discardCache(@Nullable SyllableRomanCache cache) {
+        if (cache != null && cache.animator != null) {
+            cache.animator.release();
+        }
+    }
+
+    @NonNull
+    private TextPaint createMainSweepPaint(float fontSizePx, float textSizeSp, @NonNull String rawMainText) {
+        TextPaint mainPaint = new TextPaint(getPaint());
+        mainPaint.setTextSize(fontSizePx);
+        LyricsViewSupport.applyLyricsBoldPaint(mainPaint);
+        mainPaint.setLetterSpacing(LyricsViewSupport.lineLetterSpacing(rawMainText, textSizeSp));
+        return mainPaint;
+    }
+
+    @Nullable
+    private StaticLayout resolveSecondaryTextLayout(
+            @Nullable String text,
+            boolean isTrans,
+            int widthPx,
+            float fontSizePx,
+            boolean isRight,
+            boolean isCentered,
+            boolean compatibleSubLayout,
+            @Nullable SyllableRomanCache reusable) {
+        if (text == null || text.isEmpty()) {
+            return null;
+        }
+        if (compatibleSubLayout && reusable != null) {
+            StaticLayout prev = isTrans ? reusable.transLayout : reusable.romaLayout;
+            String prevText = isTrans ? reusable.transText : reusable.romaText;
+            if (prev != null && Objects.equals(text, prevText)) {
+                return prev;
+            }
+        }
+        TextPaint subPaint = new TextPaint(getPaint());
+        subPaint.setTextSize(fontSizePx * LyricsSpanBuilder.TRANSLATION_RELATIVE_SIZE);
+        LyricsViewSupport.applyLyricsBoldPaint(subPaint);
+        subPaint.setLetterSpacing(0f);
+        boolean isRtl = isTrans && LyricsSpanBuilder.isRtlText(text);
+        Layout.Alignment align = LyricsSpanBuilder.resolveAlignment(isRtl, isRight, isCentered);
+        return StaticLayout.Builder.obtain(text, 0, text.length(), subPaint, widthPx)
+                .setAlignment(align)
+                .setIncludePad(false)
+                .setLineSpacing(0f, 1.18f)
+                .build();
+    }
+
     private SyllableRomanCache buildSyllableCache(int widthPx, float fontSizePx, String fullStr) {
+        final SyllableRomanCache reusable = pendingReusableCache;
+        pendingReusableCache = null;
+
         final int origStart = Math.max(0, Math.min(originalTextStart, fullStr.length()));
         final int newline = fullStr.indexOf('\n', origStart);
         final int origEnd = newline >= 0 ? newline : fullStr.length();
@@ -2567,6 +2975,7 @@ final class LyricsLineView extends TextView {
         if (rawMainText.trim().isEmpty()
                 || ScriptDetector.containsRtl(rawMainText)
                 || (transStart == 0 && transEnd == fullStr.length())) {
+            discardCache(reusable);
             return SyllableRomanCache.none(widthPx, fontSizePx);
         }
 
@@ -2585,12 +2994,63 @@ final class LyricsLineView extends TextView {
                 && !smallRunHoldsWords
                 && Settings.LYRICS_WORD_SYNC.get();
         if (!hasAnimatedWordSweep && !showSyllableRomanization && !rubyActive && !exitSylRoma && !exitRuby) {
+            discardCache(reusable);
             return SyllableRomanCache.none(widthPx, fontSizePx);
+        }
+
+        final boolean isRight = this.isRightAligned;
+        final float textSizeSp = Settings.LYRICS_TEXT_SIZE.get();
+        final Layout.Alignment mainAlign = LyricsSpanBuilder.resolveAlignment(false, isRight, isCentered);
+        final boolean compatibleSubLayout = reusable != null
+                && reusable.widthPx == widthPx
+                && Math.abs(reusable.fontSizePx - fontSizePx) < 0.5f
+                && reusable.isRightAlignedKey == isRight
+                && reusable.isCenteredKey == isCentered;
+
+        String transText = null;
+        if (transStart >= 0 && transEnd > transStart && transStart < fullStr.length()) {
+            String t = fullStr.substring(transStart, Math.min(transEnd, fullStr.length())).trim();
+            if (!t.isEmpty()) {
+                transText = t;
+            }
+        }
+
+        // Off-screen non-romanized rows only need exact height on frame 1; defer animator
+        // construction until draw so toggling romanization off does not build off-screen animators.
+        if (deferSyllableBuild && hasAnimatedWordSweep
+                && !showSyllableRomanization && !rubyActive && !exitSylRoma && !exitRuby) {
+            Layout deferredMain = null;
+            if (compatibleSubLayout && reusable != null
+                    && Math.abs(reusable.textSizeSpKey - textSizeSp) < 0.01f
+                    && Objects.equals(rawMainText, reusable.rawMainTextKey)) {
+                if (reusable.deferredMainLayout != null) {
+                    deferredMain = reusable.deferredMainLayout;
+                } else if (reusable.animator != null
+                        && reusable.animator.formattedMainText.equals(rawMainText)) {
+                    deferredMain = reusable.animator.textLayoutResult;
+                }
+            }
+            if (deferredMain == null) {
+                TextPaint mainPaint = createMainSweepPaint(fontSizePx, textSizeSp, rawMainText);
+                boolean isMainRtl = LyricsSpanBuilder.isRtlText(rawMainText);
+                deferredMain = WordAnimationUtils.createStaticLayout(
+                        rawMainText, mainPaint, widthPx, mainAlign, isMainRtl);
+            }
+            StaticLayout romaLayout = resolveSecondaryTextLayout(
+                    romLineText, false, widthPx, fontSizePx, isRight, isCentered, compatibleSubLayout, reusable);
+            StaticLayout transLayout = resolveSecondaryTextLayout(
+                    transText, true, widthPx, fontSizePx, isRight, isCentered, compatibleSubLayout, reusable);
+            discardCache(reusable);
+            return assembleSyllableCache(
+                    widthPx, fontSizePx, textSizeSp, origStart, rawMainText, null,
+                    false, false, false, false, isRight, isCentered, null, 0,
+                    Collections.emptyList(), null, null, Collections.emptyList(),
+                    deferredMain.getHeight(), 0, 0,
+                    romLineText, romaLayout, transText, transLayout, true, deferredMain);
         }
 
         final String animatorRomArg = (showSyllableRomanization || exitSylRoma)
                 ? (romLineText != null ? romLineText : exitingRomaText) : null;
-        final boolean isRight = this.isRightAligned;
         final int accentColor = LyricsColors.lineTextColor() | 0xFF000000;
         Long adjEnd = adjustedEndTimeMs;
         if (adjEnd == null) {
@@ -2600,8 +3060,12 @@ final class LyricsLineView extends TextView {
             }
         }
 
-        List<WordTimestamp> rawWords = WordTimestamp.fromSpanTimings(rawMainText, wordTimings, isSecondary);
+        List<WordTiming> mainSourceTimings = ((!showSyllableRomanization && exitSylRoma) || (!rubyActive && exitRuby))
+                && !exitingRomaTimings.isEmpty()
+                ? exitingRomaTimings : wordTimings;
+        List<WordTimestamp> rawWords = WordTimestamp.fromSpanTimings(rawMainText, mainSourceTimings, isSecondary);
         if (rawWords.isEmpty()) {
+            discardCache(reusable);
             return SyllableRomanCache.none(widthPx, fontSizePx);
         }
 
@@ -2615,6 +3079,7 @@ final class LyricsLineView extends TextView {
                 }
             }
             if (!anyRawRuby) {
+                discardCache(reusable);
                 return SyllableRomanCache.none(widthPx, fontSizePx);
             }
         }
@@ -2625,37 +3090,64 @@ final class LyricsLineView extends TextView {
         List<WordTimestamp> rawRomWords = (showSyllableRomanization || exitSylRoma)
                 ? WordTimestamp.buildRomanizedWordsFromSpanTimings(rawMainText, romSourceTimings, isSecondary)
                 : null;
-        if (exitRuby && !exitingRomaTimings.isEmpty()) {
+        if (exitRuby && !exitingRomaTimings.isEmpty() && mainSourceTimings != exitingRomaTimings) {
             List<WordTimestamp> rubySourceWords = WordTimestamp.fromSpanTimings(rawMainText, exitingRomaTimings, isSecondary);
             if (rubySourceWords.size() == rawWords.size()) {
                 rawWords = rubySourceWords;
             }
         }
 
-        Layout.Alignment mainAlign = LyricsSpanBuilder.resolveAlignment(false, isRight, isCentered);
+        WordSweepAnimator animator;
+        final boolean reusedAnimator = reusable != null && reusable.canReuseAnimator(
+                widthPx, fontSizePx, textSizeSp, rawMainText, animatorRomArg,
+                showSyllableRomanization, rubyActive, exitSylRoma, exitRuby,
+                isSecondary, isRight, isCentered, adjEnd, accentColor, rawWords, rawRomWords);
+        if (reusedAnimator) {
+            animator = reusable.animator;
+            animator.setPrewarmMasks(prewarmMasks);
+        } else if (reusable != null && reusable.canTransitionInPlace(
+                widthPx, fontSizePx, textSizeSp, rawMainText, animatorRomArg,
+                showSyllableRomanization, rubyActive, exitSylRoma, exitRuby,
+                isSecondary, isRight, isCentered, adjEnd, accentColor, rawWords, rawRomWords)) {
+            animator = reusable.animator;
+            animator.updateTransitionModes(showSyllableRomanization, rubyActive, exitSylRoma, exitRuby);
+            animator.setPrewarmMasks(prewarmMasks);
+        } else {
+            WordSweepAnimator.ReuseHint reuseHint = (reusable != null && reusable.animator != null)
+                    ? reusable.animator.extractReuseHint() : null;
+            if (reuseHint == null && compatibleSubLayout
+                    && reusable.deferredMainLayout != null
+                    && Math.abs(reusable.textSizeSpKey - textSizeSp) < 0.01f
+                    && Objects.equals(rawMainText, reusable.rawMainTextKey)) {
+                reuseHint = new WordSweepAnimator.ReuseHint(
+                        widthPx, fontSizePx, accentColor,
+                        LyricsTextUtils.containsJoiningScript(rawMainText), mainAlign,
+                        reusable.deferredMainLayout, null);
+            }
+            discardCache(reusable);
+            TextPaint mainPaint = createMainSweepPaint(fontSizePx, textSizeSp, rawMainText);
 
-        TextPaint mainPaint = new TextPaint(getPaint());
-        mainPaint.setTextSize(fontSizePx);
-        LyricsViewSupport.applyLyricsBoldPaint(mainPaint);
-        mainPaint.setLetterSpacing(LyricsViewSupport.lineLetterSpacing(
-                rawMainText, Settings.LYRICS_TEXT_SIZE.get()));
-
-        WordSweepAnimator animator = new WordSweepAnimator(
-                rawMainText,
-                rawWords,
-                rawRomWords,
-                animatorRomArg,
-                showSyllableRomanization,
-                rubyActive,
-                exitSylRoma,
-                exitRuby,
-                isSecondary,
-                adjEnd,
-                mainPaint,
-                mainAlign,
-                widthPx,
-                accentColor,
-                prewarmMasks);
+            animator = new WordSweepAnimator(
+                    rawMainText,
+                    rawWords,
+                    rawRomWords,
+                    animatorRomArg,
+                    showSyllableRomanization,
+                    rubyActive,
+                    exitSylRoma,
+                    exitRuby,
+                    isSecondary,
+                    adjEnd,
+                    mainPaint,
+                    mainAlign,
+                    widthPx,
+                    accentColor,
+                    prewarmMasks,
+                    reuseHint);
+        }
+        animator.setTransReveal(transReveal);
+        animator.setRomaReveal(romaReveal);
+        animator.setRomaScaleProgress(romaScaleProgress);
 
         if (!hasAnimatedWordSweep && !animator.hasSyllableRomanization && !animator.hasRuby
                 && !exitSylRoma && !exitRuby) {
@@ -2663,47 +3155,54 @@ final class LyricsLineView extends TextView {
             return SyllableRomanCache.none(widthPx, fontSizePx);
         }
 
-        List<AlignedSyllable> alignedSyllables = animator.alignedSyllables;
+        StaticLayout romaLayout = !animator.hasSyllableRomanization
+                ? resolveSecondaryTextLayout(romLineText, false, widthPx, fontSizePx, isRight, isCentered, compatibleSubLayout, reusable)
+                : null;
+        StaticLayout transLayout = resolveSecondaryTextLayout(
+                transText, true, widthPx, fontSizePx, isRight, isCentered, compatibleSubLayout, reusable);
 
-        StaticLayout romaLayout = null;
-        if (!animator.hasSyllableRomanization && romLineText != null && !romLineText.isEmpty()) {
-            TextPaint romaPaint = new TextPaint(getPaint());
-            romaPaint.setTextSize(fontSizePx * LyricsSpanBuilder.TRANSLATION_RELATIVE_SIZE);
-            LyricsViewSupport.applyLyricsBoldPaint(romaPaint);
-            romaPaint.setLetterSpacing(0f);
-            Layout.Alignment romaAlign = LyricsSpanBuilder.resolveAlignment(false, isRight, isCentered);
-            romaLayout = StaticLayout.Builder.obtain(
-                            romLineText, 0, romLineText.length(), romaPaint, widthPx)
-                    .setAlignment(romaAlign)
-                    .setIncludePad(false)
-                    .setLineSpacing(0f, 1.18f)
-                    .build();
-        }
+        return assembleSyllableCache(
+                widthPx, fontSizePx, textSizeSp, origStart, rawMainText, animatorRomArg,
+                showSyllableRomanization, rubyActive, exitSylRoma, exitRuby,
+                isRight, isCentered, adjEnd, accentColor, rawWords, rawRomWords,
+                animator, animator.alignedSyllables,
+                animator.measuredHeight, animator.extraRomanHeightPx, animator.extraRubyHeightPx,
+                romLineText, romaLayout, transText, transLayout, false, null);
+    }
 
-        String transText = null;
-        StaticLayout transLayout = null;
-        if (transStart >= 0 && transEnd > transStart && transStart < fullStr.length()) {
-            transText = fullStr.substring(transStart, Math.min(transEnd, fullStr.length())).trim();
-            if (!transText.isEmpty()) {
-                TextPaint transPaint = new TextPaint(getPaint());
-                transPaint.setTextSize(fontSizePx * LyricsSpanBuilder.TRANSLATION_RELATIVE_SIZE);
-                LyricsViewSupport.applyLyricsBoldPaint(transPaint);
-                transPaint.setLetterSpacing(0f);
-                final boolean isTransRtl = LyricsSpanBuilder.isRtlText(transText);
-                Layout.Alignment transAlign =
-                        LyricsSpanBuilder.resolveAlignment(isTransRtl, isRight, isCentered);
-                transLayout = StaticLayout.Builder.obtain(
-                                transText, 0, transText.length(), transPaint, widthPx)
-                        .setAlignment(transAlign)
-                        .setIncludePad(false)
-                        .setLineSpacing(0f, 1.18f)
-                        .build();
-            } else {
-                transText = null;
-            }
-        }
-
-        final int mainSectionH = animator.measuredHeight;
+    private SyllableRomanCache assembleSyllableCache(
+            int widthPx,
+            float fontSizePx,
+            float textSizeSp,
+            int origStart,
+            @NonNull String rawMainText,
+            @Nullable String animatorRomArg,
+            boolean showSylRomaKey,
+            boolean rubyActiveKey,
+            boolean exitSylRomaKey,
+            boolean exitRubyKey,
+            boolean isRight,
+            boolean isCentered,
+            @Nullable Long adjEnd,
+            int accentColor,
+            @NonNull List<WordTimestamp> rawWords,
+            @Nullable List<WordTimestamp> rawRomWords,
+            @Nullable WordSweepAnimator animator,
+            @NonNull List<AlignedSyllable> alignedSyllables,
+            int mainSectionH,
+            int extraRomanHeightPx,
+            int extraRubyHeightPx,
+            @Nullable String romLineText,
+            @Nullable StaticLayout romaLayout,
+            @Nullable String transText,
+            @Nullable StaticLayout transLayout,
+            boolean pendingDeferred,
+            @Nullable Layout deferredMainLayout) {
+        final boolean hasSylRoma = animator != null && animator.hasSyllableRomanization;
+        final boolean hasRubyVal = animator != null && animator.hasRuby;
+        final String mainDisplayText = animator != null ? animator.formattedMainText : rawMainText;
+        final int mainTextLayoutH = animator != null
+                ? animator.textLayoutResult.getHeight() : mainSectionH;
         int curY = 0;
         int transTopY = 0;
         int mainTopY = 0;
@@ -2721,7 +3220,7 @@ final class LyricsLineView extends TextView {
             curY += romaLayout.getHeight();
         }
         if (transLayout != null && !transBeforeMain) {
-            final int transGap = (romaLayout == null && !animator.hasSyllableRomanization) ? Dim.dp(8f) : Dim.dp4;
+            final int transGap = (romaLayout == null && !hasSylRoma) ? Dim.dp(8f) : Dim.dp4;
             curY += transGap;
             transTopY = curY;
             curY += transLayout.getHeight();
@@ -2732,13 +3231,13 @@ final class LyricsLineView extends TextView {
                 widthPx,
                 fontSizePx,
                 true,
-                animator.hasSyllableRomanization,
-                animator.hasRuby,
+                hasSylRoma,
+                hasRubyVal,
                 animator,
-                animator.formattedMainText,
+                mainDisplayText,
                 alignedSyllables,
-                animator.extraRomanHeightPx,
-                animator.extraRubyHeightPx,
+                extraRomanHeightPx,
+                extraRubyHeightPx,
                 romLineText,
                 romaLayout,
                 romaTopY,
@@ -2747,7 +3246,23 @@ final class LyricsLineView extends TextView {
                 transTopY,
                 mainTopY,
                 totalH,
-                animator.textLayoutResult.getHeight());
+                mainTextLayoutH,
+                rawMainText,
+                animatorRomArg,
+                showSylRomaKey,
+                rubyActiveKey,
+                exitSylRomaKey,
+                exitRubyKey,
+                isSecondary,
+                isRight,
+                isCentered,
+                adjEnd,
+                accentColor,
+                textSizeSp,
+                rawWords,
+                rawRomWords,
+                pendingDeferred,
+                deferredMainLayout);
     }
 
     private static int withAlpha(int color, float alpha) {

@@ -140,4 +140,22 @@ public class WordAnimationUtilsTest {
         Assert.assertTrue(WordAnimationUtils.hasAnyRubySyllables(true, aligned, mainText));
         Assert.assertFalse(WordAnimationUtils.hasAnyRubySyllables(false, aligned, mainText));
     }
+
+    @Test
+    public void testFormatMainTextWithResultPreservesUnchangedText() {
+        List<WordTimestamp> words = List.of(
+                new WordTimestamp("hel", 0.0, 0.5, false, false, null, null),
+                new WordTimestamp("lo", 0.5, 1.0, false, false, null, null)
+        );
+        WordAnimationUtils.FormattedMainText disabled = WordAnimationUtils.formatMainTextWithResult(
+                "hello", words, null, null, false, false, new android.text.TextPaint(), 500);
+        Assert.assertEquals("hello", disabled.text);
+        Assert.assertNull(disabled.alignedIfUnchanged);
+
+        WordAnimationUtils.FormattedMainText enabled = WordAnimationUtils.formatMainTextWithResult(
+                "hello", words, null, null, true, false, new android.text.TextPaint(), 500);
+        Assert.assertEquals("hello", enabled.text);
+        Assert.assertNotNull(enabled.alignedIfUnchanged);
+        Assert.assertEquals(2, enabled.alignedIfUnchanged.size());
+    }
 }

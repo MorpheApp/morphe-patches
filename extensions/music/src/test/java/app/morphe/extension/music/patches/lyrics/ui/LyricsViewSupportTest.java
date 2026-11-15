@@ -191,4 +191,20 @@ public class LyricsViewSupportTest {
         assertTrue(LyricsPanelView.sameLineStructure(base, withRuby, false));
         assertFalse(LyricsPanelView.sameLineStructure(base, differentCandidate, false));
     }
+
+    @Test
+    public void hasMatchingSongPartsDetectsSectionChangesForInPlaceSafety() {
+        Lyrics base = new Lyrics(
+                List.of(new LyricsLine(1000L, 3000L, "line one", List.of(), null, false, false, "Verse 1")),
+                "Musixmatch", true, null, null, null, null, null, null, null, null, null);
+        Lyrics samePart = base.withLines(List.of(new LyricsLine(
+                1000L, 3000L, "line one",
+                List.of(new Word(1000L, 2000L, "line", null, true, "rain")),
+                null, false, false, "Verse 1")));
+        Lyrics changedPart = base.withLines(List.of(new LyricsLine(
+                1000L, 3000L, "line one", List.of(), null, false, false, "Chorus")));
+
+        assertTrue(LyricsPanelView.hasMatchingSongParts(base, samePart));
+        assertFalse(LyricsPanelView.hasMatchingSongParts(base, changedPart));
+    }
 }

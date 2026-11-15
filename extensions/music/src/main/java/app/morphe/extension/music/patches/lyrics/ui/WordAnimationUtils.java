@@ -608,6 +608,11 @@ public final class WordAnimationUtils {
             }
         }
 
+        @Nullable
+        public Bitmap getExistingStaticMask() {
+            return (staticMask != null && !staticMask.isRecycled()) ? staticMask : null;
+        }
+
         public void releaseStaticMask() {
             if (staticMask != null) {
                 if (!staticMask.isRecycled()) {
@@ -1012,7 +1017,12 @@ public final class WordAnimationUtils {
         return builder.build();
     }
 
-    private static TextPaint configureRunPaint(
+    /**
+     * Returns a configured {@link TextPaint} for cluster measurement so callers building many runs
+     * on one line avoid repeated {@link TextPaint} copies and HarfBuzz font-feature parsing.
+     */
+    @NonNull
+    public static TextPaint createConfiguredRunPaint(
             @NonNull TextPaint basePaint,
             int color,
             boolean hasJoiningScript) {
@@ -1034,12 +1044,12 @@ public final class WordAnimationUtils {
         return Math.max(1f, (float) Math.ceil(Layout.getDesiredWidth(text, configuredPaint)));
     }
 
-    public static Layout measureRun(
+    /** Measures a single cluster/word run using a pre-configured {@link TextPaint}. */
+    @NonNull
+    public static Layout measureRunWithConfiguredPaint(
             @NonNull String text,
-            @NonNull TextPaint basePaint,
-            int color,
+            @NonNull TextPaint runPaint,
             boolean hasJoiningScript) {
-        TextPaint runPaint = configureRunPaint(basePaint, color, hasJoiningScript);
         boolean rtl = LyricsSpanBuilder.isRtlText(text);
         int desiredW = Math.max(1, (int) Math.ceil(Layout.getDesiredWidth(text, runPaint)));
         if (!rtl && !hasJoiningScript) {
@@ -1050,6 +1060,15 @@ public final class WordAnimationUtils {
             }
         }
         return createStaticLayout(text, runPaint, desiredW, Layout.Alignment.ALIGN_NORMAL, rtl);
+    }
+
+    public static Layout measureRun(
+            @NonNull String text,
+            @NonNull TextPaint basePaint,
+            int color,
+            boolean hasJoiningScript) {
+        TextPaint runPaint = createConfiguredRunPaint(basePaint, color, hasJoiningScript);
+        return measureRunWithConfiguredPaint(text, runPaint, hasJoiningScript);
     }
 
     @NonNull
@@ -1110,7 +1129,7 @@ public final class WordAnimationUtils {
         if (!anyRuby) {
             return Collections.emptyList();
         }
-        TextPaint rubyPaint = createRubyPaint(lyricPaint, expressiveAccent);
+        TextPaint rubyPaint = createConfiguredRunPaint(createRubyPaint(lyricPaint, expressiveAccent), expressiveAccent, false);
         List<RomanizedWordCluster> result = new ArrayList<>(alignedSyllables.size());
         int maxCharIdx = Math.max(0, mainText.length() - 1);
         for (int idx = 0; idx < alignedSyllables.size(); idx++) {
@@ -1119,7 +1138,7 @@ public final class WordAnimationUtils {
             if (text != null && !text.trim().isEmpty()) {
                 int safeStart = Math.max(0, Math.min(maxCharIdx, syl.startOffset));
                 int li = mainText.isEmpty() ? 0 : textLayoutResult.getLineForOffset(safeStart);
-                Layout subLayout = measureRun(text.trim(), rubyPaint, expressiveAccent, false);
+                Layout subLayout = measureRunWithConfiguredPaint(text.trim(), rubyPaint, false);
                 float hPos = textLayoutResult.getPrimaryHorizontal(Math.min(syl.startOffset, mainText.length()));
                 result.add(new RomanizedWordCluster(
                         idx,
@@ -1137,6 +1156,18 @@ public final class WordAnimationUtils {
         return result;
     }
 
+    /** Holds formatted text alongside its pre-aligned syllables when no line breaks were inserted. */
+    public static final class FormattedMainText {
+        public final String text;
+        @Nullable
+        public final List<AlignedSyllable> alignedIfUnchanged;
+
+        FormattedMainText(@NonNull String text, @Nullable List<AlignedSyllable> alignedIfUnchanged) {
+            this.text = text;
+            this.alignedIfUnchanged = alignedIfUnchanged;
+        }
+    }
+
     @NonNull
     public static String formatMainText(
             @NonNull String mainText,
@@ -1147,8 +1178,23 @@ public final class WordAnimationUtils {
             boolean rubyActive,
             @NonNull TextPaint lyricPaint,
             int widthPx) {
+        return formatMainTextWithResult(
+                mainText, words, romanizedWords, romanizedText,
+                showSyllableRomanization, rubyActive, lyricPaint, widthPx).text;
+    }
+
+    @NonNull
+    public static FormattedMainText formatMainTextWithResult(
+            @NonNull String mainText,
+            @NonNull List<WordTimestamp> words,
+            @Nullable List<WordTimestamp> romanizedWords,
+            @Nullable String romanizedText,
+            boolean showSyllableRomanization,
+            boolean rubyActive,
+            @NonNull TextPaint lyricPaint,
+            int widthPx) {
         if ((!showSyllableRomanization && !rubyActive) || widthPx <= 0 || LyricsSpanBuilder.isRtlText(mainText) || mainText.trim().isEmpty()) {
-            return mainText;
+            return new FormattedMainText(mainText, null);
         }
         return buildFormattedMainText(
                 mainText,
@@ -1163,8 +1209,28 @@ public final class WordAnimationUtils {
         );
     }
 
+    private static float measureMainSpanWidth(
+            @NonNull String mainText,
+            int start,
+            int end,
+            @NonNull TextPaint lyricPaint,
+            @Nullable Layout unconstrainedResult) {
+        final int safeStart = Math.max(0, Math.min(mainText.length(), start));
+        final int safeEnd = Math.max(safeStart, Math.min(mainText.length(), end));
+        if (safeEnd <= safeStart) {
+            return 0f;
+        }
+        if (unconstrainedResult == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return Math.max(0f, lyricPaint.getRunAdvance(
+                    mainText, safeStart, safeEnd, 0, mainText.length(), false, safeEnd));
+        }
+        assert unconstrainedResult != null;
+        return Math.max(0f, unconstrainedResult.getPrimaryHorizontal(safeEnd)
+                - unconstrainedResult.getPrimaryHorizontal(safeStart));
+    }
+
     @NonNull
-    private static String buildFormattedMainText(
+    private static FormattedMainText buildFormattedMainText(
             @NonNull String mainText,
             @NonNull List<WordTimestamp> words,
             @Nullable List<WordTimestamp> romanizedWords,
@@ -1174,34 +1240,38 @@ public final class WordAnimationUtils {
             @NonNull TextPaint lyricPaint,
             int widthPx,
             float fontSizePx) {
-        if (mainText.isEmpty() || widthPx <= 0) return mainText;
+        if (mainText.isEmpty() || widthPx <= 0) return new FormattedMainText(mainText, null);
 
         List<AlignedSyllable> alignedSyllables = alignSyllablesForFormatting(words, mainText);
-        if (alignedSyllables.isEmpty()) return mainText;
+        if (alignedSyllables.isEmpty()) return new FormattedMainText(mainText, alignedSyllables);
 
         ResolvedRomanSyllables resolvedRoman = showSyllableRomanization
                 ? resolveRomanSyllables(alignedSyllables, romanizedWords, romanizedText, mainText)
                 : null;
         boolean anyRuby = hasAnyRubySyllables(rubyActive, alignedSyllables, mainText);
-        if (resolvedRoman == null && !anyRuby) return mainText;
+        if (resolvedRoman == null && !anyRuby) return new FormattedMainText(mainText, alignedSyllables);
 
         TextPaint romRunPaint = resolvedRoman != null
-                ? configureRunPaint(createRomanPaint(lyricPaint, lyricPaint.getColor()), lyricPaint.getColor(), false)
+                ? createConfiguredRunPaint(createRomanPaint(lyricPaint, lyricPaint.getColor()), lyricPaint.getColor(), false)
                 : null;
         TextPaint rubyRunPaint = anyRuby
-                ? configureRunPaint(createRubyPaint(lyricPaint, lyricPaint.getColor()), lyricPaint.getColor(), false)
+                ? createConfiguredRunPaint(createRubyPaint(lyricPaint, lyricPaint.getColor()), lyricPaint.getColor(), false)
                 : null;
-        Layout unconstrainedResult = createStaticLayout(
+        final boolean useRunAdvance = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && mainText.indexOf('\n') < 0
+                && !LyricsSpanBuilder.isRtlText(mainText)
+                && !LyricsTextUtils.containsJoiningScript(mainText);
+        if (useRunAdvance) {
+            LyricsViewSupport.applyLyricsBoldPaint(lyricPaint);
+        }
+        Layout unconstrainedResult = useRunAdvance ? null : createStaticLayout(
                 mainText, lyricPaint, Integer.MAX_VALUE / 4, Layout.Alignment.ALIGN_NORMAL, false);
 
         float[] sylSlotWidths = new float[alignedSyllables.size()];
         for (int sylIdx = 0; sylIdx < alignedSyllables.size(); sylIdx++) {
             AlignedSyllable syl = alignedSyllables.get(sylIdx);
-            int sOff = Math.max(0, Math.min(mainText.length(), syl.startOffset));
-            int eOff = Math.max(0, Math.min(mainText.length(), syl.endOffset));
-            float startX = unconstrainedResult.getPrimaryHorizontal(sOff);
-            float endX = unconstrainedResult.getPrimaryHorizontal(eOff);
-            float mainWidth = Math.max(1f, endX - startX);
+            float mainWidth = Math.max(1f, measureMainSpanWidth(
+                    mainText, syl.startOffset, syl.endOffset, lyricPaint, unconstrainedResult));
             float romWidth = 0f;
             if (resolvedRoman != null && romRunPaint != null) {
                 String rt = resolvedRoman.texts[sylIdx];
@@ -1241,9 +1311,7 @@ public final class WordAnimationUtils {
                     syllablesOnCurrentLine = 0;
                     currentLineStartOffset = Math.max(0, Math.min(mainText.length(), syl.startOffset));
                 } else {
-                    float gapStart = unconstrainedResult.getPrimaryHorizontal(gs);
-                    float gapEnd = unconstrainedResult.getPrimaryHorizontal(ge);
-                    float gapW = Math.max(0f, gapEnd - gapStart);
+                    float gapW = measureMainSpanWidth(mainText, gs, ge, lyricPaint, unconstrainedResult);
                     currentLineSlotSum += gapW;
                 }
             }
@@ -1269,7 +1337,7 @@ public final class WordAnimationUtils {
             }
         }
 
-        if (breakIndices.isEmpty()) return mainText;
+        if (breakIndices.isEmpty()) return new FormattedMainText(mainText, alignedSyllables);
 
         StringBuilder sb = new StringBuilder(mainText.length() + breakIndices.size());
         int prev = 0;
@@ -1296,7 +1364,7 @@ public final class WordAnimationUtils {
         if (finalPrev < mainText.length()) {
             sb.append(mainText.substring(finalPrev));
         }
-        return sb.toString();
+        return new FormattedMainText(sb.toString(), null);
     }
 
     /**
@@ -1513,6 +1581,7 @@ public final class WordAnimationUtils {
         if (resolved == null) return Collections.emptyList();
 
         int n = alignedSyllables.size();
+        TextPaint configuredRomPaint = createConfiguredRunPaint(romPaint, expressiveAccent, false);
         List<RomanizedWordCluster> result = new ArrayList<>(n);
         int maxCharIdx = Math.max(0, mainText.length() - 1);
         for (int idx = 0; idx < n; idx++) {
@@ -1521,7 +1590,7 @@ public final class WordAnimationUtils {
                 AlignedSyllable syl = alignedSyllables.get(idx);
                 int safeStart = Math.max(0, Math.min(maxCharIdx, syl.startOffset));
                 int li = mainText.isEmpty() ? 0 : textLayoutResult.getLineForOffset(safeStart);
-                Layout subLayout = measureRun(text, romPaint, expressiveAccent, false);
+                Layout subLayout = measureRunWithConfiguredPaint(text, configuredRomPaint, false);
                 float hPos = textLayoutResult.getPrimaryHorizontal(Math.min(syl.startOffset, mainText.length()));
                 result.add(new RomanizedWordCluster(
                         idx,
@@ -2268,6 +2337,34 @@ public final class WordAnimationUtils {
             float slideOffsetY,
             @NonNull Layout.Alignment alignment,
             float viewWidth) {
+        drawRomanizedWordClusters(
+                canvas, romanStatics, isActiveLine, activeSylIdx, activeLineIdx, curGX,
+                isActiveSylLastOfLine, activeSylProgress, gradientWidth,
+                pastColor, unlitColor, litColor, lineColor, curSimpleState, expressiveAccent,
+                revealScaleProgress, slideOffsetY, alignment, viewWidth, true);
+    }
+
+    public static void drawRomanizedWordClusters(
+            @NonNull Canvas canvas,
+            @NonNull RomanStatics romanStatics,
+            boolean isActiveLine,
+            int activeSylIdx,
+            int activeLineIdx,
+            float curGX,
+            boolean isActiveSylLastOfLine,
+            float activeSylProgress,
+            float gradientWidth,
+            int pastColor,
+            int unlitColor,
+            int litColor,
+            int lineColor,
+            float curSimpleState,
+            int expressiveAccent,
+            float revealScaleProgress,
+            float slideOffsetY,
+            @NonNull Layout.Alignment alignment,
+            float viewWidth,
+            boolean allowRasterizeMask) {
         RomanLineStatics[] lines = romanStatics.lines;
         if (lines.length == 0) return;
 
@@ -2304,9 +2401,12 @@ public final class WordAnimationUtils {
             }
 
             if (!isActiveLine) {
-                if (line.ensureStaticMask() && line.staticMask != null) {
+                Bitmap existingMask = (allowRasterizeMask && line.ensureStaticMask())
+                        ? line.staticMask
+                        : line.getExistingStaticMask();
+                if (existingMask != null) {
                     STATIC_MASK_PAINT.setColor(inactiveColor);
-                    canvas.drawBitmap(line.staticMask, line.staticMaskOriginX + pad, topY, STATIC_MASK_PAINT);
+                    canvas.drawBitmap(existingMask, line.staticMaskOriginX + pad, topY, STATIC_MASK_PAINT);
                 } else {
                     for (int i = 0; i < n; i++) {
                         drawLayoutWithPaint(canvas, cs.get(i).subLayout, line.drawX[i] + pad, topY, inactiveColor, null);
