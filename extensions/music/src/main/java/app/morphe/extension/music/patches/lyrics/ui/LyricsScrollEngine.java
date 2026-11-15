@@ -216,7 +216,7 @@ final class LyricsScrollEngine {
     }
 
     private LyricsSpring currentSpringFor(long durationMs) {
-        final boolean isRelax = (Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get());
+        final boolean isRelax = LyricsViewSupport.isRelaxScrollEnabled();
         return SpringEasing.springFor(durationMs, lastTimeGapMs, isRelax);
     }
 
@@ -263,7 +263,7 @@ final class LyricsScrollEngine {
             }
         }
         int clampedSteps = Math.min(LyricsScrollStagger.MAX_STAGGER_STEPS, stepsAboveAnchor);
-        boolean isRelax = (Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get());
+        boolean isRelax = LyricsViewSupport.isRelaxScrollEnabled();
         long durationMs = LyricsRetiming.calculateScrollDuration(scrollLookAheadMs, isRelax);
         float delayInc = LyricsRetiming.calculateScrollDelayIncrement(durationMs, isRelax);
         return (long) (clampedSteps * delayInc);
@@ -488,7 +488,7 @@ final class LyricsScrollEngine {
 
     private void armStagger(List<View> validRows, boolean scrollingDown, int referenceIndex,
                             int staggerAfterIndex, long durationMs) {
-        final boolean isRelax = (Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get());
+        final boolean isRelax = LyricsViewSupport.isRelaxScrollEnabled();
         arm(new LyricsScrollStagger(scrollingDown, referenceIndex, staggerAfterIndex, durationMs,
                 LyricsRetiming.calculateScrollDelayIncrement(durationMs, isRelax),
                 isRelax,
@@ -851,7 +851,7 @@ final class LyricsScrollEngine {
         final int staggerAfterRowIdx = scrollingDown
                 ? resolvedEndRowIdx
                 : refRowIdx;
-        final boolean isRelax = (Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get());
+        final boolean isRelax = LyricsViewSupport.isRelaxScrollEnabled();
         armStagger(validRows, scrollingDown, refRowIdx, staggerAfterRowIdx,
                 LyricsRetiming.calculateScrollDuration(lookAheadMs, isRelax));
 

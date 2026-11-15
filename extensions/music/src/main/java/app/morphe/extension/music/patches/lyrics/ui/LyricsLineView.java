@@ -31,7 +31,6 @@ import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Arrays;
@@ -713,9 +712,8 @@ final class LyricsLineView extends TextView {
         final float targetReadingAlpha = secondaryFull
                 ? LyricsColors.ACTIVE_READING_ALPHA : targetInactiveAlpha;
 
-        final boolean relaxScroll = (Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get());
         final float targetScale;
-        if (isActive || !isAutoScrollEnabled || !isLrcSynced || relaxScroll || !Settings.LYRICS_LINE_SCALE.get()) {
+        if (isActive || !isAutoScrollEnabled || !isLrcSynced || !LyricsViewSupport.isLineScaleEnabled()) {
             targetScale = 1.0f;
         } else if (focusSpotlightOn) {
             targetScale = LyricsViewSupport.spotlightScale(distance);
@@ -2922,8 +2920,7 @@ final class LyricsLineView extends TextView {
         }
     }
 
-    @NonNull
-    private TextPaint createMainSweepPaint(float fontSizePx, float textSizeSp, @NonNull String rawMainText) {
+    private TextPaint createMainSweepPaint(float fontSizePx, float textSizeSp, String rawMainText) {
         TextPaint mainPaint = new TextPaint(getPaint());
         mainPaint.setTextSize(fontSizePx);
         LyricsViewSupport.applyLyricsBoldPaint(mainPaint);
@@ -3175,7 +3172,7 @@ final class LyricsLineView extends TextView {
             float fontSizePx,
             float textSizeSp,
             int origStart,
-            @NonNull String rawMainText,
+            String rawMainText,
             @Nullable String animatorRomArg,
             boolean showSylRomaKey,
             boolean rubyActiveKey,
@@ -3185,10 +3182,10 @@ final class LyricsLineView extends TextView {
             boolean isCentered,
             @Nullable Long adjEnd,
             int accentColor,
-            @NonNull List<WordTimestamp> rawWords,
+            List<WordTimestamp> rawWords,
             @Nullable List<WordTimestamp> rawRomWords,
             @Nullable WordSweepAnimator animator,
-            @NonNull List<AlignedSyllable> alignedSyllables,
+            List<AlignedSyllable> alignedSyllables,
             int mainSectionH,
             int extraRomanHeightPx,
             int extraRubyHeightPx,

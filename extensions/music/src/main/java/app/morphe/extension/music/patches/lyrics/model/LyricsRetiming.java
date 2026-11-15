@@ -37,11 +37,13 @@ public final class LyricsRetiming {
 
     public static final long SCROLL_LOOK_AHEAD_MIN_MS = 350L;
     public static final long SCROLL_LOOK_AHEAD_MAX_MS = 500L;
-    public static final long SCROLL_ANIMATION_MAX_DURATION_MS = 450L;
-    public static final float SCROLL_DELAY_INCREMENT_RATIO = 0.1f;
-    public static final float SCROLL_DELAY_INCREMENT_RELAX_RATIO = 0.05f;
-    public static final float RELAX_SCROLL_DURATION_MULTIPLIER = 1.5f;
+    private static final long SCROLL_ANIMATION_MAX_DURATION_MS = 450L;
+    private static final float SCROLL_DELAY_INCREMENT_RATIO = 0.1f;
+    private static final float SCROLL_DELAY_INCREMENT_RELAX_RATIO = 0.05f;
+    private static final float RELAX_SCROLL_DURATION_MULTIPLIER = 1.5f;
     public static final long HIGHLIGHT_LOOK_AHEAD_MS = 190L;
+    /** The primary line stays primary this long after it ends, then hands over to the next one. */
+    private static final long PRIMARY_LINE_HOLD_MS = 100L;
 
     public record RetimedEntry(LyricsLine line, long startMs, long actualEndTimeMs,
                                long adjustedEndTimeMs, boolean isSecondary) {
@@ -196,7 +198,7 @@ public final class LyricsRetiming {
             int candidateIndex = activeIndices.get(Math.max(groupStart, groupEnd - 2));
             boolean lastPrimaryStillActive = activeIndices.contains(lastActiveIndex);
             if (lastPrimaryStillActive && currentPrimaryRetimed != null
-                    && positionMs > currentPrimaryRetimed.actualEndTimeMs + 100L) {
+                    && positionMs > currentPrimaryRetimed.actualEndTimeMs + PRIMARY_LINE_HOLD_MS) {
                 lastPrimaryStillActive = false;
             }
             primaryIndex = (candidateIndex < lastActiveIndex && lastPrimaryStillActive)
@@ -219,11 +221,9 @@ public final class LyricsRetiming {
                 && currentPrimaryRetimed != null
                 && candidateRetimed.adjustedEndTimeMs == currentPrimaryRetimed.adjustedEndTimeMs
                 && activeIndices != null && activeIndices.size() <= 3) {
-            if (positionMs <= currentPrimaryRetimed.actualEndTimeMs + 100L) {
-                return lastActiveIndex;
-            } else {
-                return primaryIndex;
-            }
+            return positionMs <= currentPrimaryRetimed.actualEndTimeMs + PRIMARY_LINE_HOLD_MS
+                    ? lastActiveIndex
+                    : primaryIndex;
         } else {
             return primaryIndex;
         }

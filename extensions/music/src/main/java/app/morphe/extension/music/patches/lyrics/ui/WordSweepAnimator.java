@@ -12,14 +12,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
 import android.os.SystemClock;
 import android.text.Layout;
 import android.text.TextPaint;
 import android.view.animation.Interpolator;
 import android.view.animation.PathInterpolator;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -94,7 +92,7 @@ public final class WordSweepAnimator {
             long wordEndMs,
             float holdMs,
             int frame,
-            @NonNull EmphasisSample out) {
+            EmphasisSample out) {
         if (frame >= 60) {
             out.lift = 1f;
             out.pulse = 0f;
@@ -110,7 +108,7 @@ public final class WordSweepAnimator {
     }
 
     @Nullable
-    private float[] ensureEmphasisTable(int idx, @NonNull VisualCluster vc) {
+    private float[] ensureEmphasisTable(int idx, VisualCluster vc) {
         if (!vc.isHeavy) {
             return null;
         }
@@ -133,8 +131,7 @@ public final class WordSweepAnimator {
                 || extraRubyHeightPx > 0;
     }
 
-    @NonNull
-    public static float[] buildEmphasisTable(@NonNull VisualCluster vc) {
+    public static float[] buildEmphasisTable(VisualCluster vc) {
         EmphasisSample tmp = new EmphasisSample();
         float[] table = new float[EMPHASIS_TABLE_FRAMES * 2];
         for (int f = 0; f < EMPHASIS_TABLE_FRAMES; f++) {
@@ -145,7 +142,6 @@ public final class WordSweepAnimator {
         return table;
     }
 
-    @NonNull
     public static float[] buildEmphasisTable(long wordDurationMs, long holdMs) {
         EmphasisSample tmp = new EmphasisSample();
         float[] table = new float[EMPHASIS_TABLE_FRAMES * 2];
@@ -158,9 +154,9 @@ public final class WordSweepAnimator {
     }
 
     public static void sampleEmphasisCached(
-            @NonNull float[] table,
+            float[] table,
             float fraction,
-            @NonNull EmphasisSample out) {
+            EmphasisSample out) {
         out.glow = emphasisGlowOpacity(fraction);
         if (fraction <= 0f) {
             out.lift = 0f;
@@ -182,10 +178,10 @@ public final class WordSweepAnimator {
     }
 
     public static void sampleEmphasisCached(
-            @NonNull float[] table,
+            float[] table,
             float tableDurationMs,
             float timeMs,
-            @NonNull float[] out) {
+            float[] out) {
         if (timeMs <= 0f || tableDurationMs <= 0f) {
             out[0] = 0f;
             out[1] = 0f;
@@ -372,7 +368,7 @@ public final class WordSweepAnimator {
                 float fontSizePx,
                 int accentColor,
                 boolean hasJoining,
-                @NonNull Layout.Alignment alignment,
+                Layout.Alignment alignment,
                 @Nullable Layout unformattedLayout,
                 @Nullable Map<String, Layout> subLayouts) {
             this.widthPx = widthPx;
@@ -411,17 +407,19 @@ public final class WordSweepAnimator {
     private float staticMainMaskOriginY;
     private boolean staticMainMaskAttempted = false;
     private final Paint staticMainMaskPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+    private final ClusterMaskCache.LayoutProvider prewarmLayoutOf = this::clusterLayout;
+    private final ClusterMaskCache.GlowBlurProvider prewarmGlowBlurOf = this::clusterGlowBlur;
 
     public WordSweepAnimator(
-            @NonNull String mainText,
-            @NonNull List<WordTimestamp> rawWords,
+            String mainText,
+            List<WordTimestamp> rawWords,
             @Nullable List<WordTimestamp> rawRomanizedWords,
             @Nullable String romanizedText,
             boolean showSyllableRomanization,
             boolean isBackground,
             @Nullable Long adjustedEndTimeMs,
-            @NonNull TextPaint basePaint,
-            @NonNull Layout.Alignment alignment,
+            TextPaint basePaint,
+            Layout.Alignment alignment,
             int widthPx,
             int expressiveAccent,
             boolean prewarmMasks) {
@@ -431,16 +429,16 @@ public final class WordSweepAnimator {
     }
 
     public WordSweepAnimator(
-            @NonNull String mainText,
-            @NonNull List<WordTimestamp> rawWords,
+            String mainText,
+            List<WordTimestamp> rawWords,
             @Nullable List<WordTimestamp> rawRomanizedWords,
             @Nullable String romanizedText,
             boolean showSyllableRomanization,
             boolean rubyActive,
             boolean isBackground,
             @Nullable Long adjustedEndTimeMs,
-            @NonNull TextPaint basePaint,
-            @NonNull Layout.Alignment alignment,
+            TextPaint basePaint,
+            Layout.Alignment alignment,
             int widthPx,
             int expressiveAccent,
             boolean prewarmMasks) {
@@ -450,8 +448,8 @@ public final class WordSweepAnimator {
     }
 
     public WordSweepAnimator(
-            @NonNull String mainText,
-            @NonNull List<WordTimestamp> rawWords,
+            String mainText,
+            List<WordTimestamp> rawWords,
             @Nullable List<WordTimestamp> rawRomanizedWords,
             @Nullable String romanizedText,
             boolean showSyllableRomanization,
@@ -460,8 +458,8 @@ public final class WordSweepAnimator {
             boolean exitingRubyActive,
             boolean isBackground,
             @Nullable Long adjustedEndTimeMs,
-            @NonNull TextPaint basePaint,
-            @NonNull Layout.Alignment alignment,
+            TextPaint basePaint,
+            Layout.Alignment alignment,
             int widthPx,
             int expressiveAccent,
             boolean prewarmMasks) {
@@ -472,8 +470,8 @@ public final class WordSweepAnimator {
     }
 
     public WordSweepAnimator(
-            @NonNull String mainText,
-            @NonNull List<WordTimestamp> rawWords,
+            String mainText,
+            List<WordTimestamp> rawWords,
             @Nullable List<WordTimestamp> rawRomanizedWords,
             @Nullable String romanizedText,
             boolean showSyllableRomanization,
@@ -482,8 +480,8 @@ public final class WordSweepAnimator {
             boolean exitingRubyActive,
             boolean isBackground,
             @Nullable Long adjustedEndTimeMs,
-            @NonNull TextPaint basePaint,
-            @NonNull Layout.Alignment alignment,
+            TextPaint basePaint,
+            Layout.Alignment alignment,
             int widthPx,
             int expressiveAccent,
             boolean prewarmMasks,
@@ -617,7 +615,6 @@ public final class WordSweepAnimator {
      * Harvests invariant sub-layouts so a follow-up animator built after toggling romanization
      * or ruby avoids re-shaping every character/word cluster and the base main layout.
      */
-    @NonNull
     public ReuseHint extractReuseHint() {
         Map<String, Layout> map = null;
         if (renderStateBuilt && clusters != null && !clusters.isEmpty()) {
@@ -942,13 +939,21 @@ public final class WordSweepAnimator {
         }
     }
 
+    private Layout clusterLayout(int idx) {
+        return clusters.get(idx).subLayout;
+    }
+
+    private float clusterGlowBlur(int idx) {
+        return clusters.get(idx).isHeavy && !clusterMotionOff[idx] ? glowBlurRadius : 0f;
+    }
+
     public void evictMasks() {
         if (maskCacheStore != null) {
             maskCacheStore.evictAndClear();
         }
     }
 
-    private void assignSharedElev(@NonNull List<ClusterMeta> metaList, @NonNull List<AlignedSyllable> syls) {
+    private void assignSharedElev(List<ClusterMeta> metaList, List<AlignedSyllable> syls) {
         for (int s = 0; s < syls.size(); s++) {
             AlignedSyllable syl = syls.get(s);
             float sx = globalX(syl.startOffset);
@@ -961,9 +966,8 @@ public final class WordSweepAnimator {
         }
     }
 
-    @NonNull
     private List<VisualCluster> buildClusters(
-            @NonNull TextPaint basePaint,
+            TextPaint basePaint,
             int expressiveAccent,
             boolean hasJoining) {
         List<ClusterMeta> metaList = new ArrayList<>();
@@ -1172,10 +1176,9 @@ public final class WordSweepAnimator {
         return list;
     }
 
-    @NonNull
     private static Layout measureClusterSubLayout(
-            @NonNull String runText,
-            @NonNull TextPaint clusterRunPaint,
+            String runText,
+            TextPaint clusterRunPaint,
             boolean hasJoining,
             @Nullable Map<String, Layout> reusedLayouts) {
         if (reusedLayouts != null) {
@@ -1187,7 +1190,7 @@ public final class WordSweepAnimator {
         return WordAnimationUtils.measureRunWithConfiguredPaint(runText, clusterRunPaint, hasJoining);
     }
 
-    private static int metaLowerBound(@NonNull List<ClusterMeta> metaList, int pos) {
+    private static int metaLowerBound(List<ClusterMeta> metaList, int pos) {
         int lo = 0;
         int hi = metaList.size();
         while (lo < hi) {
@@ -1201,15 +1204,14 @@ public final class WordSweepAnimator {
         return lo;
     }
 
-    @NonNull
-    private static List<ClusterMeta> metasInRange(@NonNull List<ClusterMeta> metaList, int startIdx, int endIdx) {
+    private static List<ClusterMeta> metasInRange(List<ClusterMeta> metaList, int startIdx, int endIdx) {
         int s = metaLowerBound(metaList, startIdx);
         int e = metaLowerBound(metaList, endIdx);
         if (s > e) s = e;
         return metaList.subList(s, e);
     }
 
-    private int sylIndexFor(@NonNull ClusterMeta m, @NonNull int[] sylPointer) {
+    private int sylIndexFor(ClusterMeta m, int[] sylPointer) {
         while (sylPointer[0] < alignedSyllables.size()
                 && alignedSyllables.get(sylPointer[0]).endOffset <= m.start) {
             sylPointer[0]++;
@@ -1236,7 +1238,6 @@ public final class WordSweepAnimator {
         return ans;
     }
 
-    @NonNull
     public ActiveSylInfo getActiveSylInfo(int activeSylIdx) {
         if (activeSylIdx < 0 || activeSylIdx >= alignedSyllables.size()) {
             return new ActiveSylInfo(-1, -1, false);
@@ -1625,7 +1626,7 @@ public final class WordSweepAnimator {
     }
 
     public void draw(
-            @NonNull Canvas canvas,
+            Canvas canvas,
             long currentPosition,
             boolean isActiveLine,
             boolean allSung,
@@ -1637,7 +1638,7 @@ public final class WordSweepAnimator {
     }
 
     public void draw(
-            @NonNull Canvas canvas,
+            Canvas canvas,
             long currentPosition,
             boolean isActiveLine,
             boolean allSung,
@@ -1664,16 +1665,8 @@ public final class WordSweepAnimator {
 
         final boolean smoothSweep = Settings.LYRICS_WORD_SMOOTH_SWEEP.get();
         if (smoothSweep && (isActiveLine || (prewarmMasks && romaReveal >= 0.99f && transReveal >= 0.99f))) {
-            maskCacheStore.prewarmStep(
-                    clusters.size(),
-                    1_500_000L,
-                    idx -> clusters.get(idx).subLayout,
-                    idx -> {
-                        VisualCluster vc = clusters.get(idx);
-                        if (!vc.isHeavy) return 0f;
-                        return !clusterMotionOff[idx] ? glowBlurRadius : 0f;
-                    }
-            );
+            maskCacheStore.prewarmStep(clusters.size(), LyricsGlyphMaskCache.PREWARM_BUDGET_NS,
+                    prewarmLayoutOf, prewarmGlowBlurOf);
         }
 
         boolean reachedLineEnd = allSung || (currentPosition > 0L && currentPosition >= lineStartMs);
@@ -1888,7 +1881,7 @@ public final class WordSweepAnimator {
     }
 
     private void drawShiftedInactiveClusters(
-            @NonNull Canvas canvas,
+            Canvas canvas,
             int color,
             float shiftProgress) {
         int n = clusters.size();
@@ -1941,30 +1934,29 @@ public final class WordSweepAnimator {
         float originY = (float) Math.floor(minY) - 4f;
         int bmpW = (int) Math.ceil(maxX - originX) + 4;
         int bmpH = (int) Math.ceil(maxY - originY) + 4;
-        if (bmpW <= 0 || bmpH <= 0 || bmpW > 2048 || bmpH > 2048) {
+        if (bmpW <= 0 || bmpH <= 0 || bmpW > LyricsGlyphMaskCache.MAX_MASK_SIDE_PX || bmpH > LyricsGlyphMaskCache.MAX_MASK_SIDE_PX) {
             return false;
         }
-        try {
-            Bitmap bmp = Bitmap.createBitmap(bmpW, bmpH, Bitmap.Config.ALPHA_8);
-            Canvas c = new Canvas(bmp);
-            for (int idx = 0; idx < n; idx++) {
-                Layout sl = clusters.get(idx).subLayout;
-                if (sl != null) {
-                    WordAnimationUtils.drawLayoutWithPaint(
-                            c, sl, statics.baseX[idx] - originX, statics.baseY[idx] - originY, Color.WHITE, null);
-                }
+        Bitmap bmp = LyricsGlyphMaskCache.createAlphaMask(bmpW, bmpH);
+        if (bmp == null) {
+            return false;
+        }
+        Canvas c = new Canvas(bmp);
+        for (int idx = 0; idx < n; idx++) {
+            Layout sl = clusters.get(idx).subLayout;
+            if (sl != null) {
+                WordAnimationUtils.drawLayoutWithPaint(
+                        c, sl, statics.baseX[idx] - originX, statics.baseY[idx] - originY, Color.WHITE, null);
             }
-            staticMainMask = bmp;
-            staticMainMaskOriginX = originX;
-            staticMainMaskOriginY = originY;
-            return true;
-        } catch (OutOfMemoryError ignored) {
-            return false;
         }
+        staticMainMask = bmp;
+        staticMainMaskOriginX = originX;
+        staticMainMaskOriginY = originY;
+        return true;
     }
 
     private void drawRomanAndRuby(
-            @NonNull Canvas canvas,
+            Canvas canvas,
             boolean showWipe,
             int wipeSylIdx,
             int wipeLineIdx,
@@ -1999,7 +1991,7 @@ public final class WordSweepAnimator {
     }
 
     private void drawSimple(
-            @NonNull Canvas canvas,
+            Canvas canvas,
             boolean showWipe,
             boolean shiftActive,
             float shiftProgress,
@@ -2048,7 +2040,7 @@ public final class WordSweepAnimator {
     }
 
     private void drawSmooth(
-            @NonNull Canvas canvas,
+            Canvas canvas,
             long currentPosition,
             boolean isActiveLine,
             boolean isFinishing,
@@ -2170,7 +2162,7 @@ public final class WordSweepAnimator {
                                 maskCache.glowScaleOf(idx),
                                 maskCache.glowFilter,
                                 glowAlpha,
-                                PorterDuff.Mode.SCREEN);
+                                true);
                         canvas.restore();
                     }
                 }
@@ -2233,7 +2225,7 @@ public final class WordSweepAnimator {
                     canvas.scale(cdScale, cdScale, statics.pivotX[idx], statics.pivotY[idx]);
                 }
                 if (!showWipe && inactiveFilter != null) {
-                    maskCache.drawMaskTinted(canvas, mask, maskScale, inactiveFilter, 1f, null);
+                    maskCache.drawMaskTinted(canvas, mask, maskScale, inactiveFilter, 1f, false);
                 } else {
                     WordAnimationUtils.computeWipe(
                             vc, isRtlLine, lgs, lw,
@@ -2241,9 +2233,9 @@ public final class WordSweepAnimator {
                             wipeSylIdx, wipeLineIdx, curGX,
                             effLastOfLine, effSylProgress, gradientWidth, wipeScratch);
                     if (wipeScratch.mode == WordAnimationUtils.WIPE_PAST) {
-                        maskCache.drawMaskTinted(canvas, mask, maskScale, pastFilter, 1f, null);
+                        maskCache.drawMaskTinted(canvas, mask, maskScale, pastFilter, 1f, false);
                     } else if (wipeScratch.mode == WordAnimationUtils.WIPE_UNLIT) {
-                        maskCache.drawMaskTinted(canvas, mask, maskScale, unlitFilter, 1f, null);
+                        maskCache.drawMaskTinted(canvas, mask, maskScale, unlitFilter, 1f, false);
                     } else {
                         maskCache.drawMaskBand(canvas, mask, maskScale, wipeScratch, litColor, unlitColor);
                     }

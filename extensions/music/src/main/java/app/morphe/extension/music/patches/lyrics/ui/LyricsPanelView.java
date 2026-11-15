@@ -1175,7 +1175,7 @@ public final class LyricsPanelView extends FrameLayout
         return sameLineStructure(a, b, true);
     }
 
-    static boolean sameLineStructure(@NonNull Lyrics a, @NonNull Lyrics b, boolean matchWords) {
+    static boolean sameLineStructure(Lyrics a, Lyrics b, boolean matchWords) {
         List<LyricsLine> left = a.lines();
         List<LyricsLine> right = b.lines();
         if (left.size() != right.size() || a.synced() != b.synced()
@@ -1460,7 +1460,7 @@ public final class LyricsPanelView extends FrameLayout
         paint.setElegantTextHeight(true);
     }
 
-    private static Paint createBaseLinePaint(@NonNull android.content.res.Resources resources, float textSizeSp) {
+    private static Paint createBaseLinePaint(android.content.res.Resources resources, float textSizeSp) {
         Paint paint = new Paint();
         paint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, textSizeSp,
                 resources.getDisplayMetrics()));
@@ -1491,7 +1491,7 @@ public final class LyricsPanelView extends FrameLayout
         return nearViewport;
     }
 
-    private InPlaceRowSignature currentInPlaceSignature(@NonNull Lyrics targetLyrics) {
+    private InPlaceRowSignature currentInPlaceSignature(Lyrics targetLyrics) {
         return new InPlaceRowSignature(
                 Settings.LYRICS_TEXT_SIZE.get(),
                 LyricsColors.lineTextColor(),
@@ -1501,10 +1501,10 @@ public final class LyricsPanelView extends FrameLayout
                 Settings.LYRICS_DUET_OPPOSITE_SIDE.get(),
                 Settings.LYRICS_FORCE_CENTER.get(),
                 LyricsPresentation.isFormattingEnabled(),
-                Settings.LYRICS_RELAX_SCROLL.get());
+                LyricsViewSupport.isRelaxScrollEnabled());
     }
 
-    static boolean hasMatchingSongParts(@NonNull Lyrics a, @NonNull Lyrics b) {
+    static boolean hasMatchingSongParts(Lyrics a, Lyrics b) {
         List<LyricsLine> left = a.lines();
         List<LyricsLine> right = b.lines();
         if (left.size() != right.size()) {
@@ -1519,7 +1519,7 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private boolean canUpdateSameContentInPlace(
-            @NonNull Lyrics newLyrics, boolean sameContent, boolean contentInBuild) {
+            Lyrics newLyrics, boolean sameContent, boolean contentInBuild) {
         if (!sameContent || contentInBuild || lastBuiltLyrics == null || lastBuiltInPlaceSignature == null) {
             return false;
         }
@@ -1558,7 +1558,7 @@ public final class LyricsPanelView extends FrameLayout
      * tearing down and re-inflating the view hierarchy.
      */
     private void updateSameContentInPlace(
-            @NonNull Lyrics newLyrics,
+            Lyrics newLyrics,
             boolean preserveHidePosition,
             int preserveHideIndex,
             float preserveScreenY) {
@@ -5071,14 +5071,14 @@ public final class LyricsPanelView extends FrameLayout
     private void updateLinesDepthOfField(Set<Integer> activeSet, int primaryIndex, int gapFocusIndex, boolean instant) {
         final boolean isAutoScrollEnabled = !isBrowsing;
         final boolean isLrcSynced = (lyrics != null && lyrics.synced());
-        final boolean relaxScrollOn = (Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get());
+        final boolean relaxScrollOn = LyricsViewSupport.isRelaxScrollEnabled();
         final boolean blurInactiveOn = Settings.LYRICS_BLUR_INACTIVE.get() && isAutoScrollEnabled && isLrcSynced;
         final float delayIncrementMs = LyricsRetiming.calculateScrollDelayIncrement(
                 scrollEngine.getScrollDurationMs(), relaxScrollOn);
         final int count = lineViews.size();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            final float gapBlurRadius = Dim.dp(16f) * 0.070f;
+            final float gapBlurRadius = LyricsViewSupport.inactiveBlurRadius(2, Dim.dp(16f));
             for (GapLineView gv : gapLineViews) {
                 boolean isGapFocused = gv.isGapActive() || (gapFocusIndex >= 0 && gv.getInterval().beforeLineIndex() == gapFocusIndex);
                 gv.animateBlur((!blurInactiveOn || isGapFocused) ? 0f : gapBlurRadius, instant);
@@ -5155,7 +5155,7 @@ public final class LyricsPanelView extends FrameLayout
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     float targetBlur = (!blurInactiveOn || isActive || dist == 0 || dist > BLUR_MAX_DISTANCE_LINES)
                             ? 0f
-                            : (dist == 1 ? 0.035f : 0.070f) * llv.getTextSize();
+                            : LyricsViewSupport.inactiveBlurRadius(dist, llv.getTextSize());
                     llv.animateBlur(targetBlur, instant);
                 }
             } else {
@@ -5188,7 +5188,6 @@ public final class LyricsPanelView extends FrameLayout
             boolean blurInactiveOn,
             boolean instant) {
         final boolean focusSpotlightOn = Settings.LYRICS_FOCUS_SPOTLIGHT.get();
-        final boolean relaxScroll = (Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get());
         final float targetAlpha;
         if (!isAutoScrollEnabled || !isLrcSynced) {
             targetAlpha = LyricsViewSupport.BROWSING_LINE_ALPHA;
@@ -5200,7 +5199,7 @@ public final class LyricsPanelView extends FrameLayout
             targetAlpha = INACTIVE_LINE_ALPHA;
         }
         final float targetScale;
-        if (isActive || !isAutoScrollEnabled || !isLrcSynced || relaxScroll || !Settings.LYRICS_LINE_SCALE.get()) {
+        if (isActive || !isAutoScrollEnabled || !isLrcSynced || !LyricsViewSupport.isLineScaleEnabled()) {
             targetScale = 1.0f;
         } else if (focusSpotlightOn) {
             targetScale = LyricsViewSupport.spotlightScale(distance);
@@ -5211,7 +5210,7 @@ public final class LyricsPanelView extends FrameLayout
             float targetBlur = 0f;
             if (blurInactiveOn && !isActive && distance > 0) {
                 float em = creditView.getTextSize() > 0f ? creditView.getTextSize() : Dim.dp(16f);
-                targetBlur = (distance == 1 ? 0.035f : 0.070f) * em;
+                targetBlur = LyricsViewSupport.inactiveBlurRadius(distance, em);
             }
             footerBlur.animateTo(targetBlur, instant, false);
         }
@@ -6220,8 +6219,7 @@ public final class LyricsPanelView extends FrameLayout
         }
     }
 
-    @NonNull
-    private static SpannableString formatSongwritersSpannable(@NonNull List<String> songwriters) {
+    private static SpannableString formatSongwritersSpannable(List<String> songwriters) {
         Set<String> writerNames = new LinkedHashSet<>();
         List<String> otherLines = new ArrayList<>();
 

@@ -100,14 +100,6 @@ final class LyricsViewSupport {
         return layout.getLineBottom(layout.getLineForOffset(end - 1));
     }
 
-    static int trailingRegionSize(Layout layout, int start, int end) {
-        if (start <= 0 || end <= start || end > layout.getText().length()) {
-            return 0;
-        }
-        return layout.getHeight() - layout.getLineTop(layout.getLineForOffset(start));
-    }
-
-
     /**
      * The words the karaoke pass paints for one line.
      *
@@ -167,9 +159,17 @@ final class LyricsViewSupport {
         };
     }
 
-    /**
-     * {@return the scale of an inactive line this many lines from the sung one, in spotlight mode}
-     */
+    /** Relaxed scrolling only applies on top of spring scrolling. */
+    static boolean isRelaxScrollEnabled() {
+        return Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get();
+    }
+
+    /** Relaxed scrolling keeps inactive lines full size. */
+    static boolean isLineScaleEnabled() {
+        return Settings.LYRICS_LINE_SCALE.get() && !isRelaxScrollEnabled();
+    }
+
+    /** {@return the scale of an inactive line this many lines from the sung one, in spotlight mode} */
     static float spotlightScale(int distance) {
         if (distance <= 1) return 0.97f;
         if (distance <= 3) return 0.93f;
@@ -200,9 +200,7 @@ final class LyricsViewSupport {
             view.fadeAnimator = null;
         }
         view.fadeTargetAlpha = alpha;
-        final boolean shrinkEnabled = Settings.LYRICS_LINE_SCALE.get()
-                && !(Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get());
-        final float targetScale = (alpha >= 1f || !shrinkEnabled) ? ACTIVE_LINE_SCALE : INACTIVE_LINE_SCALE;
+        final float targetScale = (alpha >= 1f || !isLineScaleEnabled()) ? ACTIVE_LINE_SCALE : INACTIVE_LINE_SCALE;
         final float startAlpha = view.lineAlpha;
         final float startScale = view.lineScale;
         if (Math.abs(startAlpha - alpha) < 0.01f && Math.abs(startScale - targetScale) < 0.005f) {
@@ -478,7 +476,16 @@ final class LyricsViewSupport {
     }
 
     private static final long BLUR_ANIMATION_DURATION_MS = 300L;
+    /** Blur of the lines next to the sung one, relative to the text size. */
+    private static final float NEAR_LINE_BLUR_EM = 0.035f;
+    /** Blur of every line further away. */
+    private static final float FAR_LINE_BLUR_EM = 0.070f;
     private static final SparseArray<RenderEffect> BLUR_EFFECT_CACHE = new SparseArray<>(32);
+
+    /** {@return the blur radius of an inactive line this many lines from the sung one} */
+    static float inactiveBlurRadius(int distance, float textSizePx) {
+        return (distance <= 1 ? NEAR_LINE_BLUR_EM : FAR_LINE_BLUR_EM) * textSizePx;
+    }
 
     @Nullable
     static RenderEffect getCachedBlurEffect(float radius) {

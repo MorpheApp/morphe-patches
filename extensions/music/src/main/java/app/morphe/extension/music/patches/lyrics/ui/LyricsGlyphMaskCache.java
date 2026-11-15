@@ -24,11 +24,11 @@ import android.os.SystemClock;
 import android.text.Layout;
 import android.text.TextPaint;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.TintFilterCache;
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.WipeResult;
+import app.morphe.extension.shared.Logger;
 
 final class LyricsGlyphMaskCache {
 
@@ -37,8 +37,11 @@ final class LyricsGlyphMaskCache {
 
     static final float MASK_RASTER_SCALE = 1.25f;
     static final float GLOW_RASTER_SCALE = 0.75f;
-    static final float MAX_MASK_SIDE = 2048f;
-    static final long PREWARM_BUDGET_NS = 3_000_000L;
+    /** Masks are kept within the texture size every device can draw. */
+    static final int MAX_MASK_SIDE_PX = 2048;
+    /** Time each frame may spend rasterizing masks ahead of the words reaching them. */
+    static final long PREWARM_BUDGET_NS = 1_500_000L;
+    private static final PorterDuffXfermode SCREEN_MODE = new PorterDuffXfermode(PorterDuff.Mode.SCREEN);
 
     static final class ClusterMaskCache {
         public final float padPx;
@@ -92,7 +95,7 @@ final class LyricsGlyphMaskCache {
         }
 
         @Nullable
-        public Bitmap obtain(int idx, @NonNull Layout layout) {
+        public Bitmap obtain(int idx, Layout layout) {
             Bitmap existing = bitmaps[idx];
             if (existing != null && !existing.isRecycled()) return existing;
             RasterResult res = rasterize(layout, padPx, MASK_RASTER_SCALE);
@@ -104,7 +107,7 @@ final class LyricsGlyphMaskCache {
         }
 
         @Nullable
-        public Bitmap obtainGlow(int idx, @NonNull Layout layout, float blurRadius) {
+        public Bitmap obtainGlow(int idx, Layout layout, float blurRadius) {
             Bitmap existing = glowBitmaps[idx];
             if (existing != null && !existing.isRecycled()) return existing;
             RasterResult res = rasterizeGlow(layout, padPx, blurRadius, GLOW_RASTER_SCALE);
@@ -126,8 +129,8 @@ final class LyricsGlyphMaskCache {
         public void prewarmStep(
                 int count,
                 long budgetNs,
-                @NonNull LayoutProvider layoutOf,
-                @NonNull GlowBlurProvider glowBlurOf) {
+                LayoutProvider layoutOf,
+                GlowBlurProvider glowBlurOf) {
             int limit = Math.min(count, bitmaps.length);
             if (prewarmCursor >= limit) return;
             long startNs = SystemClock.elapsedRealtimeNanos();
@@ -168,7 +171,6 @@ final class LyricsGlyphMaskCache {
             hasBitmaps = false;
         }
 
-        @NonNull
         public LinearGradient bandBrush(int lit, int unlit, float dx) {
             LinearGradient cached = bandBrushCached;
             if (cached != null && lit == bandLit && unlit == bandUnlit && dx == bandDx) {
@@ -192,16 +194,16 @@ final class LyricsGlyphMaskCache {
         }
 
         public void drawMaskTinted(
-                @NonNull Canvas canvas,
-                @NonNull Bitmap mask,
+                Canvas canvas,
+                Bitmap mask,
                 float maskScale,
-                @NonNull ColorFilter filter,
+                ColorFilter filter,
                 float alpha,
-                @Nullable PorterDuff.Mode blendMode) {
+                boolean screenBlend) {
             maskPaint.setColor(Color.WHITE);
             maskPaint.setColorFilter(filter);
             maskPaint.setAlpha(Math.max(0, Math.min(255, Math.round(alpha * 255f))));
-            maskPaint.setXfermode(blendMode != null ? new PorterDuffXfermode(blendMode) : null);
+            maskPaint.setXfermode(screenBlend ? SCREEN_MODE : null);
 
             float inv = 1f / maskScale;
             float padM = padPx * maskScale;
@@ -216,10 +218,10 @@ final class LyricsGlyphMaskCache {
         }
 
         public void drawMaskBand(
-                @NonNull Canvas canvas,
-                @NonNull Bitmap mask,
+                Canvas canvas,
+                Bitmap mask,
                 float maskScale,
-                @NonNull WipeResult wipe,
+                WipeResult wipe,
                 int litColor,
                 int unlitColor) {
             float inv = 1f / maskScale;
@@ -265,23 +267,32 @@ final class LyricsGlyphMaskCache {
     }
 
     @Nullable
-    private static RasterResult allocateMaskBitmap(@NonNull Layout subLayout, float padPx, float scale) {
+    private static RasterResult allocateMaskBitmap(Layout subLayout, float padPx, float scale) {
         float lw = Math.max(1f, subLayout.getWidth() + padPx * 2f);
         float lh = Math.max(1f, subLayout.getHeight() + padPx * 2f);
-        float s = Math.min(scale, MAX_MASK_SIDE / Math.max(lw, lh));
-        int w = Math.max(1, Math.min((int) MAX_MASK_SIDE, (int) Math.ceil(lw * s)));
-        int h = Math.max(1, Math.min((int) MAX_MASK_SIDE, (int) Math.ceil(lh * s)));
+        float s = Math.min(scale, MAX_MASK_SIDE_PX / Math.max(lw, lh));
+        int w = Math.max(1, Math.min(MAX_MASK_SIDE_PX, (int) Math.ceil(lw * s)));
+        int h = Math.max(1, Math.min(MAX_MASK_SIDE_PX, (int) Math.ceil(lh * s)));
+        Bitmap bmp = createAlphaMask(w, h);
+        return bmp != null ? new RasterResult(bmp, s) : null;
+    }
+
+    /**
+     * {@return a new single-channel mask, a quarter of the memory of a color bitmap, or null if
+     * there is no memory for it and the text is drawn without a mask}
+     */
+    @Nullable
+    static Bitmap createAlphaMask(int width, int height) {
         try {
-            // Single-channel alpha masks cut native bitmap footprint and GC pressure by 4x.
-            Bitmap bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ALPHA_8);
-            return bmp != null ? new RasterResult(bmp, s) : null;
-        } catch (OutOfMemoryError ignored) {
+            return Bitmap.createBitmap(width, height, Bitmap.Config.ALPHA_8);
+        } catch (OutOfMemoryError error) {
+            Logger.printDebug(() -> "Could not allocate " + width + "x" + height + " lyrics mask: " + error);
             return null;
         }
     }
 
     @Nullable
-    public static RasterResult rasterize(@NonNull Layout subLayout, float padPx, float scale) {
+    public static RasterResult rasterize(Layout subLayout, float padPx, float scale) {
         RasterResult allocated = allocateMaskBitmap(subLayout, padPx, scale);
         if (allocated == null) {
             return null;
@@ -304,7 +315,7 @@ final class LyricsGlyphMaskCache {
     }
 
     @Nullable
-    public static RasterResult rasterizeGlow(@NonNull Layout subLayout, float padPx, float blurRadius, float scale) {
+    public static RasterResult rasterizeGlow(Layout subLayout, float padPx, float blurRadius, float scale) {
         RasterResult allocated = allocateMaskBitmap(subLayout, padPx, scale);
         if (allocated == null) {
             return null;

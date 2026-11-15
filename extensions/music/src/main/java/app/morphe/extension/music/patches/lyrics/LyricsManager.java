@@ -103,6 +103,14 @@ public final class LyricsManager {
     private static final long PLAY_STATE_GRACE_MS = 2500;
     /** Extra tolerance for coarse MediaSession lag behind the frozen pause position during a pause transition. */
     private static final long PAUSE_COARSE_LAG_TOLERANCE_MS = 1000;
+    /** While playing, a video time sample this far ahead is jumped towards instead of caught up with. */
+    private static final long VIDEO_TIME_CORRECTION_MS = 220;
+    /** While playing, a playback state sample this far ahead is jumped towards instead of caught up with. */
+    private static final long PLAYBACK_STATE_CORRECTION_MS = 180;
+    /** Drift within this is left alone. */
+    private static final long DRIFT_DEADBAND_MS = 15;
+    private static final float MIN_DRIFT_SPEED_FACTOR = 0.88f;
+    private static final float MAX_DRIFT_SPEED_FACTOR = 1.18f;
     /** Shorter tracks are too short for where the lyrics end to say anything. */
     private static final int MIN_CUT_OFF_CHECK_SECONDS = 60;
     /** Lyrics ending before 15% of the track are taken as cut off. */
@@ -181,8 +189,9 @@ public final class LyricsManager {
     private volatile State state = State.IDLE;
     // The position is sampled a few times a second, and estimated in between on every read
     // so the highlight moves smoothly.
-    private long smoothPositionMs;
-    private double smoothPositionExactMs;
+    // Kept unrounded, so extrapolating in small steps at a playback speed other than 1 does not
+    // add up rounding errors.
+    private double smoothPositionMs;
     private long lastSmoothUpdateUptimeMs;
     private long lastSampledPlaybackPosMs = -1;
     private long lastVideoTimeSample = -1;
@@ -318,13 +327,12 @@ public final class LyricsManager {
                     Math.max(0L, effectiveEnd - lastSmoothUpdateUptimeMs));
             if (elapsed > 0) {
                 final float effectiveSpeed = Math.max(0.1f, playbackSpeed * driftSpeedFactor);
-                double advanced = smoothPositionExactMs + elapsed * (double) effectiveSpeed;
+                double advanced = smoothPositionMs + elapsed * (double) effectiveSpeed;
                 final TrackInfo track = currentTrack;
                 if (track != null && track.durationSeconds() > 0) {
-                    advanced = Math.min(advanced, (double) (track.durationSeconds() * 1000L));
+                    advanced = Math.min(advanced, track.durationSeconds() * 1000.0);
                 }
-                smoothPositionExactMs = advanced;
-                smoothPositionMs = Math.round(advanced);
+                smoothPositionMs = advanced;
             }
         }
         lastSmoothUpdateUptimeMs = now;
@@ -340,13 +348,17 @@ public final class LyricsManager {
 
     /** Proportional rate adjustment so smooth position catches up or slows down without step jumps. */
     static float calculateDriftSpeedFactor(long drift) {
-        if (Math.abs(drift) <= 15L) {
+        if (Math.abs(drift) <= DRIFT_DEADBAND_MS) {
             return 1.0f;
         }
         if (drift < 0L) {
-            return Math.max(0.88f, 1.0f + (float) drift / 1000f);
+            return Math.max(MIN_DRIFT_SPEED_FACTOR, 1.0f + (float) drift / 1000f);
         }
-        return Math.min(1.18f, 1.0f + (float) drift / 800f);
+        return Math.min(MAX_DRIFT_SPEED_FACTOR, 1.0f + (float) drift / 800f);
+    }
+
+    private long smoothPosition() {
+        return Math.round(smoothPositionMs);
     }
 
     /**
@@ -428,7 +440,6 @@ public final class LyricsManager {
 
     void resetPositionAt(long now) {
         smoothPositionMs = 0;
-        smoothPositionExactMs = 0.0;
         lastSmoothUpdateUptimeMs = now;
         lastSampledPlaybackPosMs = -1;
         lastVideoTimeSample = -1;
@@ -464,7 +475,7 @@ public final class LyricsManager {
         if (videoTime >= 0 && videoTime != lastVideoTimeSample) {
             lastVideoTimeSample = videoTime;
 
-            final long drift = videoTime - smoothPositionMs;
+            final long drift = videoTime - smoothPosition();
             final boolean isInitial = lastPlaybackSampleUptimeMs == 0 || smoothPositionMs == 0;
             final boolean isBackwardSeek = playing && smoothPositionMs > 0
                     && drift < -BACKWARD_SEEK_THRESHOLD_MS;
@@ -480,15 +491,14 @@ public final class LyricsManager {
 
             if (isInitial || isBackwardSeek || isForwardSeek || isStaleDrift || isPausedSeek) {
                 smoothPositionMs = videoTime;
-                smoothPositionExactMs = videoTime;
                 driftSpeedFactor = 1f;
                 awaitingPausedPlaybackState = false;
                 awaitingResumedPlaybackState = false;
             } else if (playing) {
-                if (drift > 220) {
-                    smoothPositionMs = correctSmoothEstimate(smoothPositionMs, videoTime);
-                    smoothPositionExactMs = smoothPositionMs;
-                    driftSpeedFactor = calculateDriftSpeedFactor(videoTime - smoothPositionMs);
+                if (drift > VIDEO_TIME_CORRECTION_MS) {
+                    final long corrected = correctSmoothEstimate(smoothPosition(), videoTime);
+                    smoothPositionMs = corrected;
+                    driftSpeedFactor = calculateDriftSpeedFactor(videoTime - corrected);
                 } else {
                     driftSpeedFactor = calculateDriftSpeedFactor(drift);
                 }
@@ -496,7 +506,7 @@ public final class LyricsManager {
             lastPlaybackSampleUptimeMs = now;
         }
 
-        return Math.max(0L, smoothPositionMs);
+        return Math.max(0L, smoothPosition());
     }
 
     public int getTemporaryOffsetMs() {
@@ -792,7 +802,6 @@ public final class LyricsManager {
         advanceSmoothPosition(now);
         playing = false;
         driftSpeedFactor = 1f;
-        smoothPositionExactMs = smoothPositionMs;
         awaitingPausedPlaybackState = true;
         pausedAtUptimeMs = now;
         awaitingResumedPlaybackState = false;
@@ -860,7 +869,8 @@ public final class LyricsManager {
         // A new state can report zero before it reports where the video really is.
         final boolean isStaleZero = newPosition == 0 && videoTime > SEEK_THRESHOLD_MS;
         if (newPosition >= 0 && !isStaleZero) {
-            final long delta = newPosition - smoothPositionMs;
+            final long smoothMs = smoothPosition();
+            final long delta = newPosition - smoothMs;
             final boolean isGenuineTransitionSeek = !nowPlaying
                     ? (delta > PLAYBACK_STATE_SEEK_THRESHOLD_MS
                             || delta < -(PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS))
@@ -869,30 +879,24 @@ public final class LyricsManager {
                     || (!transitioned && Math.abs(delta) > PLAYBACK_STATE_SEEK_THRESHOLD_MS)
                     || (transitioned && isGenuineTransitionSeek)) {
                 smoothPositionMs = newPosition;
-                smoothPositionExactMs = newPosition;
             } else if (transitioned) {
                 // The sample sent with a pause or a resume is coarse, and taking it would
                 // make the highlight step back on pause or lag behind on resume.
-                if (!nowPlaying) {
-                    smoothPositionExactMs = smoothPositionMs;
-                    if (videoTime >= 0 && Math.abs(videoTime - smoothPositionMs)
-                            <= PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS) {
-                        // Consume the matching lagging VideoInformation timestamp so the next
-                        // computeExpectedPositionMs() tick does not re-trigger isPausedSeek.
-                        lastVideoTimeSample = videoTime;
-                    }
+                if (!nowPlaying && videoTime >= 0 && Math.abs(videoTime - smoothMs)
+                        <= PLAYBACK_STATE_SEEK_THRESHOLD_MS + PAUSE_COARSE_LAG_TOLERANCE_MS) {
+                    // Consume the matching lagging VideoInformation timestamp so the next
+                    // computeExpectedPositionMs() tick does not re-trigger isPausedSeek.
+                    lastVideoTimeSample = videoTime;
                 }
             } else if (!nowPlaying && Math.abs(delta) > PAUSED_RESYNC_THRESHOLD_MS) {
                 smoothPositionMs = newPosition;
-                smoothPositionExactMs = newPosition;
             } else if (nowPlaying && newPosition != lastSampledPlaybackPosMs) {
                 // While playing, a coarse sample may only pull the estimate forward, unless it
                 // is the only source of the position.
-                if (videoTime < 0 || newPosition - smoothPositionMs > 180) {
-                    smoothPositionMs = correctSmoothEstimate(smoothPositionMs, newPosition);
-                    smoothPositionExactMs = smoothPositionMs;
+                if (videoTime < 0 || delta > PLAYBACK_STATE_CORRECTION_MS) {
+                    smoothPositionMs = correctSmoothEstimate(smoothMs, newPosition);
                 } else {
-                    driftSpeedFactor = calculateDriftSpeedFactor(newPosition - smoothPositionMs);
+                    driftSpeedFactor = calculateDriftSpeedFactor(delta);
                 }
             }
             lastSampledPlaybackPosMs = newPosition;

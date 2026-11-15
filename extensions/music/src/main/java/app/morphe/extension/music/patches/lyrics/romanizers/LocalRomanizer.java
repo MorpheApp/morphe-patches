@@ -577,31 +577,19 @@ public final class LocalRomanizer {
         return false;
     }
 
-    /** Strips spaces, hyphens, and apostrophes while lowercasing in one allocation-free scan. */
+    /** {@return the text lowercased without spaces, hyphens and apostrophes, for matching} */
     static String normalizeMatchToken(@Nullable String text, int start, int end) {
         if (text == null || start >= end) {
             return "";
         }
-        StringBuilder sb = null;
+        StringBuilder sb = new StringBuilder(end - start);
         for (int i = start; i < end; i++) {
             final char c = text.charAt(i);
-            final boolean skip = c == '-' || c == '\'' || Character.isWhitespace(c);
-            final char lower = skip
-                    ? 0
-                    : (c >= 'A' && c <= 'Z' ? (char) (c + 32) : (c < 128 ? c : Character.toLowerCase(c)));
-            if (skip || lower != c) {
-                if (sb == null) {
-                    sb = new StringBuilder(end - start);
-                    sb.append(text, start, i);
-                }
-                if (!skip) {
-                    sb.append(lower);
-                }
-            } else if (sb != null) {
-                sb.append(c);
+            if (c != '-' && c != '\'' && !Character.isWhitespace(c)) {
+                sb.append(Character.toLowerCase(c));
             }
         }
-        return sb != null ? sb.toString() : text.substring(start, end);
+        return sb.toString();
     }
 
     private static double tokenMatchCostNormalized(

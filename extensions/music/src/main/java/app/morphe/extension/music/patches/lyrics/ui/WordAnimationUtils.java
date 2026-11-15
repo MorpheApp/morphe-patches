@@ -24,7 +24,6 @@ import android.text.TextDirectionHeuristic;
 import android.text.TextDirectionHeuristics;
 import android.text.TextPaint;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -62,7 +61,7 @@ public final class WordAnimationUtils {
         public final String ruby;
 
         public WordTimestamp(
-                @NonNull String text,
+                String text,
                 double startTime,
                 double endTime,
                 boolean hasTrailingSpace,
@@ -72,7 +71,7 @@ public final class WordAnimationUtils {
         }
 
         public WordTimestamp(
-                @NonNull String text,
+                String text,
                 double startTime,
                 double endTime,
                 boolean hasTrailingSpace,
@@ -97,16 +96,15 @@ public final class WordAnimationUtils {
         }
 
         public WordTimestamp copy(
-                @NonNull String newText,
+                String newText,
                 double newStartTime,
                 double newEndTime,
                 boolean newHasTrailingSpace) {
             return new WordTimestamp(newText, newStartTime, newEndTime, newHasTrailingSpace, isBackground, romanized, ruby);
         }
 
-        @NonNull
         public static List<WordTimestamp> fromSpanTimings(
-                @NonNull String mainText,
+                String mainText,
                 @Nullable List<WordTiming> timings,
                 boolean isBg) {
             if (timings == null || timings.isEmpty() || mainText.isEmpty()) {
@@ -136,7 +134,7 @@ public final class WordAnimationUtils {
 
         @Nullable
         public static List<WordTimestamp> buildRomanizedWordsFromSpanTimings(
-                @NonNull String mainText,
+                String mainText,
                 @Nullable List<WordTiming> timings,
                 boolean isBg) {
             if (timings == null || timings.isEmpty() || mainText.isEmpty()) {
@@ -483,7 +481,6 @@ public final class WordAnimationUtils {
         @Nullable
         private LinearGradient cachedShader = null;
 
-        @NonNull
         public LinearGradient getShader(float bStart, float bEnd, int litColor, int unlitColor) {
             if (cachedShader != null
                     && litColor == cachedLit
@@ -509,7 +506,6 @@ public final class WordAnimationUtils {
         }
     }
 
-    private static final int MAX_STATIC_MASK_PX = 2048;
     private static final Paint STATIC_MASK_PAINT = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
 
     public static final class RomanLineStatics {
@@ -588,24 +584,23 @@ public final class WordAnimationUtils {
             float originX = (float) Math.floor(minX) - 2f;
             int bmpW = (int) Math.ceil(maxX - originX) + 2;
             int bmpH = maxH + 2;
-            if (bmpW <= 0 || bmpH <= 0 || bmpW > MAX_STATIC_MASK_PX || bmpH > MAX_STATIC_MASK_PX) {
+            if (bmpW <= 0 || bmpH <= 0 || bmpW > LyricsGlyphMaskCache.MAX_MASK_SIDE_PX || bmpH > LyricsGlyphMaskCache.MAX_MASK_SIDE_PX) {
                 return false;
             }
-            try {
-                Bitmap bmp = Bitmap.createBitmap(bmpW, bmpH, Bitmap.Config.ALPHA_8);
-                Canvas c = new Canvas(bmp);
-                for (int i = 0; i < n; i++) {
-                    Layout sl = clusters.get(i).subLayout;
-                    if (sl != null) {
-                        drawLayoutWithPaint(c, sl, drawX[i] - originX, 0f, Color.WHITE, null);
-                    }
+            Bitmap bmp = LyricsGlyphMaskCache.createAlphaMask(bmpW, bmpH);
+            if (bmp == null) {
+                return false;
+            }
+            Canvas c = new Canvas(bmp);
+            for (int i = 0; i < n; i++) {
+                Layout sl = clusters.get(i).subLayout;
+                if (sl != null) {
+                    drawLayoutWithPaint(c, sl, drawX[i] - originX, 0f, Color.WHITE, null);
                 }
-                staticMask = bmp;
-                staticMaskOriginX = originX;
-                return true;
-            } catch (OutOfMemoryError ignored) {
-                return false;
             }
+            staticMask = bmp;
+            staticMaskOriginX = originX;
+            return true;
         }
 
         @Nullable
@@ -682,7 +677,6 @@ public final class WordAnimationUtils {
         @Nullable
         private ColorFilter filter = null;
 
-        @NonNull
         public ColorFilter get(int target) {
             ColorFilter cached = filter;
             if (cached != null && target == color) return cached;
@@ -783,7 +777,7 @@ public final class WordAnimationUtils {
     }
 
     @Nullable
-    public static Integer findSafeBreakOffsetOrNull(@NonNull String mainText, int rawBreakAt, int lineStartOffset) {
+    public static Integer findSafeBreakOffsetOrNull(String mainText, int rawBreakAt, int lineStartOffset) {
         if (rawBreakAt <= lineStartOffset || rawBreakAt > mainText.length()) return null;
 
         Character before = (rawBreakAt - 1 >= 0 && rawBreakAt - 1 < mainText.length())
@@ -823,7 +817,7 @@ public final class WordAnimationUtils {
         return (candidate > lineStartOffset) ? candidate : null;
     }
 
-    public static int findSafeBreakOffset(@NonNull String mainText, int rawBreakAt, int lineStartOffset) {
+    public static int findSafeBreakOffset(String mainText, int rawBreakAt, int lineStartOffset) {
         Integer res = findSafeBreakOffsetOrNull(mainText, rawBreakAt, lineStartOffset);
         return res != null ? res : rawBreakAt;
     }
@@ -847,7 +841,6 @@ public final class WordAnimationUtils {
         }
     }
 
-    @NonNull
     public static List<int[]> shapingWordRanges(@Nullable List<WordTimestamp> words) {
         if (words == null || words.isEmpty()) return Collections.emptyList();
         List<int[]> out = new ArrayList<>(words.size());
@@ -890,10 +883,9 @@ public final class WordAnimationUtils {
         return s != null && !s.isEmpty() && Character.isWhitespace(s.charAt(0));
     }
 
-    @NonNull
     public static List<WordTimestamp> mergeShapingWords(
-            @NonNull List<WordTimestamp> words,
-            @NonNull List<int[]> ranges) {
+            List<WordTimestamp> words,
+            List<int[]> ranges) {
         if (ranges.size() == words.size()) {
             boolean allSingle = true;
             for (int i = 0; i < ranges.size(); i++) {
@@ -929,10 +921,9 @@ public final class WordAnimationUtils {
         return out;
     }
 
-    @NonNull
     public static List<AlignedSyllable> alignSyllablesForFormatting(
-            @NonNull List<WordTimestamp> words,
-            @NonNull String mainText) {
+            List<WordTimestamp> words,
+            String mainText) {
         if (words.isEmpty()) return Collections.emptyList();
 
         int[] strippedToOriginal = new int[mainText.length() + 1];
@@ -987,18 +978,17 @@ public final class WordAnimationUtils {
         return out;
     }
 
-    @NonNull
-    public static String romanizedSyllableText(@NonNull WordTimestamp word, boolean hasMainTrailingSpace) {
+    public static String romanizedSyllableText(WordTimestamp word, boolean hasMainTrailingSpace) {
         String clean = LyricsTextUtils.stripBidiControls(word.text);
         if (clean.isEmpty()) return "";
         return clean + ((word.hasTrailingSpace || hasMainTrailingSpace) ? " " : "");
     }
 
     public static Layout createStaticLayout(
-            @NonNull CharSequence text,
-            @NonNull TextPaint paint,
+            CharSequence text,
+            TextPaint paint,
             int width,
-            @NonNull Layout.Alignment alignment,
+            Layout.Alignment alignment,
             boolean isRtl) {
         LyricsViewSupport.applyLyricsBoldPaint(paint);
         int safeW = Math.max(1, width);
@@ -1021,9 +1011,8 @@ public final class WordAnimationUtils {
      * Returns a configured {@link TextPaint} for cluster measurement so callers building many runs
      * on one line avoid repeated {@link TextPaint} copies and HarfBuzz font-feature parsing.
      */
-    @NonNull
     public static TextPaint createConfiguredRunPaint(
-            @NonNull TextPaint basePaint,
+            TextPaint basePaint,
             int color,
             boolean hasJoiningScript) {
         TextPaint runPaint = new TextPaint(basePaint);
@@ -1039,16 +1028,15 @@ public final class WordAnimationUtils {
     }
 
     private static float measureRunWidth(
-            @NonNull String text,
-            @NonNull TextPaint configuredPaint) {
+            String text,
+            TextPaint configuredPaint) {
         return Math.max(1f, (float) Math.ceil(Layout.getDesiredWidth(text, configuredPaint)));
     }
 
     /** Measures a single cluster/word run using a pre-configured {@link TextPaint}. */
-    @NonNull
     public static Layout measureRunWithConfiguredPaint(
-            @NonNull String text,
-            @NonNull TextPaint runPaint,
+            String text,
+            TextPaint runPaint,
             boolean hasJoiningScript) {
         boolean rtl = LyricsSpanBuilder.isRtlText(text);
         int desiredW = Math.max(1, (int) Math.ceil(Layout.getDesiredWidth(text, runPaint)));
@@ -1062,17 +1050,7 @@ public final class WordAnimationUtils {
         return createStaticLayout(text, runPaint, desiredW, Layout.Alignment.ALIGN_NORMAL, rtl);
     }
 
-    public static Layout measureRun(
-            @NonNull String text,
-            @NonNull TextPaint basePaint,
-            int color,
-            boolean hasJoiningScript) {
-        TextPaint runPaint = createConfiguredRunPaint(basePaint, color, hasJoiningScript);
-        return measureRunWithConfiguredPaint(text, runPaint, hasJoiningScript);
-    }
-
-    @NonNull
-    public static TextPaint createRomanPaint(@NonNull TextPaint lyricPaint, int color) {
+    public static TextPaint createRomanPaint(TextPaint lyricPaint, int color) {
         TextPaint romPaint = new TextPaint(lyricPaint);
         romPaint.setTextSize(lyricPaint.getTextSize() * 0.7f);
         LyricsViewSupport.applyLyricsBoldPaint(romPaint);
@@ -1081,8 +1059,7 @@ public final class WordAnimationUtils {
         return romPaint;
     }
 
-    @NonNull
-    public static TextPaint createRubyPaint(@NonNull TextPaint lyricPaint, int color) {
+    public static TextPaint createRubyPaint(TextPaint lyricPaint, int color) {
         TextPaint rubyPaint = new TextPaint(lyricPaint);
         rubyPaint.setTextSize(lyricPaint.getTextSize() * 0.5f);
         LyricsViewSupport.applyLyricsBoldPaint(rubyPaint);
@@ -1093,8 +1070,8 @@ public final class WordAnimationUtils {
 
     public static boolean hasAnyRubySyllables(
             boolean rubyActive,
-            @NonNull List<AlignedSyllable> alignedSyllables,
-            @NonNull String mainText) {
+            List<AlignedSyllable> alignedSyllables,
+            String mainText) {
         if (!rubyActive || alignedSyllables.isEmpty() || mainText.isEmpty()) {
             return false;
         }
@@ -1107,13 +1084,12 @@ public final class WordAnimationUtils {
         return false;
     }
 
-    @NonNull
     public static List<RomanizedWordCluster> buildRubyClusters(
             boolean rubyActive,
-            @NonNull List<AlignedSyllable> alignedSyllables,
-            @NonNull String mainText,
-            @NonNull Layout textLayoutResult,
-            @NonNull TextPaint lyricPaint,
+            List<AlignedSyllable> alignedSyllables,
+            String mainText,
+            Layout textLayoutResult,
+            TextPaint lyricPaint,
             int expressiveAccent) {
         if (!rubyActive || alignedSyllables.isEmpty() || mainText.isEmpty()) {
             return Collections.emptyList();
@@ -1162,36 +1138,20 @@ public final class WordAnimationUtils {
         @Nullable
         public final List<AlignedSyllable> alignedIfUnchanged;
 
-        FormattedMainText(@NonNull String text, @Nullable List<AlignedSyllable> alignedIfUnchanged) {
+        FormattedMainText(String text, @Nullable List<AlignedSyllable> alignedIfUnchanged) {
             this.text = text;
             this.alignedIfUnchanged = alignedIfUnchanged;
         }
     }
 
-    @NonNull
-    public static String formatMainText(
-            @NonNull String mainText,
-            @NonNull List<WordTimestamp> words,
-            @Nullable List<WordTimestamp> romanizedWords,
-            @Nullable String romanizedText,
-            boolean showSyllableRomanization,
-            boolean rubyActive,
-            @NonNull TextPaint lyricPaint,
-            int widthPx) {
-        return formatMainTextWithResult(
-                mainText, words, romanizedWords, romanizedText,
-                showSyllableRomanization, rubyActive, lyricPaint, widthPx).text;
-    }
-
-    @NonNull
     public static FormattedMainText formatMainTextWithResult(
-            @NonNull String mainText,
-            @NonNull List<WordTimestamp> words,
+            String mainText,
+            List<WordTimestamp> words,
             @Nullable List<WordTimestamp> romanizedWords,
             @Nullable String romanizedText,
             boolean showSyllableRomanization,
             boolean rubyActive,
-            @NonNull TextPaint lyricPaint,
+            TextPaint lyricPaint,
             int widthPx) {
         if ((!showSyllableRomanization && !rubyActive) || widthPx <= 0 || LyricsSpanBuilder.isRtlText(mainText) || mainText.trim().isEmpty()) {
             return new FormattedMainText(mainText, null);
@@ -1210,10 +1170,10 @@ public final class WordAnimationUtils {
     }
 
     private static float measureMainSpanWidth(
-            @NonNull String mainText,
+            String mainText,
             int start,
             int end,
-            @NonNull TextPaint lyricPaint,
+            TextPaint lyricPaint,
             @Nullable Layout unconstrainedResult) {
         final int safeStart = Math.max(0, Math.min(mainText.length(), start));
         final int safeEnd = Math.max(safeStart, Math.min(mainText.length(), end));
@@ -1229,15 +1189,14 @@ public final class WordAnimationUtils {
                 - unconstrainedResult.getPrimaryHorizontal(safeStart));
     }
 
-    @NonNull
     private static FormattedMainText buildFormattedMainText(
-            @NonNull String mainText,
-            @NonNull List<WordTimestamp> words,
+            String mainText,
+            List<WordTimestamp> words,
             @Nullable List<WordTimestamp> romanizedWords,
             @Nullable String romanizedText,
             boolean showSyllableRomanization,
             boolean rubyActive,
-            @NonNull TextPaint lyricPaint,
+            TextPaint lyricPaint,
             int widthPx,
             float fontSizePx) {
         if (mainText.isEmpty() || widthPx <= 0) return new FormattedMainText(mainText, null);
@@ -1370,8 +1329,7 @@ public final class WordAnimationUtils {
     /**
      * Maps each character index in {@code formattedText} back to its source offset in {@code mainText}.
      */
-    @NonNull
-    public static int[] mapFormattedToMainOffsets(@NonNull String formattedText, @NonNull String mainText) {
+    public static int[] mapFormattedToMainOffsets(String formattedText, String mainText) {
         int fmtLen = formattedText.length();
         int mainLen = mainText.length();
         int[] map = new int[fmtLen + 1];
@@ -1399,15 +1357,14 @@ public final class WordAnimationUtils {
         return map;
     }
 
-    @NonNull
     public static List<RomanizedWordCluster> buildRomanClusters(
             boolean showSyllableRomanization,
-            @NonNull List<AlignedSyllable> alignedSyllables,
+            List<AlignedSyllable> alignedSyllables,
             @Nullable List<WordTimestamp> romanizedWords,
             @Nullable String romanizedText,
-            @NonNull String mainText,
-            @NonNull Layout textLayoutResult,
-            @NonNull TextPaint lyricPaint,
+            String mainText,
+            Layout textLayoutResult,
+            TextPaint lyricPaint,
             int expressiveAccent) {
         if (!showSyllableRomanization) {
             return Collections.emptyList();
@@ -1438,10 +1395,10 @@ public final class WordAnimationUtils {
 
     @Nullable
     private static ResolvedRomanSyllables resolveRomanSyllables(
-            @NonNull List<AlignedSyllable> alignedSyllables,
+            List<AlignedSyllable> alignedSyllables,
             @Nullable List<WordTimestamp> romanizedWords,
             @Nullable String romanizedText,
-            @NonNull String mainText) {
+            String mainText) {
         if (alignedSyllables.isEmpty()) return null;
 
         List<WordTimestamp> rWords = null;
@@ -1560,21 +1517,20 @@ public final class WordAnimationUtils {
     }
 
     public static boolean hasAnyRomanizedSyllables(
-            @NonNull List<AlignedSyllable> alignedSyllables,
+            List<AlignedSyllable> alignedSyllables,
             @Nullable List<WordTimestamp> romanizedWords,
             @Nullable String romanizedText,
-            @NonNull String mainText) {
+            String mainText) {
         return resolveRomanSyllables(alignedSyllables, romanizedWords, romanizedText, mainText) != null;
     }
 
-    @NonNull
     public static List<RomanizedWordCluster> buildRomanizedWordClusters(
-            @NonNull List<AlignedSyllable> alignedSyllables,
+            List<AlignedSyllable> alignedSyllables,
             @Nullable List<WordTimestamp> romanizedWords,
             @Nullable String romanizedText,
-            @NonNull String mainText,
-            @NonNull Layout textLayoutResult,
-            @NonNull TextPaint romPaint,
+            String mainText,
+            Layout textLayoutResult,
+            TextPaint romPaint,
             int expressiveAccent) {
         ResolvedRomanSyllables resolved = resolveRomanSyllables(
                 alignedSyllables, romanizedWords, romanizedText, mainText);
@@ -1608,13 +1564,12 @@ public final class WordAnimationUtils {
         return result;
     }
 
-    @NonNull
     private static float[] buildCharXMap(
-            @NonNull String mainText,
-            @NonNull Layout textLayoutResult,
+            String mainText,
+            Layout textLayoutResult,
             int lineCount,
-            @NonNull boolean[] lineIsRtl,
-            @NonNull float[] lineStarts) {
+            boolean[] lineIsRtl,
+            float[] lineStarts) {
         float[] map = new float[mainText.length() + 1];
         int maxOff = Math.max(0, mainText.length() - 1);
         for (int i = 0; i <= mainText.length(); i++) {
@@ -1633,17 +1588,16 @@ public final class WordAnimationUtils {
         return map;
     }
 
-    @NonNull
     public static CharPositionMaps buildCharPositionMaps(
-            @NonNull String mainText,
-            @NonNull Layout textLayoutResult,
+            String mainText,
+            Layout textLayoutResult,
             int lineCount,
-            @NonNull boolean[] lineIsRtl,
-            @NonNull float[] lineStarts,
-            @NonNull List<AlignedSyllable> alignedSyllables,
-            @NonNull List<RomanizedWordCluster> romanClusters,
-            @NonNull List<RomanizedWordCluster> rubyClusters,
-            @NonNull Layout.Alignment alignment,
+            boolean[] lineIsRtl,
+            float[] lineStarts,
+            List<AlignedSyllable> alignedSyllables,
+            List<RomanizedWordCluster> romanClusters,
+            List<RomanizedWordCluster> rubyClusters,
+            Layout.Alignment alignment,
             float fontSizePx) {
         float[] charXMap = buildCharXMap(mainText, textLayoutResult, lineCount, lineIsRtl, lineStarts);
         float[][] shiftAndExtra = buildRomanStartShiftPair(
@@ -1652,16 +1606,15 @@ public final class WordAnimationUtils {
         return new CharPositionMaps(charXMap, shiftAndExtra[0], shiftAndExtra[1]);
     }
 
-    @NonNull
     private static float[][] buildRomanStartShiftPair(
-            @NonNull String mainText,
-            @NonNull float[] charXMap,
-            @NonNull Layout textLayoutResult,
+            String mainText,
+            float[] charXMap,
+            Layout textLayoutResult,
             int lineCount,
-            @NonNull List<AlignedSyllable> alignedSyllables,
-            @NonNull List<RomanizedWordCluster> romanClusters,
-            @NonNull List<RomanizedWordCluster> rubyClusters,
-            @NonNull Layout.Alignment alignment,
+            List<AlignedSyllable> alignedSyllables,
+            List<RomanizedWordCluster> romanClusters,
+            List<RomanizedWordCluster> rubyClusters,
+            Layout.Alignment alignment,
             float fontSizePx) {
         float[] shiftByWordIndex = new float[romanClusters.size() + rubyClusters.size() + alignedSyllables.size() + 1];
         float[] lineTotalExtra = new float[Math.max(1, lineCount)];
@@ -1744,7 +1697,7 @@ public final class WordAnimationUtils {
         return new float[][]{shiftByWordIndex, lineTotalExtra};
     }
 
-    private static int getVisibleLineEnd(@NonNull Layout layout, @NonNull String text, int line) {
+    private static int getVisibleLineEnd(Layout layout, String text, int line) {
         int end = layout.getLineEnd(line);
         while (end > layout.getLineStart(line) && end - 1 < text.length()) {
             char ch = text.charAt(end - 1);
@@ -1757,17 +1710,16 @@ public final class WordAnimationUtils {
         return end;
     }
 
-    public static float calculateGapShift(int syllableIndex, @NonNull float[] romanStartShift) {
+    public static float calculateGapShift(int syllableIndex, float[] romanStartShift) {
         if (syllableIndex < 0 || syllableIndex >= romanStartShift.length) return 0f;
         return romanStartShift[syllableIndex];
     }
 
-    @NonNull
     public static SyllableBounds buildSyllableBounds(
-            @NonNull List<AlignedSyllable> alignedSyllables,
-            @NonNull float[] charXMap,
-            @NonNull Layout textLayoutResult,
-            @NonNull String formattedMainText) {
+            List<AlignedSyllable> alignedSyllables,
+            float[] charXMap,
+            Layout textLayoutResult,
+            String formattedMainText) {
         int n = alignedSyllables.size();
         float[] startX = new float[n];
         float[] endX = new float[n];
@@ -1798,10 +1750,9 @@ public final class WordAnimationUtils {
         return new SyllableBounds(startX, endX);
     }
 
-    @NonNull
     public static List<ReconstructedWord> buildReconstructedWords(
-            @NonNull List<AlignedSyllable> alignedSyllables,
-            @NonNull String formattedMainText) {
+            List<AlignedSyllable> alignedSyllables,
+            String formattedMainText) {
         List<ReconstructedWord> result = new ArrayList<>();
         int idx = 0;
         while (idx < alignedSyllables.size()) {
@@ -1846,17 +1797,16 @@ public final class WordAnimationUtils {
         return result;
     }
 
-    @NonNull
     public static ClusterStatics buildClusterStatics(
-            @NonNull List<VisualCluster> clusters,
-            @NonNull float[] romanStartShift,
+            List<VisualCluster> clusters,
+            float[] romanStartShift,
             float lineExtraHeight,
             float firstLineRubyOffset,
-            @NonNull boolean[] lineIsRtl,
-            @NonNull float[] lineLefts,
-            @NonNull float[] lineRights,
-            @NonNull float[] lineStarts,
-            @NonNull float[] lineWidths,
+            boolean[] lineIsRtl,
+            float[] lineLefts,
+            float[] lineRights,
+            float[] lineStarts,
+            float[] lineWidths,
             float fontSizePx) {
         int n = clusters.size();
         float[] baseX = new float[n];
@@ -1903,7 +1853,7 @@ public final class WordAnimationUtils {
     }
 
     public static void computeWipe(
-            @NonNull VisualCluster vc,
+            VisualCluster vc,
             boolean isRtlLine,
             float lineStart,
             float lineWidth,
@@ -1915,7 +1865,7 @@ public final class WordAnimationUtils {
             boolean isActiveSylLastOfLine,
             float activeSylProgress,
             float gradientWidth,
-            @NonNull WipeResult out) {
+            WipeResult out) {
         float halfGradientWidth = gradientWidth * 0.5f;
 
         boolean isPartOfActiveSyl = vc.syllableIndex != -1 && vc.syllableIndex == activeSylIdx;
@@ -1987,8 +1937,8 @@ public final class WordAnimationUtils {
     }
 
     public static void drawLayoutWithPaint(
-            @NonNull Canvas canvas,
-            @NonNull Layout layout,
+            Canvas canvas,
+            Layout layout,
             float topLeftX,
             float topLeftY,
             int color,
@@ -2007,8 +1957,8 @@ public final class WordAnimationUtils {
     }
 
     public static void drawWipeText(
-            @NonNull Canvas canvas,
-            @NonNull VisualCluster vc,
+            Canvas canvas,
+            VisualCluster vc,
             float topLeftX,
             float topLeftY,
             boolean isRtlLine,
@@ -2025,7 +1975,7 @@ public final class WordAnimationUtils {
             int pastColor,
             int unlitColor,
             int litColor,
-            @NonNull WipeResult wipe) {
+            WipeResult wipe) {
         computeWipe(
                 vc, isRtlLine, lineStart, lineWidth, localStart, localEnd,
                 activeSylIdx, activeLineIdx, curGX, isActiveSylLastOfLine,
@@ -2064,9 +2014,8 @@ public final class WordAnimationUtils {
         }
     }
 
-    @NonNull
     public static List<RomanizedWordCluster>[] groupRomanClustersByLine(
-            @NonNull List<RomanizedWordCluster> romanClusters,
+            List<RomanizedWordCluster> romanClusters,
             int lineCount) {
         @SuppressWarnings("unchecked")
         List<RomanizedWordCluster>[] out = new List[Math.max(0, lineCount)];
@@ -2093,15 +2042,14 @@ public final class WordAnimationUtils {
         return out;
     }
 
-    @NonNull
     private static RomanStatics buildRomanStatics(
-            @NonNull List<RomanizedWordCluster>[] romanLines,
-            @NonNull float[] charXMap,
-            @NonNull float[] romanStartShift,
-            @NonNull float[] lineBaselines,
-            @NonNull float[] lineBottoms,
-            @NonNull float[] lineLefts,
-            @NonNull float[] lineStarts,
+            List<RomanizedWordCluster>[] romanLines,
+            float[] charXMap,
+            float[] romanStartShift,
+            float[] lineBaselines,
+            float[] lineBottoms,
+            float[] lineLefts,
+            float[] lineStarts,
             int lineCount,
             float fontSizePx,
             float lineExtraHeight,
@@ -2222,15 +2170,14 @@ public final class WordAnimationUtils {
         return new RomanStatics(lines, extraPaddingPx);
     }
 
-    @NonNull
     public static RomanStatics buildRomanStaticsWithOffset(
-            @NonNull List<RomanizedWordCluster>[] romanLines,
-            @NonNull float[] charXMap,
-            @NonNull float[] romanStartShift,
-            @NonNull float[] lineBaselines,
-            @NonNull float[] lineBottoms,
-            @NonNull float[] lineLefts,
-            @NonNull float[] lineStarts,
+            List<RomanizedWordCluster>[] romanLines,
+            float[] charXMap,
+            float[] romanStartShift,
+            float[] lineBaselines,
+            float[] lineBottoms,
+            float[] lineLefts,
+            float[] lineStarts,
             int lineCount,
             float fontSizePx,
             float lineExtraHeight,
@@ -2261,15 +2208,14 @@ public final class WordAnimationUtils {
         return new RomanStatics(shifted, extraPaddingPx);
     }
 
-    @NonNull
     public static RomanStatics buildRubyStatics(
-            @NonNull List<RomanizedWordCluster>[] rubyLines,
-            @NonNull float[] charXMap,
-            @NonNull float[] romanStartShift,
-            @NonNull float[] lineBaselines,
-            @NonNull float[] lineBottoms,
-            @NonNull float[] lineLefts,
-            @NonNull float[] lineStarts,
+            List<RomanizedWordCluster>[] rubyLines,
+            float[] charXMap,
+            float[] romanStartShift,
+            float[] lineBaselines,
+            float[] lineBottoms,
+            float[] lineLefts,
+            float[] lineStarts,
             int lineCount,
             float fontSizePx,
             float lineExtraHeight,
@@ -2318,8 +2264,8 @@ public final class WordAnimationUtils {
     }
 
     public static void drawRomanizedWordClusters(
-            @NonNull Canvas canvas,
-            @NonNull RomanStatics romanStatics,
+            Canvas canvas,
+            RomanStatics romanStatics,
             boolean isActiveLine,
             int activeSylIdx,
             int activeLineIdx,
@@ -2335,7 +2281,7 @@ public final class WordAnimationUtils {
             int expressiveAccent,
             float revealScaleProgress,
             float slideOffsetY,
-            @NonNull Layout.Alignment alignment,
+            Layout.Alignment alignment,
             float viewWidth) {
         drawRomanizedWordClusters(
                 canvas, romanStatics, isActiveLine, activeSylIdx, activeLineIdx, curGX,
@@ -2345,8 +2291,8 @@ public final class WordAnimationUtils {
     }
 
     public static void drawRomanizedWordClusters(
-            @NonNull Canvas canvas,
-            @NonNull RomanStatics romanStatics,
+            Canvas canvas,
+            RomanStatics romanStatics,
             boolean isActiveLine,
             int activeSylIdx,
             int activeLineIdx,
@@ -2362,7 +2308,7 @@ public final class WordAnimationUtils {
             int expressiveAccent,
             float revealScaleProgress,
             float slideOffsetY,
-            @NonNull Layout.Alignment alignment,
+            Layout.Alignment alignment,
             float viewWidth,
             boolean allowRasterizeMask) {
         RomanLineStatics[] lines = romanStatics.lines;

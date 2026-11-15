@@ -9,7 +9,6 @@ package app.morphe.extension.music.patches.lyrics;
 
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
-import android.os.Looper;
 
 import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.shared.Logger;
@@ -36,26 +35,26 @@ public final class LyricsPatch {
      * Injection point. Immediately freezes word-sync when MedialibPlayer pauses audio.
      */
     public static void onPauseVideo() {
-        runOnMain(() -> LyricsManager.getInstance().onPauseVideo(), "onPauseVideo failure");
+        Utils.runOnMainThreadNowOrLater(() -> {
+            try {
+                LyricsManager.getInstance().onPauseVideo();
+            } catch (Exception ex) {
+                Logger.printException(() -> "onPauseVideo failure", ex);
+            }
+        });
     }
 
     /**
      * Injection point. Immediately resumes word-sync when MedialibPlayer resumes audio.
      */
     public static void onPlayVideo() {
-        runOnMain(() -> LyricsManager.getInstance().onPlayVideo(), "onPlayVideo failure");
-    }
-
-    private static void runOnMain(Runnable action, String failureLabel) {
-        try {
-            if (Looper.myLooper() == Looper.getMainLooper()) {
-                action.run();
-            } else {
-                Utils.runOnMainThread(action);
+        Utils.runOnMainThreadNowOrLater(() -> {
+            try {
+                LyricsManager.getInstance().onPlayVideo();
+            } catch (Exception ex) {
+                Logger.printException(() -> "onPlayVideo failure", ex);
             }
-        } catch (Exception ex) {
-            Logger.printException(() -> failureLabel, ex);
-        }
+        });
     }
 
     /**
