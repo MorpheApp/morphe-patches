@@ -86,6 +86,22 @@ tasks {
         exclude("addresources/values-*/*/strings.xml")
     }
 
+    register<JavaExec>("validateRedditFilters") {
+        group = "verification"
+        description = "Applies independent Reddit 2026.45.0 filter selections and verifies/rebuilds their DEX"
+        dependsOn("testClasses")
+        classpath = sourceSets["test"].runtimeClasspath
+        mainClass.set("app.morphe.patches.reddit.layout.filter.ValidateRedditFiltersKt")
+        maxHeapSize = "4g"
+        doFirst {
+            setArgs(listOfNotNull(
+                providers.gradleProperty("redditApk").get(),
+                providers.gradleProperty("redditFilterMode").getOrElse("both"),
+                providers.gradleProperty("redditFilterOutput").get(),
+                providers.gradleProperty("redditFilterBundle").get()
+            ))
+        }
+    }
     test {
         useJUnitPlatform()
         dependsOn(":extensions:youtube:generateReleaseProto", ":extensions:youtube:compileReleaseJavaWithJavac")
