@@ -1,0 +1,309 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4867
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.extension.reddit.patches;
+
+import androidx.annotation.Nullable;
+
+import com.reddit.domain.model.Link;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
+import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.shared.Logger;
+
+/**
+ * Hides feed posts with a title or text that matches a keyword filter.
+ * <p>
+ * Old feeds are lists of {@link Link}. Modern feeds are lists of feed elements, and the texts
+ * of a post are in child elements that are created before the feed list is processed.
+ * The child elements save their texts by link id, and the feed elements are filtered by link id.
+ */
+@SuppressWarnings("unused")
+public final class KeywordFiltersPatch {
+    /**
+     * Added to Reddit's feed element base class during patching. The class already has this method.
+     */
+    public interface FeedElement {
+        String getLinkId();
+    }
+
+    private record Filters(String rules, List<Pattern> patterns) {
+    }
+
+    private static final int PATTERN_FLAGS = Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE;
+
+    private static final int TITLE = 0;
+    private static final int TRANSLATED_TITLE = 1;
+    private static final int PREVIEW_TEXT = 2;
+    private static final int TRANSLATED_PREVIEW_TEXT = 3;
+    private static final int RICH_TEXT = 4;
+    private static final int NUMBER_OF_TEXTS = 5;
+
+    /**
+     * Number of posts to keep the texts of. More than the posts of a feed that are kept loaded.
+     */
+    private static final int MAX_POSTS = 1000;
+
+    /**
+     * Texts of the most recently created feed posts, by link id.
+     */
+    private static final Map<String, String[]> POST_TEXTS = new LinkedHashMap<>(MAX_POSTS, 0.75f, true) {
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<String, String[]> eldest) {
+            return size() > MAX_POSTS;
+        }
+    };
+
+    private static volatile Filters filters = new Filters("", List.of());
+
+    private KeywordFiltersPatch() {
+    }
+
+    /**
+     * @return If this patch was included during patching.
+     */
+    @SuppressWarnings("SameReturnValue")
+    public static boolean isPatchIncluded() {
+        return false;  // Modified during patching.
+    }
+
+    /**
+     * @return The keyword filters, without empty lines and duplicates.
+     */
+    public static List<String> getRules(String rules) {
+        Set<String> lines = new LinkedHashSet<>();
+        for (String line : rules.split("\n")) {
+            line = line.trim();
+            if (!line.isEmpty()) {
+                lines.add(line);
+            }
+        }
+        return new ArrayList<>(lines);
+    }
+
+    /**
+     * @throws PatternSyntaxException If the keyword filter is not a valid regular expression.
+     */
+    public static Pattern compile(String rule) {
+        return Pattern.compile(rule, PATTERN_FLAGS);
+    }
+
+    private static List<Pattern> getPatterns() {
+        String rules = Settings.KEYWORD_FILTERS.get();
+        Filters current = filters;
+        if (current.rules.equals(rules)) {
+            return current.patterns;
+        }
+
+        List<Pattern> patterns = new ArrayList<>();
+        for (String rule : getRules(rules)) {
+            try {
+                patterns.add(compile(rule));
+            } catch (PatternSyntaxException ex) {
+                // Possible with imported settings, the settings dialog does not save invalid rules.
+                Logger.printException(() -> "Invalid keyword filter: " + rule, ex);
+            }
+        }
+        filters = new Filters(rules, patterns);
+        return patterns;
+    }
+
+    private static boolean matches(List<Pattern> patterns, @Nullable String text) {
+        if (text == null || text.isEmpty()) return false;
+
+        for (Pattern pattern : patterns) {
+            if (pattern.matcher(text).find()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void setText(FeedElement element, int textIndex, @Nullable String text) {
+        // Null is not yet known, but an empty text replaces an edited text.
+        if (text == null || getPatterns().isEmpty()) return;
+
+        String linkId = element.getLinkId();
+        if (linkId == null) return;
+
+        synchronized (POST_TEXTS) {
+            String[] texts = POST_TEXTS.get(linkId);
+            if (texts == null) {
+                texts = new String[NUMBER_OF_TEXTS];
+                POST_TEXTS.put(linkId, texts);
+            }
+            texts[textIndex] = text;
+        }
+    }
+
+    /**
+     * Injection point. Called when Reddit creates a post title element or a classic post element.
+     */
+    public static void setTitle(FeedElement element, @Nullable String title) {
+        try {
+            setText(element, TITLE, title);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setTitle failure", ex);
+        }
+    }
+
+    /**
+     * Injection point. Called when Reddit creates a post title element or a classic post element.
+     */
+    public static void setTranslatedTitle(FeedElement element, @Nullable String title) {
+        try {
+            setText(element, TRANSLATED_TITLE, title);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setTranslatedTitle failure", ex);
+        }
+    }
+
+    /**
+     * Injection point. Called when Reddit creates a preview text element.
+     */
+    public static void setPreviewText(FeedElement element, @Nullable String text) {
+        try {
+            setText(element, PREVIEW_TEXT, text);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setPreviewText failure", ex);
+        }
+    }
+
+    /**
+     * Injection point. Called when Reddit creates a preview text element.
+     */
+    public static void setTranslatedPreviewText(FeedElement element, @Nullable String text) {
+        try {
+            setText(element, TRANSLATED_PREVIEW_TEXT, text);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setTranslatedPreviewText failure", ex);
+        }
+    }
+
+    /**
+     * Injection point. Called when Reddit creates a rich text element.
+     */
+    public static void setRichText(FeedElement element, @Nullable String richTextJson) {
+        try {
+            if (richTextJson == null || getPatterns().isEmpty()) return;
+
+            setText(element, RICH_TEXT, getRichTextVisibleText(richTextJson));
+        } catch (Exception ex) {
+            Logger.printException(() -> "setRichText failure", ex);
+        }
+    }
+
+    /**
+     * Rich text is a JSON document. Only the visible text is matched, not the JSON keys,
+     * the formatting or the media and link data.
+     */
+    private static String getRichTextVisibleText(String richTextJson) throws JSONException {
+        if (richTextJson.isEmpty()) return "";
+
+        StringBuilder text = new StringBuilder();
+        appendRichText(new JSONObject(richTextJson).optJSONArray("document"), text);
+        return text.toString();
+    }
+
+    private static void appendRichText(@Nullable Object node, StringBuilder text) {
+        if (node instanceof JSONArray array) {
+            for (int i = 0, length = array.length(); i < length; i++) {
+                appendRichText(array.opt(i), text);
+            }
+        } else if (node instanceof JSONObject object) {
+            if (object.opt("t") instanceof String string) {
+                text.append(string);
+            }
+            // Child nodes, and the header and rows of tables.
+            appendRichText(object.opt("c"), text);
+            appendRichText(object.opt("h"), text);
+            appendRichText(object.opt("rows"), text);
+            // End of a paragraph, heading, line break, list item or table row.
+            switch (object.optString("e")) {
+                case "par", "h", "br", "li", "tr" -> text.append('\n');
+            }
+        }
+    }
+
+    /**
+     * Injection point. Filters the posts of old feeds.
+     */
+    public static List<?> filterLinks(List<?> links) {
+        try {
+            List<Pattern> patterns = getPatterns();
+            if (patterns.isEmpty()) return links;
+
+            List<Object> filtered = new ArrayList<>(links.size());
+            for (Object item : links) {
+                if (item instanceof Link link && (matches(patterns, link.getTitle())
+                        || matches(patterns, link.getSelftext()))) {
+                    Logger.printDebug(() -> "Hiding post: " + link.getKindWithId());
+                    continue;
+                }
+                filtered.add(item);
+            }
+            return filtered.size() == links.size() ? links : filtered;
+        } catch (Exception ex) {
+            Logger.printException(() -> "filterLinks failure", ex);
+            return links;
+        }
+    }
+
+    /**
+     * Injection point. Filters the posts of modern feeds.
+     */
+    public static List<?> filterFeedElements(List<?> elements) {
+        try {
+            List<Pattern> patterns = getPatterns();
+            if (patterns.isEmpty()) return elements;
+
+            List<Object> filtered = new ArrayList<>(elements.size());
+            for (Object element : elements) {
+                if (element instanceof FeedElement feedElement) {
+                    String linkId = feedElement.getLinkId();
+                    if (linkId != null && isPostFiltered(patterns, linkId)) {
+                        Logger.printDebug(() -> "Hiding post: " + linkId);
+                        continue;
+                    }
+                }
+                filtered.add(element);
+            }
+            return filtered.size() == elements.size() ? elements : filtered;
+        } catch (Exception ex) {
+            Logger.printException(() -> "filterFeedElements failure", ex);
+            return elements;
+        }
+    }
+
+    private static boolean isPostFiltered(List<Pattern> patterns, String linkId) {
+        String[] texts;
+        synchronized (POST_TEXTS) {
+            texts = POST_TEXTS.get(linkId);
+            if (texts == null) return false;
+            texts = texts.clone();
+        }
+
+        for (String text : texts) {
+            if (matches(patterns, text)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

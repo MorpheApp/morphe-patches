@@ -20,6 +20,12 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_COMMENT_ADS = new BooleanSetting("morphe_hide_comment_ads", TRUE, true);
     public static final BooleanSetting HIDE_POST_ADS = new BooleanSetting("morphe_hide_post_ads", TRUE, true);
 
+    // Filters
+    /**
+     * Regular expressions, one per line.
+     */
+    public static final StringSetting KEYWORD_FILTERS = new StringSetting("morphe_keyword_filters", "");
+
     // Layout
     public static final BooleanSetting COPY_TEXT = new BooleanSetting("morphe_copy_text", FALSE, true, "morphe_copy_text_user_dialog_message");
     public static final BooleanSetting CUSTOM_FONT = new BooleanSetting("morphe_custom_font", FALSE, true);
