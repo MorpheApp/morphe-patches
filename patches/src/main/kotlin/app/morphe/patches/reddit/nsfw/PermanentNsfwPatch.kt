@@ -59,6 +59,39 @@ val permanentNsfwPatch = patch(
             }
         }
 
+        val communityName = Fingerprint(
+            definingClass = "Lcom/reddit/screens/pager/v2/SubredditPagerV2Screen;",
+            parameters = listOf(), returnType = "Ljava/lang/String;",
+            filters = listOf(string("subreddit_prefixed_name"))
+        ).method
+        Fingerprint(
+            definingClass = "Lcom/reddit/screens/pager/v2/SubredditPagerV2Screen;",
+            parameters = listOf("Landroid/view/View;"), returnType = "V",
+            filters = listOf(string("nsfwAlertDelegate"))
+        ).method.cloneParameters().apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                addInstructionsWithLabels(index, """
+                    invoke-virtual/range { p0 .. p0 }, $communityName
+                    move-result-object p0
+                    invoke-static/range { p0 .. p1 }, Lapp/morphe/extension/reddit/patches/NsfwCommunityGate;->bind(Ljava/lang/String;Landroid/view/View;)V
+                """)
+            }
+        }
+        // Runs before Reddit's visited/account/incognito checks, including cached models.
+        Fingerprint(
+            definingClass = "Lcom/reddit/screens/pager/v2/SubredditPagerViewModel;",
+            parameters = listOf("Lcom/reddit/screens/pager/v2/SubredditPagerViewModel;", "Lcom/reddit/domain/model/Subreddit;"),
+            returnType = "V", filters = listOf(string("nsfwAlertDelegate"))
+        ).method.cloneParameters().apply {
+            addInstructionsWithLabels(2, """
+                invoke-virtual/range { p1 .. p1 }, Lcom/reddit/domain/model/Subreddit;->getDisplayName()Ljava/lang/String;
+                move-result-object p0
+                invoke-virtual/range { p1 .. p1 }, Lcom/reddit/domain/model/Subreddit;->getOver18()Ljava/lang/Boolean;
+                move-result-object p1
+                invoke-static/range { p0 .. p1 }, Lapp/morphe/extension/reddit/patches/NsfwCommunityGate;->classify(Ljava/lang/String;Ljava/lang/Boolean;)V
+            """)
+        }
+
         // Exact signature required: fail patching instead of silently shipping without a hook.
         OkHttpClientConstructorFingerprint.method.addInstruction(
             0,

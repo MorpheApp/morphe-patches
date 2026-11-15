@@ -154,4 +154,6 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_permanent_nsfw_save_failed">Could not save the setting. Please try again.</string>
     <string name="morphe_permanent_nsfw_disabled">NSFW content is permanently disabled</string>
     <string name="morphe_permanent_nsfw_summary">Disable NSFW content forever for all accounts</string>
+    <string name="morphe_permanent_nsfw_blocked_community">This community is marked NSFW. NSFW content is permanently disabled, so you cannot enter it.</string>
+    <string name="morphe_permanent_nsfw_go_back">Go back</string>
 </resources>

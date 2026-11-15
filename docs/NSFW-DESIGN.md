@@ -58,3 +58,9 @@ While permanent disabling is active, the RedGIFs audio and HD preferences are re
 The supplied 2026.40.0 and 2026.45.0 APKs each resolve all five original-APK anchors exactly once. Forced Desktop `--validate` on 2026.40.0 passes and rebuilds an unsigned APK using the preceding test bundle, so the patch now advertises these two versions. The final published bundle is rechecked separately; see the version matrix.
 
 2026.10.0 was tested with `-f` rather than accepted as a gated no-op. Its existing settings dependency fails uniqueness validation (two matches), and both native-row anchors used by this feature are absent. It remains unsupported. This does not establish 2026.40.0 as the earliest possible compatible version; intermediate versions have not been tested.
+
+## Device findings: blocking release issues
+
+Manual testing reported on 2026-11-15 shows that the response-only boundary is insufficient. A direct marked-community link can retain its icon and show Reddit's misleading not-found state. Anonymous browsing can expose marked search results and a separate adult-search toggle; community posts can remain visible behind that error. Content also remains visible if ordinary adult viewing was enabled before permanent activation. These are confirmed failures, not pending optional checks. Existing test bundles must not be relied on as complete blockers.
+
+Required fixes are a native presentation/navigation gate with an honest NSFW-disabled state and no underlying media, anonymous-session search control removal, clearing the saved disclaimer bypass on activation, and regression checks with preloaded content and both prior viewing-setting states. Build/fixture success alone does not close these issues.

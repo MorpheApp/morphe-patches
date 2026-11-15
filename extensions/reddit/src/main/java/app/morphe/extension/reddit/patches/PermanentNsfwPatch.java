@@ -7,6 +7,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 
 import app.morphe.extension.reddit.settings.preference.PermanentNsfwPreference;
+import app.morphe.extension.reddit.settings.Settings;
 
 import app.morphe.extension.reddit.patches.nsfw.PermanentNsfwDisabler;
 import app.morphe.extension.reddit.patches.nsfw.RedditNsfwInterceptor;
@@ -31,11 +32,19 @@ public final class PermanentNsfwPatch {
     @SuppressWarnings("deprecation")
     public static void installPreference(PreferenceFragment fragment) {
         if (isEnabled()) {
+            enforceDisabledPreferences();
             for (String key : new String[]{"morphe_remove_nsfw_dialog", "morphe_redgifs_audio", "morphe_redgifs_hd"}) {
                 removeByKey(fragment.getPreferenceScreen(), key);
             }
         }
         fragment.getPreferenceScreen().addPreference(new PermanentNsfwPreference(fragment.getActivity()));
+    }
+
+    /** Also clear saved bypass/media options, rather than merely hiding their controls. */
+    public static void enforceDisabledPreferences() {
+        Settings.REMOVE_NSFW_DIALOG.save(false);
+        Settings.REDGIFS_AUDIO.save(false);
+        Settings.REDGIFS_HD.save(false);
     }
 
     @SuppressWarnings("deprecation")
@@ -70,6 +79,6 @@ public final class PermanentNsfwPatch {
             if (interceptor instanceof RedditNsfwInterceptor) return;
         }
         // First application interceptor sees responses after the others, including cache hits.
-        builder.interceptors().add(0, new RedditNsfwInterceptor(() -> getDisabler().isEnabled()));
+        builder.interceptors().add(0, new RedditNsfwInterceptor(() -> getDisabler().isEnabled(), NsfwCommunityGate::blockedPath));
     }
 }

@@ -35,6 +35,7 @@ public final class NsfwTests {
         check("blocked and malformed responses fail closed", NsfwTests::closed);
         check("RedGIFs requests are stopped before transport", NsfwTests::redgifsTransport);
         check("RedGIFs links are removed without keyword filtering", NsfwTests::redgifsLinks);
+        check("blocked direct routes report the correct community path", NsfwTests::blockedRoute);
         check("binary media is left untouched", NsfwTests::binary);
         System.out.println("PASS: " + passed + " host checks (synthetic fixtures; no device access)");
     }
@@ -222,6 +223,23 @@ public final class NsfwTests {
         require(NsfwJsonFilter.filter("{\"url_overridden_by_dest\":\"https://media.redgifs.com/example.mp4\"}") == null);
         require(NsfwJsonFilter.filter("{\"title\":\"Discuss redgifs.com settings\",\"url\":\"https://example.org/redgifs.com\"}") != null);
         require(NsfwJsonFilter.filter("{\"url\":\"https://redgifs.com@example.org/video\"}") != null);
+    }
+
+    private static void blockedRoute() throws Exception {
+        AtomicReference<String> route = new AtomicReference<>();
+        RedditNsfwInterceptor interceptor = new RedditNsfwInterceptor(() -> true, route::set);
+        try {
+            response(interceptor, "https://oauth.reddit.com/r/example/about.json",
+                    "{\"kind\":\"t5\",\"data\":{\"over_18\":true}}", "application/json", null, null).close();
+            throw new AssertionError("Blocked response escaped");
+        } catch (IOException expected) {
+            require(route.get().equals("/r/example/about.json"));
+        }
+        route.set(null);
+        try (Response result = response(interceptor, "https://oauth.reddit.com/r/safe/about.json",
+                "{\"kind\":\"t5\",\"data\":{\"over_18\":false}}", "application/json", null, null)) {
+            require(route.get() == null);
+        }
     }
 
     private static void binary() throws Exception {

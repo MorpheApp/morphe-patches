@@ -19,9 +19,15 @@ public final class RedditNsfwInterceptor implements Interceptor {
     private static final long MAX_JSON_BYTES = 16 * 1024 * 1024;
     private static final int MAX_JSON_CHARACTERS = 8 * 1024 * 1024;
     private final BooleanSupplier enabled;
+    private final java.util.function.Consumer<String> blockedPath;
 
     public RedditNsfwInterceptor(BooleanSupplier enabled) {
+        this(enabled, path -> {});
+    }
+
+    public RedditNsfwInterceptor(BooleanSupplier enabled, java.util.function.Consumer<String> blockedPath) {
         this.enabled = enabled;
+        this.blockedPath = blockedPath;
     }
 
     @Override
@@ -57,7 +63,10 @@ public final class RedditNsfwInterceptor implements Interceptor {
                 input = prefs.toString();
             }
             String filtered = NsfwJsonFilter.filter(input);
-            if (filtered == null) throw new IOException("Content unavailable");
+            if (filtered == null) {
+                blockedPath.accept(request.url().encodedPath());
+                throw new IOException("NSFW content is permanently disabled");
+            }
             return response.newBuilder()
                     .removeHeader("Content-Length")
                     .removeHeader("Transfer-Encoding")

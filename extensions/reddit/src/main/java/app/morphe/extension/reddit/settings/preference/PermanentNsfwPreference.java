@@ -30,6 +30,7 @@ public final class PermanentNsfwPreference extends Preference {
                                     Toast.LENGTH_LONG).show();
                             return;
                         }
+                        PermanentNsfwPatch.enforceDisabledPreferences();
                         refresh();
                         AbstractPreferenceFragment.showRestartDialog(context);
                     })
