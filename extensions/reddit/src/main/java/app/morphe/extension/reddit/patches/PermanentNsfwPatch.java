@@ -10,9 +10,7 @@ import app.morphe.extension.reddit.settings.preference.PermanentNsfwPreference;
 import app.morphe.extension.reddit.settings.Settings;
 
 import app.morphe.extension.reddit.patches.nsfw.PermanentNsfwDisabler;
-import app.morphe.extension.reddit.patches.nsfw.RedditNsfwInterceptor;
 import app.morphe.extension.shared.Utils;
-import okhttp3.OkHttpClient;
 
 /** Runtime entry points injected by the experimental patch. */
 public final class PermanentNsfwPatch {
@@ -25,7 +23,11 @@ public final class PermanentNsfwPatch {
     }
 
     public static boolean isEnabled() {
-        return getDisabler().isEnabled();
+        return isPatchIncluded() && getDisabler().isEnabled();
+    }
+
+    public static boolean allowNsfw(boolean requested) {
+        return !isEnabled() && requested;
     }
 
     public static boolean enforceSafeSearch(boolean safeSearch) {
@@ -77,12 +79,4 @@ public final class PermanentNsfwPatch {
         return disabler;
     }
 
-    /** Must run before OkHttpClient snapshots the builder's application interceptors. */
-    public static void install(OkHttpClient.Builder builder) {
-        for (okhttp3.Interceptor interceptor : builder.interceptors()) {
-            if (interceptor instanceof RedditNsfwInterceptor) return;
-        }
-        // First application interceptor sees responses after the others, including cache hits.
-        builder.interceptors().add(0, new RedditNsfwInterceptor(() -> getDisabler().isEnabled(), NsfwCommunityGate::blockedPath));
-    }
 }

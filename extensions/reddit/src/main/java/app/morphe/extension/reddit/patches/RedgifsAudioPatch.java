@@ -147,7 +147,7 @@ public final class RedgifsAudioPatch {
      */
     public static void onLinkCreated(Link link) {
         try {
-            if ((PermanentNsfwPatch.isPatchIncluded() && PermanentNsfwPatch.isEnabled()) || !Settings.REDGIFS_AUDIO.get()) return;
+            if (PermanentNsfwPatch.isEnabled() || !Settings.REDGIFS_AUDIO.get()) return;
 
             String id = getRedgifsId(link.getUrl());
             if (id == null) return;
@@ -177,7 +177,7 @@ public final class RedgifsAudioPatch {
      */
     public static void onFeedMetadataCellCreated(@Nullable String cellId, @Nullable String mediaPath) {
         try {
-            if ((PermanentNsfwPatch.isPatchIncluded() && PermanentNsfwPatch.isEnabled()) || !Settings.REDGIFS_AUDIO.get()) return;
+            if (PermanentNsfwPatch.isEnabled() || !Settings.REDGIFS_AUDIO.get()) return;
             if (cellId == null || mediaPath == null || !mediaPath.contains("redgifs.com/")) return;
 
             String id = getRedgifsId(mediaPath);
@@ -209,7 +209,7 @@ public final class RedgifsAudioPatch {
      */
     public static void onFeedVideoCreated(@Nullable String postId, @Nullable String url) {
         try {
-            if ((PermanentNsfwPatch.isPatchIncluded() && PermanentNsfwPatch.isEnabled()) || !Settings.REDGIFS_AUDIO.get() || postId == null) return;
+            if (PermanentNsfwPatch.isEnabled() || !Settings.REDGIFS_AUDIO.get() || postId == null) return;
 
             String id = postIdToRedgifsId.get(postId);
             if (id != null) {
@@ -227,7 +227,7 @@ public final class RedgifsAudioPatch {
      */
     public static String getPlaybackUrl(@Nullable String url) {
         try {
-            if (url == null || (PermanentNsfwPatch.isPatchIncluded() && PermanentNsfwPatch.isEnabled()) || !Settings.REDGIFS_AUDIO.get()) return url;
+            if (url == null || PermanentNsfwPatch.isEnabled() || !Settings.REDGIFS_AUDIO.get()) return url;
 
             String redditVideoId = getRedditVideoId(url);
             String id = redditVideoId == null ? null : redditVideoIdToRedgifsId.get(redditVideoId);
@@ -264,7 +264,7 @@ public final class RedgifsAudioPatch {
      */
     public static Uri resolvePlaceholderUri(Uri uri) {
         try {
-            if ((PermanentNsfwPatch.isPatchIncluded() && PermanentNsfwPatch.isEnabled()) || !Settings.REDGIFS_AUDIO.get() || !PLACEHOLDER_HOST.equals(uri.getHost())) return uri;
+            if (PermanentNsfwPatch.isEnabled() || !Settings.REDGIFS_AUDIO.get() || !PLACEHOLDER_HOST.equals(uri.getHost())) return uri;
 
             String path = uri.getPath();
             if (path == null || !path.startsWith(PLACEHOLDER_PATH) || !path.endsWith(".mp4")) return uri;
@@ -304,7 +304,7 @@ public final class RedgifsAudioPatch {
 
     private static String getDownloadUrl(String url) {
         try {
-            if ((PermanentNsfwPatch.isPatchIncluded() && PermanentNsfwPatch.isEnabled()) || !Settings.REDGIFS_AUDIO.get()) return url;
+            if (PermanentNsfwPatch.isEnabled() || !Settings.REDGIFS_AUDIO.get()) return url;
 
             String redditVideoId = getRedditVideoId(url);
             String id = redditVideoId == null ? null : redditVideoIdToRedgifsId.get(redditVideoId);
@@ -467,7 +467,7 @@ public final class RedgifsAudioPatch {
 
     private static HttpURLConnection openConnection(String url) throws IOException {
         // Check again inside the worker: activation may happen after it was queued.
-        if (PermanentNsfwPatch.isPatchIncluded() && PermanentNsfwPatch.isEnabled()) {
+        if PermanentNsfwPatch.isEnabled() {
             throw new IOException("Content unavailable");
         }
         HttpURLConnection connection = Requester.openConnection(url);

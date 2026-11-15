@@ -7,6 +7,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.p0Register
@@ -18,13 +19,6 @@ import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION = "Lapp/morphe/extension/reddit/patches/PermanentNsfwPatch;"
 
-private object OkHttpClientConstructorFingerprint : Fingerprint(
-    definingClass = "Lokhttp3/OkHttpClient;",
-    name = "<init>",
-    returnType = "V",
-    parameters = listOf("Lokhttp3/OkHttpClient\$Builder;")
-)
-
 // Stable preference keys identify the classes; their obfuscated names are never used.
 private object AdultViewingItemFingerprint : Fingerprint(
     name = "<init>", filters = listOf(string("key_pref_over18"))
@@ -34,12 +28,12 @@ private object AdultBlurItemFingerprint : Fingerprint(
     name = "<init>", filters = listOf(string("key_pref_blur_nsfw"))
 )
 
-/** Experimental until the target APK's transports, schemas and native settings are verified. */
+/** Permanently enforce Reddit's native NSFW-off state and remove viewing controls. */
 @Suppress("unused")
 val permanentNsfwPatch = patch(
     name = "Permanently disable NSFW content (experimental)",
     description = "Adds an irreversible option to disable NSFW content, removes adult viewing controls after activation, " +
-        "and blocks RedGIFs. Works with Reddit 2026.40.0 and 2026.45.0. Experimental: content coverage requires validation.",
+        "and prevents re-enabling native NSFW viewing and search. Works with Reddit 2026.40.0 and 2026.45.0. Experimental.",
     default = false
 ) {
     compatibleWith(COMPATIBILITY_REDDIT.excluding(
@@ -92,46 +86,7 @@ val permanentNsfwPatch = patch(
             move-result p4
         """)
 
-        val communityName = Fingerprint(
-            definingClass = "Lcom/reddit/screens/pager/v2/SubredditPagerV2Screen;",
-            parameters = listOf(), returnType = "Ljava/lang/String;",
-            filters = listOf(string("subreddit_prefixed_name"))
-        ).method
-        Fingerprint(
-            definingClass = "Lcom/reddit/screens/pager/v2/SubredditPagerV2Screen;",
-            parameters = listOf("Landroid/view/View;"), returnType = "V",
-            filters = listOf(string("nsfwAlertDelegate"))
-        ).method.cloneParameters().apply {
-            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
-                addInstructionsWithLabels(index, """
-                    invoke-virtual/range { p0 .. p0 }, $communityName
-                    move-result-object p0
-                    invoke-static/range { p0 .. p1 }, Lapp/morphe/extension/reddit/patches/NsfwCommunityGate;->bind(Ljava/lang/String;Landroid/view/View;)V
-                """)
-            }
-        }
-        // Runs before Reddit's visited/account/incognito checks, including cached models.
-        Fingerprint(
-            definingClass = "Lcom/reddit/screens/pager/v2/SubredditPagerViewModel;",
-            parameters = listOf("Lcom/reddit/screens/pager/v2/SubredditPagerViewModel;", "Lcom/reddit/domain/model/Subreddit;"),
-            returnType = "V", filters = listOf(string("nsfwAlertDelegate"))
-        ).method.cloneParameters().apply {
-            addInstructionsWithLabels(2, """
-                invoke-virtual/range { p1 .. p1 }, Lcom/reddit/domain/model/Subreddit;->getDisplayName()Ljava/lang/String;
-                move-result-object p0
-                invoke-virtual/range { p1 .. p1 }, Lcom/reddit/domain/model/Subreddit;->getOver18()Ljava/lang/Boolean;
-                move-result-object p1
-                invoke-static/range { p0 .. p1 }, Lapp/morphe/extension/reddit/patches/NsfwCommunityGate;->classify(Ljava/lang/String;Ljava/lang/Boolean;)V
-            """)
-        }
-
-        // Exact signature required: fail patching instead of silently shipping without a hook.
-        OkHttpClientConstructorFingerprint.method.addInstruction(
-            0,
-            "invoke-static/range { p1 .. p1 }, $EXTENSION->install(Lokhttp3/OkHttpClient\$Builder;)V"
-        )
-
-        // The 2026.40.0 and 2026.45.0 settings view models includes a row only when this set contains
+        // The 2026.40.0 and 2026.45.0 settings view models include a row only when this set contains
         // the active session. Returning an empty set removes the row for every session
         // before its Compose content or click handler is created.
         listOf(AdultViewingItemFingerprint, AdultBlurItemFingerprint).forEach { item ->
@@ -182,36 +137,37 @@ val permanentNsfwPatch = patch(
             }
         }
 
-        // The inherited dialog-removal patch must not become an adult-content bypass.
+        // Modern age gating reads this enum instead of the legacy getOver18 boolean.
         Fingerprint(
-            definingClass = "Lapp/morphe/extension/reddit/patches/RemoveSubRedditDialogPatch;",
-            name = "spoofHasBeenVisitedStatus", parameters = listOf("Z"), returnType = "Z"
+            definingClass = "Lcom/reddit/domain/model/AccountPreferences;",
+            name = "getNsfwEnabledPreferenceState", parameters = listOf(),
+            returnType = "Lcom/reddit/domain/model/AccountPreferences\$PreferenceState;"
         ).method.cloneParameters().apply {
             val register = p0Register
             addInstructionsWithLabels(1, """
                 invoke-static {}, $EXTENSION->isEnabled()Z
                 move-result v$register
                 if-eqz v$register, :original
-                const/4 v$register, 0x0
-                return v$register
+                sget-object v$register, Lcom/reddit/domain/model/AccountPreferences${'$'}PreferenceState;->Disabled:Lcom/reddit/domain/model/AccountPreferences${'$'}PreferenceState;
+                return-object v$register
                 :original
                 nop
             """)
         }
+        // Use the native setter as usual, but refuse attempts to turn viewing back on.
         Fingerprint(
-            definingClass = "Lapp/morphe/extension/reddit/patches/RemoveSubRedditDialogPatch;",
-            name = "dismissNSFWDialog", parameters = listOf("Ljava/lang/Object;"), returnType = "V"
-        ).method.cloneParameters().apply {
-            val register = p0Register
-            addInstructionsWithLabels(1, """
-                invoke-static {}, $EXTENSION->isEnabled()Z
-                move-result v$register
-                if-eqz v$register, :original
-                return-void
-                :original
-                nop
-            """)
-        }
+            definingClass = "Lcom/reddit/account/repository/RedditPreferenceRepository\$setOver18\$1;",
+            name = "invokeSuspend", parameters = listOf("Ljava/lang/Object;"),
+            returnType = "Ljava/lang/Object;",
+            filters = listOf(methodCall(
+                parameters = listOf("Z", "Z", "Lkotlin/coroutines/jvm/internal/ContinuationImpl;"),
+                returnType = "Ljava/lang/Object;"
+            ))
+        ).instructionMatches.single().getMethodCalled().addInstructionsWithLabels(0, """
+            invoke-static/range { p1 .. p1 }, $EXTENSION->allowNsfw(Z)Z
+            move-result p1
+        """)
+
         setExtensionIsPatchIncluded(EXTENSION)
     }
 }

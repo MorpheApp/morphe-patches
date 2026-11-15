@@ -30,14 +30,14 @@ public class RemoveSubRedditDialogPatch {
      * Injection point.
      */
     public static boolean spoofHasBeenVisitedStatus(boolean hasBeenVisited) {
-        return REMOVE_NSFW_DIALOG || hasBeenVisited;
+        return !PermanentNsfwPatch.isEnabled() && (REMOVE_NSFW_DIALOG || hasBeenVisited);
     }
 
     /**
      * Injection point.
      */
     public static void dismissNSFWDialog(Object customDialog) {
-        if (REMOVE_NSFW_DIALOG && customDialog instanceof Dialog dialog) {
+        if (!PermanentNsfwPatch.isEnabled() && REMOVE_NSFW_DIALOG && customDialog instanceof Dialog dialog) {
             if (!dialog.isShowing()) {
                 dialog.show();
             }
