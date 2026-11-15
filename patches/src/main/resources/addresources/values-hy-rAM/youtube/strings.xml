@@ -772,6 +772,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Բացել հերթը</string>
   <string name="morphe_queue_manager_save_queue">Պահպանել հերթը նվագացուցակում</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Ցուցադրել հերթի կոճակը նկարահատվածքների վրա</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Հերթի կոճակը ցուցադրվում է թեյլի տեսանյութերի նկարահատվածքների վրա: Դրա վրա հպվելը տեսանյութն ավելացնում է հերթի վերջում, իսկ հպվելը և սեղմած պահելը՝ նվագում է տեսանյութը հաջորդը</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Փոխել նկարահատվածքի հերթի գործողությունները</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Հերթի կոճակին հպվելը նվագում է տեսանյութը հաջորդը, իսկ հպվելը և սեղմած պահելը՝ տեսանյութն ավելացնում է հերթի վերջում</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Բեռնել հերթի էջերը թերթելիս</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Բեռնում է ավելի շատ նվագացուցակի տեսանյութեր, երբ թերթում եք հերթի վերջի մոտ</string>
   <string name="morphe_native_playlist_queue_saved">Պլեյլիստը պահպանված է</string>
@@ -1128,6 +1132,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Անջատել Ambient ռեժիմը լրիվ էկրանի ժամանակ</string>
   <string name="morphe_enhanced_ambient_mode_title">Լուսավորության բարելավված ռեժիմ</string>
   <string name="morphe_enhanced_ambient_mode_summary">Լուսավորում է դիտման ողջ էջը և սև զողերը տեսանյութի գույներով՝ փոխարինելով Ambient ռեժիմին</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Լույսի ուժգնությունը</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Որքան ուժեղ է լույսը ժամացույցի էջում և սև զուգագծերի վրա</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Լույսի հարթեցում</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Որքան ժամանակ է պահանջվում լույսին հետևել տեսանյութին: 0-ի դեպքում այն սերտորեն հետևում է տեսանյութին</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Լույսի աղոտում</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Որքանով է աղոտվում տեսանյութի կողքի լույսը: 0-ի դեպքում այն պահպանում է տեսանյութի ձևերը</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Պահպանել տեքստի ընթեռնելիությունը</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Մարում է լույսը պայծառ տեսանյութերի դեպքում, որպեսզի էջի տեքստը մնա ընթեռնելի</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Մարմարել թռչարկման ժամանակ</string>
@@ -1501,6 +1511,65 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow-ը ժամանակավորապես հասանելի չէ (կարգավիճակի կոդը՝ %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow-ը ժամանակավորապես հասանելի չէ</string>
+  <string name="morphe_dearrow_vote_button_title">Ցույց տալ DeArrow կոճակը</string>
+  <string name="morphe_dearrow_vote_button_summary">Ավելացնում է կոճակ տեսահոլովակի նվագարկիչի վերևում՝ DeArrow վերնագրերի և նկարների համար քվեարկելու կամ նորերը ներկայացնելու համար</string>
+  <string name="morphe_dearrow_guidelines_title">Ուղեցույցներ</string>
+  <string name="morphe_dearrow_guidelines_summary">Ուղեցույցները պարունակում են կանոններ և խորհուրդներ վերնագրերի և նկարների ներկայացման ու քվեարկության համար</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Հետևեք ուղեցույցներին</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Կարդացեք DeArrow ուղեցույցները՝ նախքան վերնագրերի և նկարների համար հայտ ներկայացնելը կամ քվեարկելը</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Արդեն կարդացել եմ</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Ցույց տրամադրել</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Բեռնվում է…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Չհաջողվեց բեռնել այս տեսանյութի վերնագրերը և նկարները</string>
+  <string name="morphe_dearrow_vote_titles">Վերնագրեր</string>
+  <string name="morphe_dearrow_vote_thumbnails">Նկարներ</string>
+  <string name="morphe_dearrow_vote_no_titles">Վերնագրեր դեռ չկան: Եղեք առաջինը, ով կառաջարկի վերնագիր</string>
+  <string name="morphe_dearrow_vote_original_title">Բնօրինակ վերնագիր</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Բնօրինակ նկար</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Կադրը %s-ին</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Միավորներ՝ %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Չհաստատված</string>
+  <string name="morphe_dearrow_vote_locked">Արգելափակված</string>
+  <string name="morphe_dearrow_vote_upvote">Դրական ձայն</string>
+  <string name="morphe_dearrow_vote_downvote">Բացասական ձայն</string>
+  <string name="morphe_dearrow_vote_new_title">Նոր վերնագիր</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Մուտքագրեք վերնագիրը</string>
+  <string name="morphe_dearrow_vote_submit">Ուղարկել</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Նոր նկար</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s վ</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Ուղարկե՞լ %s կադրը որպես նկար։</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Տեսանյութը նվագվում է: Ուղարկելու համար տեսող կադրը, նախ դադարեցրեք տեսանյութը</string>
+  <string name="morphe_dearrow_vote_upvoted">Ձայնը ուղարկվել է DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Բացասական ձայնը ուղարկվել է DeArrow-ին</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow-ը չընդունեց ձայնը. %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Սա արգելափակված է և կարող է բացաս的に գնահատվել միայն VIP օգտատերերի կողմից</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Այս տեսանյութի համար ձայնարկումը դեռ ընթացքի է: Փորձեք նորից մի փոքր ուշ</string>
+  <string name="morphe_dearrow_vote_failed_code">Չհաջողվեց ուղարկել ձայնը (կարգավիճակի կոդը՝ %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Չհաջողվեց ուղարկել քվեն: Ստուգեք կապը և փորձեք նորից</string>
+  <string name="morphe_dearrow_submitting_title">Ուղարկվում են վերնագրերն ու նախնական պատկերները</string>
+  <string name="morphe_dearrow_vote_time_step_title">Ժամանակի ճշգրտման քայլը</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Ժամանակի կոպիտ ճշգրտման կոճակների ժամանակային քայլը նախնական պատկերը ուղարկելիս (միլիվայրկյաններով)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Արժեքը պետք է լինի դրական թիվ</string>
+  <string name="morphe_dearrow_private_user_id_title">Ձեր օգտատիրոջ անձնական ID-ն</string>
+  <string name="morphe_dearrow_private_user_id_summary">Նույն օգտատիրոջ ID-ն, ինչ SponsorBlock-ում: Այն պետք է պահել գաղտնի: Սա նման է գաղտնաբառի և չպետք է փոխանցվի ոչ մեկին: Եթե ինչ-որ մեկը տիրապետի դրան, նա կարող է ներկայանալ որպես դուք</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Օգտատիրոջ անձնական ID-ն պետք է լինի առնվազն 30 նիշ</string>
+  <string name="morphe_dearrow_account_loading">Բեռնվում է…</string>
+  <string name="morphe_dearrow_account_connection_failure">Հաշվի մանրամասները ժամանակավորապես հասանելի չեն</string>
+  <string name="morphe_dearrow_account_username">Ձեր օգտանունը՝ &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Հպրեք այստեղ՝ օգտանունը փոխելու համար: Օգտանունը նույնն է, ինչ SponsorBlock-ում</string>
+  <string name="morphe_dearrow_account_username_changed">Օգտանունը հաջողությամբ փոխվեց</string>
+  <string name="morphe_dearrow_account_username_change_error">Չհաջողվեց փոխել օգտանունը. Կարգավիճակ՝ %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Դուք ներկայացրել եք &lt;b&gt;%s&lt;/b&gt; վերնագրեր</string>
+  <string name="morphe_dearrow_account_titles_summary">Հպրեք այստեղ՝ ձեր վերնագրերը տեսնելու համար</string>
+  <string name="morphe_dearrow_account_thumbnails">Դուք ներկայացրել եք &lt;b&gt;%s&lt;/b&gt; նկարակներ</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Հպրեք այստեղ՝ ձեր նկարակները տեսնելու համար</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Վերականգնել նվագարկիչի կոճակների հին ոճը</string>
   <string name="morphe_restore_old_player_buttons_summary">Վերադարձնում է տեսանյութի նվագարկիչի հաստ կառավարման կոճակները հին, ավելի բարակ տեսողական ոճին</string>

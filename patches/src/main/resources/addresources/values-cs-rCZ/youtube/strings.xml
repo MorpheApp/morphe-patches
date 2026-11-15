@@ -772,6 +772,10 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_queue_manager_open_queue">Otevřít frontu</string>
   <string name="morphe_queue_manager_save_queue">Uložit frontu do playlistu</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Zobrazit tlačítko fronty na náhledech</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Na náhledech videí ve feedu se zobrazí tlačítko fronty. Klepnutím na něj se video přidá na konec fronty a dlouhým klepnutím se video přehrá</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Prohodit akce fronty na náhledech</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Klepnutím na tlačítko fronty se video přehraje jako další a dlouhým klepnutím se video přidá na konec fronty</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Načítat stránky fronty při posouvání</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Načítá další videa z seznamu přehrávání při posouvání k концу fronty</string>
   <string name="morphe_native_playlist_queue_saved">Playlist uložen</string>
@@ -1128,6 +1132,12 @@ Chcete-li zobrazit nabídku „Audio Track“, změňte možnost „Spoof video 
   <string name="morphe_disable_fullscreen_ambient_mode_title">Deaktivovat Ambientní režim v celoobrazovkovém režimu</string>
   <string name="morphe_enhanced_ambient_mode_title">Vylepšený Ambientní režim</string>
   <string name="morphe_enhanced_ambient_mode_summary">Osvětlí celou stránku sledování a černé pruhy barvami videa namísto Ambientního režimu</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Intenzita světla</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Nastavuje intenzitu světla na stránce s hodinami a u černých pruhů</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Vyhlazování světla</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Jak dlouho trvá, než světlo následuje video. Při hodnotě 0 následuje video velmi přesně</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Rozostření světla</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Jak moc je světlo vedle videa rozostřené. Při hodnotě 0 si zachovává tvary z videa</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Udržovat text čitelný</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Ztlumí světlo u jasných videí, aby text na stránce zůstal čitelný</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Ztmavit při posouvání</string>
@@ -1500,6 +1510,65 @@ Videa jsou vyžádána krátkou předponou hashovaného ID videa, takže server 
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow je dočasně nedostupný (kód stavu: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow je dočasně nedostupný</string>
+  <string name="morphe_dearrow_vote_button_title">Zobrazit tlačítko DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Přidá do horní části přehrávače videa tlačítko pro hlasování o názvech a náhledech DeArrow nebo pro odeslání nových</string>
+  <string name="morphe_dearrow_guidelines_title">Pokyny</string>
+  <string name="morphe_dearrow_guidelines_summary">Pokyny obsahují pravidla a tipy pro odesílání a hlasování o názvech a náhledech</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Dodržujte pokyny</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Před odesláním nebo hlasováním o názvech a náhledových obrázcích si přečtěte pokyny DeArrow</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Již přečteno </string>
+  <string name="morphe_dearrow_guidelines_popup_open">Ukaž mi</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Načítám…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Nepodařilo se načíst názvy a náhledové obrázky tohoto videa</string>
+  <string name="morphe_dearrow_vote_titles">Názvy</string>
+  <string name="morphe_dearrow_vote_thumbnails">Náhledové obrázky</string>
+  <string name="morphe_dearrow_vote_no_titles">Zatím zde nejsou žádné názvy. Odešlete svůj název a buďte první</string>
+  <string name="morphe_dearrow_vote_original_title">Původní název</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Původní náhled</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Snímek v %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Skóre: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Neověřeno</string>
+  <string name="morphe_dearrow_vote_locked">Zamčeno</string>
+  <string name="morphe_dearrow_vote_upvote">Hlas nahoru</string>
+  <string name="morphe_dearrow_vote_downvote">Hlas dolů</string>
+  <string name="morphe_dearrow_vote_new_title">Nový název</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Zadejte název</string>
+  <string name="morphe_dearrow_vote_submit">Odeslat</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Nová miniatura</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Odeslat snímek v čase %s jako miniaturu?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Video se přehrává. Chcete-li odeslat viditelný snímek, nejprve video pozastavte</string>
+  <string name="morphe_dearrow_vote_upvoted">Hlasování bylo odesláno do DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Záporný hlas byl odeslán do DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow nepřijal hlasování: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Tento záznam je uzamčen a může být hlasován negativně pouze VIP uživateli</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Hlasování pro toto video stále probíhá. Zkuste to znovu za chvíli</string>
+  <string name="morphe_dearrow_vote_failed_code">Hlasování nebylo možné odeslat (stavový kód: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Hlasování nebylo možné odeslat. Zkontrolujte připojení a zkuste to znovu</string>
+  <string name="morphe_dearrow_submitting_title">Odesílání názvů a náhledů</string>
+  <string name="morphe_dearrow_vote_time_step_title">Krok úpravy času</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Velikost posunu tlačítek pro jemnou časovou úpravu při odesílání náhledu (v milisekundách)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Hodnota musí být kladné číslo</string>
+  <string name="morphe_dearrow_private_user_id_title">Vaše soukromé uživatelské ID</string>
+  <string name="morphe_dearrow_private_user_id_summary">Stejné uživatelské ID jako u SponsorBlock. To by mělo být udržováno v tajnosti. Je to jako heslo a nemělo by se sdílet s nikým. Pokud ho má někdo, může se vydávat za vás</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Soukromé uživatelské ID musí být alespoň 30 znaků dlouhé</string>
+  <string name="morphe_dearrow_account_loading">Načítám…</string>
+  <string name="morphe_dearrow_account_connection_failure">Údaje o účtu nejsou dočasně k dispozici</string>
+  <string name="morphe_dearrow_account_username">Vaše uživatelské jméno: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Klepněte sem pro změnu uživatelského jména. Uživatelské jméno je stejné jako na SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Uživatelské jméno bylo úspěšně změněno</string>
+  <string name="morphe_dearrow_account_username_change_error">Nelze změnit uživatelské jméno: Stav: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Odeslali jste &lt;b&gt;%s&lt;/b&gt; názvů</string>
+  <string name="morphe_dearrow_account_titles_summary">Klepněte zde pro zobrazení vašich názvů</string>
+  <string name="morphe_dearrow_account_thumbnails">Odeslali jste &lt;b&gt;%s&lt;/b&gt; miniatur</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Klepněte zde pro zobrazení vašich miniatur</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Obnovit starý styl tlačítek přehrávače</string>
   <string name="morphe_restore_old_player_buttons_summary">Obnoví tučné ovládací prvky přehrávače videa do staršího, tenčího vizuálního stylu</string>

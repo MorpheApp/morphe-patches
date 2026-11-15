@@ -773,6 +773,10 @@ Info: Pode que non funcione en transmisións en directo"</string>
   <string name="morphe_queue_manager_open_queue">Abrir cola</string>
   <string name="morphe_queue_manager_save_queue">Gardar a cola na lista de reprodución</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Amosar o botón da cola nas miniaturas</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Amósase un botón da cola nas miniaturas dos vídeos do feed. Ao tocarnelo, engádase o vídeo ao final da cola, e ao mantelo premido reprodúcese o vídeo a continuación</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Trocar as accións da cola da miniatura</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Ao tocar o botón da cola reprodúcese o vídeo a continuación, e ao mantelo premido engádase o vídeo ao final da cola</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Cargar páxinas da cola ao desplazar</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Carga máis vídeos da lista de reprodución ao desplazar cara ao final da cola</string>
   <string name="morphe_native_playlist_queue_saved">Lista de reprodución gardada</string>
@@ -1129,6 +1133,12 @@ Para amosar o menú 'Audio Track', cambie 'Spoof video streams' por calquera cli
   <string name="morphe_disable_fullscreen_ambient_mode_title">Desactivar o modo ambiente en pantalla completa</string>
   <string name="morphe_enhanced_ambient_mode_title">Modo Ambiente mellorado</string>
   <string name="morphe_enhanced_ambient_mode_summary">Ilumina toda a páxina de visionado e as barras negras co vídeo, en lugar do modo Ambiente</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Intensidade da luz</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">A intensidade da luz na páxina do reloxo e nas barras negras</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Suavizado de luz</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Canto tarda a luz en seguir o vídeo. Con 0 segue o vídeo estreitamente</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Desfoque de luz</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Kanta se desfoca a luz xunto ao vídeo. Con 0 mantense as formas do vídeo</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantener o texto lexible</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Atenúa a luz en vídeos brillantes para que o texto da páxina siga sendo lexible</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Atenuar ao desplazar</string>
@@ -1502,6 +1512,65 @@ Os vídeos solicítanse mediante un prefixo curto do ID do vídeo hasheado, polo
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow non está dispoñible temporalmente (código de estado: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow non está dispoñible temporalmente</string>
+  <string name="morphe_dearrow_vote_button_title">Amosar o botón de DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Engade un botón na parte superior do reprodutor de vídeo para votar os títulos e miniaturas de DeArrow, ou enviar novos</string>
+  <string name="morphe_dearrow_guidelines_title">Directrices</string>
+  <string name="morphe_dearrow_guidelines_summary">As directrices conteñen regras e consellos para enviar e votar títulos e miniaturas</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Segue as directrices</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Lea as directrices de DeArrow antes de enviar ou votar títulos e miniaturasexecutionContext</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Xa lido</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Amósameo</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Cargando…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Non foi posible cargar os títulos e as miniaturas deste vídeo</string>
+  <string name="morphe_dearrow_vote_titles">Títulos</string>
+  <string name="morphe_dearrow_vote_thumbnails">Miniaturas</string>
+  <string name="morphe_dearrow_vote_no_titles">Aínda non hai títulos. Envíe un título para ser o primeiro</string>
+  <string name="morphe_dearrow_vote_original_title">Título orixinal</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Miniatura orixinal</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Kadro en %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Puntuación: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Non verificado</string>
+  <string name="morphe_dearrow_vote_locked">Bloqueado</string>
+  <string name="morphe_dearrow_vote_upvote">Voto positivo</string>
+  <string name="morphe_dearrow_vote_downvote">Voto negativo</string>
+  <string name="morphe_dearrow_vote_new_title">Novo título</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Escribe un título</string>
+  <string name="morphe_dearrow_vote_submit">Enviar</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Nova miniatura</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Enviar o cadre en %s como miniatura?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">O vídeo se está reproducindo. Para enviar o cadre que ves, pausa o vídeo primeiro</string>
+  <string name="morphe_dearrow_vote_upvoted">Voto enviado a DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Voto negativo enviado a DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow non aceptou o voto: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Isto está bloqueado e só pode ser votado negativamente por usuarios VIP</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Aínda hai un voto en curso para este vídeo. Ténteo de novo nun momento</string>
+  <string name="morphe_dearrow_vote_failed_code">Non se puido enviar o voto (código de estado: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Non se puido enviar o voto. Comprobe a súa conexión e ténteo de novo</string>
+  <string name="morphe_dearrow_submitting_title">Enviando títulos e miniaturas tindas</string>
+  <string name="morphe_dearrow_vote_time_step_title">Paso de axuste de tempo</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Cantidade de busca dos botóns de axuste fino de tempo ao enviar unha miniatura (en milisegundos)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">O valor debe ser un número positivo</string>
+  <string name="morphe_dearrow_private_user_id_title">O seu ID de usuario privado</string>
+  <string name="morphe_dearrow_private_user_id_summary">O mesmo ID de usuario que SponsorBlock. Isto debe manterse privado. É como unha contrasinal e non debe compartirse con ninguén. Se alguén ten isto, pode suplantalo</string>
+  <string name="morphe_dearrow_private_user_id_invalid">O ID do usuario privado debe ter polo menos 30 caracteres</string>
+  <string name="morphe_dearrow_account_loading">Cargando…</string>
+  <string name="morphe_dearrow_account_connection_failure">Os detalles da conta non están dispoñibles temporalmente</string>
+  <string name="morphe_dearrow_account_username">O seu nome de usuario: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Toca aquí para cambiar o seu nome de usuario. O nome de usuario é o mesmo que en SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Nome de usuario cambiado con éxito</string>
+  <string name="morphe_dearrow_account_username_change_error">Imposible cambiar o nome de usuario: Estado: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Enviou &lt;b&gt;%s&lt;/b&gt; títulos</string>
+  <string name="morphe_dearrow_account_titles_summary">Toca aquí para ver os seus títulos</string>
+  <string name="morphe_dearrow_account_thumbnails">Enviaches &lt;b&gt;%s&lt;/b&gt; miniaturas</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Toca aquí para ver as túas miniaturas</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Restaurar o estilo antigo dos botóns do reprodutor</string>
   <string name="morphe_restore_old_player_buttons_summary">Reverte os controlos en negrita do reprodutor de vídeo ao estilo visual antigo e máis fino</string>

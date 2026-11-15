@@ -773,6 +773,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_queue_manager_open_queue">क्यू उघडा</string>
   <string name="morphe_queue_manager_save_queue">प्लेलिस्टमध्ये क्यू जतन करा</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">थंबनेल्सवर क्यू बटण दाखवा</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">फीड व्हिडिओंच्या थंबनेल्सवर क्यू बटण दिसले जाते. त्यावर टॅप केल्यावर व्हिडिओ क्यूच्या शेवटी जोडला जातो आणि दाबून धरल्यास तो व्हिडिओ पुढचा प्ले होतो</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">थंबनेल क्यू ॲक्शन्स बदला</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">क्यू बटणावर टॅप केल्यास व्हिडिओ पुढचा प्ले होतो आणि दाबून धरल्यास व्हिडिओ क्यूच्या शेवटी जोडला जातो</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">स्क्रोल केल्यावर रांगेतील पाने लोड करा</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">रांगेच्या शेवटी स्क्रोल करताना प्लेलिस्टमधील अधिक व्हिडिओ लोड करा</string>
   <string name="morphe_native_playlist_queue_saved">प्लेलिस्ट जतन केली</string>
@@ -1129,6 +1133,12 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_disable_fullscreen_ambient_mode_title">पूर्ण स्क्रीनमध्ये एंबियंट मोड अक्षम करा</string>
   <string name="morphe_enhanced_ambient_mode_title">सुधारित अ‍ॅम्बियंट मोड</string>
   <string name="morphe_enhanced_ambient_mode_summary">अ‍ॅम्बियंट मोडऐवजी, व्हिडिओनुसार संपूर्ण वॉच पेज आणि ब्लॅक बार उजळते</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">प्रकाशाची तीव्रता</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">वॉच पेज आणि काळ्या पट्ट्यांवरील प्रकाश किती तीव्र असावा</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">लाईट स्मूथिंग</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">लाईटला व्हिडिओचे अनुसरण करण्यासाठी किती वेळ लागतो. 0 असताना ती व्हिडिओचे जवळून अनुसरण करते</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">लाईट ब्लर</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">व्हिडिओच्या बाजूची लाईट किती ब्लर करायची. 0 असताना ती व्हिडिओचे आकार कायम ठेवते</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">मजकूर वाचनीय ठेवा</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">उजळ व्हिडिओवरील प्रकाश कमी करतो जेणेकरून पेजवरील मजकूर वाचनीय राहील</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">स्क्रोल करताना मंद करा</string>
@@ -1502,6 +1512,65 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow सध्या उपलब्ध नाही (स्टेटस कोड: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow सध्या उपलब्ध नाही</string>
+  <string name="morphe_dearrow_vote_button_title">DeArrow बटण दाखवा</string>
+  <string name="morphe_dearrow_vote_button_summary">DeArrow शीर्षके आणि थंबनॅल्सवर मतदान करण्यासाठी किंवा नवीन सबमिट करण्यासाठी व्हिडिओ प्लेयरच्या वरच्या बाजूला एक बटण जोडते</string>
+  <string name="morphe_dearrow_guidelines_title">मार्गदर्शक तत्त्वे</string>
+  <string name="morphe_dearrow_guidelines_summary">मार्गदर्शक तत्त्वांमध्ये शीर्षके आणि थंबनॅल्स सबमिट करण्यासाठी आणि त्यावर मतदान करण्यासाठी नियम आणि टिप्स आहेत</string>
+  <string name="morphe_dearrow_guidelines_popup_title">मार्गदर्शक तत्त्वांचे पालन करा</string>
+  <string name="morphe_dearrow_guidelines_popup_content">शीर्षके आणि थंबनेल सबमिट करण्यापूर्वी किंवा त्यावर मतदान करण्यापूर्वी DeArrow मार्गदर्शक तत्त्वे वाचा</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">आधीच वाचले आहे</string>
+  <string name="morphe_dearrow_guidelines_popup_open">मला दाखवा</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">लोड होत आहे…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">या व्हिडिओची शीर्षके आणि थंबनेल लोड करता आले नाहीत</string>
+  <string name="morphe_dearrow_vote_titles">शीर्षके</string>
+  <string name="morphe_dearrow_vote_thumbnails">थंबनेल</string>
+  <string name="morphe_dearrow_vote_no_titles">अद्याप कोणतीही शीर्षके नाहीत. पहिले होण्यासाठी शीर्षक सबमिट करा</string>
+  <string name="morphe_dearrow_vote_original_title">मूळ शीर्षक</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">मूळ थंबनेल</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">%s वेळची फ्रेम</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">स्कोअर: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">पडताळणी न झालेली</string>
+  <string name="morphe_dearrow_vote_locked">लॉक केलेले</string>
+  <string name="morphe_dearrow_vote_upvote">अपवोट</string>
+  <string name="morphe_dearrow_vote_downvote">डाउनवोट</string>
+  <string name="morphe_dearrow_vote_new_title">नवीन शीर्षक</string>
+  <string name="morphe_dearrow_vote_new_title_hint">शीर्षक टाइप करा</string>
+  <string name="morphe_dearrow_vote_submit">सबमिट करा</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">नवीन थंबनेल</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s सेकंद</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">%s वेळचा फ्रेम थंबनेल म्हणून सबमिट करायचा आहे?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">व्हिडिओ चालू आहे. तुम्ही पाहत असलेला फ्रेम सबमिट करण्यासाठी, प्रथम व्हिडिओ थांबवा</string>
+  <string name="morphe_dearrow_vote_upvoted">DeArrow ला मत सादर केले</string>
+  <string name="morphe_dearrow_vote_downvoted">DeArrow ला डाउनवोट सादर केला</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow ने मत स्वीकारले नाही: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">हे लॉक केलेले आहे आणि फक्त VIP वापरकर्त्यांद्वारे डाउनवोट केले जाऊ शकते</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">या व्हिडिओसाठी मतदानाची प्रक्रिया अजून सुरू आहे. काही वेळानंतर पुन्हा प्रयत्न करा</string>
+  <string name="morphe_dearrow_vote_failed_code">मत सादर करता आले नाही (स्थिती कोड: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">मत सबमिट करता आले नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा</string>
+  <string name="morphe_dearrow_submitting_title">शीर्षके आणि थंबनेल सबमिट करत आहे</string>
+  <string name="morphe_dearrow_vote_time_step_title">वेळ समायोजन पायरी</string>
+  <string name="morphe_dearrow_vote_time_step_summary">थंबनेल सबमिट करताना फाईन टाइम समायोजन बटणांची शोध रक्कम (मिलीसेकंदात)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">मूल्य सकारात्मक संख्या असावे</string>
+  <string name="morphe_dearrow_private_user_id_title">तुमचा खाजगी वापरकर्ता आयडी</string>
+  <string name="morphe_dearrow_private_user_id_summary">SponsorBlock प्रमाणच युझर आयडी. हे खाजगी ठेवले पाहिजे. हे पासवर्डसारखे आहे आणि कोणाशीही शेअर केले जाऊ नये. जर कोणाला हे मिळाले, तर ते तुमच्या नावाचा गैरवापर करू शकतात</string>
+  <string name="morphe_dearrow_private_user_id_invalid">खाजगी युझर आयडी किमान ३० अक्षरांचा असावा</string>
+  <string name="morphe_dearrow_account_loading">लोड होत आहे…</string>
+  <string name="morphe_dearrow_account_connection_failure">खात्याचा तपशील तात्पुरता उपलब्ध नाही</string>
+  <string name="morphe_dearrow_account_username">तुमचे युझरनेम: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">तुमचे युझरनेम बदलण्यासाठी येथे टॅप करा. युझरनेम SponsorBlock वरील प्रमाणेच आहे</string>
+  <string name="morphe_dearrow_account_username_changed">युझरनेम यशस्वीरित्या बदलले</string>
+  <string name="morphe_dearrow_account_username_change_error">वापरकर्ता नाव बदलता आले नाही: स्थिती: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">तुम्ही &lt;b&gt;%s&lt;/b&gt; शीर्षके सबमिट केली आहेत</string>
+  <string name="morphe_dearrow_account_titles_summary">तुमची शीर्षके पाहण्यासाठी येथे टॅप करा</string>
+  <string name="morphe_dearrow_account_thumbnails">तुम्ही &lt;b&gt;%s&lt;/b&gt; थंबनेल सबमिट केले आहेत</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">तुमचे थंबनेल पाहण्यासाठी येथे टॅप करा</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">जुने प्लेयर बटण शैली पुनर्संचयित करा</string>
   <string name="morphe_restore_old_player_buttons_summary">व्हिडिओ प्लेयर (Video player) बटणांचा बोल्ड (Bold) आकार जुन्या, पातळ व्हिज्युअल (Visual) शैलीवर परत आणते</string>

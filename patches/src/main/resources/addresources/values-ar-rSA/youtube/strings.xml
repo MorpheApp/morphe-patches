@@ -777,6 +777,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_queue_manager_open_queue">فتح قائمة المحتوى التالي</string>
   <string name="morphe_queue_manager_save_queue">حفظ قائمة المحتوى التالي إلى قائمة تشغيل</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">عرض زر قائمة المحتوى التالي على الصور المصغرة</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">يظهر زر قائمة الانتظار على مصغرات فيديوهات الخلاصة. يؤدي النقر عليه إلى إضافة الفيديو إلى نهاية قائمة المحتوى التالي، ويؤدي الضغط مع الاستمرار إلى تشغيل الفيديو التالي</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">تبديل إجراءات قائمة المحتوى التالي بالصور المصغرة</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">يؤدي النقر على زر قائمة المحتوى التالي إلى تشغيل الفيديو التالي، ويؤدي الضغط مع الاستمرار إلى إضافة الفيديو إلى نهاية قائمة المحتوى التالي</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">تحميل صفحات قائمة المحتوى التالي عند التمرير</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">يقوم بتحميل المزيد من الفيديوهات في القائمة عند الاقتراب من نهاية المحتوى التالي</string>
   <string name="morphe_native_playlist_queue_saved">تم حفظ قائمة التشغيل</string>
@@ -1047,7 +1051,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_glass_opacity_title">شفافية الزجاج</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ضبط مستوى الشفافية لشريط التنقل الزجاجي (0 شفاف، 100 معتم)</string>
   <string name="morphe_navigation_bar_glass_round_title">شريط تنقل زجاجي دائري</string>
-  <string name="morphe_navigation_bar_glass_round_summary">يجعل أطراف شريط التنقل الزجاجي دائرية، بدلاً من الزوايا كما في المشغل المصغر الزجاجي</string>
+  <string name="morphe_navigation_bar_glass_round_summary">يجعل أطراف شريط التنقل الزجاجي دائرية، بدلًا من الزوايا كما في المشغل المصغر الزجاجي</string>
   <string name="morphe_navigation_bar_glass_size_title">حجم شريط التنقل الزجاجي</string>
   <string name="morphe_navigation_bar_glass_size_summary">ضبط ارتفاع, عرض وتباعد أزرار شريط التنقل الزجاجي، مع المعاينة. يتم إخفاء الأزرار التي لا تتناسب مع عرض الشاشة</string>
   <string name="morphe_navigation_bar_glass_size_height">الارتفاع</string>
@@ -1133,6 +1137,12 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_disable_fullscreen_ambient_mode_title">تعطيل وضع الإضاءة السينمائية في ملء الشاشة</string>
   <string name="morphe_enhanced_ambient_mode_title">وضع الإضاءة السينمائية المُحسّن</string>
   <string name="morphe_enhanced_ambient_mode_summary">يضيء صفحة المشاهدة بالكامل والأشرطة السوداء بما يتناسب مع الفيديو، بدلًا من وضع الإضاءة السينمائية</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">قوة الإضاءة</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">مدى قوة الإضاءة في صفحة المشاهدة والأشرطة السوداء</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">تنعيم الإضاءة</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">المدة التي تستغرقها الإضاءة لمتابعة الفيديو. عند ضبطها على 0، تتبع الإضاءة الفيديو بدقة</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">ضبابية الإضاءة</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">مدى تغبيش الإضاءة المجاورة للفيديو. عند ضبطها على 0، يتم الحفاظ على أشكال الفيديو</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">الحفاظ على وضوح النص</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">يخفف الإضاءة في الفيديوهات الساطعة بحيث يظل النص الموجود على الصفحة واضحًا للقراءة</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">تعتيم أثناء التمرير</string>
@@ -1389,7 +1399,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_docked_title">المشغل المصغر المثبت</string>
   <string name="morphe_miniplayer_docked_summary">يربط المشغل المصغر بشريط التنقل وجوانب الشاشة، بدلًا من جعله يطفو فوقهما</string>
   <string name="morphe_miniplayer_glass_title">مشغل مصغر زجاجي</string>
-  <string name="morphe_miniplayer_glass_summary">يظهر المشغل المصغر كزجاج شبه شفاف بزوايا مستديرة، مثل شريط التنقل الزجاجي. يتطلب تفعيل شريط التنقل الزجاجي</string>
+  <string name="morphe_miniplayer_glass_summary">يظهر المشغل المصغر كزجاج شبه شفاف بزوايا مستديرة، مثل شريط التنقل الزجاجي. يتطلب تمكين شريط التنقل الزجاجي</string>
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
   <string name="morphe_miniplayer_type_entry_1">الافتراضي</string>
   <string name="morphe_miniplayer_type_entry_2">بسيط</string>
@@ -1506,6 +1516,65 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow غير متوفر مؤقتًا (رمز الحالة: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow غير متوفر مؤقتًا</string>
+  <string name="morphe_dearrow_vote_button_title">عرض زر DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">يضيف زرًا إلى أعلى مشغل الفيديو للتصويت على عناوين وصور DeArrow المصغرة، أو لإرسال عناوين وصور جديدة</string>
+  <string name="morphe_dearrow_guidelines_title">الإرشادات</string>
+  <string name="morphe_dearrow_guidelines_summary">تحتوي الإرشادات على قواعد ونصائح لإرسال العناوين والصور المصغرة والتصويت عليها</string>
+  <string name="morphe_dearrow_guidelines_popup_title">اتبع الإرشادات</string>
+  <string name="morphe_dearrow_guidelines_popup_content">اقرأ إرشادات DeArrow قبل إرسال أو التصويت على العناوين والصور المصغرة</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">تمت قراءتها</string>
+  <string name="morphe_dearrow_guidelines_popup_open">اعرضها لي</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">جارٍ التحميل…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">تعذر تحميل العناوين والصور المصغرة لهذا الفيديو</string>
+  <string name="morphe_dearrow_vote_titles">العناوين</string>
+  <string name="morphe_dearrow_vote_thumbnails">الصور المصغرة</string>
+  <string name="morphe_dearrow_vote_no_titles">لا توجد عناوين بعد. أرسل عنوانًا لتكون الأول</string>
+  <string name="morphe_dearrow_vote_original_title">العنوان الأصلي</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">الصورة المصغرة الأصلية</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">إطار عند %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">النتيجة: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">غير معتمد</string>
+  <string name="morphe_dearrow_vote_locked">مقفلة</string>
+  <string name="morphe_dearrow_vote_upvote">تأييد</string>
+  <string name="morphe_dearrow_vote_downvote">اعتراض</string>
+  <string name="morphe_dearrow_vote_new_title">عنوان جديد</string>
+  <string name="morphe_dearrow_vote_new_title_hint">اكتب عنوانًا</string>
+  <string name="morphe_dearrow_vote_submit">إرسال</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">صورة مصغرة جديدة</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s ثانية</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">هل تريد إرسال الإطار عند %s كصورة مصغرة؟</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">الفيديو قيد التشغيل. لإرسال الإطار الذي تراه، قم بإيقاف الفيديو أولًا</string>
+  <string name="morphe_dearrow_vote_upvoted">تم إرسال التصويت إلى DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">تم إرسال التصويت السلبي إلى DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">لم يقبل DeArrow التصويت: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">هذا مقفل، ويمكن لمستخدمي VIP فقط التصويت عليه سلبيًا</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">لا يزال التصويت لهذا الفيديو جاريًا. أعد المحاولة بعد لحظة</string>
+  <string name="morphe_dearrow_vote_failed_code">تعذر إرسال التصويت (رمز الحالة: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">تعذر إرسال التصويت. تحقق من الاتصال بالإنترنت ثم أعد المحاولة</string>
+  <string name="morphe_dearrow_submitting_title">جاري إرسال العناوين والصور المصغرة</string>
+  <string name="morphe_dearrow_vote_time_step_title">مقدار تعديل الوقت</string>
+  <string name="morphe_dearrow_vote_time_step_summary">مقدار تقديم أو تأخير أزرار ضبط الوقت الدقيق عند إرسال صورة مصغرة (بجزء من الثانية)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">يجب أن تكون القيمة رقمًا موجبًا</string>
+  <string name="morphe_dearrow_private_user_id_title">معرف المستخدم User ID الفريد الخاص بك</string>
+  <string name="morphe_dearrow_private_user_id_summary">نفس معرف المستخدم الخاص بـ SponsorBlock. يجب الحفاظ على سرية هذا المعرف، فهو بمثابة كلمة مرور ولا ينبغي مشاركته مع أي شخص. إذا حصل شخص ما عليه، فيمكنه انتحال شخصيتك</string>
+  <string name="morphe_dearrow_private_user_id_invalid">يجب أن يكون معرف المستخدم الخاص 30 حرفًا على الأقل</string>
+  <string name="morphe_dearrow_account_loading">جارٍ التحميل…</string>
+  <string name="morphe_dearrow_account_connection_failure">تفاصيل الحساب غير متاحة مؤقتًا</string>
+  <string name="morphe_dearrow_account_username">اسم المستخدم الخاص بك: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">انقر هنا لتغيير اسم المستخدم الخاص بك. اسم المستخدم هو نفسه المستخدم في SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">تم تغيير اسم المستخدم بنجاح</string>
+  <string name="morphe_dearrow_account_username_change_error">غير قادر على تغيير اسم المستخدم: الحالة: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">لقد قمت بإرسال &lt;b&gt;%s&lt;/b&gt; عنوان</string>
+  <string name="morphe_dearrow_account_titles_summary">انقر هنا لعرض العناوين الخاصة بك</string>
+  <string name="morphe_dearrow_account_thumbnails">لقد قمت بإرسال &lt;b&gt;%s&lt;/b&gt; صورة مصغرة</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">انقر هنا لعرض الصور المصغرة الخاصة بك</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">استعادة نمط أزرار المشغل القديم</string>
   <string name="morphe_restore_old_player_buttons_summary">يعيد أزرار مشغل الفيديو السميكة إلى النمط المرئي القديم الأقل سُمكًا</string>

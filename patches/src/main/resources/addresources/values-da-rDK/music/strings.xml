@@ -144,6 +144,9 @@ Eksportermappe: %s"</string>
   <string name="morphe_export_download_all_started">Eksporterer alle downloads</string>
   <string name="morphe_export_download_all_running">Downloads bliver allerede eksporteret</string>
   <string name="morphe_export_download_all_saved">Eksporterede %1$s ud af %2$s downloads til %3$s</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
+  <string name="morphe_music_replace_shuffle_with_loop_button_title">Erstat Shuffle med Loop-knap</string>
+  <string name="morphe_music_replace_shuffle_with_loop_button_summary">Viser Loop-knappen i stedet for Shuffle-knappen i medie-meddelelser og på låseskærmen</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_00_about_title">Om</string>
@@ -253,6 +256,9 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <string name="morphe_music_remember_repeat_state_title">Husk gentagelsestilstand</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Husk blandingstilstand</string>
+  <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
+  <string name="morphe_music_pause_when_muted_title">Pause når dæmpet</string>
+  <string name="morphe_music_pause_when_muted_summary">Pauser afspilningen, når systemlyden er dæmpet, og genoptager den, når lyden skrues op</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Afspilningshastighed</string>
   <string name="morphe_music_playback_speed_summary">Den hastighed, der bruges for alle numre. Ved 100 % bruges appens hastighed, f.eks. podcast-afspilningshastigheden</string>

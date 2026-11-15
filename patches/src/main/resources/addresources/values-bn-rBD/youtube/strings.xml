@@ -773,6 +773,10 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_queue_manager_open_queue">সারি খুলুন</string>
   <string name="morphe_queue_manager_save_queue">প্লেলিস্টে সারি সংরক্ষণ করুন</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">থাম্বনেইলে কিউ বোতাম দেখান</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">ফিড ভিডিওর থাম্বনেইলে একটি কিউ বোতাম দেখানো হয়। এতে ট্যাপ করলে ভিডিওটি কিউ-এর শেষে যোগ হয় এবং ট্যাপ করে ধরে রাখলে ভিডিওটি পরবর্তীতে প্লে হয়</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">থাম্বনেইল কিউ অ্যাকশন অদলবদল করুন</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">কিউ বোতামে ট্যাপ করলে ভিডিওটি পরবর্তীতে প্লে হয় এবং ট্যাপ করে ধরে রাখলে ভিডিওটি কিউ-এর শেষে যোগ হয়</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">স্ক্রোল করার সময় কিউ পেজ লোড করুন</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">কিউ-এর শেষের কাছাকাছি স্ক্রোল করার সময় প্লেলিস্টের আরও ভিডিও লোড করে</string>
   <string name="morphe_native_playlist_queue_saved">প্লেলিস্ট সংরক্ষিত হয়েছে</string>
@@ -1129,6 +1133,12 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_disable_fullscreen_ambient_mode_title">ফুলস্ক্রিনে অ্যাম্বিয়েন্ট মোডটি অক্ষম করুন</string>
   <string name="morphe_enhanced_ambient_mode_title">উন্নত অ্যাম্বিয়েন্ট মোড</string>
   <string name="morphe_enhanced_ambient_mode_summary">অ্যাম্বিয়েন্ট মোডের পরিবর্তে ভিডিওর সাথে পুরো ওয়াচ পেজ এবং ব্ল্যাক বারগুলিকে আলোকিত করে</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">আলোর তীব্রতা</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">ওয়াচ পেজ এবং কালো বারগুলোতে আলো কতটা তীব্র হবে</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">লাইটের স্মুথিং</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">লাইটের ভিডিও অনুসরণ করতে কত সময় লাগবে। ০ থাকলে এটি ভিডিওর সাথে ঘনিষ্ঠভাবে চলবে</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">লাইটের ব্লার</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">ভিডিওর পাশের লাইটটি কতটা ব্লার হবে। ০ থাকলে এটি ভিডিওর আকার বজায় রাখে</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">টেক্সট পঠনযোগ্য রাখুন</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">উজ্জ্বল ভিডিওর আলো কমিয়ে দেয় যাতে পেজের টেক্সট পঠনযোগ্য থাকে</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">স্ক্রোল করার সময় ডিম করুন</string>
@@ -1502,6 +1512,65 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow সাময়িকভাবে উপলব্ধ নেই (স্ট্যাটাস কোড: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow সাময়িকভাবে উপলব্ধ নেই</string>
+  <string name="morphe_dearrow_vote_button_title">DeArrow বোতাম দেখান</string>
+  <string name="morphe_dearrow_vote_button_summary">DeArrow শিরোনাম এবং থাম্বনেইলে ভোট দিতে বা নতুন জমা দিতে ভিডিও প্লেয়ারের উপরে একটি বোতাম যোগ করে</string>
+  <string name="morphe_dearrow_guidelines_title">নির্দেশিকা</string>
+  <string name="morphe_dearrow_guidelines_summary">নির্দেশিকায় শিরোনাম এবং থাম্বনেইল জমা দেওয়া এবং ভোট দেওয়ার জন্য নিয়ম এবং টিপস রয়েছে</string>
+  <string name="morphe_dearrow_guidelines_popup_title">নির্দেশিকা অনুসরণ করুন</string>
+  <string name="morphe_dearrow_guidelines_popup_content">শিরোনাম এবং থাম্বনেইলের জন্য জমা দেওয়ার বা ভোট দেওয়ার আগে DeArrow নির্দেশিকাগুলো পড়ুন</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">ইতোমধ্যে পড়া হয়েছে</string>
+  <string name="morphe_dearrow_guidelines_popup_open">আমাকে দেখান</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">লোড হচ্ছে…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">এই ভিডিওর শিরোনাম এবং থাম্বনেইল লোড করা সম্ভব হয়নি</string>
+  <string name="morphe_dearrow_vote_titles">শিরোনাম</string>
+  <string name="morphe_dearrow_vote_thumbnails">থাম্বনেইল</string>
+  <string name="morphe_dearrow_vote_no_titles">এখনো কোনো শিরোনাম নেই। প্রথম হওয়ার জন্য একটি শিরোনাম জমা দিন</string>
+  <string name="morphe_dearrow_vote_original_title">মূল শিরোনাম</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">মূল থাম্বনেইল</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">%s সময়ে ফ্রেম</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">স্কোর: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">অনিশ্চিত</string>
+  <string name="morphe_dearrow_vote_locked">লক করা হয়েছে</string>
+  <string name="morphe_dearrow_vote_upvote">আপভোট</string>
+  <string name="morphe_dearrow_vote_downvote">ডাউনভোট</string>
+  <string name="morphe_dearrow_vote_new_title">নতুন শিরোনাম</string>
+  <string name="morphe_dearrow_vote_new_title_hint">একটি শিরোনাম লিখুন</string>
+  <string name="morphe_dearrow_vote_submit">জমা দিন</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">নতুন থাম্বনেইল</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s সেকেন্ড</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">%s সময়ের ফ্রেমটিকে থাম্বনেইল হিসেবে জমা দেবেন?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">ভিডিওটি চলছে। আপনি যে ফ্রেমটি দেখছেন তা জমা দিতে প্রথমে ভিডিওটি পজ করুন</string>
+  <string name="morphe_dearrow_vote_upvoted">ভোট DeArrow-তে জমা দেওয়া হয়েছে</string>
+  <string name="morphe_dearrow_vote_downvoted">ডাউনভোট DeArrow-তে জমা দেওয়া হয়েছে</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow ভোটটি গ্রহণ করেনি: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">এটি লক করা আছে এবং শুধুমাত্র VIP ব্যবহারকারীরা ডাউনভোট করতে পারবেন</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">এই ভিডিওর জন্য ভোট এখনও প্রক্রিয়াধীন। কিছুক্ষণ পর আবার চেষ্টা করুন</string>
+  <string name="morphe_dearrow_vote_failed_code">ভোট জমা দেওয়া সম্ভব হয়নি (স্ট্যাটাস কোড: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">ভোট জমা দেওয়া সম্ভব হয়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন</string>
+  <string name="morphe_dearrow_submitting_title">শিরোনাম এবং থাম্বনেইল জমা দেওয়া হচ্ছে</string>
+  <string name="morphe_dearrow_vote_time_step_title">সময় সমন্বয়ের ধাপ</string>
+  <string name="morphe_dearrow_vote_time_step_summary">থাম্বনেইল জমা দেওয়ার সময় সূক্ষ্ম সময় সমন্বয় বোতামগুলোর সিক পরিমাণ (মিলি-সেকেন্ডে)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">মানটি অবশ্যই একটি ধনাত্মক সংখ্যা হতে হবে</string>
+  <string name="morphe_dearrow_private_user_id_title">আপনার ব্যক্তিগত ব্যবহারকারী আইডি</string>
+  <string name="morphe_dearrow_private_user_id_summary">SponsorBlock-এর মতোই ব্যবহারকারী আইডি। এটি গোপন রাখা উচিত। এটি একটি পাসওয়ার্ডের মতো এবং কারও সাথে শেয়ার করা উচিত নয়। যদি কারও কাছে এটি থাকে, তবে তারা আপনার ছদ্মবেশ ধারণ করতে পারে</string>
+  <string name="morphe_dearrow_private_user_id_invalid">ব্যক্তিগত ব্যবহারকারী আইডি অবশ্যই ৩০ অক্ষরের লম্বা হতে হবে</string>
+  <string name="morphe_dearrow_account_loading">লোড হচ্ছে…</string>
+  <string name="morphe_dearrow_account_connection_failure">অ্যাকাউন্টের বিবরণ সাময়িকভাবে উপলভ্য নয়</string>
+  <string name="morphe_dearrow_account_username">আপনার ব্যবহারকারী নাম: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">আপনার ইউজারনেম পরিবর্তন করতে এখানে ট্যাপ করুন। ইউজারনেমটি SponsorBlock-এর মতোই হবে</string>
+  <string name="morphe_dearrow_account_username_changed">ব্যবহারকারীর নাম সফলভাবে পরিবর্তন হয়েছে</string>
+  <string name="morphe_dearrow_account_username_change_error">ব্যবহারকারীর নাম পরিবর্তন সফল হয়নি: অবস্থা: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">আপনি &lt;b&gt;%s&lt;/b&gt;টি শিরোনাম জমা দিয়েছেন</string>
+  <string name="morphe_dearrow_account_titles_summary">আপনার শিরোনামগুলো দেখতে এখানে ট্যাপ করুন</string>
+  <string name="morphe_dearrow_account_thumbnails">আপনি &lt;b&gt;%s&lt;/b&gt;টি থাম্বনেইল জমা দিয়েছেন</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">আপনার থাম্বনেইলগুলো দেখতে এখানে ট্যাপ করুন</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">পুরানো প্লেয়ারের বোতামের স্টাইল পুনরুদ্ধার করুন</string>
   <string name="morphe_restore_old_player_buttons_summary">মোটা ভিডিও প্লেয়ার কন্ট্রোলগুলিকে আগের, পাতলা ভিজ্যুয়াল শৈলীতে ফিরিয়ে আনে</string>

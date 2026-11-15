@@ -774,6 +774,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">ڕیزەکە بکەرەوە</string>
   <string name="morphe_queue_manager_save_queue">پاشکەوتکردنی ڕیزەکە بۆ لیستێکی پەخش</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">پیشاندانی دوگمەی ڕیز لەسەر وێنەی پێشوەختەکان</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">دوگمەیەک بۆ ڕیز لەسەر وێنەی پێشوەختەی ڤیدیۆکانی فید دەردەکەوێت. لێدانی دوگمەکە ڤیدیۆکە زیاد دەکات بۆ کۆتایی ڕیزەکە، و لێدان و ڕاگرتنی دەبێتە هۆی ئەوەی ڤیدیۆکە داهاتووان لێ بدرێت</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">گۆڕینی شوێنی کردارەکانی ڕیزی وێنەی پێشوەختە</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">لێدانی دوگمەی ڕیز ڤیدیۆکە داهاتووان لێ دەدات، و لێدان و ڕاگرتنی ڤیدیۆکە زیاد دەکات بۆ کۆتایی ڕیزەکە</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">بارکردنی لاپەڕەکانی ڕیزبەندی لەکاتی سکرۆڵکردن</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">زیاتر لە ڤیدیۆکانی لیستەکە باردەکات کاتێک سکرۆڵ دەکەیت بەرەو کۆتایی ڕیزبەندییەکە</string>
   <string name="morphe_native_playlist_queue_saved">لیستی پەخشکردنەکە پاشکەوت کرا</string>
@@ -1130,6 +1134,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">بێکارکردنی شێوازی Ambient لە شاشەی تەواو</string>
   <string name="morphe_enhanced_ambient_mode_title">مۆدی Ambient-ی باشترکراو</string>
   <string name="morphe_enhanced_ambient_mode_summary">تەواوی لاپەڕەی بینین و شریتە ڕەشەکان بە ڕەنگی ڤیدیۆکەوە ڕوون دەکاتەوە، لە جیاتی مۆدی Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">هێزی ڕووناکی</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">هێزی ڕووناکییەکە لە لاپەڕەی سەعات و شریتە ڕەشەکاندا چەندە</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">ساوکردنی ڕووناکی</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">ماوەی ئەو کاتەی ڕووناکییەکە پێی دەوێت بۆ ئەوەی شوێن ڤیدیۆکە بگڕێت. بە 0، بە وردی شوێن ڤیدیۆکە دەگرێت</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">لێڵکردنی ڕووناکی</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">بڕی لێڵبوونی ڕووناکی لە تەنیشت ڤیدیۆکە. بە 0، شێوەکانی ڤیدیۆکە دەپارێزێت</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">تێکستی readable بهێڵەوە</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">ڕووناکیی ڤیدیۆکانی گەش کەمدەکاتەوە بۆ ئەوەی تێکستەکانی لاپەڕەکە بە ڕوونی بخوێندرێن</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">تاریکی لە کاتی سکرۆڵکردن</string>
@@ -1503,6 +1513,65 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow بۆ ماوەیەکی کاتی بەردەست نییە (کۆدی دۆخ: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow بەشێوەیەکی کاتی بەردەست نییە</string>
+  <string name="morphe_dearrow_vote_button_title">دوگمەی DeArrow نیشان بدە</string>
+  <string name="morphe_dearrow_vote_button_summary">دوگمەیەک زیاد دەکات بۆ سەری دیسپڵەی ڤیدیۆکە بۆ دەنگدان لەسەر ناونیشان و وێنەی پێشەکییەکانی DeArrow، یان ناردنی نوێیان</string>
+  <string name="morphe_dearrow_guidelines_title">ڕێنماییەکان</string>
+  <string name="morphe_dearrow_guidelines_summary">ڕێنماییەکان sisält دەبن لە یاسا و ئامۆژگارییەکان بۆ ناردن و دەنگدان لەسەر ناونیشان و وێنەی پێشەکییەکان</string>
+  <string name="morphe_dearrow_guidelines_popup_title">ڕێنماییەکان پەیڕەو بکە</string>
+  <string name="morphe_dearrow_guidelines_popup_content">ڕێبەرییەکانی DeArrow بخوێنەرەوە پێش ناردن یان دەنگدان بۆ ناونیشان و وێنەی پێشوەختەکان</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">پێشتر خوێندراوەتەوە</string>
+  <string name="morphe_dearrow_guidelines_popup_open">نیشانم بدە</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">بارکردن…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">نەتوانرا ناونیشان و وێنەی پێشوەختەی ئەم ڤیدیۆیە باربکرێت</string>
+  <string name="morphe_dearrow_vote_titles">ناونیشانەکان</string>
+  <string name="morphe_dearrow_vote_thumbnails">وێنەی پێشوەختەکان</string>
+  <string name="morphe_dearrow_vote_no_titles">تا ئێستا هیچ ناونیشانێک نییە. ناونیشانێک بنێرە بۆ ئەوەی یەکەم بیت</string>
+  <string name="morphe_dearrow_vote_original_title">ناونیشانی ڕەسەن</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">وێنۆچکەی ڕەسەن</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">فریم لە %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">نمرە: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">پشتڕاستنەکراوە</string>
+  <string name="morphe_dearrow_vote_locked">قوفڵکراوە</string>
+  <string name="morphe_dearrow_vote_upvote">دەنگی باش</string>
+  <string name="morphe_dearrow_vote_downvote">دەنگی خراپ</string>
+  <string name="morphe_dearrow_vote_new_title">ناونیشانی نوێ</string>
+  <string name="morphe_dearrow_vote_new_title_hint">ناونیشانێک بنووسە</string>
+  <string name="morphe_dearrow_vote_submit">ناردن</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">وێنۆچکەیەکی نوێ</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s چ</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">فریمەکەی %s وەک وێنۆچکە بنێریت؟</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">ڤیدیۆکە خەریکی لێدانە. بۆ ناردنی ئەو فریمەی دەینێیت، سەرەتا ڤیدیۆکە ڕاوێستێنە</string>
+  <string name="morphe_dearrow_vote_upvoted">جوتەکەی بە سەرکەوتوویی ناردرا بۆ DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">جوتەکەی بە سەرکەوتوویی ناردرا بۆ DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow دەنگی نەنارد: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">ئەمە قفڵکراوە، و تەنها بەکارهێنەرانی VIP دەتوانن دەنگی دژە بدەن</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">دەنگدان بۆ ئەم ڤیدیۆیە هێشتا بەردەوامە. دوای ساتێکی تر دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_dearrow_vote_failed_code">نەتوانرا دەنگەکە بنێردرێت (کۆدی دۆخ: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">نەتوانرا دەنگەکە بنێردرێت. گرێدانی تۆڕەکەت بپشکنە و دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_dearrow_submitting_title">ناردنی ناونیشان و وێنەی پێشوەکی</string>
+  <string name="morphe_dearrow_vote_time_step_title">هەنگاوی ڕێکخستنەوەی کات</string>
+  <string name="morphe_dearrow_vote_time_step_summary">بڕی گەڕانەوەی دوگمەکانی ڕێکخستنی کاتی تەمبنیل لە کاتی ناردنیاندا (بە میلی چرکە)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">بەها دەبێت ژمارەیەکی ئەرێنی بێت</string>
+  <string name="morphe_dearrow_private_user_id_title">ناسنامەی بەکارهێنەری تایبەتیت</string>
+  <string name="morphe_dearrow_private_user_id_summary">هەمان ناسنامەی بەکارهێنەری SponsorBlock. ئەمە پێویستە بە نهێنی بمێنێتەوە. ئەمە وەک وشەی نهێنییە و نابێت لەگەڵ کەسدا ھاوبەش بکرێت. ئەگەر کەسێک ئەمەی ھەبێت، دەتوانێت خۆی بکات بە تۆ</string>
+  <string name="morphe_dearrow_private_user_id_invalid">ناسنامەی بەکارهێنەری تایبەت دەبێت لانیکەم 30 پیت بێت</string>
+  <string name="morphe_dearrow_account_loading">بارکردن…</string>
+  <string name="morphe_dearrow_account_connection_failure">زانیارییەکانی هەژمار بە شێوەیەکی کاتی بەردەست نین</string>
+  <string name="morphe_dearrow_account_username">ناوی بەکارهێنەرەکەت: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">لێرە کلیک بکە بۆ گۆڕینی ناوی بەکارهێنەرەکەت. ناوی بەکارهێنەرەکە هەمان ناوە لە SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">ناوی بەکارهێنەر بە سەرکەوتوویی گۆڕدرا</string>
+  <string name="morphe_dearrow_account_username_change_error">نەتوانرا ناوی بەکارهێنەر بگۆڕدرێت: دۆخ: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">تۆ &lt;b&gt;%s&lt;/b&gt; ناونیشانت ناردووە</string>
+  <string name="morphe_dearrow_account_titles_summary">لێرە کلیک بکە بۆ بینینی ناونیشانەکانت</string>
+  <string name="morphe_dearrow_account_thumbnails">تۆ &lt;b&gt;%s&lt;/b&gt; وێنەی کورتکراو ناردووە</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">لێرە کرتە بکە بۆ بینینی وێنە کورتکراوەکانت</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">گەڕاندنەوەی شێوازی کۆنی دوگمەکانی پلەیەر</string>
   <string name="morphe_restore_old_player_buttons_summary">کۆنترۆڵە ئەستوورەکانی پلەیەری ڤیدیۆ دەگێڕێتەوە بۆ شێوازە بینراوە کۆنتر و باریکترەکە</string>

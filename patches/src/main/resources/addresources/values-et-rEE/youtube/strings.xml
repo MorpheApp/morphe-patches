@@ -773,6 +773,10 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_queue_manager_open_queue">Ava järjekord</string>
   <string name="morphe_queue_manager_save_queue">Salvesta järjekord loendisse</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Kuva järjekorra nuppu miniatüüril</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Vooguvideominitatüüridel kuvatakse järjekorra nupp. Selle puudutamine lisab video järjekorra lõppu ja selle pikkvajutamine esitab video järgmisena</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Vaheta miniatüüri järjekorra tegusid</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Järjekorra nupu puudutamine esitab video järgmisena ja selle pikkvajutamine lisab video järjekorra lõppu</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Laadi järjekorra lehti kerkimisel</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Laab esitusloendist rohkem videoid, kui kerid järjekorra lõpu lähedis</string>
   <string name="morphe_native_playlist_queue_saved">Loend on salvestatud</string>
@@ -1129,6 +1133,12 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvalise
   <string name="morphe_disable_fullscreen_ambient_mode_title">Keela Ambient-režiim täisekraanil</string>
   <string name="morphe_enhanced_ambient_mode_title">Uuendatud Ümbritsev režiim</string>
   <string name="morphe_enhanced_ambient_mode_summary">Valgustab kogu vaatamislehte ja musti ribasid koos videoga, asendades Ümbritseva režiimi</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Valguse tugevus</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Kui tugev on valgus kellakuva lehel ja mustadel ribadel</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Valguse silendamine</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Kui kaua võtab valgusel aega videoga kaasineda. Väärtusega 0 järgib see videot tihedalt</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Valguse hägusetamine</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Kui palju on valguse hägusetus video kõrval. Väärtusega 0 säilivad video kujud</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Hoidke tekst loetavana</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hääldab heledate videote valgust, et lehel olev tekst püsiks loetavana</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Hägusta skrollimise ajal</string>
@@ -1502,6 +1512,65 @@ Videoid küsitakse räsitud video ID lühikese prefiksi abil, et server ei saaks
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow ei ole hetkel saadaval (staatuskood: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow ei ole hetkel saadaval</string>
+  <string name="morphe_dearrow_vote_button_title">Kuva DeArrow nupp</string>
+  <string name="morphe_dearrow_vote_button_summary">Lisab videovõlgijale ülesse hääletamise nupu DeArrow pealkirjade ja põhineguste jaoks või uute esitamiseks</string>
+  <string name="morphe_dearrow_guidelines_title">Juhendid</string>
+  <string name="morphe_dearrow_guidelines_summary">Juhendid sisaldavad regleid ja nõuandeid pealkirjade ja põhineguste esitamise ning hääletamise kohta</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Järgi juhiseid</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Loe DeArrow juhiseid enne pealkirjade ja põikpiltide esitamist või hääletamist</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Veel lugenud</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Näita mulle</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Laadimine…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Selle video pealkirjade ja põikpiltide ei õnnistunud laadida</string>
+  <string name="morphe_dearrow_vote_titles">Pealkirjad</string>
+  <string name="morphe_dearrow_vote_thumbnails">Põikpildid</string>
+  <string name="morphe_dearrow_vote_no_titles">Pealkirju pole veel. Saada pealkiri, et olla esimene</string>
+  <string name="morphe_dearrow_vote_original_title">Originaalne pealkiri</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Originaalne pöialpilt</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Kaader ajal %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Skoor: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Kinnitamata</string>
+  <string name="morphe_dearrow_vote_locked">Lukustatud</string>
+  <string name="morphe_dearrow_vote_upvote">Tugi</string>
+  <string name="morphe_dearrow_vote_downvote">Mita</string>
+  <string name="morphe_dearrow_vote_new_title">Uus pealkiri</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Kirjutage pealkiri</string>
+  <string name="morphe_dearrow_vote_submit">Saada</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Uus miniatuur</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Kas soovite saata kaadre %s miniatuurina?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Video mängib. Kaadre saatmiseks peatage esmalt video</string>
+  <string name="morphe_dearrow_vote_upvoted">Hääletus on DeArrow\"le saadetud</string>
+  <string name="morphe_dearrow_vote_downvoted">Negatiivne hääletus saadeti DeArrow\'le</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow ei võtnud hääletust vastu: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">See on lukustatud ja seda saavad negatiivselt hääletada ainult VIP-kasutajad</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Selle video hääletamine on veel käigus. Proovi hetke pärast uuesti</string>
+  <string name="morphe_dearrow_vote_failed_code">Hääletuse esitamisega ei õnnestunud (staaduskood: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Hääletuse esitamisega ei õnnestunud. Kontrolli ühendust ja proovi uuesti</string>
+  <string name="morphe_dearrow_submitting_title">Pealkirjade ja pikkpõlvede esitamine</string>
+  <string name="morphe_dearrow_vote_time_step_title">Aja reguleerimise samm</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Häälitus-pikkpõlve esitamisel aja täpse reguleerimise nuppide otsingu hulk (millisekundites)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Väärtus peab olema positiivne number</string>
+  <string name="morphe_dearrow_private_user_id_title">Teie privaatne kasutaja-ID</string>
+  <string name="morphe_dearrow_private_user_id_summary">Sama kasutaja-ID kui SponsorBlockil. Seda tuleks hoida privaatseks. See on nagu parool ja seda ei tohi kellegagi jagada. Kui keegi selle saab, saab ta end Teie asemel välja anda</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Privaatne kasutaja-ID peab olema vähemalt 30 teket pikk</string>
+  <string name="morphe_dearrow_account_loading">Laadimine…</string>
+  <string name="morphe_dearrow_account_connection_failure">Kontoandmed ei ole hetkel saadaval</string>
+  <string name="morphe_dearrow_account_username">Teie kasutajanimi: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Puuduta siia, et muuta oma kasutajanime. Kasutajanimi on sama mis SponsorBlockis</string>
+  <string name="morphe_dearrow_account_username_changed">Kasutajanimi on edukalt muutetud</string>
+  <string name="morphe_dearrow_account_username_change_error">Kasutajanime ei õnnestunud muuta: Staatus: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Oled esitanud &lt;b&gt;%s&lt;/b&gt; pealkirja</string>
+  <string name="morphe_dearrow_account_titles_summary">Puuduta siia, et vaadata oma pealkirju</string>
+  <string name="morphe_dearrow_account_thumbnails">Oled esitanud &lt;b&gt;%s&lt;/b&gt; väiculepildi</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Puudutage siia, et näha oma miniatuure</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Taasta pleieri nuppide vana stiil</string>
   <string name="morphe_restore_old_player_buttons_summary">Taastab videopleieri juhtnupud vanasse, õhemasse visuaalsesse stiili</string>

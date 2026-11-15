@@ -774,6 +774,10 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_manager_open_queue">Sırayı aç</string>
   <string name="morphe_queue_manager_save_queue">Sırayı oynatma listesine kaydet</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Kuyruk düğmesini küçük resimlerde göster</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Akış videolarının küçük resimlerinde bir kuyruk düğmesi gösterilir. Buna dokunmak videoyu kuyruğun sonuna ekler, üzerine basılı tutmak ise videoyu sıradaki olarak oynatır</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Küçük resim kuyruk eylemlerini değiştir</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Kuyruk düğmesine dokunmak videoyu sıradaki olarak oynatır, üzerine basılı tutmak ise videoyu kuyruğun sonuna ekler</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Sıra sayfalarını kaydırırken yükle</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Sıranın sonuna doğru kaydırılırken daha fazla oynatma listesi videosu yükler</string>
   <string name="morphe_native_playlist_queue_saved">Oynatma listesi kaydedildi</string>
@@ -1130,6 +1134,12 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_disable_fullscreen_ambient_mode_title">Ambiyans modu\'nu tam ekranda devre dışı bırak</string>
   <string name="morphe_enhanced_ambient_mode_title">Geliştirilmiş Ambiyans modu</string>
   <string name="morphe_enhanced_ambient_mode_summary">Videoyla birlikte tüm izleme sayfasını ve siyah çubukları aydınlatır, Ambiyans modunun yerini alır</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Işık şiddeti</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">İzleme sayfasında ve siyah barlarda ışığın ne kadar güçlü olduğu</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Hafif yumuşatma</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Işığın videoyu takip etme süresi. 0 değerinde videoyu yakından takip eder</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Işık bulanıklığı</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Videonun yanındaki ışığın ne kadar bulanık olacağı. 0 değerinde videonun şekillerini korur</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Metni okunabilir tut</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Parlak videolarda sayfadaki metnin okunabilir kalması için ışığı kısar</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Kaydırırken karart</string>
@@ -1503,6 +1513,65 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow geçici olarak kullanılamıyor (durum kodu: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow geçici olarak kullanılamıyor</string>
+  <string name="morphe_dearrow_vote_button_title">DeArrow düğmesini göster</string>
+  <string name="morphe_dearrow_vote_button_summary">DeArrow başlıklarına ve küçük resimlerine oy vermek veya yenilerini göndermek için video oynatıcısının üst kısmına bir düğme ekler</string>
+  <string name="morphe_dearrow_guidelines_title">Yönergeler</string>
+  <string name="morphe_dearrow_guidelines_summary">Yönergeler, başlıklar ve küçük resimler göndermek ve bunlara oy vermek için kurallar ve ipuçları içerir</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Yönergeleri takip edin</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Başlıklar ve küçük resimler için gönderim yapmadan veya oy vermeden önce DeArrow yönergelerini okuyun</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Okudum</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Göster</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Yükleniyor...</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Bu videonun başlıkları ve küçük resimleri yüklenemedi</string>
+  <string name="morphe_dearrow_vote_titles">Başlıklar</string>
+  <string name="morphe_dearrow_vote_thumbnails">Küçük resimler</string>
+  <string name="morphe_dearrow_vote_no_titles">Henüz başlık yok. İlk olmak için bir başlık gönderin</string>
+  <string name="morphe_dearrow_vote_original_title">Orijinal başlık</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Orijinal kapak resmi</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Kare: %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Puan: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Doğrulanmamış</string>
+  <string name="morphe_dearrow_vote_locked">Kilitli</string>
+  <string name="morphe_dearrow_vote_upvote">Olumlu oy</string>
+  <string name="morphe_dearrow_vote_downvote">Olumsuz oy</string>
+  <string name="morphe_dearrow_vote_new_title">Yeni başlık</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Bir başlık yazın</string>
+  <string name="morphe_dearrow_vote_submit">Gönder</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Yeni küçük resim</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s sn</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">%s zamanındaki kare küçük resim olarak gönderilsin mi?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Video oynatılıyor. Gördüğünüz kareyi göndermek için önce videoyu duraklatın</string>
+  <string name="morphe_dearrow_vote_upvoted">Oy DeArrow\'a gönderildi</string>
+  <string name="morphe_dearrow_vote_downvoted">Olumsuz oy DeArrow\'a gönderildi</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow oyu kabul etmedi: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Bu kilitli ve yalnızca VIP kullanıcılar tarafından beğenmeme oyu alabilir</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Bu video için bir oylama hâlâ devam ediyor. Bir süre sonra tekrar deneyin</string>
+  <string name="morphe_dearrow_vote_failed_code">Oy gönderilemedi (durum kodu: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Oy gönderilemedi. Bağlantınızı kontrol edin ve tekrar deneyin</string>
+  <string name="morphe_dearrow_submitting_title">Başlıklar ve küçük resimler gönderiliyor</string>
+  <string name="morphe_dearrow_vote_time_step_title">Zaman ayarlama adımı</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Küçük resim gönderirken hassas zaman ayarlama düğmelerinin sardırma miktarı (milisaniye cinsinden)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Değer pozitif bir sayı olmalıdır</string>
+  <string name="morphe_dearrow_private_user_id_title">Özel kullanıcı kimliğiniz</string>
+  <string name="morphe_dearrow_private_user_id_summary">SponsorBlock ile aynı kullanıcı kimliği. Bu gizli tutulmalıdır. Bu bir şifreye benzer ve hiç kimseyle paylaşılmamalıdır. Eğer birinin eline geçerse, sizi taklit edebilirler</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Özel kullanıcı kimliği en az 30 karakter olmalıdır</string>
+  <string name="morphe_dearrow_account_loading">Yükleniyor...</string>
+  <string name="morphe_dearrow_account_connection_failure">Hesap ayrıntıları geçici olarak kullanılamıyor</string>
+  <string name="morphe_dearrow_account_username">Kullanıcı adınız: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Kullanıcı adınızı değiştirmek için buraya dokunun. Kullanıcı adı SponsorBlock ile aynıdır</string>
+  <string name="morphe_dearrow_account_username_changed">Kullanıcı adı başarıyla değiştirildi</string>
+  <string name="morphe_dearrow_account_username_change_error">Kullanıcı adı değiştirilemiyor: Durum: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">&lt;b&gt;%s&lt;/b&gt; başlık gönderdiniz</string>
+  <string name="morphe_dearrow_account_titles_summary">Başlıklarınızı görüntülemek için buraya dokunun</string>
+  <string name="morphe_dearrow_account_thumbnails">&lt;b&gt;%s&lt;/b&gt; küçük resim gönderdiniz</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Küçük resimlerinizi görüntülemek için buraya dokunun</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Eski oynatıcı düğmesi stilini geri getir</string>
   <string name="morphe_restore_old_player_buttons_summary">Kalın video oynatıcı kontrollerini eski, daha ince görünüme geri döndürür</string>

@@ -775,6 +775,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_queue_manager_open_queue">현재 재생목록 열기</string>
   <string name="morphe_queue_manager_save_queue">현재 재생목록을 재생목록에 저장</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">썸네일에 대기열 버튼 표시하기</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">피드 동영상의 썸네일에 대기열 버튼이 표시됩니다. 버튼을 탭하면 동영상이 대기열 끝에 추가되고, 길게 누르면 다음 순서로 재생됩니다</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">썸네일 대기열 작업 교환하기</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">대기열 버튼을 탭하면 동영상이 다음 순서로 재생되고, 길게 누르면 대기열 끝에 추가됩니다</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">스크롤 시 대기열 페이지 로드</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">대기열 끝부분 근처로 스크롤할 때 재생목록 동영상을 더 많이 로드합니다</string>
   <string name="morphe_native_playlist_queue_saved">현재 재생목록이 저장되었습니다</string>
@@ -1131,6 +1135,12 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_disable_fullscreen_ambient_mode_title">전체 화면 앰비언트 모드 비활성화하기</string>
   <string name="morphe_enhanced_ambient_mode_title">향상된 앰비언트 모드</string>
   <string name="morphe_enhanced_ambient_mode_summary">앰비언트 모드 대신 동영상에 맞춰 시청 페이지 전체와 검은색 바에 조명을 비춥니다</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">빛 세기</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">워치 페이지와 검은색 바의 빛 세기</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">조명 부드럽게 하기</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">조명이 비디오를 따라가는 데 걸리는 시간입니다. 0으로 설정하면 비디오를 밀접하게 따라갑니다</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">조명 흐림 처리</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">비디오 주변 조명의 흐림 정도입니다. 0으로 설정하면 비디오의 형태가 유지됩니다</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">텍스트 가독성 유지</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">밝은 동영상의 조명을 낮춰 페이지의 텍스트 가독성을 유지합니다</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">스크롤 중 어둡게 하기</string>
@@ -1503,6 +1513,65 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow를 일시적으로 사용할 수 없습니다 (상태 코드: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow를 일시적으로 사용할 수 없습니다</string>
+  <string name="morphe_dearrow_vote_button_title">DeArrow 버튼 표시하기</string>
+  <string name="morphe_dearrow_vote_button_summary">동영상 플레이어 상단에 DeArrow 제목 및 썸네일에 투표하거나 새로운 항목을 제출할 수 있는 버튼을 추가합니다</string>
+  <string name="morphe_dearrow_guidelines_title">가이드라인</string>
+  <string name="morphe_dearrow_guidelines_summary">가이드라인에는 제목 및 썸네일 제출과 투표에 관한 규칙 및 팁이 포함되어 있습니다</string>
+  <string name="morphe_dearrow_guidelines_popup_title">가이드라인 읽어보기</string>
+  <string name="morphe_dearrow_guidelines_popup_content">제목과 썸네일을 제출하거나 투표하기 전에 DeArrow 가이드라인을 읽어보세요</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">이미 읽음</string>
+  <string name="morphe_dearrow_guidelines_popup_open">보기</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">불러오는 중…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">이 동영상의 제목과 썸네일을 불러올 수 없습니다</string>
+  <string name="morphe_dearrow_vote_titles">제목</string>
+  <string name="morphe_dearrow_vote_thumbnails">썸네일</string>
+  <string name="morphe_dearrow_vote_no_titles">아직 제목이 없습니다. 첫 번째로 제목을 제출해 보세요</string>
+  <string name="morphe_dearrow_vote_original_title">원본 제목</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">원본 썸네일</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">%s의 프레임</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">점수: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">검증되지 않음</string>
+  <string name="morphe_dearrow_vote_locked">잠금</string>
+  <string name="morphe_dearrow_vote_upvote">좋아요</string>
+  <string name="morphe_dearrow_vote_downvote">싫어요</string>
+  <string name="morphe_dearrow_vote_new_title">새 제목</string>
+  <string name="morphe_dearrow_vote_new_title_hint">제목을 입력하세요</string>
+  <string name="morphe_dearrow_vote_submit">제출</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">새 썸네일</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s초</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">%s 프레임을 썸네일로 제출하시겠습니까?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">동영상이 재생 중입니다. 보이는 프레임을 제출하려면 먼저 동영상을 일시중지하세요</string>
+  <string name="morphe_dearrow_vote_upvoted">DeArrow에 추천 표가 제출되었습니다</string>
+  <string name="morphe_dearrow_vote_downvoted">DeArrow에 비추천 표가 제출되었습니다</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow에서 추천 표를 수락하지 않았습니다: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">이 항목은 잠겨 있으며, VIP 사용자만 비추천할 수 있습니다</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">이 동영상에 대한 투표가 아직 진행 중입니다. 잠시 후 다시 시도하세요</string>
+  <string name="morphe_dearrow_vote_failed_code">투표를 제출할 수 없습니다 (상태 코드: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">투표를 제출할 수 없습니다. 연결 상태를 확인하고 다시 시도하세요</string>
+  <string name="morphe_dearrow_submitting_title">제목 및 썸네일 제출 중</string>
+  <string name="morphe_dearrow_vote_time_step_title">시간 조정 단계</string>
+  <string name="morphe_dearrow_vote_time_step_summary">썸네일 제출 시 미세 시간 조정 버튼의 탐색 이동량을 설정할 수 있습니다 (밀리초)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">값은 양수여야 합니다</string>
+  <string name="morphe_dearrow_private_user_id_title">비공개 사용자 아이디</string>
+  <string name="morphe_dearrow_private_user_id_summary">SponsorBlock과 동일한 사용자 ID입니다. 이 정보는 비공개로 유지해야 합니다. 비밀번호와 같은 것이므로 누구와도 공유해서는 안 됩니다. 다른 사람이 이 정보를 가지고 있으면 사용자를 사칭할 수 있습니다</string>
+  <string name="morphe_dearrow_private_user_id_invalid">비공개 사용자 아이디는 30자 이상이어야 합니다</string>
+  <string name="morphe_dearrow_account_loading">불러오는 중…</string>
+  <string name="morphe_dearrow_account_connection_failure">계정 세부 정보를 일시적으로 사용할 수 없습니다</string>
+  <string name="morphe_dearrow_account_username">사용자 이름: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">여기를 탭하여 사용자 이름을 변경하세요. 사용자 이름은 SponsorBlock과 동일합니다</string>
+  <string name="morphe_dearrow_account_username_changed">사용자 이름을 성공적으로 변경하였습니다</string>
+  <string name="morphe_dearrow_account_username_change_error">사용자 이름을 변경할 수 없습니다. 상태 코드: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">제목 &lt;b&gt;%s&lt;/b&gt;개를 제출했습니다</string>
+  <string name="morphe_dearrow_account_titles_summary">제목을 보려면 여기를 탭하세요</string>
+  <string name="morphe_dearrow_account_thumbnails">썸네일 &lt;b&gt;%s&lt;/b&gt;개를 제출했습니다</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">썸네일을 보려면 여기를 탭하세요</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">이전 플레이어 버튼 스타일 복원하기</string>
   <string name="morphe_restore_old_player_buttons_summary">굵은 동영상 플레이어 컨트롤을 이전의 얇은 스타일로 되돌립니다</string>
