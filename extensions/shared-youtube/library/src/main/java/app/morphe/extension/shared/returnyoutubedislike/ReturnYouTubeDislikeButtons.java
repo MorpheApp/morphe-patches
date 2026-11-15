@@ -213,8 +213,13 @@ public final class ReturnYouTubeDislikeButtons {
             }
 
             // Litho cannot be asked to lay out again, so a count that is not fetched by now gets
-            // room for the widest one that can be shown.
+            // room for the widest one that can be shown. A fetch that failed has no count to show.
+            final boolean fetchCompleted = videoData.fetchCompleted();
             String dislikes = videoData.getFormattedDislikes();
+            if (fetchCompleted && dislikes == null) {
+                Logger.printDebug(() -> "No dislikes to give the dislike button a margin for");
+                return;
+            }
             final int margin = oldBarCountStartMargin + OLD_BAR_COUNT_END_MARGIN
                     + (int) Math.ceil(oldBarCountPaint().measureText(dislikes != null ? dislikes
                     : SharedYouTubeSettings.RYD_DISLIKE_PERCENTAGE.get() ? "88.8%" : "8.8M"));
