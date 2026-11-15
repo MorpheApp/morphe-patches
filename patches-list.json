@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.2.0",
+  "version": "1.0.0",
   "patches": [
     {
       "name": "AI channel filter",
@@ -10538,7 +10538,7 @@
     },
     {
       "name": "Playlist improvements",
-      "description": "Adds options to widen playlist drag handles, reorder videos by long press, and hide removal confirmations.",
+      "description": "Adds options to widen playlist drag handles, reorder videos by long press, hide removal confirmations, and index WLPro smart tags in playlists and Watch Later.",
       "default": true,
       "category": null,
       "compatiblePackages": [

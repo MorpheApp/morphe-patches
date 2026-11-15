@@ -35,7 +35,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.2.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.2.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;202 patches total
+> **[v1.0.0](https://github.com/Morningstar-1-star/morphe-patches-testing-part-2/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;202 patches total
 <details>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;114 patches</summary>
 <br>
@@ -130,7 +130,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Playback in feeds](#playback-in-feeds) | Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it. |  |
 | [Playback speed](#playback-speed) | Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player. |  |
 | [Player icon style](#player-icon-style) | Adds an option to change the style of the player button icons. | • Custom icons |
-| [Playlist improvements](#playlist-improvements) | Adds options to widen playlist drag handles, reorder videos by long press, and hide removal confirmations. |  |
+| [Playlist improvements](#playlist-improvements) | Adds options to widen playlist drag handles, reorder videos by long press, hide removal confirmations, and index WLPro smart tags in playlists and Watch Later. |  |
 | [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
 | [Reload video](#reload-video) | Adds an option to display reload video button in the video player. |  |
 | [Remember live stream playback position](#remember-live-stream-playback-position) | Adds an option to remember the playback position of an ongoing live stream and resume from there when reopening that live stream. |  |
