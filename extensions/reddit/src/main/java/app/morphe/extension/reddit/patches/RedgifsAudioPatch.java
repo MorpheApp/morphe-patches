@@ -467,7 +467,7 @@ public final class RedgifsAudioPatch {
 
     private static HttpURLConnection openConnection(String url) throws IOException {
         // Check again inside the worker: activation may happen after it was queued.
-        if PermanentNsfwPatch.isEnabled() {
+        if (PermanentNsfwPatch.isEnabled()) {
             throw new IOException("Content unavailable");
         }
         HttpURLConnection connection = Requester.openConnection(url);
