@@ -683,7 +683,7 @@ public final class FlyoutUtils {
         if (!ShortsPlayerState.isOpen()
                 || isShortFlyout
                 // Menus opened inside a panel, such as the menu of a comment.
-                || EngagementPanel.getLastOpenedPanelId() != null) {
+                || EngagementPanel.getLastOpenedShortsPanelId() != null) {
             return false;
         }
         for (Pair<String, Integer> button : visibleFlyoutButtons) {
