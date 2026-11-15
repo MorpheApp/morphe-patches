@@ -52,6 +52,18 @@ public class AutoCaptionsPatch {
     /**
      * Injection point.
      * <p>
+     * If no caption track is selected, YouTube still shows the caption track that the video marks as forced.
+     *
+     * @param hasForcedTrack If the audio track of the video has a forced caption track.
+     * @return If the forced caption track is shown.
+     */
+    public static boolean showForcedCaptions(boolean hasForcedTrack) {
+        return hasForcedTrack && Settings.AUTO_CAPTIONS_STYLE.get() != AutoCaptionsStyle.BOTH_DISABLED;
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * Note: 'captionGuardUntil' field check is not needed here
      * because it's only related to 'disableAutoCaptions()' method
      * in order to prevent auto-captioning with volume enabled
