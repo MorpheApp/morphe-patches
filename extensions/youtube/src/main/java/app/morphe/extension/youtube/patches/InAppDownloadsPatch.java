@@ -8,9 +8,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import android.net.Uri;
-import android.util.Base64;
-
 import androidx.annotation.Nullable;
 
 import com.google.protobuf.ByteString;
@@ -30,7 +27,6 @@ import app.morphe.extension.shared.innertube.Offline.DownloadButtonColor;
 import app.morphe.extension.shared.innertube.Offline.DownloadButtonLayout;
 import app.morphe.extension.shared.innertube.Offline.DownloadButtonSize;
 import app.morphe.extension.shared.innertube.Offline.DownloadButtonStyle;
-import app.morphe.extension.shared.innertube.Offline.EntityKey;
 import app.morphe.extension.shared.innertube.Offline.FlexibleAction;
 import app.morphe.extension.shared.innertube.Offline.FlexibleActionsRow;
 import app.morphe.extension.shared.innertube.Offline.FlexibleActionsViewModel;
@@ -46,6 +42,7 @@ import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadButtonViewM
 import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadStatusEntityId;
 import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch;
 import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.youtube.patches.utils.EntityKeys;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -76,7 +73,6 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     private static final int PLAYLIST_DOWNLOAD_STATUS_ENTITY_ID_TYPE = 306;
     private static final int GENERATION_STATUS_ENTITY_TYPE = 147;
     private static final String PLAYLIST_GENERATION_STATUS_ENTITY_ID = "playlist";
-    private static final int ENTITY_PERSISTENCE = 1;
 
     private static final String PLAYLIST_DOWNLOAD_BUTTON_IDENTIFIER = "playlist-download-button";
 
@@ -491,8 +487,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
                 .setDownloadableA11YText(downloadableText)
                 .setInProgressA11YText(inProgressText)
                 .setCompletedA11YText(completedText)
-                .setDownloadStatusKey(entityKey(DOWNLOAD_STATUS_ENTITY_TYPE, downloadStatusEntityId))
-                .setGenerationStatusKey(entityKey(GENERATION_STATUS_ENTITY_TYPE,
+                .setDownloadStatusKey(EntityKeys.key(DOWNLOAD_STATUS_ENTITY_TYPE, downloadStatusEntityId))
+                .setGenerationStatusKey(EntityKeys.key(GENERATION_STATUS_ENTITY_TYPE,
                         ByteString.copyFromUtf8(PLAYLIST_GENERATION_STATUS_ENTITY_ID)))
                 .setLayout(DownloadButtonLayout.DOWNLOAD_BUTTON_LAYOUT_PLAYLIST_HEADER)
                 .setIconColor(DownloadButtonColor.DOWNLOAD_BUTTON_COLOR_PLAYLIST_HEADER)
@@ -504,18 +500,6 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
                 .setIdentifier(PLAYLIST_DOWNLOAD_BUTTON_IDENTIFIER)
                 .build();
         return FlexibleAction.newBuilder().setDownloadButtonViewModel(button).build();
-    }
-
-    /**
-     * @return The key of the entity, as the app encodes it.
-     */
-    private static String entityKey(int entityType, ByteString entityId) {
-        EntityKey key = EntityKey.newBuilder()
-                .setEntityId(entityId)
-                .setEntityType(entityType)
-                .setPersistence(ENTITY_PERSISTENCE)
-                .build();
-        return Uri.encode(Base64.encodeToString(key.toByteArray(), Base64.URL_SAFE | Base64.NO_WRAP));
     }
 
     /**

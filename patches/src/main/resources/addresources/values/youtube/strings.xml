@@ -1501,6 +1501,10 @@ Automotive layout
     <string name="morphe_disable_auto_feed_refresh_title">Disable auto feed refresh</string>
     <string name="morphe_disable_auto_feed_refresh_summary">Prevents feeds from refreshing automatically after they become outdated</string>
 
+    <!-- layout.notifications.ungroupNotificationsPatch -->
+    <string name="morphe_ungroup_notifications_title">Ungroup notifications</string>
+    <string name="morphe_ungroup_notifications_summary">Shows every video of a channel\'s grouped uploads as its own notification</string>
+
     <!-- layout.feedcards.feedCardLayoutPatch -->
     <string name="morphe_feed_card_layout_title">Feed card layout</string>
     <string name="morphe_feed_card_layout_entry_1">Classic</string>
