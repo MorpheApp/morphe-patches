@@ -596,16 +596,26 @@ final class AmbientLightMath {
      * readable. It is zero unless the light is too bright for white text on a dark page,
      * or too dark for black text on a light page.
      *
-     * @param firstRow The first row of {@code light} that is below the picture.
+     * @param firstRow    The first row of {@code light} that is below the picture.
+     * @param playerTop   The first row of the player. From there on the page is next to the
+     *                    player too, where it has a second column, as on a tablet.
+     * @param playerLeft  The first column of the player.
+     * @param playerRight The first column after the player.
      * @return The opacity of the cover, from 0 to 1.
      */
-    static float readabilityCover(float[] light, int width, int height, int firstRow, boolean darkPage) {
+    static float readabilityCover(float[] light, int width, int height, int firstRow,
+                                  int playerTop, int playerLeft, int playerRight, boolean darkPage) {
         int[] bins = new int[BRIGHTNESS_BINS];
         int count = 0;
-        for (int i = Math.max(0, firstRow) * width; i < width * height; i++) {
-            final float gray = 0.2126f * light[i * 3] + 0.7152f * light[i * 3 + 1] + 0.0722f * light[i * 3 + 2];
-            bins[Math.min(BRIGHTNESS_BINS - 1, (int) ((float) Math.sqrt(gray) * BRIGHTNESS_BINS))]++;
-            count++;
+        for (int y = Math.max(0, Math.min(playerTop, firstRow)); y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                if (y < firstRow && x >= playerLeft && x < playerRight) continue;
+
+                final int i = y * width + x;
+                final float gray = 0.2126f * light[i * 3] + 0.7152f * light[i * 3 + 1] + 0.0722f * light[i * 3 + 2];
+                bins[Math.min(BRIGHTNESS_BINS - 1, (int) ((float) Math.sqrt(gray) * BRIGHTNESS_BINS))]++;
+                count++;
+            }
         }
         if (count == 0) return 0f;
 
