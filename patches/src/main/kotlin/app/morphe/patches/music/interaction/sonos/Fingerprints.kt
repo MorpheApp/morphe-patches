@@ -12,13 +12,13 @@ import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * Matches performClick on MediaRouteButton / cast button targets.
+ * Matches performClick on MdxMediaRouteButton.
  */
 internal object MediaRouteButtonPerformClickFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/mdx/mediaroute/MdxMediaRouteButton;",
     name = "performClick",
     returnType = "Z",
-    parameters = emptyList(),
-    accessFlags = listOf(AccessFlags.PUBLIC)
+    parameters = emptyList()
 )
 
 /**
@@ -40,6 +40,7 @@ internal object AudioTrackWriteFingerprint : Fingerprint(
  * Matches ExoPlayer's DefaultAudioSink phone speaker volume muting method.
  */
 internal object AudioSinkMuteFingerprint : Fingerprint(
+    classFingerprint = AudioTrackWriteFingerprint,
     returnType = "V",
     parameters = emptyList(),
     filters = listOf(
