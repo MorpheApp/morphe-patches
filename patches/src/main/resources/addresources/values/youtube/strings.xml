@@ -587,6 +587,8 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_disable_chapter_skip_double_tap_summary">Disables the two-finger double-tap gesture that skips chapters, which may be accidentally triggered with one finger</string>
 
     <!-- interaction.downloads.downloadsPatch -->
+    <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+    <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
     <string name="morphe_external_downloader_screen_summary">Download videos, podcasts, or songs with third-party downloading apps</string>
     <string name="morphe_external_downloader_overlay_button_title">Show player overlay download button</string>
     <string name="morphe_external_downloader_overlay_button_summary">Shows a button in the video player that opens your external downloader</string>

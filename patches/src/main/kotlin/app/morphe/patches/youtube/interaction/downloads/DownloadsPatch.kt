@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4890
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -414,25 +415,48 @@ val downloadsPatch = patch(
             )
         }
 
-        OfflineSettingCategoryConstructorFingerprint.method.addInstructions(
-            0,
-            """
-                # Full HD format option is available.
-                invoke-static { p1 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->unlockOfflineSetting(Z)Z
-                move-result p1
-
-                # Download quality is enabled.
-                invoke-static { p3 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->unlockOfflineSetting(Z)Z
-                move-result p3
-            """
-        )
-
-        // Offer 1080p on screens that are less than 1080 pixels wide.
+        // Offer up to 2160p on every screen. The app offers only the qualities up to the
+        // shorter side of the screen, and the server offers up to 1080p.
+        val copyImmutableListMethod = OfflineSettingsConstructorFingerprint
+            .instructionMatches.first().methodReference!!
         OfflineSettingsConstructorFingerprint.method.addInstructions(
             0,
             """
                 invoke-static { p3 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->getMaxDownloadQualityHeight(I)I
                 move-result p3
+            """
+        )
+
+        // The download quality setting lists the same qualities as the quality picker.
+        OfflineSettingCategoryConstructorFingerprint.method.addInstructions(
+            0,
+            """
+                # Full HD format option is available, which adds 1080p to the download quality formats.
+                invoke-static { p1 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->isFullHdFormatOptionAvailable(Z)Z
+                move-result p1
+
+                # Download quality is enabled.
+                invoke-static { p3 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->unlockOfflineSetting(Z)Z
+                move-result p3
+
+                # Download quality formats.
+                invoke-static { p5, p7 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->getDownloadQualityFormatTypes(Ljava/util/List;Ljava/lang/Object;)Ljava/util/List;
+                move-result-object p5
+                invoke-static { p5 }, $copyImmutableListMethod
+                move-result-object p5
+            """
+        )
+
+        // Labels of the qualities above 1080p in the download quality setting.
+        FormatTypeLabelFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { p0 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->getDownloadQualityLabel(Ljava/lang/Object;)I
+                move-result v0
+                if-eqz v0, :app_label
+                return v0
+                :app_label
+                nop
             """
         )
 
