@@ -22,6 +22,17 @@ public final class SabrResponseReader {
         void onPart(long partType, byte[] part);
     }
 
+    public interface PartEditor {
+        /**
+         * Called before native code reads the part, which can be changed in place.
+         *
+         * @param chunk  Buffer with the content of the chunk.
+         * @param offset Index of the first byte of the part in the chunk.
+         * @param length Size of the part, which is all in the chunk.
+         */
+        void editPart(ByteBuffer chunk, int offset, int length);
+    }
+
     private static final int PART_MEDIA = 21;
     private static final int PART_STREAM_PROTECTION_STATUS = 58;
     private static final int MAX_COPIED_PART_SIZE = 1024;
@@ -29,6 +40,9 @@ public final class SabrResponseReader {
     @Nullable
     private final PartListener listener;
     private final int[] listenedPartTypes;
+    @Nullable
+    private final PartEditor editor;
+    private final long editedPartType;
     private final byte[] header = new byte[5];
     private int headerLength;
     private long partType = -1;
@@ -47,6 +61,18 @@ public final class SabrResponseReader {
      * @param listenedPartTypes Types of the parts that are copied and given to the listener.
      */
     public SabrResponseReader(@Nullable PartListener listener, int... listenedPartTypes) {
+        this(null, -1, listener, listenedPartTypes);
+    }
+
+    /**
+     * @param editor         Given the parts of the edited type that are all in one chunk.
+     *                       A part split across chunks is not given, because native code reads each chunk once.
+     * @param editedPartType Type of the parts that are given to the editor.
+     */
+    public SabrResponseReader(@Nullable PartEditor editor, long editedPartType,
+                              @Nullable PartListener listener, int... listenedPartTypes) {
+        this.editor = editor;
+        this.editedPartType = editedPartType;
         this.listener = listener;
         this.listenedPartTypes = listenedPartTypes;
     }
@@ -81,6 +107,9 @@ public final class SabrResponseReader {
                 }
                 if (partType == PART_MEDIA) {
                     sawMedia = true;
+                } else if (editor != null && partType == editedPartType
+                        && partRemaining <= buffer.remaining() && !buffer.isReadOnly()) {
+                    editor.editPart(buffer, buffer.position(), (int) partRemaining);
                 } else if (partType == PART_STREAM_PROTECTION_STATUS || isListenedPart(partType)) {
                     if (partRemaining > MAX_COPIED_PART_SIZE) {
                         throw new IllegalStateException("Part " + partType + " is too large: " + partRemaining);
