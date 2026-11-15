@@ -73,6 +73,32 @@ public final class CheckNativeNsfwPatch {
             require(calls(method(classes.get(PREFS), "setOver18"), EXTENSION, "allowNsfw"),
                     "Legacy native viewing setter can still enable NSFW");
         }
+        Method recentSetup = method(classes.get(
+                "Lcom/reddit/screens/pager/v2/SubredditPagerViewModel$setUpSubreddit$3;"), "invokeSuspend");
+        MethodReference recentWriter = null;
+        for (var instruction : recentSetup.getImplementation().getInstructions()) {
+            if (instruction instanceof ReferenceInstruction reference
+                    && reference.getReference() instanceof MethodReference call
+                    && call.getParameterTypes().toString().equals(
+                            "[Lcom/reddit/domain/model/Subreddit;, Lkotlin/coroutines/jvm/internal/ContinuationImpl;]")) {
+                recentWriter = call;
+            }
+        }
+        require(recentWriter != null, "Native recent-visit writer not found");
+        boolean guardedRecentWriter = false;
+        for (Method candidate : classes.get(recentWriter.getDefiningClass()).getMethods()) {
+            if (candidate.toString().equals(recentWriter.toString())) {
+                guardedRecentWriter = calls(candidate, EXTENSION, "skipRecentSubreddit");
+            }
+        }
+        require(guardedRecentWriter, "Flagged communities can still be recorded as recently visited");
+        for (String owner : new String[]{
+                "Lcom/reddit/screens/drawer/community/CommunityDrawerPresenter$refreshRecentlyVisited$1;",
+                "Lcom/reddit/screens/drawer/community/recentlyvisited/RecentlyVisitedPresenter$loadRecentlyVisited$1;"
+        }) {
+            require(calls(method(classes.get(owner), "invokeSuspend"), EXTENSION, "visibleRecentSubreddits"),
+                    "A recently visited view still shows old flagged communities: " + owner);
+        }
         for (String type : classes.keySet()) {
             require(!type.endsWith("/NsfwCommunityGate;") && !type.endsWith("/NsfwJsonFilter;")
                     && !type.endsWith("/RedditNsfwInterceptor;") && !type.endsWith("/BlockedNsfwHosts;"),
@@ -81,7 +107,7 @@ public final class CheckNativeNsfwPatch {
         require(!calls(method(classes.get("Lcom/reddit/domain/model/Subreddit;"), "getOver18"), EXTENSION, "isEnabled"),
                 "Community adult labels must remain intact for native gating");
         System.out.println("PASS: " + (modernApi ? "native Disabled enum" : "native legacy-off policy")
-                + ", safe-search on, guarded setter, intact labels, no custom filtering/overlay");
+                + ", safe-search on, guarded setter and recent visits, intact labels, no custom content overlay");
     }
 
     private static Method method(ClassDef cls, String name) {

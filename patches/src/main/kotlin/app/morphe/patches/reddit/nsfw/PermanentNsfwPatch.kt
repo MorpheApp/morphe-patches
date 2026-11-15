@@ -3,6 +3,7 @@ package app.morphe.patches.reddit.nsfw
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.util.findFreeRegister
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import app.morphe.patcher.util.smali.ExternalLabel
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -244,6 +245,47 @@ val permanentNsfwPatch = patch(
                     if-nez v$register, :skipOptIn
                 """, ExternalLabel("skipOptIn", getInstruction(index + 1)))
             }
+        }
+
+        // A blocked community is already loaded when Reddit records a recent visit.
+        // Guard that single native write using its own over18 metadata.
+        Fingerprint(
+            definingClass = "Lcom/reddit/screens/pager/v2/SubredditPagerViewModel\$setUpSubreddit\$3;",
+            name = "invokeSuspend", returnType = "Ljava/lang/Object;",
+            filters = listOf(methodCall(
+                parameters = listOf("Lcom/reddit/domain/model/Subreddit;", "Lkotlin/coroutines/jvm/internal/ContinuationImpl;"),
+                returnType = "Ljava/lang/Object;"
+            ))
+        ).instructionMatches.single().getMethodCalled().apply {
+            val register = findFreeRegister(0)
+            addInstructionsWithLabels(0, """
+                invoke-static/range { p1 .. p1 }, $EXTENSION->skipRecentSubreddit(Lcom/reddit/domain/model/Subreddit;)Z
+                move-result v$register
+                if-eqz v$register, :recordRecentVisit
+                const/4 v$register, 0x0
+                return-object v$register
+                :recordRecentVisit
+                nop
+            """)
+        }
+
+        // Both the drawer and full history screen read lists saved before activation.
+        // Filter only those lists; ordinary community lists keep their native behavior.
+        listOf(
+            "Lcom/reddit/screens/drawer/community/CommunityDrawerPresenter\$refreshRecentlyVisited\$1;",
+            "Lcom/reddit/screens/drawer/community/recentlyvisited/RecentlyVisitedPresenter\$loadRecentlyVisited\$1;"
+        ).forEach { owner ->
+            Fingerprint(definingClass = owner, name = "invokeSuspend", returnType = "Ljava/lang/Object;")
+                .method.apply {
+                    val index = findInstructionIndicesReversedOrThrow(Opcode.CHECK_CAST).single {
+                        getInstruction<ReferenceInstruction>(it).reference.toString() == "Ljava/util/List;"
+                    }
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    addInstructionsWithLabels(index + 1, """
+                        invoke-static/range { v$register .. v$register }, $EXTENSION->visibleRecentSubreddits(Ljava/util/List;)Ljava/util/List;
+                        move-result-object v$register
+                    """)
+                }
         }
 
         setExtensionIsPatchIncluded(EXTENSION)

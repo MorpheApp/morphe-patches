@@ -5,6 +5,10 @@ import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.reddit.domain.model.Subreddit;
 
 import app.morphe.extension.reddit.settings.preference.PermanentNsfwPreference;
 import app.morphe.extension.reddit.settings.Settings;
@@ -42,6 +46,21 @@ public final class PermanentNsfwPatch {
 
     public static int disabledMessageResource(int original) {
         return isEnabled() ? ResourceUtils.getStringIdentifier("morphe_permanent_nsfw_blocked_message") : original;
+    }
+
+    /** The native recent-visit writer receives community metadata before saving it. */
+    public static boolean skipRecentSubreddit(Subreddit subreddit) {
+        return isEnabled() && subreddit != null && Boolean.TRUE.equals(subreddit.getOver18());
+    }
+
+    /** Hide records saved before permanent disabling from Reddit's two recent-visit views. */
+    public static List<Subreddit> visibleRecentSubreddits(List<Subreddit> recent) {
+        if (!isEnabled() || recent == null) return recent;
+        List<Subreddit> visible = new ArrayList<>(recent.size());
+        for (Subreddit subreddit : recent) {
+            if (!Boolean.TRUE.equals(subreddit.getOver18())) visible.add(subreddit);
+        }
+        return visible;
     }
 
     /** Called after the existing Morphe settings categories have been built. */
