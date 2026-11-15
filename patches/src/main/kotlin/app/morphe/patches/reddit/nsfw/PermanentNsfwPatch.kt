@@ -154,6 +154,22 @@ val permanentNsfwPatch = patch(
                 nop
             """)
         }
+        // Anonymous sessions also retain an independent safe-search enum.
+        Fingerprint(
+            definingClass = "Lcom/reddit/domain/SafeSearch;", name = "getValue",
+            parameters = listOf(), returnType = "Ljava/lang/String;"
+        ).method.cloneParameters().apply {
+            val register = p0Register
+            addInstructionsWithLabels(1, """
+                invoke-static {}, $EXTENSION->isEnabled()Z
+                move-result v$register
+                if-eqz v$register, :original
+                const-string v$register, "on"
+                return-object v$register
+                :original
+                nop
+            """)
+        }
         // Use the native setter as usual, but refuse attempts to turn viewing back on.
         Fingerprint(
             definingClass = "Lcom/reddit/account/repository/RedditPreferenceRepository\$setOver18\$1;",

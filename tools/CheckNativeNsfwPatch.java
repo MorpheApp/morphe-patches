@@ -33,6 +33,14 @@ public final class CheckNativeNsfwPatch {
         for (String name : new String[]{"getOver18", "getSearchIncludeOver18"}) {
             require(calls(method(classes.get(PREFS), name), EXTENSION, "isEnabled"), "Missing legacy preference guard: " + name);
         }
+        Method safeSearch = method(classes.get("Lcom/reddit/domain/SafeSearch;"), "getValue");
+        boolean safeValue = false;
+        for (var instruction : safeSearch.getImplementation().getInstructions()) {
+            if (instruction instanceof ReferenceInstruction reference
+                    && reference.getReference() instanceof com.android.tools.smali.dexlib2.iface.reference.StringReference value
+                    && value.getString().equals("on")) safeValue = true;
+        }
+        require(safeValue && calls(safeSearch, EXTENSION, "isEnabled"), "Anonymous safe search can still serialize off");
         ClassDef continuation = classes.get("Lcom/reddit/account/repository/RedditPreferenceRepository$setOver18$1;");
         MethodReference setter = null;
         for (var instruction : method(continuation, "invokeSuspend").getImplementation().getInstructions()) {

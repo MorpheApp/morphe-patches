@@ -7,7 +7,7 @@ After confirmation, a private installation-wide preference applies to signed-in 
 ## Native hooks
 
 - `AccountPreferences.getNsfwEnabledPreferenceState()` returns the native `Disabled` enum while active. Current Reddit age gating reads this state; changing only legacy `getOver18()` was insufficient.
-- Legacy viewing/search getters return false, and native `FilterValues` construction forces safe search on.
+- Legacy viewing/search getters return false, and native `FilterValues` construction forces safe search on. The independent `SafeSearch` enum serializes as native `on` while active, including previously saved anonymous-search overrides.
 - The native `setOver18` method, resolved through its named continuation, refuses true while active. No independent account/backend request is sent by the extension.
 - Native adult-viewing and blur settings rows return no supported sessions, and the adult-search header is omitted. The saved disclaimer bypass and RedGIFs audio/HD settings are cleared and their controls removed; their existing extension hooks also respect permanent disabling.
 
