@@ -30,6 +30,7 @@ import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest.DeArrowTitle;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitlesAvailability;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowTitleIcon;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
 
@@ -185,6 +186,11 @@ final class OriginalTitleRequest {
                             && (deArrowTitle == null || !DeArrowTitlesAvailability.usingDeArrowTitlesEverywhere());
                     if (fetchOriginal && !originalFetched) {
                         originalTitle = fetchOriginalTitle(videoId);
+                    }
+                    if (!RestoreOriginalTitlesPatch.USE_DEARROW) {
+                        // So it's known if the DeArrow icon is shown for the thumbnail when the title is shown.
+                        // The DeArrow thumbnail is fetched with the DeArrow title otherwise.
+                        DeArrowTitleIcon.fetchThumbnailIfNeeded(videoId);
                     }
                     return new Titles(deArrowTitle, fetchOriginal ? originalTitle : null);
                 }, Utils::runOnBackgroundThread);

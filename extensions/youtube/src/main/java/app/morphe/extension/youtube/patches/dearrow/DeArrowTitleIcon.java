@@ -25,18 +25,24 @@ import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Shows the DeArrow icon before the titles submitted to DeArrow,
- * so they can be told apart from the titles of the uploader.
+ * so they can be told apart from the titles of the uploader. The icon is also shown before the title
+ * of a video whose thumbnail is replaced with its DeArrow thumbnail, where titles are replaced.
  * <p>
  * The icon is the DeArrow icon of the settings, tinted with the color of the title
  * so it matches the theme.
  * <p>
  * Tapping the icon shows the original title and thumbnail of the video instead, with a faded icon,
- * and tapping it again shows the DeArrow title and thumbnail.
+ * and tapping it again shows the DeArrow title and thumbnail. If only the thumbnail is from DeArrow,
+ * then only the thumbnail is changed.
  */
 public final class DeArrowTitleIcon {
 
     private static final boolean SHOW_ICON = DeArrowPatch.DeArrowTitlesAvailability.usingDeArrowTitlesAnywhere()
             && Settings.DEARROW_TITLES_ICON.get();
+
+    private static final boolean SHOW_THUMBNAIL_ICON =
+            DeArrowPatch.DeArrowThumbnailsAvailability.usingDeArrowThumbnailsAnywhere()
+                    && Settings.DEARROW_TITLES_ICON.get();
 
     /**
      * Bullseye character that the icon is drawn over. The text of the title is not used to find the icon,
@@ -51,7 +57,7 @@ public final class DeArrowTitleIcon {
 
     /**
      * Icon of the DeArrow settings, or null if not loaded.
-     * The icon is only drawn on the main thread, so it can be shared by all titles.
+     * Each icon span draws its own copy, so the icons of different titles can have different opacities.
      */
     private static final Drawable ICON = ResourceUtils.getDrawable("morphe_settings_screen_02_dearrow_bold");
 
@@ -68,10 +74,10 @@ public final class DeArrowTitleIcon {
     private static final float ICON_OPACITY = 0.5f;
 
     /**
-     * Opacity of the icon shown before the original title of a video whose DeArrow icon was tapped,
-     * so the icon looks turned off and can be tapped again to show the DeArrow title.
+     * Opacity of the icon shown before the title of a video whose DeArrow icon was tapped,
+     * so the icon looks turned off and can be tapped again to show the DeArrow title and thumbnail.
      */
-    private static final float ORIGINAL_TITLE_ICON_OPACITY = 0.2f;
+    private static final float ORIGINAL_ICON_OPACITY = 0.2f;
 
     /**
      * Videos whose DeArrow icon was tapped, which show the original title and thumbnail
@@ -84,7 +90,7 @@ public final class DeArrowTitleIcon {
     }
 
     /**
-     * @return If the icon is shown before the title.
+     * @return If the icon is shown before the title because it's a DeArrow title.
      */
     public static boolean isShown(@Nullable String title) {
         return findVideoId(title) != null;
@@ -96,6 +102,26 @@ public final class DeArrowTitleIcon {
     @Nullable
     public static String findVideoId(@Nullable String title) {
         return SHOW_ICON && title != null ? DeArrowBrandingRequest.getVideoIdOfTitle(title.trim()) : null;
+    }
+
+    /**
+     * Does not start fetching the DeArrow thumbnail. Can be called on any thread.
+     *
+     * @return If the icon is shown before the title of the video because its thumbnail
+     *         is replaced with its DeArrow thumbnail for the current navigation.
+     */
+    public static boolean isShownForThumbnail(String videoId) {
+        return SHOW_THUMBNAIL_ICON && DeArrowPatch.showsDeArrowThumbnailForCurrentNavigation(videoId);
+    }
+
+    /**
+     * Waits until the DeArrow thumbnail of the video is fetched, if the icon can be shown for thumbnails,
+     * so it's known if the icon is shown when the title is shown. Must be called off the main thread.
+     */
+    public static void fetchThumbnailIfNeeded(String videoId) {
+        if (SHOW_THUMBNAIL_ICON) {
+            DeArrowBrandingRequest.fetchThumbnailTime(videoId, DeArrowPatch.DEARROW_BRANDING_TIMEOUT_MILLISECONDS);
+        }
     }
 
     /**
@@ -118,7 +144,7 @@ public final class DeArrowTitleIcon {
 
     /**
      * Shows the original or the DeArrow title and thumbnail of the video. The titles are laid out again,
-     * and the thumbnails are loaded again if thumbnails are replaced. Can be called on any thread.
+     * and the thumbnails are loaded again if the thumbnail of the video is replaced. Can be called on any thread.
      */
     public static void setOriginalBrandingSelected(String videoId, boolean selected) {
         if (selected) {
@@ -127,7 +153,7 @@ public final class DeArrowTitleIcon {
             originalBrandingVideoIds.remove(videoId);
         }
 
-        if (DeArrowPatch.replacesThumbnailsAnywhere()) {
+        if (DeArrowPatch.replacesThumbnailForCurrentNavigation(videoId)) {
             // Also lays out the titles again.
             LithoRelayoutPatch.remountListViews();
         } else {
@@ -158,13 +184,13 @@ public final class DeArrowTitleIcon {
      * Shows the icon over the placeholder character.
      *
      * @param text          Text returned by {@link #addIcon(String)}, with the spans of the title.
-     * @param originalTitle If the text is the original title of a video whose DeArrow icon was tapped.
+     * @param showsOriginal If the DeArrow icon of the video was tapped to show the original title and thumbnail.
      * @param tapSpan       Span that handles taps on the icon and the separator after it.
      */
-    public static void setIconSpans(Spannable text, boolean originalTitle, ClickableSpan tapSpan) {
+    public static void setIconSpans(Spannable text, boolean showsOriginal, ClickableSpan tapSpan) {
         // Without the icon, the placeholder character is shown instead.
         if (ICON != null) {
-            final float opacity = originalTitle ? ORIGINAL_TITLE_ICON_OPACITY : ICON_OPACITY;
+            final float opacity = showsOriginal ? ORIGINAL_ICON_OPACITY : ICON_OPACITY;
             text.setSpan(new IconSpan(ICON, ICON_SIZE, opacity), 0, ICON_PLACEHOLDER.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         text.setSpan(tapSpan, 0, ICON_PLACEHOLDER.length() + ICON_SEPARATOR.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

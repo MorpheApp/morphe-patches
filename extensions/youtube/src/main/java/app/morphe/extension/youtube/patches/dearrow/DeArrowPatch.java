@@ -21,6 +21,7 @@ import org.chromium.net.UrlResponseInfo;
 import org.chromium.net.impl.CronetUrlRequest;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -86,13 +87,10 @@ public final class DeArrowPatch {
                     && Settings.DEARROW_TITLES_SEARCH.get();
         }
 
-        @Override
-        public boolean isAvailable() {
-            return usingDeArrowTitlesAnywhere();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
+        /**
+         * Built when called, as the settings are not yet initialized when this class is initialized.
+         */
+        static List<Setting<?>> titleSettings() {
             return List.of(
                     Settings.DEARROW_TITLES_HOME,
                     Settings.DEARROW_TITLES_SUBSCRIPTIONS,
@@ -100,6 +98,16 @@ public final class DeArrowPatch {
                     Settings.DEARROW_TITLES_PLAYER,
                     Settings.DEARROW_TITLES_SEARCH
             );
+        }
+
+        @Override
+        public boolean isAvailable() {
+            return usingDeArrowTitlesAnywhere();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return titleSettings();
         }
     }
 
@@ -112,13 +120,10 @@ public final class DeArrowPatch {
                     || Settings.DEARROW_THUMBNAIL_SEARCH.get().useDeArrow;
         }
 
-        @Override
-        public boolean isAvailable() {
-            return usingDeArrowThumbnailsAnywhere();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
+        /**
+         * Built when called, as the settings are not yet initialized when this class is initialized.
+         */
+        static List<Setting<?>> thumbnailSettings() {
             return List.of(
                     Settings.DEARROW_THUMBNAIL_HOME,
                     Settings.DEARROW_THUMBNAIL_SUBSCRIPTIONS,
@@ -126,6 +131,16 @@ public final class DeArrowPatch {
                     Settings.DEARROW_THUMBNAIL_PLAYER,
                     Settings.DEARROW_THUMBNAIL_SEARCH
             );
+        }
+
+        @Override
+        public boolean isAvailable() {
+            return usingDeArrowThumbnailsAnywhere();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return thumbnailSettings();
         }
     }
 
@@ -139,20 +154,39 @@ public final class DeArrowPatch {
                     || DeArrowThumbnailsAvailability.usingDeArrowThumbnailsAnywhere();
         }
 
+        /**
+         * Built when called, as the settings are not yet initialized when this class is initialized.
+         */
+        static List<Setting<?>> deArrowSettings() {
+            List<Setting<?>> settings = new ArrayList<>(DeArrowTitlesAvailability.titleSettings());
+            settings.addAll(DeArrowThumbnailsAvailability.thumbnailSettings());
+            return settings;
+        }
+
         @Override
         public List<Setting<?>> getParentSettings() {
-            return List.of(
-                    Settings.DEARROW_TITLES_HOME,
-                    Settings.DEARROW_TITLES_SUBSCRIPTIONS,
-                    Settings.DEARROW_TITLES_LIBRARY,
-                    Settings.DEARROW_TITLES_PLAYER,
-                    Settings.DEARROW_TITLES_SEARCH,
-                    Settings.DEARROW_THUMBNAIL_HOME,
-                    Settings.DEARROW_THUMBNAIL_SUBSCRIPTIONS,
-                    Settings.DEARROW_THUMBNAIL_LIBRARY,
-                    Settings.DEARROW_THUMBNAIL_PLAYER,
-                    Settings.DEARROW_THUMBNAIL_SEARCH
-            );
+            return deArrowSettings();
+        }
+    }
+
+    /**
+     * Available if the DeArrow icon can be shown before the titles: if DeArrow titles are used,
+     * or if DeArrow thumbnails are used and the original titles are restored, as the icon
+     * is shown only where titles are replaced.
+     */
+    public static final class DeArrowTitleIconAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return DeArrowTitlesAvailability.usingDeArrowTitlesAnywhere()
+                    || (DeArrowThumbnailsAvailability.usingDeArrowThumbnailsAnywhere()
+                    && Settings.RESTORE_ORIGINAL_TITLES.get());
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            List<Setting<?>> settings = DeArrowAvailability.deArrowSettings();
+            settings.add(Settings.RESTORE_ORIGINAL_TITLES);
+            return settings;
         }
     }
 
@@ -172,13 +206,7 @@ public final class DeArrowPatch {
 
         @Override
         public List<Setting<?>> getParentSettings() {
-            return List.of(
-                    Settings.DEARROW_THUMBNAIL_HOME,
-                    Settings.DEARROW_THUMBNAIL_SUBSCRIPTIONS,
-                    Settings.DEARROW_THUMBNAIL_LIBRARY,
-                    Settings.DEARROW_THUMBNAIL_PLAYER,
-                    Settings.DEARROW_THUMBNAIL_SEARCH
-            );
+            return DeArrowThumbnailsAvailability.thumbnailSettings();
         }
     }
 
@@ -227,7 +255,7 @@ public final class DeArrowPatch {
     /**
      * How long to wait for the DeArrow branding before using the original thumbnail.
      */
-    private static final long DEARROW_BRANDING_TIMEOUT_MILLISECONDS = 2 * 1000;
+    static final long DEARROW_BRANDING_TIMEOUT_MILLISECONDS = 2 * 1000;
 
     /**
      * How long until a crowdsourced thumbnail the thumbnail cache did not provide is tried again.
@@ -340,11 +368,29 @@ public final class DeArrowPatch {
     }
 
     /**
-     * @return If thumbnails are replaced for any navigation, with DeArrow thumbnails or still captures.
+     * Does not start fetching the branding. Can be called on any thread.
+     *
+     * @return If the thumbnail of the video is replaced with its crowdsourced DeArrow thumbnail
+     *         for the current navigation.
      */
-    static boolean replacesThumbnailsAnywhere() {
-        return DeArrowThumbnailsAvailability.usingDeArrowThumbnailsAnywhere()
-                || StillImagesAvailability.usingStillImagesAnywhere();
+    static boolean showsDeArrowThumbnailForCurrentNavigation(String videoId) {
+        return showsDeArrowThumbnail(thumbnailOptionForCurrentNavigation(), videoId);
+    }
+
+    private static boolean showsDeArrowThumbnail(ThumbnailOption option, String videoId) {
+        return option.useDeArrow && canUseDeArrowAPI()
+                && !isThumbnailUnavailable(videoId) && DeArrowBrandingRequest.hasThumbnailIfFetched(videoId);
+    }
+
+    /**
+     * Does not start fetching the branding. Can be called on any thread.
+     *
+     * @return If the thumbnail of the video is replaced for the current navigation, with its DeArrow thumbnail
+     *         or a still capture. Without a DeArrow thumbnail or still captures, the original thumbnail is used.
+     */
+    static boolean replacesThumbnailForCurrentNavigation(String videoId) {
+        ThumbnailOption option = thumbnailOptionForCurrentNavigation();
+        return option.useStillImages || showsDeArrowThumbnail(option, videoId);
     }
 
     /**
@@ -534,6 +580,7 @@ public final class DeArrowPatch {
     /**
      * @return If the URL is of a thumbnail replaced for the current navigation,
      *         of a video whose DeArrow icon was tapped to show the original thumbnail.
+     *         A thumbnail that is not replaced keeps its image model, so it's not loaded again.
      */
     private static boolean isSelectedOriginalThumbnail(String url) {
         if (url.endsWith(ORIGINAL_THUMBNAIL_MARKER)) {
@@ -541,7 +588,7 @@ public final class DeArrowPatch {
         }
         DecodedThumbnailURL decodedURL = DecodedThumbnailURL.decodeImageURL(url);
         return decodedURL != null && DeArrowTitleIcon.isOriginalBrandingSelected(decodedURL.videoId)
-                && thumbnailOptionForCurrentNavigation() != ThumbnailOption.ORIGINAL;
+                && replacesThumbnailForCurrentNavigation(decodedURL.videoId);
     }
 
     /**
