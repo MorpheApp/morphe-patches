@@ -13,6 +13,7 @@ package app.morphe.patches.youtube.interaction.downloads
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
@@ -48,6 +49,7 @@ import app.morphe.util.copyResources
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -459,6 +461,33 @@ val downloadsPatch = patch(
                 nop
             """
         )
+
+        // Open the quality picker of a download fully expanded, since the qualities above
+        // 1080p push the lowest qualities below the collapsed sheet.
+        val skipCollapsedField = ShowActionSheetCommandFingerprint
+            .instructionMatches.last().fieldReference
+        DownloadQualityPickerCommandFingerprint.let {
+            val bitFieldMatch = it.instructionMatches.last()
+            val bitField = bitFieldMatch.fieldReference
+            if (bitField.definingClass != skipCollapsedField.definingClass) {
+                throw PatchException("Unexpected command class: ${bitField.definingClass}")
+            }
+            val bitFieldInstruction = bitFieldMatch.getInstruction<TwoRegisterInstruction>()
+            val valueRegister = bitFieldInstruction.registerA
+            val commandRegister = bitFieldInstruction.registerB
+
+            it.method.addInstructions(
+                bitFieldMatch.index + 1,
+                """
+                    invoke-static { }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->expandDownloadQualityPicker()Z
+                    move-result v$valueRegister
+                    iput-boolean v$valueRegister, v$commandRegister, $skipCollapsedField
+                    iget v$valueRegister, v$commandRegister, $bitField
+                    or-int/lit16 v$valueRegister, v$valueRegister, 0x200
+                    iput v$valueRegister, v$commandRegister, $bitField
+                """
+            )
+        }
 
         // Commands run by the extension have no interaction logger, which saving a video
         // can use without checking it is set. The logger interface has a logger that logs nothing.

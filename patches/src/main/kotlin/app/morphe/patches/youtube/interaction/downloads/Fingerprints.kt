@@ -436,6 +436,31 @@ internal object FormatTypeLabelFingerprint : Fingerprint(
 )
 
 /**
+ * Shows the bottom sheet of a ShowActionSheetCommand. If bit 512 of the command is set,
+ * the field read after it tells the sheet to skip the collapsed state and open fully expanded.
+ */
+internal object ShowActionSheetCommandFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("ShowActionSheetCommand needs to provided."),
+        literal(512, opcodes = listOf(Opcode.AND_INT_LIT16)),
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN)
+    )
+)
+
+/**
+ * Creates the ShowActionSheetCommand of the quality picker of a download.
+ */
+internal object DownloadQualityPickerCommandFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    filters = listOf(
+        resourceLiteral(ResourceType.RAW, "download_options_picker_footer_element_android"),
+        // Sets the bit of the footer of the command.
+        fieldAccess(opcode = Opcode.IPUT, type = "I")
+    )
+)
+
+/**
  * Creates the offline setting category from the setting category of the server.
  */
 internal fun offlineSettingCategoryFromProtoFingerprint(offlineSettingCategoryType: String) = Fingerprint(

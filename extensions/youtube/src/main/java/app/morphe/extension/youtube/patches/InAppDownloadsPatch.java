@@ -295,6 +295,18 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     /**
      * Injection point.
      * <p>
+     * Called when the quality picker of a download is created. The picker opens collapsed to
+     * 60% of the screen height, which cuts off the lowest qualities of the longer list.
+     *
+     * @return If the picker opens fully expanded.
+     */
+    public static boolean expandDownloadQualityPicker() {
+        return isInAppDownloadMode();
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * YouTube override of the base unlock, which additionally adds the default download types
      * the server omitted. The recommended downloads of the Downloads page list only 360p and 144p,
      * since the server omits the qualities it would not automatically download.
