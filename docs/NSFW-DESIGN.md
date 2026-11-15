@@ -25,7 +25,7 @@ Paths below are relative to `app/src/main/java/ml/docilealligator/infinityforred
 
 The historical confirmation string states that clearing app data resets the setting. This is permanence within the current app installation's data, not protection against uninstalling, installing a different APK, root access, or relabelling by Reddit.
 
-The user authorized blocking marked NSFW profiles as a fallback. No keyword, subreddit-name, author-name, image-classification, or unrelated content rules are added.
+The user authorized blocking marked NSFW profiles as a fallback. The user additionally requested blocking RedGIFs. No keyword, subreddit-name, author-name, or image-classification rules are added.
 
 ## Current approach and unresolved coverage
 
@@ -48,3 +48,11 @@ Synthetic fixtures are not captures of Reddit traffic. Alternative transports, a
 5. Verify account switching, anonymous browsing, restarts, cancelled confirmation, failed persistence, and Morphe import/export. No USB debugging is authorized for this task.
 
 Host command: `python tools/test-nsfw.py`. Full build command: `gradlew.bat :patches:build` (requires access to upstream build dependencies).
+
+## RedGIFs restriction
+
+While permanent disabling is active, the RedGIFs audio and HD preferences are removed, and the audio extension returns before starting lookups or substituting playback/download URLs, regardless of previously saved preferences. The OkHttp boundary rejects requests to `redgifs.com` and its subdomains before transport. The JSON filter also removes entities with RedGIFs domains or recognized destination/media URL fields even if their adult flag is missing. Hostname parsing preserves unrelated domains and ordinary text mentioning the site. This does not establish coverage of WebViews, redirects through other transports, or existing local media.
+
+## Version testing status
+
+2026.45.0 is the only APK currently supplied and the only version advertised by this experimental patch. The contributor guide also requires the latest stable target, minimum/maximum recommended targets, and forced testing without a version gate when establishing minimum support. Validation on those versions remains pending; a skipped version gate must never count as a successful compatibility test.

@@ -33,6 +33,8 @@ public final class NsfwTests {
         check("preferences do not become blocked entities", NsfwTests::prefs);
         check("nested account preferences are restricted without removing account data", NsfwTests::nestedPrefs);
         check("blocked and malformed responses fail closed", NsfwTests::closed);
+        check("RedGIFs requests are stopped before transport", NsfwTests::redgifsTransport);
+        check("RedGIFs links are removed without keyword filtering", NsfwTests::redgifsLinks);
         check("binary media is left untouched", NsfwTests::binary);
         System.out.println("PASS: " + passed + " host checks (synthetic fixtures; no device access)");
     }
@@ -189,6 +191,37 @@ public final class NsfwTests {
                 throw new AssertionError("Uninspected response escaped");
             } catch (IOException expected) { }
         }
+    }
+
+    private static void redgifsTransport() throws Exception {
+        for (String host : new String[]{"redgifs.com", "api.redgifs.com", "media.redgifs.com", "REDGIFS.COM."}) {
+            AtomicReference<Request> sent = new AtomicReference<>();
+            try {
+                response(new RedditNsfwInterceptor(() -> true), "https://" + host + "/video",
+                        "binary", "video/mp4", sent, null).close();
+                throw new AssertionError("Blocked host reached transport");
+            } catch (IOException expected) {
+                require(sent.get() == null);
+            }
+            try (Response result = response(new RedditNsfwInterceptor(() -> false),
+                    "https://" + host + "/video", "binary", "video/mp4", sent, null)) {
+                require(result.body().string().equals("binary"));
+            }
+        }
+        for (String host : new String[]{"notredgifs.com", "redgifs.com.example.org"}) {
+            try (Response result = response(new RedditNsfwInterceptor(() -> true),
+                    "https://" + host + "/video", "binary", "video/mp4", null, null)) {
+                require(result.body().string().equals("binary"));
+            }
+        }
+    }
+
+    private static void redgifsLinks() throws Exception {
+        require(NsfwJsonFilter.filter("{\"data\":{\"url\":\"https://www.redgifs.com/watch/example\"}}") == null);
+        require(NsfwJsonFilter.filter("{\"domain\":\"redgifs.com\"}") == null);
+        require(NsfwJsonFilter.filter("{\"url_overridden_by_dest\":\"https://media.redgifs.com/example.mp4\"}") == null);
+        require(NsfwJsonFilter.filter("{\"title\":\"Discuss redgifs.com settings\",\"url\":\"https://example.org/redgifs.com\"}") != null);
+        require(NsfwJsonFilter.filter("{\"url\":\"https://redgifs.com@example.org/video\"}") != null);
     }
 
     private static void binary() throws Exception {

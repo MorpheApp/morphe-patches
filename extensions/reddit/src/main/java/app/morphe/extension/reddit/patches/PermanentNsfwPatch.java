@@ -30,7 +30,11 @@ public final class PermanentNsfwPatch {
     /** Called after the existing Morphe settings categories have been built. */
     @SuppressWarnings("deprecation")
     public static void installPreference(PreferenceFragment fragment) {
-        if (isEnabled()) removeByKey(fragment.getPreferenceScreen(), "morphe_remove_nsfw_dialog");
+        if (isEnabled()) {
+            for (String key : new String[]{"morphe_remove_nsfw_dialog", "morphe_redgifs_audio", "morphe_redgifs_hd"}) {
+                removeByKey(fragment.getPreferenceScreen(), key);
+            }
+        }
         fragment.getPreferenceScreen().addPreference(new PermanentNsfwPreference(fragment.getActivity()));
     }
 

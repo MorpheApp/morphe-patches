@@ -27,6 +27,9 @@ public final class RedditNsfwInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
+        if (enabled.getAsBoolean() && BlockedNsfwHosts.isRedgifsHost(request.url().host())) {
+            throw new IOException("Content unavailable");
+        }
         if (!isRedditHost(request.url().host())) return chain.proceed(request);
 
         if (enabled.getAsBoolean()) request = restrictSearch(request);

@@ -62,7 +62,7 @@ public final class NsfwJsonFilter {
     private static boolean isBlocked(JSONObject object, int depth) throws JSONException {
         if (depth > MAX_DEPTH) throw new JSONException("JSON nesting limit exceeded");
         if (isPreferences(object)) return false;
-        if (hasAdultFlag(object)) return true;
+        if (hasAdultFlag(object) || hasRedgifsLink(object)) return true;
         JSONArray parents = object.optJSONArray("crosspost_parent_list");
         if (parents != null) {
             for (int i = 0; i < parents.length(); i++) {
@@ -82,6 +82,14 @@ public final class NsfwJsonFilter {
         // AccountPreferencesJsonAdapter in the inspected APK declares both keys.
         // Account viewing preferences are not content labels.
         return object.has("over_18") && object.has("search_include_over_18");
+    }
+
+    private static boolean hasRedgifsLink(JSONObject object) {
+        if (BlockedNsfwHosts.isRedgifsHost(object.optString("domain", ""))) return true;
+        for (String key : new String[]{"url", "url_overridden_by_dest", "urlOverriddenByDest", "mediaPath"}) {
+            if (BlockedNsfwHosts.isRedgifsUrl(object.optString(key, ""))) return true;
+        }
+        return false;
     }
 
     private static boolean hasAdultFlag(JSONObject object) {
