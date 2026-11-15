@@ -15,9 +15,10 @@ import android.view.View;
 /**
  * Draws the light in the app window while the player moves. A view of the window is drawn in
  * the same frame as the player, which a surface is not. One lies under everything else in the
- * window, like the surfaces, for what the page does not cover, such as the status bar. Another
- * lies over the player, for the part of it that the video does not cover. The surfaces take
- * over again once the player rests.
+ * window, like the surface, for what the page does not cover, such as the status bar. Another
+ * lies over the player, for the part of it that the video does not cover. The surface takes
+ * over again once the player rests: the view of the player then clears the window, which is
+ * not see-through there by itself, where the surface shows the light of the player.
  */
 @SuppressLint("ViewConstructor")
 final class LightView extends View {
@@ -32,7 +33,9 @@ final class LightView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         if (inPlayer) {
-            AmbientLightController.drawWindowLight(canvas, this, false, 1f, null, false, false);
+            if (!AmbientLightController.drawWindowLight(canvas, this, false, 1f, null, false, false)) {
+                AmbientLightController.clearPlayerLight(canvas, this);
+            }
         } else {
             // The page is see-through down to the window, so this view is all that draws where
             // the page is not, such as next to the camera cutout of a display in landscape.

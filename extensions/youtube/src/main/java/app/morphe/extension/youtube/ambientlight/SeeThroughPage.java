@@ -40,7 +40,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 
 /**
- * Makes the watch page transparent, so the light surfaces underneath the window show through.
+ * Makes the watch page transparent, so the light surface underneath the window shows through.
  * Litho backgrounds change color in {@link AmbientLightController#getLithoColor}.
  * This class handles the backgrounds of regular views.
  */
@@ -1019,7 +1019,7 @@ final class SeeThroughPage {
     }
 
     /**
-     * Shows the light in a view. While the surfaces show the light, it removes what was drawn
+     * Shows the light in a view. While the surface shows the light, it removes what was drawn
      * below the view, such as the home feed below the page. While the player moves, it draws
      * the light itself. The page has it as its background, and so have the content of the page
      * and the panel below the player of a tablet, as YouTube draws black under them while the
