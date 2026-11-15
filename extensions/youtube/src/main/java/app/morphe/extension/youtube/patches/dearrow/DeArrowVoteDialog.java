@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches.dearrow;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,6 +27,8 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -44,6 +47,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -138,7 +142,12 @@ final class DeArrowVoteDialog {
      * Longest time to wait for the video to pause, before the missing frames are copied.
      */
     private static final long PAUSE_TIMEOUT_MILLISECONDS = 1000;
-    private static final long PAUSE_CHECK_INTERVAL_MILLISECONDS = 50;
+    /**
+     * Longest time to wait for an ended video to play again after it is moved,
+     * since the player loads the video again first.
+     */
+    private static final long ENDED_PLAY_TIMEOUT_MILLISECONDS = 5000;
+    private static final long STATE_CHECK_INTERVAL_MILLISECONDS = 50;
 
     /**
      * Number of frames copied from the player that are kept to show in the sheet.
@@ -606,7 +615,7 @@ final class DeArrowVoteDialog {
                 editText.setSelection(editText.length());
             }
 
-            CustomDialog.create(context,
+            Dialog dialog = CustomDialog.create(context,
                     str("morphe_dearrow_vote_new_title"),
                     null,
                     editText,
@@ -624,7 +633,14 @@ final class DeArrowVoteDialog {
                     null,
                     null,
                     false
-            ).first.show();
+            ).first;
+            // Shows the keyboard, so the title can be edited right away.
+            Window window = dialog.getWindow();
+            if (window != null) {
+                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+            }
+            editText.requestFocus();
+            dialog.show();
         } catch (Exception ex) {
             Logger.printException(() -> "showNewTitleDialog failure", ex);
         }
@@ -900,7 +916,8 @@ final class DeArrowVoteDialog {
     /**
      * Copies the frames of the thumbnails the thumbnail cache has no image of, by moving the video
      * to each frame. A playing video is paused while this is done. When done, or when the sheet closes,
-     * the video is moved back and played again.
+     * the video is moved back and played again. An ended video is left paused near its end instead,
+     * since ending again can autoplay the next video.
      * Only used on the main thread.
      */
     private static final class MissingFrames {
@@ -982,10 +999,27 @@ final class DeArrowVoteDialog {
                 Logger.printDebug(() -> "Copying " + missing.size() + " missing thumbnail frames");
                 setDisabledViewEnabled(false);
 
-                if (VideoState.getCurrent() == VideoState.PLAYING) {
+                VideoState state = VideoState.getCurrent();
+                if (state == VideoState.PLAYING) {
                     // Frames of a playing video would be copied later than their time.
                     playWhenDone = clickPlayPauseButton();
-                    waitForPause(System.currentTimeMillis() + PAUSE_TIMEOUT_MILLISECONDS);
+                    pauseThenCopy();
+                } else if (state == VideoState.ENDED) {
+                    // Moving an ended video loads it again and plays it, so it is paused once it plays.
+                    if (!VideoInformation.seekTo(getSeekTime(missing.get(0)))) {
+                        Logger.printDebug(() -> "Could not move the ended video");
+                        finish();
+                        return;
+                    }
+                    waitFor(() -> VideoState.getCurrent() == VideoState.PLAYING,
+                            ENDED_PLAY_TIMEOUT_MILLISECONDS, () -> {
+                                if (VideoState.getCurrent() == VideoState.PLAYING) {
+                                    clickPlayPauseButton();
+                                } else {
+                                    Logger.printDebug(() -> "Ended video did not play again");
+                                }
+                                pauseThenCopy();
+                            });
                 } else {
                     copyFrame(0);
                 }
@@ -995,16 +1029,54 @@ final class DeArrowVoteDialog {
             }
         }
 
-        private void waitForPause(long timeoutTime) {
-            if (finished) return;
-            if (VideoState.getCurrent() == VideoState.PLAYING && System.currentTimeMillis() < timeoutTime) {
-                Utils.runOnMainThreadDelayed(() -> waitForPause(timeoutTime), PAUSE_CHECK_INTERVAL_MILLISECONDS);
-                return;
+        /**
+         * Waits for the video to pause after the play button was clicked, then copies the frames.
+         */
+        private void pauseThenCopy() {
+            waitFor(() -> VideoState.getCurrent() != VideoState.PLAYING, PAUSE_TIMEOUT_MILLISECONDS, () -> {
+                if (VideoState.getCurrent() == VideoState.PLAYING) {
+                    Logger.printDebug(() -> "Video did not pause, copied frames can be later than their time");
+                }
+                copyFrame(0);
+            });
+        }
+
+        /**
+         * Runs {@code then} once {@code condition} is true or the timeout passes,
+         * unless copying stops before.
+         */
+        private void waitFor(BooleanSupplier condition, long timeoutMilliseconds, Runnable then) {
+            final long timeoutTime = System.currentTimeMillis() + timeoutMilliseconds;
+            Runnable check = new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if (finished) return;
+                        if (!condition.getAsBoolean() && System.currentTimeMillis() < timeoutTime) {
+                            Utils.runOnMainThreadDelayed(this, STATE_CHECK_INTERVAL_MILLISECONDS);
+                            return;
+                        }
+                        then.run();
+                    } catch (Exception ex) {
+                        Logger.printException(() -> "waitFor failure", ex);
+                        finish();
+                    }
+                }
+            };
+            check.run();
+        }
+
+        /**
+         * @return The time to move the video to for the frame, in milliseconds,
+         *         or -1 if the frame is in the last second of the video. Seeking clamps a time
+         *         in the last second, so it would show another frame.
+         */
+        private long getSeekTime(Missing frame) {
+            final long time = Math.round(frame.timestamp() * 1000);
+            if (time < 0 || (videoLength > 0 && time > videoLength - 1000)) {
+                return -1;
             }
-            if (VideoState.getCurrent() == VideoState.PLAYING) {
-                Logger.printDebug(() -> "Video did not pause, copied frames can be later than their time");
-            }
-            copyFrame(0);
+            return time;
         }
 
         private void copyFrame(int index) {
@@ -1016,9 +1088,8 @@ final class DeArrowVoteDialog {
                 }
 
                 Missing frame = missing.get(index);
-                final long time = Math.round(frame.timestamp() * 1000);
-                // Seeking clamps a time in the last second of the video, so it would show another frame.
-                if (time < 0 || (videoLength > 0 && time > videoLength - 1000) || !VideoInformation.seekTo(time)) {
+                final long time = getSeekTime(frame);
+                if (time < 0 || !VideoInformation.seekTo(time)) {
                     Logger.printDebug(() -> "Could not move the video to missing frame at: " + time);
                     copyFrame(index + 1);
                     return;
