@@ -40,7 +40,7 @@ public final class PermanentNsfwPreference extends Preference {
     }
 
     private void refresh() {
-        boolean permanentlyDisabled = PermanentNsfwPatch.getDisabler().isEnabled();
+        final boolean permanentlyDisabled = PermanentNsfwPatch.getDisabler().isEnabled();
         setEnabled(!permanentlyDisabled);
         setSummary(str(permanentlyDisabled ? "morphe_permanent_nsfw_disabled" : "morphe_permanent_nsfw_summary"));
     }

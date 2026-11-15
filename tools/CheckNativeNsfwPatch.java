@@ -21,6 +21,8 @@ public final class CheckNativeNsfwPatch {
         for (String entry : apk.getDexEntryNames()) {
             for (var cls : apk.getEntry(entry).getDexFile().getClasses()) classes.put(cls.getType(), cls);
         }
+        require(calls(method(classes.get(EXTENSION), "isEnabled"), EXTENSION, "getDisabler"),
+                "The permanent preference read was optimized out");
         Method modern = method(classes.get(PREFS), "getNsfwEnabledPreferenceState");
         boolean disabled = false;
         for (var instruction : modern.getImplementation().getInstructions()) {

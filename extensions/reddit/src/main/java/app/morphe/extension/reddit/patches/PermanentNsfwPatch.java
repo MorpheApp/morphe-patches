@@ -11,6 +11,7 @@ import app.morphe.extension.reddit.settings.Settings;
 
 import app.morphe.extension.reddit.patches.nsfw.PermanentNsfwDisabler;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.Logger;
 
 /** Runtime entry points injected by the experimental patch. */
 public final class PermanentNsfwPatch {
@@ -37,13 +38,17 @@ public final class PermanentNsfwPatch {
     /** Called after the existing Morphe settings categories have been built. */
     @SuppressWarnings("deprecation")
     public static void installPreference(PreferenceFragment fragment) {
-        if (isEnabled()) {
-            enforceDisabledPreferences();
-            for (String key : new String[]{"morphe_remove_nsfw_dialog", "morphe_redgifs_audio", "morphe_redgifs_hd"}) {
-                removeByKey(fragment.getPreferenceScreen(), key);
+        try {
+            if (isEnabled()) {
+                enforceDisabledPreferences();
+                for (String key : new String[]{"morphe_remove_nsfw_dialog", "morphe_redgifs_audio", "morphe_redgifs_hd"}) {
+                    removeByKey(fragment.getPreferenceScreen(), key);
+                }
             }
+            fragment.getPreferenceScreen().addPreference(new PermanentNsfwPreference(fragment.getActivity()));
+        } catch (Exception ex) {
+            Logger.printException(() -> "installPreference failure", ex);
         }
-        fragment.getPreferenceScreen().addPreference(new PermanentNsfwPreference(fragment.getActivity()));
     }
 
     /** Also clear saved bypass/media options, rather than merely hiding their controls. */
