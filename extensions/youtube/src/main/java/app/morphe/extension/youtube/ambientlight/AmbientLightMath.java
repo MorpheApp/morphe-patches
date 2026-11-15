@@ -27,6 +27,12 @@ final class AmbientLightMath {
     private static final int SOFT_BLUR_WIDTH_DIVISOR = 10;
     /** Distance at which only the soft light is left, in picture heights. */
     private static final float SOFT_DISTANCE = 0.9f;
+    /** The same distance with all of the blur the user can choose. */
+    private static final float BLURRED_SOFT_DISTANCE = 0.15f;
+    /** Factor for the blur radius next to the picture with all of that blur. */
+    private static final float BLURRED_SHARP_BLUR = 4f;
+    /** Distance at which only the column averages are left with all of that blur, in picture heights. */
+    private static final float BLURRED_FAR_DISTANCE = 0.3f;
     private static final int BLUR_PASSES = 3;
     /** Share of the page color at the bottom of the screen. */
     private static final float BOTTOM_PAGE_COLOR = 0.25f;
@@ -246,20 +252,37 @@ final class AmbientLightMath {
     }
 
     /**
-     * Moves {@code current} towards {@code target}.
+     * Moves {@code current} towards {@code target}. In floats, as a slow move in whole levels
+     * stops short of its target.
      *
-     * @param keep Share of the current color to keep, from 0 to 256.
+     * @param current 3 floats for each pixel, from 0 to 255.
+     * @param keep    Share of the current color to keep, from 0 to 1.
+     * @param colors  Gets the result as colors.
      */
-    static void blend(int[] current, int[] target, int keep) {
-        final int take = 256 - keep;
-        for (int i = 0; i < current.length; i++) {
-            final int a = current[i];
-            final int b = target[i];
-            final int red = (((a >> 16) & 0xFF) * keep + ((b >> 16) & 0xFF) * take + 128) >> 8;
-            final int green = (((a >> 8) & 0xFF) * keep + ((b >> 8) & 0xFF) * take + 128) >> 8;
-            final int blue = ((a & 0xFF) * keep + (b & 0xFF) * take + 128) >> 8;
-            current[i] = 0xFF000000 | red << 16 | green << 8 | blue;
+    static void blend(float[] current, int[] target, float keep, int[] colors) {
+        for (int i = 0; i < target.length; i++) {
+            final int color = target[i];
+            final float red = (color >> 16) & 0xFF;
+            final float green = (color >> 8) & 0xFF;
+            final float blue = color & 0xFF;
+            current[i * 3] = red + (current[i * 3] - red) * keep;
+            current[i * 3 + 1] = green + (current[i * 3 + 1] - green) * keep;
+            current[i * 3 + 2] = blue + (current[i * 3 + 2] - blue) * keep;
+            colors[i] = 0xFF000000 | Math.round(current[i * 3]) << 16 | Math.round(current[i * 3 + 1]) << 8
+                    | Math.round(current[i * 3 + 2]);
         }
+    }
+
+    /**
+     * @param seconds The time after which about a third of a change of the picture is left.
+     * @return Share of the light to keep after a time, for a light that follows the picture this slowly.
+     */
+    static float keptShare(long millis, float seconds) {
+        return (float) Math.exp(-millis / (1000f * seconds));
+    }
+
+    private static float mix(float from, float to, float share) {
+        return from + (to - from) * share;
     }
 
     /**
@@ -277,15 +300,18 @@ final class AmbientLightMath {
     /**
      * Paints the light of the picture over the window. A point takes the color of the nearest
      * point of the picture, and turns from {@code near} to the column averages in {@code far}
-     * over one picture height.
+     * over one picture height, or over less with blur.
      *
      * @param video  left, top, right and bottom of the picture, in window coordinates.
+     * @param blur   How much the user wants the shapes of the picture blurred, from 0 to 1.
      * @param out    3 floats for each pixel.
      */
     static void render(float[] near, int nearWidth, int nearHeight, float[] far, int farWidth, int farHeight,
-                       int[] video, int windowWidth, int windowHeight, float[] out, int outWidth, int outHeight) {
+                       int[] video, int windowWidth, int windowHeight, float blur,
+                       float[] out, int outWidth, int outHeight) {
         final float videoWidth = Math.max(1, video[2] - video[0]);
         final float videoHeight = Math.max(1, video[3] - video[1]);
+        final float farDistance = videoHeight * mix(1f, BLURRED_FAR_DISTANCE, blur);
         final float cellWidth = windowWidth / (float) outWidth;
         final float cellHeight = windowHeight / (float) outHeight;
 
@@ -324,7 +350,7 @@ final class AmbientLightMath {
             int nearIndex = nearTop * rowLength;
             int farIndex = farTop * rowLength;
             for (int column = 0; column < outWidth; column++) {
-                final float softness = clamp(Math.max(verticalDistance, columnDistance[column]) / videoHeight);
+                final float softness = clamp(Math.max(verticalDistance, columnDistance[column]) / farDistance);
                 for (int channel = 0; channel < 3; channel++) {
                     float value = 0f;
                     if (softness < 1f) {
@@ -367,17 +393,19 @@ final class AmbientLightMath {
 
     /**
      * Finishes the rendered light. It keeps the shapes of the picture next to the picture and
-     * melts into a soft glow farther away, with a slight fall off towards the page color.
+     * melts into a soft glow farther away, with a slight fall off towards the page color. With
+     * blur the shapes are kept less, and the soft glow starts closer to the picture.
      *
      * @param soft    Working copy, as long as {@code light}.
      * @param scratch Working copy, as long as {@code light}.
      * @param picture Left, top, right and bottom of the picture, in light pixels.
      * @param pageColor Page color in linear light, 3 floats.
+     * @param blur    How much the user wants the shapes of the picture blurred, from 0 to 1.
      */
     static void soften(float[] light, float[] soft, float[] scratch, int width, int height,
-                       float[] picture, float[] pageColor) {
-        final float softDistance = Math.max(1f, (picture[3] - picture[1]) * SOFT_DISTANCE);
-        final int sharpRadius = Math.max(1, width / SHARP_BLUR_WIDTH_DIVISOR);
+                       float[] picture, float[] pageColor, float blur) {
+        final float softDistance = Math.max(1f, (picture[3] - picture[1]) * mix(SOFT_DISTANCE, BLURRED_SOFT_DISTANCE, blur));
+        final int sharpRadius = Math.max(1, Math.round(width / (float) SHARP_BLUR_WIDTH_DIVISOR * mix(1f, BLURRED_SHARP_BLUR, blur)));
         final int softRadius = Math.max(2, width / SOFT_BLUR_WIDTH_DIVISOR);
         System.arraycopy(light, 0, soft, 0, light.length);
         // Only the soft light is used this far below the picture.

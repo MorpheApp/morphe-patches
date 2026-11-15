@@ -92,17 +92,27 @@ public class AmbientLightMathTest {
 
     @Test
     public void blendWithoutKeepJumpsToTheTarget() {
-        int[] current = filled(RED, 2);
-        AmbientLightMath.blend(current, filled(BLUE, 2), 0);
-        assertArrayEquals(filled(BLUE, 2), current);
+        float[] current = {255f, 0f, 0f, 255f, 0f, 0f};
+        int[] colors = new int[2];
+        AmbientLightMath.blend(current, filled(BLUE, 2), 0f, colors);
+        assertArrayEquals(filled(BLUE, 2), colors);
     }
 
     @Test
-    public void blendConvergesOnTheTarget() {
-        int[] current = filled(RED, 1);
-        int[] target = filled(BLUE, 1);
-        for (int i = 0; i < 30; i++) AmbientLightMath.blend(current, target, 112);
-        assertTrue(AmbientLightMath.difference(current, target) <= 1);
+    public void aSlowBlendStillReachesTheTarget() {
+        // In whole levels a step this small would be rounded away.
+        float[] current = {100f, 100f, 100f};
+        int[] target = {0xFF6E6E6E};
+        int[] colors = new int[1];
+        for (int i = 0; i < 400; i++) AmbientLightMath.blend(current, target, 0.98f, colors);
+        assertEquals(target[0], colors[0]);
+    }
+
+    @Test
+    public void theLightKeepsAThirdOfAChangeAfterItsSmoothingTime() {
+        assertEquals(1f, AmbientLightMath.keptShare(0, 1f), 0.001f);
+        assertEquals(0.368f, AmbientLightMath.keptShare(1_000, 1f), 0.001f);
+        assertEquals(0.368f, AmbientLightMath.keptShare(500, 0.5f), 0.001f);
     }
 
     private static float[] linear(int... pixels) {
@@ -117,7 +127,7 @@ public class AmbientLightMathTest {
         float[] near = linear(RED, BLUE, RED, BLUE);
         float[] far = linear(0xFF808080, 0xFF808080, 0xFF808080, 0xFF808080);
         float[] out = new float[6];
-        AmbientLightMath.render(near, 2, 2, far, 2, 2, new int[]{0, -1000, 100, 100}, 100, 101, out, 2, 1);
+        AmbientLightMath.render(near, 2, 2, far, 2, 2, new int[]{0, -1000, 100, 100}, 100, 101, 0f, out, 2, 1);
 
         assertTrue(out[0] > out[3]);
         assertTrue(out[5] > out[2]);
@@ -128,7 +138,7 @@ public class AmbientLightMathTest {
         float[] near = linear(RED, RED, RED, RED);
         float[] far = linear(0xFF646464, 0xFF646464, 0xFF646464, 0xFF646464);
         float[] out = new float[3];
-        AmbientLightMath.render(near, 2, 2, far, 2, 2, new int[]{0, 0, 100, 100}, 100, 400, out, 1, 1);
+        AmbientLightMath.render(near, 2, 2, far, 2, 2, new int[]{0, 0, 100, 100}, 100, 400, 0f, out, 1, 1);
 
         float expected = (0x64 / 255f) * (0x64 / 255f);
         assertEquals(expected, out[0], 0.001f);
@@ -136,9 +146,28 @@ public class AmbientLightMathTest {
         assertEquals(expected, out[2], 0.001f);
     }
 
+    @Test
+    public void withBlurTheSoftLightTakesOverCloserToThePicture() {
+        // The last of four rows is three quarters of a picture height below the picture.
+        float[] near = linear(RED, RED, RED, RED);
+        float[] far = linear(0xFF646464, 0xFF646464, 0xFF646464, 0xFF646464);
+        float[] plain = new float[12];
+        float[] blurred = new float[12];
+        AmbientLightMath.render(near, 2, 2, far, 2, 2, new int[]{0, 0, 100, 100}, 100, 200, 0f, plain, 1, 4);
+        AmbientLightMath.render(near, 2, 2, far, 2, 2, new int[]{0, 0, 100, 100}, 100, 200, 1f, blurred, 1, 4);
+
+        float soft = (0x64 / 255f) * (0x64 / 255f);
+        assertTrue(plain[9] > soft * 1.5f);
+        assertEquals(soft, blurred[9], 0.001f);
+    }
+
     private static void soften(float[] light, int width, int height, float[] picture) {
+        soften(light, width, height, picture, 0f);
+    }
+
+    private static void soften(float[] light, int width, int height, float[] picture, float blur) {
         AmbientLightMath.soften(light, new float[light.length], new float[light.length],
-                width, height, picture, new float[]{0f, 0f, 0f});
+                width, height, picture, new float[]{0f, 0f, 0f}, blur);
     }
 
     @Test
@@ -173,6 +202,24 @@ public class AmbientLightMathTest {
         float nearContrast = light[(12 * width + 26) * 3] - light[(12 * width + 38) * 3];
         float farContrast = light[(150 * width + 26) * 3] - light[(150 * width + 38) * 3];
         assertTrue(nearContrast > farContrast * 1.5f);
+    }
+
+    @Test
+    public void blurTakesTheShapesOutOfTheLightNextToThePicture() {
+        int width = 64;
+        int height = 160;
+        float[] plain = new float[3 * width * height];
+        for (int i = 0; i < width * height; i++) {
+            plain[i * 3] = i % width < width / 2 ? 1f : 0f;
+        }
+        float[] blurred = plain.clone();
+        soften(plain, width, height, new float[]{0f, 0f, 64f, 10f});
+        soften(blurred, width, height, new float[]{0f, 0f, 64f, 10f}, 1f);
+
+        // Close to the edge between the two colors, right below the picture.
+        float plainContrast = plain[(12 * width + 30) * 3] - plain[(12 * width + 33) * 3];
+        float blurredContrast = blurred[(12 * width + 30) * 3] - blurred[(12 * width + 33) * 3];
+        assertTrue(plainContrast > blurredContrast * 1.5f);
     }
 
     @Test
