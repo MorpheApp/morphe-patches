@@ -8706,6 +8706,33 @@
       "options": []
     },
     {
+      "name": "Keyword filters",
+      "description": "Adds case-insensitive regular-expression filters for post titles and descriptions under Morphe > Filters. This patch supports Reddit 2026.45.0.",
+      "default": false,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.reddit.frontpage",
+          "name": "Reddit",
+          "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": null,
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "2026.45.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 32,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Loop video",
       "description": "Adds an option to loop videos and display loop video button in the video player.",
       "default": true,
