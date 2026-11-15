@@ -1006,7 +1006,7 @@ final class DeArrowVoteDialog {
                     pauseThenCopy();
                 } else if (state == VideoState.ENDED) {
                     // Moving an ended video loads it again and plays it, so it is paused once it plays.
-                    if (!VideoInformation.seekTo(getSeekTime(missing.get(0)))) {
+                    if (!VideoInformation.seekTo(Math.max(0, getSeekTime(missing.get(0))))) {
                         Logger.printDebug(() -> "Could not move the ended video");
                         finish();
                         return;
@@ -1089,7 +1089,9 @@ final class DeArrowVoteDialog {
 
                 Missing frame = missing.get(index);
                 final long time = getSeekTime(frame);
-                if (time < 0 || !VideoInformation.seekTo(time)) {
+                // Seeking refuses a seek to the time the video is already at,
+                // such as after an ended video was moved to the first frame.
+                if (time < 0 || (VideoInformation.getVideoTime() != time && !VideoInformation.seekTo(time))) {
                     Logger.printDebug(() -> "Could not move the video to missing frame at: " + time);
                     copyFrame(index + 1);
                     return;
