@@ -469,6 +469,25 @@ public final class HideStatusBarPatch {
         }
     }
 
+    /**
+     * Injection point.
+     * <p>
+     * The player is laid out below the top stable inset. Without the edge to edge top bar, the watch page
+     * is already laid out below the status bar with a top margin, but 21.29 and older targets still give
+     * the player the stable insets of the whole window, which keep the height of the status bar also when
+     * it is hidden. The player is then laid out below the status bar twice, or below an empty bar with
+     * the status bar hidden. Newer targets read the insets of the watch layout, which gets none because
+     * the main view consumes them, but they start with the insets of the whole window if it already has them.
+     */
+    public static Rect getPlayerStableInsets(Rect insets) {
+        if (FIX_STATUS_BAR_LAYOUT && insets.top != 0 && Boolean.FALSE.equals(edgeToEdgeTopBarUsed)) {
+            Rect playerInsets = new Rect(insets);
+            playerInsets.top = 0;
+            return playerInsets;
+        }
+        return insets;
+    }
+
     private static int getDisplayCutoutInsetTop(WindowInsets insets) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             return insets.getInsets(WindowInsets.Type.displayCutout()).top;
