@@ -54,6 +54,7 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
+import app.morphe.util.findMethodFromToString
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -512,18 +513,25 @@ val downloadsPatch = patch(
 
         // Log the download qualities that are dropped or not available, and optionally save 1440p
         // and 2160p even if the device or server checks of the app rule out their streams.
+        // The audio stream of a download is matched to the container of the video stream,
+        // so the download can be exported as one file.
         StreamingDataFormatStreamsFingerprint.let {
             it.classDef.addPatchInterface(
                 EXTENSION_STREAMING_DATA_INTERFACE,
                 "patch_getFormatStreams",
-                it.instructionMatches.first().fieldReference!!
+                it.instructionMatches.first().fieldReference
             )
         }
         FormatStreamModelToStringFingerprint.let {
             it.classDef.addPatchInterface(
                 EXTENSION_FORMAT_STREAM_INTERFACE,
                 "patch_getFormat",
-                it.instructionMatches[5].fieldReference!!
+                it.instructionMatches[5].fieldReference
+            )
+            it.classDef.addPatchInterface(
+                EXTENSION_FORMAT_STREAM_INTERFACE,
+                "patch_getXtags",
+                it.originalMethod.findMethodFromToString("xtags=")
             )
         }
         DownloadStreamSelectorFingerprint.let {
@@ -546,7 +554,7 @@ val downloadsPatch = patch(
             it.method.addInstructions(
                 0,
                 """
-                    invoke-static/range { p0 .. p6 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->selectDownloadStream(Ljava/lang/Object;IIILjava/lang/Object;ZLjava/lang/Object;)Ljava/lang/Object;
+                    invoke-static/range { p0 .. p6 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->selectDownloadStream(${EXTENSION_STREAM_SELECTOR_INTERFACE}III${EXTENSION_STREAMING_DATA_INTERFACE}ZLjava/lang/Object;)${EXTENSION_FORMAT_STREAM_INTERFACE}
                     move-result-object v0
                     check-cast v0, ${it.method.returnType}
                     return-object v0
@@ -559,7 +567,8 @@ val downloadsPatch = patch(
                 val pairIndex = it.instructionMatches[1].index + numberOfParameterRegistersLogical
                 val pairInstruction = getInstruction(pairIndex)
                 val videoStreamRegister = pairInstruction.registersUsed[1]
-                val videoStreamType = pairInstruction.getReference<MethodReference>()!!.parameterTypes.first()
+                val audioStreamRegister = pairInstruction.registersUsed[2]
+                val streamType = pairInstruction.getReference<MethodReference>()!!.parameterTypes.first()
 
                 // p3 and p4 are the audio track and the video ID, which are not needed.
                 addInstructions(
@@ -567,9 +576,15 @@ val downloadsPatch = patch(
                     """
                         move-object/from16 p3, v$videoStreamRegister
                         move/from16 p4, p1
-                        invoke-static/range { p3 .. p5 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->selectDownloadVideoStream(Ljava/lang/Object;ILjava/lang/Object;)Ljava/lang/Object;
+                        invoke-static/range { p3 .. p5 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->selectDownloadVideoStream(${EXTENSION_FORMAT_STREAM_INTERFACE}I${EXTENSION_STREAMING_DATA_INTERFACE})${EXTENSION_FORMAT_STREAM_INTERFACE}
                         move-result-object v$videoStreamRegister
-                        check-cast v$videoStreamRegister, $videoStreamType
+                        check-cast v$videoStreamRegister, $streamType
+
+                        move-object/from16 p3, v$audioStreamRegister
+                        move-object/from16 p4, v$videoStreamRegister
+                        invoke-static/range { p3 .. p5 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->selectDownloadAudioStream(${EXTENSION_FORMAT_STREAM_INTERFACE}${EXTENSION_FORMAT_STREAM_INTERFACE}${EXTENSION_STREAMING_DATA_INTERFACE})${EXTENSION_FORMAT_STREAM_INTERFACE}
+                        move-result-object v$audioStreamRegister
+                        check-cast v$audioStreamRegister, $streamType
                     """
                 )
             }

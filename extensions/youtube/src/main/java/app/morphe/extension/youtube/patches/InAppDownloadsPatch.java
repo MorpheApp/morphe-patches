@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -304,13 +305,14 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
          * @return The stream of the quality, a stream of a lower quality, or null.
          */
         @Nullable
-        Object patch_selectStream(int quality, int maxHeight, int audioQuality,
-                                  Object streamingData, boolean audio, Object playerConfig);
+        FormatStreamInterface patch_selectStream(int quality, int maxHeight, int audioQuality,
+                                                 StreamingDataInterface streamingData, boolean audio,
+                                                 Object playerConfig);
 
         /**
          * @return The stream with its content length, which is fetched if the server did not give it.
          */
-        Object patch_fetchContentLength(Object stream) throws IOException;
+        FormatStreamInterface patch_fetchContentLength(FormatStreamInterface stream) throws IOException;
     }
 
     /**
@@ -320,17 +322,21 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
         /**
          * @return Every stream of the video.
          */
-        List<?> patch_getFormatStreams();
+        List<FormatStreamInterface> patch_getFormatStreams();
     }
 
     /**
      * Implemented by the app class of a stream.
      */
     public interface FormatStreamInterface {
+        VideoFormat.FormatInterface patch_getFormat();
+
         /**
-         * @return The format of the stream, a {@link VideoFormat.FormatInterface}.
+         * @return The extra tags of the stream, such as its audio track. The streams of an audio
+         *         track have the same tags in each codec.
          */
-        Object patch_getFormat();
+        @Nullable
+        String patch_getXtags();
     }
 
     /**
@@ -362,20 +368,21 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
      * @return The stream of the quality, or the stream the app picked.
      */
     @Nullable
-    public static Object selectDownloadStream(Object selector, int quality, int maxHeight, int audioQuality,
-                                              Object streamingData, boolean audio, Object playerConfig) {
-        DownloadStreamSelector streamSelector = (DownloadStreamSelector) selector;
-        Object stream = streamSelector.patch_selectStream(
+    public static FormatStreamInterface selectDownloadStream(DownloadStreamSelector selector, int quality,
+                                                             int maxHeight, int audioQuality,
+                                                             StreamingDataInterface streamingData,
+                                                             boolean audio, Object playerConfig) {
+        FormatStreamInterface stream = selector.patch_selectStream(
                 quality, maxHeight, audioQuality, streamingData, audio, playerConfig);
         if (audio) {
             return stream;
         }
 
         try {
-            Object videoStream = getDownloadVideoStream(quality, maxHeight, streamingData, stream);
+            FormatStreamInterface videoStream = getDownloadVideoStream(quality, maxHeight, streamingData, stream);
             return videoStream == stream
                     ? stream
-                    : streamSelector.patch_fetchContentLength(videoStream);
+                    : selector.patch_fetchContentLength(videoStream);
         } catch (Exception ex) {
             Logger.printException(() -> "selectDownloadStream failure", ex);
             return stream;
@@ -394,7 +401,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
      * @return The stream of the quality, or the stream the app picked.
      */
     @Nullable
-    public static Object selectDownloadVideoStream(@Nullable Object stream, int quality, Object streamingData) {
+    public static FormatStreamInterface selectDownloadVideoStream(@Nullable FormatStreamInterface stream, int quality,
+                                                                  StreamingDataInterface streamingData) {
         try {
             return getDownloadVideoStream(quality, Integer.MAX_VALUE, streamingData, stream);
         } catch (Exception ex) {
@@ -404,26 +412,100 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     }
 
     /**
+     * Injection point.
+     * <p>
+     * Called when a download starts, for the audio stream it saves with the video stream.
+     * The app can pair a WebM video stream, such as VP9, with an MP4 audio stream (AAC).
+     * Android has no muxer for a file with both, so the export of the download would be two files.
+     * The audio stream is then replaced with the stream of the same audio track in the
+     * container of the video stream, with about the same bitrate.
+     *
+     * @param audioStream   Audio stream the app picked, or null.
+     * @param videoStream   Video stream that is saved, or null if the download is audio only.
+     * @param streamingData Streaming data of the video.
+     * @return An audio stream in the container of the video stream, or the stream the app picked.
+     */
+    @Nullable
+    public static FormatStreamInterface selectDownloadAudioStream(@Nullable FormatStreamInterface audioStream,
+                                                                  @Nullable FormatStreamInterface videoStream,
+                                                                  StreamingDataInterface streamingData) {
+        try {
+            if (audioStream == null || videoStream == null || !isInAppDownloadMode()) {
+                return audioStream;
+            }
+
+            VideoFormat.FormatInterface audioFormat = audioStream.patch_getFormat();
+            VideoFormat.FormatInterface videoFormat = videoStream.patch_getFormat();
+            if (isWebm(audioFormat) == isWebm(videoFormat)) {
+                return audioStream;
+            }
+
+            String xtags = audioStream.patch_getXtags();
+            List<FormatStreamInterface> streams = streamingData.patch_getFormatStreams();
+            for (int itag : otherContainerAudioItags(audioFormat.patch_getItag())) {
+                for (FormatStreamInterface stream : streams) {
+                    if (stream.patch_getFormat().patch_getItag() == itag
+                            && Objects.equals(xtags, stream.patch_getXtags())) {
+                        Logger.printDebug(() -> "Replacing audio itag " + audioFormat.patch_getItag()
+                                + " with itag " + itag + " to match the container of video " + describe(videoFormat));
+                        return stream;
+                    }
+                }
+            }
+
+            Logger.printDebug(() -> "No audio stream matches the container of video " + describe(videoFormat)
+                    + ", audio itag " + audioFormat.patch_getItag() + " is saved");
+            return audioStream;
+        } catch (Exception ex) {
+            Logger.printException(() -> "selectDownloadAudioStream failure", ex);
+            return audioStream;
+        }
+    }
+
+    /**
+     * @return Itags of the audio streams in the other container with about the same bitrate,
+     *         Opus for AAC and AAC for Opus, in the order they are preferred.
+     */
+    private static int[] otherContainerAudioItags(int itag) {
+        return switch (itag) {
+            case 139 -> new int[]{249, 250};
+            case 140 -> new int[]{251, 250};
+            case 141 -> new int[]{774, 251};
+            case 249 -> new int[]{139};
+            case 250 -> new int[]{139, 140};
+            case 251 -> new int[]{140};
+            case 774 -> new int[]{141, 140};
+            default -> new int[0];
+        };
+    }
+
+    private static boolean isWebm(VideoFormat.FormatInterface format) {
+        String mimeType = format.patch_getMimeType();
+        return mimeType != null && mimeType.contains("/webm");
+    }
+
+    /**
      * @param stream Video stream the app picked, or null.
      * @return A stream of the quality if the app picked none, and higher qualities are forced,
      *         otherwise the stream the app picked.
      */
     @Nullable
-    private static Object getDownloadVideoStream(int quality, int maxHeight, Object streamingData,
-                                                 @Nullable Object stream) {
+    private static FormatStreamInterface getDownloadVideoStream(int quality, int maxHeight,
+                                                                StreamingDataInterface streamingData,
+                                                                @Nullable FormatStreamInterface stream) {
         // A quality of 0 is audio only, which saves no video stream.
         if (quality <= 0 || !isInAppDownloadMode()) {
             return stream;
         }
 
-        VideoFormat.FormatInterface format = stream == null ? null : formatOf(stream);
+        VideoFormat.FormatInterface format = stream == null ? null : stream.patch_getFormat();
         if (format != null && qualityOf(format) == quality) {
             return stream;
         }
 
-        List<Object> qualityStreams = new ArrayList<>();
-        for (Object formatStream : ((StreamingDataInterface) streamingData).patch_getFormatStreams()) {
-            VideoFormat.FormatInterface streamFormat = formatOf(formatStream);
+        List<FormatStreamInterface> qualityStreams = new ArrayList<>();
+        for (FormatStreamInterface formatStream : streamingData.patch_getFormatStreams()) {
+            VideoFormat.FormatInterface streamFormat = formatStream.patch_getFormat();
             if (isVideo(streamFormat) && qualityOf(streamFormat) == quality) {
                 qualityStreams.add(formatStream);
             }
@@ -445,13 +527,9 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
             return stream;
         }
 
-        Object forcedStream = preferredStream(qualityStreams, format);
-        Logger.printDebug(() -> "Forcing " + quality + "p stream: " + describe(formatOf(forcedStream)));
+        FormatStreamInterface forcedStream = preferredStream(qualityStreams, format);
+        Logger.printDebug(() -> "Forcing " + quality + "p stream: " + describe(forcedStream.patch_getFormat()));
         return forcedStream;
-    }
-
-    private static VideoFormat.FormatInterface formatOf(Object stream) {
-        return (VideoFormat.FormatInterface) ((FormatStreamInterface) stream).patch_getFormat();
     }
 
     private static boolean isVideo(VideoFormat.FormatInterface format) {
@@ -502,7 +580,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
      * @return The stream with the codec the app picked, or else the first codec of
      *         {@link #FORCED_STREAM_CODECS}. Streams that are not HDR come first.
      */
-    private static Object preferredStream(List<Object> streams, @Nullable VideoFormat.FormatInterface pickedFormat) {
+    private static FormatStreamInterface preferredStream(List<FormatStreamInterface> streams,
+                                                         @Nullable VideoFormat.FormatInterface pickedFormat) {
         List<String> codecs = new ArrayList<>();
         if (pickedFormat != null) {
             String pickedCodec = codecOf(pickedFormat);
@@ -513,8 +592,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
 
         for (boolean allowHdr : new boolean[]{false, true}) {
             for (String codecPrefix : codecs) {
-                for (Object stream : streams) {
-                    String codec = codecOf(formatOf(stream));
+                for (FormatStreamInterface stream : streams) {
+                    String codec = codecOf(stream.patch_getFormat());
                     if (codec.startsWith(codecPrefix) && (allowHdr || !isHdrCodec(codec))) {
                         return stream;
                     }
@@ -529,13 +608,13 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
                 + format.patch_getHeight() + " " + codecOf(format);
     }
 
-    private static String describeStreams(List<Object> streams) {
+    private static String describeStreams(List<FormatStreamInterface> streams) {
         StringBuilder builder = new StringBuilder("[");
-        for (Object stream : streams) {
+        for (FormatStreamInterface stream : streams) {
             if (builder.length() > 1) {
                 builder.append(", ");
             }
-            builder.append(describe(formatOf(stream)));
+            builder.append(describe(stream.patch_getFormat()));
         }
         return builder.append(']').toString();
     }
