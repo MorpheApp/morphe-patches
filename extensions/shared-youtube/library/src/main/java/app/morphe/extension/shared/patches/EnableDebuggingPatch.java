@@ -274,8 +274,7 @@ public final class EnableDebuggingPatch {
     public static String serializeFlags(Collection<Long> flags, char separator) {
         StringBuilder builder = new StringBuilder(10 * flags.size());
         for (Long flag : flags) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (builder.length() != 0) {
+            if (Utils.isNotEmpty(builder)) {
                 builder.append(separator);
             }
             builder.append(flag);

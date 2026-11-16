@@ -1678,7 +1678,7 @@ public final class LayoutComponentsFilter extends Filter {
         return Settings.HIDE_YOU_MAY_LIKE_SECTION.get()
                 // The 'You may like' section is only visible when no search terms are entered.
                 // To avoid unnecessary collection traversals, filtering is performed only when the typedString is empty.
-                && TextUtils.isEmpty(typedString);
+                && Utils.isEmpty(typedString);
     }
 
     /**

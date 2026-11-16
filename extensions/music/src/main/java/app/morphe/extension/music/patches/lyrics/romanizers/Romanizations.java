@@ -9,6 +9,8 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.shared.Utils;
+
 /** Building a reading out of its words, the one way every romanizer lays them down. */
 public final class Romanizations {
 
@@ -20,8 +22,7 @@ public final class Romanizations {
         if (word == null || word.isEmpty()) {
             return;
         }
-        //noinspection SizeReplaceableByIsEmpty
-        if (out.length() > 0) {
+        if (Utils.isNotEmpty(out)) {
             out.append(' ');
         }
         out.append(word);

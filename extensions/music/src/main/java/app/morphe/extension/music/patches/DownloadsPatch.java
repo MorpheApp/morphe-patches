@@ -98,8 +98,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
     public static CharSequence onLithoTextLoaded(ContextInterface conversionContext, CharSequence original) {
         try {
             // Such as the text of an icon only button.
-            //noinspection SizeReplaceableByIsEmpty
-            if (original.length() == 0) return original;
+            if (Utils.isEmpty(original)) return original;
 
             StringBuilder path = conversionContext.patch_getPathBuilder();
             if (isFlyoutMenuOverridden()
@@ -414,8 +413,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
             return false;
         }
         CharSequence description = senderViewGroup.getContentDescription();
-        //noinspection SizeReplaceableByIsEmpty
-        if (description == null || description.length() == 0) return false;
+        if (Utils.isEmpty(description)) return false;
 
         String value = description.toString().toLowerCase(Locale.ROOT);
         String label = downloadButtonLabel.toLowerCase(Locale.ROOT);

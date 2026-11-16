@@ -19,6 +19,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 public final class LyricsFileParser {
 
@@ -157,8 +158,7 @@ public final class LyricsFileParser {
                 if (wordText.isEmpty()) {
                     continue;
                 }
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) {
+                if (Utils.isNotEmpty(builder)) {
                     builder.append(' ');
                 }
                 builder.append(wordText);
@@ -281,8 +281,7 @@ public final class LyricsFileParser {
             if (indentOf(line) <= indent) {
                 break;
             }
-            //noinspection SizeReplaceableByIsEmpty
-            if (builder.length() > 0) {
+            if (Utils.isNotEmpty(builder)) {
                 builder.append('\n');
             }
             int strip = Math.min(base, line.length());

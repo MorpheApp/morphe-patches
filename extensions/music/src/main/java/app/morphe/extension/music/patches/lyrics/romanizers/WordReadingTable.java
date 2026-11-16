@@ -9,12 +9,14 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
 import app.morphe.extension.shared.Logger;
 
@@ -167,7 +169,7 @@ public final class WordReadingTable implements AutoCloseable {
     public static final class Builder {
 
         private final Path file;
-        private final MappedByteBuffer buffer;
+        private final ByteBuffer buffer;
         private final int recordsOffset;
         private final int maxFileBytes;
         private final int slotMask;
@@ -179,13 +181,8 @@ public final class WordReadingTable implements AutoCloseable {
             // Room to spare, since streaming the source does not say how many entries there will be.
             this.maxFileBytes = Math.min(MAX_FILE_BYTES,
                     WordReadingTable.HEADER_BYTES + (slotCount << 2) + (96 << 20));
-            Files.deleteIfExists(file);
-            try (RandomAccessFile handle = new RandomAccessFile(file.toFile(), "rw");
-                 FileChannel channel = handle.getChannel()) {
-                channel.truncate(maxFileBytes);
-                buffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, maxFileBytes);
-                buffer.order(ByteOrder.LITTLE_ENDIAN);
-            }
+            buffer = ByteBuffer.allocateDirect(maxFileBytes);
+            buffer.order(ByteOrder.LITTLE_ENDIAN);
             slotMask = slotCount - 1;
             recordsOffset = HEADER_BYTES + (slotCount << 2);
             for (int i = 0; i < magic.length; i++) {
@@ -267,15 +264,26 @@ public final class WordReadingTable implements AutoCloseable {
             return entryCount;
         }
 
-        /** Writes the header and trims the file, which was mapped far larger than it ends. */
+        /** Writes the header and writes the table to disk at its exact size. */
         public void finish(int version) throws IOException {
             buffer.putInt(VERSION_OFFSET, version);
             buffer.putInt(ENTRY_COUNT_OFFSET, entryCount);
             buffer.putInt(RECORDS_LENGTH_FIELD, recordsLength);
-            buffer.force();
 
-            try (RandomAccessFile handle = new RandomAccessFile(file.toFile(), "rw")) {
-                handle.setLength(recordsOffset + recordsLength);
+            int totalBytes = recordsOffset + recordsLength;
+            buffer.position(0);
+            buffer.limit(totalBytes);
+
+            Files.deleteIfExists(file);
+            try (FileChannel channel = FileChannel.open(file,
+                    StandardOpenOption.CREATE_NEW,
+                    StandardOpenOption.WRITE)) {
+                while (buffer.hasRemaining()) {
+                    int written = channel.write(buffer);
+                    if (written <= 0) {
+                        throw new IOException("Failed to write data to " + file);
+                    }
+                }
             }
         }
     }

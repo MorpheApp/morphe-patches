@@ -523,6 +523,8 @@ class QueueRuntimeBoundaryTest {
             "Utils" to """
                 package app.morphe.extension.shared;
                 public class Utils {
+                    public static boolean isEmpty(CharSequence str) { return str == null || str.length() == 0; }
+                    public static boolean isNotEmpty(CharSequence str) { return !isEmpty(str); }
                     public static boolean mainThread = true;
                     public static boolean isCurrentlyOnMainThread() { return mainThread; }
                     private static final java.util.ArrayDeque<Runnable> pending = new java.util.ArrayDeque<>();

@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -144,12 +143,7 @@ public final class MwebStream {
         }
         synchronized (streams) {
             final long now = System.currentTimeMillis();
-            Iterator<MwebStream> iterator = streams.values().iterator();
-            while (iterator.hasNext()) {
-                if (iterator.next().expireTime < now) {
-                    iterator.remove();
-                }
-            }
+            streams.values().removeIf(mwebStream -> mwebStream.expireTime < now);
 
             MwebStream stream = streams.get(streamId);
             if (stream != null && stream.videoId.equals(videoId)) {

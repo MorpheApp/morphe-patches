@@ -14,7 +14,6 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
-import android.text.TextUtils;
 import android.util.LongSparseArray;
 
 import java.io.File;
@@ -54,7 +53,7 @@ public final class CustomFontPatch {
             }
 
             String configuredPath = Settings.CUSTOM_FONT_FILE_PATH.get();
-            if (TextUtils.isEmpty(configuredPath)) {
+            if (Utils.isEmpty(configuredPath)) {
                 return null;
             }
 

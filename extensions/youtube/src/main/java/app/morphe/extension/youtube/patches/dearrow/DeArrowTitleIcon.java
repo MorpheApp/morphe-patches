@@ -165,8 +165,7 @@ public final class DeArrowTitleIcon {
      * @return If the text starts with the icon added by this class.
      */
     public static boolean hasIcon(@Nullable CharSequence text) {
-        //noinspection SizeReplaceableByIsEmpty
-        return text instanceof Spanned spanned && spanned.length() > 0
+        return text instanceof Spanned spanned && Utils.isNotEmpty(spanned)
                 && spanned.getSpans(0, 1, IconSpan.class).length > 0;
     }
 

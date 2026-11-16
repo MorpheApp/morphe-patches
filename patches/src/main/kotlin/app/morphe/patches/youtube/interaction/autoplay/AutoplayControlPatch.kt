@@ -7,7 +7,7 @@
 
 package app.morphe.patches.youtube.interaction.autoplay
 
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -30,16 +30,14 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/AutoplayButton;"
 
-@Suppress("unused")
-val autoplayControlPatch = bytecodePatch(
+val autoplayControlPatch = patch(
     name = "Autoplay control",
     description = "Adds a player button and a rule for the next video: playlists and queues go on, " +
-        "a Mix stops after a number of videos, a suggested video never plays.",
+            "a Mix stops after a number of videos, a suggested video never plays.",
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        // Its navigation intent check calls the rule.
         disablePlaylistAutoplayPatch,
         playerOverlayButtonsHookPatch,
         videoInformationPatch,

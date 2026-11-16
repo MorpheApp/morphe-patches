@@ -21,6 +21,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector.Script;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Romanizes lyrics on the device, for the lines no service could romanize.
@@ -167,7 +168,6 @@ public final class LocalRomanizer {
      * place without guessing: one syllable per spoken character, or one per word. Anything
      * else keeps the whole line; a reading on the wrong word is worse than none.
      */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Nullable
     private static List<Word> splitReading(LyricsLine line, @Nullable String wholeLine) {
         final List<Word> words = line.words();
@@ -194,7 +194,7 @@ public final class LocalRomanizer {
             }
             final StringBuilder syllables = new StringBuilder();
             for (int at = range[0]; at < range[1]; at++) {
-                if (syllables.length() > 0) syllables.append(' ');
+                if (Utils.isNotEmpty(syllables)) syllables.append(' ');
                 syllables.append(effective, tokens[at][0], tokens[at][1]);
             }
             read.add(new Word(word.startMs(), word.endMs(), word.text(), syllables.toString(),
@@ -246,40 +246,15 @@ public final class LocalRomanizer {
 
     /** So finals compare without tones. */
     private static char basePinyinChar(char c) {
-        switch (c) {
-            case 'ā':
-            case 'á':
-            case 'ǎ':
-            case 'à':
-                return 'a';
-            case 'ē':
-            case 'é':
-            case 'ě':
-            case 'è':
-                return 'e';
-            case 'ī':
-            case 'í':
-            case 'ǐ':
-            case 'ì':
-                return 'i';
-            case 'ō':
-            case 'ó':
-            case 'ǒ':
-            case 'ò':
-                return 'o';
-            case 'ū':
-            case 'ú':
-            case 'ǔ':
-            case 'ù':
-                return 'u';
-            case 'ǖ':
-            case 'ǘ':
-            case 'ǚ':
-            case 'ǜ':
-                return 'ü';
-            default:
-                return Character.toLowerCase(c);
-        }
+        return switch (c) {
+            case 'ā', 'á', 'ǎ', 'à' -> 'a';
+            case 'ē', 'é', 'ě', 'è' -> 'e';
+            case 'ī', 'í', 'ǐ', 'ì' -> 'i';
+            case 'ō', 'ó', 'ǒ', 'ò' -> 'o';
+            case 'ū', 'ú', 'ǔ', 'ù' -> 'u';
+            case 'ǖ', 'ǘ', 'ǚ', 'ǜ' -> 'ü';
+            default -> Character.toLowerCase(c);
+        };
     }
 
     private static boolean isValidPinyinSyllable(String token, int start, int end) {
@@ -520,11 +495,10 @@ public final class LocalRomanizer {
         return out;
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static String joinTokens(String reading, int[][] tokens, int from, int to) {
         StringBuilder sb = new StringBuilder();
         for (int t = from; t < to; t++) {
-            if (sb.length() > 0) {
+            if (Utils.isNotEmpty(sb)) {
                 sb.append(' ');
             }
             sb.append(reading, tokens[t][0], tokens[t][1]);

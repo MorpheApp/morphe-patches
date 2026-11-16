@@ -164,7 +164,7 @@ final class SyllableRomanLayout {
         final float desiredW = Math.max(paint.measureText(text), Layout.getDesiredWidth(text, paint));
         final float lineW = layout.getLineCount() > 0
                 ? (layout.getLineRight(0) - layout.getLineLeft(0)) : 0f;
-        final float horizW = text.length() > 0 ? layout.getPrimaryHorizontal(text.length()) : 0f;
+        final float horizW = !text.isEmpty() ? layout.getPrimaryHorizontal(text.length()) : 0f;
         return Math.max(1f, Math.max(desiredW, Math.max(lineW, horizW)));
     }
 
@@ -213,7 +213,6 @@ final class SyllableRomanLayout {
         float[] lineLefts = new float[lineCount];
         float[] lineStarts = new float[lineCount];
         float[] lineBaselines = new float[lineCount];
-        float[] lineBottoms = new float[lineCount];
         boolean[] lineIsRtl = new boolean[lineCount];
 
         float totalW = 0f;
@@ -222,7 +221,6 @@ final class SyllableRomanLayout {
             lineStarts[i] = totalW;
             totalW += Math.max(1f, mainLayout.getLineRight(i) - lineLefts[i]);
             lineBaselines[i] = mainLayout.getLineBaseline(i);
-            lineBottoms[i] = mainLayout.getLineBottom(i);
             lineIsRtl[i] = mainLayout.getParagraphDirection(i) == Layout.DIR_RIGHT_TO_LEFT;
         }
 
@@ -264,7 +262,7 @@ final class SyllableRomanLayout {
         List<RomanizedWordCluster>[] romanLines =
                 groupRomanClustersByLine(romanClusters, lineCount);
         RomanLineStatics[] romanStatics = hasRoman
-                ? buildRomanStatics(romanLines, charXMap, romanStartShift, lineBaselines, lineBottoms,
+                ? buildRomanStatics(romanLines, charXMap, romanStartShift, lineBaselines,
                 lineLefts, lineStarts, lineCount, fontSizePx, lineExtraHeight, totalW) : new RomanLineStatics[0];
         RomanLineStatics[] rubyStatics = hasRuby
                 ? buildRubyStatics(groupRomanClustersByLine(rubyClusters, lineCount), charXMap,
@@ -460,20 +458,21 @@ final class SyllableRomanLayout {
             rubyMap.put(rc.wordIndex(), rc);
         }
 
+        final int textLen = mainText.length();
         float[] sylSlotWidths = new float[alignedSyllables.size()];
         for (int sylIdx = 0; sylIdx < alignedSyllables.size(); sylIdx++) {
             AlignedSyllable syl = alignedSyllables.get(sylIdx);
             RomanizedWordCluster cluster = clusterMap.get(sylIdx);
             RomanizedWordCluster rubyCluster = rubyMap.get(sylIdx);
-            final int startOff = Math.max(0, Math.min(syl.startOffset(), mainText.length()));
+            final int startOff = Math.max(0, Math.min(syl.startOffset(), textLen));
+            final int sylEndClamped = Math.min(syl.endOffset(), textLen);
+            final int endOff = Math.max(startOff, sylEndClamped);
             final int nextStartOff = (sylIdx + 1 < alignedSyllables.size())
-                    ? Math.max(syl.endOffset(), Math.min(alignedSyllables.get(sylIdx + 1).startOffset(), mainText.length()))
-                    : Math.max(startOff, Math.min(syl.endOffset(), mainText.length()));
-            final boolean hasNewlineInGap = mainText.substring(
-                    Math.max(0, Math.min(syl.endOffset(), mainText.length())), nextStartOff).indexOf('\n') >= 0;
-            final int slotEndOff = hasNewlineInGap
-                    ? Math.max(startOff, Math.min(syl.endOffset(), mainText.length()))
-                    : nextStartOff;
+                    ? Math.max(syl.endOffset(), Math.min(alignedSyllables.get(sylIdx + 1).startOffset(), textLen))
+                    : endOff;
+            final int gapStart = Math.max(0, sylEndClamped);
+            final boolean hasNewlineInGap = mainText.substring(gapStart, nextStartOff).indexOf('\n') >= 0;
+            final int slotEndOff = hasNewlineInGap ? endOff : nextStartOff;
             final float startX = unconstrained.getPrimaryHorizontal(startOff);
             final float endX = unconstrained.getPrimaryHorizontal(slotEndOff);
             final float slotMainWidth = Math.max(1f, endX - startX);
@@ -492,25 +491,25 @@ final class SyllableRomanLayout {
         for (int sylIdx = 0; sylIdx < alignedSyllables.size(); sylIdx++) {
             AlignedSyllable syl = alignedSyllables.get(sylIdx);
             final float slotW = sylSlotWidths[sylIdx];
+            final int sylStartOff = Math.max(0, Math.min(syl.startOffset(), textLen));
             AlignedSyllable prevSyl = sylIdx > 0 ? alignedSyllables.get(sylIdx - 1) : null;
 
             if (prevSyl != null) {
-                final int gs = Math.max(0, Math.min(prevSyl.endOffset(), mainText.length()));
-                final int ge = Math.max(gs, Math.min(syl.startOffset(), mainText.length()));
+                final int gs = Math.max(0, Math.min(prevSyl.endOffset(), textLen));
+                final int ge = Math.max(gs, sylStartOff);
                 if (mainText.substring(gs, ge).indexOf('\n') >= 0) {
                     currentLineSlotSum = 0f;
                     syllablesOnCurrentLine = 0;
-                    currentLineStartOffset = Math.max(0, Math.min(syl.startOffset(), mainText.length()));
+                    currentLineStartOffset = sylStartOff;
                 }
             }
 
             final float breakThreshold = widthPx - fontSizePx * 0.1f;
             if (syllablesOnCurrentLine > 0 && currentLineSlotSum + slotW > breakThreshold) {
-                final int rawBreakAt = Math.max(0, Math.min(syl.startOffset(), mainText.length()));
-                Integer breakAt = findSafeBreakOffset(mainText, rawBreakAt, currentLineStartOffset);
+                Integer breakAt = findSafeBreakOffset(mainText, sylStartOff, currentLineStartOffset);
                 if (breakAt != null && breakAt > 0) {
                     breakIndices.add(breakAt);
-                    if (breakAt - 1 < mainText.length() && mainText.charAt(breakAt - 1) == ' ') {
+                    if (breakAt - 1 < textLen && mainText.charAt(breakAt - 1) == ' ') {
                         spaceReplaced.add(breakAt - 1);
                     }
                     currentLineStartOffset = breakAt;
@@ -530,29 +529,31 @@ final class SyllableRomanLayout {
             return mainText;
         }
 
+        return applyLineBreaks(mainText, breakIndices, spaceReplaced);
+    }
+
+    private static String applyLineBreaks(
+            String mainText,
+            List<Integer> breakIndices,
+            Set<Integer> spaceReplaced) {
         StringBuilder sb = new StringBuilder(mainText.length() + breakIndices.size());
+        final int textLen = mainText.length();
         int prev = 0;
         for (int bIdx : breakIndices) {
-            final int safeBIdx = Math.max(0, Math.min(bIdx, mainText.length()));
-            final int safePrev = Math.max(0, Math.min(prev, mainText.length()));
-            if (safeBIdx > safePrev) {
+            final int safeBIdx = Math.max(0, Math.min(bIdx, textLen));
+            if (safeBIdx > prev) {
                 final int spaceIdx = safeBIdx - 1;
-                if (spaceReplaced.contains(spaceIdx)
-                        && spaceIdx >= 0 && spaceIdx < mainText.length()
-                        && mainText.charAt(spaceIdx) == ' ') {
-                    sb.append(mainText, safePrev, spaceIdx);
-                    sb.append('\n');
-                    prev = safeBIdx;
+                if (spaceReplaced.contains(spaceIdx) && mainText.charAt(spaceIdx) == ' ') {
+                    sb.append(mainText, prev, spaceIdx);
                 } else {
-                    sb.append(mainText, safePrev, safeBIdx);
-                    sb.append('\n');
-                    prev = safeBIdx;
+                    sb.append(mainText, prev, safeBIdx);
                 }
+                sb.append('\n');
+                prev = safeBIdx;
             }
         }
-        final int finalPrev = Math.max(0, Math.min(prev, mainText.length()));
-        if (finalPrev < mainText.length()) {
-            sb.append(mainText.substring(finalPrev));
+        if (prev < textLen) {
+            sb.append(mainText.substring(prev));
         }
         return sb.toString();
     }
@@ -572,10 +573,8 @@ final class SyllableRomanLayout {
         if (rawBreakAt <= lineStartOffset || rawBreakAt > mainText.length()) {
             return null;
         }
-        Character before = rawBreakAt - 1 >= 0 && rawBreakAt - 1 < mainText.length()
-                ? mainText.charAt(rawBreakAt - 1) : null;
-        Character at = rawBreakAt >= 0 && rawBreakAt < mainText.length()
-                ? mainText.charAt(rawBreakAt) : null;
+        Character before = rawBreakAt > 0 ? mainText.charAt(rawBreakAt - 1) : null;
+        Character at = rawBreakAt < mainText.length() ? mainText.charAt(rawBreakAt) : null;
 
         // Korean words are spaced, so a break inside one moves back to the last space.
         final int lastSpaceOnLine = mainText.substring(lineStartOffset, rawBreakAt).lastIndexOf(' ');
@@ -592,14 +591,16 @@ final class SyllableRomanLayout {
             }
         }
 
+        final boolean beforeUnspaced = before != null && LyricsWordBoundaries.isUnspacedCodePoint(before);
+        final boolean atUnspaced = at != null && LyricsWordBoundaries.isUnspacedCodePoint(at);
         final boolean atUnspacedBoundary =
-                (before == null || before == ' ' || LyricsWordBoundaries.isUnspacedCodePoint(before))
-                        && (at == null || at == ' ' || LyricsWordBoundaries.isUnspacedCodePoint(at) || LyricsWordBoundaries.isUnspacedCodePoint(before));
+                (before == null || before == ' ' || beforeUnspaced)
+                        && (at == null || at == ' ' || atUnspaced || beforeUnspaced);
 
         int candidate = rawBreakAt;
         if (!atUnspacedBoundary) {
             int i = rawBreakAt;
-            while (i > lineStartOffset) {
+            do {
                 final char c = mainText.charAt(i - 1);
                 Character next = i < mainText.length() ? mainText.charAt(i) : null;
                 if (c == ' ' || LyricsWordBoundaries.isUnspacedCodePoint(c) || (next != null && LyricsWordBoundaries.isUnspacedCodePoint(next))) {
@@ -607,7 +608,7 @@ final class SyllableRomanLayout {
                     break;
                 }
                 i--;
-            }
+            } while (i > lineStartOffset);
             if (i <= lineStartOffset) {
                 return null;
             }
@@ -616,11 +617,10 @@ final class SyllableRomanLayout {
         while (candidate > lineStartOffset
                 && candidate < mainText.length()
                 && isProhibitedLineStart(mainText.charAt(candidate))) {
-            candidate--;
-            while (candidate > lineStartOffset
-                    && !(mainText.charAt(candidate - 1) == ' ' || LyricsWordBoundaries.isUnspacedCodePoint(mainText.charAt(candidate - 1)))) {
+            do {
                 candidate--;
-            }
+            } while (candidate > lineStartOffset
+                    && !(mainText.charAt(candidate - 1) == ' ' || LyricsWordBoundaries.isUnspacedCodePoint(mainText.charAt(candidate - 1))));
         }
 
         return candidate > lineStartOffset ? candidate : null;
@@ -681,7 +681,7 @@ final class SyllableRomanLayout {
         for (int i = 0; i <= len; i++) {
             final int idx = Math.min(i, maxIdx);
             final int li = Math.max(0, Math.min(textLayoutResult.getLineForOffset(idx), lineCount - 1));
-            final float h = textLayoutResult.getPrimaryHorizontal(Math.min(i, len));
+            final float h = textLayoutResult.getPrimaryHorizontal(i);
             final float local = lineIsRtl[li]
                     ? textLayoutResult.getLineRight(li) - h
                     : h - textLayoutResult.getLineLeft(li);
@@ -824,7 +824,7 @@ final class SyllableRomanLayout {
             final int eli = textLayoutResult.getLineForOffset(safeEnd);
             final float hStart = textLayoutResult.getPrimaryHorizontal(safeStart);
             final float hEnd = (li == eli)
-                    ? textLayoutResult.getPrimaryHorizontal(Math.min(end, len))
+                    ? textLayoutResult.getPrimaryHorizontal(end)
                     : textLayoutResult.getLineRight(li);
             final float x = Math.min(hStart, hEnd);
             final float w = Math.abs(hEnd - hStart);
@@ -937,7 +937,6 @@ final class SyllableRomanLayout {
             float[] charXMap,
             float[] romanStartShift,
             float[] lineBaselines,
-            float[] lineBottoms,
             float[] lineLefts,
             float[] lineStarts,
             int lineCount,

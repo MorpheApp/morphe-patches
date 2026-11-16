@@ -2631,8 +2631,7 @@ public final class RestoreOriginalTitlesPatch {
                 continue;
             }
             if (Character.isWhitespace(c) || Character.isSpaceChar(c)) {
-                //noinspection SizeReplaceableByIsEmpty
-                space = builder.length() > 0;
+                space = Utils.isNotEmpty(builder);
                 continue;
             }
             if (space) {

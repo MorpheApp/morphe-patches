@@ -19,6 +19,7 @@ import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 
 /**
  * The reading a line is drawn with: the whole-line romanization, the provider's per-word one, and
@@ -74,8 +75,7 @@ final class LyricsReadingCalc {
                     // unplaced word keeps the gap.
                     String own = (secondary ? LyricsBracketSplitter.stripAllBrackets(word.text()) : word.text()).trim();
                     final int found = own.isEmpty() ? -1 : original.indexOf(own, at);
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (text.length() > 0 && !sameWrittenWord(at, found, previous, own)) {
+                    if (Utils.isNotEmpty(text) && !sameWrittenWord(at, found, previous, own)) {
                         text.append(' ');
                     }
                     final int start = text.length();
@@ -219,8 +219,7 @@ final class LyricsReadingCalc {
                             if (LyricsTextUtils.isSecondaryLine(line)) {
                                 r = LyricsBracketSplitter.stripAllBrackets(r);
                             }
-                            //noinspection SizeReplaceableByIsEmpty
-                            if (sb.length() > 0 && sb.charAt(sb.length() - 1) != ' ') {
+                            if (Utils.isNotEmpty(sb) && sb.charAt(sb.length() - 1) != ' ') {
                                 sb.append(' ');
                             }
                             sb.append(r.trim());

@@ -741,7 +741,7 @@ public final class LyricsRomanizer {
                 Word w = origWords.get(wIdx);
                 String rom = (wIdx < alignedChunks.size() && alignedChunks.get(wIdx) != null) ? alignedChunks.get(wIdx) : "";
                 romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
-                if (lineRomBuilder.length() > 0 && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
+                if (Utils.isNotEmpty(lineRomBuilder) && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
                     lineRomBuilder.append(' ');
                 }
                 lineRomBuilder.append(rom);
@@ -877,8 +877,7 @@ public final class LyricsRomanizer {
                 if (text == null) continue;
                 text = stripParentheses(text).trim();
                 if (!text.isEmpty()) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (merged.length() > 0) merged.append('\n');
+                    if (Utils.isNotEmpty(merged)) merged.append('\n');
                     merged.append(text);
                 }
             }
@@ -1256,8 +1255,7 @@ public final class LyricsRomanizer {
     }
 
     public static boolean isPurelyLatinScript(@Nullable CharSequence text) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (text == null || text.length() == 0) return true;
+        if (Utils.isEmpty(text)) return true;
         for (int i = 0; i < text.length(); ) {
             int cp = Character.codePointAt(text, i);
             i += Character.charCount(cp);

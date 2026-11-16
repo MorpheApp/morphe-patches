@@ -22,7 +22,6 @@ import android.icu.text.CompactDecimalFormat;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -284,7 +283,7 @@ public final class FeedViewCountPatch {
             return null;
         }
         StringBuilder path = contextInterface.patch_getPathBuilder();
-        if (TextUtils.isEmpty(path)) {
+        if (Utils.isEmpty(path)) {
             return null;
         }
         StringJoiner elements = new StringJoiner("|");
@@ -1235,7 +1234,7 @@ public final class FeedViewCountPatch {
         }
         if (duration == null && info.hasDuration && thumbnail != null) {
             // The host of the whole thumbnail draws the duration, such as on the small thumbnails of the
-            // rows of a playlist, so where it is is estimated, and the badges do not overlap it.
+            // rows of a playlist, so where it is estimated, and the badges do not overlap it.
             duration = estimateDurationBadge(host, thumbnail, info.badgeText);
         }
         return new ThumbnailFrame(duration, thumbnail, false);
@@ -1415,7 +1414,10 @@ public final class FeedViewCountPatch {
      */
     @Nullable
     public static Rect getBadgeBounds(View host) {
-        ViewCountBadge badge = badges.get(host);
+        if (!(host instanceof ComponentHost componentHost)) {
+            return null;
+        }
+        ViewCountBadge badge = badges.get(componentHost);
         return badge == null || !badge.added ? null : new Rect(badge.getBounds());
     }
 
@@ -1425,7 +1427,10 @@ public final class FeedViewCountPatch {
      * Must be called on the main thread.
      */
     public static void setBadgeJoined(View host, boolean joined) {
-        ViewCountBadge badge = badges.get(host);
+        if (!(host instanceof ComponentHost componentHost)) {
+            return;
+        }
+        ViewCountBadge badge = badges.get(componentHost);
         if (badge != null && badge.joined != joined) {
             badge.joined = joined;
             badge.invalidateSelf();
