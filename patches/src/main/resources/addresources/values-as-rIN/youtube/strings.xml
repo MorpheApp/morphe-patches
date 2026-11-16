@@ -542,6 +542,8 @@ Ask বুটাম থকা এটা ভিডিঅ' এবাৰ খোল�
   <string name="morphe_disable_chapter_skip_double_tap_title">ডাবল-ট্যাপ চেপটাৰ স্কিপ নিষ্ক্ৰীয় কৰক</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">দুটি আঙুলিৰে ডাবল-টেপ গেচ্চাৰটো নিষ্ক্ৰীয় কৰে যিয়ে অধ্যায়সমূহ স্কিপ কৰে, যিটো ভুলবশতঃ এটা আঙুলিৰ দ্বাৰা ট্রিগাৰ হ\'ব পাৰে</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">তৃতীয় পক্ষৰ ডাউনলোড এপৰ সহায়ত ভিডিঅ\', পডকাস্ট বা গান ডাউনলোড কৰক</string>
   <string name="morphe_external_downloader_overlay_button_title">প্লেয়াৰ অভাৰলে ডাউনলোড বুটাম দেখুৱাওক</string>
   <string name="morphe_external_downloader_overlay_button_summary">ভিডিঅ’ প্লেয়াৰত এটা বুটাম দেখুৱায় যিয়ে আপোনাৰ এক্সটার্ণেল ডাউনলোডাৰ খুলি দিয়ে</string>
@@ -558,6 +560,8 @@ Ask বুটাম থকা এটা ভিডিঅ' এবাৰ খোল�
   <string name="morphe_shorts_download_flyout_button_title">Shorts মেনুত ডাউনলোড দেখুৱাওক</string>
   <string name="morphe_shorts_download_flyout_button_summary">Shorts প্লেয়াৰৰ মেনুতো এটা ডাউনলোড আইটেম যোগ কৰে</string>
   <string name="morphe_shorts_download_flyout_title">ডাউনলোড</string>
+  <string name="morphe_feed_download_flyout_button_title">ভিডিঅ\'ৰ মেনুলৈ ডাউনলোড দেখুওক</string>
+  <string name="morphe_feed_download_flyout_button_summary">ফিডৰ সেইবোৰ ভিডিঅ\'ৰ মেনুলৈ এটা ডাউনলোড আইটেম যোগ কৰে যাৰ কোনো নাই, যেনে সেইবোৰ ভিডিঅ\' যিবোৰ YouTube-এ কেৱল Premium সদস্যসকলক ডাউনলোড কৰিবলৈ দিয়ে</string>
   <string name="morphe_export_download_folder_title">সংৰক্ষিত ভিডিঅ\'সমূহ এক্সপোর্ট কৰক</string>
   <string name="morphe_export_download_folder_summary">"ইন-এপ ডাউনলোড ফ্লাউআউট মেনু ব্যৱহাৰ কৰি এপৰ ভিতৰত সংৰক্ষিত ভিডিঅ'বোৰ আপোনাৰ ডিভাইচৰ ষ্টোৰেজলৈ এক্সপোর্ট কৰক। এক্সপোর্ট ফোল্ডাৰটো সলনি কৰিবলৈ টেপ কৰক
 
@@ -1486,7 +1490,7 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_dearrow_titles_player_title">প্লেয়াৰ প্লেলিষ্ট আৰু পৰামৰ্শসমূহ</string>
   <string name="morphe_dearrow_titles_search_title">অনুসন্ধানৰ ফলাফল</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow আইকন দেখুৱাওক</string>
-  <string name="morphe_dearrow_titles_icon_summary">Crowdsourced ভিডিঅ\'ৰ শিৰোনামত DeArrow আইকনটো দেখুৱায়। মূল শিৰোনাম আৰু থাম্বনেইলটো দেখুৱাবলৈ আইকনটোত টেপ কৰক</string>
+  <string name="morphe_dearrow_titles_icon_summary">ক্ৰাউডচৰ্চড শিৰোনাম বা থাম্বনেইল থকা ভিডিঅ\'ৰ শিৰোনামত DeArrow আইকনটো দেখুৱায়। মূল শিৰোনাম আৰু থাম্বনেইলটো দেখুৱাবলৈ আইকনটোত টেপ কৰক</string>
   <string name="morphe_dearrow_casual_mode_title">কেজুৱেল মোড</string>
   <string name="morphe_dearrow_casual_mode_summary">যদি DeArrow ব্যৱহাৰকাৰীসকলে মূল শিৰোনামটো পছন্দ কৰিছে বুলি ভোট দিয়ে, তেন্তে DeArrow শিৰোনামৰ পৰিৱৰ্তে মূল শিৰোনামটো দেখুৱাব</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">মূল শিৰোনাম দেখুৱাবলৈ নূন্যতম কেজুৱেল ভোট</string>

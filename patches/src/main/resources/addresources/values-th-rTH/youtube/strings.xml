@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">ปิดใช้งานการข้ามส่วนเนื้อหาโดยการแตะสองครั้ง</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">ปิดใช้งานท่าทางแตะสองครั้งด้วยสองนิ้วที่ข้ามส่วนเนื้อหา ซึ่งอาจถูกเรียกใช้งานโดยไม่ได้ตั้งใจด้วยนิ้วเดียว</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">ดาวน์โหลดวิดีโอ พอดแคสต์ หรือเพลงด้วยแอปดาวน์โหลดของบุคคลที่สาม</string>
   <string name="morphe_external_downloader_overlay_button_title">แสดงปุ่มดาวน์โหลดซ้อนทับของเครื่องเล่น</string>
   <string name="morphe_external_downloader_overlay_button_summary">แสดงปุ่มในเครื่องเล่นวิดีโอที่จะเปิดตัวดาวน์โหลดภายนอกของคุณ</string>
@@ -558,6 +560,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">แสดงการดาวน์โหลดในเมนู Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">เพิ่มรายการดาวน์โหลดลงในเมนูของเครื่องเล่น Shorts</string>
   <string name="morphe_shorts_download_flyout_title">ดาวน์โหลด</string>
+  <string name="morphe_feed_download_flyout_button_title">แสดงการดาวน์โหลดในเมนูวิดีโอ</string>
+  <string name="morphe_feed_download_flyout_button_summary">เพิ่มรายการดาวน์โหลดในเมนูของวิดีโอในฟีดที่ไม่มีรายการนี้ เช่น วิดีโอที่ YouTube อนุญาตให้สมาชิก Premium ดาวน์โหลดเท่านั้น</string>
   <string name="morphe_export_download_folder_title">ส่งออกวิดีโอที่บันทึกไว้</string>
   <string name="morphe_export_download_folder_summary">"ส่งออกวิดีโอที่บันทึกไว้ในแอปไปยังที่เก็บข้อมูลในอุปกรณ์ของคุณโดยใช้เมนูดาวน์โหลดในแอป แตะเพื่อเปลี่ยนโฟลเดอร์ส่งออก
 
@@ -1486,7 +1490,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">เพลย์ลิสต์เครื่องเล่น &amp; คำแนะนำ</string>
   <string name="morphe_dearrow_titles_search_title">ผลลัพธ์การค้นหา</string>
   <string name="morphe_dearrow_titles_icon_title">แสดงไอคอน DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">แสดงไอคอน DeArrow บนชื่อวิดีโอที่ใช้ข้อมูลจาก crowdsource แตะที่ไอคอนเพื่อแสดงชื่อและภาพตัวอย่างต้นฉบับ</string>
+  <string name="morphe_dearrow_titles_icon_summary">แสดงไอคอน DeArrow บนชื่อของวิดีโอที่มีชื่อหรือภาพขนาดย่อจากการระดมความคิดจากชุมชน แตะที่ไอคอนเพื่อแสดงชื่อและภาพขนาดย่อต้นฉบับ</string>
   <string name="morphe_dearrow_casual_mode_title">โหมดทั่วไป</string>
   <string name="morphe_dearrow_casual_mode_summary">แสดงชื่อเรื่องต้นฉบับแทนชื่อเรื่อง DeArrow หากผู้ใช้ DeArrow โหวตว่าพวกเขาชอบชื่อเรื่องต้นฉบับ</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">จำนวนโหวตแบบทั่วไปขั้นต่ำเพื่อแสดงชื่อเรื่องต้นฉบับ</string>

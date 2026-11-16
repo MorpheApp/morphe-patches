@@ -542,6 +542,8 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <string name="morphe_disable_chapter_skip_double_tap_title">Díchumasaigh scipeáil caibidle trí thapáil faoi dhó</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Díchumasaíonn sé an ghluaiseacht sconna dúbailte dhá mhéar a scipeálann caibidlí, a d\'fhéadfaí a spreagadh de thaisme le méar amháin.</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
   <string name="morphe_external_downloader_overlay_button_title">Taispeáin cnaipe íoslódála ar fhorleagan an imreora</string>
   <string name="morphe_external_downloader_overlay_button_summary">Taispeánann sé cnaipe sa seinnteoir físe a osclaíonn d’uirlis íoslódála sheachtrach</string>
@@ -558,6 +560,8 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <string name="morphe_shorts_download_flyout_button_title">Taispeáin an íoslódáil i roghchlár na Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Cuireann sé mír íoslódála le roghchlár an imreora Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Íoslódáil</string>
+  <string name="morphe_feed_download_flyout_button_title">Taispeáin íoslódáil i roghchlárí físeán</string>
+  <string name="morphe_feed_download_flyout_button_summary">Cuireann sé mír íoslódála i roghchlárí físeán sa phléa a níl aon rud ann, mar shampla, físeán a ligeann YouTube do bhaill Premium amháin a íoslódáil</string>
   <string name="morphe_export_download_folder_title">Easpórtáil físeáin sábháilte</string>
   <string name="morphe_export_download_folder_summary">"Easpórtáil físeáin a sábháladh laistigh den aip chuig stóráil do ghléis, ag baint úsáide as an roghchlár aníos le haghaidh íoslódálacha san aip. Beartaigh chun an fillteán easpórtála a athrú.
 
@@ -1486,7 +1490,7 @@ Leagan amach feithicleach
   <string name="morphe_dearrow_titles_player_title">Seinmliostaí imreora &amp; moltaí</string>
   <string name="morphe_dearrow_titles_search_title">Torthaí cuardaigh</string>
   <string name="morphe_dearrow_titles_icon_title">Taispeáin deilbhín DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Taispeánann sé deilbhín DeArrow ar theidil físeán a chuir úsáideoirí eile ar fáil. Beartaigh ar an deilbhín chun an teideal bunaidh agus an mionsamhla a thaispeáint.</string>
+  <string name="morphe_dearrow_titles_icon_summary">Taispeánann sé deilbhín DeArrow ar theidil físeán a chuir úsáideoirí eile ar fáil. Beartaigh ar an deilbhín chun an teideal bunaidh agus an mionsamhla a thaispeáint</string>
   <string name="morphe_dearrow_casual_mode_title">Mód ócáideach</string>
   <string name="morphe_dearrow_casual_mode_summary">Taispeánann sé an teideal bunaidh in ionad an teidil DeArrow má vótáil úsáideoirí DeArrow gur maith leo an teideal bunaidh</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Íonlíon vótaí ó úsáideoirí ócáideacha chun an buntheideal a thaispeáint</string>

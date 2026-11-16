@@ -543,6 +543,8 @@ Nachdem ein Video mit der Ask-Schaltfläche einmal geöffnet wurde, funktioniert
   <string name="morphe_disable_chapter_skip_double_tap_title">Doppeltippen zum Überspringen von Kapiteln deaktivieren</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiviert die Zwei-Finger-Doppeltipp-Geste zum Überspringen von Kapiteln, die versehentlich mit einem Finger ausgelöst werden kann</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Videos, Podcasts oder Songs mit externen Download-Apps herunterladen</string>
   <string name="morphe_external_downloader_overlay_button_title">Download-Schaltfläche im Player-Overlay anzeigen</string>
   <string name="morphe_external_downloader_overlay_button_summary">Zeigt eine Schaltfläche im Videoplayer, die deinen externen Downloader öffnet</string>
@@ -559,6 +561,8 @@ Nachdem ein Video mit der Ask-Schaltfläche einmal geöffnet wurde, funktioniert
   <string name="morphe_shorts_download_flyout_button_title">Download im Shorts-Menü anzeigen</string>
   <string name="morphe_shorts_download_flyout_button_summary">Fügt dem Menü des Shorts-Players einen Download-Eintrag hinzu</string>
   <string name="morphe_shorts_download_flyout_title">Herunterladen</string>
+  <string name="morphe_feed_download_flyout_button_title">Download in Videomenüs anzeigen</string>
+  <string name="morphe_feed_download_flyout_button_summary">Fügt den Menüs von Videos im Feed, die keinen Download-Punkt haben, einen solchen hinzu, wie z. B. bei Videos, die YouTube nur Premium-Mitgliedern zum Download erlaubt</string>
   <string name="morphe_export_download_folder_title">Gespeicherte Videos exportieren</string>
   <string name="morphe_export_download_folder_summary">"Exportiere in der App gespeicherte Videos über das Download-Flyout-Menü auf deinen Gerätespeicher. Tippe hier, um den Export-Ordner zu ändern
 
@@ -1486,7 +1490,7 @@ Automobil-Layout
   <string name="morphe_dearrow_titles_player_title">Player-Wiedergabelisten &amp; Empfehlungen</string>
   <string name="morphe_dearrow_titles_search_title">Suchergebnisse</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow-Symbol anzeigen</string>
-  <string name="morphe_dearrow_titles_icon_summary">Zeigt das DeArrow-Symbol bei Crowdsourcing-Videotiteln an. Tippen Sie auf das Symbol, um den Originaltitel und das Vorschaubild anzuzeigen</string>
+  <string name="morphe_dearrow_titles_icon_summary">Zeigt das DeArrow-Symbol bei Titeln von Videos mit einem Crowdsourcing-Titel oder -Vorschaubild an. Tippe auf das Symbol, um den ursprünglichen Titel und das Vorschaubild anzuzeigen</string>
   <string name="morphe_dearrow_casual_mode_title">Gelegenheitsmodus</string>
   <string name="morphe_dearrow_casual_mode_summary">Zeigt den ursprünglichen Titel anstelle des DeArrow-Titels, wenn DeArrow-Benutzer abgestimmt haben, dass ihnen der ursprüngliche Titel gefällt</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Mindestanzahl an Gelegenheitsstimmen, um den Originaltitel anzuzeigen</string>

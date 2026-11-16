@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Απενεργοποιήστε την παράλειψη κεφαλαίων με διπλό πάτημα</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Απενεργοποιεί τη χειρονομία διπλού αγγίγματος με δύο δάχτυλα που παραλείπει κεφάλαια, η οποία μπορεί να ενεργοποιηθεί κατά λάθος με ένα δάχτυλο</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Κάντε λήψη βίντεο, podcast ή τραγούδια με εφαρμογές λήψης τρίτων</string>
   <string name="morphe_external_downloader_overlay_button_title">Εμφάνιση κουμπιού λήψης για το overlay του player</string>
   <string name="morphe_external_downloader_overlay_button_summary">Εμφανίζει ένα κουμπί στον video player που ανοίγει το εξωτερικό πρόγραμμα λήψης σας</string>
@@ -558,6 +560,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">Εμφάνιση λήψης στο μενού Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Προσθέτει ένα στοιχείο λήψης στο μενού του προγράμματος αναπαραγωγής Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Λήψη</string>
+  <string name="morphe_feed_download_flyout_button_title">Εμφάνιση λήψης στα μενού βίντεο</string>
+  <string name="morphe_feed_download_flyout_button_summary">Προσθέτει ένα στοιχείο λήψης στα μενού των βίντεο στο feed που δεν διαθέτουν τέτοιο στοιχείο, όπως τα βίντεο που το YouTube επιτρέπει να ληγθούν μόνο σε μέλη Premium</string>
   <string name="morphe_export_download_folder_title">Εξαγωγή αποθηκευμένων βίντεο</string>
   <string name="morphe_export_download_folder_summary">"Εξαγάγετε τα βίντεο που αποθηκεύτηκαν στην εφαρμογή στη μνήμη της συσκευής σας χρησιμοποιώντας το αναδυόμενο μενού λήψεων της εφαρμογής. Πατήστε για να αλλάξετε τον φάκελο εξαγωγής
 
@@ -1485,7 +1489,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">Λίστες αναπαραγωγής &amp; προτάσεις</string>
   <string name="morphe_dearrow_titles_search_title">Αποτελέσματα αναζήτησης</string>
   <string name="morphe_dearrow_titles_icon_title">Εμφάνιση εικονιδίου DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Εμφανίζει το εικονίδιο DeArrow στους τίτλους βίντεο που βασίζονται σε crowdsourcing. Πατήστε το εικονίδιο για να εμφανίσετε τον αρχικό τίτλο και τη μικρογραφία</string>
+  <string name="morphe_dearrow_titles_icon_summary">Εμφανίζει το εικονίδιο DeArrow στους τίτλους βιντεοκλίπ με τίτλο ή μικρογραφία από την κοινότητα. Πατήστε το εικονίδιο για να δείτε τον αρχικό τίτλο και τη μικρογραφία</string>
   <string name="morphe_dearrow_casual_mode_title">Χαλαρή λειτουργία</string>
   <string name="morphe_dearrow_casual_mode_summary">Εμφανίζει τον αρχικό τίτλο αντί για τον τίτλο DeArrow, αν οι χρήστες του DeArrow ψήφισαν ότι τους αρέσει ο αρχικός τίτλος</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Ελάχιστος αριθμός ψήφων casual για την εμφάνιση του αρχικού τίτλου</string>

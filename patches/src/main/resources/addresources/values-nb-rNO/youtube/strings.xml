@@ -542,6 +542,8 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <string name="morphe_disable_chapter_skip_double_tap_title">Deaktiver dobbelttrykk for å hoppe til neste kapittel</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiverer kapittelhopping med tofinger-dobbeltrykk, som kan utløses ved et uhell med én finger</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Last ned videoer, podkaster eller sanger med nedlastingsapper fra tredjeparter</string>
   <string name="morphe_external_downloader_overlay_button_title">Vis nedlastingsknapp for avspilleroverlegg</string>
   <string name="morphe_external_downloader_overlay_button_summary">Viser en knapp i videospilleren som åpner den eksterne nedlasteren din</string>
@@ -558,6 +560,8 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <string name="morphe_shorts_download_flyout_button_title">Vis nedlastinger i Shorts-menyen</string>
   <string name="morphe_shorts_download_flyout_button_summary">Legger til et nedlastingspunkt i menyen for Shorts-spilleren</string>
   <string name="morphe_shorts_download_flyout_title">Last ned</string>
+  <string name="morphe_feed_download_flyout_button_title">Vis nedlasting i videomenyer</string>
+  <string name="morphe_feed_download_flyout_button_summary">Legger til et nedlastingspunkt i menyene til videoer i feeden som mangler dette, slik som videoer YouTube kun lar Premium-medlemmer laste ned</string>
   <string name="morphe_export_download_folder_title">Eksporter lagrede videoer</string>
   <string name="morphe_export_download_folder_summary">"Eksporter videoer lagret i appen til enhetens lagring ved hjelp av nedlastingsmenyen i appen. Trykk for å endre eksportermappe
 
@@ -1485,7 +1489,7 @@ Bilvisning
   <string name="morphe_dearrow_titles_player_title">Avspiller, spillelister &amp; anbefalinger</string>
   <string name="morphe_dearrow_titles_search_title">Søkeresultater</string>
   <string name="morphe_dearrow_titles_icon_title">Vis DeArrow-ikonet</string>
-  <string name="morphe_dearrow_titles_icon_summary">Viser DeArrow-ikonet på folkemengde-baserte videotitler. Trykk på ikonet for å vise den opprinnelige tittelen og miniatyrbildet</string>
+  <string name="morphe_dearrow_titles_icon_summary">Viser DeArrow-ikonet på titler på videoer med en crowdsourcet tittel eller et miniatyrbilde. Trykk på ikonet for å vise den opprinnelige tittelen og det opprinnelige miniatyrbildet</string>
   <string name="morphe_dearrow_casual_mode_title">Uformell modus</string>
   <string name="morphe_dearrow_casual_mode_summary">Viser originaltittelen i stedet for DeArrow-tittelen hvis DeArrow-brukere har stemt at de liker originaltittelen</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum antall uformelle stemmer for å vise originaltittel</string>

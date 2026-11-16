@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">禁用双击章节跳过</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">禁用双指双击跳过章节的手势，该手势可能被单指意外触发</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">使用第三方下载应用程序下载视频、播客或歌曲</string>
   <string name="morphe_external_downloader_overlay_button_title">显示播放器覆盖层下载按钮</string>
   <string name="morphe_external_downloader_overlay_button_summary">在视频播放器中显示一个打开外部下载器的按钮</string>
@@ -558,6 +560,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">在 Shorts 菜单中显示下载</string>
   <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器菜单中添加下载项</string>
   <string name="morphe_shorts_download_flyout_title">下载</string>
+  <string name="morphe_feed_download_flyout_button_title">在视频菜单中显示下载</string>
+  <string name="morphe_feed_download_flyout_button_summary">为 feed 中原本没有下载项的视频菜单添加下载项，例如 YouTube 仅允许 Premium 会员下载的视频</string>
   <string name="morphe_export_download_folder_title">导出已保存的视频</string>
   <string name="morphe_export_download_folder_summary">"使用应用内下载弹出菜单将应用内保存的视频导出到设备存储空间。点击以更改导出文件夹
 
@@ -1486,7 +1490,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">播放器播放列表&amp;推荐</string>
   <string name="morphe_dearrow_titles_search_title">搜索结果</string>
   <string name="morphe_dearrow_titles_icon_title">显示DeArrow图标</string>
-  <string name="morphe_dearrow_titles_icon_summary">在众包视频标题上显示 DeArrow 图标。点击该图标可显示原始标题和缩略图</string>
+  <string name="morphe_dearrow_titles_icon_summary">在具有众包标题或缩略图的视频标题上显示 DeArrow 图标。点击该图标可显示原始标题和缩略图</string>
   <string name="morphe_dearrow_casual_mode_title">休闲模式</string>
   <string name="morphe_dearrow_casual_mode_summary">如果DeArrow用户投票赞成原标题，则显示原标题而不是DeArrow标题</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">显示原标题所需的最低休闲票数</string>

@@ -542,6 +542,8 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_disable_chapter_skip_double_tap_title">Estää kaksinkertaisella napautuksella siirtymisen vahingossa seuraavaan tai edelliseen lukuun</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Poistaa käytöstä kaksoisnapautusliikkeen, joka ohittaa luvut, mikä voi vahingossa laukaistua yhdellä sormella</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Lataa videoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
   <string name="morphe_external_downloader_overlay_button_title">Näytä pelaajan peitteen latauspainike</string>
   <string name="morphe_external_downloader_overlay_button_summary">Näyttää latauspainikkeen videosoittimessa, joka avaa ulkoisen lataussovelluksen</string>
@@ -558,6 +560,8 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_shorts_download_flyout_button_title">Näytä lataus Shorts-valikossa</string>
   <string name="morphe_shorts_download_flyout_button_summary">Lisää latauskohta Shorts-soittimen valikkoon</string>
   <string name="morphe_shorts_download_flyout_title">Lataa</string>
+  <string name="morphe_feed_download_flyout_button_title">Näytä lataus videoiden valikoissa</string>
+  <string name="morphe_feed_download_flyout_button_summary">Lisää latausvaihtoehdon syötteen videoiden valikoihin, joista se puuttuu, kuten videoihin, jotka YouTube antaa ladata vain Premium-jäsenten</string>
   <string name="morphe_export_download_folder_title">Vie tallennetut videot</string>
   <string name="morphe_export_download_folder_summary">"Vie sovelluksen sisälle tallennetut videot laitteesi tallennustilaan latausten pikavalikon avulla. Napauta vaihtaaksesi viekansionin
 
@@ -1485,7 +1489,7 @@ Auton asettelu
   <string name="morphe_dearrow_titles_player_title">Soittimen soittolistat ja suositukset</string>
   <string name="morphe_dearrow_titles_search_title">Hakutulokset</string>
   <string name="morphe_dearrow_titles_icon_title">Näytä DeArrow-kuvake</string>
-  <string name="morphe_dearrow_titles_icon_summary">Näyttää DeArrow-kuvakkeen yhteisön tuottamien videoiden otsikoissa. Napauta kuvaketta näyttääksesi alkuperäisen otsikon ja pikkukuvan</string>
+  <string name="morphe_dearrow_titles_icon_summary">Näyttää DeArrow-kuvakkeen videoiden otsikoissa, joissa on yhteisön luoma otsikko tai pikkukuva. Napauta kuvaketta näyttääksesi alkuperäisen otsikon ja pikkukuvan</string>
   <string name="morphe_dearrow_casual_mode_title">Rento tila</string>
   <string name="morphe_dearrow_casual_mode_summary">Näyttää alkuperäisen otsikon DeArrow-otsikon sijaan, jos DeArrow-käyttäjät äänestivät pitävänsä alkuperäisestä otsikosta</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Vähimmäismäärä casual-ääniä alkuperäisen otsikon näyttämiseen</string>

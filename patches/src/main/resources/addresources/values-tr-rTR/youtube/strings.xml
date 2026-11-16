@@ -543,6 +543,8 @@ Soru düğmesine sahip olan bir video bir kez açıldıktan sonra bu özellik, m
   <string name="morphe_disable_chapter_skip_double_tap_title">Çift dokunma ile bölüm atlamayı devre dışı bırak</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Bölümleri atlayan ve tek parmakla yanlışlıkla tetiklenebilecek iki parmakla çift dokunma hareketini devre dışı bırakır</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla videolar, podcast\'ler veya şarkılar indirin</string>
   <string name="morphe_external_downloader_overlay_button_title">Oynatıcı paneli indirme düğmesini göster</string>
   <string name="morphe_external_downloader_overlay_button_summary">Video oynatıcısında harici indiricinizi açan bir düğme gösterir</string>
@@ -559,6 +561,8 @@ Soru düğmesine sahip olan bir video bir kez açıldıktan sonra bu özellik, m
   <string name="morphe_shorts_download_flyout_button_title">Shorts menüsünde indiri göster</string>
   <string name="morphe_shorts_download_flyout_button_summary">Shorts oynatıcısının menüsüne bir indirme öğesi ekler</string>
   <string name="morphe_shorts_download_flyout_title">İndir</string>
+  <string name="morphe_feed_download_flyout_button_title">İndirmeyi video menülerinde göster</string>
+  <string name="morphe_feed_download_flyout_button_summary">YouTube\'un yalnızca Premium üyelerinin indirmesine izin verdiği videolar gibi, akışta indirme seçeneği olmayan videoların menülerine bir indirme öğesi ekler</string>
   <string name="morphe_export_download_folder_title">Kaydedilen videoları dışa aktar</string>
   <string name="morphe_export_download_folder_summary">"Uygulama içi indirmeler açılır menüsünü kullanarak uygulama içinde kaydedilen videoları cihaz depolama alanınıza dışa aktarın. Dışa aktarma klasörünü değiştirmek için dokunun
 
@@ -1487,7 +1491,7 @@ Otomotiv düzeni
   <string name="morphe_dearrow_titles_player_title">Oynatıcı çalma listeleri &amp; önerileri</string>
   <string name="morphe_dearrow_titles_search_title">Arama sonuçları</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow simgesini göster</string>
-  <string name="morphe_dearrow_titles_icon_summary">Kitle kaynaklı video başlıklarında DeArrow simgesini gösterir. Orijinal başlığı ve küçük resmi görmek için simgeye dokunun</string>
+  <string name="morphe_dearrow_titles_icon_summary">Kitle kaynaklı başlığa veya küçük resme sahip videoların başlıklarında DeArrow simgesini gösterir. Orijinal başlığı ve küçük resmi görmek için simgeye dokunun</string>
   <string name="morphe_dearrow_casual_mode_title">Gündelik mod</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow kullanıcıları orijinal başlığı beğendikleri yönünde oy kullandıysa, DeArrow başlığı yerine orijinal başlığı gösterir</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Orijinal başlığı göstermek için minimum gündelik oy sayısı</string>

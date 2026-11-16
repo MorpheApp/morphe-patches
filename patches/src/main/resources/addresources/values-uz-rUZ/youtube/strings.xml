@@ -542,6 +542,8 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_disable_chapter_skip_double_tap_title">Boblarni oʻtkazib yuborishni ikki marta bosishni oʻchirish</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Boblarni o\'tkazib yuboradigan ikki barmoqli ikki marta bosish harakatini o\'chirish, bu bir barmoq bilan tasodifan ishga tushirilishi mumkin</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Uchinchi tomon ilovalari yordamida videolar, podkastlar yoki qo\'shiqlarni yuklab oling</string>
   <string name="morphe_external_downloader_overlay_button_title">Pleyer ustidagi yuklab olish tugmasini ko\'rsatish</string>
   <string name="morphe_external_downloader_overlay_button_summary">Video pleyerda tashqi yuklovchini ochadigan tugmani ko\'rsatadi</string>
@@ -558,6 +560,8 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_shorts_download_flyout_button_title">Shorts menyusida yuklab olishni ko\'rsatish</string>
   <string name="morphe_shorts_download_flyout_button_summary">Shorts pleyeri menyusiga yuklab olish elementini qo\'shadi</string>
   <string name="morphe_shorts_download_flyout_title">Yuklab olish</string>
+  <string name="morphe_feed_download_flyout_button_title">Yuklab olishni video menyularida ko\'rsatish</string>
+  <string name="morphe_feed_download_flyout_button_summary">Lentadagi yuklab olish elementi mavjud bo\'lmagan videolar menyusiga, masalan, YouTube faqat Premium a\'zolariga yuklab olishga ruxsat bergan videolar uchun, yuklab olish elementini qo\'shadi</string>
   <string name="morphe_export_download_folder_title">Saqlangan videolarni eksport qilish</string>
   <string name="morphe_export_download_folder_summary">"Ilova ichida saqlangan videolarni yuklab olish menyusi yordamida qurilmangiz xotirasiga eksport qiling. Eksport papkasini o'zgartirish uchun bosing
 
@@ -1483,7 +1487,7 @@ Avtomobil maketi
   <string name="morphe_dearrow_titles_player_title">Pleer pleylistlari &amp; tavsiyalar</string>
   <string name="morphe_dearrow_titles_search_title">Qidiruv natijalari</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow belgisini ko‘rsatish</string>
-  <string name="morphe_dearrow_titles_icon_summary">Kroudsorsing yordamida tayyorlangan video sarlavhalarida DeArrow belgisini ko\'rsatadi. Asl sarlavha va kichik rasmni ko\'rish uchun belgini bosing</string>
+  <string name="morphe_dearrow_titles_icon_summary">Kroudsorsing yordamida yaratilgan sarlavha yoki muqovaga ega videolar sarlavhalarida DeArrow belgisini ko\'rsatadi. Asl sarlavha va muqovani ko\'rish uchun belgini bosing</string>
   <string name="morphe_dearrow_casual_mode_title">Oddiy rejim</string>
   <string name="morphe_dearrow_casual_mode_summary">Agar DeArrow foydalanuvchilari asl sarlavhani yoqtirishgan bo\'lsalar, DeArrow sarlavhasi o\'rniga asl sarlavhani ko\'rsatadi</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Asl sarlavhani ko\'rsatish uchun minimal oddiy ovozlar soni</string>

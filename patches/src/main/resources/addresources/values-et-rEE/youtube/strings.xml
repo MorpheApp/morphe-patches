@@ -542,6 +542,8 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_disable_chapter_skip_double_tap_title">Keela peatükide möödahüpamine topeltpuudutusega</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Keelab kahe sõrmega topeltpuudutuse žesti, mis hüppab peatükkide vahel ja mida võib kogemata ühe sõrmega käivitada</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Laadige alla videoid, podcaste või lugusid kolmandate osapoolte allalaadimisrakendustega</string>
   <string name="morphe_external_downloader_overlay_button_title">Kuva pleier pealkatte allalaadimisnupp</string>
   <string name="morphe_external_downloader_overlay_button_summary">Kuvab videopleierisse nupu, mis avab teie välise allalaadija</string>
@@ -558,6 +560,8 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_shorts_download_flyout_button_title">Kuva allalaadimine Shorts\'i menüüs</string>
   <string name="morphe_shorts_download_flyout_button_summary">Lisab Shorts-pleieri menüüsse allalaadimisvaliku</string>
   <string name="morphe_shorts_download_flyout_title">Laadi alla</string>
+  <string name="morphe_feed_download_flyout_button_title">Kuva allalaadimine videomenüüs</string>
+  <string name="morphe_feed_download_flyout_button_summary">Lisab allalaadimise üksuse feedi videomenüüsse, kus seda puudub, näiteks videotele, mille allalaadimise YouTube lubab ainult Premium-liikmetel</string>
   <string name="morphe_export_download_folder_title">Salvestatud videote eksportimine</string>
   <string name="morphe_export_download_folder_summary">"Eksportige rakenduses salvestatud videod oma seadme mällu, kasutades rakendusesse integreeritud allalaadimiste menüüd. Ekspordikausta muutmiseks puudutage seda
 
@@ -1486,7 +1490,7 @@ Auto paigutus
   <string name="morphe_dearrow_titles_player_title">Playeri loendid &amp; soovitused</string>
   <string name="morphe_dearrow_titles_search_title">Otsingutulemused</string>
   <string name="morphe_dearrow_titles_icon_title">Näita DeArrow ikooni</string>
-  <string name="morphe_dearrow_titles_icon_summary">Kuvab DeArrow ikooni rahvussõnastiku videote pealkirjade juures. Puudutage ikooni, et näidata algset pealkirja ja põhikuva</string>
+  <string name="morphe_dearrow_titles_icon_summary">Kuvab DeArrow ikooni videote pealkirjade juures, millel on kogukonnapõhine pealkiri või põhivaate. Puudutage ikooni, et näidata algset pealkirja ja põhivaadet</string>
   <string name="morphe_dearrow_casual_mode_title">Vaba režiim</string>
   <string name="morphe_dearrow_casual_mode_summary">Kuvab DeArrow pealkirja asemel algse pealkirja, kui DeArrow kasutajad on hääletanud, et neile meeldib algne pealkiri.</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimaalne häältes arv algse pealkirja kuvamiseks</string>

@@ -542,6 +542,8 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <string name="morphe_disable_chapter_skip_double_tap_title">Išjungti dvigubo bakstelėjimo skyriaus praleidimą</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Išjungia dviejų pirštų dvigubo bakstelėjimo gestą, kuris praleidžia skyrius ir gali būti netyčia suaktyvintas vienu pirštu</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Atsisiųskite vaizdo įrašus, tinklalaides ar dainas trečiųjų šalių atsisiuntimo programėlėmis</string>
   <string name="morphe_external_downloader_overlay_button_title">Rodyti peržiūros valdiklį atsisiuntimo mygtuką</string>
   <string name="morphe_external_downloader_overlay_button_summary">Vaizdo grotuvėje rodomas mygtukas, kuris atverčia jūsų išorinę atsisiuntimo programą</string>
@@ -558,6 +560,8 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <string name="morphe_shorts_download_flyout_button_title">Rodyti atsisiuntimą „Shorts“ meniu</string>
   <string name="morphe_shorts_download_flyout_button_summary">Prideda atsisiuntimo elementą į Shorts pleitoko meniu</string>
   <string name="morphe_shorts_download_flyout_title">Atsisiųsti</string>
+  <string name="morphe_feed_download_flyout_button_title">Rodyti atsisiuntimą vaizdo įrašų menuose</string>
+  <string name="morphe_feed_download_flyout_button_summary">Prideda atsisiuntimo elementą į feed\'o vaizdo įrašų menus, kuriuose jo nėra, pavyzdžiui, vaizdo įrašams, kuriuos YouTube leidžia atsisiųsti tik Premium nariams</string>
   <string name="morphe_export_download_folder_title">Eksportuoti išsaugotus vaizdo įrašus</string>
   <string name="morphe_export_download_folder_summary">"Eksportuokite programėlėje išsaugotus vaizdo įrašus į savo įrenginio atmintį naudodami programėlės atsisiuntimų išsiskleidžiamąjį meniu. Bakstelėkite, kad pakeitumėte eksportavimo aplanką
 
@@ -1485,7 +1489,7 @@ Automobilio išdėstymas
   <string name="morphe_dearrow_titles_player_title">Grotuvo grojaraščiai &amp; rekomendacijos</string>
   <string name="morphe_dearrow_titles_search_title">Paieškos rezultatai</string>
   <string name="morphe_dearrow_titles_icon_title">Rodyti DeArrow piktogramą</string>
-  <string name="morphe_dearrow_titles_icon_summary">Rodo DeArrow piktogramą bendruomenės kuriamų vaizdo įrašų pavadinimų šalia. Bakstelėkite piktogramą, kad pamatytumėte originalų pavadinimą ir nuotrauką</string>
+  <string name="morphe_dearrow_titles_icon_summary">Rodo \"DeArrow\" piktogramą vaizminukų pavadinimuose, kurių pavadinimas arba nuotrauka yra bendruomenės pateiktos. Bakstelėkite piktogramą, kad pamatytumėte originalų pavadinimą ir nuotrauką</string>
   <string name="morphe_dearrow_casual_mode_title">Kasdienis režimas</string>
   <string name="morphe_dearrow_casual_mode_summary">Rodo originalų pavadinimą vietoj DeArrow pavadinimo, jei DeArrow vartotojai balsuodami nurodė, kad jiems patinka originalus pavadinimas</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalus kasdienių balsų skaičius, kad būtų rodomas originalus pavadinimas</string>

@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">ປິດການຂ້າມບົດດ້ວຍການແຕະສອງຄັ້ງ</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">ປິດການນຳໃຊ້ທ່າທາງການແຕະສອງຄັ້ງດ້ວຍສອງນິ້ວເພື່ອຂ້າມບົດ, ເຊິ່ງອາດຈະຖືກກະຕຸ້ນໂດຍບັງເອີນດ້ວຍນິ້ວດຽວ</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">ດາວໂຫຼດວິດີໂອ, ພອດແຄສ ຫຼື ເພງ ດ້ວຍແອັບດາວໂຫຼດຂອງບຸກຄົນທີສາມ</string>
   <string name="morphe_external_downloader_overlay_button_title">ສະແດງປຸ່ມດາວໂຫຼດໃນຊັ້ນທັບຂອງເຄື່ອງຫຼິ້ນ</string>
   <string name="morphe_external_downloader_overlay_button_summary">ສະແດງປຸ່ມໃນເຄື່ອງຫຼິ້ນວິດີໂອ ທີ່ຈະເປີດໂປຣແກຣມດາວໂຫຼດພາຍນອກຂອງທ່ານ</string>
@@ -558,6 +560,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">ສະແດງການດາວໂຫລດໃນເມນູ Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">ເພີ່ມລາຍການດາວໂຫຼດລົງໃນເມນູຂອງເຄື່ອງຫຼິ້ນ Shorts</string>
   <string name="morphe_shorts_download_flyout_title">ດາວໂຫລດ</string>
+  <string name="morphe_feed_download_flyout_button_title">ສະແດງການດາວໂຫຼດໃນເມນູວິດີໂອ</string>
+  <string name="morphe_feed_download_flyout_button_summary">ເພີ່ມລາຍການດາວໂຫຼດລົງໃນເມນູຂອງວິດີໂອໃນ feed ທີ່ບໍ່ມີ, ເຊັ່ນ: ວິດີໂອທີ່ YouTube ອະນຸຍາດໃຫ້ສະເພາະສະມາຊິກ Premium ດາວໂຫຼດໄດ້</string>
   <string name="morphe_export_download_folder_title">ສົ່ງອອກວິດີໂອທີ່ບັນທຶກໄວ້</string>
   <string name="morphe_export_download_folder_summary">"ສົ່ງອອກວິດີໂອທີ່ບັນທຶກໄວ້ໃນແອັບໄປຍັງບ່ອນເກັບຂໍ້ມູນຂອງອຸປະກອນຂອງທ່ານ ໂດຍໃຊ້ເມນູການດາວໂຫຼດໃນແອັບ. ແຕະເພື່ອປ່ຽນໂຟນເດີສົ່ງອອກ
 
@@ -1486,7 +1490,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">ລາຍການວິດີໂອ &amp; ຄຳແນະນຳຂອງເຄື່ອງຫຼິ້ນ</string>
   <string name="morphe_dearrow_titles_search_title">ຜົນການຄົ້ນຫາ</string>
   <string name="morphe_dearrow_titles_icon_title">ສະແດງໄອຄອນ DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">ສະແດງໄອຄອນ DeArrow ຢູ່ໃນຫົວຂໍ້ວິດີໂອທີ່ມາຈາກ crowdsourced. ແຕະທີ່ໄອຄອນເພື່ອສະແດງຫົວຂໍ້ ແລະ ຮູບຕົວຢ່າງຕົ້ນສະບັບ</string>
+  <string name="morphe_dearrow_titles_icon_summary">ສະແດງໄອຄອນ DeArrow ຢູ່ໃນຫົວຂໍ້ຂອງວິດີໂອທີ່ມີຫົວຂໍ້ ຫຼື ຮູບຕົວຢ່າງທີ່ມາຈາກ crowdsourced. ແຕະໄອຄອນເພື່ອສະແດງຫົວຂໍ້ ແລະ ຮູບຕົວຢ່າງດັ່ງເດີມ</string>
   <string name="morphe_dearrow_casual_mode_title">ໂໝດແບບບໍ່ເປັນທາງການ</string>
   <string name="morphe_dearrow_casual_mode_summary">ສະແດງຫົວຂໍ້ດັ້ງເດີມ ແທນຫົວຂໍ້ຂອງ DeArrow ຖ້າຜູ້ໃຊ້ DeArrow ໂຫວດວ່າພວກເຂົາມັກຫົວຂໍ້ດັ້ງເດີມ</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">ຈຳນວນໂຫວດແບບບໍ່ເປັນທາງການຂັ້ນຕ່ຳ ເພື່ອສະແດງຫົວຂໍ້ດັ້ງເດີມ</string>

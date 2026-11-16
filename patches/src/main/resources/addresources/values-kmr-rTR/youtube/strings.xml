@@ -542,6 +542,8 @@ Piştî ku vîdyoyeke bi bişkoja Ask carekê hate vekirin, ev taybetmendî bi h
   <string name="morphe_disable_chapter_skip_double_tap_title">Derbasbûna beşan bi du-tikandinê asteng bike</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Tevgera du tiliyan a ku beşan derbas dike asteng dike, ku dibe ku bi şaşî bi yek tiliyê çalak bibe</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Vîdyo, podcast an stran bi sepanên daxistinê yên sêyemîn dakêşe.</string>
   <string name="morphe_external_downloader_overlay_button_title">Bişkoja daxistinê ya li ser lîstikvanê nîşan bide</string>
   <string name="morphe_external_downloader_overlay_button_summary">Bişkojekê di lîstikvanê vîdyoyê de nîşan dide ku downloaderê we yê derveyî vedike</string>
@@ -558,6 +560,8 @@ Piştî ku vîdyoyeke bi bişkoja Ask carekê hate vekirin, ev taybetmendî bi h
   <string name="morphe_shorts_download_flyout_button_title">Daxistinê di menuya Shorts de nîşan bide</string>
   <string name="morphe_shorts_download_flyout_button_summary">Bendeya daxistinê li menyuya lîstikera Shorts zêde dike</string>
   <string name="morphe_shorts_download_flyout_title">Daxistin</string>
+  <string name="morphe_feed_download_flyout_button_title">Daxistinê di menyuyên vîdyoyan de nîşan bide</string>
+  <string name="morphe_feed_download_flyout_button_summary">Itemsekî daxistinê li menyuyên vîdyoyên di feed-ê de zêde dike ku tiştekî weha nîşan nadin, wekî vîdyoyên ku YouTube tenê rê dide endamên Premium daxistînin</string>
   <string name="morphe_export_download_folder_title">Vîdyoyên savekirî eksport bike</string>
   <string name="morphe_export_download_folder_summary">"Vîdyoyên li hundurê aplikasyonê yên savekirî bi rêya menyuya daxezan a li hundurê aplikasyonê bi storage'a amûrê xwe ve exporters bike. Ji bo guhartina foldera exportê lê bitikîne
 
@@ -1486,7 +1490,7 @@ Layouta otomotîvê
   <string name="morphe_dearrow_titles_player_title">Lîsteyên lêdanê &amp; pêşniyarên lîstikvanê</string>
   <string name="morphe_dearrow_titles_search_title">Encamên lêgerînê</string>
   <string name="morphe_dearrow_titles_icon_title">Îkona DeArrow nîşan bide</string>
-  <string name="morphe_dearrow_titles_icon_summary">Îkona DeArrow li ser navên vîdyoyên crowdsourced nîşan dide. Ji bo nîşandana nav û thumbnailê orjînal, li îkonê bitikîne</string>
+  <string name="morphe_dearrow_titles_icon_summary">Îkona DeArrow li ser navên vîdyoyên bi navekî an thumbnailekî crowdsourced nîşan dide. Ji bo nîşandana nav û thumbnailê yên orîjînal, li îkonê bitikîne</string>
   <string name="morphe_dearrow_casual_mode_title">Moda asayî</string>
   <string name="morphe_dearrow_casual_mode_summary">Heke bikarhênerên DeArrow ji sernavê orjînal hez dikin, li şûna sernavê DeArrow sernavê orjînal nîşan dide</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Hejmara kêmtirîn dengên moda asayî ji bo nîşandana sernavê orjînal</string>

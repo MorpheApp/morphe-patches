@@ -542,6 +542,8 @@ Nakon što se jednom otvori video s dugmetom Pitaj, funkcija radi sa svim videim
   <string name="morphe_disable_chapter_skip_double_tap_title">Onemogući preskakanje poglavlja dvostrukim dodirom</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Onemogućava gest dvostrukog dodira dvama prstima za preskakanje poglavlja, koji se može slučajno aktivirati jednim prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Preuzmite videozapise, podkaste ili pjesme pomoću aplikacija trećih strana za preuzimanje</string>
   <string name="morphe_external_downloader_overlay_button_title">Prikaži dugme za preuzimanje preko plejera</string>
   <string name="morphe_external_downloader_overlay_button_summary">Prikazuje dugme u video plejeru koje otvara vaš eksterni downloader</string>
@@ -558,6 +560,8 @@ Nakon što se jednom otvori video s dugmetom Pitaj, funkcija radi sa svim videim
   <string name="morphe_shorts_download_flyout_button_title">Prikaži preuzimanje u Shorts meniju</string>
   <string name="morphe_shorts_download_flyout_button_summary">Dodaje stavku preuzimanja u meni Shorts plejera</string>
   <string name="morphe_shorts_download_flyout_title">Preuzmi</string>
+  <string name="morphe_feed_download_flyout_button_title">Prikaži preuzimanje u video menijima</string>
+  <string name="morphe_feed_download_flyout_button_summary">Dodaje stavku za preuzimanje u menije videa u feed-u koji je nemaju, kao što su videozapisi koje YouTube dozvoljava preuzimati samo Premium članovima</string>
   <string name="morphe_export_download_folder_title">Izvezi sačuvane videozapise</string>
   <string name="morphe_export_download_folder_summary">"Izvežite u aplikaciji sačuvane videozapise u memoriju vašeg uređaja koristeći iskačući meni za preuzimanja. Dodirnite da promijenite folder za izvoz
 
@@ -1485,7 +1489,7 @@ Automobilski izgled
   <string name="morphe_dearrow_titles_player_title">Plejer liste reprodukcije &amp; preporuke</string>
   <string name="morphe_dearrow_titles_search_title">Rezultati pretrage</string>
   <string name="morphe_dearrow_titles_icon_title">Prikaži DeArrow ikonu</string>
-  <string name="morphe_dearrow_titles_icon_summary">Prikazuje DeArrow ikonu na naslovima videa koji su crowdsourcani. Dodirnite ikonu da prikažete originalni naslov i sličicu</string>
+  <string name="morphe_dearrow_titles_icon_summary">Prikazuje DeArrow ikonu na naslovima videa sa crowdsourced naslovom ili sličicom. Dodirnite ikonu da prikažete originalni naslov i sličicu</string>
   <string name="morphe_dearrow_casual_mode_title">Casual način rada</string>
   <string name="morphe_dearrow_casual_mode_summary">Prikazuje originalni naslov umjesto DeArrow naslova ako su DeArrow korisnici glasali da im se više sviđa originalni naslov</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalan broj casual glasova za prikaz originalnog naslova</string>

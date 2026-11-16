@@ -542,6 +542,8 @@ Kad videoklips ar pogu Uzdot jautājumu ir atvērts vienreiz, šī funkcija darb
   <string name="morphe_disable_chapter_skip_double_tap_title">Atslēgt nodaļu izlaišanu ar dubulto pieskārumu</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Atslēgt divu pirkstu dubultā pieskāriena žestu nodaļu izlaišanai, kuru var nejauši aktivizēt ar vienu pirkstu</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Lejupielādēt video, podkastus vai dziesmas, izmantojot trešo pušu lejupielādes lietotnes</string>
   <string name="morphe_external_downloader_overlay_button_title">Rādīt lejupielādes pogu atskaņotāja pārklājumā</string>
   <string name="morphe_external_downloader_overlay_button_summary">Rāda pogu video atskaņotājā, kas atver jūsu ārējo lejupielādētāju</string>
@@ -558,6 +560,8 @@ Kad videoklips ar pogu Uzdot jautājumu ir atvērts vienreiz, šī funkcija darb
   <string name="morphe_shorts_download_flyout_button_title">Rādīt lejupielādi Shorts izvēlnē</string>
   <string name="morphe_shorts_download_flyout_button_summary">Pievieno lejupielādes vienumu Shorts atskaņotāja izvēlnei</string>
   <string name="morphe_shorts_download_flyout_title">Lejupielādēt</string>
+  <string name="morphe_feed_download_flyout_button_title">Rādīt lejupielādi video izvēlnēs</string>
+  <string name="morphe_feed_download_flyout_button_summary">Pievieno lejupielādes vienumu feed izvēlnēm video, kuriem tā nav, piemēram, video, kurus YouTube ļauj lejupielādēt tikai Premium dalībniekiem</string>
   <string name="morphe_export_download_folder_title">Eksportēt saglabātos video</string>
   <string name="morphe_export_download_folder_summary">"Eksportējiet lietotnē saglabātos video uz ierīces atmiņu, izmantojot lietotnes lejupielādes izlaiduma izvēlni. Pieskarieties, lai mainītu eksportēšanas mapi
 
@@ -1485,7 +1489,7 @@ Automašīnas izkārtojums
   <string name="morphe_dearrow_titles_player_title">Atskaņotāja atskaņošanas saraksti un ieteikumi</string>
   <string name="morphe_dearrow_titles_search_title">Meklēšanas rezultāti</string>
   <string name="morphe_dearrow_titles_icon_title">Rādīt DeArrow ikonu</string>
-  <string name="morphe_dearrow_titles_icon_summary">Rāda DeArrow ikonu kopīgos video nosaukumos. Pieskarieties ikonai, lai redzētu oriģinālo nosaukumu un miniatures</string>
+  <string name="morphe_dearrow_titles_icon_summary">Rāda DeArrow ikonu video nosaukumos, kamērem ir kopraudzības nodrošināts nosaukums vai miniatures. Pieskaries ikonai, lai redzētu oriģinālo nosaukumu un miniatures</string>
   <string name="morphe_dearrow_casual_mode_title">Neformālais režīms</string>
   <string name="morphe_dearrow_casual_mode_summary">Rāda oriģinālo nosaukumu DeArrow nosaukuma vietā, ja DeArrow lietotāji ir balsojuši, ka viņiem patīk oriģinālais nosaukums</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimālais neformālo balsu skaits oriģinālā nosaukuma rādīšanai</string>

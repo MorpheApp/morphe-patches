@@ -540,6 +540,8 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_disable_chapter_skip_double_tap_title">Zakázať preskočenie kapitoly dvojitým ťuknutím</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Zakáže gestá dvojitého ťuknutia dvoma prstami, ktoré preskakujú kapitoly, ktoré sa môžu neúmyselne spustiť jedným prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Stiahnite si videá, podcasty alebo piesne pomocou aplikácií na sťahovanie tretích strán</string>
   <string name="morphe_external_downloader_overlay_button_title">Zobraziť tlačidlo na stiahnutie preklapiačnej obrazovky prehrávača</string>
   <string name="morphe_external_downloader_overlay_button_summary">Zobrazí tlačidlo v videoprehrávači, ktoré otvorí vašu externú aplikáciu na sťahovanie</string>
@@ -556,6 +558,8 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_shorts_download_flyout_button_title">Zobraziť sťahovanie v ponuke Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Pridá položku sťahovania do ponuky prehrávača Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Stiahnuť</string>
+  <string name="morphe_feed_download_flyout_button_title">Zobrazovať sťahovanie v menu videí</string>
+  <string name="morphe_feed_download_flyout_button_summary">Pridá položku sťahovania do menu videí vo feede, ktoré ju nemajú, napríklad videí, ktoré YouTube umožňuje sťahovať len členom Premium</string>
   <string name="morphe_export_download_folder_title">Exportovať uložené videá</string>
   <string name="morphe_export_download_folder_summary">"Exportujte videá uložené v aplikácii do úložiska zariadenia pomocou ponuky sťahovaní v aplikácii. Klepnutím zmeníte exportovaciu zložku
 
@@ -1482,7 +1486,7 @@ Rozloženie pre automobil
   <string name="morphe_dearrow_titles_player_title">Playlisty prehrávača &amp; odporúčania</string>
   <string name="morphe_dearrow_titles_search_title">Výsledky vyhľadávania</string>
   <string name="morphe_dearrow_titles_icon_title">Zobraziť ikonu DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Zobrazuje ikonu DeArrow pri názvoch videí z crowdsourcingu. Klepnutím na ikonu zobrazíte pôvodný názov a miniaturu</string>
+  <string name="morphe_dearrow_titles_icon_summary">Zobrazuje ikonu DeArrow pri názvoch videí s crowdsourced názvom alebo náhľadom. Klepnutím na ikonu zobrazíte pôvodný názov a náhľad</string>
   <string name="morphe_dearrow_casual_mode_title">Bežný režim</string>
   <string name="morphe_dearrow_casual_mode_summary">Zobrazí pôvodný názov namiesto názvu DeArrow, ak používatelia DeArrow hlasovali, že sa im páči pôvodný názov</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimálny počet bežných hlasov na zobrazenie pôvodného názvu</string>

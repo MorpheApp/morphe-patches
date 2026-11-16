@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">停用按兩下跳過章節功能</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">停用雙指輕點跳過章節的動作，這可能會因為單指操作而意外觸發</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">使用第三方下載應用程式下載影片、播客或歌曲</string>
   <string name="morphe_external_downloader_overlay_button_title">顯示播放器覆蓋層下載按鈕</string>
   <string name="morphe_external_downloader_overlay_button_summary">在影片播放器中顯示一個按鈕，該按鈕可開啟您的外部下載器</string>
@@ -558,6 +560,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">在 Shorts 選單中顯示下載</string>
   <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器的選單中新增下載項目</string>
   <string name="morphe_shorts_download_flyout_title">下載</string>
+  <string name="morphe_feed_download_flyout_button_title">在影片選單中顯示下載</string>
+  <string name="morphe_feed_download_flyout_button_summary">為 feed 中原本沒有下載項目的影片選單添加下載選項，例如 YouTube 僅允許 Premium 會員下載的影片</string>
   <string name="morphe_export_download_folder_title">匯出已儲存的影片</string>
   <string name="morphe_export_download_folder_summary">"使用應用程式內下載彈出式選單，將應用程式內儲存的影片匯出到裝置儲存空間。點選即可更改匯出資料夾
 
@@ -1484,7 +1488,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">播放器的播放清單與推薦影片</string>
   <string name="morphe_dearrow_titles_search_title">搜尋結果</string>
   <string name="morphe_dearrow_titles_icon_title">顯示 DeArrow 圖示</string>
-  <string name="morphe_dearrow_titles_icon_summary">在群眾外包的影片標題上顯示 DeArrow 圖示。點擊圖示可顯示原始標題和縮圖</string>
+  <string name="morphe_dearrow_titles_icon_summary">在具有群眾外包標題或縮圖的影片標題上顯示 DeArrow 圖示。點擊圖示以顯示原始標題和縮圖</string>
   <string name="morphe_dearrow_casual_mode_title">休閒模式</string>
   <string name="morphe_dearrow_casual_mode_summary">如果 DeArrow 使用者投票表示喜歡原始標題，則顯示原始標題而非 DeArrow 標題</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">顯示原始標題所需的最低休閒票數</string>

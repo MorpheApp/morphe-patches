@@ -154,7 +154,11 @@ Second \"item\" text"</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_shorts_download_flyout_button_summary">Shorts பிளேயரின் மெனுவில் பதிவிறக்க உருப்படியைச் சேர்க்கிறது</string>
+  <string name="morphe_feed_download_flyout_button_title">வீடியோ மெனுக்களில் பதிவிறக்கத்தைக் காட்டு</string>
+  <string name="morphe_feed_download_flyout_button_summary">YouTube Premium உறுப்பினர்களை மட்டுமே பதிவிறக்க அனுமதிக்கும் வீடியோக்கள் போன்ற, பதிவிறக்க விருப்பம் இல்லாத feed-இல் உள்ள வீடியோக்களின் மெனுக்களில் பதிவிறக்க உருப்படியைச் சேர்க்கிறது</string>
   <string name="morphe_export_download_folder_title">சேமிக்கப்பட்ட வீடியோக்களை ஏற்றுமதி செய்</string>
   <string name="morphe_export_download_folder_summary">"ஆப்பிற்குள் சேமிக்கப்பட்ட வீடியோக்களை, ஆப்பிற்குள் இருக்கும் பதிவிறக்கங்கள் flyout மெனுவைப் பயன்படுத்தி உங்கள் சாதன சேமிப்பகத்திற்கு ஏற்றுமதி செய்யவும். ஏற்றுமதி கோப்புறையை மாற்ற தட்டவும்
 
@@ -441,7 +445,7 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_titles_icon_summary">Crowdsourced வீடியோ தலைப்புகளில் DeArrow ஐகானைக் காட்டுகிறது. அசல் தலைப்பு மற்றும் தம்ப்னைலைக் காண ஐகானைத் தட்டுங்கள்</string>
+  <string name="morphe_dearrow_titles_icon_summary">கூட்டுப்பணி மூலம் உருவாக்கப்பட்ட தலைப்பு அல்லது தம்ப்நைல் கொண்ட வீடியோக்களின் தலைப்புகளில் DeArrow ஐகானைக் காட்டுகிறது. அசல் தலைப்பு மற்றும் தம்ப்நைலைக் காண ஐகானைத் தட்டவும்</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_vote_button_title">DeArrow பொத்தானைக் காட்டு</string>
   <string name="morphe_dearrow_vote_button_summary">DeArrow தலைப்புகள் மற்றும் தம்ப்நெயில்களுக்கு வாக்களிக்க அல்லது புதியவற்றை சமர்ப்பிக்க வீடியோ பிளேயரின் மேற்பகுதியில் ஒரு பொத்தானைச் சேர்க்கிறது</string>

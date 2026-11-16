@@ -542,6 +542,8 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <string name="morphe_disable_chapter_skip_double_tap_title">Disabilita lo scorrimento rapido del capitolo con un doppio tocco</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Disabilita il gesto di doppio tocco con due dita che consente di saltare i capitoli, che potrebbe essere attivato accidentalmente con un dito</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Scarica video, podcast o canzoni con app di download di terze parti</string>
   <string name="morphe_external_downloader_overlay_button_title">Mostra il pulsante per il download della sovrapposizione del lettore</string>
   <string name="morphe_external_downloader_overlay_button_summary">Mostra un pulsante nel lettore video che apre il tuo downloader esterno</string>
@@ -558,6 +560,8 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <string name="morphe_shorts_download_flyout_button_title">Mostra il download nel menu Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Aggiunge una voce di download al menu del player di Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
+  <string name="morphe_feed_download_flyout_button_title">Mostra download nei menu dei video</string>
+  <string name="morphe_feed_download_flyout_button_summary">Aggiunge una voce di download ai menu dei video nel feed che ne sono privi, come i video che YouTube consente di scaricare solo ai membri Premium</string>
   <string name="morphe_export_download_folder_title">Esporta video salvati</string>
   <string name="morphe_export_download_folder_summary">"Esporta i video salvati nell'app nella memoria del tuo dispositivo utilizzando il menu a comparsa dei download dell'app. Tocca per cambiare la cartella di esportazione
 
@@ -1484,7 +1488,7 @@ Layout automotive
   <string name="morphe_dearrow_titles_player_title">Playlist e video consigliati</string>
   <string name="morphe_dearrow_titles_search_title">Risultati della ricerca</string>
   <string name="morphe_dearrow_titles_icon_title">Mostra l\'icona DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Mostra l\'icona di DeArrow nei titoli dei video crowdsourced. Tocca l\'icona per mostrare il titolo e la miniatura originali</string>
+  <string name="morphe_dearrow_titles_icon_summary">Mostra l\'icona di DeArrow nei titoli dei video con un titolo o una miniatura crowdsourced. Tocca l\'icona per mostrare il titolo e la miniatura originali</string>
   <string name="morphe_dearrow_casual_mode_title">Modalità informale</string>
   <string name="morphe_dearrow_casual_mode_summary">Mostra il titolo originale invece del titolo DeArrow se gli utenti DeArrow hanno votato che preferiscono il titolo originale.</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Voti casuali minimi per mostrare il titolo originale</string>

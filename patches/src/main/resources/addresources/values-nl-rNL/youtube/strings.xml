@@ -542,6 +542,8 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <string name="morphe_disable_chapter_skip_double_tap_title">Schakel dubbeltik hoofdstuk overslaan uit</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Schakelt de dubbele tik met twee vingers uit die hoofdstukken overslaat, wat per ongeluk met één vinger kan worden geactiveerd</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Download video\'s, podcasts of liedjes met apps van derden</string>
   <string name="morphe_external_downloader_overlay_button_title">Downloadknop voor speleroverlay tonen</string>
   <string name="morphe_external_downloader_overlay_button_summary">Toont een knop in de videospeler die je externe downloader opent</string>
@@ -558,6 +560,8 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <string name="morphe_shorts_download_flyout_button_title">Download tonen in Shorts-menu</string>
   <string name="morphe_shorts_download_flyout_button_summary">Voegt een downloaditem toe aan het menu van de Shorts-speler</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
+  <string name="morphe_feed_download_flyout_button_title">Toon downloaden in videomenu\'s</string>
+  <string name="morphe_feed_download_flyout_button_summary">Voegt een downloaditem toe aan de menu\'s van video\'s in de feed die dit niet hebben, zoals video\'s die YouTube alleen Premium-leden laat downloaden</string>
   <string name="morphe_export_download_folder_title">Opgeslagen video\'s exporteren</string>
   <string name="morphe_export_download_folder_summary">"Exporteer in de app opgeslagen video's naar de opslag van je apparaat via het downloadmenu. Tik om de exportmap te wijzigen
 
@@ -1485,7 +1489,7 @@ Auto-indeling
   <string name="morphe_dearrow_titles_player_title">Afspeellijsten en aanbevelingen in de speler</string>
   <string name="morphe_dearrow_titles_search_title">Zoekresultaten</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow-pictogram weergeven</string>
-  <string name="morphe_dearrow_titles_icon_summary">Toont het DeArrow-icoon bij crowdsourced videotitels. Tik op het icoon om de oorspronkelijke titel en thumbnail te tonen</string>
+  <string name="morphe_dearrow_titles_icon_summary">Toont het DeArrow-pictogram bij de titels van video\'s met een crowdsourced titel of thumbnail. Tik op het pictogram om de oorspronkelijke titel en thumbnail te tonen</string>
   <string name="morphe_dearrow_casual_mode_title">Casuele modus</string>
   <string name="morphe_dearrow_casual_mode_summary">Toont de originele titel in plaats van de DeArrow-titel als DeArrow-gebruikers hebben gestemd dat ze de originele titel leuk vinden</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum aantal casual stemmen om de originele titel te tonen</string>

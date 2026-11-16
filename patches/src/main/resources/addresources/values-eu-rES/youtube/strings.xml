@@ -542,6 +542,8 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_disable_chapter_skip_double_tap_title">Desaktibatu bi-sakatze kapitulu saltoa</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Kapituluak saltatzen dituen bi hatzeko bi-sakatze keinua desaktibatzen du, hatz bakarrarekin ustekabean aktibatu daitekeelako</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Deskargatu bideoak, podcast-ak edo abestiak hirugarrenen deskarga aplikazioekin</string>
   <string name="morphe_external_downloader_overlay_button_title">Erakutsi erreproduzigailuaren gainjartze-deskarga botoia</string>
   <string name="morphe_external_downloader_overlay_button_summary">Erreproduzigailuan botoi bat erakusten du, kanpoko deskargatzailea irekitzeko</string>
@@ -558,6 +560,8 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_shorts_download_flyout_button_title">Erakutsi deskarga Shorts menuan</string>
   <string name="morphe_shorts_download_flyout_button_summary">Deskarga elementu bat gehitzen du Shorts erreproduzigailuaren menuan</string>
   <string name="morphe_shorts_download_flyout_title">Deskargatu</string>
+  <string name="morphe_feed_download_flyout_button_title">Erakutsi deskarga bidea bideoen menuetan</string>
+  <string name="morphe_feed_download_flyout_button_summary">Deskarga elementua gehitzen du feedeko bideoen menuetara, ez duten kasoetan, YouTubek Premium kideei bakarrik utziten dien bideoak adibide gisa</string>
   <string name="morphe_export_download_folder_title">Esportatu gordetako bideoak</string>
   <string name="morphe_export_download_folder_summary">"Aplikazioan gordetako bideoak zure gailuaren biltegian esportatu aplikazioko deskargen flyout menuaren bidez. Sakatu esportazio karpeta aldatzeko
 
@@ -1486,7 +1490,7 @@ Automobilen diseinua
   <string name="morphe_dearrow_titles_player_title">Erreproduzigailuko zerrendak &amp; gomendioak</string>
   <string name="morphe_dearrow_titles_search_title">Bilaketa emaitzak</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ikona erakutsi</string>
-  <string name="morphe_dearrow_titles_icon_summary">Crowdsourcing bidean lortutako bideo-izenetan DeArrow ikonoa erakutsi. Ukitu ikonoa izen jatorrizkoa eta miniaturea ikusteko</string>
+  <string name="morphe_dearrow_titles_icon_summary">DeArrow-ren ikona erakutsi bidebekideek sortutako izenburua edo miniaturea duten bideoen izenburuan. Tapatu ikona izenburu eta miniature originalak erakutsetan</string>
   <string name="morphe_dearrow_casual_mode_title">Modu informala</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow erabiltzaileek jatorrizko izenburua gustuko dutela bozkatu badute, DeArrow izenburuaren ordez jatorrizko izenburua erakusten du</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Jatorrizko izenburua erakusteko gutxieneko boto informalak</string>

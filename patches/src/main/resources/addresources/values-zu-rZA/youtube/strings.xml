@@ -542,6 +542,8 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <string name="morphe_disable_chapter_skip_double_tap_title">Khubaza ukugxuma kwe-chapter ngokuthinta kabili</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Khubaza i-gesture yokuthinta kabili ngeminwe emibili edlula izahluko, okungase kwenzeke ngengozi ngumnwe owodwa</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">I-Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">I-4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Landa ama-video, ama-podcast, noma amahubo ngama-app okulanda aqhamuka ngaphandle</string>
   <string name="morphe_external_downloader_overlay_button_title">Khombisa inkinobho yokudownloada e-player overlay</string>
   <string name="morphe_external_downloader_overlay_button_summary">Khombisa inkinobho ku-video player evula i-external downloader yakho</string>
@@ -558,6 +560,8 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <string name="morphe_shorts_download_flyout_button_title">Khombisa ukulandela ku-menu yama-Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Yenza ukuthi kube nento yokudownloada kumenyu yomdlali we-Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Landa</string>
+  <string name="morphe_feed_download_flyout_button_title">Khombisa ukudawunilodha emenwini yevidiyo</string>
+  <string name="morphe_feed_download_flyout_button_summary">Yenge item yokudawunilodha emenwini yevidiyo e-feed engenayo, njengevidiyo uYouTube avumela ukuba zidawunilodwe amalungu e-Premium kuphela</string>
   <string name="morphe_export_download_folder_title">Exportha amavidiyo agcinwe</string>
   <string name="morphe_export_download_folder_summary">"Exportha amavidiyo agcinwe ohlelweni kudivayisi yakho usebenzisa imenyu ye-downloads. Thinta ukuze ushintshe ifolda ye-export
 
@@ -1486,7 +1490,7 @@ Indlela yokuhlela yezimoto
   <string name="morphe_dearrow_titles_player_title">Uhlu lwezingoma lomdlali &amp; okuncoma</string>
   <string name="morphe_dearrow_titles_search_title">Imiphumela yokusesha</string>
   <string name="morphe_dearrow_titles_icon_title">Khombisa i-icon ye-DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Ikhombisa i-icon ye-DeArrow kuma-titles amavidiyo aqoshwe ngumphakathi. Thinta i-icon ukuze ubonise i-title yokuqala ne-thumbnail</string>
+  <string name="morphe_dearrow_titles_icon_summary">Ikhombisa i-ayikoni ye-DeArrow ezihloko zezividiyo ezinisihloko noma isithombe esivela kubantu. Thinta i-ayikoni ukuze ukhombise isihloko nesithombe sokuqala</string>
   <string name="morphe_dearrow_casual_mode_title">Imodi yokuziphethela</string>
   <string name="morphe_dearrow_casual_mode_summary">Ikhombisa isihloko sokuqala esikhundleni sesihloko seDeArrow uma abasebenzisi beDeArrow bevota ukuthi bayasithanda isihloko sokuqala</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Imivoti embalwa kakhulu yokuziphethela ukuze kukhonyiswe isihloko sokuqala</string>

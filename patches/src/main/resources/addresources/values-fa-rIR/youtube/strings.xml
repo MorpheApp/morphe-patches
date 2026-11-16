@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">غیرفعال‌کردن ردکردن فصل با دو ضربه</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">حرکت دوضربه‌ای با دو انگشت برای ردکردن فصل‌ها را غیرفعال می‌کند؛ این حرکت ممکن است تصادفاً با یک انگشت فعال شود</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">دانلود موزیک‌ویدئوها، پادکست‌ها یا آهنگ‌ها با برنامه‌های دانلودکنندهٔ شخص ثالث</string>
   <string name="morphe_external_downloader_overlay_button_title">نمایش دکمه دانلود روی پخش‌کننده</string>
   <string name="morphe_external_downloader_overlay_button_summary">یک دکمه در پخش‌کنندهٔ ویدئو نمایش می‌دهد که دانلودکنندهٔ خارجی شما را باز می‌کند</string>
@@ -558,6 +560,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">نمایش دانلود در منوی Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">یک مورد دانلود را به منوی پخش‌کننده Shorts اضافه می‌کند</string>
   <string name="morphe_shorts_download_flyout_title">دانلود</string>
+  <string name="morphe_feed_download_flyout_button_title">نمایش دانلود در منوهای ویدیو</string>
+  <string name="morphe_feed_download_flyout_button_summary">یک مورد دانلود به منوهای ویدیوهای موجود در فید که فاقد آن هستند اضافه می‌کند، مانند ویدیوهایی که YouTube فقط به اعضای Premium اجازه دانلود می‌دهد</string>
   <string name="morphe_export_download_folder_title">صادرکردن ویدیوهای ذخیره‌شده</string>
   <string name="morphe_export_download_folder_summary">"ویدیوهای ذخیره‌شده در برنامه را با استفاده از منوی شناور دانلودها به حافظه دستگاه خود صادر کنید. برای تغییر پوشهٔ صادرکردن ضربه بزنید
 
@@ -1485,7 +1489,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">فهرست‌های پخش و پیشنهادها در پخش‌کننده</string>
   <string name="morphe_dearrow_titles_search_title">نتایج جستجو</string>
   <string name="morphe_dearrow_titles_icon_title">نمایش آیکون DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">آیکون DeArrow را روی عنوان ویدیوهای crowdsourced نمایش می‌دهد. برای نمایش عنوان و تصویر بندانگشتی اصلی روی آیکون ضربه بزنید</string>
+  <string name="morphe_dearrow_titles_icon_summary">آیکون DeArrow را روی عنوان ویدیوهایی که عنوان یا تصویر بندانگشتی آن‌ها توسط کاربران تامین شده است، نمایش می‌دهد. برای نمایش عنوان و تصویر بندانگشتی اصلی، روی آیکون ضربه بزنید</string>
   <string name="morphe_dearrow_casual_mode_title">حالت غیررسمی</string>
   <string name="morphe_dearrow_casual_mode_summary">اگر کاربران DeArrow رای داده باشند که عنوان اصلی را می‌پسندند، عنوان اصلی را به‌جای عنوان DeArrow نشان می‌دهد</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">حداقل تعداد رای‌های غیررسمی برای نمایش عنوان اصلی</string>
