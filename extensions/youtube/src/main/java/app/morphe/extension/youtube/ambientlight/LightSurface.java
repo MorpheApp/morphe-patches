@@ -14,11 +14,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
+import android.os.Handler;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.List;
 
@@ -33,13 +35,31 @@ import java.util.List;
 @SuppressLint("ViewConstructor")
 public final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
     private final Runnable onReady;
+    private final Handler worker;
     private volatile boolean ready;
     /** If the frame on the surface shows no light. A new surface has no frame. */
     private volatile boolean clear = true;
+    /** Counts the surfaces of this view. */
+    private volatile int generation;
+    /** Draws the light, where the device can. Used on the worker thread. */
+    @Nullable
+    private final LightGl renderer = LightGl.isSupported() ? new LightGl() : null;
+    /**
+     * If a canvas draws this view, as the renderer could not. A surface takes one of the two
+     * for as long as it lives, and a canvas stays with the surfaces of its view. Used on the
+     * worker thread.
+     */
+    private boolean drawnByCanvas;
+    /** Held while the renderer draws, so that the surface is not destroyed under it. */
+    private final Object rendererLock = new Object();
 
-    LightSurface(Context context, Runnable onReady) {
+    /**
+     * @param worker The light's worker thread, which draws the surface.
+     */
+    LightSurface(Context context, Runnable onReady, Handler worker) {
         super(context);
         this.onReady = onReady;
+        this.worker = worker;
         getHolder().setFormat(PixelFormat.TRANSLUCENT);
         getHolder().addCallback(this);
         setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
@@ -49,18 +69,36 @@ public final class LightSurface extends SurfaceView implements SurfaceHolder.Cal
      * Draws the light in the regions of the window that show it, and leaves the rest
      * see-through. The GPU scales the small light up and dithers it, which is what keeps a
      * dark gradient free of steps.
-     * Must be called from the light's worker thread. The holder lock keeps the main thread
-     * from destroying the surface while it is drawn.
+     * Must be called from the light's worker thread.
      *
-     * @param pageColor  What is under the light of a page.
-     * @param barColor   What is under the light of the player.
-     * @param coverColor What lies over the light of a page, to keep text readable.
+     * @param lightPaint   The light as a shader, and its strength as the alpha, for a canvas.
+     * @param light        The light, 4 half floats for each of its pixels.
+     * @param lightVersion Changes when the light does.
+     * @param pageColor    What is under the light of a page.
+     * @param barColor     What is under the light of the player.
+     * @param coverColor   What lies over the light of a page, to keep text readable.
      * @return False if there is no buffer yet.
      */
-    boolean draw(Paint lightPaint, List<AmbientLightController.Region> regions, float scaleX, float scaleY,
-                 int gridWidth, int gridHeight, int pageColor, int barColor, int coverColor) {
+    boolean draw(Paint lightPaint, short[] light, int lightVersion, List<AmbientLightController.Region> regions,
+                 float scaleX, float scaleY, int gridWidth, int gridHeight, int pageColor, int barColor,
+                 int coverColor) {
         if (!ready) return false;
 
+        if (renderer != null && !drawnByCanvas) {
+            // Not the light of a window of another shape: the next one fits.
+            if (light.length != gridWidth * gridHeight * 4) return false;
+            synchronized (rendererLock) {
+                if (!ready) return false;
+                if (renderer.draw(getHolder().getSurface(), generation, getWidth(), getHeight(), light, lightVersion,
+                        gridWidth, gridHeight, regions, lightPaint.getAlpha() / 255f, pageColor, barColor, coverColor)) {
+                    clear = regions.isEmpty();
+                    return true;
+                }
+            }
+            drawnByCanvas = true;
+        }
+
+        // The holder lock keeps the main thread from destroying the surface while it is drawn.
         SurfaceHolder holder = getHolder();
         Canvas canvas = holder.lockHardwareCanvas();
         if (canvas == null) return false;
@@ -88,6 +126,17 @@ public final class LightSurface extends SurfaceView implements SurfaceHolder.Cal
     void clear() {
         if (clear || !ready) return;
 
+        if (renderer != null && !drawnByCanvas) {
+            synchronized (rendererLock) {
+                if (!ready) return;
+                if (renderer.clear(getHolder().getSurface(), generation, getWidth(), getHeight())) {
+                    clear = true;
+                    return;
+                }
+            }
+            drawnByCanvas = true;
+        }
+
         SurfaceHolder holder = getHolder();
         Canvas canvas = holder.lockHardwareCanvas();
         if (canvas == null) return;
@@ -108,6 +157,7 @@ public final class LightSurface extends SurfaceView implements SurfaceHolder.Cal
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
+        generation++;
         clear = true;
         ready = true;
     }
@@ -119,6 +169,10 @@ public final class LightSurface extends SurfaceView implements SurfaceHolder.Cal
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
-        ready = false;
+        // Waits for a draw of the renderer that is under way. None starts after this.
+        synchronized (rendererLock) {
+            ready = false;
+        }
+        if (renderer != null) worker.post(renderer::releaseSurface);
     }
 }
