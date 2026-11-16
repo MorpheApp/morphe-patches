@@ -1,3 +1,15 @@
+## [2.3.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.8...v2.3.0-dev.9) (2026-11-16)
+
+### ✨ New Features
+
+* **YouTube - Downloads:** Add setting to force 1440p and 4K downloads for low end or older devices ([#4909](https://github.com/MorpheApp/morphe-patches/issues/4909)) ([021c018](https://github.com/MorpheApp/morphe-patches/commit/021c018437e3743959428da27d216f900221d8dc))
+* **YouTube - Enable debugging:** Add push notification debugging ([#4844](https://github.com/MorpheApp/morphe-patches/issues/4844)) ([88dfe43](https://github.com/MorpheApp/morphe-patches/commit/88dfe438159f000a8cda9e23b7e08c7cfef4b4ac))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Ambient mode:** "Disable Ambient mode in fullscreen" cannot be turned on with Enhanced Ambient mode ([dc7a0a9](https://github.com/MorpheApp/morphe-patches/commit/dc7a0a9bdaad7ed1d70e1c391e977d5a5b3869be))
+* **YouTube - Hide player flyout menu components:** "Stable volume" is not hidden when it is disabled and its icon has no name ([54f9e52](https://github.com/MorpheApp/morphe-patches/commit/54f9e52b9b1cf696fa07b1bf664ecd1d2de1d116))
+
 ## [2.3.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.7...v2.3.0-dev.8) (2026-11-16)
 
 ### ✨ New Features
