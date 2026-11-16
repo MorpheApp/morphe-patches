@@ -70,13 +70,13 @@ public final class InboxResponseFlattener {
         SeenEntities seenEntities = new SeenEntities(root);
         InboxVideos videos = new InboxVideos();
         addNotifications(elements, seenEntities, videos);
-        byte[] flattened = ungroupAll(body, root, elements, seenEntities, videos);
+        byte[] flattened = ungroupAll(body, root, elements, seenEntities);
         videos.saveInBackground();
         return flattened;
     }
 
     private static byte[] ungroupAll(byte[] body, List<ProtoNode> root, List<ProtoNode> elements,
-                                     SeenEntities seenEntities, InboxVideos videos) throws IOException {
+                                     SeenEntities seenEntities) throws IOException {
         int itemDepth = itemDepth(elements);
         if (itemDepth < 0) {
             return body;
@@ -128,7 +128,7 @@ public final class InboxResponseFlattener {
             if (list == null) {
                 continue;
             }
-            List<Row> rows = ungroup(group.getValue(), rowTemplate, seenEntities, videos);
+            List<Row> rows = ungroup(group.getValue(), rowTemplate, seenEntities);
             if (!rows.isEmpty()) {
                 replacements.put(group.getKey(), rows);
                 lists.add(list);
@@ -163,9 +163,6 @@ public final class InboxResponseFlattener {
                                          InboxVideos videos) {
         for (ProtoNode element : elements) {
             String template = templateName(element.children);
-            if (template == null) {
-                continue;
-            }
             if (template.startsWith(GROUP_TEMPLATE_PREFIX)) {
                 addGroup(element, seenEntities, videos);
                 continue;
@@ -182,18 +179,13 @@ public final class InboxResponseFlattener {
     }
 
     private static void addGroup(ProtoNode groupElement, SeenEntities seenEntities, InboxVideos videos) {
-        List<ProtoNode> group = ProtoNode.message(groupElement.children, GROUP_MODEL);
-        ProtoNode header = ProtoNode.field(group, GROUP_HEADER);
-        if (header == null || header.children == null) {
+        Group group = Group.of(groupElement, seenEntities);
+        if (group == null) {
             return;
         }
-        boolean headerUnseen = notificationUnseen(header.children, seenEntities);
-        for (ProtoNode entry : group) {
-            if (entry.getFieldNumber() == GROUP_ENTRY && entry.children != null) {
-                String videoId = videoId(entry.children);
-                Boolean entryUnseen = seenEntities.isUnseen(entryKey(entry.children));
-                videos.add(videoId, entryUnseen != null ? entryUnseen : localUnseen(videoId, headerUnseen));
-            }
+        for (ProtoNode entry : group.entries()) {
+            String videoId = videoId(entry.children);
+            videos.add(videoId, group.isUnseen(entryKey(entry.children), videoId, seenEntities));
         }
     }
 
@@ -202,7 +194,7 @@ public final class InboxResponseFlattener {
      *         which is left out when it's 0.
      */
     private static boolean notificationUnseen(List<ProtoNode> model, SeenEntities seenEntities) {
-        ProtoNode key = ProtoNode.field(ProtoNode.message(model, ENTITY_KEYS), SEEN_ENTITY_KEY);
+        ProtoNode key = seenKey(model);
         Boolean entityUnseen = seenEntities.isUnseen(key != null && key.isText() ? key.getText() : null);
         if (entityUnseen != null) {
             return entityUnseen;
@@ -375,34 +367,65 @@ public final class InboxResponseFlattener {
     /**
      * @return The list items of the videos of the group.
      */
-    private static List<Row> ungroup(ProtoNode groupElement, RowTemplate rowTemplate, SeenEntities seenEntities,
-                                     InboxVideos videos) throws IOException {
+    private static List<Row> ungroup(ProtoNode groupElement, RowTemplate rowTemplate,
+                                     SeenEntities seenEntities) throws IOException {
         List<Row> rows = new ArrayList<>();
-        List<ProtoNode> group = ProtoNode.message(groupElement.children, GROUP_MODEL);
-        ProtoNode header = ProtoNode.field(group, GROUP_HEADER);
-        if (header == null || header.children == null) {
+        Group group = Group.of(groupElement, seenEntities);
+        if (group == null) {
             return rows;
         }
-        GroupHeader groupHeader = new GroupHeader(header.children, seenEntities);
-        for (ProtoNode entry : group) {
-            if (entry.getFieldNumber() == GROUP_ENTRY && entry.children != null) {
-                byte[] model = entryModel(entry, groupHeader, seenEntities, videos);
-                rows.add(new Row(rowTemplate.withModel(model), notificationId(entry.children)));
-            }
+        for (ProtoNode entry : group.entries()) {
+            byte[] model = entryModel(entry, group, seenEntities);
+            rows.add(new Row(rowTemplate.withModel(model), notificationId(entry.children)));
         }
         return rows;
     }
 
-    private static final class GroupHeader {
+    /**
+     * A group of notifications. Its header has the avatar, the channel name and the unseen state of the group.
+     */
+    private static final class Group {
         final List<ProtoNode> fields;
+        final List<ProtoNode> header;
         @Nullable
-        final ProtoNode seenKey;
-        final boolean unseen;
+        final ProtoNode headerSeenKey;
+        final boolean headerUnseen;
 
-        GroupHeader(List<ProtoNode> fields, SeenEntities seenEntities) {
+        private Group(List<ProtoNode> fields, List<ProtoNode> header, SeenEntities seenEntities) {
             this.fields = fields;
-            seenKey = ProtoNode.field(ProtoNode.message(fields, ENTITY_KEYS), SEEN_ENTITY_KEY);
-            unseen = notificationUnseen(fields, seenEntities);
+            this.header = header;
+            headerSeenKey = seenKey(header);
+            headerUnseen = notificationUnseen(header, seenEntities);
+        }
+
+        @Nullable
+        static Group of(ProtoNode groupElement, SeenEntities seenEntities) {
+            List<ProtoNode> fields = ProtoNode.message(groupElement.children, GROUP_MODEL);
+            ProtoNode header = ProtoNode.field(fields, GROUP_HEADER);
+            return header == null || header.children == null
+                    ? null
+                    : new Group(fields, header.children, seenEntities);
+        }
+
+        /**
+         * @return The entries of the videos of the group, which are messages.
+         */
+        List<ProtoNode> entries() {
+            List<ProtoNode> entries = new ArrayList<>();
+            for (ProtoNode field : fields) {
+                if (field.getFieldNumber() == GROUP_ENTRY && field.children != null) {
+                    entries.add(field);
+                }
+            }
+            return entries;
+        }
+
+        /**
+         * @return The state from the server if there is one, otherwise the state of {@link #localUnseen}.
+         */
+        boolean isUnseen(@Nullable String entryKey, @Nullable String videoId, SeenEntities seenEntities) {
+            Boolean serverUnseen = seenEntities.isUnseen(entryKey);
+            return serverUnseen != null ? serverUnseen : localUnseen(videoId, headerUnseen);
         }
     }
 
@@ -411,15 +434,14 @@ public final class InboxResponseFlattener {
      * and has no unseen state of its own. The entry gets the key of its own unseen entity,
      * so seeing it removes only its dot.
      */
-    private static byte[] entryModel(ProtoNode entry, GroupHeader header, SeenEntities seenEntities,
-                                     InboxVideos videos) throws IOException {
+    private static byte[] entryModel(ProtoNode entry, Group group, SeenEntities seenEntities) throws IOException {
         List<ProtoNode> model = ProtoNode.parse(entry.getPayload());
         if (model == null) {
             return entry.getPayload();
         }
 
         ProtoNode texts = ProtoNode.field(model, TEXTS);
-        ProtoNode channelName = ProtoNode.field(ProtoNode.message(header.fields, TEXTS), CHANNEL_NAME);
+        ProtoNode channelName = ProtoNode.field(ProtoNode.message(group.header, TEXTS), CHANNEL_NAME);
         if (texts != null && texts.children != null && channelName != null
                 && ProtoNode.field(texts.children, CHANNEL_NAME) == null) {
             texts.setPayload(ProtoBytes.concat(texts.getPayload(), raw(channelName)));
@@ -427,27 +449,23 @@ public final class InboxResponseFlattener {
 
         // The entry keeps its own id, which its menu commands such as hiding the notification refer to.
         ProtoNode entityKeys = ProtoNode.field(model, ENTITY_KEYS);
-        ProtoNode ownSeenKey = entityKeys == null || entityKeys.children == null
-                ? null
-                : ProtoNode.field(entityKeys.children, SEEN_ENTITY_KEY);
+        ProtoNode ownSeenKey = seenKey(model);
         String key = entryKey(model);
 
-        String videoId = videoId(model);
         byte[] addedSeenKey = null;
         boolean unseen;
         if (key != null && seenEntities.canAdd()) {
-            unseen = isUnseen(key, videoId, header, seenEntities);
+            unseen = group.isUnseen(key, videoId(model), seenEntities);
             seenEntities.add(key, unseen);
             if (ownSeenKey == null) {
                 addedSeenKey = ProtoBytes.string(SEEN_ENTITY_KEY, key);
             }
         } else {
-            unseen = header.unseen;
-            if (ownSeenKey == null && header.seenKey != null) {
-                addedSeenKey = raw(header.seenKey);
+            unseen = group.headerUnseen;
+            if (ownSeenKey == null && group.headerSeenKey != null) {
+                addedSeenKey = raw(group.headerSeenKey);
             }
         }
-        videos.add(videoId, unseen);
 
         ProtoNode seen = ProtoNode.field(model, SEEN);
         byte[] missingSeen = null;
@@ -470,7 +488,7 @@ public final class InboxResponseFlattener {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         out.write(ProtoNode.write(model));
-        ProtoNode avatar = ProtoNode.field(header.fields, AVATAR);
+        ProtoNode avatar = ProtoNode.field(group.header, AVATAR);
         if (avatar != null && ProtoNode.field(model, AVATAR) == null) {
             out.write(raw(avatar));
         }
@@ -493,13 +511,20 @@ public final class InboxResponseFlattener {
         if (entityKeys != null && isUnreadable(entityKeys)) {
             return null;
         }
-        ProtoNode ownSeenKey = entityKeys == null || entityKeys.children == null
-                ? null
-                : ProtoNode.field(entityKeys.children, SEEN_ENTITY_KEY);
+        ProtoNode ownSeenKey = seenKey(model);
         if (ownSeenKey == null) {
-            return ownKey(model);
+            Long notificationId = notificationId(model);
+            return notificationId == null ? null : SeenEntities.key(notificationId);
         }
         return ownSeenKey.isText() ? ownSeenKey.getText() : null;
+    }
+
+    /**
+     * @return The field with the key of the unseen entity of the notification, or null if it has none.
+     */
+    @Nullable
+    private static ProtoNode seenKey(List<ProtoNode> model) {
+        return ProtoNode.field(ProtoNode.message(model, ENTITY_KEYS), SEEN_ENTITY_KEY);
     }
 
     /**
@@ -507,24 +532,6 @@ public final class InboxResponseFlattener {
      */
     private static boolean isUnreadable(ProtoNode field) {
         return field.children == null && field.getPayload().length > 0;
-    }
-
-    /**
-     * @return The key of the unseen entity of the notification of the entry, built from its notification id.
-     */
-    @Nullable
-    private static String ownKey(List<ProtoNode> model) {
-        Long notificationId = notificationId(model);
-        return notificationId == null ? null : SeenEntities.key(notificationId);
-    }
-
-    /**
-     * @return The state from the server if there is one, otherwise the state of {@link #localUnseen}.
-     */
-    private static boolean isUnseen(String key, @Nullable String videoId, GroupHeader header,
-                                    SeenEntities seenEntities) {
-        Boolean serverUnseen = seenEntities.isUnseen(key);
-        return serverUnseen != null ? serverUnseen : localUnseen(videoId, header.unseen);
     }
 
     /**

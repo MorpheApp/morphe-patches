@@ -12,6 +12,8 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -32,6 +34,7 @@ val ungroupNotificationsPatch = patch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        versionCheckPatch,
         videoIdPatch,
         videoInformationPatch,
         playerTypeHookPatch,
@@ -44,12 +47,20 @@ val ungroupNotificationsPatch = patch(
             SwitchPreference("morphe_ungroup_notifications", summary = true)
         )
 
-        hookVideoId("$EXTENSION_CLASS->onVideoLoaded(Ljava/lang/String;)V")
-        hookBackgroundPlayVideoId("$EXTENSION_CLASS->onVideoLoaded(Ljava/lang/String;)V")
+        val onVideoLoaded = "$EXTENSION_CLASS->onVideoLoaded(Ljava/lang/String;)V"
+        hookVideoId(onVideoLoaded)
+        hookBackgroundPlayVideoId(onVideoLoaded)
 
+        val buffersConstructorFingerprint = if (is_21_40_or_greater) {
+            NetworkResponseBuffersConstructorFingerprint
+        } else {
+            NetworkResponseBuffersConstructorLegacyFingerprint
+        }
+
+        // The body is the second parameter of both constructors.
         listOf(
             NetworkResponseBytesConstructorFingerprint to "[B",
-            NetworkResponseBuffersConstructorFingerprint to "Ljava/lang/Iterable;",
+            buffersConstructorFingerprint to "Ljava/lang/Iterable;",
         ).forEach { (fingerprint, bodyType) ->
             fingerprint.method.addInstructions(
                 0,

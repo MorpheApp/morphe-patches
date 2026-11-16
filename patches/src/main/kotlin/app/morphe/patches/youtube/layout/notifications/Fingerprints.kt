@@ -30,13 +30,28 @@ private object NetworkResponseHeadersFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Constructor with the body as one byte array.
+ */
 internal object NetworkResponseBytesConstructorFingerprint : Fingerprint(
     classFingerprint = NetworkResponseHeadersFingerprint,
     name = "<init>",
     parameters = listOf("I", "[B", "Ljava/util/Map;", "Ljava/util/List;", "Z"),
 )
 
+/**
+ * Constructor with the body as byte buffers. YouTube 21.40+.
+ */
 internal object NetworkResponseBuffersConstructorFingerprint : Fingerprint(
+    classFingerprint = NetworkResponseHeadersFingerprint,
+    name = "<init>",
+    parameters = listOf("I", "Ljava/lang/Iterable;", "Ljava/util/List;", "Z", "Z"),
+)
+
+/**
+ * Constructor with the body as byte buffers. YouTube 21.39 and lower.
+ */
+internal object NetworkResponseBuffersConstructorLegacyFingerprint : Fingerprint(
     classFingerprint = NetworkResponseHeadersFingerprint,
     name = "<init>",
     parameters = listOf("I", "Ljava/lang/Iterable;", "Ljava/util/List;"),
