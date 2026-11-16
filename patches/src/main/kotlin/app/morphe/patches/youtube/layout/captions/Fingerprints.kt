@@ -45,6 +45,9 @@ internal object SubtitleManagerFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
+        // Reason of the track selection: 2 when the caption tracks of a video are loaded
+        // and YouTube selects the track itself, other values for the selections of the user.
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchFirst()),
         string(""),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
