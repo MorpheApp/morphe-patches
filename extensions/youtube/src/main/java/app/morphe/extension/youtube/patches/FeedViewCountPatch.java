@@ -154,6 +154,13 @@ public final class FeedViewCountPatch {
     /** Root hosts that show a view count. Used only on the main thread. */
     private static final Map<ComponentHost, ViewCountBadge> badges = new WeakHashMap<>();
 
+    /**
+     * Hosts of a video whose view count is not known yet, as the texts below the title are not shown,
+     * such as while the card enters from the bottom of the list behind the glass navigation bar.
+     * The like count badge shown next to the view count waits for it. Used only on the main thread.
+     */
+    private static final Map<ComponentHost, Boolean> pendingViewCounts = new WeakHashMap<>();
+
     /** Spaces, which texts of the same view count can show differently, such as "4.7 M" and "4.7M". */
     private static final Pattern SPACES_PATTERN = Pattern.compile("[\\s  ]+");
 
@@ -1383,18 +1390,34 @@ public final class FeedViewCountPatch {
 
         ViewCountBadge badge = badges.get(host);
         if (viewCount == null) {
+            // Litho draws only the part of a card that is shown, so the view count of a card whose texts below
+            // the title are below the bottom of the list is not found until they are shown.
+            final Rect visible = new Rect();
+            final boolean textsHidden = !textShowsViewCount && shortsFrame == null && videoId != null
+                    && host.getLocalVisibleRect(visible) && visible.top == 0 && visible.bottom < host.getHeight();
+            if (textsHidden && badge != null && badge.confirmed && badge.added && videoId.equals(badge.videoId)) {
+                // The card still shows the same video, such as when it moves back below the bottom of the list,
+                // so its view count is kept.
+                return;
+            }
+            final boolean pendingChanged = textsHidden
+                    ? pendingViewCounts.put(host, Boolean.TRUE) == null
+                    : pendingViewCounts.remove(host) != null;
             if (badge != null) {
                 badge.detach(host);
                 badges.remove(host);
+            }
+            if (badge != null || pendingChanged) {
                 FeedEngagementCountsPatch.onViewCountBadgeChanged(host);
             }
             return;
         }
+        pendingViewCounts.remove(host);
         if (badge == null) {
             badge = new ViewCountBadge(host);
             badges.put(host, badge);
         }
-        badge.bind(host, viewCount, duration, thumbnail);
+        badge.bind(host, videoId, viewCount, duration, thumbnail);
         // The like count badge can be shown next to the view count.
         FeedEngagementCountsPatch.onViewCountBadgeChanged(host);
     }
@@ -1419,6 +1442,14 @@ public final class FeedViewCountPatch {
         }
         ViewCountBadge badge = badges.get(componentHost);
         return badge == null || !badge.added ? null : new Rect(badge.getBounds());
+    }
+
+    /**
+     * @return If the view count of the video of a card is not known yet, as the texts below the title are not shown,
+     *         so the like count badge waits for it. Must be called on the main thread.
+     */
+    public static boolean isViewCountPending(View host) {
+        return host instanceof ComponentHost componentHost && pendingViewCounts.containsKey(componentHost);
     }
 
     /**
@@ -1466,6 +1497,9 @@ public final class FeedViewCountPatch {
          */
         private boolean confirmed = true;
         private String viewCount = "";
+        /** The video of the view count, or null if not known. */
+        @Nullable
+        private String videoId;
         private boolean added;
         private int alpha = 255;
         @Nullable
@@ -1498,8 +1532,10 @@ public final class FeedViewCountPatch {
          * @param thumbnail The thumbnail, or null if not found.
          *                  Then a 16:9 thumbnail as wide as the card is used.
          */
-        void bind(ComponentHost host, String newViewCount, @Nullable Rect duration, @Nullable Rect thumbnail) {
+        void bind(ComponentHost host, @Nullable String newVideoId, String newViewCount,
+                  @Nullable Rect duration, @Nullable Rect thumbnail) {
             confirmed = true;
+            videoId = newVideoId;
             // Fades in when shown, or when the card shows another video.
             // Not when the card is only laid out again.
             final boolean changed = !newViewCount.equals(viewCount);
