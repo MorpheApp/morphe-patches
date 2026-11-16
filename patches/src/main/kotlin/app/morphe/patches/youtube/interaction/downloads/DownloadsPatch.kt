@@ -119,7 +119,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/Downl
 internal const val EXTENSION_IN_APP_DOWNLOADS_CLASS = "Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch;"
 
 private const val EXTENSION_STREAM_SELECTOR_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch\$DownloadStreamSelector;"
+    $$"Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch$DownloadStreamSelector;"
 
 private const val EXTENSION_SPOOF_CLASS = "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
@@ -437,7 +437,7 @@ val downloadsPatch = patch(
         // shorter side of the screen, and the server offers up to 1080p.
         hookDownloadQualities()
         val copyImmutableListMethod = OfflineSettingsConstructorFingerprint
-            .instructionMatches.last().methodReference!!
+            .instructionMatches.last().methodReference
 
         // The download quality setting lists the same qualities as the quality picker.
         OfflineSettingCategoryConstructorFingerprint.method.addInstructions(

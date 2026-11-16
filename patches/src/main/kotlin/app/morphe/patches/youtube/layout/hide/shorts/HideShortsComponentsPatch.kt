@@ -133,11 +133,11 @@ private val hideShortsComponentsResourcePatch = patch {
                 preferences = setOf(
                     SwitchPreference("morphe_hide_shorts_channel"),
                     SwitchPreference("morphe_hide_shorts_home"),
+                    SwitchPreference("morphe_hide_shorts_notifications"),
                     SwitchPreference("morphe_hide_shorts_search"),
                     SwitchPreference("morphe_hide_shorts_subscriptions"),
                     SwitchPreference("morphe_hide_shorts_video_description"),
-                    SwitchPreference("morphe_hide_shorts_history"),
-                    SwitchPreference("morphe_hide_shorts_notifications")
+                    SwitchPreference("morphe_hide_shorts_history")
                 )
             ),
 

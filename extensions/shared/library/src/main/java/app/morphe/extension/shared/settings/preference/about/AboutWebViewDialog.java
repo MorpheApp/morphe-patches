@@ -50,6 +50,7 @@ class AboutWebViewDialog extends Dialog {
     }
 
     // JS required to hide any broken images. No remote JavaScript is ever loaded.
+    @SuppressWarnings("deprecation")
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
