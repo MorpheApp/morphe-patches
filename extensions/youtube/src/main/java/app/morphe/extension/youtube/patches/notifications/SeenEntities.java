@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.youtube.patches.utils.EntityKeys;
-import app.morphe.extension.youtube.patches.utils.ProtoBytes;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 
 /**
@@ -81,17 +80,17 @@ final class SeenEntities {
         }
         unseen.put(key, isUnseen);
 
-        byte[] entity = ProtoBytes.encode(output -> {
+        byte[] entity = ProtoNode.encode(output -> {
             output.writeString(ENTITY_KEY, key);
             output.writeUInt64(ENTITY_UNSEEN, isUnseen ? 1 : 0);
         });
-        byte[] payload = ProtoBytes.message(UNSEEN_ENTITY, entity);
-        byte[] mutation = ProtoBytes.encode(output -> {
+        byte[] payload = ProtoNode.encodeMessage(UNSEEN_ENTITY, entity);
+        byte[] mutation = ProtoNode.encode(output -> {
             output.writeString(MUTATION_KEY, key);
             output.writeUInt64(MUTATION_TYPE, MUTATION_TYPE_REPLACE);
             output.writeByteArray(MUTATION_PAYLOAD, payload);
         });
-        added.write(ProtoBytes.message(MUTATION, mutation));
+        added.write(ProtoNode.encodeMessage(MUTATION, mutation));
     }
 
     /**
@@ -99,7 +98,7 @@ final class SeenEntities {
      */
     void write() {
         if (mutations != null && added.size() > 0) {
-            mutations.setPayload(ProtoBytes.concat(mutations.getPayload(), added.toByteArray()));
+            mutations.setPayload(ProtoNode.concat(mutations.getPayload(), added.toByteArray()));
         }
     }
 

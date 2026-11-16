@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.utils.ProtoBytes;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 
 /**
@@ -444,7 +443,7 @@ public final class InboxResponseFlattener {
         ProtoNode channelName = ProtoNode.field(ProtoNode.message(group.header, TEXTS), CHANNEL_NAME);
         if (texts != null && texts.children != null && channelName != null
                 && ProtoNode.field(texts.children, CHANNEL_NAME) == null) {
-            texts.setPayload(ProtoBytes.concat(texts.getPayload(), raw(channelName)));
+            texts.setPayload(ProtoNode.concat(texts.getPayload(), raw(channelName)));
         }
 
         // The entry keeps its own id, which its menu commands such as hiding the notification refer to.
@@ -458,7 +457,7 @@ public final class InboxResponseFlattener {
             unseen = group.isUnseen(key, videoId(model), seenEntities);
             seenEntities.add(key, unseen);
             if (ownSeenKey == null) {
-                addedSeenKey = ProtoBytes.string(SEEN_ENTITY_KEY, key);
+                addedSeenKey = ProtoNode.encodeString(SEEN_ENTITY_KEY, key);
             }
         } else {
             unseen = group.headerUnseen;
@@ -474,15 +473,15 @@ public final class InboxResponseFlattener {
                 seen.setVarint(unseen ? 0 : 1);
             }
         } else {
-            missingSeen = ProtoBytes.encode(output -> output.writeUInt64(SEEN, unseen ? 0 : 1));
+            missingSeen = ProtoNode.encode(output -> output.writeUInt64(SEEN, unseen ? 0 : 1));
         }
 
         byte[] missingEntityKeys = null;
         if (addedSeenKey != null) {
             if (entityKeys == null) {
-                missingEntityKeys = ProtoBytes.message(ENTITY_KEYS, addedSeenKey);
+                missingEntityKeys = ProtoNode.encodeMessage(ENTITY_KEYS, addedSeenKey);
             } else if (!isUnreadable(entityKeys)) {
-                entityKeys.setPayload(ProtoBytes.concat(entityKeys.getPayload(), addedSeenKey));
+                entityKeys.setPayload(ProtoNode.concat(entityKeys.getPayload(), addedSeenKey));
             }
         }
 

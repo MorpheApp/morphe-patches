@@ -351,11 +351,37 @@ public final class ProtoNode {
     }
 
     public static byte[] write(List<ProtoNode> message) throws IOException {
+        return encode(output -> write(message, output));
+    }
+
+    public interface Writer {
+        void write(CodedOutputStream output) throws IOException;
+    }
+
+    /**
+     * @return The encoded fields, such as fields to add to a message that is kept as bytes.
+     */
+    public static byte[] encode(Writer writer) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         CodedOutputStream output = CodedOutputStream.newInstance(bytes);
-        write(message, output);
+        writer.write(output);
         output.flush();
         return bytes.toByteArray();
+    }
+
+    public static byte[] encodeMessage(int fieldNumber, byte[] payload) throws IOException {
+        return encode(output -> output.writeByteArray(fieldNumber, payload));
+    }
+
+    public static byte[] encodeString(int fieldNumber, String text) throws IOException {
+        return encode(output -> output.writeString(fieldNumber, text));
+    }
+
+    public static byte[] concat(byte[] first, byte[] second) {
+        byte[] result = new byte[first.length + second.length];
+        System.arraycopy(first, 0, result, 0, first.length);
+        System.arraycopy(second, 0, result, first.length, second.length);
+        return result;
     }
 
     private static void write(List<ProtoNode> message, CodedOutputStream output) throws IOException {
