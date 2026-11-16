@@ -87,6 +87,10 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_about_summary">Patch version and official links</string>
     <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
     <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
+    <string name="morphe_share_post_content_title">Share post content</string>
+    <string name="morphe_share_post_content_summary">App shortcuts and \"Share via…\" in the share sheet send the image, video or text of a post instead of its link. Copy link still copies the link</string>
+    <string name="morphe_share_post_content_preparing">Preparing to share…</string>
+    <string name="morphe_share_post_content_failed">Could not share the media. Sharing the link instead</string>
     <string name="morphe_open_links_directly_title">Open links directly</string>
     <string name="morphe_open_links_directly_summary">Bypasses redirect URLs when opening external links</string>
     <string name="morphe_full_width_feed_media_title">Full width feed media</string>
