@@ -71,6 +71,7 @@ import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationMo
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRendererHolder;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationType;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarIconOnlyItemRendererBytes;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemBytes;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
@@ -1136,6 +1137,71 @@ public final class NavigationBarPatch {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "createPivotBarItems failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * Creates the Search, Settings and Watch later buttons from the home button of the A/B layout without labels,
+     * if its buttons are not converted to buttons with labels, so the buttons have no label either.
+     *
+     * @param messageLite MessageLite class of PivotBarIconOnlyItemRenderer.
+     */
+    public static void createIconOnlyPivotBarItems(MessageLite messageLite) {
+        if (!SHOW_SEARCH_BUTTON && !SHOW_SETTINGS_BUTTON && !SHOW_WATCH_LATER_BUTTON) return;
+
+        try {
+            var renderer = PivotBarIconOnlyItemRendererBytes.parseFrom(messageLite.toByteArray());
+            var iconName = Icon.parseFrom(renderer.getIcon()).getYtIconType().name();
+            if (!NavigationBar.NavigationButton.HOME.ytEnumNames.contains(iconName)) return;
+
+            if (SHOW_SEARCH_BUTTON) {
+                pivotBarRenderer = buildPivotBarItem(PivotBarItemBytes.newBuilder()
+                        .setPivotBarIconOnlyItemRenderer(renderer.toBuilder()
+                                .setPivotIdentifier(SEARCH_PIVOT_IDENTIFIER)
+                                .setAccessibility(Title.newBuilder()
+                                        .setRuns(Runs.newBuilder().setText(str("menu_search"))))
+                                .setIcon(Icon.newBuilder().setYtIconType(Utils.appIsUsingBoldIcons()
+                                        ? YTIconType.SEARCH_BOLD
+                                        : YTIconType.SEARCH_CAIRO).build().toByteString())
+                                .build().toByteString())
+                        .build().toByteArray());
+            }
+
+            if (SHOW_SETTINGS_BUTTON) {
+                pivotBarSettingsRenderer = buildPivotBarItem(PivotBarItemBytes.newBuilder()
+                        .setPivotBarIconOnlyItemRenderer(renderer.toBuilder()
+                                .setPivotIdentifier(SETTINGS_PIVOT_IDENTIFIER)
+                                .setAccessibility(Title.newBuilder()
+                                        .setRuns(Runs.newBuilder().setText(str("menu_settings"))))
+                                .setIcon(Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO)
+                                        .build().toByteString())
+                                .build().toByteString())
+                        .build().toByteArray());
+            }
+
+            if (SHOW_WATCH_LATER_BUTTON) {
+                // The tracking params and thumbnail belong to the home button.
+                pivotBarWatchLaterRenderer = buildPivotBarItem(PivotBarItemBytes.newBuilder()
+                        .setPivotBarIconOnlyItemRenderer(renderer.toBuilder()
+                                .setPivotIdentifier(WATCH_LATER_PIVOT_IDENTIFIER)
+                                .setNavigationEndpoint(NavigationEndpoint.newBuilder()
+                                        .setBrowseEndpoint(BrowseEndpoint.newBuilder().setBrowseId(WATCH_LATER_BROWSE_ID))
+                                        .build().toByteString())
+                                .setAccessibility(Title.newBuilder()
+                                        .setRuns(Runs.newBuilder().setText(str("morphe_watch_later_navigation_label"))))
+                                // The Cairo icon has no drawable in some app versions.
+                                .setIcon(Icon.newBuilder().setYtIconType(YTIconType.WATCH_LATER)
+                                        .build().toByteString())
+                                .clearTargetId()
+                                .clearTrackingParams()
+                                .clearThumbnail()
+                                .setNavigationType(NavigationType.PIVOT_BAR_NAVIGATION_TYPE_SELECT_TAB_VALUE)
+                                .build().toByteString())
+                        .build().toByteArray());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "createIconOnlyPivotBarItems failure", ex);
         }
     }
 
