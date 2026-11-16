@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">ჩამოტვირთვა</string>
   <string name="morphe_feed_download_flyout_button_title">ჩამოტვირთვის ჩვენება ვიდეოს მენიებში</string>
   <string name="morphe_feed_download_flyout_button_summary">ამატებს ჩამოტვირთვის ელემენტს იმ ვიდეოების მენიებში feed-ში, რომლებსაც ეს არ გააჩნიათ, მაგალითად, იმ ვიდეოებში, რომელთა ჩამოტვირთვასაც YouTube მხოლოდ Premium წევრებს სთავაზობს</string>
+  <string name="morphe_download_force_4k_title">4K ჩამოტვირთვის ხელმისაწვდომობის იძულება</string>
+  <string name="morphe_download_force_4k_summary">გთავაზობთ 1440p და 4K ჩამოტვირთვებს მაშინაც კი, თუ YouTube გადაწყვეტს, რომ ამ მოწყობილობას მათი უკეთის შესაძლებლობა არ აქვს. ასეთი ვიდეოები შესაძლოა არ ჩაირთოს YouTube-ის შიგნით, თუმცა მათი ექსპორტი შესაძლებელია თქვენს მოწყობილობაზე</string>
   <string name="morphe_export_download_folder_title">შენახული ვიდეოების ექსპორტი</string>
   <string name="morphe_export_download_folder_summary">"გადაიტანეთ აპლიკაციაში შენახული ვიდეოები თქვენი მოწყობილობის მეხსიერებაში ჩამოტვირთვის მენიუს გამოყენებით. ექსპორტის საქაღალდის შესაცვლელად შეეხეთ.
 
@@ -1591,6 +1593,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ზუმის ჰაპტიკის გამორთვა</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">თუ ახლახან შეცვალეთ თქვენი ანგარიშის შესვლის მონაცემები, წაშალეთ და ხელახლა დააინსტალირეთ MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Push შეტყობინებების შენახვა</string>
+  <string name="morphe_debug_save_push_notifications_summary">ინახავს მიღებულ push შეტყობინებებს ფაილში, რომელიც განთავსებულია აპლიკაციის მონაცემებში. ფაილი შეიძლება შეიცავდეს კონფიდენციალურ ინფორმაციას, როგორიცაა შეტყობინებების ტექსტები და არხების სახელები</string>
+  <string name="morphe_debug_saved_push_notifications_title">შენახული push შეტყობინებების ექსპორტი</string>
+  <string name="morphe_debug_saved_push_notifications_summary">შენახული push შეტყობინებების ექსპორტი ან გასუფთავება</string>
+  <string name="morphe_debug_saved_push_notifications_count">შენახული push შეტყობინებები: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">შენახული push შეტყობინებები ვერ მოიძებნა</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push შეტყობინებები წარმატებით იქნა ექსპორტირებული</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push შეტყობინებების ექსპორტი ვერ მოხერხდა</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">შენახული push შეტყობინებები გასუფთავდა</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">ბმულების გადამისამართების გვერდის ავლით</string>
   <string name="morphe_bypass_link_redirects_summary">ხსნის ორიგინალ ბმულს პირდაპირ, თვალთვალის ბმულის გვერდის ავლით (youtube.com/redirect)</string>

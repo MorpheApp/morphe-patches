@@ -562,6 +562,8 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_shorts_download_flyout_title">I-download</string>
   <string name="morphe_feed_download_flyout_button_title">Ipakita ang download sa mga menu ng video</string>
   <string name="morphe_feed_download_flyout_button_summary">Nagdaragdag ng download item sa mga menu ng mga video sa feed na wala nito, gaya ng mga video na pinapayagan lamang ng YouTube na i-download ng mga Premium member</string>
+  <string name="morphe_download_force_4k_title">Sapiliting maging available ang 4K download</string>
+  <string name="morphe_download_force_4k_summary">Nag-aalok ng 1440p at 4K na mga download kahit na magpasya ang YouTube na hindi ito maaaring i-play ng device na ito. Ang mga naturang video ay maaaring mag-play nang walang video sa loob ng YouTube, ngunit maaaring i-export sa iyong device</string>
   <string name="morphe_export_download_folder_title">I-export ang mga na-save na video</string>
   <string name="morphe_export_download_folder_summary">"I-export ang mga na-save na video sa app sa storage ng iyong device gamit ang in-app downloads flyout menu. I-tap para baguhin ang export folder
 
@@ -1592,6 +1594,16 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <string name="morphe_disable_haptic_feedback_zoom_title">I-disable ang haptics ng pag-zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Kung kamakailan mong binago ang mga detalye ng login ng iyong account, i-uninstall at i-reinstall ang MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">I-save ang mga push notification</string>
+  <string name="morphe_debug_save_push_notifications_summary">Isinasave ang mga natanggap na push notification sa isang file sa app data. Maaaring maglaman ang file ng pribadong impormasyon, gaya ng mga text ng notification at mga pangalan ng channel</string>
+  <string name="morphe_debug_saved_push_notifications_title">I-export ang mga na-save na push notification</string>
+  <string name="morphe_debug_saved_push_notifications_summary">I-export o linisin ang mga na-save na push notification</string>
+  <string name="morphe_debug_saved_push_notifications_count">Mga na-save na push notification: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Walang nahanap na mga na-save na push notification</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Matagumpay na na-export ang mga push notification</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Nabigong i-export ang mga push notification</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Nalinis na ang mga na-save na push notification</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Laktawan ang mga redirect ng link</string>
   <string name="morphe_bypass_link_redirects_summary">Binubuksan ang orihinal na link nang direkta, nilalaktawan ang link ng pagsubaybay (youtube.com/redirect)</string>

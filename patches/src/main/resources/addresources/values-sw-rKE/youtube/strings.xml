@@ -562,6 +562,8 @@ Baada ya video yenye kitufe cha Ask kufunguliwa mara moja, kipengele hiki hufany
   <string name="morphe_shorts_download_flyout_title">Pakua</string>
   <string name="morphe_feed_download_flyout_button_title">Onyesha pakua kwenye menyu za video</string>
   <string name="morphe_feed_download_flyout_button_summary">Huongeza kipengele cha kupakua kwenye menyu za video katika feed ambazo hazina, kama vile video ambazo YouTube inaruhusu wanachama wa Premium pekee kupakua</string>
+  <string name="morphe_download_force_4k_title">Lazimisha upatikanaji wa kupakua 4K</string>
+  <string name="morphe_download_force_4k_summary">Inatoa mapakuzi ya 1440p na 4K hata kama YouTube itaamua kuwa kifaa hiki hakiwezi kucheza. Video kama hizi zinaweza kucheza bila picha ndani ya YouTube, lakini zinaweza kuhamishwa kwenye kifaa chako</string>
   <string name="morphe_export_download_folder_title">Export video zilizohifadhiwa</string>
   <string name="morphe_export_download_folder_summary">"Hamisha video zilizohifadhiwa kwenye programu kwenda kwenye hifadhi ya kifaa chako ukitumia menyu ya downloads ya programu. Gusa ili kubadilisha folda ya uhamishaji
 
@@ -1592,6 +1594,16 @@ Video huombwa kwa kutumia kiambishi kifupi cha ID ya video iliyofichwa, hivyo se
   <string name="morphe_disable_haptic_feedback_zoom_title">Zima haptiki za kukuza</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ikiwa hivi karibuni umebadilisha maelezo ya kuingia kwenye akaunti yako, basi ondoa na usakinishe tena MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Hifadhi arifa za push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Hifadhi arifa za push zilizopokelewa kwenye faili katika data ya programu. Faili hiyo inaweza kujumuisha taarifa binafsi, kama vile maandishi ya arifa na majina ya chaneli</string>
+  <string name="morphe_debug_saved_push_notifications_title">Export arifa za push zilizohifadhiwa</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Export au futa arifa za push zilizohifadhiwa</string>
+  <string name="morphe_debug_saved_push_notifications_count">Arifa za push zilizohifadhiwa: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Hakuna arifa za push zilizohifadhiwa zilizopatikana</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Arifa za push zimehamishwa kwa mafanikio</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Imeshindwa kuhamisha arifa za push</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Arifa za push zilizohifadhiwa zimefutwa</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Ruka uelekezaji upya wa viungo</string>
   <string name="morphe_bypass_link_redirects_summary">Inafungua kiungo asilia moja kwa moja, ikiruka kiungo cha ufuatiliaji (youtube.com/redirect)</string>

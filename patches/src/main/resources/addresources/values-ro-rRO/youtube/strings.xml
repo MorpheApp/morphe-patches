@@ -562,6 +562,8 @@ După ce un videoclip cu butonul Ask este deschis o dată, funcția funcționeaz
   <string name="morphe_shorts_download_flyout_title">Descărcare</string>
   <string name="morphe_feed_download_flyout_button_title">Afișare a descărcării în meniurile video</string>
   <string name="morphe_feed_download_flyout_button_summary">Adaugă un element de descărcare în meniurile videoclipurilor din feed care nu au unul, cum ar fi videoclipurile pe care YouTube permite descărcarea lor doar membrilor Premium</string>
+  <string name="morphe_download_force_4k_title">Forțează disponibilitatea descărcării 4K</string>
+  <string name="morphe_download_force_4k_summary">Oferă descărcări 1440p și 4K chiar dacă YouTube decide că acest dispozitiv nu le poate reda. Astfel de videoclipuri s-ar putea să nu se redea în interiorul YouTube, dar pot fi exportate pe dispozitivul tău</string>
   <string name="morphe_export_download_folder_title">Exportă videoclipurile salvate</string>
   <string name="morphe_export_download_folder_summary">"Exportă videoclipurile salvate în aplicație în stocarea dispozitivului tău folosind meniul de descărcări din aplicație. Atinge pentru a schimba dosarul de export
 
@@ -1591,6 +1593,16 @@ Videoclipurile sunt solicitate printr-un prefix scurt al ID-ului video cu hash, 
   <string name="morphe_disable_haptic_feedback_zoom_title">Dezactivare haptics zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Dacă ți-ai schimbat recent detaliile de conectare la cont, dezinstalează și reinstalează MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Salvează notificările push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Salvează notificările push primite într-un fișier în datele aplicației. Fișierul poate include informații private, cum ar fi textele notificărilor și numele canalelor</string>
+  <string name="morphe_debug_saved_push_notifications_title">Exportă notificările push salvate</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportă sau șterge notificările push salvate</string>
+  <string name="morphe_debug_saved_push_notifications_count">Notificări push salvate: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nu s-au găsit notificări push salvate</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Notificările push au fost exportate cu succes</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Exportul notificărilor push a eșuat</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Notificările push salvate au fost șterse</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Ignoră redirecționările linkurilor</string>
   <string name="morphe_bypass_link_redirects_summary">Deschide linkul original direct, ignorând linkul de urmărire (youtube.com/redirect)</string>

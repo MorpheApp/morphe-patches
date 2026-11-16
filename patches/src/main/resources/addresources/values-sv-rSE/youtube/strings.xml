@@ -562,6 +562,8 @@ När en video med Ask-knappen har öppnats en gång fungerar funktionen med alla
   <string name="morphe_shorts_download_flyout_title">Ladda ned</string>
   <string name="morphe_feed_download_flyout_button_title">Visa nedladdning i videomenyer</string>
   <string name="morphe_feed_download_flyout_button_summary">Lägger till ett nedladdningsalternativ i menyerna för videor i flödet som saknar det, till exempel videor som YouTube endast låter Premium-medlemmar ladda ner</string>
+  <string name="morphe_download_force_4k_title">Tvinga tillgänglighet för 4K-nedladdningar</string>
+  <string name="morphe_download_force_4k_summary">Erbjuder nedladdningar i 1440p och 4K även om YouTube anser att denna enhet inte kan spela upp dem. Sådana videor kan spelas upp utan bild inuti YouTube, men kan exporteras till din enhet</string>
   <string name="morphe_export_download_folder_title">Exportera sparade videor</string>
   <string name="morphe_export_download_folder_summary">"Exportera videor sparade i appen till enhetens lagring med hjälp av menyn för nedladdningar i appen. Trycka för att ändra exportmapp
 
@@ -1592,6 +1594,16 @@ Videor begärs med ett kort prefix av den hashade videons ID, så servern kan in
   <string name="morphe_disable_haptic_feedback_zoom_title">Inaktivera zoomhaptik</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Om du nyligen har ändrat dina inloggningsuppgifter, avinstallera och installera om MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Spara pushmeddelanden</string>
+  <string name="morphe_debug_save_push_notifications_summary">Sparar mottagna pushmeddelanden till en fil i appdata. Filen kan innehålla privat information, såsom meddelandetexter och kanalnamn</string>
+  <string name="morphe_debug_saved_push_notifications_title">Exportera sparade pushmeddelanden</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportera eller rensa de sparade pushmeddelandena</string>
+  <string name="morphe_debug_saved_push_notifications_count">Sparade pushmeddelanden: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Inga sparade pushmeddelanden hittades</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Pushmeddelanden har exporterats</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Misslyckades med att exportera pushmeddelanden</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Sparade pushmeddelanden har rensats</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Hoppa över länkomdirigeringar</string>
   <string name="morphe_bypass_link_redirects_summary">Öppnar den ursprungliga länken direkt och hoppar över spårningslänken (youtube.com/redirect)</string>

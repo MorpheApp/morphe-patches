@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">تنزيل</string>
   <string name="morphe_feed_download_flyout_button_title">عرض التنزيل في قوائم الفيديو</string>
   <string name="morphe_feed_download_flyout_button_summary">إضافة عنصر تنزيل إلى قوائم الفيديوهات في الخلاصة التي لا تحتوي عليه، مثل الفيديوهات التي يسمح YouTube لأعضاء Premium فقط بتنزيلها</string>
+  <string name="morphe_download_force_4k_title">فرض توفُّر تنزيل 4K</string>
+  <string name="morphe_download_force_4k_summary">يتيح تنزيلات بدقة 1440p و 4K حتى لو قرر YouTube أن هذا الجهاز لا يمكنه تشغيلها. قد يتم تشغيل هذه الفيديوهات بدون صورة داخل YouTube، ولكن يمكن تصديرها إلى جهازك</string>
   <string name="morphe_export_download_folder_title">تصدير الفيديوهات المحفوظة</string>
   <string name="morphe_export_download_folder_summary">"تصدير الفيديوهات المحفوظة داخل التطبيق إلى تخزين جهازك باستخدام التنزيل داخل التطبيق بالقائمة المنبثقة. انقر لتغيير مجلد التصدير
 
@@ -1596,6 +1598,16 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_disable_haptic_feedback_zoom_title">تعطيل الاهتزاز عند التكبير</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">إذا قمت مؤخرًا بتغيير تفاصيل تسجيل الدخول إلى حسابك، فقم بإلغاء تثبيت MicroG وإعادة تثبيته</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">حفظ الإشعارات الفورية</string>
+  <string name="morphe_debug_save_push_notifications_summary">حفظ الإشعارات الفورية المستلمة في ملف ضمن بيانات التطبيق. قد يتضمن الملف معلومات خاصة، مثل نصوص الإشعارات وأسماء القنوات</string>
+  <string name="morphe_debug_saved_push_notifications_title">تصدير الإشعارات الفورية المحفوظة</string>
+  <string name="morphe_debug_saved_push_notifications_summary">تصدير أو مسح الإشعارات الفورية المحفوظة</string>
+  <string name="morphe_debug_saved_push_notifications_count">الإشعارات الفورية المحفوظة: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">لم يتم العثور على إشعارات فورية محفوظة</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">تم تصدير الإشعارات الفورية بنجاح</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">فشل تصدير الإشعارات الفورية</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">تم مسح الإشعارات الفورية المحفوظة</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">تجاوز إعادة توجيه الروابط</string>
   <string name="morphe_bypass_link_redirects_summary">يفتح الرابط الأصلي مباشرةً، متجاوزًا رابط التتبع (youtube.com/redirect)</string>

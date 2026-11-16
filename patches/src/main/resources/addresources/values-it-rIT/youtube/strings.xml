@@ -562,6 +562,8 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <string name="morphe_shorts_download_flyout_title">Download</string>
   <string name="morphe_feed_download_flyout_button_title">Mostra download nei menu dei video</string>
   <string name="morphe_feed_download_flyout_button_summary">Aggiunge una voce di download ai menu dei video nel feed che ne sono privi, come i video che YouTube consente di scaricare solo ai membri Premium</string>
+  <string name="morphe_download_force_4k_title">Forza la disponibilità del download 4K</string>
+  <string name="morphe_download_force_4k_summary">Offre download in 1440p e 4K anche se YouTube decide che questo dispositivo non può riprodurli. Tali video potrebbero essere riprodotti senza immagini all\'interno di YouTube, ma possono essere esportati sul tuo dispositivo</string>
   <string name="morphe_export_download_folder_title">Esporta video salvati</string>
   <string name="morphe_export_download_folder_summary">"Esporta i video salvati nell'app nella memoria del tuo dispositivo utilizzando il menu a comparsa dei download dell'app. Tocca per cambiare la cartella di esportazione
 
@@ -1590,6 +1592,16 @@ I video vengono richiesti tramite un breve prefisso dell'ID video con hash, quin
   <string name="morphe_disable_haptic_feedback_zoom_title">Disabilita feedback aptico zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Se di recente hai modificato i dettagli di accesso al tuo account, disinstalla e reinstalla MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Salva notifiche push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Salva le notifiche push ricevute in un file nei dati dell\'app. Il file può contenere informazioni private, come i testi delle notifiche e i nomi dei canali</string>
+  <string name="morphe_debug_saved_push_notifications_title">Esporta notifiche push salvate</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Esporta o cancella le notifiche push salvate</string>
+  <string name="morphe_debug_saved_push_notifications_count">Notifiche push salvate: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nessuna notifica push salvata trovata</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Esportazione delle notifiche push avvenuta con successo</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Impossibile esportare le notifiche push</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Notifiche push salvate eliminate</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Aggira i reindirizzamenti dei link</string>
   <string name="morphe_bypass_link_redirects_summary">Apre il link originale direttamente, bypassando il link di tracciamento (youtube.com/redirect)</string>

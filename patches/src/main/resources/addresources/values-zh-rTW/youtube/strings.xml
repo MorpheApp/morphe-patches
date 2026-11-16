@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">下載</string>
   <string name="morphe_feed_download_flyout_button_title">在影片選單中顯示下載</string>
   <string name="morphe_feed_download_flyout_button_summary">為 feed 中原本沒有下載項目的影片選單添加下載選項，例如 YouTube 僅允許 Premium 會員下載的影片</string>
+  <string name="morphe_download_force_4k_title">強制 4K 下載可用性</string>
+  <string name="morphe_download_force_4k_summary">即使 YouTube 判定此裝置無法播放，仍提供 1440p 和 4K 下載。此類影片在 YouTube 內可能無法正常播放，但可以匯出至您的裝置</string>
   <string name="morphe_export_download_folder_title">匯出已儲存的影片</string>
   <string name="morphe_export_download_folder_summary">"使用應用程式內下載彈出式選單，將應用程式內儲存的影片匯出到裝置儲存空間。點選即可更改匯出資料夾
 
@@ -1590,6 +1592,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">停用縮放震動</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">如果您最近變更了帳戶登入詳細資訊，請解除安裝並重新安裝 MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">儲存推播通知</string>
+  <string name="morphe_debug_save_push_notifications_summary">將接收到的推播通知儲存至應用程式資料中的檔案。該檔案可能包含私密資訊，例如通知文字和頻道名稱</string>
+  <string name="morphe_debug_saved_push_notifications_title">匯出已儲存的推播通知</string>
+  <string name="morphe_debug_saved_push_notifications_summary">匯出或清除已儲存的推播通知</string>
+  <string name="morphe_debug_saved_push_notifications_count">已儲存的推播通知：%s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">找不到已儲存的推播通知</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">推播通知匯出成功</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">無法匯出推播通知</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">已清除已儲存的推播通知</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">繞過連結重新導向</string>
   <string name="morphe_bypass_link_redirects_summary">直接開啟原始連結，繞過追蹤連結 (youtube.com/redirect)</string>

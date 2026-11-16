@@ -562,6 +562,8 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <string name="morphe_shorts_download_flyout_title">Landa</string>
   <string name="morphe_feed_download_flyout_button_title">Khombisa ukudawunilodha emenwini yevidiyo</string>
   <string name="morphe_feed_download_flyout_button_summary">Yenge item yokudawunilodha emenwini yevidiyo e-feed engenayo, njengevidiyo uYouTube avumela ukuba zidawunilodwe amalungu e-Premium kuphela</string>
+  <string name="morphe_download_force_4k_title">Phikelela ngokutholakala kokudownloada kwe-4K</string>
+  <string name="morphe_download_force_4k_summary">Kunikeza ukudownloada kwe-1440p kanye ne-4K ngisho noma i-YouTube isinqume ukuthi leli device alikwazi ukudlala lezo zividiyo. Lezi vidiyo zingase zidlale ngaphandle kwevidiyo phakathi kwe-YouTube, kodwa zingakwazi ukuthunyelwa ku-device yakho</string>
   <string name="morphe_export_download_folder_title">Exportha amavidiyo agcinwe</string>
   <string name="morphe_export_download_folder_summary">"Exportha amavidiyo agcinwe ohlelweni kudivayisi yakho usebenzisa imenyu ye-downloads. Thinta ukuze ushintshe ifolda ye-export
 
@@ -1592,6 +1594,16 @@ Amavidiyo aceleka ngesisekelo esifushane se-hashed video ID, ngakho iserba ayikw
   <string name="morphe_disable_haptic_feedback_zoom_title">Vimbela i-zoom haptics</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Uma usanda kushintsha imininingwane yokungena ku-akhawunti yakho, khulula bese ufaka futhi u-MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Gcina izaziso ze-push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Gcina izaziso ze-push ezitholakele kufayela kudatha yohlelo. Ifayili lingase lihlanganise imininingwane eyimfihlo, efana nemibhalo yezaziso namagama ezinqubo</string>
+  <string name="morphe_debug_saved_push_notifications_title">Thumela izaziso ze-push ezigcinwe ngaphandle</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Thumela ngaphandle noma sucize izaziso ze-push ezigcinwe</string>
+  <string name="morphe_debug_saved_push_notifications_count">Izaziso zokuphusha ezondile: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Akukho zaziso zokuphusha ezondile ezitholakele</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Izaziso zokuphusha zithunyelwe ngempumelelo</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Kuhleleke ukuthumela izaziso zokuphusha</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Izaziso zokuphusha ezondile zisulwe</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Dlula ukudluliselwa kwe-link</string>
   <string name="morphe_bypass_link_redirects_summary">Ivula isixhumanisi sokuqala ngqo, idlula isixhumanisi sokulandelela (youtube.com/redirect)</string>

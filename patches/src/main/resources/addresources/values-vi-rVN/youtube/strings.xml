@@ -562,6 +562,8 @@ Sau khi mở một video có nút Ask một lần, tính năng này hoạt độ
   <string name="morphe_shorts_download_flyout_title">Tải về</string>
   <string name="morphe_feed_download_flyout_button_title">Hiển thị tải xuống trong menu video</string>
   <string name="morphe_feed_download_flyout_button_summary">Thêm mục tải xuống vào menu của các video trong feed không có mục này, chẳng hạn như các video mà YouTube chỉ cho phép thành viên Premium tải xuống</string>
+  <string name="morphe_download_force_4k_title">Bắt buộc khả dụng tải xuống 4K</string>
+  <string name="morphe_download_force_4k_summary">Cung cấp các tùy chọn tải xuống 1440p và 4K ngay cả khi YouTube quyết định rằng thiết bị này không thể phát chúng. Những video như vậy có thể phát mà không có hình ảnh bên trong YouTube, nhưng có thể được xuất ra thiết bị của bạn</string>
   <string name="morphe_export_download_folder_title">Xuất các video đã lưu</string>
   <string name="morphe_export_download_folder_summary">"Xuất các video đã lưu trong ứng dụng sang bộ nhớ thiết bị bằng menu tải xuống trong ứng dụng. Nhấn để thay đổi thư mục xuất
 
@@ -1592,6 +1594,16 @@ Video được yêu cầu bằng một tiền tố ngắn của ID video đã b�
   <string name="morphe_disable_haptic_feedback_zoom_title">Tắt phản hồi xúc giác khi thu phóng</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Nếu gần đây bạn đã cập nhật thông tin đăng nhập tài khoản của mình, hãy gỡ và cài đặt lại microG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Lưu thông báo đẩy</string>
+  <string name="morphe_debug_save_push_notifications_summary">Lưu các thông báo đẩy nhận được vào một tệp trong dữ liệu ứng dụng. Tệp này có thể bao gồm thông tin riêng tư, chẳng hạn như nội dung thông báo và tên kênh</string>
+  <string name="morphe_debug_saved_push_notifications_title">Xuất các thông báo đẩy đã lưu</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Xuất hoặc xóa các thông báo đẩy đã lưu</string>
+  <string name="morphe_debug_saved_push_notifications_count">Số thông báo đẩy đã lưu: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Không tìm thấy thông báo đẩy nào được lưu</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Đã xuất thông báo đẩy thành công</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Xuất thông báo đẩy thất bại</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Đã xóa các thông báo đẩy đã lưu</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Bỏ qua chuyển hướng liên kết</string>
   <string name="morphe_bypass_link_redirects_summary">Mở liên kết gốc trực tiếp, bỏ qua liên kết theo dõi (youtube.com/redirect)</string>

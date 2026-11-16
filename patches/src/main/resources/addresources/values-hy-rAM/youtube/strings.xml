@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">Ներբեռնել</string>
   <string name="morphe_feed_download_flyout_button_title">Ցուցադրել ներբեռնումը տեսանյութերի մենյուներում</string>
   <string name="morphe_feed_download_flyout_button_summary">Ավելացնում է ներբեռնման տարբերակը feed-ի այն տեսանյութերի մենյուներին, որտեղ այն բացակայում է, օրինակ՝ այն տեսանյութերի համար, որոնք YouTube-ը թույլ է տալիս ներբեռնել միայն Premium անդամներին</string>
+  <string name="morphe_download_force_4k_title">Հիշուցել 4K ներբեռնման հասանելիությունը</string>
+  <string name="morphe_download_force_4k_summary">Առաջարկում է 1440p և 4K ներբեռնումներ, նույնիսկ եթե YouTube-ը որոշում է, որ այս սարքը չի կարող նվերցնել դրանք: Նման տեսանյութերը կարող են նվերցվել առանց պատկերի YouTube-ի ներսում, սակայն կարող են արտահանվել ձեր սարք</string>
   <string name="morphe_export_download_folder_title">Արտահանել պահպանված տեսանյութերը</string>
   <string name="morphe_export_download_folder_summary">"Արտահանեք հավելվածում պահպանված տեսանյութերը ձեր սարքի հիշողության մեջ՝ օգտագործելով ներբեռնումների լողացող ընտրացանկը: Հպեք՝ արտահանման թղթապանակը փոխելու համար
 
@@ -1591,6 +1593,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Անջատել զոմի հապտիկ արձագանքը</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Եթե դուք վերջերս փոխել եք ձեր հաշվի մուտքի տվյալները, ապա հեռացրեք և նորից տեղադրեք MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Պահպանել push ծանուցումները</string>
+  <string name="morphe_debug_save_push_notifications_summary">Պահպանում է ստացված push ծանուցումները հավելվածի տվյալների ֆայլում: Ֆայլը կարող է ներառել գաղտնի տեղեկություններ, ինչպիսիք են ծանուցումների տեքստերը և ալիքների անվանումները</string>
+  <string name="morphe_debug_saved_push_notifications_title">Արտահանել պահպանված push ծանուցումները</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Արտահանել կամ մաքրել պահպանված push ծանուցումները</string>
+  <string name="morphe_debug_saved_push_notifications_count">Պահպանված հրողնությունները՝ %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Պահպանված հրողնություններ չեն գտնվել</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Հրողնությունները հաջողությամբ արտահանվեցին</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Հրողնությունների արտահանումը ձախողվեց</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Պահպանված հրողնությունները մաքրվեցին</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Շրջանցել հղումների վերահասցեավորումները</string>
   <string name="morphe_bypass_link_redirects_summary">Բացում է բնօրինակ հղումը ուղղակիորեն՝ շրջանցելով հետևողության հղումը (youtube.com/redirect)</string>

@@ -562,6 +562,8 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <string name="morphe_shorts_download_flyout_title">Atsisiųsti</string>
   <string name="morphe_feed_download_flyout_button_title">Rodyti atsisiuntimą vaizdo įrašų menuose</string>
   <string name="morphe_feed_download_flyout_button_summary">Prideda atsisiuntimo elementą į feed\'o vaizdo įrašų menus, kuriuose jo nėra, pavyzdžiui, vaizdo įrašams, kuriuos YouTube leidžia atsisiųsti tik Premium nariams</string>
+  <string name="morphe_download_force_4k_title">Privalomas 4K atsisiuntimo pasiekiamumas</string>
+  <string name="morphe_download_force_4k_summary">Siūlo 1440p ir 4K atsisiuntimus, net jei „YouTube“ nusprendžia, kad šiuo įrenginiu jų nereikėtų groti. Tokie vaizdo įrašai gali būti neregimi vaizdo dalimi „YouTube“ programoje, tačiau juos galima eksportuoti į savo įrenginį</string>
   <string name="morphe_export_download_folder_title">Eksportuoti išsaugotus vaizdo įrašus</string>
   <string name="morphe_export_download_folder_summary">"Eksportuokite programėlėje išsaugotus vaizdo įrašus į savo įrenginio atmintį naudodami programėlės atsisiuntimų išsiskleidžiamąjį meniu. Bakstelėkite, kad pakeitumėte eksportavimo aplanką
 
@@ -1591,6 +1593,16 @@ Vaizdo įrašai užklausiami pagal trumpą maišyto vaizdo įrašo ID priešdėl
   <string name="morphe_disable_haptic_feedback_zoom_title">Išjungti mastelio keitimo haptinį atsaką</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Jei neseniai pakeitėte savo paskyros prisijungimo duomenis, tada pašalinkite ir iš naujo įdiekite „MicroG“ programą</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Išsaugoti stumimo pranešimus</string>
+  <string name="morphe_debug_save_push_notifications_summary">Išsaugo gautus stumimo pranešimus į failą programėlės duomenyse. Faile gali būti privatus informacija, pavyzdžiui, pranešimų tekstai ir kanalų pavadinimai</string>
+  <string name="morphe_debug_saved_push_notifications_title">Eksportuoti išsaugytus stumimo pranešimus</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Eksportuoti arba išvalyti išsaugytus stumimo pranešimus</string>
+  <string name="morphe_debug_saved_push_notifications_count">Išsaugotos stumimo pranešimai: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Išsaugotų stumimo pranešimų nerasta</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Stumimo pranešimai sėkmingai eksportuoti</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Nepavyko eksportuoti stumimo pranešimų</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Išsaugotų stumimo pranešimų sąrašas išvalytas</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Apeiti nuorodų peradresavimus</string>
   <string name="morphe_bypass_link_redirects_summary">Atidaro originalią nuorodą tiesiogiai, apeinant stebėjimo nuorodą (youtube.com/redirect)</string>

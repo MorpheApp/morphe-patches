@@ -562,6 +562,8 @@ Egy alkalommal megnyitott, Ask gombbal ellátott videó esetén a funkció minde
   <string name="morphe_shorts_download_flyout_title">Letöltés</string>
   <string name="morphe_feed_download_flyout_button_title">Letöltés megjelenítése a videómenükben</string>
   <string name="morphe_feed_download_flyout_button_summary">Letöltési lehetőséget ad hozzá a feedben szereplő olyan videók menüjéhez, amelyeknél ez alapból hiányzik, például azokhoz, amelyeket a YouTube csak Premium tagoknak enged letölteni</string>
+  <string name="morphe_download_force_4k_title">4K letöltés kényszerítése</string>
+  <string name="morphe_download_force_4k_summary">1440p és 4K letöltéseket kínál akkor is, ha a YouTube úgy dönti, hogy ez az eszköz nem képes lejátszani őket. Az ilyen videók lehet, hogy nem futnak le a YouTube-on belül, de exportálhatók a készülékre</string>
   <string name="morphe_export_download_folder_title">Mentett videók exportálása</string>
   <string name="morphe_export_download_folder_summary">"Exportálja az alkalmazáson belül mentett videókat a készülék tárolójába a letöltések legördülő menüjével. Koppintson a mappa módosításához
 
@@ -1591,6 +1593,16 @@ A videókat a hash-elt videóazonosító rövid előtagjával kérik le, így a 
   <string name="morphe_disable_haptic_feedback_zoom_title">Haptikus zoom letiltása</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ha nemrég módosította a fiókja bejelentkezési adatait, távolítsa el, majd telepítse újra a MicroG-t</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Push értesítések mentése</string>
+  <string name="morphe_debug_save_push_notifications_summary">Menti a kapott push értesítéseket egy fájlba az alkalmazás adatain belül. A fájl olyan privát információkat tartalmazhat, mint például értesítési szövegek és csatornanévvel</string>
+  <string name="morphe_debug_saved_push_notifications_title">Mentett push értesítések exportálása</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportálja vagy törölje a mentett push értesítéseket</string>
+  <string name="morphe_debug_saved_push_notifications_count">Mentett push értesítések: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nem található mentett push értesítés</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push értesítések sikeresen exportálva</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Sikertelen push értesítések exportálása</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Mentett push értesítések törölve</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">A linkek átirányításainak megkerülése</string>
   <string name="morphe_bypass_link_redirects_summary">Közvetlenül nyitja meg az eredeti linket, kihagyva a követő linket (youtube.com/redirect)</string>

@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">Преземи</string>
   <string name="morphe_feed_download_flyout_button_title">Прикажи преземање во менијата на видеата</string>
   <string name="morphe_feed_download_flyout_button_summary">Додава ставка за преземање во менијата на видеата во фидот кои немаат таква, како што се видеата што YouTube им дозволува да преземаат само на Premium членовите</string>
+  <string name="morphe_download_force_4k_title">Присилно овозможи преземање во 4K</string>
+  <string name="morphe_download_force_4k_summary">Нуди преземања во 1440p и 4K дури и ако YouTube одлучи дека овој уред не може да ги репродуцира. Таквите видеа можеби ќе се репродуцираат без слика во YouTube, но можат да се извезат на вашиот уред</string>
   <string name="morphe_export_download_folder_title">Експортирај зачувани видеа</string>
   <string name="morphe_export_download_folder_summary">"Експортирајте ги видеата зачуваните во апликацијата во меморијата на вашиот уред преку менито за преземање во апликацијата. Допрете за да ја промените папката за експорт
 
@@ -1592,6 +1594,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Исклучи хаптичка повратна врска за зумирање</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ако неодамна ги променивте податоците за најава на вашата сметка, тогаш деинсталирајте го и повторно инсталирајте го MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Зачувај Push известувања</string>
+  <string name="morphe_debug_save_push_notifications_summary">Зачувува примени Push известувања во датотека во податоците на апликацијата. Датотеката може да содржи приватни информации, како што се текстови на известувањата и имиња на канали</string>
+  <string name="morphe_debug_saved_push_notifications_title">Експортирај зачувани Push известувања</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Експортирај ги или избриши ги зачуваните Push известувања</string>
+  <string name="morphe_debug_saved_push_notifications_count">Зачувани push известувања: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Не се пронајдени зачувани push известувања</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push известувањата се извезени успешно</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Неуспешен извоз на push известувањата</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Зачуваните push известувања се избришани</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Заобиколете пренасочувања на врски</string>
   <string name="morphe_bypass_link_redirects_summary">Ја отвора оригиналната врска директно, заобиколувајќи ја врската за следење (youtube.com/redirect)</string>

@@ -562,6 +562,8 @@ Eftir að myndskeið með Ask-hnappnum hefur verið opnað einu sinni virkar eig
   <string name="morphe_shorts_download_flyout_title">Niðurhal</string>
   <string name="morphe_feed_download_flyout_button_title">Sýna niðursetningu í myndbandaröknum</string>
   <string name="morphe_feed_download_flyout_button_summary">Bætir niðursetningsvalmuni við myndbönd í feed-inu sem hafa engan, eins og myndbönd sem YouTube leyfir aðeins Premium-meðlimum að sækja niður</string>
+  <string name="morphe_download_force_4k_title">Þvinga 4K niðursetningu</string>
+  <string name="morphe_download_force_4k_summary">Boðar 1440p og 4K niðursetningar jafnvel þótt YouTube ákveði að þessu tæki megi ekki spila þær. Slíkar myndbönd gætu spilað án myndar innan YouTube, en hægt er að flytja þau út á tækið</string>
   <string name="morphe_export_download_folder_title">Flytja vistuð myndskeið</string>
   <string name="morphe_export_download_folder_summary">"Flytja út myndbönd sem eru vistuð í forritinu í geymslu tækisins með niðurhalsvalmyndinni. Ýttu til að breyta útflutningsmöppu
 
@@ -663,6 +665,7 @@ API lykillinn þinn ætti aldrei að deila. Hver sem hefur aðgang að honum get
   <string name="morphe_loop_count_clear_done">Vistuð loop-fjöldar hreinsuð</string>
   <string name="morphe_loop_count_flyout_name">Hringrásartíðni</string>
   <string name="morphe_loop_count_dialog_message">Hvaðförn myndbandið spilar áður en næsta myndband hefst, frá %1$s til %2$s. Skildu tómt til að loopa myndbandið án takmarkana.</string>
+  <string name="morphe_loop_count_times">%s sinnum</string>
   <string name="morphe_loop_count_no_limit">Engin takmörkun</string>
   <string name="morphe_loop_count_decrease">Færri sinnum</string>
   <string name="morphe_loop_count_increase">Fleiri sinnum</string>
@@ -1591,6 +1594,16 @@ Myndskeið eru beðin um með stuttu forskeyti af dulkóðuðu myndskeiðsauðke
   <string name="morphe_disable_haptic_feedback_zoom_title">Slökkva á titringi við aðdrátt</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ef þú hefur nýlega breytt innskráningarupplýsingum reikningsins, fjarlægðu þá og settu MicroG upp aftur</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Vista tilkynningum</string>
+  <string name="morphe_debug_save_push_notifications_summary">Vistar móttáknar push-tilkynningar í skrá í gögnum appsins. Skráin getur innihaldið einkalegar upplýsingar, svo sem texta tilkynninga og nöfn rása</string>
+  <string name="morphe_debug_saved_push_notifications_title">Útfluta vistar tilkynningar</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Útfluta eða hreinsa vistar tilkynningar</string>
+  <string name="morphe_debug_saved_push_notifications_count">Vistaðar push-tilkynningar: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Engar vistaðar push-tilkynningar fundnar</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-tilkynningar fluttar út</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Mistist að flytja push-tilkynningar út</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Vistaðar push-tilkynningar hreinsaðar</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Sniðganga hlekkjaendurbeiningar</string>
   <string name="morphe_bypass_link_redirects_summary">Opnar upprunalega hlekkinn beint og sleppir rakningarhlekknum (youtube.com/redirect)</string>

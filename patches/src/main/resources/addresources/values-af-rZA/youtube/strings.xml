@@ -562,6 +562,8 @@ Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met a
   <string name="morphe_shorts_download_flyout_title">Aflaai</string>
   <string name="morphe_feed_download_flyout_button_title">Wys aflaai in videomenu\'s</string>
   <string name="morphe_feed_download_flyout_button_summary">Voeg \'n aflaai-item by die menu\'s van video\'s in die feed wat nie een het nie, soos video\'s wat YouTube slegs Premium-lede toelaat om af te laai</string>
+  <string name="morphe_download_force_4k_title">Forceer 4K-aflaai-beskikbaarheid</string>
+  <string name="morphe_download_force_4k_summary">Bied 1440p- en 4K-aflaai-opsies, selfs as YouTube besluit dat hierdie toestel hulle nie kan speel nie. Sodanige video\'s mag dalk sonder video binne YouTube speel, maar kan na jou toestel geeksporteer word</string>
   <string name="morphe_export_download_folder_title">Voer gestoorde video\'s uit</string>
   <string name="morphe_export_download_folder_summary">"Voer in-app gestoorde video's uit na jou toestel se stoorplek deur die in-app aflaai-spyskaart te gebruik. Tik om die uitvoergids te verander
 
@@ -1592,6 +1594,16 @@ Video's word met 'n kort voorvoegsel van die gehashte video-ID aangevra, sodat d
   <string name="morphe_disable_haptic_feedback_zoom_title">Deaktiveer zoem-haptika</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">As jy onlangs jou rekeningaanmeldingsbesonderhede verander het, oninstalleer en herinstalleer MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Stoor stootkennisgewings</string>
+  <string name="morphe_debug_save_push_notifications_summary">Stoor ontvangde stootkennisgewings in \'n lêer in die toepassingdata. Die lêer kan privaat inligting insluit, soos kennisgewingtekste en kanaalname</string>
+  <string name="morphe_debug_saved_push_notifications_title">Voer gestoorde stootkennisgewings uit</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Voer die gestoorde stootkennisgewings uit of maak dit skoon</string>
+  <string name="morphe_debug_saved_push_notifications_count">Gestoorde stootkennisgewings: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Geen gestoorde stootkennisgewings gevind nie</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Stootkennisgewings is suksesvol uitgevoer</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Kon nie stootkennisgewings uitvoer nie</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Gestoorde stootkennisgewings is skoongemaak</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omseil skakelherleidings</string>
   <string name="morphe_bypass_link_redirects_summary">Maak die oorspronklike skakel direk oop, en omseil die spoorskakel (youtube.com/redirect)</string>

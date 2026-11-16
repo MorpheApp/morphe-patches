@@ -562,6 +562,8 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_shorts_download_flyout_title">Pobierz</string>
   <string name="morphe_feed_download_flyout_button_title">Pokaż pobieranie w menu wideo</string>
   <string name="morphe_feed_download_flyout_button_summary">Dodaje opcję pobierania do menu filmów w kanale, które jej nie posiadają, np. w przypadku filmów, które YouTube pozwala pobierać tylko członkom Premium</string>
+  <string name="morphe_download_force_4k_title">Wymuś dostępność pobierania w 4K</string>
+  <string name="morphe_download_force_4k_summary">Udostępnia pobieranie w rozdzielczości 1440p i 4K, nawet jeśli YouTube uzna, że to urządzenie nie może ich odtworzyć. Takie filmy mogą być odtwarzane bez obrazu wewnątrz YouTube, ale mogą zostać wyeksportowane na urządzenie</string>
   <string name="morphe_export_download_folder_title">Eksportuj zapisane filmy</string>
   <string name="morphe_export_download_folder_summary">"Eksportuj filmy zapisane w aplikacji do pamięci urządzenia za pomocą menu w sekcji Pobrane. Dotknij, aby zmienić folder eksportu
 
@@ -1591,6 +1593,16 @@ Układ samochodowy
   <string name="morphe_disable_haptic_feedback_zoom_title">Wyłącz wibracje przy przybliżaniu filmu</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">W przypadku niedawnej zmiany danych logowania do konta odinstaluj i zainstaluj ponownie MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Zapisuj powiadomienia push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Zapisuje otrzymane powiadomienia push do pliku w danych aplikacji. Plik może zawierać prywatne informacje, takie jak treści powiadomień i nazwy kanałów</string>
+  <string name="morphe_debug_saved_push_notifications_title">Eksportuj zapisane powiadomienia push</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Eksportuj lub wyczyść zapisane powiadomienia push</string>
+  <string name="morphe_debug_saved_push_notifications_count">Zapisane powiadomienia push: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nie znaleziono zapisanych powiadomień push</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Powiadomienia push zostały wyeksportowane pomyślnie</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Nie udało się wyeksportować powiadomień push</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Zapisane powiadomienia push zostały wyczyszczone</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omiń przekierowania linków</string>
   <string name="morphe_bypass_link_redirects_summary">Otwiera oryginalny link bezpośrednio, omijając link śledzący (youtube.com/redirect)</string>

@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">Загрузіць</string>
   <string name="morphe_feed_download_flyout_button_title">Паказваць спампоўку ў меню відэа</string>
   <string name="morphe_feed_download_flyout_button_summary">Дадае пункт спампоўкі ў меню відэа ў стужцы, дзе яго няма, напрыклад, у відэа, якія YouTube дазваляе спампоўваць толькі ўдзельнікам Premium</string>
+  <string name="morphe_download_force_4k_title">Прымусавая даступнасць спампоўкі ў 4K</string>
+  <string name="morphe_download_force_4k_summary">Прапануе спампоўкі ў 1440p і 4K, нават калі YouTube вырашыць, што гэты прылада не можа іх прайграць. Такія відэа могуць прайгравацца без відэарыяла ўнутры YouTube, але іх можна экспартаваць на вашу прыладу</string>
   <string name="morphe_export_download_folder_title">Экспартаваць захаваныя відэа</string>
   <string name="morphe_export_download_folder_summary">"Экспартуйце відэа, захаваныя ў праграме, у памяць вашай прылады, выкарыстоўваючы выпадальнае меню загрузкі. Націсніце, каб змяніць папку экспарту
 
@@ -1592,6 +1594,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Адключаць тактыльны водгук пры маштабаванні</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Калі вы нядаўна змянілі даныя для ўваходу ў свой уліковы запіс, выдаліце і паўторна ўсталюйце MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Захаваць push-апавешчэнні</string>
+  <string name="morphe_debug_save_push_notifications_summary">Захаваць атрыманыя push-апавешчэнні ў файл у даных праграмы. Файл можа ўключаць прыватную інфармацыю, такую як тэксты апавешчэнняў і назвы каналаў</string>
+  <string name="morphe_debug_saved_push_notifications_title">Экспартаваць захаваныя push-апавешчэнні</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Экспартаваць або ачысціць захаваныя push-апавешчэнні</string>
+  <string name="morphe_debug_saved_push_notifications_count">Захаваныя push-апавяшчэнні: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Захаваных push-апавяшчэнняў не знойдзена</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-апавяшчэнні паспяхова экспартаваны</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Не ўдалося экспартаваць push-апавяшчэнні</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Захаваныя push-апавяшчэнні ачыщены</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Абходзіць перанакіраванні спасылак</string>
   <string name="morphe_bypass_link_redirects_summary">Адкрывае арыгінальную спасылку напрамую, абходзячы спасылку адсочвання (youtube.com/redirect)</string>

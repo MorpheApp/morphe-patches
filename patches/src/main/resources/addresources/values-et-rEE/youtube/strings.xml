@@ -562,6 +562,8 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_shorts_download_flyout_title">Laadi alla</string>
   <string name="morphe_feed_download_flyout_button_title">Kuva allalaadimine videomenüüs</string>
   <string name="morphe_feed_download_flyout_button_summary">Lisab allalaadimise üksuse feedi videomenüüsse, kus seda puudub, näiteks videotele, mille allalaadimise YouTube lubab ainult Premium-liikmetel</string>
+  <string name="morphe_download_force_4k_title">Järsti 4K allalaadimise võimaldamine</string>
+  <string name="morphe_download_force_4k_summary">Pakub 1440p ja 4K allalaadimist, isenägemata sellest, kas YouTube leiab, et see seade ei suuda neid esitada. Need videod võivad YouTube\'is esitatava olla ilma videoga, kuid neid saab seadmesse eksportida</string>
   <string name="morphe_export_download_folder_title">Salvestatud videote eksportimine</string>
   <string name="morphe_export_download_folder_summary">"Eksportige rakenduses salvestatud videod oma seadme mällu, kasutades rakendusesse integreeritud allalaadimiste menüüd. Ekspordikausta muutmiseks puudutage seda
 
@@ -1592,6 +1594,16 @@ Videoid küsitakse räsitud video ID lühikese prefiksi abil, et server ei saaks
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoomimise haptika keelamine</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Kui muutsite hiljuti oma konto sisselogimise andmeid, siis eemaldage MicroG ja installige see uuesti</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Salvesta push-teavitusi</string>
+  <string name="morphe_debug_save_push_notifications_summary">Salvestab vastuvõetud push-teavitused rakenduse andmetesse faili. Fail võib sisaldada privaatset infot, näiteks teavituste tekste ja kanalite nimesid</string>
+  <string name="morphe_debug_saved_push_notifications_title">Eksporteeri salvestatud push-teavitused</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Eksporteeri või kustuta salvestatud push-teavitused</string>
+  <string name="morphe_debug_saved_push_notifications_count">Salvestatud push-teavitused: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Salvestatud push-teavitusi ei leitud</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-teavitused eksporteeriti edukalt</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push-teavituste eksport ebaõnnestus</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Salvestatud push-teavitused tühistati</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Linkide ümbersuunamise vältimine</string>
   <string name="morphe_bypass_link_redirects_summary">Avab algse lingi otse, mööberdades jälgimislingi (youtube.com/redirect)</string>

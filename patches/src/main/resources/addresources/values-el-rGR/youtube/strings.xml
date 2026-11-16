@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">Λήψη</string>
   <string name="morphe_feed_download_flyout_button_title">Εμφάνιση λήψης στα μενού βίντεο</string>
   <string name="morphe_feed_download_flyout_button_summary">Προσθέτει ένα στοιχείο λήψης στα μενού των βίντεο στο feed που δεν διαθέτουν τέτοιο στοιχείο, όπως τα βίντεο που το YouTube επιτρέπει να ληγθούν μόνο σε μέλη Premium</string>
+  <string name="morphe_download_force_4k_title">Επιβολή διαθεσιμότητας λήψης 4K</string>
+  <string name="morphe_download_force_4k_summary">Προσφέρει λήψεις 1440p και 4K ακόμη και αν το YouTube αποφασίσει ότι αυτή η συσκευή δεν μπορεί να τις αναπαράγει. Τέτοια βίντεο ενδέχεται να αναπαραχθούν χωρίς εικόνα μέσα στο YouTube, αλλά μπορούν να εξαχθούν στη συσκευή σας</string>
   <string name="morphe_export_download_folder_title">Εξαγωγή αποθηκευμένων βίντεο</string>
   <string name="morphe_export_download_folder_summary">"Εξαγάγετε τα βίντεο που αποθηκεύτηκαν στην εφαρμογή στη μνήμη της συσκευής σας χρησιμοποιώντας το αναδυόμενο μενού λήψεων της εφαρμογής. Πατήστε για να αλλάξετε τον φάκελο εξαγωγής
 
@@ -1591,6 +1593,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Απενεργοποίηση απόκρισης δόνησης χειρονομίας ζουμ</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Εάν αλλάξατε πρόσφατα τα στοιχεία σύνδεσης του λογαριασμού σας, απεγκαταστήστε και εγκαταστήστε ξανά το MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Αποθήκευση ειδοποιήσεων Push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Αποθηκεύει τις ειδοποιήσεις push που ελήφθησαν σε ένα αρχείο στα δεδομένα της εφαρμογής. Το αρχείο μπορεί να περιλαμβάνει ιδιωτικές πληροφορίες, όπως κείμενα ειδοποιήσεων και ονόματα καναλιών</string>
+  <string name="morphe_debug_saved_push_notifications_title">Εξαγωγή αποθηκευμένων ειδοποιήσεων push</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Εξαγωγή ή εκκαθάριση των αποθηκευμένων ειδοποιήσεων push</string>
+  <string name="morphe_debug_saved_push_notifications_count">Αποθηκευμένες ειδοποιήσεις Push: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Δεν βρέθηκαν αποθηκευμένες ειδοποιήσεις Push</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Οι ειδοποιήσεις Push εξήχθησαν επιτυχώς</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Αποτυχία εξαγωγής ειδοποιήσεων Push</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Οι αποθηκευμένες ειδοποιήσεις Push καθαρίστηκαν</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Παράκαμψη ανακατευθύνσεων συνδέσμων</string>
   <string name="morphe_bypass_link_redirects_summary">Ανοίγει τον αρχικό σύνδεσμο απευθείας, παρακάμπτοντας τον σύνδεσμο παρακολούθησης (youtube.com/redirect)</string>

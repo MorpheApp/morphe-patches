@@ -562,6 +562,8 @@ Efter at en video med Ask-knappen er åbnet én gang, fungerer funktionen med al
   <string name="morphe_shorts_download_flyout_title">Download</string>
   <string name="morphe_feed_download_flyout_button_title">Vis download i videomenuer</string>
   <string name="morphe_feed_download_flyout_button_summary">Tilføjer et download-element til menuerne for videoer i feedet, der ikke har et, såsom videoer som YouTube kun tillader Premium-medlemmer at downloade</string>
+  <string name="morphe_download_force_4k_title">Tving tilgængelighed af 4K-download</string>
+  <string name="morphe_download_force_4k_summary">Tilbyder 1440p og 4K-downloads, selvom YouTube vurderer, at denne enhed ikke kan afspille dem. Sådanne videoer kan muligvis afspilles uden billede inde i YouTube, men kan eksporteres til din enhed</string>
   <string name="morphe_export_download_folder_title">Eksporter gemte videoer</string>
   <string name="morphe_export_download_folder_summary">"Eksporter videoer gemt i appen til din enhedslager ved hjælp af menuen til downloads i appen. Tryk for at ændre eksportermappen
 
@@ -1592,6 +1594,16 @@ Videoer anmodes ved hjælp af et kort præfiks af den hashede video-ID, så serv
   <string name="morphe_disable_haptic_feedback_zoom_title">Deaktivér haptik ved zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Hvis du for nylig har ændret dine kontooplysninger, skal du afinstallere og geninstallere MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Gem push-meddelelser</string>
+  <string name="morphe_debug_save_push_notifications_summary">Gemmer modtagne push-meddelelser i en fil i app-dataene. Filen kan indeholde private oplysninger, såsom meddelelsestekster og kanalnavne</string>
+  <string name="morphe_debug_saved_push_notifications_title">Eksporter gemte push-meddelelser</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Eksporter eller ryd de gemte push-meddelelser</string>
+  <string name="morphe_debug_saved_push_notifications_count">Gemte push-meddelelser: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Ingen gemte push-meddelelser fundet</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-meddelelser blev eksporteret med succes</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Eksportering af push-meddelelser mislykkedes</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Gemte push-meddelelser er ryddet</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omgå linkomdirigeringer</string>
   <string name="morphe_bypass_link_redirects_summary">Åbner det originale link direkte og omgår trackingslinket (youtube.com/redirect)</string>

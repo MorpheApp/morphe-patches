@@ -562,6 +562,8 @@ Ask የሚለው ቁልፍ ያለው ቪዲዮ አንዴ ከተከፈተ በኋ�
   <string name="morphe_shorts_download_flyout_title">ዳውንሎድ</string>
   <string name="morphe_feed_download_flyout_button_title">የማውረድ አማራጭን በቪዲዮ ዝርዝሮች ውስጥ አሳይ</string>
   <string name="morphe_feed_download_flyout_button_summary">የማውረድ አማራጭ ለሌላቸው የፊድ ቪዲዮዎች ዝርዝር ውስጥ ያክላል፤ ለምሳሌ YouTube Premium አባላት ብቻ እንዲያወርዱ የሚፈቅዳቸውን ቪዲዮዎች</string>
+  <string name="morphe_download_force_4k_title">የ 4K ዳውንሎድ አቅርቦትን በግዴታ ማስገደብ</string>
+  <string name="morphe_download_force_4k_summary">YouTube ይህ መሣሪያ ሊያጫውታቸው እንደማይችል ቢወስንም እንኳ የ 1440p እና የ 4K ዳውንሎዶችን ያቀርባል። እንዲህ ያሉ ቪዲዮዎች በ YouTube ውስጥ ያለ ቪዲዮ ሊጫወቱ ይችላሉ፣ ነገር ግን ወደ መሣሪያዎ ኤክስፖርት ሊደረጉ ይችላሉ</string>
   <string name="morphe_export_download_folder_title">የተቀመጡ ቪዲዮዎችን ላክ</string>
   <string name="morphe_export_download_folder_summary">"በመተግበሪያው ውስጥ ያሉትን የተቀመጡ ቪዲዮዎች በመተግበሪያው የውርድ ፍላይአውት ሜኑ በመጠቀም ወደ መሳሪያዎ ማከማቻ ይላኩ። የኤክስፖርት ፎልደሩን ለመቀየር ይጫኑ
 
@@ -1592,6 +1594,16 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">የዙም ሃፕቲክን አጥፋ</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">የአካውንት መግቢያ ዝርዝሮችን በቅርቡ ከቀየሩ፣ MicroGን ያራግፉ እና እንደገና ይጫኑት</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">የፑሽ ማሳወቂያዎችን አስቀምጥ</string>
+  <string name="morphe_debug_save_push_notifications_summary">የደረሱ የፑሽ ማሳወቂያዎችን በऐप ዳታ ውስጥ ወደ ፋይል ያስቀምጣል። ፋይሉ እንደ ማሳወቂያ ጽሁፎች እና የቻናል ስሞች ያሉ የግል መረጃዎችን ሊያካትት ይችላል</string>
+  <string name="morphe_debug_saved_push_notifications_title">የተቀመጡ የፑሽ ማሳወቂያዎችን ላክ</string>
+  <string name="morphe_debug_saved_push_notifications_summary">የተቀመጡ የፑሽ ማሳወቂያዎችን ላክ ወይም አጽዳ</string>
+  <string name="morphe_debug_saved_push_notifications_count">የተቀመጡ የፑሽ ማሳወቂያዎች፦ %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">ምንም የተቀመጡ የፑሽ ማሳወቂያዎች አልተገኙም</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">የፑሽ ማሳወቂያዎች በተሳካ ሁኔታ ተላክተዋል</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">የፑሽ ማሳወቂያዎችን ለመላክ አልተቻለም</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">የተቀመጡ የፑሽ ማሳወቂያዎች ተሰርዘዋል</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">የሊንክ ማስተላለፊያዎችን ይዝለሉ</string>
   <string name="morphe_bypass_link_redirects_summary">የክትትል ሊንኩን (youtube.com/redirect) በማለፍ ዋናውን ሊንክ በቀጥታ ይከፍታል</string>

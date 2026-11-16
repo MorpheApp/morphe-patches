@@ -562,6 +562,8 @@ Nakon što se jednom otvori video s gumbom Ask, funkcija radi sa svim videima, �
   <string name="morphe_shorts_download_flyout_title">Preuzmi</string>
   <string name="morphe_feed_download_flyout_button_title">Prikaži preuzimanje u izbornicima videa</string>
   <string name="morphe_feed_download_flyout_button_summary">Dodaje stavku za preuzimanje u izbornike videa u feedu koji je nemaju, kao što su videi koje YouTube dopušta preuzimati samo Premium članovima</string>
+  <string name="morphe_download_force_4k_title">Prisili dostupnost 4K preuzimanja</string>
+  <string name="morphe_download_force_4k_summary">Omogućuje preuzimanja u 1440p i 4K rezoluciji čak i ako YouTube odluči da ovaj uređaj ne može reproducirati te videozapise. Takvi videozapisi se možda neće reproducirati unutar YouTubea, ali se mogu izvesti na vaš uređaj</string>
   <string name="morphe_export_download_folder_title">Izvezi spremljene videozapise</string>
   <string name="morphe_export_download_folder_summary">"Izvezite spremljene videozapise iz aplikacije u pohranu uređaja pomoću izbornika preuzimanja u aplikaciji. Dodirnite za promjenu mape za izvoz
 
@@ -1591,6 +1593,16 @@ Videozapisi se zahtijevaju kratkim prefiksom hashiranog ID-a videozapisa, pa pos
   <string name="morphe_disable_haptic_feedback_zoom_title">Onemogući haptiku za zumiranje</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ako ste nedavno promijenili podatke za prijavu računa, deinstalirajte i ponovno instalirajte MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Spremi push obavijesti</string>
+  <string name="morphe_debug_save_push_notifications_summary">Sprema primljene push obavijesti u datoteku u podacima aplikacije. Datoteka može sadržavati privatne informacije, kao što su tekstovi obavijesti i nazivi kanala</string>
+  <string name="morphe_debug_saved_push_notifications_title">Izvezi spremljene push obavijesti</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Izvezi ili obriši spremljene push obavijesti</string>
+  <string name="morphe_debug_saved_push_notifications_count">Spremljene push obavijesti: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nisu pronađene spremljene push obavijesti</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push obavijesti su uspješno izvezene</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Izvoz push obavijesti nije uspio</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Spremljene push obavijesti su izbrisane</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Zaobiđi preusmjeravanja poveznica</string>
   <string name="morphe_bypass_link_redirects_summary">Izravno otvara originalnu poveznicu, zaobilazeći poveznicu za praćenje (youtube.com/redirect)</string>

@@ -560,6 +560,8 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_shorts_download_flyout_title">Stiahnuť</string>
   <string name="morphe_feed_download_flyout_button_title">Zobrazovať sťahovanie v menu videí</string>
   <string name="morphe_feed_download_flyout_button_summary">Pridá položku sťahovania do menu videí vo feede, ktoré ju nemajú, napríklad videí, ktoré YouTube umožňuje sťahovať len členom Premium</string>
+  <string name="morphe_download_force_4k_title">Vynutiť dostupnosť sťahovania vo 4K</string>
+  <string name="morphe_download_force_4k_summary">Ponúka sťahovanie vo 1440p a 4K, aj keď YouTube rozhodne, že toto zariadenie ich neprehrá. Takéto videá sa v rámci YouTube môžu prehrávať bez obrazu, ale môžu byť exportované do vášho zariadenia</string>
   <string name="morphe_export_download_folder_title">Exportovať uložené videá</string>
   <string name="morphe_export_download_folder_summary">"Exportujte videá uložené v aplikácii do úložiska zariadenia pomocou ponuky sťahovaní v aplikácii. Klepnutím zmeníte exportovaciu zložku
 
@@ -1586,6 +1588,16 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <string name="morphe_disable_haptic_feedback_zoom_title">Zakázať haptickú spätnú väzbu pre zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ak ste nedávno zmenili svoje prihlasovacie údaje k účtu, odinštalujte a znovu nainštalujte microG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Ukladať push notifikácie</string>
+  <string name="morphe_debug_save_push_notifications_summary">Ukladá prijaté push notifikácie do súboru v údajoch aplikácie. Súbor môže obsahovať súkromné informácie, ako sú texty notifikácií a názvy kanálov</string>
+  <string name="morphe_debug_saved_push_notifications_title">Exportovať uložené push notifikácie</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportujte alebo vymažte uložené push notifikácie</string>
+  <string name="morphe_debug_saved_push_notifications_count">Uložené push notifikácie: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nenašli sa žiadne uložené push notifikácie</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push notifikácie boli úspešne exportované</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Export push notifikácií zlyhal</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Uložené push notifikácie boli vymazané</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Obísť presmerovania URL</string>
   <string name="morphe_bypass_link_redirects_summary">Otvára pôvodný odkaz priamo, obchádza sledovací odkaz (youtube.com/redirect)</string>

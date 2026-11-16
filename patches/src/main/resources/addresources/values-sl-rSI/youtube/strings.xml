@@ -562,6 +562,8 @@ Ko enkrat odprete video s gumbom Zastavi, bo funkcija delovala za vse videe, tud
   <string name="morphe_shorts_download_flyout_title">Prenesite</string>
   <string name="morphe_feed_download_flyout_button_title">Prikaži prenos v videomenijih</string>
   <string name="morphe_feed_download_flyout_button_summary">V menije videov v feedu, ki nimajo možnosti prenosa, doda postavko za prenos, na primer pri videovih, ki jih YouTube dovoli prenos samo Premium članom</string>
+  <string name="morphe_download_force_4k_title">Prisili razpoložljivost 4K prenosov</string>
+  <string name="morphe_download_force_4k_summary">Omogoča prenose v 1440p in 4K, tudi če YouTube ugotovi, da ta naprava ne more predvajati teh videov. Takšni videi se morda v okviru YouTubea ne bodo predvajali, vendar jih lahko izvozite na svojo napravo</string>
   <string name="morphe_export_download_folder_title">Izvozi shranjene videoposnetke</string>
   <string name="morphe_export_download_folder_summary">"Izvozite v aplikaciji shranjene videoposnetke v pomnilnik naprave prek menija za prenose v aplikaciji. Dotaknite se za spremembo izvozne mape
 
@@ -1590,6 +1592,16 @@ Videoposnetki so zahtevani s kratko predpono zgoščenega ID-ja videoposnetka, t
   <string name="morphe_disable_haptic_feedback_zoom_title">Onemogoči dotik za prilagajanje</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Če ste nedavno spremenili prijavn podatke svojega računa, odstranite in ponovno namestite MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Shrani potisna obvestila</string>
+  <string name="morphe_debug_save_push_notifications_summary">Prejete potisna obvestila shrani v datoteko v podatkih aplikacije. Datoteka lahko vsebuje zasebne informacije, kot so besedila obvestil in imena kanalov</string>
+  <string name="morphe_debug_saved_push_notifications_title">Izvozi shranjena potisna obvestila</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Izvozi ali počisti shranjena potisna obvestila</string>
+  <string name="morphe_debug_saved_push_notifications_count">Shranjena potisna obvestila: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Shranjenih potisnih obvestil ni bilo najdeno</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Potisna obvestila so uspešno izvožena</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Izvoz potisnih obvestil ni uspel</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Shranjena potisna obvestila so počiščena</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Preskoči preusmeritve povezav</string>
   <string name="morphe_bypass_link_redirects_summary">Odpre izvirno povezavo neposredno in obide sledilno povezavo (youtube.com/redirect)</string>

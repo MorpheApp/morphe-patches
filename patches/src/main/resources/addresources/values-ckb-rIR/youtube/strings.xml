@@ -563,6 +563,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">دابەزاندن</string>
   <string name="morphe_feed_download_flyout_button_title">نیشاندانی داگرتن لە لیستی ڤیدیۆکانە</string>
   <string name="morphe_feed_download_flyout_button_summary">بەنemەیەکی داگرتن بۆ لیستی ڤیدیۆکانی feed زیاد دەکات کە ئەم بژاردەیان نییە، وەک ئەو ڤیدیۆیانەی کە YouTube تەنها ڕێگەی بە ئەندامانی Premium دەدات دایگرن</string>
+  <string name="morphe_download_force_4k_title">بەهێزیی بەردەستبوونی داگرتنی 4K</string>
+  <string name="morphe_download_force_4k_summary">داگرتنی 1440p و 4K پێشکەش دەکات تەنانەت ئەگەر YouTube بڕیار بدات کە ئەم ئامێرە ناتوانێت لایان بخاتەوە. ڕەنگە ئەم ڤیدیۆیانە بەبێ دیمەن لەناو YouTube-دا لایبن، بەڵام دەکرێت بۆ ئامێرەکەت وەردەگیردرێن</string>
   <string name="morphe_export_download_folder_title">هەناردانی ڤیدیۆکانی پاشکەوتکراو</string>
   <string name="morphe_export_download_folder_summary">"ڤیدیۆ پاشکەوتکراوەکانی ناو ئەپ بۆ کۆگای ئامێرەکەت هەناردە بکە بە بەکارهێنانی مینیۆی داگرتنەکانی ناو ئەپەکە. کلیک بکە بۆ گۆڕینی فۆڵدەری هەناردان
 
@@ -1593,6 +1595,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ناچالاککردنی هەستی لەرزینی زوومکردن</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">ئەگەر لەم دواییانەدا زانیارییەکانی چوونەژوورەوەی هەژمارت گۆڕیوە، ئەوا MicroG بسڕەوە و دووبارە دایبمەزرێنەوە</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">پاشکەوتکردنی ئاگادارکردنەوەکانی پاڵدان</string>
+  <string name="morphe_debug_save_push_notifications_summary">ئاگادارکردنەوەکانی پاڵدانی وەرگیراو لە فایلێکدا لە داتای ئەپەکەدا پاشکەوت دەکات. فایلەکە دەکرێت زانیاری تایبەتی تێدا بێت، وەک دەقەکانی ئاگادارکردنەوە و ناوی چەناڵەکان</string>
+  <string name="morphe_debug_saved_push_notifications_title">هەناردەکردنی ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو</string>
+  <string name="morphe_debug_saved_push_notifications_summary">هەناردەکردن یان پاککردنەوەی ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو</string>
+  <string name="morphe_debug_saved_push_notifications_count">ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">هیچ ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو نەدۆزرانەوە</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">ئاگادارکردنەوەکانی پاڵدان بە سەرکەوتوویی هەناردەکران</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">هەناردەکردنی ئاگادارکردنەوەکانی پاڵدان سەرکەوتوو نەبوو</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو پاککرانەوە</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">تێپەڕاندنی ئاراستەکردنی لینکەکان</string>
   <string name="morphe_bypass_link_redirects_summary">لینکی ڕەسەنەکە ڕاستەوخۆ دەکاتەوە و لینکی شوێنکەوتن (youtube.com/redirect) تێپەڕ دەکات</string>

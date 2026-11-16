@@ -562,6 +562,8 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_shorts_download_flyout_title">Yuklab olish</string>
   <string name="morphe_feed_download_flyout_button_title">Yuklab olishni video menyularida ko\'rsatish</string>
   <string name="morphe_feed_download_flyout_button_summary">Lentadagi yuklab olish elementi mavjud bo\'lmagan videolar menyusiga, masalan, YouTube faqat Premium a\'zolariga yuklab olishga ruxsat bergan videolar uchun, yuklab olish elementini qo\'shadi</string>
+  <string name="morphe_download_force_4k_title">4K yuklab olish imkoniyatini majburiy qilish</string>
+  <string name="morphe_download_force_4k_summary">Hatto YouTube ushbu qurilma ularni qo\"yib bera olmasligini aniqlagan taqdirda ham 1440p va 4K yuklab olish imkoniyatini taqdim etadi. Bunday videolar YouTube ichida tasvirsiz ijro etilishi mumkin, ammo ularni qurilmangizga eksport qilish mumkin</string>
   <string name="morphe_export_download_folder_title">Saqlangan videolarni eksport qilish</string>
   <string name="morphe_export_download_folder_summary">"Ilova ichida saqlangan videolarni yuklab olish menyusi yordamida qurilmangiz xotirasiga eksport qiling. Eksport papkasini o'zgartirish uchun bosing
 
@@ -1589,6 +1591,16 @@ Videolar xeshlangan video ID'sining qisqa prefiksi orqali so'raladi, shuning uch
   <string name="morphe_disable_haptic_feedback_zoom_title">Zum haptik javobini o\'chirish</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Agar yaqinda hisobingiz kirish ma\'lumotlarini o\'zgartirgan bo\'lsangiz, MicroG ilovasini o\'chirib, qaytadan o\'rnating</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Push-bildirishnomalarni saqlash</string>
+  <string name="morphe_debug_save_push_notifications_summary">Qabul qilingan push-bildirishnomalarni ilova ma\'lumotlaridagi faylga saqlaydi. Fayl bildirishnoma matnlari va kanal nomlari kabi shaxsiy ma\'lumotlarni o\'z ichiga olishi mumkin</string>
+  <string name="morphe_debug_saved_push_notifications_title">Saqlangan push-bildirishnomalarni eksport qilish</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Saqlangan push-bildirishnomalarni eksport qilish yoki tozalash</string>
+  <string name="morphe_debug_saved_push_notifications_count">Saqlangan push-bildirishnomalar: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Saqlangan push-bildirishnomalar topilmadi</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-bildirishnomalar muvaffaqiyatli eksport qilindi</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push-bildirishnomalarni eksport qilishda xatolik yuz berdi</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Saqlangan push-bildirishnomalar tozalandi</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Havola yo\'nalishlarini o\'rab o\'tish</string>
   <string name="morphe_bypass_link_redirects_summary">Asosiy havolani to\'g\'ridan-to\'g\'ri ochadi, izlash havolasidan (youtube.com/redirect) o\'tib ketmaydi</string>

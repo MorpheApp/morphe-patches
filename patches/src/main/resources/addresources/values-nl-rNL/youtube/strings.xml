@@ -562,6 +562,8 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <string name="morphe_shorts_download_flyout_title">Download</string>
   <string name="morphe_feed_download_flyout_button_title">Toon downloaden in videomenu\'s</string>
   <string name="morphe_feed_download_flyout_button_summary">Voegt een downloaditem toe aan de menu\'s van video\'s in de feed die dit niet hebben, zoals video\'s die YouTube alleen Premium-leden laat downloaden</string>
+  <string name="morphe_download_force_4k_title">Beschikbaarheid 4K-download forceren</string>
+  <string name="morphe_download_force_4k_summary">Biedt 1440p- en 4K-downloads aan, zelfs als YouTube besluit dat dit apparaat ze niet kan afspelen. Dergelijke video\'s worden mogelijk zonder beeld afgespeeld binnen YouTube, maar kunnen naar je apparaat worden geëxporteerd</string>
   <string name="morphe_export_download_folder_title">Opgeslagen video\'s exporteren</string>
   <string name="morphe_export_download_folder_summary">"Exporteer in de app opgeslagen video's naar de opslag van je apparaat via het downloadmenu. Tik om de exportmap te wijzigen
 
@@ -1591,6 +1593,16 @@ Video's worden opgevraagd via een kort voorvoegsel van de gehashte video-ID, zod
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoom-haptics uitschakelen</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Als je onlangs je accountgegevens hebt gewijzigd, verwijder dan MicroG en installeer het opnieuw</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Pushmeldingen opslaan</string>
+  <string name="morphe_debug_save_push_notifications_summary">Slaat ontvangen pushmeldingen op in een bestand in de appgegevens. Het bestand kan privégegevens bevatten, zoals meldingsteksten en kanaalnamen</string>
+  <string name="morphe_debug_saved_push_notifications_title">Opgeslagen pushmeldingen exporteren</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exporteer of wis de opgeslagen pushmeldingen</string>
+  <string name="morphe_debug_saved_push_notifications_count">Opgeslagen pushmeldingen: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Geen opgeslagen pushmeldingen gevonden</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Pushmeldingen met succes geëxporteerd</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Exporteren van pushmeldingen is mislukt</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Opgeslagen pushmeldingen gewist</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omzeil linkomleidingen</string>
   <string name="morphe_bypass_link_redirects_summary">Opent de originele link direct, waarbij de trackinglink (youtube.com/redirect) wordt omzeild</string>

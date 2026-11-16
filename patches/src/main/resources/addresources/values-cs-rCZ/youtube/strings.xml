@@ -562,6 +562,8 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <string name="morphe_shorts_download_flyout_title">Stáhnout</string>
   <string name="morphe_feed_download_flyout_button_title">Zobrazit stahování v nabídkách videí</string>
   <string name="morphe_feed_download_flyout_button_summary">Přidá položku stahování do nabídek videí ve feedu, které ji nemají, například u videí, která YouTube umožňuje stahovat pouze členům Premium</string>
+  <string name="morphe_download_force_4k_title">Vynutit dostupnost stahování v 4K</string>
+  <string name="morphe_download_force_4k_summary">Umožňuje stahování v rozlišení 1440p a 4K, i když YouTube rozhodne, že toto zařízení je není schopno přehrát. Taková videa se sice mohou v aplikaci YouTube přehrávat bez obrazu, ale lze je exportovat do vašeho zařízení</string>
   <string name="morphe_export_download_folder_title">Exportovat uložená videa</string>
   <string name="morphe_export_download_folder_summary">"Exportujte v aplikaci uložená videa do úložiště svého zařízení pomocí menu stahování. Klepnutím změníte složku pro export
 
@@ -663,6 +665,7 @@ API klíč by se nikdy neměl sdílet. Kdokoli s přístupem k němu může pou�
   <string name="morphe_loop_count_clear_done">Uložené počty opakování byly vymazány</string>
   <string name="morphe_loop_count_flyout_name">Počet opakování</string>
   <string name="morphe_loop_count_dialog_message">Kolikrát se video přehrálo před dalším videem, od %1$s do %2$s. ponechte prázdné pro opakování videa bez omezení.</string>
+  <string name="morphe_loop_count_times">%s krát</string>
   <string name="morphe_loop_count_no_limit">Bez omezení</string>
   <string name="morphe_loop_count_decrease">Méně krát</string>
   <string name="morphe_loop_count_increase">Více krát</string>
@@ -1590,6 +1593,16 @@ Videa jsou vyžádána krátkou předponou hashovaného ID videa, takže server 
   <string name="morphe_disable_haptic_feedback_zoom_title">Zakázat haptiku pro zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Pokud jste nedávno změnili přihlašovací údaje svého účtu, odinstalujte a znovu nainstalujte MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Ukládat push notifikace</string>
+  <string name="morphe_debug_save_push_notifications_summary">Ukládá přijaté push notifikace do souboru v datech aplikace. Soubor může obsahovat soukromé informace, jako jsou texty notifikací a názvy kanálů</string>
+  <string name="morphe_debug_saved_push_notifications_title">Exportovat uložené push notifikace</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportujte nebo vymažte uložené push notifikace</string>
+  <string name="morphe_debug_saved_push_notifications_count">Uložené push notifikace: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nebyly nalezeny žádné uložené push notifikace</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push notifikace byly úspěšně exportovány</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Export push notifikací se nezdařil</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Uložené push notifikace byly vymazány</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Obcházet přesměrování odkazů</string>
   <string name="morphe_bypass_link_redirects_summary">Otevře původní odkaz přímo a obchází sledovací odkaz (youtube.com/redirect)</string>

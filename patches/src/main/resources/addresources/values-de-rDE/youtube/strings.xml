@@ -563,6 +563,8 @@ Nachdem ein Video mit der Ask-Schaltfläche einmal geöffnet wurde, funktioniert
   <string name="morphe_shorts_download_flyout_title">Herunterladen</string>
   <string name="morphe_feed_download_flyout_button_title">Download in Videomenüs anzeigen</string>
   <string name="morphe_feed_download_flyout_button_summary">Fügt den Menüs von Videos im Feed, die keinen Download-Punkt haben, einen solchen hinzu, wie z. B. bei Videos, die YouTube nur Premium-Mitgliedern zum Download erlaubt</string>
+  <string name="morphe_download_force_4k_title">Verfügbarkeit von 4K-Downloads erzwingen</string>
+  <string name="morphe_download_force_4k_summary">Ermöglicht 1440p- und 4K-Downloads, selbst wenn YouTube entscheidet, dass dieses Gerät sie nicht abspielen kann. Solche Videos werden in YouTube eventuell ohne Bild abgespielt, können aber auf Ihr Gerät exportiert werden</string>
   <string name="morphe_export_download_folder_title">Gespeicherte Videos exportieren</string>
   <string name="morphe_export_download_folder_summary">"Exportiere in der App gespeicherte Videos über das Download-Flyout-Menü auf deinen Gerätespeicher. Tippe hier, um den Export-Ordner zu ändern
 
@@ -1592,6 +1594,16 @@ Videos werden über ein kurzes Präfix der gehashten Video-ID angefordert, sodas
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoomhaptik deaktivieren</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Wenn du kürzlich deine Kontoanmeldedaten geändert hast, deinstalliere MicroG und installiere es erneut</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Push-Benachrichtigungen speichern</string>
+  <string name="morphe_debug_save_push_notifications_summary">Speichert empfangene Push-Benachrichtigungen in einer Datei in den App-Daten. Die Datei kann private Informationen enthalten, wie z. B. Benachrichtigungstexte und Kanalnamen</string>
+  <string name="morphe_debug_saved_push_notifications_title">Gespeicherte Push-Benachrichtigungen exportieren</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportieren oder Löschen der gespeicherten Push-Benachrichtigungen</string>
+  <string name="morphe_debug_saved_push_notifications_count">Gespeicherte Push-Benachrichtigungen: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Keine gespeicherten Push-Benachrichtigungen gefunden</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-Benachrichtigungen erfolgreich exportiert</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Export der Push-Benachrichtigungen fehlgeschlagen</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Gespeicherte Push-Benachrichtigungen gelöscht</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Umgehung von Link-Weiterleitungen</string>
   <string name="morphe_bypass_link_redirects_summary">Öffnet den ursprünglichen Link direkt, wodurch der Tracking-Link (youtube.com/redirect) umgangen wird.</string>

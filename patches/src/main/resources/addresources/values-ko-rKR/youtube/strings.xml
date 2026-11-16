@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">오프라인 저장</string>
   <string name="morphe_feed_download_flyout_button_title">동영상 메뉴에 \'오프라인 저장\' 표시하기</string>
   <string name="morphe_feed_download_flyout_button_summary">YouTube Premium 회원만 오프라인 저장이 가능한 동영상과 같이, 피드 내 동영상 메뉴에 오프라인 저장 항목이 없는 경우 해당 항목을 추가합니다</string>
+  <string name="morphe_download_force_4k_title">4K 다운로드 강제 활성화</string>
+  <string name="morphe_download_force_4k_summary">YouTube가 이 기기에서 재생할 수 없다고 판단하더라도 1440p 및 4K 다운로드를 제공합니다. 이러한 비디오는 YouTube 내부에서는 화면 없이 재생될 수 있지만, 기기로 내보낼 수 있습니다</string>
   <string name="morphe_export_download_folder_title">저장된 동영상 내보내기</string>
   <string name="morphe_export_download_folder_summary">"앱 내 '오프라인 저장' 메뉴를 사용하여 앱에 저장된 동영상을 기기 저장소로 내보낼 수 있습니다. 내보내기 폴더를 변경하려면 여기를 탭하세요
 
@@ -1593,6 +1595,16 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_disable_haptic_feedback_zoom_title">동영상 확대 진동 피드백 비활성화하기</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">최근에 계정 로그인 정보를 변경했다면 MicroG를 제거하고 다시 설치하세요</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">푸시 알림 저장</string>
+  <string name="morphe_debug_save_push_notifications_summary">수신된 푸시 알림을 앱 데이터의 파일로 저장합니다. 파일에는 알림 텍스트 및 채널 이름과 같은 개인 정보가 포함될 수 있습니다</string>
+  <string name="morphe_debug_saved_push_notifications_title">저장된 푸시 알림 내보내기</string>
+  <string name="morphe_debug_saved_push_notifications_summary">저장된 푸시 알림을 내보내거나 삭제합니다</string>
+  <string name="morphe_debug_saved_push_notifications_count">저장된 푸시 알림: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">저장된 푸시 알림을 찾을 수 없습니다</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">푸시 알림을 성공적으로 내보냈습니다</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">푸시 알림 내보내기에 실패했습니다</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">저장된 푸시 알림이 삭제되었습니다</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">리다이렉션 없이 링크 바로 열기</string>
   <string name="morphe_bypass_link_redirects_summary">앱 내에서 외부 링크를 열 때 추적 링크(youtube.com/redirect)를 거치지 않고 바로 연결합니다</string>

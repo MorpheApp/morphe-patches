@@ -562,6 +562,8 @@ Piştî ku vîdyoyeke bi bişkoja Ask carekê hate vekirin, ev taybetmendî bi h
   <string name="morphe_shorts_download_flyout_title">Daxistin</string>
   <string name="morphe_feed_download_flyout_button_title">Daxistinê di menyuyên vîdyoyan de nîşan bide</string>
   <string name="morphe_feed_download_flyout_button_summary">Itemsekî daxistinê li menyuyên vîdyoyên di feed-ê de zêde dike ku tiştekî weha nîşan nadin, wekî vîdyoyên ku YouTube tenê rê dide endamên Premium daxistînin</string>
+  <string name="morphe_download_force_4k_title">Bestîbûna daxezandina 4K bi zorê</string>
+  <string name="morphe_download_force_4k_summary">Daxezandinên 1440p û 4K pêşkêş dike, her çend YouTube biryar bide ku ev ampir nikare wan bileyîne. Ev vîdyoyên wisa dibe ku di hundurê YouTube de bêyî vîdyoyê bileyînin, lê dikarin bidin derveyî ampirê we</string>
   <string name="morphe_export_download_folder_title">Vîdyoyên savekirî eksport bike</string>
   <string name="morphe_export_download_folder_summary">"Vîdyoyên li hundurê aplikasyonê yên savekirî bi rêya menyuya daxezan a li hundurê aplikasyonê bi storage'a amûrê xwe ve exporters bike. Ji bo guhartina foldera exportê lê bitikîne
 
@@ -1592,6 +1594,16 @@ Vîdyo bi pêşgirekî kurt a ID-ya vîdyoya hashed tê xwestin, ji ber vê yek�
   <string name="morphe_disable_haptic_feedback_zoom_title">Vegera hestiyarî ya zoomê asteng bike</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Heke we di demeke dawî de agahiyên têketina hesaba xwe guhertine, MicroG jê bibe û dîsa saz bike</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Agahdariyên push biparêze</string>
+  <string name="morphe_debug_save_push_notifications_summary">Agahdariyên push yên hatine girtin di fayleyekê de di daneyên aplikasyonê de diparêze. Fayle dikare agahiyên taybet, wekî nivîsên agahdariyê û navên kanal, beşdar bike</string>
+  <string name="morphe_debug_saved_push_notifications_title">Agahdariyên push ên hatine parastin eksport bike</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Agahdariyên push ên hatine parastin eksport bike an jî paqij bike</string>
+  <string name="morphe_debug_saved_push_notifications_count">Agahdariyên push yên hatine savekirin: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Tu agahdariyên push yên hatine savekirin nehatin dîtin</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Agahdariyên push bi serkeftî hatin exportkirin</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Exportkirina agahdariyên push neserket</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Agahdariyên push yên hatine savekirin hatin paqijkirin</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Veguhastinên girêdanan derbas bike</string>
   <string name="morphe_bypass_link_redirects_summary">Girêdana orjînal rasterast vedike, bi derbasbûna girêdana şopandinê (youtube.com/redirect)</string>

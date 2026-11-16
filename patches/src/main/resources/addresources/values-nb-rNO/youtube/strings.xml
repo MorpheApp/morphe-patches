@@ -562,6 +562,8 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <string name="morphe_shorts_download_flyout_title">Last ned</string>
   <string name="morphe_feed_download_flyout_button_title">Vis nedlasting i videomenyer</string>
   <string name="morphe_feed_download_flyout_button_summary">Legger til et nedlastingspunkt i menyene til videoer i feeden som mangler dette, slik som videoer YouTube kun lar Premium-medlemmer laste ned</string>
+  <string name="morphe_download_force_4k_title">Tving tilgjengelighet for 4K-nedlasting</string>
+  <string name="morphe_download_force_4k_summary">Tilbyr 1440p- og 4K-nedlastinger selv om YouTube bestemmer at denne enheten ikke kan spille dem av. Slike videoer kan hende spilles av uten bilde inne i YouTube, men kan eksporteres til enheten din</string>
   <string name="morphe_export_download_folder_title">Eksporter lagrede videoer</string>
   <string name="morphe_export_download_folder_summary">"Eksporter videoer lagret i appen til enhetens lagring ved hjelp av nedlastingsmenyen i appen. Trykk for å endre eksportermappe
 
@@ -1591,6 +1593,16 @@ Videoer blir forespurt med et kort prefiks av den hashet video-ID-en, så server
   <string name="morphe_disable_haptic_feedback_zoom_title">Deaktiver zoomhaptikk</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Hvis du nylig har endret kontoinnloggingsdetaljene dine, må du avinstallere MicroG og installere det på nytt</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Lagre push-varslinger</string>
+  <string name="morphe_debug_save_push_notifications_summary">Lagrer mottatte push-varslinger til en fil i app-dataene. Filen kan inneholde privat informasjon, som varslingstekster og kanalnavn</string>
+  <string name="morphe_debug_saved_push_notifications_title">Eksporter lagrede push-varslinger</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Eksporter eller slett de lagrede push-varslingene</string>
+  <string name="morphe_debug_saved_push_notifications_count">Lagrede push-varsler: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Ingen lagrede push-varsler funnet</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-varsler eksportert vellykket</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Kunne ikke eksportere push-varsler</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Lagrede push-varsler slettet</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omgå lenkeomdirigeringer</string>
   <string name="morphe_bypass_link_redirects_summary">Åpner den originale lenken direkte, ved å omgå sporingslenken (youtube.com/redirect)</string>

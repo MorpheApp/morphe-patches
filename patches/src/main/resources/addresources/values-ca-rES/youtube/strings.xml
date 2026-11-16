@@ -562,6 +562,8 @@ Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els v
   <string name="morphe_shorts_download_flyout_title">Descàrrega</string>
   <string name="morphe_feed_download_flyout_button_title">Mostra la descàrrega als menus de vídeo</string>
   <string name="morphe_feed_download_flyout_button_summary">Afegeix un element de descàrrega als menus dels vídeos del feed que no en tinguin, com els vídeos que YouTube només permet descarregar als membres Premium</string>
+  <string name="morphe_download_force_4k_title">Forçar la disponibilitat de la descàrrega en 4K</string>
+  <string name="morphe_download_force_4k_summary">Ofereix descàrregues en 1440p i 4K encara que YouTube decideixi que aquest dispositiu no pot reproduir-les. Aquestes vídeos poden reproduir-se sense vídeo dins de YouTube, però es poden exportar al teu dispositiu</string>
   <string name="morphe_export_download_folder_title">Exporta els vídeos descarregats</string>
   <string name="morphe_export_download_folder_summary">"Exporta els vídeos descarregats dins de l'app a l'emmagatzematge del teu dispositiu mitjançant el menú desplegable de descàrregues de l'app. Toqueu per canviar la carpeta d'exportació
 
@@ -1591,6 +1593,16 @@ Els vídeos es sol·liciten mitjançant un prefix curt de l'ID del vídeo hashat
   <string name="morphe_disable_haptic_feedback_zoom_title">Desactivar la resposta hàptica del zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Si has canviat recentment les dades d\'accés del teu compte, desinstal·la i torna a instal·lar MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Desarar les notificacions push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Desa les notificacions push rebutades en un fitxer a les dades de l\'aplicació. El fitxer pot incloure informació privada, com els textos de les notificacions i els noms dels canals</string>
+  <string name="morphe_debug_saved_push_notifications_title">Exportar les notificacions push desades</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exporta o neteja les notificacions push desades</string>
+  <string name="morphe_debug_saved_push_notifications_count">Notificacions push desades: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">No s\'han trobat notificacions push desades</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Notificacions push exportades correctament</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Error en exportar les notificacions push</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Notificacions push desades esborrades</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omitir redireccions d\'enllaços</string>
   <string name="morphe_bypass_link_redirects_summary">Obre l\'enllaç original directament, ometent l\'enllaç de seguiment (youtube.com/redirect)</string>

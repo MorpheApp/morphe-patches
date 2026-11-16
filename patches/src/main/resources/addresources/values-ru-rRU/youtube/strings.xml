@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">Скачать</string>
   <string name="morphe_feed_download_flyout_button_title">Показывать загрузку в меню видео</string>
   <string name="morphe_feed_download_flyout_button_summary">Добавляет пункт загрузки в меню видео в ленте, где он отсутствует, например, в видео, которые YouTube позволяет скачивать только пользователям Premium</string>
+  <string name="morphe_download_force_4k_title">Принудительная доступность загрузки 4K</string>
+  <string name="morphe_download_force_4k_summary">Позволяет загружать видео в 1440p и 4K, даже если YouTube считает, что это устройство не поддерживает их воспроизведение. Такие видео могут не воспроизводиться внутри YouTube, но их можно будет экспортировать на устройство</string>
   <string name="morphe_export_download_folder_title">Экспорт сохраненных видео</string>
   <string name="morphe_export_download_folder_summary">"Экспортируйте видео, сохраненные в приложении, в память вашего устройства с помощью выпадающего меню загрузок. Нажмите, чтобы изменить папку экспорта
 
@@ -1592,6 +1594,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Отключить виброотклик при масштабировании</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Если вы недавно изменили данные для входа в свою учетную запись, удалите и переустановите MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Сохранять push-уведомления</string>
+  <string name="morphe_debug_save_push_notifications_summary">Сохраняет полученные push-уведомления в файл в данных приложения. Файл может содержать конфиденциальную информацию, такую как тексты уведомлений и названия каналов</string>
+  <string name="morphe_debug_saved_push_notifications_title">Экспорт сохраненных push-уведомлений</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Экспорт или очистка сохраненных push-уведомлений</string>
+  <string name="morphe_debug_saved_push_notifications_count">Сохраненные пуш-уведомления: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Сохраненных пуш-уведомлений не найдено</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Пуш-уведомления успешно экспортированы</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Не удалось экспортировать пуш-уведомления</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Сохраненные пуш-уведомления очищены</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Обход перенаправлений ссылок</string>
   <string name="morphe_bypass_link_redirects_summary">Открывает исходную ссылку напрямую, обходя отслеживаемую ссылку (youtube.com/redirect)</string>

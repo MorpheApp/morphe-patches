@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">ດາວໂຫລດ</string>
   <string name="morphe_feed_download_flyout_button_title">ສະແດງການດາວໂຫຼດໃນເມນູວິດີໂອ</string>
   <string name="morphe_feed_download_flyout_button_summary">ເພີ່ມລາຍການດາວໂຫຼດລົງໃນເມນູຂອງວິດີໂອໃນ feed ທີ່ບໍ່ມີ, ເຊັ່ນ: ວິດີໂອທີ່ YouTube ອະນຸຍາດໃຫ້ສະເພາະສະມາຊິກ Premium ດາວໂຫຼດໄດ້</string>
+  <string name="morphe_download_force_4k_title">ບັງຄັບໃຫ້ສາມາດດາວໂຫຼດ 4K ໄດ້</string>
+  <string name="morphe_download_force_4k_summary">ມີຕົວຊື້ດາວໂຫຼດ 1440p ແລະ 4K ເຖິງແມ່ນວ່າ YouTube ຈະຕັດສິນວ່າອຸປະກອນນີ້ບໍ່ສາມາດຫຼິ້ນໄດ້. ວິດີໂອດັ່ງກ່າວອາດຈະຫຼິ້ນໂດຍບໍ່ມີພາບພາຍໃນ YouTube, ແຕ່ສາມາດສົ່ງອອກໄປຍັງອຸປະກອນຂອງທ່ານໄດ້</string>
   <string name="morphe_export_download_folder_title">ສົ່ງອອກວິດີໂອທີ່ບັນທຶກໄວ້</string>
   <string name="morphe_export_download_folder_summary">"ສົ່ງອອກວິດີໂອທີ່ບັນທຶກໄວ້ໃນແອັບໄປຍັງບ່ອນເກັບຂໍ້ມູນຂອງອຸປະກອນຂອງທ່ານ ໂດຍໃຊ້ເມນູການດາວໂຫຼດໃນແອັບ. ແຕະເພື່ອປ່ຽນໂຟນເດີສົ່ງອອກ
 
@@ -1592,6 +1594,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ປິດການຕອບສະໜອງແບບສຳຜັດຂອງການຊູມ</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">ຖ້າທ່ານຫາກໍ່ປ່ຽນລາຍລະອຽດການເຂົ້າສູ່ລະບົບຂອງບັນຊີ, ໃຫ້ຖອນການຕິດຕັ້ງ ແລະ ຕິດຕັ້ງ MicroG ໃໝ່</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">ບັນທຶກການແຈ້ງເຕືອນ push</string>
+  <string name="morphe_debug_save_push_notifications_summary">ບັນທຶກການແຈ້ງເຕືອນ push ທີ່ໄດ້ຮັບລົງໃນໄຟລ໌ໃນຂໍ້ມູນແອັບ. ໄຟລ໌ດັ່ງກ່າວອາດມີຂໍ້ມູນສ່ວນຕົວ ເຊັ່ນ: ຂໍ້ຄວາມການແຈ້ງເຕືອນ ແລະ ຊື່ຊ່ອງທາງ</string>
+  <string name="morphe_debug_saved_push_notifications_title">ສົ່ງອອກການແຈ້ງເຕືອນ push ທີ່ບັນທຶກໄວ້</string>
+  <string name="morphe_debug_saved_push_notifications_summary">ສົ່ງອອກ ຫຼື ລຶບການແຈ້ງເຕືອນ push ທີ່ບັນທຶກໄວ້</string>
+  <string name="morphe_debug_saved_push_notifications_count">ການແຈ້ງເຕືອນແບບ push ທີ່ບັນທຶກໄວ້: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">ບໍ່ພົບການແຈ້ງເຕືອນແບບ push ທີ່ບັນທຶກໄວ້</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">ສົ່ງອອກການແຈ້ງເຕືອນແບບ push ສຳເລັດແລ້ວ</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">ການສົ່ງອອກການແຈ້ງເຕືອນແບບ push ລົ້ມເຫຼວ</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">ລ້າງການແຈ້ງເຕືອນແບບ push ທີ່ບັນທຶກໄວ້ແລ້ວ</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">ຂ້າມການປ່ຽນເສັ້ນທາງຂອງລິ້ງ</string>
   <string name="morphe_bypass_link_redirects_summary">ເປີດລິ້ງຕົ້ນສະບັບໂດຍກົງ, ໂດຍຂ້າມລິ້ງຕິດຕາມ (youtube.com/redirect)</string>

@@ -563,6 +563,8 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_shorts_download_flyout_title">ダウンロード</string>
   <string name="morphe_feed_download_flyout_button_title">ビデオメニューに「ダウンロード」を表示</string>
   <string name="morphe_feed_download_flyout_button_summary">YouTubeがPremiumメンバーにのみダウンロードを許可しているビデオなど、フィード内のビデオメニューにダウンロード項目がない場合に、それを追加します</string>
+  <string name="morphe_download_force_4k_title">4Kダウンロードを強制的に有効にする</string>
+  <string name="morphe_download_force_4k_summary">YouTubeがこのデバイスで再生できないと判断した場合でも、1440pおよび4Kのダウンロードを可能にします。これらのビデオはYouTube内では映像なしで再生される可能性がありますが、デバイスに書き出して保存できます</string>
   <string name="morphe_export_download_folder_title">保存済みビデオをエクスポート</string>
   <string name="morphe_export_download_folder_summary">"アプリ内ダウンロードのフライアウトメニューを使用して、アプリ内で保存したビデオをデバイスのストレージにエクスポートします。タップしてエクスポートフォルダを変更してください
 
@@ -1593,6 +1595,16 @@ Automotive レイアウト
   <string name="morphe_disable_haptic_feedback_zoom_title">ズームの触覚フィードバックを無効化</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">最近アカウントのログイン情報を変更した場合は、MicroG をアンインストールして再インストールしてください</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">プッシュ通知を保存</string>
+  <string name="morphe_debug_save_push_notifications_summary">受信したプッシュ通知をアプリデータのファイルに保存します。このファイルには、通知テキストやチャネル名などの個人情報が含まれる場合があります</string>
+  <string name="morphe_debug_saved_push_notifications_title">保存済みプッシュ通知をエクスポート</string>
+  <string name="morphe_debug_saved_push_notifications_summary">保存済みプッシュ通知のエクスポートまたは消去</string>
+  <string name="morphe_debug_saved_push_notifications_count">保存済みプッシュ通知: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">保存済みプッシュ通知は見つかりませんでした</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">プッシュ通知のファイル出力に成功しました</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">プッシュ通知のファイル出力に失敗しました</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">保存済みプッシュ通知を消去しました</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">リンクのリダイレクトを回避</string>
   <string name="morphe_bypass_link_redirects_summary">追跡リンク (youtube.com/redirect) を経由せずにリンク先を直接開きます</string>

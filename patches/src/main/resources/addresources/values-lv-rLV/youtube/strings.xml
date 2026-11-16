@@ -562,6 +562,8 @@ Kad videoklips ar pogu Uzdot jautājumu ir atvērts vienreiz, šī funkcija darb
   <string name="morphe_shorts_download_flyout_title">Lejupielādēt</string>
   <string name="morphe_feed_download_flyout_button_title">Rādīt lejupielādi video izvēlnēs</string>
   <string name="morphe_feed_download_flyout_button_summary">Pievieno lejupielādes vienumu feed izvēlnēm video, kuriem tā nav, piemēram, video, kurus YouTube ļauj lejupielādēt tikai Premium dalībniekiem</string>
+  <string name="morphe_download_force_4k_title">Piespiedu 4K lejupielādes pieejamība</string>
+  <string name="morphe_download_force_4k_summary">Piedāvā 1440p un 4K lejupielādes, pat ja YouTube izlemj, ka šī ierīce nevar tos atskaņot. Tādi video var atskaņoties bez attēla YouTube lietotnē, taču tos var eksportēt uz jūsu ierīci</string>
   <string name="morphe_export_download_folder_title">Eksportēt saglabātos video</string>
   <string name="morphe_export_download_folder_summary">"Eksportējiet lietotnē saglabātos video uz ierīces atmiņu, izmantojot lietotnes lejupielādes izlaiduma izvēlni. Pieskarieties, lai mainītu eksportēšanas mapi
 
@@ -1591,6 +1593,16 @@ Video tiek pieprasīti, izmantojot īsu hašēta video ID prefiksu, tādēļ ser
   <string name="morphe_disable_haptic_feedback_zoom_title">Atslēgt tuvināšanas haptiku</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ja nesen esat mainījuši sava konta pieteikšanās datus, tad atinstalējiet un instalējiet MicroG no jauna</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Saglabāt push paziņojumus</string>
+  <string name="morphe_debug_save_push_notifications_summary">Saglabā saņemtos push paziņojumus failā lietotnes datijos. Fajls var saturēt privātu informāciju, piemēram, paziņojumu tekstu un kanālu nosērumus</string>
+  <string name="morphe_debug_saved_push_notifications_title">Eksportēt saglabātos push paziņojumus</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Eksportēt vai dzēst saglabātos push paziņojumus</string>
+  <string name="morphe_debug_saved_push_notifications_count">Saglabāti push paziņojumi: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Saglabāti push paziņojumi neatrasti</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push paziņojumi veiksmīgi eksportēti</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Neizdevās eksportēt push paziņojumus</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Saglabātie push paziņojumi dzēsti</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Apiet saišu novirzīšanu</string>
   <string name="morphe_bypass_link_redirects_summary">Tieši atver oriģinālo saiti, apejot izsekošanas saiti (youtube.com/redirect)</string>

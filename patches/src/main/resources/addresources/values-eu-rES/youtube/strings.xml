@@ -562,6 +562,8 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_shorts_download_flyout_title">Deskargatu</string>
   <string name="morphe_feed_download_flyout_button_title">Erakutsi deskarga bidea bideoen menuetan</string>
   <string name="morphe_feed_download_flyout_button_summary">Deskarga elementua gehitzen du feedeko bideoen menuetara, ez duten kasoetan, YouTubek Premium kideei bakarrik utziten dien bideoak adibide gisa</string>
+  <string name="morphe_download_force_4k_title">4K deskarguaren eskuragarritasuna behinດaraztu</string>
+  <string name="morphe_download_force_4k_summary">1440p eta 4K deskarguak eskini ditu, YouTube-k gailu honek ez dituzkilako erreproduzina ahal izaten ownon. Bideo hauek agian YouTube barruan iritirik gabe erreproduziko dira, baina zure gailura esporta ditzakezu</string>
   <string name="morphe_export_download_folder_title">Esportatu gordetako bideoak</string>
   <string name="morphe_export_download_folder_summary">"Aplikazioan gordetako bideoak zure gailuaren biltegian esportatu aplikazioko deskargen flyout menuaren bidez. Sakatu esportazio karpeta aldatzeko
 
@@ -1592,6 +1594,16 @@ Bideoak bideo-ID hash-atutako prefixo labur baten bidez eskatzen dira, beraz, ze
   <string name="morphe_disable_haptic_feedback_zoom_title">Desaktibatu zoom haptikoa</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Zure kontuaren saioa hasten duten datuak berriki aldatu badituzu, ezabatu eta berriro instalatu MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Gorde push jakinarazpenak</string>
+  <string name="morphe_debug_save_push_notifications_summary">Jakinarazpen push jasotuak aplikazioaren datuen fitxamen batean gordetzen ditu. Fitxamenak informazio pribatua izan dezake, jakinarazpen testuak eta kanalen izenak adibidez</string>
+  <string name="morphe_debug_saved_push_notifications_title">Esportatu gorde dituzten push jakinarazpenak</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Esportatu edo garbitu gorde dituzten push jakinarazpenak</string>
+  <string name="morphe_debug_saved_push_notifications_count">Gorde diren push jakinarazpenak: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Ez da gorde diren push jakinarazpenik aurkitu</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push jakinarazpenak ondo esportatu dira</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push jakinarazpenak esportatzeak huts egin du</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Gorde diren push jakinarazpenak garbitu dira</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Saltatu esteka birbideraketak</string>
   <string name="morphe_bypass_link_redirects_summary">Ireki jatorrizko esteka zuzenean, jarraipen esteka (youtube.com/redirect) saihestuz</string>

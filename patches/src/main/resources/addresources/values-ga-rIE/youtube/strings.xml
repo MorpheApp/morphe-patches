@@ -562,6 +562,8 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <string name="morphe_shorts_download_flyout_title">Íoslódáil</string>
   <string name="morphe_feed_download_flyout_button_title">Taispeáin íoslódáil i roghchlárí físeán</string>
   <string name="morphe_feed_download_flyout_button_summary">Cuireann sé mír íoslódála i roghchlárí físeán sa phléa a níl aon rud ann, mar shampla, físeán a ligeann YouTube do bhaill Premium amháin a íoslódáil</string>
+  <string name="morphe_download_force_4k_title">Éigse a dhéanamh ar dheiseil íoslódála 4K</string>
+  <string name="morphe_download_force_4k_summary">Tairgeann íoslódála 1440p agus 4K fiú má cheapann YouTube nach féidir leis an nglàireann seo a seinneadh iad. Seans gon seinneálfar físeáin derbhlaoich gan físe a bheith ann laistigh de YouTube, ach is féidir iad a aonnamú chuig do ghláireann</string>
   <string name="morphe_export_download_folder_title">Easpórtáil físeáin sábháilte</string>
   <string name="morphe_export_download_folder_summary">"Easpórtáil físeáin a sábháladh laistigh den aip chuig stóráil do ghléis, ag baint úsáide as an roghchlár aníos le haghaidh íoslódálacha san aip. Beartaigh chun an fillteán easpórtála a athrú.
 
@@ -1592,6 +1594,16 @@ Iarrtar físeáin le réimír ghearr den aitheantóir físeáin hasáilte, mar s
   <string name="morphe_disable_haptic_feedback_zoom_title">Díchumasaigh haptaic súmála</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Má d\'athraigh tú sonraí logála isteach do chuntais le déanaí, díshuiteáil agus athshuiteáil MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Sábháil fógraí brú</string>
+  <string name="morphe_debug_save_push_notifications_summary">Sábháil fógraí brú a bhfuigleadh go comhad sna sonraí app. Is féidir go mbeadh faisnéis phrísíúil sa chomhad, mar théacsanna fógraí agus ainmneacha cainéil</string>
+  <string name="morphe_debug_saved_push_notifications_title">Easpóirt fógraí brú sábháilte</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Easpóirt nó glan na fógraí brú sábháilte</string>
+  <string name="morphe_debug_saved_push_notifications_count">Fógraí brú sábháilte: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Níor aimsíodh aon fógraí brú sábháilte</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Easpórtáladh na fógraí brú go rathúil</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Éirigh siopól le haspórtáil na fógraí brú</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Glantar na fógraí brú sábháilte</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Seachain atreoruithe nasc</string>
   <string name="morphe_bypass_link_redirects_summary">Osclaíonn sé an nasc bunaidh go díreach, ag seachaint an naisc rianaithe (youtube.com/redirect)</string>

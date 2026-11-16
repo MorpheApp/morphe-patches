@@ -562,6 +562,8 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_shorts_download_flyout_title">Lataa</string>
   <string name="morphe_feed_download_flyout_button_title">Näytä lataus videoiden valikoissa</string>
   <string name="morphe_feed_download_flyout_button_summary">Lisää latausvaihtoehdon syötteen videoiden valikoihin, joista se puuttuu, kuten videoihin, jotka YouTube antaa ladata vain Premium-jäsenten</string>
+  <string name="morphe_download_force_4k_title">Pakota 4K-latausten saatavuus</string>
+  <string name="morphe_download_force_4k_summary">Tarjoaa 1440p- ja 4K-latauksia, vaikka YouTube päättäisi, ettei tämä laite voi toistaa niitä. Tällaiset videot eivät välttämättä toimi YouTubessa, mutta ne voidaan viedä laitteellesi</string>
   <string name="morphe_export_download_folder_title">Vie tallennetut videot</string>
   <string name="morphe_export_download_folder_summary">"Vie sovelluksen sisälle tallennetut videot laitteesi tallennustilaan latausten pikavalikon avulla. Napauta vaihtaaksesi viekansionin
 
@@ -1591,6 +1593,16 @@ Videoita pyydetään lyhyellä etuliitteellä hajautetusta video-ID:stä, joten 
   <string name="morphe_disable_haptic_feedback_zoom_title">Poista zoomaushaptiikka käytöstä</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Jos olet äskettäin muuttanut tilisi kirjautumistietoja, poista ja asenna MicroG uudelleen</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Tallenna push-ilmoitukset</string>
+  <string name="morphe_debug_save_push_notifications_summary">Tallentaa vastaanotetut push-ilmoitukset tiedostoon sovelluksen tietoihin. Tiedosto voi sisältää yksityisiä tietoja, kuten ilmoitustekstejä ja kanavien nimiä</string>
+  <string name="morphe_debug_saved_push_notifications_title">Vie tallennetut push-ilmoitukset</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Vie tai tyhjennä tallennetut push-ilmoitukset</string>
+  <string name="morphe_debug_saved_push_notifications_count">Tallennetut push-ilmoitukset: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Tallennettuja push-ilmoituksia ei löytynyt</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-ilmoitukset viety onnistuneesti</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push-ilmoitusten vienti epäonnistui</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Tallennetut push-ilmoitukset tyhjennetty</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Ohita linkkien uudelleenohjaukset</string>
   <string name="morphe_bypass_link_redirects_summary">Avaa alkuperäinen linkki suoraan ohittaen seurantalinkin (youtube.com/redirect)</string>

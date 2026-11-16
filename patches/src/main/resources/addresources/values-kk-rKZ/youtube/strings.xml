@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">Жүктеу</string>
   <string name="morphe_feed_download_flyout_button_title">Жүктеуді бейне мәзірлерінде көрсету</string>
   <string name="morphe_feed_download_flyout_button_summary">Лентадағы жүктеу мүмкіндігі жоқ бейнелердің мәзіріне, мысалы, YouTube тек Premium мүшелеріне ғана жүктеуге рұқсат берген бейнелерге, жүктеу элементін қосады</string>
+  <string name="morphe_download_force_4k_title">4K жүктеу қолжетімділігін мәжбүрлеу</string>
+  <string name="morphe_download_force_4k_summary">YouTube бұл құрылғы оларды ойната алмайды деп шешсе де, 1440p және 4K жүктеу мүмкіндігін ұсынады. Мұндай видеолар YouTube ішінде бейнесіз ойнатылуы мүмкін, бірақ оларды құрылғыңызға экспорттауға болады</string>
   <string name="morphe_export_download_folder_title">Сақталған видеоларды экспорттау</string>
   <string name="morphe_export_download_folder_summary">"Қосымшада сақталған видеоларды жүктеу мәзірі арқылы құрылғыңыздың жадына экспорттаңыз. Экспорттау папкасын өзгерту үшін түртіңіз
 
@@ -1591,6 +1593,16 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_disable_haptic_feedback_zoom_title">Масштабтау тактильді кері байланысын өшіру</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Егер сіз жақында аккаунт кіріс деректерін өзгерткен болсаңыз, онда MicroG қолданбасын жойып, қайта орнатыңыз</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Push-хабарландыруларды сақтау</string>
+  <string name="morphe_debug_save_push_notifications_summary">Алынған push-хабарландыруларды қолданба деректеріндегі файлға сақтайды. Файл хабарландыру мәтіндері мен арна атаулары сияқты жеке ақпаратты қамтуы мүмкін</string>
+  <string name="morphe_debug_saved_push_notifications_title">Сақталған push-хабарландыруларды экспорттау</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Сақталған push-хабарландыруларды экспорттау немесе тазалау</string>
+  <string name="morphe_debug_saved_push_notifications_count">Сақталған push-хабарламалар: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Сақталған push-хабарламалар табылмады</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-хабарламалар сәтті экспортталды</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push-хабарламаларды экспорттау сәтсіз аяқталды</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Сақталған push-хабарламалар тазартылды</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Сілтеме қайта бағыттауларын айналып өту</string>
   <string name="morphe_bypass_link_redirects_summary">Бақылау сілтемесін (youtube.com/redirect) айналып өтіп, түпнұсқа сілтемені тікелей ашады</string>

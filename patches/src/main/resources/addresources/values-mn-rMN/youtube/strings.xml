@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">Татаж авах</string>
   <string name="morphe_feed_download_flyout_button_title">Видео цэснүүдэд татаж авах товчийг харуулах</string>
   <string name="morphe_feed_download_flyout_button_summary">YouTube-ийн зөвхөн Premium гишүүдэд татаж авахыг зөвшөөрсөн видео шиг feed-ийн цэсэнд татаж авах сонголт байхгүй видеонуудад татаж авах гэсэн сонголтыг нэмнэ</string>
+  <string name="morphe_download_force_4k_title">4K татаж авах боломжийг албадан идэвхэсүүлэх</string>
+  <string name="morphe_download_force_4k_summary">YouTube энэ төхөөрөмж дээр тоглуулж чадахгүй гэж үзсэн ч 1440p болон 4K чанартай татаж авах боломжийг олгоно. Ийм видеонууд YouTube дотор дүрсгүй тоглуулагдаж болох ч таны төхөөрөмж рүү экспортлох боломжтой</string>
   <string name="morphe_export_download_folder_title">Хадгалсан видеог экспортлох</string>
   <string name="morphe_export_download_folder_summary">"Апп дотор хадгалсан видеог татаж авах цэсийг ашиглан төхөөрөмжийнхээ санах ойд экспортлох. Экспортын хавтсыг өөрчлөхийн тулд дарна уу
 
@@ -1592,6 +1594,16 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Томруулах хөдөлгөөний хариу үйлдлийг идэвхгүй болгох</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Хэрэв та саяхан бүртгэлийн мэдээллээ өөрчилсөн бол MicroG-г устгаж, дахин суулгана уу</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Push мэдэгдлүүдийг хадгалах</string>
+  <string name="morphe_debug_save_push_notifications_summary">Хүлээн авсан push мэдэгдлүүдийг аппликейшны өгөгдлийн файлд хадгална. Энэхүү файл нь мэдэгдлийн текст болон сувгийн нэр зэрэг хувийн мэдээлэл агуулж болно</string>
+  <string name="morphe_debug_saved_push_notifications_title">Хадгалагдсан push мэдэгдлүүдийг экспортлох</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Хадгалагдсан push мэдэгдлүүдийг экспортлох эсвэл устгах</string>
+  <string name="morphe_debug_saved_push_notifications_count">Хадгалагдсан push мэдэгдлүүд: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Хадгалагдсан push мэдэгдэл олдсонгүй</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push мэдэгдлүүдийг амжилттай экспортлолоо</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push мэдэгдлүүдийг экспортлоход алдаа гарлаа</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Хадгалагдсан push мэдэгдлүүдийг устгалаа</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Холбоосын дахин чиглүүлэлтийг алгасах</string>
   <string name="morphe_bypass_link_redirects_summary">Хяналтын холбоосыг (youtube.com/redirect) алгасаад, эх холбоосыг шууд нээнэ</string>

@@ -562,6 +562,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_title">डाउनलोड करें</string>
   <string name="morphe_feed_download_flyout_button_title">वीडियो मेनू में डाउनलोड दिखाएं</string>
   <string name="morphe_feed_download_flyout_button_summary">फीड के उन वीडियो के मेनू में डाउनलोड आइटम जोड़ता है जिनमें यह नहीं है, जैसे कि वे वीडियो जिन्हें YouTube केवल Premium सदस्यों को डाउनलोड करने देता है</string>
+  <string name="morphe_download_force_4k_title">4K डाउनलोड उपलब्धता को ज़बरदस्ती लागू करें</string>
+  <string name="morphe_download_force_4k_summary">1440p और 4K डाउनलोड की सुविधा देता है, भले ही YouTube यह तय करे कि यह डिवाइस उन्हें नहीं चला सकता। ऐसे वीडियो YouTube के अंदर बिना वीडियो के चल सकते हैं, लेकिन उन्हें आपके डिवाइस पर एक्सपोर्ट किया जा सकता है</string>
   <string name="morphe_export_download_folder_title">सेव किए गए वीडियो एक्सपोर्ट करें</string>
   <string name="morphe_export_download_folder_summary">"इन-ऐप डाउनलोड्स फ्लाईआउट मेनू का उपयोग करके इन-ऐप सेव किए गए वीडियो को अपने डिवाइस स्टोरेज में एक्सपोर्ट करें। एक्सपोर्ट फ़ोल्डर बदलने के लिए टैप करें
 
@@ -1591,6 +1593,16 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_disable_haptic_feedback_zoom_title">ज़ूम हैप्टिक्स अक्षम करें</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">यदि आपने हाल ही में अपने खाता लॉगिन विवरण बदले हैं, तो MicroG को अनइंस्टॉल और पुनः इंस्टॉल करें</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">पुश नोटिफ़िकेशन सेव करें</string>
+  <string name="morphe_debug_save_push_notifications_summary">प्राप्त पुश नोटिफ़िकेशन को ऐप डेटा की एक फ़ाइल में सेव करता है। फ़ाइल में निजी जानकारी हो सकती है, जैसे नोटिफ़िकेशन टेक्स्ट और चैनल के नाम</string>
+  <string name="morphe_debug_saved_push_notifications_title">सेव किए गए पुश नोटिफ़िकेशन एक्सपोर्ट करें</string>
+  <string name="morphe_debug_saved_push_notifications_summary">सेव किए गए पुश नोटिफ़िकेशन को एक्सपोर्ट करें या साफ़ करें</string>
+  <string name="morphe_debug_saved_push_notifications_count">सहेजे गए पुश नोटिफिकेशन: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">कोई सहेजे गए पुश नोटिफिकेशन नहीं मिले</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">पुश नोटिफिकेशन सफलतापूर्वक एक्सपोर्ट हो गए</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">पुश नोटिफिकेशन एक्सपोर्ट नहीं हो सके</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">सहेजे गए पुश नोटिफिकेशन क्लियर कर दिए गए</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">लिंक रीडायरेक्ट को बायपास करें</string>
   <string name="morphe_bypass_link_redirects_summary">ट्रैकिंग लिंक (youtube.com/redirect) को बायपास करके मूल लिंक को सीधे खोलता है</string>

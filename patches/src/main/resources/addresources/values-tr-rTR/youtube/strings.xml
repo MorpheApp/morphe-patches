@@ -563,6 +563,8 @@ Soru düğmesine sahip olan bir video bir kez açıldıktan sonra bu özellik, m
   <string name="morphe_shorts_download_flyout_title">İndir</string>
   <string name="morphe_feed_download_flyout_button_title">İndirmeyi video menülerinde göster</string>
   <string name="morphe_feed_download_flyout_button_summary">YouTube\'un yalnızca Premium üyelerinin indirmesine izin verdiği videolar gibi, akışta indirme seçeneği olmayan videoların menülerine bir indirme öğesi ekler</string>
+  <string name="morphe_download_force_4k_title">4K indirme kullanılabilirliğini zorla</string>
+  <string name="morphe_download_force_4k_summary">YouTube bu cihazın oynatamayacağına karar verse bile 1440p ve 4K indirmeler sunar. Bu videolar YouTube içinde görüntü olmadan oynatılabilir, ancak cihazınıza dışa aktarılabilir</string>
   <string name="morphe_export_download_folder_title">Kaydedilen videoları dışa aktar</string>
   <string name="morphe_export_download_folder_summary">"Uygulama içi indirmeler açılır menüsünü kullanarak uygulama içinde kaydedilen videoları cihaz depolama alanınıza dışa aktarın. Dışa aktarma klasörünü değiştirmek için dokunun
 
@@ -778,10 +780,10 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_manager_open_queue">Sırayı aç</string>
   <string name="morphe_queue_manager_save_queue">Sırayı oynatma listesine kaydet</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
-  <string name="morphe_native_queue_thumbnail_button_title">Kuyruk düğmesini küçük resimlerde göster</string>
-  <string name="morphe_native_queue_thumbnail_button_summary">Akış videolarının küçük resimlerinde bir kuyruk düğmesi gösterilir. Buna dokunmak videoyu kuyruğun sonuna ekler, üzerine basılı tutmak ise videoyu sıradaki olarak oynatır</string>
-  <string name="morphe_native_queue_thumbnail_swap_actions_title">Küçük resim kuyruk eylemlerini değiştir</string>
-  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Kuyruk düğmesine dokunmak videoyu sıradaki olarak oynatır, üzerine basılı tutmak ise videoyu kuyruğun sonuna ekler</string>
+  <string name="morphe_native_queue_thumbnail_button_title">Kapak fotoğraflarında sıra düğmesi göster</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Akış videolarının kapak fotoğraflarında bir sıra düğmesi gösterilir. Buna dokunmak videoyu sıranın sonuna ekler, basılı tutmak ise videoyu sıradaki olarak oynatır</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Kapak fotoğrafı sıra eylemlerini değiştir</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Sıra düğmesine dokunmak videoyu sıradaki olarak oynatır, basılı tutmak ise videoyu sıranın sonuna ekler</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Sıra sayfalarını kaydırırken yükle</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Sıranın sonuna doğru kaydırılırken daha fazla oynatma listesi videosu yükler</string>
   <string name="morphe_native_playlist_queue_saved">Oynatma listesi kaydedildi</string>
@@ -1140,7 +1142,7 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_enhanced_ambient_mode_summary">Videoyla birlikte tüm izleme sayfasını ve siyah çubukları aydınlatır, Ambiyans modunun yerini alır</string>
   <string name="morphe_enhanced_ambient_mode_strength_title">Işık şiddeti</string>
   <string name="morphe_enhanced_ambient_mode_strength_summary">İzleme sayfasında ve siyah barlarda ışığın ne kadar güçlü olduğu</string>
-  <string name="morphe_enhanced_ambient_mode_smoothing_title">Hafif yumuşatma</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Işık yumuşatma</string>
   <string name="morphe_enhanced_ambient_mode_smoothing_summary">Işığın videoyu takip etme süresi. 0 değerinde videoyu yakından takip eder</string>
   <string name="morphe_enhanced_ambient_mode_blur_title">Işık bulanıklığı</string>
   <string name="morphe_enhanced_ambient_mode_blur_summary">Videonun yanındaki ışığın ne kadar bulanık olacağı. 0 değerinde videonun şekillerini korur</string>
@@ -1526,7 +1528,7 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <string name="morphe_dearrow_guidelines_popup_already_read">Okudum</string>
   <string name="morphe_dearrow_guidelines_popup_open">Göster</string>
   <string name="morphe_dearrow_vote_title">DeArrow</string>
-  <string name="morphe_dearrow_vote_loading">Yükleniyor...</string>
+  <string name="morphe_dearrow_vote_loading">Yükleniyor…</string>
   <string name="morphe_dearrow_vote_fetch_failed">Bu videonun başlıkları ve küçük resimleri yüklenemedi</string>
   <string name="morphe_dearrow_vote_titles">Başlıklar</string>
   <string name="morphe_dearrow_vote_thumbnails">Küçük resimler</string>
@@ -1534,7 +1536,7 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <string name="morphe_dearrow_vote_original_title">Orijinal başlık</string>
   <string name="morphe_dearrow_vote_original_thumbnail">Orijinal kapak resmi</string>
   <!-- %s is a time of the video, such as 10:14.19 -->
-  <string name="morphe_dearrow_vote_thumbnail_time">Kare: %s</string>
+  <string name="morphe_dearrow_vote_thumbnail_time">%s anındaki kare</string>
   <!-- %s is the upvotes minus the downvotes, and can be negative. -->
   <string name="morphe_dearrow_vote_score">Puan: %s</string>
   <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
@@ -1566,7 +1568,7 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <string name="morphe_dearrow_private_user_id_title">Özel kullanıcı kimliğiniz</string>
   <string name="morphe_dearrow_private_user_id_summary">SponsorBlock ile aynı kullanıcı kimliği. Bu gizli tutulmalıdır. Bu bir şifreye benzer ve hiç kimseyle paylaşılmamalıdır. Eğer birinin eline geçerse, sizi taklit edebilirler</string>
   <string name="morphe_dearrow_private_user_id_invalid">Özel kullanıcı kimliği en az 30 karakter olmalıdır</string>
-  <string name="morphe_dearrow_account_loading">Yükleniyor...</string>
+  <string name="morphe_dearrow_account_loading">Yükleniyor…</string>
   <string name="morphe_dearrow_account_connection_failure">Hesap ayrıntıları geçici olarak kullanılamıyor</string>
   <string name="morphe_dearrow_account_username">Kullanıcı adınız: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_dearrow_account_username_change">Kullanıcı adınızı değiştirmek için buraya dokunun. Kullanıcı adı SponsorBlock ile aynıdır</string>
@@ -1593,6 +1595,16 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <string name="morphe_disable_haptic_feedback_zoom_title">Yakınlaştırma titreşimini devre dışı bırak</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Yakın zamanda hesap giriş bilgilerinizi değiştirdiyseniz MicroG\'yi kaldırıp yeniden yükleyin</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Anlık bildirimleri kaydet</string>
+  <string name="morphe_debug_save_push_notifications_summary">Alınan anlık bildirimleri uygulama verilerindeki bir dosyaya kaydeder. Dosya; bildirim metinleri ve kanal adları gibi özel bilgiler içerebilir</string>
+  <string name="morphe_debug_saved_push_notifications_title">Kaydedilen anlık bildirimleri dışa aktar</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Kaydedilen anlık bildirimleri dışa aktarın veya temizleyin</string>
+  <string name="morphe_debug_saved_push_notifications_count">Kaydedilen anlık bildirimler: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Kaydedilmiş anlık bildirim bulunamadı</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Anlık bildirimler başarıyla dışa aktarıldı</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Anlık bildirimler dışa aktarılamadı</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Kaydedilen anlık bildirimler temizlendi</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Bağlantı yönlendirmelerini atla</string>
   <string name="morphe_bypass_link_redirects_summary">İzleme bağlantısını (youtube.com/redirect) atlayarak orijinal bağlantıyı doğrudan açar</string>
