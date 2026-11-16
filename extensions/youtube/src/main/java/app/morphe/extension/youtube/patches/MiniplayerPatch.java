@@ -273,6 +273,23 @@ public final class MiniplayerPatch {
         }
     }
 
+    /**
+     * The glass look of the minimal bar follows the glass navigation bar.
+     */
+    public static final class MiniplayerGlassAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
+            return (type == MINIMAL_BAR || type == MINIMAL_BAR_2)
+                    && Settings.NAVIGATION_BAR_GLASS.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.MINIPLAYER_TYPE, Settings.NAVIGATION_BAR_GLASS);
+        }
+    }
+
     public static final class MiniplayerMinimalBar2Availability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
@@ -441,14 +458,22 @@ public final class MiniplayerPatch {
             return original;
         }
 
-        return MINIPLAYER_ROUNDED_CORNERS_ENABLED;
+        return roundedCornersEnabled();
     }
 
     /**
      * Injection point.
      */
     public static boolean getRoundedCorners() {
-        return !MINIPLAYER_ROUNDED_CORNERS_ENABLED;
+        return !roundedCornersEnabled();
+    }
+
+    /**
+     * The glass minimal bar rounds the bar and the video itself, to the corners of the glass.
+     */
+    private static boolean roundedCornersEnabled() {
+        return MINIPLAYER_ROUNDED_CORNERS_ENABLED
+                && !(MINIMAL_BAR_SELECTED && MinimalMiniplayerPatch.isGlass());
     }
 
     /**

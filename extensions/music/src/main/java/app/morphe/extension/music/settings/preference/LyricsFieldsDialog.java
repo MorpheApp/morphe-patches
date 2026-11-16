@@ -23,6 +23,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
 /** A dialog that edits several lyrics settings together, with save and reset buttons. */
+@SuppressWarnings("unused")
 final class LyricsFieldsDialog {
 
     private final Context context;
@@ -44,17 +45,17 @@ final class LyricsFieldsDialog {
     }
 
     /** A field label, such as the format hint, in the dimmed note style the dictionaries use. */
-    void addNoteLabel(String key) {
+    void addNoteLabel() {
         TextView label = new TextView(context);
-        label.setText(str(key));
-        label.setTextColor(withAlpha(ThemeUtils.getAppForegroundColor(), 0x99));
+        label.setText(str("morphe_music_lyrics_mini_artist_timing_explanation"));
+        label.setTextColor(withAlpha(ThemeUtils.getAppForegroundColor()));
         label.setTextSize(14);
         label.setPadding(0, Dim.dp12, 0, Dim.dp8);
         content.addView(label);
     }
 
-    private static int withAlpha(int color, int alpha) {
-        return (alpha << 24) | (color & 0x00FFFFFF);
+    private static int withAlpha(int color) {
+        return (153 << 24) | (color & 0x00FFFFFF);
     }
 
     EditText addInput(String labelKey, String value, int inputType) {

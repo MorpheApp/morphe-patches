@@ -85,18 +85,15 @@ internal object FeedPostTitleSectionToStringFingerprint : Fingerprint(
  * Reddit's mapper that creates a flair element with a single flair from a GraphQL fragment.
  * The feed post mapper creates it the same way, but has no community placeholder strings.
  */
-internal fun postFlairsElementMapperFingerprint(
-    presentationModelType: String,
-    flairsElementType: String
-) = Fingerprint(
-    returnType = flairsElementType,
+internal object PostFlairsElementMapperFingerprint : Fingerprint(
+    returnType = { PostFlairsElementToStringFingerprint.originalClassDef.type },
     strings = listOf(
         "subredditName",
         "subredditId"
     ),
     filters = listOf(
         methodCall(
-            definingClass = presentationModelType,
+            definingClass = { PostFlairFeedPresentationModelToStringFingerprint.originalClassDef.type },
             name = "<init>"
         ),
         // Creates a persistent list from an array.
@@ -104,9 +101,9 @@ internal fun postFlairsElementMapperFingerprint(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("[Ljava/lang/Object;")
         ),
-        newInstance(flairsElementType),
+        newInstance(type = { PostFlairsElementToStringFingerprint.originalClassDef.type }),
         methodCall(
-            definingClass = flairsElementType,
+            definingClass = { PostFlairsElementToStringFingerprint.originalClassDef.type },
             name = "<init>"
         )
     )
@@ -168,21 +165,18 @@ internal object PostPreviewFeedElementConstructorFingerprint : Fingerprint(
 /**
  * Kotlin data class copy method with a default value bit mask.
  */
-internal fun postPreviewFeedElementCopyFingerprint(
-    postPreviewFeedElementType: String,
-    flairsElementType: String
-) = Fingerprint(
-    definingClass = postPreviewFeedElementType,
+internal object PostPreviewFeedElementCopyFingerprint : Fingerprint(
+    definingClass = { PostPreviewFeedElementToStringFingerprint.originalClassDef.type },
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = postPreviewFeedElementType,
+    returnType = { PostPreviewFeedElementToStringFingerprint.originalClassDef.type },
     filters = listOf(
         // Flairs element default value bit.
         opcode(Opcode.AND_INT_LIT16),
         opcode(Opcode.IF_EQZ, MatchAfterImmediately()),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            definingClass = postPreviewFeedElementType,
-            type = flairsElementType,
+            definingClass = { PostPreviewFeedElementToStringFingerprint.originalClassDef.type },
+            type = { PostFlairsElementToStringFingerprint.originalClassDef.type },
             location = MatchAfterImmediately()
         )
     )
@@ -243,13 +237,20 @@ internal object FeedPostSectionMapperFingerprint : Fingerprint(
 
 /**
  * Selects the feed posts that Reddit loads in full after a feed page is shown.
- * Post previews are never selected.
+ * Post previews are never selected. The last check is for the post preview class,
+ * or since 2026.46.0 for an obfuscated interface of all post preview classes.
  */
 internal object PostsToLoadFingerprint : Fingerprint(
     returnType = "Ljava/util/ArrayList;",
     parameters = listOf("Ljava/util/List;"),
     filters = listOf(
-        instanceOf(type = { PostPreviewFeedElementToStringFingerprint.classDef }),
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            smali = "Lcom/reddit/common/ThingType;->POST:Lcom/reddit/common/ThingType;"
+        ),
+        // Branch of the check before the post preview check.
+        opcode(Opcode.IF_NEZ),
+        opcode(Opcode.INSTANCE_OF, MatchAfterImmediately()),
         opcode(Opcode.IF_NEZ, MatchAfterImmediately())
     )
 )

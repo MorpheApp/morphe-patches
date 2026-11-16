@@ -67,7 +67,6 @@ private fun addForceAnimationsMethod(name: String, type: String, smali: String) 
     )
 }
 
-@Suppress("unused")
 val forceAnimationsPatch = patch(
     name = "Force animations",
     description = "Adds an option to always turn on or off the app animations " +
@@ -123,7 +122,7 @@ val forceAnimationsPatch = patch(
             }
         }
 
-        // The server can set the page animation type of a navigation command to none,
+        // The server can set the page animation type of navigation command to none,
         // and then the page transition is not animated even when the decision above is on.
         // When the animations are always on, the default animation is used instead.
         val pageAnimationTypeMethodName = "patch_getPageAnimationType"

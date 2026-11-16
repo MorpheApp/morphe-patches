@@ -57,7 +57,6 @@ private lateinit var videoTimeRegisters: String
 private lateinit var seekSourceEnumType: String
 private lateinit var seekSourceMethodName: String
 
-@Suppress("unused")
 val musicVideoInformationPatch = patch(
     description = "Hooks video ID, video time, and seekTo for YouTube Music."
 ) {

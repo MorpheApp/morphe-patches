@@ -36,6 +36,7 @@ final class NativeCaptionPair {
             for (Object item : source.patch_getOriginalCaptions(time)) {
                 if (!(item instanceof StableCaptionBlocks.Cue cue) || !cue.patch_isCaptionVisible()) continue;
                 CharSequence text = cue.patch_getOriginalCaptionVisible();
+                //noinspection SizeReplaceableByIsEmpty
                 if (text == null || text.length() == 0) continue;
                 int language = tracks.first() == null ? 0 : 1;
                 Object copy = cue.patch_copyBlockFrame(

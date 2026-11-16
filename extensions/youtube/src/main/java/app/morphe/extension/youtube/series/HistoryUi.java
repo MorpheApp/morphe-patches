@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -19,6 +20,9 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -26,10 +30,13 @@ import android.view.WindowInsets;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.window.OnBackInvokedCallback;
+import android.window.OnBackInvokedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import java.lang.ref.WeakReference;
+import java.util.UUID;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -39,6 +46,7 @@ import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 /** Switches between the complete native History page and the compact Series page. */
 @SuppressLint("ViewConstructor")
+@SuppressWarnings("unused")
 public final class HistoryUi extends LinearLayout {
     private static WeakReference<HistoryUi> current = new WeakReference<>(null);
     private static long openSeriesUntil;
@@ -91,7 +99,7 @@ public final class HistoryUi extends LinearLayout {
 
     static Drawable ripple(boolean pill) {
         return new RippleDrawable(
-                android.content.res.ColorStateList.valueOf(dark() ? 0x33ffffff : 0x22000000),
+                ColorStateList.valueOf(dark() ? 0x33ffffff : 0x22000000),
                 pill ? rounded(control(), 24) : null,
                 rounded(Color.WHITE, pill ? 24 : 4));
     }
@@ -128,13 +136,13 @@ public final class HistoryUi extends LinearLayout {
     }
 
     private static void navigate(Context c) {
-        openSeriesUntil = android.os.SystemClock.uptimeMillis() + 15000;
+        openSeriesUntil = SystemClock.uptimeMillis() + 15000;
         // YouTube deduplicates repeated History intents even after leaving the page.
         // A local fragment distinguishes requests without changing the History endpoint.
         Uri destination =
                 Uri.parse("https://www.youtube.com/feed/history")
                         .buildUpon()
-                        .fragment("series-tracker-" + java.util.UUID.randomUUID())
+                        .fragment("series-tracker-" + UUID.randomUUID())
                         .build();
         try {
             c.startActivity(
@@ -183,7 +191,7 @@ public final class HistoryUi extends LinearLayout {
                     select(true);
                 });
         // Opened by a Series action, or as the page of the Series navigation button.
-        boolean seriesPage = android.os.SystemClock.uptimeMillis() < openSeriesUntil
+        boolean seriesPage = SystemClock.uptimeMillis() < openSeriesUntil
                 || NavigationButton.getSelectedNavigationButton() == NavigationButton.SERIES;
         setSeriesOnly(seriesPage);
         select(seriesPage);
@@ -222,7 +230,7 @@ public final class HistoryUi extends LinearLayout {
         t.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
         t.setBackground(
                 new RippleDrawable(
-                        android.content.res.ColorStateList.valueOf(0x227f7f7f),
+                        ColorStateList.valueOf(0x227f7f7f),
                         null,
                         rounded(Color.WHITE, 22)));
         t.setPaddingRelative(dp(38), dp(10), dp(12), dp(10));
@@ -292,8 +300,8 @@ public final class HistoryUi extends LinearLayout {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private static final class BackRegistration {
         final HistoryUi view;
-        android.window.OnBackInvokedDispatcher dispatcher;
-        final android.window.OnBackInvokedCallback callback;
+        OnBackInvokedDispatcher dispatcher;
+        final OnBackInvokedCallback callback;
 
         // Falls back to the default Activity back handling when the Series page does not consume it.
         @SuppressWarnings("deprecation")
@@ -310,14 +318,14 @@ public final class HistoryUi extends LinearLayout {
         }
 
         void update(boolean enabled) {
-            android.window.OnBackInvokedDispatcher next =
+            OnBackInvokedDispatcher next =
                     enabled ? view.findOnBackInvokedDispatcher() : null;
             if (next == dispatcher) return;
             release();
             if (next != null) {
                 dispatcher = next;
                 next.registerOnBackInvokedCallback(
-                        android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT, callback);
+                        OnBackInvokedDispatcher.PRIORITY_DEFAULT, callback);
             }
         }
 
@@ -330,7 +338,7 @@ public final class HistoryUi extends LinearLayout {
     }
 
     @Override
-    protected android.os.Parcelable onSaveInstanceState() {
+    protected Parcelable onSaveInstanceState() {
         Saved saved = new Saved(super.onSaveInstanceState());
         saved.series = series;
         saved.seriesOnly = seriesOnly;
@@ -344,7 +352,7 @@ public final class HistoryUi extends LinearLayout {
     }
 
     @Override
-    protected void onRestoreInstanceState(android.os.Parcelable state) {
+    protected void onRestoreInstanceState(Parcelable state) {
         if (!(state instanceof Saved saved)) {
             super.onRestoreInstanceState(state);
             return;
@@ -364,11 +372,11 @@ public final class HistoryUi extends LinearLayout {
         String selected = "", query = "";
         int page, scroll;
 
-        Saved(android.os.Parcelable parent) {
+        Saved(Parcelable parent) {
             super(parent);
         }
 
-        Saved(android.os.Parcel in) {
+        Saved(Parcel in) {
             super(in);
             series = in.readInt() != 0;
             selected = in.readString();
@@ -379,7 +387,7 @@ public final class HistoryUi extends LinearLayout {
         }
 
         @Override
-        public void writeToParcel(android.os.Parcel out, int flags) {
+        public void writeToParcel(Parcel out, int flags) {
             super.writeToParcel(out, flags);
             out.writeInt(series ? 1 : 0);
             out.writeString(selected);
@@ -389,9 +397,9 @@ public final class HistoryUi extends LinearLayout {
             out.writeInt(seriesOnly ? 1 : 0);
         }
 
-        public static final android.os.Parcelable.Creator<Saved> CREATOR =
-                new android.os.Parcelable.Creator<>() {
-                    public Saved createFromParcel(android.os.Parcel in) {
+        public static final Parcelable.Creator<Saved> CREATOR =
+                new Parcelable.Creator<>() {
+                    public Saved createFromParcel(Parcel in) {
                         return new Saved(in);
                     }
 
@@ -414,6 +422,7 @@ public final class HistoryUi extends LinearLayout {
         if (!onBack()) activity.onBackPressed();
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean onBack() {
         if (!SeriesTrackerPatch.ENABLED) return false;
         if (!pageExposed()) return false;

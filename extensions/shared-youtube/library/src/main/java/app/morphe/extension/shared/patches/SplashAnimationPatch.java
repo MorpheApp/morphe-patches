@@ -127,6 +127,7 @@ public class SplashAnimationPatch {
     /**
      * If the app plays the Rive animations, which YouTube 21.30+ does.
      */
+    @SuppressWarnings("SameReturnValue")
     private static boolean isRiveIncluded() {
         return false; // Modified during patching.
     }

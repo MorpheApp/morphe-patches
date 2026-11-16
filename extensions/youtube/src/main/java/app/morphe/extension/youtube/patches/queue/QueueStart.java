@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** One immutable start or restore request, separate from an attached native queue. */
 record QueueStart(PlaylistQueue candidate, String previousVideoId, long resumePositionMilliseconds) {
@@ -32,7 +33,7 @@ record QueueStart(PlaylistQueue candidate, String previousVideoId, long resumePo
     }
 
     boolean isSupersededBy(String videoId) {
-        return PlaylistQueue.isVideoId(videoId) && !videoId.equals(previousVideoId)
+        return VideoInformation.isVideoId(videoId) && !videoId.equals(previousVideoId)
                 && !videoId.equals(candidate.currentEntry().videoId());
     }
 

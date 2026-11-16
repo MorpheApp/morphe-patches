@@ -15,6 +15,7 @@ import org.json.JSONObject;
 /**
  * OAuth2 activation code data.
  */
+@SuppressWarnings("unused")
 public class ActivationCodeData {
     /**
      * Used in requests for refresh token.

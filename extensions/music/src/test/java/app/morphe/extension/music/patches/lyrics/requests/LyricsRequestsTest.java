@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.requests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -75,8 +76,9 @@ public class LyricsRequestsTest {
         List<LyricsLine> lines = List.of(
                 new LyricsLine(1000, 2000, "Hello", List.of()));
         List<LyricsLine> adjusted = LyricsRequests.applyOffset(lines, 0);
-        // Zero offset returns the same list
+        // Zero offset returns a copy with the same content, not the same list reference.
         assertEquals(lines, adjusted);
+        assertNotSame(lines, adjusted);
     }
 
     @Test

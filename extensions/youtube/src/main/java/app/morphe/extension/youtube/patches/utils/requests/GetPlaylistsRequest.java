@@ -38,14 +38,14 @@ public class GetPlaylistsRequest {
     public static final Map<String, GetPlaylistsRequest> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(50));
 
-    private final Future<Pair<String, String>[]> future;
+    private final Future<List<Pair<String, String>>> future;
 
     private GetPlaylistsRequest(String playlistId, Map<String, String> requestHeader) {
         this.future = Utils.submitOnBackgroundThread(() -> fetch(playlistId, requestHeader));
     }
 
     @Nullable
-    public Pair<String, String>[] getPlaylists() {
+    public List<Pair<String, String>> getPlaylists() {
         try {
             Logger.printExceptionIfDebug(() -> !future.isDone() && Utils.isCurrentlyOnMainThread()
                     ? "Debug: Blocking main thread"
@@ -108,8 +108,7 @@ public class GetPlaylistsRequest {
     }
 
     @Nullable
-    @SuppressWarnings("unchecked")
-    private static Pair<String, String>[] parseResponse(JSONObject json) {
+    private static List<Pair<String, String>> parseResponse(JSONObject json) {
         try {
             Object addToPlaylistRendererElement = json.getJSONArray("contents").get(0);
             if (addToPlaylistRendererElement instanceof JSONObject addToPlaylistRendererObj) {
@@ -134,7 +133,7 @@ public class GetPlaylistsRequest {
                 }
 
                 if (!playlists.isEmpty()) {
-                    return playlists.toArray(new Pair[0]);
+                    return playlists;
                 }
             }
         } catch (JSONException e) {
@@ -144,7 +143,7 @@ public class GetPlaylistsRequest {
     }
 
     @Nullable
-    private static Pair<String, String>[] fetch(String playlistId, Map<String, String> requestHeader) {
+    private static List<Pair<String, String>> fetch(String playlistId, Map<String, String> requestHeader) {
         JSONObject json = sendRequest(playlistId, requestHeader);
         if (json != null) {
             return parseResponse(json);

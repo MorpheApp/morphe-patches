@@ -79,7 +79,7 @@ internal fun installQueueFlyout() {
     }
 
     val menu = mutableClassDefBy(menuType)
-    menu.interfaces.add("${ACTIONS.removeSuffix(";")}\$Menu;")
+    menu.interfaces.add($$"$${ACTIONS.removeSuffix(";")}$Menu;")
     menu.addBridgeMethod(
         "patch_parseQueueFlyout",
         listOf("[B"),

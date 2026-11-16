@@ -92,7 +92,7 @@ public final class MarkWatchedRequest {
     @Nullable
     private static String getBaseUrl(JSONObject playbackTracking, String key) {
         JSONObject url = playbackTracking.optJSONObject(key);
-        return url == null ? null : url.optString("baseUrl", null);
+        return url == null || !url.has("baseUrl") ? null : url.optString("baseUrl");
     }
 
     /**

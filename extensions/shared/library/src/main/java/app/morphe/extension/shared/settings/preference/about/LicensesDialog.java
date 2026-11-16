@@ -4,6 +4,7 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -106,15 +107,16 @@ class LicensesDialog extends AboutWebViewDialog {
         }
 
         @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url != null && url.startsWith(LICENSE_ROUTE_PREFIX)) {
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            final String url = request.getUrl().toString();
+            if (url.startsWith(LICENSE_ROUTE_PREFIX)) {
                 License license = licenseForRoute(url);
                 if (license != null) {
                     new LicenseTextDialog(context, license.staticContent()).show();
                     return true;
                 }
             }
-            return super.shouldOverrideUrlLoading(view, url);
+            return super.shouldOverrideUrlLoading(view, request);
         }
     }
 

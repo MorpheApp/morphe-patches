@@ -8,11 +8,14 @@
 package app.morphe.extension.youtube.series;
 
 import android.app.Activity;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Future;
 import java.util.function.Consumer;
@@ -65,7 +68,7 @@ final class PlaylistDiscoverySheet {
                         .discover(
                                 video,
                                 this::results,
-                                ignored -> results(java.util.Collections.emptyList()));
+                                ignored -> results(Collections.emptyList()));
     }
 
     private boolean inactive() {
@@ -106,7 +109,7 @@ final class PlaylistDiscoverySheet {
         sheet.body.removeAllViews();
         for (PlaylistDiscovery.Match match : matches) {
             LinearLayout row = new LinearLayout(activity);
-            row.setGravity(android.view.Gravity.CENTER_VERTICAL);
+            row.setGravity(Gravity.CENTER_VERTICAL);
             row.setPadding(0, HistoryUi.dp(8), 0, HistoryUi.dp(8));
             row.setBackground(HistoryUi.ripple(false));
             row.setFocusable(true);
@@ -127,7 +130,7 @@ final class PlaylistDiscoverySheet {
                     View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
             TextView title = NativeSheet.text(activity, match.title, 16);
             title.setMaxLines(2);
-            title.setEllipsize(android.text.TextUtils.TruncateAt.END);
+            title.setEllipsize(TextUtils.TruncateAt.END);
             labels.addView(title);
             if (!match.owner.isEmpty()) {
                 TextView owner = NativeSheet.text(activity, match.owner, 12);

@@ -43,6 +43,7 @@ import app.morphe.extension.shared.spoof.js.nsigsolver.provider.JsChallengeReque
 import app.morphe.extension.shared.spoof.js.nsigsolver.provider.JsChallengeResponse;
 import app.morphe.extension.shared.spoof.js.nsigsolver.provider.JsChallengeType;
 
+@SuppressWarnings("unused")
 public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
     protected static final String CACHE_SECTION = "challenge-solver";
     protected static final String SCRIPT_VERSION = "0.0.1";
@@ -172,7 +173,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
                     } else {
                         responses.add(new JsChallengeProviderResponse(
                                 request,
-                                new JsChallengeResponse(request.getType(), new ChallengeOutput(responseData.getData()))
+                                new JsChallengeResponse(request.type(), new ChallengeOutput(responseData.getData()))
                         ));
                     }
                 }
@@ -199,6 +200,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         return new File(Utils.getContext().getCacheDir(), PREPROCESSED_PLAYER_PREFIX + playerHash + ".js");
     }
 
+    @SuppressWarnings("ReadWriteStringCanBeUsed")
     @Nullable
     private String readPreprocessedPlayer(String playerHash) {
         if (!legacyPlayerCacheRemoved) {
@@ -222,6 +224,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         }
     }
 
+    @SuppressWarnings("ReadWriteStringCanBeUsed")
     private static void savePreprocessedPlayer(String playerHash, String player) {
         File file = getPreprocessedPlayerFile(playerHash);
         // A partly written file would be loaded as broken JavaScript, so write it fully before renaming.
@@ -233,24 +236,25 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
             }
         } catch (IOException ex) {
             Logger.printException(() -> "Failed to save preprocessed player", ex);
-            //noinspection ResultOfMethodCallIgnored
-            temp.delete();
+            Utils.deleteQuietly(temp);
             return;
         }
 
-        File[] files = file.getParentFile().listFiles((dir, name) ->
+        File directory = file.getParentFile();
+        if (directory == null) {
+            return;
+        }
+        File[] files = directory.listFiles((dir, name) ->
                 name.startsWith(PREPROCESSED_PLAYER_PREFIX) && !name.equals(file.getName()));
         if (files != null) {
             for (File old : files) {
-                //noinspection ResultOfMethodCallIgnored
-                old.delete();
+                Utils.deleteQuietly(old);
             }
         }
     }
 
     protected static void clearPreprocessedPlayer(String playerHash) {
-        //noinspection ResultOfMethodCallIgnored
-        getPreprocessedPlayerFile(playerHash).delete();
+        Utils.deleteQuietly(getPreprocessedPlayerFile(playerHash));
     }
 
     protected String getPlayerJSHash() {
@@ -298,8 +302,8 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         List<Map<String, Object>> jsonRequests = new ArrayList<>(requests.size());
         for (JsChallengeRequest request : requests) {
             Map<String, Object> reqMap = new HashMap<>();
-            reqMap.put("type", request.getType().getValue());
-            reqMap.put("challenges", request.getInput().getChallenges());
+            reqMap.put("type", request.type().getValue());
+            reqMap.put("challenges", request.input().challenges());
             jsonRequests.add(reqMap);
         }
 
@@ -385,10 +389,10 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
 
             return new Script(
                     scriptType,
-                    ScriptVariant.fromString(data.getVariant()),
+                    ScriptVariant.fromString(data.variant()),
                     ScriptSource.CACHE,
-                    data.getVersion() != null ? data.getVersion() : "unknown",
-                    data.getCode()
+                    data.version() != null ? data.version() : "unknown",
+                    data.code()
             );
         } catch (CacheError e) {
             return null;

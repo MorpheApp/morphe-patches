@@ -1,5 +1,3 @@
-@file:Suppress("SpellCheckingInspection")
-
 package app.morphe.patches.youtube.interaction.playall
 
 import app.morphe.patcher.patch.patch
@@ -37,7 +35,6 @@ private val playAllButtonResourcePatch = patch {
 
 private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/PlayAllButton;"
 
-@Suppress("unused")
 val playAllButtonPatch = patch(
     name = "Play all",
     description = "Adds an option to play all the videos from a channel and to display play all button in the video player.",

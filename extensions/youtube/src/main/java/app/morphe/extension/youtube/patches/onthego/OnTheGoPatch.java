@@ -73,8 +73,10 @@ public final class OnTheGoPatch {
      * and notification have seek back and seek forward buttons.
      */
     public interface OnTheGoState {
-        // Method is added during patching.
+        // Methods are added during patching.
         void patch_setOnTheGoActive(boolean active);
+
+        boolean patch_isOnTheGoActive();
     }
 
     /**
@@ -99,6 +101,7 @@ public final class OnTheGoPatch {
     @Nullable
     private static volatile SeekLength seekLength;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -106,14 +109,14 @@ public final class OnTheGoPatch {
     /**
      * Injection point.
      */
-    public static void setOnTheGoState(OnTheGoState state) {
+    public static void setOnTheGoState(@Nullable OnTheGoState state) {
         onTheGoState = state;
     }
 
     /**
      * Injection point.
      */
-    public static void setSeekLength(SeekLength length) {
+    public static void setSeekLength(@Nullable SeekLength length) {
         seekLength = length;
     }
 
@@ -136,9 +139,29 @@ public final class OnTheGoPatch {
     }
 
     /**
+     * If the On-the-go panel of Morphe is open.
+     */
+    private static volatile boolean onTheGoActive;
+
+    /**
+     * The On-the-go state of the app is also active while the On-the-go panel of the app is open,
+     * which Premium accounts open from the On-the-go item of the video player menu.
+     *
+     * @return If an On-the-go panel is open.
+     */
+    public static boolean isOnTheGoActive() {
+        if (onTheGoActive) {
+            return true;
+        }
+        OnTheGoState state = onTheGoState;
+        return state != null && state.patch_isOnTheGoActive();
+    }
+
+    /**
      * Turns the On-the-go media controls of the app on or off.
      */
     static void setOnTheGoActive(boolean active) {
+        onTheGoActive = active;
         OnTheGoState state = onTheGoState;
         if (state != null) {
             Logger.printDebug(() -> "Setting On-the-go media controls active: " + active);
@@ -248,7 +271,7 @@ public final class OnTheGoPatch {
 
         final int paramsLength = bytes[paramsTagIndex + 1];
         final int end = paramsTagIndex + 2 + paramsLength;
-        if (paramsLength <= 0 || paramsLength > MAX_SINGLE_BYTE_LENGTH || end > bytes.length) {
+        if (paramsLength <= 0 || end > bytes.length) {
             return null;
         }
 

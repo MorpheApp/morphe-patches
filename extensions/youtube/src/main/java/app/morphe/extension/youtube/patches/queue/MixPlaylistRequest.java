@@ -21,6 +21,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.requests.PlaylistRoutes;
 
 /** Fetch the initial, finite batch of a dynamic Mix, without fetching player streams. */
@@ -82,7 +83,7 @@ final class MixPlaylistRequest {
                 continue;
             }
             String id = video.optString("videoId");
-            if (!PlaylistQueue.isVideoId(id)) {
+            if (!VideoInformation.isVideoId(id)) {
                 return null;
             }
             String channel = VideoMetadata.text(video.optJSONObject("longBylineText"));

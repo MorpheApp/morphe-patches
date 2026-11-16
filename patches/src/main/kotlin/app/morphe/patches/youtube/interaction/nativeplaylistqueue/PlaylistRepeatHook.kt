@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -56,40 +57,33 @@ internal fun installPlaylistRepeat(
     val restoreShuffleListener = if (is_21_20_or_greater) {
         val listener = playlistShuffleListenerFingerprint(binding.originalMethod, shuffleView)
             .instructionMatches[2].fieldReference
-        """
-            iget-object v1, p0, $listener
-            invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View${'$'}OnClickListener;)V
+        $$"""
+            iget-object v1, p0, $$listener
+            invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
         """
     } else ""
 
-    header.interfaces.add(REPEAT_HEADER_INTERFACE)
-    header.addBridgeMethod(
+    header.addPatchInterface(
+        REPEAT_HEADER_INTERFACE,
         "patch_getNavigator",
-        emptyList(),
-        "Ljava/lang/Object;",
-        1,
         """
             iget-object v0, p0, $navigator
             return-object v0
         """
     )
 
-    header.addBridgeMethod(
+    header.addPatchInterface(
+        REPEAT_HEADER_INTERFACE,
         "patch_getPanel",
-        emptyList(),
-        "Ljava/lang/Object;",
-        1,
         """
             iget-object v0, p0, $panel
             return-object v0
         """
     )
 
-    header.addBridgeMethod(
+    header.addPatchInterface(
+        REPEAT_HEADER_INTERFACE,
         "patch_enableRepeat",
-        emptyList(),
-        "V",
-        2,
         """
             const/4 v0, 0x1
             iput-boolean v0, p0, $repeatAll
@@ -101,11 +95,9 @@ internal fun installPlaylistRepeat(
     )
 
     // Reuse the native selected/loop-one drawable state after an owned panel bind.
-    header.addBridgeMethod(
+    header.addPatchInterface(
+        REPEAT_HEADER_INTERFACE,
         "patch_setRepeatMode",
-        listOf("I"),
-        "V",
-        1,
         """
             const/4 v0, 0x0
             invoke-virtual {p0, p1, v0}, $renderState
@@ -113,11 +105,9 @@ internal fun installPlaylistRepeat(
         """
     )
 
-    header.addBridgeMethod(
+    header.addPatchInterface(
+        REPEAT_HEADER_INTERFACE,
         "patch_setShuffleAvailable",
-        listOf("Z"),
-        "V",
-        2,
         """
             iget-object v0, p0, $shuffleView
             invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setEnabled(Z)V

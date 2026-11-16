@@ -24,12 +24,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
@@ -50,7 +54,7 @@ public final class LyricsRequests {
 
     public static final String SIMPLIFIED_CHINESE = "zh-Hans";
     /**
-     * For the endpoints that turn away an unrecognised client. Providers that answer only
+     * For the endpoints that turn away an unrecognized client. Providers that answer only
      * to a mobile agent keep one of their own.
      */
     public static final String CHROME_DESKTOP_USER_AGENT =
@@ -66,7 +70,7 @@ public final class LyricsRequests {
     private static final int READ_TIMEOUT_MILLISECONDS = 5 * 1000;
     private static volatile boolean customMatchMode;
     private static volatile String decorationRegexSource;
-    private static volatile java.util.regex.Pattern decorationPattern;
+    private static volatile Pattern decorationPattern;
 
     private LyricsRequests() {
     }
@@ -88,7 +92,6 @@ public final class LyricsRequests {
     public static String deviceLanguage() {
         Locale locale = Requester.getAppLocale();
         String lang = locale.getLanguage().toLowerCase(Locale.ROOT);
-        // Normalize legacy Android ISO-639 language codes
         switch (lang) {
             case "iw":
                 return "he";
@@ -192,7 +195,7 @@ public final class LyricsRequests {
         }
         final Locale device = Requester.getAppLocale();
         final String script = device.getScript();
-        if (script != null && !script.isEmpty()) {
+        if (!script.isEmpty()) {
             return script;
         }
         final String country = chineseScriptOfRegion(device.getCountry());
@@ -206,7 +209,7 @@ public final class LyricsRequests {
     }
 
     @NonNull
-    private static String declaredScript(@Nullable String language) {
+    static String declaredScript(@Nullable String language) {
         if (language == null) {
             return "";
         }
@@ -220,7 +223,7 @@ public final class LyricsRequests {
         return "";
     }
 
-    private static boolean isScriptSpelling(String part) {
+    static boolean isScriptSpelling(String part) {
         for (int i = 0; i < part.length(); i++) {
             if (!Character.isLetter(part.charAt(i))) {
                 return false;
@@ -230,7 +233,7 @@ public final class LyricsRequests {
     }
 
     @NonNull
-    private static String regionSubtag(@Nullable String language) {
+    static String regionSubtag(@Nullable String language) {
         if (language == null) {
             return "";
         }
@@ -247,7 +250,7 @@ public final class LyricsRequests {
     }
 
     @NonNull
-    private static String chineseScriptOfRegion(@Nullable String region) {
+    static String chineseScriptOfRegion(@Nullable String region) {
         if (region == null) {
             return "";
         }
@@ -274,8 +277,19 @@ public final class LyricsRequests {
     }
 
     public static List<LyricsLine> applyOffset(List<LyricsLine> lines, long offsetMs) {
-        if (lines == null || lines.isEmpty() || offsetMs == 0L) {
-            return lines;
+        if (lines == null) {
+            return null;
+        }
+        if (lines.isEmpty()) {
+            return List.of();
+        }
+        // Always return a new list so the caller never shares a mutable reference with the input.
+        if (offsetMs == 0L) {
+            List<LyricsLine> copy = new ArrayList<>(lines.size());
+            for (LyricsLine line : lines) {
+                copy.add(line);
+            }
+            return copy;
         }
         List<LyricsLine> adjusted = new ArrayList<>(lines.size());
         for (LyricsLine line : lines) {
@@ -303,7 +317,7 @@ public final class LyricsRequests {
      * User-Agent header, and rate limits requests that do not.
      */
     static HttpURLConnection openConnection(String url) throws IOException {
-        // A cancelled lookup may still be finishing one blocking request.
+        // A canceled lookup may still be finishing one blocking request.
         if (Thread.currentThread().isInterrupted()) {
             throw new InterruptedIOException("Lyrics lookup cancelled");
         }
@@ -320,7 +334,7 @@ public final class LyricsRequests {
      */
     static HttpURLConnection openConnection(String url,
                                             Map<String, String> headers) throws IOException {
-        // A cancelled lookup may still be finishing one blocking request.
+        // A canceled lookup may still be finishing one blocking request.
         if (Thread.currentThread().isInterrupted()) {
             throw new InterruptedIOException("Lyrics lookup cancelled");
         }
@@ -366,7 +380,7 @@ public final class LyricsRequests {
 
     private static HttpURLConnection postConnection(String url, String body, String contentType,
                                                     Map<String, String> headers) throws IOException {
-        // A cancelled lookup may still be finishing one blocking request.
+        // A canceled lookup may still be finishing one blocking request.
         if (Thread.currentThread().isInterrupted()) {
             throw new InterruptedIOException("Lyrics lookup cancelled");
         }
@@ -518,7 +532,7 @@ public final class LyricsRequests {
         if (s.isEmpty()) {
             return "";
         }
-        s = java.text.Normalizer.normalize(s, java.text.Normalizer.Form.NFKC);
+        s = Normalizer.normalize(s, Normalizer.Form.NFKC);
         s = s.toLowerCase(Locale.ROOT);
         // Providers spell metadata Traditional or Simplified, so both are compared. ICU does
         // not map 妳 to 你, so that observed title variant is folded explicitly.
@@ -529,15 +543,15 @@ public final class LyricsRequests {
         return s;
     }
 
-    private static String stripDecorations(String s) {
+    static String stripDecorations(String s) {
         String regex = LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.get();
         if (regex.trim().isEmpty()) {
             return s;
         }
-        java.util.regex.Pattern pattern = decorationPattern;
+        Pattern pattern = decorationPattern;
         if (pattern == null || !regex.equals(decorationRegexSource)) {
             try {
-                pattern = java.util.regex.Pattern.compile(regex);
+                pattern = Pattern.compile(regex);
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Invalid lyrics decoration regex", ex);
                 return s;
@@ -548,7 +562,7 @@ public final class LyricsRequests {
         return pattern.matcher(s).replaceAll("");
     }
 
-    private static String foldPunctuation(String s) {
+    static String foldPunctuation(String s) {
         final StringBuilder sb = new StringBuilder(s.length());
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
@@ -581,7 +595,7 @@ public final class LyricsRequests {
         return false;
     }
 
-    private static boolean splitArtistHits(String candidateArtist, String queryArtist) {
+    static boolean splitArtistHits(String candidateArtist, String queryArtist) {
         final String[] parts = candidateArtist.split("\\s*(?:和|&|feat\\.?|ft\\.?|,|/|×)\\s*");
         for (String part : parts) {
             final String p = part.trim();
@@ -605,8 +619,8 @@ public final class LyricsRequests {
     }
 
     static double jaccard(String a, String b) {
-        final java.util.Set<String> ta = tokens(a);
-        final java.util.Set<String> tb = tokens(b);
+        final Set<String> ta = tokens(a);
+        final Set<String> tb = tokens(b);
         if (ta.isEmpty() || tb.isEmpty()) {
             return 0;
         }
@@ -620,7 +634,7 @@ public final class LyricsRequests {
         return union == 0 ? 0 : (double) inter / union;
     }
 
-    private static java.util.Set<String> tokens(String s) {
+    static java.util.Set<String> tokens(String s) {
         final java.util.Set<String> out = new java.util.LinkedHashSet<>();
         final StringBuilder cur = new StringBuilder();
         for (int i = 0; i < s.length(); ) {
@@ -692,6 +706,25 @@ public final class LyricsRequests {
             return 2;
         }
         return Math.max(v.score(), 5);
+    }
+
+    /** A lyric a provider has for the video id, with the votes its users gave it. */
+    record VotedLyrics(int votes, Lyrics lyrics) {
+    }
+
+    /**
+     * Candidates found by video id, which match the track equally, so they are scored like any
+     * video id match. The best synced and then the most voted of them are kept.
+     */
+    static List<Lyrics.ScoredLyrics> videoIdCandidates(List<VotedLyrics> found) {
+        found.sort(Comparator.comparingInt((VotedLyrics v) -> syncRank(v.lyrics()))
+                .thenComparingInt(VotedLyrics::votes).reversed());
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (VotedLyrics voted : found.subList(0, Math.min(found.size(), MAX_CANDIDATES))) {
+            scored.add(new Lyrics.ScoredLyrics(VIDEO_ID_TRUST + syncRank(voted.lyrics()),
+                    voted.lyrics()));
+        }
+        return scored;
     }
 
     public static int syncRank(Lyrics lyrics) {

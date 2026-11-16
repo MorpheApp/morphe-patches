@@ -12,7 +12,6 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags

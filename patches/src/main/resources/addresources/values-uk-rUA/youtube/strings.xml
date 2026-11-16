@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключові слова, які потрібно приховати</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Введіть ключові слова та фрази для приховування, розділяючи їх новими рядками
 
-Ключовими словами може бути будь-який текст, що показується в назвах відео або назвах каналів"</string>
+Ключовими словами може бути будь-який текст, що показується в назвах відео. Ключове слово @UserName приховує весь вміст конкретних авторів"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Головна / Підписки / Пошук / Коментарі фільтруються, щоб приховати вміст, який відповідає ключовим фразам
 
 Обмеження:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Взяття ключового слова/фрази в подвійні лапки запобігатиме частковим збігам назв відео та каналів&lt;br&gt;&lt;br&gt;Наприклад,&lt;br&gt;&lt;b&gt;\"ші\"&lt;/b&gt; приховає відео: &lt;b&gt;Як працює ШІ (штучний інтелект)?&lt;/b&gt;&lt;br&gt;але не приховає: &lt;b&gt;Що означає цифра шість?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключове слово має конфліктні оголошення: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключове слово занадто коротке і потребує лапок: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключове слово приховає всі відео: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Головна: %1$s
@@ -523,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Показувати кількість лайків на мініатюрах стрічки</string>
   <string name="morphe_ryd_feed_like_ratio_title">Показувати відсоток лайків на мініатюрах стрічки</string>
+  <string name="morphe_ryd_feed_counts_position_title">Позиція лайків на мініатюрах стрічки</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Поруч із кількістю переглядів</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Посередині праворуч</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Зверху ліворуч</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Пошук у коментарях</string>
   <string name="morphe_search_comments_summary">Натисніть кнопку пошуку в коментарях, щоб показувати лише завантажені коментарі, які містять усі шукані слова. Візьміть слова в лапки, щоб шукати фразу</string>
@@ -539,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Вимкнути пропуск розділу подвійним натисканням</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Вимикає жест подвійного натискання двома пальцями для пропуску розділів, який може випадково спрацювати одним пальцем</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Завантажувати відео, подкасти або пісні за допомогою сторонніх застосунків для завантаження</string>
   <string name="morphe_external_downloader_overlay_button_title">Показувати кнопку завантаження в оверлеї плеєра</string>
   <string name="morphe_external_downloader_overlay_button_summary">Показує кнопку у відеоплеєрі, яка відкриває ваш зовнішній завантажувач</string>
@@ -555,22 +560,19 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">Показувати \"Завантаження\" в меню Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Додає пункт завантаження до меню плеєра Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Завантажити</string>
+  <string name="morphe_feed_download_flyout_button_title">Показувати \"Завантаження\" в меню відео</string>
+  <string name="morphe_feed_download_flyout_button_summary">Додає пункт завантаження до меню відео у стрічці, де його немає, наприклад, для відео, які YouTube дозволяє завантажувати лише користувачам Premium</string>
+  <string name="morphe_download_force_4k_title">Примусовий доступ до завантаження в 4Kуv-разрізній якості</string>
+  <string name="morphe_download_force_4k_summary">Дозволяє завантажувати відео в роздільній здатності 1440p та 4K, навіть якщо YouTube вважає, що цей пристрій не може їх відтворювати. Такі відео можуть відтворюватися без зображення всередині YouTube, але їх можна експортувати на ваш пристрій</string>
   <string name="morphe_export_download_folder_title">Експортувати збережені відео</string>
   <string name="morphe_export_download_folder_summary">"Експортує збережені в застосунку відео до сховища пристрою через спливне меню завантажень у застосунку. Натисніть, щоб змінити теку експорту
 
 Тека експорту: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Тека експорту</string>
-  <string name="morphe_export_download_folder_change">Змінити теку</string>
-  <string name="morphe_export_download_folder_changed">Теку експорту змінено</string>
-  <string name="morphe_export_download_folder_reset">Теку експорту скинуто</string>
-  <string name="morphe_export_download_folder_missing">Не вдалося знайти теку експорту %s</string>
-  <string name="morphe_export_download_flyout_title">Експортувати на пристрій</string>
   <string name="morphe_export_download_started">Експорт відео</string>
   <string name="morphe_export_download_progress">Експорт відео: %s%%</string>
   <string name="morphe_export_download_notification_channel">Експорт відео</string>
   <string name="morphe_export_download_saved">Відео експортовано до %s</string>
   <string name="morphe_export_download_failed">Не вдалося експортувати відео</string>
-  <string name="morphe_export_download_canceled">Експорт скасовано</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Голосовий переклад</string>
   <string name="morphe_vot_screen_summary">Зачитує субтитри відео вголос за допомогою локального синтезу мовлення, синхронізованого з відтворенням</string>
@@ -625,12 +627,12 @@ Second \"item\" text"</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Ви використали сьогоднішню квоту перекладу MyMemory (50 000 символів). Виберіть інший сервіс перекладу або спробуйте знову завтра</string>
   <string name="morphe_vot_mymemory_error">Переклад через MyMemory не вдався (статус %s)</string>
   <!-- interaction.playlist.playlistPatch -->
-  <string name="morphe_playlist_wide_drag_handles_title">Розширити маркери перетягування в плейлистах</string>
-  <string name="morphe_playlist_wide_drag_handles_summary">Маркери перетягування в плейлистах стало легше захвачувати</string>
-  <string name="morphe_playlist_hide_removal_snackbar_title">Приховати повідомлення про видалення з плейлиста</string>
-  <string name="morphe_playlist_hide_removal_snackbar_summary">Підтвердження не показується після видалення відео з плейлиста</string>
-  <string name="morphe_playlist_long_press_drag_title">Довго натискайте, щоб змінити порядок відео у плейлисті</string>
-  <string name="morphe_playlist_long_press_drag_summary">Натисніть і утримуйте відео у вашому плейлисті, щоб перетягнути його на нову позицію</string>
+  <string name="morphe_playlist_wide_drag_handles_title">Розширити маркери перетягування в списках відтворення</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">За маркери перетягування в списках відтворення легше вхопитися</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">Приховати повідомлення про видалення зі списку відтворення</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">Підтвердження не показується після видалення відео зі списку відтворення</string>
+  <string name="morphe_playlist_long_press_drag_title">Натисніть і утримуйте, щоб змінити порядок відео в списку відтворення</string>
+  <string name="morphe_playlist_long_press_drag_summary">Натисніть і утримуйте відео у вашому списку відтворення, щоб перетягнути його на нову позицію</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Увімкнути повторення відео</string>
   <string name="morphe_do_not_remember_loop_video_title">Не запам\'ятовувати повтор відео</string>
@@ -648,6 +650,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Очистити</string>
   <string name="morphe_loop_video_range_toast_on">Повтор %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Недійсний діапазон часу</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Кількість повторів</string>
+  <string name="morphe_loop_count_screen_summary">Виберіть, скільки разів відео повторюється перед наступним відео</string>
+  <string name="morphe_loop_count_title">Увімкнути кількість повторів</string>
+  <string name="morphe_loop_count_summary">У меню \"Більше\" плеєра поруч із пунктом \"Повторювати відео\" з\'являється \"Кількість повторів\", щоб вибрати, скільки разів відео відтворюється перед наступним відео</string>
+  <string name="morphe_loop_count_playlists_title">Зберігати кількість повторів у списках відтворення</string>
+  <string name="morphe_loop_count_playlists_summary">Кожне відео зі списку відтворення зберігає вибрану вами кількість повторів, а \"Повторювати відео\" вмикається, коли список відтворення знову його відтворює. Якщо вимкнено, кількість повторів стосується лише відео, що відтворюється зараз</string>
+  <string name="morphe_loop_count_clear_title">Очистити збережену кількість повторів</string>
+  <string name="morphe_loop_count_clear_summary">Забути кількість повторів, збережену у ваших списках відтворення. Збережено відео: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Збереженої кількості повторів немає</string>
+  <string name="morphe_loop_count_clear_dialog_title">Очистити збережену кількість повторів?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Відео у ваших списках відтворення забудуть свою кількість повторів, а \"Повторювати відео\" більше не вмикатиметься, коли список відтворення їх відтворює</string>
+  <string name="morphe_loop_count_clear_done">Збережену кількість повторів очищено</string>
+  <string name="morphe_loop_count_flyout_name">Кількість повторів</string>
+  <string name="morphe_loop_count_dialog_message">Скільки разів відео відтворюється перед наступним відео, від %1$s до %2$s. Залиште порожнім, щоб повторювати відео без обмежень.</string>
+  <string name="morphe_loop_count_times">Разів: %s</string>
+  <string name="morphe_loop_count_no_limit">Без обмежень</string>
+  <string name="morphe_loop_count_decrease">Менше разів</string>
+  <string name="morphe_loop_count_increase">Більше разів</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Показувати кнопку «Картинка в картинці»</string>
   <string name="morphe_pip_button_flyout_title">Показувати меню «Картинка в картинці»</string>
@@ -685,6 +706,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">Тільки Shorts для спонсорів</string>
   <string name="morphe_play_all_button_type_entry_12">Тільки прямі трансляції для спонсорів</string>
   <string name="morphe_play_all_button_not_available_toast">Не вдалося створити список відтворення через невідповідність ID каналу</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Показувати кнопку \"Список відтворення\"</string>
+  <string name="morphe_playlist_panel_button_summary">Натисніть, щоб відкрити панель списку відтворення. Показується лише під час відтворення списку відтворення</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Показувати кнопку \"Перезавантажити відео\"</string>
   <string name="morphe_dismiss_player_not_available_toast">Ідентифікатор відео недоступний. Будь ласка, вручну повторно відкрийте відео</string>
@@ -710,8 +734,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">Рідна черга</string>
   <string name="morphe_queue_type_entry_3">Черга Morphe</string>
   <string name="morphe_queue_type_entry_4">Клієнтська черга Morphe</string>
-  <string name="morphe_queue_add_flyout_menu_title">Додати пункт меню черги у висувне меню стрічки</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Додає додатковий пункт у висувне меню. Увімкніть цю опцію, якщо пункт \"Додати до черги\" не показується</string>
   <string name="morphe_local_queue_sheet_title">Черга</string>
   <string name="morphe_local_queue_open">Черга (%s)</string>
   <string name="morphe_local_queue_clear">Очистити все</string>
@@ -757,6 +779,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Відкрити чергу</string>
   <string name="morphe_queue_manager_save_queue">Зберегти чергу як список відтворення</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Показувати кнопку \"Додати в чергу\" на мініатюрах</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">На мініатюрах відео зі стрічки відображається кнопка черги. Натискання на неї додає відео в кінець черги, а довге натискання — відтворює відео наступним</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Поміняти місцями дії черги на мініатюрах</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Натискання на кнопку черги відтворює відео наступним, а довге натискання — додає відео в кінець черги</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Завантажувати сторінки черги під час прокручування</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Завантажує більше відео зі списку відтворення, коли ви прокручуєте чергу ближче до кінця</string>
   <string name="morphe_native_playlist_queue_saved">Список відтворення збережено</string>
@@ -1026,6 +1052,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Показує панель навігації як плаваючу закруглену напівпрозору капсулу. Недоступно зі стилем непрозорої панелі навігації</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Непрозорість скла</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Налаштовує рівень прозорості скляної панелі навігації (0 - прозора, 100 - непрозора)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Закруглена скляна панель навігації</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Надає скляній панелі навігації закруглені краї замість кутів, як у скляного мініплеєра</string>
   <string name="morphe_navigation_bar_glass_size_title">Розмір скляної панелі навігації</string>
   <string name="morphe_navigation_bar_glass_size_summary">Налаштуйте висоту, ширину та відступ між кнопками скляної панелі навігації з попереднім переглядом. Кнопки, які не вміщуються в ширину екрана, приховуються</string>
   <string name="morphe_navigation_bar_glass_size_height">Висота</string>
@@ -1111,8 +1139,18 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Вимкнути \"Кінематографічне освітлення\" для повноекранного режиму</string>
   <string name="morphe_enhanced_ambient_mode_title">Покращене кінематографічне освітлення</string>
   <string name="morphe_enhanced_ambient_mode_summary">Підсвічує всю сторінку перегляду та чорні смуги кольорами відео замість кінематографічного освітлення</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Інтенсивність світла</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Наскільки інтенсивне світло на сторінці перегляду та на чорних смугах</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Згладжування світла</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Час, за який світло підлаштовується під відео. При значенні 0 світло точно слідує за відео</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Розмиття світла</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Ступінь розмиття світла поруч із відео. При значенні 0 зберігаються форми відео</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Зберігати читабельність тексту</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Приглушує підсвічування на яскравих відео, щоб текст на сторінці залишався читабельним</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Приглушувати під час прокручування</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Приглушує підсвічування, поки сторінку прокручують або на неї натискають</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Тривалість приглушення</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Як довго підсвічування залишається приглушеним після припинення прокручування. За значення 0 підсвічування приглушується лише під час прокручування й повертається, щойно прокручування припиняється</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Приховати підказки</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1171,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Приховати у стрічці підписок</string>
   <string name="morphe_hide_shorts_video_description_title">Приховати в описі відео</string>
   <string name="morphe_hide_shorts_history_title">Приховати в історії переглядів</string>
+  <string name="morphe_hide_shorts_notifications_title">Приховати в push-сповіщеннях</string>
   <string name="morphe_shorts_player_screen_title">Плеєр Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Виберіть, які компоненти будуть показуватися у плеєрі Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Вимкнути подвійне натискання для вподобання</string>
@@ -1190,13 +1229,28 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Вимкнути спливаючі панелі плеєра</string>
   <string name="morphe_disable_player_popup_panels_summary">Вимикає автоматичне відкриття панелей списку відтворення та чату у прямому ефірі</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Показувати панель списку відтворення в повноекранному режимі</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Панель списку відтворення відкривається поверх повноекранного плеєра</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Панель списку відтворення виходить із повноекранного режиму на планшетах</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Вимкнути автовідтворення списку відтворення</string>
   <string name="morphe_disable_playlist_autoplay_summary">Запобігає автоматичному переходу списку відтворення до наступного відео</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Керування автовідтворенням</string>
+  <string name="morphe_autoplay_control_summary">Додає кнопку в плеєр і правило для наступного відео. Списки відтворення та черги продовжуються, Мікс зупиняється після певної кількості відео, запропоноване відео ніколи не відтворюється. Натисніть кнопку, щоб перейти до наступного режиму, натисніть і утримуйте, щоб відкрити список</string>
+  <string name="morphe_autoplay_mode_title">Режим автовідтворення</string>
+  <string name="morphe_autoplay_mode_entry_1">Авто</string>
+  <string name="morphe_autoplay_mode_entry_2">Один</string>
+  <string name="morphe_autoplay_mode_entry_3">Вимк.</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Довжина Міксу</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">У режимі \"Авто\" Мікс зупиняється після такої кількості відео. 0 = без обмежень</string>
+  <string name="morphe_autoplay_mix_length">Мікс: %s відео</string>
+  <string name="morphe_autoplay_mix_no_limit">Мікс: без обмежень</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_continue_watching_prompt_title">Запит \"Продовжити перегляд\"</string>
-  <string name="morphe_continue_watching_prompt_entry_1">Типові</string>
-  <string name="morphe_continue_watching_prompt_entry_2">Вимкнена</string>
+  <string name="morphe_continue_watching_prompt_title">Запит \"Продовжити перегляд?\"</string>
+  <string name="morphe_continue_watching_prompt_entry_1">Типово</string>
+  <string name="morphe_continue_watching_prompt_entry_2">Вимкнено</string>
   <string name="morphe_continue_watching_prompt_entry_3">Вимкнено, завжди показувати відлік автовідтворення</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Вийти з повноекранного режиму в кінці відео</string>
@@ -1268,9 +1322,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Відновити старе збереження до списку відтворення</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Вимкнути товсті іконки</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Відновити назву каналу під відеоплеєром</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Відкрити системний діалог поширення</string>
-  <string name="morphe_open_system_share_sheet_summary">Відкриває системне меню поширення замість вбудованого при поширенні контенту</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Перевизначити кнопки YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Відкриває вибраний музичний застосунок замість стандартного застосунку YouTube Music</string>
@@ -1345,9 +1396,11 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_title">Тип мініплеєра</string>
   <string name="morphe_miniplayer_hide_title_title">Приховати назву та канал</string>
   <string name="morphe_miniplayer_swipe_up_expand_title">Розгортати свайпом угору</string>
-  <string name="morphe_miniplayer_swipe_up_expand_summary">Свайп міні-плеєра вгору розгортає плеєр замість переміщення міні-плеєра до верху екрана</string>
-  <string name="morphe_miniplayer_docked_title">Закріплений міні-плеєр</string>
-  <string name="morphe_miniplayer_docked_summary">Закріплює міні-плеєр до панелі навігації та країв екрана замість того, щоб він плавав над ними</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Свайп мініплеєра вгору розгортає плеєр замість переміщення мініплеєра до верху екрана</string>
+  <string name="morphe_miniplayer_docked_title">Закріплений мініплеєр</string>
+  <string name="morphe_miniplayer_docked_summary">Закріплює мініплеєр до панелі навігації та країв екрана замість того, щоб він плавав над ними</string>
+  <string name="morphe_miniplayer_glass_title">Скляний мініплеєр</string>
+  <string name="morphe_miniplayer_glass_summary">Відображає мініплеєр як напівпрозоре скло із закругленими кутами, як скляна панель навігації. Потребує скляної панелі навігації</string>
   <string name="morphe_miniplayer_type_entry_0">Вимкнено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартний</string>
   <string name="morphe_miniplayer_type_entry_2">Мінімальний</string>
@@ -1438,7 +1491,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">Списки відтворення та рекомендації плеєра</string>
   <string name="morphe_dearrow_titles_search_title">Результати пошуку</string>
   <string name="morphe_dearrow_titles_icon_title">Показувати іконку DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Показує іконку DeArrow на краудсорсингових назвах відео</string>
+  <string name="morphe_dearrow_titles_icon_summary">Показує іконку DeArrow на назвах відео з назвою або мініатюрою, створеними спільнотою. Натисніть на іконку, щоб показати оригінальну назву та мініатюру</string>
   <string name="morphe_dearrow_casual_mode_title">Звичайний режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Показує оригінальну назву замість назви DeArrow, якщо користувачі DeArrow проголосували за оригінальну назву</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Мінімальна кількість голосів у звичайному режимі для показу оригінальної назви</string>
@@ -1464,7 +1517,63 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow тимчасово недоступний (код статусу: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow тимчасово недоступний</string>
-  <!-- misc.announcements.announcementsPatch -->
+  <string name="morphe_dearrow_vote_button_title">Показувати кнопку DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Додає кнопку у верхню частину відеоплеєра для голосування за заголовки та мініатюри DeArrow або надсилання нових</string>
+  <string name="morphe_dearrow_guidelines_title">Інструкції</string>
+  <string name="morphe_dearrow_guidelines_summary">Інструкції містять правила та поради щодо надсилання та голосування за заголовки та мініатюри</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Дотримуйтесь інструкцій</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Прочитайте інструкції DeArrow перед тим, як надсилати або голосувати за назви та мініатюри</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Вже прочитано</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Показати</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Завантаження…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Не вдалося завантажити назви та мініатюри цього відео</string>
+  <string name="morphe_dearrow_vote_titles">Назви</string>
+  <string name="morphe_dearrow_vote_thumbnails">Мініатюри</string>
+  <string name="morphe_dearrow_vote_no_titles">Назв ще немає. Надішліть назву, щоб стати першим</string>
+  <string name="morphe_dearrow_vote_original_title">Початкова назва</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Оригінальне прев\'ю</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Кадр на %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Рахунок: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Непідтверджено</string>
+  <string name="morphe_dearrow_vote_locked">Заблоковано</string>
+  <string name="morphe_dearrow_vote_upvote">Голосувати за</string>
+  <string name="morphe_dearrow_vote_downvote">Голосувати проти</string>
+  <string name="morphe_dearrow_vote_new_title">Нова назва</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Введіть назву</string>
+  <string name="morphe_dearrow_vote_submit">Надіслати</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Нове прев\'ю</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s с</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Надіслати кадр на %s як мініатюру?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Відео відтворюється. Щоб надіслати кадр, який ви бачите, спочатку поставте відео на паузу</string>
+  <string name="morphe_dearrow_vote_upvoted">Голос надіслано до DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Негативний голос надіслано до DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow не прийняв голос: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Цей запис заблоковано, і його можуть оцінити негативно лише VIP-користувачі</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Голосування за це відео все ще триває. Спробуйте ще раз за мить</string>
+  <string name="morphe_dearrow_vote_failed_code">Не вдалося надіслати голос (код статусу: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Не вдалося надіслати голос. Перевірте з\'єднання та спробуйте ще раз</string>
+  <string name="morphe_dearrow_submitting_title">Надсилання назв і мініатюр</string>
+  <string name="morphe_dearrow_vote_time_step_title">Крок регулювання часу</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Крок перемотування кнопок регулювання часу при надсиланні мініатюри (в мілісекундах)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Значення має бути додатним числом</string>
+  <string name="morphe_dearrow_private_user_id_title">Ваш особистий ID користувача</string>
+  <string name="morphe_dearrow_private_user_id_summary">Той самий ID користувача, що і в SponsorBlock. Це має бути конфіденційним. Це як пароль і він не повинен передаватися нікому. Якщо хтось отримає його, він зможе видавати себе за вас</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Особистий ID користувача повинен мати довжину не менше 30 символів</string>
+  <string name="morphe_dearrow_account_loading">Завантаження…</string>
+  <string name="morphe_dearrow_account_connection_failure">Дані облікового запису тимчасово недоступні</string>
+  <string name="morphe_dearrow_account_username">Ваше ім\'я користувача: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Натисніть тут, щоб змінити своє ім\'я користувача. Ім\'я користувача таке саме, як і в SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Ім\'я користувача успішно змінено</string>
+  <string name="morphe_dearrow_account_username_change_error">Не вдалося змінити ім\'я користувача: Статус: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles_summary">Натисніть тут для перегляду ваших заголовків</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Натисніть тут для перегляду ваших мініатюр</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Відновити старий стиль кнопок плеєра</string>
   <string name="morphe_restore_old_player_buttons_summary">Повертає жирні елементи керування відеоплеєра до старішого, тоншого стилю</string>
@@ -1482,6 +1591,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Вимкнути вібрацію при масштабуванні</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Якщо Ви нещодавно змінили дані для входу у свій обліковий запис, видаліть і повторно встановіть MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Зберігати push-сповіщення</string>
+  <string name="morphe_debug_save_push_notifications_summary">Зберігає отримані push-сповіщення у файл у даних програми. Файл може містити приватну інформацію, таку як тексти сповіщень і назви каналів</string>
+  <string name="morphe_debug_saved_push_notifications_title">Експортувати збережені push-сповіщення</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Експортувати або очистити збережені push-сповіщення</string>
+  <string name="morphe_debug_saved_push_notifications_count">Збережено push-сповіщень: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Збережених push-сповіщень не знайдено</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-сповіщення успішно експортовано</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Не вдалося експортувати push-сповіщення</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Збережені push-сповіщення очищено</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Обхід перенаправлень посилань</string>
   <string name="morphe_bypass_link_redirects_summary">Відкриває оригінальне посилання безпосередньо, оминаючи посилання відстеження (youtube.com/redirect)</string>
@@ -1504,25 +1623,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">Показувати меню \"Затримка відео\"</string>
   <string name="morphe_video_delay_dialog_input_hint">Затримка в мілісекундах</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Авто</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Запам’ятовувати якість відео</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Застосовує вибраний рівень якості до всіх наступних відео</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Сповіщення про зміну якості</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Показує сповіщення при збереженні нової типової якості</string>
-  <string name="morphe_video_quality_default_wifi_title">Типова якість відео у мережі Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Типова якість відео у мобільній мережі</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Запам’ятовувати якість Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Застосовує вибраний рівень якості до всіх наступних Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Типова якість Shorts у мережі Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Типова якість Shorts у мобільній мережі</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Змінено типову якість для мобільної мережі на: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Змінено типову якість для Wi-Fi на: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Змінено якість Shorts для мобільної мережі на: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Змінено якість Shorts для Wi-Fi на: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Показувати кнопку \"Швидкість відтворення\"</string>
   <string name="morphe_playback_speed_dialog_button_summary">Натисніть і утримуйте для скидання швидкості до типової</string>
+  <string name="morphe_playback_speed_button_cycle_title">Перемикати швидкості натисканням кнопки швидкості відтворення</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Натискання перемикає на наступну швидкість у списку. Натисніть і утримуйте, щоб відкрити меню швидкості</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Швидкості кнопки швидкості відтворення</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Швидкості, між якими перемикається натискання, по одній на рядок. Після останньої швидкості натискання повертає до першої</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Недійсний список швидкостей, скинуто до типового</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Показувати кнопку \"Якість\"</string>
   <string name="morphe_video_quality_dialog_button_summary">Натисніть і утримуйте для скидання якості до типової</string>
@@ -1614,6 +1728,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Пункт меню \"Стабілізувати гучність\" недоступний</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Відтворення може завершитися на 1 секунду раніше</string>
   <string name="morphe_spoof_video_streams_about_js">• Якщо деобфускація не вдається, відтворення може завершитися невдачею</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView вимкнено або не встановлено. Увімкніть і оновіть його, інакше відтворення може не працювати</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView застарів. Оновіть його, інакше відтворення може не працювати</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Функція \"Примусово оригінальна мова звукової доріжки\" недоступна</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Потрібен вхід в Android VR</string>
@@ -1787,6 +1904,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Коментарі Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Показувати живий чат і повтор чату як коментарі, що прокручуються по відео</string>
   <string name="morphe_niconico_comments_summary">Показує кнопку у відеоплеєрі. Натисніть, щоб показувати або приховувати коментарі, утримуйте для швидких налаштувань</string>
+  <string name="morphe_niconico_comments_pip_title">Показувати в режимі \"Картинка в картинці\"</string>
+  <string name="morphe_niconico_comments_pip_summary">Коментарі масштабуються, щоб поміститися у вікні</string>
   <string name="morphe_niconico_comments_appearance_title">Вигляд</string>
   <string name="morphe_niconico_comments_portrait_category_title">Портретна орієнтація</string>
   <string name="morphe_niconico_comments_video_types_title">Типи відео</string>

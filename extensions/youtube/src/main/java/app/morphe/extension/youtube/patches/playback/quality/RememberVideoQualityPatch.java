@@ -36,7 +36,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import j$.util.Optional;
 
-@SuppressWarnings({"rawtypes", "unused"})
+@SuppressWarnings({"unused", "GrazieStyle"})
 public class RememberVideoQualityPatch {
 
     private static final IntegerSetting videoQualityWifi = Settings.VIDEO_QUALITY_DEFAULT_WIFI;
@@ -158,6 +158,14 @@ public class RememberVideoQualityPatch {
             regularSelectedQualityResolution = resolution;
             regularSelectedQualityVideoId = videoId;
         }
+        if (VideoInformation.isLiveStream()) {
+            // A live stream buffers only a few seconds after the playback time. Clearing them makes
+            // the player buffer again from the live edge and catch up with the audio, so the video
+            // stutters. The selected quality is played once the video already buffered was played.
+            clearVideoBufferVideoId = "";
+            clearVideoBufferTimeUs = -1;
+            return;
+        }
         clearVideoBufferVideoId = videoId;
         // The playback time is read on the main thread,
         // as the player may set the video formats on another thread.
@@ -184,7 +192,7 @@ public class RememberVideoQualityPatch {
             return true;
         }
         for (Object formatId : formatIds) {
-            if (currentCodec.equals(codecs.get(formatId))) {
+            if (formatId instanceof Integer itag && currentCodec.equals(codecs.get(itag))) {
                 return true;
             }
         }
@@ -352,6 +360,7 @@ public class RememberVideoQualityPatch {
      *
      * @return If the video must not be opened, always false.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean onVideoIntentLoaded(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
         if (!regularSelectedQualityVideoId.equals(videoId)) {
             // Another video is opened. The video ID of the player is updated only once
@@ -370,6 +379,7 @@ public class RememberVideoQualityPatch {
      *
      * @return If the Short must not be opened, always false.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean onShortsIntentLoaded(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
         shortsOpened = true;
         if (!shortsSelectedQualityVideoId.equals(videoId)) {
@@ -386,7 +396,7 @@ public class RememberVideoQualityPatch {
      * If the maximum video quality available is 1080p and the default video quality is 2160p,
      * 1080p is used as an initial video quality.
      */
-    public static Optional getInitialVideoQuality(Optional optional) {
+    public static Optional<Integer> getInitialVideoQuality(Optional<Integer> optional) {
         // YouTube can reload the video after the user selects a quality, such as when
         // the selected quality needs another codec. The reload has no initial quality,
         // or a copy of the default quality used when the video started.
@@ -533,7 +543,7 @@ public class RememberVideoQualityPatch {
                     .setPowerSaveMode(false);
 
             if (!state.hasLastManualSelectedResolution()) {
-                // No quality was selected in the quality menu, so it was selected just now
+                // No quality was selected in the quality menu, so it was selected just now,
                 // and it is the quality that is playing.
                 builder.setTimeSinceLastManualFormatSelectionMs(0)
                         .setLastManualDirection(0);

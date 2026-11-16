@@ -16,7 +16,6 @@ import com.android.tools.smali.dexlib2.Opcode
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideEndScreenSuggestedVideoPatch;"
 
-@Suppress("unused")
 val hideEndScreenSuggestedVideoPatch = patch(
     name = "Hide end screen suggested video",
     description = "Adds an option to hide the suggested video at the end of videos.",

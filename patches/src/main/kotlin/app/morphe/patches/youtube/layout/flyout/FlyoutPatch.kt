@@ -16,26 +16,23 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.numberOfParameterRegisters
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_UTILS_CLASS =
     "Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils;"
@@ -62,26 +59,13 @@ val flyoutPatch = patch(
             val bufferField = it.instructionMatches.last().fieldReference
 
             mutableClassDefBy(bufferField.definingClass).apply {
-                interfaces.add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getBuffer",
-                        listOf(),
-                        "[B",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $bufferField
-                                return-object v0
-                            """
-                        )
-                    }
+                addPatchInterface(
+                    EXTENSION_PROTOCOL_BUFFER_INTERFACE,
+                    "patch_getBuffer",
+                    """
+                        iget-object v0, p0, $bufferField
+                        return-object v0
+                    """
                 )
             }
         }
@@ -103,26 +87,13 @@ val flyoutPatch = patch(
             ).instructionMatches.last().fieldReference
 
             mutableClassDefBy(messageType).apply {
-                interfaces.add(EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE)
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getVideoId",
-                        listOf(),
-                        "Ljava/lang/String;",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $videoIdStringField
-                                return-object v0
-                            """
-                        )
-                    }
+                addPatchInterface(
+                    EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE,
+                    "patch_getVideoId",
+                    """
+                        iget-object v0, p0, $videoIdStringField
+                        return-object v0
+                    """
                 )
             }
         }

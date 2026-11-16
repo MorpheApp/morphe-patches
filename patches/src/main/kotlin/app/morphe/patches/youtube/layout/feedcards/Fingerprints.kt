@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.layout.feedcards
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -67,29 +66,30 @@ internal class DividerItemOffsetsFingerprint(dividerInfoLookupMethod: MethodRefe
     )
 )
 
+
 /**
- * List item of an element, which keeps the bytes of the element.
+ * toString of the layout of a section of a list: column count, gaps between rows and columns, and margins.
+ * Not available on 21.13 and older.
  */
-internal object ElementItemConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    parameters = listOf("L"),
+internal object SectionLayoutDescriptorToStringFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
     filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            returnType = "[B"
-        ),
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            type = "[B",
-            location = MatchAfterWithin(1)
-        ),
-        opcode(Opcode.CONST_4, MatchAfterImmediately()),
-        opcode(Opcode.IPUT_OBJECT, MatchAfterImmediately()),
-        opcode(Opcode.RETURN_VOID, MatchAfterImmediately())
+        string("SectionLayoutDescriptor(columnCount=")
     )
 )
 
+/**
+ * Constructor of the layout of a section: column count, row gap, column gap, start, end, top and bottom margin
+ * (in dp), and section id.
+ */
+internal object SectionLayoutDescriptorConstructorFingerprint : Fingerprint(
+    classFingerprint = SectionLayoutDescriptorToStringFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("I", "F", "F", "F", "F", "F", "F", "I")
+)
 
 /**
  * Returns the engagement panel controller of a surface: the controller of the watch page,
@@ -115,7 +115,7 @@ internal object EngagementPanelControllerOfSurfaceFingerprint : Fingerprint(
 )
 
 /**
- * Id of the panel that the engagement panel controller shows, or null.
+ * ID of the panel that the engagement panel controller shows, or null.
  */
 internal object EngagementPanelControllerShownPanelIdFingerprint : Fingerprint(
     classFingerprint = EngagementPanelControllerFingerprint,

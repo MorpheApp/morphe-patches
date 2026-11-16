@@ -8,7 +8,6 @@ import app.morphe.patcher.xml.XmlElement
  * @param name The name of the resource.
  * @param tag The tag of the resource.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 abstract class BaseResource(
     val name: String,
     val tag: String

@@ -25,6 +25,7 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.hideAdsPatch -->
@@ -33,8 +34,12 @@ Second \"item\" text"</string>
   <!-- Empty string because custom preference handles the title itself -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <!-- video.speed.playbackSpeedPatch -->
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.playlisttags.playlistTagsPatch -->
@@ -89,5 +94,6 @@ Second \"item\" text"</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_romanize_language_none">કોઈપણ નહિ </string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">ડિફૉલ્ટ</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

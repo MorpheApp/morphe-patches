@@ -117,6 +117,7 @@ public class AlphabetRomanizerTest {
     public void romanizeNullThrows() {
         Map<String, String> letters = Map.of("a", "ah");
         AlphabetRomanizer r = new AlphabetRomanizer(latinScript(), letters, Map.of(), false);
+        //noinspection DataFlowIssue
         assertThrows(NullPointerException.class, () -> r.romanize(null));
     }
 

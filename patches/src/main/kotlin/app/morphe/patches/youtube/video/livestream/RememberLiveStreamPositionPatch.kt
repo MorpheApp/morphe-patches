@@ -21,7 +21,6 @@ import app.morphe.patches.youtube.video.information.videoTimeHook
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/livestream/RememberLiveStreamPositionPatch;"
 
-@Suppress("unused")
 val rememberLiveStreamPositionPatch = patch(
     name = "Remember live stream playback position",
     description = "Adds an option to remember the playback position of an ongoing live stream " +

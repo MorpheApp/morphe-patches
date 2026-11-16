@@ -7,6 +7,8 @@
 
 package app.morphe.extension.shared.requests.proxy;
 
+import androidx.annotation.NonNull;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -74,6 +76,7 @@ abstract class DelegatingHttpURLConnection extends HttpURLConnection {
     }
 
     @Override
+    @SuppressWarnings("EmptyMethod")
     public int getConnectTimeout() {
         return super.getConnectTimeout();
     }
@@ -85,6 +88,7 @@ abstract class DelegatingHttpURLConnection extends HttpURLConnection {
     }
 
     @Override
+    @SuppressWarnings("EmptyMethod")
     public int getReadTimeout() {
         return super.getReadTimeout();
     }
@@ -172,7 +176,6 @@ abstract class DelegatingHttpURLConnection extends HttpURLConnection {
     }
 
     @Override
-    @SuppressWarnings("rawtypes")
     public Object getContent(Class[] classes) throws IOException {
         beforeResponse();
         return delegate.getContent(classes);
@@ -327,6 +330,7 @@ abstract class DelegatingHttpURLConnection extends HttpURLConnection {
     }
 
     @Override
+    @NonNull
     public String toString() {
         return delegate.toString();
     }

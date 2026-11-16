@@ -40,6 +40,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -135,6 +136,7 @@ public final class PatchesUpdateNoticePatch {
     /**
      * @return The app name used in the scopes of the release notes, such as "YouTube Music".
      */
+    @SuppressWarnings("SameReturnValue")
     private static String getChangelogScope() {
         return ""; // Value is replaced during patching.
     }
@@ -284,8 +286,7 @@ public final class PatchesUpdateNoticePatch {
             Matcher entry = SCOPED_ENTRY.matcher(line);
             if (!entry.matches()) continue;
 
-            //noinspection ConstantConditions
-            String scope = entry.group(1);
+            String scope = Objects.requireNonNull(entry.group(1));
             String patchName = null;
             final int patchSeparator = scope.indexOf(SCOPE_PATCH_SEPARATOR);
             if (patchSeparator >= 0) {
@@ -451,6 +452,7 @@ public final class PatchesUpdateNoticePatch {
     /**
      * Draws a thin line along the bottom of a heading line, across the full width.
      */
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class RuleSpan implements LineBackgroundSpan {
         private final int color;
 

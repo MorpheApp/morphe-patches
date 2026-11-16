@@ -62,6 +62,10 @@ public class RubyGeneratorTest {
 
     @Test
     public void rubyStyleFromLanguageJapaneseKana() {
-        // rubyStyleFromLanguage is package-private, so tested through formatRuby behavior.
+        assertEquals(RubyGenerator.RubyStyle.KATAKANA, RubyGenerator.rubyStyleFromLanguage("ja-Kana"));
+        assertEquals(RubyGenerator.RubyStyle.KATAKANA, RubyGenerator.rubyStyleFromLanguage("JA-KANA"));
+        assertEquals(RubyGenerator.RubyStyle.HIRAGANA, RubyGenerator.rubyStyleFromLanguage("ja-Hira"));
+        assertEquals(RubyGenerator.RubyStyle.HIRAGANA, RubyGenerator.rubyStyleFromLanguage("ja"));
+        assertEquals(RubyGenerator.RubyStyle.HIRAGANA, RubyGenerator.rubyStyleFromLanguage(null));
     }
 }

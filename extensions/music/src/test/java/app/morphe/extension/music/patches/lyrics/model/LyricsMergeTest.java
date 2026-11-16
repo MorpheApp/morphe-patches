@@ -18,6 +18,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import app.morphe.extension.music.patches.lyrics.LyricsFixtures;
 
@@ -29,7 +30,7 @@ public class LyricsMergeTest {
     public void backgroundTrackReturnsMatchingEntry() {
         Map<String, List<LyricsLine>> tracks = new HashMap<>();
         tracks.put(BG_PREFIX + "ja", List.of(new LyricsLine(0, "bg text")));
-        assertEquals(1, LyricsMerge.backgroundTrack(tracks, "ja").size());
+        assertEquals(1, Objects.requireNonNull(LyricsMerge.backgroundTrack(tracks, "ja")).size());
     }
 
     @Test
@@ -96,7 +97,7 @@ public class LyricsMergeTest {
     public void singleLanguageTranslationsWrapsNonEmptyLines() {
         List<LyricsLine> lines = List.of(new LyricsLine(0, "text"));
         Map<String, List<LyricsLine>> map = LyricsMerge.singleLanguageTranslations(lines, "ja");
-        assertEquals(1, map.size());
+        assertEquals(1, Objects.requireNonNull(map).size());
         assertSame(lines, map.get("ja"));
     }
 
@@ -110,7 +111,7 @@ public class LyricsMergeTest {
     public void addCreditAppendsNewEntry() {
         Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "text"));
         Lyrics updated = LyricsMerge.addCredit(lyrics, "John Doe");
-        assertEquals(List.of("John Doe"), updated.credits());
+        assertEquals(List.of("John Doe"), Objects.requireNonNull(updated).credits());
     }
 
     @Test

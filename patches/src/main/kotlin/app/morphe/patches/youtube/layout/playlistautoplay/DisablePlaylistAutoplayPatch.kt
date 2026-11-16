@@ -18,7 +18,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisablePlaylistAutoplayPatch;"
 
-@Suppress("unused")
 val disablePlaylistAutoplayPatch = patch(
     name = "Disable playlist autoplay",
     description = "Adds an option to stop a playlist from automatically advancing to the next video.",

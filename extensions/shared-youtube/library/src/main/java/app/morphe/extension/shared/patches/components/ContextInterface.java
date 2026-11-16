@@ -30,6 +30,7 @@ public interface ContextInterface {
      *         such as the feed, that the element belongs to. Null if the app is not patched for it.
      */
     @Nullable
+    @SuppressWarnings("SameReturnValue")
     default List<?> patch_getCommandEventDataDecorators() {
         return null;
     }

@@ -28,6 +28,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 
+@SuppressWarnings("unused")
 public class LegacyPlayerControlButton {
 
     public enum ButtonVisibility {

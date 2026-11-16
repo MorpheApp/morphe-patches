@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.patches;
 
 import androidx.annotation.Nullable;
 
+import java.util.Objects;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -49,9 +51,9 @@ public final class ForceAnimationsPatch {
             if (decisionName != null && !decisionLookedUp) {
                 decisionLookedUp = true;
                 try {
-                    for (Object constant : anyDecision.getDeclaringClass().getEnumConstants()) {
-                        if (decisionName.equals(((Enum<?>) constant).name())) {
-                            decision = (Enum<?>) constant;
+                    for (Enum<?> constant : Objects.requireNonNull(anyDecision.getDeclaringClass().getEnumConstants())) {
+                        if (decisionName.equals(constant.name())) {
+                            decision = constant;
                             break;
                         }
                     }

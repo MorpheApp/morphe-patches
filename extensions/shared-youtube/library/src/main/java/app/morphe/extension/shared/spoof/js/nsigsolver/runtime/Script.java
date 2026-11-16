@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+@SuppressWarnings("unused")
 public class Script {
     private final ScriptType type;
     private final ScriptVariant variant;

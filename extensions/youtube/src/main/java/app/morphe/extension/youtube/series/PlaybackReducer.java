@@ -11,6 +11,8 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.IntSupplier;
 
+import app.morphe.extension.youtube.patches.VideoInformation;
+
 /** Pure observation reducer. It never reads changing host getters or writes storage. */
 public final class PlaybackReducer {
     private static final long CHECKPOINT_MS = 5000;
@@ -80,7 +82,7 @@ public final class PlaybackReducer {
             boolean excluded,
             long now,
             long wallTime) {
-        if (excluded || beforeId == null || !beforeId.matches("[A-Za-z0-9_-]{11}")) {
+        if (excluded || !VideoInformation.isVideoId(beforeId)) {
             if (valid) newVideo(now);
             previous = "";
             return;

@@ -113,6 +113,15 @@ message ShortsLockupTitle {
 
 message ShortsLockupMetadata {
     AttributedText channelName = 1;
+    ShortsLockupAvatar avatar = 3;
+}
+
+message ShortsLockupAvatar {
+    AvatarViewModel avatarViewModel = 437811886;
+}
+
+message AvatarViewModel {
+    InnertubeCommandHolder onTap = 5; // Opens the channel.
 }
 
 message CommentModel {

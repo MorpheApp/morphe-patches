@@ -66,7 +66,6 @@ private val videoDelayResourcePatch = patch {
     }
 }
 
-@Suppress("unused")
 val videoDelayPatch = patch(
     name = "Video delay",
     description = "Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio."

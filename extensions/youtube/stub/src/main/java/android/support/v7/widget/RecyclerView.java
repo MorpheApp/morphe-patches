@@ -3,6 +3,7 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.view.View;
 
+@SuppressWarnings("unused")
 public class RecyclerView extends View {
 
     public RecyclerView(Context context) {
@@ -10,10 +11,12 @@ public class RecyclerView extends View {
         throw new UnsupportedOperationException("Stub");
     }
 
-    public View getChildAt(@SuppressWarnings("unused") final int index) {
+    @SuppressWarnings("SameReturnValue")
+    public View getChildAt(final int index) {
         return null;
     }
 
+    @SuppressWarnings("SameReturnValue")
     public int getChildCount() {
         return 0;
     }

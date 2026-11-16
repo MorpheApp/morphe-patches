@@ -13,7 +13,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -31,6 +33,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
+@SuppressWarnings("unused")
 public final class QuickLRCClient {
 
     public static final String PROVIDER_NAME = "QuickLRC";
@@ -218,7 +221,7 @@ public final class QuickLRCClient {
             conn.setInstanceFollowRedirects(false);
 
             final byte[] payload = json.getBytes(StandardCharsets.UTF_8);
-            try (java.io.OutputStream out = conn.getOutputStream()) {
+            try (OutputStream out = conn.getOutputStream()) {
                 out.write(payload);
             }
 
@@ -241,10 +244,10 @@ public final class QuickLRCClient {
     @Nullable
     private static String resolve(String base, String location) {
         try {
-            final java.net.URL resolved = new URL(new URL(base), location);
+            final URL resolved = new URL(new URL(base), location);
             return resolved.getProtocol() + "://" + resolved.getAuthority() + resolved.getPath()
                     + (resolved.getQuery() == null ? "" : "?" + resolved.getQuery());
-        } catch (java.net.MalformedURLException ex) {
+        } catch (MalformedURLException ex) {
             return null;
         }
     }

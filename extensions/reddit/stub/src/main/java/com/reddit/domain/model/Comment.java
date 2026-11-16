@@ -1,5 +1,6 @@
 package com.reddit.domain.model;
 
+@SuppressWarnings("unused")
 public final class Comment extends IComment {
     public String getKindWithId() {
         throw new UnsupportedOperationException("Stub");

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 
 import app.morphe.extension.shared.Utils;
 
+@SuppressWarnings("unused")
 public class SpoofOSNamePatch {
     @NonNull
     private static String osName = "";

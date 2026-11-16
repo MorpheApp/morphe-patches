@@ -730,7 +730,7 @@ public final class NetEaseProvider implements LyricsProvider {
     }
 
     @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) {
         String keyword = track.title() + " " + track.artist();
         List<JSONObject> songs = searchAll(keyword, track);
 

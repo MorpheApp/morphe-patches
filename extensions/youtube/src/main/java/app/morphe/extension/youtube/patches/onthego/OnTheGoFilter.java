@@ -59,7 +59,6 @@ public final class OnTheGoFilter extends Filter {
      * Premium upsell parameters of the On-the-go item of an account without Premium.
      * 21.x has no icon names in the buffer, but these parameters are only of this item.
      */
-    @SuppressWarnings("SpellCheckingInspection")
     private final ByteArrayFilterGroup onTheGoUpsell = new ByteArrayFilterGroup(
             null,
             "igkCCA8%3D"

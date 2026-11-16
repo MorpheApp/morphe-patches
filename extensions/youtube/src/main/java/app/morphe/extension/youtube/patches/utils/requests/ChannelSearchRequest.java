@@ -30,6 +30,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
+@SuppressWarnings("unused")
 public final class ChannelSearchRequest {
 
     public static final class ChannelSearchResult {
@@ -92,7 +93,7 @@ public final class ChannelSearchRequest {
     }
 
     /**
-     * Complete searches only, as a search that was cancelled before its last page is not.
+     * Complete searches only, as a search that was canceled before its last page is not.
      */
     private static final Map<String, ChannelSearchResponse> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(10));

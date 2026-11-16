@@ -37,10 +37,8 @@ import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingD
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.LongSetting;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 /**
  * The functions used in this class are referenced below:
@@ -267,11 +265,7 @@ public final class JavaScriptManager {
                     if (matcher.find()) {
                         cachedPlayerJsHash = matcher.group(1);
 
-                        // The simplest way to prevent the restart dialog from showing.
-                        AbstractPreferenceFragment.settingImportInProgress = true;
-                        Setting.privateSetValueFromString(PLAYER_JS_HASH, cachedPlayerJsHash);
-                        PLAYER_JS_HASH.saveToPreferences();
-                        AbstractPreferenceFragment.settingImportInProgress = false;
+                        PLAYER_JS_HASH.save(cachedPlayerJsHash);
 
                         PLAYER_JS_SAVED_MILLISECONDS.save(currentTime);
                     } else {
@@ -584,7 +578,11 @@ public final class JavaScriptManager {
      * A new player is released every few days, so the old ones of every variant would pile up.
      */
     private static void deleteOtherPlayerJsFiles(File current) {
-        File[] files = current.getParentFile().listFiles((dir, name) -> {
+        File directory = current.getParentFile();
+        if (directory == null) {
+            return;
+        }
+        File[] files = directory.listFiles((dir, name) -> {
             if (name.equals(current.getName())) return false;
             for (JavaScriptVariant variant : JavaScriptVariant.values()) {
                 if (name.startsWith(getPlayerJsFilePrefix(variant))) return true;
@@ -594,8 +592,7 @@ public final class JavaScriptManager {
         if (files != null) {
             for (File old : files) {
                 Logger.printDebug(() -> "Deleting old Player js cache: " + old.getName());
-                //noinspection ResultOfMethodCallIgnored
-                old.delete();
+                Utils.deleteQuietly(old);
             }
         }
     }

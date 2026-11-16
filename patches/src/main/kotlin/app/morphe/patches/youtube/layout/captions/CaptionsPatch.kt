@@ -49,7 +49,6 @@ internal fun MutableClass.addHelperMethod(
     )
 }
 
-@Suppress("unused")
 val captionsPatch = patch(
     name = "Captions",
     description = "Adds options to disable captions from being automatically enabled, " +

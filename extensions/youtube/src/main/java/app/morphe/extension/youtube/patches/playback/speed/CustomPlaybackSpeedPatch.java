@@ -192,6 +192,18 @@ public class CustomPlaybackSpeedPatch {
 
     /**
      * Injection point.
+     *
+     * @param original The text shown above the Shorts player while a Short is held, such as "2x".
+     */
+    public static String getShortsTapAndHoldText(String original) {
+        if (TAP_AND_HOLD_SPEED == Settings.SPEED_TAP_AND_HOLD.defaultValue) {
+            return original;
+        }
+        return VideoInformation.formatSpeedStringX(TAP_AND_HOLD_SPEED, 0);
+    }
+
+    /**
+     * Injection point.
      */
     public static CharSequence onSeekEduOverlayLoaded(ContextInterface context, CharSequence original) {
         try {
@@ -817,7 +829,7 @@ class OutlineSymbolDrawable extends Drawable {
         paint.setColorFilter(colorFilter);
     }
 
-    @SuppressWarnings({"deprecation", "RedundantSuppression"})
+    @Deprecated
     @Override
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;

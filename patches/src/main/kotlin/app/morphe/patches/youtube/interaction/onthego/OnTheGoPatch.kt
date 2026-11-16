@@ -9,10 +9,9 @@
 package app.morphe.patches.youtube.interaction.onthego
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -29,10 +28,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/onthego/OnTheGoPatch;"
 
@@ -44,7 +39,56 @@ private const val EXTENSION_STATE_INTERFACE =
 private const val EXTENSION_SEEK_LENGTH_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/onthego/OnTheGoPatch$SeekLength;"
 
-@Suppress("unused")
+/**
+ * Hooks the On-the-go state of the app, which is active while the On-the-go panel of the app or of Morphe is open.
+ * While it is active, the media controls of the lock screen and notification have seek back and seek forward buttons.
+ */
+internal val onTheGoStateHookPatch = patch {
+    dependsOn(
+        sharedExtensionPatch,
+        versionCheckPatch,
+    )
+
+    execute {
+        if (!is_21_05_or_greater) {
+            // Older versions have no On-the-go media session actions.
+            return@execute
+        }
+
+        OnTheGoStateConstructorFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
+                "invoke-static { p0 }, $EXTENSION_CLASS->setOnTheGoState($EXTENSION_STATE_INTERFACE)V"
+            )
+        }
+
+        val stateGetter = OnTheGoStateGetterFingerprint.method
+
+        OnTheGoStateSetterFingerprint.let {
+            it.classDef.apply {
+                addPatchInterface(
+                    EXTENSION_STATE_INTERFACE,
+                    "patch_setOnTheGoActive",
+                    """
+                        invoke-virtual { p0, p1 }, ${it.method}
+                        return-void
+                    """
+                )
+
+                addPatchInterface(
+                    EXTENSION_STATE_INTERFACE,
+                    "patch_isOnTheGoActive",
+                    """
+                        invoke-virtual { p0 }, $stateGetter
+                        move-result v0
+                        return v0
+                    """
+                )
+            }
+        }
+    }
+}
+
 val onTheGoPatch = patch(
     name = "On-the-go player",
     description = "Adds an option to open a panel with large playback controls " +
@@ -60,6 +104,7 @@ val onTheGoPatch = patch(
         playerTypeHookPatch,
         lithoFilterPatch,
         flyoutPatch,
+        onTheGoStateHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -96,44 +141,6 @@ val onTheGoPatch = patch(
             return@execute
         }
 
-        // While On-the-go is active, the media controls of the lock screen and notification
-        // have seek back and seek forward buttons. The Morphe panel turns this on while it is open.
-        val stateClass = OnTheGoSkipToNextActionConstructorFingerprint.method.parameterTypes.first().toString()
-
-        getOnTheGoStateConstructorFingerprint(stateClass).let {
-            it.method.addInstruction(
-                it.instructionMatches.first().index + 1,
-                "invoke-static { p0 }, $EXTENSION_CLASS->setOnTheGoState($EXTENSION_STATE_INTERFACE)V"
-            )
-        }
-
-        getOnTheGoStateSetterFingerprint(stateClass).let {
-            it.classDef.apply {
-                interfaces.add(EXTENSION_STATE_INTERFACE)
-
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_setOnTheGoActive",
-                        listOf(ImmutableMethodParameter("Z", null, null)),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0, p1 }, ${it.method}
-                                return-void
-                            """
-                        )
-                    }
-                )
-            }
-        }
-
         // The seek buttons of the panel use the double tap to seek length of the app settings.
         SeekLengthConstructorFingerprint.let {
             it.method.apply {
@@ -147,30 +154,16 @@ val onTheGoPatch = patch(
                 )
 
                 it.classDef.apply {
-                    interfaces.add(EXTENSION_SEEK_LENGTH_INTERFACE)
-
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            "patch_getSeekLengthMilliseconds",
-                            listOf(),
-                            "J",
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(3),
-                        ).toMutable().apply {
-                            addInstructions(
-                                0,
-                                """
-                                    iget-object v0, p0, $seekLengthField
-                                    check-cast v0, $durationType
-                                    invoke-virtual { v0 }, $durationType->toMillis()J
-                                    move-result-wide v0
-                                    return-wide v0
-                                """
-                            )
-                        }
+                    addPatchInterface(
+                        EXTENSION_SEEK_LENGTH_INTERFACE,
+                        "patch_getSeekLengthMilliseconds",
+                        """
+                            iget-object v0, p0, $seekLengthField
+                            check-cast v0, $durationType
+                            invoke-virtual { v0 }, $durationType->toMillis()J
+                            move-result-wide v0
+                            return-wide v0
+                        """
                     )
                 }
             }

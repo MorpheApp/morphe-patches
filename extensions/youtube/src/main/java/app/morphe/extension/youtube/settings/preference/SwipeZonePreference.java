@@ -18,6 +18,7 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
@@ -306,9 +307,12 @@ public final class SwipeZonePreference extends Preference {
             dashPaint.setColor(separatorColor);
             dashPaint.setPathEffect(new DashPathEffect(new float[]{Dim.dp(4), Dim.dp(3)}, 0));
 
+            // Also the custom font of the Custom font patch, which a paint without a typeface does not use.
+            namePaint.setTypeface(Typeface.DEFAULT);
             namePaint.setTextAlign(Paint.Align.CENTER);
             namePaint.setTextSize(Dim.dp(11));
 
+            percentPaint.setTypeface(Typeface.DEFAULT);
             percentPaint.setTextAlign(Paint.Align.CENTER);
             percentPaint.setTextSize(Dim.dp(10));
         }

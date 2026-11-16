@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "app/morphe/extension/shared/innertube/player_response.proto";
+
+package app.morphe.extension.shared.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.shared.innertube";
+
+// Videos saved by the app (offline videos), the same in YouTube and YouTube Music.
+// Only the fields that are read or changed are declared, all other fields are kept as unknown fields.
+
+// Player response of a video that is saved.
+message SavedPlayerResponse {
+    optional VideoDetails videoDetails = 11;
+    optional OfflineState offlineState = 14;
+}
+
+message OfflineState {
+    optional string token = 1;
+    // Seconds until the saved video must be refreshed with the server.
+    optional uint32 policyLifetimeSeconds = 3;
+    optional OfflineStateAction action = 5;
+    // Message of a disabled saved video, such as "YouTube Premium required".
+    optional string disabledReason = 6;
+}
+
+enum OfflineStateAction {
+    OFFLINE_STATE_ACTION_UNKNOWN = 0;
+    OFFLINE_STATE_ACTION_OK = 1;
+    // The saved video stays in the downloads, but can't be played.
+    OFFLINE_STATE_ACTION_DISABLE = 3;
+}

@@ -24,7 +24,7 @@ import app.morphe.extension.shared.Logger;
 /**
  * The CLDR transliteration rules, one {@link AlphabetRomanizer} per script: a script written as
  * it sounds is read letter by letter, everything else whole. Adding a table touches
- * {@link CldrTransformsStore#TRANSLITERATIONS}, {@link #STRIP_ACCENTS} and {@link #scriptPredicate};
+ * {@code CldrTransformsStore.TRANSLITERATIONS}, {@link #STRIP_ACCENTS} and {@link #scriptPredicate};
  * the Slavic BGN tables share the Cyrillic blocks and predicate.
  */
 final class CldrTransforms {

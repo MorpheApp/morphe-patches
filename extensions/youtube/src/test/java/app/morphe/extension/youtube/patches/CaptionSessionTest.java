@@ -7,6 +7,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.Assert.*;
 
+@SuppressWarnings("DataFlowIssue")
 public class CaptionSessionTest {
     private static final List<StableCaptionBlockPolicy.Block> SOURCE = List.of(
             new StableCaptionBlockPolicy.Block(0, 3000, "first source", true),

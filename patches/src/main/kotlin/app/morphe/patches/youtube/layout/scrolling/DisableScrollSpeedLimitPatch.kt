@@ -22,7 +22,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableScrollSpeedLimitPatch;"
 
-@Suppress("unused")
 val disableScrollSpeedLimitPatch = patch(
     name = "Disable scrolling speed limit",
     description = "Adds an option to remove limits of how fast the home and " +

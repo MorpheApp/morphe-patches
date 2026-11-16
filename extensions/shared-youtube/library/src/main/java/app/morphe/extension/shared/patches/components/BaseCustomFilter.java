@@ -89,6 +89,7 @@ public abstract class BaseCustomFilter extends Filter {
     private final StringSetting filterStringsSetting;
     private final String invalidSyntaxToastKey;
 
+    @SuppressWarnings("SameParameterValue")
     protected BaseCustomFilter(BooleanSetting filterEnabledSetting,
                                StringSetting filterStringsSetting,
                                String invalidSyntaxToastKey) {

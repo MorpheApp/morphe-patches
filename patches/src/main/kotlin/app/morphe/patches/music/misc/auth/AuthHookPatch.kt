@@ -10,6 +10,7 @@ package app.morphe.patches.music.misc.auth
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.shared.misc.auth.authHookPatch
 
+@Suppress("unused")
 internal val authHookPatch = authHookPatch(
     emptyPageIdHook = { false },
     block = {

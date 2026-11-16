@@ -31,6 +31,7 @@ import androidx.annotation.RequiresApi;
 @SuppressWarnings("unused")
 public class DisablePlayStoreUpdatesPatch {
 
+    @SuppressWarnings("SameReturnValue")
     private static int originalVersionCode() {
         return 0; // Return value is changed during patching.
     }

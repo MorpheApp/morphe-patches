@@ -58,6 +58,7 @@ public final class StableCaptionBlocks {
 
     private StableCaptionBlocks() {}
 
+    @SuppressWarnings("SameReturnValue")
     private static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -71,6 +72,7 @@ public final class StableCaptionBlocks {
         List<?> patch_getOriginalCaptions(long time);
 
         @Nullable
+        @SuppressWarnings("SameReturnValue")
         State patch_getBlockState();
 
         void patch_setBlockState(State state);
@@ -83,6 +85,7 @@ public final class StableCaptionBlocks {
     public interface Cue {
         int patch_getCaptionId();
 
+        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
         boolean patch_isCaptionVisible();
 
         // Methods are added during patching.
@@ -294,7 +297,7 @@ public final class StableCaptionBlocks {
      * Injection point.
      * Called instead of the caption sampler, if the timeline has a block state.
      */
-    @SuppressWarnings("DataFlowIssue")
+    @SuppressWarnings({"DataFlowIssue", "SizeReplaceableByIsEmpty"})
     public static List<?> present(Timeline timeline, long time) {
         List<?> original = timeline.patch_getOriginalCaptions(time);
         try {

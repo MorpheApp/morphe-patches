@@ -126,8 +126,8 @@ val hidePlayerOverlayButtonsPatch = patch(
         } else if (is_21_35_or_greater) {
             OverlayCastButtonVisibilityLegacy2135Fingerprint.let {
                 it.method.apply {
-                    var instructionIndex = it.instructionMatches.first().index
-                    var instructionRegister = getInstruction<FiveRegisterInstruction>(
+                    val instructionIndex = it.instructionMatches.first().index
+                    val instructionRegister = getInstruction<FiveRegisterInstruction>(
                         instructionIndex
                     ).registerD
 

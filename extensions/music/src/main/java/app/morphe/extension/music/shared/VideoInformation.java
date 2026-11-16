@@ -15,13 +15,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.BaseVideoInformation;
 
 /**
  * Hooking class for the current playing video.
  * Injection points and bridge methods are added by the VideoInformation patch.
  */
 @SuppressWarnings("unused")
-public final class VideoInformation {
+public final class VideoInformation extends BaseVideoInformation {
 
     /** Notified when the app starts another video. */
     public interface VideoIdListener {
@@ -48,7 +49,7 @@ public final class VideoInformation {
     }
 
     /**
-     * Id of the current video playing.
+     * ID of the current video playing.
      *
      * @return The id of the video. Empty string if not set yet.
      */

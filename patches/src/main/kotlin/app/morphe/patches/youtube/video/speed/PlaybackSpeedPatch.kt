@@ -34,7 +34,6 @@ internal val settingsMenuVideoSpeedGroup = mutableSetOf<BasePreference>()
  */
 internal val settingsMenuShortsSpeedGroup = mutableSetOf<BasePreference>()
 
-@Suppress("unused")
 val playbackSpeedPatch = patch(
     name = "Playback speed",
     description = "Adds options to customize available playback speeds, set a default playback speed, " +

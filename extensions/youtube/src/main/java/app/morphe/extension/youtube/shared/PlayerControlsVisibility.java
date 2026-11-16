@@ -18,6 +18,7 @@ import app.morphe.extension.shared.Logger;
 /**
  * PlayerControls visibility state.
  */
+@SuppressWarnings("unused")
 public enum PlayerControlsVisibility {
     PLAYER_CONTROLS_VISIBILITY_UNKNOWN,
     PLAYER_CONTROLS_VISIBILITY_WILL_HIDE,

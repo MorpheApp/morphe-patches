@@ -46,6 +46,7 @@ public final class AiSListSubmitDialog {
     private AiSListSubmitDialog() {
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

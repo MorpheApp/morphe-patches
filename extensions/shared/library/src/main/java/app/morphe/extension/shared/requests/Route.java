@@ -10,6 +10,7 @@
 
 package app.morphe.extension.shared.requests;
 
+@SuppressWarnings("unused")
 public class Route {
     public enum Method {
         GET,

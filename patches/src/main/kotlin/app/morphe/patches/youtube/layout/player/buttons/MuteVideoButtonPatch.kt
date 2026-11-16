@@ -38,7 +38,6 @@ private val muteVideoButtonResourcePatch = patch {
     }
 }
 
-@Suppress("unused")
 val muteVideoButtonPatch = patch(
     name = "Mute button",
     description = "Adds an option to show a player button that mutes the video audio.",

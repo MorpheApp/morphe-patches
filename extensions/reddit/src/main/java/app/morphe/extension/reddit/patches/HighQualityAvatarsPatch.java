@@ -31,13 +31,14 @@ public final class HighQualityAvatarsPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
 
     /**
      * Injection point.
-     *
+     * <p>
      * Avatars are loaded with a signed resize query, such as 50x50 pixels for comments.
      * The signature prevents asking for a larger size, but without the query
      * the original image is loaded (256x256 for Snoo avatars).
@@ -47,11 +48,10 @@ public final class HighQualityAvatarsPatch {
     @Nullable
     public static Object getImageModel(@Nullable Object model) {
         try {
-            if (!Settings.HIGH_QUALITY_AVATARS.get() || !(model instanceof String)) {
+            if (!Settings.HIGH_QUALITY_AVATARS.get() || !(model instanceof String url)) {
                 return model;
             }
 
-            String url = (String) model;
             final int queryIndex = url.indexOf('?');
             if (queryIndex < 0
                     // Never show the original of a blurred image.

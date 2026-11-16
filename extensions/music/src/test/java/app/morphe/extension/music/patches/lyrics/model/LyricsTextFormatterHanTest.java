@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-/** Tests for the Han-mode branch of {@link LyricsTextFormatter.format} and {@link LyricsTextFormatter.isPunctuation}. Under the mockable android.jar the ICU Transliterator returns null, so Han passes through unchanged; these tests pin that fallback and the offset map. */
+/** Tests for the Han-mode branch of {@link LyricsTextFormatter#format} and {@link LyricsTextFormatter#isPunctuation}. Under the mockable android.jar the ICU Transliterator returns null, so Han passes through unchanged; these tests pin that fallback and the offset map. */
 public class LyricsTextFormatterHanTest {
 
     // ── format with hanMode ──

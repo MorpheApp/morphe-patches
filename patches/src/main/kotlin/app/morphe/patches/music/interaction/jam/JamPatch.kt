@@ -63,7 +63,6 @@ private val jamResources = patch {
  * Connects semantic YouTube Music anchors to the stable Jam extension API. Native discovery is kept
  * in [JamQueueAbi] and [JamUiAbi]; generated methods are small access or interception bridges.
  */
-@Suppress("unused")
 val jamQueueSharingPatch = patch(
     name = "Jam queue sharing",
     description = "Shares the host queue and playback controls through an authenticated Jam bridge. "

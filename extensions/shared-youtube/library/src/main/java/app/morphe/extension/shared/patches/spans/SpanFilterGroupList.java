@@ -18,6 +18,7 @@ import java.util.function.Consumer;
 
 import app.morphe.extension.shared.TrieSearch;
 
+@SuppressWarnings("unused")
 public abstract class SpanFilterGroupList<V, T extends SpanFilterGroup<V>> implements Iterable<T> {
 
     private final List<T> filterGroups = new ArrayList<>();

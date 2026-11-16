@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import app.morphe.extension.music.patches.DownloadsPatch;
+import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
@@ -30,8 +31,6 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
  */
 @SuppressWarnings("unused")
 public final class SongMenuFilter extends Filter {
-
-    static final int VIDEO_ID_LENGTH = 11;
 
     /**
      * Song of the last opened menu, or null if the menu is not for a song, such as an album.
@@ -102,22 +101,11 @@ public final class SongMenuFilter extends Filter {
         // The video ID is the first string field after the button name
         // that is 11 characters long. The byte before a string field is its length.
         final int start = result.getMatchedIndex() + result.getMatchedLength();
-        for (int i = start, end = buffer.length - VIDEO_ID_LENGTH; i <= end; i++) {
-            if (buffer[i - 1] == VIDEO_ID_LENGTH && isVideoId(buffer, i)) {
-                return new String(buffer, i, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+        for (int i = start, end = buffer.length - VideoInformation.VIDEO_ID_LENGTH; i <= end; i++) {
+            if (buffer[i - 1] == VideoInformation.VIDEO_ID_LENGTH && VideoInformation.isVideoId(buffer, i)) {
+                return new String(buffer, i, VideoInformation.VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
             }
         }
         return null;
-    }
-
-    static boolean isVideoId(byte[] buffer, int start) {
-        for (int i = start, end = start + VIDEO_ID_LENGTH; i < end; i++) {
-            final byte b = buffer[i];
-            if (!((b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z')
-                    || (b >= '0' && b <= '9') || b == '_' || b == '-')) {
-                return false;
-            }
-        }
-        return true;
     }
 }

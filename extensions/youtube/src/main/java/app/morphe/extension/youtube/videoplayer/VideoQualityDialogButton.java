@@ -61,9 +61,8 @@ public class VideoQualityDialogButton {
     private static CharSequence currentOverlayText;
 
     static {
-        VideoInformation.onQualityChange.addObserver((@Nullable VideoQualityInterface quality) -> {
-            updateButtonText(quality);
-        });
+        VideoInformation.onQualityChange.addObserver(
+                (@Nullable VideoQualityInterface quality) -> updateButtonText(quality));
     }
 
     /**

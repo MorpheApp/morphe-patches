@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Evidenzia nuove impostazioni</string>
   <string name="morphe_settings_new_indicator_days_summary">Numero di giorni in cui viene mostrato un punto accanto alle impostazioni e opzioni aggiunte tramite un aggiornamento</string>
   <string name="morphe_settings_new_indicator_days_off">Spento</string>
+  <string name="morphe_settings_new_indicator_clear_title">Segna tutte le impostazioni come viste</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Rimuove il punto da tutte le nuove impostazioni e opzioni</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Segnare tutte le impostazioni come viste?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Il punto viene rimosso da tutte le nuove impostazioni e opzioni. Le impostazioni aggiunte da futuri aggiornamenti rimarranno comunque evidenziate.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Riavvia per completare la configurazione</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Verifica che il nome del pacchetto sia corretto e che l'app sia installata"</string>
   <string name="morphe_external_downloader_empty_warning">Il nome del pacchetto non può essere vuoto</string>
+  <string name="morphe_export_download_folder_dialog_title">Cartella di esportazione</string>
+  <string name="morphe_export_download_folder_change">Cambia cartella</string>
+  <string name="morphe_export_download_folder_changed">Cartella di esportazione modificata</string>
+  <string name="morphe_export_download_folder_reset">Cartella di esportazione ripristinata</string>
+  <string name="morphe_export_download_folder_missing">Impossibile trovare la cartella di esportazione %s</string>
+  <string name="morphe_export_download_flyout_title">Esporta sul dispositivo</string>
+  <string name="morphe_export_download_canceled">Esportazione annullata</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizzato</string>
   <string name="morphe_custom_branding_icon_title">Icona dell\'app</string>
@@ -110,6 +121,20 @@ Se sei un utente YouTube Premium, questa impostazione potrebbe non essere necess
 Vuoi rendere %2$s il client predefinito?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Cambia</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">La disattivazione di questa impostazione potrebbe causare problemi di riproduzione</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView è disattivato o non è installato.
+
+La riproduzione video richiede Android System WebView. Attivalo e aggiornalo all'ultima versione.
+
+Tocca OK per aprire Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView non è aggiornato (versione %s).
+
+La riproduzione video potrebbe non funzionare finché Android System WebView non sarà aggiornato all'ultima versione.
+
+Tocca OK per aprire Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Non mostrare più</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView non è installato. Installalo per risolvere i problemi di riproduzione video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prova ad abilitare: Falsificazione dei flussi video > Accesso con Android VR</string>
@@ -142,6 +167,28 @@ Per accedere, premi su Continua di seguito"</string>
 • Le tue impostazioni Morphe non importeranno o esporteranno l'autenticazione per Android VR
 • Se questa app non verrà utilizzata per 6 mesi, Google rimuoverà questa autenticazione
 • In caso di cambio password dell'account Google o deregistrazione di questo dispositivo dalle impostazioni Google, dovrai accedere nuovamente"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Accesso via Web mobile</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Facoltativo: accedi al sito web di YouTube per riprodurre i video con il tuo account. Tocca qui per continuare</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hai eseguito l\'accesso con Web mobile</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Per utilizzare questa funzione, rendi Mobile Web il \'Client predefinito\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Accedi a Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web riproduce i video senza l'accesso o dopo l'accesso al sito web di YouTube
+
+• Se hai effettuato l'accesso, puoi riprodurre i video che richiedono un account, come quelli con restrizioni di età
+• La pagina di accesso di Google si apre in questa app
+• L'accesso viene utilizzato solo per ottenere i video che riproduci
+• L'accesso viene salvato solo su questo dispositivo
+
+Per accedere, premi continua qui sotto"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Accesso salvato
+
+• Le impostazioni di Morphe non importeranno/esporteranno l'accesso al Web mobile
+• Se Google termina l'accesso, i video verranno riprodotti senza l'accesso finché non effettuerai nuovamente l'accesso
+• La disconnessione disconnetterà anche questo dispositivo dal sito web di YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Accesso al Web mobile scaduto, prova ad accedere nuovamente al Web mobile</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Disconnesso dal Web mobile</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView non è disponibile. Installalo o abilitalo per effettuare l\'accesso</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 è temporaneamente non disponibile (API scaduta)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Accesso ad Android VR scaduto, prova ad accedere nuovamente</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 è temporaneamente non disponibile (stato %s)</string>
@@ -207,6 +254,20 @@ Per accedere, premi su Continua di seguito"</string>
   <string name="morphe_replace_music_with_youtube_summary">Sostituisce music.youtube.com con youtube.com nei link condivisi.</string>
   <string name="morphe_replace_links_with_shortener_title">Cambia i link di condivisione in youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Forza i video a utilizzare il formato URL abbreviato youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatico</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Ricorda la qualità del video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Applica la tua selezione manuale della qualità a tutti i video futuri</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifiche di modifica della qualità</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Mostra una notifica quando viene salvata una nuova qualità predefinita</string>
+  <string name="morphe_video_quality_default_wifi_title">Qualità video predefinita sulla rete Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Qualità video predefinita sulla rete mobile</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Qualità predefinita mobile modificata in: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Qualità predefinita Wi-Fi modificata in: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione di sistema</string>
+  <string name="morphe_open_system_share_sheet_summary">Apre il pannello di condivisione di sistema anziché quello integrato durante la condivisione di un contenuto</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Log di Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Disattivato</string>

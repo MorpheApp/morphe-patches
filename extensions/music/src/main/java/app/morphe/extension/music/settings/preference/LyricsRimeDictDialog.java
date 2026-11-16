@@ -52,6 +52,7 @@ import app.morphe.extension.shared.ui.Dim;
  * <p>The lists are stored one line each, as {@code subtag|label|url|charSource}, and removed by
  * rewriting that setting. A built-in list has no line, so its switch is stored separately.
  */
+@SuppressWarnings("unused")
 public final class LyricsRimeDictDialog {
 
     private LyricsRimeDictDialog() {

@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3447
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -14,7 +24,6 @@ import java.util.concurrent.ExecutionException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -64,12 +73,7 @@ public class GetCaptionCookiesPreference extends Preference implements Preferenc
             if (!newValue.equals(cookieString)) {
                 Logger.printDebug(() -> "new Cookies loaded: " + newValue);
 
-                // For some reason, using 'Settings.CAPTION_COOKIES.save(newValue)' resets the settings.
-                // TODO: Find the cause of the issue and replace it with 'Settings.CAPTION_COOKIES.save(newValue)'
-                AbstractPreferenceFragment.settingImportInProgress = true;
-                Setting.privateSetValueFromString(Settings.CAPTION_COOKIES, newValue);
-                Settings.CAPTION_COOKIES.saveToPreferences();
-                AbstractPreferenceFragment.settingImportInProgress = false;
+                Settings.CAPTION_COOKIES.save(newValue);
                 AbstractPreferenceFragment.setRestartNeeded();
 
                 Utils.showSnackbarShort(str("morphe_get_caption_cookies_success"));

@@ -92,14 +92,14 @@ public class LyricsRequestsJsonTest {
     // ── stringList(JSONArray) ──
 
     @Test
-    public void stringListArrayWithStrings() throws JSONException {
+    public void stringListArrayWithStrings() {
         JSONArray arr = new JSONArray().put("one").put("two").put("three");
         List<String> result = LyricsRequests.stringList(arr);
         assertEquals(List.of("one", "two", "three"), result);
     }
 
     @Test
-    public void stringListArrayWithNullsAndBlanks() throws JSONException {
+    public void stringListArrayWithNullsAndBlanks() {
         JSONArray arr = new JSONArray()
                 .put("one")
                 .put(JSONObject.NULL)
@@ -111,7 +111,7 @@ public class LyricsRequestsJsonTest {
     }
 
     @Test
-    public void stringListEmptyArray() throws JSONException {
+    public void stringListEmptyArray() {
         JSONArray arr = new JSONArray();
         List<String> result = LyricsRequests.stringList(arr);
         assertTrue(result.isEmpty());

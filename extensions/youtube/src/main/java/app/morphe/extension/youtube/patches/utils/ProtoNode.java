@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 
@@ -163,7 +164,7 @@ public final class ProtoNode {
         }
 
         try {
-            String text = UTF_8_DECODER.get().decode(ByteBuffer.wrap(bytes, start, end - start)).toString();
+            String text = Objects.requireNonNull(UTF_8_DECODER.get()).decode(ByteBuffer.wrap(bytes, start, end - start)).toString();
             for (int i = 0, length = text.length(); i < length; i++) {
                 final char c = text.charAt(i);
                 if (Character.isISOControl(c) && !(allowLineBreaks && isLineBreakOrTab(c))) {
@@ -323,7 +324,10 @@ public final class ProtoNode {
      * @return The first field with the field number, or null if not found.
      */
     @Nullable
-    public static ProtoNode field(List<ProtoNode> message, int fieldNumber) {
+    public static ProtoNode field(@Nullable List<ProtoNode> message, int fieldNumber) {
+        if (message == null) {
+            return null;
+        }
         for (ProtoNode node : message) {
             if (node.fieldNumber == fieldNumber) {
                 return node;

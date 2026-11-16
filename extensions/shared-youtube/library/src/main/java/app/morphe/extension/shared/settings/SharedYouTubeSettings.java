@@ -3,6 +3,7 @@ package app.morphe.extension.shared.settings;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.StringRef.sf;
+import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
@@ -102,6 +103,12 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
     public static final BooleanSetting REPLACE_MUSIC_LINKS_WITH_YOUTUBE = new BooleanSetting("morphe_replace_music_with_youtube", FALSE);
     public static final BooleanSetting REPLACE_LINKS_WITH_SHORTENER = new BooleanSetting("morphe_replace_links_with_shortener", FALSE);
+    public static final BooleanSetting OPEN_SYSTEM_SHARE_SHEET = new BooleanSetting("morphe_open_system_share_sheet", FALSE);
+
+    // Video quality
+    public static final IntegerSetting VIDEO_QUALITY_DEFAULT_WIFI = new IntegerSetting("morphe_video_quality_default_wifi", -2);
+    public static final IntegerSetting VIDEO_QUALITY_DEFAULT_MOBILE = new IntegerSetting("morphe_video_quality_default_mobile", -2);
+    public static final BooleanSetting REMEMBER_VIDEO_QUALITY_LAST_SELECTED = new BooleanSetting("morphe_remember_video_quality_last_selected", FALSE);
 
     // Spoof video streams
     public static final BooleanSetting SPOOF_VIDEO_STREAMS = new BooleanSetting("morphe_spoof_video_streams", TRUE, true, "morphe_spoof_video_streams_user_dialog_message");
@@ -113,6 +120,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting SPOOF_VIDEO_STREAMS_CLIENT_IDS = new StringSetting("morphe_spoof_video_streams_clent_id", "", false, false);
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_CLIENT_FAILING_DIALOG = new BooleanSetting("morphe_spoof_video_streams_client_failing_dialog", FALSE, false, false);
     public static final LongSetting SPOOF_VIDEO_STREAMS_CLIENT_FAILING_DIALOG_LAST_SHOWN = new LongSetting("morphe_spoof_video_streams_client_failing_dialog_last_shown", 0L, false, false);
+    public static final BooleanSetting SPOOF_VIDEO_STREAMS_WEBVIEW_DIALOG = new BooleanSetting("morphe_spoof_video_streams_webview_dialog", TRUE, false, false);
 
     // PoToken provider
     public static final BooleanSetting EXTERNAL_POTOKEN_PROVIDER = new BooleanSetting("morphe_external_potoken_provider", FALSE, true, "morphe_external_potoken_provider_user_dialog_message", new PoTokenProviderAvailability());
@@ -126,6 +134,10 @@ public class SharedYouTubeSettings extends BaseSettings {
     // YouTube Music only.
     public static final BooleanSetting EXTERNAL_DOWNLOADER_MENU = new BooleanSetting("morphe_external_downloader_menu", FALSE, DOWNLOAD_MODE.availability(DownloadMode.DEFAULT, DownloadMode.IN_APP));
     public static final StringSetting EXTERNAL_DOWNLOADER_PACKAGE_NAME = new StringSetting("morphe_external_downloader_name", "com.deniscerri.ytdl" /* YTDLnis */, new ExternalDownloaderAvailability());
+    // YouTube only saves videos in the app with these download modes.
+    // YouTube Music also saves songs with smart downloads, with any download mode.
+    public static final StringSetting EXPORT_DOWNLOAD_FOLDER = new StringSetting("morphe_export_download_folder", "",
+            IS_YOUTUBE_MUSIC ? null : DOWNLOAD_MODE.availability(DownloadMode.DEFAULT, DownloadMode.IN_APP));
 
     // Spoof app version
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");
@@ -177,6 +189,7 @@ public class SharedYouTubeSettings extends BaseSettings {
         migrateOldSettingToNew(DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE, SPLASH_SCREEN_STYLE);
     }
 
+    @SuppressWarnings("SameReturnValue")
     private static String getDefaultSpoofAppVersionTarget() {
         return ""; // Modified during patching.
     }

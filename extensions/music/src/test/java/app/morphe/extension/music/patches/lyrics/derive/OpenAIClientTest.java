@@ -14,7 +14,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class OpenAIClientTest {
 
@@ -207,7 +209,7 @@ public class OpenAIClientTest {
 
     @Test
     public void fitsOneRequestLargeListFalse() {
-        List<String> lines = new java.util.ArrayList<>();
+        List<String> lines = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
             lines.add("a very long line with many characters that will exceed the limit");
         }
@@ -226,7 +228,7 @@ public class OpenAIClientTest {
         String response = "1. hello\n2. world";
         List<String> source = List.of("hello", "world");
         List<String> result = OpenAIClient.mapResponse(response, source);
-        assertEquals("hello", result.get(0));
+        assertEquals("hello", Objects.requireNonNull(result).get(0));
         assertEquals("world", result.get(1));
     }
 
@@ -235,7 +237,7 @@ public class OpenAIClientTest {
         String response = "1. hello\n2. SKIP";
         List<String> source = List.of("hello", "world");
         List<String> result = OpenAIClient.mapResponse(response, source);
-        assertEquals("hello", result.get(0));
+        assertEquals("hello", Objects.requireNonNull(result).get(0));
         assertEquals("", result.get(1));
     }
 
@@ -251,7 +253,7 @@ public class OpenAIClientTest {
         String response = "translated one\ntranslated two";
         List<String> source = List.of("one", "two");
         List<String> result = OpenAIClient.mapResponse(response, source);
-        assertEquals("translated one", result.get(0));
+        assertEquals("translated one", Objects.requireNonNull(result).get(0));
         assertEquals("translated two", result.get(1));
     }
 

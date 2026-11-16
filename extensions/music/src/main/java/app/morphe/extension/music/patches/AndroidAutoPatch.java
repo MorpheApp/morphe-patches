@@ -28,6 +28,7 @@ import android.support.v4.media.MediaBrowserCompat;
 import android.support.v4.media.MediaDescriptionCompat;
 
 import androidx.annotation.GuardedBy;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.common.util.concurrent.ListenableFuture;
@@ -293,12 +294,21 @@ public final class AndroidAutoPatch {
         String mediaId() { return LIBRARY_PREFIX + name(); }
 
         String artworkUri() {
-            // Use this install's package name so Library icons still load when GmsCore support renames the app.
+            // Use this installation's package name so Library icons still load when GmsCore support renames the app.
             return "android.resource://" + Utils.getContext().getPackageName()
                     + "/drawable/yt_outline_experimental_" + iconName + "_vd_theme_24";
         }
 
         MediaBrowserCompat.MediaItem mediaItem() {
+            Bundle extras = createExtras();
+            if (this == LAST_PLAYED) extras.putBoolean("com.google.android.apps.youtube.music.mediabrowser.IS_LAST_PLAYED", true);
+            return new MediaBrowserCompat.MediaItem(new MediaDescriptionCompat(
+                    mediaId(), ResourceUtils.getString(titleResource), null, null, null,
+                    Uri.parse(artworkUri()), extras, null), MediaBrowserCompat.MediaItem.FLAG_BROWSABLE);
+        }
+
+        @NonNull
+        private Bundle createExtras() {
             Bundle extras = new Bundle();
             boolean uploads = this == UPLOADED_ALBUMS || this == UPLOADED_SONGS || this == UPLOADED_ARTISTS;
             // Show the category itself as a row; the child hints apply after opening it.
@@ -307,10 +317,7 @@ public final class AndroidAutoPatch {
                     this == LAST_PLAYED || uploads ? CONTENT_STYLE_LIST : CONTENT_STYLE_CATEGORY_LIST);
             extras.putInt(CONTENT_STYLE_PLAYABLE_HINT,
                     this == LAST_PLAYED || this == PODCASTS ? CONTENT_STYLE_LIST : CONTENT_STYLE_GRID);
-            if (this == LAST_PLAYED) extras.putBoolean("com.google.android.apps.youtube.music.mediabrowser.IS_LAST_PLAYED", true);
-            return new MediaBrowserCompat.MediaItem(new MediaDescriptionCompat(
-                    mediaId(), ResourceUtils.getString(titleResource), null, null, null,
-                    Uri.parse(artworkUri()), extras, null), MediaBrowserCompat.MediaItem.FLAG_BROWSABLE);
+            return extras;
         }
     }
 
@@ -607,6 +614,7 @@ public final class AndroidAutoPatch {
 
     /** Replaced during patching with calls to YTM's playlist command builder and Android Auto media ID encoder. */
     @Nullable
+    @SuppressWarnings("SameReturnValue")
     static String createPlaylistMediaId(String playlistId) {
         return null;
     }
@@ -1019,7 +1027,7 @@ public final class AndroidAutoPatch {
             if (browseId.isEmpty() || !seenBrowseIds.add(browseId)) continue;
             // Phone show IDs return empty pages through Auto's loader. Request their phone episode lists instead.
             folders.add(PODCAST_COLLECTION_PREFIX + Uri.encode(browseId),
-                    item.title(), item.subtitle(), item.artworkUrl(), false);
+                    item.title(), item.subtitle(), item.artworkUrl());
         }
         return folders;
     }
@@ -1033,8 +1041,8 @@ public final class AndroidAutoPatch {
         PreparedItems() { this(CONTENT_STYLE_LIST); }
         PreparedItems(int playableStyle) { this.playableStyle = playableStyle; }
 
-        void add(String mediaId, String title, String subtitle, String artworkUrl, boolean playable) {
-            add(mediaId, title, subtitle, artworkUrl, playable, "");
+        void add(String mediaId, String title, String subtitle, String artworkUrl) {
+            add(mediaId, title, subtitle, artworkUrl, false, "");
         }
 
         void add(String mediaId, String title, String subtitle, String artworkUrl, boolean playable, String groupTitle) {

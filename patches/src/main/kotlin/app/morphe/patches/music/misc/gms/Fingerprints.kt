@@ -132,3 +132,59 @@ internal object RestoreQueueFromHomepageFingerprint : Fingerprint(
         opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
     )
 )
+
+/**
+ * Device files search, which queries the Play Services app search index and returns the
+ * content uris of the matching songs, albums or artists.
+ */
+internal object DeviceFilesSearchFingerprint : Fingerprint(
+    returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
+    parameters = listOf("Ljava/lang/String;", "[Ljava/lang/String;"),
+    filters = listOf(
+        string("thing_proto"),
+        // The search executor. Its type is Object in app versions that merge this class with others.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this"),
+        // Futures.transform(), that turns the index results into content uris on the executor.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf(
+                "Lcom/google/common/util/concurrent/ListenableFuture;",
+                "L",
+                "Ljava/util/concurrent/Executor;"
+            ),
+            returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Guava Futures.getDone().
+ */
+internal object FuturesGetDoneFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/util/concurrent/Future;"),
+    filters = listOf(
+        string("Future was expected to be done: %s")
+    )
+)
+
+/**
+ * Guava Futures.submit(Callable, Executor).
+ */
+internal object FuturesSubmitFingerprint : Fingerprint(
+    classFingerprint = FuturesGetDoneFingerprint,
+    returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
+    parameters = listOf("Ljava/util/concurrent/Callable;", "Ljava/util/concurrent/Executor;"),
+    filters = listOf(
+        // The shared extension has the Guava library too, where submit() creates
+        // the task with a factory method instead of a constructor.
+        opcode(Opcode.NEW_INSTANCE),
+        methodCall(
+            name = "<init>",
+            parameters = listOf("Ljava/util/concurrent/Callable;"),
+            location = MatchAfterImmediately()
+        ),
+        methodCall(definingClass = "Ljava/util/concurrent/Executor;", name = "execute")
+    )
+)

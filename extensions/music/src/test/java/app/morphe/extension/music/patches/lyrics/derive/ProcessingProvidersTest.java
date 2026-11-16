@@ -170,6 +170,7 @@ public class ProcessingProvidersTest {
         assertFalse(ProcessingProviders.isAi(ProcessingProviders.GOOGLE));
         assertFalse(ProcessingProviders.isAi(ProcessingProviders.DEEPL));
         assertFalse(ProcessingProviders.isAi(ProcessingProviders.EMBEDDED));
+        //noinspection ConstantValue
         assertFalse(ProcessingProviders.isAi(null));
     }
 

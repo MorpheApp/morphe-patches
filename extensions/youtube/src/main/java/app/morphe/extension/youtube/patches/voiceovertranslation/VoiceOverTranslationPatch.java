@@ -58,7 +58,7 @@ import app.morphe.extension.youtube.shared.VideoState;
  *
  * <p>State is touched only on the main thread; the few cross-thread reads use volatile fields.
  */
-@SuppressWarnings({"unused", "deprecation", "RedundantSuppression"})
+@SuppressWarnings("unused")
 public class VoiceOverTranslationPatch {
 
     public static final Setting.ImportExportCallback VOT_IMPORT_EXPORT_CALLBACK = new Setting.ImportExportCallback() {
@@ -589,6 +589,7 @@ public class VoiceOverTranslationPatch {
                     });
                 }
 
+                @Deprecated
                 @Override
                 public void onError(String utteranceId) {
                     onDone(utteranceId);

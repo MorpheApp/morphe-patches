@@ -26,6 +26,7 @@ public final class HideSidebarComponentsPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -61,6 +62,7 @@ public final class HideSidebarComponentsPatch {
 
         private final boolean enabled;
 
+        @SuppressWarnings("SameParameterValue")
         HeaderItem(boolean enabled) {
             this.enabled = enabled;
         }

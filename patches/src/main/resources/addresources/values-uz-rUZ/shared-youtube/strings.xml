@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Yangi sozlamalarni belgilash</string>
   <string name="morphe_settings_new_indicator_days_summary">Yangilanish orqali qo\'shilgan sozlamalar va variantlar yonida nuqta ko\'rsatiladigan kunlar soni</string>
   <string name="morphe_settings_new_indicator_days_off">O\'chirilgan</string>
+  <string name="morphe_settings_new_indicator_clear_title">Barcha sozlamalarni ko\'rilgan deb belgilash</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Barcha yangi sozlamalar va variantlardan nuqtani olib tashlash</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Barcha sozlamalarni ko\'rilgan deb belgilash?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Barcha yangi sozlamalar va variantlardan nuqta olib tashlandi. Kelgusidagi yangilanishlar orqali qo\'shilgan sozlamalar hali ham belgilanadi.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Sozlashni tugatish uchun qayta ishga tushirish</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Paket nomi to'g'ri ekanligini va ilova o'rnatilganligini tekshiring"</string>
   <string name="morphe_external_downloader_empty_warning">Paket nomi bo\'sh bo\'lishi mumkin emas</string>
+  <string name="morphe_export_download_folder_dialog_title">Eksport papkasi</string>
+  <string name="morphe_export_download_folder_change">Papkani o\'zgartirish</string>
+  <string name="morphe_export_download_folder_changed">Eksport papkasi o\'zgartirildi</string>
+  <string name="morphe_export_download_folder_reset">Eksport papkasi tiklandi</string>
+  <string name="morphe_export_download_folder_missing">%s eksport papkasini topib bo\'lmadi</string>
+  <string name="morphe_export_download_flyout_title">Qurilmaga eksport qilish</string>
+  <string name="morphe_export_download_canceled">Eksport bekor qilindi</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Maxsus</string>
   <string name="morphe_custom_branding_icon_title">Ilova belgisi</string>
@@ -110,6 +121,20 @@ Agar siz YouTube Premium foydalanuvchisi bo'lsangiz, ushbu sozlash talab qilinma
 %2$s ni standart mijoz qilishni xohlaysizmi?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Almashtirish</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ushbu sozlamani o\'chirish ijro bilan bog\'liq muammolarga olib kelishi mumkin</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView o\"chirilgan yoki o\"rnatilmagan.
+
+Videoni ijro etish uchun Android System WebView kerak. Uni yoqing va eng so\"nggi versiyagacha yangilang.
+
+Android System WebView’ni ochish uchun OK tugmasini bosing."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView versiyasi eskirgan (%s versiya).
+
+Android System WebView eng so\"nggi versiyaga yangilanguniga qadar videoni ijro etishda xatoliklar yuz berishi mumkin.
+
+Android System WebView’ni ochish uchun OK tugmasini bosing."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Yana ko\'rsatmaslik</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView o\"rnatilmagan. Videoni ijro etishni tuzatish uchun uni o\"rnating</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Agar mijozlar topilmasa: Android VR ga kirish imkoniyatini sinab ko‘ring</string>
@@ -142,6 +167,28 @@ Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
 • Morphe sozlamalaringiz Android VR kimlik tasdiqlanishini import yoki eksport qilmaydi
 • Agar ushbu ilovadan 6 oy davomida foydalanilmasa, Google ushbu kimlik tasdiqlanishini olib tashlaydi
 • Google parolingizni o'zgartirsangiz yoki ushbu qurilmani Google sozlamalaridan olib tashlasangiz, qayta kirishingiz kerak"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobil veb-versiyada tizimga kirish</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Ixtiyoriy: videolarni o\"z hisobingiz orqali ko\"rish uchun YouTube veb-saytiga kiring. Davom etish uchun bu yerni bosing</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hozirda Mobil veb-versiyada tizimga kirilgan</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ushbu funksiyadan foydalanish uchun, \'Standart mijoz\'ni Mobile Web ga o\'zgartiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-ga kiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web videolarni tizimga kirmagan holda yoki YouTube veb-saytiga kirgan holda ijro etadi
+
+• Tizimga kirgan holda, hisob talab qiladigan videolarni, masalan, yosh cheklovi mavjud videolarni ko'rish mumkin
+• Google tizimga kirish sahifasi ushbu ilovada ochiladi
+• Tizimga kirish faqat siz ijro etadigan videolarni olish uchun ishlatiladi
+• Tizimga kirish ma'lumotlari faqat ushbu qurilmada saqlanadi
+
+Tizimga kirish uchun quyidagining 'davom etish' tugmasini bosing"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kirish ma'lumotlari saqlandi
+
+• Morphe sozlamalari Mobile Web kirish ma'lumotlarini import/eksport qilmaydi
+• Agar Google kirish seansini tugatsa, qayta kirguningizga qadar videolar tizimga kirmagan holda ijro etiladi
+• Tizimdan chiqish ushbu qurilmani YouTube veb-saytidan ham chiqaradi"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web kirish muddati tugadi, Mobile Web\'ga qayta kirishga harakat qiling</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web tizimidan chiqildi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView mavjud emas. Kirish uchun uni o\'rnating yoki yoqing</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 vaqtinchalik mavjud emas (API vaqti tugadi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR ga kirish muddati tugadi, VR ga yana kirishni sinab ko‘ring</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 vaqtincha mavjud emas (status %s)</string>
@@ -207,6 +254,20 @@ Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
   <string name="morphe_replace_music_with_youtube_summary">Ulash linklarida music.youtube.com ni youtube.com ga o\'zgartiradi</string>
   <string name="morphe_replace_links_with_shortener_title">Ulash manzillarini youtu.be ga o‘zgartirish</string>
   <string name="morphe_replace_links_with_shortener_summary">Videolarni qisqartirilgan youtu.be URL formatidan foydalanishga majbur qiladi</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Avtomatik</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Video sifatini eslab qolish</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Qo\'lda tanlagan sifatingizni kelajakdagi barcha videolarga qo\'llang</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Sifat o\'zgarishi haqidagi bildirishnomalar</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Yangi standart sifat saqlanganda bildirishnomani ko\'rsatadi</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi tarmog\'idagi odatiy video sifati</string>
+  <string name="morphe_video_quality_default_mobile_title">Mobil tarmoqdagi odatiy video sifati</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Standart mobil sifat: %s ga o\'zgartirildi</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Standart Wi-Fi sifati: %s ga o\'zgartirildi</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Tizim ulashish varag\'ini ochish</string>
+  <string name="morphe_open_system_share_sheet_summary">Ulashishda ilova ichidagi o\'rniga tizim ulashish varag\'ini ochadi</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Lito logging</string>
   <string name="morphe_debug_litho_entry_disabled">O\"chirilgan</string>

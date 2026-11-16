@@ -45,6 +45,9 @@ internal object SubtitleManagerFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
+        // Reason of the track selection: 2 when the caption tracks of a video are loaded
+        // and YouTube selects the track itself, other values for the selections of the user.
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchFirst()),
         string(""),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
@@ -52,6 +55,23 @@ internal object SubtitleManagerFingerprint : Fingerprint(
             returnType = "Z"
         ),
         opcode(opcode = Opcode.IF_EQZ, location = MatchAfterWithin(3))
+    )
+)
+
+/**
+ * Same method as [SubtitleManagerFingerprint]. If no track is selected, the track that the audio track
+ * of the video marks as forced is shown anyway: `if (audioTrack.hasForcedTrack && audioTrack.forcedTrackIndex >= 0)`.
+ */
+internal object SubtitleManagerForcedTrackFingerprint : Fingerprint(
+    classFingerprint = SubtitleManagerFingerprintClassFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, type = "Z"),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchAfterImmediately()),
+        opcode(Opcode.IF_LTZ, location = MatchAfterImmediately())
     )
 )
 
@@ -388,9 +408,8 @@ internal class CaptionTrackBuilderSetterFingerprint(nullValueMessage: String) : 
 )
 
 /**
- * Subtitle manager method that returns the direct caption tracks.
- *
- * @param directTracksMethod Caption tracks manager method that returns the direct tracks.
+ * Subtitle manager method that returns the direct caption tracks,
+ * by calling [CaptionTracksManagerDirectTracksFingerprint] of its caption tracks manager.
  */
 internal object SubtitleManagerDirectTracksFingerprint : Fingerprint(
     classFingerprint = SubtitleManagerFingerprintClassFingerprint,
@@ -418,12 +437,12 @@ internal object DefaultCaptionTrackFingerprint : Fingerprint(
     )
 )
 
-internal fun preferredCaptionsTrackFingerprint() = Fingerprint(
+internal object PreferredCaptionsTrackFingerprint : Fingerprint(
     classFingerprint = DefaultCaptionTrackFingerprint,
     // 21.23+ also has a method without parameters that calls the default track method.
     parameters = listOf("L", "L"),
     filters = listOf(
-        methodCall(reference = DefaultCaptionTrackFingerprint.method),
+        methodCall(reference = { DefaultCaptionTrackFingerprint.originalMethod }),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
 )
@@ -822,7 +841,7 @@ internal object CaptionCueConstructorFingerprint : Fingerprint(
     parameters = listOf("I", "J", "Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "L")
 )
 
-/** Caption window visibility is independent from its nonempty styled text. */
+/** Caption window visibility is independent of its nonempty styled text. */
 internal fun getCaptionSettingsVisibilityFingerprint(settingsType: String) = object : Fingerprint(
     definingClass = settingsType,
     name = "toString",

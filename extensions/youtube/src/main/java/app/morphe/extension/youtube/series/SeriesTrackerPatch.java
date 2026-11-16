@@ -73,6 +73,14 @@ public final class SeriesTrackerPatch {
     }
 
     /**
+     * Autoplay control leaves the next video to an active series session, which follows the
+     * series order.
+     */
+    public static boolean hasActiveSession() {
+        return ENABLED && SeriesPlayback.active();
+    }
+
+    /**
      * Injection point.
      *
      * @return If the app navigation to another video must be skipped.

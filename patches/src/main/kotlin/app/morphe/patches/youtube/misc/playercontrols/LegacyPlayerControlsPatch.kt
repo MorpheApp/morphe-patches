@@ -70,7 +70,6 @@ import java.lang.ref.WeakReference
 /**
  * Add a new top to the bottom of the YouTube player.
  */
-@Suppress("KDocUnresolvedReference")
 internal lateinit var addTopControl: (String, String, String) -> Unit
     private set
 
@@ -79,7 +78,6 @@ private var insertElementId = "@id/player_video_heading"
 /**
  * Add a new bottom to the bottom of the YouTube player.
  */
-@Suppress("KDocUnresolvedReference")
 lateinit var addLegacyBottomControl: (String) -> Unit
     private set
 

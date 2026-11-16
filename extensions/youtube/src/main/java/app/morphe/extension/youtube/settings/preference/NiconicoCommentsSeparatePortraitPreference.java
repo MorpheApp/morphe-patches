@@ -8,9 +8,9 @@
 package app.morphe.extension.youtube.settings.preference;
 
 import android.content.Context;
-import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 
+import app.morphe.extension.shared.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -18,7 +18,7 @@ import app.morphe.extension.youtube.settings.Settings;
  * so the comments look the same until a portrait value is changed.
  */
 @SuppressWarnings({"deprecation", "unused"})
-public class NiconicoCommentsSeparatePortraitPreference extends SwitchPreference {
+public class NiconicoCommentsSeparatePortraitPreference extends BooleanSettingPreference {
 
     public NiconicoCommentsSeparatePortraitPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);

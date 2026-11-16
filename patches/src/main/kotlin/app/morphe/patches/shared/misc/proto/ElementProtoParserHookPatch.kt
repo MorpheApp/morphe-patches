@@ -18,8 +18,8 @@ import app.morphe.util.cloneMutable
 import app.morphe.util.fiveRegisters
 import java.lang.ref.WeakReference
 
-private var elementprotoParserInsertIndexStep = 2
-private var elementprotoParserInsertIndex = elementprotoParserInsertIndexStep
+private const val ELEMENT_PROTO_PARSER_INSERT_INDEX_STEP = 2
+private var elementprotoParserInsertIndex = ELEMENT_PROTO_PARSER_INSERT_INDEX_STEP
 private lateinit var elementProtoParserMethodRef: WeakReference<MutableMethod>
 
 /**
@@ -102,5 +102,5 @@ fun hookElement(
         """
     )
 
-    elementprotoParserInsertIndex += elementprotoParserInsertIndexStep
+    elementprotoParserInsertIndex += ELEMENT_PROTO_PARSER_INSERT_INDEX_STEP
 }

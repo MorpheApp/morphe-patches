@@ -164,7 +164,7 @@ public final class CaptionMenu {
         toggle.setPaddingRelative(Dim.dp16, 0, Dim.dp20, 0);
         final int iconId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "quantum_ic_closed_caption_white_24");
         if (iconId != 0) {
-            Drawable icon = context.getDrawable(iconId).mutate();
+            Drawable icon = Objects.requireNonNull(context.getDrawable(iconId)).mutate();
             icon.setTint(ThemeUtils.getAppForegroundColor());
             toggle.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, null, null, null);
             toggle.setCompoundDrawablePadding(Dim.dp12);
@@ -199,7 +199,7 @@ public final class CaptionMenu {
         thumb.setLayerGravity(0, Gravity.CENTER);
 
         // Move the off glyph inward without changing the measured width of the thumb.
-        LayerDrawable closedThumb = (LayerDrawable) thumb.getConstantState().newDrawable().mutate();
+        LayerDrawable closedThumb = (LayerDrawable) Objects.requireNonNull(thumb.getConstantState()).newDrawable().mutate();
         final int closedInset = Dim.dp(1.5f);
         closedThumb.setLayerInset(0, closedInset, 0, -closedInset, 0);
 

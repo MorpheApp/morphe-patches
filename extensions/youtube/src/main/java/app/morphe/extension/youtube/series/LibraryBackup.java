@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import app.morphe.extension.youtube.patches.VideoInformation;
+
 /**
  * Series library backup. Does not include consents, account identities or YouTube History state.
  */
@@ -204,7 +206,7 @@ final class LibraryBackup {
 
     private static String video(JSONObject object, String key) throws JSONException {
         String value = string(object, key, 11);
-        if (!value.isEmpty() && !value.matches("[A-Za-z0-9_-]{11}")) throw invalid();
+        if (!value.isEmpty() && !VideoInformation.isVideoId(value)) throw invalid();
         return value;
     }
 

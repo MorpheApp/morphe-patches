@@ -28,6 +28,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
  * The candidates are frozen when the search starts, because a blocked flag is never
  * logged again and the set of logged flags would otherwise shrink on every restart.
  */
+@SuppressWarnings("unused")
 public final class FeatureFlagsBisect {
 
     enum Result {

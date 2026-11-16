@@ -1,5 +1,6 @@
 package com.reddit.domain.model;
 
+@SuppressWarnings("unused")
 public final class Link extends ILink {
     public String getAuthor() {
         throw new UnsupportedOperationException("Stub");

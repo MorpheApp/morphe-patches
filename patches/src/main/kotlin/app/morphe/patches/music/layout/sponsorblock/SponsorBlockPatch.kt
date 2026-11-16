@@ -1,17 +1,21 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1842
+ * https://github.com/MorpheApp/morphe-patches/pull/4768
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.music.layout.sponsorblock
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.music.interaction.downloads.MusicOfflineVideoEndpointFingerprint
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -27,6 +31,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.youtube.layout.sponsorblock.categoryPreference
+import app.morphe.util.addInstructionsAtControlFlowLabel
 
 private const val EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS =
     "Lapp/morphe/extension/music/sponsorblock/MusicSponsorBlockConfig;"
@@ -77,6 +82,32 @@ val musicSponsorBlockPatch = patch(
             )
         }
 
+        // Save the segments of downloaded songs and videos.
+        MusicOfflineVideoEndpointFingerprint.let {
+            // The registers of the save call are the instance, then the video ID.
+            val saveCall = it.instructionMatches.first()
+            val videoIdRegister = saveCall.instruction.registersUsed[1]
+
+            it.method.addInstructionsAtControlFlowLabel(
+                saveCall.index,
+                "invoke-static/range { v$videoIdRegister .. v$videoIdRegister }, " +
+                        "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->offlineVideoAdded(Ljava/lang/String;)V"
+            )
+        }
+
+        // Remove the segments of songs and videos that are removed from the downloads.
+        val offlineVideoRemovedHook = "invoke-static { p1 }, " +
+                "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->offlineVideoRemoved(Ljava/lang/String;)V"
+
+        MusicRemoveOfflineTrackFingerprint.method.addInstruction(0, offlineVideoRemovedHook)
+
+        MusicRemoveOfflineTrackActionFingerprint.let {
+            it.method.addInstructionsAtControlFlowLabel(
+                it.instructionMatches.first().index + 1,
+                offlineVideoRemovedHook
+            )
+        }
+
         PreferenceScreen.SPONSORBLOCK.addPreferences(
             SwitchPreference("morphe_sb_enabled", summary = true),
             SwitchPreference("morphe_sb_toast_on_skip", summary = true),
@@ -101,6 +132,7 @@ val musicSponsorBlockPatch = patch(
                 key = "morphe_sb_general",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
+                    SwitchPreference("morphe_sb_offline_segments", summary = true),
                     SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
                     TextPreference("morphe_sb_api_url")
                 )

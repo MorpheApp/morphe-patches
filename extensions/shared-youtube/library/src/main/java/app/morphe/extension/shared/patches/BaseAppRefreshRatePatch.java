@@ -74,6 +74,7 @@ public final class BaseAppRefreshRatePatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     private static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }

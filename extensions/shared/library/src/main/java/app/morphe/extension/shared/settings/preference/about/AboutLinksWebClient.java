@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -19,9 +20,9 @@ class AboutLinksWebClient extends WebViewClient {
         this.dialog = dialog;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        final String url = request.getUrl().toString();
         try {
             if (MorpheAboutPreference.CREDITS_LINK_PLACEHOLDER_URL.equals(url)) {
                 new MorpheCreditsDialog(context).show();

@@ -24,6 +24,7 @@ import app.morphe.extension.shared.Utils;
 /** Owns the Local romanization provider's dictionary downloads and status toasts. The Rime word
  * tables are not one of these: they are the Rime Wordlist provider's own download, and that provider
  * fetches what it needs rather than being chosen here. */
+@SuppressWarnings("unused")
 public final class LyricsLocalRomanizationDownloads {
 
     /** The providers, in the order the settings store them. Each is one download and one
@@ -70,7 +71,7 @@ public final class LyricsLocalRomanizationDownloads {
      */
     public static boolean[] chosen() {
         final String stored = Settings.LYRICS_LOCAL_DICTIONARIES.get();
-        if (stored != null && !stored.isBlank()) {
+        if (!stored.isBlank()) {
             final boolean[] picked = new boolean[4];
             for (String token : stored.split(",")) {
                 switch (token.trim().toLowerCase(Locale.ROOT)) {
@@ -98,7 +99,7 @@ public final class LyricsLocalRomanizationDownloads {
     /** A copy that never chose gets an empty checklist rather than one inferred for it. */
     public static boolean hasChoice() {
         final String stored = Settings.LYRICS_LOCAL_DICTIONARIES.get();
-        return stored != null && !stored.isBlank();
+        return !stored.isBlank();
     }
 
     /** Stores the user's choice. Providers that were on and are now off are deleted, so nothing
@@ -126,18 +127,22 @@ public final class LyricsLocalRomanizationDownloads {
             value.append("sudachi");
         }
         if (unidict) {
+            //noinspection SizeReplaceableByIsEmpty
             if (value.length() > 0) value.append(',');
             value.append("unidict");
         }
         if (pinyin) {
+            //noinspection SizeReplaceableByIsEmpty
             if (value.length() > 0) value.append(',');
             value.append("pinyin");
         }
         if (cldr) {
+            //noinspection SizeReplaceableByIsEmpty
             if (value.length() > 0) value.append(',');
             value.append("cldr");
         }
         // Kept distinct from blank, which is a copy that never chose.
+        //noinspection SizeReplaceableByIsEmpty
         Settings.LYRICS_LOCAL_DICTIONARIES.save(value.length() == 0 ? NONE : value.toString());
     }
 
@@ -204,10 +209,7 @@ public final class LyricsLocalRomanizationDownloads {
         if (picked[PINYIN] && !PinyinDictStore.isComplete()) {
             return false;
         }
-        if (picked[CLDR] && !CldrTransformsStore.isReady()) {
-            return false;
-        }
-        return true;
+        return !picked[CLDR] || CldrTransformsStore.isReady();
     }
 
     /** Whether a fetch the user asked for is running and not finished yet. */
@@ -230,9 +232,9 @@ public final class LyricsLocalRomanizationDownloads {
 
     @Nullable
     private static Progress busy() {
-        for (int i = 0; i < progress.length; i++) {
-            if (!progress[i].done && progress[i].label != null) {
-                return progress[i];
+        for (Progress p : progress) {
+            if (!p.done && p.label != null) {
+                return p;
             }
         }
         return null;

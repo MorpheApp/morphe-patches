@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">ახალი პარამეტრების გამოყოფა</string>
   <string name="morphe_settings_new_indicator_days_summary">დღეების რაოდენობა, რომლის განმავლობაშიც განახლებით დამატებულ პარამეტრებთან და ოფციებთან გამოჩნდება წერტილი</string>
   <string name="morphe_settings_new_indicator_days_off">გამორთული</string>
+  <string name="morphe_settings_new_indicator_clear_title">მონიშნეთ ყველა პარამეტრის ნახვრა</string>
+  <string name="morphe_settings_new_indicator_clear_summary">წაშალეთ წერტილი ყველა ახალი პარამეტრიდან და ოფციიდან</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">მონიშნოთ ყველა პარამეტრის ნახვრა?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">წერტილი წაშლილია ყველა ახალი პარამეტრიდან და ოფციიდან. მომავალ განახლებებში დამატებული პარამეტრები კვლავ იქნება მონიშნული.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">გადატვირთეთ კონფიგურაციის დასასრულებლად</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 შეამოწმეთ, რომ პაკეტის სახელი სწორია და აპლიკაცია დაინსტალირებულია"</string>
   <string name="morphe_external_downloader_empty_warning">პაკეტის სახელი არ შეიძლება იყოს ცარიელი</string>
+  <string name="morphe_export_download_folder_dialog_title">ექსპორტის საქაღალდე</string>
+  <string name="morphe_export_download_folder_change">საქაღალდის შეცვლა</string>
+  <string name="morphe_export_download_folder_changed">ექსპორტის საქაღალდე შეიცვალა</string>
+  <string name="morphe_export_download_folder_reset">ექსპორტის საქაღალდე ნაგულისხმევზე დაბრუნდა</string>
+  <string name="morphe_export_download_folder_missing">ვერ მოხერხდა ექსპორტის საქაღალდის %s პოვნა</string>
+  <string name="morphe_export_download_flyout_title">ექსპორტი მოწყობილობაზე</string>
+  <string name="morphe_export_download_canceled">ექსპორტი გაუქმდა</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">საკუთარი</string>
   <string name="morphe_custom_branding_icon_title">აპლიკაციის ხატულა</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 გსურთ %2$s გახდეს ნაგულისხმევი კლიენტი?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">გადართვა</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">ამ პარამეტრის გამორთვამ შესაძლოა გამოიწვიოს დაკვრის პრობლემები</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView გამორთულია ან არ არის დაინსტალირებული.
+
+ვიდეოს მოსათამაშებლად საჭიროა Android System WebView. ჩართეთ იგი და განაახლეთ ბოლო ვერსიამდე.
+
+დააჭირეთ OK-ს Android System WebView-ის გახსნელად."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView მოძველებულია (ვერსია %s).
+
+ვიდეოს გაშვება შესაძლოა ვერ მოხერხდეს, სანამ Android System WebView არ განახლდება ბოლო ვერსიამდე.
+
+დააჭირეთ OK-ს Android System WebView-ის გახსნელად."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">აღარ გამოჩნდეს</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView არ არის დაინსტალირებული. დააინსტალირეთ ვიდეოს დაკვრის პრობლემის გამოსასწორებლად</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">სცადეთ ჩართვა: ვიდეო სტრიმების იმიტაცია &gt; Android VR-ზე ავტორიზაცია</string>
@@ -142,6 +167,28 @@ Second \"item\" text"</string>
 • თქვენი Morphe-ის პარამეტრები არ მოახდენს Android VR ავთენტიფიკაციის იმპორტს/ექსპორტს
 • თუ ეს აპლიკაცია 6 თვის განმავლობაში არ იქნება გამოყენებული, Google წაშლის ამ ავთენტიფიკაციას
 • დაგჭირდებათ ხელახლა ავტორიზაცია, თუ შეცვლით Google-ის პაროლს ან წაშლით ამ მოწყობილობას თქვენი Google-ის პარამეტრებიდან"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">შესვლა მობილური ვებგვერდიდან</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">სურვილისამებრ: შედით YouTube-ის ვებგვერდზე, რათა ვიდეოები თქვენი ანგარიშით ჩართოთ. გასაგრძელებლად დააჭირეთ აქ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ამჟამად შესული ხართ მობილურ ვებგვერდზე</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ამ ფუნქციის გამოსაყენებლად, შეცვალეთ \'ნაგულისხმევი კლიენტი\' Mobile Web-ით</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">შესვლა Mobile Web-ში</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web ეთამაშება ვიდეოებს სისტემიდან გამოსვლილ მდგომარეობაში, ან YouTube-ის ვებგვერდზე შესვლის შემდეგ
+
+• შესვლის შემთხვევაში, შესაძლებელია იმ ვიდეოების გაშვება, რომლებიც ანგარიშს საჭიროებენ, მაგალითად, ასაკობრივი შეზღუდვის მქონე ვიდეოები
+• Google-ის ავტორიზაციის გვერდი იხსნება ამ აპლიკაციაში
+• ავტორიზაცია გამოიყენება მხოლოდ თქვენ მიერ გაშვებული ვიდეოების მისაღებად
+• ავტორიზაცია ინახება მხოლოდ ამ მოწყობილობაზე
+
+შესასვლელად, დააჭირეთ ქვემოთ მოცემულ ღილაკს 'გაგრძელება'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ავტორიზაცია შენახულია
+
+• თქვენი Morphe-ის პარამეტრები არ განახორციელებს Mobile Web-ის ავტორიზაციის იმპორტს/ექსპორტს
+• თუ Google გააწყვეტინებს სესიას, ვიდეოები ჩაირთვება სისტემიდან გამოსვლილ მდგომარეობაში, სანამ ხელახლა არ შეხვალთ
+• სისტემიდან გამოსვლა ასევე გათიშავს ამ მოწყობილობის ავტორიზაციას YouTube-ის ვებგვერდზე"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">მობილური ვებგვერდის ავტორიზაციის ვადა ი หมดრუნდა, სცადეთ ხელახლა შესვლა მობილურ ვებგვერდზე</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">გადმოხვედით მობილური ვებგვერდიდან</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недоступен. ავტორიზაციისთვის დააინსტალირეთ ან ჩართეთ იგი</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 დროებით მიუწვდომელია (API-ს დრო დასრულდა)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-ის ავტორიზაციის ვადა ამოიწურა, სცადეთ VR-ში ხელახლა შესვლა</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 დროებით მიუწვდომელია (სტატუსი %s)</string>
@@ -207,6 +254,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">გაზიარებულ ბმულებში music.youtube.com-ს ანაცვლებს youtube.com-ით</string>
   <string name="morphe_replace_links_with_shortener_title">გაზიარების ბმულების შეცვლა youtu.be-ით</string>
   <string name="morphe_replace_links_with_shortener_summary">აიძულებს ვიდეოებს გამოიყენონ youtu.be URL-ის შემოკლებული ფორმატი</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">ავტომატური</string>
+  <string name="morphe_remember_video_quality_last_selected_title">ვიდეოს ხარისხის დამახსოვრება</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">თქვენ მიერ ხელით არჩეული ხარისხი გავრცელდება ყველა მომავალ ვიდეოზე</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">შეტყობინებები ხარისხის ცვლილების შესახებ</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">აჩვენებს შეტყობინებას, როდესაც ახალი ნაგულისხმევი ხარისხი ინახება</string>
+  <string name="morphe_video_quality_default_wifi_title">ვიდეოს ნაგულისხმევი ხარისხი Wi-Fi ქსელში</string>
+  <string name="morphe_video_quality_default_mobile_title">ვიდეოს ნაგულისხმევი ხარისხი მობილურ ქსელში</string>
+  <string name="morphe_remember_video_quality_toast_mobile">მობილურისთვის ნაგულისხმევი ხარისხი შეიცვალა: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-სთვის ნაგულისხმევი ხარისხი შეიცვალა: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">გახსნით სისტემური გაზიარების პანელი</string>
+  <string name="morphe_open_system_share_sheet_summary">კონტენტის გაზიარებისას გახსნის სისტემურ გაზიარების პანელს პროგრამის შიდა პანელის ნაცვლად</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-ლოგირება</string>
   <string name="morphe_debug_litho_entry_disabled">გამორთვას</string>

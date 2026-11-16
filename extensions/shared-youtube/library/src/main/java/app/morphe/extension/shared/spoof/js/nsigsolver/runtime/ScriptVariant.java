@@ -1,5 +1,6 @@
 package app.morphe.extension.shared.spoof.js.nsigsolver.runtime;
 
+@SuppressWarnings("unused")
 public enum ScriptVariant {
     UNKNOWN("unknown"),
     MINIFIED("minified"),

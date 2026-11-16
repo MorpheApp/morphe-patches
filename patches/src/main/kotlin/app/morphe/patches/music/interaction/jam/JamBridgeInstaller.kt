@@ -9,10 +9,10 @@ package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getMutableMethod
-import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
-import app.morphe.util.cloneMutable
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -41,7 +41,6 @@ internal fun installJamQueueBridges(queue: JamQueueAbi) {
 
 private fun installQueueAccess(queue: JamQueueAbi) {
     val manager = mutableClassDefBy(queue.managerType)
-    manager.interfaces.add(ACCESS)
     val enqueue = queue.enqueue.getMutableMethod()
     val localEnqueue = enqueue.name
     enqueue.setName("patch_jamLocalEnqueue")
@@ -63,16 +62,13 @@ private fun installQueueAccess(queue: JamQueueAbi) {
             return-void
         """
     )
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamEnqueue",
-        listOf("[B"),
-        "V",
-        4,
-        body =
-            queue.command.decode("p1", "v0") + """
-            ${invokeKind(queue.enqueue)} {p0, v0}, $enqueue
-            return-void
-        """
+        queue.command.decode("p1", "v0") + """
+        ${invokeKind(queue.enqueue)} {p0, v0}, $enqueue
+        return-void
+    """
     )
     manager.addReferenceGetter("patch_jamExecutor", queue.executor)
     installQueueSnapshots(manager, queue)
@@ -85,12 +81,10 @@ private fun installQueueAccess(queue: JamQueueAbi) {
 }
 
 private fun installQueueSnapshots(manager: MutableClass, queue: JamQueueAbi) {
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamLaneItems",
-        listOf("I"),
-        "[Ljava/lang/Object;",
-        3,
-        body = """
+        """
             iget-object v0, p0, ${queue.storage.field}
             ${invokeKind(queue.storage.items)} {v0, p1}, ${queue.storage.items}
             move-result-object v0
@@ -105,12 +99,10 @@ private fun installQueueSnapshots(manager: MutableClass, queue: JamQueueAbi) {
         queue.storage.currentIndex,
         receiverField = queue.storage.field,
     )
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamLocal",
-        emptyList(),
-        "Z",
-        3,
-        body = """
+        """
             iget-object v0, p0, ${queue.storage.field}
             ${invokeKind(queue.storage.mode)} {v0}, ${queue.storage.mode}
             move-result-object v0
@@ -134,21 +126,17 @@ private fun installQueueItemMetadata(
     installNativeAccessor(manager, "patch_jamItemId", item.persistentId, opaqueReceiver = true)
 }
 
-@Suppress("UnusedReceiverParameter")
 private fun installQueueCreation(manager: MutableClass, queue: JamQueueAbi) {
     val item = queue.item
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamCreateItem",
-        listOf("[B", "J"),
-        "Ljava/lang/Object;",
-        8,
-        body =
-            item.itemProto.decode("p1", "v1") + """
-            iget-object v3, p0, ${item.factory}
-            new-instance v0, ${item.createItem.type}
-            invoke-direct {v0, p2, p3, v1, v3}, ${item.createItem.type}-><init>(J${item.itemProto.type}${item.factory.type})V
-            return-object v0
-        """
+        item.itemProto.decode("p1", "v1") + """
+        iget-object v3, p0, ${item.factory}
+        new-instance v0, ${item.createItem.type}
+        invoke-direct {v0, p2, p3, v1, v3}, ${item.createItem.type}-><init>(J${item.itemProto.type}${item.factory.type})V
+        return-object v0
+    """
     )
 }
 
@@ -212,12 +200,10 @@ private fun installDisplayAccess(
         """
     )
     if (property == "DisplayedList") {
-        manager.addBridge(
+        manager.addPatchInterface(
+            ACCESS,
             "patch_jamViewThread",
-            listOf("Ljava/lang/Runnable;"),
-            "V",
-            3,
-            body = """
+            """
                 iget-object v0, p0, ${display.managerField}
                 iget-object v0, v0, ${display.handler}
                 invoke-virtual {v0, p1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
@@ -293,23 +279,19 @@ private fun installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
             return-void
         """
     )
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamRemoveItem",
-        listOf("Ljava/lang/Object;"),
-        "V",
-        2,
-        body = """
+        """
             check-cast p1, ${queue.item.type}
             ${invokeKind(queue.remove)} {p0, p1}, $remove
             return-void
         """
     )
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamMoveLane",
-        listOf("I", "I", "I"),
-        "V",
-        5,
-        body = """
+        """
             iget-object v0, p0, ${queue.storage.field}
             ${invokeKind(queue.storage.lane)} {v0, p1}, ${queue.storage.lane}
             move-result-object v0
@@ -318,12 +300,10 @@ private fun installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
         """
     )
     val comparable = queue.mutation.move.parameters().first()
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamNotifyMove",
-        listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
-        "V",
-        4,
-        body = """
+        """
             check-cast p1, $comparable
             check-cast p2, $comparable
             iget-object v0, p0, ${queue.mutation.provider}
@@ -337,27 +317,22 @@ private fun installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
 }
 
 private fun installQueueMenu(manager: MutableClass, queue: JamQueueAbi) {
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamRequestMenu",
-        listOf("[B"),
-        "Ljava/util/concurrent/Future;",
-        5,
-        body =
-            queue.command.decode("p1", "v0") + """
-            iget-object v1, p0, ${queue.menu.dispatcher}
-            invoke-virtual {p0}, ${manager.type}->patch_jamExecutor()Ljava/util/concurrent/Executor;
-            move-result-object v2
-            ${invokeKind(queue.menu.dispatch)} {v1, v0, v2}, ${queue.menu.dispatch}
-            move-result-object v0
-            return-object v0
-        """
+        queue.command.decode("p1", "v0") + """
+        iget-object v1, p0, ${queue.menu.dispatcher}
+        invoke-virtual {p0}, ${manager.type}->patch_jamExecutor()Ljava/util/concurrent/Executor;
+        move-result-object v2
+        ${invokeKind(queue.menu.dispatch)} {v1, v0, v2}, ${queue.menu.dispatch}
+        move-result-object v0
+        return-object v0
+    """
     )
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamMenuItems",
-        listOf("Ljava/lang/Object;"),
-        "[Ljava/lang/Object;",
-        2,
-        body = """
+        """
             check-cast p1, ${queue.menu.responseType}
             iget-object p1, p1, ${queue.menu.responseItems}
             invoke-interface {p1}, Ljava/util/List;->toArray()[Ljava/lang/Object;
@@ -488,32 +463,26 @@ private fun installQueueItemAccess(item: QueueItemAbi) {
         check(implementsType(nativeItem.type, menuPayload.type)) {
             "Jam queue item ${nativeItem.type} cannot provide the resolved menu payload"
         }
-        nativeItem.interfaces.add(ITEM_ACCESS)
         installNativeAccessor(
             nativeItem,
             "patch_jamArtwork",
             item.artwork,
             resultType = "Ljava/lang/Object;",
         )
-        nativeItem.addBridge(
+        nativeItem.addPatchInterface(
+            ITEM_ACCESS,
             "patch_jamMenuPayload",
-            emptyList(),
-            "Ljava/lang/Object;",
-            1,
-            body = """
+            """
                 check-cast p0, ${menuPayload.type}
                 return-object p0
             """
         )
     }
     val artwork = mutableClassDefBy(item.artwork.returnType)
-    artwork.interfaces.add(ARTWORK_ACCESS)
-    artwork.addBridge(
+    artwork.addPatchInterface(
+        ARTWORK_ACCESS,
         "patch_jamThumbnailEntries",
-        emptyList(),
-        "[Ljava/lang/Object;",
-        2,
-        body = """
+        """
             iget-object v0, p0, ${item.artworkList}
             invoke-interface {v0}, Ljava/util/List;->toArray()[Ljava/lang/Object;
             move-result-object v0
@@ -526,19 +495,22 @@ private fun installQueueItemAccess(item: QueueItemAbi) {
 }
 
 private fun installQueueManagerCapture(queue: JamQueueAbi) {
-    val original = queue.constructor.getMutableMethod()
-    val preservedThisRegister = requireNotNull(original.implementation).registerCount
-    val constructor =
-        original.cloneMutable(additionalRegisters = original.numberOfParameterRegisters + 1)
-    mutableClassDefBy(original.definingClass).methods.apply {
-        remove(original)
-        add(constructor)
-    }
-    constructor.addInstructions(0, "move-object/from16 v$preservedThisRegister, p0")
+    installQueueConstructorCapture(queue.constructor, "$BRIDGE->capture($ACCESS)V")
+}
+
+/**
+ * Calls [captureMethod] with the new queue manager before every return of its constructor.
+ * The current mutable method is cloned, so a capture added by another patch is kept.
+ */
+internal fun installQueueConstructorCapture(
+    constructorMethod: MethodReference,
+    captureMethod: String,
+) {
+    val constructor = constructorMethod.getMutableMethod().cloneParameters()
     constructor.findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
         constructor.addInstructions(
             index,
-            "invoke-static/range {v$preservedThisRegister .. v$preservedThisRegister}, $BRIDGE->capture($ACCESS)V",
+            "invoke-static/range {p0 .. p0}, $captureMethod",
         )
     }
 }

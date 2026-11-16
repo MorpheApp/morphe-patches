@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.jam;
 
 import java.lang.ref.WeakReference;
 import java.util.concurrent.Executor;
+import java.util.concurrent.Future;
 
 /** Native operations run only on YouTube Music's own queue executor. */
 @SuppressWarnings("ALL")
@@ -62,7 +63,7 @@ public final class YouTubeMusicBridge {
                 : "";
         }
 
-        default java.util.concurrent.Future<?> patch_jamRequestMenu(
+        default Future<?> patch_jamRequestMenu(
             byte[] command
         ) {
             throw new UnsupportedOperationException();

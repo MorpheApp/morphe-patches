@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_enabled_title">SponsorBlock-u aktivləşdir</string>
-  <string name="morphe_sb_enabled_summary">SponsorBlock YouTube videolarının cansıxıcı hissələrini ötürmək üçün toplu sistemdir</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock YouTube videolarının cansıxıcı hissələrini ötürmək üçün icma mənbəli sistemdir</string>
   <string name="morphe_sb_appearance_category_title">Görünüş</string>
   <string name="morphe_sb_voting_button_title">Səsvermə düyməsini göstər</string>
   <string name="morphe_sb_voting_button_summary">Bölümlərə müsbət və ya mənfi səs vermək üçün düymə əlavə edir</string>
@@ -230,7 +230,7 @@ Təqdim etməyə hazırdır?"</string>
   <string name="morphe_sb_stats_saved_second_format">%s saniyə</string>
   <string name="morphe_sb_color_opacity_label">Qeyri-şəffaflıq:</string>
   <string name="morphe_sb_color_dot_label">Rəng:</string>
-  <string name="morphe_sb_about_api_summary">"SponsorBlock — sponsorlar, girişlər, sonluqlar və abunə olmaq xatırlatmaları kimi video bölümlərindən ibarət kütləvi toplanmış məlumatlar bazasıdır. Bölümlər icma tərəfindən təqdim edilir və səsverməyə qoyulur, məlumatlar bazası isə açıqdır və yükləmək üçün pulsuzdur
+  <string name="morphe_sb_about_api_summary">"SponsorBlock — sponsorlar, girişlər, sonluqlar və abunə olmaq xatırlatmaları kimi video bölümlərindən ibarət icmadan toplanmış məlumatlar bazasıdır. Bölümlər icma tərəfindən təqdim edilir və səsverməyə qoyulur, məlumatlar bazası isə açıqdır və yükləmək üçün pulsuzdur
 
 ​Baxdığınız videonun ID-si ​bölümləri əldə etmək üçün SponsorBlock API-yə göndərilir"</string>
 </resources>

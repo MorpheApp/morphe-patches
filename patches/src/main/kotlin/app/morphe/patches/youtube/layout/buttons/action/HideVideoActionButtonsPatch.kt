@@ -31,7 +31,6 @@ private const val VIDEO_ACTION_FILTER =
 private const val QUICK_ACTIONS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/QuickActionButtonsFilter;"
 
-@Suppress("unused")
 val hideVideoActionButtonsPatch = patch(
     name = "Hide video action buttons",
     description = "Adds options to hide video action buttons in fullscreen and portrait modes."

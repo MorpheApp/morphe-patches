@@ -22,7 +22,6 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideAutoplayPreviewPatch;"
 
-@Suppress("unused")
 val hideAutoplayPreviewPatch = patch(
     name = "Hide autoplay preview",
     description = "Adds an option to hide the autoplay preview at the end of videos.",

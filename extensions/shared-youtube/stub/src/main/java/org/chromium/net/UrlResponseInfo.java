@@ -1,6 +1,7 @@
 package org.chromium.net;
 
 //dummy class
+@SuppressWarnings("unused")
 public abstract class UrlResponseInfo {
 
     public abstract String getUrl();

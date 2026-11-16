@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Áhersla á nýjar stillingar</string>
   <string name="morphe_settings_new_indicator_days_summary">Fjöldi daga sem punktur birtist við stillingar og valkosti sem bættust við í uppfærslu</string>
   <string name="morphe_settings_new_indicator_days_off">Slökkt</string>
+  <string name="morphe_settings_new_indicator_clear_title">Merkt allar stillingar sem sínar</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Fjarlæg punktinn frá öllum nýjum stillingum og valkostum</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Merkja allar stillingar sem sínar?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Punkturinn er fjarlægður úr öllum nýjum stillingum og valkostum. Stillingar sem bættast við í framtíðaruppfærslum verða samt með áherslu.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Endurræstu til að ljúka uppsetningunni</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Staðfestu að pakkanafnið sé rétt og að forritið sé uppsett"</string>
   <string name="morphe_external_downloader_empty_warning">Pakkarnafn má ekki vera tómt</string>
+  <string name="morphe_export_download_folder_dialog_title">Útflutningsmappa</string>
+  <string name="morphe_export_download_folder_change">Breyta möppu</string>
+  <string name="morphe_export_download_folder_changed">Útflutningsmöppu breytt</string>
+  <string name="morphe_export_download_folder_reset">Útflutningsmöppu endurstillt</string>
+  <string name="morphe_export_download_folder_missing">Gat ekki fundið útflutningsmöppu %s</string>
+  <string name="morphe_export_download_flyout_title">Flytja í tæki</string>
+  <string name="morphe_export_download_canceled">Útflutningi hætt</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Sérsniðin</string>
   <string name="morphe_custom_branding_icon_title">Tákn forrits</string>
@@ -110,6 +121,20 @@ Ef þú ert YouTube Premium notandi gæti þessi stilling ekki verið nauðsynle
 Gera %2$s að sjálfgefnum biðlara?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Skipta</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Að slökkva á þessari stillingu gæti valdið spilunarvandamálum</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView er slökkað eða ekki sett upp.
+
+Myndspilun þarf Android System WebView. Kveiktu á því og uppfærið í nýjasta útgáfuna.
+
+Ýttu OK til að opna Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView er úrelt (útgáfa %s).
+
+Myndspilun gæti mistekist þar til Android System WebView er uppfært í nýjasta útgáfuna.
+
+Ýttu OK til að opna Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ekki sýna aftur</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView er ekki sett upp. Settu það upp til að laga myndspilun</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Reyndu að virkja: Spoof myndstreymi > Android VR innskráning</string>
@@ -142,6 +167,28 @@ Til að skrá þig inn ýttu á Halda áfram hér að neðan"</string>
 • Morphe stillingar flytja ekki út eða inn Android VR auðkenningu
 • Ef þetta forrit er ekki notað í 6 mánuði mun Google fjarlægja þessa auðkenningu
 • Þú þarft að skrá þig inn aftur ef þú breytir Google lykilorðinu þínu eða afskráir þetta tæki í Google stillingum þínum"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Innskráning í vefútgáfu fyrir farsíma</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valfrjáls: skráðu þig inn á YouTube vefsíðuna til að spila myndbönd með reikningnum þínum. Ýttu hér til að halda áfram</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in"> núna skráð inn á Mobile Web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Til að nota þennan eiginleika skaltu breyta \'Sjálfgefnum biðlara\' í Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Skráðu þig inn á Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web spilar myndböndum án innskráningar eða þegar skráð er inn á YouTube vefsíðuna
+
+• Ef skráð er inn er hægt að spila myndbönd sem krefjast reiknings, svo sem aldurstakmörkuð myndbönd
+• Innskráningarsíða Google opnast í þessari forrit
+• Innskráningin er eingöngu notuð til að fá myndböndin sem þú spilar
+• Innskráningin er aðeins vistuð á þessu tæki
+
+Til að skrá þig inn skaltu ýta á halda áfram hér að neðan"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Innskráning vistuð
+
+• Stillingar Morphe munu ekki flytja inn/út innskráningu á farsímavefnum
+• Ef Google lýkur innskráningunni eru myndbönd spiluð án innskráningar þar til þú skráir þig inn aftur
+• Með því að skrá þig út skráir þú þessu tæki einnig út af YouTube vefsíðunni"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Innskráning á farsímavefnum er runnin út, reyndu að skrá þig inn á farsímavefnum aftur</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Útskráð af farsímavefnum</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView er ekki aðgengilegt. Uppsetja eða virkja það til að skrá þig inn</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er tímabundið ekki tiltækt (API rann út á tíma)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Innskráning á Android VR er runnin út, reyndu að skrá þig inn á VR aftur</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 er tímabundið ekki tiltækt (staða %s)</string>
@@ -207,6 +254,20 @@ Til að skrá þig inn ýttu á Halda áfram hér að neðan"</string>
   <string name="morphe_replace_music_with_youtube_summary">Breytir music.youtube.com í youtube.com í deilitenglum</string>
   <string name="morphe_replace_links_with_shortener_title">Breyta deilitenglum í youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Neyðir myndbönd til að nota styttri youtu.be-vefslóðarsnið</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Sjálfvirkt</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Muna gæði myndskeiðs</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Beitir handvöldu gæðavali á öll næstu myndskeið</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Tilkynningar um gæðabreytingar</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Sýnir tilkynningu þegar nýtt sjálfgefið gæði er vistað</string>
+  <string name="morphe_video_quality_default_wifi_title">Sjálfgefin myndgæði á Wi-Fi neti</string>
+  <string name="morphe_video_quality_default_mobile_title">Sjálfgefin myndgæði á farsímaneti</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Breytt sjálfgefin gæði fyrir farsíma í: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Breytt sjálfgefin Wi-Fi gæði í: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Opna deilingarvalmynd kerfisins</string>
+  <string name="morphe_open_system_share_sheet_summary">Opnar deilingarvalmynd kerfisins í stað innbyggðrar þegar efni er deilt</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-skráning</string>
   <string name="morphe_debug_litho_entry_disabled">Óvirkt</string>

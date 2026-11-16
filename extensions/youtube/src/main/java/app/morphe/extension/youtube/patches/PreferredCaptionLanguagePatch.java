@@ -71,6 +71,7 @@ public class PreferredCaptionLanguagePatch {
          * Selects a track as the native player does for a default selection.
          * Added only for YouTube 21.10 and newer, where it is used.
          */
+        @SuppressWarnings("EmptyMethod")
         default void patch_selectCaptionTrack(CaptionTrackInterface track) {
         }
     }

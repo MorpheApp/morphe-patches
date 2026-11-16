@@ -14,14 +14,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getFreeRegisterProvider
-import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.hookLikeDislikeButtons
-import app.morphe.patches.shared.layout.returnyoutubedislike.likeEndpointParserFingerprint
-import app.morphe.patches.shared.layout.returnyoutubedislike.requestParameterCheckFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.LikeEndpointParserFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.RequestParameterCheckFingerprint
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
@@ -67,6 +67,7 @@ val returnYouTubeDislikePatch = patch(
             SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
             SwitchPreference("morphe_ryd_feed_like_count"),
             SwitchPreference("morphe_ryd_feed_like_ratio"),
+            ListPreference("morphe_ryd_feed_counts_position"),
             SwitchPreference("morphe_ryd_estimated_like", summary = true),
             SwitchPreference("morphe_ryd_toast_on_connection_error", summary = true),
             screenInfoPreferenceCategory(
@@ -101,11 +102,10 @@ val returnYouTubeDislikePatch = patch(
 
         val endPointServiceNameField = EndpointServiceNameFingerprint
             .instructionMatches.last().fieldReference
-        val likeEndpointParserClass = DislikeFingerprint.classDef.superclass!!
-        val videoIdField = requestParameterCheckFingerprint(likeEndpointParserClass)
+        val videoIdField = RequestParameterCheckFingerprint
             .instructionMatches.last().fieldReference
 
-        likeEndpointParserFingerprint(likeEndpointParserClass).let {
+        LikeEndpointParserFingerprint.let {
             it.method.apply {
                 val insertIndex = it.instructionMatches[1].index + 1
                 val likeEndpointTargetClassRegister =

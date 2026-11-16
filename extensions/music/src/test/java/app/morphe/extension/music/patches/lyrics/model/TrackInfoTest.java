@@ -43,19 +43,21 @@ public class TrackInfoTest {
     @Test
     public void equalsSelf() {
         TrackInfo track = new TrackInfo("Title", "Artist", null, 0);
+        //noinspection EqualsWithItself
         assertEquals(track, track);
     }
 
     @Test
     public void equalsNullFalse() {
         TrackInfo track = new TrackInfo("Title", "Artist", null, 0);
-        assertNotEquals(track, null);
+        assertNotEquals(null, track);
     }
 
     @Test
     public void equalsNonTrackFalse() {
         TrackInfo track = new TrackInfo("Title", "Artist", null, 0);
-        assertNotEquals(track, "not a track");
+        //noinspection AssertBetweenInconvertibleTypes
+        assertNotEquals("not a track", track);
     }
 
     @Test

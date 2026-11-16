@@ -19,7 +19,7 @@ import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
-import app.morphe.extension.reddit.patches.VersionCheckPatch;
+import app.morphe.extension.reddit.settings.RedditActivityHook;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.DownloadLocationPreference;
@@ -104,7 +104,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         addPreference(new CustomDialogListPreference(context, BaseSettings.DEBUG_LEVEL));
 
         // Include original privacy policy link that was changed to open Morphe settings.
-        if (VersionCheckPatch.is_2026_25_or_greater) {
+        if (RedditActivityHook.isPrivacyPolicyReplaced()) {
             URLLinkPreference preference = new URLLinkPreference(context);
             preference.setTitle(str("reddit_privacy_policy"));
             preference.externalURL = ResourceUtils.getString("privacy_policy_uri");

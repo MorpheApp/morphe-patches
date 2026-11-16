@@ -158,8 +158,8 @@ public final class NavigationBar {
      * Search bar closed by the back button/gesture or by a navigation button.
      * <p>
      * Litho starts filtering the tab below the search before the search bar is detached,
-     * and without this the tab is filtered as search results. Waiting on the Litho thread
-     * for the detach is not possible, because the main thread can wait for the same Litho layout
+     * and without this the tab is filtered as search results. The Litho thread cannot wait
+     * until the search bar detaches, because the main thread can wait for the same Litho layout
      * before it detaches the search bar.
      * <p>
      * Only this search bar is considered closed, so a search bar loaded again
@@ -317,7 +317,7 @@ public final class NavigationBar {
     private static final long TAPPED_NAVIGATION_BUTTON_TIMEOUT_MILLISECONDS = 1000;
 
     /**
-     * Navigation button selected again by going back from the root of the You tab,
+     * Navigation button selected again by going back from the root of the 'You' tab,
      * and when going back.
      * <p>
      * Litho filters the tab it goes back to before the navigation bar is updated (150-600ms later),
@@ -533,7 +533,7 @@ public final class NavigationBar {
 
     /**
      * Going back from the root of a tab selects again the tab it was opened from.
-     * Only the You tab is used, as its root shows only horizontal collections, and the tabs it is
+     * Only the 'You' tab is used, as its root shows only horizontal collections, and the tabs it is
      * verified to select again: the Home and Subscriptions tabs. The Subscriptions feed is not used,
      * as its elements cannot be told apart from the elements of the Home feed.
      * <p>
@@ -621,8 +621,7 @@ public final class NavigationBar {
      * Injection point.
      * Fixes missing drawable.
      */
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public static void setCairoNotificationFilledIcon(EnumMap enumMap, Enum tabActivityCairo) {
+    public static <E extends Enum<E>> void setCairoNotificationFilledIcon(EnumMap<E, Integer> enumMap, E tabActivityCairo) {
         // Show a popup informing this fix is no longer needed to those who might care.
         Logger.printExceptionIfDebug(() -> enumMap.containsKey(tabActivityCairo)
                 ? "YouTube fixed the notification icons"
@@ -721,8 +720,8 @@ public final class NavigationBar {
 
         /**
          * Same as {@link #getSelectedNavigationButton()}, but while going back from the root of the
-         * You tab, the Litho elements that are not in a horizontal collection are of the tab it goes
-         * back to, as the elements of the root of the You tab are in horizontal collections.
+         * 'You' tab, the Litho elements that are not in a horizontal collection are of the tab it goes
+         * back to, as the elements of the root of the 'You' tab are in horizontal collections.
          *
          * @param contextInterface Context of the filtered Litho element.
          */

@@ -22,7 +22,7 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
  */
 abstract class ScoredSongProvider implements LyricsProvider {
 
-    /** The hits for this track, best first, empty when the search found none. */
+    /** The hits for this track, the best first, empty when the search found none. */
     @NonNull
     protected abstract List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception;
 

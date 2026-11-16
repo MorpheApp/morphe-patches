@@ -144,7 +144,7 @@ public final class SwipeSeekController {
     }
 
     /**
-     * Seeks to where the swipe ended, or back to where it started if the swipe was cancelled.
+     * Seeks to where the swipe ended, or back to where it started if the swipe was canceled.
      */
     public void end(boolean cancelled) {
         if (scrubber == null) return;

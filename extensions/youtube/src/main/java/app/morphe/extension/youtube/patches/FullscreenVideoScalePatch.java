@@ -88,9 +88,7 @@ public class FullscreenVideoScalePatch {
     private static List<SavedClipState> savedClipStates;
 
     static {
-        PlayerType.getOnChange().addObserver((PlayerType type) -> {
-            applyScale();
-        });
+        PlayerType.getOnChange().addObserver((PlayerType type) -> applyScale());
     }
 
     /**

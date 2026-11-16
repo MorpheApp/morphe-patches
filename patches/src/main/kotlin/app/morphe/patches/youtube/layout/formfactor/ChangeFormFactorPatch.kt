@@ -31,7 +31,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ChangeFormFactorPatch;"
 
-@Suppress("unused")
 val changeFormFactorPatch = patch(
     name = "Change form factor",
     description = "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
@@ -51,7 +50,7 @@ val changeFormFactorPatch = patch(
             ListPreference("morphe_change_form_factor")
         )
 
-        getInnerTubeClientConfigFingerprint().let {
+        InnerTubeClientConfigFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -78,7 +77,7 @@ val changeFormFactorPatch = patch(
             )
         }
 
-        getResponsiveContainerPropertiesFingerprint().method.addInstructions(
+        ResponsiveContainerPropertiesFingerprint.method.addInstructions(
             0,
             """
                 invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->getResponsiveContainerWidth(I)I

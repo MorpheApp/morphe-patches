@@ -71,5 +71,31 @@ val enableTapToSeekPatch = patch(
                 )
             }
         }
+
+        // A tap opens the scrub when the finger touches the time bar, and the scrub is closed
+        // when the finger is lifted. The time bar ignores the touch events while it is disabled,
+        // such as while the video length is unknown, so a tap left the scrub open. Then the
+        // player kept acting as if the time bar was still scrubbed, for example the "More videos"
+        // button in fullscreen did nothing until the device was rotated.
+        // The scrub is completed the same way the time bar does when the player controls are hidden.
+        TimeBarCompleteHiddenScrubFingerprint.let {
+            val isScrubbingMethod = it.instructionMatches.first().methodReference
+            val completeScrubMethod = it.instructionMatches[3].methodReference
+
+            it.method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { p0, p1 }, $EXTENSION_CLASS->shouldCompleteScrub(Landroid/view/View;Landroid/view/MotionEvent;)Z
+                    move-result v0
+                    if-eqz v0, :ignore
+                    invoke-virtual { p0 }, $isScrubbingMethod
+                    move-result v0
+                    if-eqz v0, :ignore
+                    invoke-virtual { p0 }, $completeScrubMethod
+                    :ignore
+                    nop
+                """
+            )
+        }
     }
 }

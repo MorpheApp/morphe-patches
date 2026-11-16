@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.youtube.misc.contexthook.NextEndpointParentFingerprint
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
 import app.morphe.patches.youtube.video.series.NativeBaseRequestDescriptionFingerprint
@@ -24,8 +25,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val PAGES = "$EXTENSION_PACKAGE/PlaylistPages;"
-private const val SOURCE = "$EXTENSION_PACKAGE/PlaylistPages\$Source;"
-private const val ACCOUNT = "$EXTENSION_PACKAGE/PlaylistPage\$Account;"
+private const val SOURCE = $$"$$EXTENSION_PACKAGE/PlaylistPages$Source;"
+private const val ACCOUNT = $$"$$EXTENSION_PACKAGE/PlaylistPage$Account;"
 
 /** Fetch authenticated source windows without invoking the native player response handlers. */
 internal fun installPlaylistPages() {
@@ -40,7 +41,7 @@ internal fun installPlaylistPages() {
     val paramsSetter = NativeRequestStringSetterFingerprint(requestType, params.name).originalMethod
     val tracking = NativeBaseRequestDescriptionFingerprint.instructionMatches[1]
         .fieldReference
-    val factory = playlistPageFactoryFingerprint(requestType).originalMethod
+    val factory = PlaylistPageFactoryFingerprint.originalMethod
     val entryId = playlistPagePreparationFingerprint(requestType, factory, paramsSetter)
         .instructionMatches[3].fieldReference
     check(entryId != playlist) { "Native playlist entry ID must be distinct from playlist ID" }
@@ -94,7 +95,6 @@ internal fun installPlaylistPages() {
     val accountType = account.type
     val requestIdentity = NativeRequestIdentityFingerprint(accountType).originalMethod
 
-    service.interfaces.add(SOURCE)
     service.addBridgeMethod(
         "patch_playlistAccount",
         listOf(requestType),
@@ -118,11 +118,9 @@ internal fun installPlaylistPages() {
             return-object v0
         """
     )
-    service.addBridgeMethod(
+    service.addPatchInterface(
+        SOURCE,
         "patch_getPlaylistAccount",
-        emptyList(),
-        ACCOUNT,
-        2,
         """
             $loadFactory
             const/4 v1, 0x0
@@ -133,11 +131,9 @@ internal fun installPlaylistPages() {
             return-object v0
         """
     )
-    service.addBridgeMethod(
+    service.addPatchInterface(
+        SOURCE,
         "patch_requestPlaylistPage",
-        listOf("Ljava/lang/String;", "Ljava/lang/String;", "I", "Ljava/lang/String;", "Ljava/lang/String;", "[B", ACCOUNT),
-        "Ljava/util/concurrent/Future;",
-        4,
         """
             $loadFactory
             invoke-virtual {v0, p2}, $factory

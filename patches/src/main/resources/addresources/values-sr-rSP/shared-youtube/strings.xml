@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Истакни нова подешавања</string>
   <string name="morphe_settings_new_indicator_days_summary">Број дана током којих се тачка приказује поред подешавања и опција додатих ажурирањем</string>
   <string name="morphe_settings_new_indicator_days_off">Искључено</string>
+  <string name="morphe_settings_new_indicator_clear_title">Обележи све поставке као виђене</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Уклони тачку са свих нових поставки и опција</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Обележити све поставке као виђене?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Тачка је уклоњена са свих нових поставки и опција. Поставке додате будућим ажурирањима и даље ће бити истакнуте.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Поново покрените да бисте завршили постављање</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Проверите да ли је назив пакета исправан и да ли је апликација инсталирана"</string>
   <string name="morphe_external_downloader_empty_warning">Назив пакета не сме бити празан</string>
+  <string name="morphe_export_download_folder_dialog_title">Фолдер за извоз</string>
+  <string name="morphe_export_download_folder_change">Промени фолдер</string>
+  <string name="morphe_export_download_folder_changed">Фолдер за извоз је промењен</string>
+  <string name="morphe_export_download_folder_reset">Фолдер за извоз је ресетован</string>
+  <string name="morphe_export_download_folder_missing">Фолдер за извоз %s није пронађен</string>
+  <string name="morphe_export_download_flyout_title">Извези на уређај</string>
+  <string name="morphe_export_download_canceled">Извоз је отказан</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Обичај</string>
   <string name="morphe_custom_branding_icon_title">Иконица апликације</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 Да ли да поставим %2$s као подразумеваног клијента?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Пребаци</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Искључивање овог подешавања може изазвати проблеме са репродукцијом</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView је искључен или није инсталиран.
+
+За репродукцију видео записа потребан је Android System WebView. Укључите га и ажурирајте га на најновију верзију.
+
+За tapping OK да бисте отворили Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView је застарео (верзија %s).
+
+Репродукција видео записа можда неће радити све док Android System WebView не буде ажуриран на најновију верзију.
+
+За tapping OK да бисте отворили Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ne prikazuj ponovo</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView није инсталиран. Инсталирајте га да бисте поправили репродукцију видео записа</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Покушајте да укључите: Лажирани видео стримови &gt; Пријава на Android VR</string>
@@ -142,6 +167,28 @@ Second \"item\" text"</string>
 • Ваша Morphe подешавања неће увозити/извозити ауторизацију за Android VR
 • Ако се ова апликација не користи 6 месеци, Google ће уклонити ту ауторизацију
 • Мораћете поново да се пријавите ако промените Google лозинку или уклоните овај уређај из Google подешавања"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Пријављивање путем мобилне веб верзије</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Опционо: пријавите се на YouTube веб сајт да бисте пустили видео снимке са својим налогом. Додирните овде да наставите</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Тренутно сте пријављени на мобилну веб верзију</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Да бисте користили ову функцију, промените „Подразумевани клијент“ на Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Пријавите се на Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web пушта видео-записе када нисте пријављени или када сте пријављени на YouTube веб-сајт
+
+• Када сте пријављени, могу се пуштати видео-записи који захтевају налог, као што су видео-записи са ограничењем по години
+• Страница за Google пријављивање отвара се у овој апликацији
+• Пријављивање се користи само за преузимање видео-записа које пуштате
+• Пријављивање се чува само на овом уређају
+
+Да бисте се пријавили, притисните „Настави“ испод"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Пријава је сачувана
+
+• Ваша Morphe подешавања неће увези/извези пријаву за мобилну веб верзију
+• Ако Google заврши пријаву, видео снимци се репродуктују без пријављености док се поново не пријавите
+• Одјава такође одјављује овај уређај са YouTube веб сајта"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Пријава на мобилну веб верзију је истекла, покушајте поново да се пријавите на мобилну веб верзију</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Одјављено са мобилне веб верзије</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView није доступан. Инсталирајте га или омогућите да бисте се пријавили</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 привремено није доступан (API је истекао)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Пријава на Android VR је истекла, покушајте поново да се пријавите на VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 је привремено недоступан (статус %s)</string>
@@ -207,6 +254,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Замењује music.youtube.com са youtube.com у дељеним линковима</string>
   <string name="morphe_replace_links_with_shortener_title">Промени линкове за дељење на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Форсира видео записе да користе скраћени URL формат youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Аутоматски</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Запамти квалитет видеа</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Примењује ваш ручни избор квалитета на све будуће видео снимке</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Обавештења о промени квалитета</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Приказује обавештење када се сачува нови подразумевани квалитет</string>
+  <string name="morphe_video_quality_default_wifi_title">Подразумевани квалитет видеа на Wi-Fi мрежи</string>
+  <string name="morphe_video_quality_default_mobile_title">Подразумевани квалитет видеа на мобилној мрежи</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Подразумевани мобилни квалитет је промењен на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Подразумевани Wi-Fi квалитет је промењен на: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Отвори системски панел за дељење</string>
+  <string name="morphe_open_system_share_sheet_summary">Отвора системски прозор за дељење уместо оног унутар апликације приликом дељења садржаја</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho евидентирање</string>
   <string name="morphe_debug_litho_entry_disabled">Онемогућен</string>

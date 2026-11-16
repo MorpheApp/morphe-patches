@@ -136,7 +136,7 @@ public final class NavigationBarPatch {
     /**
      * The glass navigation bar floats over the pages, so the pages are laid out behind it also where it does not
      * cover the system navigation buttons, such as before Android 12, where the window is not drawn behind them,
-     * or without the edge to edge top bar before Android 15. Otherwise the room around the capsule is an empty band
+     * or without the edge to edge top bar before Android 15. Otherwise, the room around the capsule is an empty band
      * (<a href="https://github.com/MorpheApp/morphe-patches/issues/4413">...</a>).
      * Only the pages are laid out behind it: the navigation bar still covers the system navigation buttons only
      * where the window is drawn behind them, see {@link #isNavigationBarBehindSystemButtons(boolean)}.
@@ -174,6 +174,7 @@ public final class NavigationBarPatch {
             ? ResourceUtils.getIdentifier(ResourceType.ID, "new_content_dot")
             : 0;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;
     }
@@ -282,6 +283,20 @@ public final class NavigationBarPatch {
      */
     @Nullable
     private static volatile Boolean accountFeedBehindNavigationBar;
+
+    /**
+     * Value of the blurred, translucent background flag first read by the app with
+     * {@link NavigationBarStyle#DEFAULT}, or null if not read yet.
+     */
+    @Nullable
+    private static volatile Boolean accountTranslucentBackground;
+
+    /**
+     * Value of the translucent navigation bar style flag first read by the app with
+     * {@link NavigationBarStyle#DEFAULT}, or null if not read yet.
+     */
+    @Nullable
+    private static volatile Boolean accountTranslucentStyle;
 
     /**
      * The translucent navigation bar comes from feature flags that not every account gets, so they
@@ -393,11 +408,32 @@ public final class NavigationBarPatch {
             accountFeedBehindNavigationBar = accountValue;
         }
 
-        final boolean feedBehind = PAGES_BEHIND_GLASS_NAVIGATION_BAR || isNavigationBarBehindSystemButtons(accountValue);
+        final boolean feedBehind = PAGES_BEHIND_GLASS_NAVIGATION_BAR
+                || (isNavigationBarBehindSystemButtons(accountValue) && canPagesBeBehindDefaultNavigationBar());
         if (firstRead) {
-            Logger.printDebug(() -> "Feed behind navigation bar: " + feedBehind + " (account: " + original + ")");
+            Logger.printDebug(() -> "Feed behind navigation bar: " + feedBehind + " (account: " + original
+                    + ", translucent background: " + accountTranslucentBackground
+                    + ", translucent style: " + accountTranslucentStyle + ")");
         }
         return feedBehind;
+    }
+
+    /**
+     * The pages are laid out behind the navigation bar only if the bar tells them they can be seen
+     * through it: from Android 12 with its blurred background, otherwise with the translucent style.
+     * With the feed behind the navigation bar flag, the lists get the navigation bar height as bottom
+     * padding, so without them the pages end above the navigation bar and the padding is an empty band
+     * above it (<a href="https://github.com/MorpheApp/morphe-patches/issues/4797">...</a>).
+     * The account can get the feed behind flag without them, such as with the feature flags
+     * of an older app version (Spoof app version).
+     * The other navigation bar styles turn on the background or the style themselves.
+     *
+     * @return False only if the account got neither the blurred background nor the translucent style.
+     */
+    private static boolean canPagesBeBehindDefaultNavigationBar() {
+        return NAVIGATION_BAR_STYLE != NavigationBarStyle.DEFAULT
+                || accountTranslucentBackground != Boolean.FALSE
+                || accountTranslucentStyle != Boolean.FALSE;
     }
 
     /**
@@ -441,7 +477,15 @@ public final class NavigationBarPatch {
      */
     public static boolean useTranslucentNavigationBarBackground(boolean original) {
         if (NAVIGATION_BAR_STYLE == NavigationBarStyle.DEFAULT) {
-            return original;
+            // The value first read is kept, as for the other flags of the navigation bar,
+            // so the pages are laid out the same way if the account value changes while the app runs.
+            Boolean accountValue = accountTranslucentBackground;
+            if (accountValue == null) {
+                accountValue = original;
+                accountTranslucentBackground = accountValue;
+                Logger.printDebug(() -> "Navigation bar translucent background (account): " + original);
+            }
+            return accountValue;
         }
 
         final boolean translucent;
@@ -468,6 +512,16 @@ public final class NavigationBarPatch {
      * and this flag would replace the blurred background with a translucent color, so it is left to the account.
      */
     public static boolean useTranslucentNavigationBarStyle(boolean original) {
+        if (NAVIGATION_BAR_STYLE == NavigationBarStyle.DEFAULT) {
+            // The value first read is kept, see useTranslucentNavigationBarBackground.
+            Boolean accountValue = accountTranslucentStyle;
+            if (accountValue == null) {
+                accountValue = original;
+                accountTranslucentStyle = accountValue;
+                Logger.printDebug(() -> "Navigation bar translucent style (account): " + original);
+            }
+            return accountValue;
+        }
         if (!original && PAGES_BEHIND_GLASS_NAVIGATION_BAR && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
             Logger.printVerbose(() -> "useTranslucentNavigationBarStyle turned on");
             return true;
@@ -932,24 +986,22 @@ public final class NavigationBarPatch {
     /**
      * Saves a button that is seen for the first time, or whose label changed,
      * so the order setting can show it.
+     * The caller holds the lock of {@code buttons}, which the settings also lock to read it.
      */
     private static void discoverButton(StringSetting setting, Map<String, String> buttons,
                                        String id, @Nullable String label) {
         if (label == null || label.isEmpty()) label = id;
+        if (label.equals(buttons.get(id))) return;
+        buttons.put(id, label);
 
-        synchronized (buttons) {
-            if (label.equals(buttons.get(id))) return;
-            buttons.put(id, label);
-
-            try {
-                JSONArray array = new JSONArray();
-                for (Map.Entry<String, String> button : buttons.entrySet()) {
-                    array.put(new JSONObject().put("id", button.getKey()).put("label", button.getValue()));
-                }
-                setting.save(array.toString());
-            } catch (Exception ex) {
-                Logger.printException(() -> "discoverButton failure", ex);
+        try {
+            JSONArray array = new JSONArray();
+            for (Map.Entry<String, String> button : buttons.entrySet()) {
+                array.put(new JSONObject().put("id", button.getKey()).put("label", button.getValue()));
             }
+            setting.save(array.toString());
+        } catch (Exception ex) {
+            Logger.printException(() -> "discoverButton failure", ex);
         }
     }
 
@@ -982,7 +1034,9 @@ public final class NavigationBarPatch {
             if (info == null || info.id().isEmpty()) continue;
 
             ids[i] = info.id();
-            discoverButton(Settings.NAVIGATION_BUTTONS_DISCOVERED, discoveredNavigationButtons, info.id(), info.label());
+            synchronized (discoveredNavigationButtons) {
+                discoverButton(Settings.NAVIGATION_BUTTONS_DISCOVERED, discoveredNavigationButtons, info.id(), info.label());
+            }
         }
 
         // The buttons in the order setting are sorted in the positions they take in the list.
@@ -1091,6 +1145,7 @@ public final class NavigationBarPatch {
      * @param pivotBarItem Navigation bar item proto.
      */
     @Nullable
+    @SuppressWarnings("SameReturnValue")
     private static Object buildPivotBarItem(byte[] pivotBarItem) {
         return null;
     }
@@ -1100,8 +1155,7 @@ public final class NavigationBarPatch {
      * The app has no selected icon for the Watch later icon, so the outline icon is shown
      * when the Watch later button is selected.
      */
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public static void setWatchLaterSelectedIcon(EnumMap icons, Enum watchLaterIcon) {
+    public static <E extends Enum<E>> void setWatchLaterSelectedIcon(EnumMap<E, Integer> icons, E watchLaterIcon) {
         if (SHOW_WATCH_LATER_BUTTON) {
             icons.put(watchLaterIcon, ResourceUtils.getIdentifier(
                     ResourceType.DRAWABLE, "morphe_watch_later_selected"));
@@ -1127,7 +1181,7 @@ public final class NavigationBarPatch {
     public static final String SETTING_BUTTON_ENUM_NAME = "SETTINGS_CAIRO";
 
     /**
-     * The toolbar of some pages, such as the You tab, comes from their own response, which still has
+     * The toolbar of some pages, such as the 'You' tab, comes from their own response, which still has
      * the notifications button, so it is replaced with the create button of the toolbar of another page.
      */
     @Nullable
@@ -1135,7 +1189,7 @@ public final class NavigationBarPatch {
 
     /**
      * The swap has effect only if the server added the notifications tab to the navigation bar.
-     * Otherwise the toolbar button is the only way to open the notifications.
+     * Otherwise, the toolbar button is the only way to open the notifications.
      */
     private static volatile boolean notificationsTabCreated;
 
@@ -1250,6 +1304,7 @@ public final class NavigationBarPatch {
      *
      * @param message Message of the class to parse.
      */
+    @SuppressWarnings("SameReturnValue")
     private static MessageLite parseWithRegistry(MessageLite message, byte[] bytes, ExtensionRegistryLite registry) {
         return null; // Modified during patching.
     }
@@ -1257,6 +1312,7 @@ public final class NavigationBarPatch {
     /**
      * @return The extension registry of the app.
      */
+    @SuppressWarnings("SameReturnValue")
     private static ExtensionRegistryLite getGeneratedRegistry() {
         return null; // Modified during patching.
     }
@@ -1264,7 +1320,7 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      * Called when a toolbar button is created, on any page, also on the pages whose toolbar comes
-     * from their own response, such as the channel pages and the You tab.
+     * from their own response, such as the channel pages and the 'You' tab.
      * <p>
      * The toolbar create button of the Android Automotive layout, which swaps the create button with the
      * notifications button, opens a bottom sheet whose video button uses the upload endpoint, which the app
@@ -1433,7 +1489,7 @@ public final class NavigationBarPatch {
     }
 
     /**
-     * @return Id of the toolbar button: the page it opens, or its icon.
+     * @return ID of the toolbar button: the page it opens, or its icon.
      */
     private static String getToolbarButtonId(ButtonRenderer buttonRenderer) {
         String iconName = buttonRenderer.getIcon().getYtIconType().name();
@@ -1481,7 +1537,7 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      * The order of the menu items sets the order of the buttons of every toolbar,
-     * including the toolbars that are not created from the toolbar of the guide, such as of the You tab.
+     * including the toolbars that are not created from the toolbar of the guide, such as of the 'You' tab.
      *
      * @param original       Order of the button, from the order the buttons were created in.
      * @param buttonRenderer ButtonRenderer of the toolbar button.
@@ -1490,8 +1546,10 @@ public final class NavigationBarPatch {
         try {
             ButtonRenderer renderer = ButtonRenderer.parseFrom(buttonRenderer.toByteArray());
             String id = getToolbarButtonId(renderer);
-            discoverButton(Settings.TOOLBAR_BUTTONS_DISCOVERED, discoveredToolbarButtons,
-                    id, renderer.getButtonRendererAccessibilityData().getLabel());
+            synchronized (discoveredToolbarButtons) {
+                discoverButton(Settings.TOOLBAR_BUTTONS_DISCOVERED, discoveredToolbarButtons,
+                        id, renderer.getButtonRendererAccessibilityData().getLabel());
+            }
 
             final int rank = TOOLBAR_BUTTONS_ORDER.indexOf(id);
             if (rank >= 0) {

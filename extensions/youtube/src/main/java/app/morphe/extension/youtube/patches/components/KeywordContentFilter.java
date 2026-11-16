@@ -47,6 +47,7 @@ import app.morphe.extension.youtube.innertube.ElementTexts.ElementModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.LockupMetadataViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.MetadataPart;
 import app.morphe.extension.youtube.innertube.ElementTexts.MetadataRow;
+import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupMetadata;
 import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.VideoData;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -190,10 +191,13 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
                 wholeWordMatching = false;
             }
 
-            // Check if the same phrase is declared both with and without quotes.
-            Keyword existing = keywords.putIfAbsent(foldCase(phrase), new Keyword(phrase, wholeWordMatching));
-            if (existing != null && existing.wholeWord() != wholeWordMatching) {
-                Utils.showSnackbarLong(str("morphe_hide_keyword_toast_invalid_conflicting", phrase));
+            // If the phrase is declared both with and without quotes, use without quotes since it is broader.
+            String key = foldCase(phrase);
+            Keyword existing = keywords.get(key);
+            if (existing == null) {
+                keywords.put(key, new Keyword(phrase, wholeWordMatching));
+            } else if (existing.wholeWord() && !wholeWordMatching) {
+                keywords.put(key, new Keyword(phrase, false));
             }
         }
 
@@ -367,8 +371,15 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
         }
 
         ShortsLockupViewModel shorts = model.getYoutubeModel().getViewModel().getShortsLockupViewModel();
-        return matches(search, shorts.getTitle().getText().getContent(), match)
-                || matches(search, shorts.getMetadata().getChannelName().getContent(), match);
+        ShortsLockupMetadata metadata = shorts.getMetadata();
+        if (matches(search, shorts.getTitle().getText().getContent(), match)
+                || matches(search, metadata.getChannelName().getContent(), match)) {
+            return true;
+        }
+
+        match.searchingHandle = true;
+        return matches(search, metadata.getAvatar().getAvatarViewModel().getOnTap().getInnertubeCommand()
+                .getBrowseEndpoint().getCanonicalBaseUrl(), match);
     }
 
     private static boolean matches(StringTrieSearch search, String text, KeywordMatch match) {

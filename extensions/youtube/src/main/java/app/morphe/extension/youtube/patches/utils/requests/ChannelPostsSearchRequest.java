@@ -34,6 +34,7 @@ import app.morphe.extension.shared.requests.Requester;
  * The search tab of a channel lists no posts, so the posts tab is listed page by page,
  * newest first, and the text of each post is searched here.
  */
+@SuppressWarnings("unused")
 public final class ChannelPostsSearchRequest {
 
     public static final class ChannelPostResult {
@@ -121,7 +122,7 @@ public final class ChannelPostsSearchRequest {
     }
 
     /**
-     * Dotted and dotless i are the same letter for the search, so that a search typed
+     * Dotted and dotless I are the same letter for the search, so that a search typed
      * with either keyboard finds both, such as "ISTANBUL" and "istanbul".
      * Each character is replaced by one character, so positions in the text stay the same.
      */
@@ -280,7 +281,7 @@ public final class ChannelPostsSearchRequest {
     }
 
     /**
-     * Searches the posts tab of the channel. Does nothing if the search is cancelled.
+     * Searches the posts tab of the channel. Does nothing if the search is canceled.
      */
     public static void fetchPostsTab(String channelId, String query, BooleanSupplier isCancelled,
                                      ChannelPostsCallback callback) {

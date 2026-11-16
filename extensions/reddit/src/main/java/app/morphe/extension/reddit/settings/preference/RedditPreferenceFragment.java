@@ -10,9 +10,13 @@ package app.morphe.extension.reddit.settings.preference;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.preference.PreferenceScreen;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ListView;
+
+import androidx.annotation.Nullable;
 
 import app.morphe.extension.reddit.settings.preference.categories.AdsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.LayoutPreferenceCategory;
@@ -27,6 +31,12 @@ import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragmen
 @SuppressWarnings("deprecation")
 public class RedditPreferenceFragment extends AbstractPreferenceFragment {
 
+    /**
+     * Restyles the rows if the app uses the Compose settings.
+     */
+    @Nullable
+    private ViewTreeObserver.OnPreDrawListener styleListener;
+
     @Override
     protected void initialize() {
         Context context = getContext();
@@ -40,6 +50,28 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
         new SidebarPreferenceCategory(context, preferenceScreen);
         new LayoutPreferenceCategory(context, preferenceScreen);
         new MiscellaneousPreferenceCategory(context, preferenceScreen);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        if (RedditSettingsStyle.isModernStyle()) {
+            ListView listView = view.findViewById(android.R.id.list);
+            if (listView != null) {
+                styleListener = RedditSettingsStyle.styleList(listView);
+            }
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        View rootView = getView();
+        if (styleListener != null && rootView != null) {
+            rootView.getViewTreeObserver().removeOnPreDrawListener(styleListener);
+        }
+        styleListener = null;
+        super.onDestroyView();
     }
 
     @Override

@@ -115,14 +115,6 @@ public final class RubyGenerator {
         return false;
     }
 
-    /** Ruby language asks for dictionary readings, not automatic or none. */
-    @SuppressWarnings({"ConstantValue", "unused"})
-    public static boolean hasManualRubyLanguage() {
-        final String lang = Settings.LYRICS_RUBY_LANGUAGE.get();
-        if (lang == null || lang.isEmpty()) return false;
-        return !LANGUAGE_DEFAULT.equalsIgnoreCase(lang) && !LANGUAGE_NONE.equalsIgnoreCase(lang);
-    }
-
     /**
      * Asks the enabled AI provider for the readings the lyrics still lack. The callback runs on
      * the main thread, with the lyrics unchanged if the provider gave no usable answer.

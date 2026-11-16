@@ -1,5 +1,6 @@
 package app.morphe.extension.shared.spoof.js.nsigsolver.provider;
 
+@SuppressWarnings("unused")
 public enum JsChallengeType {
     N("n"),
     SIG("sig");

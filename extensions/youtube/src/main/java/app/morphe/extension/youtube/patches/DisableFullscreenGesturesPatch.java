@@ -48,6 +48,7 @@ public class DisableFullscreenGesturesPatch {
     /**
      * Injection point. Pre-21.36 zoom-flag override.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean disableBrokenFullscreenZoomFlag(boolean original) {
         return false;
     }
@@ -188,6 +189,7 @@ public class DisableFullscreenGesturesPatch {
         if (detector == null || disableZoomGesture() || !Settings.RESTORE_PINCH_TO_ZOOM.get()) {
             return;
         }
+        //noinspection NonAtomicOperationOnVolatileField
         pinchScale *= detector.getScaleFactor();
         if (pinchScale < MIN_PINCH_SCALE) {
             pinchScale = MIN_PINCH_SCALE;

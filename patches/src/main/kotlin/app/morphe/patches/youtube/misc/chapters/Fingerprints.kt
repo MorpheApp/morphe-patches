@@ -27,15 +27,15 @@ internal object TimelineMarkerFingerprint : Fingerprint (
     strings = listOf("TimelineMarker[title=",  ", startMillis=", ", endMillis=")
 )
 
-internal fun getTimelineMarkersArrayFingerprint(timelineMarkerClassName: String) = object : Fingerprint(
+internal object TimelineMarkersArrayFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "[$timelineMarkerClassName",
+    returnType = { "[${TimelineMarkerFingerprint.originalClassDef.type}" },
     parameters = listOf("L"),
     filters = listOf(
-        checkCast("[$timelineMarkerClassName"),
+        checkCast(type = { "[${TimelineMarkerFingerprint.originalClassDef.type}" }),
         opcode(Opcode.RETURN_OBJECT, location = MatchAfterLast())
     )
-) {}
+)
 
 internal object HeatMapPeakPointFingerprint : Fingerprint (
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

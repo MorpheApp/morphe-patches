@@ -12,7 +12,6 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.potoken.poTokenProviderPatch
 
-@Suppress("unused")
 val poTokenProviderPatch = poTokenProviderPatch(
     originalAppPackageName = COMPATIBILITY_YOUTUBE_MUSIC.packageName!!,
     preferenceScreen = PreferenceScreen.MISC,

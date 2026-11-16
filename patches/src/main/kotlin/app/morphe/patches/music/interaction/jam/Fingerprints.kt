@@ -9,6 +9,7 @@ package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
@@ -67,14 +68,14 @@ internal object MediaSessionStateFingerprint : Fingerprint(
  * The now-playing presenter writes a bitmap into YouTube Music's stable artwork view. The field
  * access ties the call to the presenter itself rather than a reusable image helper.
  */
-internal fun nowPlayingArtworkFingerprint(imageType: String) = Fingerprint(
+internal object NowPlayingArtworkFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/graphics/Bitmap;"),
     filters = listOf(
-        fieldAccess(definingClass = "this", type = imageType, opcode = Opcode.IGET_OBJECT),
+        fieldAccess(definingClass = "this", type = { ArtworkCropFingerprint.originalClassDef.type }, opcode = Opcode.IGET_OBJECT),
         methodCall(
             opcodes = listOf(Opcode.INVOKE_VIRTUAL, Opcode.INVOKE_VIRTUAL_RANGE),
-            definingClass = imageType,
+            definingClass = { ArtworkCropFingerprint.originalClassDef.type },
             name = "setImageBitmap",
             parameters = listOf("Landroid/graphics/Bitmap;"),
             returnType = "V"
@@ -823,6 +824,8 @@ internal fun autoplaySectionRefreshFingerprint(ownerType: String) = Fingerprint(
     returnType = "V",
     filters = listOf(
         methodCall(name = "isEmpty", parameters = emptyList(), returnType = "Z"),
+        // First visibility check, after the constants the rest of the method reads.
+        opcode(Opcode.IF_NEZ, location = MatchAfterWithin(5)),
         methodCall(parameters = listOf("I"), returnType = "V"),
         methodCall(name = "clear", parameters = emptyList(), returnType = "V"),
     )
@@ -860,19 +863,5 @@ internal fun playbackIconStateFingerprint(stateType: String, stateName: String) 
             type = stateType,
             opcode = Opcode.SPUT_OBJECT,
         )
-    )
-)
-
-/** Locate header creation itself; feature-flag branches may precede this block. */
-internal fun autoplayHeaderCreationFingerprint(header: FieldReference) = Fingerprint(
-    filters = listOf(
-        fieldAccess(reference = header, opcode = Opcode.IGET_OBJECT),
-        methodCall(
-            name = "isEmpty",
-            parameters = emptyList(),
-            returnType = "Z",
-            location = MatchAfterImmediately(),
-        ),
-        methodCall(name = "add", parameters = listOf("I", OBJECT), returnType = "V")
     )
 )

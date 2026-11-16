@@ -13,6 +13,7 @@ package app.morphe.extension.youtube.patches.playback.speed;
 import static app.morphe.extension.shared.StringRef.str;
 
 import java.util.Collections;
+import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -245,7 +246,7 @@ public final class RememberPlaybackSpeedPatch {
 
                 if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED_TOAST.get())
                     Utils.showSnackbarShort(str("morphe_remember_playback_speed_toast",
-                            (String.format(java.util.Locale.US, "%.2fx", finalPlaybackSpeed))));
+                            (String.format(Locale.US, "%.2fx", finalPlaybackSpeed))));
             }, TOAST_DELAY_MILLISECONDS);
         } catch (Exception ex) {
             Logger.printException(() -> "userSelectedPlaybackSpeed failure", ex);
@@ -287,7 +288,7 @@ public final class RememberPlaybackSpeedPatch {
                 // Sharing message with video speed
                 if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED_TOAST.get()) {
                     Utils.showSnackbarShort(str("morphe_remember_playback_audio_pitch_toast",
-                            (String.format(java.util.Locale.US, "%.2fx", finalPlaybackAudioPitch))));
+                            (String.format(Locale.US, "%.2fx", finalPlaybackAudioPitch))));
                 }
             }, TOAST_DELAY_MILLISECONDS);
         } catch (Exception ex) {

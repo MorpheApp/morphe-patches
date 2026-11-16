@@ -11,14 +11,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
+import app.morphe.patcher.util.addPatchInterface
 
 private const val EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE =
     "Lapp/morphe/extension/shared/patches/MediaHttpRequest;"
+
+private const val EXTENSION_MEDIA_HTTP_HEADER_INTERFACE =
+    "Lapp/morphe/extension/shared/patches/MediaHttpHeader;"
 
 /**
  * Lets the extension read the media requests that native code starts, and replace them.
@@ -28,36 +27,17 @@ internal val mediaRequestPatch = patch(
 ) {
     execute {
         mutableClassDefBy(HTTP_REQUEST_CLASS_TYPE).apply {
-            interfaces.add(EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE)
-
             // Each field of the request has its own type.
             val urlField = instanceFields.single { field -> field.type == "Ljava/lang/String;" }
             val bodyField = instanceFields.single { field -> field.type == "[B" }
+            val headersField = instanceFields.single { field -> field.type == "Ljava/util/ArrayList;" }
 
             mapOf(
                 "patch_getUrl" to urlField,
                 "patch_getBody" to bodyField,
+                "patch_getHeaders" to headersField,
             ).forEach { (methodName, field) ->
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        methodName,
-                        listOf(),
-                        field.type,
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $field
-                                return-object v0
-                            """
-                        )
-                    }
-                )
+                addPatchInterface(EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE, methodName, field)
             }
 
             // The constructor takes each field, and each field has its own type.
@@ -69,34 +49,29 @@ internal val mediaRequestPatch = patch(
                 val field = instanceFields.single { field -> field.type == parameterType }
                 when (parameterType) {
                     bodyField.type -> "move-object $register, p1"
+                    headersField.type -> "move-object $register, p2"
                     "Z" -> "iget-boolean $register, p0, $field"
                     else -> "iget-object $register, p0, $field"
                 }
             }.joinToString("\n")
 
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_withBody",
-                    listOf(ImmutableMethodParameter("[B", null, null)),
-                    EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE,
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    // The new request, its parameters, and the 2 parameters of this method.
-                    MutableMethodImplementation(1 + constructorParameters.size + 2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            new-instance v0, $type
-                            $loadConstructorParameters
-                            invoke-direct/range { v0 .. v${constructorParameters.size} }, $constructor
-                            return-object v0
-                        """
-                    )
-                }
+            addPatchInterface(
+                EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE,
+                "patch_withBodyAndHeaders",
+                """
+                    new-instance v0, $type
+                    $loadConstructorParameters
+                    invoke-direct/range { v0 .. v${constructorParameters.size} }, $constructor
+                    return-object v0
+                """
             )
+        }
+
+        mutableClassDefBy(HTTP_HEADER_CLASS_TYPE).apply {
+            val (nameField, valueField) = HttpHeaderConstructorFingerprint.instructionMatches
+                .map { match -> match.fieldReference }
+            addPatchInterface(EXTENSION_MEDIA_HTTP_HEADER_INTERFACE, "patch_getName", nameField)
+            addPatchInterface(EXTENSION_MEDIA_HTTP_HEADER_INTERFACE, "patch_getValue", valueField)
         }
     }
 }

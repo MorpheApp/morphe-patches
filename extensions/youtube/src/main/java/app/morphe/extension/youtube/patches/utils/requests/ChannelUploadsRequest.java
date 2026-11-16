@@ -37,6 +37,7 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.
  * The uploads playlist always lists every video, Short and live stream in the order they were
  * published, so it makes the results of a sort complete and sorts them by date exactly.
  */
+@SuppressWarnings("unused")
 public final class ChannelUploadsRequest {
 
     public static final class Uploads {

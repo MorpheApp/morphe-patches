@@ -25,9 +25,9 @@ public class TimedCommentsTest {
         List<NiconicoComment> comments = TimedComments.parseComment("id", "1:17 nice part", LENGTH_MS);
 
         assertEquals(1, comments.size());
-        assertEquals("nice part", comments.get(0).text);
-        assertEquals(77_000, comments.get(0).videoOffsetMs);
-        assertEquals("id#0", comments.get(0).id);
+        assertEquals("nice part", comments.get(0).text());
+        assertEquals(77_000, comments.get(0).videoOffsetMs());
+        assertEquals("id#0", comments.get(0).id());
     }
 
     @Test
@@ -35,8 +35,8 @@ public class TimedCommentsTest {
         List<NiconicoComment> comments = TimedComments.parseComment("id", "Congrats on 900M views 1:00", LENGTH_MS);
 
         assertEquals(1, comments.size());
-        assertEquals("Congrats on 900M views", comments.get(0).text);
-        assertEquals(60_000, comments.get(0).videoOffsetMs);
+        assertEquals("Congrats on 900M views", comments.get(0).text());
+        assertEquals(60_000, comments.get(0).videoOffsetMs());
     }
 
     @Test
@@ -44,8 +44,8 @@ public class TimedCommentsTest {
         List<NiconicoComment> comments = TimedComments.parseComment("id", "Who saw the hole at 2:09?", LENGTH_MS);
 
         assertEquals(1, comments.size());
-        assertEquals("Who saw the hole at 2:09?", comments.get(0).text);
-        assertEquals(129_000, comments.get(0).videoOffsetMs);
+        assertEquals("Who saw the hole at 2:09?", comments.get(0).text());
+        assertEquals(129_000, comments.get(0).videoOffsetMs());
     }
 
     @Test
@@ -53,10 +53,10 @@ public class TimedCommentsTest {
         List<NiconicoComment> comments = TimedComments.parseComment("id", "0:30 - intro\n1:05 - chorus", LENGTH_MS);
 
         assertEquals(2, comments.size());
-        assertEquals("intro", comments.get(0).text);
-        assertEquals(30_000, comments.get(0).videoOffsetMs);
-        assertEquals("chorus", comments.get(1).text);
-        assertEquals(65_000, comments.get(1).videoOffsetMs);
+        assertEquals("intro", comments.get(0).text());
+        assertEquals(30_000, comments.get(0).videoOffsetMs());
+        assertEquals("chorus", comments.get(1).text());
+        assertEquals(65_000, comments.get(1).videoOffsetMs());
     }
 
     @Test
@@ -64,13 +64,13 @@ public class TimedCommentsTest {
         List<NiconicoComment> comments = TimedComments.parseComment("id", "1:00 and 1:30", LENGTH_MS);
 
         assertEquals(2, comments.size());
-        assertEquals("and", comments.get(1).text);
+        assertEquals("and", comments.get(1).text());
     }
 
     @Test
     public void readsHoursAndIgnoresTimesAfterTheEnd() {
         List<NiconicoComment> hours = TimedComments.parseComment("id", "1:02:03 here", 2 * 3_600_000);
-        assertEquals(3_723_000, hours.get(0).videoOffsetMs);
+        assertEquals(3_723_000, hours.get(0).videoOffsetMs());
 
         assertTrue(TimedComments.parseComment("id", "5:00 too late", LENGTH_MS).isEmpty());
         assertTrue(TimedComments.parseComment("id", "no time here", LENGTH_MS).isEmpty());
@@ -83,7 +83,7 @@ public class TimedCommentsTest {
         List<NiconicoComment> comments = TimedComments.parseComment("id", "1:23　すごい　", LENGTH_MS);
 
         assertEquals(1, comments.size());
-        assertEquals("すごい", comments.get(0).text);
+        assertEquals("すごい", comments.get(0).text());
     }
 
     @Test
@@ -103,8 +103,8 @@ public class TimedCommentsTest {
         TimedComments.Page page = TimedComments.parsePage(response, LENGTH_MS);
 
         assertEquals(1, page.comments.size());
-        assertEquals("best line", page.comments.get(0).text);
-        assertEquals(132_000, page.comments.get(0).videoOffsetMs);
+        assertEquals("best line", page.comments.get(0).text());
+        assertEquals(132_000, page.comments.get(0).videoOffsetMs());
         assertEquals("next", page.continuation);
     }
 

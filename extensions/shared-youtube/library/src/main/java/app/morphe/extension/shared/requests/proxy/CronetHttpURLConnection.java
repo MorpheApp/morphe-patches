@@ -337,39 +337,31 @@ public final class CronetHttpURLConnection extends DelegatingHttpURLConnection {
         }
     }
 
-    private static final class RequestDeadline {
-        private static final RequestDeadline NONE = new RequestDeadline(0, 0);
-
-        private final long startNanos;
-        private final long timeoutNanos;
-
-        private RequestDeadline(long startNanos, long timeoutNanos) {
-            this.startNanos = startNanos;
-            this.timeoutNanos = timeoutNanos;
-        }
+    private record RequestDeadline(long startNanos, long timeoutNanos) {
+            private static final RequestDeadline NONE = new RequestDeadline(0, 0);
 
         private static RequestDeadline afterMillis(long timeoutMillis) {
-            return timeoutMillis <= 0
-                    ? NONE
-                    : new RequestDeadline(
-                            System.nanoTime(),
-                            TimeUnit.MILLISECONDS.toNanos(timeoutMillis)
-                    );
-        }
+                return timeoutMillis <= 0
+                        ? NONE
+                        : new RequestDeadline(
+                        System.nanoTime(),
+                        TimeUnit.MILLISECONDS.toNanos(timeoutMillis)
+                );
+            }
 
-        private boolean isFinite() {
-            return timeoutNanos != 0;
-        }
+            private boolean isFinite() {
+                return timeoutNanos != 0;
+            }
 
-        private RequestDeadline extendByMillis(long timeoutMillis) {
-            return isFinite() && timeoutMillis > 0
-                    ? new RequestDeadline(
-                            startNanos,
-                            timeoutNanos + TimeUnit.MILLISECONDS.toNanos(timeoutMillis)
-                    )
-                    : NONE;
+            private RequestDeadline extendByMillis(long timeoutMillis) {
+                return isFinite() && timeoutMillis > 0
+                        ? new RequestDeadline(
+                        startNanos,
+                        timeoutNanos + TimeUnit.MILLISECONDS.toNanos(timeoutMillis)
+                )
+                        : NONE;
+            }
         }
-    }
 
     private final class TimeoutGuard {
         private final AtomicInteger state = new AtomicInteger(TIMEOUT_STATE_ACTIVE);

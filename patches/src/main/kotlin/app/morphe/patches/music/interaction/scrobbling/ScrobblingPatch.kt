@@ -19,10 +19,9 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
-import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
-import app.morphe.patches.shared.layout.returnyoutubedislike.likeEndpointParserFingerprint
-import app.morphe.patches.shared.layout.returnyoutubedislike.requestParameterCheckFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.LikeEndpointParserFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.RequestParameterCheckFingerprint
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -33,7 +32,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/scrobbling/ScrobblePatch;"
 
-@Suppress("unused")
 val scrobblingPatch = patch(
     name = "Scrobbling",
     description = "Adds options to add played tracks to Last.fm and ListenBrainz."
@@ -162,11 +160,10 @@ val scrobblingPatch = patch(
         // Hook like/dislike/remove like button clicks.
         val endPointServiceNameField = EndpointServiceNameFingerprint
             .instructionMatches.last().fieldReference
-        val likeEndpointParserClass = DislikeFingerprint.classDef.superclass!!
-        val videoIdField = requestParameterCheckFingerprint(likeEndpointParserClass)
+        val videoIdField = RequestParameterCheckFingerprint
             .instructionMatches.last().fieldReference
 
-        likeEndpointParserFingerprint(likeEndpointParserClass).let {
+        LikeEndpointParserFingerprint.let {
             it.method.apply {
                 val matchIndex = it.instructionMatches[1].index
                 val insertIndex = matchIndex + 1

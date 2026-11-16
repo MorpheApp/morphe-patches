@@ -19,12 +19,10 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.fiveRegisters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch;"
 
-@Suppress("unused")
 val disableHapticFeedbackPatch = patch(
     name = "Disable haptic feedback",
     description = "Adds an option to disable haptic feedback in the player for various actions.",
@@ -116,7 +114,6 @@ val disableHapticFeedbackPatch = patch(
                     classDef.type != EXTENSION_CLASS
                 }
             ).matchAllMethodIndicesForEach { index ->
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
                 val registers = fiveRegisters(index)
 
                 replaceInstruction(

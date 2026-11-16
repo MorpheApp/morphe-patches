@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 
+@SuppressWarnings("unused")
 public abstract class BaseChangeStartPagePatch {
 
     /**

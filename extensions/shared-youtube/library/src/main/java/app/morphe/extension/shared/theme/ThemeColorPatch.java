@@ -1184,7 +1184,7 @@ public class ThemeColorPatch {
     /**
      * @return If this patch was included during patching.
      */
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -1195,6 +1195,7 @@ public class ThemeColorPatch {
      * Names of the dark theme color resources, separated by a comma.
      * The first name is the color the app uses for the theme itself.
      */
+    @SuppressWarnings("SameReturnValue")
     private static String darkColorResourceNames() {
         return ""; // Modified during patching.
     }
@@ -1205,6 +1206,7 @@ public class ThemeColorPatch {
      * Names of the light theme color resources, separated by a comma.
      * The first name is the color the app uses for the theme itself.
      */
+    @SuppressWarnings("SameReturnValue")
     private static String lightColorResourceNames() {
         return ""; // Modified during patching.
     }
@@ -1223,6 +1225,7 @@ public class ThemeColorPatch {
      * The dark theme color of the patch options, or an empty string if the theme is
      * selected in the app settings instead.
      */
+    @SuppressWarnings("SameReturnValue")
     private static String patchedThemeColorDark() {
         return ""; // Modified during patching.
     }
@@ -1234,6 +1237,7 @@ public class ThemeColorPatch {
      *
      * @see #patchedThemeColorDark()
      */
+    @SuppressWarnings("SameReturnValue")
     private static String patchedThemeColorLight() {
         return ""; // Modified during patching.
     }

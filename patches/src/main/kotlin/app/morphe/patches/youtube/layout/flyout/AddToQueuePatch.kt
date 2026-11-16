@@ -18,6 +18,7 @@ import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.youtube.interaction.feedactions.feedVideoActionsHookPatch
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.EXTENSION_CLASS as NATIVE_QUEUE_EXTENSION_CLASS
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.nativePlaylistQueuePatch
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
@@ -46,7 +47,6 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_LOCAL_QUEUE_CLASS =
     "Lapp/morphe/extension/youtube/patches/LocalQueuePatch;"
 
-@Suppress("unused")
 val addToQueuePatch = patch(
     name = "Add to queue",
     description = "Adds a video queue to the feed flyout menu, using either the Morphe queue " +
@@ -60,7 +60,8 @@ val addToQueuePatch = patch(
         authHookPatch,
         loadVideoHookPatch,
         videoInformationPatch,
-        nativePlaylistQueuePatch
+        nativePlaylistQueuePatch,
+        feedVideoActionsHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -78,8 +79,9 @@ val addToQueuePatch = patch(
                         entryValuesKey = "morphe_queue_type_legacy_entry_values"
                     )
                 },
-                SwitchPreference("morphe_queue_add_flyout_menu", summary = true),
-                SwitchPreference("morphe_native_queue_fetch_on_scroll", summary = true)
+                SwitchPreference("morphe_native_queue_fetch_on_scroll", summary = true),
+                SwitchPreference("morphe_native_queue_thumbnail_button", summary = true),
+                SwitchPreference("morphe_native_queue_thumbnail_swap_actions", summary = true)
             )
         )
 

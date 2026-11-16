@@ -12,6 +12,7 @@ package app.morphe.extension.shared.patches.components;
 
 import app.morphe.extension.shared.StringTrieSearch;
 
+@SuppressWarnings("unused")
 public class StringFilterGroupList extends FilterGroupList<CharSequence, StringFilterGroup> {
     protected StringTrieSearch createSearchGraph() {
         return new StringTrieSearch();

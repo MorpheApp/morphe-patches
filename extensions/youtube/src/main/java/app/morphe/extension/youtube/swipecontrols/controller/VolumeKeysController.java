@@ -57,6 +57,7 @@ public final class VolumeKeysController {
      * @param volumeUp Whether the key pressed was the volume up key.
      * @return Whether to consume the event.
      */
+    @SuppressWarnings("SameReturnValue")
     private boolean handleVolumeKeyEvent(KeyEvent event, boolean volumeUp) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             AudioVolumeController audio = controller.getAudio();

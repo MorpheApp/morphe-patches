@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package app.morphe.extension.shared.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.shared.innertube";
+
+// Native menus, such as the menus of the downloads list of YouTube Music.
+// Only the fields that are read or changed are declared, all other fields are kept as unknown fields.
+
+message MenuRenderer {
+    repeated MenuItem items = 1;
+}
+
+message MenuItem {
+    optional MenuNavigationItemRenderer menuNavigationItemRenderer = 66441155;
+}
+
+message MenuNavigationItemRenderer {
+    optional MenuText text = 1;
+    optional MenuIcon icon = 2;
+    optional MenuCommand navigationEndpoint = 3;
+    // Not a field of the app, the app keeps it as an unknown field.
+    // Marks the export item added by Morphe, with the video it exports.
+    optional string morpheExportVideoId = 536870911;
+    // Not a field of the app. Marks the export all item added by Morphe.
+    optional bool morpheExportAll = 536870910;
+}
+
+message MenuText {
+    repeated MenuTextRun runs = 1;
+}
+
+message MenuTextRun {
+    optional string text = 1;
+}
+
+message MenuIcon {
+    optional int32 iconType = 1;
+}
+
+message MenuCommand {
+    optional MenuOfflineVideoEndpoint offlineVideoEndpoint = 73080600;
+}
+
+message MenuOfflineVideoEndpoint {
+    optional string videoId = 1;
+}

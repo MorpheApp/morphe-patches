@@ -22,7 +22,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LiveStreamDVRPatch;"
 
-@Suppress("unused")
 val liveStreamDVRPatch = patch(
     description = "Enables video seeking on live streams that have disabled DVR (Digital Video Recorder).",
 ) {

@@ -27,7 +27,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableVideoCodecsPatch;"
 
-@Suppress("unused")
 val disableVideoCodecsPatch = patch(
     name = "Disable video codecs",
     description = "Adds options to disable or force HDR, and to disable VP9 or AV1 codecs.",

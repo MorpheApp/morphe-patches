@@ -13,6 +13,7 @@ package app.morphe.extension.youtube.swipecontrols.misc;
 /**
  * Interface for all overlays for swipe controls.
  */
+@SuppressWarnings("unused")
 public interface SwipeControlsOverlay {
     /**
      * Called when the currently set volume level was changed.

@@ -21,6 +21,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -94,7 +95,7 @@ import app.morphe.patches.shared.misc.litho.filter.EXTENSION_CLASS as LITHO_FILT
 private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter;"
 private const val EXTENSION_FLYOUT_MENU_ITEM_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter\$FlyoutMenuItem;"
+    $$"Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter$FlyoutMenuItem;"
 private const val DESCRIPTION_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/DescriptionComponentsFilter;"
 private const val EXPLORE_MENU_FILTER =
@@ -1012,27 +1013,14 @@ val hideLayoutComponentsPatch = patch(
                 }
 
                 mutableClassDefBy(menuItemType).apply {
-                    interfaces.add(EXTENSION_FLYOUT_MENU_ITEM_INTERFACE)
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            "patch_getFlyoutMenuItemTitle",
-                            listOf(),
-                            "Ljava/lang/CharSequence;",
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(2),
-                        ).toMutable().apply {
-                            addInstructions(
-                                0,
-                                """
-                                    invoke-static { p0 }, $menuItemTitleMethod
-                                    move-result-object v0
-                                    return-object v0
-                                """
-                            )
-                        }
+                    addPatchInterface(
+                        EXTENSION_FLYOUT_MENU_ITEM_INTERFACE,
+                        "patch_getFlyoutMenuItemTitle",
+                        """
+                            invoke-static { p0 }, $menuItemTitleMethod
+                            move-result-object v0
+                            return-object v0
+                        """
                     )
                 }
 
@@ -1357,7 +1345,7 @@ val hideLayoutComponentsPatch = patch(
         TapAndHoldSpeedFingerprint.let {
             it.clearMatch()
             // The class that overrides the speed, and restores it when tap and hold ends.
-            var speedControllerType = it.instructionMatches[6].fieldReference.type
+            val speedControllerType = it.instructionMatches[6].fieldReference.type
 
             // Right after the "already speeding up" check.
             it.method.addInstructionsAtControlFlowLabel(

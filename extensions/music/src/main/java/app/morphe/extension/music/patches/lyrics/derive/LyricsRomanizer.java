@@ -255,12 +255,11 @@ public final class LyricsRomanizer {
 
     /** Whether one line's word readings supply an allowed reading. */
     private static boolean hasUsableWordReadingForLine(LyricsLine line,
-                                                       @Nullable LyricsLine original,
-                                                       boolean allowTransliteration) {
+                                                       @Nullable LyricsLine original) {
         List<Word> words = line.words().isEmpty() && original != null
                 ? original.words() : line.words();
         for (Word word : words) {
-            if (!wordReading(word, allowTransliteration).isEmpty()) {
+            if (!wordReading(word, false).isEmpty()) {
                 return true;
             }
         }
@@ -439,8 +438,8 @@ public final class LyricsRomanizer {
     }
 
     /**
-     * The Rime Wordlist provider: the Han characters of the language are read by its word table, the
-     * scripts around them by the same local dictionaries. Nothing is read when the language has no
+     * The Rime Wordlist provider: the Han characters of the language are read by its word table, and the
+     * surrounding scripts by the same local dictionaries. Nothing is read when the language has no
      * word table, so the next provider is given the turn instead.
      */
     @Nullable
@@ -629,7 +628,7 @@ public final class LyricsRomanizer {
             // Word-synced requests can leave the line text unchanged when only the syllable
             // request succeeded. The per-word readings are still a usable romanization.
             for (Word word : result.get(i).words()) {
-                String romaji = wordReading(word, allowTransliteration);
+                String romaji = wordReading(word, true);
                 String written = word.text() == null ? "" : word.text().trim();
                 if (!romaji.isEmpty() && !romaji.equals(written)) {
                     return true;
@@ -733,7 +732,7 @@ public final class LyricsRomanizer {
             globalSyllableIndex += count;
 
             List<String> alignedChunks = List.of(LocalRomanizer.allocateReading(
-                    fullLineRom, count, romanizedGuides));
+                    fullLineRom, count, romanizedGuides, LocalRomanizer.hasCjkWord(origWords)));
 
             List<Word> romanizedWords = new ArrayList<>(count);
             StringBuilder lineRomBuilder = new StringBuilder();
@@ -741,7 +740,6 @@ public final class LyricsRomanizer {
             for (int wIdx = 0; wIdx < count; wIdx++) {
                 Word w = origWords.get(wIdx);
                 String rom = (wIdx < alignedChunks.size() && alignedChunks.get(wIdx) != null) ? alignedChunks.get(wIdx) : "";
-                romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
                 romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
                 if (lineRomBuilder.length() > 0 && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
                     lineRomBuilder.append(' ');
@@ -833,7 +831,7 @@ public final class LyricsRomanizer {
     private static List<LyricsLine> collectMatchingRomanizations(
             Map<String, List<LyricsLine>> romanizations, List<LyricsLine> allLines,
             boolean fallbackToSungLine) {
-        // Keys are xml:lang from the file, with "romaji" standing in for a sidecar that named none.
+        // Keys are XML:lang from the file, with "romaji" standing in for a sidecar that named none.
         String langTag = LyricsRequests.isDefaultRomanizationLanguage()
                 ? Requester.getAppLocale().toLanguageTag()
                 : LyricsRequests.romanizationLanguage();
@@ -1037,7 +1035,7 @@ public final class LyricsRomanizer {
 
                 LyricsLine origLine = (originalLines != null && li < originalLines.size()) ? originalLines.get(li) : null;
                 if (!allowTransliteration && !isPurelyLatinScript(text)
-                        && (!perWord || !hasUsableWordReadingForLine(line, origLine, false))) {
+                        && (!perWord || !hasUsableWordReadingForLine(line, origLine))) {
                     return true;
                 }
                 totalChecked++;
@@ -1232,7 +1230,8 @@ public final class LyricsRomanizer {
             }
             List<Word> origWords = orig.words();
             List<String> alignedChunks = List.of(LocalRomanizer.allocateReading(
-                    fullRoma, origWords.size(), guidesForWords(origWords, fullRoma)));
+                    fullRoma, origWords.size(), guidesForWords(origWords, fullRoma),
+                    LocalRomanizer.hasCjkWord(origWords)));
             List<Word> rWords = new ArrayList<>(origWords.size());
             for (int w = 0; w < origWords.size(); w++) {
                 Word ow = origWords.get(w);

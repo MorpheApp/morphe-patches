@@ -145,6 +145,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup surveys;
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroup videoLabelsBuffer;
+    private final StringFilterGroup videoMetadataLabels;
     private final StringFilterGroup videoRecommendationLabels;
 
     public enum ExpandableCardStyle {
@@ -501,6 +502,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "badge.e"
         );
 
+        // Labels such as 'Auto-dubbed' or 'Hyped' in the metadata of the feed cards of a newer A/B test.
+        videoMetadataLabels = new StringFilterGroup(
+                Settings.HIDE_VIDEO_LABELS,
+                "content_metadata.e"
+        );
+
         final var videoTitle = new StringFilterGroup(
                 Settings.HIDE_VIDEO_TITLE,
                 "player_overlay_video_heading.e"
@@ -567,6 +574,7 @@ public final class LayoutComponentsFilter extends Filter {
                 timedReactions,
                 videoThumbnail,
                 videoLabels,
+                videoMetadataLabels,
                 videoTitle,
                 videoRecommendationLabels,
                 webLinkPanel
@@ -786,6 +794,11 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == videoLabels) {
             return VersionCheckPatch.IS_20_31_OR_GREATER && videoLabelsBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == videoMetadataLabels) {
+            // Only the label itself, and not a larger part of the metadata that contains a label.
+            return Utils.startsWith(asciiStrings.getStrings(), "badge.e");
         }
 
         if (matchedGroup == videoRecommendationLabels) {
@@ -1069,6 +1082,7 @@ public final class LayoutComponentsFilter extends Filter {
                 }
             }
             for (ProtoNode buttons : ProtoNode.findMessages(element, POST_BUTTONS_PATH)) {
+                assert (buttons.getParent() != null ? buttons.getParent().getParent() : null) != null;
                 ProtoNode model = buttons.getParent().getParent().getParent();
                 // Only the buttons data of a post model, which has the share or the comment button.
                 if (model != null && model.getFieldNumber() >= POST_MODEL_MIN_FIELD && buttons.children != null
@@ -1538,7 +1552,7 @@ public final class LayoutComponentsFilter extends Filter {
      * and shows its real text only about a second after the menu opens. A filter of the download text
      * therefore also hides the placeholder, otherwise the item is shown and then collapses.
      */
-    private static boolean isFlyoutMenuFiltered(String menuTitle) {
+    public static boolean isFlyoutMenuFiltered(String menuTitle) {
         final boolean isDownloadPlaceholder = menuTitle.equals(ResourceUtils.getString("menu_offline_placeholder"));
 
         for (String filter : flyoutMenuFilterStrings) {

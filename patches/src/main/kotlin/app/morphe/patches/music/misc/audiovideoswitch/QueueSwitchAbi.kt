@@ -50,7 +50,7 @@ internal fun resolveAudioVideoQueue(): AudioVideoQueueAbi {
     val constructor = queueManagerConstructorFingerprint(manager.type).originalMethod
     val executor = manager.fields.singleOrNull { it.type == EXECUTOR }
         ?: error("Missing or ambiguous audio/video switch queue executor")
-    val storage = resolveStorage(manager, enqueue)
+    val storage = resolveStorage(manager)
     val displays = resolveDisplays(manager, constructor, storage)
     val remove = queueRemovalFingerprint(manager.type, displays).originalMethod
     val itemType = remove.parameterTypes.singleOrNull()?.toString()
@@ -62,8 +62,7 @@ internal fun resolveAudioVideoQueue(): AudioVideoQueueAbi {
             .matchAll()
             .groupBy { it.originalClassDef.type }
             .values
-            .filter { it.size == 1 }
-            .singleOrNull()
+            .singleOrNull { it.size == 1 }
             ?.single()
             ?.originalMethod
             ?: error("Missing or ambiguous audio/video switch queue video ID")

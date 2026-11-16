@@ -7,9 +7,16 @@
 
 package app.morphe.extension.music.patches.components;
 
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -22,6 +29,11 @@ public final class LayoutComponentsFilter extends Filter {
     private static final String TIMED_LYRICS_IDENTIFIER = "timed_lyrics";
     private static final String TOGGLE_BUTTON_PATH = "toggle_button.e";
     private static final String LIST_ITEM_EXTRA_DETAILS_PATH = "music_list_item_extra_details.e";
+
+    /**
+     * Resource id of the search box, resolved on first use.
+     */
+    private static int searchEditTextId;
 
     private final StringFilterGroup downloadButton;
     private final StringFilterGroup lyricsShareButton;
@@ -82,6 +94,11 @@ public final class LayoutComponentsFilter extends Filter {
                 "music_speed_dial_shelf.e"
         );
 
+        final StringFilterGroup yourDownloadsShelf = new StringFilterGroup(
+                Settings.HIDE_YOUR_DOWNLOADS_SHELF,
+                "music_downloads_shelf.e"
+        );
+
         addPathCallbacks(
                 downloadButton,
                 exploreShelf,
@@ -92,7 +109,8 @@ public final class LayoutComponentsFilter extends Filter {
                 lyricsTranslateButton,
                 newFromShelf,
                 playlistShelves,
-                speedDialShelf
+                speedDialShelf,
+                yourDownloadsShelf
         );
     }
 
@@ -152,5 +170,38 @@ public final class LayoutComponentsFilter extends Filter {
      */
     public static void hideShuffleButton(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SHUFFLE_BUTTON, view);
+    }
+
+    /**
+     * Injection point.
+     * Called before the search suggestions response is shown.
+     *
+     * @param suggestionsList The search suggestions list.
+     * @return If shelves that only hold suggested searches ('You may also like') should be removed.
+     */
+    public static boolean hideYouMayAlsoLikeSection(@Nullable View suggestionsList) {
+        if (!Settings.HIDE_YOU_MAY_ALSO_LIKE_SECTION.get()) {
+            return false;
+        }
+
+        try {
+            // The section is only shown before a query is typed.
+            // Suggestions for a typed query are never changed.
+            if (suggestionsList != null) {
+                if (searchEditTextId == 0) {
+                    searchEditTextId = ResourceUtils.getIdentifier(ResourceType.ID, "search_edit_text");
+                }
+
+                View searchEditText = suggestionsList.getRootView().findViewById(searchEditTextId);
+                if (searchEditText instanceof TextView textView) {
+                    CharSequence query = textView.getText();
+                    return TextUtils.isEmpty(textView.getText());
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideYouMayAlsoLikeSection failure", ex);
+        }
+
+        return true;
     }
 }

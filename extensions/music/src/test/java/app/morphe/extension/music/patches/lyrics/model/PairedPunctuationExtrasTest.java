@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-/** Direct tests for {@link PairedPunctuation.restore} and {@link PairedPunctuation.crossedAt}, which re-wrap chunks split across punctuation shells and identify which shell a split crosses. */
+/** Direct tests for {@link PairedPunctuation#restore} and {@link PairedPunctuation#crossedAt}, which re-wrap chunks split across punctuation shells and identify which shell a split crosses. */
 public class PairedPunctuationExtrasTest {
 
     // ── restore ──

@@ -22,6 +22,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.misc.contexthook.NextEndpointParentFingerprint
 import app.morphe.patches.youtube.misc.loadvideo.MiniAppOpenYtContentCommandEndpointFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -278,7 +279,7 @@ internal fun nativeQueueAutoplayFingerprint(navigator: FieldReference, switchNav
 internal fun nativeQueueAutoplayConstructorFingerprint(autoplayType: String) = Fingerprint(
     definingClass = autoplayType,
     name = "<init>",
-    parameters = List(3) { "Lj\$/util/Optional;" }
+    parameters = List(3) { "Lj$/util/Optional;" }
 )
 
 /** The wrapper disposes its active navigator. */
@@ -563,7 +564,7 @@ internal fun playlistContentsFingerprint(panelType: String, factory: MethodRefer
  * then logging decorates the bound endpoint before dispatching it.
  */
 internal object PlaylistRowClickFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/view/View\$OnClickListener;"),
+    interfaces = listOf($$"Landroid/view/View$OnClickListener;"),
     name = "onClick",
     returnType = "V",
     parameters = listOf("Landroid/view/View;"),
@@ -624,7 +625,7 @@ internal fun playlistEndpointUnbindFingerprint(endpoint: FieldReference) = Finge
 
 /** The standard button click context retains the native enclosing row identity. */
 internal object NativeButtonContextFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/view/View\$OnClickListener;"),
+    interfaces = listOf($$"Landroid/view/View$OnClickListener;"),
     returnType = "Ljava/util/Map;",
     parameters = listOf("L", "Z"),
     filters = listOf(string("anchor_view"))
@@ -660,7 +661,7 @@ internal fun playlistRowMenuOpenFingerprint(videoType: String) = Fingerprint(
 
 /** The native menu sheet dispatches its endpoint callback immediately before dismissing itself. */
 internal fun playlistMenuDispatchFingerprint(callbackType: String) = Fingerprint(
-    interfaces = listOf("Landroid/widget/AdapterView\$OnItemClickListener;"),
+    interfaces = listOf($$"Landroid/widget/AdapterView$OnItemClickListener;"),
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
@@ -765,8 +766,8 @@ internal object PlaylistDragUnbindFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
-        methodCall("Landroid/view/View;->setOnTouchListener(Landroid/view/View\$OnTouchListener;)V"),
-        methodCall("Landroid/view/View;->setOnLongClickListener(Landroid/view/View\$OnLongClickListener;)V")
+        methodCall($$"Landroid/view/View;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V"),
+        methodCall($$"Landroid/view/View;->setOnLongClickListener(Landroid/view/View$OnLongClickListener;)V")
     )
 )
 
@@ -818,7 +819,7 @@ internal object PlaylistControlsCreationFingerprint : Fingerprint(
         // The collapsed panel view.
         fieldAccess(definingClass = "this", type = "Landroid/view/View;", opcode = Opcode.IGET_OBJECT),
         methodCall(
-            "Landroid/view/View;->setOnClickListener(Landroid/view/View\$OnClickListener;)V",
+            $$"Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
             location = MatchAfterWithin(3)
         ),
         // The navigator provider.
@@ -1026,12 +1027,12 @@ internal fun playlistShuffleListenerFingerprint(binder: Method, shuffleView: Fie
         methodCall("Landroid/widget/ImageView;->setVisibility(I)V", location = MatchAfterWithin(3)),
         fieldAccess(
             definingClass = "this",
-            type = "Landroid/view/View\$OnClickListener;",
+            type = $$"Landroid/view/View$OnClickListener;",
             opcode = Opcode.IGET_OBJECT,
             location = MatchAfterImmediately()
         ),
         methodCall(
-            "Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View\$OnClickListener;)V",
+            $$"Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
             location = MatchAfterImmediately()
         )
     )
@@ -1039,7 +1040,7 @@ internal fun playlistShuffleListenerFingerprint(binder: Method, shuffleView: Fie
 
 /** Observe the native notification before it compares old state or notifies either control. */
 internal fun notificationSkipCallbackFingerprint(callbackName: String) = Fingerprint(
-    superclass = "Landroid/media/session/MediaSession\$Callback;",
+    superclass = $$"Landroid/media/session/MediaSession$Callback;",
     name = callbackName,
     returnType = "V",
     parameters = emptyList(),
@@ -1220,8 +1221,8 @@ internal object NotificationSkipActionsFingerprint : Fingerprint(
 )
 
 /** Publishes the Previous and Next capabilities, returning the changed flags. */
-internal fun notificationCapabilitiesSetterFingerprint(modelType: String) = Fingerprint(
-    definingClass = modelType,
+internal object NotificationCapabilitiesSetterFingerprint : Fingerprint(
+    definingClass = { NotificationSkipActionsFingerprint.instructionMatches.first().fieldReference.type },
     returnType = "I",
     parameters = listOf("Z", "Z")
 )
@@ -1269,8 +1270,8 @@ internal fun notificationPlaybackStateFingerprint(adapterType: String, callback:
 )
 
 /** The generated builder's missing-property diagnostic identifies duration finalization. */
-internal fun queueSnackbarDurationFingerprint(builderType: String) = Fingerprint(
-    definingClass = builderType,
+internal object QueueSnackbarDurationFingerprint : Fingerprint(
+    definingClass = { QueueSnackbarModernFactoryFingerprint.originalMethod.returnType },
     parameters = emptyList(),
     returnType = "L",
     filters = listOf(
@@ -1302,7 +1303,7 @@ private fun queuePlayerDismissMethod() =
 
 /** The mini player's close click, rather than programmatic reloads using the same dismiss API. */
 internal object QueuePlayerCloseClickFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/view/View\$OnClickListener;"),
+    interfaces = listOf($$"Landroid/view/View$OnClickListener;"),
     name = "onClick",
     parameters = listOf("Landroid/view/View;"),
     returnType = "V",
@@ -1372,7 +1373,7 @@ internal object QueueSnackbarModernFactoryFingerprint : Fingerprint(
             parameters = List(4) { "Ljava/lang/Object;" } + listOf("I", "[S")
         ),
         methodCall(
-            parameters = listOf("Ljava/lang/CharSequence;", "Landroid/view/View\$OnClickListener;"),
+            parameters = listOf("Ljava/lang/CharSequence;", $$"Landroid/view/View$OnClickListener;"),
             returnType = "V"
         ),
         opcode(Opcode.RETURN_OBJECT, location = MatchAfterImmediately())
@@ -1483,10 +1484,10 @@ internal fun playlistPageIndexFingerprint(requestType: String, serializer: Strin
     )
 )
 
-internal fun playlistPageFactoryFingerprint(requestType: String) = Fingerprint(
+internal object PlaylistPageFactoryFingerprint : Fingerprint(
     parameters = listOf("Ljava/lang/String;"),
-    returnType = requestType,
-    filters = listOf(methodCall(definingClass = requestType, name = "<init>"))
+    returnType = { NextEndpointParentFingerprint.originalClassDef.type },
+    filters = listOf(methodCall(definingClass = { NextEndpointParentFingerprint.originalClassDef.type }, name = "<init>"))
 )
 
 /** Native preparation supplies the per-occurrence entry ID as well as index and params. */
@@ -1568,7 +1569,7 @@ internal fun playlistPageNavigationSelectorFingerprint(navigationType: String) =
 )
 
 internal const val ELEMENTS_TAP_COMMAND =
-    "Lcom/google/protos/youtube/elements/CommandOuterClass\$Command;"
+    $$"Lcom/google/protos/youtube/elements/CommandOuterClass$Command;"
 
 /** Litho preserves NodeInfo on each mounted host under this named view tag. */
 internal object PlaylistNodeInfoFingerprint : Fingerprint(
@@ -1581,7 +1582,7 @@ internal object PlaylistNodeInfoFingerprint : Fingerprint(
 
 /** The native OnClickListener identifies both its event and the handler's owner field. */
 internal object PlaylistClickListenerFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/view/View\$OnClickListener;"),
+    interfaces = listOf($$"Landroid/view/View$OnClickListener;"),
     name = "onClick",
     parameters = listOf("Landroid/view/View;"),
     returnType = "V",
@@ -1602,7 +1603,7 @@ internal fun playlistClickMountFingerprint(nodeType: String, listenerType: Strin
             location = MatchAfterWithin(3)
         ),
         methodCall(
-            smali = "Landroid/view/View;->setOnClickListener(Landroid/view/View\$OnClickListener;)V",
+            smali = $$"Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
             location = MatchAfterImmediately()
         )
     )
@@ -1639,7 +1640,7 @@ internal fun playlistTapCommandFingerprint(callbackType: String, parameters: Lis
     filters = listOf(methodCall(returnType = ELEMENTS_TAP_COMMAND, parameters = emptyList()))
 )
 
-internal fun playlistNodeStoreFingerprint() = Fingerprint(
+internal object PlaylistNodeStoreFingerprint : Fingerprint(
     classFingerprint = PlaylistNodeInfoFingerprint,
     name = "setTag",
     parameters = listOf("I", "Ljava/lang/Object;"),
@@ -1671,13 +1672,13 @@ internal object PlaylistListConstructorFingerprint : Fingerprint(
 )
 
 /** Observe the actual native near-end branch, before the pager's loaded-size deduplication. */
-internal fun playlistNativeScrollFingerprint(listType: String) = Fingerprint(
+internal object PlaylistNativeScrollFingerprint : Fingerprint(
     parameters = listOf("Landroid/support/v7/widget/RecyclerView;", "I", "I"),
     returnType = "V",
     filters = listOf(
         instanceOf("Landroid/support/v7/widget/LinearLayoutManager;"),
         methodCall(parameters = listOf("Landroid/support/v7/widget/RecyclerView;"), returnType = "Z"),
-        fieldAccess(type = listType, opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(5))
+        fieldAccess(type = { PlaylistListConstructorFingerprint.originalClassDef.type }, opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(5))
     )
 )
 

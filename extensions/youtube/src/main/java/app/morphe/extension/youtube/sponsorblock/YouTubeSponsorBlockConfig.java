@@ -70,9 +70,8 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
             if (installed) return;
             SponsorBlockApi.configure(INSTANCE);
 
-            PlayerType.getOnChange().addObserver((PlayerType type) -> {
-                SegmentPlaybackController.onPlayerTypeChanged();
-            });
+            PlayerType.getOnChange().addObserver((PlayerType type) ->
+                    SegmentPlaybackController.onPlayerTypeChanged());
 
             VideoInformation.onChannelIdChange.addObserver(SegmentPlaybackController::onChannelIdChange);
 
@@ -160,7 +159,7 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
      * Injection point.
      * <p>
      * Called when a video is saved or removed with the offline video endpoint.
-     * Removing with a prompt is ignored, since the prompt can be cancelled.
+     * Removing with a prompt is ignored, since the prompt can be canceled.
      *
      * @param action Action of the offline video endpoint.
      */

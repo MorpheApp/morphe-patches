@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchSingle
@@ -37,7 +38,7 @@ internal fun installQueueSavePicker(endpointType: String) {
         "Native playlist queue: picker must serialize its original endpoint after constructing arguments"
     }
 
-    // p1 is overwritten by the serialized bytes immediately afterwards. Transfer the
+    // p1 is overwritten by the serialized bytes immediately afterward. Transfer the
     // owned snapshot before that write, on both the existing/new Bundle branches.
     factory.method.addInstructionsAtControlFlowLabel(
         serialize.index,
@@ -48,12 +49,9 @@ internal fun installQueueSavePicker(endpointType: String) {
 
     val argumentsField = picker.instructionMatches.first().fieldReference
     val mutablePicker = mutableClassDefBy(picker.originalClassDef.type)
-    mutablePicker.interfaces.add(SAVE_PICKER_INTERFACE)
-    mutablePicker.addBridgeMethod(
+    mutablePicker.addPatchInterface(
+        SAVE_PICKER_INTERFACE,
         "patch_getQueueSaveVideoIds",
-        emptyList(),
-        LIST,
-        1,
         """
             iget-object v0, p0, $argumentsField
             invoke-static {v0}, $EXTENSION_CLASS->getQueueSaveVideoIds(Landroid/os/Bundle;)$LIST
@@ -83,11 +81,9 @@ internal fun installQueueSavePicker(endpointType: String) {
         """
     )
 
-    mutablePicker.addBridgeMethod(
+    mutablePicker.addPatchInterface(
+        SAVE_PICKER_INTERFACE,
         "patch_parseQueueSaveResponse",
-        listOf("[B"),
-        "Lcom/google/protobuf/MessageLite;",
-        2,
         """
             ${parseProtoInstructions(responseType, bytes = "p1", result = "v0", registry = "v1")}
             return-object v0

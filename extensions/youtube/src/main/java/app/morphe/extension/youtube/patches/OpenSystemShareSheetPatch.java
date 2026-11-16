@@ -103,7 +103,7 @@ public final class OpenSystemShareSheetPatch {
      * @return The link, or null if the entity is not a type known to be shared with a plain link.
      */
     @Nullable
-    private static String getShareEntityUrl(String serializedEntity, String longURLPrefix, String videoURLPrefix) {
+    private static String getShareEntityUrl(String serializedEntity, String videoURLPrefix) {
         final byte[] entityBytes;
         try {
             String base64 = Uri.decode(serializedEntity).replace('-', '+').replace('_', '/');
@@ -119,7 +119,7 @@ public final class OpenSystemShareSheetPatch {
         }
         ProtoNode comment = ProtoNode.field(entity, ENTITY_COMMENT_FIELD);
         if (comment != null) {
-            return entity.size() == 1 ? getCommentUrl(comment, longURLPrefix, videoURLPrefix) : null;
+            return entity.size() == 1 ? getCommentUrl(comment, videoURLPrefix) : null;
         }
         for (ProtoNode field : entity) {
             if (!SHARE_ENTITY_FIELDS.contains(field.getFieldNumber())) {
@@ -134,11 +134,11 @@ public final class OpenSystemShareSheetPatch {
         final String channelId = getShareEntityId(entity, ENTITY_CHANNEL_ID_FIELD);
         final String postId = getShareEntityId(entity, ENTITY_POST_ID_FIELD);
         if (postId != null) {
-            return longURLPrefix + "/post/" + postId;
+            return "https://www.youtube.com" + "/post/" + postId;
         }
         if (channelId != null) {
             return videoId == null && playlistId == null
-                    ? longURLPrefix + "/channel/" + channelId
+                    ? "https://www.youtube.com" + "/channel/" + channelId
                     : null;
         }
         if (videoId != null && playlistId == null) {
@@ -147,7 +147,7 @@ public final class OpenSystemShareSheetPatch {
         // Mixes (playlist ids starting with RD) have no playlist page, and their link only opens
         // with a video, which the entity does not have. The in-app share sheet shares them instead.
         if (playlistId != null && videoId == null && !playlistId.startsWith("RD")) {
-            return longURLPrefix + "/playlist?list=" + playlistId;
+            return "https://www.youtube.com" + "/playlist?list=" + playlistId;
         }
         return null;
     }
@@ -156,7 +156,7 @@ public final class OpenSystemShareSheetPatch {
      * @return The link, or null if the comment is not on a video or a post.
      */
     @Nullable
-    private static String getCommentUrl(ProtoNode comment, String longURLPrefix, String videoURLPrefix) {
+    private static String getCommentUrl(ProtoNode comment, String videoURLPrefix) {
         List<ProtoNode> fields = comment.children;
         ProtoNode commentId = fields == null ? null : ProtoNode.field(fields, COMMENT_ID_FIELD);
         ProtoNode path = fields == null ? null : ProtoNode.field(fields, COMMENT_PAGE_PATH_FIELD);
@@ -174,7 +174,7 @@ public final class OpenSystemShareSheetPatch {
             }
             case "/post" -> {
                 String postId = getShareEntityId(ProtoNode.message(fields, COMMENT_POST_PATH), COMMENT_ITEM_ID_FIELD);
-                return postId == null ? null : longURLPrefix + "/post/" + postId + "?lc=" + commentId.getText();
+                return postId == null ? null : "https://www.youtube.com" + "/post/" + postId + "?lc=" + commentId.getText();
             }
             default -> {
                 return null;
@@ -217,7 +217,7 @@ public final class OpenSystemShareSheetPatch {
                 ? longURLPrefix + "/watch?v="
                 : "https://youtu.be/";
 
-        final String intentUrl = getShareEntityUrl(serializedEntity.getText(), longURLPrefix, videoURLPrefix);
+        final String intentUrl = getShareEntityUrl(serializedEntity.getText(), videoURLPrefix);
         if (intentUrl == null) {
             Logger.printDebug(() -> "No link for share endpoint, opening the in-app share sheet: "
                     + Base64.encodeToString(shareEndpoint, Base64.NO_WRAP));

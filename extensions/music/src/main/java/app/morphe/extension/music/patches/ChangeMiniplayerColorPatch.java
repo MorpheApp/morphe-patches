@@ -1,5 +1,6 @@
 package app.morphe.extension.music.patches;
 
+import android.graphics.Color;
 import android.os.SystemClock;
 import android.view.View;
 
@@ -19,30 +20,67 @@ public class ChangeMiniplayerColorPatch {
 
     @Nullable
     private static volatile Integer lastMiniplayerColor;
-
+    @Nullable
+    private static volatile Integer defaultMiniplayerColor;
     private static volatile WeakReference<View> navigationBarRef = new WeakReference<>(null);
-
     @Nullable
     private static volatile Integer defaultNavigationBarColor;
-
     private static volatile long dismissWindowUntilMs;
 
     /**
      * Injection point.
+     *
+     * @return If the color of the album art is taken, to color the miniplayer or to tint the glass with it.
      */
     public static boolean changeMiniplayerColor() {
-        return Settings.CHANGE_MINIPLAYER_COLOR.get();
+        return changeColor()
+                || (Settings.MINIPLAYER_GLASS.get() && Settings.MINIPLAYER_GLASS_ALBUM_TINT.get())
+                || (Settings.NAVIGATION_BAR_GLASS.get() && Settings.NAVIGATION_BAR_GLASS_ALBUM_TINT.get());
     }
 
     /**
-     * Injection point. Stores the color applied to the miniplayer and, if the setting is enabled,
-     * forwards it to the navigation bar so both surfaces update together instead of waiting for a UI relayout.
+     * @return If the miniplayer gets the color of the album art. The glass miniplayer has a tint instead.
      */
-    public static void setLastMiniplayerColor(int color) {
-        if (SystemClock.uptimeMillis() < dismissWindowUntilMs) return;
+    private static boolean changeColor() {
+        return Settings.CHANGE_MINIPLAYER_COLOR.get() && !Settings.MINIPLAYER_GLASS.get();
+    }
 
-        lastMiniplayerColor = color;
-        if (Settings.CHANGE_NAVIGATION_BAR_COLOR.get()) postNavigationBarColor(color);
+    /**
+     * Injection point. Remembers the color the miniplayer is made with, from the theme.
+     */
+    public static void setDefaultMiniplayerColor(int color) {
+        defaultMiniplayerColor = color;
+    }
+
+    /**
+     * Injection point. Stores the color of the album art, which is also the color of the open player.
+     *
+     * @return The color the miniplayer is given: the color of the album art if the miniplayer is colored,
+     *         otherwise the color it has from the theme.
+     */
+    public static int setLastMiniplayerColor(int color) {
+        if (SystemClock.uptimeMillis() >= dismissWindowUntilMs) {
+            lastMiniplayerColor = color;
+            if (matchNavigationBarEnabled()) postNavigationBarColor(color);
+            notifyGlass();
+        }
+        if (changeColor()) return color;
+
+        final Integer defaultColor = defaultMiniplayerColor;
+        return defaultColor != null ? defaultColor : color;
+    }
+
+    /**
+     * @return The color of the album art of the song that plays, or null if none.
+     */
+    @Nullable
+    public static Integer getLastMiniplayerColor() {
+        return lastMiniplayerColor;
+    }
+
+    private static void notifyGlass() {
+        MusicGlassNavigationBar.onAlbumColorChanged();
+        MusicGlassMiniplayer.onAlbumColorChanged();
     }
 
     /**
@@ -57,6 +95,10 @@ public class ChangeMiniplayerColorPatch {
      * Injection point. Overrides the nav bar background color at draw time.
      */
     public static int overrideNavigationBarColor(int defaultColor) {
+        // The glass is drawn instead, which is translucent.
+        if (Settings.NAVIGATION_BAR_GLASS.get()) {
+            return Color.TRANSPARENT;
+        }
         final Integer color = lastMiniplayerColor;
         if (color != null && matchNavigationBarEnabled()) {
             return color;
@@ -73,6 +115,7 @@ public class ChangeMiniplayerColorPatch {
         dismissWindowUntilMs = SystemClock.uptimeMillis() + DISMISS_WINDOW_MS;
         final Integer defaultColor = defaultNavigationBarColor;
         if (defaultColor != null) postNavigationBarColor(defaultColor);
+        notifyGlass();
     }
 
     private static void postNavigationBarColor(int color) {
@@ -83,6 +126,7 @@ public class ChangeMiniplayerColorPatch {
 
     private static boolean matchNavigationBarEnabled() {
         return Settings.CHANGE_MINIPLAYER_COLOR.get()
-                && Settings.CHANGE_NAVIGATION_BAR_COLOR.get();
+                && Settings.CHANGE_NAVIGATION_BAR_COLOR.get()
+                && !Settings.NAVIGATION_BAR_GLASS.get();
     }
 }

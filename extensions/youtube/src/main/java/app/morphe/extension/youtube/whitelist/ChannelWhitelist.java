@@ -42,6 +42,7 @@ public final class ChannelWhitelist {
     private static final Map<WhitelistType, Map<String, String>> cachedChannels =
             new EnumMap<>(WhitelistType.class);
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
