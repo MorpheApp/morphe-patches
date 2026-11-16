@@ -99,6 +99,17 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     };
 
     /**
+     * Longer side of 1080p. The video decoder sizes are raised to at least this while
+     * the streams of a download are picked, in either orientation.
+     */
+    private static final int FULL_HD_LONG_SIDE = 1920;
+
+    /**
+     * Set while the current thread picks the streams of a download in in-app download mode.
+     */
+    private static final ThreadLocal<Boolean> SELECTING_DOWNLOAD_STREAMS = new ThreadLocal<>();
+
+    /**
      * Injection point.
      * <p>
      * Called for every command the app resolves.
@@ -250,8 +261,17 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
                                                              int maxHeight, int audioQuality,
                                                              StreamingDataInterface streamingData,
                                                              boolean audio, Object playerConfig) {
-        FormatStreamInterface stream = selector.patch_selectStream(
-                quality, maxHeight, audioQuality, streamingData, audio, playerConfig);
+        if (!isInAppDownloadMode()) {
+            return selector.patch_selectStream(quality, maxHeight, audioQuality, streamingData, audio, playerConfig);
+        }
+
+        FormatStreamInterface stream;
+        SELECTING_DOWNLOAD_STREAMS.set(Boolean.TRUE);
+        try {
+            stream = selector.patch_selectStream(quality, maxHeight, audioQuality, streamingData, audio, playerConfig);
+        } finally {
+            SELECTING_DOWNLOAD_STREAMS.remove();
+        }
         if (audio) {
             return stream;
         }
@@ -265,6 +285,61 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
             Logger.printException(() -> "selectDownloadStream failure", ex);
             return stream;
         }
+    }
+
+    /**
+     * Implemented by the app interface that picks the video and audio streams of a saved video.
+     */
+    public interface OfflineStreamSelector {
+        /**
+         * The stream selection of the app, which uses the same device and server checks as playback.
+         *
+         * @param streamingData Streaming data of the video.
+         * @param playerConfig  Player config of the video.
+         * @param parameters    Quality and audio track to pick the streams of.
+         * @return The video and audio streams it picked.
+         */
+        Object patch_selectStreams(Object streamingData, Object playerConfig, Object parameters);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when a download starts, to pick its video and audio streams.
+     * The selection throws if no stream fits, which the app catches, so exceptions are not caught here.
+     *
+     * @return The video and audio streams the app picked.
+     */
+    public static Object selectDownloadStreams(OfflineStreamSelector selector, Object streamingData,
+                                               Object playerConfig, Object parameters) {
+        if (!isInAppDownloadMode()) {
+            return selector.patch_selectStreams(streamingData, playerConfig, parameters);
+        }
+
+        SELECTING_DOWNLOAD_STREAMS.set(Boolean.TRUE);
+        try {
+            return selector.patch_selectStreams(streamingData, playerConfig, parameters);
+        } finally {
+            SELECTING_DOWNLOAD_STREAMS.remove();
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the stream selection of the app reads the largest video size the hardware
+     * decoder supports. If the app uses only the hardware decoders, it drops the streams that are
+     * larger, and some devices list a size below 1080p, so the quality picker of a download
+     * offers only the lowest qualities. While the streams of a download are picked,
+     * the size is raised to at least 1080p, the same as the download qualities of every screen.
+     * Qualities above 1080p are left to the force 4K setting.
+     *
+     * @param maxSize Largest height or width the decoder supports.
+     */
+    public static int getVideoDecoderMaxSize(int maxSize) {
+        return Boolean.TRUE.equals(SELECTING_DOWNLOAD_STREAMS.get())
+                ? Math.max(maxSize, FULL_HD_LONG_SIDE)
+                : maxSize;
     }
 
     /**

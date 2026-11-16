@@ -539,6 +539,7 @@ internal object DownloadTransferStreamsFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_INTERFACE,
             parameters = listOf("L", "L", "L")
         ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         // Pairs the video stream with the audio stream.
         methodCall(
             opcode = Opcode.INVOKE_DIRECT,
