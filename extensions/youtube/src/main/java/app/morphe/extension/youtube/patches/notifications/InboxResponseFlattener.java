@@ -430,10 +430,15 @@ public final class InboxResponseFlattener {
 
         /**
          * @return The state from the server if there is one, otherwise the state of {@link #localUnseen}.
+         *         Only the newest video of a group has a state from the server, which is the state of the group
+         *         and stays unseen when the video is watched, so a seen video is seen.
          */
         boolean isUnseen(@Nullable String entryKey, @Nullable String videoId, SeenEntities seenEntities) {
             Boolean serverUnseen = seenEntities.isUnseen(entryKey);
-            return serverUnseen != null ? serverUnseen : localUnseen(videoId, headerUnseen);
+            if (serverUnseen == null) {
+                return localUnseen(videoId, headerUnseen);
+            }
+            return serverUnseen && !SeenVideos.contains(videoId);
         }
     }
 

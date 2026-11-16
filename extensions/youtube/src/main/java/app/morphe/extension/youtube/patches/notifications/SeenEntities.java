@@ -74,8 +74,12 @@ final class SeenEntities {
         return key == null ? null : unseen.get(key);
     }
 
+    /**
+     * Adds the entity, after the entities of the response, so it replaces one with the same key.
+     */
     void add(String key, boolean isUnseen) throws IOException {
-        if (unseen.containsKey(key)) {
+        Boolean current = unseen.get(key);
+        if (current != null && current == isUnseen) {
             return;
         }
         unseen.put(key, isUnseen);
