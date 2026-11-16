@@ -30,6 +30,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsTextFormatter;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 
 public final class LyricsSpanBuilder {
@@ -343,7 +344,7 @@ public final class LyricsSpanBuilder {
     }
 
     private static void attachUniformSpacing(SpannableString text, Spacing spacing, int blockSplitOffset) {
-        if (text.length() <= 0) {
+        if (Utils.isEmpty(text)) {
             return;
         }
         text.setSpan(new UniformLineSpacingSpan(spacing, blockSplitOffset), 0, text.length(),
@@ -523,8 +524,7 @@ public final class LyricsSpanBuilder {
     }
 
     static boolean isRtlText(@Nullable CharSequence text) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (text == null || text.length() == 0) {
+        if (Utils.isEmpty(text)) {
             return false;
         }
         return ScriptDetector.isLineRtl(text);

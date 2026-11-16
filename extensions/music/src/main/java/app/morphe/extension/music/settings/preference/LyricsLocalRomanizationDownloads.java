@@ -127,23 +127,19 @@ public final class LyricsLocalRomanizationDownloads {
             value.append("sudachi");
         }
         if (unidict) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (value.length() > 0) value.append(',');
+            if (Utils.isNotEmpty(value)) value.append(',');
             value.append("unidict");
         }
         if (pinyin) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (value.length() > 0) value.append(',');
+            if (Utils.isNotEmpty(value)) value.append(',');
             value.append("pinyin");
         }
         if (cldr) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (value.length() > 0) value.append(',');
+            if (Utils.isNotEmpty(value)) value.append(',');
             value.append("cldr");
         }
         // Kept distinct from blank, which is a copy that never chose.
-        //noinspection SizeReplaceableByIsEmpty
-        Settings.LYRICS_LOCAL_DICTIONARIES.save(value.length() == 0 ? NONE : value.toString());
+        Settings.LYRICS_LOCAL_DICTIONARIES.save(Utils.isEmpty(value) ? NONE : value.toString());
     }
 
     /** Starts only the providers the choice needs. */

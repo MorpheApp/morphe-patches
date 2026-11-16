@@ -361,7 +361,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">แสดงการแจ้งเตือนเมื่อเซิร์ฟเวอร์ Return YouTube Dislike ไม่สามารถใช้งานได้</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike คืนค่าการไม่ชอบที่ YouTube ซ่อนไว้ในปี 2021 จำนวนเหล่านี้มาจากข้อมูลที่เก็บถาวรก่อนการนำออก และประมาณการสำหรับวิดีโอใหม่จากการโหวตของผู้ใช้ ดังนั้นจึงเป็นค่าโดยประมาณและอัปเดตทุกสองสามวัน
 
-ID ของวิดีโอที่คุณรับชมจะถูกส่งไปยัง API ของ Return YouTube Dislike และความชอบและไม่ชอบของคุณจะถูกส่งโดยไม่เปิดเผยตัวตนเพื่อปรับปรุงการประมาณการ"</string>
+รหัสของวิดีโอที่คุณรับชมจะถูกส่งไปยัง API ของ Return YouTube Dislike และความชอบและไม่ชอบของคุณจะถูกส่งโดยไม่เปิดเผยตัวตนเพื่อปรับปรุงการประมาณการ"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">สถิติ API ของ Return YouTube Dislike ของอุปกรณ์นี้</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">เวลาตอบสนอง API, ค่าเฉลี่ย</string>

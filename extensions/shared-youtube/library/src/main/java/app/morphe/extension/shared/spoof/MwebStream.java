@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -144,12 +143,7 @@ public final class MwebStream {
         }
         synchronized (streams) {
             final long now = System.currentTimeMillis();
-            Iterator<MwebStream> iterator = streams.values().iterator();
-            while (iterator.hasNext()) {
-                if (iterator.next().expireTime < now) {
-                    iterator.remove();
-                }
-            }
+            streams.values().removeIf(mwebStream -> mwebStream.expireTime < now);
 
             MwebStream stream = streams.get(streamId);
             if (stream != null && stream.videoId.equals(videoId)) {
@@ -259,11 +253,9 @@ public final class MwebStream {
         }
         if (status == STATUS_ATTESTATION_REQUIRED) {
             onFailure("attestation required");
-        } else if (status == STATUS_ATTESTATION_PENDING && previous < 0 && !session.coldStart) {
+        } else if (status == STATUS_ATTESTATION_PENDING && previous < 0) {
             // The session the website made is accepted from the first response.
             // If it is not, the server stops the stream after some media, so the next client is used sooner.
-            // A session taken at the cold start of the website is pending until the website sends its PoToken,
-            // as in the browser.
             onFailure("attestation pending at the start");
         }
     }

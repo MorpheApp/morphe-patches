@@ -22,6 +22,7 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
+import app.morphe.patches.youtube.video.information.SetVideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.VideoQualitySetterFingerprint
 import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -499,8 +500,8 @@ internal object VideoQualityItemOnClickFingerprint : Fingerprint(
 /**
  * The method of the quality menu that sets the quality by its resolution.
  */
-internal fun getSetVideoQualityResolutionFingerprint(videoQualityMenuType: String) = Fingerprint(
-    definingClass = videoQualityMenuType,
+internal object SetVideoQualityResolutionFingerprint : Fingerprint(
+    definingClass = { SetVideoQualityFingerprint.instructionMatches[1].fieldReference.type },
     returnType = "V",
     parameters = listOf("I")
 )

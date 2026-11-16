@@ -542,8 +542,7 @@ public final class LyricsPanelView extends FrameLayout
         creditView.setVisibility(GONE);
         creditView.setOnLongClickListener(v -> {
             CharSequence text = creditView.getText();
-            //noinspection SizeReplaceableByIsEmpty
-            if (text != null && text.length() > 0) {
+            if (Utils.isNotEmpty(text)) {
                 ClipboardManager clipboard = (ClipboardManager) getContext()
                         .getSystemService(Context.CLIPBOARD_SERVICE);
                 if (clipboard != null) {
@@ -4157,24 +4156,24 @@ public final class LyricsPanelView extends FrameLayout
      * track folds fullwidth punctuation to ASCII - and what the search finds replaces the
      * whole candidate queue.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public Lyrics getCurrentLyrics() {
         return lyrics;
     }
 
+    @Nullable
     @Override
     public Lyrics getPendingAlignment() {
         return pendingAlignment;
     }
 
     @Override
-    public void setDialogAlignButton(TextView button) {
+    public void setDialogAlignButton(@Nullable TextView button) {
         dialogAlignButton = button;
     }
 
     @Override
-    public void setDialogSectionButton(TextView button) {
+    public void setDialogSectionButton(@Nullable TextView button) {
         dialogSectionButton = button;
     }
 
@@ -5750,10 +5749,9 @@ public final class LyricsPanelView extends FrameLayout
      * the label is up there is nothing to reorder; settleDualPill reads the new setting when it
      * brings the icons back.
      */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private void refreshDualPillIcons() {
         TextView pill = dualPillView;
-        if (!dualPillActive || pill == null || pill.getText().length() > 0) {
+        if (!dualPillActive || pill == null || Utils.isNotEmpty(pill.getText())) {
             return;
         }
         renderDualPill(pill, false);
@@ -5878,11 +5876,10 @@ public final class LyricsPanelView extends FrameLayout
         updateLinesDepthOfField(activeIndicesSet, primaryActiveIndex, -1, false);
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     public void applyHideInfo() {
         CharSequence info = creditView.getText();
         final boolean visible = !Settings.LYRICS_HIDE_INFO.get()
-                && info != null && info.length() > 0;
+                && Utils.isNotEmpty(info);
         creditView.setVisibility(visible ? VISIBLE : GONE);
     }
 
@@ -6121,10 +6118,9 @@ public final class LyricsPanelView extends FrameLayout
      * Hides or brings back both icons the pill carries. They are hidden rather than dropped so
      * the pair stays intact for when the label clears again.
      */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private void applyButtonAppearance(TextView button, boolean active) {
         CharSequence currentText = button.getText();
-        final boolean labelling = currentText != null && currentText.length() > 0;
+        final boolean labelling = Utils.isNotEmpty(currentText);
         if (button == dualPillView) {
             // The pill names the mode before it stands for the two, so the icons follow the
             // label in and back out with it. It owns its padding as well.

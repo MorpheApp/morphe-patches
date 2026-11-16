@@ -542,6 +542,8 @@ Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met a
   <string name="morphe_disable_chapter_skip_double_tap_title">Deaktiveer hoofstuk-oorslaan met dubbeltik</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiveer die dubbeltik gebaar met twee vingers wat hoofstukke oorslaan, wat per ongeluk met een vinger geaktiveer kan word</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Laai video\'s, podkaste of liedjies af met derdeparty-aflaai-programme</string>
   <string name="morphe_external_downloader_overlay_button_title">Wys speler-oorlade-aflaai-knoppie</string>
   <string name="morphe_external_downloader_overlay_button_summary">Wys \'n knoppie in die video-speler wat jou eksterne aflaailaar oopmaak</string>
@@ -558,6 +560,10 @@ Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met a
   <string name="morphe_shorts_download_flyout_button_title">Wys aflaai in Shorts-kieslys</string>
   <string name="morphe_shorts_download_flyout_button_summary">Voeg \'n aflaai-item by die spyskaart van die Shorts-speler</string>
   <string name="morphe_shorts_download_flyout_title">Aflaai</string>
+  <string name="morphe_feed_download_flyout_button_title">Wys aflaai in videomenu\'s</string>
+  <string name="morphe_feed_download_flyout_button_summary">Voeg \'n aflaai-item by die menu\'s van video\'s in die feed wat nie een het nie, soos video\'s wat YouTube slegs Premium-lede toelaat om af te laai</string>
+  <string name="morphe_download_force_4k_title">Forceer 4K-aflaai-beskikbaarheid</string>
+  <string name="morphe_download_force_4k_summary">Bied 1440p- en 4K-aflaai-opsies, selfs as YouTube besluit dat hierdie toestel hulle nie kan speel nie. Sodanige video\'s mag dalk sonder video binne YouTube speel, maar kan na jou toestel geeksporteer word</string>
   <string name="morphe_export_download_folder_title">Voer gestoorde video\'s uit</string>
   <string name="morphe_export_download_folder_summary">"Voer in-app gestoorde video's uit na jou toestel se stoorplek deur die in-app aflaai-spyskaart te gebruik. Tik om die uitvoergids te verander
 
@@ -773,6 +779,10 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <string name="morphe_queue_manager_open_queue">Maak waglys oop</string>
   <string name="morphe_queue_manager_save_queue">Stoor waglys na speellys</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Wys wachtry-knoppie op duimnaels</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">\'n Wachtry-knoppie word op die duimnaels van feed-video\'s gewys. Tik daarop om die video aan die einde van die wachtry by te voeg, en tik en hou dit vas om die video volgende te speel</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Ruil duimnael-wachtry-aksies</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Tik op die wachtry-knoppie om die video volgende te speel, en tik en hou dit vas om die video aan die einde van die wachtry by te voeg</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Laai toubladsy\'s tydens blaai</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Laai meer speellys-video\'s wanneer daar naby die einde van die tou geblaai word</string>
   <string name="morphe_native_playlist_queue_saved">Afspellys gestoor</string>
@@ -1129,6 +1139,12 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_disable_fullscreen_ambient_mode_title">Deaktiveer omgewingsmodus in volskerm</string>
   <string name="morphe_enhanced_ambient_mode_title">Verbeterde Ambient-modus</string>
   <string name="morphe_enhanced_ambient_mode_summary">Verlig die hele kykbladsy en swart Stroke met die video, in plaas van Ambient-modus</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Ligsterkte</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Hoe sterk die lig op die horlosiebladsy en die swart stroke is</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Ligversagting</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Hoe lank die lig neem om die video te volg. Met 0 volg dit die video nou</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Ligvervaging</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Hoeveel die lig langs die video vervaag. Met 0 behou dit die vorms van die video</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Hou teks leesbaar</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dim die lig op helder video\'s sodat die teks op die bladsy leesbaar bly</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dim terwyl daar geskrol word</string>
@@ -1476,7 +1492,7 @@ Automotive-uitleg
   <string name="morphe_dearrow_titles_player_title">Speler se afspeellyste &amp; aanbevelings</string>
   <string name="morphe_dearrow_titles_search_title">Soekresultate</string>
   <string name="morphe_dearrow_titles_icon_title">Wys DeArrow-ikoon</string>
-  <string name="morphe_dearrow_titles_icon_summary">Wys die DeArrow-ikoon op crowdsourced-videotitels. Tik op die ikoon om die oorspronklike titel en miniature te wys</string>
+  <string name="morphe_dearrow_titles_icon_summary">Wys die DeArrow-ikoon op die titels van video\'s met \'n crowdsourced-titel of thumbnail. Tik op die ikoon om die oorspronklike titel en thumbnail te wys</string>
   <string name="morphe_dearrow_casual_mode_title">Informele modus</string>
   <string name="morphe_dearrow_casual_mode_summary">Wys die oorspronklike titel in plaas van die DeArrow-titel as DeArrow-gebruikers gestem het dat hulle van die oorspronklike titel hou</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum informele stemme om die oorspronklike titel te wys</string>
@@ -1502,6 +1518,65 @@ Video's word met 'n kort voorvoegsel van die gehashte video-ID aangevra, sodat d
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow is tans nie beskikbaar nie (statuskode: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow is tans nie beskikbaar nie</string>
+  <string name="morphe_dearrow_vote_button_title">Wys DeArrow-knoppie</string>
+  <string name="morphe_dearrow_vote_button_summary">Voeg \'n knoppie bo-aan die videospeler by om op DeArrow-titels en miniaturebeelde te stem, of nuwes in te dien</string>
+  <string name="morphe_dearrow_guidelines_title">Riglyne</string>
+  <string name="morphe_dearrow_guidelines_summary">Riglyne bevat reëls en wenke vir die indiening en stemming van titels en miniaturebeelde</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Volg die riglyne</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Lees die DeArrow-riglyne voordat jy titels en miniature indien of daarop stem</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Reeds gelees</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Wys my</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Laai…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Kon nie die titels en miniature van hierdie video laai nie</string>
+  <string name="morphe_dearrow_vote_titles">Titels</string>
+  <string name="morphe_dearrow_vote_thumbnails">Miniature</string>
+  <string name="morphe_dearrow_vote_no_titles">Geen titels nog nie. Dien \'n titel in om die eerste te wees</string>
+  <string name="morphe_dearrow_vote_original_title">Oorspronklike titel</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Oorspronklike kleinkiekie</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Raampie by %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Telling: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Ongeverifieerd</string>
+  <string name="morphe_dearrow_vote_locked">Gesluit</string>
+  <string name="morphe_dearrow_vote_upvote">Stem op</string>
+  <string name="morphe_dearrow_vote_downvote">Stem af</string>
+  <string name="morphe_dearrow_vote_new_title">Nuwe titel</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Tik \'n titel</string>
+  <string name="morphe_dearrow_vote_submit">Stuur in</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Nuwe miniatuur</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Dien die raam by %s in as \'n miniatuur?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Die video speel. Om die raam wat jy sien in te dien, pauseer eers die video</string>
+  <string name="morphe_dearrow_vote_upvoted">Stem ingedien by DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Negatiewe stem ingedien by DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow het nie die stem aanvaar nie: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Hierdie is geslot, en kan slegs deur VIP-gebruikers afgestem word</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">\'n Stem vir hierdie video is steeds in gang. Probeer weer oor \'n oomblik</string>
+  <string name="morphe_dearrow_vote_failed_code">Kon nie die stem indien nie (statuskode: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Kon nie die stem indien nie. Gaan jou verbinding na en probeer weer</string>
+  <string name="morphe_dearrow_submitting_title">Indien van titels en miniature</string>
+  <string name="morphe_dearrow_vote_time_step_title">Tydaanpassingsstap</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Soekhoeveelheid van die fyn tydaanpassingsknoppies wanneer \'n thumbnail ingedien word (in millisekondes)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Waarde moet \'n positiewe getal wees</string>
+  <string name="morphe_dearrow_private_user_id_title">Jou privaat gebruikers-ID</string>
+  <string name="morphe_dearrow_private_user_id_summary">Dieselfde gebruikers-ID as SponsorBlock. Dit moet privaat gehou word. Dit is soos \'n wagwoord en moet nie met enigiemand gedeel word nie. As iemand dit het, kan hulle jou naboots</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Privaat gebruikers-ID moet ten minste 30 karakters lank wees</string>
+  <string name="morphe_dearrow_account_loading">Laai…</string>
+  <string name="morphe_dearrow_account_connection_failure">Rekeningbesonderhede is tydelik nie beskikbaar nie</string>
+  <string name="morphe_dearrow_account_username">Jou gebruikersnaam: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Tik hier om jou gebruikersnaam te verander. Die gebruikersnaam is dieselfde as op SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Gebruikersnaam is suksesvol verander</string>
+  <string name="morphe_dearrow_account_username_change_error">Kon gebruikersnaam nie verander nie: Status: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Jy het &lt;b&gt;%s&lt;/b&gt; titels ingedien</string>
+  <string name="morphe_dearrow_account_titles_summary">Tik hier om jou titels te bekyk</string>
+  <string name="morphe_dearrow_account_thumbnails">Jy het &lt;b&gt;%s&lt;/b&gt; miniature beelde ingedien</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Tik hier om jou miniature beelde te bekyk</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Herstel ou spelerknoppiestyl</string>
   <string name="morphe_restore_old_player_buttons_summary">Herstel die vet videospelerkontroles na die ouer, dunner visuele styl</string>
@@ -1519,6 +1594,16 @@ Video's word met 'n kort voorvoegsel van die gehashte video-ID aangevra, sodat d
   <string name="morphe_disable_haptic_feedback_zoom_title">Deaktiveer zoem-haptika</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">As jy onlangs jou rekeningaanmeldingsbesonderhede verander het, oninstalleer en herinstalleer MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Stoor stootkennisgewings</string>
+  <string name="morphe_debug_save_push_notifications_summary">Stoor ontvangde stootkennisgewings in \'n lêer in die toepassingdata. Die lêer kan privaat inligting insluit, soos kennisgewingtekste en kanaalname</string>
+  <string name="morphe_debug_saved_push_notifications_title">Voer gestoorde stootkennisgewings uit</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Voer die gestoorde stootkennisgewings uit of maak dit skoon</string>
+  <string name="morphe_debug_saved_push_notifications_count">Gestoorde stootkennisgewings: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Geen gestoorde stootkennisgewings gevind nie</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Stootkennisgewings is suksesvol uitgevoer</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Kon nie stootkennisgewings uitvoer nie</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Gestoorde stootkennisgewings is skoongemaak</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omseil skakelherleidings</string>
   <string name="morphe_bypass_link_redirects_summary">Maak die oorspronklike skakel direk oop, en omseil die spoorskakel (youtube.com/redirect)</string>

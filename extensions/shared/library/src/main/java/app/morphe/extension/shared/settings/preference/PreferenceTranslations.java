@@ -24,6 +24,7 @@ import app.morphe.extension.shared.ResourceUtils;
  * preferences resolves their texts to the string resources of the default language.
  * The texts are looked up again by the name of the string resource the XML references.
  */
+@SuppressWarnings("deprecation")
 final class PreferenceTranslations {
 
     private static final String ANDROID_NAMESPACE = "http://schemas.android.com/apk/res/android";

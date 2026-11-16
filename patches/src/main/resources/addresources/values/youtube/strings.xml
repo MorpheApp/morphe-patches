@@ -53,11 +53,11 @@ Second \"item\" text"</string>
 Some server-side layouts may not revert.
 
 Changes include:
+• Fullscreen video suggestions may be broken
 • Components in player flyout menu (or related settings) may not work
-• Rolling numbers are not animated
-• Library tab is shown
 • Music section of video description may not work
 • Player flyout menu items cannot be hidden
+• Rolling numbers are not animated
 • Account switch button may not appear on the Library tab"</string>
 
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
@@ -603,8 +603,12 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_shorts_download_flyout_button_title">Show download in Shorts menu</string>
     <string name="morphe_shorts_download_flyout_button_summary">Adds a download item to the menu of the Shorts player</string>
     <string name="morphe_shorts_download_flyout_title">Download</string>
+    <string name="morphe_feed_download_flyout_button_title">Force flyout download menu item</string>
+    <string name="morphe_feed_download_flyout_button_summary">Adds a download item to the menus of feed videos that have none</string>
+    <string name="morphe_download_force_4k_title">Force 4K download availability</string>
+    <string name="morphe_download_force_4k_summary">Offers 1440p and 4K downloads even if YouTube decides this device cannot play them</string>
     <string name="morphe_export_download_folder_title">Export saved videos</string>
-    <string name="morphe_export_download_folder_summary">"Export in-app saved videos to your device storage using the in-app downloads flyout menu. Tap to change the export folder
+    <string name="morphe_export_download_folder_summary">"Export in-app saved videos to your device storage using the in-app downloads flyout menu. Tap here to change the export folder
 
 Export folder: %s"</string>
     <string name="morphe_export_download_started">Exporting video</string>
@@ -1623,7 +1627,7 @@ Automotive layout
     <string name="morphe_dearrow_titles_player_title">Player playlists &amp; recommendations</string>
     <string name="morphe_dearrow_titles_search_title">Search results</string>
     <string name="morphe_dearrow_titles_icon_title">Show DeArrow icon</string>
-    <string name="morphe_dearrow_titles_icon_summary">Shows the DeArrow icon on crowdsourced video titles. Tap the icon to show the original title and thumbnail</string>
+    <string name="morphe_dearrow_titles_icon_summary">Shows the DeArrow icon on the titles of videos with a crowdsourced title or thumbnail. Tap the icon to show the original title and thumbnail</string>
     <string name="morphe_dearrow_casual_mode_title">Casual mode</string>
     <string name="morphe_dearrow_casual_mode_summary">Shows the original title instead of the DeArrow title if DeArrow users voted they like the original title</string>
     <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum casual votes to show original title</string>
@@ -1729,6 +1733,17 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
 
     <!-- misc.gms.accountCredentialsInvalidTextPatch -->
     <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG</string>
+
+    <!-- misc.debugging.enableDebuggingPatch -->
+    <string name="morphe_debug_save_push_notifications_title">Save push notifications</string>
+    <string name="morphe_debug_save_push_notifications_summary">Saves received push notifications to a file in the app data. The file can include private information, such as notification texts and channel names</string>
+    <string name="morphe_debug_saved_push_notifications_title">Export saved push notifications</string>
+    <string name="morphe_debug_saved_push_notifications_summary">Export or clear the saved push notifications</string>
+    <string name="morphe_debug_saved_push_notifications_count">Saved push notifications: %s</string>
+    <string name="morphe_debug_saved_push_notifications_none_found">No saved push notifications found</string>
+    <string name="morphe_debug_saved_push_notifications_export_success">Push notifications exported successfully</string>
+    <string name="morphe_debug_saved_push_notifications_export_failed">Failed to export push notifications</string>
+    <string name="morphe_debug_saved_push_notifications_cleared">Saved push notifications cleared</string>
 
     <!-- misc.links.bypassLinkRedirectsPatch -->
     <string name="morphe_bypass_link_redirects_title">Bypass link redirects</string>

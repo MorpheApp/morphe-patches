@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Απενεργοποιήστε την παράλειψη κεφαλαίων με διπλό πάτημα</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Απενεργοποιεί τη χειρονομία διπλού αγγίγματος με δύο δάχτυλα που παραλείπει κεφάλαια, η οποία μπορεί να ενεργοποιηθεί κατά λάθος με ένα δάχτυλο</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Κάντε λήψη βίντεο, podcast ή τραγούδια με εφαρμογές λήψης τρίτων</string>
   <string name="morphe_external_downloader_overlay_button_title">Εμφάνιση κουμπιού λήψης για το overlay του player</string>
   <string name="morphe_external_downloader_overlay_button_summary">Εμφανίζει ένα κουμπί στον video player που ανοίγει το εξωτερικό πρόγραμμα λήψης σας</string>
@@ -558,6 +560,10 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">Εμφάνιση λήψης στο μενού Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Προσθέτει ένα στοιχείο λήψης στο μενού του προγράμματος αναπαραγωγής Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Λήψη</string>
+  <string name="morphe_feed_download_flyout_button_title">Εμφάνιση λήψης στα μενού βίντεο</string>
+  <string name="morphe_feed_download_flyout_button_summary">Προσθέτει ένα στοιχείο λήψης στα μενού των βίντεο στο feed που δεν διαθέτουν τέτοιο στοιχείο, όπως τα βίντεο που το YouTube επιτρέπει να ληγθούν μόνο σε μέλη Premium</string>
+  <string name="morphe_download_force_4k_title">Επιβολή διαθεσιμότητας λήψης 4K</string>
+  <string name="morphe_download_force_4k_summary">Προσφέρει λήψεις 1440p και 4K ακόμη και αν το YouTube αποφασίσει ότι αυτή η συσκευή δεν μπορεί να τις αναπαράγει. Τέτοια βίντεο ενδέχεται να αναπαραχθούν χωρίς εικόνα μέσα στο YouTube, αλλά μπορούν να εξαχθούν στη συσκευή σας</string>
   <string name="morphe_export_download_folder_title">Εξαγωγή αποθηκευμένων βίντεο</string>
   <string name="morphe_export_download_folder_summary">"Εξαγάγετε τα βίντεο που αποθηκεύτηκαν στην εφαρμογή στη μνήμη της συσκευής σας χρησιμοποιώντας το αναδυόμενο μενού λήψεων της εφαρμογής. Πατήστε για να αλλάξετε τον φάκελο εξαγωγής
 
@@ -772,6 +778,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Άνοιγμα ουράς</string>
   <string name="morphe_queue_manager_save_queue">Αποθήκευση ουράς σε λίστα αναπαραγωγής</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Εμφάνιση κουμπιού ουράς στις μικρογραφίες</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Στις μικρογραφίες των βίντεο του feed εμφανίζεται ένα κουμπί ουράς. Με ένα πάτημα, το βίντεο προστίθεται στο τέλος της ουράς και με πάτημα και συγκράτηση, το βίντεο αναπαράγεται στη συνέχεια</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Αλλαγή ενεργειών ουράς στις μικρογραφίες</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Με ένα πάτημα στο κουμπί ουράς, το βίντεο αναπαράγεται στη συνέχεια και με πάτημα και συγκράτηση, το βίντεο προστίθεται στο τέλος της ουράς</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Φόρτωση σελίδων ουράς κατά την κύλιση</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Φορτώνει περισσότερα βίντεο λίστας αναπαραγωγής όταν κάνετε κύλιση κοντά στο τέλος της ουράς</string>
   <string name="morphe_native_playlist_queue_saved">Η λίστα αναπαραγωγής αποθηκεύτηκε</string>
@@ -1128,6 +1138,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Απενεργοποίηση λειτουργίας περιβάλλοντος σε πλήρη οθόνη</string>
   <string name="morphe_enhanced_ambient_mode_title">Βελτιωμένη λειτουργία περιβάλλοντος</string>
   <string name="morphe_enhanced_ambient_mode_summary">Φωτίζει ολόκληρη τη σελίδα προβολής και τις μαύρες μπάρες με το βίντεο, αντί για τη Λειτουργία περιβάλλοντος</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Ένταση φωτός</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Πόσο έντονο είναι το φως στη σελίδα του ρολογιού και στις μαύρες μπάρες</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Ήπια εξομάλυνση φωτισμού</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Πόσο χρόνο χρειάζεται ο φωτισμός για να ακολουθήσει το βίντεο. Με τιμή 0, ακολουθεί το βίντεο στενά</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Θόλωμα φωτισμού</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Πόσο θολώνεται ο φωτισμός δίπλα στο βίντεο. Με τιμή 0, διατηρούνται τα σχήματα του βίντεο</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Διατήρηση αναγνώσιμου κειμένου</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Μειώνει τη φωτεινότητα σε φωτεινά βίντεο ώστε το κείμενο στη σελίδα να παραμένει αναγνώσιμο</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Σκότωση κατά τη διάρκεια κύλισης</string>
@@ -1475,7 +1491,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">Λίστες αναπαραγωγής &amp; προτάσεις</string>
   <string name="morphe_dearrow_titles_search_title">Αποτελέσματα αναζήτησης</string>
   <string name="morphe_dearrow_titles_icon_title">Εμφάνιση εικονιδίου DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Εμφανίζει το εικονίδιο DeArrow στους τίτλους βίντεο που βασίζονται σε crowdsourcing. Πατήστε το εικονίδιο για να εμφανίσετε τον αρχικό τίτλο και τη μικρογραφία</string>
+  <string name="morphe_dearrow_titles_icon_summary">Εμφανίζει το εικονίδιο DeArrow στους τίτλους βιντεοκλίπ με τίτλο ή μικρογραφία από την κοινότητα. Πατήστε το εικονίδιο για να δείτε τον αρχικό τίτλο και τη μικρογραφία</string>
   <string name="morphe_dearrow_casual_mode_title">Χαλαρή λειτουργία</string>
   <string name="morphe_dearrow_casual_mode_summary">Εμφανίζει τον αρχικό τίτλο αντί για τον τίτλο DeArrow, αν οι χρήστες του DeArrow ψήφισαν ότι τους αρέσει ο αρχικός τίτλος</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Ελάχιστος αριθμός ψήφων casual για την εμφάνιση του αρχικού τίτλου</string>
@@ -1501,6 +1517,65 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow προσωρινά μη διαθέσιμο (κωδικός: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow προσωρινά μη διαθέσιμο</string>
+  <string name="morphe_dearrow_vote_button_title">Εμφάνιση κουμπιού DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Προσθέτει ένα κουμπί στο πάνω μέρος του προγράμματος αναπαραγωγής βίντεο για να ψηφίζετε τίτλους και μικρογραφίες DeArrow ή να υποβάλετε νέους</string>
+  <string name="morphe_dearrow_guidelines_title">Οδηγίες</string>
+  <string name="morphe_dearrow_guidelines_summary">Οι οδηγίες περιλαμβάνουν κανόνες και συμβουλές για την υποβολή και την ψηφοφορία τίτλων και μικρογραφιών</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Ακολουθήστε τις οδηγίες</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Διαβάστε τις οδηγίες του DeArrow πριν υποβάλετε ή ψηφίσετε τίτλους και μικρογραφίες</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Τις έχω διαβάσει</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Δείξτε μου</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Φόρτωση…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Δεν ήταν δυνατή η φόρτωση των τίτλων και των μικρογραφιών αυτού του βίντεο</string>
+  <string name="morphe_dearrow_vote_titles">Τίτλοι</string>
+  <string name="morphe_dearrow_vote_thumbnails">Μικρογραφίες</string>
+  <string name="morphe_dearrow_vote_no_titles">Δεν υπάρχουν ακόμα τίτλοι. Υποβάλετε έναν τίτλο για να είστε οι πρώτοι</string>
+  <string name="morphe_dearrow_vote_original_title">Αρχικός τίτλος</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Αρχική μικρογραφία</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Στέλχος στο %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Βαθμολογία: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Μη επαληθευμένο</string>
+  <string name="morphe_dearrow_vote_locked">Κλειδωμένο</string>
+  <string name="morphe_dearrow_vote_upvote">Θετική ψήφος</string>
+  <string name="morphe_dearrow_vote_downvote">Αρνητική ψήφος</string>
+  <string name="morphe_dearrow_vote_new_title">Νέος τίτλος</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Πληκτρολογήστε έναν τίτλο</string>
+  <string name="morphe_dearrow_vote_submit">Υποβολή</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Νέα μικρογραφία</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s δ</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Υποβολή του πλαισίου στο %s ως μικρογραφία;</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Το βίντεο αναπαράγεται. Για να υποβάλετε το πλαίσιο που βλέπετε, σταματήστε πρώτα το βίντεο</string>
+  <string name="morphe_dearrow_vote_upvoted">Η ψήφος υποβλήθηκε στο DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Η αρνητική ψήφος υποβλήθηκε στο DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">Το DeArrow δεν απέδεξε την ψήφο: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Αυτό είναι κλειδωμένο και μπορεί να υποψηφιστεί αρνητικά μόνο από χρήστες VIP</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Μια ψήφος για αυτό το βίντεο είναι ακόμα σε εξέλιξη. Δοκιμάστε ξανά σε λίγο</string>
+  <string name="morphe_dearrow_vote_failed_code">Δεν ήταν δυνατή η υποβολή της ψήφου (κώδικας κατάστασης: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Δεν ήταν δυνατή η υποβολή της ψήφου. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά</string>
+  <string name="morphe_dearrow_submitting_title">Υποβολή τίτλων και μικρογραφιών</string>
+  <string name="morphe_dearrow_vote_time_step_title">Βήμα προσαρμογής χρόνου</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Ποσό αναζήτησης των κουμπιών λεπτομερούς προσαρμογής χρόνου κατά την υποβολή μιας μικρογραφίας (σε χιλιοστά του δευτερολέπτου)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Η τιμή πρέπει να είναι θετικός αριθμός</string>
+  <string name="morphe_dearrow_private_user_id_title">Το ιδιωτικό σας αναγνωριστικό χρήστη</string>
+  <string name="morphe_dearrow_private_user_id_summary">Το ίδιο αναγνωριστικό χρήστη με το SponsorBlock. Αυτό πρέπει να μείνει μυστικό. Είναι σαν έναν κωδικό που δεν πρέπει να μοιραστείτε με κανέναν. Εάν κάποιος αποκτήσει αυτόν τον κωδικό, μπορεί να σας υποδυθεί</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Το ιδιωτικό αναγνωριστικό χρήστη πρέπει να είναι τουλάχιστον 30 χαρακτήρες</string>
+  <string name="morphe_dearrow_account_loading">Φόρτωση…</string>
+  <string name="morphe_dearrow_account_connection_failure">Οι λεπτομέρειες του λογαριασμού δεν είναι προσωρινά διαθέσιμες</string>
+  <string name="morphe_dearrow_account_username">Το όνομα χρήστη σας: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Πατήστε εδώ για να αλλάξετε το όνομα χρήστη σας. Το όνομα χρήστη είναι το ίδιο με αυτό στο SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Το όνομα χρήστη άλλαξε επιτυχώς</string>
+  <string name="morphe_dearrow_account_username_change_error">Αδυναμία αλλαγής ονόματος χρήστη: Κατάσταση: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Έχετε υποβάλει &lt;b&gt;%s&lt;/b&gt; τίτλους</string>
+  <string name="morphe_dearrow_account_titles_summary">Πατήστε εδώ για να δείτε τους τίτλους σας</string>
+  <string name="morphe_dearrow_account_thumbnails">Έχετε υποβάλει &lt;b&gt;%s&lt;/b&gt; μικρογραφίες</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Πατήστε εδώ για να δείτε τις μικρογραφίες σας</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Επαναφορά στυλ κουμπιών παλαιού αναπαραγωγού</string>
   <string name="morphe_restore_old_player_buttons_summary">Επαναφέρει τα έντονα χειριστήρια αναπαραγωγής βίντεο στο παλαιότερο, λεπτότερο οπτικό στυλ</string>
@@ -1518,6 +1593,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Απενεργοποίηση απόκρισης δόνησης χειρονομίας ζουμ</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Εάν αλλάξατε πρόσφατα τα στοιχεία σύνδεσης του λογαριασμού σας, απεγκαταστήστε και εγκαταστήστε ξανά το MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Αποθήκευση ειδοποιήσεων Push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Αποθηκεύει τις ειδοποιήσεις push που ελήφθησαν σε ένα αρχείο στα δεδομένα της εφαρμογής. Το αρχείο μπορεί να περιλαμβάνει ιδιωτικές πληροφορίες, όπως κείμενα ειδοποιήσεων και ονόματα καναλιών</string>
+  <string name="morphe_debug_saved_push_notifications_title">Εξαγωγή αποθηκευμένων ειδοποιήσεων push</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Εξαγωγή ή εκκαθάριση των αποθηκευμένων ειδοποιήσεων push</string>
+  <string name="morphe_debug_saved_push_notifications_count">Αποθηκευμένες ειδοποιήσεις Push: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Δεν βρέθηκαν αποθηκευμένες ειδοποιήσεις Push</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Οι ειδοποιήσεις Push εξήχθησαν επιτυχώς</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Αποτυχία εξαγωγής ειδοποιήσεων Push</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Οι αποθηκευμένες ειδοποιήσεις Push καθαρίστηκαν</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Παράκαμψη ανακατευθύνσεων συνδέσμων</string>
   <string name="morphe_bypass_link_redirects_summary">Ανοίγει τον αρχικό σύνδεσμο απευθείας, παρακάμπτοντας τον σύνδεσμο παρακολούθησης (youtube.com/redirect)</string>

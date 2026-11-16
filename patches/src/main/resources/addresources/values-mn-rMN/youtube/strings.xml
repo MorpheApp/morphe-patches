@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Бүлгийг алгасах хоёр удаагийн товшилт идэвхгүй болгох</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Бүлгийг алгасах хоёр хуруугаар хоёр удаа товших үйлдлийг идэвхгүй болгоно. Энэ нь нэг хуруугаар товхдоход санамсаргүйгээр ажиллаж магадгүй юм</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Гуравдагч талын татаж авах аппликейшн ашиглан видео, подкаст эсвэл дуу татаж авах</string>
   <string name="morphe_external_downloader_overlay_button_title">Тоглуулагчийн overlay татах товчийг харуулах</string>
   <string name="morphe_external_downloader_overlay_button_summary">Видео тоглуулагч дээр гадаад татуургчийг нээх товчийг харуулна</string>
@@ -558,6 +560,10 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts цэсэнд татаж авах товчийг харуулах</string>
   <string name="morphe_shorts_download_flyout_button_summary">Shorts тоглуулагчийн цэсэнд татаж авах товчлуур нэмнэ</string>
   <string name="morphe_shorts_download_flyout_title">Татаж авах</string>
+  <string name="morphe_feed_download_flyout_button_title">Видео цэснүүдэд татаж авах товчийг харуулах</string>
+  <string name="morphe_feed_download_flyout_button_summary">YouTube-ийн зөвхөн Premium гишүүдэд татаж авахыг зөвшөөрсөн видео шиг feed-ийн цэсэнд татаж авах сонголт байхгүй видеонуудад татаж авах гэсэн сонголтыг нэмнэ</string>
+  <string name="morphe_download_force_4k_title">4K татаж авах боломжийг албадан идэвхэсүүлэх</string>
+  <string name="morphe_download_force_4k_summary">YouTube энэ төхөөрөмж дээр тоглуулж чадахгүй гэж үзсэн ч 1440p болон 4K чанартай татаж авах боломжийг олгоно. Ийм видеонууд YouTube дотор дүрсгүй тоглуулагдаж болох ч таны төхөөрөмж рүү экспортлох боломжтой</string>
   <string name="morphe_export_download_folder_title">Хадгалсан видеог экспортлох</string>
   <string name="morphe_export_download_folder_summary">"Апп дотор хадгалсан видеог татаж авах цэсийг ашиглан төхөөрөмжийнхээ санах ойд экспортлох. Экспортын хавтсыг өөрчлөхийн тулд дарна уу
 
@@ -773,6 +779,10 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_queue_manager_open_queue">Дарааллыг нээх</string>
   <string name="morphe_queue_manager_save_queue">Дарааллыг тоглолтын жагсаалтад хадгалах</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Жижиг зургууд дээр дарааллын товчийг харуулах</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Фэйд видеонуудын жижиг зургууд дээр дарааллын товч харагддаг. Үүнийг товшиход видеог дарааллын төгсгөлд нэмж, удаан дарвал видеог дараа нь тоглуулах болно</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Жижиг зургийн дарааллын үйлдлүүдийг солих</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Дарааллын товчийг товшиход видеог дараа нь тоглуулж, удаан дарвал видеог дарааллын төгсгөлд нэмнэ</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Гүйлгэх үед дарааллын хуудсуудыг ачаалах</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Дарааллын төгсгөлд дөхөх үед тоглолтын жагсаалтын илүү олон видеог ачаална</string>
   <string name="morphe_native_playlist_queue_saved">Жагсаалт хадгалагдлаа</string>
@@ -1129,6 +1139,12 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Бүрэн дэлгэц дээрх Ambient горимыг идэвхгүй болгох</string>
   <string name="morphe_enhanced_ambient_mode_title">Сайжруулсан Ambient горим</string>
   <string name="morphe_enhanced_ambient_mode_summary">Ambient горимын оронд видеог ашиглан үзлэлтийн хуудас болон хар хэсгүүдийг бүхэлд нь гэрэлтүүлнэ</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Гэрлийн хүч</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Цагны нүүр болон хар зурааснууд дээрх гэрлийн хүчийг тохируулна</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Гэрлийн зөөлрүүлэлт</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Гэрэл видеог дагах хугацаа. 0 дээр видеог яг дагана</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Гэрлийн бүдгэрүүлэлт</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Видеоны хажуугийн гэрэл хэр их бүдгэрэх. 0 дээр видеоны хэлбэрийг хэвээр хадгална</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Текстийг уншигдахуйц байлгах</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Гэрэлтэй видео дээр гэрлийг бүдгэрүүлж, хуудас дээрх текстийг уншигдахуйц байлгана</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Гүйлгэх үед бүдгэрүүлэх</string>
@@ -1476,7 +1492,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_dearrow_titles_player_title">Тоглуулагчийн жагсаалт &amp; санал болгох</string>
   <string name="morphe_dearrow_titles_search_title">Хайлтын үр дүн</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow дүрс тэмдгийг харуулах</string>
-  <string name="morphe_dearrow_titles_icon_summary">Олон нийтийн тусламжтайгаар зассан видео гарчиг дээр DeArrow дүрс тэмдгийг харуулна. Эх хувилбарын гарчиг болон miniature зургийг харахын тулд дүрс тэмдэг дээр дарна уу</string>
+  <string name="morphe_dearrow_titles_icon_summary">Олон нийтийн гаралгаагаар гарсан гарчиг эсвэл miniature зурагтай видеонуудын гарчиг дээр DeArrow дүрс тэмдэглэгээг харуулна. Эх хувилбарын гарчиг болон miniature зургийг харахын тулд дүрс тэмдэглэгээ дээр дарна уу</string>
   <string name="morphe_dearrow_casual_mode_title">Чөлөөтэй горим</string>
   <string name="morphe_dearrow_casual_mode_summary">Хэрэв DeArrow-ийн хэрэглэгчид эх хувийн гарчиг нь илүү таалагдсан гэж санал илэрхийлсэн бол DeArrow-ийн гарчгийн оронд эх хувийн гарчгийг харуулна</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Эх хувийн гарчгийг харуулах хамгийн бага чөлөөтэй санал</string>
@@ -1502,6 +1518,65 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow түр хугацаагаар боломжгүй байна (төлөвийн код: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow түр хугацаагаар боломжгүй байна</string>
+  <string name="morphe_dearrow_vote_button_title">DeArrow товчийг харуулах</string>
+  <string name="morphe_dearrow_vote_button_summary">DeArrow-ийн гарчиг болон miniature зурагт санал өгөх эсвэл шинээр илгээх товчийг видео тоглуулагчийн дээд хэсэгт нэмнэ</string>
+  <string name="morphe_dearrow_guidelines_title">Удирдамж</string>
+  <string name="morphe_dearrow_guidelines_summary">Удирдамжид гарчиг болон miniature зураг илгээх, санал өгөхтэй холбоотой дүрэм, зөвлөмжүүдийг багтаасан болно</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Удирдамжийг дагана уу</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Гарчиг болон miniature зургуудыг илгээх эсвэл сануулахын前на DeArrow-ын удирдамжийг уншаарай</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Уншсан</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Харах</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Ачаалж байна…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Энэхүү видеоны гарчиг болон miniature зургуудыг ачаалж чадсангүй</string>
+  <string name="morphe_dearrow_vote_titles">Гарчиг</string>
+  <string name="morphe_dearrow_vote_thumbnails">Miniature зургууд</string>
+  <string name="morphe_dearrow_vote_no_titles">Одоогоор нэр байхгүй байна. Хамгийн түрүүнд нэр санал болгоорой</string>
+  <string name="morphe_dearrow_vote_original_title">Эх нэр</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Эх зураг</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">%s хэсгийн кадр</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Оноо: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Баталгаажаагүй</string>
+  <string name="morphe_dearrow_vote_locked">Түгжигдсэн</string>
+  <string name="morphe_dearrow_vote_upvote">Дээрээс санал өгөх</string>
+  <string name="morphe_dearrow_vote_downvote">Сөрөг савот</string>
+  <string name="morphe_dearrow_vote_new_title">Шинэ гарчиг</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Гарчиг оруулна уу</string>
+  <string name="morphe_dearrow_vote_submit">Илгээх</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Шинэ эсрэг зураг</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s сек</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">%s хугацааны фрэймийг эсрэг зураг болгон илгээх үү?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Видео тоглогдож байна. Фрэймийг илгээхийн тулд эхлээд видеог зогсооно уу</string>
+  <string name="morphe_dearrow_vote_upvoted">Саналыг DeArrow-руу илгээлээ</string>
+  <string name="morphe_dearrow_vote_downvoted">Сөрөг саналыг DeArrow-руу илгээлээ</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow санал хүсэлтийг хүлээн авсангүй: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Энэ нь түгжигдсэн бөгөөд зөвхөн VIP хэрэглэгчид сөрөг санал өгөх боломжтой</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Энэхүү видеоны санал хугацаа дуусаагүй байна. Түр хүлээгээд дахин оролдоно уу</string>
+  <string name="morphe_dearrow_vote_failed_code">Саналыг илгээж чадсангүй (төлөв байдлын код: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Саналыг илгээж чадсангүй. Холболтоо шалгаад дахин оролдоно уу</string>
+  <string name="morphe_dearrow_submitting_title">Гарчиг болон miniature зургуудыг илгээж байна</string>
+  <string name="morphe_dearrow_vote_time_step_title">Цаг хугацааны тохируулгын алхам</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Miniature зураг илгээхэд цаг хугацааны нарийвчилсан тохируулгын товчлууруудын шилжлэгийн хэмжээ (миллисекундээр)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Утга нь эерэг тоо байх ёстой</string>
+  <string name="morphe_dearrow_private_user_id_title">Таны хувийн хэрэглэгчийн ID</string>
+  <string name="morphe_dearrow_private_user_id_summary">SponsorBlock-той ижил хэрэглэгчийн ID. Үүнийг нууцалж байх ёстой. Энэ нь нууц үгтэй адил бөгөөд хэнд ч хуваалцахгүй байх хэрэгтэй. Хэрэв хэн нэгэн үүнийг мэдвэл таны нэрээр хуурамчаар ажиллах боломжтой</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Хувийн хэрэглэгчийн ID нь хамгийн багадаа 30 тэмдэгт урт байх ёстой</string>
+  <string name="morphe_dearrow_account_loading">Ачаалж байна…</string>
+  <string name="morphe_dearrow_account_connection_failure">Бүртгэлийн мэдээлэл түр зуур боломжгүй байна</string>
+  <string name="morphe_dearrow_account_username">Таны хэрэглэгчийн нэр: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Хэрэглэгчийн нэрээ өөрчлөхөд энд дарна уу. Хэрэглэгчийн нэр нь SponsorBlock дээрхтэй ижил байна</string>
+  <string name="morphe_dearrow_account_username_changed">Хэрэглэгчийн нэр амжилттай өөрчиллээ</string>
+  <string name="morphe_dearrow_account_username_change_error">Хэрэглэгчийн нэрийг өөрчлөх боломжгүй: Төлөв: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Та &lt;b&gt;%s&lt;/b&gt; гарчиг илгээсэн байна</string>
+  <string name="morphe_dearrow_account_titles_summary">Гарчигlarını харахын тулд энд дарна уу</string>
+  <string name="morphe_dearrow_account_thumbnails">Та &lt;b&gt;%s&lt;/b&gt; miniature зураг илгээсэн байна</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Өмгөц зургуудыг харахын тулд энд дарна уу</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Тоглуулагчийн хуучин товчлуурын загварыг сэргээх</string>
   <string name="morphe_restore_old_player_buttons_summary">Видео тоглуулагчийн товчлууруудыг өмнөх нарийн загвар руу буцаана</string>
@@ -1519,6 +1594,16 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Томруулах хөдөлгөөний хариу үйлдлийг идэвхгүй болгох</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Хэрэв та саяхан бүртгэлийн мэдээллээ өөрчилсөн бол MicroG-г устгаж, дахин суулгана уу</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Push мэдэгдлүүдийг хадгалах</string>
+  <string name="morphe_debug_save_push_notifications_summary">Хүлээн авсан push мэдэгдлүүдийг аппликейшны өгөгдлийн файлд хадгална. Энэхүү файл нь мэдэгдлийн текст болон сувгийн нэр зэрэг хувийн мэдээлэл агуулж болно</string>
+  <string name="morphe_debug_saved_push_notifications_title">Хадгалагдсан push мэдэгдлүүдийг экспортлох</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Хадгалагдсан push мэдэгдлүүдийг экспортлох эсвэл устгах</string>
+  <string name="morphe_debug_saved_push_notifications_count">Хадгалагдсан push мэдэгдлүүд: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Хадгалагдсан push мэдэгдэл олдсонгүй</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push мэдэгдлүүдийг амжилттай экспортлолоо</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push мэдэгдлүүдийг экспортлоход алдаа гарлаа</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Хадгалагдсан push мэдэгдлүүдийг устгалаа</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Холбоосын дахин чиглүүлэлтийг алгасах</string>
   <string name="morphe_bypass_link_redirects_summary">Хяналтын холбоосыг (youtube.com/redirect) алгасаад, эх холбоосыг шууд нээнэ</string>

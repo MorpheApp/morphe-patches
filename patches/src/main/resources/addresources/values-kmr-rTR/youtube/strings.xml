@@ -542,6 +542,8 @@ Piştî ku vîdyoyeke bi bişkoja Ask carekê hate vekirin, ev taybetmendî bi h
   <string name="morphe_disable_chapter_skip_double_tap_title">Derbasbûna beşan bi du-tikandinê asteng bike</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Tevgera du tiliyan a ku beşan derbas dike asteng dike, ku dibe ku bi şaşî bi yek tiliyê çalak bibe</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Vîdyo, podcast an stran bi sepanên daxistinê yên sêyemîn dakêşe.</string>
   <string name="morphe_external_downloader_overlay_button_title">Bişkoja daxistinê ya li ser lîstikvanê nîşan bide</string>
   <string name="morphe_external_downloader_overlay_button_summary">Bişkojekê di lîstikvanê vîdyoyê de nîşan dide ku downloaderê we yê derveyî vedike</string>
@@ -558,6 +560,10 @@ Piştî ku vîdyoyeke bi bişkoja Ask carekê hate vekirin, ev taybetmendî bi h
   <string name="morphe_shorts_download_flyout_button_title">Daxistinê di menuya Shorts de nîşan bide</string>
   <string name="morphe_shorts_download_flyout_button_summary">Bendeya daxistinê li menyuya lîstikera Shorts zêde dike</string>
   <string name="morphe_shorts_download_flyout_title">Daxistin</string>
+  <string name="morphe_feed_download_flyout_button_title">Daxistinê di menyuyên vîdyoyan de nîşan bide</string>
+  <string name="morphe_feed_download_flyout_button_summary">Itemsekî daxistinê li menyuyên vîdyoyên di feed-ê de zêde dike ku tiştekî weha nîşan nadin, wekî vîdyoyên ku YouTube tenê rê dide endamên Premium daxistînin</string>
+  <string name="morphe_download_force_4k_title">Bestîbûna daxezandina 4K bi zorê</string>
+  <string name="morphe_download_force_4k_summary">Daxezandinên 1440p û 4K pêşkêş dike, her çend YouTube biryar bide ku ev ampir nikare wan bileyîne. Ev vîdyoyên wisa dibe ku di hundurê YouTube de bêyî vîdyoyê bileyînin, lê dikarin bidin derveyî ampirê we</string>
   <string name="morphe_export_download_folder_title">Vîdyoyên savekirî eksport bike</string>
   <string name="morphe_export_download_folder_summary">"Vîdyoyên li hundurê aplikasyonê yên savekirî bi rêya menyuya daxezan a li hundurê aplikasyonê bi storage'a amûrê xwe ve exporters bike. Ji bo guhartina foldera exportê lê bitikîne
 
@@ -773,6 +779,10 @@ Agahî: Dibe ku li ser weşanên zindî nexebite"</string>
   <string name="morphe_queue_manager_open_queue">Lîsteyê vekirin</string>
   <string name="morphe_queue_manager_save_queue">Lîsteyê li playlistê tomar bike</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Bijmêya rêza li ser thumbnailan nîşan bide</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Bijmêya rêzê li ser thumbnailên vîdyoyên feedê tê nîşandan. Bi lêdanê vîdyoyê lê dohra rêzê zêde dike, û bi lêdan û girtinê vîdyoyê wekî ya din lîstik dike</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Çalakiyên rêza thumbnailan biguherîne</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Bi lêdana bijmêya rêzê vîdyo wekî ya din lîstik dike, û bi lêdan û girtinê vîdyoyê lê dohra rêzê zêde dike</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Rûpelên rêza li ser scroll barkirin</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Dema ku hûn nêzî dawiya rêzê scroll dikin, vîdyoyên playlistê yên din barkirîne</string>
   <string name="morphe_native_playlist_queue_saved">Lîste hate tomarkirin</string>
@@ -1129,6 +1139,12 @@ Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her c
   <string name="morphe_disable_fullscreen_ambient_mode_title">Moda ambient di tam-ekranê de asteng bike</string>
   <string name="morphe_enhanced_ambient_mode_title">Moda Ambient a pêşkeftî</string>
   <string name="morphe_enhanced_ambient_mode_summary">Li şûna moda Ambient, hemû rûpela temaşe û şirîtên reş bi vîdyoyê ronî dike</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Hêza ronahiyê</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Hêza ronahiyê li ser rûpelê saetê û çuonên reş çiqas xurt be</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Hêmiya ronahiyê</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Kaç dem ronahî digire da ku li pey vîdyoyê were. Bi 0 ew bi nêzîkî li pey vîdyoyê dimeşe</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Tênehiya ronahiyê</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Kaç ronahî ya li kêleka vîdyoyê tê tênehîkirin. Bi 0 ew şiklên vîdyoyê diparêze</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Têkst xwendinê hêsan bihêle</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Ronahiya vîdyoyên ronî kêm dike da ku têksta li ser rûpelê xwendinê hêsan be</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Tarikirinê dema xwendinê</string>
@@ -1476,7 +1492,7 @@ Layouta otomotîvê
   <string name="morphe_dearrow_titles_player_title">Lîsteyên lêdanê &amp; pêşniyarên lîstikvanê</string>
   <string name="morphe_dearrow_titles_search_title">Encamên lêgerînê</string>
   <string name="morphe_dearrow_titles_icon_title">Îkona DeArrow nîşan bide</string>
-  <string name="morphe_dearrow_titles_icon_summary">Îkona DeArrow li ser navên vîdyoyên crowdsourced nîşan dide. Ji bo nîşandana nav û thumbnailê orjînal, li îkonê bitikîne</string>
+  <string name="morphe_dearrow_titles_icon_summary">Îkona DeArrow li ser navên vîdyoyên bi navekî an thumbnailekî crowdsourced nîşan dide. Ji bo nîşandana nav û thumbnailê yên orîjînal, li îkonê bitikîne</string>
   <string name="morphe_dearrow_casual_mode_title">Moda asayî</string>
   <string name="morphe_dearrow_casual_mode_summary">Heke bikarhênerên DeArrow ji sernavê orjînal hez dikin, li şûna sernavê DeArrow sernavê orjînal nîşan dide</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Hejmara kêmtirîn dengên moda asayî ji bo nîşandana sernavê orjînal</string>
@@ -1502,6 +1518,65 @@ Vîdyo bi pêşgirekî kurt a ID-ya vîdyoya hashed tê xwestin, ji ber vê yek�
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow demûdem berdest nîn (koda statûyê: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow demûdem berdest nîn</string>
+  <string name="morphe_dearrow_vote_button_title">Bişkoja DeArrow nîşan bide</string>
+  <string name="morphe_dearrow_vote_button_summary">Bişkojekê li serê lîstera vîdyoyê zêde dike da ku li ser naveh û thumbnailên DeArrow vote bike, an yên nû bişîne</string>
+  <string name="morphe_dearrow_guidelines_title">Rênimayî</string>
+  <string name="morphe_dearrow_guidelines_summary">Rênîmayî rês û şîretan ji bo şandina û votekirina naveh û thumbnailan dihewîne</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Rêbernameyê bişopîne</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Berî pêşniyarkirin an votekirina nav û wêneya piçûk, rênînameyên DeArrow bixwîne</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Berê xwandiye</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Nîşan bide min</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Barkirin…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Nevêrîna nav û wêneya piçûk a vê vîdyoyê nekarî hatin kirin</string>
+  <string name="morphe_dearrow_vote_titles">Nav</string>
+  <string name="morphe_dearrow_vote_thumbnails">Wêneyên piçûk</string>
+  <string name="morphe_dearrow_vote_no_titles">Hîştir tu nav nînin. Navêk pêşniyar bike da ku tu yê yekem bî</string>
+  <string name="morphe_dearrow_vote_original_title">Nave orîjînal</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Thumbnailê orîjînal</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Frame li %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Score: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Nehatiye piştrastkirin</string>
+  <string name="morphe_dearrow_vote_locked">Hat qulandin</string>
+  <string name="morphe_dearrow_vote_upvote">Erênî deng bide</string>
+  <string name="morphe_dearrow_vote_downvote">Neyînî deng bide</string>
+  <string name="morphe_dearrow_vote_new_title">Nave nû</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Navekî binivîse</string>
+  <string name="morphe_dearrow_vote_submit">Şandin</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Thumbnailê nû</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Fremê li %s wekî thumbnail bişandî?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Vîdyo dixebite. Ji bo şandina wêyê ku tu dibînî, berê vîdyoyê rawestîne</string>
+  <string name="morphe_dearrow_vote_upvoted">Densê ji DeArrow re hat şandin</string>
+  <string name="morphe_dearrow_vote_downvoted">Densê neyê ji DeArrow re hat şandin</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow denseyê qebûl nekir: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Ev qifill kirî ye, û tenê ji hêla bikarhênerên VIP ve dikare were downvote kirin</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Voteyek ji bo vê vîdyoyê hîn di pêvajoyê de ye. Piştî demekê dîsa biceribîne</string>
+  <string name="morphe_dearrow_vote_failed_code">Vote nehat şandin (koda statusê: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Vote nehat şandin. Girêdana xwe kontrol bike û dîsa biceribîne</string>
+  <string name="morphe_dearrow_submitting_title">Şandina navekî û thumbnailan</string>
+  <string name="morphe_dearrow_vote_time_step_title">Gava rastkirina demê</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Mîqdara lêgerînê ya butonên rastkirina demê ya hûr gava thumbnailek tê şandin (bi mîlîsaniyan)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Nirx divê hejmareke erênî be</string>
+  <string name="morphe_dearrow_private_user_id_title">ID-ya bikarhêner a taybet a te</string>
+  <string name="morphe_dearrow_private_user_id_summary">Hebsa bikarhêner a we wekî SponsorBlock e. Divê ev taybet bimîne. Ew mîna şîfreyekê ye û divê bi kesî re parve nebe. Eger kesek vê bibîne, dikare wek we tevbigere</string>
+  <string name="morphe_dearrow_private_user_id_invalid">ID-ya bikarhêner a taybet divê bi kêmanî 30 tîp be</string>
+  <string name="morphe_dearrow_account_loading">Barkirin…</string>
+  <string name="morphe_dearrow_account_connection_failure">Hûrgiliyên hesabê bi demkî ne amade ne</string>
+  <string name="morphe_dearrow_account_username">Navê bikarhênerê we: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Li vir bitikîne da ku navê xwe yê bikarhêner biguherînin. Navê bikarhêner wekî yê li ser SponsorBlock e</string>
+  <string name="morphe_dearrow_account_username_changed">Navê bikarhêner bi serkeftî hate guhertin</string>
+  <string name="morphe_dearrow_account_username_change_error">Nikarî navê bikarhêner biguherîne: Statû: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Te &lt;b&gt;%s&lt;/b&gt; nav pêşkêş kirin</string>
+  <string name="morphe_dearrow_account_titles_summary">Li vir bitikîne da ku navên nivîsê yên xwe bibînî</string>
+  <string name="morphe_dearrow_account_thumbnails">Te &lt;b&gt;%s&lt;/b&gt; thumbnail pêşkêş kirin</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Li vir bitikîne da ku thumbnailên xwe bibînî</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Şêweya kevn a bişkojên lîstikvanê vegerîne</string>
   <string name="morphe_restore_old_player_buttons_summary">Kontrolên qelew ên vîdyoyê vedigere şêwaza kevn û zirav</string>
@@ -1519,6 +1594,16 @@ Vîdyo bi pêşgirekî kurt a ID-ya vîdyoya hashed tê xwestin, ji ber vê yek�
   <string name="morphe_disable_haptic_feedback_zoom_title">Vegera hestiyarî ya zoomê asteng bike</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Heke we di demeke dawî de agahiyên têketina hesaba xwe guhertine, MicroG jê bibe û dîsa saz bike</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Agahdariyên push biparêze</string>
+  <string name="morphe_debug_save_push_notifications_summary">Agahdariyên push yên hatine girtin di fayleyekê de di daneyên aplikasyonê de diparêze. Fayle dikare agahiyên taybet, wekî nivîsên agahdariyê û navên kanal, beşdar bike</string>
+  <string name="morphe_debug_saved_push_notifications_title">Agahdariyên push ên hatine parastin eksport bike</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Agahdariyên push ên hatine parastin eksport bike an jî paqij bike</string>
+  <string name="morphe_debug_saved_push_notifications_count">Agahdariyên push yên hatine savekirin: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Tu agahdariyên push yên hatine savekirin nehatin dîtin</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Agahdariyên push bi serkeftî hatin exportkirin</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Exportkirina agahdariyên push neserket</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Agahdariyên push yên hatine savekirin hatin paqijkirin</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Veguhastinên girêdanan derbas bike</string>
   <string name="morphe_bypass_link_redirects_summary">Girêdana orjînal rasterast vedike, bi derbasbûna girêdana şopandinê (youtube.com/redirect)</string>

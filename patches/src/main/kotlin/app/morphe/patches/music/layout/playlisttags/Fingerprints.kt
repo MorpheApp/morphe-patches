@@ -16,10 +16,10 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.music.misc.androidauto.GridRendererItemsFingerprint
 import app.morphe.patches.music.misc.androidauto.HandleMusicReloadShelfEventFingerprint
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
-import com.android.tools.smali.dexlib2.iface.Method
 
 /**
  * Constructor of a Library presenter, matched at the call to the super constructor.
@@ -38,17 +38,17 @@ internal fun libraryPresenterConstructorFingerprint(presenterClass: ClassDef) = 
  *
  * @param itemsMethod Static method that builds the items of the renderer.
  */
-internal fun libraryListBindFingerprint(itemsMethod: Method) = Fingerprint(
-    definingClass = itemsMethod.definingClass,
-    returnType = "V",
-    parameters = listOf(itemsMethod.parameterTypes.first().toString(), "Z"),
+internal object LibraryListBindFingerprint : Fingerprint(
+    definingClass = { GridRendererItemsFingerprint.originalMethod.definingClass },
+    returnType = { "V" },
+    parameters = { listOf(GridRendererItemsFingerprint.originalMethod.parameterTypes.first(), "Z") },
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this",
-            type = itemsMethod.parameterTypes.first().toString()
+            type = { GridRendererItemsFingerprint.originalMethod.parameterTypes.first() }
         ),
-        methodCall(reference = itemsMethod, location = MatchAfterWithin(5)),
+        methodCall(reference = { GridRendererItemsFingerprint.originalMethod }, location = MatchAfterWithin(5)),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
@@ -127,8 +127,8 @@ internal object HandleDeletePlaylistEventFingerprint : Fingerprint(
 /**
  * Constructor of the event of a deleted playlist. The second parameter is the id of the playlist.
  */
-internal fun deletePlaylistEventConstructorFingerprint(eventType: String) = Fingerprint(
-    definingClass = eventType,
+internal object DeletePlaylistEventConstructorFingerprint : Fingerprint(
+    definingClass = { HandleDeletePlaylistEventFingerprint.originalMethod.parameterTypes.first() },
     name = "<init>",
     returnType = "V",
     parameters = listOf("L", "Ljava/lang/String;"),

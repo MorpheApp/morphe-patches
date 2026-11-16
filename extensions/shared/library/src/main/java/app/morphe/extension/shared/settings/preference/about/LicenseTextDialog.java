@@ -100,7 +100,7 @@ class LicenseTextDialog extends Dialog {
     }
 
     private String buildHtml() {
-        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart());
+        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart(getContext()));
 
         // The notices are pre-formatted English whose alignment only holds left to right, so they
         // stay unmirrored even when the surrounding app language reads the other way.

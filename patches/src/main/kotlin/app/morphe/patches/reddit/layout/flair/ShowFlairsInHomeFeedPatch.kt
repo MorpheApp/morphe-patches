@@ -10,6 +10,7 @@ package app.morphe.patches.reddit.layout.flair
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -71,10 +72,7 @@ val showFlairsInHomeFeedPatch = patch(
         val titleSectionType = FeedPostTitleSectionToStringFingerprint.classDef.type
 
         val (presentationModelConstructor, persistentListOfMethod, flairsElementConstructor) =
-            postFlairsElementMapperFingerprint(
-                presentationModelType,
-                flairsElementType
-            ).instructionMatches.let { matches ->
+            PostFlairsElementMapperFingerprint.instructionMatches.let { matches ->
                 listOf(matches[0], matches[1], matches[3]).map {
                     it.getInstruction<ReferenceInstruction>().reference
                 }
@@ -114,13 +112,12 @@ val showFlairsInHomeFeedPatch = patch(
         // Add flairs to post preview elements.
         //
 
-        val postPreviewType = PostPreviewFeedElementToStringFingerprint.classDef.type
         val (previewLinkIdField, previewUniqueIdField, previewIdentifierField, previewChildrenField) =
             PostPreviewFeedElementConstructorFingerprint.instructionMatches.let { matches ->
                 listOf(matches[0], matches[1], matches[3], matches[6]).map { it.fieldReference }
             }
 
-        val previewCopyFingerprint = postPreviewFeedElementCopyFingerprint(postPreviewType, flairsElementType)
+        val previewCopyFingerprint = PostPreviewFeedElementCopyFingerprint
         val previewCopyMethod = previewCopyFingerprint.method
         val previewFlairsField = previewCopyFingerprint.instructionMatches.last().fieldReference
         // Copy method bit mask where all values except the flairs element are copied from the original.
@@ -301,27 +298,13 @@ private fun MutableClass.addCachedPostMethods(
     registerCount: Int,
     addHomeFlairSmali: String
 ) {
-    interfaces.add(CACHED_POST_INTERFACE)
-
-    methods.add(
-        ImmutableMethod(
-            type,
-            "patch_getLinkId",
-            emptyList(),
-            "Ljava/lang/String;",
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-            emptySet(),
-            null,
-            MutableMethodImplementation(2)
-        ).toMutable().apply {
-            addInstructions(
-                0,
-                """
-                    iget-object v0, p0, $linkIdField
-                    return-object v0
-                """
-            )
-        }
+    addPatchInterface(
+        CACHED_POST_INTERFACE,
+        "patch_getLinkId",
+        """
+            iget-object v0, p0, $linkIdField
+            return-object v0
+        """
     )
 
     methods.add(

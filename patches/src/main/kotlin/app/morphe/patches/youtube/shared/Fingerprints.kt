@@ -114,6 +114,17 @@ internal object ModernRelateVideoOverlayFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Handles a received push notification. The second parameter is the PushNotificationSupportedRenderers proto.
+ */
+internal object PushNotificationReceivedFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;", "L"),
+    filters = listOf(
+        string("Exception processing push notif renderer.")
+    )
+)
+
 internal object RelateVideoOverlayLayoutParamFingerprint : Fingerprint(
     filters = listOf(
         literal(45661108L)
@@ -139,14 +150,12 @@ internal object PlayerTypeEnumFingerprint : Fingerprint(
 )
 
 // 21.41+ YouTubePlayerOverlaysLayout is no longer a player type listener.
-internal fun getPlayerTypeFingerprint() = object : Fingerprint(
+internal object PlayerTypeFingerprint : Fingerprint(
     definingClass = "Lcom/google/android/apps/youtube/app/player/YouTubePlayerViewNotForReflection;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(
-        PlayerTypeEnumFingerprint.originalClassDef.type
-    )
-) {}
+    parameters = { listOf(PlayerTypeEnumFingerprint.originalClassDef.type) }
+)
 
 internal object YouTubeMainActivityConstructorFingerprint : Fingerprint(
     definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,

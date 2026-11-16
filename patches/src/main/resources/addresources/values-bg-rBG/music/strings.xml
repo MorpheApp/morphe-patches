@@ -144,6 +144,9 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_started">Експортиране на всички изтегляния</string>
   <string name="morphe_export_download_all_running">Изтеглянията вече се експортират</string>
   <string name="morphe_export_download_all_saved">Експортирани са %1$s от %2$s изтегляния в %3$s</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
+  <string name="morphe_music_replace_shuffle_with_loop_button_title">Замяна на бутона \"Разбъркване\" с бутон \"Повторение\"</string>
+  <string name="morphe_music_replace_shuffle_with_loop_button_summary">Показва бутона \"Повторение\" вместо бутона \"Разбъркване\" в медийното известие и на заключения екран</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_00_about_title">Отношение</string>
@@ -253,6 +256,9 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_remember_repeat_state_title">Запомни състоянието на повторение</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Запомни състоянието на разбъркване</string>
+  <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
+  <string name="morphe_music_pause_when_muted_title">Пауза при изключен звук</string>
+  <string name="morphe_music_pause_when_muted_summary">Спира възпроизвеждането, когато системният звук е изключен, и го възобновява, когато звукът бъде повишен</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Скорост на възпроизвеждане</string>
   <string name="morphe_music_playback_speed_summary">Скорост, използвана за всички песни. При 100% се използва скоростта на приложението, като скоростта на възпроизвеждане на подкаст.</string>

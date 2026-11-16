@@ -41,7 +41,7 @@ public class LyricsSpanBuilderRomanizationTest {
             if (romaji == null || romaji.trim().isEmpty()) {
                 continue;
             }
-            if (out.length() > 0) {
+            if (!out.isEmpty()) {
                 out.append(' ');
             }
             out.append(romaji.trim());

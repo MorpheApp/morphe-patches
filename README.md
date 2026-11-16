@@ -35,14 +35,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.3.0-dev.5](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.3.0-dev.5)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;211 patches total
+> **[v2.3.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.3.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;212 patches total
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;56 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;57 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.45.51 | 🧪&nbsp;9.44.52 | 🧪&nbsp;9.43.51 | 9.30.53 | 9.20.53 | 9.15.51 |
+| 🧪&nbsp;9.46.51 | 🧪&nbsp;9.45.51 | 🧪&nbsp;9.44.52 | 9.30.53 | 9.20.53 | 9.15.51 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -82,6 +82,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons, and to show the navigation bar and miniplayer as glass. |  |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
 | [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. |  |
+| [Pause when muted](#pause-when-muted) | Adds an option to pause playback when the system volume is muted, and to resume it when the volume is raised. |  |
 | [Play albums songs](#play-albums-songs) | Adds an option to play the song version of album tracks instead of music videos. |  |
 | [Playback speed](#playback-speed) | Adds options to change the playback speed and pitch of tracks. |  |
 | [Playlist tags](#playlist-tags) | Adds an option to tag playlists from their menu, and to filter the Library playlists by tag. |  |

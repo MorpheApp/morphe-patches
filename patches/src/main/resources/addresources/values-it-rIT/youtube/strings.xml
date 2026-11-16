@@ -542,6 +542,8 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <string name="morphe_disable_chapter_skip_double_tap_title">Disabilita lo scorrimento rapido del capitolo con un doppio tocco</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Disabilita il gesto di doppio tocco con due dita che consente di saltare i capitoli, che potrebbe essere attivato accidentalmente con un dito</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Scarica video, podcast o canzoni con app di download di terze parti</string>
   <string name="morphe_external_downloader_overlay_button_title">Mostra il pulsante per il download della sovrapposizione del lettore</string>
   <string name="morphe_external_downloader_overlay_button_summary">Mostra un pulsante nel lettore video che apre il tuo downloader esterno</string>
@@ -558,6 +560,10 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <string name="morphe_shorts_download_flyout_button_title">Mostra il download nel menu Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Aggiunge una voce di download al menu del player di Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
+  <string name="morphe_feed_download_flyout_button_title">Mostra download nei menu dei video</string>
+  <string name="morphe_feed_download_flyout_button_summary">Aggiunge una voce di download ai menu dei video nel feed che ne sono privi, come i video che YouTube consente di scaricare solo ai membri Premium</string>
+  <string name="morphe_download_force_4k_title">Forza la disponibilità del download 4K</string>
+  <string name="morphe_download_force_4k_summary">Offre download in 1440p e 4K anche se YouTube decide che questo dispositivo non può riprodurli. Tali video potrebbero essere riprodotti senza immagini all\'interno di YouTube, ma possono essere esportati sul tuo dispositivo</string>
   <string name="morphe_export_download_folder_title">Esporta video salvati</string>
   <string name="morphe_export_download_folder_summary">"Esporta i video salvati nell'app nella memoria del tuo dispositivo utilizzando il menu a comparsa dei download dell'app. Tocca per cambiare la cartella di esportazione
 
@@ -772,6 +778,10 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <string name="morphe_queue_manager_open_queue">Apri coda</string>
   <string name="morphe_queue_manager_save_queue">Salva coda nella playlist</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Mostra pulsante coda sulle miniature</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Sulle miniature dei video del feed viene mostrato un pulsante coda. Toccandolo, il video viene aggiunto alla fine della coda; tenendolo premuto, il video viene riprodotto come prossimo</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Scambia azioni coda miniature</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Toccando il pulsante coda, il video viene riprodotto come prossimo; tenendolo premuto, il video viene aggiunto alla fine della coda</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Carica le pagine della coda durante lo scorrimento</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Carica altri video della playlist quando lo scorrimento si avvicina alla fine della coda</string>
   <string name="morphe_native_playlist_queue_saved">Playlist salvata</string>
@@ -1128,6 +1138,12 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <string name="morphe_disable_fullscreen_ambient_mode_title">Disattiva la modalità Ambient a schermo intero</string>
   <string name="morphe_enhanced_ambient_mode_title">Modalità Ambient avanzata</string>
   <string name="morphe_enhanced_ambient_mode_summary">Illumina l\'intera pagina di riproduzione e le barre nere con il video, al posto della modalità Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Intensità della luce</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">L\'intensità della luce sulla pagina dell\'orologio e sulle barre nere</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Smoothing della luce</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Quanto tempo impiega la luce a seguire il video. Con 0 segue il video fedelmente</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Sfocatura della luce</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Quanto viene sfocata la luce accanto al video. Con 0 mantiene le forme del video</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantieni il testo leggibile</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Attenua la luce nei video luminosi affinché il testo sulla pagina rimanga leggibile</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Scurisci durante lo scorrimento</string>
@@ -1474,7 +1490,7 @@ Layout automotive
   <string name="morphe_dearrow_titles_player_title">Playlist e video consigliati</string>
   <string name="morphe_dearrow_titles_search_title">Risultati della ricerca</string>
   <string name="morphe_dearrow_titles_icon_title">Mostra l\'icona DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Mostra l\'icona di DeArrow nei titoli dei video crowdsourced. Tocca l\'icona per mostrare il titolo e la miniatura originali</string>
+  <string name="morphe_dearrow_titles_icon_summary">Mostra l\'icona di DeArrow nei titoli dei video con un titolo o una miniatura crowdsourced. Tocca l\'icona per mostrare il titolo e la miniatura originali</string>
   <string name="morphe_dearrow_casual_mode_title">Modalità informale</string>
   <string name="morphe_dearrow_casual_mode_summary">Mostra il titolo originale invece del titolo DeArrow se gli utenti DeArrow hanno votato che preferiscono il titolo originale.</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Voti casuali minimi per mostrare il titolo originale</string>
@@ -1500,6 +1516,65 @@ I video vengono richiesti tramite un breve prefisso dell'ID video con hash, quin
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow non è temporaneamente disponibile (codice di stato: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow non è temporaneamente disponibile</string>
+  <string name="morphe_dearrow_vote_button_title">Mostra il pulsante DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Aggiunge un pulsante nella parte superiore del lettore video per votare titoli e miniature di DeArrow, o per inviarne di nuovi</string>
+  <string name="morphe_dearrow_guidelines_title">Linee guida</string>
+  <string name="morphe_dearrow_guidelines_summary">Le linee guida contengono regole e suggerimenti per l\'invio e la votazione di titoli e miniature</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Segui le linee guida</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Leggi le linee guida di DeArrow prima di inviare o votare titoli e miniature</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Già lette</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Mostramele</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Caricamento…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Impossibile caricare i titoli e le miniature di questo video</string>
+  <string name="morphe_dearrow_vote_titles">Titoli</string>
+  <string name="morphe_dearrow_vote_thumbnails">Miniature</string>
+  <string name="morphe_dearrow_vote_no_titles">Ancora nessun titolo. Inviane uno per essere il primo</string>
+  <string name="morphe_dearrow_vote_original_title">Titolo originale</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Miniatura originale</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Frame a %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Punteggio: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Non verificato</string>
+  <string name="morphe_dearrow_vote_locked">Bloccato</string>
+  <string name="morphe_dearrow_vote_upvote">Mi piace</string>
+  <string name="morphe_dearrow_vote_downvote">Non mi piace</string>
+  <string name="morphe_dearrow_vote_new_title">Nuovo titolo</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Digita un titolo</string>
+  <string name="morphe_dearrow_vote_submit">Invia</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Nuova miniatura</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Inviare il fotogramma a %s come miniatura?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Il video è in riproduzione. Per inviare il fotogramma che vedi, metti prima in pausa il video</string>
+  <string name="morphe_dearrow_vote_upvoted">Voto inviato a DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Voto negativo inviato a DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow non ha accettato il voto: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Questo elemento è bloccato e può essere votato negativamente solo dagli utenti VIP</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Il voto per questo video è ancora in corso. Riprova tra un momento</string>
+  <string name="morphe_dearrow_vote_failed_code">Impossibile inviare il voto (codice di stato: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Impossibile inviare il voto. Controlla la connessione e riprova</string>
+  <string name="morphe_dearrow_submitting_title">Invio di titoli e miniature</string>
+  <string name="morphe_dearrow_vote_time_step_title">Passo di regolazione del tempo</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Avanzamento temporale dei pulsanti di regolazione fine durante l\'invio di una miniatura (in millisecondi)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Il valore deve essere un numero positivo</string>
+  <string name="morphe_dearrow_private_user_id_title">Il tuo ID utente privato</string>
+  <string name="morphe_dearrow_private_user_id_summary">Lo stesso ID utente di SponsorBlock. Questo dovrebbe essere tenuto privato. È come una password e non dovrebbe essere condiviso con nessuno. Se qualcuno lo possedesse, potrebbe impersonarti</string>
+  <string name="morphe_dearrow_private_user_id_invalid">L\'ID utente privato deve essere lungo almeno 30 caratteri</string>
+  <string name="morphe_dearrow_account_loading">Caricamento…</string>
+  <string name="morphe_dearrow_account_connection_failure">I dettagli dell\'account non sono temporaneamente disponibili</string>
+  <string name="morphe_dearrow_account_username">Il tuo nome utente: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Tocca qui per cambiare il tuo nome utente. Il nome utente è lo stesso di SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Il tuo nome utente è stato correttamente modificato</string>
+  <string name="morphe_dearrow_account_username_change_error">Impossibile modificare il nome utente: Stato: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Hai inviato &lt;b&gt;%s&lt;/b&gt; titoli</string>
+  <string name="morphe_dearrow_account_titles_summary">Tocca qui per visualizzare i tuoi titoli</string>
+  <string name="morphe_dearrow_account_thumbnails">Hai inviato &lt;b&gt;%s&lt;/b&gt; miniature</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Tocca qui per visualizzare le tue miniature</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Ripristina stile precedente dei pulsanti del lettore</string>
   <string name="morphe_restore_old_player_buttons_summary">Ripristina i controlli del lettore video in grassetto in contrapposizione allo stile visivo precedente e più sottile</string>
@@ -1517,6 +1592,16 @@ I video vengono richiesti tramite un breve prefisso dell'ID video con hash, quin
   <string name="morphe_disable_haptic_feedback_zoom_title">Disabilita feedback aptico zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Se di recente hai modificato i dettagli di accesso al tuo account, disinstalla e reinstalla MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Salva notifiche push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Salva le notifiche push ricevute in un file nei dati dell\'app. Il file può contenere informazioni private, come i testi delle notifiche e i nomi dei canali</string>
+  <string name="morphe_debug_saved_push_notifications_title">Esporta notifiche push salvate</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Esporta o cancella le notifiche push salvate</string>
+  <string name="morphe_debug_saved_push_notifications_count">Notifiche push salvate: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nessuna notifica push salvata trovata</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Esportazione delle notifiche push avvenuta con successo</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Impossibile esportare le notifiche push</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Notifiche push salvate eliminate</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Aggira i reindirizzamenti dei link</string>
   <string name="morphe_bypass_link_redirects_summary">Apre il link originale direttamente, bypassando il link di tracciamento (youtube.com/redirect)</string>

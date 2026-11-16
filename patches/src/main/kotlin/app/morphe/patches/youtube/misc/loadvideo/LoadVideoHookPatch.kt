@@ -8,22 +8,17 @@
 package app.morphe.patches.youtube.misc.loadvideo
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val EXTENSION_CLASS =
@@ -53,48 +48,23 @@ internal val loadVideoHookPatch = patch(
 
         mutableClassDefBy(dismissPlayerInnerMethod.definingClass).apply {
             // Add interface and helper methods to allow extension code to call obfuscated methods.
-            interfaces.add(EXTENSION_PLAYER_INTERFACE)
             // Add methods to access obfuscated player methods.
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_dismissPlayer",
-                    listOf(),
-                    "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0 }, $dismissPlayerInnerMethod
-                            return-void
-                        """
-                    )
-                }
+            addPatchInterface(
+                EXTENSION_PLAYER_INTERFACE,
+                "patch_dismissPlayer",
+                """
+                    invoke-virtual { p0 }, $dismissPlayerInnerMethod
+                    return-void
+                """
             )
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_getIntentParcelable",
-                    listOf(ImmutableMethodParameter("Landroid/content/Intent;", null, null)),
-                    "Landroid/os/Parcelable;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(3),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-static { p1 }, $openNewVideoParcelableDefiningClass->${openNewVideoParcelableMethod.name}(Landroid/content/Intent;)$openNewVideoParcelableDefiningClass
-                            move-result-object v0
-                            return-object v0
-                        """
-                    )
-                }
+            addPatchInterface(
+                EXTENSION_PLAYER_INTERFACE,
+                "patch_getIntentParcelable",
+                """
+                    invoke-static { p1 }, $openNewVideoParcelableDefiningClass->${openNewVideoParcelableMethod.name}(Landroid/content/Intent;)$openNewVideoParcelableDefiningClass
+                    move-result-object v0
+                    return-object v0
+                """
             )
 
             methods.single { method ->
@@ -115,30 +85,17 @@ internal val loadVideoHookPatch = patch(
         mutableClassDefBy(blockInlinePlaybackMethod.definingClass).apply {
             val unblockInlinePlaybackMethod = UnblockInlinePlaybackFingerprint.match(this).method
 
-            interfaces.add(EXTENSION_INLINE_PLAYBACK_INTERFACE)
             mapOf(
                 "patch_blockInlinePlayback" to blockInlinePlaybackMethod,
                 "patch_unblockInlinePlayback" to unblockInlinePlaybackMethod
             ).forEach { (name, method) ->
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        name,
-                        listOf(ImmutableMethodParameter("I", null, "reason")),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0, p1 }, $method
-                                return-void
-                            """
-                        )
-                    }
+                addPatchInterface(
+                    EXTENSION_INLINE_PLAYBACK_INTERFACE,
+                    name,
+                    """
+                        invoke-virtual { p0, p1 }, $method
+                        return-void
+                    """
                 )
             }
 
@@ -157,26 +114,13 @@ internal val loadVideoHookPatch = patch(
 
         // Activity.onNewIntent() is protected, so the extension calls it through a public method.
         mutableClassDefBy(YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE).apply {
-            interfaces.add(EXTENSION_MAIN_ACTIVITY_INTERFACE)
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_onNewIntent",
-                    listOf(ImmutableMethodParameter("Landroid/content/Intent;", null, "intent")),
-                    "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0, p1 }, $type->onNewIntent(Landroid/content/Intent;)V
-                            return-void
-                        """
-                    )
-                }
+            addPatchInterface(
+                EXTENSION_MAIN_ACTIVITY_INTERFACE,
+                "patch_onNewIntent",
+                """
+                    invoke-virtual { p0, p1 }, $type->onNewIntent(Landroid/content/Intent;)V
+                    return-void
+                """
             )
         }
 

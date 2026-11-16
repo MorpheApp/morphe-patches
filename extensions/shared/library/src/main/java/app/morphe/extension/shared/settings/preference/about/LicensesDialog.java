@@ -51,7 +51,7 @@ class LicensesDialog extends AboutWebViewDialog {
     private static final String LICENSE_ROUTE_PREFIX = "https://license/";
 
     LicensesDialog(@NonNull Context context) {
-        super(context, buildListHtml());
+        super(context, buildListHtml(context));
     }
 
     @Override
@@ -59,8 +59,9 @@ class LicensesDialog extends AboutWebViewDialog {
         return new LicensesWebClient(getContext(), this);
     }
 
-    private static String buildListHtml() {
-        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart());
+    private static String buildListHtml(Context context) {
+        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart(context))
+                .append(AboutDialogStyle.pageStart(false));
 
         html.append("<div class=\"dialog-header\"><div class=\"dialog-title\">")
                 .append(str("morphe_settings_about_links_licenses"))
@@ -78,7 +79,9 @@ class LicensesDialog extends AboutWebViewDialog {
                     .append(AboutDialogStyle.chevron())
                     .append("</a>");
         }
-        html.append("</div></div>").append(AboutDialogStyle.DOCUMENT_END);
+        html.append("</div></div>")
+                .append(AboutDialogStyle.pageEnd(str("morphe_settings_about_close"), null))
+                .append(AboutDialogStyle.DOCUMENT_END);
 
         return html.toString();
     }

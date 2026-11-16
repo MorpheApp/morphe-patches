@@ -542,6 +542,8 @@ Ask የሚለው ቁልፍ ያለው ቪዲዮ አንዴ ከተከፈተ በኋ�
   <string name="morphe_disable_chapter_skip_double_tap_title">የሁለቴ ንክኪ ምዕራፍ ዝላይን አግድ</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">ምዕራፎችን የሚዘልለውን የሁለት ጣት ባለ ሁለት ጊዜ መነካካት ምልክትን ያጠፋል፤ ይህም በአንድ ጣት በስህተት ሊነካ ስለሚችል ነው</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">ቪዲዮዎችን፣ ፖድካስቶችን ወይም ዘፈኖችን በሶስተኛ ወገን ማውረጃ መተግበሪያዎች ያውርዱ</string>
   <string name="morphe_external_downloader_overlay_button_title">የተጫዋች ተደራቢ ዳውንሎድ ቁልፍን አሳይ</string>
   <string name="morphe_external_downloader_overlay_button_summary">የውጭ ዳውንሎደርዎን የሚከፍት ቁልፍ በቪዲዮ ተጫዋቹ ውስጥ ያሳያል</string>
@@ -558,6 +560,10 @@ Ask የሚለው ቁልፍ ያለው ቪዲዮ አንዴ ከተከፈተ በኋ�
   <string name="morphe_shorts_download_flyout_button_title">በ Shorts ዝርዝር ውስጥ ዳውንሎድ አሳይ</string>
   <string name="morphe_shorts_download_flyout_button_summary">በShorts ተጫዋች ዝርዝር ውስጥ የማውረጃ ንጥልን ይጨምራል</string>
   <string name="morphe_shorts_download_flyout_title">ዳውንሎድ</string>
+  <string name="morphe_feed_download_flyout_button_title">የማውረድ አማራጭን በቪዲዮ ዝርዝሮች ውስጥ አሳይ</string>
+  <string name="morphe_feed_download_flyout_button_summary">የማውረድ አማራጭ ለሌላቸው የፊድ ቪዲዮዎች ዝርዝር ውስጥ ያክላል፤ ለምሳሌ YouTube Premium አባላት ብቻ እንዲያወርዱ የሚፈቅዳቸውን ቪዲዮዎች</string>
+  <string name="morphe_download_force_4k_title">የ 4K ዳውንሎድ አቅርቦትን በግዴታ ማስገደብ</string>
+  <string name="morphe_download_force_4k_summary">YouTube ይህ መሣሪያ ሊያጫውታቸው እንደማይችል ቢወስንም እንኳ የ 1440p እና የ 4K ዳውንሎዶችን ያቀርባል። እንዲህ ያሉ ቪዲዮዎች በ YouTube ውስጥ ያለ ቪዲዮ ሊጫወቱ ይችላሉ፣ ነገር ግን ወደ መሣሪያዎ ኤክስፖርት ሊደረጉ ይችላሉ</string>
   <string name="morphe_export_download_folder_title">የተቀመጡ ቪዲዮዎችን ላክ</string>
   <string name="morphe_export_download_folder_summary">"በመተግበሪያው ውስጥ ያሉትን የተቀመጡ ቪዲዮዎች በመተግበሪያው የውርድ ፍላይአውት ሜኑ በመጠቀም ወደ መሳሪያዎ ማከማቻ ይላኩ። የኤክስፖርት ፎልደሩን ለመቀየር ይጫኑ
 
@@ -773,6 +779,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_queue_manager_open_queue">ተርታውን ይክፈቱ</string>
   <string name="morphe_queue_manager_save_queue">ተርታውን ወደ ስብስብ ማስቀመጥ</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">በጥቃቅን ምስሎች ላይ የተርታ ቁልፍ አሳይ</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">በፊድ ቪዲዮዎች ጥቃቅን ምስሎች ላይ የተርታ ቁልፍ ይታያል። እሱን በመንካት ቪዲዮውን የተርታው መጨረሻ ላይ ይጨምራል፣ ተጭኖ በመያዝ ደግሞ ቪዲዮውን ቀጥሎ ያጫውታል</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">የጥቃቅን ምስል ተርታ ተግባራትን ቀያይር</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">የተርታ ቁልፉን መንካት ቪዲዮውን ቀጥሎ ያጫውታል፣ ተጭኖ መያዝ ደግሞ ቪዲዮውን የተርታው መጨረሻ ላይ ይጨምራል</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">ሲተሽከረከሩ የ очередь ገጾችን ያጫን</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">የ очередь መጨረሻ አካባቢ ሲሽከረከሩ ተጨማሪ የplaylist ቪዲዮዎችን ያጫናል</string>
   <string name="morphe_native_playlist_queue_saved">የመጫወቻ ዝርዝር ተቀምጧል</string>
@@ -1129,6 +1139,12 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">በሙሉ ስክሪን ላይ Ambient ሞድን አቋርጥ</string>
   <string name="morphe_enhanced_ambient_mode_title">የተሻሻለ Ambient ሞድ</string>
   <string name="morphe_enhanced_ambient_mode_summary">በ Ambient ሞድ ፋንታ ሙሉውን የዕይታ ገጽ እና ጥቁር አጥሮችን በቪዲዮው ቀለም ያበራል</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">የብርሃን ጥንካሬ</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">በሰዓቱ ገጽ እና በጥቁር አጥባዎች ላይ ብርሃኑ ምን ያህል ጠንካራ እንደሚሆን</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">የብርሃን ማለስለስ</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">ብርሃኑ ቪዲዮውን ለመከተል የሚወስደው ጊዜ። 0 ሲሆን ቪዲዮውን በቅርብ ይከተላል</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">የብርሃን ብዥታ</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">ከቪዲዮው አጠገብ ያለው ብርሃን ምን ያህል እንደሚብዥ። 0 ሲሆን የቪዲዮውን ቅርጾች ይጠብቃል</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">ጽሁፉን ለማንበብ እንዲመች አድርግ</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">በብሩህ ቪዲዮዎች ላይ ብርሃኑን ያደበዝዛል እና በገጹ ላይ ያለው ጽሁፍ ለማንበብ እንዲመች ያደርጋል</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">በማሸብለል ጊዜ ማደብዘዝ</string>
@@ -1476,7 +1492,7 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_dearrow_titles_player_title">የተጫዋች ዝርዝሮች &amp; ምክሮች</string>
   <string name="morphe_dearrow_titles_search_title">የፍለጋ ውጤቶች</string>
   <string name="morphe_dearrow_titles_icon_title">የDeArrow አዶን አሳይ</string>
-  <string name="morphe_dearrow_titles_icon_summary">በህዝብ የተሰበሰቡ የቪዲዮ ርዕሶች ላይ የDeArrow ምልክትን ያሳያል። ዋናውን ርዕስ እና ታምብኔል ለማሳየት ምልክቱን ይጫኑ</string>
+  <string name="morphe_dearrow_titles_icon_summary">በህዝብ የተሰበሰበ ርዕስ ወይም thumbnail ላላቸው የቪዲዮ ርዕሶች ላይ የDeArrow ምልክትን ያሳያል። ዋናውን ርዕስ እና thumbnail ለማየት ምልክቱን ይጫኑ</string>
   <string name="morphe_dearrow_casual_mode_title">ቀለል ያለ ሁኔታ</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow ተጠቃሚዎች ዋናው ርዕስ እንደሚወዱት ድምጽ ከሰጡ፣ ከ DeArrow ርዕስ ይልቅ ዋናውን ርዕስ ያሳያል</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">ዋናውን ርዕስ ለማሳየት የሚያስፈልጉ ዝቅተኛ የቀለል ያሉ ድምጾች</string>
@@ -1502,6 +1518,65 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow ለጊዜው አይገኝም (የሁኔታ ኮድ: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow ለጊዜው አይገኝም</string>
+  <string name="morphe_dearrow_vote_button_title">የDeArrow ቁልፍን አሳይ</string>
+  <string name="morphe_dearrow_vote_button_summary">በDeArrow ርዕሶች እና ምስሎች ላይ ለመምረጥ ወይም አዳዲስ ለማስገባት በቪዲዮ ማጫወቻው አናት ላይ ቁልፍን ይጨምራል</string>
+  <string name="morphe_dearrow_guidelines_title">መመሪያዎች</string>
+  <string name="morphe_dearrow_guidelines_summary">መመሪያዎቹ ርዕሶችን እና ምስሎችን ለማስገባት እና ለመምረጥ የሚረዱ ደንቦችን እና ምክሮችን ይያዛሉ</string>
+  <string name="morphe_dearrow_guidelines_popup_title">መመሪያዎቹን ይከተሉ</string>
+  <string name="morphe_dearrow_guidelines_popup_content">ርዕሶችን እና ምስሎችን ከማስገባት ወይም ಮತ ከመስጠትዎ በፊት የDeArrow መመሪያዎቹን ያንብቡ</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">ቀድሞ ተነቧል</string>
+  <string name="morphe_dearrow_guidelines_popup_open">አሳየኝ</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">በመጫን ላይ…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">የዚህን ቪዲዮ ርዕሶች እና ምስሎች መጫን አልተቻለም</string>
+  <string name="morphe_dearrow_vote_titles">ርዕሶች</string>
+  <string name="morphe_dearrow_vote_thumbnails">ምስሎች</string>
+  <string name="morphe_dearrow_vote_no_titles">እስካሁን ምንም ርዕሶች የሉም። የመጀመሪያው ለመሆን ርዕስ ያስገቡ</string>
+  <string name="morphe_dearrow_vote_original_title">ዋናው ርዕስ</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">ዋናው ትምኒል</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">ፍሬም በ %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">ውጤት: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">ያልተረጋገጠ</string>
+  <string name="morphe_dearrow_vote_locked">የተቆለፈ</string>
+  <string name="morphe_dearrow_vote_upvote">ድጋፍ ስጥ</string>
+  <string name="morphe_dearrow_vote_downvote">ተቃውሞ ስጥ</string>
+  <string name="morphe_dearrow_vote_new_title">አዲስ ርዕስ</string>
+  <string name="morphe_dearrow_vote_new_title_hint">ርዕስ ያስገቡ</string>
+  <string name="morphe_dearrow_vote_submit">ላክ</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">አዲስ ታምብኔል</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s ሰከንድ</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">በ %s ላይ ያለውን ፍሬም እንደ ታምብኔል ላክ?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">ቪዲዮው እየተጫወተ ነው። የሚያዩትን ፍሬም ለመላክ መጀመሪያ ቪዲዮውን ያቁሙ</string>
+  <string name="morphe_dearrow_vote_upvoted">ድምጽ ወደ DeArrow ተላክቷል</string>
+  <string name="morphe_dearrow_vote_downvoted">ዝቅተኛ ድምጽ ለ DeArrow ተላከ</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow ድምጹን አልተቀበለውም: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">ይህ ተቆልፏል፣ እና በ VIP ተጠቃሚዎች ብቻ ዝቅተኛ ድምጽ ሊሰጠው ይችላል</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">ለዚህ ቪዲዮ የሚሰጥ ድምጽ አሁንም በሂደት ላይ ነው። ከጥቂት ጊዜ በኋላ እንደገና ይሞክሩ</string>
+  <string name="morphe_dearrow_vote_failed_code">ድምጹን ማቅረብ አልተቻለም (የሁኔታ ኮድ: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">ድምጹን ማቅረብ አልተቻለም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ</string>
+  <string name="morphe_dearrow_submitting_title">ርዕሶችን እና ምስሎችን በመላክ ላይ ነው</string>
+  <string name="morphe_dearrow_vote_time_step_title">የጊዜ ማስተካከያ ደረጃ</string>
+  <string name="morphe_dearrow_vote_time_step_summary">አጭር ምስል በሚላክበት ጊዜ የቅንጣት ጊዜ ማስተካከያ ቁልፎች የሚንቀሳቀሱበት የጊዜ መጠን በሚሊሰከንድ</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">ዋጋው አዎንታዊ ቁጥር መሆን አለበት</string>
+  <string name="morphe_dearrow_private_user_id_title">የግል ተጠቃሚ መታወቂያዎ</string>
+  <string name="morphe_dearrow_private_user_id_summary">ልክ እንደ SponsorBlock ዓይነት የተጠቃሚ መታወቂያ ነው። ይህ በምስጢር መያዝ አለበት። ይህ እንደ የይለፍ ቃል ነው እና ለማንም መጋራት የለበትም። አንድ ሰው ይህንን ካገኘ፣ እርስዎን በመምሰል ሊሠራ ይችላል</string>
+  <string name="morphe_dearrow_private_user_id_invalid">የግል የተጠቃሚ መለያ ቢያንስ 30 ቁምፊዎች መሆን አለበት</string>
+  <string name="morphe_dearrow_account_loading">በመጫን ላይ…</string>
+  <string name="morphe_dearrow_account_connection_failure">የአካውንት ዝርዝሮች ለጊዜው አይገኙም</string>
+  <string name="morphe_dearrow_account_username">የተጠቃሚ ስምዎ: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">የተጠቃሚ ስምዎን ለመቀየር እዚህ ይጫኑ። የተጠቃሚ ስሙ በ SponsorBlock ላይ እንዳለው ተመሳሳይ ነው</string>
+  <string name="morphe_dearrow_account_username_changed">የተጠቃሚ ስም በስኬት ተቀይሯል</string>
+  <string name="morphe_dearrow_account_username_change_error">የተጠቃሚ ስምን መቀየር አልተቻለም፡ ሁኔታ፡ %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">&lt;b&gt;%s&lt;/b&gt; ርዕሶችን አስገብተዋል</string>
+  <string name="morphe_dearrow_account_titles_summary">ርዕሶቻችሁን ለማየት እዚህ ይጫኑ</string>
+  <string name="morphe_dearrow_account_thumbnails">&lt;b&gt;%s&lt;/b&gt; ትምብኔዎችን አስገብተዋል</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">ትምብኔዎችዎን ለማየት እዚህ ይጫኑ</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">የድሮውን የፕሌየር ቁልፍ ስታይል መልስ</string>
   <string name="morphe_restore_old_player_buttons_summary">ደመቅ ያሉትን የቪዲዮ ማጫወቻ መቆጣጠሪያዎች ወደ ቀድሞው ቀጭን የእይታ ስታይል ይመልሳል</string>
@@ -1519,6 +1594,16 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">የዙም ሃፕቲክን አጥፋ</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">የአካውንት መግቢያ ዝርዝሮችን በቅርቡ ከቀየሩ፣ MicroGን ያራግፉ እና እንደገና ይጫኑት</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">የፑሽ ማሳወቂያዎችን አስቀምጥ</string>
+  <string name="morphe_debug_save_push_notifications_summary">የደረሱ የፑሽ ማሳወቂያዎችን በऐप ዳታ ውስጥ ወደ ፋይል ያስቀምጣል። ፋይሉ እንደ ማሳወቂያ ጽሁፎች እና የቻናል ስሞች ያሉ የግል መረጃዎችን ሊያካትት ይችላል</string>
+  <string name="morphe_debug_saved_push_notifications_title">የተቀመጡ የፑሽ ማሳወቂያዎችን ላክ</string>
+  <string name="morphe_debug_saved_push_notifications_summary">የተቀመጡ የፑሽ ማሳወቂያዎችን ላክ ወይም አጽዳ</string>
+  <string name="morphe_debug_saved_push_notifications_count">የተቀመጡ የፑሽ ማሳወቂያዎች፦ %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">ምንም የተቀመጡ የፑሽ ማሳወቂያዎች አልተገኙም</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">የፑሽ ማሳወቂያዎች በተሳካ ሁኔታ ተላክተዋል</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">የፑሽ ማሳወቂያዎችን ለመላክ አልተቻለም</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">የተቀመጡ የፑሽ ማሳወቂያዎች ተሰርዘዋል</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">የሊንክ ማስተላለፊያዎችን ይዝለሉ</string>
   <string name="morphe_bypass_link_redirects_summary">የክትትል ሊንኩን (youtube.com/redirect) በማለፍ ዋናውን ሊንክ በቀጥታ ይከፍታል</string>

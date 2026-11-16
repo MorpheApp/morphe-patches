@@ -1884,8 +1884,7 @@ public final class NativePlaylistQueuePatch {
                         && panel == controller.patch_getPanel();
                 if (owned) {
                     CharSequence text = title.getText();
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (text == null || text.length() == 0) {
+                    if (Utils.isEmpty(text)) {
                         return;
                     }
                     // ConstraintLayout normalizes the native 0dp/wrap constraint

@@ -109,8 +109,7 @@ public class LastFM {
 
         StringBuilder postData = new StringBuilder();
         for (Map.Entry<String, String> entry : params.entrySet()) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (postData.length() != 0) postData.append('&');
+            if (Utils.isNotEmpty(postData)) postData.append('&');
             postData.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             postData.append('=');
             postData.append(URLEncoder.encode(entry.getValue(), "UTF-8"));

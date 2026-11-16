@@ -41,6 +41,7 @@ import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NativeQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NotLocalQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
+import app.morphe.extension.youtube.patches.AmbientModePatch.DisableFullscreenAmbientModeAvailability;
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
 import app.morphe.extension.youtube.patches.AutoplayRule;
 import app.morphe.extension.youtube.patches.BackgroundPlaybackPatch.AutoPauseOnLockMode;
@@ -93,6 +94,7 @@ import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponent
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideQualityFlyoutMenuHeaderFooterAvailability;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowAvailability;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowThumbnailsAvailability;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitleIconAvailability;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitlesAvailability;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.StillImagesAvailability;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.ThumbnailOption;
@@ -242,7 +244,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DEARROW_TITLES_LIBRARY = new BooleanSetting("morphe_dearrow_titles_library", FALSE, true);
     public static final BooleanSetting DEARROW_TITLES_PLAYER = new BooleanSetting("morphe_dearrow_titles_player", FALSE, true);
     public static final BooleanSetting DEARROW_TITLES_SEARCH = new BooleanSetting("morphe_dearrow_titles_search", FALSE, true);
-    public static final BooleanSetting DEARROW_TITLES_ICON = new BooleanSetting("morphe_dearrow_titles_icon", TRUE, true, new DeArrowTitlesAvailability());
+    public static final BooleanSetting DEARROW_TITLES_ICON = new BooleanSetting("morphe_dearrow_titles_icon", TRUE, true, new DeArrowTitleIconAvailability());
     public static final BooleanSetting DEARROW_CASUAL_MODE = new BooleanSetting("morphe_dearrow_casual_mode", FALSE, true, new DeArrowTitlesAvailability());
     public static final BooleanSetting DEARROW_VOTE_BUTTON = new BooleanSetting("morphe_dearrow_vote_button", FALSE, true);
     public static final IntegerSetting DEARROW_VOTE_TIME_STEP = new IntegerSetting("morphe_dearrow_vote_time_step", 100, parent(DEARROW_VOTE_BUTTON));
@@ -342,6 +344,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting EXTERNAL_DOWNLOADER_QUICK_MENU = new BooleanSetting("morphe_external_downloader_quick_menu", FALSE, new ExternalDownloaderAvailability());
     public static final BooleanSetting EXTERNAL_DOWNLOADER_MARK_WATCHED = new BooleanSetting("morphe_external_downloader_mark_watched", FALSE, new ExternalDownloaderAvailability());
     public static final BooleanSetting SHORTS_DOWNLOAD_FLYOUT_BUTTON = new BooleanSetting("morphe_shorts_download_flyout_button", TRUE, DOWNLOAD_MODE.availability(DownloadMode.EXTERNAL, DownloadMode.IN_APP));
+    public static final BooleanSetting FEED_DOWNLOAD_FLYOUT_BUTTON = new BooleanSetting("morphe_feed_download_flyout_button", TRUE, DOWNLOAD_MODE.availability(DownloadMode.EXTERNAL, DownloadMode.IN_APP));
 
     // Overlay buttons
     public static final BooleanSetting FULLSCREEN_VIDEO_SCALE_BUTTON = new BooleanSetting("morphe_fullscreen_video_scale_button", FALSE, true);
@@ -454,7 +457,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting ENHANCED_AMBIENT_MODE_DIM_DURATION = new IntegerSetting("morphe_enhanced_ambient_mode_dim_duration", 3, parentsAll(ENHANCED_AMBIENT_MODE, ENHANCED_AMBIENT_MODE_DIM_WHILE_SCROLLING));
     public static final BooleanSetting DISABLE_AMBIENT_MODE = new BooleanSetting("morphe_disable_ambient_mode", FALSE, true, parentNot(ENHANCED_AMBIENT_MODE));
     public static final BooleanSetting BYPASS_AMBIENT_MODE_RESTRICTIONS = new BooleanSetting("morphe_bypass_ambient_mode_restrictions", FALSE, false, parentNot(DISABLE_AMBIENT_MODE));
-    public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", FALSE, true, parentsAll(parentNot(ENHANCED_AMBIENT_MODE), parentNot(DISABLE_AMBIENT_MODE)));
+    public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", FALSE, true, new DisableFullscreenAmbientModeAvailability());
 
     // Captions
     public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
@@ -793,6 +796,7 @@ public class Settings extends SharedYouTubeSettings {
 
     public static final BooleanSetting REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS = new BooleanSetting("morphe_remove_background_playback_restrictions", TRUE, true);
     public static final EnumSetting<AutoPauseOnLockMode> AUTO_PAUSE_ON_LOCK = new EnumSetting<>("morphe_auto_pause_on_screen_lock", AutoPauseOnLockMode.OFF);
+    public static final BooleanSetting DEBUG_SAVE_PUSH_NOTIFICATIONS = new BooleanSetting("morphe_debug_save_push_notifications", FALSE);
     public static final BooleanSetting BYPASS_LINK_REDIRECTS = new BooleanSetting("morphe_bypass_link_redirects", TRUE);
     public static final BooleanSetting EXTERNAL_BROWSER = new BooleanSetting("morphe_external_browser", TRUE, true);
     public static final BooleanSetting SPOOF_DEVICE_DIMENSIONS = new BooleanSetting("morphe_spoof_device_dimensions", FALSE, true,

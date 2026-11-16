@@ -542,6 +542,8 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <string name="morphe_disable_chapter_skip_double_tap_title">Deaktiver dobbelttrykk for å hoppe til neste kapittel</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiverer kapittelhopping med tofinger-dobbeltrykk, som kan utløses ved et uhell med én finger</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Last ned videoer, podkaster eller sanger med nedlastingsapper fra tredjeparter</string>
   <string name="morphe_external_downloader_overlay_button_title">Vis nedlastingsknapp for avspilleroverlegg</string>
   <string name="morphe_external_downloader_overlay_button_summary">Viser en knapp i videospilleren som åpner den eksterne nedlasteren din</string>
@@ -558,6 +560,10 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <string name="morphe_shorts_download_flyout_button_title">Vis nedlastinger i Shorts-menyen</string>
   <string name="morphe_shorts_download_flyout_button_summary">Legger til et nedlastingspunkt i menyen for Shorts-spilleren</string>
   <string name="morphe_shorts_download_flyout_title">Last ned</string>
+  <string name="morphe_feed_download_flyout_button_title">Vis nedlasting i videomenyer</string>
+  <string name="morphe_feed_download_flyout_button_summary">Legger til et nedlastingspunkt i menyene til videoer i feeden som mangler dette, slik som videoer YouTube kun lar Premium-medlemmer laste ned</string>
+  <string name="morphe_download_force_4k_title">Tving tilgjengelighet for 4K-nedlasting</string>
+  <string name="morphe_download_force_4k_summary">Tilbyr 1440p- og 4K-nedlastinger selv om YouTube bestemmer at denne enheten ikke kan spille dem av. Slike videoer kan hende spilles av uten bilde inne i YouTube, men kan eksporteres til enheten din</string>
   <string name="morphe_export_download_folder_title">Eksporter lagrede videoer</string>
   <string name="morphe_export_download_folder_summary">"Eksporter videoer lagret i appen til enhetens lagring ved hjelp av nedlastingsmenyen i appen. Trykk for å endre eksportermappe
 
@@ -772,6 +778,10 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <string name="morphe_queue_manager_open_queue">Åpne køen</string>
   <string name="morphe_queue_manager_save_queue">Lagre køen til spillelisten</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Vis kø-knapp på miniatyrbilder</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">En kø-knapp vises på miniatyrbildene til videoer i feeden. Ved å trykke på den legges videoen til slutt i køen, og ved å trykke og holde spilles videoen av som neste</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Bytt kø-handlinger for miniatyrbilder</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Ved å trykke på kø-knappen spilles videoen av som neste, og ved å trykke og holde legges videoen til slutt i køen</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Last inn køsider ved rulling</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Laster inn flere spillelistevideoer når du ruller mot slutten av køen</string>
   <string name="morphe_native_playlist_queue_saved">Spilleliste lagret</string>
@@ -1128,6 +1138,12 @@ For å vise 'Audio Track'-menyen, endre 'Forfalsk videostrømmer' til en hvilken
   <string name="morphe_disable_fullscreen_ambient_mode_title">Deaktiver omgivelsesmodus i fullskjerm</string>
   <string name="morphe_enhanced_ambient_mode_title">Forbedret omgivelsesmodus</string>
   <string name="morphe_enhanced_ambient_mode_summary">Lyser opp hele se-siden og svarte felt med videoen, i stedet for omgivelsesmodus</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Lysstyrke</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Hvor sterkt lyset er på urskiven og de svarte feltene</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Utjevning av lys</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Hvor lang tid lyset bruker på å følge videoen. Med 0 følger det videoen tett</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Lysuskarphet</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Hvor mye lyset ved siden av videoen er uskarpt. Med 0 bevares formene i videoen</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Hold tekst lesbar</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Demper lyset på lyse videoer slik at teksten på siden forblir lesbar</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Demp ved rulling</string>
@@ -1475,7 +1491,7 @@ Bilvisning
   <string name="morphe_dearrow_titles_player_title">Avspiller, spillelister &amp; anbefalinger</string>
   <string name="morphe_dearrow_titles_search_title">Søkeresultater</string>
   <string name="morphe_dearrow_titles_icon_title">Vis DeArrow-ikonet</string>
-  <string name="morphe_dearrow_titles_icon_summary">Viser DeArrow-ikonet på folkemengde-baserte videotitler. Trykk på ikonet for å vise den opprinnelige tittelen og miniatyrbildet</string>
+  <string name="morphe_dearrow_titles_icon_summary">Viser DeArrow-ikonet på titler på videoer med en crowdsourcet tittel eller et miniatyrbilde. Trykk på ikonet for å vise den opprinnelige tittelen og det opprinnelige miniatyrbildet</string>
   <string name="morphe_dearrow_casual_mode_title">Uformell modus</string>
   <string name="morphe_dearrow_casual_mode_summary">Viser originaltittelen i stedet for DeArrow-tittelen hvis DeArrow-brukere har stemt at de liker originaltittelen</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum antall uformelle stemmer for å vise originaltittel</string>
@@ -1501,6 +1517,65 @@ Videoer blir forespurt med et kort prefiks av den hashet video-ID-en, så server
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow er midlertidig ikke tilgjengelig (statuskode: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow er midlertidig ikke tilgjengelig</string>
+  <string name="morphe_dearrow_vote_button_title">Vis DeArrow-knapp</string>
+  <string name="morphe_dearrow_vote_button_summary">Legger til en knapp øverst i videospilleren for å stemme på DeArrow-titler og miniatyrbilder, eller sende inn nye</string>
+  <string name="morphe_dearrow_guidelines_title">Retningslinjer</string>
+  <string name="morphe_dearrow_guidelines_summary">Retningslinjene inneholder regler og tips for innsending og avstemning av titler og miniatyrbilder</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Følg retningslinjene</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Les DeArrow-retningslinjene før du sender inn eller stemmer på titler og miniatyrbilder</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Allerede lest</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Vis meg</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Laster…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Kunne ikke laste titler og miniatyrbilder for denne videoen</string>
+  <string name="morphe_dearrow_vote_titles">Titler</string>
+  <string name="morphe_dearrow_vote_thumbnails">Miniatyrbilder</string>
+  <string name="morphe_dearrow_vote_no_titles">Ingen titler ennå. Send inn en tittel for å være den første</string>
+  <string name="morphe_dearrow_vote_original_title">Originaltittel</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Originalt miniatyrbilde</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Bilde ved %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Poengsum: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Uverifisert</string>
+  <string name="morphe_dearrow_vote_locked">Låst</string>
+  <string name="morphe_dearrow_vote_upvote">Oppstem</string>
+  <string name="morphe_dearrow_vote_downvote">Nedstem</string>
+  <string name="morphe_dearrow_vote_new_title">Ny tittel</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Skriv inn en tittel</string>
+  <string name="morphe_dearrow_vote_submit">Send inn</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Nytt miniatyrbilde</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Send inn bildet ved %s som et miniatyrbilde?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Videoen spilles av. For å sende inn bildet du ser, må du pause videoen først</string>
+  <string name="morphe_dearrow_vote_upvoted">Stemme sendt til DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Negativ stemme sendt til DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow godtok ikke stemmen: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Dette er låst, og kan bare få negative stemmer fra VIP-brukere</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">En avstemning for denne videoen pågår fortsatt. Prøv igjen om et øyeblikk</string>
+  <string name="morphe_dearrow_vote_failed_code">Kunne ikke sende inn stemmen (statuskode: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Kunne ikke sende inn stemmen. Sjekk tilkoblingen din og prøv igjen</string>
+  <string name="morphe_dearrow_submitting_title">Sender inn titler og miniatyrbilder</string>
+  <string name="morphe_dearrow_vote_time_step_title">Trinn for tidsjustering</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Søkebeløp for knappene for fin tidsjustering når et miniatyrbilde sendes inn (i millisekunder)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Verdien må være et positivt tall</string>
+  <string name="morphe_dearrow_private_user_id_title">Din private bruker-ID</string>
+  <string name="morphe_dearrow_private_user_id_summary">Samme bruker-ID som SponsorBlock. Denne bør holdes privat. Dette er som et passord og bør ikke deles med noen. Hvis noen har denne, kan de utgi seg for å være deg</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Privat bruker-ID må være minst 30 tegn lang</string>
+  <string name="morphe_dearrow_account_loading">Laster…</string>
+  <string name="morphe_dearrow_account_connection_failure">Kontoopplysninger er midlertidig utilgjengelige</string>
+  <string name="morphe_dearrow_account_username">Brukernavnet ditt: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Trykk her for å endre brukernavnet ditt. Brukernavnet er det samme som på SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Brukernavnet er endret</string>
+  <string name="morphe_dearrow_account_username_change_error">Kunne ikke endre brukernavn: Status: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Du har sendt inn &lt;b&gt;%s&lt;/b&gt; titler</string>
+  <string name="morphe_dearrow_account_titles_summary">Trykk her for å se titlene dine</string>
+  <string name="morphe_dearrow_account_thumbnails">Du har sendt inn &lt;b&gt;%s&lt;/b&gt; miniatyrbilder</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Trykk her for å se miniatyrbildene dine</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Gjenopprett gammel spillerknappstil</string>
   <string name="morphe_restore_old_player_buttons_summary">Gjenoppretter de uthevede videospillerkontrollene til den eldre, tynnere visuelle stilen</string>
@@ -1518,6 +1593,16 @@ Videoer blir forespurt med et kort prefiks av den hashet video-ID-en, så server
   <string name="morphe_disable_haptic_feedback_zoom_title">Deaktiver zoomhaptikk</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Hvis du nylig har endret kontoinnloggingsdetaljene dine, må du avinstallere MicroG og installere det på nytt</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Lagre push-varslinger</string>
+  <string name="morphe_debug_save_push_notifications_summary">Lagrer mottatte push-varslinger til en fil i app-dataene. Filen kan inneholde privat informasjon, som varslingstekster og kanalnavn</string>
+  <string name="morphe_debug_saved_push_notifications_title">Eksporter lagrede push-varslinger</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Eksporter eller slett de lagrede push-varslingene</string>
+  <string name="morphe_debug_saved_push_notifications_count">Lagrede push-varsler: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Ingen lagrede push-varsler funnet</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-varsler eksportert vellykket</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Kunne ikke eksportere push-varsler</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Lagrede push-varsler slettet</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omgå lenkeomdirigeringer</string>
   <string name="morphe_bypass_link_redirects_summary">Åpner den originale lenken direkte, ved å omgå sporingslenken (youtube.com/redirect)</string>

@@ -897,7 +897,7 @@ public final class FeedVideoActionsPatch {
             if (child.isClickable() && isMenuButtonShaped(root, child, rect, sideThumbnail)) {
                 if (!learned.isEmpty()) {
                     CharSequence description = child.getContentDescription();
-                    if (!TextUtils.isEmpty(description)
+                    if (Utils.isNotEmpty(description)
                             && isSamePattern(getDescriptionPattern(description, videoTexts), learned)) {
                         bestMatch[0] = child;
                         return true;
@@ -1533,7 +1533,7 @@ public final class FeedVideoActionsPatch {
             }
 
             CharSequence description = sender.getContentDescription();
-            if (TextUtils.isEmpty(description)) {
+            if (Utils.isEmpty(description)) {
                 return;
             }
             ComponentHost root = findRootHost(sender);

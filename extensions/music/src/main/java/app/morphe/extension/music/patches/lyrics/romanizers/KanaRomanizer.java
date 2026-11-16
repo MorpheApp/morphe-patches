@@ -9,6 +9,8 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.shared.Utils;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -134,9 +136,8 @@ public final class KanaRomanizer {
         return out.toString();
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void separate(StringBuilder out) {
-        if (out.length() > 0 && out.charAt(out.length() - 1) != ' ') {
+        if (Utils.isNotEmpty(out) && out.charAt(out.length() - 1) != ' ') {
             out.append(' ');
         }
     }
@@ -182,7 +183,7 @@ public final class KanaRomanizer {
     }
 
     private static void repeatVowel(StringBuilder out) {
-        if (out.length() == 0) {
+        if (Utils.isEmpty(out)) {
             return;
         }
         char c = out.charAt(out.length() - 1);

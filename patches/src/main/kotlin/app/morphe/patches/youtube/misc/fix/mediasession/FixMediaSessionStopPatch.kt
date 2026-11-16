@@ -45,8 +45,7 @@ internal val fixMediaSessionStopPatch = patch {
     execute {
         val sessionClass = MediaSessionStartFingerprint.originalClassDef.type
         val startMethodName = MediaSessionStartFingerprint.originalMethod.name
-        val playerClass = playerMediaSessionStartFingerprint(sessionClass, startMethodName)
-            .originalClassDef.type
+        val playerClass = PlayerMediaSessionStartFingerprint.originalClassDef.type
 
         /**
          * Calls the extension method with the player that calls the method,

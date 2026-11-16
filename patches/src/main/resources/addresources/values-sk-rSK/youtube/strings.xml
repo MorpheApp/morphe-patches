@@ -540,6 +540,8 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_disable_chapter_skip_double_tap_title">Zakázať preskočenie kapitoly dvojitým ťuknutím</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Zakáže gestá dvojitého ťuknutia dvoma prstami, ktoré preskakujú kapitoly, ktoré sa môžu neúmyselne spustiť jedným prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Stiahnite si videá, podcasty alebo piesne pomocou aplikácií na sťahovanie tretích strán</string>
   <string name="morphe_external_downloader_overlay_button_title">Zobraziť tlačidlo na stiahnutie preklapiačnej obrazovky prehrávača</string>
   <string name="morphe_external_downloader_overlay_button_summary">Zobrazí tlačidlo v videoprehrávači, ktoré otvorí vašu externú aplikáciu na sťahovanie</string>
@@ -556,6 +558,10 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_shorts_download_flyout_button_title">Zobraziť sťahovanie v ponuke Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Pridá položku sťahovania do ponuky prehrávača Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Stiahnuť</string>
+  <string name="morphe_feed_download_flyout_button_title">Zobrazovať sťahovanie v menu videí</string>
+  <string name="morphe_feed_download_flyout_button_summary">Pridá položku sťahovania do menu videí vo feede, ktoré ju nemajú, napríklad videí, ktoré YouTube umožňuje sťahovať len členom Premium</string>
+  <string name="morphe_download_force_4k_title">Vynutiť dostupnosť sťahovania vo 4K</string>
+  <string name="morphe_download_force_4k_summary">Ponúka sťahovanie vo 1440p a 4K, aj keď YouTube rozhodne, že toto zariadenie ich neprehrá. Takéto videá sa v rámci YouTube môžu prehrávať bez obrazu, ale môžu byť exportované do vášho zariadenia</string>
   <string name="morphe_export_download_folder_title">Exportovať uložené videá</string>
   <string name="morphe_export_download_folder_summary">"Exportujte videá uložené v aplikácii do úložiska zariadenia pomocou ponuky sťahovaní v aplikácii. Klepnutím zmeníte exportovaciu zložku
 
@@ -770,6 +776,10 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <string name="morphe_queue_manager_open_queue">Otvoriť frontu</string>
   <string name="morphe_queue_manager_save_queue">Uložiť frontu do zoznamu skladieb</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Zobrazovať tlačidlo fronty na náhľadoch</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Na náhľadoch videí vo feede sa zobrazuje tlačidlo fronty. Klepnutím sa video pridá na koniec fronty a podržaním sa video prehrá ako ďalšie</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Premieniť akcie fronty na náhľadoch</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Klepnutím na tlačidlo fronty sa video prehrá ako ďalšie a podržaním sa video pridá na koniec fronty</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Načítavaj stránky fronty pri skrolovaní</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Načítava viac videí z zoznamu ጠ 재생 pri skrolovaní blízko konca fronty</string>
   <string name="morphe_native_playlist_queue_saved">Playlist uložený</string>
@@ -1126,6 +1136,12 @@ Ak chcete zobraziť menu 'Audio Track', zmeňte 'Spoofovanie video streamov' na 
   <string name="morphe_disable_fullscreen_ambient_mode_title">Zakázať režim Ambient na celú obrazovku</string>
   <string name="morphe_enhanced_ambient_mode_title">Vylepšený ambientný režim</string>
   <string name="morphe_enhanced_ambient_mode_summary">Osvetli celý stránku sledovania a čierne pruhy farbami videa namiesto ambientného režimu</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Intenzita svetla</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Ak intenzívne je svetlo na stránke hodiniek a na čiernych pruhoch</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Vyhladenie svetla</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Ako dlho svetlo trvá, kým sled합니다 video. Pri hodnote 0 sleduje video veľmi tesne</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Rozostrenie svetla</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Ako veľmi je rozostrené svetlo vedľa videa. Pri hodnote 0 si zachováva tvary videa</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Udržať text čitateľný</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Pri jasných videách stmavuje svetlo, aby text na stránke zostal čitateľný</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Ztmaviť pri scrollovaní</string>
@@ -1472,7 +1488,7 @@ Rozloženie pre automobil
   <string name="morphe_dearrow_titles_player_title">Playlisty prehrávača &amp; odporúčania</string>
   <string name="morphe_dearrow_titles_search_title">Výsledky vyhľadávania</string>
   <string name="morphe_dearrow_titles_icon_title">Zobraziť ikonu DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Zobrazuje ikonu DeArrow pri názvoch videí z crowdsourcingu. Klepnutím na ikonu zobrazíte pôvodný názov a miniaturu</string>
+  <string name="morphe_dearrow_titles_icon_summary">Zobrazuje ikonu DeArrow pri názvoch videí s crowdsourced názvom alebo náhľadom. Klepnutím na ikonu zobrazíte pôvodný názov a náhľad</string>
   <string name="morphe_dearrow_casual_mode_title">Bežný režim</string>
   <string name="morphe_dearrow_casual_mode_summary">Zobrazí pôvodný názov namiesto názvu DeArrow, ak používatelia DeArrow hlasovali, že sa im páči pôvodný názov</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimálny počet bežných hlasov na zobrazenie pôvodného názvu</string>
@@ -1498,6 +1514,63 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow je dočasne nedostupný (kód stavu: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow je dočasne nedostupný</string>
+  <string name="morphe_dearrow_vote_button_title">Zobraziť tlačidlo DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Pridá do vrchu videoprehrávača tlačidlo na hlasovanie o názvoch a náhľadებზე DeArrow alebo na odoslanie nových</string>
+  <string name="morphe_dearrow_guidelines_title">Od recommendations</string>
+  <string name="morphe_dearrow_guidelines_summary">Od recommendations obsahujú pravidlá a tipy pre odosielanie a hlasovanie o názvoch a náhľadებზე</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Dodržujte pokyny</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Pred odošaním alebo hlasovaním o názvoch a náhľadoch si prečítajte pokyny DeArrow</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Už som si prečítal</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Zobraziť mi</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Načítava sa…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Názvy a náhľady tohto videa sa nepodarilo načítať</string>
+  <string name="morphe_dearrow_vote_titles">Názvy</string>
+  <string name="morphe_dearrow_vote_thumbnails">Náhľady</string>
+  <string name="morphe_dearrow_vote_no_titles">Zatiaľ žiadne názvy. Pošlite názov a buďte prví</string>
+  <string name="morphe_dearrow_vote_original_title">Pôvodný názov</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Pôvodný náhľad</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Frame v %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Skóre: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Neoverifikované</string>
+  <string name="morphe_dearrow_vote_locked">Zamknuté</string>
+  <string name="morphe_dearrow_vote_upvote">Hlasovať za</string>
+  <string name="morphe_dearrow_vote_downvote">Hlasovať proti</string>
+  <string name="morphe_dearrow_vote_new_title">Nový názov</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Zadajte názov</string>
+  <string name="morphe_dearrow_vote_submit">Odoslať</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Nová miniatura</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Odoslať snímok v čase %s ako náhľad?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Video sa prehráva. Ak chcete odoslať snímok, ktorý vidíte, najprv video pozastavte</string>
+  <string name="morphe_dearrow_vote_upvoted">Hlasovanie bolo odoslané do DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Záporný hlas bol odoslaný do DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow neprijalo hlasovanie: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Toto je zamknuté a môžu ho hlasovať záporne iba VIP používatelia</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Hlasovanie pre toto video ešte prebieha. Skúste to o chvíľu znova</string>
+  <string name="morphe_dearrow_vote_failed_code">Nepodarilo sa odovzdať hlas (stavový kód: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Nepodarilo sa odovzdať hlas. Skontrolujte pripojenie a skúste to znova</string>
+  <string name="morphe_dearrow_submitting_title">Odosielanie názvov a náhľadov</string>
+  <string name="morphe_dearrow_vote_time_step_title">Krok úpravy času</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Množstvo posunu tlačidiel jemnej úpravy času pri odovzdávaní náhľadu (v milisekundách)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Hodnota musí byť kladné číslo</string>
+  <string name="morphe_dearrow_private_user_id_title">Vaše súkromné ID používateľa</string>
+  <string name="morphe_dearrow_private_user_id_summary">K rovnakému používateľskému ID ako v SponsorBlock. Mali by ste ho držať v súkromí. Je to ako heslo a nemali by ste ho s nikým zdieľať. Pokiaľ ho niekto má, môže sa za vás vydávať</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Súkromné ID používateľa musí mať minimálne 30 znakov</string>
+  <string name="morphe_dearrow_account_loading">Načítava sa…</string>
+  <string name="morphe_dearrow_account_connection_failure">Podrobnosti o účte sú dočasne nedostupné</string>
+  <string name="morphe_dearrow_account_username">Vaše používateľské meno: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Ťuknite sem na zmenu používateľského mena. Používateľské meno je rovnaké ako v SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Používateľské meno bolo úspešne zmenené</string>
+  <string name="morphe_dearrow_account_username_change_error">Nebolo možné zmeniť používateľské meno: Stav: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles_summary">Ťuknite sem, aby ste si pozreli svoje názovky</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Ťuknite sem, aby ste si pozreli svoje miniatúry</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Obnoviť predchádzajúci štýl tlačidiel prehrávača</string>
   <string name="morphe_restore_old_player_buttons_summary">Obnoví tučné ovládacie prvky prehrávača videa do staršieho, tenšieho vizuálneho štýlu</string>
@@ -1515,6 +1588,16 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <string name="morphe_disable_haptic_feedback_zoom_title">Zakázať haptickú spätnú väzbu pre zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ak ste nedávno zmenili svoje prihlasovacie údaje k účtu, odinštalujte a znovu nainštalujte microG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Ukladať push notifikácie</string>
+  <string name="morphe_debug_save_push_notifications_summary">Ukladá prijaté push notifikácie do súboru v údajoch aplikácie. Súbor môže obsahovať súkromné informácie, ako sú texty notifikácií a názvy kanálov</string>
+  <string name="morphe_debug_saved_push_notifications_title">Exportovať uložené push notifikácie</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportujte alebo vymažte uložené push notifikácie</string>
+  <string name="morphe_debug_saved_push_notifications_count">Uložené push notifikácie: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nenašli sa žiadne uložené push notifikácie</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push notifikácie boli úspešne exportované</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Export push notifikácií zlyhal</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Uložené push notifikácie boli vymazané</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Obísť presmerovania URL</string>
   <string name="morphe_bypass_link_redirects_summary">Otvára pôvodný odkaz priamo, obchádza sledovací odkaz (youtube.com/redirect)</string>

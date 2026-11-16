@@ -583,8 +583,7 @@ public final class PostTranslatePatch {
         Logger.printDebug(() -> {
             StringBuilder builder = new StringBuilder();
             for (PostText candidate : candidates) {
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) builder.append('\n');
+                if (Utils.isNotEmpty(builder)) builder.append('\n');
                 builder.append(candidate == chosen ? "Post text: " : "Other post text: ")
                         .append(candidate.shown().bounds())
                         .append(" drawable: ").append(candidate.shown().drawable() != null)
@@ -737,8 +736,7 @@ public final class PostTranslatePatch {
                 for (List<String> batch : TextTranslator.splitByCharacterBudget(
                         lines, TextTranslator.MAXIMUM_BATCH_CHARACTERS)) {
                     for (String line : TextTranslator.translate(batch, language)) {
-                        //noinspection SizeReplaceableByIsEmpty
-                        if (builder.length() > 0) {
+                        if (Utils.isNotEmpty(builder)) {
                             builder.append('\n');
                         }
                         builder.append(line);

@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.3.0-dev.5",
+  "version": "2.3.0",
   "patches": [
     {
       "name": "A-B loop",
@@ -21,6 +21,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -29,13 +36,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -323,6 +323,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -331,13 +338,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -452,6 +452,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -460,13 +467,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -1070,6 +1070,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -1078,13 +1085,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -1258,6 +1258,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -1266,13 +1273,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -1402,6 +1402,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -1410,13 +1417,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -1704,6 +1704,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -1712,13 +1719,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -2108,6 +2108,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -2116,13 +2123,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -2173,6 +2173,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -2181,13 +2188,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -2467,6 +2467,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -2475,13 +2482,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -2897,6 +2897,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -2905,13 +2912,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -3049,6 +3049,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -3057,13 +3064,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -3272,6 +3272,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -3280,13 +3287,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -3337,6 +3337,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -3345,13 +3352,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -3560,6 +3560,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -3568,13 +3575,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -4765,6 +4765,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -4773,13 +4780,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -4909,6 +4909,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -4917,13 +4924,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -4974,6 +4974,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -4982,13 +4989,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -5118,6 +5118,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -5126,13 +5133,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -5183,6 +5183,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -5191,13 +5198,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -5248,6 +5248,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -5256,13 +5263,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -5851,6 +5851,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -5859,13 +5866,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -5995,6 +5995,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -6003,13 +6010,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -6346,6 +6346,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -6354,13 +6361,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -6780,6 +6780,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -6788,13 +6795,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -7067,6 +7067,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -7075,13 +7082,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -7354,6 +7354,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -7362,13 +7369,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -7498,6 +7498,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -7506,13 +7513,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -7706,6 +7706,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -7714,13 +7721,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -8516,6 +8516,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -8524,13 +8531,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -8803,6 +8803,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -8811,13 +8818,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -9154,6 +9154,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -9162,13 +9169,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -9298,6 +9298,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -9306,13 +9313,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -9461,6 +9461,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -9469,13 +9476,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -10128,6 +10128,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -10136,13 +10143,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -10420,6 +10420,71 @@
       "options": []
     },
     {
+      "name": "Pause when muted",
+      "description": "Adds an option to pause playback when the system volume is muted, and to resume it when the volume is raised.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0000",
+          "signatures": [
+            "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
+            "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "9.45.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "9.44.52",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.30.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.20.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.15.51",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Picture-in-picture button",
       "description": "Adds an option to display a picture-in-picture button in the video player.",
       "default": true,
@@ -10517,6 +10582,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -10525,13 +10597,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -10819,6 +10884,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -10827,13 +10899,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -11210,6 +11275,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -11218,13 +11290,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -11275,6 +11340,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -11283,13 +11355,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -11340,6 +11405,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -11348,13 +11420,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -11770,6 +11835,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -11778,13 +11850,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -11835,6 +11900,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -11843,13 +11915,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -11900,6 +11965,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -11908,13 +11980,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -11965,6 +12030,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -11973,13 +12045,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -12173,6 +12238,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -12181,13 +12253,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -12396,6 +12461,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -12404,13 +12476,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -12540,6 +12605,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -12548,13 +12620,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -12827,6 +12892,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -12835,13 +12907,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -13129,6 +13194,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -13137,13 +13209,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -13584,6 +13649,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -13592,13 +13664,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -13807,6 +13872,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -13815,13 +13887,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -13872,6 +13937,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -13880,13 +13952,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -14016,6 +14081,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -14024,13 +14096,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -14318,6 +14383,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -14326,13 +14398,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -14605,6 +14670,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -14613,13 +14685,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,
@@ -14824,6 +14889,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "9.46.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "9.45.51",
               "versionCodes": null,
               "isExperimental": true,
@@ -14832,13 +14904,6 @@
             },
             {
               "version": "9.44.52",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.43.51",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 26,

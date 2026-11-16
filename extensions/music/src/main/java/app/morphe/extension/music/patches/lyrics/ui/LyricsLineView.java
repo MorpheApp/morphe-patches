@@ -47,6 +47,7 @@ import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.VisualClu
 import app.morphe.extension.music.patches.lyrics.ui.WordAnimationUtils.WordTimestamp;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 
 final class LyricsLineView extends TextView {
@@ -2148,13 +2149,12 @@ final class LyricsLineView extends TextView {
                 && Settings.LYRICS_WORD_SMOOTH_SWEEP.get();
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         final int width = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
         CharSequence text = getText();
-        if (width > 0 && text != null && text.length() > 0) {
+        if (width > 0 && Utils.isNotEmpty(text)) {
             if (!showSyllableRomanization && !rubyActive && secondaryAnimator == null
                     && LyricsFit.applyOrphanFit(this, width, text, fittedState)) {
                 // Not refitted while a background vocal opens, or its text jumps mid-animation.
@@ -2200,7 +2200,6 @@ final class LyricsLineView extends TextView {
     }
 
     @SuppressLint("DrawAllocation")
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Override
     protected void onDraw(Canvas canvas) {
         if (deferSyllableBuild) {
@@ -2209,7 +2208,7 @@ final class LyricsLineView extends TextView {
         if (shouldUseSyllableCache()) {
             final int width = getWidth() - getPaddingLeft() - getPaddingRight();
             CharSequence text = getText();
-            if (width > 0 && text != null && text.length() > 0) {
+            if (width > 0 && Utils.isNotEmpty(text)) {
                 SyllableRomanCache syllables = syllableCacheFor(width, text);
                 if (syllables != null) {
                     drawSyllableRomanizedLine(canvas, syllables);
@@ -2237,7 +2236,7 @@ final class LyricsLineView extends TextView {
                 return;
             }
             CharSequence text = getText();
-            if (text == null || text.length() == 0) {
+            if (Utils.isEmpty(text)) {
                 return;
             }
             Paint tp = getPaint();

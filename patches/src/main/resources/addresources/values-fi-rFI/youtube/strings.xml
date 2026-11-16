@@ -542,6 +542,8 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_disable_chapter_skip_double_tap_title">Estää kaksinkertaisella napautuksella siirtymisen vahingossa seuraavaan tai edelliseen lukuun</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Poistaa käytöstä kaksoisnapautusliikkeen, joka ohittaa luvut, mikä voi vahingossa laukaistua yhdellä sormella</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Lataa videoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
   <string name="morphe_external_downloader_overlay_button_title">Näytä pelaajan peitteen latauspainike</string>
   <string name="morphe_external_downloader_overlay_button_summary">Näyttää latauspainikkeen videosoittimessa, joka avaa ulkoisen lataussovelluksen</string>
@@ -558,6 +560,10 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_shorts_download_flyout_button_title">Näytä lataus Shorts-valikossa</string>
   <string name="morphe_shorts_download_flyout_button_summary">Lisää latauskohta Shorts-soittimen valikkoon</string>
   <string name="morphe_shorts_download_flyout_title">Lataa</string>
+  <string name="morphe_feed_download_flyout_button_title">Näytä lataus videoiden valikoissa</string>
+  <string name="morphe_feed_download_flyout_button_summary">Lisää latausvaihtoehdon syötteen videoiden valikoihin, joista se puuttuu, kuten videoihin, jotka YouTube antaa ladata vain Premium-jäsenten</string>
+  <string name="morphe_download_force_4k_title">Pakota 4K-latausten saatavuus</string>
+  <string name="morphe_download_force_4k_summary">Tarjoaa 1440p- ja 4K-latauksia, vaikka YouTube päättäisi, ettei tämä laite voi toistaa niitä. Tällaiset videot eivät välttämättä toimi YouTubessa, mutta ne voidaan viedä laitteellesi</string>
   <string name="morphe_export_download_folder_title">Vie tallennetut videot</string>
   <string name="morphe_export_download_folder_summary">"Vie sovelluksen sisälle tallennetut videot laitteesi tallennustilaan latausten pikavalikon avulla. Napauta vaihtaaksesi viekansionin
 
@@ -772,6 +778,10 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_queue_manager_open_queue">Avaa jono</string>
   <string name="morphe_queue_manager_save_queue">Tallenna jono soittolistalle</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Näytä jonopainike pikkukuvissa</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Syötteen videoiden pikkukuvissa näytetään jonopainike. Napauttamalla sitä video lisätään jonon loppuun, ja pitkällä painalluksella video toistetaan seuraavana</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Vaihda pikkukuvien jonotoiminnot</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Jonopainikkeen napauttaminen toistaa videon seuraavana, ja pitkä painallus lisää videon jonon loppuun</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Lataa jonosivuja vierittäessä</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Lataa lisää soittolistan videoita, kun vierität jonon loppupuolelle</string>
   <string name="morphe_native_playlist_queue_saved">Soittolista tallennettu</string>
@@ -1128,6 +1138,12 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_disable_fullscreen_ambient_mode_title">Poista Elokuvatila käytöstä kokoruututilassa</string>
   <string name="morphe_enhanced_ambient_mode_title">Parannettu Elokuvatila</string>
   <string name="morphe_enhanced_ambient_mode_summary">Valaisee koko katselusivun ja mustat palkit videon mukaan Elokuvatilan sijaan</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Valon voimakkuus</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Kuinka voimakas valo on kellotaululla ja mustissa palkeissa</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Valon tasoitus</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Kuinka kauan valolta kestää seurata videota. Arvolla 0 se seuraa videota tarkasti</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Valon sumennus</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Kuinka paljon videon vieressä oleva valo sumennetaan. Arvolla 0 videon muodot säilyvät</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Pidä teksti luettavana</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hämmentää valoa kirkkaissa videoissa, jotta sivun teksti pysyy luettavana</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Himmennä vierittäessä</string>
@@ -1475,7 +1491,7 @@ Auton asettelu
   <string name="morphe_dearrow_titles_player_title">Soittimen soittolistat ja suositukset</string>
   <string name="morphe_dearrow_titles_search_title">Hakutulokset</string>
   <string name="morphe_dearrow_titles_icon_title">Näytä DeArrow-kuvake</string>
-  <string name="morphe_dearrow_titles_icon_summary">Näyttää DeArrow-kuvakkeen yhteisön tuottamien videoiden otsikoissa. Napauta kuvaketta näyttääksesi alkuperäisen otsikon ja pikkukuvan</string>
+  <string name="morphe_dearrow_titles_icon_summary">Näyttää DeArrow-kuvakkeen videoiden otsikoissa, joissa on yhteisön luoma otsikko tai pikkukuva. Napauta kuvaketta näyttääksesi alkuperäisen otsikon ja pikkukuvan</string>
   <string name="morphe_dearrow_casual_mode_title">Rento tila</string>
   <string name="morphe_dearrow_casual_mode_summary">Näyttää alkuperäisen otsikon DeArrow-otsikon sijaan, jos DeArrow-käyttäjät äänestivät pitävänsä alkuperäisestä otsikosta</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Vähimmäismäärä casual-ääniä alkuperäisen otsikon näyttämiseen</string>
@@ -1501,6 +1517,65 @@ Videoita pyydetään lyhyellä etuliitteellä hajautetusta video-ID:stä, joten 
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow ei ole tilapäisesti käytettävissä (tila: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow ei ole tilapäisesti käytettävissä</string>
+  <string name="morphe_dearrow_vote_button_title">Näytä DeArrow-painike</string>
+  <string name="morphe_dearrow_vote_button_summary">Lisää videosoittimen yläosaan painike, jolla voi äänestää DeArrow-otsikoita ja -pikkukuvia tai lähettää uusia</string>
+  <string name="morphe_dearrow_guidelines_title">Ohjeet</string>
+  <string name="morphe_dearrow_guidelines_summary">Ohjeet sisältävät sääntöjä ja vinkkejä otsikoiden ja pikkukuvien lähettämiseen ja äänestämiseen</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Noudata ohjeita</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Lue DeArrow-ohjeet ennen otsikoiden ja pikkukuvien lähettämistä tai äänestämistä</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Luettu jo</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Näytä minulle</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Ladataan…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Tämän videon otsikoita ja pikkukuvia ei voitu ladata</string>
+  <string name="morphe_dearrow_vote_titles">Otsikot</string>
+  <string name="morphe_dearrow_vote_thumbnails">Pikkukuvat</string>
+  <string name="morphe_dearrow_vote_no_titles">Otsikoita ei vielä ole. Lähetä otsikko ollaksesi ensimmäinen</string>
+  <string name="morphe_dearrow_vote_original_title">Alkuperäinen otsikko</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Alkuperäinen pikkukuva</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Ruutu kohdassa %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Pisteet: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Vahvistamaton</string>
+  <string name="morphe_dearrow_vote_locked">Lukittu</string>
+  <string name="morphe_dearrow_vote_upvote">Kannata</string>
+  <string name="morphe_dearrow_vote_downvote">Vastusta</string>
+  <string name="morphe_dearrow_vote_new_title">Uusi otsikko</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Kirjoita otsikko</string>
+  <string name="morphe_dearrow_vote_submit">Lähetä</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Uusi pikkukuva</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Lähetetäänkö kohta %s pikkukuvana?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Video on käynnissä. Tauota video ensin lähettääksesi näkyvän kohdan</string>
+  <string name="morphe_dearrow_vote_upvoted">Ääni lähetetty DeArrow-palveluun</string>
+  <string name="morphe_dearrow_vote_downvoted">Hylkäysääni lähetetty DeArrow-palveluun</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow ei hyväksynyt ääntä: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Tämä on lukittu, ja vain VIP-käyttäjät voivat antaa sille negatiivisen äänen</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Tämän videon äänestys on vielä käynnissä. Yritä uudelleen hetken kuluttua</string>
+  <string name="morphe_dearrow_vote_failed_code">Ääntä ei voitu lähettää (tilakoodi: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Ääntä ei voitu lähettää. Tarkista internetyhteytesi ja yritä uudelleen</string>
+  <string name="morphe_dearrow_submitting_title">Lähetetään otsikoita ja pikkukuvia</string>
+  <string name="morphe_dearrow_vote_time_step_title">Ajan säätöaskel</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Pikkukuvan lähetyksen yhteydessä käytettävien hienosäätönappuloiden siirtoarvo (millisekunteina)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Arvon tulee olla positiivinen luku</string>
+  <string name="morphe_dearrow_private_user_id_title">Yksityinen UserID:si</string>
+  <string name="morphe_dearrow_private_user_id_summary">Sama käyttäjätunnus kuin SponsorBlockissa. Tämä on pidettävä yksityisenä. Tämä on kuin salasana, eikä sitä tule jakaa kenenkään kanssa. Jos jollakulla on tämä, he voivat esiintyä sinuna</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Yksityisen UserID:n tulee olla vähintään 30 merkkiä pitkä</string>
+  <string name="morphe_dearrow_account_loading">Ladataan…</string>
+  <string name="morphe_dearrow_account_connection_failure">Tilin tiedot eivät ole tilapäisesti käytettävissä</string>
+  <string name="morphe_dearrow_account_username">Käyttäjänimesi: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Napauta tästä vaihtaaksesi käyttäjänimesi. Käyttäjänimi on sama kuin SponsorBlockissa</string>
+  <string name="morphe_dearrow_account_username_changed">Käyttäjänimen vaihto onnistui</string>
+  <string name="morphe_dearrow_account_username_change_error">Käyttäjänimeä ei voitu vaihtaa: Tila: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Olet lähettänyt &lt;b&gt;%s&lt;/b&gt; otsikkoa</string>
+  <string name="morphe_dearrow_account_titles_summary">Napauta tästä nähdäksesi otsikkosi</string>
+  <string name="morphe_dearrow_account_thumbnails">Olet lähettänyt &lt;b&gt;%s&lt;/b&gt; pikkukuvaa</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Napauta tästä nähdäksesi pikkukuvasi</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Palauta vanha soittimen painiketyyli</string>
   <string name="morphe_restore_old_player_buttons_summary">Palauttaa paksut videotoistimen säätimet vanhempaan, ohuempaan visuaaliseen tyyliin</string>
@@ -1518,6 +1593,16 @@ Videoita pyydetään lyhyellä etuliitteellä hajautetusta video-ID:stä, joten 
   <string name="morphe_disable_haptic_feedback_zoom_title">Poista zoomaushaptiikka käytöstä</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Jos olet äskettäin muuttanut tilisi kirjautumistietoja, poista ja asenna MicroG uudelleen</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Tallenna push-ilmoitukset</string>
+  <string name="morphe_debug_save_push_notifications_summary">Tallentaa vastaanotetut push-ilmoitukset tiedostoon sovelluksen tietoihin. Tiedosto voi sisältää yksityisiä tietoja, kuten ilmoitustekstejä ja kanavien nimiä</string>
+  <string name="morphe_debug_saved_push_notifications_title">Vie tallennetut push-ilmoitukset</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Vie tai tyhjennä tallennetut push-ilmoitukset</string>
+  <string name="morphe_debug_saved_push_notifications_count">Tallennetut push-ilmoitukset: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Tallennettuja push-ilmoituksia ei löytynyt</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-ilmoitukset viety onnistuneesti</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push-ilmoitusten vienti epäonnistui</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Tallennetut push-ilmoitukset tyhjennetty</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Ohita linkkien uudelleenohjaukset</string>
   <string name="morphe_bypass_link_redirects_summary">Avaa alkuperäinen linkki suoraan ohittaen seurantalinkin (youtube.com/redirect)</string>

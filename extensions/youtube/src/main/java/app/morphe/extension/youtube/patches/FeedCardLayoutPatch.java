@@ -212,7 +212,6 @@ public class FeedCardLayoutPatch {
 
     private static final int LOCKUP_CONTENT_TYPE_VIDEO = 1;
     private static final int LOCKUP_CONTENT_TYPE_PLAYLIST = 2;
-    private static final int LOCKUP_CONTENT_TYPE_SHORT = 3;
     /**
      * Browse id of the playlist pages, followed by the playlist id.
      */
@@ -1218,8 +1217,7 @@ public class FeedCardLayoutPatch {
                         for (ByteString text : List.of(metadata.getTitle(), metadata.getSubtitle(),
                                 video.getData().getThumbnail().getCollectionCountText(), metadata.getDetails())) {
                             if (!text.isEmpty()) {
-                                //noinspection SizeReplaceableByIsEmpty
-                                if (texts.length() > 0) {
+                                if (Utils.isNotEmpty(texts)) {
                                     texts.append(" - ");
                                 }
                                 texts.append(text.toStringUtf8());
@@ -1232,17 +1230,20 @@ public class FeedCardLayoutPatch {
                                     .setAccessibilityText(label + VIDEO_SHELF_ROW_LABEL_MARKER)))
                             .build();
                 } else if (isTemplate(uri, CARD_TEMPLATE) && model.hasLockupModel()) {
-                    // The videos, playlists and Shorts that YouTube sends as cards, to the accounts of a newer A/B test,
-                    // have no padding and fill the width of the list. They get the padding and the labels
-                    // of the converted cards.
+                    // The cards that YouTube sends to the accounts of a newer A/B test, such as the videos, the playlists,
+                    // the Shorts and the Premium promotion, have no padding and fill the width with the list.
+                    // They get the padding and the labels of the converted cards, whatever their content type.
                     LockupModel card = model.getLockupModel();
                     LockupViewModel lockupViewModel = card.getViewModel().getLockupViewModel();
-                    final int contentType = lockupViewModel.getContentType();
                     RendererContext rendererContext = lockupViewModel.getRendererContext();
                     String label = rendererContext.getAccessibilityContext().getLabel();
-                    if (!card.hasPadding() && !label.isEmpty() && !isCardLabel(label)
-                            && (contentType == LOCKUP_CONTENT_TYPE_VIDEO || contentType == LOCKUP_CONTENT_TYPE_PLAYLIST
-                            || contentType == LOCKUP_CONTENT_TYPE_SHORT)) {
+                    if (!card.hasPadding() && !isCardLabel(label)) {
+                        if (label.isEmpty()) {
+                            // Some cards have no label, such as the Premium promotion, so they get the label
+                            // of their title. Accessibility services read the label instead of the texts.
+                            label = AttributedText.parseFrom(lockupViewModel.getMetadata()
+                                    .getLockupMetadataViewModel().getTitle()).getContent();
+                        }
                         if (lockupViewModel.getInlinePlayback().getInlinePlayback().isEmpty()) {
                             label += NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
                         }
@@ -1343,8 +1344,7 @@ public class FeedCardLayoutPatch {
                                 if (partContent.isEmpty()) {
                                     continue;
                                 }
-                                //noinspection SizeReplaceableByIsEmpty
-                                if (content.length() > 0) {
+                                if (Utils.isNotEmpty(content)) {
                                     content.append("   ");
                                 }
                                 final int offset = content.length();
@@ -1356,8 +1356,7 @@ public class FeedCardLayoutPatch {
                                 String partLabel = part.getAccessibilityLabel().isEmpty()
                                         ? partContent.trim()
                                         : part.getAccessibilityLabel();
-                                //noinspection SizeReplaceableByIsEmpty
-                                if (label.length() > 0) {
+                                if (Utils.isNotEmpty(label)) {
                                     label.append(", ");
                                 }
                                 label.append(partLabel);
@@ -2639,8 +2638,7 @@ public class FeedCardLayoutPatch {
     }
 
     private static boolean endsWith(@Nullable CharSequence text, char c) {
-        //noinspection SizeReplaceableByIsEmpty
-        return text != null && text.length() > 0 && text.charAt(text.length() - 1) == c;
+        return Utils.isNotEmpty(text) && text.charAt(text.length() - 1) == c;
     }
 
     /**

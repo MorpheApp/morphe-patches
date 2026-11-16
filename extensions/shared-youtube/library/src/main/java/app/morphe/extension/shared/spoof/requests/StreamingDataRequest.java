@@ -135,6 +135,11 @@ public class StreamingDataRequest {
             return;
         }
 
+        if (clientOrder.length > 0 && clientOrder[0].isWebClient()) {
+            // The website takes several seconds to make the PoToken of its first video.
+            MwebSiteSession.warmUp();
+        }
+
         for (ClientType client : clientOrder) {
             if (skipClient(client)) {
                 continue;

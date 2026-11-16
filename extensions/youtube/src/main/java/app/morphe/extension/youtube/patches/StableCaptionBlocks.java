@@ -276,8 +276,7 @@ public final class StableCaptionBlocks {
 
     /** Native player stages recreate cues, but retain their styled full-text sequence. */
     public static CharSequence carryFrame(@Nullable CharSequence text, @Nullable Frame frame) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (text == null || text.length() == 0 || frame == null) return text;
+        if (Utils.isEmpty(text) || frame == null) return text;
         SpannableStringBuilder copy = new SpannableStringBuilder(text);
         for (Frame previous : copy.getSpans(0, copy.length(), Frame.class))
             copy.removeSpan(previous);
@@ -287,8 +286,7 @@ public final class StableCaptionBlocks {
 
     @Nullable
     public static Frame frameOf(@Nullable CharSequence text) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (!(text instanceof Spanned spanned) || text.length() == 0) return null;
+        if (!(text instanceof Spanned spanned) || Utils.isEmpty(text)) return null;
         Frame[] frames = spanned.getSpans(0, text.length(), Frame.class);
         return frames.length == 1 ? frames[0] : null;
     }
@@ -297,7 +295,7 @@ public final class StableCaptionBlocks {
      * Injection point.
      * Called instead of the caption sampler, if the timeline has a block state.
      */
-    @SuppressWarnings({"DataFlowIssue", "SizeReplaceableByIsEmpty"})
+    @SuppressWarnings("DataFlowIssue")
     public static List<?> present(Timeline timeline, long time) {
         List<?> original = timeline.patch_getOriginalCaptions(time);
         try {
@@ -328,7 +326,7 @@ public final class StableCaptionBlocks {
                 for (Object candidate : original) {
                     if (!(candidate instanceof Cue cue)) continue;
                     CharSequence text = cue.patch_getOriginalCaptionVisible();
-                    if (text != null && text.length() > 0) {
+                    if (Utils.isNotEmpty(text)) {
                         Object copy = cue.patch_copyBlockFrame(new Frame(state, time, time));
                         return copy == null ? original : Collections.singletonList(copy);
                     }
@@ -339,10 +337,8 @@ public final class StableCaptionBlocks {
             if (template < 0) return Collections.emptyList();
 
             List<?> source = original;
-            //noinspection SizeReplaceableByIsEmpty
             if (blocks && (source.isEmpty() || (source.size() == 1 && source.get(0) instanceof Cue c
-                            && (c.patch_getOriginalCaptionVisible() == null
-                                    || c.patch_getOriginalCaptionVisible().length() == 0)))) {
+                            && Utils.isEmpty(c.patch_getOriginalCaptionVisible())))) {
                 source = timeline.patch_getOriginalCaptions(template);
             }
             if (source == null || source.size() != 1 || !(source.get(0) instanceof Cue cue))

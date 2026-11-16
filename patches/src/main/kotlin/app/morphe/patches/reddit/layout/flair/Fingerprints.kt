@@ -85,18 +85,15 @@ internal object FeedPostTitleSectionToStringFingerprint : Fingerprint(
  * Reddit's mapper that creates a flair element with a single flair from a GraphQL fragment.
  * The feed post mapper creates it the same way, but has no community placeholder strings.
  */
-internal fun postFlairsElementMapperFingerprint(
-    presentationModelType: String,
-    flairsElementType: String
-) = Fingerprint(
-    returnType = flairsElementType,
+internal object PostFlairsElementMapperFingerprint : Fingerprint(
+    returnType = { PostFlairsElementToStringFingerprint.originalClassDef.type },
     strings = listOf(
         "subredditName",
         "subredditId"
     ),
     filters = listOf(
         methodCall(
-            definingClass = presentationModelType,
+            definingClass = { PostFlairFeedPresentationModelToStringFingerprint.originalClassDef.type },
             name = "<init>"
         ),
         // Creates a persistent list from an array.
@@ -104,9 +101,9 @@ internal fun postFlairsElementMapperFingerprint(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("[Ljava/lang/Object;")
         ),
-        newInstance(flairsElementType),
+        newInstance(type = { PostFlairsElementToStringFingerprint.originalClassDef.type }),
         methodCall(
-            definingClass = flairsElementType,
+            definingClass = { PostFlairsElementToStringFingerprint.originalClassDef.type },
             name = "<init>"
         )
     )
@@ -168,21 +165,18 @@ internal object PostPreviewFeedElementConstructorFingerprint : Fingerprint(
 /**
  * Kotlin data class copy method with a default value bit mask.
  */
-internal fun postPreviewFeedElementCopyFingerprint(
-    postPreviewFeedElementType: String,
-    flairsElementType: String
-) = Fingerprint(
-    definingClass = postPreviewFeedElementType,
+internal object PostPreviewFeedElementCopyFingerprint : Fingerprint(
+    definingClass = { PostPreviewFeedElementToStringFingerprint.originalClassDef.type },
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = postPreviewFeedElementType,
+    returnType = { PostPreviewFeedElementToStringFingerprint.originalClassDef.type },
     filters = listOf(
         // Flairs element default value bit.
         opcode(Opcode.AND_INT_LIT16),
         opcode(Opcode.IF_EQZ, MatchAfterImmediately()),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            definingClass = postPreviewFeedElementType,
-            type = flairsElementType,
+            definingClass = { PostPreviewFeedElementToStringFingerprint.originalClassDef.type },
+            type = { PostFlairsElementToStringFingerprint.originalClassDef.type },
             location = MatchAfterImmediately()
         )
     )

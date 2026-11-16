@@ -376,7 +376,6 @@ public final class RubyGenerator {
      * Characters the character tables do not cover are skipped, so a word that is only partly
      * covered still shows the reading of the characters that are covered.
      */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Nullable
     private static String characterReading(String text, Function<Character, String> reader) {
         StringBuilder out = new StringBuilder();
@@ -384,11 +383,11 @@ public final class RubyGenerator {
             char c = text.charAt(i);
             String reading = ScriptDetector.isHan(c) ? reader.apply(c) : null;
             if (reading != null) {
-                if (out.length() > 0) out.append(' ');
+                if (Utils.isNotEmpty(out)) out.append(' ');
                 out.append(reading);
             }
         }
-        return out.length() > 0 ? out.toString() : null;
+        return Utils.isNotEmpty(out) ? out.toString() : null;
     }
 
     /**

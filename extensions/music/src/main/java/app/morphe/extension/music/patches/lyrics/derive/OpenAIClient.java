@@ -28,6 +28,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.Logger;
 
 public final class OpenAIClient {
@@ -575,7 +576,6 @@ public final class OpenAIClient {
         return joinNumberedBlock(blockEnd, lines).toString();
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static StringBuilder joinNumberedBlock(int blockEnd, String[] lines) {
         int blockStart = blockEnd;
         while (blockStart > 0 && lines[blockStart - 1].trim().matches("\\d+\\..+")) {
@@ -588,7 +588,7 @@ public final class OpenAIClient {
             if (dot >= 0 && dot + 1 < line.length()) {
                 line = line.substring(dot + 1).trim();
             }
-            if (sb.length() > 0) {
+            if (Utils.isNotEmpty(sb)) {
                 sb.append('\n');
             }
             sb.append(line);
