@@ -6,6 +6,9 @@ After confirmation, a private installation-wide preference applies to signed-in 
 
 ## Native hooks
 
+- Flagged profile models are intercepted before the native flow publishes them to the header and feed, including cached results. The existing NSFW warning replaces the profile on the main thread. Normal profiles and inactive installations keep the original publication path.
+- The native warning wraps its remaining content after the opt-in button is removed. The anonymous drawer hides the accompanying Settings heading and divider along with its two adult-content switches.
+
 - `AccountPreferences.getNsfwEnabledPreferenceState()` returns the native `Disabled` enum while active. Reddit 2026.45.0 age gating reads this state; changing only legacy `getOver18()` was insufficient.
 - Legacy viewing/search getters return false, and native `FilterValues` construction forces safe search on. The independent `SafeSearch` enum serializes as native `on` while active, including previously saved anonymous-search overrides.
 - The native `setOver18` method refuses true while active. Version 2026.40.0 uses the legacy model setter; version 2026.45.0 resolves the repository setter through its named continuation. No independent account/backend request is sent by the extension.

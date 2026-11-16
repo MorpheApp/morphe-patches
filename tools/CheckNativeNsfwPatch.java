@@ -123,7 +123,7 @@ public final class CheckNativeNsfwPatch {
         }
         require(searchBanner != null && calls(method(searchBanner, "<init>"), EXTENSION, "isEnabled"),
                 "Search banners can still prompt to adjust NSFW settings");
-        boolean guardedDropdown = false, guardedAnonymous = false, hiddenDrawer = false;
+        boolean guardedDropdown = false, guardedAnonymous = false, hiddenDrawer = false, guardedProfile = false;
         for (ClassDef cls : classes.values()) for (Method candidate : cls.getMethods()) {
             if (cls.getType().equals("Lcom/reddit/search/combined/ui/CombinedSearchResultsViewModel;")
                     && calls(candidate, EXTENSION, "isEnabled")) guardedDropdown = true;
@@ -132,10 +132,21 @@ public final class CheckNativeNsfwPatch {
                     && calls(candidate, EXTENSION, "isEnabled")) guardedAnonymous = true;
             if (cls.getType().equals("Lcom/reddit/incognito/screens/leave/LeaveIncognitoModeScreen;")
                     && calls(candidate, EXTENSION, "hideAnonymousControls")) hiddenDrawer = true;
+            if (calls(candidate, EXTENSION, "showProfileWarning")) {
+                checkProfilePublication(candidate);
+                guardedProfile = true;
+            }
         }
         require(guardedDropdown, "The native SafeSearch dropdown is still shown");
         require(guardedAnonymous, "Saved anonymous viewing can bypass the account-model guard");
         require(hiddenDrawer, "Anonymous Profile drawer still exposes viewing switches");
+        require(guardedProfile, "Profile data can reach the UI before the native warning");
+        Method drawer = method(classes.get(EXTENSION), "hideAnonymousControls");
+        require(containsString(drawer, "title_settings") && containsString(drawer, "divider"),
+                "Anonymous drawer retains an empty Settings section");
+        require(calls(method(classes.get(EXTENSION), "openProfileWarning"),
+                "Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;", "<init>"),
+                "Early profile block does not use Reddit's native warning");
         for (String type : classes.keySet()) {
             require(!type.endsWith("/NsfwCommunityGate;") && !type.endsWith("/NsfwJsonFilter;")
                     && !type.endsWith("/RedditNsfwInterceptor;") && !type.endsWith("/BlockedNsfwHosts;"),
@@ -151,6 +162,28 @@ public final class CheckNativeNsfwPatch {
         if (cls == null) throw new IllegalStateException("Missing class for " + name);
         for (Method method : cls.getMethods()) if (method.getName().equals(name)) return method;
         throw new IllegalStateException("Missing method " + name);
+    }
+
+    private static void checkProfilePublication(Method method) {
+        var instructions = new java.util.ArrayList<com.android.tools.smali.dexlib2.iface.instruction.Instruction>();
+        method.getImplementation().getInstructions().forEach(instructions::add);
+        require(calls(method, EXTENSION, "isEnabled"), "Profile guard must respect activation");
+        for (int i = 0; i < instructions.size(); i++) {
+            if (!(instructions.get(i) instanceof ReferenceInstruction reference)
+                    || !(reference.getReference() instanceof MethodReference call)
+                    || !call.getName().equals("showProfileWarning")) continue;
+            require(instructions.get(i + 2).getOpcode() == com.android.tools.smali.dexlib2.Opcode.RETURN_OBJECT,
+                    "Blocked profile must return before publishing its model");
+            // The untouched native publication must remain available to ordinary profiles.
+            var publish = instructions.get(i + 4);
+            require(publish instanceof ReferenceInstruction nativeReference
+                            && nativeReference.getReference() instanceof MethodReference nativeCall
+                            && nativeCall.getParameterTypes().toString().equals("[Ljava/lang/Object;]")
+                            && nativeCall.getReturnType().equals("V"),
+                    "Profile guard is not immediately before native model publication");
+            return;
+        }
+        throw new IllegalStateException("Missing early profile warning");
     }
 
     // Intercept before either session arm can clear history or overwrite the receiver.
@@ -191,7 +224,6 @@ public final class CheckNativeNsfwPatch {
     }
 
     private static boolean containsString(Method method, String value) {
-        if (method.getImplementation() == null) return false;
         if (method.getImplementation() == null) return false;
         for (var instruction : method.getImplementation().getInstructions()) {
             if (instruction instanceof ReferenceInstruction reference

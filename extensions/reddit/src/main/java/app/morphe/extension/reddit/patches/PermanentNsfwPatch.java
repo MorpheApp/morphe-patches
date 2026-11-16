@@ -1,5 +1,6 @@
 package app.morphe.extension.reddit.patches;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.Preference;
@@ -19,7 +20,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 
-/** Runtime entry points injected by the experimental patch. */
+/** Runtime entry points for permanent NSFW disabling. */
 public final class PermanentNsfwPatch {
     private static PermanentNsfwDisabler disabler;
 
@@ -53,11 +54,25 @@ public final class PermanentNsfwPatch {
         return isEnabled() ? ResourceUtils.getStringIdentifier("action_go_back") : original;
     }
 
+    public static void showProfileWarning(Activity activity) {
+        Utils.runOnMainThread(() -> {
+            try {
+                if (!activity.isFinishing() && !activity.isDestroyed()) openProfileWarning(activity);
+            } catch (Exception ex) {
+                Logger.printException(() -> "showProfileWarning failure", ex);
+            }
+        });
+    }
+
+    private static void openProfileWarning(Activity activity) {
+        // Replaced with Reddit's native warning screen and navigation call.
+    }
+
     /** The anonymous profile drawer uses XML switches instead of Compose settings. */
     public static void hideAnonymousControls(View root) {
         if (!isEnabled()) return;
         try {
-            for (String name : new String[]{"toggle_over18", "toggle_blur_nsfw"}) {
+            for (String name : new String[]{"toggle_over18", "toggle_blur_nsfw", "title_settings", "divider"}) {
                 View control = root.findViewById(ResourceUtils.getIdIdentifier(name));
                 if (control != null) control.setVisibility(View.GONE);
             }

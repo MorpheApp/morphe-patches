@@ -1,7 +1,11 @@
 package app.morphe.patches.reddit.nsfw
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.util.findFreeRegister
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -25,6 +29,8 @@ import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -34,9 +40,9 @@ private const val EXTENSION = "Lapp/morphe/extension/reddit/patches/PermanentNsf
 /** Permanently enforce Reddit's native NSFW-off state and remove viewing controls. */
 @Suppress("unused")
 val permanentNsfwPatch = patch(
-    name = "Permanently disable NSFW content (experimental)",
+    name = "Permanently disable NSFW content",
     description = "Adds an irreversible option to disable NSFW content, removes adult viewing controls after activation, " +
-        "and prevents re-enabling native NSFW viewing and search. Works with Reddit 2026.40.0 and 2026.45.0. Experimental.",
+        "and prevents re-enabling native NSFW viewing and search.",
     default = false
 ) {
     compatibleWith(COMPATIBILITY_REDDIT.excluding(
@@ -243,6 +249,23 @@ val permanentNsfwPatch = patch(
                     }
                 }
         }
+        // Let the warning wrap its remaining content instead of reserving a fixed height.
+        Fingerprint(filters = listOf(
+            string("nsfw_bottom_sheet_content"),
+            literal(256f),
+            methodCall(parameters = listOf("L", "F"), returnType = "L", location = MatchAfterImmediately())
+        )).apply {
+            method.apply {
+                val index = instructionMatches.last().index
+                val register = findFreeRegister(index)
+                addInstructionsWithLabels(index, """
+                    invoke-static {}, $EXTENSION->isEnabled()Z
+                    move-result v$register
+                    if-nez v$register, :wrapContent
+                """, ExternalLabel("wrapContent", getInstruction(index + 2)))
+            }
+        }
+
         // Omit the primary opt-in button; retain the native dismissal action.
         val primaryButtons = Fingerprint(
             returnType = "Ljava/lang/Object;",
@@ -302,14 +325,72 @@ val permanentNsfwPatch = patch(
             }
         }
 
-        val navigateHome = Fingerprint(
+        val homeNavigation = Fingerprint(
             returnType = "V",
             filters = listOf(
+                fieldAccess(type = "Lkotlin/jvm/functions/Function0;", opcode = Opcode.IGET_OBJECT),
                 methodCall(smali = "Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;"),
                 newInstance("Landroid/content/Intent;"),
                 string("com.reddit.frontpage.main_toast_message")
             )
-        ).method
+        )
+        val navigateHome = homeNavigation.method
+
+        // Stop flagged profiles before publishing their model to the header/feed.
+        // The later native warning is too late when content is already cached.
+        val profileViewModel = "Lcom/reddit/profile/viewmodel/ProfileDetailsViewModel;"
+        val profileNsfw = Fingerprint(filters = listOf(
+            string(", isProfileNsfw="),
+            fieldAccess(type = "Z", opcode = Opcode.IGET_BOOLEAN, location = MatchAfterWithin(6))
+        )).instructionMatches.last().getFieldAccessed()
+        val contextCallback = homeNavigation.instructionMatches.first().getFieldAccessed()
+        val profileContext = Fingerprint(definingClass = profileViewModel, name = "<init>")
+            .originalClassDef.fields.single { it.type == contextCallback.definingClass }
+        Fingerprint(filters = listOf(
+            newInstance("Lcom/reddit/profile/viewmodel/ProfileDetailsViewModel\$loadProfileDetails\$1\$1\$emit\$1;"),
+            fieldAccess(definingClass = profileViewModel, opcode = Opcode.IGET_OBJECT),
+            methodCall(parameters = listOf("Ljava/lang/Object;"), returnType = "V", location = MatchAfterImmediately()),
+            fieldAccess(definingClass = "Lkotlin/Unit;", opcode = Opcode.SGET_OBJECT)
+        )).apply {
+            method.apply {
+                val index = instructionMatches[2].index
+                val profile = getInstruction<FiveRegisterInstruction>(index).registerD
+                val owner = getInstruction<TwoRegisterInstruction>(instructionMatches[1].index).registerB
+                val unit = instructionMatches.last().getFieldAccessed()
+                val register = findFreeRegister(index)
+                addInstructionsWithLabels(index, """
+                    iget-boolean v$register, v$profile, $profileNsfw
+                    if-eqz v$register, :publishProfile
+                    invoke-static {}, $EXTENSION->isEnabled()Z
+                    move-result v$register
+                    if-eqz v$register, :publishProfile
+                    iget-object v$register, v$owner, $profileContext
+                    iget-object v$register, v$register, $contextCallback
+                    invoke-interface { v$register }, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+                    move-result-object v$register
+                    check-cast v$register, Landroid/app/Activity;
+                    invoke-static { v$register }, $EXTENSION->showProfileWarning(Landroid/app/Activity;)V
+                    sget-object v$register, $unit
+                    return-object v$register
+                    :publishProfile
+                    nop
+                """)
+            }
+        }
+        Fingerprint(definingClass = EXTENSION, name = "openProfileWarning").method.apply {
+            implementation = MutableMethodImplementation(5)
+            addInstructions(0, """
+                new-instance v0, Landroid/os/Bundle;
+                invoke-direct { v0 }, Landroid/os/Bundle;-><init>()V
+                const-string v1, "tag_age_target_screen_page_type"
+                const-string v2, "profile"
+                invoke-virtual { v0, v1, v2 }, Landroid/os/BaseBundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+                new-instance v1, Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;
+                invoke-direct { v1, v0 }, Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;-><init>(Landroid/os/Bundle;)V
+                invoke-static { p0, v1 }, $replaceScreen
+                return-void
+            """)
+        }
         val viewModel = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel;"
         val warningHandler = Fingerprint(
             definingClass = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel\$1;",
