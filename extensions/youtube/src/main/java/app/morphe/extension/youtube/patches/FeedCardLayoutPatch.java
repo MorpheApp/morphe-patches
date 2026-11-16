@@ -212,7 +212,6 @@ public class FeedCardLayoutPatch {
 
     private static final int LOCKUP_CONTENT_TYPE_VIDEO = 1;
     private static final int LOCKUP_CONTENT_TYPE_PLAYLIST = 2;
-    private static final int LOCKUP_CONTENT_TYPE_SHORT = 3;
     /**
      * Browse id of the playlist pages, followed by the playlist id.
      */
@@ -1232,17 +1231,20 @@ public class FeedCardLayoutPatch {
                                     .setAccessibilityText(label + VIDEO_SHELF_ROW_LABEL_MARKER)))
                             .build();
                 } else if (isTemplate(uri, CARD_TEMPLATE) && model.hasLockupModel()) {
-                    // The videos, playlists and Shorts that YouTube sends as cards, to the accounts of a newer A/B test,
-                    // have no padding and fill the width of the list. They get the padding and the labels
-                    // of the converted cards.
+                    // The cards that YouTube sends to the accounts of a newer A/B test, such as the videos, the playlists,
+                    // the Shorts and the Premium promotion, have no padding and fill the width of the list.
+                    // They get the padding and the labels of the converted cards, whatever their content type.
                     LockupModel card = model.getLockupModel();
                     LockupViewModel lockupViewModel = card.getViewModel().getLockupViewModel();
-                    final int contentType = lockupViewModel.getContentType();
                     RendererContext rendererContext = lockupViewModel.getRendererContext();
                     String label = rendererContext.getAccessibilityContext().getLabel();
-                    if (!card.hasPadding() && !label.isEmpty() && !isCardLabel(label)
-                            && (contentType == LOCKUP_CONTENT_TYPE_VIDEO || contentType == LOCKUP_CONTENT_TYPE_PLAYLIST
-                            || contentType == LOCKUP_CONTENT_TYPE_SHORT)) {
+                    if (!card.hasPadding() && !isCardLabel(label)) {
+                        if (label.isEmpty()) {
+                            // Some cards have no label, such as the Premium promotion, so they get the label
+                            // of their title. Accessibility services read the label instead of the texts.
+                            label = AttributedText.parseFrom(lockupViewModel.getMetadata()
+                                    .getLockupMetadataViewModel().getTitle()).getContent();
+                        }
                         if (lockupViewModel.getInlinePlayback().getInlinePlayback().isEmpty()) {
                             label += NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
                         }
