@@ -31,6 +31,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.Offline.OfflineCommand;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormatType;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
 import app.morphe.extension.shared.innertube.Offline.OfflineVideoAction;
@@ -139,6 +140,61 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
         return insideDialog
                 ? flyoutMenuUsesExternalDownloader()
                 : Settings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL;
+    }
+
+    /**
+     * Qualities of the media quality setting, in the order of the setting.
+     * The app offers only 360p and 720p, but it can also save the other qualities.
+     */
+    private static final OfflineFormatType[] FORMAT_TYPES = {
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_AUDIO_ONLY,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD_480,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_1080,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_1440,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_2160,
+    };
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the download settings are shown, for the entries of the media quality setting.
+     *
+     * @param formatTypes Format types of the setting, constants of the format type enum of the app.
+     * @return The format types of every quality the app can save.
+     */
+    public static List<?> getDownloadQualityFormatTypes(List<?> formatTypes) {
+        try {
+            if (!isInAppDownloadMode() || formatTypes.isEmpty()) {
+                return formatTypes;
+            }
+            if (!(formatTypes.get(0) instanceof Enum<?> type)) {
+                Logger.printException(() -> "Unknown format type: " + formatTypes.get(0));
+                return formatTypes;
+            }
+
+            return appFormatTypes(type, FORMAT_TYPES);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getDownloadQualityFormatTypes failure", ex);
+            return formatTypes;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when a download starts, for the video and audio streams it saves.
+     *
+     * @param audioOnly If the download saves only an audio stream.
+     */
+    @Nullable
+    public static FormatStreamInterface selectDownloadVideoStream(@Nullable FormatStreamInterface stream, int quality,
+                                                                  StreamingDataInterface streamingData,
+                                                                  boolean audioOnly) {
+        return audioOnly
+                ? stream
+                : selectDownloadVideoStream(stream, quality, streamingData);
     }
 
     /**

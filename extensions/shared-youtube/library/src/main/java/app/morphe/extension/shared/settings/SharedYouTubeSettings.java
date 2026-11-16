@@ -134,6 +134,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     // YouTube Music only.
     public static final BooleanSetting EXTERNAL_DOWNLOADER_MENU = new BooleanSetting("morphe_external_downloader_menu", FALSE, DOWNLOAD_MODE.availability(DownloadMode.DEFAULT, DownloadMode.IN_APP));
     public static final StringSetting EXTERNAL_DOWNLOADER_PACKAGE_NAME = new StringSetting("morphe_external_downloader_name", "com.deniscerri.ytdl" /* YTDLnis */, new ExternalDownloaderAvailability());
+    public static final BooleanSetting DOWNLOAD_FORCE_4K = new BooleanSetting("morphe_download_force_4k", FALSE, DOWNLOAD_MODE.availability(DownloadMode.IN_APP));
     // YouTube only saves videos in the app with these download modes.
     // YouTube Music also saves songs with smart downloads, with any download mode.
     public static final StringSetting EXPORT_DOWNLOAD_FOLDER = new StringSetting("morphe_export_download_folder", "",

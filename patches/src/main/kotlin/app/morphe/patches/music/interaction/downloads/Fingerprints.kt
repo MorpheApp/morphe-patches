@@ -134,3 +134,49 @@ internal object MenuItemClickFingerprint : Fingerprint(
         fieldAccess(definingClass = "this", opcode = Opcode.IGET_OBJECT)
     )
 )
+
+/**
+ * Builds the entries of the media quality setting from the qualities the app offers.
+ */
+internal object MusicDownloadQualitySettingFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/music/settings/fragment/OfflineSettingsFragmentCompat;",
+    name = "onCreatePreferences",
+    filters = listOf(
+        // Qualities with 720p.
+        fieldAccess(opcode = Opcode.SGET_OBJECT, type = "Ljava/util/List;"),
+        // Qualities without 720p.
+        fieldAccess(opcode = Opcode.SGET_OBJECT, location = MatchAfterWithin(5)),
+        methodCall(smali = "Ljava/util/List;->size()I", location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Picks the video and audio streams when a download starts, and pairs them.
+ */
+internal object MusicDownloadStreamPairFingerprint : Fingerprint(
+    returnType = "L",
+    parameters = listOf(
+        "L", // Streaming data.
+        "L", // Player config.
+        "I", // Height of the quality.
+        "I", // Max height.
+        "L", // Audio quality.
+        "Z", // Audio only.
+        "Ljava/lang/String;" // Audio track.
+    ),
+    filters = listOf(
+        literal(45738203L),
+        // Picks the streams.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("L", "L", "L")
+        ),
+        // Pairs the video stream with the audio stream.
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>",
+            parameters = listOf("L", "L"),
+            location = MatchAfterWithin(30)
+        )
+    )
+)
