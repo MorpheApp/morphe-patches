@@ -18,6 +18,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
@@ -81,30 +82,31 @@ public final class InboxResponseFlattener {
             return body;
         }
 
-        Map<ProtoNode, Integer> itemElementCounts = new IdentityHashMap<>();
+        Set<ProtoNode> itemsWithElements = Collections.newSetFromMap(new IdentityHashMap<>());
+        // List items with more than one element.
+        Set<ProtoNode> sharedItems = Collections.newSetFromMap(new IdentityHashMap<>());
         for (ProtoNode element : elements) {
             ProtoNode item = ancestor(element, itemDepth);
-            if (item != null) {
-                itemElementCounts.merge(item, 1, Integer::sum);
+            if (item != null && !itemsWithElements.add(item)) {
+                sharedItems.add(item);
             }
         }
 
         ProtoNode rowItem = null;
         Map<ProtoNode, ProtoNode> groupElements = new LinkedHashMap<>();
         for (ProtoNode element : elements) {
-            String template = templateName(element.children);
             ProtoNode item = ancestor(element, itemDepth);
             if (item == null) {
                 continue;
             }
-            if (template.startsWith(GROUP_TEMPLATE_PREFIX)) {
-                if (itemElementCounts.get(item) > 1) {
+            if (hasTemplate(element, GROUP_TEMPLATE_PREFIX)) {
+                if (sharedItems.contains(item)) {
                     // The group shares its list item: the list is nested differently than expected.
                     return body;
                 }
                 groupElements.put(item, element);
-            } else if (rowItem == null && template.startsWith(ROW_TEMPLATE_PREFIX)
-                    && itemElementCounts.get(item) == 1) {
+            } else if (rowItem == null && hasTemplate(element, ROW_TEMPLATE_PREFIX)
+                    && !sharedItems.contains(item)) {
                 rowItem = item;
             }
         }
@@ -141,7 +143,7 @@ public final class InboxResponseFlattener {
         innermostListsFirst.sort((a, b) -> Integer.compare(parentCount(b), parentCount(a)));
         for (ProtoNode list : innermostListsFirst) {
             List<Row> items = new ArrayList<>();
-            for (ProtoNode item : list.children) {
+            for (ProtoNode item : Objects.requireNonNull(list.children)) {
                 List<Row> replacement = replacements.get(item);
                 if (replacement != null) {
                     items.addAll(replacement);
@@ -161,12 +163,11 @@ public final class InboxResponseFlattener {
     private static void addNotifications(List<ProtoNode> elements, SeenEntities seenEntities,
                                          InboxVideos videos) {
         for (ProtoNode element : elements) {
-            String template = templateName(element.children);
-            if (template.startsWith(GROUP_TEMPLATE_PREFIX)) {
+            if (hasTemplate(element, GROUP_TEMPLATE_PREFIX)) {
                 addGroup(element, seenEntities, videos);
                 continue;
             }
-            if (!template.startsWith(ROW_TEMPLATE_PREFIX)) {
+            if (!hasTemplate(element, ROW_TEMPLATE_PREFIX)) {
                 continue;
             }
             ProtoNode model = ProtoNode.field(ProtoNode.message(element.children, ROW_MODEL), MODEL);
@@ -313,6 +314,14 @@ public final class InboxResponseFlattener {
     private static String templateName(List<ProtoNode> element) {
         ProtoNode name = ProtoNode.field(ProtoNode.message(element, TEMPLATE_NAME), 1);
         return name != null && name.isText() ? name.getText() : null;
+    }
+
+    /**
+     * @return If the name of the template of the element starts with the prefix.
+     */
+    private static boolean hasTemplate(ProtoNode element, String prefix) {
+        String template = element.children == null ? null : templateName(element.children);
+        return template != null && template.startsWith(prefix);
     }
 
     /**
