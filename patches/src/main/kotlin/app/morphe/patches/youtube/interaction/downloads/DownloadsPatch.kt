@@ -1,7 +1,9 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ *
+ * https://github.com/MorpheApp/morphe-patches/pull/3905
  * https://github.com/MorpheApp/morphe-patches/pull/4890
+ * https://github.com/MorpheApp/morphe-patches/pull/4909
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -13,13 +15,18 @@ package app.morphe.patches.youtube.interaction.downloads
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.cloneMutable
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
+import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
 import app.morphe.patches.shared.misc.downloads.exportDownloadFolderPreference
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
@@ -42,6 +49,7 @@ import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -50,6 +58,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -69,6 +78,7 @@ private val downloadsResourcePatch = patch {
                     ListPreference("morphe_download_mode"),
                     SwitchPreference("morphe_shorts_download_flyout_button", summary = true),
                     SwitchPreference("morphe_feed_download_flyout_button", summary = true),
+                    SwitchPreference("morphe_download_force_4k", summary = true),
                     exportDownloadFolderPreference(),
                     SwitchPreference("morphe_external_downloader_overlay_button", summary = true),
                     TextPreference(
@@ -106,6 +116,15 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/Downl
 
 internal const val EXTENSION_IN_APP_DOWNLOADS_CLASS = "Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch;"
 
+private const val EXTENSION_STREAM_SELECTOR_INTERFACE =
+    "Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch\$DownloadStreamSelector;"
+
+private const val EXTENSION_STREAMING_DATA_INTERFACE =
+    "Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch\$StreamingDataInterface;"
+
+private const val EXTENSION_FORMAT_STREAM_INTERFACE =
+    "Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch\$FormatStreamInterface;"
+
 private const val EXTENSION_SPOOF_CLASS = "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
 private const val EXTENSION_SHORTS_DOWNLOAD_BUTTON =
@@ -135,6 +154,7 @@ val downloadsPatch = patch(
         downloadsResourcePatch,
         authHookPatch,
         videoInformationPatch,
+        videoFormatPatch,
         legacyPlayerControlsPatch,
         fixProtoLibraryPatch,
         elementProtoParserHookPatch,
@@ -488,6 +508,71 @@ val downloadsPatch = patch(
                     iput v$valueRegister, v$commandRegister, $bitField
                 """
             )
+        }
+
+        // Log the download qualities that are dropped or not available, and optionally save 1440p
+        // and 2160p even if the device or server checks of the app rule out their streams.
+        StreamingDataFormatStreamsFingerprint.let {
+            it.classDef.addPatchInterface(
+                EXTENSION_STREAMING_DATA_INTERFACE,
+                "patch_getFormatStreams",
+                it.instructionMatches.first().fieldReference!!
+            )
+        }
+        FormatStreamModelToStringFingerprint.let {
+            it.classDef.addPatchInterface(
+                EXTENSION_FORMAT_STREAM_INTERFACE,
+                "patch_getFormat",
+                it.instructionMatches[5].fieldReference!!
+            )
+        }
+        DownloadStreamSelectorFingerprint.let {
+            it.classDef.apply {
+                val originalSelectorMethod = it.method.cloneMutable(name = "patch_originalSelectStream")
+                methods.add(originalSelectorMethod)
+
+                addPatchInterface(
+                    EXTENSION_STREAM_SELECTOR_INTERFACE,
+                    "patch_selectStream",
+                    originalSelectorMethod
+                )
+                addPatchInterface(
+                    EXTENSION_STREAM_SELECTOR_INTERFACE,
+                    "patch_fetchContentLength",
+                    FetchContentLengthFingerprint.method
+                )
+            }
+
+            it.method.addInstructions(
+                0,
+                """
+                    invoke-static/range { p0 .. p6 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->selectDownloadStream(Ljava/lang/Object;IIILjava/lang/Object;ZLjava/lang/Object;)Ljava/lang/Object;
+                    move-result-object v0
+                    check-cast v0, ${it.method.returnType}
+                    return-object v0
+                """
+            )
+        }
+        DownloadTransferStreamsFingerprint.let {
+            // The method has no free registers. Its parameters stay in the p registers.
+            it.method.cloneParameters().apply {
+                val pairIndex = it.instructionMatches[1].index + numberOfParameterRegistersLogical
+                val pairInstruction = getInstruction(pairIndex)
+                val videoStreamRegister = pairInstruction.registersUsed[1]
+                val videoStreamType = pairInstruction.getReference<MethodReference>()!!.parameterTypes.first()
+
+                // p3 and p4 are the audio track and the video ID, which are not needed.
+                addInstructions(
+                    pairIndex,
+                    """
+                        move-object/from16 p3, v$videoStreamRegister
+                        move/from16 p4, p1
+                        invoke-static/range { p3 .. p5 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->selectDownloadVideoStream(Ljava/lang/Object;ILjava/lang/Object;)Ljava/lang/Object;
+                        move-result-object v$videoStreamRegister
+                        check-cast v$videoStreamRegister, $videoStreamType
+                    """
+                )
+            }
         }
 
         // Commands run by the extension have no interaction logger, which saving a video

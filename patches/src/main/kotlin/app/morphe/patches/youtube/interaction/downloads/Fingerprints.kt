@@ -23,6 +23,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.shared.VideoStreamingDataToStringFingerprint
 import app.morphe.patches.youtube.video.information.ChannelInformationFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -537,4 +538,79 @@ internal object NoOpInteractionLoggerFingerprint : Fingerprint(
     name = "getNoOpInteractionLogger",
     returnType = "Ljava/lang/Object;",
     parameters = listOf()
+)
+
+/**
+ * Fetches the content length of a stream, if the server did not give it.
+ */
+internal object FetchContentLengthFingerprint : Fingerprint(
+    returnType = "L",
+    filters = listOf(
+        string("fetchContentLengthIfNecessary failed")
+    )
+)
+
+/**
+ * Picks the stream of a download quality, either the video stream or the audio stream.
+ * Used by the quality picker and when the download starts.
+ */
+internal object DownloadStreamSelectorFingerprint : Fingerprint(
+    classFingerprint = FetchContentLengthFingerprint,
+    returnType = "L",
+    parameters = listOf(
+        "I", // Height of the quality.
+        "I", // Max height.
+        "I", // Audio quality.
+        "L", // Streaming data.
+        "Z", // Audio stream.
+        "L"  // Player config.
+    )
+)
+
+/**
+ * Constructor of the streaming data, which first sets the list of every stream of the video.
+ */
+internal object StreamingDataFormatStreamsFingerprint : Fingerprint(
+    classFingerprint = VideoStreamingDataToStringFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/util/List;"
+        )
+    )
+)
+
+/**
+ * Picks the video and audio streams when a download starts, and pairs them.
+ */
+internal object DownloadTransferStreamsFingerprint : Fingerprint(
+    returnType = "L",
+    parameters = listOf(
+        "I", // Height of the quality.
+        "I", // Audio quality.
+        "Ljava/lang/String;", // Audio track.
+        "Ljava/lang/String;", // Video ID.
+        "L", // Streaming data.
+        "L", // Player config.
+        "L",
+        "Z"
+    ),
+    filters = listOf(
+        // Picks the streams.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("L", "L", "L")
+        ),
+        // Pairs the video stream with the audio stream.
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>",
+            parameters = listOf("L", "L"),
+            location = MatchAfterWithin(30)
+        ),
+        string("Stream pair could not be found.")
+    )
 )
