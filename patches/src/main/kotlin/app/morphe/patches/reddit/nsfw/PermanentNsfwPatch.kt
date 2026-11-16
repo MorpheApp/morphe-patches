@@ -1,6 +1,8 @@
 package app.morphe.patches.reddit.nsfw
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.util.findFreeRegister
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -25,6 +27,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -279,14 +282,20 @@ val permanentNsfwPatch = patch(
                 string("com.reddit.frontpage.main_toast_message")
             )
         ).method
+        val viewModel = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel;"
         val warningHandler = Fingerprint(
             definingClass = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel\$1;",
             name = "access\$invokeSuspend\$handleEvent", returnType = "Ljava/lang/Object;",
-            filters = listOf(methodCall(smali = navigateHome.toString()))
+            filters = listOf(
+                fieldAccess(definingClass = viewModel, opcode = Opcode.IGET_OBJECT),
+                methodCall(smali = navigateHome.toString(), location = MatchAfterImmediately())
+            )
         )
         warningHandler.method.apply {
-            val index = warningHandler.instructionMatches.single().index
-            val viewModel = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel;"
+            val index = warningHandler.instructionMatches.first().index
+            // The native field read overwrites the view-model parameter register.
+            // Read the callback before that happens, using the matched receiver.
+            val receiver = getInstruction<TwoRegisterInstruction>(index).registerB
             val navigateBackField = Fingerprint(definingClass = viewModel, name = "<init>").method
                 .implementation!!.instructions.asSequence()
                 .mapNotNull { (it as? ReferenceInstruction)?.reference as? FieldReference }
@@ -296,12 +305,12 @@ val permanentNsfwPatch = patch(
                 invoke-static {}, $EXTENSION->isEnabled()Z
                 move-result v$register
                 if-eqz v$register, :nativeDismiss
-                iget-object v$register, p0, $navigateBackField
+                iget-object v$register, v$receiver, $navigateBackField
                 invoke-interface { v$register }, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
                 goto :dismissed
                 :nativeDismiss
                 nop
-            """, ExternalLabel("dismissed", getInstruction(index + 1)))
+            """, ExternalLabel("dismissed", getInstruction(index + 2)))
         }
 
         // The same sheet installs a disabled no-op BackHandler. While permanent

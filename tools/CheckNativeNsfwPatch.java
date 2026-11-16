@@ -103,6 +103,9 @@ public final class CheckNativeNsfwPatch {
                         "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel$1;"),
                         "access$invokeSuspend$handleEvent"), EXTENSION, "isEnabled"),
                 "Declining the native warning does not use the sheet's back callback");
+        checkWarningReceiver(method(classes.get(
+                "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel$1;"),
+                "access$invokeSuspend$handleEvent"));
         require(calls(method(classes.get(
                         "Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;"),
                         modernApi ? "V2" : "R2"), EXTENSION, "isEnabled"),
@@ -139,6 +142,31 @@ public final class CheckNativeNsfwPatch {
         if (cls == null) throw new IllegalStateException("Missing class for " + name);
         for (Method method : cls.getMethods()) if (method.getName().equals(name)) return method;
         throw new IllegalStateException("Missing method " + name);
+    }
+
+    // The native receiver load reuses p0. Injecting after it caused the .8 VerifyError.
+    private static void checkWarningReceiver(Method method) {
+        var instructions = new java.util.ArrayList<com.android.tools.smali.dexlib2.iface.instruction.Instruction>();
+        method.getImplementation().getInstructions().forEach(instructions::add);
+        for (int i = 0; i < instructions.size(); i++) {
+            var instruction = instructions.get(i);
+            if (!(instruction instanceof ReferenceInstruction reference)
+                    || !(reference.getReference() instanceof FieldReference field)
+                    || !field.getDefiningClass().equals("Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel;")
+                    || !field.getType().equals("Lkotlin/jvm/functions/Function0;")) continue;
+            if (i == 0 || instructions.get(i - 1).getOpcode() != com.android.tools.smali.dexlib2.Opcode.IF_EQZ) continue;
+            var branch = (com.android.tools.smali.dexlib2.iface.instruction.OffsetInstruction) instructions.get(i - 1);
+            int offset = 0, target = i - 1;
+            while (offset < branch.getCodeOffset()) offset += instructions.get(target++).getCodeUnits();
+            while (instructions.get(target).getOpcode() == com.android.tools.smali.dexlib2.Opcode.NOP) target++;
+            var nativeRead = instructions.get(target);
+            require(nativeRead.getOpcode() == com.android.tools.smali.dexlib2.Opcode.IGET_OBJECT
+                    && ((com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction) nativeRead).getRegisterB()
+                    == ((com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction) instruction).getRegisterB(),
+                    "Warning callback reads a receiver already overwritten by the native field load");
+            return;
+        }
+        throw new IllegalStateException("Missing guarded warning callback field read");
     }
 
     private static boolean calls(Method method, String type, String name) {
