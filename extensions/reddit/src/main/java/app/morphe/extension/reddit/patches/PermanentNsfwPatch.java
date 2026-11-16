@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
+import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,19 @@ public final class PermanentNsfwPatch {
 
     public static int goBackLabelResource(int original) {
         return isEnabled() ? ResourceUtils.getStringIdentifier("action_go_back") : original;
+    }
+
+    /** The anonymous profile drawer uses XML switches instead of Compose settings. */
+    public static void hideAnonymousControls(View root) {
+        if (!isEnabled()) return;
+        try {
+            for (String name : new String[]{"toggle_over18", "toggle_blur_nsfw"}) {
+                View control = root.findViewById(ResourceUtils.getIdIdentifier(name));
+                if (control != null) control.setVisibility(View.GONE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideAnonymousControls failure", ex);
+        }
     }
 
     /** The native recent-visit writer receives community metadata before saving it. */

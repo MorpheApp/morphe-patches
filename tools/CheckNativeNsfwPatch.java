@@ -123,10 +123,19 @@ public final class CheckNativeNsfwPatch {
         }
         require(searchBanner != null && calls(method(searchBanner, "<init>"), EXTENSION, "isEnabled"),
                 "Search banners can still prompt to adjust NSFW settings");
-        require(calls(method(classes.get(
-                        "Lcom/reddit/search/combined/ui/CombinedSearchResultsViewModel;"), "O"),
-                        EXTENSION, "isEnabled"),
-                "The native SafeSearch dropdown is still shown");
+        boolean guardedDropdown = false, guardedAnonymous = false, hiddenDrawer = false;
+        for (ClassDef cls : classes.values()) for (Method candidate : cls.getMethods()) {
+            if (cls.getType().equals("Lcom/reddit/search/combined/ui/CombinedSearchResultsViewModel;")
+                    && calls(candidate, EXTENSION, "isEnabled")) guardedDropdown = true;
+            if (containsString(candidate, "nsfw_over18_enabled") && candidate.getReturnType().equals("Z")
+                    && calls(candidate, PREFS, "getOver18")
+                    && calls(candidate, EXTENSION, "isEnabled")) guardedAnonymous = true;
+            if (cls.getType().equals("Lcom/reddit/incognito/screens/leave/LeaveIncognitoModeScreen;")
+                    && calls(candidate, EXTENSION, "hideAnonymousControls")) hiddenDrawer = true;
+        }
+        require(guardedDropdown, "The native SafeSearch dropdown is still shown");
+        require(guardedAnonymous, "Saved anonymous viewing can bypass the account-model guard");
+        require(hiddenDrawer, "Anonymous Profile drawer still exposes viewing switches");
         for (String type : classes.keySet()) {
             require(!type.endsWith("/NsfwCommunityGate;") && !type.endsWith("/NsfwJsonFilter;")
                     && !type.endsWith("/RedditNsfwInterceptor;") && !type.endsWith("/BlockedNsfwHosts;"),
@@ -144,7 +153,7 @@ public final class CheckNativeNsfwPatch {
         throw new IllegalStateException("Missing method " + name);
     }
 
-    // The native receiver load reuses p0. Injecting after it caused the .8 VerifyError.
+    // Intercept before either session arm can clear history or overwrite the receiver.
     private static void checkWarningReceiver(Method method) {
         var instructions = new java.util.ArrayList<com.android.tools.smali.dexlib2.iface.instruction.Instruction>();
         method.getImplementation().getInstructions().forEach(instructions::add);
@@ -160,10 +169,12 @@ public final class CheckNativeNsfwPatch {
             while (offset < branch.getCodeOffset()) offset += instructions.get(target++).getCodeUnits();
             while (instructions.get(target).getOpcode() == com.android.tools.smali.dexlib2.Opcode.NOP) target++;
             var nativeRead = instructions.get(target);
-            require(nativeRead.getOpcode() == com.android.tools.smali.dexlib2.Opcode.IGET_OBJECT
-                    && ((com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction) nativeRead).getRegisterB()
-                    == ((com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction) instruction).getRegisterB(),
-                    "Warning callback reads a receiver already overwritten by the native field load");
+            require(nativeRead instanceof ReferenceInstruction nativeReference
+                    && nativeReference.getReference() instanceof MethodReference call
+                    && call.getParameterTypes().toString().equals("[Lcom/reddit/session/mode/common/SessionMode;]")
+                    && call.getReturnType().equals("Z")
+                    && instructions.get(i + 3).getOpcode() == com.android.tools.smali.dexlib2.Opcode.RETURN_OBJECT,
+                    "Warning interception must return before the signed-in Home redirect and receiver overwrite");
             return;
         }
         throw new IllegalStateException("Missing guarded warning callback field read");
@@ -180,6 +191,7 @@ public final class CheckNativeNsfwPatch {
     }
 
     private static boolean containsString(Method method, String value) {
+        if (method.getImplementation() == null) return false;
         if (method.getImplementation() == null) return false;
         for (var instruction : method.getImplementation().getInstructions()) {
             if (instruction instanceof ReferenceInstruction reference

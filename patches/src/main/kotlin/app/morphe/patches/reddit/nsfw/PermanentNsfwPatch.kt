@@ -1,7 +1,6 @@
 package app.morphe.patches.reddit.nsfw
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.util.findFreeRegister
@@ -27,20 +26,10 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION = "Lapp/morphe/extension/reddit/patches/PermanentNsfwPatch;"
-
-// Stable preference keys identify the classes; their obfuscated names are never used.
-private object AdultViewingItemFingerprint : Fingerprint(
-    name = "<init>", filters = listOf(string("key_pref_over18"))
-)
-
-private object AdultBlurItemFingerprint : Fingerprint(
-    name = "<init>", filters = listOf(string("key_pref_blur_nsfw"))
-)
 
 /** Permanently enforce Reddit's native NSFW-off state and remove viewing controls. */
 @Suppress("unused")
@@ -100,36 +89,11 @@ val permanentNsfwPatch = patch(
             move-result p4
         """)
 
-        // The 2026.40.0 and 2026.45.0 settings view models include a row only when this set contains
-        // the active session. Returning an empty set removes the row for every session
-        // before its Compose content or click handler is created.
-        listOf(AdultViewingItemFingerprint, AdultBlurItemFingerprint).forEach { item ->
+        // Both account and anonymous settings use these native row renderers.
+        listOf("label_over18", "label_blur_nsfw_images").forEach { resource ->
             Fingerprint(
-                classFingerprint = item,
-                parameters = listOf(),
-                returnType = "Ljava/util/Set;"
-            ).method.cloneParameters().apply {
-                val register = p0Register
-                addInstructionsWithLabels(
-                    1,
-                    """
-                        invoke-static {}, $EXTENSION->isEnabled()Z
-                        move-result v$register
-                        if-eqz v$register, :original
-                        invoke-static {}, Ljava/util/Collections;->emptySet()Ljava/util/Set;
-                        move-result-object v$register
-                        return-object v$register
-                        :original
-                        nop
-                    """
-                )
-            }
-            // Session eligibility alone does not remove the rows from the anonymous
-            // settings screen. Guard their Compose entry point too.
-            Fingerprint(
-                classFingerprint = item,
-                name = if (is_2026_45_0_or_greater) "d" else "c",
-                returnType = "V"
+                returnType = "V",
+                filters = listOf(resourceLiteral(ResourceType.STRING, resource))
             ).method.apply {
                 val register = findFreeRegister(0)
                 addInstructionsWithLabels(0, """
@@ -141,6 +105,36 @@ val permanentNsfwPatch = patch(
                     nop
                 """)
             }
+        }
+
+        Fingerprint(
+            definingClass = "Lcom/reddit/incognito/screens/leave/LeaveIncognitoModeScreen;",
+            parameters = listOf("Landroid/view/LayoutInflater;", "Landroid/view/ViewGroup;"),
+            returnType = "Landroid/view/View;"
+        ).method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                val view = getInstruction<OneRegisterInstruction>(index).registerA
+                addInstruction(index, "invoke-static/range { v$view .. v$view }, $EXTENSION->hideAnonymousControls(Landroid/view/View;)V")
+            }
+        }
+
+        // Unlike the account model, this getter also reads saved anonymous preferences.
+        Fingerprint(
+            parameters = listOf(), returnType = "Z",
+            filters = listOf(string("nsfw_over18_enabled"), methodCall(
+                definingClass = "Lcom/reddit/domain/model/AccountPreferences;", name = "getOver18"
+            ))
+        ).method.apply {
+            val register = findFreeRegister(0)
+            addInstructionsWithLabels(0, """
+                invoke-static {}, $EXTENSION->isEnabled()Z
+                move-result v$register
+                if-eqz v$register, :original
+                const/4 v$register, 0x0
+                return v$register
+                :original
+                nop
+            """)
         }
 
         // Override viewing/search preferences at their shared model boundary as well:
@@ -233,6 +227,7 @@ val permanentNsfwPatch = patch(
             "nsfw_dialog_title" to "disabledTitleResource",
             "nsfw_description" to "disabledMessageResource",
             "nsfw_dialog_message" to "disabledMessageResource",
+            "nsfw_dialog_over18_submessage" to "disabledMessageResource",
             "nsfw_dialog_under18_submessage" to "disabledMessageResource",
             "nsfw_no_thanks" to "goBackLabelResource"
         ).forEach { (resource, hook) ->
@@ -287,15 +282,16 @@ val permanentNsfwPatch = patch(
             definingClass = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel\$1;",
             name = "access\$invokeSuspend\$handleEvent", returnType = "Ljava/lang/Object;",
             filters = listOf(
-                fieldAccess(definingClass = viewModel, opcode = Opcode.IGET_OBJECT),
-                methodCall(smali = navigateHome.toString(), location = MatchAfterImmediately())
+                methodCall(parameters = listOf("Lcom/reddit/session/mode/common/SessionMode;"), returnType = "Z"),
+                methodCall(smali = navigateHome.toString()),
+                fieldAccess(definingClass = "Lkotlin/Unit;", opcode = Opcode.SGET_OBJECT)
             )
         )
         warningHandler.method.apply {
             val index = warningHandler.instructionMatches.first().index
-            // The native field read overwrites the view-model parameter register.
-            // Read the callback before that happens, using the matched receiver.
-            val receiver = getInstruction<TwoRegisterInstruction>(index).registerB
+            val unit = warningHandler.instructionMatches.last().getFieldAccessed()
+            // Intercept before the session split: the signed-in arm clears the
+            // navigation stack and replaces it with Home before the other arm runs.
             val navigateBackField = Fingerprint(definingClass = viewModel, name = "<init>").method
                 .implementation!!.instructions.asSequence()
                 .mapNotNull { (it as? ReferenceInstruction)?.reference as? FieldReference }
@@ -305,12 +301,13 @@ val permanentNsfwPatch = patch(
                 invoke-static {}, $EXTENSION->isEnabled()Z
                 move-result v$register
                 if-eqz v$register, :nativeDismiss
-                iget-object v$register, v$receiver, $navigateBackField
+                iget-object v$register, p0, $navigateBackField
                 invoke-interface { v$register }, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
-                goto :dismissed
+                sget-object v$register, $unit
+                return-object v$register
                 :nativeDismiss
                 nop
-            """, ExternalLabel("dismissed", getInstruction(index + 2)))
+            """)
         }
 
         // The same sheet installs a disabled no-op BackHandler. While permanent
@@ -375,7 +372,7 @@ val permanentNsfwPatch = patch(
         val dropdownOptions = searchDropdown.fields.single { it.type == "Ljava/util/List;" }
         Fingerprint(
             definingClass = "Lcom/reddit/search/combined/ui/CombinedSearchResultsViewModel;",
-            name = "O", filters = listOf(methodCall(returnType = "Lcom/reddit/domain/SafeSearch;"))
+            filters = listOf(methodCall(returnType = "Lcom/reddit/domain/SafeSearch;"))
         ).apply {
             method.apply {
                 val parser = getInstruction<ReferenceInstruction>(instructionMatches.first().index).reference as MethodReference
