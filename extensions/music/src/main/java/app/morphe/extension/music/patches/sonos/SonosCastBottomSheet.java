@@ -7,418 +7,348 @@
 
 package app.morphe.extension.music.patches.sonos;
 
-import android.app.Dialog;
+import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.ui.Dim.dp;
+
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Handler;
-import android.os.Looper;
+import android.os.Build;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.SheetBottomDialog;
 
 /**
- * YouTube Music dark-themed bottom sheet dialog for Sonos speaker selection.
+ * Bottom sheet that lists the speakers, and controls the connected one.
+ * <p>
+ * YouTube Music is always dark, so the colors are fixed.
  */
-public final class SonosCastBottomSheet {
-    public interface VolumeCallback {
-        void onVolume(int volume);
-    }
+final class SonosCastBottomSheet {
 
+    private static final int SHEET_COLOR = 0xFF212121;
+    private static final int ROW_COLOR = 0xFF2C2C2C;
+    private static final int ICON_BACKGROUND_COLOR = 0xFF3A3A3A;
+    private static final int PRIMARY_TEXT_COLOR = Color.WHITE;
+    private static final int SECONDARY_TEXT_COLOR = 0xFFAAAAAA;
+    private static final int ACCENT_COLOR = 0xFF3EA6FF;
+    private static final int DISCONNECT_COLOR = 0xFFFF4E45;
+    private static final int SLIDE_ANIMATION_MILLIS = 200;
+    private static final int MAX_LIST_HEIGHT_PERCENT = 40;
+    private static final int MAX_VOLUME = 100;
+
+    private static final String ICON_SPEAKER = "yt_outline_speaker_vd_theme_24";
+    private static final String ICON_VOLUME = "yt_outline_volume_on_vd_theme_24";
+    private static final String ICON_CAST = "yt_outline_chromecast_vd_theme_24";
+    private static final String ICON_CHEVRON = "yt_outline_chevron_right_vd_theme_24";
+
+    /**
+     * Android 17, where apps that target it need a permission to reach devices on the local network.
+     */
+    private static final int ANDROID_17 = 37;
+    private static final String ACCESS_LOCAL_NETWORK = "android.permission.ACCESS_LOCAL_NETWORK";
+    private static final int LOCAL_NETWORK_REQUEST_CODE = 0x534F;
+
+    private final Context context;
+    private final View castButton;
+    private final SheetBottomDialog.SlideDialog dialog;
+    private final TextView statusView;
+    private final LinearLayout deviceList;
     @Nullable
-    private static volatile VolumeCallback volumeListener = null;
+    private SeekBar volumeSeekBar;
+    @Nullable
+    private TextView volumeLabel;
+    private boolean awaitingPermission;
 
-    private SonosCastBottomSheet() {}
-
-    public static void updateVolume(int vol) {
-        final VolumeCallback cb = volumeListener;
-        if (cb != null) cb.onVolume(vol);
+    static void show(View castButton) {
+        new SonosCastBottomSheet(castButton).open();
     }
 
-    public static void show(View view) {
-        show(view.getContext(), view);
+    private SonosCastBottomSheet(View castButton) {
+        this.castButton = castButton;
+        context = castButton.getContext();
+
+        LinearLayout sheet = SheetBottomDialog.createMainLayout(context, SHEET_COLOR);
+        sheet.setPadding(dp(20), 0, dp(20), dp(24));
+        dialog = SheetBottomDialog.createSlideDialog(context, sheet, SLIDE_ANIMATION_MILLIS);
+        dialog.setOnDismissListener(d -> {
+            SonosDiscovery.setListener(null);
+            SonosDiscovery.stopSearch();
+            SonosCastManager.setVolumeListener(null);
+        });
+
+        sheet.addView(text(str("morphe_music_sonos_cast_sheet_title"), 19, PRIMARY_TEXT_COLOR, true),
+                withMargins(dp(16), 0));
+        statusView = text("", 13, SECONDARY_TEXT_COLOR, false);
+        sheet.addView(statusView, withMargins(dp(2), dp(12)));
+
+        SonosDevice activeDevice = SonosCastManager.getActiveDevice();
+        if (activeDevice != null) {
+            sheet.addView(activeDeviceCard(activeDevice), withMargins(0, dp(16)));
+        }
+
+        TextView header = text(str("morphe_music_sonos_cast_speakers_header"), 12, SECONDARY_TEXT_COLOR, true);
+        header.setAllCaps(true);
+        sheet.addView(header, withMargins(0, dp(8)));
+
+        deviceList = new LinearLayout(context);
+        deviceList.setOrientation(LinearLayout.VERTICAL);
+        ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context, MAX_LIST_HEIGHT_PERCENT);
+        scrollView.addView(deviceList);
+        sheet.addView(scrollView, matchWidth());
+
+        View googleCastRow = row(ICON_CAST, str("morphe_music_sonos_cast_google_cast"),
+                str("morphe_music_sonos_cast_google_cast_summary"), chevron());
+        googleCastRow.setOnClickListener(v -> {
+            dialog.dismiss();
+            SonosCastManager.disconnect();
+            castButton.post(() -> SonosCastPatch.openCastDialog(castButton));
+        });
+        sheet.addView(googleCastRow, withMargins(dp(8), 0));
     }
 
-    public static void show(Context context, @Nullable View hostView) {
-        try {
-            final Dialog dialog = new Dialog(context, android.R.style.Theme_Translucent_NoTitleBar);
-            if (dialog.getWindow() != null) {
-                dialog.getWindow().setGravity(Gravity.BOTTOM);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                dialog.getWindow().setDimAmount(0.6f);
-                dialog.getWindow().setWindowAnimations(android.R.style.Animation_InputMethod);
-            }
+    private void open() {
+        showDevices(SonosDiscovery.getDevices());
+        SonosDiscovery.setListener(devices -> Utils.runOnMainThread(() -> showDevices(devices)));
+        SonosCastManager.setVolumeListener(this::showVolume);
 
-            final FrameLayout backdrop = new FrameLayout(context);
-            backdrop.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            backdrop.setOnClickListener(v -> dialog.dismiss());
-
-            final LinearLayout sheet = new LinearLayout(context);
-            sheet.setOrientation(LinearLayout.VERTICAL);
-            sheet.setOnClickListener(v -> {});
-
-            final GradientDrawable sheetBg = new GradientDrawable();
-            sheetBg.setColor(Color.parseColor("#1F1F1F"));
-            final float radius = dpToPx(context, 20);
-            sheetBg.setCornerRadii(new float[]{radius, radius, radius, radius, 0f, 0f, 0f, 0f});
-            sheet.setBackground(sheetBg);
-            sheet.setPadding(dpToPx(context, 20), dpToPx(context, 10), dpToPx(context, 20), dpToPx(context, 28));
-
-            final FrameLayout.LayoutParams sheetLp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            sheetLp.gravity = Gravity.BOTTOM;
-            sheet.setLayoutParams(sheetLp);
-            backdrop.addView(sheet);
-
-            // Drag handle
-            final View dragHandle = new View(context);
-            final GradientDrawable handleBg = new GradientDrawable();
-            handleBg.setColor(Color.parseColor("#717171"));
-            handleBg.setCornerRadius(dpToPx(context, 2));
-            dragHandle.setBackground(handleBg);
-            final LinearLayout.LayoutParams handleLp = new LinearLayout.LayoutParams(dpToPx(context, 36), dpToPx(context, 4));
-            handleLp.gravity = Gravity.CENTER_HORIZONTAL;
-            handleLp.topMargin = dpToPx(context, 2);
-            handleLp.bottomMargin = dpToPx(context, 14);
-            dragHandle.setLayoutParams(handleLp);
-            sheet.addView(dragHandle);
-
-            // Header
-            final TextView titleView = new TextView(context);
-            titleView.setText("Connect to a device");
-            titleView.setTextSize(19f);
-            titleView.setTypeface(null, Typeface.BOLD);
-            titleView.setTextColor(Color.WHITE);
-            sheet.addView(titleView);
-
-            final TextView statusView = new TextView(context);
-            final SonosDevice activeDev = SonosCastManager.getActiveDevice();
-            statusView.setText(activeDev != null ? "Casting to " + activeDev.getName() : "Searching for speakers on your Wi-Fi...");
-            statusView.setTextSize(13f);
-            statusView.setTextColor(Color.parseColor("#AAAAAA"));
-            statusView.setPadding(0, dpToPx(context, 2), 0, dpToPx(context, 12));
-            sheet.addView(statusView);
-
-            // Active device card
-            if (activeDev != null) {
-                final LinearLayout card = new LinearLayout(context);
-                card.setOrientation(LinearLayout.VERTICAL);
-                card.setPadding(dpToPx(context, 14), dpToPx(context, 14), dpToPx(context, 14), dpToPx(context, 14));
-                final GradientDrawable cardBg = new GradientDrawable();
-                cardBg.setColor(Color.parseColor("#282828"));
-                cardBg.setCornerRadius(dpToPx(context, 12));
-                cardBg.setStroke(dpToPx(context, 1), Color.parseColor("#383838"));
-                card.setBackground(cardBg);
-
-                final LinearLayout.LayoutParams cardLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                cardLp.bottomMargin = dpToPx(context, 14);
-                card.setLayoutParams(cardLp);
-
-                final LinearLayout topRow = new LinearLayout(context);
-                topRow.setOrientation(LinearLayout.HORIZONTAL);
-                topRow.setGravity(Gravity.CENTER_VERTICAL);
-
-                final TextView iconBadge = new TextView(context);
-                iconBadge.setText("\uD83D\uDD0A");
-                iconBadge.setTextSize(16f);
-                iconBadge.setGravity(Gravity.CENTER);
-                final GradientDrawable iconBg = new GradientDrawable();
-                iconBg.setColor(Color.parseColor("#333333"));
-                iconBg.setCornerRadius(dpToPx(context, 18));
-                iconBadge.setBackground(iconBg);
-                final LinearLayout.LayoutParams iconLp = new LinearLayout.LayoutParams(dpToPx(context, 36), dpToPx(context, 36));
-                iconLp.rightMargin = dpToPx(context, 12);
-                iconBadge.setLayoutParams(iconLp);
-                topRow.addView(iconBadge);
-
-                final LinearLayout infoCol = new LinearLayout(context);
-                infoCol.setOrientation(LinearLayout.VERTICAL);
-                infoCol.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-
-                final TextView devName = new TextView(context);
-                devName.setText(activeDev.getName());
-                devName.setTextSize(15f);
-                devName.setTypeface(null, Typeface.BOLD);
-                devName.setTextColor(Color.WHITE);
-
-                final TextView devSub = new TextView(context);
-                devSub.setText("Connected \u2022 Lossless stream");
-                devSub.setTextSize(12f);
-                devSub.setTextColor(Color.parseColor("#3EA6FF"));
-                infoCol.addView(devName);
-                infoCol.addView(devSub);
-                topRow.addView(infoCol);
-
-                final TextView disconnectBtn = new TextView(context);
-                disconnectBtn.setText("Disconnect");
-                disconnectBtn.setTextSize(12f);
-                disconnectBtn.setTypeface(null, Typeface.BOLD);
-                disconnectBtn.setTextColor(Color.parseColor("#FF4E45"));
-                disconnectBtn.setPadding(dpToPx(context, 12), dpToPx(context, 6), dpToPx(context, 12), dpToPx(context, 6));
-                final GradientDrawable discBg = new GradientDrawable();
-                discBg.setColor(Color.parseColor("#383838"));
-                discBg.setCornerRadius(dpToPx(context, 14));
-                disconnectBtn.setBackground(discBg);
-                disconnectBtn.setOnClickListener(v -> {
-                    SonosCastManager.disconnect();
-                    dialog.dismiss();
-                });
-                topRow.addView(disconnectBtn);
-                card.addView(topRow);
-
-                final LinearLayout volRow = new LinearLayout(context);
-                volRow.setOrientation(LinearLayout.HORIZONTAL);
-                volRow.setGravity(Gravity.CENTER_VERTICAL);
-                volRow.setPadding(0, dpToPx(context, 10), 0, 0);
-
-                final TextView volLabel = new TextView(context);
-                volLabel.setText("\uD83D\uDD08");
-                volLabel.setTextSize(14f);
-                volLabel.setPadding(0, 0, dpToPx(context, 6), 0);
-                volRow.addView(volLabel);
-
-                final TextView volPercent = new TextView(context);
-                volPercent.setText(activeDev.getVolume() + "%");
-                volPercent.setTextSize(12f);
-                volPercent.setTypeface(null, Typeface.BOLD);
-                volPercent.setTextColor(Color.WHITE);
-                volPercent.setPadding(dpToPx(context, 8), 0, 0, 0);
-
-                final SeekBar seekBar = new SeekBar(context);
-                seekBar.setMax(100);
-                seekBar.setProgress(activeDev.getVolume());
-                seekBar.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-                seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar sb, int progress, boolean fromUser) {
-                        if (fromUser) {
-                            SonosCastManager.setVolume(progress);
-                            volPercent.setText(progress + "%");
+        awaitingPermission = requestLocalNetworkPermission();
+        if (awaitingPermission) {
+            // Search again once the permission dialog closes.
+            dialog.getWindow().getDecorView().getViewTreeObserver().addOnWindowFocusChangeListener(
+                    new ViewTreeObserver.OnWindowFocusChangeListener() {
+                        @Override
+                        public void onWindowFocusChanged(boolean hasFocus) {
+                            if (hasFocus && awaitingPermission) {
+                                awaitingPermission = false;
+                                SonosDiscovery.startSearch();
+                            }
                         }
-                    }
-                    @Override
-                    public void onStartTrackingTouch(SeekBar sb) {}
-                    @Override
-                    public void onStopTrackingTouch(SeekBar sb) {}
-                });
-                volRow.addView(seekBar);
-                volRow.addView(volPercent);
-                card.addView(volRow);
-
-                final Handler mainHandler = new Handler(Looper.getMainLooper());
-                volumeListener = vol -> mainHandler.post(() -> {
-                    seekBar.setProgress(vol);
-                    volPercent.setText(vol + "%");
-                });
-
-                sheet.addView(card);
-            }
-
-            // Available Speakers section
-            final TextView sectionHeader = new TextView(context);
-            sectionHeader.setText("SPEAKERS ON WI-FI");
-            sectionHeader.setTextSize(11f);
-            sectionHeader.setTypeface(null, Typeface.BOLD);
-            sectionHeader.setTextColor(Color.parseColor("#8E8E93"));
-            sectionHeader.setPadding(dpToPx(context, 2), 0, 0, dpToPx(context, 6));
-            sheet.addView(sectionHeader);
-
-            final ListView deviceListView = new ListView(context);
-            deviceListView.setDivider(null);
-            deviceListView.setDividerHeight(dpToPx(context, 8));
-            deviceListView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpToPx(context, 120)));
-            sheet.addView(deviceListView);
-
-            final List<SonosDevice> devices = new ArrayList<>(SonosDiscovery.getDevices());
-            final ArrayAdapter<SonosDevice> adapter = new ArrayAdapter<SonosDevice>(context, 0, devices) {
-                @NonNull
-                @Override
-                public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                    final SonosDevice item = getItem(position);
-                    if (item == null) return new View(context);
-
-                    final SonosDevice currentActive = SonosCastManager.getActiveDevice();
-                    final boolean isCurrent = (currentActive != null && currentActive.getUdn().equals(item.getUdn()));
-
-                    final LinearLayout row = new LinearLayout(context);
-                    row.setOrientation(LinearLayout.HORIZONTAL);
-                    row.setGravity(Gravity.CENTER_VERTICAL);
-                    row.setPadding(dpToPx(context, 14), dpToPx(context, 10), dpToPx(context, 14), dpToPx(context, 10));
-
-                    final GradientDrawable rowBg = new GradientDrawable();
-                    rowBg.setColor(Color.parseColor(isCurrent ? "#2C2C2E" : "#242426"));
-                    rowBg.setCornerRadius(dpToPx(context, 10));
-                    if (isCurrent) {
-                        rowBg.setStroke(dpToPx(context, 1), Color.parseColor("#3EA6FF"));
-                    }
-                    row.setBackground(rowBg);
-
-                    final TextView icon = new TextView(context);
-                    icon.setText("\uD83D\uDD0A");
-                    icon.setTextSize(15f);
-                    icon.setGravity(Gravity.CENTER);
-                    final GradientDrawable iconBg = new GradientDrawable();
-                    iconBg.setColor(Color.parseColor("#2F2F32"));
-                    iconBg.setCornerRadius(dpToPx(context, 16));
-                    icon.setBackground(iconBg);
-                    final LinearLayout.LayoutParams iconLp = new LinearLayout.LayoutParams(dpToPx(context, 32), dpToPx(context, 32));
-                    iconLp.rightMargin = dpToPx(context, 12);
-                    icon.setLayoutParams(iconLp);
-                    row.addView(icon);
-
-                    final LinearLayout textCol = new LinearLayout(context);
-                    textCol.setOrientation(LinearLayout.VERTICAL);
-                    textCol.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-
-                    final TextView nameView = new TextView(context);
-                    nameView.setText(item.getName());
-                    nameView.setTextSize(14f);
-                    nameView.setTypeface(null, Typeface.BOLD);
-                    nameView.setTextColor(Color.WHITE);
-
-                    final TextView ipView = new TextView(context);
-                    ipView.setText("Sonos speaker \u2022 " + item.getIp());
-                    ipView.setTextSize(12f);
-                    ipView.setTextColor(Color.parseColor("#8E8E93"));
-
-                    textCol.addView(nameView);
-                    textCol.addView(ipView);
-                    row.addView(textCol);
-
-                    if (isCurrent) {
-                        final TextView badge = new TextView(context);
-                        badge.setText("ACTIVE");
-                        badge.setTextSize(11f);
-                        badge.setTypeface(null, Typeface.BOLD);
-                        badge.setTextColor(Color.parseColor("#3EA6FF"));
-                        row.addView(badge);
-                    } else {
-                        final TextView arrow = new TextView(context);
-                        arrow.setText("\u2794");
-                        arrow.setTextSize(14f);
-                        arrow.setTextColor(Color.parseColor("#555555"));
-                        row.addView(arrow);
-                    }
-
-                    row.setOnClickListener(v -> {
-                        SonosCastManager.connectToDevice(item);
-                        dialog.dismiss();
                     });
+        }
 
-                    return row;
-                }
-            };
-            deviceListView.setAdapter(adapter);
+        SonosDiscovery.startSearch();
+        dialog.show();
+    }
 
-            // Native Google Cast Row
-            final LinearLayout googleCastRow = new LinearLayout(context);
-            googleCastRow.setOrientation(LinearLayout.HORIZONTAL);
-            googleCastRow.setGravity(Gravity.CENTER_VERTICAL);
-            googleCastRow.setPadding(dpToPx(context, 14), dpToPx(context, 10), dpToPx(context, 14), dpToPx(context, 10));
-            final GradientDrawable gcastBg = new GradientDrawable();
-            gcastBg.setColor(Color.parseColor("#242426"));
-            gcastBg.setCornerRadius(dpToPx(context, 10));
-            googleCastRow.setBackground(gcastBg);
-            final LinearLayout.LayoutParams gcastLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            gcastLp.topMargin = dpToPx(context, 10);
-            googleCastRow.setLayoutParams(gcastLp);
+    /**
+     * @return If the permission was requested.
+     */
+    private boolean requestLocalNetworkPermission() {
+        if (Build.VERSION.SDK_INT < ANDROID_17
+                || context.getApplicationInfo().targetSdkVersion < ANDROID_17
+                || context.checkSelfPermission(ACCESS_LOCAL_NETWORK) == PackageManager.PERMISSION_GRANTED) {
+            return false;
+        }
 
-            final TextView gcastIcon = new TextView(context);
-            gcastIcon.setText("\u23DA");
-            gcastIcon.setTextSize(16f);
-            gcastIcon.setGravity(Gravity.CENTER);
-            gcastIcon.setTextColor(Color.WHITE);
-            final GradientDrawable giconBg = new GradientDrawable();
-            giconBg.setColor(Color.parseColor("#2F2F32"));
-            giconBg.setCornerRadius(dpToPx(context, 16));
-            gcastIcon.setBackground(giconBg);
-            final LinearLayout.LayoutParams giconLp = new LinearLayout.LayoutParams(dpToPx(context, 32), dpToPx(context, 32));
-            giconLp.rightMargin = dpToPx(context, 12);
-            gcastIcon.setLayoutParams(giconLp);
-            googleCastRow.addView(gcastIcon);
+        Activity activity = Utils.getActivity();
+        if (activity == null) {
+            Logger.printException(() -> "No activity to request the local network permission");
+            return false;
+        }
+        activity.requestPermissions(new String[]{ACCESS_LOCAL_NETWORK}, LOCAL_NETWORK_REQUEST_CODE);
+        return true;
+    }
 
-            final LinearLayout gcastTextCol = new LinearLayout(context);
-            gcastTextCol.setOrientation(LinearLayout.VERTICAL);
-            gcastTextCol.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+    private void showDevices(List<SonosDevice> devices) {
+        SonosDevice activeDevice = SonosCastManager.getActiveDevice();
+        if (activeDevice != null) {
+            statusView.setText(str("morphe_music_sonos_cast_casting_to", activeDevice.name));
+        } else {
+            statusView.setText(str(devices.isEmpty()
+                    ? "morphe_music_sonos_cast_searching"
+                    : "morphe_music_sonos_cast_choose_speaker"));
+        }
 
-            final TextView gcastTitle = new TextView(context);
-            gcastTitle.setText("Google Cast");
-            gcastTitle.setTextSize(14f);
-            gcastTitle.setTypeface(null, Typeface.BOLD);
-            gcastTitle.setTextColor(Color.WHITE);
-
-            final TextView gcastSub = new TextView(context);
-            gcastSub.setText("Chromecast, Nest Hub & Google TV");
-            gcastSub.setTextSize(12f);
-            gcastSub.setTextColor(Color.parseColor("#8E8E93"));
-
-            gcastTextCol.addView(gcastTitle);
-            gcastTextCol.addView(gcastSub);
-            googleCastRow.addView(gcastTextCol);
-
-            final TextView gcastArrow = new TextView(context);
-            gcastArrow.setText("\u2794");
-            gcastArrow.setTextSize(14f);
-            gcastArrow.setTextColor(Color.parseColor("#3EA6FF"));
-            googleCastRow.addView(gcastArrow);
-
-            googleCastRow.setOnClickListener(v -> {
-                dialog.dismiss();
-                if (hostView != null) {
-                    SonosCastManager.launchGoogleCast(hostView);
-                } else {
-                    SonosCastManager.launchGoogleCast(context);
-                }
-            });
-            sheet.addView(googleCastRow);
-
-            dialog.setContentView(backdrop);
-            dialog.show();
-
-            final SonosDiscovery.DiscoveryListener discoveryListener = list -> sheet.post(() -> {
-                devices.clear();
-                devices.addAll(list);
-                adapter.notifyDataSetChanged();
-                final int visibleItems = Math.max(1, Math.min(4, devices.size()));
-                deviceListView.getLayoutParams().height = visibleItems * dpToPx(context, 60);
-                deviceListView.requestLayout();
-                if (!devices.isEmpty() && !SonosCastManager.isConnected()) {
-                    statusView.setText("Found " + devices.size() + " speaker(s) on Wi-Fi");
-                }
-            });
-
-            SonosDiscovery.startDiscovery();
-            SonosDiscovery.addListener(discoveryListener);
-
-            dialog.setOnDismissListener(d -> {
-                volumeListener = null;
-                SonosDiscovery.removeListener(discoveryListener);
-                SonosDiscovery.stopDiscovery();
-            });
-        } catch (Exception ex) {
-            Logger.printException(() -> "Error showing SonosCastBottomSheet", ex);
+        deviceList.removeAllViews();
+        for (SonosDevice device : devices) {
+            final boolean isActive = activeDevice != null && activeDevice.udn.equals(device.udn);
+            String subtitle = device.modelName.isEmpty()
+                    ? device.ip
+                    : device.modelName + " · " + device.ip;
+            View trailing = isActive
+                    ? text(str("morphe_music_sonos_cast_active"), 12, ACCENT_COLOR, true)
+                    : chevron();
+            View row = row(ICON_SPEAKER, device.name, subtitle, trailing);
+            if (isActive) {
+                ((GradientDrawable) row.getBackground()).setStroke(dp(1), ACCENT_COLOR);
+            } else {
+                row.setOnClickListener(v -> {
+                    dialog.dismiss();
+                    SonosCastManager.connect(device);
+                });
+            }
+            deviceList.addView(row, withMargins(0, dp(8)));
         }
     }
 
-    private static int dpToPx(Context context, int dp) {
-        return (int) (dp * context.getResources().getDisplayMetrics().density);
+    private View activeDeviceCard(SonosDevice device) {
+        LinearLayout card = new LinearLayout(context);
+        card.setOrientation(LinearLayout.VERTICAL);
+        card.setBackground(roundedBackground(ROW_COLOR, 12));
+        card.setPadding(dp(14), dp(14), dp(14), dp(10));
+
+        TextView disconnect = text(str("morphe_music_sonos_cast_disconnect"), 13, DISCONNECT_COLOR, true);
+        disconnect.setBackground(roundedBackground(ICON_BACKGROUND_COLOR, 14));
+        disconnect.setPadding(dp(12), dp(6), dp(12), dp(6));
+        disconnect.setOnClickListener(v -> {
+            dialog.dismiss();
+            SonosCastManager.disconnect();
+        });
+
+        card.addView(rowContent(ICON_SPEAKER, device.name, str("morphe_music_sonos_cast_connected"),
+                ACCENT_COLOR, disconnect), matchWidth());
+
+        LinearLayout volumeRow = new LinearLayout(context);
+        volumeRow.setGravity(Gravity.CENTER_VERTICAL);
+        volumeRow.addView(icon(ICON_VOLUME, SECONDARY_TEXT_COLOR), new LinearLayout.LayoutParams(dp(20), dp(20)));
+
+        final int volume = Math.max(0, SonosCastManager.getSpeakerVolume());
+        SeekBar seekBar = new SeekBar(context);
+        seekBar.setMax(MAX_VOLUME);
+        seekBar.setProgress(volume);
+        seekBar.setProgressTintList(ColorStateList.valueOf(PRIMARY_TEXT_COLOR));
+        seekBar.setThumbTintList(ColorStateList.valueOf(PRIMARY_TEXT_COLOR));
+        volumeRow.addView(seekBar, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        TextView label = text(volumeText(volume), 12, PRIMARY_TEXT_COLOR, true);
+        label.setMinWidth(dp(36));
+        label.setGravity(Gravity.END);
+        volumeRow.addView(label);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    label.setText(volumeText(progress));
+                    SonosCastManager.setSpeakerVolume(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar bar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar bar) {
+            }
+        });
+        volumeSeekBar = seekBar;
+        volumeLabel = label;
+        card.addView(volumeRow, withMargins(dp(10), 0));
+        return card;
+    }
+
+    private void showVolume(int volume) {
+        if (volumeSeekBar != null && volumeLabel != null) {
+            volumeSeekBar.setProgress(volume);
+            volumeLabel.setText(volumeText(volume));
+        }
+    }
+
+    private static String volumeText(int volume) {
+        return volume + "%";
+    }
+
+    private View row(String iconName, String title, String subtitle, View trailing) {
+        LinearLayout row = rowContent(iconName, title, subtitle, SECONDARY_TEXT_COLOR, trailing);
+        row.setBackground(roundedBackground(ROW_COLOR, 10));
+        row.setPadding(dp(14), dp(10), dp(14), dp(10));
+        return row;
+    }
+
+    private LinearLayout rowContent(String iconName, String title, String subtitle, int subtitleColor, View trailing) {
+        LinearLayout row = new LinearLayout(context);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+
+        FrameLayout iconCircle = new FrameLayout(context);
+        GradientDrawable circle = new GradientDrawable();
+        circle.setShape(GradientDrawable.OVAL);
+        circle.setColor(ICON_BACKGROUND_COLOR);
+        iconCircle.setBackground(circle);
+        iconCircle.addView(icon(iconName, PRIMARY_TEXT_COLOR), new FrameLayout.LayoutParams(dp(20), dp(20), Gravity.CENTER));
+        row.addView(iconCircle, new LinearLayout.LayoutParams(dp(36), dp(36)));
+
+        LinearLayout texts = new LinearLayout(context);
+        texts.setOrientation(LinearLayout.VERTICAL);
+        TextView titleView = text(title, 15, PRIMARY_TEXT_COLOR, true);
+        titleView.setSingleLine(true);
+        titleView.setEllipsize(TextUtils.TruncateAt.END);
+        texts.addView(titleView);
+        TextView subtitleView = text(subtitle, 12, subtitleColor, false);
+        subtitleView.setSingleLine(true);
+        subtitleView.setEllipsize(TextUtils.TruncateAt.END);
+        texts.addView(subtitleView);
+        LinearLayout.LayoutParams textsParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        textsParams.setMarginStart(dp(12));
+        textsParams.setMarginEnd(dp(8));
+        row.addView(texts, textsParams);
+
+        row.addView(trailing);
+        return row;
+    }
+
+    private View chevron() {
+        View chevron = icon(ICON_CHEVRON, SECONDARY_TEXT_COLOR);
+        chevron.setLayoutParams(new LinearLayout.LayoutParams(dp(20), dp(20)));
+        return chevron;
+    }
+
+    private ImageView icon(String drawableName, int color) {
+        Drawable drawable = ResourceUtils.getDrawableOrThrow(drawableName).mutate();
+        drawable.setTint(color);
+        ImageView view = new ImageView(context);
+        view.setImageDrawable(drawable);
+        return view;
+    }
+
+    private TextView text(String text, float sizeSp, int color, boolean bold) {
+        TextView view = new TextView(context);
+        view.setText(text);
+        view.setTextSize(sizeSp);
+        view.setTextColor(color);
+        if (bold) {
+            view.setTypeface(Typeface.DEFAULT_BOLD);
+        }
+        return view;
+    }
+
+    private static GradientDrawable roundedBackground(int color, int radiusDp) {
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(color);
+        background.setCornerRadius(dp(radiusDp));
+        return background;
+    }
+
+    private static LinearLayout.LayoutParams matchWidth() {
+        return new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
+
+    private static LinearLayout.LayoutParams withMargins(int top, int bottom) {
+        LinearLayout.LayoutParams params = matchWidth();
+        params.topMargin = top;
+        params.bottomMargin = bottom;
+        return params;
     }
 }

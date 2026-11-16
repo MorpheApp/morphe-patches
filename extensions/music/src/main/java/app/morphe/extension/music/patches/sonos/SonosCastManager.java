@@ -7,485 +7,444 @@
 
 package app.morphe.extension.music.patches.sonos;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.media.MediaMetadata;
 import android.net.wifi.WifiManager;
-import android.os.Handler;
-import android.os.Looper;
+import android.os.Build;
 import android.os.PowerManager;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import java.util.Map;
+import java.util.WeakHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.function.IntConsumer;
 
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Central coordinator for Sonos casting within Morphe YouTube Music.
+ * The connection to a speaker.
  */
-public final class SonosCastManager {
-    @Nullable
-    private static volatile SonosDevice activeDevice = null;
-    @Nullable
-    private static volatile Runnable originalCastAction = null;
-    private static volatile boolean bypassToGoogleCast = false;
+final class SonosCastManager {
 
-    private static volatile String currentTitle = "YouTube Music";
-    private static volatile String currentArtist = "Morphe Cast";
-    @Nullable
-    private static volatile String currentAlbumArtUri = null;
+    private static final long POLL_INTERVAL_MILLIS = 2000;
+    /**
+     * Polls in a row that find the speaker stopped before the stream is started again.
+     */
+    private static final int STOPPED_POLLS_BEFORE_RESTART = 2;
+    private static final int MAX_VOLUME = 100;
+    private static final int UNKNOWN_VOLUME = -1;
+    private static final int COVER_JPEG_QUALITY = 90;
+    private static final String LOCK_TAG = "Morphe:SonosCast";
 
-    @Nullable
-    private static volatile WeakReference<AudioTrack> lastTrackRef = null;
-    private static volatile int currentSampleRate = 48000;
+    // Hidden AudioManager constants.
+    private static final String VOLUME_CHANGED_ACTION = "android.media.VOLUME_CHANGED_ACTION";
+    private static final String EXTRA_VOLUME_STREAM_TYPE = "android.media.EXTRA_VOLUME_STREAM_TYPE";
+    private static final String EXTRA_VOLUME_STREAM_VALUE = "android.media.EXTRA_VOLUME_STREAM_VALUE";
+    private static final String EXTRA_PREV_VOLUME_STREAM_VALUE = "android.media.EXTRA_PREV_VOLUME_STREAM_VALUE";
 
-    private static volatile boolean isSyncingFromSpeaker = false;
-    private static volatile int lastSpeakerVolume = -1;
-
-    @Nullable
-    private static volatile WifiManager.WifiLock wifiLock = null;
-    @Nullable
-    private static volatile WifiManager.WifiLock lowLatencyWifiLock = null;
-    @Nullable
-    private static volatile PowerManager.WakeLock wakeLock = null;
+    private static final ScheduledExecutorService pollExecutor = Executors.newSingleThreadScheduledExecutor();
 
     @Nullable
-    private static volatile BroadcastReceiver volumeReceiver = null;
+    private static volatile SonosDevice activeDevice;
     @Nullable
-    private static ScheduledExecutorService watchdogExecutor = null;
-    private static int consecutiveStoppedCount = 0;
+    private static volatile String serverUrl;
+    @Nullable
+    private static ScheduledFuture<?> pollTask;
+    private static int stoppedPolls;
 
-    private static final Handler mainHandler = new Handler(Looper.getMainLooper());
-    private static final AudioResampler resampler = new AudioResampler();
-    private static long prngState = 0x123456789ABCDEFL;
+    /**
+     * Last speaker volume in percent that was set or read.
+     */
+    private static volatile int speakerVolume = UNKNOWN_VOLUME;
+    /**
+     * The phone volume set from the speaker volume, so that the volume change it causes is not sent back.
+     */
+    private static volatile int expectedPhoneVolume = UNKNOWN_VOLUME;
+    @Nullable
+    private static volatile IntConsumer volumeListener;
 
-    private SonosCastManager() {}
+    @Nullable
+    private static volatile MediaMetadata metadata;
+    @Nullable
+    private static volatile TrackInfo sentTrack;
+    private static int coverVersion;
 
-    private static float nextDither() {
-        long x = prngState;
-        x ^= (x << 13);
-        x ^= (x >>> 7);
-        x ^= (x << 17);
-        prngState = x;
-        return ((float) (x & 0xFFFFFFL) / 16777216.0f) - 0.5f;
+    private static final PcmConverter converter = new PcmConverter();
+    /**
+     * The track that is streamed. Guarded by {@link #retiredTracks}.
+     */
+    @Nullable
+    private static WeakReference<AudioTrack> streamedTrack;
+    /**
+     * Tracks that were streamed before the current one. A crossfade keeps writing to the outgoing
+     * track for a while, and only the incoming one is streamed.
+     */
+    private static final Map<AudioTrack, Boolean> retiredTracks = new WeakHashMap<>();
+    /**
+     * Volume the player set for each track, to restore it after disconnecting.
+     */
+    private static final Map<AudioTrack, Float> playerVolumes = new WeakHashMap<>();
+
+    @Nullable
+    private static BroadcastReceiver volumeReceiver;
+    @Nullable
+    private static WifiManager.WifiLock highPerfWifiLock;
+    @Nullable
+    private static WifiManager.WifiLock lowLatencyWifiLock;
+    @Nullable
+    private static PowerManager.WakeLock wakeLock;
+
+    private SonosCastManager() {
     }
 
-    public static boolean isConnected() {
+    static boolean isConnected() {
         return activeDevice != null;
     }
 
     @Nullable
-    public static SonosDevice getActiveDevice() {
+    static SonosDevice getActiveDevice() {
         return activeDevice;
     }
 
     /**
-     * Entry point called from bytecode hook in Cast button performClick.
+     * @return The speaker volume in percent, or -1 if not known yet.
      */
-    public static boolean handleCastButtonClick(View view) {
-        if (!Settings.SONOS_CAST.get()) return false;
-        if (bypassToGoogleCast) {
-            bypassToGoogleCast = false;
-            return false;
-        }
-        SonosCastBottomSheet.show(view);
-        return true;
+    static int getSpeakerVolume() {
+        return speakerVolume;
     }
 
     /**
-     * Fallback dialog entry point.
+     * @param listener Called on the main thread when the speaker volume changes, or null to remove it.
      */
-    public static void showCastDialog(Context context, @Nullable Runnable originalAction) {
-        if (!Settings.SONOS_CAST.get()) {
-            if (originalAction != null) originalAction.run();
+    static void setVolumeListener(@Nullable IntConsumer listener) {
+        volumeListener = listener;
+    }
+
+    static void connect(SonosDevice device) {
+        disconnect();
+
+        final String url;
+        try {
+            url = LocalStreamServer.start(device.ip);
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "Could not start the stream server", ex);
+            Utils.showToastLong(str("morphe_music_sonos_cast_connection_failed", device.name));
             return;
         }
-        originalCastAction = originalAction;
-        SonosCastBottomSheet.show(context, null);
-    }
 
-    public static void launchGoogleCast(View view) {
-        disconnect();
-        bypassToGoogleCast = true;
-        view.post(view::performClick);
-    }
-
-    public static void launchGoogleCast(Context context) {
-        disconnect();
-        final Runnable action = originalCastAction;
-        if (action != null) {
-            action.run();
-            return;
-        }
-        try {
-            final Class<?> activityClass = Class.forName("androidx.fragment.app.FragmentActivity");
-            if (activityClass.isInstance(context)) {
-                final Class<?> factoryClass = Class.forName("androidx.mediarouter.app.MediaRouteDialogFactory");
-                final Object factory = factoryClass.getMethod("getDefault").invoke(null);
-                final Object dialogFragment = factoryClass.getMethod("onCreateChooserDialogFragment").invoke(factory);
-                final Object fm = activityClass.getMethod("getSupportFragmentManager").invoke(context);
-                dialogFragment.getClass().getMethod(
-                        "show",
-                        Class.forName("androidx.fragment.app.FragmentManager"),
-                        String.class
-                ).invoke(dialogFragment, fm, "androidx.mediarouter:MediaRouteChooserDialogFragment");
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Native Cast fallback invocation error", ex);
-        }
-    }
-
-    /**
-     * Intercepts AudioTrack.write in DefaultAudioSink.
-     */
-    public static int audioTrackWrite(AudioTrack track, ByteBuffer buffer, int sizeInBytes, int writeMode) {
-        final SonosDevice dev = activeDevice;
-        if (dev != null && Settings.SONOS_CAST.get()) {
-            lastTrackRef = new WeakReference<>(track);
-
-            try {
-                track.setVolume(0.0f);
-            } catch (Exception ignored) {}
-
-            final int sr = track.getSampleRate();
-            if (sr >= 32000 && sr <= 96000 && sr != currentSampleRate) {
-                currentSampleRate = sr;
-            }
-
-            final int startPos = buffer.position();
-            final int written = track.write(buffer, sizeInBytes, writeMode);
-
-            if (written > 0) {
-                try {
-                    final ByteBuffer dup = buffer.duplicate();
-                    dup.position(startPos);
-                    final byte[] pcm16;
-
-                    if (track.getAudioFormat() == AudioFormat.ENCODING_PCM_FLOAT) {
-                        final byte[] floatBytes = new byte[written];
-                        dup.get(floatBytes);
-                        pcm16 = convertFloatTo16BitPcm(floatBytes, written);
-                    } else if (track.getAudioFormat() == 21 /* ENCODING_PCM_24BIT_PACKED */) {
-                        final byte[] pcm24 = new byte[written];
-                        dup.get(pcm24);
-                        pcm16 = convert24BitTo16BitPcm(pcm24, written);
-                    } else {
-                        pcm16 = new byte[written];
-                        dup.get(pcm16);
-                    }
-
-                    final byte[] outPcm = (sr >= 32000 && sr <= 96000 && sr != 48000)
-                            ? resampler.resampleStereo16(pcm16, pcm16.length, sr, 48000)
-                            : pcm16;
-
-                    LocalStreamServer.offer(outPcm, outPcm.length);
-                } catch (Exception ex) {
-                    Logger.printException(() -> "Error capturing AudioTrack buffer", ex);
-                }
-            }
-            return written;
-        } else {
-            return track.write(buffer, sizeInBytes, writeMode);
-        }
-    }
-
-    private static byte[] convertFloatTo16BitPcm(byte[] floatBytes, int length) {
-        final int numFloats = length / 4;
-        final byte[] outBytes = new byte[numFloats * 2];
-        final ByteBuffer inBuf = ByteBuffer.wrap(floatBytes, 0, length).order(ByteOrder.LITTLE_ENDIAN);
-        final ByteBuffer outBuf = ByteBuffer.wrap(outBytes).order(ByteOrder.LITTLE_ENDIAN);
-
-        for (int i = 0; i < numFloats; i++) {
-            final float sample = inBuf.getFloat();
-            final float dither = (nextDither() - nextDither()) / 32768.0f;
-            final float dithered = Math.max(-1.0f, Math.min(1.0f, sample + dither));
-            final short pcm16 = (short) (dithered * 32767.0f);
-            outBuf.putShort(pcm16);
-        }
-        return outBytes;
-    }
-
-    private static byte[] convert24BitTo16BitPcm(byte[] src, int length) {
-        final int samples = length / 3;
-        final byte[] out = new byte[samples * 2];
-        int inIdx = 0;
-        int outIdx = 0;
-        while (inIdx + 2 < length) {
-            out[outIdx] = src[inIdx + 1];
-            out[outIdx + 1] = src[inIdx + 2];
-            inIdx += 3;
-            outIdx += 2;
-        }
-        return out;
-    }
-
-    public static void onSinkPause() {}
-
-    public static void onSinkPlay() {}
-
-    public static void onSinkFlush() {
-        resampler.reset();
-        LocalStreamServer.flush();
-    }
-
-    public static void onMediaMetadata(@Nullable MediaMetadata metadata) {
-        if (metadata == null || !Settings.SONOS_CAST.get()) return;
-        try {
-            String title = metadata.getString(MediaMetadata.METADATA_KEY_TITLE);
-            if (title == null) title = metadata.getString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE);
-            if (title == null) title = "YouTube Music";
-
-            String artist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST);
-            if (artist == null) artist = metadata.getString(MediaMetadata.METADATA_KEY_ALBUM_ARTIST);
-            if (artist == null) artist = metadata.getString(MediaMetadata.METADATA_KEY_AUTHOR);
-            if (artist == null) artist = "Morphe Cast";
-
-            String artUri = metadata.getString(MediaMetadata.METADATA_KEY_ALBUM_ART_URI);
-            if (artUri == null) artUri = metadata.getString(MediaMetadata.METADATA_KEY_ART_URI);
-            if (artUri == null) artUri = metadata.getString(MediaMetadata.METADATA_KEY_DISPLAY_ICON_URI);
-
-            if (artUri == null || !artUri.startsWith("http")) {
-                Bitmap bitmap = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
-                if (bitmap == null) bitmap = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
-                if (bitmap != null) {
-                    final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos);
-                    LocalStreamServer.setAlbumArt(baos.toByteArray());
-                    final SonosDevice dev = activeDevice;
-                    if (dev != null) {
-                        final String hostIp = LocalStreamServer.getLocalIpAddress(dev.getIp());
-                        artUri = "http://" + hostIp + ":" + LocalStreamServer.PORT + "/cover.jpg";
-                    }
-                }
-            }
-
-            final boolean trackChanged = (!title.equals(currentTitle) || !artist.equals(currentArtist));
-            currentTitle = title;
-            currentArtist = artist;
-            currentAlbumArtUri = artUri;
-
-            if (trackChanged) {
-                final SonosDevice dev = activeDevice;
-                if (dev != null) {
-                    final String endpoint = LocalStreamServer.getLocalStreamUrl(dev.getIp());
-                    SonosSoapClient.setUriAndPlay(dev, endpoint, currentTitle, currentArtist, currentAlbumArtUri, null);
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Error in onMediaMetadata", ex);
-        }
-    }
-
-    public static void connectToDevice(SonosDevice device) {
+        Logger.printInfo(() -> "Connecting to " + device);
+        serverUrl = url;
         activeDevice = device;
+        speakerVolume = UNKNOWN_VOLUME;
+        sentTrack = null;
+
+        applyPlayerVolumes(true);
         final Context context = Utils.getContext();
         acquireLocks(context);
         registerVolumeReceiver(context);
-        resampler.reset();
 
-        final WeakReference<AudioTrack> ref = lastTrackRef;
-        if (ref != null) {
-            final AudioTrack track = ref.get();
-            if (track != null) {
-                try { track.setVolume(0.0f); } catch (Exception ignored) {}
+        sendTrackIfChanged(true);
+        stoppedPolls = 0;
+        pollTask = pollExecutor.scheduleWithFixedDelay(SonosCastManager::poll,
+                POLL_INTERVAL_MILLIS, POLL_INTERVAL_MILLIS, TimeUnit.MILLISECONDS);
+    }
+
+    static void disconnect() {
+        final SonosDevice device = activeDevice;
+        if (device == null) {
+            return;
+        }
+
+        Logger.printInfo(() -> "Disconnecting from " + device);
+        activeDevice = null;
+        serverUrl = null;
+        if (pollTask != null) {
+            pollTask.cancel(false);
+            pollTask = null;
+        }
+
+        SonosSoapClient.stop(device);
+        LocalStreamServer.stop();
+        unregisterVolumeReceiver();
+        releaseLocks();
+        applyPlayerVolumes(false);
+    }
+
+    static void setSpeakerVolume(int volume) {
+        final SonosDevice device = activeDevice;
+        if (device != null) {
+            speakerVolume = volume;
+            SonosSoapClient.setVolume(device, volume);
+        }
+    }
+
+    /**
+     * @return The volume to apply to the track.
+     */
+    static float onPlayerVolume(AudioTrack track, float volume) {
+        synchronized (playerVolumes) {
+            playerVolumes.put(track, volume);
+        }
+        return isConnected() ? 0 : volume;
+    }
+
+    /**
+     * Mutes all tracks, or restores the volume of the player.
+     */
+    private static void applyPlayerVolumes(boolean mute) {
+        synchronized (playerVolumes) {
+            for (Map.Entry<AudioTrack, Float> entry : playerVolumes.entrySet()) {
+                entry.getKey().setVolume(mute ? 0 : entry.getValue());
+            }
+        }
+    }
+
+    static void onAudioWritten(AudioTrack track, ByteBuffer audio) {
+        synchronized (retiredTracks) {
+            final AudioTrack current = (streamedTrack == null) ? null : streamedTrack.get();
+            if (track != current) {
+                if (retiredTracks.containsKey(track)) {
+                    return;
+                }
+                if (current != null) {
+                    retiredTracks.put(current, Boolean.TRUE);
+                }
+                streamedTrack = new WeakReference<>(track);
+                converter.reset();
+                Logger.printDebug(() -> "Streaming track with encoding: " + track.getAudioFormat()
+                        + " channels: " + track.getChannelCount() + " sample rate: " + track.getSampleRate());
+            }
+
+            final byte[] converted = converter.convert(audio, track.getAudioFormat(),
+                    track.getChannelCount(), track.getSampleRate());
+            if (converted != null) {
+                LocalStreamServer.offer(converted);
+            }
+        }
+    }
+
+    static void onMetadata(@Nullable MediaMetadata newMetadata) {
+        // YouTube Music also sets metadata without an artist in the middle of a track.
+        if (newMetadata == null || getArtist(newMetadata) == null) {
+            return;
+        }
+
+        metadata = newMetadata;
+        if (isConnected()) {
+            sendTrackIfChanged(false);
+        }
+    }
+
+    @Nullable
+    private static String getArtist(MediaMetadata metadata) {
+        final String artist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST);
+        return (artist != null) ? artist : metadata.getString(MediaMetadata.METADATA_KEY_ALBUM_ARTIST);
+    }
+
+    /**
+     * Starts the stream with the current track, so the speaker apps show it.
+     *
+     * @param force Start the stream even if the track has not changed.
+     */
+    private static synchronized void sendTrackIfChanged(boolean force) {
+        final SonosDevice device = activeDevice;
+        final String url = serverUrl;
+        if (device == null || url == null) {
+            return;
+        }
+
+        final MediaMetadata currentMetadata = metadata;
+        TrackInfo track = null;
+        if (currentMetadata != null) {
+            final String metadataTitle = currentMetadata.getString(MediaMetadata.METADATA_KEY_TITLE);
+            final String title = (metadataTitle != null) ? metadataTitle : "";
+            final String metadataArtist = getArtist(currentMetadata);
+            final String artist = (metadataArtist != null) ? metadataArtist : "";
+            final TrackInfo previous = sentTrack;
+            if (!force && previous != null && title.equals(previous.title()) && artist.equals(previous.artist())) {
+                return;
+            }
+            track = new TrackInfo(title, artist, getAlbumArtUrl(currentMetadata, url));
+            sentTrack = track;
+        }
+
+        SonosSoapClient.playStream(device, LocalStreamServer.getStreamUrl(url), track);
+    }
+
+    /**
+     * @return The URL of the cover, or null if the track has none.
+     */
+    @Nullable
+    private static String getAlbumArtUrl(MediaMetadata metadata, String serverUrl) {
+        for (String key : new String[]{MediaMetadata.METADATA_KEY_ALBUM_ART_URI, MediaMetadata.METADATA_KEY_ART_URI}) {
+            final String uri = metadata.getString(key);
+            if (uri != null && uri.startsWith("http")) {
+                return uri;
             }
         }
 
-        final String streamEndpoint = LocalStreamServer.start(device.getIp());
-        SonosSoapClient.setUriAndPlay(device, streamEndpoint, currentTitle, currentArtist, currentAlbumArtUri, null);
-        startWatchdog();
-    }
-
-    public static void disconnect() {
-        final SonosDevice dev = activeDevice;
-        if (dev != null) {
-            stopWatchdog();
-            SonosSoapClient.stop(dev);
-            activeDevice = null;
-            releaseLocks();
-            unregisterVolumeReceiver();
-            resampler.reset();
-            LocalStreamServer.stop();
-
-            final WeakReference<AudioTrack> ref = lastTrackRef;
-            if (ref != null) {
-                final AudioTrack track = ref.get();
-                if (track != null) {
-                    try { track.setVolume(1.0f); } catch (Exception ignored) {}
-                }
-            }
+        // The app usually gives the cover as a bitmap, which the stream server then serves.
+        Bitmap bitmap = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
+        if (bitmap == null) {
+            bitmap = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
         }
+        if (bitmap == null || bitmap.isRecycled()) {
+            LocalStreamServer.setCoverArt(null);
+            return null;
+        }
+
+        final ByteArrayOutputStream jpeg = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, COVER_JPEG_QUALITY, jpeg);
+        LocalStreamServer.setCoverArt(jpeg.toByteArray());
+        return LocalStreamServer.getCoverUrl(serverUrl, ++coverVersion);
     }
 
-    private static void startWatchdog() {
-        stopWatchdog();
-        watchdogExecutor = Executors.newSingleThreadScheduledExecutor();
-        consecutiveStoppedCount = 0;
-        watchdogExecutor.scheduleWithFixedDelay(() -> {
-            try {
-                final SonosDevice dev = activeDevice;
-                if (dev == null || !LocalStreamServer.isRunning()) return;
-
-                final Integer speakerVol = SonosSoapClient.getVolumeSync(dev);
-                if (speakerVol != null && speakerVol != lastSpeakerVolume) {
-                    lastSpeakerVolume = speakerVol;
-                    dev.setVolume(speakerVol);
-                    syncSpeakerVolumeToPhone(speakerVol);
-                }
-
-                final boolean hasClients = LocalStreamServer.hasActiveClients();
-                final String state = SonosSoapClient.getTransportState(dev);
-                final boolean isInactive = ("STOPPED".equals(state) || "NO_MEDIA_PRESENT".equals(state) || state == null);
-
-                if (isInactive && !hasClients && LocalStreamServer.isStreamingActive()) {
-                    consecutiveStoppedCount++;
-                    if (consecutiveStoppedCount >= 2) {
-                        consecutiveStoppedCount = 0;
-                        final String endpoint = LocalStreamServer.getLocalStreamUrl(dev.getIp());
-                        SonosSoapClient.setUriAndPlay(dev, endpoint, currentTitle, currentArtist, currentAlbumArtUri, null);
-                    }
-                } else {
-                    consecutiveStoppedCount = 0;
-                }
-            } catch (Exception ignored) {}
-        }, 2000, 2000, TimeUnit.MILLISECONDS);
-    }
-
-    private static void stopWatchdog() {
+    private static void poll() {
         try {
-            if (watchdogExecutor != null) {
-                watchdogExecutor.shutdownNow();
-                watchdogExecutor = null;
+            final SonosDevice device = activeDevice;
+            if (device == null) {
+                return;
             }
-        } catch (Exception ignored) {}
-    }
 
-    private static void syncSpeakerVolumeToPhone(int speakerPercent) {
-        mainHandler.post(() -> {
-            isSyncingFromSpeaker = true;
-            try {
-                final Context context = Utils.getContext();
-                final AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-                if (am != null) {
-                    final int maxVol = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-                    final int targetPhoneVol = (speakerPercent * maxVol) / 100;
-                    am.setStreamVolume(AudioManager.STREAM_MUSIC, targetPhoneVol, 0);
-                    SonosCastBottomSheet.updateVolume(speakerPercent);
-                }
-            } catch (Exception ignored) {
-            } finally {
-                mainHandler.postDelayed(() -> isSyncingFromSpeaker = false, 500);
+            final Integer volume = SonosSoapClient.getVolume(device);
+            if (volume != null && volume != speakerVolume) {
+                // Changed in a speaker app or with the speaker buttons.
+                speakerVolume = volume;
+                Utils.runOnMainThread(() -> onSpeakerVolumeChanged(volume));
             }
-        });
-    }
 
-    private static void registerVolumeReceiver(Context context) {
-        try {
-            final Context appCtx = context.getApplicationContext();
-            final AudioManager am = (AudioManager) appCtx.getSystemService(Context.AUDIO_SERVICE);
-            if (am == null) return;
-            final int maxVol = Math.max(1, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
-
-            final BroadcastReceiver receiver = new BroadcastReceiver() {
-                private int lastVol = am.getStreamVolume(AudioManager.STREAM_MUSIC);
-
-                @Override
-                public void onReceive(Context ctx, Intent intent) {
-                    if (intent != null && "android.media.VOLUME_CHANGED_ACTION".equals(intent.getAction())) {
-                        if (isSyncingFromSpeaker) return;
-                        final int streamType = intent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
-                        if (streamType == AudioManager.STREAM_MUSIC) {
-                            final int newVol = intent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_VALUE", -1);
-                            if (newVol >= 0 && newVol <= maxVol && newVol != lastVol && isConnected()) {
-                                lastVol = newVol;
-                                final int percent = (newVol * 100) / maxVol;
-                                setVolume(percent);
-                                SonosCastBottomSheet.updateVolume(percent);
-                            }
-                        }
-                    }
+            // The speaker stops playing when the connection drops, or when another app plays on it.
+            final String state = SonosSoapClient.getTransportState(device);
+            final boolean isStopped = "STOPPED".equals(state) || "NO_MEDIA_PRESENT".equals(state);
+            if (isStopped && !LocalStreamServer.hasClients()) {
+                if (++stoppedPolls >= STOPPED_POLLS_BEFORE_RESTART) {
+                    stoppedPolls = 0;
+                    Logger.printInfo(() -> "Restarting the stream on " + device);
+                    sendTrackIfChanged(true);
                 }
-            };
-
-            final IntentFilter filter = new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
-            appCtx.registerReceiver(receiver, filter);
-            volumeReceiver = receiver;
+            } else {
+                stoppedPolls = 0;
+            }
         } catch (Exception ex) {
-            Logger.printException(() -> "Could not register volume receiver", ex);
+            Logger.printException(() -> "poll failure", ex);
         }
+    }
+
+    private static void onSpeakerVolumeChanged(int volume) {
+        if (!isConnected()) {
+            return;
+        }
+
+        final AudioManager audioManager = Utils.getContext().getSystemService(AudioManager.class);
+        final int maxPhoneVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        final int phoneVolume = Math.round(volume * maxPhoneVolume / (float) MAX_VOLUME);
+        if (phoneVolume != audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)) {
+            expectedPhoneVolume = phoneVolume;
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, phoneVolume, 0);
+        }
+
+        final IntConsumer listener = volumeListener;
+        if (listener != null) {
+            listener.accept(volume);
+        }
+    }
+
+    /**
+     * Sends the volume buttons of the phone to the speaker.
+     */
+    private static void registerVolumeReceiver(Context context) {
+        final AudioManager audioManager = context.getSystemService(AudioManager.class);
+        final int maxPhoneVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+
+        volumeReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context receiverContext, Intent intent) {
+                try {
+                    if (intent.getIntExtra(EXTRA_VOLUME_STREAM_TYPE, -1) != AudioManager.STREAM_MUSIC) {
+                        return;
+                    }
+                    final int phoneVolume = intent.getIntExtra(EXTRA_VOLUME_STREAM_VALUE, -1);
+                    if (phoneVolume < 0 || phoneVolume == intent.getIntExtra(EXTRA_PREV_VOLUME_STREAM_VALUE, -1)) {
+                        return;
+                    }
+                    if (phoneVolume == expectedPhoneVolume) {
+                        expectedPhoneVolume = UNKNOWN_VOLUME;
+                        return;
+                    }
+
+                    final int volume = Math.round(phoneVolume * MAX_VOLUME / (float) maxPhoneVolume);
+                    setSpeakerVolume(volume);
+                    final IntConsumer listener = volumeListener;
+                    if (listener != null) {
+                        listener.accept(volume);
+                    }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "onReceive failure", ex);
+                }
+            }
+        };
+        // A protected system broadcast, so no export flag is needed.
+        context.registerReceiver(volumeReceiver, new IntentFilter(VOLUME_CHANGED_ACTION));
     }
 
     private static void unregisterVolumeReceiver() {
-        try {
-            if (volumeReceiver != null) {
-                Utils.getContext().getApplicationContext().unregisterReceiver(volumeReceiver);
-                volumeReceiver = null;
-            }
-        } catch (Exception ignored) {}
-    }
-
-    private static void acquireLocks(Context context) {
-        try {
-            final Context appCtx = context.getApplicationContext();
-            final WifiManager wifi = (WifiManager) appCtx.getSystemService(Context.WIFI_SERVICE);
-            if (wifi != null && wifiLock == null) {
-                wifiLock = wifi.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, "MorpheSonosCast:WifiLock");
-                if (wifiLock != null) {
-                    wifiLock.setReferenceCounted(false);
-                    wifiLock.acquire();
-                }
-            }
-            if (wifi != null && lowLatencyWifiLock == null) {
-                lowLatencyWifiLock = wifi.createWifiLock(WifiManager.WIFI_MODE_FULL_LOW_LATENCY, "MorpheSonosCast:LowLatencyLock");
-                if (lowLatencyWifiLock != null) {
-                    lowLatencyWifiLock.setReferenceCounted(false);
-                    lowLatencyWifiLock.acquire();
-                }
-            }
-            final PowerManager pm = (PowerManager) appCtx.getSystemService(Context.POWER_SERVICE);
-            if (pm != null && wakeLock == null) {
-                wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MorpheSonosCast:WakeLock");
-                if (wakeLock != null) {
-                    wakeLock.setReferenceCounted(false);
-                    wakeLock.acquire();
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Error acquiring locks", ex);
+        if (volumeReceiver != null) {
+            Utils.getContext().unregisterReceiver(volumeReceiver);
+            volumeReceiver = null;
         }
     }
 
-    private static void releaseLocks() {
-        try {
-            if (wifiLock != null && wifiLock.isHeld()) wifiLock.release();
-            wifiLock = null;
-            if (lowLatencyWifiLock != null && lowLatencyWifiLock.isHeld()) lowLatencyWifiLock.release();
-            lowLatencyWifiLock = null;
-            if (wakeLock != null && wakeLock.isHeld()) wakeLock.release();
-            wakeLock = null;
-        } catch (Exception ignored) {}
+    /**
+     * Keeps Wi-Fi fast and the CPU awake, so the stream does not stall while the screen is off.
+     */
+    @SuppressWarnings("deprecation")
+    private static void acquireLocks(Context context) {
+        final WifiManager wifiManager = context.getSystemService(WifiManager.class);
+        // Works in the background, but does nothing on Android 14 and later.
+        highPerfWifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, LOCK_TAG);
+        highPerfWifiLock.setReferenceCounted(false);
+        highPerfWifiLock.acquire();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // Only works while the app is in the foreground.
+            lowLatencyWifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL_LOW_LATENCY, LOCK_TAG);
+            lowLatencyWifiLock.setReferenceCounted(false);
+            lowLatencyWifiLock.acquire();
+        }
+
+        wakeLock = context.getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, LOCK_TAG);
+        wakeLock.setReferenceCounted(false);
+        wakeLock.acquire();
     }
 
-    public static void setVolume(int volume) {
-        final SonosDevice dev = activeDevice;
-        if (dev != null) {
-            SonosSoapClient.setVolume(dev, volume);
+    private static void releaseLocks() {
+        if (highPerfWifiLock != null) {
+            highPerfWifiLock.release();
+            highPerfWifiLock = null;
+        }
+        if (lowLatencyWifiLock != null) {
+            lowLatencyWifiLock.release();
+            lowLatencyWifiLock = null;
+        }
+        if (wakeLock != null) {
+            wakeLock.release();
+            wakeLock = null;
         }
     }
 }

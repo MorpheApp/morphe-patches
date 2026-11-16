@@ -56,7 +56,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // General
     public static final BooleanSetting PAUSE_WHEN_MUTED = new BooleanSetting("morphe_music_pause_when_muted", FALSE, true);
-    public static final BooleanSetting SONOS_CAST = new BooleanSetting("morphe_music_sonos_cast", TRUE, true);
+    public static final BooleanSetting SONOS_CAST = new BooleanSetting("morphe_music_sonos_cast", FALSE, true);
 
     // General (Layout)
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);

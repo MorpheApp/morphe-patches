@@ -7,260 +7,304 @@
 
 package app.morphe.extension.music.patches.sonos;
 
-import android.content.Context;
-import android.net.wifi.WifiManager;
-
 import androidx.annotation.Nullable;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.IOException;
 import java.io.StringReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 
 /**
- * Discovers Sonos and UPnP MediaRenderer devices via SSDP multicast and fallback subnet scanning.
+ * Finds the speakers on the network with an SSDP search, and also by probing the Sonos port of
+ * every address of the subnet, for networks that block multicast.
  */
-public final class SonosDiscovery {
-    private static final String SSDP_ADDR = "239.255.255.250";
+final class SonosDiscovery {
+
+    interface Listener {
+        void onDevicesChanged(List<SonosDevice> devices);
+    }
+
+    private static final String SSDP_ADDRESS = "239.255.255.250";
     private static final int SSDP_PORT = 1900;
+    private static final String[] SSDP_SEARCH_TARGETS = {
+            "urn:schemas-upnp-org:device:ZonePlayer:1",
+            "urn:schemas-upnp-org:device:MediaRenderer:1"
+    };
+    private static final int SSDP_MAX_WAIT_SECONDS = 2;
+    private static final long SSDP_LISTEN_MILLIS = 6000;
+    private static final int SSDP_RECEIVE_TIMEOUT_MILLIS = 500;
+    private static final int SSDP_MAX_RESPONSE_BYTES = 4096;
+    private static final String LOCATION_HEADER = "location:";
 
-    private static final ConcurrentHashMap<String, SonosDevice> discoveredDevices = new ConcurrentHashMap<>();
-    private static final List<DiscoveryListener> listeners = Collections.synchronizedList(new ArrayList<>());
-    private static final AtomicBoolean isScanning = new AtomicBoolean(false);
-    private static final ExecutorService executor = Executors.newFixedThreadPool(4);
+    private static final int SONOS_PORT = 1400;
+    private static final String SONOS_DESCRIPTION_PATH = "/xml/device_description.xml";
+    private static final int PROBE_THREADS = 16;
+    private static final int PROBE_TIMEOUT_MILLIS = 800;
+    private static final int LAST_HOST_ADDRESS = 254;
+    private static final int DESCRIPTION_TIMEOUT_MILLIS = 2000;
+
+    private static final String AV_TRANSPORT_SERVICE = ":service:AVTransport:";
+    private static final String RENDERING_CONTROL_SERVICE = ":service:RenderingControl:";
+
+    /**
+     * Found devices by their unique device name.
+     */
+    private static final Map<String, SonosDevice> devices = new ConcurrentHashMap<>();
+    /**
+     * Device descriptions requested by the current search.
+     */
+    private static final Set<String> requestedLocations = ConcurrentHashMap.newKeySet();
+    private static final ExecutorService executor = Executors.newCachedThreadPool();
+
     @Nullable
-    private static WifiManager.MulticastLock multicastLock;
+    private static volatile Listener listener;
+    /**
+     * Changes for each search, which ends the tasks of the previous one.
+     */
+    private static volatile int searchId;
 
-    public interface DiscoveryListener {
-        void onDevicesUpdated(List<SonosDevice> devices);
+    private SonosDiscovery() {
     }
 
-    private SonosDiscovery() {}
-
-    public static void addListener(DiscoveryListener listener) {
-        synchronized (listeners) {
-            listeners.add(listener);
-            listener.onDevicesUpdated(new ArrayList<>(discoveredDevices.values()));
-        }
+    static List<SonosDevice> getDevices() {
+        return new ArrayList<>(devices.values());
     }
 
-    public static void removeListener(DiscoveryListener listener) {
-        synchronized (listeners) {
-            listeners.remove(listener);
-        }
+    static void setListener(@Nullable Listener newListener) {
+        listener = newListener;
     }
 
-    public static List<SonosDevice> getDevices() {
-        return new ArrayList<>(discoveredDevices.values());
+    static void startSearch() {
+        final int id = ++searchId;
+        requestedLocations.clear();
+        executor.execute(() -> searchSsdp(id));
+        executor.execute(() -> probeSubnet(id));
     }
 
-    public static void startDiscovery() {
-        if (isScanning.getAndSet(true)) return;
-
-        try {
-            final Context context = Utils.getContext();
-            final WifiManager wifi = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-            if (wifi != null) {
-                multicastLock = wifi.createMulticastLock("SonosDiscoveryLock");
-                multicastLock.setReferenceCounted(true);
-                multicastLock.acquire();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Could not acquire MulticastLock", ex);
-        }
-
-        executor.execute(SonosDiscovery::runSsdpSearch);
-        executor.execute(SonosDiscovery::runFastSubnetFallback);
+    static void stopSearch() {
+        searchId++;
     }
 
-    public static void stopDiscovery() {
-        isScanning.set(false);
-        try {
-            if (multicastLock != null && multicastLock.isHeld()) {
-                multicastLock.release();
-            }
-        } catch (Exception ignored) {}
-    }
-
-    private static void runSsdpSearch() {
-        final List<String> targets = Arrays.asList(
-                "urn:schemas-upnp-org:device:ZonePlayer:1",
-                "urn:schemas-upnp-org:device:MediaRenderer:1"
-        );
-
-        DatagramSocket socket = null;
-        try {
-            socket = new DatagramSocket();
-            socket.setSoTimeout(4000);
-            final InetAddress group = InetAddress.getByName(SSDP_ADDR);
-
-            for (String target : targets) {
-                final String query =
-                        "M-SEARCH * HTTP/1.1\r\n" +
-                        "HOST: " + SSDP_ADDR + ":" + SSDP_PORT + "\r\n" +
-                        "MAN: \"ssdp:discover\"\r\n" +
-                        "MX: 2\r\n" +
-                        "ST: " + target + "\r\n\r\n";
-
-                final byte[] bytes = query.getBytes(StandardCharsets.UTF_8);
-                final DatagramPacket packet = new DatagramPacket(bytes, bytes.length, group, SSDP_PORT);
-                socket.send(packet);
+    private static void searchSsdp(int id) {
+        try (DatagramSocket socket = new DatagramSocket()) {
+            socket.setSoTimeout(SSDP_RECEIVE_TIMEOUT_MILLIS);
+            final InetAddress group = InetAddress.getByName(SSDP_ADDRESS);
+            for (String target : SSDP_SEARCH_TARGETS) {
+                final byte[] query = ("M-SEARCH * HTTP/1.1\r\n"
+                        + "HOST: " + SSDP_ADDRESS + ":" + SSDP_PORT + "\r\n"
+                        + "MAN: \"ssdp:discover\"\r\n"
+                        + "MX: " + SSDP_MAX_WAIT_SECONDS + "\r\n"
+                        + "ST: " + target + "\r\n\r\n").getBytes(StandardCharsets.US_ASCII);
+                socket.send(new DatagramPacket(query, query.length, group, SSDP_PORT));
             }
 
-            final byte[] buf = new byte[4096];
-            final long startTime = System.currentTimeMillis();
-            while (isScanning.get() && (System.currentTimeMillis() - startTime < 6000)) {
+            final byte[] buffer = new byte[SSDP_MAX_RESPONSE_BYTES];
+            final long endMillis = System.currentTimeMillis() + SSDP_LISTEN_MILLIS;
+            while (id == searchId && System.currentTimeMillis() < endMillis) {
+                final DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 try {
-                    final DatagramPacket recvPacket = new DatagramPacket(buf, buf.length);
-                    socket.receive(recvPacket);
-                    final String response = new String(recvPacket.getData(), 0, recvPacket.getLength(), StandardCharsets.UTF_8);
-                    final InetAddress senderAddr = recvPacket.getAddress();
-                    parseLocationAndFetch(response, senderAddr != null ? senderAddr.getHostAddress() : "");
-                } catch (Exception e) {
-                    break;
+                    socket.receive(packet);
+                } catch (SocketTimeoutException ex) {
+                    continue;
+                }
+
+                final String location = parseLocation(
+                        new String(packet.getData(), 0, packet.getLength(), StandardCharsets.UTF_8));
+                if (location != null) {
+                    requestDescription(id, location);
                 }
             }
-        } catch (Exception ex) {
-            Logger.printException(() -> "SSDP search error", ex);
-        } finally {
-            if (socket != null) socket.close();
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "SSDP search failed", ex);
         }
     }
 
-    private static void runFastSubnetFallback() {
-        final String localIp = LocalStreamServer.getLocalIpAddress(null);
-        if ("127.0.0.1".equals(localIp) || !localIp.contains(".")) return;
+    @Nullable
+    private static String parseLocation(String response) {
+        for (String line : response.split("\r\n")) {
+            if (line.toLowerCase(Locale.US).startsWith(LOCATION_HEADER)) {
+                return line.substring(LOCATION_HEADER.length()).trim();
+            }
+        }
+        return null;
+    }
 
-        final String baseIp = localIp.substring(0, localIp.lastIndexOf('.') + 1);
-        final ExecutorService probePool = Executors.newFixedThreadPool(16);
+    private static void requestDescription(int id, String location) {
+        if (!requestedLocations.add(location)) {
+            return;
+        }
 
-        for (int i = 1; i <= 254; i++) {
-            final String ip = baseIp + i;
+        executor.execute(() -> {
+            if (id != searchId) {
+                return;
+            }
+            try {
+                addDevice(location, fetch(location, DESCRIPTION_TIMEOUT_MILLIS));
+            } catch (IOException ex) {
+                Logger.printInfo(() -> "Could not load the device description: " + location, ex);
+            }
+        });
+    }
+
+    private static void probeSubnet(int id) {
+        final String localIp;
+        try {
+            localIp = LocalStreamServer.getLocalIpAddress(null);
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "No local network to probe", ex);
+            return;
+        }
+
+        final String subnet = localIp.substring(0, localIp.lastIndexOf('.') + 1);
+        final ExecutorService probePool = Executors.newFixedThreadPool(PROBE_THREADS);
+        for (int host = 1; host <= LAST_HOST_ADDRESS; host++) {
+            final String location = "http://" + subnet + host + ":" + SONOS_PORT + SONOS_DESCRIPTION_PATH;
             probePool.execute(() -> {
-                if (!isScanning.get()) return;
+                if (id != searchId || !requestedLocations.add(location)) {
+                    return;
+                }
                 try {
-                    final URL url = new URL("http://" + ip + ":1400/xml/device_description.xml");
-                    final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setConnectTimeout(800);
-                    conn.setReadTimeout(800);
-                    conn.setRequestMethod("GET");
-
-                    if (conn.getResponseCode() == 200) {
-                        try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
-                            final StringBuilder sb = new StringBuilder();
-                            String line;
-                            while ((line = reader.readLine()) != null) sb.append(line);
-                            parseDeviceXml(sb.toString(), ip, 1400);
-                        }
-                    }
-                    conn.disconnect();
-                } catch (Exception ignored) {}
+                    addDevice(location, fetch(location, PROBE_TIMEOUT_MILLIS));
+                } catch (IOException ex) {
+                    // Most addresses have no speaker.
+                    Logger.printVerbose(() -> "No speaker at " + location, ex);
+                }
             });
         }
         probePool.shutdown();
     }
 
-    private static void parseLocationAndFetch(String ssdpResponse, String senderIp) {
-        final String[] lines = ssdpResponse.split("\r\n");
-        String locationUrl = null;
-        for (String line : lines) {
-            if (line.toUpperCase().startsWith("LOCATION:")) {
-                locationUrl = line.substring(9).trim();
-                break;
-            }
-        }
-
-        final String urlToFetch = (locationUrl != null) ? locationUrl : "http://" + senderIp + ":1400/xml/device_description.xml";
-        executor.execute(() -> {
-            try {
-                final URL url = new URL(urlToFetch);
-                final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setConnectTimeout(2000);
-                conn.setReadTimeout(2000);
-
-                if (conn.getResponseCode() == 200) {
-                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
-                        final StringBuilder sb = new StringBuilder();
-                        String line;
-                        while ((line = reader.readLine()) != null) sb.append(line);
-                        final int port = (url.getPort() > 0) ? url.getPort() : 1400;
-                        parseDeviceXml(sb.toString(), url.getHost(), port);
-                    }
-                }
-                conn.disconnect();
-            } catch (Exception ignored) {}
-        });
-    }
-
-    private static void parseDeviceXml(String xml, String ip, int port) {
+    private static String fetch(String url, int timeoutMillis) throws IOException {
+        final HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.setConnectTimeout(timeoutMillis);
+        connection.setReadTimeout(timeoutMillis);
         try {
-            final XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-            final XmlPullParser parser = factory.newPullParser();
-            parser.setInput(new StringReader(xml));
-
-            int eventType = parser.getEventType();
-            String friendlyName = null;
-            String modelName = null;
-            String udn = null;
-            String currentTag = "";
-
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_TAG) {
-                    currentTag = parser.getName();
-                } else if (eventType == XmlPullParser.TEXT) {
-                    final String text = parser.getText().trim();
-                    if (!text.isEmpty()) {
-                        if ("friendlyName".equals(currentTag) && friendlyName == null) friendlyName = text;
-                        else if ("modelName".equals(currentTag) && modelName == null) modelName = text;
-                        else if ("UDN".equals(currentTag) && udn == null) udn = text;
-                    }
-                }
-                eventType = parser.next();
+            final int responseCode = connection.getResponseCode();
+            if (responseCode != HttpURLConnection.HTTP_OK) {
+                throw new IOException("Response code: " + responseCode);
             }
-
-            if (friendlyName != null) {
-                final SonosDevice device = new SonosDevice(
-                        ip,
-                        port,
-                        friendlyName,
-                        (udn != null) ? udn : "uuid:" + ip,
-                        (modelName != null) ? modelName : "Sonos"
-                );
-                discoveredDevices.put(device.getUdn(), device);
-                notifyListeners();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "XML parse error for " + ip, ex);
+            return Requester.parseString(connection);
+        } finally {
+            connection.disconnect();
         }
     }
 
-    private static void notifyListeners() {
-        final List<SonosDevice> currentList = new ArrayList<>(discoveredDevices.values());
-        synchronized (listeners) {
-            for (DiscoveryListener l : listeners) {
-                try {
-                    l.onDevicesUpdated(currentList);
-                } catch (Exception ignored) {}
+    private static void addDevice(String location, String descriptionXml) {
+        final SonosDevice device;
+        try {
+            device = parseDescription(location, descriptionXml);
+        } catch (XmlPullParserException | IOException ex) {
+            Logger.printInfo(() -> "Invalid device description: " + location, ex);
+            return;
+        }
+        if (device == null) {
+            Logger.printDebug(() -> "Not a media renderer: " + location);
+            return;
+        }
+
+        Logger.printDebug(() -> "Found speaker: " + device);
+        devices.put(device.udn, device);
+
+        final Listener currentListener = listener;
+        if (currentListener != null) {
+            currentListener.onDevicesChanged(getDevices());
+        }
+    }
+
+    /**
+     * @return The device, or null if it can't play audio streams.
+     */
+    @Nullable
+    private static SonosDevice parseDescription(String location, String xml)
+            throws XmlPullParserException, IOException {
+        final XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
+        parser.setInput(new StringReader(xml));
+
+        String urlBase = null;
+        String udn = null;
+        String friendlyName = null;
+        String roomName = null;
+        String modelName = null;
+        String serviceType = null;
+        String avTransportControlUrl = null;
+        String renderingControlUrl = null;
+
+        String tag = null;
+        for (int event = parser.getEventType(); event != XmlPullParser.END_DOCUMENT; event = parser.next()) {
+            if (event == XmlPullParser.START_TAG) {
+                tag = parser.getName();
+                if ("service".equals(tag)) {
+                    serviceType = null;
+                }
+            } else if (event == XmlPullParser.END_TAG) {
+                tag = null;
+            } else if (event == XmlPullParser.TEXT && tag != null) {
+                final String text = parser.getText().trim();
+                if (text.isEmpty()) {
+                    continue;
+                }
+
+                // The first value is the one of the root device.
+                switch (tag) {
+                    case "URLBase" -> urlBase = text;
+                    case "UDN" -> udn = (udn == null) ? text : udn;
+                    case "friendlyName" -> friendlyName = (friendlyName == null) ? text : friendlyName;
+                    case "roomName" -> roomName = (roomName == null) ? text : roomName;
+                    case "modelName" -> modelName = (modelName == null) ? text : modelName;
+                    case "serviceType" -> serviceType = text;
+                    case "controlURL" -> {
+                        if (serviceType != null && avTransportControlUrl == null
+                                && serviceType.contains(AV_TRANSPORT_SERVICE)) {
+                            avTransportControlUrl = text;
+                        } else if (serviceType != null && renderingControlUrl == null
+                                && serviceType.contains(RENDERING_CONTROL_SERVICE)) {
+                            renderingControlUrl = text;
+                        }
+                    }
+                    default -> {
+                    }
+                }
             }
         }
+
+        if (avTransportControlUrl == null || renderingControlUrl == null) {
+            return null;
+        }
+
+        final URL descriptionUrl = new URL(location);
+        final URL baseUrl = (urlBase == null) ? descriptionUrl : new URL(urlBase);
+        // Sonos uses the room name in its apps. The friendly name also has the address and the model.
+        final String name = (roomName != null) ? roomName
+                : (friendlyName != null) ? friendlyName
+                : descriptionUrl.getHost();
+
+        return new SonosDevice(
+                descriptionUrl.getHost(),
+                name,
+                (udn != null) ? udn : location,
+                (modelName != null) ? modelName : "",
+                new URL(baseUrl, avTransportControlUrl).toString(),
+                new URL(baseUrl, renderingControlUrl).toString()
+        );
     }
 }

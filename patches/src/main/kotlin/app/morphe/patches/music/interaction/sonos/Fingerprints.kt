@@ -8,47 +8,83 @@
 package app.morphe.patches.music.interaction.sonos
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
-/**
- * Matches performClick on MdxMediaRouteButton.
- */
-internal object MediaRouteButtonPerformClickFingerprint : Fingerprint(
+internal object MdxMediaRouteButtonPerformClickFingerprint : Fingerprint(
     definingClass = "Lcom/google/android/libraries/youtube/mdx/mediaroute/MdxMediaRouteButton;",
     name = "performClick",
     returnType = "Z",
-    parameters = emptyList()
+    parameters = listOf()
+)
+
+private object MediaRouteButtonControllerFingerprint : Fingerprint(
+    name = "<clinit>",
+    filters = listOf(
+        string("MediaRouteButtonController", StringComparisonType.ENDS_WITH)
+    )
 )
 
 /**
- * Matches ExoPlayer's AudioTrack.write(ByteBuffer, int, int) call.
+ * Updates if Cast devices are available, which shows or hides all Cast buttons.
  */
-internal object AudioTrackWriteFingerprint : Fingerprint(
-    returnType = "I",
+internal object MediaRouteButtonControllerUpdateFingerprint : Fingerprint(
+    classFingerprint = MediaRouteButtonControllerFingerprint,
+    returnType = "V",
+    parameters = listOf(),
     filters = listOf(
+        // MediaRouter.isRouteAvailable(selector, flags)
         methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            definingClass = "Landroid/media/AudioTrack;",
-            name = "write",
-            parameters = listOf("Ljava/nio/ByteBuffer;", "I", "I")
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "I"),
+            returnType = "Z"
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        // The previous value.
+        fieldAccess(
+            definingClass = "this",
+            type = "Z",
+            opcode = Opcode.IGET_BOOLEAN,
+            location = MatchAfterImmediately()
         )
     )
 )
 
 /**
- * Matches ExoPlayer's DefaultAudioSink phone speaker volume muting method.
+ * The method of the ExoPlayer audio sink that writes the decoded audio to the AudioTrack.
+ * It is the only caller of this AudioTrack.write overload in the app.
  */
-internal object AudioSinkMuteFingerprint : Fingerprint(
-    classFingerprint = AudioTrackWriteFingerprint,
+internal object AudioSinkWriteFingerprint : Fingerprint(
     returnType = "V",
-    parameters = emptyList(),
+    parameters = listOf(),
     filters = listOf(
         methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "Landroid/media/AudioTrack;",
+            name = "write",
+            parameters = listOf("Ljava/nio/ByteBuffer;", "I", "I"),
+            returnType = "I"
+        )
+    )
+)
+
+/**
+ * The method of the same audio sink that applies the player volume to the AudioTrack.
+ */
+internal object AudioSinkSetVolumeFingerprint : Fingerprint(
+    classFingerprint = AudioSinkWriteFingerprint,
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(
             definingClass = "Landroid/media/AudioTrack;",
             name = "setVolume",
-            parameters = listOf("F")
+            parameters = listOf("F"),
+            returnType = "I"
         )
     )
 )

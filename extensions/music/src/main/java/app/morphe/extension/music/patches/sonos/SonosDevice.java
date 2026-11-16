@@ -8,80 +8,35 @@
 package app.morphe.extension.music.patches.sonos;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import java.util.Objects;
 
 /**
- * Data model representing a discovered Sonos or UPnP MediaRenderer speaker.
+ * A Sonos speaker or other UPnP media renderer.
  */
-public final class SonosDevice {
-    private final String ip;
-    private final int port;
-    private final String name;
-    private final String udn;
-    private final String modelName;
-    private int volume = 25;
+final class SonosDevice {
 
-    public SonosDevice(String ip, int port, String name, String udn, String modelName) {
+    final String ip;
+    final String name;
+    /**
+     * Unique device name from the device description.
+     */
+    final String udn;
+    final String modelName;
+    final String avTransportControlUrl;
+    final String renderingControlUrl;
+
+    SonosDevice(String ip, String name, String udn, String modelName,
+                String avTransportControlUrl, String renderingControlUrl) {
         this.ip = ip;
-        this.port = port;
         this.name = name;
         this.udn = udn;
         this.modelName = modelName;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getUdn() {
-        return udn;
-    }
-
-    public String getModelName() {
-        return modelName;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public String getAvTransportControlUrl() {
-        return "http://" + ip + ":" + port + "/MediaRenderer/AVTransport/Control";
-    }
-
-    public String getRenderingControlUrl() {
-        return "http://" + ip + ":" + port + "/MediaRenderer/RenderingControl/Control";
-    }
-
-    @Override
-    public boolean equals(@Nullable Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SonosDevice that = (SonosDevice) o;
-        return Objects.equals(udn, that.udn);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(udn);
+        this.avTransportControlUrl = avTransportControlUrl;
+        this.renderingControlUrl = renderingControlUrl;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return name + " (" + ip + ":" + port + ")";
+        return name + " (" + ip + ")";
     }
 }
