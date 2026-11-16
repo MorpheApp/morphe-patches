@@ -67,6 +67,7 @@ public final class InboxResponseFlattener {
 
         List<ProtoNode> elements = new ArrayList<>();
         collectElements(root, elements);
+        InboxResponseLogger.logResponse(root, elements, body.length);
         SeenEntities seenEntities = new SeenEntities(root);
         InboxVideos videos = new InboxVideos();
         addNotifications(elements, seenEntities, videos);
@@ -465,16 +466,20 @@ public final class InboxResponseFlattener {
         ProtoNode ownSeenKey = seenKey(model);
         String key = entryKey(model);
 
+        String videoId = videoId(model);
         byte[] addedSeenKey = null;
         boolean unseen;
         if (key != null && seenEntities.canAdd()) {
-            unseen = group.isUnseen(key, videoId(model), seenEntities);
+            Boolean serverUnseen = seenEntities.isUnseen(key);
+            unseen = group.isUnseen(key, videoId, seenEntities);
+            InboxResponseLogger.logEntry(videoId, key, serverUnseen, group.headerUnseen, unseen);
             seenEntities.add(key, unseen);
             if (ownSeenKey == null) {
                 addedSeenKey = ProtoNode.encodeString(SEEN_ENTITY_KEY, key);
             }
         } else {
             unseen = group.headerUnseen;
+            InboxResponseLogger.logEntry(videoId, key, null, group.headerUnseen, unseen);
             if (ownSeenKey == null && group.headerSeenKey != null) {
                 addedSeenKey = raw(group.headerSeenKey);
             }
