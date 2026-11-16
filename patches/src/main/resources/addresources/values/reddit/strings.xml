@@ -85,6 +85,13 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_swap_post_vote_comment_buttons_summary">Shows the comment button of posts before the vote buttons</string>
     <string name="morphe_remove_nsfw_dialog_title">Remove NSFW warning dialog</string>
     <string name="morphe_remove_nsfw_dialog_summary">Automatically accepts the NSFW content warning when visiting a subreddit</string>
+    <string name="morphe_tablet_grid_columns_title">Grid columns</string>
+    <string name="morphe_tablet_grid_columns_entry_auto">Auto (2 columns on smaller tablets, 3 on wider screens)</string>
+    <string name="morphe_tablet_grid_columns_entry_two">2 columns</string>
+    <string name="morphe_tablet_grid_columns_entry_three">3 columns</string>
+    <string name="morphe_tablet_grid_feed_title">Tablet grid feed</string>
+    <string name="morphe_tablet_grid_feed_summary_on">Feeds are shown as a grid on tablets and other wide screens. Phones are unchanged</string>
+    <string name="morphe_tablet_grid_feed_summary_off">Feeds are shown as a list</string>
 
     <string name="morphe_screen_miscellaneous_title">Miscellaneous</string>
     <string name="morphe_about_title">About</string>

@@ -9,6 +9,7 @@ package app.morphe.extension.reddit.settings;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
+import static app.morphe.extension.shared.settings.Setting.parent;
 
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
@@ -63,6 +64,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting SHOW_FLAIRS_IN_HOME_FEED = new BooleanSetting("morphe_show_flairs_in_home_feed", FALSE, true, "morphe_show_flairs_in_home_feed_user_dialog_message");
     public static final BooleanSetting SHOW_VIEW_COUNT = new BooleanSetting("morphe_show_view_count", FALSE, true);
     public static final BooleanSetting SWAP_POST_VOTE_COMMENT_BUTTONS = new BooleanSetting("morphe_swap_post_vote_comment_buttons", FALSE, true);
+    public static final BooleanSetting TABLET_GRID_FEED = new BooleanSetting("morphe_tablet_grid_feed", TRUE);
+    public static final StringSetting TABLET_GRID_COLUMNS = new StringSetting("morphe_tablet_grid_columns", "auto", parent(TABLET_GRID_FEED));
 
     // Miscellaneous
     public static final StringSetting DOWNLOAD_FOLDER = new StringSetting("morphe_download_folder", "");

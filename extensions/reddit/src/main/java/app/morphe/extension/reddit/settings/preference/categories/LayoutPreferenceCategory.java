@@ -32,6 +32,7 @@ import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
+import app.morphe.extension.reddit.patches.TabletGridFeedPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.CustomFontFilePreference;
@@ -39,6 +40,7 @@ import app.morphe.extension.reddit.settings.preference.CustomFontTogglePreferenc
 import app.morphe.extension.reddit.settings.preference.ForceSystemFontPreference;
 import app.morphe.extension.reddit.settings.preference.NumberSettingPreference;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 
 @SuppressWarnings("deprecation")
 public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
@@ -67,7 +69,8 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HighQualityAvatarsPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
-                RememberCollapsedCommentsPatch.isPatchIncluded();
+                RememberCollapsedCommentsPatch.isPatchIncluded() ||
+                TabletGridFeedPatch.isPatchIncluded();
     }
 
     @Override
@@ -215,6 +218,20 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.REMEMBER_COLLAPSED_COMMENTS
+            ));
+        }
+
+        if (TabletGridFeedPatch.isPatchIncluded()) {
+            final BooleanSettingPreference gridPreference = new BooleanSettingPreference(
+                    context,
+                    Settings.TABLET_GRID_FEED
+            );
+            gridPreference.setSummaryOn(str("morphe_tablet_grid_feed_summary_on"));
+            gridPreference.setSummaryOff(str("morphe_tablet_grid_feed_summary_off"));
+            addPreference(gridPreference);
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.TABLET_GRID_COLUMNS
             ));
         }
 
