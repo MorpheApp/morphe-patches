@@ -317,26 +317,10 @@ internal fun sharedLithoFilterPatch(
                     .findFieldFromToString(COMMAND_EVENT_DATA_DECORATORS_PROPERTY)
             ).method
 
-            conversionContextClassDef.methods.add(
-                ImmutableMethod(
-                    conversionContextClassDef.type,
-                    "patch_getCommandEventDataDecorators",
-                    listOf(),
-                    "Ljava/util/List;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0 }, $decoratorsMethod
-                            move-result-object v0
-                            return-object v0
-                        """
-                    )
-                }
+            conversionContextClassDef.addPatchInterface(
+                EXTENSION_CONTEXT_INTERFACE,
+                "patch_getCommandEventDataDecorators",
+                decoratorsMethod,
             )
 
             // Give the extension the item that the decorator holds.

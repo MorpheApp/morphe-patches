@@ -27,7 +27,6 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.implementsType
-import app.morphe.patches.music.interaction.jam.installNativeAccessor
 import app.morphe.patches.music.interaction.jam.resolveProto
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
@@ -385,10 +384,7 @@ private fun addPhoneBrowseResponseInterface() {
             return-object p0
         """
     )
-    installNativeAccessor(
-        phoneBrowseResponseClass, "patch_getTabs", getTabsMethod,
-        resultType = findInterfaceMethod(PHONE_BROWSE_RESPONSE, "patch_getTabs").returnType,
-    )
+    phoneBrowseResponseClass.addPatchInterface(PHONE_BROWSE_RESPONSE, "patch_getTabs", getTabsMethod)
 
     phoneBrowseResponseClass.addPatchInterface(
         PHONE_BROWSE_RESPONSE,
@@ -506,7 +502,6 @@ private fun patchPhoneBrowseItem(): MethodReference {
     val formatTextMethod = formatTextFingerprint(titleField.type).originalMethod
 
     val phoneBrowseItemClass = mutableClassDefBy(phoneBrowseItemType)
-    phoneBrowseItemClass.interfaces.add(PHONE_BROWSE_ITEM)
     phoneBrowseItemClass.addPlaylistBrowseIdGetter(
         "patch_getPlaylistBrowseId",
         commandFields[0],
@@ -937,11 +932,5 @@ private fun patchCommandEncoder(encoder: MethodReference) {
         return-object v0
     """)
 }
-
-internal fun findInterfaceMethod(
-    interfaceType: String,
-    name: String,
-) = classDefBy(interfaceType).methods.singleOrNull { method -> method.name == name }
-    ?: throw PatchException("Could not resolve $name in $interfaceType")
 
 // endregion
