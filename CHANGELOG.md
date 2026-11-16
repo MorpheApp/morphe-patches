@@ -1,3 +1,26 @@
+## [2.3.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.7...v2.3.0-dev.8) (2026-11-16)
+
+### ✨ New Features
+
+* **YouTube - DeArrow:** Show the DeArrow icon on titles of videos that have only a DeArrow thumbnail ([7837240](https://github.com/MorpheApp/morphe-patches/commit/78372401e3e2f014693efc96ad155377243b2a0e))
+* **YouTube - Downloads:** Add "Show download in video menus" setting for the menus of videos that have no download item, such as videos only Premium members can download ([7d94aee](https://github.com/MorpheApp/morphe-patches/commit/7d94aee7e83f97acba9f8e79edc28b3de1abbd2c))
+* **YouTube - Downloads:** Add 1440p and 2160p (4k) video quality to in-app downloading ([#4890](https://github.com/MorpheApp/morphe-patches/issues/4890)) ([b33b2f7](https://github.com/MorpheApp/morphe-patches/commit/b33b2f7e75668ba6ffd8cd073b266bd6ba2f3322))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Ambient mode:** "Keep text readable" misses the second column on tablets ([#4874](https://github.com/MorpheApp/morphe-patches/issues/4874)) ([3817fea](https://github.com/MorpheApp/morphe-patches/commit/3817fea245eb4c19f36725d7d00e0e6d021886e7))
+* **YouTube - Ambient mode:** Enhanced Ambient mode turns a light page dark for a moment when a video opens ([#4873](https://github.com/MorpheApp/morphe-patches/issues/4873)) ([388437e](https://github.com/MorpheApp/morphe-patches/commit/388437ed342c484ea649b711f632708b047a0034))
+* **YouTube - Captions:** "Never show" auto captions still shows the captions that YouTube marks as forced, such as on some Shorts ([65c0de4](https://github.com/MorpheApp/morphe-patches/commit/65c0de4aaa5beb86d82f5652430a7de7ecc42c2c))
+* **YouTube - Captions:** "Never show" auto captions still shows the captions that YouTube turns on for the Shorts after the first one ([6fc3d3a](https://github.com/MorpheApp/morphe-patches/commit/6fc3d3a6c89a47d873b5a33fd8916c7457a497f9))
+* **YouTube - Feed card layout:** Cards without a label or with other content types, such as the YouTube Premium promotion, have no spacing on the accounts of a newer A/B test ([0fb6ce4](https://github.com/MorpheApp/morphe-patches/commit/0fb6ce413dc36003b1821d428d7882764296df3f))
+* **YouTube - Hide ads:** YouTube Premium promotions are not hidden when YouTube sends them as feed cards to the accounts of a newer A/B test ([98f73b6](https://github.com/MorpheApp/morphe-patches/commit/98f73b6e9032b01be5ab0fcb68394e3c14207e3d))
+* **YouTube - Hide layout components:** Explore menu items are not hidden in the More tab of Home, and hiding YouTube Premium also hides the other YouTube apps ([7749441](https://github.com/MorpheApp/morphe-patches/commit/7749441e5cdb19d697ee6c8c2ca56030751bae22))
+* **YouTube - Playlist improvements:** Wide drag handles and long press to reorder do nothing when the app language is not English ([89ff56e](https://github.com/MorpheApp/morphe-patches/commit/89ff56e42386716d9a69db934ab8da3b8932ec9f)), closes [#4666](https://github.com/MorpheApp/morphe-patches/issues/4666)
+* **YouTube - Return YouTube Dislike:** The segmented dislike button keeps an empty space when the dislikes could not be fetched ([5ac2571](https://github.com/MorpheApp/morphe-patches/commit/5ac2571bc302f31ad0d00729f6a0e9052b0f36a1))
+* **YouTube - Shorts:** Show the speed menu item and advance Shorts after a live stream with the live chat ([#4893](https://github.com/MorpheApp/morphe-patches/issues/4893)) ([7ed6daa](https://github.com/MorpheApp/morphe-patches/commit/7ed6daa6b0486ec7034f731ac69a87abc96ce8d6))
+* **YouTube - Spoof video streams:** Mobile Web gives up a video when the page of the website fails once, such as when its renderer is stopped or the page cannot be loaded ([e2b2526](https://github.com/MorpheApp/morphe-patches/commit/e2b2526f5deab98112e2a1a517802386dbd1c717))
+* **YouTube - Spoof video streams:** Mobile Web starts videos with the placeholder PoToken of the website instead of the PoToken of the video ([75cf531](https://github.com/MorpheApp/morphe-patches/commit/75cf531e27acd6e8f559c4640487ce22ec0cf189))
+
 ## [2.3.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.6...v2.3.0-dev.7) (2026-11-15)
 
 ### 🐛 Bug Fixes
