@@ -187,6 +187,21 @@ public class FeedCardLayoutPatch {
     private static final boolean ACTION_BUTTONS = LAYOUT == FeedCardLayout.CARDS_WITH_ACTION_BUTTONS;
 
     /**
+     * If the default layout has shown the cards of the newer A/B test, which get the padding of the card layout,
+     * see convertServerCard(). The lists then draw them as cards. The accounts with the older layouts never
+     * get these cards, so their lists are not changed.
+     */
+    private static volatile boolean newServerCardsShown;
+
+    /**
+     * @return If the lists draw the cards: with the card layout, or with the default layout
+     *         once the cards of the newer A/B test are shown.
+     */
+    private static boolean listsDrawCards() {
+        return CARD_LAYOUT || newServerCardsShown;
+    }
+
+    /**
      * Template names, followed by "|hash" or by a suffix and "|hash" (newer app versions), such as "-fe|hash".
      */
     private static final String CLASSIC_TEMPLATE = "video_lockup_with_attachment.eml";
@@ -728,13 +743,14 @@ public class FeedCardLayoutPatch {
      * Injection point.
      */
     public static byte[] setFeedCardLayout(byte[] bytes) {
-        if (LAYOUT == FeedCardLayout.DEFAULT) {
+        // The default layout changes only the cards of a newer A/B test, see convertServerCard().
+        if (LAYOUT == FeedCardLayout.DEFAULT && !CARD.search.matches(bytes)) {
             return bytes;
         }
 
         try {
             final String elementText = FeedVideoCardsPatch.getElementText(bytes);
-            if (!Utils.containsAny(elementText, elementTemplates)) {
+            if (LAYOUT != FeedCardLayout.DEFAULT && !Utils.containsAny(elementText, elementTemplates)) {
                 // The elements of the layout of the setting give the current version of its template:
                 // the uri and the fields are taken from the element, if it's an element of the template.
                 // After the first element, the elements are checked once in a while, to follow a new version.
@@ -787,7 +803,15 @@ public class FeedCardLayoutPatch {
             ElementModel model = componentType.getModel();
 
             ComponentType converted = null;
-            if (CARD_LAYOUT) {
+            if (LAYOUT == FeedCardLayout.DEFAULT) {
+                if (isTemplate(uri, CARD_TEMPLATE) && model.hasLockupModel()) {
+                    converted = convertServerCard(componentType, model);
+                    if (converted != null) {
+                        // The lists draw the cards of the newer A/B test from now on.
+                        newServerCardsShown = true;
+                    }
+                }
+            } else if (CARD_LAYOUT) {
                 if (isTemplate(uri, CLASSIC_TEMPLATE) && model.hasVideoWithContextModel()) {
                     VideoWithContextModel classic = model.getVideoWithContextModel();
                     toCard: {
@@ -1231,62 +1255,7 @@ public class FeedCardLayoutPatch {
                                     .setAccessibilityText(label + VIDEO_SHELF_ROW_LABEL_MARKER)))
                             .build();
                 } else if (isTemplate(uri, CARD_TEMPLATE) && model.hasLockupModel()) {
-                    // The cards that YouTube sends to the accounts of a newer A/B test, such as the videos, the playlists,
-                    // the Shorts and the Premium promotion, have no padding and fill the width with the list.
-                    // They get the padding and the labels of the converted cards, whatever their content type.
-                    LockupModel card = model.getLockupModel();
-                    LockupViewModel lockupViewModel = card.getViewModel().getLockupViewModel();
-                    RendererContext rendererContext = lockupViewModel.getRendererContext();
-                    String label = rendererContext.getAccessibilityContext().getLabel();
-                    LockupMetadataViewModel metadata = lockupViewModel.getMetadata().getLockupMetadataViewModel();
-                    final int contentType = lockupViewModel.getContentType();
-                    // The card layout without buttons removes the buttons of the videos and the Shorts that YouTube
-                    // sends as cards with buttons. The other cards, such as the playlists and the promotions,
-                    // keep their buttons, as their menu may not have their actions.
-                    if (!ACTION_BUTTONS && !isCardLabel(label) && metadata.getActionButtonsCount() > 0
-                            && (contentType == LOCKUP_CONTENT_TYPE_VIDEO || contentType == LOCKUP_CONTENT_TYPE_SHORT)) {
-                        boolean hasSaveButton = false;
-                        for (ActionButton button : metadata.getActionButtonsList()) {
-                            hasSaveButton |= button.hasAddToPlaylistButtonViewModel();
-                        }
-                        LockupMetadataViewModel.Builder withoutButtons = metadata.toBuilder().clearActionButtons();
-                        if (hasSaveButton) {
-                            ButtonViewModel menuButton = metadata.getMenuButton().getButtonViewModel();
-                            withoutButtons.setMenuButton(metadata.getMenuButton().toBuilder()
-                                    .setButtonViewModel(menuButton.toBuilder().setOnTap(
-                                            addSaveMenuItems(menuButton.getOnTap(), lockupViewModel.getContentId()))));
-                        }
-                        lockupViewModel = lockupViewModel.toBuilder()
-                                .setMetadata(lockupViewModel.getMetadata().toBuilder()
-                                        .setLockupMetadataViewModel(withoutButtons))
-                                .build();
-                        card = card.toBuilder()
-                                .setViewModel(card.getViewModel().toBuilder().setLockupViewModel(lockupViewModel))
-                                .build();
-                        converted = componentType.toBuilder()
-                                .setModel(model.toBuilder().setLockupModel(card))
-                                .build();
-                    }
-                    if (!card.hasPadding() && !isCardLabel(label)) {
-                        if (label.isEmpty()) {
-                            // Some cards have no label, such as the Premium promotion, so they get the label
-                            // of their title. Accessibility services read the label instead of the texts.
-                            label = AttributedText.parseFrom(lockupViewModel.getMetadata()
-                                    .getLockupMetadataViewModel().getTitle()).getContent();
-                        }
-                        if (lockupViewModel.getInlinePlayback().getInlinePlayback().isEmpty()) {
-                            label += NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
-                        }
-                        converted = componentType.toBuilder()
-                                .setModel(model.toBuilder().setLockupModel(card.toBuilder()
-                                        .setPadding(CARD_PADDING)
-                                        .setViewModel(card.getViewModel().toBuilder()
-                                                .setLockupViewModel(lockupViewModel.toBuilder()
-                                                        .setRendererContext(rendererContext.toBuilder()
-                                                                .setAccessibilityContext(rendererContext.getAccessibilityContext().toBuilder()
-                                                                        .setLabel(label + CARD_LABEL_MARKER)))))))
-                                .build();
-                    }
+                    converted = convertServerCard(componentType, model);
                 } else if (isTemplate(uri, COMPACT_PLAYLIST_TEMPLATE) && model.hasCompactPlaylistModel()) {
                     // The playlists in a row of a vertical shelf are drawn on the card of the shelf too.
                     CompactPlaylistModel playlist = model.getCompactPlaylistModel();
@@ -1493,7 +1462,7 @@ public class FeedCardLayoutPatch {
      */
     public static void onChildAdded(RecyclerView recyclerView, View child) {
         try {
-            if (!CARD_LAYOUT || child == null) {
+            if (!listsDrawCards() || child == null) {
                 return;
             }
 
@@ -1520,7 +1489,7 @@ public class FeedCardLayoutPatch {
      */
     public static int getCardColor(Drawable drawable, int color) {
         try {
-            if (CARD_LAYOUT && Color.alpha(color) == 255) {
+            if (listsDrawCards() && Color.alpha(color) == 255) {
                 boolean inCard = false;
                 View view = getDrawableView(drawable);
                 while (view != null) {
@@ -1540,7 +1509,8 @@ public class FeedCardLayoutPatch {
                     }
                     ViewParent parent = view.getParent();
                     if (parent instanceof RecyclerView recyclerView) {
-                        if (recyclerView.getId() == getFeedId()) {
+                        // The other items of the feed are cards only with the card layout.
+                        if (CARD_LAYOUT && recyclerView.getId() == getFeedId()) {
                             // The background is mounted before the content of the item,
                             // so a bar of chips is found only after the item is mounted.
                             if (view instanceof ViewGroup group && group.getChildCount() == 0) {
@@ -1576,7 +1546,7 @@ public class FeedCardLayoutPatch {
      */
     public static Object getDividerItem(@Nullable Object item) {
         try {
-            if (CARD_LAYOUT && item instanceof ElementItemInterface element) {
+            if (listsDrawCards() && item instanceof ElementItemInterface element) {
                 byte[] bytes = element.patch_getElementBytes();
                 if (bytes != null) {
                     Boolean card = cardElements.get(bytes);
@@ -1603,11 +1573,11 @@ public class FeedCardLayoutPatch {
      *
      * @param columnCount Columns of the section.
      * @param rowGapDp    Gap between the rows of the section.
-     * @return The gap between the rows, which is removed from the sections of one column with the card layout,
+     * @return The gap between the rows, which is removed from the sections of one column when the lists draw cards,
      *         as the cards have their own spacing.
      */
     public static float getSectionRowGap(int columnCount, float rowGapDp) {
-        return CARD_LAYOUT && columnCount == 1 ? 0 : rowGapDp;
+        return listsDrawCards() && columnCount == 1 ? 0 : rowGapDp;
     }
 
     /**
@@ -1720,8 +1690,9 @@ public class FeedCardLayoutPatch {
         if (outline == null && isShortsPivotRow(child)) {
             outline = FEED_ITEM_OUTLINE;
         }
-        // The items of the feed are cards, also the ones that YouTube sends as cards and are not converted.
-        if (outline == null && child.getParent() instanceof RecyclerView recyclerView
+        // The items of the feed are cards, also the ones that YouTube sends as cards and are not converted,
+        // only with the card layout.
+        if (outline == null && CARD_LAYOUT && child.getParent() instanceof RecyclerView recyclerView
                 && recyclerView.getId() == getFeedId() && !isChipBar(child)) {
             outline = FEED_ITEM_OUTLINE;
         }
@@ -2039,7 +2010,7 @@ public class FeedCardLayoutPatch {
      */
     public static void onListDraw(RecyclerView list, Canvas canvas) {
         try {
-            if (!CARD_LAYOUT || canvas == null) {
+            if (!listsDrawCards() || canvas == null) {
                 return;
             }
 
@@ -2869,6 +2840,75 @@ public class FeedCardLayoutPatch {
             }
         }
         return null;
+    }
+
+    /**
+     * The cards that YouTube sends to the accounts of a newer A/B test, such as the videos, the playlists,
+     * the Shorts and the Premium promotion, have no padding and fill the width with the list.
+     * They get the padding and the labels of the converted cards, whatever their content type,
+     * also with the default layout, which shows them as YouTube sends them otherwise.
+     * The cards of an older A/B test already have their padding, and are not changed.
+     *
+     * @return The converted card, or null if the card is not changed.
+     */
+    @Nullable
+    private static ComponentType convertServerCard(ComponentType componentType, ElementModel model)
+            throws InvalidProtocolBufferException {
+        ComponentType converted = null;
+        LockupModel card = model.getLockupModel();
+        LockupViewModel lockupViewModel = card.getViewModel().getLockupViewModel();
+        RendererContext rendererContext = lockupViewModel.getRendererContext();
+        String label = rendererContext.getAccessibilityContext().getLabel();
+        LockupMetadataViewModel metadata = lockupViewModel.getMetadata().getLockupMetadataViewModel();
+        final int contentType = lockupViewModel.getContentType();
+        // The card layout without buttons removes the buttons of the videos and the Shorts that YouTube
+        // sends as cards with buttons. The other cards, such as the playlists and the promotions,
+        // keep their buttons, as their menu may not have their actions.
+        if (LAYOUT == FeedCardLayout.CARDS && !isCardLabel(label) && metadata.getActionButtonsCount() > 0
+                && (contentType == LOCKUP_CONTENT_TYPE_VIDEO || contentType == LOCKUP_CONTENT_TYPE_SHORT)) {
+            boolean hasSaveButton = false;
+            for (ActionButton button : metadata.getActionButtonsList()) {
+                hasSaveButton |= button.hasAddToPlaylistButtonViewModel();
+            }
+            LockupMetadataViewModel.Builder withoutButtons = metadata.toBuilder().clearActionButtons();
+            if (hasSaveButton) {
+                ButtonViewModel menuButton = metadata.getMenuButton().getButtonViewModel();
+                withoutButtons.setMenuButton(metadata.getMenuButton().toBuilder()
+                        .setButtonViewModel(menuButton.toBuilder().setOnTap(
+                                addSaveMenuItems(menuButton.getOnTap(), lockupViewModel.getContentId()))));
+            }
+            lockupViewModel = lockupViewModel.toBuilder()
+                    .setMetadata(lockupViewModel.getMetadata().toBuilder()
+                            .setLockupMetadataViewModel(withoutButtons))
+                    .build();
+            card = card.toBuilder()
+                    .setViewModel(card.getViewModel().toBuilder().setLockupViewModel(lockupViewModel))
+                    .build();
+            converted = componentType.toBuilder()
+                    .setModel(model.toBuilder().setLockupModel(card))
+                    .build();
+        }
+        if (!card.hasPadding() && !isCardLabel(label)) {
+            if (label.isEmpty()) {
+                // Some cards have no label, such as the Premium promotion, so they get the label
+                // of their title. Accessibility services read the label instead of the texts.
+                label = AttributedText.parseFrom(lockupViewModel.getMetadata()
+                        .getLockupMetadataViewModel().getTitle()).getContent();
+            }
+            if (lockupViewModel.getInlinePlayback().getInlinePlayback().isEmpty()) {
+                label += NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
+            }
+            converted = componentType.toBuilder()
+                    .setModel(model.toBuilder().setLockupModel(card.toBuilder()
+                            .setPadding(CARD_PADDING)
+                            .setViewModel(card.getViewModel().toBuilder()
+                                    .setLockupViewModel(lockupViewModel.toBuilder()
+                                            .setRendererContext(rendererContext.toBuilder()
+                                                    .setAccessibilityContext(rendererContext.getAccessibilityContext().toBuilder()
+                                                            .setLabel(label + CARD_LABEL_MARKER)))))))
+                    .build();
+        }
+        return converted;
     }
 
     /**
