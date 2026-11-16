@@ -269,6 +269,39 @@ val permanentNsfwPatch = patch(
 
         // The sheet supplies its own navigateBack callback. Android Activity back
         // does not pop this screen, so use that callback for the decline action.
+        // Replace the blocked page with the native sheet, preserving the page before
+        // it. A plain sheet pop otherwise exposes the blocked profile underneath.
+        val replaceScreen = Fingerprint(
+            parameters = listOf("Landroid/content/Context;", "Lcom/reddit/screen/BaseScreen;"),
+            returnType = "V",
+            filters = listOf(methodCall(
+                parameters = listOf("Lcom/reddit/screen/BaseScreen;", "Lcom/reddit/screen/BaseScreen;"),
+                returnType = "V"
+            ))
+        ).method
+        Fingerprint(
+            returnType = "V",
+            filters = listOf(
+                newInstance("Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;"),
+                methodCall(parameters = listOf("Landroid/content/Context;", "Lcom/reddit/screen/BaseScreen;", "L"), returnType = "V")
+            )
+        ).apply {
+            method.apply {
+                val index = instructionMatches.last().index
+                val call = getInstruction<FiveRegisterInstruction>(index)
+                val register = findFreeRegister(index)
+                addInstructionsWithLabels(index, """
+                    invoke-static {}, $EXTENSION->isEnabled()Z
+                    move-result v$register
+                    if-eqz v$register, :nativeNavigation
+                    invoke-static { v${call.registerC}, v${call.registerD} }, $replaceScreen
+                    return-void
+                    :nativeNavigation
+                    nop
+                """)
+            }
+        }
+
         val navigateHome = Fingerprint(
             returnType = "V",
             filters = listOf(
