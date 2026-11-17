@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
@@ -66,16 +67,17 @@ public final class KeywordFiltersPreference extends Preference {
                 null,
                 str("morphe_keyword_filters_add"),
                 () -> showRuleDialog(rules, NEW_RULE, ""),
+                null,
+                str("morphe_settings_about_close"),
                 () -> {},
-                null,
-                null,
-                false
+                true
         );
         Dialog dialog = dialogPair.first;
 
         if (!rules.isEmpty()) {
             ListView listView = new ListView(context);
             listView.setAdapter(new ArrayAdapter<>(context, 0, rules) {
+                @NonNull
                 @Override
                 public View getView(int position, @Nullable View convertView, ViewGroup parent) {
                     TextView row = convertView instanceof TextView textView ? textView : new TextView(context);
