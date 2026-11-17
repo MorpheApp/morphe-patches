@@ -403,6 +403,14 @@ val miniplayerPatch = patch(
             )
         }
 
+        // The search results page uses its own flag, so going back to it shows the miniplayer.
+        SearchMiniplayerOnCloseHandlerFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                MINIPLAYER_DISABLED_SEARCH_FEATURE_KEY,
+                "$EXTENSION_CLASS->getMiniplayerOnCloseHandler(Z)Z"
+            )
+        }
+
         // region Horizontal drag
         if (!is_21_30_or_greater) {
             MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
