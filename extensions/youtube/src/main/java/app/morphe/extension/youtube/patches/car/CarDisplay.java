@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4933
  *
- * Original hard forked code:
+ * Adapted from
  * https://codeberg.org/JohnInNL/nl-morphe-patches
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
@@ -15,13 +15,10 @@ import android.companion.virtual.VirtualDevice;
 import android.companion.virtual.VirtualDeviceManager;
 import android.content.ContentProviderClient;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
@@ -34,9 +31,12 @@ import java.util.Locale;
 import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Finds whether YouTube is shown on a car display: a parked app on Android Auto, DriveDeck or another car host.
+ * Used by Change form factor to use the automotive layout and to auto-hide the navigation bar on a car display.
  * <p>
  * A parked app is an ordinary activity that the car host launches onto a display of its own, so the
  * activity itself shows where it is. Nothing here relies on a list of allowed packages or hosts:
@@ -64,9 +64,9 @@ public final class CarDisplay {
 
     /**
      * Car hosts that show the phone screen in the car by capturing it.
-     * Also declared in the manifest queries by the car display patch.
+     * Must be kept in sync with the manifest queries of the car display patch.
      */
-    static final String[] MIRRORING_CAR_HOSTS = {
+    private static final String[] MIRRORING_CAR_HOSTS = {
             "app.johninnl.drivedeck", "app.johninnl.drivedeck.dev",
             "app.seb3thehacker.gearslip", "app.seb3thehacker.gearslip.dev",
             "io.github.psychobarge.grapheneauto",
@@ -87,23 +87,13 @@ public final class CarDisplay {
     private CarDisplay() {
     }
 
-    /** Replaced by the patch option: {@code car} for car displays, {@code any} for any external display. */
-    public static String getConfiguredDetection() {
-        return "car";
-    }
-
-    /** Replaced with true by the automotive layout patch. */
-    public static boolean isLayoutPatchIncluded() {
-        return false;
-    }
-
-    /** Replaced with true by the auto-hide navigation bar patch. */
-    public static boolean isNavigationBarPatchIncluded() {
-        return false;
-    }
-
     public static boolean isOnCarDisplay() {
         return onCarDisplay;
+    }
+
+    private static boolean isEnabled() {
+        return Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY.get()
+                || Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR.get();
     }
 
     /**
@@ -111,6 +101,8 @@ public final class CarDisplay {
      * requests anything, so the first requests already use the layout of the display.
      */
     public static void onMainActivityCreate(Activity activity) {
+        if (!isEnabled()) return;
+
         try {
             activityRef = new WeakReference<>(activity);
             activityDisplayId = getDisplayId(activity);
@@ -131,6 +123,8 @@ public final class CarDisplay {
      * @param bottomBarContainer The container of the navigation bar.
      */
     public static void onBottomBarContainerCreated(View bottomBarContainer) {
+        if (!isEnabled()) return;
+
         try {
             // Moving the activity to another display changes its size, so the container is laid out again.
             bottomBarContainer.addOnLayoutChangeListener((view, left, top, right, bottom,
@@ -140,7 +134,7 @@ public final class CarDisplay {
                 }
             });
 
-            if (isNavigationBarPatchIncluded()) {
+            if (Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR.get()) {
                 CarNavigationBar.install(bottomBarContainer);
             }
         } catch (RuntimeException ex) {
@@ -149,8 +143,7 @@ public final class CarDisplay {
     }
 
     /**
-     * The car host can move an open activity between the phone and the car display. The layout comes
-     * from the requests the activity made, so with the layout patch the activity is recreated.
+     * The car host can move an open activity between the phone and the car display.
      */
     private static void checkDisplayChanged() {
         Activity activity = activityRef.get();
@@ -165,16 +158,23 @@ public final class CarDisplay {
         update(activity);
     }
 
-    /** The layout comes from the requests the activity made, so with the layout patch the activity is recreated. */
+    /**
+     * The layout comes from the requests the activity made, so with the automotive layout the activity
+     * is recreated. Otherwise only the navigation bar follows the display.
+     */
     private static void update(Activity activity) {
         final boolean wasOnCarDisplay = onCarDisplay;
         onCarDisplay = onCarScreen || mirroredToCar;
-        if (wasOnCarDisplay != onCarDisplay && isLayoutPatchIncluded()) {
-            new Handler(Looper.getMainLooper()).post(() -> {
+        if (wasOnCarDisplay == onCarDisplay) return;
+
+        if (Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY.get()) {
+            Utils.runOnMainThread(() -> {
                 if (!activity.isFinishing() && !activity.isDestroyed()) {
                     activity.recreate();
                 }
             });
+        } else if (Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR.get()) {
+            CarNavigationBar.onCarDisplayChanged();
         }
     }
 
@@ -183,13 +183,13 @@ public final class CarDisplay {
      * that mirrors the phone screen. The current state is reported right away, before the first requests.
      */
     private static void watchScreenCapture(Activity activity) {
-        if (Build.VERSION.SDK_INT < 35) return;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) return;
         try {
             WindowManager previous = recordingWindowManagerRef.get();
             if (previous != null && recordingCallback != null) {
                 previous.removeScreenRecordingCallback(recordingCallback);
             }
-            if (!isCarHostInstalled(activity)) {
+            if (!isCarHostInstalled()) {
                 recordingCallback = null;
                 return;
             }
@@ -207,20 +207,13 @@ public final class CarDisplay {
             recordingWindowManagerRef = new WeakReference<>(windowManager);
             mirroredToCar = state == WindowManager.SCREEN_RECORDING_STATE_VISIBLE;
         } catch (RuntimeException ex) {
-            // Without the permission, or not available on this device.
-            Logger.printDebug(() -> "Screen capture is not reported: " + ex);
+            Logger.printException(() -> "watchScreenCapture failure", ex);
         }
     }
 
-    private static boolean isCarHostInstalled(Context context) {
-        PackageManager packageManager = context.getPackageManager();
+    private static boolean isCarHostInstalled() {
         for (String host : MIRRORING_CAR_HOSTS) {
-            try {
-                packageManager.getPackageInfo(host, 0);
-                return true;
-            } catch (PackageManager.NameNotFoundException ignored) {
-                // Not installed.
-            }
+            if (Utils.isPackageEnabled(host)) return true;
         }
         return false;
     }
@@ -249,7 +242,7 @@ public final class CarDisplay {
         try {
             Display display = getDisplay(activity);
             if (display == null || display.getDisplayId() == Display.DEFAULT_DISPLAY) return false;
-            if ("any".equals(getConfiguredDetection())) return true;
+            if (Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_ANY.get()) return true;
 
             if (isCarUiMode(activity)) {
                 Logger.printDebug(() -> "Car display found by the car UI mode");

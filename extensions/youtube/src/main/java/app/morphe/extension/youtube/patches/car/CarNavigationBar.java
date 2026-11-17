@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4933
  *
- * Original hard forked code:
+ * Adapted from
  * https://codeberg.org/JohnInNL/nl-morphe-patches
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
@@ -37,6 +37,8 @@ import java.lang.ref.WeakReference;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * On a car display, hides the navigation bar after a few seconds and shows it again on a swipe up
@@ -53,9 +55,19 @@ final class CarNavigationBar {
     /** How far a swipe up from the bottom edge must travel to show the navigation bar. */
     private static final float SWIPE_DISTANCE_DP = 24;
 
+    /** The navigation bar of the latest main activity, which follows the moves to and from the car display. */
+    private static WeakReference<CarNavigationBar> currentRef = new WeakReference<>(null);
+
     private final WeakReference<View> containerRef;
     private final Handler handler = new Handler(Looper.getMainLooper());
-    private final Runnable hideRunnable = this::hide;
+    private final Runnable hideRunnable = () -> {
+        try {
+            hide();
+        } catch (RuntimeException ex) {
+            Logger.printException(() -> "hide failure", ex);
+        }
+    };
+    private final long hideDelayMilliseconds;
     private final float density;
 
     private boolean hidden;
@@ -68,11 +80,6 @@ final class CarNavigationBar {
     private float swipeStartX;
     private float swipeStartY;
 
-    /** Replaced by the patch option. */
-    static int getConfiguredHideDelaySeconds() {
-        return 5;
-    }
-
     static void install(View bottomBarContainer) {
         Activity activity = findActivity(bottomBarContainer.getContext());
         if (activity == null || activity.getWindow() == null) {
@@ -80,20 +87,43 @@ final class CarNavigationBar {
             return;
         }
         Window window = activity.getWindow();
-        CarNavigationBar hider = new CarNavigationBar(bottomBarContainer);
         Window.Callback callback = window.getCallback();
-        if (callback instanceof TouchObservingWindowCallback observing) {
-            observing.hider = hider;
-        } else if (callback != null) {
-            window.setCallback(new TouchObservingWindowCallback(callback, window, hider));
-        } else {
+        if (callback == null) {
+            Logger.printDebug(() -> "Window has no callback");
             return;
         }
-        hider.scheduleHide();
+
+        CarNavigationBar hider = new CarNavigationBar(bottomBarContainer);
+        if (callback instanceof TouchObservingWindowCallback observing) {
+            observing.hider.cancelHide();
+            observing.hider = hider;
+        } else {
+            window.setCallback(new TouchObservingWindowCallback(callback, window, hider));
+        }
+        currentRef = new WeakReference<>(hider);
+        if (CarDisplay.isOnCarDisplay()) {
+            hider.scheduleHide();
+        }
+    }
+
+    /** The activity moved to or from the car display, and is not recreated. */
+    static void onCarDisplayChanged() {
+        CarNavigationBar hider = currentRef.get();
+        if (hider == null) return;
+
+        if (CarDisplay.isOnCarDisplay()) {
+            hider.scheduleHide();
+        } else {
+            // The navigation bar is the one of the phone again.
+            hider.cancelHide();
+            hider.show();
+        }
     }
 
     private CarNavigationBar(View container) {
         containerRef = new WeakReference<>(container);
+        hideDelayMilliseconds = SeekBarPreference.clampToRange(
+                Settings.CHANGE_FORM_FACTOR_CAR_DISPLAY_HIDE_NAVIGATION_BAR_DELAY) * 1000L;
         density = container.getResources().getDisplayMetrics().density;
         ViewGroup.LayoutParams params = container.getLayoutParams();
         originalLayoutHeight = params == null ? ViewGroup.LayoutParams.WRAP_CONTENT : params.height;
@@ -110,17 +140,17 @@ final class CarNavigationBar {
 
     private void scheduleHide() {
         handler.removeCallbacks(hideRunnable);
-        handler.postDelayed(hideRunnable, Math.max(1, getConfiguredHideDelaySeconds()) * 1000L);
+        handler.postDelayed(hideRunnable, hideDelayMilliseconds);
+    }
+
+    private void cancelHide() {
+        handler.removeCallbacks(hideRunnable);
     }
 
     private void hide() {
         View container = containerRef.get();
-        if (container == null || hidden) return;
-        if (!CarDisplay.isOnCarDisplay()) {
-            // Checked again later, as the car host can move the app to the car display.
-            scheduleHide();
-            return;
-        }
+        if (container == null || hidden || !CarDisplay.isOnCarDisplay()) return;
+
         final int height = container.getHeight();
         if (container.getVisibility() != View.VISIBLE || height <= 0) {
             // Not laid out yet, or hidden by the app such as in the player.
@@ -148,7 +178,6 @@ final class CarNavigationBar {
                 container.setLayoutParams(params);
             }
         });
-        scheduleHide();
     }
 
     private void animateHeight(View container, int from, int to, @Nullable Runnable onEnd) {
@@ -183,13 +212,9 @@ final class CarNavigationBar {
     /** Observes the touches of the window, without consuming them. */
     void onTouchEvent(MotionEvent event, Window window) {
         try {
+            if (!CarDisplay.isOnCarDisplay()) return;
             View container = containerRef.get();
             if (container == null) return;
-            if (hidden && !CarDisplay.isOnCarDisplay()) {
-                // Moved off the car display: the navigation bar is the one of the phone again.
-                show();
-                return;
-            }
 
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN -> {
@@ -213,6 +238,7 @@ final class CarNavigationBar {
                     if (isSwipeUp(up, sideways, density)) {
                         swipeCandidate = false;
                         show();
+                        scheduleHide();
                     }
                 }
                 case MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
