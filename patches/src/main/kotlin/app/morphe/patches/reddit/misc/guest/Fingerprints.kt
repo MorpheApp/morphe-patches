@@ -10,6 +10,7 @@ package app.morphe.patches.reddit.misc.guest
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object FrontPageApplicationHasFinishedOnboardingFingerprint : Fingerprint(
@@ -23,5 +24,17 @@ internal object FrontPageApplicationHasFinishedOnboardingFingerprint : Fingerpri
             parameters = listOf(),
             location = MatchAfterWithin(10)
         )
+    )
+)
+
+/**
+ * RedditForceLoginGate.isLoginForced(). Reddit 2026.44.0+
+ */
+internal object IsLoginForcedFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(smali = "Lcom/reddit/session/Session;->isLoggedOut()Z"),
+        newInstance($$"Lcom/reddit/auth/login/forcelogin/RedditForceLoginGate$isLoginForced$")
     )
 )
