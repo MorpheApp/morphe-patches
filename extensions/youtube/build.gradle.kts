@@ -9,6 +9,7 @@ dependencies {
     testImplementation(libs.json)
     testImplementation(libs.morphe.extensions.library)
     testImplementation(project(":extensions:shared:library"))
+    testImplementation(project(":extensions:shared-youtube:library"))
 
     compileOnly(libs.annotation)
     compileOnly(libs.morphe.extensions.library)
