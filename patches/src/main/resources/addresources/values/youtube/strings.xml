@@ -1073,6 +1073,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_press_to_engage_title">Enable press to swipe gesture</string>
     <string name="morphe_swipe_press_to_engage_summary">Requires pressing and holding before a swipe gesture is recognized</string>
     <string name="morphe_swipe_haptic_feedback_title">Enable haptic feedback</string>
+    <string name="morphe_swipe_haptic_feedback_summary">Vibrates when pressing and holding starts a swipe gesture</string>
     <string name="morphe_swipe_save_and_restore_brightness_title">Save and restore brightness</string>
     <string name="morphe_swipe_save_and_restore_brightness_summary">Remembers brightness level when entering / exiting fullscreen mode</string>
     <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Enable auto-brightness gesture</string>
