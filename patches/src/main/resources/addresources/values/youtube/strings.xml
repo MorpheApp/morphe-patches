@@ -651,6 +651,10 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_feed_watch_later_button_title">Show Watch later button on thumbnails</string>
     <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos, with a check mark if the video is saved. Tapping it saves or removes the video, and tapping and holding it opens Save to playlist</string>
 
+    <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+    <string name="morphe_open_post_images_fullscreen_title">Open post images in fullscreen</string>
+    <string name="morphe_open_post_images_fullscreen_summary">Tapping an image of a post opens it in fullscreen, instead of the posts feed</string>
+
     <!-- interaction.postimages.postImageDownloadPatch -->
     <string name="morphe_post_image_download_title">Download post images</string>
     <string name="morphe_post_image_download_summary">A download button is shown next to the Share button of posts with images or GIFs, and a download item is added to their menu</string>
