@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4931
  *
- * Original hard forked code:
+ * Adapted from
  * https://codeberg.org/JohnInNL/nl-morphe-patches
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
@@ -29,7 +29,6 @@ import app.morphe.patcher.Patcher
 import app.morphe.patcher.PatcherConfig
 import app.morphe.patcher.apk.ApkUtils.applyTo
 import app.morphe.patcher.dex.SdkDexVerifier
-import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patches.all.misc.clone.cloneAppPatch

@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4931
  *
- * Original hard forked code:
+ * Adapted from
  * https://codeberg.org/JohnInNL/nl-morphe-patches
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
@@ -10,14 +10,14 @@
 
 package app.morphe.extension.music.patches;
 
+import static org.junit.Assert.assertEquals;
+
 import android.content.Context;
 import android.content.ContextWrapper;
 
 import org.junit.Test;
 
 import app.morphe.extension.music.patches.AndroidAutoAnyBrowserSupport.Request;
-
-import static org.junit.Assert.assertEquals;
 
 /** Exercises the production caller policy: any backend is admitted, but only with its real UID. */
 public class AndroidAutoAnyBrowserSupportTest {
