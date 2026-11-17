@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">Արտահանել ֆայլի մեջ</string>
   <string name="morphe_settings_export_file_success">Կարգավորումները հաջողությամբ արտահանվեցին</string>
   <string name="morphe_settings_export_file_failed">Կարգավորումների արտահանումը ձախողվեց</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Դուք օգտագործում եք Morphe Patches-ի վերջին տարբերակը՝ &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Դուք օգտագործում եք Morphe Patches-ի &lt;i&gt;%1$s&lt;/i&gt; տարբերակը&lt;br&gt;&lt;br&gt;&lt;b&gt;Հասանելի է թարմացում՝ &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Թարմացնելու համար օգտագործեք Morphe-ը՝ այս հավելվածը նորից փաթեթավորելու համար</string>
-  <string name="morphe_settings_about_links_dev_header">Նշում</string>
-  <string name="morphe_settings_about_links_dev_body">Այս տարբերակը նախնական թողարկում է, և դուք կարող եք հանդիպել անսպասելի խնդիրների</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Պատչեր</string>
+  <string name="morphe_settings_about_version">Տարբերակ</string>
+  <string name="morphe_settings_about_close">Փակել</string>
+  <string name="morphe_settings_about_prerelease">Նախնական թողարկում</string>
+  <string name="morphe_settings_about_update_available">Թարմացում հասանելի է. %s</string>
+  <string name="morphe_settings_about_update_hint">Պատչերը թարմացնելու համար օգտագործեք Morphe-ը՝ այս հավելվածը նորից պատչելու համար</string>
   <string name="morphe_settings_about_links_header">Պաշտոնական հղումներ</string>
   <string name="morphe_settings_about_links_website">Կայք</string>
   <string name="morphe_settings_about_links_donate">Նվիրաբերել</string>
   <string name="morphe_settings_about_links_translations">Թարգմանություններ</string>
-  <string name="morphe_settings_about_links_credits">Հեղինակներ</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Թարմացված է</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Թարմացում հասանելի է</string>
+  <string name="morphe_settings_about_contributors">Համագործակիցներ</string>
+  <string name="morphe_settings_about_contributors_period">Վերջին 12 ամիսը</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Աջակիցներ</string>
+  <string name="morphe_settings_about_supporters_summary">Աջակիցները Open Collective-ում</string>
+  <string name="morphe_settings_about_supporters_become">Դարձեք աջակից</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Եվ ևս %s հոգի</string>
+  <string name="morphe_settings_about_people_unavailable">Չհաջողվեց բեռնել ցուցակը</string>
   <string name="morphe_settings_about_contributors_current">Ընթացիկ մշակում</string>
   <string name="morphe_settings_about_contributors_prior">Նախկին մշակում</string>
   <string name="morphe_settings_about_links_morphe">Ակտիվ մշակում</string>

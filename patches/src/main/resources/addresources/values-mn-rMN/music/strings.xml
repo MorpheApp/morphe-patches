@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Татаж авах цэсэнд гаднах татаж авагчийг ашиглах</string>
   <string name="morphe_external_downloader_menu_summary">Цэсийн Татаж авах сонголт нь гаднах татаж авагчийг нээх болно</string>
+  <string name="morphe_download_force_4k_title">4K татах боломжийг албадан идэвхэсүүлэх</string>
+  <string name="morphe_download_force_4k_summary">YouTube Music энэ төхөөрөмж дээр тоглуулах боломжгүй гэж шийдсэн байсан ч 1440p болон 4K татаж авсан файлуудыг хадгална</string>
   <string name="morphe_export_download_folder_title">Татаж авсан файлуудыг экспортлох</string>
   <string name="morphe_export_download_folder_summary">"Апп-ны татаж авсан цэс ашиглан апп-д хадгалсан дуу, видеог төхөөрөмжийн санах ой руу экспортлоно. Экспортын хавтасыг өөрчлөхийн тулд дарна уу
 

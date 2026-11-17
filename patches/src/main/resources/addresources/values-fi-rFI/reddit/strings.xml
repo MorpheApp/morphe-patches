@@ -35,11 +35,15 @@ Käyttääksesi vanhempaa versiota, sinun on &lt;b&gt;poistettava&lt;/b&gt; Redd
   <string name="morphe_hide_discover_button_title">Piilota Löydä tai Yhteisöt-painike</string>
   <string name="morphe_hide_games_button_title">Piilota Pelit-painike</string>
   <string name="morphe_screen_sidebar_title">Sivupalkki</string>
-  <string name="morphe_hide_recently_visited_shelf_title">Piilota Viimeksi vierailtu -hylly</string>
+  <string name="morphe_hide_popular_shelf_title">Piilota Suositut</string>
+  <string name="morphe_hide_latest_shelf_title">Piilota Uusimmat</string>
+  <string name="morphe_hide_discover_communities_shelf_title">Piilota Löydä yhteisöjä</string>
+  <string name="morphe_hide_start_a_community_shelf_title">Piilota Luo yhteisö</string>
   <string name="morphe_hide_games_on_reddit_shelf_title">Piilota Pelit Redditissä -hylly</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Piilota Viimeksi vierailtu -hylly</string>
   <string name="morphe_hide_reddit_pro_shelf_title">Piilota Reddit Pro -hylly</string>
-  <string name="morphe_hide_about_shelf_title">Piilota Tietoja-hylly</string>
   <string name="morphe_hide_resources_shelf_title">Piilota Resurssit-hylly</string>
+  <string name="morphe_hide_about_shelf_title">Piilota Tietoja-hylly</string>
   <string name="morphe_screen_layout_title">Ulkoasu</string>
   <string name="morphe_copy_text_title">Kopioi teksti</string>
   <string name="morphe_copy_text_summary">Mahdollistaa tekstin valitsemisen ja kopioimisen julkaisuissa ja kommenteissa. Poistaa kommenttien tiivistämisen käytöstä</string>

@@ -78,6 +78,7 @@ Veenduge, et paketinimi on õige ja rakendus on installitud"</string>
   <string name="morphe_export_download_folder_missing">Eksportkausta %s ei leitud</string>
   <string name="morphe_export_download_flyout_title">Ekspordi seadmesse</string>
   <string name="morphe_export_download_canceled">Eksportimine tühistati</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Customiseeritud</string>
   <string name="morphe_custom_branding_icon_title">Rakenduse ikoon</string>
@@ -133,7 +134,7 @@ Puudutage OK, et avada Android System WebView."</string>
 Video esitus võib ebaõnnestuda, kuni Android System WebView on uuendatud uusimale versioonile.
 
 Puudutage OK, et avada Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ära rohkem näidata</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ära rohkem näita</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView pole installitud. Installige see video esituse parandamiseks</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -257,8 +258,8 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automaatne</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Jäta meelde video kvaliteet</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Rakendab teie käsitsi valitud kvaliteeti kõigile tulevasele videolegile</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Salvesta video kvaliteet</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Rakendab teie käsitsi valitud kvaliteeti kõigile tulevastele videotele</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Kvaliteedi muutmiste teavitused</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary">Kuvab teavituse, kui uus vaikimiskvaliteet on salvestatud</string>
   <string name="morphe_video_quality_default_wifi_title">Vaikimisi videokvaliteet Wi-Fi võrgus</string>

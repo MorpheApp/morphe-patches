@@ -74,18 +74,27 @@ Da biste preveli nove jezike ili poboljšali postojeće prevode, posjetite morph
   <string name="morphe_settings_export_file">Izvezi u datoteku</string>
   <string name="morphe_settings_export_file_success">Postavke su uspješno izvezene</string>
   <string name="morphe_settings_export_file_failed">Neuspješno izvoženje postavki</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Koristite najnoviju verziju Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Koristite Morphe Patches verziju &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostupno ažuriranje: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Da ažurirate svoje zakrpe, koristite Morphe kako biste ponovo zakrpili ovu aplikaciju</string>
-  <string name="morphe_settings_about_links_dev_header">Napomena</string>
-  <string name="morphe_settings_about_links_dev_body">Ova verzija je pred-izdanje i možete naići na neočekivane probleme</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Zakrpe</string>
+  <string name="morphe_settings_about_version">Verzija</string>
+  <string name="morphe_settings_about_close">Zatvori</string>
+  <string name="morphe_settings_about_prerelease">Predizdanje</string>
+  <string name="morphe_settings_about_update_available">Dostupno ažuriranje: %s</string>
+  <string name="morphe_settings_about_update_hint">Da biste ažurirali svoje zakrpe, koristite Morphe za ponovno zakrpljivanje ove aplikacije</string>
   <string name="morphe_settings_about_links_header">Zvanični linkovi</string>
   <string name="morphe_settings_about_links_website">Web stranica</string>
   <string name="morphe_settings_about_links_donate">Doniraj</string>
   <string name="morphe_settings_about_links_translations">Prijevodi</string>
-  <string name="morphe_settings_about_links_credits">Zasluge</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ažurirano</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Dostupno ažuriranje</string>
+  <string name="morphe_settings_about_contributors">Kontributori</string>
+  <string name="morphe_settings_about_contributors_period">Posljednjih 12 mjeseci</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Prilikaši</string>
+  <string name="morphe_settings_about_supporters_summary">Podrška na Open Collectivu</string>
+  <string name="morphe_settings_about_supporters_become">Postani prilaikaš</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">I još %s</string>
+  <string name="morphe_settings_about_people_unavailable">Lista nije mogla biti učitana</string>
   <string name="morphe_settings_about_contributors_current">Trenutni razvoj</string>
   <string name="morphe_settings_about_contributors_prior">Prethodni razvoj</string>
   <string name="morphe_settings_about_links_morphe">Aktivni razvoj</string>

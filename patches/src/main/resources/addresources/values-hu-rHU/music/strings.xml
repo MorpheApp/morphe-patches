@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Külső letöltő használata a Letöltés menüben</string>
   <string name="morphe_external_downloader_menu_summary">A menük Letöltés lehetősége a külső letöltőt nyitja meg</string>
+  <string name="morphe_download_force_4k_title">4K letöltési elérhetőség kényszerítése</string>
+  <string name="morphe_download_force_4k_summary">Menti a 1440p és 4K letöltéseket akkor is, ha a YouTube Music úgy dönti, hogy ez az eszköz nem képes lejátszani őket</string>
   <string name="morphe_export_download_folder_title">Letöltések exportálása</string>
   <string name="morphe_export_download_folder_summary">"Exportálja az alkalmazáson belül mentett dalokat és videókat a készülék tárolójába a letöltések legördülő menüjével. Koppintson a mappa módosításához
 

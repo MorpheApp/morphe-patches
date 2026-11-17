@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">İndirme menüsü için harici indirici kullan</string>
   <string name="morphe_external_downloader_menu_summary">Menülerdeki İndir seçeneği harici indiricinizi açar</string>
+  <string name="morphe_download_force_4k_title">4K indirme kullanılabilirliğini zorla</string>
+  <string name="morphe_download_force_4k_summary">YouTube Music bu cihazın bunları oynatamayacağına karar verse bile 1440p ve 4K indirmeleri kaydeder</string>
   <string name="morphe_export_download_folder_title">İndirmeleri dışa aktar</string>
   <string name="morphe_export_download_folder_summary">"Uygulama içi indirmeler açılır menüsünü kullanarak uygulama içinde kaydedilen şarkıları ve videoları cihaz depolama alanınıza dışa aktarın. Dışa aktarma klasörünü değiştirmek için dokunun
 

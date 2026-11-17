@@ -74,18 +74,27 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_settings_export_file">Easpórtáil chuig comhad</string>
   <string name="morphe_settings_export_file_success">Easpórtáladh na socruithe go rathúil</string>
   <string name="morphe_settings_export_file_failed">Theip ar shocruithe a easpórtáil</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Tá tú ag baint úsáide as an leagan is déanaí de Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Tá tú ag baint úsáide as leagan &lt;i&gt;%1$s&lt;/i&gt; Morphe Patches&lt;br&gt;&lt;br&gt;&lt;b&gt;Nuashonrú ar fáil: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Chun do phaisteanna a nuashonrú, bain úsáid as Morphe chun an aip seo a athphaisteáil</string>
-  <string name="morphe_settings_about_links_dev_header">Nóta</string>
-  <string name="morphe_settings_about_links_dev_body">Is réamh-eisiúint é an leagan seo agus d\'fhéadfadh fadhbanna gan choinne a bheith agat</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Paistí</string>
+  <string name="morphe_settings_about_version">Leagan</string>
+  <string name="morphe_settings_about_close">Dún</string>
+  <string name="morphe_settings_about_prerelease">Réamh-eisiúint</string>
+  <string name="morphe_settings_about_update_available">Nuashonrú ar fáil: %s</string>
+  <string name="morphe_settings_about_update_hint">Chun do phataí a nuashonrú, úsáid Morphe chun an app seo a phataí arís</string>
   <string name="morphe_settings_about_links_header">Naisc oifigiúla</string>
   <string name="morphe_settings_about_links_website">Suíomh Gréasáin</string>
   <string name="morphe_settings_about_links_donate">Tabhair Síntiús</string>
   <string name="morphe_settings_about_links_translations">Aistriúcháin</string>
-  <string name="morphe_settings_about_links_credits">Creidmheasanna</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Suas chun dáta</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Nuashonrú ar fáil</string>
+  <string name="morphe_settings_about_contributors">Cuirthaí</string>
+  <string name="morphe_settings_about_contributors_period">12 mhí anuas</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Tacaí</string>
+  <string name="morphe_settings_about_supporters_summary">Tacaí ar Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Éirigh ina thacaí</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Agus %s eile</string>
+  <string name="morphe_settings_about_people_unavailable">Níorbh fhéidir an liosta a luchtú</string>
   <string name="morphe_settings_about_contributors_current">Forbairt reatha</string>
   <string name="morphe_settings_about_contributors_prior">Forbairt roimhe seo</string>
   <string name="morphe_settings_about_links_morphe">Forbairt ghníomhach</string>

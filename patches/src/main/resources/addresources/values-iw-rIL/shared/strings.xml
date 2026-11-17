@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">ייצוא לקובץ</string>
   <string name="morphe_settings_export_file_success">ההגדרות יוצאו בהצלחה</string>
   <string name="morphe_settings_export_file_failed">ייצוא ההגדרות נכשל</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">אתה משתמש בגרסה האחרונה של Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">אתה משתמש בגרסת Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;עדכון זמין: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;כדי לעדכן את התיקונים שלך, השתמש ב-Morphe כדי לתקן מחדש את האפליקציה הזו</string>
-  <string name="morphe_settings_about_links_dev_header">הערה</string>
-  <string name="morphe_settings_about_links_dev_body">גרסה זו היא גרסה מקדימה וייתכן שתיתקל בבעיות בלתי צפויות</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">טלאים</string>
+  <string name="morphe_settings_about_version">גרסה</string>
+  <string name="morphe_settings_about_close">סגור</string>
+  <string name="morphe_settings_about_prerelease">גרסת Pre-release</string>
+  <string name="morphe_settings_about_update_available">עדכון זמין: %s</string>
+  <string name="morphe_settings_about_update_hint">כדי לעדכן את הפאצ\'ים שלך, השתמש ב-Morphe כדי להחיל את הפאצ\'ים מחדש על אפליקציה זו</string>
   <string name="morphe_settings_about_links_header">קישורים רשמיים</string>
   <string name="morphe_settings_about_links_website">אתר אינטרנט</string>
   <string name="morphe_settings_about_links_donate">תרומה</string>
   <string name="morphe_settings_about_links_translations">תרגומים</string>
-  <string name="morphe_settings_about_links_credits">קרדיטים</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">עדכני</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">עדכון Morphe זמין</string>
+  <string name="morphe_settings_about_contributors">תורמים</string>
+  <string name="morphe_settings_about_contributors_period">12 החודשים האחרונים</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">תומכים</string>
+  <string name="morphe_settings_about_supporters_summary">תומכים ב-Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">הפוך לתומך</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">ועוד %s נוספים</string>
+  <string name="morphe_settings_about_people_unavailable">לא ניתן היה לטעון את הרשימה</string>
   <string name="morphe_settings_about_contributors_current">פיתוח נוכחי</string>
   <string name="morphe_settings_about_contributors_prior">פיתוח קודם</string>
   <string name="morphe_settings_about_links_morphe">פיתוח פעיל</string>

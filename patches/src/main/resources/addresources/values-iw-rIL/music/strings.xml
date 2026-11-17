@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">השתמש במוריד חיצוני לתפריט ההורדות</string>
   <string name="morphe_external_downloader_menu_summary">אפשרות ההורדה בתפריטים תפתח את המוריד החיצוני שלך במקום</string>
+  <string name="morphe_download_force_4k_title">כפה זמינות הורדה ב-4K</string>
+  <string name="morphe_download_force_4k_summary">שומר הורדות ב-1440p וב-4K גם אם YouTube Music מחליט שמכשיר זה אינו יכול להריץ אותן</string>
   <string name="morphe_export_download_folder_title">ייצוא הורדות</string>
   <string name="morphe_export_download_folder_summary">"ייצוא שירים וסרטונים שנשמרו באפליקציה לאחסון במכשיר באמצעות תפריט ההורדות באפליקציה. הקש לשינוי תיקיית הייצוא
 

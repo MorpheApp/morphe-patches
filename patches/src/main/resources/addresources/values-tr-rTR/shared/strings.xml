@@ -74,18 +74,27 @@ Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.softwa
   <string name="morphe_settings_export_file">Dosyaya aktar</string>
   <string name="morphe_settings_export_file_success">Ayarlar başarıyla dışa aktarıldı</string>
   <string name="morphe_settings_export_file_failed">Ayarlar dışa aktarılamadı</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Morphe Patches &lt;i&gt;%s&lt;/i&gt; sürümünü kullanıyorsunuz</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches &lt;i&gt;%1$s&lt;/i&gt; sürümünü kullanıyorsunuz&lt;br&gt;&lt;br&gt;&lt;b&gt;Güncelleme mevcut: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Yamaları güncellemek için Morphe uygulamasını kullanın</string>
-  <string name="morphe_settings_about_links_dev_header">Not</string>
-  <string name="morphe_settings_about_links_dev_body">Bu sürüm bir ön sürümdür ve beklenmeyen sorunlar yaşayabilirsiniz</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Yamalar</string>
+  <string name="morphe_settings_about_version">Sürüm</string>
+  <string name="morphe_settings_about_close">Kapat</string>
+  <string name="morphe_settings_about_prerelease">Ön sürüm</string>
+  <string name="morphe_settings_about_update_available">Güncelleme mevcut: %s</string>
+  <string name="morphe_settings_about_update_hint">Yamalarınızı güncellemek için, bu uygulamayı yeniden yamalamak üzere Morphe\'yi kullanın</string>
   <string name="morphe_settings_about_links_header">Resmî bağlantılar</string>
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Bağış</string>
   <string name="morphe_settings_about_links_translations">Çeviriler</string>
-  <string name="morphe_settings_about_links_credits">Katkıda bulunanlar</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Güncel</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Güncelleme mevcut</string>
+  <string name="morphe_settings_about_contributors">Katkıda Bulunanlar</string>
+  <string name="morphe_settings_about_contributors_period">Son 12 ay</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Destekçiler</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective\'deki destekçiler</string>
+  <string name="morphe_settings_about_supporters_become">Destekçi olun</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Ve %s kişi daha</string>
+  <string name="morphe_settings_about_people_unavailable">Liste yüklenemedi</string>
   <string name="morphe_settings_about_contributors_current">MEVCUT GELİŞTİRME</string>
   <string name="morphe_settings_about_contributors_prior">ÖNCEKİ GELİŞTİRME</string>
   <string name="morphe_settings_about_links_morphe">Aktif Geliştirme</string>

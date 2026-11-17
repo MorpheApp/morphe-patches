@@ -74,18 +74,27 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_settings_export_file">Exportovat do souboru</string>
   <string name="morphe_settings_export_file_success">Nastavení úspěšně exportováno</string>
   <string name="morphe_settings_export_file_failed">Nepodařilo se exportovat nastavení</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Používáte nejnovější verzi Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Používáte verzi Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Je dostupná aktualizace: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pro aktualizaci vašich patchů použijte aplikaci Morphe k opětovnému patchování této aplikace</string>
-  <string name="morphe_settings_about_links_dev_header">Poznámka</string>
-  <string name="morphe_settings_about_links_dev_body">Tato verze je předběžná a můžete narazit na neočekávané problémy</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Záplaty</string>
+  <string name="morphe_settings_about_version">Verze</string>
+  <string name="morphe_settings_about_close">Zavřít</string>
+  <string name="morphe_settings_about_prerelease">Předvydání</string>
+  <string name="morphe_settings_about_update_available">K dispozici je aktualizace: %s</string>
+  <string name="morphe_settings_about_update_hint">Chcete-li aktualizovat své patche, použijte Morphe k opětovnému patchování této aplikace</string>
   <string name="morphe_settings_about_links_header">Oficiální odkazy</string>
   <string name="morphe_settings_about_links_website">Webová stránka</string>
   <string name="morphe_settings_about_links_donate">Darovat</string>
   <string name="morphe_settings_about_links_translations">Překlady</string>
-  <string name="morphe_settings_about_links_credits">Kredity</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Aktuální</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Dostupná aktualizace</string>
+  <string name="morphe_settings_about_contributors">Přispěvatelé</string>
+  <string name="morphe_settings_about_contributors_period">Posledních 12 měsíců</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Přispěvatelé</string>
+  <string name="morphe_settings_about_supporters_summary">Podporovatelé na Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Stát se přispěvatelem</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">A dalších %s</string>
+  <string name="morphe_settings_about_people_unavailable">Seznam se nepodařilo načíst</string>
   <string name="morphe_settings_about_contributors_current">Současný vývoj</string>
   <string name="morphe_settings_about_contributors_prior">Předchozí vývoj</string>
   <string name="morphe_settings_about_links_morphe">Aktivní vývoj</string>

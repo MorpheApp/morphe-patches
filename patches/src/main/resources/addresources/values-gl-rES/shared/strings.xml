@@ -74,18 +74,27 @@ Para traducir novas linguas ou mellorar as traducións existentes, visita morphe
   <string name="morphe_settings_export_file">Exportar a ficheiro</string>
   <string name="morphe_settings_export_file_success">Ajustes exportados con éxito</string>
   <string name="morphe_settings_export_file_failed">Fallo ao exportar os axustes</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Estás usando a versión máis recente de Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Estás usando a versión &lt;i&gt;%1$s&lt;/i&gt; de Morphe Patches&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización dispoñible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar os teus parches, usa Morphe para volver a parchear esta aplicación</string>
-  <string name="morphe_settings_about_links_dev_header">Nota</string>
-  <string name="morphe_settings_about_links_dev_body">Esta é una versión preliminar e podería experimentar problemas inesperados</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Parches</string>
+  <string name="morphe_settings_about_version">Versión</string>
+  <string name="morphe_settings_about_close">Pechar</string>
+  <string name="morphe_settings_about_prerelease">Pre-lanzamento</string>
+  <string name="morphe_settings_about_update_available">Actualización dispoñible: %s</string>
+  <string name="morphe_settings_about_update_hint">Para actualizar os teus parches, usa Morphe para volver parchear esta aplicación</string>
   <string name="morphe_settings_about_links_header">Ligazóns oficiais</string>
   <string name="morphe_settings_about_links_website">Sitio web</string>
   <string name="morphe_settings_about_links_donate">Doar</string>
   <string name="morphe_settings_about_links_translations">Traducións</string>
-  <string name="morphe_settings_about_links_credits">Créditos</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ao día</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Actualización dispoñible</string>
+  <string name="morphe_settings_about_contributors">Contribuidores</string>
+  <string name="morphe_settings_about_contributors_period">Últimos 12 meses</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Supports</string>
+  <string name="morphe_settings_about_supporters_summary">Apoiadores en Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Converteute nun apoiador</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">E %s máis</string>
+  <string name="morphe_settings_about_people_unavailable">Non foi posible cargar a lista</string>
   <string name="morphe_settings_about_contributors_current">Desenvolvemento actual</string>
   <string name="morphe_settings_about_contributors_prior">Desenvolvemento previo</string>
   <string name="morphe_settings_about_links_morphe">Desenvolvemento activo</string>

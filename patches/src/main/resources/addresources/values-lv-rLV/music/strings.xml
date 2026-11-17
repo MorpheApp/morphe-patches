@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Izmantot ārējo lejupielādētāju Lejupielādēt izvēlnē</string>
   <string name="morphe_external_downloader_menu_summary">Izvēlnes Lejupielādēt opcija tā vietā atvērs jūsu ārējo lejupielādētāju</string>
+  <string name="morphe_download_force_4k_title">Piespiedt 4K lejupielādes pieejamību</string>
+  <string name="morphe_download_force_4k_summary">Saglabā 1440p un 4K lejupielādes, pat ja YouTube Music izlemj, ka šī ierīce tās nevar atskaņot</string>
   <string name="morphe_export_download_folder_title">Eksportēt lejupielādes</string>
   <string name="morphe_export_download_folder_summary">"Eksportēj lietotnē saglabātās dziesmas un video uz ierīces paziņojumu, izmantojot lietotnes lejupielādēšanas izvēlni. Pieskarieties, lai mainītu eksporta
 

@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Користете надворешен преземач за менито за Преземање</string>
   <string name="morphe_external_downloader_menu_summary">Опцијата за Преземање во менијата наместо тоа го отвора вашиот надворешен преземач</string>
+  <string name="morphe_download_force_4k_title">Присилно овозможи преземање во 4K</string>
+  <string name="morphe_download_force_4k_summary">Зачувува преземања во 1440p и 4K дури и ако YouTube Music одлучи дека овој уред не може да ги репродуцира</string>
   <string name="morphe_export_download_folder_title">Експортирај преземања</string>
   <string name="morphe_export_download_folder_summary">"Експортирајте ги зачуваните песни и видеа во апликацијата во складиштето на вашиот уред преку менито за преземања во апликацијата. Допрете за да ја промените папката за
 

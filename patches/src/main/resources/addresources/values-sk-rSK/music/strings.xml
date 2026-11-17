@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Použiť externý sťahovač pre menu Sťahovanie</string>
   <string name="morphe_external_downloader_menu_summary">Možnosť stiahnuť v menu otvorí váš externý sťahovač</string>
+  <string name="morphe_download_force_4k_title">Vynutiť dostupnosť sťahovania vo 4K</string>
+  <string name="morphe_download_force_4k_summary">Ukladá sťahovania vo 1440p a 4K aj v prípade, že YouTube Music rozhodne, že toto zariadenie ich nedokáže prehrať</string>
   <string name="morphe_export_download_folder_title">Exportovať stiahnuté súbory</string>
   <string name="morphe_export_download_folder_summary">"Exportujte v aplikácii uložené skladby a videá do úložiska vášho zariadenia pomocou vysúvacieho menu s sťahovačkami v aplikácii. Ťuknutím zmeníte export
 
