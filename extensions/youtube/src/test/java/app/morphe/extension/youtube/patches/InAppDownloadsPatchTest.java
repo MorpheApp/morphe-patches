@@ -26,10 +26,10 @@ public class InAppDownloadsPatchTest {
     @Test
     public void keepsEverySupportedAudioTrackSavable() {
         OfflineStreamingData original = OfflineStreamingData.newBuilder()
-                .addAdaptiveFormats(format("video/mp4; codecs=\\\"avc1.640028\\\""))
-                .addAdaptiveFormats(format("audio/mp4; codecs=\\\"mp4a.40.2\\\""))
-                .addAdaptiveFormats(format("audio/mp4; codecs=\\\"mp4a.40.2\\\""))
-                .addAdaptiveFormats(format("audio/webm; codecs=\\\"opus\\\""))
+                .addAdaptiveFormats(format("video/mp4; codecs=\"avc1.640028\""))
+                .addAdaptiveFormats(format("audio/mp4; codecs=\"mp4a.40.2\""))
+                .addAdaptiveFormats(format("audio/mp4; codecs=\"mp4a.40.2\""))
+                .addAdaptiveFormats(format("audio/webm; codecs=\"opus\""))
                 .addAdaptiveFormats(format(""))
                 .build();
 
@@ -45,7 +45,7 @@ public class InAppDownloadsPatchTest {
 
     @Test
     public void keepsOnlyTheExplicitlySelectedAudioTrackWhenMetadataMatches() {
-        OfflineStreamFormat video = format("video/mp4; codecs=\\\"avc1.640028\\\"");
+        OfflineStreamFormat video = format("video/mp4; codecs=\"avc1.640028\"");
         OfflineStreamFormat english = format("audio/mp4")
                 .toBuilder()
                 .setAudioTrack(OfflineAudioTrack.newBuilder().setId("en-us.10"))
