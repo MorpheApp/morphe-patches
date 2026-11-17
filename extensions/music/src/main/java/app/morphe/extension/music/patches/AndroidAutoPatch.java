@@ -243,6 +243,8 @@ public final class AndroidAutoPatch {
     private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
     private static final String PODCASTS_MEDIA_ID = "morphe:aa:podcasts";
     private static final String SPEED_DIAL_MEDIA_ID = "morphe:aa:speed-dial";
+    private static final String THIRD_PARTY_HOME_MEDIA_ID = "morphe:aa:home";
+    private static final String THIRD_PARTY_LIBRARY_MEDIA_ID = "morphe:aa:library";
 
     private static final String HOME_SHELF_PREFIX = "morphe-aa-home://section/";
     private static final String PODCAST_COLLECTION_PREFIX = "morphe-aa-podcast://collection/";
@@ -252,6 +254,8 @@ public final class AndroidAutoPatch {
     public static final String PLAYLISTS_TITLE_RESOURCE_STRING
             = ResourceUtils.getString("library_playlists_shelf_title");
     private static final String PODCASTS_TITLE_RESOURCE_NAME = "offline_podcasts_shelf_title";
+    private static final String HOME_TITLE_RESOURCE_NAME = "pivot_home";
+    private static final String LIBRARY_TITLE_RESOURCE_NAME = "pivot_library";
 
     // Return collected playlists when this timeout expires.
     private static final int PLAYLIST_TIMEOUT_MS = 30_000;
@@ -403,7 +407,20 @@ public final class AndroidAutoPatch {
                 new HomeLoad(request, HomeLoad.Mode.SHELF, shelfTitle, Collections.emptyList()).start();
                 return true;
             }
-            if (requestedMediaId.equals(libraryMediaId)) {
+            if (AndroidAutoThirdPartyAppsPatch.isAllowedMediaBrowser(requestedMediaId)) {
+                // Root of a third-party app. YTM has no tabs for it, so offer Home and Library.
+                PreparedItems tabs = new PreparedItems();
+                tabs.add(THIRD_PARTY_HOME_MEDIA_ID, ResourceUtils.getString(HOME_TITLE_RESOURCE_NAME), "", "");
+                tabs.add(THIRD_PARTY_LIBRARY_MEDIA_ID, ResourceUtils.getString(LIBRARY_TITLE_RESOURCE_NAME), "", "");
+                request.patch_deliverBrowseItems(tabs);
+                return true;
+            }
+            if (requestedMediaId.equals(THIRD_PARTY_HOME_MEDIA_ID)) {
+                // Third-party apps do not receive YTM's Auto Home, so there are no podcast folders to add.
+                new HomeLoad(request, HomeLoad.Mode.HOME, "", Collections.emptyList()).start();
+                return true;
+            }
+            if (requestedMediaId.equals(libraryMediaId) || requestedMediaId.equals(THIRD_PARTY_LIBRARY_MEDIA_ID)) {
                 PreparedItems folders = new PreparedItems();
                 for (LibraryFolder folder : LibraryFolder.values()) {
                     // Native Auto places uploads inside the corresponding Albums, Songs, and Artists categories.
@@ -730,6 +747,8 @@ public final class AndroidAutoPatch {
         if (mediaId == null) return false;
         return mediaId.equals(PODCASTS_MEDIA_ID)
                 || mediaId.equals(SPEED_DIAL_MEDIA_ID)
+                || mediaId.equals(THIRD_PARTY_HOME_MEDIA_ID)
+                || mediaId.equals(THIRD_PARTY_LIBRARY_MEDIA_ID)
                 || mediaId.startsWith(LIBRARY_PREFIX)
                 || mediaId.startsWith(HOME_SHELF_PREFIX)
                 || mediaId.startsWith(PODCAST_COLLECTION_PREFIX);

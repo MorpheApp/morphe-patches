@@ -143,18 +143,18 @@ tasks {
         }
     }
 
-    register<JavaExec>("validateAnyBrowser") {
-        description = "Patches a supplied YouTube Music APK for Android Auto (Any) Music Browser Support validation"
+    register<JavaExec>("validateAndroidAutoThirdPartyApps") {
+        description = "Patches a supplied YouTube Music APK for Android Auto third-party apps validation"
         group = "verification"
 
         dependsOn("testClasses")
         classpath = sourceSets["test"].runtimeClasspath
-        mainClass.set("app.morphe.patches.music.misc.androidauto.AnyBrowserDeviceBuildKt")
+        mainClass.set("app.morphe.patches.music.misc.androidauto.AndroidAutoThirdPartyAppsDeviceBuildKt")
 
         doFirst {
-            val apk = providers.gradleProperty("anyApk").orNull
-                ?: throw GradleException("validateAnyBrowser requires -PanyApk=/absolute/path/to/ytm.apk")
-            val output = providers.gradleProperty("anyOutput").orNull
+            val apk = providers.gradleProperty("androidAutoThirdPartyAppsApk").orNull
+                ?: throw GradleException("validateAndroidAutoThirdPartyApps requires -PandroidAutoThirdPartyAppsApk=/absolute/path/to/ytm.apk")
+            val output = providers.gradleProperty("androidAutoThirdPartyAppsOutput").orNull
             setArgs(listOfNotNull(apk, output))
         }
     }

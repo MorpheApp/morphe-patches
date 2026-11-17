@@ -9,17 +9,18 @@
  */
 
 /**
- * APK validation entry point for the Gradle `:patches:validateAnyBrowser` task.
+ * APK validation entry point for the Gradle `:patches:validateAndroidAutoThirdPartyApps` task.
  *
- * Set ANDROID_HOME (or ANDROID_SDK_ROOT) to an Android SDK with build tools, then run: `./gradlew
- * :patches:validateAnyBrowser -PanyApk=/absolute/path/music.apk` Add
- * `-PanyOutput=/absolute/path/any-unsigned.apk` to assemble an unsigned device APK. Sign that APK
- * before installing it. It uses the isolated package `app.morphe.any.next.music`, so it can coexist
- * with a normal installation.
+ * Set ANDROID_HOME (or ANDROID_SDK_ROOT) to an Android SDK with build tools, then run:
+ * `./gradlew :patches:validateAndroidAutoThirdPartyApps -PandroidAutoThirdPartyAppsApk=/absolute/path/music.apk`
  *
- * The task applies Android Auto (Any) Music Browser Support together with GmsCore support,
- * including the Android Auto patch it depends on. Patch failures and SDK DEX/hierarchy
- * verification failures abort the build. Without anyOutput it validates without assembling.
+ * Add `-PandroidAutoThirdPartyAppsOutput=/absolute/path/unsigned.apk` to assemble an unsigned device APK.
+ * Sign that APK before installing it. It uses the isolated package
+ * `app.morphe.android.auto.third.party.music`, so it can coexist with a normal installation.
+ *
+ * The task applies Android Auto third-party apps together with GmsCore support, including the
+ * Android Auto patch it depends on. Patch failures and SDK DEX/hierarchy verification failures
+ * abort the build. Without an output path it validates without assembling.
  *
  * Successful patching and verification do not establish device behavior.
  */
@@ -37,7 +38,7 @@ import kotlinx.coroutines.runBlocking
 import java.io.File
 import java.nio.file.Files
 
-private const val PROBE_PACKAGE = "app.morphe.any.next.music"
+private const val PROBE_PACKAGE = "app.morphe.android.auto.third.party.music"
 
 /** Lets the probe install as the base APK alone, without the splits of the original bundle. */
 private val installableWithoutSplits = resourcePatch {
@@ -56,7 +57,7 @@ private val installableWithoutSplits = resourcePatch {
 }
 
 fun main(arguments: Array<String>) {
-    require(arguments.size in 1..2) { "Usage: AnyBrowserDeviceBuildKt <input-apk> [output-apk]" }
+    require(arguments.size in 1..2) { "Usage: AndroidAutoThirdPartyAppsDeviceBuildKt <input-apk> [output-apk]" }
 
     val input = File(arguments[0]).canonicalFile
     require(input.isFile) { "Input APK does not exist: $input" }
@@ -66,8 +67,8 @@ fun main(arguments: Array<String>) {
 
     cloneAppPatch.options["packageName"] = PROBE_PACKAGE
 
-    val selectedPatches = setOf(gmsCoreSupportPatch, installableWithoutSplits, androidAutoAnyBrowserSupportPatch)
-    val workspace = Files.createTempDirectory("any-browser-device-build")
+    val selectedPatches = setOf(gmsCoreSupportPatch, installableWithoutSplits, androidAutoThirdPartyAppsPatch)
+    val workspace = Files.createTempDirectory("android-auto-third-party-apps-device-build")
 
     val sdk =
         System.getenv("ANDROID_HOME")
@@ -87,7 +88,7 @@ fun main(arguments: Array<String>) {
 
         val patched = patcher.get()
         if (output == null) {
-            println("Android Auto (Any) Music Browser Support applied and DEX verified with Android SDK tools: $workspace")
+            println("Android Auto third-party apps applied and DEX verified with Android SDK tools: $workspace")
         } else {
             patched.applyTo(output)
             println("Unsigned isolated device probe: $output")
