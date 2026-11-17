@@ -27,8 +27,7 @@ val spoofDeviceDimensionsPatch = patch(
             SwitchPreference("morphe_spoof_device_dimensions", summary = true),
         )
 
-        DeviceDimensionsModelToStringFingerprint
-            .classDef.methods.first { method -> method.name == "<init>" }
+        DeviceDimensionsModelConstructorFingerprint.method
             // Override the parameters containing the dimensions.
             .addInstructions(
                 1, // Add after super call.

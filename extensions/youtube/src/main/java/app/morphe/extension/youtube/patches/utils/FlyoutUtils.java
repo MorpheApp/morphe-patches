@@ -313,6 +313,10 @@ public final class FlyoutUtils {
     private static final String[] SAVE_TO_PLAYLIST_ICON_NAMES = {"PLAYLIST_ADD", "ADD_TO_PLAYLIST", "BOOKMARK", "SAVE"};
     private static final Pattern APP_SAVE_BUTTON_PATTERN =
             Pattern.compile("WATCH_LATER|" + String.join("|", SAVE_TO_PLAYLIST_ICON_NAMES));
+    /**
+     * Icon names of the download items, such as download, resume, or remove from downloads.
+     */
+    private static final String APP_DOWNLOAD_BUTTON_PREFIX = "OFFLINE";
     private static final List<byte[]> SHORTS_VIDEO_ELEMENT_BYTES = List.of(
             getAsciiBytes("history-shorts-shelf-item"),
             getAsciiBytes("shorts-shelf-item")
@@ -352,6 +356,14 @@ public final class FlyoutUtils {
      * Injected save item. The app menu can bind its items after the injected items are added.
      */
     private static WeakReference<View> injectedSaveButtonRef = new WeakReference<>(null);
+    /**
+     * If the app menu has a download item, also if the item is hidden by a Morphe setting.
+     */
+    private static boolean flyoutHasAppDownloadButton;
+    /**
+     * Injected download item, removed like the injected save item.
+     */
+    private static WeakReference<View> injectedDownloadButtonRef = new WeakReference<>(null);
 
     private static WeakReference<View> senderViewRef = new WeakReference<>(null);
 
@@ -605,6 +617,8 @@ public final class FlyoutUtils {
         visibleFlyoutButtonTexts.clear();
         flyoutHasAppSaveButton = false;
         injectedSaveButtonRef = new WeakReference<>(null);
+        flyoutHasAppDownloadButton = false;
+        injectedDownloadButtonRef = new WeakReference<>(null);
         currentButtonIndex = 0;
         flyoutVideoId = "";
         flyoutPlaylistId = "";
@@ -669,7 +683,7 @@ public final class FlyoutUtils {
         if (!ShortsPlayerState.isOpen()
                 || isShortFlyout
                 // Menus opened inside a panel, such as the menu of a comment.
-                || EngagementPanel.getLastOpenedPanelId() != null) {
+                || EngagementPanel.getLastOpenedShortsPanelId() != null) {
             return false;
         }
         for (Pair<String, Integer> button : visibleFlyoutButtons) {
@@ -690,7 +704,7 @@ public final class FlyoutUtils {
         final String shortVideoId = flyoutVideoId.isEmpty() ? VideoInformation.getVideoId() : flyoutVideoId;
 
         if (ShortsDownloadButton.isPatchIncluded()) {
-            nextButtonIndex = ShortsDownloadButton.addFlyoutButton(flyoutPanel, nextButtonIndex, shortVideoId);
+            nextButtonIndex = ShortsDownloadButton.addFlyoutButton(flyoutPanel, nextButtonIndex, shortVideoId, true, null);
         }
 
         nextButtonIndex = AiSListSubmitDialog.addFlyoutButton(flyoutPanel, nextButtonIndex, shortVideoId);
@@ -767,12 +781,15 @@ public final class FlyoutUtils {
             );
         }
 
-        // The menus of Shorts in the feed have no download option.
-        if (ShortsDownloadButton.isPatchIncluded() && isShortFlyout) {
+        // The menus of Shorts in the feed have no download option,
+        // and the menus of some videos have none, such as videos only Premium members can download.
+        if (ShortsDownloadButton.isPatchIncluded()) {
             nextButtonIndex = ShortsDownloadButton.addFlyoutButton(
                     flyoutPanel,
                     nextButtonIndex,
-                    flyoutVideoId
+                    flyoutVideoId,
+                    isShortFlyout,
+                    flyoutBuffer
             );
         }
 
@@ -885,18 +902,26 @@ public final class FlyoutUtils {
     }
 
     /**
-     * Adds a save item, which is removed if the app menu binds its own save item afterward.
+     * Adds a save or download item, which is removed if the app menu binds its own item afterward.
+     *
+     * @param isDownload If the item is a download item, otherwise it is a save item.
      */
     public static int addFlyoutSaveButton(
             Object flyoutPanel,
             Drawable icon,
             String text,
             View.OnClickListener clickListener,
-            int index
+            int index,
+            boolean isDownload
     ) {
         final int nextIndex = addFlyoutButton(flyoutPanel, icon, text, clickListener, index);
         if (nextIndex >= 0 && !customItemTextRefs.isEmpty()) {
-            injectedSaveButtonRef = new WeakReference<>(customItemTextRefs.get(customItemTextRefs.size() - 1).get());
+            WeakReference<View> injectedRef = new WeakReference<>(customItemTextRefs.get(customItemTextRefs.size() - 1).get());
+            if (isDownload) {
+                injectedDownloadButtonRef = injectedRef;
+            } else {
+                injectedSaveButtonRef = injectedRef;
+            }
         }
         return nextIndex;
     }
@@ -906,6 +931,36 @@ public final class FlyoutUtils {
      */
     public static boolean hasAppSaveButton() {
         return flyoutHasAppSaveButton;
+    }
+
+    /**
+     * @return If the app menu has its own item to download the video, or to manage its download.
+     */
+    public static boolean hasAppDownloadButton() {
+        return flyoutHasAppDownloadButton;
+    }
+
+    /**
+     * Removes an injected save or download item, once the app menu has bound its own item.
+     */
+    private static void removeInjectedItem(@Nullable View view) {
+        while (view != null && view.getParent() instanceof ViewGroup parent) {
+            if (parent.getParent() instanceof InjectedItemsScrollView injectedItems) {
+                Utils.hideViewByRemovingFromParentUnderCondition(true, view);
+                if (parent.getChildCount() == 0) {
+                    // The divider is right after the injected items.
+                    ViewGroup menuContainer = injectedItems.menuContainer;
+                    Utils.hideViewByRemovingFromParentUnderCondition(true,
+                            menuContainer.getChildAt(menuContainer.indexOfChild(injectedItems) + 1));
+                    Utils.hideViewByRemovingFromParentUnderCondition(true, injectedItems);
+                }
+                if (flyoutPopupWindow != null && flyoutPopupWindow.isShowing()) {
+                    flyoutPopupWindow.update();
+                }
+                return;
+            }
+            view = parent;
+        }
     }
 
     /**
@@ -1041,31 +1096,18 @@ public final class FlyoutUtils {
      */
     public static void setCurrentButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable Object buttonInfo,
                                             @Nullable CharSequence buttonText) {
-        // Before the checks below, as a save item hidden by a Morphe setting must not be replaced by the injected one.
-        if (buttonEnum != null && !flyoutHasAppSaveButton) {
+        // Before the checks below, as a save or download item hidden by a Morphe setting
+        // must not be replaced by the injected one.
+        if (buttonEnum != null) {
             String name = buttonEnum.name();
-            if (APP_SAVE_BUTTON_PATTERN.matcher(name).find() && !name.contains("REMOVE")) {
+            if (!flyoutHasAppSaveButton && APP_SAVE_BUTTON_PATTERN.matcher(name).find() && !name.contains("REMOVE")) {
                 flyoutHasAppSaveButton = true;
-
-                View view = injectedSaveButtonRef.get();
+                removeInjectedItem(injectedSaveButtonRef.get());
                 injectedSaveButtonRef = new WeakReference<>(null);
-                while (view != null && view.getParent() instanceof ViewGroup parent) {
-                    if (parent.getParent() instanceof InjectedItemsScrollView injectedItems) {
-                        Utils.hideViewByRemovingFromParentUnderCondition(true, view);
-                        if (parent.getChildCount() == 0) {
-                            // The divider is right after the injected items.
-                            ViewGroup menuContainer = injectedItems.menuContainer;
-                            Utils.hideViewByRemovingFromParentUnderCondition(true,
-                                    menuContainer.getChildAt(menuContainer.indexOfChild(injectedItems) + 1));
-                            Utils.hideViewByRemovingFromParentUnderCondition(true, injectedItems);
-                        }
-                        if (flyoutPopupWindow != null && flyoutPopupWindow.isShowing()) {
-                            flyoutPopupWindow.update();
-                        }
-                        break;
-                    }
-                    view = parent;
-                }
+            } else if (!flyoutHasAppDownloadButton && name.startsWith(APP_DOWNLOAD_BUTTON_PREFIX)) {
+                flyoutHasAppDownloadButton = true;
+                removeInjectedItem(injectedDownloadButtonRef.get());
+                injectedDownloadButtonRef = new WeakReference<>(null);
             }
         }
 
@@ -1094,8 +1136,7 @@ public final class FlyoutUtils {
         currentButtonIndex++;
 
         visibleFlyoutButtons.add(new Pair<>(currentButtonName, currentButtonIndex));
-        //noinspection SizeReplaceableByIsEmpty
-        if (buttonText.length() > 0) {
+        if (Utils.isNotEmpty(buttonText)) {
             visibleFlyoutButtonTexts.putIfAbsent(currentButtonName, buttonText.toString());
         }
     }

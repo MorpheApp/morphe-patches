@@ -542,6 +542,8 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <string name="morphe_disable_chapter_skip_double_tap_title">Zakázat přeskočení kapitol dvojitým klepnutím</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Zakáže dvojité klepnutí dvěma prsty, které přeskočí kapitoly, což může být neúmyslně spuštěno jedním prstem</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Stahujte videa, podcasty nebo písně pomocí aplikací pro stahování třetích stran</string>
   <string name="morphe_external_downloader_overlay_button_title">Zobrazit tlačítko pro stahování v přehrávači</string>
   <string name="morphe_external_downloader_overlay_button_summary">Zobrazí v přehrávači videí tlačítko, které otevře váš externí downloader</string>
@@ -558,6 +560,10 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <string name="morphe_shorts_download_flyout_button_title">Zobrazit stahování v menu Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Přidá položku stahování do menu přehrávače Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Stáhnout</string>
+  <string name="morphe_feed_download_flyout_button_title">Zobrazit stahování v nabídkách videí</string>
+  <string name="morphe_feed_download_flyout_button_summary">Přidá položku stahování do nabídek videí ve feedu, které ji nemají, například u videí, která YouTube umožňuje stahovat pouze členům Premium</string>
+  <string name="morphe_download_force_4k_title">Vynutit dostupnost stahování v 4K</string>
+  <string name="morphe_download_force_4k_summary">Umožňuje stahování v rozlišení 1440p a 4K, i když YouTube rozhodne, že toto zařízení je není schopno přehrát. Taková videa se sice mohou v aplikaci YouTube přehrávat bez obrazu, ale lze je exportovat do vašeho zařízení</string>
   <string name="morphe_export_download_folder_title">Exportovat uložená videa</string>
   <string name="morphe_export_download_folder_summary">"Exportujte v aplikaci uložená videa do úložiště svého zařízení pomocí menu stahování. Klepnutím změníte složku pro export
 
@@ -659,6 +665,7 @@ API klíč by se nikdy neměl sdílet. Kdokoli s přístupem k němu může pou�
   <string name="morphe_loop_count_clear_done">Uložené počty opakování byly vymazány</string>
   <string name="morphe_loop_count_flyout_name">Počet opakování</string>
   <string name="morphe_loop_count_dialog_message">Kolikrát se video přehrálo před dalším videem, od %1$s do %2$s. ponechte prázdné pro opakování videa bez omezení.</string>
+  <string name="morphe_loop_count_times">%s krát</string>
   <string name="morphe_loop_count_no_limit">Bez omezení</string>
   <string name="morphe_loop_count_decrease">Méně krát</string>
   <string name="morphe_loop_count_increase">Více krát</string>
@@ -1484,7 +1491,7 @@ Automobilní rozvržení
   <string name="morphe_dearrow_titles_player_title">Seznamy skladeb přehrávače &amp; doporučení</string>
   <string name="morphe_dearrow_titles_search_title">Výsledky hledání</string>
   <string name="morphe_dearrow_titles_icon_title">Zobrazit ikonu DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Zobrazuje ikonu DeArrow u názvů videí z crowdsourcingu. Klepnutím na ikonu zobrazíte původní název a náhled</string>
+  <string name="morphe_dearrow_titles_icon_summary">Zobrazuje ikonu DeArrow u názvů videí s crowdsourcovým názvem nebo náhledem. Klepnutím na ikonu zobrazíte původní název a náhled</string>
   <string name="morphe_dearrow_casual_mode_title">Běžný režim</string>
   <string name="morphe_dearrow_casual_mode_summary">Zobrazuje původní název místo názvu DeArrow, pokud uživatelé DeArrow hlasovali, že se jim původní název líbí</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimální počet běžných hlasů pro zobrazení původního názvu</string>
@@ -1586,6 +1593,16 @@ Videa jsou vyžádána krátkou předponou hashovaného ID videa, takže server 
   <string name="morphe_disable_haptic_feedback_zoom_title">Zakázat haptiku pro zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Pokud jste nedávno změnili přihlašovací údaje svého účtu, odinstalujte a znovu nainstalujte MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Ukládat push notifikace</string>
+  <string name="morphe_debug_save_push_notifications_summary">Ukládá přijaté push notifikace do souboru v datech aplikace. Soubor může obsahovat soukromé informace, jako jsou texty notifikací a názvy kanálů</string>
+  <string name="morphe_debug_saved_push_notifications_title">Exportovat uložené push notifikace</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportujte nebo vymažte uložené push notifikace</string>
+  <string name="morphe_debug_saved_push_notifications_count">Uložené push notifikace: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nebyly nalezeny žádné uložené push notifikace</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push notifikace byly úspěšně exportovány</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Export push notifikací se nezdařil</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Uložené push notifikace byly vymazány</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Obcházet přesměrování odkazů</string>
   <string name="morphe_bypass_link_redirects_summary">Otevře původní odkaz přímo a obchází sledovací odkaz (youtube.com/redirect)</string>

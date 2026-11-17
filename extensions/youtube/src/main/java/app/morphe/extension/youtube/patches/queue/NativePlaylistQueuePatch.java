@@ -1884,8 +1884,7 @@ public final class NativePlaylistQueuePatch {
                         && panel == controller.patch_getPanel();
                 if (owned) {
                     CharSequence text = title.getText();
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (text == null || text.length() == 0) {
+                    if (Utils.isEmpty(text)) {
                         return;
                     }
                     // ConstraintLayout normalizes the native 0dp/wrap constraint
@@ -2821,17 +2820,12 @@ public final class NativePlaylistQueuePatch {
         return AddToQueuePatch.isNativeQueueEnabled() && VideoInformation.isVideoId(videoId);
     }
 
-    /** A thumbnail can start a queue even when Play last is not available in a menu. */
+    /** Adds a video from its thumbnail, starting a queue when needed. */
     public static void addThumbnailVideo(String videoId, boolean playLast) {
         if (!canQueueFlyoutVideo(videoId)) {
             return;
         }
-        addToQueue(videoId, playLast && canShowFlyoutLast(), "");
-    }
-
-    /** A playing playlist can become a queue without replacing its current video. */
-    public static boolean canShowFlyoutLast() {
-        return queue != null || playingPlaylistController() != null;
+        addToQueue(videoId, playLast, "");
     }
 
     /** Release only our session; never modify the Morphe queue or its settings. */
@@ -2975,12 +2969,6 @@ public final class NativePlaylistQueuePatch {
         }
 
         PlaylistController playlist = playingPlaylistController();
-        if (playLast && queue == null && playlist == null) {
-            // A menu callback can outlive the queue that made Play last available.
-            Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
-            return;
-        }
-
         try {
             if (playlist != null) {
                 convertPlayingPlaylist(() -> {
@@ -2995,7 +2983,7 @@ public final class NativePlaylistQueuePatch {
                 return;
             }
 
-            if (!playLast && canStartQueue()) {
+            if (canStartQueue()) {
                 String title = ChannelIdRequest.getVideoTitleIfAvailable(videoId);
                 rememberChannel(videoId, title.isEmpty() ? videoId : title, channelName);
                 QueueStart start = new QueueStart(new PlaylistQueue(videoId, title), VideoInformation.getVideoId());

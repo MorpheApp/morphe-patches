@@ -71,7 +71,7 @@ public class YouTubeGlassNavigationBarPreference extends GlassNavigationBarSizeP
     protected PreviewButtons getButtons() {
         // The icons, the labels and the selected button of the last glass navigation bar,
         // as the bar shows them, such as without labels.
-        PreviewButtons buttons = PreviewButtons.fromLastBar(YouTubeGlassNavigationBar.BUTTON_ICON, YouTubeGlassNavigationBar.BUTTON_LABEL);
+        PreviewButtons buttons = PreviewButtons.fromLastBar(YouTubeGlassNavigationBar.BUTTON_ICONS, YouTubeGlassNavigationBar.BUTTON_LABEL);
         if (!buttons.isEmpty()) return buttons;
 
         // The buttons of the last navigation bar, or all the buttons seen if none was shown yet.

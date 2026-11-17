@@ -268,8 +268,7 @@ public final class LithoFilterPatch {
         try {
             String identifier = contextInterface.patch_getIdentifier();
             StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
-            //noinspection SizeReplaceableByIsEmpty
-            if (identifier == null || identifier.isEmpty() || pathBuilder.length() == 0) {
+            if (Utils.isEmpty(identifier) || Utils.isEmpty(pathBuilder)) {
                 return false;
             }
 

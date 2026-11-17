@@ -10,8 +10,6 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.text.TextUtils;
-
 import com.google.protobuf.MessageLite;
 
 import java.util.List;
@@ -94,7 +92,7 @@ public final class SaveToWatchLaterPatch {
             Utils.showSnackbarShort(str("morphe_queue_manager_check_failed_auth"));
             return;
         }
-        if (TextUtils.isEmpty(videoId)) {
+        if (Utils.isEmpty(videoId)) {
             Utils.showSnackbarShort(str("morphe_queue_manager_check_failed_video_id"));
             return;
         }

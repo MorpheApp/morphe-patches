@@ -454,8 +454,13 @@ public final class AmbientLightController {
     private static void update() {
         try {
             PlayerType type = PlayerType.getCurrent();
+            // Ambient mode can be turned off in fullscreen. The light stays off while a fullscreen
+            // player is pulled down, and comes back once the player is no longer fullscreen.
+            final boolean fullscreenOff = Settings.DISABLE_FULLSCREEN_AMBIENT_MODE.get()
+                    && (type == PlayerType.WATCH_WHILE_FULLSCREEN
+                    || (type == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN && !active));
             // Battery saver turns the light off like Ambient mode, unless that restriction is bypassed.
-            final boolean on = ambientModeToggle && !AmbientModePatch.bypassAmbientModeRestrictions(
+            final boolean on = ambientModeToggle && !fullscreenOff && !AmbientModePatch.bypassAmbientModeRestrictions(
                     (PowerManager) Utils.getContext().getSystemService(Context.POWER_SERVICE));
             // The page content can be built before the light shows, and must be see-through already.
             // On its way to the miniplayer, the page fades out, and the light with it. On its way

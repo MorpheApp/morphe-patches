@@ -135,7 +135,8 @@ public class SaveToWatchLaterButton {
                         SaveToWatchLaterPatch.saveVideo(saveToWatchLaterButtonVideoId);
                         FlyoutUtils.dismissFlyout();
                     },
-                    nextButtonIndex
+                    nextButtonIndex,
+                    false
             );
         }
         return nextButtonIndex;

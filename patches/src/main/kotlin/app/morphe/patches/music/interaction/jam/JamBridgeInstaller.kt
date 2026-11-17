@@ -70,7 +70,7 @@ private fun installQueueAccess(queue: JamQueueAbi) {
         return-void
     """
     )
-    manager.addReferenceGetter("patch_jamExecutor", queue.executor)
+    manager.addPatchInterface(ACCESS, "patch_jamExecutor", queue.executor)
     installQueueSnapshots(manager, queue)
     installQueueItemMetadata(manager, queue)
     installQueueCreation(manager, queue)
@@ -95,6 +95,7 @@ private fun installQueueSnapshots(manager: MutableClass, queue: JamQueueAbi) {
     )
     installNativeAccessor(
         manager,
+        ACCESS,
         "patch_jamCurrent",
         queue.storage.currentIndex,
         receiverField = queue.storage.field,
@@ -122,8 +123,8 @@ private fun installQueueItemMetadata(
     queue: JamQueueAbi,
 ) {
     val item = queue.item
-    installNativeAccessor(manager, "patch_jamVideoId", item.videoId, opaqueReceiver = true)
-    installNativeAccessor(manager, "patch_jamItemId", item.persistentId, opaqueReceiver = true)
+    installNativeAccessor(manager, ACCESS, "patch_jamVideoId", item.videoId, opaqueReceiver = true)
+    installNativeAccessor(manager, ACCESS, "patch_jamItemId", item.persistentId, opaqueReceiver = true)
 }
 
 private fun installQueueCreation(manager: MutableClass, queue: JamQueueAbi) {
@@ -159,23 +160,20 @@ private fun installDisplayAccess(
     property: String,
     refresh: String,
 ) {
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jam$property",
-        emptyList(),
-        "Ljava/lang/Object;",
-        2,
-        body = """
+        """
             iget-object v0, p0, ${display.managerField}
             iget-object v0, v0, ${display.list}
             return-object v0
-        """
+        """,
+        parameters = emptyList(),
     )
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jam$property",
-        listOf("Ljava/lang/Object;"),
-        "V",
-        4,
-        body = """
+        """
             iget-object v0, p0, ${display.managerField}
             iget-object v1, v0, ${display.list}
             if-eqz v1, :set
@@ -186,14 +184,13 @@ private fun installDisplayAccess(
             ${invokeKind(storage.attachListener)} {p1, v0}, ${storage.attachListener}
             ${invokeKind(display.refresh)} {v0}, ${display.refresh}
             return-void
-        """
+        """,
+        parameters = listOf("Ljava/lang/Object;"),
     )
-    manager.addBridge(
+    manager.addPatchInterface(
+        ACCESS,
         "patch_jamRefresh$refresh",
-        emptyList(),
-        "V",
-        2,
-        body = """
+        """
             iget-object v0, p0, ${display.managerField}
             ${invokeKind(display.refresh)} {v0}, ${display.refresh}
             return-void
@@ -413,37 +410,21 @@ private fun installCallbackBridge(
 
 private fun installNativeQueueListAdapter(storage: QueueStorageAbi) {
     val nativeList = mutableClassDefBy(NATIVE_LIST)
-    nativeList.interfaces.add(storage.laneType)
-    nativeList.addBridge(
-        storage.laneMove.name,
-        listOf("I", "I"),
-        "V",
-        3,
-        body = """
-            invoke-virtual {p0, p1, p2}, $NATIVE_LIST->move(II)V
-            return-void
-        """
-    )
-    nativeList.addBridge(
-        storage.attachListener.name,
-        listOf(storage.listenerType),
-        "V",
-        2,
-        body = """
-            invoke-virtual {p0, p1}, $NATIVE_LIST->addListener(Ljava/lang/Object;)V
-            return-void
-        """
-    )
-    nativeList.addBridge(
-        storage.detachListener.name,
-        listOf(storage.listenerType),
-        "V",
-        2,
-        body = """
-            invoke-virtual {p0, p1}, $NATIVE_LIST->removeListener(Ljava/lang/Object;)V
-            return-void
-        """
-    )
+    listOf(
+        storage.laneMove to "invoke-virtual {p0, p1, p2}, $NATIVE_LIST->move(II)V",
+        storage.attachListener to "invoke-virtual {p0, p1}, $NATIVE_LIST->addListener(Ljava/lang/Object;)V",
+        storage.detachListener to "invoke-virtual {p0, p1}, $NATIVE_LIST->removeListener(Ljava/lang/Object;)V",
+    ).forEach { (native, call) ->
+        nativeList.addPatchInterface(
+            storage.laneType,
+            native.name,
+            """
+                $call
+                return-void
+            """,
+            native.parameters(),
+        )
+    }
 }
 
 private fun installQueueItemAccess(item: QueueItemAbi) {
@@ -452,10 +433,9 @@ private fun installQueueItemAccess(item: QueueItemAbi) {
     val metadataAccess = $$"Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge$MetadataAccess;"
     concreteImplementationsOf(item.metadataType).forEach { implementation ->
         val metadata = mutableClassDefBy(implementation.type)
-        metadata.interfaces.add(metadataAccess)
         listOf("patch_jamTitle" to item.title, "patch_jamArtist" to item.artist).forEach {
             (name, accessor) ->
-            installNativeAccessor(metadata, name, accessor)
+            metadata.addPatchInterface(metadataAccess, name, accessor)
         }
     }
     item.implementations.forEach { implementation ->
@@ -463,12 +443,7 @@ private fun installQueueItemAccess(item: QueueItemAbi) {
         check(implementsType(nativeItem.type, menuPayload.type)) {
             "Jam queue item ${nativeItem.type} cannot provide the resolved menu payload"
         }
-        installNativeAccessor(
-            nativeItem,
-            "patch_jamArtwork",
-            item.artwork,
-            resultType = "Ljava/lang/Object;",
-        )
+        nativeItem.addPatchInterface(ITEM_ACCESS, "patch_jamArtwork", item.artwork)
         nativeItem.addPatchInterface(
             ITEM_ACCESS,
             "patch_jamMenuPayload",
@@ -490,8 +465,7 @@ private fun installQueueItemAccess(item: QueueItemAbi) {
         """
     )
     val thumbnail = mutableClassDefBy(item.thumbnailType)
-    thumbnail.interfaces.add(THUMBNAIL_ACCESS)
-    thumbnail.addReferenceGetter("patch_jamThumbnailUrl", item.thumbnailUrl)
+    thumbnail.addPatchInterface(THUMBNAIL_ACCESS, "patch_jamThumbnailUrl", item.thumbnailUrl)
 }
 
 private fun installQueueManagerCapture(queue: JamQueueAbi) {

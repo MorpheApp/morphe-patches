@@ -103,6 +103,14 @@ public final class OfflineVideoExporter {
     private static final int AES_BLOCK_SIZE = 16;
 
     private static final String SAVE_FOLDER = IS_YOUTUBE_MUSIC ? "Morphe music" : "Morphe videos";
+    /**
+     * The folder used by default with Android 10 and newer, in the device storage.
+     */
+    private static final String DEFAULT_FOLDER = Environment.DIRECTORY_DOWNLOADS + File.separator + SAVE_FOLDER;
+    /**
+     * Document id of the device storage volume, before the path of a folder in it.
+     */
+    private static final String PRIMARY_VOLUME_PREFIX = "primary:";
     private static final int FOLDER_PERMISSIONS =
             Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
     private static final int MAX_FILE_NAME_LENGTH = 100;
@@ -305,7 +313,7 @@ public final class OfflineVideoExporter {
         if (folder.isEmpty()) {
             return Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
                     ? getLegacyFolder().getPath()
-                    : Environment.DIRECTORY_DOWNLOADS + File.separator + SAVE_FOLDER;
+                    : DEFAULT_FOLDER;
         }
 
         // Folders of the device storage have the volume and the path as id, such as "primary:Movies".
@@ -356,9 +364,21 @@ public final class OfflineVideoExporter {
         }
 
         Logger.printInfo(() -> "Export folder is not available: " + tree);
-        Utils.showToastLong(str("morphe_export_download_folder_missing", getFolderName()));
+        // Saving to the default folder creates it again, so it is not reported as missing.
+        if (!isDefaultFolder(tree)) {
+            Utils.showToastLong(str("morphe_export_download_folder_missing", getFolderName()));
+        }
         setFolder(null);
         return null;
+    }
+
+    /**
+     * @param tree The tree uri of the folder the user picked.
+     * @return If the folder is the folder used by default.
+     */
+    private static boolean isDefaultFolder(Uri tree) {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                && DocumentsContract.getTreeDocumentId(tree).equalsIgnoreCase(PRIMARY_VOLUME_PREFIX + DEFAULT_FOLDER);
     }
 
     /**
@@ -719,10 +739,9 @@ public final class OfflineVideoExporter {
                 throw new IOException("Could not create file: " + name + extension);
             }
 
-            String folder = Environment.DIRECTORY_DOWNLOADS + File.separator + SAVE_FOLDER;
             ContentValues values = new ContentValues();
             values.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
-            values.put(MediaStore.MediaColumns.RELATIVE_PATH, folder);
+            values.put(MediaStore.MediaColumns.RELATIVE_PATH, DEFAULT_FOLDER);
             values.put(MediaStore.MediaColumns.IS_PENDING, 1);
 
             // The media store renames a file whose name is taken, but Android 10 adds the number
@@ -731,7 +750,7 @@ public final class OfflineVideoExporter {
             Uri uri = null;
             for (int attempt = 0; uri == null && attempt < MAX_FILE_NAME_ATTEMPTS; attempt++) {
                 String fileName = getNumberedName(name, extension, attempt);
-                if (isMediaStoreNameTaken(resolver, folder, fileName)) {
+                if (isMediaStoreNameTaken(resolver, DEFAULT_FOLDER, fileName)) {
                     continue;
                 }
                 values.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
@@ -745,7 +764,7 @@ public final class OfflineVideoExporter {
                 resolver.delete(uri, null, null);
                 throw new IOException("No file descriptor for: " + uri);
             }
-            return new OutputFile(uri, false, null, descriptor, folder);
+            return new OutputFile(uri, false, null, descriptor, DEFAULT_FOLDER);
         }
 
         /**

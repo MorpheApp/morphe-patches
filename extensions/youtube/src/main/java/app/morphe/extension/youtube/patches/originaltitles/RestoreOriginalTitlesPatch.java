@@ -239,18 +239,31 @@ public final class RestoreOriginalTitlesPatch {
      */
     private static final class DeArrowIconSpan extends ClickableSpan implements LithoRelayoutPatch.RelayoutSpan {
         final String videoId;
-        final String deArrowTitle;
-        final boolean showsOriginalTitle;
+        /**
+         * Title shown with the DeArrow thumbnail: the DeArrow title, or the title of a video
+         * that has only a DeArrow thumbnail.
+         */
+        final String title;
+        /**
+         * If the title is a DeArrow title. Otherwise, only the thumbnail is from DeArrow,
+         * and tapping the icon toggles only the thumbnail.
+         */
+        final boolean isDeArrowTitle;
+        /**
+         * If the icon was tapped to show the original title and thumbnail.
+         */
+        final boolean showsOriginal;
 
-        DeArrowIconSpan(String videoId, String deArrowTitle, boolean showsOriginalTitle) {
+        DeArrowIconSpan(String videoId, String title, boolean isDeArrowTitle, boolean showsOriginal) {
             this.videoId = videoId;
-            this.deArrowTitle = deArrowTitle;
-            this.showsOriginalTitle = showsOriginalTitle;
+            this.title = title;
+            this.isDeArrowTitle = isDeArrowTitle;
+            this.showsOriginal = showsOriginal;
         }
 
         @Override
         public void onClick(@NonNull View widget) {
-            toggleOriginalTitle(videoId, showsOriginalTitle);
+            toggleOriginalBranding(videoId, isDeArrowTitle, showsOriginal);
         }
 
         @Override
@@ -260,13 +273,21 @@ public final class RestoreOriginalTitlesPatch {
 
         @Override
         public boolean isOutdated() {
-            return showsOriginalTitle == (selectedOriginalTitle(videoId) == null) || changedTitle() != null;
+            if (changedTitle() != null) {
+                return true;
+            }
+            if (isDeArrowTitle) {
+                return showsOriginal == (selectedOriginalTitle(videoId) == null);
+            }
+            return showsOriginal != DeArrowTitleIcon.isOriginalBrandingSelected(videoId)
+                    || !DeArrowTitleIcon.isShownForThumbnail(videoId);
         }
 
         /**
          * @return The title shown instead after the titles of the video were fetched again following a vote
          *         on its DeArrow titles, or null if the title did not change. If DeArrow now keeps
          *         the original title, then the original title is shown if it was fetched.
+         *         A video that has only a DeArrow thumbnail can now have a DeArrow title.
          */
         @Nullable
         String changedTitle() {
@@ -274,12 +295,16 @@ public final class RestoreOriginalTitlesPatch {
             if (titles == null) {
                 return null;
             }
-            String title = titles.deArrowTitle();
-            if (title == null) {
+            String changed = titles.deArrowTitle();
+            if (!isDeArrowTitle) {
+                if (!DeArrowPatch.useDeArrowTitlesForCurrentNavigation()) {
+                    return null;
+                }
+            } else if (changed == null) {
                 OriginalTitleRequest.OriginalVideo original = OriginalTitleRequest.getOriginalIfFetched(videoId);
-                title = original == null ? null : original.title();
+                changed = original == null ? null : original.title();
             }
-            return title == null || title.trim().equals(deArrowTitle) ? null : title;
+            return changed == null || changed.trim().equals(title) ? null : changed;
         }
     }
 
@@ -701,7 +726,7 @@ public final class RestoreOriginalTitlesPatch {
 
                 String originalTitle = OriginalTitleRequest.getIfAvailable(videoId);
                 if (originalTitle != null && !originalTitle.trim().equals(text) && !isChannelName(videoId, text)) {
-                    modified |= replaceTitle(textNodes, text, Collections.emptySet(), originalTitle, null);
+                    modified |= replaceTitle(textNodes, videoId, text, Collections.emptySet(), originalTitle, null);
                 }
             }
 
@@ -740,10 +765,11 @@ public final class RestoreOriginalTitlesPatch {
 
             CharSequence translatedText = text;
             Set<String> videoIds = null;
+            String markedVideoId = null;
             final int markerStart = findTitleMarker(text);
             if (markerStart >= 0) {
                 translatedText = text.subSequence(0, markerStart);
-                String markedVideoId = decodeTitleMarker(text, markerStart);
+                markedVideoId = decodeTitleMarker(text, markerStart);
                 if (markedVideoId != null) {
                     videoIds = Collections.singleton(markedVideoId);
                 }
@@ -753,9 +779,17 @@ public final class RestoreOriginalTitlesPatch {
             if (length == 0) {
                 return translatedText;
             }
+            if (markedVideoId != null && DeArrowTitleIcon.isShownForThumbnail(markedVideoId)) {
+                String replacement = OriginalTitleRequest.getIfAvailable(markedVideoId);
+                if (replacement != null && replacement.trim().equals(trimmedText)) {
+                    // The title was replaced when the element was parsed,
+                    // and is marked to show the DeArrow icon of the thumbnail.
+                    return titleText(translatedText, translatedText.toString(), markedVideoId);
+                }
+            }
             if (markerStart < 0 && DeArrowTitleIcon.isShown(trimmedText)) {
                 // The title was replaced when the element was parsed.
-                return titleText(translatedText, translatedText.toString());
+                return titleText(translatedText, translatedText.toString(), null);
             }
 
             String videoId = null;
@@ -783,7 +817,7 @@ public final class RestoreOriginalTitlesPatch {
                                 ? OriginalTitleRequest.getIfAvailable(layoutVideoId)
                                 : null;
                         if (replacement != null && !replacement.trim().equals(trimmedText)) {
-                            return titleText(translatedText, replacement);
+                            return titleText(translatedText, replacement, layoutVideoId);
                         }
                     }
                 }
@@ -831,18 +865,19 @@ public final class RestoreOriginalTitlesPatch {
             final boolean loading = originalTitle == null;
             if (loading) {
                 if (!OriginalTitleRequest.isPending(videoId)) {
-                    return translatedText;
+                    // The title is not replaced.
+                    return thumbnailIconText(translatedText, videoId);
                 }
                 originalTitle = LOADING_TITLE.toString();
                 relayoutWhenFetched(OriginalTitleRequest.fetch(videoId));
             }
             if (originalTitle.trim().equals(translatedTitle.trim())) {
-                return translatedText;
+                return loading ? translatedText : thumbnailIconText(translatedText, videoId);
             }
 
             return loading
                     ? spannedText(translatedText, originalTitle, new LoadingTitleSpan(videoId))
-                    : titleText(translatedText, originalTitle);
+                    : titleText(translatedText, originalTitle, videoId);
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
         }
@@ -852,26 +887,50 @@ public final class RestoreOriginalTitlesPatch {
 
     /**
      * Same as {@link #spannedText(CharSequence, CharSequence, LithoRelayoutPatch.RelayoutSpan)}
-     * without a relayout span, and shows the DeArrow icon before the title if the title is a DeArrow title.
-     * The original title is shown instead if the DeArrow icon of the video was tapped.
+     * without a relayout span, and shows the DeArrow icon before the title if the title is a DeArrow title,
+     * or if the thumbnail of the video is replaced with its DeArrow thumbnail.
+     * The original title is shown instead of a DeArrow title if the DeArrow icon of the video was tapped.
+     *
+     * @param videoId The video of the title, or null to show the icon only before a DeArrow title.
      */
-    private static SpannableString titleText(CharSequence text, String title) {
-        String videoId = DeArrowTitleIcon.findVideoId(title);
-        if (videoId == null) {
-            return spannedText(text, title, null);
+    private static SpannableString titleText(CharSequence text, String title, @Nullable String videoId) {
+        String deArrowVideoId = DeArrowTitleIcon.findVideoId(title);
+        if (deArrowVideoId != null) {
+            String originalTitle = selectedOriginalTitle(deArrowVideoId);
+            final boolean showsOriginal = originalTitle != null;
+            return iconText(text, showsOriginal ? originalTitle : title,
+                    new DeArrowIconSpan(deArrowVideoId, title.trim(), true, showsOriginal));
         }
-        String originalTitle = selectedOriginalTitle(videoId);
-        final boolean showsOriginalTitle = originalTitle != null;
+        if (videoId != null && DeArrowTitleIcon.isShownForThumbnail(videoId)) {
+            // Only the thumbnail is toggled, and the title is the same.
+            return iconText(text, title, new DeArrowIconSpan(videoId, title.trim(), false,
+                    DeArrowTitleIcon.isOriginalBrandingSelected(videoId)));
+        }
+        return spannedText(text, title, null);
+    }
+
+    /**
+     * @return The title with the DeArrow icon if the thumbnail of the video is replaced
+     *         with its DeArrow thumbnail, or the same title.
+     */
+    private static CharSequence thumbnailIconText(CharSequence title, String videoId) {
+        return DeArrowTitleIcon.isShownForThumbnail(videoId) && !DeArrowTitleIcon.hasIcon(title)
+                ? titleText(title, title.toString(), videoId)
+                : title;
+    }
+
+    /**
+     * @return The title with the DeArrow icon before it.
+     */
+    private static SpannableString iconText(CharSequence text, String title, DeArrowIconSpan iconSpan) {
         // Spans of the entire text are also applied to the icon, such as the color of the text.
-        SpannableString spannedTitle = spannedText(text,
-                DeArrowTitleIcon.addIcon(showsOriginalTitle ? originalTitle : title), null);
-        DeArrowTitleIcon.setIconSpans(spannedTitle, showsOriginalTitle,
-                new DeArrowIconSpan(videoId, title.trim(), showsOriginalTitle));
+        SpannableString spannedTitle = spannedText(text, DeArrowTitleIcon.addIcon(title), null);
+        DeArrowTitleIcon.setIconSpans(spannedTitle, iconSpan.showsOriginal, iconSpan);
         return spannedTitle;
     }
 
     /**
-     * @return The text with the other title if its DeArrow icon was tapped meanwhile,
+     * @return The text with the other title or icon if its DeArrow icon was tapped meanwhile,
      *         the text with the title that won the vote on the DeArrow titles, or the same text.
      */
     private static CharSequence updatedDeArrowTitle(CharSequence text) {
@@ -880,7 +939,7 @@ public final class RestoreOriginalTitlesPatch {
             return text;
         }
         String changedTitle = spans[0].changedTitle();
-        return titleText(text, changedTitle != null ? changedTitle : spans[0].deArrowTitle);
+        return titleText(text, changedTitle != null ? changedTitle : spans[0].title, spans[0].videoId);
     }
 
     /**
@@ -923,12 +982,13 @@ public final class RestoreOriginalTitlesPatch {
      * The original title is fetched first if needed, such as when original titles are not restored,
      * and the original thumbnail is shown with the original title.
      *
-     * @param showsOriginalTitle If the tapped title is the original title.
+     * @param isDeArrowTitle If the title is a DeArrow title. Otherwise, only the thumbnail is toggled.
+     * @param showsOriginal  If the tapped title shows the original title and thumbnail.
      */
-    private static void toggleOriginalTitle(String videoId, boolean showsOriginalTitle) {
+    private static void toggleOriginalBranding(String videoId, boolean isDeArrowTitle, boolean showsOriginal) {
         try {
-            if (showsOriginalTitle) {
-                DeArrowTitleIcon.setOriginalBrandingSelected(videoId, false);
+            if (showsOriginal || !isDeArrowTitle) {
+                DeArrowTitleIcon.setOriginalBrandingSelected(videoId, !showsOriginal);
                 return;
             }
 
@@ -940,7 +1000,7 @@ public final class RestoreOriginalTitlesPatch {
                 DeArrowTitleIcon.setOriginalBrandingSelected(videoId, true);
             });
         } catch (Exception ex) {
-            Logger.printException(() -> "toggleOriginalTitle failure", ex);
+            Logger.printException(() -> "toggleOriginalBranding failure", ex);
         }
     }
 
@@ -1079,8 +1139,8 @@ public final class RestoreOriginalTitlesPatch {
             }
             titleViewVideoIds.remove(titleView, videoId);
             CharSequence title = originalTitle == null
-                    ? translatedTitle
-                    : titleText(translatedTitle, originalTitle);
+                    ? thumbnailIconText(translatedTitle, videoId)
+                    : titleText(translatedTitle, originalTitle, videoId);
             // Setting the same text again would notify the text listeners again.
             if (!TextUtils.equals(title, titleView.getText())) {
                 titleView.setText(title);
@@ -1208,7 +1268,8 @@ public final class RestoreOriginalTitlesPatch {
                 return;
             }
 
-            CharSequence title = titleText(text, replacement);
+            // The DeArrow icon is shown only before a DeArrow title, as the player title has no thumbnail.
+            CharSequence title = titleText(text, replacement, null);
             if (!TextUtils.equals(title, view.getText())) {
                 view.setText(title);
             }
@@ -1956,7 +2017,7 @@ public final class RestoreOriginalTitlesPatch {
             // The title is not saved as a translated title, as no request verified it.
             String replacement = layoutTitle ? OriginalTitleRequest.getIfAvailable(videoId) : null;
             return replacement != null && !candidate.equals(replacement.trim())
-                    && replaceTitle(textNodes, candidate, Collections.emptySet(), replacement,
+                    && replaceTitle(textNodes, videoId, candidate, Collections.emptySet(), replacement,
                     findLabelOfTitle(candidate, texts));
         }
         if (isChannelName(videoId, title)) {
@@ -1969,13 +2030,16 @@ public final class RestoreOriginalTitlesPatch {
         // Titles are saved even if not replaced, so titles of different videos are known.
         Set<String> truncatedTitles = putTranslatedTitle(title, texts, videoId);
         String originalTitle = OriginalTitleRequest.getIfAvailable(videoId);
-        if (originalTitle == null) {
-            // The text hook replaces the title when the element is laid out.
-            return OriginalTitleRequest.isPending(videoId)
+        if (originalTitle == null ? !OriginalTitleRequest.isPending(videoId) : title.equals(originalTitle.trim())) {
+            // The title is not replaced. The text hook shows the DeArrow icon of the thumbnail.
+            return DeArrowTitleIcon.isShownForThumbnail(videoId)
                     && markTitle(textNodes, title, truncatedTitles, videoId);
         }
-        return !title.equals(originalTitle.trim())
-                && replaceTitle(textNodes, title, truncatedTitles, originalTitle, findLabelOfTitle(title, texts));
+        if (originalTitle == null) {
+            // The text hook replaces the title when the element is laid out.
+            return markTitle(textNodes, title, truncatedTitles, videoId);
+        }
+        return replaceTitle(textNodes, videoId, title, truncatedTitles, originalTitle, findLabelOfTitle(title, texts));
     }
 
     /**
@@ -2567,8 +2631,7 @@ public final class RestoreOriginalTitlesPatch {
                 continue;
             }
             if (Character.isWhitespace(c) || Character.isSpaceChar(c)) {
-                //noinspection SizeReplaceableByIsEmpty
-                space = builder.length() > 0;
+                space = Utils.isNotEmpty(builder);
                 continue;
             }
             if (space) {
@@ -2944,22 +3007,27 @@ public final class RestoreOriginalTitlesPatch {
      * Replaces the texts that are the title, the start of the accessibility label,
      * and the title in other labels (such as the accessibility label of the menu button).
      * Keys and urls are not changed, even if they include the title.
+     * The replaced titles are marked with the video id if the text hook shows the DeArrow icon
+     * of the thumbnail before them.
      *
      * @return If any text was replaced.
      */
-    private static boolean replaceTitle(List<ProtoNode> textNodes, String translatedTitle,
+    private static boolean replaceTitle(List<ProtoNode> textNodes, String videoId, String translatedTitle,
                                         Set<String> truncatedTitles, String originalTitle,
                                         @Nullable String label) {
         boolean replaced = false;
         final int translatedLength = translatedTitle.length();
         final boolean replaceInsideTexts = translatedLength >= MIN_TITLE_LENGTH;
+        final String title = DeArrowTitleIcon.isShownForThumbnail(videoId)
+                ? getBuilder(videoId, originalTitle).toString()
+                : originalTitle;
 
         for (ProtoNode node : textNodes) {
             String nodeText = node.getText();
             String text = removeTitleMarker(nodeText).trim();
             if (text.equals(translatedTitle) || truncatedTitles.contains(text)) {
                 // Truncated titles are replaced by the entire title, which the view truncates.
-                node.setText(originalTitle);
+                node.setText(title);
             } else if (text.equals(label)) {
                 node.setText(originalTitle + label.substring(translatedLength));
             } else if (isLabelCandidate(text)) {

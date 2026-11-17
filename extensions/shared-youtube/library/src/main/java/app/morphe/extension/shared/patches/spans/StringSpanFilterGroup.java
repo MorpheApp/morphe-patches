@@ -21,8 +21,7 @@ public class StringSpanFilterGroup extends SpanFilterGroup<CharSequence> {
         int matchedIndex = -1;
         if (isEnabled()) {
             for (CharSequence pattern : filters) {
-                //noinspection SizeReplaceableByIsEmpty
-                if (string.length() > 0) {
+                if (Utils.isNotEmpty(string)) {
                     final int indexOf = Utils.indexOf(string, pattern);
                     if (indexOf >= 0) {
                         matchedIndex = indexOf;

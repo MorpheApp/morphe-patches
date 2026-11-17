@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">ใช้โปรแกรมดาวน์โหลดภายนอกสำหรับเมนู \"ดาวน์โหลด\"</string>
   <string name="morphe_external_downloader_menu_summary">ตัวเลือกดาวน์โหลดในเมนูจะเปิดโปรแกรมดาวน์โหลดภายนอกของคุณแทน</string>
   <string name="morphe_export_download_folder_title">ส่งออกรายการดาวน์โหลด</string>
-  <string name="morphe_export_download_folder_summary">"ส่งออกเพลงและวิดีโอที่บันทึกไว้ในแอปไปยังที่จัดเก็บข้อมูลในอุปกรณ์ของคุณโดยใช้เมนู flyout สำหรับการดาวน์โหลดในแอป แตะเพื่อเปลี่ยน
+  <string name="morphe_export_download_folder_summary">"ส่งออกเพลงและวิดีโอที่บันทึกไว้ในแอปไปยังที่จัดเก็บข้อมูลในอุปกรณ์ของคุณโดยใช้เมนูแบบเลื่อนออกการดาวน์โหลดในแอป แตะเพื่อเปลี่ยนการส่งออก
 
 โฟลเดอร์ส่งออก: %s"</string>
   <string name="morphe_export_download_started">กำลังส่งออกรายการดาวน์โหลด</string>
@@ -382,7 +382,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_flyout_menu_shuffle_play_title">ซ่อนเมนู \'เล่นแบบสุ่ม\'</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">ซ่อนเมนู \'ตัวตั้งเวลาปิด\'</string>
   <string name="morphe_music_hide_flyout_menu_start_radio_title">ซ่อนเมนู \'เริ่มวิทยุ\'</string>
-  <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">ซ่อนเมนู \'สถิติสำหรับพวกเนิร์ด\'</string>
+  <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">ซ่อนเมนู \'สถิติสำหรับเด็กเนิร์ด\'</string>
   <string name="morphe_music_hide_flyout_menu_subscribe_title">ซ่อนเมนูติดตาม</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">ซ่อนเมนู \'เอาออกจากการโทรด่วน\'</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">ซ่อนเมนู \'ดูเครดิตเพลง\'</string>

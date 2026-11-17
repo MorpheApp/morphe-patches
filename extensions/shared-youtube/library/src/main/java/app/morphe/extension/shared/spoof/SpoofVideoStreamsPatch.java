@@ -13,7 +13,6 @@ package app.morphe.extension.shared.spoof;
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
 
 import android.net.Uri;
-import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -105,7 +104,7 @@ public class SpoofVideoStreamsPatch {
     private static final ThreadLocal<Boolean> streamRangeLimitedOnThread = ThreadLocal.withInitial(() -> false);
 
     /**
-     * UMP part type of a SABR error. The server can send it instead of the media of a plain stream range.
+     * UMP part type of SABR error. The server can send it instead of the media of a plain stream range.
      */
     private static final byte UMP_PART_SABR_ERROR = 44;
 
@@ -846,7 +845,7 @@ public class SpoofVideoStreamsPatch {
     public static String appendSpoofedClient(String videoFormat) {
         try {
             if (SPOOF_VIDEO_STREAMS && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS.get()
-                    && !TextUtils.isEmpty(videoFormat)) {
+                    && Utils.isNotEmpty(videoFormat)) {
                 // Force LTR layout, to match the same LTR video time/length layout YouTube uses for all languages.
                 return "\u202D" + videoFormat + "\u2009(" // u202D = left to right override
                         + StreamingDataRequest.getLastSpoofedClientName() + ")";

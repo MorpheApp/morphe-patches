@@ -87,9 +87,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">การตั้งค่าถูกนำเข้าเรียบร้อยแล้ว</string>
   <string name="morphe_sb_settings_import_failed">ไม่สามารถนำเข้าได้: %s</string>
   <string name="morphe_sb_settings_export_failed">ไม่สามารถส่งออกได้: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"การตั้งค่าของคุณมี ID ผู้ใช้ SponsorBlock ที่เป็นส่วนตัว
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"การตั้งค่าของคุณมีรหัสผู้ใช้ SponsorBlock ที่เป็นส่วนตัว
 
-ID ผู้ใช้ของคุณเหมือนกับรหัสผ่าน และไม่ควรแชร์"</string>
+รหัสผู้ใช้ของคุณเหมือนกับรหัสผ่าน และไม่ควรแชร์"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">อย่าแสดงอีก</string>
   <string name="morphe_sb_diff_segments_title">เปลี่ยนพฤติกรรมของส่วน</string>
   <string name="morphe_sb_segments_sponsor">สปอนเซอร์</string>
@@ -230,5 +230,5 @@ ID ผู้ใช้ของคุณเหมือนกับรหัส�
   <string name="morphe_sb_color_dot_label">สี:</string>
   <string name="morphe_sb_about_api_summary">"SponsorBlock เป็นฐานข้อมูลที่มาจากชุมชนของช่วงวิดีโอ เช่น โฆษณา ช่วงเปิด ช่วงปิด และการแจ้งเตือนให้สมัครสมาชิก ช่วงต่างๆ ถูกส่งและโหวตโดยชุมชน และฐานข้อมูลเปิดให้ดาวน์โหลดฟรี
 
-ID ของวิดีโอที่คุณดูจะถูกส่งไปยัง API ของ SponsorBlock เพื่อรับช่วงต่างๆ"</string>
+รหัสของวิดีโอที่คุณดูจะถูกส่งไปยัง API ของ SponsorBlock เพื่อรับช่วงต่างๆ"</string>
 </resources>

@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3905
+ * https://github.com/MorpheApp/morphe-patches/pull/4890
+ * https://github.com/MorpheApp/morphe-patches/pull/4909
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -15,6 +17,7 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +38,7 @@ import app.morphe.extension.shared.innertube.Offline.OfflineCommand;
 import app.morphe.extension.shared.innertube.Offline.OfflineDownloadAction;
 import app.morphe.extension.shared.innertube.Offline.OfflineDownloadActionCommand;
 import app.morphe.extension.shared.innertube.Offline.OfflineFormat;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormatType;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
 import app.morphe.extension.shared.innertube.Offline.OfflineabilityRenderer;
@@ -77,9 +81,22 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     private static final String PLAYLIST_DOWNLOAD_BUTTON_IDENTIFIER = "playlist-download-button";
 
     /**
-     * Height of the 1080p download quality.
+     * Qualities of the quality picker, highest first. Premium offers up to 1080p,
+     * but the app can also save the higher qualities.
      */
-    private static final int FULL_HD_QUALITY_HEIGHT = 1080;
+    private static final OfflineFormatType[] FORMAT_TYPES = {
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_2160,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_1440,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_1080,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD_480,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_LD,
+    };
+
+    private static final String[] FORMAT_LABELS = {
+            "2160p", "1440p", "1080p", "720p", "480p", "360p", "144p"
+    };
 
     /**
      * Injection point.
@@ -150,8 +167,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     /**
      * Injection point.
      * <p>
-     * Called when the offline setting category is created, for the download quality setting
-     * and its 1080p quality, which the server can turn off.
+     * Called when the offline setting category is created, for the download quality setting,
+     * which the server can turn off.
      *
      * @param original If the server enables the setting.
      */
@@ -162,15 +179,104 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     /**
      * Injection point.
      * <p>
-     * Called once when the offline settings are created. The app hides the download qualities
-     * that are taller than the shorter side of the screen, so a 720p screen can only save 720p.
+     * Called when the offline setting category is created. The 1080p option adds 1080p
+     * in front of the download quality formats, which already have it.
      *
-     * @param maxHeight Height of the highest download quality the app offers.
+     * @param original If the server enables the 1080p option.
      */
-    public static int getMaxDownloadQualityHeight(int maxHeight) {
-        return isInAppDownloadMode()
-                ? Math.max(maxHeight, FULL_HD_QUALITY_HEIGHT)
-                : maxHeight;
+    public static boolean isFullHdFormatOptionAvailable(boolean original) {
+        return original && !isInAppDownloadMode();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the offline setting category is created, for the entries of the download quality setting.
+     *
+     * @param formatTypes Format types of the server, or an empty list to use the default qualities.
+     * @param formatType  Default format type of the smart downloads quality, a constant of the
+     *                    format type enum of the app.
+     * @return The format types of every quality of the quality picker, highest first.
+     */
+    public static List<?> getDownloadQualityFormatTypes(List<?> formatTypes, @Nullable Object formatType) {
+        try {
+            if (!isInAppDownloadMode()) {
+                return formatTypes;
+            }
+            if (!(formatType instanceof Enum<?> type)) {
+                Logger.printException(() -> "Unknown format type: " + formatType);
+                return formatTypes;
+            }
+
+            return appFormatTypes(type, FORMAT_TYPES);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getDownloadQualityFormatTypes failure", ex);
+            return formatTypes;
+        }
+    }
+
+    /**
+     * Implemented by the app class that picks the streams of a download quality.
+     */
+    public interface DownloadStreamSelector {
+        /**
+         * The stream selection of the app, which uses the same device and server checks as playback.
+         *
+         * @return The stream of the quality, a stream of a lower quality, or null.
+         */
+        @Nullable
+        FormatStreamInterface patch_selectStream(int quality, int maxHeight, int audioQuality,
+                                                 StreamingDataInterface streamingData, boolean audio,
+                                                 Object playerConfig);
+
+        /**
+         * @return The stream with its content length, which is fetched if the server did not give it.
+         */
+        FormatStreamInterface patch_fetchContentLength(FormatStreamInterface stream) throws IOException;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called for each quality of the quality picker of a download, to pick the video and audio
+     * streams of the quality. The picker drops a quality whose stream is the same as one of a lower
+     * quality, and the app picks a lower quality if the device or server checks rule out the stream
+     * of the quality. These are the same checks as playback, such as which codecs the device can decode.
+     *
+     * @return The stream of the quality, or the stream the app picked.
+     */
+    @Nullable
+    public static FormatStreamInterface selectDownloadStream(DownloadStreamSelector selector, int quality,
+                                                             int maxHeight, int audioQuality,
+                                                             StreamingDataInterface streamingData,
+                                                             boolean audio, Object playerConfig) {
+        FormatStreamInterface stream = selector.patch_selectStream(
+                quality, maxHeight, audioQuality, streamingData, audio, playerConfig);
+        if (audio) {
+            return stream;
+        }
+
+        try {
+            FormatStreamInterface videoStream = getDownloadVideoStream(quality, maxHeight, streamingData, stream);
+            return videoStream == stream
+                    ? stream
+                    : selector.patch_fetchContentLength(videoStream);
+        } catch (Exception ex) {
+            Logger.printException(() -> "selectDownloadStream failure", ex);
+            return stream;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the quality picker of a download is created. The picker opens collapsed to
+     * 60% of the screen height, which cuts off the lowest qualities of the longer list.
+     *
+     * @return If the picker opens fully expanded.
+     */
+    public static boolean expandDownloadQualityPicker() {
+        return isInAppDownloadMode();
     }
 
     /**
@@ -210,7 +316,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
             // entries of the server. The types the server omitted are added as well,
             // so the picker shows every quality.
             OfflineabilityRenderer renderer = OfflineabilityRenderer.parseFrom(source);
-            List<OfflineFormat> merged = mergeMissingFormatTypes(renderer.getFormatsList());
+            List<OfflineFormat> merged = mergeMissingFormatTypes(
+                    renderer.getFormatsList(), FORMAT_TYPES, FORMAT_LABELS);
             if (merged == null) {
                 return unlocked;
             }

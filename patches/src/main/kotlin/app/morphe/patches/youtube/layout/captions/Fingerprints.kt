@@ -45,6 +45,9 @@ internal object SubtitleManagerFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
+        // Reason of the track selection: 2 when the caption tracks of a video are loaded
+        // and YouTube selects the track itself, other values for the selections of the user.
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchFirst()),
         string(""),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
@@ -52,6 +55,23 @@ internal object SubtitleManagerFingerprint : Fingerprint(
             returnType = "Z"
         ),
         opcode(opcode = Opcode.IF_EQZ, location = MatchAfterWithin(3))
+    )
+)
+
+/**
+ * Same method as [SubtitleManagerFingerprint]. If no track is selected, the track that the audio track
+ * of the video marks as forced is shown anyway: `if (audioTrack.hasForcedTrack && audioTrack.forcedTrackIndex >= 0)`.
+ */
+internal object SubtitleManagerForcedTrackFingerprint : Fingerprint(
+    classFingerprint = SubtitleManagerFingerprintClassFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, type = "Z"),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchAfterImmediately()),
+        opcode(Opcode.IF_LTZ, location = MatchAfterImmediately())
     )
 )
 

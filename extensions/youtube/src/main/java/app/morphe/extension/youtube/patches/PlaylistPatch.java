@@ -7,6 +7,9 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.view.GestureDetector;
 import android.view.HapticFeedbackConstants;
@@ -24,6 +27,7 @@ import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -67,6 +71,12 @@ public final class PlaylistPatch {
 
     private static final int DRAG_HANDLE_DESCRIPTION_ID = ResourceUtils.getIdentifier(
             ResourceType.STRING, "accessibility_drag_handle");
+
+    /**
+     * Accessibility text of the drag handle in the default language of the app.
+     */
+    @Nullable
+    private static String defaultDragHandleDescription;
 
     private static volatile boolean playlistShown;
 
@@ -123,13 +133,29 @@ public final class PlaylistPatch {
     /**
      * @return The drag handle among the children of the row host.
      */
+    @SuppressLint("AppBundleLocaleChanges")
     @Nullable
     private static View findDragHandle(ViewGroup host) {
         String description = host.getResources().getString(DRAG_HANDLE_DESCRIPTION_ID);
+        // The drag handle of a Litho row has the text of the default language,
+        // whatever the language of the app. The locale is changed only to read this text.
+        String defaultDescription = defaultDragHandleDescription;
+        if (defaultDescription == null) {
+            Context context = host.getContext();
+            Configuration configuration = new Configuration(context.getResources().getConfiguration());
+            configuration.setLocale(Locale.ROOT);
+            defaultDescription = context.createConfigurationContext(configuration)
+                    .getString(DRAG_HANDLE_DESCRIPTION_ID);
+            defaultDragHandleDescription = defaultDescription;
+        }
+
         for (int i = 0, count = host.getChildCount(); i < count; i++) {
             View child = host.getChildAt(i);
             CharSequence childDescription = child.getContentDescription();
-            if (childDescription != null && description.contentEquals(childDescription)) return child;
+            if (childDescription != null && (description.contentEquals(childDescription)
+                    || defaultDescription.contentEquals(childDescription))) {
+                return child;
+            }
         }
         return null;
     }

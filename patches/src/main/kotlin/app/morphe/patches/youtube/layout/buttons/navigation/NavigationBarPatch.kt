@@ -638,19 +638,28 @@ val navigationBarPatch = patch(
             }
         }
 
-        PivotBarRendererFingerprint.let {
-            it.method.apply {
-                val pivotBarRendererConstructorIndex = it.instructionMatches[3].index
+        // Create the Search, Settings and Watch later buttons from the home button,
+        // also from the home button without a label.
+        // Both fingerprints match the same method, which other patches can change before.
+        PivotBarRendererFingerprint.clearMatch()
+        PivotBarIconOnlyRendererFingerprint.clearMatch()
+        mapOf(
+            PivotBarRendererFingerprint.instructionMatches[3] to "createPivotBarItems",
+            PivotBarIconOnlyRendererFingerprint.instructionMatches.last() to "createIconOnlyPivotBarItems"
+        ).entries.sortedByDescending { it.key.index }.forEach { (constructorMatch, extensionMethod) ->
+            // The buttons are made right after the constructor of the button, as the return of the
+            // button without a label is shared with other kinds of buttons.
+            PivotBarRendererFingerprint.method.apply {
+                val pivotBarRendererConstructorIndex = constructorMatch.index
                 val pivotBarRendererConstructorReference = getInstruction<ReferenceInstruction>(pivotBarRendererConstructorIndex).reference as MethodReference
                 val pivotBarRendererConstructorStartRegister = getInstruction<RegisterRangeInstruction>(pivotBarRendererConstructorIndex).startRegister
                 val messageLiteIndex = pivotBarRendererConstructorReference.parameterTypes.indexOfFirst { parameterType -> parameterType == "Lcom/google/protobuf/MessageLite;" }
                 val messageLiteRegister = pivotBarRendererConstructorStartRegister + messageLiteIndex + 1
 
-                // Create the Search, Settings and Watch later buttons from the home button.
-                addInstructionsAtControlFlowLabel(
-                    it.instructionMatches.last().index,
+                addInstruction(
+                    pivotBarRendererConstructorIndex + 1,
                     "invoke-static/range { v$messageLiteRegister .. v$messageLiteRegister }, " +
-                            "$EXTENSION_CLASS->createPivotBarItems(Lcom/google/protobuf/MessageLite;)V"
+                            "$EXTENSION_CLASS->$extensionMethod(Lcom/google/protobuf/MessageLite;)V"
                 )
             }
         }
@@ -666,7 +675,7 @@ val navigationBarPatch = patch(
             // The field can also be PivotBarIconOnlyItemRenderer or other renderers.
             mapOf(
                 "patch_getPivotBarItemRenderer" to PivotBarRendererFingerprint.instructionMatches[2],
-                "patch_getPivotBarIconOnlyItemRenderer" to PivotBarIconOnlyRendererFingerprint.instructionMatches.last()
+                "patch_getPivotBarIconOnlyItemRenderer" to PivotBarIconOnlyRendererFingerprint.instructionMatches[3]
             ).forEach { (methodName, checkCastMatch) ->
                 val rendererType = checkCastMatch.instruction.getReference<TypeReference>()!!.type
 

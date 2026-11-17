@@ -10,8 +10,6 @@
 
 package app.morphe.extension.shared.spoof.requests;
 
-import android.text.TextUtils;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,6 +18,7 @@ import java.net.HttpURLConnection;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.spoof.ClientType;
@@ -87,7 +86,7 @@ public final class PlayerRoutes {
             }
             client.put("clientName", clientType.clientName);
             client.put("clientVersion", clientType.clientVersion);
-            if (!TextUtils.isEmpty(visitorId)) {
+            if (Utils.isNotEmpty(visitorId)) {
                 client.put("visitorData", visitorId);
             }
             if (web) {
@@ -98,12 +97,12 @@ public final class PlayerRoutes {
             }
 
             String androidSdkVersion = clientType.androidSdkVersion;
-            if (!TextUtils.isEmpty(androidSdkVersion)) {
+            if (Utils.isNotEmpty(androidSdkVersion)) {
                 client.put("androidSdkVersion", androidSdkVersion);
             }
 
             String platform = web ? null : clientType.clientPlatform;
-            if (!TextUtils.isEmpty(platform)) {
+            if (Utils.isNotEmpty(platform)) {
                 client.put("platform", platform);
             }
 
@@ -161,7 +160,7 @@ public final class PlayerRoutes {
 
             if (clientType.requirePoToken) {
                 String poToken = PoTokenManager.getPlayerPoToken(clientType, videoId);
-                if (!TextUtils.isEmpty(poToken)) {
+                if (Utils.isNotEmpty(poToken)) {
                     JSONObject serviceIntegrityDimensions = new JSONObject();
                     serviceIntegrityDimensions.put("poToken", poToken);
                     innerTubeBody.put("serviceIntegrityDimensions", serviceIntegrityDimensions);

@@ -76,7 +76,10 @@ private const val VIDEO_TOGGLE_INTERFACE =
 private const val DELEGATE_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/CrossfadePatch$DelegateAccess;"
 
-
+/**
+ * Adds a method that other added methods call. Methods that extension code calls
+ * are added with addPatchInterface.
+ */
 private fun MutableClass.addBridge(
     name: String,
     parameters: List<String>,
@@ -891,13 +894,7 @@ val crossfadePatch = patch(
                 method.name == targetName && method.returnType == returnType
                         && method.parameterTypes.map { it.toString() } == parameters
             } ?: error("Bridge target $targetName($parameters)$returnType not found in ${exoPlayerImplClass.type} hierarchy")
-            val invoke = if (paramType != null) "invoke-virtual { p0, p1 }, $target" else "invoke-virtual { p0 }, $target"
-            val (registers, result) = when (returnType) {
-                "I" -> 2 to "move-result v0\nreturn v0"
-                "J" -> 3 to "move-result-wide v0\nreturn-wide v0"
-                else -> 2 to "return-void"
-            }
-            exoPlayerImplClass.addBridge(bridgeName, parameters, returnType, registers, "$invoke\n$result")
+            exoPlayerImplClass.addPatchInterface(EXO_PLAYER_INTERFACE, bridgeName, target)
         }
 
         addExoBridge("patch_getPlaybackState", getPlaybackStateName, "I")
@@ -964,8 +961,9 @@ val crossfadePatch = patch(
 
         if (directListenerSetField != null) {
             for ((bridgeName, setMethod) in listOf("patch_addDirectListener" to "add", "patch_removeDirectListener" to "remove")) {
-                exoPlayerImplClass.addBridge(
-                    bridgeName, listOf("Ljava/lang/Object;"), "V", 3,
+                exoPlayerImplClass.addPatchInterface(
+                    EXO_PLAYER_INTERFACE,
+                    bridgeName,
                     """
                         iget-object v0, p0, $directListenerSetField
                         invoke-virtual { v0, p1 }, $copyOnWriteSetType->$setMethod(Ljava/lang/Object;)Z
@@ -1050,7 +1048,6 @@ val crossfadePatch = patch(
 
         sessionClass.addPatchInterface(SESSION_INTERFACE, "patch_getFactory", factoryFieldRef)
 
-        factoryClass.interfaces.add(FACTORY_INTERFACE)
         val guardClearSmali = if (guardField != null) {
             """
                 iget-object v0, p1, $sharedStateFieldRef
@@ -1059,10 +1056,9 @@ val crossfadePatch = patch(
                 iput-object v1, v0, $guardField
             """
         } else ""
-        factoryClass.addBridge(
-            "patch_createPlayer", listOf("Ljava/lang/Object;", "Ljava/lang/Object;", "I"), "Ljava/lang/Object;",
-            // Clearing the guard needs locals that do not overlap the 4 parameter registers.
-            if (guardField != null) 7 else 4,
+        factoryClass.addPatchInterface(
+            FACTORY_INTERFACE,
+            "patch_createPlayer",
             """
                 check-cast p1, $coordinatorType
                 check-cast p2, $loadControlType
@@ -1250,8 +1246,9 @@ val crossfadePatch = patch(
         )
 
         fun addSetStateBridge(bridgeName: String, stateField: Field, setter: String) {
-            videoToggleClass.addBridge(
-                bridgeName, emptyList(), "V", 3,
+            videoToggleClass.addPatchInterface(
+                VIDEO_TOGGLE_INTERFACE,
+                bridgeName,
                 """
                     iget-object v0, p0, $stateProviderField
                     sget-object v1, $stateField
@@ -1282,10 +1279,7 @@ val crossfadePatch = patch(
             ) ?: error("nba <init> not found in ${videoToggleClass.type}")
 
         for ((delegateClass, delegateField) in delegateClasses) {
-            delegateClass.apply {
-                interfaces.add(DELEGATE_INTERFACE)
-                addPatchInterface(DELEGATE_INTERFACE, "patch_getDelegate", delegateField)
-            }
+            delegateClass.addPatchInterface(DELEGATE_INTERFACE, "patch_getDelegate", delegateField)
         }
     }
 }

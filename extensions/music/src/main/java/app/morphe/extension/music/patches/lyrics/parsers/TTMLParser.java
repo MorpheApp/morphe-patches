@@ -33,6 +33,7 @@ import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Parses Apple Music style TTML into lyric lines.
@@ -860,13 +861,12 @@ public final class TTMLParser {
                         last.romaji(), true, last.ruby()));
             }
         }
-        //noinspection SizeReplaceableByIsEmpty
-        if (text.length() > 0 && text.charAt(text.length() - 1) != ' ') {
+        if (Utils.isNotEmpty(text) && text.charAt(text.length() - 1) != ' ') {
             text.append(' ');
         }
     }
 
-    @SuppressWarnings({"DataFlowIssue", "StatementWithEmptyBody", "ExtractMethodRecommender"})
+    @SuppressWarnings({"DataFlowIssue", "StatementWithEmptyBody"})
     private static ParsedLine processPElement(XmlPullParser p, long pBegin, long pEnd, int frameRate)
             throws XmlPullParserException, IOException {
 
@@ -1148,12 +1148,10 @@ public final class TTMLParser {
                                 }
                                 StringBuilder rubyBuilder = new StringBuilder();
                                 for (RomajiSyllable rs : rubyTags) {
-                                    //noinspection SizeReplaceableByIsEmpty
-                                    if (rubyBuilder.length() > 0) rubyBuilder.append(' ');
+                                    if (Utils.isNotEmpty(rubyBuilder)) rubyBuilder.append(' ');
                                     rubyBuilder.append(rs.text());
                                 }
-                                //noinspection SizeReplaceableByIsEmpty
-                                final String rubyText = rubyBuilder.length() > 0 ? rubyBuilder.toString() : null;
+                                final String rubyText = Utils.isNotEmpty(rubyBuilder) ? rubyBuilder.toString() : null;
                                 // The ruby is drawn as furigana. The romaji reads the kana, which is
                                 // the ruby unless that is a gloss, such as "Normal" over ノルマ.
                                 final String romaji;
@@ -1246,8 +1244,7 @@ public final class TTMLParser {
                             final Word prev = bgWords.get(bgWords.size() - 1);
                             final boolean cjk = isContinuousCjk(prev.text());
                             if (!hasNewline || !cjk) {
-                                //noinspection SizeReplaceableByIsEmpty
-                                if (bgFullText.length() > 0 && bgFullText.charAt(bgFullText.length() - 1) != ' ') {
+                                if (Utils.isNotEmpty(bgFullText) && bgFullText.charAt(bgFullText.length() - 1) != ' ') {
                                     bgFullText.append(' ');
                                 }
                                 if (!prev.endsWithSpace()) {
@@ -1272,8 +1269,7 @@ public final class TTMLParser {
                             final Word prev = words.get(words.size() - 1);
                             final boolean cjk = isContinuousCjk(prev.text());
                             if (!hasNewline || !cjk) {
-                                //noinspection SizeReplaceableByIsEmpty
-                                if (fullText.length() > 0 && fullText.charAt(fullText.length() - 1) != ' ') {
+                                if (Utils.isNotEmpty(fullText) && fullText.charAt(fullText.length() - 1) != ' ') {
                                     fullText.append(' ');
                                 }
                                 if (!prev.endsWithSpace()) {
@@ -1290,8 +1286,7 @@ public final class TTMLParser {
             }
         }
 
-        final String rawLineText = normalizeText(fullText.toString());
-        String lineText = rawLineText;
+        String lineText = normalizeText(fullText.toString());
 
         // A background vocal that is still open ends with its line.
         if (inBg) {
@@ -1371,8 +1366,7 @@ public final class TTMLParser {
             long bgEndMs,
             long pBegin,
             long pEnd) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (bgWords.isEmpty() && bgFullText.length() == 0) {
+        if (bgWords.isEmpty() && Utils.isEmpty(bgFullText)) {
             return;
         }
         String bgText = normalizeText(bgFullText.toString());
@@ -1461,8 +1455,7 @@ public final class TTMLParser {
                 if (startsTogether || mostlyInsideMain) {
                     String piece = sub.text() != null ? sub.text().trim() : "";
                     if (!piece.isEmpty()) {
-                        //noinspection SizeReplaceableByIsEmpty
-                        if (multiRoma.length() > 0) multiRoma.append(' ');
+                        if (Utils.isNotEmpty(multiRoma)) multiRoma.append(' ');
                         multiRoma.append(piece);
                         multiLastIdx = j;
                     }
@@ -1480,8 +1473,7 @@ public final class TTMLParser {
                 j++;
             }
 
-            //noinspection SizeReplaceableByIsEmpty
-            if (multiLastIdx >= 0 && multiRoma.length() > 0) {
+            if (multiLastIdx >= 0 && Utils.isNotEmpty(multiRoma)) {
                 words.set(i, new Word(main.startMs(), main.endMs(), main.text(),
                         multiRoma.toString(), main.endsWithSpace(), main.ruby()));
                 romanSearchStart = multiLastIdx + 1;
@@ -1541,8 +1533,7 @@ public final class TTMLParser {
                     }
                 }
             }
-            //noinspection SizeReplaceableByIsEmpty
-            if (perWord.length() > 0) {
+            if (Utils.isNotEmpty(perWord)) {
                 return perWord.toString().trim();
             }
         }

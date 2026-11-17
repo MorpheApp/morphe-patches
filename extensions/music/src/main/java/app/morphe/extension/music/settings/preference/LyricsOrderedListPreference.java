@@ -656,7 +656,7 @@ public final class LyricsOrderedListPreference extends Preference {
         });
 
         CharSequence title = getTitle();
-        if (!TextUtils.isEmpty(title)) {
+        if (Utils.isNotEmpty(title)) {
             TextView titleView = new TextView(context);
             titleView.setText(title);
             titleView.setTextSize(16);
@@ -668,7 +668,7 @@ public final class LyricsOrderedListPreference extends Preference {
         }
 
         CharSequence summary = getSummary();
-        if (!TextUtils.isEmpty(summary)) {
+        if (Utils.isNotEmpty(summary)) {
             TextView summaryView = new TextView(context);
             summaryView.setText(summary);
             summaryView.setTextSize(13);

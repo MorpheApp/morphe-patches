@@ -542,6 +542,8 @@ Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els v
   <string name="morphe_disable_chapter_skip_double_tap_title">Desactiva el salt de capítol amb toc doble</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Desactiva el gest de doble toc amb dos dits que salta capítols, que es pot activar accidentalment amb un sol dit</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Descarrega vídeos, podcasts o cançons amb aplicacions de descàrrega de tercers</string>
   <string name="morphe_external_downloader_overlay_button_title">Mostra el botó de descàrrega de la capa del reproductor</string>
   <string name="morphe_external_downloader_overlay_button_summary">Mostra un botó al reproductor de vídeo que obre el teu descarregador extern</string>
@@ -558,6 +560,10 @@ Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els v
   <string name="morphe_shorts_download_flyout_button_title">Mostra la descàrrega al menú de Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Afegeix un element de descàrrega al menú del reproductor de Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Descàrrega</string>
+  <string name="morphe_feed_download_flyout_button_title">Mostra la descàrrega als menus de vídeo</string>
+  <string name="morphe_feed_download_flyout_button_summary">Afegeix un element de descàrrega als menus dels vídeos del feed que no en tinguin, com els vídeos que YouTube només permet descarregar als membres Premium</string>
+  <string name="morphe_download_force_4k_title">Forçar la disponibilitat de la descàrrega en 4K</string>
+  <string name="morphe_download_force_4k_summary">Ofereix descàrregues en 1440p i 4K encara que YouTube decideixi que aquest dispositiu no pot reproduir-les. Aquestes vídeos poden reproduir-se sense vídeo dins de YouTube, però es poden exportar al teu dispositiu</string>
   <string name="morphe_export_download_folder_title">Exporta els vídeos descarregats</string>
   <string name="morphe_export_download_folder_summary">"Exporta els vídeos descarregats dins de l'app a l'emmagatzematge del teu dispositiu mitjançant el menú desplegable de descàrregues de l'app. Toqueu per canviar la carpeta d'exportació
 
@@ -1485,7 +1491,7 @@ Disseny d'automoció
   <string name="morphe_dearrow_titles_player_title">Llistes de reproducció &amp; recomanacions del reproductor</string>
   <string name="morphe_dearrow_titles_search_title">Resultats de la cerca</string>
   <string name="morphe_dearrow_titles_icon_title">Mostrar la icona de DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Mostra la icona de DeArrow als títols de vídeos basats en crowdsourcing. Toca la icona per mostrar el títol i la miniatura originals</string>
+  <string name="morphe_dearrow_titles_icon_summary">Mostra la icona de DeArrow als títols dels vídeos amb un títol o una miniatura generats per la comunitat. Toqueu la icona per mostrar el títol i la miniatura originals</string>
   <string name="morphe_dearrow_casual_mode_title">Mode casual</string>
   <string name="morphe_dearrow_casual_mode_summary">Mostra el títol original en lloc del títol de DeArrow si els usuaris de DeArrow han votat que els agrada el títol original</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Vots casuals mínims per mostrar el títol original</string>
@@ -1587,6 +1593,16 @@ Els vídeos es sol·liciten mitjançant un prefix curt de l'ID del vídeo hashat
   <string name="morphe_disable_haptic_feedback_zoom_title">Desactivar la resposta hàptica del zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Si has canviat recentment les dades d\'accés del teu compte, desinstal·la i torna a instal·lar MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Desarar les notificacions push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Desa les notificacions push rebutades en un fitxer a les dades de l\'aplicació. El fitxer pot incloure informació privada, com els textos de les notificacions i els noms dels canals</string>
+  <string name="morphe_debug_saved_push_notifications_title">Exportar les notificacions push desades</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exporta o neteja les notificacions push desades</string>
+  <string name="morphe_debug_saved_push_notifications_count">Notificacions push desades: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">No s\'han trobat notificacions push desades</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Notificacions push exportades correctament</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Error en exportar les notificacions push</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Notificacions push desades esborrades</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omitir redireccions d\'enllaços</string>
   <string name="morphe_bypass_link_redirects_summary">Obre l\'enllaç original directament, ometent l\'enllaç de seguiment (youtube.com/redirect)</string>

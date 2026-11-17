@@ -22,6 +22,8 @@ import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
+import androidx.annotation.Nullable;
+
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -438,9 +440,14 @@ public class CommentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideLiveChatGiftButton(View view) {
+    public static void hideLiveChatGiftButton(@Nullable View view) {
         if (Settings.HIDE_COMMENTS_GIFT_BUTTON.get() && view != null) {
             ViewGroup.LayoutParams lp = view.getLayoutParams();
+            // Called each time the app gets the button container, so it is hidden only once.
+            if (view.getVisibility() == View.GONE && lp != null && lp.width == 0 && lp.height == 0) {
+                return;
+            }
+
             if (lp != null) {
                 lp.width = 0;
                 lp.height = 0;

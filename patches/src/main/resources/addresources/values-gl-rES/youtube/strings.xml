@@ -542,6 +542,8 @@ Despois de abrir unha vez un vídeo co botón Preguntar, a función funciona con
   <string name="morphe_disable_chapter_skip_double_tap_title">Desactivar o salto de capítulo con dobre toque</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Desactiva o xesto de dobre toque con dous dedos que salta capítulos, que pode activarse accidentalmente cun só dedo</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Descarga vídeos, podcasts ou cancións con aplicacións de descarga de terceiros</string>
   <string name="morphe_external_downloader_overlay_button_title">Amosar o botón de descarga na superposición do reproductor</string>
   <string name="morphe_external_downloader_overlay_button_summary">Mostra un botón no reproductor de vídeo que abre o teu descargador externo</string>
@@ -558,6 +560,10 @@ Despois de abrir unha vez un vídeo co botón Preguntar, a función funciona con
   <string name="morphe_shorts_download_flyout_button_title">Amosar descarga no menú de Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Engade un elemento de descarga ao menú do reproductor de Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Descargar</string>
+  <string name="morphe_feed_download_flyout_button_title">Amosar descarga nos menus de vídeo</string>
+  <string name="morphe_feed_download_flyout_button_summary">Engade un elemento de descarga aos menus dos vídeos no feed que non teñan un, como os vídeos que YouTube só permite descargar aos membros Premium</string>
+  <string name="morphe_download_force_4k_title">Forzar a dispoñibilidade de descarga en 4K</string>
+  <string name="morphe_download_force_4k_summary">Ofrece descargas en 1440p e 4K aínda que YouTube decida que este dispositivo non pode reproducílas. Estas namedas poden reproducirse sen vídeo dentro de YouTube, pero poden exportarse ao seu dispositivo</string>
   <string name="morphe_export_download_folder_title">Exportar vídeos gardados</string>
   <string name="morphe_export_download_folder_summary">"Exporta os vídeos gardados na aplicación ao almacenamento do teu dispositivo usando o menú desplegable de descargas. Toca para cambiar o cartafol de exportación
 
@@ -1486,7 +1492,7 @@ Disposición para automóbil
   <string name="morphe_dearrow_titles_player_title">Listas de reprodución &amp; recomendacións do reprodutor</string>
   <string name="morphe_dearrow_titles_search_title">Resultados da busca</string>
   <string name="morphe_dearrow_titles_icon_title">Amosar a icona de DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Amosa o icon de DeArrow nos títulos de vídeos basingados en crowdsourcing. Toca o icon para amosar o título e a miniatura orixinais</string>
+  <string name="morphe_dearrow_titles_icon_summary">Mostra o icondo de DeArrow nos títulos de vídeos cun título ou miniatura collaboratively xestionados. Toca o icondo para amosar o título e a miniatura orixinais</string>
   <string name="morphe_dearrow_casual_mode_title">Modo casual</string>
   <string name="morphe_dearrow_casual_mode_summary">Mostra o título orixinal en lugar do título de DeArrow se os usuarios de DeArrow votaron que lles gusta o título orixinal</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Votos casuais mínimos para mostrar o título orixinal</string>
@@ -1588,6 +1594,16 @@ Os vídeos solicítanse mediante un prefixo curto do ID do vídeo hasheado, polo
   <string name="morphe_disable_haptic_feedback_zoom_title">Desactivar a háptica do zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Se cambiaches recentemente os datos de acceso da túa conta, desinstala e reinstala MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Gardar notificacións push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Garda as notificacións push recibidas nun ficheiro nos datos da aplicación. O ficheiro pode incluír información privada, como os textos das notificacións e os nomes dos canles</string>
+  <string name="morphe_debug_saved_push_notifications_title">Exportar notificacións push gardadas</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportar ou borrar as notificacións push gardadas</string>
+  <string name="morphe_debug_saved_push_notifications_count">Notificacións push gardadas: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Non se atoparon notificacións push gardadas</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Notificacións push exportadas con éxito</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Erro ao exportar as notificacións push</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Notificacións push gardadas borradas</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omitir redireccións de ligazóns</string>
   <string name="morphe_bypass_link_redirects_summary">Abre a ligazón orixinal directamente, omitindo a ligazón de seguimento (youtube.com/redirect)</string>

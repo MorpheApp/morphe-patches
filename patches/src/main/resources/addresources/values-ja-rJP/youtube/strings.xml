@@ -543,6 +543,8 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_disable_chapter_skip_double_tap_title">ダブルタップによるチャプター スキップを無効化</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">チャプターをスキップする、二本指でのダブルタップ ジェスチャーを無効にします。このジェスチャーが有効の場合、一本指でのダブルタップ ジェスチャーが二本指だと誤認識され、意図せずチャプターをスキップしてしまう場合があります</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD（1440p）</string>
+  <string name="morphe_offline_video_quality_2160p">4K（2160p）</string>
   <string name="morphe_external_downloader_screen_summary">サードパーティ製ダウンロード アプリで、動画、ポッドキャスト、楽曲をダウンロードします</string>
   <string name="morphe_external_downloader_overlay_button_title">プレーヤー オーバーレイにダウンロード ボタンを表示</string>
   <string name="morphe_external_downloader_overlay_button_summary">ビデオ プレーヤーに、外部ダウンローダーを開くボタンを表示します</string>
@@ -559,6 +561,10 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_shorts_download_flyout_button_title">ショートのメニューに「ダウンロード」を表示</string>
   <string name="morphe_shorts_download_flyout_button_summary">ショートプレーヤーのメニューにダウンロード項目を追加します</string>
   <string name="morphe_shorts_download_flyout_title">ダウンロード</string>
+  <string name="morphe_feed_download_flyout_button_title">ビデオメニューに「ダウンロード」を表示</string>
+  <string name="morphe_feed_download_flyout_button_summary">YouTubeがPremiumメンバーにのみダウンロードを許可しているビデオなど、フィード内のビデオメニューにダウンロード項目がない場合に、それを追加します</string>
+  <string name="morphe_download_force_4k_title">4Kダウンロードを強制的に有効にする</string>
+  <string name="morphe_download_force_4k_summary">YouTubeがこのデバイスで再生できないと判断した場合でも、1440pおよび4Kのダウンロードを可能にします。これらのビデオはYouTube内では映像なしで再生される可能性がありますが、デバイスに書き出して保存できます</string>
   <string name="morphe_export_download_folder_title">保存済みビデオをエクスポート</string>
   <string name="morphe_export_download_folder_summary">"アプリ内ダウンロードのフライアウトメニューを使用して、アプリ内で保存したビデオをデバイスのストレージにエクスポートします。タップしてエクスポートフォルダを変更してください
 
@@ -1487,7 +1493,7 @@ Automotive レイアウト
   <string name="morphe_dearrow_titles_player_title">プレーヤーのプレイリスト &amp; 関連動画</string>
   <string name="morphe_dearrow_titles_search_title">検索結果</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow アイコンを表示</string>
-  <string name="morphe_dearrow_titles_icon_summary">クラウドソースされた動画タイトルにDeArrowアイコンを表示します。アイコンをタップすると、元のタイトルとサムネイルが表示されます</string>
+  <string name="morphe_dearrow_titles_icon_summary">クラウドソースによるタイトルまたはサムネイルを持つビデオのタイトルにDeArrowアイコンを表示します。アイコンをタップすると、元のタイトルとサムネイルが表示されます</string>
   <string name="morphe_dearrow_casual_mode_title">カジュアル モード</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow ユーザーが元のタイトルを「いいね」と投票した場合、DeArrow のタイトルではなく元のタイトルが表示されます</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">元のタイトルを表示するためのカジュアル投票の最小数</string>
@@ -1589,6 +1595,16 @@ Automotive レイアウト
   <string name="morphe_disable_haptic_feedback_zoom_title">ズームの触覚フィードバックを無効化</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">最近アカウントのログイン情報を変更した場合は、MicroG をアンインストールして再インストールしてください</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">プッシュ通知を保存</string>
+  <string name="morphe_debug_save_push_notifications_summary">受信したプッシュ通知をアプリデータのファイルに保存します。このファイルには、通知テキストやチャネル名などの個人情報が含まれる場合があります</string>
+  <string name="morphe_debug_saved_push_notifications_title">保存済みプッシュ通知をエクスポート</string>
+  <string name="morphe_debug_saved_push_notifications_summary">保存済みプッシュ通知のエクスポートまたは消去</string>
+  <string name="morphe_debug_saved_push_notifications_count">保存済みプッシュ通知: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">保存済みプッシュ通知は見つかりませんでした</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">プッシュ通知のファイル出力に成功しました</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">プッシュ通知のファイル出力に失敗しました</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">保存済みプッシュ通知を消去しました</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">リンクのリダイレクトを回避</string>
   <string name="morphe_bypass_link_redirects_summary">追跡リンク (youtube.com/redirect) を経由せずにリンク先を直接開きます</string>

@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">השבת דילוג פרקים בהקשה כפולה</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">משבית את מחוות ההקשה הכפולה בשתי אצבעות שמדלגת על פרקים, שעשויה להיות מופעלת בטעות עם אצבע אחת</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">הורד סרטונים, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
   <string name="morphe_external_downloader_overlay_button_title">הצג כפתור הורדה בשכבת הנגן</string>
   <string name="morphe_external_downloader_overlay_button_summary">מציג כפתור בנגן הווידאו שפותח את מנהל ההורדות החיצוני שלך</string>
@@ -558,6 +560,10 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">הצג הורדה בתפריט Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">מוסיף פריט הורדה לתפריט של נגן ה-Shorts</string>
   <string name="morphe_shorts_download_flyout_title">הורד</string>
+  <string name="morphe_feed_download_flyout_button_title">הצג הורדה בתפריטי הווידאו</string>
+  <string name="morphe_feed_download_flyout_button_summary">מוסיף פריט הורדה לתפריטים של סרטונים בפיד שאין להם כזה, כגון סרטונים ש-YouTube מאפשרת להוריד רק למנויי Premium</string>
+  <string name="morphe_download_force_4k_title">כפה זמינות הורדה ב-4K</string>
+  <string name="morphe_download_force_4k_summary">מאפשר הורדות ב-1440p וב-4K גם אם YouTube קבע כי מכשיר זה אינו יכול להפעיל אותם. סרטונים כאלה עשויים להתנגן ללא וידאו בתוך YouTube, אך ניתן לייצא אותם למכשיר שלך</string>
   <string name="morphe_export_download_folder_title">ייצוא סרטונים שמורים</string>
   <string name="morphe_export_download_folder_summary">"ייצוא סרטונים שנשמרו באפליקציה לאחסון במכשיר באמצעות תפריט ההורדות באפליקציה. הקש לשינוי תיקיית הייצוא
 
@@ -1484,7 +1490,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">רשימות השמעה והמלצות בנגן</string>
   <string name="morphe_dearrow_titles_search_title">תוצאות חיפוש</string>
   <string name="morphe_dearrow_titles_icon_title">הצג סמל DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">מציג את סמל DeArrow בכותרות של סרטונים מבית הקהילה. הקש על הסמל כדי להציג את הכותרת והתמונה המקורית</string>
+  <string name="morphe_dearrow_titles_icon_summary">מציג את סמל ה-DeArrow בכותרות של סרטונים עם כותרת או תמונה ממוזמנת על ידי הקהילה. הקש על הסמל כדי להציג את הכותרת והתמונה המקוריות</string>
   <string name="morphe_dearrow_casual_mode_title">מצב קז\'ואל</string>
   <string name="morphe_dearrow_casual_mode_summary">מציג את הכותרת המקורית במקום כותרת DeArrow אם משתמשי DeArrow הצביעו שהם אוהבים את הכותרת המקורית</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">מינימום הצבעות קז\'ואל להצגת הכותרת המקורית</string>
@@ -1586,6 +1592,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">השבת משוב זום ברטט</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">אם פרטי הכניסה לחשבונך השתנו לאחרונה, אז יש להסיר ולהתקין מחדש את MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">שמירת הודעות פוש</string>
+  <string name="morphe_debug_save_push_notifications_summary">שומר הודעות פוש שהתקבלו לקובץ בנתוני האפליקציה. הקובץ עשוי לכלול מידע פרטי, כגון טקסטים של הודעות ושמות ערוצים</string>
+  <string name="morphe_debug_saved_push_notifications_title">ייצוא הודעות פוש שנשמרו</string>
+  <string name="morphe_debug_saved_push_notifications_summary">ייצוא או ניקוי של הודעות הפוש שנשמרו</string>
+  <string name="morphe_debug_saved_push_notifications_count">הודעות פוש שנשמרו: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">לא נמצאו הודעות פוש שנשמרו</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">הודעות הפוש יוצאו בהצלחה</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">ייצוא הודעות הפוש נכשל</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">הודעות הפוש שנשמרו נמחקו</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">עקוף הפניות קישורים</string>
   <string name="morphe_bypass_link_redirects_summary">פותח את הקישור המקורי ישירות, תוך עקיפת קישור המעקב (youtube.com/redirect)</string>

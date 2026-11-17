@@ -542,6 +542,8 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_disable_chapter_skip_double_tap_title">Бөлүмдөрдү эки жолу басып өткөрүүнү өчүрүү</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Бөлүмдөрдү өткөрүп жиберүүчү эки манжа менен эки жолу басуу жестрин өчүрөт, ал бир манжа менен кокустан иштеп кетиши мүмкүн</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Үчүнчү тараптын жүктөө колдонмолору менен видеолорду, подкасттарды же ырларды жүктөп алыңыз</string>
   <string name="morphe_external_downloader_overlay_button_title">Плеердин үстүндөгү жүктөө баскычын көрсөтүү</string>
   <string name="morphe_external_downloader_overlay_button_summary">Видео плеерде сырткы жүктөгүчтү ача турган баскычты көрсөтөт</string>
@@ -558,6 +560,10 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_shorts_download_flyout_button_title">Shorts менюсунда жүктөөлөрдү көрсөтүү</string>
   <string name="morphe_shorts_download_flyout_button_summary">Shorts ойноткучунун менюсуна жүктөө пунктун кошот</string>
   <string name="morphe_shorts_download_flyout_title">Жүктөө</string>
+  <string name="morphe_feed_download_flyout_button_title">Видео менюлөрүндө жүктөөлөрдү көрсөтүү</string>
+  <string name="morphe_feed_download_flyout_button_summary">Лентадагы жүктөө функциясы жок видеолордун менюсуна жүктөө пунктун кошот, мисалы, YouTube Premium мүчөлөрүнө гана жүктөөгө мүмкүнчүлүк берген видеолорго</string>
+  <string name="morphe_download_force_4k_title">4K жүктөөсүн мажбурлоо мүмкүнчүлүгү</string>
+  <string name="morphe_download_force_4k_summary">YouTube бул түзүлүш бул видеолорду ойнотуу мүмкүн эмес деп чечсе да, 1440p жана 4K форматтарында жүктөө мүмкүнчүлүгүн берет. Мындай видеолор YouTube\'дун ичинде видеосуз ойнотулушу мүмкүн, бирок аларды түзүлүшкө экспорттосо болот</string>
   <string name="morphe_export_download_folder_title">Сакталган видеолорду экспорттоо</string>
   <string name="morphe_export_download_folder_summary">"Тиркеменин жүктөөлөр менюсун колдонуп, сакталган видеолорду түзүлүшүңүздүн эс тутумуна экспорттоңуз. Экспорттоло турган папканы өзгөртүү үчүн басыңыз
 
@@ -1485,7 +1491,7 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_dearrow_titles_player_title">Плеердин плейлисттери &amp; сунуштар</string>
   <string name="morphe_dearrow_titles_search_title">Издөө жыйынтыктары</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow белгисин көрсөтүү</string>
-  <string name="morphe_dearrow_titles_icon_summary">Кроудсорсинг аркылуу алынган видеолордун аталыштарында DeArrow белгисин көрсөтөт. Түпкү аталышын жана кичи сүрөттү көрсөтүү үчүн белгини басыңыз</string>
+  <string name="morphe_dearrow_titles_icon_summary">Коллектив тарабынан түзүлгөн аталышы же кичи-сүрөтү бар видеолордун аталыштарында DeArrow белгисин көрсөтөт. Түпкү аталышын жана кичи-сүрөтүн көрсөтүү үчүн белгини басыңыз</string>
   <string name="morphe_dearrow_casual_mode_title">Casual режими</string>
   <string name="morphe_dearrow_casual_mode_summary">Эгер DeArrow колдонуучулары түп нусқа аталышын жактырышат деп добуш беришсе, DeArrow аталышынын ордуна түп нусқа аталышын көрсөтөт</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Түпкү аталышты көрсөтүү үчүн керек болгон минималдуу жөнөкөй добуштар</string>
@@ -1587,6 +1593,16 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_disable_haptic_feedback_zoom_title">Жакындатуу тактилдик реакциясын өчүрүү</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Эгерде сиз жакында аккаунтуңуздун кирүү маалыматтарын өзгөрткөн болсоңуз, анда MicroG колдонмосун өчүрүп, кайра орнотуңуз</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Пуш-билдирүүлөрдү сактоо</string>
+  <string name="morphe_debug_save_push_notifications_summary">Алынган пуш-билдирүүлөрдү тиркеменин маалыматтарындагы файлга сактайт. Файл билдирүүлөрдүн текстери жана каналдардын аттары сыяктуу купуя маалыматтарды камтышы мүмкүн</string>
+  <string name="morphe_debug_saved_push_notifications_title">Сакталган пуш-билдирүүлөрдү экспорттоо</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Сакталган пуш-билдирүүлөрдү экспорттоо же тазалоо</string>
+  <string name="morphe_debug_saved_push_notifications_count">Сакталган push-билдирүүлөр: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Сакталган push-билдирүүлөр табылган жок</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-билдирүүлөр ийгиликтүү экспортталды</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Push-билдирүүлөрдү экспорттоо мүмкүн болгон жок</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Сакталган push-билдирүүлөр тазаланды</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Шилтемелердин кайра багытталышын айланып өтүү</string>
   <string name="morphe_bypass_link_redirects_summary">Байкоо шилтемесин (youtube.com/redirect) айланып өтүп, түздөн-түз түп нуска шилтемени ачат</string>

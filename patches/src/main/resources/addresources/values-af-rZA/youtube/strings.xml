@@ -542,6 +542,8 @@ Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met a
   <string name="morphe_disable_chapter_skip_double_tap_title">Deaktiveer hoofstuk-oorslaan met dubbeltik</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiveer die dubbeltik gebaar met twee vingers wat hoofstukke oorslaan, wat per ongeluk met een vinger geaktiveer kan word</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Laai video\'s, podkaste of liedjies af met derdeparty-aflaai-programme</string>
   <string name="morphe_external_downloader_overlay_button_title">Wys speler-oorlade-aflaai-knoppie</string>
   <string name="morphe_external_downloader_overlay_button_summary">Wys \'n knoppie in die video-speler wat jou eksterne aflaailaar oopmaak</string>
@@ -558,6 +560,10 @@ Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met a
   <string name="morphe_shorts_download_flyout_button_title">Wys aflaai in Shorts-kieslys</string>
   <string name="morphe_shorts_download_flyout_button_summary">Voeg \'n aflaai-item by die spyskaart van die Shorts-speler</string>
   <string name="morphe_shorts_download_flyout_title">Aflaai</string>
+  <string name="morphe_feed_download_flyout_button_title">Wys aflaai in videomenu\'s</string>
+  <string name="morphe_feed_download_flyout_button_summary">Voeg \'n aflaai-item by die menu\'s van video\'s in die feed wat nie een het nie, soos video\'s wat YouTube slegs Premium-lede toelaat om af te laai</string>
+  <string name="morphe_download_force_4k_title">Forceer 4K-aflaai-beskikbaarheid</string>
+  <string name="morphe_download_force_4k_summary">Bied 1440p- en 4K-aflaai-opsies, selfs as YouTube besluit dat hierdie toestel hulle nie kan speel nie. Sodanige video\'s mag dalk sonder video binne YouTube speel, maar kan na jou toestel geeksporteer word</string>
   <string name="morphe_export_download_folder_title">Voer gestoorde video\'s uit</string>
   <string name="morphe_export_download_folder_summary">"Voer in-app gestoorde video's uit na jou toestel se stoorplek deur die in-app aflaai-spyskaart te gebruik. Tik om die uitvoergids te verander
 
@@ -1486,7 +1492,7 @@ Automotive-uitleg
   <string name="morphe_dearrow_titles_player_title">Speler se afspeellyste &amp; aanbevelings</string>
   <string name="morphe_dearrow_titles_search_title">Soekresultate</string>
   <string name="morphe_dearrow_titles_icon_title">Wys DeArrow-ikoon</string>
-  <string name="morphe_dearrow_titles_icon_summary">Wys die DeArrow-ikoon op crowdsourced-videotitels. Tik op die ikoon om die oorspronklike titel en miniature te wys</string>
+  <string name="morphe_dearrow_titles_icon_summary">Wys die DeArrow-ikoon op die titels van video\'s met \'n crowdsourced-titel of thumbnail. Tik op die ikoon om die oorspronklike titel en thumbnail te wys</string>
   <string name="morphe_dearrow_casual_mode_title">Informele modus</string>
   <string name="morphe_dearrow_casual_mode_summary">Wys die oorspronklike titel in plaas van die DeArrow-titel as DeArrow-gebruikers gestem het dat hulle van die oorspronklike titel hou</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum informele stemme om die oorspronklike titel te wys</string>
@@ -1588,6 +1594,16 @@ Video's word met 'n kort voorvoegsel van die gehashte video-ID aangevra, sodat d
   <string name="morphe_disable_haptic_feedback_zoom_title">Deaktiveer zoem-haptika</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">As jy onlangs jou rekeningaanmeldingsbesonderhede verander het, oninstalleer en herinstalleer MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Stoor stootkennisgewings</string>
+  <string name="morphe_debug_save_push_notifications_summary">Stoor ontvangde stootkennisgewings in \'n lêer in die toepassingdata. Die lêer kan privaat inligting insluit, soos kennisgewingtekste en kanaalname</string>
+  <string name="morphe_debug_saved_push_notifications_title">Voer gestoorde stootkennisgewings uit</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Voer die gestoorde stootkennisgewings uit of maak dit skoon</string>
+  <string name="morphe_debug_saved_push_notifications_count">Gestoorde stootkennisgewings: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Geen gestoorde stootkennisgewings gevind nie</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Stootkennisgewings is suksesvol uitgevoer</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Kon nie stootkennisgewings uitvoer nie</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Gestoorde stootkennisgewings is skoongemaak</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omseil skakelherleidings</string>
   <string name="morphe_bypass_link_redirects_summary">Maak die oorspronklike skakel direk oop, en omseil die spoorskakel (youtube.com/redirect)</string>

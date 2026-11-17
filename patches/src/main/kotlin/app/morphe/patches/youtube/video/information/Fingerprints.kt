@@ -308,18 +308,6 @@ internal object SetPlaybackSpeedFormattedStringFingerprint : Fingerprint(
     )
 )
 
-// Class name is un-obfuscated in targets before 21.01
-internal object VideoQualityFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf(
-        "I", // Resolution.
-        "L",
-        "Ljava/lang/String;", // Human-readable resolution: "480p", "1080p Premium", etc
-        "Z",
-        "L"
-    )
-)
-
 internal object VideoQualitySetterFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

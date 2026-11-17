@@ -752,6 +752,14 @@ public final class FeedEngagementCountsPatch {
             final int thumbnailLeft = thumbnail != null ? thumbnail.left : 0;
             final int thumbnailRight = thumbnail != null ? thumbnail.right : host.getWidth();
             final Rect viewCount = FeedViewCountPatch.getBadgeBounds(host);
+            if (viewCount == null && FeedViewCountPatch.isViewCountPending(host)) {
+                // The view count is shown once the texts below the title are shown, so the row waits for it,
+                // instead of being shown alone and then moving next to it.
+                row = false;
+                setJoined(host, false);
+                removeFromOverlay(host);
+                return true;
+            }
 
             // Same height and bottom as the view count badge and the duration badge.
             final int top;

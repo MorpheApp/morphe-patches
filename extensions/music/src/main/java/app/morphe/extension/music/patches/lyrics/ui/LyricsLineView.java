@@ -21,7 +21,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.text.Layout;
 import android.text.TextPaint;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +39,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.ui.SpringEasing.LyricsSpring;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("unused")
@@ -1258,13 +1258,12 @@ final class LyricsLineView extends TextView {
         return layout.getLineForOffset(first ? start : end - 1);
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         final int width = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
         CharSequence text = getText();
-        if (width > 0 && text != null && text.length() > 0) {
+        if (width > 0 && Utils.isNotEmpty(text)) {
             SyllableRomanLayout.SyllableRomanCache syllables = showSyllableRomanization && !wordTimings.isEmpty()
                     ? syllableCacheFor(width, text) : null;
             if (syllables != null) {
@@ -1308,13 +1307,12 @@ final class LyricsLineView extends TextView {
     }
 
     @SuppressLint("DrawAllocation")
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Override
     protected void onDraw(Canvas canvas) {
         if (showSyllableRomanization && !wordTimings.isEmpty()) {
             final int width = getWidth() - getPaddingLeft() - getPaddingRight();
             CharSequence text = getText();
-            if (width > 0 && text != null && text.length() > 0) {
+            if (width > 0 && Utils.isNotEmpty(text)) {
                 SyllableRomanLayout.SyllableRomanCache syllables = syllableCacheFor(width, text);
                 if (syllables != null) {
                     drawSyllableRomanizedLine(canvas, syllables);
@@ -1341,7 +1339,7 @@ final class LyricsLineView extends TextView {
                 return;
             }
             CharSequence text = getText();
-            if (text == null || text.length() == 0) {
+            if (Utils.isEmpty(text)) {
                 return;
             }
             Paint tp = getPaint();
@@ -1580,7 +1578,7 @@ final class LyricsLineView extends TextView {
             syllableCache = SyllableRomanLayout.buildSyllableCache(
                     widthPx, fontSizePx, fullText.toString(),
                     Math.max(0, Math.min(originalTextStart, fullText.length())),
-                    (getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END,
+                    isRightAligned,
                     isCentered, wordTimings, rubyActive, transStart, transEnd, getPaint());
         }
         return syllableCache.hasSyllableRomanization ? syllableCache : null;

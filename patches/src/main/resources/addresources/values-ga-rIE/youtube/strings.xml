@@ -542,6 +542,8 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <string name="morphe_disable_chapter_skip_double_tap_title">Díchumasaigh scipeáil caibidle trí thapáil faoi dhó</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Díchumasaíonn sé an ghluaiseacht sconna dúbailte dhá mhéar a scipeálann caibidlí, a d\'fhéadfaí a spreagadh de thaisme le méar amháin.</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
   <string name="morphe_external_downloader_overlay_button_title">Taispeáin cnaipe íoslódála ar fhorleagan an imreora</string>
   <string name="morphe_external_downloader_overlay_button_summary">Taispeánann sé cnaipe sa seinnteoir físe a osclaíonn d’uirlis íoslódála sheachtrach</string>
@@ -558,6 +560,10 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <string name="morphe_shorts_download_flyout_button_title">Taispeáin an íoslódáil i roghchlár na Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Cuireann sé mír íoslódála le roghchlár an imreora Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Íoslódáil</string>
+  <string name="morphe_feed_download_flyout_button_title">Taispeáin íoslódáil i roghchlárí físeán</string>
+  <string name="morphe_feed_download_flyout_button_summary">Cuireann sé mír íoslódála i roghchlárí físeán sa phléa a níl aon rud ann, mar shampla, físeán a ligeann YouTube do bhaill Premium amháin a íoslódáil</string>
+  <string name="morphe_download_force_4k_title">Éigse a dhéanamh ar dheiseil íoslódála 4K</string>
+  <string name="morphe_download_force_4k_summary">Tairgeann íoslódála 1440p agus 4K fiú má cheapann YouTube nach féidir leis an nglàireann seo a seinneadh iad. Seans gon seinneálfar físeáin derbhlaoich gan físe a bheith ann laistigh de YouTube, ach is féidir iad a aonnamú chuig do ghláireann</string>
   <string name="morphe_export_download_folder_title">Easpórtáil físeáin sábháilte</string>
   <string name="morphe_export_download_folder_summary">"Easpórtáil físeáin a sábháladh laistigh den aip chuig stóráil do ghléis, ag baint úsáide as an roghchlár aníos le haghaidh íoslódálacha san aip. Beartaigh chun an fillteán easpórtála a athrú.
 
@@ -1486,7 +1492,7 @@ Leagan amach feithicleach
   <string name="morphe_dearrow_titles_player_title">Seinmliostaí imreora &amp; moltaí</string>
   <string name="morphe_dearrow_titles_search_title">Torthaí cuardaigh</string>
   <string name="morphe_dearrow_titles_icon_title">Taispeáin deilbhín DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Taispeánann sé deilbhín DeArrow ar theidil físeán a chuir úsáideoirí eile ar fáil. Beartaigh ar an deilbhín chun an teideal bunaidh agus an mionsamhla a thaispeáint.</string>
+  <string name="morphe_dearrow_titles_icon_summary">Taispeánann sé deilbhín DeArrow ar theidil físeán a chuir úsáideoirí eile ar fáil. Beartaigh ar an deilbhín chun an teideal bunaidh agus an mionsamhla a thaispeáint</string>
   <string name="morphe_dearrow_casual_mode_title">Mód ócáideach</string>
   <string name="morphe_dearrow_casual_mode_summary">Taispeánann sé an teideal bunaidh in ionad an teidil DeArrow má vótáil úsáideoirí DeArrow gur maith leo an teideal bunaidh</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Íonlíon vótaí ó úsáideoirí ócáideacha chun an buntheideal a thaispeáint</string>
@@ -1588,6 +1594,16 @@ Iarrtar físeáin le réimír ghearr den aitheantóir físeáin hasáilte, mar s
   <string name="morphe_disable_haptic_feedback_zoom_title">Díchumasaigh haptaic súmála</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Má d\'athraigh tú sonraí logála isteach do chuntais le déanaí, díshuiteáil agus athshuiteáil MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Sábháil fógraí brú</string>
+  <string name="morphe_debug_save_push_notifications_summary">Sábháil fógraí brú a bhfuigleadh go comhad sna sonraí app. Is féidir go mbeadh faisnéis phrísíúil sa chomhad, mar théacsanna fógraí agus ainmneacha cainéil</string>
+  <string name="morphe_debug_saved_push_notifications_title">Easpóirt fógraí brú sábháilte</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Easpóirt nó glan na fógraí brú sábháilte</string>
+  <string name="morphe_debug_saved_push_notifications_count">Fógraí brú sábháilte: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Níor aimsíodh aon fógraí brú sábháilte</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Easpórtáladh na fógraí brú go rathúil</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Éirigh siopól le haspórtáil na fógraí brú</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Glantar na fógraí brú sábháilte</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Seachain atreoruithe nasc</string>
   <string name="morphe_bypass_link_redirects_summary">Osclaíonn sé an nasc bunaidh go díreach, ag seachaint an naisc rianaithe (youtube.com/redirect)</string>

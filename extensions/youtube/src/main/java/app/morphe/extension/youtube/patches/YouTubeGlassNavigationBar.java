@@ -152,8 +152,12 @@ public final class YouTubeGlassNavigationBar {
     /**
      * Views of a button that hold its content, the icon and the label. Other views of the button,
      * such as the badge of the new content count, are left out. Also used by the preview in the settings.
+     * The buttons without a label hold their icon in an image view, except the You button.
      */
-    public static final int BUTTON_ICON = ResourceUtils.getIdentifier(ResourceType.ID, "thumbnail_layout");
+    public static final int[] BUTTON_ICONS = {
+            ResourceUtils.getIdentifier(ResourceType.ID, "thumbnail_layout"),
+            ResourceUtils.getIdentifier(ResourceType.ID, "image")
+    };
     public static final int BUTTON_LABEL = ResourceUtils.getIdentifier(ResourceType.ID, "text");
 
     /**
@@ -513,7 +517,7 @@ public final class YouTubeGlassNavigationBar {
                     if (pivotBar instanceof ViewGroup bar && bar.getChildCount() > 0
                             && bar.getChildAt(0) instanceof ViewGroup tabs) {
                         GlassNavigationBarLayout.Buttons buttons = GlassNavigationBarLayout.measureButtons(
-                                tabs, BUTTON_ICON, BUTTON_LABEL, hiddenButtons);
+                                tabs, BUTTON_ICONS, BUTTON_LABEL, hiddenButtons);
                         final int contentWidth = buttons.contentWidth;
                         final int contentTop = buttons.contentTop;
 

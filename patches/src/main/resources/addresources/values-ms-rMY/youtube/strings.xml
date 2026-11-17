@@ -542,6 +542,8 @@ Selepas video dengan butang Ask dibuka sekali, ciri ini berfungsi dengan semua v
   <string name="morphe_disable_chapter_skip_double_tap_title">Nyahaktifkan langkau bab ketik dua kali</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Nyahaktifkan gerak isyarat ketik dua kali dengan dua jari yang melangkau bab, yang mungkin dicetuskan secara tidak sengaja dengan satu jari</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Muat turun video, podcast atau lagu dengan apl muat turun pihak ketiga</string>
   <string name="morphe_external_downloader_overlay_button_title">Tunjukkan butang muat turun tindanan pemain</string>
   <string name="morphe_external_downloader_overlay_button_summary">Menunjukkan butang dalam pemain video yang membuka pemuat turun luaran anda</string>
@@ -558,6 +560,10 @@ Selepas video dengan butang Ask dibuka sekali, ciri ini berfungsi dengan semua v
   <string name="morphe_shorts_download_flyout_button_title">Tunjukkan muat turun dalam menu Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Menambah item muat turun ke menu pemain Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Muat turun</string>
+  <string name="morphe_feed_download_flyout_button_title">Tunjukkan muat turun dalam menu video</string>
+  <string name="morphe_feed_download_flyout_button_summary">Menambah item muat turun ke menu video dalam feed yang tiada, seperti video yang YouTube hanya benarkan ahli Premium muat turun</string>
+  <string name="morphe_download_force_4k_title">Paksa ketersediaan muat turun 4K</string>
+  <string name="morphe_download_force_4k_summary">Menawarkan muat turun 1440p dan 4K walaupun YouTube memutuskan bahawa peranti ini tidak boleh memainkannya. Video tersebut mungkin dimainkan tanpa video di dalam YouTube, tetapi boleh dieksport ke peranti anda</string>
   <string name="morphe_export_download_folder_title">Eksport video yang disimpan</string>
   <string name="morphe_export_download_folder_summary">"Eksport video yang disimpan dalam aplikasi ke storan peranti anda menggunakan menu flyout muat turun dalam aplikasi. Ketik untuk menukar folder eksport
 
@@ -1486,7 +1492,7 @@ Tata letak automotif
   <string name="morphe_dearrow_titles_player_title">Senarai main &amp; syor pemain</string>
   <string name="morphe_dearrow_titles_search_title">Hasil carian</string>
   <string name="morphe_dearrow_titles_icon_title">Tunjukkan ikon DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Menunjukkan ikon DeArrow pada tajuk video crowdsourced. Ketik ikon untuk menunjukkan tajuk dan imej kecil asal</string>
+  <string name="morphe_dearrow_titles_icon_summary">Menunjukkan ikon DeArrow pada tajuk video dengan tajuk atau imej kenit sumber komuniti. Ketik ikon untuk menunjukkan tajuk dan imej kenit asal</string>
   <string name="morphe_dearrow_casual_mode_title">Mod santai</string>
   <string name="morphe_dearrow_casual_mode_summary">Menunjukkan tajuk asal dan bukannya tajuk DeArrow jika pengguna DeArrow mengundi bahawa mereka menyukai tajuk asal</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Undian santai minimum untuk menunjukkan tajuk asal</string>
@@ -1588,6 +1594,16 @@ Video diminta melalui awalan pendek ID video yang dihash, jadi pelayan tidak dap
   <string name="morphe_disable_haptic_feedback_zoom_title">Matikan haptik zum</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Jika anda baru sahaja menukar butiran log masuk akaun anda, sila nyahpasang dan pasang semula MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Simpan notifikasi tolak</string>
+  <string name="morphe_debug_save_push_notifications_summary">Menyimpan notifikasi tolak yang diterima ke fail dalam data aplikasi. Fail tersebut mungkin mengandungi maklumat peribadi, seperti teks notifikasi dan nama saluran</string>
+  <string name="morphe_debug_saved_push_notifications_title">Eksport notifikasi tolak yang disimpan</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Eksport atau kosongkan notifikasi tolak yang disimpan</string>
+  <string name="morphe_debug_saved_push_notifications_count">Pemberitahuan tolak yang disimpan: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Tiada pemberitahuan tolak yang disimpan ditemui</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Pemberitahuan tolak berjaya dieksport</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Gagal mengeksport pemberitahuan tolak</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Pemberitahuan tolak yang disimpan telah dikosongkan</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Memirau ubah hala pautan</string>
   <string name="morphe_bypass_link_redirects_summary">Membuka pautan asli secara terus, memirau pautan penjejakan (youtube.com/redirect)</string>

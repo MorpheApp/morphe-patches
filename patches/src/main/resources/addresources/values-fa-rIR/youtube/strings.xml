@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">غیرفعال‌کردن ردکردن فصل با دو ضربه</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">حرکت دوضربه‌ای با دو انگشت برای ردکردن فصل‌ها را غیرفعال می‌کند؛ این حرکت ممکن است تصادفاً با یک انگشت فعال شود</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">دانلود موزیک‌ویدئوها، پادکست‌ها یا آهنگ‌ها با برنامه‌های دانلودکنندهٔ شخص ثالث</string>
   <string name="morphe_external_downloader_overlay_button_title">نمایش دکمه دانلود روی پخش‌کننده</string>
   <string name="morphe_external_downloader_overlay_button_summary">یک دکمه در پخش‌کنندهٔ ویدئو نمایش می‌دهد که دانلودکنندهٔ خارجی شما را باز می‌کند</string>
@@ -558,6 +560,10 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">نمایش دانلود در منوی Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">یک مورد دانلود را به منوی پخش‌کننده Shorts اضافه می‌کند</string>
   <string name="morphe_shorts_download_flyout_title">دانلود</string>
+  <string name="morphe_feed_download_flyout_button_title">نمایش دانلود در منوهای ویدیو</string>
+  <string name="morphe_feed_download_flyout_button_summary">یک مورد دانلود به منوهای ویدیوهای موجود در فید که فاقد آن هستند اضافه می‌کند، مانند ویدیوهایی که YouTube فقط به اعضای Premium اجازه دانلود می‌دهد</string>
+  <string name="morphe_download_force_4k_title">اجبار به در دسترس بودن دانلود 4K</string>
+  <string name="morphe_download_force_4k_summary">امکان دانلود با کیفیت 1440p و 4K را فراهم می‌کند، حتی اگر YouTube تشخیص دهد که این دستگاه قادر به پخش آن‌ها نیست. چنین ویدیوهایی ممکن است در داخل YouTube بدون تصویر پخش شوند، اما می‌توان آن‌ها را در دستگاه شما ذخیره کرد</string>
   <string name="morphe_export_download_folder_title">صادرکردن ویدیوهای ذخیره‌شده</string>
   <string name="morphe_export_download_folder_summary">"ویدیوهای ذخیره‌شده در برنامه را با استفاده از منوی شناور دانلودها به حافظه دستگاه خود صادر کنید. برای تغییر پوشهٔ صادرکردن ضربه بزنید
 
@@ -1485,7 +1491,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">فهرست‌های پخش و پیشنهادها در پخش‌کننده</string>
   <string name="morphe_dearrow_titles_search_title">نتایج جستجو</string>
   <string name="morphe_dearrow_titles_icon_title">نمایش آیکون DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">آیکون DeArrow را روی عنوان ویدیوهای crowdsourced نمایش می‌دهد. برای نمایش عنوان و تصویر بندانگشتی اصلی روی آیکون ضربه بزنید</string>
+  <string name="morphe_dearrow_titles_icon_summary">آیکون DeArrow را روی عنوان ویدیوهایی که عنوان یا تصویر بندانگشتی آن‌ها توسط کاربران تامین شده است، نمایش می‌دهد. برای نمایش عنوان و تصویر بندانگشتی اصلی، روی آیکون ضربه بزنید</string>
   <string name="morphe_dearrow_casual_mode_title">حالت غیررسمی</string>
   <string name="morphe_dearrow_casual_mode_summary">اگر کاربران DeArrow رای داده باشند که عنوان اصلی را می‌پسندند، عنوان اصلی را به‌جای عنوان DeArrow نشان می‌دهد</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">حداقل تعداد رای‌های غیررسمی برای نمایش عنوان اصلی</string>
@@ -1587,6 +1593,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">غیرفعال‌کردن بازخورد لمسی بزرگ‌نمایی</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">اگر اخیراً اطلاعات ورود حسابتان را تغییر داده‌اید، MicroG را حذف و دوباره نصب کنید</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">ذخیره اعلان‌های فشاری</string>
+  <string name="morphe_debug_save_push_notifications_summary">اعلان‌های فشاری دریافت‌شده را در فایلی در داده‌های برنامه ذخیره می‌کند. این فایل می‌تواند شامل اطلاعات خصوصی، مانند متن اعلان‌ها و نام کانال‌ها باشد</string>
+  <string name="morphe_debug_saved_push_notifications_title">خروجی گرفتن از اعلان‌های فشاری ذخیره‌شده</string>
+  <string name="morphe_debug_saved_push_notifications_summary">خروجی گرفتن یا پاک کردن اعلان‌های فشاری ذخیره‌شده</string>
+  <string name="morphe_debug_saved_push_notifications_count">اعلان‌های فشاری ذخیره‌شده: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">هیچ اعلان فشاری ذخیره‌شده‌ای یافت نشد</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">اعلان‌های فشاری با موفقیت صادر شدند</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">خطا در صادر کردن اعلان‌های فشاری</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">اعلان‌های فشاری ذخیره‌شده پاک شدند</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">دورزدن تغییرمسیرهای پیوند</string>
   <string name="morphe_bypass_link_redirects_summary">پیوند اصلی را مستقیماً باز می‌کند و از پیوند رهگیری (youtube.com/redirect) عبور می‌کند</string>

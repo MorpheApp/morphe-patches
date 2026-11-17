@@ -35,6 +35,7 @@ import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.utils.LyricsCrypto;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
 /**
@@ -164,8 +165,7 @@ public final class QQProvider implements LyricsProvider {
             }
             String name = singer.optString("name", "");
             if (!name.isEmpty()) {
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) {
+                if (Utils.isNotEmpty(builder)) {
                     builder.append('/');
                 }
                 builder.append(name);

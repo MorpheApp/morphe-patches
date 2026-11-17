@@ -43,6 +43,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.PushNotificationReceivedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -132,11 +133,11 @@ private val hideShortsComponentsResourcePatch = patch {
                 preferences = setOf(
                     SwitchPreference("morphe_hide_shorts_channel"),
                     SwitchPreference("morphe_hide_shorts_home"),
+                    SwitchPreference("morphe_hide_shorts_notifications"),
                     SwitchPreference("morphe_hide_shorts_search"),
                     SwitchPreference("morphe_hide_shorts_subscriptions"),
                     SwitchPreference("morphe_hide_shorts_video_description"),
-                    SwitchPreference("morphe_hide_shorts_history"),
-                    SwitchPreference("morphe_hide_shorts_notifications")
+                    SwitchPreference("morphe_hide_shorts_history")
                 )
             ),
 

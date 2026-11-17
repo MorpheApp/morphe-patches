@@ -52,6 +52,8 @@ package app.morphe.extension.music.patches.lyrics.model;
 
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.shared.Utils;
+
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -152,8 +154,7 @@ public final class MiniLyricsFormatter {
             // A hidden section leaves the spaces around it behind.
             final String tidy = REPEATED_SPACES.matcher(line).replaceAll(" ").trim();
             if (tidy.isEmpty()) continue;
-            //noinspection SizeReplaceableByIsEmpty
-            if (out.length() > 0) out.append('\n');
+            if (Utils.isNotEmpty(out)) out.append('\n');
             out.append(tidy);
         }
         return out.toString();

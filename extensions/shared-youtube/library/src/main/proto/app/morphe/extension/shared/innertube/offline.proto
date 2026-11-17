@@ -81,6 +81,8 @@ enum OfflineFormatType {
     OFFLINE_FORMAT_TYPE_LD_240 = 5;
     OFFLINE_FORMAT_TYPE_SD_480 = 6;
     OFFLINE_FORMAT_TYPE_HD_1080 = 7;
+    OFFLINE_FORMAT_TYPE_HD_1440 = 8;
+    OFFLINE_FORMAT_TYPE_HD_2160 = 9;
 }
 
 enum OfflineFormatAvailability {

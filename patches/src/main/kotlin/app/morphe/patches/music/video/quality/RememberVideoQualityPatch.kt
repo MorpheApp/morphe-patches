@@ -20,7 +20,7 @@ import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
-import app.morphe.patches.youtube.video.information.VideoQualityFingerprint
+import app.morphe.patches.shared.misc.videoinformation.VideoQualityFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
