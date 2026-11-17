@@ -97,6 +97,11 @@ public final class CarDisplay {
         return false;
     }
 
+    /** Replaced with true by the auto-hide navigation bar patch. */
+    public static boolean isNavigationBarPatchIncluded() {
+        return false;
+    }
+
     public static boolean isOnCarDisplay() {
         return onCarDisplay;
     }
@@ -134,6 +139,10 @@ public final class CarDisplay {
                     checkDisplayChanged();
                 }
             });
+
+            if (isNavigationBarPatchIncluded()) {
+                CarNavigationBar.install(bottomBarContainer);
+            }
         } catch (RuntimeException ex) {
             Logger.printException(() -> "onBottomBarContainerCreated failure", ex);
         }
