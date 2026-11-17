@@ -158,8 +158,17 @@ message OfflineStreamingData {
 
 message OfflineStreamFormat {
     optional string mimeType = 5;
+    // Track metadata copied from the YouTube player Format message.
+    optional string xtags = 23;
+    optional OfflineAudioTrack audioTrack = 28;
     // Only formats with this flag are saved.
     optional bool offlineEligible = 58;
+}
+
+message OfflineAudioTrack {
+    optional string displayName = 4;
+    optional string id = 5;
+    optional bool audioIsDefault = 6;
 }
 
 message OfflineState {
