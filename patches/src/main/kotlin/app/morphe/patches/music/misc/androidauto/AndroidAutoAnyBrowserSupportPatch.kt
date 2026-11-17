@@ -118,7 +118,7 @@ val androidAutoAnyBrowserSupportPatch = patch(
             if-ltz v0, :original_caller_policy
             return v0
             :original_caller_policy
-            ${invoke(trust)}/range { p0 .. p3 }, $type->$ORIGINAL_TRUST($callerType$clientType)Z
+            ${invoke(trust)} { p0, p1, p2, p3 }, $type->$ORIGINAL_TRUST($callerType${clientType}I)Z
             move-result v0
             return v0
         """)
