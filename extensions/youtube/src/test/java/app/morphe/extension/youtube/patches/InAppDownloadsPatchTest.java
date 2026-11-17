@@ -11,8 +11,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import com.google.protobuf.UnknownFieldSet;
-
 import org.junit.Test;
 
 import app.morphe.extension.youtube.innertube.Offline.OfflineAudioTrack;
@@ -28,10 +26,10 @@ public class InAppDownloadsPatchTest {
     @Test
     public void keepsEverySupportedAudioTrackSavable() {
         OfflineStreamingData original = OfflineStreamingData.newBuilder()
-                .addAdaptiveFormats(format("video/mp4; codecs=\"avc1.640028\""))
-                .addAdaptiveFormats(format("audio/mp4; codecs=\"mp4a.40.2\""))
-                .addAdaptiveFormats(format("audio/mp4; codecs=\"mp4a.40.2\""))
-                .addAdaptiveFormats(format("audio/webm; codecs=\"opus\""))
+                .addAdaptiveFormats(format("video/mp4; codecs=\\\"avc1.640028\\\""))
+                .addAdaptiveFormats(format("audio/mp4; codecs=\\\"mp4a.40.2\\\""))
+                .addAdaptiveFormats(format("audio/mp4; codecs=\\\"mp4a.40.2\\\""))
+                .addAdaptiveFormats(format("audio/webm; codecs=\\\"opus\\\""))
                 .addAdaptiveFormats(format(""))
                 .build();
 
@@ -47,7 +45,7 @@ public class InAppDownloadsPatchTest {
 
     @Test
     public void keepsOnlyTheExplicitlySelectedAudioTrackWhenMetadataMatches() {
-        OfflineStreamFormat video = format("video/mp4; codecs=\"avc1.640028\"");
+        OfflineStreamFormat video = format("video/mp4; codecs=\\\"avc1.640028\\\"");
         OfflineStreamFormat english = format("audio/mp4")
                 .toBuilder()
                 .setAudioTrack(OfflineAudioTrack.newBuilder().setId("en-us.10"))
@@ -84,17 +82,13 @@ public class InAppDownloadsPatchTest {
     }
 
     @Test
-    public void preservesUnknownAudioTrackMetadata() {
-        UnknownFieldSet.Field trackMetadata = UnknownFieldSet.Field.newBuilder()
-                .addVarint(123)
-                .build();
-        UnknownFieldSet unknownFields = UnknownFieldSet.newBuilder()
-                .addField(1000, trackMetadata)
-                .build();
-
+    public void preservesXtagsAudioTrackMetadata() {
         OfflineStreamFormat audioTrack = format("audio/mp4")
                 .toBuilder()
-                .setUnknownFields(unknownFields)
+                .setXtags("lang=ar")
+                .setAudioTrack(OfflineAudioTrack.newBuilder()
+                        .setId("ar.4")
+                        .setDisplayName("Arabic"))
                 .build();
         OfflineStreamingData original = OfflineStreamingData.newBuilder()
                 .addAdaptiveFormats(audioTrack)
@@ -102,7 +96,8 @@ public class InAppDownloadsPatchTest {
 
         OfflineStreamingData result = InAppDownloadsPatch.savableStreamingData(original);
 
-        assertEquals(trackMetadata, result.getAdaptiveFormats(0).getUnknownFields().getField(1000));
+        assertEquals("lang=ar", result.getAdaptiveFormats(0).getXtags());
+        assertEquals("ar.4", result.getAdaptiveFormats(0).getAudioTrack().getId());
         assertTrue(result.getAdaptiveFormats(0).getOfflineEligible());
     }
 
