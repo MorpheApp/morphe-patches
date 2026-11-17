@@ -205,9 +205,18 @@ internal fun forceOriginalAudioPatch(
                 definingClass
             }
 
+            val audioTrackClickFingerprint = getAudioTrackItemOnClickFingerprint(audioTrackRecordClass)
             val setAudioTrackMethod =
-                getAudioTrackItemOnClickFingerprint(audioTrackRecordClass)
-                    .instructionMatches.last().methodReference
+                audioTrackClickFingerprint.instructionMatches.last().methodReference
+
+            // Capture the ID read from the clicked audio-track row before YouTube applies it.
+            val selectedTrackIdMatch = audioTrackClickFingerprint.instructionMatches.first()
+            val selectedTrackIdRegister = selectedTrackIdMatch.instruction as TwoRegisterInstruction
+            audioTrackClickFingerprint.method.addInstruction(
+                selectedTrackIdMatch.index + 1,
+                "invoke-static { v${selectedTrackIdRegister.registerA} }, " +
+                    "$EXTENSION_CLASS->setSelectedAudioTrackId(Ljava/lang/String;)V"
+            )
 
             val playerControllerClass = setAudioTrackMethod.definingClass
 
