@@ -222,13 +222,10 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         }
 
         if (TabletGridFeedPatch.isPatchIncluded()) {
-            final BooleanSettingPreference gridPreference = new BooleanSettingPreference(
+            addPreference(new BooleanSettingPreference(
                     context,
                     Settings.TABLET_GRID_FEED
-            );
-            gridPreference.setSummaryOn(str("morphe_tablet_grid_feed_summary_on"));
-            gridPreference.setSummaryOff(str("morphe_tablet_grid_feed_summary_off"));
-            addPreference(gridPreference);
+            ));
             addPreference(new CustomDialogListPreference(
                     context,
                     Settings.TABLET_GRID_COLUMNS

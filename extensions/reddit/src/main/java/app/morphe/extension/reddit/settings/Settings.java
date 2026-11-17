@@ -11,8 +11,10 @@ import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 
+import app.morphe.extension.reddit.patches.TabletGridFeedPatch.GridColumns;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
+import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.StringSetting;
 
@@ -65,7 +67,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting SHOW_VIEW_COUNT = new BooleanSetting("morphe_show_view_count", FALSE, true);
     public static final BooleanSetting SWAP_POST_VOTE_COMMENT_BUTTONS = new BooleanSetting("morphe_swap_post_vote_comment_buttons", FALSE, true);
     public static final BooleanSetting TABLET_GRID_FEED = new BooleanSetting("morphe_tablet_grid_feed", TRUE);
-    public static final StringSetting TABLET_GRID_COLUMNS = new StringSetting("morphe_tablet_grid_columns", "auto", parent(TABLET_GRID_FEED));
+    public static final EnumSetting<GridColumns> TABLET_GRID_COLUMNS = new EnumSetting<>("morphe_tablet_grid_columns", GridColumns.AUTO, parent(TABLET_GRID_FEED));
 
     // Miscellaneous
     public static final StringSetting DOWNLOAD_FOLDER = new StringSetting("morphe_download_folder", "");

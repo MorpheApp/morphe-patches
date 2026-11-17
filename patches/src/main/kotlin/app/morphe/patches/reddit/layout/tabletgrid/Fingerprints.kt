@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/pull/3516
+ * https://github.com/MorpheApp/morphe-patches/pull/4923
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -14,21 +14,26 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object LatestFeedContentFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/feeds/latest/impl/ui/LatestFeedScreen;",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+/**
+ * Composable that shows a feed as a list.
+ */
+internal object ListFeedFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/feeds/ui/composables/feed/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("L", "F", "L", "I", "I"),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC_RANGE,
-            definingClass = "Lcom/reddit/feeds/ui/composables/feed/",
-            returnType = "V"
-        )
-    )
+    custom = { method, _ ->
+        val parameters = method.parameterTypes
+        parameters.size > 6
+                && parameters[3].startsWith("Landroidx/compose/foundation/lazy/")
+                && parameters[5] == "Lcom/reddit/feeds/data/FeedType;"
+                && parameters[6] == "F"
+    }
 )
 
-internal object SearchMasonryCallFingerprint : Fingerprint(
+/**
+ * Search results, which call the composable that shows a feed as a staggered grid.
+ */
+internal object SearchGridFeedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
@@ -41,21 +46,27 @@ internal object SearchMasonryCallFingerprint : Fingerprint(
     )
 )
 
-internal object SearchFooterFieldFingerprint : Fingerprint(
-    classFingerprint = SearchMasonryCallFingerprint,
+/**
+ * Footer that search results pass to the grid feed.
+ */
+internal object SearchGridFeedFooterFingerprint : Fingerprint(
+    classFingerprint = SearchGridFeedFingerprint,
     filters = listOf(
         string("search_screen_surface"),
         fieldAccess(
             opcode = Opcode.SGET_OBJECT,
             type = {
-                SearchMasonryCallFingerprint.instructionMatches[1]
+                SearchGridFeedFingerprint.instructionMatches[1]
                     .methodReference.parameterTypes[7]
             }
         )
     )
 )
 
-internal object StaggeredCellsFingerprint : Fingerprint(
+/**
+ * Staggered grid cells with a fixed number of columns.
+ */
+internal object FixedStaggeredGridCellsFingerprint : Fingerprint(
     name = "<init>",
     parameters = listOf("I"),
     filters = listOf(
@@ -63,8 +74,8 @@ internal object StaggeredCellsFingerprint : Fingerprint(
     )
 )
 
-internal object CalculateCellsFingerprint : Fingerprint(
-    classFingerprint = StaggeredCellsFingerprint,
+internal object CalculateCrossAxisCellSizesFingerprint : Fingerprint(
+    classFingerprint = FixedStaggeredGridCellsFingerprint,
     returnType = "[I",
     parameters = listOf("I", "I"),
     filters = listOf(
