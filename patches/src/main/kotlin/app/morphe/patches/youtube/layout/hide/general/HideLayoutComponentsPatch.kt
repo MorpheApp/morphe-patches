@@ -48,6 +48,7 @@ import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCa
 import app.morphe.patches.shared.misc.spans.addSpanFilter
 import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
+import app.morphe.patches.shared.misc.textcomponent.hookSpannableStringResult
 import app.morphe.patches.shared.misc.textcomponent.lithoSpannableStringPatch
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.ad.injectHideViewCall
@@ -789,6 +790,28 @@ val hideLayoutComponentsPatch = patch(
                         move-result-object v$returnStringRegister
                     """
                 )
+            }
+        }
+
+        // The metadata of the videos of channel pages is created as a text of its own.
+        hookSpannableStringResult(LAYOUT_COMPONENTS_FILTER, "modifyVideoMetadataText")
+
+        // 20.51 and lower show the metadata of the videos of a playlist in a text view of their own,
+        // which is changed once the app sets its text. 21.23+ shows them as Litho elements.
+        PlaylistVideoViewCountConstructorFingerprint.matchAll().forEach { constructorMatch ->
+            getPlaylistVideoViewCountSetTextFingerprint(
+                constructorMatch.instructionMatches.last().fieldReference
+            ).let {
+                it.method.apply {
+                    // The text view is passed to the method that sets its text.
+                    val textViewRegister = it.instructionMatches.first()
+                        .getInstruction<TwoRegisterInstruction>().registerA
+
+                    addInstruction(
+                        it.instructionMatches.last().index + 1,
+                        "invoke-static { v$textViewRegister }, $LAYOUT_COMPONENTS_FILTER->modifyPlaylistVideoMetadata(Landroid/widget/TextView;)V"
+                    )
+                }
             }
         }
 

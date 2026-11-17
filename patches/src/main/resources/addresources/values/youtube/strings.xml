@@ -128,7 +128,7 @@ Changes include:
     <string name="morphe_hide_upload_time_title">Hide upload time</string>
     <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
     <string name="morphe_hide_upload_time_summary">"Limitations:
-• Shorts shelves, channel pages, and search results may still show upload times
+• Shorts shelves may still show upload times
 • Does not work with automotive layout"</string>
     <string name="morphe_hide_video_thumbnail_title">Hide video thumbnail</string>
     <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -137,7 +137,7 @@ Changes include:
     <string name="morphe_hide_view_count_title">Hide view count</string>
     <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
     <string name="morphe_hide_view_count_summary">"Limitations:
-• Shorts shelves, channel pages, and search results may still show view counts
+• Shorts shelves may still show view counts
 • Does not work with automotive layout"</string>
     <string name="morphe_hide_web_search_results_title">Hide web search results</string>
     <string name="morphe_hide_web_search_results_summary">Hides \'Result from the web\' section from search results</string>
