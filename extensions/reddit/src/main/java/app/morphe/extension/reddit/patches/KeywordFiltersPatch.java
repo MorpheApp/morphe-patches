@@ -33,6 +33,11 @@ import app.morphe.extension.shared.Logger;
  * Old feeds are lists of {@link Link}. Modern feeds are lists of feed elements, and the texts
  * of a post are in child elements that are created before the feed list is processed.
  * The child elements save their texts by link id, and the feed elements are filtered by link id.
+ * <p>
+ * Reddit opens a modern feed post from a list of {@link Link} that it creates after the feed
+ * is processed. A post that the feed shows must stay in that list, or the post fails to open.
+ * The links also have texts that the feed does not show, such as the text of NSFW posts.
+ * These texts are saved by link id too, and hide the post the next time the feed is processed.
  */
 @SuppressWarnings("unused")
 public final class KeywordFiltersPatch {
@@ -48,24 +53,36 @@ public final class KeywordFiltersPatch {
 
     private static final int PATTERN_FLAGS = Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE;
 
+    private static final String POST_ID_PREFIX = "t3_";
+
     private static final int TITLE = 0;
     private static final int TRANSLATED_TITLE = 1;
     private static final int PREVIEW_TEXT = 2;
     private static final int TRANSLATED_PREVIEW_TEXT = 3;
     private static final int RICH_TEXT = 4;
-    private static final int NUMBER_OF_TEXTS = 5;
+    private static final int LINK_TITLE = 5;
+    private static final int LINK_TEXT = 6;
+    private static final int NUMBER_OF_TEXTS = 7;
 
     /**
      * Number of posts to keep the texts of. More than the posts of a feed that are kept loaded.
      */
     private static final int MAX_POSTS = 1000;
 
+    private static final class Post {
+        final String[] texts = new String[NUMBER_OF_TEXTS];
+        /**
+         * If a modern feed shows the post.
+         */
+        boolean shown;
+    }
+
     /**
-     * Texts of the most recently created feed posts, by link id.
+     * The most recently created feed posts, by link id.
      */
-    private static final Map<String, String[]> POST_TEXTS = new LinkedHashMap<>(MAX_POSTS, 0.75f, true) {
+    private static final Map<String, Post> POSTS = new LinkedHashMap<>(MAX_POSTS, 0.75f, true) {
         @Override
-        protected boolean removeEldestEntry(Map.Entry<String, String[]> eldest) {
+        protected boolean removeEldestEntry(Map.Entry<String, Post> eldest) {
             return size() > MAX_POSTS;
         }
     };
@@ -135,20 +152,44 @@ public final class KeywordFiltersPatch {
         return false;
     }
 
+    private static String getFullId(String linkId) {
+        return linkId.startsWith(POST_ID_PREFIX) ? linkId : POST_ID_PREFIX + linkId;
+    }
+
     private static void setText(FeedElement element, int textIndex, @Nullable String text) {
+        setText(element.getLinkId(), textIndex, text);
+    }
+
+    private static void setText(@Nullable String linkId, int textIndex, @Nullable String text) {
         // Null is not yet known, but an empty text replaces an edited text.
-        if (text == null || getPatterns().isEmpty()) return;
+        if (linkId == null || text == null || getPatterns().isEmpty()) return;
 
-        String linkId = element.getLinkId();
-        if (linkId == null) return;
+        synchronized (POSTS) {
+            getPost(getFullId(linkId)).texts[textIndex] = text;
+        }
+    }
 
-        synchronized (POST_TEXTS) {
-            String[] texts = POST_TEXTS.get(linkId);
-            if (texts == null) {
-                texts = new String[NUMBER_OF_TEXTS];
-                POST_TEXTS.put(linkId, texts);
-            }
-            texts[textIndex] = text;
+    private static Post getPost(String linkId) {
+        Post post = POSTS.get(linkId);
+        if (post == null) {
+            post = new Post();
+            POSTS.put(linkId, post);
+        }
+        return post;
+    }
+
+    /**
+     * Injection point. Called when Reddit creates a post model.
+     */
+    public static void setLink(Link link) {
+        try {
+            if (getPatterns().isEmpty()) return;
+
+            String linkId = link.getKindWithId();
+            setText(linkId, LINK_TITLE, link.getTitle());
+            setText(linkId, LINK_TEXT, link.getSelftext());
+        } catch (Exception ex) {
+            Logger.printException(() -> "setLink failure", ex);
         }
     }
 
@@ -242,17 +283,21 @@ public final class KeywordFiltersPatch {
     }
 
     /**
-     * Injection point. Filters the posts of old feeds.
+     * Injection point. Filters the posts of old feeds, and the posts that are opened
+     * from a modern feed.
      */
     public static List<?> filterLinks(List<?> links) {
         try {
+            // A single post is the post that is opened, such as from a link or a notification.
+            if (links.size() <= 1) return links;
+
             List<Pattern> patterns = getPatterns();
             if (patterns.isEmpty()) return links;
 
             List<Object> filtered = new ArrayList<>(links.size());
             for (Object item : links) {
-                if (item instanceof Link link && (matches(patterns, link.getTitle())
-                        || matches(patterns, link.getSelftext()))) {
+                if (item instanceof Link link && !isShown(link.getKindWithId())
+                        && (matches(patterns, link.getTitle()) || matches(patterns, link.getSelftext()))) {
                     Logger.printDebug(() -> "Hiding post: " + link.getKindWithId());
                     continue;
                 }
@@ -277,10 +322,11 @@ public final class KeywordFiltersPatch {
             for (Object element : elements) {
                 if (element instanceof FeedElement feedElement) {
                     String linkId = feedElement.getLinkId();
-                    if (linkId != null && isPostFiltered(patterns, linkId)) {
+                    if (linkId != null && isPostFiltered(patterns, getFullId(linkId))) {
                         Logger.printDebug(() -> "Hiding post: " + linkId);
                         continue;
                     }
+                    setShown(linkId);
                 }
                 filtered.add(element);
             }
@@ -291,12 +337,29 @@ public final class KeywordFiltersPatch {
         }
     }
 
+    private static boolean isShown(@Nullable String linkId) {
+        if (linkId == null) return false;
+
+        synchronized (POSTS) {
+            Post post = POSTS.get(getFullId(linkId));
+            return post != null && post.shown;
+        }
+    }
+
+    private static void setShown(@Nullable String linkId) {
+        if (linkId == null) return;
+
+        synchronized (POSTS) {
+            getPost(getFullId(linkId)).shown = true;
+        }
+    }
+
     private static boolean isPostFiltered(List<Pattern> patterns, String linkId) {
         String[] texts;
-        synchronized (POST_TEXTS) {
-            texts = POST_TEXTS.get(linkId);
-            if (texts == null) return false;
-            texts = texts.clone();
+        synchronized (POSTS) {
+            Post post = POSTS.get(linkId);
+            if (post == null) return false;
+            texts = post.texts.clone();
         }
 
         for (String text : texts) {

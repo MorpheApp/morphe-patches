@@ -15,7 +15,10 @@ import app.morphe.patches.reddit.ad.ListingFingerprint
 import app.morphe.patches.reddit.layout.flair.FeedElementProcessorFingerprint
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.patches.reddit.shared.LinkConstructorFingerprint
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/reddit/patches/KeywordFiltersPatch;"
@@ -53,6 +56,14 @@ val keywordFiltersPatch = patch(
                 move-result-object p2
             """
         )
+
+        // Texts of post models, which include texts that modern feeds do not show.
+        LinkConstructorFingerprint.method.apply {
+            addInstruction(
+                indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID),
+                "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setLink(Lcom/reddit/domain/model/Link;)V"
+            )
+        }
 
         // The base class of all feed elements has a public link id method.
         Fingerprint(
