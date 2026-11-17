@@ -38,6 +38,30 @@ public class ForceOriginalAudioPatch {
 
     private static final String DEFAULT_AUDIO_TRACKS_SUFFIX = ".4";
 
+    /**
+     * Audio track explicitly selected from YouTube's track picker.
+     * The value is consumed by the next in-app download transformation.
+     */
+    @Nullable
+    private static volatile String selectedAudioTrackId;
+
+    /**
+     * Injection point called from the audio-track picker click handler.
+     */
+    public static void setSelectedAudioTrackId(@Nullable String audioTrackId) {
+        selectedAudioTrackId = audioTrackId == null || audioTrackId.isEmpty() ? null : audioTrackId;
+    }
+
+    /**
+     * Returns and clears the last explicitly selected audio track.
+     */
+    @Nullable
+    public static String consumeSelectedAudioTrackId() {
+        String selected = selectedAudioTrackId;
+        selectedAudioTrackId = null;
+        return selected;
+    }
+
     public static void setEnabled(ClientType client) {
         if (FORCE_ORIGINAL_AUDIO && SpoofVideoStreamsPatch.isSpoofingEnabled()
                 && !client.canLogin && !client.supportsMultiAudioTracks) {
