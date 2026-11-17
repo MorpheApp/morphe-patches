@@ -308,6 +308,7 @@ public final class InAppDownloadsPatch {
                 return null;
             }
 
+            String selectedAudioTrackId = ForceOriginalAudioPatch.consumeSelectedAudioTrackId();
             OfflinePlayerResponse original = OfflinePlayerResponse.parseFrom(message.toByteArray());
             if (!original.hasOfflineState()) {
                 return null;
@@ -342,7 +343,6 @@ public final class InAppDownloadsPatch {
             // such as the player config. The response of the other client is used instead,
             // and only the offline state token and player config are kept from the declined response.
             OfflinePlayerResponse.Builder builder = OfflinePlayerResponse.parseFrom(streams.streamingData()).toBuilder();
-            String selectedAudioTrackId = ForceOriginalAudioPatch.consumeSelectedAudioTrackId();
             builder.setStreamingData(savableStreamingData(builder.getStreamingData(), selectedAudioTrackId))
                     .setOfflineState(playableOfflineState(original.getOfflineState().getToken()));
             if (builder.hasCaptions()) {
