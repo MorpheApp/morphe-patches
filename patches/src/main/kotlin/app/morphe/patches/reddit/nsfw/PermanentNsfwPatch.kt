@@ -21,6 +21,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.string
 import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import app.morphe.patcher.util.p0Register
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
@@ -377,8 +379,13 @@ val permanentNsfwPatch = patch(
                 """)
             }
         }
-        Fingerprint(definingClass = EXTENSION, name = "openProfileWarning").method.apply {
-            implementation = MutableMethodImplementation(5)
+        val openWarning = Fingerprint(definingClass = EXTENSION, name = "openProfileWarning")
+        val originalWarning = openWarning.method
+        val nativeWarning = ImmutableMethod(
+            EXTENSION, originalWarning.name, originalWarning.parameters, originalWarning.returnType,
+            originalWarning.accessFlags, originalWarning.annotations, originalWarning.hiddenApiRestrictions,
+            MutableMethodImplementation(5)
+        ).toMutable().apply {
             addInstructions(0, """
                 new-instance v0, Landroid/os/Bundle;
                 invoke-direct { v0 }, Landroid/os/Bundle;-><init>()V
@@ -391,6 +398,8 @@ val permanentNsfwPatch = patch(
                 return-void
             """)
         }
+        openWarning.classDef.methods.remove(originalWarning)
+        openWarning.classDef.methods.add(nativeWarning)
         val viewModel = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel;"
         val warningHandler = Fingerprint(
             definingClass = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel\$1;",
