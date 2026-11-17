@@ -204,6 +204,45 @@ val rememberVideoQualityPatch = patch {
             val videoQualitySettingType = it.classDef.type
             val advancedMenuField = it.instructionMatches.last().fieldReference
 
+            // The quality menu of regular videos shows a check mark on the quality selected,
+            // which is the quality of the last quality event. When the video loads, the event is
+            // the video quality setting without a quality, so the default quality is not checked.
+            // With the 'Advanced' setting, the quality playing is used as the quality selected.
+            val qualityEventType = getVideoQualitySettingChangedEventFingerprint(
+                videoQualitySettingType
+            ).classDef.type
+            getQualityMenuSelectedQualityFingerprint(qualityEventType, videoQualitySettingType).let { match ->
+                match.method.apply {
+                    val resolutionMatch = match.instructionMatches[1]
+                    val resolutionInstruction = resolutionMatch.getInstruction<TwoRegisterInstruction>()
+                    val resolutionRegister = resolutionInstruction.registerA
+                    val qualityEventRegister = resolutionInstruction.registerB
+                    val settingField = match.instructionMatches.last().fieldReference
+                    val insertIndex = resolutionMatch.index + 1
+                    val registerProvider = getFreeRegisterProvider(
+                        insertIndex,
+                        2,
+                        resolutionRegister,
+                        qualityEventRegister
+                    )
+                    val settingRegister = registerProvider.getFreeRegister4Bit()
+                    val advancedRegister = registerProvider.getFreeRegister4Bit()
+
+                    addInstructionsWithLabels(
+                        insertIndex,
+                        """
+                            iget-object v$settingRegister, v$qualityEventRegister, $settingField
+                            sget-object v$advancedRegister, $advancedMenuField
+                            if-ne v$settingRegister, v$advancedRegister, :not_advanced
+                            invoke-static { v$resolutionRegister }, $EXTENSION_CLASS->getQualityMenuSelectedResolution(I)I
+                            move-result v$resolutionRegister
+                            :not_advanced
+                            nop
+                        """
+                    )
+                }
+            }
+
             getVideoQualitySettingFingerprint(videoQualitySettingType).method.apply {
                 addInstructionsWithLabels(
                     0,
