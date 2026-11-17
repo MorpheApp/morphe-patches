@@ -40,15 +40,19 @@ public final class AndroidAutoAnyBrowserSupport {
         if (packageName == null) return -1;
         if (context == null || callbackUid < 0) return -1;
         try {
-            String[] owned = context.getPackageManager().getPackagesForUid(callbackUid);
-            if (owned != null) {
-                for (String candidate : owned) {
-                    if (packageName.equals(candidate)) return 1;
-                }
-            }
+            return ownsPackage(context.getPackageManager().getPackagesForUid(callbackUid), packageName);
         } catch (RuntimeException ex) {
             Logger.printException(() -> "Could not verify the music browser caller", ex);
             return -1;
+        }
+    }
+
+    /** 1 when the callback UID owns the claimed package, 0 when it does not. */
+    static int ownsPackage(@Nullable String[] packagesOwnedByUid, String packageName) {
+        if (packagesOwnedByUid != null) {
+            for (String candidate : packagesOwnedByUid) {
+                if (packageName.equals(candidate)) return 1;
+            }
         }
         return 0;
     }
