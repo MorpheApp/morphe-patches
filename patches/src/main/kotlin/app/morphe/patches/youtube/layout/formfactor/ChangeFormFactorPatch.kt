@@ -17,7 +17,11 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.youtube.misc.cardisplay.carDisplayPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
+import app.morphe.patches.youtube.misc.contexthook.addBrowseClientFormFactorHook
 import app.morphe.patches.youtube.misc.contexthook.addClientFormFactorHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -33,7 +37,8 @@ private const val EXTENSION_CLASS =
 
 val changeFormFactorPatch = patch(
     name = "Change form factor",
-    description = "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
+    description = "Adds options to change the UI appearance to a phone, tablet, or automotive device, " +
+        "and to use the automotive layout on a car display.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -41,13 +46,18 @@ val changeFormFactorPatch = patch(
         clientContextHookPatch,
         navigationBarHookPatch,
         restoreOldVideoActionBarPatch,
+        carDisplayPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            ListPreference("morphe_change_form_factor")
+            noTitleUnsortedPreferenceCategory(
+                ListPreference("morphe_change_form_factor"),
+                SwitchPreference("morphe_change_form_factor_car_display"),
+                SwitchPreference("morphe_change_form_factor_car_display_any"),
+            )
         )
 
         InnerTubeClientConfigFingerprint.let {
@@ -76,6 +86,10 @@ val changeFormFactorPatch = patch(
                 "$EXTENSION_CLASS->replaceBrokenFormFactor(I)I",
             )
         }
+
+        addBrowseClientFormFactorHook(
+            "$EXTENSION_CLASS->replaceBrowseFormFactor(ILjava/lang/String;)I"
+        )
 
         ResponsiveContainerPropertiesFingerprint.method.addInstructions(
             0,
