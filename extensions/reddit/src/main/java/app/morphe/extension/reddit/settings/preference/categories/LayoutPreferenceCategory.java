@@ -28,6 +28,7 @@ import app.morphe.extension.reddit.patches.HighQualityAvatarsPatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
 import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
+import app.morphe.extension.reddit.patches.PostSidePanelPatch;
 import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
@@ -61,6 +62,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideTrendingShelvesPatch.isPatchIncluded() ||
                 FullWidthFeedMediaPatch.isPatchIncluded() ||
                 MediaViewerFadePatch.isPatchIncluded() ||
+                PostSidePanelPatch.isPatchIncluded() ||
                 KeepFeedPositionPatch.isPatchIncluded() ||
                 FeedMediaMaxHeightPatch.isPatchIncluded() ||
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
@@ -173,6 +175,12 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.KEEP_FEED_POSITION
             ));
+        }
+
+        if (PostSidePanelPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(context, Settings.POST_SIDE_PANEL));
+            addPreference(new CustomDialogListPreference(context, Settings.POST_SIDE_PANEL_WIDTH));
+            addPreference(new CustomDialogListPreference(context, Settings.POST_SIDE_PANEL_DIM));
         }
 
         if (FeedMediaMaxHeightPatch.isPatchIncluded()) {

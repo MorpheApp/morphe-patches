@@ -11,4 +11,27 @@
         <item>TWO</item>
         <item>THREE</item>
     </string-array>
+
+    <!-- layout.sidepanel.postSidePanelPatch -->
+    <string-array name="morphe_post_side_panel_width_entries">
+        <item>@string/morphe_post_side_panel_width_entry_one_third</item>
+        <item>@string/morphe_post_side_panel_width_entry_two_thirds</item>
+    </string-array>
+    <string-array name="morphe_post_side_panel_width_entry_values" translatable="false">
+        <item>ONE_THIRD</item>
+        <item>TWO_THIRDS</item>
+    </string-array>
+
+    <string-array name="morphe_post_side_panel_dim_entries">
+        <item>@string/morphe_post_side_panel_dim_entry_off</item>
+        <item>@string/morphe_post_side_panel_dim_entry_light</item>
+        <item>@string/morphe_post_side_panel_dim_entry_medium</item>
+        <item>@string/morphe_post_side_panel_dim_entry_strong</item>
+    </string-array>
+    <string-array name="morphe_post_side_panel_dim_entry_values" translatable="false">
+        <item>OFF</item>
+        <item>LIGHT</item>
+        <item>MEDIUM</item>
+        <item>STRONG</item>
+    </string-array>
 </resources>
