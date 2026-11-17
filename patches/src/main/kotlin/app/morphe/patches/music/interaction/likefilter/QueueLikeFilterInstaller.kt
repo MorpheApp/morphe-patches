@@ -118,7 +118,7 @@ private fun resolveEnqueueObserver(manager: ClassDef): EnqueueObserverAbi {
             .map { it.type }
             .singleOrNull { type ->
                 type != manager.type &&
-                    classDefByOrNull(type)?.let { AccessFlags.ENUM.isSet(it.accessFlags) } == true
+                        classDefByOrNull(type)?.let { AccessFlags.ENUM.isSet(it.accessFlags) } == true
             }
             ?: error("Missing or ambiguous queue like filter enqueue target")
     val target = callback.fields.single { it.type == targetType }
@@ -156,11 +156,10 @@ internal fun installQueueLikeFilter(queue: QueueLikeFilterAbi) {
 
     manager.addPatchInterface(
         ACCESS,
-        "patch_qlfItems",
+        "patch_qlfLaneItems",
         """
             iget-object v0, p0, ${queue.storage.field}
-            const/4 v1, 0x0
-            ${invokeKind(queue.storage.items)} {v0, v1}, ${queue.storage.items}
+            ${invokeKind(queue.storage.items)} {v0, p1}, ${queue.storage.items}
             move-result-object v0
             invoke-interface {v0}, Ljava/util/List;->toArray()[Ljava/lang/Object;
             move-result-object v0
@@ -194,11 +193,10 @@ internal fun installQueueLikeFilter(queue: QueueLikeFilterAbi) {
     )
     manager.addPatchInterface(
         ACCESS,
-        "patch_qlfPrimaryLane",
+        "patch_qlfLane",
         """
             iget-object v0, p0, ${queue.storage.field}
-            const/4 v1, 0x0
-            ${invokeKind(queue.storage.lane)} {v0, v1}, ${queue.storage.lane}
+            ${invokeKind(queue.storage.lane)} {v0, p1}, ${queue.storage.lane}
             move-result-object v0
             return-object v0
         """

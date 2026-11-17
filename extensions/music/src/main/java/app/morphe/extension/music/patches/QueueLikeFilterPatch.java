@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +50,7 @@ public final class QueueLikeFilterPatch {
         int patch_qlfCurrentIndex();
 
         @Nullable
-        Object[] patch_qlfItems();
+        Object[] patch_qlfLaneItems(int lane);
 
         @Nullable
         String patch_qlfVideoId(Object item);
@@ -57,7 +58,7 @@ public final class QueueLikeFilterPatch {
         void patch_qlfRemove(Object item);
 
         @Nullable
-        Object patch_qlfPrimaryLane();
+        Object patch_qlfLane(int lane);
 
         void patch_qlfAddListener(Object lane, Object listener);
     }
@@ -89,6 +90,17 @@ public final class QueueLikeFilterPatch {
 
     /** Auto-generated mixes and radio use playlist IDs starting with this prefix. */
     private static final String RADIO_PLAYLIST_PREFIX = "RD";
+
+    /** The queue the user built or started. The current track is always in this lane. */
+    private static final int MAIN_LANE = 0;
+
+    /**
+     * The "Autoplay" suggestions that follow the main queue. A song started on its own, for
+     * example from the search results, keeps its generated radio here instead of in the main lane.
+     */
+    private static final int AUTOPLAY_LANE = 1;
+
+    private static final int[] LANES = {MAIN_LANE, AUTOPLAY_LANE};
 
     /** Only the upcoming items ahead of the current track are checked. */
     private static final int WINDOW_SIZE = 10;
@@ -147,7 +159,9 @@ public final class QueueLikeFilterPatch {
             };
 
     private static volatile WeakReference<QueueAccess> queue = new WeakReference<>(null);
-    private static volatile WeakReference<Object> listenedLane = new WeakReference<>(null);
+    @SuppressWarnings("unchecked")
+    private static final WeakReference<Object>[] listenedLanes = new WeakReference[]{
+            new WeakReference<>(null), new WeakReference<>(null)};
     private static volatile String currentPlaylistId;
     private static volatile boolean playlistIdKnown;
     private static volatile long pauseUntil;
@@ -240,8 +254,8 @@ public final class QueueLikeFilterPatch {
     }
 
     /**
-     * Only auto-generated mixes and radio are filtered. User playlists, albums and other
-     * user-owned queues keep their items.
+     * Only auto-generated mixes and radio are filtered in the main lane. User playlists, albums and
+     * other user-owned queues keep their items. The autoplay lane is always auto-generated.
      */
     private static boolean isRadioPlaylist() {
         // Nothing is known until the app reports a player response. Avoid touching a restored queue
@@ -335,18 +349,12 @@ public final class QueueLikeFilterPatch {
                     return;
                 }
 
-                if (!isRadioPlaylist()) {
-                    waitForWake(IDLE_WAIT_MS);
-                    continue;
-                }
-
                 QueueAccess access = queue.get();
                 if (access == null) {
                     waitForWake(IDLE_WAIT_MS);
                     continue;
                 }
 
-                announceActiveOnce();
                 listenToQueue(access);
 
                 if (!scanWindow(access)) {
@@ -385,18 +393,47 @@ public final class QueueLikeFilterPatch {
             }
 
             runOnQueueExecutor(executor, () -> {
-                Object lane = access.patch_qlfPrimaryLane();
-                if (lane == null || lane == listenedLane.get()) {
-                    return;
-                }
+                for (int laneIndex : LANES) {
+                    Object lane = access.patch_qlfLane(laneIndex);
+                    if (lane == null || lane == listenedLanes[laneIndex].get()) {
+                        continue;
+                    }
 
-                access.patch_qlfAddListener(lane, new QueueListener());
-                listenedLane = new WeakReference<>(lane);
-                Logger.printDebug(() -> "queue like filter: listening to the queue");
+                    access.patch_qlfAddListener(lane, new QueueListener());
+                    listenedLanes[laneIndex] = new WeakReference<>(lane);
+                    Logger.printDebug(() -> "queue like filter: listening to queue lane " + laneIndex);
+                }
             });
         } catch (Exception ex) {
             Logger.printInfo(() -> "queue like filter could not listen to the queue", ex);
         }
+    }
+
+    /**
+     * The next {@link #WINDOW_SIZE} items in play order: the rest of the main lane when it is an
+     * auto-generated radio, then the autoplay suggestions.
+     */
+    private static List<Object> upcomingItems(QueueAccess access) {
+        List<Object> upcoming = new ArrayList<>(WINDOW_SIZE);
+
+        if (isRadioPlaylist()) {
+            Object[] items = access.patch_qlfLaneItems(MAIN_LANE);
+            final int currentIndex = access.patch_qlfCurrentIndex();
+            if (items != null && currentIndex >= 0) {
+                for (int i = currentIndex + 1; i < items.length && upcoming.size() < WINDOW_SIZE; i++) {
+                    upcoming.add(items[i]);
+                }
+            }
+        }
+
+        Object[] autoplay = access.patch_qlfLaneItems(AUTOPLAY_LANE);
+        if (autoplay != null) {
+            for (int i = 0; i < autoplay.length && upcoming.size() < WINDOW_SIZE; i++) {
+                upcoming.add(autoplay[i]);
+            }
+        }
+
+        return upcoming;
     }
 
     /**
@@ -406,9 +443,11 @@ public final class QueueLikeFilterPatch {
      *         shifted window instead of waiting for a queue change.
      */
     private static boolean scanWindow(QueueAccess access) {
-        if (!isRadioPlaylist()) {
+        if (upcomingItems(access).isEmpty()) {
             return false;
         }
+
+        announceActiveOnce();
 
         if (pauseIfNeeded()) {
             return true;
@@ -427,26 +466,16 @@ public final class QueueLikeFilterPatch {
                 return true;
             }
 
-            if (!isRadioPlaylist()) {
-                return true;
-            }
-
             // Re-read the snapshot for every slot. The queue can shift after a removal, and the
-            // current index can move while a network request is in flight.
-            Object[] items = access.patch_qlfItems();
-            final int currentIndex = access.patch_qlfCurrentIndex();
-            if (items == null || currentIndex < 0) {
-                break;
-            }
-
-            final int index = currentIndex + 1 + slot;
-            if (index >= items.length) {
+            // current index or source can change while a network request is in flight.
+            List<Object> items = upcomingItems(access);
+            if (slot >= items.size()) {
                 break;
             }
 
             String videoId;
             try {
-                videoId = access.patch_qlfVideoId(items[index]);
+                videoId = access.patch_qlfVideoId(items.get(slot));
             } catch (Exception ex) {
                 // Some queue entries are not playable media items. Skip them and keep scanning.
                 Logger.printDebug(() -> "queue like filter: could not read the video ID", ex);
@@ -464,8 +493,9 @@ public final class QueueLikeFilterPatch {
                 continue;
             }
 
+            final int upcomingSlot = slot;
             Logger.printInfo(() -> "queue like filter: checking " + videoId
-                    + " at queue index " + index + " of " + items.length);
+                    + " at upcoming slot " + upcomingSlot);
 
             Lookup lookup = lookup(videoId);
             if (lookup.decision == Decision.PAUSE) {
@@ -480,8 +510,9 @@ public final class QueueLikeFilterPatch {
             checkedSomething = true;
 
             if (lookup.decision == Decision.REMOVE) {
-                // The source or setting may have changed while the lookup was in flight.
-                if (!isEnabled() || !isRadioPlaylist()) {
+                // The setting may have changed while the lookup was in flight. The source is
+                // checked again when the item is located for removal.
+                if (!isEnabled()) {
                     return true;
                 }
 
@@ -522,29 +553,22 @@ public final class QueueLikeFilterPatch {
 
             final boolean[] removed = {false};
             runOnQueueExecutor(executor, () -> {
-                // Do not remove anything if the filter was disabled or the user switched to a
-                // playlist or album while the request was in flight.
-                if (!isEnabled() || !isRadioPlaylist()) {
+                // Do not remove anything if the filter was disabled. If the user switched to a
+                // playlist or album, its main lane items are no longer part of the window.
+                if (!isEnabled()) {
                     return;
                 }
 
-                Object[] items = access.patch_qlfItems();
-                final int currentIndex = access.patch_qlfCurrentIndex();
-                if (items == null || currentIndex < 0) {
-                    return;
-                }
-
-                final int last = Math.min(items.length, currentIndex + 1 + WINDOW_SIZE);
-                for (int i = currentIndex + 1; i < last; i++) {
+                for (Object item : upcomingItems(access)) {
                     String candidate;
                     try {
-                        candidate = access.patch_qlfVideoId(items[i]);
+                        candidate = access.patch_qlfVideoId(item);
                     } catch (Exception ex) {
                         Logger.printDebug(() -> "queue like filter: could not read a candidate video ID", ex);
                         continue;
                     }
                     if (videoId.equals(candidate)) {
-                        access.patch_qlfRemove(items[i]);
+                        access.patch_qlfRemove(item);
                         removed[0] = true;
                         return;
                     }
