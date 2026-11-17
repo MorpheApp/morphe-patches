@@ -21,6 +21,10 @@ class QueueRuntimeBoundaryTest {
     fun `native queue is active only for the native queue type`() = withFixture("queueTypeSelection")
 
     @Test
+    fun `excluded queue patch leaves stock menu rows alone`() =
+        withFixture("excludedQueueMenu", isIncluded = false)
+
+    @Test
     fun `handoff waits for setting cache and rejects late responses without restoring old session`() =
         withFixture("acceptedHandoff")
 
@@ -213,7 +217,7 @@ class QueueRuntimeBoundaryTest {
 
     // NativePlaylistQueuePatch depends on Android settings, scheduling and UI classes.
     // Isolate those boundaries while executing its actual compiled coordinator.
-    private fun withFixture(scenario: String, fetchOnScroll: Boolean = true) {
+    private fun withFixture(scenario: String, fetchOnScroll: Boolean = true, isIncluded: Boolean = true) {
         val root = generateSequence(File("").absoluteFile) { it.parentFile }
             .first { File(it, "extensions/youtube/src/main/proto").isDirectory }
         val classes = File(root,
@@ -223,6 +227,16 @@ class QueueRuntimeBoundaryTest {
         // Only external settings/UI/scheduling boundaries are replaced. Queue state,
         // preference callback, cancellation, release, feedback and timeout guards are real.
         val stubs = mapOf(
+            "Nullable" to "package androidx.annotation; public @interface Nullable {}",
+            "Setting" to """
+                package app.morphe.extension.shared.settings;
+                public class Setting<T> {
+                    public interface Availability {
+                        boolean isAvailable();
+                        java.util.List<Setting<?>> getParentSettings();
+                    }
+                }
+            """,
             "SharedPreferences" to """
                 package android.content;
                 public interface SharedPreferences {
@@ -373,6 +387,10 @@ class QueueRuntimeBoundaryTest {
                 import android.util.Pair;
                 import java.util.*;
                 public class FlyoutUtils {
+                    public static String getVisibleFlyoutButtonText(String name) { return null; }
+                    public static boolean hasVisibleFlyoutButton(String name) {
+                        return stock.stream().anyMatch(button -> button.first.equals(name));
+                    }
                     public static String video = "ZYXWVUTSRQP", button = "QUEUE_PLAY_NEXT";
                     public static final List<Pair<String, Integer>> stock = new ArrayList<>();
                     public static List<Pair<String, Integer>> getVisibleFlyoutButtons() { return stock; }
@@ -482,7 +500,10 @@ class QueueRuntimeBoundaryTest {
             """,
             "StringRef" to """
                 package app.morphe.extension.shared;
-                public class StringRef { public static String str(String key) { return key; } }
+                public class StringRef {
+                    public static String str(String key) { return key; }
+                    public static String str(String key, Object... args) { return key; }
+                }
             """,
             "Base64" to """
                 package android.util;
@@ -523,6 +544,11 @@ class QueueRuntimeBoundaryTest {
             "Utils" to """
                 package app.morphe.extension.shared;
                 public class Utils {
+                    public interface MatchFilter { boolean matches(android.view.View view); }
+                    public static android.view.View getChildView(android.view.ViewGroup group,
+                            boolean isRecursive, MatchFilter filter) {
+                        throw new AssertionError("Unexpected UI lookup");
+                    }
                     public static boolean isEmpty(CharSequence str) { return str == null || str.length() == 0; }
                     public static boolean isNotEmpty(CharSequence str) { return !isEmpty(str); }
                     public static boolean mainThread = true;
@@ -584,7 +610,7 @@ class QueueRuntimeBoundaryTest {
             """,
             "EnumSetting" to """
                 package app.morphe.extension.shared.settings;
-                public class EnumSetting<T extends Enum<T>> {
+                public class EnumSetting<T extends Enum<T>> extends Setting<T> {
                     public String key = "morphe_queue_type";
                     public T value;
                     public EnumSetting(T value) { this.value = value; }
@@ -637,6 +663,16 @@ class QueueRuntimeBoundaryTest {
                 }
             """
         ).map { (name, source) -> File(output, "$name.java").apply { writeText(source.trimIndent()) } }
+        // Simulate patch selection while keeping the actual queue implementation and guards.
+        val queuePatch = File(output, "AddToQueuePatch.java").apply {
+            val source = File(root,
+                "extensions/youtube/src/main/java/app/morphe/extension/youtube/patches/AddToQueuePatch.java"
+            ).readText()
+            writeText(source.replace(
+                "return false; // Modified during patching.",
+                "return $isIncluded; // Modified during patching."
+            ))
+        }
         val fixture = File(output, "RuntimeFixture.java").apply {
             writeText($$"""
                 package app.morphe.extension.youtube.patches.queue;
@@ -2450,6 +2486,22 @@ class QueueRuntimeBoundaryTest {
                         Utils.advanceBy(1);
                         require(field("pendingUndo").get(null) == null, "Accessible Undo must expire at twenty seconds");
                     }
+                    public static void excludedQueueMenu() {
+                        require(!AddToQueuePatch.isPatchIncluded(), "Patch must be excluded in this scenario");
+                        Settings.QUEUE_TYPE.value = QueueType.NATIVE;
+                        var row = new android.view.View() {
+                            @Override public void setVisibility(int visibility) {
+                                throw new AssertionError("Excluded patch must not hide the stock queue row");
+                            }
+                        };
+                        var menu = new android.view.ViewGroup() {
+                            @Override public int getChildCount() { return 1; }
+                            @Override public android.view.View getChildAt(int index) { return row; }
+                        };
+                        app.morphe.extension.youtube.patches.utils.FlyoutUtils.stock.add(
+                            new android.util.Pair<>("QUEUE_PLAY_LAST", 1));
+                        AddToQueuePatch.onListBound(menu);
+                    }
                     public static void queueTypeSelection() throws Exception {
                         Settings.QUEUE_TYPE.value = QueueType.NATIVE;
                         require(AddToQueuePatch.isNativeQueueEnabled(), "Native queue type must enable native queue");
@@ -2511,7 +2563,7 @@ class QueueRuntimeBoundaryTest {
         try {
             assertEquals(0, ToolProvider.getSystemJavaCompiler().run(null, null, null,
                 "--release", "17", "-classpath", "${classes.path}${File.pathSeparator}${protobuf.path}",
-                "-d", output.path, *stubs.map { it.path }.toTypedArray(), fixture.path))
+                "-d", output.path, *stubs.map { it.path }.toTypedArray(), queuePatch.path, fixture.path))
             URLClassLoader(arrayOf(output.toURI().toURL(), classes.toURI().toURL()),
                 GeneratedMessageLite::class.java.classLoader).use { loader ->
                 val runtime = loader.loadClass("app.morphe.extension.youtube.patches.queue.RuntimeFixture")

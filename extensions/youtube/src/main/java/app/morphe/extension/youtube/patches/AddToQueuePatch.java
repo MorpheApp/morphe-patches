@@ -90,10 +90,10 @@ public final class AddToQueuePatch {
     }
 
     /**
-     * @return If the native queue is selected. It handles the stock queue buttons.
+     * @return If this patch is included and the native queue is selected.
      */
     public static boolean isNativeQueueEnabled() {
-        return Settings.QUEUE_TYPE.get() == QueueType.NATIVE;
+        return isPatchIncluded() && Settings.QUEUE_TYPE.get() == QueueType.NATIVE;
     }
 
     /**
