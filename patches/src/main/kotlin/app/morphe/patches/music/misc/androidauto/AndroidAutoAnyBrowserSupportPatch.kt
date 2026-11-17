@@ -166,8 +166,10 @@ val androidAutoAnyBrowserSupportPatch = patch(
         check(classDefBy(LIBRARY_FOLDER).fields.map { it.name }
             .containsAll(listOf("PLAYLISTS", "SONGS", "ALBUMS", "ARTISTS", "LAST_PLAYED")))
         method(LOAD, "start", emptyList(), "V")
+        // The constructor of the private HomeLoad loader class; the bridge lives in the same class,
+        // so its visibility does not matter.
         val homeConstructor = classDefBy(HOME_LOAD).methods.singleOrNull {
-            it.name == "<init>" && AccessFlags.PUBLIC.isSet(it.accessFlags) && it.parameterTypes.size == 4 &&
+            it.name == "<init>" && it.parameterTypes.size == 4 &&
                 it.parameterTypes.map(CharSequence::toString) == listOf(REQUEST, HOME_LOAD_MODE, STRING, "Ljava/util/List;")
         } ?: error("Unsupported Android Auto library adapter: Home loader constructor changed")
 
