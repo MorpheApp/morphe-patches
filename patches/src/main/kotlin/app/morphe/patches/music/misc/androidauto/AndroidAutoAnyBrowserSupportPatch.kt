@@ -202,7 +202,9 @@ val androidAutoAnyBrowserSupportPatch = patch(
         )
 
         // The root answers with personal Home and Library, which the loaders of the Android Auto
-        // patch fill using the app's existing account.
+        // patch fill using the app's existing account. Every branch delivers and returns on its
+        // own: a shared deliver label would merge registers that hold different types on
+        // different paths, which the verifier of the device rejects.
         val bridge = ImmutableMethod(
             ADAPTER, BRIDGE,
             listOf(ImmutableMethodParameter(REQUEST, emptySet(), null)), "Z",
@@ -211,7 +213,7 @@ val androidAutoAnyBrowserSupportPatch = patch(
         ).toMutable()
         bridge.addInstructions(0, """
             invoke-interface { p0 }, $REQUEST->patch_getRequestedMediaId()Ljava/lang/String;
-            move-result v0
+            move-result-object v0
             invoke-static { p0, v0 }, $EXTENSION_CLASS->route(Ljava/lang/Object;Ljava/lang/String;)I
             move-result v0
             const/4 v1, 0x1
@@ -235,7 +237,9 @@ val androidAutoAnyBrowserSupportPatch = patch(
             const-string v1, "$LIBRARY_MEDIA_ID"
             const-string v2, "Library"
             invoke-virtual/range { v0 .. v6 }, $PREPARED_ITEMS->add($STRING$STRING$STRING${STRING}Z$STRING)V
-            goto :deliver
+            invoke-interface { p0, v0 }, $REQUEST->patch_deliverBrowseItems(Ljava/util/List;)V
+            const/4 v0, 0x1
+            return v0
             :home
             new-instance v0, $HOME_LOAD
             move-object v1, p0
@@ -255,7 +259,7 @@ val androidAutoAnyBrowserSupportPatch = patch(
             const/4 v2, 0x0
             array-length v3, v1
             :next_folder
-            if-ge v2, v3, :deliver
+            if-ge v2, v3, :deliver_library
             aget-object v4, v1, v2
             invoke-virtual { v4 }, Ljava/lang/Enum;->name()Ljava/lang/String;
             move-result-object v5
@@ -269,7 +273,7 @@ val androidAutoAnyBrowserSupportPatch = patch(
             :skip_folder
             add-int/lit8 v2, v2, 0x1
             goto :next_folder
-            :deliver
+            :deliver_library
             invoke-interface { p0, v0 }, $REQUEST->patch_deliverBrowseItems(Ljava/util/List;)V
             const/4 v0, 0x1
             return v0

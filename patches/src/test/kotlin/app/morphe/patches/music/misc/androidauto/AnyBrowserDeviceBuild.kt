@@ -29,6 +29,9 @@ import app.morphe.patcher.Patcher
 import app.morphe.patcher.PatcherConfig
 import app.morphe.patcher.apk.ApkUtils.applyTo
 import app.morphe.patcher.dex.SdkDexVerifier
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patches.all.misc.clone.cloneAppPatch
 import app.morphe.patches.music.misc.gms.gmsCoreSupportPatch
 import kotlinx.coroutines.runBlocking
@@ -36,6 +39,22 @@ import java.io.File
 import java.nio.file.Files
 
 private const val PROBE_PACKAGE = "app.morphe.any.next.music"
+
+/** Lets the probe install as the base APK alone, without the splits of the original bundle. */
+private val installableWithoutSplits = resourcePatch {
+    execute {
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            manifest.root.removeAttribute("android:isSplitRequired")
+            manifest.root.removeAttribute("android:requiredSplitTypes")
+            val application = manifest.elements("application").first()
+            application.elements("meta-data").filter {
+                it.attribute("android:name").let { name ->
+                    name == "com.android.vending.splits.required" || name == "com.android.vending.splits"
+                }
+            }.forEach { it.remove() }
+        }
+    }
+}
 
 fun main(arguments: Array<String>) {
     require(arguments.size in 1..2) { "Usage: AnyBrowserDeviceBuildKt <input-apk> [output-apk]" }
@@ -48,7 +67,7 @@ fun main(arguments: Array<String>) {
 
     cloneAppPatch.options["packageName"] = PROBE_PACKAGE
 
-    val selectedPatches = setOf(gmsCoreSupportPatch, androidAutoAnyBrowserSupportPatch)
+    val selectedPatches = setOf(gmsCoreSupportPatch, installableWithoutSplits, androidAutoAnyBrowserSupportPatch)
     val workspace = Files.createTempDirectory("any-browser-device-build")
 
     val sdk =
