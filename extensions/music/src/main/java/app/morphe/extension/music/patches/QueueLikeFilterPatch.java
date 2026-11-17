@@ -6,6 +6,7 @@
 
 package app.morphe.extension.music.patches;
 
+import android.content.SharedPreferences;
 import android.os.SystemClock;
 
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
+import app.morphe.extension.shared.settings.Setting;
 
 /**
  * Removes upcoming queue songs that have fewer likes than the configured minimum.
@@ -116,6 +118,25 @@ public final class QueueLikeFilterPatch {
 
     private static final Object wakeLock = new Object();
     private static final AtomicBoolean workerStarted = new AtomicBoolean();
+    private static final AtomicBoolean settingsListenerRegistered = new AtomicBoolean();
+
+    // SharedPreferences holds listeners weakly, so retain ours for the patch lifetime.
+    private static final SharedPreferences.OnSharedPreferenceChangeListener SETTINGS_LISTENER =
+            (preferences, key) -> {
+                if (!Settings.QUEUE_LIKE_FILTER_ENABLED.key.equals(key)) {
+                    return;
+                }
+
+                // Let the settings cache update before starting or stopping the worker.
+                Utils.runOnMainThread(() -> {
+                    try {
+                        startWorkerIfEnabled();
+                        wake();
+                    } catch (Exception ex) {
+                        Logger.printException(() -> "queue like filter setting change failure", ex);
+                    }
+                });
+            };
 
     private static volatile WeakReference<QueueAccess> queue = new WeakReference<>(null);
     private static volatile WeakReference<Object> listenedLane = new WeakReference<>(null);
@@ -133,22 +154,27 @@ public final class QueueLikeFilterPatch {
      */
     public static void capture(QueueAccess access) {
         queue = new WeakReference<>(access);
-        startWorker();
-        wake();
+        if (startWorkerIfEnabled()) {
+            wake();
+        }
     }
 
     /**
      * Injection point. Called by every queue listener callback.
      */
     public static void onQueueChanged() {
-        wake();
+        if (startWorkerIfEnabled()) {
+            wake();
+        }
     }
 
     /**
      * Injection point. Called when YouTube Music starts playing another video.
      */
     public static void onVideoIdChanged(@Nullable String videoId) {
-        wake();
+        if (startWorkerIfEnabled()) {
+            wake();
+        }
     }
 
     /**
@@ -160,10 +186,14 @@ public final class QueueLikeFilterPatch {
             @Nullable String playlistId,
             int playlistIndex
     ) {
+        // Keep this current even while disabled, so enabling the filter mid-track knows whether
+        // the queue is an auto-generated mix.
         currentPlaylistId = playlistId;
         Logger.printDebug(() -> "queue like filter: playlist " + playlistId
                 + (isRadioPlaylist() ? " (radio/mix)" : " (not filtered)"));
-        wake();
+        if (startWorkerIfEnabled()) {
+            wake();
+        }
     }
 
     /**
@@ -175,14 +205,54 @@ public final class QueueLikeFilterPatch {
         return playlistId != null && playlistId.startsWith(RADIO_PLAYLIST_PREFIX);
     }
 
-    private static void startWorker() {
-        if (!workerStarted.compareAndSet(false, true)) {
+    private static void registerSettingsListener() {
+        if (Utils.getContext() == null) {
+            return;
+        }
+        if (!settingsListenerRegistered.compareAndSet(false, true)) {
             return;
         }
 
-        Thread thread = new Thread(QueueLikeFilterPatch::runLoop, "morphe-queue-like-filter");
-        thread.setDaemon(true);
-        thread.start();
+        try {
+            Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(
+                    SETTINGS_LISTENER);
+        } catch (Exception ex) {
+            settingsListenerRegistered.set(false);
+            Logger.printInfo(() -> "queue like filter could not listen for setting changes", ex);
+        }
+    }
+
+    /**
+     * Starts the worker only when the filter is enabled. When it is off, no worker thread exists.
+     *
+     * @return true if the filter is enabled, so the caller can wake the worker.
+     */
+    private static boolean startWorkerIfEnabled() {
+        try {
+            if (Utils.getContext() == null) {
+                return false;
+            }
+
+            registerSettingsListener();
+
+            if (!isEnabled()) {
+                return false;
+            }
+
+            if (workerStarted.compareAndSet(false, true)) {
+                Thread thread = new Thread(
+                        QueueLikeFilterPatch::runLoop, "morphe-queue-like-filter");
+                thread.setDaemon(true);
+                thread.start();
+            }
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "queue like filter start failure", ex);
+            return false;
+        } catch (LinkageError ex) {
+            Logger.printException(() -> "queue like filter start linkage failure", ex);
+            return false;
+        }
     }
 
     private static void wake() {
@@ -204,16 +274,13 @@ public final class QueueLikeFilterPatch {
     private static void runLoop() {
         while (true) {
             try {
-                // Do not touch Settings before the extension's application context exists. Loading
-                // it too early can permanently fail the Settings class initializer.
-                if (Utils.getContext() == null) {
-                    waitForWake(IDLE_WAIT_MS);
-                    continue;
-                }
-
-                if (!isEnabled()) {
-                    waitForWake(IDLE_WAIT_MS);
-                    continue;
+                if (Utils.getContext() == null || !isEnabled()) {
+                    workerStarted.set(false);
+                    // Close the race where the setting was enabled while the worker was exiting.
+                    if (Utils.getContext() != null && isEnabled()) {
+                        startWorkerIfEnabled();
+                    }
+                    return;
                 }
 
                 if (!isRadioPlaylist()) {
@@ -350,11 +417,15 @@ public final class QueueLikeFilterPatch {
                 return true;
             }
 
+            if (!isEnabled()) {
+                return true;
+            }
+
             checkedSomething = true;
 
             if (lookup.decision == Decision.REMOVE) {
-                // The source may have changed while the lookup was in flight.
-                if (!isRadioPlaylist()) {
+                // The source or setting may have changed while the lookup was in flight.
+                if (!isEnabled() || !isRadioPlaylist()) {
                     return true;
                 }
 
@@ -395,9 +466,9 @@ public final class QueueLikeFilterPatch {
 
             final boolean[] removed = {false};
             runOnQueueExecutor(executor, () -> {
-                // Do not remove anything if the user switched to a playlist or album while the
-                // request was in flight.
-                if (!isRadioPlaylist()) {
+                // Do not remove anything if the filter was disabled or the user switched to a
+                // playlist or album while the request was in flight.
+                if (!isEnabled() || !isRadioPlaylist()) {
                     return;
                 }
 
