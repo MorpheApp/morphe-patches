@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.Match
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -62,6 +63,7 @@ import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
@@ -213,9 +215,10 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_hide_ask_gemini_button", summary = true),
             SwitchPreference("morphe_hide_channel_bar"),
             SwitchPreference("morphe_hide_channel_watermark"),
-            SwitchPreference("morphe_hide_chapters_timeline_button"),
+            SwitchPreference("morphe_hide_chapters_button"),
             SwitchPreference("morphe_hide_crowdfunding_box"),
             SwitchPreference("morphe_hide_emergency_box"),
+            SwitchPreference("morphe_hide_in_this_video_button"),
             SwitchPreference("morphe_hide_info_panels", summary = true),
             SwitchPreference("morphe_hide_join_membership_button"),
             SwitchPreference("morphe_hide_live_chat_replay_button", summary = true),
@@ -1426,6 +1429,48 @@ val hideLayoutComponentsPatch = patch(
                     "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideChaptersTimelineButton(Landroid/view/View;)V"
                 )
             }
+        }
+
+        // The button shows either the chapter title or 'In this video', so it is hidden
+        // each time YouTube sets its visibility, depending on what it shows.
+        if (is_21_23_or_greater) {
+            TimeBarEntryPointVisibilityFingerprint.let {
+                it.method.apply {
+                    val isChapterRegister = it.instructionMatches[2].getInstruction<OneRegisterInstruction>().registerA
+                    val setVisibilityMatch = it.instructionMatches[4]
+                    val showRegister = setVisibilityMatch.getInstruction<FiveRegisterInstruction>().registerD
+
+                    addInstructionsAtControlFlowLabel(
+                        setVisibilityMatch.index,
+                        """
+                            invoke-static { v$showRegister, v$isChapterRegister }, $LAYOUT_COMPONENTS_FILTER->showTimeBarEntryPoint(ZZ)Z
+                            move-result v$showRegister
+                        """
+                    )
+                }
+            }
+        } else {
+            // The button is always shown, and the chapter title and 'In this video' are hidden instead.
+            fun Match.hideTimeBarEntryPoint(extensionMethodName: String) {
+                val setVisibilityMatch = instructionMatches.last { match ->
+                    match.instruction.opcode == Opcode.INVOKE_VIRTUAL
+                }
+                val showRegister = setVisibilityMatch.getInstruction<FiveRegisterInstruction>().registerD
+
+                method.addInstructionsAtControlFlowLabel(
+                    setVisibilityMatch.index,
+                    """
+                        invoke-static { v$showRegister }, $LAYOUT_COMPONENTS_FILTER->$extensionMethodName(Z)Z
+                        move-result v$showRegister
+                    """
+                )
+            }
+
+            TimeBarChapterTitleVisibilityLegacyFingerprint.match()
+                .hideTimeBarEntryPoint("showTimeBarChapterTitle")
+            getTimeBarTimelineTitleVisibilityLegacyFingerprint(
+                TimeBarChapterTitleVisibilityLegacyFingerprint.classDef.type
+            ).match().hideTimeBarEntryPoint("showTimeBarInThisVideo")
         }
 
         // endregion

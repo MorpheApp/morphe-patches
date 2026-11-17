@@ -1765,10 +1765,55 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static void hideChaptersTimelineButton(View view) {
-        if (view != null && Settings.HIDE_CHAPTERS_TIMELINE_BUTTON.get()) {
+        // The button shows either the chapter or 'In this video', so it is removed only if both are hidden.
+        // Otherwise, it is hidden by showTimeBarEntryPoint(boolean, boolean).
+        if (view != null && Settings.HIDE_CHAPTERS_BUTTON.get() && Settings.HIDE_IN_THIS_VIDEO_BUTTON.get()) {
             Utils.hideViewByLayoutParams(view);
             view.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The button next to the timestamp shows the chapter title, or 'In this video'
+     * (which opens the transcript) for videos without chapters.
+     *
+     * @param show      If YouTube shows the button.
+     * @param isChapter If the button shows the chapter title.
+     * @return If the button is shown.
+     */
+    public static boolean showTimeBarEntryPoint(boolean show, boolean isChapter) {
+        if (!show) {
+            return false;
+        }
+        return isChapter
+                ? !Settings.HIDE_CHAPTERS_BUTTON.get()
+                : !Settings.HIDE_IN_THIS_VIDEO_BUTTON.get();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Older app targets always show the button next to the timestamp,
+     * and show the chapter title in it separately.
+     *
+     * @return If the chapter title is shown.
+     */
+    public static boolean showTimeBarChapterTitle(boolean show) {
+        return show && !Settings.HIDE_CHAPTERS_BUTTON.get();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Older app targets always show the button next to the timestamp,
+     * and show 'In this video' in it separately.
+     *
+     * @return If 'In this video' is shown.
+     */
+    public static boolean showTimeBarInThisVideo(boolean show) {
+        return show && !Settings.HIDE_IN_THIS_VIDEO_BUTTON.get();
     }
 
     /**
@@ -1778,7 +1823,7 @@ public final class LayoutComponentsFilter extends Filter {
      * of inside the entry point button hidden by {@link #hideChaptersTimelineButton(View)}.
      */
     public static void hideChapterTitle(View view) {
-        if (view == null || !Settings.HIDE_CHAPTERS_TIMELINE_BUTTON.get()) {
+        if (view == null || !Settings.HIDE_CHAPTERS_BUTTON.get()) {
             return;
         }
 
