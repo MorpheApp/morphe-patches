@@ -224,6 +224,12 @@ public final class MwebSiteSession {
     };
 
     /**
+     * Video of the player response of the page while the player has no response,
+     * such as right after a video is loaded in the player of the page.
+     */
+    private static final String NO_PLAYER_RESPONSE = "none";
+
+    /**
      * Wraps fetch and XMLHttpRequest of the page, and sends its SABR requests to Java.
      * The media requests of the page fail, so the player makes them again, until the session is taken.
      * Then they are held, so the player waits and makes no more requests, until the next video is loaded
@@ -252,8 +258,15 @@ public final class MwebSiteSession {
             + PLAYER_FUNCTIONS
             + "function adShowing(){var p=player();return !!(p&&p.classList&&(p.classList.contains('ad-showing')||p.classList.contains('ad-interrupting')));}"
             + "function playerVideoId(){try{var p=player();var d=p&&p.getVideoData&&p.getVideoData();return (d&&d.video_id)||'';}catch(e){return '';}}"
+            + "function playerResponse(){var p=player();if(!p||!p.getPlayerResponse)return undefined;"
+            + "try{return p.getPlayerResponse()||null;}catch(e){return null;}}"
+            + "function responseVideoId(r){return r===undefined?'':((r&&r.videoDetails&&r.videoDetails.videoId)||'"
+            + NO_PLAYER_RESPONSE + "');}"
+            + "function responseStreamId(r){try{var u=r&&r.streamingData&&r.streamingData.serverAbrStreamingUrl;"
+            + "return u?(new URL(u).searchParams.get('id')||''):'';}catch(e){return '';}}"
             + "function send(url,body){try{var u8=body instanceof Uint8Array?body:new Uint8Array(body instanceof ArrayBuffer?body:body.buffer);"
-            + JS_INTERFACE + ".onSabrRequest(url,b64(u8),pageVideoId(),playerVideoId(),adShowing());}catch(e){"
+            + "var r=playerResponse();"
+            + JS_INTERFACE + ".onSabrRequest(url,b64(u8),pageVideoId(),playerVideoId(),responseVideoId(r),responseStreamId(r),adShowing());}catch(e){"
             + JS_INTERFACE + ".onLog('send failed: '+e);}}"
             + "function refuse(){return window.__morpheHold"
             + "?new Promise(function(res,rej){window.__morpheHeld.push(function(){rej(new TypeError('blocked'));});})"
@@ -915,13 +928,17 @@ public final class MwebSiteSession {
     private record Bridge(Page page) {
 
         /**
-             * @param pageVideoId   Video of the page address, or empty.
-             * @param playerVideoId Video of the player of the page, or empty.
-             * @param adShowing     If the player of the page shows an ad.
+             * @param pageVideoId      Video of the page address, or empty.
+             * @param playerVideoId    Video of the player of the page, or empty.
+             * @param responseVideoId  Video of the player response of the page, {@link #NO_PLAYER_RESPONSE}
+             *                         if the player has no response yet, or empty if the player cannot give it.
+             * @param responseStreamId The 'id' parameter of the stream url of the player response of the page,
+             *                         or empty.
+             * @param adShowing        If the player of the page shows an ad.
              */
             @JavascriptInterface
-            public void onSabrRequest(String url, String bodyBase64, String pageVideoId,
-                                      String playerVideoId, boolean adShowing) {
+            public void onSabrRequest(String url, String bodyBase64, String pageVideoId, String playerVideoId,
+                                      String responseVideoId, String responseStreamId, boolean adShowing) {
                 CompletableFuture<Session> future = page.pending;
                 String videoId = page.pendingVideoId;
                 if (future == null || future.isDone() || videoId == null) {
@@ -942,9 +959,20 @@ public final class MwebSiteSession {
                         return;
                     }
                     if ((!pageVideoId.isEmpty() && !pageVideoId.equals(videoId))
-                            || (!playerVideoId.isEmpty() && !playerVideoId.equals(videoId))) {
+                            || (!playerVideoId.isEmpty() && !playerVideoId.equals(videoId))
+                            || (!responseVideoId.isEmpty() && !responseVideoId.equals(videoId))) {
                         Logger.printDebug(() -> "Website session: ignoring a request of another video, page: "
-                                + pageVideoId + " player: " + playerVideoId + " wanted: " + videoId);
+                                + pageVideoId + " player: " + playerVideoId + " response: " + responseVideoId
+                                + " wanted: " + videoId);
+                        return;
+                    }
+                    // A request of the video loaded before in the page, which the player makes again when its held
+                    // requests are given up, has the page address and the player of the new video already,
+                    // but the stream of the earlier video. The server then sends the media of the earlier video.
+                    String requestStreamId = Uri.parse(url).getQueryParameter("id");
+                    if (!responseStreamId.isEmpty() && !responseStreamId.equals(requestStreamId)) {
+                        Logger.printDebug(() -> "Website session: ignoring a request of an earlier stream, request: "
+                                + requestStreamId + " response: " + responseStreamId + " video: " + videoId);
                         return;
                     }
                     Session session = new Session(url, Base64.decode(bodyBase64, Base64.DEFAULT));
