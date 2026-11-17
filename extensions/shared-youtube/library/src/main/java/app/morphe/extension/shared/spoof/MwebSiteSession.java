@@ -235,9 +235,16 @@ public final class MwebSiteSession {
      * Then they are held, so the player waits and makes no more requests, until the next video is loaded
      * in the page, which gives them up.
      * <p>
-     * When the page shows an ad, the ads are removed from the next player responses of the page: the media
-     * requests of the page fail, so the ad never ends and the player never asks for the video. The ads are
-     * not removed otherwise, as the server then makes the streams of most videos wait a few seconds.
+     * The player requests of the page ask for no ads (playbackContext.adPlaybackContext.pyv, as for the playback
+     * of a video ad). Otherwise the server puts the ads of the video in the streaming session, and as they are
+     * never played, the streams wait for most of their length (4 to 24 seconds) before the server sends any media.
+     * The page sends its requests as JSON compressed with gzip, so the request is changed when it is turned
+     * into JSON. Premium accounts of the web sign in have no ads, and these requests would not get their Premium
+     * formats, so the requests are not changed when the page names a Premium membership, as the website reads it.
+     * <p>
+     * When the page shows an ad anyway, which the watch page has in its player response, the ads are removed
+     * from the next player responses of the page: the media requests of the page fail, so the ad never ends
+     * and the player never asks for the video.
      * <p>
      * It runs with evaluateJavascript, which the content security policy of the page does not limit.
      * The player loads after the page has started, so it uses the wrapped functions.
@@ -247,6 +254,16 @@ public final class MwebSiteSession {
             + "window.__morpheRelease=function(){window.__morpheHold=false;var h=window.__morpheHeld;window.__morpheHeld=[];"
             + "for(var i=0;i<h.length;i++){try{h[i]();}catch(e){}}};"
             + "function b64(u8){var s='';for(var i=0;i<u8.length;i+=32768){s+=String.fromCharCode.apply(null,u8.subarray(i,i+32768));}return btoa(s);}"
+            + "function premiumMembership(){try{var o=[window.ytInitialPlayerResponse,window.ytInitialData];"
+            + "for(var i=0;i<o.length;i++){var t=o[i]&&o[i].responseContext&&o[i].responseContext.serviceTrackingParams;"
+            + "if(!t)continue;for(var j=0;j<t.length;j++){var q=t[j].params||[];"
+            + "for(var k=0;k<q.length;k++){if(q[k].key==='premium_membership')return String(q[k].value);}}}}catch(e){}return '';}"
+            + "function isPremium(){var m=premiumMembership();return m!==''&&!/^non/i.test(m);}"
+            + "var oj=JSON.stringify;JSON.stringify=function(v){var a=Array.prototype.slice.call(arguments);"
+            + "try{var pc=v&&v.context&&v.videoId&&v.playbackContext;"
+            + "if(pc&&pc.contentPlaybackContext&&!pc.adPlaybackContext&&!isPremium()){var c=Object.assign({},v);"
+            + "c.playbackContext=Object.assign({},pc,{adPlaybackContext:{pyv:true}});a[0]=c;}}catch(e){}"
+            + "return oj.apply(this,a);};"
             + "function isMedia(url){return typeof url==='string'&&url.indexOf('googlevideo.com/videoplayback')>=0;}"
             + "function isPlayerRequest(url){return typeof url==='string'&&/\\/youtubei\\/v1\\/player(\\?|$)/.test(url);}"
             + "function withoutAds(r){return r.clone().json().then(function(j){"
