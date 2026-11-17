@@ -419,6 +419,9 @@ public class Settings extends SharedYouTubeSettings {
     // Post image download
     public static final BooleanSetting POST_IMAGE_DOWNLOAD = new BooleanSetting("morphe_post_image_download", TRUE, true);
 
+    // Open post images in fullscreen
+    public static final BooleanSetting OPEN_POST_IMAGES_FULLSCREEN = new BooleanSetting("morphe_open_post_images_fullscreen", FALSE, true);
+
     // Post translate
     public static final BooleanSetting POST_TRANSLATE = new BooleanSetting("morphe_post_translate", TRUE, true);
     public static final StringSetting POST_TRANSLATE_LANGUAGE = new StringSetting("morphe_post_translate_language", "default", parent(POST_TRANSLATE));
