@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
@@ -116,6 +117,13 @@ public final class QueueLikeFilterPatch {
     private static final Map<String, Boolean> checkedVideoIds = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(CHECKED_CACHE_SIZE));
 
+    /**
+     * Video IDs the user queued explicitly with "Play next". Those songs are intentional, so the
+     * filter leaves them alone just like it never considers the currently playing track.
+     */
+    private static final Map<String, Boolean> explicitlyQueuedVideoIds = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(CHECKED_CACHE_SIZE));
+
     private static final Object wakeLock = new Object();
     private static final AtomicBoolean workerStarted = new AtomicBoolean();
     private static final AtomicBoolean settingsListenerRegistered = new AtomicBoolean();
@@ -141,6 +149,7 @@ public final class QueueLikeFilterPatch {
     private static volatile WeakReference<QueueAccess> queue = new WeakReference<>(null);
     private static volatile WeakReference<Object> listenedLane = new WeakReference<>(null);
     private static volatile String currentPlaylistId;
+    private static volatile boolean playlistIdKnown;
     private static volatile long pauseUntil;
     private static volatile long knownMinimumLikes = -1;
     private static volatile boolean announcedActive;
@@ -169,6 +178,35 @@ public final class QueueLikeFilterPatch {
     }
 
     /**
+     * Injection point. Called before songs enqueued with "Play next" are inserted into the queue.
+     */
+    public static void onItemsEnqueued(@Nullable List<?> items, boolean playNext) {
+        if (!playNext || items == null) {
+            return;
+        }
+
+        QueueAccess access = queue.get();
+        if (access == null) {
+            return;
+        }
+
+        for (Object item : items) {
+            if (item == null) {
+                continue;
+            }
+            try {
+                String videoId = access.patch_qlfVideoId(item);
+                if (videoId != null && !videoId.isEmpty()) {
+                    explicitlyQueuedVideoIds.put(videoId, Boolean.TRUE);
+                    Logger.printDebug(() -> "queue like filter: ignoring play next video " + videoId);
+                }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "queue like filter: could not read a play next video ID", ex);
+            }
+        }
+    }
+
+    /**
      * Injection point. Called when YouTube Music starts playing another video.
      */
     public static void onVideoIdChanged(@Nullable String videoId) {
@@ -188,7 +226,12 @@ public final class QueueLikeFilterPatch {
     ) {
         // Keep this current even while disabled, so enabling the filter mid-track knows whether
         // the queue is an auto-generated mix.
+        final String previousPlaylistId = currentPlaylistId;
         currentPlaylistId = playlistId;
+        playlistIdKnown = true;
+        if (previousPlaylistId == null ? playlistId != null : !previousPlaylistId.equals(playlistId)) {
+            explicitlyQueuedVideoIds.clear();
+        }
         Logger.printDebug(() -> "queue like filter: playlist " + playlistId
                 + (isRadioPlaylist() ? " (radio/mix)" : " (not filtered)"));
         if (startWorkerIfEnabled()) {
@@ -201,8 +244,17 @@ public final class QueueLikeFilterPatch {
      * user-owned queues keep their items.
      */
     private static boolean isRadioPlaylist() {
+        // Nothing is known until the app reports a player response. Avoid touching a restored queue
+        // before it has been identified.
+        if (!playlistIdKnown) {
+            return false;
+        }
+
         String playlistId = currentPlaylistId;
-        return playlistId != null && playlistId.startsWith(RADIO_PLAYLIST_PREFIX);
+        // A standalone song (for example one started from the search results) has no playlist ID,
+        // and YouTube Music builds an auto-generated radio around it.
+        return playlistId == null || playlistId.isEmpty()
+                || playlistId.startsWith(RADIO_PLAYLIST_PREFIX);
     }
 
     private static void registerSettingsListener() {
@@ -401,6 +453,10 @@ public final class QueueLikeFilterPatch {
                 continue;
             }
             if (videoId == null || videoId.isEmpty()) {
+                continue;
+            }
+
+            if (explicitlyQueuedVideoIds.containsKey(videoId)) {
                 continue;
             }
 
