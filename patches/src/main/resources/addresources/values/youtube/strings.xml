@@ -1633,6 +1633,8 @@ Automotive layout
     <string name="morphe_dearrow_titles_search_title">Search results</string>
     <string name="morphe_dearrow_titles_icon_title">Show DeArrow icon</string>
     <string name="morphe_dearrow_titles_icon_summary">Shows the DeArrow icon on the titles of videos with a crowdsourced title or thumbnail. Tap the icon to show the original title and thumbnail</string>
+    <string name="morphe_dearrow_clean_up_titles_title">Clean up titles</string>
+    <string name="morphe_dearrow_clean_up_titles_summary">Cleans up the titles of videos without a DeArrow title. Words in capitals are changed to normal case, and emojis, fancy text and repeated exclamation marks are removed</string>
     <string name="morphe_dearrow_casual_mode_title">Casual mode</string>
     <string name="morphe_dearrow_casual_mode_summary">Shows the original title instead of the DeArrow title if DeArrow users voted they like the original title</string>
     <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum casual votes to show original title</string>
