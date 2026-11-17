@@ -102,7 +102,15 @@ message ShortsShelfModel {
 }
 
 message ShortsVideoCellModel {
+    ShortsVideoCellGrid grid = 4;
     ShortsVideoCellData data = 17;
+}
+
+// Layout of the grid of the Shorts shelf, which the template of the Short reads.
+message ShortsVideoCellGrid {
+    // The grid has no margins at its sides, such as in a newer A/B test of the cards. Without it, the grid has
+    // margins of 12 dp.
+    bool noMargins = 40;
 }
 
 message ShortsVideoCellData {
@@ -125,6 +133,7 @@ message HorizontalShelfData {
 
 message ShelfHeaderModel {
     ShelfHeaderData data = 1;
+    ElementContext context = 4;
 }
 
 message ShelfHeaderData {
@@ -641,7 +650,8 @@ message ElementsExperiments {
     CardLayoutExperiments cardLayoutExperiments = 5;
     // Experiments read by lockup_metadata_ue.eml.
     bytes lockupMetadataExperiments = 26;
-    // Experiments read by lockup.eml and lockup_thumbnail.eml (field 524937).
+    // Experiments read by lockup.eml and lockup_thumbnail.eml (field 524937), which the shelf headers
+    // of the same A/B test have too.
     bytes lockupExperiments = 42;
 }
 

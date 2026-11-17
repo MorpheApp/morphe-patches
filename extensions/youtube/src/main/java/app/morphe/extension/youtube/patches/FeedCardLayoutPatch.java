@@ -297,6 +297,12 @@ public class FeedCardLayoutPatch {
      */
     private static final CardOutlineProvider FEED_ITEM_OUTLINE = new CardOutlineProvider(0, 0);
     /**
+     * Outline of the shelf headers of the feed, whose background is as wide as the list in a newer A/B test,
+     * with the spacing of the cards at the sides.
+     */
+    private static final CardOutlineProvider SHELF_HEADER_OUTLINE =
+            new CardOutlineProvider(CARD_HORIZONTAL_PADDING_DP, 0);
+    /**
      * Clips of the Shorts of the Shorts shelves, by their rounded corners
      * (top left, top right, bottom left and bottom right bits).
      */
@@ -421,6 +427,12 @@ public class FeedCardLayoutPatch {
             GRID_COLLECTION_TEMPLATE, COMPACT_PLAYLIST_TEMPLATE}
             : new String[]{CARD_TEMPLATE};
     /**
+     * Templates changed by the default layout: the cards of a newer A/B test, and the Shorts shelves
+     * and the shelf headers of the same A/B test.
+     */
+    private static final ByteTrieSearch defaultLayoutSearch = new ByteTrieSearch(
+            ByteTrieSearch.convertStringsToBytes(CARD_TEMPLATE, SHELF_HEADER_TEMPLATE, SHORTS_VIDEO_CELL_TEMPLATE));
+    /**
      * Labels of the shelf headers, in the bytes of the converted elements.
      */
     private static final ByteTrieSearch shelfHeaderLabelSearch = new ByteTrieSearch(
@@ -514,6 +526,28 @@ public class FeedCardLayoutPatch {
      * The views are recycled, so they are scaled back when they show something else.
      */
     private static final Map<View, Boolean> scaledShelfRows = new WeakHashMap<>();
+    /**
+     * Views of the shelf headers that are moved inside the spacing of the cards,
+     * see {@link #fitShelfHeaders(RecyclerView)}.
+     */
+    private static final Map<View, Boolean> movedShelfHeaderViews = new WeakHashMap<>();
+    /**
+     * The views of the elements are recycled, so the moved views of the shelf headers are moved back
+     * when they are removed from the header.
+     */
+    private static final View.OnAttachStateChangeListener SHELF_HEADER_VIEW_DETACH_LISTENER =
+            new View.OnAttachStateChangeListener() {
+                @Override
+                public void onViewAttachedToWindow(@NonNull View view) {
+                }
+
+                @Override
+                public void onViewDetachedFromWindow(@NonNull View view) {
+                    view.removeOnAttachStateChangeListener(this);
+                    movedShelfHeaderViews.remove(view);
+                    view.setTranslationX(0);
+                }
+            };
     /**
      * List items that are horizontal shelves or Shorts carousels with the card layout, found by the converted
      * element of the item when the list sets its spacing. Their header, which has the label of the shelf,
@@ -743,8 +777,9 @@ public class FeedCardLayoutPatch {
      * Injection point.
      */
     public static byte[] setFeedCardLayout(byte[] bytes) {
-        // The default layout changes only the cards of a newer A/B test, see convertServerCard().
-        if (LAYOUT == FeedCardLayout.DEFAULT && !CARD.search.matches(bytes)) {
+        // The default layout changes only the cards of a newer A/B test, see convertServerCard(),
+        // and the spacing of the Shorts shelves and the shelf headers of the same A/B test.
+        if (LAYOUT == FeedCardLayout.DEFAULT && !defaultLayoutSearch.matches(bytes)) {
             return bytes;
         }
 
@@ -808,6 +843,20 @@ public class FeedCardLayoutPatch {
                     converted = convertServerCard(componentType, model);
                     if (converted != null) {
                         // The lists draw the cards of the newer A/B test from now on.
+                        newServerCardsShown = true;
+                    }
+                } else if (isTemplate(uri, SHELF_HEADER_TEMPLATE) && model.hasShelfHeaderModel()
+                        && !model.getShelfHeaderModel().getContext().getElementsExperiments()
+                        .getLockupExperiments().isEmpty()) {
+                    // The shelf headers of the newer A/B test keep their style, and are found in the lists
+                    // by their label, to move their buttons inside the spacing of the cards, see fitShelfHeaders().
+                    converted = markShelfHeader(componentType, model.getShelfHeaderModel());
+                } else if (isTemplate(uri, SHORTS_VIDEO_CELL_TEMPLATE) && model.hasShortsVideoCellModel()) {
+                    ShortsVideoCellModel cell = model.getShortsVideoCellModel();
+                    converted = markShortsCell(componentType, cell);
+                    if (cell.getGrid().getNoMargins()) {
+                        // The Shorts shelf of the newer A/B test can be above its first card, such as at the top
+                        // of the Home feed, and the lists draw the cards from now on.
                         newServerCardsShown = true;
                     }
                 }
@@ -1166,15 +1215,7 @@ public class FeedCardLayoutPatch {
                     ShelfHeaderModel header = model.getShelfHeaderModel();
                     ShelfHeaderData data = header.getData();
                     if (!data.getIcon().toString(StandardCharsets.ISO_8859_1).contains(SHORTS_SHELF_ICON)) {
-                        // The other shelf headers keep their own style, and are only found in the lists by their label,
-                        // to draw a card behind the videos below them.
-                        converted = componentType.toBuilder()
-                                .setModel(ElementModel.newBuilder().setShelfHeaderModel(header.toBuilder()
-                                        .setData(data.toBuilder()
-                                                .setTitle(data.getTitle() + VIDEO_SHELF_HEADER_LABEL_MARKER)
-                                                .setAccessibilityText(data.getAccessibilityText()
-                                                        + VIDEO_SHELF_HEADER_LABEL_MARKER))))
-                                .build();
+                        converted = markShelfHeader(componentType, header);
                     } else {
                         converted = componentType.toBuilder()
                                 .setModel(ElementModel.newBuilder().setShelfHeaderModel(header.toBuilder()
@@ -1194,15 +1235,7 @@ public class FeedCardLayoutPatch {
                                 .build();
                     }
                 } else if (isTemplate(uri, SHORTS_VIDEO_CELL_TEMPLATE) && model.hasShortsVideoCellModel()) {
-                    // The label of the Shorts ends with an invisible character, to find the Shorts shelf in the lists.
-                    ShortsVideoCellModel cell = model.getShortsVideoCellModel();
-                    ShortsVideoCellData data = cell.getData();
-                    converted = componentType.toBuilder()
-                            .setModel(ElementModel.newBuilder().setShortsVideoCellModel(cell.toBuilder()
-                                    .setData(data.toBuilder()
-                                            .setAccessibilityText(data.getAccessibilityText()
-                                                    + SHORTS_CELL_LABEL_MARKER))))
-                            .build();
+                    converted = markShortsCell(componentType, model.getShortsVideoCellModel());
                 } else if (isTemplate(uri, SHORTS_PIVOT_ITEM_TEMPLATE) && model.hasShortsPivotItemModel()) {
                     // The Shorts of the Shorts shelf of the channel home, below its header, are found the same way,
                     // so the shelf is a card with the header and the Shorts, like the Shorts shelf of the feed.
@@ -1586,7 +1619,7 @@ public class FeedCardLayoutPatch {
      */
     public static void setDividerItemView(View view) {
         try {
-            if (!CARD_LAYOUT) {
+            if (!listsDrawCards()) {
                 return;
             }
 
@@ -1606,7 +1639,7 @@ public class FeedCardLayoutPatch {
      */
     public static void setDividerItem(@Nullable Object item) {
         try {
-            if (!CARD_LAYOUT) {
+            if (!listsDrawCards()) {
                 return;
             }
 
@@ -1694,7 +1727,9 @@ public class FeedCardLayoutPatch {
         // only with the card layout.
         if (outline == null && CARD_LAYOUT && child.getParent() instanceof RecyclerView recyclerView
                 && recyclerView.getId() == getFeedId() && !isChipBar(child)) {
-            outline = FEED_ITEM_OUTLINE;
+            outline = (isShelfHeader(child) || isVideoShelfHeader(child)) && !hasNestedList(child)
+                    ? SHELF_HEADER_OUTLINE
+                    : FEED_ITEM_OUTLINE;
         }
         setCardOutline(child, outline);
     }
@@ -1913,7 +1948,7 @@ public class FeedCardLayoutPatch {
 
                         // Updates the clips of the Shorts of the Shorts shelves, without drawing the shelves.
                         shortsCellOutlines.clear();
-                        for (int i = 0, count = current.getChildCount(); i < count; i++) {
+                        for (int i = 0, count = CARD_LAYOUT ? current.getChildCount() : 0; i < count; i++) {
                             View item = current.getChildAt(i);
                             if (item.getHeight() > 0 && isShortsRow(item)) {
                                 View above = findItemAbove(current, item);
@@ -1922,6 +1957,8 @@ public class FeedCardLayoutPatch {
                                 }
                             }
                         }
+
+                        fitShelfHeaders(current);
 
                         final boolean feed = current.getId() == getFeedId();
                         if (feed) {
@@ -2082,10 +2119,11 @@ public class FeedCardLayoutPatch {
                     continue;
                 }
 
-                // First visible row of a Shorts shelf.
+                // First visible row of a Shorts shelf. The default layout changes only the margins of the Shorts
+                // of the newer A/B test, see markShortsCell().
                 if (isShortsRow(item)) {
                     View above = findItemAbove(list, item);
-                    if (above == null || !isShortsRow(above)) {
+                    if (CARD_LAYOUT && (above == null || !isShortsRow(above))) {
                         drawShortsShelfCard(list, above, item, canvas);
                     }
                     continue;
@@ -2167,6 +2205,78 @@ public class FeedCardLayoutPatch {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onListDraw failure", ex);
+        }
+    }
+
+    /**
+     * The shelf headers of the newer A/B test of the cards have their buttons, such as the menu button,
+     * near the edge of the list, outside the spacing of the cards below them. The buttons are moved
+     * inside the spacing of the cards. The horizontal shelves, with their header and their videos
+     * in the same list item, keep their layout.
+     */
+    private static void fitShelfHeaders(RecyclerView list) {
+        final int margin = cardPx(CARD_HORIZONTAL_PADDING_DP);
+        List<View> moved = new ArrayList<>();
+        for (int i = 0, count = list.getChildCount(); i < count; i++) {
+            View item = list.getChildAt(i);
+            if (item.getWidth() > 2 * margin && item.getHeight() > 0
+                    && (isShelfHeader(item) || isVideoShelfHeader(item)) && !hasNestedList(item)) {
+                fitShelfHeaderViews(item, item, 0, margin, moved, 0);
+            }
+        }
+
+        // The views that are no longer at the edge of a shelf header of the list are moved back.
+        for (View view : movedShelfHeaderViews.keySet().toArray(new View[0])) {
+            if (view == null || moved.contains(view)) {
+                continue;
+            }
+            for (ViewParent parent = view.getParent(); parent != null; parent = parent.getParent()) {
+                if (parent == list) {
+                    movedShelfHeaderViews.remove(view);
+                    view.removeOnAttachStateChangeListener(SHELF_HEADER_VIEW_DETACH_LISTENER);
+                    view.setTranslationX(0);
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Moves the views of the header that are narrower than half the header, and are in the spacing of the cards
+     * at the start or at the end of the header. The wider views, such as the background, are searched for them.
+     *
+     * @param left Left position of the view in the header.
+     */
+    private static void fitShelfHeaderViews(View header, View view, int left, int margin, List<View> moved,
+                                            int depth) {
+        if (depth > 4 || !(view instanceof ViewGroup group) || view instanceof RecyclerView) {
+            return;
+        }
+        final int width = header.getWidth();
+        for (int i = 0, count = group.getChildCount(); i < count; i++) {
+            View child = group.getChildAt(i);
+            if (child.getVisibility() != View.VISIBLE || child.getWidth() <= 0) {
+                continue;
+            }
+            final int childLeft = left + child.getLeft();
+            if (2 * child.getWidth() >= width) {
+                fitShelfHeaderViews(header, child, childLeft, margin, moved, depth + 1);
+                continue;
+            }
+            final int childRight = childLeft + child.getWidth();
+            final int translation = childRight > width - margin
+                    ? width - margin - childRight
+                    : Math.max(0, margin - childLeft);
+            if (translation == 0) {
+                continue;
+            }
+            moved.add(child);
+            if (child.getTranslationX() != translation) {
+                child.setTranslationX(translation);
+            }
+            if (movedShelfHeaderViews.put(child, Boolean.TRUE) == null) {
+                child.addOnAttachStateChangeListener(SHELF_HEADER_VIEW_DETACH_LISTENER);
+            }
         }
     }
 
@@ -2909,6 +3019,40 @@ public class FeedCardLayoutPatch {
                     .build();
         }
         return converted;
+    }
+
+    /**
+     * The shelf headers that keep their own style are only found in the lists by their label,
+     * to draw a card behind the videos or the Shorts below them, and to move their buttons inside
+     * the spacing of the cards, see fitShelfHeaders().
+     */
+    private static ComponentType markShelfHeader(ComponentType componentType, ShelfHeaderModel header) {
+        ShelfHeaderData data = header.getData();
+        return componentType.toBuilder()
+                .setModel(ElementModel.newBuilder().setShelfHeaderModel(header.toBuilder()
+                        .setData(data.toBuilder()
+                                .setTitle(data.getTitle() + VIDEO_SHELF_HEADER_LABEL_MARKER)
+                                .setAccessibilityText(data.getAccessibilityText()
+                                        + VIDEO_SHELF_HEADER_LABEL_MARKER))))
+                .build();
+    }
+
+    /**
+     * The label of the Shorts ends with an invisible character, to find the Shorts shelf in the lists.
+     * The Shorts shelf of a newer A/B test of the cards fills the width with the list, and the grid of its Shorts
+     * gets the margins of the other layouts, which are the spacing of the cards.
+     */
+    private static ComponentType markShortsCell(ComponentType componentType, ShortsVideoCellModel cell) {
+        ShortsVideoCellData data = cell.getData();
+        ShortsVideoCellModel.Builder converted = cell.toBuilder()
+                .setData(data.toBuilder()
+                        .setAccessibilityText(data.getAccessibilityText() + SHORTS_CELL_LABEL_MARKER));
+        if (cell.getGrid().getNoMargins()) {
+            converted.setGrid(cell.getGrid().toBuilder().clearNoMargins());
+        }
+        return componentType.toBuilder()
+                .setModel(ElementModel.newBuilder().setShortsVideoCellModel(converted))
+                .build();
     }
 
     /**
