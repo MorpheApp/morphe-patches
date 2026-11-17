@@ -571,6 +571,28 @@ message ButtonViewModel {
     int32 state = 14;
     string targetId = 17;
     int32 iconStyle = 40;
+    ButtonImage image = 51;
+}
+
+// Icon of a button by its number, such as the Shop button of live streams, which has no icon name.
+message ButtonImage {
+    repeated ButtonImageSource sources = 1;
+}
+
+message ButtonImageSource {
+    ButtonImageType type = 6;
+}
+
+message ButtonImageType {
+    ButtonImageIcon icon = 1002;
+}
+
+message ButtonImageIcon {
+    ButtonImageIconNumber number = 1;
+}
+
+message ButtonImageIconNumber {
+    int32 value = 1;
 }
 
 message ToggleButtonViewModelHolder {
