@@ -8,11 +8,14 @@
 package app.morphe.patches.reddit.layout.sidebar
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 internal const val HEADER_ITEM_CLASS = "Lcom/reddit/screens/drawer/community/HeaderItem;"
 
@@ -58,6 +61,45 @@ internal object CommunityDrawerBuilderFingerprint : Fingerprint(
             )
         )
     }
+)
+
+internal object CtaItemUiModelToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("CTAItemUiModel(uniqueId="),
+        string(", titleResId="),
+        fieldAccess(opcode = Opcode.IGET, type = "I", definingClass = "this", location = MatchAfterWithin(5))
+    )
+)
+
+internal object GenericItemUiModelToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("GenericItemUiModel(uniqueId="),
+        string(", titleResId="),
+        fieldAccess(opcode = Opcode.IGET, type = "I", definingClass = "this", location = MatchAfterWithin(5))
+    )
+)
+
+internal object DividerItemUiModelToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("DividerItemUiModel(uniqueId=", StringComparisonType.STARTS_WITH)
+    )
+)
+
+/**
+ * Passes the finished sidebar list to the adapter.
+ */
+internal object CommunityDrawerBindListFingerprint : Fingerprint(
+    definingClass = $$"Lcom/reddit/screens/drawer/community/CommunityDrawerPresenter$bindListOnView$2;",
+    name = "invokeSuspend",
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/util/List;")
+    )
 )
 
 internal object HeaderItemUiModelToStringFingerprint : Fingerprint(
