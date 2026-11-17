@@ -15,6 +15,7 @@ import com.google.protobuf.UnknownFieldSet;
 
 import org.junit.Test;
 
+import app.morphe.extension.youtube.innertube.Offline.OfflineAudioTrack;
 import app.morphe.extension.youtube.innertube.Offline.OfflineStreamFormat;
 import app.morphe.extension.youtube.innertube.Offline.OfflineStreamingData;
 
@@ -42,6 +43,44 @@ public class InAppDownloadsPatchTest {
         assertTrue(result.getAdaptiveFormats(2).getOfflineEligible());
         assertFalse(result.getAdaptiveFormats(3).getOfflineEligible());
         assertFalse(result.getAdaptiveFormats(4).getOfflineEligible());
+    }
+
+    @Test
+    public void keepsOnlyTheExplicitlySelectedAudioTrackWhenMetadataMatches() {
+        OfflineStreamFormat video = format("video/mp4; codecs=\"avc1.640028\"");
+        OfflineStreamFormat english = format("audio/mp4")
+                .toBuilder()
+                .setAudioTrack(OfflineAudioTrack.newBuilder().setId("en-us.10"))
+                .build();
+        OfflineStreamFormat arabic = format("audio/mp4")
+                .toBuilder()
+                .setAudioTrack(OfflineAudioTrack.newBuilder().setId("ar.4"))
+                .build();
+
+        OfflineStreamingData original = OfflineStreamingData.newBuilder()
+                .addAdaptiveFormats(video)
+                .addAdaptiveFormats(english)
+                .addAdaptiveFormats(arabic)
+                .build();
+
+        OfflineStreamingData result = InAppDownloadsPatch.savableStreamingData(original, "ar.4");
+
+        assertTrue(result.getAdaptiveFormats(0).getOfflineEligible());
+        assertFalse(result.getAdaptiveFormats(1).getOfflineEligible());
+        assertTrue(result.getAdaptiveFormats(2).getOfflineEligible());
+    }
+
+    @Test
+    public void fallsBackWhenSelectedAudioTrackIsNotPresent() {
+        OfflineStreamingData original = OfflineStreamingData.newBuilder()
+                .addAdaptiveFormats(format("audio/mp4").toBuilder()
+                        .setAudioTrack(OfflineAudioTrack.newBuilder().setId("en-us.10"))
+                        .build())
+                .build();
+
+        OfflineStreamingData result = InAppDownloadsPatch.savableStreamingData(original, "ar.4");
+
+        assertTrue(result.getAdaptiveFormats(0).getOfflineEligible());
     }
 
     @Test
