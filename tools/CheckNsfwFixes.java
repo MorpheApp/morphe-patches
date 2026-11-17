@@ -14,6 +14,9 @@ public final class CheckNsfwFixes {
     private static final String PERMANENT = "Lapp/morphe/extension/reddit/patches/PermanentNsfwPatch;";
 
     public static void main(String[] args) throws Exception {
+        String mode = args.length > 1 ? args[1] : "all";
+        boolean contentSelected = !mode.equals("--navigation-only") && !mode.equals("--permanent-only");
+        boolean navigationSelected = !mode.equals("--content-only") && !mode.equals("--permanent-only");
         Map<String, ClassDef> classes = new HashMap<>();
         var apk = DexFileFactory.loadDexContainer(new File(args[0]), Opcodes.getDefault());
         for (String entry : apk.getDexEntryNames())
@@ -30,22 +33,26 @@ public final class CheckNsfwFixes {
             if (calls(method, cls.getType(), "patch_shouldHideNsfw")) rendering = method;
             if (calls(method, "Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet$onInitialize$1$1;", "<init>")) back = method;
         }
-        require(viewing != null && profile != null && post != null && rendering != null && back != null, "Missing native fix hooks");
-        for (var guard : List.of(profile, post)) {
-            require(calls(guard, viewing.getDefiningClass(), viewing.getName()), "Guard must read the native session preference");
-            require(!calls(guard, PERMANENT, "isEnabled"), "Guard incorrectly requires permanent disabling");
+        require(viewing != null, "Missing native viewing preference");
+        require((profile != null) == contentSelected && (post != null) == contentSelected
+                && (rendering != null) == contentSelected, "Content fix selection did not match the requested patch set");
+        if (contentSelected) {
+            for (var guard : List.of(profile, post)) {
+                require(calls(guard, viewing.getDefiningClass(), viewing.getName()), "Guard must read the native session preference");
+                require(!calls(guard, PERMANENT, "isEnabled"), "Guard incorrectly requires permanent disabling");
+            }
+            require(calls(post, "Lcom/reddit/domain/model/Link;", "getOver18"), "Post guard must preserve unflagged posts");
+            var profileCode = instructions(profile);
+            int warning = callIndex(profileCode, CONTENT, "showProfileWarning");
+            require(profileCode.get(warning + 2).getOpcode() == Opcode.RETURN_OBJECT,
+                    "Flagged profile still falls through to model publication");
+            var renderCode = instructions(rendering);
+            int gate = callIndex(renderCode, post.getDefiningClass(), post.getName());
+            require(renderCode.get(gate + 2).getOpcode() == Opcode.IF_EQZ
+                    && renderCode.get(gate + 3) instanceof NarrowLiteralInstruction hidden && hidden.getNarrowLiteral() == 1
+                    && renderCode.get(gate + 4) instanceof NarrowLiteralInstruction blocked && blocked.getNarrowLiteral() == 1,
+                    "Both native post visibility flags must be set before building the view");
         }
-        require(calls(post, "Lcom/reddit/domain/model/Link;", "getOver18"), "Post guard must preserve unflagged posts");
-        var profileCode = instructions(profile);
-        int warning = callIndex(profileCode, CONTENT, "showProfileWarning");
-        require(profileCode.get(warning + 2).getOpcode() == Opcode.RETURN_OBJECT,
-                "Flagged profile still falls through to model publication");
-        var renderCode = instructions(rendering);
-        int gate = callIndex(renderCode, post.getDefiningClass(), post.getName());
-        require(renderCode.get(gate + 2).getOpcode() == Opcode.IF_EQZ
-                && renderCode.get(gate + 3) instanceof NarrowLiteralInstruction hidden && hidden.getNarrowLiteral() == 1
-                && renderCode.get(gate + 4) instanceof NarrowLiteralInstruction blocked && blocked.getNarrowLiteral() == 1,
-                "Both native post visibility flags must be set before building the view");
         Method handler = null;
         for (var method : classes.get("Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel$1;").getMethods())
             if (method.getName().equals("access$invokeSuspend$handleEvent")) handler = method;
@@ -60,14 +67,15 @@ public final class CheckNsfwFixes {
                 break;
             }
         }
-        require(returnsBeforeHome, "Decline can still reach the native Home redirect");
-        if (args.length > 1 && args[1].equals("--normal-off")) {
+        require(returnsBeforeHome == navigationSelected, "Navigation fix selection did not match the requested patch set");
+        if (navigationSelected) require(back != null, "Missing native Android back callback");
+        if (!mode.equals("all") && !mode.equals("--permanent-only")) {
             Method included = null;
             for (var method : classes.get(PERMANENT).getMethods()) if (method.getName().equals("isPatchIncluded")) included = method;
             for (var instruction : instructions(included)) require(!(instruction instanceof NarrowLiteralInstruction value)
                     || value.getNarrowLiteral() != 1, "Standalone test accidentally includes permanent disabling");
         }
-        System.out.println("PASS: native preference controls profile/post gates; hidden and blocked before view creation; Back independent of permanent disabling");
+        System.out.println("PASS: " + mode + " selection; native preference gates and navigation match selected features");
     }
 
     private static List<Instruction> instructions(Method method) {

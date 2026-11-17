@@ -1,10 +1,10 @@
 # Reddit NSFW controls and native UI fixes
 
-Three selectable patches address separate behaviors. None adds a content classifier, network interceptor, JSON rewriting, custom blocked screen or runtime dependency.
+Three independent patches address separate behaviors. All are selected by default while patching and can be unchecked separately. Including permanent disabling only adds its in-app option; activation still requires explicit confirmation. None adds a content classifier, network interceptor, JSON rewriting, custom blocked screen or runtime dependency.
 
-- **Permanently disable NSFW content** adds irreversible local enforcement and removes re-enable controls and prompts after confirmation. It includes the two fixes below as dependencies.
-- **Fix NSFW content flashing** reads each screen's own preference repository, including anonymous preferences. It works with the ordinary reversible NSFW setting and does not require permanent activation. Flagged posts receive Reddit's native hidden/blocked flags before the post view is built; flagged profiles are stopped before model publication. Unflagged content and NSFW viewing enabled retain native behavior.
-- **Fix NSFW warning navigation** makes the native warning's button and back gesture return to the preceding page, independently of permanent activation. The warning replaces the blocked page so dismissal cannot reveal it. The flash fix depends on this navigation for its early profile warning.
+- **Permanently disable NSFW content** adds irreversible local enforcement and removes re-enable controls and prompts after confirmation.
+- **Prevent NSFW content flashing** reads each screen's own preference repository, including anonymous preferences. It works with the ordinary reversible NSFW setting and does not require permanent activation. Flagged posts receive Reddit's native hidden/blocked flags before the post view is built; flagged profiles are stopped before model publication. Unflagged content and NSFW viewing enabled retain native behavior.
+- **Fix NSFW warning navigation** makes the native warning's button and back gesture return to the preceding page, independently of permanent activation. The warning replaces the blocked page so dismissal cannot reveal it.
 
 The user's stock-app comparison found that communities did not flash, but posts and profiles did, and warning dismissal returned Home. This is reported device evidence, not an automated baseline test. The additional hooks fix presentation timing; they do not promise that metadata or media requests never reach Reddit's servers. Comment permalinks use the post-detail screen; no new classification rule is applied to comments on otherwise safe posts.
 
@@ -32,7 +32,7 @@ Run `python tools/test-nsfw.py` with Python 3 and JDK 17+. It verifies failed pe
 
 Use Desktop `--validate` on the supplied 2026.40.0 and 2026.45.0 APKs, then run `CheckNativeNsfwPatch` on each rebuilt APK. The native-structure check verifies the modern Disabled policy, guards on the native setter, and absence of the retired filtering/overlay code. Test on the oldest recommended target with `-f` when establishing compatibility; a gated no-op is not a passing test.
 
-Also patch each version with only **Fix NSFW content flashing** (and its navigation dependency). Run `CheckNsfwFixes rebuilt.apk --normal-off` to verify that the native preference controls both guards without the permanent patch included. Run `CheckNsfwFixes rebuilt.apk` on the full combination too. These checks verify injected bytecode, not phone rendering or frame timing.
+Also patch each version with **Prevent NSFW content flashing** and **Fix NSFW warning navigation**, excluding permanent disabling. Run `CheckNsfwFixes rebuilt.apk --normal-off` to verify that the native preference controls both guards without the permanent patch included. Run `CheckNsfwFixes rebuilt.apk` on the full combination too. These checks verify injected bytecode, not phone rendering or frame timing.
 
 Releases through `2.3.0-nsfw.7` are not functional passes: phone testing found content visible behind a false not-found message in earlier releases, then a search prompt and broken native warning navigation in `.7`. The old response filter and custom view hook have been removed. This revision requires phone regression testing with ordinary viewing previously on/off, direct links, account switching and anonymous browsing. Patch original APKMs, not an already modified APK.
 
