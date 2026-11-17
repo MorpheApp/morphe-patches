@@ -1384,12 +1384,19 @@ val hideLayoutComponentsPatch = patch(
 
         // region hide live chat gift button
 
+        // Newer app targets can also inflate the button container from a view stub, or use
+        // a placeholder view, so the container returned is hidden instead of the view found by its id.
         JewelsButtonContainerFingerprint.matchAll().forEach { match ->
-            match.method.injectHideViewCall(
-                match.instructionMatches.last().index,
-                COMMENTS_FILTER,
-                "hideLiveChatGiftButton"
-            )
+            match.method.apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        "invoke-static { v$register }, $COMMENTS_FILTER->hideLiveChatGiftButton(Landroid/view/View;)V"
+                    )
+                }
+            }
         }
 
         // endregion
