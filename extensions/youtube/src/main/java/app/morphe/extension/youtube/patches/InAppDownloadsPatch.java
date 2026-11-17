@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.patches.ForceOriginalAudioPatch;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
@@ -341,7 +342,8 @@ public final class InAppDownloadsPatch {
             // such as the player config. The response of the other client is used instead,
             // and only the offline state token and player config are kept from the declined response.
             OfflinePlayerResponse.Builder builder = OfflinePlayerResponse.parseFrom(streams.streamingData()).toBuilder();
-            builder.setStreamingData(savableStreamingData(builder.getStreamingData()))
+            String selectedAudioTrackId = ForceOriginalAudioPatch.consumeSelectedAudioTrackId();
+            builder.setStreamingData(savableStreamingData(builder.getStreamingData(), selectedAudioTrackId))
                     .setOfflineState(playableOfflineState(original.getOfflineState().getToken()));
             if (builder.hasCaptions()) {
                 builder.setCaptions(srv3Captions(builder.getCaptions()));
@@ -652,12 +654,40 @@ public final class InAppDownloadsPatch {
     }
 
     static OfflineStreamingData savableStreamingData(OfflineStreamingData streamingData) {
+        return savableStreamingData(streamingData, null);
+    }
+
+    static OfflineStreamingData savableStreamingData(OfflineStreamingData streamingData,
+                                                       @Nullable String selectedAudioTrackId) {
         OfflineStreamingData.Builder builder = streamingData.toBuilder();
+
+        // Only apply track filtering when the selected ID is present in this response.
+        // If metadata is missing or stale, retain the existing download behaviour.
+        boolean selectedTrackAvailable = false;
+        if (selectedAudioTrackId != null && !selectedAudioTrackId.isEmpty()) {
+            for (OfflineStreamFormat format : builder.getAdaptiveFormatsList()) {
+                if (format.getMimeType().startsWith("audio/")
+                        && format.hasAudioTrack()
+                        && selectedAudioTrackId.equals(format.getAudioTrack().getId())) {
+                    selectedTrackAvailable = true;
+                    break;
+                }
+            }
+        }
+
         for (int i = 0, count = builder.getAdaptiveFormatsCount(); i < count; i++) {
             OfflineStreamFormat format = builder.getAdaptiveFormats(i);
             String mimeType = format.getMimeType();
-            if (!mimeType.isEmpty() && !mimeType.startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX)) {
+            boolean isAudio = mimeType.startsWith("audio/");
+            boolean selectedAudio = !selectedTrackAvailable || !isAudio
+                    || (format.hasAudioTrack()
+                    && selectedAudioTrackId.equals(format.getAudioTrack().getId()));
+
+            if (selectedAudio && !mimeType.isEmpty()
+                    && !mimeType.startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX)) {
                 builder.setAdaptiveFormats(i, format.toBuilder().setOfflineEligible(true));
+            } else if (selectedTrackAvailable && isAudio && !selectedAudio) {
+                builder.setAdaptiveFormats(i, format.toBuilder().setOfflineEligible(false));
             }
         }
         return builder.build();
