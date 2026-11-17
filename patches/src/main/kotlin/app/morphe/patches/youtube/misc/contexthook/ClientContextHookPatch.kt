@@ -216,6 +216,23 @@ fun addClientFormFactorHook(endPoint: Endpoint, descriptor: String) {
     endPoint.smaliInstructions += smaliInstructions
 }
 
+/**
+ * Like [addClientFormFactorHook], but also hands the browse ID of the page to the helper,
+ * so a hook can decide per page.
+ */
+fun addClientBrowseIdFormFactorHook(endPoint: Endpoint, browseIdField: FieldReference, descriptor: String) {
+    val clientFormFactorField = clientFormFactorFieldRef.get()!!
+    val smaliInstructions = """
+        iget v2, v1, $clientFormFactorField
+        iget-object v3, p0, $browseIdField
+        invoke-static { v2, v3 }, $descriptor
+        move-result v2
+        iput v2, v1, $clientFormFactorField
+        """
+
+    endPoint.smaliInstructions += smaliInstructions
+}
+
 fun addClientVersionHook(endPoint: Endpoint, descriptor: String) {
     val clientVersionField = clientVersionFieldRef.get()!!
     val smaliInstructions = """
