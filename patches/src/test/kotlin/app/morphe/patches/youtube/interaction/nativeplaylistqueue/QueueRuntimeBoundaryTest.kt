@@ -92,7 +92,7 @@ class QueueRuntimeBoundaryTest {
     fun `stock queue actions route to Native without opening the account queue dialog`() = withFixture("stockQueueRouting")
 
     @Test
-    fun `Shorts menus start a normal watch queue and show Last only with a queue`() = withFixture("shortsQueueMenu")
+    fun `Shorts menus offer both queue actions before playback starts`() = withFixture("shortsQueueMenu")
 
     @Test
     fun `Shorts queue menu leaves other video types providers and missing targets unchanged`() =
@@ -102,7 +102,7 @@ class QueueRuntimeBoundaryTest {
     fun `Morphe and Local stock actions keep their existing destinations`() = withFixture("otherQueueRouting")
 
     @Test
-    fun `single video Last rejects stale actions after its queue is cleared`() = withFixture("staleLastAction")
+    fun `single video Last creates a queue around the playing video`() = withFixture("lastCreatesQueue")
 
     @Test
     fun `stock Next preserves the playing playlist without reopening current playback`() =
@@ -831,7 +831,8 @@ class QueueRuntimeBoundaryTest {
                         require(AddToQueuePatch.replaceOnItemClick("QUEUE_PLAY_NEXT") && LoadVideoPatch.opens == opens
                                 && originals[0] == 0, "Contextual clicks must also consume missing-context queue actions");
                         require(AddToQueuePatch.flyoutButtonClickLogic("QUEUE_PLAY_LAST", "ZYXWVUTSRQP")
-                                && LoadVideoPatch.opens == opens, "Unavailable Last stays Native and never creates a queue");
+                                && LoadVideoPatch.opens == opens + 1,
+                            "Last can start a queue without invoking the Premium command");
                         Utils.failToast = true;
                         require(AddToQueuePatch.flyoutButtonClickLogic("QUEUE_PLAY_NEXT", ""),
                             "Even a Native feedback failure must not fall through to the Premium command");
@@ -872,14 +873,16 @@ class QueueRuntimeBoundaryTest {
                         require(!selectedSource.playlist(), "A recognized Short must not become an unresolved playlist");
                         app.morphe.extension.youtube.patches.utils.FlyoutUtils.nativePlaylistMenu = selectedSource.playlist();
                         var completed = (PlaylistQueueRenderer.MenuRenderer) QueueFlyoutActions.completeQueueMenu(original);
-                        require(completed.getItemsCount() == 2 && completed.getItems(0).getMenuConditionalServiceItemRenderer()
-                                .getIcon().getYtIconType() == IconOuterClass.YTIconType.QUEUE_PLAY_NEXT,
-                            "A Shorts card gets Next without requiring existing playback");
+                        require(completed.getItemsCount() == 3 && completed.getItems(0).getMenuConditionalServiceItemRenderer()
+                                .getIcon().getYtIconType() == IconOuterClass.YTIconType.QUEUE_PLAY_NEXT
+                                && completed.getItems(1).getMenuConditionalServiceItemRenderer()
+                                .getIcon().getYtIconType() == IconOuterClass.YTIconType.QUEUE_PLAY_LAST,
+                            "A Shorts card gets both actions without requiring existing playback");
                         field("queue").set(null, new PlaylistQueue("abcdefghijk", "Playing"));
                         completed = (PlaylistQueueRenderer.MenuRenderer) QueueFlyoutActions.completeQueueMenu(original);
                         require(completed.getItemsCount() == 3 && completed.getItems(1).getMenuConditionalServiceItemRenderer()
                                 .getIcon().getYtIconType() == IconOuterClass.YTIconType.QUEUE_PLAY_LAST,
-                            "An existing Native queue enables Last as well");
+                            "An existing Native queue retains both actions");
                         field("queue").set(null, null);
                         String selected = app.morphe.extension.youtube.patches.utils.FlyoutUtils.video;
                         require(QueueFlyoutActions.onStockQueueItemClick(IconOuterClass.YTIconType.QUEUE_PLAY_NEXT),
@@ -954,18 +957,20 @@ class QueueRuntimeBoundaryTest {
                         require(!AddToQueuePatch.flyoutButtonClickLogic("SAVE_TO_PLAYLIST", "ZYXWVUTSRQP"),
                             "Other actions must not be consumed");
                     }
-                    public static void staleLastAction() throws Exception {
-                        require(!NativePlaylistQueuePatch.canShowFlyoutLast(),
-                            "Last must not be shown without a Native queue");
+                    public static void lastCreatesQueue() throws Exception {
                         var controller = new Controller(new Playback());
                         installOwned(controller);
-                        require(NativePlaylistQueuePatch.canShowFlyoutLast(), "Last is available for an owned Native queue");
                         Runnable last = NativePlaylistQueuePatch.getFlyoutQueueAction("ZYXWVUTSRQP", true);
                         require(last != null, "Last available for an existing queue");
                         field("queue").set(null, null);
                         last.run();
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(queue != null && queue.entries().size() == 2
+                                && queue.currentEntry().videoId().equals("abcdefghijk")
+                                && queue.entries().get(1).videoId().equals("ZYXWVUTSRQP"),
+                            "Last creates a queue around the playing video and appends the selected video");
                         require(LoadVideoPatch.opens == 0 && field("pendingQueueStart").get(null) == null,
-                            "A stale Last callback must not start a new queue");
+                            "Starting a queue around the playing video must not reopen playback");
                     }
                     static Controller playlistController(boolean mix, boolean minimized) throws Exception {
                         var controller = retain(new Controller(new Playback()));
@@ -986,8 +991,6 @@ class QueueRuntimeBoundaryTest {
                         var controller = playlistController(mix, minimized);
                         String sourcePlaylist = controller.playlist;
                         var type = app.morphe.extension.youtube.shared.PlayerType.current;
-                        require(NativePlaylistQueuePatch.canShowFlyoutLast(),
-                            "A playing playlist offers conversion through both queue positions");
                         require(AddToQueuePatch.replaceOnItemClick("QUEUE_PLAY_NEXT"), "Native owns stock Next");
                         require(field("queue").get(null) == null, "Read the source without blocking the UI or replacing it early");
                         Utils.drainBackground(); Utils.drain();
@@ -1011,7 +1014,6 @@ class QueueRuntimeBoundaryTest {
                             "No delayed restart or rewrite of player type, position or shared response identity");
                         require(controller.patch_getPlaylistId().isEmpty() && field("originalModel").get(null) == null,
                             "The local panel has no account ID and Clear cannot restore the old account panel");
-                        require(NativePlaylistQueuePatch.canShowFlyoutLast(), "Last becomes available after conversion");
                         NativePlaylistQueuePatch.onControllerUpdated(controller);
                         require(field("queue").get(null) == queue, "Retained source response identity does not release ownership");
                         return controller;
@@ -1504,7 +1506,7 @@ class QueueRuntimeBoundaryTest {
                         require(NativePlaylistQueuePatch.canQueuePlaylist(), "An owned active queue accepts whole playlists");
                         NativePlaylistQueuePatch.onNativePlaylistScroll(controller.list);
                         var menu = QueueFlyoutActions.completeMenu(PlaylistQueueRenderer.MenuRenderer.getDefaultInstance(),
-                            true, "Next", "Last", "WL", false);
+                            "Next", "Last", "WL", false);
                         var next = QueueFlyoutActions.getPlaylistQueueAction(menu.getItems(0));
                         require(next != null, "The bound item retains its collection and Next action");
                         next.run();
@@ -2489,6 +2491,7 @@ class QueueRuntimeBoundaryTest {
                     public static void excludedQueueMenu() {
                         require(!AddToQueuePatch.isPatchIncluded(), "Patch must be excluded in this scenario");
                         Settings.QUEUE_TYPE.value = QueueType.NATIVE;
+                        require(!AddToQueuePatch.isNativeQueueEnabled(), "Excluded patch must not enable Native actions");
                         var row = new android.view.View() {
                             @Override public void setVisibility(int visibility) {
                                 throw new AssertionError("Excluded patch must not hide the stock queue row");

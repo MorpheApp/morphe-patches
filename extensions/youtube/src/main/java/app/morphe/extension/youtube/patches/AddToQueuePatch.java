@@ -138,8 +138,7 @@ public final class AddToQueuePatch {
     }
 
     public static void onListBound(ViewGroup itemList) {
-        final boolean nativeQueue = isNativeQueueEnabled();
-        if (!isCustomQueueEnabled() && !nativeQueue) {
+        if (!isCustomQueueEnabled() && !isNativeQueueEnabled()) {
             return;
         }
 
@@ -173,12 +172,6 @@ public final class AddToQueuePatch {
                 continue;
             }
 
-            if (nativeQueue && queueButtonOriginalNames.get(1).equals(buttonName)
-                    && FlyoutUtils.getNativeQueuePlaylistId().isEmpty() && !NativePlaylistQueuePatch.canShowFlyoutLast()) {
-                // The queue may have been cleared since the native model was prepared.
-                item.setVisibility(View.GONE);
-                continue;
-            }
             var badge = SECONDARY_CONTAINER_ID == 0 ? null : item.findViewById(SECONDARY_CONTAINER_ID);
             if (badge != null && badge.getVisibility() != View.GONE) {
                 Logger.printDebug(() -> "Hiding the menu item secondary icon");
