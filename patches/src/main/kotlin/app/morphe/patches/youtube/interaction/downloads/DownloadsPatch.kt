@@ -13,14 +13,11 @@
 
 package app.morphe.patches.youtube.interaction.downloads
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.classDefBy
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneMutable
@@ -39,6 +36,7 @@ import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethod
 import app.morphe.patches.shared.misc.fix.proto.protoDefaultInstanceFingerprint
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -54,7 +52,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.misc.spoof.dimensions.DeviceDimensionsModelConstructorFingerprint
+import app.morphe.patches.youtube.misc.spoof.dimensions.spoofDeviceDimensionsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
@@ -63,7 +61,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
@@ -73,7 +70,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private val downloadsResourcePatch = patch {
     dependsOn(
         legacyPlayerControlsPatch,
-        settingsPatch
+        settingsPatch,
+        // The download settings note points to its setting.
+        spoofDeviceDimensionsPatch
     )
 
     execute {
@@ -86,6 +85,10 @@ private val downloadsResourcePatch = patch {
                     SwitchPreference("morphe_shorts_download_flyout_button", summary = true),
                     SwitchPreference("morphe_feed_download_flyout_button", summary = true),
                     SwitchPreference("morphe_download_force_4k", summary = true),
+                    NonInteractivePreference(
+                        "morphe_download_quality_about",
+                        tag = "app.morphe.extension.youtube.settings.preference.DownloadQualityAboutPreference"
+                    ),
                     exportDownloadFolderPreference(),
                     SwitchPreference("morphe_external_downloader_overlay_button", summary = true),
                     TextPreference(
@@ -126,10 +129,7 @@ internal const val EXTENSION_IN_APP_DOWNLOADS_CLASS = "Lapp/morphe/extension/you
 private const val EXTENSION_STREAM_SELECTOR_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch$DownloadStreamSelector;"
 
-private const val EXTENSION_OFFLINE_STREAM_SELECTOR_INTERFACE =
-    $$"Lapp/morphe/extension/youtube/patches/InAppDownloadsPatch$OfflineStreamSelector;"
-
-private const val EXTENSION_SPOOF_CLASS ="Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
+private const val EXTENSION_SPOOF_CLASS = "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
 private const val EXTENSION_SHORTS_DOWNLOAD_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/ShortsDownloadButton;"
@@ -528,7 +528,7 @@ val downloadsPatch = patch(
         DownloadTransferStreamsFingerprint.let {
             // The method has no free registers. Its parameters stay in the p registers.
             it.method.cloneParameters().apply {
-                val pairIndex = it.instructionMatches[2].index + numberOfParameterRegistersLogical
+                val pairIndex = it.instructionMatches[1].index + numberOfParameterRegistersLogical
                 val pairInstruction = getInstruction(pairIndex)
                 val videoStreamRegister = pairInstruction.registersUsed[1]
                 val audioStreamRegister = pairInstruction.registersUsed[2]
@@ -551,43 +551,8 @@ val downloadsPatch = patch(
                         check-cast v$audioStreamRegister, $streamType
                     """
                 )
-
-                // Pick the streams through the extension, which raises the video decoder sizes
-                // the stream selection checks while it picks them.
-                val selectorIndex = it.instructionMatches.first().index + numberOfParameterRegistersLogical
-                val selectorInstruction = getInstruction(selectorIndex)
-                val selectorMethod = selectorInstruction.getReference<MethodReference>()!!
-                val resultRegister = getInstruction<OneRegisterInstruction>(selectorIndex + 1).registerA
-
-                // The selector is an interface, which gets a default method that calls the selection.
-                mutableClassDefBy(selectorMethod.definingClass).addPatchInterface(
-                    EXTENSION_OFFLINE_STREAM_SELECTOR_INTERFACE,
-                    "patch_selectStreams",
-                    selectorMethod
-                )
-
-                replaceInstruction(
-                    selectorIndex,
-                    "invoke-static { ${selectorInstruction.registersUsed.joinToString { register -> "v$register" }} }, " +
-                        "$EXTENSION_IN_APP_DOWNLOADS_CLASS->selectDownloadStreams(${EXTENSION_OFFLINE_STREAM_SELECTOR_INTERFACE}Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
-                )
-                addInstruction(selectorIndex + 2, "check-cast v$resultRegister, ${selectorMethod.returnType}")
             }
         }
-
-        // Keep the streams up to 1080p in the stream selection of a download,
-        // even if the hardware video decoder lists a smaller size.
-        // Spoof device dimensions hooks the same constructor at the same index,
-        // so the hooks stay whole in either patch order.
-        DeviceDimensionsModelConstructorFingerprint.method.addInstructions(
-            1, // Add after super call.
-            """
-                invoke-static { p2 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->getVideoDecoderMaxSize(I)I
-                move-result p2
-                invoke-static { p4 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->getVideoDecoderMaxSize(I)I
-                move-result p4
-            """
-        )
 
         // Commands run by the extension have no interaction logger, which saving a video
         // can use without checking it is set. The logger interface has a logger that logs nothing.
