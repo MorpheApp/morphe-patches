@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.IntPredicate;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
@@ -123,18 +124,17 @@ public final class LocalLyricsFetcher {
         Uri base = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String[] projection = {
                 MediaStore.Audio.Media._ID,
+                MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.ARTIST,
                 MediaStore.Audio.Media.DURATION
         };
 
-        // The raw title widens the net when the title was normalized; the artist is scored per row.
+        // The raw title widens the query, but each row must still identify the playing track.
         List<String> titleCandidates = new ArrayList<>(2);
         titleCandidates.add(title);
         if (rawTitle != null && !rawTitle.equals(title)) {
             titleCandidates.add(rawTitle);
         }
-
-        String wantArtist = normalize(primaryArtist);
 
         Uri best = null;
         long bestScore = Long.MAX_VALUE;
@@ -156,6 +156,7 @@ public final class LocalLyricsFetcher {
                 }
                 try {
                     final int idCol = cursor.getColumnIndex(MediaStore.Audio.Media._ID);
+                    final int titleCol = cursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
                     final int artistCol = cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
                     final int durCol = cursor.getColumnIndex(MediaStore.Audio.Media.DURATION);
                     if (idCol < 0) {
@@ -166,20 +167,9 @@ public final class LocalLyricsFetcher {
                         String storedArtist = artistCol >= 0 ? cursor.getString(artistCol) : null;
                         final long durMs = (durCol >= 0) ? cursor.getLong(durCol) : 0;
 
-                        long score = 0;
-                        String normStored = normalize(storedArtist);
-                        if (!wantArtist.isEmpty()) {
-                            if (normStored.isEmpty()) {
-                                score += 1_000_000L;
-                            } else if (normStored.contains(wantArtist) || wantArtist.contains(normStored)) {
-                                score += 0;
-                            } else {
-                                score += 500_000L;
-                            }
-                        }
-                        if (durationSeconds > 0 && durMs > 0) {
-                            score += Math.abs(durMs - (long) durationSeconds * 1000L);
-                        }
+                        String storedTitle = titleCol >= 0 ? cursor.getString(titleCol) : null;
+                        final long score = scoreMediaStoreCandidate(t, primaryArtist, storedTitle,
+                                storedArtist, durationSeconds, durMs, rawArtist);
                         if (score < bestScore) {
                             bestScore = score;
                             best = ContentUris.withAppendedId(base, id);
@@ -194,6 +184,26 @@ public final class LocalLyricsFetcher {
             return null;
         }
         return best;
+    }
+
+    static long scoreMediaStoreCandidate(String title, @Nullable String artist,
+                                        @Nullable String storedTitle, @Nullable String storedArtist,
+                                        int durationSeconds, long durationMs, @Nullable String rawArtist) {
+        String wantTitle = normalize(title);
+        String wantArtist = normalize(artist);
+        String fullRawArtist = normalize(rawArtist);
+        String candidateArtist = normalize(storedArtist);
+        // A best-ranked row is not necessarily the playing track. Substring title queries can
+        // find a different song, and duration must never compensate for an identity mismatch.
+        // The caller cleans collaborations to their primary artist; only an exact full raw
+        // credit match can also accept a stored collaboration, never a shared primary artist.
+        if (wantTitle.isEmpty() || candidateArtist.isEmpty()
+                || !wantTitle.equals(normalize(storedTitle))
+                || (!wantArtist.equals(candidateArtist) && !fullRawArtist.equals(candidateArtist))) {
+            return Long.MAX_VALUE;
+        }
+        return durationSeconds > 0 && durationMs > 0
+                ? Math.abs(durationMs - (long) durationSeconds * 1000L) : 0;
     }
 
     @Nullable
@@ -1134,7 +1144,8 @@ public final class LocalLyricsFetcher {
         if (s == null) {
             return "";
         }
-        return CharactersConverter.normalize(s);
+        // ICU case conversion is unavailable on supported API 26-28 devices.
+        return CharactersConverter.normalize(s).toLowerCase(Locale.ROOT);
     }
 
     /** Escapes SQLite LIKE wildcards so the pattern matches the literal string. */
