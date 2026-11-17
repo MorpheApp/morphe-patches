@@ -1,6 +1,5 @@
 package app.morphe.extension.reddit.patches;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.Preference;
@@ -48,24 +47,6 @@ public final class PermanentNsfwPatch {
 
     public static int disabledMessageResource(int original) {
         return isEnabled() ? ResourceUtils.getStringIdentifier("morphe_permanent_nsfw_blocked_message") : original;
-    }
-
-    public static int goBackLabelResource(int original) {
-        return isEnabled() ? ResourceUtils.getStringIdentifier("action_go_back") : original;
-    }
-
-    public static void showProfileWarning(Activity activity) {
-        Utils.runOnMainThread(() -> {
-            try {
-                if (!activity.isFinishing() && !activity.isDestroyed()) openProfileWarning(activity);
-            } catch (Exception ex) {
-                Logger.printException(() -> "showProfileWarning failure", ex);
-            }
-        });
-    }
-
-    private static void openProfileWarning(Activity activity) {
-        // Replaced with Reddit's native warning screen and navigation call.
     }
 
     /** The anonymous profile drawer uses XML switches instead of Compose settings. */

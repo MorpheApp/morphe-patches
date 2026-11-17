@@ -99,17 +99,6 @@ public final class CheckNativeNsfwPatch {
             require(calls(method(classes.get(owner), "invokeSuspend"), EXTENSION, "visibleRecentSubreddits"),
                     "A recently visited view still shows old flagged communities: " + owner);
         }
-        require(calls(method(classes.get(
-                        "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel$1;"),
-                        "access$invokeSuspend$handleEvent"), EXTENSION, "isEnabled"),
-                "Declining the native warning does not use the sheet's back callback");
-        checkWarningReceiver(method(classes.get(
-                "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel$1;"),
-                "access$invokeSuspend$handleEvent"));
-        require(calls(method(classes.get(
-                        "Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;"),
-                        modernApi ? "V2" : "R2"), EXTENSION, "isEnabled"),
-                "Android back is still disabled on the native warning sheet");
         ClassDef searchBanner = null;
         for (ClassDef candidate : classes.values()) {
             Method toString = null;
@@ -123,7 +112,7 @@ public final class CheckNativeNsfwPatch {
         }
         require(searchBanner != null && calls(method(searchBanner, "<init>"), EXTENSION, "isEnabled"),
                 "Search banners can still prompt to adjust NSFW settings");
-        boolean guardedDropdown = false, guardedAnonymous = false, hiddenDrawer = false, guardedProfile = false;
+        boolean guardedDropdown = false, guardedAnonymous = false, hiddenDrawer = false;
         for (ClassDef cls : classes.values()) for (Method candidate : cls.getMethods()) {
             if (cls.getType().equals("Lcom/reddit/search/combined/ui/CombinedSearchResultsViewModel;")
                     && calls(candidate, EXTENSION, "isEnabled")) guardedDropdown = true;
@@ -132,21 +121,13 @@ public final class CheckNativeNsfwPatch {
                     && calls(candidate, EXTENSION, "isEnabled")) guardedAnonymous = true;
             if (cls.getType().equals("Lcom/reddit/incognito/screens/leave/LeaveIncognitoModeScreen;")
                     && calls(candidate, EXTENSION, "hideAnonymousControls")) hiddenDrawer = true;
-            if (calls(candidate, EXTENSION, "showProfileWarning")) {
-                checkProfilePublication(candidate);
-                guardedProfile = true;
-            }
         }
         require(guardedDropdown, "The native SafeSearch dropdown is still shown");
         require(guardedAnonymous, "Saved anonymous viewing can bypass the account-model guard");
         require(hiddenDrawer, "Anonymous Profile drawer still exposes viewing switches");
-        require(guardedProfile, "Profile data can reach the UI before the native warning");
         Method drawer = method(classes.get(EXTENSION), "hideAnonymousControls");
         require(containsString(drawer, "title_settings") && containsString(drawer, "divider"),
                 "Anonymous drawer retains an empty Settings section");
-        require(calls(method(classes.get(EXTENSION), "openProfileWarning"),
-                "Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;", "<init>"),
-                "Early profile block does not use Reddit's native warning");
         for (String type : classes.keySet()) {
             require(!type.endsWith("/NsfwCommunityGate;") && !type.endsWith("/NsfwJsonFilter;")
                     && !type.endsWith("/RedditNsfwInterceptor;") && !type.endsWith("/BlockedNsfwHosts;"),
@@ -162,55 +143,6 @@ public final class CheckNativeNsfwPatch {
         if (cls == null) throw new IllegalStateException("Missing class for " + name);
         for (Method method : cls.getMethods()) if (method.getName().equals(name)) return method;
         throw new IllegalStateException("Missing method " + name);
-    }
-
-    private static void checkProfilePublication(Method method) {
-        var instructions = new java.util.ArrayList<com.android.tools.smali.dexlib2.iface.instruction.Instruction>();
-        method.getImplementation().getInstructions().forEach(instructions::add);
-        require(calls(method, EXTENSION, "isEnabled"), "Profile guard must respect activation");
-        for (int i = 0; i < instructions.size(); i++) {
-            if (!(instructions.get(i) instanceof ReferenceInstruction reference)
-                    || !(reference.getReference() instanceof MethodReference call)
-                    || !call.getName().equals("showProfileWarning")) continue;
-            require(instructions.get(i + 2).getOpcode() == com.android.tools.smali.dexlib2.Opcode.RETURN_OBJECT,
-                    "Blocked profile must return before publishing its model");
-            // The untouched native publication must remain available to ordinary profiles.
-            var publish = instructions.get(i + 4);
-            require(publish instanceof ReferenceInstruction nativeReference
-                            && nativeReference.getReference() instanceof MethodReference nativeCall
-                            && nativeCall.getParameterTypes().toString().equals("[Ljava/lang/Object;]")
-                            && nativeCall.getReturnType().equals("V"),
-                    "Profile guard is not immediately before native model publication");
-            return;
-        }
-        throw new IllegalStateException("Missing early profile warning");
-    }
-
-    // Intercept before either session arm can clear history or overwrite the receiver.
-    private static void checkWarningReceiver(Method method) {
-        var instructions = new java.util.ArrayList<com.android.tools.smali.dexlib2.iface.instruction.Instruction>();
-        method.getImplementation().getInstructions().forEach(instructions::add);
-        for (int i = 0; i < instructions.size(); i++) {
-            var instruction = instructions.get(i);
-            if (!(instruction instanceof ReferenceInstruction reference)
-                    || !(reference.getReference() instanceof FieldReference field)
-                    || !field.getDefiningClass().equals("Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel;")
-                    || !field.getType().equals("Lkotlin/jvm/functions/Function0;")) continue;
-            if (i == 0 || instructions.get(i - 1).getOpcode() != com.android.tools.smali.dexlib2.Opcode.IF_EQZ) continue;
-            var branch = (com.android.tools.smali.dexlib2.iface.instruction.OffsetInstruction) instructions.get(i - 1);
-            int offset = 0, target = i - 1;
-            while (offset < branch.getCodeOffset()) offset += instructions.get(target++).getCodeUnits();
-            while (instructions.get(target).getOpcode() == com.android.tools.smali.dexlib2.Opcode.NOP) target++;
-            var nativeRead = instructions.get(target);
-            require(nativeRead instanceof ReferenceInstruction nativeReference
-                    && nativeReference.getReference() instanceof MethodReference call
-                    && call.getParameterTypes().toString().equals("[Lcom/reddit/session/mode/common/SessionMode;]")
-                    && call.getReturnType().equals("Z")
-                    && instructions.get(i + 3).getOpcode() == com.android.tools.smali.dexlib2.Opcode.RETURN_OBJECT,
-                    "Warning interception must return before the signed-in Home redirect and receiver overwrite");
-            return;
-        }
-        throw new IllegalStateException("Missing guarded warning callback field read");
     }
 
     private static boolean calls(Method method, String type, String name) {

@@ -2,39 +2,28 @@ package app.morphe.patches.reddit.nsfw
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.literal
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.util.findFreeRegister
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import app.morphe.patcher.util.smali.ExternalLabel
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.patch
-import app.morphe.patcher.resourceLiteral
-import app.morphe.patcher.resource.ResourceType
-import app.morphe.patcher.util.numberOfParameterRegistersLogical
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.newInstance
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patcher.util.cloneParameters
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.p0Register
+import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
-import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION = "Lapp/morphe/extension/reddit/patches/PermanentNsfwPatch;"
@@ -47,12 +36,8 @@ val permanentNsfwPatch = patch(
         "and prevents re-enabling native NSFW viewing and search.",
     default = false
 ) {
-    compatibleWith(COMPATIBILITY_REDDIT.excluding(
-        *COMPATIBILITY_REDDIT.targets.mapNotNull {
-            it.version.takeUnless { version -> version in setOf("2026.40.0", "2026.45.0") }
-        }.toTypedArray()
-    ))
-    dependsOn(settingsPatch, versionCheckPatch)
+    compatibleWith(nsfwCompatibility)
+    dependsOn(settingsPatch, versionCheckPatch, nsfwContentPatch)
 
     execute {
         Fingerprint(
@@ -127,12 +112,7 @@ val permanentNsfwPatch = patch(
         }
 
         // Unlike the account model, this getter also reads saved anonymous preferences.
-        Fingerprint(
-            parameters = listOf(), returnType = "Z",
-            filters = listOf(string("nsfw_over18_enabled"), methodCall(
-                definingClass = "Lcom/reddit/domain/model/AccountPreferences;", name = "getOver18"
-            ))
-        ).method.apply {
+        NativeNsfwViewingFingerprint.method.apply {
             val register = findFreeRegister(0)
             addInstructionsWithLabels(0, """
                 invoke-static {}, $EXTENSION->isEnabled()Z
@@ -236,8 +216,7 @@ val permanentNsfwPatch = patch(
             "nsfw_description" to "disabledMessageResource",
             "nsfw_dialog_message" to "disabledMessageResource",
             "nsfw_dialog_over18_submessage" to "disabledMessageResource",
-            "nsfw_dialog_under18_submessage" to "disabledMessageResource",
-            "nsfw_no_thanks" to "goBackLabelResource"
+            "nsfw_dialog_under18_submessage" to "disabledMessageResource"
         ).forEach { (resource, hook) ->
             Fingerprint(filters = listOf(resourceLiteral(ResourceType.STRING, resource)))
                 .matchAll(1..4).forEach { match ->
@@ -289,170 +268,6 @@ val permanentNsfwPatch = patch(
                     move-result v$register
                     if-nez v$register, :skipOptIn
                 """, ExternalLabel("skipOptIn", getInstruction(index + 1)))
-            }
-        }
-
-        // The sheet supplies its own navigateBack callback. Android Activity back
-        // does not pop this screen, so use that callback for the decline action.
-        // Replace the blocked page with the native sheet, preserving the page before
-        // it. A plain sheet pop otherwise exposes the blocked profile underneath.
-        val replaceScreen = Fingerprint(
-            parameters = listOf("Landroid/content/Context;", "Lcom/reddit/screen/BaseScreen;"),
-            returnType = "V",
-            filters = listOf(methodCall(
-                parameters = listOf("Lcom/reddit/screen/BaseScreen;", "Lcom/reddit/screen/BaseScreen;"),
-                returnType = "V"
-            ))
-        ).method
-        Fingerprint(
-            returnType = "V",
-            filters = listOf(
-                newInstance("Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;"),
-                methodCall(parameters = listOf("Landroid/content/Context;", "Lcom/reddit/screen/BaseScreen;", "L"), returnType = "V")
-            )
-        ).apply {
-            method.apply {
-                val index = instructionMatches.last().index
-                val call = getInstruction<FiveRegisterInstruction>(index)
-                val register = findFreeRegister(index)
-                addInstructionsWithLabels(index, """
-                    invoke-static {}, $EXTENSION->isEnabled()Z
-                    move-result v$register
-                    if-eqz v$register, :nativeNavigation
-                    invoke-static { v${call.registerC}, v${call.registerD} }, $replaceScreen
-                    return-void
-                    :nativeNavigation
-                    nop
-                """)
-            }
-        }
-
-        val homeNavigation = Fingerprint(
-            returnType = "V",
-            filters = listOf(
-                fieldAccess(type = "Lkotlin/jvm/functions/Function0;", opcode = Opcode.IGET_OBJECT),
-                methodCall(smali = "Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;"),
-                newInstance("Landroid/content/Intent;"),
-                string("com.reddit.frontpage.main_toast_message")
-            )
-        )
-        val navigateHome = homeNavigation.method
-
-        // Stop flagged profiles before publishing their model to the header/feed.
-        // The later native warning is too late when content is already cached.
-        val profileViewModel = "Lcom/reddit/profile/viewmodel/ProfileDetailsViewModel;"
-        val profileNsfw = Fingerprint(filters = listOf(
-            string(", isProfileNsfw="),
-            fieldAccess(type = "Z", opcode = Opcode.IGET_BOOLEAN, location = MatchAfterWithin(6))
-        )).instructionMatches.last().getFieldAccessed()
-        val contextCallback = homeNavigation.instructionMatches.first().getFieldAccessed()
-        val profileContext = Fingerprint(definingClass = profileViewModel, name = "<init>")
-            .originalClassDef.fields.single { it.type == contextCallback.definingClass }
-        Fingerprint(filters = listOf(
-            newInstance("Lcom/reddit/profile/viewmodel/ProfileDetailsViewModel\$loadProfileDetails\$1\$1\$emit\$1;"),
-            fieldAccess(definingClass = profileViewModel, opcode = Opcode.IGET_OBJECT),
-            methodCall(parameters = listOf("Ljava/lang/Object;"), returnType = "V", location = MatchAfterImmediately()),
-            fieldAccess(definingClass = "Lkotlin/Unit;", opcode = Opcode.SGET_OBJECT)
-        )).apply {
-            method.apply {
-                val index = instructionMatches[2].index
-                val profile = getInstruction<FiveRegisterInstruction>(index).registerD
-                val owner = getInstruction<TwoRegisterInstruction>(instructionMatches[1].index).registerB
-                val unit = instructionMatches.last().getFieldAccessed()
-                val register = findFreeRegister(index)
-                addInstructionsWithLabels(index, """
-                    iget-boolean v$register, v$profile, $profileNsfw
-                    if-eqz v$register, :publishProfile
-                    invoke-static {}, $EXTENSION->isEnabled()Z
-                    move-result v$register
-                    if-eqz v$register, :publishProfile
-                    iget-object v$register, v$owner, $profileContext
-                    iget-object v$register, v$register, $contextCallback
-                    invoke-interface { v$register }, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
-                    move-result-object v$register
-                    check-cast v$register, Landroid/app/Activity;
-                    invoke-static { v$register }, $EXTENSION->showProfileWarning(Landroid/app/Activity;)V
-                    sget-object v$register, $unit
-                    return-object v$register
-                    :publishProfile
-                    nop
-                """)
-            }
-        }
-        val openWarning = Fingerprint(definingClass = EXTENSION, name = "openProfileWarning")
-        val originalWarning = openWarning.method
-        val nativeWarning = ImmutableMethod(
-            EXTENSION, originalWarning.name, originalWarning.parameters, originalWarning.returnType,
-            originalWarning.accessFlags, originalWarning.annotations, originalWarning.hiddenApiRestrictions,
-            MutableMethodImplementation(5)
-        ).toMutable().apply {
-            addInstructions(0, """
-                new-instance v0, Landroid/os/Bundle;
-                invoke-direct { v0 }, Landroid/os/Bundle;-><init>()V
-                const-string v1, "tag_age_target_screen_page_type"
-                const-string v2, "profile"
-                invoke-virtual { v0, v1, v2 }, Landroid/os/BaseBundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
-                new-instance v1, Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;
-                invoke-direct { v1, v0 }, Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;-><init>(Landroid/os/Bundle;)V
-                invoke-static { p0, v1 }, $replaceScreen
-                return-void
-            """)
-        }
-        openWarning.classDef.methods.remove(originalWarning)
-        openWarning.classDef.methods.add(nativeWarning)
-        val viewModel = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel;"
-        val warningHandler = Fingerprint(
-            definingClass = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel\$1;",
-            name = "access\$invokeSuspend\$handleEvent", returnType = "Ljava/lang/Object;",
-            filters = listOf(
-                methodCall(parameters = listOf("Lcom/reddit/session/mode/common/SessionMode;"), returnType = "Z"),
-                methodCall(smali = navigateHome.toString()),
-                fieldAccess(definingClass = "Lkotlin/Unit;", opcode = Opcode.SGET_OBJECT)
-            )
-        )
-        warningHandler.method.apply {
-            val index = warningHandler.instructionMatches.first().index
-            val unit = warningHandler.instructionMatches.last().getFieldAccessed()
-            // Intercept before the session split: the signed-in arm clears the
-            // navigation stack and replaces it with Home before the other arm runs.
-            val navigateBackField = Fingerprint(definingClass = viewModel, name = "<init>").method
-                .implementation!!.instructions.asSequence()
-                .mapNotNull { (it as? ReferenceInstruction)?.reference as? FieldReference }
-                .first { it.definingClass == viewModel && it.type == "Lkotlin/jvm/functions/Function0;" }
-            val register = findFreeRegister(index)
-            addInstructionsWithLabels(index, """
-                invoke-static {}, $EXTENSION->isEnabled()Z
-                move-result v$register
-                if-eqz v$register, :nativeDismiss
-                iget-object v$register, p0, $navigateBackField
-                invoke-interface { v$register }, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
-                sget-object v$register, $unit
-                return-object v$register
-                :nativeDismiss
-                nop
-            """)
-        }
-
-        // The same sheet installs a disabled no-op BackHandler. While permanent
-        // disabling is active, wire the gesture to its native navigateBack callback.
-        Fingerprint(
-            definingClass = "Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;",
-            filters = listOf(methodCall(definingClass = "Landroidx/activity/compose/b;", name = "a"))
-        ).apply {
-            method.apply {
-                val index = instructionMatches.single().index
-                val call = getInstruction<FiveRegisterInstruction>(index)
-                val callback = call.registerF
-                val enabled = call.registerG
-                addInstructionsWithLabels(index, """
-                    invoke-static {}, $EXTENSION->isEnabled()Z
-                    move-result v$enabled
-                    if-eqz v$enabled, :nativeBackHandler
-                    new-instance v$callback, Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet${'$'}onInitialize${'$'}1${'$'}1;
-                    invoke-direct { v$callback, p0 }, Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet${'$'}onInitialize${'$'}1${'$'}1;-><init>(Ljava/lang/Object;)V
-                    :nativeBackHandler
-                    nop
-                """)
             }
         }
 
