@@ -311,6 +311,7 @@ public class Settings extends SharedYouTubeSettings {
     // Miniplayer
     public static final BooleanSetting ENABLE_FORCED_MINIPLAYER = new BooleanSetting("morphe_music_enable_forced_miniplayer", FALSE, true);
     public static final BooleanSetting ENABLE_SWIPE_TO_DISMISS_MINIPLAYER = new BooleanSetting("morphe_music_enable_swipe_to_dismiss_miniplayer", FALSE, true);
+    public static final BooleanSetting MINIPLAYER_DISMISSED = new BooleanSetting("morphe_music_miniplayer_dismissed", FALSE, false, false, null, parent(ENABLE_SWIPE_TO_DISMISS_MINIPLAYER));
     public static final BooleanSetting MINIPLAYER_NEXT_BUTTON = new BooleanSetting("morphe_music_miniplayer_next_button", TRUE, true);
     public static final BooleanSetting MINIPLAYER_PREVIOUS_BUTTON = new BooleanSetting("morphe_music_miniplayer_previous_button", TRUE, true);
     public static final BooleanSetting MINIPLAYER_GLASS = new BooleanSetting("morphe_music_miniplayer_glass", FALSE, true);
