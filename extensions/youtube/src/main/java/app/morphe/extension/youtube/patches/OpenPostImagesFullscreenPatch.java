@@ -9,7 +9,6 @@ package app.morphe.extension.youtube.patches;
 
 import androidx.annotation.Nullable;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -24,7 +23,6 @@ public final class OpenPostImagesFullscreenPatch {
      * Browse id of the posts feed that the images of a post open when tapped.
      */
     private static final String POSTS_FEED_BROWSE_ID = "FEpost_home";
-    private static final byte[] POSTS_FEED_BROWSE_ID_BYTES = POSTS_FEED_BROWSE_ID.getBytes(StandardCharsets.US_ASCII);
 
     /**
      * Field numbers of the command an image of a post runs when tapped:
@@ -52,7 +50,7 @@ public final class OpenPostImagesFullscreenPatch {
     @Nullable
     public static byte[] onElementLoaded(@Nullable byte[] bytes) {
         if (!Settings.OPEN_POST_IMAGES_FULLSCREEN.get() || bytes == null
-                || !FeedVideoCardsPatch.contains(bytes, POSTS_FEED_BROWSE_ID_BYTES)) {
+                || !FeedVideoCardsPatch.getElementText(bytes).contains(POSTS_FEED_BROWSE_ID)) {
             return bytes;
         }
 
@@ -67,14 +65,18 @@ public final class OpenPostImagesFullscreenPatch {
                 for (ProtoNode command : ProtoNode.findMessages(root, path)) {
                     ProtoNode browseId = ProtoNode.field(ProtoNode.message(command.children,
                             INNERTUBE_COMMAND_FIELD, BROWSE_ENDPOINT_FIELD), BROWSE_ID_FIELD);
-                    if (browseId != null && POSTS_FEED_BROWSE_ID.equals(browseId.getText())) {
+                    if (browseId != null && POSTS_FEED_BROWSE_ID.equals(browseId.decodeText())) {
                         command.remove();
                         removed = true;
                     }
                 }
             }
+            if (!removed) {
+                return bytes;
+            }
 
-            return removed ? ProtoNode.write(root) : bytes;
+            Logger.printDebug(() -> "Removed the posts feed command of post images");
+            return ProtoNode.write(root);
         } catch (Exception ex) {
             Logger.printException(() -> "onElementLoaded failure", ex);
             return bytes;
