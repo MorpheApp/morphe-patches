@@ -34,10 +34,10 @@ val permanentNsfwPatch = patch(
     name = "Permanently disable NSFW content",
     description = "Adds an irreversible option to disable NSFW content, removes adult viewing controls after activation, " +
         "and prevents re-enabling native NSFW viewing and search.",
-    default = false
+    default = true
 ) {
     compatibleWith(nsfwCompatibility)
-    dependsOn(settingsPatch, versionCheckPatch, nsfwContentPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
         Fingerprint(
@@ -216,7 +216,8 @@ val permanentNsfwPatch = patch(
             "nsfw_description" to "disabledMessageResource",
             "nsfw_dialog_message" to "disabledMessageResource",
             "nsfw_dialog_over18_submessage" to "disabledMessageResource",
-            "nsfw_dialog_under18_submessage" to "disabledMessageResource"
+            "nsfw_dialog_under18_submessage" to "disabledMessageResource",
+            "nsfw_no_thanks" to "goBackLabelResource"
         ).forEach { (resource, hook) ->
             Fingerprint(filters = listOf(resourceLiteral(ResourceType.STRING, resource)))
                 .matchAll(1..4).forEach { match ->

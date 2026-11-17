@@ -10,7 +10,7 @@ import java.util.*;
 
 /** Checks the native gates and navigation independently of permanent activation. */
 public final class CheckNsfwFixes {
-    private static final String NAV = "Lapp/morphe/extension/reddit/patches/NsfwNavigationPatch;";
+    private static final String CONTENT = "Lapp/morphe/extension/reddit/patches/NsfwContentPatch;";
     private static final String PERMANENT = "Lapp/morphe/extension/reddit/patches/PermanentNsfwPatch;";
 
     public static void main(String[] args) throws Exception {
@@ -25,7 +25,7 @@ public final class CheckNsfwFixes {
                 if (instruction instanceof ReferenceInstruction ref && ref.getReference() instanceof StringReference str
                         && str.getString().equals("nsfw_over18_enabled") && method.getReturnType().equals("Z")) viewing = method;
             }
-            if (calls(method, NAV, "showProfileWarning")) profile = method;
+            if (calls(method, CONTENT, "showProfileWarning")) profile = method;
             if (method.getName().equals("patch_shouldHideNsfw")) post = method;
             if (calls(method, cls.getType(), "patch_shouldHideNsfw")) rendering = method;
             if (calls(method, "Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet$onInitialize$1$1;", "<init>")) back = method;
@@ -37,7 +37,7 @@ public final class CheckNsfwFixes {
         }
         require(calls(post, "Lcom/reddit/domain/model/Link;", "getOver18"), "Post guard must preserve unflagged posts");
         var profileCode = instructions(profile);
-        int warning = callIndex(profileCode, NAV, "showProfileWarning");
+        int warning = callIndex(profileCode, CONTENT, "showProfileWarning");
         require(profileCode.get(warning + 2).getOpcode() == Opcode.RETURN_OBJECT,
                 "Flagged profile still falls through to model publication");
         var renderCode = instructions(rendering);

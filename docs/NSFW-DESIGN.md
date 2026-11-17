@@ -1,12 +1,18 @@
-# Permanently disable native NSFW viewing
+# Reddit NSFW controls and native UI fixes
 
-This opt-in patch enforces Reddit's existing NSFW-off policy and removes the controls that can reverse it. It adds no content classifier, network interceptor, JSON rewriting, custom blocked screen or runtime dependency.
+Three selectable patches address separate behaviors. None adds a content classifier, network interceptor, JSON rewriting, custom blocked screen or runtime dependency.
+
+- **Permanently disable NSFW content** adds irreversible local enforcement and removes re-enable controls and prompts after confirmation. It includes the two fixes below as dependencies.
+- **Fix NSFW content flashing** reads each screen's own preference repository, including anonymous preferences. It works with the ordinary reversible NSFW setting and does not require permanent activation. Flagged posts receive Reddit's native hidden/blocked flags before the post view is built; flagged profiles are stopped before model publication. Unflagged content and NSFW viewing enabled retain native behavior.
+- **Fix NSFW warning navigation** makes the native warning's button and back gesture return to the preceding page, independently of permanent activation. The warning replaces the blocked page so dismissal cannot reveal it. The flash fix depends on this navigation for its early profile warning.
+
+The user's stock-app comparison found that communities did not flash, but posts and profiles did, and warning dismissal returned Home. This is reported device evidence, not an automated baseline test. The additional hooks fix presentation timing; they do not promise that metadata or media requests never reach Reddit's servers. Comment permalinks use the post-detail screen; no new classification rule is applied to comments on otherwise safe posts.
 
 After confirmation, a private installation-wide preference applies to signed-in accounts, logged-out use and anonymous browsing. It has no disable operation and stays outside ordinary settings import/export. Clearing app data resets it, as in historical Continuum. Its original private preference filename is retained so test-build upgrades do not reset activation.
 
 ## Native hooks
 
-- Flagged profile models are intercepted before the native flow publishes them to the header and feed, including cached results. The existing NSFW warning replaces the profile on the main thread. Normal profiles and inactive installations keep the original publication path.
+- Flagged profile models are intercepted before the native flow publishes them to the header and feed, including cached results. The existing NSFW warning replaces the profile on the main thread when native viewing is off.
 - The native warning wraps its remaining content after the opt-in button is removed. The anonymous drawer hides the accompanying Settings heading and divider along with its two adult-content switches.
 
 - `AccountPreferences.getNsfwEnabledPreferenceState()` returns the native `Disabled` enum while active. Reddit 2026.45.0 age gating reads this state; changing only legacy `getOver18()` was insufficient.
@@ -18,13 +24,15 @@ After confirmation, a private installation-wide preference applies to signed-in 
 - Search banners with Reddit's own “adjust NSFW settings” or age-verification action are marked dismissed while permanent disabling is active. Other search banners remain visible. This uses the banner behavior, not English text or a network response rewrite.
 - Search dropdowns composed entirely of Reddit's native SafeSearch options are omitted. Mixed dropdowns retain their other filters; the existing native SafeSearch value remains forced on.
 
-When inactive, native values and controls retain their original behavior. Reddit handles all content decisions through its normal off-state logic; this patch does not mark content as nonexistent or construct replacement responses.
+When permanent disabling is inactive, native values and controls remain reversible. The independently selected flashing/navigation fixes still apply. Permanent disabling forces local reads and guards setters; it does not perform the same account/backend update as manually changing Reddit's setting. No content is marked nonexistent and no replacement response is constructed.
 
 ## Validation
 
 Run `python tools/test-nsfw.py` with Python 3 and JDK 17+. It verifies failed persistence, successful activation, reloads and irreversible state without downloads or device access. The regular Gradle checks remain required.
 
 Use Desktop `--validate` on the supplied 2026.40.0 and 2026.45.0 APKs, then run `CheckNativeNsfwPatch` on each rebuilt APK. The native-structure check verifies the modern Disabled policy, guards on the native setter, and absence of the retired filtering/overlay code. Test on the oldest recommended target with `-f` when establishing compatibility; a gated no-op is not a passing test.
+
+Also patch each version with only **Fix NSFW content flashing** (and its navigation dependency). Run `CheckNsfwFixes rebuilt.apk --normal-off` to verify that the native preference controls both guards without the permanent patch included. Run `CheckNsfwFixes rebuilt.apk` on the full combination too. These checks verify injected bytecode, not phone rendering or frame timing.
 
 Releases through `2.3.0-nsfw.7` are not functional passes: phone testing found content visible behind a false not-found message in earlier releases, then a search prompt and broken native warning navigation in `.7`. The old response filter and custom view hook have been removed. This revision requires phone regression testing with ordinary viewing previously on/off, direct links, account switching and anonymous browsing. Patch original APKMs, not an already modified APK.
 

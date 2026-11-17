@@ -49,6 +49,10 @@ public final class PermanentNsfwPatch {
         return isEnabled() ? ResourceUtils.getStringIdentifier("morphe_permanent_nsfw_blocked_message") : original;
     }
 
+    public static int goBackLabelResource(int original) {
+        return isEnabled() ? ResourceUtils.getStringIdentifier("action_go_back") : original;
+    }
+
     /** The anonymous profile drawer uses XML switches instead of Compose settings. */
     public static void hideAnonymousControls(View root) {
         if (!isEnabled()) return;

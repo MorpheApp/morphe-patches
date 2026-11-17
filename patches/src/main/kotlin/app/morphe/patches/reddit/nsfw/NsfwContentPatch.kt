@@ -13,6 +13,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.reddit.misc.settings.settingsPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -21,16 +22,16 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-private const val EXTENSION = "Lapp/morphe/extension/reddit/patches/NsfwNavigationPatch;"
+private const val EXTENSION = "Lapp/morphe/extension/reddit/patches/NsfwContentPatch;"
 
 @Suppress("unused")
 val nsfwContentPatch = patch(
-    name = "Fix NSFW content flashing",
+    name = "Prevent NSFW content flashing",
     description = "Prevents flagged posts and profiles from appearing before the warning when Reddit NSFW viewing is off.",
-    default = false
+    default = true
 ) {
     compatibleWith(nsfwCompatibility)
-    dependsOn(nsfwNavigationPatch)
+    dependsOn(settingsPatch)
     execute {
         val viewing = NativeNsfwViewingFingerprint.method
         val preferenceType = Fingerprint(

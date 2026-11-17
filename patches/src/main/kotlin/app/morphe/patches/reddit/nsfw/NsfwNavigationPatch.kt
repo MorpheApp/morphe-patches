@@ -22,7 +22,7 @@ private const val EXTENSION = "Lapp/morphe/extension/reddit/patches/NsfwNavigati
 val nsfwNavigationPatch = patch(
     name = "Fix NSFW warning navigation",
     description = "Makes the NSFW warning return to the preceding page instead of Home, including the Android back gesture.",
-    default = false
+    default = true
 ) {
     compatibleWith(nsfwCompatibility)
     dependsOn(settingsPatch)
@@ -61,8 +61,11 @@ val nsfwNavigationPatch = patch(
             val unit = warningHandler.instructionMatches.last().getFieldAccessed()
             // Intercept before the session split: the signed-in arm clears the
             // navigation stack and replaces it with Home before the other arm runs.
-            val navigateBackField = Fingerprint(definingClass = viewModel, name = "<init>")
-                .originalClassDef.fields.single { it.type == "Lkotlin/jvm/functions/Function0;" }
+            val navigateBackField = Fingerprint(definingClass = viewModel, name = "<init>", filters = listOf(
+                fieldAccess(type = "Lkotlin/jvm/functions/Function0;", opcode = Opcode.IPUT_OBJECT),
+                fieldAccess(type = "Ljava/lang/String;", opcode = Opcode.IPUT_OBJECT),
+                fieldAccess(type = "Lcom/reddit/session/mode/common/SessionMode;", opcode = Opcode.IPUT_OBJECT)
+            )).instructionMatches.first().getFieldAccessed()
             val register = findFreeRegister(index)
             addInstructionsWithLabels(index, """
                 iget-object v$register, p0, $navigateBackField
