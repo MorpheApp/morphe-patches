@@ -324,6 +324,12 @@ public final class InAppDownloadsPatch {
                 if (!videoId.isEmpty()) {
                     SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
                 }
+                if (hasSelectedAudioTrack(original.getStreamingData(), selectedAudioTrackId)) {
+                    return original.toBuilder()
+                            .setStreamingData(savableStreamingData(original.getStreamingData(), selectedAudioTrackId))
+                            .build()
+                            .toByteArray();
+                }
                 return null;
             }
 
@@ -641,6 +647,21 @@ public final class InAppDownloadsPatch {
         if (playerResponseModel == null) {
             Logger.printException(() -> "Could not create the player response model of the replaced player response");
         }
+    }
+
+    static boolean hasSelectedAudioTrack(OfflineStreamingData streamingData,
+                                          @Nullable String selectedAudioTrackId) {
+        if (selectedAudioTrackId == null || selectedAudioTrackId.isEmpty()) {
+            return false;
+        }
+        for (OfflineStreamFormat format : streamingData.getAdaptiveFormatsList()) {
+            if (format.getMimeType().startsWith("audio/")
+                    && format.hasAudioTrack()
+                    && selectedAudioTrackId.equals(format.getAudioTrack().getId())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     static int countSavableFormats(OfflineStreamingData streamingData) {
