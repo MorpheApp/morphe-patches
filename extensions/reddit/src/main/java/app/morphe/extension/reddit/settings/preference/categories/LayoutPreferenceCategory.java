@@ -126,6 +126,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
+        if (HighQualityAvatarsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIGH_QUALITY_AVATARS
+            ));
+        }
+
         if (RemoveSubRedditDialogPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
@@ -134,13 +141,6 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.REMOVE_NOTIFICATION_DIALOG
-            ));
-        }
-
-        if (HighQualityAvatarsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIGH_QUALITY_AVATARS
             ));
         }
 
