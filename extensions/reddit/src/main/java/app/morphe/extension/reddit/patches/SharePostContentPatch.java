@@ -34,6 +34,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import com.reddit.domain.model.Link;
+import com.reddit.domain.model.LinkMedia;
+import com.reddit.domain.model.PostGallery;
+import com.reddit.domain.model.PostGalleryItem;
+import com.reddit.domain.model.RedditVideo;
+
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -41,43 +47,25 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public final class SharePostContentPatch {
 
-    public interface LinkInterface {
-        boolean patch_isSelf();
-        @Nullable String patch_getTitle();
-        @Nullable String patch_getSelftext();
-        @Nullable String patch_getUrl();
-        @Nullable String patch_getPostHint();
-        @Nullable Object patch_getMedia();
-        @Nullable Object patch_getGallery();
-        @Nullable List<?> patch_getCrossPostParentList();
-    }
-
-    public interface LinkMediaInterface {
-        @Nullable Object patch_getRedditVideo();
-    }
-
-    public interface RedditVideoInterface {
-        @Nullable String patch_getDownloadUrl();
-    }
-
-    public interface PostGalleryInterface {
-        @Nullable List<?> patch_getItems();
-    }
-
-    public interface PostGalleryItemInterface {
-        @Nullable String patch_getUrl();
-    }
-
     private static final int CONNECT_TIMEOUT_MILLIS = 15_000;
     private static final int READ_TIMEOUT_MILLIS = 15_000;
     private static final long MAX_TOTAL_BYTES = 100L * 1024 * 1024;
     private static final int BUFFER_SIZE = 8192;
-    private static final String SHARE_CACHE_DIR = "internal_cache_share/morphe_share";
+    /**
+     * Reddit FileProvider cache-path: the cache directory "internal_cache_share" has the uri path "internal_cache_files".
+     */
+    private static final String PROVIDER_CACHE_DIR = "internal_cache_share";
+    private static final String PROVIDER_CACHE_PATH_NAME = "internal_cache_files";
+    private static final String SHARE_DIR = "morphe_share";
     private static final String FILE_PROVIDER_CLASS = "androidx.core.content.FileProvider";
     private static final String DEFAULT_EXTENSION = "bin";
 
     private static final AtomicBoolean isSharing = new AtomicBoolean(false);
-    private static volatile @Nullable Object pendingLink;
+    /**
+     * Post of the share sheet, loaded when the share subject is built.
+     */
+    @Nullable
+    private static volatile Link pendingLink;
 
     /**
      * @return If this patch was included during patching.
@@ -90,7 +78,14 @@ public final class SharePostContentPatch {
     /**
      * Injection point.
      */
-    public static void setLink(@Nullable Object link) {
+    public static void clearLink() {
+        pendingLink = null;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setLink(@Nullable Link link) {
         pendingLink = link;
     }
 
@@ -107,10 +102,10 @@ public final class SharePostContentPatch {
     }
 
     private static boolean handleShare(Context context, Intent chooser) {
-        Object rawLink = pendingLink;
+        Link link = pendingLink;
         pendingLink = null;
 
-        if (!Settings.SHARE_POST_CONTENT.get() || !(rawLink instanceof LinkInterface)) {
+        if (!Settings.SHARE_POST_CONTENT.get() || link == null) {
             return false;
         }
 
@@ -124,86 +119,69 @@ public final class SharePostContentPatch {
             return false;
         }
 
-        LinkInterface link = (LinkInterface) rawLink;
-        List<?> crossPosts = link.patch_getCrossPostParentList();
-        LinkInterface post = link;
+        // A crosspost shares the content of the original post.
+        Link post = link;
+        List<Link> crossPosts = link.getCrossPostParentList();
         if (crossPosts != null && !crossPosts.isEmpty()) {
-            Object firstCrossPost = crossPosts.get(0);
-            if (firstCrossPost instanceof LinkInterface) {
-                post = (LinkInterface) firstCrossPost;
-            }
+            post = crossPosts.get(0);
         }
 
-        final boolean isSelf = post.patch_isSelf();
-        String rawUrl = post.patch_getUrl();
-        String url = rawUrl != null ? rawUrl.trim() : "";
-        String host = getHost(url);
-
-        String videoUrl = null;
-        Object mediaObj = post.patch_getMedia();
-        if (mediaObj instanceof LinkMediaInterface) {
-            Object videoObj = ((LinkMediaInterface) mediaObj).patch_getRedditVideo();
-            if (videoObj instanceof RedditVideoInterface) {
-                String downloadUrl = ((RedditVideoInterface) videoObj).patch_getDownloadUrl();
-                if (downloadUrl != null) {
-                    downloadUrl = downloadUrl.trim();
-                    if (!downloadUrl.isEmpty()) {
-                        videoUrl = downloadUrl;
-                    }
+        LinkMedia media = post.getMedia();
+        if (media != null) {
+            RedditVideo video = media.getRedditVideo();
+            if (video != null) {
+                String videoUrl = trimToNull(video.getDownloadUrl());
+                if (videoUrl != null) {
+                    return shareMedia(context, chooser, inner, Collections.singletonList(videoUrl));
                 }
             }
         }
-        if (videoUrl != null) {
-            return shareMedia(context, chooser, inner, Collections.singletonList(videoUrl));
-        }
 
-        List<String> galleryUrls = null;
-        Object galleryObj = post.patch_getGallery();
-        if (galleryObj instanceof PostGalleryInterface) {
-            List<?> items = ((PostGalleryInterface) galleryObj).patch_getItems();
-            if (items != null && !items.isEmpty()) {
-                List<String> itemUrls = new ArrayList<>();
-                for (Object item : items) {
-                    if (item instanceof PostGalleryItemInterface) {
-                        String itemUrl = ((PostGalleryItemInterface) item).patch_getUrl();
-                        if (itemUrl != null) {
-                            itemUrl = itemUrl.trim();
-                            if (!itemUrl.isEmpty()) {
-                                itemUrls.add(itemUrl);
-                            }
-                        }
+        PostGallery gallery = post.getGallery();
+        if (gallery != null) {
+            List<PostGalleryItem> items = gallery.getItems();
+            if (items != null) {
+                List<String> itemUrls = new ArrayList<>(items.size());
+                for (PostGalleryItem item : items) {
+                    String itemUrl = trimToNull(item.getUrl());
+                    if (itemUrl != null) {
+                        itemUrls.add(itemUrl);
                     }
                 }
                 if (!itemUrls.isEmpty()) {
-                    galleryUrls = itemUrls;
+                    return shareMedia(context, chooser, inner, itemUrls);
                 }
             }
         }
-        if (galleryUrls != null) {
-            return shareMedia(context, chooser, inner, galleryUrls);
-        }
 
-        String postHint = post.patch_getPostHint();
-        if (!url.isEmpty() && ("image".equals(postHint) || "i.redd.it".equals(host))) {
+        String url = trimToNull(post.getUrl());
+        String host = url == null ? null : getHost(url);
+        if (url != null && ("image".equals(post.getPostHint()) || "i.redd.it".equals(host))) {
             return shareMedia(context, chooser, inner, Collections.singletonList(url));
         }
 
-        String selftext = post.patch_getSelftext();
-        if (isSelf && selftext != null && !selftext.trim().isEmpty()) {
-            String title = post.patch_getTitle();
-            String fullText = (title != null && !title.isEmpty())
-                    ? (title + "\n\n" + selftext)
-                    : selftext;
-            shareText(chooser, inner, fullText);
-            return false;
-        }
-
-        if (!isSelf && !url.isEmpty() && !isRedditHost(host)) {
+        final boolean isSelf = post.isSelf();
+        String selftext = post.getSelftext();
+        if (isSelf && trimToNull(selftext) != null) {
+            String title = post.getTitle();
+            shareText(chooser, inner, title == null || title.isEmpty()
+                    ? selftext
+                    : title + "\n\n" + selftext);
+        } else if (!isSelf && url != null && !isRedditHost(host)) {
             shareText(chooser, inner, url);
-            return false;
         }
 
+        // Text is changed in place and Reddit opens the share target as usual.
         return false;
+    }
+
+    @Nullable
+    private static String trimToNull(@Nullable String text) {
+        if (text == null) {
+            return null;
+        }
+        String trimmed = text.trim();
+        return trimmed.isEmpty() ? null : trimmed;
     }
 
     private static void shareText(Intent chooser, Intent inner, String text) {
@@ -234,7 +212,7 @@ public final class SharePostContentPatch {
             try {
                 Context appContext = Utils.getContext();
                 File cacheDir = appContext.getCacheDir();
-                File shareDir = new File(cacheDir, SHARE_CACHE_DIR);
+                File shareDir = new File(new File(cacheDir, PROVIDER_CACHE_DIR), SHARE_DIR);
 
                 if (shareDir.exists()) {
                     File[] existingFiles = shareDir.listFiles();
@@ -318,8 +296,8 @@ public final class SharePostContentPatch {
                     Uri uri = new Uri.Builder()
                             .scheme("content")
                             .authority(authority)
-                            .appendPath("internal_cache_files")
-                            .appendPath("morphe_share")
+                            .appendPath(PROVIDER_CACHE_PATH_NAME)
+                            .appendPath(SHARE_DIR)
                             .appendPath(file.getName())
                             .build();
                     uris.add(uri);
@@ -454,38 +432,24 @@ public final class SharePostContentPatch {
     }
 
     private static String getMimeTypeFromExtension(String ext) {
-        switch (ext) {
-            case "jpg":
-            case "jpeg":
-                return "image/jpeg";
-            case "png":
-                return "image/png";
-            case "gif":
-                return "image/gif";
-            case "webp":
-                return "image/webp";
-            case "mp4":
-                return "video/mp4";
-            default:
-                return "application/octet-stream";
-        }
+        return switch (ext) {
+            case "jpg", "jpeg" -> "image/jpeg";
+            case "png" -> "image/png";
+            case "gif" -> "image/gif";
+            case "webp" -> "image/webp";
+            case "mp4" -> "video/mp4";
+            default -> "application/octet-stream";
+        };
     }
 
     @Nullable
     private static String getHost(String url) {
-        if (url.isEmpty()) {
-            return null;
-        }
-        Uri uri = Uri.parse(url);
-        String host = uri.getHost();
-        if (host != null) {
-            return host.toLowerCase(Locale.ROOT);
-        }
-        return null;
+        String host = Uri.parse(url).getHost();
+        return host == null ? null : host.toLowerCase(Locale.ROOT);
     }
 
     private static boolean isRedditHost(@Nullable String host) {
-        if (host == null || host.isEmpty()) {
+        if (host == null) {
             return false;
         }
         return host.equals("reddit.com") || host.endsWith(".reddit.com")
