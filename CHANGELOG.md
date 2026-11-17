@@ -1,3 +1,35 @@
+## [2.4.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0...v2.4.0-dev.1) (2026-11-17)
+
+### ✨ New Features
+
+* **Reddit - Hide sidebar components:** Add options to hide Popular, Latest, Discover communities and Start a community ([#4942](https://github.com/MorpheApp/morphe-patches/issues/4942)) ([7524530](https://github.com/MorpheApp/morphe-patches/commit/752453080699833e5003cc206e3f09da887512ff))
+* Redesign of the About dialog ([a739dc6](https://github.com/MorpheApp/morphe-patches/commit/a739dc635445cff78357a279524643dbc9ee7ba9))
+* **YouTube Music - Downloads:** Add 1080p, 1440p and 4K to the in-app download video quality ([1cb84cc](https://github.com/MorpheApp/morphe-patches/commit/1cb84ccc9a48936c8776dd1804be4dce3768470f))
+
+### 🐛 Bug Fixes
+
+* **Reddit - Hide Ask button:** Ask button is not hidden in the expanded search bar ([5577763](https://github.com/MorpheApp/morphe-patches/commit/5577763804b9ad1f55797d035a085f23a9ff328c))
+* **Reddit - Sanitize sharing links:** Shared links are shortened to links that add a share_id ([#4948](https://github.com/MorpheApp/morphe-patches/issues/4948)) ([6c3e952](https://github.com/MorpheApp/morphe-patches/commit/6c3e9523d832e20b7f6a6eed9078250f148ab68e))
+* **Reddit - Start as guest:** Login screen still shows on 2026.44.0 and newer ([754a4cb](https://github.com/MorpheApp/morphe-patches/commit/754a4cb719c772c126bcb9283fb3ca96d717af79))
+* **YouTube - Add to queue:** Correct native queue menu availability ([#4943](https://github.com/MorpheApp/morphe-patches/issues/4943)) ([b74e94c](https://github.com/MorpheApp/morphe-patches/commit/b74e94c8fba6076dd4fb207cacf9c1e087531262))
+* **YouTube - Downloads:** Offer up to 1080p in-app downloads on devices whose video decoder lists a lower resolution ([15a03a0](https://github.com/MorpheApp/morphe-patches/commit/15a03a08678928ce32e40e2c87f35407b7087ec3))
+* **YouTube - Downloads:** Show a note to turn on "Spoof device dimensions" if 1080p is not offered ([c4f6a0f](https://github.com/MorpheApp/morphe-patches/commit/c4f6a0fa62902dba8d37077c6536945f13ad52be)), closes [#4927](https://github.com/MorpheApp/morphe-patches/issues/4927)
+* **YouTube - Feed card layout:** "Cards" shows the action buttons of the cards that YouTube sends with buttons, the same as "Cards with action buttons" ([6f2f2be](https://github.com/MorpheApp/morphe-patches/commit/6f2f2be51337740fe88749ec9d4d6039c7f14827))
+* **YouTube - Feed card layout:** "Default" shows the cards of a newer A/B test without spacing and with the background only below the title ([ad3aee5](https://github.com/MorpheApp/morphe-patches/commit/ad3aee5c41bab73c4064ff4e4f70f36b0ef0fa4e))
+* **YouTube - Feed card layout:** The Shorts shelf and the shelf headers of a newer A/B test fill the width of the list without the spacing of the cards ([242a762](https://github.com/MorpheApp/morphe-patches/commit/242a76280e7fef9ed6e6850bd79654b0a6fa8a50))
+* **YouTube - Hide layout components:** "Hide Gift button" not working on experimental versions ([d25e914](https://github.com/MorpheApp/morphe-patches/commit/d25e914d9e9fd74c188c6ee3f7003d32b1233cdf))
+* **YouTube - Hide video action buttons:** "Hide Ask button" not working in fullscreen ([ec4ab10](https://github.com/MorpheApp/morphe-patches/commit/ec4ab1011ff58a062838fd286faccb7b79392a51))
+* **YouTube - Hide video action buttons:** "Hide Shop button", "Hide Share button", "Hide 'Stop ads' button" and "Hide Comments button" don't hide the buttons that YouTube sends without an icon name, and the 'Stop ads' button of the classic layout is hidden by "Hide Report button" ([5b46973](https://github.com/MorpheApp/morphe-patches/commit/5b4697399964eeb2add299bf0b848e9e23e8e3fd))
+* **YouTube - Miniplayer:** Miniplayer is not disabled on the search results page ([aa192a2](https://github.com/MorpheApp/morphe-patches/commit/aa192a2b7a807c33b71571a494fb81d4e48ab590))
+* **YouTube - Navigation bar:** "Glass navigation bar" is as wide as the screen and ignores its size settings when YouTube shows the navigation buttons without labels ([0408ea1](https://github.com/MorpheApp/morphe-patches/commit/0408ea1df52dd2608d5dd4f53f91060f575b2aa6))
+* **YouTube - Navigation bar:** "Show Search button", "Show Settings button" and "Show Watch later button" do nothing when "Disable icon only navigation buttons" is off and YouTube sends the navigation buttons without labels ([cd8b782](https://github.com/MorpheApp/morphe-patches/commit/cd8b7821365c62a01a811fb85005757a52def33f))
+* **YouTube - Return YouTube Dislike:** Feed thumbnail like count is shown alone and jumps next to the view count, and the view count blinks, while the texts of a card are below the glass navigation bar ([db642ce](https://github.com/MorpheApp/morphe-patches/commit/db642ce8c16c5b4253270320b323ec4164bbcf55))
+* **YouTube - Video quality:** Default quality is not checked in the quality menu ([f0d1792](https://github.com/MorpheApp/morphe-patches/commit/f0d179277ea8d52102d2438aec4bc72392bad4b2))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.46.522` ([4899e83](https://github.com/MorpheApp/morphe-patches/commit/4899e83eb793a72f1a105a29676d688b82621fac))
+
 ## [2.3.0](https://github.com/MorpheApp/morphe-patches/compare/v2.2.0...v2.3.0) (2026-11-16)
 
 ### ✨ New Features
