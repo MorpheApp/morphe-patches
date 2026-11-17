@@ -395,7 +395,12 @@ final class YouTubeChatSource implements Runnable {
                 return false;
             }
             try {
-                TimedComments.Page page = fetchCommentsPage(state, continuation);
+                JSONObject response = postInnertube(
+                        state,
+                        "next",
+                        new JSONObject().put("continuation", continuation)
+                );
+                TimedComments.Page page = TimedComments.parsePage(response, state.videoLengthMs);
                 consecutiveFailures = 0;
                 pages++;
                 pagesWithoutTimedComments = page.comments.isEmpty() ? pagesWithoutTimedComments + 1 : 0;
@@ -445,16 +450,6 @@ final class YouTubeChatSource implements Runnable {
         void reset() {
             passedOnIds.clear();
         }
-    }
-
-    private TimedComments.Page fetchCommentsPage(PageState state, String continuation)
-            throws IOException, JSONException {
-        JSONObject response = postInnertube(
-                state,
-                "next",
-                new JSONObject().put("continuation", continuation)
-        );
-        return TimedComments.parsePage(response, state.videoLengthMs);
     }
 
     private PageState fetchPageState() throws IOException, JSONException {

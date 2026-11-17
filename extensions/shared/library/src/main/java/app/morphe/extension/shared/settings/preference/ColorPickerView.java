@@ -279,15 +279,7 @@ public class ColorPickerView extends View {
         }
 
         // Update the shaders.
-        updateHueShader();
-        updateSaturationValueShader();
-        updateOpacityShader();
-    }
-
-    /**
-     * Updates the shader for the hue bar to reflect the color gradient.
-     */
-    private void updateHueShader() {
+        // Updates the shader for the hue bar to reflect the color gradient.
         LinearGradient hueShader = new LinearGradient(
                 hueRect.left, hueRect.top,
                 hueRect.right, hueRect.top,
@@ -297,6 +289,8 @@ public class ColorPickerView extends View {
         );
 
         huePaint.setShader(hueShader);
+        updateSaturationValueShader();
+        updateOpacityShader();
     }
 
     /**

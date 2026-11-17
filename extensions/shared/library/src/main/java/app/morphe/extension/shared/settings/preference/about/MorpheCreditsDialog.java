@@ -143,6 +143,6 @@ class MorpheCreditsDialog extends AboutWebViewDialog {
      *               then credits the project by a link to its contributors.
      */
     MorpheCreditsDialog(Context context, @Nullable AboutRoutes.People people) {
-        super(context, createDialogHtml(context, people));
+        super(context, createDialogHtml(context, people), false);
     }
 }

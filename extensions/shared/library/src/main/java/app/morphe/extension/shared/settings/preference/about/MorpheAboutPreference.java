@@ -255,7 +255,7 @@ public class MorpheAboutPreference extends Preference {
             if (progress != null && progress.isShowing()) {
                 progress.dismiss();
             }
-            new AboutWebViewDialog(getContext(), htmlDialog).show();
+            new AboutWebViewDialog(getContext(), htmlDialog, false).show();
         });
     }
 
