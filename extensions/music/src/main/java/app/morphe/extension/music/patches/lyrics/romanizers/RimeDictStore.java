@@ -394,7 +394,6 @@ public final class RimeDictStore {
     }
 
     /** Records whether a built-in table is ticked, so it is fetched only when asked for. */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     public static void setBuiltinSelected(String code, boolean selected) {
         final String stored = Settings.LYRICS_RIME_BUILTIN_SELECTED.get();
         final StringBuilder kept = new StringBuilder();
@@ -402,12 +401,12 @@ public final class RimeDictStore {
             for (String token : stored.split(",")) {
                 final String value = token.trim();
                 if (value.isEmpty() || value.equalsIgnoreCase(code)) continue;
-                if (kept.length() > 0) kept.append(',');
+                if (Utils.isNotEmpty(kept)) kept.append(',');
                 kept.append(value);
             }
         }
         if (selected) {
-            if (kept.length() > 0) kept.append(',');
+            if (Utils.isNotEmpty(kept)) kept.append(',');
             kept.append(code);
         }
         Settings.LYRICS_RIME_BUILTIN_SELECTED.save(kept.toString());

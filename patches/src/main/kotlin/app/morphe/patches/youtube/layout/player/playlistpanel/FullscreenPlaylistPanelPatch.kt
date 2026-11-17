@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.layout.player.playlistpanel
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -23,16 +23,14 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FullscreenPlaylistPanelPatch;"
 
-@Suppress("unused")
-val fullscreenPlaylistPanelPatch = bytecodePatch(
+val fullscreenPlaylistPanelPatch = patch(
     name = "Fullscreen playlist panel",
     description = "Adds an option to show the playlist panel over the fullscreen player on tablets, " +
-        "instead of exiting fullscreen.",
+            "instead of exiting fullscreen.",
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        // The id of the panel that opens.
         engagementPanelHookPatch,
     )
 
@@ -59,8 +57,7 @@ val fullscreenPlaylistPanelPatch = bytecodePatch(
 
         // Use the panel overlay over the fullscreen player, which YouTube enables by a server
         // config only on phones. Without it the panel opens in the watch column, which fullscreen hides.
-        val panelModeFingerprint = getPanelModeFingerprint(PanelModeEnumFingerprint.originalClassDef.type)
-        panelModeFingerprint.matchAll().forEach { match ->
+        PanelModeFingerprint.matchAll().forEach { match ->
             match.method.apply {
                 // The read of the server config: the boolean field, or the result of the static call.
                 val configIndex = match.instructionMatches.first().index

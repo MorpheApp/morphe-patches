@@ -8,29 +8,25 @@
 package app.morphe.patches.youtube.layout.sharesheet
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenSystemShareSheetPatch;"
@@ -67,28 +63,15 @@ internal fun openSystemShareSheetPatch(
             val optionalType = dismissActionSheetMethod.parameterTypes.first()
 
             it.classDef.apply {
-                interfaces.add(EXTENSION_ACTION_SHEET_CONTROLLER_INTERFACE)
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_dismissActionSheet",
-                        listOf(),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-static { }, $optionalType->empty()$optionalType
-                                move-result-object v0
-                                invoke-virtual { p0, v0 }, $dismissActionSheetMethod
-                                return-void
-                            """
-                        )
-                    }
+                addPatchInterface(
+                    EXTENSION_ACTION_SHEET_CONTROLLER_INTERFACE,
+                    "patch_dismissActionSheet",
+                    """
+                        invoke-static { }, $optionalType->empty()$optionalType
+                        move-result-object v0
+                        invoke-virtual { p0, v0 }, $dismissActionSheetMethod
+                        return-void
+                    """
                 )
             }
 

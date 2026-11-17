@@ -22,6 +22,7 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
+import app.morphe.patches.youtube.video.information.SetVideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.VideoQualitySetterFingerprint
 import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -79,6 +80,62 @@ internal fun getVideoQualitySettingFingerprint(
         checkCast(videoQualitySettingType)
     )
 ) {}
+
+/**
+ * Event of the player when the video quality setting changes, such as when a video loads.
+ * The quality is 'Auto' (-2), as the event has no quality, unlike the event of a quality
+ * selected in the quality menu.
+ */
+internal fun getVideoQualitySettingChangedEventFingerprint(
+    videoQualitySettingType: String
+) = Fingerprint(
+    name = "<init>",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf(videoQualitySettingType, "Z"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = videoQualitySettingType
+        ),
+        literal(-2)
+    )
+)
+
+/**
+ * State of the quality menu of regular videos: the qualities, the quality playing, the video
+ * quality setting and the quality selected, which the menu shows with a check mark.
+ * The quality selected is the quality of the last quality event, found by its formats
+ * or else by its resolution.
+ */
+internal fun getQualityMenuSelectedQualityFingerprint(
+    videoQualityEventType: String,
+    videoQualitySettingType: String
+) = Fingerprint(
+    filters = listOf(
+        methodCall(smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;"),
+        fieldAccess( // Resolution of the quality event.
+            opcode = Opcode.IGET,
+            definingClass = videoQualityEventType,
+            type = "I",
+            location = MatchAfterWithin(8)
+        ),
+        methodCall(
+            definingClass = "Lj$/util/stream/Stream;",
+            name = "filter",
+            location = MatchAfterWithin(8)
+        ),
+        methodCall(
+            smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;",
+            location = MatchAfterWithin(5)
+        ),
+        fieldAccess( // Video quality setting of the quality event.
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = videoQualityEventType,
+            type = videoQualitySettingType
+        )
+    )
+)
 
 internal const val CLIENT_ABR_STATE_CLASS =
     $$"Lcom/google/android/apps/youtube/proto/ClientAbrStateOuterClass$ClientAbrState;"
@@ -499,8 +556,8 @@ internal object VideoQualityItemOnClickFingerprint : Fingerprint(
 /**
  * The method of the quality menu that sets the quality by its resolution.
  */
-internal fun getSetVideoQualityResolutionFingerprint(videoQualityMenuType: String) = Fingerprint(
-    definingClass = videoQualityMenuType,
+internal object SetVideoQualityResolutionFingerprint : Fingerprint(
+    definingClass = { SetVideoQualityFingerprint.instructionMatches[1].fieldReference.type },
     returnType = "V",
     parameters = listOf("I")
 )

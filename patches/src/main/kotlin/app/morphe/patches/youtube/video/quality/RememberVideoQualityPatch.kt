@@ -27,6 +27,7 @@ import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.videoinformation.VideoQualityFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
@@ -42,8 +43,6 @@ import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_INTERFACE
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_MENU_INTERFACE
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
-import app.morphe.patches.youtube.video.information.SetVideoQualityFingerprint
-import app.morphe.patches.youtube.video.information.VideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
@@ -204,6 +203,45 @@ val rememberVideoQualityPatch = patch {
         val videoQualitySettingMethod = VideoQualitySettingEnumFingerprint.let {
             val videoQualitySettingType = it.classDef.type
             val advancedMenuField = it.instructionMatches.last().fieldReference
+
+            // The quality menu of regular videos shows a check mark on the quality selected,
+            // which is the quality of the last quality event. When the video loads, the event is
+            // the video quality setting without a quality, so the default quality is not checked.
+            // With the 'Advanced' setting, the quality playing is used as the quality selected.
+            val qualityEventType = getVideoQualitySettingChangedEventFingerprint(
+                videoQualitySettingType
+            ).classDef.type
+            getQualityMenuSelectedQualityFingerprint(qualityEventType, videoQualitySettingType).let { match ->
+                match.method.apply {
+                    val resolutionMatch = match.instructionMatches[1]
+                    val resolutionInstruction = resolutionMatch.getInstruction<TwoRegisterInstruction>()
+                    val resolutionRegister = resolutionInstruction.registerA
+                    val qualityEventRegister = resolutionInstruction.registerB
+                    val settingField = match.instructionMatches.last().fieldReference
+                    val insertIndex = resolutionMatch.index + 1
+                    val registerProvider = getFreeRegisterProvider(
+                        insertIndex,
+                        2,
+                        resolutionRegister,
+                        qualityEventRegister
+                    )
+                    val settingRegister = registerProvider.getFreeRegister4Bit()
+                    val advancedRegister = registerProvider.getFreeRegister4Bit()
+
+                    addInstructionsWithLabels(
+                        insertIndex,
+                        """
+                            iget-object v$settingRegister, v$qualityEventRegister, $settingField
+                            sget-object v$advancedRegister, $advancedMenuField
+                            if-ne v$settingRegister, v$advancedRegister, :not_advanced
+                            invoke-static { v$resolutionRegister }, $EXTENSION_CLASS->getQualityMenuSelectedResolution(I)I
+                            move-result v$resolutionRegister
+                            :not_advanced
+                            nop
+                        """
+                    )
+                }
+            }
 
             getVideoQualitySettingFingerprint(videoQualitySettingType).method.apply {
                 addInstructionsWithLabels(
@@ -406,9 +444,7 @@ val rememberVideoQualityPatch = patch {
         // The Shorts quality menu sets the selected quality by its resolution, which YouTube can get
         // wrong, such as 720 for the 480p quality of some Shorts, so another quality is played.
         // The quality selected is set instead, as the quality menu of regular videos does.
-        val setResolutionMethod = getSetVideoQualityResolutionFingerprint(
-            SetVideoQualityFingerprint.instructionMatches[1].fieldReference.type
-        ).matchSingle().method
+        val setResolutionMethod = SetVideoQualityResolutionFingerprint.matchSingle().method
 
         getVideoQualityItemSetResolutionFingerprint(setResolutionMethod).matchAll().forEach {
             it.method.apply {

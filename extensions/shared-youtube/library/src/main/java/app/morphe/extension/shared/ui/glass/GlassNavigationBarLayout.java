@@ -179,17 +179,18 @@ public final class GlassNavigationBarLayout {
      * content, so it follows the density, the font size and the language.
      *
      * @param tabs        The parent of the buttons.
-     * @param iconId      The id of the view that holds the icon of a button, or 0 if not known.
+     * @param iconIds     The ids of the view that holds the icon of a button, the first one or 0 if not known,
+     *                    then the ids of the icon of other kinds of buttons, such as buttons without a label.
      * @param labelId     The id of the label of a button, or 0 if not known.
      * @param hidden      The buttons hidden because they do not fit.
      */
-    public static Buttons measureButtons(ViewGroup tabs, int iconId, int labelId, Set<View> hidden) {
+    public static Buttons measureButtons(ViewGroup tabs, int[] iconIds, int labelId, Set<View> hidden) {
         final int count = tabs.getChildCount();
         List<View> buttons = new ArrayList<>(count);
         int[] contentWidths = new int[count];
         int contentTop = Integer.MAX_VALUE;
         int contentBottom = 0;
-        final boolean idsKnown = iconId != 0 && labelId != 0;
+        final boolean idsKnown = iconIds[0] != 0 && labelId != 0;
 
         for (int i = 0; i < count; i++) {
             View button = tabs.getChildAt(i);
@@ -203,12 +204,21 @@ public final class GlassNavigationBarLayout {
             for (int j = 0, contentCount = group.getChildCount(); j < contentCount; j++) {
                 View child = group.getChildAt(j);
                 final int id = child.getId();
-                if (!idsKnown || id == iconId || id == labelId) {
+                boolean isContent = !idsKnown || id == labelId;
+                for (int iconId : iconIds) {
+                    isContent |= iconId != 0 && id == iconId;
+                }
+                if (isContent) {
                     contents.add(child);
                 }
             }
             if (idsKnown && contents.isEmpty()) {
-                View icon = group.findViewById(iconId);
+                View icon = null;
+                for (int iconId : iconIds) {
+                    if (icon == null && iconId != 0) {
+                        icon = group.findViewById(iconId);
+                    }
+                }
                 View label = group.findViewById(labelId);
                 if (icon != null) contents.add(icon);
                 if (label != null) contents.add(label);

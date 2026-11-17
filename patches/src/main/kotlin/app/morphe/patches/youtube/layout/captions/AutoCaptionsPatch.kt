@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.layout.captions
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
@@ -22,6 +23,7 @@ import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AutoCaptionsPatch;"
@@ -50,6 +52,32 @@ internal val autoCaptionsPatch = patch(
                     index,
                     """
                         invoke-static { v$register }, $EXTENSION_CLASS->disableAutoCaptions(Z)Z
+                        move-result v$register
+                    """
+                )
+
+                // Read at the start of the method, before the hook above, so its index is not moved by it.
+                val reasonIndex = it.instructionMatches.first().index
+                val reasonRegister = getInstruction<TwoRegisterInstruction>(reasonIndex).registerA
+
+                addInstruction(
+                    reasonIndex + 1,
+                    "invoke-static { v$reasonRegister }, $EXTENSION_CLASS->setCaptionSelectionReason(I)V"
+                )
+            }
+        }
+
+        // Same method as the hook above, so it is matched again after it changed the method.
+        SubtitleManagerForcedTrackFingerprint.let {
+            it.clearMatch()
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->showForcedCaptions(Z)Z
                         move-result v$register
                     """
                 )

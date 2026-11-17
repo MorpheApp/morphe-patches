@@ -98,7 +98,7 @@ public class ShortsAutoplayPatch {
             // is repeated. Otherwise, the Short behind the panel keeps the layout of the open panel,
             // and its overlay is out of place when going back to it.
             if (autoplay && !inBackgroundPiP) {
-                String panelId = EngagementPanel.getLastOpenedPanelId();
+                String panelId = EngagementPanel.getLastOpenedShortsPanelId();
                 if (panelId != null) {
                     Logger.printDebug(() -> "Not advancing, panel is open: " + panelId);
                     autoplay = false;

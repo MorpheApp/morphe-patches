@@ -22,6 +22,7 @@ import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.RenderProcessGoneDetail;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -41,7 +42,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
@@ -55,10 +58,10 @@ import app.morphe.extension.shared.Utils;
  * A SABR request of the page gives them, and the media requests of the page are then held,
  * so the page never downloads the media.
  * <p>
- * As the website, the session is taken from the first request of the player, with the placeholder PoToken
- * of a cold start, and the PoToken is added to the session when the player sends it a few seconds later.
- * The next videos are loaded in the player of the same page, which makes their PoTokens at once,
- * while a new page makes them in several seconds.
+ * The session is taken only with the PoToken of the video, so the server sends the media from the first request.
+ * A new page starts BotGuard, which makes the first PoToken in several seconds, and sends a placeholder PoToken
+ * until then. The next videos are loaded in the player of the same page, which makes their PoTokens at once,
+ * so a page is opened while the app starts, before the first video is played.
  * <p>
  * The page also never reports the playback (watch history, statistics), never loads ads,
  * and never loads images or fonts.
@@ -157,6 +160,12 @@ public final class MwebSiteSession {
     private static final long TIMEOUT_MILLISECONDS = 12 * 1000;
 
     /**
+     * Pages opened for the session of a video. A page that fails, such as when its renderer is gone,
+     * or it cannot be loaded, is replaced by a new page, in the time of {@link #TIMEOUT_MILLISECONDS}.
+     */
+    private static final int MAX_PAGE_ATTEMPTS = 3;
+
+    /**
      * A started fetch is used by the fetch of the streams of its video only for this long.
      */
     private static final long STARTED_FETCH_MAX_AGE_MILLISECONDS = 60 * 1000;
@@ -179,10 +188,10 @@ public final class MwebSiteSession {
     private static final int MIN_PO_TOKEN_LENGTH = 50;
 
     /**
-     * How long the player of the page has to send the PoToken of a session taken at its cold start.
-     * Its first requests have a placeholder, and BotGuard makes the PoToken a few seconds later.
+     * Video opened by the page made while the app starts. A short video that is always available,
+     * whose session is not used, and the page never reports the playback.
      */
-    private static final long COLD_SESSION_TIMEOUT_MILLISECONDS = 20 * 1000;
+    private static final String WARM_UP_VIDEO_ID = "jNQXAC9IVRw";
 
     /**
      * Errors of the page logged for each video.
@@ -279,16 +288,8 @@ public final class MwebSiteSession {
         final String streamId;
         @Nullable
         final byte[] clientInfo;
-        /**
-         * The PoToken of the session. A session taken at the start of the player of the page has
-         * the placeholder of a cold start, which is replaced when the player of the page sends the PoToken.
-         */
         @Nullable
-        volatile byte[] poToken;
-        /**
-         * If the session was taken with the placeholder PoToken of a cold start, as the website starts the video.
-         */
-        volatile boolean coldStart;
+        final byte[] poToken;
         @Nullable
         final byte[] ustreamerConfig;
 
@@ -315,6 +316,15 @@ public final class MwebSiteSession {
                     SabrRequestBody.STREAMER_CONTEXT_CLIENT_INFO_FIELD);
             this.poToken = streamerContext == null ? null : SabrRequestBody.readMessageField(streamerContext,
                     SabrRequestBody.STREAMER_CONTEXT_PO_TOKEN_FIELD);
+        }
+    }
+
+    /**
+     * The page failed, and another page can make the session.
+     */
+    private static final class PageFailedException extends Exception {
+        PageFailedException(String message) {
+            super(message);
         }
     }
 
@@ -351,17 +361,71 @@ public final class MwebSiteSession {
      */
     private static final AtomicInteger generation = new AtomicInteger();
 
+    /**
+     * Page opened while the app starts, until a video is loaded in it, or it is free. Main thread only.
+     */
+    private static final AtomicReference<Page> warmUpPage = new AtomicReference<>();
+
     private MwebSiteSession() {
     }
 
     /**
-     * Forgets the sessions and closes the pages, for example after a sign in or a sign out.
+     * Forgets the sessions and closes the pages, for example after a sign in or a sign-out.
      */
     static void reset() {
         generation.incrementAndGet();
         MwebStream.clear();
         startedFetches.clear();
-        Utils.runOnMainThread(MwebSiteSession::closeFreePages);
+        Utils.runOnMainThread(() -> {
+            closeFreePages();
+            Page page = warmUpPage.getAndSet(null);
+            if (page != null) {
+                page.close();
+            }
+        });
+    }
+
+    /**
+     * Opens a page while the app starts, so BotGuard of the website has started when the first video
+     * is played, and the player of the page makes the PoToken of the video at once.
+     */
+    public static void warmUp() {
+        Utils.runOnMainThread(() -> {
+            if (warmUpPage.get() != null) {
+                return;
+            }
+            synchronized (freePages) {
+                if (!freePages.isEmpty()) {
+                    return;
+                }
+            }
+            try {
+                Logger.printDebug(() -> "Website session: making a page while the app starts");
+                Page page = new Page(generation.get());
+                page.attachToCurrentActivity();
+                CompletableFuture<Session> future = page.load(WARM_UP_VIDEO_ID);
+                page.warmUp = true;
+                warmUpPage.set(page);
+                future.whenComplete((session, ex) -> Utils.runOnMainThread(() -> {
+                    if (!warmUpPage.compareAndSet(page, null)) {
+                        // A video was loaded in the page, or the page was closed.
+                        return;
+                    }
+                    page.warmUp = false;
+                    page.finishLoad();
+                    if (ex != null) {
+                        Logger.printInfo(() -> "Website session: the page made while the app starts"
+                                + " gave no session: " + ex);
+                    }
+                    addToFreePagesOrClose(page, ex == null);
+                }));
+                mainHandler.postDelayed(() -> future.completeExceptionally(
+                        new TimeoutException("No session of the page made while the app starts")),
+                        TIMEOUT_MILLISECONDS);
+            } catch (Exception ex) {
+                Logger.printInfo(() -> "Website session: could not make a page while the app starts", ex);
+            }
+        });
     }
 
     /**
@@ -413,54 +477,61 @@ public final class MwebSiteSession {
     @Nullable
     private static Session load(String videoId) {
         final long start = System.currentTimeMillis();
-        CompletableFuture<PageLoad> pageLoadFuture = new CompletableFuture<>();
-        Utils.runOnMainThread(() -> {
-            Page page = null;
-            try {
-                page = takePage();
-                pageLoadFuture.complete(new PageLoad(page, page.load(videoId)));
-            } catch (Exception ex) {
-                if (page != null) {
-                    releasePage(page, false);
+        for (int attempt = 1; ; attempt++) {
+            CompletableFuture<PageLoad> pageLoadFuture = new CompletableFuture<>();
+            Utils.runOnMainThread(() -> {
+                Page page = null;
+                try {
+                    page = takePage();
+                    pageLoadFuture.complete(new PageLoad(page, page.load(videoId)));
+                } catch (Exception ex) {
+                    if (page != null) {
+                        releasePage(page, false);
+                    }
+                    pageLoadFuture.completeExceptionally(ex);
                 }
-                pageLoadFuture.completeExceptionally(ex);
+            });
+            Page page = null;
+            boolean pageWorks = false;
+            try {
+                PageLoad pageLoad = pageLoadFuture.get(Math.max(TIMEOUT_MILLISECONDS
+                        - (System.currentTimeMillis() - start), 0), TimeUnit.MILLISECONDS);
+                page = pageLoad.page;
+                final long remaining = TIMEOUT_MILLISECONDS - (System.currentTimeMillis() - start);
+                Session session = pageLoad.session.get(Math.max(remaining, 0), TimeUnit.MILLISECONDS);
+                pageWorks = true;
+                final int blocked = page.blockedRequests.getAndSet(0);
+                final boolean inPage = page.loadedInPage;
+                Logger.printDebug(() -> "Website session of " + videoId + " in "
+                        + (System.currentTimeMillis() - start) + " ms" + (inPage ? " (loaded in the page)" : "")
+                        + ", PoToken bytes: "
+                        + (session.poToken == null ? 0 : session.poToken.length)
+                        + ", ustreamer config: " + (session.ustreamerConfig != null)
+                        + ", client: " + (session.clientInfo != null)
+                        + ", blocked page requests: " + blocked);
+                return session;
+            } catch (Exception ex) {
+                Logger.printInfo(() -> "The website gave no session for " + videoId + " in "
+                        + (System.currentTimeMillis() - start) + " ms", ex);
+                // A page that showed an ad is not stuck, and its player can load the next video.
+                pageWorks = page != null && page.adShown;
+                if (attempt >= MAX_PAGE_ATTEMPTS || !(ex.getCause() instanceof PageFailedException)
+                        || System.currentTimeMillis() - start >= TIMEOUT_MILLISECONDS) {
+                    return null;
+                }
+            } finally {
+                if (page != null) {
+                    final Page usedPage = page;
+                    final boolean keep = pageWorks;
+                    // A page that gave no session can be stuck, so it is closed.
+                    Utils.runOnMainThread(() -> releasePage(usedPage, keep));
+                } else {
+                    // The page was not ready in time, and it is closed when it is.
+                    pageLoadFuture.thenAccept(pageLoad ->
+                            Utils.runOnMainThread(() -> releasePage(pageLoad.page, false)));
+                }
             }
-        });
-        Page page = null;
-        boolean pageWorks = false;
-        try {
-            PageLoad pageLoad = pageLoadFuture.get(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS);
-            page = pageLoad.page;
-            final long remaining = TIMEOUT_MILLISECONDS - (System.currentTimeMillis() - start);
-            Session session = pageLoad.session.get(Math.max(remaining, 0), TimeUnit.MILLISECONDS);
-            pageWorks = true;
-            final int blocked = page.blockedRequests.getAndSet(0);
-            final boolean inPage = page.loadedInPage;
-            Logger.printDebug(() -> "Website session of " + videoId + " in "
-                    + (System.currentTimeMillis() - start) + " ms" + (inPage ? " (loaded in the page)" : "")
-                    + ", PoToken bytes: "
-                    + (session.poToken == null ? 0 : session.poToken.length)
-                    + ", ustreamer config: " + (session.ustreamerConfig != null)
-                    + ", client: " + (session.clientInfo != null)
-                    + ", blocked page requests: " + blocked);
-            return session;
-        } catch (Exception ex) {
-            Logger.printInfo(() -> "The website gave no session for " + videoId + " in "
-                    + (System.currentTimeMillis() - start) + " ms", ex);
-            // A page that showed an ad is not stuck, and its player can load the next video.
-            pageWorks = page != null && page.adShown;
-            return null;
-        } finally {
-            if (page != null) {
-                final Page usedPage = page;
-                final boolean keep = pageWorks;
-                // A page that gave no session can be stuck, so it is closed.
-                Utils.runOnMainThread(() -> releasePage(usedPage, keep));
-            } else {
-                // The page was not ready in time, and it is closed when it is.
-                pageLoadFuture.thenAccept(pageLoad ->
-                        Utils.runOnMainThread(() -> releasePage(pageLoad.page, false)));
-            }
+            Logger.printDebug(() -> "Website session: opening another page for " + videoId);
         }
     }
 
@@ -471,7 +542,18 @@ public final class MwebSiteSession {
         mainHandler.removeCallbacks(closeIdlePages);
         Page page;
         synchronized (freePages) {
-            page = freePages.poll();
+            // The renderer is shared by all pages, so pages that are not used can be gone as well.
+            while ((page = freePages.poll()) != null && page.rendererGone) {
+                page.close();
+            }
+        }
+        if (page == null) {
+            Page warmUp = warmUpPage.get();
+            if (warmUp != null && !warmUp.rendererGone && warmUpPage.compareAndSet(warmUp, null)) {
+                // The page made while the app starts, which loads the video in its player
+                // even if BotGuard has not made its first PoToken yet.
+                page = warmUp;
+            }
         }
         if (page == null) {
             Logger.printDebug(() -> "Website session: making a new page");
@@ -485,15 +567,7 @@ public final class MwebSiteSession {
      * Main thread only.
      */
     private static void releasePage(Page page, boolean keep) {
-        page.loading = false;
         page.finishLoad();
-        if (page.coldSession != null) {
-            // The page is released once the player of the page sends the PoToken of the cold session.
-            page.keepAfterColdSession = keep;
-            mainHandler.removeCallbacks(page.coldSessionTimeout);
-            mainHandler.postDelayed(page.coldSessionTimeout, COLD_SESSION_TIMEOUT_MILLISECONDS);
-            return;
-        }
         addToFreePagesOrClose(page, keep);
     }
 
@@ -588,28 +662,9 @@ public final class MwebSiteSession {
         volatile boolean adShown;
 
         /**
-         * Session taken with the placeholder PoToken of a cold start, which gets the PoToken
-         * of the next requests of the player of the page, and its video.
+         * If the page was made while the app starts and opens its video. Main thread only.
          */
-        @Nullable
-        volatile Session coldSession;
-        @Nullable
-        volatile String coldVideoId;
-
-        /**
-         * If the page is kept for the next videos once the cold session has its PoToken. Main thread only.
-         */
-        boolean keepAfterColdSession;
-
-        /**
-         * If the page is loading a video and is not released yet. Main thread only.
-         */
-        boolean loading;
-
-        /**
-         * Gives up the PoToken of a cold session that the player of the page does not send. Main thread only.
-         */
-        final Runnable coldSessionTimeout = () -> finishColdSession(false);
+        boolean warmUp;
 
         /**
          * Checks the player of the page while a session is made. Main thread only.
@@ -672,9 +727,36 @@ public final class MwebSiteSession {
                     rendererGone = true;
                     CompletableFuture<Session> future = pending;
                     if (future != null) {
-                        future.completeExceptionally(new IllegalStateException("The page renderer is gone"));
+                        future.completeExceptionally(new PageFailedException("The page renderer is gone"));
                     }
                     return true;
+                }
+
+                @Override
+                public void onReceivedError(WebView v, WebResourceRequest request, WebResourceError error) {
+                    onMainFrameError(request, "error " + error.getErrorCode());
+                }
+
+                @Override
+                public void onReceivedHttpError(WebView v, WebResourceRequest request,
+                                                WebResourceResponse response) {
+                    onMainFrameError(request, "HTTP status " + response.getStatusCode());
+                }
+
+                /**
+                 * The watch page of the pending video cannot be loaded, for example without a network,
+                 * so the session fails now, instead of after the timeout.
+                 */
+                private void onMainFrameError(WebResourceRequest request, String error) {
+                    CompletableFuture<Session> future = pending;
+                    String videoId = pendingVideoId;
+                    // A page that is opened again stops the load of the page before it.
+                    if (future == null || videoId == null || !request.isForMainFrame()
+                            || !videoId.equals(request.getUrl().getQueryParameter("v"))) {
+                        return;
+                    }
+                    Logger.printInfo(() -> "Website session: the watch page cannot be loaded, " + error);
+                    future.completeExceptionally(new PageFailedException("The watch page cannot be loaded"));
                 }
 
                 @Nullable
@@ -739,10 +821,6 @@ public final class MwebSiteSession {
          * or opens the watch page of the video. Main thread only.
          */
         CompletableFuture<Session> load(String videoId) {
-            mainHandler.removeCallbacks(coldSessionTimeout);
-            coldSession = null;
-            coldVideoId = null;
-            loading = true;
             adShown = false;
             CompletableFuture<Session> future = new CompletableFuture<>();
             pendingVideoId = videoId;
@@ -754,7 +832,10 @@ public final class MwebSiteSession {
             mainHandler.removeCallbacks(watchdog);
             mainHandler.postDelayed(watchdog, WATCHDOG_INTERVAL_MILLISECONDS);
 
-            if (!madeSession || !VIDEO_ID_PATTERN.matcher(videoId).matches()) {
+            // The page made while the app starts has the player of its video, or is loading it.
+            final boolean hasPlayer = madeSession || warmUp;
+            warmUp = false;
+            if (!hasPlayer || !VIDEO_ID_PATTERN.matcher(videoId).matches()) {
                 openWatchPage(videoId);
                 return future;
             }
@@ -810,33 +891,11 @@ public final class MwebSiteSession {
             mainHandler.removeCallbacks(watchdog);
             pending = null;
             pendingVideoId = null;
-            if (rendererGone || coldSession != null) {
-                // The player of the page sends the PoToken of the cold session with its next requests.
+            if (rendererGone) {
                 return;
             }
             // The player of the page waits, and makes no more requests.
             webView.evaluateJavascript("window.__morpheHold=true;", null);
-        }
-
-        /**
-         * Ends the wait for the PoToken of the cold session, and releases the page. Main thread only.
-         */
-        void finishColdSession(boolean gotPoToken) {
-            mainHandler.removeCallbacks(coldSessionTimeout);
-            if (coldSession == null) {
-                return;
-            }
-            if (!gotPoToken) {
-                Logger.printDebug(() -> "Website session: no PoToken after the cold start of " + coldVideoId);
-            }
-            coldSession = null;
-            coldVideoId = null;
-            if (loading) {
-                // The page is released after the session is given, as any other page.
-                return;
-            }
-            finishLoad();
-            addToFreePagesOrClose(this, keepAfterColdSession && gotPoToken);
         }
 
         /**
@@ -845,7 +904,6 @@ public final class MwebSiteSession {
         void close() {
             Logger.printDebug(() -> "Website session: closing a page");
             mainHandler.removeCallbacks(watchdog);
-            mainHandler.removeCallbacks(coldSessionTimeout);
             if (webView.getParent() instanceof ViewGroup parent) {
                 parent.removeView(webView);
             }
@@ -853,127 +911,88 @@ public final class MwebSiteSession {
         }
     }
 
-    private static final class Bridge {
-        private final Page page;
-
-        Bridge(Page page) {
-            this.page = page;
-        }
+    @SuppressWarnings("unused")
+    private record Bridge(Page page) {
 
         /**
-         * @param pageVideoId   Video of the page address, or empty.
-         * @param playerVideoId Video of the player of the page, or empty.
-         * @param adShowing     If the player of the page shows an ad.
-         */
-        @JavascriptInterface
-        public void onSabrRequest(String url, String bodyBase64, String pageVideoId,
-                                  String playerVideoId, boolean adShowing) {
-            Session coldSession = page.coldSession;
-            String coldVideoId = page.coldVideoId;
-            if (coldSession != null && coldVideoId != null && !adShowing
-                    && (pageVideoId.isEmpty() || pageVideoId.equals(coldVideoId))
-                    && (playerVideoId.isEmpty() || playerVideoId.equals(coldVideoId))) {
+             * @param pageVideoId   Video of the page address, or empty.
+             * @param playerVideoId Video of the player of the page, or empty.
+             * @param adShowing     If the player of the page shows an ad.
+             */
+            @JavascriptInterface
+            public void onSabrRequest(String url, String bodyBase64, String pageVideoId,
+                                      String playerVideoId, boolean adShowing) {
+                CompletableFuture<Session> future = page.pending;
+                String videoId = page.pendingVideoId;
+                if (future == null || future.isDone() || videoId == null) {
+                    return;
+                }
+                page.sabrRequestSeen = true;
+                page.lastRequestTime = SystemClock.elapsedRealtime();
                 try {
-                    Session request = new Session(url, Base64.decode(bodyBase64, Base64.DEFAULT));
-                    final int poTokenLength = request.poToken == null ? 0 : request.poToken.length;
-                    if (poTokenLength >= MIN_PO_TOKEN_LENGTH) {
-                        coldSession.poToken = request.poToken;
-                        Logger.printDebug(() -> "Website session: PoToken of the cold start of " + coldVideoId
-                                + " after " + (SystemClock.elapsedRealtime() - page.openTime)
-                                + " ms, PoToken bytes: " + poTokenLength);
-                        mainHandler.post(() -> {
-                            if (page.coldSession == coldSession) {
-                                page.finishColdSession(true);
-                            }
-                        });
-                    }
-                } catch (Exception ex) {
-                    Logger.printInfo(() -> "Website session: could not read a request of the page", ex);
-                }
-                return;
-            }
-
-            CompletableFuture<Session> future = page.pending;
-            String videoId = page.pendingVideoId;
-            if (future == null || future.isDone() || videoId == null) {
-                return;
-            }
-            page.sabrRequestSeen = true;
-            page.lastRequestTime = SystemClock.elapsedRealtime();
-            try {
-                if (adShowing) {
-                    if (!page.adShown) {
-                        page.adShown = true;
-                        // The media requests of the page fail, so the ad never ends. The player of the page loads
-                        // the video again, and the ads are removed from its player response.
-                        // The watch page of the video has its player response in the page, with the ads.
-                        Logger.printDebug(() -> "Website session: the page shows an ad, loading the video again");
-                        mainHandler.post(() -> page.loadInPage(videoId, true));
-                    }
-                    return;
-                }
-                if ((!pageVideoId.isEmpty() && !pageVideoId.equals(videoId))
-                        || (!playerVideoId.isEmpty() && !playerVideoId.equals(videoId))) {
-                    Logger.printDebug(() -> "Website session: ignoring a request of another video, page: "
-                            + pageVideoId + " player: " + playerVideoId + " wanted: " + videoId);
-                    return;
-                }
-                Session session = new Session(url, Base64.decode(bodyBase64, Base64.DEFAULT));
-                final int poTokenLength = session.poToken == null ? 0 : session.poToken.length;
-                if (poTokenLength < MIN_PO_TOKEN_LENGTH) {
-                    if (poTokenLength > 0) {
-                        // The website starts the video with the placeholder, and sends the PoToken later.
-                        session.coldStart = true;
-                        page.coldVideoId = videoId;
-                        page.coldSession = session;
-                        Logger.printDebug(() -> "Website session: cold start of " + videoId + " after "
-                                + (SystemClock.elapsedRealtime() - page.openTime) + " ms, placeholder bytes: "
-                                + poTokenLength);
-                        future.complete(session);
+                    if (adShowing) {
+                        if (!page.adShown) {
+                            page.adShown = true;
+                            // The media requests of the page fail, so the ad never ends. The player of the page loads
+                            // the video again, and the ads are removed from its player response.
+                            // The watch page of the video has its player response in the page, with the ads.
+                            Logger.printDebug(() -> "Website session: the page shows an ad, loading the video again");
+                            mainHandler.post(() -> page.loadInPage(videoId, true));
+                        }
                         return;
                     }
-                    // The player sends the PoToken with the next requests,
-                    // which it makes again since the media requests fail.
-                    Logger.printDebug(() -> "Website session: waiting for the PoToken, request PoToken bytes: "
-                            + poTokenLength);
+                    if ((!pageVideoId.isEmpty() && !pageVideoId.equals(videoId))
+                            || (!playerVideoId.isEmpty() && !playerVideoId.equals(videoId))) {
+                        Logger.printDebug(() -> "Website session: ignoring a request of another video, page: "
+                                + pageVideoId + " player: " + playerVideoId + " wanted: " + videoId);
+                        return;
+                    }
+                    Session session = new Session(url, Base64.decode(bodyBase64, Base64.DEFAULT));
+                    final int poTokenLength = session.poToken == null ? 0 : session.poToken.length;
+                    if (poTokenLength < MIN_PO_TOKEN_LENGTH) {
+                        // No PoToken, or the placeholder that a new page sends until BotGuard makes the PoToken.
+                        // The player sends the PoToken with the next requests,
+                        // which it makes again since the media requests fail.
+                        Logger.printDebug(() -> "Website session: waiting for the PoToken, request PoToken bytes: "
+                                + poTokenLength);
+                        return;
+                    }
+                    future.complete(session);
+                } catch (Exception ex) {
+                    future.completeExceptionally(ex);
+                }
+            }
+
+            /**
+             * The player of the page cannot play the video, for example an age-restricted video
+             * of an account whose age is not verified, so the website gives no session for it.
+             * The session fails now, instead of after the timeout, and the next client is used.
+             *
+             * @param status      Playability status of the player of the page.
+             * @param pageVideoId Video of the page address, or empty.
+             */
+            @JavascriptInterface
+            public void onUnplayable(String status, String pageVideoId) {
+                CompletableFuture<Session> future = page.pending;
+                if (future == null || future.isDone() || !pageVideoId.equals(page.pendingVideoId)) {
                     return;
                 }
-                future.complete(session);
-            } catch (Exception ex) {
-                future.completeExceptionally(ex);
+                if (page.loadedInPage) {
+                    // The watch page opens the video with the parameters of the age and content checks,
+                    // which the player of the page does not have.
+                    Logger.printDebug(() -> "Website session: the player of the page cannot play the video, status: "
+                            + status + ", opening its watch page");
+                    page.loadedInPage = false;
+                    mainHandler.post(() -> page.openWatchPage(pageVideoId));
+                    return;
+                }
+                Logger.printDebug(() -> "Website session: the page cannot play the video, status: " + status);
+                future.completeExceptionally(new IllegalStateException("The page cannot play the video: " + status));
             }
-        }
 
-        /**
-         * The player of the page cannot play the video, for example an age-restricted video
-         * of an account whose age is not verified, so the website gives no session for it.
-         * The session fails now, instead of after the timeout, and the next client is used.
-         *
-         * @param status      Playability status of the player of the page.
-         * @param pageVideoId Video of the page address, or empty.
-         */
-        @JavascriptInterface
-        public void onUnplayable(String status, String pageVideoId) {
-            CompletableFuture<Session> future = page.pending;
-            if (future == null || future.isDone() || !pageVideoId.equals(page.pendingVideoId)) {
-                return;
+            @JavascriptInterface
+            public void onLog(String message) {
+                Logger.printDebug(() -> "Website session: " + message);
             }
-            if (page.loadedInPage) {
-                // The watch page opens the video with the parameters of the age and content checks,
-                // which the player of the page does not have.
-                Logger.printDebug(() -> "Website session: the player of the page cannot play the video, status: "
-                        + status + ", opening its watch page");
-                page.loadedInPage = false;
-                mainHandler.post(() -> page.openWatchPage(pageVideoId));
-                return;
-            }
-            Logger.printDebug(() -> "Website session: the page cannot play the video, status: " + status);
-            future.completeExceptionally(new IllegalStateException("The page cannot play the video: " + status));
         }
-
-        @JavascriptInterface
-        public void onLog(String message) {
-            Logger.printDebug(() -> "Website session: " + message);
-        }
-    }
 }

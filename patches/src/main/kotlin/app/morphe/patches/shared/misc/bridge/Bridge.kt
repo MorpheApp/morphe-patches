@@ -16,7 +16,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 /**
- * Adds a public method to an app class, which implements a method of an extension interface added to the class.
+ * Adds a method to a class, such as an override of a framework method or the replacement of
+ * an extension placeholder method. A method that implements an interface, so extension code
+ * can call it, is added with addPatchInterface instead.
  *
  * @param accessFlags The flags of the method. A default method of an interface cannot be final.
  */

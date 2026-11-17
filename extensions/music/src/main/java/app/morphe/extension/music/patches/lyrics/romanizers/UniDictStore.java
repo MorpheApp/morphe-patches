@@ -199,7 +199,7 @@ public final class UniDictStore {
         if (!archive.isFile()) {
             RomanizationDict.download(URL, archive, ARCHIVE, UniDictStore.CHANNEL);
         }
-        extract(archive, UniDictStore.CHANNEL);
+        extract(archive);
         Utils.deleteQuietly(archive);
 
         UniDictStore.CHANNEL.onReady(entries());
@@ -211,7 +211,7 @@ public final class UniDictStore {
      * candidate of the character being read, since taking the first line instead would pick
      * kHanyuPinlu, which is the poorer source and comes first alphabetically.
      */
-    private static void extract(File archive, RomanizationDict.Listener listener)
+    private static void extract(File archive)
             throws IOException {
         File directory = RomanizationDict.directory();
         if (directory == null) throw new IOException("no cache directory");
@@ -294,13 +294,13 @@ public final class UniDictStore {
                         }
 
                         if (size > 0 && done % (1 << 20) < line.length()) {
-                            listener.onBuilding((int) Math.min(100, done * 100 / size));
+                            UniDictStore.CHANNEL.onBuilding((int) Math.min(100, done * 100 / size));
                         }
                     }
                     for (int i = 0; i < TABLES.length; i++) {
                         if (pending[i] != null) writers[i].append(pending[i]);
                     }
-                    listener.onBuilding(100);
+                    UniDictStore.CHANNEL.onBuilding(100);
                 }
             }
         } finally {
@@ -353,8 +353,7 @@ public final class UniDictStore {
             if (cut >= 0) reading = reading.substring(0, cut).trim();
             cut = reading.indexOf(' ');
             if (cut > 0) reading = reading.substring(0, cut);
-            //noinspection SizeReplaceableByIsEmpty
-            if (reading.length() > 0) return reading.toLowerCase(Locale.ROOT);
+            if (Utils.isNotEmpty(reading)) return reading.toLowerCase(Locale.ROOT);
         }
         return null;
     }

@@ -542,6 +542,8 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_disable_chapter_skip_double_tap_title">Patayin ang double tap na paglaktaw sa kabanata</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Hindi pinapagana ang double-tap gesture gamit ang dalawang daliri na lumalaktaw sa mga chapter, na maaaring hindi sinasadyang ma-trigger gamit ang isang daliri</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Mag-download ng mga video, podcast, o kanta gamit ang mga app na pang-download ng third-party</string>
   <string name="morphe_external_downloader_overlay_button_title">Ipakita ang button para sa pag-download ng overlay ng player</string>
   <string name="morphe_external_downloader_overlay_button_summary">Ipinapakita ang button sa video player na nagbubukas ng iyong panlabas na downloader</string>
@@ -558,6 +560,10 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_shorts_download_flyout_button_title">Ipakita ang pag-download sa Shorts menu</string>
   <string name="morphe_shorts_download_flyout_button_summary">Nagdaragdag ng download item sa menu ng Shorts player</string>
   <string name="morphe_shorts_download_flyout_title">I-download</string>
+  <string name="morphe_feed_download_flyout_button_title">Ipakita ang download sa mga menu ng video</string>
+  <string name="morphe_feed_download_flyout_button_summary">Nagdaragdag ng download item sa mga menu ng mga video sa feed na wala nito, gaya ng mga video na pinapayagan lamang ng YouTube na i-download ng mga Premium member</string>
+  <string name="morphe_download_force_4k_title">Sapiliting maging available ang 4K download</string>
+  <string name="morphe_download_force_4k_summary">Nag-aalok ng 1440p at 4K na mga download kahit na magpasya ang YouTube na hindi ito maaaring i-play ng device na ito. Ang mga naturang video ay maaaring mag-play nang walang video sa loob ng YouTube, ngunit maaaring i-export sa iyong device</string>
   <string name="morphe_export_download_folder_title">I-export ang mga na-save na video</string>
   <string name="morphe_export_download_folder_summary">"I-export ang mga na-save na video sa app sa storage ng iyong device gamit ang in-app downloads flyout menu. I-tap para baguhin ang export folder
 
@@ -1486,7 +1492,7 @@ Automotive layout
   <string name="morphe_dearrow_titles_player_title">Mga playlist &amp; rekomendasyon ng player</string>
   <string name="morphe_dearrow_titles_search_title">Mga resulta ng paghahanap</string>
   <string name="morphe_dearrow_titles_icon_title">Ipakita ang icon ng DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Ipinapakita ang icon ng DeArrow sa mga crowdsourced video title. I-tap ang icon upang ipakita ang orihinal na pamagat at thumbnail</string>
+  <string name="morphe_dearrow_titles_icon_summary">Ipinapakita ang icon ng DeArrow sa mga titulo ng mga video na may crowdsourced na titulo o thumbnail. I-tap ang icon upang ipakita ang orihinal na titulo at thumbnail</string>
   <string name="morphe_dearrow_casual_mode_title">Kaswal na mode</string>
   <string name="morphe_dearrow_casual_mode_summary">Ipinapakita ang orihinal na pamagat sa halip na pamagat ng DeArrow kung ang mga gumagamit ng DeArrow ay bumoto na gusto nila ang orihinal na pamagat</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum na kaswal na boto upang ipakita ang orihinal na pamagat</string>
@@ -1588,6 +1594,16 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <string name="morphe_disable_haptic_feedback_zoom_title">I-disable ang haptics ng pag-zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Kung kamakailan mong binago ang mga detalye ng login ng iyong account, i-uninstall at i-reinstall ang MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">I-save ang mga push notification</string>
+  <string name="morphe_debug_save_push_notifications_summary">Isinasave ang mga natanggap na push notification sa isang file sa app data. Maaaring maglaman ang file ng pribadong impormasyon, gaya ng mga text ng notification at mga pangalan ng channel</string>
+  <string name="morphe_debug_saved_push_notifications_title">I-export ang mga na-save na push notification</string>
+  <string name="morphe_debug_saved_push_notifications_summary">I-export o linisin ang mga na-save na push notification</string>
+  <string name="morphe_debug_saved_push_notifications_count">Mga na-save na push notification: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Walang nahanap na mga na-save na push notification</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Matagumpay na na-export ang mga push notification</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Nabigong i-export ang mga push notification</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Nalinis na ang mga na-save na push notification</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Laktawan ang mga redirect ng link</string>
   <string name="morphe_bypass_link_redirects_summary">Binubuksan ang orihinal na link nang direkta, nilalaktawan ang link ng pagsubaybay (youtube.com/redirect)</string>

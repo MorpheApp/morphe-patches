@@ -34,7 +34,19 @@ public class SidebarPreferenceCategory extends ConditionalPreferenceCategory {
         if (HideSidebarComponentsPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_RECENTLY_VISITED_SHELF
+                    Settings.HIDE_POPULAR_SHELF
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_LATEST_SHELF
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_DISCOVER_COMMUNITIES_SHELF
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_START_A_COMMUNITY_SHELF
             ));
             addPreference(new BooleanSettingPreference(
                     context,
@@ -42,16 +54,19 @@ public class SidebarPreferenceCategory extends ConditionalPreferenceCategory {
             ));
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_REDDIT_PRO_SHELF
+                    Settings.HIDE_RECENTLY_VISITED_SHELF
             ));
-
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_ABOUT_SHELF
+                    Settings.HIDE_REDDIT_PRO_SHELF
             ));
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_RESOURCES_SHELF
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ABOUT_SHELF
             ));
         }
 

@@ -542,6 +542,8 @@ Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk se
   <string name="morphe_disable_chapter_skip_double_tap_title">Nonaktifkan lewati bab dengan ketuk dua kali</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Menonaktifkan gerakan ketuk dua jari yang melewati bab, yang mungkin terpicu secara tidak sengaja dengan satu jari</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Unduh video, podcast, atau lagu menggunakan aplikasi pihak ketiga</string>
   <string name="morphe_external_downloader_overlay_button_title">Tampilkan tombol unduh di hamparan pemutar</string>
   <string name="morphe_external_downloader_overlay_button_summary">Menampilkan tombol di pemutar video yang membuka pengunduh eksternal Anda</string>
@@ -558,6 +560,10 @@ Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk se
   <string name="morphe_shorts_download_flyout_button_title">Tampilkan download di menu Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Menambahkan item download ke menu pemutar Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
+  <string name="morphe_feed_download_flyout_button_title">Tampilkan download di menu video</string>
+  <string name="morphe_feed_download_flyout_button_summary">Menambahkan item download ke menu video di feed yang tidak memilikinya, seperti video yang hanya boleh diunduh oleh anggota Premium YouTube</string>
+  <string name="morphe_download_force_4k_title">Paksa ketersediaan unduhan 4K</string>
+  <string name="morphe_download_force_4k_summary">Menawarkan unduhan 1440p dan 4K meskipun YouTube memutuskan bahwa perangkat ini tidak dapat memutarnya. Video tersebut mungkin diputar tanpa video di dalam YouTube, tetapi dapat diekspor ke perangkat Anda</string>
   <string name="morphe_export_download_folder_title">Ekspor video yang disimpan</string>
   <string name="morphe_export_download_folder_summary">"Ekspor video yang disimpan di dalam aplikasi ke penyimpanan perangkat Anda menggunakan menu flyout unduhan dalam aplikasi. Ketuk untuk mengganti folder ekspor
 
@@ -1485,7 +1491,7 @@ Tata letak Otomotif
   <string name="morphe_dearrow_titles_player_title">Daftar putar &amp; rekomendasi pemutar</string>
   <string name="morphe_dearrow_titles_search_title">Hasil pencarian</string>
   <string name="morphe_dearrow_titles_icon_title">Tampilkan ikon DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Menampilkan ikon DeArrow pada judul video crowdsourced. Ketuk ikon untuk menampilkan judul dan thumbnail asli</string>
+  <string name="morphe_dearrow_titles_icon_summary">Menampilkan ikon DeArrow pada judul video dengan judul atau thumbnail hasil crowdsourcing. Ketuk ikon untuk menampilkan judul dan thumbnail asli</string>
   <string name="morphe_dearrow_casual_mode_title">Mode kasual</string>
   <string name="morphe_dearrow_casual_mode_summary">Menampilkan judul asli, bukan judul DeArrow, jika pengguna DeArrow memberikan suara bahwa mereka menyukai judul asli</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Jumlah minimum suara kasual untuk menampilkan judul asli</string>
@@ -1587,6 +1593,16 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <string name="morphe_disable_haptic_feedback_zoom_title">Nonaktifkan sentuh getar zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, copot dan pasang ulang MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Simpan notifikasi dorong</string>
+  <string name="morphe_debug_save_push_notifications_summary">Menyimpan notifikasi dorong yang diterima ke file di data aplikasi. File tersebut dapat menyertakan informasi pribadi, seperti teks notifikasi dan nama saluran</string>
+  <string name="morphe_debug_saved_push_notifications_title">Ekspor notifikasi dorong yang disimpan</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Ekspor atau hapus notifikasi dorong yang disimpan</string>
+  <string name="morphe_debug_saved_push_notifications_count">Notifikasi dorong yang disimpan: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Tidak ada notifikasi dorong yang disimpan yang ditemukan</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Notifikasi dorong berhasil diekspor</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Gagal mengekspor notifikasi dorong</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Notifikasi dorong yang disimpan telah dihapus</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Lewati pengalihan tautan</string>
   <string name="morphe_bypass_link_redirects_summary">Membuka tautan asli secara langsung, melewati tautan pelacakan (youtube.com/redirect)</string>

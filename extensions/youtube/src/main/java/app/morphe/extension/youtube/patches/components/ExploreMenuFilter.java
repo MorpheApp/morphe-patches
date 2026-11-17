@@ -14,6 +14,7 @@ import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.patches.ClassicSubscriptionsLayoutPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -22,6 +23,7 @@ public final class ExploreMenuFilter extends Filter {
     private final StringFilterGroup divider;
     private final StringFilterGroup exploreMenu;
     private final ByteArrayFilterGroupList exploreMenuGroupList = new ByteArrayFilterGroupList();
+    private final StringFilterGroup moreTabItem;
     private final StringFilterGroup incognitoExploreButton;
     private final ByteArrayFilterGroup incognitoExploreButtonBuffer;
     private final StringFilterGroup searchBarMicrophoneButton;
@@ -57,7 +59,9 @@ public final class ExploreMenuFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_HYPE_MENU,
                         "yt_outline_star_shooting",
-                        "yt_outline_experimental_hype"
+                        "yt_outline_experimental_hype",
+                        // "Charts" of the "More" tab of Home, which has no icon name.
+                        "FEhype_leaderboard"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_LEARNING_MENU,
@@ -123,7 +127,9 @@ public final class ExploreMenuFilter extends Filter {
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_YOUTUBE_PREMIUM_MENU,
-                        "product_logo_youtube"
+                        // Not the logos of the other apps, such as product_logo_youtube_studio_color_24.
+                        "product_logo_youtube_2024",
+                        "product_logo_youtube_color"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_YOUTUBE_STUDIO_MENU,
@@ -134,6 +140,13 @@ public final class ExploreMenuFilter extends Filter {
                         "yt_outline_info_circle",
                         "yt_outline_experimental_info_circle"
                 )
+        );
+
+        // The A/B layout with tabs at the top of Home has the items of the explore menu in its "More" tab.
+        // Each item is an element of its own, with the icon and the destination of the item.
+        moreTabItem = new StringFilterGroup(
+                null,
+                "list_item.e"
         );
 
         incognitoExploreButton = new StringFilterGroup(
@@ -174,6 +187,7 @@ public final class ExploreMenuFilter extends Filter {
         addPathCallbacks(
                 divider,
                 exploreMenu,
+                moreTabItem,
                 legalDisclosureAndPrivacyToS,
                 incognitoExploreButton,
                 searchBarMicrophoneButton,
@@ -198,6 +212,12 @@ public final class ExploreMenuFilter extends Filter {
 
         if (matchedGroup == exploreMenu) {
             return Utils.startsWith(path, "more_drawer.e") && exploreMenuGroupList.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == moreTabItem) {
+            return Utils.startsWith(path, "list_item.e")
+                    && ClassicSubscriptionsLayoutPatch.HOME_BROWSE_ID.equals(LayoutComponentsFilter.browseId)
+                    && exploreMenuGroupList.check(buffer).isFiltered();
         }
 
         if (matchedGroup == incognitoExploreButton) {

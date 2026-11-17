@@ -542,6 +542,8 @@ Posle prvog otvaranja videa sa dugmetom Ask, funkcija radi sa svim videima, čak
   <string name="morphe_disable_chapter_skip_double_tap_title">Onemogući preskakanje poglavlja dvostrukim dodirom</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Onemogućava dvostruki dodir sa dva prsta koji preskače poglavlja, što se može slučajno aktivirati jednim prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Preuzmite video snimke, podkaste ili pesme pomoću aplikacija za preuzimanje trećih strana</string>
   <string name="morphe_external_downloader_overlay_button_title">Prikaži dugme za preuzimanje u pregledu plejera</string>
   <string name="morphe_external_downloader_overlay_button_summary">Prikazuje dugme u video plejeru koje otvara vaš spoljni program za preuzimanje</string>
@@ -558,6 +560,10 @@ Posle prvog otvaranja videa sa dugmetom Ask, funkcija radi sa svim videima, čak
   <string name="morphe_shorts_download_flyout_button_title">Prikaži preuzimanje u izborniku Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Dodaje stavku za preuzimanje u meni Shorts plejera</string>
   <string name="morphe_shorts_download_flyout_title">Preuzmi</string>
+  <string name="morphe_feed_download_flyout_button_title">Prikaži preuzimanje u video menijima</string>
+  <string name="morphe_feed_download_flyout_button_summary">Dodaje stavku za preuzimanje u menije videa u feed-u koji je nemaju, kao što su video snimci koje YouTube dozvoljava da preuzmu samo Premium članovi</string>
+  <string name="morphe_download_force_4k_title">Prisili dostupnost 4K preuzimanja</string>
+  <string name="morphe_download_force_4k_summary">Omogućava preuzimanja u 1440p i 4K rezoluciji čak i ako YouTube odluči da ovaj uređaj ne može da ih reprodukuje. Takvi video-zapisi se možda neće prikazivati unutar YouTube-a, ali mogu biti izvezeni na vaš uređaj</string>
   <string name="morphe_export_download_folder_title">Izvezi sačuvane video zapise</string>
   <string name="morphe_export_download_folder_summary">"Izvezite video zapise sačuvane u aplikaciji u memoriju vašeg uređaja koristeći iskačući meni za preuzimanja u aplikaciji. Dodirnite da promenite folder za izvoz
 
@@ -1485,7 +1491,7 @@ Automotive raspored
   <string name="morphe_dearrow_titles_player_title">Plejliste &amp; preporuke plejera</string>
   <string name="morphe_dearrow_titles_search_title">Rezultati pretrage</string>
   <string name="morphe_dearrow_titles_icon_title">Prikaži DeArrow ikonu</string>
-  <string name="morphe_dearrow_titles_icon_summary">Prikazuje DeArrow ikonicu na naslovima video snimaka koji su dobili crowdsourced naslove. Dodirnite ikonicu da biste videli originalni naslov i sličicu</string>
+  <string name="morphe_dearrow_titles_icon_summary">Prikazuje DeArrow ikonu na naslovima video-zaklipaka sa crowdsourced naslovom ili sličicom. Dodirnite ikonu da prikažete originalni naslov i sličicu</string>
   <string name="morphe_dearrow_casual_mode_title">Opušteni režim</string>
   <string name="morphe_dearrow_casual_mode_summary">Prikazuje originalni naslov umesto DeArrow naslova ako su DeArrow korisnici glasali da im se sviđa originalni naslov</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalni broj neobaveznih glasova za prikaz originalnog naslova</string>
@@ -1587,6 +1593,16 @@ Video snimci se zahtevaju kratkim prefiksom hešovanog ID-ja, tako da server ne 
   <string name="morphe_disable_haptic_feedback_zoom_title">Onemogući vibraciju pri uveličavanju</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ako ste nedavno promenili podatke za prijavu na nalog, deinstalirajte i ponovo instalirajte MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Sačuvaj push obaveštenja</string>
+  <string name="morphe_debug_save_push_notifications_summary">Čuva primljena push obaveštenja u datoteku u podacima aplikacije. Datoteka može sadržati privatne informacije, kao što su tekstovi obaveštenja i nazivi kanala</string>
+  <string name="morphe_debug_saved_push_notifications_title">Izvezi sačuvana push obaveštenja</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Izvezi ili obriši sačuvana push obaveštenja</string>
+  <string name="morphe_debug_saved_push_notifications_count">Sačuvana push obaveštenja: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nijedno sačuvano push obaveštenje nije pronađeno</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push obaveštenja su uspešno izvezena</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Izvoz push obaveštenja nije uspeo</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Sačuvana push obaveštenja su obrisana</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Zaobiđi preusmeravanja linkova</string>
   <string name="morphe_bypass_link_redirects_summary">Otvara originalni link direktno, zaobilazeći link za praćenje (youtube.com/redirect)</string>

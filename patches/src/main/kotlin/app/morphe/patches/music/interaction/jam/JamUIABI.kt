@@ -21,12 +21,9 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-
-private const val OBJECT = "Ljava/lang/Object;"
 
 internal data class JamUiAbi(
     val clock: ClockAbi,
@@ -47,8 +44,8 @@ internal data class AutoplayUiAbi(
     val setLimit: MethodReference,
     val header: FieldReference,
     val clearHeader: MethodReference,
-    val headerStart: Int,
-    val headerIndexRegister: Int,
+    val visibilityCheck: Int,
+    val setLimitIndex: Int,
 )
 
 internal data class ClockAbi(
@@ -332,8 +329,7 @@ private fun resolveNowPlaying(
 }
 
 private fun resolveArtwork(): ArtworkAbi {
-    val imageType = ArtworkCropFingerprint.originalClassDef.type
-    val match = nowPlayingArtworkFingerprint(imageType).match()
+    val match = NowPlayingArtworkFingerprint.match()
     val image = match.instructionMatches[0].fieldReference
     return ArtworkAbi(match.originalClassDef.type, match.originalMethod, image)
 }
@@ -478,7 +474,9 @@ private fun resolveAutoplayUi(queue: JamQueueAbi): AutoplayUiAbi {
         queue.managerType, queue.displays.autoplay.type
     ).originalClassDef
     val refresh = autoplaySectionRefreshFingerprint(owner.type).match()
-    val setLimit = refresh.instructionMatches[1].methodReference
+    val visibilityCheck = refresh.instructionMatches[1].index
+    val setLimitMatch = refresh.instructionMatches[2]
+    val setLimit = setLimitMatch.methodReference
     val method = refresh.originalMethod
     val limiter = method.findInstructionIndicesReversedOrThrow(
         fieldAccess(
@@ -489,7 +487,7 @@ private fun resolveAutoplayUi(queue: JamQueueAbi): AutoplayUiAbi {
     ).map { method.getInstruction(it).getReference<FieldReference>()!! }
         .distinct()
         .singleOrNull() ?: error("Missing or ambiguous Jam autoplay display limiter")
-    val clear = refresh.instructionMatches[2]
+    val clear = refresh.instructionMatches[3]
     val headerInstruction = method.getInstruction(clear.index - 1)
     val header =
         headerInstruction.getReference<FieldReference>()
@@ -497,22 +495,13 @@ private fun resolveAutoplayUi(queue: JamQueueAbi): AutoplayUiAbi {
     check(headerInstruction.opcode == Opcode.IGET_OBJECT && header.definingClass == owner.type) {
         "Unexpected Jam autoplay header access"
     }
-    val headerCreation = autoplayHeaderCreationFingerprint(header).match(method, owner)
-    val headerStart = headerCreation.instructionMatches[0].index
-    val addHeader = method.findInstructionIndicesReversedOrThrow(
-        methodCall(name = "add", parameters = listOf("I", OBJECT), returnType = "V")
-    ).single()
-    val headerIndexRegister = method.getInstruction<FiveRegisterInstruction>(addHeader).registerD
-    check(headerIndexRegister < method.p0Register && method.p0Register > 0) {
-        "Unexpected Jam autoplay header index register"
-    }
     return AutoplayUiAbi(
         method,
         limiter,
         setLimit,
         header,
         clear.methodReference,
-        headerStart,
-        headerIndexRegister,
+        visibilityCheck,
+        setLimitMatch.index,
     )
 }

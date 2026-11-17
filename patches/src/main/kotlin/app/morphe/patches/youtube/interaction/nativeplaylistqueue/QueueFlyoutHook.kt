@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.youtube.layout.flyout.FeedFlyoutButtonsInitializerFingerprint
@@ -79,12 +80,9 @@ internal fun installQueueFlyout() {
     }
 
     val menu = mutableClassDefBy(menuType)
-    menu.interfaces.add($$"$${ACTIONS.removeSuffix(";")}$Menu;")
-    menu.addBridgeMethod(
+    menu.addPatchInterface(
+        $$"$${ACTIONS.removeSuffix(";")}$Menu;",
         "patch_parseQueueFlyout",
-        listOf("[B"),
-        MESSAGE,
-        2,
         """
             ${parseProtoInstructions(menuType, bytes = "p1", result = "v0", registry = "v1")}
             return-object v0

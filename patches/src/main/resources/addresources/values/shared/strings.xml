@@ -76,18 +76,27 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_settings_export_file_success">Settings exported successfully</string>
     <string name="morphe_settings_export_file_failed">Failed to export settings</string>
 
-    <!-- String is also duplicated in Reddit about preference -->
-    <string name="morphe_settings_about_links_body_version_current">You are using the latest Morphe Patches version &lt;i>%s&lt;/i></string>
-    <string name="morphe_settings_about_links_body_version_outdated">You are using Morphe Patches version &lt;i>%1$s&lt;/i>&lt;br>&lt;br>&lt;b>Update available: &lt;i>%2$s&lt;/i>&lt;/b>&lt;br>&lt;br>To update your patches, use Morphe to repatch this app</string>
-    <string name="morphe_settings_about_links_dev_header">Note</string>
-    <string name="morphe_settings_about_links_dev_body">This version is a pre-release and you may experience unexpected issues</string>
+    <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+    <string name="morphe_settings_about_component">Patches</string>
+    <string name="morphe_settings_about_version">Version</string>
+    <string name="morphe_settings_about_close">Close</string>
+    <string name="morphe_settings_about_prerelease">Pre-release</string>
+    <string name="morphe_settings_about_update_available">Update available: %s</string>
+    <string name="morphe_settings_about_update_hint">To update your patches, use Morphe to repatch this app</string>
     <string name="morphe_settings_about_links_header">Official links</string>
     <string name="morphe_settings_about_links_website">Website</string>
     <string name="morphe_settings_about_links_donate">Donate</string>
     <string name="morphe_settings_about_links_translations">Translations</string>
-    <string name="morphe_settings_about_links_credits">Credits</string>
     <string name="morphe_settings_about_links_dev_header_up_to_date">Up to date</string>
-    <string name="morphe_settings_about_links_dev_header_update_available">Update available</string>
+    <string name="morphe_settings_about_contributors">Contributors</string>
+    <string name="morphe_settings_about_contributors_period">Last 12 months</string>
+    <!-- People who donate to Morphe -->
+    <string name="morphe_settings_about_supporters">Supporters</string>
+    <string name="morphe_settings_about_supporters_summary">Backers on Open Collective</string>
+    <string name="morphe_settings_about_supporters_become">Become a supporter</string>
+    <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+    <string name="morphe_settings_about_people_more">And %s more</string>
+    <string name="morphe_settings_about_people_unavailable">Could not load the list</string>
     <string name="morphe_settings_about_contributors_current">Current development</string>
     <string name="morphe_settings_about_contributors_prior">Prior development</string>
     <string name="morphe_settings_about_links_morphe">Active development</string>

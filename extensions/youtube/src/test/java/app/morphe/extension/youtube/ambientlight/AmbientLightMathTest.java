@@ -245,12 +245,12 @@ public class AmbientLightMathTest {
 
     @Test
     public void darkLightNeedsNoCoverOnADarkPage() {
-        assertEquals(0f, AmbientLightMath.readabilityCover(flatLight(10, 10, 0.3f), 10, 10, 0, true), 0f);
+        assertEquals(0f, AmbientLightMath.readabilityCover(flatLight(10, 10, 0.3f), 10, 10, 0, 0, 0, 10, true), 0f);
     }
 
     @Test
     public void brightLightIsCoveredDownToAReadableBrightnessOnADarkPage() {
-        float cover = AmbientLightMath.readabilityCover(flatLight(10, 10, 1f), 10, 10, 0, true);
+        float cover = AmbientLightMath.readabilityCover(flatLight(10, 10, 1f), 10, 10, 0, 0, 0, 10, true);
         assertEquals(0.5f, 1f - cover, 0.02f);
     }
 
@@ -258,14 +258,14 @@ public class AmbientLightMathTest {
     public void aFewBrightSpotsDoNotCoverThePage() {
         float[] light = flatLight(10, 10, 0.3f);
         Arrays.fill(light, 0, 3 * 5, 1f);
-        assertEquals(0f, AmbientLightMath.readabilityCover(light, 10, 10, 0, true), 0f);
+        assertEquals(0f, AmbientLightMath.readabilityCover(light, 10, 10, 0, 0, 0, 10, true), 0f);
     }
 
     @Test
     public void darkLightIsCoveredOnALightPage() {
-        float cover = AmbientLightMath.readabilityCover(flatLight(10, 10, 0.1f), 10, 10, 0, false);
+        float cover = AmbientLightMath.readabilityCover(flatLight(10, 10, 0.1f), 10, 10, 0, 0, 0, 10, false);
         assertTrue(cover > 0f);
-        assertEquals(0f, AmbientLightMath.readabilityCover(flatLight(10, 10, 0.9f), 10, 10, 0, false), 0f);
+        assertEquals(0f, AmbientLightMath.readabilityCover(flatLight(10, 10, 0.9f), 10, 10, 0, 0, 0, 10, false), 0f);
     }
 
     @Test
@@ -282,7 +282,17 @@ public class AmbientLightMathTest {
     public void onlyTheRowsBelowThePictureCount() {
         float[] light = flatLight(10, 10, 0.3f);
         Arrays.fill(light, 0, 3 * 10 * 5, 1f);
-        assertEquals(0f, AmbientLightMath.readabilityCover(light, 10, 10, 5, true), 0f);
+        assertEquals(0f, AmbientLightMath.readabilityCover(light, 10, 10, 5, 5, 0, 10, true), 0f);
+    }
+
+    @Test
+    public void thePageNextToThePlayerCountsToo() {
+        // The player covers the upper left of the window, and a bright picture lights the column next to it.
+        float[] light = flatLight(10, 10, 0.3f);
+        for (int y = 0; y < 5; y++) Arrays.fill(light, 3 * (y * 10 + 6), 3 * (y * 10 + 10), 1f);
+        assertTrue(AmbientLightMath.readabilityCover(light, 10, 10, 5, 0, 0, 6, true) > 0f);
+        // A player as wide as the window has no page next to it.
+        assertEquals(0f, AmbientLightMath.readabilityCover(light, 10, 10, 5, 0, 0, 10, true), 0f);
     }
 
     @Test
@@ -397,6 +407,14 @@ public class AmbientLightMathTest {
         assertFalse(AmbientLightMath.isConverted(scene(0), scaled(scene(0), 17, 20, 38)));
         // Every level raised by the same amount, which moves the bright parts too far.
         assertFalse(AmbientLightMath.isConverted(scene(0), scaled(scene(0), 1, 1, 30)));
+    }
+
+    @Test
+    public void blackPictureIsFound() {
+        assertTrue(AmbientLightMath.isBlack(filled(0xFF000000, 48 * 27)));
+        assertTrue(AmbientLightMath.isBlack(filled(0xFF101010, 48 * 27)));
+        assertFalse(AmbientLightMath.isBlack(filled(0xFF202020, 48 * 27)));
+        assertFalse(AmbientLightMath.isBlack(scene(0)));
     }
 
     @Test

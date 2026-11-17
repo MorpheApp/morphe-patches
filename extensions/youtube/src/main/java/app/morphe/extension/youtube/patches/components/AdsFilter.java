@@ -12,6 +12,7 @@ package app.morphe.extension.youtube.patches.components;
 
 import android.view.View;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -22,6 +23,8 @@ import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Element;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementModel;
 import app.morphe.extension.youtube.patches.NavigationBarPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
@@ -49,6 +52,15 @@ public final class AdsFilter extends Filter {
      */
     private static final String STATEMENT_BANNER = "statement_banner";
     private static final String YOODLE = "EgliaWd5b29kbGU"; // Base64 chunk that decodes to 'bigyoodle'
+    /**
+     * Browse id of the Premium page, opened by the buttons of the Premium promotions.
+     */
+    private static final String PREMIUM_BROWSE_ID = "SPunlimited";
+    /**
+     * Images of the YouTube promotions, such as https://www.gstatic.com/youtube/img/promos/growth/abc_960x300.png.
+     * The images of the videos are on other hosts.
+     */
+    private static final String PROMOTION_IMAGE_PATH = "gstatic.com/youtube/img/promos/";
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
@@ -315,6 +327,19 @@ public final class AdsFilter extends Filter {
     public static byte[] hideStatementBanner(byte[] bytes) {
         try {
             final String elementText = FeedVideoCardsPatch.getElementText(bytes);
+            if (elementText.contains(PREMIUM_BROWSE_ID) && elementText.contains(PROMOTION_IMAGE_PATH)
+                    && Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get()) {
+                // The accounts of a newer A/B test of the feed cards get the Premium promotion as a card,
+                // with a promotion image instead of the thumbnail of a video.
+                ElementModel model = Element.parseFrom(bytes).getType().getComponentType().getModel();
+                if (model.hasLockupModel() && model.getLockupModel().getViewModel().getLockupViewModel()
+                        .getContentImage().getThumbnailViewModel().getImage()
+                        .toString(StandardCharsets.ISO_8859_1).contains(PROMOTION_IMAGE_PATH)) {
+                    Logger.printDebug(() -> "Hiding YouTube Premium promotion card");
+                    return EMPTY_BYTE_ARRAY;
+                }
+            }
+
             if (elementText.contains(STATEMENT_BANNER)) {
                 final boolean isDoodle = elementText.contains(YOODLE);
 

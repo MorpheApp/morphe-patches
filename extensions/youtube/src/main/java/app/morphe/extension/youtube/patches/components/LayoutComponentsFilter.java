@@ -1552,7 +1552,7 @@ public final class LayoutComponentsFilter extends Filter {
      * and shows its real text only about a second after the menu opens. A filter of the download text
      * therefore also hides the placeholder, otherwise the item is shown and then collapses.
      */
-    private static boolean isFlyoutMenuFiltered(String menuTitle) {
+    public static boolean isFlyoutMenuFiltered(String menuTitle) {
         final boolean isDownloadPlaceholder = menuTitle.equals(ResourceUtils.getString("menu_offline_placeholder"));
 
         for (String filter : flyoutMenuFilterStrings) {
@@ -1678,7 +1678,7 @@ public final class LayoutComponentsFilter extends Filter {
         return Settings.HIDE_YOU_MAY_LIKE_SECTION.get()
                 // The 'You may like' section is only visible when no search terms are entered.
                 // To avoid unnecessary collection traversals, filtering is performed only when the typedString is empty.
-                && TextUtils.isEmpty(typedString);
+                && Utils.isEmpty(typedString);
     }
 
     /**

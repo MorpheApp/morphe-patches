@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">禁用双击章节跳过</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">禁用双指双击跳过章节的手势，该手势可能被单指意外触发</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">使用第三方下载应用程序下载视频、播客或歌曲</string>
   <string name="morphe_external_downloader_overlay_button_title">显示播放器覆盖层下载按钮</string>
   <string name="morphe_external_downloader_overlay_button_summary">在视频播放器中显示一个打开外部下载器的按钮</string>
@@ -558,6 +560,10 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">在 Shorts 菜单中显示下载</string>
   <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器菜单中添加下载项</string>
   <string name="morphe_shorts_download_flyout_title">下载</string>
+  <string name="morphe_feed_download_flyout_button_title">在视频菜单中显示下载</string>
+  <string name="morphe_feed_download_flyout_button_summary">为 feed 中原本没有下载项的视频菜单添加下载项，例如 YouTube 仅允许 Premium 会员下载的视频</string>
+  <string name="morphe_download_force_4k_title">强制 4K 下载可用性</string>
+  <string name="morphe_download_force_4k_summary">即使 YouTube 认为此设备无法播放，仍提供 1440p 和 4K 下载。此类视频在 YouTube 内部可能无法播放，但可以导出到您的设备</string>
   <string name="morphe_export_download_folder_title">导出已保存的视频</string>
   <string name="morphe_export_download_folder_summary">"使用应用内下载弹出菜单将应用内保存的视频导出到设备存储空间。点击以更改导出文件夹
 
@@ -1486,7 +1492,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">播放器播放列表&amp;推荐</string>
   <string name="morphe_dearrow_titles_search_title">搜索结果</string>
   <string name="morphe_dearrow_titles_icon_title">显示DeArrow图标</string>
-  <string name="morphe_dearrow_titles_icon_summary">在众包视频标题上显示 DeArrow 图标。点击该图标可显示原始标题和缩略图</string>
+  <string name="morphe_dearrow_titles_icon_summary">在具有众包标题或缩略图的视频标题上显示 DeArrow 图标。点击该图标可显示原始标题和缩略图</string>
   <string name="morphe_dearrow_casual_mode_title">休闲模式</string>
   <string name="morphe_dearrow_casual_mode_summary">如果DeArrow用户投票赞成原标题，则显示原标题而不是DeArrow标题</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">显示原标题所需的最低休闲票数</string>
@@ -1588,6 +1594,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">禁用缩放触觉反馈</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">如果您最近更改了账户登录信息，请卸载并重新安装 MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">保存推送通知</string>
+  <string name="morphe_debug_save_push_notifications_summary">将接收到的推送通知保存到应用数据文件中。该文件可能包含私密信息，例如通知文本和频道名称</string>
+  <string name="morphe_debug_saved_push_notifications_title">导出已保存的推送通知</string>
+  <string name="morphe_debug_saved_push_notifications_summary">导出或清除已保存的推送通知</string>
+  <string name="morphe_debug_saved_push_notifications_count">已保存的推送通知：%s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">未找到已保存的推送通知</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">推送通知导出成功</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">导出推送通知失败</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">已清除保存的推送通知</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">绕过链接重定向</string>
   <string name="morphe_bypass_link_redirects_summary">直接打开原始链接，绕过跟踪链接 (youtube.com/redirect)</string>

@@ -542,6 +542,8 @@ Egy alkalommal megnyitott, Ask gombbal ellátott videó esetén a funkció minde
   <string name="morphe_disable_chapter_skip_double_tap_title">Fejezetugrás dupla koppintással letiltása</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Letiltja a kétujjas dupla koppintásos fejezetugrást, amely véletlenül egy ujjal is aktiválódhat</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Töltsön le videókat, podcastokat vagy dalokat harmadik féles alkalmazásokkal</string>
   <string name="morphe_external_downloader_overlay_button_title">Letöltés gomb megjelenítése a lejátszó átfedésében</string>
   <string name="morphe_external_downloader_overlay_button_summary">Gomb megjelenítése a videolejátszón, amely megnyitja a külső letöltőt</string>
@@ -558,6 +560,10 @@ Egy alkalommal megnyitott, Ask gombbal ellátott videó esetén a funkció minde
   <string name="morphe_shorts_download_flyout_button_title">Letöltés megjelenítése a Shorts menüben</string>
   <string name="morphe_shorts_download_flyout_button_summary">Letöltési elemet ad a Shorts lejátszó menüjéhez</string>
   <string name="morphe_shorts_download_flyout_title">Letöltés</string>
+  <string name="morphe_feed_download_flyout_button_title">Letöltés megjelenítése a videómenükben</string>
+  <string name="morphe_feed_download_flyout_button_summary">Letöltési lehetőséget ad hozzá a feedben szereplő olyan videók menüjéhez, amelyeknél ez alapból hiányzik, például azokhoz, amelyeket a YouTube csak Premium tagoknak enged letölteni</string>
+  <string name="morphe_download_force_4k_title">4K letöltés kényszerítése</string>
+  <string name="morphe_download_force_4k_summary">1440p és 4K letöltéseket kínál akkor is, ha a YouTube úgy dönti, hogy ez az eszköz nem képes lejátszani őket. Az ilyen videók lehet, hogy nem futnak le a YouTube-on belül, de exportálhatók a készülékre</string>
   <string name="morphe_export_download_folder_title">Mentett videók exportálása</string>
   <string name="morphe_export_download_folder_summary">"Exportálja az alkalmazáson belül mentett videókat a készülék tárolójába a letöltések legördülő menüjével. Koppintson a mappa módosításához
 
@@ -1485,7 +1491,7 @@ Autós elrendezés
   <string name="morphe_dearrow_titles_player_title">Lejátszó lejátszási listák &amp; ajánlások</string>
   <string name="morphe_dearrow_titles_search_title">Keresési eredmények</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ikon megjelenítése</string>
-  <string name="morphe_dearrow_titles_icon_summary">Megjeleníti a DeArrow ikont a közösségi videocímeknél. Koppintson az ikonra az eredeti cím és a bélyegkép megjelenítéséhez</string>
+  <string name="morphe_dearrow_titles_icon_summary">Megjeleníti a DeArrow ikont azon videók cimlerinde, amelyek crowdsourced címmal vagy bélyegképpel rendelkeznek. Koppints az ikonra az eredeti cím és bélyegkép megjelenítéséhez</string>
   <string name="morphe_dearrow_casual_mode_title">Alkalmi mód</string>
   <string name="morphe_dearrow_casual_mode_summary">Az eredeti címet mutatja a DeArrow-cím helyett, ha a DeArrow-felhasználók arra szavaztak, hogy az eredeti cím tetszik nekik</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimális alkalmi szavazatszám az eredeti cím megjelenítéséhez</string>
@@ -1587,6 +1593,16 @@ A videókat a hash-elt videóazonosító rövid előtagjával kérik le, így a 
   <string name="morphe_disable_haptic_feedback_zoom_title">Haptikus zoom letiltása</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ha nemrég módosította a fiókja bejelentkezési adatait, távolítsa el, majd telepítse újra a MicroG-t</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Push értesítések mentése</string>
+  <string name="morphe_debug_save_push_notifications_summary">Menti a kapott push értesítéseket egy fájlba az alkalmazás adatain belül. A fájl olyan privát információkat tartalmazhat, mint például értesítési szövegek és csatornanévvel</string>
+  <string name="morphe_debug_saved_push_notifications_title">Mentett push értesítések exportálása</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Exportálja vagy törölje a mentett push értesítéseket</string>
+  <string name="morphe_debug_saved_push_notifications_count">Mentett push értesítések: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Nem található mentett push értesítés</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push értesítések sikeresen exportálva</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Sikertelen push értesítések exportálása</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Mentett push értesítések törölve</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">A linkek átirányításainak megkerülése</string>
   <string name="morphe_bypass_link_redirects_summary">Közvetlenül nyitja meg az eredeti linket, kihagyva a követő linket (youtube.com/redirect)</string>

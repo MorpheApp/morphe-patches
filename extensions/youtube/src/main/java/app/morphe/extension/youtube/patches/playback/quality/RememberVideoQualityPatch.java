@@ -725,6 +725,33 @@ public class RememberVideoQualityPatch {
     /**
      * Injection point.
      * <p>
+     * The quality menu of regular videos shows a check mark on the quality of the last
+     * quality event. When the video loads, the event is the 'Advanced' video quality setting
+     * (see {@link #useAdvancedVideoQualitySetting()}) without a quality, so no quality is checked
+     * until the user selects one. The quality playing is checked instead, as if it was selected.
+     *
+     * @param resolution Resolution of the last quality event, or 'Auto' if the event has no quality.
+     * @return The resolution of the quality the menu checks.
+     */
+    public static int getQualityMenuSelectedResolution(int resolution) {
+        try {
+            if (resolution != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE || !isDefaultQualitySet()) {
+                return resolution;
+            }
+
+            final VideoQualityInterface currentQuality = VideoInformation.getCurrentQuality();
+            return currentQuality == null
+                    ? resolution
+                    : currentQuality.patch_getResolution();
+        } catch (Exception ex) {
+            Logger.printException(() -> "getQualityMenuSelectedResolution failure", ex);
+            return resolution;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * If this flag is on, the formats of the quality selected in the quality menu are saved with
      * the quality last selected, and the player keeps playing them. If it is off, only the resolution
      * YouTube gives the quality is saved, and the player can switch to another quality of that resolution,

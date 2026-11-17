@@ -542,6 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Вимкнути пропуск розділу подвійним натисканням</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Вимикає жест подвійного натискання двома пальцями для пропуску розділів, який може випадково спрацювати одним пальцем</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
+  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Завантажувати відео, подкасти або пісні за допомогою сторонніх застосунків для завантаження</string>
   <string name="morphe_external_downloader_overlay_button_title">Показувати кнопку завантаження в оверлеї плеєра</string>
   <string name="morphe_external_downloader_overlay_button_summary">Показує кнопку у відеоплеєрі, яка відкриває ваш зовнішній завантажувач</string>
@@ -558,6 +560,10 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">Показувати \"Завантаження\" в меню Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Додає пункт завантаження до меню плеєра Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Завантажити</string>
+  <string name="morphe_feed_download_flyout_button_title">Показувати \"Завантаження\" в меню відео</string>
+  <string name="morphe_feed_download_flyout_button_summary">Додає пункт завантаження до меню відео у стрічці, де його немає, наприклад, для відео, які YouTube дозволяє завантажувати лише користувачам Premium</string>
+  <string name="morphe_download_force_4k_title">Примусовий доступ до завантаження в 4Kуv-разрізній якості</string>
+  <string name="morphe_download_force_4k_summary">Дозволяє завантажувати відео в роздільній здатності 1440p та 4K, навіть якщо YouTube вважає, що цей пристрій не може їх відтворювати. Такі відео можуть відтворюватися без зображення всередині YouTube, але їх можна експортувати на ваш пристрій</string>
   <string name="morphe_export_download_folder_title">Експортувати збережені відео</string>
   <string name="morphe_export_download_folder_summary">"Експортує збережені в застосунку відео до сховища пристрою через спливне меню завантажень у застосунку. Натисніть, щоб змінити теку експорту
 
@@ -1485,7 +1491,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">Списки відтворення та рекомендації плеєра</string>
   <string name="morphe_dearrow_titles_search_title">Результати пошуку</string>
   <string name="morphe_dearrow_titles_icon_title">Показувати іконку DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Показує іконку DeArrow на назвах відео, створених спільнотою. Натисніть на іконку, щоб показати оригінальну назву та мініатюру</string>
+  <string name="morphe_dearrow_titles_icon_summary">Показує іконку DeArrow на назвах відео з назвою або мініатюрою, створеними спільнотою. Натисніть на іконку, щоб показати оригінальну назву та мініатюру</string>
   <string name="morphe_dearrow_casual_mode_title">Звичайний режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Показує оригінальну назву замість назви DeArrow, якщо користувачі DeArrow проголосували за оригінальну назву</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Мінімальна кількість голосів у звичайному режимі для показу оригінальної назви</string>
@@ -1585,6 +1591,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Вимкнути вібрацію при масштабуванні</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Якщо Ви нещодавно змінили дані для входу у свій обліковий запис, видаліть і повторно встановіть MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Зберігати push-сповіщення</string>
+  <string name="morphe_debug_save_push_notifications_summary">Зберігає отримані push-сповіщення у файл у даних програми. Файл може містити приватну інформацію, таку як тексти сповіщень і назви каналів</string>
+  <string name="morphe_debug_saved_push_notifications_title">Експортувати збережені push-сповіщення</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Експортувати або очистити збережені push-сповіщення</string>
+  <string name="morphe_debug_saved_push_notifications_count">Збережено push-сповіщень: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Збережених push-сповіщень не знайдено</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Push-сповіщення успішно експортовано</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Не вдалося експортувати push-сповіщення</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Збережені push-сповіщення очищено</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Обхід перенаправлень посилань</string>
   <string name="morphe_bypass_link_redirects_summary">Відкриває оригінальне посилання безпосередньо, оминаючи посилання відстеження (youtube.com/redirect)</string>

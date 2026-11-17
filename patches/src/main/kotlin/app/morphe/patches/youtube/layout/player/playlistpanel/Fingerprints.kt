@@ -43,7 +43,7 @@ internal object PanelModeEnumFingerprint : Fingerprint(
  * build the config is read inline (a boolean field) or by a static call, so either read is matched.
  * Some versions have two variants of this method, chosen by a server flag.
  */
-internal fun getPanelModeFingerprint(panelModeType: String) = object : Fingerprint(
+internal object PanelModeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/Object;",
     filters = listOf(
@@ -62,11 +62,11 @@ internal fun getPanelModeFingerprint(panelModeType: String) = object : Fingerpri
         // The panel beside the player.
         fieldAccess(
             opcode = Opcode.SGET_OBJECT,
-            type = panelModeType,
+            type = { PanelModeEnumFingerprint.originalClassDef.type },
             location = MatchAfterImmediately()
         )
     )
-) {}
+)
 
 /**
  * YouTube's rule whether a panel is refused for the current mode. Over the fullscreen player it

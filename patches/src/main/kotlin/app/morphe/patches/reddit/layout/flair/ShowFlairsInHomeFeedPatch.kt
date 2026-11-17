@@ -10,9 +10,9 @@ package app.morphe.patches.reddit.layout.flair
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
@@ -21,15 +21,11 @@ import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/reddit/patches/ShowFlairsInHomeFeedPatch;"
@@ -71,10 +67,7 @@ val showFlairsInHomeFeedPatch = patch(
         val titleSectionType = FeedPostTitleSectionToStringFingerprint.classDef.type
 
         val (presentationModelConstructor, persistentListOfMethod, flairsElementConstructor) =
-            postFlairsElementMapperFingerprint(
-                presentationModelType,
-                flairsElementType
-            ).instructionMatches.let { matches ->
+            PostFlairsElementMapperFingerprint.instructionMatches.let { matches ->
                 listOf(matches[0], matches[1], matches[3]).map {
                     it.getInstruction<ReferenceInstruction>().reference
                 }
@@ -114,13 +107,12 @@ val showFlairsInHomeFeedPatch = patch(
         // Add flairs to post preview elements.
         //
 
-        val postPreviewType = PostPreviewFeedElementToStringFingerprint.classDef.type
         val (previewLinkIdField, previewUniqueIdField, previewIdentifierField, previewChildrenField) =
             PostPreviewFeedElementConstructorFingerprint.instructionMatches.let { matches ->
                 listOf(matches[0], matches[1], matches[3], matches[6]).map { it.fieldReference }
             }
 
-        val previewCopyFingerprint = postPreviewFeedElementCopyFingerprint(postPreviewType, flairsElementType)
+        val previewCopyFingerprint = PostPreviewFeedElementCopyFingerprint
         val previewCopyMethod = previewCopyFingerprint.method
         val previewFlairsField = previewCopyFingerprint.instructionMatches.last().fieldReference
         // Copy method bit mask where all values except the flairs element are copied from the original.
@@ -145,7 +137,6 @@ val showFlairsInHomeFeedPatch = patch(
 
         PostPreviewFeedElementToStringFingerprint.classDef.addCachedPostMethods(
             linkIdField = previewLinkIdField,
-            registerCount = copyArgumentRegister,
             addHomeFlairSmali = """
                 move-object/from16 v0, p0
                 iget-object v1, v0, $previewFlairsField
@@ -183,7 +174,6 @@ val showFlairsInHomeFeedPatch = patch(
 
         FeedPostSectionToStringFingerprint.classDef.addCachedPostMethods(
             linkIdField = sectionLinkIdField,
-            registerCount = 15,
             addHomeFlairSmali = """
                 move-object/from16 v0, p0
                 iget-object v11, v0, $sectionLinkIdField
@@ -293,54 +283,19 @@ val showFlairsInHomeFeedPatch = patch(
 
 /**
  * Adds [CACHED_POST_INTERFACE] and its methods to a post class.
- *
- * @param registerCount Number of local registers used by [addHomeFlairSmali], not including parameters.
  */
 private fun MutableClass.addCachedPostMethods(
     linkIdField: FieldReference,
-    registerCount: Int,
     addHomeFlairSmali: String
 ) {
-    interfaces.add(CACHED_POST_INTERFACE)
-
-    methods.add(
-        ImmutableMethod(
-            type,
-            "patch_getLinkId",
-            emptyList(),
-            "Ljava/lang/String;",
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-            emptySet(),
-            null,
-            MutableMethodImplementation(2)
-        ).toMutable().apply {
-            addInstructions(
-                0,
-                """
-                    iget-object v0, p0, $linkIdField
-                    return-object v0
-                """
-            )
-        }
+    addPatchInterface(
+        CACHED_POST_INTERFACE,
+        "patch_getLinkId",
+        """
+            iget-object v0, p0, $linkIdField
+            return-object v0
+        """
     )
 
-    methods.add(
-        ImmutableMethod(
-            type,
-            "patch_addHomeFlair",
-            listOf(
-                ImmutableMethodParameter("Ljava/lang/String;", emptySet(), "flair"),
-                ImmutableMethodParameter("Ljava/lang/String;", emptySet(), "community"),
-                ImmutableMethodParameter("Ljava/lang/String;", emptySet(), "textColor"),
-                ImmutableMethodParameter("Ljava/lang/String;", emptySet(), "backgroundColor")
-            ),
-            "Z",
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-            emptySet(),
-            null,
-            MutableMethodImplementation(registerCount + 5)
-        ).toMutable().apply {
-            addInstructions(0, addHomeFlairSmali)
-        }
-    )
+    addPatchInterface(CACHED_POST_INTERFACE, "patch_addHomeFlair", addHomeFlairSmali)
 }

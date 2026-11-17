@@ -193,6 +193,19 @@ public final class DeArrowBrandingRequest {
         return null;
     }
 
+    /**
+     * Does not start fetching the branding. Can be called on any thread.
+     *
+     * @return If the video has a DeArrow thumbnail, or false if the branding is not yet fetched.
+     */
+    static boolean hasThumbnailIfFetched(String videoId) {
+        CompletableFuture<Branding> future = cache.get(videoId);
+        if (future == null || !future.isDone() || future.isCompletedExceptionally()) {
+            return false;
+        }
+        return future.getNow(Branding.NONE).thumbnailTime() != null;
+    }
+
     private static CompletableFuture<Branding> fetch(String videoId) {
         synchronized (cache) {
             CompletableFuture<Branding> future = cache.get(videoId);

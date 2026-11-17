@@ -26,7 +26,6 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -400,15 +399,15 @@ public abstract class BaseSearchViewController {
                 // Append the group title to the path and save key for navigation.
                 if (!(preference instanceof NoTitlePreferenceCategory)) {
                     CharSequence title = NewIndicatorSpan.removeFrom(preference.getTitle());
-                    if (!TextUtils.isEmpty(title)) {
-                        newPath = TextUtils.isEmpty(parentPath)
+                    if (Utils.isNotEmpty(title)) {
+                        newPath = Utils.isEmpty(parentPath)
                                 ? title.toString()
                                 : parentPath + " > " + title;
                     }
 
                     // Add key for navigation if this is a PreferenceScreen or group with navigation capability.
                     String key = preference.getKey();
-                    if (!TextUtils.isEmpty(key) && (preference instanceof PreferenceScreen
+                    if (Utils.isNotEmpty(key) && (preference instanceof PreferenceScreen
                             || searchResultsAdapter.hasNavigationCapability(preference))) {
                         newKeys.add(key);
                     }

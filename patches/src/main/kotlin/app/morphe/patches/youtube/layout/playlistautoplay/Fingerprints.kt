@@ -46,9 +46,9 @@ internal object NativeNavigationStateFingerprint : Fingerprint(
 /**
  * Constructor of the navigation request, which has the navigation intent and the video to play.
  */
-internal fun navigationRequestFingerprint(enumType: String) = Fingerprint(
+internal object NavigationRequestFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf(enumType, "L", "L")
+    parameters = { listOf(NavigationIntentEnumFingerprint.originalClassDef.type, "L", "L") }
 )
 
 /**

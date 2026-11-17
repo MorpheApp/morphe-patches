@@ -254,7 +254,11 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                         },
                         // 21.x: Stable volume toggle command (field 449823757),
                         // when the icon has no name in the buffer.
-                        new byte[]{(byte) 0xEA, (byte) 0xC0, (byte) 0xF8, (byte) 0xB3, 0x0D}
+                        new byte[]{(byte) 0xEA, (byte) 0xC0, (byte) 0xF8, (byte) 0xB3, 0x0D},
+                        // 21.x: Stable volume icon types, outline (676) and fill (677), when the icon
+                        // has no name in the buffer. The disabled item has no toggle command.
+                        new byte[]{(byte) 0xD2, 0x3E, 0x05, 0x0A, 0x03, 0x08, (byte) 0xA4, 0x05},
+                        new byte[]{(byte) 0xD2, 0x3E, 0x05, 0x0A, 0x03, 0x08, (byte) 0xA5, 0x05}
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_WATCH_IN_VR,
