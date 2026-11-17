@@ -635,11 +635,13 @@ public final class AmbientLightController {
                 changed.add(drawable);
             }
         }
-        // Drawables that are mounted in another window keep their own color.
+        // Drawables that are mounted in another window keep their own color. A drawable can
+        // stay in a view that has left the window, as the comments closed with the back button,
+        // and it waits for that view to be in a window again.
         for (Iterator<Drawable> iterator = pendingDrawables.keySet().iterator(); iterator.hasNext(); ) {
             Drawable drawable = iterator.next();
             View host = hostOf(drawable);
-            if (host == null) continue;
+            if (host == null || !host.isAttachedToWindow()) continue;
             iterator.remove();
             if (host.getRootView() == root) changed.add(drawable);
         }
