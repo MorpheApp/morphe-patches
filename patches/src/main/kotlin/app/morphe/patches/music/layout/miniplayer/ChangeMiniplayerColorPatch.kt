@@ -15,12 +15,16 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.music.video.information.musicVideoIdHook
+import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -31,11 +35,13 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
+private const val MINIPLAYER_INTERFACE = $$"Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch$MiniplayerAccess;"
 
 internal val miniplayerColorHookPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        musicVideoInformationPatch,
     )
 
     execute {
@@ -43,13 +49,14 @@ internal val miniplayerColorHookPatch = patch {
         val colorFieldReference = MiniPlayerConstructorFingerprint.method.let { method ->
             val colorGreyIndex = method.indexOfFirstInstructionReversedOrThrow(methodCall(name = "getColor"))
             val colorPutIndex = method.indexOfFirstInstructionOrThrow(colorGreyIndex, Opcode.IPUT)
-            val colorRegister = method.getInstruction<TwoRegisterInstruction>(colorPutIndex).registerA
+            val colorPut = method.getInstruction<TwoRegisterInstruction>(colorPutIndex)
 
             method.addInstruction(
                 colorPutIndex,
-                "invoke-static { v$colorRegister }, $EXTENSION_CLASS->setDefaultMiniplayerColor(I)V"
+                "invoke-static { v${colorPut.registerB}, v${colorPut.registerA} }, " +
+                        "$EXTENSION_CLASS->setDefaultMiniplayerColor(${MINIPLAYER_INTERFACE}I)V"
             )
-            method.getInstruction<ReferenceInstruction>(colorPutIndex + 1).reference
+            method.getInstruction<ReferenceInstruction>(colorPutIndex + 1).getReference<FieldReference>()!!
         }
 
         // The color of the album art, read from the object passed to the method.
@@ -121,12 +128,24 @@ internal val miniplayerColorHookPatch = patch {
             }
         }
 
-        // Hook the watch-while dismiss callback to drop the cached tint.
-        // Fingerprint factory is shared with the swipe-to-dismiss patch.
-        val musicActivityPeerClass = MusicActivityWidgetFingerprint.instructionMatches[1]
-            .fieldReference.definingClass
+        // The miniplayer resets its colors to the color in its color field, which holds the album color
+        // set above. The extension puts the theme color back in the field and resets the colors.
+        MiniPlayerConstructorFingerprint.classDef.apply {
+            addPatchInterface(MINIPLAYER_INTERFACE, "patch_setColor", colorFieldReference)
+            addPatchInterface(MINIPLAYER_INTERFACE, "patch_resetColors", MiniplayerResetColorsFingerprint.method)
+        }
 
-        watchWhileDismissedFingerprint(musicActivityPeerClass).method.addInstructions(
+        // The miniplayer shows "Nothing is playing" (for example after the queue is dismissed).
+        MiniPlayerDefaultTextFingerprint.method.addInstruction(
+            0,
+            "invoke-static { }, $EXTENSION_CLASS->onMiniplayerEmpty()V"
+        )
+
+        // A new song is loaded, so its album color can be used again.
+        musicVideoIdHook("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
+
+        // Hook the watch-while dismiss callback to drop the cached tint.
+        WatchWhileDismissedFingerprint.method.addInstruction(
             0,
             "invoke-static { }, $EXTENSION_CLASS->onMiniplayerDismissed()V"
         )

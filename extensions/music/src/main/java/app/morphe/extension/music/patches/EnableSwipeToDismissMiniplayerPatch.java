@@ -7,13 +7,10 @@
 
 package app.morphe.extension.music.patches;
 
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.util.Objects;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -22,19 +19,24 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public class EnableSwipeToDismissMiniplayerPatch {
 
-    private static final String PLAYER_STATE_DISMISSED = "DISMISSED";
-    private static final String PLAYER_STATE_MINIMIZED = "MINIMIZED";
+    /**
+     * Implemented by the watch while layout during patching.
+     */
+    public interface WatchWhileLayoutAccess {
+        /**
+         * Requests a new player state, such as showing the miniplayer.
+         */
+        void patch_requestPlayerState(Enum<?> state);
+    }
 
     /**
-     * Current state of the watch while layout. Null until it changes state for the first time.
+     * The last miniplayer request ignored while the miniplayer is dismissed, and the layout it was for.
+     * It is requested again when a song is loaded.
      */
     @Nullable
-    private static volatile Enum<?> currentPlayerState;
+    private static volatile Enum<?> ignoredPlayerStateRequest;
 
-    @Nullable
-    private static volatile Class<?> playerStateClass;
-
-    private static volatile WeakReference<View> watchWhileLayoutRef = new WeakReference<>(null);
+    private static volatile WeakReference<WatchWhileLayoutAccess> ignoredRequestLayoutRef = new WeakReference<>(null);
 
     /**
      * Injection point
@@ -70,6 +72,8 @@ public class EnableSwipeToDismissMiniplayerPatch {
     }
 
     private static void setMiniplayerDismissed(boolean dismissed) {
+        if (!dismissed) ignoredPlayerStateRequest = null;
+
         if (Settings.MINIPLAYER_DISMISSED.get() != dismissed) {
             Settings.MINIPLAYER_DISMISSED.save(dismissed);
         }
@@ -79,12 +83,8 @@ public class EnableSwipeToDismissMiniplayerPatch {
      * Injection point.
      * Called each time the watch while layout changes the player state.
      */
-    public static void onPlayerStateChanged(@NonNull View watchWhileLayout, @NonNull Enum<?> state) {
-        watchWhileLayoutRef = new WeakReference<>(watchWhileLayout);
-        currentPlayerState = state;
-        playerStateClass = state.getDeclaringClass();
-
-        if (!PLAYER_STATE_DISMISSED.equals(state.name()) && isMiniplayerDismissed()) {
+    public static void onPlayerStateChanged(@NonNull Enum<?> state) {
+        if (!"DISMISSED".equals(state.name()) && isMiniplayerDismissed()) {
             // The player was opened again, such as by playing a song from a list.
             Logger.printDebug(() -> "Player shown again: " + state);
             setMiniplayerDismissed(false);
@@ -97,64 +97,34 @@ public class EnableSwipeToDismissMiniplayerPatch {
      *
      * @return If the state request must be ignored.
      */
-    public static boolean ignorePlayerStateRequest(@NonNull View watchWhileLayout, @NonNull Enum<?> requestedState) {
-        // The layout may not have changed state yet after an app start.
-        watchWhileLayoutRef = new WeakReference<>(watchWhileLayout);
-        playerStateClass = requestedState.getDeclaringClass();
-
-        if (PLAYER_STATE_MINIMIZED.equals(requestedState.name()) && isMiniplayerDismissed()) {
-            Logger.printDebug(() -> "Ignoring miniplayer request while dismissed");
-            return true;
+    public static boolean ignorePlayerStateRequest(@NonNull WatchWhileLayoutAccess watchWhileLayout,
+                                                   @NonNull Enum<?> requestedState) {
+        if (!"MINIMIZED".equals(requestedState.name()) || !isMiniplayerDismissed()) {
+            return false;
         }
 
-        return false;
+        Logger.printDebug(() -> "Ignoring miniplayer request while dismissed");
+        ignoredPlayerStateRequest = requestedState;
+        ignoredRequestLayoutRef = new WeakReference<>(watchWhileLayout);
+        return true;
     }
 
     /**
      * Injection point.
-     * A song or video was loaded. If the miniplayer request that came with it
-     * was ignored, show the miniplayer now.
+     * A song or video was loaded. If a miniplayer request was ignored, request it again now.
      */
     public static void newVideoLoaded(@NonNull String videoId) {
         if (!isMiniplayerDismissed()) return;
+        final Enum<?> request = ignoredPlayerStateRequest;
         setMiniplayerDismissed(false);
+        if (request == null) return;
 
         Utils.runOnMainThread(() -> {
-            try {
-                View layout = watchWhileLayoutRef.get();
-                Enum<?> state = currentPlayerState;
-                // The layout starts dismissed. A null state means it has not changed state since the app start.
-                if (layout == null || (state != null && !PLAYER_STATE_DISMISSED.equals(state.name()))) {
-                    return;
-                }
+            WatchWhileLayoutAccess layout = ignoredRequestLayoutRef.get();
+            if (layout == null) return;
 
-                Logger.printDebug(() -> "Showing miniplayer for new video: " + videoId);
-                setPlayerState(layout, getMinimizedPlayerState());
-            } catch (Exception ex) {
-                Logger.printException(() -> "newVideoLoaded failure", ex);
-            }
+            Logger.printDebug(() -> "Showing miniplayer for new video: " + videoId);
+            layout.patch_requestPlayerState(request);
         });
-    }
-
-    /**
-     * The player state class is saved together with the watch while layout, so it is known here.
-     */
-    private static Enum<?> getMinimizedPlayerState() {
-        Class<?> enumClass = Objects.requireNonNull(playerStateClass);
-        for (Object state : Objects.requireNonNull(enumClass.getEnumConstants())) {
-            Enum<?> playerState = (Enum<?>) state;
-            if (PLAYER_STATE_MINIMIZED.equals(playerState.name())) {
-                return playerState;
-            }
-        }
-
-        throw new IllegalStateException("Minimized player state not found");
-    }
-
-    /**
-     * Requests a new player state on the watch while layout.
-     * The method body is replaced during patching.
-     */
-    public static void setPlayerState(View watchWhileLayout, Enum<?> state) {
     }
 }

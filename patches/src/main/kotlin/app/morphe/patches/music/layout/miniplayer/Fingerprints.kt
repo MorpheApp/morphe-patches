@@ -18,8 +18,10 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patcher.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 internal const val WATCH_WHILE_LAYOUT_CLASS =
     "Lcom/google/android/apps/youtube/music/watchpage/ui/WatchWhileLayout;"
@@ -96,6 +98,45 @@ internal object SwitchToggleColorLegacyFingerprint : Fingerprint(
         opcode(Opcode.GOTO, location = MatchAfterWithin(5)),
         fieldAccess(opcode = Opcode.IGET, type = "I"),
         opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+    )
+)
+
+/**
+ * Matches the miniplayer method that animates its colors back to the color in its color field.
+ * It compares the color last applied with the color field, and if they differ,
+ * saves the color field as the color applied and animates to it for 200 Ms.
+ * The second instruction match reads the color field.
+ */
+internal object MiniplayerResetColorsFingerprint : Fingerprint(
+    classFingerprint = MiniPlayerConstructorFingerprint,
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET,
+            definingClass = "this",
+            type = "I"
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            definingClass = "this",
+            type = "I",
+            location = MatchAfterImmediately()
+        ),
+        literal(
+            literal = 200L,
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.IF_EQ,
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT,
+            definingClass = "this",
+            type = "I",
+            location = MatchAfterImmediately()
+        )
     )
 )
 
@@ -203,6 +244,27 @@ internal object MiniPlayerDefaultTextFingerprint : Fingerprint(
 )
 
 /**
+ * Matches the method that shows the cold start miniplayer text,
+ * by calling [MiniPlayerDefaultTextFingerprint] on the watch-while layout.
+ * The first instruction match compares the object passed to the method.
+ */
+internal object ColdStartMiniplayerTextFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Ljava/lang/Object;"),
+    returnType = "V",
+    filters = listOf(
+        opcode(Opcode.IF_NE),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = WATCH_WHILE_LAYOUT_CLASS,
+            location = MatchAfterImmediately()
+        ),
+        // The called method is public and final, so it is only called with invoke-virtual.
+        methodCall(reference = { MiniPlayerDefaultTextFingerprint.originalMethod })
+    )
+)
+
+/**
  * 9.02 - 9.42
  */
 internal object PlayerPageBehaviorFingerprint : Fingerprint(
@@ -276,6 +338,31 @@ internal object WatchWhileLayoutFingerprint : Fingerprint(
 )
 
 /**
+ * Matches the method of the warm start miniplayer ([WatchWhileLayoutFingerprint] creates it)
+ * that changes the player bottom sheet when the miniplayer text is shown.
+ * The last instruction match calls the bottom sheet.
+ */
+internal object WarmStartMiniplayerTextFingerprint : Fingerprint(
+    definingClass = {
+        WatchWhileLayoutFingerprint.instructionMatches.last().instruction.getReference<TypeReference>()!!.type
+    },
+    parameters = { listOf("Landroid/view/View;", "I") },
+    filters = listOf(
+        fieldAccess(
+            opcodes = listOf(Opcode.IGET_OBJECT),
+            definingClass = { WatchWhileLayoutFingerprint.originalClassDef.type }
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "Lcom/google/android/material/bottomsheet/BottomSheetBehavior;",
+            parameters = listOf("Z"),
+            returnType = "V",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
  * Matches the watch-while layout method that applies a new player state.
  * Every player state change (DISMISSED, MINIMIZED, MAXIMIZED_NOW_PLAYING...) passes through it.
  * The first parameter is the player state enum.
@@ -290,11 +377,11 @@ internal object WatchWhileLayoutSetPlayerStateFingerprint : Fingerprint(
  * Matches the watch-while layout method that requests a new player state,
  * by moving the player bottom sheet to the matching position.
  */
-internal fun watchWhileLayoutRequestPlayerStateFingerprint(playerStateClass: String) = Fingerprint(
+internal object WatchWhileLayoutRequestPlayerStateFingerprint : Fingerprint(
     definingClass = WATCH_WHILE_LAYOUT_CLASS,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(playerStateClass),
+    parameters = { listOf(WatchWhileLayoutSetPlayerStateFingerprint.originalMethod.parameterTypes.first()) },
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
@@ -308,17 +395,16 @@ internal fun watchWhileLayoutRequestPlayerStateFingerprint(playerStateClass: Str
 /**
  * Matches the watch-while dismiss callback (swipe-dismiss or "Dismiss queue"),
  * identified by an IGET_OBJECT of the MusicActivity peer's AtomicBoolean and
- * a following `AtomicBoolean.set(Z)`. Caller must supply the peer class via
- * [MusicActivityWidgetFingerprint].
+ * a following `AtomicBoolean.set(Z)`. The peer class comes from [MusicActivityWidgetFingerprint].
  */
-internal fun watchWhileDismissedFingerprint(musicActivityPeerClass: String) = Fingerprint(
+internal object WatchWhileDismissedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),
     returnType = "V",
     filters = listOf(
         fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = musicActivityPeerClass,
+            opcodes = listOf(Opcode.IGET_OBJECT),
+            definingClass = { MusicActivityWidgetFingerprint.instructionMatches[1].fieldReference.definingClass },
             type = "Ljava/util/concurrent/atomic/AtomicBoolean;"
         ),
         methodCall(
