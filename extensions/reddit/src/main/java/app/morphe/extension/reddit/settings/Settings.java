@@ -64,6 +64,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting FULL_WIDTH_FEED_MEDIA = new BooleanSetting("morphe_full_width_feed_media", FALSE, true);
     public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("morphe_hide_ask_button", FALSE, true);
     public static final BooleanSetting HIDE_COMMUNITIES_SHELF = new BooleanSetting("morphe_hide_communities_shelf", FALSE, true);
+    public static final BooleanSetting HIDE_INTERACTIVE_POSTS = new BooleanSetting("morphe_hide_interactive_posts", FALSE, true);
     public static final BooleanSetting HIDE_JOIN_CONVERSATION_BUTTON = new BooleanSetting("morphe_hide_join_conversation_button", FALSE);
     public static final BooleanSetting HIDE_MEDIA_VIEWER_OVERLAY = new BooleanSetting("morphe_hide_media_viewer_overlay", FALSE);
     public static final BooleanSetting HIDE_TRENDING_SHELVES = new BooleanSetting("morphe_hide_trending_shelves", FALSE, true);
