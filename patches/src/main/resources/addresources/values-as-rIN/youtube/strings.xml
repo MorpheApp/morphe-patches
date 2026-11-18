@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">আপলোড কৰা সময় লুকুৱাওক</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"সীমাবদ্ধতা:
-• Shorts শ্বেলফ, চেনেলৰ পৃষ্ঠা আৰু সন্ধানৰ ফলাফলত আপলোডৰ সময় এতিয়াও দেখুৱাব পাৰে
-• অটোমোটিভ লেআউটৰ সৈতে কাম নকৰে"</string>
+• Shorts শ্বেল্ফবোৰত possibly আপলোডৰ সময় দেখুৱাব পাৰে
+• অটোমেটিভ লেআউটৰ সৈতে কাম নকৰে"</string>
   <string name="morphe_hide_video_thumbnail_title">ভিডিঅ’ থাম্বনেইল লুকুৱাওক</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">ভিডিঅ’ লেবেলসমূহ লুকুৱাওক</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">ভিউ কাউন্ট লুকুৱাওক</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"সীমাবদ্ধতা:
-• Shorts শ্বেলফ, চেনেলৰ পৃষ্ঠা আৰু সন্ধানৰ ফলাফলত ভিউৰ সংখ্যা এতিয়াও দেখুৱাব পাৰে
-• অটোমোটিভ লেআউটৰ সৈতে কাম নকৰে"</string>
+• Shorts শ্বেল্ফবোৰত possibly ভিউৰ সংখ্যা দেখুৱাব পাৰে
+• অটোমেটিভ লেআউটৰ সৈতে কাম নকৰে"</string>
   <string name="morphe_hide_web_search_results_title">ৱেব সন্ধানৰ ফলাফলসমূহ লুকুৱাওক</string>
   <string name="morphe_hide_web_search_results_summary">অনুসন্ধানৰ ফলাফলৰ পৰা \'ৱেবৰ পৰা ফলাফল\' অংশটো লুকুৱাই ৰাখে</string>
   <string name="morphe_hide_you_may_like_section_title">\'আপুনি ভাল পাব পাৰে\' অংশটো লুকুৱাওক</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">অটোপ্লে আৰম্ভ হোৱাৰ আগতে ফুলস্ক্ৰীণত অহা ভিডিঅ\'ৰ প্ৰিভিউটো লুকুৱায়</string>
   <string name="morphe_hide_channel_bar_title">চেনেল বাৰ লুকুৱাওক</string>
   <string name="morphe_hide_channel_watermark_title">চেনেল ৱাটাৰমাৰ্ক লুকুৱাওক</string>
-  <string name="morphe_hide_chapters_timeline_button_title">অধ্যায় আৰু \'এই ভিডিঅ\'টোত\' বুটামটো লুকুৱাওক</string>
+  <string name="morphe_hide_chapters_button_title">Chapters বুটামটো লুকুৱাই ৰাখক</string>
   <string name="morphe_hide_crowdfunding_box_title">ক্ৰাউডফাণ্ডিং বক্সটো লুকুৱাওক</string>
   <string name="morphe_hide_emergency_box_title">জৰুৰী বক্সসমূহ লুকুৱাওক</string>
+  <string name="morphe_hide_in_this_video_button_title">\'এই ভিডিঅ\'ত\' বুটামটো লুকুৱাওক</string>
   <string name="morphe_hide_info_panels_title">তথ্য প্যানেলসমূহ লুকুৱাওক</string>
   <string name="morphe_hide_info_panels_summary">তথ্যগত প্ৰসংগ পেনেলবোৰ লুকুৱাই ৰাখে, যেনে চিকিৎসাৰ তথ্য</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">ফিড ভিডিঅ’ৰ যিকোনো ঠাইত টেপ কৰি ধৰি ৰাখিলে ইয়াৰ মেনু খোলে</string>
   <string name="morphe_feed_watch_later_button_title">থাম্বনেইলত \'পাছত চাম\' বুটামটো দেখুৱাওক</string>
   <string name="morphe_feed_watch_later_button_summary">ফিড ভিডিঅ\'ৰ থাম্বনেইলত এটা \'পাছত চাম\' বুটাম দেখুৱা হয়, আৰু ভিডিঅ\'টো সংৰক্ষণ কৰিলে এটা চেক মাৰ্ক দেখা যায়। ইয়াত ট্যাপ কৰিলে ভিডিঅ\'টো সংৰক্ষণ বা আঁতৰ কৰা হয়, আৰু ট্যাপ কৰি ধৰি ৰাখিলে \'প্লেলিষ্টলৈ সংৰক্ষণ কৰক\' খোলা হয়</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">পোষ্টৰ ছবিসমূহ ফুলস্ক্ৰীনত খোলক</string>
+  <string name="morphe_open_post_images_fullscreen_summary">পোষ্টৰ এখন ছবিত টেপ কৰিলে ই পোষ্টৰ ফিডৰ পৰিৱৰ্তে ফুলস্ক্ৰীনত খোল যাব</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">পোষ্টৰ ছবিসমূহ ডাউনলোড কৰক</string>
   <string name="morphe_post_image_download_summary">ছবি বা GIF থকা পোষ্টবোৰৰ Share বুটামত এটা ডাউনলোড বুটাম দেখুৱা হয়, আৰু সিহঁতৰ মেনুত এটা ডাউনলোড আইটেম যোগ কৰা হয়</string>
@@ -992,6 +996,7 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_swipe_press_to_engage_title">প্ৰেছ কৰি সোয়াইপ কৰা অঙ্গভঙ্গি সক্ৰিয় কৰক</string>
   <string name="morphe_swipe_press_to_engage_summary">সুইপ জেসচাৰটো চিনি পোৱাৰ আগতে টিপি ধৰিবলৈ প্ৰয়োজন</string>
   <string name="morphe_swipe_haptic_feedback_title">হেপটিক ফিডবেক সক্ৰিয় কৰক</string>
+  <string name="morphe_swipe_haptic_feedback_summary">প্ৰেচ কৰি ধৰিলে আৰু সোৱাই দিয়াৰ কাৰ্য আৰম্ভ কৰিলে কঁপনি উঠিব</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">উজ্জ্বলতা সংৰক্ষণ আৰু পুনৰুদ্ধাৰ কৰক</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">ফুলস্ক্ৰীন মোডত প্ৰৱেশ কৰোঁতে / ওলাই আহোঁতে উজ্জ্বলতাৰ স্তৰটো মনত ৰাখে</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">অটো-ব্ৰাইটনেছ অঙ্গভঙ্গি সক্ৰিয় কৰক</string>
@@ -1135,6 +1140,10 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">গ্লাছ নেভিগেচন বাৰৰ স্বচ্ছতাৰ স্তৰটো সামজৰু কৰক (০ মানে স্বচ্ছ, ১০০ মানে অপেক)</string>
   <string name="morphe_navigation_bar_glass_round_title">ৰাউণ্ড গ্লাছ নেভিগেচন বাৰ</string>
   <string name="morphe_navigation_bar_glass_round_summary">গ্লাছ মিনিপ্লেয়াৰৰ দৰে কোণৰ পৰিৱৰ্তে গ্লাছ নেভিগেচন বাৰটোক ৰাউণ্ড শেষৰ অংশ প্ৰদান কৰে</string>
+  <string name="morphe_navigation_bar_glass_edge_title">গ্লাছ নেভিগেচন বাৰৰ এজ</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">গ্লাছ নেভিগেচন বাৰৰ চাৰিওফালে এটা পোহৰৰ এজ আঁকে</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">গ্লাছ নেভিগেচন বাৰৰ তলৰ মাৰ্জিন</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">গ্লাছ নেভিগেচন বাৰ আৰু স্ক্ৰীনৰ তলৰ অংশ বা চিষ্টেম নেভিগেচনৰ মাজৰ খালী ঠাইটো মিলাই লওক</string>
   <string name="morphe_navigation_bar_glass_size_title">গ্লাছ নেভিগেচন বাৰৰ আকাৰ</string>
   <string name="morphe_navigation_bar_glass_size_summary">প্ৰিভিউৰ সৈতে গ্লাছ নেভিগেচন বাৰৰ উচ্চতা, প্ৰস্থ আৰু বুটামৰ ব্যৱধান সামঞ্জস্য কৰক। স্ক্ৰীণৰ প্ৰস্থত খাপ নোখোৱা বুটামবোৰ লুকুৱাই ৰখা হয়</string>
   <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
@@ -1381,6 +1390,9 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">অটো ফিড ৰিফ্ৰেছ নিষ্ক্ৰীয় কৰক</string>
   <string name="morphe_disable_auto_feed_refresh_summary">ফিডবোৰ পুৰণি হোৱাৰ পিছত স্বয়ংক্ৰিয়ভাৱে ৰিফ্ৰেছ হোৱাত বাধা দিয়ে</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">নটিফিকেচনসমূহ আনগ্ৰুপ কৰক</string>
+  <string name="morphe_ungroup_notifications_summary">চেনেলৰ গ্ৰুপ কৰা আপলোডৰ প্ৰতিটো ভিডিঅ’ক ইয়াৰ নিজস্ব নটিফিকেচন হিচাপে দেখুৱায়</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">ফিড কাৰ্ড লেআউট</string>
   <string name="morphe_feed_card_layout_entry_1">ক্লাছিক</string>
@@ -1493,6 +1505,8 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_dearrow_titles_search_title">অনুসন্ধানৰ ফলাফল</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow আইকন দেখুৱাওক</string>
   <string name="morphe_dearrow_titles_icon_summary">ক্ৰাউডচৰ্চড শিৰোনাম বা থাম্বনেইল থকা ভিডিঅ\'ৰ শিৰোনামত DeArrow আইকনটো দেখুৱায়। মূল শিৰোনাম আৰু থাম্বনেইলটো দেখুৱাবলৈ আইকনটোত টেপ কৰক</string>
+  <string name="morphe_dearrow_clean_up_titles_title">শিৰোনামসমূহ পৰিষ্কাৰ কৰক</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow শিৰোনাম নথকা ভিডিঅ\'ৰ শিৰোনামসমূহ পৰিষ্কাৰ কৰে। ডাঙৰ আখৰেৰে লিখা শব্দবোৰক স্বাভাৱিকতাক পৰিবৰ্তন কৰা হয়, আৰু ইমজি, ফেন্সী টেক্সট আৰু বাৰে বাৰে ব্যৱহাৰ কৰা বিস্ময়সূচক চিহ্নবোৰ আঁতৰ কৰা হয়</string>
   <string name="morphe_dearrow_casual_mode_title">কেজুৱেল মোড</string>
   <string name="morphe_dearrow_casual_mode_summary">যদি DeArrow ব্যৱহাৰকাৰীসকলে মূল শিৰোনামটো পছন্দ কৰিছে বুলি ভোট দিয়ে, তেন্তে DeArrow শিৰোনামৰ পৰিৱৰ্তে মূল শিৰোনামটো দেখুৱাব</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">মূল শিৰোনাম দেখুৱাবলৈ নূন্যতম কেজুৱেল ভোট</string>

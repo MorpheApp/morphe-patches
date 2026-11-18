@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Скрийте времето на качване</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Ограничения:
-• Рафтовете със Shorts, страниците на каналите и резултатите от търсенето все още могат да показват времето на качване
-• Не работи с автомобилен режим"</string>
+• Рафтовете със Shorts все още могат да показват времето на качване
+• Не работи с автомобилен интерфейс"</string>
   <string name="morphe_hide_video_thumbnail_title">Скриване на видео миниатюрата</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Скриване на етикетите на видеоклиповете</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Скриване на броя гледания</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Ограничения:
-• Рафтовете със Shorts, страниците на каналите и резултатите от търсенето все още могат да показват броя на гледанията
-• Не работи с автомобилен режим"</string>
+• Рафтовете със Shorts все още могат да показват броя прегледи
+• Не работи с автомобилен интерфейс"</string>
   <string name="morphe_hide_web_search_results_title">Резултати от търсене в мрежата</string>
   <string name="morphe_hide_web_search_results_summary">Скрива секцията \"Резултат от мрежата\" от резултатите от търсенето</string>
   <string name="morphe_hide_you_may_like_section_title">Скриване на раздела \'Може да се интересувате\'</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Скрива предварителния преглед на следващото видео в режим на цял екран преди началото на автоматичното възпроизвеждане</string>
   <string name="morphe_hide_channel_bar_title">Скриване на лентата на канала</string>
   <string name="morphe_hide_channel_watermark_title">Скриване на водния знак на канала</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Скрий главите и бутона \'В това видео\'</string>
+  <string name="morphe_hide_chapters_button_title">Скриване на бутона „Глави“</string>
   <string name="morphe_hide_crowdfunding_box_title">Дарителска кутия</string>
   <string name="morphe_hide_emergency_box_title">Скриване аварийните кутии</string>
+  <string name="morphe_hide_in_this_video_button_title">Скриване на бутона „В това видео“</string>
   <string name="morphe_hide_info_panels_title">Скриване на информационните панели</string>
   <string name="morphe_hide_info_panels_summary">Скрива информационните контекстни панели, като например медицинска информация</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Докосването и задържането навсякъде върху видео в емисията отваря менюто му</string>
   <string name="morphe_feed_watch_later_button_title">Показване на бутона „Гледай по-късно“ върху миниатюрите</string>
   <string name="morphe_feed_watch_later_button_summary">Бутонът „Гледай по-късно“ се показва върху миниатюрите на видеоклиповете в емисията, с отметка, ако видеото е запазено. Докосването му запазва или премахва видеото, а докосването и задържането му отваря „Запази в плейлист“</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Отвори изображенията от публикацията на цял екран</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Докосването на изображение от публикация го отваря на цял екран, вместо във фийда с публикациите</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Изтегляне на изображения от публикации</string>
   <string name="morphe_post_image_download_summary">Бутон за изтегляне се показва до бутона „Споделяне“ на публикации с изображения или GIF-ове, а елемент за изтегляне се добавя в тяхното меню</string>
@@ -992,6 +996,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Активиране на жеста за плъзгане при натискане</string>
   <string name="morphe_swipe_press_to_engage_summary">Изисква натискане и задържане преди да бъде разпознат жестът на плъзгане.</string>
   <string name="morphe_swipe_haptic_feedback_title">Включване на тактилна обратна връзка</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Вибрира, когато задържането започне жест за плъзгане</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Запазване и възстановяване на яркост</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Запазва нивото на яркост при влизане и излизане от режим на цял екран</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Включване на авто-регулиране на яркост</string>
@@ -1135,6 +1140,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Регулирайте нивото на прозрачност на стъклената навигационна лента (0 е прозрачно, 100 е непрозрачно)</string>
   <string name="morphe_navigation_bar_glass_round_title">Закръглена стъклена навигационна лента</string>
   <string name="morphe_navigation_bar_glass_round_summary">Придава закръглени краища на стъклената навигационна лента, вместо ъгли като при стъкления миниплейър</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Стъклен ръб на навигационната лента</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Изчертава светлинен ръб около стъклената навигационна лента</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Долен отстъп на стъклената навигационна лента</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Регулирайте разстоянието между стъклената навигационна лента и долната част на екрана или системната навигация</string>
   <string name="morphe_navigation_bar_glass_size_title">Размер на стъклената лента за навигация</string>
   <string name="morphe_navigation_bar_glass_size_summary">Регулирайте височината, ширината и разстоянието между бутоните на стъклената лента за навигация с предгледно изображение. Бутоните, които не се побират в ширината на екрана, се скриват</string>
   <string name="morphe_navigation_bar_glass_size_height">Височина</string>
@@ -1381,6 +1390,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Изключване на автоматичното опресняване на емисията</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Предотвратява автоматичното опресняване на емисиите, след като остареят</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Разгрупване на известия</string>
+  <string name="morphe_ungroup_notifications_summary">Показва всяко видео от групираните качвания на канал като отделно известие</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Оформление на картите в емисията</string>
   <string name="morphe_feed_card_layout_entry_1">Класически</string>
@@ -1493,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Резултати от търсенето</string>
   <string name="morphe_dearrow_titles_icon_title">Показване на иконата на DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Показва иконата на DeArrow при заглавия на видеоклипове с заглавие или миниатюра, предоставени от общността. Докоснете иконата, за да видите оригиналното заглавие и миниатюра</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Почистване на заглавията</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Почиства заглавията на видеоклипове без заглавие от DeArrow. Думите с главни букви се променят в нормален регистър, а емотиконите, декорираният текст и повтарящите се удивителни знаци се премахват</string>
   <string name="morphe_dearrow_casual_mode_title">Casual режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Показва оригиналното заглавие вместо заглавието от DeArrow, ако потребителите на DeArrow са гласували, че оригиналното заглавие им харесва</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Минимален брой гласувания от тип Casual за показване на оригиналното заглавие</string>

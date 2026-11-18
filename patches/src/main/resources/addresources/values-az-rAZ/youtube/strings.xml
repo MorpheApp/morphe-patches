@@ -122,7 +122,7 @@ Dəyişikliklərə aşağıdakılar daxildir:
   <string name="morphe_hide_upload_time_title">Yüklənilmə vaxtını gizlət</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Məhdudiyyətlər:
-• Shorts cərgələri, kanal səhifələri və axtarış nəticələri yüklənmə vaxtlarını hələ də göstərə bilər
+• Shorts cərgələri yüklənmə vaxtlarını hələ də göstərə bilər
 • Avtomobil tərtibatı ilə işləmir"</string>
   <string name="morphe_hide_video_thumbnail_title">Video miniatürün gizlət</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Dəyişikliklərə aşağıdakılar daxildir:
   <string name="morphe_hide_view_count_title">Baxış sayını gizlət</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Məhdudiyyətlər:
-• Shorts cərgələri, kanal səhifələri və axtarış nəticələri baxış sayını yenə də göstərə bilər
+• Shorts cərgələri baxış sayını yenə də göstərə bilər
 • Avtomobil tərtibatı ilə işləmir"</string>
   <string name="morphe_hide_web_search_results_title">Veb axtarış nəticələrini gizlət</string>
   <string name="morphe_hide_web_search_results_summary">Axtarış nəticələrindən \"Vebdən nəticə\" bölməsini gizlədir</string>
@@ -290,9 +290,10 @@ Məhdudiyyətlər:
   <string name="morphe_hide_autoplay_preview_summary">Avtomatik oynatma başlamazdan öncə tam ekranda gözlənilən video önizləməsini gizlədir</string>
   <string name="morphe_hide_channel_bar_title">Kanal zolağını gizlət</string>
   <string name="morphe_hide_channel_watermark_title">Kanal su nişanını gizlət</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Fəsillər və \"Bu videoda\" düyməsini gizlət</string>
+  <string name="morphe_hide_chapters_button_title">Fəsillər düyməsini gizlət</string>
   <string name="morphe_hide_crowdfunding_box_title">İanə qutusunu gizlət</string>
   <string name="morphe_hide_emergency_box_title">Ciddi vəziyyət qutularını gizlət</string>
+  <string name="morphe_hide_in_this_video_button_title">\"Bu videoda\" düyməsini gizlət</string>
   <string name="morphe_hide_info_panels_title">Məlumat lövhələrini gizlət</string>
   <string name="morphe_hide_info_panels_summary">Tibbi məlumat kimi məlumatlandırıcı məzmun lövhələrini gizlədir</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,7 @@ Məhdudiyyətlər:
   <string name="morphe_feed_long_press_menu_summary">Axında videonun istənilən yerinə toxunub saxlamaq onun menyusunu açır</string>
   <string name="morphe_feed_watch_later_button_title">Miniatürlərdə Sonra izləyin düyməsini göstər</string>
   <string name="morphe_feed_watch_later_button_summary">Sonra izləyin düyməsi axın videolarının miniatürlərində göstərilir, əgər video saxlanılıbsa işarələnir. Ona toxunmaq videonu saxlayır və ya silir, basıb saxlamaq isə Pleylistdə saxlayını açır</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Post şəkillərini yüklə</string>
   <string name="morphe_post_image_download_summary">Yükləmə düyməsi Şəkil və ya GIF olan postların Paylaş düyməsi ilə yanaşı göstərilir və yükləmə elementi menyularına əlavə edilir</string>
@@ -697,6 +699,8 @@ Məhdudiyyətlər:
   <string name="morphe_feed_download_flyout_button_summary">Yükləmə seçimi olmayan axın videolarının menyularına yükləmə elementi əlavə edir</string>
   <string name="morphe_download_force_4k_title">4K yükləmə əlçatanlığını məcbur et</string>
   <string name="morphe_download_force_4k_summary">YouTube bu cihazın oynatmadığını bildirsə belə, 1440p və 4K yükləmələri təklif edir</string>
+  <string name="morphe_download_quality_about_title">1080p mövcud deyil</string>
+  <string name="morphe_download_quality_about_summary">Tətbiqdaxili yükləmələr 1080p təklif etmirsə, Çoxvariantlı tənzimləmələrdə \"Cihaz ölçülərini saxtalaşdırı\" aktivləşdir</string>
   <string name="morphe_export_download_folder_title">Saxlanılmış videoları ixrac et</string>
   <string name="morphe_export_download_folder_summary">"Tətbiqdaxili yükləmələr açılan menyusunu istifadə etməklə tətbiqdə saxlanılan videoları cihaz yaddaşınıza ixrac edin. İxrac qovluğunu dəyişdirmək üçün bura toxunun
 
@@ -990,6 +994,7 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_swipe_press_to_engage_title">Sürüşdürmə jesti üçün sıxmanı aktiv et</string>
   <string name="morphe_swipe_press_to_engage_summary">Sürüşdürmə jesti aşkarlanmazdan öncə basıb saxlamaq lazım olur</string>
   <string name="morphe_swipe_haptic_feedback_title">Əks-əlaqə reaksiyasını aktivləşdir</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Basılı saxlayıb sürüşdürmə jesti başlatdıqda titrəyir</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Parlaqlığı saxla və bərpa et</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Tam ekran rejiminə girəndə/çıxanda parlaqlıq səviyyəsini xatırlayır</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Avto-parlaqlıq jestini aktivləşdir</string>
@@ -1379,6 +1384,7 @@ Avtomobil tərtibatı
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Avtomatik axın yeniləməsini qapat</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Axınların köhnəldikdən sonra avtomatik yenilənməsinin qarşısını alır</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Axın kartının tərtibatı</string>
   <string name="morphe_feed_card_layout_entry_1">Klassik</string>

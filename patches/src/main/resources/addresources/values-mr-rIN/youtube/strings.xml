@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">अपलोड वेळ लपवा</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"मर्यादा:
-• शॉर्ट्स शेल्फ, चॅनेल पृष्ठे आणि शोध परिणामांमध्ये अपलोडचे वेळ अजूनही दिसू शकतो.
-• हे ऑटोमोटिव्ह लेआउटमध्ये कार्य करत नाही."</string>
+• Shorts शेल्व्सवर कदाचित अपलोड वेळ दिसू शकते
+• ऑटोमोटिव्ह लेआउटसह कार्य करत नाही"</string>
   <string name="morphe_hide_video_thumbnail_title">व्हिडिओ थंबनेल लपवा</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">व्हिडिओ लेबल्स लपवा</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">व्ह्यू काउंट लपवा</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"मर्यादा:
-• शॉर्ट्स शेल्फ, चॅनेल पृष्ठे आणि शोध परिणामांमध्ये व्ह्यूची संख्या अजूनही दिसू शकते.
-• हे ऑटोमोटिव्ह लेआउटमध्ये कार्य करत नाही."</string>
+• Shorts शेल्व्सवर कदाचित व्ह्यू काउंट्स दिसू शकतात
+• ऑटोमोटिव्ह लेआउटसह कार्य करत नाही"</string>
   <string name="morphe_hide_web_search_results_title">वेब शोध परिणाम लपवा</string>
   <string name="morphe_hide_web_search_results_summary">शोध परिणामांमधून ‘वेबवरील परिणाम’ विभाग लपवा</string>
   <string name="morphe_hide_you_may_like_section_title">\'तुम्हाला आवडेल\' विभाग लपवा</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">ऑटोप्ले सुरू होण्यापूर्वी फुलस्क्रीनमध्ये आगामी व्हिडिओ पूर्वावलोकन लपवते</string>
   <string name="morphe_hide_channel_bar_title">चॅनेल बार लपवा</string>
   <string name="morphe_hide_channel_watermark_title">चॅनेल वॉटरमार्क लपवा</string>
-  <string name="morphe_hide_chapters_timeline_button_title">अध्याय आणि \'या व्हिडिओमध्ये\' बटण लपवा</string>
+  <string name="morphe_hide_chapters_button_title">Chapters बटण लपवा</string>
   <string name="morphe_hide_crowdfunding_box_title">क्राउडफंडिंग बॉक्स लपवा</string>
   <string name="morphe_hide_emergency_box_title">आणीबाणीचे बॉक्स लपवा</string>
+  <string name="morphe_hide_in_this_video_button_title">\'In this video\' बटण लपवा</string>
   <string name="morphe_hide_info_panels_title">माहिती पॅनेल लपवा</string>
   <string name="morphe_hide_info_panels_summary">वैद्यकीय माहितीसारखे माहितीपूर्ण संदर्भ पॅनेल लपवते</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">फीड व्हिडिओवर कोठेही दाबून धरल्यास त्याचे मेनू उघडते</string>
   <string name="morphe_feed_watch_later_button_title">थंबनेलवर \'नंतर पहा\' बटण दाखवा</string>
   <string name="morphe_feed_watch_later_button_summary">फीडमधील व्हिडिओंच्या थंबनॅल्सवर \'नंतर पहा\' बटण दाखवले जाते, आणि व्हिडिओ सेव्ह असल्यास तिथे चेक मार्क असतो. त्यावर टॅप केल्यावर व्हिडिओ सेव्ह होतो किंवा काढला जातो, आणि टॅप करून धरून ठेवल्यास \'प्लेलिस्टमध्ये सेव्ह करा\' हा पर्याय उघडतो</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">पोस्टमधील प्रतिमा फुलस्क्रीनमध्ये उघडा</string>
+  <string name="morphe_open_post_images_fullscreen_summary">पोस्टच्या प्रतिमेवर टॅप केल्यावर ती पोस्टच्या फीडऐवजी फुलस्क्रीनमध्ये उघडते</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">पोस्टची चित्रे डाउनलोड करा</string>
   <string name="morphe_post_image_download_summary">चित्रे किंवा GIFs असलेल्या पोस्टच्या शेअर बटणाजवळ डाउनलोड बटण दिसते आणि त्यांच्या मेनूमध्ये डाउनलोड पर्याय जोडला जातो</string>
@@ -992,6 +996,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swipe_press_to_engage_title">प्रेस टू स्वाइप हावभाव सक्षम करा</string>
   <string name="morphe_swipe_press_to_engage_summary">स्वाइप जेश्चर ओळखण्यापूर्वी दाबून ठेवणे आवश्यक आहे</string>
   <string name="morphe_swipe_haptic_feedback_title">हॅप्टिक फीडबॅक सक्षम करा</string>
+  <string name="morphe_swipe_haptic_feedback_summary">स्वइप जेस्चर सुरू करण्यासाठी दाबून धरल्यावर व्हायब्रेट होते</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">ब्राइटनेस जतन करा आणि पुनर्संचयित करा</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">फुलस्क्रीन मोडमध्ये प्रवेश करताना / बाहेर पडताना ब्राइटनेस पातळी लक्षात ठेवते</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">ऑटो-ब्राइटनेस हावभाव सक्षम करा</string>
@@ -1135,6 +1140,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_navigation_bar_glass_opacity_summary">ग्लास नेव्हिगेशन बारची पारदर्शकता पातळी समायोजित करा (० पारदर्शक आहे, १०० अपॅक आहे)</string>
   <string name="morphe_navigation_bar_glass_round_title">राउंड ग्लास नेव्हिगेशन बार</string>
   <string name="morphe_navigation_bar_glass_round_summary">ग्लास मिनीप्लेयरप्रमाणे कोपऱ्यांऐवजी, ग्लास नेव्हिगेशन बारला गोलाकार टोके देते</string>
+  <string name="morphe_navigation_bar_glass_edge_title">ग्लास नेव्हिगेशन बार एज</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">ग्लास नेव्हिगेशन बारभोवती प्रकाश देणारी कडा तयार करते</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">ग्लास नेव्हिगेशन बार खालचा मार्जिन</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">ग्लास नेव्हिगेशन बार आणि स्क्रीनच्या तळाकडील भाग किंवा सिस्टम नेव्हिगेशनमधील जागा समायोजित करा</string>
   <string name="morphe_navigation_bar_glass_size_title">ग्लास नेव्हिगेशन बारचा आकार</string>
   <string name="morphe_navigation_bar_glass_size_summary">प्रिव्ह्यूसह ग्लास नेव्हिगेशन बारची उंची, रुंदी आणि बटण स्पेसिंग समायोजित करा. स्क्रीनच्या रुंदीत न बसणारी बटणे लपवली जातात</string>
   <string name="morphe_navigation_bar_glass_size_height">उंची</string>
@@ -1381,6 +1390,9 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">ऑटो फीड रिफ्रेश अक्षम करा</string>
   <string name="morphe_disable_auto_feed_refresh_summary">फीड्स जुने झाल्यावर ते आपोआप रिफ्रेश होण्यापासून रोखते</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">सूचना अनग्रुप करा</string>
+  <string name="morphe_ungroup_notifications_summary">चॅनेलच्या ग्रुप केलेल्या अपलोड्समधील प्रत्येक व्हिडिओ स्वतंत्र सूचना म्हणून दाखवा</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">फीड कार्ड लेआउट</string>
   <string name="morphe_feed_card_layout_entry_1">क्लासिक</string>
@@ -1493,6 +1505,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_dearrow_titles_search_title">शोध परिणाम</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow आयकॉन दाखवा</string>
   <string name="morphe_dearrow_titles_icon_summary">क्राउडसोर्स केलेले शीर्षक किंवा थंबनेल असलेल्या व्हिडिओंच्या शीर्षकांवर DeArrow आयकॉन दाखवतो. मूळ शीर्षक आणि थंबनेल पाहण्यासाठी आयकॉनवर टॅप करा</string>
+  <string name="morphe_dearrow_clean_up_titles_title">शीर्षक स्वच्छ करा</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow शीर्षक नसलेल्या व्हिडिओंची शीर्षके स्वच्छ करा. कॅपिटल्समधील शब्द सामान्य केसमध्ये बदलले जातात आणि इमोजी, फॅन्सी मजकूर आणि वारंवार येणारे उद्गारचिन्ह काढून टाकले जातात</string>
   <string name="morphe_dearrow_casual_mode_title">कॅज्युअल मोड</string>
   <string name="morphe_dearrow_casual_mode_summary">जर DeArrow वापरकर्त्यांनी मूळ शीर्षक आवडल्याचे मत दिले असेल, तर DeArrow शीर्षकाऐवजी मूळ शीर्षक दाखवते</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">मूळ शीर्षक दाखवण्यासाठी किमान कॅज्युअल मते</string>

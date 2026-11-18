@@ -271,6 +271,11 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">オーディオダッキングを無効化</string>
   <string name="morphe_music_disable_audio_ducking_summary">通知などの短い音が他のアプリで再生されたときに、音量が下がらなくなります</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">キューの高評価フィルター</string>
+  <string name="morphe_music_queue_like_filter_summary">ミックスやラジオから高評価数の少ない曲を削除します。プレイリスト、アルバム、およびキューに追加した曲は変更されません。高評価数はReturn YouTube Dislikeに基づいています</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">最小高評価数</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">高評価数がこれより少ない曲はキューから削除されます</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">低評価によるスキップを無効化</string>
   <string name="morphe_music_disable_dislike_redirection_summary">低評価ボタンを押したときに次の曲にスキップする機能を無効にします</string>
@@ -717,8 +722,14 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_written_by">作詞: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">同期中の単語や音節をハイライト表示</string>
   <string name="morphe_music_lyrics_word_sync_summary">利用可能な場合は単語ごとのタイミング情報を含む歌詞を優先します。単語ごとのタイミング情報を含む歌詞を使用する場合は、楽曲に合わせて各単語または音節をハイライト表示します</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">同期した単語をスムーズにアニメーションさせる</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">歌われるタイミングに合わせて、各単語をソフトなスイープ、グロー、およびわずかなリフトでハイライトします。バッテリーを節約する場合や、低スペックデバイスでシャープな塗りつぶしを希望する場合はオフにしてください</string>
   <string name="morphe_music_lyrics_spring_scroll_title">スプリングスクロールを使用する</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">スプリング物理学を用いて歌詞をスクロールし、各行を上の行から少しずらして移動させます。低スペックのデバイスでバッテリーを節約したい場合はオフにしてください</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">リラックスしたスクロール</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">歌詞のスクロールアニメーションを低速にし、非アクティブな行をフルサイズで維持します</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">非アクティブな行をぼかす</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">現在歌われていないすべての行を柔らかくぼかします。離れている行ほどぼかしが強くなります（Android 12以降）。Android 12より前のバージョンでは、非アクティブな行は鮮明なまま表示されます</string>
   <string name="morphe_music_lyrics_gap_dots_title">間奏中のドットを表示</string>
   <string name="morphe_music_lyrics_gap_dots_summary">長い間奏の間に3つのドットを表示し、間奏の終了に合わせてドットが埋まっていきます</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">離れた行をより暗くする</string>
@@ -842,6 +853,8 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">翻訳を歌詞の上に移動します。読みとローマ字は下に保持されます</string>
   <string name="morphe_music_lyrics_force_center_title">歌詞を常に中央揃えにする</string>
   <string name="morphe_music_lyrics_force_center_summary">ONにすると、各行を中央に配置し、ソースの配置（デュエットのサイドを含む）を無視します；OFFにすると、歌詞が要求する配置を保持します</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">デュエットの反対側配置</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">デュエット曲において、2人目のシンガーを反対側の端に配置します。オフにすると、両方のシンガーが同じ側に配置されます</string>
   <string name="morphe_music_lyrics_providers_keep_one">少なくとも1つのプロバイダーをONにしておく必要があります</string>
   <string name="morphe_music_lyrics_translation_provider_title">翻訳</string>
   <string name="morphe_music_lyrics_romanization_provider_title">ローマ字 / 発音表示</string>

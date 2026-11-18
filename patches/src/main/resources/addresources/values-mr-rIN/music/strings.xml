@@ -271,6 +271,11 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">ऑडिओ डकिंग बंद करा</string>
   <string name="morphe_music_disable_audio_ducking_summary">जेव्हा दुसरे एखादे ॲप नोटिफिकेशनसारखा छोटा आवाज प्ले करते, तेव्हा वॉल्यूम कमी होत नाही</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">क्यू लाईक्स फिल्टर</string>
+  <string name="morphe_music_queue_like_filter_summary">मिक्स आणि रेडिओमधून कमी लाईक्स असलेली गाणी काढून टाकते. तुम्ही क्यूमध्ये जोडलेल्या प्लेलिस्ट, अल्बम्स आणि गाण्यांमध्ये कोणताही बदल केला जात नाही. लाईक्सची संख्या Return YouTube Dislike वरून घेतली जाते</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">किमान लाईक्स</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">कमी लाईक्स असलेली गाणी क्यूमधून काढून टाकली जातात</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">अनापसंद पुनर्निर्देशन अक्षम करा</string>
   <string name="morphe_music_disable_dislike_redirection_summary">अनापसंद बटण दाबल्यावर पुढील गाण्यावर जाण्यापासून प्रतिबंधित करते</string>
@@ -717,8 +722,14 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_written_by">लेखक: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">सिंक केलेले शब्द किंवा शब्दांश हायलाइट करा</string>
   <string name="morphe_music_lyrics_word_sync_summary">शब्द-दर-शब्द लिरिक्स उपलब्ध असल्यास त्यांना प्राधान्य द्या. लिरिक्समध्ये शब्दांच्या वेळेची माहिती असल्यास, संगीताच्या तालात प्रत्येक शब्द किंवा अक्षराला हायलाइट करा</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">सिंक केलेले शब्द गुळगुळीतपणे अ‍ॅनिमेट करा</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">गाले असताना प्रत्येक शब्दाला सॉफ्ट स्वीप, ग्लो आणि थोड्या लिफ्टसह हायलाइट करते. बॅटरी वाचवण्यासाठी किंवा संथ उपकरणांवर शार्प फिलसाठी हे बंद करा</string>
   <string name="morphe_music_lyrics_spring_scroll_title">स्प्रिंग स्क्रोलिंग वापरा</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">स्प्रिंग फिजिक्ससह लिरिक्स स्क्रोल करते आणि प्रत्येक ओळ तिच्यावरील ओळीच्या थोडी पुढे सरकवते. संथ उपकरणांवर बॅटरी वाचवण्यासाठी हे बंद करा</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">रिलॅक्स्ड स्क्रोलिंग</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">लिरीक स्क्रोल अ‍ॅनिमेशनचा वेग कमी करते आणि निष्क्रिय ओळी पूर्ण आकारात ठेवते</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">निष्क्रिय ओळी अस्पष्ट करा</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">सध्या गायली न जाणाऱ्या प्रत्येक ओळीला हळुवारपणे अस्पष्ट करते, जेवढ्या ओळी लांब असतील तेवढ्या अधिक अस्पष्ट (Android 12 आणि त्यानंतरची आवृत्ती). Android 12 पूर्वी, निष्क्रिय ओळी स्पष्ट राहतात</string>
   <string name="morphe_music_lyrics_gap_dots_title">इन्स्ट्रुमेंटल ब्रेक डॉट्स दाखवा</string>
   <string name="morphe_music_lyrics_gap_dots_summary">लांब इन्स्ट्रुमेंटल ब्रेक दरम्यान ओळींच्या दरम्यान तीन डॉट्स दाखवते, जे ब्रेक संपत असताना भरले जातात</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">दूरच्या ओळी अधिक धूसर करा</string>
@@ -841,6 +852,8 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_swap_trans_roma_summary">भाषांतर ओळींच्या वर हलवते; वाचन आणि रोमनकरण खाली राहते</string>
   <string name="morphe_music_lyrics_force_center_title">नेहमी गीतांना मध्यभागी ठेवा</string>
   <string name="morphe_music_lyrics_force_center_summary">ON केल्यास प्रत्येक ओळ मध्यभागी येते आणि सोर्स अलाइनमेंट दुर्लक्षित केली जाते, ज्यामध्ये ड्युएट साइड्सचा समावेश आहे; OFF केल्यास गीतांसाठी विचारलेली अलाइनमेंट कायम राहते</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">विरुद्ध बाजूचे ड्युएट अलाइनमेंट</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">ड्युएट गाण्यांमध्ये दुसऱ्या गायकाला विरुद्ध टोकाला ठेवते. दोन्ही गायकांना एकाच बाजूला ठेवण्यासाठी हे बंद करा</string>
   <string name="morphe_music_lyrics_providers_keep_one">किमान एक प्रोव्हायडर चालू असणे आवश्यक आहे</string>
   <string name="morphe_music_lyrics_translation_provider_title">अनुवाद</string>
   <string name="morphe_music_lyrics_romanization_provider_title">रोमनायझेशन किंवा लिप्यंतरण</string>

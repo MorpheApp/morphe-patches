@@ -271,6 +271,11 @@ SABR-taasesitus (videovoogude imiteerimine välja lülitatud)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Keela helitugevuse automaatne allakeldamine</string>
   <string name="morphe_music_disable_audio_ducking_summary">Helitugevust ei alandata, kui mõni teine rakendus esitab lühikest heli, näiteks teavitust</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Kooru meeldivuse filter</string>
+  <string name="morphe_music_queue_like_filter_summary">Eemaldab vähese meeldivusega laulud mikside ja raadiojaamadest. Playliste, albumeid ja laule, mida lisate kooruga, ei muudata. Meeldivuste arv tuleb Return YouTube Dislike\'ist</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimaalne meeldivuste arv</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Laulud, millel on vähem meeldivusi, eemaldatakse koorust</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Keela mittemeeldimise ümbersuunamine</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Takistab järgmisele palale liikumist, kui vajutatakse mittemeeldimise nuppu</string>
@@ -718,8 +723,14 @@ Nõutavad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Kirjutaja: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Tõsta esile sünkroonitud sõnad või silbid</string>
   <string name="morphe_music_lyrics_word_sync_summary">Eelista sõna-sõnalt esitatud laulusõnu, kui need on saadaval. Kui laulusõnad sisaldavad ajastust, tõstetakse iga sõna või silp esile muusikaga samas taktis</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Sünkronitud sõnade sujuv animeerimine</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">R rõhutab iga sõna pehmega lihegusega, särakusega ja kerge tõstmisega koos laulmisega. Lülitage välja akusäästmiseks või aeglasemate seadmete teravama täitmiseks</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Kasuta vedru-kerimist</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Kerib lyricsi vedrufüüsika abil ja liigutab iga rea veidi üle eelmise rea. Lülita välja, et säästa aegsemate seadmete akut</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Lõõgastatud kerimine</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Aeglustab lüürika kerimise animatsiooni ja hoiab mittestabiilsed read täis suuruses</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Mitteaktiivsete rändade hägustamine</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Hägustab õrvalt kõiki read, mida parasjagu ei laulda, ning mida kaugemal on, owni on hägustus tugevam (Android 12 ja uuem). Enne Androidit 12 jäävad mitteaktiivsed read teravaks</string>
   <string name="morphe_music_lyrics_gap_dots_title">Näita instrumentaalset vaheosa punkte</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Näitab pika instrumentaalsete vaheosade ajal rideva lõigude vahel kolme punkti, mis täituvad koos vaheosa lõpuga</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Hägusta kaugesema rea rohkem</string>
@@ -842,6 +853,8 @@ Laulutekstid pärinevad kolmandate osapoolte teenustest, mis ei ole Morphega seo
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Liigutab tõlklaulu lüürika kohale; loetak ja romaniseerimine jäävad allalugemise alla</string>
   <string name="morphe_music_lyrics_force_center_title">Keskita alati laulutekstid</string>
   <string name="morphe_music_lyrics_force_center_summary">SEADE ON asetab iga rea keskelle ja ignoreerib algset jooneustamist, sealhulgas duettide poolid; SEADE OFF säilitab lüürika nõutud jooneustamise</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Dueti vastassuunaline ristumine</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary"> Hoiab dueti lauludes teise laulja vastaskülje serval. Lülita välja, et hoida mõlemad lauljad samal pool</string>
   <string name="morphe_music_lyrics_providers_keep_one">Vähemalt üks teenusepakkuja peab jääma sisse</string>
   <string name="morphe_music_lyrics_translation_provider_title">Tõlge</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romaniseerimine või transliteratsioon</string>

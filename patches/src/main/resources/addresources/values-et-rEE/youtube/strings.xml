@@ -122,7 +122,7 @@ Muudatused hõlmavad:
   <string name="morphe_hide_upload_time_title">Peida üleslaadimise aega</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Piirangud:
-• Shortside riiulitel, kanalite lehtedel ja otsingutulemustel võib uploadi aeg ikka olla näidatud
+• Shorts'i riiulitel võib üleslaadimise aeg ikka olla näidatud
 • Ei toimi auto makettidega"</string>
   <string name="morphe_hide_video_thumbnail_title">Peida video miniatuuri</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Muudatused hõlmavad:
   <string name="morphe_hide_view_count_title">Peida vaatamiskordade arvu</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Piirangud:
-• Shorts'i riiulitel, kanalite lehtedel ja otsingutulemustel võib vaatamiste arv ikka olla näidatud
+• Shorts'i riiulitel võib vaatamiste arv ikka olla näidatud
 • Ei toimi auto makettidega"</string>
   <string name="morphe_hide_web_search_results_title">Peida veebiotsingutulemused</string>
   <string name="morphe_hide_web_search_results_summary">Peidab jaotise \"Tulemus veebist\" otsingutulemustest</string>
@@ -290,9 +290,10 @@ Piirangud:
   <string name="morphe_hide_autoplay_preview_summary">Peidab täisekraani režiimis tuleviku video eelvaate enne automaatset esitust</string>
   <string name="morphe_hide_channel_bar_title">Peida kanali riba</string>
   <string name="morphe_hide_channel_watermark_title">Peida kanali vesimärki</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Peita peatükid ja nupp \"Selles videos\"</string>
+  <string name="morphe_hide_chapters_button_title">Peida peatükite nupp</string>
   <string name="morphe_hide_crowdfunding_box_title">Peida ühisrahastus plokk</string>
   <string name="morphe_hide_emergency_box_title">Peida häirekastid</string>
+  <string name="morphe_hide_in_this_video_button_title">Peida nupp \"Selles videos\"</string>
   <string name="morphe_hide_info_panels_title">Peida info paneelid</string>
   <string name="morphe_hide_info_panels_summary">Peidab informatiivseid kontekstpaneele, näiteks meditsiinilist teavet</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvalise
   <string name="morphe_feed_long_press_menu_summary">Video feedil puudutamine ja hoidmine avab selle menüü</string>
   <string name="morphe_feed_watch_later_button_title">Kuva \"Vaata hiljem\" nupp pikkpõhilistel piltedel</string>
   <string name="morphe_feed_watch_later_button_summary">Vooguvideode pisipiltidel on nähtav nupp \"Vaata hiljem\", mis on märgitud linnuks, kui video on salvestatud. Nupu vajutamine salvestab või eemaldab video ning nupu vajutamine ja hoidmine avab valiku \"Salvesta esitusloendisse\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Ava postituse pildid täisekranis</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Postituse pildi puudutamine avab selle täisekranis, mitte postituste voos</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Laadi alla postituse pildid</string>
   <string name="morphe_post_image_download_summary">Piltide või GIF-idega postituste \"Jaga\" nupu kõrvale kuvatakse allalaadimise nupp ning nende menüüsse lisatakse allalaadimise üksus</string>
@@ -992,6 +996,7 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_swipe_press_to_engage_title">Luba pühkimise žest vajutusega</string>
   <string name="morphe_swipe_press_to_engage_summary">Nõuab vajutamist ja hoidmist enne, kui pühkimisžest tuvastatakse</string>
   <string name="morphe_swipe_haptic_feedback_title">Luba haptiline tagasiside</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibreerib, kui pika vajutusega algatatakse pühkimisžest</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Salvesta ja taasta heledus</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Mäletab heleduse taset täisekraani režiimi sisenemisel / sellest väljumisel</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Luba automaatne heledus žest</string>
@@ -1135,6 +1140,10 @@ Seadetele ligipääsemiseks luba seadete nupp menüüs: Üldine → Tööriistar
   <string name="morphe_navigation_bar_glass_opacity_summary">Reguleeri klaasist navigeerimisriba läbipaistvust (0 on läbipaistev, 100 on läbipaistmatu)</string>
   <string name="morphe_navigation_bar_glass_round_title">Ümar klaasist navigeerimisriba</string>
   <string name="morphe_navigation_bar_glass_round_summary">Annab klaasist navigeerimisribale ümarad otsad, mitte nurgad nagu klaasist minipleieril</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Klaasise navigeerimisriba serv</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Joonistab klaasise navigeerimisriba ümber valguse servos</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Klaasise navigeerimisriba alumine marginaal</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Reguleeri vahe klaasist navigatsiooniriba ja ekraani alumise osa või süsteemi navigatsiooni vahel</string>
   <string name="morphe_navigation_bar_glass_size_title">Klaasise navigeerimisriba suurus</string>
   <string name="morphe_navigation_bar_glass_size_summary">Reguleerige klaasise navigeerimisriba kõrgust, laialgust ja nuppude vahemaad koos eelvaatega. Nupud, mis ei mahu ekraani laialgusse, on peidetud</string>
   <string name="morphe_navigation_bar_glass_size_height">Kõrgus</string>
@@ -1381,6 +1390,9 @@ Auto paigutus
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Keela voo automaatne värskendamine</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Hoiab ära voode automaatse värskendamise pärast nende aegsumist</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Lahti teha märguandete grupid</string>
+  <string name="morphe_ungroup_notifications_summary">Kuvab iga kanali grupeeritud üleslaadimise video üksikuna märguandena</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Voo kaardi paigutus</string>
   <string name="morphe_feed_card_layout_entry_1">Klassikaline</string>
@@ -1493,6 +1505,8 @@ Auto paigutus
   <string name="morphe_dearrow_titles_search_title">Otsingutulemused</string>
   <string name="morphe_dearrow_titles_icon_title">Näita DeArrow ikooni</string>
   <string name="morphe_dearrow_titles_icon_summary">Kuvab DeArrow ikooni nende videote pealkirjade juures, mille pealkiri või pisipilt on loodud kasutajate poolt. Algse pealkirja ja pisipilt nägemiseks puuduta ikooni</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Puhasta pealkirjad</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Puhastab videote pealkirju, millel puudub DeArrow pealkiri. Suurtähtedega sõnad muutatakse tavaliseks kirjutamiseks ning eemaldatakse emotikonid, fancy tekst ja korduvad hüüatmärgid</string>
   <string name="morphe_dearrow_casual_mode_title">Vaba režiim</string>
   <string name="morphe_dearrow_casual_mode_summary">Kuvab DeArrow pealkirja asemel algse pealkirja, kui DeArrow kasutajad on hääletanud, et neile meeldib algne pealkiri.</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimaalne häältes arv algse pealkirja kuvamiseks</string>

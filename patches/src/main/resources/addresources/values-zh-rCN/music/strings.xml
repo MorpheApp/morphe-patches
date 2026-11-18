@@ -271,6 +271,11 @@ SABR 播放（模拟视频流已关闭）"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">禁用音频避让</string>
   <string name="morphe_music_disable_audio_ducking_summary">当其他应用播放短促声音（如通知）时，音量不会降低</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">队列点赞过滤器</string>
+  <string name="morphe_music_queue_like_filter_summary">从混音和电台中移除点赞数较少的歌曲。添加到队列的播放列表、专辑和歌曲不会被更改。点赞数来自 Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">最低点赞数</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">点赞数较少的歌曲将从队列中移除</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">禁用不喜欢重定向</string>
   <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜欢按钮时跳转到下一曲</string>
@@ -717,8 +722,14 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_written_by">作者：%s</string>
   <string name="morphe_music_lyrics_word_sync_title">高亮显示同步的单词或音节</string>
   <string name="morphe_music_lyrics_word_sync_summary">优先考虑可用逐字歌词。当歌词带有时间标志，随着音乐及时高亮每个单词或音节</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">平滑地动画同步词汇</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">在演唱时，通过柔和的扫掠、发光和轻微提升来突出显示每个单词。关闭此项以节省电量，或在低端设备上使用清晰的填充效果</string>
   <string name="morphe_music_lyrics_spring_scroll_title">使用弹簧滚动</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">使用弹簧物理效果滚动歌词，并使每行相对于上一行稍有偏移。在低端设备上可将其关闭以节省电量</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">轻松滚动</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">降低歌词滚动动画的速度，并保持非活动行的大小不变</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">模糊未激活行</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">轻微模糊当前未在演唱的每一行，距离越远模糊程度越高（Android 12 及更高版本）。在 Android 12 之前，未激活行保持清晰</string>
   <string name="morphe_music_lyrics_gap_dots_title">显示乐器间奏点</string>
   <string name="morphe_music_lyrics_gap_dots_summary">在较长的乐器间奏期间，行之间显示三个点，随着间奏接近结束，这些点会逐渐填满</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">进一步调暗远处行</string>
@@ -841,6 +852,8 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">将翻译移至歌词上方；读音和罗马字保持在下方</string>
   <string name="morphe_music_lyrics_force_center_title">始终居中歌词</string>
   <string name="morphe_music_lyrics_force_center_summary">开启时将每一行置于中间，忽略源对齐方式，包括对唱部分；关闭时保持歌词要求的对齐方式</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">对唱反向对齐</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">在对唱歌曲中将第二位歌手放置在相反的一侧。关闭此项可让两位歌手保持在同一侧</string>
   <string name="morphe_music_lyrics_providers_keep_one">必须至少保留一个提供商开启</string>
   <string name="morphe_music_lyrics_translation_provider_title">翻译</string>
   <string name="morphe_music_lyrics_romanization_provider_title">罗马化或意译</string>

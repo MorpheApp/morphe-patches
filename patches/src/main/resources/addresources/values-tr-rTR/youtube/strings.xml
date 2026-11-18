@@ -122,7 +122,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_upload_time_title">Yüklenme zamanını gizle</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Sınırlamalar:
-• Shorts rafları, kanal sayfaları ve arama sonuçları yine de yüklenme zamanını gösterebilir
+• Shorts rafları yine de yüklenme zamanlarını gösterebilir
 • Otomotiv düzeniyle çalışmaz"</string>
   <string name="morphe_hide_video_thumbnail_title">Video ön izlemesini gizle</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_view_count_title">İzlenme sayısını gizle</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Sınırlamalar:
-• Shorts rafları, kanal sayfaları ve arama sonuçları yine de görüntülenme sayısını gösterebilir
+• Shorts rafları yine de görüntülenme sayılarını gösterebilir
 • Otomotiv düzeniyle çalışmaz"</string>
   <string name="morphe_hide_web_search_results_title">Web arama sonuçlarını gizle</string>
   <string name="morphe_hide_web_search_results_summary">Arama sonuçlarından \'Web\'den sonuçlar\' bölümünü gizler</string>
@@ -290,9 +290,10 @@ Kısıtlamalar:
   <string name="morphe_hide_autoplay_preview_summary">Otomatik oynatma başlamadan önce, tam ekrandaki yaklaşan video ön izlemesini gizler</string>
   <string name="morphe_hide_channel_bar_title">Kanal çubuğunu gizle</string>
   <string name="morphe_hide_channel_watermark_title">Kanal filigranını gizle</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Bölümleri ve \'Bu videoda\' düğmesini gizle</string>
+  <string name="morphe_hide_chapters_button_title">Bölümler düğmesini gizle</string>
   <string name="morphe_hide_crowdfunding_box_title">Bağış etkinliği kutularını gizle</string>
   <string name="morphe_hide_emergency_box_title">Acil durum kutularını gizle</string>
+  <string name="morphe_hide_in_this_video_button_title">\'Bu videoda\' düğmesini gizle</string>
   <string name="morphe_hide_info_panels_title">Bilgi panellerini gizle</string>
   <string name="morphe_hide_info_panels_summary">Tıbbi bilgiler gibi bilgilendirici içerik panellerini gizler</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Kısıtlamalar:
   <string name="morphe_feed_long_press_menu_summary">Akış videosu üzerinde herhangi bir yere dokunup basılı tutmak, menüsünü açar</string>
   <string name="morphe_feed_watch_later_button_title">Küçük resimlerde Daha Sonra İzle düğmesini göster</string>
   <string name="morphe_feed_watch_later_button_summary">Akış videolarının küçük resimlerinde, video kaydedilmişse bir onay işaretiyle birlikte bir \'Daha sonra izle\' düğmesi gösterilir. Buna dokunmak videoyu kaydeder veya kaldırır, basılı tutmak ise \'Oynatma listesine kaydet\' seçeneğini açar</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Gönderi resimlerini tam ekranda aç</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Bir gönderi resmine dokunmak, resmi gönderi akışı yerine tam ekranda açar</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Gönderi görsellerini indir</string>
   <string name="morphe_post_image_download_summary">Görsel veya GIF içeren gönderilerin Paylaş düğmesinin yanında bir indirme düğmesi gösterilir ve menülerine bir indirme öğesi eklenir</string>
@@ -992,6 +996,7 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_swipe_press_to_engage_title">Basılı tutup kaydırma hareketini etkinleştir</string>
   <string name="morphe_swipe_press_to_engage_summary">Kaydırma hareketinin algılanması için önce basılı tutulması gerekir</string>
   <string name="morphe_swipe_haptic_feedback_title">Titreşimli geri bildirimi etkinleştir</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Basılı tutarak kaydırma hareketi başlatıldığında titrer</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Parlaklığı kaydet ve geri yükle</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Tam ekran moduna girerken / çıkarken parlaklık seviyesini hatırlar</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Otomatik parlaklık hareketini etkinleştir</string>
@@ -1135,6 +1140,10 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_navigation_bar_glass_opacity_summary">Cam gezinme çubuğunun şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
   <string name="morphe_navigation_bar_glass_round_title">Yuvarlak cam gezinme çubuğu</string>
   <string name="morphe_navigation_bar_glass_round_summary">Cam mini oynatıcıdaki köşelerin aksine, cam gezinme çubuğuna yuvarlak uçlar sağlar</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Cam gezinme çubuğu kenarı</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Cam gezinme çubuğunun etrafına ışıklı kenar çizer</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Cam gezinme çubuğu alt kenar boşluğu</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Cam navigasyon çubuğu ile ekranın altı veya sistem navigasyonu arasındaki boşluğu ayarlayın</string>
   <string name="morphe_navigation_bar_glass_size_title">Cam gezinme çubuğu boyutu</string>
   <string name="morphe_navigation_bar_glass_size_summary">Cam gezinme çubuğunun yüksekliğini, genişliğini ve düğme boşluğunu bir önizleme ile ayarlayın. Ekran genişliğine sığmayan düğmeler gizlenir</string>
   <string name="morphe_navigation_bar_glass_size_height">Yükseklik</string>
@@ -1381,6 +1390,9 @@ Otomotiv düzeni
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Otomatik akış yenilemeyi devre dışı bırak</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Akışların güncelliğini yitirdikten sonra otomatik olarak yenilenmesini engeller</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Bildirim gruplarını çöz</string>
+  <string name="morphe_ungroup_notifications_summary">Bir kanalın gruplandırılmış yüklemelerindeki her videoyu ayrı bir bildirim olarak gösterir</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Akış kartı düzeni</string>
   <string name="morphe_feed_card_layout_entry_1">Klasik</string>
@@ -1493,6 +1505,8 @@ Otomotiv düzeni
   <string name="morphe_dearrow_titles_search_title">Arama sonuçları</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow simgesini göster</string>
   <string name="morphe_dearrow_titles_icon_summary">Kitle kaynaklı başlığa veya küçük resme sahip videoların başlıklarında DeArrow simgesini gösterir. Orijinal başlığı ve küçük resmi görmek için simgeye dokunun</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Başlıkları temizle</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow başlığı olmayan videoların başlıklarını temizler. Büyük harfle yazılmış kelimeler normal yazı tipine dönüştürülür; emojiler, süslü metinler ve tekrarlanan ünlem işaretleri kaldırılır</string>
   <string name="morphe_dearrow_casual_mode_title">Gündelik mod</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow kullanıcıları orijinal başlığı beğendikleri yönünde oy kullandıysa, DeArrow başlığı yerine orijinal başlığı gösterir</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Orijinal başlığı göstermek için minimum gündelik oy sayısı</string>

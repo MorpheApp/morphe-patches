@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Жүктеу уақытын жасыру</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Шектеулер:
-• Shorts сөрелерінде, арна беттерінде және іздеу нәтижелерінде жүктеу уақыты әлі де көрсетілуі мүмкін
-• Автокөлік интерфейсімен жұмыс істемейді"</string>
+• Shorts сөрелерінде жүктеу уақыты әлі де көрсетілуі мүмкін
+• Автомобиль интерфейсімен жұмыс істемейді"</string>
   <string name="morphe_hide_video_thumbnail_title">Видео мұқабасын жасыру</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Бейне белгілерін жасыру</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Көру санын жасыру</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Шектеулер:
-• Shorts сөрелерінде, арна беттерінде және іздеу нәтижелерінде қаралым саны әлі де көрсетілуі мүмкін
-• Автокөлік интерфейсімен жұмыс істемейді"</string>
+• Shorts сөрелерінде қаралым саны әлі де көрсетілуі мүмкін
+• Автомобиль интерфейсімен жұмыс істемейді"</string>
   <string name="morphe_hide_web_search_results_title">Веб-іздеу нәтижелерін жасыру</string>
   <string name="morphe_hide_web_search_results_summary">Іздеу нәтижелерінен \"Веб-желідегі нәтиже\" бөлімін жасырады</string>
   <string name="morphe_hide_you_may_like_section_title">\"Сізге ұнауы мүмкін\" бөлімін жасыру</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Автоойнату басталғанға дейін толық экрандағы келесі бейнебаян алдын ала қарауын жасырады</string>
   <string name="morphe_hide_channel_bar_title">Арна жолағын жасыру</string>
   <string name="morphe_hide_channel_watermark_title">Арна су белгісін жасыру</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Бөлімдерді және \"Осы видеода\" батырмасын жасыру</string>
+  <string name="morphe_hide_chapters_button_title">Тараулар түймесін жасыру</string>
   <string name="morphe_hide_crowdfunding_box_title">Краудфандинг блогын жасыру</string>
   <string name="morphe_hide_emergency_box_title">Төтенше жағдайлар туралы хабарламаларды жасыру</string>
+  <string name="morphe_hide_in_this_video_button_title">«Осы бейнеде» түймесін жасыру</string>
   <string name="morphe_hide_info_panels_title">Ақпараттық панельдерді жасыру</string>
   <string name="morphe_hide_info_panels_summary">Медициналық ақпарат сияқты ақпараттық контекст панельдерін жасырады</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Лентадағы бейненің кез келген жерін басып тұру оның мәзірін ашады</string>
   <string name="morphe_feed_watch_later_button_title">Шағын суреттерде «Кейінірек көру» батырмасын көрсету</string>
   <string name="morphe_feed_watch_later_button_summary">Лентадағы бейнелердің мұқабаларында «Кейінірек көру» батырмасы көрсетіледі, ал бейне сақталған болса, құсбелгі пайда болады. Оны басу бейнені сақтайды немесе жояды, ал басып тұру «Плейлистке сақтау» бөлімін ашады</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Жазба кескіндерін толық экранда ашу</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Жазба кескінін түрту оны жазбалар лентасының орнына толық экранда ашады</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Жазба суреттерін жүктеу</string>
   <string name="morphe_post_image_download_summary">Суреттері немесе GIF-тері бар жазбалардың «Бөлісу» батырмасының жанында жүктеу батырмасы көрсетіледі және олардың мәзіріне жүктеу элементі қосылады</string>
@@ -800,6 +804,7 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_loop_count_clear_done">Сақталған қайталау сандары тазаланды</string>
   <string name="morphe_loop_count_flyout_name">Цикл саны</string>
   <string name="morphe_loop_count_dialog_message">Келесі бейнебаянға өтпес бұрын бейнебаянның қанша рет ойнатылатыны, %1$s-тан %2$s-қа дейін. Бейнебаянды шексіз қайталау үшін бос қалдырыңыз.</string>
+  <string name="morphe_loop_count_times">%s рет</string>
   <string name="morphe_loop_count_no_limit">Шектеу жоқ</string>
   <string name="morphe_loop_count_decrease">Азайту</string>
   <string name="morphe_loop_count_increase">Көбейту</string>
@@ -991,6 +996,7 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_swipe_press_to_engage_title">Сырғыту үшін басу қимылын қосу</string>
   <string name="morphe_swipe_press_to_engage_summary">Сырғыту қимылы танылмас бұрын басып тұруды талап етеді</string>
   <string name="morphe_swipe_haptic_feedback_title">Тактильді кері байланысты қосу</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Сыпыру қимылы басталғанда басып тұрған кезде дірілдейді</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Жарықты сақтау және қалпына келтіру</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Толық экран режиміне кіргенде / шыққанда жарықтық деңгейін есте сақтайды</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Автожарықтылық қимылын қосу</string>
@@ -1134,6 +1140,10 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_navigation_bar_glass_opacity_summary">Шыны навигациялық панельдің мөлдірлік деңгейін реттеңіз (0 — мөлдір, 100 — мөлдір емес)</string>
   <string name="morphe_navigation_bar_glass_round_title">Дөңгелек шыны навигациялық панель</string>
   <string name="morphe_navigation_bar_glass_round_summary">Шыны миниплеердегі бұрыштардың орнына, шыны навигациялық панельдің шеттерін дөңгелектейді</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Шынақты навигациялық панель жиегі</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Шынақты навигациялық панельдің айналасына жарық жиекті салады</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Шынақты навигациялық панельдің төменгі жиегі</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Шынақ навигациялық панель мен экранның төменгі жағы немесе жүйелік навигация арасындағы кеңістікті реттеңіз</string>
   <string name="morphe_navigation_bar_glass_size_title">Шыны навигациялық панельдің өлшемі</string>
   <string name="morphe_navigation_bar_glass_size_summary">Шыны навигациялық панельдің биіктігін, енін және батырмалар арасындағы қашықтықты алдын ала қарау арқылы реттеңіз. Экран еніне сыймайтын батырмалар жасырылады</string>
   <string name="morphe_navigation_bar_glass_size_height">Биіктігі</string>
@@ -1380,6 +1390,9 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Лентаның автоматты жаңартылуын өшіру</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Ленталар ескіргеннен кейін олардың автоматты түрде жаңартылуын болдырмайды</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Хабарламаларды топтан шығару</string>
+  <string name="morphe_ungroup_notifications_summary">Арнаның топталған жүктемелерінің әрбір видеосын жеке хабарлама ретінде көрсетеді</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Лента картасының макеті</string>
   <string name="morphe_feed_card_layout_entry_1">Классикалық</string>
@@ -1492,6 +1505,8 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_dearrow_titles_search_title">Іздеу нәтижелері</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow белгішесін көрсету</string>
   <string name="morphe_dearrow_titles_icon_summary">Көпшілікпен жасалған атауы немесе мұқабасы бар бейнебаянๆ атауларында DeArrow белгісін көрсетеді. Түпнұсқа атауы мен мұқабасын көрсету үшін белгіні басыңыз</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Тақырыптарды тазалау</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow тақырыбы жоқ бейнелердің тақырыптарын тазалайды. Бас әріптермен жазылған сөздер қалыпты регистрге өзгертіледі, ал эмодзилер, әдемі мәтіндер және қайталанатын леп белгілері жойылады</string>
   <string name="morphe_dearrow_casual_mode_title">Еркін режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Егер DeArrow пайдаланушылары түпнұсқа тақырыпты ұнатты деп дауыстаса, DeArrow тақырыбының орнына түпнұсқа тақырыпты көрсетеді</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Түпнұсқа атауды көрсету үшін қажетті минималды еркін дауыстар саны</string>
@@ -1831,6 +1846,7 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_series_tracker_undo">Кері алу</string>
   <string name="morphe_series_tracker_enable_short">Қосу</string>
   <string name="morphe_series_tracker_new_episode">1 жаңа эпизод</string>
+  <string name="morphe_series_tracker_new_episodes">%s жаңа эпизод</string>
   <string name="morphe_series_tracker_record_short">Прогресті осы құрылғыда жазу</string>
   <string name="morphe_series_tracker_follow_consent">"Сіздің серияларыңыз бен прогресіңіз осы құрылғыда сақталады және YouTube аккаунттары арасында бөліседі. YouTube тарихының басқару құралдары оларды өзгертпейді. Прогресті «Сериялар» мәзірінен тазалаңыз.
 

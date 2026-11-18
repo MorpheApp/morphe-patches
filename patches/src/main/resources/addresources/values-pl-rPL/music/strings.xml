@@ -271,6 +271,11 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Wyłącz wyciszanie dźwięku</string>
   <string name="morphe_music_disable_audio_ducking_summary">Głośność nie jest obniżana, gdy inna aplikacja odtwarza krótki dźwięk, na przykład powiadomienie</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filtr polubień w kolejce</string>
+  <string name="morphe_music_queue_like_filter_summary">Usuwa utwory z małą liczbą polubień z miksów i radia. Playlisty, albumy i utwory dodawane do kolejki nie zostaną zmienione. Liczba polubień pochodzi z Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimalna liczba polubień</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Utwory z mniejszą liczbą polubień zostaną usunięte z kolejki</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Wyłącz pomijanie nielubianych utworów</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Zapobiega przechodzeniu do następnego utworu po naciśnięciu łapki w dół</string>
@@ -717,8 +722,14 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Tekst: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Podświetlaj zsynchronizowane słowa lub sylaby</string>
   <string name="morphe_music_lyrics_word_sync_summary">Nadaje priorytet tekstom synchronizowanym słowo po słowie, o ile są dostępne. Gdy tekst zawiera znaczniki czasu, podświetla każde słowo lub sylabę w rytm muzyki</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Płynna animacja zsynchronizowanych słów</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Podświetla każde słowo miękkim przesunięciem, blaskiem i lekkim uniesieniem w momencie śpiewania. Wyłącz, aby oszczędzać baterię lub uzyskać ostry wypełnienie na wolniejszych urządzeniach</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Używaj sprężystego przewijania</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Przewija tekst utworu z zachowaniem fizyki sprężyny i przesuwa każdy wers z lekkim opóźnieniem względem powyższego. Wyłącz, aby oszczędzać baterię na wolniejszych urządzeniach</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Relaksacyjne przewijanie</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Spowalnia animację przewijania tekstu piosenki i utrzymuje pełny rozmiar nieaktywnych linii</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Rozmycie nieaktywnych wersów</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Delikatnie rozmywa każdy wers, który nie jest aktualnie śpiewany, przy czym efekt jest silniejszy w miarę oddalania się od aktualnego wersu (Android 12 i nowsze). W wersjach starszych niż Android 12 nieaktywne wersy pozostają wyraźne</string>
   <string name="morphe_music_lyrics_gap_dots_title">Pokazuj kropki przerwy instrumentalnej</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Wyświetla między wersami trzy kropki podczas długiej przerwy instrumentalnej, które zapełniają się wraz z jej upływem</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Przyciemniaj bardziej odległe wersy</string>
@@ -841,6 +852,8 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Przenosi tłumaczenie nad tekst utworu. Transkrypcja oraz romanizacja pozostają pod spodem</string>
   <string name="morphe_music_lyrics_force_center_title">Zawsze wyśrodkowuj tekst</string>
   <string name="morphe_music_lyrics_force_center_summary">WŁ.: wyśrodkowuje każdy wers i ignoruje wyrównanie ze źródła, w tym podział na strony w duetach. WYŁ.: zachowuje oryginalne wyrównanie tekstu</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Wyrównanie duetów po przeciwległych stronach</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Umieszcza drugiego wokalistę po przeciwnej krawędzi w utworach duetowych. Wyłącz, aby obaj wokaliści znajdowali się po tej samej stronie</string>
   <string name="morphe_music_lyrics_providers_keep_one">Co najmniej jeden dostawca musi pozostać włączony</string>
   <string name="morphe_music_lyrics_translation_provider_title">Tłumaczenie</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizacja lub transliteracja</string>

@@ -122,8 +122,8 @@ A változások ezeket tartalmazzák:
   <string name="morphe_hide_upload_time_title">Feltöltési idő elrejtése</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Korlátozások:
-• A Shorts-polcok, a csatornaoldalak és a keresési találatok továbbra is megjeleníthetik a feltöltési időket.
-• Ez a funkció nem működik az autós elrendezéssel."</string>
+• A Shorts-polcok továbbra is megjeleníthetik a feltöltési időket
+• Nem működik az autós elrendezéssel"</string>
   <string name="morphe_hide_video_thumbnail_title">Videó bélyegkép elrejtése</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Videócímkék elrejtése</string>
@@ -131,8 +131,8 @@ A változások ezeket tartalmazzák:
   <string name="morphe_hide_view_count_title">Megtekintések számának elrejtése</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Korlátozások:
-• A Shorts-polcok, a csatornaoldalak és a keresési találatok továbbra is megjeleníthetik a megtekintések számát.
-• Ez a funkció nem működik az autós elrendezéssel."</string>
+• A Shorts-polcok továbbra is megjeleníthetik a megtekintések számát
+• Nem működik az autós elrendezéssel"</string>
   <string name="morphe_hide_web_search_results_title">Internetes találatok elrejtése</string>
   <string name="morphe_hide_web_search_results_summary">„A webes találatok” szakasz elrejtése a keresési eredményekből</string>
   <string name="morphe_hide_you_may_like_section_title">Ajánlott tartalom szakasz elrejtése</string>
@@ -290,9 +290,10 @@ Korlátok:
   <string name="morphe_hide_autoplay_preview_summary">Elrejti a következő videó előnézetét teljes képernyős módban az automatikus lejátszás megkezdése előtt</string>
   <string name="morphe_hide_channel_bar_title">Csatornasáv elrejtése</string>
   <string name="morphe_hide_channel_watermark_title">Csatorna-vízjel elrejtése</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Fejezetek és az \"Ebben a videóban\" gomb elrejtése</string>
+  <string name="morphe_hide_chapters_button_title">Fejezetek gomb elrejtése</string>
   <string name="morphe_hide_crowdfunding_box_title">Közösségi finanszírozási doboz elrejtése</string>
   <string name="morphe_hide_emergency_box_title">Vészhelyzeti információs dobozok elrejtése</string>
+  <string name="morphe_hide_in_this_video_button_title">„Ebben a videóban” gomb elrejtése</string>
   <string name="morphe_hide_info_panels_title">Információs panelek elrejtése</string>
   <string name="morphe_hide_info_panels_summary">Tájékoztató kontextusüzenetek elrejtése, mint pl. az orvosi információk</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Az 'Audio Track' menü megjelenítéséhez állítsa a 'Videóstream-ek megtéve
   <string name="morphe_feed_long_press_menu_summary">A hírfolyam videóján bárhol koppintás és hosszú nyomás nyitja meg a menüjét</string>
   <string name="morphe_feed_watch_later_button_title">Megtekintés később gomb megjelenítése a bélyegképeken</string>
   <string name="morphe_feed_watch_later_button_summary">A hírfolyam videóinak bélyegképein megjelenik egy Később megnézem gomb, pipával, ha a videó mentve van. A rákoppintás menti vagy eltávolítja a videót, a hosszú nyomás pedig megnyitja a Lejátszási listába mentés lehetőséget</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Bejegyzési képek megnyitása teljes képernyőn</string>
+  <string name="morphe_open_post_images_fullscreen_summary">A bejegyzés egy képére koppintva az teljes képernyőn nyílik meg a bejegyzések feedje helyett</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Bejegyzési képek letöltése</string>
   <string name="morphe_post_image_download_summary">A képekkel vagy GIF-ekkel rendelkező bejegyzések Megosztás gombja mellett megjelenik egy letöltés gomb, és a menüjükhez egy letöltési elem kerül hozzá</string>
@@ -992,6 +996,7 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_swipe_press_to_engage_title">Csúsztatáshoz nyomva tartás engedélyezése</string>
   <string name="morphe_swipe_press_to_engage_summary">A csúsztatási gesztus felismerése előtt meg kell nyomni és nyomva tartani.</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptikus visszajelzés engedélyezése</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Rázkódik, amikor a nyomítás és tartás elindít egy törlési gesztust</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Fényerő mentése és visszaállítása</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Megjegyzi a fényerő szintjét a teljes képernyős módba lépés/kilépéskor</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Auto fényerő gesztus engedélyezése</string>
@@ -1135,6 +1140,10 @@ A Beállítások eléréséhez aktiválja a Beállítások gombot az Általános
   <string name="morphe_navigation_bar_glass_opacity_summary">Állítsa be az üveg navigációs sáv átlátszósági szintjét (0 átlátszó, 100 átlátszatlan)</string>
   <string name="morphe_navigation_bar_glass_round_title">Kerek üveg navigációs sáv</string>
   <string name="morphe_navigation_bar_glass_round_summary">Kerek végeket ad az üveg navigációs sávnak a miniplayer üveg sarkai helyett</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Üveges navigációs sáv szél</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Fényes szélt rajzol az üveges navigációs sáv körül</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Üveges navigációs sáv alsó margó</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Állítsa be a téret az üveg navigációs sáv és a képernyő alja vagy a rendszer navigációja között</string>
   <string name="morphe_navigation_bar_glass_size_title">Üveg navigációs sáv mérete</string>
   <string name="morphe_navigation_bar_glass_size_summary">Állítsa be az üveg navigációs sáv magasságát, szélességét és a gombok közötti távolságot, előnézettel. A képernyő szélességébe nem férő gombok el lesznek rejtve</string>
   <string name="morphe_navigation_bar_glass_size_height">Magasság</string>
@@ -1381,6 +1390,9 @@ Autós elrendezés
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Automatikus hírcsatorna-frissítés letiltása</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Megakadályozza, hogy a hírcsatornák automatikusan frissüljenek, miután elavulttá válnak</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Értesítések csoportjának bontása</string>
+  <string name="morphe_ungroup_notifications_summary">A csatorna csoportosított feltöltéseinek minden egyes videóját külön értesítésként jeleníti meg</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Cikkkártya-elrendezés</string>
   <string name="morphe_feed_card_layout_entry_1">Klasszikus</string>
@@ -1493,6 +1505,8 @@ Autós elrendezés
   <string name="morphe_dearrow_titles_search_title">Keresési eredmények</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ikon megjelenítése</string>
   <string name="morphe_dearrow_titles_icon_summary">Megjeleníti a DeArrow ikont azon videók cimlerinde, amelyek crowdsourced címmal vagy bélyegképpel rendelkeznek. Koppints az ikonra az eredeti cím és bélyegkép megjelenítéséhez</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Címek tisztítása</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Tisztítja azokat a videók címeit, amelyeknek nincs DeArrow címe. A nagybetűs szavak normál kisbetűs formátumra változnak, az emojikat, a díszes szövegeket és az ismételt felkiáltójeleket eltávolítja</string>
   <string name="morphe_dearrow_casual_mode_title">Alkalmi mód</string>
   <string name="morphe_dearrow_casual_mode_summary">Az eredeti címet mutatja a DeArrow-cím helyett, ha a DeArrow-felhasználók arra szavaztak, hogy az eredeti cím tetszik nekik</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimális alkalmi szavazatszám az eredeti cím megjelenítéséhez</string>

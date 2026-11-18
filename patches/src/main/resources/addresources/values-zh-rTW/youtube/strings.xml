@@ -122,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">隱藏「上載時間」</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"限制：
-• Shorts 專區、頻道頁面和搜尋結果可能仍會顯示上載時間
+• Shorts 專區可能仍會顯示上載時間
 • 此功能不適用於汽車版面配置"</string>
   <string name="morphe_hide_video_thumbnail_title">隱藏影片縮圖</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">隱藏觀看次數</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"限制：
-• Shorts 專區、頻道頁面和搜尋結果可能仍會顯示觀看次數
+• Shorts 專區可能仍會顯示觀看次數
 • 此功能不適用於汽車版面配置"</string>
   <string name="morphe_hide_web_search_results_title">隱藏網頁搜尋結果</string>
   <string name="morphe_hide_web_search_results_summary">隱藏搜尋結果中的「來自網路的結果」區段</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">隱藏自動播放預覽</string>
   <string name="morphe_hide_channel_bar_title">隱藏頻道欄</string>
   <string name="morphe_hide_channel_watermark_title">隱藏頻道浮水印</string>
-  <string name="morphe_hide_chapters_timeline_button_title">隱藏章節和「本影片」按鈕</string>
+  <string name="morphe_hide_chapters_button_title">隱藏「章節」按鈕</string>
   <string name="morphe_hide_crowdfunding_box_title">隱藏群眾募資方塊</string>
   <string name="morphe_hide_emergency_box_title">隱藏影片警告提醒</string>
+  <string name="morphe_hide_in_this_video_button_title">隱藏「本影片包含」按鈕</string>
   <string name="morphe_hide_info_panels_title">隱藏資訊面板</string>
   <string name="morphe_hide_info_panels_summary">隱藏資訊性內容面板，例如醫療資訊</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">在資訊流影片的任意位置輕觸並按住，即可開啟其選單</string>
   <string name="morphe_feed_watch_later_button_title">在縮圖上顯示稍後觀看按鈕</string>
   <string name="morphe_feed_watch_later_button_summary">在饋送影片的縮圖上會顯示「稍後觀看」按鈕，若影片已儲存則會顯示勾選標記。輕觸按鈕可儲存或移除影片，長按則可開啟「儲存至播放清單」</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">以全螢幕開啟貼文圖片</string>
+  <string name="morphe_open_post_images_fullscreen_summary">點擊貼文圖片將以全螢幕開啟，而非在貼文饋送中開啟</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">下載貼文圖片</string>
   <string name="morphe_post_image_download_summary">在包含圖片或 GIF 的貼文中，「分享」按鈕旁會顯示下載按鈕，且其選單中會新增下載選項</string>
@@ -696,7 +700,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_download_flyout_button_title">強制顯示彈出式下載選單項目</string>
   <string name="morphe_feed_download_flyout_button_summary">為原本沒有下載項目的 feed 影片選單添加下載項目</string>
   <string name="morphe_download_force_4k_title">強制 4K 下載可用性</string>
-  <string name="morphe_download_force_4k_summary">即使 YouTube 判定此設備無法播放，仍提供 1440p 和 4K 下載</string>
+  <string name="morphe_download_force_4k_summary">即使 YouTube 判定此裝置無法播放，仍提供 1440p 和 4K 下載</string>
   <string name="morphe_download_quality_about_title">1080p 不可用</string>
   <string name="morphe_download_quality_about_summary">如果應用程式內下載未提供 1080p，請在「雜項」設定中開啟「模擬裝置尺寸」</string>
   <string name="morphe_export_download_folder_title">匯出已儲存的影片</string>
@@ -964,7 +968,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_seekbar_thumb_title">啟用自訂跳轉列滑桿</string>
   <string name="morphe_custom_seekbar_thumb_summary">將跳轉列滑桿替換為自訂圖片或動畫 GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">滑桿圖片</string>
-  <string name="morphe_custom_seekbar_thumb_file_summary">從裝置儲存空間選擇圖片或動畫 GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">從裝置儲存空間選取圖片或動畫 GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_invalid">選取的檔案不是支援的圖片</string>
   <string name="morphe_custom_seekbar_thumb_file_not_found">找不到自訂跳轉列滑桿圖片</string>
   <string name="morphe_custom_seekbar_thumb_scale_type_title">滑桿大小</string>
@@ -990,6 +994,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">啟用按壓滑動手勢</string>
   <string name="morphe_swipe_press_to_engage_summary">需要先按住並保持，滑動手勢才會被辨識</string>
   <string name="morphe_swipe_haptic_feedback_title">啟用震動回饋</string>
+  <string name="morphe_swipe_haptic_feedback_summary">長按開始滑動手勢時會震動</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">儲存並還原亮度</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">在進入/退出全螢幕模式時記住亮度層級</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">啟用自動亮度手勢</string>
@@ -1133,6 +1138,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">調整玻璃效果導覽列的透明程度 (0 為完全透明，100 為完全不透明)</string>
   <string name="morphe_navigation_bar_glass_round_title">圓角玻璃效果導覽列</string>
   <string name="morphe_navigation_bar_glass_round_summary">使玻璃效果導覽列的末端呈圓形，而非像玻璃效果迷你播放器那樣呈圓角</string>
+  <string name="morphe_navigation_bar_glass_edge_title">玻璃導覽列邊緣</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">在玻璃導覽列周圍繪製光邊</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">玻璃導覽列底邊距</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">調整玻璃導覽列與螢幕底部或系統導覽之間的間距</string>
   <string name="morphe_navigation_bar_glass_size_title">玻璃導覽列尺寸</string>
   <string name="morphe_navigation_bar_glass_size_summary">可預覽並調整玻璃導覽列的高度、寬度及按鈕間距。超出螢幕寬度的按鈕將被隱藏</string>
   <string name="morphe_navigation_bar_glass_size_height">高度</string>
@@ -1379,6 +1388,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">停用動態消息自動重新整理</string>
   <string name="morphe_disable_auto_feed_refresh_summary">防止動態消息在過時後自動重新整理</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">取消分組通知</string>
+  <string name="morphe_ungroup_notifications_summary">將頻道分組上傳的每個影片都顯示為獨立通知</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">動態消息卡片版面</string>
   <string name="morphe_feed_card_layout_entry_1">經典</string>
@@ -1491,6 +1503,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">搜尋結果</string>
   <string name="morphe_dearrow_titles_icon_title">顯示 DeArrow 圖示</string>
   <string name="morphe_dearrow_titles_icon_summary">在具有群眾外包標題或縮圖的影片標題上顯示 DeArrow 圖示。點擊圖示以顯示原始標題和縮圖</string>
+  <string name="morphe_dearrow_clean_up_titles_title">清理標題</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">清理沒有 DeArrow 標題的影片標題。大寫單詞將更改為正常大小寫，並移除表情符號、花俏文字和重複的感嘆號</string>
   <string name="morphe_dearrow_casual_mode_title">休閒模式</string>
   <string name="morphe_dearrow_casual_mode_summary">如果 DeArrow 使用者投票表示喜歡原始標題，則顯示原始標題而非 DeArrow 標題</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">顯示原始標題所需的最低休閒票數</string>

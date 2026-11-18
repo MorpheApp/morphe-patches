@@ -271,6 +271,11 @@ Second \"item\" text"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">ปิดใช้งานการลดระดับเสียงอัตโนมัติ</string>
   <string name="morphe_music_disable_audio_ducking_summary">ระดับเสียงจะไม่ลดลงเมื่อแอปอื่นเล่นเสียงสั้นๆ เช่น การแจ้งเตือน</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">ตัวกรองจำนวนการถูกใจในคิว</string>
+  <string name="morphe_music_queue_like_filter_summary">ลบเพลงที่มีการถูกใจน้อยออกจากมิกซ์และวิทยุ เพลย์ลิสต์ อัลบั้ม และเพลงที่คุณเพิ่มลงในคิวจะไม่ถูกเปลี่ยนแปลง จำนวนการถูกใจมาจาก Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">จำนวนการถูกใจขั้นต่ำ</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">เพลงที่มีการถูกใจน้อยกว่าที่กำหนดจะถูกลบออกจากคิว</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ปิดการเปลี่ยนเพลงเมื่อกดไม่ชอบ</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ป้องกันไม่ให้ข้ามไปยังแทร็กถัดไปเมื่อกดปุ่มไม่ชอบ</string>
@@ -717,8 +722,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">เขียนโดย: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">ไฮไลต์คำหรือพยางค์ที่ซิงก์</string>
   <string name="morphe_music_lyrics_word_sync_summary">ให้ความสำคัญกับเนื้อเพลงแบบคำต่อคำเมื่อมีให้บริการ เมื่อเนื้อเพลงมีข้อมูลเวลาของคำ จะไฮไลต์แต่ละคำหรือพยางค์ให้ตรงกับจังหวะเพลง</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">สร้างแอนิเมชันคำที่ซิงค์กันอย่างราบรื่น</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">ไฮไลต์แต่ละคำด้วยการกวาดที่นุ่มนวล ความเปล่งประกาย และการยกขึ้นเล็กน้อยในขณะที่ร้อง ปิดเพื่อประหยัดแบตเตอรี่หรือเพื่อให้แสดงผลแบบคมชัดในอุปกรณ์ที่ช้ากว่า</string>
   <string name="morphe_music_lyrics_spring_scroll_title">ใช้การเลื่อนแบบสปริง</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">เลื่อนเนื้อเพลงด้วยฟิสิกส์แบบสปริง และขยับแต่ละบรรทัดตามหลังบรรทัดด้านบนเล็กน้อย ปิดการใช้งานเพื่อประหยัดแบตเตอรี่สำหรับอุปกรณ์ที่ทำงานช้ากว่า</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">การเลื่อนแบบผ่อนคลาย</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">ลดความเร็วของแอนิเมชันการเลื่อนเนื้อเพลง และรักษาบรรทัดที่ไม่ได้ใช้งานให้มีขนาดเต็ม</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">เบลอแถวที่ไม่ได้ใช้งาน</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">เบลอทุกแถวที่ไม่ได้กำลังร้องอยู่ในขณะนี้อย่างนุ่มนวล โดยจะเบลอมากขึ้นเมื่ออยู่ห่างออกไป (Android 12 และเวอร์ชันที่ใหม่กว่า) สำหรับเวอร์ชันก่อน Android 12 แถวที่ไม่ได้ใช้งานจะยังคงมีความคมชัด</string>
   <string name="morphe_music_lyrics_gap_dots_title">แสดงจุดพักช่วงดนตรี</string>
   <string name="morphe_music_lyrics_gap_dots_summary">แสดงจุดสามจุดระหว่างบรรทัดในช่วงพักดนตรีที่ยาวนาน ซึ่งจุดจะค่อยๆ เต็มเมื่อช่วงพักใกล้หมดลง</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">ทำให้บรรทัดที่อยู่ห่างออกไปมืดลงมากขึ้น</string>
@@ -841,6 +852,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">ย้ายคำแปลไว้เหนือเนื้อเพลง โดยที่คำอ่านและคำทับศัพท์ยังคงอยู่ด้านล่าง</string>
   <string name="morphe_music_lyrics_force_center_title">จัดข้อความกลางเสมอ</string>
   <string name="morphe_music_lyrics_force_center_summary">ON จัดบรรทัดทุกบรรทัดตรงกลางและละเลยการจัดตำแหน่งต้นฉบับ รวมถึงด้านคู่เสียงร้อง; OFF คงการจัดตำแหน่งตามที่เนื้อเพลงต้องการ</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">การจัดวางการร้องคู่แบบฝั่งตรงข้าม</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">วางตำแหน่งนักร้องคนที่สองไว้ที่ขอบฝั่งตรงข้ามสำหรับเพลงร้องคู่ ปิดเพื่อให้นักร้องทั้งสองคนอยู่ฝั่งเดียวกัน</string>
   <string name="morphe_music_lyrics_providers_keep_one">ต้องมีผู้ให้บริการอย่างน้อยหนึ่งรายการที่เปิดอยู่</string>
   <string name="morphe_music_lyrics_translation_provider_title">การแปล</string>
   <string name="morphe_music_lyrics_romanization_provider_title">การแปลงอักษรโรมันหรือถอดรหัส</string>

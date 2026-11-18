@@ -271,6 +271,11 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Аудио ducking-ді өшіру</string>
   <string name="morphe_music_disable_audio_ducking_summary">Басқа қолданба хабарландыру сияқты қысқа дыбыс шығарғанда, дыбыс деңгейі төмендетілмейді</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Кезектегі ұнағандар фильтрі</string>
+  <string name="morphe_music_queue_like_filter_summary">Микстер мен радиодан ұнағандары аз әндерді алып тастайды. Кезекке қосылған плейлисттер, альбомдар мен әндер өзгермейді. Ұнағандар саны Return YouTube Dislike сервисінен алынады</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Минималды ұнағандар саны</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Ұнағандары аз әндер кезектен алып тасталады</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Ұнамау бағыттауын өшіру</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Ұнамау түймесі басылғанда келесі трекке ауысуды болдырмайды</string>
@@ -717,8 +722,14 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_written_by">Жазған: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Синхрондалған сөздерді немесе буындарды ерекшелеу</string>
   <string name="morphe_music_lyrics_word_sync_summary">Мүмкіндігі болған жағдайда сөздік мәтінге басымдық беру. Мәтінде сөздердің уақыты көрсетілгенде, әр сөз немесе буын музыкамен үйлесімді түрде ерекшеленеді</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Синхрондалған сөздерді бірқалыпты анимациялау</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Әр сөз айтылған кезде оны жұмсақ жылжу, жарқырау және сәл көтерілу арқылы ерекшелейді. Батареяны үнемдеу үшін немесе баяу құрылғыларда анық толтыру үшін өшіріңіз</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Серіппелі айналдыруды қолдану</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Мәтінді серіппе физикасымен айналдырады және әр жолды жоғарғы жолдан сәл ығыстырып орналастырады. Баяу құрылғыларда батареяны үнемдеу үшін өшіріңіз</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Жұмсақ айналдыру</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Лириканың айналу анимациясын баяулатады және белсенді емес жолдарды толық өлшемде сақтайды</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Белсенбеген жолдарды бұлдырату</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Қазіргі уақытта айтылып жатпаған әрбір жолды жұмсақ бұлдыратады, қашықтық сайын бұлдырлық артады (Android 12 және одан кейінгі нұсқалар). Android 12 нұсқасына дейін белсенбеген жолдар анық қалады</string>
   <string name="morphe_music_lyrics_gap_dots_title">Инструменталды үзіліс нүктелерін көрсету</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Ұзақ инструменталды үзіліс кезінде жолдар арасында үш нүктені көрсетеді, үзіліс аяқталған сайын олар толтырылады</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Алыстағы жолдарды көбірек күңіртіңіз</string>
@@ -841,6 +852,8 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Аударманы мәтіннен жоғары жылжытады; оқу және романизация төменде қалады</string>
   <string name="morphe_music_lyrics_force_center_title">Мәтінді әрдайым ортаға қою</string>
   <string name="morphe_music_lyrics_force_center_summary">ҚОСЫЛДЫ күйінде әр жол ортаға қойылады және бастапқы тегістеу (соның ішінде дуэт жақтары) ескерілмейді; ӨШІРІЛДІ күйінде мәтінде көрсетілген тегістеу сақталады</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Дуэттің қарсы жағына тегістеу</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Дуэт әндерінде екінші әншіні қарсы жақ жиекке орналастырады. Екі әншіні де бір жақта қалдыру үшін өшіріңіз</string>
   <string name="morphe_music_lyrics_providers_keep_one">Кемінде бір провайдер қосулы болуы керек</string>
   <string name="morphe_music_lyrics_translation_provider_title">Аударма</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация немесе транслитерация</string>

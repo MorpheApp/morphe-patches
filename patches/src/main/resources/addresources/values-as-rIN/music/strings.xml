@@ -271,6 +271,11 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">অডিঅ’ ডাক্কিং নিষ্ক্ৰিয় কৰক</string>
   <string name="morphe_music_disable_audio_ducking_summary">যেতিয়া আন এটা এপ্লিকেচনে এটা চুটি শব্দ, যেনে জাননী বজাব, তেতিয়া ভলিউমটো কমাব নোৱাৰিব</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">কিউ লাইক ফিল্টাৰ</string>
+  <string name="morphe_music_queue_like_filter_summary">মিক্স আৰু ৰেডিঅ\'ৰ পৰা কম লাইক থকা গানবোৰ আঁতৰ কৰে। আপুনি কিউত যোগ কৰা প্লেলিষ্ট, এলবাম আৰু গানবোৰ পৰিৱৰ্তন নহয়। লাইকৰ সংখ্যা Return YouTube Dislike ৰ পৰা লোৱা হৈছে</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">নূন্যতম লাইক</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">কম লাইক থকা গানবোৰ কিউৰ পৰা আঁতৰ কৰা হয়</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ডিসলাইক ৰিডাইৰেকচন নিষ্ক্ৰিয় কৰক</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ডিসলাইক বুটামটো টিপিলে পৰৱৰ্তী ট্ৰেকলৈ যোৱাটো প্ৰতিৰোধ কৰে</string>
@@ -717,8 +722,14 @@ Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেই
   <string name="morphe_music_lyrics_written_by">লিখেছে: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">চিঙ্ক্ৰোনাইজ কৰা শব্দ বা শব্দাংশসমূহ হাইলাইট কৰক</string>
   <string name="morphe_music_lyrics_word_sync_summary">উপলব্ধ থাকিলে শব্দ-অনুসৰি লৰিক্সক অগ্ৰাধিকাৰ দিয়ক। যেতিয়া লৰিক্সত শব্দৰ সময় থাকে, ই সংগীতৰ সৈতে মিল খাই প্ৰতিটো শব্দ বা শব্দাংশ হাইলাইট কৰে</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">চিহ্নিত শব্দবোৰ মসৃণভাৱে অ্যানিমেট কৰক</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">শব্দবোৰ গাইলৈ গৈ থাকোতে প্ৰতিটো শব্দক এটা কোমল সোৱিপ, গ্লো আৰু সামান্য লিফ্টৰ সৈতে হাইলাইট কৰে। বেটাৰী ৰাহি কৰিবলৈ বা ধীৰ ডিভাইচবোৰত সঠিক ফিলৰ বাবে ইয়াক বন্ধ কৰক</string>
   <string name="morphe_music_lyrics_spring_scroll_title">স্প্ৰিং স্ক্ৰলিং ব্যৱহাৰ কৰক</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">স্প্ৰিং ফিজিক্সৰ সৈতে লৰিক্সবোৰ স্ক্ৰল কৰে, আৰু প্ৰতিটো লাইন ওপৰৰটোৰ অলপ পিছত সৰকায়। লেট ডিভাইচবোৰত বেটাৰী ৰাহি কৰিবলৈ ইয়াক বন্ধ কৰক</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">ৰিলাক্সড স্ক্ৰলিং</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">লিরিক স্ক্ৰল অ্যানিমেশ্যনটোৰ গতি ধীৰ কৰে আৰু নিষ্ক্ৰিয় লাইনবোৰ সম্পূৰ্ণ আকাৰত ৰাখে</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">নিষ্ক্ৰীয় শাৰীবোৰক ধোঁৱাটেৰা কৰক</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">বৰ্তমান গাব পৰা যিকোনো শাৰী নহয় এনে প্ৰতিটো শাৰীক কোমলকৈ ধোঁৱাটেৰা কৰে, যিটো অধিক দূৰত থাকে সেয়া অধিক ধোঁৱাটেৰা হয় (Android 12 আৰু তাৰ পিছৰ সংস্কৰণ)। Android 12 ৰ আগৰ সংস্কৰণত, নিষ্ক্ৰীয় শাৰীবোৰ স্পষ্ট হৈ থাকে</string>
   <string name="morphe_music_lyrics_gap_dots_title">ইনষ্ট্ৰুমেণ্টেল ব্ৰেক ডটবোৰ দেখুৱাওক</string>
   <string name="morphe_music_lyrics_gap_dots_summary">এটা দীঘলীয়া ইনষ্ট্ৰুমেণ্টেল ব্ৰেকৰ সময়ত লাইনবোৰৰ মাজত তিনিটা ডট দেখুৱায়, যিবোৰ ব্ৰেকটো শেষ হোৱাৰ লগে লগে ভৰি পৰে</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">দূৰৰ লাইনবোৰ অধিক ম্লান কৰক</string>
@@ -841,6 +852,8 @@ Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেই
   <string name="morphe_music_lyrics_swap_trans_roma_summary">অনুবাদটো কথাৰ ওপৰলৈ লৈ যায়; পঢ়া আৰু ৰোমানাইজেশ্যন তলত থাকে</string>
   <string name="morphe_music_lyrics_force_center_title">গীতৰ কথা সদায় কেন্দ্ৰত ৰাখক</string>
   <string name="morphe_music_lyrics_force_center_summary">ON কৰিলে প্ৰতিটো শাৰী মাজত থাকে আৰু উৎসৰ এলাইনমেণ্টক, ডুয়েটৰ দিশসমূহৰ সৈতে, আওকাণ কৰে; OFF কৰিলে গীতত বিচৰা ধৰণে এলাইনমেণ্ট থাকে</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">বিৰুদ্ধ দিশৰ ডুৱেট সংৰেখণ</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">ডুৱেট গানবোৰত দ্বিতীয় গায়কজনক বিপৰীত কাষত ৰাখে। দুয়োজন গায়কক একে দিশত ৰাখিবলৈ ইয়াক বন্ধ কৰক</string>
   <string name="morphe_music_lyrics_providers_keep_one">অন্তত এজন প্ৰদানকাৰী অন থাকিব লাগিব</string>
   <string name="morphe_music_lyrics_translation_provider_title">অনুবাদ</string>
   <string name="morphe_music_lyrics_romanization_provider_title">ৰোমানাইজেশান বা লিপ্যন্তৰ</string>

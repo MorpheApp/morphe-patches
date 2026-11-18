@@ -122,8 +122,8 @@ Pakeitimai apima:
   <string name="morphe_hide_upload_time_title">Slėpti įkėlimo laiką</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Apribojimai:
-• Shorts skiltyse, kanalų puslapiuose ir paieškos rezultatuose vis tiek gali būti rodomi įkėlimo laikai
-• Neveikia su automobiliniu maketu"</string>
+• Shorts lentynose vis tiek gali būti rodomi įkėlimo laikai
+• Neveikia naudojant automobilių išdėstymą"</string>
   <string name="morphe_hide_video_thumbnail_title">Slėpti vaizdo įrašo miniatiūrą</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Slėpti vaizdo įrašų etiketes</string>
@@ -131,8 +131,8 @@ Pakeitimai apima:
   <string name="morphe_hide_view_count_title">Slėpti peržiūrų skaičių</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Apribojimai:
-• Shorts skiltyse, kanalų puslapiuose ir paieškos rezultatuose vis tiek gali būti rodomi peržiūrų skaičiai
-• Neveikia su automobiliniu maketu"</string>
+• Shorts lentynose vis tiek gali būti rodomi peržiūrų skaičiai
+• Neveikia naudojant automobilių išdėstymą"</string>
   <string name="morphe_hide_web_search_results_title">Slėpti interneto paieškos rezultatus</string>
   <string name="morphe_hide_web_search_results_summary">Paslepia skiltį „Rezultatas iš interneto“ paieškos rezultatuose</string>
   <string name="morphe_hide_you_may_like_section_title">Slėpti skiltį „Jums gali patikti“</string>
@@ -290,9 +290,10 @@ Apribojimai:
   <string name="morphe_hide_autoplay_preview_summary">Paslepia būsimo vaizdo įrašo peržiūrą viso ekrano režime prieš prasidedant automatiniam atkūrimui</string>
   <string name="morphe_hide_channel_bar_title">Slėpti kanalo juostą</string>
   <string name="morphe_hide_channel_watermark_title">Slėpti kanalo vandenženklį</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Slėpti skyrių ir mygtuką „Šiame vaizdo įraše“</string>
+  <string name="morphe_hide_chapters_button_title">Paslėpti skybių mygtuką</string>
   <string name="morphe_hide_crowdfunding_box_title">Slėpti masinio finansavimo langelį</string>
   <string name="morphe_hide_emergency_box_title">Slėpti įspėjimo langelius</string>
+  <string name="morphe_hide_in_this_video_button_title">Paslėpti \"Šiame vaizdo įraše\" mygtuką</string>
   <string name="morphe_hide_info_panels_title">Slėpti informacijos skydelius</string>
   <string name="morphe_hide_info_panels_summary">Paslepia informacinius konteksto skydelius, pvz., medicininę informaciją</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Kad būtų rodomas meniu „Garso takelis“, parinktyje „Maskuoti vaizdo įra
   <string name="morphe_feed_long_press_menu_summary">Paspaudus ir palaikius bet kuria feed video vieta, atidaromas jo meniu</string>
   <string name="morphe_feed_watch_later_button_title">Rodyti „Pažiūrėti vėliau“ mygtuką prie miniatiūrų</string>
   <string name="morphe_feed_watch_later_button_summary">Tvėsčių vaizdo įrašų miniaturuose rodomas mygtukas „Žiūrėti vėliau“, o jei vaizdo įrašas išsaugotas – žymė. Paspaudus jį, vaizdo įrašas išsaugo arba ištriniamas, o paspaudus ir laikant – atsidaro „Išsaugoti į grožinį“</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Atidaryti įrašo nuotraukas visame ekrane</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Bakstelėjus įrašo nuotrauką, ji atsidaro visame ekrane, o ne įrašų sraute</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Atsisiųsti įrašų nuotraukas</string>
   <string name="morphe_post_image_download_summary">Šalia įrašų su nuotraukomis arba GIF failais esančio bendrinimo mygtuko rodomas atsisiuntimo mygtukas, o jų meniu pridedama atsisiuntimo parinktis</string>
@@ -991,6 +995,7 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <string name="morphe_swipe_press_to_engage_title">Įjungti paspaudimo ir braukimo gestą</string>
   <string name="morphe_swipe_press_to_engage_summary">Prieš atpažįstant braukimo gestą, reikia paspausti ir palaikyti</string>
   <string name="morphe_swipe_haptic_feedback_title">Įjungti haptinį atsaką</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibruoja paspaudus ir palaikius, kai prasideda braukimo gestas</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Išsaugoti ir atkurti ryškumą</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Įsimena ryškumo lygį įeinant / išeinant iš viso ekrano režimo</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Įjungti automatinio ryškumo gestą</string>
@@ -1134,6 +1139,10 @@ Norėdami pasiekti Nustatymus, įjunkite Nustatymų mygtuką per Bendri → Įra
   <string name="morphe_navigation_bar_glass_opacity_summary">Sureguliuokite stiklinės navigacijos juostos permatumo lygį (0 yra permatu, 100 yra nepermatu)</string>
   <string name="morphe_navigation_bar_glass_round_title">Apvalgus stiklinės naršymo juostos</string>
   <string name="morphe_navigation_bar_glass_round_summary">Suteikia stiklinės naršymo juostai apvalius galus, o ne kampus, kaip yra stiklinio miniplayerio</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Stiklinės naršymo juostos kraštas</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Piešia šviečiantį kraštą aplink stiklinę naršymo juostą</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Stiklinės naršymo juostos apatinis marginTop</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Sureguliuokite atstumą tarp stiklinės navigacijos juostos ir ekrano apačios arba sistemos navigacijos</string>
   <string name="morphe_navigation_bar_glass_size_title">Stiklinės naršymo juostos dydis</string>
   <string name="morphe_navigation_bar_glass_size_summary">Su peržiūra nustatykite stiklinės naršymo juostos aukštį, plotį ir mygtukų tarpus. Mygtukai, kurie netelpa į ekrano plotį, yra slėpiami</string>
   <string name="morphe_navigation_bar_glass_size_height">Aukštis</string>
@@ -1380,6 +1389,9 @@ Automobilio išdėstymas
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Išjungti automatinį srauto atnaujinimą</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Neleidžia srautams automatiškai atsinaujinti, kai jie pasensta</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Išgrupuoti pranešimus</string>
+  <string name="morphe_ungroup_notifications_summary">Rodo kiekvieną kanalo sugrupuotų įkėlimų vaizgo įrašą kaip atskirą pranešimą</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Srauto kortelių išdėstymas</string>
   <string name="morphe_feed_card_layout_entry_1">Klasikinis</string>
@@ -1492,6 +1504,8 @@ Automobilio išdėstymas
   <string name="morphe_dearrow_titles_search_title">Paieškos rezultatai</string>
   <string name="morphe_dearrow_titles_icon_title">Rodyti DeArrow piktogramą</string>
   <string name="morphe_dearrow_titles_icon_summary">Rodo \"DeArrow\" piktogramą vaizminukų pavadinimuose, kurių pavadinimas arba nuotrauka yra bendruomenės pateiktos. Bakstelėkite piktogramą, kad pamatytumėte originalų pavadinimą ir nuotrauką</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Valykite pavadinimus</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Valo vaizdo įrašų pavadinimus, kuriems nėra DeArrow pavadinimo. Didžiosios raidės pakeičiamos į įprastą registrą, pašalinami emojis, dekoratyvus tekstas ir pasikartojantys šaukeliai</string>
   <string name="morphe_dearrow_casual_mode_title">Kasdienis režimas</string>
   <string name="morphe_dearrow_casual_mode_summary">Rodo originalų pavadinimą vietoj DeArrow pavadinimo, jei DeArrow vartotojai balsuodami nurodė, kad jiems patinka originalus pavadinimas</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalus kasdienių balsų skaičius, kad būtų rodomas originalus pavadinimas</string>

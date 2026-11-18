@@ -122,7 +122,7 @@ Endringer inkluderer:
   <string name="morphe_hide_upload_time_title">Skjul opplastningstidspunkt</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Begrensninger:
-• Shorts-hyller, kanalsider og søkeresultater kan fortsatt vise opplastningstidspunkter
+• Shorts-hyller kan fortsatt vise opplastingstid
 • Fungerer ikke med biloppsett"</string>
   <string name="morphe_hide_video_thumbnail_title">Skjul videominiatyrbilde</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Endringer inkluderer:
   <string name="morphe_hide_view_count_title">Skjul visningstall</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Begrensninger:
-• Shorts-hyller, kanalsider og søkeresultater kan fortsatt vise visningstall
+• Shorts-hyller kan fortsatt vise visningstall
 • Fungerer ikke med biloppsett"</string>
   <string name="morphe_hide_web_search_results_title">Skjul websøkeresultater</string>
   <string name="morphe_hide_web_search_results_summary">Skjuler «Resultater fra nettet»-delen fra søkeresultatene</string>
@@ -290,9 +290,10 @@ Begrensninger:
   <string name="morphe_hide_autoplay_preview_summary">Skjuler forhåndsvisningen av neste video i fullskjerm før automatisk avspilling starter</string>
   <string name="morphe_hide_channel_bar_title">Skjul kanalstripe</string>
   <string name="morphe_hide_channel_watermark_title">Skjul kanal-vannmerke</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Skjul kapitler og \'I denne videoen\'-knappen</string>
+  <string name="morphe_hide_chapters_button_title">Skjul Kapitler-knappen</string>
   <string name="morphe_hide_crowdfunding_box_title">Skjul crowdfunding-boks</string>
   <string name="morphe_hide_emergency_box_title">Skjul varslingsbokser</string>
+  <string name="morphe_hide_in_this_video_button_title">Skjul \"I denne videoen\"-knappen</string>
   <string name="morphe_hide_info_panels_title">Skjul infopaneler</string>
   <string name="morphe_hide_info_panels_summary">Skjuler informasjonskontekstpaneler, som medisinsk informasjon</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ For å vise 'Audio Track'-menyen, endre 'Forfalsk videostrømmer' til en hvilken
   <string name="morphe_feed_long_press_menu_summary">Å trykke og holde nede hvor som helst på en feed-video åpner menyen for den</string>
   <string name="morphe_feed_watch_later_button_title">Vis \"Se senere\"-knapp på miniatyrbilder</string>
   <string name="morphe_feed_watch_later_button_summary">En «Se senere»-knapp vises på miniatyrbildene til videoer i feeden, med en hake hvis videoen er lagret. Ved å trykke på den lagres eller fjernes videoen, og ved å trykke og holde åpnes «Lagre i spilleliste»</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Åpne postbilder i fullskjerm</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Ved å trykke på et bilde av et innlegg åpnes det i fullskjerm, i stedet for i feeden</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Last ned bilder fra innlegg</string>
   <string name="morphe_post_image_download_summary">En nedlastingsknapp vises ved siden av Del-knappen for innlegg med bilder eller GIF-er, og et nedlastingsvalg legges til i menyen deres</string>
@@ -992,6 +996,7 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_swipe_press_to_engage_title">Aktiver trykk for å sveipe gest</string>
   <string name="morphe_swipe_press_to_engage_summary">Krever at du trykker og holder før en sveipebevegelse gjenkjennes</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiver haptisk tilbakemelding</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibrerer når det å trykke og holde starter en sveipebevegelse</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Lagre og gjenopprett lysstyrke</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Husker lysstyrkenivået når du går inn eller ut av fullskjermmodus</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Aktiver automatisk lysstyrke-gest</string>
@@ -1135,6 +1140,10 @@ For å få tilgang til Innstillinger, aktiver Innstillinger-knappen via Generelt
   <string name="morphe_navigation_bar_glass_opacity_summary">Juster gjennomsiktighetsnivået for glassnavigasjonsfeltet (0 er gjennomsiktig, 100 er ugjennomsiktig)</string>
   <string name="morphe_navigation_bar_glass_round_title">Rund glassnavigasjonslinje</string>
   <string name="morphe_navigation_bar_glass_round_summary">Gir glassnavigasjonslinjen runde ender, i stedet for hjørner som glassminispilleren</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Glasskant for navigasjonsfelt</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Tegner den lyse kanten rundt glassnavigasjonsfeltet</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Nedre marg for glassnavigasjonsfelt</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Juster avstanden mellom glassnavigasjonslinjen og bunnen av skjermen eller systemnavigasjonen</string>
   <string name="morphe_navigation_bar_glass_size_title">Størrelse på glassnavigasjonsfelt</string>
   <string name="morphe_navigation_bar_glass_size_summary">Juster høyden, bredden og knappavstanden til glassnavigasjonsfeltet, med en forhåndsvisning. Knapper som ikke passer innenfor skjermbredden skjules</string>
   <string name="morphe_navigation_bar_glass_size_height">Høyde</string>
@@ -1381,6 +1390,9 @@ Bilvisning
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Deaktiver automatisk feedoppdatering</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Forhindrer at feedene oppdateres automatisk etter at de blir utdaterte</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Opphev gruppering av varsler</string>
+  <string name="morphe_ungroup_notifications_summary">Viser hver video fra en kanals grupperte opplastinger som et eget varsel</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Struktur for innholdskort</string>
   <string name="morphe_feed_card_layout_entry_1">Klassisk</string>
@@ -1493,6 +1505,8 @@ Bilvisning
   <string name="morphe_dearrow_titles_search_title">Søkeresultater</string>
   <string name="morphe_dearrow_titles_icon_title">Vis DeArrow-ikonet</string>
   <string name="morphe_dearrow_titles_icon_summary">Viser DeArrow-ikonet på titler på videoer med en crowdsourcet tittel eller et miniatyrbilde. Trykk på ikonet for å vise den opprinnelige tittelen og det opprinnelige miniatyrbildet</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Rydd opp i titler</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Rydd opp i titlene på videoer uten en DeArrow-tittel. Ord med store bokstaver endres til vanlig skrift, og emojier, fancy tekst og gjentatte utropstegn fjernes</string>
   <string name="morphe_dearrow_casual_mode_title">Uformell modus</string>
   <string name="morphe_dearrow_casual_mode_summary">Viser originaltittelen i stedet for DeArrow-tittelen hvis DeArrow-brukere har stemt at de liker originaltittelen</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum antall uformelle stemmer for å vise originaltittel</string>

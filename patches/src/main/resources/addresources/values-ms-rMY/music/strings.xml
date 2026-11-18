@@ -271,6 +271,11 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Nyahaktifkan penurunan audio</string>
   <string name="morphe_music_disable_audio_ducking_summary">Kelantangan tidak dikurangkan apabila aplikasi lain memainkan bunyi singkat, seperti pemberitahuan</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Penapis suka giliran</string>
+  <string name="morphe_music_queue_like_filter_summary">Mengeluarkan lagu dengan jumlah suka yang sedikit daripada campuran dan radio. Senarai main, album dan lagu yang anda tambah ke dalam giliran tidak berubah. Jumlah suka adalah daripada Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Suka minimum</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Lagu dengan jumlah suka yang lebih sedikit dikeluarkan daripada giliran</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Nyahaktifkan penghalaan tidak suka</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Menghalang peralihan ke trek seterusnya apabila butang tidak suka ditekan</string>
@@ -717,8 +722,14 @@ Kuki yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Ditulis oleh: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Serlahkan perkataan atau suku kata yang disinkronkan</string>
   <string name="morphe_music_lyrics_word_sync_summary">Utamakan lirik perkataan demi perkataan jika tersedia. Apabila lirik membawa pemasaan perkataan, ia akan menyerlahkan setiap perkataan atau suku kata mengikut masa muzik</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Animasikan perkataan yang disinkronkan dengan lancar</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Menyerlahkan setiap perkataan dengan sapuan lembut, cahaya, dan sedikit angkatan semasa ia dinyanyikan. Matikan untuk menjimatkan bateri atau untuk pengisian tajam pada peranti yang lebih perlahan</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Gunakan tatalan spring</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Menatal lirik dengan fizik spring, dan menggerakkan setiap baris sedikit selepas baris di atasnya. Matikan untuk menjimatkan bateri pada peranti yang lebih perlahan</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Skrol santai</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Memperlahankan animasi skrol lirik dan mengekalkan baris tidak aktif dalam saiz penuh</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Kaburkan baris tidak aktif</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Mengaburkan setiap baris yang tidak sedang dinyanyikan secara lembut, lebih kabur jika lebih jauh (Android 12 dan versi terkini). Sebelum Android 12, baris tidak aktif kekal tajam</string>
   <string name="morphe_music_lyrics_gap_dots_title">Tunjukkan titik jeda instrumental</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Menunjukkan tiga titik di antara baris semasa jeda instrumental yang panjang, yang akan terisi apabila jeda berakhir</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Malapkan baris jauh dengan lebih banyak</string>
@@ -841,6 +852,8 @@ Lirik datang daripada perkhidmatan pihak ketiga yang tidak bergabung, ditaja, at
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Memindahkan terjemahan ke atas lirik; bacaan dan romanisasi kekal di bawah</string>
   <string name="morphe_music_lyrics_force_center_title">Sentiasa letakkan lirik di tengah</string>
   <string name="morphe_music_lyrics_force_center_summary">HIDUP meletakkan setiap baris di tengah dan mengabaikan penjajaran sumber, termasuk bahagian duet; MATI mengekalkan penjajaran yang diminta oleh lirik</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Penjajaran duet sisi bertentangan</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Meletakkan penyanyi kedua di tepi bertentangan untuk lagu duet. Matikan untuk mengekalkan kedua-dua penyanyi di sisi yang sama</string>
   <string name="morphe_music_lyrics_providers_keep_one">Sekurang-kurangnya satu pembekal mesti kekal aktif</string>
   <string name="morphe_music_lyrics_translation_provider_title">Terjemahan</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisasi atau transliterasi</string>

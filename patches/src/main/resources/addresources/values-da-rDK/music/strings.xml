@@ -271,6 +271,11 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Deaktivér audio ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Lydstyrken sænkes ikke, når en anden app afspiller en kort lyd, såsom en meddelelse</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Kø-synes-filter</string>
+  <string name="morphe_music_queue_like_filter_summary">Fjerner sange med få likes fra mix og radio. Playlister, albummer og sange, du tilføjer til køen, ændres ikke. Antal likes er fra Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum antal likes</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Sange med færre likes fjernes fra køen</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Deaktiver omdirigering af \'synes ikke godt om\'</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Forhindrer at der springes til næste nummer, når knappen \'synes ikke godt om\' trykkes</string>
@@ -717,8 +722,14 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_written_by">Skrevet af: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Fremhæv synkroniserede ord eller stavelser</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritér ord-for-ord-tekster, når de er tilgængelige. Når teksterne har ord-timing, fremhæves hvert ord eller stavelse i takt med musikken.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Animer synkroniserede ord jævnt</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Fremhæver hvert ord med en blød fejning, glød og et let løft, mens det bliver sunget. Slå fra for at spare batteri eller for en skarp udfyldning på langsommere enheder</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Brug spring-rulning</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Ruller sangteksten med spring-fysik og flytter hver linje lidt efter den ovenstående. Slå det fra for at spare batteri på langsommere enheder</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Afslappet rulning</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Sænker hastigheden på animationen af sangtekstrulningen og bevarer inaktive linjer i fuld størrelse</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Slør inaktive linjer</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Slører blødt enhver linje, der ikke synges i øjeblikket, mere jo længere væk den er (Android 12 og nyere). Før Android 12 forbliver inaktive linjer skarpe</string>
   <string name="morphe_music_lyrics_gap_dots_title">Vis prikker ved instrumentale pauser</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Viser tre prikker mellem linjerne under en lang instrumental pause, som fyldes op, efterhånden som pausen løber ud</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Dæmp fjerne linjer mere</string>
@@ -841,6 +852,8 @@ Sangteksterne stammer fra tredjepartstjenester, som ikke er tilknyttet, sponsore
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Flytter oversættelsen over sangteksterne; læsningen og romaniseringen forbliver nedenunder</string>
   <string name="morphe_music_lyrics_force_center_title">Centrér altid sangtekst</string>
   <string name="morphe_music_lyrics_force_center_summary">TIL sætter alle linjer i midten og ignorerer kildens justering, inklusiv duetsider; FRA bruger den justering, sangteksten anmoder om</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Justering af duet på modsat side</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Placerer den anden sanger på den modsatte kant i duetsange. Slå fra for at holde begge sangere på samme side</string>
   <string name="morphe_music_lyrics_providers_keep_one">Mindst én udbyder skal holdes aktiv</string>
   <string name="morphe_music_lyrics_translation_provider_title">Oversættelse</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering eller translitteration</string>

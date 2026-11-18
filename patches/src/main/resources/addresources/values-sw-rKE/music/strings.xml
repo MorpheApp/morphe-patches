@@ -271,6 +271,11 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Zima audio ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Sauti haipunguzwi wakati programu nyingine inapocheza sauti fupi, kama vile taarifa</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Chujio cha kupendwa kwa foleni</string>
+  <string name="morphe_music_queue_like_filter_summary">Huondoa nyimbo zenye mapendwa machache kutoka kwenye michanganyiko na redio. Orodha za nyimbo, albamu na nyimbo unazoongeza kwenye foleni hazibadiliki. Idadi ya mapendwa inatoka Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Kiwango cha chini cha mapendwa</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Nyimbo zenye mapendwa machache huondolewa kwenye foleni</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Zima uelekezaji upya wa kutopenda</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Huzuia kurukia wimbo unaofuata wakati kitufe cha kutopenda kinapobonyezwa</string>
@@ -717,8 +722,14 @@ Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Imeandikwa na: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Angazia maneno au silabi zilizooanishwa</string>
   <string name="morphe_music_lyrics_word_sync_summary">Toa kipaumbele kwa mashairi ya neno-kwa-neno yanapopatikana. Mashairi yanapokuwa na muda wa neno, yanangazia kila neno au silabi kulingana na wakati wa muziki</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Animate maneno yaliyosawazishwa kwa ulaini</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Huangazia kila neno kwa mswaki laini, mng\'ao, na kuinuliwa kidogo linapoimbwa. Zima ili kuokoa betri au kwa ujazishaji mkali kwenye vifaa vya polepole</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Tumia usogezi wa spring</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Inasogeza mashairi kwa fizikia ya spring, na kusogeza kila mstari kidogo baada ya ule wa juu. Zima ili kuokoa betri kwenye vifaa vyenye kasi ndogo</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Kusogeza kwa utulivu</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Hupunguza kasi ya uhuishaji wa kusogeza mashairi na kuweka mistari isiyo hai katika ukubwa kamili</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Futa mistari isiyotumika</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Inafuta kwa upole kila mstari ambao hauimbwi kwa sasa, zaidi kadiri unavyokuwa mbali (Android 12 na baada ya hapo). Kabla ya Android 12, mistari isiyotumika inabaki kuwa wazi</string>
   <string name="morphe_music_lyrics_gap_dots_title">Onyesha nukta za mapumziko ya ala</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Huonyesha nukta tatu kati ya mistari wakati wa mapumziko marefu ya ala, ambayo hujazaa wakati mapumziko yanapoisha</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Fifisha zaidi mistari ya mbali</string>
@@ -841,6 +852,8 @@ Mashairi yanatoka kwa huduma za upande wa tatu ambazo hazihusiani, hazifadhiliwi
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Inahamisha tafsiri juu ya mashairi; usomaji na uromanizaji vinabaki chini</string>
   <string name="morphe_music_lyrics_force_center_title">Kaa katikati ya mashairi kila wakati</string>
   <string name="morphe_music_lyrics_force_center_summary">ON huweka kila mstari katikati na kupuuza mpangilio wa chanzo, ikiwa ni pamoja na pande za dueti; OFF hubaki na mpangilio ambao mashairi yanahitaji</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Upangaji wa dueti wa upande wa mkabala</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Inamweka mwimbaji wa pili kwenye ukingo wa mkabala katika nyimbo za dueti. Zima ili kuwaweka waimbaji wote upande mmoja</string>
   <string name="morphe_music_lyrics_providers_keep_one">Angalau mtoa huduma mmoja lazima abaki akiwa amewashwa</string>
   <string name="morphe_music_lyrics_translation_provider_title">Tafsiri</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanization au uandishi wa kifonetiki</string>

@@ -122,8 +122,8 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_upload_time_title">Piilota julkaisuaika</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Rajoitukset:
-• Shorts-hyllyt, kanavasivut ja hakutulokset saattavat edelleen näyttää julkaisuaikoja
-• Tämä ominaisuus ei toimi ajoneuvo-käyttöliittymäasettelussa"</string>
+• Shorts-hyllyt saattavat edelleen näyttää julkaisuaikoja
+• Ei toimi ajoneuvo-käyttöliittymäasettelussa"</string>
   <string name="morphe_hide_video_thumbnail_title">Piilota videon pikkukuva</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Piilota videoiden tunnisteet</string>
@@ -131,8 +131,8 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_view_count_title">Piilota katselukerrat</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Rajoitukset:
-• Shorts-hyllyt, kanavasivut ja hakutulokset saattavat edelleen näyttää katselukertoja
-• Tämä ominaisuus ei toimi ajoneuvo-käyttöliittymäasettelussa"</string>
+• Shorts-hyllyt saattavat edelleen näyttää katselukertoja
+• Ei toimi ajoneuvo-käyttöliittymäasettelussa"</string>
   <string name="morphe_hide_web_search_results_title">Piilota verkkohakutulokset</string>
   <string name="morphe_hide_web_search_results_summary">Piilottaa ’Tulokset verkosta’ -osion hakutuloksista</string>
   <string name="morphe_hide_you_may_like_section_title">Piilota \'Saattaisit pitää\' -osio</string>
@@ -290,9 +290,10 @@ Rajoitukset:
   <string name="morphe_hide_autoplay_preview_summary">Piilottaa seuraavan videon esikatselun koko näytössä automaattisen toiston alkaessa</string>
   <string name="morphe_hide_channel_bar_title">Piilota kanavapalkki</string>
   <string name="morphe_hide_channel_watermark_title">Piilota kanavan vesileima</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Piilota luvut ja \'Tässä videossa\' -painike</string>
+  <string name="morphe_hide_chapters_button_title">Piilota luvut -painike</string>
   <string name="morphe_hide_crowdfunding_box_title">Piilota joukkorahoituslaatikko</string>
   <string name="morphe_hide_emergency_box_title">Piilota hätätilannelaatikot</string>
+  <string name="morphe_hide_in_this_video_button_title">Piilota \"Tässä videossa\" -painike</string>
   <string name="morphe_hide_info_panels_title">Piilota tietopaneelit</string>
   <string name="morphe_hide_info_panels_summary">Piilottaa informatiiviset kontekstipaneelit, kuten lääketieteelliset tiedot</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_feed_long_press_menu_summary">Napauttamalla ja pitämällä painettuna mistä tahansa syötteen videosta avautuu sen valikko</string>
   <string name="morphe_feed_watch_later_button_title">Näytä Katso myöhemmin -painike pikkukuvissa</string>
   <string name="morphe_feed_watch_later_button_summary">Katso myöhemmin -painike näkyy syötteen videoiden pikkukuvissa, ja siinä on valintamerkki, jos video on tallennettu. Painamalla sitä video tallennetaan tai poistetaan, ja painamalla pitkään avautuu Tallenna soittolistaan</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Avaa julkaisun kuvat koko näytöllä</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Julkaisun kuvan napauttaminen avaa sen koko näytölle julkaisujen syötteen sijaan</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Lataa julkaisun kuvat</string>
   <string name="morphe_post_image_download_summary">Latauspainike näytetään kuvien tai GIF-animaatioiden sisältävien julkaisujen Jaa-painikkeen vieressä, ja latauskohta lisätään niiden valikkoon</string>
@@ -800,6 +804,7 @@ API-avaintasi ei saa koskaan jakaa. Kuka tahansa, jolla on pääsy siihen, voi k
   <string name="morphe_loop_count_clear_done">Tallennetut toistokerrat tyhjennetty</string>
   <string name="morphe_loop_count_flyout_name">Toistokertojen määrä</string>
   <string name="morphe_loop_count_dialog_message">Kuinka monta kertaa video toistetaan ennen seuraavaa videota, välillä %1$s–%2$s. Jätä tyhjäksi toistaaksesi videon rajattomasti.</string>
+  <string name="morphe_loop_count_times">%s kertaa</string>
   <string name="morphe_loop_count_no_limit">Ei rajoitusta</string>
   <string name="morphe_loop_count_decrease">Vähemmän kertoja</string>
   <string name="morphe_loop_count_increase">Lisää kertoja</string>
@@ -991,6 +996,7 @@ Korjaa tämä ottamalla käyttöön 'Naamioi videovirrat' ja vaihtamalla 'Oletus
   <string name="morphe_swipe_press_to_engage_title">Ota pyyhkäise painamalla -ele käyttöön</string>
   <string name="morphe_swipe_press_to_engage_summary">Vaatii painamisen ja pitämisen ennen pyyhkäisyeleen tunnistamista</string>
   <string name="morphe_swipe_haptic_feedback_title">Ota haptinen palaute käyttöön</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Värisee, kun pyyhkäisyeleen alkaa painamalla ja pitämällä</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Tallenna ja palauta kirkkaus</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Muistaa kirkkaustason koko näytön tilaan siirtyessä ja siitä poistuttaessa</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Ota automaattisen kirkkauden ele käyttöön</string>
@@ -1134,6 +1140,10 @@ Päästäksesi Asetuksiin, ota Asetukset-painike käyttöön kohdasta Yleiset �
   <string name="morphe_navigation_bar_glass_opacity_summary">Säädä lasimaisen navigointipalkin läpinäkyvyystasoa (0 on läpinäkyvä, 100 on läpinäkymätön)</string>
   <string name="morphe_navigation_bar_glass_round_title">Pyöristetty lasinen navigointipalkki</string>
   <string name="morphe_navigation_bar_glass_round_summary">Antaa lasiselle navigointipalkille pyöristetyt päät lasisen minisoittimen kulmien sijaan</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Lasisen navigointipalkin reunus</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Piirtää valoreunuksen lasisen navigointipalkin ympärille</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Lasisen navigointipalkin alareunan marginaali</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Säädä väliä lasisen navigointipalkin ja näytön alareunan tai järjestelmän navigoinnin välillä</string>
   <string name="morphe_navigation_bar_glass_size_title">Lasisen navigointipalkin koko</string>
   <string name="morphe_navigation_bar_glass_size_summary">Säädä lasisen navigointipalkin korkeutta, leveyttä ja painikkeiden välistä etäisyyttä esikatselun avulla. Painikkeet, jotka eivät mahdu näytön leveyteen, piilotetaan</string>
   <string name="morphe_navigation_bar_glass_size_height">Korkeus</string>
@@ -1380,6 +1390,9 @@ Auton asettelu
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Poista syötteen automaattinen päivitys käytöstä</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Estää syötteiden automaattisen päivityksen, kun ne vanhenevat</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Peru notifications ryhmittely</string>
+  <string name="morphe_ungroup_notifications_summary">Näyttää kanavan ryhmitellyt lataukset omina ilmoituksinaan</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Syötteen korttiasettelu</string>
   <string name="morphe_feed_card_layout_entry_1">Klassinen</string>
@@ -1492,6 +1505,8 @@ Auton asettelu
   <string name="morphe_dearrow_titles_search_title">Hakutulokset</string>
   <string name="morphe_dearrow_titles_icon_title">Näytä DeArrow-kuvake</string>
   <string name="morphe_dearrow_titles_icon_summary">Näyttää DeArrow-kuvakkeen videoiden otsikoissa, joissa on yhteisön luoma otsikko tai pikkukuva. Napauta kuvaketta näyttääksesi alkuperäisen otsikon ja pikkukuvan</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Siisti otsikot</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Siistii videoiden otsikot, joilla ei ole DeArrow-otsikkoa. Isot kirjaimet muutetaan normaaliksi tekstiksi, ja emojit, koristeellinen teksti sekä toistuvat huutomerkit poistetaan</string>
   <string name="morphe_dearrow_casual_mode_title">Rento tila</string>
   <string name="morphe_dearrow_casual_mode_summary">Näyttää alkuperäisen otsikon DeArrow-otsikon sijaan, jos DeArrow-käyttäjät äänestivät pitävänsä alkuperäisestä otsikosta</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Vähimmäismäärä casual-ääniä alkuperäisen otsikon näyttämiseen</string>

@@ -122,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">ซ่อนเวลาอัปโหลด</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"ข้อจำกัด:
-• แถบ Shorts, หน้าช่อง, และผลการค้นหา อาจยังคงแสดงเวลาอัปโหลด
+• แถบ Shorts อาจยังคงแสดงเวลาอัปโหลด
 • ไม่ทำงานกับรูปแบบการแสดงผลสำหรับรถยนต์"</string>
   <string name="morphe_hide_video_thumbnail_title">ซ่อนภาพขนาดย่อของวิดีโอ</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">ซ่อนจำนวนการดู</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"ข้อจำกัด:
-• ชั้นวาง Shorts, หน้าช่อง, และผลการค้นหาอาจยังคงแสดงจำนวนการดู
+• ชั้นวาง Shorts อาจยังคงแสดงจำนวนการดู
 • ไม่ทำงานกับรูปแบบการแสดงผลสำหรับรถยนต์"</string>
   <string name="morphe_hide_web_search_results_title">ซ่อนผลลัพธ์การค้นหาบนเว็บ</string>
   <string name="morphe_hide_web_search_results_summary">ซ่อนส่วน \'ผลลัพธ์จากเว็บ\' จากผลการค้นหา</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">ซ่อนภาพตัวอย่างวิดีโอที่จะเล่นถัดไปขณะเล่นเต็มหน้าจอก่อนเริ่มเล่นอัตโนมัติ</string>
   <string name="morphe_hide_channel_bar_title">ซ่อนแถบช่อง</string>
   <string name="morphe_hide_channel_watermark_title">ซ่อนลายน้ำของช่อง</string>
-  <string name="morphe_hide_chapters_timeline_button_title">ซ่อนบทและปุ่ม \'ในวิดีโอนี้\'</string>
+  <string name="morphe_hide_chapters_button_title">ปุ่มซ่อนบท</string>
   <string name="morphe_hide_crowdfunding_box_title">ซ่อนกล่องระดมทุน</string>
   <string name="morphe_hide_emergency_box_title">ซ่อนกล่องการเตือนฉุกเฉิน</string>
+  <string name="morphe_hide_in_this_video_button_title">ปุ่มซ่อน \'ในวิดีโอนี้\'</string>
   <string name="morphe_hide_info_panels_title">ซ่อนแผงข้อมูล</string>
   <string name="morphe_hide_info_panels_summary">ซ่อนแผงข้อมูลบริบท เช่น ข้อมูลทางการแพทย์</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">การแตะและค้างไว้ที่ใดก็ได้บนวิดีโอฟีดจะเปิดเมนูของวิดีโอนั้น</string>
   <string name="morphe_feed_watch_later_button_title">แสดงปุ่มดูภายหลังบนภาพย่อ</string>
   <string name="morphe_feed_watch_later_button_summary">ปุ่ม \"ดูภายหลัง\" จะแสดงบนภาพตัวอย่างของวิดีโอในฟีด โดยจะมีเครื่องหมายถูกหากวิดีโอถูกบันทึกไว้ การแตะจะบันทึกหรือลบวิดีโอ และการแตะค้างไว้จะเปิด \"บันทึกไปยังเพลย์ลิสต์\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">เปิดรูปภาพของโพสต์แบบเต็มจอ</string>
+  <string name="morphe_open_post_images_fullscreen_summary">การแตะที่รูปภาพของโพสต์จะเปิดรูปภาพนั้นแบบเต็มจอ แทนที่จะเปิดในฟีดของโพสต์</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">ดาวน์โหลดรูปภาพในโพสต์</string>
   <string name="morphe_post_image_download_summary">ปุ่มดาวน์โหลดจะแสดงขึ้นถัดจากปุ่มแชร์ของโพสต์ที่มีรูปภาพหรือ GIF และจะมีการเพิ่มรายการดาวน์โหลดลงในเมนูของโพสต์ดังกล่าว</string>
@@ -992,6 +996,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">เปิดใช้งานท่าทางกดเพื่อปัด</string>
   <string name="morphe_swipe_press_to_engage_summary">ต้องกดค้างไว้ก่อนที่ระบบจะจดจำท่าทางการปัด</string>
   <string name="morphe_swipe_haptic_feedback_title">เปิดใช้งานการตอบสนองแบบสัมผัส</string>
+  <string name="morphe_swipe_haptic_feedback_summary">สั่นเมื่อกดค้างเพื่อเริ่มท่าทางปัด</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">บันทึกและคืนค่าความสว่าง</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">จดจำระดับความสว่างเมื่อเข้า/ออกจากโหมดเต็มหน้าจอ</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">เปิดใช้งานท่าทางความสว่างอัตโนมัติ</string>
@@ -1135,6 +1140,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ปรับระดับความโปร่งใสของแถบนำทางแบบกระจก (0 คือโปร่งใส, 100 คือทึบแสง)</string>
   <string name="morphe_navigation_bar_glass_round_title">แถบนำทางแบบกระจกขอบมน</string>
   <string name="morphe_navigation_bar_glass_round_summary">ทำให้แถบนำทางแบบกระจกมีปลายมน แทนที่จะเป็นมุมเหมือนกับมินิเพลเยอร์แบบกระจก</string>
+  <string name="morphe_navigation_bar_glass_edge_title">ขอบแถบนำทางแบบกระจก</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">วาดขอบแสงรอบแถบนำทางแบบกระจก</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">ระยะขอบล่างของแถบนำทางแบบกระจก</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">ปรับระยะห่างระหว่างแถบนำทางแบบกระจกกับด้านล่างของหน้าจอหรือการนำทางของระบบ</string>
   <string name="morphe_navigation_bar_glass_size_title">ขนาดแถบนำทางแบบกระจก</string>
   <string name="morphe_navigation_bar_glass_size_summary">ปรับความสูง ความกว้าง และระยะห่างระหว่างปุ่มของแถบนำทางแบบกระจก พร้อมการแสดงตัวอย่าง ปุ่มที่ไม่พอดีกับความกว้างของหน้าจอจะถูกซ่อนไว้</string>
   <string name="morphe_navigation_bar_glass_size_height">ความสูง</string>
@@ -1381,6 +1390,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">ปิดการรีเฟรชฟีดอัตโนมัติ</string>
   <string name="morphe_disable_auto_feed_refresh_summary">ป้องกันไม่ให้ฟีดรีเฟรชโดยอัตโนมัติหลังจากที่ล้าสมัย</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">ยกเลิกการจัดกลุ่มการแจ้งเตือน</string>
+  <string name="morphe_ungroup_notifications_summary">แสดงทุกวิดีโอที่อัปโหลดแบบจัดกลุ่มของช่องเป็นการแจ้งเตือนแยกกัน</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">เลย์เอาต์การ์ดฟีด</string>
   <string name="morphe_feed_card_layout_entry_1">คลาสสิก</string>
@@ -1493,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">ผลลัพธ์การค้นหา</string>
   <string name="morphe_dearrow_titles_icon_title">แสดงไอคอน DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">แสดงไอคอน DeArrow บนชื่อของวิดีโอที่มีชื่อหรือภาพขนาดย่อจากการระดมความคิดจากชุมชน แตะที่ไอคอนเพื่อแสดงชื่อและภาพขนาดย่อต้นฉบับ</string>
+  <string name="morphe_dearrow_clean_up_titles_title">ล้างหัวข้อ</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">ล้างหัวข้อของวิดีโอที่ไม่มีหัวข้อ DeArrow โดยคำที่เป็นตัวพิมพ์ใหญ่จะถูกเปลี่ยนเป็นตัวพิมพ์ปกติ และจะลบอีโมจิ ข้อความแฟนซี และเครื่องหมายตกใจที่ซ้ำกันออก</string>
   <string name="morphe_dearrow_casual_mode_title">โหมดทั่วไป</string>
   <string name="morphe_dearrow_casual_mode_summary">แสดงชื่อเรื่องต้นฉบับแทนชื่อเรื่อง DeArrow หากผู้ใช้ DeArrow โหวตว่าพวกเขาชอบชื่อเรื่องต้นฉบับ</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">จำนวนโหวตแบบทั่วไปขั้นต่ำเพื่อแสดงชื่อเรื่องต้นฉบับ</string>

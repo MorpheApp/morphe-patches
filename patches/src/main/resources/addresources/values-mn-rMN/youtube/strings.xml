@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Тайлбар дээрх хугацааг нуух</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Хязгаарлалт:
-• Shorts талбайн жагсаалт, сувгийн хуудас болон хайлтын үр дүнд байршуулсан хугацаа харагдаж магадгүй
-• Автомашины загварт ажиллахгүй"</string>
+• Shorts талбарт байршуулалтын хугацаа харагдаж магадгүй
+• Автомашины загвартай ажиллахгүй"</string>
   <string name="morphe_hide_video_thumbnail_title">Видеоны miniature-ийг нуух</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Видео шошгонуудыг нуух</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Үзэлтийн тоог нуух</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Хязгаарлалт:
-• Shorts талбайн жагсаалт, сувгийн хуудас болон хайлтын үр дүнд үзэлтийн тоо харагдаж магадгүй
-• Автомашины загварт ажиллахгүй"</string>
+• Shorts талбарт үзэлтийн тоо харагдаж магадгүй
+• Автомашины загвартай ажиллахгүй"</string>
   <string name="morphe_hide_web_search_results_title">Веб хайлтын үр дүнг нуух</string>
   <string name="morphe_hide_web_search_results_summary">Хайлтын үр дүнгээс \'Вэбээс гарсан үр дүн\' хэсгийг нуух</string>
   <string name="morphe_hide_you_may_like_section_title">\'Танд таалагдаж магадгүй\' хэсгийг нуух</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Автоматаар тоглуулах эхлэхээс өмнө дараагийн видеоны урьдчилгааг бүтэн дэлгэцээр нуух</string>
   <string name="morphe_hide_channel_bar_title">Сувгийн хэсгийг нуух</string>
   <string name="morphe_hide_channel_watermark_title">Сувгийн усан тэмдгийг нуух</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Бүлгүүд болон \'Энэ бичлэгт\' товчийг нуух</string>
+  <string name="morphe_hide_chapters_button_title">Бүлгүүдийн товчийг нуух</string>
   <string name="morphe_hide_crowdfunding_box_title">Кроудфандинг хэсгийг нуух</string>
   <string name="morphe_hide_emergency_box_title">Онцгой байдлын мэдээллийн хэсгийг нуух</string>
+  <string name="morphe_hide_in_this_video_button_title">\'Энэ видеонд\' товчийг нуух</string>
   <string name="morphe_hide_info_panels_title">Мэдээлэл харуулах хэсгийг нуух</string>
   <string name="morphe_hide_info_panels_summary">Анагаах ухааны мэдээлэл гэх мэт мэдээлэл өгөх контекст панелуудыг нуух</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Фидийн видеоны хаана ч удаан дарахад цэс нээгдэнэ</string>
   <string name="morphe_feed_watch_later_button_title">Жижиг зургууд дээр \"Дараа үзэх\" товчийг харуулах</string>
   <string name="morphe_feed_watch_later_button_summary">Фийдийн видеонуудын эсиг зураг дээр \"Дараа үзэх\" товчлуур харагдах бөгөөд видео хадгалагдсан бол чагттай тэмдэглэгээнэ. Үүнийг товшилсноор видеог хадгалах эсвэл устгах бөгөөд удаан дарвал \"Жагсаалтад хадгалах\" цэсийг нээнэ</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Постын зургуудыг бүтэн дэлгэцээр нээх</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Постын зураг дээр дарахад түүнийг постын фийдэд бус, бүтэн дэлгэцээр нээх болно</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Постын зургуудыг татаж авах</string>
   <string name="morphe_post_image_download_summary">Зураг эсвэл GIF бүхий постудын Хуваалцах товчлуурын хажууд татаж авах товч харагдах бөгөөд тэдгээрийн цэсэнд татаж авах сонголт нэмэгдэнэ</string>
@@ -992,6 +996,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_swipe_press_to_engage_title">Дарж гүйлгэх дохиог идэвхжүүлэх</string>
   <string name="morphe_swipe_press_to_engage_summary">Гүйлгэх дохиог танихын өмнө дарж тэсрэх шаардлагатай</string>
   <string name="morphe_swipe_haptic_feedback_title">Хөртлөг хариу үйлдэл идэвхжүүлэх</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Гулсгах дохио эхлүүлэхээр дарж барьхад чичиргээнэ</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Гэрэлтүүлгийг хадгалах ба сэргээх</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Дүүрэн дэлгэцийн горимд орох / гарах үед гэрлийн түвшинг санадаг</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Гэрэлтүүлгийн авто горимын дохиог идэвхжүүлэх</string>
@@ -1135,6 +1140,10 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Шилэн навигацийн панелийн тунгалаг байдлыг тохируулна (0 нь тунгалаг, 100 нь бүрхэг)</string>
   <string name="morphe_navigation_bar_glass_round_title">Шилэн навигацийн барын тойрог хэлбэр</string>
   <string name="morphe_navigation_bar_glass_round_summary">Шилэн мини-тоглуулагчийн булангаас ялгаатай нь шилэн навигацийн барын үзүүрийг тойрог болгоно</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Шилэн навигацийн хэсгийн ирмэг</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Шилэн навигацийн хэсгийн эргэн тойронд гэрэлт ирмэг зурна</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Шилэн навигацийн хэсгийн доод зай</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Шилэн навигацийн мөр болон дэлгэцийн доод хэсэг эсвэл системийн навигацийн хоорондох зайг тохируулах</string>
   <string name="morphe_navigation_bar_glass_size_title">Шилэн навигацийн панелийн хэмжээ</string>
   <string name="morphe_navigation_bar_glass_size_summary">Шилэн навигацийн панелийн өндөр, өргөн болон товчнуудын зайг урьдчилан харах боломжтойгоор тохируулна. Дэлгэцийн өргөнд багтахгүй байгаа товчнууд нуугдана</string>
   <string name="morphe_navigation_bar_glass_size_height">Өндөр</string>
@@ -1381,6 +1390,9 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Feed-ийн авто шинэчлэлтийг идэвхгүй болгох</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Feed-үүдийг хуучирсны дараа автоматаар шинэчлэгдэхээс сэргийлнэ</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Мэдэгдлүүдийг салгах</string>
+  <string name="morphe_ungroup_notifications_summary">Сувгийн бүлэглэсэн постудыг тус бүр нь тусдаа мэдэгдлээс харуулна</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Фийдийн картын бүтэц</string>
   <string name="morphe_feed_card_layout_entry_1">Сонгодог</string>
@@ -1493,6 +1505,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_dearrow_titles_search_title">Хайлтын үр дүн</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow дүрс тэмдгийг харуулах</string>
   <string name="morphe_dearrow_titles_icon_summary">Олон нийтийн гаралгаагаар гарсан гарчиг эсвэл miniature зурагтай видеонуудын гарчиг дээр DeArrow дүрс тэмдэглэгээг харуулна. Эх хувилбарын гарчиг болон miniature зургийг харахын тулд дүрс тэмдэглэгээ дээр дарна уу</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Гарчиг цэвэрлэх</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow гарчиггүй видеонуудын гарчгийг цэвэрлэнэ. Том үсгээр бичсэн үгсийг хэвийн хэлбэрт шилжүүлж, эможи, гоёлын текст болон давхардсан анхааруулах тэмдэгтүүдийг устгана</string>
   <string name="morphe_dearrow_casual_mode_title">Чөлөөтэй горим</string>
   <string name="morphe_dearrow_casual_mode_summary">Хэрэв DeArrow-ийн хэрэглэгчид эх хувийн гарчиг нь илүү таалагдсан гэж санал илэрхийлсэн бол DeArrow-ийн гарчгийн оронд эх хувийн гарчгийг харуулна</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Эх хувийн гарчгийг харуулах хамгийн бага чөлөөтэй санал</string>
@@ -1832,6 +1846,7 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_series_tracker_undo">Буцаах</string>
   <string name="morphe_series_tracker_enable_short">Идэвхжүүлэх</string>
   <string name="morphe_series_tracker_new_episode">1 шинэ анги</string>
+  <string name="morphe_series_tracker_new_episodes">%s шинэ анги</string>
   <string name="morphe_series_tracker_record_short">Энэ төхөөрөмж дээр явцыг тэмдэглэх</string>
   <string name="morphe_series_tracker_follow_consent">"Таны цуврал болон ахиц дэвшил энэ төхөөрөмж дээр хадгалагдах бөгөөд YouTube-ийн бүртгэлүүдээр хуваалцана. YouTube-ийн түүхийн хяналт тэдгээрийг өөрчлөхгүй. Цувралын цэснээс ахиц дэвшлийг устгаж болно.
 

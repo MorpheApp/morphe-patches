@@ -271,6 +271,11 @@ SABR-воспроизведение (подмена видеопотоков о�
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Отключить приглушение звука</string>
   <string name="morphe_music_disable_audio_ducking_summary">Громкость не будет понижаться, когда другое приложение воспроизводит короткий звук, например, уведомление</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Фильтр лайков в очереди</string>
+  <string name="morphe_music_queue_like_filter_summary">Удаляет песни с малым количеством лайков из миксов и радио. Плейлисты, альбомы и песни, добавленные в очередь вручную, не изменяются. Количество лайков берется из Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Минимальное количество лайков</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Песни с меньшим количеством лайков будут удалены из очереди</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Отключить перенаправление дизлайков</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Предотвращает переход к следующему треку при нажатии кнопки \"Не нравится\"</string>
@@ -717,8 +722,14 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_written_by">Автор: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Подсвечивать синхронизированные слова или слоги</string>
   <string name="morphe_music_lyrics_word_sync_summary">Отдавать приоритет пословному тексту, когда он доступен. Когда в тексте есть тайминги слов, подсвечивать каждое слово или слог в такт музыке</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Плавная анимация синхронизированных слов</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Подсвечивает каждое слово мягким переливом, сиянием и небольшим подъемом в момент исполнения. Выключите для экономии заряда батареи или для более резкого заполнения на медленных устройствах</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Использовать пружинную прокрутку</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Прокручивает текст песни с использованием физики пружины, при этом каждая строка смещается немного относительно предыдущей. Отключите для экономии заряда батареи на медленных устройствах</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Размеренный скроллинг</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Замедляет анимацию прокрутки текста песни и оставляет неактивные строки в полном размере</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Размытие неактивных строк</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Мягко размывает каждую строку, которая не исполняется в данный момент, причем чем дальше строка, тем сильнее размытие (Android 12 и выше). В версиях до Android 12 неактивные строки остаются четкими</string>
   <string name="morphe_music_lyrics_gap_dots_title">Показывать точки инструментального проигрыша</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Показывает три точки между строками во время длительного инструментального проигрыша, которые заполняются по мере завершения перерыва</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Сильнее затемнять удаленные строки</string>
@@ -841,6 +852,8 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Переносит перевод над текстом песни; чтение и романизация остаются внизу</string>
   <string name="morphe_music_lyrics_force_center_title">Всегда центрировать текст песни</string>
   <string name="morphe_music_lyrics_force_center_summary">ВКЛ ставит каждую строку в центр и игнорирует исходное выравнивание, включая дуэтные стороны; ВЫКЛ сохраняет выравнивание, запрошенное в тексте песни</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Выравнивание дуэта по противоположным сторонам</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Размещает второго исполнителя у противоположного края в песнях-дуэтах. Отключите, чтобы оба исполнителя оставались с одной стороны</string>
   <string name="morphe_music_lyrics_providers_keep_one">Хотя бы один провайдер должен быть включен</string>
   <string name="morphe_music_lyrics_translation_provider_title">Перевод</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация или транслитерация</string>

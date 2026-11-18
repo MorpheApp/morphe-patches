@@ -271,6 +271,11 @@ Second \"item\" text"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">ປິດການຫຼຸດສຽງອັດຕະໂນມັດ</string>
   <string name="morphe_music_disable_audio_ducking_summary">ລະດັບສຽງຈະບໍ່ຫຼຸດລົງ ເມື່ອແອັບອື່ນຫຼິ້ນສຽງສັ້ນໆ ເຊັ່ນ: ການແຈ້ງເຕືອນ</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">ຕົວຕອງການຖືກໃຈໃນຄິວ</string>
+  <string name="morphe_music_queue_like_filter_summary">ລຶບເພງທີ່ມີການຖືກໃຈໜ້ອຍອອກຈາກມິກສ໌ ແລະ ວິທະຍຸ. ພລິສເຕີ, ອັນບັມ ແລະ ເພງທີ່ທ່ານເພີ່ມລົງໃນຄິວຈະບໍ່ຖືກປ່ຽນແປງ. ຈຳນວນການຖືກໃຈແມ່ນມາຈາກ Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">ການຖືກໃຈຂັ້ນຕ່ຳ</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">ເພງທີ່ມີການຖືກໃຈໜ້ອຍກວ່າຈະຖືກລຶບອອກຈາກຄິວ</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ປິດການປ່ຽນເສັ້ນທາງການບໍ່ມັກ</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ປ້ອງກັນການຂ້າມໄປແທຣັກຖັດໄປເມື່ອມີການກົດປຸ່ມບໍ່ມັກ</string>
@@ -717,8 +722,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">ຂຽນໂດຍ: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">ເນັ້ນຄຳສັບ ຫຼື ພະຍາງທີ່ຊິງຄ໌ແລ້ວ</string>
   <string name="morphe_music_lyrics_word_sync_summary">ໃຫ້ບຸລິມະສິດແກ່ເນື້ອເພງແບບຄຳຕໍ່ຄຳເມື່ອມີໃຫ້. ເມື່ອເນື້ອເພງມີການກຳນົດເວລາຂອງຄຳສັບ, ມັນຈະເນັ້ນແຕ່ລະຄຳ ຫຼື ພະຍາງໃຫ້ຕົງກັບຈັງຫວະເພງ</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">ເຄື່ອນໄຫວຄຳສັບທີ່ຊິງກްກັນຢ່າງນຸ້ມນວນ</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">ເນັ້ນແຕ່ລະຄຳສັບດ້ວຍການກວາດທີ່ນຸ້ມນວນ, ແສງສະຫວ່າງ, ແລະ ຍົກຂຶ້ນເລັກນ້ອຍໃນຂະນະທີ່ຮ້ອງ. ປິດເພື່ອປະຢັດແບັດເຕີຣີ ຫຼື ເພື່ອການເຕີມທີ່ຊັດເຈນໃນອຸປະກອນທີ່ຊ້າກວ່າ</string>
   <string name="morphe_music_lyrics_spring_scroll_title">ໃຊ້ການເລື່ອນແບບ spring</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">ເລື່ອນເນື້ອເພງດ້ວຍຟີຊິກແບບ spring, ແລະ ເຄື່ອນຍ້າຍແຕ່ລະແຖວໜ້ອຍໜຶ່ງຫຼັງຈາກແຖວທີ່ຢູ່ເທິງມັນ. ປິດເພື່ອປະຢັດແບັດເຕີຣີໃນອຸປະກອນທີ່ຊ້າກວ່າ</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">ການເລື່ອນແບບຜ່ອນຄາຍ</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">ຫຼຸດຄວາມໄວຂອງແອນິເມຊັນການເລື່ອນເນື້ອເພງ ແລະ ຮັກສາແຖວທີ່ບໍ່ໄດ້ຖືກນຳໃຊ້ໃຫ້ມີຂະໜາດເຕັມ</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">ເຮັດໃຫ້ແຖວທີ່ບໍ່ໄດ້ໃຊ້ງານມົວ</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">ເຮັດໃຫ້ທຸກແຖວທີ່ບໍ່ໄດ້ກໍາລັງຮ້ອງຢູ່ໃນຂະນະນັ້ນມົວແບບອ່ອນໆ, ແລະ ຈະມົວຫຼາຍຂຶ້ນເມື່ອຢູ່ຫ່າງອອກໄປ (Android 12 ແລະ ຫຼັງຈາກນັ້ນ). ກ່ອນ Android 12, ແຖວທີ່ບໍ່ໄດ້ໃຊ້ງານຈະຍັງຄົງຄວາມຄົມຊັດ</string>
   <string name="morphe_music_lyrics_gap_dots_title">ສະແດງຈຸດພັກເຄື່ອງດົນຕີ</string>
   <string name="morphe_music_lyrics_gap_dots_summary">ສະແດງສາມຈຸດລະຫວ່າງແຖວໃນຊ່ວງພັກເຄື່ອງດົນຕີທີ່ຍາວ, ເຊິ່ງຈະເຕັມຂຶ້ນໃນຂະນະທີ່ການພັກສິ້ນສຸດລົງ</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">ເຮັດໃຫ້ແຖວທີ່ຢູ່ໄກອອກໄປມົວລົງຕື່ມ</string>
@@ -841,6 +852,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">ຍ້າຍການແປໄປໄວ້ເໜືອນເນື້ອເພງ; ການອ່ານ ແລະ ການທັບສັບຈະຍັງຄົງຢູ່ດ້ານລຸ່ມ</string>
   <string name="morphe_music_lyrics_force_center_title">ໃຫ້ເນື້ອເພງຢູ່ເຄິ່ງກາງສະເໝີ</string>
   <string name="morphe_music_lyrics_force_center_summary">ເປີດ ຈະວາງທຸກແຖວໄວ້ເຄິ່ງກາງ ແລະ ບໍ່ສົນໃຈການຈັດວາງຂອງແຫຼ່ງທີ່ມາ, ລວມທັງດ້ານຂອງ duet; ປິດ ຈະຮັກສາການຈັດວາງຕາມທີ່ເນື້ອເພງກຳນົດໄວ້</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">ການຈັດວາງການຮ້ອງຄູ່ແບບຝັ່ງກົງກັນຂ້າມ</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">ວາງນັກຮ້ອງຄົນທີສອງໄວ້ທີ່ຂອບຝັ່ງກົງກັນຂ້າມໃນເພງຮ້ອງຄູ່. ປິດເພື່ອໃຫ້ນັກຮ້ອງທັງສອງຄົນຢູ່ຝັ່ງດຽວກັນ</string>
   <string name="morphe_music_lyrics_providers_keep_one">ຕ້ອງມີຜູ້ໃຫ້ບໍລິການຢ່າງໜ້ອຍໜຶ່ງລາຍທີ່ເປີດໄວ້</string>
   <string name="morphe_music_lyrics_translation_provider_title">ການແປ</string>
   <string name="morphe_music_lyrics_romanization_provider_title">ການຖອດສຽງເປັນອັກສອນໂຣມັນ ຫຼື ການທັບສັບ</string>

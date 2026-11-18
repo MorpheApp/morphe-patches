@@ -122,8 +122,8 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_upload_time_title">Upload-Zeit ausblenden</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Einschränkungen:
-• Shorts-Reihen, Kanalseiten und Suchergebnisse können weiterhin Upload-Zeiten anzeigen.
-• Diese Funktion funktioniert nicht mit dem Automotive-Formfaktor."</string>
+• Shorts-Reihen können weiterhin Upload-Zeiten anzeigen
+• Diese Funktion funktioniert nicht mit dem Automotive-Formfaktor"</string>
   <string name="morphe_hide_video_thumbnail_title">Video-Thumbnail ausblenden</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Videolabels ausblenden</string>
@@ -131,9 +131,8 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_view_count_title">Aufrufe ausblenden</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Einschränkungen:
-• Shorts Reihen, Kanalseiten und Suchergebnisse können weiterhin Aufrufe anzeigen
-• Diese Funktion funktioniert nicht mit dem Automotive-Formfaktor
-"</string>
+• Shorts-Reihen können weiterhin Aufrufzahlen anzeigen
+• Diese Funktion funktioniert nicht mit dem Automotive-Formfaktor"</string>
   <string name="morphe_hide_web_search_results_title">Web-Suchergebnisse ausblenden</string>
   <string name="morphe_hide_web_search_results_summary">Blendet den Abschnitt „Ergebnisse aus dem Web“ aus den Suchergebnissen aus</string>
   <string name="morphe_hide_you_may_like_section_title">Bereich „Das könnte dir gefallen“ ausblenden</string>
@@ -291,9 +290,10 @@ Einschränkungen:
   <string name="morphe_hide_autoplay_preview_summary">Verbirgt die Vorschau des nächsten Videos im Vollbildmodus, bevor die automatische Wiedergabe beginnt</string>
   <string name="morphe_hide_channel_bar_title">Kanalleiste ausblenden</string>
   <string name="morphe_hide_channel_watermark_title">Kanal-Wasserzeichen ausblenden</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Kapitel und Schaltfläche \'In diesem Video\' ausblenden</string>
+  <string name="morphe_hide_chapters_button_title">Schaltfläche „Kapitel ausblenden“</string>
   <string name="morphe_hide_crowdfunding_box_title">Crowdfunding-Box ausblenden</string>
   <string name="morphe_hide_emergency_box_title">Notfall-Boxen ausblenden</string>
+  <string name="morphe_hide_in_this_video_button_title">Schaltfläche „In diesem Video“ ausblenden</string>
   <string name="morphe_hide_info_panels_title">Info-Panels ausblenden</string>
   <string name="morphe_hide_info_panels_summary">Verbirgt informative Kontextfelder, wie z. B. medizinische Informationen</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -608,6 +608,9 @@ Um das Menü anzuzeigen, ändere \"Video-Streams vortäuschen\" in einen beliebi
   <string name="morphe_feed_long_press_menu_summary">Das Tippen und Gedrückthalten irgendwo auf einem Feed-Video öffnet dessen Menü</string>
   <string name="morphe_feed_watch_later_button_title">Schaltfläche \"Später ansehen\" auf Vorschaubildern anzeigen</string>
   <string name="morphe_feed_watch_later_button_summary">Eine „Später ansehen“-Schaltfläche wird auf den Thumbnails von Feed-Videos angezeigt, mit einem Häkchen, wenn das Video gespeichert ist. Durch Tippen wird das Video gespeichert oder entfernt, und durch Tippen und Halten wird „Zur Playlist hinzufügen“ geöffnet</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Beitragsbilder im Vollbildmodus öffnen</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Durch Tippen auf ein Bild eines Beitrags wird dieses im Vollbildmodus geöffnet, anstatt im Feed des Beitrags</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Beitragsbilder herunterladen</string>
   <string name="morphe_post_image_download_summary">Neben der Teilen-Schaltfläche von Beiträgen mit Bildern oder GIFs wird eine Download-Schaltfläche angezeigt und dem Menü wird ein Download-Eintrag hinzugefügt</string>
@@ -992,6 +995,7 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_swipe_press_to_engage_title">Berührungsschutz für Gesten aktivieren</string>
   <string name="morphe_swipe_press_to_engage_summary">Erfordert Drücken und Halten, bevor eine Wischgeste erkannt wird</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptisches Feedback aktivieren</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibriert, wenn das Gedrückthalten eine Swipe-Geste auslöst</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Helligkeit speichern und wiederherstellen</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Erlaubt, dass die Helligkeit beim Wechsel in den Vollbildmodus gespeichert und beim Verlassen wiederhergestellt wird</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Geste für automatische Helligkeit aktivieren</string>
@@ -1135,6 +1139,10 @@ Um auf die Einstellungen zuzugreifen, aktiviere den Einstellungen-Button über A
   <string name="morphe_navigation_bar_glass_opacity_summary">Passt die Deckkraft der Glas-Navigationsleiste an (0 ist transparent, 100 ist undurchsichtig)</string>
   <string name="morphe_navigation_bar_glass_round_title">Abgerundete Glas-Navigationsleiste</string>
   <string name="morphe_navigation_bar_glass_round_summary">Verleiht der Glas-Navigationsleiste abgerundete Enden anstelle von Ecken wie beim Glas-Miniplayer</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Glaskante der Navigationsleiste</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Zeichnet die Lichtkante um die Glas-Navigationsleiste</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Unterer Rand der Glas-Navigationsleiste</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Passen Sie den Abstand zwischen der gläsernen Navigationsleiste und dem unteren Bildschirmrand oder der Systemnavigation an</string>
   <string name="morphe_navigation_bar_glass_size_title">Größe der Glas-Navigationsleiste</string>
   <string name="morphe_navigation_bar_glass_size_summary">Passe die Höhe, die Breite und den Schaltflächenabstand der Glas-Navigationsleiste mithilfe einer Vorschau an. Schaltflächen, die nicht in die Bildschirmbreite passen, werden ausgeblendet</string>
   <string name="morphe_navigation_bar_glass_size_height">Höhe</string>
@@ -1381,6 +1389,9 @@ Automobil-Layout
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Automatische Feed-Aktualisierung deaktivieren</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Verhindert, dass Feeds automatisch aktualisiert werden, nachdem sie veraltet sind</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Benachrichtigungen gruppieren aufheben</string>
+  <string name="morphe_ungroup_notifications_summary">Zeigt jedes Video der gruppierten Uploads eines Kanals als eigene Benachrichtigung an</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Feed-Kartenlayout</string>
   <string name="morphe_feed_card_layout_entry_1">Klassisch</string>
@@ -1493,6 +1504,8 @@ Automobil-Layout
   <string name="morphe_dearrow_titles_search_title">Suchergebnisse</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow-Symbol anzeigen</string>
   <string name="morphe_dearrow_titles_icon_summary">Zeigt das DeArrow-Symbol bei Titeln von Videos mit einem Crowdsourcing-Titel oder -Vorschaubild an. Tippe auf das Symbol, um den ursprünglichen Titel und das Vorschaubild anzuzeigen</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Titel bereinigen</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Bereinigt die Titel von Videos ohne DeArrow-Titel. Großgeschriebene Wörter werden in normale Groß-/Kleinschreibung geändert, und Emojis, ausgefallener Text sowie wiederholte Ausrufezeichen werden entfernt</string>
   <string name="morphe_dearrow_casual_mode_title">Gelegenheitsmodus</string>
   <string name="morphe_dearrow_casual_mode_summary">Zeigt den ursprünglichen Titel anstelle des DeArrow-Titels, wenn DeArrow-Benutzer abgestimmt haben, dass ihnen der ursprüngliche Titel gefällt</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Mindestanzahl an Gelegenheitsstimmen, um den Originaltitel anzuzeigen</string>

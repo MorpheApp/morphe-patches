@@ -122,8 +122,8 @@ Spremembe vključujejo:
   <string name="morphe_hide_upload_time_title">Skrij čas nalaganja</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Omejitve:
-• Poličice s kratkimi videoposnetki, strani kanalov in rezultati iskanja lahko še vedno prikazujejo čas nalaganja
-• Ne deluje s postavitvijo za avtomobilski zaslon"</string>
+• Police Shorts lahko še vedno prikazujejo čas naložbe
+• Ne deluje z avtomobilskim razreditjem"</string>
   <string name="morphe_hide_video_thumbnail_title">Skrij sličico videoposnetka</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Skrij oznake videoposnetkov</string>
@@ -131,8 +131,8 @@ Spremembe vključujejo:
   <string name="morphe_hide_view_count_title">Skrij število ogledov</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Omejitve:
-• Poličice s kratkimi videoposnetki, strani kanalov in rezultati iskanja lahko še vedno prikazujejo število ogledov
-• Ne deluje s postavitvijo za avtomobilski zaslon"</string>
+• Police Shorts lahko še vedno prikazujejo število ogledov
+• Ne deluje z avtomobilskim razreditjem"</string>
   <string name="morphe_hide_web_search_results_title">Skrij rezultate spletnega iskanja</string>
   <string name="morphe_hide_web_search_results_summary">Skrije odsek \'Rezultat iz spleta\' v rezultatih iskanja</string>
   <string name="morphe_hide_you_may_like_section_title">Skrij razdelek \'Morda vam bo všeč\'</string>
@@ -290,9 +290,10 @@ Omejitve:
   <string name="morphe_hide_autoplay_preview_summary">Skrije prihajajoči predogled videa v celozaslonskem načinu pred samodejnim predvajanjem</string>
   <string name="morphe_hide_channel_bar_title">Skrij kanalno vrstico</string>
   <string name="morphe_hide_channel_watermark_title">Skrij vodni žig kanala</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Skrij poglavja in gumb \'V tem videu\'</string>
+  <string name="morphe_hide_chapters_button_title">Skrij gumb Poglavja</string>
   <string name="morphe_hide_crowdfunding_box_title">Skrij škatlo za zbiranje sredstev</string>
   <string name="morphe_hide_emergency_box_title">Skrij reševalne oknice</string>
+  <string name="morphe_hide_in_this_video_button_title">Skrij gumb \'V tem videu\'</string>
   <string name="morphe_hide_info_panels_title">Skrij informacijske plošče</string>
   <string name="morphe_hide_info_panels_summary">Skrije informacijske plošče, kot so medicinske informacije</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Za prikaz menija 'Audio Track' spremenite 'Spoofanje video tokov' v katerega kol
   <string name="morphe_feed_long_press_menu_summary">Dotik in držanje kjerkoli na videoposnetku v viru odpre njegov meni</string>
   <string name="morphe_feed_watch_later_button_title">Prikaži gumb »Ogled kasneje« na sličicah</string>
   <string name="morphe_feed_watch_later_button_summary">Na sličicah videov v viru se prikaže gumb Glej pozneje, s kvačico, če je video shranjen. S tapkanjem ga shranite ali odstranite, z dolgim tapkanjem pa odprete Shrani v seznam predvajanja</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Odpri slike objav v polnem zaslonu</string>
+  <string name="morphe_open_post_images_fullscreen_summary">S klikom na sliko objave se ta odpre v polnem zaslonu namesto v vsodniku objav</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Prenesi slike objav</string>
   <string name="morphe_post_image_download_summary">Poleg gumba za deljenje objav s slikami ali GIF-i se prikaže gumb za prenos, v njihov meni pa se doda možnost prenosa</string>
@@ -800,6 +804,7 @@ Vaš API ključ nikoli ne smete deliti. Kdorkoli, ki ima dostop do njega, lahko 
   <string name="morphe_loop_count_clear_done">Shranjena števila ponovitev so počisčena</string>
   <string name="morphe_loop_count_flyout_name">Število ponovitev</string>
   <string name="morphe_loop_count_dialog_message">Kolikokrat se pred naslednjim videom predvo video, od %1$s do %2$s. Pustite prazno, da se video ponavlja brez omejitve.</string>
+  <string name="morphe_loop_count_times">%s krat</string>
   <string name="morphe_loop_count_no_limit">Brez omejitve</string>
   <string name="morphe_loop_count_decrease">Manj ponovitev</string>
   <string name="morphe_loop_count_increase">Več ponovitev</string>
@@ -991,6 +996,7 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_swipe_press_to_engage_title">Omogoči gesto pritiska za drsenje</string>
   <string name="morphe_swipe_press_to_engage_summary">Zahteva pritiskanje in držanje, preden je prepoznana poteza povleka.</string>
   <string name="morphe_swipe_haptic_feedback_title">Omogoči povratno vibracijo</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibrira, ko s pritiskom in držanjem zaprnete potezo povleke</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Shrani in obnovi svetlost</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Shrani raven svetlosti ob vstopu ali izstopu iz celozaslonskega načina</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Omogoči samodejno svetlost z gesto</string>
@@ -1134,6 +1140,10 @@ Za dostop do nastavitev omogočite gumb Nastavitve prek Splošno → Orodna vrst
   <string name="morphe_navigation_bar_glass_opacity_summary">Prilagodi stopnjo prozornosti steklene vrstice za navigacijo (0 je prozorno, 100 je neprozorno)</string>
   <string name="morphe_navigation_bar_glass_round_title">Zaobljena steklena navigacijska vrstica</string>
   <string name="morphe_navigation_bar_glass_round_summary">Stekleni navigacijski vrstici poda zaobljene konce namesto kotov, kot ima stekleni mini predvajalnik</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Rob steklene vrstice za navigacijo</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Nariše svetlobni rob okoli steklene vrstice za navigacijo</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Spodnji rob steklene vrstice za navigacijo</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Prilagodite razmak med stekleno vrstico za navigacijo in spodnjim robom zaslona ali sistemsko navigacijo</string>
   <string name="morphe_navigation_bar_glass_size_title">Velikost steklene navigacijske vrstice</string>
   <string name="morphe_navigation_bar_glass_size_summary">Prilagodite višino, širino in razmik gumbov steklene navigacijske vrstice s predogledom. Gumbi, ki se ne prilegajo v širino zaslona, so skriti</string>
   <string name="morphe_navigation_bar_glass_size_height">Višina</string>
@@ -1245,6 +1255,7 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <string name="morphe_autoplay_mode_entry_3">Izklop</string>
   <string name="morphe_autoplay_mix_stop_after_title">Dolžina Mixa</string>
   <string name="morphe_autoplay_mix_stop_after_summary">V načinu Avto se Mix ustavi po toliko videovih. 0 = brez omejitve</string>
+  <string name="morphe_autoplay_mix_length">Mešanica: %s videov</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: brez omejitev</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Poziv \"Nadaljujte z ogledom\"</string>
@@ -1379,6 +1390,9 @@ Razporeditev za avtomobile
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Onemogoči samodejno osveževanje virov</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Preprečuje, da se viri samodejno osvežujejo, potem ko postanejo zastareli</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Razdruži obvestila</string>
+  <string name="morphe_ungroup_notifications_summary">Vsak posamezen video iz skupine naložb kanala prikaže kot ločeno obvestilo</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Postavljanje kartic v viru</string>
   <string name="morphe_feed_card_layout_entry_1">Klasična</string>
@@ -1491,6 +1505,8 @@ Razporeditev za avtomobile
   <string name="morphe_dearrow_titles_search_title">Rezultati iskanja</string>
   <string name="morphe_dearrow_titles_icon_title">Prikaži ikono DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">V naslovih videov s crowdsourcanim naslovom ali sličico prikaže ikono DeArrow. Dotaknite se ikone za prikaz izvirnega naslova in sličice</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Počisti naslove</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Počisti naslove videov, ki nimajo naslova DeArrow. Besede z velikimi črkami se spremenijo v normalen register, emojiji, okrasno besedilo in ponavljajoči se klicaji pa so odstranjeni</string>
   <string name="morphe_dearrow_casual_mode_title">Sproščeni način</string>
   <string name="morphe_dearrow_casual_mode_summary">Prikazuje izvirni naslov namesto naslova DeArrow, če so uporabniki DeArrow glasovali, da jim je izvirni naslov všeč</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Najmanj sproščenih glasov za prikaz izvirnega naslova</string>
@@ -1830,6 +1846,7 @@ Samodejno zaznavanje se ustavi v zasebnem načinu, ko identiteta računa ni na v
   <string name="morphe_series_tracker_undo">Razveljavi</string>
   <string name="morphe_series_tracker_enable_short">Omogoči</string>
   <string name="morphe_series_tracker_new_episode">1 nova epizoda</string>
+  <string name="morphe_series_tracker_new_episodes">%s novih epizod</string>
   <string name="morphe_series_tracker_record_short">Zapiši napredek na tej napravi</string>
   <string name="morphe_series_tracker_follow_consent">"Vaše serije in napredek ostanejo na tej napravi, deljeni med računi YouTube. Nadzori zgodovine YouTube jih ne spremenijo. Napredek zbrišite iz menija Serija.
 
@@ -1863,6 +1880,7 @@ Samodejni zapis je opcijski. Ustavi se v zasebnem načinu ali ob spremembi raču
   <string name="morphe_series_tracker_episode_order">Vrstni red epizod</string>
   <string name="morphe_series_tracker_playlist_order">Vrstni red predvajalnega seznama</string>
   <string name="morphe_series_tracker_reverse_order">Obrni vrstni red predvajalnega seznama</string>
+  <string name="morphe_series_tracker_view_count">%s ogledov</string>
   <string name="morphe_series_tracker_view_count_one">%s ogled</string>
   <string name="morphe_series_tracker_completion_title">Označi epizode kot ogledane</string>
   <string name="morphe_series_tracker_completion_summary">Vsaj %1$s%% ogledano z največ 90 sekundami preostalih, ali %2$s sekund preostalih</string>

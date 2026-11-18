@@ -271,6 +271,11 @@ SABR reprodukcija (imitiranje video strimova isključeno)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Onemogući prigušivanje zvuka</string>
   <string name="morphe_music_disable_audio_ducking_summary">Jačina zvuka se neće smanjiti kada neka druga aplikacija pusti kratak zvuk, kao što je obaveštenje</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filter za lajkove u redu za čekanje</string>
+  <string name="morphe_music_queue_like_filter_summary">Uklanja pesme sa malo lajkova iz miksova i radija. Playliste, albumi i pesme koje dodate u red za čekanje ne menjaju se. Broj lajkova je preuzet iz Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum lajkova</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Pesme sa manje lajkova biće uklonjene iz reda za čekanje</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Onemogući preusmeravanje pri nesviđanju</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Sprečava preskakanje na sledeću numeru kada se pritisne dugme za nesviđanje</string>
@@ -717,8 +722,14 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Napisao: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Istakni sinhronizovane reči ili slogove.</string>
   <string name="morphe_music_lyrics_word_sync_summary">Daj prednost tekstu reč po reč kada je dostupan.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Glatko animiraj sinhronizovane reči</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Ističe svaku reč nežnim prelazom, sjajem i blagim podizanjem dok se peva. Isključite da biste uštedeli bateriju ili za oštrije prikazivanje na sporijim uređajima</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Koristi spring skrolovanje</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Skroluje tekst pesme pomoću spring fizike i pomera svaki stih malo nakon onog iznad njega. Isključite kako biste uštedeli bateriju na sporijim uređajima</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Opušteno skrolovanje</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Usporava animaciju skrolovanja teksta pesme i zadržava neaktivne redove u punoj veličini</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Zamući neaktivne redove</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Blago zamući svaki red koji se trenutno ne peva, što je izraženije što je red dalje (Android 12 i noviji). Pre verzije Android 12, neaktivni redovi ostaju oštri</string>
   <string name="morphe_music_lyrics_gap_dots_title">Prikaži tačke instrumentalne pauze</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Prikazuje tri tačke između stihova tokom duge instrumentalne pauze, koje se pune kako pauza odmiče</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Jače zatamni udaljene stihove</string>
@@ -841,6 +852,8 @@ Tekstovi pesama dolaze od usluga trećih strana koje nisu povezane s Morphe-om, 
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Pomera prevod iznad stihova; čitanje i romanizacija ostaju ispod</string>
   <string name="morphe_music_lyrics_force_center_title">Uvek centriraj tekstove</string>
   <string name="morphe_music_lyrics_force_center_summary">UKLJUČENO stavlja svaki red u sredinu i ignoriše poravnanje izvora, uključujući strane dueta; ISKLJUČENO zadržava poravnanje koje tekstovi traže</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Poravnanje dueta na suprotne strane</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Postavlja drugog pevača na suprotnu ivicu kod pesama u duetu. Isključite da bi oba pevača ostala na istoj strani</string>
   <string name="morphe_music_lyrics_providers_keep_one">Barem jedan provajder mora ostati uključen</string>
   <string name="morphe_music_lyrics_translation_provider_title">Prevod</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizacija ili transliteracija</string>

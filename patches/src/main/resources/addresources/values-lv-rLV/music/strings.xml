@@ -271,6 +271,11 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Aizliegt audio dzīmēlēšanu</string>
   <string name="morphe_music_disable_audio_ducking_summary">Skaļums netiek samazināts, kad cita lietotne atskaņo īsu skaņu, piemēram, paziņojumu</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Rindas patikaču filtrs</string>
+  <string name="morphe_music_queue_like_filter_summary">No miksējumiem un radio tiekdzēstas dziesmas ar mazu patikaču skaitu. Saraksti, albumi un dziesmas, ko pievienojat rindai, netiek mainīti. Patikaču skaits tiek ņemts no Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimālais patikaču skaits</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Dziesmas ar mazāku patikaču skaitu tiek izdzēstas no rindas</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Atspējot novirzīšanu pēc \"Nepatīk\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Novērš pāreju uz nākamo treku, kad tiek nospiesta poga \"Nepatīk\"</string>
@@ -717,8 +722,14 @@ Obligātie sīkfaili: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Rakstījis: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Izcelt sinhronizētos vārdus vai zilbes</string>
   <string name="morphe_music_lyrics_word_sync_summary">Priekšroka tiek dota tekstiem vārds pa vārdam, ja tie ir pieejami. Ja tekstam ir vārdu laiki, katrs vārds vai zilbe tiek izcelta atbilstoši mūzikai</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Gluds sinhronizēto vārdu animēšana</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Izceļ katru vārdu ar mīkstu pāreju, mirdzēšanu un nelielu pacelšanu dziesmā. Izslēdziet, lai ietaupītu akumulatora uzlādi vai lai nodrošinātu precīzāku attēlošanu lēnakās ierīcēs</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Izmantot pildeņu skrollēšanu</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Skrollē dziesmas tekstu, izmantojot pildeņu fiziku, un katru rindu novaida nedaudz aiz tās, kas atrodas augšā. Izslēdziet, lai taupītu akumulatoru lēnpārāk ierīcēs</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Relaksēta ritināšana</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">组成Lēno vārdu ritināšanas animāciju un saglabā neaktīvo rindu pilno izmēru</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Izplūrināt neaktīvas rindas</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Maigi izplūrina katru rindu, kas pašlaik netiek dzīdzāta, jo tālāk tā ir, jo vairāk (Android 12 un jaunākās versijas). Pirms Android 12 neaktīvas rindas paliek skaidras</string>
   <string name="morphe_music_lyrics_gap_dots_title">Rādīt instrumentālo pauzes punktus</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Rāda trīs punktus starp rindām garas instrumentālas pauzes laikā, kas piepilda, kad pauze beidzas</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Vairāk aptumšināt tālākās rindas</string>
@@ -841,6 +852,8 @@ Dziesmu teksti nāk no trešo pušu pakalpojumiem, kas nav saistīti ar Morphe, 
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Sūna tulkojamu augšai virs dziesmas teksta; lasīšanas veids un romanizācija paliek apakšā</string>
   <string name="morphe_music_lyrics_force_center_title">Vienmēr centrēt dziesmu tekstus</string>
   <string name="morphe_music_lyrics_force_center_summary">IESLĒGTS novieto katru rindu vidū un ignorē avota izlīdzinājumu, ieskaitot dueta puses; IZSLĒGTS saglabā dziesmu tekstiem pieprasīto izlīdzinājumu</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Pretsētes dueta izlīzinājums</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Dueta dziesmās novieto otro dziedātāju pretējā malā. Izslēdziet, lai abu dziedātāju atstātu vienā pusē</string>
   <string name="morphe_music_lyrics_providers_keep_one">Jāatliek vismaz viens pakalpojumu sniedzējs</string>
   <string name="morphe_music_lyrics_translation_provider_title">Tulkojums</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizācija vai transliterācija</string>

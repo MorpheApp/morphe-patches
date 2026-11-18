@@ -122,7 +122,7 @@ Breytingar fela í sér:
   <string name="morphe_hide_upload_time_title">Fela upphleðslutíma myndskeiðs</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Takmarkanir:
-• Stuttar myndaraðir, rásasíður og leitarniðurstöður geta enn sýnt upphleðslutíma
+• Shorts-hillur geta enn sýnt upphleðslutíma
 • Virkar ekki með bílaútliti"</string>
   <string name="morphe_hide_video_thumbnail_title">Fela smámynd myndskeiðs</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Breytingar fela í sér:
   <string name="morphe_hide_view_count_title">Fela skoðunartölu</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Takmarkanir:
-• Stuttar myndaraðir, rásasíður og leitarniðurstöður geta enn sýnt fjölda áhorfa
+• Shorts-hillur geta enn sýnt fjölda áhorfa
 • Virkar ekki með bílaútliti"</string>
   <string name="morphe_hide_web_search_results_title">Fela niðurstöður vefleitar</string>
   <string name="morphe_hide_web_search_results_summary">Felur hlutann \'Niðurstöður af vefnum\' í leitarniðurstöðum</string>
@@ -290,9 +290,10 @@ Takmörk:
   <string name="morphe_hide_autoplay_preview_summary">Felur forskoðun næsta myndskeiðs í fullskjá áður en sjálfvirk spilun hefst</string>
   <string name="morphe_hide_channel_bar_title">Fela rásarstiku</string>
   <string name="morphe_hide_channel_watermark_title">Fela rásarvatnsmerkið</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Fela Kafla- og \'Í þessu myndskeiði\'-hnappinn</string>
+  <string name="morphe_hide_chapters_button_title">Fela Kafla hnappinn</string>
   <string name="morphe_hide_crowdfunding_box_title">Fela fjáröflunarkassa</string>
   <string name="morphe_hide_emergency_box_title">Fela neyðarkassa</string>
+  <string name="morphe_hide_in_this_video_button_title">Fela hnappinn \'Í þessu myndbandi\'</string>
   <string name="morphe_hide_info_panels_title">Fela upplýsingaspjöld</string>
   <string name="morphe_hide_info_panels_summary">Felur upplýsingaspjöld með samhengi, til dæmis læknisupplýsingar</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Til að sýna valmyndina 'Hljóðrás', breyttu 'Falsa myndstrauma' í hvaða bi
   <string name="morphe_feed_long_press_menu_summary">Að ýta lengi hvar sem er á myndskeiði í straumi opnar valmynd þess</string>
   <string name="morphe_feed_watch_later_button_title">Sýna hnappinn Horfa síðar á smámyndum</string>
   <string name="morphe_feed_watch_later_button_summary">Hnappurinn \"Horfa síðar\" er sýndur á smámyndum myndbanda í straumnum, með hakmerki ef myndbandið er vistað. Með því að smella á hann er myndbandið vistað eða fjarlægt, og með því að halda á honum opnast \"Vista í spilunalista\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Opna myndir í færslum í fullskjá</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Með því að smella á mynd í færslu opnast hún í fullskjá í stað þess að vera í feed-inu</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Sækja myndir úr færslum</string>
   <string name="morphe_post_image_download_summary">Hnappur til niðurhals birtist við hliðina á deilihnappnum á færslum með myndum eða GIF-um, og niðurhalsatriði er bætt við valmynd þeirra</string>
@@ -992,6 +996,7 @@ Til að laga þetta skaltu kveikja á 'Falsa myndstrauma' og breyta 'Sjálfgefin
   <string name="morphe_swipe_press_to_engage_title">Virkja þrýstingsbendingu fyrir sveip</string>
   <string name="morphe_swipe_press_to_engage_summary">Krefst þess að ýtt sé og haldið inni áður en sveipbending er þekkt</string>
   <string name="morphe_swipe_haptic_feedback_title">Virkja titringsviðbrögð</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Títlar þegar það er ýtt og haldið til að hefja sveifjugestur</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Vista og endurheimta birtu</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Man birtustig þegar farið er í eða úr fullskjá</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Virkja sjálfvirka birtubendingu</string>
@@ -1135,6 +1140,10 @@ Til að opna stillingar skaltu virkja stillingahnappinn undir Almennt → Tækja
   <string name="morphe_navigation_bar_glass_opacity_summary">Stilltu gegnsæi glerleiðsögustikunnar (0 er gegnsætt, 100 er ógegnsætt)</string>
   <string name="morphe_navigation_bar_glass_round_title">Hringlaga glerleiðsögustika</string>
   <string name="morphe_navigation_bar_glass_round_summary">Gefur glerleiðsögustikunni hringlaga enda í stað hornanna eins og á gler-lítla spilaranum</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Jaðar línur glerleiðsögustikunnar</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Teiknar ljósan jaða í kringum glerleiðsögustikuna</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Neðra mörk glerleiðsögustikunnar</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Stilltu bilið á milli glerstangar stýrinnar og botns skjárins eða kerfisstýrinnar</string>
   <string name="morphe_navigation_bar_glass_size_title">Stærð glerleiðsögustikunnar</string>
   <string name="morphe_navigation_bar_glass_size_summary">Stilltu hæð, breidd og hnappabil glerleiðsögustikunnar með forskoðun. Hnappar sem komast ekki fyrir í breidd skjásins eru faldir</string>
   <string name="morphe_navigation_bar_glass_size_height">Hæð</string>
@@ -1381,6 +1390,9 @@ Bílaútlit
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Slökkva á sjálfvirkri endurnýjun strauma</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Kemur í veg fyrir að straumar endurnýjist sjálfkrafa eftir að þeir eru orðnir úreltir.</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Útfæra tilkynningar</string>
+  <string name="morphe_ungroup_notifications_summary">Sýnir hvert myndband í hópsendnum rásar sem sérstaka tilkynningu</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Útlit flæðiskorta</string>
   <string name="morphe_feed_card_layout_entry_1">Klassískt</string>
@@ -1493,6 +1505,8 @@ Bílaútlit
   <string name="morphe_dearrow_titles_search_title">Leitarniðurstöður</string>
   <string name="morphe_dearrow_titles_icon_title">Sýna DeArrow-táknið</string>
   <string name="morphe_dearrow_titles_icon_summary">Sýnir DeArrow tákninu á titlum myndbanda með titla eða þumblínustelu sem safnað er með almenningi. Ýttu á táknið til að sýna upprunalegan titla og þumblínu</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Hreinsa titla</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Hreinsar titla myndbanda sem hafa ekki DeArrow titla. Orð í hástöfum eru breytt í venjulega stafi og emojis, skreyttum texta og endurteknu útropamerkjum er fjarlægð</string>
   <string name="morphe_dearrow_casual_mode_title">Hversdagshamur</string>
   <string name="morphe_dearrow_casual_mode_summary">Sýnir upprunalegan titil í stað DeArrow-titils ef DeArrow-notendur hafa kosið að þeim líki upprunalegi titillinn</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Lágmarksfjöldi hversdagsatkvæða til að sýna upprunalegan titil</string>

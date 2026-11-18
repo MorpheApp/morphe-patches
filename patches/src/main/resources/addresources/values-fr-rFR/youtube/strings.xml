@@ -122,7 +122,7 @@ Les changements incluent :
   <string name="morphe_hide_upload_time_title">Masquer l\'heure de mise en ligne</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Limitations :
-• Les étagères Shorts, les pages de chaîne et les résultats de recherche peuvent toujours afficher les dates de mise en ligne
+• Les étagères Shorts peuvent toujours afficher les dates de mise en ligne
 • Ne fonctionne pas avec la mise en page pour automobile"</string>
   <string name="morphe_hide_video_thumbnail_title">Masquer la miniature de la vidéo</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Les changements incluent :
   <string name="morphe_hide_view_count_title">Masquer le nombre de vues</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Limitations :
-• Les étagères Shorts, les pages de chaîne et les résultats de recherche peuvent toujours afficher le nombre de vues
+• Les étagères Shorts peuvent toujours afficher le nombre de vues
 • Ne fonctionne pas avec la mise en page pour automobile"</string>
   <string name="morphe_hide_web_search_results_title">Masquer les résultats web</string>
   <string name="morphe_hide_web_search_results_summary">Masque la section \'Résultat du web\' des résultats de recherche</string>
@@ -290,9 +290,10 @@ Limitations :
   <string name="morphe_hide_autoplay_preview_summary">Masque l\'aperçu de la vidéo à venir en plein écran avant le lancement de la lecture automatique</string>
   <string name="morphe_hide_channel_bar_title">Masquer la barre de chaîne </string>
   <string name="morphe_hide_channel_watermark_title">Masquer le filigrane de la chaîne</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Masquer les Chapitres et le bouton \'Dans cette vidéo\'</string>
+  <string name="morphe_hide_chapters_button_title">Masquer le bouton \'Chapitres\'</string>
   <string name="morphe_hide_crowdfunding_box_title">Masquer la boîte de collecte de fonds</string>
   <string name="morphe_hide_emergency_box_title">Masquer les boîtes d\'urgence</string>
+  <string name="morphe_hide_in_this_video_button_title">Masquer le bouton \'Dans cette vidéo\'</string>
   <string name="morphe_hide_info_panels_title">Masquer les panneaux d\'informations</string>
   <string name="morphe_hide_info_panels_summary">Masque les panneaux d\'informations contextuelles, tels que les informations médicales</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <string name="morphe_feed_long_press_menu_summary">Appuyer longuement n\'importe où sur une vidéo du flux ouvre son menu</string>
   <string name="morphe_feed_watch_later_button_title">Afficher le bouton \'À regarder plus tard\' sur les miniatures</string>
   <string name="morphe_feed_watch_later_button_summary">Un bouton \'À regarder plus tard\' s\'affiche sur les miniatures des vidéos du flux, avec une coche si la vidéo a été enregistrée. Appuyez dessus pour enregistrer ou supprimer la vidéo. Appuyez longuement pour ouvrir \'Enregistrer dans une playlist\'</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Ouvrir les images des posts en plein écran</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Appuyer sur une image d\'un post l\'ouvre en plein écran au lieu du flux des posts</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Télécharger les images des posts</string>
   <string name="morphe_post_image_download_summary">Un bouton de téléchargement s\'affiche à côté du bouton \'Partager\' pour les posts contenant des images ou des GIF, et un élément de téléchargement est ajoutée à leur menu</string>
@@ -992,6 +996,7 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_swipe_press_to_engage_title">Activer les gestes de balayage</string>
   <string name="morphe_swipe_press_to_engage_summary">Nécessite un appui long avant que le geste de balayage ne soit pris en compte</string>
   <string name="morphe_swipe_haptic_feedback_title">Activer le retour haptique</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibre lorsqu\'un appui long déclenche un geste de balayage</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Enregistrer et restaurer la luminosité</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Mémorise le niveau de luminosité lors de l\'entrée ou de la sortie du mode plein écran</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Activer le geste de luminosité automatique</string>
@@ -1135,6 +1140,10 @@ Pour accéder aux Paramètres, activez le bouton 'Paramètres' via 'Général' �
   <string name="morphe_navigation_bar_glass_opacity_summary">Ajustez le niveau de transparence de la barre de navigation en verre (0 est transparent, 100 est opaque)</string>
   <string name="morphe_navigation_bar_glass_round_title">Barre de navigation en verre arrondie</string>
   <string name="morphe_navigation_bar_glass_round_summary">Donne à la barre de navigation en verre des extrémités arrondies, au lieu d\'avoir des coins comme le mini-lecteur en verre</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Bordure de la barre de navigation en verre</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Dessine le bord lumineux autour de la barre de navigation en verre</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Marge inférieure de la barre de navigation en verre</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Ajuster l\'espace entre la barre de navigation en verre et le bas de l\'écran ou la navigation système</string>
   <string name="morphe_navigation_bar_glass_size_title">Taille de la barre de navigation en verre</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajustez la hauteur, la largeur et l\'espacement des boutons de la barre de navigation en verre, avec un aperçu. Les boutons qui ne tiennent pas dans la largeur de l\'écran sont masqués</string>
   <string name="morphe_navigation_bar_glass_size_height">Hauteur</string>
@@ -1382,6 +1391,9 @@ Mise en page pour automobile
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Désactiver l\'actualisation automatique du flux</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Empêche les flux de s\'actualiser automatiquement après être devenus obsolètes</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Dégrouper les notifications</string>
+  <string name="morphe_ungroup_notifications_summary">Affiche chaque vidéo des mises en ligne groupées d\'une chaîne comme sa propre notification</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Mise en page des cartes du flux</string>
   <string name="morphe_feed_card_layout_entry_1">Classique</string>
@@ -1494,6 +1506,8 @@ Mise en page pour automobile
   <string name="morphe_dearrow_titles_search_title">Résultats de recherche</string>
   <string name="morphe_dearrow_titles_icon_title">Afficher l\'icône DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Affiche l\'icône DeArrow sur les titres des vidéos dont le titre ou la miniature a été proposés par la communauté. Appuyez sur l\'icône pour afficher le titre et la miniature d\'origine</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Nettoyer les titres</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Nettoie les titres des vidéos sans titre DeArrow. Les mots en majuscules sont convertis en casse normale, et les emojis, le texte fantaisie ainsi que les points d\'exclamation répétés sont supprimés</string>
   <string name="morphe_dearrow_casual_mode_title">Mode décontracté</string>
   <string name="morphe_dearrow_casual_mode_summary">Affiche le titre d\'origine à la place du titre DeArrow si les utilisateurs de DeArrow ont voté en faveur du titre d\'origine</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Nombre minimum de votes en mode décontracté pour afficher le titre d\'origine</string>

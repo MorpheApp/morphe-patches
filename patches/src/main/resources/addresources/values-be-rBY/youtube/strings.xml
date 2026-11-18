@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Схаваць час загрузкі</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Абмежаванні:
-• Паліцы Shorts, старонкі каналаў і вынікі пошуку ўсё яшчэ могуць паказваць час загрузкі
-• Не працуе з аўтамабільным размяшчэннем"</string>
+• На паліцах Shorts усё якое могуць быць паказаны часы загрузкі
+• Не працуе з аўтамабільным інтэрфейсам"</string>
   <string name="morphe_hide_video_thumbnail_title">Схаваць мініятуру відэа</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Схаваць пазнакі відэа</string>
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Схаваць колькасць праглядаў</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Абмежаванні:
-• У паліцах Shorts, на старонках каналаў і ў выніках пошуку ўсё яшчэ могуць паказвацца колькасці праглядаў
+• На паліцах Shorts усё якое могуць быць паказаны колькасці праглядаў
 • Не працуе з аўтамабільным інтэрфейсам"</string>
   <string name="morphe_hide_web_search_results_title">Схаваць вынікі пошуку ў вебе</string>
   <string name="morphe_hide_web_search_results_summary">Схаваць раздзел \"Вынікі з інтэрнэту\" з вынікаў пошуку</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Хавае папярэдні прагляд наступнага відэа на ўвесь экран перад пачатком аўтазапуску</string>
   <string name="morphe_hide_channel_bar_title">Схаваць панэль канала</string>
   <string name="morphe_hide_channel_watermark_title">Схаваць вадзяны знак канала</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Схаваць раздзелы і кнопку «У гэтым відэа»</string>
+  <string name="morphe_hide_chapters_button_title">Схаваць кнопку \"Раздзялы\"</string>
   <string name="morphe_hide_crowdfunding_box_title">Схаваць блок краўдфандынгу</string>
   <string name="morphe_hide_emergency_box_title">Схаваць паведамленні аб надзвычайных сітуацыях</string>
+  <string name="morphe_hide_in_this_video_button_title">Схаваць кнопку \"У гэтым відэа\"</string>
   <string name="morphe_hide_info_panels_title">Схаваць інфармацыйныя панэлі</string>
   <string name="morphe_hide_info_panels_summary">Хавае інфармацыйныя кантэкстныя панэлі, такія як медыцынская інфармацыя</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Доўгае націсканне ў любым месці відэа ў стужцы адкрывае яго меню</string>
   <string name="morphe_feed_watch_later_button_title">Паказваць кнопку \"Глядзець пазней\" на мініятурах</string>
   <string name="morphe_feed_watch_later_button_summary">Кнопка \"Глядзець пазней\" паказваецца на мініятурах відэа ў стужцы, з адзнакай праверкі, калі відэа захавана. Націскане на яе захоўвае або выдаляе відэа, а націсканне і ўтрыманне адкрывае \"Захаваць у плэйліст\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Адкрываць выявы пастоў на ўвесь экран</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Націсканне на выяву паста адкрывае яе на ўвесь экран замест стрычкі пастоў</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Спампаваць выявы з паста</string>
   <string name="morphe_post_image_download_summary">Кнопка спампаваць паказваецца побач з кнопкай «Падзяліцца» ў пастах з выявамі або GIF-анімацыямі, а ў іх меню дадаецца пункт спампаваць</string>
@@ -992,6 +996,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Уключаць жэст «націсніць і правесці»</string>
   <string name="morphe_swipe_press_to_engage_summary">Патрабуецца націсканне і ўтрыманне перад тым, як будзе распазнаны жэст прагортвання</string>
   <string name="morphe_swipe_haptic_feedback_title">Уключаць тактыльны водгук</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Вібрацыя пры націсканні і ўтрыманні для пачатку жэсту прагарткі</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Захаваць і аднавіць яркасць</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Запамінае ўзровень яркасці пры ўваходзе / выхадзе з паўнаэкраннага рэжыму</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Уключыць жэст аўтаяркасці</string>
@@ -1135,6 +1140,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Рэгулюе ўзровень празрыстасці шклянай панэлі навігацыі (0 — празрысты, 100 — непразрысты)</string>
   <string name="morphe_navigation_bar_glass_round_title">Шкляная панэль навігацыі з закругленнем</string>
   <string name="morphe_navigation_bar_glass_round_summary">Надае шклянай панэлі навігацыі закругленыя канцы замест кутоў, як у шкляным мініплэеры</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Края шклянай панэлі навігацыі</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Малюе святловы край вакол шклянай панэлі навігацыі</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Ніжні адступ шклянай панэлі навігацыі</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Наладзіце адлегласць паміж шклом панэлі навігацыі і ніжняй часткай экрана або сістэмнай навігацыяй</string>
   <string name="morphe_navigation_bar_glass_size_title">Памер шклянай панэлі навігацыі</string>
   <string name="morphe_navigation_bar_glass_size_summary">Рэгулюйце вышыню, шырыню і інтэрвал паміж кнопкамі шклянай панэлі навігацыі з папярэднім праглядам. Кнопкі, якія не ўмяшчаюцца ў шырыню экрана, схаваныя</string>
   <string name="morphe_navigation_bar_glass_size_height">Вышыня</string>
@@ -1381,6 +1390,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Адключыць аўтаматычнае абнаўленне стужкі</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Запабігае аўтаматычнаму абнаўленню стужак пасля таго, як яны састарэюць</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Разгрупаваць паведамленні</string>
+  <string name="morphe_ungroup_notifications_summary">Паказваць кожнае відэа з згрупаваных загрузак канала як асобнае паведамленне</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Раскладка карток стужкі</string>
   <string name="morphe_feed_card_layout_entry_1">Класічная</string>
@@ -1493,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Вынікі пошуку</string>
   <string name="morphe_dearrow_titles_icon_title">Паказваць іконку DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Паказвае значок DeArrow у загалоўках відэа з калектыўнымі загалоўкамі або мініятурамі. Націсніце на значок, каб паказаць арыгінальны загаловак і мініятуру</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Ачысціць загалоўкі</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Ачышчае загалоўкі відэа, якія не маюць загалоўка DeArrow. Слова ў верхнім рэгістры змяняюцца на звычайны, а эмодзі, дэкаратыўны тэкст і паўторныя клічнія знакі выдаляюцца</string>
   <string name="morphe_dearrow_casual_mode_title">Нефармальны рэжым</string>
   <string name="morphe_dearrow_casual_mode_summary">Паказвае арыгінальны загаловак замест загалоўка DeArrow, калі карыстальнікі DeArrow прагаласавалі, што ім падабаецца арыгінальны загаловак</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Мінімальная колькасць \"нефармальных\" галасаў для паказу арыгінальнага загалоўка</string>

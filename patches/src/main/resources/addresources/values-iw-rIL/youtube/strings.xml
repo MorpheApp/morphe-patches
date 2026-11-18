@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">הסתר זמן העלאה</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"הגבלות:
-• מדפי Shorts, דפי ערוץ ותוצאות חיפוש עדיין עשויים להציג זמני העלאה
-• לא עובד עם פריסות לרכב"</string>
+• מדפי Shorts עדיין עשויים להציג זמני העלאה
+• אינו פועל עם פריסת רכב"</string>
   <string name="morphe_hide_video_thumbnail_title">הסתר תמונה ממוזערת של סרטון</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">הסתר תוויות וידאו</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">הסתר ספירת צפיות</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"מגבלות:
-• מדפי Shorts, דפי ערוצים ותוצאות חיפוש עשויים עדיין להציג ספירות צפיות
-• תכונה זו אינה פועלת עם גורם צורה לרכב"</string>
+• מדפי Shorts עשויים עדיין להציג ספירות צפיות
+• אינו פועל עם פריסה לרכב"</string>
   <string name="morphe_hide_web_search_results_title">הסתר תוצאות חיפוש באינטרנט</string>
   <string name="morphe_hide_web_search_results_summary">מסתיר את הסעיף \'תוצאה מהאינטרנט\' מתוצאות החיפוש</string>
   <string name="morphe_hide_you_may_like_section_title">הסתר את \"אולי תהנה\"</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">מסתיר את התצוגה המקדימה של הסרטון הבא במצב מסך מלא לפני שההפעלה האוטומטית מתחילה</string>
   <string name="morphe_hide_channel_bar_title">הסתר סרגל ערוץ</string>
   <string name="morphe_hide_channel_watermark_title">הסתר סימן מים של ערוץ</string>
-  <string name="morphe_hide_chapters_timeline_button_title">הסתר פרקים וכפתור \'בסרטון זה\'</string>
+  <string name="morphe_hide_chapters_button_title">הסתר לחצן פרקים</string>
   <string name="morphe_hide_crowdfunding_box_title">הסתר תיבת מימון המונים</string>
   <string name="morphe_hide_emergency_box_title">הסתר תיבות חירום</string>
+  <string name="morphe_hide_in_this_video_button_title">הסתר את לחצן \'בסרטון זה\'</string>
   <string name="morphe_hide_info_panels_title">הסתר לוחות מידע</string>
   <string name="morphe_hide_info_panels_summary">מסתיר לוחות מידע, כגון מידע רפואי</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">הקשה והחזקה בכל מקום על סרטון בפיד פותחת את התפריט שלו</string>
   <string name="morphe_feed_watch_later_button_title">הצג כפתור \'צפייה מאוחרת\' בתמונות ממוזערות</string>
   <string name="morphe_feed_watch_later_button_summary">לחצן \"צפייה מאוחר יותר\" מופיע על התמונות הממוזערות של סרטוני הפיד, עם סימן וי אם הסרטון נשמר. לחיצה עליו שומרת או מסירה את הסרטון, ולחיצה ארוכה פותחת את \"שמירה לרשימת השמעה\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">פתח תמונות פוסט במסך מלא</string>
+  <string name="morphe_open_post_images_fullscreen_summary">הקשה על תמונה של פוסט תפתח אותה במסך מלא, במקום בפיד של הפוסטים</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">הורדת תמונות פוסט</string>
   <string name="morphe_post_image_download_summary">כפתור הורדה מוצג לצד כפתור השיתוף של פוסטים עם תמונות או GIF, ופריט הורדה מתווסף לתפריט שלהם</string>
@@ -800,6 +804,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_count_clear_done">מספרי לולאות שמורים נוקו</string>
   <string name="morphe_loop_count_flyout_name">מספר לולאות</string>
   <string name="morphe_loop_count_dialog_message">כמה פעמים הסרטון יתנגן לפני הסרטון הבא, מ-%1$s עד %2$s. השאר ריק כדי להפעיל את הסרטון בלולאה ללא הגבלה.</string>
+  <string name="morphe_loop_count_times">%s פעמים</string>
   <string name="morphe_loop_count_no_limit">ללא הגבלה</string>
   <string name="morphe_loop_count_decrease">פחות פעמים</string>
   <string name="morphe_loop_count_increase">יותר פעמים</string>
@@ -991,6 +996,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">הפעל מחוות לחץ כדי להחליק</string>
   <string name="morphe_swipe_press_to_engage_summary">נדרשת לחיצה והחזקה לפני שמחוות החלקה מזוהה</string>
   <string name="morphe_swipe_haptic_feedback_title">הפעל משוב ברטט</string>
+  <string name="morphe_swipe_haptic_feedback_summary">רוטט כאשר לחיצה ארוכה מתחילה מחוות החלקה</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">שמור ושחזר בהירות</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">זוכר את רמת הבהירות בעת כניסה או יציאה ממצב מסך מלא</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">הפעל מחוות בהירות אוטומטית</string>
@@ -1134,6 +1140,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">כוונן את רמת השקיפות של שורת הניווט מזכוכית (0 הוא שקוף, 100 הוא אטום)</string>
   <string name="morphe_navigation_bar_glass_round_title">סרגל ניווט זכוכית מעוגל</string>
   <string name="morphe_navigation_bar_glass_round_summary">מעניק לסרגל ניווט הזכוכית קצוות מעוגלים, במקום פינות כמו במינינגן הזכוכית</string>
+  <string name="morphe_navigation_bar_glass_edge_title">קצה זכוכית של סרגל הניווט</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">מצייר קצה מואר סביב סרגל הניווט מזכוכית</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">שוליים תחתונים של סרגל ניווט מזכוכית</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">התאם את המרווח בין סרגל הניווט השקוף לבין תחתית המסך או ניווט המערכת</string>
   <string name="morphe_navigation_bar_glass_size_title">גודל סרגל ניווט מזכוכית</string>
   <string name="morphe_navigation_bar_glass_size_summary">התאמת הגובה, הרוחב ומרווח הכפתורים של סרגל הניווט מזכוכית, עם תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים</string>
   <string name="morphe_navigation_bar_glass_size_height">גובה</string>
@@ -1245,6 +1255,7 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mode_entry_3">כבוי</string>
   <string name="morphe_autoplay_mix_stop_after_title">אורך ה-Mix</string>
   <string name="morphe_autoplay_mix_stop_after_summary">במצב אוטומטי, Mix נעצר לאחר מספר זה של סרטונים. 0 = ללא הגבלה</string>
+  <string name="morphe_autoplay_mix_length">מיקס: %s סרטונים</string>
   <string name="morphe_autoplay_mix_no_limit">מיקס: ללא הגבלה</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">הודעת \"המשך לצפות\"</string>
@@ -1379,6 +1390,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">השבת רענון אוטומטי של פידים</string>
   <string name="morphe_disable_auto_feed_refresh_summary">מונע מהפידים להתרענן אוטומטית לאחר שהם מתיישנים</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">ביטול קיבוץ התראות</string>
+  <string name="morphe_ungroup_notifications_summary">מציג כל סרטון מהעלאות מקובצות של ערוץ כהתראה נפרדת</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">פריסת כרטיסים בפיד</string>
   <string name="morphe_feed_card_layout_entry_1">קלאסי</string>
@@ -1491,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">תוצאות חיפוש</string>
   <string name="morphe_dearrow_titles_icon_title">הצג סמל DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">מציג את סמל ה-DeArrow בכותרות של סרטונים עם כותרת או תמונה ממוזמנת על ידי הקהילה. הקש על הסמל כדי להציג את הכותרת והתמונה המקוריות</string>
+  <string name="morphe_dearrow_clean_up_titles_title">ניקוי כותרות</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">מנקה את כותרות הסרטונים שאין להם כותרת DeArrow. מילים באותיות גדולות שונו למקרה רגיל, ואימוג\'ים, טקסט מעוצב וסימני קריאה חוזרים הוסרו</string>
   <string name="morphe_dearrow_casual_mode_title">מצב קז\'ואל</string>
   <string name="morphe_dearrow_casual_mode_summary">מציג את הכותרת המקורית במקום כותרת DeArrow אם משתמשי DeArrow הצביעו שהם אוהבים את הכותרת המקורית</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">מינימום הצבעות קז\'ואל להצגת הכותרת המקורית</string>
@@ -1830,6 +1846,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">בטל</string>
   <string name="morphe_series_tracker_enable_short">הפעל</string>
   <string name="morphe_series_tracker_new_episode">1 פרק חדש</string>
+  <string name="morphe_series_tracker_new_episodes">%s פרקים חדשים</string>
   <string name="morphe_series_tracker_record_short">תעד התקדמות במכשיר זה</string>
   <string name="morphe_series_tracker_follow_consent">"הסדרות שלך וההתקדמות נשארות במכשיר זה, ומשותפות בין חשבונות של YouTube. בקרות היסטוריית YouTube אינן משנות אותן. נקה התקדמות מהתפריט של הסדרה.
 
@@ -1863,6 +1880,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_episode_order">סדר פרקים</string>
   <string name="morphe_series_tracker_playlist_order">סדר רשימת השמעה</string>
   <string name="morphe_series_tracker_reverse_order">הפוך את סדר רשימת ההשמעה</string>
+  <string name="morphe_series_tracker_view_count">%s צפיות</string>
   <string name="morphe_series_tracker_view_count_one">%s צפייה</string>
   <string name="morphe_series_tracker_completion_title">סמן פרקים כנצפים</string>
   <string name="morphe_series_tracker_completion_summary">לפחות %1$s%% צפייה עם לכל היותר 90 שניות שנותרו, או %2$s שניות שנותרו</string>

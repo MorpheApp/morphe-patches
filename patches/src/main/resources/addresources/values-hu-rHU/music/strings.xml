@@ -271,6 +271,11 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Audio ducking letiltása</string>
   <string name="morphe_music_disable_audio_ducking_summary">A hangerő nem csökken, amikor egy másik alkalmazás rövid hangot, például értesítést játszik le</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Sor sorrend likes szűrés</string>
+  <string name="morphe_music_queue_like_filter_summary">Eltávolítja a kevés like-kel rendelkező dalokat a mixekből és a rádióból. A sorba tett lejátszólisták, albumok és dalok nem változnak. A like-számok a Return YouTube Dislike adataiból származnak</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum like-szám</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">A kisebb like-számmal rendelkező dalok eltávolítást erfolgen a sorból</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">A nemtetszés-átirányítás letiltása</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Megakadályozza, hogy a nemtetszés gomb megnyomása esetén a következő számra ugorjon</string>
@@ -717,8 +722,14 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Szerző: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Szinkronizált szavak vagy szótagok kiemelése</string>
   <string name="morphe_music_lyrics_word_sync_summary">Előnyben részesíti a szavankénti dalszövegeket, ha elérhetők. Ha a dalszöveg szószintű időzítést tartalmaz, a zene ütemére emeli ki az egyes szavakat vagy szótagokat.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">A szinkronizált szavak sima animálása</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Lágy átmenettel, ragyogással és egy kisebb megemelkedéssel emeli ki each szót az éneklés közben. Kapcsolja ki az akkumulátor kímélése érdekében, vagy a lassabb eszközökön a határozottabb megjelenítéshez</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Rugós görgetés használata</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Rugós fizikával görgeti a dalszöveget, és minden sort egy kicsivel eltolja a felette lévővel szemben. Kapcsolja ki a lassabb eszközökön az akkumulátor kímélése érdekében</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Lax görgetés</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Lelassítja a dalszöveg görgetési animációját, és az inaktív sorokat teljes méretben tartja</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Inaktív sorok elmosítása</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Enyhén elmosítja azokat a sorokat, amelyeket éppen nem éneklik, távolabb egyre erősebben (Android 12 és újabb). Android 12 előtt az inaktív sorok élesek maradnak</string>
   <string name="morphe_music_lyrics_gap_dots_title">Instrumentális szünet pontjainak megjelenítése</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Ház három pontot jelenít meg a sorok között egy hosszú instrumentális szünet során, amelyek töltődnek a szünet végéig</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Távolabb lévő sorok erősebb Затемítése</string>
@@ -841,6 +852,8 @@ A dalszövegek harmadik fél szolgáltatásaitól származnak, amelyekkel a Morp
   <string name="morphe_music_lyrics_swap_trans_roma_summary">A fordítást a dalszöveg fölé helyezi; az olvasás és a romanizálás alul marad</string>
   <string name="morphe_music_lyrics_force_center_title">Mindig középen legyen a dalszöveg</string>
   <string name="morphe_music_lyrics_force_center_summary">BE kapcsolt módban minden sort középre helyez, és figyelmen kívül hagyja a forrás rendezését, beleértve a duett oldalakat is; KAPCSOLATLAN módban megtartja a dalszöveg által kért rendezést</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Ellentétes oldalas duett igazítás</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Duett daloknál a második énekeset az ellenkező szélre helyezi. Kapcsolja ki, ha mindkét énekest ugyanazon az oldalon szeretné látni</string>
   <string name="morphe_music_lyrics_providers_keep_one">Legalább egy szolgáltatónak aktívnak kell maradnia</string>
   <string name="morphe_music_lyrics_translation_provider_title">Fordítás</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Ábécésítés vagy átirat</string>

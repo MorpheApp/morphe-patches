@@ -271,6 +271,11 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Audio ducking bêkar bike</string>
   <string name="morphe_music_disable_audio_ducking_summary">Dema aplikasyoneke din dengê kurt dikişîne, wekî agahdarkirinê, sedan nayê kêmkirin</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Fîltra hezkirinên rêza çalîk</string>
+  <string name="morphe_music_queue_like_filter_summary">Stranên bi hezkirinên kêm ji tevlihev û radyoyê dijide. Lîsteyên stranan, albûm û stranên ku hûn lê zêde dikin naguhherin. Hejmara hezkirinê ji Return YouTube Dislike ye</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Hêjmara herî kêm a hezkirinan</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Stranên bi hezkirinên kêmtir ji rêza çalîk tên jêbirin</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Rihiya kirê destûrê da veguherandina hez kirinê</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Êdî dema butonê hez kirinê kişandinê, veguherandina stranê paşê nabe</string>
@@ -717,8 +722,14 @@ Kukiyên pêwîst: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_written_by">Ji rêveberê: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Peyv an heceyên senkronize kirî nîşan bide</string>
   <string name="morphe_music_lyrics_word_sync_summary">Dema ku hebin, pêşînî bide gotinên peyv bi peyv. Dema ku gotin demên peyvan hildigirin, her peyv an heceyê li gorî muzîkê nîşan dide</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Peydaniyên hevseng bi awayekî nerm animate bike</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Her peyvekî bi şûveyek nerm, ronahî û hinekî bilindkirinê nîşan dide gava ku tê stran kirin. Ji bo parastina bataryayê yan jî ji bo tijekirineke tûj li ser amûrên hêdî, vegire</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Scrollinga springê bikar bîne</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Lyrican bi fîzîka springê dixeve, û her rêxê hinekî piştî ya jorîn dixeve. Ji bo parastina bataryayê li ser amûrên hêdî veguherîne</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Srolkirina aram</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Anîmasyona srolkirina gotinên stranê hêdî dike û xetên neçalak bi qebareya wan a tam diparêze</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Xetên neçalak blur bike</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Her xetê ku niha nayê stran kirin bi nermî blur dike, her ku dûr be zêdetir (Android 12 û piştr). Berî Android 12, xetên neçalak zelal dimînin</string>
   <string name="morphe_music_lyrics_gap_dots_title">Xalên bêdengiya amûran nîşan bide</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Di navbera rêzan de sê xalan nîşan didele di demên bêdengiya amûran a dirêj de, ku her ew qedînin her ku bêdengî bi dawî dibe</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Rêzên dûr bêtir tarî bike</string>
@@ -841,6 +852,8 @@ Gotinên stranê ji xizmetên third-party tên ku bi Morphe ve girêdayî nîn i
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Wergerê dide ser gotinên stranê; xwendin û romanîzasyon li jêr dimînin</string>
   <string name="morphe_music_lyrics_force_center_title">Hemişê gotinên stranê navendî bike</string>
   <string name="morphe_music_lyrics_force_center_summary">ON her rêyê dike navîn û hevlîna çavkaniyê (bi tevba aliyên duetê re) paşguh nake; OFF hevlîna ku gotinên stranê dixwazin diparêze</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Rêzkirina duetê ya aliyên dijwar</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Di stranên duetê de stranbêjê duyemîn li aliyê dijwar danîxe. Ji bo ku her du stranbêj li aliyekê bin, vê veguherîne</string>
   <string name="morphe_music_lyrics_providers_keep_one">Divê herî kêm yek dabinker vekirî be</string>
   <string name="morphe_music_lyrics_translation_provider_title">Werger</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanîzakî yan translîterasyon</string>

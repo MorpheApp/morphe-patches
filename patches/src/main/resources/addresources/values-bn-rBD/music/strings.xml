@@ -271,6 +271,11 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">অডিও ডাকিং বন্ধ করুন</string>
   <string name="morphe_music_disable_audio_ducking_summary">অন্য কোনো অ্যাপ থেকে ছোট শব্দ, যেমন নোটিফিকেশন বাজলে ভলিউম কমানো হবে না</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">কিউ লাইক ফিল্টার</string>
+  <string name="morphe_music_queue_like_filter_summary">মিক্স এবং রেডিও থেকে কম লাইক পাওয়া গানগুলো সরিয়ে ফেলে। প্লেলিস্ট, অ্যালবাম এবং কিউ-তে আপনার যোগ করা গানগুলো পরিবর্তিত হয় না। লাইক কাউন্টগুলো Return YouTube Dislike থেকে নেওয়া হয়েছে</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">নূন্যতম লাইক</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">কম লাইক পাওয়া গানগুলো কিউ থেকে সরিয়ে ফেলা হবে</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ডিসলাইক রিডাইরেকশন নিষ্ক্রিয় করুন</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ডিসলাইক বোতাম চাপলে পরবর্তী ট্র্যাকে যাওয়া বন্ধ করে</string>
@@ -717,8 +722,14 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_written_by">লিখিত: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">সিঙ্ক্রোনাইজড শব্দ বা সিলেবল হাইলাইট করুন</string>
   <string name="morphe_music_lyrics_word_sync_summary">যখন পাওয়া যায়, শব্দে শব্দে লিরিক্সকে অগ্রাধিকার দিন। যখন লিরিক্সে শব্দের সময় থাকে, তখন সঙ্গীতের সাথে সময় মিলিয়ে প্রতিটি শব্দ বা সিলেবল হাইলাইট হয়।</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">সিঙ্ক করা শব্দগুলো মসৃণভাবে অ্যানিমেট করুন</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">গান গাওয়ার সময় প্রতিটি শব্দকে একটি নরম সোয়েপ, গ্লো এবং সামান্য লিফ্টের মাধ্যমে হাইলাইট করে। ব্যাটারি বাঁচাতে অথবা ধীরগতির ডিভাইসে শার্প ফিল পেতে এটি বন্ধ করুন</string>
   <string name="morphe_music_lyrics_spring_scroll_title">স্প্রিং স্ক্রলিং ব্যবহার করুন</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">স্প্রিং ফিজিক্সের সাহায্যে লিরিক্স স্ক্রল করে, এবং প্রতিটি লাইন উপরের লাইনের একটু পরে চলে যায়। ধীরগতির ডিভাইসে ব্যাটারি বাঁচাতে এটি বন্ধ করুন</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">রিল্যাক্সড স্ক্রলিং</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">লিরিক স্ক্রোল অ্যানিমেশন ধীর করে দেয় এবং নিষ্ক্রিয় লাইনগুলোকে পূর্ণ আকারে রাখে</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">নিষ্ক্রিয় লাইনগুলো ঘোলা করুন</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">বর্তমানে গাওয়া হচ্ছে না এমন প্রতিটি লাইন হালকাভাবে ঘোলা করে, যা দূরে হলে আরও বেশি হয় (অ্যান্ড্রয়েড ১২ এবং পরবর্তী সংস্করণ)। অ্যান্ড্রয়েড ১২-এর আগে, নিষ্ক্রিয় লাইনগুলো স্পষ্ট থাকে</string>
   <string name="morphe_music_lyrics_gap_dots_title">ইনস্ট্রুমেন্টাল ব্রেক ডটস দেখান</string>
   <string name="morphe_music_lyrics_gap_dots_summary">দীর্ঘ ইনস্ট্রুমেন্টাল ব্রেকের সময় লাইনের মাঝে তিনটি ডট দেখায়, যা ব্রেক শেষ হওয়ার সাথে সাথে পূর্ণ হয়</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">দূরবর্তী লাইনগুলিকে আরও অস্পষ্ট করুন</string>
@@ -841,6 +852,8 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_swap_trans_roma_summary">অনুবাদটি লিরিক্সের উপরে স্থানান্তরিত করে; পাঠ এবং রোমানাইজেশন নিচে থাকে</string>
   <string name="morphe_music_lyrics_force_center_title">সর্বদা লিরিক্স কেন্দ্রে রাখুন</string>
   <string name="morphe_music_lyrics_force_center_summary">ON প্রতিটি লাইন মাঝখানে রাখে এবং উৎস সমন্বয় উপেক্ষা করে, ডুয়েট সাইডসহ; OFF লিরিক্স যে সমন্বয় চায় তা রাখে</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">বিপরীত পাশের ডুয়েট অ্যালাইনমেন্ট</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">ডুয়েট গানের ক্ষেত্রে দ্বিতীয় গায়ককে বিপরীত প্রান্তে স্থাপন করে। উভয় গায়ককে একই পাশে রাখতে এটি বন্ধ করুন</string>
   <string name="morphe_music_lyrics_providers_keep_one">কমপক্ষে একটি প্রদানকারী চালু থাকতে হবে</string>
   <string name="morphe_music_lyrics_translation_provider_title">অনুবাদ</string>
   <string name="morphe_music_lyrics_romanization_provider_title">রোমানাইজেশন বা ট্রান্সলিটারেশন</string>

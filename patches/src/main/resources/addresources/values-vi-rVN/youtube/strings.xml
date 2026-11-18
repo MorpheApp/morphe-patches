@@ -122,7 +122,7 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_upload_time_title">Ẩn ngày tải lên</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Hạn chế:
-• Kệ Shorts, trang kênh và kết quả tìm kiếm có thể vẫn hiển thị thời gian tải lên
+• Kệ Shorts có thể vẫn hiển thị thời gian tải lên
 • Không hoạt động với bố cục màn hình ô tô"</string>
   <string name="morphe_hide_video_thumbnail_title">Ẩn hình thu nhỏ video</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_view_count_title">Ẩn số lượt xem</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Hạn chế:
-• Kệ Shorts, trang kênh và kết quả tìm kiếm có thể vẫn hiển thị số lượt xem
+• Kệ Shorts có thể vẫn hiển thị số lượt xem
 • Không hoạt động với bố cục màn hình ô tô"</string>
   <string name="morphe_hide_web_search_results_title">Ẩn kết quả tìm kiếm trên web</string>
   <string name="morphe_hide_web_search_results_summary">Ẩn phần \'Kết quả từ trang web\' khỏi kết quả tìm kiếm</string>
@@ -290,9 +290,10 @@ Hạn chế:
   <string name="morphe_hide_autoplay_preview_summary">Ẩn phần xem trước video tiếp theo ở chế độ toàn màn hình trước khi tự động phát bắt đầu</string>
   <string name="morphe_hide_channel_bar_title">Ẩn nút kênh</string>
   <string name="morphe_hide_channel_watermark_title">Ẩn hình mờ của kênh</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Ẩn Chương và nút \'Trong video này\'</string>
+  <string name="morphe_hide_chapters_button_title">Ẩn nút Chương</string>
   <string name="morphe_hide_crowdfunding_box_title">Ẩn hộp hoạt động gây quỹ</string>
   <string name="morphe_hide_emergency_box_title">Ẩn hộp khẩn cấp</string>
+  <string name="morphe_hide_in_this_video_button_title">Ẩn nút \"Trong video này\"</string>
   <string name="morphe_hide_info_panels_title">Ẩn bảng thông tin</string>
   <string name="morphe_hide_info_panels_summary">Ẩn các bảng thông tin theo ngữ cảnh, chẳng hạn như thông tin y tế</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Hạn chế:
   <string name="morphe_feed_long_press_menu_summary">Chạm và giữ ở bất kỳ đâu trên video nguồn sẽ mở menu của video đó</string>
   <string name="morphe_feed_watch_later_button_title">Hiển thị nút Xem sau trên hình thu nhỏ</string>
   <string name="morphe_feed_watch_later_button_summary">Nút Xem sau được hiển thị trên hình thu nhỏ của các video trong nguồn cấp dữ liệu, với dấu kiểm nếu video đã được lưu. Nhấn vào nút này để lưu hoặc xóa video, và nhấn giữ để mở Lưu vào danh sách phát</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Mở hình ảnh bài viết ở chế độ toàn màn hình</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Nhấn vào hình ảnh của một bài viết sẽ mở hình ảnh đó ở chế độ toàn màn hình, thay vì mở trong bảng tin bài viết</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Tải hình ảnh bài đăng</string>
   <string name="morphe_post_image_download_summary">Một nút tải xuống sẽ hiển thị cạnh nút Chia sẻ của các bài đăng có hình ảnh hoặc GIF, và một mục tải xuống sẽ được thêm vào menu của chúng</string>
@@ -992,6 +996,7 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_swipe_press_to_engage_title">Bật cử chỉ bấm giữ để vuốt</string>
   <string name="morphe_swipe_press_to_engage_summary">Phải bấm giữ trước khi cử chỉ vuốt được nhận diện</string>
   <string name="morphe_swipe_haptic_feedback_title">Bật phản hồi xúc giác</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Rung khi nhấn và giữ để bắt đầu cử chỉ vuốt</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Lưu và khôi phục độ sáng</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Nhớ mức độ sáng khi vào/thoát chế độ toàn màn hình</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Bật cử chỉ độ sáng tự động</string>
@@ -1135,6 +1140,10 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Điều chỉnh mức độ trong suốt của thanh điều hướng dạng kính (0 là trong suốt, 100 là mờ)</string>
   <string name="morphe_navigation_bar_glass_round_title">Thanh điều hướng kính bo tròn</string>
   <string name="morphe_navigation_bar_glass_round_summary">Tạo các đầu bo tròn cho thanh điều hướng kính, thay vì các góc như trình phát thu nhỏ dạng kính</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Cạnh thanh điều hướng dạng kính</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Vẽ cạnh sáng xung quanh thanh điều hướng dạng kính</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Lề dưới thanh điều hướng dạng kính</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Điều chỉnh khoảng cách giữa thanh điều hướng kính và cạnh dưới của màn hình hoặc điều hướng hệ thống</string>
   <string name="morphe_navigation_bar_glass_size_title">Kích thước thanh điều hướng dạng kính</string>
   <string name="morphe_navigation_bar_glass_size_summary">Điều chỉnh chiều cao, chiều rộng và khoảng cách nút của thanh điều hướng dạng kính, kèm theo bản xem trước. Các nút không vừa với chiều rộng của màn hình sẽ bị ẩn</string>
   <string name="morphe_navigation_bar_glass_size_height">Chiều cao</string>
@@ -1381,6 +1390,9 @@ Giao diện ô tô
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Tắt tự động làm mới nguồn cấp dữ liệu</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Ngăn các nguồn cấp dữ liệu tự động làm mới sau khi chúng trở nên lỗi thời</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Hủy nhóm thông báo</string>
+  <string name="morphe_ungroup_notifications_summary">Hiển thị mọi video trong các bản tải lên được nhóm của một kênh thành một thông báo riêng biệt</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Bố cục thẻ nguồn cấp</string>
   <string name="morphe_feed_card_layout_entry_1">Cổ điển</string>
@@ -1493,6 +1505,8 @@ Giao diện ô tô
   <string name="morphe_dearrow_titles_search_title">Kết quả tìm kiếm</string>
   <string name="morphe_dearrow_titles_icon_title">Hiển thị biểu tượng DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Hiển thị biểu tượng DeArrow trên tiêu đề của các video có tiêu đề hoặc hình thu nhỏ được đóng góp bởi cộng đồng. Nhấn vào biểu tượng để hiển thị tiêu đề và hình thu nhỏ gốc</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Dọn dẹp tiêu đề</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Dọn dẹp tiêu đề của các video không có tiêu đề DeArrow. Các từ viết hoa sẽ được chuyển thành chữ thường, đồng thời các biểu tượng cảm xúc, văn bản cách điệu và các dấu chấm than lặp lại sẽ bị xóa</string>
   <string name="morphe_dearrow_casual_mode_title">Chế độ thông thường</string>
   <string name="morphe_dearrow_casual_mode_summary">Hiển thị tiêu đề gốc thay vì tiêu đề DeArrow nếu người dùng DeArrow bình chọn rằng họ thích tiêu đề gốc</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Số phiếu bầu thông thường tối thiểu để hiển thị tiêu đề gốc</string>

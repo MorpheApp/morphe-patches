@@ -271,6 +271,11 @@ SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Öðugga hljóðlækkun</string>
   <string name="morphe_music_disable_audio_ducking_summary">Hljóðstyrkurinn lækkar ekki þegar önnur forrit spila stutt hljóð, eins og tilkynningar</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Sía fyrir líka í raðmöguleikahópi</string>
+  <string name="morphe_music_queue_like_filter_summary">Fjarlægir lögum með fáum líkum úr blandaðum listum og útvarpi. Spilunalistir, albúm og lög sem þú bætir við raðmöguleikahópnum breytast ekki. Fjöldi líka er fenginn frá Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Lágmarksfjöldi líka</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Lögum með færri líka er fjarlægt úr raðmöguleikahópnum</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Slökkva á endurbeiningu við mislíkun</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Kemur í veg fyrir að næsta lag spilist þegar smellt er á mislíkunarhnappinn</string>
@@ -717,8 +722,14 @@ Nauðsynlegar vafrakökur: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_written_by">Ritið af: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Auðkenna samstillt orð eða atkvæði</string>
   <string name="morphe_music_lyrics_word_sync_summary">Forgangsraðar orð-fyrir-orð texta þegar þeir eru til staðar. Þegar textinn hefur tímasetningu fyrir hvert orð er hvert orð eða atkvæði auðkennt í takt við tónlistina.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Anímera samstillt orð smjöðlega</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Hágæfir hverju orði með mjúkum sveiflu, glóa og örlitlu lyftingu þegar það er sungið. Slökktu til að spara rafhlöðu eða fyrir skarplegra fyllingu á hægari tækjum</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Nota fjarðöggun</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Rullar textanum með fjarðöggun og færir hverja línu örlítið eftir þeirri yfir. Slökkvið til að spara rafhlöðu á hægari tækjum</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Slökkuð skrunning</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Hægir niður á skrunningu texta og heldur óvirkum línum í fullri stærð</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Óskýrð óvirkar línur</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Óskýrir létt hverja línu sem er ekki sungin í augnablikinu, og meira því fjarlegri (Android 12 og seinna). Fyrir Android 12 halda óvirkar línur sér skýrar</string>
   <string name="morphe_music_lyrics_gap_dots_title">Sýna punktana fyrir tækjahluta</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Sýnir þría punktanna á milli línna á meðan langur tækjahluti stendur yfir, sem fyllast eftir því sem hlutanum lýkur</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Dökkva fjarlægar línur frekar</string>
@@ -841,6 +852,8 @@ Textar koma frá þjónustum þriðja aðila sem hvorki tengjast, eru styrktar n
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Flyttir þýðinguna yfir lögini; lestur og rómönun haldast undir</string>
   <string name="morphe_music_lyrics_force_center_title">Alltaf miðstilla texta</string>
   <string name="morphe_music_lyrics_force_center_summary">ON setur hverja línu í miðju og hunsar upprunalega samstillingu, þ.m.t. duet hluta; OFF heldur samstillingunni sem textinn biður um</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Uppsetning tvísöngs á gegnsettu hliðinni</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Setur annan söngmanninn á gegnsetta hliðina í tvísöngsum. Slökkvið til að halda báðum söngmönnum á sömu hliðinni</string>
   <string name="morphe_music_lyrics_providers_keep_one">Að minnsta kosti einn veitandi verður að vera á</string>
   <string name="morphe_music_lyrics_translation_provider_title">Þýðing</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Rómverjun eða transliterering</string>

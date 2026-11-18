@@ -122,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">إخفاء وقت الرفع</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"القيود:
-• قد تظل أرفف Shorts، صفحات القناة، ونتائج البحث تُظهر أوقات التحميل
+• قد تظل أرفف Shorts تُظهر أوقات التحميل
 • لا تعمل مع تخطيط Automotive"</string>
   <string name="morphe_hide_video_thumbnail_title">إخفاء صورة الفيديو المصغرة</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">إخفاء عدد المشاهدات</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"القيود:
-• قد تظل أرفف Shorts، صفحات القناة، ونتائج البحث تُظهر أعداد المشاهدات
+• قد تظل أرفف Shorts تُظهر أعداد المشاهدات
 • لا تعمل مع تخطيط Automotive"</string>
   <string name="morphe_hide_web_search_results_title">إخفاء نتائج بحث الويب</string>
   <string name="morphe_hide_web_search_results_summary">يخفي قسم \'النتائج من الويب\' من نتائج البحث</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">يخفي عرض مشاهدة الفيديو التالي بملء الشاشة قبل بدء التشغيل التلقائي</string>
   <string name="morphe_hide_channel_bar_title">إخفاء شريط القناة</string>
   <string name="morphe_hide_channel_watermark_title">إخفاء العلامة المائية للقناة</string>
-  <string name="morphe_hide_chapters_timeline_button_title">إخفاء الفصول وزر \'في هذا الفيديو\'</string>
+  <string name="morphe_hide_chapters_button_title">إخفاء زر الفصول</string>
   <string name="morphe_hide_crowdfunding_box_title">إخفاء مربع التمويل الجماعي</string>
   <string name="morphe_hide_emergency_box_title">إخفاء صناديق الطوارئ</string>
+  <string name="morphe_hide_in_this_video_button_title">إخفاء زر \'في هذا الفيديو\'</string>
   <string name="morphe_hide_info_panels_title">إخفاء لوحات المعلومات</string>
   <string name="morphe_hide_info_panels_summary">يخفي لوحات المعلومات السياقية، مثل المعلومات الطبية</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">يؤدي الضغط مع الاستمرار في أي مكان على فيديو في الخلاصة إلى فتح قائمته</string>
   <string name="morphe_feed_watch_later_button_title">عرض زر \"المشاهدة لاحقًا\" على المصغرات</string>
   <string name="morphe_feed_watch_later_button_summary">يظهر زر المشاهدة لاحقًا على الصور المصغرة لفيديوهات الخلاصة، مع علامة اختيار إذا كان الفيديو محفوظًا. يؤدي النقر عليه إلى حفظ الفيديو أو إزالته، ويؤدي النقر مع الاستمرار إلى فتح حفظ في قائمة التشغيل</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">فتح صور المنشور في وضع ملء الشاشة</string>
+  <string name="morphe_open_post_images_fullscreen_summary">يؤدي النقر على صورة في منشور إلى فتحها في وضع ملء الشاشة، بدلًا من خلاصة المنشورات</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">تنزيل صور المنشورات</string>
   <string name="morphe_post_image_download_summary">يظهر زر التنزيل بجانب زر المشاركة في المنشورات التي تحتوي على صور أو ملفات GIF، كما يتم إضافة عنصر تنزيل إلى القائمة الخاصة بها</string>
@@ -996,6 +1000,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_press_to_engage_title">تمكين إيماءة الضغط ثم التمرير</string>
   <string name="morphe_swipe_press_to_engage_summary">يتطلب الضغط مع الاستمرار قبل التعرف على إيماءة التمرير</string>
   <string name="morphe_swipe_haptic_feedback_title">الاهتزاز عند الضغط</string>
+  <string name="morphe_swipe_haptic_feedback_summary">يهتز الجهاز عند الضغط مع الاستمرار لبدء إيماءة التمرير</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">حفظ واستعادة السطوع</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">يتذكر مستوى السطوع عند الدخول إلى وضع ملء الشاشة أو الخروج منه</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">تمكين إيماءة السطوع التلقائي</string>
@@ -1139,6 +1144,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_glass_opacity_summary">ضبط مستوى الشفافية لشريط التنقل الزجاجي (0 شفاف، 100 معتم)</string>
   <string name="morphe_navigation_bar_glass_round_title">شريط تنقل زجاجي دائري</string>
   <string name="morphe_navigation_bar_glass_round_summary">يجعل أطراف شريط التنقل الزجاجي دائرية، بدلًا من الزوايا كما في المشغل المصغر الزجاجي</string>
+  <string name="morphe_navigation_bar_glass_edge_title">حافة شريط التنقل الزجاجي</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">يرسم حافة مضيئة حول شريط التنقل الزجاجي</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">الهامش السفلي لشريط التنقل الزجاجي</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">ضبط المسافة بين شريط التنقل الزجاجي وأسفل الشاشة أو تنقل النظام</string>
   <string name="morphe_navigation_bar_glass_size_title">حجم شريط التنقل الزجاجي</string>
   <string name="morphe_navigation_bar_glass_size_summary">ضبط ارتفاع, عرض وتباعد أزرار شريط التنقل الزجاجي، مع المعاينة. يتم إخفاء الأزرار التي لا تتناسب مع عرض الشاشة</string>
   <string name="morphe_navigation_bar_glass_size_height">الارتفاع</string>
@@ -1385,6 +1394,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">تعطيل تحديث الخلاصة تلقائيًا</string>
   <string name="morphe_disable_auto_feed_refresh_summary">يمنع الخلاصات من التحديث تلقائيًا بعد أن تصبح قديمة</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">إلغاء تجميع الإشعارات</string>
+  <string name="morphe_ungroup_notifications_summary">يظهر كل فيديو من تحميلات القناة المجمعة كإشعار مستقل</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">تخطيط بطاقة الخلاصة</string>
   <string name="morphe_feed_card_layout_entry_1">كلاسيكي</string>
@@ -1497,6 +1509,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_dearrow_titles_search_title">نتائج البحث</string>
   <string name="morphe_dearrow_titles_icon_title">عرض أيقونة DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">يعرض أيقونة DeArrow على عناوين الفيديوهات التي تحتوي على عنوان أو صورة مصغرة من مصادر جماعية. اضغط على الأيقونة لعرض العنوان والصورة المصغرة الأصليين</string>
+  <string name="morphe_dearrow_clean_up_titles_title">تنظيف العناوين</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">تنظيف عناوين الفيديوهات التي لا تحتوي على عنوان DeArrow. يتم تغيير الكلمات المكتوبة بأحرف كبيرة إلى حالة عادية، وتتم إزالة الرموز التعبيرية والنصوص المزخرفة وعلامات التعجب المكررة</string>
   <string name="morphe_dearrow_casual_mode_title">الوضع العادي</string>
   <string name="morphe_dearrow_casual_mode_summary">يعرض العنوان الأصلي بدلًا من عنوان DeArrow إذا صَوَّت مستخدمو DeArrow بأنهم يفضلون العنوان الأصلي</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">الحد الأدنى من الأصوات العادية لإظهار العنوان الأصلي</string>

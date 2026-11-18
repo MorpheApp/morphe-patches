@@ -271,6 +271,11 @@ SABR oynatma (video akışlarını taklit etme kapalı)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Ses kısılmasını devre dışı bırak</string>
   <string name="morphe_music_disable_audio_ducking_summary">Bir bildirim gibi başka bir uygulama kısa bir ses çaldığında ses seviyesi düşürülmez</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Sıra beğenileri filtresi</string>
+  <string name="morphe_music_queue_like_filter_summary">Karışımlar ve radyodan az beğenilen şarkıları kaldırır. Sıraya eklediğiniz çalma listeleri, albümler ve şarkılar değiştirilmez. Beğeni sayıları Return YouTube Dislike üzerinden alınır</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum beğeni</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Daha az beğeniye sahip şarkılar sıradan kaldırılır</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Olumsuz oylama yönlendirmesini devre dışı bırak</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Olumsuz oy tuşuna basıldığında sonraki parçaya geçmeyi engeller</string>
@@ -717,8 +722,14 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_written_by">Yazan: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Senkronize kelimeleri veya heceleri vurgula</string>
   <string name="morphe_music_lyrics_word_sync_summary">Mümkün olduğunda kelime kelime şarkı sözlerine öncelik ver. Şarkı sözleri kelime zamanlaması içeriyorsa, her kelimeyi veya heceyi müzikle eş zamanlı olarak vurgular</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Senkronize edilen kelimeleri pürüzsüzce hareketlendir</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Söylendiği sırada her kelimeyi yumuşak bir geçiş, parlama ve hafif bir yükselme ile vurgular. Pil tasarrufu yapmak veya daha yavaş cihazlarda keskin bir dolgu sağlamak için kapatın</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Yaylı kaydırmayı kullan</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Şarkı sözlerini yay fiziği ile kaydırır ve her satırı bir üsttekinin biraz arkasına taşır. Yavaş cihazlarda pil tasarrufu yapmak için kapatın</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Rahatlatılmış kaydırma</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Şarkı sözü kaydırma animasyonunu yavaşlatır ve aktif olmayan satırları tam boyutlu tutar</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Aktif olmayan satırları bulanıklaştır</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Şu anda söylenmeyen her satırı hafifçe bulanıklaştırır, uzaklaştıkça bu etki artar (Android 12 ve sonrası). Android 12 öncesinde aktif olmayan satırlar net kalır</string>
   <string name="morphe_music_lyrics_gap_dots_title">Enstrümantal ara noktalarını göster</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Uzun enstrümantal aralar sırasında satırlar arasında, ara bittikçe dolan üç nokta gösterir</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Uzak satırları daha fazla karart</string>
@@ -841,6 +852,8 @@ Her iki sınır için de geçerlidir. 1,75 değerinde, dört tam genişlikteki k
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Çeviriyi şarkı sözlerinin üzerine taşır; okunuş ve romanizasyon altta kalır</string>
   <string name="morphe_music_lyrics_force_center_title">Şarkı sözlerini her zaman ortaya hizala</string>
   <string name="morphe_music_lyrics_force_center_summary">AÇIK tüm satırları ortaya koyar ve kaynak hizalamayı, düet yanları dahil görmezden gelir; KAPALI şarkı sözlerinin istediği hizalamayı korur</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Karşı taraf düet hizalaması</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Düet şarkılarda ikinci şarkıcıyı karşı kenara yerleştirir. Her iki şarkıcıyı da aynı tarafta tutmak için kapatın</string>
   <string name="morphe_music_lyrics_providers_keep_one">En az bir sağlayıcı açık kalmalıdır</string>
   <string name="morphe_music_lyrics_translation_provider_title">Çeviri</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizasyon veya transliterasyon</string>

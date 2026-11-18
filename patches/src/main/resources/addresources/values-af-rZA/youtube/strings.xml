@@ -122,8 +122,8 @@ Veranderinge sluit in:
   <string name="morphe_hide_upload_time_title">Verberg oplaaityd</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Beperkings:
-• Kort video-plankies, kanaalblaaie en soekresultate kan steeds oplaaitye wys
-• Werk nie met outomobiel-uitleg nie."</string>
+• Shorts-plankies kan steeds oplaaitye wys
+• Werk nie met outomobiel-uitleg nie"</string>
   <string name="morphe_hide_video_thumbnail_title">Versteek video-duimnael</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Versteek video-etikette</string>
@@ -131,8 +131,8 @@ Veranderinge sluit in:
   <string name="morphe_hide_view_count_title">Verberg bekykingsaantal</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Beperkings:
-• Kort video-plankies, kanaalblaaie en soekresultate kan steeds kyktellings wys
-• Werk nie met outomobiel-uitleg nie."</string>
+• Shorts-plankies kan steeds kyktellings wys
+• Werk nie met outomobiel-uitleg nie"</string>
   <string name="morphe_hide_web_search_results_title">Verberg websoekresultate</string>
   <string name="morphe_hide_web_search_results_summary">Verberg die \'Resultaat van die web\' gedeelte van soekresultate</string>
   <string name="morphe_hide_you_may_like_section_title">Versteek \'Jy hou dalk van\'-afdeling</string>
@@ -290,9 +290,10 @@ Beperkings:
   <string name="morphe_hide_autoplay_preview_summary">Verberg die komende videovoorskou in volskerm voordat outospeel begin</string>
   <string name="morphe_hide_channel_bar_title">Verberg kanaalbalk</string>
   <string name="morphe_hide_channel_watermark_title">Verberg kanaalwatermerk</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Versteek hoofstukke en \'In hierdie video\'-knoppie</string>
+  <string name="morphe_hide_chapters_button_title">Verberg Hoofstukke-knoppie</string>
   <string name="morphe_hide_crowdfunding_box_title">Verberg finansiële bystandboks</string>
   <string name="morphe_hide_emergency_box_title">Verberg noodhokse</string>
+  <string name="morphe_hide_in_this_video_button_title">Verberg \'In hierdie video\'-knoppie</string>
   <string name="morphe_hide_info_panels_title">Verberg inligtingpanele</string>
   <string name="morphe_hide_info_panels_summary">Verberg inligtingskontekspanele, soos mediese inligting</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_feed_long_press_menu_summary">Tik en hou enige plek op \'n voervideo om die menu oop te maak</string>
   <string name="morphe_feed_watch_later_button_title">Wys Kyk later-knoppie op duimnaels</string>
   <string name="morphe_feed_watch_later_button_summary">\'n Kyk later-knoppie word op die duimnaels van voervideo\'s gewys, met \'n vinkmerk as die video gestoor is. Tik dit om die video te stoor of te verwyder, en tik en hou dit om Stoor na afspeellys oop te maak</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Maak plasinage in volle skerm oop</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Deur op \'n plasinage te tik, word dit in volle skerm oopgemaak in plaas van die plasse se feed</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Laai plasingsbeelde af</string>
   <string name="morphe_post_image_download_summary">\'n Aflaai-knoppie word langs die Deel-knoppie van plasinge met beelde of GIF\'s vertoon, en \'n aflaai-item word by hul spyskaart gevoeg</string>
@@ -992,6 +996,7 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_swipe_press_to_engage_title">Aktiveer druk-om-te-swiep-gebaar</string>
   <string name="morphe_swipe_press_to_engage_summary">Vereis dat jy druk en vashou voordat \'n veeggebaar herken word</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiveer haptiese terugvoer</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibreer wanneer die druk-en-hou \'n veeggebaar begin</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Bewaar en herstel helderheid</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Onthou helderheidsvlak wanneer volskermmodus betree of verlaat word</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Aktiveer outo-helderheidgebaar</string>
@@ -1135,6 +1140,10 @@ Om toegang tot Instellings te kry, aktiveer die Instellings-knoppie via Algemeen
   <string name="morphe_navigation_bar_glass_opacity_summary">Pas die deursigtigheidsvlak van die glas-navigasiebalk aan (0 is deursigtig, 100 is opak)</string>
   <string name="morphe_navigation_bar_glass_round_title">Ronde glasnavigasiebalk</string>
   <string name="morphe_navigation_bar_glass_round_summary">Gee die glasnavigasiebalk ronde punte, in plaas van hoeke soos die glas-miniplayer</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Glasnavigasiebalk-rand</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Teken die ligrand rondom die glasnavigasiebalk</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Glasnavigasiebalk onderste marge</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Pas die spasie tussen die glas navigasiebalk en die onderkant van die skerm of die stelselnavigasie aan</string>
   <string name="morphe_navigation_bar_glass_size_title">Glas-navigasiebalk grootte</string>
   <string name="morphe_navigation_bar_glass_size_summary">Pas die hoogte, die breedte en die knoppiespasiëring van die glas-navigasiebalk aan, met \'n voorbeeld. Knoppies wat nie in die breedte van die skerm pas nie, word versteek</string>
   <string name="morphe_navigation_bar_glass_size_height">Hoogte</string>
@@ -1381,6 +1390,9 @@ Automotive-uitleg
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Deaktiveer outomatiese voerverversing</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Voorkom dat voere outomaties verfris word nadat hulle verouderd geraak het</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Ontgroepeer kennisgewings</string>
+  <string name="morphe_ungroup_notifications_summary">Wys elke video van \'n kanaal se gegroepeerde opladings as sy eie kennisgewing</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Voerkaart-uitleg</string>
   <string name="morphe_feed_card_layout_entry_1">Klassiek</string>
@@ -1493,6 +1505,8 @@ Automotive-uitleg
   <string name="morphe_dearrow_titles_search_title">Soekresultate</string>
   <string name="morphe_dearrow_titles_icon_title">Wys DeArrow-ikoon</string>
   <string name="morphe_dearrow_titles_icon_summary">Wys die DeArrow-ikoon op die titels van video\'s met \'n crowdsourced-titel of thumbnail. Tik op die ikoon om die oorspronklike titel en thumbnail te wys</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Maak titels skoon</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Maak die titels van video\'s sonder \'n DeArrow-titel skoon. Woorde in hoofletters word na normale kas verander, en emoji\'s, fancy-teks en herhaalde uitroeptekens word verwyder</string>
   <string name="morphe_dearrow_casual_mode_title">Informele modus</string>
   <string name="morphe_dearrow_casual_mode_summary">Wys die oorspronklike titel in plaas van die DeArrow-titel as DeArrow-gebruikers gestem het dat hulle van die oorspronklike titel hou</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum informele stemme om die oorspronklike titel te wys</string>

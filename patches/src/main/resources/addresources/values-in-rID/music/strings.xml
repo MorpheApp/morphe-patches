@@ -271,6 +271,11 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Nonaktifkan audio ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Volume tidak akan diturunkan saat aplikasi lain memutar suara singkat, seperti notifikasi</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filter suka antrean</string>
+  <string name="morphe_music_queue_like_filter_summary">Menghapus lagu dengan sedikit suka dari campuran dan radio. Daftar putar, album, dan lagu yang Anda tambahkan ke antrean tidak berubah. Jumlah suka berasal dari Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Suka minimum</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Lagu dengan suka yang lebih sedikit dihapus dari antrean</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Nonaktifkan pengalihan tidak suka</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Mencegah peralihan ke trek berikutnya saat tombol tidak suka ditekan</string>
@@ -717,8 +722,14 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_written_by">Ditulis oleh: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Sorot kata atau suku kata yang disinkronkan</string>
   <string name="morphe_music_lyrics_word_sync_summary">Utamakan lirik kata per kata jika tersedia. Setiap kata atau suku kata akan disorot sesuai irama musik.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Animasikan kata yang tersinkronisasi dengan mulus</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Menyoroti setiap kata dengan sapuan lembut, cahaya, dan sedikit pengangkatan saat dinyanyikan. Matikan untuk menghemat baterai atau untuk pengisian tajam pada perangkat yang lebih lambat</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Gunakan pengguliran spring</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Menggulir lirik dengan fisika spring, dan menggerakkan setiap baris sedikit setelah baris di atasnya. Matikan untuk menghemat baterai pada perangkat yang lebih lambat</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Penggulungan santai</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Memperlambat animasi gulir lirik dan menjaga baris tidak aktif tetap dalam ukuran penuh</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Buramkan baris tidak aktif</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Memburamkan setiap baris yang tidak sedang dinyanyikan secara halus, semakin jauh semakin buram (Android 12 dan yang lebih baru). Sebelum Android 12, baris tidak aktif tetap tajam</string>
   <string name="morphe_music_lyrics_gap_dots_title">Tampilkan titik jeda instrumental</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Menampilkan tiga titik di antara baris selama jeda instrumental yang lama, yang akan terisi saat jeda berakhir</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Redupkan baris yang jauh lebih banyak</string>
@@ -841,6 +852,8 @@ Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Memindahkan terjemahan ke atas lirik; pembacaan dan romanisasi tetap di bawah</string>
   <string name="morphe_music_lyrics_force_center_title">Selalu tengahkan lirik</string>
   <string name="morphe_music_lyrics_force_center_summary">AKTIF menempatkan setiap baris di tengah dan mengabaikan penyelarasan sumber, termasuk sisi duet; NONAKTIF mempertahankan penyelarasan yang diminta oleh lirik</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Perataan duet sisi berlawanan</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Menempatkan penyanyi kedua di tepi berlawanan pada lagu duet. Matikan untuk menjaga kedua penyanyi tetap di sisi yang sama</string>
   <string name="morphe_music_lyrics_providers_keep_one">Setidaknya satu penyedia harus tetap aktif</string>
   <string name="morphe_music_lyrics_translation_provider_title">Terjemahan</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisasi atau transliterasi</string>

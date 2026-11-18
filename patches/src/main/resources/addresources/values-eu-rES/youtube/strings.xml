@@ -122,7 +122,7 @@ Aldaketen artean daude:
   <string name="morphe_hide_upload_time_title">Ezkutatu igotze-denbora</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Mugak:
-• Shorts estanteek, kanalen orrialdeek eta bilaketa emaitzek oraindik igotze-denborak erakutsi ditzakete
+• Shorts estanteek oraindik igotze-denborak erakutsi ditzakete
 • Ez dabil automotive diseinuarekin"</string>
   <string name="morphe_hide_video_thumbnail_title">Ezkutatu bideoaren miniatura</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Aldaketen artean daude:
   <string name="morphe_hide_view_count_title">Ezkutatu ikustaldien kopurua</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Mugak:
-• Shorts estanteek, kanalen orrialdeek eta bilaketa emaitzek oraindik ikustaldi kopuruak erakutsi ditzakete
+• Shorts estanteek oraindik ikustaldi kopuruak erakutsi ditzakete
 • Ez dabil automotive diseinuarekin"</string>
   <string name="morphe_hide_web_search_results_title">Ezkutatu web bilaketen emaitzak</string>
   <string name="morphe_hide_web_search_results_summary">Bilaketa emaitzetako \'Webeko emaitza\' atala ezkutatzen du</string>
@@ -290,9 +290,10 @@ Mugak:
   <string name="morphe_hide_autoplay_preview_summary">Autoplay hasi aurretik, pantaila osoan datorren bideoaren aurrebista ezkutatzen du</string>
   <string name="morphe_hide_channel_bar_title">Ezkutatu kanal barra</string>
   <string name="morphe_hide_channel_watermark_title">Ezkutatu kanalaren urmarka</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Ezkutatu Kapituluak eta \'Bideo honetan\' botoia</string>
+  <string name="morphe_hide_chapters_button_title">Ezkutatu Kapituluak botoia</string>
   <string name="morphe_hide_crowdfunding_box_title">Ezkutatu crowdfundinga kaxa</string>
   <string name="morphe_hide_emergency_box_title">Ezkutatu larrialdi kaxa</string>
+  <string name="morphe_hide_in_this_video_button_title">Ezkutatu \'Bideo honetan\' botoia</string>
   <string name="morphe_hide_info_panels_title">Ezkutatu informazio panelak</string>
   <string name="morphe_hide_info_panels_summary">Informazio testuinguru panelak ezkutatzen ditu, adibidez informazio medikoa</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Mugak:
   <string name="morphe_feed_long_press_menu_summary">Feed-eko bideo baten edozein lekuan sakatu eta mantentzeak bere menua irekiko du</string>
   <string name="morphe_feed_watch_later_button_title">Erakutsi Gero ikusteko botoia miniaturetan</string>
   <string name="morphe_feed_watch_later_button_summary">Feed bideoen miniaturetan \"Gero ikusi\" botoia erakusten da, bideoa gordeta badago marka batekin. Sakatuz bideoa gordetzen edo kentzen da, eta sakatuta mantenduz \"Zerrendan gorde\" irekitzen da</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Ireki postu-iruditsak pantaila osoan</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Postu baten irudi batean sakatzeak pantaila osoan irekiko du, postuen feed-aren ordez</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Deskargatu postuen irudiak</string>
   <string name="morphe_post_image_download_summary">A download button is shown next to the Share button of posts with images or GIFs, and a download item is added to their menu</string>
@@ -992,6 +996,7 @@ Hau konpontzeko, aktibatu 'Bideo-emisioak imitatzea' eta aldatu 'Lehenetsitako b
   <string name="morphe_swipe_press_to_engage_title">Gaitu sakatu eta irristatzeko keinua</string>
   <string name="morphe_swipe_press_to_engage_summary">Keinua onartzen den aurretik sakatu eta eutsi behar da</string>
   <string name="morphe_swipe_haptic_feedback_title">Gaitu haptiko erantzuna</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibra sakatzean eta mantentzean irrasgarri-kezkura bat hasten denean</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Gorde eta berrezarri argitasuna</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Gogoratzen du argitasun maila pantaila osoko modua sartzean / ateratzean</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Gaitu argitasun automatikoaren keinua</string>
@@ -1135,6 +1140,10 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_navigation_bar_glass_opacity_summary">Doitu beira nabigazio barraren gardentasun maila (0 gardena da, 100 opakua)</string>
   <string name="morphe_navigation_bar_glass_round_title">Nabigazio barra beirazkoa birbildua</string>
   <string name="morphe_navigation_bar_glass_round_summary">Nabigazio barra beirazkoari amaierak birbilduen ematen dizkio, beira-miniplayer-aren bezalako gainetak izateko ordez</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Nabigazio barra beiraren ertza</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Argizko ertza marrazten du nabigazio barra beiraren inguruan</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Nabigazio barra beiraren beheko marjina</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Doitu navigation barreko beiramenaren eta pantailaren beheko aldearen edo sistemaren nabigazioaren arteko espazioa</string>
   <string name="morphe_navigation_bar_glass_size_title">Nabigazio barra beiraren tamaina</string>
   <string name="morphe_navigation_bar_glass_size_summary">Doitu nabigazio barra beiraren altuera, zabalera eta botoien arteko espazioa, aurrebistarekin. Pantailaren zabalerara egokitzen ez diren botoiak ezkutatzen dira</string>
   <string name="morphe_navigation_bar_glass_size_height">Altitudea</string>
@@ -1381,6 +1390,9 @@ Automobilen diseinua
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Desaktibatu feed-en eguneraketa automatikoa</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Feed-ak automatikoki eguneratzea eragozten du, zaharkituta daudenean</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Desgrupatu jakinarazpenak</string>
+  <string name="morphe_ungroup_notifications_summary">Kanala baten igotzeen taldeko bideo bakoitza jakinarazpen bereizita erakusten du</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Feed-eko txartelen diseinua</string>
   <string name="morphe_feed_card_layout_entry_1">Klasikoa</string>
@@ -1493,6 +1505,8 @@ Automobilen diseinua
   <string name="morphe_dearrow_titles_search_title">Bilaketa emaitzak</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ikona erakutsi</string>
   <string name="morphe_dearrow_titles_icon_summary">DeArrow-ren ikona erakutsi bidebekideek sortutako izenburua edo miniaturea duten bideoen izenburuan. Tapatu ikona izenburu eta miniature originalak erakutsetan</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Garbitu izburuak</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow izbururik gabeko bideoen izburuak garbitzen ditu. Mayuskuleko hitzak letra normalean jartzen dira, eta emojiak, testu dekoratiboak eta exclamation marken errepikazioak kenden dira</string>
   <string name="morphe_dearrow_casual_mode_title">Modu informala</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow erabiltzaileek jatorrizko izenburua gustuko dutela bozkatu badute, DeArrow izenburuaren ordez jatorrizko izenburua erakusten du</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Jatorrizko izenburua erakusteko gutxieneko boto informalak</string>

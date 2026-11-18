@@ -271,6 +271,11 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Zakázat potlačení zvuku</string>
   <string name="morphe_music_disable_audio_ducking_summary">Hlasitost se nesníží, když jiná aplikace přehráje krátký zvuk, například oznámení</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filtr oblíbenosti v frontě</string>
+  <string name="morphe_music_queue_like_filter_summary">Odebírá skladby s nízkým počtem like z mixů a rádia. Seznamy přání, alba a skladby, které přidáte do fronty, zůstanou nezměněny. Počty like jsou z Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum like</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Skladby s menším počtem like jsou z fronty odstraněny</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Vypnout přesměrování dislajků</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Zabraňuje přeskoku na další skladbu po stisknutí tlačítka „Nelíbí se“.</string>
@@ -717,8 +722,14 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Napsal: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Zvýrazňovat synchronizovaná slova nebo slabiky</string>
   <string name="morphe_music_lyrics_word_sync_summary">Upřednostnit texty slovo po slově, pokud jsou k dispozici. Když texty obsahují načasování slov, zvýrazní každé slovo nebo slabiku v rytmu hudby.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Plynulá animace synchronizovaných slov</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Zvýrazňuje každé slovo jemným přejem, zářením a mírným zdvižením v okamžiku, kdy je zpíváno. Vypněte pro úsporu baterie nebo pro ostré vyplnění na pomalejších zařízeních</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Použít pružné posouvání</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Posouvá text písně pomocí pružné fyziky a posouvá každý řádek mírně po tom předchozím. Vypněte pro úsporu baterie na pomalejších zařízeních</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Klidné posouvání</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Zpomaluje animaci posouvání textu písně a ponechává neaktivní řádky v plné velikosti</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Rozostření neaktivních řádků</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Zjemně rozostří každý řádek, který se právě nezpívá, přičemž čím je řádek dále, tím je rozostření silnější (Android 12 a novější). Ve verzích starších než Android 12 zůstávají neaktivní řádky ostré</string>
   <string name="morphe_music_lyrics_gap_dots_title">Zobrazit tečky instrumentálního vstupu도</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Zobrazuje tři tečky mezi řádky během dlouhého instrumentálního vstupu, které se postupně zaplní, jak vstup končí</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Více ztmavit vzdálené řádky</string>
@@ -841,6 +852,8 @@ Texty pocházejí ze služeb třetích stran, které nejsou spojeny, nesponzorov
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Přesune překlad nad text písně; výslovnost a romanizace zůstanou pod ním</string>
   <string name="morphe_music_lyrics_force_center_title">Vždy centrovat texty</string>
   <string name="morphe_music_lyrics_force_center_summary">ON umisťuje každý řádek doprostřed a ignoruje zdrojové zarovnání, včetně stran dueta; OFF ponechává zarovnání, které texty vyžadují</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Zarovnání duetu na opačné strany</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">U duetů umístí druhého zpěváka na opačnou stranu. Vypněte pro ponechání obou zpěváků na stejné straně</string>
   <string name="morphe_music_lyrics_providers_keep_one">Alespoň jeden poskytovatel musí být zapnutý</string>
   <string name="morphe_music_lyrics_translation_provider_title">Překlad</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizace nebo transkripce</string>

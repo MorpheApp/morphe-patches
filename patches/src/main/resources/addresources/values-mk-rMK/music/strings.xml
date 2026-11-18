@@ -271,6 +271,11 @@ SABR репродукција (имитирање на видео стримов
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Оневозможи го намалувањето на звукот</string>
   <string name="morphe_music_disable_audio_ducking_summary">Јачината на звукот нема да се намали кога друга апликација ќе пушти краток звук, како што е известување</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Филтер за лајкови во редот</string>
+  <string name="morphe_music_queue_like_filter_summary">Ги отстранува песните со малку лајкови од миксовите и радио станиците. Плејлистите, албумите и песните што ги додавате во редот не се менуваат. Бројот на лајкови е од Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Минимален број лајкови</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Песните со помалку лајкови се отстрануваат од редот</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Оневозможи пренасочување при несакање</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Спречува прескокнување на следната песна кога е притиснато копчето за несакање</string>
@@ -717,8 +722,14 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_written_by">Напишано од: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Истакни синхронизирани зборови или слогови</string>
   <string name="morphe_music_lyrics_word_sync_summary">Дај приоритет на текстот збор-по-збор кога е достапен. Кога текстот има временски ознаки за зборовите, се истакнува секој збор или слог во синхронизација со музиката</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Мазна анимација на синхронизираните зборови</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Ги истакнува зборовите со нежен премин, сјај и благо кревање додека се пеат. Исклучете го за да заштедите батерија или за острено пополнување на побавни уреди</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Користи „spring“ скролање</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Ги скрола текстовите со „spring“ физика и ја поместува секоја линија малку по онаа над неа. Исклучете го за да заштедите батерија на побавни уреди</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Опуштено скролање</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Ја забавува анимацијата на скролање на текстот и ги задржува неактивните редови во полна големина</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Заматување на неактивните линии</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Нежно ги заматува сите линии кои моментално не се пеат, повеќе колку што се подалечени (Android 12 и понови). Пред Android 12, неактивните линии остануваат јасни</string>
   <string name="morphe_music_lyrics_gap_dots_title">Прикажи точки за инструментална пауза</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Прикажува три точки помеѓу linemen за време на долга инструментална пауза, кои се полнат како што истекува паузата</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Повеќе затемни ги далечните линии</string>
@@ -841,6 +852,8 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Го поместува преводот над стиховите; читањето и романизацијата остануваат под нив</string>
   <string name="morphe_music_lyrics_force_center_title">Секогаш центрирај ги текстовите</string>
   <string name="morphe_music_lyrics_force_center_summary">ВКЛУЧЕНО ја става секоја линија во средината и го игнорира изворното порамнување, вклучувајќи ги и страните при дует; ИСКЛУЧЕНО го задржува порамнувањето што го бара текстот</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Порамнување на дуетите на спротивни страни</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Го поставува вториот пејач на спротивната страна кај песните во дует. Исклучете го за да ги задржите двајцата пејачи на истата страна</string>
   <string name="morphe_music_lyrics_providers_keep_one">Најмалку еден провајдер мора да остане вклучен</string>
   <string name="morphe_music_lyrics_translation_provider_title">Превод</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Романизација или транслитерација</string>

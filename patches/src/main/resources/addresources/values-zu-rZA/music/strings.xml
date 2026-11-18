@@ -271,6 +271,11 @@ Ukudlala kwe-SABR (I-Spoof video streams icishiwe)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Khubaza i-audio ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Ivoliyumu ayihleliwe lapho omunye uhlelo ludlala umsindo omfishane, njengesaziso</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Ihlu loku-filter lwe-likes loku-queue</string>
+  <string name="morphe_music_queue_like_filter_summary">Iksusa izingoma ezine-likes ezimbalwa emixeni nase-radio. Izinhlu zezingoma, ama-albums nezingoma ozifakile ku-queue azishintshi. Isibalo se-likes sivela ku-Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">I-likes encane kakhulu</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Izingoma ezine-likes ezimbalwa kakhulu zisuswa ku-queue</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Khansela ukuqondiswa kokungajabuli</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Kuvimbela ukuqhuba komculo owulandelayo lapho kuchotshozwa inkinobho yokungajabuli</string>
@@ -717,8 +722,14 @@ I-cookies ezidingekayo: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_written_by">Ibhalwe ngu: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Gqamisa amagama noma iziluku ezihambisana nomculo</string>
   <string name="morphe_music_lyrics_word_sync_summary">Phakamisa amazwi ngegama ngegama uma etholakala. Lapho amazwi enesikhathi segama, agqamisa igama ngalinye noma isiluku ngesikhathi somculo</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Enza amagama ahambisana nomculo ahambe ngokulula</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Vegza igama ngalinye ngokukhanya okuthambile nokuphakama kancane lapho lihlatshwa. Cisha ukuze wonge ibhethri noma ukuze kube nokugcwalisa okushayayo kumashini asheshayo</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Sebenzisa ukuskrola okunamehlo</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Iskrola amazwi ngemithetho ye-spring physics, futhi ihambise umugcawa ngomunye kancane ngemuva kowona opheningana nawo. Yicise ukuze uyonge ibhethri kumadivayisi asheshayo</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Ukuhambisa okukhululekile</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Icishisisa ukunyakaza kokuhambisa amazwi omculo futhi igcine imigqa engasebenzi isize sayo yonke</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Faka imifanekiso engacacile emigqeni engahlabelelwa</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Yenza imigqa engahlabelelwa njengamanje ingacacili, kanti labo abikude kakhulu bayoba mnyama kakhulu (Android 12 nangaphambilini). Ngaphambi kwe-Android 12, imigqa engahlabelelwa ihlala icacile</string>
   <string name="morphe_music_lyrics_gap_dots_title">Khombisa amachashu okukhefu lezinsimbi</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Khombisa amachashu amathathu phakathi kwemigcawa ngesikhathi sekhefu elide lezinsimbi, agcwaliseka lapho ikhefu liseduze nokuphuma</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Khombisa imigcawa ekude imnyama kakhulu</string>
@@ -841,6 +852,8 @@ Amazwi ingoma avela ezinkundleni zangaphandle ezingahlobene ne-Morphe, ezingaxha
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Kuyisa ukuhunyushwa phezulu kwamazwi; ukufunda nokubhala kwe-romanization kusala phansi</string>
   <string name="morphe_music_lyrics_force_center_title">Hlala ubeka amazwi phakathi</string>
   <string name="morphe_music_lyrics_force_center_summary">U-ON ubeka wonke umugqa phakathi futhi ukhahlela ukulungiswa komthombo, kuhlanganise nezinhlangothi ze-duet; u-OFF ugcina ukulungiswa amazwi acela khona</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Ukulungisa okuhlukile kwama-duet</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Ibeka umculi wesibili ohlangothini oluphambene ezingomeni zama-duet. Cima ukuze abaculi bobabili bahlale ohlangothini olulodwa</string>
   <string name="morphe_music_lyrics_providers_keep_one">Okungenani omunye umhlinzeki kumele avuliwe</string>
   <string name="morphe_music_lyrics_translation_provider_title">Ukuhumusha</string>
   <string name="morphe_music_lyrics_romanization_provider_title">I-Romanization noma i-transliteration</string>

@@ -122,8 +122,8 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_upload_time_title">Itago ang oras ng pag-upload</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Mga Limitasyon:
-• Maaari pa ring magpakita ng mga oras ng pag-upload ang mga Short shelf, mga pahina ng channel, at mga resulta ng paghahanap.
-• Hindi gumagana sa automotive layout."</string>
+• Maaari pa ring magpakita ng mga oras ng pag-upload ang mga Shorts shelf
+• Hindi gumagana sa automotive layout"</string>
   <string name="morphe_hide_video_thumbnail_title">Itago ang thumbnail ng video</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Itago ang mga label ng video</string>
@@ -131,8 +131,8 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_view_count_title">Itago ang bilang ng panonood</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Mga Limitasyon:
-• Maaari pa ring magpakita ng mga bilang ng panonood ang mga Short shelf, mga pahina ng channel, at mga resulta sa paghahanap.
-• Hindi gumagana sa automotive layout."</string>
+• Maaari pa ring magpakita ng mga bilang ng panonood ang mga Shorts shelf
+• Hindi gumagana sa automotive layout"</string>
   <string name="morphe_hide_web_search_results_title">Itago ang mga resulta ng paghahanap sa web</string>
   <string name="morphe_hide_web_search_results_summary">Itinatago ang seksyong \'Resulta mula sa web\' mula sa mga resulta ng paghahanap</string>
   <string name="morphe_hide_you_may_like_section_title">Itago ang seksyon na \'Baka magustuhan mo rin\'</string>
@@ -290,9 +290,10 @@ Mga Limitasyon:
   <string name="morphe_hide_autoplay_preview_summary">Tinatakpan ang preview ng susunod na video sa fullscreen bago magsimula ang autoplay</string>
   <string name="morphe_hide_channel_bar_title">Itago ang channel bar</string>
   <string name="morphe_hide_channel_watermark_title">Itago ang watermark sa channel</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Itago ang mga Kabanata at ang pindutang \'Sa video na ito\'</string>
+  <string name="morphe_hide_chapters_button_title">Itago ang button na Chapters</string>
   <string name="morphe_hide_crowdfunding_box_title">Itago ang kahon ng crowdfunding</string>
   <string name="morphe_hide_emergency_box_title">Itago ang mga kahon ng emerhensiya</string>
+  <string name="morphe_hide_in_this_video_button_title">Itago ang button na \'Sa videong ito\'</string>
   <string name="morphe_hide_info_panels_title">Itago ang mga panel ng impormasyon</string>
   <string name="morphe_hide_info_panels_summary">Itinatago ang mga informational context panel, tulad ng medical information</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Upang ipakita ang menu na 'Audio Track', baguhin ang 'I-spoof ang mga video stre
   <string name="morphe_feed_long_press_menu_summary">Ang pag-tap at pagpindot nang matagal sa kahit saan sa isang feed video ay nagbubukas ng menu nito</string>
   <string name="morphe_feed_watch_later_button_title">Ipakita ang Watch later button sa mga thumbnail</string>
   <string name="morphe_feed_watch_later_button_summary">Isang button na Watch later ang ipinapakita sa mga thumbnail ng mga video sa feed, na may check mark kung naka-save ang video. Ang pagtap dito ay mag-save o mag-aalis ng video, at ang pagtap at pagpigil dito ay magbubukas ng Save to playlist</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Buksan ang mga imahe ng post sa fullscreen</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Ang pag-tap sa imahe ng isang post ay bubuksan ito sa fullscreen, sa halip na sa feed ng mga post</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">I-download ang mga imahe ng post</string>
   <string name="morphe_post_image_download_summary">May lalabas na button para sa pag-download sa tabi ng button na Share ng mga post na may mga imahe o GIF, at may idaragdag na download item sa kanilang menu</string>
@@ -992,6 +996,7 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_swipe_press_to_engage_title">I-enable ang press to swipe gesture</string>
   <string name="morphe_swipe_press_to_engage_summary">Kinakailangan ang pagpindot at paghawak bago makilala ang isang kilos ng pag-swipe.</string>
   <string name="morphe_swipe_haptic_feedback_title">I-enable ang haptic feedback</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Nagba-vibrate kapag ang pagpindot at pag-hold ay nagsisimula ng isang swipe gesture</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">I-save at i-restore ang brightness</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Naaalala ang antas ng liwanag kapag pumapasok / lumalabas sa fullscreen mode</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">I-enable ang auto-brightness gesture</string>
@@ -1135,6 +1140,10 @@ Para ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gene
   <string name="morphe_navigation_bar_glass_opacity_summary">I-adjust ang transparency level ng glass navigation bar (0 ay transparent, 100 ay opaque)</string>
   <string name="morphe_navigation_bar_glass_round_title">Round glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_round_summary">Binibigyan ang glass navigation bar ng mga round end, sa halip na mga kanto gaya ng glass miniplayer</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Gilid ng glass navigation bar</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Gumuguhit ng light edge sa paligid ng glass navigation bar</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Bottom margin ng glass navigation bar</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">I-adjust ang espasyo sa pagitan ng glass navigation bar at ng ibaba ng screen o ng system navigation</string>
   <string name="morphe_navigation_bar_glass_size_title">Laki ng glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_size_summary">I-adjust ang taas, lapad at button spacing ng glass navigation bar, na may preview. Ang mga button na hindi kasya sa lapad ng screen ay nakatago</string>
   <string name="morphe_navigation_bar_glass_size_height">Taas</string>
@@ -1381,6 +1390,9 @@ Automotive layout
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">I-disable ang awtomatikong pag-refresh ng feed</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Pinipigilan ang mga feed na awtomatikong mag-refresh kapag lipas na ang mga ito</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">I-ungroup ang mga notipikasyon</string>
+  <string name="morphe_ungroup_notifications_summary">Ipinapakita ang bawat video ng naka-group na upload ng isang channel bilang sarili nitong notipikasyon</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Layout ng card sa feed</string>
   <string name="morphe_feed_card_layout_entry_1">Klasiko</string>
@@ -1493,6 +1505,8 @@ Automotive layout
   <string name="morphe_dearrow_titles_search_title">Mga resulta ng paghahanap</string>
   <string name="morphe_dearrow_titles_icon_title">Ipakita ang icon ng DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Ipinapakita ang icon ng DeArrow sa mga titulo ng mga video na may crowdsourced na titulo o thumbnail. I-tap ang icon upang ipakita ang orihinal na titulo at thumbnail</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Linisin ang mga pamagat</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Nililinis ang mga pamagat ng mga video na walang DeArrow title. Ang mga salitang nasa capital letters ay ginagawang normal case, at tinatanggal ang mga emoji, fancy text at paulit-ulit na exclamation mark</string>
   <string name="morphe_dearrow_casual_mode_title">Kaswal na mode</string>
   <string name="morphe_dearrow_casual_mode_summary">Ipinapakita ang orihinal na pamagat sa halip na pamagat ng DeArrow kung ang mga gumagamit ng DeArrow ay bumoto na gusto nila ang orihinal na pamagat</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum na kaswal na boto upang ipakita ang orihinal na pamagat</string>

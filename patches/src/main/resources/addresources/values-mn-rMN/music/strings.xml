@@ -271,6 +271,11 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Дууны дагналтыг идэвхгүй болгох</string>
   <string name="morphe_music_disable_audio_ducking_summary">Мэдэгдэл гэх мэт өөр аппликейшн богино хэмжээний дуу гаргах үед дууны хэмжээ буурахгүй</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Дарааллын лайк шүүлтүүр</string>
+  <string name="morphe_music_queue_like_filter_summary">Микс болон радиогаас цөөхөн лайктай дуунуудыг хасна. Дараалалд нэмсэн тоглолтын жагсаалт, цомг болон дуунуудад өөрчлөлт орохгүй. Лайкийн тоог Return YouTube Dislike-ээс авна</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Хамгийн бага лайк</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Бага лайктай дуунууд дарааллаас хасагдана</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Тааламжгүй гэх чиглүүлэлтийг идэвхгүй болгох</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Дуу таалагдахгүй товчийг дарахад дараагийн дуу руу шилжихээс сэргийлнэ</string>
@@ -717,8 +722,14 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_written_by">Зохиолч: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Цаг хугацааны синхрончлолтой үг эсвэл үеийг тодруулах</string>
   <string name="morphe_music_lyrics_word_sync_summary">Боломжтой үед үг бүрээрх дууны үгийг давуу эрхээр харуулна. Дууны үг нь үг бүрийн хугацааг агуулсан тохиолдолд хөгжимтэй зэрэгцэн үг эсвэл үе бүрийг тодруулна</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Синхрончлогдсон үгсийг зөөлөн хөдөлгөөнтэй болгох</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Дуулж буй үг бүрийг зөөлөн гэрэлтүүлж, тодотгоно. Баттерей хэмнэх эсвэл удаан төхөөрөмж дээр илүү тод харуулахын тулд унтраагаарай</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Пүршэн гүйлгэлтийг ашиглах</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Дууны үгийг пүршний физикээр гүйлгэж, мөр бүрийг дээрх мөрнөөсөө бага зэрэг залгаж харуулна. Удган төхөөрөмж дээр батерей хэмнэхийн тулд үүнийг унтраана уу</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Зөөлөн гүйлгэх</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Дууны үг гүйлгэх хөдөлгөөнийг удаашруулж, идэвхгүй мөрүүдийг бүтэн хэмжээгээр нь хадгална</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Идэвхгүй мөрүүдийг бүдгэрүүлэх</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Одоогоор дуулж байгаагүй мөр бүрийг зөөлөн бүдгэрүүлнэ, холдох тусам илүү бүдгэрнэ (Android 12 ба түүнээс хойш). Android 12-оос өмнөх хувилбаруудад идэвхгүй мөрүүд тодорхой хэвээр байна</string>
   <string name="morphe_music_lyrics_gap_dots_title">Хөгжмийн зогсолт үеийн цэгүүдийг näyttэх</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Урт хөгжмийн зогсолтын үеэр мөрүүдийн хооронд гурав цэг харуулах бөгөөд зогсолт дуусах тусам эдгээр цэгүүд дүүрнэ</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Алс хол мөрүүдийг илүү бүдгэрүүлэх</string>
@@ -841,6 +852,8 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Орчуулгыг дууны үгнээс дээшлүүлнэ; унших болон романизаци нь доор хэвээр үлдэнэ</string>
   <string name="morphe_music_lyrics_force_center_title">Дууны үгийг үргэлж төвд байрлуулах</string>
   <string name="morphe_music_lyrics_force_center_summary">АСААХ нь эх сурвалжийн тэгшилэл тэр дундаа дуэт хэсгүүдийг үл тоомсорлож, мөр бүрийг голлуулна; УНТРААХ нь дууны үгний анхны тэгшилэлээр хэвээр үлдээнэ</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Дуэтийн эсрэг талын тэгшилгээ</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Дуэт дуунуудын хувьд хоёр дахь дуучныг эсрэг талын ирмэгт байрлуулна. Хоёр дуучныг нэг талд байлгахын тулд үүнийг унтраагаарай</string>
   <string name="morphe_music_lyrics_providers_keep_one">Наад зах нь нэг нийлүүлэгчийг асаалттай байлгах ёстой</string>
   <string name="morphe_music_lyrics_translation_provider_title">Орчуулга</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Романизаци эсвэл галиглал</string>

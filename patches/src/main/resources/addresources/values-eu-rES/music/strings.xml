@@ -271,6 +271,11 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Desaktibu audio-ducking-a</string>
   <string name="morphe_music_disable_audio_ducking_summary">Bolumena ez da jaitsi beste aplikazio batek soinua labur bat txalgatu zuenean, adibidez, jakinarazpen bat</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Ilara gustukoen filtroa</string>
+  <string name="morphe_music_queue_like_filter_summary">Nahasketa eta irratietatik gustuko gutxiko abestziak kentzen ditu. Ilarara gehitako zerrendak, albumak eta abestziak ez dira aldatzen. Gustukoen kopuruak Return YouTube Dislike-tik datoz</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Gutxieneko gustukoak</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Gustuko gutxiago duten abestziak ilaratik kentzen dira</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desaktibu ez-gustu bideratzea</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Ez-gustu botoia sakatzean hurrengo pistara salto egitea ekiditen du</string>
@@ -717,8 +722,14 @@ Beharrezko cookie-ak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Idatzi zuen: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Markatu sinkronizatutako hitzak edo silabak</string>
   <string name="morphe_music_lyrics_word_sync_summary">Lehenetsi hitzez hitzeko letrak eskuragarri daudenean. Letrek denbora-markak dituztenean, hitz edo silaba bakoitza musikarekin batera nabarmentzen du</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Anima sinkronizatuko hitzak modu leunetan</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Hitz bakoitza nabMentoratzen du irrisa leun batekin, distirekin eta altxapen txiki batekin abestu zuenean. Desaktibu bateria aurrezteko edo gailu motelagoetan betetze zuzenago bat izateko</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Erabili spring scrolling-a</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Letrak spring-fisikaz irakurtzen ditu, eta lerro guztiek gainean dagoenaren gainean pixka bat mugitzen dira. Desaktibu gailu motelagoetan bateria aurrezteko</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Iritskera erlaxatua</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Letteren iritskera-animazioa moteldu eta lerro inaktiboak tamaina osoan mantendu</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Lineak ezagunak difuminatu</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Unean abestu ez den guztin lineak difuminaatzen ditu modu leun batean, urrunagoeak gehiago (Android 12 eta berriagoak). Android 12 baino lehenago, lineak ezagunak zuzen jarraitzen dira</string>
   <string name="morphe_music_lyrics_gap_dots_title">Erakutsi instrumentalaren atsedeneko puntuak</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Instrumentalaren atseden luze batean, lerroken artean hiru puntuak erakusten ditu, eta atsedena amaitzeurrenean betetzen dira</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Iluntasi gehiago urruneko lerroak</string>
@@ -841,6 +852,8 @@ Letrak Morphe-rekin afiliatuta, babestuta edo onartuta ez dauden hirugarren zerb
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Itzulpena letren gainera lekuko; irakurketa eta romanizazioa behean geratzen dira</string>
   <string name="morphe_music_lyrics_force_center_title">Letrak beti erdian jarri</string>
   <string name="morphe_music_lyrics_force_center_summary">ON aktibatuta, lerro guztiak erdian jartzen dira eta iturriaren lerrokatzea ez da kontuan hartzen, duet aldeak barne; OFF aukeran letrek eskatzen duten lerrokatzea mantentzen da</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Duetearen alderdi kontrako lerrokadura</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Bigarren abestaria alderdi kontrako ertzean jartzen du duete abestietan. Desaktibatu abestari biak alderdi berean mantentzeko</string>
   <string name="morphe_music_lyrics_providers_keep_one">Gutxienez hornitzaile bat gaituta egon behar da</string>
   <string name="morphe_music_lyrics_translation_provider_title">Itzulpena</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizazioa edo transliterazioa</string>

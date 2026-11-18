@@ -122,7 +122,7 @@ Guherînên ku tê de hene:
   <string name="morphe_hide_upload_time_title">Demîlê barkêşîyê veşêre</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Sînorkirin:
-• Refên Shorts, rûpelên kanalê û encamên lêgerînê dibe ku hîn jî dema barkirinê nîşan bidin
+• Refên Shorts dibe ku hîn jî dema barkirinê nîşan bidin
 • Li ser layouta otomobîlê naxebite"</string>
   <string name="morphe_hide_video_thumbnail_title">Thumbnaila vîdyoyê veşêre</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Guherînên ku tê de hene:
   <string name="morphe_hide_view_count_title">Hejmara dîtinên veşêre</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Sînorkirin:
-• Refên Shorts, rûpelên kanalê û encamên lêgerînê dibe ku hîn jî hejmarên temaşeyan nîşan bidin
+• Refên Shorts dibe ku hîn jî hejmarên temaşeyan nîşan bidin
 • Li ser layouta otomobîlê naxebite"</string>
   <string name="morphe_hide_web_search_results_title">Mijarên lêgerîna webê veşêrin</string>
   <string name="morphe_hide_web_search_results_summary">Beşa \'Result from the web\' ji encamên lêgerînê veşêre</string>
@@ -290,9 +290,10 @@ Sînor:
   <string name="morphe_hide_autoplay_preview_summary">Pêşdîtina vîdyoya pêş di tam-ekranê de berî ku autoplay dest pê bike veşêre</string>
   <string name="morphe_hide_channel_bar_title">Barê kanalê veşêrin</string>
   <string name="morphe_hide_channel_watermark_title">Avahiya kanalê veşêrin</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Bişkoja \'Chapters\' û \'In this video\' veşêre</string>
+  <string name="morphe_hide_chapters_button_title">Bişkoja Beşan veşêre</string>
   <string name="morphe_hide_crowdfunding_box_title">Qutbixaneya crowdsourcing-ê bidin veqêşînin</string>
   <string name="morphe_hide_emergency_box_title">Qutiyên acil veşêrin</string>
+  <string name="morphe_hide_in_this_video_button_title">Bişkoja \'Di vê vîdyoyê de\' veşêre</string>
   <string name="morphe_hide_info_panels_title">Panelên agahdariyê veşêrin</string>
   <string name="morphe_hide_info_panels_summary">Panelên agahiyên giştî, wek agahiya bijîşkî veşêre</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her c
   <string name="morphe_feed_long_press_menu_summary">Bi tikandin û girtinê li her derê vîdyoyekê ya feedê, menuya wê vedibe</string>
   <string name="morphe_feed_watch_later_button_title">Butona \"Paşê temaşe bike\" li ser thumbnailan nîşan bide</string>
   <string name="morphe_feed_watch_later_button_summary">Bişkokeke \"Paşê temaşe bike\" li ser thumbnailên vîdyoyên feedê tê nîşandan, û heger vîdyo hatibe savekirin, nîşanekî rast heye. Bi lêdanê vîdyo tê savekirin an jê tê birin, û bi lêdan û girtinê \"Save bike di playlistê de\" vedibe</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Wêne yên postan di ekrana tam de veke</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Lêdana wêneyekî postî, li şûma feedê postan, wêneyê di ekrana tam de vedike</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Wêneyên postan dakêşe</string>
   <string name="morphe_post_image_download_summary">Bişkojeke daxistinê li kêleka bişkoja Share ya postên bi wêne an GIF re tê nîşandan, û bendeke daxistinê li menuya wan tê zêdekirin</string>
@@ -992,6 +996,7 @@ Ji bo rastkirina vê, 'Spoof video streams' çalak bike û 'Default client' bike
   <string name="morphe_swipe_press_to_engage_title">Tevgera swipe bi girtinê çalak bike</string>
   <string name="morphe_swipe_press_to_engage_summary">Berî ku tevgera swipe were naskirin, pêwîst e bişkojê bikeyî û bigirî.</string>
   <string name="morphe_swipe_haptic_feedback_title">Vegera hestiyarî çalak bike</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Gava biçêkandina û girtina dirêj dest bi îşareta swipe dike, lêrzine</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Ronahiyê tomar bike û vegerîne</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Dema ku ji tam-ekranê derdikeve an tê de dikeve, asta ronahiyê tomar dike</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Tevgera ronahiya otomatîk çalak bike</string>
@@ -1135,6 +1140,10 @@ Ji bo gihîştina Settings, bişkokeya Settings bi rêya General → Toolbar →
   <string name="morphe_navigation_bar_glass_opacity_summary">Asta şefafiya şirîta navîgasyonê ya şûşeyî rênike (0 şefaf e, 100 qetim e)</string>
   <string name="morphe_navigation_bar_glass_round_title">Barê navîgasyonê yê şûşeya dor</string>
   <string name="morphe_navigation_bar_glass_round_summary">Li şûna goşeyên mîna miniplayerê yê şûşeyê, sirêyên barê navîgasyonê yê şûşeyê dike</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Tora barê navîgasyonê yê şûşê</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Toreke ronî li dora barê navîgasyonê yê şûşê xêz dike</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Margîna binê ya barê navîgasyonê yê şûşê</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Spaceya di navbera şirîteya navîgasyonê û binê ekranê an navîgasyona sîstemê de rast bike</string>
   <string name="morphe_navigation_bar_glass_size_title">Mezinahiya şirîta navîgasyonê ya şûşê</string>
   <string name="morphe_navigation_bar_glass_size_summary">Bilindî, berfirehî û spacinga butonên şirîta navîgasyonê ya şûşê bi pêşnêrînekê rês bike. Butonên ku di berfirehiya ekrânê de nayên girtin tên veşartin</string>
   <string name="morphe_navigation_bar_glass_size_height">Bilindî</string>
@@ -1381,6 +1390,9 @@ Layouta otomotîvê
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Nûkirina feed-a otomatîk bêkar bike</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Nahêle ku feed piştî kevn bûnê bi xweber nû bibin</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Agahdariyên ji hev veqetîne</string>
+  <string name="morphe_ungroup_notifications_summary">Her vîdyoyek ji barkirandinên komkirî yên kanalê wekî agahdariyeke serbixwe nîşan dide</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Layouta kartên feedê</string>
   <string name="morphe_feed_card_layout_entry_1">Klasîk</string>
@@ -1493,6 +1505,8 @@ Layouta otomotîvê
   <string name="morphe_dearrow_titles_search_title">Encamên lêgerînê</string>
   <string name="morphe_dearrow_titles_icon_title">Îkona DeArrow nîşan bide</string>
   <string name="morphe_dearrow_titles_icon_summary">Îkona DeArrow li ser navên vîdyoyên bi navekî an thumbnailekî crowdsourced nîşan dide. Ji bo nîşandana nav û thumbnailê yên orîjînal, li îkonê bitikîne</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Paqijkirina naवानan</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Naverên vîdyoyên bêyî naverê DeArrow paqij dike. Peyvên bi herfan ên mezin tên guhertin bo şiklê asayî, û emojî, nivîsên xeyalî û nîşanên hizîrê yên dubare tên jêbor kirin</string>
   <string name="morphe_dearrow_casual_mode_title">Moda asayî</string>
   <string name="morphe_dearrow_casual_mode_summary">Heke bikarhênerên DeArrow ji sernavê orjînal hez dikin, li şûna sernavê DeArrow sernavê orjînal nîşan dide</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Hejmara kêmtirîn dengên moda asayî ji bo nîşandana sernavê orjînal</string>

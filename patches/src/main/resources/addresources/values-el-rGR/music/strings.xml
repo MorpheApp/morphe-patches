@@ -271,6 +271,11 @@ Second \"item\" text"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Απενεργοποίηση της μείωσης έντασης ήχου</string>
   <string name="morphe_music_disable_audio_ducking_summary">Η ένταση δεν μειώνεται όταν μια άλλη εφαρμογή αναπαράγει έναν σύντομο ήχο, όπως μια ειδοποίηση</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Φίλτρο like της ουράς</string>
+  <string name="morphe_music_queue_like_filter_summary">Αφαιρεί τραγούδια με λίγα like από τα mix και το ραδιόφωνο. Οι λίστες αναπαραγωγής, τα άλμπουμ και τα τραγούδια που προσθέτετε στην ουρά δεν αλλάζουν. Ο αριθμός των like προέρχεται από το Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Ελάχιστα like</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Τα τραγούδια με λιγότερα like αφαιρούνται από την ουρά</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Απενεργοποίηση ανακατεύθυνσης αποδοκιμασίας</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Αποτρέπει τη μετάβαση στο επόμενο κομμάτι όταν πατηθεί το κουμπί αποδοκιμασίας</string>
@@ -717,8 +722,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">Γράφτηκε από: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Επισήμανση συγχρονισμένων λέξεων ή συλλαβών</string>
   <string name="morphe_music_lyrics_word_sync_summary">Δώστε προτεραιότητα στους στίχους λέξη-λέξη όταν είναι διαθέσιμοι. Όταν οι στίχοι έχουν χρονισμό λέξεων, επισημαίνεται κάθε λέξη ή συλλαβή σε συγχρονισμό με τη μουσική.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Ομαλή animation συγχρονισμένων λέξεων</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Υπογραμμίζει κάθε λέξη με μια απαλή κίνηση, λάμψη και ελαφρά ανύψωση καθώς τραγουδιέται. Απενεργοποιήστε για εξοικονόμηση μπαταρίας ή για πιο απότομη γέμισμα σε πιο αργές συσκευές</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Χρήση κύλισης με ελατήριο</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Κυλίζει τους στίχους με φυσική ελατηρίου και μετατοπίζει κάθε γραμμή ελαφρώς μετά από την προηγούμενη. Απενεργοποιήστε για εξοικονόμηση μπαταρίας σε πιο αργές συσκευές</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Χαλαρή κύλιση</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Μειώνει την ταχύτητα της animation κύλισης των στίχων και διατηρεί τις ανενεργές γραμμές σε πλήρες μέγεθος</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Θολώστε τις ανενεργές γραμμές</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Θολώνει ελαφρά κάθε γραμμή που δεν τραγουδιέται αυτή τη στιγμή, περισσότερο όσο απομακρύνεται (Android 12 και μεταγενέστερα). Πριν από το Android 12, οι ανενεργές γραμμές παραμένουν καθαρές</string>
   <string name="morphe_music_lyrics_gap_dots_title">Εμφάνιση τελειών διαλείμματος οργάνων</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Εμφανίζει τρεις τελείες ανάμεσα στις γραμμές κατά τη διάρκεια ενός μεγάλου διαλείμματος οργάνων, οι οποίες γεμίζουν καθώς τελειώνει το διάλειμμα</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Περισσότερο σκίασμα απομακρυνμένων γραμμών</string>
@@ -841,6 +852,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Μετακινεί τη μετάφραση πάνω από τους στίχους· η ανάγνωση και η ρωμαϊκή μεταγραφή παραμένουν από κάτω</string>
   <string name="morphe_music_lyrics_force_center_title">Κεντράρεμα στίχων πάντα</string>
   <string name="morphe_music_lyrics_force_center_summary">Το ON βάζει κάθε γραμμή στο κέντρο και αγνοεί την ευθυγράμμιση της πηγής, συμπεριλαμβανομένων των πλευρών duet· Το OFF διατηρεί την ευθυγράμμιση που ζητούν οι στίχοι</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Ευθυγράμμιση ντουέτου στην απέναντι πλευρά</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Τοποθετεί τον δεύτερο τραγουδιστή στην απέναντι άκρη σε τραγούδια ντουέτου. Απενεργοποιήστε για να διατηρήσετε και τους δύο τραγουδιστές στην ίδια πλευρά</string>
   <string name="morphe_music_lyrics_providers_keep_one">Πρέπει να παραμείνει ενεργός τουλάχιστον ένας πάροχος</string>
   <string name="morphe_music_lyrics_translation_provider_title">Μετάφραση</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Ρωμαϊσμός ή μεταγραφή</string>

@@ -122,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">ເຊື່ອງເວລາອັບໂຫຼດ</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"ຂໍ້ຈຳກັດ:
-• ຊັ້ນ Shorts, ໜ້າຊ່ອງ, ແລະ ຜົນການຄົ້ນຫາ ອາດຈະຍັງສະແດງເວລາອັບໂຫຼດ
+• ຊັ້ນ Shorts ອາດຈະຍັງສະແດງເວລາອັບໂຫຼດ
 • ບໍ່ສາມາດໃຊ້ໄດ້ກັບຮູບແບບສຳລັບລົດຍົນ"</string>
   <string name="morphe_hide_video_thumbnail_title">ເຊື່ອງຮູບຕົວຢ່າງວິດີໂອ</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">ເຊື່ອງຈຳນວນການເບິ່ງ</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"ຂໍ້ຈຳກັດ:
-• ຊັ້ນ Shorts, ໜ້າຊ່ອງ, ແລະ ຜົນການຄົ້ນຫາ ອາດຈະຍັງສະແດງຈຳນວນການເບິ່ງ
+• ຊັ້ນ Shorts ອາດຈະຍັງສະແດງຈຳນວນການເບິ່ງ
 • ບໍ່ສາມາດໃຊ້ໄດ້ກັບຮູບແບບສຳລັບລົດຍົນ"</string>
   <string name="morphe_hide_web_search_results_title">ເຊື່ອງຜົນການຄົ້ນຫາເວັບ</string>
   <string name="morphe_hide_web_search_results_summary">ເຊື່ອງພາກ \'ຜົນລັດຈາກເວັບ\' ຈາກຜົນການຄົ້ນຫາ</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">ເຊື່ອງການທ່ອງເບິ່ງວິດີໂອລ່ວງໜ້າໃນໜ້າຈໍເຕັມ ກ່ອນທີ່ການຫຼິ້ນອັດຕະໂນມັດຈະເລີ່ມຂຶ້ນ</string>
   <string name="morphe_hide_channel_bar_title">ເຊື່ອງແຖບຊ່ອງ</string>
   <string name="morphe_hide_channel_watermark_title">ເຊື່ອງລາຍນ້ຳຂອງຊ່ອງ</string>
-  <string name="morphe_hide_chapters_timeline_button_title">ເຊື່ອງບົດ ແລະ ປຸ່ມ \'ໃນວິດີໂອນີ້\'</string>
+  <string name="morphe_hide_chapters_button_title">ເຊື່ອງປຸ່ມບົດ</string>
   <string name="morphe_hide_crowdfunding_box_title">ເຊື່ອງກ່ອງລະດົມທຶນ</string>
   <string name="morphe_hide_emergency_box_title">ເຊື່ອງກ່ອງຂໍ້ຄວາມສຸກເສີນ</string>
+  <string name="morphe_hide_in_this_video_button_title">ເຊື່ອງປຸ່ມ \'ໃນວິດີໂອນີ້\'</string>
   <string name="morphe_hide_info_panels_title">ເຊື່ອງແຜງຂໍ້ມູນ</string>
   <string name="morphe_hide_info_panels_summary">ເຊື່ອງແຜງຂໍ້ມູນບໍລິບົດ, ເຊັ່ນ ຂໍ້ມູນທາງການແພດ</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">ການແຕະ ແລະ ກົດຄ້າງໄວ້ຢູ່ບ່ອນໃດກໍໄດ້ໃນວິດີໂອຂອງຟີດ ຈະເປີດເມນູຂອງວິດີໂອນັ້ນ</string>
   <string name="morphe_feed_watch_later_button_title">ສະແດງປຸ່ມ ເບິ່ງພາຍຫຼັງ ໃນຮູບຕົວຢ່າງ</string>
   <string name="morphe_feed_watch_later_button_summary">ປຸ່ມ \"ເບິ່ງພາຍຫຼັງ\" ຈະຖືກສະແດງຢູ່ໃນຮູບຕົວຢ່າງຂອງວິດີໂອໃນ feed, ພ້ອມດ້ວຍເຄື່ອງໝາຍຖືກຖ້າວິດີໂອຖືກບັນທຶກໄວ້. ການແຕະປຸ່ມນີ້ຈະເປັນການບັນທຶກ ຫຼື ລຶບວິດີໂອ, ແລະ ການແຕະຄ້າງໄວ້ຈະເປີດ \"ບັນທຶກໄວ້ໃນລາຍການຫຼິ້ນ\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">ເປີດຮູບພາບຂອງໂພສໃນໜ້າຈໍເຕັມ</string>
+  <string name="morphe_open_post_images_fullscreen_summary">ການແຕະຮູບພາບຂອງໂພສຈະເປີດມັນໃນໜ້າຈໍເຕັມ, ແທນທີ່ຈະເປັນໃນຟີດຂອງໂພສ</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">ດາວໂຫຼດຮູບພາບໂພສ</string>
   <string name="morphe_post_image_download_summary">ປຸ່ມດາວໂຫຼດຈະສະແດງຂ້າງປຸ່ມແຊຣ໌ຂອງໂພສທີ່ມີຮູບພາບ ຫຼື GIFs, ແລະ ລາຍການດາວໂຫຼດຈະຖືກເພີ່ມເຂົ້າໃນເມນູຂອງພວກມັນ</string>
@@ -992,6 +996,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">ເປີດໃຊ້ງານທ່າທາງການກົດເພື່ອປັດ</string>
   <string name="morphe_swipe_press_to_engage_summary">ຕ້ອງກົດຄ້າງໄວ້ກ່ອນທີ່ການຮູດຈະຖືກເຮັດວຽກ</string>
   <string name="morphe_swipe_haptic_feedback_title">ເປີດໃຊ້ງານການຕອບສະໜອງແບບສັ່ນ</string>
+  <string name="morphe_swipe_haptic_feedback_summary">ສັ່ນເມື່ອສຳຜັດຄ້າງໄວ້ເພື່ອເລີ່ມການປັດ</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">ບັນທຶກ ແລະ ຟື້ນຟູຄວາມສະຫວ່າງ</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">ຈົດຈຳລະດັບຄວາມສະຫວ່າງເມື່ອເຂົ້າ / ອອກຈາກໂໝດເຕັມຈໍ</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">ເປີດໃຊ້ງານທ່າທາງຄວາມສະຫວ່າງອັດຕະໂນມັດ</string>
@@ -1135,6 +1140,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສຂອງແຖບນຳທາງແບບແກ້ວ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
   <string name="morphe_navigation_bar_glass_round_title">ແຖບນຳທາງແບບແກ້ວມົນ</string>
   <string name="morphe_navigation_bar_glass_round_summary">ເຮັດໃຫ້ປາຍຂອງແຖບນຳທາງແບບແກ້ວມີລັກສະນະມົນ, ແທນທີ່ຈະເປັນມຸມຄືກັບເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍແບບແກ້ວ</string>
+  <string name="morphe_navigation_bar_glass_edge_title">ຂອບແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">ສ້າງຂອບແສງອ້ອມຮອບແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">ໄລຍະຫ່າງຂອບລຸ່ມຂອງແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">ປັບໄລຍະຫ່າງລະຫວ່າງແຖບນຳທາງແບບແກ້ວ ແລະ ດ້ານລຸ່ມຂອງໜ້າຈໍ ຫຼື ການນຳທາງຂອງລະບົບ</string>
   <string name="morphe_navigation_bar_glass_size_title">ຂະໜາດຂອງແຖບນຳທາງແບບແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ ແລະ ໄລຍະຫ່າງຂອງປຸ່ມຂອງແຖບນຳທາງແບບແກ້ວ, ພ້ອມກັບການເບິ່ງຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
   <string name="morphe_navigation_bar_glass_size_height">ຄວາມສູງ</string>
@@ -1381,6 +1390,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">ປິດການຣີເຟຣຊຟີດອັດຕະໂນມັດ</string>
   <string name="morphe_disable_auto_feed_refresh_summary">ປ້ອງກັນບໍ່ໃຫ້ຟີດຣີເຟຣຊອັດຕະໂນມັດຫຼັງຈາກທີ່ມັນເກົ່າໄປ</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">ຍົກເລີກການຈັດກຸ່ມການແຈ້ງເຕືອນ</string>
+  <string name="morphe_ungroup_notifications_summary">ສະແດງທຸກວິດີໂອຂອງການອັບໂຫຼດທີ່ຖືກຈັດກຸ່ມຂອງຊ່ອງເປັນການແຈ້ງເຕືອນຂອງຕົນເອງ</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">ຮູບແບບບັດຟີດ</string>
   <string name="morphe_feed_card_layout_entry_1">ແບບຄລາສສິກ</string>
@@ -1493,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">ຜົນການຄົ້ນຫາ</string>
   <string name="morphe_dearrow_titles_icon_title">ສະແດງໄອຄອນ DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">ສະແດງໄອຄອນ DeArrow ຢູ່ໃນຫົວຂໍ້ຂອງວິດີໂອທີ່ມີຫົວຂໍ້ ຫຼື ຮູບຕົວຢ່າງທີ່ມາຈາກ crowdsourced. ແຕະໄອຄອນເພື່ອສະແດງຫົວຂໍ້ ແລະ ຮູບຕົວຢ່າງດັ່ງເດີມ</string>
+  <string name="morphe_dearrow_clean_up_titles_title">ລ້າງຫົວຂໍ້ໃຫ້ສະອາດ</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">ລ້າງຫົວຂໍ້ຂອງວິດີໂອທີ່ບໍ່ມີຫົວຂໍ້ DeArrow. ຄຳສັບທີ່ເປັນຕົວພິມໃຫຍ່ຈະຖືກປ່ຽນເປັນຕົວພິມປົກກະຕິ, ແລະ ຈະມີການລຶບເອມໂມຈິ, ຂໍ້ຄວາມທີ່ຕົກແຕ່ງ ແລະ ເຄື່ອງໝາຍອັດສະຈັນທີ່ຊ້ຳກັນອອກ</string>
   <string name="morphe_dearrow_casual_mode_title">ໂໝດແບບບໍ່ເປັນທາງການ</string>
   <string name="morphe_dearrow_casual_mode_summary">ສະແດງຫົວຂໍ້ດັ້ງເດີມ ແທນຫົວຂໍ້ຂອງ DeArrow ຖ້າຜູ້ໃຊ້ DeArrow ໂຫວດວ່າພວກເຂົາມັກຫົວຂໍ້ດັ້ງເດີມ</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">ຈຳນວນໂຫວດແບບບໍ່ເປັນທາງການຂັ້ນຕ່ຳ ເພື່ອສະແດງຫົວຂໍ້ດັ້ງເດີມ</string>

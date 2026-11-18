@@ -271,6 +271,11 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Išjungti garso primalėjimą</string>
   <string name="morphe_music_disable_audio_ducking_summary">Garsas nepamažinamas, kai kita programėlė groja trumpą garsą, pavyzdžiui, pranešimą</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Kiekio patinkimų filtras</string>
+  <string name="morphe_music_queue_like_filter_summary">Pašalina dainas, turinčias mažai patinkimų, iš miksų ir radijo. Atgrojimo eilės sąrašo grožimo sąrašai, albumai ir dainos, kurias pridėjote patys, nepakista. Patinkimų skaičius imamas iš Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimalus patinkimų skaičius</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Dainos, turinčios mažiau patinkimų, yra pašalinamos iš eilės</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Išjungti „Nepatinka“ peradresavimą</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Neleidžia peršokti prie kito kūrinio paspaudus „Nepatinka“ mygtuką</string>
@@ -717,8 +722,14 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Parašė: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Paryškinti sinchronizuotus žodžius ar skiemenis</string>
   <string name="morphe_music_lyrics_word_sync_summary">Teikti pirmenybę žodis po žodžio sinchronizuotiems dainų tekstams, kai jie prieinami. Kai dainų tekstai turi žodžių laiką, kiekvienas žodis ar skiemuo paryškinamas pagal muziką</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Sklandžiai animuoti sinchronizuotus žodžius</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Kiekvienas žodis dainuojamas švelniau pabrėžiamas, šviečia ir šiek tiek pakilęs. Išjunkite, kad sutaupytumėte akumuliatoriaus energijos arba norėdami gauti ryškesnį užpildymą lėtesniuose įrenginiuose</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Naudoti „spring“ ritinimą</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Ritina dainos žodžius naudojant „spring“ fiziką ir kiek paslepia kiekvieną eilutę po viršutinės. Išjunkite, kad sutaupytumėte baterijos lėtesniuose įrenginiuose</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Ramuose teksto judesiai</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Složina dainos žodžių judėjimo animaciją ir išlaiko neaktyvias eilutes pilno dydžio</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Sumaistyti neaktyvias eilutes</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Švelniai sumaistoma kiekviena eilutė, kuri šiuo metu nėra dainuojama, o kuo toliau eilutė, tuo sumaistymas stipresnis („Android 12“ ir vėlesnėse versijose). Ankstesnėse nei „Android 12“ versijose neaktyvios eilutės lieka ryškios</string>
   <string name="morphe_music_lyrics_gap_dots_title">Rodyti instrumentalios pertraukos taškus</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Rodo tris taškus tarp eilučių ilgos instrumentalios pertraukos metu, kurie užsipildoma pertraukai baigiantis</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Labiau priglaistyti tolesnes eilutes</string>
@@ -841,6 +852,8 @@ Dainų tekstai ateina iš trečiųjų paslaugų, kurios nėra susijusios su Morp
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Perkelia vertimą virš lyrics; skaitymas ir romanizacija lieka žemiau</string>
   <string name="morphe_music_lyrics_force_center_title">Visada centruoti dainų tekstą</string>
   <string name="morphe_music_lyrics_force_center_summary">ĮJUNGTAS leidžia kiekvienai eilučiai būti viduryje ir ignoruoja šaltinio išdėstymą, įskaitant duoletines puses; IŠJUNGTAS išlaiko tokią poziciją, kokios prašo dainų tekstas</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Dueto išlyginavimas priešingose pusėse</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Dueto dainose antrasis dainininkas nukeliamas į priešingą kraštą. Išjunkite, jei norite, kad abu dainininkai būtų toje pačioje pusėje</string>
   <string name="morphe_music_lyrics_providers_keep_one">Bent vienas tiekėjas privalo būti aktyvus</string>
   <string name="morphe_music_lyrics_translation_provider_title">Vertimas</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Transliteracija arba transliteravimas</string>

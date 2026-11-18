@@ -271,6 +271,11 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Tắt giảm âm thanh</string>
   <string name="morphe_music_disable_audio_ducking_summary">Âm lượng sẽ không bị giảm khi một ứng dụng khác phát âm thanh ngắn, chẳng hạn như thông báo</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Bộ lọc lượt thích trong hàng chờ</string>
+  <string name="morphe_music_queue_like_filter_summary">Loại bỏ các bài hát có ít lượt thích khỏi các bản mix và radio. Danh sách phát, album và bài hát bạn thêm vào hàng chờ sẽ không thay đổi. Số lượng lượt thích được lấy từ Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Số lượt thích tối thiểu</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Các bài hát có ít lượt thích hơn sẽ bị loại bỏ khỏi hàng chờ</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Tắt chuyển bài khi bấm không thích</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Không chuyển sang bài tiếp theo khi bạn bấm nút Không thích</string>
@@ -717,8 +722,14 @@ Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Viết bởi: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Đánh dấu các từ hoặc âm tiết đồng bộ</string>
   <string name="morphe_music_lyrics_word_sync_summary">Ưu tiên lời bài hát từng từ khi có sẵn. Khi lời bài hát có thời gian cho từng từ, đánh dấu từng từ hoặc âm tiết theo nhạc</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Hoạt ảnh từ đồng bộ mượt mà</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Làm nổi bật mỗi từ bằng hiệu ứng quét nhẹ, phát sáng và nâng nhẹ khi được hát. Tắt để tiết kiệm pin hoặc để hiển thị sắc nét hơn trên các thiết bị chậm hơn</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Sử dụng cuộn lò xo</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Cuộn lời nhạc với vật lý lò xo, và di chuyển mỗi dòng một chút sau dòng phía trên. Tắt để tiết kiệm pin trên các thiết bị chậm hơn</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Cuộn thư giãn</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Làm chậm hoạt ảnh cuộn lời bài hát và giữ các dòng không hoạt động ở kích thước đầy đủ</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Làm mờ các dòng không hoạt động</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Làm mờ nhẹ mọi dòng hiện không được hát, mức độ mờ tăng dần khi càng xa (Android 12 trở lên). Trước Android 12, các dòng không hoạt động vẫn hiển thị sắc nét</string>
   <string name="morphe_music_lyrics_gap_dots_title">Hiện các dấu chấm nghỉ nhạc</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Hiển thị ba dấu chấm giữa các dòng trong khoảng nghỉ nhạc dài, các dấu chấm này sẽ đầy dần khi đoạn nghỉ kết thúc</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Làm mờ các dòng ở xa nhiều hơn</string>
@@ -841,6 +852,8 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Di chuyển bản dịch lên trên lời bài hát; phần phiên âm và La-tinh hóa vẫn ở bên dưới</string>
   <string name="morphe_music_lyrics_force_center_title">Luôn căn giữa lời bài hát</string>
   <string name="morphe_music_lyrics_force_center_summary">BẬT đặt mọi dòng ở giữa và bỏ qua sự căn chỉnh của nguồn, bao gồm cả hai bên song ca; TẮT giữ nguyên sự căn chỉnh mà lời bài hát yêu cầu</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Căn lề song ca đối diện</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Đặt ca sĩ thứ hai ở cạnh đối diện trong các bài hát song ca. Tắt để giữ cả hai ca sĩ ở cùng một phía</string>
   <string name="morphe_music_lyrics_providers_keep_one">Ít nhất một nhà cung cấp phải được bật</string>
   <string name="morphe_music_lyrics_translation_provider_title">Dịch thuật</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Latinh hóa hoặc phiên âm</string>

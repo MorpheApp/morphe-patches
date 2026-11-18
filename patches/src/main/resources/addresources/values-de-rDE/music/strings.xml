@@ -271,6 +271,11 @@ SABR-Wiedergabe (Spoofing von Videostreams deaktiviert)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Audio-Ducking deaktivieren</string>
   <string name="morphe_music_disable_audio_ducking_summary">Die Lautstärke wird nicht gesenkt, wenn eine andere App einen kurzen Ton abspielt, z. B. eine Benachrichtigung</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Queue-Likes-Filter</string>
+  <string name="morphe_music_queue_like_filter_summary">Entfernt Songs mit wenigen Likes aus Mixen und Radio. Playlists, Alben und Songs, die du zur Queue hinzufügst, bleiben unverändert. Die Like-Zahlen stammen von Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Mindestanzahl an Likes</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Songs mit weniger Likes werden aus der Queue entfernt</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Weiterleitung bei „Gefällt mir nicht“ deaktivieren</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Verhindert das Überspringen zum nächsten Titel, wenn die Schaltfläche „Gefällt mir nicht“ gedrückt wird</string>
@@ -717,8 +722,14 @@ Erforderliche Cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_written_by">Geschrieben von: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Hebe synchronisierte Wörter oder Silben hervor.</string>
   <string name="morphe_music_lyrics_word_sync_summary">Bevorzuge wortweise Songtexte, wenn verfügbar. Wenn Songtexte Wort-Timing enthalten, hebt dies jedes Wort oder jede Silbe synchron zur Musik hervor.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Synchronisierte Wörter fließend animieren</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Hebt jedes Wort beim Singen mit einem sanften Wischer, Leuchten und leichtem Anheben hervor. Zum Energiesparen oder für eine scharfe Darstellung auf langsameren Geräten ausschalten</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Feder-Scrolling verwenden</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Scrollt den Songtext mit Federphysik und versetzt jede Zeile leicht gegenüber der darüber liegenden. Deaktivieren Sie dies, um auf langsameren Geräten Akku zu sparen</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Entspanntes Scrollen</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Verlangsamt die Scroll-Animation der Songtexte und behält die volle Größe inaktiver Zeilen bei</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Inaktive Zeilen weichzeichnen</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Weichzeichnet sanft jede Zeile, die gerade nicht gesungen wird, wobei der Effekt mit zunehmender Entfernung stärker wird (Android 12 und neuer). Vor Android 12 bleiben inaktive Zeilen scharf</string>
   <string name="morphe_music_lyrics_gap_dots_title">Instrumentale Pausen-Punkte anzeigen</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Zeigt während einer langen instrumentalen Pause drei Punkte zwischen den Zeilen an, die sich füllen, wenn die Pause abläuft</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Entferntere Zeilen stärker abdunkeln</string>
@@ -841,6 +852,8 @@ Songtexte stammen von Drittanbieterdiensten, die keine Verbindung zu Morphe habe
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Verschiebt die Übersetzung über den Liedtext; die Lesehilfe und Romanisierung bleiben darunter</string>
   <string name="morphe_music_lyrics_force_center_title">Liedtexte immer zentrieren</string>
   <string name="morphe_music_lyrics_force_center_summary">AN stellt jede Zeile in die Mitte und ignoriert die Quellenausrichtung, einschließlich Duett-Seiten; AUS behält die Ausrichtung, die der Liedtext verlangt</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Gegenseitige Ausrichtung bei Duetten</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Platziert den zweiten Sänger bei Duett-Songs am gegenüberliegenden Rand. Deaktivieren, um beide Sänger auf der gleichen Seite zu behalten</string>
   <string name="morphe_music_lyrics_providers_keep_one">Mindestens ein Anbieter muss aktiviert bleiben</string>
   <string name="morphe_music_lyrics_translation_provider_title">Übersetzung</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisierung oder Transliteration</string>

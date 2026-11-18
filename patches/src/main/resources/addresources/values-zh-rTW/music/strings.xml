@@ -271,6 +271,11 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">停用音量自動降低</string>
   <string name="morphe_music_disable_audio_ducking_summary">當其他應用程式播放短暫聲音（例如通知）時，不會降低音量</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">佇列按讚篩選</string>
+  <string name="morphe_music_queue_like_filter_summary">從混音和電台中移除按讚數較少的歌曲。您添加到佇列的播放清單、專輯和歌曲不會被更改。按讚數來自 Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">最低按讚數</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">按讚數較少的歌曲將從佇列中移除</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">停用取消喜歡重新導向</string>
   <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜歡按鈕時跳到下一首歌曲</string>
@@ -717,8 +722,14 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_written_by">作者：%s</string>
   <string name="morphe_music_lyrics_word_sync_title">強調已同步的歌詞</string>
   <string name="morphe_music_lyrics_word_sync_summary">歌詞含有逐字時間時，會與音樂同步逐字或逐音節強調</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">平滑地動畫同步單字</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">在演唱時，以柔和的掃描、光暈和輕微提升來突出顯示每個單字。關閉此功能可節省電量，或在較慢的裝置上使用清晰的填充</string>
   <string name="morphe_music_lyrics_spring_scroll_title">使用彈性捲動</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">使用彈性物理效果捲動歌詞，並使每行歌詞與上一行稍微錯開。在較慢的裝置上可關閉此功能以節省電量</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">放鬆滾動</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">降低歌詞滾動動畫的速度，並保持非活動行的完整大小</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">模糊非活動行</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">輕微模糊所有目前未在演唱的行，距離越遠模糊程度越高（Android 12 及更高版本）。在 Android 12 之前，非活動行將保持清晰</string>
   <string name="morphe_music_lyrics_gap_dots_title">顯示純音樂間奏斷點</string>
   <string name="morphe_music_lyrics_gap_dots_summary">在樂段長時間的間奏斷奏中，會顯示三點作完整填充，直到斷奏結束。</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">調暗更遠的歌詞列</string>
@@ -841,6 +852,8 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">將翻譯移動到歌詞上方；讀音和羅馬拼音則保留在下方</string>
   <string name="morphe_music_lyrics_force_center_title">始終居中顯示歌詞</string>
   <string name="morphe_music_lyrics_force_center_summary">開啟時，將每行置於中間並忽略源對齊方式（包括對唱部分）；關閉時，保持歌詞請求的對齊方式</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">對唱分側對齊</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">在對唱歌曲中將第二位歌手置於相反邊緣。關閉此選項以使兩位歌手保持在同一側</string>
   <string name="morphe_music_lyrics_providers_keep_one">至少必須保留一個提供者</string>
   <string name="morphe_music_lyrics_translation_provider_title">翻譯</string>
   <string name="morphe_music_lyrics_romanization_provider_title">羅馬拼音或轉寫</string>
@@ -862,7 +875,7 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">測試連線</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">正在獲取模型…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">取得模型</string>
-  <string name="morphe_music_lyrics_ai_config_fetch_models_success">選擇模型</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_success">選取模型</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">無法獲取模型。請檢查API金鑰或連線狀態。</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">提示詞</string>
   <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby 提示詞 (假名)</string>

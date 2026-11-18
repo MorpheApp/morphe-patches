@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">अपलोड समय छुपाएं</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"सीमाएँ:
-• शॉर्ट्स शेल्फ, चैनल पेज और खोज परिणाम अभी भी अपलोड का समय दिखा सकते हैं
-• यह सुविधा ऑटोमोटिव लेआउट के साथ काम नहीं करती है"</string>
+• Shorts शेल्फ्स अभी भी अपलोड का समय दिखा सकते हैं
+• ऑटोमोटिव लेआउट के साथ काम नहीं करता है"</string>
   <string name="morphe_hide_video_thumbnail_title">वीडियो थंबनेल छुपाएं</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">वीडियो लेबल छिपाएँ</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">व्यू काउंट छुपाएं</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"सीमाएँ:
-• शॉर्ट्स शेल्फ, चैनल पेज और खोज परिणाम अभी भी देखे जाने की संख्या दिखा सकते हैं
-• यह सुविधा ऑटोमोटिव लेआउट के साथ काम नहीं करती है"</string>
+• Shorts शेल्फ्स अभी भी व्यू काउंट दिखा सकते हैं
+• ऑटोमोटिव लेआउट के साथ काम नहीं करता"</string>
   <string name="morphe_hide_web_search_results_title">वेब खोज परिणाम छुपाएं</string>
   <string name="morphe_hide_web_search_results_summary">सर्च परिणामों से \'वेब से परिणाम\' सेक्शन छुपाता है</string>
   <string name="morphe_hide_you_may_like_section_title">\'आपको पसंद हो सकता है\' अनुभाग छुपाएं</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">ऑटोप्ले शुरू होने से पहले फुलस्क्रीन में आने वाले वीडियो पूर्वावलोकन को छुपाता है</string>
   <string name="morphe_hide_channel_bar_title">चैनल बार को छुपाएं</string>
   <string name="morphe_hide_channel_watermark_title">चैनल वॉटरमार्क को छुपाएं</string>
-  <string name="morphe_hide_chapters_timeline_button_title">अध्याय और \'इस वीडियो में\' बटन छिपाएं</string>
+  <string name="morphe_hide_chapters_button_title">चैप्टर्स बटन छिपाएँ</string>
   <string name="morphe_hide_crowdfunding_box_title">crowdfunding बॉक्स को छुपाएं</string>
   <string name="morphe_hide_emergency_box_title">आपात बॉक्स छुपाएं</string>
+  <string name="morphe_hide_in_this_video_button_title">\'इस वीडियो में\' बटन छिपाएँ</string>
   <string name="morphe_hide_info_panels_title">इन्फो पैनल्स को छुपाएं</string>
   <string name="morphe_hide_info_panels_summary">जानकारी पैनल को छुपाता है, जैसे कि चिकित्सा जानकारी</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">फीड वीडियो पर कहीं भी टैप करके और दबाकर उसका मेनू खोला जा सकता है</string>
   <string name="morphe_feed_watch_later_button_title">थंबनेल पर \'बाद में देखें\' बटन दिखाएं</string>
   <string name="morphe_feed_watch_later_button_summary">फीड वीडियो के थंबनेल पर एक \'बाद में देखें\' बटन दिखाया जाता है, यदि वीडियो सहेजा गया है तो चेक मार्क के साथ। इस पर टैप करने से वीडियो सहेजा या हटाया जाता है, और टैप करके रखने से \'प्लेलिस्ट में सहेजें\' खुल जाता है</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">पोस्ट इमेज को फुलस्क्रीन में खोलें</string>
+  <string name="morphe_open_post_images_fullscreen_summary">पोस्ट की किसी इमेज पर टैप करने से वह पोस्ट फ़ीड के बजाय फुलस्क्रीन में खुल जाती है</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">पोस्ट इमेज डाउनलोड करें</string>
   <string name="morphe_post_image_download_summary">इमेज या GIF वाली पोस्ट के शेयर बटन के बगल में एक डाउनलोड बटन दिखाया जाता है, और उनके मेनू में एक डाउनलोड आइटम जोड़ा जाता है</string>
@@ -991,6 +995,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swipe_press_to_engage_title">दबाकर स्वाइप करने का जेस्चर सक्षम करें</string>
   <string name="morphe_swipe_press_to_engage_summary">स्वाइप जेस्चर को पहचानने से पहले दबाकर रखना आवश्यक है</string>
   <string name="morphe_swipe_haptic_feedback_title">हैप्टिक फीडबैक सक्षम करें</string>
+  <string name="morphe_swipe_haptic_feedback_summary">स्वाइप जेस्चर शुरू करने के लिए दबाकर रखने पर वाइब्रेट करता है</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">ब्राइटनेस को बचाएं और पुनर्स्थापित करें</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">फुलस्क्रीन मोड में प्रवेश करते/से बाहर निकलते समय चमक स्तर को याद रखता है</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">ऑटो-ब्राइटनेस जेस्चर सक्षम करें</string>
@@ -1134,6 +1139,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_glass_opacity_summary">ग्लास नेविगेशन बार के पारदर्शिता स्तर को समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
   <string name="morphe_navigation_bar_glass_round_title">राउंड ग्लास नेविगेशन बार</string>
   <string name="morphe_navigation_bar_glass_round_summary">ग्लास मिनीप्लेयर जैसे कोनों के बजाय, ग्लास नेविगेशन बार को राउंड सिरे देता है</string>
+  <string name="morphe_navigation_bar_glass_edge_title">ग्लास नेविगेशन बार एज</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">ग्लास नेविगेशन बार के चारों ओर लाइट एज बनाता है</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">ग्लास नेविगेशन बार बॉटम मार्जिन</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">ग्लास नेविगेशन बार और स्क्रीन के निचले हिस्से या सिस्टम नेविगेशन के बीच की जगह को एडजस्ट करें</string>
   <string name="morphe_navigation_bar_glass_size_title">ग्लास नेविगेशन बार का आकार</string>
   <string name="morphe_navigation_bar_glass_size_summary">एक प्रिव्यू के साथ, ग्लास नेविगेशन बार की ऊंचाई, चौड़ाई और बटन स्पेसिंग को एडजस्ट करें। वे बटन जो स्क्रीन की चौड़ाई में फिट नहीं होते, वे छिप जाते हैं</string>
   <string name="morphe_navigation_bar_glass_size_height">ऊंचाई</string>
@@ -1380,6 +1389,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">फ़ीड का अपने आप रीफ़्रेश होना बंद करें</string>
   <string name="morphe_disable_auto_feed_refresh_summary">फ़ीड के पुराने होने पर उसे अपने आप रीफ़्रेश होने से रोकता है</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">सूचनाओं को अनग्रुप करें</string>
+  <string name="morphe_ungroup_notifications_summary">किसी चैनल के ग्रुप किए गए अपलोड के हर वीडियो को उसकी अपनी सूचना के रूप में दिखाता है</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Feed कार्ड लेआउट</string>
   <string name="morphe_feed_card_layout_entry_1">क्लासिक</string>
@@ -1492,6 +1504,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_dearrow_titles_search_title">खोज परिणाम</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow आइकन दिखाएँ</string>
   <string name="morphe_dearrow_titles_icon_summary">उन वीडियो के शीर्षकों पर DeArrow आइकन दिखाता है जिनमें क्राउडसोर्स्ड शीर्षक या थंबनेल होते हैं। मूल शीर्षक और थंबनेल देखने के लिए आइकन पर टैप करें</string>
+  <string name="morphe_dearrow_clean_up_titles_title">शीर्षकों को साफ़ करें</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">उन वीडियो के शीर्षकों को साफ़ करता है जिनमें DeArrow शीर्षक नहीं है। बड़े अक्षरों में लिखे शब्दों को सामान्य केस में बदल दिया जाता है, और इमोजी, फैंसी टेक्स्ट और बार-बार आने वाले विस्मयादिबोधक चिह्नों को हटा दिया जाता है</string>
   <string name="morphe_dearrow_casual_mode_title">कैज़ुअल मोड</string>
   <string name="morphe_dearrow_casual_mode_summary">यदि DeArrow उपयोगकर्ताओं ने वोट किया है कि उन्हें मूल शीर्षक पसंद है, तो DeArrow शीर्षक के बजाय मूल शीर्षक दिखाता है</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">मूल शीर्षक दिखाने के लिए न्यूनतम कैज़ुअल वोट</string>

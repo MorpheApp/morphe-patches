@@ -271,6 +271,11 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Անջատել ձայնի ավտոմատ ցածրացումը</string>
   <string name="morphe_music_disable_audio_ducking_summary">Ձայնի մակարդակը չի ցածրացնի, երբ մեկ այլ հավելված նվագում է կարճ ձայն, օրինակ՝ ծանուցում</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Հավանությունների զտիչ հերթի համար</string>
+  <string name="morphe_music_queue_like_filter_summary">Հեռացնում է քիչ հավանություններ ունեցող երգերը միքսերից և ռադիոյից: Պլեյլիստները, ալբոմները և հերթին ավելացրած երգերը չեն փոփոխվում: Հավանությունների քանակը վերցված է Return YouTube Dislike-ից</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Նվազագույն հավանություններ</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Ավելի քիչ հավանություններ ունեցող երգերը հեռացվում են հերթից</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Անջատել չհավանելու վերահասցեավորումը</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Կանխում է հաջորդ տրեկին անցումը, երբ սեղմվում է «Չհավանել» կոճակը</string>
@@ -717,8 +722,14 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_written_by">Գրված է՝ %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Ընդգծել սինխրոնացված բառերը կամ վանկերը</string>
   <string name="morphe_music_lyrics_word_sync_summary">Առաջնահերթություն տալ բառ առ բառ տեքստերին, երբ դրանք հասանելի են: Երբ տեքստերը ունեն բառերի ժամանակային տվյալներ, ընդգծվում է յուրաքանչյուր բառ կամ վանկ՝ համահունչ երաժշտությանը</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Հարթ անիմացիայի սինխրոնացված բառերը</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Յուրաքանչյուր բառն ընդգծվում է փափուկ անցումով, փայլով և թեթև բարձրացումով երգվելու պահին: Անջատեք մարտկոցը խնայելու համար կամ դանդաղ սարքերի վրա կտրուկ լրացման համար</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Օգտագործել զնբർկող թերթում</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Թերթում է երգի տեքստը զնբർկող ֆիզիկայի միջոցով և յուրաքանչյուր տողը մի փոքր տեղաշարժում է նախորդից հետո: Անջատեք՝ դանդաղ սարքերի վրա մարտկոցի ծախսը նվազեցնելու համար</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Հանգիստ թափառում</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Դանդաղեցնում է երգի տեքստի թափառման անիմացիան և ոչ ակտիվ տողերը թողնում է ամբողջական չափսի</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Շատել ոչ ակտիվ տողերը</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Մեղմորեն շատում է յուրաքանչյուր տող, որը տվյալ պահին չի երգվում, իսկ որքան հեռու է, այնքան ավելի ուժեղ (Android 12 և ավելի ուշ): Android 12-ից առաջ ոչ ակտիվ տողերը մնում են հստակ</string>
   <string name="morphe_music_lyrics_gap_dots_title">Ցույց տալ ինստրումենտալ դադարի կետերը</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Ցույց է տալիս երեք կետեր տողերի միջև երկար ինստրումենտալ դադարի ժամանակ, որոնք լցվում են դադարի ավարտի հետ մեկ ساتھ</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Ավելի մոռացնել հեռավոր տողերը</string>
@@ -841,6 +852,8 @@ Lyrics-ները տրամադրվում են երրորդ կողմի ծառայո
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Տեղափոխում է թարգմանությունը լիրիկայի վերև; ընթերցումը և ռոմանիզացիան մնում են ներքևում</string>
   <string name="morphe_music_lyrics_force_center_title">Միշտ կենտրոնացնել երգի տեքստը</string>
   <string name="morphe_music_lyrics_force_center_summary">ՄԻԱՑՎԱԾ վիճակում յուրաքանչյուր տողը տեղադրվում է կենտրոնում և անտեսվում է սկզբնական հավասարեցումը, ներառյալ դուետի կողմերը, իսկ ԱՆՋԱՏՎԱԾ վիճակում պահպանվում է երգի տեքստի համար նախատեսված հավասարեցումը</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Դուետի հակառակ կողմի հավասարեցում</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Դուետների ժամանակ երկրորդ երգիչին տեղադրում է հակառակ եզրին: Անջատեք, որպեսզի երկու երգիչներն էլ լինեն նույն կողմում</string>
   <string name="morphe_music_lyrics_providers_keep_one">Առնվազն մեկ մատակարար պետք է մնա միացված</string>
   <string name="morphe_music_lyrics_translation_provider_title">Թարգմանություն</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Ռոմանիզացիա կամ տրանսլիտերացիա</string>

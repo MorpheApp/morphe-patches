@@ -271,6 +271,11 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Dezactivează diminuarea audio</string>
   <string name="morphe_music_disable_audio_ducking_summary">Volumul nu este scăzut atunci când o altă aplicație redă un sunet scurt, cum ar fi o notificare</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filtru aprecieri coadă</string>
+  <string name="morphe_music_queue_like_filter_summary">Elimină melodiile cu puține aprecieri din mixuri și radio. Listele de redare, albumele și melodiile adăugate în coadă nu sunt modificate. Numărul de aprecieri este preluat din Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Aprecieri minime</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Melodiile cu mai puține aprecieri sunt eliminate din coadă</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Dezactivează redirecționarea dislike</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Împiedică trecerea la următoarea melodie când este apăsat butonul dislike</string>
@@ -712,8 +717,14 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Scris de: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Evidențiați cuvintele sau silabele sincronizate</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritizează versurile cuvânt cu cuvânt atunci când sunt disponibile. Când versurile au informații de timp pentru fiecare cuvânt, evidențiază fiecare cuvânt sau silabă în ritm cu melodia</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Animarea fluidă a cuvintelor sincronizate</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Evidențiază fiecare cuvânt cu o trecere soft, strălucire și o ușoară ridicare în momentul în care este cântat. Dezactivează pentru a economisi bateria sau pentru o afișare rapidă pe dispozitivele mai lente</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Utilizează derularea cu efect de spring</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Derulează versurile cu fizică de tip spring și deplasează fiecare linie puțin după cea de deasupra. Dezactivează pentru a economisi bateria pe dispozitivele mai lente</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Defilare relaxată</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Încetinește animația de defilare a versurilor și menține liniile inactive la dimensiunea completă</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Estombare liniile inactive</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Estombează ușor fiecare linie care nu este cântată în prezent, efectul fiind mai pronunțat pe măsură ce sunt mai îndepărtate (Android 12 și versiuni ulterioare). În versiunile anterioare de Android 12, liniile inactive rămân clare</string>
   <string name="morphe_music_lyrics_gap_dots_title">Afișează puncte pentru pauzele instrumentale</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Afișează trei puncte între linii în timpul unei pauze instrumentale lungi, care se completează pe măsură ce pauza se apropie de sfârșit</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Stinge mai mult liniile îndepărtate</string>
@@ -836,6 +847,8 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau s
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Mută traducerea deasupra versurilor; lectura și romanizarea rămân dedesubt</string>
   <string name="morphe_music_lyrics_force_center_title">Centrare forțată a versurilor</string>
   <string name="morphe_music_lyrics_force_center_summary">ON plasează fiecare linie în mijloc și ignoră aliniamentul sursei, inclusiv părțile duetului; OFF păstrează aliniamentul cerut de versuri</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Alinierea duetului pe părți opuse</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Poziționează al doilea solist pe marginea opusă în cazul melodiilor duet. Dezactivați pentru a menține ambii soliști pe aceeași parte</string>
   <string name="morphe_music_lyrics_providers_keep_one">Cel puțin un furnizor trebuie să rămână activ</string>
   <string name="morphe_music_lyrics_translation_provider_title">Traducere</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizare sau transliterare</string>

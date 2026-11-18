@@ -122,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Приховати час завантаження</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Обмеження:
-• Панелі Shorts, сторінки каналів та результати пошуку можуть досі показувати час завантаження
+• Панелі Shorts можуть досі показувати час завантаження
 • Не працює з автомобільним макетом інтерфейсу"</string>
   <string name="morphe_hide_video_thumbnail_title">Приховати мініатюру відео</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Приховати кількість переглядів</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Обмеження:
-• Панелі Shorts, сторінки каналів та результати пошуку можуть досі показувати кількість переглядів
+• Панелі Shorts можуть досі показувати кількість переглядів
 • Не працює з автомобільним макетом інтерфейсу"</string>
   <string name="morphe_hide_web_search_results_title">Приховати результати вебпошуку</string>
   <string name="morphe_hide_web_search_results_summary">Приховує секцію \"Результати з інтернету\" у результатах пошуку</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Приховує попередній перегляд наступного відео перед автозапуском у повноекранному режимі</string>
   <string name="morphe_hide_channel_bar_title">Приховати панель каналу</string>
   <string name="morphe_hide_channel_watermark_title">Приховати водяний знак каналу</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Приховати розділи та кнопку \"У цьому відео\"</string>
+  <string name="morphe_hide_chapters_button_title">Приховати кнопку \"Розділи\"</string>
   <string name="morphe_hide_crowdfunding_box_title">Приховати скриню фінансування</string>
   <string name="morphe_hide_emergency_box_title">Приховати аварійні скриньки</string>
+  <string name="morphe_hide_in_this_video_button_title">Приховати кнопку \"У цьому відео\"</string>
   <string name="morphe_hide_info_panels_title">Приховати інформаційні панелі</string>
   <string name="morphe_hide_info_panels_summary">Приховує інформаційні панелі, наприклад медичні відомості</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Натискання та утримування будь-де на відео в стрічці відкриває його меню</string>
   <string name="morphe_feed_watch_later_button_title">Показувати кнопку \"Дивитися пізніше\" на мініатюрах</string>
   <string name="morphe_feed_watch_later_button_summary">Кнопка \"Дивитися пізніше\" показується на мініатюрах відео в стрічці, із галочкою, якщо відео збережено. Натискання зберігає або видаляє відео, а натискання та утримування відкриває \"Зберегти в список відтворення\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Відкривати зображення дописів у повноекранному режимі</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Натискання на зображення допису відкриває його в повноекранному режимі замість стрічки дописів</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Завантажити зображення з допису</string>
   <string name="morphe_post_image_download_summary">Кнопка завантаження показується поруч із кнопкою \"Поділитися\" для дописів із зображеннями або GIF, а до їхнього меню додається пункт завантаження</string>
@@ -992,6 +996,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Увімкнути натискання для жесту</string>
   <string name="morphe_swipe_press_to_engage_summary">Потребує натискання та утримання перед розпізнаванням жесту</string>
   <string name="morphe_swipe_haptic_feedback_title">Вібрація при жестах</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Вібрує під час натискання та утримування для початку жесту перетягування</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Зберігати та відновлювати яскравість</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Запам\'ятовує рівень яскравості при вході та виході з повноекранного режиму</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Жест автояскравості</string>
@@ -1135,6 +1140,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Налаштовує рівень прозорості скляної панелі навігації (0 - прозора, 100 - непрозора)</string>
   <string name="morphe_navigation_bar_glass_round_title">Закруглена скляна панель навігації</string>
   <string name="morphe_navigation_bar_glass_round_summary">Надає скляній панелі навігації закруглені краї замість кутів, як у скляного мініплеєра</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Край скляної панелі навігації</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Малює світлий край навколо скляної панелі навігації</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Нижній відступ скляної панелі навігації</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Налаштуйте відступ між скляною панеллю навігації та нижньою частиною екрана або системною навігацією</string>
   <string name="morphe_navigation_bar_glass_size_title">Розмір скляної панелі навігації</string>
   <string name="morphe_navigation_bar_glass_size_summary">Налаштуйте висоту, ширину та відступ між кнопками скляної панелі навігації з попереднім переглядом. Кнопки, які не вміщуються в ширину екрана, приховуються</string>
   <string name="morphe_navigation_bar_glass_size_height">Висота</string>
@@ -1380,6 +1389,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Вимкнути автоматичне оновлення стрічки</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Запобігає автоматичному оновленню стрічок після того, як вони застарівають</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Розгрупувати сповіщення</string>
+  <string name="morphe_ungroup_notifications_summary">Показує кожне відео з групованих завантажень каналу як окреме сповіщення</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Макет карток стрічки</string>
   <string name="morphe_feed_card_layout_entry_1">Класичний</string>
@@ -1492,6 +1504,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Результати пошуку</string>
   <string name="morphe_dearrow_titles_icon_title">Показувати іконку DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Показує значок DeArrow на назвах відео, що мають назву або мініатюру від спільноти. Натисніть на значок, щоб показати оригінальну назву та мініатюру</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Очищення заголовків</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Очищає заголовки відео, що не мають заголовка DeArrow. Слова великими літерами змінюються на звичайний регістр, а емодзі, декоративний текст і повторювані знаки оклику видаляються</string>
   <string name="morphe_dearrow_casual_mode_title">Звичайний режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Показує оригінальну назву замість назви DeArrow, якщо користувачі DeArrow проголосували за оригінальну назву</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Мінімальна кількість голосів у звичайному режимі для показу оригінальної назви</string>

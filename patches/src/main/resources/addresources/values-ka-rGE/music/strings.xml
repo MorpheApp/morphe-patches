@@ -271,6 +271,11 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">გათიშეთ აუდიო დაქინგი</string>
   <string name="morphe_music_disable_audio_ducking_summary">ხმა არ დაიკლებს, როდესაც სხვა აპლიკაცია გაიტანს მოკლე ბგერს, მაგალითად, შეტყობინებას</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">რიგის მოწონებების ფილტრი</string>
+  <string name="morphe_music_queue_like_filter_summary">შ एसीმს მິກსებიდან და რადიოდან სულ ცოტა მოწონების მქონე სიმღერები. პლეილისტები, ალბომები და სიმღერები, რომლებიც თავად დაამატეთ რიგში, არ შეიცვლება. მოწონებების რაოდენობა მოწოდებულია Return YouTube Dislike-ის მიერ</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">მინიმალური მოწონებები</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">ნაკლები მოწონების მქონე სიმღერები ამოიშლება რიგიდან</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">არმოწონების გადამისამართების გამორთვა</string>
   <string name="morphe_music_disable_dislike_redirection_summary">თავიდან აგვარდინებს შემდეგ ტრეკზე გადასვლას \"არ მომწონს\" ღილაკზე დაჭერისას</string>
@@ -717,8 +722,14 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_written_by">დაწერა: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">სინქრონიზებული სიტყვების ან მარცვლების გამოკვეთა</string>
   <string name="morphe_music_lyrics_word_sync_summary">უპირატესობა მიენიჭება სიტყვა-სიტყვა ტექსტს, როდესაც ის ხელმისაწვდომია. როდესაც ტექსტს აქვს სიტყვების ტაიმინგი, მუსიკის ტემპთან სინქრონულად გამოიკვეთება თითოეული სიტყვა ან მარცვალი</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">სინქრონიზებული სიტყვების გლუვი ანიმაცია</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">თითოეულ სიტყვას სინგირებისას ახლავს რბილი გადასვლა, განათება და მსუბუქი ამაღლება. გამორთეთ ელემენტის დასაზოგად ან უფრო ნელი მოწყობილობების შემთხვევაში მკვეთრი შევსებისთვის</string>
   <string name="morphe_music_lyrics_spring_scroll_title">გამოიყენეთ ზამბარისებური სქროლვა</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">სქროლავს ტექსტს ზამბარის ფიზიკით და ყოველი ხაზი ოდნავაა დაშორებული ზედა ხაზისგან. გამორთეთ ელემენტის დაზოგვისთვის შედარებით ნელ მოწყობილობებზე</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">მოდERATE სქროლინგი</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">აანელებს ტექსტის სქროლინგის ანიმაციას და ინარჩუნებს არააქტიური ხაზების სრულ ზომას</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">არააქტიური ხაზების გაბუნდოვნება</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">მსუბუქად ბუნდოვნის ყველა ხაზს, რომელიც ამჟამად არ ისმის, რაც უფრო შორს არის, მით უფრო მეტად (Android 12 და უფრო ახალ ვერსიებზე). Android 12-მდე არააქტიური ხაზები რჩება მკვეთრი</string>
   <string name="morphe_music_lyrics_gap_dots_title">ინსტრუმენტალური პაუზის წერტილების ჩვენება</string>
   <string name="morphe_music_lyrics_gap_dots_summary">გვიჩვენებს სამ წერტილს სტრიქონებს შორის გრძელი ინსტრუმენტალური პაუზის დროს, რომლებიც ივსება პაუზის დასრულებამდე</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">შორს მდებარე სტრიქონების მეტად გაფერმკრთალება</string>
@@ -841,6 +852,8 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_swap_trans_roma_summary">ათავსებს თარგმანს ლირიკის ზემოთ; წაკითხვა და რომანიზაცია რჩება ქვემოთ</string>
   <string name="morphe_music_lyrics_force_center_title">ტექსტის მუდმივად ცენტრირება</string>
   <string name="morphe_music_lyrics_force_center_summary">ON ყველა ხაზს ათავსებს ცენტრში და უგულებელყოფს წყაროს გასწორებას, დუეტის მხარეების ჩათვლით; OFF ინარჩუნებს ტექსტისთვის მითითებულ გასწორებას</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">დუეტის გასწორება საპირისპირო მხარეს</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">დუეტის სიმღერებისას მეორე მომღერალს განათავსებს საპირისპირო მხარეს. გამორთეთ, რათა ორივე მომღერალი დარჩეს ერთ მხარეს</string>
   <string name="morphe_music_lyrics_providers_keep_one">მინიმუმ ერთი პროვაიდერი უნდა დარჩეს ჩართული</string>
   <string name="morphe_music_lyrics_translation_provider_title">თარგმანი</string>
   <string name="morphe_music_lyrics_romanization_provider_title">რომანიზაცია ან ტრანსლიტერაცია</string>

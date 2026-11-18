@@ -122,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">የተጫነበትን ጊዜ ደብቅ</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"ገደቦች፦
-• የ Shorts መደርደሪያዎች፣ የቻናል ገጾች እና የፍለጋ ውጤቶች አሁንም የተጫነበትን ጊዜ ሊያሳዩ ይችላሉ
+• የ Shorts መደርደሪያዎች አሁንም የተጫነበትን ጊዜ ሊያሳዩ ይችላሉ
 • ከአውቶሞቲቭ አቀማመጥ ጋር አይሰራም"</string>
   <string name="morphe_hide_video_thumbnail_title">የቪዲዮ ምስልን ደብቅ</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">የዕይታ ብዛትን ደብቅ</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"ገደቦች፦
-• የ Shorts መደርደሪያዎች፣ የቻናል ገጾች እና የፍለጋ ውጤቶች አሁንም የዕይታ ብዛትን ሊያሳዩ ይችላሉ
+• የ Shorts መደርደሪያዎች አሁንም የዕይታ ብዛትን ሊያሳዩ ይችላሉ
 • ከአውቶሞቲቭ አቀማመጥ ጋር አይሰራም"</string>
   <string name="morphe_hide_web_search_results_title">የድረ-ገጽ ፍለጋ ውጤቶችን ደብቅ</string>
   <string name="morphe_hide_web_search_results_summary">\'ከዌብ የተገኘ ውጤት\' የሚለውን ክፍል ከፍለጋ ውጤቶች ውስጥ ይደብቃል</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">ራስ-ሰር ማጫወቻ ከመጀመሩ በፊት የሚመጣውን የቪዲዮ ቅድመ-እይታ በሙሉ ስክሪን ላይ ይደብቃል</string>
   <string name="morphe_hide_channel_bar_title">የቻናሉን ባር ደብቅ</string>
   <string name="morphe_hide_channel_watermark_title">የቻናሉን የውሃ ምልክት ደብቅ</string>
-  <string name="morphe_hide_chapters_timeline_button_title">ምዕራፎችን እና \'በዚህ ቪዲዮ ውስጥ\' የሚለውን ቁልፍ ደብቅ</string>
+  <string name="morphe_hide_chapters_button_title">የምዕራፎች ቁልፍን ደብቅ</string>
   <string name="morphe_hide_crowdfunding_box_title">የገንዘብ ማሰባሰቢያ ሳጥኑን ደብቅ</string>
   <string name="morphe_hide_emergency_box_title">የድንገተኛ አደጋ ሳጥኖችን ደብቅ</string>
+  <string name="morphe_hide_in_this_video_button_title">\'በዚህ ቪዲዮ ውስጥ\' የሚለውን ቁልፍ ደብቅ</string>
   <string name="morphe_hide_info_panels_title">የመረጃ ፓነሎችን ደብቅ</string>
   <string name="morphe_hide_info_panels_summary">እንደ የሕክምና መረጃ ያሉ የመረጃ ሁኔታ ፓነሎችን ይደብቃል</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">በፊድ ቪዲዮ ላይ የትኛውም ቦታ ተጭነው በመያዝ ሜኑውን መክፈት ይቻላል</string>
   <string name="morphe_feed_watch_later_button_title">በጥቃቅን ምስሎች ላይ \"በኋላ ይመልከቱ\" የሚለውን ቁልፍ አሳይ</string>
   <string name="morphe_feed_watch_later_button_summary">በፊድ ቪዲዮዎች ታምብናይሎች ላይ \"በኋላ ይመልከቱ\" የሚል ቁልፍ ይታያል፣ ቪዲዮው ከተቀመጠ የቼክ ምልክት ይኖረዋል። እሱን በመጫን ቪዲዮውን ማስቀመጥ ወይም ማስወገድ ይቻላል፣ በመጫን እና በመያዝ ደግሞ \"ወደ መጫወቻ ዝርዝር ያስቀምጡ\" የሚለው ይከፈታል</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">የፖስት ምስሎችን በሙሉ ስክሪን ክፈት</string>
+  <string name="morphe_open_post_images_fullscreen_summary">የፖስት ምስልን መጫን ከፖስቶቹ ፊድ ይልቅ በሙሉ ስክሪን ይከፍተዋል</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">የፖስት ምስሎችን አውርድ</string>
   <string name="morphe_post_image_download_summary">ምስሎች ወይም GIFs ላሏቸው ፖስቶች ከShare ቁልፍ ጎን የማውረጃ ቁልፍ ይታያል፣ እንዲሁም በሜኑ ውስጥ የማውረጃ ንጥል ይጨመራል</string>
@@ -992,6 +996,7 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_swipe_press_to_engage_title">ለመጥረግ የመጫን ምልክትን ያብሩ</string>
   <string name="morphe_swipe_press_to_engage_summary">የስላይድ ምልክት ከመታወቁ በፊት ተጭኖ መቆየትን ይጠይቃል</string>
   <string name="morphe_swipe_haptic_feedback_title">የሃፕቲክ ግብረ-መልስን ያብሩ</string>
+  <string name="morphe_swipe_haptic_feedback_summary">የስላይድ ምልክት ሲጀመር ተጭኖ በመያዝ ወቅት ይርገጫል</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">ብሩህነትን ያስቀምጡ እና ይመልሱ</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">ሙሉ ስክሪን ሞድ ውስጥ ሲገቡ / ሲወጡ የብሩህነት ደረጃን ያስታውሳል</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">ራስ-ሰር ብሩህነት ምልክትን ያብሩ</string>
@@ -1135,6 +1140,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">የብርጭቆ አሰሳ አሞሌውን የግልጽነት ደረጃ ያስተካክሉ (0 ግልጽ ነው፣ 100 ድፍን ነው)</string>
   <string name="morphe_navigation_bar_glass_round_title">ክብ የብርጭቆ የናቪጌሽን ባር</string>
   <string name="morphe_navigation_bar_glass_round_summary">እንደ ብርጭቆው ሚኒ ፕሌየር ዓይነት ማዕዘኖች ከመሆን ይልቅ የብርጭቆ የናቪጌሽን ባር እንዲያበኩ ያደርጋል</string>
+  <string name="morphe_navigation_bar_glass_edge_title">የብርጭቆ ናቪጌሽን ባር ጠርዝ</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">በብርጭቆ ናቪጌሽን ባር ዙሪያ የብርሃን ጠርዝን ይስላል</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">የብርጭቆ ናቪጌሽን ባር የታችኛው ማርጂን</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">በብርጭቆው የናቪጌሽን ባር እና በስክሪኑ ግርጌ ወይም በሲስተም ናቪጌሽን መካከል ያለውን ክፍተት ያስተካክሉ</string>
   <string name="morphe_navigation_bar_glass_size_title">የብርጭቆ ናቪጌሽን ባር መጠን</string>
   <string name="morphe_navigation_bar_glass_size_summary">የብርጭቆ ናቪጌሽን ባርን ቁመት፣ ስፋት እና የቁልፎች ክፍተት በቅድመ እይታ ያስተካክሉ። በስክሪኑ ስፋት ውስጥ የማይገቡ ቁልፎች ይደበቃሉ</string>
   <string name="morphe_navigation_bar_glass_size_height">ቁመት</string>
@@ -1381,6 +1390,9 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">የፊድ አውቶማቲክ ማደስን አጥፋ</string>
   <string name="morphe_disable_auto_feed_refresh_summary">ፊዶች ጊዜያቸው ካለፈ በኋላ በራሳቸው እንዳይታደሱ ይከላከላል</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">ማሳወቂያዎችን ከቡድን አውጣ</string>
+  <string name="morphe_ungroup_notifications_summary">የቻናል የተ nhóm የተጫኑ ቪዲዮዎችን እያንዳንዱን እንደየራሱ ማሳወቂያ ያሳያል</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">የፊድ ካርድ አቀማመጥ</string>
   <string name="morphe_feed_card_layout_entry_1">ክላሲክ</string>
@@ -1493,6 +1505,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_dearrow_titles_search_title">የፍለጋ ውጤቶች</string>
   <string name="morphe_dearrow_titles_icon_title">የDeArrow አዶን አሳይ</string>
   <string name="morphe_dearrow_titles_icon_summary">በህዝብ የተሰበሰበ ርዕስ ወይም thumbnail ላላቸው የቪዲዮ ርዕሶች ላይ የDeArrow ምልክትን ያሳያል። ዋናውን ርዕስ እና thumbnail ለማየት ምልክቱን ይጫኑ</string>
+  <string name="morphe_dearrow_clean_up_titles_title">ርዕሶችን አጽዳ</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">የ DeArrow ርዕስ የሌላቸውን የቪዲዮዎች ርዕሶች ያጸዳል። በካፒታል የተጻፉ ቃላት ወደ መደበኛ ሁኔታ ይቀየራሉ፣ እንዲሁም ኢሞጂዎች፣ የተጋነኑ ጽሁፎች እና ተደጋጋሚ የቃላት ማሳረጊያ ምልክቶች ይወገዳሉ</string>
   <string name="morphe_dearrow_casual_mode_title">ቀለል ያለ ሁኔታ</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow ተጠቃሚዎች ዋናው ርዕስ እንደሚወዱት ድምጽ ከሰጡ፣ ከ DeArrow ርዕስ ይልቅ ዋናውን ርዕስ ያሳያል</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">ዋናውን ርዕስ ለማሳየት የሚያስፈልጉ ዝቅተኛ የቀለል ያሉ ድምጾች</string>

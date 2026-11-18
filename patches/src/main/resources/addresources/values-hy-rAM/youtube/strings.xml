@@ -122,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Թաքցնել վերբեռնման ժամանակը</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Սահմանափակումներ.
-• Shorts-ի դարակները, ալիքի էջերը և որոնման արդյունքները կարող են դեռ ցուցադրել վերբեռնման ժամանակը
+• Shorts-ի դարակները կարող են դեռ ցուցադրել վերբեռնման ժամանակը
 • Չի աշխատում ավտոմոբիլային դասավորության հետ"</string>
   <string name="morphe_hide_video_thumbnail_title">Թաքցնել տեսանյութի նկարը</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Թաքցնել դիտումների քանակը</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Սահմանափակումներ.
-• Shorts-ի դարակները, ալիքի էջերը և որոնման արդյունքները կարող են դեռ ցուցադրել դիտումների քանակը
+• Shorts-ի դարակները կարող են դեռ ցուցադրել դիտումների քանակը
 • Չի աշխատում ավտոմոբիլային դասավորության հետ"</string>
   <string name="morphe_hide_web_search_results_title">Թաքցնել վեբ որոնման արդյունքները</string>
   <string name="morphe_hide_web_search_results_summary">Թաքցնում է «Արդյունքներ վեբից» բաժինը որոնման արդյունքներից</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Թաքցնում է հաջորդող տեսանյութի նախադիտումը լրիվ էկրանով նախքան ավտոմատ միացումը սկսվելը</string>
   <string name="morphe_hide_channel_bar_title">Թաքցնել ալիքի վահանակը</string>
   <string name="morphe_hide_channel_watermark_title">Թաքցնել ալիքի ջրային նշանը</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Թաքցնել գլուխները և \'Այս տեսանյութում\' կոճակը</string>
+  <string name="morphe_hide_chapters_button_title">Թաքցնել գլուխների կոճակը</string>
   <string name="morphe_hide_crowdfunding_box_title">Թաքցնել crowdfunding բլոկը</string>
   <string name="morphe_hide_emergency_box_title">Թաքցնել արտակարգ իրավիճակների վանդակները</string>
+  <string name="morphe_hide_in_this_video_button_title">Թաքցնել \"Այս տեսանյութում\" կոճակը</string>
   <string name="morphe_hide_info_panels_title">Թաքցնել տեղեկատվական վահանակները</string>
   <string name="morphe_hide_info_panels_summary">Թաքցնում է տեղեկատվական համատեքստի վահանակները, օրինակ՝ բժշկական տեղեկությունները</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Հոսքի տեսանյութի ցանկացած հատվածի վրա սեղմելը և պահելը բացում է դրա մենյուն</string>
   <string name="morphe_feed_watch_later_button_title">Ցույց տալ «Դիտել ավելի ուշ» կոճակը նկարահատվածների վրա</string>
   <string name="morphe_feed_watch_later_button_summary">«Դիտել ավելի ուշ» կոճակը ցուցադրվում է հոսքի տեսանյութերի նկարահատվածների վրա, նշանի հետ, եթե տեսանյութը պահպանված է: Հպումով այն պահպանում է կամ հեռացնում տեսանյութը, իսկ սեղմելով և պահելով՝ բացում է «Պահպանել նվագացուցակում» բաժինը</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Բացել գրառման պատկերները լրիվ էկրանով</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Գրառման պատկերի վրա հպումը այն բացում է լրիվ էկրանով, այլ ոչ թե գրառումների ленտայում</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Ներբեռնել գրառումների պատկերները</string>
   <string name="morphe_post_image_download_summary">Ներբեռնման կոճակը ցուցադրվում է պատկերներով կամ GIF-երով գրառումների «Կիսվել» կոճակի կողքին, իսկ նրանց մենյուին ավելացվում է ներբեռնման տարբերակ</string>
@@ -800,6 +804,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_count_clear_done">Պահպանված կրկնությունների քանակը մաքրվել է</string>
   <string name="morphe_loop_count_flyout_name">Կրկնությունների քանակը</string>
   <string name="morphe_loop_count_dialog_message">Թե քանի անգամ է տեսանյութը նվագարկվում հաջորդ տեսանյութից առաջ, %1$s-ից մինչև %2$s: Թողեք դատարկ, որպեսզի տեսանյութը կրկնվի առանց սահմանափակման:</string>
+  <string name="morphe_loop_count_times">%s անգամ</string>
   <string name="morphe_loop_count_no_limit">Առանց սահմանափակման</string>
   <string name="morphe_loop_count_decrease">Ավելի քիչ անգամ</string>
   <string name="morphe_loop_count_increase">Ավելի շատ անգամ</string>
@@ -991,6 +996,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Միացնել սեղմելով սահեցնելու ժեստը</string>
   <string name="morphe_swipe_press_to_engage_summary">Պահանջում է սեղմել և պահել, նախքան սվայպի ժեստի ճանաչումը</string>
   <string name="morphe_swipe_haptic_feedback_title">Միացնել հապտիկ հետադարձ կապը</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Թռչնում է, երբ սեղմելով և պահելով սկսվում է սլայդի ժեստը</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Պահպանել և վերականգնել լուսավորությունը</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Հիշում է պայծառության մակարդակը լրիվ էկրան ռեժիմ մուտք գործելիս / դուրս գալիս</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Միացնել լուսավորության ավտոմատ կարգավորման ժեստը</string>
@@ -1134,6 +1140,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Կարգավորեք ապակե նավիգացիոն վահանակի թափանցիկության մակարդակը (0-ն թափանցիկ է, 100-ը՝ անթափանցիկ)</string>
   <string name="morphe_navigation_bar_glass_round_title">Ապակե նավիգացիայի շերտի կլորացում</string>
   <string name="morphe_navigation_bar_glass_round_summary">Ապակե նավիգացիայի շերտին հաղորդում է կլոր ծայրեր՝ ապակե մինի-նվագարկիչի անկյունների փոխարեն</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Ապակե նավիգացիոն վահանակի եզրը</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Գծում է լուսավոր եզր ապակե նավիգացիոն վահանակի շուրջ</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Ապակե նավիգացիոն վահանակի ստորին լրացուցիչ տարածքը</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Կարգավորեք հեռավորությունը ապակե նավիգացիայի վահանակի և էկրանի հատակի կամ համակարգային նավիգացիայի միջև</string>
   <string name="morphe_navigation_bar_glass_size_title">Ապակե նավիգացիոն վահանակի չափսը</string>
   <string name="morphe_navigation_bar_glass_size_summary">Կարգավորեք ապակե նավիգացիոն վահանակի բարձրությունը, լայնությունը և կոճակների հեռավորությունը՝ նախնական դիտման հնարավորությամբ: Էկրանի լայնությանը չհամապատասխանող կոճակները թաքցվում են</string>
   <string name="morphe_navigation_bar_glass_size_height">Բարձրություն</string>
@@ -1380,6 +1390,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Անջատել հոսքի ավտոմատ թարմացումը</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Կանխում է հոսքերի ավտոմատ թարմացումը, երբ դրանք հնացած են դառնում</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Առանձնացնել ծանուցումները</string>
+  <string name="morphe_ungroup_notifications_summary">Ցուցադրում է ալիքի խմբավորված վերբեռնումների յուրաքանչյուր տեսանյութ որպես առանձին ծանուցում</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Լրահոսի քարտի դասավորություն</string>
   <string name="morphe_feed_card_layout_entry_1">Դասական</string>
@@ -1492,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Որոնման արդյունքները</string>
   <string name="morphe_dearrow_titles_icon_title">Ցուցադրել DeArrow-ի սիմվոլը</string>
   <string name="morphe_dearrow_titles_icon_summary">Ցուցադրում է DeArrow-ի սիմվոլը այն տեսանյութերի վերնագրերում, որոնք ունեն հասարակության կողմից տրամադրված վերնագիր կամ նկար: Հպեք սիմվոլին՝ բնօրինակ վերնագիրը և նկարը տեսնելու համար</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Մաքրել վերնագրերը</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Մաքրում է այն տեսանյութերի վերնագրերը, որոնք չունեն DeArrow վերնագիր: Մեծատառերով գրված բառերը փոխվում են սովորականի, իսկ էմոջիները, զարդարված տեքստերը և կրկնվող բացականչական նշանները հեռացվում են</string>
   <string name="morphe_dearrow_casual_mode_title">Casual ռեժիմ</string>
   <string name="morphe_dearrow_casual_mode_summary">Ցույց է տալիս բնօրինակ վերնագիրը DeArrow-ի վերնագրի փոխարեն, եթե DeArrow-ի օգտատերերը քվեարկել են, որ նախընտրում են բնօրինակ վերնագիրը</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Բնօրինակ վերնագիրը ցույց տալու համար անհրաժեշտ casual քվեների նվազագույն քանակը</string>

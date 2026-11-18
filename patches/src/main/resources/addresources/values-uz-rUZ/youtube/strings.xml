@@ -122,8 +122,8 @@ O'zgarishlar quyidagilarni o'z ichiga oladi:
   <string name="morphe_hide_upload_time_title">Yuklash vaqtini yashirish</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Cheklovlar:
-• Shorts javonlari, kanal sahifalari va qidiruv natijalari yuklash vaqtini hali ko'rsatishi mumkin
-• Avtomobil tartibi bilan ishlamaydi"</string>
+• Shorts javonlarida yuklash vaqti ko'rinishi mumkin
+• Avtomobil maketi bilan ishlamaydi"</string>
   <string name="morphe_hide_video_thumbnail_title">Video muqovasini yashirish</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Video yorliqlarini yashirish</string>
@@ -131,8 +131,8 @@ O'zgarishlar quyidagilarni o'z ichiga oladi:
   <string name="morphe_hide_view_count_title">Ko\'rish sonini yashirish</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Cheklovlar:
-• Shorts javonlari, kanal sahifalari va qidiruv natijalari ko'rish hisobini hali ko'rsatishi mumkin
-• Avtomobil tartibi bilan ishlamaydi"</string>
+• Shorts javonlarida ko'rishlar soni ko'rinishi mumkin
+• Avtomobil maketi bilan ishlamaydi"</string>
   <string name="morphe_hide_web_search_results_title">Veb qidiruv natijalarini yashirish</string>
   <string name="morphe_hide_web_search_results_summary">Qidiruv natijalaridan \'Vebdan natija\' bo\'limini yashiradi</string>
   <string name="morphe_hide_you_may_like_section_title">“Sizga yoqishi mumkin” bo\'limini yashirish</string>
@@ -290,9 +290,10 @@ Cheklovlar:
   <string name="morphe_hide_autoplay_preview_summary">Avtomatik ijro boshlanishidan oldin to\'liq ekranda keyingi video ko\'rinishini yashiradi</string>
   <string name="morphe_hide_channel_bar_title">Kanal panelini yashirish</string>
   <string name="morphe_hide_channel_watermark_title">Kanal suv belgisini yashirish</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Boblar va \'Ushbu videoda\' tugmasini yashirish</string>
+  <string name="morphe_hide_chapters_button_title">Boblar tugmasini yashirish</string>
   <string name="morphe_hide_crowdfunding_box_title">Moliyaviy yordam qutisini yashirish</string>
   <string name="morphe_hide_emergency_box_title">Favqulodda xabarlar qutisini yashirish</string>
+  <string name="morphe_hide_in_this_video_button_title">\"Ushbu videoda\" tugmasini yashirish</string>
   <string name="morphe_hide_info_panels_title">Ma\'lumot panellarini yashirish</string>
   <string name="morphe_hide_info_panels_summary">Maʼlumotli kontekst panellarini yashiradi, masalan, tibbiy maʼlumotlar</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Cheklovlar:
   <string name="morphe_feed_long_press_menu_summary">Lenta videosining istalgan joyini bosib ushlab tursangiz, uning menyusi ochiladi</string>
   <string name="morphe_feed_watch_later_button_title">Miniyaturada \"Keyinroq ko\'rish\" tugmasini ko\'rsatish</string>
   <string name="morphe_feed_watch_later_button_summary">Lenta videolarining kichik rasmlarida \"Keyinroq ko\'rish\" tugmasi ko\'rsatiladi, agar video saqlangan bo\'lsa, unda belgisi paydo bo\'ladi. Uni bosish videoni saqlaydi yoki olib tashlaydi, bosib turish esa \"Pleylistga saqlash\" menyusini ochadi</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Post rasmlarini to\'liq ekranda ochish</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Post rasmi ustiga bosilganda, u postlar lentasi o\'rniga to\'liq ekranda ochiladi</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Post rasmlarini yuklab olish</string>
   <string name="morphe_post_image_download_summary">Rasmlar yoki GIF-lar mavjud bo\'lgan postlarning \"Ulash\" tugmasi yonida yuklab olish tugmasi ko\'rsatiladi va ularning menyusiga yuklab olish bandi qo\'shiladi</string>
@@ -798,6 +802,7 @@ Sizning API kalitingiz hech kim bilan baham ko'rilmasligi kerak. Uni kirish huqu
   <string name="morphe_loop_count_clear_done">Saqlangan takrorlashlar soni tozalandi</string>
   <string name="morphe_loop_count_flyout_name">Takrorlanishlar soni</string>
   <string name="morphe_loop_count_dialog_message">Keyingi video boshlanishidan oldin video necha marta ijro etilishi, %1$s dan %2$s gacha. Videoni cheksiz takrorlash uchun bo\"sh qoldiring.</string>
+  <string name="morphe_loop_count_times">%s marta</string>
   <string name="morphe_loop_count_no_limit">Cheksiz</string>
   <string name="morphe_loop_count_decrease">Kamroq marta</string>
   <string name="morphe_loop_count_increase">Ko\"proq marta</string>
@@ -989,6 +994,7 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_swipe_press_to_engage_title">Bosib turib surish harakatini yoqish</string>
   <string name="morphe_swipe_press_to_engage_summary">Surish imo-ishorasi tan olinishi uchun bosib ushlab turish talab qilinadi</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptik javobni yoqish</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Surtish imo-gestini boshlash uchun bosib turilganda tebranadi</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Yorqinlikni saqlash va tiklash</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Toʻliq ekran rejimiga kirganda / chiqqanda yorqinlik darajasini saqlaydi</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Avtomatik yorqinlikni boshqarish uchun sirt bilan surishni yoqish</string>
@@ -1132,6 +1138,10 @@ Sozlamalarga kirish uchun General → Toolbar → Show Settings button orqali So
   <string name="morphe_navigation_bar_glass_opacity_summary">Shishasimon navigatsiya panelining shaffoflik darajasini sozlang (0 - shaffof, 100 - opak)</string>
   <string name="morphe_navigation_bar_glass_round_title">Dumaloq shishali navigatsiya paneli</string>
   <string name="morphe_navigation_bar_glass_round_summary">Shishali miniplayer kabi burchaklar o\'rniga, shishali navigatsiya paneliga dumaloq uchlarni beradi</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Shishasimon navigatsiya panelining cheti</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Shishasimon navigatsiya paneli atrofida yorug\' chegara chizadi</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Shishasimon navigatsiya panelining pastki hoshiyasi</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Shisha navigatsiya paneli va ekranning pastki qismi yoki tizim navigatsiyasi orasidagi masofani sozlang</string>
   <string name="morphe_navigation_bar_glass_size_title">Shishasimon navigatsiya paneli o\'lchami</string>
   <string name="morphe_navigation_bar_glass_size_summary">Shishasimon navigatsiya panelining balandligi, kengligi va tugmalar oralig\'ini oldindan ko\'rish imkoniyati bilan sozlang. Ekran kengligiga sig\'magan tugmalar yashiriladi</string>
   <string name="morphe_navigation_bar_glass_size_height">Balandligi</string>
@@ -1378,6 +1388,9 @@ Avtomobil maketi
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Lentani avtomatik yangilashni o\'chirish</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Lentalar eskirgandan keyin ularning avtomatik ravishda yangilanishini oldini oladi</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Bildirishnomalarni guruhdan chiqarish</string>
+  <string name="morphe_ungroup_notifications_summary">Kanalning guruhlangan yuklamalaridagi har bir videoni alohida bildirishnoma sifatida ko\'rsatadi</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Lenta kartochkalari maketi</string>
   <string name="morphe_feed_card_layout_entry_1">Klassik</string>
@@ -1490,6 +1503,8 @@ Avtomobil maketi
   <string name="morphe_dearrow_titles_search_title">Qidiruv natijalari</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow belgisini ko‘rsatish</string>
   <string name="morphe_dearrow_titles_icon_summary">Kroudsorsing yordamida yaratilgan sarlavha yoki muqovaga ega videolar sarlavhalarida DeArrow belgisini ko\'rsatadi. Asl sarlavha va muqovani ko\'rish uchun belgini bosing</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Sarlavhalarni tozalash</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow sarlavhasiga ega bo\'lmagan videolarning sarlavhalarini tozalaydi. Katta harflar bilan yozilgan so\'zlar oddiy holatga o\'tkaziladi, emojilar, noodatiy matnlar va takrorlangan undov belgilari olib tashlanadi</string>
   <string name="morphe_dearrow_casual_mode_title">Oddiy rejim</string>
   <string name="morphe_dearrow_casual_mode_summary">Agar DeArrow foydalanuvchilari asl sarlavhani yoqtirishgan bo\'lsalar, DeArrow sarlavhasi o\'rniga asl sarlavhani ko\'rsatadi</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Asl sarlavhani ko\'rsatish uchun minimal oddiy ovozlar soni</string>

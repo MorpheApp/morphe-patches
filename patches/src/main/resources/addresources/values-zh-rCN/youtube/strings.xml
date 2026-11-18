@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">隐藏上传时间</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"限制：
-• Shorts 专区、频道页面和搜索结果可能仍会显示上传时间
-• 此功能不适用于车载设备"</string>
+• Shorts 专区可能仍会显示上传时间
+• 不适用于车载布局"</string>
   <string name="morphe_hide_video_thumbnail_title">隐藏视频缩略图</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">隐藏视频标签</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">隐藏观看次数</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"限制：
-• Shorts 栏目、频道页面和搜索结果可能仍会显示观看次数
-• 此功能不适用于车载设备"</string>
+• Shorts 专区可能仍会显示观看次数
+• 不适用于车载布局"</string>
   <string name="morphe_hide_web_search_results_title">隐藏网页搜索结果</string>
   <string name="morphe_hide_web_search_results_summary">隐藏搜索结果中的“网页搜索结果”部分</string>
   <string name="morphe_hide_you_may_like_section_title">隐藏“您可能喜欢”的部分</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">隐藏即将播放的视频预览，在自动播放开始前</string>
   <string name="morphe_hide_channel_bar_title">隐藏频道栏</string>
   <string name="morphe_hide_channel_watermark_title">隐藏频道水印</string>
-  <string name="morphe_hide_chapters_timeline_button_title">隐藏章节和“本视频”按钮</string>
+  <string name="morphe_hide_chapters_button_title">隐藏「章节」按钮</string>
   <string name="morphe_hide_crowdfunding_box_title">隐藏众筹框</string>
   <string name="morphe_hide_emergency_box_title">隐藏紧急框</string>
+  <string name="morphe_hide_in_this_video_button_title">隐藏“在本视频中”按钮</string>
   <string name="morphe_hide_info_panels_title">隐藏信息面板</string>
   <string name="morphe_hide_info_panels_summary">隐藏信息性上下文面板，例如医疗信息</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">在信息流视频中任意位置长按可打开其菜单</string>
   <string name="morphe_feed_watch_later_button_title">在缩略图上显示稍后观看按钮</string>
   <string name="morphe_feed_watch_later_button_summary">在 Feed 视频的缩略图上显示“稍后观看”按钮，如果视频已保存则显示勾选标记。点击可保存或移除视频，长按可打开“保存到播放列表”</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">全屏打开帖子图片</string>
+  <string name="morphe_open_post_images_fullscreen_summary">点击帖子的图片将全屏打开，而不是在帖子 Feed 中打开</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">下载帖子图片</string>
   <string name="morphe_post_image_download_summary">在带有图片或 GIF 的帖子中，分享按钮旁边会显示下载按钮，并且其菜单中会添加一个下载选项</string>
@@ -992,6 +996,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">启用按压以滑动的手势</string>
   <string name="morphe_swipe_press_to_engage_summary">识别滑动手势前需要先按住</string>
   <string name="morphe_swipe_haptic_feedback_title">使用触感反馈</string>
+  <string name="morphe_swipe_haptic_feedback_summary">长按开始滑动操作时触发振动</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">保存并恢复亮度</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">进入/退出全屏模式时记住亮度级别</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">启用自动亮度手势</string>
@@ -1135,6 +1140,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">调整玻璃导航栏的透明度级别（0 为透明，100 为不透明）</string>
   <string name="morphe_navigation_bar_glass_round_title">圆角玻璃导航栏</string>
   <string name="morphe_navigation_bar_glass_round_summary">使玻璃导航栏的两端呈圆弧形，而非像玻璃迷你播放器那样呈圆角</string>
+  <string name="morphe_navigation_bar_glass_edge_title">玻璃导航栏边缘</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">在玻璃导航栏周围绘制光边</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">玻璃导航栏底边距</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">调整玻璃导航栏与屏幕底部或系统导航之间的间距</string>
   <string name="morphe_navigation_bar_glass_size_title">玻璃导航栏尺寸</string>
   <string name="morphe_navigation_bar_glass_size_summary">通过预览来调整玻璃导航栏的高度、宽度和按钮间距。超出屏幕宽度的按钮将被隐藏</string>
   <string name="morphe_navigation_bar_glass_size_height">高度</string>
@@ -1381,6 +1390,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">关闭信息流自动刷新</string>
   <string name="morphe_disable_auto_feed_refresh_summary">防止信息流在过期后自动刷新</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">取消通知分组</string>
+  <string name="morphe_ungroup_notifications_summary">将频道的分组上传视频中的每个视频都显示为单独的通知</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">动态卡片布局</string>
   <string name="morphe_feed_card_layout_entry_1">经典</string>
@@ -1493,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">搜索结果</string>
   <string name="morphe_dearrow_titles_icon_title">显示DeArrow图标</string>
   <string name="morphe_dearrow_titles_icon_summary">在具有众包标题或缩略图的视频标题上显示 DeArrow 图标。点击该图标可显示原始标题和缩略图</string>
+  <string name="morphe_dearrow_clean_up_titles_title">清理标题</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">清理没有 DeArrow 标题的视频标题。大写单词将更改为正常大小写，并删除表情符号、花体文本和重复的感叹号</string>
   <string name="morphe_dearrow_casual_mode_title">休闲模式</string>
   <string name="morphe_dearrow_casual_mode_summary">如果DeArrow用户投票赞成原标题，则显示原标题而不是DeArrow标题</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">显示原标题所需的最低休闲票数</string>

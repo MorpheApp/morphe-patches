@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Απόκρυψη χρόνου μεταφόρτωσης</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Περιορισμοί:
-• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τον χρόνο μεταφόρτωσης
-• Αυτή η λειτουργία δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
+• Οι ενότητες Shorts ενδέχεται να εξακολουθούν να εμφανίζουν τον χρόνο μεταφόρτωσης
+• Δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
   <string name="morphe_hide_video_thumbnail_title">Απόκρυψη μικρογραφίας βίντεο</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Απόκρυψη ετικετών βίντεο</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Απόκρυψη αριθμού προβολών</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Περιορισμοί:
-• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τους αριθμούς προβολών
-• Αυτή η λειτουργία δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
+• Οι ενότητες Shorts ενδέχεται να εξακολουθούν να εμφανίζουν τους αριθμούς προβολών
+• Δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
   <string name="morphe_hide_web_search_results_title">Αποτελέσματα αναζήτησης στο διαδίκτυο</string>
   <string name="morphe_hide_web_search_results_summary">Κρύβει την ενότητα \'Αποτέλεσμα από το διαδίκτυο\' από τα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_you_may_like_section_title">Απόκρυψη της ενότητας «Μπορεί να σας αρέσει»</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Κρύβει την προεπισκόπηση του επόμενου βίντεο σε πλήρη οθόνη πριν ξεκινήσει η αυτόματη αναπαραγωγή</string>
   <string name="morphe_hide_channel_bar_title">Γραμμή καναλιού</string>
   <string name="morphe_hide_channel_watermark_title">Υδατογράφημα καναλιού</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Απόκρυψη κεφαλαίων και του κουμπιού \'Σε αυτό το βίντεο\'</string>
+  <string name="morphe_hide_chapters_button_title">Απόκρυψη κουμπιού \"Κεφάλαια\"</string>
   <string name="morphe_hide_crowdfunding_box_title">Πλαίσιο δωρεών</string>
   <string name="morphe_hide_emergency_box_title">Πλαίσια έκτακτης ανάγκης</string>
+  <string name="morphe_hide_in_this_video_button_title">Απόκρυψη κουμπιού \"Σε αυτό το βίντεο\"</string>
   <string name="morphe_hide_info_panels_title">Πάνελ πληροφοριών</string>
   <string name="morphe_hide_info_panels_summary">Απόκρυψη ενημερωτικών πλαισίων περιβάλλοντος, όπως ιατρικών πληροφοριών</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Το πάτημα παρατεταμένα οπουδήποτε σε ένα βίντεο της ροής ανοίγει το μενού του</string>
   <string name="morphe_feed_watch_later_button_title">Εμφάνιση κουμπιού Παρακολούθηση αργότερα στις μικρογραφίες</string>
   <string name="morphe_feed_watch_later_button_summary">Ένα κουμπί «Παρακολούθηση αργότερα» εμφανίζεται στις μικρογραφίες των βίντεο της ροής, με ένα σημάδι ελέγχου εάν το βίντεο έχει αποθηκευτεί. Πατώντας το, το βίντεο αποθηκεύεται ή αφαιρείται, και πατώντας και κρατώντας το, ανοίγει η επιλογή Αποθήκευση σε λίστα αναπαραγωγής</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Άνοιγμα εικόνων publicación σε πλήρη οθόνη</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Η andαπatiquement σε μια εικόνα μιας publicación την ανοίγει σε πλήρη οθόνη, αντί για το feed των publicación</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Λήψη εικόνων ανάρτησης</string>
   <string name="morphe_post_image_download_summary">Ένα κουμπί λήψης εμφανίζεται δίπλα στο κουμπί Κοινοποίησης των αναρτήσεων με εικόνες ή GIF, και ένα στοιχείο λήψης προστίθεται στο μενού τους</string>
@@ -800,6 +804,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_count_clear_done">Οι αποθηκευμένοι αριθμοί επαναλήψεων καθαρίστηκαν</string>
   <string name="morphe_loop_count_flyout_name">Αριθμός επαναλήψεων</string>
   <string name="morphe_loop_count_dialog_message">Πόσες φορές αναπαράγεται το βίντεο πριν από το επόμενο βίντεο, από %1$s έως %2$s. Αφήστε το κενό για να αναπαράγεται το βίντεο χωρίς περιορισμό.</string>
+  <string name="morphe_loop_count_times">%s φορές</string>
   <string name="morphe_loop_count_no_limit">Χωρίς όριο</string>
   <string name="morphe_loop_count_decrease">Λιγότερες φορές</string>
   <string name="morphe_loop_count_increase">Περισσότερες φορές</string>
@@ -991,6 +996,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Παρατεταμένο πάτημα για σάρωση</string>
   <string name="morphe_swipe_press_to_engage_summary">Απαιτείται πάτημα και κράτημα πριν αναγνωριστεί μια χειρονομία σάρωσης.</string>
   <string name="morphe_swipe_haptic_feedback_title">Απόκριση δόνησης</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Δονεί όταν η πίεση και συγκράτηση ξεκινά μια κίνηση σάρωσης</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Αποθήκευση και επαναφορά φωτεινότητας</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Θυμάται το επίπεδο φωτεινότητας κατά την είσοδο και την έξοδο από την πλήρη οθόνη</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Αυτόματη φωτεινότητα με σάρωση</string>
@@ -1134,6 +1140,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Προσαρμόστε το επίπεδο διαφάνειας της γυάλινης γραμμής πλοήγησης (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
   <string name="morphe_navigation_bar_glass_round_title">Στρογγυλεμένη γυάλινη γραμμή πλοήγησης</string>
   <string name="morphe_navigation_bar_glass_round_summary">Δίνει στη γυάλινη γραμμή πλοήγησης στρογγυλεμένες άκρες, αντί για γωνίες όπως στο γυάλινο ελαχιστοποιημένο πρόγραμμα αναπαραγωγής</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Γυάλινη άκρη γραμμής πλοήγησης</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Σχεδιάζει την φωτεινή άκρη γύρω από τη γυάλινη γραμμή πλοήγησης</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Κάτω περιθώριο γυάλινης γραμμής πλοήγησης</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Προσαρμόστε τον χώρο μεταξύ της γυάλινης γραμμής πλοήγησης και του κάτω μέρους της οθόνης ή της πλοήγησης του συστήματος</string>
   <string name="morphe_navigation_bar_glass_size_title">Μέγεθος γυάλινης γραμμής πλοήγησης</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ρυθμίστε το ύψος, το πλάτος και την απόσταση των κουμπιών της γυάλινης γραμμής πλοήγησης, με προεπισκόπηση. Τα κουμπιά που δεν χωράνε στο πλάτος της οθόνης κρύβονται</string>
   <string name="morphe_navigation_bar_glass_size_height">Ύψος</string>
@@ -1380,6 +1390,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Απενεργοποίηση αυτόματης ανανέωσης ροής</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Αποτρέπει την αυτόματη ανανέωση των ροών όταν αυτές καταστούν ξεπερασμένες</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Αποομάδωση ειδοποιήσεων</string>
+  <string name="morphe_ungroup_notifications_summary">Εμφανίζει κάθε βίντεο των ομαδοποιημένων μεταφορτώσεων ενός καναλιού ως ξεχωριστή ειδοποίηση</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Διάταξη καρτών ροής</string>
   <string name="morphe_feed_card_layout_entry_1">Κλασική</string>
@@ -1492,6 +1505,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Αποτελέσματα αναζήτησης</string>
   <string name="morphe_dearrow_titles_icon_title">Εμφάνιση εικονιδίου DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Εμφανίζει το εικονίδιο DeArrow στους τίτλους βιντεοκλίπ με τίτλο ή μικρογραφία από την κοινότητα. Πατήστε το εικονίδιο για να δείτε τον αρχικό τίτλο και τη μικρογραφία</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Καθαρισμός τίτλων</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Καθαρίζει τους τίτλους των βίντεο που δεν έχουν τίτλο DeArrow. Οι λέξεις σε κεφαλαία αλλάζουν σε κανονική μορφή, ενώ τα emoji, το ιδιαίτερο κείμενο και τα επαναλαμβανόμενα знаки θαυμαστικού αφαιρούνται</string>
   <string name="morphe_dearrow_casual_mode_title">Χαλαρή λειτουργία</string>
   <string name="morphe_dearrow_casual_mode_summary">Εμφανίζει τον αρχικό τίτλο αντί για τον τίτλο DeArrow, αν οι χρήστες του DeArrow ψήφισαν ότι τους αρέσει ο αρχικός τίτλος</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Ελάχιστος αριθμός ψήφων casual για την εμφάνιση του αρχικού τίτλου</string>
@@ -1831,6 +1846,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">Αναίρεση</string>
   <string name="morphe_series_tracker_enable_short">Ενεργοποίηση</string>
   <string name="morphe_series_tracker_new_episode">1 νέο επεισόδιο</string>
+  <string name="morphe_series_tracker_new_episodes">%s νέα επεισόδια</string>
   <string name="morphe_series_tracker_record_short">Καταγραφή προόδου σε αυτή τη συσκευή</string>
   <string name="morphe_series_tracker_follow_consent">"Οι σειρές σας και η πρόοδός σας παραμένουν σε αυτή τη συσκευή, κοινή για λογαριασμούς YouTube. Οι έλεγχοι ιστορικού του YouTube δεν τις αλλάζουν. Καθαρίστε την πρόοδο από το μενού Σειρές.
 
@@ -1864,6 +1880,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_episode_order">Σειρά επεισοδίων</string>
   <string name="morphe_series_tracker_playlist_order">Σειρά λίστας αναπαραγωγής</string>
   <string name="morphe_series_tracker_reverse_order">Αντίστροφη σειρά λίστας αναπαραγωγής</string>
+  <string name="morphe_series_tracker_view_count">%s προβολές</string>
   <string name="morphe_series_tracker_view_count_one">%s προβολή</string>
   <string name="morphe_series_tracker_completion_title">Σήμανση επεισοδίων ως παρακολουθούμενων</string>
   <string name="morphe_series_tracker_completion_summary">Τουλάχιστον %1$s%% παρακολουθήθηκε με το πολύ 90 δευτερόλεπτα υπόλοιπο, ή %2$s δευτερόλεπτα εναπομείναντα</string>

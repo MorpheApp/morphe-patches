@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Сакриј време отпремања</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Ограничења:
-• Полице Shorts, странице канала и резултати претраге можда ће и даље приказивати време отпремања
-• Ово не функционише са аутомобилским изгледом"</string>
+• Полице Shorts могу и даље приказивати време отпремања
+• Не ради са аутомобилским изгледом"</string>
   <string name="morphe_hide_video_thumbnail_title">Сакриј сличицу видеа</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Сакриј ознаке видеа</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Сакриј број прегледа</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Ограничења:
-• Полице Shorts, странице канала и резултати претраге можда ће и даље приказивати број прегледа
-• Ово не функционише са аутомобилским изгледом"</string>
+• Полице Shorts могу и даље приказивати број прегледа
+• Не ради са аутомобилским изгледом"</string>
   <string name="morphe_hide_web_search_results_title">Сакриј резултате веб-претраге</string>
   <string name="morphe_hide_web_search_results_summary">Сакрива одељак „Резултат из веб-а“ из резултата претраге</string>
   <string name="morphe_hide_you_may_like_section_title">Сакриј одељак „Можда ће вам се свидети”</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Сакрива предстојећи преглед видеа у пуном режиму пре него што аутоматска репродукција почне</string>
   <string name="morphe_hide_channel_bar_title">Сакриј траку канала</string>
   <string name="morphe_hide_channel_watermark_title">Сакриј водени жиг канала</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Сакриј поглавља и дугме „У овом видеу“</string>
+  <string name="morphe_hide_chapters_button_title">Сакриј дугме „Поглавља“</string>
   <string name="morphe_hide_crowdfunding_box_title">Сакриј поље за колективно финансирање </string>
   <string name="morphe_hide_emergency_box_title">Сакриј поља за хитне случајеве</string>
+  <string name="morphe_hide_in_this_video_button_title">Сакриј дугме „У овом видео снимку“</string>
   <string name="morphe_hide_info_panels_title">Сакриј окна са информацијама</string>
   <string name="morphe_hide_info_panels_summary">Сакрива информативне панеле са контекстом, као што су медицинске информације</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Додиривање и држање било где на видео снимку у фиду отвара његов мени</string>
   <string name="morphe_feed_watch_later_button_title">Прикажи дугме „Гледај касније“ на сличицима</string>
   <string name="morphe_feed_watch_later_button_summary">Дугме „Гледај касније“ се приказује на сличицама видео снимака у фиду, са знаком за потврду ако је видео сачуван. Додиром га чувате или уклањате видео, а додиром и држањем отвара се „Сачувај у плејлисту“</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Отвори слике објаве у пуном екрану</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Додиривање слике објаве отвара је у пуном екрану, уместо у фиду објава</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Преузми слике објаве</string>
   <string name="morphe_post_image_download_summary">Дугме за преузимање се приказује поред дугмета за дељење објава са сликама или GIF-овима, а ставка за преузимање је додата у њихов мени</string>
@@ -991,6 +995,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Омогући притисак за превлачење</string>
   <string name="morphe_swipe_press_to_engage_summary">Захтева притискање и држање пре него што се препозна гест превлачења</string>
   <string name="morphe_swipe_haptic_feedback_title">Омогући вибрацију при додиру</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Вибрира када притискање и држање започне гест превлачења</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Сачувај и врати осветљеност</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Запамти ниво осветљености при уласку / изласку из режима пуног екрана</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Омогући покрет за аутоматску осветљеност</string>
@@ -1134,6 +1139,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Прилагодите ниво прозирности стаклене навигационе траке (0 је прозирно, 100 је непрозирно)</string>
   <string name="morphe_navigation_bar_glass_round_title">Заобљена стаклена навигациона трака</string>
   <string name="morphe_navigation_bar_glass_round_summary">Даје стакленој навигационој траци заобљење крајеве, уместо углова као код стакленог миниплеера</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Стаклена ивица траке за навигацију</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Црта светлецу ивицу око стаклене траке за навигацију</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Доња маргина стаклене траке за навигацију</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Подесите размак између стаклене导航траке и дна екрана или системске навигације</string>
   <string name="morphe_navigation_bar_glass_size_title">Величина стаклене траке за навигацију</string>
   <string name="morphe_navigation_bar_glass_size_summary">Прилагодите висину, ширину и размак дугмади стаклене траке за навигацију, уз преглед. Дугмад која не стају у ширину екрана су сакривена</string>
   <string name="morphe_navigation_bar_glass_size_height">Висина</string>
@@ -1379,6 +1388,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Онемогући аутоматско освежавање фидова</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Спречава да се фидови аутоматски освежавају након што застаре</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Раздвоји обвештења</string>
+  <string name="morphe_ungroup_notifications_summary">Приказује сваки видео из групнисаних прикачивања канала као засебно обвештење</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Распоред картица у фиду</string>
   <string name="morphe_feed_card_layout_entry_1">Класик</string>
@@ -1491,6 +1503,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Резултати претраге</string>
   <string name="morphe_dearrow_titles_icon_title">Прикажи DeArrow икону</string>
   <string name="morphe_dearrow_titles_icon_summary">Приказује DeArrow иконицу на називима видео-записа са називом или сликом унапређеном од стране заједнице. Додирните иконицу да прикажете оригинални назив и слику</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Очисти наслове</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Чисти наслове видео-записа који немају DeArrow наслов. Речи написане великим словима се мењају у нормалан формат, а емоџији, украшен текст и понављан’и знаци узвика се уклањају</string>
   <string name="morphe_dearrow_casual_mode_title">Опуштени режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Приказује оригинални наслов уместо DeArrow наслова ако су DeArrow корисници гласали да им се свиђа оригинални наслов</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Минимални број опуштених гласова за приказ оригиналног наслова</string>

@@ -271,6 +271,11 @@ SABR-avspilling (etterligning av videostrømmer er av)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Deaktiver lydsenking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Volumet senkes ikke når en annen app spiller av en kort lyd, som for eksempel et varsel</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filter for likes i kø</string>
+  <string name="morphe_music_queue_like_filter_summary">Fjerner sanger med få likes fra mikser og radio. Spillelister, album og sanger du legger til i køen endres ikke. Antall likes er fra Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum antall likes</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Sanger med færre likes fjernes fra køen</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Deaktiver omdirigering av misliker</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Hindrer hopping til neste spor når misliker-knappen trykkes</string>
@@ -717,8 +722,14 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_written_by">Skrevet av: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Marker synkroniserte ord eller stavelser</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioriter ord-for-ord-tekster når de er tilgjengelige. Når teksten har tidsstempling for ord, vises hvert ord eller hver stavelse synkronisert med musikken</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Animer synkroniserte ord jevnt</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Uthever hvert ord med en myk sveip, glød og et lett løft når det synges. Slå av for å spare batteri eller for en skarpere utfylling på tregere enheter</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Bruk fjærrulling</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Ruller sangteksten med fjærfysikk, og flytter hver linje litt etter den over. Slå av for å spare batteri på tregere enheter</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Avslappet rulling</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Saktner ned rulleanimasjonen for sangteksten og holder inaktive linjer i full størrelse</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Slør inaktive linjer</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Slører forsiktig hver linje som ikke blir sunget for øyeblikket, mer jo lenger unna (Android 12 og nyere). Før Android 12 forblir inaktive linjer skarpe</string>
   <string name="morphe_music_lyrics_gap_dots_title">Vis prikker ved instrumentalt mellomspill</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Viser tre prikker mellom linjene under et langt instrumentalt mellomspill, som fylles opp etter hvert som mellomspillet avsluttes</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Demp fjerne linjer mer</string>
@@ -841,6 +852,8 @@ Sangtekster kommer fra tredjepartstjenester som ikke er tilknyttet, sponset av e
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Flytter oversettelsen over sangtekstene; lesing og romanisering forblir under</string>
   <string name="morphe_music_lyrics_force_center_title">Alltid sentrér tekster</string>
   <string name="morphe_music_lyrics_force_center_summary">PÅ setter hver linje midt i skjermen og ignorerer kildejustering, inkludert duett-sider; FRA beholder justeringen tekstene ber om</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Justering av duett på motsatt side</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Plasserer den andre sangeren på motsatt kant i duettsanger. Slå av for å holde begge sangerne på samme side</string>
   <string name="morphe_music_lyrics_providers_keep_one">Minst én leverandør må være aktiv</string>
   <string name="morphe_music_lyrics_translation_provider_title">Oversettelse</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering eller translitterasjon</string>

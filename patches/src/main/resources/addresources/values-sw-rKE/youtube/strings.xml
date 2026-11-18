@@ -122,8 +122,8 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_upload_time_title">Ficha muda wa kupakia</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Vikomo:
-• Rafu za Shorts, kurasa za chaneli, na matokeo ya utafutaji bado zinaweza kuonyesha muda wa kupakia
-• Haifanyi kazi na mpangilio wa magari"</string>
+• Rafu za Shorts bado zinaweza kuonyesha muda wa kupakia
+• Haifanyi kazi na mpangilio wa gari"</string>
   <string name="morphe_hide_video_thumbnail_title">Ficha picha ya awali ya video</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Ficha lebo za video</string>
@@ -131,8 +131,8 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_view_count_title">Ficha idadi ya utazamaji</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Vikomo:
-• Rafu za Shorts, kurasa za chaneli, na matokeo ya utafutaji bado zinaweza kuonyesha idadi ya mitazamo
-• Haifanyi kazi na mpangilio wa magari"</string>
+• Rafu za Shorts bado zinaweza kuonyesha idadi ya utazamaji
+• Haifanyi kazi na mpangilio wa gari"</string>
   <string name="morphe_hide_web_search_results_title">Ficha matokeo ya utafutaji wa wavuti</string>
   <string name="morphe_hide_web_search_results_summary">Huficha sehemu ya \'Matokeo kutoka kwenye wavuti\' kutoka kwenye matokeo ya utafutaji</string>
   <string name="morphe_hide_you_may_like_section_title">Ficha sehemu ya \'Unaweza kupenda\'</string>
@@ -290,9 +290,10 @@ Vikwazo:
   <string name="morphe_hide_autoplay_preview_summary">Huficha onyo la video inayokuja katika skrini nzima kabla ya autoplay kuanza</string>
   <string name="morphe_hide_channel_bar_title">Ficha upau wa chaneli</string>
   <string name="morphe_hide_channel_watermark_title">Ficha alama ya maji ya chaneli</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Ficha Sura na kitufe cha \'Katika video hii\'</string>
+  <string name="morphe_hide_chapters_button_title">Ficha kitufe cha Sura</string>
   <string name="morphe_hide_crowdfunding_box_title">Ficha kisanduku cha ufadhili wa umma</string>
   <string name="morphe_hide_emergency_box_title">Ficha visanduku vya dharura</string>
+  <string name="morphe_hide_in_this_video_button_title">Ficha kitufe cha \"Katika video hii\"</string>
   <string name="morphe_hide_info_panels_title">Ficha paneli za habari</string>
   <string name="morphe_hide_info_panels_summary">Huficha paneli za muktadha wa habari, kama vile habari za matibabu</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Ili kuonyesha menyu ya 'Audio Track', badilisha 'Spoof video streams' kuwa mteja
   <string name="morphe_feed_long_press_menu_summary">Kugusa na kushikilia popote kwenye feed ya video hufungua menyu yake</string>
   <string name="morphe_feed_watch_later_button_title">Onyesha kitufe cha Tazama baadaye kwenye picha ndogo</string>
   <string name="morphe_feed_watch_later_button_summary">Kitufe cha Tazama baadaye huonyeshwa kwenye picha ndogo za video za feed, kikiwa na alama ya tiki ikiwa video imehifadhiwa. Kukigusa huhifadhi au huondoa video, na kukigusa na kukishikilia hufungua Hifadhi kwenye orodha ya nyimbo</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Fungua picha za chapisho katika skrini nzima</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Kugusa picha ya chapisho kunaifungua katika skrini nzima, badala ya feed ya machapisho</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Pakua picha za chapisho</string>
   <string name="morphe_post_image_download_summary">Kitufe cha kupakua kinaonyeshwa kando ya kitufe cha Shiriki cha machapisho yenye picha au GIF, na kipengele cha kupakua kimeongezwa kwenye menyu yao</string>
@@ -992,6 +996,7 @@ Ili kurekebisha hili, washa 'Ghushi mkondo wa video' na ubadilishe 'Mteja chaguo
   <string name="morphe_swipe_press_to_engage_title">Wezesha ishara ya kubonyeza ili kutelezesha</string>
   <string name="morphe_swipe_press_to_engage_summary">Inahitaji kubonyeza na kushikilia kabla ya ishara ya kutelezesha kutambuliwa</string>
   <string name="morphe_swipe_haptic_feedback_title">Wezesha mrejesho wa haptiki</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Inatetema wakati wa kubonyeza na kushikilia kuanza ishara ya kutelezesha</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Hifadhi na urejeshe mng\'ao</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Hukumbuka kiwango cha mwanga unapoingia / unatoka katika hali ya skrini nzima</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Washa ishara ya mng\'ao wa kiotomatiki</string>
@@ -1135,6 +1140,10 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_navigation_bar_glass_opacity_summary">Rekebisha kiwango cha uwazi cha bar ya urambazaji ya kioo (0 ni wazi, 100 isiyopitisha mwanga)</string>
   <string name="morphe_navigation_bar_glass_round_title">Upau wa urambazaji wa kioo wa duara</string>
   <string name="morphe_navigation_bar_glass_round_summary">Hutoa upau wa urambazaji wa kioo ncha za duara, badala ya pembe kama kicheza kidogo cha kioo</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Ukingo wa kioo wa baa ya urambazaji</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Huchora ukingo wa mwanga kuzunguka baa ya kioo ya urambazaji</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Nafasi ya chini ya baa ya kioo ya urambazaji</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Rekebisha nafasi kati ya baa ya urambazaji ya kioo na sehemu ya chini ya skrini au urambazaji wa mfumo</string>
   <string name="morphe_navigation_bar_glass_size_title">Ukubwa wa baa ya urambazaji ya kioo</string>
   <string name="morphe_navigation_bar_glass_size_summary">Rekebisha urefu, upana na nafasi ya vitufe ya baa ya urambazaji ya kioo, pamoja na onyesho la kukagua. Vitufe visivyoendana na upana wa skrini hufichwa</string>
   <string name="morphe_navigation_bar_glass_size_height">Urefu</string>
@@ -1381,6 +1390,9 @@ Mpangilio wa Automotive
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Zima urejesho wa feed kiotomatiki</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Huzuia feed zisijihuishishe kiotomatiki baada ya kupitwa na wakati</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Tenganisha arifa</string>
+  <string name="morphe_ungroup_notifications_summary">Inaonyesha kila video ya uploads zilizokundiwa za chaneli kama arifa yake yenyewe</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Mpangilio wa kadi ya feed</string>
   <string name="morphe_feed_card_layout_entry_1">Kawaida</string>
@@ -1493,6 +1505,8 @@ Mpangilio wa Automotive
   <string name="morphe_dearrow_titles_search_title">Matokeo ya utafutaji</string>
   <string name="morphe_dearrow_titles_icon_title">Onyesha aikoni ya DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Inaonyesha aikoni ya DeArrow kwenye vichwa vya habari vya video vyenye kichwa cha habari au picha ya awali iliyotolewa na jamii. Gusa aikoni ili kuonyesha kichwa cha habari na picha ya awali ya asili</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Safisha vichwa vya habari</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Husafisha vichwa vya habari vya video zisizo na kichwa cha DeArrow. Maneno yaliyo katika herufi kubwa yanabadilishwa kuwa herufi za kawaida, na emoji, maandishi ya urembo na alama za mshangao zinazojirudia huondolewa</string>
   <string name="morphe_dearrow_casual_mode_title">Hali ya kawaida</string>
   <string name="morphe_dearrow_casual_mode_summary">Inaonyesha kichwa asilia badala ya kichwa cha DeArrow ikiwa watumiaji wa DeArrow walipiga kura kwamba wanapenda kichwa asilia</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Kura za chini za kawaida ili kuonyesha kichwa asilia</string>

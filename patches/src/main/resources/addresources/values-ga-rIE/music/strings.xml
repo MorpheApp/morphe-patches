@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Úsáid íoslódálaí seachtrach don roghchlár Íoslódála</string>
   <string name="morphe_external_downloader_menu_summary">Osclaíonn an rogha Íoslódála sna roghchláir d’íoslódálaí seachtrach ina ionad sin</string>
-  <string name="morphe_download_force_4k_title">Fórsa earnáil íoslódála 4K</string>
-  <string name="morphe_download_force_4k_summary">Sábhálaíos íoslódálacha 1440p agus 4K fiú má chinneann YouTube Music nach féidir leis an ngiasúnad seo iad a sheinn</string>
+  <string name="morphe_download_force_4k_title">Fórsa infhaighteacht íoslódála 4K</string>
+  <string name="morphe_download_force_4k_summary">Sábhálann sé íoslódálacha 1440p agus 4K, fiú má chinneann YouTube Music nach féidir leis an bhfeiste seo iad a sheinm</string>
   <string name="morphe_export_download_folder_title">Easpórtáil íoslódálacha</string>
   <string name="morphe_export_download_folder_summary">"Easpórtáil amhráin agus físeáin a sábháladh laistigh den aip chuig stóráil do ghléis, ag baint úsáide as an roghchlár aníos le haghaidh íoslódálacha san aip. Beartaigh chun an t-easpórtáil a athrú.
 
@@ -271,6 +271,11 @@ Athsheinm SABR (sruthanna físeáin bréagaithe as)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Díchumasaigh laghdú fuaime</string>
   <string name="morphe_music_disable_audio_ducking_summary">Ní laghdaítear an toirt nuair a sheinneann aip eile fuaim ghearr, ar nós fógra</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Scagaire is maith leis an scuaine</string>
+  <string name="morphe_music_queue_like_filter_summary">Baintear amhráin le cúpla maith leo ó mheascáin agus ón raidió. Ní dhéantar aon athrú ar sheinmliostaí, albaim ná amhráin a chuireann tú leis an scuaine. Is ó Return YouTube Dislike atá na comhaireamh Is maith liom</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Íosmhéid is maith liom</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Baintear amhráin a bhfuil níos lú maith leo as an scuaine</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Díchumasaigh atreorú \"díomá\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Coscann sé léim go dtí an chéad rian eile nuair a bhrúitear an cnaipe \'Ní maith liom\'</string>
@@ -717,8 +722,14 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_written_by">Scríofa ag: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Aibhsigh focail nó siollaí sioncronaithe</string>
   <string name="morphe_music_lyrics_word_sync_summary">Tabhair tosaíocht do liricí a chuirtear i láthair focal ar fhocal nuair a bhíonn siad ar fáil. Nuair a bhíonn uainiú focal ag gabháil leis na liricí, déantar gach focal nó siolla a aibhsiú i gcomhthráth leis an gceol</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Beoigh focail shioncronaithe go réidh</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Leagann sé béim ar gach focal trí ghluaiseacht bhog, lonradh, agus ardú beag a dhéanamh air agus é á chanadh. Múch an ghné seo chun ceallraí a shábháil, nó chun líonadh níos géire a fháil ar fheistí atá níos moille.</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Úsáid scrollú earraigh</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Scrollaíonn sé na liricí ag baint úsáide as fisic an earraigh, agus bogann sé gach líne beagán i ndiaidh na líne os a cionn. Múch é seo chun ceallraí a shábháil ar fheistí níos moille</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Scrollú suaimhneach</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Moillíonn sé an beochan scrollaithe d’fhocail an amhráin agus coinníonn sé línte neamhghníomhacha ar a méid iomlán</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Déan línte neamhghníomhacha doiléir</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Déanann sé gach líne nach bhfuil á canadh faoi láthair a dhoiléiriú go bog — bíonn an doiléiriú níos láidre dá fhaide amach ón lár (Android 12 agus níos déanaí). Roimh Android 12, fanann línte nach bhfuil gníomhach géar.</string>
   <string name="morphe_music_lyrics_gap_dots_title">Taispeáin poncanna don bhriseadh uirlise</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Taispeántar trí phonc idir na línte le linn sos uirlise fada; líontar na poncanna de réir mar a bhíonn an sos ag druidim chun deiridh.</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Línte i bhfad i gcéin, níos doiléire fós</string>
@@ -841,6 +852,8 @@ Tagann liricí ó sheirbhísí tríú páirtí nach bhfuil cleamhnaithe le, urra
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Bogann sé an t-aistriúchán os cionn an téacs amhráin; fanann an léamh agus an rómhánú thíos</string>
   <string name="morphe_music_lyrics_force_center_title">Cuir na liricí sa lár i gcónaí</string>
   <string name="morphe_music_lyrics_force_center_summary">Cuireann ON gach líne sa lár agus déanann sé neamhaird de ailíniú an bhunábhair, lena n-áirítear taobhanna dé-amhrán; coinníonn OFF an t-ailíniú a éilíonn na liricí.</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Ailíniú dé-aonaid ar thaobhanna contrártha</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Cuireann sé an dara hamhránaí ar an imeall os coinne i gcás amhrán dé-amhránaíochta. Múch é seo chun an dá amhránaí a choinneáil ar an taobh céanna.</string>
   <string name="morphe_music_lyrics_providers_keep_one">Caithfidh soláthraí amháin ar a laghad fanacht</string>
   <string name="morphe_music_lyrics_translation_provider_title">Aistriúchán</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Rómhánú nó traslitriú</string>

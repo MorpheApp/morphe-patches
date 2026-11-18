@@ -122,7 +122,7 @@ Zmiany obejmują:
   <string name="morphe_hide_upload_time_title">Ukryj datę publikacji</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Ograniczenia:
-• Sekcje filmów Short, strony kanałów i wyniki wyszukiwania mogą nadal pokazywać datę publikacji
+• Sekcje Shorts mogą nadal pokazywać datę publikacji
 • Nie działa z interfejsem samochodowym"</string>
   <string name="morphe_hide_video_thumbnail_title">Ukryj miniaturkę filmu</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Zmiany obejmują:
   <string name="morphe_hide_view_count_title">Ukryj liczbę wyświetleń</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Ograniczenia:
-• Sekcje filmów Short, strony kanałów i wyniki wyszukiwania mogą nadal pokazywać liczbę wyświetleń
+• Sekcje Shorts mogą nadal pokazywać liczbę wyświetleń
 • Nie działa z interfejsem samochodowym"</string>
   <string name="morphe_hide_web_search_results_title">Ukryj wyniki wyszukiwania z sieci</string>
   <string name="morphe_hide_web_search_results_summary">Ukrywa sekcję \"Wyniki z sieci\" w wynikach wyszukiwania</string>
@@ -290,9 +290,10 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_autoplay_preview_summary">Ukrywa podgląd nadchodzącego filmu w trybie pełnoekranowym przed rozpoczęciem autoodtwarzania</string>
   <string name="morphe_hide_channel_bar_title">Ukryj pasek kanału</string>
   <string name="morphe_hide_channel_watermark_title">Ukryj znak wodny kanału</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Ukryj przycisk Rozdziały i \"W tym filmie\"</string>
+  <string name="morphe_hide_chapters_button_title">Ukryj przycisk Rozdziały</string>
   <string name="morphe_hide_crowdfunding_box_title">Ukryj panele ze zbiórkami</string>
   <string name="morphe_hide_emergency_box_title">Ukryj panele alarmowe</string>
+  <string name="morphe_hide_in_this_video_button_title">Ukryj przycisk \"W tym filmie\"</string>
   <string name="morphe_hide_info_panels_title">Ukryj panele informacyjne</string>
   <string name="morphe_hide_info_panels_summary">Ukrywa informacyjne panele kontekstowe, takie jak informacje medyczne</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_feed_long_press_menu_summary">Przytrzymanie filmu w dowolnym miejscu na liście otwiera jego menu</string>
   <string name="morphe_feed_watch_later_button_title">Pokaż przycisk \"Do obejrzenia\" na miniaturkach</string>
   <string name="morphe_feed_watch_later_button_summary">Na miniaturkach filmów na stronie głównej wyświetlany jest przycisk \"Do obejrzenia\" ze znacznikiem wyboru, jeśli film jest zapisany. Dotknięcie go zapisuje lub usuwa film, a przytrzymanie otwiera okno \"Zapisz na playliście\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Otwieraj obrazy z postów na pełnym ekranie</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Dotknięcie obrazu w poście otwiera go na pełnym ekranie zamiast w widoku postów</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Pobieraj obrazy z postów</string>
   <string name="morphe_post_image_download_summary">Pokazuje przycisk pobierania obok przycisku \"Udostępnij\" pod postami z obrazami lub plikami GIF oraz dodaje opcję pobierania do ich menu</string>
@@ -697,8 +701,8 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_feed_download_flyout_button_summary">Dodaje pozycję pobierania do menu filmów w kanale, które jej nie posiadają</string>
   <string name="morphe_download_force_4k_title">Wymuś dostępność pobierania w 4K</string>
   <string name="morphe_download_force_4k_summary">Umożliwia pobieranie w jakości 1440p i 4K, nawet jeśli YouTube uzna, że to urządzenie nie jest w stanie ich odtworzyć</string>
-  <string name="morphe_download_quality_about_title">1080p niedostępne</string>
-  <string name="morphe_download_quality_about_summary">Jeśli pobieranie w aplikacji nie oferuje 1080p, włącz opcję „Podszywaj wymiary urządzenia” w ustawieniach Różne</string>
+  <string name="morphe_download_quality_about_title">Jakość 1080p jest niedostępna</string>
+  <string name="morphe_download_quality_about_summary">Jeśli pobieranie w aplikacji nie oferuje jakości 1080p, włącz opcję \"Fałszuj rozdzielczość urządzenia\" w ustawieniach \"Pozostałe\"</string>
   <string name="morphe_export_download_folder_title">Eksportuj zapisane filmy</string>
   <string name="morphe_export_download_folder_summary">"Eksportuj filmy zapisane w aplikacji do pamięci urządzenia za pomocą menu pobrań w aplikacji. Dotknij tutaj, aby zmienić folder eksportu
 
@@ -992,6 +996,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_swipe_press_to_engage_title">Włącz wymóg przytrzymania dla gestów</string>
   <string name="morphe_swipe_press_to_engage_summary">Wymaga przytrzymania, zanim gest przesunięcia zostanie rozpoznany</string>
   <string name="morphe_swipe_haptic_feedback_title">Włącz wibracje</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Wibruje, gdy przytrzymanie rozpoczyna gest przesunięcia</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Zapisuj i przywracaj jasność</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Zapamiętuje poziom jasności podczas wchodzenia do trybu pełnoekranowego i wychodzenia z niego</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Włącz gest automatycznej jasności</string>
@@ -1135,6 +1140,10 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_glass_opacity_summary">Dostosuj poziom krycia szklanego paska nawigacji (0 to pełna przezroczystość, 100 to brak przezroczystości)</string>
   <string name="morphe_navigation_bar_glass_round_title">Zaokrąglony szklany pasek nawigacji</string>
   <string name="morphe_navigation_bar_glass_round_summary">Nadaje szklanemu paskowi nawigacji zaokrąglone końce zamiast narożników takich jak w szklanym miniodtwarzaczu</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Krawędź szklanego paska nawigacji</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Rysuje jasną krawędź wokół szklanego paska nawigacji</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Dolny margines szklanego paska nawigacji</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Dostosuj odstęp między szklanym paskiem nawigacji a dołem ekranu lub systemową nawigacją</string>
   <string name="morphe_navigation_bar_glass_size_title">Rozmiar szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość oraz odstępy między przyciskami szklanego paska nawigacji z podglądem na żywo. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
   <string name="morphe_navigation_bar_glass_size_height">Wysokość</string>
@@ -1380,6 +1389,9 @@ Układ samochodowy
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Wyłącz automatyczne odświeżanie</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Zapobiega automatycznemu odświeżaniu treści, gdy stają się nieaktualne</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Rozdziel powiadomienia</string>
+  <string name="morphe_ungroup_notifications_summary">Wyświetla każdy film z pogrupowanych przesyłanek kanału jako osobne powiadomienie</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Układ kart na stronie głównej</string>
   <string name="morphe_feed_card_layout_entry_1">Klasyczny</string>
@@ -1492,6 +1504,8 @@ Układ samochodowy
   <string name="morphe_dearrow_titles_search_title">Wyniki wyszukiwania</string>
   <string name="morphe_dearrow_titles_icon_title">Pokaż ikonę DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Wyświetla ikonę DeArrow przy tytułach filmów z tytułem lub miniaturką zgłoszonymi przez społeczność. Dotknij ikony, aby pokazać oryginalny tytuł i miniaturkę</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Wyczyść tytuły</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Wycisza tytuły filmów, które nie mają tytułu DeArrow. Słowa pisane wielkimi literami są zmieniane na normalną pisownię, a emoji, ozdobny tekst i powtarzające się wykrzykniki są usuwane</string>
   <string name="morphe_dearrow_casual_mode_title">Tryb swobodny</string>
   <string name="morphe_dearrow_casual_mode_summary">Wyświetla oryginalny tytuł zamiast tytułu DeArrow, jeśli użytkownicy DeArrow zagłosowali, że podoba im się oryginał</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalna liczba głosów, aby pokazać oryginalny tytuł</string>
@@ -1634,7 +1648,7 @@ Układ samochodowy
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Pokaż przycisk Prędkość odtwarzania</string>
   <string name="morphe_playback_speed_dialog_button_summary">Przytrzymaj, aby zresetować prędkość do domyślnej</string>
-  <string name="morphe_playback_speed_button_cycle_title">Dotknij przycisku \"Prędkość odtwarzania\", aby przełączać prędkości</string>
+  <string name="morphe_playback_speed_button_cycle_title">Przełączaj prędkości dotknięciem przycisku</string>
   <string name="morphe_playback_speed_button_cycle_summary">Dotknięcie przełącza na następną prędkość z listy. Przytrzymanie otwiera menu prędkości</string>
   <string name="morphe_playback_speed_button_cycle_speeds_title">Prędkość przycisku \"Prędkość odtwarzania\"</string>
   <string name="morphe_playback_speed_button_cycle_speeds_summary">Prędkości przełączane kolejno po dotknięciu, po jednej w wierszu. Po ostatniej prędkości dotknięcie wraca do pierwszej</string>

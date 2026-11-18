@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">আপলোডের সময় লুকান</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"সীমাবদ্ধতা:
-• Shorts শেলফ, চ্যানেল পেজ এবং সার্চ ফলাফলে এখনও আপলোডের সময় দেখানো হতে পারে
-• এই বৈশিষ্ট্যটি অটোমোটিভ লেআউটের সাথে কাজ করে না"</string>
+• Shorts শেলফে এখনও আপলোডের সময় দেখানো হতে পারে
+• অটোমোটিভ লেআউটের সাথে কাজ করে না"</string>
   <string name="morphe_hide_video_thumbnail_title">ভিডিও থাম্বনেইল লুকান</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">ভিডিও লেবেল লুকান</string>
@@ -131,8 +131,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">দেখার সংখ্যা লুকান</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"সীমাবদ্ধতা:
-• Shorts শেল্ফ, চ্যানেল পেজ এবং অনুসন্ধানের ফলাফলে এখনও দেখার সংখ্যা দেখানো হতে পারে
-• এই বৈশিষ্ট্যটি অটোমোটিভ লেআউটের সাথে কাজ করে না"</string>
+• Shorts শেল্ফগুলোতে এখনও দেখার সংখ্যা দেখানো হতে পারে
+• অটোমোটিভ লেআউটের সাথে কাজ করে না"</string>
   <string name="morphe_hide_web_search_results_title">ওয়েব সার্চ ফলাফল লুকান</string>
   <string name="morphe_hide_web_search_results_summary">অনুসন্ধান ফলাফলের \'ওয়েব থেকে ফলাফল\' অংশটি লুকায়।</string>
   <string name="morphe_hide_you_may_like_section_title">\'আপনার পছন্দ হতে পারে\' বিভাগ লুকান</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">স্বয়ংক্রিয়ভাবে প্লেব্যাক শুরু হওয়ার আগে ফুলস্ক্রিনে আসা ভিডিওর প্রিভিউ লুকান</string>
   <string name="morphe_hide_channel_bar_title">চ্যানেল বার লুকান</string>
   <string name="morphe_hide_channel_watermark_title">চ্যানেল জলছাপ লুকান</string>
-  <string name="morphe_hide_chapters_timeline_button_title">অধ্যায় এবং \'এই ভিডিওতে\' বোতাম লুকান</string>
+  <string name="morphe_hide_chapters_button_title">চ্যাপ্টার বাটন লুকিয়ে রাখুন</string>
   <string name="morphe_hide_crowdfunding_box_title">গণ-অর্থায়ন বাক্স লুকান</string>
   <string name="morphe_hide_emergency_box_title">জরুরী বাক্সগুলো লুকান</string>
+  <string name="morphe_hide_in_this_video_button_title">\'এই ভিডিওতে\' বাটনটি লুকিয়ে রাখুন</string>
   <string name="morphe_hide_info_panels_title">তথ্য প্যানেল লুকান</string>
   <string name="morphe_hide_info_panels_summary">চিকিৎসা সংক্রান্ত তথ্যের মতো তথ্যমূলক প্রসঙ্গ প্যানেল লুকায়</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">ফিডের যেকোনো ভিডিওতে ট্যাপ করে ধরে রাখলে এর মেনুটি খুলে যায়</string>
   <string name="morphe_feed_watch_later_button_title">থাম্বনেইলগুলিতে \'পরে দেখুন\' বাটন দেখান</string>
   <string name="morphe_feed_watch_later_button_summary">ফিড ভিডিওর থাম্বনেইলে একটি \'পরে দেখুন\' বোতাম দেখানো হয়, এবং ভিডিওটি সংরক্ষিত থাকলে একটি চেক মার্ক থাকে। এতে ট্যাপ করলে ভিডিওটি সংরক্ষণ বা সরিয়ে ফেলা হয়, এবং ট্যাপ করে ধরে রাখলে \'প্লেলিস্টে সংরক্ষণ করুন\' অপশনটি খোলে</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">পোস্টের ছবিগুলো ফুলস্ক্রিনে ওপেন করুন</string>
+  <string name="morphe_open_post_images_fullscreen_summary">পোস্টের ফিডের পরিবর্তে, কোনো ছবির ওপর ট্যাপ করলে সেটি ফুলস্ক্রিনে ওপেন হবে</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">পোস্টের ছবি ডাউনলোড করুন</string>
   <string name="morphe_post_image_download_summary">ছবি বা GIF যুক্ত পোস্টের শেয়ার বাটনের পাশে একটি ডাউনলোড বাটন দেখানো হবে, এবং তাদের মেনুতে একটি ডাউনলোড আইটেম যোগ করা হবে</string>
@@ -992,6 +996,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_swipe_press_to_engage_title">সোয়াইপ করার জন্য প্রেস করা অঙ্গভঙ্গি সক্রিয় করুন</string>
   <string name="morphe_swipe_press_to_engage_summary">সোয়াইপ অঙ্গভঙ্গি শনাক্ত হওয়ার আগে চেপে ধরে রাখা প্রয়োজন</string>
   <string name="morphe_swipe_haptic_feedback_title">কম্পন প্রতিক্রিয়া সক্রিয় করুন</string>
+  <string name="morphe_swipe_haptic_feedback_summary">সুইপ জেসচার শুরু করার জন্য চেপে ধরে রাখলে ভাইব্রেট হবে</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">উজ্জ্বলতা সংরক্ষণ এবং পুনরুদ্ধার করুন</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">ফুলস্ক্রিন মোডে প্রবেশ করার এবং বের হওয়ার সময় উজ্জ্বলতার স্তর মনে রাখে</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">স্বয়ংক্রিয়-উজ্জ্বলতার অঙ্গভঙ্গি সক্রিয় করুন</string>
@@ -1135,6 +1140,10 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_navigation_bar_glass_opacity_summary">গ্লাস নেভিগেশন বারের স্বচ্ছতার স্তর সামঞ্জস্য করুন (০ হলো স্বচ্ছ, ১০০ হলো অস্বচ্ছ)</string>
   <string name="morphe_navigation_bar_glass_round_title">রাউন্ড গ্লাস নেভিগেশন বার</string>
   <string name="morphe_navigation_bar_glass_round_summary">গ্লাস মিনিপ্লেয়ারের মতো কোণ হওয়ার পরিবর্তে গ্লাস নেভিগেশন বারের প্রান্তগুলোকে গোলাকার করে</string>
+  <string name="morphe_navigation_bar_glass_edge_title">গ্লাস নেভিগেশন বারের এজ</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">গ্লাস নেভিগেশন বারের চারপাশে হালকা এজ তৈরি করে</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">গ্লাস নেভিগেশন বারের বটম মার্জিন</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">গ্লাস নেভিগেশন বার এবং স্ক্রিনের নিচের অংশ বা সিস্টেম নেভিগেশনের মধ্যবর্তী স্পেস অ্যাডজাস্ট করুন</string>
   <string name="morphe_navigation_bar_glass_size_title">গ্লাস নেভিগেশন বারের আকার</string>
   <string name="morphe_navigation_bar_glass_size_summary">একটি প্রিভিউ-এর সাথে গ্লাস নেভিগেশন বারের উচ্চতা, প্রস্থ এবং বাটনের স্পেসিং অ্যাডজাস্ট করুন। স্ক্রিনের প্রস্থে ধরে না এমন বাটনগুলো লুকানো থাকে</string>
   <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
@@ -1381,6 +1390,9 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">স্বয়ংক্রিয় ফিড রিফ্রেশ নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_auto_feed_refresh_summary">ফিড পুরানো হয়ে গেলে সেগুলি স্বয়ংক্রিয়ভাবে রিফ্রেশ হওয়া প্রতিরোধ করে</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">বিজ্ঞপ্তিগুলি আনগ্রুপ করুন</string>
+  <string name="morphe_ungroup_notifications_summary">একটি চ্যানেলের গ্রুপ করা আপলোডগুলির প্রতিটি ভিডিওকে আলাদা বিজ্ঞপ্তি হিসেবে দেখায়</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">ফিড কার্ড লেআউট</string>
   <string name="morphe_feed_card_layout_entry_1">ক্লাসিক</string>
@@ -1493,6 +1505,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_dearrow_titles_search_title">অনুসন্ধানের ফলাফল</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow আইকন দেখান</string>
   <string name="morphe_dearrow_titles_icon_summary">ক্রাউডসোর্সড শিরোনাম বা থাম্বনেইল যুক্ত ভিডিওর শিরোনামে DeArrow আইকন দেখায়। আসল শিরোনাম এবং থাম্বনেইল দেখতে আইকনে ট্যাপ করুন</string>
+  <string name="morphe_dearrow_clean_up_titles_title">টাইটেলগুলো পরিষ্কার করুন</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow টাইটেল নেই এমন ভিডিওর টাইটেলগুলো পরিষ্কার করে। বড় হাতের অক্ষরে লেখা শব্দগুলো সাধারণ কেসে পরিবর্তন করা হয়, এবং ইমোজি, ফ্যান্সি টেক্সট এবং বারবার ব্যবহৃত বিস্ময়সূচক চিহ্ন সরিয়ে ফেলা হয়</string>
   <string name="morphe_dearrow_casual_mode_title">নৈমিত্তিক মোড</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow ব্যবহারকারীরা যদি মূল শিরোনামটি পছন্দ করে বলে ভোট দেন, তাহলে DeArrow শিরোনামের পরিবর্তে মূল শিরোনামটি দেখানো হয়</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">মূল শিরোনাম দেখানোর জন্য সর্বনিম্ন ক্যাজুয়াল ভোট</string>

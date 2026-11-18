@@ -122,7 +122,7 @@ Els canvis inclouen:
   <string name="morphe_hide_upload_time_title">Amagar l\'hora de pujada</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Limitacions:
-• És possible que els prestatges de Shorts, les pàgines dels canals i els resultats de la cerca encara mostrin l'hora de pujada
+• És possible que els prestatges de Shorts encara mostrin l'hora de pujada
 • No funciona amb la disposició d'automòbil"</string>
   <string name="morphe_hide_video_thumbnail_title">Ocultar la miniatura del vídeo</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Els canvis inclouen:
   <string name="morphe_hide_view_count_title">Amagar el recompte de visites</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Limitacions:
-• És possible que els prestatges de Shorts, les pàgines dels canals i els resultats de la cerca encara mostrin el nombre de visualitzacions
+• És possible que els prestatges de Shorts encara mostrin el nombre de visualitzacions
 • No funciona amb la disposició d'automòbil"</string>
   <string name="morphe_hide_web_search_results_title">Ocultar resultats de cerca web</string>
   <string name="morphe_hide_web_search_results_summary">Amaga la secció \'Resultats de la web\' dels resultats de cerca</string>
@@ -290,9 +290,10 @@ Limitacions:
   <string name="morphe_hide_autoplay_preview_summary">Amaga la vista prèvia del vídeo següent en pantalla completa abans que comenci la reproducció automàtica</string>
   <string name="morphe_hide_channel_bar_title">Amaga la barra de canals</string>
   <string name="morphe_hide_channel_watermark_title">Ocultar marca d\'aigua del canal</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Oculta els capítols i el botó \'En aquest vídeo\'</string>
+  <string name="morphe_hide_chapters_button_title">Oculta el botó de Capítols</string>
   <string name="morphe_hide_crowdfunding_box_title">Ocultar caixa de micromecenatge</string>
   <string name="morphe_hide_emergency_box_title">Ocultar caixes d\'emergència</string>
+  <string name="morphe_hide_in_this_video_button_title">Amaga el botó \"En aquest vídeo\"</string>
   <string name="morphe_hide_info_panels_title">Ocultar panells d\'informació</string>
   <string name="morphe_hide_info_panels_summary">Amaga els panells de context informatius, com la informació mèdica</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Per mostrar el menú 'Audio Track', canvia 'Spoof video streams' a qualsevol cli
   <string name="morphe_feed_long_press_menu_summary">Si mantens premut qualsevol part d\'un vídeo del feed, s\'obrirà el seu menú</string>
   <string name="morphe_feed_watch_later_button_title">Mostra el botó Veure més tard a les miniatures</string>
   <string name="morphe_feed_watch_later_button_summary">A la miniatura dels vídeos del feed es mostra un botó de \"Veure més tard\", amb una marca de selecció si el vídeo està desat. En tocar-lo, es desa o s\'elimina el vídeo, i en mantenir-lo premut s\'obre l\'opció \"Desar a la llista de reproducció\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Obre les imatges de la publicació en pantalla completa</string>
+  <string name="morphe_open_post_images_fullscreen_summary">En tocar una imatge d\'una publicació, s\'obrirà en pantalla completa en lloc del feed de publicacions</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Descarregar imatges de publicacions</string>
   <string name="morphe_post_image_download_summary">Es mostra un botó de descàrrega al costat del botó Compartir de les publicacions amb imatges o GIFs, i s\'afegeix un element de descàrrega al seu menú</string>
@@ -800,6 +804,7 @@ La teva clau API mai s'ha de compartir. Qualsevol persona amb accés a ella pot 
   <string name="morphe_loop_count_clear_done">Comptes de bucles desats esborrats</string>
   <string name="morphe_loop_count_flyout_name">Nombre de bucles</string>
   <string name="morphe_loop_count_dialog_message">Quantes vegades es reprodua el vídeo abans del següent vídeo, de %1$s a %2$s. Deixa\'ho buit per repetir el vídeo sense límit.</string>
+  <string name="morphe_loop_count_times">%s vegades</string>
   <string name="morphe_loop_count_no_limit">Sense límit</string>
   <string name="morphe_loop_count_decrease">Menys vegades</string>
   <string name="morphe_loop_count_increase">Més vegades</string>
@@ -991,6 +996,7 @@ Per solucionar-ho, activa 'Simular fluxos de vídeo' i canvia el 'Client per def
   <string name="morphe_swipe_press_to_engage_title">Activa el gest de mantenir premut per lliscar</string>
   <string name="morphe_swipe_press_to_engage_summary">Requereix mantenir premut abans que es reconegui el gest de desllisament</string>
   <string name="morphe_swipe_haptic_feedback_title">Activa la retroalimentació hàptica</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibra quan mantenir premut inicia un gest de descriptors</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Desa i restaura la brillantor</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Recorda el nivell de brillantor en entrar / sortir del mode de pantalla completa</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Activa el gest de brillantor automàtica</string>
@@ -1134,6 +1140,10 @@ Per accedir a la Configuració, activeu el botó de Configuració a través de G
   <string name="morphe_navigation_bar_glass_opacity_summary">Ajusta el nivell de transparència de la barra de navegació de vidre (0 és transparent, 100 és opac)</string>
   <string name="morphe_navigation_bar_glass_round_title">Barra de navegació de vid arrodonida</string>
   <string name="morphe_navigation_bar_glass_round_summary">Dona a la barra de navegació de vid extrems arrodonits, en lloc de cantonades com el miniplayer de vid</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Borda de la barra de navegació de vidre</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Dibuixa la borda de llum al voltant de la barra de navegació de vidre</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Margen inferior de la barra de navegació de vidre</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Ajusta l\'espai entre la barra de navegació de vidre i la part inferior de la pantalla o la navegació del sistema</string>
   <string name="morphe_navigation_bar_glass_size_title">Mida de la barra de navegació de vidre</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajusta l\'alçada, l\'amplada i l\'espaiat dels botons de la barra de navegació de vidre, amb una vista prèvia. Els botons que no caben a l\'amplada de la pantalla es solen ocultar</string>
   <string name="morphe_navigation_bar_glass_size_height">Alçada</string>
@@ -1380,6 +1390,9 @@ Disseny d'automoció
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Desactiva l\'actualització automàtica del feed</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Evita que els feeds s\'actualitzin automàticament quan queden obsolets</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Desagrupar notificacions</string>
+  <string name="morphe_ungroup_notifications_summary">Mostra cada vídeo dels uploads agrupats d\'un canal com a una notificació pròpia</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Disseny de la targeta del feed</string>
   <string name="morphe_feed_card_layout_entry_1">Clàssic</string>
@@ -1492,6 +1505,8 @@ Disseny d'automoció
   <string name="morphe_dearrow_titles_search_title">Resultats de la cerca</string>
   <string name="morphe_dearrow_titles_icon_title">Mostrar la icona de DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Mostra la icona de DeArrow als títols dels vídeos amb un títol o una miniatura generats per la comunitat. Toqueu la icona per mostrar el títol i la miniatura originals</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Netejar títols</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Neteja els títols dels vídeos sense un títol de DeArrow. Les paraules en majúscules es canvien a caixa normal, i s\'eliminen els emojis, el text adornat i els signes d\'exclamació repetits</string>
   <string name="morphe_dearrow_casual_mode_title">Mode casual</string>
   <string name="morphe_dearrow_casual_mode_summary">Mostra el títol original en lloc del títol de DeArrow si els usuaris de DeArrow han votat que els agrada el títol original</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Vots casuals mínims per mostrar el títol original</string>

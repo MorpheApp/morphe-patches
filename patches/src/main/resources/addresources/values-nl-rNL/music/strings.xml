@@ -271,6 +271,11 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Audio-ducking uitschakelen</string>
   <string name="morphe_music_disable_audio_ducking_summary">Het volume wordt niet verlaagd wanneer een andere app een kort geluid afspeelt, zoals een melding</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Wachtrij-likesfilter</string>
+  <string name="morphe_music_queue_like_filter_summary">Verwijder nummers met weinig likes uit mixes en radio. Afspeellijsten, albums en nummers die je aan de wachtrij toevoegt worden niet gewijzigd. Het aantal likes is afkomstig van Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum aantal likes</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Nummers met minder likes worden uit de wachtrij verwijderd</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Schakel dislike omleiding uit</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Voorkomt dat naar het volgende nummer wordt gesprongen wanneer op de dislike-knop wordt gedrukt</string>
@@ -717,8 +722,14 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_written_by">Geschreven door: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Gesynchroniseerde woorden of lettergrepen markeren</string>
   <string name="morphe_music_lyrics_word_sync_summary">Geef prioriteit aan woord-voor-woord songteksten wanneer beschikbaar. Wanneer songteksten woordtiming bevatten, wordt elk woord of elke lettergreep gemarkeerd in de maat met de muziek</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Gesynchroniseerde woorden vloeiend animeren</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Markeert elk woord met een zachte veeg, gloed en lichte lift terwijl het gezongen wordt. Schakel dit uit om batterij te besparen of voor een scherpere weergave op tragere apparaten</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Spring-scrolling gebruiken</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Scrollt de songtekst met springfysica en verschuift elke regel een beetje ten opzichte van de regel erboven. Schakel dit uit om batterij te besparen op tragere apparaten</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Ontspannen scrollen</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Vertraagt de scrollanimatie van de songtekst en houdt inactieve regels op volledige grootte</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Inactieve regels vervagen</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Vervaagt zachtjes elke regel die momenteel niet wordt gezongen, waarbij regels die verder weg staan sterker worden vervaagd (Android 12 en later). Voor Android 12 blijven inactieve regels scherp</string>
   <string name="morphe_music_lyrics_gap_dots_title">Instrumentale break-stippen tonen</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Toont drie stippen tussen de regels tijdens een lange instrumentale break, die vollopen naarmate de break afloopt</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Verre regels sterker dimmen</string>
@@ -841,6 +852,8 @@ Songteksten komen van derde-dienstverleners die niet gelieerd zijn aan, gesponso
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Verplaatst de vertaling boven de songtekst; de lezing en romanisering blijven eronder</string>
   <string name="morphe_music_lyrics_force_center_title">Songteksten altijd centreren</string>
   <string name="morphe_music_lyrics_force_center_summary">ON plaatst elke regel in het midden en negeert de bronalignement, inclusief duet-partijen; OFF behoudt de alignement zoals de lyrics vragen</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Uitlijning duet aan tegenovergestelde zijde</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Plaatst de tweede zanger aan de tegenovergestelde rand bij duetnummers. Schakel dit uit om beide zangers aan dezelfde zijde te houden</string>
   <string name="morphe_music_lyrics_providers_keep_one">Minstens één aanbieder moet ingeschakeld blijven</string>
   <string name="morphe_music_lyrics_translation_provider_title">Vertaling</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering of transliteratie</string>

@@ -122,7 +122,7 @@ Perubahan termasuk:
   <string name="morphe_hide_upload_time_title">Sorokkan masa muat naik</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Batasan:
-• Laci Shorts, laman saluran dan hasil carian mungkin masih menunjukkan masa muat naik
+• Laci Shorts mungkin masih menunjukkan masa muat naik
 • Tidak berfungsi dengan tataletak automotif"</string>
   <string name="morphe_hide_video_thumbnail_title">Sorokkan imej kenit video</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Perubahan termasuk:
   <string name="morphe_hide_view_count_title">Sorokkan jumlah tontonan</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Batasan:
-• Laci Shorts, laman saluran dan hasil carian mungkin masih menunjukkan kiraan tontonan
+• Laci Shorts mungkin masih menunjukkan kiraan tontonan
 • Tidak berfungsi dengan tataletak automotif"</string>
   <string name="morphe_hide_web_search_results_title">Sorokkan hasil carian web</string>
   <string name="morphe_hide_web_search_results_summary">Sembunyikan bahagian \'Hasil daripada web\' daripada hasil carian</string>
@@ -290,9 +290,10 @@ Had:
   <string name="morphe_hide_autoplay_preview_summary">Menyembunyikan pratonton video akan datang dalam skrin penuh sebelum autoplay bermula</string>
   <string name="morphe_hide_channel_bar_title">Sorokkan bar saluran</string>
   <string name="morphe_hide_channel_watermark_title">Sorokkan tanda air saluran</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Sembunyikan Bab dan butang \'Dalam video ini\'</string>
+  <string name="morphe_hide_chapters_button_title">Sorokkan butang \'Bab\'</string>
   <string name="morphe_hide_crowdfunding_box_title">Sorokkan kotak pembiayaan khalayak</string>
   <string name="morphe_hide_emergency_box_title">Sorokkan kotak kecemasan</string>
+  <string name="morphe_hide_in_this_video_button_title">Sorokkan butang \'Dalam video ini\'</string>
   <string name="morphe_hide_info_panels_title">Sorokkan panel info</string>
   <string name="morphe_hide_info_panels_summary">Menyembunyikan panel konteks maklumat, seperti maklumat perubatan</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Untuk memaparkan menu 'Audio Track', tukar 'Spoof video streams' kepada mana-man
   <string name="morphe_feed_long_press_menu_summary">Mengetik dan menahan di mana-mana pada video suapan akan membuka menunya</string>
   <string name="morphe_feed_watch_later_button_title">Tunjukkan butang Tonton kemudian pada imej kenit</string>
   <string name="morphe_feed_watch_later_button_summary">Butang Tonton kemudian dipaparkan pada imej kecil video feed, dengan tanda semak jika video disimpan. Mengetiknya akan menyimpan atau mengeluarkan video, dan mengetik serta menahannya akan membuka Simpan ke senarai main</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Buka imej hantaran dalam skrin penuh</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Mengetik imej hantaran akan membukanya dalam skrin penuh, bukannya dalam suapan hantaran</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Muat turun imej hantaran</string>
   <string name="morphe_post_image_download_summary">Butang muat turun dipaparkan bersebelahan dengan butang Kongsi bagi hantaran dengan imej atau GIF, dan item muat turun ditambah ke menu mereka</string>
@@ -992,6 +996,7 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_swipe_press_to_engage_title">Dayakan gerak isyarat tekan untuk leret</string>
   <string name="morphe_swipe_press_to_engage_summary">Memerlukan gerakan tekan dan tahan sebelum gerak isyarat leret dikenal pasti</string>
   <string name="morphe_swipe_haptic_feedback_title">Dayakan maklum balas sentuhan</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Bergetar apabila tekan dan tahan memulakan gerak isyarat leret</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Simpan dan pulihkan kecerahan</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Ingat tahap kecerahan apabila masuk/keluar daripada mod skrin penuh</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Dayakan gerak isyarat kecerahan automatik</string>
@@ -1135,6 +1140,10 @@ Untuk mengakses Tetapan, aktifkan butang Tetapan melalui Umum → Bar Alat → T
   <string name="morphe_navigation_bar_glass_opacity_summary">Melaraskan tahap kelutsinaran bar navigasi kaca (0 ialah lut sinar, 100 ialah legap)</string>
   <string name="morphe_navigation_bar_glass_round_title">Bar pandu arah kaca bulat</string>
   <string name="morphe_navigation_bar_glass_round_summary">Memberikan hujung bulat pada bar pandu arah kaca, berbanding bucu seperti pemain mini kaca</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Tepi bar pandu arah kaca</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Melukis tepi cahaya di sekeliling bar pandu arah kaca</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Margin bawah bar pandu arah kaca</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Laraskan ruang antara bar navigasi kaca dan bahagian bawah skrin atau navigasi sistem</string>
   <string name="morphe_navigation_bar_glass_size_title">Saiz bar pandu arah kaca</string>
   <string name="morphe_navigation_bar_glass_size_summary">Laraskan ketinggian, lebar dan jarak butang bar pandu arah kaca, dengan pratonton. Butang yang tidak muat dalam lebar skrin akan disembunyikan</string>
   <string name="morphe_navigation_bar_glass_size_height">Ketinggian</string>
@@ -1381,6 +1390,9 @@ Tata letak automotif
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Nyahaktifkan penyegaran suapan automatik</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Menghalang suapan daripada disegarkan secara automatik selepas ia menjadi lapuk</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Nyahkumpulan notifikasi</string>
+  <string name="morphe_ungroup_notifications_summary">Memaparkan setiap video daripada muat naik saluran yang dikumpulkan sebagai notifikasi tersendiri</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Tata letak kad suapan</string>
   <string name="morphe_feed_card_layout_entry_1">Klasik</string>
@@ -1493,6 +1505,8 @@ Tata letak automotif
   <string name="morphe_dearrow_titles_search_title">Hasil carian</string>
   <string name="morphe_dearrow_titles_icon_title">Tunjukkan ikon DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Menunjukkan ikon DeArrow pada tajuk video dengan tajuk atau imej kenit sumber komuniti. Ketik ikon untuk menunjukkan tajuk dan imej kenit asal</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Bersihkan tajuk</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Membersihkan tajuk video tanpa tajuk DeArrow. Perkataan dalam huruf besar ditukar kepada huruf kecil biasa, dan emoji, teks hiasan serta tanda seru yang berulang akan dialih keluar</string>
   <string name="morphe_dearrow_casual_mode_title">Mod santai</string>
   <string name="morphe_dearrow_casual_mode_summary">Menunjukkan tajuk asal dan bukannya tajuk DeArrow jika pengguna DeArrow mengundi bahawa mereka menyukai tajuk asal</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Undian santai minimum untuk menunjukkan tajuk asal</string>

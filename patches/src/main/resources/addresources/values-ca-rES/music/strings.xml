@@ -271,6 +271,11 @@ Reproducció SABR (fluxos de vídeo simulats desactivats)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Desactiva l\'atenuació d\'àudio</string>
   <string name="morphe_music_disable_audio_ducking_summary">El volum no baixa quan una altra aplicació reprodua un so curt, com una notificació</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filtre de m\'agrada de la cua</string>
+  <string name="morphe_music_queue_like_filter_summary">Elimina les cançons amb pocs \"m\'agrada\" de les mixos i la ràdio. Les llistes de reproducció, els àlbums i les cançons que afegeixis a la cua no canviaran. Els recomptes de \"m\'agrada\" provenen de Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Mínim de \"m\'agrada\"</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Les cançons amb menys \"m\'agrada\" s\'eliminen de la cua</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desactivar la redirecció de no m\'agrada</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Evita saltar a la següent cançó quan es prem el botó no m\'agrada</string>
@@ -717,8 +722,14 @@ Cookies requerides: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_written_by">Escrit per: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Ressaltar paraules o síl·labes sincronitzades</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritzar les lletres paraula per paraula quan estiguin disponibles. Quan les lletres tenen temporització de paraules, ressalta cada paraula o síl·laba al ritme de la música</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Anima les paraules sincronitzades amb suavitat</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Ressalta cada paraula amb un barrid suau, un resplendor i un lleuger elevament mentre es canta. Desactiva\'ho per estalviar bateria o per a un ompliment nítid en dispositius més lentos</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Utilitza el desplaçament amb molla</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Desplaça les lletres amb física de molla i mou cada línia una mica després de la de dalt. Desactiva aquesta opció per estalviar bateria en dispositius més lentils</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Desplaçament relaxat</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Reduceix la velocitat de l\'animació del desplaçament de la lletra i manté les línies inactives a mida sencera</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Desenfocar línies inactives</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Desenfoca lleugerament cada línia que no s\'estigui cantant en aquest moment, i més còncidment quant més lluny estigui (Android 12 i versions posteriors). Abans d\'Android 12, les línies inactives es mantenen nítides</string>
   <string name="morphe_music_lyrics_gap_dots_title">Mostra els punts de pausa instrumental</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Mostra tres punts entre les línies durant una pausa instrumental llarga, que s\'omplen a mesura que la pausa s\'acaba</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Atenua més les línies llunyanes</string>
@@ -841,6 +852,8 @@ Les lletres provenen de serveis de tercers que no estan afiliats, patrocinats ni
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Moveix la traducció per sobre de les lletres; la lectura i la romanització es mantenen per sota</string>
   <string name="morphe_music_lyrics_force_center_title">Centra sempre les lletres</string>
   <string name="morphe_music_lyrics_force_center_summary">ACTIVAT posa cada línia al centre i ignora l\'alineació d\'origen, incloent els costats del duet; DESACTIVAT manté l\'alineació que indiquen les lletres</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Alineació de duet al costat oposat</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Col·loca el segon cantant al costat oposat en les cançons de duet. Desactiva l\'opció per mantenir ambdós cantants al mateix costat</string>
   <string name="morphe_music_lyrics_providers_keep_one">Almenys un proveïdor ha de romandre activat</string>
   <string name="morphe_music_lyrics_translation_provider_title">Traducció</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanització o transliteració</string>

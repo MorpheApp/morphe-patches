@@ -271,6 +271,11 @@ Reprodución SABR (simulación de fluxos de vídeo desactivada)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Desactivar a redución do volume</string>
   <string name="morphe_music_disable_audio_ducking_summary">O volume non baixa cando outra aplicación reproduce un son curto, como unha notificación</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filtro de likes da cola</string>
+  <string name="morphe_music_queue_like_filter_summary">Elimina as cancións con poucos likes das mesturas e da radio. As listas de reprodución, os álbums e as cancións que engades á cola non se modifies. O número de likes provén de Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Likes mínimos</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">As cancións con menos likes elimínanse da cola</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desactivar redireccionamento de non gustar</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Evita saltar á seguinte pista cando se preme o botón de non gustar</string>
@@ -717,8 +722,14 @@ Cookies necesarias: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_written_by">Escrito por: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Resaltar palabras ou sílabas sincronizadas</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioriza as letras palabra por palabra cando estean dispoñibles. Cando as letras inclúen a sincronización por palabra, resáltase cada palabra ou sílaba ao ritmo da música</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Animar as palabras sincronizadas suavemente</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Resalta cada palabra cun barrido suave, brillo e un lixeiro elevamento mentres se canta. Desactívaa para aforrar batería ou para un preenchimento nítido en dispositivos máis lentos</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Usar o desplazamiento elástico</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Desplaza a letra con física elástica e move cada liña un pouco despois da anterior. Desactívaa para aforrar batería en dispositivos máis lentos</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Desprazamento relaxado</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Rallenta a animación do desprazamento da letra e mantén as liñas inactivas no seu tamaño completo</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Desenfocar liñas inactivas</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Desenfoca suavemente cada liña que non se está cantando no momento, máis intensamente canto máis lonxe estea (Android 12 e posteriores). Antes de Android 12, as liñas inactivas permanecen nítidas</string>
   <string name="morphe_music_lyrics_gap_dots_title">Mostrar puntos de pausa instrumental</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Mostra tres puntos entre as liñas durante unha pausa instrumental longa, que se van enchendo a medida que a pausa remata</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Escurecer máis as liñas distantes</string>
@@ -841,6 +852,8 @@ As letras provén de servizos de terceiros que non están afiliados, patrocinado
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Move a tradución arriba das letras; a lectura e a romanización quedan abaixo</string>
   <string name="morphe_music_lyrics_force_center_title">Centrar sempre as letras</string>
   <string name="morphe_music_lyrics_force_center_summary">ACTIVADO coloca cada liña no centro e ignora a alineación orixinal, incluído os lados do dúo; DESACTIVADO mantén a alineación que piden as letras</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Alineación de dúos en lados opostos</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Coloca ao segundo cantante no bordo oposto en cancións de dúo. Desactívao para manter a ambos cantantes no mesmo lado</string>
   <string name="morphe_music_lyrics_providers_keep_one">Polo menos un provedor debe permanecer activo</string>
   <string name="morphe_music_lyrics_translation_provider_title">Tradución</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanización ou transliteración</string>

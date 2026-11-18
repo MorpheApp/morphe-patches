@@ -271,6 +271,11 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">I-disable ang audio ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Hindi bababa ang volume kapag may ibang app na nagpatugtog ng maikling tunog, gaya ng notification</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Filter ng mga like sa queue</string>
+  <string name="morphe_music_queue_like_filter_summary">Nag-aalis ng mga kanta na may kaunting likes mula sa mga mix at radio. Ang mga playlist, album at mga kantang idinagdag mo sa queue ay hindi mababago. Ang bilang ng like ay mula sa Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum na likes</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Ang mga kantang may mas kaunting likes ay aalisin mula sa queue</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Huwag paganahin ang dislike redirection</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Pinipigilan ang paglaktaw sa susunod na track kapag pinindot ang dislike button</string>
@@ -712,8 +717,14 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_written_by">Isinulat ni: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">I-highlight ang mga salita o pantig na naka-sync</string>
   <string name="morphe_music_lyrics_word_sync_summary">Unahin ang word-by-word na lyrics kung available. Kapag may word timing ang lyrics, ine-highlight ang bawat salita o pantig na kasabay ng musika.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">I-animate nang swabe ang mga synced na salita</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Binibigyang-diin ang bawat salita gamit ang soft sweep, glow, at bahagyang pag-angat habang kinakanta. I-off para makatipid sa baterya o para sa sharp fill sa mga mas mabagal na device</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Gamitin ang spring scrolling</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Ini-scroll ang lyrics gamit ang spring physics, at ginagalaw ang bawat linya nang bahagya pagkatapos ng linyang nasa itaas nito. I-off para makatipid ng baterya sa mas mabagal na mga device</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Relaxed na pag-scroll</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Pinababagal ang lyric scroll animation at pinananatiling full size ang mga inactive na linya</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">I-blur ang mga inactive line</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Malambot na i-bi-blur ang bawat line na hindi kasalukuyang kinakanta, lalo na kung mas malayo (Android 12 at mas bago). Bago ang Android 12, mananatiling malinaw ang mga inactive line</string>
   <string name="morphe_music_lyrics_gap_dots_title">Ipakita ang mga tuldok ng instrumental break</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Nagpapakita ng tatlong tuldok sa pagitan ng mga linya habang may mahabang instrumental break, na napupuno habang natatapos ang break</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Gawing mas malabo ang mga malalayong linya</string>
@@ -836,6 +847,8 @@ Ang mga lyrics ay galing sa mga third-party service na hindi konektado sa, hindi
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Inililipat ang pagsasalin sa itaas ng mga liriko; ang pagbasa at romanization ay nananatili sa ibaba</string>
   <string name="morphe_music_lyrics_force_center_title">Palaging i-center ang mga lyrics</string>
   <string name="morphe_music_lyrics_force_center_summary">ON ay naglalagay ng bawat line sa gitna at binabalewala ang source alignment, kasama ang duet sides; OFF ay pinapanatili ang alignment na hiningi ng mga lyrics</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Alignment ng duet sa kabilang panig</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Ilalagay ang ikalawang singer sa kabilang panig sa mga duet song. I-off para panatilihin ang parehong singer sa iisang panig</string>
   <string name="morphe_music_lyrics_providers_keep_one">Dapat manatiling naka-on ang hindi bababa sa isang provider</string>
   <string name="morphe_music_lyrics_translation_provider_title">Mga Pagsasalin</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanization o transliteration</string>

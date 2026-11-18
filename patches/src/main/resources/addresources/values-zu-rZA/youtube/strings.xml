@@ -122,7 +122,7 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_upload_time_title">Fihla isikhathi sokukhuphula</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Imikhawulo:
-• Amashelufu e-Shorts, amakhasi esiteshi, nemiphumela yokusesha angase akhombise izikhathi zokukhulethela
+• Amashelufu e-Shorts angase akhombise izikhathi zokukhulethela
 • Akusebenzi nohlelo lwe-automotive"</string>
   <string name="morphe_hide_video_thumbnail_title">Fihla isithombe semvidiyo</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_view_count_title">Fihla isibalo sokubuka</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Imikhawulo:
-• Amashelufu e-Shorts, amakhasi esiteshi, nemiphumela yokusesha angase akhombise izibalo zokubukwa
+• Amashelufu e-Shorts angase akhombise izibalo zokubukwa
 • Akusebenzi nohlelo lwe-automotive"</string>
   <string name="morphe_hide_web_search_results_title">Fihla imiphumela yokusesha kuwebhu</string>
   <string name="morphe_hide_web_search_results_summary">Ifihla isigaba se-\'Imiphumela evela kuwebhu\' emiphumeleni yokusesha</string>
@@ -290,9 +290,10 @@ Imingcele:
   <string name="morphe_hide_autoplay_preview_summary">Ifihla isibukiso sevidiyo ezayo esikrini esigcwele ngaphambi kokuba i-autoplay iqale</string>
   <string name="morphe_hide_channel_bar_title">Fihla ibha yeshanali</string>
   <string name="morphe_hide_channel_watermark_title">Fihla i-watermark yeshanali</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Fihla ama-Chapters kanye nenkinobho ethi \'Kuleli video\'</string>
+  <string name="morphe_hide_chapters_button_title">Fihla inkinobho yeZahluko</string>
   <string name="morphe_hide_crowdfunding_box_title">Fihla ibhokisi le-crowdfunding</string>
   <string name="morphe_hide_emergency_box_title">Fihla amabhokisi ezigameko</string>
+  <string name="morphe_hide_in_this_video_button_title">Fihla inkinobho ethi \'Kule video\'</string>
   <string name="morphe_hide_info_panels_title">Fihla amapaneli olwazi</string>
   <string name="morphe_hide_info_panels_summary">Ifihla amapaneli olwazi, njengolwazi lwezempilo</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Ukuze ubonise imenyu ye-'Audio Track', shintsha 'Spoof video streams' kube yikla
   <string name="morphe_feed_long_press_menu_summary">Ukuchofoza nokubamba noma kuphi ku-feed yevidiyo kuvula imenyu yayo</string>
   <string name="morphe_feed_watch_later_button_title">Khombisa inkinobho ethi Buka kamuva kuma-thumbnail</string>
   <string name="morphe_feed_watch_later_button_summary">Inkinobho ye-Watch later ibonakala kuma-thumbnails e-feed yama-video, nenothi elikhombisa ukuthi i-video yongelele. Ukuyithinta kuyonga noma kuyisuse i-video, futhi ukuthinta ukubamba kuvula i-Save to playlist</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Vula izithombe ze-post ngesikrinimbono esiphelele</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Ukuthinta isithombe se-post sivula sona ngesikrinimbono esiphelele, esikhundleni se-feed ye-posts</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Landa izithombe zethumelo</string>
   <string name="morphe_post_image_download_summary">Inkinobho yokulanda ibonakala eduze nenkinobho yokwabelana kwezithumelo ezinezithombe noma ama-GIF, futhi into yokulanda iyengezwa kumenyu yawo</string>
@@ -992,6 +996,7 @@ Ukuze ulungise lokhu, vula 'Spoof video streams' bese ushintsha 'Default client'
   <string name="morphe_swipe_press_to_engage_title">Vula isenzo sokucindezela ukuze uswipe</string>
   <string name="morphe_swipe_press_to_engage_summary">Kudingeka ukucindezela uphathe ngaphambi kokuba isenzo sokuswayiza siqondwe</string>
   <string name="morphe_swipe_haptic_feedback_title">Vumela i-haptic feedback</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Yinyanya lapho ukuphinda ucindeze futhi ubambe kuqala isenzo sokusula</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Gcina futhi ubuyise ukukhanya</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Khumbula izinga lokukhanya lapho ungena / uphuma emodini yesikrin sawonke</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Vumela i-gesture ye-auto-brightness</string>
@@ -1135,6 +1140,10 @@ Ukuze ufike ku-Settings, vula inkinobho ye-Settings nge-General → Toolbar → 
   <string name="morphe_navigation_bar_glass_opacity_summary">Lungisa izinga lokucaca kwe-glass navigation bar (0 kucaca, 100 akucaci)</string>
   <string name="morphe_navigation_bar_glass_round_title">Ibha lokuzulazula lengilazi eliyindilinga</string>
   <string name="morphe_navigation_bar_glass_round_summary">Linika ibha lokuzulazula lengilazi iziphetho eziyindilinga, esikhundleni sezona njengokwenye i-miniplayer engilazi</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Uphondo lwebha yokuzulazula lwengilazi</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Idweba uphondo olukhanyayo ezungezeni ibha yokuzulazula lwengilazi</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Umdwebo wezansi webha yokuzulazula lwengilazi</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Lungisa isikhala phakathi kwe-glass navigation bar naphansi kwesikrini noma i-system navigation</string>
   <string name="morphe_navigation_bar_glass_size_title">Usayizi we-glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_size_summary">Lungisa ubude, ububanzi nesikhala sezinkinobho se-glass navigation bar, ngokubona isibonelo. Izinobho ezingangeni kububanzi besikrini ziyacashwa</string>
   <string name="morphe_navigation_bar_glass_size_height">Ubude</string>
@@ -1381,6 +1390,9 @@ Indlela yokuhlela yezimoto
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Vimisa ukuvuselelwa kwe-feed ngokuzenzakalelayo</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Kuvimbela ama-feed ukuba avuselelwe ngokuzenzakalelayo emva kokuba asendulo</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Hlukanisa izaziso</string>
+  <string name="morphe_ungroup_notifications_summary">Ikhombisa yonke i-vidiyo yezinto ezikhulu ezithuthukiswe ngomgeshe njengesaziso sayo</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Ukulungiseka kwekhadi le-feed</string>
   <string name="morphe_feed_card_layout_entry_1">Okujwayelekile</string>
@@ -1493,6 +1505,8 @@ Indlela yokuhlela yezimoto
   <string name="morphe_dearrow_titles_search_title">Imiphumela yokusesha</string>
   <string name="morphe_dearrow_titles_icon_title">Khombisa i-icon ye-DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Ikhombisa i-ayikoni ye-DeArrow ezihloko zezividiyo ezinisihloko noma isithombe esivela kubantu. Thinta i-ayikoni ukuze ukhombise isihloko nesithombe sokuqala</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Hlanza izihloko</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Ihlanza izihloko zezividiyo ezingenalo isihloko se-DeArrow. Amagama abhalwe ngohlamvu olukhulu ashintshwa abe yindlela ejwayelekile, kanti ama-emoji, Umbhalo ohlobisile namaphawu okumemeza aphindwe ayisuswa</string>
   <string name="morphe_dearrow_casual_mode_title">Imodi yokuziphethela</string>
   <string name="morphe_dearrow_casual_mode_summary">Ikhombisa isihloko sokuqala esikhundleni sesihloko seDeArrow uma abasebenzisi beDeArrow bevota ukuthi bayasithanda isihloko sokuqala</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Imivoti embalwa kakhulu yokuziphethela ukuze kukhonyiswe isihloko sokuqala</string>

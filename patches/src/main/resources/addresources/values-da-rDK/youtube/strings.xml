@@ -122,8 +122,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_upload_time_title">Skjul uploadtidspunkt</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Begrænsninger:
-• Shorts hylder, kanalsider og søgeresultater kan stadig vise uploadtider
-• Denne funktion virker ikke med bilformat"</string>
+• Shorts-hylder kan stadig vise uploadtider
+• Virker ikke med bilformat"</string>
   <string name="morphe_hide_video_thumbnail_title">Skjul videominiaturebillede</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Skjul videomærkater</string>
@@ -131,8 +131,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_view_count_title">Skjul antal visninger</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Begrænsninger:
-• Shorts-hylder, kanalsider og søgeresultater kan stadig vise antal visninger
-• Denne funktion virker ikke med bilformat"</string>
+• Shorts-hylder kan stadig vise antal visninger
+• Virker ikke med bilformat"</string>
   <string name="morphe_hide_web_search_results_title">Skjul websøgeresultater</string>
   <string name="morphe_hide_web_search_results_summary">Skjuler afsnittet \'Resultater fra internettet\' fra søgeresultaterne</string>
   <string name="morphe_hide_you_may_like_section_title">Skjul \'Du kan måske lide\' afsnit</string>
@@ -290,9 +290,10 @@ Begrænsninger:
   <string name="morphe_hide_autoplay_preview_summary">Skjuler den kommende videoforhåndsvisning i fuldskærm, før automatisk afspilning starter</string>
   <string name="morphe_hide_channel_bar_title">Skjul kanalbjælken</string>
   <string name="morphe_hide_channel_watermark_title">Skjul kanalvandmærke</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Skjul kapitler og \'I denne video\'-knappen</string>
+  <string name="morphe_hide_chapters_button_title">Skjul kapitelknappen</string>
   <string name="morphe_hide_crowdfunding_box_title">Skjul crowdfunding-boks</string>
   <string name="morphe_hide_emergency_box_title">Skjul nødbokse</string>
+  <string name="morphe_hide_in_this_video_button_title">Skjul knappen \'I denne video\'</string>
   <string name="morphe_hide_info_panels_title">Skjul infopaneler</string>
   <string name="morphe_hide_info_panels_summary">Skjuler informative kontekstpaneler, såsom medicinske oplysninger</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ For at vise 'Lydspor'-menuen skal du ændre 'Spoof video streams' til enhver kli
   <string name="morphe_feed_long_press_menu_summary">At trykke og holde et vilkårligt sted på en feed-video åbner dens menu</string>
   <string name="morphe_feed_watch_later_button_title">Vis \'Se senere\'-knap på miniaturebilleder</string>
   <string name="morphe_feed_watch_later_button_summary">En \"Se senere\"-knap vises på miniaturebillederne af videoer i feedet, med et flueben, hvis videoen er gemt. Ved at trykke på den gemmes eller fjernes videoen, og ved at trykke og holde åbnes \"Gem i playliste\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Åbn billeder i indlæg i fuldskærm</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Hvis du trykker på et billede i et indlæg, åbnes det i fuldskærm i stedet for i indlæggenes feed</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Download billeder fra indlæg</string>
   <string name="morphe_post_image_download_summary">En download-knap vises ved siden af Del-knappen på opslag med billeder eller GIF\'er, og et download-element tilføjes til deres menu</string>
@@ -992,6 +996,7 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_swipe_press_to_engage_title">Aktivér swipe-bevægelse med tryk</string>
   <string name="morphe_swipe_press_to_engage_summary">Kræver tryk og hold, før en swipe-bevægelse genkendes</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiver haptisk feedback</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibrerer, når et tryk og hold starter en swipe-bevægelse</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Gem og gendan lysstyrke</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Husker lysstyrkeniveauet, når du går ind i eller ud af fuldskærmstilstand</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Aktivér auto-lysstyrke-bevægelse</string>
@@ -1135,6 +1140,10 @@ For at få adgang til Indstillinger skal du aktivere Indstillingsknappen via Gen
   <string name="morphe_navigation_bar_glass_opacity_summary">Juster gennemsigtigheden af glass-navigationslinjen (0 er gennemsigtig, 100 er uigennemsigtig)</string>
   <string name="morphe_navigation_bar_glass_round_title">Rund glasnavigationsbjælke</string>
   <string name="morphe_navigation_bar_glass_round_summary">Giver glasnavigationsbjælken runde ender i stedet for hjørner som glas-miniplayeren</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Glass-navigationslinjens kant</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Tegner den lyse kant omkring glass-navigationslinjen</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Glass-navigationslinjens nederste margen</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Juster afstanden mellem den gennemsigtige navigationslinje og bunden af skærmen eller systemnavigationen</string>
   <string name="morphe_navigation_bar_glass_size_title">Glass-navigationslinjens størrelse</string>
   <string name="morphe_navigation_bar_glass_size_summary">Juster højden, bredden og knapafstanden for glass-navigationslinjen med en forhåndsvisning. Knapper, der ikke passer i skærmens bredde, skjules</string>
   <string name="morphe_navigation_bar_glass_size_height">Højde</string>
@@ -1381,6 +1390,9 @@ Automotive-layout
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Deaktiver automatisk feedopdatering</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Forhindrer feeds i automatisk at opdatere, efter at de er forældede</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Fjern gruppering af notifikationer</string>
+  <string name="morphe_ungroup_notifications_summary">Viser hver video fra en kanals grupperede uploads som sin egen notifikation</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Feedkortlayout</string>
   <string name="morphe_feed_card_layout_entry_1">Klassisk</string>
@@ -1493,6 +1505,8 @@ Automotive-layout
   <string name="morphe_dearrow_titles_search_title">Søgeresultater</string>
   <string name="morphe_dearrow_titles_icon_title">Vis DeArrow-ikon</string>
   <string name="morphe_dearrow_titles_icon_summary">Viser DeArrow-ikonet på titlerne på videoer med en crowdsourcet titel eller thumbnail. Tryk på ikonet for at vise den originale titel og thumbnail</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Ryd op i titler</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Rydder op i titler på videoer uden en DeArrow-titel. Ord med store bogstaver ændres til normalt format, og emojis, fancy tekst og gentagne udråbstegn fjernes</string>
   <string name="morphe_dearrow_casual_mode_title">Casual-tilstand</string>
   <string name="morphe_dearrow_casual_mode_summary">Viser den originale titel i stedet for DeArrow-titlen, hvis DeArrow-brugere har stemt, at de kan lide den originale titel</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum antal casual-stemmer for at vise den originale titel</string>

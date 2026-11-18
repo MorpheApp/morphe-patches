@@ -122,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">업로드 시간 숨기기</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"제한 사항:
-• Shorts 선반, 채널 페이지 및 검색 결과에서 업로드 시간이 계속 표시될 수 있습니다
+• Shorts 선반에서 업로드 시간이 계속 표시될 수 있습니다
 • 이 기능은 오토모티브 레이아웃에서 작동하지 않습니다"</string>
   <string name="morphe_hide_video_thumbnail_title">동영상 썸네일 숨기기</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">조회수 숨기기</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"제한 사항:
-• Shorts 선반, 채널 페이지 및 검색 결과에서 조회수가 계속 표시될 수 있습니다
+• Shorts 선반에서 조회수가 계속 표시될 수 있습니다
 • 이 기능은 오토모티브 레이아웃에서 작동하지 않습니다"</string>
   <string name="morphe_hide_web_search_results_title">웹 검색 결과 숨기기</string>
   <string name="morphe_hide_web_search_results_summary">검색 결과에서 웹 검색 결과 섹션을 숨깁니다</string>
@@ -290,9 +290,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">자동재생이 시작되기 전에 전체 화면에서 다음 동영상 미리보기를 숨깁니다</string>
   <string name="morphe_hide_channel_bar_title">채널바 숨기기</string>
   <string name="morphe_hide_channel_watermark_title">채널 워터마크 숨기기</string>
-  <string name="morphe_hide_chapters_timeline_button_title">\'챕터\' 및 \'동영상 정보\' 버튼 숨기기</string>
+  <string name="morphe_hide_chapters_button_title">챕터 버튼 숨기기</string>
   <string name="morphe_hide_crowdfunding_box_title">모금 행사 패널 숨기기</string>
   <string name="morphe_hide_emergency_box_title">긴급 정보 패널 숨기기</string>
+  <string name="morphe_hide_in_this_video_button_title">\'이 동영상에 나오는 내용\' 버튼 숨기기</string>
   <string name="morphe_hide_info_panels_title">정보 패널 숨기기</string>
   <string name="morphe_hide_info_panels_summary">다음 정보 컨텍스트 패널을 숨깁니다:\n• 방송사 관련 안내 문구\n• 보건 정보 출처</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">피드 동영상에서 아무 곳이나 길게 탭하면 해당 동영상 메뉴가 열립니다</string>
   <string name="morphe_feed_watch_later_button_title">썸네일에 \'나중에 볼 동영상에 저장\' 버튼 표시하기</string>
   <string name="morphe_feed_watch_later_button_summary">피드 동영상의 썸네일에 \'나중에 보기\' 버튼이 표시되며, 동영상이 저장된 경우 체크 표시가 나타납니다. 이 버튼을 탭하면 동영상을 저장하거나 제거하며, 길게 누르면 \'재생목록에 저장\' 메뉴가 열립니다</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">포스트 이미지를 전체 화면으로 열기</string>
+  <string name="morphe_open_post_images_fullscreen_summary">포스트의 이미지를 탭하면 피드 대신 전체 화면으로 열립니다</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">게시물 이미지 다운로드하기</string>
   <string name="morphe_post_image_download_summary">이미지 또는 GIF가 포함된 게시물의 공유 버튼 옆에 다운로드 버튼이 표시되며, 해당 게시물의 메뉴에도 다운로드 항목이 추가됩니다</string>
@@ -994,6 +998,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_press_to_engage_title">길게 탭하여 스와이프 제스처 사용하기</string>
   <string name="morphe_swipe_press_to_engage_summary">스와이프 제스처가 인식되려면 화면을 길게 탭해야 합니다</string>
   <string name="morphe_swipe_haptic_feedback_title">진동 피드백 활성화하기</string>
+  <string name="morphe_swipe_haptic_feedback_summary">길게 눌러 스와이프 제스처를 시작할 때 진동합니다</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">화면 밝기 저장 및 복원하기</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">전체 화면 모드로 들어가거나 나갈 때마다 화면 밝기 값을 저장합니다</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">스와이프 제스처로 자동 밝기 활성화하기</string>
@@ -1137,6 +1142,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_navigation_bar_glass_opacity_summary">글래스 하단바의 투명도를 설정할 수 있습니다 (0: 완전 투명, 100: 완전 불투명)</string>
   <string name="morphe_navigation_bar_glass_round_title">라운드 글래스 하단바</string>
   <string name="morphe_navigation_bar_glass_round_summary">글래스 미니 플레이어처럼 모서리가 있는 대신, 글래스 하단바의 양 끝을 둥글게 만듭니다</string>
+  <string name="morphe_navigation_bar_glass_edge_title">글래스 내비게이션 바 테두리</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">글래스 내비게이션 바 주변에 빛나는 테두리를 그립니다</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">글래스 내비게이션 바 하단 여백</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">글래스 내비게이션 바와 화면 하단 또는 시스템 내비게이션 사이의 간격을 조정합니다</string>
   <string name="morphe_navigation_bar_glass_size_title">글래스 내비게이션 바 크기</string>
   <string name="morphe_navigation_bar_glass_size_summary">미리보기를 통해 글래스 내비게이션 바의 높이, 너비 및 버튼 간격을 조정합니다. 화면 너비에 맞지 않는 버튼은 숨겨집니다</string>
   <string name="morphe_navigation_bar_glass_size_height">높이</string>
@@ -1382,6 +1391,9 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">자동 피드 새로고침 비활성화하기</string>
   <string name="morphe_disable_auto_feed_refresh_summary">피드가 만료된 후 자동으로 새로 고쳐지지 않도록 합니다</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">알림 그룹 해제</string>
+  <string name="morphe_ungroup_notifications_summary">채널의 그룹화된 업로드 영상 각각을 개별 알림으로 표시합니다</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">피드 카드 레이아웃</string>
   <string name="morphe_feed_card_layout_entry_1">클래식</string>
@@ -1494,6 +1506,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_dearrow_titles_search_title">검색 결과</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow 아이콘 표시하기</string>
   <string name="morphe_dearrow_titles_icon_summary">크라우드소싱된 제목이나 썸네일이 있는 동영상의 제목에 DeArrow 아이콘을 표시합니다. 아이콘을 누르면 원래 제목과 썸네일이 표시됩니다</string>
+  <string name="morphe_dearrow_clean_up_titles_title">제목 정리</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow 제목이 없는 동영상의 제목을 정리합니다. 대문자로 된 단어는 일반 대소문자로 변경되며, 이모지, 화려한 텍스트 및 반복되는 느낌표가 제거됩니다</string>
   <string name="morphe_dearrow_casual_mode_title">캐주얼 모드</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow 사용자들이 원본 제목을 더 좋아한다고 투표한 경우, DeArrow 제목 대신 원본 제목을 표시합니다</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">원본 제목을 표시하기 위한 최소 캐주얼 투표 수</string>

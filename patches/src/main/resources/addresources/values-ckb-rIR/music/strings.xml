@@ -271,6 +271,11 @@ Second \"item\" text"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">ناچالاککردنی دابەزینی دەنگ</string>
   <string name="morphe_music_disable_audio_ducking_summary">دەنگەکە دانابەزێت کاتێک ئەپێکی تر دەنگێکی کورت لێ دەدات، وەک ئاگادارکردنەوە</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">فلتەری لایکی ڕیزبەندی</string>
+  <string name="morphe_music_queue_like_filter_summary">ئەو گۆرانیانەی لایکیان کەمە لە تێکەڵاو و ڕادیۆ لادەبات. ئەو لیستانە، ئەلبووم و گۆرانیانەی کە خۆت زیادێکیان کردووەتە ڕیزبەندی گۆڕان ناگرن. ژمارەی لایکەکان لە Return YouTube Dislike وەرگیراوە</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">کەمترین لایک</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">ئەو گۆرانیانەی لایکیان لەم ژمارەیە کەمتر بێت لە ڕیزبەندی لادەبرێن</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ڕاگرتنی ئاڕاستەکردنی ناڕەزایەتی</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ڕێگری دەکات لە ڕۆیشتن بۆ گۆرانییەکی داهاتوو کاتێک دوگمەی ناڕەزایەتی دەخرێتە سەر</string>
@@ -717,8 +722,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">نووسراوە لەلایەن: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">دیاریکردنی وشە یان syllable-ە هاوکاتکراوەکان</string>
   <string name="morphe_music_lyrics_word_sync_summary">پێشینەدان بە تێکستی وشە بە وشە کاتێک بەردەست بێت. کاتێک تێکستەکە کاتی وشەکانی تێدابێت، هەر وشە یان syllable-ێک لەگەڵ کاتی مۆسیقاکەدا دیاری دەکات</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">جوڵاندنی وشە هاوخونراوەکان بە شێوەیەکی نەرم</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">هەر وشەیەک بە شێوەیەکی نەرم و درەوشاوە و کەمێک بەرزبوونەوە نیشان دەدات کاتێک دەوترێت. بۆ پاشکەوتکردنی باتری یان بۆ بەکارهێنانی ئامێری خاوتر، گوێی بپایە</string>
   <string name="morphe_music_lyrics_spring_scroll_title">بەکارهێنانی سکرۆڵکردنی سەپڕ</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">تێکستەکانی گۆرانی بە فیزیکی سەپڕ سکرۆڵ دەکات، و هەر دێڕێک کەمێک دوای دێڕی سەری دەجوڵێت. بۆ پاراستنی باتری لە ئامێرە خاوترەکاندا، ئەم تایبەتمەندییە بگرتە</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">سکرۆڵکردنی ئارام</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">خێرایی ئەنیمەیشنی سکرۆڵکردنی تێکستەکان کەمدەکاتەوە و هێڵە ناچالاکەکان بە قەبارەی تەواویان دەهێڵێت</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">بڵورکردنی دێڕە ناچالاکەکان</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">بە نەرمی هەموو ئەو دێڕانە بڵور دەکات کە لە ئێستادا ناوتراون، هەرچەندە دوورتر بن زیاتر بڵور دەبن (ئاندڕۆید ١٢ و دواتر). پێش ئاندڕۆید ١٢، دێڕە ناچالاکەکان ڕوون دەمێنن</string>
   <string name="morphe_music_lyrics_gap_dots_title">نیشاندانی خاڵەکانی پچڕانی ئامرازی</string>
   <string name="morphe_music_lyrics_gap_dots_summary">سێ خاڵ لە نێوان دێڕەکاندا نیشان دەدات لە کاتی پچڕانێکی درێژی ئامرازی، کە لەگەڵ تەواوبوونی پچڕانەکە پڕ دەبن</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">تاریککردنی زیاتری دێڕە دوورەکان</string>
@@ -841,6 +852,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">وەرگێڕانەکە دەباتە سەرەوەی لیریکەکان؛ خوێندن و ڕۆمانیزەーション لە خوارەوە دەمێننەوە</string>
   <string name="morphe_music_lyrics_force_center_title">هەمیشە تێکستەکان لە ناوەنددا بن</string>
   <string name="morphe_music_lyrics_force_center_summary">چالاککردن (ON) هەموو دێڕێک دەخاتە ناوەڕاست و ڕێکخستنی سەرچاوەکە پشتگوێ دەخات، لەوانەش لایەکانی دوێت؛ ناچالاککردن (OFF) ئەو ڕێکخستنە دەهێڵێتەوە کە تێکستەکە داوای دەکات</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">ڕێکخستنی دوێت لە لای opposite</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">لە گۆرانی دوێتەکاندا، گۆرانیبێژەکەی دووەم دەخاتە لای بەرامبەر. بۆ ئەوەی هەردوو گۆرانیبێژەکە لە هەمان لا بن، ئەم بژاردەیە بکە بە خامۆش</string>
   <string name="morphe_music_lyrics_providers_keep_one">دەبێت لانی کەم یەک دابینکەر چالاک بێت</string>
   <string name="morphe_music_lyrics_translation_provider_title">وەرگێڕان</string>
   <string name="morphe_music_lyrics_romanization_provider_title">رۆمانایزکردن یان گۆڕینی نووسین</string>

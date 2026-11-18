@@ -271,6 +271,11 @@ Second \"item\" text"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">השבת הנמכת שמע</string>
   <string name="morphe_music_disable_audio_ducking_summary">העוצמה לא תונמך כאשר אפליקציה אחרת משמיעה צליל קצר, כגון התראה</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">מסנן לייקים בתור</string>
+  <string name="morphe_music_queue_like_filter_summary">מסיר שירים עם מעט לייקים ממיקסים וממרדיו. פלייליסטים, אלבומים ושירים שאתה מוסיף לתור לא ישתנו. ספירת הלייקים היא מ-Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">מינימום לייקים</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">שירים עם פחות לייקים יוסרו מהתור</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ביטול הפנייה בלחיצה על \"דיסלייק\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">מניעת דילוג רצועה כאשר לוחצים על \"דיסלייק\"</string>
@@ -307,6 +312,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_new_tag_hint">תגית חדשה</string>
   <string name="morphe_music_playlist_tags_playlist_count_one">1 פלייליסט</string>
   <!-- %s is the number of playlists that have the tag. -->
+  <string name="morphe_music_playlist_tags_playlist_count">%s פלייליסטים</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_tag_exists">תגית בשם %s כבר קיימת</string>
   <string name="morphe_music_playlist_tags_filter_title">סנן לפי תגית</string>
@@ -558,8 +564,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_sheet_percent_human">%s%% אנושי</string>
   <string name="morphe_music_soundproof_sheet_one_vote">הצבעה אחת</string>
   <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s הצבעות</string>
   <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s בן אדם</string>
   <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s בינה מלאכותית</string>
   <string name="morphe_music_soundproof_sheet_no_votes_title">עדיין אין הצבעות לאמן זה</string>
   <string name="morphe_music_soundproof_sheet_unavailable_title">מסד הנתונים של SoundProof עדיין לא זמין</string>
   <string name="morphe_music_soundproof_sheet_unavailable_summary">הוא יורד ברקע. אף רצועה לא תדלג עד שיהיה זמין.</string>
@@ -713,8 +722,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">נכתב על ידי: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">הדגש מילים או הברות מסונכרנות</string>
   <string name="morphe_music_lyrics_word_sync_summary">תעדף מילים מילה-מילה כשהן זמינות. כשמילות השיר כוללות תזמון מילים, הדגש כל מילה או הברה בקצב המוזיקה</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">הנפש מילים מסונכרנות בצורה חלקה</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">מדגיש כל מילה עם מעבר רך, זוהר והרמה קלה בזמן השירתה. כבה כדי לחסוך בסוללה או למילוי חד במכשירים איטיים יותר</string>
   <string name="morphe_music_lyrics_spring_scroll_title">השתמש בגלילת קפיץ</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">גולל את המילים באמצעות פיזיקה של קפיץ, ומזיז כל שורה מעט אחרי השורה שמעליה. כבה כדי לחסוך בסוללה במכשירים איטיים יותר</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">גלילה רגועה</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">מאיט את אנימציית גלילת המילים ושומר על שורות לא פעילות בגודל מלא</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">טשטוש שורות לא פעילות</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">מטשטש בעדינות כל שורה שאינה מושרת כעת, יותר ככל שהיא רחוקה יותר (אנדרואיד 12 ומעלה). לפני אנדרואיד 12, שורות לא פעילות נשארות חדות</string>
   <string name="morphe_music_lyrics_gap_dots_title">הצג נקודות הפסקה אינסטרומנטלית.</string>
   <string name="morphe_music_lyrics_gap_dots_summary">מציג שלוש נקודות בין השורות במהלך הפסקה אינסטרומנטלית ארוכה, אשר מתמלאות ככל שההפסקה מסתיימת.</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">החשך שורות רחוקות יותר.</string>
@@ -837,6 +852,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">מעביר את התרגום מעל המילים; הקריאה והרומניזציה נשארים למטה</string>
   <string name="morphe_music_lyrics_force_center_title">תמיד למרכז מילים</string>
   <string name="morphe_music_lyrics_force_center_summary">ON מציב כל קו באמצע ולא מתעלם מהיישור המקורי, כולל צדדי דואט; OFF שומר על היישור שהמילים מבקשות</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">יישור דואט לצדדים מנוגדים</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">ממקם את הזמר השני בצד הנגדי בשירים בדוเอט. כבה כדי להשאיר את שני הזמרים באותו צד</string>
   <string name="morphe_music_lyrics_providers_keep_one">חייב להישאר לפחות ספק אחד פעיל</string>
   <string name="morphe_music_lyrics_translation_provider_title">תרגום</string>
   <string name="morphe_music_lyrics_romanization_provider_title">רומניזציה או האברה</string>

@@ -271,6 +271,11 @@ SABR የመጫወቻ ሂደት (የቪዲዮ ስትሪሞች ማስመሰል ጠ
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">የድምፅ ዳኪንግን አጥፋ</string>
   <string name="morphe_music_disable_audio_ducking_summary">ሌላ መተግበሪያ እንደ ማሳወቂያ ያለ አጭር ድምፅ ሲያጫውት የድምፅ መጠን አይቀንስም</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">የተረኛ ላይኮች ማጣሪያ</string>
+  <string name="morphe_music_queue_like_filter_summary">ጥቂት ላይኮች ያላቸውን ዘፈኖች ከድብልቆች እና ከራዲዮ ያስወግዳል፤ ወደ ተረኛው የሚጨምሯቸው የዘፈን ዝርዝሮች፣ አልበሞች እና ዘፈኖች አይቀየሩም፤ የላይክ ብዛቶች ከ Return YouTube Dislike የተገኙ ናቸው</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">ዝቅተኛው ላይክ ብዛት</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">ጥቂት ላይኮች ያላቸው ዘፈኖች ከተረኛው ይወገዳሉ</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">የአለመውደድ ዝላይን አጥፋ</string>
   <string name="morphe_music_disable_dislike_redirection_summary">የማይወዱ ቁልፍ ሲጫን ወደ ቀጣዩ ሙዚቃ እንዳይዘለል ይከላከላል</string>
@@ -717,8 +722,14 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_written_by">በ%s የተጻፈ</string>
   <string name="morphe_music_lyrics_word_sync_title">የተቀናጁ ቃላትን ወይም የድምፅ ክፍሎችን አድምቀው ያሳዩ</string>
   <string name="morphe_music_lyrics_word_sync_summary">ቃላት በቃላት የሚገለጹ ግጥሞች በሚኖሩበት ጊዜ ቅድሚያ ይስጡ። ግጥሞቹ የቃላት ጊዜያትን የሚይዙ ከሆነ፣ እያንዳንዱን ቃል ወይም የድምፅ ክፍል ከሙዚቃው ጋር በተናበበ ጊዜ ያደምቃሉ</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">የተቀናጁ ቃላትን በለሰለሰ ሁኔታ አንቀሳቅስ</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">እያንዳንዱ ቃል ሲዘመር በለስላሳ sweep፣ በብርሃን እና በትንሽ ከፍታ ያጎላል። ባትሪ ለመቆጠብ ወይም ዝቅተኛ አቅም ላላቸው መሳሪያዎች ለፈጣን ሙላት አጥፋው</string>
   <string name="morphe_music_lyrics_spring_scroll_title">የስፕሪንግ ማሸራተትን ይጠቀሙ</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">ግጥሞቹን በስፕሪንግ ፊዚክስ ያሸራትታል፣ እና እያንዳንዱን መስመር ከላይ ካለው ትንሽ አግልሎ ያንቀሳቅሳል። ዝግተኛ በሆኑ መሳሪያዎች ላይ የባትሪ አጠቃቀምን ለመቀነስ ያጥፉት</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">ዘና ያለ ስክሮሊንግ</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">የግጥም ስክሮሊንግ አኒሜሽንን ያቀዘቅዘዋል እና ንቁ ያልሆኑ መስመሮች ሙሉ መጠን እንዲኖራቸው ያደርጋል</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">ንቁ ያልሆኑ መስመሮችን አድብዝዝ</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">በአሁኑ ጊዜ እየተዘፈነ ያለውን መስመር ሳይጨምር ሌሎቹን መስመሮች በለሰለሰ ሁኔታ ያድበዝዛል፣ ርቀታቸው በጨመረ ቁጥር ደግሞ የድብዝዙ ሁኔታው ይጨምራል (Android 12 እና ከዚያ በላይ)። ከ Android 12 በፊት ንቁ ያልሆኑ መስመሮች ጥርያቸው እንደነበረ ይቀጥላሉ</string>
   <string name="morphe_music_lyrics_gap_dots_title">የመሳሪያዎች የሙዚቃ እረፍት ነጥቦችን አሳይ дописавши ይመልከቱ</string>
   <string name="morphe_music_lyrics_gap_dots_summary">ረጅም የሙዚቃ እረፍት በሚኖርበት ጊዜ በመስመሮቹ መካከል ሶስት ነጥቦችን ያሳያል፣ እረፍቱ ሲያልቅም ነጥቦቹ ይሞላሉ</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">ርቀው የሚገኙ መስመሮችን የበለጠ አደበዝዝ</string>
@@ -841,6 +852,8 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_swap_trans_roma_summary">ትርጉሙን ከግጥሞቹ በላይ ያደርጋል፤ ንባቡ እና ሮማናይዜሽኑ ከታች ይቀራሉ</string>
   <string name="morphe_music_lyrics_force_center_title">ሁልጊዜ ግጥሞቹን መሃል ላይ አድርግ</string>
   <string name="morphe_music_lyrics_force_center_summary">ON ሲሆን የዱኤት ጎኖችን ጨምሮ ሁሉንም መስመሮች መሃል ላይ ያደርጋል እና የምንጩን አሰላለፍ ችላ ይላል፤ OFF ሲሆን ግን ግጥሞቹ የሚጠይቁትን አሰላለፍ ይጠብቃል</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">የተቃራኒ ጎን የዱኤት አሰላለፍ</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">በዱኤት ዘፈኖች ላይ ሁለተኛውን ዘፋኝ በተቃራኒው ጫፍ ላይ ያስቀምጠዋል። ሁለቱንም ዘፋኞች በአንድ ጎን ለማቆየት ይህንን ያጥፉ</string>
   <string name="morphe_music_lyrics_providers_keep_one">ቢያንስ አንድ አቅራቢ ክፍት መሆን አለበት</string>
   <string name="morphe_music_lyrics_translation_provider_title">ትርጉም</string>
   <string name="morphe_music_lyrics_romanization_provider_title">ሮማናይዜሽን ወይም ትራንስሊተሬሽን</string>

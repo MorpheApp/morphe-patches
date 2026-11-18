@@ -122,7 +122,7 @@ Os cambios inclúen:
   <string name="morphe_hide_upload_time_title">Agochar a hora da subida</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Limitacións:
-• As estanterías de Shorts, as páxinas de canles e os resultados de busca poden seguir amosando as horas da subida
+• As estanterías de Shorts poden seguir amosando as horas da subida
 • Non funciona co deseño para automóbiles"</string>
   <string name="morphe_hide_video_thumbnail_title">Agochar miniatura de vídeo</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +131,7 @@ Os cambios inclúen:
   <string name="morphe_hide_view_count_title">Ocultar o reconto de visualizacións</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Limitacións:
-• As estanterías de Shorts, as páxinas de canle e os resultados de busca poden seguir mostrando o reconto de visualizacións
+• As estanterías de Shorts poden seguir amosando o reconto de visualizacións
 • Non funciona co deseño para automóbiles"</string>
   <string name="morphe_hide_web_search_results_title">Ocultar resultados da busca web</string>
   <string name="morphe_hide_web_search_results_summary">Agocha a sección «Resultado da web» dos resultados de busca</string>
@@ -290,9 +290,10 @@ Limitacións:
   <string name="morphe_hide_autoplay_preview_summary">Oculta a vista previa do seguinte vídeo en pantalla completa antes de que comece a reprodución automática</string>
   <string name="morphe_hide_channel_bar_title">Agochar a barra de canles</string>
   <string name="morphe_hide_channel_watermark_title">Ocultar a marca de auga da canle</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Agochar os capítulos e o botón «Neste vídeo»</string>
+  <string name="morphe_hide_chapters_button_title">Ocultar botón Capítulos</string>
   <string name="morphe_hide_crowdfunding_box_title">Agochar a caixa de financiamento colectivo</string>
   <string name="morphe_hide_emergency_box_title">Agochar as caixas de emerxencia</string>
+  <string name="morphe_hide_in_this_video_button_title">Ocultar botón \"Neste vídeo\"</string>
   <string name="morphe_hide_info_panels_title">Agochar paneis de información</string>
   <string name="morphe_hide_info_panels_summary">Agocha os paneis de contexto informativo, como información médica</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -607,6 +608,9 @@ Para amosar o menú 'Audio Track', cambie 'Spoof video streams' por calquera cli
   <string name="morphe_feed_long_press_menu_summary">Ao manter premido en calquera parte dun vídeo do feed ábrese o seu menú</string>
   <string name="morphe_feed_watch_later_button_title">Amosar o botón de Ver máis tarde nas miniaturas</string>
   <string name="morphe_feed_watch_later_button_summary">Amósase un botón de Ver máis tarde nas miniaturas dos videos do feed, cun sinal de verificación se o video está gardado. Ao tocarNel gardase ou elimínase o video, e ao mantelo premido ábrese Gardar na lista de reprodución</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Abrir imaxes da publicación en pantalla completa</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Ao tocar unha imaxe dunha publicación, ábrese en pantalla completa, en lugar de no feed das publicacións</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Descargar imaxes da publicación</string>
   <string name="morphe_post_image_download_summary">Amósase un botón de descarga xunto ao botón de Compartir nas publicacións con imaxes ou GIFs, e engádase un elemento de descarga ao seu menú</string>
@@ -992,6 +996,7 @@ Para solucionar isto, activa 'Spoof video streams' e cambia o 'Cliente predefini
   <string name="morphe_swipe_press_to_engage_title">Activar o xesto de premer para deslizar</string>
   <string name="morphe_swipe_press_to_engage_summary">Require premir e manter premido antes de que se recoñeza un xesto de deslizamento</string>
   <string name="morphe_swipe_haptic_feedback_title">Activar a retroalimentación háptica</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibra ao premer e manter premido para iniciar un xesto de deslizamento</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Gardar e restaurar o brillo</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Lembra o nivel de brillo ao entrar / saír do modo de pantalla completa</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Activar o xesto de brillo automático</string>
@@ -1135,6 +1140,10 @@ Para acceder aos Axustes, activa o botón de Axustes a través de Xeral → Barr
   <string name="morphe_navigation_bar_glass_opacity_summary">Axusta o nivel de transparencia da barra de navegación de vidro (0 é transparente, 100 é opaco)</string>
   <string name="morphe_navigation_bar_glass_round_title">Barra de navegación de vidro arredondada</string>
   <string name="morphe_navigation_bar_glass_round_summary">Dalle extremos arredondados á barra de navegación de vidro, en lugar de esquinas como o miniplayer de vidro</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Borde de vidro da barra de navegación</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Debuxa o borde luminoso arredor da barra de navegación de vidro</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Marxe inferior da barra de navegación de vidro</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Axusta o espazo entre a barra de navegación de vidro e a parte inferior da pantalla ou a navegación do sistema</string>
   <string name="morphe_navigation_bar_glass_size_title">Tamaño da barra de navegación de vidro</string>
   <string name="morphe_navigation_bar_glass_size_summary">Axusta a altura, a largura e o espaciado dos botóns da barra de navegación de vidro, cunha vista previa. Os botóns que non caben na largura da pantalla ocúltanse</string>
   <string name="morphe_navigation_bar_glass_size_height">Altura</string>
@@ -1381,6 +1390,9 @@ Disposición para automóbil
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Desactivar a actualización automática do feed</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Impide que os feeds se actualicen automaticamente cando queden obsoletos</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Desagrupar notificacións</string>
+  <string name="morphe_ungroup_notifications_summary">Mostra cada vídeo das subidas agrupadas dun canle como a súa propia notificación</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Disposición da tarxeta do feed</string>
   <string name="morphe_feed_card_layout_entry_1">Clásico</string>
@@ -1493,6 +1505,8 @@ Disposición para automóbil
   <string name="morphe_dearrow_titles_search_title">Resultados da busca</string>
   <string name="morphe_dearrow_titles_icon_title">Amosar a icona de DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Mostra o icondo de DeArrow nos títulos de vídeos cun título ou miniatura collaboratively xestionados. Toca o icondo para amosar o título e a miniatura orixinais</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Limpar títulos</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Limpa os títulos dos vídeos que non teñen un título de DeArrow. As palabras en maiúsculas cámbanse a maiúscula normal, e elimínanse os emojis, o texto fantasía e os signos de exclamación repetidos</string>
   <string name="morphe_dearrow_casual_mode_title">Modo casual</string>
   <string name="morphe_dearrow_casual_mode_summary">Mostra o título orixinal en lugar do título de DeArrow se os usuarios de DeArrow votaron que lles gusta o título orixinal</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Votos casuais mínimos para mostrar o título orixinal</string>
