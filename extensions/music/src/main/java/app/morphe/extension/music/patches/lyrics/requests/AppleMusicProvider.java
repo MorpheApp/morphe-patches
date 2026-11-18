@@ -250,9 +250,7 @@ public final class AppleMusicProvider implements LyricsProvider {
         if (relationship != null) {
             JSONObject item = firstEntry(relationship);
             if (item != null) {
-                if (item != null) {
-                    return extractTtmlFromAttributes(item.optJSONObject("attributes"));
-                }
+                return extractTtmlFromAttributes(item.optJSONObject("attributes"));
             }
         }
         return null;
@@ -424,7 +422,7 @@ public final class AppleMusicProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) {
         final ResolvedContext ctx = resolveContext();
         if (ctx == null) {
             return fetchViaLyrically(track);
@@ -451,7 +449,7 @@ public final class AppleMusicProvider implements LyricsProvider {
     }
 
     @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) {
         ResolvedContext ctx = resolveContext();
         if (ctx == null) {
             FetchResult single = fetchViaLyrically(track);

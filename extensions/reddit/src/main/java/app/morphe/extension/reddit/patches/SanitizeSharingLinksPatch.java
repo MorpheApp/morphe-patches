@@ -15,6 +15,7 @@ public final class SanitizeSharingLinksPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -23,6 +24,14 @@ public final class SanitizeSharingLinksPatch {
      * Injection point.
      */
     public static boolean stripQueryParameters() {
+        return Settings.SANITIZE_SHARING_LINKS.get();
+    }
+
+    /**
+     * Injection point.
+     * Short links (/r/subreddit/s/id) redirect to the full link with a unique share_id.
+     */
+    public static boolean disableShortLinks() {
         return Settings.SANITIZE_SHARING_LINKS.get();
     }
 }

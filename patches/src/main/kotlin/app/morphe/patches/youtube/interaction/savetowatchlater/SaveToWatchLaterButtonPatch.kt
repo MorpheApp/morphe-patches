@@ -42,7 +42,6 @@ private const val EXTENSION_BUTTON =
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/SaveToWatchLaterPatch;"
 
-@Suppress("unused")
 val saveToWatchLaterButtonPatch = patch(
     name = "Save to Watch later",
     description = "Adds an option to display save to Watch later button in the video player, " +

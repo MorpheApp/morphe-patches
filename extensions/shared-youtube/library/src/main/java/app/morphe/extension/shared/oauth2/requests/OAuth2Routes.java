@@ -50,6 +50,7 @@ final class OAuth2Routes {
         return connection;
     }
 
+    @SuppressWarnings("SameParameterValue")
     static HttpURLConnection getUrlConnectionFromRoute(Route route, String... params) throws IOException {
         HttpURLConnection connection = Requester.getConnectionFromRoute(OAUTH2_GOOGLE_API_URL, route, params);
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");

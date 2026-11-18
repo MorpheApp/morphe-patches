@@ -7,7 +7,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import java.io.ByteArrayInputStream;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -245,11 +248,11 @@ public class TranslatedRollingCaptionPolicyTest {
     }
 
     @Test
-    public void nonUtf8XmlNeverReinterpretsTheValidatedBytes() throws Exception {
+    public void nonUtf8XmlNeverReinterpretsTheValidatedBytes() {
         String body = p(8080, 4400, "A") + br(11030, 1450) + br(12470, 2970) + p(12480, 5360, "B");
         byte[] encoded =
                 ("<?xml version='1.0' encoding='CP037'?>" + document(body))
-                        .getBytes(java.nio.charset.Charset.forName("CP037"));
+                        .getBytes(Charset.forName("CP037"));
         assertSame(encoded, repair(encoded));
         byte[] declared = utf("<?xml version='1.0' encoding='ISO-8859-1'?>" + document(body));
         assertSame(declared, repair(declared));
@@ -257,9 +260,9 @@ public class TranslatedRollingCaptionPolicyTest {
 
     @Test
     public void encodedExternalEntityIsNeverExpanded() throws Exception {
-        java.nio.file.Path marker = java.nio.file.Files.createTempFile("caption-entity-", ".txt");
+        Path marker = Files.createTempFile("caption-entity-", ".txt");
         try {
-            java.nio.file.Files.write(marker, utf("PRIVATE_TEST_MARKER"));
+            Files.write(marker, utf("PRIVATE_TEST_MARKER"));
             String xml =
                     "<?xml version='1.0' encoding='CP037'?>"
                             + "<!DOCTYPE timedtext [<!ENTITY x SYSTEM '"
@@ -270,10 +273,10 @@ public class TranslatedRollingCaptionPolicyTest {
                                             + br(11030, 1450)
                                             + br(12470, 2970)
                                             + p(12480, 5360, "B"));
-            byte[] source = xml.getBytes(java.nio.charset.Charset.forName("CP037"));
+            byte[] source = xml.getBytes(Charset.forName("CP037"));
             assertSame(source, repair(source));
         } finally {
-            java.nio.file.Files.delete(marker);
+            Files.delete(marker);
         }
     }
 

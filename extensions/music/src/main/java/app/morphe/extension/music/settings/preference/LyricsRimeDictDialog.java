@@ -52,6 +52,7 @@ import app.morphe.extension.shared.ui.Dim;
  * <p>The lists are stored one line each, as {@code subtag|label|url|charSource}, and removed by
  * rewriting that setting. A built-in list has no line, so its switch is stored separately.
  */
+@SuppressWarnings("unused")
 public final class LyricsRimeDictDialog {
 
     private LyricsRimeDictDialog() {
@@ -196,10 +197,9 @@ public final class LyricsRimeDictDialog {
     }
 
     /** A second line under a row, smaller and dimmed, for the notes about what a row is. */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void addNote(Context context, int fg, LinearLayout parent,
                                 @Nullable CharSequence text) {
-        if (text == null || text.length() == 0) {
+        if (Utils.isEmpty(text)) {
             return;
         }
         TextView note = new TextView(context);
@@ -263,7 +263,6 @@ public final class LyricsRimeDictDialog {
     }
 
     /** Writes the choice, then fetches whatever the ticks now ask for. */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void apply(Map<String, Boolean> builtinChoice, List<String> keptCustom,
                               List<String> lostReading, Dialog dialog,
                               LyricsLocalRomanizationDownloads.ProgressSink sink,
@@ -277,7 +276,7 @@ public final class LyricsRimeDictDialog {
         for (String code : keptCustom) {
             final String line = RimeDictStore.customRow(code);
             if (line == null) continue;
-            if (kept.length() > 0) kept.append('\n');
+            if (Utils.isNotEmpty(kept)) kept.append('\n');
             kept.append(line);
         }
         Settings.LYRICS_RIME_CUSTOM_DICTS.save(kept.toString());

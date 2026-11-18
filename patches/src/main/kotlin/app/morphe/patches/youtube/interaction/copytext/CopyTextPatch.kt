@@ -22,7 +22,6 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CopyTextPatch;"
 
-@Suppress("unused")
 val copyTextPatch = patch(
     name = "Copy text",
     description = "Adds options to copy the video title and comments, and to select text of video descriptions " +

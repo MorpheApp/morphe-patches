@@ -85,7 +85,7 @@ public final class ChannelSearchRoutes {
      * The exact publish date and view count of a video, for search results that are not in
      * the listed uploads of the channel. The search only shows these rounded, such as
      * "3 years ago" or "1.2M views", which is not enough to sort by them. The length is shown
-     * for every video but live streams and premieres.
+     * for every video but live streams and Premieres.
      * The description and tags tell whether a video matches a search by more than its title.
      */
     public static final Route.CompiledRoute GET_VIDEO_DETAILS = new Route(

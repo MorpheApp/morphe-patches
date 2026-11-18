@@ -20,6 +20,7 @@ import app.morphe.extension.youtube.innertube.NextResponseOuterClass;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.Commands;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.LikeEndpoint.Status;
+import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** Native watch-page commands and entity identity, reused by native playlist buttons. */
 record QueueRatingActions(String videoId, String entityKey, int initialStatus,
@@ -61,7 +62,7 @@ record QueueRatingActions(String videoId, String entityKey, int initialStatus,
         ByteString dislikeEndpoint = endpoint(dislikeToggle.getDefaultButtonViewModel().getButtonViewModel().getOnTap());
         ByteString undislikeEndpoint = endpoint(dislikeToggle.getToggledButtonViewModel().getButtonViewModel().getOnTap());
         String videoId = target(likeEndpoint, Status.LIKE);
-        if (!PlaylistQueue.isVideoId(videoId) || !videoId.equals(target(unlikeEndpoint, Status.INDIFFERENT))
+        if (!VideoInformation.isVideoId(videoId) || !videoId.equals(target(unlikeEndpoint, Status.INDIFFERENT))
                 || !videoId.equals(target(dislikeEndpoint, Status.DISLIKE))
                 || !videoId.equals(target(undislikeEndpoint, Status.INDIFFERENT))) {
             return null;

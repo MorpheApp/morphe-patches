@@ -9,7 +9,6 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.audio.tracks.forceOriginalAudioPatch
 
-@Suppress("unused")
 val forceOriginalAudioPatch = forceOriginalAudioPatch(
     block = {
         dependsOn(

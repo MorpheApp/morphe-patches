@@ -24,6 +24,7 @@ import android.media.audiofx.Visualizer;
 import android.os.SystemClock;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.InputStream;
@@ -180,6 +181,7 @@ final class DynamicBackgroundView extends View {
         return Settings.LYRICS_DYNAMIC_BACKGROUND_ANIMATED.get();
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean isActive() {
         return isAttachedToWindow() && getWindowVisibility() == VISIBLE && isShown();
     }
@@ -308,7 +310,7 @@ final class DynamicBackgroundView extends View {
     }
 
     @Override
-    protected void onVisibilityChanged(View changedView, int visibility) {
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
         super.onVisibilityChanged(changedView, visibility);
         updateActive();
     }
@@ -396,7 +398,7 @@ final class DynamicBackgroundView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
         final int width = getWidth();
         final int height = getHeight();
@@ -524,7 +526,7 @@ final class DynamicBackgroundView extends View {
 
         // Scale each layer to the screen aspect ratio, so the artwork does not look stretched.
         final float aspectScaleX = screenAspect >= 1.0f ? 1.0f : 1.0f / screenAspect;
-        final float aspectScaleY = screenAspect >= 1.0f ? screenAspect : 1.0f;
+        final float aspectScaleY = Math.max(screenAspect, 1.0f);
         final float artworkWidth = artwork.getWidth();
         final float artworkHeight = artwork.getHeight();
 

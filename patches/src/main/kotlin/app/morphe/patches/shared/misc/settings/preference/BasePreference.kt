@@ -23,7 +23,6 @@ import app.morphe.patcher.xml.XmlElement
  * @param summaryKey The key of the preference summary.
  * @param tag The tag or full class name of the preference.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 abstract class BasePreference(
     val key: String? = null,
     val titleKey: String? = "${key}_title",

@@ -38,6 +38,7 @@ import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.utils.LyricsCrypto;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
 /**
@@ -128,8 +129,7 @@ public final class NetEaseProvider implements LyricsProvider {
             if (trimmed.startsWith("{")) {
                 continue;
             }
-            //noinspection SizeReplaceableByIsEmpty
-            if (builder.length() > 0) {
+            if (Utils.isNotEmpty(builder)) {
                 builder.append('\n');
             }
             builder.append(rawLine);
@@ -293,8 +293,7 @@ public final class NetEaseProvider implements LyricsProvider {
             }
             String name = artist.optString("name", "");
             if (!name.isEmpty()) {
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) {
+                if (Utils.isNotEmpty(builder)) {
                     builder.append('/');
                 }
                 builder.append(name);
@@ -479,8 +478,7 @@ public final class NetEaseProvider implements LyricsProvider {
     private static String cookieHeader() {
         StringBuilder builder = new StringBuilder();
         for (Map.Entry<String, String> entry : cookieJar.entrySet()) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (builder.length() > 0) {
+            if (Utils.isNotEmpty(builder)) {
                 builder.append("; ");
             }
             builder.append(entry.getKey()).append('=').append(entry.getValue());
@@ -503,7 +501,6 @@ public final class NetEaseProvider implements LyricsProvider {
         return parseLrc(lrc);
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static List<LyricsLine> parseYrc(String text) {
         List<LyricsLine> lines = new ArrayList<>();
         if (text == null || text.isEmpty()) {
@@ -557,7 +554,7 @@ public final class NetEaseProvider implements LyricsProvider {
                         Character.isWhitespace(wordText.charAt(wordText.length() - 1));
                 words.add(new Word(wordStart, wordEnd, trimmed, null, endsWithSpace));
             }
-            if (words.isEmpty() && full.length() == 0 && !content.isEmpty()) {
+            if (words.isEmpty() && Utils.isEmpty(full) && !content.isEmpty()) {
                 full.append(content);
             }
 
@@ -730,7 +727,7 @@ public final class NetEaseProvider implements LyricsProvider {
     }
 
     @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) {
         String keyword = track.title() + " " + track.artist();
         List<JSONObject> songs = searchAll(keyword, track);
 

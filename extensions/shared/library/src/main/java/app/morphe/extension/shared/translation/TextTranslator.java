@@ -317,8 +317,7 @@ public final class TextTranslator {
                                              @NonNull String lineSeparator) throws Exception {
         StringBuilder joined = new StringBuilder(100 * lines.size());
         for (String line : lines) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (joined.length() > 0) {
+            if (Utils.isNotEmpty(joined)) {
                 joined.append(lineSeparator);
             }
             joined.append(line);
@@ -366,12 +365,12 @@ public final class TextTranslator {
             Logger.printDebug(() -> "The fallback client failed as well", fallbackFailure);
         }
 
-        throw lastFailure != null ? lastFailure : new IOException(
-                (romanize ? "Romanization" : "Translation") + " failed after " + MAX_ATTEMPTS + " attempts");
+        throw lastFailure;
     }
 
     private static <T> T send(String text, String url, boolean romanize,
                               ResponseParser<T> parser) throws Exception {
+        //noinspection CharsetObjectCanBeUsed
         String body = "q=" + URLEncoder.encode(text, "UTF-8");
         String response = post(url, "application/x-www-form-urlencoded", body, null, null,
                 romanize ? "Romanization" : "Translation");

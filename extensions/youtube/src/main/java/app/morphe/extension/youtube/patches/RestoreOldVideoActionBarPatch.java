@@ -15,6 +15,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -42,7 +43,6 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleBut
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModelHolder;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItem;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItemContent;
-import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLayoutConfig;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeCount;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeDislike;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarOverflow;
@@ -53,6 +53,7 @@ import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SecondaryCo
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SlimVideoMetadataSectionRenderer;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.TertiaryContents;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
+import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.patches.utils.requests.ConfigRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -108,6 +109,22 @@ public class RestoreOldVideoActionBarPatch {
             || LAYOUT == VideoActionBarLayout.CLASSIC_TWO_ROWS;
 
     private static final String VIDEO_ACTION_BAR_TEMPLATE = "compactify_video_action_bar.eml";
+
+    /**
+     * Template of the title of the watch page, with the channel name, the views and the date below it.
+     */
+    private static final String VIDEO_METADATA_TEMPLATE = "video_metadata.eml";
+
+    /**
+     * Field path of the channel name below the title of the watch page: element, element type,
+     * component type, model, video metadata model, subtitle, subtitle model, channel name.
+     */
+    private static final int[] SUBTITLE_CHANNEL_NAME_PATH = {1, 168777401, 5, 377581260, 6, 1019, 17, 1017, 1};
+
+    /**
+     * Commands of the parts of a text, such as the channel that the channel name opens.
+     */
+    private static final int TEXT_COMMAND_RUNS_FIELD = 5;
     private static final int LAYOUT_STYLE_CLASSIC = 4;
     private static final int LAYOUT_STYLE_MINIMAL = 6;
     /**
@@ -219,12 +236,44 @@ public class RestoreOldVideoActionBarPatch {
     /**
      * Injection point.
      * <p>
+     * The channel name below the title of the watch page opens the channel, next to the views
+     * and the date that open the description, so the channel opens when the description is meant.
+     * The command of the channel name is removed, so the whole subtitle opens the description.
+     */
+    public static byte[] removeSubtitleChannelCommand(byte[] bytes) {
+        if (!FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_METADATA_TEMPLATE)) {
+            return bytes;
+        }
+
+        try {
+            List<ProtoNode> element = ProtoNode.parse(bytes);
+            if (element == null) {
+                return bytes;
+            }
+            List<ProtoNode> channelName = ProtoNode.message(element, SUBTITLE_CHANNEL_NAME_PATH);
+            ProtoNode commandRuns = ProtoNode.field(channelName, TEXT_COMMAND_RUNS_FIELD);
+            if (commandRuns == null) {
+                return bytes;
+            }
+            do {
+                commandRuns.remove();
+                commandRuns = ProtoNode.field(channelName, TEXT_COMMAND_RUNS_FIELD);
+            } while (commandRuns != null);
+            return ProtoNode.write(element);
+        } catch (Exception ex) {
+            Logger.printException(() -> "removeSubtitleChannelCommand failure", ex);
+            return bytes;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * Both layouts are the same element of the watch page with another style, and the server
      * chooses the style, so the action bar of the chosen layout is built from the element it sends.
      */
     public static byte[] setVideoActionBarLayout(byte[] bytes) {
-        if (LAYOUT == VideoActionBarLayout.DEFAULT
-                || !FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_ACTION_BAR_TEMPLATE)) {
+        if (!FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_ACTION_BAR_TEMPLATE)) {
             return bytes;
         }
 
@@ -233,6 +282,15 @@ public class RestoreOldVideoActionBarPatch {
             ComponentType componentType = element.getType().getComponentType();
             LockupModel lockupModel = componentType.getModel().getLockupModel();
             VideoActionBarViewModel actionBar = lockupModel.getViewModel().getVideoActionBarViewModel();
+            if (LAYOUT == VideoActionBarLayout.DEFAULT) {
+                // The layout of the server is kept, but the items of its More menu that the server
+                // sends without an icon, such as the Save button, get the icon of the button.
+                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar, true);
+                return newActionBar == actionBar
+                        ? bytes
+                        : withActionBar(element, componentType, lockupModel, newActionBar).toByteArray();
+            }
+
             final boolean minimal = LAYOUT == VideoActionBarLayout.MINIMAL;
             if (actionBar.getLayoutStyle() != (minimal ? LAYOUT_STYLE_CLASSIC : LAYOUT_STYLE_MINIMAL)) {
                 // The server sends the chosen layout, or a layout that is not changed.
@@ -240,7 +298,7 @@ public class RestoreOldVideoActionBarPatch {
                     return bytes;
                 }
 
-                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar);
+                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar, false);
                 return newActionBar == actionBar
                         ? bytes
                         : withActionBar(element, componentType, lockupModel, newActionBar).toByteArray();
@@ -408,7 +466,7 @@ public class RestoreOldVideoActionBarPatch {
             return withActionBar(element, componentType, lockupModel, withButtonIcons(newActionBar
                     .setLayoutStyle(minimal ? LAYOUT_STYLE_MINIMAL : LAYOUT_STYLE_CLASSIC)
                     .setLayoutConfig(actionBar.getLayoutConfig().toBuilder().setIconButtons(minimal))
-                    .build()))
+                    .build(), false))
                     .toByteArray();
         } catch (Exception ex) {
             Logger.printException(() -> "setVideoActionBarLayout failure", ex);
@@ -562,12 +620,13 @@ public class RestoreOldVideoActionBarPatch {
      * Buttons without an icon get the icon that the server sent for the same button,
      * or a fallback icon of the app.
      *
+     * @param overflowOnly If only the buttons of the overflow, which are the items of the More menu, get an icon.
      * @return The same action bar if no button changes.
      */
-    private static VideoActionBarViewModel withButtonIcons(VideoActionBarViewModel actionBar) {
+    private static VideoActionBarViewModel withButtonIcons(VideoActionBarViewModel actionBar, boolean overflowOnly) {
         // The icons of the whole action bar are saved first,
         // because the same button can be in the row and in the overflow.
-        mapButtons(actionBar, (button, toggled) -> {
+        mapButtons(actionBar, false, (button, toggled) -> {
             if (!button.getTargetId().isEmpty() && !button.getIconName().isEmpty()) {
                 serverIcons.put(toggled ? button.getTargetId() + TOGGLED_ICON_KEY : button.getTargetId(),
                         button.getIconName());
@@ -575,7 +634,7 @@ public class RestoreOldVideoActionBarPatch {
             return button;
         });
 
-        return mapButtons(actionBar, (button, toggled) -> {
+        return mapButtons(actionBar, overflowOnly, (button, toggled) -> {
             String targetId = button.getTargetId();
             if (!button.getIconName().isEmpty() || targetId.isEmpty()) {
                 return button;
@@ -615,12 +674,16 @@ public class RestoreOldVideoActionBarPatch {
     }
 
     /**
+     * @param overflowOnly If only the buttons of the overflow are mapped.
      * @return The same action bar if the mapper changes no button.
      */
-    private static VideoActionBarViewModel mapButtons(VideoActionBarViewModel actionBar, ButtonMapper mapper) {
+    private static VideoActionBarViewModel mapButtons(VideoActionBarViewModel actionBar, boolean overflowOnly, ButtonMapper mapper) {
         VideoActionBarViewModel.Builder builder = null;
         for (int i = 0, count = actionBar.getActionsCount(); i < count; i++) {
             VideoActionBarItem action = actionBar.getActions(i);
+            if (overflowOnly && !action.getContent().hasOverflow()) {
+                continue;
+            }
             VideoActionBarItemContent content = mapButtons(action.getContent(), mapper);
             if (content != action.getContent()) {
                 if (builder == null) builder = actionBar.toBuilder();
@@ -831,6 +894,7 @@ public class RestoreOldVideoActionBarPatch {
      * @return If the serialized protocol buffer message has a top level field with the given number.
      *         If the message cannot be read, true is returned.
      */
+    @SuppressWarnings("SameParameterValue")
     private static boolean hasTopLevelField(byte[] message, int fieldNumber) {
         int position = 0;
         final int end = message.length;

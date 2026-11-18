@@ -1,17 +1,18 @@
 package app.morphe.extension.shared.privacy;
 
 import android.net.Uri;
-import android.text.TextUtils;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Strips away specific parameters from links.
  */
+@SuppressWarnings("unused")
 public class LinkSanitizer {
 
     private static final Collection<String> parametersToRemove = List.of(
@@ -76,7 +77,7 @@ public class LinkSanitizer {
                     case 2 -> uri.getQueryParameter(videoIdParameters.get(2));
                     default -> segments.size() > 1 ? segments.get(1) : "";
                 };
-                if (!TextUtils.isEmpty(videoId)) {
+                if (Utils.isNotEmpty(videoId)) {
                     break;
                 }
                 currentGetVideoIDAttempts++;

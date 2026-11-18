@@ -70,7 +70,7 @@ final class CommentSchedule {
 
         int liveCount = 0;
         for (NiconicoComment comment : incoming) {
-            if (comment.videoOffsetMs < 0) {
+            if (comment.videoOffsetMs() < 0) {
                 liveCount++;
             }
         }
@@ -81,8 +81,8 @@ final class CommentSchedule {
 
         for (NiconicoComment comment : incoming) {
             long startTimeMs;
-            if (comment.videoOffsetMs >= 0) {
-                startTimeMs = comment.videoOffsetMs;
+            if (comment.videoOffsetMs() >= 0) {
+                startTimeMs = comment.videoOffsetMs();
             } else {
                 startTimeMs = liveCursorMs;
                 liveCursorMs += liveStepMs;
@@ -103,7 +103,7 @@ final class CommentSchedule {
     private void trimLiveOverflow(long videoTimeMs) {
         List<ScheduledComment> live = new ArrayList<>();
         for (ScheduledComment scheduled : comments) {
-            if (scheduled.comment.videoOffsetMs < 0) live.add(scheduled);
+            if (scheduled.comment.videoOffsetMs() < 0) live.add(scheduled);
         }
         if (live.size() <= MAX_LIVE_COMMENTS) return;
 
@@ -162,7 +162,10 @@ final class CommentSchedule {
     }
 
     void redistributeLanes(int laneCount) {
-        resetLaneShuffle();
+        shuffledLanes = new int[0];
+        shuffledLaneCount = 0;
+        shuffledLaneIndex = 0;
+        lastLane = -1;
         List<ScheduledComment> scheduled = new ArrayList<>(comments);
         scheduled.sort(Comparator.comparingLong(comment -> comment.startTimeMs));
         comments.clear();
@@ -275,7 +278,7 @@ final class CommentSchedule {
 
     /**
      * Comments cross the screen in the same time, so a wider comment moves faster.
-     * A later comment can follow an earlier one in the same lane if the earlier one is fully on the
+     * A later comment can follow an earlier one and the same lane if the earlier one is fully on the
      * screen when the later one comes in, and the later one has not caught up when the earlier one leaves.
      * Both comments move at a constant speed, so checking these two moments is enough.
      */
@@ -343,17 +346,10 @@ final class CommentSchedule {
         return lane;
     }
 
-    private void resetLaneShuffle() {
-        shuffledLanes = new int[0];
-        shuffledLaneCount = 0;
-        shuffledLaneIndex = 0;
-        lastLane = -1;
-    }
-
     private void recalculateLiveCursor(long videoTimeMs, long liveStepMs) {
         long latestPendingLiveMs = Long.MIN_VALUE;
         for (ScheduledComment scheduled : comments) {
-            if (scheduled.comment.videoOffsetMs < 0 && scheduled.startTimeMs > videoTimeMs) {
+            if (scheduled.comment.videoOffsetMs() < 0 && scheduled.startTimeMs > videoTimeMs) {
                 latestPendingLiveMs = Math.max(latestPendingLiveMs, scheduled.startTimeMs);
             }
         }
@@ -362,17 +358,6 @@ final class CommentSchedule {
                 : latestPendingLiveMs + Math.max(LIVE_SPREAD_MIN_STEP_MS, liveStepMs);
     }
 
-    static final class ScheduledComment {
-        final NiconicoComment comment;
-        final long startTimeMs;
-        final int lane;
-        final float width;
-
-        ScheduledComment(NiconicoComment comment, long startTimeMs, int lane, float width) {
-            this.comment = comment;
-            this.startTimeMs = startTimeMs;
-            this.lane = lane;
-            this.width = width;
-        }
+    record ScheduledComment(NiconicoComment comment, long startTimeMs, int lane, float width) {
     }
 }

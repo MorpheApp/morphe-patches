@@ -18,6 +18,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class VoiceCatalogTest {
     @After
@@ -62,7 +63,7 @@ public class VoiceCatalogTest {
         assertEquals("tr-TR-AhmetNeural", VoiceCatalog.resolve("tr-TR", "de-DE-KatjaNeural"));
         assertEquals("en-US-EmmaMultilingualNeural", VoiceCatalog.resolve("fr-FR", null));
         assertThrows(UnsupportedOperationException.class,
-                () -> VoiceCatalog.getVoicesForLang("tr").clear());
+                () -> Objects.requireNonNull(VoiceCatalog.getVoicesForLang("tr")).clear());
     }
 
     @Test

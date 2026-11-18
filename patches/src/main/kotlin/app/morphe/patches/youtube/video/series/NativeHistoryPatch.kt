@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -31,7 +32,7 @@ internal fun wireNativeHistory(account: NativeAccountContract) {
     val service = contract.service
     val request = contract.request
     val mutable = mutableClassDefBy(service.type)
-    mutable.interfaces.add(HISTORY_SOURCE)
+    // Adds a wrapper with the name of a renamed native method.
     fun bridge(name: String, args: List<String>, result: String, registers: Int, body: String) {
         val method = ImmutableMethod(
             service.type,
@@ -48,11 +49,9 @@ internal fun wireNativeHistory(account: NativeAccountContract) {
     }
     // Builds a History request. Authorization is also checked here,
     // so an unauthorized request is never dispatched.
-    bridge(
+    mutable.addPatchInterface(
+        HISTORY_SOURCE,
         "patch_seriesTrackerHistory",
-        listOf("Ljava/lang/String;", "Ljava/util/concurrent/Executor;"),
-        "Ljava/util/concurrent/Future;",
-        5,
         """
             const/4 v0, 0x0
             invoke-virtual {p0, v0}, ${contract.factory}
@@ -80,11 +79,9 @@ internal fun wireNativeHistory(account: NativeAccountContract) {
             return-object v0
         """
     )
-    bridge(
+    mutable.addPatchInterface(
+        HISTORY_SOURCE,
         "patch_seriesTrackerHistoryBytes",
-        listOf("Ljava/lang/Object;"),
-        "[B",
-        5,
         """
             check-cast p1, ${contract.payload.definingClass}
             iget-object v0, p1, ${contract.payload}
@@ -105,44 +102,24 @@ internal fun wireNativeHistory(account: NativeAccountContract) {
         "invoke-static/range {p0 .. p0}, $TRANSPORT->attach($HISTORY_SOURCE)V",
     )
     val requestClass = mutableClassDefBy(request.type)
-    requestClass.interfaces.add(HISTORY_REQUEST)
-
-    fun requestBridge(name: String, result: String, registers: Int, body: String) {
-        val method = ImmutableMethod(
-            request.type,
+    // The fields can be declared by a superclass, which the field getter of
+    // addPatchInterface does not look up, so the getters are written in smali.
+    for ((name, field) in listOf(
+        "patch_seriesTrackerRoute" to contract.route,
+        "patch_seriesTrackerContinuation" to contract.continuation,
+    )) {
+        requestClass.addPatchInterface(
+            HISTORY_REQUEST,
             name,
-            null,
-            result,
-            AccessFlags.PUBLIC.value,
-            null,
-            null,
-            MutableMethodImplementation(registers)
-        ).toMutable()
-        method.addInstructions(0, body.trimIndent())
-        requestClass.methods.add(method)
+            """
+                iget-object v0, p0, $field
+                return-object v0
+            """
+        )
     }
-    requestBridge(
-        "patch_seriesTrackerRoute",
-        "Ljava/lang/String;",
-        2,
-        """
-            iget-object v0, p0, ${contract.route}
-            return-object v0
-        """
-    )
-    requestBridge(
-        "patch_seriesTrackerContinuation",
-        "Ljava/lang/String;",
-        2,
-        """
-            iget-object v0, p0, ${contract.continuation}
-            return-object v0
-        """
-    )
-    requestBridge(
+    requestClass.addPatchInterface(
+        HISTORY_REQUEST,
         "patch_seriesTrackerRequestIdentity",
-        IDENTITY,
-        5,
         """
             invoke-virtual {p0}, ${contract.identity}
             move-result-object v0

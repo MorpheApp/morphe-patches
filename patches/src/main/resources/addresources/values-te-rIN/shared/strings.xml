@@ -18,7 +18,9 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
   <!-- String is also duplicated in Reddit import / export preference -->
-  <!-- String is also duplicated in Reddit about preference -->
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <!-- People who donate to Morphe -->
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- Keep short, four of these are shown in one row. -->
   <!-- Keep short, four of these are shown in one row. -->

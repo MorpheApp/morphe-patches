@@ -40,6 +40,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.HidePlayerOverlayButtonsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
+@SuppressWarnings("unused")
 public class PlayerOverlayButton {
 
     public interface PlayerOverlayButtonIsEnabledInterface {

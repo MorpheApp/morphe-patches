@@ -40,7 +40,7 @@ public class LyricsTrackFormatPreference extends Preference {
                 Settings.LYRICS_MINI_ARTIST_MIN_MS.get(), false);
         EditText maximum = dialog.addNumberInput("morphe_music_lyrics_mini_artist_max_label",
                 Settings.LYRICS_MINI_ARTIST_MAX_MS.get(), false);
-        dialog.addNoteLabel("morphe_music_lyrics_mini_artist_timing_explanation");
+        dialog.addNoteLabel();
 
         dialog.show("morphe_music_lyrics_mini_track_format_title", () -> {
             final int min;

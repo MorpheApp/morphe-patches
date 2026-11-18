@@ -1,123 +1,54 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3905
+ * https://github.com/MorpheApp/morphe-patches/pull/4890
+ * https://github.com/MorpheApp/morphe-patches/pull/4909
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.youtube.patches;
 
-
-import android.net.Uri;
-import android.util.Base64;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.innertube.Offline.ButtonCommand;
+import app.morphe.extension.shared.innertube.Offline.DownloadButtonColor;
+import app.morphe.extension.shared.innertube.Offline.DownloadButtonLayout;
+import app.morphe.extension.shared.innertube.Offline.DownloadButtonSize;
+import app.morphe.extension.shared.innertube.Offline.DownloadButtonStyle;
+import app.morphe.extension.shared.innertube.Offline.FlexibleAction;
+import app.morphe.extension.shared.innertube.Offline.FlexibleActionsRow;
+import app.morphe.extension.shared.innertube.Offline.FlexibleActionsViewModel;
+import app.morphe.extension.shared.innertube.Offline.OfflineCommand;
+import app.morphe.extension.shared.innertube.Offline.OfflineDownloadAction;
+import app.morphe.extension.shared.innertube.Offline.OfflineDownloadActionCommand;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormat;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormatType;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
+import app.morphe.extension.shared.innertube.Offline.OfflineabilityRenderer;
+import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadButtonViewModel;
+import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadStatusEntityId;
+import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch;
 import app.morphe.extension.shared.patches.DownloadMode;
-import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
-import app.morphe.extension.shared.spoof.ClientType;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
-import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
-import app.morphe.extension.youtube.innertube.Offline.ButtonCommand;
-import app.morphe.extension.youtube.innertube.Offline.DownloadButtonColor;
-import app.morphe.extension.youtube.innertube.Offline.DownloadButtonLayout;
-import app.morphe.extension.youtube.innertube.Offline.DownloadButtonSize;
-import app.morphe.extension.youtube.innertube.Offline.DownloadButtonStyle;
-import app.morphe.extension.youtube.innertube.Offline.EntityKey;
-import app.morphe.extension.youtube.innertube.Offline.FlexibleAction;
-import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsRow;
-import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsViewModel;
-import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTrack;
-import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTracklist;
-import app.morphe.extension.youtube.innertube.Offline.OfflineCaptions;
-import app.morphe.extension.youtube.innertube.Offline.OfflineCommand;
-import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadAction;
-import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadActionCommand;
-import app.morphe.extension.youtube.innertube.Offline.OfflineFormat;
-import app.morphe.extension.youtube.innertube.Offline.OfflineFormatAvailability;
-import app.morphe.extension.youtube.innertube.Offline.OfflineFormatLabel;
-import app.morphe.extension.youtube.innertube.Offline.OfflineFormatType;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlayerConfig;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlayerResponse;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistAction;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistEndpoint;
-import app.morphe.extension.youtube.innertube.Offline.OfflineState;
-import app.morphe.extension.youtube.innertube.Offline.OfflineStateAction;
-import app.morphe.extension.youtube.innertube.Offline.OfflineStreamFormat;
-import app.morphe.extension.youtube.innertube.Offline.OfflineStreamingData;
-import app.morphe.extension.youtube.innertube.Offline.OfflineUpsellCommand;
-import app.morphe.extension.youtube.innertube.Offline.OfflineUpsellResponse;
-import app.morphe.extension.youtube.innertube.Offline.OfflineVideoAction;
-import app.morphe.extension.youtube.innertube.Offline.OfflineVideoEndpoint;
-import app.morphe.extension.youtube.innertube.Offline.OfflineabilityContainer;
-import app.morphe.extension.youtube.innertube.Offline.OfflineabilityRenderer;
-import app.morphe.extension.youtube.innertube.Offline.PlaylistDownloadButtonViewModel;
-import app.morphe.extension.youtube.innertube.Offline.PlaylistDownloadStatusEntityId;
+import app.morphe.extension.youtube.patches.utils.EntityKeys;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class InAppDownloadsPatch {
-
-    /**
-     * Qualities offered when the server does not list any, highest first.
-     */
-    private static final OfflineFormatType[] DEFAULT_FORMAT_TYPES = {
-            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_1080,
-            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD,
-            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD_480,
-            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD,
-            OfflineFormatType.OFFLINE_FORMAT_TYPE_LD,
-    };
-
-    private static final String[] DEFAULT_FORMAT_LABELS = {
-            "1080p", "720p", "480p", "360p", "144p"
-    };
-
-    /**
-     * Clients that answer with stream urls, which the app can save.
-     * The visionOS streams need no JavaScript challenge, whose unsolved streams the server sends slowly.
-     */
-    private static final List<ClientType> DOWNLOAD_CLIENTS = List.of(
-            ClientType.VISIONOS_1_03,
-            ClientType.VISIONOS_1_02,
-            ClientType.ANDROID_VR_DASH,
-            ClientType.TV_DASH,
-            ClientType.ANDROID_CREATOR,
-            ClientType.TV_SIMPLY
-    );
-
-    /**
-     * How long a saved video stays valid before the app asks the server about it again.
-     */
-    private static final int OFFLINE_POLICY_LIFETIME_SECONDS = (int) TimeUnit.DAYS.toSeconds(365);
-
-    /**
-     * Opus audio is not saved, the other audio and all video formats are.
-     */
-    private static final String UNSAVABLE_AUDIO_MIME_TYPE_PREFIX = "audio/webm";
-
-    /**
-     * Format of the caption urls of the app. The caption urls of visionOS have no format, and the server
-     * then answers with a legacy format whose text is escaped twice, so the saved captions show
-     * entities such as {@code &#39;} instead of an apostrophe.
-     * The format is not a signed parameter, so the url stays valid.
-     */
-    private static final String CAPTION_URL_FORMAT = "&fmt=srv3";
+public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
 
     /**
      * Key of the interaction logger, in the context a command is run with.
@@ -142,9 +73,26 @@ public final class InAppDownloadsPatch {
     private static final int PLAYLIST_DOWNLOAD_STATUS_ENTITY_ID_TYPE = 306;
     private static final int GENERATION_STATUS_ENTITY_TYPE = 147;
     private static final String PLAYLIST_GENERATION_STATUS_ENTITY_ID = "playlist";
-    private static final int ENTITY_PERSISTENCE = 1;
 
     private static final String PLAYLIST_DOWNLOAD_BUTTON_IDENTIFIER = "playlist-download-button";
+
+    /**
+     * Qualities of the quality picker, highest first. Premium offers up to 1080p,
+     * but the app can also save the higher qualities.
+     */
+    private static final OfflineFormatType[] FORMAT_TYPES = {
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_2160,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_1440,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_1080,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD_480,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_LD,
+    };
+
+    private static final String[] FORMAT_LABELS = {
+            "2160p", "1440p", "1080p", "720p", "480p", "360p", "144p"
+    };
 
     /**
      * Injection point.
@@ -159,7 +107,7 @@ public final class InAppDownloadsPatch {
     @Nullable
     public static byte[] replaceDownloadActionCommand(@Nullable MessageLite command) {
         try {
-            if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP || command == null) {
+            if (!isInAppDownloadMode() || command == null) {
                 return null;
             }
 
@@ -186,31 +134,194 @@ public final class InAppDownloadsPatch {
 
     /**
      * Injection point.
-     * <p>
-     * Called before a video is saved, or before the quality picker of the video is shown.
      *
-     * @param offlineability Offlineability renderer of the video.
+     * @param settingCategories            Setting categories of the server.
+     * @param offlineSettingCategoryClass  Class of the offline setting category.
+     * @return If the offline setting category must be added to the setting categories.
+     */
+    public static boolean needsOfflineSettingCategory(List<?> settingCategories,
+                                                      Class<?> offlineSettingCategoryClass) {
+        try {
+            if (!isInAppDownloadMode()) {
+                return false;
+            }
+
+            for (Object settingCategory : settingCategories) {
+                if (offlineSettingCategoryClass.isInstance(settingCategory)) {
+                    return false;
+                }
+            }
+
+            Logger.printDebug(() -> "Adding offline setting category");
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "needsOfflineSettingCategory failure", ex);
+            return false;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the offline setting category is created, for the download quality setting,
+     * which the server can turn off.
+     *
+     * @param original If the server enables the setting.
+     */
+    public static boolean unlockOfflineSetting(boolean original) {
+        return original || isInAppDownloadMode();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the offline setting category is created. The 1080p option adds 1080p
+     * in front of the download quality formats, which already have it.
+     *
+     * @param original If the server enables the 1080p option.
+     */
+    public static boolean isFullHdFormatOptionAvailable(boolean original) {
+        return original && !isInAppDownloadMode();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the offline setting category is created, for the entries of the download quality setting.
+     *
+     * @param formatTypes Format types of the server, or an empty list to use the default qualities.
+     * @param formatType  Default format type of the smart downloads quality, a constant of the
+     *                    format type enum of the app.
+     * @return The format types of every quality of the quality picker, highest first.
+     */
+    public static List<?> getDownloadQualityFormatTypes(List<?> formatTypes, @Nullable Object formatType) {
+        try {
+            if (!isInAppDownloadMode()) {
+                return formatTypes;
+            }
+            if (!(formatType instanceof Enum<?> type)) {
+                Logger.printException(() -> "Unknown format type: " + formatType);
+                return formatTypes;
+            }
+
+            return appFormatTypes(type, FORMAT_TYPES);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getDownloadQualityFormatTypes failure", ex);
+            return formatTypes;
+        }
+    }
+
+    /**
+     * Implemented by the app class that picks the streams of a download quality.
+     */
+    public interface DownloadStreamSelector {
+        /**
+         * The stream selection of the app, which uses the same device and server checks as playback.
+         *
+         * @return The stream of the quality, a stream of a lower quality, or null.
+         */
+        @Nullable
+        FormatStreamInterface patch_selectStream(int quality, int maxHeight, int audioQuality,
+                                                 StreamingDataInterface streamingData, boolean audio,
+                                                 Object playerConfig);
+
+        /**
+         * @return The stream with its content length, which is fetched if the server did not give it.
+         */
+        FormatStreamInterface patch_fetchContentLength(FormatStreamInterface stream) throws IOException;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called for each quality of the quality picker of a download, to pick the video and audio
+     * streams of the quality. The picker drops a quality whose stream is the same as one of a lower
+     * quality, and the app picks a lower quality if the device or server checks rule out the stream
+     * of the quality. These are the same checks as playback, such as which codecs the device can decode.
+     *
+     * @return The stream of the quality, or the stream the app picked.
+     */
+    @Nullable
+    public static FormatStreamInterface selectDownloadStream(DownloadStreamSelector selector, int quality,
+                                                             int maxHeight, int audioQuality,
+                                                             StreamingDataInterface streamingData,
+                                                             boolean audio, Object playerConfig) {
+        FormatStreamInterface stream = selector.patch_selectStream(
+                quality, maxHeight, audioQuality, streamingData, audio, playerConfig);
+        if (audio) {
+            return stream;
+        }
+
+        try {
+            FormatStreamInterface videoStream = getDownloadVideoStream(quality, maxHeight, streamingData, stream);
+            return videoStream == stream
+                    ? stream
+                    : selector.patch_fetchContentLength(videoStream);
+        } catch (Exception ex) {
+            Logger.printException(() -> "selectDownloadStream failure", ex);
+            return stream;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the quality picker of a download is created. The picker opens collapsed to
+     * 60% of the screen height, which cuts off the lowest qualities of the longer list.
+     *
+     * @return If the picker opens fully expanded.
+     */
+    public static boolean expandDownloadQualityPicker() {
+        return isInAppDownloadMode();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * YouTube override of the base unlock, which additionally adds the default download types
+     * the server omitted. The recommended downloads of the Downloads page list only 360p and 144p,
+     * since the server omits the qualities it would not automatically download.
+     * This also applies to the unlock of the base, which unlocks Premium locked formats
+     * but keeps the entries of the server.
+     * The same shared save method shows the quality picker of every download entry point,
+     * so this keeps every entry point saving with the same qualities.
+     * <p>
+     * YouTube Music keeps the formats of the server and does not use this method.
+     *
+     * @param offlineability Offlineability renderer of the video or playlist.
      * @return The renderer with every quality available, or null to keep the original.
      */
     @Nullable
     public static byte[] unlockOfflineability(@Nullable Object offlineability) {
         try {
-            if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP
-                    || !(offlineability instanceof MessageLite message)) {
+            if (!isInAppDownloadMode()) {
                 return null;
             }
 
-            OfflineabilityRenderer renderer = OfflineabilityRenderer.parseFrom(message.toByteArray());
-            if (renderer.getOfflineable() && !hasLockedFormat(renderer.getFormatsList())) {
+            byte[] unlocked = BaseInAppDownloadsPatch.unlockOfflineability(offlineability);
+            byte[] source = unlocked;
+            if (source == null && offlineability instanceof MessageLite message) {
+                // The base kept the original: the server lists formats and none are Premium locked.
+                source = message.toByteArray();
+            }
+            if (source == null) {
                 return null;
             }
 
-            Logger.printDebug(() -> "Unlocking offlineability, offlineable: " + renderer.getOfflineable());
+            // The base may have unlocked the Premium locked formats, but it always keeps the
+            // entries of the server. The types the server omitted are added as well,
+            // so the picker shows every quality.
+            OfflineabilityRenderer renderer = OfflineabilityRenderer.parseFrom(source);
+            List<OfflineFormat> merged = mergeMissingFormatTypes(
+                    renderer.getFormatsList(), FORMAT_TYPES, FORMAT_LABELS);
+            if (merged == null) {
+                return unlocked;
+            }
+
+            Logger.printDebug(() -> "Adding offline formats the server omitted");
             return renderer.toBuilder()
-                    .setOfflineable(true)
-                    .clearNotOfflineableDialog()
                     .clearFormats()
-                    .addAllFormats(unlockedFormats(renderer.getFormatsList()))
+                    .addAllFormats(merged)
                     .build()
                     .toByteArray();
         } catch (Exception ex) {
@@ -220,196 +331,34 @@ public final class InAppDownloadsPatch {
     }
 
     /**
-     * Injection point.
-     * <p>
-     * Called with the response of the offline upsell endpoint, which offers Premium instead of saving the video.
-     *
-     * @param command  Command of the offline upsell endpoint.
-     * @param response Response of the endpoint.
-     * @return A response that saves the video instead, or null to keep the original.
+     * Implemented by the app class that loads the player response of saved videos.
      */
-    @Nullable
-    public static byte[] replaceOfflineUpsell(@Nullable MessageLite command, @Nullable Object response) {
-        try {
-            if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP
-                    || command == null
-                    || !(response instanceof MessageLite responseMessage)) {
-                return null;
-            }
-
-            OfflineUpsellResponse upsellResponse = OfflineUpsellResponse.parseFrom(responseMessage.toByteArray());
-            if (!upsellResponse.getContent().hasOfflineUpsellRenderer()) {
-                return null;
-            }
-
-            String videoId = OfflineUpsellCommand.parseFrom(command.toByteArray())
-                    .getOfflineUpsellEndpoint().getVideoId();
-            if (videoId.isEmpty()) {
-                Logger.printDebug(() -> "Offline upsell command has no video id");
-                return null;
-            }
-
-            Logger.printDebug(() -> "Replacing offline upsell with saving the video: " + videoId);
-            return upsellResponse.toBuilder()
-                    .clearContent()
-                    .setCommand(saveVideoCommand(videoId,
-                            upsellResponse.getContent().getOfflineUpsellRenderer().getFormatsList()))
-                    .build()
-                    .toByteArray();
-        } catch (Exception ex) {
-            Logger.printException(() -> "replaceOfflineUpsell failure", ex);
-            return null;
-        }
-    }
-
-    /**
-     * Determines whether the given player response proto represents a playable offline video.
-     */
-    public static boolean isOfflinePlayerResponse(@NonNull String videoId, @Nullable Object playerProto) {
-        try {
-            if (!(playerProto instanceof MessageLite message)) {
-                Logger.printDebug(() -> "isOfflinePlayerResponse: playerProto is not MessageLite: "
-                        + (playerProto != null ? playerProto.getClass().getName() : "null"));
-                return false;
-            }
-            OfflinePlayerResponse response = OfflinePlayerResponse.parseFrom(message.toByteArray());
-            if (response.hasOfflineState()) {
-                int action = response.getOfflineState().getActionValue();
-                if (action == OfflineStateAction.OFFLINE_STATE_ACTION_OK_VALUE) {
-                    Logger.printDebug(() -> "Detected playable offline video: " + videoId);
-                    return true;
-                } else {
-                    Logger.printDebug(() -> "Offline video state action not OK: " + action + " for: " + videoId);
-                }
-            } else {
-                Logger.printDebug(() -> "OfflinePlayerResponse has no offline state for: " + videoId);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "isOfflinePlayerResponse failure", ex);
-        }
-        return false;
+    public interface OfflinePlaybackWorker {
+        /**
+         * Sets the start time of a saved video played from Downloads
+         * to the position saved in its Downloads entry.
+         *
+         * @param descriptor     Playback start descriptor.
+         * @param playerResponse Player response model of the saved video.
+         */
+        void patch_setDownloadStartTime(Object descriptor, @Nullable Object playerResponse);
     }
 
     /**
      * Injection point.
      * <p>
-     * Called off the main thread with the player response the app saves a video with.
-     * If the server declines to save the video, the streams are fetched with another client.
-     *
-     * @param playerResponse Player response proto of the video.
-     * @return A player response that can be saved, or null to keep the original.
+     * Called when the player response of a saved video is loaded. The play command of a Downloads card
+     * keeps the position from when the card was built, and the app can use an older position than the
+     * one saved in Downloads, so a saved video can start at 0:00 or at an older position.
      */
-    @Nullable
-    public static byte[] replaceDeclinedOfflinePlayerResponse(@Nullable Object playerResponse) {
+    public static void setDownloadStartTime(OfflinePlaybackWorker worker,
+                                            Object descriptor,
+                                            @Nullable Object playerResponse) {
         try {
-            if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP
-                    || !(playerResponse instanceof MessageLite message)) {
-                return null;
-            }
-
-            OfflinePlayerResponse original = OfflinePlayerResponse.parseFrom(message.toByteArray());
-            if (!original.hasOfflineState()) {
-                return null;
-            }
-
-            String videoId = original.hasVideoDetails()
-                    ? original.getVideoDetails().getVideoId()
-                    : "";
-
-            final boolean allowed = original.getOfflineState().getActionValue()
-                    == OfflineStateAction.OFFLINE_STATE_ACTION_OK_VALUE;
-            if (allowed && original.getStreamingData().getAdaptiveFormatsCount() > 0) {
-                if (!videoId.isEmpty()) {
-                    SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
-                }
-                return null;
-            }
-
-            if (videoId.isEmpty()) {
-                Logger.printDebug(() -> "Declined offline player response has no video id");
-                return null;
-            }
-
-            StreamingDataRequest.StreamData streams = StreamingDataRequest.fetchRequestForDownload(
-                    videoId, DOWNLOAD_CLIENTS, DOWNLOAD_CLIENTS.get(0)).getStream();
-            if (streams == null) {
-                Logger.printDebug(() -> "No streams to save the video with: " + videoId);
-                return null;
-            }
-
-            // The declined response lacks the parts the app needs to select the streams to save,
-            // such as the player config. The response of the other client is used instead,
-            // and only the offline state token and player config are kept from the declined response.
-            OfflinePlayerResponse.Builder builder = OfflinePlayerResponse.parseFrom(streams.streamingData()).toBuilder();
-            builder.setStreamingData(savableStreamingData(builder.getStreamingData()))
-                    .setOfflineState(playableOfflineState(original.getOfflineState().getToken()));
-            if (builder.hasCaptions()) {
-                builder.setCaptions(srv3Captions(builder.getCaptions()));
-            }
-
-            // Without the ExoPlayer config the app only looks at the progressive formats, which are not savable,
-            // and the playback speed menu is unavailable.
-            // The player config of the app's own response fits the device, so it's kept if there is one.
-            OfflinePlayerConfig playerConfig = original.hasPlayerConfig()
-                    ? original.getPlayerConfig()
-                    : builder.getPlayerConfig();
-            builder.setPlayerConfig(playerConfig.toBuilder().setExoPlayerConfig(
-                    playerConfig.getExoPlayerConfig().toBuilder()
-                            .setUseExoPlayer(true)
-                            .setEnableVariableSpeedPlayback(true)));
-
-            SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
-
-            Logger.printDebug(() -> "Replaced declined offline player response of: " + videoId
-                    + " savable formats: " + countSavableFormats(builder.getStreamingData())
-                    + " of: " + builder.getStreamingData().getAdaptiveFormatsCount());
-            return builder.build().toByteArray();
+            worker.patch_setDownloadStartTime(descriptor, playerResponse);
         } catch (Exception ex) {
-            Logger.printException(() -> "replaceDeclinedOfflinePlayerResponse failure", ex);
-            return null;
+            Logger.printException(() -> "setDownloadStartTime failure", ex);
         }
-    }
-
-    /**
-     * Injection point.
-     * <p>
-     * Called off the main thread with the offline state the server gives a saved video when the app
-     * refreshes its saved videos, which the server schedules about every 12 hours.
-     * The server disables saved videos that need Premium to be saved, such as music videos,
-     * and the app then shows an error instead of playing them.
-     *
-     * @param offlineState New offline state of a saved video.
-     * @return An offline state that keeps the video playable, or null to keep the original.
-     */
-    @Nullable
-    public static byte[] replaceDisabledOfflineState(@Nullable MessageLite offlineState) {
-        try {
-            if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP || offlineState == null) {
-                return null;
-            }
-
-            OfflineState state = OfflineState.parseFrom(offlineState.toByteArray());
-            if (state.getAction() != OfflineStateAction.OFFLINE_STATE_ACTION_DISABLE) {
-                return null;
-            }
-
-            Logger.printDebug(() -> "Replacing disabled offline state with reason: " + state.getDisabledReason());
-            return playableOfflineState(state.getToken()).toByteArray();
-        } catch (Exception ex) {
-            Logger.printException(() -> "replaceDisabledOfflineState failure", ex);
-            return null;
-        }
-    }
-
-    /**
-     * @return Offline state that keeps a saved video playable, without asking the server again for a long time.
-     */
-    private static OfflineState playableOfflineState(String token) {
-        return OfflineState.newBuilder()
-                .setToken(token)
-                .setPolicyLifetimeSeconds(OFFLINE_POLICY_LIFETIME_SECONDS)
-                .setAction(OfflineStateAction.OFFLINE_STATE_ACTION_OK)
-                .build();
     }
 
     /**
@@ -513,8 +462,8 @@ public final class InAppDownloadsPatch {
                 .setDownloadableA11YText(downloadableText)
                 .setInProgressA11YText(inProgressText)
                 .setCompletedA11YText(completedText)
-                .setDownloadStatusKey(entityKey(DOWNLOAD_STATUS_ENTITY_TYPE, downloadStatusEntityId))
-                .setGenerationStatusKey(entityKey(GENERATION_STATUS_ENTITY_TYPE,
+                .setDownloadStatusKey(EntityKeys.key(DOWNLOAD_STATUS_ENTITY_TYPE, downloadStatusEntityId))
+                .setGenerationStatusKey(EntityKeys.key(GENERATION_STATUS_ENTITY_TYPE,
                         ByteString.copyFromUtf8(PLAYLIST_GENERATION_STATUS_ENTITY_ID)))
                 .setLayout(DownloadButtonLayout.DOWNLOAD_BUTTON_LAYOUT_PLAYLIST_HEADER)
                 .setIconColor(DownloadButtonColor.DOWNLOAD_BUTTON_COLOR_PLAYLIST_HEADER)
@@ -526,18 +475,6 @@ public final class InAppDownloadsPatch {
                 .setIdentifier(PLAYLIST_DOWNLOAD_BUTTON_IDENTIFIER)
                 .build();
         return FlexibleAction.newBuilder().setDownloadButtonViewModel(button).build();
-    }
-
-    /**
-     * @return The key of the entity, as the app encodes it.
-     */
-    private static String entityKey(int entityType, ByteString entityId) {
-        EntityKey key = EntityKey.newBuilder()
-                .setEntityId(entityId)
-                .setEntityType(entityType)
-                .setPersistence(ENTITY_PERSISTENCE)
-                .build();
-        return Uri.encode(Base64.encodeToString(key.toByteArray(), Base64.URL_SAFE | Base64.NO_WRAP));
     }
 
     /**
@@ -559,117 +496,8 @@ public final class InAppDownloadsPatch {
      * @return The interaction logger of the app that logs nothing.
      */
     @Nullable
+    @SuppressWarnings("SameReturnValue")
     private static Object getNoOpInteractionLogger() {
         return null; // Modified during patching.
-    }
-
-    /**
-     * @return A command of the offline video endpoint that saves the video with the formats.
-     */
-    private static OfflineCommand saveVideoCommand(String videoId, List<OfflineFormat> formats) {
-        OfflineVideoEndpoint endpoint = OfflineVideoEndpoint.newBuilder()
-                .setVideoId(videoId)
-                .setAction(OfflineVideoAction.OFFLINE_VIDEO_ACTION_ADD)
-                .setOfflineability(offlineability(formats))
-                .build();
-        return OfflineCommand.newBuilder().setOfflineVideoEndpoint(endpoint).build();
-    }
-
-    /**
-     * @return Offlineability that saves with the formats.
-     */
-    private static OfflineabilityContainer offlineability(List<OfflineFormat> formats) {
-        OfflineabilityRenderer renderer = OfflineabilityRenderer.newBuilder()
-                .setOfflineable(true)
-                .addAllFormats(unlockedFormats(formats))
-                .build();
-        return OfflineabilityContainer.newBuilder()
-                .setOfflineabilityRenderer(renderer)
-                .build();
-    }
-
-    private static boolean hasLockedFormat(List<OfflineFormat> formats) {
-        for (OfflineFormat format : formats) {
-            if (isLocked(format)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * @return The formats with the Premium formats available, or the default formats if there are none.
-     */
-    private static List<OfflineFormat> unlockedFormats(List<OfflineFormat> formats) {
-        List<OfflineFormat> unlocked = new ArrayList<>();
-        if (formats.isEmpty()) {
-            for (int i = 0; i < DEFAULT_FORMAT_TYPES.length; i++) {
-                unlocked.add(OfflineFormat.newBuilder()
-                        .setName(OfflineFormatLabel.newBuilder().setSimpleText(DEFAULT_FORMAT_LABELS[i]))
-                        .setFormatType(DEFAULT_FORMAT_TYPES[i])
-                        .setAvailability(OfflineFormatAvailability.OFFLINE_FORMAT_AVAILABILITY_FREE)
-                        .build());
-            }
-            return unlocked;
-        }
-
-        for (OfflineFormat format : formats) {
-            unlocked.add(isLocked(format)
-                    ? format.toBuilder()
-                            .setAvailability(OfflineFormatAvailability.OFFLINE_FORMAT_AVAILABILITY_FREE)
-                            .build()
-                    : format);
-        }
-        return unlocked;
-    }
-
-    private static boolean isLocked(OfflineFormat format) {
-        return format.getAvailability() == OfflineFormatAvailability.OFFLINE_FORMAT_AVAILABILITY_PREMIUM_LOCKED;
-    }
-
-    /**
-     * Injection point.
-     * <p>
-     * Called after the player response model is created from the replaced player response.
-     *
-     * @param playerResponseModel The created model, or null if the app could not parse the replaced player response.
-     */
-    public static void onOfflinePlayerResponseReplaced(@Nullable Object playerResponseModel) {
-        SpoofVideoStreamsPatch.setKeepStreamsOnThread(false);
-        if (playerResponseModel == null) {
-            Logger.printException(() -> "Could not create the player response model of the replaced player response");
-        }
-    }
-
-    private static int countSavableFormats(OfflineStreamingData streamingData) {
-        int count = 0;
-        for (OfflineStreamFormat format : streamingData.getAdaptiveFormatsList()) {
-            if (format.getOfflineEligible()) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    private static OfflineStreamingData savableStreamingData(OfflineStreamingData streamingData) {
-        OfflineStreamingData.Builder builder = streamingData.toBuilder();
-        for (int i = 0, count = builder.getAdaptiveFormatsCount(); i < count; i++) {
-            OfflineStreamFormat format = builder.getAdaptiveFormats(i);
-            String mimeType = format.getMimeType();
-            if (!mimeType.isEmpty() && !mimeType.startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX)) {
-                builder.setAdaptiveFormats(i, format.toBuilder().setOfflineEligible(true));
-            }
-        }
-        return builder.build();
-    }
-
-    private static OfflineCaptions srv3Captions(OfflineCaptions captions) {
-        OfflineCaptionTracklist.Builder tracklist = captions.getPlayerCaptionsTracklistRenderer().toBuilder();
-        for (int i = 0, count = tracklist.getCaptionTracksCount(); i < count; i++) {
-            OfflineCaptionTrack track = tracklist.getCaptionTracks(i);
-            String baseUrl = track.getBaseUrl().replaceAll("&fmt=[^&]*", "") + CAPTION_URL_FORMAT;
-            tracklist.setCaptionTracks(i, track.toBuilder().setBaseUrl(baseUrl));
-        }
-        return captions.toBuilder().setPlayerCaptionsTracklistRenderer(tracklist).build();
     }
 }

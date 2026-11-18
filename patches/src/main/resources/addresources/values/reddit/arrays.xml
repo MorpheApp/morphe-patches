@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- layout.autoscroll.feedAutoScrollPatch -->
+    <string-array name="morphe_feed_auto_scroll_speed_entries">
+        <item>@string/morphe_feed_auto_scroll_speed_entry_slow</item>
+        <item>@string/morphe_feed_auto_scroll_speed_entry_medium</item>
+        <item>@string/morphe_feed_auto_scroll_speed_entry_fast</item>
+        <item>@string/morphe_feed_auto_scroll_speed_entry_very_fast</item>
+    </string-array>
+    <string-array name="morphe_feed_auto_scroll_speed_entry_values" translatable="false">
+        <item>SLOW</item>
+        <item>MEDIUM</item>
+        <item>FAST</item>
+        <item>VERY_FAST</item>
+    </string-array>
+
+    <!-- layout.tabletgrid.tabletGridFeedPatch -->
+    <string-array name="morphe_tablet_grid_columns_entries">
+        <item>@string/morphe_tablet_grid_columns_entry_auto</item>
+        <item>@string/morphe_tablet_grid_columns_entry_two</item>
+        <item>@string/morphe_tablet_grid_columns_entry_three</item>
+    </string-array>
+    <string-array name="morphe_tablet_grid_columns_entry_values" translatable="false">
+        <item>AUTO</item>
+        <item>TWO</item>
+        <item>THREE</item>
+    </string-array>
+</resources>

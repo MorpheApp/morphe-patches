@@ -31,6 +31,7 @@ import app.morphe.extension.youtube.patches.utils.ProtoNode;
  * at the links replaced by attachments, and the runs are moved to the same texts in the original
  * description. Runs whose text is not in the original description are removed.
  */
+@SuppressWarnings("unused")
 final class OriginalDescription {
 
     /**
@@ -238,6 +239,7 @@ final class OriginalDescription {
         return linkEnd < 0 ? null : new int[]{linkStart, linkEnd};
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isNameCharacter(int codePoint) {
         return RestoreOriginalTitlesPatch.isWordCodePoint(codePoint) || codePoint == '_' || codePoint == '-' || codePoint == '.';
     }

@@ -361,7 +361,14 @@ internal object PivotBarIconOnlyRendererFingerprint : Fingerprint(
         literal(117501096L),
         literal(318370163L),
         opcode(Opcode.IF_NE, location = MatchAfterWithin(3)),
-        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(6))
+        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(6)),
+        // The button without a label.
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT_RANGE,
+            definingClass = "this",
+            name = "<init>",
+            returnType = "V"
+        )
     )
 )
 

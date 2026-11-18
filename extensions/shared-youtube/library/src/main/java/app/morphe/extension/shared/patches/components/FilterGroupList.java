@@ -21,6 +21,7 @@ import java.util.function.Consumer;
 
 import app.morphe.extension.shared.TrieSearch;
 
+@SuppressWarnings("unused")
 public abstract class FilterGroupList<V, T extends FilterGroup<V>> implements Iterable<T> {
 
     private final List<T> filterGroups = new ArrayList<>();

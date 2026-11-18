@@ -138,6 +138,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
             this(name, packageName, downloadUrl, false, false, false);
         }
 
+        @SuppressWarnings("SameParameterValue")
         Downloader(String name, @Nullable String packageName, @Nullable String downloadUrl, boolean isPreferred) {
             this(name, packageName, downloadUrl, isPreferred, false, false);
         }
@@ -201,10 +202,10 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
     }
 
     /**
-     * @return If the downloader was opened.
+     * Opens the downloader, or a dialog if it is not installed.
      */
-    public static boolean launchExternalDownloader(String videoId, @Nullable Context context, String url) {
-        return launchExternalDownloader(videoId, context, url, null);
+    public static void launchExternalDownloader(String videoId, @Nullable Context context, String url) {
+        launchExternalDownloader(videoId, context, url, null);
     }
 
     /**
@@ -232,7 +233,6 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
                 return false;
             }
 
-            //noinspection ExtractMethodRecommender
             Intent intent = new Intent("android.intent.action.SEND");
             intent.setType("text/plain");
             intent.setPackage(downloaderPackageName);
@@ -291,10 +291,6 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
 
     protected String getCurrentPackageName() {
         return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get();
-    }
-
-    protected String getDefaultPackageName() {
-        return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.defaultValue;
     }
 
     private void updateEntries() {
@@ -452,7 +448,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
                 () -> {}, // Cancel button action (dismiss only).
                 str("morphe_settings_reset"),
                 () -> { // Reset action.
-                    String defaultValue = getDefaultPackageName();
+                    String defaultValue = SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.defaultValue;
                     editText.setText(defaultValue);
                     editText.setSelection(defaultValue.length());
                     editText.setEnabled(false); // Disable editing on reset.

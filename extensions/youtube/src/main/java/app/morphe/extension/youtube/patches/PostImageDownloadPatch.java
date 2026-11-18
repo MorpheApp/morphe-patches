@@ -12,6 +12,8 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -23,6 +25,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.LocaleList;
 import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
 import android.view.HapticFeedbackConstants;
@@ -48,9 +51,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -92,7 +97,8 @@ public final class PostImageDownloadPatch {
 
     /**
      * App texts of the Share button. The Share button of a post is described by a text
-     * of the server, which is the same in the language of the app.
+     * of the server, which is the same in the language of YouTube. The language of Morphe
+     * can differ from it, so the texts are read in every language YouTube can use.
      */
     private static final String[] SHARE_LABEL_NAMES = {
             "reel_footer_share",
@@ -171,6 +177,9 @@ public final class PostImageDownloadPatch {
     private static Drawable downloadIcon;
     @Nullable
     private static List<String> shareLabels;
+    /** Languages of {@link #shareLabels}. */
+    @Nullable
+    private static String shareLabelLanguages;
     @Nullable
     private static PostCard pressedCard;
 
@@ -202,6 +211,7 @@ public final class PostImageDownloadPatch {
         }
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -296,7 +306,7 @@ public final class PostImageDownloadPatch {
      * Called when an element is parsed. The element is not changed.
      */
     public static byte[] onElementLoaded(byte[] bytes) {
-        if (!ENABLED || bytes == null || !FeedVideoCardsPatch.emlTextMayContain(bytes, POST)
+        if (!ENABLED || bytes == null || FeedVideoCardsPatch.emlTextLacks(bytes, POST)
                 || !(FeedVideoCardsPatch.contains(bytes, GGPHT_BYTES)
                 || FeedVideoCardsPatch.contains(bytes, GOOGLE_USER_CONTENT_BYTES))) {
             return bytes;
@@ -557,19 +567,65 @@ public final class PostImageDownloadPatch {
         }
     }
 
-    private static List<String> getShareLabels() {
-        if (shareLabels == null) {
+    /**
+     * @return The languages YouTube can show the texts of the server in: the language of the
+     *         YouTube views, the languages of the device, and the language of Morphe.
+     */
+    private static Set<Locale> getShareLabelLocales(View view) {
+        Set<Locale> locales = new LinkedHashSet<>();
+        addLocales(locales, view.getResources().getConfiguration().getLocales());
+        locales.add(Locale.getDefault());
+        addLocales(locales, LocaleList.getDefault());
+        return locales;
+    }
+
+    private static void addLocales(Set<Locale> locales, LocaleList list) {
+        for (int i = 0, size = list.size(); i < size; i++) {
+            locales.add(list.get(i));
+        }
+    }
+
+    private static List<String> getShareLabels(View view) {
+        Set<Locale> locales = getShareLabelLocales(view);
+        String languages = locales.toString();
+        if (shareLabels == null || !languages.equals(shareLabelLanguages)) {
             List<String> labels = new ArrayList<>();
+            // Texts in the language of Morphe.
             for (String name : SHARE_LABEL_NAMES) {
                 addShareLabel(labels, ResourceUtils.getString(name));
             }
-            // Framework texts are given in the language of the app.
             final int systemShareId = ResourceUtils.getSystemStringIdentifier("share");
             if (systemShareId != 0) {
                 addShareLabel(labels, Utils.getContext().getString(systemShareId));
             }
-            Logger.printDebug(() -> "Share button labels: " + labels);
+            // Texts in the languages YouTube can use. The resources are read from the view,
+            // since the resources of Morphe are in the language of Morphe.
+            List<Integer> ids = new ArrayList<>();
+            for (String name : SHARE_LABEL_NAMES) {
+                final int id = ResourceUtils.getStringIdentifier(name);
+                if (id != 0) {
+                    ids.add(id);
+                }
+            }
+            if (systemShareId != 0) {
+                ids.add(systemShareId);
+            }
+            Context context = view.getContext();
+            for (Locale locale : locales) {
+                try {
+                    Configuration configuration = new Configuration(view.getResources().getConfiguration());
+                    configuration.setLocales(new LocaleList(locale));
+                    Resources resources = context.createConfigurationContext(configuration).getResources();
+                    for (int id : ids) {
+                        addShareLabel(labels, resources.getString(id));
+                    }
+                } catch (Exception ex) {
+                    Logger.printInfo(() -> "Could not read the Share labels of: " + locale, ex);
+                }
+            }
+            Logger.printDebug(() -> "Share button labels: " + labels + " languages: " + languages);
             shareLabels = labels;
+            shareLabelLanguages = languages;
         }
         return shareLabels;
     }
@@ -584,9 +640,9 @@ public final class PostImageDownloadPatch {
         }
     }
 
-    private static boolean isShareDescription(CharSequence description) {
+    private static boolean isShareDescription(CharSequence description, List<String> labels) {
         String text = description.toString().trim();
-        for (String label : getShareLabels()) {
+        for (String label : labels) {
             if (text.equalsIgnoreCase(label)) {
                 return true;
             }
@@ -598,14 +654,15 @@ public final class PostImageDownloadPatch {
      * @return The Share button of the post, or null if it is not shown.
      */
     @Nullable
-    private static View findShareButton(ComponentHost root, ViewGroup group, Rect rect) {
+    private static View findShareButton(ComponentHost root, ViewGroup group, Rect rect,
+                                        List<String> labels) {
         for (int i = 0, count = group.getChildCount(); i < count; i++) {
             View child = group.getChildAt(i);
             if (child.getVisibility() != View.VISIBLE) {
                 continue;
             }
             CharSequence description = child.getContentDescription();
-            if (description != null && isShareDescription(description)) {
+            if (description != null && isShareDescription(description, labels)) {
                 rect.set(0, 0, child.getWidth(), child.getHeight());
                 root.offsetDescendantRectToMyCoords(child, rect);
                 if (rect.width() > 0 && rect.width() <= Dim.dp(MAX_SHARE_BUTTON_DP)) {
@@ -613,7 +670,7 @@ public final class PostImageDownloadPatch {
                 }
             }
             if (child instanceof ComponentHost host) {
-                View found = findShareButton(root, host, rect);
+                View found = findShareButton(root, host, rect, labels);
                 if (found != null) {
                     return found;
                 }
@@ -660,7 +717,9 @@ public final class PostImageDownloadPatch {
             // Most root hosts are not posts and have no Share button,
             // so the texts are only looked up for the ones that do.
             Rect shareRect = new Rect();
-            View share = FeedVideoCardsPatch.isInDialog(root) ? null : findShareButton(root, root, shareRect);
+            View share = FeedVideoCardsPatch.isInDialog(root)
+                    ? null
+                    : findShareButton(root, root, shareRect, getShareLabels(root));
             String key = share == null ? null : findPostKey(root);
             if (key == null) {
                 if (card != null) {
@@ -784,6 +843,7 @@ public final class PostImageDownloadPatch {
         public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;

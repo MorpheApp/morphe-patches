@@ -221,6 +221,7 @@ public class CustomBrandingPatch {
     /**
      * If custom branding is included in the app.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -298,7 +299,7 @@ public class CustomBrandingPatch {
     public static int getColor(int original) {
         try {
             if (GmsCoreSupportPatch.isPackageNameOriginal()) {
-                // A mounted install has the notification icon resource replaced while patching,
+                // A mounted installation has the notification icon resource replaced while patching,
                 // and the tint of the original icon does not match the icon that replaced it.
                 return mountedNotificationIconApplied()
                         ? Color.TRANSPARENT
@@ -321,6 +322,7 @@ public class CustomBrandingPatch {
      * <p>
      * The total number of app name aliases, including dummy aliases.
      */
+    @SuppressWarnings("SameReturnValue")
     private static int numberOfPresetAppNames() {
         // Modified during patching, but requires a default if custom branding is excluded.
         return 1;
@@ -331,6 +333,7 @@ public class CustomBrandingPatch {
      * <p>
      * The icon style selected during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     private static String defaultIconStyleName() {
         // Modified during patching, but requires a default if custom branding is excluded.
         return "";
@@ -341,6 +344,7 @@ public class CustomBrandingPatch {
      * <p>
      * If a mounted (root) install had a launcher icon applied during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     private static boolean mountedIconApplied() {
         // Modified during patching, but requires a default if custom branding is excluded.
         return false;
@@ -351,6 +355,7 @@ public class CustomBrandingPatch {
      * <p>
      * If a mounted (root) install had the notification icon applied during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     private static boolean mountedNotificationIconApplied() {
         // Modified during patching, but requires a default if custom branding is excluded.
         return false;
@@ -361,6 +366,7 @@ public class CustomBrandingPatch {
      * <p>
      * If a custom icon was provided during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     private static boolean userProvidedCustomIcon() {
         // Modified during patching, but requires a default if custom branding is excluded.
         return false;
@@ -372,6 +378,7 @@ public class CustomBrandingPatch {
      * The mipmap resource name of the original unpatched launcher icon.
      * Differs per app: YouTube uses "ringo2_ic_launcher", YT Music uses "ic_launcher_release".
      */
+    @SuppressWarnings("SameReturnValue")
     private static String originalLauncherIconName() {
         // Modified during patching.
         return "";
@@ -384,6 +391,7 @@ public class CustomBrandingPatch {
      * Differs per app: YouTube uses "ic_stat_yt_notification_logo",
      * YT Music uses "music_push_notification_white".
      */
+    @SuppressWarnings("SameReturnValue")
     private static String originalNotificationIconName() {
         // Modified during patching.
         return "";
@@ -394,6 +402,7 @@ public class CustomBrandingPatch {
      * <p>
      * If a custom name was provided during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     private static boolean userProvidedCustomName() {
         // Modified during patching, but requires a default if custom branding is excluded.
         return false;
@@ -462,7 +471,6 @@ public class CustomBrandingPatch {
     /**
      * Injection point.
      */
-    @SuppressWarnings("ConstantConditions")
     public static void setBranding() {
         try {
             if (GmsCoreSupportPatch.isPackageNameOriginal()) {

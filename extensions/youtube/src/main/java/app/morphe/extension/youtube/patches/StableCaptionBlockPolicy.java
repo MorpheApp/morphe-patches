@@ -47,6 +47,7 @@ final class StableCaptionBlockPolicy {
         boolean fits(String text);
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     static final class Block {
         final long start, end;
         final String text;
@@ -60,6 +61,7 @@ final class StableCaptionBlockPolicy {
         }
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class Atom {
         final long start, end;
         final String text;
@@ -171,6 +173,7 @@ final class StableCaptionBlockPolicy {
         return atoms.isEmpty() ? null : new StableCaptionBlockPolicy(atoms);
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean defaultValue(Element element, String name, String value) {
         return !element.hasAttribute(name) || element.getAttribute(name).equals(value);
     }
@@ -299,6 +302,7 @@ final class StableCaptionBlockPolicy {
     /**
      * @return False if the source is too complex for stable blocks.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean add(
             List<Atom> atoms,
             long time,
@@ -357,6 +361,7 @@ final class StableCaptionBlockPolicy {
         return new Block(atoms.get(from).start, end, text(from, to), fits);
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean boundary(int at) {
         if (at >= atoms.size() || atoms.get(at).barrierBefore) return true;
         if (!boundaries[at]) return false;
@@ -415,11 +420,10 @@ final class StableCaptionBlockPolicy {
                 if (!boundary(to)) continue;
                 Block candidate = block(from, to, true);
                 long duration = candidate.end - candidate.start;
-                if (duration <= 0 || source && (duration > MAX_PREVIEW_MS
-                        || to > from + 1
-                        && candidate.text.codePointCount(0, candidate.text.length()) > MAX_MULTI_ATOM_SOURCE_CHARS)) continue;
-                long missing = shortfall(candidate) + shortfall[to];
                 int chars = candidate.text.codePointCount(0, candidate.text.length());
+                if (duration <= 0 || source && (duration > MAX_PREVIEW_MS
+                        || to > from + 1 && chars > MAX_MULTI_ATOM_SOURCE_CHARS)) continue;
+                long missing = shortfall(candidate) + shortfall[to];
                 // Relative reading load, not a language-specific characters-per-second limit.
                 char last = candidate.text.charAt(candidate.text.length() - 1);
                 double value =
@@ -500,6 +504,7 @@ final class StableCaptionBlockPolicy {
         return s.matches("[0-9]{1,10}") ? Long.parseLong(s) : -1;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean attributes(Element e, String... allowed) {
         List<String> keys = Arrays.asList(allowed);
         NamedNodeMap a = e.getAttributes();

@@ -17,20 +17,21 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Paint;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.text.Layout;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
+import android.util.SparseArray;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.PathInterpolator;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,26 +52,32 @@ final class LyricsViewSupport {
 
     /** Lines other than the active one shrink a little, on top of dimming. */
     static final float ACTIVE_LINE_SCALE = 1.0f;
-    static final float INACTIVE_LINE_SCALE = 0.95f;
+    static final float INACTIVE_LINE_SCALE = 0.93f;
+    static final float INACTIVE_LINE_ALPHA = 0.35f;
+    /** Every line while the lyrics are scrolled by hand, so all of them read alike. */
+    static final float BROWSING_LINE_ALPHA = 0.60f;
     /** Compose LinearOutSlowInEasing. */
     static final TimeInterpolator LINEAR_OUT_SLOW_IN =
             new PathInterpolator(0f, 0f, 0.2f, 1f);
     /** The Compose FastOutSlowInEasing. */
     static final TimeInterpolator FAST_OUT_SLOW_IN =
             new PathInterpolator(0.4f, 0f, 0.2f, 1f);
+    /** The CSS ease curve, which line looks and the instrumental break dots change along. */
+    static final TimeInterpolator EASE =
+            new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
     private static final float FOOTER_ALPHA = 0.6f;
     private static final long HIGHLIGHT_FADE_DURATION_MILLISECONDS = 320;
     private static final String LYRICS_SOURCE_KEY = "morphe_music_lyrics_source_label";
     private static final float FOOTER_TEXT_SIZE_SP = 16;
     private static final float BACKGROUND_TEXT_SIZE_FACTOR = 0.7f;
-    private static final float SECTION_TAG_TEXT_SIZE_FACTOR = 0.45f;
+    private static final float SECTION_TAG_TEXT_SIZE_FACTOR = 0.42f;
     private static final float SECTION_DOT_INSET_FACTOR = 0.18f;
     private static final ArgbEvaluator BUTTON_COLOR_EVALUATOR = new ArgbEvaluator();
 
     private LyricsViewSupport() {
     }
 
-    /** Bolds a paint for lyrics; a typeface set on it afterwards undoes the weight. */
+    /** Bolds a paint for lyrics; a typeface set on it afterward undoes the weight. */
     static void applyLyricsBoldPaint(Paint paint) {
         paint.setTypeface(Typeface.DEFAULT_BOLD);
         paint.setFlags(paint.getFlags()
@@ -83,7 +90,7 @@ final class LyricsViewSupport {
 
     /** Draws a line a little tighter, except a joining script, which spacing would break apart. */
     static float lineLetterSpacing(@Nullable CharSequence text, float textSizeSp) {
-        return LyricsSpanBuilder.containsJoiningScript(text) ? 0f : -0.5f / Math.max(12f, textSizeSp);
+        return LyricsTextUtils.containsJoiningScript(text) ? 0f : -0.5f / Math.max(12f, textSizeSp);
     }
 
     static int leadingRegionSize(Layout layout, int start, int end) {
@@ -93,70 +100,17 @@ final class LyricsViewSupport {
         return layout.getLineBottom(layout.getLineForOffset(end - 1));
     }
 
-    static int trailingRegionSize(Layout layout, int start, int end) {
-        if (start <= 0 || end <= start || end > layout.getText().length()) {
-            return 0;
-        }
-        return layout.getHeight() - layout.getLineTop(layout.getLineForOffset(start));
-    }
-
-    static int rowHeightOutsideText(View row, View text) {
-        if (!(row instanceof ViewGroup group)) {
-            return 0;
-        }
-        int total = 0;
-        for (int i = 0; i < group.getChildCount(); i++) {
-            View child = group.getChildAt(i);
-            if (child == text || child.getVisibility() == View.GONE) {
-                continue;
-            }
-            int height = child.getHeight();
-            ViewGroup.LayoutParams lp = child.getLayoutParams();
-            if (height <= 0 && lp != null && lp.height > 0) {
-                height = lp.height;
-            }
-            total += height;
-            if (lp instanceof ViewGroup.MarginLayoutParams margins) {
-                total += margins.topMargin + margins.bottomMargin;
-            }
-        }
-        return total;
-    }
-
-    static void applySectionDotSize(@Nullable LinearLayout row) {
-        if (row == null) {
-            return;
-        }
-        final int size = scaledPixels(row.getContext(), LyricsPanelView.SECTION_DOT_SIZE_FACTOR);
-        final int gap = scaledPixels(row.getContext(), LyricsPanelView.SECTION_DOT_GAP_FACTOR);
-        for (int i = 0; i < row.getChildCount(); i++) {
-            View dot = row.getChildAt(i);
-            if (dot == null) {
-                continue;
-            }
-            LinearLayout.LayoutParams params =
-                    (LinearLayout.LayoutParams) dot.getLayoutParams();
-            if (params == null) {
-                continue;
-            }
-            params.width = size;
-            params.height = size;
-            params.setMarginStart(i == 0 ? 0 : gap);
-            dot.setLayoutParams(params);
-        }
-    }
-
     /**
      * The words the karaoke pass paints for one line.
      *
      * <p>An only mode drops the original and measures its reading against the text it draws, so the
-     * reading's words already sit on the {@code originalStart} base and the original's are not in that text
+     * reading's words already sit on the {@code originalStart} base and the originals are not in that text
      * at all; a plain mode keeps the original, which is the base {@link #withReading} moves the reading's
      * onto. Deciding by the reading alone would rob a plain mode of the words it paints.
      */
-    static List<LyricsSpanBuilder.WordTiming> wordSpansFor(
+    static List<WordTiming> wordSpansFor(
             LyricsSpanBuilder.BuildResult result, boolean only,
-            List<LyricsSpanBuilder.WordTiming> lineTimings) {
+            List<WordTiming> lineTimings) {
         if (!only) {
             // Syllable readings are drawn by the view from the same timings that light the lyric.
             if (result.showSyllableRomanization()) {
@@ -164,7 +118,7 @@ final class LyricsViewSupport {
             }
             return withReading(lineTimings, result);
         }
-        List<LyricsSpanBuilder.WordTiming> spans = result.readingSpans();
+        List<WordTiming> spans = result.readingSpans();
         return spans == null || spans.isEmpty() ? Collections.emptyList() : spans;
     }
 
@@ -173,26 +127,56 @@ final class LyricsViewSupport {
      * every offset it is given, and the reading sits elsewhere in the text, so its offsets move by the
      * difference.
      */
-    static List<LyricsSpanBuilder.WordTiming> withReading(
-            List<LyricsSpanBuilder.WordTiming> lineTimings,
+    static List<WordTiming> withReading(
+            List<WordTiming> lineTimings,
             LyricsSpanBuilder.BuildResult result) {
-        List<LyricsSpanBuilder.WordTiming> readingSpans = result.readingSpans();
+        List<WordTiming> readingSpans = result.readingSpans();
         if (readingSpans == null || readingSpans.isEmpty() || result.romaStart() < 0) {
             return lineTimings;
         }
         final int shift = result.romaStart() - result.originalStart();
-        List<LyricsSpanBuilder.WordTiming> combined =
+        List<WordTiming> combined =
                 new ArrayList<>(lineTimings.size() + readingSpans.size());
         combined.addAll(lineTimings);
-        for (LyricsSpanBuilder.WordTiming span : readingSpans) {
-            combined.add(new LyricsSpanBuilder.WordTiming(
+        for (WordTiming span : readingSpans) {
+            combined.add(new WordTiming(
                     span.start() + shift, span.end() + shift, span.startMs(), span.endMs(),
                     null, span.hasTrailingSpace(), null, span.averaged()));
         }
         return combined;
     }
 
-    /** Eases the highlight between lines the way the built-in panel does, shrinking the dimmed ones. */
+    /* Eases the highlight between lines the way the built-in panel does, shrinking the dimmed ones. */
+
+    /** {@return the alpha of an inactive line this many lines from the sung one, in spotlight mode} */
+    static float spotlightAlpha(int distance) {
+        return switch (distance) {
+            case 0 -> INACTIVE_LINE_ALPHA;
+            case 1 -> 0.28f;
+            case 2 -> 0.20f;
+            case 3 -> 0.14f;
+            default -> 0.10f;
+        };
+    }
+
+    /** Relaxed scrolling only applies on top of spring scrolling. */
+    static boolean isRelaxScrollEnabled() {
+        return Settings.LYRICS_SPRING_SCROLL.get() && Settings.LYRICS_RELAX_SCROLL.get();
+    }
+
+    /** Relaxed scrolling keeps inactive lines full size. */
+    static boolean isLineScaleEnabled() {
+        return Settings.LYRICS_LINE_SCALE.get() && !isRelaxScrollEnabled();
+    }
+
+    /** {@return the scale of an inactive line this many lines from the sung one, in spotlight mode} */
+    static float spotlightScale(int distance) {
+        if (distance <= 1) return 0.97f;
+        if (distance <= 3) return 0.93f;
+        if (distance == 4) return 0.90f;
+        return 0.85f;
+    }
+
     static void fadeTo(TextView lineView, float alpha) {
         if (!(lineView instanceof LyricsLineView view)) {
             return;
@@ -216,7 +200,7 @@ final class LyricsViewSupport {
             view.fadeAnimator = null;
         }
         view.fadeTargetAlpha = alpha;
-        final float targetScale = alpha >= 1f ? ACTIVE_LINE_SCALE : INACTIVE_LINE_SCALE;
+        final float targetScale = (alpha >= 1f || !isLineScaleEnabled()) ? ACTIVE_LINE_SCALE : INACTIVE_LINE_SCALE;
         final float startAlpha = view.lineAlpha;
         final float startScale = view.lineScale;
         if (Math.abs(startAlpha - alpha) < 0.01f && Math.abs(startScale - targetScale) < 0.005f) {
@@ -255,9 +239,8 @@ final class LyricsViewSupport {
         final int w = view.getWidth();
         final int h = view.getHeight();
         if (w > 0) {
-            final boolean isEnd = view.isRightAligned()
-                    || (view.getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END;
-            view.setPivotX(isEnd ? w - view.getPaddingRight() : view.getPaddingLeft());
+            final boolean isEnd = view.isRightAligned();
+            view.setPivotX(view.isCentered() ? w / 2f : (isEnd ? w - view.getPaddingRight() : view.getPaddingLeft()));
         }
         if (h > 0) {
             view.setPivotY(h * 0.5f);
@@ -424,7 +407,7 @@ final class LyricsViewSupport {
                 } else if (romanizedFromAI && romanizedAiModel != null) {
                     source = String.format(str("morphe_music_lyrics_romanized_by_ai"), romanizedAiModel);
                 } else if (romanizedLocalDictionary != null) {
-                    // Named and nothing more: the licences are in the licenses dialog.
+                    // Named and nothing more: the licenses are in the licenses dialog.
                     source = String.format(str("morphe_music_lyrics_romanized_by_local"),
                             romanizedLocalDictionary);
                 } else if (romanizedFromEmbedded && rubyProvider != null) {
@@ -448,12 +431,12 @@ final class LyricsViewSupport {
         final int end = out.length();
         out.setSpan(new ClickableSpan() {
             @Override
-            public void onClick(View widget) {
+            public void onClick(@NonNull View widget) {
                 if (onSource != null) onSource.run();
             }
 
             @Override
-            public void updateDrawState(TextPaint ds) {
+            public void updateDrawState(@NonNull TextPaint ds) {
                 ds.setUnderlineText(false);
             }
         }, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -489,6 +472,112 @@ final class LyricsViewSupport {
         @Override
         public void updateDrawState(TextPaint ds) {
             ds.setUnderlineText(false);
+        }
+    }
+
+    private static final long BLUR_ANIMATION_DURATION_MS = 300L;
+    /** Blur of the lines next to the sung one, relative to the text size. */
+    private static final float NEAR_LINE_BLUR_EM = 0.035f;
+    /** Blur of every line further away. */
+    private static final float FAR_LINE_BLUR_EM = 0.070f;
+    private static final SparseArray<RenderEffect> BLUR_EFFECT_CACHE = new SparseArray<>(32);
+
+    /** {@return the blur radius of an inactive line this many lines from the sung one} */
+    static float inactiveBlurRadius(int distance, float textSizePx) {
+        return (distance <= 1 ? NEAR_LINE_BLUR_EM : FAR_LINE_BLUR_EM) * textSizePx;
+    }
+
+    @Nullable
+    static RenderEffect getCachedBlurEffect(float radius) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || radius < 0.5f) {
+            return null;
+        }
+        int bucket = Math.min(250, Math.max(5, Math.round(radius * 10f)));
+        RenderEffect cached = BLUR_EFFECT_CACHE.get(bucket);
+        if (cached == null) {
+            float r = bucket / 10f;
+            cached = RenderEffect.createBlurEffect(r, r, Shader.TileMode.DECAL);
+            BLUR_EFFECT_CACHE.put(bucket, cached);
+        }
+        return cached;
+    }
+
+    /**
+     * Manages smooth {@link RenderEffect} blur transitions and deduplicates redundant updates
+     * for a single view on Android 12 and later.
+     */
+    static final class BlurTarget {
+        private final View view;
+        @Nullable
+        private ValueAnimator animator;
+        @Nullable
+        private RenderEffect currentEffect;
+        private float currentRadius;
+
+        BlurTarget(View view) {
+            this.view = view;
+        }
+
+        void animateTo(float targetRadius, boolean instant, boolean suppressed) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                return;
+            }
+            if (animator != null) {
+                animator.cancel();
+                animator = null;
+            }
+            if (instant || Math.abs(currentRadius - targetRadius) < 0.1f) {
+                setRadius(targetRadius, suppressed);
+                return;
+            }
+            ValueAnimator anim = ValueAnimator.ofFloat(currentRadius, targetRadius);
+            anim.setDuration(BLUR_ANIMATION_DURATION_MS);
+            anim.setInterpolator(EASE);
+            anim.addUpdateListener(a -> setRadius((Float) a.getAnimatedValue(), suppressed));
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    if (animator == animation) {
+                        animator = null;
+                        setRadius(targetRadius, suppressed);
+                    }
+                }
+            });
+            animator = anim;
+            anim.start();
+        }
+
+        void setRadius(float radius, boolean suppressed) {
+            currentRadius = radius;
+            refresh(suppressed);
+        }
+
+        void refresh(boolean suppressed) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                return;
+            }
+            RenderEffect effect = (suppressed || currentRadius < 0.5f)
+                    ? null
+                    : getCachedBlurEffect(currentRadius);
+            if (currentEffect == effect) {
+                return;
+            }
+            currentEffect = effect;
+            view.setRenderEffect(effect);
+        }
+
+        void clearEffect() {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && currentEffect != null) {
+                currentEffect = null;
+                view.setRenderEffect(null);
+            }
+        }
+
+        void cancel() {
+            if (animator != null) {
+                animator.cancel();
+                animator = null;
+            }
         }
     }
 }

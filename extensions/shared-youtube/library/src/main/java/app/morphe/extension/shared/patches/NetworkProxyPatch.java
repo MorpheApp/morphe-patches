@@ -77,6 +77,7 @@ public final class NetworkProxyPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("SameReturnValue")
     private static boolean useProxyListInt() {
         return false; // Modify during patching,
     }

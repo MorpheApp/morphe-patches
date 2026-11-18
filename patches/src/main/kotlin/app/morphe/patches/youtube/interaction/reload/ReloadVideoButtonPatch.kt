@@ -34,7 +34,6 @@ private val reloadVideoButtonResourcePatch = patch {
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
 
-@Suppress("unused")
 val reloadVideoButtonPatch = patch(
     name = "Reload video",
     description = "Adds an option to display reload video button in the video player.",

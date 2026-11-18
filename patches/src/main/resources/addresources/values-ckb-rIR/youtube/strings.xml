@@ -43,17 +43,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">بێکارکردنی نوێکردنەوەی ڕیزبەند</string>
   <string name="morphe_disable_layout_updates_summary">رێگری دەکات لەوەی سێرڤەر شێوەزاری ئەپەکە نوێ بکاتەوە</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"شێوەی ڕێخستنی ئەپەکە دەگەڕێتەوە بۆ ئەو شێوەیەی کە لەکاتی یەکەمین دامەزراندندا بەکارهاتبوو.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"شێوەزاری ئەپەکە دەگەڕێتەوە بۆ ئەو شێوەزارەی کە لە کاتی یەکەم دامەزراندندا بەکارهاتووە.
 
-لەوانەیە هەندێک لە شێوەی ڕێخستنەکانی لای سێرڤەر نەگەڕێنەوە.
+ڕەنگە هەندێک لە شێوەزارەکانی لای سێرڤەر نەگەرێنەوە.
 
 گۆڕانکارییەکان بریتین لە:
-• پێکهاتەکانی مینیووەکەی دەرەکی پلەیەر (یان ڕێکخستنە پەیوەندیدارەکان) لەوانەیە کارنەکەن
+• پێشنیارەکانی ڤیدیۆی تەواو شاشە ڕەنگە تێکبچن
+• پێکهاتەکانی مێنیوی دەرەکی پلەیەرەکە (یان ڕێکخستنە پەیوەندیدارەکان) ڕەنگە کارنەکەن
+• بەشی مۆسیقای وەسفی ڤیدیۆ ڕەنگە کارنەکات
+• بڕگەکانی مێنیوی دەرەکی پلەیەرەکە ناتوانرێت بشاردرێنەوە
 • ژمارە گۆڕاوەکان ئەنیمەیشن نین
-• تاپەکەی کتێبخانە پیشان دەدرێت
-• بەشی مۆسیقای وەسفی ڤیدیۆ لەوانەیە کارنەکات
-• بڕگەکانی مینیووەکەی دەرەکی پلەیەر ناتوانرێت بشاردرێنەوە
-• دوگمەی گۆڕینی ئەکاونت لەوانەیە لە تاپەکەی کتێبخانەدا دەرنەکەوێت"</string>
+• دوگمەی گۆڕینی ئەکاونت ڕەنگە لە تابی کتێبخانەکەدا دەەرنەکەوێت"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">فلتەری مێنۆی فڕینی پێشهات چالاک بکە</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">فلتەری مێنۆی فلای ئاوتی پێشهات</string>
@@ -69,19 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">شاردنەوەی دوگمەکانی کەناڵ</string>
   <string name="morphe_hide_channel_buttons_summary">دوگمەکانی وەک Subscribe، View Channel، Community، و YouTube Music دەشارێتەوە لە پرۆفایلی کەناڵەکان لە ئەنجامەکانی گەڕاندا</string>
   <string name="morphe_hide_community_posts_title">شاردنەوەی بابەتەکانی کۆمەڵگە</string>
-  <string name="morphe_post_buttons_screen_title">دوگمەکانی پۆست</string>
-  <string name="morphe_post_buttons_screen_summary">شێوازی ڕیزبەندی دوگمەکانی خوارەوەی پۆستەکانی کۆمەڵگە هەڵبژێرە و دیاری بکە کام دوگمە بشاردرێن</string>
-  <string name="morphe_post_buttons_layout_title">ڕێکخستنی دوگمەکانی پۆست</string>
-  <string name="morphe_post_buttons_layout_entry_1">سێرڤەر</string>
-  <string name="morphe_post_buttons_layout_entry_2">سەپاندراو</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">شاردنەوەی دوگمەکانی پەسەندکردن و ڕەتکردنەوە</string>
-  <string name="morphe_hide_post_dislike_button_title">شاردنەوەی دوگمەی ڕەتکردنەوە</string>
-  <string name="morphe_hide_post_dislike_button_summary">لەگەڵ ڕێکخستنی سەپاندراو، شوێنی دوگمەکە بەتاڵ دەمێنێتەوە</string>
-  <string name="morphe_hide_post_comment_button_title">شاردنەوەی دوگمەی کۆمێنت</string>
-  <string name="morphe_hide_post_comments_preview_title">شاردنەوەی پێشوەکشانەی کۆمێنتەکان</string>
-  <string name="morphe_hide_post_comments_preview_summary">پێشوەکشانەی کۆمێنتەکانی خوارەوەی پۆستەکان دەشارێتەوە</string>
-  <string name="morphe_hide_post_share_button_title">شاردنەوەی دوگمەی بەشکردن</string>
-  <string name="morphe_hide_post_share_button_summary">دوگمەی دابەزاندنی وێنەکانی پۆستەکە لە تەنیشت دوگمەی بەشکردن داندراوە، بۆیە ئەویشی دەشارێتەوە</string>
   <string name="morphe_hide_compact_banner_title">شاردنەوەی بانەرە کورتەکان</string>
   <string name="morphe_hide_compact_banner_summary">بانەرە کۆمپاکتەکان و بۆشایی نێوان هەندێک پێکهاتە دەشارێتەوە</string>
   <string name="morphe_hide_expandable_card_title">کارتە فراوانبووەکان لە ژێر ڤیدیۆکاندا</string>
@@ -135,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">شاردنەوەی کاتی بارکردن</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"سنووردارییەکان:
-• ڕەفەکانی Shorts، لاپەڕەکانی کەناڵ و ئەنجامەکانی گەڕان لەوانەیە هێشتا کاتی ئەپڵۆدکردن پیشان بدەن
+• ڕەفەکانی Shorts لەوانەیە هێشتا کاتی ئەپڵۆدکردن پیشان بدەن
 • لەگەڵ دیزاینی ئۆتۆمۆبیل کار ناکات"</string>
   <string name="morphe_hide_video_thumbnail_title">شاردنەوەی وێنەی بچووکی ڤیدیۆ</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -144,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">شاردنەوەی ژمارەی بینەران</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"سنووردارییەکان:
-• ڕەفەکانی Shorts، لاپەڕەکانی کەناڵ و ئەنجامەکانی گەڕان لەوانەیە هێشتا ژمارەی بینەران پیشان بدەن
+• ڕەفەکانی Shorts لەوانەیە هێشتا ژمارەی بینەران پیشان بدەن
 • لەگەڵ دیزاینی ئۆتۆمۆبیل کار ناکات"</string>
   <string name="morphe_hide_web_search_results_title">ئەنجامی گەڕانی وێب بشارەوە</string>
   <string name="morphe_hide_web_search_results_summary">بەشی \'ئەنجامی وێب\' لە ئەنجامەکانی گەڕان دەشارێتەوە</string>
@@ -153,197 +140,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_doodles_title">شاردنەوەی \'Doodles\'ی YouTube</string>
   <string name="morphe_hide_youtube_doodles_summary">ئەنیمەیشنی وەرزەکان و ڕووداوەکان دەشاردەوە لەسەر لۆگۆی YouTube</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">پیشاندانی YouTube Doodles ڕەنگە ڕێگری بکات لە پیشاندانی سەرپەڕە تایبەتەکان</string>
-  <string name="morphe_hide_channel_bar_title">شاردنەوەی بارەکەی کەناڵ</string>
-  <string name="morphe_hide_channel_watermark_title">شاردنەوەی واترمارکی کەناڵ</string>
-  <string name="morphe_hide_chapters_timeline_button_title">شاردنەوەی بەشەکان و دوگمەی \'In this video\'</string>
-  <string name="morphe_hide_crowdfunding_box_title">شاردنەوەی بۆکسی کرۆدفاندینگ</string>
-  <string name="morphe_hide_emergency_box_title">شاردنەوەی بۆکسەکانی فریاکەوتن</string>
-  <string name="morphe_hide_info_panels_title">شاردنەوەی پانێڵەکانی زانیاری</string>
-  <string name="morphe_hide_info_panels_summary">پانێڵەکانی زانیاری دەشاردەوە، وەک زانیارییە پزیشکییەکان</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">شاردنەوەی دوگمەی بەئەندام بوون</string>
-  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">شاردنەوەی دوگمەی \'دووبارەکردنەوەی چاتی ڕاستەوخۆ\'</string>
-  <string name="morphe_hide_live_chat_replay_button_summary">دوگمەی دووبارە لایڤ چاتەکە دەشاردەوە لە شێوەی شاشەی تەواو</string>
-  <string name="morphe_hide_medical_panels_title">شاردنەوەی پانێڵەکانی پزیشکی</string>
-  <string name="morphe_hide_player_gesture_hints_title">شاردنەوەی ئاماژەکانی جوڵەی پلەیەر</string>
-  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
-          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <string name="morphe_hide_player_gesture_hints_summary">ئاماژەکان دەشارێتەوە کە لە کاتی جوڵەی پلەیەردا پیشان دەدرێن، وەک \'ڕاکێشان بۆ سەرەوە بۆ گەڕانی وردتر\'، \'بەردەبە بۆ هەڵوەشاندنەوە\' و \'2x\'</string>
-  <string name="morphe_hide_subscribers_community_guidelines_title">شاردنەوەی ڕێنماییەکانی ئەندامان</string>
-  <string name="morphe_hide_sync_button_title">شاردنەوەی دوگمەی \'هماهەنگکردن لەگەڵ ڤیدیۆ\'</string>
-  <string name="morphe_hide_tap_and_hold_gradient_title">شاردنەوەی گرادیێنتی دەستلێدان و ڕاگرتن</string>
-  <string name="morphe_hide_tap_and_hold_gradient_summary">گرادیێنتی کۆنتڕۆڵەکانی پلەیەر دەشارێتەوە کاتێک پەنجەت دەجوڵێنیت لە کاتی ڕاگرتندا بۆ خێراکردن</string>
-  <string name="morphe_hide_timed_reactions_title">شاردنەوەی کاردانەوە کاتدارەکان</string>
-  <string name="morphe_hide_timed_reactions_summary">ئەو تایبەتمەندییە دەشارێتەوە کە ڕێگە بە بەکارهێنەران دەدات بە ئیمۆجی کاردانەوە نیشان بدەن لە بەشی کۆمێنت و چاتی ڕاستەوخۆدا</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">شاردنەوەی مینیۆی \'یارمەتی &amp; فیدباک\'</string>
-  <string name="morphe_hide_help_feedback_menu_summary">مینیۆی \'یارمەتی &amp; فیدباک\' دەشارێتەوە کاتێک دوگمەی سێ خاڵەکە بەکاردێت، وەک لە ئەنجامەکانی گەڕاندا</string>
-  <string name="morphe_hide_handle_title">شاردنەوەی هاندڵ</string>
-  <string name="morphe_hide_handle_summary">هاندڵی کەناڵەکەت لە بەشی \'تۆ\' دەشارێتەوە</string>
-  <string name="morphe_hide_video_title_title">شاردنەوەی ناونیشانی ڤیدیۆ</string>
-  <string name="morphe_hide_video_title_summary">ناونیشانی ڤیدیۆکە دەشارێتەوە لە شێوازی شاشەی تەواودا</string>
-  <string name="morphe_sanitize_video_subtitle_title">پاککردنەوەی ژێرنووسی ڤیدیۆ</string>
-  <string name="morphe_sanitize_video_subtitle_summary">پاککردنەوەی دەستەواژەکانی وەک \'#\'، \'Fundraiser\'، \'product(s)\' و \'Shop\' لە ژێرنووسی ڤیدیۆ</string>
-  <string name="morphe_hide_ask_gemini_button_title">شاردنەوەی دوگمەی \'Ask Gemini\'</string>
-  <string name="morphe_hide_ask_gemini_button_summary">دوگمەی \'Ask Gemini\' دەشارێتەوە لە خوارەوەی پانێڵی \'Ask about this video\'</string>
-  <string name="morphe_hide_description_components_screen_title">وەسفی ڤیدیۆ</string>
-  <string name="morphe_hide_description_components_screen_summary">دیاری بکە کام پێکهاتەکان لە وەسفی ڤیدیۆکەدا دەردەکەون</string>
-  <string name="morphe_hide_ai_generated_video_summary_section_title">شاردنەوەی بەشی \'کورتەی ڤیدیۆی دروستکراوی AI\'</string>
-  <string name="morphe_hide_ask_section_title">شاردنەوەی بەشی Ask</string>
-  <string name="morphe_hide_attributes_section_title">بەشی تایبەتمەندییەکان بشارەوە</string>
-  <string name="morphe_hide_attributes_section_summary">شاردنەوەی بەشەکانی شوێنە دیارەکان، یارییەکان، موزیک، و بەشەکانی کەسانی ئاماژەپێکراو</string>
-  <string name="morphe_hide_channel_links_section_title">شاردنەوەی بەشی لینکەکانی کەناڵ</string>
-  <string name="morphe_hide_chapters_section_title">بەشی بەشەکان بشارەوە</string>
-  <string name="morphe_hide_corrections_section_title">بەشی ڕاستکردنەکان بشارەوە</string>
-  <string name="morphe_hide_course_progress_section_title">بەشی \'پێشکەوتنی خول\' بشارەوە</string>
-  <string name="morphe_hide_explore_section_title">شاردنەوەی بەشی دۆزینەوە</string>
-  <string name="morphe_hide_explore_section_summary">بەشەکانی \"ئەم کۆرسە بدۆزەرەوە\" و \"پۆدکاستەکە بدۆزەرەوە\" دەشارێتەوە</string>
-  <string name="morphe_hide_explore_course_section_title">شاردنەوەی بەشی \'ئەم کۆرسە بدۆزەرەوە\'</string>
-  <string name="morphe_hide_explore_podcast_section_title">شاردنەوەی بەشی \'پۆدکاستەکە بدۆزەرەوە\'</string>
-  <string name="morphe_hide_featured_channels_section_title">شاردنەوەی بەشی کەناڵە دیارکراوەکان</string>
-  <string name="morphe_hide_featured_links_section_title">شاردنەوەی بەشی لینکە دیارکراوەکان</string>
-  <string name="morphe_hide_featured_playlists_section_title">شاردنەوەی بەشی لیستە دیاریکراوەکانی ڤیدیۆ</string>
-  <string name="morphe_hide_featured_videos_section_title">شاردنەوەی بەشی ڤیدیۆ دیارکراوەکان</string>
-  <string name="morphe_hide_hashtag_section_title">شاردنەوەی بەشی هاشتاگ</string>
-  <string name="morphe_hide_how_this_was_made_section_title">شاردنەوەی بەشی \'چۆنیەتی دروستکردنی ئەمە\'</string>
-  <string name="morphe_hide_hype_points_title">شاردنەوەی خاڵەکانی Hype</string>
-  <string name="morphe_hide_info_cards_section_title">شاردنەوەی بەشی کارتەکانی زانیاری</string>
-  <string name="morphe_hide_key_concepts_section_title">شاردنەوەی بەشی \'چەمکە سەرەکییەکان\'</string>
-  <string name="morphe_hide_quizzes_section_title">بەشی تاقیکردنەوەکان بشارە</string>
-  <string name="morphe_hide_search_inside_this_video_section_title">شاردنەوەی بەشی \'گەڕان لە ناو ئەم ڤیدیۆیەدا\'</string>
-  <string name="morphe_hide_subscribe_button_title">شاردنەوەی دوگمەی سەبسکرایب</string>
-  <string name="morphe_hide_transcript_section_title">بەشی دەقە نووسراوەکان بشارە</string>
-  <string name="morphe_hide_video_details_section_title">بەشی \'زانیارییەکانی ڤیدیۆ\' بشارە</string>
-  <string name="morphe_hide_filter_bar_screen_title">شریتی فلتەرەکان</string>
-  <string name="morphe_hide_filter_bar_screen_summary">دیاری بکە لەکوێ شریتی فلتەری سکرۆڵکەر نیشان نەدرێت</string>
-  <string name="morphe_hide_filter_bar_in_channel_page_title">شاردنەوە لە لاپەڕەی کەناڵ</string>
-  <string name="morphe_hide_filter_bar_in_comments_title">لە کۆمێنتەکاندا بشارەوە</string>
-  <string name="morphe_hide_filter_bar_in_feed_title">لە پێشکەشەکاندا بشارەوە</string>
-  <string name="morphe_hide_filter_bar_in_related_videos_title">شاردنەوە لە ڤیدیۆ پەیوەندیدارەکان</string>
-  <string name="morphe_hide_filter_bar_in_search_title">شاردنەوە لە ئەنجامەکانی گەڕان</string>
-  <string name="morphe_hide_filter_bar_in_history_title">شاردنەوە لە مێژووی بینین</string>
-  <string name="morphe_channel_screen_title">لاپەڕەی کەناڵ</string>
-  <string name="morphe_channel_screen_summary">دیاری بکە کام پێکهاتەکان لە لاپەڕەی کەناڵەکەدا دەردەکەون</string>
-  <string name="morphe_hide_channel_tab_title">فلتەری تابی کەناڵ چالاک بکە</string>
-  <string name="morphe_hide_channel_tab_filter_strings_title">فلتەری تابی کەناڵ</string>
-  <string name="morphe_hide_channel_tab_filter_strings_summary">ناوی تابەکانی کەناڵەکە بنووسە بۆ فلتەرکردن، بە دێڕی نوێ جیاکەرەوە</string>
-  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_community_button_title">شاردنەوەی دوگمەی کۆمەڵگە</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_join_button_title">شاردنەوەی دوگمەی بەشداریکردن</string>
-  <string name="morphe_hide_links_preview_title">شاردنەوەی پێشبینینی بەستەرەکان</string>
-  <string name="morphe_hide_links_preview_summary">لینکە وەب و کلیککراوەکانی سەرپەڕی کەناڵەکە دەشارێتەوە</string>
-  <string name="morphe_hide_members_only_chip_title">شاردنەوەی چیپی \'تەنها بۆ ئەندامان\'</string>
-  <string name="morphe_hide_members_only_chip_summary">چیپى \'تەنها بۆ ئەندامان\' لە شریتی فلتەری کەناڵەکەدا دەشارێتەوە</string>
-  <string name="morphe_hide_members_shelf_title">شاردنەوەی ڕەفەی ئەندامان</string>
-  <string name="morphe_hide_members_shelf_summary">لیستی ئەندامانی کەناڵەکە دەشارێتەوە</string>
-  <string name="morphe_hide_posts_shelf_title">ڕەفەی پۆستەکان بشارەوە</string>
-  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_store_button_title">شاردنەوەی دوگمەی فرۆشگا</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">شاردنەوەی دوگمەی سەبسکرایب</string>
-  <string name="morphe_explore_menu_screen_title">مێنیۆی گەڕان</string>
-  <string name="morphe_explore_menu_screen_summary">دیاری بکە کام پێکهاتە لە مێنیۆی گەڕان دەردەکەون</string>
-  <string name="morphe_hide_courses_menu_title">شاردنەوەی مێنیۆی خولەکان</string>
-  <string name="morphe_hide_explore_button_title">شاردنەوەی دوگمەی Explore</string>
-  <string name="morphe_hide_fashion_menu_title">شاردنەوەی مێنیۆی \'Fashion &amp; Beauty\'</string>
-  <string name="morphe_hide_gaming_menu_title">شاردنەوەی مێنیۆی یارییەکان</string>
-  <string name="morphe_hide_hype_menu_title">شاردنەوەی مێنیۆی Hype</string>
-  <string name="morphe_hide_learning_menu_title">شاردنەوەی مێنیۆی فێربوون</string>
-  <string name="morphe_hide_live_menu_title">شاردنەوەی مێنیۆی ڕاستەوخۆ</string>
-  <string name="morphe_hide_memberships_menu_title">شاردنەوەی مێنیۆی ئەندامێتییەکان</string>
-  <string name="morphe_hide_movies_menu_title">شاردنەوەی مێنیۆی \'Movies &amp; TV\'</string>
-  <string name="morphe_hide_music_menu_title">شاردنەوەی مێنیۆی Music</string>
-  <string name="morphe_hide_news_menu_title">شاردنەوەی مێنیۆی هەواڵەکان</string>
-  <string name="morphe_hide_playables_menu_title">شاردنەوەی مێنیۆی Playables</string>
-  <string name="morphe_hide_podcasts_menu_title">شاردنەوەی مێنیۆی پۆدکاستەکان</string>
-  <string name="morphe_hide_shopping_menu_title">شاردنەوەی مێنیۆی بازاڕکردن</string>
-  <string name="morphe_hide_sports_menu_title">شاردنەوەی مێنیۆی وەرزش</string>
-  <string name="morphe_hide_youtube_premium_menu_title">شاردنەوەی مێنیۆی YouTube Premium</string>
-  <string name="morphe_hide_youtube_studio_menu_title">شاردنەوەی مێنیۆی YouTube Studio</string>
-  <string name="morphe_hide_youtube_music_menu_title">شاردنەوەی مێنیۆی YouTube Music</string>
-  <string name="morphe_hide_youtube_kids_menu_title">شاردنەوەی مێنیۆی YouTube Kids</string>
-  <string name="morphe_hide_youtube_create_menu_title">شاردنەوەی مێنیۆی YouTube Create</string>
-  <string name="morphe_hide_youtube_works_menu_title">شاردنەوەی مێنیۆی \'چۆنیەتی کارکردنی YouTube\'</string>
-  <string name="morphe_hide_privacy_tos_footer_title">شاردنەوەی فووتەرە یاساییەکان و تایبەتمەندییەکان</string>
-  <string name="morphe_comments_screen_title">کۆمێنتەکان</string>
-  <string name="morphe_comments_screen_summary">دیاری بکە کام پێکهاتەکان لە بەشی کۆمێنتەکاندا دەردەکەون</string>
-  <string name="morphe_hide_comments_carousel_title">فلتەری کارۆسێلی سەرنجەکان چالاک بکە</string>
-  <string name="morphe_hide_comments_carousel_summary">"• وشەیەکی سەرەکی یان ناوی تەواو بنوسە (بۆ نموونە، Ask, Community, Hype, Listen)
-• شاردنەوەی هەموو بابەتەکان، بەشی کۆمێنتەکان بە تەواوی دەشارێتەوە"</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_title">فلتەری کارۆسێلی کۆمێنتەکان</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_summary">ناوەکانی کارۆسێڵی کۆمێنتەکان بنوسە بۆ فلتەرکردن، بە دێڕی نوێ جیاکراون</string>
-  <string name="morphe_hide_comments_ai_chat_summary_title">شاردنەوەی پوختەی چاتی AI</string>
-  <string name="morphe_hide_comments_channel_guidelines_title">شاردنەوەی ڕێنماییەکانی کەناڵ</string>
-  <string name="morphe_hide_comments_contexts_title">شاردنەوەی نامەکانی کۆنتێکست</string>
-  <string name="morphe_hide_comments_by_members_header_title">شاردنەوەی سەرنووسەی \'کۆمێنتەکان لەلایەن ئەندامانەوە\'</string>
-  <string name="morphe_hide_comments_section_title">شاردنەوەی بەشی کۆمێنتەکان</string>
-  <string name="morphe_hide_comments_section_in_home_feed_title">بەشی کۆمێنتەکان لە فییدی سەرەکی بشارە</string>
-  <string name="morphe_hide_comments_community_guidelines_title">شاردنەوەی ڕێنماییەکانی کۆمەڵگە</string>
-  <string name="morphe_hide_comments_create_a_short_button_title">شاردنەوەی دوگمەی \'دروستکردنی کورت\'</string>
-  <string name="morphe_hide_comments_dislike_button_title">شاردنەوەی دوگمەی Dislike</string>
-  <string name="morphe_hide_comments_emoji_button_title">شاردنەوەی دوگمەی ئیمۆجی</string>
-  <string name="morphe_hide_comments_filter_bar_options_title">شاردنەوەی بژاردەکانی شریتی فلتەر</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">هەموو بژاردەکانی شریتی فلتەر دەشارێتەوە جگە لە \'بەرزترین\' و \'نوێترین\'</string>
-  <string name="morphe_hide_comments_gif_button_title">شاردنەوەی دوگمەی GIF</string>
-  <string name="morphe_hide_comments_gifs_and_images_title">شاردنەوەی GIF و وێنەکان</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">GIF و وێنەکانی کە لە کۆمێنت و وەڵامەکاندا هاوپێچ کراون دەشارێتەوە</string>
-  <string name="morphe_hide_comments_gift_animation_and_cards_title">ئەنیمەیشن و کارتەکانی دیاری بشارەوە</string>
-  <string name="morphe_hide_comments_gift_button_title">دوگمەی دیاری بشارەوە</string>
-  <string name="morphe_hide_comments_info_button_title">دوگمەی شاردنەوەی زانیارییەکان</string>
-  <string name="morphe_hide_comments_live_chat_donators_bar_title">شاردنەوەی شریتی بەخشەرانی چاتی ڕاستەوخۆ</string>
-  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">دوگمەی سکرۆڵی بۆ خوارەوەی چاتی ڕاستەوخۆ بشارەوە</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_title">شاردنەوەی تێبینییەکانی چاتی ڕاستەوخۆ</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_summary">پۆپئەپەکانی تێبینی دەشارێتەوە کە لە نزیک شریتی داخڵکردنی چات دەردەکەون، وەک ئاگادارییەکەی چاتی تەنها بۆ بەشداربووان</string>
-  <string name="morphe_hide_comments_menu_button_title">شاردنەوەی دوگمەی مێنیۆ</string>
-  <string name="morphe_hide_comments_menu_button_summary">دوگمەی مێنیۆی ٣-خاڵی هەر کۆمێنتێک دەشارێتەوە</string>
-  <string name="morphe_hide_comments_preview_comment_title">شاردنەوەی پێشبینینی کۆمێنت</string>
-  <string name="morphe_hide_comments_preview_comment_summary">پێش کردنەوەی بەشی تەواوی کۆمێنتەکان، پێشبینینی کۆمێنت لە ژێر ڤیدیۆکە دەشارێتەوە</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">کۆمێنتەکە لەلایەن Morpheـەوە شاردراوەتەوە…</string>
-  <string name="morphe_minimal_comments_button_title">چالاککردنی دوگمەی کۆمێنتە کەمترینەکان</string>
-  <string name="morphe_minimal_comments_button_summary">کارتی لێخوڕ و هەڵبژاردەری لاپەڕەکەی دەشارێتەوە، کە لەسەر دوگمەی کۆمێنتەکان پیشان دەدرێت</string>
-  <string name="morphe_hide_comments_thanks_button_title">شاردنەوەی دوگمەی سوپاس</string>
-  <string name="morphe_hide_comments_timestamp_button_title">شاردنەوەی دوگمەی کاتنیشاندەر</string>
-  <string name="morphe_hide_comments_top_fans_button_title">شاردنەوەی دوگمەی \'فانە سەرەکییەکان\'</string>
-  <string name="morphe_hide_comments_translate_button_title">شاردنەوەی دوگمەی وەرگێڕان</string>
-  <string name="morphe_hide_comments_zero_state_title">نامەی \'هێشتا هیچ کۆمێنتێک نییە\' بشارەوە</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">پاککردنەوەی لینکەکانی گەڕانی دیاریکراو</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">لینکەکانی گەڕانی دیاریکراو پاک دەکاتەوە، تەنها دەقە ئەسڵییە سادەکە دەهێڵێتەوە</string>
-  <string name="morphe_hide_keyword_content_screen_title">فلتەری وشە کلیلییەکان</string>
-  <string name="morphe_hide_keyword_content_screen_summary">وشە یان دەستەواژەی دیاریکراو هەڵبژێرە بۆ شاردنەوەی ڤیدیۆکان لە فید و گەڕانەکاندا</string>
-  <string name="morphe_hide_keyword_content_comments_title">شاردنەوەی کۆمێنتەکان بەپێی وشەی سەرەکی</string>
-  <string name="morphe_hide_keyword_content_home_title">شاردنەوەی ڤیدیۆکانی سەرەکی بەپێی وشە کلیلییەکان</string>
-  <string name="morphe_hide_keyword_content_search_title">شاردنەوەی ئەنجامەکانی گەڕان بەپێی وشە کلیلییەکان</string>
-  <string name="morphe_hide_keyword_content_subscriptions_title">شاردنەوەی ڤیدیۆکانی بەشداربوون بەپێی وشە کلیلییەکان</string>
-  <string name="morphe_hide_keyword_content_phrases_title">دەستەواژەکان بۆ شاردنەوە</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"وشە سەرەکییەکان و دەستەواژەکانی بۆ شاردنەوە بنوسە، بە دابەشکردنیان بە دێڕی نوێ
-
-وشە سەرەکییەکان دەتوانن هەر دەقێک بن کە لە ناونیشانی ڤیدیۆکان یان ناوی کەناڵەکاندا دەردەکەوێت"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"سەرەتا / بەشدارکەرییەکان / گەڕان / کۆمێنتەکان فلتەر دەکرێن بۆ شاردنەوەی ئەو ناوەڕۆکانەی کە لەگەڵ دەستەواژە وشە سەرەکییەکان دەگونجێن
-
-سەنگەکان:
-• هەندێک لە Shorts ناتوانرێن بە ناوی کەناڵ بشاردرێنەوە
-• هەندێک لە پێکهاتەکانی UI ڕەنگە نەشاردرێنەوە"</string>
-  <string name="morphe_hide_keyword_content_about_whole_words_title">گونجاندنی وشە تەواوەکان</string>
-  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
-  <string name="morphe_hide_keyword_content_about_whole_words_summary">دانانی وشە یان دەستەواژەیەک لە نێوان نیشانەی هاوتایین (\"\") ڕێگری دەکات لە دۆزینەوەی بەشێکی ناو ناوی ڤیدیۆکان و ناوی کەناڵەکان&lt;br&gt;&lt;br&gt;بۆ نموونە،&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ڤیدیۆی : &lt;b&gt;How does AI work?&lt;/b&gt; دەشارێتەوە&lt;br&gt;بەڵام ئەمە ناشارێتەوە: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
-  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">دەستەواژە ڕاگەیاندنی ناکۆکی هەیە: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_length">دەستەواژە زۆر کورتە و پێویستی بە کۆتەیشن هەیە: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_broad">دەستەواژە هەموو ڤیدیۆکان دەشارێتەوە: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• سەرەتا: %1$s
-• بەشدارییەکان: %2$s
-• گەڕان: %3$s
-• کۆمێنتەکان: %4$s
-• کۆی گشتی: %5$s"</string>
-  <string name="morphe_hide_stats_category_title">ئامار</string>
-  <string name="morphe_hide_stats_hidden_24h_title">ڤیدیۆکانی شاراوە، ٢٤ کاتژمێری ڕابردوو</string>
-  <string name="morphe_hide_stats_hidden_all_title">ڤیدیۆکانی شاراوە، هەموو کات</string>
-  <string name="morphe_hide_stats_hidden_24h_reset_title">ژمێرەری ٢٤ کاتژمێری ڕابردوو سفر بکەیتەوە؟</string>
-  <string name="morphe_hide_stats_hidden_all_reset_title">ژمێرەری هەموو کات سفر بکەیتەوە؟</string>
   <string name="morphe_hide_aislist_screen_title">فلتەری کەناڵی AI</string>
   <string name="morphe_hide_aislist_screen_summary">شاردنەوەی ڤیدیۆکان لەو کەناڵانەی کە لەلایەن لیستی کۆمەڵگەی AiSList وەک ناوەڕۆکی بە AI دروستکراو نیشانەدراون</string>
   <string name="morphe_hide_aislist_blocklist_category_title">لیستی بلۆککردن: متمانەی بەرز</string>
@@ -392,6 +188,345 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_failed_rate_limit">ڕاپۆرتی زۆر نێردراوە، دواتر هەوڵ بدەرەوە</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList ڕاپۆرتەکەی ڕەتکردەوە</string>
   <string name="morphe_aislist_submit_failed">ڕاپۆرتکردنەکە سەرکەوتوو نەبوو، تکایە پەیوەندیی ئینتەرنێتەکەت بپشکنە</string>
+  <string name="morphe_channel_screen_title">لاپەڕەی کەناڵ</string>
+  <string name="morphe_channel_screen_summary">دیاری بکە کام پێکهاتەکان لە لاپەڕەی کەناڵەکەدا دەردەکەون</string>
+  <string name="morphe_hide_channel_tab_title">فلتەری تابی کەناڵ چالاک بکە</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">فلتەری تابی کەناڵ</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">ناوی تابەکانی کەناڵەکە بنووسە بۆ فلتەرکردن، بە دێڕی نوێ جیاکەرەوە</string>
+  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">شاردنەوەی دوگمەی کۆمەڵگە</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">شاردنەوەی دوگمەی بەشداریکردن</string>
+  <string name="morphe_hide_links_preview_title">شاردنەوەی پێشبینینی بەستەرەکان</string>
+  <string name="morphe_hide_links_preview_summary">لینکە وەب و کلیککراوەکانی سەرپەڕی کەناڵەکە دەشارێتەوە</string>
+  <string name="morphe_hide_members_only_chip_title">شاردنەوەی چیپی \'تەنها بۆ ئەندامان\'</string>
+  <string name="morphe_hide_members_only_chip_summary">چیپى \'تەنها بۆ ئەندامان\' لە شریتی فلتەری کەناڵەکەدا دەشارێتەوە</string>
+  <string name="morphe_hide_members_shelf_title">شاردنەوەی ڕەفەی ئەندامان</string>
+  <string name="morphe_hide_members_shelf_summary">لیستی ئەندامانی کەناڵەکە دەشارێتەوە</string>
+  <string name="morphe_hide_posts_shelf_title">ڕەفەی پۆستەکان بشارەوە</string>
+  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">شاردنەوەی دوگمەی فرۆشگا</string>
+  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">شاردنەوەی دوگمەی سەبسکرایب</string>
+  <string name="morphe_explore_menu_screen_title">مێنیۆی گەڕان</string>
+  <string name="morphe_explore_menu_screen_summary">دیاری بکە کام پێکهاتە لە مێنیۆی گەڕان دەردەکەون</string>
+  <string name="morphe_hide_courses_menu_title">شاردنەوەی مێنیۆی خولەکان</string>
+  <string name="morphe_hide_explore_button_title">شاردنەوەی دوگمەی Explore</string>
+  <string name="morphe_hide_fashion_menu_title">شاردنەوەی مێنیۆی \'Fashion &amp; Beauty\'</string>
+  <string name="morphe_hide_gaming_menu_title">شاردنەوەی مێنیۆی یارییەکان</string>
+  <string name="morphe_hide_hype_menu_title">شاردنەوەی مێنیۆی Hype</string>
+  <string name="morphe_hide_learning_menu_title">شاردنەوەی مێنیۆی فێربوون</string>
+  <string name="morphe_hide_live_menu_title">شاردنەوەی مێنیۆی ڕاستەوخۆ</string>
+  <string name="morphe_hide_memberships_menu_title">شاردنەوەی مێنیۆی ئەندامێتییەکان</string>
+  <string name="morphe_hide_movies_menu_title">شاردنەوەی مێنیۆی \'Movies &amp; TV\'</string>
+  <string name="morphe_hide_music_menu_title">شاردنەوەی مێنیۆی Music</string>
+  <string name="morphe_hide_news_menu_title">شاردنەوەی مێنیۆی هەواڵەکان</string>
+  <string name="morphe_hide_playables_menu_title">شاردنەوەی مێنیۆی Playables</string>
+  <string name="morphe_hide_podcasts_menu_title">شاردنەوەی مێنیۆی پۆدکاستەکان</string>
+  <string name="morphe_hide_shopping_menu_title">شاردنەوەی مێنیۆی بازاڕکردن</string>
+  <string name="morphe_hide_sports_menu_title">شاردنەوەی مێنیۆی وەرزش</string>
+  <string name="morphe_hide_youtube_premium_menu_title">شاردنەوەی مێنیۆی YouTube Premium</string>
+  <string name="morphe_hide_youtube_studio_menu_title">شاردنەوەی مێنیۆی YouTube Studio</string>
+  <string name="morphe_hide_youtube_music_menu_title">شاردنەوەی مێنیۆی YouTube Music</string>
+  <string name="morphe_hide_youtube_kids_menu_title">شاردنەوەی مێنیۆی YouTube Kids</string>
+  <string name="morphe_hide_youtube_create_menu_title">شاردنەوەی مێنیۆی YouTube Create</string>
+  <string name="morphe_hide_youtube_works_menu_title">شاردنەوەی مێنیۆی \'چۆنیەتی کارکردنی YouTube\'</string>
+  <string name="morphe_hide_privacy_tos_footer_title">شاردنەوەی فووتەرە یاساییەکان و تایبەتمەندییەکان</string>
+  <string name="morphe_hide_filter_bar_screen_title">شریتی فلتەرەکان</string>
+  <string name="morphe_hide_filter_bar_screen_summary">دیاری بکە لەکوێ شریتی فلتەری سکرۆڵکەر نیشان نەدرێت</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">شاردنەوە لە لاپەڕەی کەناڵ</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">لە کۆمێنتەکاندا بشارەوە</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">لە پێشکەشەکاندا بشارەوە</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">شاردنەوە لە ڤیدیۆ پەیوەندیدارەکان</string>
+  <string name="morphe_hide_filter_bar_in_search_title">شاردنەوە لە ئەنجامەکانی گەڕان</string>
+  <string name="morphe_hide_filter_bar_in_history_title">شاردنەوە لە مێژووی بینین</string>
+  <string name="morphe_hide_keyword_content_screen_title">فلتەری وشە کلیلییەکان</string>
+  <string name="morphe_hide_keyword_content_screen_summary">وشە یان دەستەواژەی دیاریکراو هەڵبژێرە بۆ شاردنەوەی ڤیدیۆکان لە فید و گەڕانەکاندا</string>
+  <string name="morphe_hide_keyword_content_comments_title">شاردنەوەی کۆمێنتەکان بەپێی وشەی سەرەکی</string>
+  <string name="morphe_hide_keyword_content_home_title">شاردنەوەی ڤیدیۆکانی سەرەکی بەپێی وشە کلیلییەکان</string>
+  <string name="morphe_hide_keyword_content_search_title">شاردنەوەی ئەنجامەکانی گەڕان بەپێی وشە کلیلییەکان</string>
+  <string name="morphe_hide_keyword_content_subscriptions_title">شاردنەوەی ڤیدیۆکانی بەشداربوون بەپێی وشە کلیلییەکان</string>
+  <string name="morphe_hide_keyword_content_phrases_title">دەستەواژەکان بۆ شاردنەوە</string>
+  <string name="morphe_hide_keyword_content_phrases_summary">"وشە سەرەکی و دەستەواژەکانی بۆ شاردنەوە بنووسە، بە دێڕی نوێ جیاکەرەوە
+
+وشە سەرەکییەکان دەتوانن هەر دەقێک بن کە لە ناونیشانی ڤیدیۆکاندا دەردەکەوێت. وشەی سەرەکی @UserName هەموو ناوەڕۆکەکانی دروستکەرێکی دیاریکراو دەشارێتەوە"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"سەرەتا / بەشدارکەرییەکان / گەڕان / کۆمێنتەکان فلتەر دەکرێن بۆ شاردنەوەی ئەو ناوەڕۆکانەی کە لەگەڵ دەستەواژە وشە سەرەکییەکان دەگونجێن
+
+سەنگەکان:
+• هەندێک لە Shorts ناتوانرێن بە ناوی کەناڵ بشاردرێنەوە
+• هەندێک لە پێکهاتەکانی UI ڕەنگە نەشاردرێنەوە"</string>
+  <string name="morphe_hide_keyword_content_about_whole_words_title">گونجاندنی وشە تەواوەکان</string>
+  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <string name="morphe_hide_keyword_content_about_whole_words_summary">دانانی وشە یان دەستەواژەیەک لە نێوان نیشانەی هاوتایین (\"\") ڕێگری دەکات لە دۆزینەوەی بەشێکی ناو ناوی ڤیدیۆکان و ناوی کەناڵەکان&lt;br&gt;&lt;br&gt;بۆ نموونە،&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ڤیدیۆی : &lt;b&gt;How does AI work?&lt;/b&gt; دەشارێتەوە&lt;br&gt;بەڵام ئەمە ناشارێتەوە: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_toast_invalid_length">دەستەواژە زۆر کورتە و پێویستی بە کۆتەیشن هەیە: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_broad">دەستەواژە هەموو ڤیدیۆکان دەشارێتەوە: %s</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• سەرەتا: %1$s
+• بەشدارییەکان: %2$s
+• گەڕان: %3$s
+• کۆمێنتەکان: %4$s
+• کۆی گشتی: %5$s"</string>
+  <string name="morphe_hide_stats_category_title">ئامار</string>
+  <string name="morphe_hide_stats_hidden_24h_title">ڤیدیۆکانی شاراوە، ٢٤ کاتژمێری ڕابردوو</string>
+  <string name="morphe_hide_stats_hidden_all_title">ڤیدیۆکانی شاراوە، هەموو کات</string>
+  <string name="morphe_hide_stats_hidden_24h_reset_title">ژمێرەری ٢٤ کاتژمێری ڕابردوو سفر بکەیتەوە؟</string>
+  <string name="morphe_hide_stats_hidden_all_reset_title">ژمێرەری هەموو کات سفر بکەیتەوە؟</string>
+  <string name="morphe_post_buttons_screen_title">دوگمەکانی پۆست</string>
+  <string name="morphe_post_buttons_screen_summary">شێوازی ڕیزبەندی دوگمەکانی خوارەوەی پۆستەکانی کۆمەڵگە هەڵبژێرە و دیاری بکە کام دوگمە بشاردرێن</string>
+  <string name="morphe_post_buttons_layout_title">ڕێکخستنی دوگمەکانی پۆست</string>
+  <string name="morphe_post_buttons_layout_entry_1">سێرڤەر</string>
+  <string name="morphe_post_buttons_layout_entry_2">سەپاندراو</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">شاردنەوەی دوگمەکانی بەدڵخواز و نابەدڵخواز</string>
+  <string name="morphe_hide_post_dislike_button_title">شاردنەوەی دوگمەی Dislike</string>
+  <string name="morphe_hide_post_dislike_button_summary">لەگەڵ ڕێکخستنی سەپاندراو، شوێنی دوگمەکە بەتاڵ دەمێنێتەوە</string>
+  <string name="morphe_hide_post_comment_button_title">شاردنەوەی دوگمەی کۆمێنتەکان</string>
+  <string name="morphe_hide_post_comments_preview_title">شاردنەوەی پێشوەکشانەی کۆمێنتەکان</string>
+  <string name="morphe_hide_post_comments_preview_summary">پێشوەکشانەی کۆمێنتەکانی خوارەوەی پۆستەکان دەشارێتەوە</string>
+  <string name="morphe_hide_post_share_button_title">شاردنەوەی دوگمەی Share</string>
+  <string name="morphe_hide_post_share_button_summary">دوگمەی دابەزاندنی وێنەکانی پۆستەکە لە تەنیشت دوگمەی بەشکردن داندراوە، بۆیە ئەویشی دەشارێتەوە</string>
+  <string name="morphe_hide_ask_gemini_button_title">شاردنەوەی دوگمەی \'Ask Gemini\'</string>
+  <string name="morphe_hide_ask_gemini_button_summary">دوگمەی \'Ask Gemini\' دەشارێتەوە لە خوارەوەی پانێڵی \'Ask about this video\'</string>
+  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <string name="morphe_hide_autoplay_preview_title">شاردنەوەی پێشبینینی لێدانی خۆکار</string>
+  <string name="morphe_hide_autoplay_preview_summary">پێش دەستپێکردنی لێدانی خۆکار، پێشوەگەرێی ڤیدیۆکەی داهاتوو لە شاشەی تەواودا دەشارێتەوە</string>
+  <string name="morphe_hide_channel_bar_title">شاردنەوەی بارەکەی کەناڵ</string>
+  <string name="morphe_hide_channel_watermark_title">شاردنەوەی واترمارکی کەناڵ</string>
+  <string name="morphe_hide_chapters_button_title">شاردنەوەی دوگمەی بەشەکان</string>
+  <string name="morphe_hide_crowdfunding_box_title">شاردنەوەی بۆکسی کرۆدفاندینگ</string>
+  <string name="morphe_hide_emergency_box_title">شاردنەوەی بۆکسەکانی فریاکەوتن</string>
+  <string name="morphe_hide_in_this_video_button_title">شاردنەوەی دوگمەی \'لەم ڤیدیۆیەدا\'</string>
+  <string name="morphe_hide_info_panels_title">شاردنەوەی پانێڵەکانی زانیاری</string>
+  <string name="morphe_hide_info_panels_summary">پانێڵەکانی زانیاری دەشاردەوە، وەک زانیارییە پزیشکییەکان</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the video player for certain videos. -->
+  <string name="morphe_hide_join_membership_button_title">شاردنەوەی دوگمەی بەئەندام بوون</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">شاردنەوەی دوگمەی \'دووبارەکردنەوەی چاتی ڕاستەوخۆ\'</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">دوگمەی دووبارە لایڤ چاتەکە دەشاردەوە لە شێوەی شاشەی تەواو</string>
+  <string name="morphe_hide_medical_panels_title">شاردنەوەی پانێڵەکانی پزیشکی</string>
+  <string name="morphe_hide_player_gesture_hints_title">شاردنەوەی ئاماژەکانی جوڵەی پلەیەر</string>
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">ئاماژەکان دەشارێتەوە کە لە کاتی جوڵەی پلەیەردا پیشان دەدرێن، وەک \'ڕاکێشان بۆ سەرەوە بۆ گەڕانی وردتر\'، \'بەردەبە بۆ هەڵوەشاندنەوە\' و \'2x\'</string>
+  <string name="morphe_hide_subscribers_community_guidelines_title">شاردنەوەی ڕێنماییەکانی ئەندامان</string>
+  <string name="morphe_hide_sync_button_title">شاردنەوەی دوگمەی \'هماهەنگکردن لەگەڵ ڤیدیۆ\'</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">شاردنەوەی گرادیێنتی دەستلێدان و ڕاگرتن</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">گرادیێنتی کۆنتڕۆڵەکانی پلەیەر دەشارێتەوە کاتێک پەنجەت دەجوڵێنیت لە کاتی ڕاگرتندا بۆ خێراکردن</string>
+  <string name="morphe_hide_timed_reactions_title">شاردنەوەی کاردانەوە کاتدارەکان</string>
+  <string name="morphe_hide_timed_reactions_summary">ئەو تایبەتمەندییە دەشارێتەوە کە ڕێگە بە بەکارهێنەران دەدات بە ئیمۆجی کاردانەوە نیشان بدەن لە بەشی کۆمێنت و چاتی ڕاستەوخۆدا</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">شاردنەوەی مینیۆی \'یارمەتی &amp; فیدباک\'</string>
+  <string name="morphe_hide_help_feedback_menu_summary">مینیۆی \'یارمەتی &amp; فیدباک\' دەشارێتەوە کاتێک دوگمەی سێ خاڵەکە بەکاردێت، وەک لە ئەنجامەکانی گەڕاندا</string>
+  <string name="morphe_hide_handle_title">شاردنەوەی هاندڵ</string>
+  <string name="morphe_hide_handle_summary">هاندڵی کەناڵەکەت لە بەشی \'تۆ\' دەشارێتەوە</string>
+  <string name="morphe_hide_video_title_title">شاردنەوەی ناونیشانی ڤیدیۆ</string>
+  <string name="morphe_hide_video_title_summary">ناونیشانی ڤیدیۆکە دەشارێتەوە لە شێوازی شاشەی تەواودا</string>
+  <string name="morphe_sanitize_video_subtitle_title">پاککردنەوەی ژێرنووسی ڤیدیۆ</string>
+  <string name="morphe_sanitize_video_subtitle_summary">پاککردنەوەی دەستەواژەکانی وەک \'#\'، \'Fundraiser\'، \'product(s)\' و \'Shop\' لە ژێرنووسی ڤیدیۆ</string>
+  <!-- layout.buttons.action.hideButtonsPatch -->
+  <string name="morphe_action_buttons_screen_title">دووگمەکانی کردار</string>
+  <string name="morphe_action_buttons_screen_summary">دیاری بکە کام دوگمەی کردار لە شێوەی ستاندارد و شاشەی تەواودا دەردەکەون</string>
+  <string name="morphe_portrait_buttons">دووگمەکانی ستایلی ستوونی</string>
+  <string name="morphe_disable_like_subscribe_glow_title">ناچالاککردنی درەوشانەوەی Like و Subscribe</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">ڕێگری دەکات لە درەوشانەوەی دوگمەکانی لایک و سەبسکرایب کاتێک دروستکەرەکە ئاماژەیان پێ دەکات</string>
+  <string name="morphe_hide_action_bar_title">شاردنەوەی باری کردار</string>
+  <string name="morphe_hide_like_dislike_button_title">دوگمەی لایک و دیسلایک بشارەوە</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_share_button_title">شاردنەوەی دوگمەی Share</string>
+  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_stop_ads_button_title">دوگمەی \'ڕاگرتنی ڕیکلامەکان\' بشارەوە</string>
+  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <string name="morphe_hide_comments_button_title">شاردنەوەی دوگمەی کۆمێنتەکان</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">شاردنەوەی دوگمەی بەستنەوە</string>
+  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on live stream videos. -->
+  <string name="morphe_hide_report_button_title">دوگمەی ڕاپۆرتکردن بشارەوە</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_remix_button_title">دوگمەی ریمیکس بشارەوە</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_download_button_title">دوگمەی داگرتن بشارەوە</string>
+  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on videos uploaded by the logged-in user. -->
+  <string name="morphe_hide_hype_button_title">دوگمەی Hype بشارەوە</string>
+  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_promote_button_title">دوگمەی Promote بشارەوە</string>
+  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_thanks_button_title">دوگمەی سوپاس بشارەوە</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <string name="morphe_hide_ask_button_title">شاردنەوەی دوگمەی Ask</string>
+  <string name="morphe_hide_channel_profile_button_title">شاردنەوەی کەناڵ و دوگمەی سەبسکرایب</string>
+  <string name="morphe_hide_channel_profile_button_summary">ئەڤاتاری کەناڵ و دوگمەی سەبسکرایب لە سەرەتای شریتی کرداری دەشارێتەوە</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">شاردنەوەی دوگمەی سەبسکرایب</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">دوگمەکانی Subscribe و Join دەشارێتەوە لە تەنیشت وێنەی پرۆفایلی کەناڵەکە لە سەرەتای باری کرداردا</string>
+  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_clip_button_title">دوگمەی Clip بشارەوە</string>
+  <string name="morphe_hide_clip_button_summary">ئەمە ڕەنگە بۆ هەندێک هەژماری بەکارهێنەر کارنەکات</string>
+  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shop_button_title">دوگمەی فرۆشگا بشارەوە</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_save_button_title">شاردنەوەی دوگمەی Save</string>
+  <string name="morphe_hide_more_button_title">شاردنەوەی دوگمەی زیاتر</string>
+  <string name="morphe_fullscreen_buttons">دووگمەکانی شاشەی تەواو</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">دوگمەی Dislike بشارەوە</string>
+  <string name="morphe_hide_quick_actions_like_button_title">دوگمەی Like بشارەوە</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">شاردنەوەی دوگمەی \'چاتە زیندییەکە\'</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">شاردنەوەی دوگمەی تێکەڵکردن</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">شاردنەوەی دوگمەی \'ڤیدیۆی زیاتر\'</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">شاردنەوەی دوگمەی لیستی ڤیدیۆکان</string>
+  <string name="morphe_quick_actions_top_margin_title">مارجینی سەرەوەی کردارە خێراکان</string>
+  <string name="morphe_quick_actions_top_margin_summary">مارجینی سەرەوەی شریتی کردەوە خێراکان دیاری بکە (0-32 dp)</string>
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">شێوازی Ambient</string>
+  <string name="morphe_ambient_mode_screen_summary">بەڕێوەبردنی بینراوی شێوازی Ambient و سنووردارکردنی وزە</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">تێپەڕاندنی سنووردارکردنەکانی شێوازی Ambient</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary">ڕێگە دەدات شێوازی Ambient چالاک بمێنێت لە کاتی شێوازی پاشکەوتکردنی باتریدا</string>
+  <string name="morphe_disable_ambient_mode_title">بەکارنەهێنانی شێوازی Ambient</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_title">بێکارکردنی شێوازی Ambient لە شاشەی تەواو</string>
+  <string name="morphe_enhanced_ambient_mode_title">مۆدی Ambient-ی باشترکراو</string>
+  <string name="morphe_enhanced_ambient_mode_summary">تەواوی لاپەڕەی بینین و شریتە ڕەشەکان بە ڕەنگی ڤیدیۆکەوە ڕوون دەکاتەوە، لە جیاتی مۆدی Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">هێزی ڕووناکی</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">هێزی ڕووناکییەکە لە لاپەڕەی سەعات و شریتە ڕەشەکاندا چەندە</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">ساوکردنی ڕووناکی</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">ماوەی ئەو کاتەی ڕووناکییەکە پێی دەوێت بۆ ئەوەی شوێن ڤیدیۆکە بگڕێت. بە 0، بە وردی شوێن ڤیدیۆکە دەگرێت</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">لێڵکردنی ڕووناکی</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">بڕی لێڵبوونی ڕووناکی لە تەنیشت ڤیدیۆکە. بە 0، شێوەکانی ڤیدیۆکە دەپارێزێت</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">تێکستی readable بهێڵەوە</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">ڕووناکیی ڤیدیۆکانی گەش کەمدەکاتەوە بۆ ئەوەی تێکستەکانی لاپەڕەکە بە ڕوونی بخوێندرێن</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">تاریکی لە کاتی سکرۆڵکردن</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">ڕووناکییەکە تاریك دەکات لە کاتێکدا لاپەڕەکە سکرۆڵ دەکرێت یان دەست لێ دەدرێت</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">ماوەی تاریکی</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">ئەو مایەی کە ڕووناکییەکە تاریك دەمێنێتەوە دوای ئەوەی سکرۆڵکردن دەوەستێت. بە 0 تەنها سکرۆڵکردن ڕووناکییەکە تاریك دەکات، و هەر کە سکرۆڵکردن دەوەستێت دەگەڕێتەوە</string>
+  <string name="morphe_comments_screen_title">کۆمێنتەکان</string>
+  <string name="morphe_comments_screen_summary">دیاری بکە کام پێکهاتەکان لە بەشی کۆمێنتەکاندا دەردەکەون</string>
+  <string name="morphe_hide_comments_carousel_title">فلتەری کارۆسێلی سەرنجەکان چالاک بکە</string>
+  <string name="morphe_hide_comments_carousel_summary">"• وشەیەکی سەرەکی یان ناوی تەواو بنوسە (بۆ نموونە، Ask, Community, Hype, Listen)
+• شاردنەوەی هەموو بابەتەکان، بەشی کۆمێنتەکان بە تەواوی دەشارێتەوە"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">فلتەری کارۆسێلی کۆمێنتەکان</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">ناوەکانی کارۆسێڵی کۆمێنتەکان بنوسە بۆ فلتەرکردن، بە دێڕی نوێ جیاکراون</string>
+  <string name="morphe_hide_comments_ai_chat_summary_title">شاردنەوەی پوختەی چاتی AI</string>
+  <string name="morphe_hide_comments_channel_guidelines_title">شاردنەوەی ڕێنماییەکانی کەناڵ</string>
+  <string name="morphe_hide_comments_contexts_title">شاردنەوەی نامەکانی کۆنتێکست</string>
+  <string name="morphe_hide_comments_by_members_header_title">شاردنەوەی سەرنووسەی \'کۆمێنتەکان لەلایەن ئەندامانەوە\'</string>
+  <string name="morphe_hide_comments_section_title">شاردنەوەی بەشی کۆمێنتەکان</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">بەشی کۆمێنتەکان لە فییدی سەرەکی بشارە</string>
+  <string name="morphe_hide_comments_community_guidelines_title">شاردنەوەی ڕێنماییەکانی کۆمەڵگە</string>
+  <string name="morphe_hide_comments_create_a_short_button_title">شاردنەوەی دوگمەی \'دروستکردنی کورت\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">شاردنەوەی دوگمەی Dislike</string>
+  <string name="morphe_hide_comments_emoji_button_title">شاردنەوەی دوگمەی ئیمۆجی</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">شاردنەوەی بژاردەکانی شریتی فلتەر</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">هەموو بژاردەکانی شریتی فلتەر دەشارێتەوە جگە لە \'بەرزترین\' و \'نوێترین\'</string>
+  <string name="morphe_hide_comments_gif_button_title">شاردنەوەی دوگمەی GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">شاردنەوەی GIF و وێنەکان</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">GIF و وێنەکانی کە لە کۆمێنت و وەڵامەکاندا هاوپێچ کراون دەشارێتەوە</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">ئەنیمەیشن و کارتەکانی دیاری بشارەوە</string>
+  <string name="morphe_hide_comments_gift_button_title">دوگمەی دیاری بشارەوە</string>
+  <string name="morphe_hide_comments_info_button_title">دوگمەی شاردنەوەی زانیارییەکان</string>
+  <string name="morphe_hide_comments_live_chat_donators_bar_title">شاردنەوەی شریتی بەخشەرانی چاتی ڕاستەوخۆ</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">دوگمەی سکرۆڵی بۆ خوارەوەی چاتی ڕاستەوخۆ بشارەوە</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">شاردنەوەی تێبینییەکانی چاتی ڕاستەوخۆ</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">پۆپئەپەکانی تێبینی دەشارێتەوە کە لە نزیک شریتی داخڵکردنی چات دەردەکەون، وەک ئاگادارییەکەی چاتی تەنها بۆ بەشداربووان</string>
+  <string name="morphe_hide_comments_menu_button_title">شاردنەوەی دوگمەی مێنیۆ</string>
+  <string name="morphe_hide_comments_menu_button_summary">دوگمەی مێنیۆی ٣-خاڵی هەر کۆمێنتێک دەشارێتەوە</string>
+  <string name="morphe_hide_comments_preview_comment_title">شاردنەوەی پێشبینینی کۆمێنت</string>
+  <string name="morphe_hide_comments_preview_comment_summary">پێش کردنەوەی بەشی تەواوی کۆمێنتەکان، پێشبینینی کۆمێنت لە ژێر ڤیدیۆکە دەشارێتەوە</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">کۆمێنتەکە لەلایەن Morpheـەوە شاردراوەتەوە…</string>
+  <string name="morphe_minimal_comments_button_title">چالاککردنی دوگمەی کۆمێنتە کەمترینەکان</string>
+  <string name="morphe_minimal_comments_button_summary">کارتی لێخوڕ و هەڵبژاردەری لاپەڕەکەی دەشارێتەوە، کە لەسەر دوگمەی کۆمێنتەکان پیشان دەدرێت</string>
+  <string name="morphe_hide_comments_thanks_button_title">شاردنەوەی دوگمەی سوپاس</string>
+  <string name="morphe_hide_comments_timestamp_button_title">شاردنەوەی دوگمەی کاتنیشاندەر</string>
+  <string name="morphe_hide_comments_top_fans_button_title">شاردنەوەی دوگمەی \'فانە سەرەکییەکان\'</string>
+  <string name="morphe_hide_comments_translate_button_title">شاردنەوەی دوگمەی وەرگێڕان</string>
+  <string name="morphe_hide_comments_zero_state_title">نامەی \'هێشتا هیچ کۆمێنتێک نییە\' بشارەوە</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">پاککردنەوەی لینکەکانی گەڕانی دیاریکراو</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">لینکەکانی گەڕانی دیاریکراو پاک دەکاتەوە، تەنها دەقە ئەسڵییە سادەکە دەهێڵێتەوە</string>
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
+  <string name="morphe_hide_player_flyout_title">مەنیوی فلاین ئاوت</string>
+  <string name="morphe_hide_player_flyout_summary">دیاری بکە کام پێکهاتەکان لە مینیۆی flyout دەردەکەون</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">شاردنەوەی مێنیوی \'ڕێکخستنە زیادەکانی\' / زیاتر</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">شاردنەوەی مێنیۆی \'مۆدی دەوروبەر\'</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"مێنیۆی 'Audio Track' شاردراوەتەوە
+
+بۆ پیشاندانی مێنیۆی 'Audio Track'، 'Spoof video streams' بگۆڕە بۆ هەر کلاینتێک جگە لە 'Android Studio' و 'Android VR Downgraded'"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">مینیۆی \'ڕێگەی دەنگ\' بشارەوە</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">شاردنەوەی خستەی خوارەوەی مێنیوی \'Audio Track\'</string>
+  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_captions_title">شاردنەوەی مێنیوی ژێرنووسەکان</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">شاردنەوەی خستەی خوارەوەی مێنیوی ژێرنووسەکان</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">شاردنەوەی سەری مێنیوی ژێرنووسەکان</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_help_title">شاردنەوەی مێنیوی \'یارمەتی &amp; ڕاوبۆچوون\'</string>
+  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">شاردنەوەی مێنیوی \'گوێ بگرە بە YouTube Music\'</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">شاردنەوەی مێنیوی \'قوفڵکردنی شاشە\'</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">شاردنەوەی مێنیۆی \'دووبارەکردنەوەی ڤیدیۆ\'</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">شاردنەوەی مێنیۆی \'لە ڕێگادا\'</string>
+  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_quality_title">شاردنەوەی مێنیوی کوالێتی</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">شاردنەوەی خوارەوەی مێنیوی کوالێتی</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">شاردنەوەی سەرەوەی مێنیوی کوالێتی</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">شاردنەوەی مێنیۆی \'تایمەری خەوتن\'</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">شاردنەوەی مێنیوی \'خێرایی لێدان\'</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">شاردنەوەی مێنیوی \'دەنگی جێگیر\'</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">شاردنەوەی مێنیوی \'بینین لە VR\'</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_overlay_buttons_screen_title">دوگمەکانی پۆشین</string>
+  <string name="morphe_overlay_buttons_screen_summary">دیاری بکە کام دوگمەکان لەسەر دیسپڵەی ڤیدیۆکە دەربکەون</string>
+  <string name="morphe_hide_autoplay_button_title">دوگمەی خۆکار-لێدانی بشارەوە</string>
+  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_captions_button_title">دوگمەی ژێرنووسەکان بشارەوە</string>
+  <string name="morphe_hide_cast_button_title">دوگمەی پەخشکردن بشارەوە</string>
+  <string name="morphe_hide_cast_button_summary">دوگمەی Cast لە پلەیەری ڤیدیۆ و شریتی ئامرازدا دەشارێتەوە</string>
+  <string name="morphe_hide_collapse_button_title">دوگمەی کۆکردنەوە بشارەوە</string>
+  <string name="morphe_hide_fullscreen_button_title">دوگمەی شاشەی تەواو بشارەوە</string>
+  <string name="morphe_hide_player_control_buttons_background_title">شاردنەوەی کۆنتڕۆڵەکانی پاشخانی پەخش</string>
+  <string name="morphe_hide_player_control_buttons_background_summary">سێبەری تاریکی دەوروبەری کۆنترۆڵەکانی پلەیەرى ڤیدیۆکە دەشارێتەوە</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">ڕوونی پشتی دوگمەکانی کۆنترۆڵ</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">ڕێکخستنی ڕوونی پاشبنەماکەی پشت دوگمەکانی کۆنترۆڵی پلەیەر و شریتی کات (٠ نادیارە، ١٠٠ ڕەنگێکی تۆخە)</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">شاردنەوەی دوگمەکانی پێشوو &amp; داهاتوو</string>
+  <string name="morphe_hide_settings_button_title">شاردنەوەی دوگمەی ڕێکخستنەکان</string>
+  <string name="morphe_hide_description_components_screen_title">وەسفی ڤیدیۆ</string>
+  <string name="morphe_hide_description_components_screen_summary">دیاری بکە کام پێکهاتەکان لە وەسفی ڤیدیۆکەدا دەردەکەون</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_title">شاردنەوەی بەشی \'کورتەی ڤیدیۆی دروستکراوی AI\'</string>
+  <string name="morphe_hide_ask_section_title">شاردنەوەی بەشی Ask</string>
+  <string name="morphe_hide_attributes_section_title">بەشی تایبەتمەندییەکان بشارەوە</string>
+  <string name="morphe_hide_attributes_section_summary">شاردنەوەی بەشەکانی شوێنە دیارەکان، یارییەکان، موزیک، و بەشەکانی کەسانی ئاماژەپێکراو</string>
+  <string name="morphe_hide_channel_links_section_title">شاردنەوەی بەشی لینکەکانی کەناڵ</string>
+  <string name="morphe_hide_chapters_section_title">بەشی بەشەکان بشارەوە</string>
+  <string name="morphe_hide_corrections_section_title">بەشی ڕاستکردنەکان بشارەوە</string>
+  <string name="morphe_hide_course_progress_section_title">بەشی \'پێشکەوتنی خول\' بشارەوە</string>
+  <string name="morphe_hide_explore_section_title">شاردنەوەی بەشی دۆزینەوە</string>
+  <string name="morphe_hide_explore_section_summary">بەشەکانی \"ئەم کۆرسە بدۆزەرەوە\" و \"پۆدکاستەکە بدۆزەرەوە\" دەشارێتەوە</string>
+  <string name="morphe_hide_explore_course_section_title">شاردنەوەی بەشی \'ئەم کۆرسە بدۆزەرەوە\'</string>
+  <string name="morphe_hide_explore_podcast_section_title">شاردنەوەی بەشی \'پۆدکاستەکە بدۆزەرەوە\'</string>
+  <string name="morphe_hide_featured_channels_section_title">شاردنەوەی بەشی کەناڵە دیارکراوەکان</string>
+  <string name="morphe_hide_featured_links_section_title">شاردنەوەی بەشی لینکە دیارکراوەکان</string>
+  <string name="morphe_hide_featured_playlists_section_title">شاردنەوەی بەشی لیستە دیاریکراوەکانی ڤیدیۆ</string>
+  <string name="morphe_hide_featured_videos_section_title">شاردنەوەی بەشی ڤیدیۆ دیارکراوەکان</string>
+  <string name="morphe_hide_hashtag_section_title">شاردنەوەی بەشی هاشتاگ</string>
+  <string name="morphe_hide_how_this_was_made_section_title">شاردنەوەی بەشی \'چۆنیەتی دروستکردنی ئەمە\'</string>
+  <string name="morphe_hide_hype_points_title">شاردنەوەی خاڵەکانی Hype</string>
+  <string name="morphe_hide_info_cards_section_title">شاردنەوەی بەشی کارتەکانی زانیاری</string>
+  <string name="morphe_hide_key_concepts_section_title">شاردنەوەی بەشی \'چەمکە سەرەکییەکان\'</string>
+  <string name="morphe_hide_quizzes_section_title">بەشی تاقیکردنەوەکان بشارە</string>
+  <string name="morphe_hide_search_inside_this_video_section_title">شاردنەوەی بەشی \'گەڕان لە ناو ئەم ڤیدیۆیەدا\'</string>
+  <string name="morphe_hide_subscribe_button_title">شاردنەوەی دوگمەی سەبسکرایب</string>
+  <string name="morphe_hide_transcript_section_title">بەشی دەقە نووسراوەکان بشارە</string>
+  <string name="morphe_hide_video_details_section_title">بەشی \'زانیارییەکانی ڤیدیۆ\' بشارە</string>
   <!-- layout.snackbar.snackbarPatch -->
   <string name="morphe_snackbar_screen_title">سناکبار</string>
   <string name="morphe_snackbar_screen_summary">شاردنەوەی snackbars یان گۆڕینی ڕەنگ و شێوەکانیان</string>
@@ -474,6 +609,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">کلیککردن و ڕاگرتن لە هەر شوێنێکی ڤیدیۆیەکی فید، مێنیوەکەی دەکاتەوە</string>
   <string name="morphe_feed_watch_later_button_title">نیشاندانی دوگمەی \"دواتر بینەری بکە\" لەسەر وێنەی پێشوەختەکان</string>
   <string name="morphe_feed_watch_later_button_summary">دوگمەی \"دواتر بینە\" لەسەر وێنەی پێشەکیی ڤیدیۆکانی فیدەکە پیشان دەدرێت، لەگەڵ نیشانەی تیک ئەگەر ڤیدیۆکە پاشکەوت کرابێت. کلیککردن ڤیدیۆکە پاشکەوت دەکات یان لایدەبات، و کلیککردنی درێژ بژاردەی \"پاشکەوتکردن لە لیست\" دەکاتەوە</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">وێنەکانی پۆست لە شاشەی تەواودا بکەرەوە</string>
+  <string name="morphe_open_post_images_fullscreen_summary">کلیککردن لەسەر وێنەی پۆستێک، وێنەکە لە شاشەی تەواودا دەکاتەوە لەجیاتی فیدەکەی پۆستەکان</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">دابەزاندنی وێنەکانی پۆست</string>
   <string name="morphe_post_image_download_summary">دوگمەیەکی دابەزاندن لە تەنیشت دوگمەی بەشیکردنی ئەو پۆستانە دەردەکەوێت کە وێنە یان GIFـیان تێدایە، هەروەها بژاردەیەکی دابەزاندن زیاد دەکرێت بۆ مێنیووەکانیان</string>
@@ -524,6 +662,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">پیشاندانی ژمارەی لایکی وێنەی پێشەکی فید</string>
   <string name="morphe_ryd_feed_like_ratio_title">ڕێژەی لایکی وێنەی پێشەکی فید پیشان بدە</string>
+  <string name="morphe_ryd_feed_counts_position_title">شوێنی لایکی وێنەی پێشوەختەی فید</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">لای ژمارەی بینەران</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">ناوەند لای ڕاست</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">سەرەوە لای چەپ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">گەڕان لە کۆمێنتەکان</string>
   <string name="morphe_search_comments_summary">کلیک بکە لەسەر دوگمەی گەڕان لە کۆمێنتەکاندا بۆ ئەوەی تەنها ئەو کۆمێنتانە پیشان بدات کە هەموو وشەکانی گەڕانەکەیان تێدایە. وشەکان لە نێو \"...\" دابنێ بۆ گەڕان بەدوای دەستەواژەیەکدا</string>
@@ -556,22 +698,21 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_download_flyout_button_title">پیشاندانی داگرتن لە مینیوی Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">بڕگەیەکی دابەزاندن زیاد دەکات بۆ مینیۆی پلەیەری Shorts</string>
   <string name="morphe_shorts_download_flyout_title">دابەزاندن</string>
+  <string name="morphe_feed_download_flyout_button_title">زۆرکردنی بڕگەی دابەزاندنی مینیۆی flyout</string>
+  <string name="morphe_feed_download_flyout_button_summary">بڕگەیەکی دابەزاندن زیاد دەکات بۆ مینیۆی ڤیدیۆکانی فید کە هیچ بڕگەیەکیان نییە</string>
+  <string name="morphe_download_force_4k_title">بەهێزیی بەردەستبوونی داگرتنی 4K</string>
+  <string name="morphe_download_force_4k_summary">دابەزاندنی 1440p و 4K پێشکەش دەکات، تەنانەت ئەگەر YouTube بڕیاری بدات کە ئەم ئامێرە ناتوانێت لێیان بدات</string>
+  <string name="morphe_download_quality_about_title">1080p بەردەست نییە</string>
+  <string name="morphe_download_quality_about_summary">ئەگەر داگرتنی ناو ئەپڵیکەیشنەکە 1080p پێشکەش نەکات، \'قەبارەی ئامێرەکە شێوەبگێڕە\' لە ڕێکخستنە گشتگیرەکاندا چالاک بکە</string>
   <string name="morphe_export_download_folder_title">هەناردانی ڤیدیۆکانی پاشکەوتکراو</string>
-  <string name="morphe_export_download_folder_summary">"ڤیدیۆ پاشکەوتکراوەکانی ناو ئەپ بۆ کۆگای ئامێرەکەت هەناردە بکە بە بەکارهێنانی مینیۆی داگرتنەکانی ناو ئەپەکە. کلیک بکە بۆ گۆڕینی فۆڵدەری هەناردان
+  <string name="morphe_export_download_folder_summary">"ڤیدیۆ پاشکەوتکراوەکانی ناو ئەپ بۆ کۆگای ئامێرەکەت هەناردە بکە بە بەکارهێنانی مینیۆی داگرتنەکانی ناو ئەپەکە. لێرە کلیک بکە بۆ گۆڕینی فۆڵدەری هەناردان
 
 فۆڵدەری هەناردان: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">فۆڵدەری هەناردان</string>
-  <string name="morphe_export_download_folder_change">گۆڕینی فۆڵدەر</string>
-  <string name="morphe_export_download_folder_changed">فۆڵدەری هەناردان گۆڕدرا</string>
-  <string name="morphe_export_download_folder_reset">فۆڵدەری هەناردان ڕیست کرا</string>
-  <string name="morphe_export_download_folder_missing">نەتوانرا فۆڵدەری هەناردانی %s بدۆزرێتەوە</string>
-  <string name="morphe_export_download_flyout_title">گواستنەوە بۆ ئامێر</string>
   <string name="morphe_export_download_started">هەناردەکردنی ڤیدیۆ</string>
   <string name="morphe_export_download_progress">هەناردەکردنی ڤیدیۆ: %s%%</string>
   <string name="morphe_export_download_notification_channel">هەناردەکردنی ڤیدیۆکان</string>
   <string name="morphe_export_download_saved">ڤیدیۆکە گوازرایەوە بۆ %s</string>
   <string name="morphe_export_download_failed">نەتوانرا ڤیدیۆکە بگوازرێتەوە</string>
-  <string name="morphe_export_download_canceled">گواستنەوەکە هەڵوەشێنرا</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">وەرگێڕانی دەنگی</string>
   <string name="morphe_vot_screen_summary">ژێرنووسەکانی ڤیدیۆ بە دەنگ دەخوێنێتەوە بە بەکارهێنانی دەق-بۆ-دەنگی ئامێرەکە، هاوکات لەگەڵ لێدانەکە</string>
@@ -649,6 +790,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">سڕینەوە</string>
   <string name="morphe_loop_video_range_toast_on">دووبارەبوونەوەی %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">مەودای کاتی نادروستە</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">ژمارەی دوبارەبوونەوە</string>
+  <string name="morphe_loop_count_screen_summary">دیاری بکە ڤیدیۆکە چەند جار دوبارە ببێتەوە پێش ئەوەی بچێت بۆ ڤیدیۆکەی داهاتوو</string>
+  <string name="morphe_loop_count_title">ژمارەی دوبارەبوونەوە چالاک بکە</string>
+  <string name="morphe_loop_count_summary">مینوێی \"زیاتر\"ی پلەیەرەکە ژمارەی دووبارەبوونەوە لە تەنیشت \"دووبارەکردنەوەی ڤیدیۆ\" پیشان دەدات، بۆ ئەوەی هەڵبژێریت کە ڤیدیۆکە چەند جار دووبارە بێتەوە پێش ئەوەی ڤیدیۆی داهاتوو لێبکەوێت</string>
+  <string name="morphe_loop_count_playlists_title">پاشکەوتکردنی ژمارەی دووبارەبوونەوە لە لیستەکانی ڕەپەڕ</string>
+  <string name="morphe_loop_count_playlists_summary">هەر ڤیدیۆیەک لە لیستێکی ڕەپەڕ ئەو ژمارەی دووبارەبوونەوەیەی هەڵبژاردووتە دەپارێزێت، و \"دووبارەکردنەوەی ڤیدیۆ\" چالاک دەبێت کاتێک لیستەکە دووبارە لێی دەدات. ئەگەر ناچالاک بکرێت، ژمارەی دووبارەبوونەوە تەنها بۆ ئەو ڤیدیۆیەیە کە ئێستا لێدەدات</string>
+  <string name="morphe_loop_count_clear_title">سڕینەوەی ژمارەکانی دووبارەبوونەوەی پاشکەوتکراو</string>
+  <string name="morphe_loop_count_clear_summary">ژمارەکانی دووبارەبوونەوەی پاشکەوتکراو لە لیستەکانی ڕەپەڕەکەتدا بسڕەوە. ڤیدیۆکانی پاشکەوتکراو: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">هیچ ژمارەیەکی دووبارەبوونەوە پاشکەوت نەکراوە</string>
+  <string name="morphe_loop_count_clear_dialog_title">ژمارەکانی دووبارەبوونەوەی پاشکەوتکراو بسڕینەوە؟</string>
+  <string name="morphe_loop_count_clear_dialog_message">ڤیدیۆکانی لیستەکانی ڕەپەڕەکەت ژمارەی دووبارەبوونەوەکانیان دەسڕێتەوە، و \"دووبارەکردنەوەی ڤیدیۆ\" ئیتر چالاک نابێت کاتێک لیستەکە لێیان دەدات</string>
+  <string name="morphe_loop_count_clear_done">ژمارەکانی دووبارەبوونەوەی پاشکەوتکراو سڕانەوە</string>
+  <string name="morphe_loop_count_flyout_name">ژمارەی دووبارەبوونەوە</string>
+  <string name="morphe_loop_count_dialog_message">چەند جار ڤیدیۆکە لێبدریت پێش دەستپێکردنی ڤیدیۆی داهاتوو، لە %1$s بۆ %2$s. بۆ ئەوەی ڤیدیۆکە بێ سنوور دووبارەبێتەوە، بەتاڵىى بهێڵە.</string>
+  <string name="morphe_loop_count_times">%s جار</string>
+  <string name="morphe_loop_count_no_limit">بێ سنوور</string>
+  <string name="morphe_loop_count_decrease">کەمتر</string>
+  <string name="morphe_loop_count_increase">زیاتر</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">پیشاندانی دوگمەی وێنە-لە-ناو-وێنە</string>
   <string name="morphe_pip_button_flyout_title">پیشاندانی مینیۆی وێنە-لە-ناو-وێنە</string>
@@ -686,6 +846,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">تەنها Shorts بۆ ئەندامان</string>
   <string name="morphe_play_all_button_type_entry_12">تەنها پەخشانە ڕاستەوخۆکان بۆ ئەندامان</string>
   <string name="morphe_play_all_button_not_available_toast">ناتوانرێت لیستی مۆسیقا دروست بکرێت بەهۆی ناگونجانی ناسنامەی کەناڵەکە</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">دوگمەی پیشاندانی لیستەکەی لێستەر</string>
+  <string name="morphe_playlist_panel_button_summary">کلیک بکە بۆ کردنەوەی پانێڵی لیستەکەی لێستەر. تەنها لە کاتی لێستەرکردنی لیستێکی لێستەردای دەردەکەوێت</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">پیشاندانی دوگمەی دووبارەبارکردنەوەی ڤیدیۆ</string>
   <string name="morphe_dismiss_player_not_available_toast">ناسنامەی ڤیدیۆکە بەردەست نییە. تکایە بە دەست ڤیدیۆکە دووبارە باربکەرەوە</string>
@@ -711,8 +874,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">ڕیزبەندی ڕەسەن</string>
   <string name="morphe_queue_type_entry_3">ڕیزبەندی Morphe</string>
   <string name="morphe_queue_type_entry_4">ڕیزبەندی Morphe لە لای کلاینت</string>
-  <string name="morphe_queue_add_flyout_menu_title">زیادکردنی بژاردەی ڕیزبەندی بۆ مێنیۆی فید</string>
-  <string name="morphe_queue_add_flyout_menu_summary">بژاردەیەکی flyout ی تر زیاد دەکات. ئەمە چالاک بکە ئەگەر \"Add to queue\" پیشان نەدرێت</string>
   <string name="morphe_local_queue_sheet_title">ڕیزبەندی</string>
   <string name="morphe_local_queue_open">ڕیزبەندی (%s)</string>
   <string name="morphe_local_queue_clear">سڕینەوەی هەموویان</string>
@@ -758,6 +919,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">ڕیزەکە بکەرەوە</string>
   <string name="morphe_queue_manager_save_queue">پاشکەوتکردنی ڕیزەکە بۆ لیستێکی پەخش</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">پیشاندانی دوگمەی ڕیز لەسەر وێنەی پێشوەختەکان</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">دوگمەیەک بۆ ڕیز لەسەر وێنەی پێشوەختەی ڤیدیۆکانی فید دەردەکەوێت. لێدانی دوگمەکە ڤیدیۆکە زیاد دەکات بۆ کۆتایی ڕیزەکە، و لێدان و ڕاگرتنی دەبێتە هۆی ئەوەی ڤیدیۆکە داهاتووان لێ بدرێت</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">گۆڕینی شوێنی کردارەکانی ڕیزی وێنەی پێشوەختە</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">لێدانی دوگمەی ڕیز ڤیدیۆکە داهاتووان لێ دەدات، و لێدان و ڕاگرتنی ڤیدیۆکە زیاد دەکات بۆ کۆتایی ڕیزەکە</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">بارکردنی لاپەڕەکانی ڕیزبەندی لەکاتی سکرۆڵکردن</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">زیاتر لە ڤیدیۆکانی لیستەکە باردەکات کاتێک سکرۆڵ دەکەیت بەرەو کۆتایی ڕیزبەندییەکە</string>
   <string name="morphe_native_playlist_queue_saved">لیستی پەخشکردنەکە پاشکەوت کرا</string>
@@ -832,6 +997,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">پەستان چالاک بکە بۆ ئاماژەدان بە لێدان</string>
   <string name="morphe_swipe_press_to_engage_summary">پێویستە پێشتر دەست دابنێیت و ڕایگریت پێش ئەوەی جوڵەی سوایپ بناسرێت</string>
   <string name="morphe_swipe_haptic_feedback_title">ئامۆژگاری هاپتیک چالاک بکە</string>
+  <string name="morphe_swipe_haptic_feedback_summary">لەرکێت کاتێک پەستان و ڕاگرتن دەستپێدەکات بۆ جوڵەی سوپاندن</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">پاشەکەوتکردن و گەڕاندنەوەی ڕووناکی</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">ئاستی ڕووناکی دەپارێزێت لە کاتی چوونە ناو / هاتنە دەرەوە لە شێوازی شاشەی تەواو</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">ئاماژەی ئۆتۆماتیکی ڕووناکی چالاک بکە</string>
@@ -875,60 +1041,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">پۆشینی ستوونی (کەم)</string>
   <string name="morphe_swipe_change_video_title">چالاککردنی لێڕاندن بۆ گۆڕینی ڤیدیۆکان</string>
   <string name="morphe_swipe_change_video_summary">لە شێوەی شاشەی تەواودا بسوڕێنە بۆ ڕۆشتن بۆ ڤیدیۆکەی داهاتوو یان پێشوو</string>
-  <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_action_buttons_screen_title">دووگمەکانی کردار</string>
-  <string name="morphe_action_buttons_screen_summary">دیاری بکە کام دوگمەی کردار لە شێوەی ستاندارد و شاشەی تەواودا دەردەکەون</string>
-  <string name="morphe_portrait_buttons">دووگمەکانی ستایلی ستوونی</string>
-  <string name="morphe_disable_like_subscribe_glow_title">ناچالاککردنی درەوشانەوەی Like و Subscribe</string>
-  <string name="morphe_disable_like_subscribe_glow_summary">ڕێگری دەکات لە درەوشانەوەی دوگمەکانی لایک و سەبسکرایب کاتێک دروستکەرەکە ئاماژەیان پێ دەکات</string>
-  <string name="morphe_hide_action_bar_title">شاردنەوەی باری کردار</string>
-  <string name="morphe_hide_like_dislike_button_title">دوگمەی لایک و دیسلایک بشارەوە</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_share_button_title">شاردنەوەی دوگمەی Share</string>
-  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_stop_ads_button_title">دوگمەی \'ڕاگرتنی ڕیکلامەکان\' بشارەوە</string>
-  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-  <string name="morphe_hide_comments_button_title">شاردنەوەی دوگمەی کۆمێنتەکان</string>
-  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_connect_button_title">شاردنەوەی دوگمەی بەستنەوە</string>
-  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on live stream videos. -->
-  <string name="morphe_hide_report_button_title">دوگمەی ڕاپۆرتکردن بشارەوە</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_remix_button_title">دوگمەی ریمیکس بشارەوە</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_download_button_title">دوگمەی داگرتن بشارەوە</string>
-  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on videos uploaded by the logged-in user. -->
-  <string name="morphe_hide_hype_button_title">دوگمەی Hype بشارەوە</string>
-  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_promote_button_title">دوگمەی Promote بشارەوە</string>
-  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_thanks_button_title">دوگمەی سوپاس بشارەوە</string>
-  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
-  <string name="morphe_hide_ask_button_title">شاردنەوەی دوگمەی Ask</string>
-  <string name="morphe_hide_channel_profile_button_title">شاردنەوەی کەناڵ و دوگمەی سەبسکرایب</string>
-  <string name="morphe_hide_channel_profile_button_summary">ئەڤاتاری کەناڵ و دوگمەی سەبسکرایب لە سەرەتای شریتی کرداری دەشارێتەوە</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">شاردنەوەی دوگمەی سەبسکرایب</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_summary">دوگمەکانی Subscribe و Join دەشارێتەوە لە تەنیشت وێنەی پرۆفایلی کەناڵەکە لە سەرەتای باری کرداردا</string>
-  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_clip_button_title">دوگمەی Clip بشارەوە</string>
-  <string name="morphe_hide_clip_button_summary">ئەمە ڕەنگە بۆ هەندێک هەژماری بەکارهێنەر کارنەکات</string>
-  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shop_button_title">دوگمەی فرۆشگا بشارەوە</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_save_button_title">شاردنەوەی دوگمەی Save</string>
-  <string name="morphe_hide_more_button_title">شاردنەوەی دوگمەی زیاتر</string>
-  <string name="morphe_fullscreen_buttons">دووگمەکانی شاشەی تەواو</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">دوگمەی Dislike بشارەوە</string>
-  <string name="morphe_hide_quick_actions_like_button_title">دوگمەی Like بشارەوە</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">شاردنەوەی دوگمەی \'چاتە زیندییەکە\'</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">شاردنەوەی دوگمەی تێکەڵکردن</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">شاردنەوەی دوگمەی \'ڤیدیۆی زیاتر\'</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">شاردنەوەی دوگمەی لیستی ڤیدیۆکان</string>
-  <string name="morphe_quick_actions_top_margin_title">مارجینی سەرەوەی کردارە خێراکان</string>
-  <string name="morphe_quick_actions_top_margin_summary">مارجینی سەرەوەی شریتی کردەوە خێراکان دیاری بکە (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">ژێرنووسەکان</string>
   <string name="morphe_captions_screen_summary">بەڕێوەبردنی ژێرنووسی خۆکار و کوکییەکانی ژێرنووس</string>
@@ -1027,6 +1139,12 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">شریتی گەشتکردن وەک کەپسوڵێکی شناوری، گرد و نیم-ڕوون نیشان دەدات. لەگەڵ شێوازی ناڕوونی شریتی گەشتکردندا بەردەست نییە</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ڕوونی شووشەیی</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ئاستی شەفافیەتی شریتی گەشتکردنی شووشەیی ڕێکبخە (0 شەفافە، 100 ناڕوونە)</string>
+  <string name="morphe_navigation_bar_glass_round_title">شریتی گەشتکردنی شووشەیی بازنەیی</string>
+  <string name="morphe_navigation_bar_glass_round_summary">کۆتاییەکانی شریتی گەشتکردنی شووشەیی دەکات بە بازنەیی، لەجیاتی گۆشە وەک مینی پلەیەری شووشەیی</string>
+  <string name="morphe_navigation_bar_glass_edge_title">لێوارەی شیشی شریتی گەشتکردن</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">لێوارەیەکی ڕوون لە دەوری شریتی گەشتکردنی شیشی دەکێشێت</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">مارجینی خوارەوەی شریتی گەشتکردنی شیشی</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">بۆشایی نێوان شریتی گەڕانەوەی شیشەیی و خوارەوەی شاشە یان گەڕانەوەی سیستەم ڕێکبخە</string>
   <string name="morphe_navigation_bar_glass_size_title">قەبارەی شریتی گەشتکردنی شووشەیی</string>
   <string name="morphe_navigation_bar_glass_size_summary">بە پێشوەکشانێک، بەرزی، پانی و بۆشایی دوگمەکانی شریتی گەشتکردنی شووشەیی ڕێکبخە. ئەو دوگمانەی لە پانی شاشەکەدا جێگەیان نابێت دەشاردرێنەوە</string>
   <string name="morphe_navigation_bar_glass_size_height">بەرزی</string>
@@ -1041,79 +1159,8 @@ Second \"item\" text"</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">کاتێک چالاک بێت، کلیک کردن ڕێکخستنەکانی Morphe دەکاتەوە و پەستانی درێژ ڕێکخستنەکانی YouTube دەکاتەوە، بۆ گۆڕینیان ناچالاکی بکە</string>
   <string name="morphe_toolbar_buttons_order_title">ڕیزبەندی دووگمەکانی تولبار</string>
   <string name="morphe_toolbar_buttons_order_summary">دوگمەکان ڕابکێشە بۆ گۆڕینی ڕیزبەندییان لە تولبار</string>
-  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">مەنیوی فلاین ئاوت</string>
-  <string name="morphe_hide_player_flyout_summary">دیاری بکە کام پێکهاتەکان لە مینیۆی flyout دەردەکەون</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">شاردنەوەی مێنیوی \'ڕێکخستنە زیادەکانی\' / زیاتر</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">شاردنەوەی مێنیۆی \'مۆدی دەوروبەر\'</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"مێنیۆی 'Audio Track' شاردراوەتەوە
-
-بۆ پیشاندانی مێنیۆی 'Audio Track'، 'Spoof video streams' بگۆڕە بۆ هەر کلاینتێک جگە لە 'Android Studio' و 'Android VR Downgraded'"</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">مینیۆی \'ڕێگەی دەنگ\' بشارەوە</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">شاردنەوەی خستەی خوارەوەی مێنیوی \'Audio Track\'</string>
-  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_captions_title">شاردنەوەی مێنیوی ژێرنووسەکان</string>
-  <string name="morphe_hide_player_flyout_captions_footer_title">شاردنەوەی خستەی خوارەوەی مێنیوی ژێرنووسەکان</string>
-  <string name="morphe_hide_player_flyout_captions_header_title">شاردنەوەی سەری مێنیوی ژێرنووسەکان</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_help_title">شاردنەوەی مێنیوی \'یارمەتی &amp; ڕاوبۆچوون\'</string>
-  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">شاردنەوەی مێنیوی \'گوێ بگرە بە YouTube Music\'</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">شاردنەوەی مێنیوی \'قوفڵکردنی شاشە\'</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">شاردنەوەی مێنیۆی \'دووبارەکردنەوەی ڤیدیۆ\'</string>
-  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_on_the_go_title">شاردنەوەی مێنیۆی \'لە ڕێگادا\'</string>
-  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_quality_title">شاردنەوەی مێنیوی کوالێتی</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">شاردنەوەی خوارەوەی مێنیوی کوالێتی</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">شاردنەوەی سەرەوەی مێنیوی کوالێتی</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">شاردنەوەی مێنیۆی \'تایمەری خەوتن\'</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">شاردنەوەی مێنیوی \'خێرایی لێدان\'</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">شاردنەوەی مێنیوی \'دەنگی جێگیر\'</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">شاردنەوەی مێنیوی \'بینین لە VR\'</string>
-  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
-  <string name="morphe_hide_autoplay_preview_title">شاردنەوەی پێشبینینی لێدانی خۆکار</string>
-  <string name="morphe_hide_autoplay_preview_summary">پێش دەستپێکردنی لێدانی خۆکار، پێشوەگەرێی ڤیدیۆکەی داهاتوو لە شاشەی تەواودا دەشارێتەوە</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_overlay_buttons_screen_title">دوگمەکانی پۆشین</string>
-  <string name="morphe_overlay_buttons_screen_summary">دیاری بکە کام دوگمەکان لەسەر دیسپڵەی ڤیدیۆکە دەربکەون</string>
-  <string name="morphe_hide_autoplay_button_title">دوگمەی خۆکار-لێدانی بشارەوە</string>
-  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">دوگمەی ژێرنووسەکان بشارەوە</string>
-  <string name="morphe_hide_cast_button_title">دوگمەی پەخشکردن بشارەوە</string>
-  <string name="morphe_hide_cast_button_summary">دوگمەی Cast لە پلەیەری ڤیدیۆ و شریتی ئامرازدا دەشارێتەوە</string>
-  <string name="morphe_hide_collapse_button_title">دوگمەی کۆکردنەوە بشارەوە</string>
-  <string name="morphe_hide_fullscreen_button_title">دوگمەی شاشەی تەواو بشارەوە</string>
-  <string name="morphe_hide_player_control_buttons_background_title">شاردنەوەی کۆنتڕۆڵەکانی پاشخانی پەخش</string>
-  <string name="morphe_hide_player_control_buttons_background_summary">سێبەری تاریکی دەوروبەری کۆنترۆڵەکانی پلەیەرى ڤیدیۆکە دەشارێتەوە</string>
-  <string name="morphe_player_control_buttons_background_opacity_title">ڕوونی پشتی دوگمەکانی کۆنترۆڵ</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">ڕێکخستنی ڕوونی پاشبنەماکەی پشت دوگمەکانی کۆنترۆڵی پلەیەر و شریتی کات (٠ نادیارە، ١٠٠ ڕەنگێکی تۆخە)</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">شاردنەوەی دوگمەکانی پێشوو &amp; داهاتوو</string>
-  <string name="morphe_hide_settings_button_title">شاردنەوەی دوگمەی ڕێکخستنەکان</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">شاردنەوەی کارتەکانی کۆتایی ڤیدیۆ</string>
-  <!-- layout.hide.ambientmode.ambientModePatch -->
-  <string name="morphe_ambient_mode_screen_title">شێوازی Ambient</string>
-  <string name="morphe_ambient_mode_screen_summary">بەڕێوەبردنی بینراوی شێوازی Ambient و سنووردارکردنی وزە</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">تێپەڕاندنی سنووردارکردنەکانی شێوازی Ambient</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary">ڕێگە دەدات شێوازی Ambient چالاک بمێنێت لە کاتی شێوازی پاشکەوتکردنی باتریدا</string>
-  <string name="morphe_disable_ambient_mode_title">بەکارنەهێنانی شێوازی Ambient</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_title">بێکارکردنی شێوازی Ambient لە شاشەی تەواو</string>
-  <string name="morphe_enhanced_ambient_mode_title">مۆدی Ambient-ی باشترکراو</string>
-  <string name="morphe_enhanced_ambient_mode_summary">تەواوی لاپەڕەی بینین و شریتە ڕەشەکان بە ڕەنگی ڤیدیۆکەوە ڕوون دەکاتەوە، لە جیاتی مۆدی Ambient</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_title">تێکستی readable بهێڵەوە</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_summary">ڕووناکیی ڤیدیۆکانی گەش کەمدەکاتەوە بۆ ئەوەی تێکستەکانی لاپەڕەکە بە ڕوونی بخوێندرێن</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">شاردنەوەی کارتەکانی زانیاری</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1134,6 +1181,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">شاردنەوە لە فییدی بەشدارکەرییەکان</string>
   <string name="morphe_hide_shorts_video_description_title">شاردنەوە لە وەسفی ڤیدیۆکە</string>
   <string name="morphe_hide_shorts_history_title">شاردنەوە لە مێژووی بینین</string>
+  <string name="morphe_hide_shorts_notifications_title">شاردنەوە لە ئاگادارکردنەوەکانی پاڵنەر</string>
   <string name="morphe_shorts_player_screen_title">لێدەری Shorts</string>
   <string name="morphe_shorts_player_screen_summary">دیاری بکە کام پێکهاتەکان لە پلەیەری Shorts دەردەکەون</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">ناچالاککردنی دووجار کلیککردن بۆ لایک</string>
@@ -1192,9 +1240,24 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">ناچالاککردنی پانێڵەکانی پۆپئەپی لێدەر</string>
   <string name="morphe_disable_player_popup_panels_summary">ڕێگری دەکات لەوەی پانێڵەکانی لیست و چاتی ڕاستەوخۆ بە شێوەیەکی ئۆتۆماتیکی بکرێنەوە</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">پیشاندانی پانێڵی لیستی لێدان لە شاشەی تەواودا</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">پانێڵی لیستی لێدان لەسەر لێدەرەکەی شاشەی تەواو دەکرێتەوە</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">پانێڵی لیستی لێدان لە شاشەی تەواودا دەردەچێت بۆ تابلێتەکان</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">ناچالاککردنی پەخشی خۆکاری لیستەکان</string>
   <string name="morphe_disable_playlist_autoplay_summary">ڕێگری دەکات لەوەی لیستەکانی ڤیدیۆ بە شێوەیەکی خۆکار بچن بۆ ڤیدیۆی داهاتوو</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">کۆنترۆڵی لێدانی خۆکاری</string>
+  <string name="morphe_autoplay_control_summary">دوگمەی لێدەرێک و ڕێسایەک بۆ ڤیدیۆی داهاتوو زیاد دەکات. لیستی لێدان و ڕیزبەندییەکان بەردەوام دەبن، میکس دوای ژمارەیەکی دیاریکراو لە ڤیدیۆکان دەوەستێت، ڤیدیۆ پێشنیارکراوەکان هەرگیز لێ نادەدرێن. بۆ گۆڕینی شێوازی داهاتوو کلیک لەسەر دوگمەکە بکە، بۆ بینینی لیستەکە کلیک بکە و ڕایگرە</string>
+  <string name="morphe_autoplay_mode_title">شێوازی لێدانی خۆکاری</string>
+  <string name="morphe_autoplay_mode_entry_1">خۆکار</string>
+  <string name="morphe_autoplay_mode_entry_2">تک</string>
+  <string name="morphe_autoplay_mode_entry_3">کوژاوە</string>
+  <string name="morphe_autoplay_mix_stop_after_title">درێژی میکس</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">لە شێوازی خۆکاردا، میکس دوای ئەم ژمارەیە لە ڤیدیۆکان دەوەستێت. 0 = بێ سنوور</string>
+  <string name="morphe_autoplay_mix_length">میکس: %s ڤیدیۆ</string>
+  <string name="morphe_autoplay_mix_no_limit">میکس: بێ سنوور</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">پرسیارێتی \'بەردەوامبە لە بینین\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">بنەڕەت</string>
@@ -1270,9 +1333,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - گەڕاندنەوەی پاشکەوتکردن بۆ لیست بە شێوازی کۆن</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - ناچالاککردنی ئایکۆنە ئەستوورەکان</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - گەڕاندنەوەی ناوی کەناڵەکە لە خوارەوەی پلەیەری ڤیدیۆ</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">کردنەوەی شیتی بەشکردنی سیستەم</string>
-  <string name="morphe_open_system_share_sheet_summary">کاتێک ناوەڕۆک بڵاودەکرێتەوە، لاپەڕەی بەشکردنی سیستەم دەکاتەوە لە جیاتی لاپەڕەی ناو ئەپەکە</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">جێگرەوەی دوگمەکانی YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">ئەپڵیکەیشنی موزیکی دڵخوازی تۆ دەکاتەوە لە جیاتی ئەپڵیکەیشنی ستۆکی YouTube Music</string>
@@ -1331,6 +1391,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">ناچالاککردنی نوێکردنەوەی خۆکاری فید</string>
   <string name="morphe_disable_auto_feed_refresh_summary">ڕێگری دەکات لە نوێکردنەوەی خۆکاری فیدەکان دوای ئەوەی کۆن دەبن</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">جیاکردنەوەی ئاگادارکردنەوەکان</string>
+  <string name="morphe_ungroup_notifications_summary">هەموو ڤیدیۆیەکی بڵاوکراوەی کۆکراوەی کەنایەک وەک ئاگادارکردنەوەیەکی سەربەخۆ پیشان دەدات</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">شێوەی ڕێخستنی کارتی فید</string>
   <string name="morphe_feed_card_layout_entry_1">کلاسیک</string>
@@ -1350,6 +1413,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">ڕاکێشانی مینی پلەیەرەکە بۆ سەرەوە پلەیەرەکە فراوان دەکات، لەجیاتی ئەوەی مینی پلەیەرەکە ببات بۆ سەری شاشەکە</string>
   <string name="morphe_miniplayer_docked_title">مینی پلەیەری جێگیر</string>
   <string name="morphe_miniplayer_docked_summary">مینی پلەیەرەکە دەبەستێتەوە بە شریتی گەشتکردن و لایەکانی شاشەکە، لەجیاتی ئەوەی لەسەریان سەوار بێت</string>
+  <string name="morphe_miniplayer_glass_title">مینی پلەیەری شووشەیی</string>
+  <string name="morphe_miniplayer_glass_summary">مینی پلەیەرەکە وەک شووشەیەکی ڕوون و گۆشە بازنەییدار پیشان دەدات، وەک شریتی گەشتکردنی شووشەیی. پێویستی بە شریتی گەشتکردنی شووشەیی هەیە</string>
   <string name="morphe_miniplayer_type_entry_0">ناچالاک</string>
   <string name="morphe_miniplayer_type_entry_1">بنەڕەتی</string>
   <string name="morphe_miniplayer_type_entry_2">کەم</string>
@@ -1440,7 +1505,9 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">لیستەکانی پلەیەر &amp; پێشنیارەکان</string>
   <string name="morphe_dearrow_titles_search_title">ئەنجامەکانی گەڕان</string>
   <string name="morphe_dearrow_titles_icon_title">نیشاندانی ئایکۆنی DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">ئایکۆنی DeArrow لەسەر ناونیشانەکانی ڤیدیۆی کۆمەڵانگاری نیشان دەدات</string>
+  <string name="morphe_dearrow_titles_icon_summary">ئایکۆنی DeArrow لەسەر ناوی ئەو ڤیدیۆیانە پیشان دەدات کە ناونیشان یان وێنەی سەرکیشیان لەلایەن کۆمەڵگەوە گۆڕدراوە. کلیک لەسەر ئایکۆنەکە بکە بۆ پیشاندانی ناونیشان و وێنەی سەرکیشی ڕەسەنەکە</string>
+  <string name="morphe_dearrow_clean_up_titles_title">پاککردنەوەی ناونیشانەکان</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">ناونیشانی ئەو ڤیدیۆیانە پاک دەکاتەوە کە ناونیشانی DeArrowـیان نییە. وشەکانی کە بە پیتی گەورە نووسراون دەگۆڕدرێن بۆ شێوازی ئاسایی، هەروەها ئیمۆجی و دەقە سەیرەکان و نیشانەی سەپای دووبارە لادەبرێن</string>
   <string name="morphe_dearrow_casual_mode_title">مۆدی ئاسایی</string>
   <string name="morphe_dearrow_casual_mode_summary">ناونیشانی ئەسڵی نیشان دەدات لە جیاتی ناونیشانی DeArrow ئەگەر بەکارهێنەرانی DeArrow دەنگیان داوە کە ناونیشانی ئەسڵیان بەدڵە</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">کەمترین دەنگی ئاسایی بۆ نیشاندانی ناونیشانی ئەسڵی</string>
@@ -1466,7 +1533,65 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow بۆ ماوەیەکی کاتی بەردەست نییە (کۆدی دۆخ: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow بەشێوەیەکی کاتی بەردەست نییە</string>
-  <!-- misc.announcements.announcementsPatch -->
+  <string name="morphe_dearrow_vote_button_title">دوگمەی DeArrow نیشان بدە</string>
+  <string name="morphe_dearrow_vote_button_summary">دوگمەیەک زیاد دەکات بۆ سەری دیسپڵەی ڤیدیۆکە بۆ دەنگدان لەسەر ناونیشان و وێنەی پێشەکییەکانی DeArrow، یان ناردنی نوێیان</string>
+  <string name="morphe_dearrow_guidelines_title">ڕێنماییەکان</string>
+  <string name="morphe_dearrow_guidelines_summary">ڕێنماییەکان sisält دەبن لە یاسا و ئامۆژگارییەکان بۆ ناردن و دەنگدان لەسەر ناونیشان و وێنەی پێشەکییەکان</string>
+  <string name="morphe_dearrow_guidelines_popup_title">ڕێنماییەکان پەیڕەو بکە</string>
+  <string name="morphe_dearrow_guidelines_popup_content">ڕێبەرییەکانی DeArrow بخوێنەرەوە پێش ناردن یان دەنگدان بۆ ناونیشان و وێنەی پێشوەختەکان</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">پێشتر خوێندراوەتەوە</string>
+  <string name="morphe_dearrow_guidelines_popup_open">نیشانم بدە</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">بارکردن…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">نەتوانرا ناونیشان و وێنەی پێشوەختەی ئەم ڤیدیۆیە باربکرێت</string>
+  <string name="morphe_dearrow_vote_titles">ناونیشانەکان</string>
+  <string name="morphe_dearrow_vote_thumbnails">وێنەی پێشوەختەکان</string>
+  <string name="morphe_dearrow_vote_no_titles">تا ئێستا هیچ ناونیشانێک نییە. ناونیشانێک بنێرە بۆ ئەوەی یەکەم بیت</string>
+  <string name="morphe_dearrow_vote_original_title">ناونیشانی ڕەسەن</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">وێنۆچکەی ڕەسەن</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">فریم لە %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">نمرە: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">پشتڕاستنەکراوە</string>
+  <string name="morphe_dearrow_vote_locked">قوفڵکراوە</string>
+  <string name="morphe_dearrow_vote_upvote">دەنگی باش</string>
+  <string name="morphe_dearrow_vote_downvote">دەنگی خراپ</string>
+  <string name="morphe_dearrow_vote_new_title">ناونیشانی نوێ</string>
+  <string name="morphe_dearrow_vote_new_title_hint">ناونیشانێک بنووسە</string>
+  <string name="morphe_dearrow_vote_submit">ناردن</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">وێنۆچکەیەکی نوێ</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s چ</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">فریمەکەی %s وەک وێنۆچکە بنێریت؟</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">ڤیدیۆکە خەریکی لێدانە. بۆ ناردنی ئەو فریمەی دەینێیت، سەرەتا ڤیدیۆکە ڕاوێستێنە</string>
+  <string name="morphe_dearrow_vote_upvoted">جوتەکەی بە سەرکەوتوویی ناردرا بۆ DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">جوتەکەی بە سەرکەوتوویی ناردرا بۆ DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow دەنگی نەنارد: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">ئەمە قفڵکراوە، و تەنها بەکارهێنەرانی VIP دەتوانن دەنگی دژە بدەن</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">دەنگدان بۆ ئەم ڤیدیۆیە هێشتا بەردەوامە. دوای ساتێکی تر دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_dearrow_vote_failed_code">نەتوانرا دەنگەکە بنێردرێت (کۆدی دۆخ: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">نەتوانرا دەنگەکە بنێردرێت. گرێدانی تۆڕەکەت بپشکنە و دووبارە هەوڵ بدەرەوە</string>
+  <string name="morphe_dearrow_submitting_title">ناردنی ناونیشان و وێنەی پێشوەکی</string>
+  <string name="morphe_dearrow_vote_time_step_title">هەنگاوی ڕێکخستنەوەی کات</string>
+  <string name="morphe_dearrow_vote_time_step_summary">بڕی گەڕانەوەی دوگمەکانی ڕێکخستنی کاتی تەمبنیل لە کاتی ناردنیاندا (بە میلی چرکە)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">بەها دەبێت ژمارەیەکی ئەرێنی بێت</string>
+  <string name="morphe_dearrow_private_user_id_title">ناسنامەی بەکارهێنەری تایبەتیت</string>
+  <string name="morphe_dearrow_private_user_id_summary">هەمان ناسنامەی بەکارهێنەری SponsorBlock. ئەمە پێویستە بە نهێنی بمێنێتەوە. ئەمە وەک وشەی نهێنییە و نابێت لەگەڵ کەسدا ھاوبەش بکرێت. ئەگەر کەسێک ئەمەی ھەبێت، دەتوانێت خۆی بکات بە تۆ</string>
+  <string name="morphe_dearrow_private_user_id_invalid">ناسنامەی بەکارهێنەری تایبەت دەبێت لانیکەم 30 پیت بێت</string>
+  <string name="morphe_dearrow_account_loading">بارکردن…</string>
+  <string name="morphe_dearrow_account_connection_failure">زانیارییەکانی هەژمار بە شێوەیەکی کاتی بەردەست نین</string>
+  <string name="morphe_dearrow_account_username">ناوی بەکارهێنەرەکەت: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">لێرە کلیک بکە بۆ گۆڕینی ناوی بەکارهێنەرەکەت. ناوی بەکارهێنەرەکە هەمان ناوە لە SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">ناوی بەکارهێنەر بە سەرکەوتوویی گۆڕدرا</string>
+  <string name="morphe_dearrow_account_username_change_error">نەتوانرا ناوی بەکارهێنەر بگۆڕدرێت: دۆخ: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">تۆ &lt;b&gt;%s&lt;/b&gt; ناونیشانت ناردووە</string>
+  <string name="morphe_dearrow_account_titles_summary">لێرە کلیک بکە بۆ بینینی ناونیشانەکانت</string>
+  <string name="morphe_dearrow_account_thumbnails">تۆ &lt;b&gt;%s&lt;/b&gt; وێنەی کورتکراو ناردووە</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">لێرە کرتە بکە بۆ بینینی وێنە کورتکراوەکانت</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">گەڕاندنەوەی شێوازی کۆنی دوگمەکانی پلەیەر</string>
   <string name="morphe_restore_old_player_buttons_summary">کۆنترۆڵە ئەستوورەکانی پلەیەری ڤیدیۆ دەگێڕێتەوە بۆ شێوازە بینراوە کۆنتر و باریکترەکە</string>
@@ -1484,6 +1609,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ناچالاککردنی هەستی لەرزینی زوومکردن</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">ئەگەر لەم دواییانەدا زانیارییەکانی چوونەژوورەوەی هەژمارت گۆڕیوە، ئەوا MicroG بسڕەوە و دووبارە دایبمەزرێنەوە</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">پاشکەوتکردنی ئاگادارکردنەوەکانی پاڵدان</string>
+  <string name="morphe_debug_save_push_notifications_summary">ئاگادارکردنەوەکانی پاڵدانی وەرگیراو لە فایلێکدا لە داتای ئەپەکەدا پاشکەوت دەکات. فایلەکە دەکرێت زانیاری تایبەتی تێدا بێت، وەک دەقەکانی ئاگادارکردنەوە و ناوی چەناڵەکان</string>
+  <string name="morphe_debug_saved_push_notifications_title">هەناردەکردنی ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو</string>
+  <string name="morphe_debug_saved_push_notifications_summary">هەناردەکردن یان پاککردنەوەی ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو</string>
+  <string name="morphe_debug_saved_push_notifications_count">ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">هیچ ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو نەدۆزرانەوە</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">ئاگادارکردنەوەکانی پاڵدان بە سەرکەوتوویی هەناردەکران</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">هەناردەکردنی ئاگادارکردنەوەکانی پاڵدان سەرکەوتوو نەبوو</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">ئاگادارکردنەوەکانی پاڵدانی پاشکەوتکراو پاککرانەوە</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">تێپەڕاندنی ئاراستەکردنی لینکەکان</string>
   <string name="morphe_bypass_link_redirects_summary">لینکی ڕەسەنەکە ڕاستەوخۆ دەکاتەوە و لینکی شوێنکەوتن (youtube.com/redirect) تێپەڕ دەکات</string>
@@ -1506,25 +1641,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">پیشاندانی مینیۆی دواکەوتنی ڤیدیۆ</string>
   <string name="morphe_video_delay_dialog_input_hint">دواکەوتن بە میلی چرکە</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">خۆکار</string>
-  <string name="morphe_remember_video_quality_last_selected_title">بیرهێنانەوەی کوالیتی ڤیدیۆ</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">دیاریکردنی دەستی کوالیتییەکەت بۆ هەموو ڤیدیۆکانی داهاتوو جێبەجێ دەکات</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">ئاگادارکەرەوەکانی گۆڕانی کوالیتی</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">ئاگادارکردنەوەیەک پیشان دەدات کاتێک کوالێتی پێشنیارکراوی نوێ پاشکەوت دەکرێت</string>
-  <string name="morphe_video_quality_default_wifi_title">کوالێتی ڤیدیۆی پێشنیارکراو لە تۆڕی Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">کوالێتی ڤیدیۆی پێشنیارکراو لە تۆڕی مۆبایل</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">بیرهێنانەوەی کوالێتی Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">هەڵبژاردنی دەستی کوالێتی تۆ بۆ هەموو Shorts-ەکانی داهاتوو جێبەجێ دەکات</string>
   <string name="morphe_shorts_quality_default_wifi_title">کیفیتی پیش‌نیازکراوی Shorts لە تۆڕی Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">کیفیتی پیش‌نیازکراوی Shorts لە تۆڕی مۆبایل</string>
-  <string name="morphe_remember_video_quality_toast_mobile">کوالێتی پێشنیارکراوی مۆبایل گۆڕدرا بۆ: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">کوالێتی پێشنیارکراوی وایفای گۆڕدرا بۆ: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">کوالێتی مۆبایلی Shorts گۆڕدرا بۆ: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">کوالێتی Wi-Fiی Shorts گۆڕدرا بۆ: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">دوگمەی خێرایی لێدان نیشان بدە</string>
   <string name="morphe_playback_speed_dialog_button_summary">پەنجە لێ بدە و ڕایگرە بۆ گەڕاندنەوەی خێرایی بۆ ئاسایی</string>
+  <string name="morphe_playback_speed_button_cycle_title">کلیک لەسەر دوگمەی خێرایی لێدان بکە بۆ گۆڕینی خێراییەکان</string>
+  <string name="morphe_playback_speed_button_cycle_summary">کلیکەکە دەچێت بۆ خێرایی داهاتوو لە لیستەکەدا. کلیک و ڕایگرتن مینووی خێراییەکان دەکاتەوە</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">خێراییەکانی دوگمەی خێرایی لێدان</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">ئەو خێراییانەی کە بە کلیککردن دەگۆڕدرێن، هەر دانەیەک لە دێڕێکدا. دوای کۆتا خێرایی، کلیکەکە دەگەڕێتەوە بۆ یەکەم</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">لیستی خێراییەکان نادروستە، گەڕاندنەوە بۆ دۆخە سەرەکییەکە</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">دوگمەی پیشاندانی کوالێتی نیشان بدە</string>
   <string name="morphe_video_quality_dialog_button_summary">پەنجە لێبدە و بیگرە بۆ گەڕاندنەوەی کوالێتی بۆ دۆخی سەرەتایی</string>
@@ -1616,6 +1746,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• دەنگی جێگیر بەردەست نییە</string>
   <string name="morphe_spoof_video_streams_about_end_early">• ڕەنگە پەخشکردن ١ چرکە پێش کاتی تەواوبوون کۆتایی بێت</string>
   <string name="morphe_spoof_video_streams_about_js">• ئەگەر deobfuscation سەرکەوتوو نەبوو، لێدان ڕەنگە شکست بهێنێت</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView کوژاوەتەوە یان دامەنەراوە. چالاکی بکە و نوێی بکەرەوە، ئەگەر نا ڕەنگە لایەنی نمایشکردن تووشی کێشە ببێت</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView کۆن بووە. نوێی بکەرەوە، ئەگەر نا ڕەنگە لایەنی نمایشکردن تووشی کێشە ببێت</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• دەنگی ڕەسەنی بەزۆر بەردەست نییە</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• چوونەژوورەوە بۆ Android VR پێویستە</string>
@@ -1789,6 +1922,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">کۆمێنتەکانی Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">چاتی ڕاستەوخۆ و دووبارە لێدانی چات وەک کۆمێنت پیشان بدە کە لەسەر ڤیدیۆکە دەجوڵێن</string>
   <string name="morphe_niconico_comments_summary">دوگمەیەکی سەرپۆش لەسەر لێدەرە ڤیدیۆییەکە پیشان دەدات. بۆ پیشاندان یان شاردنەوەی کۆمێنتەکان کلیک بکە، بۆ ڕێکخستنی خێرا کلیک بکە و بیگرە</string>
+  <string name="morphe_niconico_comments_pip_title">نیشان بدە لە وێنە-لە-ناو-وێنە</string>
+  <string name="morphe_niconico_comments_pip_summary">کۆمێنتەکان بچووک دەکرێنەوە بۆ ئەوەی لەگەڵ پەنجەرەکە بگونجێن</string>
   <string name="morphe_niconico_comments_appearance_title">دەرکەوتن</string>
   <string name="morphe_niconico_comments_portrait_category_title">ستوونی</string>
   <string name="morphe_niconico_comments_video_types_title">جۆرەکانی ڤیدیۆ</string>

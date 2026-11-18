@@ -26,6 +26,7 @@ import app.morphe.extension.shared.settings.StringSetting;
  * Loads lazily on first use, purges entries older than the 24h horizon on each recorded hide,
  * and caps map size to avoid unbounded growth if video ID extraction misfires.
  */
+@SuppressWarnings("unused")
 public final class BufferHideStatsTracker {
 
     /** Sliding-window horizon for the "last 24 hours" stat. */

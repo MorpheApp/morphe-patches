@@ -43,17 +43,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Vimbela ukubuyekeza kwelayauti</string>
   <string name="morphe_disable_layout_updates_summary">Kuvimbela iserver ukuthi ithuthukise indlela ehleleke ngayo i-app</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"I-layout ye-app ibuyela ku-layout eyayisetshenziswa lapho ifakwa okokuqala.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Ukuhlelwa kohlelo kubuyela kulokhu okwakusetshenziswa lapho kufakwa okokuqala.
 
-Zinye izimo ze-layout ze-server-side zingase zingabuyi.
+Kungenzeka ukuthi ukuhlelwa kwesinye ohlelweni lwaservers kungabuyi.
 
 Izinguquko zihlanganisa:
-• Izinto ku-player flyout menu (noma izilungiselelo ezihlobene) zingase zingasebenzi
-• Izinombolo eziguqukayo azizisebenzi
-• I-Library tab iyabonakala
+• Izincomo zevidiyo ezizalo phezulu kumsindo zingase zibe nempazamo
+• Izici ezisemenywini yomdlali (noma izilungiselelo ezihambisana nazo) zingase zingasebenzi
 • Isigaba somculo sencazelo yevidiyo singase singasebenzi
-• Izinto ze-player flyout menu azikwazi ukufihlwela
-• Inkinobho yokushintsha i-account ingase ingabonakali ku-Library tab"</string>
+• Izinto ezisemenywini yomdlali azikwazi ukufihlweswa
+• Izinombolo ezihambayo azivuselelwa
+• Inkinobho yokushintsha i-akhawunti ingase ingaveli kutebhula lwe-Library"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Vumela ifilitha yemenyu ye-flyout ye-feed</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Ifilitha yemenyu ye-flyout ye-feed</string>
@@ -69,19 +69,6 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_channel_buttons_title">Fihla izinkinobho ze-channel</string>
   <string name="morphe_hide_channel_buttons_summary">Fihla izinkinobho ezifana ne-Subscribe, View Channel, Community, kanye ne-YouTube Music kuma-profiles e-channel emiphumeleni yokusesha</string>
   <string name="morphe_hide_community_posts_title">Fihla izintshumayelo zomphakathi</string>
-  <string name="morphe_post_buttons_screen_title">Izinobho ze-post</string>
-  <string name="morphe_post_buttons_screen_summary">Khetha indlela yokuhlelwa kwezinobho ngaphansi kwe-posts zomphakathi nokuthi yiziphi izinkinobho okufanele zicashwe</string>
-  <string name="morphe_post_buttons_layout_title">Ukuhleleka kwezinestu zokuthumela</string>
-  <string name="morphe_post_buttons_layout_entry_1">Iserba</string>
-  <string name="morphe_post_buttons_layout_entry_2">Okuphoqelekile</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">Fihla izinestu zokuthanda nokungathandi</string>
-  <string name="morphe_hide_post_dislike_button_title">Fihla inestu yokungathandi</string>
-  <string name="morphe_hide_post_dislike_button_summary">Ngokuhleleka Okuphoqelekile, indawo yenestu ishiywa</string>
-  <string name="morphe_hide_post_comment_button_title">Fihla inestu yokuphawula</string>
-  <string name="morphe_hide_post_comments_preview_title">Ifihla isiboniso semibhalo ngaphansi kwezithumelo</string>
-  <string name="morphe_hide_post_comments_preview_summary">Ifihla isiboniso semibhalo ngaphansi kwezintshumayelo</string>
-  <string name="morphe_hide_post_share_button_title">Fihla inestu yokwabelana</string>
-  <string name="morphe_hide_post_share_button_summary">Inestu yokulandela izithombe zokuthumela idweba eduze kwenestu yokwabelana, ngakho nayo ifihliwe</string>
   <string name="morphe_hide_compact_banner_title">Fihla amabanana amancane</string>
   <string name="morphe_hide_compact_banner_summary">Ifihla ama-banner amancane nesikhala phakathi kwezinye izinto</string>
   <string name="morphe_hide_expandable_card_title">Amakhadi avulekayo ngaphansi kwamavidiyo</string>
@@ -135,7 +122,7 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_upload_time_title">Fihla isikhathi sokukhuphula</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Imikhawulo:
-• Amashelufu e-Shorts, amakhasi esiteshi, nemiphumela yokusesha angase akhombise izikhathi zokukhulethela
+• Amashelufu e-Shorts angase akhombise izikhathi zokukhulethela
 • Akusebenzi nohlelo lwe-automotive"</string>
   <string name="morphe_hide_video_thumbnail_title">Fihla isithombe semvidiyo</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -144,7 +131,7 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_view_count_title">Fihla isibalo sokubuka</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Imikhawulo:
-• Amashelufu e-Shorts, amakhasi esiteshi, nemiphumela yokusesha angase akhombise izibalo zokubukwa
+• Amashelufu e-Shorts angase akhombise izibalo zokubukwa
 • Akusebenzi nohlelo lwe-automotive"</string>
   <string name="morphe_hide_web_search_results_title">Fihla imiphumela yokusesha kuwebhu</string>
   <string name="morphe_hide_web_search_results_summary">Ifihla isigaba se-\'Imiphumela evela kuwebhu\' emiphumeleni yokusesha</string>
@@ -153,197 +140,6 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_youtube_doodles_title">Fihla ama-YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Ifihla ama-animation esizini kanye nemicimbi kulogo lwe-YouTube</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">Ukukhombisa ama-YouTube Doodles kungase kuvimbe ama-custom headers ukuba abonakale</string>
-  <string name="morphe_hide_channel_bar_title">Fihla ibha yeshanali</string>
-  <string name="morphe_hide_channel_watermark_title">Fihla i-watermark yeshanali</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Fihla ama-Chapters kanye nenkinobho ethi \'Kuleli video\'</string>
-  <string name="morphe_hide_crowdfunding_box_title">Fihla ibhokisi le-crowdfunding</string>
-  <string name="morphe_hide_emergency_box_title">Fihla amabhokisi ezigameko</string>
-  <string name="morphe_hide_info_panels_title">Fihla amapaneli olwazi</string>
-  <string name="morphe_hide_info_panels_summary">Ifihla amapaneli olwazi, njengolwazi lwezempilo</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Fihla inkinobho ethi Joyina</string>
-  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Fihla inkinobho ethi \'Ukuphinda ukuxoxa okubukhoma\'</string>
-  <string name="morphe_hide_live_chat_replay_button_summary">Ifihla inkinobho yokudlala kabusha ingxoxo esimweni se-fullscreen</string>
-  <string name="morphe_hide_medical_panels_title">Fihla amapaneli ezempilo</string>
-  <string name="morphe_hide_player_gesture_hints_title">Fihla iziboniso zezandla zomdlali</string>
-  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
-          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <string name="morphe_hide_player_gesture_hints_summary">Kufihla iziboniso ezikhonjiswa ngesikhathi sezandla zomdlali, njenge-\'Donsa phezulu ukuze ukhuphule ngokunembile\', \'Yiyise ukuze ukhansele\' kanye no-\'2x\'</string>
-  <string name="morphe_hide_subscribers_community_guidelines_title">Fihla imigomo yababhalisele</string>
-  <string name="morphe_hide_sync_button_title">Fihla inkinobho ethi \'Sync to video\'</string>
-  <string name="morphe_hide_tap_and_hold_gradient_title">Fihla i-gradient yokuthinta nokubamba</string>
-  <string name="morphe_hide_tap_and_hold_gradient_summary">Ifihla i-gradient yokulawula isidlali lapho usetshenzisa umunwe wakho ubambe ukuze usheshise</string>
-  <string name="morphe_hide_timed_reactions_title">Fihla izimo zezikhathi</string>
-  <string name="morphe_hide_timed_reactions_summary">Ifihla isici esivumela abasebenzisi ukuphendula ngama-emoji esigabeni sokuphendula nasengxoxweni eqondile</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Fihla imenyu ye-\'Usizo &amp; imibono\'</string>
-  <string name="morphe_hide_help_feedback_menu_summary">Ifihla imenyu ye-\'Usizo &amp; imibono\' lapho usebenzisa inkinobho yezichashazi ezintathu, njengakuimiphumela yokusesha</string>
-  <string name="morphe_hide_handle_title">Fihla i-handle</string>
-  <string name="morphe_hide_handle_summary">Fihla i-handle ye-channel yakho kuthebhu elithi \'Wena\'</string>
-  <string name="morphe_hide_video_title_title">Fihla isihloko sevidiyo</string>
-  <string name="morphe_hide_video_title_summary">Ifihla isihloko sevidiyo esimweni se-fullscreen</string>
-  <string name="morphe_sanitize_video_subtitle_title">Hlanza izincazelo ze-video</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Isusa amagama afana no \'#\', \'Fundraiser\', \'product(s)\', kanye no \'Shop\' ezinqubeni zezincazelo zezividiyo</string>
-  <string name="morphe_hide_ask_gemini_button_title">Fihla inkinobho ethi \'Buza uGemini\'</string>
-  <string name="morphe_hide_ask_gemini_button_summary">Ifihla inkinobho ethi \'Buza uGemini\' phansi kwephaneli ethi \'Buza ngaleli vhidiyo\'</string>
-  <string name="morphe_hide_description_components_screen_title">Incazelo yevidiyo</string>
-  <string name="morphe_hide_description_components_screen_summary">Khetha ukuthi yiziphi izici okufanele zivela encazelweni yevidiyo</string>
-  <string name="morphe_hide_ai_generated_video_summary_section_title">Fihla isigaba se-\'Isifingqo sevidiyo esenziwe yi-AI\'</string>
-  <string name="morphe_hide_ask_section_title">Fihla isigaba se-Ask</string>
-  <string name="morphe_hide_attributes_section_title">Fihla isigaba se-Attributes</string>
-  <string name="morphe_hide_attributes_section_summary">Kufihla izigaba ze-Featured places, Games, Music, kanye ne-People mentioned</string>
-  <string name="morphe_hide_channel_links_section_title">Fihla isigaba sezixhumelo ze-Channel</string>
-  <string name="morphe_hide_chapters_section_title">Fihla isigaba se-Chapters</string>
-  <string name="morphe_hide_corrections_section_title">Fihla isigaba se-Corrections</string>
-  <string name="morphe_hide_course_progress_section_title">Fihla isigaba se-\'Course progress\'</string>
-  <string name="morphe_hide_explore_section_title">Fihla isigaba se-Explore</string>
-  <string name="morphe_hide_explore_section_summary">Kufihla izigaba ze-Explore this course kanye ne-Explore the podcast</string>
-  <string name="morphe_hide_explore_course_section_title">Fihla isigaba se-\'Explore this course\'</string>
-  <string name="morphe_hide_explore_podcast_section_title">Fihla isigaba se-\'Explore the podcast\'</string>
-  <string name="morphe_hide_featured_channels_section_title">Fihla isigaba samamashaneli aveziwe</string>
-  <string name="morphe_hide_featured_links_section_title">Fihla isigaba sezixhumelo eziveziwe</string>
-  <string name="morphe_hide_featured_playlists_section_title">Fihla isigaba sezilu ze-Featured playlists</string>
-  <string name="morphe_hide_featured_videos_section_title">Fihla isigaba samavidiyo aveziwe</string>
-  <string name="morphe_hide_hashtag_section_title">Fihla isigaba se-Hashtag</string>
-  <string name="morphe_hide_how_this_was_made_section_title">Fihla isigaba esithi \'Indlela lokhu okwenziwe ngayo\'</string>
-  <string name="morphe_hide_hype_points_title">Fihla amaphuzu e-Hype</string>
-  <string name="morphe_hide_info_cards_section_title">Fihla isigaba samakhadi wolwazi</string>
-  <string name="morphe_hide_key_concepts_section_title">Fihla isigaba se-\'Key Concepts\'</string>
-  <string name="morphe_hide_quizzes_section_title">Fihla isigaba semibuzo</string>
-  <string name="morphe_hide_search_inside_this_video_section_title">Fihla isigaba sika \'Search inside this video\'</string>
-  <string name="morphe_hide_subscribe_button_title">Fihla inkinobho ye-Subscribe</string>
-  <string name="morphe_hide_transcript_section_title">Fihla isigaba sombhalo wevidiyo</string>
-  <string name="morphe_hide_video_details_section_title">Fihla isigaba se\"Imininingwane yevidiyo\"</string>
-  <string name="morphe_hide_filter_bar_screen_title">Ibha yokuhlunga</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Khetha lapho kufanele kufihwe khona ibha yohlelo lokuhlunga esukumelayo</string>
-  <string name="morphe_hide_filter_bar_in_channel_page_title">Fihla ekhasini lesiteshi</string>
-  <string name="morphe_hide_filter_bar_in_comments_title">Fihla emibhalweni</string>
-  <string name="morphe_hide_filter_bar_in_feed_title">Fihla ema-feed</string>
-  <string name="morphe_hide_filter_bar_in_related_videos_title">Fihla amavidiyo ahlobene</string>
-  <string name="morphe_hide_filter_bar_in_search_title">Fihla emiphumeleni yokusesha</string>
-  <string name="morphe_hide_filter_bar_in_history_title">Fihla emlandweni wokubuka</string>
-  <string name="morphe_channel_screen_title">Ikhasi leshanneli</string>
-  <string name="morphe_channel_screen_summary">Khetha ukuthi yiziphi izinto ezivela ekhasini lesiteshi</string>
-  <string name="morphe_hide_channel_tab_title">Vumela ifilitha ye-tab yeshanneli</string>
-  <string name="morphe_hide_channel_tab_filter_strings_title">Ifilitha ye-tab yeshanneli</string>
-  <string name="morphe_hide_channel_tab_filter_strings_summary">Faka amagama ama-tab enquaneni ofuna ukuhlunga ngawo, ahlukaniswe imigqa emisha</string>
-  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_community_button_title">Fihla inkinobho ye-Community</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_join_button_title">Fihla inkinobho ye-Join</string>
-  <string name="morphe_hide_links_preview_title">Fihla ukubukelwa kwezixhumanisi</string>
-  <string name="morphe_hide_links_preview_summary">Fihla izixhumelo zewebhu ezichofozekayo ekhanda lesiteshi</string>
-  <string name="morphe_hide_members_only_chip_title">Fihla i-chip ethi \'Members only\'</string>
-  <string name="morphe_hide_members_only_chip_summary">Ifihla i-chip ethi \'Amalungu kuphela\' ebhalweni lokuhlunga leshaneli</string>
-  <string name="morphe_hide_members_shelf_title">Fihla ishelufu yamalungu</string>
-  <string name="morphe_hide_members_shelf_summary">Fihla uhlu lwamalungu esiteshini</string>
-  <string name="morphe_hide_posts_shelf_title">Fihla ishelufu yezithupha</string>
-  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_store_button_title">Fihla inkinobho yeIsitolo</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Fihla inkinobho yeBhalisa</string>
-  <string name="morphe_explore_menu_screen_title">Imenyu ye-Explore</string>
-  <string name="morphe_explore_menu_screen_summary">Khetha ukuthi yiziphi izinto ezivela ohlwini lokuhlola</string>
-  <string name="morphe_hide_courses_menu_title">Fihla imenyu yeZifundo</string>
-  <string name="morphe_hide_explore_button_title">Fihla inkinobho ye-Explore</string>
-  <string name="morphe_hide_fashion_menu_title">Fihla imenyu ye-\'Fashion &amp; Beauty\'</string>
-  <string name="morphe_hide_gaming_menu_title">Fihla imenyu yeGaming</string>
-  <string name="morphe_hide_hype_menu_title">Fihla imenyu yeHype</string>
-  <string name="morphe_hide_learning_menu_title">Fihla imenyu ye-Learning</string>
-  <string name="morphe_hide_live_menu_title">Fihla imenyu yeLive</string>
-  <string name="morphe_hide_memberships_menu_title">Fihla imenyu yeMemberships</string>
-  <string name="morphe_hide_movies_menu_title">Fihla imenyu ye-\'Movies &amp; TV\'</string>
-  <string name="morphe_hide_music_menu_title">Fihla imenyu yeMusic</string>
-  <string name="morphe_hide_news_menu_title">Fihla imenyu yeNews</string>
-  <string name="morphe_hide_playables_menu_title">Fihla imenyu ye-Playables</string>
-  <string name="morphe_hide_podcasts_menu_title">Fihla imenyu ye-Podcasts</string>
-  <string name="morphe_hide_shopping_menu_title">Fihla imenyu ye-Shopping</string>
-  <string name="morphe_hide_sports_menu_title">Fihla imenyu ye-Sports</string>
-  <string name="morphe_hide_youtube_premium_menu_title">Fihla imenyu ye-YouTube Premium</string>
-  <string name="morphe_hide_youtube_studio_menu_title">Fihla imenyu ye-YouTube Studio</string>
-  <string name="morphe_hide_youtube_music_menu_title">Fihla imenyu ye-YouTube Music</string>
-  <string name="morphe_hide_youtube_kids_menu_title">Fihla imenyu ye-YouTube Kids</string>
-  <string name="morphe_hide_youtube_create_menu_title">Fihla imenyu ye-YouTube Create</string>
-  <string name="morphe_hide_youtube_works_menu_title">Fihla imenyu ethi \'How YouTube works\'</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Fihla izinyawo zomthetho nobumfihlo</string>
-  <string name="morphe_comments_screen_title">Imibhalo</string>
-  <string name="morphe_comments_screen_summary">Khetha ukuthi yiziphi izici ezivela esigabeni semicabango</string>
-  <string name="morphe_hide_comments_carousel_title">Vula i-comments carousel filter</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Faka igama elibalulekile noma igama eliphelele (isib. Ask, Community, Hype, Listen)
-• Ukufihla zonke izinto kufihla yonke ingxenye yezingxoxo"</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_title">I-comments carousel filter</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_summary">Faka amagama e-carousel yemicabango ofuna ukuhlunga ngawo, ahlukaniswe imigqa emisha</string>
-  <string name="morphe_hide_comments_ai_chat_summary_title">Fihla isifinyezo se-AI chat</string>
-  <string name="morphe_hide_comments_channel_guidelines_title">Fihla imigomo yeshanneli</string>
-  <string name="morphe_hide_comments_contexts_title">Fihla imilayezo yengxenye</string>
-  <string name="morphe_hide_comments_by_members_header_title">Fihla ikhanda elithi \'Imibhalo yamalungu\'</string>
-  <string name="morphe_hide_comments_section_title">Fihla isigaba sokuphawula</string>
-  <string name="morphe_hide_comments_section_in_home_feed_title">Fihla isigaba sokuphawula ku-feed yaseKhaya</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Fihla Imigomo yoMphakathi</string>
-  <string name="morphe_hide_comments_create_a_short_button_title">Fihla inkinobho ethi \'Dala i-Short\'</string>
-  <string name="morphe_hide_comments_dislike_button_title">Fihla inkinobho ye-Dislike</string>
-  <string name="morphe_hide_comments_emoji_button_title">Fihla inkinobho ye-Emoji</string>
-  <string name="morphe_hide_comments_filter_bar_options_title">Fihla izinketho zebha yokuhlunga</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">Ifihla zonke izinketho zebha yokuhlunga ngaphandle kwe-\'Top\' kanye ne-\'Newest\'</string>
-  <string name="morphe_hide_comments_gif_button_title">Fihla inkinobho ye-GIF</string>
-  <string name="morphe_hide_comments_gifs_and_images_title">Fihla ama-GIFs nezithombe</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">Ifihla ama-GIFs nezithombe ezihambisana nemibono nezimpendulo</string>
-  <string name="morphe_hide_comments_gift_animation_and_cards_title">Fihla imizekeliso yezipho namakhadi</string>
-  <string name="morphe_hide_comments_gift_button_title">Fihla inkinobho Yesipho</string>
-  <string name="morphe_hide_comments_info_button_title">Fihla inkinobho ye-Info</string>
-  <string name="morphe_hide_comments_live_chat_donators_bar_title">Fihla ibha labanikezi be-live chat</string>
-  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Fihla inkinobho yokuskrola phansi e-live chat</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_title">Fihla imiyalelo yengxoxo eqondile</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_summary">Ifihla ama-tooltip popups akhonjiswa eduze kwenyezi lokufaka imilayezo yengxoxo, njengesaziso sengxoxo yababhalise kuphela</string>
-  <string name="morphe_hide_comments_menu_button_title">Fihla inkinobho yeMenu</string>
-  <string name="morphe_hide_comments_menu_button_summary">Ifihla inkinobho ye-menu yama-dot ayi-3 yakho yonke imibono</string>
-  <string name="morphe_hide_comments_preview_comment_title">Fihla ukubuka okufushane okuphawulayo</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Ifihla ukubukela imicabango ngaphansi kwevidiyo ngaphambi kokuvula isigaba semicabango esigcwele</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Ukuphawula kufihliwe ngu-Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Vumela inkinobho yokuphawula okuncane</string>
-  <string name="morphe_minimal_comments_button_summary">Ifihla amakhadi ahambayo kanye nesikhethelo sekhasi saso, okubonakala enkinobhweni yokuphawula</string>
-  <string name="morphe_hide_comments_thanks_button_title">Fihla inkinobho ye-Thanks</string>
-  <string name="morphe_hide_comments_timestamp_button_title">Fihla inkinobho yesikhathi</string>
-  <string name="morphe_hide_comments_top_fans_button_title">Fihla inkinobho ethi \'Abafani abavelele\'</string>
-  <string name="morphe_hide_comments_translate_button_title">Fihla inkinobho yokuhumusha</string>
-  <string name="morphe_hide_comments_zero_state_title">Fihla umlayezo othi \'Ayikho imibono okwamanje\'</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">Hlanza ama-link okusesha agundwe</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Ihlanzanisa ama-link okusesha agundwe, ishiye kuphela Umbhalo ovamile wokuqala</string>
-  <string name="morphe_hide_keyword_content_screen_title">Ihlolo lamagama angukhiye</string>
-  <string name="morphe_hide_keyword_content_screen_summary">Khetha amagama noma imisho ethile ukuze ufihle amavidiyo ema-feed nasokusesheni</string>
-  <string name="morphe_hide_keyword_content_comments_title">Fihla imibhalo ngokwamagama okhiye</string>
-  <string name="morphe_hide_keyword_content_home_title">Fihla amavidiyo e-Home ngamagama angukhiye</string>
-  <string name="morphe_hide_keyword_content_search_title">Fihla imiphumela yokusesha ngamagama angukhiye</string>
-  <string name="morphe_hide_keyword_content_subscriptions_title">Fihla amavidiyo e-Subscriptions ngamagama angukhiye</string>
-  <string name="morphe_hide_keyword_content_phrases_title">Amagama angukhiye okufihla</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Faka amagama angukhiye namagama okufihla, ahlukaniswe imigqa emisha
-
-Amagama angukhiye angaba yinyupha ethile ebonakala ezihloko zezividiyo noma emagameni amasizinda"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Ikhaya / Izisayinsiza / Ukusesha / Imibhalo ihlukaniswe ukuze kufihle okuqukethwe okuhambisana namagama angukhiye
-
-Imingcele:
-• Ama-Shorts amanye aweke afihleke ngegama lesizinda
-• Izithako ezithile ze-UI zingase zingafihleki"</string>
-  <string name="morphe_hide_keyword_content_about_whole_words_title">Fanela amagama aphelele</string>
-  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
-  <string name="morphe_hide_keyword_content_about_whole_words_summary">Ukuvala igama elibalulekile/isisho ngezimpawu zokuqondisa ezimbili (double-quotes) kuzovimbela ukutholakala kwezingxenye zezihloko ze-video namagama ama-channel&lt;br&gt;&lt;br&gt;Isibonelo,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; kuzofihla i-video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;kodwa ngeke ifihle: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
-  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Igama elibalulekile linemimiso ephikisanayo: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_length">Igama elibalulekile lifushane kakhulu futhi lidinga izinto zokuqondisa: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_broad">Igama elizofihla zonke izividiyo: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ikhaya: %1$s
-• Ukubhalisela: %2$s
-• Thola: %3$s
-• Imibhalo: %4$s
-• Okuphelele: %5$s"</string>
-  <string name="morphe_hide_stats_category_title">Izibalo</string>
-  <string name="morphe_hide_stats_hidden_24h_title">Amavidiyo afihliwe, amahora angu-24 adlulile</string>
-  <string name="morphe_hide_stats_hidden_all_title">Amavidiyo afihliwe, sonke isikhathi</string>
-  <string name="morphe_hide_stats_hidden_24h_reset_title">Buyise kabusha isibalo samahora angu-24 adlulile?</string>
-  <string name="morphe_hide_stats_hidden_all_reset_title">Buyise kabusha isibalo saso sonke isikhathi?</string>
   <string name="morphe_hide_aislist_screen_title">Ihlungo lamashaneli e-AI</string>
   <string name="morphe_hide_aislist_screen_summary">Fihla amavidiyo avela emashaneleni amakiwe njengokuqukethwe okwakhiwe ngu-AI yi-AiSList community list</string>
   <string name="morphe_hide_aislist_blocklist_category_title">Uhlu lokuvimba: Ukwethemba okuphezulu</string>
@@ -391,6 +187,345 @@ Izibiko zivulekile futhi zibuyekezwa ngaphambi kokuba ishaneli yengezwe ohlwini.
   <string name="morphe_aislist_submit_failed_rate_limit">Imibiko eminingi kakhulu ithunyelwe, zama futhi kamuva</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList yenqabe umbiko</string>
   <string name="morphe_aislist_submit_failed">Umbiko uhlulekile, hlola uxhumano lwakho</string>
+  <string name="morphe_channel_screen_title">Ikhasi leshanneli</string>
+  <string name="morphe_channel_screen_summary">Khetha ukuthi yiziphi izinto ezivela ekhasini lesiteshi</string>
+  <string name="morphe_hide_channel_tab_title">Vumela ifilitha ye-tab yeshanneli</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">Ifilitha ye-tab yeshanneli</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">Faka amagama ama-tab enquaneni ofuna ukuhlunga ngawo, ahlukaniswe imigqa emisha</string>
+  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">Fihla inkinobho ye-Community</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">Fihla inkinobho ye-Join</string>
+  <string name="morphe_hide_links_preview_title">Fihla ukubukelwa kwezixhumanisi</string>
+  <string name="morphe_hide_links_preview_summary">Fihla izixhumelo zewebhu ezichofozekayo ekhanda lesiteshi</string>
+  <string name="morphe_hide_members_only_chip_title">Fihla i-chip ethi \'Members only\'</string>
+  <string name="morphe_hide_members_only_chip_summary">Ifihla i-chip ethi \'Amalungu kuphela\' ebhalweni lokuhlunga leshaneli</string>
+  <string name="morphe_hide_members_shelf_title">Fihla ishelufu yamalungu</string>
+  <string name="morphe_hide_members_shelf_summary">Fihla uhlu lwamalungu esiteshini</string>
+  <string name="morphe_hide_posts_shelf_title">Fihla ishelufu yezithupha</string>
+  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">Fihla inkinobho yeIsitolo</string>
+  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">Fihla inkinobho yeBhalisa</string>
+  <string name="morphe_explore_menu_screen_title">Imenyu ye-Explore</string>
+  <string name="morphe_explore_menu_screen_summary">Khetha ukuthi yiziphi izinto ezivela ohlwini lokuhlola</string>
+  <string name="morphe_hide_courses_menu_title">Fihla imenyu yeZifundo</string>
+  <string name="morphe_hide_explore_button_title">Fihla inkinobho ye-Explore</string>
+  <string name="morphe_hide_fashion_menu_title">Fihla imenyu ye-\'Fashion &amp; Beauty\'</string>
+  <string name="morphe_hide_gaming_menu_title">Fihla imenyu yeGaming</string>
+  <string name="morphe_hide_hype_menu_title">Fihla imenyu yeHype</string>
+  <string name="morphe_hide_learning_menu_title">Fihla imenyu ye-Learning</string>
+  <string name="morphe_hide_live_menu_title">Fihla imenyu yeLive</string>
+  <string name="morphe_hide_memberships_menu_title">Fihla imenyu yeMemberships</string>
+  <string name="morphe_hide_movies_menu_title">Fihla imenyu ye-\'Movies &amp; TV\'</string>
+  <string name="morphe_hide_music_menu_title">Fihla imenyu yeMusic</string>
+  <string name="morphe_hide_news_menu_title">Fihla imenyu yeNews</string>
+  <string name="morphe_hide_playables_menu_title">Fihla imenyu ye-Playables</string>
+  <string name="morphe_hide_podcasts_menu_title">Fihla imenyu ye-Podcasts</string>
+  <string name="morphe_hide_shopping_menu_title">Fihla imenyu ye-Shopping</string>
+  <string name="morphe_hide_sports_menu_title">Fihla imenyu ye-Sports</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Fihla imenyu ye-YouTube Premium</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Fihla imenyu ye-YouTube Studio</string>
+  <string name="morphe_hide_youtube_music_menu_title">Fihla imenyu ye-YouTube Music</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Fihla imenyu ye-YouTube Kids</string>
+  <string name="morphe_hide_youtube_create_menu_title">Fihla imenyu ye-YouTube Create</string>
+  <string name="morphe_hide_youtube_works_menu_title">Fihla imenyu ethi \'How YouTube works\'</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Fihla izinyawo zomthetho nobumfihlo</string>
+  <string name="morphe_hide_filter_bar_screen_title">Ibha yokuhlunga</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Khetha lapho kufanele kufihwe khona ibha yohlelo lokuhlunga esukumelayo</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">Fihla ekhasini lesiteshi</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Fihla emibhalweni</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Fihla ema-feed</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Fihla amavidiyo ahlobene</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Fihla emiphumeleni yokusesha</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Fihla emlandweni wokubuka</string>
+  <string name="morphe_hide_keyword_content_screen_title">Ihlolo lamagama angukhiye</string>
+  <string name="morphe_hide_keyword_content_screen_summary">Khetha amagama noma imisho ethile ukuze ufihle amavidiyo ema-feed nasokusesheni</string>
+  <string name="morphe_hide_keyword_content_comments_title">Fihla imibhalo ngokwamagama okhiye</string>
+  <string name="morphe_hide_keyword_content_home_title">Fihla amavidiyo e-Home ngamagama angukhiye</string>
+  <string name="morphe_hide_keyword_content_search_title">Fihla imiphumela yokusesha ngamagama angukhiye</string>
+  <string name="morphe_hide_keyword_content_subscriptions_title">Fihla amavidiyo e-Subscriptions ngamagama angukhiye</string>
+  <string name="morphe_hide_keyword_content_phrases_title">Amagama angukhiye okufihla</string>
+  <string name="morphe_hide_keyword_content_phrases_summary">"Faka amagama angukhiye namasizinda ofuna ukuwafihla, ahlukaniswe imigqa emisha
+
+Amagama angukhiye angaba yinoma iyiphi imibhalo ebonakala ezihloko zezividiyo. Igama elithi @UserName lifihla konke okuvela kubadali abathile"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Ikhaya / Izisayinsiza / Ukusesha / Imibhalo ihlukaniswe ukuze kufihle okuqukethwe okuhambisana namagama angukhiye
+
+Imingcele:
+• Ama-Shorts amanye aweke afihleke ngegama lesizinda
+• Izithako ezithile ze-UI zingase zingafihleki"</string>
+  <string name="morphe_hide_keyword_content_about_whole_words_title">Fanela amagama aphelele</string>
+  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <string name="morphe_hide_keyword_content_about_whole_words_summary">Ukuvala igama elibalulekile/isisho ngezimpawu zokuqondisa ezimbili (double-quotes) kuzovimbela ukutholakala kwezingxenye zezihloko ze-video namagama ama-channel&lt;br&gt;&lt;br&gt;Isibonelo,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; kuzofihla i-video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;kodwa ngeke ifihle: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_toast_invalid_length">Igama elibalulekile lifushane kakhulu futhi lidinga izinto zokuqondisa: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_broad">Igama elizofihla zonke izividiyo: %s</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ikhaya: %1$s
+• Ukubhalisela: %2$s
+• Thola: %3$s
+• Imibhalo: %4$s
+• Okuphelele: %5$s"</string>
+  <string name="morphe_hide_stats_category_title">Izibalo</string>
+  <string name="morphe_hide_stats_hidden_24h_title">Amavidiyo afihliwe, amahora angu-24 adlulile</string>
+  <string name="morphe_hide_stats_hidden_all_title">Amavidiyo afihliwe, sonke isikhathi</string>
+  <string name="morphe_hide_stats_hidden_24h_reset_title">Buyise kabusha isibalo samahora angu-24 adlulile?</string>
+  <string name="morphe_hide_stats_hidden_all_reset_title">Buyise kabusha isibalo saso sonke isikhathi?</string>
+  <string name="morphe_post_buttons_screen_title">Izinobho ze-post</string>
+  <string name="morphe_post_buttons_screen_summary">Khetha indlela yokuhlelwa kwezinobho ngaphansi kwe-posts zomphakathi nokuthi yiziphi izinkinobho okufanele zicashwe</string>
+  <string name="morphe_post_buttons_layout_title">Ukuhleleka kwezinestu zokuthumela</string>
+  <string name="morphe_post_buttons_layout_entry_1">Iserba</string>
+  <string name="morphe_post_buttons_layout_entry_2">Okuphoqelekile</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Fihla izinkinobho ze-Like ne-Dislike</string>
+  <string name="morphe_hide_post_dislike_button_title">Fihla inkinobho yokungathandi</string>
+  <string name="morphe_hide_post_dislike_button_summary">Ngokuhleleka Okuphoqelekile, indawo yenestu ishiywa</string>
+  <string name="morphe_hide_post_comment_button_title">Fihla inkinobho yokuphawula</string>
+  <string name="morphe_hide_post_comments_preview_title">Ifihla isiboniso semibhalo ngaphansi kwezithumelo</string>
+  <string name="morphe_hide_post_comments_preview_summary">Ifihla isiboniso semibhalo ngaphansi kwezintshumayelo</string>
+  <string name="morphe_hide_post_share_button_title">Fihla inkinobho yokwabelana</string>
+  <string name="morphe_hide_post_share_button_summary">Inkinobho yokulanda izithombe zethamba idweba eduze nenkinobho yokwabelana, ngakho nayo ifihliwe</string>
+  <string name="morphe_hide_ask_gemini_button_title">Fihla inkinobho ethi \'Buza uGemini\'</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Ifihla inkinobho ethi \'Buza uGemini\' phansi kwephaneli ethi \'Buza ngaleli vhidiyo\'</string>
+  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <string name="morphe_hide_autoplay_preview_title">Fihla ukubukiselwa kwokuqala okuzenzakalayo</string>
+  <string name="morphe_hide_autoplay_preview_summary">Ifihla isibukiso sevidiyo ezayo esikrini esigcwele ngaphambi kokuba i-autoplay iqale</string>
+  <string name="morphe_hide_channel_bar_title">Fihla ibha yeshanali</string>
+  <string name="morphe_hide_channel_watermark_title">Fihla i-watermark yeshanali</string>
+  <string name="morphe_hide_chapters_button_title">Fihla inkinobho yeZahluko</string>
+  <string name="morphe_hide_crowdfunding_box_title">Fihla ibhokisi le-crowdfunding</string>
+  <string name="morphe_hide_emergency_box_title">Fihla amabhokisi ezigameko</string>
+  <string name="morphe_hide_in_this_video_button_title">Fihla inkinobho ethi \'Kule video\'</string>
+  <string name="morphe_hide_info_panels_title">Fihla amapaneli olwazi</string>
+  <string name="morphe_hide_info_panels_summary">Ifihla amapaneli olwazi, njengolwazi lwezempilo</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the video player for certain videos. -->
+  <string name="morphe_hide_join_membership_button_title">Fihla inkinobho ethi Joyina</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">Fihla inkinobho ethi \'Ukuphinda ukuxoxa okubukhoma\'</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">Ifihla inkinobho yokudlala kabusha ingxoxo esimweni se-fullscreen</string>
+  <string name="morphe_hide_medical_panels_title">Fihla amapaneli ezempilo</string>
+  <string name="morphe_hide_player_gesture_hints_title">Fihla iziboniso zezandla zomdlali</string>
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Kufihla iziboniso ezikhonjiswa ngesikhathi sezandla zomdlali, njenge-\'Donsa phezulu ukuze ukhuphule ngokunembile\', \'Yiyise ukuze ukhansele\' kanye no-\'2x\'</string>
+  <string name="morphe_hide_subscribers_community_guidelines_title">Fihla imigomo yababhalisele</string>
+  <string name="morphe_hide_sync_button_title">Fihla inkinobho ethi \'Sync to video\'</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">Fihla i-gradient yokuthinta nokubamba</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Ifihla i-gradient yokulawula isidlali lapho usetshenzisa umunwe wakho ubambe ukuze usheshise</string>
+  <string name="morphe_hide_timed_reactions_title">Fihla izimo zezikhathi</string>
+  <string name="morphe_hide_timed_reactions_summary">Ifihla isici esivumela abasebenzisi ukuphendula ngama-emoji esigabeni sokuphendula nasengxoxweni eqondile</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Fihla imenyu ye-\'Usizo &amp; imibono\'</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Ifihla imenyu ye-\'Usizo &amp; imibono\' lapho usebenzisa inkinobho yezichashazi ezintathu, njengakuimiphumela yokusesha</string>
+  <string name="morphe_hide_handle_title">Fihla i-handle</string>
+  <string name="morphe_hide_handle_summary">Fihla i-handle ye-channel yakho kuthebhu elithi \'Wena\'</string>
+  <string name="morphe_hide_video_title_title">Fihla isihloko sevidiyo</string>
+  <string name="morphe_hide_video_title_summary">Ifihla isihloko sevidiyo esimweni se-fullscreen</string>
+  <string name="morphe_sanitize_video_subtitle_title">Hlanza izincazelo ze-video</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Isusa amagama afana no \'#\', \'Fundraiser\', \'product(s)\', kanye no \'Shop\' ezinqubeni zezincazelo zezividiyo</string>
+  <!-- layout.buttons.action.hideButtonsPatch -->
+  <string name="morphe_action_buttons_screen_title">Izinkinobho zezenzo</string>
+  <string name="morphe_action_buttons_screen_summary">Khetha ukuthi yiziphi izinkinobho zezenzo ezivela emodini emile nasemodini yesikrini sawonke</string>
+  <string name="morphe_portrait_buttons">Izinkinobho ze-Portrait</string>
+  <string name="morphe_disable_like_subscribe_glow_title">Khise ukukhanya kwe-Like ne-Subscribe</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">Kuvimbela izinkinobho ze-Like ne-Subscribe ukuba zikhanye lapho umdali ekukhuluma ngazo</string>
+  <string name="morphe_hide_action_bar_title">Fihla i-action bar</string>
+  <string name="morphe_hide_like_dislike_button_title">Fihla inkinobho ye-Like ne-Dislike</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_share_button_title">Fihla inkinobho ye-Share</string>
+  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_stop_ads_button_title">Fihla inkinobho ethi \'Stop ads\'</string>
+  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <string name="morphe_hide_comments_button_title">Fihla inkinobho ye-Comments</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Fihla inkinobho ethi Xhumana</string>
+  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on live stream videos. -->
+  <string name="morphe_hide_report_button_title">Fihla inkinobho ye-Report</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_remix_button_title">Fihla inkinobho ye-Remix</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_download_button_title">Fihla inkinobho ye-Download</string>
+  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on videos uploaded by the logged-in user. -->
+  <string name="morphe_hide_hype_button_title">Fihla inkinobho ye-Hype</string>
+  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_promote_button_title">Fihla inkinobho ye-Promote</string>
+  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_thanks_button_title">Fihla inkinobho ye-Thanks</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <string name="morphe_hide_ask_button_title">Fihla inkinobho ye-Ask</string>
+  <string name="morphe_hide_channel_profile_button_title">Fihla ishanneli nenkinobho ye-Subscribe</string>
+  <string name="morphe_hide_channel_profile_button_summary">Ifihla i-avatar yeshanneli nenkinobho ye-Subscribe ekuqaleni kwe-action bar</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Fihla inkinobho ye-Subscribe</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Ifihla izinkinobho ze-Subscribe ne-Join eduze kwesithombe seshaneli ekuqaleni kwe-action bar</string>
+  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_clip_button_title">Fihla inkinobho ye-Clip</string>
+  <string name="morphe_hide_clip_button_summary">Lokhu kungase kungasebenzi kwezinye ama-akhawunti abasebenzisi</string>
+  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shop_button_title">Fihla inkinobho ye-Shop</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_save_button_title">Fihla inkinobho ye-Save</string>
+  <string name="morphe_hide_more_button_title">Fihla inkinobho ethi Okwengeziwe</string>
+  <string name="morphe_fullscreen_buttons">Izinkinobho ze-Fullscreen</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Fihla inkinobho ye-Dislike</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Fihla inkinobho ye-Like</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Fihla inkinobho ye-\'Live chat\'</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Fihla inkinobho ye-Mix</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Fihla inkinobho ye-\'More videos\'</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Fihla inkinobho ye-Playlist</string>
+  <string name="morphe_quick_actions_top_margin_title">Umgcauze phezulu wezenzo ezisheshayo</string>
+  <string name="morphe_quick_actions_top_margin_summary">Beka umgcauze phezulu webha yezenzo ezisheshayo (0-32 dp)</string>
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">Imode yezindawo</string>
+  <string name="morphe_ambient_mode_screen_summary">Phatha ukubonakala kwe-Ambient mode kanye nezivimbelo zamandla</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Dlula imingcele ye-Ambient mode</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary">Kuvumela i-Ambient mode ukuba ihlale isebenza ngenkathi kusebenzisa i-battery saver mode</string>
+  <string name="morphe_disable_ambient_mode_title">Khise i-Ambient mode</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_title">Vimba i-Ambient mode ekukhipheni isikrini sigcwele</string>
+  <string name="morphe_enhanced_ambient_mode_title">Imodi ye-Ambient ethuthukisiwe</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Khanyisa ikhasi lonke lokubuka kanye nemigqa emnyama ngevidiyo, esikhundleni se-Ambient mode</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Amandla okukhanya</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Ukuthi ukukhanya kunamandla kangakanani ekhasini levarisishini kanye nemigqa emnyama</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Ukulungisa ukukhanya</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Isikhathi ukukhanya esithatha ukuze kulandele ividiyo. Uma kuwukuzoba 0, kulandela ividiyo eduze</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Ukufifala kokukhanya</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Ukuthi ukukhanya okuseduze nevidiyo kufifala kangakanani. Uma kuwukuzoba 0, kugcina izimo zevidiyo</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Gcina umbhalo ufundeka</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Cishisela ukukhanya kumavidiyo akhanyayo ukuze umbhalo ekhasini uhlale ufundeka</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Khombisa kancane ngenkathi uskrola</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Kunciphisa ukukhanya ngenkathi ikhasi liskrolwa noma lithintwe</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Isikhathi sokukhanya kancane</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Isikhathi ukukhanya okuhlala kuncane ngemuva kokuma kokuskrola. Uma ku-0, ukuskrola kuphela okunciphisa ukukhanya, futhi kubuyela ngokujwayelekile masinyane lapho ukuskrola kunqikiza</string>
+  <string name="morphe_comments_screen_title">Imibhalo</string>
+  <string name="morphe_comments_screen_summary">Khetha ukuthi yiziphi izici ezivela esigabeni semicabango</string>
+  <string name="morphe_hide_comments_carousel_title">Vula i-comments carousel filter</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Faka igama elibalulekile noma igama eliphelele (isib. Ask, Community, Hype, Listen)
+• Ukufihla zonke izinto kufihla yonke ingxenye yezingxoxo"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">I-comments carousel filter</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Faka amagama e-carousel yemicabango ofuna ukuhlunga ngawo, ahlukaniswe imigqa emisha</string>
+  <string name="morphe_hide_comments_ai_chat_summary_title">Fihla isifinyezo se-AI chat</string>
+  <string name="morphe_hide_comments_channel_guidelines_title">Fihla imigomo yeshanneli</string>
+  <string name="morphe_hide_comments_contexts_title">Fihla imilayezo yengxenye</string>
+  <string name="morphe_hide_comments_by_members_header_title">Fihla ikhanda elithi \'Imibhalo yamalungu\'</string>
+  <string name="morphe_hide_comments_section_title">Fihla isigaba sokuphawula</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Fihla isigaba sokuphawula ku-feed yaseKhaya</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Fihla Imigomo yoMphakathi</string>
+  <string name="morphe_hide_comments_create_a_short_button_title">Fihla inkinobho ethi \'Dala i-Short\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">Fihla inkinobho ye-Dislike</string>
+  <string name="morphe_hide_comments_emoji_button_title">Fihla inkinobho ye-Emoji</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Fihla izinketho zebha yokuhlunga</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Ifihla zonke izinketho zebha yokuhlunga ngaphandle kwe-\'Top\' kanye ne-\'Newest\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Fihla inkinobho ye-GIF</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Fihla ama-GIFs nezithombe</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Ifihla ama-GIFs nezithombe ezihambisana nemibono nezimpendulo</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Fihla imizekeliso yezipho namakhadi</string>
+  <string name="morphe_hide_comments_gift_button_title">Fihla inkinobho Yesipho</string>
+  <string name="morphe_hide_comments_info_button_title">Fihla inkinobho ye-Info</string>
+  <string name="morphe_hide_comments_live_chat_donators_bar_title">Fihla ibha labanikezi be-live chat</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Fihla inkinobho yokuskrola phansi e-live chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Fihla imiyalelo yengxoxo eqondile</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Ifihla ama-tooltip popups akhonjiswa eduze kwenyezi lokufaka imilayezo yengxoxo, njengesaziso sengxoxo yababhalise kuphela</string>
+  <string name="morphe_hide_comments_menu_button_title">Fihla inkinobho yeMenu</string>
+  <string name="morphe_hide_comments_menu_button_summary">Ifihla inkinobho ye-menu yama-dot ayi-3 yakho yonke imibono</string>
+  <string name="morphe_hide_comments_preview_comment_title">Fihla ukubuka okufushane okuphawulayo</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Ifihla ukubukela imicabango ngaphansi kwevidiyo ngaphambi kokuvula isigaba semicabango esigcwele</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Ukuphawula kufihliwe ngu-Morphe…</string>
+  <string name="morphe_minimal_comments_button_title">Vumela inkinobho yokuphawula okuncane</string>
+  <string name="morphe_minimal_comments_button_summary">Ifihla amakhadi ahambayo kanye nesikhethelo sekhasi saso, okubonakala enkinobhweni yokuphawula</string>
+  <string name="morphe_hide_comments_thanks_button_title">Fihla inkinobho ye-Thanks</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Fihla inkinobho yesikhathi</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Fihla inkinobho ethi \'Abafani abavelele\'</string>
+  <string name="morphe_hide_comments_translate_button_title">Fihla inkinobho yokuhumusha</string>
+  <string name="morphe_hide_comments_zero_state_title">Fihla umlayezo othi \'Ayikho imibono okwamanje\'</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Hlanza ama-link okusesha agundwe</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Ihlanzanisa ama-link okusesha agundwe, ishiye kuphela Umbhalo ovamile wokuqala</string>
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
+  <string name="morphe_hide_player_flyout_title">Imenyu ye-Flyout</string>
+  <string name="morphe_hide_player_flyout_summary">Khetha ukuthi yiziphi izici ezivela emenwini lokuphuma</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Fihla imenyu ethi \'Izilungiselelo ezengeziwe\' / Okunye</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Fihla imenyu ethi \'Imodi yezindawo\'</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Imenyu ye-'Audio Track' ifihliwe
+
+Ukuze ubonise imenyu ye-'Audio Track', shintsha 'Spoof video streams' kube yiklayenti noma iyiphi ngaphandle kwe-'Android Studio' ne-'Android VR Downgraded'"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Fihla imenyu ethi \'Ithrekhi yomsindo\'</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Fihla isizinda semenyu ethi \'Ithrekhi yomsindo\'</string>
+  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_captions_title">Fihla imenyu ye-Captions</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Fihla isizinda semenyu ye-Captions</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Fihla ikhanda lemenyu ye-Captions</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_help_title">Fihla imenyu ethi \'Usizo &amp; imbuyekezo\'</string>
+  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Fihla imenyu ethi \'Lalela nge-YouTube Music\'</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Fihla imenyu ethi \'Lock screen\'</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Fihla imenyu ethi \'Phinda ividiyo\'</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Fihla imenyu ethi \'On-the-go\'</string>
+  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_quality_title">Fihla imenyu ye-Quality</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Fihla isizinda semenyu ye-Quality</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Fihla ikhanda lemenyu ye-Quality</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Fihla imenyu ethi \'Isikhathi sokulala\'</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Fihla imenyu ethi \'Isivinini sokudlala\'</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Fihla imenyu ethi \'Ivolyumu ezinzile\'</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Fihla imenyu ethi \'Buka nge-VR\'</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_overlay_buttons_screen_title">Izinkinobho zokugubuzela</string>
+  <string name="morphe_overlay_buttons_screen_summary">Khetha ukuthi yiziphi izinkinobho ezivela phezu kwesidlali sevidiyo</string>
+  <string name="morphe_hide_autoplay_button_title">Fihla inkinobho ye-Autoplay</string>
+  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_captions_button_title">Fihla inkinobho ye-Captions</string>
+  <string name="morphe_hide_cast_button_title">Fihla inkinobho ye-Cast</string>
+  <string name="morphe_hide_cast_button_summary">Ifihla inkinobho ye-Cast kudlali video kanye nase-toolbar</string>
+  <string name="morphe_hide_collapse_button_title">Fihla inkinobho ye-Collapse</string>
+  <string name="morphe_hide_fullscreen_button_title">Fihla inkinobho ye-Fullscreen</string>
+  <string name="morphe_hide_player_control_buttons_background_title">Fihla isizinda sezilawuli zomdlali</string>
+  <string name="morphe_hide_player_control_buttons_background_summary">Ifihla ukumnyama okuzungeze izilawuli zesidlali sevidiyo</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Ukucaca kwengemuva kwezinkinobho zokulawula</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Lungisa ukucaca kwengemuva ngemuva kwezinkinobho zokulawula umdlali nebha yesikhathi (0 akubonakali, 100 lugcwele)</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">Fihla izinkinobho ze-Previous &amp; Next</string>
+  <string name="morphe_hide_settings_button_title">Fihla inkinobho ye-Settings</string>
+  <string name="morphe_hide_description_components_screen_title">Incazelo yevidiyo</string>
+  <string name="morphe_hide_description_components_screen_summary">Khetha ukuthi yiziphi izici okufanele zivela encazelweni yevidiyo</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_title">Fihla isigaba se-\'Isifingqo sevidiyo esenziwe yi-AI\'</string>
+  <string name="morphe_hide_ask_section_title">Fihla isigaba se-Ask</string>
+  <string name="morphe_hide_attributes_section_title">Fihla isigaba se-Attributes</string>
+  <string name="morphe_hide_attributes_section_summary">Kufihla izigaba ze-Featured places, Games, Music, kanye ne-People mentioned</string>
+  <string name="morphe_hide_channel_links_section_title">Fihla isigaba sezixhumelo ze-Channel</string>
+  <string name="morphe_hide_chapters_section_title">Fihla isigaba se-Chapters</string>
+  <string name="morphe_hide_corrections_section_title">Fihla isigaba se-Corrections</string>
+  <string name="morphe_hide_course_progress_section_title">Fihla isigaba se-\'Course progress\'</string>
+  <string name="morphe_hide_explore_section_title">Fihla isigaba se-Explore</string>
+  <string name="morphe_hide_explore_section_summary">Kufihla izigaba ze-Explore this course kanye ne-Explore the podcast</string>
+  <string name="morphe_hide_explore_course_section_title">Fihla isigaba se-\'Explore this course\'</string>
+  <string name="morphe_hide_explore_podcast_section_title">Fihla isigaba se-\'Explore the podcast\'</string>
+  <string name="morphe_hide_featured_channels_section_title">Fihla isigaba samamashaneli aveziwe</string>
+  <string name="morphe_hide_featured_links_section_title">Fihla isigaba sezixhumelo eziveziwe</string>
+  <string name="morphe_hide_featured_playlists_section_title">Fihla isigaba sezilu ze-Featured playlists</string>
+  <string name="morphe_hide_featured_videos_section_title">Fihla isigaba samavidiyo aveziwe</string>
+  <string name="morphe_hide_hashtag_section_title">Fihla isigaba se-Hashtag</string>
+  <string name="morphe_hide_how_this_was_made_section_title">Fihla isigaba esithi \'Indlela lokhu okwenziwe ngayo\'</string>
+  <string name="morphe_hide_hype_points_title">Fihla amaphuzu e-Hype</string>
+  <string name="morphe_hide_info_cards_section_title">Fihla isigaba samakhadi wolwazi</string>
+  <string name="morphe_hide_key_concepts_section_title">Fihla isigaba se-\'Key Concepts\'</string>
+  <string name="morphe_hide_quizzes_section_title">Fihla isigaba semibuzo</string>
+  <string name="morphe_hide_search_inside_this_video_section_title">Fihla isigaba sika \'Search inside this video\'</string>
+  <string name="morphe_hide_subscribe_button_title">Fihla inkinobho ye-Subscribe</string>
+  <string name="morphe_hide_transcript_section_title">Fihla isigaba sombhalo wevidiyo</string>
+  <string name="morphe_hide_video_details_section_title">Fihla isigaba se\"Imininingwane yevidiyo\"</string>
   <!-- layout.snackbar.snackbarPatch -->
   <string name="morphe_snackbar_screen_title">I-Snackbar</string>
   <string name="morphe_snackbar_screen_summary">Fihla ama-snackbar noma ushintshe imibala yawo nesimo</string>
@@ -473,6 +608,9 @@ Izibiko zivulekile futhi zibuyekezwa ngaphambi kokuba ishaneli yengezwe ohlwini.
   <string name="morphe_feed_long_press_menu_summary">Ukuchofoza nokubamba noma kuphi ku-feed yevidiyo kuvula imenyu yayo</string>
   <string name="morphe_feed_watch_later_button_title">Khombisa inkinobho ethi Buka kamuva kuma-thumbnail</string>
   <string name="morphe_feed_watch_later_button_summary">Inkinobho ye-Watch later ibonakala kuma-thumbnails e-feed yama-video, nenothi elikhombisa ukuthi i-video yongelele. Ukuyithinta kuyonga noma kuyisuse i-video, futhi ukuthinta ukubamba kuvula i-Save to playlist</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Vula izithombe ze-post ngesikrinimbono esiphelele</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Ukuthinta isithombe se-post sivula sona ngesikrinimbono esiphelele, esikhundleni se-feed ye-posts</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Landa izithombe zethumelo</string>
   <string name="morphe_post_image_download_summary">Inkinobho yokulanda ibonakala eduze nenkinobho yokwabelana kwezithumelo ezinezithombe noma ama-GIF, futhi into yokulanda iyengezwa kumenyu yawo</string>
@@ -523,6 +661,10 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Khombisa isibalo se-like se-thumbnail ye-feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Khombisa iphesenti le-like se-thumbnail ye-feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Indawo yelayiki le-thumbnail ye-feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Eduze kwezinombolo zokubuka</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Phakathi kwasekunene</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Phezulu kwasekunxele</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Sesha emibhalweni</string>
   <string name="morphe_search_comments_summary">Thinta inkinobho yokusesha emaphawulweni ukuze ubonise kuphela imibono elayishiwe equkethe wonke amagama afunwayo. Faka amagama ezinkomiziyweni ukuze useshe umusho</string>
@@ -555,22 +697,21 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <string name="morphe_shorts_download_flyout_button_title">Khombisa ukulandela ku-menu yama-Shorts</string>
   <string name="morphe_shorts_download_flyout_button_summary">Yenza ukuthi kube nento yokudownloada kumenyu yomdlali we-Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Landa</string>
+  <string name="morphe_feed_download_flyout_button_title">Phoqisa ithemba lemenyu yokulandela</string>
+  <string name="morphe_feed_download_flyout_button_summary">Yenge ithemba lokulandela kumenu yama-feed evidiyo angenalo</string>
+  <string name="morphe_download_force_4k_title">Phikelela ngokutholakala kokudownloada kwe-4K</string>
+  <string name="morphe_download_force_4k_summary">Inikeza ukulandela kwe-1440p kanye ne-4K ngisho noma i-YouTube nqume ukuthi leli device alikwazi ukuzidlala</string>
+  <string name="morphe_download_quality_about_title">i-1080p alithengiseki</string>
+  <string name="morphe_download_quality_about_summary">Uma ukudownloada ohlelweni kunganikezi i-1080p, vula u-\'Spoof device dimensions\' kuzilungiselelo ze-Miscellaneous</string>
   <string name="morphe_export_download_folder_title">Exportha amavidiyo agcinwe</string>
-  <string name="morphe_export_download_folder_summary">"Exportha amavidiyo agcinwe ohlelweni kudivayisi yakho usebenzisa imenyu ye-downloads. Thinta ukuze ushintshe ifolda ye-export
+  <string name="morphe_export_download_folder_summary">"Thumela amavidiyo agcinwe ohlelweni ku-storage yomshini wakho usebenzisa imenyu yezinto ezilandwayo ohlelweni. Chofoza lapha ukuze ushintshe ifolda yokuthumela
 
-Ifolda ye-export: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Ifolda ye-export</string>
-  <string name="morphe_export_download_folder_change">Shintsha ifolda</string>
-  <string name="morphe_export_download_folder_changed">Ifolda ye-export ishintshiwe</string>
-  <string name="morphe_export_download_folder_reset">Ifolda ye-export isethwe kabusha</string>
-  <string name="morphe_export_download_folder_missing">Akukwazanga ukutholakala ifolda yokukhipha %s</string>
-  <string name="morphe_export_download_flyout_title">Exportha kudivayisi</string>
+Ifolda yokuthumela: %s"</string>
   <string name="morphe_export_download_started">Kuyexporthwa ividiyo</string>
   <string name="morphe_export_download_progress">Kukhiphelwa phandle ividiyo: %s%%</string>
   <string name="morphe_export_download_notification_channel">I-export yamavidiyo</string>
   <string name="morphe_export_download_saved">Ividiyo i-exportwe ku %s</string>
   <string name="morphe_export_download_failed">Kukwazekanga uku-exporta ividiyo</string>
-  <string name="morphe_export_download_canceled">I-export icancelwe</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ukuhumusha ngezwi</string>
   <string name="morphe_vot_screen_summary">Funda imibhalo yevidiyo ngokuzwakalayo usebenzisa i-text-to-speech edivaisini, ihambisana nokudlalwa kwevidiyo</string>
@@ -648,6 +789,25 @@ Okhiye wakho we-API akufanele wabelane nakube yikuphi. Noma ubani onokufinyelela
   <string name="morphe_loop_video_range_clear">Sula</string>
   <string name="morphe_loop_video_range_toast_on">Kuphindaphinda %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Isikhathi esingafanele</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Isibalo se-loop</string>
+  <string name="morphe_loop_count_screen_summary">Khetha ukuthi ividiyo iphinde kangaki ngaphambi kwevidiyo elandelayo</string>
+  <string name="morphe_loop_count_title">Vula isibalo se-loop</string>
+  <string name="morphe_loop_count_summary">Imenyu ye-More yomdlali ikhombisa i-Loop count eduze kwe-Loop video, ukuze ukhethe ukuthi ividiyo idlale zingaki izikhathi ngaphambi kwevida lalandelayo</string>
+  <string name="morphe_loop_count_playlists_title">Gcina i-loop count ohlelweni lwe-playlists</string>
+  <string name="morphe_loop_count_playlists_summary">Ividiyo ngayinye ye-playlist igcina i-loop count oyikhethile, futhi i-Loop video ivulwa lapho i-playlist iyidlala futhi. Uma icishwe, i-loop count isetshenziselwa ividiyo edlalayo manje kuphela</string>
+  <string name="morphe_loop_count_clear_title">Sula ama-loop count agcinwe</string>
+  <string name="morphe_loop_count_clear_summary">Khohlwa ama-loop count agcinwe ohlelweni lwakho lwe-playlists. Amavidiyo agcinwe: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Ayikho ama-loop count agcinwe</string>
+  <string name="morphe_loop_count_clear_dialog_title">Sula ama-loop count agcinwe?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Amavidiyo e-playlists yakho akhohlwa i-loop count yawo, futhi i-Loop video ayisavulwa lapho i-playlist iyidlala</string>
+  <string name="morphe_loop_count_clear_done">Ama-loop count agcinwe asuliwe</string>
+  <string name="morphe_loop_count_flyout_name">Isibalo sokudlala kaningi</string>
+  <string name="morphe_loop_count_dialog_message">Ukuthi ividiyo idlalwe kangaki ngaphambi kwevidiyo elandelayo, kusukela ku-%1$s kuya ku-%2$s. Shiya kuyisikhala ukuze ividiyo idlale kaningi ngaphandle komkhawulo.</string>
+  <string name="morphe_loop_count_times">izikhathi u%s</string>
+  <string name="morphe_loop_count_no_limit">Ayikho imingcele</string>
+  <string name="morphe_loop_count_decrease">Izikhathi ezimbalwa</string>
+  <string name="morphe_loop_count_increase">Izikhathi eziningi</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Khombisa inkinobho ye-Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Khombisa imenyu ye-Picture-in-Picture</string>
@@ -685,6 +845,9 @@ Ulwazi: Kungase kungasebenzi kuma-live streams"</string>
   <string name="morphe_play_all_button_type_entry_11">amaShorts amaMember kuphela</string>
   <string name="morphe_play_all_button_type_entry_12">Ukugqiza okubukhoma kwamaMember kuphela</string>
   <string name="morphe_play_all_button_not_available_toast">Awukwazi ukwakha uhlu lokudlala ngenxa yokungahambisani kwe-ID yesiteshi</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Khombisa inkinobho yePlaylist</string>
+  <string name="morphe_playlist_panel_button_summary">Thinta ukuvula ipanela yeplaylist. Ibonakala kuphela lapho udlala iplaylist</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Khombisa inkinobho ye-Reload video</string>
   <string name="morphe_dismiss_player_not_available_toast">I-ID yevidiyo ayitholakali. Sicela ulayishe evidiyo kabusha ngokuzenzela</string>
@@ -710,8 +873,6 @@ Ulwazi: Kungase kungasebenzi kuma-live streams"</string>
   <string name="morphe_queue_type_entry_2">Uhlu lwemveli</string>
   <string name="morphe_queue_type_entry_3">Uhlu lwe-Morphe</string>
   <string name="morphe_queue_type_entry_4">Uhlu lwe-Morphe ohlangeni lomsebenzisi</string>
-  <string name="morphe_queue_add_flyout_menu_title">Yenge i-item yemenyu yohlelo lwe-queue lwe-flyout lwe-feed</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Yenge i-item ye-flyout eyengeziwe. Vumela lokhu uma \"Yenge ku-queue\" ingabonakali</string>
   <string name="morphe_local_queue_sheet_title">Uhlu lokulandelana</string>
   <string name="morphe_local_queue_open">Uhlu (%s)</string>
   <string name="morphe_local_queue_clear">Sula konke</string>
@@ -757,6 +918,10 @@ Ulwazi: Kungase kungasebenzi kuma-live streams"</string>
   <string name="morphe_queue_manager_open_queue">Vula uhlu</string>
   <string name="morphe_queue_manager_save_queue">Gcina uhlu ku-playlist</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Khombisa inkinobho yomugqa kuma-thumbnail</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Inkinobho yomugqa ibonakala kuma-thumbnail amavidiyo e-feed. Uma uchofoza kuyo, ividiyo yengezwa ekugcineni komugqa, kanti uma uchofoza uyibambe, idlala ividiyo elandelayo</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Shintsha izenzo zomugqa we-thumbnail</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Ukuchofoza inkinobho yomugqa kudlala ividiyo elandelayo, kanti ukuchofoza uyibambe kungeza ividiyo ekugcineni komugqa</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Loadinga amakhasi omugqa lapho uskrolila</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Loadinga amanye amavidiyo ohlukaniso lapho uskrolila eduze kokuphela komugqa</string>
   <string name="morphe_native_playlist_queue_saved">Uhlu lwezingoma lugcinwe</string>
@@ -831,6 +996,7 @@ Ukuze ulungise lokhu, vula 'Spoof video streams' bese ushintsha 'Default client'
   <string name="morphe_swipe_press_to_engage_title">Vula isenzo sokucindezela ukuze uswipe</string>
   <string name="morphe_swipe_press_to_engage_summary">Kudingeka ukucindezela uphathe ngaphambi kokuba isenzo sokuswayiza siqondwe</string>
   <string name="morphe_swipe_haptic_feedback_title">Vumela i-haptic feedback</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Yinyanya lapho ukuphinda ucindeze futhi ubambe kuqala isenzo sokusula</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Gcina futhi ubuyise ukukhanya</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Khumbula izinga lokukhanya lapho ungena / uphuma emodini yesikrin sawonke</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Vumela i-gesture ye-auto-brightness</string>
@@ -874,60 +1040,6 @@ Ukuze ulungise lokhu, vula 'Spoof video streams' bese ushintsha 'Default client'
   <string name="morphe_swipe_overlay_style_entry_7">I-overlay ngokumile (minimal)</string>
   <string name="morphe_swipe_change_video_title">Vumela uku-swipe ukuze ushintshe amavidiyo</string>
   <string name="morphe_swipe_change_video_summary">Hwebha emodini yesikrin sawonke ukuze uye ku-video elandelayo noma edlule</string>
-  <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_action_buttons_screen_title">Izinkinobho zezenzo</string>
-  <string name="morphe_action_buttons_screen_summary">Khetha ukuthi yiziphi izinkinobho zezenzo ezivela emodini emile nasemodini yesikrini sawonke</string>
-  <string name="morphe_portrait_buttons">Izinkinobho ze-Portrait</string>
-  <string name="morphe_disable_like_subscribe_glow_title">Khise ukukhanya kwe-Like ne-Subscribe</string>
-  <string name="morphe_disable_like_subscribe_glow_summary">Kuvimbela izinkinobho ze-Like ne-Subscribe ukuba zikhanye lapho umdali ekukhuluma ngazo</string>
-  <string name="morphe_hide_action_bar_title">Fihla i-action bar</string>
-  <string name="morphe_hide_like_dislike_button_title">Fihla inkinobho ye-Like ne-Dislike</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_share_button_title">Fihla inkinobho ye-Share</string>
-  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_stop_ads_button_title">Fihla inkinobho ethi \'Stop ads\'</string>
-  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-  <string name="morphe_hide_comments_button_title">Fihla inkinobho ye-Comments</string>
-  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_connect_button_title">Fihla inkinobho ethi Xhumana</string>
-  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on live stream videos. -->
-  <string name="morphe_hide_report_button_title">Fihla inkinobho ye-Report</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_remix_button_title">Fihla inkinobho ye-Remix</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_download_button_title">Fihla inkinobho ye-Download</string>
-  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on videos uploaded by the logged-in user. -->
-  <string name="morphe_hide_hype_button_title">Fihla inkinobho ye-Hype</string>
-  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_promote_button_title">Fihla inkinobho ye-Promote</string>
-  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_thanks_button_title">Fihla inkinobho ye-Thanks</string>
-  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
-  <string name="morphe_hide_ask_button_title">Fihla inkinobho ye-Ask</string>
-  <string name="morphe_hide_channel_profile_button_title">Fihla ishanneli nenkinobho ye-Subscribe</string>
-  <string name="morphe_hide_channel_profile_button_summary">Ifihla i-avatar yeshanneli nenkinobho ye-Subscribe ekuqaleni kwe-action bar</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Fihla inkinobho ye-Subscribe</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_summary">Ifihla izinkinobho ze-Subscribe ne-Join eduze kwesithombe seshaneli ekuqaleni kwe-action bar</string>
-  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_clip_button_title">Fihla inkinobho ye-Clip</string>
-  <string name="morphe_hide_clip_button_summary">Lokhu kungase kungasebenzi kwezinye ama-akhawunti abasebenzisi</string>
-  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shop_button_title">Fihla inkinobho ye-Shop</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_save_button_title">Fihla inkinobho ye-Save</string>
-  <string name="morphe_hide_more_button_title">Fihla inkinobho ethi Okwengeziwe</string>
-  <string name="morphe_fullscreen_buttons">Izinkinobho ze-Fullscreen</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Fihla inkinobho ye-Dislike</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Fihla inkinobho ye-Like</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Fihla inkinobho ye-\'Live chat\'</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Fihla inkinobho ye-Mix</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Fihla inkinobho ye-\'More videos\'</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Fihla inkinobho ye-Playlist</string>
-  <string name="morphe_quick_actions_top_margin_title">Umgcauze phezulu wezenzo ezisheshayo</string>
-  <string name="morphe_quick_actions_top_margin_summary">Beka umgcauze phezulu webha yezenzo ezisheshayo (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Izincazelo</string>
   <string name="morphe_captions_screen_summary">Phatha ama-captions azenzayo nama-caption cookies</string>
@@ -1026,6 +1138,12 @@ Ukuze ufike ku-Settings, vula inkinobho ye-Settings nge-General → Toolbar → 
   <string name="morphe_navigation_bar_glass_summary">Ikhombisa i-navigation bar njenge-capsule ehambayo, eyindilinga, futhi ecaca. Ayitholakali nendlela ye-Opaque navigation bar</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Ukuphazima kwe-glass</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Lungisa izinga lokucaca kwe-glass navigation bar (0 kucaca, 100 akucaci)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Ibha lokuzulazula lengilazi eliyindilinga</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Linika ibha lokuzulazula lengilazi iziphetho eziyindilinga, esikhundleni sezona njengokwenye i-miniplayer engilazi</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Uphondo lwebha yokuzulazula lwengilazi</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Idweba uphondo olukhanyayo ezungezeni ibha yokuzulazula lwengilazi</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Umdwebo wezansi webha yokuzulazula lwengilazi</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Lungisa isikhala phakathi kwe-glass navigation bar naphansi kwesikrini noma i-system navigation</string>
   <string name="morphe_navigation_bar_glass_size_title">Usayizi we-glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_size_summary">Lungisa ubude, ububanzi nesikhala sezinkinobho se-glass navigation bar, ngokubona isibonelo. Izinobho ezingangeni kububanzi besikrini ziyacashwa</string>
   <string name="morphe_navigation_bar_glass_size_height">Ubude</string>
@@ -1040,79 +1158,8 @@ Ukuze ufike ku-Settings, vula inkinobho ye-Settings nge-General → Toolbar → 
   <string name="morphe_show_toolbar_settings_button_type_summary">Uma kuvunyelwe, ukuthinta kuvula izilungiselelo ze-Morphe kanti ukuthinta isikhathi eside kuvula izilungiselelo ze-YouTube; khubaza ukuze uguqule</string>
   <string name="morphe_toolbar_buttons_order_title">Ukuhlelwa kwezinestu ze-toolbar</string>
   <string name="morphe_toolbar_buttons_order_summary">Kudonsa izinestu ukuze ushintshe ukulandelana kwazo ku-toolbar</string>
-  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">Imenyu ye-Flyout</string>
-  <string name="morphe_hide_player_flyout_summary">Khetha ukuthi yiziphi izici ezivela emenwini lokuphuma</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Fihla imenyu ethi \'Izilungiselelo ezengeziwe\' / Okunye</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Fihla imenyu ethi \'Imodi yezindawo\'</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Imenyu ye-'Audio Track' ifihliwe
-
-Ukuze ubonise imenyu ye-'Audio Track', shintsha 'Spoof video streams' kube yiklayenti noma iyiphi ngaphandle kwe-'Android Studio' ne-'Android VR Downgraded'"</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Fihla imenyu ethi \'Ithrekhi yomsindo\'</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">Fihla isizinda semenyu ethi \'Ithrekhi yomsindo\'</string>
-  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_captions_title">Fihla imenyu ye-Captions</string>
-  <string name="morphe_hide_player_flyout_captions_footer_title">Fihla isizinda semenyu ye-Captions</string>
-  <string name="morphe_hide_player_flyout_captions_header_title">Fihla ikhanda lemenyu ye-Captions</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_help_title">Fihla imenyu ethi \'Usizo &amp; imbuyekezo\'</string>
-  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Fihla imenyu ethi \'Lalela nge-YouTube Music\'</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Fihla imenyu ethi \'Lock screen\'</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Fihla imenyu ethi \'Phinda ividiyo\'</string>
-  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_on_the_go_title">Fihla imenyu ethi \'On-the-go\'</string>
-  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_quality_title">Fihla imenyu ye-Quality</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">Fihla isizinda semenyu ye-Quality</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">Fihla ikhanda lemenyu ye-Quality</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Fihla imenyu ethi \'Isikhathi sokulala\'</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Fihla imenyu ethi \'Isivinini sokudlala\'</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Fihla imenyu ethi \'Ivolyumu ezinzile\'</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Fihla imenyu ethi \'Buka nge-VR\'</string>
-  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
-  <string name="morphe_hide_autoplay_preview_title">Fihla ukubukiselwa kwokuqala okuzenzakalayo</string>
-  <string name="morphe_hide_autoplay_preview_summary">Ifihla isibukiso sevidiyo ezayo esikrini esigcwele ngaphambi kokuba i-autoplay iqale</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_overlay_buttons_screen_title">Izinkinobho zokugubuzela</string>
-  <string name="morphe_overlay_buttons_screen_summary">Khetha ukuthi yiziphi izinkinobho ezivela phezu kwesidlali sevidiyo</string>
-  <string name="morphe_hide_autoplay_button_title">Fihla inkinobho ye-Autoplay</string>
-  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Fihla inkinobho ye-Captions</string>
-  <string name="morphe_hide_cast_button_title">Fihla inkinobho ye-Cast</string>
-  <string name="morphe_hide_cast_button_summary">Ifihla inkinobho ye-Cast kudlali video kanye nase-toolbar</string>
-  <string name="morphe_hide_collapse_button_title">Fihla inkinobho ye-Collapse</string>
-  <string name="morphe_hide_fullscreen_button_title">Fihla inkinobho ye-Fullscreen</string>
-  <string name="morphe_hide_player_control_buttons_background_title">Fihla isizinda sezilawuli zomdlali</string>
-  <string name="morphe_hide_player_control_buttons_background_summary">Ifihla ukumnyama okuzungeze izilawuli zesidlali sevidiyo</string>
-  <string name="morphe_player_control_buttons_background_opacity_title">Ukucaca kwengemuva kwezinkinobho zokulawula</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Lungisa ukucaca kwengemuva ngemuva kwezinkinobho zokulawula umdlali nebha yesikhathi (0 akubonakali, 100 lugcwele)</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Fihla izinkinobho ze-Previous &amp; Next</string>
-  <string name="morphe_hide_settings_button_title">Fihla inkinobho ye-Settings</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Fihla amakhadi esikrinini sokuqeda</string>
-  <!-- layout.hide.ambientmode.ambientModePatch -->
-  <string name="morphe_ambient_mode_screen_title">Imode yezindawo</string>
-  <string name="morphe_ambient_mode_screen_summary">Phatha ukubonakala kwe-Ambient mode kanye nezivimbelo zamandla</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">Dlula imingcele ye-Ambient mode</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary">Kuvumela i-Ambient mode ukuba ihlale isebenza ngenkathi kusebenzisa i-battery saver mode</string>
-  <string name="morphe_disable_ambient_mode_title">Khise i-Ambient mode</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_title">Vimba i-Ambient mode ekukhipheni isikrini sigcwele</string>
-  <string name="morphe_enhanced_ambient_mode_title">Imodi ye-Ambient ethuthukisiwe</string>
-  <string name="morphe_enhanced_ambient_mode_summary">Khanyisa ikhasi lonke lokubuka kanye nemigqa emnyama ngevidiyo, esikhundleni se-Ambient mode</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_title">Gcina umbhalo ufundeka</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Cishisela ukukhanya kumavidiyo akhanyayo ukuze umbhalo ekhasini uhlale ufundeka</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Fihla amakhadi wolwazi</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1180,7 @@ Ukuze ubonise imenyu ye-'Audio Track', shintsha 'Spoof video streams' kube yikla
   <string name="morphe_hide_shorts_subscriptions_title">Fihla ku-feed lwe-Subscriptions</string>
   <string name="morphe_hide_shorts_video_description_title">Fihla encazelweni yevidiyo</string>
   <string name="morphe_hide_shorts_history_title">Fihla emlandweni wokubuka</string>
+  <string name="morphe_hide_shorts_notifications_title">Fihla kwezaziso zokuthumela</string>
   <string name="morphe_shorts_player_screen_title">Umdlali we-Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Khetha ukuthi yiziphi izinto okumele zivela ku-Shorts player</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Khubaza ukuthinta kabili ukuze uthande</string>
@@ -1191,9 +1239,24 @@ Izilungiselelo → Playback (noma Autoplay) → Autoplay next video"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Vala ama-popup panels omdlali</string>
   <string name="morphe_disable_player_popup_panels_summary">Vimba amaphaneli e-playlist ne-live chat ukuba avuleke ngokuzenzakalelayo</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Khombisa iphaneli ye-playlist esikrinini esigcwele</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Iphaneli ye-playlist ivuleka phezu komdlali wesikrini esigcwele</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Iphaneli ye-playlist iphuma esikrinini esigcwele kuma-tablets</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Khubaza ukuzidlalela kohlu lwezingoma</string>
   <string name="morphe_disable_playlist_autoplay_summary">Kuvimbela uhlu lwezingoma ukuba luyeqele ngokuzenzakalelayo kuvidiyo elandelayo</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Isilawuli sokudlala ngokuzenzakalelayo</string>
+  <string name="morphe_autoplay_control_summary">Yengeza inkinobha yokudlala nomthetho wevidiyo elandelayo. Iziluimu nezinhlelo ziyaqhubeka, iMix iyama emva kwezinombolo zezividiyo, ividiyo ephikisiwe ayidlali neze. Thinta inkinobha ukuze uthole imodi elandelayo, thinta ubambe ukuze ubone uhlu</string>
+  <string name="morphe_autoplay_mode_title">Imodi yokudlala ngokuzenzakalelayo</string>
+  <string name="morphe_autoplay_mode_entry_1">Kuzenzela</string>
+  <string name="morphe_autoplay_mode_entry_2">Eyodwa</string>
+  <string name="morphe_autoplay_mode_entry_3">Valiwe</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Ubude beMix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Kwemodi ye-Auto, iMix iyama emva kwalezi zividiyo. 0 = ayinasimiso</string>
+  <string name="morphe_autoplay_mix_length">Mix: izividiyo u%s</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: ayinasimiso</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Isicelo sika \'Qhubeka ubuke\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Okujwayelekile</string>
@@ -1269,9 +1332,6 @@ Indlela yokuhlela yezimoto
   <string name="morphe_spoof_app_version_target_entry_20_39">Buyisela ukulondoloza kwakudala ohlwini lwezingoma</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Khise ama-icon agqamile</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Buyisela igama lasechaneli ngaphansi kwesidlali sevidiyo</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Vula i-system share sheet</string>
-  <string name="morphe_open_system_share_sheet_summary">Ivula i-share sheet yesistimu esikhundleni se-in-app lapho wabelana ngokuqukethwe</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Dlulisa phezu kwezinkinobho ze-YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Vula i-app yomculo oyithandayo esikhundleni se-app ye-YouTube Music ejwayelekile</string>
@@ -1330,6 +1390,9 @@ Indlela yokuhlela yezimoto
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Vimisa ukuvuselelwa kwe-feed ngokuzenzakalelayo</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Kuvimbela ama-feed ukuba avuselelwe ngokuzenzakalelayo emva kokuba asendulo</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Hlukanisa izaziso</string>
+  <string name="morphe_ungroup_notifications_summary">Ikhombisa yonke i-vidiyo yezinto ezikhulu ezithuthukiswe ngomgeshe njengesaziso sayo</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Ukulungiseka kwekhadi le-feed</string>
   <string name="morphe_feed_card_layout_entry_1">Okujwayelekile</string>
@@ -1349,6 +1412,8 @@ Indlela yokuhlela yezimoto
   <string name="morphe_miniplayer_swipe_up_expand_summary">Ukuswepha i-miniplayer phezulu kuvula umlali, kunokuba i-miniplayer ihambe iye phezulu kwesikrini</string>
   <string name="morphe_miniplayer_docked_title">I-miniplayer elokishwe</string>
   <string name="morphe_miniplayer_docked_summary">Inamathelisa i-miniplayer kuba yingxenye yebha yokuzungeza kanye nezinhlangothi zesikrini, kunokuba ihambe phezu kwawo</string>
+  <string name="morphe_miniplayer_glass_title">I-miniplayer engilazi</string>
+  <string name="morphe_miniplayer_glass_summary">Ibonisa i-miniplayer njengengilazi ebonakalayo enezona eziyindilinga, njengebha lokuzulazula lengilazi. Idinga ibha lokuzulazula lengilazi</string>
   <string name="morphe_miniplayer_type_entry_0">Kukhishwa</string>
   <string name="morphe_miniplayer_type_entry_1">Okujwayelekile</string>
   <string name="morphe_miniplayer_type_entry_2">Okuncane</string>
@@ -1439,7 +1504,9 @@ Indlela yokuhlela yezimoto
   <string name="morphe_dearrow_titles_player_title">Uhlu lwezingoma lomdlali &amp; okuncoma</string>
   <string name="morphe_dearrow_titles_search_title">Imiphumela yokusesha</string>
   <string name="morphe_dearrow_titles_icon_title">Khombisa i-icon ye-DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Khombisa i-icon ye-DeArrow ezihloko zezividiyo ezisuselelwe emsithweni</string>
+  <string name="morphe_dearrow_titles_icon_summary">Ikhombisa i-ayikoni ye-DeArrow ezihloko zezividiyo ezinisihloko noma isithombe esivela kubantu. Thinta i-ayikoni ukuze ukhombise isihloko nesithombe sokuqala</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Hlanza izihloko</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Ihlanza izihloko zezividiyo ezingenalo isihloko se-DeArrow. Amagama abhalwe ngohlamvu olukhulu ashintshwa abe yindlela ejwayelekile, kanti ama-emoji, Umbhalo ohlobisile namaphawu okumemeza aphindwe ayisuswa</string>
   <string name="morphe_dearrow_casual_mode_title">Imodi yokuziphethela</string>
   <string name="morphe_dearrow_casual_mode_summary">Ikhombisa isihloko sokuqala esikhundleni sesihloko seDeArrow uma abasebenzisi beDeArrow bevota ukuthi bayasithanda isihloko sokuqala</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Imivoti embalwa kakhulu yokuziphethela ukuze kukhonyiswe isihloko sokuqala</string>
@@ -1465,7 +1532,65 @@ Amavidiyo aceleka ngesisekelo esifushane se-hashed video ID, ngakho iserba ayikw
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">I-DeArrow ayitholakali okwesikhashana (i-status code: %s)</string>
   <string name="morphe_dearrow_error_generic">I-DeArrow ayitholakali okwesikhashana</string>
-  <!-- misc.announcements.announcementsPatch -->
+  <string name="morphe_dearrow_vote_button_title">Khombisa inkinobho yeDeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Yengeza inkinobho phezulu kwesidlali savidiyo ukuze uvote izihloko nezithombe zeDeArrow, noma uthumele ezintsha</string>
+  <string name="morphe_dearrow_guidelines_title">Imigomo</string>
+  <string name="morphe_dearrow_guidelines_summary">Imigomo iqukethe imithetho namacebo okuthumela nokuvota izihloko nezithombe</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Landela imihlahlandlela</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Funda imihlahlandlela ye-DeArrow ngaphambi kokuthumela noma ukuvota izihloko nezithombe ezincane</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Sengifundile</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Ngikhombise</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Kulayishwa…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Kwenzeke ukuthi izihloko nezithombe ezincane zaleli vithiyo azilayishwe</string>
+  <string name="morphe_dearrow_vote_titles">Izihloko</string>
+  <string name="morphe_dearrow_vote_thumbnails">Izithombe ezincane</string>
+  <string name="morphe_dearrow_vote_no_titles">Ayikho izihloko okwamanje. Thumela isihloko ukuze ube ngowokuqala</string>
+  <string name="morphe_dearrow_vote_original_title">Isihloko sokuqala</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Isithombe somqopho sokuqala</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">I-Frame ku %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Amaphuzu: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Angaqinisekiswa</string>
+  <string name="morphe_dearrow_vote_locked">Kukhiyiwe</string>
+  <string name="morphe_dearrow_vote_upvote">Vota ngokuhamba phezulu</string>
+  <string name="morphe_dearrow_vote_downvote">Vota ngokuhamba phansi</string>
+  <string name="morphe_dearrow_vote_new_title">Isihloko esisha</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Bhala isihloko</string>
+  <string name="morphe_dearrow_vote_submit">Thumela</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Isithombe esisha</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Ingabe ufuna ukuthumela ifulemhu e- %s njengesithombe?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Ividiyo idlalwa. Ukuze uthumele ifulemhu oyibona, yema kwi-vidiyo kuqala</string>
+  <string name="morphe_dearrow_vote_upvoted">Ivoti ithunyelwe ku-DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">I-downvote lihambiswe ku-DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">I-DeArrow ayizange iyivume i-vote: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Lokhu kukhiyiwe, futhi kungahambiswa i-downvote ngabasebenzisi be-VIP kuphela</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">I-vote yale video isasebenza. Zama futhi emva kwesikhashana</string>
+  <string name="morphe_dearrow_vote_failed_code">Kungekenzeki ukuhambisa i-vote (i-status code: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Kungekenzeki ukuhambisa i-vote. Hlola uxhumano lwakho uzame futhi</string>
+  <string name="morphe_dearrow_submitting_title">Kuhambiswa izihloko nezithombe ezincane</string>
+  <string name="morphe_dearrow_vote_time_step_title">Isinyathelo sokulungisa isikhathi</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Inani lamazinkinika ezinkinobho zokulungisa isikhathi esincane lapho uthumela isithombe esincane (ngama-milliseconds)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Inani kufanele libe yinombolo eyinhle</string>
+  <string name="morphe_dearrow_private_user_id_title">I-ID yakho yomsebenzisi eyimfihlo</string>
+  <string name="morphe_dearrow_private_user_id_summary">I-ID yomsebenzisi efanayo neye-SponsorBlock. Lokhu kufanele kugcinwe kuyimfihlo. Lokhu kufana nephasiwedi futhi akufanele kube kwabelwa noma ubani. Uma othile enalokhu, angazenza abe nguwe</string>
+  <string name="morphe_dearrow_private_user_id_invalid">I-ID yomsebenzisi eyimfihlo kufanele ibe nobude obungani ukulu-30 bezinhlamvu</string>
+  <string name="morphe_dearrow_account_loading">Kulayishwa…</string>
+  <string name="morphe_dearrow_account_connection_failure">Imininingwane ye-akhawunti ayitholakali okwesikhashana</string>
+  <string name="morphe_dearrow_account_username">Igama lakho lomsebenzisi: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Thinta lapha ukuze ushintshe igama lakho lomsebenzisi. Igama lomsebenzisi lifana nalelo laku-SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Igama lomsebenzisi lishintshiwe ngempumelelo</string>
+  <string name="morphe_dearrow_account_username_change_error">Akukwazi ukushintsha igama lomsebenzisi: Isimo: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Uthumele izihloko ezi-&lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_titles_summary">Thinta lapha ukuze ubone izihloko zakho</string>
+  <string name="morphe_dearrow_account_thumbnails">Uthumele imifanekiso ethumbelwe e-&lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Thinta lapha ukuze ubone imifanekiso ethumbelwe yakho</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Buyisela isitayela sakudala senkinobha yomdlali</string>
   <string name="morphe_restore_old_player_buttons_summary">Buyisela izilawuli zevidiyo ezigqamile endleleni yakudala, encane</string>
@@ -1483,6 +1608,16 @@ Amavidiyo aceleka ngesisekelo esifushane se-hashed video ID, ngakho iserba ayikw
   <string name="morphe_disable_haptic_feedback_zoom_title">Vimbela i-zoom haptics</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Uma usanda kushintsha imininingwane yokungena ku-akhawunti yakho, khulula bese ufaka futhi u-MicroG</string>
+  <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_save_push_notifications_title">Gcina izaziso ze-push</string>
+  <string name="morphe_debug_save_push_notifications_summary">Gcina izaziso ze-push ezitholakele kufayela kudatha yohlelo. Ifayili lingase lihlanganise imininingwane eyimfihlo, efana nemibhalo yezaziso namagama ezinqubo</string>
+  <string name="morphe_debug_saved_push_notifications_title">Thumela izaziso ze-push ezigcinwe ngaphandle</string>
+  <string name="morphe_debug_saved_push_notifications_summary">Thumela ngaphandle noma sucize izaziso ze-push ezigcinwe</string>
+  <string name="morphe_debug_saved_push_notifications_count">Izaziso zokuphusha ezondile: %s</string>
+  <string name="morphe_debug_saved_push_notifications_none_found">Akukho zaziso zokuphusha ezondile ezitholakele</string>
+  <string name="morphe_debug_saved_push_notifications_export_success">Izaziso zokuphusha zithunyelwe ngempumelelo</string>
+  <string name="morphe_debug_saved_push_notifications_export_failed">Kuhleleke ukuthumela izaziso zokuphusha</string>
+  <string name="morphe_debug_saved_push_notifications_cleared">Izaziso zokuphusha ezondile zisulwe</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Dlula ukudluliselwa kwe-link</string>
   <string name="morphe_bypass_link_redirects_summary">Ivula isixhumanisi sokuqala ngqo, idlula isixhumanisi sokulandelela (youtube.com/redirect)</string>
@@ -1505,25 +1640,20 @@ Amavidiyo aceleka ngesisekelo esifushane se-hashed video ID, ngakho iserba ayikw
   <string name="morphe_video_delay_button_flyout_title">Khombisa imenyu yokubambezela iVidiyo</string>
   <string name="morphe_video_delay_dialog_input_hint">Ukubambezela ngama-milliseconds</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Zizenzayo</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Khumbula izinga levidiyo</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Kusebenzisa ukukhetha kwakho izinga levidiyo kuzo zonke izividiyo ezizayo</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Izaziso zoshintsho lwezinga</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Ikhombisa isaziso lapho kuvuselelwa ikhwalithi ejwayelekile entsha</string>
-  <string name="morphe_video_quality_default_wifi_title">Ikhwalithi yevidiyo evamile kunethiwekhi ye-Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Ikhwalithi yevidiyo evamile kunethiwekhi yeselula</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Khumbula izinga le-Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Kusebenzisa ukukhetha kwakho kwekhwalithi kuzo zonke i-Shorts ezizayo</string>
   <string name="morphe_shorts_quality_default_wifi_title">Ikhwalithi ye-Shorts evamile kunethiwekhi ye-Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Ikhwalithi ye-Shorts evamile kunethiwekhi yeselula</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Kushintshwe izinga elijwayelekile le-mobile libe ngu: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Kushintshwe izinga elijwayelekile le-Wi-Fi libe ngu: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Kushintshiwe ikhwalithi ye-Shorts yeselula ibe ngu: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Kushintshiwe ikhwalithi ye-Shorts ye-Wi-Fi ibe ngu: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Khombisa inkinobho yesivinini sokudlala</string>
   <string name="morphe_playback_speed_dialog_button_summary">Thinta ubambe ukuze ubuyisele isivinini kwesethingi esijwayelekile</string>
+  <string name="morphe_playback_speed_button_cycle_title">Thinta inkinobha yesivinyela sokudlala ukuze ushintshe isivinyela</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Ukuthinta kuya esivinyeleni esilandelayo ohluweni. Thinta ubambe ukuvula imenyu yesivinyela</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Izivinyela zenkinobha yesivinyela sokudlala</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Izivinyela okushintshwa ngazo ngokuthinta, eyodwa ngomugqa. Emva kwesivinyela sokugcina, ukuthinta kubuyela kwesokuqala</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Uhlu lwezivinyela olungelona, buyisela kokuma kwangokuqala</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Khombisa inkinobho yeKhwalithi</string>
   <string name="morphe_video_quality_dialog_button_summary">Thinta ubambe ukuze ubuyisele ikhwalithi kwesetingi esijwayelekile</string>
@@ -1615,6 +1745,9 @@ Ukudlalwa kwevidiyo nge-AV1 kungase kuphazamiseke noma kuwele ama-frames"</strin
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Ivolyumi elizinzile alitholakali</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Ukudlala kungaphela imizuzwana eyi-1 ngaphambi kwesikhathi</string>
   <string name="morphe_spoof_video_streams_about_js">• Uma i-deobfuscation ihluleka, ukudlala kungahluleka</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView icishwe noma ayifakwile. Iyikhanyise futhi uyivuselele, kungenzeka ukuthi ukudlala kwevidiyo kungahluleka</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView isedlule. Uyivuselele, kungenzeka ukuthi ukudlala kwevidiyo kungahluleka</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ukunqamula umsindo wokuqala akutholakali</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Kudingeka ungene ku-Android VR</string>
@@ -1788,6 +1921,8 @@ Ukuqopha ngokuzenzakalelayo kuyinketho. Kuyama ku-incognito noma lapho i-account
   <string name="morphe_niconico_comments_screen_title">Imibhalo ye-Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Khombisa i-live chat kanye ne-chat replay njengemibhalo ehambayo phakathi kwevidiyo</string>
   <string name="morphe_niconico_comments_summary">Khombisa inkinobho engaphezulu kwe-video player. Thinta ukuze ukhombise noma ufihle imibhalo, thinta ubambe ukuze uthole izilungiselelo ezisheshayo</string>
+  <string name="morphe_niconico_comments_pip_title">Khombisa esithombeni-esithombeni</string>
+  <string name="morphe_niconico_comments_pip_summary">Imibono incishiswa ukuze ihambisane newindi</string>
   <string name="morphe_niconico_comments_appearance_title">Ukubonakala</string>
   <string name="morphe_niconico_comments_portrait_category_title">I-Portrait</string>
   <string name="morphe_niconico_comments_video_types_title">Izinhlobo zezividiyo</string>

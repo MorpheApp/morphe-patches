@@ -16,6 +16,7 @@ import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
+import app.morphe.extension.reddit.patches.FeedAutoScrollPatch;
 import app.morphe.extension.reddit.patches.FeedMediaMaxHeightPatch;
 import app.morphe.extension.reddit.patches.FlipPostActionBarPatch;
 import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
@@ -33,6 +34,7 @@ import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
+import app.morphe.extension.reddit.patches.TabletGridFeedPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.CustomFontFilePreference;
@@ -40,6 +42,7 @@ import app.morphe.extension.reddit.settings.preference.CustomFontTogglePreferenc
 import app.morphe.extension.reddit.settings.preference.ForceSystemFontPreference;
 import app.morphe.extension.reddit.settings.preference.NumberSettingPreference;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 
 @SuppressWarnings("deprecation")
 public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
@@ -69,7 +72,9 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HighQualityAvatarsPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
-                RememberCollapsedCommentsPatch.isPatchIncluded();
+                RememberCollapsedCommentsPatch.isPatchIncluded() ||
+                TabletGridFeedPatch.isPatchIncluded() ||
+                FeedAutoScrollPatch.isPatchIncluded();
     }
 
     @Override
@@ -128,6 +133,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
+        if (HighQualityAvatarsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIGH_QUALITY_AVATARS
+            ));
+        }
+
         if (PermanentNsfwPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
@@ -143,13 +155,6 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.REMOVE_NOTIFICATION_DIALOG
-            ));
-        }
-
-        if (HighQualityAvatarsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIGH_QUALITY_AVATARS
             ));
         }
 
@@ -224,6 +229,28 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.REMEMBER_COLLAPSED_COMMENTS
+            ));
+        }
+
+        if (TabletGridFeedPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.TABLET_GRID_FEED
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.TABLET_GRID_COLUMNS
+            ));
+        }
+
+        if (FeedAutoScrollPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FEED_AUTO_SCROLL
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.FEED_AUTO_SCROLL_SPEED
             ));
         }
 

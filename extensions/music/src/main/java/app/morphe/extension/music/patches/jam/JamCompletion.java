@@ -16,6 +16,7 @@ import java.util.WeakHashMap;
 import java.util.concurrent.CompletableFuture;
 
 /** Correlates each native async callback to its originating bridge command. */
+@SuppressWarnings("unused")
 public final class JamCompletion {
 
     public static final class Ticket {
@@ -37,17 +38,15 @@ public final class JamCompletion {
         dispatch.remove();
     }
 
-    @SuppressWarnings("unused")
     public static void attach(Object callback) {
         Ticket ticket = dispatch.get();
         if (ticket != null) callbacks.put(callback, ticket);
     }
 
-    @SuppressWarnings("unused")
     public static void succeeded(
-        Object callback,
-        List<?> items,
-        YouTubeMusicBridge.QueueAccess access
+            Object callback,
+            List<?> items,
+            YouTubeMusicBridge.QueueAccess access
     ) {
         Ticket ticket = callbacks.remove(callback);
         if (ticket == null) return;
@@ -55,7 +54,7 @@ public final class JamCompletion {
             Set<String> ids = new HashSet<>();
             for (Object item : items)
                 if (item != null) ids.add(
-                    Long.toString(access.patch_jamItemId(item))
+                        Long.toString(access.patch_jamItemId(item))
                 );
             ticket.result.complete(ids);
         } catch (Exception e) {

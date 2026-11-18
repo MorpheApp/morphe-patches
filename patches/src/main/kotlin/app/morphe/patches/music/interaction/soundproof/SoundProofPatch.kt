@@ -84,7 +84,6 @@ private val soundProofButtonResourcePatch = patch(
     }
 }
 
-@Suppress("unused")
 val soundProofPatch = patch(
     name = "SoundProof",
     description = "Adds an option to skip tracks of artists reported as AI in the SoundProof community database."

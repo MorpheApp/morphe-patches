@@ -9,7 +9,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
-@Suppress("unused")
 val forceOriginalAudioPatch = forceOriginalAudioPatch(
     block = {
         dependsOn(
@@ -23,6 +22,7 @@ val forceOriginalAudioPatch = forceOriginalAudioPatch(
     // Localized audio track flag was removed in 21.26+ but might be replaced with 45673827L
     fixUseLocalizedAudioTrackFlag = { !is_21_26_or_greater },
     forcedServerAdaptiveStreaming = { is_21_26_or_greater },
+    shortsQualityMenuController = true,
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     subclassExtensionClassDescriptor = "Lapp/morphe/extension/youtube/patches/ForceOriginalAudioPatch;",
     preferenceScreen = PreferenceScreen.VIDEO,

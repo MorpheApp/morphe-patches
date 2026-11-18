@@ -37,7 +37,7 @@
 
       this.syncSnapshotFunction = this.vm.a(this.program, vmFunctionsCallback, true, this.userInteractionElement, function () {/** no-op */ }, [ [], [] ])[0]
 
-      // an asynchronous function runs in the background and it will eventually call
+      // an asynchronous function runs in the background, and it will eventually call
       // `vmFunctionsCallback`, however we need to manually tell JavaScript to pass
       // control to the things running in the background by interrupting this async
       // function in any way, e.g. with a delay of 1ms. The loop is most probably not

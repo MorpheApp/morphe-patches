@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchSingle
@@ -19,9 +20,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 /** Publish queue capabilities before native notification actions and playback state are built. */
 internal fun installPlaylistNotificationControls(ownerType: String) {
-    val modelType = NotificationSkipActionsFingerprint
-        .instructionMatches.first().fieldReference.type
-    val setter = notificationCapabilitiesSetterFingerprint(modelType).originalMethod
+    val setter = NotificationCapabilitiesSetterFingerprint.originalMethod
 
     // The original adapter returns V. The newer adapter returns its change flags.
     val adapters = notificationCapabilitiesFingerprint(setter).matchAll()
@@ -45,12 +44,9 @@ internal fun installPlaylistNotificationControls(ownerType: String) {
             }.distinct().single()
         } else null
 
-        adapter.interfaces.add(NOTIFICATION_CONTROLS_INTERFACE)
-        adapter.addBridgeMethod(
+        adapter.addPatchInterface(
+            NOTIFICATION_CONTROLS_INTERFACE,
             "patch_getQueueMediaControls",
-            emptyList(),
-            MEDIA_CONTROLS_INTERFACE,
-            1,
             """
                 iget-object v0, p0, $owner
                 return-object v0
@@ -59,11 +55,9 @@ internal fun installPlaylistNotificationControls(ownerType: String) {
 
         // Recompute from the original adapter inputs on every refresh. Releasing
         // the queue therefore restores native capabilities without caching flags.
-        adapter.addBridgeMethod(
+        adapter.addPatchInterface(
+            NOTIFICATION_CONTROLS_INTERFACE,
             "patch_refreshQueueNotification",
-            emptyList(),
-            "V",
-            1,
             """
                 invoke-direct {p0}, $computation
                 ${if (dispatch == null) "" else "move-result v0\ninvoke-direct {p0, v0}, $dispatch"}

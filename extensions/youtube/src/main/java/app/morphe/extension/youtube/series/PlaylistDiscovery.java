@@ -25,11 +25,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.LongSupplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.youtube.patches.VideoInformation;
+
 /** On-demand public discovery. Search results are candidates, never proof of membership. */
+@SuppressWarnings("unused")
 final class PlaylistDiscovery {
     static final int MAX_REQUESTS = 18, MAX_BYTES = 16 * 1024 * 1024, MAX_CANDIDATES = 8;
     static final long TIME_MS = 25000, HIT_TTL = 3600000, MISS_TTL = 300000;
@@ -56,14 +60,14 @@ final class PlaylistDiscovery {
 
     private final Transport transport;
     private final LongSupplier clock;
-    private final java.util.function.Consumer<Exception> errors;
+    private final Consumer<Exception> errors;
     private final LinkedHashMap<String, Cached> cache = new LinkedHashMap<>(32, .75f, true);
     private volatile long retryUntil;
 
     PlaylistDiscovery(
             Transport transport,
             LongSupplier clock,
-            java.util.function.Consumer<Exception> errors) {
+            Consumer<Exception> errors) {
         this.transport = transport;
         this.clock = clock;
         this.errors = errors;
@@ -71,7 +75,7 @@ final class PlaylistDiscovery {
     }
 
     List<Match> find(String video) throws IOException {
-        if (!video.matches("[A-Za-z0-9_-]{11}")) return Collections.emptyList();
+        if (!VideoInformation.isVideoId(video)) return Collections.emptyList();
         synchronized (cache) {
             Cached saved = cache.get(video);
             if (saved != null && clock.getAsLong() < saved.until()) return saved.matches();

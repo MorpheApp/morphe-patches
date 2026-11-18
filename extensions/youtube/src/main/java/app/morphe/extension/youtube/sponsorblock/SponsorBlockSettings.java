@@ -22,7 +22,6 @@ import app.morphe.extension.shared.sponsorblock.objects.SegmentCategory;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.youtube.settings.Settings;
 
-@SuppressWarnings("NewApi")
 public class SponsorBlockSettings {
 
     public static final Setting.ImportExportCallback SB_IMPORT_EXPORT_CALLBACK = new Setting.ImportExportCallback() {

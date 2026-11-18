@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.Match
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -21,6 +22,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -46,6 +48,7 @@ import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCa
 import app.morphe.patches.shared.misc.spans.addSpanFilter
 import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
+import app.morphe.patches.shared.misc.textcomponent.hookSpannableStringResult
 import app.morphe.patches.shared.misc.textcomponent.lithoSpannableStringPatch
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.ad.injectHideViewCall
@@ -61,6 +64,7 @@ import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
@@ -94,7 +98,7 @@ import app.morphe.patches.shared.misc.litho.filter.EXTENSION_CLASS as LITHO_FILT
 private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter;"
 private const val EXTENSION_FLYOUT_MENU_ITEM_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter\$FlyoutMenuItem;"
+    $$"Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter$FlyoutMenuItem;"
 private const val DESCRIPTION_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/DescriptionComponentsFilter;"
 private const val EXPLORE_MENU_FILTER =
@@ -212,9 +216,10 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_hide_ask_gemini_button", summary = true),
             SwitchPreference("morphe_hide_channel_bar"),
             SwitchPreference("morphe_hide_channel_watermark"),
-            SwitchPreference("morphe_hide_chapters_timeline_button"),
+            SwitchPreference("morphe_hide_chapters_button"),
             SwitchPreference("morphe_hide_crowdfunding_box"),
             SwitchPreference("morphe_hide_emergency_box"),
+            SwitchPreference("morphe_hide_in_this_video_button"),
             SwitchPreference("morphe_hide_info_panels", summary = true),
             SwitchPreference("morphe_hide_join_membership_button"),
             SwitchPreference("morphe_hide_live_chat_replay_button", summary = true),
@@ -659,6 +664,22 @@ val hideLayoutComponentsPatch = patch(
 
         // endregion
 
+        // region hide HaTS surveys
+
+        HatsSurveyDisplayFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $LAYOUT_COMPONENTS_FILTER->hideHatsSurvey()Z
+                move-result v0
+                if-eqz v0, :show
+                return-void
+                :show
+                nop
+            """
+        )
+
+        // endregion
+
         // region hide live chat donators bar
 
         LiveChatDonatorsBarFingerprint.let {
@@ -785,6 +806,28 @@ val hideLayoutComponentsPatch = patch(
                         move-result-object v$returnStringRegister
                     """
                 )
+            }
+        }
+
+        // The metadata of the videos of channel pages is created as a text of its own.
+        hookSpannableStringResult(LAYOUT_COMPONENTS_FILTER, "modifyVideoMetadataText")
+
+        // 20.51 and lower show the metadata of the videos of a playlist in a text view of their own,
+        // which is changed once the app sets its text. 21.23+ shows them as Litho elements.
+        PlaylistVideoViewCountConstructorFingerprint.matchAll().forEach { constructorMatch ->
+            getPlaylistVideoViewCountSetTextFingerprint(
+                constructorMatch.instructionMatches.last().fieldReference
+            ).let {
+                it.method.apply {
+                    // The text view is passed to the method that sets its text.
+                    val textViewRegister = it.instructionMatches.first()
+                        .getInstruction<TwoRegisterInstruction>().registerA
+
+                    addInstruction(
+                        it.instructionMatches.last().index + 1,
+                        "invoke-static { v$textViewRegister }, $LAYOUT_COMPONENTS_FILTER->modifyPlaylistVideoMetadata(Landroid/widget/TextView;)V"
+                    )
+                }
             }
         }
 
@@ -1012,27 +1055,14 @@ val hideLayoutComponentsPatch = patch(
                 }
 
                 mutableClassDefBy(menuItemType).apply {
-                    interfaces.add(EXTENSION_FLYOUT_MENU_ITEM_INTERFACE)
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            "patch_getFlyoutMenuItemTitle",
-                            listOf(),
-                            "Ljava/lang/CharSequence;",
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(2),
-                        ).toMutable().apply {
-                            addInstructions(
-                                0,
-                                """
-                                    invoke-static { p0 }, $menuItemTitleMethod
-                                    move-result-object v0
-                                    return-object v0
-                                """
-                            )
-                        }
+                    addPatchInterface(
+                        EXTENSION_FLYOUT_MENU_ITEM_INTERFACE,
+                        "patch_getFlyoutMenuItemTitle",
+                        """
+                            invoke-static { p0 }, $menuItemTitleMethod
+                            move-result-object v0
+                            return-object v0
+                        """
                     )
                 }
 
@@ -1357,7 +1387,7 @@ val hideLayoutComponentsPatch = patch(
         TapAndHoldSpeedFingerprint.let {
             it.clearMatch()
             // The class that overrides the speed, and restores it when tap and hold ends.
-            var speedControllerType = it.instructionMatches[6].fieldReference.type
+            val speedControllerType = it.instructionMatches[6].fieldReference.type
 
             // Right after the "already speeding up" check.
             it.method.addInstructionsAtControlFlowLabel(
@@ -1396,12 +1426,19 @@ val hideLayoutComponentsPatch = patch(
 
         // region hide live chat gift button
 
+        // Newer app targets can also inflate the button container from a view stub, or use
+        // a placeholder view, so the container returned is hidden instead of the view found by its id.
         JewelsButtonContainerFingerprint.matchAll().forEach { match ->
-            match.method.injectHideViewCall(
-                match.instructionMatches.last().index,
-                COMMENTS_FILTER,
-                "hideLiveChatGiftButton"
-            )
+            match.method.apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        "invoke-static { v$register }, $COMMENTS_FILTER->hideLiveChatGiftButton(Landroid/view/View;)V"
+                    )
+                }
+            }
         }
 
         // endregion
@@ -1431,6 +1468,48 @@ val hideLayoutComponentsPatch = patch(
                     "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideChaptersTimelineButton(Landroid/view/View;)V"
                 )
             }
+        }
+
+        // The button shows either the chapter title or 'In this video', so it is hidden
+        // each time YouTube sets its visibility, depending on what it shows.
+        if (is_21_23_or_greater) {
+            TimeBarEntryPointVisibilityFingerprint.let {
+                it.method.apply {
+                    val isChapterRegister = it.instructionMatches[2].getInstruction<OneRegisterInstruction>().registerA
+                    val setVisibilityMatch = it.instructionMatches[4]
+                    val showRegister = setVisibilityMatch.getInstruction<FiveRegisterInstruction>().registerD
+
+                    addInstructionsAtControlFlowLabel(
+                        setVisibilityMatch.index,
+                        """
+                            invoke-static { v$showRegister, v$isChapterRegister }, $LAYOUT_COMPONENTS_FILTER->showTimeBarEntryPoint(ZZ)Z
+                            move-result v$showRegister
+                        """
+                    )
+                }
+            }
+        } else {
+            // The button is always shown, and the chapter title and 'In this video' are hidden instead.
+            fun Match.hideTimeBarEntryPoint(extensionMethodName: String) {
+                val setVisibilityMatch = instructionMatches.last { match ->
+                    match.instruction.opcode == Opcode.INVOKE_VIRTUAL
+                }
+                val showRegister = setVisibilityMatch.getInstruction<FiveRegisterInstruction>().registerD
+
+                method.addInstructionsAtControlFlowLabel(
+                    setVisibilityMatch.index,
+                    """
+                        invoke-static { v$showRegister }, $LAYOUT_COMPONENTS_FILTER->$extensionMethodName(Z)Z
+                        move-result v$showRegister
+                    """
+                )
+            }
+
+            TimeBarChapterTitleVisibilityLegacyFingerprint.match()
+                .hideTimeBarEntryPoint("showTimeBarChapterTitle")
+            getTimeBarTimelineTitleVisibilityLegacyFingerprint(
+                TimeBarChapterTitleVisibilityLegacyFingerprint.classDef.type
+            ).match().hideTimeBarEntryPoint("showTimeBarInThisVideo")
         }
 
         // endregion

@@ -15,6 +15,7 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
@@ -35,12 +36,12 @@ public class TTSEngineProtocolTest {
     @Test
     public void acceptsValidUpgradeOnly() throws Exception {
         String valid = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\n\r\n";
-        invoke("readHttpUpgrade", new Class<?>[]{java.io.InputStream.class},
+        invoke("readHttpUpgrade", new Class<?>[]{InputStream.class},
                 new ByteArrayInputStream(valid.getBytes(StandardCharsets.US_ASCII)));
 
         String rejected = "HTTP/1.1 403 Forbidden\r\nX-Error: 101\r\n\r\n";
         assertThrows(IOException.class, () -> invoke("readHttpUpgrade",
-                new Class<?>[]{java.io.InputStream.class},
+                new Class<?>[]{InputStream.class},
                 new ByteArrayInputStream(rejected.getBytes(StandardCharsets.US_ASCII))));
     }
 
@@ -54,14 +55,14 @@ public class TTSEngineProtocolTest {
         frames.write(end);
 
         ByteArrayOutputStream audio = new ByteArrayOutputStream();
-        invoke("collectAudio", new Class<?>[]{java.io.InputStream.class, ByteArrayOutputStream.class},
+        invoke("collectAudio", new Class<?>[]{InputStream.class, ByteArrayOutputStream.class},
                 new ByteArrayInputStream(frames.toByteArray()), audio);
         assertArrayEquals(new byte[]{11, 22, 33}, audio.toByteArray());
     }
 
     @Test
     public void rejectsUnexpectedCloseAndIncompleteStream() {
-        Class<?>[] types = {java.io.InputStream.class, ByteArrayOutputStream.class};
+        Class<?>[] types = {InputStream.class, ByteArrayOutputStream.class};
         assertThrows(IOException.class, () -> invoke("collectAudio", types,
                 new ByteArrayInputStream(new byte[]{(byte) 0x88, 0}), new ByteArrayOutputStream()));
         assertThrows(IOException.class, () -> invoke("collectAudio", types,

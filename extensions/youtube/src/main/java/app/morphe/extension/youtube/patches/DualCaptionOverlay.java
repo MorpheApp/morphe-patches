@@ -129,7 +129,7 @@ public final class DualCaptionOverlay extends LinearLayout {
                 && (!layer.primary.text.isEmpty() || !layer.secondary.text.isEmpty())) return true;
         if (view instanceof StableCaptionBlocks.Window window) {
             for (CharSequence text : window.patch_getVisibleCaptionLines())
-                if (text != null && text.length() > 0) return true;
+                if (Utils.isNotEmpty(text)) return true;
         }
         return false;
     }

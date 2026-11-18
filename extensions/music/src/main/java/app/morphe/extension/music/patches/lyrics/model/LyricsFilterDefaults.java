@@ -145,6 +145,7 @@ public final class LyricsFilterDefaults {
      * its own static initializer, in which case one of the settings above can still be null;
      * touching one here would hand that null out for good.
      */
+    @SuppressWarnings("EmptyMethod")
     public static void register() {
     }
 }

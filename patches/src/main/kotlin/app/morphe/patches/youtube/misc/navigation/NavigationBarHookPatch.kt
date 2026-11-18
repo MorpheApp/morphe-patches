@@ -21,10 +21,10 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.backgesture.addBackPressedHook
 import app.morphe.patches.youtube.misc.backgesture.addPredictiveBackGestureHook
 import app.morphe.patches.youtube.misc.backgesture.backGesturePatch
@@ -39,14 +39,12 @@ import app.morphe.util.copyResources
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
 import java.lang.ref.WeakReference
 
@@ -95,6 +93,10 @@ private var browseIdInsertIndex = -1
 private var browseIdRegister = -1
 
 private lateinit var searchResultsMethodRef: WeakReference<MutableMethod>
+
+/** Native fragment endpoint and browse-id reader, resolved by [browseIdHookPatch]. */
+internal lateinit var browsePageBinding: Pair<FieldReference, MethodReference>
+    private set
 
 /**
  * Calls the extension method with the browse id of every browse page that is shown, including
@@ -158,6 +160,8 @@ internal val browseIdHookPatch = patch(description = "Hooks the browse id of the
                         )
                     )
                 ).matchAll(1..2).first().method
+
+                browsePageBinding = endpointField to browseIdMethod
 
                 // The fragment is handed the endpoint of every page it shows, including a page that
                 // is returned to and served from cache, which makes no browse request to read.
@@ -330,33 +334,7 @@ val navigationBarHookPatch = patch(description = "Hooks the active navigation or
         // Add interface for extensions code to call obfuscated methods.
         AppCompatToolbarBackButtonFingerprint.let {
             it.classDef.apply {
-                interfaces.add(EXTENSION_TOOLBAR_INTERFACE)
-
-                val definingClass = type
-                val obfuscatedMethodName = it.originalMethod.name
-                val returnType = "Landroid/graphics/drawable/Drawable;"
-
-                methods.add(
-                    ImmutableMethod(
-                        definingClass,
-                        "patch_getNavigationIcon",
-                        listOf(),
-                        returnType,
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0 }, $definingClass->$obfuscatedMethodName()$returnType
-                                move-result-object v0
-                                return-object v0
-                            """
-                        )
-                    }
-                )
+                addPatchInterface(EXTENSION_TOOLBAR_INTERFACE, "patch_getNavigationIcon", it.originalMethod)
             }
         }
 

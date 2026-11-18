@@ -24,6 +24,7 @@ import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.MetricAffectingSpan;
 import android.text.style.ReplacementSpan;
 import android.util.Pair;
 import android.view.View;
@@ -177,6 +178,7 @@ public final class PostTranslatePatch {
         void patch_setText(CharSequence text);
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -216,7 +218,7 @@ public final class PostTranslatePatch {
      * Called when an element is parsed. The element is not changed.
      */
     public static byte[] onElementLoaded(byte[] bytes) {
-        if (!ENABLED || bytes == null || !FeedVideoCardsPatch.emlTextMayContain(bytes, POST)) {
+        if (!ENABLED || bytes == null || FeedVideoCardsPatch.emlTextLacks(bytes, POST)) {
             return bytes;
         }
         try {
@@ -324,28 +326,44 @@ public final class PostTranslatePatch {
         final int length = spanned.length();
         final int end = translation.length();
         boolean hasColor = false;
+        boolean hasSize = false;
         for (CharacterStyle span : spanned.getSpans(0, length, CharacterStyle.class)) {
             if (isLinkOrImage(span) || spanned.getSpanStart(span) > 0 || spanned.getSpanEnd(span) < length) {
                 continue;
             }
             text.setSpan(span, 0, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
             hasColor |= span instanceof ForegroundColorSpan;
+            hasSize |= span instanceof MetricAffectingSpan;
         }
-        if (!hasColor) {
-            // The color of the first letter, if the text has many colors, such as the color of links.
+        if (!hasColor || !hasSize) {
+            // The color and the size of the first letter, if the text is made of many parts, such as
+            // a text with links, which has the size of the text in each part and not in the paint.
+            // Otherwise, the translation would have the smaller size of the paint.
             for (int i = 0; i < length; i++) {
                 if (!Character.isLetter(spanned.charAt(i))) {
                     continue;
                 }
-                for (ForegroundColorSpan span : spanned.getSpans(i, i + 1, ForegroundColorSpan.class)) {
-                    if (!isLinkOrImage(span)) {
+                for (CharacterStyle span : spanned.getSpans(i, i + 1, CharacterStyle.class)) {
+                    if (isLinkOrImage(span) || text.getSpanStart(span) >= 0) {
+                        continue;
+                    }
+                    if ((!hasColor && span instanceof ForegroundColorSpan)
+                            || (!hasSize && span instanceof MetricAffectingSpan)) {
                         text.setSpan(span, 0, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-                        break;
                     }
                 }
                 break;
             }
         }
+        Logger.printDebug(() -> {
+            List<String> spans = new ArrayList<>();
+            for (CharacterStyle span : spanned.getSpans(0, length, CharacterStyle.class)) {
+                spans.add(span.getClass().getSimpleName() + "[" + spanned.getSpanStart(span)
+                        + "-" + spanned.getSpanEnd(span) + "]");
+            }
+            return "Translation text spans: " + spans + " of length " + length + ", copied: "
+                    + Arrays.toString(text.getSpans(0, end, CharacterStyle.class));
+        });
         return text;
     }
 
@@ -570,7 +588,6 @@ public final class PostTranslatePatch {
                     continue;
                 }
                 // The text of the post is the first text below the header, such as above a poll.
-                //noinspection ConstantConditions
                 if (best == null || bounds.top < best.shown().bounds().top) {
                     best = candidate;
                 }
@@ -583,7 +600,7 @@ public final class PostTranslatePatch {
         Logger.printDebug(() -> {
             StringBuilder builder = new StringBuilder();
             for (PostText candidate : candidates) {
-                if (builder.length() > 0) builder.append('\n');
+                if (Utils.isNotEmpty(builder)) builder.append('\n');
                 builder.append(candidate == chosen ? "Post text: " : "Other post text: ")
                         .append(candidate.shown().bounds())
                         .append(" drawable: ").append(candidate.shown().drawable() != null)
@@ -736,8 +753,7 @@ public final class PostTranslatePatch {
                 for (List<String> batch : TextTranslator.splitByCharacterBudget(
                         lines, TextTranslator.MAXIMUM_BATCH_CHARACTERS)) {
                     for (String line : TextTranslator.translate(batch, language)) {
-                        //noinspection SizeReplaceableByIsEmpty
-                        if (builder.length() > 0) {
+                        if (Utils.isNotEmpty(builder)) {
                             builder.append('\n');
                         }
                         builder.append(line);

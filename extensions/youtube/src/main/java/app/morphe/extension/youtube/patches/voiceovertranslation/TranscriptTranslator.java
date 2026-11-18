@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -637,8 +638,7 @@ public final class TranscriptTranslator {
 
         StringBuilder joined = new StringBuilder(100 * segments.size());
         for (TranscriptSegment seg : segments) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (joined.length() > 0) joined.append('\n');
+            if (Utils.isNotEmpty(joined)) joined.append('\n');
             joined.append(seg.text);
         }
 
@@ -686,7 +686,7 @@ public final class TranscriptTranslator {
     }
 
     private static String readErrorBody(HttpURLConnection conn) {
-        try (java.io.InputStream es = conn.getErrorStream()) {
+        try (InputStream es = conn.getErrorStream()) {
             if (es == null) return "";
             StringBuilder sb = new StringBuilder();
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(es, StandardCharsets.UTF_8))) {
@@ -865,8 +865,7 @@ public final class TranscriptTranslator {
                     }
                 }
                 // Flush any remaining content that arrived without a trailing newline.
-                //noinspection SizeReplaceableByIsEmpty
-                if (lineBuffer.length() > 0) {
+                if (Utils.isNotEmpty(lineBuffer)) {
                     String line = lineBuffer.toString().trim();
                     if (applyStreamedLine(line, result, segments.size(), matched)
                             && onLineStreamed != null) {

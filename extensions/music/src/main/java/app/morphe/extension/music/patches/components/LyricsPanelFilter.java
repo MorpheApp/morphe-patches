@@ -24,11 +24,6 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
 @SuppressWarnings("unused")
 public final class LyricsPanelFilter extends Filter {
 
-    private final StringFilterGroup timedLyrics = new StringFilterGroup(
-            null,
-            "timed_lyrics"
-    );
-
     private final StringFilterGroup comments = new StringFilterGroup(
             null,
             "comment_thread",
@@ -41,6 +36,10 @@ public final class LyricsPanelFilter extends Filter {
     );
 
     public LyricsPanelFilter() {
+        StringFilterGroup timedLyrics = new StringFilterGroup(
+                null,
+                "timed_lyrics"
+        );
         addIdentifierCallbacks(timedLyrics, comments);
         addPathCallbacks(comments);
     }

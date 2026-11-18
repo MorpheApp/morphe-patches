@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 
 import java.util.Objects;
 
+import app.morphe.extension.shared.Utils;
+
 final class LyricsFit {
     private static final int ORPHAN_MAX_CHARS = 2;
     private static final int FIT_MAX_STEPS = 10;
@@ -233,7 +235,6 @@ final class LyricsFit {
             }
         }
 
-        @SuppressWarnings("SizeReplaceableByIsEmpty")
         @Override
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -242,7 +243,7 @@ final class LyricsFit {
                 return;
             }
             final CharSequence text = getText();
-            if (text == null || text.length() == 0) {
+            if (Utils.isEmpty(text)) {
                 return;
             }
             if (applyOrphanFit(this, width, text, fittedState)) {

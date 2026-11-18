@@ -28,7 +28,7 @@ final class LyricsColors {
     static final float ACTIVE_TRANSLATION_ALPHA = 0.8f;
 
     /** A background vocal is drawn on its own, so it is not dimmed with the lead line. */
-    static final float ACTIVE_BG_ALPHA = 0.8f;
+    static final float ACTIVE_BG_ALPHA = 1.0f;
     private static int cachedLineColor;
     private static int cachedUnsungColor;
     private static int cachedSecondaryColor;

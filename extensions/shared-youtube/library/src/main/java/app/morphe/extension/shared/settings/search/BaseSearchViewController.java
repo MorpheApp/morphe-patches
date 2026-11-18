@@ -26,10 +26,10 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -38,12 +38,15 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toolbar;
+import android.window.OnBackInvokedCallback;
+import android.window.OnBackInvokedDispatcher;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -69,7 +72,7 @@ import app.morphe.extension.shared.ui.Dim;
  * Abstract controller for managing the overlay search view in Morphe settings.
  * Subclasses must implement app-specific preference handling.
  */
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"unused", "deprecation"})
 public abstract class BaseSearchViewController {
     protected SearchResultsAdapter searchResultsAdapter;
     protected boolean isSearchActive;
@@ -86,7 +89,7 @@ public abstract class BaseSearchViewController {
     protected FrameLayout overlayContainer;
     protected FrameLayout searchContainer;
     protected Object nativeBackCallback;
-    protected SearchHistoryManager searchHistoryManager;
+    protected final SearchHistoryManager searchHistoryManager;
     protected SearchView searchView;
 
     /**
@@ -245,7 +248,7 @@ public abstract class BaseSearchViewController {
     // Abstract interface for preference fragments.
     public interface BasePreferenceFragment {
         PreferenceScreen getPreferenceScreenForSearch();
-        android.view.View getView();
+        View getView();
         Activity getActivity();
     }
 
@@ -342,7 +345,7 @@ public abstract class BaseSearchViewController {
             try {
                 PreferenceScreen screen = fragment.getPreferenceScreenForSearch();
                 if (screen != null) {
-                    collectSearchablePreferences(screen);
+                    collectSearchablePreferencesWithKeys(screen, "", new ArrayList<>(), 1, 0);
                     for (BaseSearchResultItem item : allSearchItems) {
                         if (item instanceof BaseSearchResultItem.PreferenceSearchItem prefItem) {
                             String key = prefItem.preference.getKey();
@@ -357,13 +360,6 @@ public abstract class BaseSearchViewController {
                 Logger.printException(() -> "Failed to initialize search data", ex);
             }
         });
-    }
-
-    /**
-     * Collects searchable preferences from a preference group.
-     */
-    protected void collectSearchablePreferences(PreferenceGroup group) {
-        collectSearchablePreferencesWithKeys(group, "", new ArrayList<>(), 1, 0);
     }
 
     /**
@@ -396,15 +392,15 @@ public abstract class BaseSearchViewController {
                 // Append the group title to the path and save key for navigation.
                 if (!(preference instanceof NoTitlePreferenceCategory)) {
                     CharSequence title = NewIndicatorSpan.removeFrom(preference.getTitle());
-                    if (!TextUtils.isEmpty(title)) {
-                        newPath = TextUtils.isEmpty(parentPath)
+                    if (Utils.isNotEmpty(title)) {
+                        newPath = Utils.isEmpty(parentPath)
                                 ? title.toString()
                                 : parentPath + " > " + title;
                     }
 
                     // Add key for navigation if this is a PreferenceScreen or group with navigation capability.
                     String key = preference.getKey();
-                    if (!TextUtils.isEmpty(key) && (preference instanceof PreferenceScreen
+                    if (Utils.isNotEmpty(key) && (preference instanceof PreferenceScreen
                             || searchResultsAdapter.hasNavigationCapability(preference))) {
                         newKeys.add(key);
                     }
@@ -463,8 +459,7 @@ public abstract class BaseSearchViewController {
         }
 
         if (!filteredSearchItems.isEmpty()) {
-            //noinspection ComparatorCombinators
-            filteredSearchItems.sort((o1, o2) -> o1.navigationPath.compareTo(o2.navigationPath));
+            filteredSearchItems.sort(Comparator.comparing(item -> item.navigationPath));
             List<BaseSearchResultItem> displayItems = new ArrayList<>();
             String currentPath = null;
             for (BaseSearchResultItem item : filteredSearchItems) {
@@ -557,7 +552,9 @@ public abstract class BaseSearchViewController {
             searchHistoryManager.showSearchHistory();
             isShowingSearchHistory = true;
         } else {
-            hideAllOverlays();
+            // Hides all overlay containers, including search results and history.
+            hideSearchHistory();
+            hideSearchResults();
         }
     }
 
@@ -567,14 +564,6 @@ public abstract class BaseSearchViewController {
     protected void hideSearchHistory() {
         searchHistoryManager.hideSearchHistoryContainer();
         isShowingSearchHistory = false;
-    }
-
-    /**
-     * Hides all overlay containers, including search results and history.
-     */
-    protected void hideAllOverlays() {
-        hideSearchHistory();
-        hideSearchResults();
     }
 
     /**
@@ -619,14 +608,15 @@ public abstract class BaseSearchViewController {
      *
      * @return true if the back press was handled.
      */
+    @SuppressWarnings("UnusedReturnValue")
     public boolean handleBackPress() {
         if (!isSearchActive) return false;
 
         boolean isKeyboardVisible = false;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            android.view.WindowInsets insets = activity.getWindow().getDecorView().getRootWindowInsets();
+            WindowInsets insets = activity.getWindow().getDecorView().getRootWindowInsets();
             if (insets != null) {
-                isKeyboardVisible = insets.isVisible(android.view.WindowInsets.Type.ime());
+                isKeyboardVisible = insets.isVisible(WindowInsets.Type.ime());
             }
         }
 
@@ -648,16 +638,16 @@ public abstract class BaseSearchViewController {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private static class PredictiveBackHandler {
         static Object register(Activity activity, Runnable onBackAction) {
-            android.window.OnBackInvokedCallback callback = onBackAction::run;
+            OnBackInvokedCallback callback = onBackAction::run;
             activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
-                    android.window.OnBackInvokedDispatcher.PRIORITY_OVERLAY,
+                    OnBackInvokedDispatcher.PRIORITY_OVERLAY,
                     callback
             );
             return callback;
         }
 
         static void unregister(Activity activity, Object callbackObj) {
-            if (callbackObj instanceof android.window.OnBackInvokedCallback callback) {
+            if (callbackObj instanceof OnBackInvokedCallback callback) {
                 activity.getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback(callback);
             }
         }

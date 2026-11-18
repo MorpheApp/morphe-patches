@@ -36,11 +36,13 @@ import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
 
+@SuppressWarnings("unused")
 public final class CaptionsFetcher {
 
     private static final int CONNECT_TIMEOUT_MS = 5_000;
@@ -84,8 +86,8 @@ public final class CaptionsFetcher {
 
     /*
      * @param includeAsr also pull the ASR track of the same song. Only the candidate pass
-     *                   asks for it: the ordinary one already spent its request on the hand
-     *                   written track, and paying for a second one on every lookup would buy a
+     *                   asks for it: the ordinary one already spent its request on the handwritten
+     *                   track, and paying for a second one on every lookup would buy a
      *                   candidate the user has to refresh his way to.
      */
     private static CaptionsOutcome fetch(boolean includeAsr) {
@@ -613,9 +615,9 @@ public final class CaptionsFetcher {
     }
 
     /**
-     * The ASR track goes last and never takes the primary slot: its text is the one a hand
-     * written track of the same song is a correction of, so it is worth offering only where
-     * the hand written one is not.
+     * The ASR track goes last and never takes the primary slot: its text is the one a handwritten
+     * track of the same song is a correction of, so it is worth offering only where
+     * the handwritten one is not.
      */
     private static List<CaptionTrack> selectPrimaryTracks(List<CaptionTrack> tracks,
                                                           @Nullable String sourceLangCode) {
@@ -715,7 +717,7 @@ public final class CaptionsFetcher {
         return "";
     }
 
-    private static String parseCookies(java.util.List<String> setCookies) {
+    private static String parseCookies(List<String> setCookies) {
         if (setCookies == null || setCookies.isEmpty()) return "";
         StringBuilder sb = new StringBuilder();
         for (String setCookie : setCookies) {
@@ -724,8 +726,7 @@ public final class CaptionsFetcher {
             if (eq > 0) {
                 String key = entry.substring(0, eq).trim();
                 if (COOKIE_KEYS.contains(key)) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (sb.length() > 0) sb.append("; ");
+                    if (Utils.isNotEmpty(sb)) sb.append("; ");
                     sb.append(entry);
                 }
             }
@@ -764,8 +765,7 @@ public final class CaptionsFetcher {
         for (String part : value.split("[;\\r\\n]+")) {
             String trimmed = part.trim();
             if (trimmed.isEmpty() || trimmed.indexOf('=') <= 0) continue;
-            //noinspection SizeReplaceableByIsEmpty
-            if (sb.length() > 0) sb.append("; ");
+            if (Utils.isNotEmpty(sb)) sb.append("; ");
             sb.append(trimmed);
         }
         return sb.toString();
@@ -1036,7 +1036,7 @@ public final class CaptionsFetcher {
         }
         Word last = words.get(total - 1);
         words.set(total - 1, new Word(last.startMs(),
-                eventEndMs > last.startMs() ? eventEndMs : last.startMs(), last.text(),
+                Math.max(eventEndMs, last.startMs()), last.text(),
                 last.romaji(), last.endsWithSpace(), last.ruby()));
         return words;
     }
@@ -1098,6 +1098,7 @@ public final class CaptionsFetcher {
         public final @Nullable TrackInfo innertubeTrack;
         public final @Nullable String errorReason;
 
+        @SuppressWarnings("SameParameterValue")
         private CaptionsOutcome(@Nullable Lyrics lyrics, @Nullable Lyrics translationLyrics,
                                 @Nullable Lyrics asrLyrics, boolean suppressProviders,
                                 @Nullable TrackInfo innertubeTrack,
@@ -1141,7 +1142,7 @@ public final class CaptionsFetcher {
 
         @Override
         @Nullable
-        public FetchResult fetch(TrackInfo track) throws Exception {
+        public FetchResult fetch(TrackInfo track) {
             CaptionsOutcome outcome = CaptionsFetcher.fetch();
 
             if (outcome.errorReason != null) {
@@ -1170,7 +1171,7 @@ public final class CaptionsFetcher {
         /*
          * The ASR track is worth a candidate slot because it is the only caption track that
          * carries a per-word timeline. It does not take over the screen on its own: the lookups
-         * that reach this provider have already put the hand written text there.
+         * that reach this provider have already put the handwritten text there.
          */
         @Override
         public boolean hasCandidates() {

@@ -19,6 +19,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 public final class LyricsFileParser {
 
@@ -138,7 +139,7 @@ public final class LyricsFileParser {
                 String wordString = wordText instanceof String ? (String) wordText : "";
                 long start = asLong(wordMap.get("start_ms"));
                 // A word with no start of its own has nothing to be lit by, and the ends its
-                // neighbours lend it would be counted off a number that is not a time. The
+                // neighbors lend it would be counted off a number that is not a time. The
                 // line keeps its own timing and is sung in one go instead. The text is rebuilt
                 // from the words below, so the words are only given up after that has happened.
                 if (start < 0) {
@@ -157,8 +158,7 @@ public final class LyricsFileParser {
                 if (wordText.isEmpty()) {
                     continue;
                 }
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) {
+                if (Utils.isNotEmpty(builder)) {
                     builder.append(' ');
                 }
                 builder.append(wordText);
@@ -281,8 +281,7 @@ public final class LyricsFileParser {
             if (indentOf(line) <= indent) {
                 break;
             }
-            //noinspection SizeReplaceableByIsEmpty
-            if (builder.length() > 0) {
+            if (Utils.isNotEmpty(builder)) {
                 builder.append('\n');
             }
             int strip = Math.min(base, line.length());

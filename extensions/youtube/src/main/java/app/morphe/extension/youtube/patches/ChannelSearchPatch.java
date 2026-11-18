@@ -1047,12 +1047,10 @@ public final class ChannelSearchPatch {
             metadataText.append(post.publishedTime);
         }
         if (!post.likes.isEmpty()) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (metadataText.length() > 0) metadataText.append("  •  ");
+            if (Utils.isNotEmpty(metadataText)) metadataText.append("  •  ");
             metadataText.append(post.likes);
         }
-        //noinspection SizeReplaceableByIsEmpty
-        if (metadataText.length() > 0) {
+        if (Utils.isNotEmpty(metadataText)) {
             TextView metadata = new TextView(activity);
             metadata.setText(metadataText);
             metadata.setTextColor(ThemeUtils.getAppForegroundColor());

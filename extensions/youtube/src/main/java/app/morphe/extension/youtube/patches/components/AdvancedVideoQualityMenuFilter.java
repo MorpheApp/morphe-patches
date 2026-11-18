@@ -10,6 +10,7 @@ import app.morphe.extension.youtube.settings.Settings;
 /**
  * LithoFilter for {@link AdvancedVideoQualityMenuPatch}.
  */
+@SuppressWarnings("unused")
 public final class AdvancedVideoQualityMenuFilter extends Filter {
     // Must be volatile or synchronized, as litho filtering runs off main thread
     // and this field is then access from the main thread.

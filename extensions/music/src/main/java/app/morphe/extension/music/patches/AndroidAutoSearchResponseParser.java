@@ -64,6 +64,7 @@ import java.util.Collections;
 import java.util.List;
 
 /** Reads titles, artwork, and playback actions from phone search responses. */
+@SuppressWarnings("unused")
 final class AndroidAutoSearchResponseParser {
     private static final int SEARCH_CONTENTS = 4;
     private static final int TABBED_SEARCH = 60_498_879;

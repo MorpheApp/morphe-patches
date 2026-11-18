@@ -11,7 +11,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideRelatedVideoOverlayPatch;"
 
-@Suppress("unused")
 val hideRelatedVideoOverlayPatch = patch(
     name = "Hide related video overlay",
     description = "Adds an option to hide the related video overlay shown when swiping up in fullscreen.",

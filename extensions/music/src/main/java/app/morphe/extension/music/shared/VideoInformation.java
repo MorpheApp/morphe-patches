@@ -9,19 +9,28 @@ package app.morphe.extension.music.shared;
 
 import androidx.annotation.NonNull;
 
+import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.BaseVideoInformation;
 
 /**
  * Hooking class for the current playing video.
  * Injection points and bridge methods are added by the VideoInformation patch.
  */
 @SuppressWarnings("unused")
-public final class VideoInformation {
+public final class VideoInformation extends BaseVideoInformation {
+
+    /**
+     * Implemented by the player during patching.
+     */
+    public interface PlaybackController {
+        boolean patch_seekTo(long videoTime);
+    }
 
     /** Notified when the app starts another video. */
     public interface VideoIdListener {
@@ -34,6 +43,12 @@ public final class VideoInformation {
     private static volatile String videoId = "";
     private static volatile long videoLength = 0;
     private static volatile long videoTime = -1;
+    private static volatile WeakReference<PlaybackController> playerRef = new WeakReference<>(null);
+
+    /** Injection point. Called each time the player is created. */
+    public static void setPlayer(@NonNull PlaybackController player) {
+        playerRef = new WeakReference<>(player);
+    }
 
     /** Injection point. */
     public static void initialize() {
@@ -48,7 +63,7 @@ public final class VideoInformation {
     }
 
     /**
-     * Id of the current video playing.
+     * ID of the current video playing.
      *
      * @return The id of the video. Empty string if not set yet.
      */
@@ -110,7 +125,12 @@ public final class VideoInformation {
             // Seeking very close to the end causes a seek loop; push past the video end instead.
             final long adjusted = (len - seekTime > 500) ? seekTime : Integer.MAX_VALUE;
             Logger.printDebug(() -> "VideoInformation: seekTo " + adjusted + "ms");
-            final boolean seeked = overrideVideoTime(adjusted);
+            final PlaybackController player = playerRef.get();
+            if (player == null) {
+                Logger.printDebug(() -> "seekTo: no player");
+                return false;
+            }
+            final boolean seeked = player.patch_seekTo(adjusted);
             if (seeked && seekTime > 0) {
                 videoTime = seekTime;
             }
@@ -119,15 +139,5 @@ public final class VideoInformation {
             Logger.printException(() -> "seekTo failed", ex);
             return false;
         }
-    }
-
-    /**
-     * Bridge method - implementation is injected by the patch via addStaticFieldToExtension.
-     * Do not call directly; use {@link #seekTo(long)} instead.
-     */
-    @SuppressWarnings("SameReturnValue")
-    public static boolean overrideVideoTime(final long seekTime) {
-        Logger.printDebug(() -> "overrideVideoTime: " + seekTime + " (stub - patch not applied?)");
-        return false;
     }
 }

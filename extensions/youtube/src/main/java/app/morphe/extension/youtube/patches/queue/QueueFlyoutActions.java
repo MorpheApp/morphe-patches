@@ -29,6 +29,7 @@ import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 
 /** Adjusts native menu data before YouTube filters and binds its rows. */
+@SuppressWarnings("unused")
 public final class QueueFlyoutActions {
     private static final int MDX_CONNECTED = 1;
     private static final int MDX_DISCONNECTED = 2;
@@ -58,9 +59,11 @@ public final class QueueFlyoutActions {
                 return original;
             }
             FlyoutUtils.setNativeQueuePlaylistId(playlistId);
+            // Menus of Shorts in the feed have no stock queue items to replace.
+            final boolean isAddShortsItems = playlistId.isEmpty() && FlyoutUtils.isShortsFeedMenu();
             MenuRenderer completed = completeMenu(menu,
-                    !playlistId.isEmpty() || NativePlaylistQueuePatch.canShowFlyoutLast(),
-                    str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId);
+                    str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId,
+                    isAddShortsItems);
             if (completed == menu) {
                 return original;
             }
@@ -77,12 +80,13 @@ public final class QueueFlyoutActions {
                 && AddToQueuePatch.flyoutButtonClickLogic(icon.name(), FlyoutUtils.getFlyoutVideoId());
     }
 
-    static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel) {
-        return completeMenu(menu, allowLast, nextLabel, lastLabel, "");
+    @SuppressWarnings("SameParameterValue")
+    static MenuRenderer completeMenu(MenuRenderer menu, String nextLabel, String lastLabel) {
+        return completeMenu(menu, nextLabel, lastLabel, "", false);
     }
 
-    static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel,
-                                     String playlistId) {
+    static MenuRenderer completeMenu(MenuRenderer menu, String nextLabel, String lastLabel,
+                                     String playlistId, boolean isAddIfMissing) {
         MenuItem next = null;
         MenuItem last = null;
         for (MenuItem item : menu.getItemsList()) {
@@ -97,18 +101,14 @@ public final class QueueFlyoutActions {
             }
         }
 
-        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId)) {
+        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId) && !isAddIfMissing) {
             return menu;
         }
         next = prepareLocalItem(next == null ? queueItem(YTIconType.QUEUE_PLAY_NEXT, nextLabel) : next);
-        if (allowLast) {
-            last = prepareLocalItem(last == null ? queueItem(YTIconType.QUEUE_PLAY_LAST, lastLabel) : last);
-        }
+        last = prepareLocalItem(last == null ? queueItem(YTIconType.QUEUE_PLAY_LAST, lastLabel) : last);
         if (PlaylistCardSource.isPlaylistId(playlistId)) {
             next = bindPlaylist(next, playlistId);
-            if (allowLast) {
-                last = bindPlaylist(last, playlistId);
-            }
+            last = bindPlaylist(last, playlistId);
         }
         var completed = menu.toBuilder().clearItems();
         boolean added = false;
@@ -117,9 +117,7 @@ public final class QueueFlyoutActions {
             if (isLocalItem(item) && (icon == YTIconType.QUEUE_PLAY_NEXT || icon == YTIconType.QUEUE_PLAY_LAST)) {
                 if (!added) {
                     completed.addItems(next);
-                    if (allowLast) {
-                        completed.addItems(last);
-                    }
+                    completed.addItems(last);
                     added = true;
                 }
             } else {
@@ -129,9 +127,7 @@ public final class QueueFlyoutActions {
 
         if (!added) {
             completed.clearItems().addItems(next);
-            if (allowLast) {
-                completed.addItems(last);
-            }
+            completed.addItems(last);
             completed.addAllItems(menu.getItemsList());
         }
         MenuRenderer result = completed.build();
@@ -146,7 +142,7 @@ public final class QueueFlyoutActions {
     public static PlaylistCardSource.Selection playlistSource(@Nullable Object source, @Nullable View sender) {
         boolean collection = false;
         try {
-            if (!NativePlaylistQueuePatch.canQueuePlaylist()) {
+            if (FlyoutUtils.isShortsFeedMenu() || !NativePlaylistQueuePatch.canQueuePlaylist()) {
                 return new PlaylistCardSource.Selection("", false);
             }
             collection = sender != null && FeedVideoCardsPatch.isPlaylistTap(sender);

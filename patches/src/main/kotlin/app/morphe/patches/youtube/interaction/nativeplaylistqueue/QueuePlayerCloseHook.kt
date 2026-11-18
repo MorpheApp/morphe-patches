@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patches.youtube.misc.playservice.is_21_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
@@ -49,11 +50,9 @@ internal fun installQueuePlayerClose(
     val dispatcher = playlistControllerDispatcherFingerprint(controllerType, dispatch.definingClass)
         .instructionMatches.first().fieldReference
 
-    mutableClassDefBy(controllerType).addBridgeMethod(
+    mutableClassDefBy(controllerType).addPatchInterface(
+        CONTROLLER_INTERFACE,
         "patch_showQueueFeedback",
-        listOf("[B"),
-        "V",
-        3,
         """
             ${parseProtoInstructions(endpointType, bytes = "p1", result = "v0", registry = "v1")}
             check-cast v0, $endpointType

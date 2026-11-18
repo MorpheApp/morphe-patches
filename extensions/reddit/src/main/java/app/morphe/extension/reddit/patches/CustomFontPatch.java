@@ -14,7 +14,6 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
-import android.text.TextUtils;
 import android.util.LongSparseArray;
 
 import java.io.File;
@@ -26,7 +25,6 @@ import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 @SuppressWarnings("unused")
 public final class CustomFontPatch {
@@ -39,6 +37,7 @@ public final class CustomFontPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -54,7 +53,7 @@ public final class CustomFontPatch {
             }
 
             String configuredPath = Settings.CUSTOM_FONT_FILE_PATH.get();
-            if (TextUtils.isEmpty(configuredPath)) {
+            if (Utils.isEmpty(configuredPath)) {
                 return null;
             }
 
@@ -183,14 +182,10 @@ public final class CustomFontPatch {
     }
 
     private static void disableCustomFont() {
-        // Suppress shared preference listener side effects for this programmatic write.
-        AbstractPreferenceFragment.settingImportInProgress = true;
         try {
             Settings.CUSTOM_FONT.save(false);
-        } catch (Exception ignored) {
-            // Ignore any preference write failures and keep fallback behavior.
-        } finally {
-            AbstractPreferenceFragment.settingImportInProgress = false;
+        } catch (Exception ex) {
+            Logger.printException(() -> "disableCustomFont failure", ex);
         }
     }
 }

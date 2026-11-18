@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.morphe.extension.shared.Utils;
+
 /** Keeps native styled cues and gives each language its own window identifiers. */
 final class NativeCaptionPair {
     final UploadedCaptionPair tracks;
@@ -36,7 +38,7 @@ final class NativeCaptionPair {
             for (Object item : source.patch_getOriginalCaptions(time)) {
                 if (!(item instanceof StableCaptionBlocks.Cue cue) || !cue.patch_isCaptionVisible()) continue;
                 CharSequence text = cue.patch_getOriginalCaptionVisible();
-                if (text == null || text.length() == 0) continue;
+                if (Utils.isEmpty(text)) continue;
                 int language = tracks.first() == null ? 0 : 1;
                 Object copy = cue.patch_copyBlockFrame(
                         new StableCaptionBlocks.Frame(state, time, block.start, language, false));

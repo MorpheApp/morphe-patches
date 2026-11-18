@@ -27,7 +27,6 @@ import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
@@ -51,34 +50,34 @@ internal val fixBackToExitGesturePatch = patch(
             SwitchPreference("morphe_back_button_always_exits_feed", summary = true)
         )
 
-        // FIXME? Originally this only changed the first match, but this now matches
-        //        up to 3 identical methods in different classes (21.45+ has 3 tab controllers).
-        recyclerViewTopScrollingFingerprint().matchAll(1..3).forEach {
-            it.method.addInstructionsAtControlFlowLabel(
-                it.instructionMatches.last().index + 1,
+        // Hooked after the call that scrolls the feed to the top, not in the called method,
+        // because the call goes through an interface with several identical implementations.
+        // Must be done before the code added at the start of the same method below.
+        RecyclerViewTopScrollingCallingMethodFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
                 "invoke-static { }, $EXTENSION_CLASS->onTopView()V"
             )
         }
 
         if (is_21_45_or_greater) {
-            // The feature flag is gone and the feed always scrolls to the top. The called method
-            // does the scrolling, so it must be skipped instead of changing what it returns.
-            BackToRefreshFingerprint.let {
-                it.method.apply {
-                    val index = it.instructionMatches[1].index
-                    val free = findFreeRegister(index)
+            // The feature flag is gone and the feed always scrolls to the top. Back is handled by
+            // one of two navigation controllers, and both ask the feed through this method, which
+            // does the scrolling. Returning false skips it, and back then exits as usual.
+            RecyclerViewTopScrollingCallingMethodFingerprint.method.apply {
+                val free = findFreeRegister(0)
 
-                    addInstructionsWithLabels(
-                        index,
-                        """
-                            const/4 v$free, 0x1
-                            invoke-static { v$free }, $EXTENSION_CLASS->allowBackButtonToScrollToTopOfFeed(Z)Z
-                            move-result v$free
-                            if-eqz v$free, :do_not_scroll
-                        """,
-                        ExternalLabel("do_not_scroll", getInstruction(it.instructionMatches.last().index + 1))
-                    )
-                }
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        const/4 v$free, 0x1
+                        invoke-static { v$free }, $EXTENSION_CLASS->allowBackButtonToScrollToTopOfFeed(Z)Z
+                        move-result v$free
+                        if-nez v$free, :scroll_to_top
+                        return v$free
+                    """,
+                    ExternalLabel("scroll_to_top", getInstruction(0))
+                )
             }
         } else {
             BackToRefreshFeatureFlagFingerprint.matchAll().forEach {

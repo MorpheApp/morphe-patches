@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3447
+ * https://github.com/MorpheApp/morphe-patches/pull/4840
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -10,7 +11,9 @@
 
 package app.morphe.patches.youtube.layout.dearrow
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
+import app.morphe.patches.shared.misc.glide.GlideRequestBuilderLoadGenericFingerprint
 import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -21,21 +24,28 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.youtube.layout.originaltitles.videoTitlesHookPatch
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.imageurlhook.addImageURLErrorCallbackHook
 import app.morphe.patches.youtube.misc.imageurlhook.addImageURLHook
 import app.morphe.patches.youtube.misc.imageurlhook.addImageURLSuccessCallbackHook
 import app.morphe.patches.youtube.misc.imageurlhook.cronetImageURLHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.morphe.patches.youtube.misc.playercontrols.addTopControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowPatch;"
 
-@Suppress("unused")
+private const val EXTENSION_VOTE_BUTTON =
+    "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowVoteButton;"
+
 val deArrowPatch = patch(
     name = "DeArrow",
     description = "Adds options to replace video thumbnails and titles using the DeArrow API, " +
@@ -49,7 +59,11 @@ val deArrowPatch = patch(
         // Thumbnails that fail to load are loaded again by mounting the Litho views again.
         lithoRelayoutPatch,
         // Titles are replaced by the same hooks that restore the original titles.
-        videoTitlesHookPatch
+        videoTitlesHookPatch,
+        legacyPlayerControlsPatch,
+        videoInformationPatch,
+        settingsPatch,
+        legacyPlayerControlsPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -74,6 +88,12 @@ val deArrowPatch = patch(
                     SwitchPreference("morphe_dearrow_titles_player"),
                     SwitchPreference("morphe_dearrow_titles_search"),
                     SwitchPreference("morphe_dearrow_titles_icon", summary = true),
+                    SwitchPreference("morphe_dearrow_clean_up_titles", summary = true),
+                    SwitchPreference(
+                        key = "morphe_dearrow_vote_button",
+                        summary = true,
+                        tag = "app.morphe.extension.youtube.settings.preference.DeArrowVoteButtonSwitchPreference"
+                    ),
                     SwitchPreference("morphe_dearrow_casual_mode", summary = true),
                     TextPreference("morphe_dearrow_casual_mode_min_votes", inputType = InputType.NUMBER)
                 )
@@ -101,6 +121,32 @@ val deArrowPatch = patch(
                     SwitchPreference("morphe_dearrow_connection_toast", summary = true)
                 )
             ),
+            PreferenceCategory(
+                key = "morphe_dearrow_submitting_category",
+                titleKey = "morphe_dearrow_submitting_title",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    NonInteractivePreference(
+                        key = "morphe_dearrow_guidelines",
+                        tag = "app.morphe.extension.youtube.settings.preference.DeArrowGuidelinesPreference",
+                        selectable = true
+                    ),
+                    TextPreference(
+                        key = "morphe_dearrow_vote_time_step",
+                        tag = "app.morphe.extension.youtube.settings.preference.DeArrowTimeStepPreference",
+                        inputType = InputType.NUMBER
+                    ),
+                    // Same setting as SponsorBlock, since DeArrow uses the same user id.
+                    TextPreference(
+                        key = "morphe_sb_private_user_id_Do_Not_Share",
+                        titleKey = "morphe_dearrow_private_user_id_title",
+                        summaryKey = "morphe_dearrow_private_user_id_summary",
+                        tag = "app.morphe.extension.youtube.settings.preference.DeArrowPrivateUserIdPreference"
+                    )
+                ),
+                // Username and submissions are added at runtime.
+                tag = "app.morphe.extension.youtube.settings.preference.DeArrowAccountPreferenceCategory"
+            ),
             screenInfoPreferenceCategory(
                 key = "morphe_dearrow_about_category",
                 preferences = setOf(
@@ -118,8 +164,29 @@ val deArrowPatch = patch(
         // Other patches use DeArrow only if this patch is included.
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
+        initializeTopControl(EXTENSION_VOTE_BUTTON)
+
         addImageURLHook(EXTENSION_CLASS)
         addImageURLSuccessCallbackHook(EXTENSION_CLASS)
         addImageURLErrorCallbackHook(EXTENSION_CLASS)
+
+        // Thumbnails are loaded with Glide, which caches them by the URL before it's replaced.
+        // The original thumbnail of a video whose DeArrow icon was tapped is loaded with another image model,
+        // so the replaced thumbnail cached for the URL is not shown.
+        GlideRequestBuilderLoadGenericFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->getImageModel(Ljava/lang/Object;)Ljava/lang/Object;
+                move-result-object p1
+            """
+        )
+
+        copyPlayerButtonIcons("dearrowbutton", "morphe_yt_dearrow")
+
+        addTopControl(
+            "dearrowbutton",
+            "@+id/morphe_dearrow_vote_button",
+            "@+id/morphe_dearrow_vote_button"
+        )
     }
 }

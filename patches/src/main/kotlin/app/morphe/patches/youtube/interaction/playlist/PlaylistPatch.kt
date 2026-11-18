@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patches.shared.misc.bridge.addBridge
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostLayoutFingerprint
 import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostTouchFingerprint
@@ -34,9 +34,8 @@ import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/PlaylistPatch;"
 private const val PLAYLIST_EDIT_CALLBACK_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/PlaylistPatch\$PlaylistEditCallback;"
+    $$"Lapp/morphe/extension/youtube/patches/PlaylistPatch$PlaylistEditCallback;"
 
-@Suppress("unused")
 val playlistPatch = patch(
     name = "Playlist improvements",
     description = "Adds options to widen playlist drag handles, reorder videos by long press, " +
@@ -129,12 +128,9 @@ val playlistPatch = patch(
         val responseMethod = queueSaveEditSuccessFingerprint(playlistEditCallback.type).method
         val responseType = responseMethod.parameterTypes.single().toString()
 
-        playlistEditCallback.interfaces.add(PLAYLIST_EDIT_CALLBACK_INTERFACE)
-        playlistEditCallback.addBridge(
+        playlistEditCallback.addPatchInterface(
+            PLAYLIST_EDIT_CALLBACK_INTERFACE,
             "patch_parsePlaylistEditResponse",
-            listOf("[B"),
-            "Lcom/google/protobuf/MessageLite;",
-            4,
             """
                 ${parseProtoInstructions(responseType, bytes = "p1", result = "v0", registry = "v1")}
                 return-object v0

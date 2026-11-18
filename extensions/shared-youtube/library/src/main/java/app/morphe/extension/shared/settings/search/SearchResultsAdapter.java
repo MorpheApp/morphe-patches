@@ -61,7 +61,7 @@ import app.morphe.extension.shared.ui.Dim;
 /**
  * Adapter for displaying search results in overlay ListView with ViewHolder pattern.
  */
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"unused", "deprecation"})
 public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
     protected final LayoutInflater inflater;
     protected final BaseSearchViewController.BasePreferenceFragment fragment;
@@ -250,7 +250,7 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
         CharSequence summary = item.getDisplaySummary(queryPattern);
         titleView.setText(item.getDisplayTitle(queryPattern));
         summaryView.setText(summary);
-        summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
+        summaryView.setVisibility(Utils.isEmpty(summary) ? View.GONE : View.VISIBLE);
     }
 
     protected void bindRegularViewHolder(BaseSearchResultItem item, RegularViewHolder holder, View view) {
@@ -433,10 +433,10 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
         }
 
         // Fallback to title-based navigation.
-        if (targetPref == null && !TextUtils.isEmpty(item.navigationPath)) {
+        if (targetPref == null && Utils.isNotEmpty(item.navigationPath)) {
             String[] pathSegments = item.navigationPath.split(" > ");
             String finalSegment = pathSegments[pathSegments.length - 1].trim();
-            if (!TextUtils.isEmpty(finalSegment)) {
+            if (Utils.isNotEmpty(finalSegment)) {
                 targetPref = findPreferenceByTitle(currentScreen, finalSegment);
             }
         }
@@ -474,7 +474,7 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
      * Normalizes string for comparison (removes extra characters, spaces etc.).
      */
     protected String normalizeString(String input) {
-        if (TextUtils.isEmpty(input)) return "";
+        if (Utils.isEmpty(input)) return "";
         return input.trim().toLowerCase(Locale.getDefault()).replaceAll("\\s+", " ").replaceAll("[^\\w\\s]", "");
     }
 
@@ -596,7 +596,7 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
      * Recursively finds a preference by key in a preference group.
      */
     protected Preference findPreferenceByKey(PreferenceGroup group, String key) {
-        if (group == null || TextUtils.isEmpty(key)) {
+        if (group == null || Utils.isEmpty(key)) {
             return null;
         }
 

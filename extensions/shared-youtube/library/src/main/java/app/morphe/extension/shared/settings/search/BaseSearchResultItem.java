@@ -18,7 +18,6 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.SwitchPreference;
 import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
 import android.text.style.BackgroundColorSpan;
 
 import androidx.annotation.ColorInt;
@@ -45,6 +44,7 @@ import app.morphe.extension.shared.theme.ThemeUtils;
  * An item is only an index entry. Nothing about the current appearance is stored here, so
  * preferences that update themselves at runtime stay correct in the results.
  */
+@SuppressWarnings("unused")
 public abstract class BaseSearchResultItem {
     public enum ViewType {
         REGULAR,
@@ -92,7 +92,7 @@ public abstract class BaseSearchResultItem {
      * Existing spans of the text are kept, so bullet points and similar formatting survive.
      */
     static CharSequence highlightSearchQuery(CharSequence text, @Nullable Pattern queryPattern) {
-        if (TextUtils.isEmpty(text) || queryPattern == null) return text;
+        if (Utils.isEmpty(text) || queryPattern == null) return text;
 
         final int adjustedColor = Utils.adjustColorBrightness(
                 ThemeUtils.getAppBackgroundColor(), 0.95f, 1.20f);
@@ -193,8 +193,8 @@ public abstract class BaseSearchResultItem {
          * Uses full Unicode normalization for accurate search across all languages.
          */
         private void appendText(StringBuilder builder, CharSequence text) {
-            if (!TextUtils.isEmpty(text)) {
-                if (builder.length() > 0) {
+            if (Utils.isNotEmpty(text)) {
+                if (Utils.isNotEmpty(builder)) {
                     builder.append(" ");
                 }
                 builder.append(Utils.normalizeTextToLowercase(text));
@@ -266,7 +266,7 @@ public abstract class BaseSearchResultItem {
         int getColor() {
             if (preference instanceof ColorPickerPreference colorPref) {
                 String colorString = colorPref.getText();
-                if (!TextUtils.isEmpty(colorString)) {
+                if (Utils.isNotEmpty(colorString)) {
                     try {
                         return Color.parseColor(colorString);
                     } catch (IllegalArgumentException ex) {

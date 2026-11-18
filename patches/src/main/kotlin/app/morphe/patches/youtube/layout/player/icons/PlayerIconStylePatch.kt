@@ -215,7 +215,6 @@ internal fun copyPlayerButtonIcons(resourceDirectory: String, vararg baseNames: 
  * Adds the style variants of the icons if the player icon style patch is included.
  * Called alone for an icon the app itself provides in the thin and bold styles.
  */
-@Suppress("UnusedReceiverParameter")
 internal fun copyPlayerIconStyles(resourceDirectory: String, vararg baseNames: String) {
     baseNames.forEach { styledPlayerIcons[it] = resourceDirectory }
 }

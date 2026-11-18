@@ -21,7 +21,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-@Suppress("unused")
 fun baseSpoofAppVersionPatch(
     defaultTargetString: () -> String,
     preferenceScreen: BasePreferenceScreen.Screen,

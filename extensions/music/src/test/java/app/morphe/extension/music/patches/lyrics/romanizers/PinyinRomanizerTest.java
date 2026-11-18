@@ -24,12 +24,12 @@ public class PinyinRomanizerTest {
     // ── known WORDS fallback entries ──
 
     @Test
-    public void romanizeKnownWord一个人() {
+    public void romanizeKnownWordYiGeRen() {
         assertEquals("yí gè rén", PinyinRomanizer.romanize("一个人"));
     }
 
     @Test
-    public void romanizeKnownWord重新开始() {
+    public void romanizeKnownWordChongXinKaiShi() {
         assertEquals("chóng xīn kāi shǐ", PinyinRomanizer.romanize("重新开始"));
     }
 

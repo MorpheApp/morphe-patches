@@ -69,7 +69,7 @@ val shortsAutoplayPatch = patch(
             )
         }
         
-        val reelPlaybackRepeat = reelPlaybackRepeatFingerprint(reelEnumClass)
+        val reelPlaybackRepeat = ReelPlaybackRepeatFingerprint
 
         reelPlaybackRepeat.method.apply {
             // The behavior enums are looked up from an ordinal value to an enum type.

@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.jam;
 
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /** Mirrors the native full-player and mini-player labels on the UI thread. */
+@SuppressWarnings("unused")
 public final class JamMetadata {
 
     private static final Map<TextView, Label> labels = new WeakHashMap<>();
@@ -38,7 +40,7 @@ public final class JamMetadata {
             String name = "";
             try {
                 name = view.getResources().getResourceEntryName(view.getId());
-            } catch (android.content.res.Resources.NotFoundException ignored) {
+            } catch (Resources.NotFoundException ignored) {
                 // Native labels can have generated IDs; they are not player title or artist views.
             }
             boolean title =

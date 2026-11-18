@@ -30,6 +30,8 @@ import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest.DeArrowTitle;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitlesAvailability;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowTitleIcon;
+import app.morphe.extension.youtube.patches.dearrow.TitleCleanup;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
 
@@ -46,7 +48,11 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
  * <p>
  * DeArrow titles can be used only for some navigations, such as only for the search results,
  * so the title that replaces the title is chosen when the title is shown.
+ * <p>
+ * Titles that are not DeArrow titles can be cleaned up with {@link TitleCleanup}: the original title
+ * if original titles are restored, or else the title shown by YouTube where DeArrow titles are used.
  */
+@SuppressWarnings("unused")
 final class OriginalTitleRequest {
 
     private static final int CONNECTION_TIMEOUT_MILLISECONDS = 5000;
@@ -66,33 +72,55 @@ final class OriginalTitleRequest {
     /**
      * Titles that can replace the title of a video.
      *
+     * @param videoId       The video of the titles.
      * @param deArrowTitle  The DeArrow title, or null if the video has no DeArrow title,
      *                      DeArrow titles are not used, or it failed to fetch.
      * @param originalTitle The original title, or null if original titles are not restored,
      *                      the video has no available title such as a private video,
      *                      the DeArrow title is used for all navigations, or it failed to fetch.
      */
-    record Titles(@Nullable String deArrowTitle, @Nullable String originalTitle) {
+    record Titles(String videoId, @Nullable String deArrowTitle, @Nullable String originalTitle) {
         /**
          * Can be called on any thread.
          *
+         * @param shownTitle The title shown by YouTube, or null if not known.
          * @return The title that replaces the title of the video for the current navigation,
          *         or null if the title is not replaced.
          */
         @Nullable
-        String replacement() {
-            return replacement(deArrowTitle != null && DeArrowPatch.useDeArrowTitlesForCurrentNavigation());
+        String replacement(@Nullable String shownTitle) {
+            return replacement(shownTitle, DeArrowPatch.useDeArrowTitlesForCurrentNavigation());
         }
 
         /**
+         * DeArrow titles are never cleaned up. Other titles are cleaned up if enabled: the original title
+         * if original titles are restored, or else the shown title if DeArrow titles are used.
+         *
+         * @param shownTitle The title shown by YouTube, or null if not known.
          * @param useDeArrow If the DeArrow title is used if the video has one.
          * @return The title that replaces the title of the video, or null if the title is not replaced.
          */
         @Nullable
-        String replacement(boolean useDeArrow) {
-            return useDeArrow && deArrowTitle != null ? deArrowTitle : originalTitle;
+        String replacement(@Nullable String shownTitle, boolean useDeArrow) {
+            if (useDeArrow && deArrowTitle != null) {
+                return deArrowTitle;
+            }
+            if (!RestoreOriginalTitlesPatch.CLEAN_UP_TITLES) {
+                return originalTitle;
+            }
+            if (originalTitle != null) {
+                return cleanUpTitle(videoId, originalTitle);
+            }
+            // The title can be the same as the shown title, which is then not replaced.
+            return useDeArrow && shownTitle != null ? cleanUpTitle(videoId, shownTitle.trim()) : null;
         }
     }
+
+    /**
+     * Title -> cleaned up title.
+     */
+    private static final Map<String, String> cleanedTitles =
+            Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000));
 
     /**
      * Video id -> titles.
@@ -150,7 +178,8 @@ final class OriginalTitleRequest {
                             if (originalTitle == null && deArrow.needsOriginalTitle()) {
                                 originalTitle = fetchOriginalTitle(videoId);
                             }
-                            Titles titles = new Titles(deArrow.titleFor(originalTitle), fetchedTitles.originalTitle());
+                            Titles titles = new Titles(videoId, deArrow.titleFor(videoId, originalTitle),
+                                    fetchedTitles.originalTitle());
                             FeedVideoCardsPatch.addVideoText(videoId, titles.deArrowTitle());
                             // Not replaced if the titles were fetched again meanwhile.
                             cache.replace(videoId, fetchedFuture, CompletableFuture.completedFuture(titles));
@@ -173,7 +202,7 @@ final class OriginalTitleRequest {
                                 originalTitle = fetchOriginalTitle(videoId);
                                 originalFetched = true;
                             }
-                            deArrowTitle = deArrow.titleFor(originalTitle);
+                            deArrowTitle = deArrow.titleFor(videoId, originalTitle);
                         } catch (DeArrowBrandingRequest.DeArrowException ex) {
                             // The DeArrow title is fetched again later, and the original title is used meanwhile.
                             retryTimes.put(videoId, System.currentTimeMillis() + FAILED_FETCH_RETRY_MILLISECONDS);
@@ -185,7 +214,12 @@ final class OriginalTitleRequest {
                     if (fetchOriginal && !originalFetched) {
                         originalTitle = fetchOriginalTitle(videoId);
                     }
-                    return new Titles(deArrowTitle, fetchOriginal ? originalTitle : null);
+                    if (!RestoreOriginalTitlesPatch.USE_DEARROW) {
+                        // So it's known if the DeArrow icon is shown for the thumbnail when the title is shown.
+                        // The DeArrow thumbnail is fetched with the DeArrow title otherwise.
+                        DeArrowTitleIcon.fetchThumbnailIfNeeded(videoId);
+                    }
+                    return new Titles(videoId, deArrowTitle, fetchOriginal ? originalTitle : null);
                 }, Utils::runOnBackgroundThread);
                 // The cards of the video show the title that replaces its title,
                 // which the elements of the video do not include.
@@ -200,15 +234,59 @@ final class OriginalTitleRequest {
     }
 
     /**
+     * Fetches the titles of the video again, including its DeArrow branding, such as after a vote on its titles.
+     */
+    static CompletableFuture<Titles> fetchAgain(String videoId) {
+        synchronized (cache) {
+            DeArrowBrandingRequest.removeFromCache(videoId);
+            cache.remove(videoId);
+            retryTimes.remove(videoId);
+            failedFetchCounts.remove(videoId);
+            return fetch(videoId);
+        }
+    }
+
+    /**
+     * Does not start fetching the titles.
+     *
+     * @return The titles of the video, or null if not fetched.
+     */
+    @Nullable
+    static Titles getIfFetched(String videoId) {
+        CompletableFuture<Titles> future = cache.get(videoId);
+        return future != null && future.isDone() && !future.isCompletedExceptionally()
+                ? future.getNow(null)
+                : null;
+    }
+
+    /**
      * Starts fetching the title if needed, and does not wait for it.
      *
+     * @param shownTitle The title shown by YouTube, or null if not known.
      * @return The title that replaces the title of the video for the current navigation,
      *         or null if not yet available or the title is not replaced.
      */
     @Nullable
-    static String getIfAvailable(String videoId) {
+    static String getIfAvailable(String videoId, @Nullable String shownTitle) {
         Titles titles = fetch(videoId).getNow(null);
-        return titles == null ? null : titles.replacement();
+        return titles == null ? null : titles.replacement(shownTitle);
+    }
+
+    /**
+     * The cards of the video show the cleaned up title, which the elements of the video do not include.
+     *
+     * @return The cleaned up title, or the same title if nothing is cleaned up.
+     */
+    private static String cleanUpTitle(String videoId, String title) {
+        String cleanedTitle = cleanedTitles.get(title);
+        if (cleanedTitle == null) {
+            cleanedTitle = TitleCleanup.cleanUpTitle(title);
+            cleanedTitles.put(title, cleanedTitle);
+            if (!cleanedTitle.equals(title)) {
+                FeedVideoCardsPatch.addVideoText(videoId, cleanedTitle);
+            }
+        }
+        return cleanedTitle;
     }
 
     /**
@@ -220,6 +298,19 @@ final class OriginalTitleRequest {
     @Nullable
     static OriginalVideo getOriginalIfFetched(String videoId) {
         return originalVideos.get(videoId);
+    }
+
+    /**
+     * Fetches the original title if it was not fetched before, such as when original titles are not restored.
+     *
+     * @return The original title, or null if the video has no available title, or it failed to fetch.
+     */
+    static CompletableFuture<String> fetchOriginalTitleIfNeeded(String videoId) {
+        OriginalVideo original = originalVideos.get(videoId);
+        if (original != null) {
+            return CompletableFuture.completedFuture(original.title());
+        }
+        return CompletableFuture.supplyAsync(() -> fetchOriginalTitle(videoId), Utils::runOnBackgroundThread);
     }
 
     /**

@@ -28,7 +28,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/DisableDislikeRedirectionPatch;"
 
-@Suppress("unused")
 val disableDislikeRedirectionPatch = patch(
     name = "Disable dislike redirection",
     description = "Adds an option to prevent skipping to the next track when the dislike " +

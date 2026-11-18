@@ -61,9 +61,8 @@ public class VideoQualityDialogButton {
     private static CharSequence currentOverlayText;
 
     static {
-        VideoInformation.onQualityChange.addObserver((@Nullable VideoQualityInterface quality) -> {
-            updateButtonText(quality);
-        });
+        VideoInformation.onQualityChange.addObserver(
+                (@Nullable VideoQualityInterface quality) -> updateButtonText(quality));
     }
 
     /**
@@ -288,7 +287,15 @@ public class VideoQualityDialogButton {
 
             // Add title with current quality.
             if (!Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER.get()) {
-                TextView titleView = getTextView(context, spannableTitle);
+                TextView titleView = new TextView(context);
+                titleView.setText(spannableTitle);
+                titleView.setTextSize(16);
+                // Remove setTextColor since color is handled by SpannableStringBuilder.
+                LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                titleParams.setMargins(Dim.dp12, Dim.dp16, 0, Dim.dp16);
+                titleView.setLayoutParams(titleParams);
                 mainLayout.addView(titleView);
             }
 
@@ -323,20 +330,6 @@ public class VideoQualityDialogButton {
         } catch (Exception ex) {
             Logger.printException(() -> "showVideoQualityDialog failure", ex);
         }
-    }
-
-    @NonNull
-    private static TextView getTextView(Context context, SpannableStringBuilder spannableTitle) {
-        TextView titleView = new TextView(context);
-        titleView.setText(spannableTitle);
-        titleView.setTextSize(16);
-        // Remove setTextColor since color is handled by SpannableStringBuilder.
-        LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        titleParams.setMargins(Dim.dp12, Dim.dp16, 0, Dim.dp16);
-        titleView.setLayoutParams(titleParams);
-        return titleView;
     }
 
     private static class CustomQualityAdapter extends ArrayAdapter<String> {

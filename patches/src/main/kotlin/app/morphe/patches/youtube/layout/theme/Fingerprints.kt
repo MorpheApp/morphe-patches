@@ -252,11 +252,28 @@ internal object RiveReadRawResourceFingerprint : Fingerprint(
 )
 
 /**
- * Stores each frame the Rive renderer draws.
+ * Publishes each frame the Rive renderer draws, as a bitmap or as a signal that the frame can be drawn.
+ * 21.46+ obfuscates the Rive library, except the v1 library that calls an accessor to store the bitmap.
  */
-internal object RiveCanvasSessionSetLatestBitmapFingerprint : Fingerprint(
+internal object RiveCanvasSessionFrameAvailableFingerprint : Fingerprint(
+    filters = listOf(
+        string("Rive/CanvasSession/FrameAvailable"),
+        string("Rive/CanvasSession/PublishLatestBitmap"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/graphics/Bitmap;",
+            location = MatchAfterWithin(20)
+        )
+    )
+)
+
+/**
+ * Stores each frame the Rive renderer draws.
+ * 21.45 and older.
+ */
+internal object RiveCanvasSessionSetLatestBitmapLegacyFingerprint : Fingerprint(
     definingClass = "Lapp/rive/RiveCanvasSession;",
-    name = "access\$setLatestBitmap\$p",
+    name = $$"access$setLatestBitmap$p",
     returnType = "V",
     parameters = listOf("Lapp/rive/RiveCanvasSession;", "Landroid/graphics/Bitmap;")
 )

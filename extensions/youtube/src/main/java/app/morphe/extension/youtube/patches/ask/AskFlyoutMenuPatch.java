@@ -159,7 +159,7 @@ public final class AskFlyoutMenuPatch {
     private static final String CHAT_RESPONSE_TEMPLATE = "chat_response.eml";
 
     /**
-     * If this class gave the processor the Elements resources of a watch page with an Ask panel,
+     * If this class gave the processor the Elements resources of a watch page with an Ask panel
      * which the processor keeps for the app session. A resource that the processor fails to load without
      * throwing is not loaded again, as the same watch page would likely fail the same way.
      */
@@ -197,6 +197,7 @@ public final class AskFlyoutMenuPatch {
     private AskFlyoutMenuPatch() {
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -469,7 +470,7 @@ public final class AskFlyoutMenuPatch {
 
     /**
      * Injection point.
-     * Called when a popup that shows the menu items as they are has one of them tapped,
+     * Called when one of the menu items of a popup that shows them unchanged is tapped,
      * and when a row is tapped, with the menu item of the row.
      *
      * @return If the item is the summarize item, which the app then does not handle.
@@ -589,7 +590,7 @@ public final class AskFlyoutMenuPatch {
     }
 
     /**
-     * @return If this class gave the processor the Elements templates of the Ask chat,
+     * @return If this class gave the processor the Elements templates of the Ask chat
      *         if the app session has used them, or if the used Elements resources are not known.
      *         The app marks a template as used when it first shows it, not when a response attaches it,
      *         and it does not always mark the template of the answers as used, such as on 21.42.

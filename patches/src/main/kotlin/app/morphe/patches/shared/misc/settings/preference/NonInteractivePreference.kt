@@ -15,7 +15,6 @@ import app.morphe.patcher.xml.XmlElement
  * @param tag The tag or full class name of the preference.
  * @param selectable If the preference is selectable and responds to tap events.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class NonInteractivePreference(
     key: String,
     titleKey: String? = "${key}_title",

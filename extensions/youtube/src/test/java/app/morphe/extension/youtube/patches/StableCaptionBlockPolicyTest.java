@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StableCaptionBlockPolicyTest {
     static byte[] xml(String body) {
@@ -103,8 +104,8 @@ public class StableCaptionBlockPolicyTest {
             assertTrue(block.end - block.start >= 1500);
             assertTrue(block.text.split("\\s+").length <= 15);
         }
-        assertEquals(policy.plan(t -> true).stream().map(b -> b.text).collect(java.util.stream.Collectors.joining()).replaceAll("\\s+", ""),
-                blocks.stream().map(b -> b.text).collect(java.util.stream.Collectors.joining()).replaceAll("\\s+", ""));
+        assertEquals(policy.plan(t -> true).stream().map(b -> b.text).collect(Collectors.joining()).replaceAll("\\s+", ""),
+                blocks.stream().map(b -> b.text).collect(Collectors.joining()).replaceAll("\\s+", ""));
     }
 
     @Test
@@ -528,7 +529,9 @@ public class StableCaptionBlockPolicyTest {
         for (var policy : new StableCaptionBlockPolicy[]{StableCaptionBlockPolicy.parseManual(document), StableCaptionBlockPolicy.parseSource(document)}) {
             assertNotNull(policy);
             var blocks = policy.sourceBlocks("en");
+            //noinspection DataFlowIssue
             assertEquals("Earlier phrase.", StableCaptionBlockPolicy.at(blocks, 265000).text);
+            //noinspection DataFlowIssue
             assertEquals("Later phrase.", StableCaptionBlockPolicy.at(blocks, 9001000).text);
             assertEquals(9003000, blocks.get(1).end);
         }

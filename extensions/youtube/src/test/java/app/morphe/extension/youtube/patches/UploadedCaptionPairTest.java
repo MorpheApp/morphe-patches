@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.TreeSet;
 
 public class UploadedCaptionPairTest {
     private record NativeCue(String text) implements StableCaptionBlocks.Cue {
@@ -45,7 +46,7 @@ public class UploadedCaptionPairTest {
                 throw new UnsupportedOperationException();
             }
             public List<Long> patch_getCaptionEventTimes() {
-                var events = new java.util.TreeSet<Long>();
+                var events = new TreeSet<Long>();
                 for (var block : blocks) {
                     events.add(block.start);
                     events.add(block.end);
@@ -79,12 +80,12 @@ public class UploadedCaptionPairTest {
             </timedtext>
             """;
 
-    private List<StableCaptionBlockPolicy.Block> read(String xml) throws Exception {
+    private List<StableCaptionBlockPolicy.Block> read(String xml) {
         var policy = StableCaptionBlockPolicy.parseManual(CaptionXml.read(xml.getBytes(StandardCharsets.UTF_8)));
         assertNotNull(policy);
         return policy.sourceBlocks("en");
     }
-    private UploadedCaptionPair pair() throws Exception {
+    private UploadedCaptionPair pair() {
         var tr = read(FIRST);
         var de = read(SECOND);
         assertEquals(5, tr.size());
@@ -92,20 +93,20 @@ public class UploadedCaptionPairTest {
         return new UploadedCaptionPair(timeline(tr), timeline(de));
     }
     @Test
-    public void usesUploadedTextInsteadOfTranslatedFallback() throws Exception {
+    public void usesUploadedTextInsteadOfTranslatedFallback() {
         var f = pair().at(100, "machine Turkish", "machine German", 0);
         assertEquals("First original", f.primary());
         assertEquals("Second original", f.secondary());
     }
     @Test
-    public void secondSurvivesFirstTrackGap() throws Exception {
+    public void secondSurvivesFirstTrackGap() {
         var f = pair().at(9430, "machine Turkish", "machine German", 0);
         assertEquals("", f.primary());
         assertTrue(f.secondary().startsWith("Second before gap"));
         assertEquals(5099, f.secondKey());
     }
     @Test
-    public void eachLanguageChangesAtItsOwnBoundary() throws Exception {
+    public void eachLanguageChangesAtItsOwnBoundary() {
         var p = pair();
         var before = p.at(9728, "", "", 0);
         var gap = p.at(9729, "", "", 0);
@@ -117,13 +118,13 @@ public class UploadedCaptionPairTest {
         assertEquals(9730, after.secondKey());
     }
     @Test
-    public void doesNotTranslateARealGapInAnExistingTrack() throws Exception {
+    public void doesNotTranslateARealGapInAnExistingTrack() {
         var f = pair().at(15501, "fake question", "invented German", 0);
         assertEquals("First question", f.primary());
         assertEquals("", f.secondary());
     }
     @Test
-    public void missingTrackUsesOnlyThatSlotsFallback() throws Exception {
+    public void missingTrackUsesOnlyThatSlotsFallback() {
         var f = new UploadedCaptionPair(timeline(read(FIRST)), null).at(100, "fake", "fallback German", 42);
         assertTrue(f.primary().startsWith("First original"));
         assertEquals("fallback German", f.secondary());
@@ -133,7 +134,7 @@ public class UploadedCaptionPairTest {
         assertTrue(f.secondary().startsWith("Second original"));
     }
     @Test
-    public void seekBackDoesNotRetainAnotherCuesText() throws Exception {
+    public void seekBackDoesNotRetainAnotherCuesText() {
         var p = pair();
         p.at(1_000_000, "", "", 0);
         assertTrue(p.at(5125, "", "", 0).primary().startsWith("First before gap"));

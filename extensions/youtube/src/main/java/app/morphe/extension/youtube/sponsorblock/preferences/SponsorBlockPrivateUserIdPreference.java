@@ -12,7 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.EditText;
@@ -22,6 +21,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.ResettableEditTextPreference;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockHelpers;
 import app.morphe.extension.shared.ui.CustomDialog;
 
@@ -29,7 +29,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
  * EditTextPreference whose dialog adds a Copy action and validates the user ID before saving.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public class SponsorBlockPrivateUserIdPreference extends EditTextPreference {
+public class SponsorBlockPrivateUserIdPreference extends ResettableEditTextPreference {
 
     public SponsorBlockPrivateUserIdPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -55,11 +55,19 @@ public class SponsorBlockPrivateUserIdPreference extends EditTextPreference {
         setOnPreferenceChangeListener((p, newValue) -> {
             String newUUID = newValue.toString();
             if (!SponsorBlockHelpers.isValidSBUserID(newUUID)) {
-                Utils.showSnackbarLong(str("morphe_sb_private_user_id_Do_Not_Share_invalid"));
+                Utils.showSnackbarLong(getInvalidUserIdMessage());
                 return false;
             }
             return true;
         });
+    }
+
+    protected String getInvalidUserIdMessage() {
+        return str("morphe_sb_private_user_id_Do_Not_Share_invalid");
+    }
+
+    protected String getCopyButtonText() {
+        return str("morphe_sb_settings_copy");
     }
 
     @Override
@@ -85,7 +93,7 @@ public class SponsorBlockPrivateUserIdPreference extends EditTextPreference {
                         }
                     },
                     () -> {},
-                    str("morphe_sb_settings_copy"),
+                    getCopyButtonText(),
                     () -> {
                         try {
                             Utils.setClipboard(getEditText().getText());

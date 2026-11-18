@@ -87,31 +87,33 @@ public final class DeepLClient {
         if (clean.equals("EN") || clean.startsWith("EN-")) {
             return "EN-US";
         }
-        if (clean.equals("PT") || clean.equals("PT-BR")) {
-            return "PT-BR";
+        switch (clean) {
+            case "PT", "PT-BR" -> {
+                return "PT-BR";
+            }
+            case "PT-PT" -> {
+                return "PT-PT";
+            }
+            case "ZH", "ZH-CN", "ZH-HANS", "ZH-SG" -> {
+                return "ZH-HANS";
+            }
+            case "ZH-TW", "ZH-HK", "ZH-HANT" -> {
+                return "ZH-HANT";
+            }
+            case "IN", "ID" -> {
+                return "ID";
+            }
+            case "IW", "HE" -> {
+                return "HE";
+            }
+            case "JI", "YI" -> {
+                return "YI";
+            }
+            case "NO" -> {
+                return "NB";
+            }
         }
-        if (clean.equals("PT-PT")) {
-            return "PT-PT";
-        }
-        if (clean.equals("ZH") || clean.equals("ZH-CN") || clean.equals("ZH-HANS") || clean.equals("ZH-SG")) {
-            return "ZH-HANS";
-        }
-        if (clean.equals("ZH-TW") || clean.equals("ZH-HK") || clean.equals("ZH-HANT")) {
-            return "ZH-HANT";
-        }
-        if (clean.equals("IN") || clean.equals("ID")) {
-            return "ID";
-        }
-        if (clean.equals("IW") || clean.equals("HE")) {
-            return "HE";
-        }
-        if (clean.equals("JI") || clean.equals("YI")) {
-            return "YI";
-        }
-        if (clean.equals("NO")) {
-            return "NB";
-        }
-        // Other languages use the plain two letter code, such as JA, KO or DE.
+        // Other languages use the plain two-letter code, such as JA, KO or DE.
         int hyphen = clean.indexOf('-');
         return hyphen > 0 ? clean.substring(0, hyphen) : clean;
     }

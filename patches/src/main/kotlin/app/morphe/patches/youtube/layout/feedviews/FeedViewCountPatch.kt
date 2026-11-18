@@ -23,7 +23,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FeedViewCountPatch;"
 
-@Suppress("unused")
 val feedViewCountPatch = patch(
     name = "Feed view count",
     description = "Adds the view count to the bottom left of the thumbnails of feed videos.",

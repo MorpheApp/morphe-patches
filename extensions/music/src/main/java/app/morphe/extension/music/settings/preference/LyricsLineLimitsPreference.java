@@ -65,6 +65,7 @@ public class LyricsLineLimitsPreference extends Preference {
         });
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isValidLimit(int limit) {
         return limit >= 0 && limit <= MAX_CHAR_LIMIT;
     }

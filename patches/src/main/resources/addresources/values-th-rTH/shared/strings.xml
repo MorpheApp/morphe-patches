@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">ส่งออกไปยังไฟล์</string>
   <string name="morphe_settings_export_file_success">การส่งออกการตั้งค่าสำเร็จ</string>
   <string name="morphe_settings_export_file_failed">การส่งออกการตั้งค่าล้มเหลว</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;อัพเดตใหม่พร้อมให้ใช้: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;เพื่ออัพเดตแพตช์ของคุณ ให้ใช้ Morphe เพื่อแพตช์แอปพลิเคชันนี้ใหม่</string>
-  <string name="morphe_settings_about_links_dev_header">หมายเหตุ</string>
-  <string name="morphe_settings_about_links_dev_body">เวอร์ชันนี้เป็นเวอร์ชันก่อนวางจำหน่ายและคุณอาจพบปัญหาที่ไม่คาดคิด</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">แพตช์</string>
+  <string name="morphe_settings_about_version">เวอร์ชัน</string>
+  <string name="morphe_settings_about_close">ปิด</string>
+  <string name="morphe_settings_about_prerelease">รุ่นก่อนปล่อยตัวจริง</string>
+  <string name="morphe_settings_about_update_available">มีอัปเดตพร้อมใช้งาน: %s</string>
+  <string name="morphe_settings_about_update_hint">หากต้องการอัปเดตแพตช์ของคุณ ให้ใช้ Morphe เพื่อลงแพตช์แอปนี้อีกครั้ง</string>
   <string name="morphe_settings_about_links_header">ลิงก์อย่างเป็นทางการ</string>
   <string name="morphe_settings_about_links_website">เว็บไซต์</string>
   <string name="morphe_settings_about_links_donate">บริจาค</string>
   <string name="morphe_settings_about_links_translations">การแปลภาษา</string>
-  <string name="morphe_settings_about_links_credits">เครดิต</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">เป็นปัจจุบัน</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">มีการอัปเดตพร้อมใช้งาน</string>
+  <string name="morphe_settings_about_contributors">ผู้สนับสนุน</string>
+  <string name="morphe_settings_about_contributors_period">12 เดือนที่ผ่านมา</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">ผู้สนับสนุน</string>
+  <string name="morphe_settings_about_supporters_summary">ผู้สนับสนุนบน Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">ร่วมเป็นผู้สนับสนุน</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">และอีก %s คน</string>
+  <string name="morphe_settings_about_people_unavailable">ไม่สามารถโหลดรายการได้</string>
   <string name="morphe_settings_about_contributors_current">กำลังพัฒนาอยู่</string>
   <string name="morphe_settings_about_contributors_prior">การพัฒนาในช่วงก่อนหน้า</string>
   <string name="morphe_settings_about_links_morphe">การพัฒนาในปัจจุบัน</string>

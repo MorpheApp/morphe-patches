@@ -156,7 +156,7 @@ internal object DownloadVideoFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_DIRECT,
-            definingClass = "Landroid/app/DownloadManager\$Request;",
+            definingClass = $$"Landroid/app/DownloadManager$Request;",
             name = "<init>"
         ),
         string("DownloadManager_not_available")

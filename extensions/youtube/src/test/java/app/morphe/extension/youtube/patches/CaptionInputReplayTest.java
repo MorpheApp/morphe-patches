@@ -5,14 +5,16 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class CaptionInputReplayTest {
 
     @Test
     public void preservesEveryInputByteIncludingNewlines() throws Exception {
-        byte[] bytes = "<p>A\n\nB\n</p>".getBytes("UTF-8");
+        byte[] bytes = "<p>A\n\nB\n</p>".getBytes(StandardCharsets.UTF_8);
         CaptionInputReplay.Copy copy =
                 CaptionInputReplay.copy(new ByteArrayInputStream(bytes), 1024);
         assertTrue(copy.complete);
@@ -54,13 +56,16 @@ public class CaptionInputReplayTest {
     @Test
     public void sharedTrackRoutingRepairsInputAndRetainsParserOwnedClose() throws Exception {
         byte[] source =
-                ("<timedtext format='3'><head><ws id='1' mh='2'/></head>"
-                                + "<body><w t='0' id='1' ws='1'/>"
-                                + "<p t='0' d='2000' w='1'>one</p>"
-                                + "<p t='1000' d='1000' w='1' a='1'>\n</p>"
-                                + "<p t='1500' d='2000' w='1' a='1'>\n</p>"
-                                + "<p t='2000' d='4000' w='1'>two</p></body></timedtext>")
-                        .getBytes("UTF-8");
+                """
+                        <timedtext format='3'><head><ws id='1' mh='2'/></head>\
+                        <body><w t='0' id='1' ws='1'/>\
+                        <p t='0' d='2000' w='1'>one</p>\
+                        <p t='1000' d='1000' w='1' a='1'>
+                        </p>\
+                        <p t='1500' d='2000' w='1' a='1'>
+                        </p>\
+                        <p t='2000' d='4000' w='1'>two</p></body></timedtext>"""
+                        .getBytes(StandardCharsets.UTF_8);
         boolean[] closed = {false};
         InputStream original =
                 new ByteArrayInputStream(source) {
@@ -128,7 +133,7 @@ public class CaptionInputReplayTest {
     }
 
     private static byte[] read(InputStream input) throws IOException {
-        java.io.ByteArrayOutputStream output = new java.io.ByteArrayOutputStream();
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         byte[] buffer = new byte[113];
         int n;
         while ((n = input.read(buffer)) != -1) output.write(buffer, 0, n);

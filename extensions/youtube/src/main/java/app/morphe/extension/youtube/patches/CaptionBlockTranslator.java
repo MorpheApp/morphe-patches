@@ -68,7 +68,7 @@ final class CaptionBlockTranslator implements CaptionSession.Translator {
     static final int MAX_BATCH_TEXTS = 5;
 
     static final CaptionBlockTranslator DEFAULT = new CaptionBlockTranslator(
-            url -> Requester.openConnection(url), () -> System.nanoTime() / 1_000_000L);
+            Requester::openConnection, () -> System.nanoTime() / 1_000_000L);
 
     private static final String GOOGLE_URL = "https://translate-pa.googleapis.com/v1/translateHtml";
     // Google Translate webpage key. Ubiquitous and used by hundreds of projects
@@ -406,6 +406,7 @@ final class CaptionBlockTranslator implements CaptionSession.Translator {
                 bytes.write(buffer, 0, count);
             }
             remaining(deadline);
+            //noinspection StringOperationCanBeSimplified
             return new String(bytes.toByteArray(), StandardCharsets.UTF_8);
         }
     }
@@ -481,6 +482,7 @@ final class CaptionBlockTranslator implements CaptionSession.Translator {
     }
 
     private static String encode(String value) throws IOException {
+        //noinspection CharsetObjectCanBeUsed
         return URLEncoder.encode(value, "UTF-8");
     }
 }

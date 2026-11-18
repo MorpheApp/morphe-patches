@@ -210,7 +210,7 @@ public final class CopyTextPatch {
                 continue;
             }
             if (Character.isWhitespace(c) || Character.isSpaceChar(c)) {
-                space = builder.length() > 0;
+                space = Utils.isNotEmpty(builder);
                 continue;
             }
             if (space) {

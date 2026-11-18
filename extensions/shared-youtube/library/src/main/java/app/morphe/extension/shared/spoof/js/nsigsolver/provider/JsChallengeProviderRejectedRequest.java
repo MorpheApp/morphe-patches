@@ -1,5 +1,6 @@
 package app.morphe.extension.shared.spoof.js.nsigsolver.provider;
 
+@SuppressWarnings("unused")
 public class JsChallengeProviderRejectedRequest extends ContentProviderError {
     public JsChallengeProviderRejectedRequest(String message) {
         super(message);

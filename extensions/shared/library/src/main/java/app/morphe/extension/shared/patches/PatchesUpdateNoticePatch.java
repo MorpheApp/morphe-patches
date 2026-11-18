@@ -11,6 +11,7 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -40,6 +41,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -104,6 +106,8 @@ public final class PatchesUpdateNoticePatch {
      * Release headers, such as "## [2.1.0](url) (date)", "# [1.28.0-dev.3](url) (date)" and "# 1.0.0 (date)".
      * Group 1 is the version.
      */
+    // The escapes are kept for the regex engine of Android, which is stricter than the JVM one.
+    @SuppressWarnings("RegExpRedundantEscape")
     private static final Pattern RELEASE_HEADER = Pattern.compile("^#{1,2} \\[?([^\\]\\s]+)");
 
     /**
@@ -125,6 +129,8 @@ public final class PatchesUpdateNoticePatch {
      */
     private static final Pattern SCOPE_APP_SEPARATOR = Pattern.compile("\\s*[/&,]\\s*");
     private static final Pattern COMMIT_LINK = Pattern.compile("/commit/([0-9a-f]+)\\)");
+    // The escapes are kept for the regex engine of Android, which is stricter than the JVM one.
+    @SuppressWarnings("RegExpRedundantEscape")
     private static final Pattern MARKDOWN_LINKS = Pattern.compile("\\s*\\(\\[[^\\]]*\\]\\([^)]*\\)\\)");
 
     private static volatile boolean checkedThisSession;
@@ -135,6 +141,7 @@ public final class PatchesUpdateNoticePatch {
     /**
      * @return The app name used in the scopes of the release notes, such as "YouTube Music".
      */
+    @SuppressWarnings("SameReturnValue")
     private static String getChangelogScope() {
         return ""; // Value is replaced during patching.
     }
@@ -284,8 +291,7 @@ public final class PatchesUpdateNoticePatch {
             Matcher entry = SCOPED_ENTRY.matcher(line);
             if (!entry.matches()) continue;
 
-            //noinspection ConstantConditions
-            String scope = entry.group(1);
+            String scope = Objects.requireNonNull(entry.group(1));
             String patchName = null;
             final int patchSeparator = scope.indexOf(SCOPE_PATCH_SEPARATOR);
             if (patchSeparator >= 0) {
@@ -451,6 +457,7 @@ public final class PatchesUpdateNoticePatch {
     /**
      * Draws a thin line along the bottom of a heading line, across the full width.
      */
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class RuleSpan implements LineBackgroundSpan {
         private final int color;
 
@@ -472,12 +479,16 @@ public final class PatchesUpdateNoticePatch {
         }
     }
 
-    private static void openManager(Activity activity) {
+    /**
+     * Opens Morphe, where the app is patched again with newer patches, or its website for
+     * someone who does not have it installed.
+     */
+    public static void openManager(Context context) {
         try {
-            Intent intent = activity.getPackageManager().getLaunchIntentForPackage(MANAGER_PACKAGE);
+            Intent intent = context.getPackageManager().getLaunchIntentForPackage(MANAGER_PACKAGE);
             if (intent != null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                activity.startActivity(intent);
+                context.startActivity(intent);
                 return;
             }
         } catch (Exception ex) {

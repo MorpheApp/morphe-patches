@@ -8,8 +8,13 @@
 package app.morphe.extension.youtube.patches;
 
 import org.junit.Test;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.LongFunction;
+import java.util.stream.LongStream;
 import static org.junit.Assert.*;
 
 public class NativeCaptionSourceTest {
@@ -22,7 +27,7 @@ public class NativeCaptionSourceTest {
         public StableCaptionBlocks.Frame patch_getBlockFrame() { return null; }
         public Object patch_copyBlockFrame(StableCaptionBlocks.Frame f) { throw new UnsupportedOperationException(); }
     }
-    static StableCaptionBlocks.Timeline timeline(List<Long> times, java.util.function.LongFunction<List<?>> sample) {
+    static StableCaptionBlocks.Timeline timeline(List<Long> times, LongFunction<List<?>> sample) {
         return new StableCaptionBlocks.Timeline() {
             public List<?> patch_getOriginalCaptions(long t) { return sample.apply(t); }
             public StableCaptionBlocks.State patch_getBlockState() { return null; }
@@ -58,7 +63,7 @@ public class NativeCaptionSourceTest {
         assertNull(read(timeline(List.of(0L,1000L),t->List.of(new Cue("","\u200b")))));
     }
     @Test public void nativeSamplingHasABoundedWorkBudget() {
-        List<Long> times=java.util.stream.LongStream.range(0,20001).boxed().toList();
+        List<Long> times=LongStream.range(0,20001).boxed().toList();
         var t=timeline(times,time->Collections.nCopies(100,new Cue("x","x")));
         assertNull(read(t));
     }
@@ -70,18 +75,18 @@ public class NativeCaptionSourceTest {
     }
     @Test public void neitherUploadedLanguageUsesTheExistingSessionForBothOutputs() {
         var policy=read(timeline(List.of(0L,2000L),t->List.of(new Cue("word","complete phrase"))));
-        java.util.List<String> requested=new java.util.ArrayList<>();
+        List<String> requested=new ArrayList<>();
         var session=new CaptionSession(policy.sourceBlocks("en"),"en","tr","de",(from,to,texts)->{
             requested.add(to);assertEquals(List.of("complete phrase"),texts);
             return texts.stream().map(text->to+":"+text).toList();
         },Runnable::run,()->{},()->{},true,true);
         session.demand(100);var frame=session.snapshot(100,true);
-        assertEquals(List.of("tr","de"),requested);assertEquals("tr:complete phrase",frame.primary);
+        assertEquals(List.of("tr","de"),requested);assertEquals("tr:complete phrase", Objects.requireNonNull(frame).primary);
         assertEquals("de:complete phrase",frame.secondary);assertTrue(frame.complete);
     }
     @Test public void staleSourceStopsSamplingWithoutPublishingAPartialPlan() {
-        var samples=new java.util.concurrent.atomic.AtomicInteger();
-        var t=timeline(java.util.stream.LongStream.range(0,130).boxed().toList(),time->{samples.incrementAndGet();return List.of(new Cue("word","phrase"));});
+        var samples=new AtomicInteger();
+        var t=timeline(LongStream.range(0,130).boxed().toList(),time->{samples.incrementAndGet();return List.of(new Cue("word","phrase"));});
         assertNull(StableCaptionBlockPolicy.fromNative(t,()->samples.get()<64));
         assertEquals(64,samples.get());
     }

@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">Экспорт в файл</string>
   <string name="morphe_settings_export_file_success">Настройки успешно экспортированы</string>
   <string name="morphe_settings_export_file_failed">Не удалось экспортировать настройки</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Вы используете последнюю версию Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Вы используете Morphe Patches версии &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступно обновление: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Чтобы обновить ваши патчи, используйте Morphe для повторной установки этого приложения</string>
-  <string name="morphe_settings_about_links_dev_header">Примечание</string>
-  <string name="morphe_settings_about_links_dev_body">Эта версия является пред релиз, и вы можете столкнуться с непредвиденными проблемами</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Патчи</string>
+  <string name="morphe_settings_about_version">Версия</string>
+  <string name="morphe_settings_about_close">Закрыть</string>
+  <string name="morphe_settings_about_prerelease">Предрелизная версия</string>
+  <string name="morphe_settings_about_update_available">Доступное обновление: %s</string>
+  <string name="morphe_settings_about_update_hint">Чтобы обновить патчи, используйте Morphe для повторного патчинга этого приложения</string>
   <string name="morphe_settings_about_links_header">Официальные ссылки</string>
   <string name="morphe_settings_about_links_website">Веб-сайт</string>
   <string name="morphe_settings_about_links_donate">Пожертвовать</string>
   <string name="morphe_settings_about_links_translations">Переводы</string>
-  <string name="morphe_settings_about_links_credits">Благодарности</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">В актуальном состоянии</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Доступное обновление</string>
+  <string name="morphe_settings_about_contributors">Контрибьюторы</string>
+  <string name="morphe_settings_about_contributors_period">За последние 12 месяцев</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Сторонники</string>
+  <string name="morphe_settings_about_supporters_summary">Спонсоры на Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Стать сторонником</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">И ещё %s</string>
+  <string name="morphe_settings_about_people_unavailable">Не удалось загрузить список</string>
   <string name="morphe_settings_about_contributors_current">Текущая разработка</string>
   <string name="morphe_settings_about_contributors_prior">Предыдущая разработка</string>
   <string name="morphe_settings_about_links_morphe">Активная разработка</string>

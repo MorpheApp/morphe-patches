@@ -37,7 +37,7 @@ public class MediaNotificationControlsPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Android 12 and lower build the media notification buttons from the notification actions,
      * not from the playback state actions. Skipping the previous/next actions removes the buttons
      * instead of leaving non-functional ones on the notification and lock screen.
@@ -67,9 +67,10 @@ public class MediaNotificationControlsPatch {
     /**
      * Injection point.
      *
-     * @return If Previous and Next should rewind and fast forward the current video
+     * @return If Previous and Next should rewind and fast-forward the current video
      *         instead of changing videos.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean seekInsteadOfSkip() {
         return SEEK_NOTIFICATION_MEDIA_PREV_NEXT;
     }
@@ -77,7 +78,7 @@ public class MediaNotificationControlsPatch {
     /**
      * Injection point.
      *
-     * @param seekLength Relative seek of the media session fast forward (positive)
+     * @param seekLength Relative seek of the media session fast-forward (positive)
      *                   or rewind (negative) action, in milliseconds.
      * @return The seek length to use, in milliseconds.
      */

@@ -115,14 +115,6 @@ public final class RubyGenerator {
         return false;
     }
 
-    /** Ruby language asks for dictionary readings, not automatic or none. */
-    @SuppressWarnings({"ConstantValue", "unused"})
-    public static boolean hasManualRubyLanguage() {
-        final String lang = Settings.LYRICS_RUBY_LANGUAGE.get();
-        if (lang == null || lang.isEmpty()) return false;
-        return !LANGUAGE_DEFAULT.equalsIgnoreCase(lang) && !LANGUAGE_NONE.equalsIgnoreCase(lang);
-    }
-
     /**
      * Asks the enabled AI provider for the readings the lyrics still lack. The callback runs on
      * the main thread, with the lyrics unchanged if the provider gave no usable answer.
@@ -384,7 +376,6 @@ public final class RubyGenerator {
      * Characters the character tables do not cover are skipped, so a word that is only partly
      * covered still shows the reading of the characters that are covered.
      */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Nullable
     private static String characterReading(String text, Function<Character, String> reader) {
         StringBuilder out = new StringBuilder();
@@ -392,11 +383,11 @@ public final class RubyGenerator {
             char c = text.charAt(i);
             String reading = ScriptDetector.isHan(c) ? reader.apply(c) : null;
             if (reading != null) {
-                if (out.length() > 0) out.append(' ');
+                if (Utils.isNotEmpty(out)) out.append(' ');
                 out.append(reading);
             }
         }
-        return out.length() > 0 ? out.toString() : null;
+        return Utils.isNotEmpty(out) ? out.toString() : null;
     }
 
     /**

@@ -23,6 +23,7 @@ import java.util.Locale;
 
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 
+@SuppressWarnings("DataFlowIssue")
 public class PlaylistQueuePagingTest {
     private static String id(int index) {
         return String.format(Locale.ROOT, "%011d", index);

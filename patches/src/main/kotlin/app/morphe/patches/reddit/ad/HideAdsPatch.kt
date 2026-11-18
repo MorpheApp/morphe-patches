@@ -27,7 +27,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideAdsPatch;"
 
-@Suppress("unused")
 val hideAdsPatch = patch(
     name = "Hide ads",
     description = "Adds options to hide ads."
@@ -43,8 +42,10 @@ val hideAdsPatch = patch(
         fun hideOldAds(fingerprint: Fingerprint) {
             fingerprint.let {
                 it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val register = getInstruction<TwoRegisterInstruction>(index).registerA
+                    // Use the matched instruction, since other patches can insert at the same index.
+                    val childrenMatch = it.instructionMatches.first()
+                    val index = childrenMatch.index
+                    val register = childrenMatch.getInstruction<TwoRegisterInstruction>().registerA
 
                     addInstructions(
                         index,

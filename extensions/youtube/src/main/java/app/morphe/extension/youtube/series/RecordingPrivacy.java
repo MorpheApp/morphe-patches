@@ -19,6 +19,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 /** Reads the native current-account provider; never reads names, tokens or request headers. */
+@SuppressWarnings("unused")
 public final class RecordingPrivacy {
     public interface Source {
         Identity patch_seriesTrackerIdentity();

@@ -33,7 +33,6 @@ public class NumberSettingPreference extends ResettableEditTextPreference {
 
         setKey(setting.key);
         setSetting(setting);
-        setText(String.valueOf(setting.get()));
         int inputType = InputType.TYPE_CLASS_NUMBER;
         if (setting instanceof FloatSetting) {
             inputType |= InputType.TYPE_NUMBER_FLAG_DECIMAL;

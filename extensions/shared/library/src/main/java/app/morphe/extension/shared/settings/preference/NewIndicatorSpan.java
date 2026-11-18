@@ -13,12 +13,13 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextDirectionHeuristics;
-import android.text.TextUtils;
 import android.text.style.ReplacementSpan;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import app.morphe.extension.shared.Utils;
 
 /**
  * Draws a small dot after the last character of a text, to show a setting or list entry is new.
@@ -44,7 +45,7 @@ public class NewIndicatorSpan extends ReplacementSpan {
      * @return A copy of the text with the dot added, or the text itself if it is empty.
      */
     public static CharSequence addTo(@Nullable CharSequence text, @ColorInt int color) {
-        if (TextUtils.isEmpty(text)) {
+        if (Utils.isEmpty(text)) {
             return text;
         }
 

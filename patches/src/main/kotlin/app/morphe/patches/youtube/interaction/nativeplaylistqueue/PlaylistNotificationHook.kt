@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
@@ -79,16 +80,10 @@ internal fun installPlaylistNotification(
 
     val playbackType = installNativeQueueEngine(navigatorType, enumType)
 
-    fun bridge(type: String, name: String, parameters: List<String>, returnType: String, locals: Int, body: String) =
-        mutableClassDefBy(type).addBridgeMethod(name, parameters, returnType, locals, body)
-
     fun installVideoIdBridge(type: String, playerOwner: FieldReference) {
-        bridge(
-            type,
+        mutableClassDefBy(type).addPatchInterface(
+            SERVICE_NAVIGATOR_INTERFACE,
             "patch_getVideoId",
-            emptyList(),
-            "Ljava/lang/String;",
-            1,
             """
                 iget-object v0, p0, $playerOwner
                 iget-object v0, v0, ${playerFields[1]}
@@ -107,21 +102,16 @@ internal fun installPlaylistNotification(
         )
     }
 
-    mutableClassDefBy(navigatorType).interfaces.add(SERVICE_NAVIGATOR_INTERFACE)
     installVideoIdBridge(navigatorType, playerFields[0])
 
     fun installNavigationBridges(type: String, navigate: MethodReference, canNavigate: MethodReference) {
-        for ((name, resultType, target) in listOf(
-            Triple("patch_navigateQueue", "V", navigate),
-            Triple("patch_canNavigateQueue", "Z", canNavigate)
+        for ((name, target, result) in listOf(
+            Triple("patch_navigateQueue", navigate, "return-void"),
+            Triple("patch_canNavigateQueue", canNavigate, "move-result v0\nreturn v0")
         )) {
-            val result = if (resultType == "Z") "move-result v0\nreturn v0" else "return-void"
-            bridge(
-                type,
+            mutableClassDefBy(type).addPatchInterface(
+                SERVICE_NAVIGATOR_INTERFACE,
                 name,
-                listOf("Z"),
-                resultType,
-                1,
                 """
                     if-eqz p1, :previous
                     sget-object v0, $nextRequest
@@ -155,17 +145,13 @@ internal fun installPlaylistNotification(
     delegates.forEach { match ->
         val delegate = match.instructionMatches.first().fieldReference
         val delegateType = match.originalClassDef.type
-        mutableClassDefBy(delegateType).interfaces.add(SERVICE_NAVIGATOR_INTERFACE)
         for ((name, resultType) in listOf(
             "patch_getVideoId" to "Ljava/lang/String;",
             "patch_getQueuePlayback" to NATIVE_PLAYBACK_INTERFACE
         )) {
-            bridge(
-                delegateType,
+            mutableClassDefBy(delegateType).addPatchInterface(
+                SERVICE_NAVIGATOR_INTERFACE,
                 name,
-                emptyList(),
-                resultType,
-                1,
                 """
                     iget-object v0, p0, $delegate
                     invoke-interface {v0}, $SERVICE_NAVIGATOR_INTERFACE->$name()$resultType
@@ -189,13 +175,9 @@ internal fun installPlaylistNotification(
         .matchAll().first().instructionMatches.last().fieldReference
     val playerOwner = directQueuePlayerOwnerFingerprint(directType, playerFields[0].type)
         .instructionMatches.single().fieldReference
-    mutableClassDefBy(directType).interfaces.add(SERVICE_NAVIGATOR_INTERFACE)
-    bridge(
-        directType,
+    mutableClassDefBy(directType).addPatchInterface(
+        SERVICE_NAVIGATOR_INTERFACE,
         "patch_getQueuePlayback",
-        emptyList(),
-        NATIVE_PLAYBACK_INTERFACE,
-        1,
         """
             iget-object v0, p0, $backend
             return-object v0
@@ -214,13 +196,9 @@ internal fun installPlaylistNotification(
         installNativeQueueWindow(backend, enumType, directNavigate, directCanNavigate)
     }
 
-    mutableClassDefBy(owner).interfaces.add(MEDIA_CONTROLS_INTERFACE)
-    bridge(
-        owner,
+    mutableClassDefBy(owner).addPatchInterface(
+        MEDIA_CONTROLS_INTERFACE,
         "patch_getQueueNavigator",
-        emptyList(),
-        SERVICE_NAVIGATOR_INTERFACE,
-        2,
         """
             iget-object v0, p0, $foregroundCallback
             if-eqz v0, :previous

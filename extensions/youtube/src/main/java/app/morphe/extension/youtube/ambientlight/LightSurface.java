@@ -21,9 +21,11 @@ import androidx.annotation.NonNull;
 /**
  * A surface underneath the window that shows the light. A light frame only replaces this
  * buffer, so the app window is not redrawn.
+ * <p>
+ * Public so other features that look for the video surface can leave it out.
  */
 @SuppressLint("ViewConstructor")
-final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
+public final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
     private final Runnable onReady;
     private volatile boolean ready;
 
@@ -33,6 +35,15 @@ final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().setFormat(PixelFormat.RGBX_8888);
         getHolder().addCallback(this);
         setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+    }
+
+    /**
+     * Places the surface in the media overlay layer, above the video surface, or in the
+     * media layer with the video. Android 16 deprecates this for setCompositionOrder, but
+     * that method is behind a feature flag, so this is still the call every version has.
+     */
+    void setAboveVideo(boolean aboveVideo) {
+        setZOrderMediaOverlay(aboveVideo);
     }
 
     /**

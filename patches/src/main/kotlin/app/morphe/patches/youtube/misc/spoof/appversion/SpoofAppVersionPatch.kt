@@ -31,7 +31,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/spoof/SpoofAppVersionPatch;"
 
-@Suppress("unused")
 val spoofAppVersionPatch = baseSpoofAppVersionPatch(
     defaultTargetString = { "20.13.41" },
     preferenceScreen = PreferenceScreen.GENERAL,

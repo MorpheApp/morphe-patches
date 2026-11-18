@@ -7,9 +7,12 @@
 
 package app.morphe.extension.youtube.series;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.view.View;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
@@ -32,6 +35,8 @@ public final class SeriesPlayerButton {
                     Settings.SERIES_TRACKER_BUTTON,
                     v -> PlayerSeriesAction.open(v.getContext()),
                     null);
+            View button = Utils.getChildViewByResourceName(view, "morphe_series_tracker_button");
+            button.setContentDescription(str("morphe_series_tracker_screen_title"));
         } catch (Exception e) {
             Logger.printException(() -> "Series top button", e);
         }

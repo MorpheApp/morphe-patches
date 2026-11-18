@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import java.util.Arrays;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class ChaptersHookPatch {
@@ -33,10 +34,7 @@ public class ChaptersHookPatch {
                 if (currentMillis >= marker.patch_getStartMillis()
                         && currentMillis < marker.patch_getEndMillis()) {
                     CharSequence title = marker.patch_getTitle();
-                    //noinspection SizeReplaceableByIsEmpty
-                    return title != null && title.length() > 0
-                            ? title
-                            : null;
+                    return Utils.isNotEmpty(title) ? title : null;
                 }
             }
         }

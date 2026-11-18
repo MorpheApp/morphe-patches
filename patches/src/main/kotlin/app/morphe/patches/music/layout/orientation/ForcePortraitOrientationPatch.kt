@@ -18,7 +18,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ForcePortraitOrientationPatch;"
 
-@Suppress("unused")
 val forcePortraitOrientationPatch = patch(
     name = "Force portrait orientation",
     description = "Adds an option to keep the app in portrait orientation when the device is rotated."

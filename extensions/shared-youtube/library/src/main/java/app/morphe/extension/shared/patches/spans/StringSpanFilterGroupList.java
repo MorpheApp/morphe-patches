@@ -9,6 +9,7 @@ package app.morphe.extension.shared.patches.spans;
 
 import app.morphe.extension.shared.StringTrieSearch;
 
+@SuppressWarnings("unused")
 public final class StringSpanFilterGroupList extends SpanFilterGroupList<CharSequence, StringSpanFilterGroup> {
     protected StringTrieSearch createSearchGraph() {
         return new StringTrieSearch();

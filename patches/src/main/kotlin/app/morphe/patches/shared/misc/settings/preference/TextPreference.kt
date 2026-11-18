@@ -14,7 +14,6 @@ import app.morphe.patcher.xml.XmlElement
  * @param tag The preference tag.
  * @param inputType The preference input type.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class TextPreference(
     key: String? = null,
     titleKey: String = "${key}_title",

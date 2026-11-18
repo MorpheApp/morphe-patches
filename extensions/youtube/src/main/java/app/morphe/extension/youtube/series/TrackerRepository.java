@@ -46,6 +46,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
         this(context, DATABASE);
     }
 
+    @SuppressWarnings("SameParameterValue")
     TrackerRepository(Context context, String name) {
         super(context, name, null, VERSION);
         setWriteAheadLoggingEnabled(true);
@@ -58,7 +59,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
 
     @java.lang.Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE meta (\"key\" TEXT PRIMARY KEY, value TEXT NOT NULL)");
         db.execSQL(
                 "INSERT INTO meta VALUES ('history_epoch',?),('manual_revision','0')",
                 new Object[] {UUID.randomUUID().toString()});
@@ -99,7 +100,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
     }
 
     public String historyEpoch() {
-        return scalar("SELECT value FROM meta WHERE key='history_epoch'");
+        return scalar("SELECT value FROM meta WHERE \"key\"='history_epoch'");
     }
 
     public void recoverInterruptedFetches() {
@@ -115,16 +116,16 @@ public final class TrackerRepository extends SQLiteOpenHelper {
     }
 
     private String meta(String key, String id) {
-        return scalar("SELECT value FROM meta WHERE key=?", key + ":" + id);
+        return scalar("SELECT value FROM meta WHERE \"key\"=?", key + ":" + id);
     }
 
     private void meta(String key, String id, String value) {
         if (value.isEmpty())
-            getWritableDatabase().delete("meta", "key=?", new String[] {key + ":" + id});
+            getWritableDatabase().delete("meta", "\"key\"=?", new String[] {key + ":" + id});
         else
             getWritableDatabase()
                     .execSQL(
-                            "INSERT OR REPLACE INTO meta(key,value) VALUES (?,?)",
+                            "INSERT OR REPLACE INTO meta(\"key\",value) VALUES (?,?)",
                             new Object[] {key + ":" + id, value});
     }
 
@@ -159,8 +160,8 @@ public final class TrackerRepository extends SQLiteOpenHelper {
 
     private long nextEditRevision() {
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("UPDATE meta SET value=CAST(value AS INTEGER)+1 WHERE key='manual_revision'");
-        return Long.parseLong(scalar("SELECT value FROM meta WHERE key='manual_revision'"));
+        db.execSQL("UPDATE meta SET value=CAST(value AS INTEGER)+1 WHERE \"key\"='manual_revision'");
+        return Long.parseLong(scalar("SELECT value FROM meta WHERE \"key\"='manual_revision'"));
     }
 
     public Progress progress(String id) {
@@ -268,7 +269,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
     }
 
     long manualRevision() {
-        return Long.parseLong(scalar("SELECT value FROM meta WHERE key='manual_revision'"));
+        return Long.parseLong(scalar("SELECT value FROM meta WHERE \"key\"='manual_revision'"));
     }
 
     void mergeRemote(
@@ -569,6 +570,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                         ticket.epoch));
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public boolean publish(FetchTicket ticket, CatalogClient.Catalog catalog, long now) {
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
@@ -757,7 +759,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
             try (Cursor starts =
                     db.rawQuery(
                             "SELECT playlist_id FROM series WHERE cursor_id IN"
-                                    + " (SELECT value FROM meta WHERE key LIKE 'start_here:%')",
+                                    + " (SELECT value FROM meta WHERE \"key\" LIKE 'start_here:%')",
                             null)) {
                 while (starts.moveToNext()) {
                     Series candidate = series(starts.getString(0));
@@ -772,7 +774,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                 before.put(id, progress(id).override());
                 ensureProgress(id);
                 if (override == TrackerModels.Override.WATCHED)
-                    db.delete("meta", "key LIKE 'start_here:%' AND value=?", new String[] {id});
+                    db.delete("meta", "\"key\" LIKE 'start_here:%' AND value=?", new String[] {id});
                 db.execSQL(
                         "UPDATE video_progress SET"
                             + " completion_override=?,edit_revision=?,edited_at=? WHERE video_id=?",
@@ -905,7 +907,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                     "SELECT DISTINCT a.playlist_id FROM catalog_entry a JOIN catalog_entry b ON"
                             + " a.playlist_id=b.playlist_id WHERE a.video_id=? AND a.available=1"
                             + " AND b.video_id=? AND b.available=1 AND EXISTS (SELECT 1 FROM meta"
-                            + " WHERE key='watched_on_advance:' || a.playlist_id)",
+                            + " WHERE \"key\"='watched_on_advance:' || a.playlist_id)",
                     new String[]{previous, video})) {
                 while (c.moveToNext()) ids.add(c.getString(0));
             }
@@ -1039,19 +1041,19 @@ public final class TrackerRepository extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             db.execSQL(
-                    "INSERT OR REPLACE INTO meta(key,value) SELECT 'native_clear:' || video_id, '1'"
+                    "INSERT OR REPLACE INTO meta(\"key\",value) SELECT 'native_clear:' || video_id, '1'"
                         + " FROM catalog_entry WHERE video_id<>''");
             db.execSQL(
-                    "INSERT OR REPLACE INTO meta(key,value) SELECT 'native_clear:' || bookmark_id,"
+                    "INSERT OR REPLACE INTO meta(\"key\",value) SELECT 'native_clear:' || bookmark_id,"
                         + " '1' FROM series WHERE bookmark_id<>''");
             db.delete("video_progress", null, null);
             db.execSQL(
-                    "DELETE FROM meta WHERE key LIKE 'start_here:%' OR key LIKE 'recovery_next:%'");
+                    "DELETE FROM meta WHERE \"key\" LIKE 'start_here:%' OR \"key\" LIKE 'recovery_next:%'");
             db.execSQL(
                     "UPDATE series SET"
                             + " cursor_id='',cursor_ordinal=-1,cursor_revision=0,bookmark_id=''");
             db.execSQL(
-                    "UPDATE meta SET value=? WHERE key='history_epoch'", new Object[] {newEpoch});
+                    "UPDATE meta SET value=? WHERE \"key\"='history_epoch'", new Object[] {newEpoch});
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
@@ -1061,10 +1063,10 @@ public final class TrackerRepository extends SQLiteOpenHelper {
     private void pruneNativeBaselines() {
         for (String prefix : new String[]{"native_seen:", "native_clear:"})
             getWritableDatabase().execSQL(
-                    "DELETE FROM meta WHERE key LIKE ? AND NOT EXISTS (SELECT 1 FROM"
-                            + " catalog_entry WHERE video_id=substr(meta.key,?)) AND NOT EXISTS"
-                            + " (SELECT 1 FROM series WHERE cursor_id=substr(meta.key,?) OR"
-                            + " bookmark_id=substr(meta.key,?))",
+                    "DELETE FROM meta WHERE \"key\" LIKE ? AND NOT EXISTS (SELECT 1 FROM"
+                            + " catalog_entry WHERE video_id=substr(meta.\"key\",?)) AND NOT EXISTS"
+                            + " (SELECT 1 FROM series WHERE cursor_id=substr(meta.\"key\",?) OR"
+                            + " bookmark_id=substr(meta.\"key\",?))",
                     new Object[]{
                             prefix + "%",
                             prefix.length() + 1,

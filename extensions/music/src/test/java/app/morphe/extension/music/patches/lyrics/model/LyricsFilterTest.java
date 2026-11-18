@@ -7,10 +7,10 @@
 
 package app.morphe.extension.music.patches.lyrics.model;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -19,7 +19,7 @@ import org.junit.Test;
 import app.morphe.extension.music.patches.lyrics.LyricsFixtures;
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 
-/** Tests for {@link LyricsFilter}, focusing on the #3518 regression where the credit-line gap tolerance must not filter legitimate third-party lyrics. Credit lines use a colon separator because {@link LyricsFilter#isCreditLine} requires a real separator after the credit label. */
+/** Tests for {@link LyricsFilter}, focusing on the #3518 regression where the credit-line gap tolerance must not filter legitimate third-party lyrics. Credit lines use a colon separator because {@code LyricsFilter.isCreditLine} requires a real separator after the credit label. */
 public class LyricsFilterTest {
 
     private TrackInfo track;

@@ -3,6 +3,7 @@ package org.chromium.net;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+@SuppressWarnings("unused")
 public final class Proxy {
     public static final int SCHEME_HTTP = 0;
     public static final int SCHEME_HTTPS = 1;
@@ -10,6 +11,7 @@ public final class Proxy {
     private Proxy() {
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static Proxy createHttpProxy(
             int scheme,
             String host,
@@ -26,6 +28,7 @@ public final class Proxy {
 
         public abstract void onBeforeRequest(Request request);
 
+        @SuppressWarnings("SameReturnValue")
         public abstract int onResponseReceived(List<?> responseHeaders, int statusCode);
 
         public abstract static class Request implements AutoCloseable {

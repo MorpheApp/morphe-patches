@@ -18,6 +18,7 @@ import java.util.Locale;
 
 /** Selection of an auto-translated track that is already in the menu. */
 public class PreferredCaptionRoutingTest {
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class Track implements PreferredCaptionLanguagePatch.CaptionTrackInterface {
         final String language;
         final String vss;
@@ -92,6 +93,7 @@ public class PreferredCaptionRoutingTest {
         assertSame(norwegian, find(List.of(norwegian), "no"));
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class Source implements AutoTranslateCaptionsPatch.CaptionTrackInterface {
         final String language, url, vss;
         Source(String language, String url, String vss) { this.language=language; this.url=url; this.vss=vss; }

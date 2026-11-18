@@ -24,7 +24,7 @@ import app.morphe.extension.shared.Utils;
  * and a restart all find it again.
  *
  * <p>Keyed by the track alone: a different provider or a refreshed cache must not silently drop
- * a value the user dialled in. Kept apart from the lyrics on purpose, since those are trimmed to
+ * a value the user dialed in. Kept apart from the lyrics on purpose, since those are trimmed to
  * a fixed number of entries.
  */
 public final class TrackOffsetStore {
@@ -99,8 +99,7 @@ public final class TrackOffsetStore {
     private static String join(List<String> order) {
         StringBuilder result = new StringBuilder();
         for (String entry : order) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (result.length() > 0) {
+            if (Utils.isNotEmpty(result)) {
                 result.append(SEPARATOR);
             }
             result.append(entry);

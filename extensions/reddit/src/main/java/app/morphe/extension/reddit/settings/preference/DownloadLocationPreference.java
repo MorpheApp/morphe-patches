@@ -579,7 +579,7 @@ public final class DownloadLocationPreference extends Preference {
                     : null;
 
             if (folder == null) {
-                // The permission is released when the dialog is cancelled or the folder is no longer used.
+                // The permission is released when the dialog is canceled or the folder is no longer used.
                 DocumentTree.takePermission(uri);
                 folder = uri.toString();
             }

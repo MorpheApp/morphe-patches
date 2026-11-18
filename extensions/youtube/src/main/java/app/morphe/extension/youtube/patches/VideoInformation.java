@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.BaseVideoInformation;
 import app.morphe.extension.shared.patches.ExoPlayerInterface;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
@@ -39,7 +40,7 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
  * Hooking class for the current playing video.
  * @noinspection unused
  */
-public final class VideoInformation {
+public final class VideoInformation extends BaseVideoInformation {
 
     public interface PlaybackController {
         // Methods are added during patching.
@@ -222,6 +223,7 @@ public final class VideoInformation {
         playerVideo.videoIdSet = false;
     }
 
+    @SuppressWarnings("SameReturnValue")
     private static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }

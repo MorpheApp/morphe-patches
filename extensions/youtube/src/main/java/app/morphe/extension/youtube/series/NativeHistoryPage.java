@@ -16,6 +16,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.morphe.extension.youtube.patches.VideoInformation;
+
 /**
  * Only reads native History video rows and their progress overlays, never menu/recommendation IDs.
  */
@@ -59,7 +61,7 @@ final class NativeHistoryPage {
         for (byte[] section : sections) {
             for (byte[] row : path(section, 1, 50195462, 1, 50630979)) {
                 String id = NavigationProto.string(row);
-                if (!id.matches("[A-Za-z0-9_-]{11}")) continue;
+                if (!VideoInformation.isVideoId(id)) continue;
                 Integer percent = null;
                 for (byte[] overlay : path(row, 32, 110282477)) {
                     for (NavigationProto.Field field : NavigationProto.read(overlay)) {

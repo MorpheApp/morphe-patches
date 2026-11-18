@@ -19,7 +19,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableAutoFeedRefreshPatch;"
 
-@Suppress("unused")
 val disableAutoFeedRefreshPatch = patch(
     name = "Disable auto feed refresh",
     description = "Adds an option to stop feeds from refreshing automatically after they become outdated."

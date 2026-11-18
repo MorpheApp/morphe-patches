@@ -29,6 +29,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     extensionClass = "Lapp/morphe/extension/youtube/patches/spoof/SpoofVideoStreamsPatch;",
+    mainActivityFingerprint = YouTubeActivityOnCreateFingerprint,
     mainActivityOnCreateFingerprints = listOf(
         YouTubeActivityOnCreateFingerprint,
         YouTubeApplicationInitFingerprint
@@ -80,6 +81,11 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                     NonInteractivePreference(
                         key = "morphe_spoof_video_streams_sign_in_android_vr_about",
                         tag = "app.morphe.extension.youtube.settings.preference.SpoofVideoStreamsSignInPreference",
+                        selectable = true,
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_spoof_video_streams_sign_in_mweb_about",
+                        tag = "app.morphe.extension.youtube.settings.preference.SpoofVideoStreamsMwebSignInPreference",
                         selectable = true,
                     ),
                     SwitchPreference("morphe_spoof_video_streams_av1", summary = true),

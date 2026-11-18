@@ -4,11 +4,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.PatchesUpdateNoticePatch;
 
 class AboutLinksWebClient extends WebViewClient {
     final Context context;
@@ -19,17 +21,52 @@ class AboutLinksWebClient extends WebViewClient {
         this.dialog = dialog;
     }
 
-    @SuppressWarnings("deprecation")
+    /**
+     * Opens one of the lists of people over the dialog, which closing the list comes back to,
+     * once the lists are fetched. They are fetched once, so only the first list opened waits on
+     * the network.
+     *
+     * @param credits Whether to list the contributors rather than the supporters.
+     */
+    private void showPeople(boolean credits) {
+        Utils.runOnBackgroundThread(() -> {
+            AboutRoutes.People people = AboutRoutes.fetchPeople();
+
+            Utils.runOnMainThreadNowOrLater(() -> {
+                // The dialog was closed while the lists were on their way.
+                if (!dialog.isShowing()) return;
+
+                if (credits) {
+                    new MorpheCreditsDialog(context, people).show();
+                } else {
+                    new MorpheSupportersDialog(context, people).show();
+                }
+            });
+        });
+    }
+
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        final String url = request.getUrl().toString();
         try {
-            if (MorpheAboutPreference.CREDITS_LINK_PLACEHOLDER_URL.equals(url)) {
-                new MorpheCreditsDialog(context).show();
+            if (AboutDialogStyle.CLOSE_LINK_PLACEHOLDER_URL.equals(url)) {
                 dialog.dismiss();
                 return true;
             }
 
-            if (MorpheCreditsDialog.ABOUT_LICENSE.url.equals(url)) {
+            final boolean credits = MorpheAboutPreference.CREDITS_LINK_PLACEHOLDER_URL.equals(url);
+            if (credits || MorpheAboutPreference.SUPPORTERS_LINK_PLACEHOLDER_URL.equals(url)) {
+                showPeople(credits);
+                return true;
+            }
+
+            if (MorpheAboutPreference.MANAGER_LINK_PLACEHOLDER_URL.equals(url)) {
+                PatchesUpdateNoticePatch.openManager(context);
+                dialog.dismiss();
+                return true;
+            }
+
+            if (MorpheCreditsDialog.LICENSES_LINK_PLACEHOLDER_URL.equals(url)) {
                 new LicensesDialog(context).show();
                 return true;
             }

@@ -18,12 +18,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -50,6 +50,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.patches.youtube.shared.openVideoIntentPatch
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
@@ -63,22 +64,18 @@ import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
 internal const val MINIMAL_EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MinimalMiniplayerPatch;"
 internal const val MINIMAL_BOUNDS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/MinimalMiniplayerPatch$MiniplayerBoundsController;"
 
-@Suppress("unused")
 val miniplayerPatch = patch(
     name = "Miniplayer",
     description = "Adds options to change the in-app minimized player. " +
@@ -132,6 +129,7 @@ val miniplayerPatch = patch(
         preferences += SwitchPreference("morphe_miniplayer_hide_title")
         preferences += SwitchPreference("morphe_miniplayer_swipe_up_expand", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_docked", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_glass", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
         preferences += SwitchPreference("morphe_miniplayer_disable_drag_and_drop", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag", summary = true)
@@ -405,6 +403,14 @@ val miniplayerPatch = patch(
             )
         }
 
+        // The search results page uses its own flag, so going back to it shows the miniplayer.
+        SearchMiniplayerOnCloseHandlerFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                MINIPLAYER_DISABLED_SEARCH_FEATURE_KEY,
+                "$EXTENSION_CLASS->getMiniplayerOnCloseHandler(Z)Z"
+            )
+        }
+
         // region Horizontal drag
         if (!is_21_30_or_greater) {
             MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
@@ -665,6 +671,13 @@ val miniplayerPatch = patch(
             }
         }
 
+        // The progress bar under the glass bar is cut to the straight bottom edge of the glass.
+        SeekbarOnDrawFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p0 .. p1 }, $MINIMAL_EXTENSION_CLASS->" +
+                    "clipSeekbar(Landroid/view/View;Landroid/graphics/Canvas;)V"
+        )
+
         // The bar is moved up by the same height as YouTube's own miniplayer.
         BottomUiContainerReportHeightFingerprint.let {
             it.method.addInstruction(
@@ -677,28 +690,7 @@ val miniplayerPatch = patch(
         // pass that lays the player out, the plain one records the rect and nothing redraws.
         MiniplayerHorizontalRepositionFingerprint.let { fingerprint ->
             fingerprint.classDef.apply {
-                interfaces.add(MINIMAL_BOUNDS_INTERFACE)
-
-                val setBounds = ImmutableMethod(
-                    type,
-                    "patch_setBounds",
-                    listOf(ImmutableMethodParameter("Landroid/graphics/Rect;", null, "bounds")),
-                    "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2)
-                ).toMutable()
-
-                setBounds.addInstructions(
-                    0,
-                    """
-                        invoke-virtual { p0, p1 }, ${fingerprint.method}
-                        return-void
-                    """
-                )
-
-                methods.add(setBounds)
+                addPatchInterface(MINIMAL_BOUNDS_INTERFACE, "patch_setBounds", fingerprint.method)
             }
 
             fingerprint.method.addInstruction(

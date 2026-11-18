@@ -21,6 +21,7 @@ import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.ask.LiveStatusRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -56,7 +57,6 @@ public final class AskLiveStatusFilter extends Filter {
      */
     private static final Pattern REMINDER_PARAMETERS = Pattern.compile("(?<![\\w-])Cg[s-v][\\w-]{20}(?![\\w-])");
     private static final int REMINDER_PARAMETERS_LENGTH = 17;
-    private static final int VIDEO_ID_LENGTH = 11;
 
     public AskLiveStatusFilter() {
         addPathCallbacks(
@@ -114,9 +114,9 @@ public final class AskLiveStatusFilter extends Filter {
                     Base64.URL_SAFE | Base64.NO_PADDING | Base64.NO_WRAP);
             // 0x0A 0x0B <video id> 0x10 <number> 0x20 <number>
             if (decoded.length == REMINDER_PARAMETERS_LENGTH
-                    && decoded[0] == 0x0A && decoded[1] == VIDEO_ID_LENGTH
+                    && decoded[0] == 0x0A && decoded[1] == VideoInformation.VIDEO_ID_LENGTH
                     && decoded[13] == 0x10 && decoded[15] == 0x20) {
-                return new String(decoded, 2, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+                return new String(decoded, 2, VideoInformation.VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
             }
         }
         return null;

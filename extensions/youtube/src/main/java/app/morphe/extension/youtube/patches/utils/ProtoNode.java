@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 
@@ -163,7 +164,7 @@ public final class ProtoNode {
         }
 
         try {
-            String text = UTF_8_DECODER.get().decode(ByteBuffer.wrap(bytes, start, end - start)).toString();
+            String text = Objects.requireNonNull(UTF_8_DECODER.get()).decode(ByteBuffer.wrap(bytes, start, end - start)).toString();
             for (int i = 0, length = text.length(); i < length; i++) {
                 final char c = text.charAt(i);
                 if (Character.isISOControl(c) && !(allowLineBreaks && isLineBreakOrTab(c))) {
@@ -323,7 +324,10 @@ public final class ProtoNode {
      * @return The first field with the field number, or null if not found.
      */
     @Nullable
-    public static ProtoNode field(List<ProtoNode> message, int fieldNumber) {
+    public static ProtoNode field(@Nullable List<ProtoNode> message, int fieldNumber) {
+        if (message == null) {
+            return null;
+        }
         for (ProtoNode node : message) {
             if (node.fieldNumber == fieldNumber) {
                 return node;
@@ -347,11 +351,37 @@ public final class ProtoNode {
     }
 
     public static byte[] write(List<ProtoNode> message) throws IOException {
+        return encode(output -> write(message, output));
+    }
+
+    public interface Writer {
+        void write(CodedOutputStream output) throws IOException;
+    }
+
+    /**
+     * @return The encoded fields, such as fields to add to a message that is kept as bytes.
+     */
+    public static byte[] encode(Writer writer) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         CodedOutputStream output = CodedOutputStream.newInstance(bytes);
-        write(message, output);
+        writer.write(output);
         output.flush();
         return bytes.toByteArray();
+    }
+
+    public static byte[] encodeMessage(int fieldNumber, byte[] payload) throws IOException {
+        return encode(output -> output.writeByteArray(fieldNumber, payload));
+    }
+
+    public static byte[] encodeString(int fieldNumber, String text) throws IOException {
+        return encode(output -> output.writeString(fieldNumber, text));
+    }
+
+    public static byte[] concat(byte[] first, byte[] second) {
+        byte[] result = new byte[first.length + second.length];
+        System.arraycopy(first, 0, result, 0, first.length);
+        System.arraycopy(second, 0, result, first.length, second.length);
+        return result;
     }
 
     private static void write(List<ProtoNode> message, CodedOutputStream output) throws IOException {

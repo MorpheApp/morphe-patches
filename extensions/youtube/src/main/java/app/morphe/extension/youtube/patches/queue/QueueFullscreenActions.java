@@ -19,7 +19,11 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.innertube.queue.fullscreen.QueueFullscreenRenderer;
 
 /** Supplies only the playlist action to YouTube's existing fullscreen renderer. */
+@SuppressWarnings("unused")
 public final class QueueFullscreenActions {
+    /** Panel id of the playlist engagement panel of the watch page. */
+    public static final String PLAYLIST_PANEL_ID = "engagement-panel-playlist";
+
     public interface Controller {
         Object patch_parseQuickActions(byte[] bytes);
 
@@ -62,7 +66,7 @@ public final class QueueFullscreenActions {
                             .setOnTap(QueueFullscreenRenderer.Command.newBuilder().setInnertubeCommand(
                                     QueueFullscreenRenderer.Endpoint.newBuilder().setShowEngagementPanel(
                                             QueueFullscreenRenderer.ShowPanel.newBuilder()
-                                                    .setPanelId("engagement-panel-playlist")))));
+                                                    .setPanelId(PLAYLIST_PANEL_ID)))));
             var updatedComponent = component.toBuilder().setModel(component.getModel().toBuilder()
                     .setQuickActions(actions.toBuilder().setPlaylistButton(button)));
             var element = renderer.getNewElement();

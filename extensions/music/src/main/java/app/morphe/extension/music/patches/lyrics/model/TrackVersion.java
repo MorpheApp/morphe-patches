@@ -68,6 +68,7 @@ public record TrackVersion(String title, String variant) {
         return LyricsTextFormatter.isPunctuation(cp) || Character.isWhitespace(cp);
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean hasPartner(int cp, String core) {
         final String symbol = new String(Character.toChars(cp));
         for (PairedPunctuation.Pair pair : PairedPunctuation.PAIRS) {

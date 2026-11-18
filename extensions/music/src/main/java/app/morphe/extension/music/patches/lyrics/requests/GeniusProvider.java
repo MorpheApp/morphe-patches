@@ -34,12 +34,14 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Genius song pages, read through the public endpoints its own web app uses, so no client token
  * is needed. The search answers JSON; the lyrics only exist in the page markup, which makes this
  * the one provider that has to read HTML.
  */
+@SuppressWarnings("unused")
 public final class GeniusProvider implements LyricsProvider {
 
     private static final String SEARCH = "https://genius.com/api/search/multi?q=";
@@ -136,7 +138,7 @@ public final class GeniusProvider implements LyricsProvider {
             Map.entry("simplified chinese", "zh"),
             Map.entry("traditional chinese", "zh"));
 
-    private static String languageCode(String name) {
+    static String languageCode(String name) {
         String trimmed = name == null ? "" : name.trim().toLowerCase(Locale.ROOT);
         if (trimmed.isEmpty()) {
             return "";
@@ -204,12 +206,12 @@ public final class GeniusProvider implements LyricsProvider {
     }
 
     /** A hit that is not a song shares the id space but has no lyric page. */
-    private static boolean isSong(JSONObject hit) {
+    static boolean isSong(JSONObject hit) {
         String type = hit.optString("_type", hit.optString("type", ""));
         return type.isEmpty() || "song".equals(type);
     }
 
-    private static String primaryArtistName(JSONObject hit) {
+    static String primaryArtistName(JSONObject hit) {
         JSONObject artist = hit.optJSONObject("primary_artist");
         return artist != null ? artist.optString("name", "") : "";
     }
@@ -245,7 +247,6 @@ public final class GeniusProvider implements LyricsProvider {
         return credits.isEmpty() ? null : credits;
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void addCredit(List<String> credits, String label,
                                   @Nullable JSONArray artists) {
         if (artists == null) {
@@ -261,12 +262,12 @@ public final class GeniusProvider implements LyricsProvider {
             if (name.isEmpty()) {
                 continue;
             }
-            if (names.length() > 0) {
+            if (Utils.isNotEmpty(names)) {
                 names.append(", ");
             }
             names.append(name);
         }
-        if (names.length() == 0) {
+        if (Utils.isEmpty(names)) {
             return;
         }
         // An empty label means the page shows the names on their own.
@@ -414,7 +415,7 @@ public final class GeniusProvider implements LyricsProvider {
      * when it has no line there because it was a heading, was past the end of the list,
      * or the index was out of range.
      */
-    private static int lineOf(int rawIndex, int[] slots, int lineCount) {
+    static int lineOf(int rawIndex, int[] slots, int lineCount) {
         if (rawIndex < 0 || rawIndex >= slots.length) {
             return -1;
         }
@@ -474,7 +475,7 @@ public final class GeniusProvider implements LyricsProvider {
         return out;
     }
 
-    private static boolean isSectionHeader(String trimmed) {
+    static boolean isSectionHeader(String trimmed) {
         return trimmed.length() > 2 && trimmed.startsWith("[") && trimmed.endsWith("]");
     }
 
@@ -626,7 +627,6 @@ public final class GeniusProvider implements LyricsProvider {
      * are page furniture rather than lyrics (a translations menu, annotation links), so nesting is
      * tracked and anything inside {@code data-exclude-from-selection} is dropped.
      */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Nullable
     static String lyricsText(@Nullable String html) {
         if (html == null || html.isEmpty()) {
@@ -678,7 +678,7 @@ public final class GeniusProvider implements LyricsProvider {
                     depth++;
                 }
             }
-            if (container.length() > 0) {
+            if (Utils.isNotEmpty(container)) {
                 out.append(container).append('\n');
             }
             from = at;
@@ -691,7 +691,7 @@ public final class GeniusProvider implements LyricsProvider {
         String[] split = decoded.split("\n", -1);
         StringBuilder joined = new StringBuilder(decoded.length());
         for (String line : split) {
-            if (joined.length() > 0) {
+            if (Utils.isNotEmpty(joined)) {
                 joined.append('\n');
             }
             joined.append(line.trim());

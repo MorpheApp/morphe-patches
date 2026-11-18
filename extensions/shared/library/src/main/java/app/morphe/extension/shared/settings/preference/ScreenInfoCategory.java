@@ -14,7 +14,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.view.View;
@@ -23,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -98,7 +98,7 @@ public class ScreenInfoCategory extends PreferenceCategory {
     private static View createSection(Context context, Preference preference) {
         CharSequence title = preference.getTitle();
         CharSequence summary = preference.getSummary();
-        boolean hasTitle = !TextUtils.isEmpty(title);
+        boolean hasTitle = Utils.isNotEmpty(title);
 
         LinearLayout section = new LinearLayout(context);
         section.setOrientation(LinearLayout.VERTICAL);
@@ -112,7 +112,7 @@ public class ScreenInfoCategory extends PreferenceCategory {
             section.addView(titleView);
         }
 
-        if (!TextUtils.isEmpty(summary)) {
+        if (Utils.isNotEmpty(summary)) {
             TextView summaryView = new TextView(context);
             summaryView.setText(summary);
             summaryView.setTextSize(14);

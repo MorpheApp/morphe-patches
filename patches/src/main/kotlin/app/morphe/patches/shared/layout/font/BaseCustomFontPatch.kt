@@ -11,14 +11,22 @@ package app.morphe.patches.shared.layout.font
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/CustomFontPatch;"
 
@@ -98,6 +106,36 @@ fun baseCustomFontPatch(
                 nop
             """
         )
+
+        // Text without a font of its own uses the default typefaces, whose fields are final and cannot be
+        // replaced, so the app reads them through the extension. The system also uses the default typeface
+        // for a font family that it does not have, so the app creates the typefaces of font families
+        // through the extension too.
+        DefaultTypefaceReadFingerprint.matchAllMethodIndicesForEach { index ->
+            val instruction = getInstruction<OneRegisterInstruction>(index)
+            val getter = defaultTypefaceGetters.getValue(instruction.getReference<FieldReference>()!!.name)
+
+            replaceInstruction(
+                index,
+                "invoke-static { }, $EXTENSION_CLASS->$getter()$TYPEFACE_TYPE"
+            )
+            addInstruction(index + 1, "move-result-object v${instruction.registerA}")
+        }
+
+        FamilyTypefaceCreateFingerprint.matchAllMethodIndicesForEach { index ->
+            val instruction = getInstruction(index)
+            val (familyRegister, styleRegister) = instruction.registersUsed
+            val invoke = if (instruction is RegisterRangeInstruction) {
+                "invoke-static/range { v$familyRegister .. v$styleRegister }"
+            } else {
+                "invoke-static { v$familyRegister, v$styleRegister }"
+            }
+
+            replaceInstruction(
+                index,
+                "$invoke, $EXTENSION_CLASS->createTypeface(Ljava/lang/String;I)$TYPEFACE_TYPE"
+            )
+        }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 

@@ -29,6 +29,25 @@ public class AutoCaptionsPatch {
     private static final AtomicLong captionGuardUntil = new AtomicLong(Long.MAX_VALUE);
 
     /**
+     * Reason of a caption track selection, when YouTube selects the track itself
+     * because the caption tracks of a video are loaded. The selections of the user have other reasons.
+     */
+    private static final int SELECTION_REASON_TRACKS_LOADED = 2;
+
+    /**
+     * Reason of the caption track selection that is being applied, set on the main thread
+     * before {@link #disableAutoCaptions(boolean)} is called for it.
+     */
+    private static int captionSelectionReason;
+
+    /**
+     * Injection point.
+     */
+    public static void setCaptionSelectionReason(int reason) {
+        captionSelectionReason = reason;
+    }
+
+    /**
      * Injection point.
      */
     public static boolean disableAutoCaptions(boolean original) {
@@ -40,13 +59,28 @@ public class AutoCaptionsPatch {
         }
 
         // After the guard window (150ms), respect the user's manual CC button toggle.
-        if (SystemClock.uptimeMillis() >= captionGuardUntil.get()) {
+        // The guard starts only when a player is created, and the Shorts reuse their player,
+        // so the track that YouTube selects for every next Short is found by the reason of the selection.
+        if (SystemClock.uptimeMillis() >= captionGuardUntil.get()
+                && captionSelectionReason != SELECTION_REASON_TRACKS_LOADED) {
             return original;
         }
 
-        // During the initial video load window, force captions on or off based on setting.
+        // When a video loads, force captions on or off based on setting.
         boolean wantCaptions = style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
         return !wantCaptions;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * If no caption track is selected, YouTube still shows the caption track that the video marks as forced.
+     *
+     * @param hasForcedTrack If the audio track of the video has a forced caption track.
+     * @return If the forced caption track is shown.
+     */
+    public static boolean showForcedCaptions(boolean hasForcedTrack) {
+        return hasForcedTrack && Settings.AUTO_CAPTIONS_STYLE.get() != AutoCaptionsStyle.BOTH_DISABLED;
     }
 
     /**

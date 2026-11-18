@@ -22,7 +22,6 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ChangePipActionsPatch;"
 
 
-@Suppress("unused")
 val changePipActionsPatch = patch(
     name = "Change picture-in-picture actions",
     description = "Adds options to change the buttons shown in picture-in-picture mode.",

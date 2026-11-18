@@ -42,7 +42,7 @@ public final class LoadVideoPatch {
     }
 
     /**
-     * Interface to deliver intents to the main activity, as {@link Activity#onNewIntent(Intent)} is protected.
+     * Interface to deliver intents to the main activity, as {@code Activity.onNewIntent(Intent)} is protected.
      */
     public interface MainActivityInterface {
         // Method is added during patching.
@@ -130,7 +130,7 @@ public final class LoadVideoPatch {
         return blockId;
     }
 
-    /** A completed or cancelled open must not release a newer operation's protection. */
+    /** A completed or canceled open must not release a newer operation's protection. */
     public static void releaseInlinePlaybackBlock(int blockId) {
         if (blockId != 0 && blockId == inlinePlaybackBlockId) {
             unblockInlinePlayback();

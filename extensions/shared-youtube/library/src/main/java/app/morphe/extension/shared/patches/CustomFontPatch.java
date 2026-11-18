@@ -23,14 +23,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 @SuppressWarnings({"unused", "JavaReflectionMemberAccess"})
 public final class CustomFontPatch {
@@ -92,8 +93,15 @@ public final class CustomFontPatch {
     private static final Map<Integer, Typeface> typefaceCache = new ConcurrentHashMap<>();
 
     /**
+     * Font families of the system before they are replaced, or null if the custom font is not used.
+     */
+    @Nullable
+    private static volatile Set<String> systemFamilies;
+
+    /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -159,8 +167,7 @@ public final class CustomFontPatch {
             Logger.printException(() -> "importFontFile failure", ex);
             return false;
         } finally {
-            //noinspection ResultOfMethodCallIgnored
-            tempFile.delete();
+            Utils.deleteQuietly(tempFile);
         }
     }
 
@@ -192,40 +199,30 @@ public final class CustomFontPatch {
             }
 
             baseTypeface = typeface;
-            replaceSystemTypefaces();
+            // Most text uses the platform default typefaces, and not the fonts of the app.
+            // The default typefaces are not public API, so each one is replaced on its own,
+            // and any that cannot be replaced keeps the system font.
+            Typeface regular = getTypeface(DEFAULT_WEIGHT, false);
+            Typeface bold = getTypeface(BOLD_WEIGHT, false);
+
+            replaceSystemFontMap();
+            replaceDefaultStyles();
+            replaceStaticField("DEFAULT", regular);
+            replaceStaticField("DEFAULT_BOLD", bold);
+            replaceStaticField("SANS_SERIF", regular);
         } catch (Exception ex) {
             Logger.printException(() -> "applyCustomFont failure", ex);
         }
     }
 
     private static void disableCustomFont() {
-        // Do not show the restart dialog for this change.
-        AbstractPreferenceFragment.settingImportInProgress = true;
         try {
             SharedYouTubeSettings.CUSTOM_FONT_TYPE.save(FontType.DEFAULT);
         } catch (Exception ex) {
             Logger.printException(() -> "disableCustomFont failure", ex);
-        } finally {
-            AbstractPreferenceFragment.settingImportInProgress = false;
         }
 
         Utils.showToastLong(str("morphe_custom_font_failed_to_load"));
-    }
-
-    /**
-     * Most text uses the platform default typefaces, and not the fonts of the app.
-     * The default typefaces are not public API, so each one is replaced on its own,
-     * and any that cannot be replaced keeps the system font.
-     */
-    private static void replaceSystemTypefaces() {
-        Typeface regular = getTypeface(DEFAULT_WEIGHT, false);
-        Typeface bold = getTypeface(BOLD_WEIGHT, false);
-
-        replaceSystemFontMap();
-        replaceDefaultStyles();
-        replaceStaticField("DEFAULT", regular);
-        replaceStaticField("DEFAULT_BOLD", bold);
-        replaceStaticField("SANS_SERIF", regular);
     }
 
     @SuppressLint("DiscouragedPrivateApi")
@@ -239,6 +236,8 @@ public final class CustomFontPatch {
                 Logger.printInfo(() -> "System font map is null");
                 return;
             }
+
+            systemFamilies = new HashSet<>(map.keySet());
 
             Map<String, Typeface> replacements = new HashMap<>();
             for (int i = 0; i < SYSTEM_FAMILY_NAMES.length; i++) {
@@ -486,5 +485,60 @@ public final class CustomFontPatch {
             Logger.printException(() -> "getCustomTypeface failure", ex);
             return null;
         }
+    }
+
+    /**
+     * @return The custom font with the weight, or the original typeface if the custom font is not used.
+     */
+    private static Typeface getCustomOrOriginalTypeface(Typeface original, int weight) {
+        Typeface base = baseTypeface;
+        return base != null ? createCustomTypeface(base, weight, false) : original;
+    }
+
+    /**
+     * Injection point.
+     * Replaces the reads of {@link Typeface#DEFAULT}, as the field is final and cannot be replaced.
+     * Text without a font of its own uses it, such as some texts of the lists.
+     */
+    public static Typeface getDefaultTypeface() {
+        return getCustomOrOriginalTypeface(Typeface.DEFAULT, DEFAULT_WEIGHT);
+    }
+
+    /**
+     * Injection point.
+     * Replaces the reads of {@link Typeface#DEFAULT_BOLD}, as the field is final and cannot be replaced.
+     */
+    public static Typeface getDefaultBoldTypeface() {
+        return getCustomOrOriginalTypeface(Typeface.DEFAULT_BOLD, BOLD_WEIGHT);
+    }
+
+    /**
+     * Injection point.
+     * Replaces the reads of {@link Typeface#SANS_SERIF}, as the field is final and cannot be replaced.
+     */
+    public static Typeface getSansSerifTypeface() {
+        return getCustomOrOriginalTypeface(Typeface.SANS_SERIF, DEFAULT_WEIGHT);
+    }
+
+    /**
+     * Injection point.
+     * Replaces {@link Typeface#create(String, int)}. The system uses its default typeface
+     * for a font family that it does not have, such as sans-serif-regular, which is not the custom font.
+     */
+    public static Typeface createTypeface(@Nullable String family, int style) {
+        try {
+            Set<String> families = systemFamilies;
+            if (baseTypeface != null && families != null && (family == null || !families.contains(family))) {
+                Typeface typeface = getTypeface(family == null
+                        ? DEFAULT_WEIGHT
+                        : weightFromName(family.toLowerCase(Locale.ENGLISH)), style, false);
+                if (typeface != null) {
+                    return typeface;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "createTypeface failure", ex);
+        }
+        return Typeface.create(family, style);
     }
 }

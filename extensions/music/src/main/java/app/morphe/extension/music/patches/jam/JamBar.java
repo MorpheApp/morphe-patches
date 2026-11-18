@@ -10,7 +10,11 @@ package app.morphe.extension.music.patches.jam;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Typeface;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -26,6 +30,7 @@ import java.util.function.Consumer;
 import app.morphe.extension.shared.ResourceUtils;
 
 /** A real child of YTM's player bottom sheet, never an overlay. */
+@SuppressWarnings("unused")
 public final class JamBar extends LinearLayout {
 
     /** Must match the layout height the patch gives this bar. */
@@ -60,7 +65,7 @@ public final class JamBar extends LinearLayout {
         icon.addView(people, new FrameLayout.LayoutParams(-1, -1));
         progress = new ProgressBar(c);
         progress.setIndeterminateTintList(
-                android.content.res.ColorStateList.valueOf(0xffeeeeee)
+                ColorStateList.valueOf(0xffeeeeee)
         );
         icon.addView(progress, new FrameLayout.LayoutParams(-1, -1));
         LinearLayout labels = new LinearLayout(c);
@@ -71,15 +76,15 @@ public final class JamBar extends LinearLayout {
         title = new TextView(c);
         title.setTextColor(0xffeeeeee);
         title.setTextSize(14);
-        title.setTypeface(null, android.graphics.Typeface.BOLD);
+        title.setTypeface(null, Typeface.BOLD);
         title.setSingleLine();
-        title.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        title.setEllipsize(TextUtils.TruncateAt.END);
         labels.addView(title);
         subtitle = new TextView(c);
         subtitle.setTextColor(0xffbbbbbb);
         subtitle.setTextSize(11);
         subtitle.setSingleLine();
-        subtitle.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        subtitle.setEllipsize(TextUtils.TruncateAt.END);
         labels.addView(subtitle);
         action = new TextView(c);
         action.setTextSize(13);
@@ -87,7 +92,7 @@ public final class JamBar extends LinearLayout {
         action.setGravity(Gravity.CENTER);
         action.setPadding(JamUI.dp(c, 12), 0, JamUI.dp(c, 12), 0);
         addView(action, new LayoutParams(-2, -1));
-        android.util.TypedValue selectable = new android.util.TypedValue();
+        TypedValue selectable = new TypedValue();
         c.getTheme().resolveAttribute(
                 android.R.attr.selectableItemBackground,
                 selectable,

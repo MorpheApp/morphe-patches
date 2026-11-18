@@ -5,7 +5,6 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-@Suppress("unused")
 val doubleTapLengthPatch = patch(
     name = "Double tap to seek",
     description = "Adds additional double-tap to seek values to the YouTube settings menu."

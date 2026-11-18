@@ -10,13 +10,13 @@ package app.morphe.extension.youtube.settings.preference;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
-import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 
+import app.morphe.extension.shared.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings({"deprecation", "unused"})
-public class LiveStreamDVRDurationPreference extends SwitchPreference {
+public class LiveStreamDVRDurationPreference extends BooleanSettingPreference {
 
     {
         // Expand live stream DVR duration is not available in SABR playback.

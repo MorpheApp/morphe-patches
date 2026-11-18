@@ -34,6 +34,7 @@ public final class ShortsPlaybackSpeedFlyoutPatch {
             ? "yt_outline_experimental_play_circle_half_dashed_vd_theme_24"
             : "yt_outline_play_arrow_half_circle_black_24";
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

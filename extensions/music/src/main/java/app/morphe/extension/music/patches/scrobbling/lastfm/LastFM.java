@@ -30,6 +30,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
+@SuppressWarnings("unused")
 public class LastFM {
     private static final String BASE_URL = "https://ws.audioscrobbler.com/2.0/";
     private static final String USER_AGENT = "Morphe/" + Utils.getPatchesReleaseVersion()
@@ -108,8 +109,7 @@ public class LastFM {
 
         StringBuilder postData = new StringBuilder();
         for (Map.Entry<String, String> entry : params.entrySet()) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (postData.length() != 0) postData.append('&');
+            if (Utils.isNotEmpty(postData)) postData.append('&');
             postData.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             postData.append('=');
             postData.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
@@ -257,8 +257,6 @@ public class LastFM {
             if (root.has("scrobbles")) {
                 JSONObject scrobbles = root.getJSONObject("scrobbles");
                 JSONObject attr = scrobbles.optJSONObject("@attr");
-                @SuppressWarnings("unused")
-                int accepted = attr != null ? attr.optInt("accepted", 0) : 0;
                 int ignored = attr != null ? attr.optInt("ignored", 0) : 0;
 
                 if (ignored > 0) {

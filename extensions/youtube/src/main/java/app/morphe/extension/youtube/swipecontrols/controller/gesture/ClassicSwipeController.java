@@ -12,6 +12,7 @@ package app.morphe.extension.youtube.swipecontrols.controller.gesture;
 
 import android.view.MotionEvent;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.youtube.shared.PlayerControlsVisibilityObserver;
@@ -78,7 +79,7 @@ public final class ClassicSwipeController extends BaseGestureController {
     }
 
     @Override
-    public boolean onDown(MotionEvent motionEvent) {
+    public boolean onDown(@NonNull MotionEvent motionEvent) {
         // save the event for later
         if (lastOnDownEvent != null) {
             lastOnDownEvent.recycle();
@@ -91,7 +92,7 @@ public final class ClassicSwipeController extends BaseGestureController {
     }
 
     @Override
-    public boolean onSingleTapUp(MotionEvent motionEvent) {
+    public boolean onSingleTapUp(@NonNull MotionEvent motionEvent) {
         MotionEvent event = MotionEvent.obtain(motionEvent);
         event.setAction(MotionEvent.ACTION_DOWN);
         controller.dispatchDownstreamTouchEvent(event);
@@ -101,7 +102,7 @@ public final class ClassicSwipeController extends BaseGestureController {
     }
 
     @Override
-    public boolean onDoubleTapEvent(MotionEvent motionEvent) {
+    public boolean onDoubleTapEvent(@NonNull MotionEvent motionEvent) {
         MotionEvent event = MotionEvent.obtain(motionEvent);
         controller.dispatchDownstreamTouchEvent(event);
         event.recycle();
@@ -110,7 +111,7 @@ public final class ClassicSwipeController extends BaseGestureController {
     }
 
     @Override
-    public void onLongPress(MotionEvent motionEvent) {
+    public void onLongPress(@NonNull MotionEvent motionEvent) {
         MotionEvent event = MotionEvent.obtain(motionEvent);
         controller.dispatchDownstreamTouchEvent(event);
         event.recycle();

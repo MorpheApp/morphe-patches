@@ -192,6 +192,18 @@ public class CustomPlaybackSpeedPatch {
 
     /**
      * Injection point.
+     *
+     * @param original The text shown above the Shorts player while a Short is held, such as "2x".
+     */
+    public static String getShortsTapAndHoldText(String original) {
+        if (TAP_AND_HOLD_SPEED == Settings.SPEED_TAP_AND_HOLD.defaultValue) {
+            return original;
+        }
+        return VideoInformation.formatSpeedStringX(TAP_AND_HOLD_SPEED, 0);
+    }
+
+    /**
+     * Injection point.
      */
     public static CharSequence onSeekEduOverlayLoaded(ContextInterface context, CharSequence original) {
         try {
@@ -553,7 +565,10 @@ public class CustomPlaybackSpeedPatch {
     private static ShapeDrawable createButtonBackground() {
         ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(20), null, null));
-        background.getPaint().setColor(getAdjustedBackgroundColor(false));
+        // The background color adjusted to the current theme for visual contrast:
+        // lightened for dark themes (1.115f), or darkened by 5% for light themes (0.95f).
+        background.getPaint().setColor(Utils.adjustColorBrightness(
+                LegacyPlayerControlButton.getDialogBackgroundColor(), 0.95f, 1.115f));
         return background;
     }
 
@@ -756,22 +771,6 @@ public class CustomPlaybackSpeedPatch {
         return Utils.clamp(pitch, (float) PITCH_ADJUSTMENT_CHANGE, VideoInformation.PLAYBACK_AUDIO_PITCH_MAXIMUM);
     }
 
-    /**
-     * Adjusts the background color based on the current theme.
-     *
-     * @param isHandleBar If true, applies a stronger darkening factor (0.9) for the handle bar in light theme;
-     *                    if false, applies a standard darkening factor (0.95) for other elements in light theme.
-     * @return A modified background color, lightened by 20% for dark themes or darkened by 5% (or 10% for handle bar)
-     *         for light themes to ensure visual contrast.
-     */
-    public static int getAdjustedBackgroundColor(boolean isHandleBar) {
-        // 1.25f for handleBar, 1.115f for others in dark theme.
-        final float darkThemeFactor = isHandleBar ? 1.25f : 1.115f;
-        // 0.9f for handleBar, 0.95f for others in light theme.
-        final float lightThemeFactor = isHandleBar ? 0.9f : 0.95f;
-        return Utils.adjustColorBrightness(LegacyPlayerControlButton.getDialogBackgroundColor(),
-                lightThemeFactor, darkThemeFactor);
-    }
 }
 
 /**
@@ -817,7 +816,7 @@ class OutlineSymbolDrawable extends Drawable {
         paint.setColorFilter(colorFilter);
     }
 
-    @SuppressWarnings({"deprecation", "RedundantSuppression"})
+    @Deprecated
     @Override
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;

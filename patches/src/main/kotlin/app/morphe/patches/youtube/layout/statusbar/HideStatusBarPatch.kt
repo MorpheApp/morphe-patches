@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.layout.statusbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -25,7 +26,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideStatusBarPatch;"
 
-@Suppress("unused")
 val hideStatusBarPatch = patch(
     name = "Hide status bar",
     description = "Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment.",
@@ -88,6 +88,23 @@ val hideStatusBarPatch = patch(
                 addInstruction(
                     index + 1,
                     "invoke-static { v$viewRegister }, $EXTENSION_CLASS->hideStatusBarBackground(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        // Without the edge to edge top bar, the player can keep the top inset of the window
+        // and is laid out below the status bar twice.
+        PlayerStableInsetsFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getPlayerStableInsets(Landroid/graphics/Rect;)Landroid/graphics/Rect;
+                        move-result-object v$register
+                    """
                 )
             }
         }

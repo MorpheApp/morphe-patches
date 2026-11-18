@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -287,7 +288,7 @@ public final class DeezerProvider extends ScoredSongProvider {
 
     /** The writers field is a string on some tracks and a list on others. */
     @Nullable
-    private static String flatten(@Nullable Object value) {
+    static String flatten(@Nullable Object value) {
         if (value instanceof String string) {
             return string.trim().isEmpty() ? null : string.trim();
         }
@@ -296,12 +297,10 @@ public final class DeezerProvider extends ScoredSongProvider {
             for (int i = 0; i < array.length(); i++) {
                 final String entry = array.optString(i, "").trim();
                 if (entry.isEmpty()) continue;
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) builder.append(", ");
+                if (Utils.isNotEmpty(builder)) builder.append(", ");
                 builder.append(entry);
             }
-            //noinspection SizeReplaceableByIsEmpty
-            return builder.length() == 0 ? null : builder.toString();
+            return Utils.isEmpty(builder) ? null : builder.toString();
         }
         return null;
     }
@@ -350,6 +349,7 @@ public final class DeezerProvider extends ScoredSongProvider {
     }
 
     @Override
+    @NonNull
     protected List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
         String arl = getArl();
         if (arl == null) {

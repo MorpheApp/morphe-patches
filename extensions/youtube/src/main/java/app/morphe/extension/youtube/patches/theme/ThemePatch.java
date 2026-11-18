@@ -102,6 +102,7 @@ public class ThemePatch extends BaseThemePatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean useLotteLaunchSplashScreen(boolean original) {
         Logger.printDebug(() -> "Lottie splash screen flag: " + original);
         return true; // Force lottie animation view.

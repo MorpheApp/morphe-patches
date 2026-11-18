@@ -270,7 +270,6 @@ final class TranscriptFetcher {
                 text.append(segs.getJSONObject(j).optString("utf8", ""));
             }
 
-            //noinspection ExtractMethodRecommender
             String textStr = text.toString()
                     .replace('\n', ' ')
                     .replace(">>", "")
@@ -327,8 +326,7 @@ final class TranscriptFetcher {
 
         for (int i = 0, size = lines.size(); i < size; i++) {
             TranscriptSegment line = lines.get(i);
-            //noinspection SizeReplaceableByIsEmpty
-            if (text.length() == 0) {
+            if (Utils.isEmpty(text)) {
                 startMs = line.startMs;
                 sentenceLang = line.lang;
             } else {
@@ -415,8 +413,7 @@ final class TranscriptFetcher {
     }
 
     private static boolean endsSentence(CharSequence text) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (text.length() == 0) return false;
+        if (Utils.isEmpty(text)) return false;
         final char c = text.charAt(text.length() - 1);
         if (c != '.' && c != '!' && c != '?' && c != '…') return false;
 

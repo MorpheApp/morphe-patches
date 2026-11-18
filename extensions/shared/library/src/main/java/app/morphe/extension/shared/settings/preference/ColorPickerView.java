@@ -60,6 +60,7 @@ import app.morphe.extension.shared.ui.Dim;
  * An {@link OnColorChangedListener} can be registered to receive notifications when the selected color changes.
  */
 @SuppressLint("DrawAllocation")
+@SuppressWarnings("unused")
 public class ColorPickerView extends View {
     /**
      * Interface definition for a callback to be invoked when the selected color changes.
@@ -278,15 +279,7 @@ public class ColorPickerView extends View {
         }
 
         // Update the shaders.
-        updateHueShader();
-        updateSaturationValueShader();
-        updateOpacityShader();
-    }
-
-    /**
-     * Updates the shader for the hue bar to reflect the color gradient.
-     */
-    private void updateHueShader() {
+        // Updates the shader for the hue bar to reflect the color gradient.
         LinearGradient hueShader = new LinearGradient(
                 hueRect.left, hueRect.top,
                 hueRect.right, hueRect.top,
@@ -296,6 +289,8 @@ public class ColorPickerView extends View {
         );
 
         huePaint.setShader(hueShader);
+        updateSaturationValueShader();
+        updateOpacityShader();
     }
 
     /**
@@ -601,7 +596,7 @@ public class ColorPickerView extends View {
             }
         }
 
-        // Must always redraw, otherwise if saturation is pure grey or black
+        // Must always redraw, otherwise if saturation is pure gray or black
         // then the hue slider cannot be changed.
         invalidate();
     }

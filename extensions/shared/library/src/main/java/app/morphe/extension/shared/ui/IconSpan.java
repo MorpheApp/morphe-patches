@@ -22,6 +22,7 @@ import androidx.annotation.Nullable;
  * Draws a drawable inline with text, tinted with the color of the text.
  * The drawable is replaced over the characters the span is applied to.
  */
+@SuppressWarnings("unused")
 public final class IconSpan extends ReplacementSpan {
 
     private final Drawable drawable;
@@ -30,12 +31,15 @@ public final class IconSpan extends ReplacementSpan {
 
     /**
      * @param drawable           Drawable that is tinted, so it should be drawn in a single color.
-     *                           The drawable is shared by all uses of this span, and is only drawn on the main thread.
+     *                           Each span draws its own copy of the drawable.
      * @param sizeRelativeToText Width and height of the icon relative to the text size.
      * @param opacity            Opacity of the icon relative to the opacity of the text.
      */
     public IconSpan(Drawable drawable, float sizeRelativeToText, float opacity) {
-        this.drawable = drawable;
+        // The hardware renderer applies the alpha and the tint of a vector drawable when the frame is drawn,
+        // so a drawable shared by several spans is drawn with the last values set by any of them.
+        Drawable.ConstantState state = drawable.getConstantState();
+        this.drawable = state == null ? drawable : state.newDrawable().mutate();
         this.sizeRelativeToText = sizeRelativeToText;
         this.opacity = opacity;
     }

@@ -84,6 +84,7 @@ public class OpenVideosFullscreenHookPatch {
      * Changed during patching since this class is also
      * used by {@link OpenVideosFullscreenHookPatch}.
      */
+    @SuppressWarnings("SameReturnValue")
     private static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }

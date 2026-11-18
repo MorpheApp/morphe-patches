@@ -12,6 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -26,10 +27,10 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CaptionTracks;"
 
 private const val EXTENSION_HANDLER_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/CaptionTracks\$CaptionTrackHandlerInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/CaptionTracks$CaptionTrackHandlerInterface;"
 
 private const val EXTENSION_UPLOADED_CALLBACK_CLASS =
-    "Lapp/morphe/extension/youtube/patches/CaptionTracks\$UploadedCaptionCallback;"
+    $$"Lapp/morphe/extension/youtube/patches/CaptionTracks$UploadedCaptionCallback;"
 
 /**
  * Observes the selected caption track and its loaded results, including cached results.
@@ -69,38 +70,32 @@ internal val captionTrackCapturePatch = patch(
 
         // Make the extension callback a native request callback.
         mutableClassDefBy(EXTENSION_UPLOADED_CALLBACK_CLASS).apply {
-            interfaces.add(callbackType)
-
-            addHelperMethod(
+            addPatchInterface(
+                callbackType,
                 handlerResult.method.name,
-                "V",
-                parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
-                smali = """
+                """
                     invoke-virtual { p0, p2 }, $EXTENSION_UPLOADED_CALLBACK_CLASS->onResult(Ljava/lang/Object;)V
                     return-void
-                """
+                """,
+                listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
             )
 
-            addHelperMethod(
+            addPatchInterface(
+                callbackType,
                 CaptionTrackHandlerErrorFingerprint.method.name,
-                "V",
-                parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Exception;"),
-                smali = """
+                """
                     invoke-virtual { p0, p2 }, $EXTENSION_UPLOADED_CALLBACK_CLASS->onError(Ljava/lang/Exception;)V
                     return-void
-                """
+                """,
+                listOf("Ljava/lang/Object;", "Ljava/lang/Exception;"),
             )
         }
 
         handlerSelect.classDef.apply {
-            interfaces.add(EXTENSION_HANDLER_INTERFACE)
-
-            addHelperMethod(
+            addPatchInterface(
+                EXTENSION_HANDLER_INTERFACE,
                 "patch_fetchCaption",
-                "V",
-                parameters = listOf("Ljava/lang/Object;", EXTENSION_UPLOADED_CALLBACK_CLASS),
-                freeRegisters = 2,
-                smali = """
+                """
                     check-cast p1, $trackType
                     new-instance v0, ${requestTrack.definingClass}
                     invoke-direct { v0, p1 }, ${requestTrack.definingClass}-><init>($trackType)V
@@ -111,10 +106,10 @@ internal val captionTrackCapturePatch = patch(
                 """
             )
 
-            addHelperMethod(
+            addPatchInterface(
+                EXTENSION_HANDLER_INTERFACE,
                 "patch_reloadCaption",
-                "V",
-                smali = """
+                """
                     iget-object v0, p0, $subtitleManagerField
                     iget-object v0, v0, $selectedTrackField
                     invoke-virtual { p0, v0 }, ${handlerSelect.method}
@@ -122,11 +117,10 @@ internal val captionTrackCapturePatch = patch(
                 """
             )
 
-            addHelperMethod(
+            addPatchInterface(
+                EXTENSION_HANDLER_INTERFACE,
                 "patch_updateCaption",
-                "V",
-                parameters = listOf("J", "F"),
-                smali = """
+                """
                     invoke-virtual/range { p0 .. p3 }, ${CaptionTrackHandlerTimeFingerprint.method}
                     return-void
                 """
@@ -143,7 +137,7 @@ internal val captionTrackCapturePatch = patch(
 
         handlerResult.method.apply {
             // The original code reuses the parameter registers. Call a copy of it,
-            // so the request and the installed result are available afterwards.
+            // so the request and the installed result are available afterward.
             val applyResult = cloneMutable(name = "patch_applyCaptionResult")
             handlerResult.classDef.methods.add(applyResult)
 

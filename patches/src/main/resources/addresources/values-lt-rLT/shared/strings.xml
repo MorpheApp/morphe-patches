@@ -74,18 +74,27 @@ Norėdami išversti naujas kalbas ar pagerinti esamus vertimus, apsilankykite mo
   <string name="morphe_settings_export_file">Eksportuoti į failą</string>
   <string name="morphe_settings_export_file_success">Nustatymai sėkmingai eksportuoti</string>
   <string name="morphe_settings_export_file_failed">Nepavyko eksportuoti nustatymų</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Naudojate naujausią Morphe Patches versiją &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Naudojate Morphe Patches versiją &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Yra naujinimas: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Norėdami atnaujinti pataisas, naudokite Morphe, kad iš naujo pataisytumėte šią programėlę</string>
-  <string name="morphe_settings_about_links_dev_header">Pastaba</string>
-  <string name="morphe_settings_about_links_dev_body">Ši versija yra išankstinio leidimo, todėl galite susidurti su netikėtomis problemomis</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Pataisos</string>
+  <string name="morphe_settings_about_version">Versija</string>
+  <string name="morphe_settings_about_close">Užverti</string>
+  <string name="morphe_settings_about_prerelease">Išankstinis išleidimas</string>
+  <string name="morphe_settings_about_update_available">Yra atnaujinimas: %s</string>
+  <string name="morphe_settings_about_update_hint">Norėdami atnaujinti pataikymus, naudokite \"Morphe\", kad dar kartą pataisytumėte šią programėlę</string>
   <string name="morphe_settings_about_links_header">Oficialios nuorodos</string>
   <string name="morphe_settings_about_links_website">Svetainė</string>
   <string name="morphe_settings_about_links_donate">Aukoti</string>
   <string name="morphe_settings_about_links_translations">Vertimai</string>
-  <string name="morphe_settings_about_links_credits">Padėkos</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Atnaujinta</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Yra atnaujinimas</string>
+  <string name="morphe_settings_about_contributors">Prisidedantys</string>
+  <string name="morphe_settings_about_contributors_period">Pastarieji 12 mėnesių</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Rėmėjai</string>
+  <string name="morphe_settings_about_supporters_summary">Rėmėjai „Open Collective“</string>
+  <string name="morphe_settings_about_supporters_become">Tapkite rėmėju</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Ir dar %s daugiau</string>
+  <string name="morphe_settings_about_people_unavailable">Nepavyko įkrauti sąrašo</string>
   <string name="morphe_settings_about_contributors_current">Dabartiniai kūrėjai</string>
   <string name="morphe_settings_about_contributors_prior">Ankstesni kūrėjai</string>
   <string name="morphe_settings_about_links_morphe">Aktyvus kūrimas</string>

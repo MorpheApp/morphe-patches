@@ -13,6 +13,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_07_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_46_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -52,26 +53,43 @@ internal val fixPagePaddingPatch = patch(
         // the page and the navigation bar to the top of the keyboard, so the navigation bar is moved above
         // the keyboard. The keyboard height is replaced with no margin (0), so the navigation bar stays
         // at the bottom behind the keyboard, except while the legacy miniplayer is shown.
-        PageBottomMarginFingerprint.let {
-            it.method.apply {
-                val insetIndex = it.instructionMatches.last().index
-                val marginRegister = getInstruction<TwoRegisterInstruction>(insetIndex).registerA
-                val keyboardBranchIndex = indexOfFirstInstructionReversedOrThrow(insetIndex) {
-                    opcode == Opcode.IF_EQZ &&
-                            (this as BuilderInstruction21t).target.location.index == insetIndex
-                }
-                val keyboardRegister = getInstruction<OneRegisterInstruction>(keyboardBranchIndex).registerA
+        if (is_21_46_or_greater) {
+            PageBottomMarginFingerprint.let {
+                it.method.apply {
+                    val heightIndex = it.instructionMatches.last().index
+                    val heightRegister = getInstruction<OneRegisterInstruction>(heightIndex).registerA
 
-                addInstructionsAtControlFlowLabel(
-                    insetIndex + 1,
-                    """
-                        if-eqz v$keyboardRegister, :keyboard_hidden
-                        invoke-static/range { v$marginRegister .. v$marginRegister }, $EXTENSION_CLASS->getKeyboardMargin(I)I
-                        move-result v$marginRegister
-                        :keyboard_hidden
-                        nop
-                    """
-                )
+                    addInstructions(
+                        heightIndex + 1,
+                        """
+                            invoke-static/range { v$heightRegister .. v$heightRegister }, $EXTENSION_CLASS->getKeyboardMargin(I)I
+                            move-result v$heightRegister
+                        """
+                    )
+                }
+            }
+        } else {
+            PageBottomMarginLegacyFingerprint.let {
+                it.method.apply {
+                    val insetIndex = it.instructionMatches.last().index
+                    val marginRegister = getInstruction<TwoRegisterInstruction>(insetIndex).registerA
+                    val keyboardBranchIndex = indexOfFirstInstructionReversedOrThrow(insetIndex) {
+                        opcode == Opcode.IF_EQZ &&
+                                (this as BuilderInstruction21t).target.location.index == insetIndex
+                    }
+                    val keyboardRegister = getInstruction<OneRegisterInstruction>(keyboardBranchIndex).registerA
+
+                    addInstructionsAtControlFlowLabel(
+                        insetIndex + 1,
+                        """
+                            if-eqz v$keyboardRegister, :keyboard_hidden
+                            invoke-static/range { v$marginRegister .. v$marginRegister }, $EXTENSION_CLASS->getKeyboardMargin(I)I
+                            move-result v$marginRegister
+                            :keyboard_hidden
+                            nop
+                        """
+                    )
+                }
             }
         }
 

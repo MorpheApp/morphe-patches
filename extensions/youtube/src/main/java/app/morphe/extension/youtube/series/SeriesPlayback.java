@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.AutoplayRule;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -52,6 +53,20 @@ final class SeriesPlayback {
         token++;
     }
 
+    static boolean active() {
+        return session != null;
+    }
+
+    /**
+     * Autoplay is off by "Disable playlist autoplay", or by Autoplay control in mode Off.
+     */
+    private static boolean autoplayOff() {
+        if (Settings.AUTOPLAY_CONTROL.get()) {
+            return Settings.AUTOPLAY_MODE.get() == AutoplayRule.Mode.OFF;
+        }
+        return Settings.DISABLE_PLAYLIST_AUTOPLAY.get();
+    }
+
     static void privacyChanged(long generation) {
         if (session != null && session.privacy != generation) clear();
     }
@@ -81,7 +96,7 @@ final class SeriesPlayback {
         Session active = session;
         PlaybackBridge.Source source = PlaybackBridge.source();
         if (!valid(active, source, token)) return false;
-        if (autoplay && Settings.DISABLE_PLAYLIST_AUTOPLAY.get()) return true;
+        if (autoplay && autoplayOff()) return true;
         if (navigating) return true;
         TrackerService service = TrackerService.existing();
         if (service == null) {

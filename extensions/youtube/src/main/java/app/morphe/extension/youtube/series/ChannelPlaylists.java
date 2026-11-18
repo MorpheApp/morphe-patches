@@ -17,6 +17,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /** Public playlist-tab discovery. Channel listings supply candidates, not membership proof. */
+@SuppressWarnings("unused")
 final class ChannelPlaylists {
     static final int MAX_PAGES = 2, MAX_ITEMS = 96;
 

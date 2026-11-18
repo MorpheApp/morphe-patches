@@ -7,6 +7,7 @@ import java.util.List;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
+@SuppressWarnings("unused")
 public class ScriptUtils {
     public static class ScriptLoaderError extends Exception {
         public ScriptLoaderError(String message, Exception cause) {

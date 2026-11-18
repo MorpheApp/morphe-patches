@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.Preference;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.LinearLayout;
@@ -115,8 +116,8 @@ public class LinkHandlingPreference extends Preference {
     private static void openAppLinkSettings(Context context, String packageName) {
         try {
             Intent intent = new Intent(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-                    ? android.provider.Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS
-                    : android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    ? Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS
+                    : Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
             intent.setData(Uri.parse("package:" + packageName));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);

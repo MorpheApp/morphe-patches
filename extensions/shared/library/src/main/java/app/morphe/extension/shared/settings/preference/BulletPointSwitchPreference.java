@@ -1,14 +1,20 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.shared.settings.preference;
 
 import android.content.Context;
-import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 
 /**
  * Formats the summary text bullet points into Spanned text for better presentation.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public class BulletPointSwitchPreference extends SwitchPreference {
+public class BulletPointSwitchPreference extends BooleanSettingPreference {
 
     public BulletPointSwitchPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);

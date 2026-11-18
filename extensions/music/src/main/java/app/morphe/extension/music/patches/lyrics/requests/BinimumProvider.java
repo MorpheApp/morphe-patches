@@ -135,7 +135,7 @@ public final class BinimumProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) {
         if (track.title().isEmpty() || track.artist().isEmpty()) {
             return null;
         }
@@ -275,7 +275,7 @@ public final class BinimumProvider implements LyricsProvider {
                 if (songPartsJson != null && songPartIndex >= 0 && songPartIndex < songPartsJson.length()) {
                     JSONObject sp = songPartsJson.optJSONObject(songPartIndex);
                     if (sp != null) {
-                        String name = sp.optString("name", null);
+                        String name = sp.has("name") ? sp.optString("name") : null;
                         if (name != null && !name.isEmpty()) songPart = name;
                     }
                 }
@@ -284,10 +284,10 @@ public final class BinimumProvider implements LyricsProvider {
 
             JSONArray syllabus = item.optJSONArray("syllabus");
             JSONObject transliteration = item.optJSONObject("transliteration");
-            String transText = item.optString("translation", null);
+            String transText = item.has("translation") ? item.optString("translation") : null;
 
             JSONArray transSyls = transliteration != null ? transliteration.optJSONArray("syllabus") : null;
-            String transliterationText = transliteration != null ? transliteration.optString("text", null) : null;
+            String transliterationText = transliteration != null && transliteration.has("text") ? transliteration.optString("text") : null;
 
             if (syllabus != null && syllabus.length() > 0) {
                 List<WordCandidate> mainSyls = new ArrayList<>();
@@ -299,7 +299,7 @@ public final class BinimumProvider implements LyricsProvider {
                     if (transSyls != null && s < transSyls.length()) {
                         JSONObject tSyl = transSyls.optJSONObject(s);
                         if (tSyl != null) {
-                            roma = tSyl.optString("text", null);
+                            roma = tSyl.has("text") ? tSyl.optString("text") : null;
                             if (roma != null && roma.trim().isEmpty()) roma = null;
                         }
                     }

@@ -72,7 +72,7 @@ public final class SwipeDetector {
             // no swipe direction was detected yet, try to detect one
             // if the user did not swipe far enough, we cannot detect what direction they swiped
             // so we wait until a greater distance was swiped
-            // NOTE: sqrt() can be high- cost, so using squared magnitudes here
+            // NOTE: sqrt() can be high-cost, so using squared magnitudes here
             final float deltaX = Math.abs(to.getX() - from.getX());
             final float deltaY = Math.abs(to.getY() - from.getY());
             final float swipeMagnitudeSquared = deltaX * deltaX + deltaY * deltaY;

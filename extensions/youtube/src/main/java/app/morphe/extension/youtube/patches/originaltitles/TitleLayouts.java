@@ -39,6 +39,7 @@ import app.morphe.extension.youtube.patches.utils.ProtoNode;
  * at the path in an element with the layout, no element with the layout had another text at the path,
  * and the title was at the path for different videos of the component.
  */
+@SuppressWarnings("unused")
 final class TitleLayouts {
 
     /**

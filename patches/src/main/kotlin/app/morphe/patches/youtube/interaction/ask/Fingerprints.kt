@@ -83,7 +83,7 @@ internal object MenuBottomSheetFragmentFactoryFingerprint : Fingerprint(
  */
 internal object MenuBottomSheetCreateRowFingerprint : Fingerprint(
     classFingerprint = MenuBottomSheetFragmentFactoryFingerprint,
-    returnType = "Lj\$/util/Optional;",
+    returnType = "Lj$/util/Optional;",
     parameters = listOf("L")
 )
 
@@ -109,7 +109,7 @@ internal object MenuBottomSheetRowTapFingerprint : Fingerprint(
  */
 internal object PopupMenuCreateRowFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Lj\$/util/Optional;",
+    returnType = "Lj$/util/Optional;",
     parameters = listOf("L"),
     filters = listOf(
         opcode(opcode = Opcode.NEW_INSTANCE),
@@ -157,7 +157,7 @@ internal object MenuRowBindFingerprint : Fingerprint(
         fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Landroid/widget/LinearLayout;"),
         opcode(opcode = Opcode.IF_EQZ, location = MatchAfterImmediately()),
         methodCall(
-            smali = "Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup\$LayoutParams;",
+            smali = $$"Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;",
             location = MatchAfterImmediately()
         ),
         opcode(opcode = Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
@@ -195,7 +195,7 @@ internal object ElementsTapHandlerFingerprint : Fingerprint(
     filters = listOf(
         methodCall(smali = "Landroid/view/View;->getLocationInWindow([I)V"),
         methodCall(
-            returnType = "Lcom/google/protos/youtube/elements/CommandOuterClass\$Command;",
+            returnType = $$"Lcom/google/protos/youtube/elements/CommandOuterClass$Command;",
             parameters = listOf()
         )
     )

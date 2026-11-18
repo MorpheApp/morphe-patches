@@ -33,6 +33,7 @@ import java.util.logging.Logger
  * @param name The name of the string.
  * @param value The value of the string.
  */
+@Suppress("unused")
 class StringResource(
     name: String,
     val value: String

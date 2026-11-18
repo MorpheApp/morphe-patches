@@ -11,9 +11,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -41,7 +42,6 @@ private const val EXTENSION_SELECTION_MANAGER_INTERFACE =
 // Arbitrary Compose group key of the lambda passed to SelectionContainer.
 private const val SELECTION_CONTENT_LAMBDA_KEY = 0x4D4F5250
 
-@Suppress("unused")
 val copyTextPatch = patch(
     name = "Copy text",
     description = "Adds an option to make post and comment text selectable and copyable. " +
@@ -191,30 +191,14 @@ val copyTextPatch = patch(
 
         // Make the SelectionContainer content a Compose lambda.
         mutableClassDefBy(EXTENSION_RICH_TEXT_CONTENT_CLASS).apply {
-            interfaces.add("Lkotlin/jvm/functions/Function2;")
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "invoke",
-                    listOf(
-                        ImmutableMethodParameter("Ljava/lang/Object;", null, null),
-                        ImmutableMethodParameter("Ljava/lang/Object;", null, null)
-                    ),
-                    "Ljava/lang/Object;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(4)
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0, p1 }, $type->render(Ljava/lang/Object;)V
-                            const/4 v0, 0x0
-                            return-object v0
-                        """
-                    )
-                }
+            addPatchInterface(
+                "Lkotlin/jvm/functions/Function2;",
+                "invoke",
+                """
+                    invoke-virtual { p0, p1 }, $type->render(Ljava/lang/Object;)V
+                    const/4 v0, 0x0
+                    return-object v0
+                """
             )
         }
 
@@ -277,26 +261,13 @@ val copyTextPatch = patch(
         SelectionReleaseFingerprint.let {
             // The extension clears selections by calling the release method.
             it.classDef.apply {
-                interfaces.add(EXTENSION_SELECTION_MANAGER_INTERFACE)
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_release",
-                        listOf(),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(1)
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0 }, ${it.method}
-                                return-void
-                            """
-                        )
-                    }
+                addPatchInterface(
+                    EXTENSION_SELECTION_MANAGER_INTERFACE,
+                    "patch_release",
+                    """
+                        invoke-virtual { p0 }, ${it.method}
+                        return-void
+                    """
                 )
             }
 

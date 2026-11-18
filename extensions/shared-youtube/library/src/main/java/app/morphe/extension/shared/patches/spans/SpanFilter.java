@@ -23,6 +23,7 @@ import java.util.List;
  * <p>
  * All callbacks must be registered before the constructor completes.
  */
+@SuppressWarnings("unused")
 public abstract class SpanFilter {
     private static final RelativeSizeSpan relativeSizeSpanDummy = new RelativeSizeSpan(0f);
     private static final Drawable transparentDrawable = new ColorDrawable(Color.TRANSPARENT);

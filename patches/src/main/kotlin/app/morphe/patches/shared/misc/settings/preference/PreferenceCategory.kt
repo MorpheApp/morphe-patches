@@ -14,7 +14,6 @@ import app.morphe.patcher.xml.XmlElement
  * @param tag The tag or full class name of the preference.
  * @param preferences The preferences in this category.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 open class PreferenceCategory(
     key: String? = null,
     titleKey: String? = if (key == null) null else "${key}_title",

@@ -43,18 +43,28 @@ public class YouTubeGlassNavigationBarPreference extends GlassNavigationBarSizeP
     }
 
     @Override
-    protected IntegerSetting[] getSizeSettings() {
+    protected IntegerSetting[] getSettings() {
         return SETTINGS;
     }
 
     @Override
-    protected String[] getSizeTitleKeys() {
+    protected String[] getTitleKeys() {
         return TITLES;
     }
 
     @Override
     protected String getButtonsShownKey() {
         return "morphe_navigation_bar_glass_size_buttons_shown";
+    }
+
+    @Override
+    protected float getCornerRadiusFraction() {
+        return YouTubeGlassNavigationBar.getCornerRadiusFraction();
+    }
+
+    @Override
+    protected float getRimScale(int[] values) {
+        return YouTubeGlassNavigationBar.getRimScale();
     }
 
     @Override
@@ -66,7 +76,7 @@ public class YouTubeGlassNavigationBarPreference extends GlassNavigationBarSizeP
     protected PreviewButtons getButtons() {
         // The icons, the labels and the selected button of the last glass navigation bar,
         // as the bar shows them, such as without labels.
-        PreviewButtons buttons = PreviewButtons.fromLastBar(YouTubeGlassNavigationBar.BUTTON_ICON, YouTubeGlassNavigationBar.BUTTON_LABEL);
+        PreviewButtons buttons = PreviewButtons.fromLastBar(YouTubeGlassNavigationBar.BUTTON_ICONS, YouTubeGlassNavigationBar.BUTTON_LABEL);
         if (!buttons.isEmpty()) return buttons;
 
         // The buttons of the last navigation bar, or all the buttons seen if none was shown yet.

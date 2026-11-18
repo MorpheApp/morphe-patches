@@ -1,5 +1,6 @@
 package android.os;
 
+@SuppressWarnings("unused")
 public class Build {
     public static final String BOARD = null;
     public static final String BOOTLOADER = null;

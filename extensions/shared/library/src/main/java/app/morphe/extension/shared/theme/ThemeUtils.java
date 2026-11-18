@@ -17,6 +17,9 @@ import android.widget.TextView;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
+
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -38,6 +41,22 @@ public class ThemeUtils {
     private static int lightColor = Color.WHITE;
     @ColorInt
     private static int darkColor = Color.BLACK;
+
+    @ColorInt
+    @Nullable
+    private static Integer customDialogBackgroundColor;
+    @ColorInt
+    @Nullable
+    private static Integer customDialogTitleColor;
+    @ColorInt
+    @Nullable
+    private static Integer customDialogTextColor;
+    @ColorInt
+    @Nullable
+    private static Integer customCancelButtonBackgroundColor;
+    @ColorInt
+    @Nullable
+    private static Integer customCancelButtonTextColor;
 
     /**
      * If a color was handed in by a patch or read from the app resources, and must not be
@@ -122,6 +141,9 @@ public class ThemeUtils {
 
     @ColorInt
     public static int getDialogBackgroundColor() {
+        if (customDialogBackgroundColor != null) {
+            return customDialogBackgroundColor;
+        }
         if (Utils.isDarkModeEnabled()) {
             final int darkColor = getThemeDarkColor();
             return darkColor == Color.BLACK
@@ -132,6 +154,42 @@ public class ThemeUtils {
         }
 
         return getThemeLightColor();
+    }
+
+    /**
+     * Sets custom colors for dialog elements (e.g. for Reddit Compose dialog styling).
+     */
+    public static void setDialogThemeColors(@Nullable Integer backgroundColor,
+                                            @Nullable Integer titleColor,
+                                            @Nullable Integer textColor,
+                                            @Nullable Integer cancelButtonBgColor,
+                                            @Nullable Integer cancelButtonTextColor) {
+        customDialogBackgroundColor = backgroundColor;
+        customDialogTitleColor = titleColor;
+        customDialogTextColor = textColor;
+        customCancelButtonBackgroundColor = cancelButtonBgColor;
+        customCancelButtonTextColor = cancelButtonTextColor;
+    }
+
+    @ColorInt
+    public static int getDialogTitleColor() {
+        return customDialogTitleColor != null ? customDialogTitleColor : getAppForegroundColor();
+    }
+
+    @ColorInt
+    public static int getDialogTextColor() {
+        return customDialogTextColor != null ? customDialogTextColor : getAppForegroundColor();
+    }
+
+    @ColorInt
+    public static int getCancelOrNeutralButtonTextColor() {
+        return Objects.requireNonNullElseGet(customCancelButtonTextColor,
+                () -> Utils.isDarkModeEnabled() ? Color.WHITE : Color.BLACK);
+    }
+
+    @ColorInt
+    public static int getOkButtonTextColor() {
+        return Utils.isDarkModeEnabled() ? Color.BLACK : Color.WHITE;
     }
 
     /**
@@ -181,9 +239,9 @@ public class ThemeUtils {
 
     @ColorInt
     public static int getCancelOrNeutralButtonBackgroundColor() {
-        return Utils.isDarkModeEnabled()
+        return Objects.requireNonNullElseGet(customCancelButtonBackgroundColor, () -> Utils.isDarkModeEnabled()
                 ? Utils.adjustColorBrightness(getDialogBackgroundColor(), 1.10f)
-                : Utils.adjustColorBrightness(getThemeLightColor(), 0.95f);
+                : Utils.adjustColorBrightness(getThemeLightColor(), 0.95f));
     }
 
     @ColorInt

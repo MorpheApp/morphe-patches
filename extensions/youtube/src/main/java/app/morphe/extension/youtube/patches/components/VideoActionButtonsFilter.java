@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -27,6 +26,7 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.patches.components.StringFilterGroupList;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ComponentType;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Element;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementModel;
@@ -52,6 +52,7 @@ public final class VideoActionButtonsFilter extends Filter {
         CLIP(Settings.HIDE_CLIP_BUTTON.get()),
         COMMENTS(
                 Settings.HIDE_COMMENTS_BUTTON.get(),
+                269,
                 "yt_outline_experimental_text_bubble",
                 "yt_outline_message_bubble"
         ),
@@ -84,16 +85,19 @@ public final class VideoActionButtonsFilter extends Filter {
         SAVE(Settings.HIDE_SAVE_BUTTON.get()),
         SHARE(
                 Settings.HIDE_SHARE_BUTTON.get(),
+                251,
                 "yt_outline_experimental_share",
                 "yt_outline_share"
         ),
         SHOP(
                 Settings.HIDE_SHOP_BUTTON.get(),
+                109,
                 "yt_outline_experimental_bag",
                 "yt_outline_bag"
         ),
         STOP_ADS(
                 Settings.HIDE_STOP_ADS_BUTTON.get(),
+                137,
                 "yt_outline_experimental_circle_slash",
                 "yt_outline_slash_circle_left"
         ),
@@ -104,16 +108,25 @@ public final class VideoActionButtonsFilter extends Filter {
         );
 
         public final boolean shouldHide;
+        /**
+         * The number of the icon, which the server sends instead of the icon name to some app versions,
+         * or 0 if not known.
+         */
+        public final int iconNumber;
         @NonNull
         public final List<String> iconNames;
 
         ActionButton(boolean shouldHide) {
-            this.shouldHide = shouldHide;
-            this.iconNames = Collections.emptyList();
+            this(shouldHide, 0);
         }
 
         ActionButton(boolean shouldHide, @NonNull String... iconNames) {
+            this(shouldHide, 0, iconNames);
+        }
+
+        ActionButton(boolean shouldHide, int iconNumber, @NonNull String... iconNames) {
             this.shouldHide = shouldHide;
+            this.iconNumber = iconNumber;
             this.iconNames = Arrays.asList(iconNames);
         }
     }
@@ -147,7 +160,6 @@ public final class VideoActionButtonsFilter extends Filter {
     private static final String MORE_BUTTON_PATH = "overflow_menu_button.e";
 
     private final StringFilterGroup actionBarGroup;
-    private final StringFilterGroup channelBarGroup;
     private final StringFilterGroup likeSubscribeGlow;
     private final StringFilterGroup moreButton;
     private final StringFilterGroup channelProfile;
@@ -161,7 +173,7 @@ public final class VideoActionButtonsFilter extends Filter {
                 VIDEO_ACTION_BAR_PREFIX
         );
         // Some layouts show the channel in its own bar above the action bar.
-        channelBarGroup = new StringFilterGroup(
+        StringFilterGroup channelBarGroup = new StringFilterGroup(
                 Settings.HIDE_CHANNEL_PROFILE_BUTTON,
                 COMPACT_CHANNEL_BAR_PREFIX
         );
@@ -340,6 +352,7 @@ public final class VideoActionButtonsFilter extends Filter {
         return shownActions;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isHidden(VideoActionBarItemContent content) {
         // Some layouts have an Ask button that is not a plain button, so it is found by the panel it opens.
         if (ActionButton.ASK.shouldHide && new String(content.toByteArray(), StandardCharsets.ISO_8859_1)
@@ -348,7 +361,20 @@ public final class VideoActionButtonsFilter extends Filter {
         }
 
         if (content.hasButton()) {
-            String iconName = content.getButton().getIconName();
+            ButtonViewModel buttonViewModel = content.getButton();
+            String iconName = buttonViewModel.getIconName();
+            // Buttons without an icon name have the number of their icon. The number is checked first,
+            // as the classic layout gives a button without an icon name the icon of another button,
+            // such as the flag of the Report button to the Stop ads button.
+            final int iconNumber = buttonViewModel.getImage().getSourcesCount() == 0 ? 0
+                    : buttonViewModel.getImage().getSources(0).getType().getIcon().getNumber().getValue();
+            if (iconNumber != 0) {
+                for (ActionButton button : ActionButton.values()) {
+                    if (iconNumber == button.iconNumber) {
+                        return button.shouldHide;
+                    }
+                }
+            }
             for (ActionButton button : ActionButton.values()) {
                 for (String icon : button.iconNames) {
                     if (iconName.contains(icon)) {

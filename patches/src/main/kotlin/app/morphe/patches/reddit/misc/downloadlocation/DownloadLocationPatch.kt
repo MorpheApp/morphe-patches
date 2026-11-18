@@ -9,11 +9,10 @@ package app.morphe.patches.reddit.misc.downloadlocation
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
@@ -21,12 +20,9 @@ import app.morphe.patches.reddit.shared.LinkConstructorFingerprint
 import app.morphe.util.fiveRegisters
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/DownloadLocationPatch;"
@@ -71,21 +67,10 @@ val downloadLocationPatch = patch(
                 val modelField = constructor.instructionMatches[1].fieldReference
 
                 constructor.classDef.apply {
-                    interfaces.add(EXTENSION_IMAGE_DOWNLOAD_PARAMS_INTERFACE)
-
-                    fun addGetter(name: String, smali: String) = methods.add(
-                        ImmutableMethod(
-                            type,
-                            name,
-                            listOf(),
-                            "Ljava/lang/String;",
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(2),
-                        ).toMutable().apply {
-                            addInstructionsWithLabels(0, smali)
-                        }
+                    fun addGetter(name: String, smali: String) = addPatchInterface(
+                        EXTENSION_IMAGE_DOWNLOAD_PARAMS_INTERFACE,
+                        name,
+                        smali
                     )
 
                     fun addModelGetter(name: String, field: FieldReference) = addGetter(

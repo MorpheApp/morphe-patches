@@ -184,8 +184,14 @@ public class SheetBottomDialog {
         ScrollView scrollView = new ScrollView(context) {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-                super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(
-                        Dim.pctHeight(maxHeightPercent), MeasureSpec.AT_MOST));
+                final int maxHeight = Dim.pctHeight(maxHeightPercent);
+                // A smaller height of the parent is kept, so a layout weight can shrink the scroll view
+                // to leave room for the views below it.
+                if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.UNSPECIFIED
+                        || MeasureSpec.getSize(heightMeasureSpec) > maxHeight) {
+                    heightMeasureSpec = MeasureSpec.makeMeasureSpec(maxHeight, MeasureSpec.AT_MOST);
+                }
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             }
         };
         scrollView.setVerticalScrollBarEnabled(false);
@@ -488,6 +494,7 @@ public class SheetBottomDialog {
          * Cancels the dialog, triggering a dismissal animation.
          */
         @Override
+        @SuppressWarnings("EmptyMethod")
         public void cancel() {
             super.cancel();
         }

@@ -1,5 +1,6 @@
 package app.morphe.extension.shared.spoof.js.nsigsolver.common;
 
+@SuppressWarnings("unused")
 public class CacheError extends Exception {
     public CacheError(String message) {
         super(message);
