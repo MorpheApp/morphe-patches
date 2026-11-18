@@ -1,133 +1,139 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4869
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.reddit.patches;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceGroup;
 import android.view.View;
-import java.util.ArrayList;
-import java.util.List;
+
+import androidx.annotation.Nullable;
 
 import com.reddit.domain.model.Subreddit;
 
-import app.morphe.extension.reddit.settings.preference.PermanentNsfwPreference;
-import app.morphe.extension.reddit.settings.Settings;
+import java.util.ArrayList;
+import java.util.List;
 
-import app.morphe.extension.reddit.patches.nsfw.PermanentNsfwDisabler;
-import app.morphe.extension.shared.Utils;
+import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 
-/** Runtime entry points for permanent NSFW disabling. */
+@SuppressWarnings("unused")
 public final class PermanentNsfwPatch {
-    private static PermanentNsfwDisabler disabler;
+    private static final int BLOCKED_TITLE = ResourceUtils.getStringIdentifier("morphe_nsfw_blocked_title");
+    private static final int BLOCKED_MESSAGE = ResourceUtils.getStringIdentifier("morphe_nsfw_blocked_message");
+    private static final int GO_BACK_LABEL = ResourceUtils.getStringIdentifier("action_go_back");
 
-    private PermanentNsfwPatch() {}
+    /**
+     * Settings section and adult content switches of the anonymous browsing profile drawer.
+     */
+    private static final int[] ANONYMOUS_CONTROL_IDS = {
+            ResourceUtils.getIdIdentifier("toggle_over18"),
+            ResourceUtils.getIdIdentifier("toggle_blur_nsfw"),
+            ResourceUtils.getIdIdentifier("title_settings"),
+            ResourceUtils.getIdIdentifier("divider")
+    };
 
+    /**
+     * @return If this patch was included during patching.
+     */
     public static boolean isPatchIncluded() {
-        return false; // Rewritten by the patcher only after resolving its required hook.
+        return false;  // Modified during patching.
     }
 
+    /**
+     * Injection point.
+     *
+     * @return If NSFW content is permanently disabled.
+     */
     public static boolean isEnabled() {
-        return isPatchIncluded() && getDisabler().isEnabled();
+        return isPatchIncluded() && Settings.PERMANENTLY_DISABLE_NSFW.get();
     }
 
-    public static boolean allowNsfw(boolean requested) {
-        return !isEnabled() && requested;
+    /**
+     * Injection point.
+     */
+    public static boolean allowNsfw(boolean enabled) {
+        return enabled && !isEnabled();
     }
 
+    /**
+     * Injection point.
+     */
     public static boolean enforceSafeSearch(boolean safeSearch) {
-        return isEnabled() || safeSearch;
+        return safeSearch || isEnabled();
     }
 
-    public static int disabledTitleResource(int original) {
-        return isEnabled() ? ResourceUtils.getStringIdentifier("morphe_permanent_nsfw_disabled") : original;
+    /**
+     * Injection point.
+     */
+    public static int getWarningTitle(int original) {
+        return isEnabled() ? BLOCKED_TITLE : original;
     }
 
-    public static int disabledMessageResource(int original) {
-        return isEnabled() ? ResourceUtils.getStringIdentifier("morphe_permanent_nsfw_blocked_message") : original;
+    /**
+     * Injection point.
+     */
+    public static int getWarningMessage(int original) {
+        return isEnabled() ? BLOCKED_MESSAGE : original;
     }
 
-    public static int goBackLabelResource(int original) {
-        return isEnabled() ? ResourceUtils.getStringIdentifier("action_go_back") : original;
+    /**
+     * Injection point.
+     */
+    public static int getWarningDismissLabel(int original) {
+        return isEnabled() ? GO_BACK_LABEL : original;
     }
 
-    /** The anonymous profile drawer uses XML switches instead of Compose settings. */
-    public static void hideAnonymousControls(View root) {
-        if (!isEnabled()) return;
+    /**
+     * Injection point.
+     * The anonymous browsing profile drawer uses views instead of the Compose settings rows.
+     */
+    public static void hideAnonymousControls(View drawer) {
         try {
-            for (String name : new String[]{"toggle_over18", "toggle_blur_nsfw", "title_settings", "divider"}) {
-                View control = root.findViewById(ResourceUtils.getIdIdentifier(name));
-                if (control != null) control.setVisibility(View.GONE);
+            if (!isEnabled()) return;
+
+            for (int id : ANONYMOUS_CONTROL_IDS) {
+                View view = drawer.findViewById(id);
+                if (view != null) {
+                    view.setVisibility(View.GONE);
+                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "hideAnonymousControls failure", ex);
         }
     }
 
-    /** The native recent-visit writer receives community metadata before saving it. */
-    public static boolean skipRecentSubreddit(Subreddit subreddit) {
-        return isEnabled() && subreddit != null && Boolean.TRUE.equals(subreddit.getOver18());
+    /**
+     * Injection point.
+     *
+     * @return If the community must not be saved as recently visited.
+     */
+    public static boolean skipRecentSubreddit(@Nullable Subreddit subreddit) {
+        return subreddit != null && isEnabled() && Boolean.TRUE.equals(subreddit.getOver18());
     }
 
-    /** Hide records saved before permanent disabling from Reddit's two recent-visit views. */
-    public static List<Subreddit> visibleRecentSubreddits(List<Subreddit> recent) {
-        if (!isEnabled() || recent == null) return recent;
-        List<Subreddit> visible = new ArrayList<>(recent.size());
-        for (Subreddit subreddit : recent) {
-            if (!Boolean.TRUE.equals(subreddit.getOver18())) visible.add(subreddit);
-        }
-        return visible;
-    }
-
-    /** Called after the existing Morphe settings categories have been built. */
-    @SuppressWarnings("deprecation")
-    public static void installPreference(PreferenceFragment fragment) {
+    /**
+     * Injection point.
+     * Removes NSFW communities that were saved as recently visited before NSFW content was disabled.
+     */
+    @Nullable
+    public static List<Subreddit> filterRecentSubreddits(@Nullable List<Subreddit> subreddits) {
         try {
-            if (isEnabled()) {
-                enforceDisabledPreferences();
-                for (String key : new String[]{"morphe_remove_nsfw_dialog", "morphe_redgifs_audio", "morphe_redgifs_hd"}) {
-                    removeByKey(fragment.getPreferenceScreen(), key);
+            if (subreddits == null || !isEnabled()) return subreddits;
+
+            List<Subreddit> filtered = new ArrayList<>(subreddits.size());
+            for (Subreddit subreddit : subreddits) {
+                if (!Boolean.TRUE.equals(subreddit.getOver18())) {
+                    filtered.add(subreddit);
                 }
             }
-            fragment.getPreferenceScreen().addPreference(new PermanentNsfwPreference(fragment.getActivity()));
+            return filtered;
         } catch (Exception ex) {
-            Logger.printException(() -> "installPreference failure", ex);
+            Logger.printException(() -> "filterRecentSubreddits failure", ex);
+            return subreddits;
         }
     }
-
-    /** Also clear saved bypass/media options, rather than merely hiding their controls. */
-    public static void enforceDisabledPreferences() {
-        Settings.REMOVE_NSFW_DIALOG.save(false);
-        Settings.REDGIFS_AUDIO.save(false);
-        Settings.REDGIFS_HD.save(false);
-    }
-
-    @SuppressWarnings("deprecation")
-    private static void removeByKey(PreferenceGroup group, String key) {
-        for (int i = group.getPreferenceCount() - 1; i >= 0; i--) {
-            Preference preference = group.getPreference(i);
-            if (key.equals(preference.getKey())) group.removePreference(preference);
-            else if (preference instanceof PreferenceGroup child) removeByKey(child, key);
-        }
-    }
-
-    public static synchronized PermanentNsfwDisabler getDisabler() {
-        if (disabler == null) {
-            // Keep the original private filename so an update never resets NSFW disabling.
-            SharedPreferences preferences = Utils.getContext().getSharedPreferences(
-                    "reddit_permanent_nsfw_lock", Context.MODE_PRIVATE);
-            disabler = new PermanentNsfwDisabler(new PermanentNsfwDisabler.Store() {
-                @Override public boolean read() {
-                    return preferences.getBoolean("enabled", false);
-                }
-                @Override public boolean enable() {
-                    return preferences.edit().putBoolean("enabled", true).commit();
-                }
-            });
-        }
-        return disabler;
-    }
-
 }

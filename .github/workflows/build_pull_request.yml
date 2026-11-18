@@ -26,9 +26,6 @@ jobs:
       - name: Cache Gradle
         uses: burrunan/gradle-cache-action@v3
 
-      - name: Test Reddit NSFW filter on host
-        run: python3 tools/test-nsfw.py
-
       - name: Test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

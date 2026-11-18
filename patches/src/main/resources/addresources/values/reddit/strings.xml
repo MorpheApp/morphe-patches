@@ -79,6 +79,13 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_flip_post_action_bar_summary">Moves the vote and comment buttons of posts to the right side, and the crosspost and share buttons to the left side</string>
     <string name="morphe_swap_post_vote_comment_buttons_title">Swap vote and comment buttons</string>
     <string name="morphe_swap_post_vote_comment_buttons_summary">Shows the comment button of posts before the vote buttons</string>
+    <string name="morphe_permanently_disable_nsfw_title">Permanently disable NSFW content</string>
+    <string name="morphe_permanently_disable_nsfw_summary">Disables NSFW content and NSFW search results for all accounts and anonymous browsing. This cannot be undone</string>
+    <string name="morphe_permanently_disable_nsfw_user_dialog_message">"NSFW content and NSFW search results will be disabled for all accounts and anonymous browsing.
+
+This cannot be turned off in the app. Only clearing the app data undoes it."</string>
+    <string name="morphe_nsfw_blocked_title">NSFW content is permanently disabled</string>
+    <string name="morphe_nsfw_blocked_message">This content is unavailable because NSFW content is permanently disabled.</string>
     <string name="morphe_remove_nsfw_dialog_title">Remove NSFW warning dialog</string>
     <string name="morphe_remove_nsfw_dialog_summary">Automatically accepts the NSFW content warning when visiting a subreddit</string>
 
@@ -147,14 +154,4 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_app_icon_choose_title">Choose app icon</string>
     <string name="morphe_app_icon_default">Default</string>
     <string name="morphe_app_icon_unknown">Unknown</string>
-    <string name="morphe_permanent_nsfw_title">Permanently disable NSFW content</string>
-    <string name="morphe_permanent_nsfw_confirm_title">Permanently disable NSFW content?</string>
-    <string name="morphe_permanent_nsfw_confirm_message">"Native NSFW viewing and search will be permanently disabled for every account and anonymous browsing. You cannot turn them back on inside the app. Clearing app data resets this setting.
-
-Reddit will restart after confirming."</string>
-    <string name="morphe_permanent_nsfw_disable_button">Permanently disable NSFW</string>
-    <string name="morphe_permanent_nsfw_save_failed">Could not save the setting. Please try again.</string>
-    <string name="morphe_permanent_nsfw_disabled">NSFW content is permanently disabled</string>
-    <string name="morphe_permanent_nsfw_summary">Disable NSFW content forever for all accounts</string>
-    <string name="morphe_permanent_nsfw_blocked_message">This content is unavailable because mature content is permanently disabled in this app.</string>
 </resources>

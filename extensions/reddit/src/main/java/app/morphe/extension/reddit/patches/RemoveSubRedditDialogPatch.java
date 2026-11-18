@@ -16,7 +16,8 @@ import app.morphe.extension.reddit.settings.Settings;
 
 @SuppressWarnings("unused")
 public class RemoveSubRedditDialogPatch {
-    private static final boolean REMOVE_NSFW_DIALOG = Settings.REMOVE_NSFW_DIALOG.get();
+    private static final boolean REMOVE_NSFW_DIALOG = Settings.REMOVE_NSFW_DIALOG.get()
+            && !PermanentNsfwPatch.isEnabled();
     private static final boolean REMOVE_NOTIFICATION_DIALOG = Settings.REMOVE_NOTIFICATION_DIALOG.get();
 
     /**
@@ -30,14 +31,14 @@ public class RemoveSubRedditDialogPatch {
      * Injection point.
      */
     public static boolean spoofHasBeenVisitedStatus(boolean hasBeenVisited) {
-        return !PermanentNsfwPatch.isEnabled() && (REMOVE_NSFW_DIALOG || hasBeenVisited);
+        return REMOVE_NSFW_DIALOG || hasBeenVisited;
     }
 
     /**
      * Injection point.
      */
     public static void dismissNSFWDialog(Object customDialog) {
-        if (!PermanentNsfwPatch.isEnabled() && REMOVE_NSFW_DIALOG && customDialog instanceof Dialog dialog) {
+        if (REMOVE_NSFW_DIALOG && customDialog instanceof Dialog dialog) {
             if (!dialog.isShowing()) {
                 dialog.show();
             }

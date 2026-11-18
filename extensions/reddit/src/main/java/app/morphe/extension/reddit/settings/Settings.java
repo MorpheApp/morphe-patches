@@ -10,12 +10,16 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 
+import app.morphe.extension.reddit.patches.PermanentNsfwPatch;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 
 public class Settings extends BaseSettings {
+    private static final Setting.Availability NSFW_NOT_PERMANENTLY_DISABLED = () -> !PermanentNsfwPatch.isEnabled();
+
     // Ads
     public static final BooleanSetting HIDE_COMMENT_ADS = new BooleanSetting("morphe_hide_comment_ads", TRUE, true);
     public static final BooleanSetting HIDE_POST_ADS = new BooleanSetting("morphe_hide_post_ads", TRUE, true);
@@ -49,7 +53,12 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting KEEP_FEED_POSITION = new BooleanSetting("morphe_keep_feed_position", TRUE);
     public static final BooleanSetting MEDIA_VIEWER_BLACK_BACKGROUND = new BooleanSetting("morphe_media_viewer_black_background", FALSE);
     public static final FloatSetting MEDIA_VIEWER_FADE = new FloatSetting("morphe_media_viewer_fade", 1f);
-    public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true);
+    /**
+     * Cannot be turned off again, so it is not included with import/export.
+     */
+    public static final BooleanSetting PERMANENTLY_DISABLE_NSFW = new BooleanSetting("morphe_permanently_disable_nsfw", FALSE, true, false,
+            "morphe_permanently_disable_nsfw_user_dialog_message", NSFW_NOT_PERMANENTLY_DISABLED);
+    public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true, NSFW_NOT_PERMANENTLY_DISABLED);
     public static final BooleanSetting REMOVE_NOTIFICATION_DIALOG = new BooleanSetting("morphe_remove_notification_dialog", FALSE, true);
     public static final BooleanSetting SHOW_FLAIRS_IN_HOME_FEED = new BooleanSetting("morphe_show_flairs_in_home_feed", FALSE, true, "morphe_show_flairs_in_home_feed_user_dialog_message");
     public static final BooleanSetting SHOW_VIEW_COUNT = new BooleanSetting("morphe_show_view_count", FALSE, true);
@@ -64,8 +73,8 @@ public class Settings extends BaseSettings {
     public static final StringSetting DOWNLOAD_ACCOUNTS = new StringSetting("morphe_download_accounts", "");
     public static final BooleanSetting OPEN_LINKS_DIRECTLY = new BooleanSetting("morphe_open_links_directly", TRUE);
     public static final BooleanSetting OPEN_LINKS_EXTERNALLY = new BooleanSetting("morphe_open_links_externally", TRUE);
-    public static final BooleanSetting REDGIFS_AUDIO = new BooleanSetting("morphe_redgifs_audio", TRUE, true);
-    public static final BooleanSetting REDGIFS_HD = new BooleanSetting("morphe_redgifs_hd", FALSE);
+    public static final BooleanSetting REDGIFS_AUDIO = new BooleanSetting("morphe_redgifs_audio", TRUE, true, NSFW_NOT_PERMANENTLY_DISABLED);
+    public static final BooleanSetting REDGIFS_HD = new BooleanSetting("morphe_redgifs_hd", FALSE, NSFW_NOT_PERMANENTLY_DISABLED);
     public static final BooleanSetting REMEMBER_COLLAPSED_COMMENTS = new BooleanSetting("morphe_remember_collapsed_comments", TRUE);
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
 
