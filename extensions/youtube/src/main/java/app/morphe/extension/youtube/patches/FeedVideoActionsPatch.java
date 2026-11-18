@@ -131,6 +131,8 @@ public final class FeedVideoActionsPatch {
     /** Same as the duration badge of the thumbnail, so their right edges line up. */
     public static final int BADGE_RIGHT_MARGIN_DP = 8;
     private static final int BADGE_TOUCH_SLOP_DP = 8;
+    /** Width of the mute and captions buttons of the inline player, at the top right of the thumbnail. */
+    private static final int INLINE_PLAYER_BUTTON_DP = 40;
     private static final int BADGE_COLOR = 0xA6000000;
     private static final int BADGE_ALPHA = 0xB3;
     private static final int BADGE_PRESSED_ALPHA = 0xFF;
@@ -281,8 +283,9 @@ public final class FeedVideoActionsPatch {
         final int[] hostLocation = new int[2];
         final int[] ownerLocation = new int[2];
         /**
-         * Offset of the buttons while the card plays inline, where the mute button of the inline player is
-         * at the top right: the top left corner, or below the mute button if the like counts are at the top left.
+         * Offset of the buttons while the card plays inline, where the mute and captions buttons of the inline
+         * player are at the top right: the top left corner, or at the left of the buttons of the player
+         * if the like counts are at the top left.
          */
         int inlineOffsetX;
         int inlineOffsetY;
@@ -332,8 +335,8 @@ public final class FeedVideoActionsPatch {
             }
             setBounds(right - width, top, right, top + height);
             if (FeedEngagementCountsPatch.isAtTopLeft(host)) {
-                inlineOffsetX = 0;
-                inlineOffsetY = size + gap;
+                inlineOffsetX = -dp(host, INLINE_PLAYER_BUTTON_DP) - gap;
+                inlineOffsetY = 0;
             } else {
                 final int left = (side == null ? thumbnailInset : 0) + dp(host, BADGE_RIGHT_MARGIN_DP);
                 inlineOffsetX = left - (right - width);
