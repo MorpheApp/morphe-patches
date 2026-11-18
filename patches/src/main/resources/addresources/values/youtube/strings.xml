@@ -1230,6 +1230,10 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_glass_opacity_summary">Adjust the transparency level of the glass navigation bar (0 is transparent, 100 is opaque)</string>
     <string name="morphe_navigation_bar_glass_round_title">Round glass navigation bar</string>
     <string name="morphe_navigation_bar_glass_round_summary">Gives the glass navigation bar round ends, instead of corners like the glass miniplayer</string>
+    <string name="morphe_navigation_bar_glass_edge_title">Glass navigation bar edge</string>
+    <string name="morphe_navigation_bar_glass_edge_summary">Draws the light edge around the glass navigation bar</string>
+    <string name="morphe_navigation_bar_glass_bottom_margin_title">Glass navigation bar bottom margin</string>
+    <string name="morphe_navigation_bar_glass_bottom_margin_summary">Adjust the space between the glass navigation bar and the bottom of the screen or the system navigation</string>
     <string name="morphe_navigation_bar_glass_size_title">Glass navigation bar size</string>
     <string name="morphe_navigation_bar_glass_size_summary">Adjust the height, the width and the button spacing of the glass navigation bar, with a preview. Buttons that do not fit in the width of the screen are hidden</string>
     <string name="morphe_navigation_bar_glass_size_height">Height</string>
