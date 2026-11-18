@@ -40,6 +40,8 @@ public final class SimpMusicProvider implements LyricsProvider {
 
     private static final String NAME = "SimpMusic";
 
+    private static final int SEARCH_LIMIT = 10;
+
     private static final Pattern HTML_ENTITY =
             Pattern.compile("&#x([0-9a-fA-F]+);|&#(\\d+);");
 
@@ -184,6 +186,145 @@ public final class SimpMusicProvider implements LyricsProvider {
             }
         }
         return LyricsRequests.videoIdCandidates(found);
+    }
+
+    /**
+     * Searches by the user's title and artist; automatic lookups stay keyed by video id.
+     */
+    @Nullable
+    @Override
+    public FetchResult fetchBySearch(TrackInfo track) {
+        for (SearchHit hit : searchHits(track)) {
+            final Lyrics lyrics = fetchByVideoId(hit.videoId());
+            if (lyrics != null && !lyrics.isEmpty()) {
+                return FetchResult.of(lyrics, hit.title(), hit.artist(),
+                        hit.durationSec(), track);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Lyrics.ScoredLyrics> fetchCandidatesBySearch(TrackInfo track) {
+        final List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (SearchHit hit : searchHits(track)) {
+            final Lyrics lyrics = fetchByVideoId(hit.videoId());
+            if (lyrics == null || lyrics.isEmpty()) {
+                continue;
+            }
+            int score = LyricsRequests.scoreLyricsCandidate(
+                    hit.title(), hit.artist(), hit.durationSec(), lyrics, track);
+            if (score < 0) {
+                // A search hit kept only as a fallback has no passing metadata score.
+                score = hit.score() + LyricsRequests.syncRank(lyrics);
+            }
+            scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+        }
+        return Lyrics.sortScoredByScore(scored);
+    }
+
+    /** The search hits worth asking for lyrics, the best first. */
+    private List<SearchHit> searchHits(TrackInfo track) {
+        final String title = track.title();
+        final String artist = track.artist();
+        if (title == null || title.isEmpty() || artist == null || artist.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return rankSearchHits(fetchSearchResults(title + " " + artist), track);
+    }
+
+    /**
+     * Ranks hits by the shared match score, keeping one fallback when none passes.
+     */
+    static List<SearchHit> rankSearchHits(@Nullable JSONArray data, TrackInfo track) {
+        if (data == null || data.length() == 0) {
+            return Collections.emptyList();
+        }
+        final List<SearchHit> gated = new ArrayList<>();
+        SearchHit fallback = null;
+        int fallbackScore = Integer.MIN_VALUE;
+        for (int i = 0; i < data.length(); i++) {
+            final JSONObject entry = data.optJSONObject(i);
+            if (entry == null) {
+                continue;
+            }
+            final String videoId = LyricsRequests.optString(entry, "videoId");
+            if (videoId == null) {
+                continue;
+            }
+            final String songTitle =
+                    Objects.requireNonNullElse(LyricsRequests.optString(entry, "songTitle"), "");
+            final String artistName =
+                    Objects.requireNonNullElse(LyricsRequests.optString(entry, "artistName"), "");
+            final long durationSec = entry.optLong("durationSeconds", 0);
+            final int score = LyricsRequests.scoreTrackCandidate(
+                    songTitle, artistName, durationSec, track);
+            if (score >= 0) {
+                gated.add(new SearchHit(videoId, songTitle, artistName, durationSec, score));
+            } else {
+                final int raw = LyricsRequests.evaluate(
+                        songTitle, artistName, durationSec, track).score();
+                if (raw > fallbackScore) {
+                    fallbackScore = raw;
+                    fallback = new SearchHit(videoId, songTitle, artistName, durationSec, score);
+                }
+            }
+        }
+        gated.sort((a, b) -> {
+            if (a.score != b.score) {
+                return b.score - a.score;
+            }
+            if (track.durationSeconds() <= 0) {
+                return 0;
+            }
+            return Long.compare(Math.abs(a.durationSec - track.durationSeconds()),
+                    Math.abs(b.durationSec - track.durationSeconds()));
+        });
+        if (!gated.isEmpty()) {
+            return gated.size() > LyricsRequests.MAX_CANDIDATES
+                    ? new ArrayList<>(gated.subList(0, LyricsRequests.MAX_CANDIDATES))
+                    : gated;
+        }
+        return fallback == null ? Collections.emptyList() : List.of(fallback);
+    }
+
+    /** Metadata-only search; each hit's lyric is fetched by its video id. */
+    @Nullable
+    private JSONArray fetchSearchResults(String query) {
+        HttpURLConnection connection = null;
+        try {
+            final String url = BASE_URL + "search?q=" + LyricsRequests.encode(query)
+                    + "&limit=" + SEARCH_LIMIT;
+            connection = LyricsRequests.openConnection(url);
+            connection.setRequestProperty("User-Agent", CLIENT_USER_AGENT);
+            connection.setRequestProperty("Accept", "application/json");
+
+            final int code = connection.getResponseCode();
+            if (code == 404) {
+                return null;
+            }
+            if (code != 200) {
+                LyricsRequests.logFailure(name(), connection);
+                return null;
+            }
+
+            final JSONObject root = Requester.parseJSONObject(connection);
+            if (!root.optBoolean("success", false)) {
+                return null;
+            }
+            return root.optJSONArray("data");
+        } catch (IOException | JSONException ex) {
+            Logger.printDebug(() -> "Could not search SimpMusic API", ex);
+            return null;
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
+    /** One metadata-only search hit, before its lyric is fetched. */
+    record SearchHit(String videoId, String title, String artist, long durationSec, int score) {
     }
 
     @Nullable
