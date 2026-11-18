@@ -24,7 +24,7 @@ class QueueSaveBoundaryTest {
             .first { File(it, "extensions/youtube/src/main/proto").isDirectory }
         val output = createTempDirectory("playlist-queue-save").toFile()
         val generated = File(root,
-            "extensions/youtube/build/generated/java/generateReleaseProto/java/app/morphe/extension/youtube/innertube")
+            "extensions/shared-youtube/library/build/generated/java/generateReleaseProto/java/app/morphe/extension/shared/innertube")
         val protobuf = File(GeneratedMessageLite::class.java.protectionDomain.codeSource.location.toURI())
         val logger = File(output, "Logger.java").apply {
             writeText("""
@@ -59,7 +59,7 @@ class QueueSaveBoundaryTest {
             writeText("""
                 package app.morphe.extension.youtube.patches.queue;
                 import java.util.*;
-                import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.*;
+                import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.*;
                 public class SaveFixture {
                     static class Picker implements QueueSaveActions.Picker {
                         List<String> videoIds;

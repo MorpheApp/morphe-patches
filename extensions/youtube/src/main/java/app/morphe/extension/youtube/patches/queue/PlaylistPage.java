@@ -16,7 +16,7 @@ import com.google.protobuf.MessageLite;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** An authenticated native watch window; advertised totals can include hidden videos. */

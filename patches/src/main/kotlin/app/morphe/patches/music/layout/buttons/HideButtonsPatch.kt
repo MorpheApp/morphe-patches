@@ -23,18 +23,20 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideButtonsPatch;"
 
 val hideButtonsPatch = patch(
     name = "Hide buttons",
-    description = "Adds options to hide the cast, history, notification, search, voice search, sound search, and Library New buttons."
+    description = "Adds options to hide the Ask Music, cast, history, notification, search, voice search, sound search, and Library New buttons."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -48,10 +50,17 @@ val hideButtonsPatch = patch(
         val searchButton = resourceId(ResourceType.LAYOUT, "search_button")
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_music_hide_cast_button"),
-            SwitchPreference("morphe_music_hide_history_button"),
-            SwitchPreference("morphe_music_hide_notification_button"),
-            SwitchPreference("morphe_music_hide_search_button"),
+            PreferenceScreenPreference(
+                key = "morphe_toolbar_screen",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_music_hide_ask_music_button"),
+                    SwitchPreference("morphe_music_hide_cast_button"),
+                    SwitchPreference("morphe_music_hide_history_button"),
+                    SwitchPreference("morphe_music_hide_notification_button"),
+                    SwitchPreference("morphe_music_hide_search_button")
+                )
+            ),
             SwitchPreference("morphe_music_hide_voice_search_button"),
             SwitchPreference("morphe_music_hide_sound_search_button"),
             SwitchPreference("morphe_music_hide_library_new_button", summary = true)
@@ -133,6 +142,24 @@ val hideButtonsPatch = patch(
                         invoke-static { v$targetRegister }, $EXTENSION_CLASS->hideNotificationButton(Landroid/view/View;)V
                         :not_notification_button
                         nop
+                    """
+                )
+
+                // The button renderer is the constructor parameter right before the notification count key.
+                val classDef = it.classDef
+                val parameterTypes = classDef.methods.first { method ->
+                    MethodUtil.isConstructor(method)
+                }.parameterTypes.map { type -> type.toString() }
+                val optionalIndex = parameterTypes.indexOf(optionalField.type)
+                check(optionalIndex > 0) { "Unknown parameters of the top bar button" }
+                val rendererType = parameterTypes[optionalIndex - 1]
+                val rendererField = classDef.fields.single { field -> field.type == rendererType }
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        iget-object v$freeRegister, p0, ${classDef.type}->${rendererField.name}:$rendererType
+                        invoke-static { v$targetRegister, v$freeRegister }, $EXTENSION_CLASS->hideAskMusicButton(Landroid/view/View;Ljava/lang/Object;)V
                     """
                 )
             }

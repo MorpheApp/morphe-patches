@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package app.morphe.extension.youtube.innertube;
+package app.morphe.extension.shared.innertube;
 
 option optimize_for = LITE_RUNTIME;
-option java_package = "app.morphe.extension.youtube.innertube";
+option java_package = "app.morphe.extension.shared.innertube";
 
 message Icon {
     YTIconType ytIconType = 1;

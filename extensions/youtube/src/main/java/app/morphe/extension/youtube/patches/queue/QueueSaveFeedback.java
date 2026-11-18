@@ -14,16 +14,16 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.AddToToastAction;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.PlaylistEditAction;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.PlaylistEditEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueToastItem;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueToastRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.SwipeAction;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.SwipeButton;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.Text;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.AddToToastAction;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistEditAction;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.PlaylistEditEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueToastItem;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.QueueToastRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.SwipeAction;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.SwipeButton;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Text;
 
 /** Native success feedback; Undo targets only entry IDs returned by this Add request. */
 public final class QueueSaveFeedback {

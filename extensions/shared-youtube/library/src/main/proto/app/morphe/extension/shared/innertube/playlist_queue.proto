@@ -1,12 +1,12 @@
 syntax = "proto2";
 
-package app.morphe.extension.youtube.innertube.queue;
+package app.morphe.extension.shared.innertube.queue;
 
-option java_package = "app.morphe.extension.youtube.innertube.queue";
+option java_package = "app.morphe.extension.shared.innertube.queue";
 option java_outer_classname = "PlaylistQueueRenderer";
 option optimize_for = LITE_RUNTIME;
 
-import "app/morphe/extension/youtube/innertube/icon.proto";
+import "app/morphe/extension/shared/innertube/icon.proto";
 
 // Subset of YouTube 21.20.405's native playlist renderer and actions.
 message Panel {
@@ -40,31 +40,31 @@ message MenuItem {
 
 message MenuNavigationItem {
     optional Text text = 1;
-    optional app.morphe.extension.youtube.innertube.Icon icon = 2;
+    optional app.morphe.extension.shared.innertube.Icon icon = 2;
     optional NavigationEndpoint navigation_endpoint = 3;
-    optional app.morphe.extension.youtube.innertube.Icon secondary_icon = 11;
+    optional app.morphe.extension.shared.innertube.Icon secondary_icon = 11;
 }
 
 message MenuServiceItem {
     optional Text text = 1;
-    optional app.morphe.extension.youtube.innertube.Icon icon = 2;
+    optional app.morphe.extension.shared.innertube.Icon icon = 2;
     optional NavigationEndpoint service_endpoint = 3;
-    optional app.morphe.extension.youtube.innertube.Icon secondary_icon = 9;
+    optional app.morphe.extension.shared.innertube.Icon secondary_icon = 9;
 }
 
 // Native feed queue actions use this conditional variant, not MenuServiceItem.
 message MenuConditionalServiceItem {
     optional Text text = 1;
-    optional app.morphe.extension.youtube.innertube.Icon icon = 2;
+    optional app.morphe.extension.shared.innertube.Icon icon = 2;
     optional NavigationEndpoint service_endpoint = 3;
     // Native MDX_CONNECTED=1 and MDX_DISCONNECTED=2. Preserve other conditions.
     optional int32 visibility = 7;
-    optional app.morphe.extension.youtube.innertube.Icon secondary_icon = 12;
+    optional app.morphe.extension.shared.innertube.Icon secondary_icon = 12;
 }
 
 message MenuConditionalNavigationItem {
     optional Text text = 1;
-    optional app.morphe.extension.youtube.innertube.Icon icon = 2;
+    optional app.morphe.extension.shared.innertube.Icon icon = 2;
     optional NavigationEndpoint navigation_endpoint = 3;
     optional int32 visibility = 7;
 }
@@ -116,10 +116,10 @@ message RatingToggleContainer {
 message RatingToggleButton {
     optional bool is_toggled = 3;
     optional bool is_disabled = 4;
-    optional app.morphe.extension.youtube.innertube.Icon default_icon = 5;
+    optional app.morphe.extension.shared.innertube.Icon default_icon = 5;
     // Keep the native endpoints byte-for-byte, including opaque request parameters.
     optional bytes default_service_endpoint = 7;
-    optional app.morphe.extension.youtube.innertube.Icon toggled_icon = 8;
+    optional app.morphe.extension.shared.innertube.Icon toggled_icon = 8;
     optional bytes toggled_service_endpoint = 10;
     optional Accessibility accessibility_data = 19;
     optional Accessibility toggled_accessibility_data = 20;
@@ -362,7 +362,7 @@ message SwipeButton {
     optional bool is_disabled = 3;
     optional Text text = 5;
     optional NavigationEndpoint service_endpoint = 7;
-    optional app.morphe.extension.youtube.innertube.Icon icon = 8;
+    optional app.morphe.extension.shared.innertube.Icon icon = 8;
     optional NavigationEndpoint navigation_endpoint = 9;
     optional Accessibility accessibility_data = 16;
     optional NavigationEndpoint command = 19;
