@@ -303,7 +303,7 @@ SABR playback (Spoof video streams turned off)"</string>
 
     <!-- interaction.likefilter.queueLikeFilterPatch -->
     <string name="morphe_music_queue_like_filter_enabled_title">Queue likes filter</string>
-    <string name="morphe_music_queue_like_filter_enabled_summary">Removes low-like songs from auto-generated mixes and radio. User playlists are left unchanged</string>
+    <string name="morphe_music_queue_like_filter_enabled_summary">Removes songs under the minimum likes from auto-generated mixes and radio. User playlists are left unchanged</string>
     <string name="morphe_music_queue_like_filter_min_likes_title">Minimum likes</string>
     <string name="morphe_music_queue_like_filter_min_likes_summary">Songs with fewer likes are removed from auto-generated mixes and radio. Default: 1000</string>
     <string name="morphe_music_queue_like_filter_active_toast">Queue like filter is active</string>

@@ -23,7 +23,7 @@ import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPrefere
 
 val queueLikeFilterPatch = patch(
     name = "Queue likes filter",
-    description = "Adds options to remove low-like songs from auto-generated mixes and radio " +
+    description = "Adds options to remove songs under the minimum likes from auto-generated mixes and radio " +
             "queues. User playlists are left unchanged.",
 ) {
     dependsOn(
