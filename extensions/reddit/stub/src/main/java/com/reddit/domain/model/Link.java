@@ -17,9 +17,9 @@ public final class Link extends ILink {
     }
 
     public String getUrl() {
-      throw new UnsupportedOperationException("Stub");
+        throw new UnsupportedOperationException("Stub");
     }
-  
+
     public String getTitle() {
         throw new UnsupportedOperationException("Stub");
     }
@@ -65,14 +65,6 @@ public final class Link extends ILink {
     }
 
     public String getLinkFlairBackgroundColor() {
-        throw new UnsupportedOperationException("Stub");
-    }
-
-    public String getTitle() {
-        throw new UnsupportedOperationException("Stub");
-    }
-
-    public String getSelftext() {
         throw new UnsupportedOperationException("Stub");
     }
 }
