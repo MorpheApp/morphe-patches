@@ -218,6 +218,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting PLAYBACK_IN_FEEDS_IMPORTED = new BooleanSetting("morphe_playback_in_feeds_imported", FALSE, false, false);
     public static final BooleanSetting RESTORE_ORIGINAL_TITLES = new BooleanSetting("morphe_restore_original_titles", FALSE, true);
     public static final BooleanSetting DISABLE_AUTO_FEED_REFRESH = new BooleanSetting("morphe_disable_auto_feed_refresh", FALSE);
+    public static final BooleanSetting UNGROUP_NOTIFICATIONS = new BooleanSetting("morphe_ungroup_notifications", FALSE);
     public static final EnumSetting<FeedCardLayout> FEED_CARD_LAYOUT = new EnumSetting<>("morphe_feed_card_layout", FeedCardLayout.CLASSIC, true);
 
     // AiSList
