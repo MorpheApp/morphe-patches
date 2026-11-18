@@ -17,6 +17,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.findInstructionIndicesReversed
 import app.morphe.patcher.util.findInstructionIndicesReversedOrThrow
+import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -88,10 +89,8 @@ val disableSwipeToChangeTrackPatch = patch(
                 fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = "this", type = VIEW_PAGER_CLASS)
             ).forEach { index ->
                 val pagerRegister = getInstruction<TwoRegisterInstruction>(index).registerA
-                val freeRegister = findFreeRegister(index + 1, pagerRegister)
-                if (freeRegister > 15) {
-                    throw PatchException("No 4-bit free register to change the swipe of the new track pager")
-                }
+                val freeRegister = getFreeRegisterProvider(index + 1, pagerRegister)
+                    .getFreeRegister4Bit()
 
                 addInstructions(
                     index + 1,
