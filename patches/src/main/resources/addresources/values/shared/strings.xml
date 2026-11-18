@@ -229,6 +229,10 @@ If battery optimizations are not changed then you may experience:
 • Notifications may not work
 • Background playback may not work"</string>
 
+    <!-- misc.sharesheet.openSystemShareSheetPatch -->
+    <string name="morphe_open_system_share_sheet_title">Open system share sheet</string>
+    <string name="morphe_open_system_share_sheet_summary">Opens the system share sheet instead of the in-app one when sharing content</string>
+
     <!-- misc.gms.linkHandlingPatch -->
     <string name="morphe_link_handling_title">App link handling</string>
     <string name="morphe_link_handling_summary">Configure links to open in this app</string>

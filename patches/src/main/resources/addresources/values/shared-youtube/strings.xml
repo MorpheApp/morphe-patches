@@ -288,10 +288,6 @@ To sign in, press continue below"</string>
     <string name="morphe_remember_video_quality_toast_mobile">Changed default mobile quality to: %s</string>
     <string name="morphe_remember_video_quality_toast_wifi">Changed default Wi-Fi quality to: %s</string>
 
-    <!-- misc.sharesheet.openSystemShareSheetPatch -->
-    <string name="morphe_open_system_share_sheet_title">Open system share sheet</string>
-    <string name="morphe_open_system_share_sheet_summary">Opens the system share sheet instead of the in-app one when sharing content</string>
-
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_litho_title">Litho logging</string>
     <string name="morphe_debug_litho_entry_disabled">Disabled</string>

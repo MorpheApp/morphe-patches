@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -199,7 +200,7 @@ public final class OpenSystemShareSheetPatch {
      * @return If the in-app share sheet must not be opened.
      */
     public static boolean openSystemShareSheet(byte[] shareEndpoint) {
-        if (!Settings.OPEN_SYSTEM_SHARE_SHEET.get()) {
+        if (!SharedSettings.OPEN_SYSTEM_SHARE_SHEET.get()) {
             return false;
         }
 
