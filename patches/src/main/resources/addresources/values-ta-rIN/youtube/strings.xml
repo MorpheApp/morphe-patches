@@ -23,21 +23,19 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_user_dialog_message">"செயலி வடிவமைப்பு முதன்முதலில் நிறுவப்பட்டபோது பயன்படுத்தப்பட்ட வடிவமைப்பிற்கு மீட்டமைக்கப்படுகிறது.
+
+சில சர்வர்-பக்க வடிவமைப்புகள் மீட்டமைக்கப்படாமல் இருக்கலாம்.
+
+மாற்றங்களில் உள்ளடங்குபவை:
+• முழுத்திரை வீடியோ பரிந்துரைகள் செயலிழந்து போகலாம்
+• பிளேயர் flyout மெனுவில் உள்ள கூறுகள் (அல்லது தொடர்புடைய அமைப்புகள்) வேலை செய்யாமல் போகலாம்
+• வீடியோ விளக்கத்தின் இசைப் பகுதி வேலை செய்யாமல் போகலாம்
+• பிளேயர் flyout மெனு உருப்படிகளை மறைக்க முடியாது
+• உருளும் எண்கள் அனிமேட் செய்யப்படாது
+• லைப்ரரி டேபில் கணக்கு மாற்றும் பொத்தான் தோன்றாமல் போகலாம்"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_account_menu_downloads_title">பதிவிறக்கங்களை மறைக்கவும்</string>
-  <string name="morphe_post_buttons_screen_title">பதிவு பொத்தான்கள்</string>
-  <string name="morphe_post_buttons_screen_summary">சமூகப் பதிவுகளுக்குக் கீழே உள்ள பொத்தான்களின் தளவமைப்பைத் தேர்வு செய்யவும் மற்றும் எந்தப் பொத்தான்களை மறைக்க வேண்டும் என்பதையும் தேர்வு செய்யவும்</string>
-  <string name="morphe_post_buttons_layout_title">பதிவு பொத்தான்களின் வடிவமைப்பு</string>
-  <string name="morphe_post_buttons_layout_entry_1">சர்வர்</string>
-  <string name="morphe_post_buttons_layout_entry_2">கட்டாயப்படுத்தப்பட்டது</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">பிடிக்கும் மற்றும் பிடிக்கவில்லை பொத்தான்களை மறைக்கவும்</string>
-  <string name="morphe_hide_post_dislike_button_title">பிடிக்கவில்லை பொத்தானை மறைக்கவும்</string>
-  <string name="morphe_hide_post_dislike_button_summary">கட்டாயப்படுத்தப்பட்ட வடிவமைப்பில், பொத்தானின் இடம் காலியாக விடப்படும்</string>
-  <string name="morphe_hide_post_comment_button_title">கருத்து பொத்தானை மறைக்கவும்</string>
-  <string name="morphe_hide_post_comments_preview_title">கருத்துகளின் முன்னோட்டத்தை மறைக்கவும்</string>
-  <string name="morphe_hide_post_comments_preview_summary">பதிவுகளுக்குக் கீழே உள்ள கருத்துகளின் முன்னோட்டத்தை மறைக்கிறது</string>
-  <string name="morphe_hide_post_share_button_title">பகிர் பொத்தானை மறைக்கவும்</string>
-  <string name="morphe_hide_post_share_button_summary">பதிவு படங்களின் பதிவிறக்க பொத்தான் பகிர் பொத்தானுக்கு அருகில் வரையப்பட்டுள்ளது, எனவே அதுவும் மறைக்கப்பட்டுள்ளது</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
@@ -53,22 +51,13 @@ Second \"item\" text"</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
-  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
-          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• முகப்பு: %1$s
+• தேடல்: %2$s
+• மொத்தம்: %3$s"</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_comments_carousel_summary">"• ஒரு முக்கிய வார்த்தையை அல்லது முழுப் பெயரை உள்ளிடவும் (உதாரணமாக, Ask, Community, Hype, Listen)
-• அனைத்து உருப்படிகளையும் மறைப்பது முழு கருத்துப் பிரிவையும் மறைக்கும்"</string>
-  <string name="morphe_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
-  <string name="morphe_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கிறது</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"மறைக்க வேண்டிய முக்கிய வார்த்தைகள் மற்றும் சொற்றொடர்களை புதிய வரிகளால் பிரித்து உள்ளிடவும்
 
 வீடியோ தலைப்புகளில் காட்டப்படும் எந்தவொரு உரையையும் முக்கிய வார்த்தைகளாகப் பயன்படுத்தலாம். @UserName முக்கிய வார்த்தை குறிப்பிட்ட படைப்பாளர்களிடமிருந்து அனைத்து உள்ளடக்கத்தையும் மறைக்கும்"</string>
@@ -84,9 +73,85 @@ Second \"item\" text"</string>
 • தேடல்: %3$s
 • கருத்துகள்: %4$s
 • மொத்தம்: %5$s"</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• முகப்பு: %1$s
-• தேடல்: %2$s
-• மொத்தம்: %3$s"</string>
+  <string name="morphe_post_buttons_screen_title">பதிவு பொத்தான்கள்</string>
+  <string name="morphe_post_buttons_screen_summary">சமூகப் பதிவுகளுக்குக் கீழே உள்ள பொத்தான்களின் தளவமைப்பைத் தேர்வு செய்யவும் மற்றும் எந்தப் பொத்தான்களை மறைக்க வேண்டும் என்பதையும் தேர்வு செய்யவும்</string>
+  <string name="morphe_post_buttons_layout_title">பதிவு பொத்தான்களின் வடிவமைப்பு</string>
+  <string name="morphe_post_buttons_layout_entry_1">சர்வர்</string>
+  <string name="morphe_post_buttons_layout_entry_2">கட்டாயப்படுத்தப்பட்டது</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">பிடிக்கும் மற்றும் பிடிக்கவில்லை பொத்தான்களை மறைக்கவும்</string>
+  <string name="morphe_hide_post_dislike_button_title">பிடிக்கவில்லை பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_post_dislike_button_summary">கட்டாயப்படுத்தப்பட்ட வடிவமைப்பில், பொத்தானின் இடம் காலியாக விடப்படும்</string>
+  <string name="morphe_hide_post_comment_button_title">கருத்து பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_post_comments_preview_title">கருத்துகளின் முன்னோட்டத்தை மறைக்கவும்</string>
+  <string name="morphe_hide_post_comments_preview_summary">பதிவுகளுக்குக் கீழே உள்ள கருத்துகளின் முன்னோட்டத்தை மறைக்கிறது</string>
+  <string name="morphe_hide_post_share_button_title">பகிர் பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_post_share_button_summary">பதிவின் படங்களுக்கான பதிவிறக்கு பொத்தான் பகிர் பொத்தானுக்கு அருகில் வரையப்பட்டுள்ளது, எனவே அதுவும் மறைக்கப்படுகிறது</string>
+  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the video player for certain videos. -->
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- layout.buttons.action.hideButtonsPatch -->
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on live stream videos. -->
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on videos uploaded by the logged-in user. -->
+  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_enhanced_ambient_mode_title">மேம்படுத்தப்பட்ட ஆம்பியண்ட் பயன்முறை</string>
+  <string name="morphe_enhanced_ambient_mode_summary">ஆம்பியண்ட் பயன்முறைக்கு பதிலாக, வீடியோவுடன் முழு வாட்ச் பக்கத்தையும் மற்றும் கருப்புப் பட்டைகளையும் ஒளிரச் செய்யும்</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">ஒளியின் வலிமை</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">வாட்ச் பேஜ் மற்றும் கருப்புப் பட்டைகளில் ஒளி எவ்வளவு வலிமையாக இருக்க வேண்டும் என்பது</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">ஒளியைச் சீராக்குதல்</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">ஒளி வீடியோவைப் பின்தொடர எவ்வளவு நேரம் எடுத்துக் கொள்கிறது. 0-வில் இருக்கும்போது அது வீடியோவை மிக நெருக்கமாகப் பின்தொடரும்</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">ஒளி மங்கலாக்கம்</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">வீடியோவிற்கு அருகில் உள்ள ஒளி எவ்வளவு மங்கலாக உள்ளது. 0-வில் இருக்கும்போது அது வீடியோவின் வடிவங்களைத் தக்க வைத்துக் கொள்ளும்</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">உரையை வாசிக்கக்கூடியதாக வைத்திருங்கள்</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">பிரகாசமான வீடியோக்களில் ஒளியைக் குறைப்பதன் மூலம் பக்கத்தில் உள்ள உரை வாசிக்கக்கூடியதாக இருக்கும்</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">ஸ்க்ரோலிங் செய்யும்போது மங்கலாக்கு</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">பக்கம் ஸ்க்ரோலிங் செய்யப்படும்போது அல்லது தொடும்போது ஒளியை மங்கலாக்குகிறது</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">மங்கலாக்கும் கால அளவு</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">ஸ்க்ரோலிங் நிறுத்தப்பட்ட பிறகு ஒளி எவ்வளவு நேரம் மங்கலாக இருக்க வேண்டும். 0 என இருந்தால், ஸ்க்ரோலிங் செய்யும்போது மட்டுமே ஒளி மங்கலாக இருக்கும், ஸ்க்ரோலிங் நிறுத்தப்பட்டவுடன் அது மீண்டும் பழைய நிலைக்கு வரும்</string>
+  <string name="morphe_hide_comments_carousel_summary">"• ஒரு முக்கிய வார்த்தையை அல்லது முழுப் பெயரை உள்ளிடவும் (உதாரணமாக, Ask, Community, Hype, Listen)
+• அனைத்து உருப்படிகளையும் மறைப்பது முழு கருத்துப் பிரிவையும் மறைக்கும்"</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கிறது</string>
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_cast_button_summary">வீடியோ பிளேயர் மற்றும் டூல்பாரில் உள்ள காஸ்ட் (Cast) பொத்தானை மறைக்கிறது</string>
   <!-- layout.snackbar.snackbarPatch -->
   <string name="morphe_snackbar_screen_title">ஸ்நாக் பார்</string>
   <string name="morphe_snackbar_screen_summary">Snackbar-களை மறைக்கவும் அல்லது அவற்றின் நிறங்கள் மற்றும் வடிவத்தை மாற்றவும்</string>
@@ -154,15 +219,15 @@ Second \"item\" text"</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
-  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_shorts_download_flyout_button_summary">Shorts பிளேயரின் மெனுவில் பதிவிறக்க உருப்படியைச் சேர்க்கிறது</string>
-  <string name="morphe_feed_download_flyout_button_title">வீடியோ மெனுக்களில் பதிவிறக்கத்தைக் காட்டு</string>
-  <string name="morphe_feed_download_flyout_button_summary">YouTube Premium உறுப்பினர்களை மட்டுமே பதிவிறக்க அனுமதிக்கும் வீடியோக்கள் போன்ற, பதிவிறக்க விருப்பம் இல்லாத feed-இல் உள்ள வீடியோக்களின் மெனுக்களில் பதிவிறக்க உருப்படியைச் சேர்க்கிறது</string>
+  <string name="morphe_feed_download_flyout_button_title">ஃபிளைஅவுட் பதிவிறக்க மெனு உருடியை வலுக்கட்டாயமாக்கு</string>
+  <string name="morphe_feed_download_flyout_button_summary">பதிவிறக்க விருப்பம் இல்லாத ஃபீட் வீடியோக்களின் மெனுக்களில் பதிவிறக்க உருடியைச் சேர்க்கிறது</string>
   <string name="morphe_download_force_4k_title">4K பதிவிறக்கக் கிடைக்கும் தன்மையை வலுப்படுத்து</string>
-  <string name="morphe_download_force_4k_summary">இந்த சாதனத்தில் இயக்க முடியாது என்று YouTube முடிவு செய்தாலும், 1440p மற்றும் 4K பதிவிறக்கங்களை வழங்குகிறது. இத்தகைய வீடியோக்கள் YouTube-க்குள் வீடியோ இல்லாமல் இயங்கக்கூடும், ஆனால் உங்கள் சாதனத்திற்கு ஏற்றுமதி செய்யலாம்</string>
+  <string name="morphe_download_force_4k_summary">இந்தக் கருவியில் இயக்க முடியாது என்று YouTube முடிவு செய்தாலும், 1440p மற்றும் 4K பதிவிறக்கங்களை வழங்குகிறது</string>
+  <string name="morphe_download_quality_about_title">1080p கிடைக்கவில்லை</string>
+  <string name="morphe_download_quality_about_summary">உள்-செயலி பதிவிறக்கங்கள் 1080p-ஐ வழங்கவில்லை என்றால், இதர அமைப்புகளில் \'சாதன அளவுகளைப் போலியமை\' என்பதை இயக்கவும்</string>
   <string name="morphe_export_download_folder_title">சேமிக்கப்பட்ட வீடியோக்களை ஏற்றுமதி செய்</string>
-  <string name="morphe_export_download_folder_summary">"ஆப்பிற்குள் சேமிக்கப்பட்ட வீடியோக்களை, ஆப்பிற்குள் இருக்கும் பதிவிறக்கங்கள் flyout மெனுவைப் பயன்படுத்தி உங்கள் சாதன சேமிப்பகத்திற்கு ஏற்றுமதி செய்யவும். ஏற்றுமதி கோப்புறையை மாற்ற தட்டவும்
+  <string name="morphe_export_download_folder_summary">"உள்-செயலி பதிவிறக்கங்கள் flyout மெனுவைப் பயன்படுத்தி, செயலியினுள் சேமிக்கப்பட்ட வீடியோக்களை உங்கள் சாதனச் சேமிப்பகத்திற்கு ஏற்றுமதி செய்யவும். ஏற்றுமதி கோப்புறையை மாற்ற இங்கே தட்டவும்
 
 ஏற்றுமதி கோப்புறை: %s"</string>
   <string name="morphe_export_download_started">வீடியோ ஏற்றுமதி செய்யப்படுகிறது</string>
@@ -254,24 +319,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_seek_sensitivity_title">சீக் ஸ்வைப் உணர்திறன்</string>
   <string name="morphe_swipe_seek_sensitivity_summary">ஒவ்வொரு ஸ்வைப்பிற்கும் சீக் பார் எவ்வளவு தூரம் நகர்கிறது</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
-  <!-- layout.buttons.action.hideButtonsPatch -->
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on live stream videos. -->
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on videos uploaded by the logged-in user. -->
-  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
-  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_languages_title">மொழியும் மொழிபெயர்ப்பும்</string>
   <string name="morphe_captions_presentation_title">தோற்றம் மற்றும் செயல்பாடு</string>
@@ -326,43 +373,7 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_navigation_bar_glass_size_buttons_shown">காட்டப்படும் பொத்தான்கள்: %2$s இல் %1$s</string>
   <string name="morphe_toolbar_buttons_order_title">கருவிப்பட்டை பொத்தான்களின் வரிசை</string>
   <string name="morphe_toolbar_buttons_order_summary">கருவிப்பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
-  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_cast_button_summary">வீடியோ பிளேயர் மற்றும் டூல்பாரில் உள்ள காஸ்ட் (Cast) பொத்தானை மறைக்கிறது</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
-  <!-- layout.hide.ambientmode.ambientModePatch -->
-  <string name="morphe_enhanced_ambient_mode_title">மேம்படுத்தப்பட்ட ஆம்பியண்ட் பயன்முறை</string>
-  <string name="morphe_enhanced_ambient_mode_summary">ஆம்பியண்ட் பயன்முறைக்கு பதிலாக, வீடியோவுடன் முழு வாட்ச் பக்கத்தையும் மற்றும் கருப்புப் பட்டைகளையும் ஒளிரச் செய்யும்</string>
-  <string name="morphe_enhanced_ambient_mode_strength_title">ஒளியின் வலிமை</string>
-  <string name="morphe_enhanced_ambient_mode_strength_summary">வாட்ச் பேஜ் மற்றும் கருப்புப் பட்டைகளில் ஒளி எவ்வளவு வலிமையாக இருக்க வேண்டும் என்பது</string>
-  <string name="morphe_enhanced_ambient_mode_smoothing_title">ஒளியைச் சீராக்குதல்</string>
-  <string name="morphe_enhanced_ambient_mode_smoothing_summary">ஒளி வீடியோவைப் பின்தொடர எவ்வளவு நேரம் எடுத்துக் கொள்கிறது. 0-வில் இருக்கும்போது அது வீடியோவை மிக நெருக்கமாகப் பின்தொடரும்</string>
-  <string name="morphe_enhanced_ambient_mode_blur_title">ஒளி மங்கலாக்கம்</string>
-  <string name="morphe_enhanced_ambient_mode_blur_summary">வீடியோவிற்கு அருகில் உள்ள ஒளி எவ்வளவு மங்கலாக உள்ளது. 0-வில் இருக்கும்போது அது வீடியோவின் வடிவங்களைத் தக்க வைத்துக் கொள்ளும்</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_title">உரையை வாசிக்கக்கூடியதாக வைத்திருங்கள்</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_summary">பிரகாசமான வீடியோக்களில் ஒளியைக் குறைப்பதன் மூலம் பக்கத்தில் உள்ள உரை வாசிக்கக்கூடியதாக இருக்கும்</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">ஸ்க்ரோலிங் செய்யும்போது மங்கலாக்கு</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">பக்கம் ஸ்க்ரோலிங் செய்யப்படும்போது அல்லது தொடும்போது ஒளியை மங்கலாக்குகிறது</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_title">மங்கலாக்கும் கால அளவு</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">ஸ்க்ரோலிங் நிறுத்தப்பட்ட பிறகு ஒளி எவ்வளவு நேரம் மங்கலாக இருக்க வேண்டும். 0 என இருந்தால், ஸ்க்ரோலிங் செய்யும்போது மட்டுமே ஒளி மங்கலாக இருக்கும், ஸ்க்ரோலிங் நிறுத்தப்பட்டவுடன் அது மீண்டும் பழைய நிலைக்கு வரும்</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <!-- layout.hide.seekbar.hideSeekbarPatch -->

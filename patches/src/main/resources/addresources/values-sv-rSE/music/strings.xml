@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Använd extern nedladdare för menyn Nedladdningar</string>
   <string name="morphe_external_downloader_menu_summary">Alternativet Nedladdning i menyer öppnar din externa nedladdare istället</string>
+  <string name="morphe_download_force_4k_title">Tvinga tillgänglighet för 4K-nedladdning</string>
+  <string name="morphe_download_force_4k_summary">Sparar nedladdningar i 1440p och 4K även om YouTube Music anser att denna enhet inte kan spela upp dem</string>
   <string name="morphe_export_download_folder_title">Exportera nedladdningar</string>
   <string name="morphe_export_download_folder_summary">"Exportera sparade låtar och videor i appen till enhetens lagring med hjälp av menyn för nedladdningar i appen. Tryck för att ändra export
 

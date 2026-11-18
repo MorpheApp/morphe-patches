@@ -32,10 +32,10 @@ final class LightView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         if (inPlayer) {
-            AmbientLightController.drawWindowLight(canvas, this, false, 1f, null);
+            AmbientLightController.drawWindowLight(canvas, this, false, 1f, null, false);
         } else {
             AmbientLightController.drawWindowLight(canvas, this, true, SeeThroughPage.lightAlpha(),
-                    SeeThroughPage.lightBounds());
+                    SeeThroughPage.lightBounds(), false);
         }
     }
 }

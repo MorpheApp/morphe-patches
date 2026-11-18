@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">გამოიყენეთ გარე ჩამტვირთავი Download მენიუსთვის</string>
   <string name="morphe_external_downloader_menu_summary">მენიუს Download ოფცია ამის ნაცვლად ხსნის თქვენს გარე ჩამტვირთავს</string>
+  <string name="morphe_download_force_4k_title">4K ჩამოტვირთვის ხელმისაწვდომობის იძულება</string>
+  <string name="morphe_download_force_4k_summary">ინახავს 1440p და 4K ჩამოტვირთვებს იმ შემთხვევაშიც კი, თუ YouTube Music ჩათვლის, რომ ამ მოწყობილობას მათი დაკვრა არ შეუძლია</string>
   <string name="morphe_export_download_folder_title">ჩამოტვირთვის ექსპორტი</string>
   <string name="morphe_export_download_folder_summary">"გადაიტანეთ აპლიკაციაში შენახული სიმღერები და ვიდეოები თქვენი მოწყობილობის მეხსიერებაში ჩამოტვირთვის მენიუს გამოყენებით. ექსპორტის საქაღალდის შესაცვლელად შეეხეთ.
 

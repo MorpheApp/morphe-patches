@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">「ダウンロード」メニューで外部ダウンローダーを使用する</string>
   <string name="morphe_external_downloader_menu_summary">メニューの[ダウンロード]オプションは、代わりに外部ダウンローダーを開きます</string>
+  <string name="morphe_download_force_4k_title">4Kダウンロードを強制的に有効にする</string>
+  <string name="morphe_download_force_4k_summary">YouTube Musicがこのデバイスで再生できないと判断した場合でも、1440pおよび4Kのダウンロードを保存します</string>
   <string name="morphe_export_download_folder_title">ダウンロードをエクスポート</string>
   <string name="morphe_export_download_folder_summary">"アプリ内ダウンロードのフライアウトメニューを使用して、アプリ内で保存した曲やビデオをデバイスのストレージに書き出します。タップして書き出し
 
@@ -829,15 +831,16 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_transcribe_no_text">アラインする歌詞がありません - 代わりに文字起こししています</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRCはこのトラックを処理できませんでした</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRCのクレジットがこのトラックに対して使い切られました</string>
-  <string name="morphe_music_lyrics_about_summary">"歌詞はタイトルとアーティストで照合されます。通常と異なるメタデータの場合、何も見つからないか、別のバージョンが見つかることがあります。バージョンを切り替えるには更新を使用してください。* マーク付きのプロバイダーにはトークンが必要です。有効なすべてのプロバイダーが必ずしも設定順に問い合わせられるわけではなく、応答速度に応じて結果が返されます。
+  <string name="morphe_music_lyrics_about_summary">"歌詞は、曲名とアーティスト名に基づいて照合されます。そのため、楽曲が通常とは異なるメタデータを持つ場合、歌詞が見つからなかったり、別のバージョンの歌詞が検出されたりすることがあります。歌詞のバージョンを切り替えるには、更新機能 (更新ボタン) をご利用ください。* 印の付いた歌詞配信サービスまたは翻訳サービスを利用するにはトークンが必要です。有効になっている歌詞配信サービスへのリクエストは、必ずしも指定した順序どおりには行われず、それぞれの応答速度に依存します。
 
-歌詞は Morphe とは無関係で、Morphe による提携・後援・推奨を受けていないサードパーティーのサービスから取得されます。各サービスの歌詞はそのまま使用され、その提供状況やライセンスはサービスとその権利者に帰属します。これらを利用することは、各サービスの利用規約の対象となる場合があります。有効化されたサービスに送信されるのは、要求した検索内容のみです（タイトル、アーティスト、そのサービスが必要とする場合はビデオ ID）。オプションの AI エンドポイントと QuickLRC の文字起こしは、設定した後にのみ実行され、歌詞テキストまたはトラックの動画 URL を受け取ります。"</string>
+歌詞の提供元となる外部サービスは、Morphe と提携、スポンサー関係にはなく、Morphe が公式に推奨、承認しているというわけでもありません。各サービスはそれぞれが独立したサービスであり、歌詞の内容や提供状況は各サービスに依存し、利用許諾に関する権利は各サービスおよびそのライセンスの許諾元に帰属します。そのため、サービスの利用が各サービスの利用規約によって制限される場合があります。
+サービスに送信されるのは、曲を検索するための情報、すなわち、曲名、アーティスト名、動画 ID (そのサービスが必要とする場合) のみです。設定した場合にのみ実行される AI エンドポイントと QuickLRC (文字起こし) では、歌詞のテキストや楽曲の動画 URL が送信されます。"</string>
   <string name="morphe_music_lyrics_source_advice_summary">使用中のプロバイダーのみ有効にするか、デフォルトのままにしてください。定期的なリクエストにより小規模なコミュニティの歌詞サイトが過負荷になる可能性があります</string>
   <string name="morphe_music_lyrics_hide_info_title">クレジット行を非表示</string>
   <string name="morphe_music_lyrics_hide_info_summary">歌詞欄最下部の、作詞作曲などのクレジット情報を表示する行を非表示にします</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">翻訳とローマ字表記を入れ替える</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">翻訳を歌詞の上に移動します。読みとローマ字は下に保持されます</string>
-  <string name="morphe_music_lyrics_force_center_title">常に歌詞を中央揃え</string>
+  <string name="morphe_music_lyrics_force_center_title">歌詞を常に中央揃えにする</string>
   <string name="morphe_music_lyrics_force_center_summary">ONにすると、各行を中央に配置し、ソースの配置（デュエットのサイドを含む）を無視します；OFFにすると、歌詞が要求する配置を保持します</string>
   <string name="morphe_music_lyrics_providers_keep_one">少なくとも1つのプロバイダーをONにしておく必要があります</string>
   <string name="morphe_music_lyrics_translation_provider_title">翻訳</string>

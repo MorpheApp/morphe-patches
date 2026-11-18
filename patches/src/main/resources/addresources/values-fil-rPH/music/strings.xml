@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Gumamit ng panlabas na downloader para sa Download menu</string>
   <string name="morphe_external_downloader_menu_summary">Ang opsyong Download ng mga menu ay magbubukas sa iyong panlabas na downloader sa halip</string>
+  <string name="morphe_download_force_4k_title">Piliting gawing available ang 4K download</string>
+  <string name="morphe_download_force_4k_summary">Nagse-save ng mga 1440p at 4K na download kahit magpasya ang YouTube Music na hindi ito maaaring i-play ng device na ito</string>
   <string name="morphe_export_download_folder_title">I-export ang mga download</string>
   <string name="morphe_export_download_folder_summary">"I-export ang mga kanta at video na na-save sa app sa storage ng iyong device gamit ang in-app downloads flyout menu. I-tap para baguhin ang export
 

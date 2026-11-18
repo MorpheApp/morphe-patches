@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Käytä ulkoista lataussovellusta Lataukset-valikossa</string>
   <string name="morphe_external_downloader_menu_summary">Valikoiden Lataus-vaihtoehto avaa ulkoisen lataussovelluksen sen sijaan</string>
+  <string name="morphe_download_force_4k_title">Pakota 4K-latauksen saatavuus</string>
+  <string name="morphe_download_force_4k_summary">Tallentaa 1440p- ja 4K-lataukset, vaikka YouTube Music päättäisi, ettei tämä laite voi toistaa niitä</string>
   <string name="morphe_export_download_folder_title">Vie lataukset</string>
   <string name="morphe_export_download_folder_summary">"Vie sovellukseen tallennetut kappaleet ja videot laitteesi tallennustilaan sovelluksen latausten valikon kautta. Napauta muuttaaksesi vientikansiota:
 

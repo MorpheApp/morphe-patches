@@ -74,18 +74,27 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_settings_export_file">Vie tiedostoon</string>
   <string name="morphe_settings_export_file_success">Asetukset on viety onnistuneesti</string>
   <string name="morphe_settings_export_file_failed">Asetusten vienti epäonnistui</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Käytät uusinta Morphe Patchesin versiota &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Käytät Morphe Patchesin versiota &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Päivitys saatavilla: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Päivittääksesi muokkaukset, käytä Morphea muokataksesi tämän sovelluksen uudelleen</string>
-  <string name="morphe_settings_about_links_dev_header">Huomautus</string>
-  <string name="morphe_settings_about_links_dev_body">Tämä versio on ennakkojulkaisuversio, joten voit kokea odottamattomia ongelmia</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Lisäosat</string>
+  <string name="morphe_settings_about_version">Versio</string>
+  <string name="morphe_settings_about_close">Sulje</string>
+  <string name="morphe_settings_about_prerelease">Esijulkaisu</string>
+  <string name="morphe_settings_about_update_available">Päivitys saatavilla: %s</string>
+  <string name="morphe_settings_about_update_hint">Päivittääksesi korjaukset, käytä Morphe-sovellusta tämän sovelluksen uudelleenpäivitykseen</string>
   <string name="morphe_settings_about_links_header">Viralliset linkit</string>
   <string name="morphe_settings_about_links_website">Verkkosivusto</string>
   <string name="morphe_settings_about_links_donate">Lahjoita</string>
   <string name="morphe_settings_about_links_translations">Käännökset</string>
-  <string name="morphe_settings_about_links_credits">Kiitokset</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ajantasainen</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Päivitys saatavilla</string>
+  <string name="morphe_settings_about_contributors">Avustajat</string>
+  <string name="morphe_settings_about_contributors_period">Viimeiset 12 kuukautta</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Tukijat</string>
+  <string name="morphe_settings_about_supporters_summary">Tukijat Open Collectivessa</string>
+  <string name="morphe_settings_about_supporters_become">Tule tukijaksi</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Ja %s muuta</string>
+  <string name="morphe_settings_about_people_unavailable">Listaa ei voitu ladata</string>
   <string name="morphe_settings_about_contributors_current">Nykyinen kehitys</string>
   <string name="morphe_settings_about_contributors_prior">Aiempi kehitys</string>
   <string name="morphe_settings_about_links_morphe">Käynnissä oleva kehitys</string>

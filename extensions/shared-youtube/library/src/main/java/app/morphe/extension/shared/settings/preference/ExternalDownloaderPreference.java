@@ -293,10 +293,6 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
         return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get();
     }
 
-    protected String getDefaultPackageName() {
-        return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.defaultValue;
-    }
-
     private void updateEntries() {
         List<CharSequence> entries = new ArrayList<>();
         List<CharSequence> entryValues = new ArrayList<>();
@@ -452,7 +448,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
                 () -> {}, // Cancel button action (dismiss only).
                 str("morphe_settings_reset"),
                 () -> { // Reset action.
-                    String defaultValue = getDefaultPackageName();
+                    String defaultValue = SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.defaultValue;
                     editText.setText(defaultValue);
                     editText.setSelection(defaultValue.length());
                     editText.setEnabled(false); // Disable editing on reset.

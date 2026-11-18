@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">Файлға экспорттау</string>
   <string name="morphe_settings_export_file_success">Баптаулар сәтті экспортталды</string>
   <string name="morphe_settings_export_file_failed">Баптауларды экспорттау сәтсіз аяқталды</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Сіз Morphe Patches нұсқасының ең соңғы &lt;i&gt;%s&lt;/i&gt; нұсқасын қолданып жатырсыз</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Сіз Morphe Patches нұсқасының &lt;i&gt;%1$s&lt;/i&gt; нұсқасын қолданып жатырсыз&lt;br&gt;&lt;br&gt;&lt;b&gt;Жаңарту қолжетімді: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Патчтарыңызды жаңарту үшін Morphe қолданып, осы қолданбаны қайта патчтаңыз</string>
-  <string name="morphe_settings_about_links_dev_header">Ескертпе</string>
-  <string name="morphe_settings_about_links_dev_body">Бұл нұсқа алдын ала шығарылған нұсқа және күтпеген мәселелер болуы мүмкін</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Патчтар</string>
+  <string name="morphe_settings_about_version">Нұсқасы</string>
+  <string name="morphe_settings_about_close">Жабу</string>
+  <string name="morphe_settings_about_prerelease">Алдын ала шығарылым</string>
+  <string name="morphe_settings_about_update_available">Жаңарту қолжетімді: %s</string>
+  <string name="morphe_settings_about_update_hint">Патчтарыңызды жаңарту үшін Morphe қолданып, осы қолданбаны қайта патчтеңіз</string>
   <string name="morphe_settings_about_links_header">Ресми сілтемелер</string>
   <string name="morphe_settings_about_links_website">Веб-сайт</string>
   <string name="morphe_settings_about_links_donate">Қайырымдылық жасау</string>
   <string name="morphe_settings_about_links_translations">Аудармалар</string>
-  <string name="morphe_settings_about_links_credits">Авторлар</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Жаңартылған</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Жаңарту қолжетімді</string>
+  <string name="morphe_settings_about_contributors">Үлес қосушылар</string>
+  <string name="morphe_settings_about_contributors_period">Соңғы 12 ай</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Қолдаушылар</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective платформасындағы қолдаушылар</string>
+  <string name="morphe_settings_about_supporters_become">Қолдаушы болу</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Және тағы %s адам</string>
+  <string name="morphe_settings_about_people_unavailable">Тізімді жүктеу мүмкін болмады</string>
   <string name="morphe_settings_about_contributors_current">Ағымдағы әзірлеу</string>
   <string name="morphe_settings_about_contributors_prior">Алдыңғы әзірлеу</string>
   <string name="morphe_settings_about_links_morphe">Белсенді әзірлеу</string>

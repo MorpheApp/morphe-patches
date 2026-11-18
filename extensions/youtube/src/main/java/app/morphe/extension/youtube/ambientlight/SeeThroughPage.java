@@ -133,6 +133,12 @@ final class SeeThroughPage {
     /** The colors under the ripples of these rows, with the alpha they had. */
     private static final WeakHashMap<Drawable, Integer> panelRowFills = new WeakHashMap<>();
     private static volatile boolean panelShown;
+    /** If a panel that shows the light lies over the player, as when it is dragged up to fill the screen. */
+    private static volatile boolean panelOverPlayer;
+    /** The player, or the view of the page that holds it. */
+    private static WeakReference<View> playerRef = new WeakReference<>(null);
+    private static final int[] panelLocation = new int[2];
+    private static final int[] playerLocation = new int[2];
     private static WeakReference<View> playlistBarRef = new WeakReference<>(null);
     @Nullable
     private static Drawable playlistBarBackground;
@@ -156,6 +162,7 @@ final class SeeThroughPage {
         panelBackgrounds.keySet().removeIf(view -> !view.isAttachedToWindow());
         panelRowLights.keySet().removeIf(view -> !view.isAttachedToWindow());
         SeeThroughPage.pageColor = pageColor;
+        playerRef = new WeakReference<>(player);
         ViewGroup panelWrapper = panelWrapperRef.get();
         if (PANEL_WRAPPER_ID != 0 && (panelWrapper == null || !panelWrapper.isAttachedToWindow())) {
             panelWrapperRef = new WeakReference<>(page.findViewById(PANEL_WRAPPER_ID) instanceof ViewGroup found ? found : null);
@@ -250,7 +257,9 @@ final class SeeThroughPage {
      */
     private static void lightPanels(boolean lists) {
         ViewGroup wrapper = panelWrapperRef.get();
+        View player = playerRef.get();
         boolean shown = false;
+        boolean overPlayer = false;
         for (int i = 0; wrapper != null && wrapper.isShown() && i < wrapper.getChildCount(); i++) {
             if (!(wrapper.getChildAt(i) instanceof ViewGroup panel) || panel.getVisibility() != View.VISIBLE) continue;
             Drawable background = panel.getBackground();
@@ -266,7 +275,13 @@ final class SeeThroughPage {
             // A panel of a tablet is as wide as a column.
             lightPanel(panel, null, panel.getWidth() / 3, lists, 0);
             shown = true;
+            if (player != null && player.isShown()) {
+                panel.getLocationInWindow(panelLocation);
+                player.getLocationInWindow(playerLocation);
+                overPlayer |= panelLocation[1] < playerLocation[1] + player.getHeight() - 1;
+            }
         }
+        panelOverPlayer = overPlayer;
         if (shown != panelShown) {
             panelShown = shown;
             AmbientLightController.onPanelChanged();
@@ -308,6 +323,16 @@ final class SeeThroughPage {
      */
     static boolean hasPanel() {
         return panelShown;
+    }
+
+    /**
+     * Any thread.
+     *
+     * @return If a panel that shows the light lies over the player. The panel hides the video,
+     *         so the window draws the light where the video is too, as the surfaces leave it out.
+     */
+    static boolean isPanelOverPlayer() {
+        return panelOverPlayer;
     }
 
     /**
@@ -486,6 +511,7 @@ final class SeeThroughPage {
         }
         panelRowFills.clear();
         panelShown = false;
+        panelOverPlayer = false;
         panelWrapperRef = new WeakReference<>(null);
         View playlistBar = playlistBarRef.get();
         if (playlistBar != null && playlistBar.getBackground() instanceof RoundLight) {
@@ -952,7 +978,8 @@ final class SeeThroughPage {
             } else {
                 covered = lightBounds(content, view, 1f, contentLightBounds);
             }
-            if (!AmbientLightController.drawWindowLight(canvas, view, true, alpha, covered)) {
+            // A panel dragged up over the player hides the video, and is never see-through.
+            if (!AmbientLightController.drawWindowLight(canvas, view, true, alpha, covered, inPanel)) {
                 canvas.drawColor(0, PorterDuff.Mode.CLEAR);
             }
         }

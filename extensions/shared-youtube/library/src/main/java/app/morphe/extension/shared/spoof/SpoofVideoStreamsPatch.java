@@ -489,6 +489,25 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
+     * The app fetches the Onesie response of a video with its own player request, and the player can start
+     * with the media of this response. When the streams of the video are replaced with SABR streams,
+     * this media is of other streams, so the native check of the response fails and reports a playback error
+     * for each video (onesie.badinitialformat). The player then plays without the Onesie media.
+     * The check is skipped for these videos, and the player plays without the Onesie media as before.
+     *
+     * @param videoId Video of the Onesie response.
+     * @return If the Onesie response is not checked, and is not used.
+     */
+    public static boolean skipOnesieCompatibilityCheck(@Nullable String videoId) {
+        if (!SPOOF_VIDEO_STREAMS || !StreamingDataRequest.playerClientUsesSABR(videoId)) {
+            return false;
+        }
+        Logger.printDebug(() -> "Skipping the Onesie response of: " + videoId);
+        return true;
+    }
+
+    /**
+     * Injection point.
      * Called when a media response asks the player to load the player response of its video again.
      * The app then loads the video again, which can be with requests that are not seen,
      * and the streams fetched before are not given to the player again.

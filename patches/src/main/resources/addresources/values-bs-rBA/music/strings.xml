@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Koristi eksterni preuzimač za meni Preuzmi</string>
   <string name="morphe_external_downloader_menu_summary">Opcija Preuzmi u menijima otvara vaš eksterni preuzimač</string>
+  <string name="morphe_download_force_4k_title">Prisili dostupnost 4K preuzimanja</string>
+  <string name="morphe_download_force_4k_summary">Čuva preuzimanja u 1440p i 4K rezoluciji čak i ako YouTube Music odluči da ovaj uređaj ne može ih reproducirati</string>
   <string name="morphe_export_download_folder_title">Izvoz preuzimanja</string>
   <string name="morphe_export_download_folder_summary">"Izvežite u aplikaciji sačuvane pjesme i videozapise u memoriju vašeg uređaja koristeći iskačući meni za preuzimanja u aplikaciji. Dodirnite da promijenite folder za izvoz
 

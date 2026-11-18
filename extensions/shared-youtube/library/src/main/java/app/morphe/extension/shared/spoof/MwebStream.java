@@ -40,14 +40,27 @@ import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
  * so the video can be played with another client. The streams can stop when the server asks for an attestation
  * the app cannot give, when the server answers with an error, or when the server puts an ad in the streams
  * of the video, which the player of the app does not expect.
+ * <p>
+ * The server also tells the website player to seek to the start of the first segment of a response
+ * (SABR seek), and puts this part between the format initialization of the video and its first segment.
+ * The player of the app then resets the video track and loses its format, so the segment cannot be parsed,
+ * and the player loads the same segment again, which shows overlapping frames at the start and fails
+ * the playback after seeking back. These parts are hidden from the player, which plays the segment
+ * from the position it asked for. Seeks of other sources are kept.
  */
 public final class MwebStream {
     // UMP parts of media responses.
     private static final int PART_MEDIA_HEADER = 20;
     private static final int PART_SABR_ERROR = 44;
+    private static final int PART_SABR_SEEK = 45;
 
     // MediaHeader.videoId.
     private static final int MEDIA_HEADER_VIDEO_ID_FIELD = 2;
+
+    // SabrSeek.seekSource: the start of the first segment of the response, when the playback starts or after a seek.
+    private static final int SABR_SEEK_SOURCE_FIELD = 3;
+    private static final int SEEK_SOURCE_PLAYBACK_START = 10;
+    private static final int SEEK_SOURCE_SEGMENT_START = 11;
 
     // StreamProtectionStatus.status.
     private static final int STATUS_ATTESTATION_PENDING = 2;
@@ -188,7 +201,7 @@ public final class MwebStream {
 
         responseReaders.put(callbacks, new ResponseReader(stream, new SabrResponseReader(stream::onPart,
                 SabrContexts.PART_SABR_CONTEXT_UPDATE, SabrContexts.PART_SABR_CONTEXT_SENDING_POLICY,
-                PART_MEDIA_HEADER, PART_SABR_ERROR)));
+                PART_MEDIA_HEADER, PART_SABR_ERROR).hideParts(PART_SABR_SEEK, MwebStream::isSegmentStartSeek)));
 
         return request.patch_withBodyAndHeaders(newBody, getHeaders(request));
     }
@@ -287,6 +300,29 @@ public final class MwebStream {
                 Logger.printInfo(() -> "Could not read media header", ex);
             }
         }
+    }
+
+    /**
+     * @return If a SABR seek part only moves the player to the start of the first segment of the response.
+     */
+    private static boolean isSegmentStartSeek(ByteBuffer chunk, int offset, int length) {
+        try {
+            byte[] part = new byte[length];
+            chunk.position(offset);
+            chunk.get(part);
+            CodedInputStream input = CodedInputStream.newInstance(part);
+            for (int tag; (tag = input.readTag()) != 0; ) {
+                if (WireFormat.getTagFieldNumber(tag) == SABR_SEEK_SOURCE_FIELD
+                        && WireFormat.getTagWireType(tag) == WireFormat.WIRETYPE_VARINT) {
+                    final int source = input.readInt32();
+                    return source == SEEK_SOURCE_PLAYBACK_START || source == SEEK_SOURCE_SEGMENT_START;
+                }
+                input.skipField(tag);
+            }
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "Could not read SABR seek", ex);
+        }
+        return false;
     }
 
     @Nullable

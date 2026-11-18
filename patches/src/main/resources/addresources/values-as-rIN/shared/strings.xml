@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">ফাইললৈ এক্সপোর্ট কৰক</string>
   <string name="morphe_settings_export_file_success">ছেটিংছবোৰ সফলতাৰে এক্সপোর্ট কৰা হৈছে</string>
   <string name="morphe_settings_export_file_failed">ছেটিংছ এক্সপোর্ট কৰাত ব্যৰ্থ হৈছে</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">আপুনি Morphe Patches ৰ নৱতম সংস্কৰণ &lt;i&gt;%s&lt;/i&gt; ব্যৱহাৰ কৰিছে</string>
-  <string name="morphe_settings_about_links_body_version_outdated">আপুনি Morphe Patches ৰ সংস্কৰণ &lt;i&gt;%1$s&lt;/i&gt; ব্যৱহাৰ কৰিছে&lt;br&gt;&lt;br&gt;&lt;b&gt;আপডেট উপলব্ধ: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;আপোনাৰ পেচবোৰ আপডেট কৰিবলৈ, এই এপটো পুনৰ পেচ কৰিবলৈ Morphe ব্যৱহাৰ কৰক</string>
-  <string name="morphe_settings_about_links_dev_header">টোকা</string>
-  <string name="morphe_settings_about_links_dev_body">এই সংস্কৰণটো এটা প্ৰি-ৰিলিজ আৰু আপুনি অপ্ৰত্যাশিত সমস্যাৰ সন্মুখীন হ\'ব পাৰে</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">পেচসমূহ</string>
+  <string name="morphe_settings_about_version">সংস্কৰণ</string>
+  <string name="morphe_settings_about_close">বন্ধ কৰক</string>
+  <string name="morphe_settings_about_prerelease">প্ৰি-ৰিলিজ</string>
+  <string name="morphe_settings_about_update_available">আপডেট উপলব্ধ: %s</string>
+  <string name="morphe_settings_about_update_hint">আপোনাৰ পেচবোৰ আপডেট কৰিবলৈ, এই এপটো পুনৰ পেচ কৰিবলৈ Morphe ব্যৱহাৰ কৰক</string>
   <string name="morphe_settings_about_links_header">আধিকাৰিক লিংকসমূহ</string>
   <string name="morphe_settings_about_links_website">ৱেবছাইট</string>
   <string name="morphe_settings_about_links_donate">দান কৰক</string>
   <string name="morphe_settings_about_links_translations">অনুবাদ</string>
-  <string name="morphe_settings_about_links_credits">ক্ৰেডিটছ</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">নৱতম সংস্কৰণ</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">আপডেট উপলব্ধ</string>
+  <string name="morphe_settings_about_contributors">অৱদানকাৰীসকল</string>
+  <string name="morphe_settings_about_contributors_period">যোৱা ১২ মাহ</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">সমৰ্থকসকল</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective-ত সহায়কাৰীসকল</string>
+  <string name="morphe_settings_about_supporters_become">এজন সমৰ্থক হওক</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">আৰু %s জন</string>
+  <string name="morphe_settings_about_people_unavailable">তালিকাজাক লোড কৰিব পৰা নগ\'ল</string>
   <string name="morphe_settings_about_contributors_current">বৰ্তমানৰ উন্নয়ন</string>
   <string name="morphe_settings_about_contributors_prior">পূৰ্বৰ উন্নয়ন</string>
   <string name="morphe_settings_about_links_morphe">সক্ৰিয় উন্নয়ন</string>

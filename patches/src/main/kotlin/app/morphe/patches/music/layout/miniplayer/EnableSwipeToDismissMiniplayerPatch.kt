@@ -10,12 +10,14 @@ package app.morphe.patches.music.layout.miniplayer
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -27,6 +29,8 @@ import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.music.video.information.musicVideoIdHook
+import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -50,7 +54,8 @@ val enableSwipeToDismissMiniplayerPatch = patch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        musicVideoInformationPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -126,10 +131,57 @@ val enableSwipeToDismissMiniplayerPatch = patch(
                         return-void
                         :dismiss
                         invoke-static { }, $CROSSFADE_MANAGER_CLASS->onQueueDismissed()V
+                        invoke-static { }, $EXTENSION_CLASS->onMiniplayerDismissed()V
                     """
                 )
             }
         }
+
+        // endregion
+
+        // region Keep the miniplayer hidden after dismissing it, until a song is played
+
+        // After a dismiss, the app asks again for the miniplayer in some cases (such as a tab change
+        // or the next app start), and the miniplayer comes back with "Nothing is playing".
+        // The dismissed state is saved by the extension, so it is also kept after the app is closed.
+        val playerStateClass = WatchWhileLayoutSetPlayerStateFingerprint.method.let {
+            it.addInstruction(
+                0,
+                "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->" +
+                        "onPlayerStateChanged(Landroid/view/View;Ljava/lang/Enum;)V"
+            )
+
+            it.parameterTypes.first().toString()
+        }
+
+        val requestPlayerStateMethod = watchWhileLayoutRequestPlayerStateFingerprint(playerStateClass).method.apply {
+            val freeRegister = findFreeRegister(0)
+
+            addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->ignorePlayerStateRequest(Landroid/view/View;Ljava/lang/Enum;)Z
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :request
+                    return-void
+                    :request
+                    nop
+                """
+            )
+        }
+
+        // Shows the miniplayer again when a song is played after dismissing.
+        mutableClassDefBy(EXTENSION_CLASS).methods.first { it.name == "setPlayerState" }.addInstructions(
+            0,
+            """
+                check-cast p0, $WATCH_WHILE_LAYOUT_CLASS
+                check-cast p1, $playerStateClass
+                invoke-virtual { p0, p1 }, $requestPlayerStateMethod
+                return-void
+            """
+        )
+
+        musicVideoIdHook("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
 
         // endregion
 

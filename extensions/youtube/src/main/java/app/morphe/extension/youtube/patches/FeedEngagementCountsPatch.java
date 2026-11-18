@@ -35,6 +35,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
@@ -184,6 +185,8 @@ public final class FeedEngagementCountsPatch {
      */
     private static final Map<View, CountsBadge> badges = new WeakHashMap<>();
 
+    private static final String ROUNDED_LIKE_ICON = "yt_outline_experimental_thumb_up_black_24";
+
     @Nullable
     private static Drawable likeIcon;
     private static boolean likeIconLoaded;
@@ -198,7 +201,11 @@ public final class FeedEngagementCountsPatch {
     private static Drawable getLikeIcon() {
         if (!likeIconLoaded) {
             likeIconLoaded = true;
-            Drawable icon = ResourceUtils.getDrawable("yt_outline_thumb_up_black_24");
+            // The rounded icon of the like button, which 20.26 does not have.
+            Drawable icon = ResourceUtils.getDrawable(
+                    ResourceUtils.getIdentifier(ResourceType.DRAWABLE, ROUNDED_LIKE_ICON) != 0
+                            ? ROUNDED_LIKE_ICON
+                            : "yt_outline_thumb_up_black_24");
             if (icon == null) {
                 icon = ResourceUtils.getDrawable("yt_delhi_thumbs_up_not_filled_24dp");
             }

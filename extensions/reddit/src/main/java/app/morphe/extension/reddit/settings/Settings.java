@@ -44,6 +44,10 @@ public class Settings extends BaseSettings {
      */
     public static final StringSetting FLAIR_FILTERS = new StringSetting("morphe_flair_filters", "");
     public static final BooleanSetting FLAIR_FILTERS_REMEMBER_SEEN = new BooleanSetting("morphe_flair_filters_remember_seen", FALSE);
+    /**
+     * Regular expressions, one per line.
+     */
+    public static final StringSetting KEYWORD_FILTERS = new StringSetting("morphe_keyword_filters", "");
 
     // Layout
     public static final BooleanSetting COPY_TEXT = new BooleanSetting("morphe_copy_text", FALSE, true, "morphe_copy_text_user_dialog_message");
