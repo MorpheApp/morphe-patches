@@ -1214,6 +1214,15 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      *
+     * @return If the HaTS survey of the bottom UI container should not be shown.
+     */
+    public static boolean hideHatsSurvey() {
+        return Settings.HIDE_SURVEYS.get();
+    }
+
+    /**
+     * Injection point.
+     *
      * @return If every element in a box of the fullscreen engagement panel was filtered,
      *         so the empty box with its rounded border is collapsed, such as with "Hide channel bar".
      */

@@ -664,6 +664,22 @@ val hideLayoutComponentsPatch = patch(
 
         // endregion
 
+        // region hide HaTS surveys
+
+        HatsSurveyDisplayFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $LAYOUT_COMPONENTS_FILTER->hideHatsSurvey()Z
+                move-result v0
+                if-eqz v0, :show
+                return-void
+                :show
+                nop
+            """
+        )
+
+        // endregion
+
         // region hide live chat donators bar
 
         LiveChatDonatorsBarFingerprint.let {
