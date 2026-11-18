@@ -27,6 +27,7 @@ jobs:
         uses: burrunan/gradle-cache-action@v3
 
       - name: Test
+        timeout-minutes: 30
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew :patches:test :extensions:youtube:testDebugUnitTest :extensions:music:testDebugUnitTest --no-daemon
