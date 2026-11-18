@@ -115,6 +115,16 @@ internal object SearchSuggestionsRenderFingerprint : Fingerprint(
 )
 
 /**
+ * Converts a section list item to its renderer. It is in the section list wrapper,
+ * which [SearchSuggestionsRenderFingerprint] creates. The parameter is the section list item.
+ */
+internal object SectionListItemRendererFingerprint : Fingerprint(
+    definingClass = { SearchSuggestionsRenderFingerprint.instructionMatches[1].methodReference.definingClass },
+    returnType = { "Lj$/util/Optional;" },
+    parameters = { listOf("L") }
+)
+
+/**
  * A bit of the music shelf item bit field set when the item is a search history entry.
  */
 private const val MUSIC_SHELF_ITEM_SEARCH_HISTORY_BIT = 0x8000000L
@@ -138,4 +148,14 @@ internal object MusicShelfItemsFingerprint : Fingerprint(
         literal(MUSIC_SHELF_ITEM_SUGGESTED_SEARCH_BIT),
         fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(6))
     )
+)
+
+/**
+ * Copies a proto list into a mutable list with the given capacity.
+ * The list is the type of the shelf items field that [MusicShelfItemsFingerprint] reads first.
+ */
+internal object ProtoListMutableCopyFingerprint : Fingerprint(
+    definingClass = { MusicShelfItemsFingerprint.instructionMatches.first().fieldReference.type },
+    returnType = { MusicShelfItemsFingerprint.instructionMatches.first().fieldReference.type },
+    parameters = { listOf("I") }
 )

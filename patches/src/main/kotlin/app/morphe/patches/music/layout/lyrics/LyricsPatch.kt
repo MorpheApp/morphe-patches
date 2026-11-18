@@ -16,7 +16,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.all.misc.resources.addResourcesPatch
@@ -56,6 +58,12 @@ internal const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/
 private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/LockScreenLyrics;"
 private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/MiniplayerLyrics;"
 private const val DEVICE_LYRICS_TAB_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/DeviceLyricsTab;"
+private const val TABS_BUILDER_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/lyrics/ui/DeviceLyricsTab$TabsBuilderAccess;"
+private const val TAB_MODEL_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/lyrics/ui/DeviceLyricsTab$TabModelAccess;"
+private const val TAB_CONTROLLER_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/lyrics/ui/DeviceLyricsTab$TabControllerAccess;"
 
 private const val LYRICS_PANEL_FILTER =
     "Lapp/morphe/extension/music/patches/components/LyricsPanelFilter;"
@@ -335,23 +343,13 @@ val lyricsPatch = patch(
                         return-object p0
                     """
                 )
-                deviceLyricsTabMethod("appendTab").addInstructions(
-                    0,
-                    """
-                        check-cast p0, ${addTabMethod.definingClass}
-                        check-cast p1, $tabType
-                        invoke-virtual { p0, p1 }, $addTabMethod
-                        return-void
-                    """
-                )
+                mutableClassDefBy(addTabMethod.definingClass)
+                    .addPatchInterface(TABS_BUILDER_INTERFACE, "patch_appendTab", addTabMethod)
             }
         }
 
         TabControllerAddTabFingerprint.let {
             val tabbedViewField = it.instructionMatches[1].fieldReference
-            val tabModelType = it.method.parameterTypes.first().toString()
-            val tabRendererField = tabModelConstructorFingerprint(tabModelType, tabRendererType)
-                .instructionMatches.first().fieldReference
 
             it.method.addInstructions(
                 0,
@@ -363,32 +361,31 @@ val lyricsPatch = patch(
             )
 
             // Like the app, only check the tab renderer for null before casting it.
-            deviceLyricsTabMethod("serializeTabRenderer").addInstructionsWithLabels(
-                0,
-                """
-                    check-cast p0, $tabModelType
-                    iget-object p0, p0, $tabRendererField
-                    if-nez p0, :renderer
-                    const/4 p0, 0x0
-                    return-object p0
-                    :renderer
-                    check-cast p0, $tabRendererType
-                    invoke-virtual { p0 }, $tabRendererType->toByteArray()[B
-                    move-result-object p0
-                    return-object p0
-                """
-            )
+            TabModelConstructorFingerprint.let { tabModel ->
+                tabModel.classDef.addPatchInterface(
+                    TAB_MODEL_INTERFACE,
+                    "patch_serializeTabRenderer",
+                    """
+                        iget-object v0, p0, ${tabModel.instructionMatches.first().fieldReference}
+                        if-nez v0, :renderer
+                        const/4 v0, 0x0
+                        return-object v0
+                        :renderer
+                        check-cast v0, $tabRendererType
+                        invoke-virtual { v0 }, $tabRendererType->toByteArray()[B
+                        move-result-object v0
+                        return-object v0
+                    """
+                )
+            }
 
-            val removeTabMethod = TabControllerRemoveTabFingerprint.originalMethod
-            deviceLyricsTabMethod("removeTab").addInstructions(
-                0,
-                """
-                    check-cast p0, ${removeTabMethod.definingClass}
-                    check-cast p1, $tabModelType
-                    invoke-virtual { p0, p1 }, $removeTabMethod
-                    return-void
-                """
-            )
+            TabControllerRemoveTabFingerprint.let { removeTab ->
+                removeTab.classDef.addPatchInterface(
+                    TAB_CONTROLLER_INTERFACE,
+                    "patch_removeTab",
+                    removeTab.originalMethod
+                )
+            }
         }
 
         // Some accounts get lyrics as a player tab instead of an engagement panel. A tab page can
