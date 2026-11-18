@@ -9,13 +9,10 @@ package app.morphe.extension.reddit.patches;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.SystemClock;
 import android.view.Choreographer;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -41,61 +38,74 @@ public final class FeedAutoScrollPatch {
         }
     }
 
-    public interface OnScrollStateChangedListener {
-        void onScrollStateChanged(boolean scrolling);
+    /**
+     * Feed context of a feed composable. Interface added during patching.
+     */
+    public interface FeedContext {
+        VisibilityFlow patch_getFeedVisibilityFlow();
     }
 
-    private static final Handler MAIN_HANDLER = new Handler(Looper.getMainLooper());
-    private static final String ON_SCREEN_NAME = "ON_SCREEN";
-    private static final long MAX_FRAME_GAP_MS = 100;
-    private static final float MILLIS_PER_SECOND = 1000f;
+    /**
+     * StateFlow with the FeedVisibility of a feed. Interface added during patching.
+     */
+    public interface VisibilityFlow {
+        Object patch_getValue();
+    }
 
-    private static final class FeedScrollTarget {
-        final WeakReference<Object> stateRef;
-        final boolean isGrid;
+    /**
+     * Compose ScrollableState of a list or grid feed. Interface added during patching.
+     */
+    public interface ScrollableState {
+        float patch_dispatchRawDelta(float delta);
+    }
+
+    /**
+     * Scroll state of a feed, and when it was last shown.
+     */
+    private static final class Feed {
+        final WeakReference<ScrollableState> stateRef;
         final long sequenceNumber;
 
-        FeedScrollTarget(Object state, boolean isGrid, long sequenceNumber) {
+        Feed(ScrollableState state, long sequenceNumber) {
             this.stateRef = new WeakReference<>(state);
-            this.isGrid = isGrid;
             this.sequenceNumber = sequenceNumber;
         }
     }
 
-    private static final Map<Object, FeedScrollTarget> targets = new WeakHashMap<>();
+    private static final String ON_SCREEN = "ON_SCREEN";
+
+    /**
+     * A longer time between frames, such as when the app was in the background,
+     * does not scroll the feed further.
+     */
+    private static final long MAX_FRAME_GAP_MS = 100;
+
+    private static final float MILLIS_PER_SECOND = 1000f;
+
+    /**
+     * Feeds by their visibility flow, which stays the same when the app copies the feed context.
+     */
+    private static final Map<VisibilityFlow, Feed> feeds = new WeakHashMap<>();
     private static long nextSequenceNumber;
 
     @Nullable
-    private static Object pendingGridFlow;
-
-    private static boolean isScrolling;
+    private static VisibilityFlow activeFlow;
     @Nullable
-    private static Object activeFlow;
-    @Nullable
-    private static FeedScrollTarget activeTarget;
-    private static float speedPxPerSec;
+    private static ScrollableState activeState;
+    private static float speedPxPerSecond;
     private static long startTimeMs;
     private static long lastFrameTimeMs;
-    private static float lastDistancePx;
-
-    @Nullable
-    private static OnScrollStateChangedListener scrollStateChangedListener;
+    private static float scrolledDistancePx;
 
     private static final Choreographer.FrameCallback FRAME_CALLBACK = new Choreographer.FrameCallback() {
         @Override
         public void doFrame(long frameTimeNanos) {
             try {
-                if (!isScrolling || activeTarget == null || activeFlow == null) {
+                if (activeFlow == null || activeState == null) {
                     return;
                 }
 
                 if (!isOnScreen(activeFlow)) {
-                    stop();
-                    return;
-                }
-
-                final Object state = activeTarget.stateRef.get();
-                if (state == null) {
                     stop();
                     return;
                 }
@@ -107,22 +117,14 @@ public final class FeedAutoScrollPatch {
                 }
                 lastFrameTimeMs = now;
 
-                final float elapsedSeconds = Math.max(0f, (now - startTimeMs) / MILLIS_PER_SECOND);
-                final float totalDistance = speedPxPerSec * elapsedSeconds;
-                final float delta = totalDistance - lastDistancePx;
-                lastDistancePx = totalDistance;
-
-                if (delta > 0f) {
-                    if (activeTarget.isGrid) {
-                        dispatchGridScroll(state, delta);
-                    } else {
-                        dispatchListScroll(state, delta);
-                    }
+                final float distance = speedPxPerSecond * (now - startTimeMs) / MILLIS_PER_SECOND;
+                final float delta = distance - scrolledDistancePx;
+                scrolledDistancePx = distance;
+                if (delta > 0) {
+                    activeState.patch_dispatchRawDelta(delta);
                 }
 
-                if (isScrolling) {
-                    Choreographer.getInstance().postFrameCallback(this);
-                }
+                Choreographer.getInstance().postFrameCallback(this);
             } catch (Exception ex) {
                 Logger.printException(() -> "doFrame failure", ex);
                 stop();
@@ -130,170 +132,112 @@ public final class FeedAutoScrollPatch {
         }
     };
 
-    private FeedAutoScrollPatch() {}
-
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
 
+    static boolean isEnabled() {
+        return Settings.FEED_AUTO_SCROLL.get();
+    }
+
+    static boolean isScrolling() {
+        return activeState != null;
+    }
+
+    private static boolean isOnScreen(VisibilityFlow flow) {
+        final Object visibility = flow.patch_getValue();
+        return visibility instanceof Enum<?> && ON_SCREEN.equals(((Enum<?>) visibility).name());
+    }
+
+    /**
+     * @return The visibility flow of the feed shown last that is on screen, or null if none is.
+     */
     @Nullable
-    public static Object getVisibilityFlow(@Nullable Object feedContext) {
-        return null; // Modified during patching.
-    }
+    private static VisibilityFlow findOnScreenFeed() {
+        VisibilityFlow bestFlow = null;
+        long bestSequenceNumber = -1;
 
-    @Nullable
-    public static Object getFlowValue(@Nullable Object flow) {
-        return null; // Modified during patching.
-    }
-
-    public static float dispatchListScroll(@Nullable Object state, float delta) {
-        return 0f; // Modified during patching.
-    }
-
-    public static float dispatchGridScroll(@Nullable Object state, float delta) {
-        return 0f; // Modified during patching.
-    }
-
-    public static boolean isEnabled() {
-        return isPatchIncluded() && Settings.FEED_AUTO_SCROLL.get();
-    }
-
-    public static boolean isScrolling() {
-        return isScrolling;
-    }
-
-    public static boolean hasOnScreenFeed() {
-        try {
-            for (Map.Entry<Object, FeedScrollTarget> entry : targets.entrySet()) {
-                final Object flow = entry.getKey();
-                final FeedScrollTarget target = entry.getValue();
-                if (flow != null && target != null && isOnScreen(flow) && target.stateRef.get() != null) {
-                    return true;
-                }
-            }
-            return false;
-        } catch (Exception ex) {
-            Logger.printException(() -> "hasOnScreenFeed failure", ex);
-            return false;
-        }
-    }
-
-    public static boolean start(@NonNull Context context) {
-        try {
-            if (!isEnabled()) {
-                return false;
-            }
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(() -> start(context));
-                return false;
-            }
-
-            Object bestFlow = null;
-            FeedScrollTarget bestTarget = null;
-            for (Map.Entry<Object, FeedScrollTarget> entry : targets.entrySet()) {
-                final Object flow = entry.getKey();
-                final FeedScrollTarget target = entry.getValue();
-                if (flow != null && target != null && isOnScreen(flow) && target.stateRef.get() != null) {
-                    if (bestTarget == null || target.sequenceNumber > bestTarget.sequenceNumber) {
-                        bestFlow = flow;
-                        bestTarget = target;
-                    }
-                }
-            }
-
-            if (bestTarget == null) {
-                Logger.printDebug(() -> "no on-screen feed");
-                return false;
-            }
-
-            if (isScrolling) {
-                stop();
-            }
-
-            activeFlow = bestFlow;
-            activeTarget = bestTarget;
-            final float speedDp = Settings.FEED_AUTO_SCROLL_SPEED.get().dpPerSecond;
-            speedPxPerSec = speedDp * context.getResources().getDisplayMetrics().density;
-            startTimeMs = SystemClock.uptimeMillis();
-            lastFrameTimeMs = startTimeMs;
-            lastDistancePx = 0f;
-            isScrolling = true;
-            notifyScrollStateChanged(true);
-            Choreographer.getInstance().postFrameCallback(FRAME_CALLBACK);
-            return true;
-        } catch (Exception ex) {
-            Logger.printException(() -> "start failure", ex);
-            return false;
-        }
-    }
-
-    public static void stop() {
-        try {
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(FeedAutoScrollPatch::stop);
-                return;
-            }
-            if (!isScrolling) {
-                return;
-            }
-            isScrolling = false;
-            activeFlow = null;
-            activeTarget = null;
-            Choreographer.getInstance().removeFrameCallback(FRAME_CALLBACK);
-            notifyScrollStateChanged(false);
-        } catch (Exception ex) {
-            Logger.printException(() -> "stop failure", ex);
-        }
-    }
-
-    public static void setOnScrollStateChangedListener(@Nullable OnScrollStateChangedListener listener) {
-        scrollStateChangedListener = listener;
-    }
-
-    private static void notifyScrollStateChanged(boolean scrolling) {
-        if (scrollStateChangedListener != null) {
-            try {
-                scrollStateChangedListener.onScrollStateChanged(scrolling);
-            } catch (Exception ex) {
-                Logger.printException(() -> "onScrollStateChanged failure", ex);
+        for (Map.Entry<VisibilityFlow, Feed> entry : feeds.entrySet()) {
+            final VisibilityFlow flow = entry.getKey();
+            final Feed feed = entry.getValue();
+            if (flow != null && feed.sequenceNumber > bestSequenceNumber
+                    && feed.stateRef.get() != null && isOnScreen(flow)) {
+                bestFlow = flow;
+                bestSequenceNumber = feed.sequenceNumber;
             }
         }
+
+        return bestFlow;
     }
 
-    private static boolean isOnScreen(@Nullable Object flow) {
+    static boolean hasOnScreenFeed() {
+        return findOnScreenFeed() != null;
+    }
+
+    static void start(Context context) {
+        stop();
+
+        final VisibilityFlow flow = findOnScreenFeed();
         if (flow == null) {
-            return false;
+            Logger.printDebug(() -> "No feed on screen");
+            return;
         }
-        final Object value = getFlowValue(flow);
-        return value instanceof Enum<?> && ON_SCREEN_NAME.equals(((Enum<?>) value).name());
+        final Feed feed = feeds.get(flow);
+        final ScrollableState state = feed == null ? null : feed.stateRef.get();
+        if (state == null) {
+            return;
+        }
+
+        activeFlow = flow;
+        activeState = state;
+        speedPxPerSecond = Settings.FEED_AUTO_SCROLL_SPEED.get().dpPerSecond
+                * context.getResources().getDisplayMetrics().density;
+        startTimeMs = SystemClock.uptimeMillis();
+        lastFrameTimeMs = startTimeMs;
+        scrolledDistancePx = 0;
+
+        Choreographer.getInstance().postFrameCallback(FRAME_CALLBACK);
+        FeedAutoScrollButton.onScrollStateChanged();
+    }
+
+    static void stop() {
+        if (!isScrolling()) {
+            return;
+        }
+
+        activeFlow = null;
+        activeState = null;
+
+        Choreographer.getInstance().removeFrameCallback(FRAME_CALLBACK);
+        FeedAutoScrollButton.onScrollStateChanged();
+    }
+
+    private static void addFeed(@Nullable FeedContext feedContext, @Nullable ScrollableState state) {
+        if (feedContext == null || state == null) {
+            return;
+        }
+
+        feeds.put(feedContext.patch_getFeedVisibilityFlow(), new Feed(state, nextSequenceNumber++));
+        FeedAutoScrollButton.updateVisibility();
     }
 
     /**
      * Injection point.
      */
-    public static void onListFeed(@Nullable Object feedContext, @Nullable Object listState, @Nullable Object feedType) {
+    public static void onListFeed(@Nullable FeedContext feedContext,
+                                  @Nullable ScrollableState listState,
+                                  @Nullable Enum<?> feedType) {
         try {
             if (!isEnabled()) {
                 return;
             }
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(() -> onListFeed(feedContext, listState, feedType));
+
+            // The grid feed is shown instead, and is added by onGridFeed().
+            if (TabletGridFeedPatch.isPatchIncluded() && TabletGridFeedPatch.showGridFeed(feedType)) {
                 return;
             }
-            if (feedContext == null || listState == null) {
-                return;
-            }
-            if (TabletGridFeedPatch.isPatchIncluded()
-                    && feedType instanceof Enum<?>
-                    && TabletGridFeedPatch.showGridFeed((Enum<?>) feedType)) {
-                return;
-            }
-            final Object flow = getVisibilityFlow(feedContext);
-            if (flow == null) {
-                return;
-            }
-            targets.put(flow, new FeedScrollTarget(listState, false, nextSequenceNumber++));
-            FeedAutoScrollButton.updateVisibility();
+
+            addFeed(feedContext, listState);
         } catch (Exception ex) {
             Logger.printException(() -> "onListFeed failure", ex);
         }
@@ -302,60 +246,26 @@ public final class FeedAutoScrollPatch {
     /**
      * Injection point.
      */
-    public static void onGridFeedContext(@Nullable Object feedContext) {
+    public static void onGridFeed(@Nullable FeedContext feedContext, @Nullable ScrollableState gridState) {
         try {
-            if (!isEnabled()) {
-                return;
+            if (isEnabled()) {
+                addFeed(feedContext, gridState);
             }
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(() -> onGridFeedContext(feedContext));
-                return;
-            }
-            if (feedContext == null) {
-                pendingGridFlow = null;
-                return;
-            }
-            pendingGridFlow = getVisibilityFlow(feedContext);
         } catch (Exception ex) {
-            Logger.printException(() -> "onGridFeedContext failure", ex);
+            Logger.printException(() -> "onGridFeed failure", ex);
         }
     }
 
     /**
-     * Injection point.
-     */
-    public static void onGridState(@Nullable Object gridState) {
-        try {
-            if (!isEnabled()) {
-                return;
-            }
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(() -> onGridState(gridState));
-                return;
-            }
-            if (gridState != null && pendingGridFlow != null) {
-                targets.put(pendingGridFlow, new FeedScrollTarget(gridState, true, nextSequenceNumber++));
-                pendingGridFlow = null;
-                FeedAutoScrollButton.updateVisibility();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onGridState failure", ex);
-        }
-    }
-
-    /**
-     * Injection point.
+     * Injection point. Called after the visibility flow of the feed is updated.
      */
     public static void onFeedVisibilityChanged() {
         try {
             if (!isEnabled()) {
                 return;
             }
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(FeedAutoScrollPatch::onFeedVisibilityChanged);
-                return;
-            }
-            if (isScrolling && activeFlow != null && !isOnScreen(activeFlow)) {
+
+            if (activeFlow != null && !isOnScreen(activeFlow)) {
                 stop();
             }
             FeedAutoScrollButton.updateVisibility();
@@ -367,9 +277,11 @@ public final class FeedAutoScrollPatch {
     /**
      * Injection point.
      */
-    public static void onMainActivityResumed(@Nullable Activity activity) {
+    public static void onMainActivityResumed(Activity activity) {
         try {
-            FeedAutoScrollButton.onMainActivityResumed(activity);
+            if (isEnabled()) {
+                FeedAutoScrollButton.onMainActivityResumed(activity);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "onMainActivityResumed failure", ex);
         }
@@ -378,9 +290,11 @@ public final class FeedAutoScrollPatch {
     /**
      * Injection point.
      */
-    public static void onMainActivityPaused(@Nullable Activity activity) {
+    public static void onMainActivityPaused() {
         try {
-            FeedAutoScrollButton.onMainActivityPaused(activity);
+            if (isEnabled()) {
+                FeedAutoScrollButton.onMainActivityPaused();
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "onMainActivityPaused failure", ex);
         }
@@ -388,23 +302,29 @@ public final class FeedAutoScrollPatch {
 
     /**
      * Injection point.
+     *
+     * @param fraction How much of the navigation bar is shown, from 0 to 1.
      */
-    public static void onNavBarFraction(float fraction) {
+    public static void onNavBarStateChange(float fraction) {
         try {
-            FeedAutoScrollButton.onNavBarFraction(fraction);
+            if (isEnabled()) {
+                FeedAutoScrollButton.onNavBarStateChange(fraction);
+            }
         } catch (Exception ex) {
-            Logger.printException(() -> "onNavBarFraction failure", ex);
+            Logger.printException(() -> "onNavBarStateChange failure", ex);
         }
     }
 
     /**
      * Injection point.
      */
-    public static void onPostPageViewCreated(@Nullable View view) {
+    public static void onPostDetailPagerViewCreated(View view) {
         try {
-            FeedAutoScrollButton.onPostPageViewCreated(view);
+            if (isEnabled()) {
+                FeedAutoScrollButton.onPostDetailPagerViewCreated(view);
+            }
         } catch (Exception ex) {
-            Logger.printException(() -> "onPostPageViewCreated failure", ex);
+            Logger.printException(() -> "onPostDetailPagerViewCreated failure", ex);
         }
     }
 }

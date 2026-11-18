@@ -7,6 +7,8 @@
 
 package app.morphe.extension.reddit.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -16,8 +18,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -28,7 +28,7 @@ import android.view.WindowInsets;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.ColorInt;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -36,416 +36,306 @@ import java.util.Iterator;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 
-@SuppressWarnings("unused")
+/**
+ * Play and stop button of {@link FeedAutoScrollPatch}.
+ */
 final class FeedAutoScrollButton {
 
-    private static final Handler MAIN_HANDLER = new Handler(Looper.getMainLooper());
+    private static final int FRAME_CONTAINER_ID = ResourceUtils.getIdentifier(ResourceType.ID, "frame_container");
+    private static final int PLAY_ICON = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "icon_play_fill");
+    private static final int STOP_ICON = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "icon_stop_fill");
+
     private static final String OVERLAY_TAG = "morphe_feed_auto_scroll_overlay";
-    private static final float PHONE_BOTTOM_OFFSET_DP = 72f;
-    private static final float NAVBAR_SHOWN_THRESHOLD = 0.5f;
-    private static final float RIPPLE_ALPHA_RATIO = 0.25f;
-    private static final float TABLET_BG_ALPHA_RATIO = 0.12f;
+
+    /**
+     * Space below the button on phones, so it is above the navigation bar.
+     */
+    private static final float PHONE_BOTTOM_MARGIN_DP = 72;
+
+    /**
+     * The button is hidden when less of the navigation bar is shown. Phones only.
+     */
+    private static final float NAV_BAR_SHOWN_FRACTION = 0.5f;
+
+    private static final float RIPPLE_ALPHA = 0.25f;
+    private static final float TABLET_BACKGROUND_ALPHA = 0.12f;
 
     private static boolean isResumed;
     private static boolean isNavBarShown = true;
-    @Nullable
-    private static WeakReference<FeedAutoScrollOverlay> overlayRef;
-    @Nullable
-    private static WeakReference<ImageView> buttonRef;
-    private static final List<WeakReference<View>> postPageViews = new ArrayList<>();
+    private static WeakReference<ImageView> buttonRef = new WeakReference<>(null);
+    private static final List<WeakReference<View>> postDetailPagerViews = new ArrayList<>();
 
-    private static final class FeedAutoScrollOverlay extends FrameLayout {
-        private final Rect hitRect = new Rect();
-        private boolean dispatchedToButton;
+    /**
+     * Covers the screen and gets touches first. Touches outside the button stop scrolling
+     * and go to the views below.
+     */
+    private static final class Overlay extends FrameLayout {
+        private final ImageView button;
+        private final Rect buttonRect = new Rect();
+        private boolean touchingButton;
 
-        FeedAutoScrollOverlay(Context context) {
+        Overlay(Context context) {
             super(context);
+            setTag(OVERLAY_TAG);
+
+            button = new ImageView(context);
+            button.setPadding(Dim.dp12, Dim.dp12, Dim.dp12, Dim.dp12);
+            button.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            button.setOnClickListener(v -> {
+                try {
+                    if (FeedAutoScrollPatch.isScrolling()) {
+                        FeedAutoScrollPatch.stop();
+                    } else {
+                        FeedAutoScrollPatch.start(v.getContext());
+                    }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "onClick failure", ex);
+                }
+            });
+            addView(button, new LayoutParams(Dim.dp48, Dim.dp48, Gravity.BOTTOM | Gravity.LEFT));
+            setButtonMargins(0, 0);
+
+            setOnApplyWindowInsetsListener((v, insets) -> {
+                try {
+                    updateButtonMargins();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "onApplyWindowInsets failure", ex);
+                }
+                return insets;
+            });
         }
 
         @Override
         protected void onAttachedToWindow() {
             super.onAttachedToWindow();
             try {
-                requestApplyInsets();
-                applyInsets(getRootWindowInsets());
+                updateButtonMargins();
             } catch (Exception ex) {
-                Logger.printException(() -> "onAttachedToWindow insets failure", ex);
+                Logger.printException(() -> "onAttachedToWindow failure", ex);
             }
         }
 
         @Override
-        public boolean dispatchTouchEvent(MotionEvent ev) {
+        public boolean dispatchTouchEvent(MotionEvent event) {
             try {
-                ImageView button = buttonRef != null ? buttonRef.get() : null;
-                if (button == null || button.getVisibility() != View.VISIBLE) {
-                    if (FeedAutoScrollPatch.isScrolling()) {
+                final int action = event.getActionMasked();
+                if (action == MotionEvent.ACTION_DOWN) {
+                    button.getHitRect(buttonRect);
+                    touchingButton = button.getVisibility() == VISIBLE
+                            && buttonRect.contains((int) event.getX(), (int) event.getY());
+                    if (!touchingButton) {
                         FeedAutoScrollPatch.stop();
                     }
+                }
+
+                if (!touchingButton) {
                     return false;
                 }
 
-                final int action = ev.getActionMasked();
-                if (action == MotionEvent.ACTION_DOWN) {
-                    button.getHitRect(hitRect);
-                    final boolean inside = hitRect.contains((int) ev.getX(), (int) ev.getY());
-                    if (inside) {
-                        dispatchedToButton = true;
-                        return super.dispatchTouchEvent(ev);
-                    } else {
-                        dispatchedToButton = false;
-                        if (FeedAutoScrollPatch.isScrolling()) {
-                            FeedAutoScrollPatch.stop();
-                        }
-                        return false;
-                    }
+                final boolean handled = super.dispatchTouchEvent(event);
+                if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+                    touchingButton = false;
                 }
-
-                if (dispatchedToButton) {
-                    final boolean handled = super.dispatchTouchEvent(ev);
-                    if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
-                        dispatchedToButton = false;
-                    }
-                    return handled;
-                }
-
-                return false;
+                return handled;
             } catch (Exception ex) {
                 Logger.printException(() -> "dispatchTouchEvent failure", ex);
                 return false;
             }
         }
-    }
 
-    private FeedAutoScrollButton() {}
-
-    private static void applyStyle(Context context, ImageView button) {
-        final int primaryColor = getThemeColor(context, android.R.attr.textColorPrimary, Color.WHITE);
-        final int primaryAlpha = Color.alpha(primaryColor);
-        final int rippleColor = Color.argb(
-                Math.round(primaryAlpha * RIPPLE_ALPHA_RATIO),
-                Color.red(primaryColor),
-                Color.green(primaryColor),
-                Color.blue(primaryColor));
-
-        button.setColorFilter(primaryColor);
-        button.setPadding(Dim.dp12, Dim.dp12, Dim.dp12, Dim.dp12);
-        button.setScaleType(ImageView.ScaleType.FIT_CENTER);
-
-        final boolean isTablet = Utils.isTablet();
-        final int backgroundColor;
-        if (isTablet) {
-            backgroundColor = Color.argb(
-                    Math.round(primaryAlpha * TABLET_BG_ALPHA_RATIO),
-                    Color.red(primaryColor),
-                    Color.green(primaryColor),
-                    Color.blue(primaryColor));
-            button.setElevation(0f);
-        } else {
-            backgroundColor = getThemeColor(context, android.R.attr.colorBackground, Color.BLACK);
-            button.setElevation(Dim.dp6);
-            button.setOutlineProvider(ViewOutlineProvider.BACKGROUND);
-        }
-
-        GradientDrawable content = new GradientDrawable();
-        content.setShape(GradientDrawable.OVAL);
-        content.setColor(backgroundColor);
-
-        GradientDrawable mask = new GradientDrawable();
-        mask.setShape(GradientDrawable.OVAL);
-        mask.setColor(Color.WHITE);
-
-        RippleDrawable ripple = new RippleDrawable(
-                ColorStateList.valueOf(rippleColor),
-                content,
-                mask);
-        button.setBackground(ripple);
-    }
-
-    private static int getThemeColor(Context context, int attribute, int defaultColor) {
-        try {
-            TypedValue value = new TypedValue();
-            if (context.getTheme().resolveAttribute(attribute, value, true)) {
-                if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT) {
-                    return value.data;
-                }
-                if (value.resourceId != 0) {
-                    return context.getColor(value.resourceId);
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "getThemeColor failure", ex);
-        }
-        return defaultColor;
-    }
-
-    private static void applyInsets(@Nullable WindowInsets insets) {
-        if (insets == null) {
-            return;
-        }
-        final int leftInset;
-        final int bottomInset;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            Insets systemBars = insets.getInsets(WindowInsets.Type.systemBars());
-            leftInset = systemBars.left;
-            bottomInset = systemBars.bottom;
-        } else {
-            leftInset = insets.getSystemWindowInsetLeft();
-            bottomInset = insets.getSystemWindowInsetBottom();
-        }
-        updateButtonPosition(leftInset, bottomInset);
-    }
-
-    private static void updateButtonPosition(int leftInset, int bottomInset) {
-        ImageView button = buttonRef != null ? buttonRef.get() : null;
-        if (button == null) {
-            return;
-        }
-        final boolean isTablet = Utils.isTablet();
-        final int leftMargin = leftInset + (isTablet ? Dim.dp24 : Dim.dp16);
-        final int bottomMargin = bottomInset + (isTablet ? Dim.dp24 : Dim.dp(PHONE_BOTTOM_OFFSET_DP));
-
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) button.getLayoutParams();
-        if (params == null) {
-            params = new FrameLayout.LayoutParams(Dim.dp48, Dim.dp48, Gravity.BOTTOM | Gravity.LEFT);
-        }
-        params.width = Dim.dp48;
-        params.height = Dim.dp48;
-        params.gravity = Gravity.BOTTOM | Gravity.LEFT;
-        params.leftMargin = leftMargin;
-        params.bottomMargin = bottomMargin;
-        button.setLayoutParams(params);
-    }
-
-    public static void onMainActivityResumed(@Nullable Activity activity) {
-        try {
-            if (!FeedAutoScrollPatch.isEnabled() || activity == null) {
-                return;
-            }
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(() -> onMainActivityResumed(activity));
+        /**
+         * Places the button above the system bars. The insets of the window are used, because the
+         * app can consume the insets before they reach the overlay.
+         */
+        private void updateButtonMargins() {
+            WindowInsets insets = getRootWindowInsets();
+            if (insets == null) {
                 return;
             }
 
-            isResumed = true;
-
-            final int frameContainerId = ResourceUtils.getIdIdentifier("frame_container");
-            View container = frameContainerId != 0 ? activity.findViewById(frameContainerId) : null;
-            if (!(container instanceof ViewGroup)) {
-                container = activity.findViewById(android.R.id.content);
-            }
-            if (!(container instanceof ViewGroup)) {
-                return;
-            }
-
-            ViewGroup parent = (ViewGroup) container;
-            FeedAutoScrollOverlay overlay = parent.findViewWithTag(OVERLAY_TAG);
-            ImageView button;
-
-            if (overlay != null) {
-                overlay.bringToFront();
-                overlayRef = new WeakReference<>(overlay);
-                button = buttonRef != null ? buttonRef.get() : null;
-                if (button == null && overlay.getChildCount() > 0 && overlay.getChildAt(0) instanceof ImageView) {
-                    button = (ImageView) overlay.getChildAt(0);
-                    buttonRef = new WeakReference<>(button);
-                }
-                if (button != null) {
-                    applyStyle(activity, button);
-                }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                Insets systemBars = insets.getInsets(WindowInsets.Type.systemBars());
+                setButtonMargins(systemBars.left, systemBars.bottom);
             } else {
-                overlay = new FeedAutoScrollOverlay(activity);
-                overlay.setTag(OVERLAY_TAG);
-                overlayRef = new WeakReference<>(overlay);
+                setButtonMargins(insets.getSystemWindowInsetLeft(), insets.getSystemWindowInsetBottom());
+            }
+        }
 
-                button = new ImageView(activity);
-                buttonRef = new WeakReference<>(button);
-                applyStyle(activity, button);
+        private void setButtonMargins(int leftInset, int bottomInset) {
+            final boolean isTablet = Utils.isTablet();
+            LayoutParams params = (LayoutParams) button.getLayoutParams();
+            params.leftMargin = leftInset + (isTablet ? Dim.dp24 : Dim.dp16);
+            params.bottomMargin = bottomInset + (isTablet ? Dim.dp24 : Dim.dp(PHONE_BOTTOM_MARGIN_DP));
+            button.setLayoutParams(params);
+        }
 
-                button.setOnClickListener(v -> {
-                    try {
-                        if (FeedAutoScrollPatch.isScrolling()) {
-                            FeedAutoScrollPatch.stop();
-                        } else {
-                            FeedAutoScrollPatch.start(v.getContext());
-                        }
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "button click failure", ex);
-                    }
-                });
+        /**
+         * Sets the colors of the current app theme.
+         */
+        private void applyStyle(Context context) {
+            final int iconColor = getThemeColor(context, android.R.attr.textColorPrimary, Color.WHITE);
+            button.setColorFilter(iconColor);
 
-                final boolean isTablet = Utils.isTablet();
-                final int initialLeft = isTablet ? Dim.dp24 : Dim.dp16;
-                final int initialBottom = isTablet ? Dim.dp24 : Dim.dp(PHONE_BOTTOM_OFFSET_DP);
-                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                        Dim.dp48, Dim.dp48, Gravity.BOTTOM | Gravity.LEFT);
-                params.leftMargin = initialLeft;
-                params.bottomMargin = initialBottom;
-                overlay.addView(button, params);
-
-                overlay.setOnApplyWindowInsetsListener((v, insets) -> {
-                    try {
-                        applyInsets(insets);
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "onApplyWindowInsets failure", ex);
-                    }
-                    return insets;
-                });
-
-                parent.addView(overlay, new ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT));
+            final int backgroundColor;
+            if (Utils.isTablet()) {
+                backgroundColor = withAlpha(iconColor, TABLET_BACKGROUND_ALPHA);
+                button.setElevation(0);
+            } else {
+                backgroundColor = getThemeColor(context, android.R.attr.colorBackground, Color.BLACK);
+                button.setElevation(Dim.dp6);
+                button.setOutlineProvider(ViewOutlineProvider.BACKGROUND);
             }
 
-            applyInsets(overlay.getRootWindowInsets());
+            GradientDrawable content = new GradientDrawable();
+            content.setShape(GradientDrawable.OVAL);
+            content.setColor(backgroundColor);
 
-            FeedAutoScrollPatch.setOnScrollStateChangedListener(FeedAutoScrollButton::onScrollStateChanged);
-            onScrollStateChanged(FeedAutoScrollPatch.isScrolling());
+            GradientDrawable mask = new GradientDrawable();
+            mask.setShape(GradientDrawable.OVAL);
+            mask.setColor(Color.WHITE);
+
+            button.setBackground(new RippleDrawable(
+                    ColorStateList.valueOf(withAlpha(iconColor, RIPPLE_ALPHA)), content, mask));
+        }
+    }
+
+    @ColorInt
+    private static int withAlpha(@ColorInt int color, float alpha) {
+        return Color.argb(Math.round(Color.alpha(color) * alpha),
+                Color.red(color), Color.green(color), Color.blue(color));
+    }
+
+    @ColorInt
+    private static int getThemeColor(Context context, int attribute, @ColorInt int defaultColor) {
+        TypedValue value = new TypedValue();
+        if (!context.getTheme().resolveAttribute(attribute, value, true)) {
+            return defaultColor;
+        }
+        if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+            return value.data;
+        }
+        return value.resourceId != 0
+                ? context.getColor(value.resourceId)
+                : defaultColor;
+    }
+
+    static void onMainActivityResumed(Activity activity) {
+        isResumed = true;
+
+        ViewGroup container = activity.findViewById(FRAME_CONTAINER_ID);
+        if (container == null) {
+            Logger.printDebug(() -> "No frame container");
+            return;
+        }
+
+        Overlay overlay = container.findViewWithTag(OVERLAY_TAG);
+        if (overlay == null) {
+            overlay = new Overlay(activity);
+            container.addView(overlay, new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
+        } else {
+            // Screens opened since are added above the overlay.
+            overlay.bringToFront();
+        }
+        overlay.updateButtonMargins();
+        // The app theme can change while the activity is paused.
+        overlay.applyStyle(activity);
+
+        buttonRef = new WeakReference<>(overlay.button);
+        onScrollStateChanged();
+        updateVisibility();
+    }
+
+    static void onMainActivityPaused() {
+        isResumed = false;
+        updateVisibility();
+    }
+
+    static void onNavBarStateChange(float fraction) {
+        if (Utils.isTablet()) {
+            return;
+        }
+
+        final boolean shown = fraction > NAV_BAR_SHOWN_FRACTION;
+        if (isNavBarShown != shown) {
+            isNavBarShown = shown;
             updateVisibility();
-        } catch (Exception ex) {
-            Logger.printException(() -> "onMainActivityResumed failure", ex);
         }
     }
 
-    public static void onMainActivityPaused(@Nullable Activity activity) {
-        try {
-            if (!FeedAutoScrollPatch.isEnabled()) {
-                return;
-            }
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(() -> onMainActivityPaused(activity));
-                return;
-            }
-            FeedAutoScrollPatch.stop();
-            isResumed = false;
-            updateVisibility();
-        } catch (Exception ex) {
-            Logger.printException(() -> "onMainActivityPaused failure", ex);
-        }
-    }
+    static void onPostDetailPagerViewCreated(View view) {
+        postDetailPagerViews.add(new WeakReference<>(view));
 
-    public static void onNavBarFraction(float fraction) {
-        try {
-            if (!FeedAutoScrollPatch.isEnabled() || Utils.isTablet()) {
-                return;
-            }
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(() -> onNavBarFraction(fraction));
-                return;
-            }
-            final boolean shown = fraction > NAVBAR_SHOWN_THRESHOLD;
-            if (isNavBarShown != shown) {
-                isNavBarShown = shown;
-                updateVisibility();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onNavBarFraction failure", ex);
-        }
-    }
-
-    public static void onPostPageViewCreated(@Nullable View view) {
-        try {
-            if (!FeedAutoScrollPatch.isEnabled() || view == null) {
-                return;
-            }
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(() -> onPostPageViewCreated(view));
-                return;
-            }
-            postPageViews.add(new WeakReference<>(view));
-            view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-                @Override
-                public void onViewAttachedToWindow(View v) {
-                    try {
-                        FeedAutoScrollPatch.stop();
-                        updateVisibility();
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "onViewAttachedToWindow failure", ex);
-                    }
+        view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(View v) {
+                try {
+                    updateVisibility();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "onViewAttachedToWindow failure", ex);
                 }
-
-                @Override
-                public void onViewDetachedFromWindow(View v) {
-                    try {
-                        updateVisibility();
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "onViewDetachedFromWindow failure", ex);
-                    }
-                }
-            });
-            if (view.isAttachedToWindow()) {
-                FeedAutoScrollPatch.stop();
             }
-            updateVisibility();
-        } catch (Exception ex) {
-            Logger.printException(() -> "onPostPageViewCreated failure", ex);
-        }
+
+            @Override
+            public void onViewDetachedFromWindow(View v) {
+                try {
+                    updateVisibility();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "onViewDetachedFromWindow failure", ex);
+                }
+            }
+        });
+
+        updateVisibility();
     }
 
-    private static boolean isPostPageShowing() {
-        Iterator<WeakReference<View>> iterator = postPageViews.iterator();
-        boolean showing = false;
-        while (iterator.hasNext()) {
+    private static boolean isPostDetailPagerShown() {
+        boolean shown = false;
+        for (Iterator<WeakReference<View>> iterator = postDetailPagerViews.iterator(); iterator.hasNext(); ) {
             View view = iterator.next().get();
             if (view == null) {
                 iterator.remove();
             } else if (view.isAttachedToWindow()) {
-                showing = true;
+                shown = true;
             }
         }
-        return showing;
+        return shown;
     }
 
-    public static void updateVisibility() {
-        try {
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(FeedAutoScrollButton::updateVisibility);
-                return;
-            }
-            final boolean shouldShow = FeedAutoScrollPatch.isEnabled()
-                    && isResumed
-                    && FeedAutoScrollPatch.hasOnScreenFeed()
-                    && !isPostPageShowing()
-                    && (Utils.isTablet() || isNavBarShown);
+    /**
+     * Shows the button if a feed is on screen, and stops scrolling if the button is hidden.
+     */
+    static void updateVisibility() {
+        final boolean show = isResumed
+                && (isNavBarShown || Utils.isTablet())
+                && !isPostDetailPagerShown()
+                && FeedAutoScrollPatch.hasOnScreenFeed();
+        if (!show) {
+            FeedAutoScrollPatch.stop();
+        }
 
-            if (!shouldShow && FeedAutoScrollPatch.isScrolling()) {
-                FeedAutoScrollPatch.stop();
-            }
-
-            ImageView button = buttonRef != null ? buttonRef.get() : null;
-            if (button != null) {
-                button.setVisibility(shouldShow ? View.VISIBLE : View.GONE);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "updateVisibility failure", ex);
+        ImageView button = buttonRef.get();
+        if (button != null) {
+            button.setVisibility(show ? View.VISIBLE : View.GONE);
         }
     }
 
-    static void onScrollStateChanged(boolean scrolling) {
-        try {
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                MAIN_HANDLER.post(() -> onScrollStateChanged(scrolling));
-                return;
-            }
-            ImageView button = buttonRef != null ? buttonRef.get() : null;
-            if (button == null) {
-                return;
-            }
-            final int iconResId = ResourceUtils.getDrawableIdentifier(
-                    scrolling ? "icon_stop_fill" : "icon_play_fill");
-            if (iconResId != 0) {
-                button.setImageResource(iconResId);
-            }
-            String desc = ResourceUtils.getString(
-                    scrolling ? "morphe_feed_auto_scroll_stop" : "morphe_feed_auto_scroll_start");
-            if (desc != null) {
-                button.setContentDescription(desc);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onScrollStateChanged failure", ex);
+    static void onScrollStateChanged() {
+        ImageView button = buttonRef.get();
+        if (button == null) {
+            return;
         }
+
+        final boolean scrolling = FeedAutoScrollPatch.isScrolling();
+        button.setImageResource(scrolling ? STOP_ICON : PLAY_ICON);
+        button.setContentDescription(str(scrolling
+                ? "morphe_feed_auto_scroll_stop"
+                : "morphe_feed_auto_scroll_start"));
     }
 }

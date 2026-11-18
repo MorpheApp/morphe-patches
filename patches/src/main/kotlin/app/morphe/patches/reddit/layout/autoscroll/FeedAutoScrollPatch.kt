@@ -8,22 +8,28 @@
 package app.morphe.patches.reddit.layout.autoscroll
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patches.reddit.layout.tabletgrid.ListFeedFingerprint
-import app.morphe.patches.reddit.layout.tabletgrid.SearchGridFeedFingerprint
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/FeedAutoScrollPatch;"
+private const val FEED_CONTEXT_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/patches/FeedAutoScrollPatch$FeedContext;"
+private const val VISIBILITY_FLOW_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/patches/FeedAutoScrollPatch$VisibilityFlow;"
+private const val SCROLLABLE_STATE_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/patches/FeedAutoScrollPatch$ScrollableState;"
 
 @Suppress("unused")
 val feedAutoScrollPatch = patch(
@@ -35,172 +41,121 @@ val feedAutoScrollPatch = patch(
     dependsOn(settingsPatch)
 
     execute {
-        val feedContextType = FeedContextToStringFingerprint.classDef.type
+        // region Feed visibility.
+
         val flowField = FeedContextToStringFingerprint.method
             .findFieldFromToString(", feedVisibilityFlow=")
-        val flowType = flowField.type
 
-        val listFeedMethod = ListFeedFingerprint.method
-        val listParameters = listFeedMethod.parameterTypes.map { it.toString() }
-        if (listParameters.getOrNull(1) != feedContextType) {
-            throw PatchException("ListFeed parameter 1 is not FeedContext: ${listParameters.getOrNull(1)}")
-        }
-        val listStateType = listParameters[3]
+        FeedContextToStringFingerprint.classDef.addPatchInterface(
+            FEED_CONTEXT_INTERFACE,
+            "patch_getFeedVisibilityFlow",
+            flowField
+        )
 
-        listFeedMethod.addInstructions(
+        // StateFlow interface.
+        mutableClassDefBy(flowField.type).addPatchInterface(
+            VISIBILITY_FLOW_INTERFACE,
+            "patch_getValue",
+            """
+                invoke-interface { p0 }, ${flowField.type}->getValue()Ljava/lang/Object;
+                move-result-object v0
+                return-object v0
+            """
+        )
+
+        FeedVisibilityEventFingerprint.method.addInstruction(
             0,
-            """
-                move-object/from16 v0, p1
-                move-object/from16 v1, p3
-                move-object/from16 v2, p5
-                invoke-static { v0, v1, v2 }, $EXTENSION_CLASS->onListFeed(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
-            """
+            "invoke-static { }, $EXTENSION_CLASS->onFeedVisibilityChanged()V"
         )
 
-        val masonryClass = classDefBy(
-            SearchGridFeedFingerprint.instructionMatches[1]
-                .methodReference.definingClass
-        )
-        val masonryMatch = MasonryGridStateFingerprint.match(masonryClass)
-        val masonryParameters = masonryMatch.method.parameterTypes.map { it.toString() }
-        if (masonryParameters.getOrNull(1) != feedContextType) {
-            throw PatchException("Masonry parameter 1 is not FeedContext: ${masonryParameters.getOrNull(1)}")
-        }
+        // endregion
 
-        val stateCallMatch = masonryMatch.instructionMatches.first()
-        val gridStateType = stateCallMatch.methodReference.returnType
+        // region Feed scroll states.
 
-        val nextInstruction = masonryMatch.method.getInstruction(stateCallMatch.index + 1)
-        if (nextInstruction.opcode != Opcode.MOVE_RESULT_OBJECT) {
-            throw PatchException(
-                "Expected MOVE_RESULT_OBJECT after rememberLazyStaggeredGridState call, got ${nextInstruction.opcode}"
+        fun addScrollableState(stateType: String) {
+            val dispatchRawDelta = Fingerprint(
+                definingClass = stateType,
+                returnType = "F",
+                parameters = listOf("F")
+            ).method
+
+            mutableClassDefBy(stateType).addPatchInterface(
+                SCROLLABLE_STATE_INTERFACE,
+                "patch_dispatchRawDelta",
+                dispatchRawDelta
             )
         }
-        val stateRegister = (nextInstruction as OneRegisterInstruction).registerA
 
-        masonryMatch.method.apply {
-            addInstructions(
-                stateCallMatch.index + 2,
-                """
-                    invoke-static/range { v$stateRegister .. v$stateRegister }, $EXTENSION_CLASS->onGridState(Ljava/lang/Object;)V
-                """
-            )
+        // List feed.
+        ListFeedFingerprint.method.apply {
+            addScrollableState(parameterTypes[3].toString())
 
             addInstructions(
                 0,
                 """
                     move-object/from16 v0, p1
-                    invoke-static { v0 }, $EXTENSION_CLASS->onGridFeedContext(Ljava/lang/Object;)V
+                    move-object/from16 v1, p3
+                    move-object/from16 v2, p5
+                    invoke-static { v0, v1, v2 }, $EXTENSION_CLASS->onListFeed($FEED_CONTEXT_INTERFACE${SCROLLABLE_STATE_INTERFACE}Ljava/lang/Enum;)V
                 """
             )
         }
 
-        FeedVisibilityEventFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { }, $EXTENSION_CLASS->onFeedVisibilityChanged()V
-            """
-        )
+        // Grid feed, used by search results and "Tablet grid feed".
+        GridFeedFingerprint.let {
+            addScrollableState(it.instructionMatches[0].methodReference.returnType)
 
-        MainActivityOnResumeFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p0 }, $EXTENSION_CLASS->onMainActivityResumed(Landroid/app/Activity;)V
-            """
-        )
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val stateRegister = getInstruction<OneRegisterInstruction>(index).registerA
+                val registers = getFreeRegisterProvider(index + 1, 2, stateRegister)
+                val feedContextRegister = registers.getFreeRegister()
+                val gridStateRegister = registers.getFreeRegister()
 
-        MainActivityOnPauseFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p0 }, $EXTENSION_CLASS->onMainActivityPaused(Landroid/app/Activity;)V
-            """
-        )
-
-        NavBarStateChangeFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p1 }, $EXTENSION_CLASS->onNavBarFraction(F)V
-            """
-        )
-
-        val inflateMatch = PostPagerInflateFingerprint.instructionMatches[1]
-        val inflateResultInstruction = PostPagerInflateFingerprint.method.getInstruction(inflateMatch.index + 1)
-        if (inflateResultInstruction.opcode != Opcode.MOVE_RESULT_OBJECT) {
-            throw PatchException(
-                "Expected MOVE_RESULT_OBJECT after fragment_pager inflate call, got ${inflateResultInstruction.opcode}"
-            )
+                addInstructions(
+                    index + 1,
+                    """
+                        move-object/from16 v$feedContextRegister, p1
+                        move-object/from16 v$gridStateRegister, v$stateRegister
+                        invoke-static { v$feedContextRegister, v$gridStateRegister }, $EXTENSION_CLASS->onGridFeed($FEED_CONTEXT_INTERFACE$SCROLLABLE_STATE_INTERFACE)V
+                    """
+                )
+            }
         }
-        val postViewRegister = (inflateResultInstruction as OneRegisterInstruction).registerA
 
-        PostPagerInflateFingerprint.method.addInstructions(
-            inflateMatch.index + 2,
-            """
-                invoke-static/range { v$postViewRegister .. v$postViewRegister }, $EXTENSION_CLASS->onPostPageViewCreated(Landroid/view/View;)V
-            """
-        )
+        // endregion
 
-        val listDispatchName = Fingerprint(
-            definingClass = listStateType,
-            returnType = "F",
-            parameters = listOf("F")
-        ).method.name
+        // region Button.
 
-        val gridDispatchName = Fingerprint(
-            definingClass = gridStateType,
-            returnType = "F",
-            parameters = listOf("F")
-        ).method.name
-
-        Fingerprint(
-            definingClass = EXTENSION_CLASS,
-            name = "getVisibilityFlow"
-        ).method.addInstructions(
+        MainActivityOnResumeFingerprint.method.addInstruction(
             0,
-            """
-                check-cast p0, $feedContextType
-                iget-object p0, p0, $flowField
-                return-object p0
-            """
+            "invoke-static { p0 }, $EXTENSION_CLASS->onMainActivityResumed(Landroid/app/Activity;)V"
         )
 
-        Fingerprint(
-            definingClass = EXTENSION_CLASS,
-            name = "getFlowValue"
-        ).method.addInstructions(
+        MainActivityOnPauseFingerprint.method.addInstruction(
             0,
-            """
-                check-cast p0, $flowType
-                invoke-interface { p0 }, $flowType->getValue()Ljava/lang/Object;
-                move-result-object p0
-                return-object p0
-            """
+            "invoke-static { }, $EXTENSION_CLASS->onMainActivityPaused()V"
         )
 
-        Fingerprint(
-            definingClass = EXTENSION_CLASS,
-            name = "dispatchListScroll"
-        ).method.addInstructions(
+        NavBarStateChangeFingerprint.method.addInstruction(
             0,
-            """
-                check-cast p0, $listStateType
-                invoke-virtual { p0, p1 }, $listStateType->$listDispatchName(F)F
-                move-result p0
-                return p0
-            """
+            "invoke-static { p1 }, $EXTENSION_CLASS->onNavBarStateChange(F)V"
         )
 
-        Fingerprint(
-            definingClass = EXTENSION_CLASS,
-            name = "dispatchGridScroll"
-        ).method.addInstructions(
-            0,
-            """
-                check-cast p0, $gridStateType
-                invoke-virtual { p0, p1 }, $gridStateType->$gridDispatchName(F)F
-                move-result p0
-                return p0
-            """
-        )
+        PostDetailPagerInflateFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[2].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static/range { v$register .. v$register }, " +
+                            "$EXTENSION_CLASS->onPostDetailPagerViewCreated(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        // endregion
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }

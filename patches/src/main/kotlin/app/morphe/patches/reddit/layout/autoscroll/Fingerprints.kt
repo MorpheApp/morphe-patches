@@ -8,7 +8,9 @@
 package app.morphe.patches.reddit.layout.autoscroll
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
@@ -25,14 +27,23 @@ internal object FeedContextToStringFingerprint : Fingerprint(
     )
 )
 
-internal object MasonryGridStateFingerprint : Fingerprint(
+/**
+ * Composable that shows a feed as a staggered grid, with the feed context as the second parameter.
+ */
+internal object GridFeedFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/feeds/ui/composables/feed/",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
+        // rememberLazyStaggeredGridState()
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("I", "I", "L"),
             returnType = "Landroidx/compose/foundation/lazy/staggeredgrid/"
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT_OBJECT,
+            location = MatchAfterImmediately()
         )
     )
 )
@@ -57,17 +68,36 @@ internal object MainActivityOnPauseFingerprint : Fingerprint(
     parameters = listOf()
 )
 
+/**
+ * BottomNavScreen.onNavBarStateChange(float), called with the fraction of the navigation bar
+ * that is shown.
+ */
 internal object NavBarStateChangeFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen\$onNavBarStateChange\$1;",
-    name = "<init>"
+    definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen;",
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = listOf(
+        // The coroutine class is BottomNavScreen$onNavBarStateChange$1$1 in older app versions.
+        methodCall(
+            definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen\$onNavBarStateChange\$1",
+            name = "<init>"
+        )
+    )
 )
 
-internal object PostPagerInflateFingerprint : Fingerprint(
+/**
+ * Inflates the view of the post detail pager.
+ */
+internal object PostDetailPagerInflateFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "fragment_pager"),
         methodCall(
             definingClass = "Landroid/view/LayoutInflater;",
             name = "inflate"
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT_OBJECT,
+            location = MatchAfterImmediately()
         )
     )
 )
