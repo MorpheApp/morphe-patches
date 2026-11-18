@@ -87,6 +87,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting REDGIFS_AUDIO = new BooleanSetting("morphe_redgifs_audio", TRUE, true);
     public static final BooleanSetting REDGIFS_HD = new BooleanSetting("morphe_redgifs_hd", FALSE);
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
+    public static final BooleanSetting SHARE_POST_CONTENT = new BooleanSetting("morphe_share_post_content", FALSE);
 
     /**
      * Highest app version that was ever launched. Used to detect an app downgrade.
