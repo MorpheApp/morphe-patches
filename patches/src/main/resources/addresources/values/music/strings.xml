@@ -311,6 +311,12 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>
     <string name="morphe_music_disable_dislike_redirection_summary">Prevents skipping to the next track when the dislike button is pressed</string>
 
+    <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+    <string name="morphe_music_disable_player_swipe_to_change_track_title">Disable swipe to change track</string>
+    <string name="morphe_music_disable_player_swipe_to_change_track_summary">Prevents skipping to the next or previous track by swiping left or right on the player</string>
+    <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Disable swipe to change track</string>
+    <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Prevents skipping to the next or previous track by swiping left or right on the miniplayer</string>
+
     <!-- interaction.loop.loopVideoPatch -->
     <string name="morphe_music_ab_loop_title">A-B loop</string>
     <string name="morphe_music_ab_loop_summary">Long-press the seekbar to set the loop start, again to set the loop end, and again to clear the loop</string>
@@ -450,21 +456,21 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_force_portrait_orientation_summary">Keeps the app in portrait orientation when the device is rotated</string>
 
     <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-    <string name="morphe_music_change_miniplayer_color_title">Change miniplayer color</string>
+    <string name="morphe_music_change_miniplayer_color_title">Change color</string>
     <string name="morphe_music_change_miniplayer_color_summary">Matches the miniplayer color to the fullscreen player</string>
     <string name="morphe_music_change_navigation_bar_color_title">Change navigation bar color</string>
     <string name="morphe_music_change_navigation_bar_color_summary">Matches the navigation bar color to the fullscreen player</string>
 
     <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-    <string name="morphe_music_miniplayer_next_button_title">Show next button in miniplayer</string>
-    <string name="morphe_music_miniplayer_previous_button_title">Show previous button in miniplayer</string>
+    <string name="morphe_music_miniplayer_next_button_title">Show Next button</string>
+    <string name="morphe_music_miniplayer_previous_button_title">Show Previous button</string>
 
     <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
     <string name="morphe_music_enable_forced_miniplayer_title">Enable forced miniplayer</string>
     <string name="morphe_music_enable_forced_miniplayer_summary">Prevents the player from automatically expanding to fullscreen when a new track starts</string>
 
     <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Enable swipe to dismiss miniplayer</string>
+    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Enable swipe to dismiss</string>
     <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Allows to dismiss the miniplayer by swiping down on it</string>
 
     <!-- layout.navigationbar.navigationBarPatch -->
@@ -502,7 +508,7 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Hides the rounded highlight behind the selected button of the glass navigation bar</string>
     <string name="morphe_music_miniplayer_screen_title">Miniplayer</string>
     <string name="morphe_music_miniplayer_screen_summary">Change the style, the buttons and the gestures of the miniplayer</string>
-    <string name="morphe_music_miniplayer_glass_title">Enable glass miniplayer</string>
+    <string name="morphe_music_miniplayer_glass_title">Enable glass effect</string>
     <string name="morphe_music_miniplayer_glass_summary">Shows the floating miniplayer as a rounded, translucent glass card</string>
     <string name="morphe_music_miniplayer_glass_style_title">Glass miniplayer style</string>
     <string name="morphe_music_miniplayer_glass_style_summary">Adjust the corner radius, the artwork padding, the rim brightness and the opacity of the glass miniplayer, with a preview</string>
