@@ -250,6 +250,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_AUDIO_DUCKING = new BooleanSetting("morphe_music_disable_audio_ducking", FALSE, true);
     public static final BooleanSetting DISABLE_AUTO_CAPTIONS = new BooleanSetting("morphe_music_disable_auto_captions", FALSE);
     public static final BooleanSetting DISABLE_DISLIKE_REDIRECTION = new BooleanSetting("morphe_music_disable_dislike_redirection", FALSE, true);
+    public static final BooleanSetting DISABLE_PLAYER_SWIPE_TO_CHANGE_TRACK = new BooleanSetting("morphe_music_disable_player_swipe_to_change_track", FALSE, true);
     public static final BooleanSetting HIDE_AUDIO_VIDEO_TOGGLE = new BooleanSetting("morphe_music_hide_audio_video_toggle", FALSE, true);
     public static final BooleanSetting ENABLE_AUDIO_VIDEO_SWITCH = new BooleanSetting("morphe_music_enable_audio_video_switch", FALSE, true, parentNot(Settings.HIDE_AUDIO_VIDEO_TOGGLE));
     public static final BooleanSetting HIDE_LYRICS_SHARE_BUTTON = new BooleanSetting("morphe_music_hide_lyrics_share_button", FALSE, true);
@@ -332,6 +333,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting JAM_ENABLED = new BooleanSetting("morphe_music_jam_enabled", FALSE, true);
 
     // Miniplayer
+    public static final BooleanSetting DISABLE_MINIPLAYER_SWIPE_TO_CHANGE_TRACK = new BooleanSetting("morphe_music_disable_miniplayer_swipe_to_change_track", FALSE, true);
     public static final BooleanSetting ENABLE_FORCED_MINIPLAYER = new BooleanSetting("morphe_music_enable_forced_miniplayer", FALSE, true);
     public static final BooleanSetting ENABLE_SWIPE_TO_DISMISS_MINIPLAYER = new BooleanSetting("morphe_music_enable_swipe_to_dismiss_miniplayer", FALSE, true);
     public static final BooleanSetting MINIPLAYER_DISMISSED = new BooleanSetting("morphe_music_miniplayer_dismissed", FALSE, false, false, null, parent(ENABLE_SWIPE_TO_DISMISS_MINIPLAYER));
