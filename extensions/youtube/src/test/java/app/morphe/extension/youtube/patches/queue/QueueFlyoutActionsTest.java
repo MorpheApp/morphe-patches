@@ -20,9 +20,9 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
-import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuItem;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuItem;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
 
 public class QueueFlyoutActionsTest {
     @Test

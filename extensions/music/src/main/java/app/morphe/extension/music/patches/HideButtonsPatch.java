@@ -3,8 +3,13 @@ package app.morphe.extension.music.patches;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.protobuf.MessageLite;
+
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.ButtonRenderer;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
 
 @SuppressWarnings("unused")
 public class HideButtonsPatch {
@@ -38,6 +43,24 @@ public class HideButtonsPatch {
     public static void hideNotificationButton(View view) {
         if (view.getParent() instanceof ViewGroup viewGroup) {
             Utils.hideViewBy0dpUnderCondition(Settings.HIDE_NOTIFICATION_BUTTON, viewGroup);
+        }
+    }
+
+    /**
+     * Injection point.
+     * The server sends the top bar buttons without an id, so the Ask Music button is told apart by its icon.
+     */
+    public static void hideAskMusicButton(View view, Object renderer) {
+        if (!Settings.HIDE_ASK_MUSIC_BUTTON.get() || !(renderer instanceof MessageLite message)) {
+            return;
+        }
+        try {
+            YTIconType icon = ButtonRenderer.parseFrom(message.toByteArray()).getIcon().getYtIconType();
+            if (icon == YTIconType.SPARK && view.getParent() instanceof ViewGroup viewGroup) {
+                Utils.hideViewBy0dpUnderCondition(true, viewGroup);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideAskMusicButton failure", ex);
         }
     }
 

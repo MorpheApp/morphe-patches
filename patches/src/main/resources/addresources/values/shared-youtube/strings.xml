@@ -413,4 +413,7 @@ The ID of the video you watch is sent to the Return YouTube Dislike API, and you
     <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">No client rate limits encountered</string>
     <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client rate limit encountered %s times</string>
     <string name="morphe_ryd_statistics_millisecond_text">%s milliseconds</string>
+
+    <string name="morphe_toolbar_screen_title">Toolbar</string>
+    <string name="morphe_toolbar_screen_summary">Choose which components appear in the toolbar</string>
 </resources>
