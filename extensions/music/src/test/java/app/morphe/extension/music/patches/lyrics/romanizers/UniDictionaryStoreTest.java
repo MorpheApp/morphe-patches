@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 
-public class UniDictStoreTest {
+public class UniDictionaryStoreTest {
 
     @Before
     public void setUp() {
@@ -67,7 +67,7 @@ public class UniDictStoreTest {
 
     @Test
     public void firstReturnsReadingWithoutCode() throws Exception {
-        // No parentheses means the code isn't stripped; "wo23213" is returned as-is, lowercased.
+        // No parentheses mean the code isn't stripped; "wo23213" is returned as-is, lowercased.
         assertEquals("wo23213", callFirst("wo23213"));
     }
 
@@ -146,13 +146,13 @@ public class UniDictStoreTest {
 
     @Test
     public void rankReturnsMinusOneForUnknownField() throws Exception {
-        Object table = makeReadingTable("zh", new String[]{"kMandarin", "kHanyuPinlu"});
-        assertEquals(-1, callRank(table, "kCantonese"));
+        Object table = makeReadingTable("yue", new String[]{"kCantonese"});
+        assertEquals(-1, callRank(table, "kMandarin"));
     }
 
     private static Object makeReadingTable(String code, String[] sources) throws Exception {
         Class<?> clazz = Class.forName(
-                "app.morphe.extension.music.patches.lyrics.romanizers.UniDictStore$ReadingTable");
+                "app.morphe.extension.music.patches.lyrics.romanizers.UniDictionaryStore$ReadingTable");
         java.lang.reflect.Constructor<?> ctor = clazz.getDeclaredConstructor(
                 String.class, String[].class, String.class);
         ctor.setAccessible(true);
@@ -160,27 +160,34 @@ public class UniDictStoreTest {
     }
 
     private static int callRank(Object table, String field) throws Exception {
-        Method method = UniDictStore.class.getDeclaredMethod("rank", table.getClass(), String.class);
-        method.setAccessible(true);
-        return (int) method.invoke(null, table, field);
+        for (Method method : UniDictionaryStore.class.getDeclaredMethods()) {
+            if ("rank".equals(method.getName())) {
+                method.setAccessible(true);
+                Object result = method.invoke(null, table, field);
+                return result instanceof Number ? ((Number) result).intValue() : -1;
+            }
+        }
+        throw new NoSuchMethodException("rank");
     }
 
     private static char callCodePoint(String field) throws Exception {
-        Method method = UniDictStore.class.getDeclaredMethod("codePoint", String.class);
+        Method method = UniDictionaryStore.class.getDeclaredMethod("codePoint", String.class);
         method.setAccessible(true);
-        return (char) method.invoke(null, field);
+        Object result = method.invoke(null, field);
+        return result instanceof Character ? (Character) result : 0;
     }
 
     private static String callFirst(String value) throws Exception {
-        Method method = UniDictStore.class.getDeclaredMethod("first", String.class);
+        Method method = UniDictionaryStore.class.getDeclaredMethod("first", String.class);
         method.setAccessible(true);
         return (String) method.invoke(null, value);
     }
 
     private static int callRow(String field) throws Exception {
-        Method method = UniDictStore.class.getDeclaredMethod("row", String.class);
+        Method method = UniDictionaryStore.class.getDeclaredMethod("row", String.class);
         method.setAccessible(true);
-        return (int) method.invoke(null, field);
+        Object result = method.invoke(null, field);
+        return result instanceof Number ? ((Number) result).intValue() : -1;
     }
 
 }

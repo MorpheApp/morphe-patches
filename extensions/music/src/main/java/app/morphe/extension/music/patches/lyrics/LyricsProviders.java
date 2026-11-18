@@ -22,7 +22,7 @@ import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
 import app.morphe.extension.music.patches.lyrics.requests.GeniusProvider;
 import app.morphe.extension.music.patches.lyrics.requests.KuGouProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LRCLIBProvider;
-import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LRCRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricifyProvider;
@@ -139,7 +139,7 @@ public final class LyricsProviders {
             case "Musixmatch" -> new MusixmatchProvider();
             case "Deezer" -> new DeezerProvider();
             case "Genius" -> new GeniusProvider();
-            case "LrcRed" -> new LrcRedProvider();
+            case "LrcRed" -> new LRCRedProvider();
             default -> null;
         };
     }

@@ -36,7 +36,7 @@ import app.morphe.extension.shared.Utils;
  * BCP-47 tag, its Unihan fields best first; turning this off removes the character tables, so a
  * language falls back to its word tables alone.
  */
-public final class UniDictStore {
+public final class UniDictionaryStore {
 
     /** The Unicode release the tables were built from. */
     public static final String VERSION = "18.0.0";
@@ -60,9 +60,9 @@ public final class UniDictStore {
         return thread;
     });
     private static final AtomicBoolean RUNNING = new AtomicBoolean();
-    private static final RomanizationDict.Channel CHANNEL = new RomanizationDict.Channel();
+    private static final RomanizationDictionary.Channel CHANNEL = new RomanizationDictionary.Channel();
 
-    private UniDictStore() {
+    private UniDictionaryStore() {
     }
 
     /** Whether the tables are being downloaded or built right now. */
@@ -84,7 +84,7 @@ public final class UniDictStore {
         for (ReadingTable table : TABLES) {
             table.table = null;
         }
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) return;
         for (ReadingTable table : TABLES) {
             Utils.deleteQuietly(new File(directory, table.tableName));
@@ -94,7 +94,7 @@ public final class UniDictStore {
     }
 
     /** Starts a build if any table is missing. Safe to call whenever the setting is on. */
-    public static void ensure(RomanizationDict.Listener listener) {
+    public static void ensure(RomanizationDictionary.Listener listener) {
         if (isReady()) {
             listener.onReady(entries());
             return;
@@ -172,12 +172,12 @@ public final class UniDictStore {
 
     @Nullable
     private static File tableFile(String name) {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         return directory == null ? null : new File(directory, name);
     }
 
     private static void build() throws IOException {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) throw new IOException("no cache directory");
 
         boolean missing = false;
@@ -190,19 +190,19 @@ public final class UniDictStore {
             }
         }
         if (!missing) {
-            UniDictStore.CHANNEL.onReady(entries());
+            UniDictionaryStore.CHANNEL.onReady(entries());
             return;
         }
 
         File archive = tableFile(ARCHIVE);
         if (archive == null) throw new IOException("no cache directory");
         if (!archive.isFile()) {
-            RomanizationDict.download(URL, archive, ARCHIVE, UniDictStore.CHANNEL);
+            RomanizationDictionary.download(URL, archive, ARCHIVE, UniDictionaryStore.CHANNEL);
         }
         extract(archive);
         Utils.deleteQuietly(archive);
 
-        UniDictStore.CHANNEL.onReady(entries());
+        UniDictionaryStore.CHANNEL.onReady(entries());
     }
 
     /**
@@ -213,7 +213,7 @@ public final class UniDictStore {
      */
     private static void extract(File archive)
             throws IOException {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) throw new IOException("no cache directory");
 
         File[] built = new File[TABLES.length];
@@ -294,13 +294,13 @@ public final class UniDictStore {
                         }
 
                         if (size > 0 && done % (1 << 20) < line.length()) {
-                            UniDictStore.CHANNEL.onBuilding((int) Math.min(100, done * 100 / size));
+                            UniDictionaryStore.CHANNEL.onBuilding((int) Math.min(100, done * 100 / size));
                         }
                     }
                     for (int i = 0; i < TABLES.length; i++) {
                         if (pending[i] != null) writers[i].append(pending[i]);
                     }
-                    UniDictStore.CHANNEL.onBuilding(100);
+                    UniDictionaryStore.CHANNEL.onBuilding(100);
                 }
             }
         } finally {
@@ -310,7 +310,7 @@ public final class UniDictStore {
         }
 
         for (int i = 0; i < TABLES.length; i++) {
-            RomanizationDict.commit(built[i], targets[i]);
+            RomanizationDictionary.commit(built[i], targets[i]);
         }
     }
 

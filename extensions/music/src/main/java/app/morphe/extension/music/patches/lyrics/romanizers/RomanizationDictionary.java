@@ -26,7 +26,7 @@ import app.morphe.extension.shared.Utils;
  * hears about it. Where they are kept is {@link LyricsDirectories}' business.
  */
 @SuppressWarnings("unused")
-public final class RomanizationDict {
+public final class RomanizationDictionary {
 
     private static final String DOWNLOAD_SUFFIX = ".part";
     private static final int CONNECT_TIMEOUT_MS = 15000;
@@ -35,7 +35,7 @@ public final class RomanizationDict {
 
     private static final int PROGRESS_STEP_PERCENT = 2;
 
-    private RomanizationDict() {
+    private RomanizationDictionary() {
     }
 
     @Nullable

@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 
-public class RimeDictStoreTest {
+public class RimeDictionaryStoreTest {
 
     @Before
     public void setUp() {
@@ -154,16 +154,16 @@ public class RimeDictStoreTest {
 
     @Test
     public void archiveNameEndsWithZip() throws Exception {
-        String name = callArchiveName("en", "https://example.com/file.zip");
+        String name = callArchiveName("yue", "https://example.com/file.zip");
         assertTrue(name.endsWith(".zip"));
-        assertTrue(name.contains("en"));
+        assertTrue(name.contains("yue"));
     }
 
     @Test
     public void tableNameEndsWithBin() throws Exception {
-        String name = callTableName("en", "https://example.com/file.yaml");
+        String name = callTableName("yue", "https://example.com/file.yaml");
         assertTrue(name.endsWith(".bin"));
-        assertTrue(name.contains("en"));
+        assertTrue(name.contains("yue"));
     }
 
     @Test
@@ -241,51 +241,53 @@ public class RimeDictStoreTest {
         assertEquals(1, callParseCharSource("  CANTONESE  "));
     }
 
+    @SuppressWarnings("unchecked")
     private static java.util.Set<String> callParseBuiltin(String stored) throws Exception {
-        Method method = RimeDictStore.class.getDeclaredMethod("parseBuiltin", String.class);
+        Method method = RimeDictionaryStore.class.getDeclaredMethod("parseBuiltin", String.class);
         method.setAccessible(true);
         return (java.util.Set<String>) method.invoke(null, stored);
     }
 
     private static boolean callIsValidCode(String code) throws Exception {
-        Method method = RimeDictStore.class.getDeclaredMethod("isValidCode", String.class);
+        Method method = RimeDictionaryStore.class.getDeclaredMethod("isValidCode", String.class);
         method.setAccessible(true);
-        return (boolean) method.invoke(null, code);
+        return Boolean.TRUE.equals(method.invoke(null, code));
     }
 
     private static boolean callIsSecure(String url) throws Exception {
-        Method method = RimeDictStore.class.getDeclaredMethod("isSecure", String.class);
+        Method method = RimeDictionaryStore.class.getDeclaredMethod("isSecure", String.class);
         method.setAccessible(true);
-        return (boolean) method.invoke(null, url);
+        return Boolean.TRUE.equals(method.invoke(null, url));
     }
 
     private static boolean callIsZip(String url) throws Exception {
-        Method method = RimeDictStore.class.getDeclaredMethod("isZip", String.class);
+        Method method = RimeDictionaryStore.class.getDeclaredMethod("isZip", String.class);
         method.setAccessible(true);
-        return (boolean) method.invoke(null, url);
+        return Boolean.TRUE.equals(method.invoke(null, url));
     }
 
     private static String callArchiveName(String code, String url) throws Exception {
-        Method method = RimeDictStore.class.getDeclaredMethod("archiveName", String.class, String.class);
+        Method method = RimeDictionaryStore.class.getDeclaredMethod("archiveName", String.class, String.class);
         method.setAccessible(true);
         return (String) method.invoke(null, code, url);
     }
 
     private static String callTableName(String code, String url) throws Exception {
-        Method method = RimeDictStore.class.getDeclaredMethod("tableName", String.class, String.class);
+        Method method = RimeDictionaryStore.class.getDeclaredMethod("tableName", String.class, String.class);
         method.setAccessible(true);
         return (String) method.invoke(null, code, url);
     }
 
     private static byte[] callMagicFor(String code) throws Exception {
-        Method method = RimeDictStore.class.getDeclaredMethod("magicFor", String.class);
+        Method method = RimeDictionaryStore.class.getDeclaredMethod("magicFor", String.class);
         method.setAccessible(true);
         return (byte[]) method.invoke(null, code);
     }
 
     private static int callParseCharSource(String value) throws Exception {
-        Method method = RimeDictStore.class.getDeclaredMethod("parseCharSource", String.class);
+        Method method = RimeDictionaryStore.class.getDeclaredMethod("parseCharSource", String.class);
         method.setAccessible(true);
-        return (int) method.invoke(null, value);
+        Object result = method.invoke(null, value);
+        return result instanceof Number ? ((Number) result).intValue() : 0;
     }
 }

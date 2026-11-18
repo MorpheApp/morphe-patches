@@ -51,7 +51,7 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.TrackVersion;
 import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
-import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LRCRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
@@ -842,7 +842,6 @@ public final class LyricsManager {
         ensureLoadedForCurrentVideo();
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     void applyPlaybackState(int state, long newPosition, float speed, long videoTime, long now) {
         final boolean wasPlaying = playing;
         final boolean nowPlaying = state == PlaybackState.STATE_PLAYING;
@@ -2422,22 +2421,7 @@ public final class LyricsManager {
         String cacheKey = null;
         if (lyrics != null && lyrics != Lyrics.NOT_FOUND && !lyrics.isEmpty()) {
             // Split and section labels change the output, so both belong in the cache key.
-            List<LyricsLine> lines = lyrics.lines();
-            boolean hasSections = false;
-            for (LyricsLine line : lines) {
-                String part = line.songPart();
-                if (part != null && !part.isEmpty()) {
-                    hasSections = true;
-                    break;
-                }
-            }
-            StringBuilder sb = new StringBuilder(lyrics.providerName())
-                    .append(splitBackground ? "|bg" : "|")
-                    .append(hasSections ? "|sec" : "|nosec");
-            int limit = Math.min(3, lines.size());
-            for (int i = 0; i < limit; i++) {
-                sb.append('|').append(lines.get(i).text());
-            }
+            StringBuilder sb = getSb(lyrics, splitBackground);
             cacheKey = sb.toString();
             Lyrics cached = filteredCache.get(cacheKey);
             if (cached != null) {
@@ -2467,6 +2451,27 @@ public final class LyricsManager {
                     lyrics.agentNames());
         }
         return lyrics;
+    }
+
+    @NonNull
+    private static StringBuilder getSb(Lyrics lyrics, boolean splitBackground) {
+        List<LyricsLine> lines = lyrics.lines();
+        boolean hasSections = false;
+        for (LyricsLine line : lines) {
+            String part = line.songPart();
+            if (part != null && !part.isEmpty()) {
+                hasSections = true;
+                break;
+            }
+        }
+        StringBuilder sb = new StringBuilder(lyrics.providerName())
+                .append(splitBackground ? "|bg" : "|")
+                .append(hasSections ? "|sec" : "|nosec");
+        int limit = Math.min(3, lines.size());
+        for (int i = 0; i < limit; i++) {
+            sb.append('|').append(lines.get(i).text());
+        }
+        return sb;
     }
 
     private void setErrorStateIfCurrent(int id) {
@@ -2518,7 +2523,7 @@ public final class LyricsManager {
         state = newState;
         currentLyrics = lyrics;
 
-        LrcRedProvider.onDisplayed(lyrics);
+        LRCRedProvider.onDisplayed(lyrics);
 
         // A re-time only stays revertible while its result is still what is on screen.
         final SyncPatch patch = activeSyncPatch;

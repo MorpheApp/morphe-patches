@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 
-public class JapaneseDictStoreTest {
+public class JapaneseDictionaryStoreTest {
 
     @Before
     public void setUp() {
@@ -126,7 +126,7 @@ public class JapaneseDictStoreTest {
     @Test
     public void containsHanReturnsTrueForCJKExtA() throws Exception {
         // CJK Extension A is 0x3400-0x4DBF
-        assertTrue(callContainsHan("\u3400"));
+        assertTrue(callContainsHan("㐀"));
     }
 
     @Test
@@ -157,25 +157,25 @@ public class JapaneseDictStoreTest {
     }
 
     private static String[] callSplit(String line) throws Exception {
-        Method method = JapaneseDictStore.class.getDeclaredMethod("split", String.class);
+        Method method = JapaneseDictionaryStore.class.getDeclaredMethod("split", String.class);
         method.setAccessible(true);
         return (String[]) method.invoke(null, line);
     }
 
     private static String callUnquote(String value) throws Exception {
-        Method method = JapaneseDictStore.class.getDeclaredMethod("unquote", String.class);
+        Method method = JapaneseDictionaryStore.class.getDeclaredMethod("unquote", String.class);
         method.setAccessible(true);
         return (String) method.invoke(null, value);
     }
 
     private static boolean callContainsHan(String text) throws Exception {
-        Method method = JapaneseDictStore.class.getDeclaredMethod("containsHan", String.class);
+        Method method = JapaneseDictionaryStore.class.getDeclaredMethod("containsHan", String.class);
         method.setAccessible(true);
-        return (boolean) method.invoke(null, text);
+        return Boolean.TRUE.equals(method.invoke(null, text));
     }
 
     private static String callDisplayName(String fileName) throws Exception {
-        Method method = JapaneseDictStore.class.getDeclaredMethod("displayName", String.class);
+        Method method = JapaneseDictionaryStore.class.getDeclaredMethod("displayName", String.class);
         method.setAccessible(true);
         return (String) method.invoke(null, fileName);
     }

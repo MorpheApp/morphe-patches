@@ -34,12 +34,6 @@ public record WordTiming(int start, int end, long startMs, long endMs,
         this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, averaged);
     }
 
-    /** A reading ending in a space stands for the space after its word. */
-    WordTiming(int start, int end, long startMs, long endMs, @Nullable String romaji) {
-        this(start, end, startMs, endMs, romaji,
-                romaji != null && romaji.endsWith(" "), null, false);
-    }
-
     public WordTiming(int start, int end, long startMs, long endMs,
                       @Nullable String romaji, boolean hasTrailingSpace) {
         this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, false);

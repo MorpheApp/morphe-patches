@@ -30,8 +30,8 @@ import java.util.Map;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
-import app.morphe.extension.music.patches.lyrics.romanizers.RomanizationDict;
+import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictionaryStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.RomanizationDictionary;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -53,9 +53,9 @@ import app.morphe.extension.shared.ui.Dim;
  * rewriting that setting. A built-in list has no line, so its switch is stored separately.
  */
 @SuppressWarnings("unused")
-public final class LyricsRimeDictDialog {
+public final class LyricsRimeDictionaryDialog {
 
-    private LyricsRimeDictDialog() {
+    private LyricsRimeDictionaryDialog() {
     }
 
     /**
@@ -88,8 +88,8 @@ public final class LyricsRimeDictDialog {
 
     private static void showList(Context context, @Nullable Runnable onChanged,
             @Nullable Runnable onClosed) {
-        final List<String> builtinCodes = RimeDictStore.builtinLanguages();
-        final List<String> customCodes = RimeDictStore.customLanguages();
+        final List<String> builtinCodes = RimeDictionaryStore.builtinLanguages();
+        final List<String> customCodes = RimeDictionaryStore.customLanguages();
 
         final int fg = ThemeUtils.getAppForegroundColor();
 
@@ -132,10 +132,10 @@ public final class LyricsRimeDictDialog {
         // The shipped lists come first, unticked: a table is a download, not an arrival.
         for (String code : builtinCodes) {
             final CheckBox box = checkBox(context, fg,
-                    label(RimeDictStore.builtinLabel(code), code),
-                    RimeDictStore.isBuiltinRowSelected(code));
+                    label(RimeDictionaryStore.builtinLabel(code), code),
+                    RimeDictionaryStore.isBuiltinRowSelected(code));
             content.addView(box);
-            addNote(context, fg, content, RimeDictStore.summaryFor(code));
+            addNote(context, fg, content, RimeDictionaryStore.summaryFor(code));
             rows.boxes.put(code, box);
         }
         // A stored row was asked for, so it opens ticked; unticking it is what removes it.
@@ -143,13 +143,13 @@ public final class LyricsRimeDictDialog {
             final LinearLayout row = new LinearLayout(context);
             row.setOrientation(LinearLayout.VERTICAL);
             final CheckBox box = checkBox(context, fg,
-                    label(RimeDictStore.customLabel(code), code), true);
+                    label(RimeDictionaryStore.customLabel(code), code), true);
             row.addView(box);
-            if (RimeDictStore.isReserved(code)) {
+            if (RimeDictionaryStore.isReserved(code)) {
                 addNote(context, fg, row,
                         str("morphe_music_lyrics_rime_dict_reserved_row"));
             } else {
-                addNote(context, fg, row, RimeDictStore.summaryFor(code));
+                addNote(context, fg, row, RimeDictionaryStore.summaryFor(code));
             }
             content.addView(row);
             rows.boxes.put(code, box);
@@ -231,7 +231,7 @@ public final class LyricsRimeDictDialog {
         for (String code : builtinCodes) {
             final boolean on = isChecked(rows, code);
             builtinChoice.put(code, on);
-            if (!on && RimeDictStore.isSelected(code)) {
+            if (!on && RimeDictionaryStore.isSelected(code)) {
                 removed.add(code);
                 lostReading.add(code);
             }
@@ -244,13 +244,13 @@ public final class LyricsRimeDictDialog {
                 removed.add(code);
                 // A reserved row never supplied a reading, so taking it away must not move the
                 // language the user picked.
-                if (RimeDictStore.isSelected(code)) lostReading.add(code);
+                if (RimeDictionaryStore.isSelected(code)) lostReading.add(code);
             }
         }
 
         Utils.runOnBackgroundThread(() -> {
             for (String code : removed) {
-                RimeDictStore.deleteTable(code);
+                RimeDictionaryStore.deleteTable(code);
             }
             Utils.runOnMainThread(() -> apply(builtinChoice, keptCustom, lostReading,
                     dialog, sink, onChanged));
@@ -268,19 +268,19 @@ public final class LyricsRimeDictDialog {
                               LyricsLocalRomanizationDownloads.ProgressSink sink,
                               @Nullable Runnable onChanged) {
         for (Map.Entry<String, Boolean> entry : builtinChoice.entrySet()) {
-            RimeDictStore.setBuiltinSelected(entry.getKey(), entry.getValue());
+            RimeDictionaryStore.setBuiltinSelected(entry.getKey(), entry.getValue());
         }
 
         // Rewritten from the rows that stay, so a removed row leaves no line behind.
         final StringBuilder kept = new StringBuilder();
         for (String code : keptCustom) {
-            final String line = RimeDictStore.customRow(code);
+            final String line = RimeDictionaryStore.customRow(code);
             if (line == null) continue;
             if (Utils.isNotEmpty(kept)) kept.append('\n');
             kept.append(line);
         }
         Settings.LYRICS_RIME_CUSTOM_DICTS.save(kept.toString());
-        RimeDictStore.reset();
+        RimeDictionaryStore.reset();
 
         // A language whose only table was just taken away falls back to Automatic, so the
         // romanizer is not left pointed at nothing.
@@ -301,7 +301,7 @@ public final class LyricsRimeDictDialog {
         }
 
         // A toast answers when the download ends, the same model the Local dictionary uses.
-        RimeDictStore.ensureSelected(new RomanizationDict.Listener() {
+        RimeDictionaryStore.ensureSelected(new RomanizationDictionary.Listener() {
             @Override
             public void onDownload(String fileName, int percent) {
                 Utils.runOnMainThread(() -> {
@@ -515,11 +515,11 @@ public final class LyricsRimeDictDialog {
             Utils.showToastShort(str("morphe_music_lyrics_rime_dict_bad_field"));
             return false;
         }
-        if (RimeDictStore.hasLanguage(code)) {
+        if (RimeDictionaryStore.hasLanguage(code)) {
             Utils.showToastShort(str("morphe_music_lyrics_rime_dict_duplicate", code));
             return false;
         }
-        if (!RimeDictStore.canAddLanguage(code)) {
+        if (!RimeDictionaryStore.canAddLanguage(code)) {
             // A language the build already reads keeps its own reading.
             Utils.showToastShort(str("morphe_music_lyrics_rime_dict_reserved", code));
             return false;
@@ -531,7 +531,7 @@ public final class LyricsRimeDictDialog {
         Settings.LYRICS_RIME_CUSTOM_DICTS.save(joined);
 
         // The store parses the setting lazily, so the new row is seen on the next read.
-        RimeDictStore.reset();
+        RimeDictionaryStore.reset();
         Utils.showToastShort(str("morphe_music_lyrics_rime_dict_added", label));
 
         // Nothing is fetched here: the new row comes back ticked, and the Save that keeps it is

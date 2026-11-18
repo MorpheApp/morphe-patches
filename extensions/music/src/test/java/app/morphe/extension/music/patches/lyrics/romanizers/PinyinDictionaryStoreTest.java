@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 
-public class PinyinDictStoreTest {
+public class PinyinDictionaryStoreTest {
 
     @Before
     public void setUp() {
@@ -97,13 +97,13 @@ public class PinyinDictStoreTest {
     }
 
     private static String callQuoted(String line, int from) throws Exception {
-        Method method = PinyinDictStore.class.getDeclaredMethod("quoted", String.class, int.class);
+        Method method = PinyinDictionaryStore.class.getDeclaredMethod("quoted", String.class, int.class);
         method.setAccessible(true);
         return (String) method.invoke(null, line, from);
     }
 
     private static String callWithErhua(String reading) throws Exception {
-        Method method = PinyinDictStore.class.getDeclaredMethod("withErhua", String.class);
+        Method method = PinyinDictionaryStore.class.getDeclaredMethod("withErhua", String.class);
         method.setAccessible(true);
         return (String) method.invoke(null, reading);
     }

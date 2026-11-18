@@ -103,7 +103,7 @@ public final class CldrTransformsStore {
 
     private static final AtomicBoolean RUNNING = new AtomicBoolean();
 
-    private static final RomanizationDict.Channel CHANNEL = new RomanizationDict.Channel();
+    private static final RomanizationDictionary.Channel CHANNEL = new RomanizationDictionary.Channel();
 
     private CldrTransformsStore() {
     }
@@ -121,7 +121,7 @@ public final class CldrTransformsStore {
      */
     public static void delete() {
         CldrTransforms.clear();
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) return;
         for (String[] transliteration : TRANSLITERATIONS) {
             Utils.deleteQuietly(new File(directory, tableName(transliteration[1])));
@@ -131,7 +131,7 @@ public final class CldrTransformsStore {
     }
 
     /** Starts a fetch if the tables are not loaded. Safe to call whenever the setting is on. */
-    public static void ensure(RomanizationDict.Listener listener) {
+    public static void ensure(RomanizationDictionary.Listener listener) {
         if (isReady()) {
             listener.onReady(entries());
             return;
@@ -162,14 +162,14 @@ public final class CldrTransformsStore {
     }
 
     private static void build() throws IOException {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) throw new IOException("no cache directory");
 
         File archive = new File(directory, ARCHIVE);
         if (!archive.isFile()) {
-            RomanizationDict.download(URL, archive, ARCHIVE, CldrTransformsStore.CHANNEL);
+            RomanizationDictionary.download(URL, archive, ARCHIVE, CldrTransformsStore.CHANNEL);
         }
-        extract(archive, CldrTransformsStore.CHANNEL);
+        extract(archive);
         Utils.deleteQuietly(archive);
 
         CldrTransformsStore.CHANNEL.onReady(entries());
@@ -179,9 +179,9 @@ public final class CldrTransformsStore {
      * Reads the literal rules out of the archive and writes one table per script, each a line of
      * {@code "source\ttarget"} per rule.
      */
-    private static void extract(File archive, RomanizationDict.Listener listener)
+    private static void extract(File archive)
             throws IOException {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) throw new IOException("no cache directory");
 
         int done = 0;
@@ -202,10 +202,10 @@ public final class CldrTransformsStore {
                     throw new IOException("no " + entry + " in the CLDR archive");
                 }
                 writeTable(directory, transliteration[1], content);
-                listener.onBuilding(50 + done++ * 50 / TRANSLITERATIONS.length);
+                CHANNEL.onBuilding(50 + done++ * 50 / TRANSLITERATIONS.length);
             }
         }
-        listener.onBuilding(100);
+        CHANNEL.onBuilding(100);
     }
 
     /** Writes one script's literal rules, with the overrides folded in. */
@@ -222,7 +222,7 @@ public final class CldrTransformsStore {
                 out.write('\n');
             }
         }
-        RomanizationDict.commit(built, new File(directory, tableName(script)));
+        RomanizationDictionary.commit(built, new File(directory, tableName(script)));
     }
 
     /**

@@ -84,7 +84,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsRetiming;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
-import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictionaryStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.RubyGenerator;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
@@ -120,8 +120,6 @@ public final class LyricsPanelView extends FrameLayout
     private static final long JUMP_BUTTON_FADE_MS = 200L;
 
     static final long SECONDARY_REVEAL_MILLISECONDS = 260;
-    /** Lets rebuilt rows land in place without gliding while their regions reveal. */
-    private static final long REBUILD_SUPPRESS_MS = SECONDARY_REVEAL_MILLISECONDS + 150;
 
     /** Fade length when the panel appears over the built-in content. */
     private static final long OVERLAY_FADE_DURATION_MILLISECONDS = 150;
@@ -358,6 +356,7 @@ public final class LyricsPanelView extends FrameLayout
     private boolean[] lastBuiltRightAligned;
     @Nullable
     private Lyrics cachedRawTimingsLyrics;
+    @SuppressWarnings("FieldCanBeLocal")
     private boolean cachedRawTimingsSplitWordless;
     @Nullable
     private List<List<WordTiming>> cachedRawWordTimings;
@@ -414,9 +413,6 @@ public final class LyricsPanelView extends FrameLayout
 
     /** Last scroll target to avoid redundant smoothScrollTo calls. */
     private int lastScrollTarget = -1;
-
-    /** Force scroll-back to current line after in-place rebuild. */
-    private boolean lyricsRebuiltForScroll = false;
 
     private long cachedTickInterval = 16;
     @Nullable
@@ -1688,7 +1684,7 @@ public final class LyricsPanelView extends FrameLayout
             }
         }
         retimedLyrics = LyricsRetiming.retimeLyrics(newLyrics.lines(), manualGaps, rows.isSecFlags);
-        if (retimedLyrics != null && !retimedLyrics.isEmpty()) {
+        if (!retimedLyrics.isEmpty()) {
             for (int i = 0; i < retimedLyrics.size(); i++) {
                 if (!rows.isSecFlags[i]) {
                     long maxEnd = retimedLyrics.get(i).adjustedEndTimeMs();
@@ -2273,9 +2269,7 @@ public final class LyricsPanelView extends FrameLayout
         if (inPlace) {
             cancelBatchRevealAnimators();
         }
-        int containerW = linesContainer != null
-                ? (linesContainer.getWidth() - linesContainer.getPaddingLeft() - linesContainer.getPaddingRight())
-                : 0;
+        int containerW = linesContainer.getWidth() - linesContainer.getPaddingLeft() - linesContainer.getPaddingRight();
         if (containerW <= 0 && getWidth() > 0) {
             containerW = getWidth() - Dim.dp(48);
         }
@@ -2357,12 +2351,12 @@ public final class LyricsPanelView extends FrameLayout
                                 if (hasTransNow && freshTrans[i]) {
                                     lineView.setRegionAnimProgress(true, 0f, 0f);
                                 } else if (!inPlace && !hasTransNow && exitTrans[i] && prevView != null) {
-                                    lineView.captureExitingTranslationFrom(prevView, false);
+                                    lineView.captureExitingTranslationFrom(prevView);
                                 }
                                 if (hasRomaNow && freshRoma[i]) {
                                     lineView.setRegionAnimProgress(false, 0f, 0f);
                                 } else if (!inPlace && !hasRomaNow && exitRoma[i] && prevView != null) {
-                                    lineView.captureExitingRomanizationFrom(prevView, false);
+                                    lineView.captureExitingRomanizationFrom(prevView);
                                 }
                             } else {
                                 if (hasTransNow && freshTrans[i]) {
@@ -2530,9 +2524,6 @@ public final class LyricsPanelView extends FrameLayout
         final long enterTotalMs = Math.max(inScaleMs, inAlphaMs);
         final long outMs = hasExit ? Math.max(260L, Math.min(360L, Math.round(baseDuration * 0.8f))) : 0L;
         final long totalMs = Math.max(enterTotalMs, outMs);
-        if (totalMs <= 0L) {
-            return;
-        }
 
         final ValueAnimator animator = ValueAnimator.ofFloat(0f, (float) totalMs);
         animator.setDuration(totalMs);
@@ -3353,7 +3344,7 @@ public final class LyricsPanelView extends FrameLayout
             } else {
                 // Keep the Rime row in step with the language, so the provider list needs no trip
                 // to the settings.
-                setRimeProviderEnabled(RimeDictStore.isActive());
+                setRimeProviderEnabled(RimeDictionaryStore.isActive());
                 if (romanizedLines == null && !perWordRomaji && !romanizeInProgress) {
                     // Romaji off → ruby off; re-applied when romaji turns on
                     if (appliedRubyLanguage != null) {
@@ -4231,7 +4222,6 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void hideSecondaryRegions(boolean trans, Lyrics current) {
-        final int generation = buildGeneration.get();
         boolean any = false;
         for (TextView lineView : lineViews) {
             if (!(lineView instanceof LyricsLineView view)) {
@@ -4985,9 +4975,6 @@ public final class LyricsPanelView extends FrameLayout
                 return;
             }
 
-            final boolean forceScroll = lyricsRebuiltForScroll;
-            lyricsRebuiltForScroll = false;
-
             if (!springScrollOn) {
                 if (inGapBreak && activeGi != null) {
                     final int targetIdx = activeGi.beforeLineIndex();
@@ -4997,10 +4984,10 @@ public final class LyricsPanelView extends FrameLayout
                     } else if (gv != null && gv.getTop() > 0) {
                         scrollView.smoothScrollTo(0, Math.max(0, gapScrollTarget(gv)));
                     } else if (targetIdx < lineRows.size()) {
-                        scrollAnchorIntoView(targetIdx, gapBreakChanged || isSeek || forceScroll);
+                        scrollAnchorIntoView(targetIdx, gapBreakChanged || isSeek);
                     }
                 } else if (primaryActiveIndex >= 0 && primaryActiveIndex < lineRows.size()) {
-                    scrollAnchorIntoView(primaryActiveIndex, primaryChanged || activeSetChanged || isSeek || forceScroll);
+                    scrollAnchorIntoView(primaryActiveIndex, primaryChanged || activeSetChanged || isSeek);
                 }
                 return;
             }
@@ -5037,7 +5024,7 @@ public final class LyricsPanelView extends FrameLayout
 
             if (creditLineActive) {
                 final int clamped = computeBlockScrollTargetY(lineRows.size());
-                if (clamped >= 0 && (isSeek || creditActiveChanged || lastScrollTarget < 0 || forceScroll)) {
+                if (clamped >= 0 && (isSeek || creditActiveChanged || lastScrollTarget < 0)) {
                     lastScrollTarget = clamped;
                     final int prevRef = primaryActiveIndex >= 0
                             ? primaryActiveIndex : Math.max(0, lineRows.size() - 1);
@@ -5051,7 +5038,7 @@ public final class LyricsPanelView extends FrameLayout
 
             if (primaryActiveIndex >= 0 && primaryActiveIndex < lineRows.size()) {
                 final int clamped = computeBlockScrollTargetY(primaryActiveIndex);
-                if (clamped >= 0 && (isSeek || primaryChanged || creditActiveChanged || lastScrollTarget < 0 || forceScroll)) {
+                if (clamped >= 0 && (isSeek || primaryChanged || creditActiveChanged || lastScrollTarget < 0)) {
                     lastScrollTarget = clamped;
                     scrollToRow(clamped, primaryActiveIndex, scrollLookAheadMs, interLineGapMs);
                 }
@@ -5135,7 +5122,7 @@ public final class LyricsPanelView extends FrameLayout
                 slv.setPrewarmMasks(isExpanded);
                 slv.updateLineLook(isExpanded, isExpanded ? 0 : 1, 0L, isAutoScrollEnabled, isLrcSynced, instant);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    slv.setBlurRadius(0f);
+                    slv.clearBlur();
                 }
                 slv.animateSecondaryExpansion(isExpanded, instant);
                 continue;
@@ -5198,7 +5185,7 @@ public final class LyricsPanelView extends FrameLayout
             targetAlpha = INACTIVE_LINE_ALPHA;
         }
         final float targetScale;
-        if (isActive || !isAutoScrollEnabled || !isLrcSynced || !LyricsViewSupport.isLineScaleEnabled()) {
+        if (isActive || !isAutoScrollEnabled || !isLrcSynced || LyricsViewSupport.isLineScaleDisabled()) {
             targetScale = 1.0f;
         } else if (focusSpotlightOn) {
             targetScale = LyricsViewSupport.spotlightScale(distance);
@@ -6209,9 +6196,7 @@ public final class LyricsPanelView extends FrameLayout
 
         @Override
         public void updateMeasureState(@NonNull android.text.TextPaint tp) {
-            if (tp != null) {
-                LyricsViewSupport.applyLyricsBoldPaint(tp);
-            }
+            LyricsViewSupport.applyLyricsBoldPaint(tp);
         }
     }
 

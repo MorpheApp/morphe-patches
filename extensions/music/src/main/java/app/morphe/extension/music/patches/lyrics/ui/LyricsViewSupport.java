@@ -165,8 +165,8 @@ final class LyricsViewSupport {
     }
 
     /** Relaxed scrolling keeps inactive lines full size. */
-    static boolean isLineScaleEnabled() {
-        return Settings.LYRICS_LINE_SCALE.get() && !isRelaxScrollEnabled();
+    static boolean isLineScaleDisabled() {
+        return !Settings.LYRICS_LINE_SCALE.get() || isRelaxScrollEnabled();
     }
 
     /** {@return the scale of an inactive line this many lines from the sung one, in spotlight mode} */
@@ -200,7 +200,7 @@ final class LyricsViewSupport {
             view.fadeAnimator = null;
         }
         view.fadeTargetAlpha = alpha;
-        final float targetScale = (alpha >= 1f || !isLineScaleEnabled()) ? ACTIVE_LINE_SCALE : INACTIVE_LINE_SCALE;
+        final float targetScale = (alpha >= 1f || isLineScaleDisabled()) ? ACTIVE_LINE_SCALE : INACTIVE_LINE_SCALE;
         final float startAlpha = view.lineAlpha;
         final float startScale = view.lineScale;
         if (Math.abs(startAlpha - alpha) < 0.01f && Math.abs(startScale - targetScale) < 0.005f) {

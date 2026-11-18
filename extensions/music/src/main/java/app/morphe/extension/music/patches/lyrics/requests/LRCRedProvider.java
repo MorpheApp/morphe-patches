@@ -40,7 +40,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
 /** Lyrics from lrc.red, whose song document embeds the TTML the song page renders from. */
-public final class LrcRedProvider implements LyricsProvider {
+public final class LRCRedProvider implements LyricsProvider {
 
     public static final String NAME = "LrcRed";
 

@@ -24,13 +24,13 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Mandarin word readings from pinyin-pro, which knows words the {@link UniDictStore} character
- * tables do not; character readings come from {@link UniDictStore#pinyinReading(char)}, this
+ * Mandarin word readings from pinyin-pro, which knows words the {@link UniDictionaryStore} character
+ * tables do not; character readings come from {@link UniDictionaryStore#pinyinReading(char)}, this
  * store only adds how a word is read. Downloaded, since the patch merges only XML resources and
  * a word list goes stale as the source moves on.
  */
 @SuppressWarnings("unused")
-public final class PinyinDictStore {
+public final class PinyinDictionaryStore {
 
     public static final String VERSION = "18.0.0";
 
@@ -55,9 +55,9 @@ public final class PinyinDictStore {
 
     private static final AtomicBoolean RUNNING = new AtomicBoolean();
 
-    private static final RomanizationDict.Channel CHANNEL = new RomanizationDict.Channel();
+    private static final RomanizationDictionary.Channel CHANNEL = new RomanizationDictionary.Channel();
 
-    private PinyinDictStore() {
+    private PinyinDictionaryStore() {
     }
 
     /**
@@ -65,12 +65,14 @@ public final class PinyinDictStore {
      * a word table does not cover would be missing.
      */
     public static boolean isReady() {
-        return UniDictStore.isReady() && word() != null;
+        try (WordReadingTable words = word()) {
+            return UniDictionaryStore.isReady() && words != null;
+        }
     }
 
     /**
      * Removes the word table. The character table is
-     * {@link UniDictStore}'s to remove, and is left alone.
+     * {@link UniDictionaryStore}'s to remove, and is left alone.
      */
     public static void delete() {
         WORDS.clear();
@@ -83,7 +85,7 @@ public final class PinyinDictStore {
     /** The reading of a character, delegated to the shared character tables. */
     @Nullable
     public static String reading(char c) {
-        return UniDictStore.pinyinReading(c);
+        return UniDictionaryStore.pinyinReading(c);
     }
 
     /** Null leaves the line to be read a character at a time. */
@@ -94,14 +96,14 @@ public final class PinyinDictStore {
 
     /**
      * Whether the word table has been built; the character tables are this store's by way of
-     * {@link UniDictStore}, and are checked through {@link UniDictStore#isReady()}.
+     * {@link UniDictionaryStore}, and are checked through {@link UniDictionaryStore#isReady()}.
      */
     public static boolean isComplete() {
         return isReady();
     }
 
     /** Starts a fetch if the table is not loaded. Safe to call whenever the setting is on. */
-    public static void ensure(RomanizationDict.Listener listener) {
+    public static void ensure(RomanizationDictionary.Listener listener) {
         if (isComplete()) {
             listener.onReady(entries());
             return;
@@ -123,16 +125,17 @@ public final class PinyinDictStore {
     }
 
     private static int entries() {
-        WordReadingTable words = word();
-        return words == null ? 0 : words.size();
+        try (WordReadingTable words = word()) {
+            return words == null ? 0 : words.size();
+        }
     }
 
     private static void build() throws IOException {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) throw new IOException("no cache directory");
 
-        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictStore::addWords, PinyinDictStore.CHANNEL);
-        PinyinDictStore.CHANNEL.onReady(entries());
+        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictionaryStore::addWords, PinyinDictionaryStore.CHANNEL);
+        PinyinDictionaryStore.CHANNEL.onReady(entries());
     }
 
     /**
@@ -141,7 +144,7 @@ public final class PinyinDictStore {
      */
     @SuppressWarnings("ConstantValue")
     private static void addWords(File archive, WordReadingTable.Builder builder,
-                                 RomanizationDict.Listener listener) throws IOException {
+                                 RomanizationDictionary.Listener listener) throws IOException {
         String word = null;
         String reading = null;
         int seen = 0;

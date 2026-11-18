@@ -52,21 +52,21 @@ public class WordAnimationUtilsTest {
         String mainText = "forever more";
         List<AlignedSyllable> aligned = WordAnimationUtils.alignSyllablesForFormatting(words, mainText);
         Assert.assertEquals(4, aligned.size());
-        Assert.assertEquals(0, aligned.get(0).startOffset);
-        Assert.assertEquals(3, aligned.get(0).endOffset);
-        Assert.assertEquals(3, aligned.get(1).startOffset);
-        Assert.assertEquals(5, aligned.get(1).endOffset);
-        Assert.assertEquals(5, aligned.get(2).startOffset);
-        Assert.assertEquals(7, aligned.get(2).endOffset);
-        Assert.assertEquals(8, aligned.get(3).startOffset);
-        Assert.assertEquals(12, aligned.get(3).endOffset);
+        Assert.assertEquals(0, aligned.get(0).startOffset());
+        Assert.assertEquals(3, aligned.get(0).endOffset());
+        Assert.assertEquals(3, aligned.get(1).startOffset());
+        Assert.assertEquals(5, aligned.get(1).endOffset());
+        Assert.assertEquals(5, aligned.get(2).startOffset());
+        Assert.assertEquals(7, aligned.get(2).endOffset());
+        Assert.assertEquals(8, aligned.get(3).startOffset());
+        Assert.assertEquals(12, aligned.get(3).endOffset());
 
         List<ReconstructedWord> rec = WordAnimationUtils.buildReconstructedWords(aligned, mainText);
         Assert.assertEquals(2, rec.size());
-        Assert.assertEquals(3, rec.get(0).syllables.size());
-        Assert.assertEquals(1000L, rec.get(0).wordStartTimeMs);
-        Assert.assertEquals(2500L, rec.get(0).wordEndTimeMs);
-        Assert.assertEquals(1, rec.get(1).syllables.size());
+        Assert.assertEquals(3, rec.get(0).syllables().size());
+        Assert.assertEquals(1000L, rec.get(0).wordStartTimeMs());
+        Assert.assertEquals(2500L, rec.get(0).wordEndTimeMs());
+        Assert.assertEquals(1, rec.get(1).syllables().size());
     }
 
     @Test

@@ -35,8 +35,6 @@ import app.morphe.extension.shared.ui.Dim;
 
 public final class LyricsSpanBuilder {
     static final float TRANSLATION_RELATIVE_SIZE = 0.7f;
-    /** Furigana is drawn at half the size of the kanji it reads. */
-    static final float RUBY_RELATIVE_SIZE = 0.5f;
     static final float MAIN_LINE_SPACING = 1.22f;
 
     /**

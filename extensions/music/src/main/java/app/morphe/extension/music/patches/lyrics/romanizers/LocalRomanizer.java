@@ -76,7 +76,7 @@ public final class LocalRomanizer {
             script = Script.JAPANESE;
         }
         if (script == null || script == Script.OTHER) return null;
-        final String reading = readAs(syllable, script, RimeDictStore.isActive(), line).text().trim();
+        final String reading = readAs(syllable, script, RimeDictionaryStore.isActive(), line).text().trim();
         return reading.isEmpty() || reading.equals(syllable) ? null : reading;
     }
 
@@ -118,7 +118,7 @@ public final class LocalRomanizer {
             // Kana is what marks a line Japanese; a word of kanji alone says only Han, and would
             // then be looked up in the wrong dictionary.
             final Script script = ScriptDetector.detect(line.text());
-            List<Word> read = exactReadings(line.words(), script, RimeDictStore.isActive(),
+            List<Word> read = exactReadings(line.words(), script, RimeDictionaryStore.isActive(),
                     line.text());
             if (read == null) {
                 read = splitReading(line, wholeLine.get(i).text());
@@ -674,18 +674,18 @@ public final class LocalRomanizer {
         return switch (script) {
             case HAN -> {
                 if (rime) {
-                    yield RimeDictStore.isReady()
+                    yield RimeDictionaryStore.isReady()
                             ? new Read(RimeRomanizer.romanize(text),
-                            "UniDict, " + RimeDictStore.dictionaryName())
+                            "UniDict, " + RimeDictionaryStore.dictionaryName())
                             : new Read(text, null);
                 }
-                yield PinyinDictStore.isReady()
+                yield PinyinDictionaryStore.isReady()
                         ? new Read(PinyinRomanizer.romanize(text), PINYIN)
                         : new Read(text, null);
             }
             case JAPANESE ->
                 // Kana read by rule are not the dictionary's work, so nothing is credited.
-                    new Read(japanese(text), JapaneseDictStore.isReady() ? JAPANESE : null);
+                    new Read(japanese(text), JapaneseDictionaryStore.isReady() ? JAPANESE : null);
             case KOREAN -> new Read(HangulRomanizer.romanize(text,
                     line != null ? line : text), RULE);
             case GREEK -> new Read(transliterate(text, "greek"), RULE);
@@ -729,7 +729,7 @@ public final class LocalRomanizer {
 
     /** Kana by rule, everything else out of the dictionary. */
     private static String japanese(String line) {
-        WordReadingTable table = JapaneseDictStore.table();
+        WordReadingTable table = JapaneseDictionaryStore.table();
         StringBuilder out = new StringBuilder(line.length() * 2);
         int i = 0;
 

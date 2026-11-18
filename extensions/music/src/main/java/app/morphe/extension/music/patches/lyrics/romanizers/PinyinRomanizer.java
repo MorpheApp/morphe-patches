@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Hanyu Pinyin for a line of Chinese: {@link PinyinDictStore#word()} reads it a word at a time,
- * {@link PinyinDictStore#reading(char)} reads the rest a character at a time, and {@link #WORDS}
+ * Hanyu Pinyin for a line of Chinese: {@link PinyinDictionaryStore#word()} reads it a word at a time,
+ * {@link PinyinDictionaryStore#reading(char)} reads the rest a character at a time, and {@link #WORDS}
  * covers the words neither has.
  */
 public final class PinyinRomanizer {
@@ -36,20 +36,21 @@ public final class PinyinRomanizer {
 
     /** Pinyin for a Chinese line, with a space between readings. */
     public static String romanize(String line) {
-        final WordReadingTable table = PinyinDictStore.word();
-        return HanRomanizer.romanize(line, new HanRomanizer.Readings() {
-            @Nullable
-            @Override
-            public String word(String word) {
-                String reading = table != null ? table.reading(word) : null;
-                return reading != null ? reading : WORDS.get(word);
-            }
+        try (WordReadingTable table = PinyinDictionaryStore.word()) {
+            return HanRomanizer.romanize(line, new HanRomanizer.Readings() {
+                @Nullable
+                @Override
+                public String word(String word) {
+                    String reading = table != null ? table.reading(word) : null;
+                    return reading != null ? reading : WORDS.get(word);
+                }
 
-            @Nullable
-            @Override
-            public String character(char c) {
-                return PinyinDictStore.reading(c);
-            }
-        });
+                @Nullable
+                @Override
+                public String character(char c) {
+                    return PinyinDictionaryStore.reading(c);
+                }
+            });
+        }
     }
 }

@@ -109,12 +109,7 @@ public final class SharePostContentPatch {
             return false;
         }
 
-        Intent inner;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            inner = chooser.getParcelableExtra(Intent.EXTRA_INTENT, Intent.class);
-        } else {
-            inner = chooser.getParcelableExtra(Intent.EXTRA_INTENT);
-        }
+        Intent inner = getTargetIntent(chooser);
         if (inner == null) {
             return false;
         }
@@ -175,6 +170,19 @@ public final class SharePostContentPatch {
         return false;
     }
 
+    /**
+     * @return The share intent inside the chooser intent.
+     */
+    @Nullable
+    @SuppressWarnings("deprecation")
+    private static Intent getTargetIntent(Intent chooser) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            return chooser.getParcelableExtra(Intent.EXTRA_INTENT, Intent.class);
+        }
+        // The replacement is only available on Android 13+.
+        return chooser.getParcelableExtra(Intent.EXTRA_INTENT);
+    }
+
     @Nullable
     private static String trimToNull(@Nullable String text) {
         if (text == null) {
@@ -218,11 +226,14 @@ public final class SharePostContentPatch {
                     File[] existingFiles = shareDir.listFiles();
                     if (existingFiles != null) {
                         for (File file : existingFiles) {
-                            file.delete();
+                            // A file that is not deleted is overwritten or left unused.
+                            if (!file.delete()) {
+                                Logger.printDebug(() -> "Could not delete old share file: " + file.getName());
+                            }
                         }
                     }
-                } else {
-                    shareDir.mkdirs();
+                } else if (!shareDir.mkdirs()) {
+                    throw new IOException("Could not create share directory: " + shareDir);
                 }
 
                 List<File> downloadedFiles = new ArrayList<>();

@@ -41,8 +41,8 @@ import app.morphe.extension.shared.Utils;
 
 /**
  * The word readings for the languages a Rime dictionary knows, taken from Rime word lists,
- * which know a word the {@link UniDictStore} character tables do not. The character reading of a
- * Han character comes from {@link UniDictStore}; this store only adds what a word is read as.
+ * which know a word the {@link UniDictionaryStore} character tables do not. The character reading of a
+ * Han character comes from {@link UniDictionaryStore}; this store only adds what a word is read as.
  *
  * <p>One table per language, named by the BCP-47 primary language tag. The language the user
  * asked to romanize picks the table, so a new language is one row in {@link #BUILTIN} or one line
@@ -54,7 +54,7 @@ import app.morphe.extension.shared.Utils;
  * resources and because a word list goes stale as soon as the source moves on.
  */
 @SuppressWarnings({"unused", "ConstantValue"})
-public final class RimeDictStore {
+public final class RimeDictionaryStore {
 
     /** The character table a word table falls back to for the characters a word does not cover. */
     public static final int CHAR_SOURCE_AUTO = 0;
@@ -62,7 +62,7 @@ public final class RimeDictStore {
     public static final int CHAR_SOURCE_PINYIN = 2;
     public static final int CHAR_SOURCE_NONE = 3;
     /** Progress on the character tables is the Local provider's row to report, not this one's. */
-    public static final RomanizationDict.Listener SILENT = new RomanizationDict.Listener() {
+    public static final RomanizationDictionary.Listener SILENT = new RomanizationDictionary.Listener() {
         @Override
         public void onDownload(String fileName, int percent) {
         }
@@ -101,7 +101,7 @@ public final class RimeDictStore {
     private static final AtomicBoolean RUNNING = new AtomicBoolean();
     /** Set while a saved choice is fetching its tables one after another. */
     private static final AtomicBoolean BATCHING = new AtomicBoolean();
-    private static final RomanizationDict.Channel CHANNEL = new RomanizationDict.Channel();
+    private static final RomanizationDictionary.Channel CHANNEL = new RomanizationDictionary.Channel();
     /** A word table of a few hundred thousand lines is already far past a useful size. */
     private static final int MAX_LINES = 4_000_000;
     /**
@@ -117,7 +117,7 @@ public final class RimeDictStore {
      */
     private static final long MAX_SOURCE_BYTES = 64L << 20;
     /** Forwards progress only: a per-table "ready" would end the batch early. */
-    private static final RomanizationDict.Listener BATCH_PROGRESS = new RomanizationDict.Listener() {
+    private static final RomanizationDictionary.Listener BATCH_PROGRESS = new RomanizationDictionary.Listener() {
         @Override
         public void onDownload(String fileName, int percent) {
             CHANNEL.onDownload(fileName, percent);
@@ -153,7 +153,7 @@ public final class RimeDictStore {
     /** The tags the romanization language list offers, read once. */
     private static volatile Set<String> shippedLanguages;
 
-    private RimeDictStore() {
+    private RimeDictionaryStore() {
     }
 
     /** Whether the language the user asked for has a word table here. */
@@ -172,7 +172,7 @@ public final class RimeDictStore {
 
     /** Whether the chosen language needs a character table at all, and has it. */
     private static boolean characterTablesReady(RimeLang lang) {
-        return lang.charSource == CHAR_SOURCE_NONE || UniDictStore.isReady();
+        return lang.charSource == CHAR_SOURCE_NONE || UniDictionaryStore.isReady();
     }
 
     /**
@@ -208,7 +208,7 @@ public final class RimeDictStore {
                 table.clear();
             }
         }
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) {
             return;
         }
@@ -234,8 +234,8 @@ public final class RimeDictStore {
         RimeLang lang = lang();
         if (lang == null) return null;
         return switch (lang.charSource) {
-            case CHAR_SOURCE_CANTONESE -> UniDictStore.cantoneseReading(c);
-            case CHAR_SOURCE_PINYIN -> UniDictStore.pinyinReading(c);
+            case CHAR_SOURCE_CANTONESE -> UniDictionaryStore.cantoneseReading(c);
+            case CHAR_SOURCE_PINYIN -> UniDictionaryStore.pinyinReading(c);
             default -> null;
         };
     }
@@ -264,8 +264,8 @@ public final class RimeDictStore {
         RimeLang lang = langForCode(code);
         if (lang == null) return null;
         return switch (lang.charSource) {
-            case CHAR_SOURCE_CANTONESE -> UniDictStore.cantoneseReading(c);
-            case CHAR_SOURCE_PINYIN -> UniDictStore.pinyinReading(c);
+            case CHAR_SOURCE_CANTONESE -> UniDictionaryStore.cantoneseReading(c);
+            case CHAR_SOURCE_PINYIN -> UniDictionaryStore.pinyinReading(c);
             default -> null;
         };
     }
@@ -278,7 +278,7 @@ public final class RimeDictStore {
     }
 
     /** Starts a fetch if the table is not loaded. Safe to call whenever the setting is on. */
-    public static void ensure(RomanizationDict.Listener listener) {
+    public static void ensure(RomanizationDictionary.Listener listener) {
         if (isReady()) {
             listener.onReady(entries());
             return;
@@ -324,10 +324,10 @@ public final class RimeDictStore {
      * <p>A fetch already on its way is not canceled: the worker is single threaded, so this
      * batch waits behind it and reattaches its listener when its turn comes.
      */
-    public static void ensureSelected(RomanizationDict.Listener listener) {
+    public static void ensureSelected(RomanizationDictionary.Listener listener) {
         if (anySelectedNeedsCharacterTable()
-                && !UniDictStore.isRunning() && !UniDictStore.isReady()) {
-            UniDictStore.ensure(SILENT);
+                && !UniDictionaryStore.isRunning() && !UniDictionaryStore.isReady()) {
+            UniDictionaryStore.ensure(SILENT);
         }
         final List<RimeLang> targets = new ArrayList<>(langs().values());
         if (targets.isEmpty()) {
@@ -347,8 +347,9 @@ public final class RimeDictStore {
                         if (table(target).open() == null) {
                             build(target, BATCH_PROGRESS);
                         }
-                        WordReadingTable open = table(target).open();
-                        if (open != null) entries = open.size();
+                        try (WordReadingTable open = table(target).open()) {
+                            if (open != null) entries = open.size();
+                        }
                     } catch (Exception ex) {
                         Logger.printDebug(() -> "Rime dictionary build failed: " + target.code, ex);
                         failed = true;
@@ -501,7 +502,7 @@ public final class RimeDictStore {
 
     /** The table file's size, or 0 when it has not been built. */
     private static long downloadedBytes(RimeLang lang) {
-        final File directory = RomanizationDict.directory();
+        final File directory = RomanizationDictionary.directory();
         if (directory == null) return 0;
         final File table = new File(directory, lang.tableName);
         return table.isFile() ? table.length() : 0;
@@ -550,11 +551,11 @@ public final class RimeDictStore {
     /**
      * Starts the character tables and then the word table, for the Rime Wordlist provider. The word
      * table alone is not enough to read a line: the characters no word covers come from
-     * {@link UniDictStore}, so both are fetched before the table reports ready.
+     * {@link UniDictionaryStore}, so both are fetched before the table reports ready.
      */
-    public static void ensureForProvider(RomanizationDict.Listener listener) {
-        if (needsCharacterTable() && !UniDictStore.isRunning() && !UniDictStore.isReady()) {
-            UniDictStore.ensure(SILENT);
+    public static void ensureForProvider(RomanizationDictionary.Listener listener) {
+        if (needsCharacterTable() && !UniDictionaryStore.isRunning() && !UniDictionaryStore.isReady()) {
+            UniDictionaryStore.ensure(SILENT);
         }
         ensure(listener);
     }
@@ -585,13 +586,14 @@ public final class RimeDictStore {
     }
 
     private static int entries() {
-        WordReadingTable words = word();
-        return words == null ? 0 : words.size();
+        try (WordReadingTable words = word()) {
+            return words == null ? 0 : words.size();
+        }
     }
 
-    private static void build(RimeLang lang, RomanizationDict.Listener listener)
+    private static void build(RimeLang lang, RomanizationDictionary.Listener listener)
             throws IOException {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) throw new IOException("no cache directory");
 
         // A language taken away while the fetch ran has nothing to write and nothing to say.
@@ -600,10 +602,11 @@ public final class RimeDictStore {
         WordTableFile table = table(lang);
         // A word list larger than the table it is read into cannot add anything the table
         // would keep, so a list past this size is not fetched at all.
-        table.build(directory, lang.url, lang.archive, RimeDictStore::addWords, listener,
+        table.build(directory, lang.url, lang.archive, RimeDictionaryStore::addWords, listener,
                 lang.custom ? MAX_SOURCE_BYTES : Long.MAX_VALUE);
-        WordReadingTable built = table.open();
-        listener.onReady(built == null ? 0 : built.size());
+        try (WordReadingTable built = table.open()) {
+            listener.onReady(built == null ? 0 : built.size());
+        }
     }
 
     /**
@@ -616,7 +619,7 @@ public final class RimeDictStore {
      * sorted by frequency puts first.
      */
     private static void addWords(File archive, WordReadingTable.Builder builder,
-                                 RomanizationDict.Listener listener) throws IOException {
+                                 RomanizationDictionary.Listener listener) throws IOException {
         // The address decides the name, but the bytes decide how to read it: an archive served
         // from an address without ".zip" at the end is still an archive, and reading it as text
         // would fill the table with the zip header instead of failing.
@@ -643,7 +646,7 @@ public final class RimeDictStore {
 
     /** Reads the first word list in the archive whose name passes {@link #isWordList}. */
     private static boolean readArchive(File archive, WordReadingTable.Builder builder,
-                                       RomanizationDict.Listener listener, boolean dictOnly) throws IOException {
+                                       RomanizationDictionary.Listener listener, boolean dictOnly) throws IOException {
         try (ZipInputStream zip = new ZipInputStream(new BufferedInputStream(
                 new FileInputStream(archive), 1 << 16))) {
             ZipEntry entry;
@@ -671,7 +674,7 @@ public final class RimeDictStore {
     }
 
     private static void readWords(InputStream in, WordReadingTable.Builder builder,
-                                  RomanizationDict.Listener listener) throws IOException {
+                                  RomanizationDictionary.Listener listener) throws IOException {
         int seen = 0;
         try (LineReader reader = new LineReader(in)) {
             String line;

@@ -408,7 +408,7 @@ public final class LocalLyricsFetcher {
         return best;
     }
 
-    /** Rank of an ID3 lyrics description; -1 when it is not a lyrics description. */
+    /** Rank of an ID3 lyrics description; -1 when it is not a lyrics' description. */
     private static int id3DescRank(@Nullable String desc) {
         if (desc == null) {
             return -1;

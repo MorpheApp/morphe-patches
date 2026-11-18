@@ -256,14 +256,7 @@ final class LyricsGlyphMaskCache {
         }
     }
 
-    public static final class RasterResult {
-        public final Bitmap bitmap;
-        public final float scale;
-
-        public RasterResult(Bitmap bitmap, float scale) {
-            this.bitmap = bitmap;
-            this.scale = scale;
-        }
+    public record RasterResult(Bitmap bitmap, float scale) {
     }
 
     @Nullable

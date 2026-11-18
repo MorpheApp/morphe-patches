@@ -32,7 +32,7 @@ import app.morphe.extension.shared.Utils;
  * License 2.0. Downloaded rather than shipped, because the patch can only merge XML resources
  * and because a dictionary that rarely changes should not be paid for by every install.
  */
-public final class JapaneseDictStore {
+public final class JapaneseDictionaryStore {
 
     /** Upstream publishes a release every few months. */
     public static final String VERSION = "20261015";
@@ -62,13 +62,15 @@ public final class JapaneseDictStore {
 
     private static final AtomicBoolean RUNNING = new AtomicBoolean();
 
-    private static final RomanizationDict.Channel CHANNEL = new RomanizationDict.Channel();
+    private static final RomanizationDictionary.Channel CHANNEL = new RomanizationDictionary.Channel();
 
-    private JapaneseDictStore() {
+    private JapaneseDictionaryStore() {
     }
 
     public static boolean isReady() {
-        return table() != null;
+        try (WordReadingTable table = table()) {
+            return table != null;
+        }
     }
 
     /** Removes the table. Called when the user turns Japanese off. */
@@ -81,12 +83,13 @@ public final class JapaneseDictStore {
     }
 
     /** Starts a build if the table is missing. Safe to call whenever the setting is on. */
-    public static void ensure(RomanizationDict.Listener listener) {
+    public static void ensure(RomanizationDictionary.Listener listener) {
         if (isReady()) {
-            WordReadingTable opened = table();
-            if (opened != null) {
-                listener.onReady(opened.size());
-                return;
+            try (WordReadingTable opened = table()) {
+                if (opened != null) {
+                    listener.onReady(opened.size());
+                    return;
+                }
             }
         }
         CHANNEL.attach(listener, RUNNING.get());
@@ -112,7 +115,7 @@ public final class JapaneseDictStore {
     }
 
     private static void build() throws IOException {
-        File directory = RomanizationDict.directory();
+        File directory = RomanizationDictionary.directory();
         if (directory == null) throw new IOException("no cache directory");
 
         File target = TABLE.file();
@@ -124,20 +127,19 @@ public final class JapaneseDictStore {
         for (String source : SOURCES) {
             File archive = new File(directory, source);
             if (!archive.isFile()) {
-                RomanizationDict.download(BASE_URL + VERSION + "/" + source, archive,
-                        displayName(source), JapaneseDictStore.CHANNEL);
+                RomanizationDictionary.download(BASE_URL + VERSION + "/" + source, archive,
+                        displayName(source), JapaneseDictionaryStore.CHANNEL);
             }
-            addSource(builder, archive, JapaneseDictStore.CHANNEL);
+            addSource(builder, archive);
             Utils.deleteQuietly(archive);
         }
         builder.finish(Integer.parseInt(VERSION));
 
-        RomanizationDict.commit(built, target);
-        JapaneseDictStore.CHANNEL.onReady(builder.size());
+        RomanizationDictionary.commit(built, target);
+        JapaneseDictionaryStore.CHANNEL.onReady(builder.size());
     }
 
-    private static void addSource(WordReadingTable.Builder builder, File archive,
-                                  RomanizationDict.Listener listener) throws IOException {
+    private static void addSource(WordReadingTable.Builder builder, File archive) throws IOException {
         int seen = 0;
 
         try (ZipInputStream zip = new ZipInputStream(
@@ -170,10 +172,10 @@ public final class JapaneseDictStore {
                     // knows how to read it.
                     builder.put(word, containsHan(word) ? kana : "");
                     if (++seen % PROGRESS_EVERY == 0) {
-                        listener.onBuilding(Math.min(99, seen / PROGRESS_EVERY));
+                        CHANNEL.onBuilding(Math.min(99, seen / PROGRESS_EVERY));
                     }
                 }
-                listener.onBuilding(100);
+                CHANNEL.onBuilding(100);
             }
         }
     }
