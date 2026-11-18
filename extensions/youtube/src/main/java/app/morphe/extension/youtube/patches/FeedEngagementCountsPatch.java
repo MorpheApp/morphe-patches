@@ -76,6 +76,14 @@ public final class FeedEngagementCountsPatch {
             && Settings.RYD_FEED_COUNTS_POSITION.get() == FeedCountsPosition.MIDDLE_RIGHT;
 
     /**
+     * @return If the counts are at the top left corner of the thumbnails of the view.
+     */
+    public static boolean isAtTopLeft(View view) {
+        return ENABLED && !NEXT_TO_VIEW_COUNT && !MIDDLE_RIGHT
+                && !FeedViewCountPatch.isRtl(view);
+    }
+
+    /**
      * Where the counts are shown on the thumbnails.
      */
     public enum FeedCountsPosition {
@@ -964,10 +972,6 @@ public final class FeedEngagementCountsPatch {
         public void draw(@NonNull Canvas canvas) {
             final boolean loading = isLoading();
             if (!confirmed || (!hasContent() && !loading)) {
-                return;
-            }
-            if (hostRef.get() instanceof ComponentHost host && FeedVideoCardsPatch.isCardPlayingInline(host)) {
-                // The inline player shows its own buttons over the thumbnail.
                 return;
             }
             if (row) {

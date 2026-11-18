@@ -280,6 +280,12 @@ public final class FeedVideoActionsPatch {
         WeakReference<View> ownerRef = new WeakReference<>(null);
         final int[] hostLocation = new int[2];
         final int[] ownerLocation = new int[2];
+        /**
+         * Offset of the buttons while the card plays inline, where the mute button of the inline player is
+         * at the top right: the top left corner, or below the mute button if the like counts are at the top left.
+         */
+        int inlineOffsetX;
+        int inlineOffsetY;
 
         ThumbnailButtonContainer() {
             watchLater.setCallback(this);
@@ -325,6 +331,14 @@ public final class FeedVideoActionsPatch {
                 owner.addOnAttachStateChangeListener(this);
             }
             setBounds(right - width, top, right, top + height);
+            if (FeedEngagementCountsPatch.isAtTopLeft(host)) {
+                inlineOffsetX = 0;
+                inlineOffsetY = size + gap;
+            } else {
+                final int left = (side == null ? thumbnailInset : 0) + dp(host, BADGE_RIGHT_MARGIN_DP);
+                inlineOffsetX = left - (right - width);
+                inlineOffsetY = 0;
+            }
             watchLater.setBounds(0, 0, size, size);
             final int queueLeft = showWatchLater && horizontal ? size + gap : 0;
             final int queueTop = showWatchLater && !horizontal ? size + gap : 0;
@@ -380,8 +394,7 @@ public final class FeedVideoActionsPatch {
         @Nullable
         ThumbnailButton hitButton(ComponentHost host, float x, float y) {
             View owner = ownerRef.get();
-            if (!added || owner == null || !owner.isShown() || FeedVideoCardsPatch.isCardPlayingInline(host)
-                    || FeedVideoCardsPatch.isPlaylistCard(host)) {
+            if (!added || owner == null || !owner.isShown() || FeedVideoCardsPatch.isPlaylistCard(host)) {
                 return null;
             }
             if (owner != host) {
@@ -391,8 +404,9 @@ public final class FeedVideoActionsPatch {
                 y += hostLocation[1] - ownerLocation[1];
             }
             Rect bounds = getBounds();
-            x -= bounds.left;
-            y -= bounds.top;
+            final boolean inline = FeedVideoCardsPatch.isCardPlayingInline(host);
+            x -= bounds.left + (inline ? inlineOffsetX : 0);
+            y -= bounds.top + (inline ? inlineOffsetY : 0);
             final int slop = dp(host, BADGE_TOUCH_SLOP_DP);
             for (ThumbnailButton button : children) {
                 Rect buttonBounds = button.getBounds();
@@ -407,14 +421,16 @@ public final class FeedVideoActionsPatch {
         @Override
         public void draw(@NonNull Canvas canvas) {
             ComponentHost host = hostRef.get();
-            if (host != null && (FeedVideoCardsPatch.isCardPlayingInline(host)
-                    || FeedVideoCardsPatch.isPlaylistCard(host))) {
-                // The mute button of the inline player is here, or the card is a playlist or a mix.
+            if (host != null && FeedVideoCardsPatch.isPlaylistCard(host)) {
+                // The card is a playlist or a mix.
                 return;
             }
             Rect bounds = getBounds();
+            // The inline player is below the list and shows through the thumbnail, so the buttons stay
+            // over it, away from its mute button.
+            final boolean inline = host != null && FeedVideoCardsPatch.isCardPlayingInline(host);
             final int saveCount = canvas.save();
-            canvas.translate(bounds.left, bounds.top);
+            canvas.translate(bounds.left + (inline ? inlineOffsetX : 0), bounds.top + (inline ? inlineOffsetY : 0));
             if (watchLater.isShown()) {
                 watchLater.draw(canvas);
             }
