@@ -729,7 +729,9 @@ public final class FlyoutUtils {
             nextButtonIndex = PostTranslatePatch.addFlyoutButton(
                     flyoutPanel,
                     nextButtonIndex,
-                    senderViewRef.get()
+                    senderViewRef.get(),
+                    flyoutBuffer,
+                    flyoutVideoId
             );
         }
 

@@ -229,15 +229,7 @@ public final class PostTranslatePatch {
 
             // Post texts with line breaks are not parsed as text fields.
             List<String> texts = ProtoNode.texts(root);
-
-            String identifier = null;
-            for (String text : texts) {
-                if (text.contains(".eml")) {
-                    identifier = text;
-                    break;
-                }
-            }
-            if (identifier == null || !identifier.contains(POST)) {
+            if (!isPostElement(texts)) {
                 return bytes;
             }
 
@@ -253,6 +245,19 @@ public final class PostTranslatePatch {
             Logger.printException(() -> "onElementLoaded failure", ex);
         }
         return bytes;
+    }
+
+    /**
+     * @return If the texts are of a post element, whose identifier, the first text with ".eml",
+     *         includes "post".
+     */
+    private static boolean isPostElement(List<String> texts) {
+        for (String text : texts) {
+            if (text.contains(".eml")) {
+                return text.contains(POST);
+            }
+        }
+        return false;
     }
 
     /**
@@ -687,13 +692,27 @@ public final class PostTranslatePatch {
     /**
      * Adds Translate or Show original to the menu of a post with a text.
      *
-     * @param sender The view that opened the menu.
+     * @param sender      The view that opened the menu.
+     * @param menuBuffer  The element the menu was opened from, or null if the menu has none.
+     * @param menuVideoId The video of the menu, or an empty string if it has none.
      */
-    public static int addFlyoutButton(Object flyoutPanel, int index, @Nullable View sender) {
+    public static int addFlyoutButton(Object flyoutPanel, int index, @Nullable View sender,
+                                      @Nullable byte[] menuBuffer, String menuVideoId) {
         if (!ENABLED || sender == null) {
             return index;
         }
         try {
+            // A video card can show a text of a post, such as the name of the channel,
+            // so only the menus of post elements get the item.
+            if (menuBuffer != null) {
+                List<ProtoNode> menu = ProtoNode.parse(menuBuffer);
+                if (menu == null || !isPostElement(ProtoNode.texts(menu))) {
+                    return index;
+                }
+            } else if (!menuVideoId.isEmpty()) {
+                return index;
+            }
+
             ComponentHost root = FeedVideoCardsPatch.findTappedRootHost(sender);
             if (root == null) {
                 return index;
