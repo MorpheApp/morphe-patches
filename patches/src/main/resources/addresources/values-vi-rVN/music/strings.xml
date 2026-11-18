@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Sử dụng trình tải xuống bên ngoài cho menu Tải xuống</string>
   <string name="morphe_external_downloader_menu_summary">Tùy chọn Tải xuống trong các menu sẽ mở trình tải xuống bên ngoài của bạn thay thế</string>
+  <string name="morphe_download_force_4k_title">Bắt buộc khả dụng tải xuống 4K</string>
+  <string name="morphe_download_force_4k_summary">Lưu các bản tải xuống 1440p và 4K ngay cả khi YouTube Music quyết định thiết bị này không thể phát chúng</string>
   <string name="morphe_export_download_folder_title">Xuất nội dung tải xuống</string>
   <string name="morphe_export_download_folder_summary">"Xuất các bài hát và video đã lưu trong ứng dụng vào bộ nhớ thiết bị bằng menu flyout tải xuống trong ứng dụng. Nhấn để thay đổi thư mục
 

@@ -17,6 +17,9 @@ import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.layout.playlistautoplay.disablePlaylistAutoplayPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -30,6 +33,14 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/AutoplayButton;"
 
+private val autoplayButtonResourcePatch = patch {
+    dependsOn(legacyPlayerControlsPatch)
+
+    execute {
+        addLegacyBottomControl("autoplaybutton")
+    }
+}
+
 val autoplayControlPatch = patch(
     name = "Autoplay control",
     description = "Adds a player button and a rule for the next video: playlists and queues go on, " +
@@ -40,6 +51,7 @@ val autoplayControlPatch = patch(
         settingsPatch,
         disablePlaylistAutoplayPatch,
         playerOverlayButtonsHookPatch,
+        autoplayButtonResourcePatch,
         videoInformationPatch,
         videoIdPatch,
     )
@@ -56,6 +68,7 @@ val autoplayControlPatch = patch(
         )
 
         addPlayerBottomButton(EXTENSION_BUTTON)
+        initializeLegacyBottomControl(EXTENSION_BUTTON)
 
         // Mixes are mostly listened to in the background, where the regular video ID hook is not called.
         hookBackgroundPlayVideoId("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")

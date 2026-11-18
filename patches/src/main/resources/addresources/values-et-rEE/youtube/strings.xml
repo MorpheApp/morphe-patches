@@ -48,11 +48,11 @@ Second \"item\" text"</string>
 Mõned serveripoolsed paigutused ei pruugud taastuda.
 
 Muudatused hõlmavad:
+• Täisekraani videasoovitused võivad olla rikutud
 • Pleieri hüpikmenüü komponendid (või seotud seaded) ei pruugu töötada
-• Kevivad numbrid ei ole animeeritud
-• Raamatukogu vahekaart on nähtav
 • Videokirjelduse muusikaosa ei pruugu töötada
 • Pleieri hüpikmenüü üksusi ei saa peita
+• Kevivad numbrid ei ole animeeritud
 • Konto vahetamise nupp ei pruugu Raamatukogu vahekaardil ilmuda"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Luba voo hüpikmenüü filter</string>
@@ -69,19 +69,6 @@ Muudatused hõlmavad:
   <string name="morphe_hide_channel_buttons_title">Peida kanali nupud</string>
   <string name="morphe_hide_channel_buttons_summary">Peidab nuppude nagu Tellige, Vaata kanalit, Kogukond ja YouTube Music kanaliprofiilidest otsingutulemustes</string>
   <string name="morphe_hide_community_posts_title">Peida kogukonnapostitusi</string>
-  <string name="morphe_post_buttons_screen_title">Postitusnupud</string>
-  <string name="morphe_post_buttons_screen_summary">Valige kogukonna postituste all olevate nuppude paigutus ja millised nupud peita</string>
-  <string name="morphe_post_buttons_layout_title">Postituse nuppude paigutus</string>
-  <string name="morphe_post_buttons_layout_entry_1">Server</string>
-  <string name="morphe_post_buttons_layout_entry_2">Sunnitud</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">Peida meeldimise ja mittemeeldimise nupud</string>
-  <string name="morphe_hide_post_dislike_button_title">Peida mittemeeldimise nupp</string>
-  <string name="morphe_hide_post_dislike_button_summary">Sunnitud paigutusega jääb nupu koht vabaks</string>
-  <string name="morphe_hide_post_comment_button_title">Peida kommentaari nupp</string>
-  <string name="morphe_hide_post_comments_preview_title">Peida kommentaaride eelvaade</string>
-  <string name="morphe_hide_post_comments_preview_summary">Peidab postituste all olevate kommentaaride eelvaate</string>
-  <string name="morphe_hide_post_share_button_title">Peida nuppu Jaga</string>
-  <string name="morphe_hide_post_share_button_summary">Postituse piltide allalaadimisnupp on joonistatud jagamisnupu kõrvale, seega on peidetud ka see</string>
   <string name="morphe_hide_compact_banner_title">Peida kompaktsed bännerid</string>
   <string name="morphe_hide_compact_banner_summary">Peidab kompaktsed bännerid ja vahemaa mõne komponendi vahel</string>
   <string name="morphe_hide_expandable_card_title">Laiendavad kaardid videote all</string>
@@ -153,196 +140,6 @@ Muudatused hõlmavad:
   <string name="morphe_hide_youtube_doodles_title">Peida YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Peidab hooajalist ja sündmustepõhiseid animatsioone YouTube\'i logos</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodles\'i kuvamine võib takistada kohandatud päisete pistikute kuvamist</string>
-  <string name="morphe_hide_channel_bar_title">Peida kanali riba</string>
-  <string name="morphe_hide_channel_watermark_title">Peida kanali vesimärki</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Peita peatükid ja nupp \"Selles videos\"</string>
-  <string name="morphe_hide_crowdfunding_box_title">Peida ühisrahastus plokk</string>
-  <string name="morphe_hide_emergency_box_title">Peida häirekastid</string>
-  <string name="morphe_hide_info_panels_title">Peida info paneelid</string>
-  <string name="morphe_hide_info_panels_summary">Peidab informatiivseid kontekstpaneele, näiteks meditsiinilist teavet</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Peida nuppu Liitu</string>
-  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Peida nuppu \"Otsevestluse kordus\"</string>
-  <string name="morphe_hide_live_chat_replay_button_summary">Peidab vestluse taastuletamise nuppu täisekraani režiimis</string>
-  <string name="morphe_hide_medical_panels_title">Peida meditsiinilisi paneele</string>
-  <string name="morphe_hide_player_gesture_hints_title">Peida pleieri žestivihjed</string>
-  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
-          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <string name="morphe_hide_player_gesture_hints_summary">Peidab pleieri žestide ajal kuvatavad vihjed, näiteks \"Tõmba üles täpse otsingu jaoks\", \"Lase lahti tühistamiseks\" ja \"2x\"</string>
-  <string name="morphe_hide_subscribers_community_guidelines_title">Peida tellijate juhiseid</string>
-  <string name="morphe_hide_sync_button_title">Peida nuppu \"Sünkronise videoga\"</string>
-  <string name="morphe_hide_tap_and_hold_gradient_title">Peida puuduta ja hoidi gradient</string>
-  <string name="morphe_hide_tap_and_hold_gradient_summary">Peidab pleieri juhtimise gradienti, kui sõrme kiirendamiseks hoidmisel liigutatakse</string>
-  <string name="morphe_hide_timed_reactions_title">Peida ajastatud reaktsioone</string>
-  <string name="morphe_hide_timed_reactions_summary">Peidab funktsiooni, mis võimaldab kasutajatel reageerida emojitega kommentaariumi ja otsevestluse ajal</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Peida menüü \"Abi &amp; tagasiside\"</string>
-  <string name="morphe_hide_help_feedback_menu_summary">Peidab menüü \"Abi &amp; tagasiside\", kui kasutatakse kolme punktiga nuppu, näiteks otsingutulemustel</string>
-  <string name="morphe_hide_handle_title">Peida kasutajanimi</string>
-  <string name="morphe_hide_handle_summary">Peidab teie kanali kasutajanime \'Sina\' vahekaardil</string>
-  <string name="morphe_hide_video_title_title">Peida video pealkirja</string>
-  <string name="morphe_hide_video_title_summary">Peidab video pealkirja täisekraani režiimis</string>
-  <string name="morphe_sanitize_video_subtitle_title">Puhasta video altekst</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Eemaldab videote altekstidest fraase nagu \'#\', \'Fundraiser\', \'product(s)\' ja \'Shop\'</string>
-  <string name="morphe_hide_ask_gemini_button_title">Peida nupp \"Küsi Geminilt\"</string>
-  <string name="morphe_hide_ask_gemini_button_summary">Peidab nupu \"Küsi Geminilt\" paneeli \"Küsi selle video kohta\" allosast</string>
-  <string name="morphe_hide_description_components_screen_title">Video kirjeldus</string>
-  <string name="morphe_hide_description_components_screen_summary">Valige, millised komponendid video kirjelduses kuvatakse</string>
-  <string name="morphe_hide_ai_generated_video_summary_section_title">Peida jaotis \"AI-ga loodud video kokkuvõte\"</string>
-  <string name="morphe_hide_ask_section_title">Peida jaotis Küsi</string>
-  <string name="morphe_hide_attributes_section_title">Peida jaotis Atribuudid</string>
-  <string name="morphe_hide_attributes_section_summary">Peidab jaotused \"Esiletõstetud kohad\", \"Mängud\", \"Muusika\" ja \"Mainitud inimesed\"</string>
-  <string name="morphe_hide_channel_links_section_title">Peida kanalite linkide jaotis</string>
-  <string name="morphe_hide_chapters_section_title">Peida jaotust \"Peatükid\"</string>
-  <string name="morphe_hide_corrections_section_title">Peida jaotist Parandused</string>
-  <string name="morphe_hide_course_progress_section_title">Peida jaotist \"Kursuse edenemine\"</string>
-  <string name="morphe_hide_explore_section_title">Peida jaotist Avasta</string>
-  <string name="morphe_hide_explore_section_summary">Peidab alajaotused Avasta see kursus ja Avasta podcast</string>
-  <string name="morphe_hide_explore_course_section_title">Peida jaotist \"Avasta seda kurssi\"</string>
-  <string name="morphe_hide_explore_podcast_section_title">Peida jaotist \"Avasta podcaste\"</string>
-  <string name="morphe_hide_featured_channels_section_title">Peida esiletõstetud kanalite jaotus</string>
-  <string name="morphe_hide_featured_links_section_title">Peida jaotist Esiletõstetud lingid</string>
-  <string name="morphe_hide_featured_playlists_section_title">Peida esiletõstetud loendite jaotis</string>
-  <string name="morphe_hide_featured_videos_section_title">Peida jaotist Esiletõstetud videod</string>
-  <string name="morphe_hide_hashtag_section_title">Peida hashtagide jaotis</string>
-  <string name="morphe_hide_how_this_was_made_section_title">Peida jaotis \"Kuidas seda tehti\"</string>
-  <string name="morphe_hide_hype_points_title">Peida Hype-punkte</string>
-  <string name="morphe_hide_info_cards_section_title">Peida jaotist Infokaardid</string>
-  <string name="morphe_hide_key_concepts_section_title">Peida jaotis \"Key Concepts\"</string>
-  <string name="morphe_hide_quizzes_section_title">Peida jaotist Viktorid</string>
-  <string name="morphe_hide_search_inside_this_video_section_title">Peida jaotis \'Otsi videost\'</string>
-  <string name="morphe_hide_subscribe_button_title">Peida tellimusnupp</string>
-  <string name="morphe_hide_transcript_section_title">Peida transkriptiooni jaotist</string>
-  <string name="morphe_hide_video_details_section_title">Peida jaotist \"Video üksikasjad\"</string>
-  <string name="morphe_hide_filter_bar_screen_title">Filtririba</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Valige, kus soovite peita rullivat filtri riba</string>
-  <string name="morphe_hide_filter_bar_in_channel_page_title">Peida kanali lehel</string>
-  <string name="morphe_hide_filter_bar_in_comments_title">Peida kommentaarides</string>
-  <string name="morphe_hide_filter_bar_in_feed_title">Peida voogudes</string>
-  <string name="morphe_hide_filter_bar_in_related_videos_title">Peida seotud videotest</string>
-  <string name="morphe_hide_filter_bar_in_search_title">Peida otsingutulemustest</string>
-  <string name="morphe_hide_filter_bar_in_history_title">Peida vaatamisajalugu</string>
-  <string name="morphe_channel_screen_title">Kanali lehekülg</string>
-  <string name="morphe_channel_screen_summary">Valige, millised komponendid kuvatakse kanali lehel</string>
-  <string name="morphe_hide_channel_tab_title">Luba kanali vahekaardi filter</string>
-  <string name="morphe_hide_channel_tab_filter_strings_title">Kanali vahekaardi filter</string>
-  <string name="morphe_hide_channel_tab_filter_strings_summary">Sisestage kanali vahekülgide nimed filtreerimiseks, eraldades need uue rea abil</string>
-  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_community_button_title">Peida kogukonnanupp</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_join_button_title">Peida liitumisnupp</string>
-  <string name="morphe_hide_links_preview_title">Peida linkide eelvaadet</string>
-  <string name="morphe_hide_links_preview_summary">Peidab klõpsatavad veebilingid kanali päises</string>
-  <string name="morphe_hide_members_only_chip_title">Peida märkend \"Ainult liikmetele\"</string>
-  <string name="morphe_hide_members_only_chip_summary">Peidab kanali filtriribalt märkendi \"Ainult liikmetele\"</string>
-  <string name="morphe_hide_members_shelf_title">Peida liikmete riiulit</string>
-  <string name="morphe_hide_members_shelf_summary">Peidab kanali liikmete nimekirja</string>
-  <string name="morphe_hide_posts_shelf_title">Peida postituste riiul</string>
-  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_store_button_title">Peida nuppu Pood</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Peida nuppu Tellimine</string>
-  <string name="morphe_explore_menu_screen_title">Avasta menüü</string>
-  <string name="morphe_explore_menu_screen_summary">Valige, millised komponendid kuvatakse avastamismenüüs</string>
-  <string name="morphe_hide_courses_menu_title">Peida kursuste menüü</string>
-  <string name="morphe_hide_explore_button_title">Peida nuppu \"Avasta\"</string>
-  <string name="morphe_hide_fashion_menu_title">Peita menüü \"Mood &amp; ilu\"</string>
-  <string name="morphe_hide_gaming_menu_title">Peita mängude menüü</string>
-  <string name="morphe_hide_hype_menu_title">Peita Hype\'i menüü</string>
-  <string name="morphe_hide_learning_menu_title">Peida õppimismenüü</string>
-  <string name="morphe_hide_live_menu_title">Peita otseülekande menüü</string>
-  <string name="morphe_hide_memberships_menu_title">Peita liitumisemenüü</string>
-  <string name="morphe_hide_movies_menu_title">Peida menüü \"Filmid &amp; TV\"</string>
-  <string name="morphe_hide_music_menu_title">Peida muusika menüü</string>
-  <string name="morphe_hide_news_menu_title">Peida uudiste menüüd</string>
-  <string name="morphe_hide_playables_menu_title">Peida Playables menüü</string>
-  <string name="morphe_hide_podcasts_menu_title">Peida podkastide menüü</string>
-  <string name="morphe_hide_shopping_menu_title">Peida ostlemise menüü</string>
-  <string name="morphe_hide_sports_menu_title">Peida spordi menüü</string>
-  <string name="morphe_hide_youtube_premium_menu_title">Peida YouTube Premium menüü</string>
-  <string name="morphe_hide_youtube_studio_menu_title">Peida YouTube Studio menüü</string>
-  <string name="morphe_hide_youtube_music_menu_title">Peida YouTube Musici menüü</string>
-  <string name="morphe_hide_youtube_kids_menu_title">Peida YouTube Kidsi menüü</string>
-  <string name="morphe_hide_youtube_create_menu_title">Peida YouTube Create\'i menüü</string>
-  <string name="morphe_hide_youtube_works_menu_title">Peida menüü \"Kuidas YouTube toimib\"</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Peida õiguslikud ja privaatsusega teated jaluses</string>
-  <string name="morphe_comments_screen_title">Kommentaarid</string>
-  <string name="morphe_comments_screen_summary">Valige, millised komponendid kuvatakse kommentaaride jaotises</string>
-  <string name="morphe_hide_comments_carousel_title">Luba kommentaaride karusselli filter</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Sisesta märksõna või täisnimi (nt Ask, Community, Hype, Listen)
-• Kõigi üksuste peitmine varjab kogu kommentaaride jaotise"</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentaaride karusselli filter</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_summary">Sisestage kommentaaride karusselli nimed filtreerimiseks, eraldades need uue rea abil</string>
-  <string name="morphe_hide_comments_ai_chat_summary_title">Peida AI vestluse kokkuvõtet</string>
-  <string name="morphe_hide_comments_channel_guidelines_title">Peida kanali juhendid</string>
-  <string name="morphe_hide_comments_contexts_title">Peida kontekstisõnumeid</string>
-  <string name="morphe_hide_comments_by_members_header_title">Peida päis \"Liikmete kommentaarid\"</string>
-  <string name="morphe_hide_comments_section_title">Peida kommentaaride jaotis</string>
-  <string name="morphe_hide_comments_section_in_home_feed_title">Peida kommentaaride jaotis Avalehe voos</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Peida kogukonna reegleid</string>
-  <string name="morphe_hide_comments_create_a_short_button_title">Peida nuppu \"Loo Short\"</string>
-  <string name="morphe_hide_comments_dislike_button_title">Peita nupp \"Ei meeldi\"</string>
-  <string name="morphe_hide_comments_emoji_button_title">Peida emoji nuppu</string>
-  <string name="morphe_hide_comments_filter_bar_options_title">Peida filtri riba valikuid</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">Peidab kõik filtri riba valikud peale \'Top\' ja \'Uusimast\'</string>
-  <string name="morphe_hide_comments_gif_button_title">Peida GIF-nupp</string>
-  <string name="morphe_hide_comments_gifs_and_images_title">Peida GIF-id ja pildid</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">Peidab kommentaaridele ja vastustele lisatud GIF-id ja pildid</string>
-  <string name="morphe_hide_comments_gift_animation_and_cards_title">Peida kingianimatsioonid ja kaardid</string>
-  <string name="morphe_hide_comments_gift_button_title">Peida nupp Kingitus</string>
-  <string name="morphe_hide_comments_info_button_title">Peida info nupp</string>
-  <string name="morphe_hide_comments_live_chat_donators_bar_title">Peida otsevestluse panustajate riba</string>
-  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Peida otsevestluse kerimisnupp allojale</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_title">Peida otsevestluse tooltipid</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_summary">Peidab vestluse sisendivälja juures kuvatavaid tooltipseid, näiteks teavitust ainult tellijatele avatud vestluse kohta</string>
-  <string name="morphe_hide_comments_menu_button_title">Peita menüünupp</string>
-  <string name="morphe_hide_comments_menu_button_summary">Peidab iga kommentaari 3-punktilise menüünupu</string>
-  <string name="morphe_hide_comments_preview_comment_title">Peida kommentaari eelvaade</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Peidab kommentaaride eelvaate video alt enne täieliku kommentaaride jaotise avamist</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Kommentaar on Morphe poolt peidetud…</string>
-  <string name="morphe_minimal_comments_button_title">Luba minimalistlik kommentaaride nupp</string>
-  <string name="morphe_minimal_comments_button_summary">Peidab libisevad kaardid ja nende leheseliku valimiku, mis kuvatakse kommentaaride nupul</string>
-  <string name="morphe_hide_comments_thanks_button_title">Peida Tänu nupp</string>
-  <string name="morphe_hide_comments_timestamp_button_title">Peida ajatempli nuppu</string>
-  <string name="morphe_hide_comments_top_fans_button_title">Peida nupp \"Peakfännid\"</string>
-  <string name="morphe_hide_comments_translate_button_title">Peita tõlkimise nupp</string>
-  <string name="morphe_hide_comments_zero_state_title">Peida teadet \"Kommentaare pole veel\"</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">Puhasta esile tõstetud otsingulingid</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Puhastab esile tõstetud otsingulingid, jättes alles ainult algse lihtsa teksti</string>
-  <string name="morphe_hide_keyword_content_screen_title">Märksõnafilter</string>
-  <string name="morphe_hide_keyword_content_screen_summary">Valige kindlad sõnad või fraasid, et peida videoid voogudes ja otsingutulemustes</string>
-  <string name="morphe_hide_keyword_content_comments_title">Peida kommentaare märksõnade põhjal</string>
-  <string name="morphe_hide_keyword_content_home_title">Peida Avalehe videoid märksõnade põhjal</string>
-  <string name="morphe_hide_keyword_content_search_title">Peida otsingutulemusi märksõnade põhjal</string>
-  <string name="morphe_hide_keyword_content_subscriptions_title">Peida Tellimuste videoid märksõnade põhjal</string>
-  <string name="morphe_hide_keyword_content_phrases_title">Peidetavad märksõnad</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Sisestage peidetavaks soovitud märksõnad ja fraasid, eraldades need uue rea abil
-
-Märksõnades võib olla ükskõik milline videote pealkirjades kuvatav tekst. Märksõna @Kasutajanimi peidab kogu sisu konkreetsetelt loojatelt"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Avaleht / Tellimused / Otsing / Kommentaarid on filtreeritud, et peita sisu, mis vastab märksõnafraasidele
-
-Piirangud:
-• Mõned Shorts-videod ei saa peita kanali nime järgi
-• Mõned kasutajaliidese komponendid ei pruugi peidata"</string>
-  <string name="morphe_hide_keyword_content_about_whole_words_title">Vasta täissõnadele</string>
-  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
-  <string name="morphe_hide_keyword_content_about_whole_words_summary">Märksõna või fraasi jutumärkidesse panemine takistab osaliste vastete leidmist videote pealkirjades ja kanalite nimedes&lt;br&gt;&lt;br&gt;Näiteks,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; peidab video: &lt;b&gt;Kuidas tehisintellekt töötab?&lt;/b&gt;&lt;br&gt;kuid ei peida video: &lt;b&gt;Mida tähendab õiglane kasutamine?&lt;/b&gt;</string>
-  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_length">Märksõna on liiga lühike ja vajab tsitaadimärke: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_broad">Märksõna peidab kõik videod: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Avaleht: %1$s
-• Tellimused: %2$s
-• Otsing: %3$s
-• Kommentärid: %4$s
-• Kokku: %5$s"</string>
-  <string name="morphe_hide_stats_category_title">Statistika</string>
-  <string name="morphe_hide_stats_hidden_24h_title">Peidetud videod, viimased 24 tundi</string>
-  <string name="morphe_hide_stats_hidden_all_title">Peidetud videod, kogu aeg</string>
-  <string name="morphe_hide_stats_hidden_24h_reset_title">Kas lähtestada viimase 24 tunni loendaja?</string>
-  <string name="morphe_hide_stats_hidden_all_reset_title">Kas lähtestada kogu aja loendaja?</string>
   <string name="morphe_hide_aislist_screen_title">AI kanalite filter</string>
   <string name="morphe_hide_aislist_screen_summary">Peida videod kanalitelt, millel on AiSListi kogukonna nimekirjas AI-generitud sisu märgistus</string>
   <string name="morphe_hide_aislist_blocklist_category_title">Blokeerimisnimekiri: kõrge kindlus</string>
@@ -390,6 +187,344 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_aislist_submit_failed_rate_limit">Saadeti liiga palju reporteid, proovige hiljem uuesti</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList lükkas aruande tagasi</string>
   <string name="morphe_aislist_submit_failed">Raporti saatmine ebaõnnestus, kontrollige oma ühendust</string>
+  <string name="morphe_channel_screen_title">Kanali lehekülg</string>
+  <string name="morphe_channel_screen_summary">Valige, millised komponendid kuvatakse kanali lehel</string>
+  <string name="morphe_hide_channel_tab_title">Luba kanali vahekaardi filter</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">Kanali vahekaardi filter</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">Sisestage kanali vahekülgide nimed filtreerimiseks, eraldades need uue rea abil</string>
+  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">Peida kogukonnanupp</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">Peida liitumisnupp</string>
+  <string name="morphe_hide_links_preview_title">Peida linkide eelvaadet</string>
+  <string name="morphe_hide_links_preview_summary">Peidab klõpsatavad veebilingid kanali päises</string>
+  <string name="morphe_hide_members_only_chip_title">Peida märkend \"Ainult liikmetele\"</string>
+  <string name="morphe_hide_members_only_chip_summary">Peidab kanali filtriribalt märkendi \"Ainult liikmetele\"</string>
+  <string name="morphe_hide_members_shelf_title">Peida liikmete riiulit</string>
+  <string name="morphe_hide_members_shelf_summary">Peidab kanali liikmete nimekirja</string>
+  <string name="morphe_hide_posts_shelf_title">Peida postituste riiul</string>
+  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">Peida nuppu Pood</string>
+  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">Peida nuppu Tellimine</string>
+  <string name="morphe_explore_menu_screen_title">Avasta menüü</string>
+  <string name="morphe_explore_menu_screen_summary">Valige, millised komponendid kuvatakse avastamismenüüs</string>
+  <string name="morphe_hide_courses_menu_title">Peida kursuste menüü</string>
+  <string name="morphe_hide_explore_button_title">Peida nuppu \"Avasta\"</string>
+  <string name="morphe_hide_fashion_menu_title">Peita menüü \"Mood &amp; ilu\"</string>
+  <string name="morphe_hide_gaming_menu_title">Peita mängude menüü</string>
+  <string name="morphe_hide_hype_menu_title">Peita Hype\'i menüü</string>
+  <string name="morphe_hide_learning_menu_title">Peida õppimismenüü</string>
+  <string name="morphe_hide_live_menu_title">Peita otseülekande menüü</string>
+  <string name="morphe_hide_memberships_menu_title">Peita liitumisemenüü</string>
+  <string name="morphe_hide_movies_menu_title">Peida menüü \"Filmid &amp; TV\"</string>
+  <string name="morphe_hide_music_menu_title">Peida muusika menüü</string>
+  <string name="morphe_hide_news_menu_title">Peida uudiste menüüd</string>
+  <string name="morphe_hide_playables_menu_title">Peida Playables menüü</string>
+  <string name="morphe_hide_podcasts_menu_title">Peida podkastide menüü</string>
+  <string name="morphe_hide_shopping_menu_title">Peida ostlemise menüü</string>
+  <string name="morphe_hide_sports_menu_title">Peida spordi menüü</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Peida YouTube Premium menüü</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Peida YouTube Studio menüü</string>
+  <string name="morphe_hide_youtube_music_menu_title">Peida YouTube Musici menüü</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Peida YouTube Kidsi menüü</string>
+  <string name="morphe_hide_youtube_create_menu_title">Peida YouTube Create\'i menüü</string>
+  <string name="morphe_hide_youtube_works_menu_title">Peida menüü \"Kuidas YouTube toimib\"</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Peida õiguslikud ja privaatsusega teated jaluses</string>
+  <string name="morphe_hide_filter_bar_screen_title">Filtririba</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Valige, kus soovite peita rullivat filtri riba</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">Peida kanali lehel</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Peida kommentaarides</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Peida voogudes</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Peida seotud videotest</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Peida otsingutulemustest</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Peida vaatamisajalugu</string>
+  <string name="morphe_hide_keyword_content_screen_title">Märksõnafilter</string>
+  <string name="morphe_hide_keyword_content_screen_summary">Valige kindlad sõnad või fraasid, et peida videoid voogudes ja otsingutulemustes</string>
+  <string name="morphe_hide_keyword_content_comments_title">Peida kommentaare märksõnade põhjal</string>
+  <string name="morphe_hide_keyword_content_home_title">Peida Avalehe videoid märksõnade põhjal</string>
+  <string name="morphe_hide_keyword_content_search_title">Peida otsingutulemusi märksõnade põhjal</string>
+  <string name="morphe_hide_keyword_content_subscriptions_title">Peida Tellimuste videoid märksõnade põhjal</string>
+  <string name="morphe_hide_keyword_content_phrases_title">Peidetavad märksõnad</string>
+  <string name="morphe_hide_keyword_content_phrases_summary">"Sisestage peidetavaks soovitud märksõnad ja fraasid, eraldades need uue rea abil
+
+Märksõnades võib olla ükskõik milline videote pealkirjades kuvatav tekst. Märksõna @Kasutajanimi peidab kogu sisu konkreetsetelt loojatelt"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Avaleht / Tellimused / Otsing / Kommentaarid on filtreeritud, et peita sisu, mis vastab märksõnafraasidele
+
+Piirangud:
+• Mõned Shorts-videod ei saa peita kanali nime järgi
+• Mõned kasutajaliidese komponendid ei pruugi peidata"</string>
+  <string name="morphe_hide_keyword_content_about_whole_words_title">Vasta täissõnadele</string>
+  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <string name="morphe_hide_keyword_content_about_whole_words_summary">Märksõna või fraasi jutumärkidesse panemine takistab osaliste vastete leidmist videote pealkirjades ja kanalite nimedes&lt;br&gt;&lt;br&gt;Näiteks,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; peidab video: &lt;b&gt;Kuidas tehisintellekt töötab?&lt;/b&gt;&lt;br&gt;kuid ei peida video: &lt;b&gt;Mida tähendab õiglane kasutamine?&lt;/b&gt;</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_toast_invalid_length">Märksõna on liiga lühike ja vajab tsitaadimärke: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_broad">Märksõna peidab kõik videod: %s</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Avaleht: %1$s
+• Tellimused: %2$s
+• Otsing: %3$s
+• Kommentärid: %4$s
+• Kokku: %5$s"</string>
+  <string name="morphe_hide_stats_category_title">Statistika</string>
+  <string name="morphe_hide_stats_hidden_24h_title">Peidetud videod, viimased 24 tundi</string>
+  <string name="morphe_hide_stats_hidden_all_title">Peidetud videod, kogu aeg</string>
+  <string name="morphe_hide_stats_hidden_24h_reset_title">Kas lähtestada viimase 24 tunni loendaja?</string>
+  <string name="morphe_hide_stats_hidden_all_reset_title">Kas lähtestada kogu aja loendaja?</string>
+  <string name="morphe_post_buttons_screen_title">Postitusnupud</string>
+  <string name="morphe_post_buttons_screen_summary">Valige kogukonna postituste all olevate nuppude paigutus ja millised nupud peita</string>
+  <string name="morphe_post_buttons_layout_title">Postituse nuppude paigutus</string>
+  <string name="morphe_post_buttons_layout_entry_1">Server</string>
+  <string name="morphe_post_buttons_layout_entry_2">Sunnitud</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Peida meeldimise ja mittemeeldimise nupud</string>
+  <string name="morphe_hide_post_dislike_button_title">Peida nupp Mitte meeldiv</string>
+  <string name="morphe_hide_post_dislike_button_summary">Sunnitud paigutusega jääb nupu koht vabaks</string>
+  <string name="morphe_hide_post_comment_button_title">Peida nupp Kommentaar</string>
+  <string name="morphe_hide_post_comments_preview_title">Peida kommentaaride eelvaade</string>
+  <string name="morphe_hide_post_comments_preview_summary">Peidab postituste all olevate kommentaaride eelvaate</string>
+  <string name="morphe_hide_post_share_button_title">Peida nuppu Jaga</string>
+  <string name="morphe_hide_post_share_button_summary">Postituse piltide allalaadimisnupp on asutatud Jaga nupu kõrvale, seega on peidetud ka see</string>
+  <string name="morphe_hide_ask_gemini_button_title">Peida nupp \"Küsi Geminilt\"</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Peidab nupu \"Küsi Geminilt\" paneeli \"Küsi selle video kohta\" allosast</string>
+  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <string name="morphe_hide_autoplay_preview_title">Peida automaatse esituse eelvaadet</string>
+  <string name="morphe_hide_autoplay_preview_summary">Peidab täisekraani režiimis tuleviku video eelvaate enne automaatset esitust</string>
+  <string name="morphe_hide_channel_bar_title">Peida kanali riba</string>
+  <string name="morphe_hide_channel_watermark_title">Peida kanali vesimärki</string>
+  <string name="morphe_hide_chapters_timeline_button_title">Peita peatükid ja nupp \"Selles videos\"</string>
+  <string name="morphe_hide_crowdfunding_box_title">Peida ühisrahastus plokk</string>
+  <string name="morphe_hide_emergency_box_title">Peida häirekastid</string>
+  <string name="morphe_hide_info_panels_title">Peida info paneelid</string>
+  <string name="morphe_hide_info_panels_summary">Peidab informatiivseid kontekstpaneele, näiteks meditsiinilist teavet</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the video player for certain videos. -->
+  <string name="morphe_hide_join_membership_button_title">Peida nuppu Liitu</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">Peida nuppu \"Otsevestluse kordus\"</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">Peidab vestluse taastuletamise nuppu täisekraani režiimis</string>
+  <string name="morphe_hide_medical_panels_title">Peida meditsiinilisi paneele</string>
+  <string name="morphe_hide_player_gesture_hints_title">Peida pleieri žestivihjed</string>
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Peidab pleieri žestide ajal kuvatavad vihjed, näiteks \"Tõmba üles täpse otsingu jaoks\", \"Lase lahti tühistamiseks\" ja \"2x\"</string>
+  <string name="morphe_hide_subscribers_community_guidelines_title">Peida tellijate juhiseid</string>
+  <string name="morphe_hide_sync_button_title">Peida nuppu \"Sünkronise videoga\"</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">Peida puuduta ja hoidi gradient</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Peidab pleieri juhtimise gradienti, kui sõrme kiirendamiseks hoidmisel liigutatakse</string>
+  <string name="morphe_hide_timed_reactions_title">Peida ajastatud reaktsioone</string>
+  <string name="morphe_hide_timed_reactions_summary">Peidab funktsiooni, mis võimaldab kasutajatel reageerida emojitega kommentaariumi ja otsevestluse ajal</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Peida menüü \"Abi &amp; tagasiside\"</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Peidab menüü \"Abi &amp; tagasiside\", kui kasutatakse kolme punktiga nuppu, näiteks otsingutulemustel</string>
+  <string name="morphe_hide_handle_title">Peida kasutajanimi</string>
+  <string name="morphe_hide_handle_summary">Peidab teie kanali kasutajanime \'Sina\' vahekaardil</string>
+  <string name="morphe_hide_video_title_title">Peida video pealkirja</string>
+  <string name="morphe_hide_video_title_summary">Peidab video pealkirja täisekraani režiimis</string>
+  <string name="morphe_sanitize_video_subtitle_title">Puhasta video altekst</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Eemaldab videote altekstidest fraase nagu \'#\', \'Fundraiser\', \'product(s)\' ja \'Shop\'</string>
+  <!-- layout.buttons.action.hideButtonsPatch -->
+  <string name="morphe_action_buttons_screen_title">Toimingunupud</string>
+  <string name="morphe_action_buttons_screen_summary">Valige, millised tegevusnupud kuvatakse portreetri- ja täisekraani režiimides</string>
+  <string name="morphe_portrait_buttons">Portreepildi nupud</string>
+  <string name="morphe_disable_like_subscribe_glow_title">Keela Meeldib ja Tellimise sära</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">Hoiab Like\'i ja Tellimise nuppe säramast, kui looja neid mainitseb</string>
+  <string name="morphe_hide_action_bar_title">Peida tegutsusriba</string>
+  <string name="morphe_hide_like_dislike_button_title">Peida Meeldib ja Ei meeldib nupp</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_share_button_title">Peida Jaga nupp</string>
+  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_stop_ads_button_title">Peida nuppu \'Lõpeta reklaamid\'</string>
+  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <string name="morphe_hide_comments_button_title">Peida kommentaaride nupp</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Peida \'Ühenda\' nupp</string>
+  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on live stream videos. -->
+  <string name="morphe_hide_report_button_title">Peida Teavita nupp</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_remix_button_title">Peida Remixi nupp</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_download_button_title">Peida allalaadimise nupp</string>
+  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on videos uploaded by the logged-in user. -->
+  <string name="morphe_hide_hype_button_title">Peida Hype\'i nupp</string>
+  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_promote_button_title">Peida Edanda nupp</string>
+  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_thanks_button_title">Peida tänu nupp</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <string name="morphe_hide_ask_button_title">Peida nuppu \"Küsi\"</string>
+  <string name="morphe_hide_channel_profile_button_title">Peida kanal ja tellimusnupp</string>
+  <string name="morphe_hide_channel_profile_button_summary">Peidab kanali avataari ja tellimisnupu tegevusriba algusest</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Peida tellimisnupp</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Peidab kanalitähise kõrval toiminguriba alguses nuppud \"Telli\" ja \"Liitu\"</string>
+  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_clip_button_title">Peida nuppu \"Lõika\"</string>
+  <string name="morphe_hide_clip_button_summary">See ei pruugi mõne kasutajakonto puhul töötada</string>
+  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shop_button_title">Peida nuppu \"Pood\"</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_save_button_title">Peida nuppu \"Salvesta\"</string>
+  <string name="morphe_hide_more_button_title">Peida nupp Rohkem</string>
+  <string name="morphe_fullscreen_buttons">Täisekraani nupud</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Peida nuppu \"Ei meeldi\"</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Peida nuppu \"Meeldib\"</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Peida nuppu \"Live-vestlus\"</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Peida nuppu Mix</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Peida nuppu \"Rohkem videoid\"</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Peida nuppu \"Playlista\"</string>
+  <string name="morphe_quick_actions_top_margin_title">Kiirtoimingute ülemine äärtesuurus</string>
+  <string name="morphe_quick_actions_top_margin_summary">Määra kiirtoimingute riba ülemine äärtesuurus (0–32 dp)</string>
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">Ümbritsev režiim</string>
+  <string name="morphe_ambient_mode_screen_summary">Juhi Ambient-režiimi nähtavust ja energiapiiranguid</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Määra Ümbritseva režiimi piirangutele mööda</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary">Lubab Ambient-režiimil jääda aktiivseks akusäästurežiimis</string>
+  <string name="morphe_disable_ambient_mode_title">Keela Ümbritsev režiim</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_title">Keela Ambient-režiim täisekraanil</string>
+  <string name="morphe_enhanced_ambient_mode_title">Uuendatud Ümbritsev režiim</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Valgustab kogu vaatamislehte ja musti ribasid koos videoga, asendades Ümbritseva režiimi</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Valguse tugevus</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Kui tugev on valgus kellakuva lehel ja mustadel ribadel</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Valguse silendamine</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Kui kaua võtab valgusel aega videoga kaasineda. Väärtusega 0 järgib see videot tihedalt</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Valguse hägusetamine</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Kui palju on valguse hägusetus video kõrval. Väärtusega 0 säilivad video kujud</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Hoidke tekst loetavana</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hääldab heledate videote valgust, et lehel olev tekst püsiks loetavana</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Hägusta skrollimise ajal</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Hägustab valgust, kui lehte skrollitakse või puudutatakse</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Hägustamise kestus</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Kui kaua jääb valgust hägustatud pärast skrollimise lõppemist. Vääituse 0 korral hägustab valgust ainult skrollimine ja see taastub kohe pärast skrollimise lõppemist</string>
+  <string name="morphe_comments_screen_title">Kommentaarid</string>
+  <string name="morphe_comments_screen_summary">Valige, millised komponendid kuvatakse kommentaaride jaotises</string>
+  <string name="morphe_hide_comments_carousel_title">Luba kommentaaride karusselli filter</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Sisesta märksõna või täisnimi (nt Ask, Community, Hype, Listen)
+• Kõigi üksuste peitmine varjab kogu kommentaaride jaotise"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentaaride karusselli filter</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Sisestage kommentaaride karusselli nimed filtreerimiseks, eraldades need uue rea abil</string>
+  <string name="morphe_hide_comments_ai_chat_summary_title">Peida AI vestluse kokkuvõtet</string>
+  <string name="morphe_hide_comments_channel_guidelines_title">Peida kanali juhendid</string>
+  <string name="morphe_hide_comments_contexts_title">Peida kontekstisõnumeid</string>
+  <string name="morphe_hide_comments_by_members_header_title">Peida päis \"Liikmete kommentaarid\"</string>
+  <string name="morphe_hide_comments_section_title">Peida kommentaaride jaotis</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Peida kommentaaride jaotis Avalehe voos</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Peida kogukonna reegleid</string>
+  <string name="morphe_hide_comments_create_a_short_button_title">Peida nuppu \"Loo Short\"</string>
+  <string name="morphe_hide_comments_dislike_button_title">Peita nupp \"Ei meeldi\"</string>
+  <string name="morphe_hide_comments_emoji_button_title">Peida emoji nuppu</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Peida filtri riba valikuid</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Peidab kõik filtri riba valikud peale \'Top\' ja \'Uusimast\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Peida GIF-nupp</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Peida GIF-id ja pildid</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Peidab kommentaaridele ja vastustele lisatud GIF-id ja pildid</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Peida kingianimatsioonid ja kaardid</string>
+  <string name="morphe_hide_comments_gift_button_title">Peida nupp Kingitus</string>
+  <string name="morphe_hide_comments_info_button_title">Peida info nupp</string>
+  <string name="morphe_hide_comments_live_chat_donators_bar_title">Peida otsevestluse panustajate riba</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Peida otsevestluse kerimisnupp allojale</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Peida otsevestluse tooltipid</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Peidab vestluse sisendivälja juures kuvatavaid tooltipseid, näiteks teavitust ainult tellijatele avatud vestluse kohta</string>
+  <string name="morphe_hide_comments_menu_button_title">Peita menüünupp</string>
+  <string name="morphe_hide_comments_menu_button_summary">Peidab iga kommentaari 3-punktilise menüünupu</string>
+  <string name="morphe_hide_comments_preview_comment_title">Peida kommentaari eelvaade</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Peidab kommentaaride eelvaate video alt enne täieliku kommentaaride jaotise avamist</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Kommentaar on Morphe poolt peidetud…</string>
+  <string name="morphe_minimal_comments_button_title">Luba minimalistlik kommentaaride nupp</string>
+  <string name="morphe_minimal_comments_button_summary">Peidab libisevad kaardid ja nende leheseliku valimiku, mis kuvatakse kommentaaride nupul</string>
+  <string name="morphe_hide_comments_thanks_button_title">Peida Tänu nupp</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Peida ajatempli nuppu</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Peida nupp \"Peakfännid\"</string>
+  <string name="morphe_hide_comments_translate_button_title">Peita tõlkimise nupp</string>
+  <string name="morphe_hide_comments_zero_state_title">Peida teadet \"Kommentaare pole veel\"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Puhasta esile tõstetud otsingulingid</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Puhastab esile tõstetud otsingulingid, jättes alles ainult algse lihtsa teksti</string>
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
+  <string name="morphe_hide_player_flyout_title">Hüpikmenüü</string>
+  <string name="morphe_hide_player_flyout_summary">Vali, millised komponendid kuvatakse hüpikmenüüs</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Peida \"Lisaseaded\" / \"Rohkem\" menüü</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Peida menüü \"Ümbritsev režiim\"</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menüü \"Audio Track\" on peidetud
+
+Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvaliseks kliendiks peale \"Android Studio\" ja \"Android VR Downgraded\""</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Peida menüü \"Helirada\"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Peida menüü \"Helirada\" jaluse</string>
+  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_captions_title">Peida menüü \"Altekirjad\"</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Peida menüü \"Altekirjad\" jaluse</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Peida menüü \"Altekirjad\" päis</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_help_title">Peida menüü \"Abi &amp; tagasiside\"</string>
+  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Peida menüüt \"Kuula YouTube Musicis\"</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Peida menüüt \"Ekraani lukustamine\"</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Peida menüü \"Video kordus\"</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Peida menüü \"Liikumise ajal\"</string>
+  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_quality_title">Peida kvaliteedi menüüt</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Peida kvaliteedi menüü jalust</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Peida kvaliteedi menüü päis</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Peida menüü \"Uinumisaeg\"</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Peida menüüt \"Esituskiirus\"</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Peida menüü \"Stabiilne helitugevus\"</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Peida menüüt \"Vaata VR-is\"</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_overlay_buttons_screen_title">Ülekattenupud</string>
+  <string name="morphe_overlay_buttons_screen_summary">Valige, millised nupud kuvatakse üle videopleieri</string>
+  <string name="morphe_hide_autoplay_button_title">Peida nuppu \"Automaatne esitus\"</string>
+  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_captions_button_title">Peida altekirjade nupp</string>
+  <string name="morphe_hide_cast_button_title">Peida Casti nupp</string>
+  <string name="morphe_hide_cast_button_summary">Peidab Edasta nupu videopleieris ja tööriistaribal</string>
+  <string name="morphe_hide_collapse_button_title">Peida Aheneva nupp</string>
+  <string name="morphe_hide_fullscreen_button_title">Peida täisekraani nupp</string>
+  <string name="morphe_hide_player_control_buttons_background_title">Peida pleieri juhtimiste taust</string>
+  <string name="morphe_hide_player_control_buttons_background_summary">Peidab videoesitaja juhtimispaneeli ümbritseva tumeda varjenduse</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Juhtnupude tausta läbipaistvus</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Reguleeri pleieri juhtnupude ja ajariba tausta läbipaistvust (0 on nähtamatu, 100 on läbimääramatu)</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">Peida nupud Eelmine &amp; Järgmine</string>
+  <string name="morphe_hide_settings_button_title">Peida seadete nupp</string>
+  <string name="morphe_hide_description_components_screen_title">Video kirjeldus</string>
+  <string name="morphe_hide_description_components_screen_summary">Valige, millised komponendid video kirjelduses kuvatakse</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_title">Peida jaotis \"AI-ga loodud video kokkuvõte\"</string>
+  <string name="morphe_hide_ask_section_title">Peida jaotis Küsi</string>
+  <string name="morphe_hide_attributes_section_title">Peida jaotis Atribuudid</string>
+  <string name="morphe_hide_attributes_section_summary">Peidab jaotused \"Esiletõstetud kohad\", \"Mängud\", \"Muusika\" ja \"Mainitud inimesed\"</string>
+  <string name="morphe_hide_channel_links_section_title">Peida kanalite linkide jaotis</string>
+  <string name="morphe_hide_chapters_section_title">Peida jaotust \"Peatükid\"</string>
+  <string name="morphe_hide_corrections_section_title">Peida jaotist Parandused</string>
+  <string name="morphe_hide_course_progress_section_title">Peida jaotist \"Kursuse edenemine\"</string>
+  <string name="morphe_hide_explore_section_title">Peida jaotist Avasta</string>
+  <string name="morphe_hide_explore_section_summary">Peidab alajaotused Avasta see kursus ja Avasta podcast</string>
+  <string name="morphe_hide_explore_course_section_title">Peida jaotist \"Avasta seda kurssi\"</string>
+  <string name="morphe_hide_explore_podcast_section_title">Peida jaotist \"Avasta podcaste\"</string>
+  <string name="morphe_hide_featured_channels_section_title">Peida esiletõstetud kanalite jaotus</string>
+  <string name="morphe_hide_featured_links_section_title">Peida jaotist Esiletõstetud lingid</string>
+  <string name="morphe_hide_featured_playlists_section_title">Peida esiletõstetud loendite jaotis</string>
+  <string name="morphe_hide_featured_videos_section_title">Peida jaotist Esiletõstetud videod</string>
+  <string name="morphe_hide_hashtag_section_title">Peida hashtagide jaotis</string>
+  <string name="morphe_hide_how_this_was_made_section_title">Peida jaotis \"Kuidas seda tehti\"</string>
+  <string name="morphe_hide_hype_points_title">Peida Hype-punkte</string>
+  <string name="morphe_hide_info_cards_section_title">Peida jaotist Infokaardid</string>
+  <string name="morphe_hide_key_concepts_section_title">Peida jaotis \"Key Concepts\"</string>
+  <string name="morphe_hide_quizzes_section_title">Peida jaotist Viktorid</string>
+  <string name="morphe_hide_search_inside_this_video_section_title">Peida jaotis \'Otsi videost\'</string>
+  <string name="morphe_hide_subscribe_button_title">Peida tellimusnupp</string>
+  <string name="morphe_hide_transcript_section_title">Peida transkriptiooni jaotist</string>
+  <string name="morphe_hide_video_details_section_title">Peida jaotist \"Video üksikasjad\"</string>
   <!-- layout.snackbar.snackbarPatch -->
   <string name="morphe_snackbar_screen_title">Teavituste riba</string>
   <string name="morphe_snackbar_screen_summary">Peida teavitusteribad või muuda nende värve ja kujundust</string>
@@ -542,8 +677,6 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_disable_chapter_skip_double_tap_title">Keela peatükide möödahüpamine topeltpuudutusega</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Keelab kahe sõrmega topeltpuudutuse žesti, mis hüppab peatükkide vahel ja mida võib kogemata ühe sõrmega käivitada</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
-  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Laadige alla videoid, podcaste või lugusid kolmandate osapoolte allalaadimisrakendustega</string>
   <string name="morphe_external_downloader_overlay_button_title">Kuva pleier pealkatte allalaadimisnupp</string>
   <string name="morphe_external_downloader_overlay_button_summary">Kuvab videopleierisse nupu, mis avab teie välise allalaadija</string>
@@ -560,12 +693,14 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <string name="morphe_shorts_download_flyout_button_title">Kuva allalaadimine Shorts\'i menüüs</string>
   <string name="morphe_shorts_download_flyout_button_summary">Lisab Shorts-pleieri menüüsse allalaadimisvaliku</string>
   <string name="morphe_shorts_download_flyout_title">Laadi alla</string>
-  <string name="morphe_feed_download_flyout_button_title">Kuva allalaadimine videomenüüs</string>
-  <string name="morphe_feed_download_flyout_button_summary">Lisab allalaadimise üksuse feedi videomenüüsse, kus seda puudub, näiteks videotele, mille allalaadimise YouTube lubab ainult Premium-liikmetel</string>
-  <string name="morphe_download_force_4k_title">Järsti 4K allalaadimise võimaldamine</string>
-  <string name="morphe_download_force_4k_summary">Pakub 1440p ja 4K allalaadimist, isenägemata sellest, kas YouTube leiab, et see seade ei suuda neid esitada. Need videod võivad YouTube\'is esitatava olla ilma videoga, kuid neid saab seadmesse eksportida</string>
+  <string name="morphe_feed_download_flyout_button_title">Sunni allalaadimisvaliku kuvamine</string>
+  <string name="morphe_feed_download_flyout_button_summary">Lisab allalaadimisvaliku voogi videode menüüsse, milledel seda puudub</string>
+  <string name="morphe_download_force_4k_title">Sunni 4K allalaadimise võimaldamine</string>
+  <string name="morphe_download_force_4k_summary">Pakub 1440p ja 4K allalaadimist, isegi kui YouTube otsustab, et see seade ei saa neid esitada</string>
+  <string name="morphe_download_quality_about_title">1080p pole saadaval</string>
+  <string name="morphe_download_quality_about_summary">Kui rakendusesi allalaadimised ei paku 1080p lahutust, aktiveerige \"Seadme mõõtmete imiteerimine\" muude seadete alt</string>
   <string name="morphe_export_download_folder_title">Salvestatud videote eksportimine</string>
-  <string name="morphe_export_download_folder_summary">"Eksportige rakenduses salvestatud videod oma seadme mällu, kasutades rakendusesse integreeritud allalaadimiste menüüd. Ekspordikausta muutmiseks puudutage seda
+  <string name="morphe_export_download_folder_summary">"Eksportige rakenduses salvestatud videod oma seadme mällu, kasutades rakendusesse integreeritud allalaadimiste menüüd. Ekspordikausta muutmiseks puudutage siia
 
 Ekspordikaust: %s"</string>
   <string name="morphe_export_download_started">Video eksportimine</string>
@@ -707,7 +842,7 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_play_all_button_type_entry_12">Ainult liikmetele mõeldud otseüsteid</string>
   <string name="morphe_play_all_button_not_available_toast">Esitusloendit ei saa luua, kuna kanali ID-d ei kattu</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
-  <string name="morphe_playlist_panel_button_title">Kuva esitlusloendi nupp</string>
+  <string name="morphe_playlist_panel_button_title">Kuva esitlusloendit nupp</string>
   <string name="morphe_playlist_panel_button_summary">Puudutage, et avada esitlusloendi paneel. Kuvatakse ainult esitlusloendi esitamisel</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Kuva video uuesti laadimise nupp</string>
@@ -779,9 +914,9 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_queue_manager_open_queue">Ava järjekord</string>
   <string name="morphe_queue_manager_save_queue">Salvesta järjekord loendisse</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
-  <string name="morphe_native_queue_thumbnail_button_title">Kuva järjekorra nuppu miniatüüril</string>
-  <string name="morphe_native_queue_thumbnail_button_summary">Vooguvideominitatüüridel kuvatakse järjekorra nupp. Selle puudutamine lisab video järjekorra lõppu ja selle pikkvajutamine esitab video järgmisena</string>
-  <string name="morphe_native_queue_thumbnail_swap_actions_title">Vaheta miniatüüri järjekorra tegusid</string>
+  <string name="morphe_native_queue_thumbnail_button_title">Kuva järjekorra nupp pisipiltidel</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Vooguvideopisipiltidel kuvatakse järjekorra nupp. Selle puudutamine lisab video järjekorra lõppu ja selle pikkvajutamine esitab video järgmisena</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Vaheta pisipiltide järjekorra tegusid</string>
   <string name="morphe_native_queue_thumbnail_swap_actions_summary">Järjekorra nupu puudutamine esitab video järgmisena ja selle pikkvajutamine lisab video järjekorra lõppu</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Laadi järjekorra lehti kerkimisel</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Laab esitusloendist rohkem videoid, kui kerid järjekorra lõpu lähedis</string>
@@ -900,60 +1035,6 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_swipe_overlay_style_entry_7">Vertikaalne kattekiht (minimalistlik)</string>
   <string name="morphe_swipe_change_video_title">Luba videote vahetamine pühkimisega</string>
   <string name="morphe_swipe_change_video_summary">Pühkige täisekraani režiimis, et hüppata järgmise või eelmise videole</string>
-  <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_action_buttons_screen_title">Toimingunupud</string>
-  <string name="morphe_action_buttons_screen_summary">Valige, millised tegevusnupud kuvatakse portreetri- ja täisekraani režiimides</string>
-  <string name="morphe_portrait_buttons">Portreepildi nupud</string>
-  <string name="morphe_disable_like_subscribe_glow_title">Keela Meeldib ja Tellimise sära</string>
-  <string name="morphe_disable_like_subscribe_glow_summary">Hoiab Like\'i ja Tellimise nuppe säramast, kui looja neid mainitseb</string>
-  <string name="morphe_hide_action_bar_title">Peida tegutsusriba</string>
-  <string name="morphe_hide_like_dislike_button_title">Peida Meeldib ja Ei meeldib nupp</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_share_button_title">Peida Jaga nupp</string>
-  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_stop_ads_button_title">Peida nuppu \'Lõpeta reklaamid\'</string>
-  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-  <string name="morphe_hide_comments_button_title">Peida kommentaaride nupp</string>
-  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_connect_button_title">Peida \'Ühenda\' nupp</string>
-  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on live stream videos. -->
-  <string name="morphe_hide_report_button_title">Peida Teavita nupp</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_remix_button_title">Peida Remixi nupp</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_download_button_title">Peida allalaadimise nupp</string>
-  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on videos uploaded by the logged-in user. -->
-  <string name="morphe_hide_hype_button_title">Peida Hype\'i nupp</string>
-  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_promote_button_title">Peida Edanda nupp</string>
-  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_thanks_button_title">Peida tänu nupp</string>
-  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
-  <string name="morphe_hide_ask_button_title">Peida nuppu \"Küsi\"</string>
-  <string name="morphe_hide_channel_profile_button_title">Peida kanal ja tellimusnupp</string>
-  <string name="morphe_hide_channel_profile_button_summary">Peidab kanali avataari ja tellimisnupu tegevusriba algusest</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Peida tellimisnupp</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_summary">Peidab kanalitähise kõrval toiminguriba alguses nuppud \"Telli\" ja \"Liitu\"</string>
-  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_clip_button_title">Peida nuppu \"Lõika\"</string>
-  <string name="morphe_hide_clip_button_summary">See ei pruugi mõne kasutajakonto puhul töötada</string>
-  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shop_button_title">Peida nuppu \"Pood\"</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_save_button_title">Peida nuppu \"Salvesta\"</string>
-  <string name="morphe_hide_more_button_title">Peida nupp Rohkem</string>
-  <string name="morphe_fullscreen_buttons">Täisekraani nupud</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Peida nuppu \"Ei meeldi\"</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Peida nuppu \"Meeldib\"</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Peida nuppu \"Live-vestlus\"</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Peida nuppu Mix</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Peida nuppu \"Rohkem videoid\"</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Peida nuppu \"Playlista\"</string>
-  <string name="morphe_quick_actions_top_margin_title">Kiirtoimingute ülemine äärtesuurus</string>
-  <string name="morphe_quick_actions_top_margin_summary">Määra kiirtoimingute riba ülemine äärtesuurus (0–32 dp)</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Altekstid</string>
   <string name="morphe_captions_screen_summary">Halda automaatseid suletitreid ja suletitre küpsiseid</string>
@@ -1068,89 +1149,8 @@ Seadetele ligipääsemiseks luba seadete nupp menüüs: Üldine → Tööriistar
   <string name="morphe_show_toolbar_settings_button_type_summary">Kui see on sisse lülitatud, avab lühike puudutus Morphe seaded ja pikk vajutus YouTube\'i seaded. Funktsioonide vastupidiseks muutmiseks lülita see välja</string>
   <string name="morphe_toolbar_buttons_order_title">Tööriistariba nuppude järjekord</string>
   <string name="morphe_toolbar_buttons_order_summary">Lohistage nuppe, et muuta nende järjekorda tööriistaribal</string>
-  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">Hüpikmenüü</string>
-  <string name="morphe_hide_player_flyout_summary">Vali, millised komponendid kuvatakse hüpikmenüüs</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Peida \"Lisaseaded\" / \"Rohkem\" menüü</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Peida menüü \"Ümbritsev režiim\"</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Menüü \"Audio Track\" on peidetud
-
-Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvaliseks kliendiks peale \"Android Studio\" ja \"Android VR Downgraded\""</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Peida menüü \"Helirada\"</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">Peida menüü \"Helirada\" jaluse</string>
-  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_captions_title">Peida menüü \"Altekirjad\"</string>
-  <string name="morphe_hide_player_flyout_captions_footer_title">Peida menüü \"Altekirjad\" jaluse</string>
-  <string name="morphe_hide_player_flyout_captions_header_title">Peida menüü \"Altekirjad\" päis</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_help_title">Peida menüü \"Abi &amp; tagasiside\"</string>
-  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Peida menüüt \"Kuula YouTube Musicis\"</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Peida menüüt \"Ekraani lukustamine\"</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Peida menüü \"Video kordus\"</string>
-  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_on_the_go_title">Peida menüü \"Liikumise ajal\"</string>
-  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_quality_title">Peida kvaliteedi menüüt</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">Peida kvaliteedi menüü jalust</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">Peida kvaliteedi menüü päis</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Peida menüü \"Uinumisaeg\"</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Peida menüüt \"Esituskiirus\"</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Peida menüü \"Stabiilne helitugevus\"</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Peida menüüt \"Vaata VR-is\"</string>
-  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
-  <string name="morphe_hide_autoplay_preview_title">Peida automaatse esituse eelvaadet</string>
-  <string name="morphe_hide_autoplay_preview_summary">Peidab täisekraani režiimis tuleviku video eelvaate enne automaatset esitust</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_overlay_buttons_screen_title">Ülekattenupud</string>
-  <string name="morphe_overlay_buttons_screen_summary">Valige, millised nupud kuvatakse üle videopleieri</string>
-  <string name="morphe_hide_autoplay_button_title">Peida nuppu \"Automaatne esitus\"</string>
-  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Peida altekirjade nupp</string>
-  <string name="morphe_hide_cast_button_title">Peida Casti nupp</string>
-  <string name="morphe_hide_cast_button_summary">Peidab Edasta nupu videopleieris ja tööriistaribal</string>
-  <string name="morphe_hide_collapse_button_title">Peida Aheneva nupp</string>
-  <string name="morphe_hide_fullscreen_button_title">Peida täisekraani nupp</string>
-  <string name="morphe_hide_player_control_buttons_background_title">Peida pleieri juhtimiste taust</string>
-  <string name="morphe_hide_player_control_buttons_background_summary">Peidab videoesitaja juhtimispaneeli ümbritseva tumeda varjenduse</string>
-  <string name="morphe_player_control_buttons_background_opacity_title">Juhtnupude tausta läbipaistvus</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Reguleeri pleieri juhtnupude ja ajariba tausta läbipaistvust (0 on nähtamatu, 100 on läbimääramatu)</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Peida nupud Eelmine &amp; Järgmine</string>
-  <string name="morphe_hide_settings_button_title">Peida seadete nupp</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Peida lõpuekraani kaardid</string>
-  <!-- layout.hide.ambientmode.ambientModePatch -->
-  <string name="morphe_ambient_mode_screen_title">Ümbritsev režiim</string>
-  <string name="morphe_ambient_mode_screen_summary">Juhi Ambient-režiimi nähtavust ja energiapiiranguid</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">Määra Ümbritseva režiimi piirangutele mööda</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary">Lubab Ambient-režiimil jääda aktiivseks akusäästurežiimis</string>
-  <string name="morphe_disable_ambient_mode_title">Keela Ümbritsev režiim</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_title">Keela Ambient-režiim täisekraanil</string>
-  <string name="morphe_enhanced_ambient_mode_title">Uuendatud Ümbritsev režiim</string>
-  <string name="morphe_enhanced_ambient_mode_summary">Valgustab kogu vaatamislehte ja musti ribasid koos videoga, asendades Ümbritseva režiimi</string>
-  <string name="morphe_enhanced_ambient_mode_strength_title">Valguse tugevus</string>
-  <string name="morphe_enhanced_ambient_mode_strength_summary">Kui tugev on valgus kellakuva lehel ja mustadel ribadel</string>
-  <string name="morphe_enhanced_ambient_mode_smoothing_title">Valguse silendamine</string>
-  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Kui kaua võtab valgusel aega videoga kaasineda. Väärtusega 0 järgib see videot tihedalt</string>
-  <string name="morphe_enhanced_ambient_mode_blur_title">Valguse hägusetamine</string>
-  <string name="morphe_enhanced_ambient_mode_blur_summary">Kui palju on valguse hägusetus video kõrval. Väärtusega 0 säilivad video kujud</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_title">Hoidke tekst loetavana</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hääldab heledate videote valgust, et lehel olev tekst püsiks loetavana</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Hägusta skrollimise ajal</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Hägustab valgust, kui lehte skrollitakse või puudutatakse</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Hägustamise kestus</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Kui kaua jääb valgust hägustatud pärast skrollimise lõppemist. Vääituse 0 korral hägustab valgust ainult skrollimine ja see taastub kohe pärast skrollimise lõppemist</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Peida infokaardid</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1231,15 +1231,15 @@ Seaded → Esituskiirus (või Automaatne esitus) → Järgmise video automaatne 
   <string name="morphe_disable_player_popup_panels_title">Keela pleieri hüpikpaneelid</string>
   <string name="morphe_disable_player_popup_panels_summary">Keelab esitusloendi ja reaalajas vestluse paneelide automaatse avanemise</string>
   <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
-  <string name="morphe_fullscreen_playlist_panel_title">Kuva playlisti paneel täisekranis</string>
-  <string name="morphe_fullscreen_playlist_panel_summary_on">Playlisti paneel avaneb täisekraana esitaja kohale</string>
-  <string name="morphe_fullscreen_playlist_panel_summary_off">Playlisti paneel väljub tahvlitel täisekranirežiimist</string>
+  <string name="morphe_fullscreen_playlist_panel_title">Kuva esitusloendi paneel täisekranis</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Esitusloendi paneel avaneb täisekraana pleieri kohale</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Esitusloendi paneel väljub tahvlitel täisekranirežiimist</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Keela loendite automaatne esitus</string>
   <string name="morphe_disable_playlist_autoplay_summary">Hoiab ära loendite automaatse edenemise järgmise videoni</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Automaatsese esituse juhtimine</string>
-  <string name="morphe_autoplay_control_summary">Lisab esitaja nuppu ja reegli järgmise video jaoks. Playlistid ja järjekorrad jätkuvad, Mix peatub pärast teatud hulka videoid, soovitatud videod ei esita kunagi. Puudutage nuppu järgmise režiimi jaoks, hoidke nuppu all loendi kuvamiseks</string>
+  <string name="morphe_autoplay_control_summary">Lisab pleieri nuppu ja reegli järgmise video jaoks. Esitusloendid ja järjekorrad jätkuvad, Mix peatub pärast teatud hulka videoid, soovitatud videod ei esita kunagi. Puudutage nuppu järgmise režiimi jaoks, hoidke nuppu all loendi kuvamiseks</string>
   <string name="morphe_autoplay_mode_title">Automaatsese esituse režiim</string>
   <string name="morphe_autoplay_mode_entry_1">Automaatne</string>
   <string name="morphe_autoplay_mode_entry_2">Üksik</string>
@@ -1401,7 +1401,7 @@ Auto paigutus
   <string name="morphe_miniplayer_docked_title">Kinnitatud minipleier</string>
   <string name="morphe_miniplayer_docked_summary">Kinnitab minipleieri navigatsiooniribale ja ekraani külgedele selle asemel, et see nende kohal hõljuks</string>
   <string name="morphe_miniplayer_glass_title">Klaasist minipleier</string>
-  <string name="morphe_miniplayer_glass_summary">Kuvab minipleieri kui poolläbipaistva klaasi ümarate nurkadega, sarnaselt klaasist navigeerimisribaga. Järequires klaasist navigeerimisriba</string>
+  <string name="morphe_miniplayer_glass_summary">Kuvab minipleieri kui poolläbipaistva klaasi ümarate nurkadega, sarnaselt klaasist navigeerimisribale. Nõuab klaasist navigeerimisriba</string>
   <string name="morphe_miniplayer_type_entry_0">Välja lülitatud</string>
   <string name="morphe_miniplayer_type_entry_1">Vaikimisi</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalistlik</string>
@@ -1492,7 +1492,7 @@ Auto paigutus
   <string name="morphe_dearrow_titles_player_title">Playeri loendid &amp; soovitused</string>
   <string name="morphe_dearrow_titles_search_title">Otsingutulemused</string>
   <string name="morphe_dearrow_titles_icon_title">Näita DeArrow ikooni</string>
-  <string name="morphe_dearrow_titles_icon_summary">Kuvab DeArrow ikooni videote pealkirjade juures, millel on kogukonnapõhine pealkiri või põhivaate. Puudutage ikooni, et näidata algset pealkirja ja põhivaadet</string>
+  <string name="morphe_dearrow_titles_icon_summary">Kuvab DeArrow ikooni nende videote pealkirjade juures, mille pealkiri või pisipilt on loodud kasutajate poolt. Algse pealkirja ja pisipilt nägemiseks puuduta ikooni</string>
   <string name="morphe_dearrow_casual_mode_title">Vaba režiim</string>
   <string name="morphe_dearrow_casual_mode_summary">Kuvab DeArrow pealkirja asemel algse pealkirja, kui DeArrow kasutajad on hääletanud, et neile meeldib algne pealkiri.</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimaalne häältes arv algse pealkirja kuvamiseks</string>
@@ -1518,13 +1518,13 @@ Videoid küsitakse räsitud video ID lühikese prefiksi abil, et server ei saaks
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow ei ole hetkel saadaval (staatuskood: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow ei ole hetkel saadaval</string>
-  <string name="morphe_dearrow_vote_button_title">Kuva DeArrow nupp</string>
-  <string name="morphe_dearrow_vote_button_summary">Lisab videovõlgijale ülesse hääletamise nupu DeArrow pealkirjade ja põhineguste jaoks või uute esitamiseks</string>
+  <string name="morphe_dearrow_vote_button_title">Kuva DeArrow-nupp</string>
+  <string name="morphe_dearrow_vote_button_summary">Lisab videopleieri ülaossa nupu, mille abil saab DeArrow pealkirjade ja pisipiltide poolt hääletada või esitada uusi</string>
   <string name="morphe_dearrow_guidelines_title">Juhendid</string>
-  <string name="morphe_dearrow_guidelines_summary">Juhendid sisaldavad regleid ja nõuandeid pealkirjade ja põhineguste esitamise ning hääletamise kohta</string>
+  <string name="morphe_dearrow_guidelines_summary">Juhendid sisaldavad reegleid ja nõuandeid pealkirjade ja pisipiltide esitamise ning hääletamise kohta</string>
   <string name="morphe_dearrow_guidelines_popup_title">Järgi juhiseid</string>
   <string name="morphe_dearrow_guidelines_popup_content">Loe DeArrow juhiseid enne pealkirjade ja põikpiltide esitamist või hääletamist</string>
-  <string name="morphe_dearrow_guidelines_popup_already_read">Veel lugenud</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Juba lugenud</string>
   <string name="morphe_dearrow_guidelines_popup_open">Näita mulle</string>
   <string name="morphe_dearrow_vote_title">DeArrow</string>
   <string name="morphe_dearrow_vote_loading">Laadimine…</string>
@@ -1537,12 +1537,12 @@ Videoid küsitakse räsitud video ID lühikese prefiksi abil, et server ei saaks
   <!-- %s is a time of the video, such as 10:14.19 -->
   <string name="morphe_dearrow_vote_thumbnail_time">Kaader ajal %s</string>
   <!-- %s is the upvotes minus the downvotes, and can be negative. -->
-  <string name="morphe_dearrow_vote_score">Skoor: %s</string>
+  <string name="morphe_dearrow_vote_score">Tulemus: %s</string>
   <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
   <string name="morphe_dearrow_vote_unverified">Kinnitamata</string>
   <string name="morphe_dearrow_vote_locked">Lukustatud</string>
-  <string name="morphe_dearrow_vote_upvote">Tugi</string>
-  <string name="morphe_dearrow_vote_downvote">Mita</string>
+  <string name="morphe_dearrow_vote_upvote">Pluss</string>
+  <string name="morphe_dearrow_vote_downvote">Miinus</string>
   <string name="morphe_dearrow_vote_new_title">Uus pealkiri</string>
   <string name="morphe_dearrow_vote_new_title_hint">Kirjutage pealkiri</string>
   <string name="morphe_dearrow_vote_submit">Saada</string>
@@ -1550,8 +1550,8 @@ Videoid küsitakse räsitud video ID lühikese prefiksi abil, et server ei saaks
   <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
   <string name="morphe_dearrow_vote_frame_step">%s s</string>
   <!-- %s is a time of the video, such as 10:14.19 -->
-  <string name="morphe_dearrow_vote_current_frame_content">Kas soovite saata kaadre %s miniatuurina?</string>
-  <string name="morphe_dearrow_vote_current_frame_playing">Video mängib. Kaadre saatmiseks peatage esmalt video</string>
+  <string name="morphe_dearrow_vote_current_frame_content">Kas soovite saata kaadri %s miniatuurina?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Video mängib. Kaadri saatmiseks peatage esmalt video</string>
   <string name="morphe_dearrow_vote_upvoted">Hääletus on DeArrow\"le saadetud</string>
   <string name="morphe_dearrow_vote_downvoted">Negatiivne hääletus saadeti DeArrow\'le</string>
   <!-- %s is the reason sent by the DeArrow server, which is in English. -->
@@ -1560,9 +1560,9 @@ Videoid küsitakse räsitud video ID lühikese prefiksi abil, et server ei saaks
   <string name="morphe_dearrow_vote_failed_rate_limit">Selle video hääletamine on veel käigus. Proovi hetke pärast uuesti</string>
   <string name="morphe_dearrow_vote_failed_code">Hääletuse esitamisega ei õnnestunud (staaduskood: %s)</string>
   <string name="morphe_dearrow_vote_failed_connection">Hääletuse esitamisega ei õnnestunud. Kontrolli ühendust ja proovi uuesti</string>
-  <string name="morphe_dearrow_submitting_title">Pealkirjade ja pikkpõlvede esitamine</string>
+  <string name="morphe_dearrow_submitting_title">Pealkirjade ja pisipiltide esitamine</string>
   <string name="morphe_dearrow_vote_time_step_title">Aja reguleerimise samm</string>
-  <string name="morphe_dearrow_vote_time_step_summary">Häälitus-pikkpõlve esitamisel aja täpse reguleerimise nuppide otsingu hulk (millisekundites)</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Pisipildi esitamisel määrake täpse ajareguleerimise nuppude väärtus (millisekundites)</string>
   <string name="morphe_dearrow_vote_time_step_invalid">Väärtus peab olema positiivne number</string>
   <string name="morphe_dearrow_private_user_id_title">Teie privaatne kasutaja-ID</string>
   <string name="morphe_dearrow_private_user_id_summary">Sama kasutaja-ID kui SponsorBlockil. Seda tuleks hoida privaatseks. See on nagu parool ja seda ei tohi kellegagi jagada. Kui keegi selle saab, saab ta end Teie asemel välja anda</string>
@@ -1635,11 +1635,11 @@ Videoid küsitakse räsitud video ID lühikese prefiksi abil, et server ei saaks
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Näita esituskiiruse nuppu</string>
   <string name="morphe_playback_speed_dialog_button_summary">Puudutage ja hoidke all, et lähtestada kiirus vaikimispärasele</string>
-  <string name="morphe_playback_speed_button_cycle_title">Puudutage taasesituskiiruse nuppu kiiruste vaheksuleljamiseks</string>
+  <string name="morphe_playback_speed_button_cycle_title">Puudutage taasesituskiiruse nuppu kiiruste vaheksule lülitamiseks</string>
   <string name="morphe_playback_speed_button_cycle_summary">Puudutamine viib loendi järgmisele kiirusele. Pikk puudutus avab kiiruse menüü</string>
   <string name="morphe_playback_speed_button_cycle_speeds_title">Taasesituskiiruse nupu kiirused</string>
   <string name="morphe_playback_speed_button_cycle_speeds_summary">Kiirused, mida puudutamisega läbitakse, üks rea kohta. Pärast viimast kiirust viib puudutamine tagasi esimesele</string>
-  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Kiirusetsükli loend on ownväärtuslik, lähtestatakse vaikimisele</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Kiirusetsükli loend on vale, lähtestatakse vaikimisele</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Näita kvaliteedi nuppu</string>
   <string name="morphe_video_quality_dialog_button_summary">Puudutage ja hoidke all, et lähtestada kvaliteet vaikimispärasele</string>

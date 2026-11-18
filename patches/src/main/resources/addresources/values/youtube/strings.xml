@@ -128,7 +128,7 @@ Changes include:
     <string name="morphe_hide_upload_time_title">Hide upload time</string>
     <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
     <string name="morphe_hide_upload_time_summary">"Limitations:
-• Shorts shelves, channel pages, and search results may still show upload times
+• Shorts shelves may still show upload times
 • Does not work with automotive layout"</string>
     <string name="morphe_hide_video_thumbnail_title">Hide video thumbnail</string>
     <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -137,7 +137,7 @@ Changes include:
     <string name="morphe_hide_view_count_title">Hide view count</string>
     <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
     <string name="morphe_hide_view_count_summary">"Limitations:
-• Shorts shelves, channel pages, and search results may still show view counts
+• Shorts shelves may still show view counts
 • Does not work with automotive layout"</string>
     <string name="morphe_hide_web_search_results_title">Hide web search results</string>
     <string name="morphe_hide_web_search_results_summary">Hides \'Result from the web\' section from search results</string>
@@ -306,9 +306,10 @@ Limitations:
 
     <string name="morphe_hide_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_channel_watermark_title">Hide channel watermark</string>
-    <string name="morphe_hide_chapters_timeline_button_title">Hide Chapters and \'In this video\' button</string>
+    <string name="morphe_hide_chapters_button_title">Hide Chapters button</string>
     <string name="morphe_hide_crowdfunding_box_title">Hide crowdfunding box</string>
     <string name="morphe_hide_emergency_box_title">Hide emergency boxes</string>
+    <string name="morphe_hide_in_this_video_button_title">Hide \'In this video\' button</string>
     <string name="morphe_hide_info_panels_title">Hide info panels</string>
     <string name="morphe_hide_info_panels_summary">Hides informational context panels, such as medical information</string>
     <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -649,6 +650,10 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_feed_long_press_menu_summary">Tapping and holding anywhere on a feed video opens its menu</string>
     <string name="morphe_feed_watch_later_button_title">Show Watch later button on thumbnails</string>
     <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos, with a check mark if the video is saved. Tapping it saves or removes the video, and tapping and holding it opens Save to playlist</string>
+
+    <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+    <string name="morphe_open_post_images_fullscreen_title">Open post images in fullscreen</string>
+    <string name="morphe_open_post_images_fullscreen_summary">Tapping an image of a post opens it in fullscreen, instead of the posts feed</string>
 
     <!-- interaction.postimages.postImageDownloadPatch -->
     <string name="morphe_post_image_download_title">Download post images</string>
@@ -1072,6 +1077,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_press_to_engage_title">Enable press to swipe gesture</string>
     <string name="morphe_swipe_press_to_engage_summary">Requires pressing and holding before a swipe gesture is recognized</string>
     <string name="morphe_swipe_haptic_feedback_title">Enable haptic feedback</string>
+    <string name="morphe_swipe_haptic_feedback_summary">Vibrates when pressing and holding starts a swipe gesture</string>
     <string name="morphe_swipe_save_and_restore_brightness_title">Save and restore brightness</string>
     <string name="morphe_swipe_save_and_restore_brightness_summary">Remembers brightness level when entering / exiting fullscreen mode</string>
     <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Enable auto-brightness gesture</string>
@@ -1504,6 +1510,10 @@ Automotive layout
     <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
     <string name="morphe_disable_auto_feed_refresh_title">Disable auto feed refresh</string>
     <string name="morphe_disable_auto_feed_refresh_summary">Prevents feeds from refreshing automatically after they become outdated</string>
+
+    <!-- layout.notifications.ungroupNotificationsPatch -->
+    <string name="morphe_ungroup_notifications_title">Ungroup notifications</string>
+    <string name="morphe_ungroup_notifications_summary">Shows every video of a channel\'s grouped uploads as its own notification</string>
 
     <!-- layout.feedcards.feedCardLayoutPatch -->
     <string name="morphe_feed_card_layout_title">Feed card layout</string>

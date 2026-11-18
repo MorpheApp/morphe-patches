@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Erabili deskargatzaile kanpora Download menurako</string>
   <string name="morphe_external_downloader_menu_summary">Menuetako Download aukerak zure kanpoko deskargatzailea irekiko du horren ordez</string>
+  <string name="morphe_download_force_4k_title">Forceitu 4K deskargaren erabilgarritasuna</string>
+  <string name="morphe_download_force_4k_summary">1440p eta 4K deskargapenak gordetzen ditu, YouTube Music-ek gailu honek ez dituen erreproduziagatik erabaki owndoen arren</string>
   <string name="morphe_export_download_folder_title">Deskargak esportatu</string>
   <string name="morphe_export_download_folder_summary">"Aplikazioan gordetako abestizak eta bideoak zure gailuaren biltegian esportatu aplikazioko deskargen flyout menuaren bidez. Sakatu esportazio karpeta aldatzeko
 

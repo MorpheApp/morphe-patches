@@ -35,11 +35,15 @@ Pour utiliser une ancienne version, vous devez &lt;b&gt;désinstaller&lt;/b&gt; 
   <string name="morphe_hide_discover_button_title">Masquer le bouton \'Découvrir\' ou \'Communautés\'</string>
   <string name="morphe_hide_games_button_title">Masquer le bouton \'Jeux\'</string>
   <string name="morphe_screen_sidebar_title">Barre latérale</string>
-  <string name="morphe_hide_recently_visited_shelf_title">Masquer l\'étagère \'Récemment visitées\'</string>
+  <string name="morphe_hide_popular_shelf_title">Masquer \'Populaires\'</string>
+  <string name="morphe_hide_latest_shelf_title">Masquer \'Récents\'</string>
+  <string name="morphe_hide_discover_communities_shelf_title">Masquer \'Découvrir des communautés\'</string>
+  <string name="morphe_hide_start_a_community_shelf_title">Masquer \'Créer une communauté\'</string>
   <string name="morphe_hide_games_on_reddit_shelf_title">Masquer l\'étagère \'Jeux sur Reddit\'</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Masquer l\'étagère \'Récemment visitées\'</string>
   <string name="morphe_hide_reddit_pro_shelf_title">Masquer l\'étagère \'Reddit Pro\'</string>
-  <string name="morphe_hide_about_shelf_title">Masquer l\'étagère \'À propos\'</string>
   <string name="morphe_hide_resources_shelf_title">Masquer l\'étagère \'Ressources\'</string>
+  <string name="morphe_hide_about_shelf_title">Masquer l\'étagère \'À propos\'</string>
   <string name="morphe_screen_layout_title">Mise en page</string>
   <string name="morphe_copy_text_title">Copier le texte</string>
   <string name="morphe_copy_text_summary">Permet de sélectionner et de copier le texte dans les posts et les commentaires. Désactive la possibilité de réduire les commentaires</string>

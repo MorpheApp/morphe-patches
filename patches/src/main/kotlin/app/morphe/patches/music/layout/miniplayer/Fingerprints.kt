@@ -276,6 +276,36 @@ internal object WatchWhileLayoutFingerprint : Fingerprint(
 )
 
 /**
+ * Matches the watch-while layout method that applies a new player state.
+ * Every player state change (DISMISSED, MINIMIZED, MAXIMIZED_NOW_PLAYING...) passes through it.
+ * The first parameter is the player state enum.
+ */
+internal object WatchWhileLayoutSetPlayerStateFingerprint : Fingerprint(
+    definingClass = WATCH_WHILE_LAYOUT_CLASS,
+    returnType = "V",
+    parameters = listOf("L", "F")
+)
+
+/**
+ * Matches the watch-while layout method that requests a new player state,
+ * by moving the player bottom sheet to the matching position.
+ */
+internal fun watchWhileLayoutRequestPlayerStateFingerprint(playerStateClass: String) = Fingerprint(
+    definingClass = WATCH_WHILE_LAYOUT_CLASS,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(playerStateClass),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "Lcom/google/android/material/bottomsheet/BottomSheetBehavior;",
+            parameters = listOf("I"),
+            returnType = "V"
+        )
+    )
+)
+
+/**
  * Matches the watch-while dismiss callback (swipe-dismiss or "Dismiss queue"),
  * identified by an IGET_OBJECT of the MusicActivity peer's AtomicBoolean and
  * a following `AtomicBoolean.set(Z)`. Caller must supply the peer class via

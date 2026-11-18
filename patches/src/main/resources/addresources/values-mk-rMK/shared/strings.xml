@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">Експортирај во датотека</string>
   <string name="morphe_settings_export_file_success">Поставките се извезени успешно</string>
   <string name="morphe_settings_export_file_failed">Извоз на поставките не успеа</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Користите најнова верзија на Morphe Пачови &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Користите Morphe Пачови верзија &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Ажурирање достапно: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;За да ги ажурирате вашите пачови, користете Morphe за да ја надопачете оваа апликација</string>
-  <string name="morphe_settings_about_links_dev_header">Забелешка</string>
-  <string name="morphe_settings_about_links_dev_body">Оваа верзија е пред-објавена и може да наидете на неочекувани проблеми</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Поправки</string>
+  <string name="morphe_settings_about_version">Верзија</string>
+  <string name="morphe_settings_about_close">Затвори</string>
+  <string name="morphe_settings_about_prerelease">Пред-издание</string>
+  <string name="morphe_settings_about_update_available">Достапно ажурирање: %s</string>
+  <string name="morphe_settings_about_update_hint">За да ги ажурирате вашите поправки, користете го Morphe за повторно да ја поправите оваа апликација</string>
   <string name="morphe_settings_about_links_header">Официјални линкови</string>
   <string name="morphe_settings_about_links_website">Веб-страница</string>
   <string name="morphe_settings_about_links_donate">Донирај</string>
   <string name="morphe_settings_about_links_translations">Преводи</string>
-  <string name="morphe_settings_about_links_credits">Кредити</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Актуален</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Достапно ажурирање</string>
+  <string name="morphe_settings_about_contributors">Придонесувачи</string>
+  <string name="morphe_settings_about_contributors_period">Последните 12 месеци</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Поддржувачи</string>
+  <string name="morphe_settings_about_supporters_summary">Поддржувачи на Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Станете поддржувач</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">И уште %s</string>
+  <string name="morphe_settings_about_people_unavailable">Не може да се вчита листата</string>
   <string name="morphe_settings_about_contributors_current">Тековен развој</string>
   <string name="morphe_settings_about_contributors_prior">Претходен развој</string>
   <string name="morphe_settings_about_links_morphe">Активен развој</string>

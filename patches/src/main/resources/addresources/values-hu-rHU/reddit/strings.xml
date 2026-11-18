@@ -35,11 +35,15 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_hide_discover_button_title">Felfedezés vagy Közösségek gomb elrejtése</string>
   <string name="morphe_hide_games_button_title">Játékok gomb elrejtése</string>
   <string name="morphe_screen_sidebar_title">Oldalsáv</string>
-  <string name="morphe_hide_recently_visited_shelf_title">Nemrég megtekintett polc elrejtése</string>
+  <string name="morphe_hide_popular_shelf_title">Népszerű elrejtése</string>
+  <string name="morphe_hide_latest_shelf_title">Legújabb elrejtése</string>
+  <string name="morphe_hide_discover_communities_shelf_title">Közösségek felfedezése elrejtése</string>
+  <string name="morphe_hide_start_a_community_shelf_title">Közösség alapítása elrejtése</string>
   <string name="morphe_hide_games_on_reddit_shelf_title">Játékok a Redditen sáv elrejtése</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Nemrég megtekintett polc elrejtése</string>
   <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro sáv elrejtése</string>
-  <string name="morphe_hide_about_shelf_title">Névjegysáv elrejtése</string>
   <string name="morphe_hide_resources_shelf_title">Források sáv elrejtése</string>
+  <string name="morphe_hide_about_shelf_title">Névjegysáv elrejtése</string>
   <string name="morphe_screen_layout_title">Elrendezés</string>
   <string name="morphe_copy_text_title">Szöveg másolása</string>
   <string name="morphe_copy_text_summary">Lehetővé teszi a szöveg kijelölését és másolását a bejegyzésekben és hozzászólásokban. Letiltja a hozzászólások összecsukását</string>

@@ -27,7 +27,6 @@ import app.morphe.patcher.patch.resourceFile
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patcher.util.returnEarly
-import app.morphe.patcher.xml.XmlElement
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -709,7 +708,10 @@ private fun appNameResourceNames(originalAppName: String): List<String> {
 
         arrayOf("activity", "activity-alias").forEach { tagName ->
             manifest.elements(tagName).forEach { element ->
-                if (!element.isLauncherEntry()) return@forEach
+                if (element.elements("category").none {
+                        it.attribute("android:name") == "android.intent.category.LAUNCHER"
+                    }
+                ) return@forEach
 
                 stringResourceNameOrNull(element.attribute("android:label").orEmpty())?.let {
                     resourceNames += it
@@ -727,9 +729,6 @@ private fun appNameResourceNames(originalAppName: String): List<String> {
  */
 private fun stringResourceNameOrNull(reference: String): String? =
     if (reference.startsWith("@string/")) reference.substring("@string/".length) else null
-
-private fun XmlElement.isLauncherEntry(): Boolean =
-    elements("category").any { it.attribute("android:name") == "android.intent.category.LAUNCHER" }
 
 /**
  * Sets the app name of the default locale, and removes the localized app names because

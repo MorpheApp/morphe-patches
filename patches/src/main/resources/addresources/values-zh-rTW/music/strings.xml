@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">在「下載」選單中使用外部下載器</string>
   <string name="morphe_external_downloader_menu_summary">選單的下載選項會改為開啟你的外部下載器</string>
+  <string name="morphe_download_force_4k_title">強制 4K 下載可用性</string>
+  <string name="morphe_download_force_4k_summary">即使 YouTube Music 認定此裝置無法播放，仍強制儲存 1440p 和 4K 下載內容</string>
   <string name="morphe_export_download_folder_title">匯出下載內容</string>
   <string name="morphe_export_download_folder_summary">"使用應用程式內下載彈出式選單，將應用程式內儲存的歌曲和影片匯出到裝置儲存空間。點選即可更改匯出資料夾
 

@@ -149,15 +149,6 @@ fun gmsCoreSupportPatch(
             return null
         }
 
-        fun transformPrimeMethod(packageName: String) {
-            primeMethodFingerprint!!.method.apply {
-                val index = indexOfFirstStringInstructionOrThrow(fromPackageName)
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                replaceInstruction(index, "const-string v$register, \"$packageName\"")
-            }
-        }
-
         // endregion
 
         string(
@@ -179,7 +170,12 @@ fun gmsCoreSupportPatch(
         }
 
         // Specific method that needs to be patched.
-        primeMethodFingerprint?.let { transformPrimeMethod(toPackageName) }
+        primeMethodFingerprint?.method?.apply {
+            val index = indexOfFirstStringInstructionOrThrow(fromPackageName)
+            val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+            replaceInstruction(index, "const-string v$register, \"$toPackageName\"")
+        }
 
         // Return these methods early to prevent the app from crashing.
         earlyReturnFingerprints.forEach {

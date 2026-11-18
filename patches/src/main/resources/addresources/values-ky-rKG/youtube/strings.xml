@@ -43,16 +43,16 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Макеттин жаңыртууларын өчүрүү</string>
   <string name="morphe_disable_layout_updates_summary">Сервердин тиркеменин макетин жаңыртуусун токтотот</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Тиркеменин макети алгач орнотулгандогу макетке кайтарылат.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Тиркеменин макети алгач орнотулганда колдонулган макетке кайтарылат.
 
-Кээ бир сервердик макеттер кайтарылбашы мүмкүн.
+Кээ бир сервердик макеттер кайтылбашы мүмкүн.
 
-Өзгөртүүлөргө төмөнкүлөр кирет:
-• Плеердин тез менюсундагы компоненттер (же тиешелүү жөндөөлөр) иштебей калышы мүмкүн
-• Сандардын алмашуусу анимацияланбайт
-• Китепкана өтмөгү көрсөтүлөт
-• Видео сүрөттөөнүн музыка бөлүгү иштебей калышы мүмкүн
-• Плеердин тез менюсунун элементтерин жашыруу мүмкүн эмес
+Өзгөрүүлөргө төмөнкүлөр кирет:
+• Толугу менен экранды ээлеген видео сунуштамалары бузулушу мүмкүн
+• Плеердин менюсундагы компоненттер (же тиешелүү жөндөөлөр) иштебей калышы мүмкүн
+• Видео сүрөттөмөсүнүн музыка бөлүмү иштебей калышы мүмкүн
+• Плеер менюсунун элементтерин жашыруу мүмкүн эмес
+• Сандардын айлануусу анимацияланбайт
 • Китепкана өтмөгүндө аккаунтту алмаштыруу баскычы көрүнбөй калышы мүмкүн"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Лентанын кошумча менюсунун фильтрин күйгүзүү</string>
@@ -69,19 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_buttons_title">Канал баскычтарын жашыруу</string>
   <string name="morphe_hide_channel_buttons_summary">Издөө натыйжаларындагы канал профилдеринен Жазылуу, Каналды көрүү, Коомдук жана YouTube Music сыяктуу баскычтарды жашырат</string>
   <string name="morphe_hide_community_posts_title">Коомдук жазууларды жашыруу</string>
-  <string name="morphe_post_buttons_screen_title">Посттун баскычтары</string>
-  <string name="morphe_post_buttons_screen_summary">Коомчулук постторунун астындагы баскычтардын жайгашуусун жана кайсы баскычтарды жашырууну тандаңыз</string>
-  <string name="morphe_post_buttons_layout_title">Пост баскычтарынын жайгашуусу</string>
-  <string name="morphe_post_buttons_layout_entry_1">Сервер</string>
-  <string name="morphe_post_buttons_layout_entry_2">Мажбурланган</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">Жакты жана жактырбады баскычтарын жашыруу</string>
-  <string name="morphe_hide_post_dislike_button_title">Жактырбады баскычын жашыруу</string>
-  <string name="morphe_hide_post_dislike_button_summary">Мажбурланган жайгашуу менен баскычтын орду бош калат</string>
-  <string name="morphe_hide_post_comment_button_title">Комментарий баскычын жашыруу</string>
-  <string name="morphe_hide_post_comments_preview_title">Комментарийлердин алдын көрүүнү жашыруу</string>
-  <string name="morphe_hide_post_comments_preview_summary">Посттордун астындагы комментарийлердин алдын көрүүнү жашырат</string>
-  <string name="morphe_hide_post_share_button_title">Бөлүшүү баскычын жашыруу</string>
-  <string name="morphe_hide_post_share_button_summary">Пост сүрөттөрүн жүктөө баскычы бөлүшүү баскычынын жанында жайгашкан, ошондуктан ал да жашырылат</string>
   <string name="morphe_hide_compact_banner_title">Компакттуу баннерлерди жашыруу</string>
   <string name="morphe_hide_compact_banner_summary">Компакттуу баннерлерди жана айрым компоненттердин ортосундагы боштуктарды жашырат</string>
   <string name="morphe_hide_expandable_card_title">Видеолордун астындагы кеңейтиле турган карталар</string>
@@ -153,196 +140,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles\'торду жашыруу</string>
   <string name="morphe_hide_youtube_doodles_summary">YouTube логотибиндеги сезондук жана иш-чараларга байланыштуу анимацияларды жашырат</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodles көрсөтүү ыңгайлаштырылган жогорку бөлүктөрдүн көрүнбөй калышына алып келиши мүмкүн</string>
-  <string name="morphe_hide_channel_bar_title">Канал панелисин жашыруу</string>
-  <string name="morphe_hide_channel_watermark_title">Каналдын суу белгисин жашыруу</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Бөлүмдөрдү жана \"Бул видеодо\" баскычын жашыруу</string>
-  <string name="morphe_hide_crowdfunding_box_title">Краудфандинг блогун жашыруу</string>
-  <string name="morphe_hide_emergency_box_title">Шашылыш кутуларды жашыруу</string>
-  <string name="morphe_hide_info_panels_title">Маалымат панелдерин жашыруу</string>
-  <string name="morphe_hide_info_panels_summary">Маалыматтык контексттик панелдерди, мисалы, медициналык маалыматтарды жашырат</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">\"Кошулуу\" баскычын жашыруу</string>
-  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">\"Түз эфирдеги чаттагы кайталоо\" баскычын жашыруу</string>
-  <string name="morphe_hide_live_chat_replay_button_summary">Толук экрандуу режимдеги чатты кайра ойнотуу баскычын жашырат</string>
-  <string name="morphe_hide_medical_panels_title">Медициналык панелдерди жашыруу</string>
-  <string name="morphe_hide_player_gesture_hints_title">Плеердин жест-кеңештерин жашыруу</string>
-  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
-          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <string name="morphe_hide_player_gesture_hints_summary">Ойнотуучунун жесттери учурунда көрсөтүлгөн «Так издөө үчүн жогору тартыңыз», «Жокко чыгаруу үчүн коё бериңиз» жана «2x» сыяктуу кеңештерди жашырат</string>
-  <string name="morphe_hide_subscribers_community_guidelines_title">Жазылуучулардын эрежелерин жашыруу</string>
-  <string name="morphe_hide_sync_button_title">\'Видео менен синхрондостоо\' баскычын жашыруу</string>
-  <string name="morphe_hide_tap_and_hold_gradient_title">Басып кармоо градиентин жашыруу</string>
-  <string name="morphe_hide_tap_and_hold_gradient_summary">Ылдамдыкты жогорулатуу үчүн басып кармап, манжаңызды жылдырганда ойноткучтун башкаруу градиентин жашырат</string>
-  <string name="morphe_hide_timed_reactions_title">Убакыттык реакцияларды жашыруу</string>
-  <string name="morphe_hide_timed_reactions_summary">Колдонуучуларга комментарийлер бөлүмүндө жана түз эфирдеги чатта эмодзилер менен реакция кылууга мүмкүндүк берүүчү функцияны жашырат</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">\'Жардам &amp; кайтарым\' менюсун жашыруу</string>
-  <string name="morphe_hide_help_feedback_menu_summary">Издөө жыйынтыктарындагы сыяктуу үч чекиттүү баскычты колдонгондо \'Жардам &amp; кайтарым\' менюсун жашырат</string>
-  <string name="morphe_hide_handle_title">Псевдонимди жашыруу</string>
-  <string name="morphe_hide_handle_summary">\'Сиз\' өтмөгүндө каналдын туткасын жашырат</string>
-  <string name="morphe_hide_video_title_title">Видеонун аталышын жашыруу</string>
-  <string name="morphe_hide_video_title_summary">Толук экрандуу режимде видеонун аталышын жашырат</string>
-  <string name="morphe_sanitize_video_subtitle_title">Видеосубтитрлерди тазалоо</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Видео субтитрлеринен \'#\', \'Фандрейзинг\', \'продукция(лар)\' жана \'Дүкөн\' сыяктуу сөздөрдү тазалайт</string>
-  <string name="morphe_hide_ask_gemini_button_title">\'Gemini\'ден суроо\' баскычын жашыруу</string>
-  <string name="morphe_hide_ask_gemini_button_summary">\'Бул видео жөнүндө суроо\' панелинин төмөгүндөгү \'Gemini\'ден суроо\' баскычын жашырат</string>
-  <string name="morphe_hide_description_components_screen_title">Видеонун сүрөттөлүшү</string>
-  <string name="morphe_hide_description_components_screen_summary">Видеонун сыпаттамасында кайсы компоненттер көрүнөрин тандаңыз</string>
-  <string name="morphe_hide_ai_generated_video_summary_section_title">\"Жасалма интеллект тарабынан түзүлгөн видеонун кыскача мазмуну\" бөлүмүн жашыруу</string>
-  <string name="morphe_hide_ask_section_title">Суроо бөлүмүн жашыруу</string>
-  <string name="morphe_hide_attributes_section_title">Атрибуттар бөлүмүн жашыруу</string>
-  <string name="morphe_hide_attributes_section_summary">Белгиленген жерлер, Оюндар, Музыка жана Эскерилеткен адамдар бөлүмдөрүн жашырат</string>
-  <string name="morphe_hide_channel_links_section_title">Каналдардын шилтемелери бөлүмүн жашыруу</string>
-  <string name="morphe_hide_chapters_section_title">Бөлүмдөр бөлүмүн жашыруу</string>
-  <string name="morphe_hide_corrections_section_title">Оңдоолор бөлүмүн жашыруу</string>
-  <string name="morphe_hide_course_progress_section_title">\"Курстун жүрүшү\" бөлүмүн жашыруу</string>
-  <string name="morphe_hide_explore_section_title">«Издөө» бөлүмүн жашыруу</string>
-  <string name="morphe_hide_explore_section_summary">\"Бул курсту изилдөө\" жана \"Подкастты изилдөө\" бөлүмдөрүн жашырат</string>
-  <string name="morphe_hide_explore_course_section_title">\"Курсту изилдөө\" бөлүмүн жашыруу</string>
-  <string name="morphe_hide_explore_podcast_section_title">\"Подкастты изилдөө\" бөлүмүн жашыруу</string>
-  <string name="morphe_hide_featured_channels_section_title">Тандалган каналдар бөлүмүн жашыруу</string>
-  <string name="morphe_hide_featured_links_section_title">Тандалган шилтемелер бөлүмүн жашыруу</string>
-  <string name="morphe_hide_featured_playlists_section_title">Тандалган плейлисттер бөлүмүн жашыруу</string>
-  <string name="morphe_hide_featured_videos_section_title">Тандалган видеолор бөлүмүн жашыруу</string>
-  <string name="morphe_hide_hashtag_section_title">Хэштег бөлүмүн жашыруу</string>
-  <string name="morphe_hide_how_this_was_made_section_title">\"Бул кантип жасалды\" бөлүмүн жашыруу</string>
-  <string name="morphe_hide_hype_points_title">Hype упайларын жашыруу</string>
-  <string name="morphe_hide_info_cards_section_title">Маалымат карталары бөлүмүн жашыруу</string>
-  <string name="morphe_hide_key_concepts_section_title">\'Негизги түшүнүктөр\' бөлүмүн жашыруу</string>
-  <string name="morphe_hide_quizzes_section_title">Викториналар бөлүмүн жашыруу</string>
-  <string name="morphe_hide_search_inside_this_video_section_title">\"Бул видеонун ичинен издөө\" бөлүмүн жашыруу</string>
-  <string name="morphe_hide_subscribe_button_title">Жазылуу баскычын жашыруу</string>
-  <string name="morphe_hide_transcript_section_title">Транскрипт бөлүмүн жашыруу</string>
-  <string name="morphe_hide_video_details_section_title">\"Видеонун чоо-жайы\" бөлүмүн жашыруу</string>
-  <string name="morphe_hide_filter_bar_screen_title">Филтрлөө панели</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Фильтр панелин кайсы жерде жашырууну тандаңыз</string>
-  <string name="morphe_hide_filter_bar_in_channel_page_title">Канал баракчасында жашыруу</string>
-  <string name="morphe_hide_filter_bar_in_comments_title">Комментарийлерде жашыруу</string>
-  <string name="morphe_hide_filter_bar_in_feed_title">Ленталарда жашыруу</string>
-  <string name="morphe_hide_filter_bar_in_related_videos_title">Окшош видеолордо жашыруу</string>
-  <string name="morphe_hide_filter_bar_in_search_title">Издөө натыйжаларынан жашыруу</string>
-  <string name="morphe_hide_filter_bar_in_history_title">Көрүү тарыхынан жашыруу</string>
-  <string name="morphe_channel_screen_title">Канал баракчасы</string>
-  <string name="morphe_channel_screen_summary">Канал баракчасында кайсы компоненттер көрүнөрүн тандаңыз</string>
-  <string name="morphe_hide_channel_tab_title">Канал өтмөгүнүн фильтрин күйгүзүү</string>
-  <string name="morphe_hide_channel_tab_filter_strings_title">Канал өтмөгүнүн фильтри</string>
-  <string name="morphe_hide_channel_tab_filter_strings_summary">Фильтрлөө үчүн канал табысынын аттарын жаңы саптар менен бөлүп жазыңыз</string>
-  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_community_button_title">Коомдум баскычын жашыруу</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_join_button_title">Кошулуу баскычын жашыруу</string>
-  <string name="morphe_hide_links_preview_title">Шилтемелердин алдын көрүүнү жашыруу</string>
-  <string name="morphe_hide_links_preview_summary">Каналдын башкы бөлүгүндөгү басыла турган веб-шилтемелерди жашырат</string>
-  <string name="morphe_hide_members_only_chip_title">\'Мүчөлөр үчүн гана\' белгисин жашыруу</string>
-  <string name="morphe_hide_members_only_chip_summary">Каналдын чыпкалоо панелиндеги \'Мүчөлөр үчүн гана\' белгисин жашырат</string>
-  <string name="morphe_hide_members_shelf_title">Мүчөлөр теккесин жашыруу</string>
-  <string name="morphe_hide_members_shelf_summary">Канал мүчөлөрүнүн тизмесин жашырат</string>
-  <string name="morphe_hide_posts_shelf_title">Посттор текчесин жашыруу</string>
-  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_store_button_title">Дүкөн баскычын жашыруу</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Жазылуу баскычын жашыруу</string>
-  <string name="morphe_explore_menu_screen_title">Изилдөө менюсу</string>
-  <string name="morphe_explore_menu_screen_summary">Изилдөө менюсунда кайсы компоненттер көрүнөрүн тандаңыз</string>
-  <string name="morphe_hide_courses_menu_title">Курстар менюсун жашыруу</string>
-  <string name="morphe_hide_explore_button_title">Изилдөө баскычын жашыруу</string>
-  <string name="morphe_hide_fashion_menu_title">\'Fashion &amp; Beauty\' менюсун жашыруу</string>
-  <string name="morphe_hide_gaming_menu_title">Гейминг менюсун жашыруу</string>
-  <string name="morphe_hide_hype_menu_title">Hype менюсун жашыруу</string>
-  <string name="morphe_hide_learning_menu_title">Окуу менюсун жашыруу</string>
-  <string name="morphe_hide_live_menu_title">Live менюсун жашыруу</string>
-  <string name="morphe_hide_memberships_menu_title">Мүчөлүк менюсун жашыруу</string>
-  <string name="morphe_hide_movies_menu_title">\'Кинолор &amp; ТВ\' менюсун жашыруу</string>
-  <string name="morphe_hide_music_menu_title">Музыка менюсун жашыруу</string>
-  <string name="morphe_hide_news_menu_title">Жаңылыктар менюсун жашыруу</string>
-  <string name="morphe_hide_playables_menu_title">Playables менюсун жашыруу</string>
-  <string name="morphe_hide_podcasts_menu_title">Подкасттар менюсун жашыруу</string>
-  <string name="morphe_hide_shopping_menu_title">Соода менюсун жашыруу</string>
-  <string name="morphe_hide_sports_menu_title">Спорт менюсун жашыруу</string>
-  <string name="morphe_hide_youtube_premium_menu_title">YouTube Premium менюсун жашыруу</string>
-  <string name="morphe_hide_youtube_studio_menu_title">YouTube Studio менюсун жашыруу</string>
-  <string name="morphe_hide_youtube_music_menu_title">YouTube Music менюсун жашыруу</string>
-  <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids менюсун жашыруу</string>
-  <string name="morphe_hide_youtube_create_menu_title">YouTube Create менюсун жашыруу</string>
-  <string name="morphe_hide_youtube_works_menu_title">\"YouTube кандай иштейт\" менюсун жашыруу</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Юридикалык жана купуялуулук төмөнкү бөлүктөрүн жашыруу</string>
-  <string name="morphe_comments_screen_title">Пикирлер</string>
-  <string name="morphe_comments_screen_summary">Комментарийлер бөлүмүндө кайсы компоненттер көрүнөрүн тандаңыз</string>
-  <string name="morphe_hide_comments_carousel_title">Комментарийлер каруселинин фильтрин күйгүзүү</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Ачкыч сөздү же толук атты киргизиңиз (мисалы, Ask, Community, Hype, Listen)
-• Бардык элементтерди жашыруу комментарийлер бөлүмүн толугу менен жашырат"</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_title">Комментарийлер каруселинин фильтри</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_summary">Фильтрлөө үчүн комментарийлер каруселинин аттарын жаңы саптар менен бөлүп жазыңыз</string>
-  <string name="morphe_hide_comments_ai_chat_summary_title">AI чаттын кыскача мазмунун жашыруу</string>
-  <string name="morphe_hide_comments_channel_guidelines_title">Каналдын эрежелерин жашыруу</string>
-  <string name="morphe_hide_comments_contexts_title">Контексттик билдирүүлөрдү жашыруу</string>
-  <string name="morphe_hide_comments_by_members_header_title">\"Мүчөлөрдүн комментарийлери\" башын жашыруу</string>
-  <string name="morphe_hide_comments_section_title">Комментарийлер бөлүмүн жашыруу</string>
-  <string name="morphe_hide_comments_section_in_home_feed_title">Башкы лентадагы комментарийлер бөлүмүн жашыруу</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Жамааттык эрежелерди жашыруу</string>
-  <string name="morphe_hide_comments_create_a_short_button_title">\"Short түзүү\" баскычын жашыруу</string>
-  <string name="morphe_hide_comments_dislike_button_title">Жакпады баскычын жашыруу</string>
-  <string name="morphe_hide_comments_emoji_button_title">Эмодзи баскычын жашыруу</string>
-  <string name="morphe_hide_comments_filter_bar_options_title">Фильтр панелинин параметрлерин жашыруу</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">\'Эң мыкты\' жана \'Жаңы\' параметрлеринден башка бардык фильтр панелинин параметрлерин жашырат</string>
-  <string name="morphe_hide_comments_gif_button_title">GIF баскычын жашыруу</string>
-  <string name="morphe_hide_comments_gifs_and_images_title">GIF-терди жана сүрөттөрдү жашыруу</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">Комментарийлерге жана жоопторго тиркелген GIF-терди жана сүрөттөрдү жашырат</string>
-  <string name="morphe_hide_comments_gift_animation_and_cards_title">Белектердин анимациясын жана карталарын жашыруу</string>
-  <string name="morphe_hide_comments_gift_button_title">Белек баскычын жашыруу</string>
-  <string name="morphe_hide_comments_info_button_title">Маалымат баскычын жашыруу</string>
-  <string name="morphe_hide_comments_live_chat_donators_bar_title">Түз эфирдеги чаттын донаторлор тилкесин жашыруу</string>
-  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Түз эфирдеги чаттын төмөн карай жылдыруу баскычын жашыруу</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_title">Түз эфирдеги чаттын кеңири маалыматтарын жашыруу</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_summary">Чаттын киргизүү панелинин жанында көрсөтүлгөн кеңири маалыматтарды, мисалы, жазылуучулар үчүн гана чат эскертүүсүн жашырат</string>
-  <string name="morphe_hide_comments_menu_button_title">Меню баскычын жашыруу</string>
-  <string name="morphe_hide_comments_menu_button_summary">Ар бир комментарийдин 3 чекиттик меню баскычын жашырат</string>
-  <string name="morphe_hide_comments_preview_comment_title">Комментарийдин алдын көрүүнү жашыруу</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Толук комментарийлер бөлүмүн ачкыча чейин видеонун астындагы комментарийлердин алдын ала көрүнүшүн жашырат</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Комментарий Morphe тарабынан жашырылган…</string>
-  <string name="morphe_minimal_comments_button_title">Минималдуу комментарийлер баскычын күйгүзүү</string>
-  <string name="morphe_minimal_comments_button_summary">Комментарий баскычында көрсөтүлгөн жылдыргыч карталарды жана алардын барак тандоочусун жашырат</string>
-  <string name="morphe_hide_comments_thanks_button_title">Ыраазычылык билдирүү баскычын жашыруу</string>
-  <string name="morphe_hide_comments_timestamp_button_title">Убакыт белгисинин баскычын жашыруу</string>
-  <string name="morphe_hide_comments_top_fans_button_title">\'Эң мыкты күйөлдөр\' баскычын жашыруу</string>
-  <string name="morphe_hide_comments_translate_button_title">Котормо баскычын жашыруу</string>
-  <string name="morphe_hide_comments_zero_state_title">\"Азырынча комментарийлер жок\" билдирүүсүн жашыруу</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">Белгиленген издөө шилтемелерин тазалоо</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Белгиленген издөө шилтемелерин тазалап, оригиналдуу жөнөкөй текстти гана калтырат</string>
-  <string name="morphe_hide_keyword_content_screen_title">Ачкыч сөздөр боюнча чыпка</string>
-  <string name="morphe_hide_keyword_content_screen_summary">Ленталарда жана издөөдө видеолорду жашыруу үчүн белгилүү бир сөздөрдү же сөздөрдүн айкалыштарын тандаңыз</string>
-  <string name="morphe_hide_keyword_content_comments_title">Комментарийлерди ачкыч сөздөр боюнча жашыруу</string>
-  <string name="morphe_hide_keyword_content_home_title">Башкы беттеги видеолорду ачкыч сөздөр боюнча жашыруу</string>
-  <string name="morphe_hide_keyword_content_search_title">Издөө жыйынтыктарын ачкыч сөздөр боюнча жашыруу</string>
-  <string name="morphe_hide_keyword_content_subscriptions_title">Жазылуулар видеолорун ачкыч сөздөр боюнча жашыруу</string>
-  <string name="morphe_hide_keyword_content_phrases_title">Жашырыла турган ачкыч сөздөр</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Жашырыла турган ачкыч сөздөрдү жана фразаларды жаңы саптар менен бөлүп киргизиңиз
-
-Ачкыч сөздөр видеолордун аталыштарында көрсөтүлгөн каалаган текст болушу мүмкүн. @UserName ачкыч сөзү белгилүү бир авторлордун бардык контентин жашырат"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Башкы бет / Жазылуулар / Издөө / Комментарийлер ачкыч сөздөргө дал келген мазмунду жашыруу үчүн чыпкалат
-
-Чектөөлөр:
-• Кээ бир Shorts каналдын аты боюнча жашырылбайт
-• Кээ бир UI компоненттери жашырылбашы мүмкүн"</string>
-  <string name="morphe_hide_keyword_content_about_whole_words_title">Сөздөрдү толугу менен дал келтирүү</string>
-  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
-  <string name="morphe_hide_keyword_content_about_whole_words_summary">Ачкыч сөздү/фразаны кош тырмакчага алуу видео аталыштарынын жана канал аттарынын жарым-жартылай дал келишин алдын алат&lt;br&gt;&lt;br&gt;Мисалы,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; видеону жашырат: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;бирок муну жашырбайт: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
-  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_length">Ачкыч сөз өтө кыска жана тырмакчаларды талап кылат: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_broad">Ачкыч сөз бардык видеолорду жашырат: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Башкы бет: %1$s
-• Жазылуулар: %2$s
-• Издөө: %3$s
-• Комментарийлер: %4$s
-• Жалпы: %5$s"</string>
-  <string name="morphe_hide_stats_category_title">Статистика</string>
-  <string name="morphe_hide_stats_hidden_24h_title">Жашырылган видеолор, акыркы 24 саат</string>
-  <string name="morphe_hide_stats_hidden_all_title">Жашырылган видеолор, бардык убакыт</string>
-  <string name="morphe_hide_stats_hidden_24h_reset_title">Акыркы 24 сааттык эсептегичти нөлдөө?</string>
-  <string name="morphe_hide_stats_hidden_all_reset_title">Жалпы убакыттын эсептегичин нөлдөө?</string>
   <string name="morphe_hide_aislist_screen_title">AI каналдардын фильтри</string>
   <string name="morphe_hide_aislist_screen_summary">AiSList коомчулук тизмеси тарабынан AI-генерацияланган контент катары белгиленген каналдардын видеолорун жашыруу</string>
   <string name="morphe_hide_aislist_blocklist_category_title">Блоктоо тизмеси: Жогорку ишенимдүүлүк</string>
@@ -390,6 +187,344 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_aislist_submit_failed_rate_limit">Арыздар өтө көп жөнөтүлдү, кийинчерээк кайра аракет кылыңыз</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList арызды четке какты</string>
   <string name="morphe_aislist_submit_failed">Арыз жөнөтүү окшошту, байланышыңызды текшериңиз</string>
+  <string name="morphe_channel_screen_title">Канал баракчасы</string>
+  <string name="morphe_channel_screen_summary">Канал баракчасында кайсы компоненттер көрүнөрүн тандаңыз</string>
+  <string name="morphe_hide_channel_tab_title">Канал өтмөгүнүн фильтрин күйгүзүү</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">Канал өтмөгүнүн фильтри</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">Фильтрлөө үчүн канал табысынын аттарын жаңы саптар менен бөлүп жазыңыз</string>
+  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">Коомдум баскычын жашыруу</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">Кошулуу баскычын жашыруу</string>
+  <string name="morphe_hide_links_preview_title">Шилтемелердин алдын көрүүнү жашыруу</string>
+  <string name="morphe_hide_links_preview_summary">Каналдын башкы бөлүгүндөгү басыла турган веб-шилтемелерди жашырат</string>
+  <string name="morphe_hide_members_only_chip_title">\'Мүчөлөр үчүн гана\' белгисин жашыруу</string>
+  <string name="morphe_hide_members_only_chip_summary">Каналдын чыпкалоо панелиндеги \'Мүчөлөр үчүн гана\' белгисин жашырат</string>
+  <string name="morphe_hide_members_shelf_title">Мүчөлөр теккесин жашыруу</string>
+  <string name="morphe_hide_members_shelf_summary">Канал мүчөлөрүнүн тизмесин жашырат</string>
+  <string name="morphe_hide_posts_shelf_title">Посттор текчесин жашыруу</string>
+  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">Дүкөн баскычын жашыруу</string>
+  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">Жазылуу баскычын жашыруу</string>
+  <string name="morphe_explore_menu_screen_title">Изилдөө менюсу</string>
+  <string name="morphe_explore_menu_screen_summary">Изилдөө менюсунда кайсы компоненттер көрүнөрүн тандаңыз</string>
+  <string name="morphe_hide_courses_menu_title">Курстар менюсун жашыруу</string>
+  <string name="morphe_hide_explore_button_title">Изилдөө баскычын жашыруу</string>
+  <string name="morphe_hide_fashion_menu_title">\'Fashion &amp; Beauty\' менюсун жашыруу</string>
+  <string name="morphe_hide_gaming_menu_title">Гейминг менюсун жашыруу</string>
+  <string name="morphe_hide_hype_menu_title">Hype менюсун жашыруу</string>
+  <string name="morphe_hide_learning_menu_title">Окуу менюсун жашыруу</string>
+  <string name="morphe_hide_live_menu_title">Live менюсун жашыруу</string>
+  <string name="morphe_hide_memberships_menu_title">Мүчөлүк менюсун жашыруу</string>
+  <string name="morphe_hide_movies_menu_title">\'Кинолор &amp; ТВ\' менюсун жашыруу</string>
+  <string name="morphe_hide_music_menu_title">Музыка менюсун жашыруу</string>
+  <string name="morphe_hide_news_menu_title">Жаңылыктар менюсун жашыруу</string>
+  <string name="morphe_hide_playables_menu_title">Playables менюсун жашыруу</string>
+  <string name="morphe_hide_podcasts_menu_title">Подкасттар менюсун жашыруу</string>
+  <string name="morphe_hide_shopping_menu_title">Соода менюсун жашыруу</string>
+  <string name="morphe_hide_sports_menu_title">Спорт менюсун жашыруу</string>
+  <string name="morphe_hide_youtube_premium_menu_title">YouTube Premium менюсун жашыруу</string>
+  <string name="morphe_hide_youtube_studio_menu_title">YouTube Studio менюсун жашыруу</string>
+  <string name="morphe_hide_youtube_music_menu_title">YouTube Music менюсун жашыруу</string>
+  <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids менюсун жашыруу</string>
+  <string name="morphe_hide_youtube_create_menu_title">YouTube Create менюсун жашыруу</string>
+  <string name="morphe_hide_youtube_works_menu_title">\"YouTube кандай иштейт\" менюсун жашыруу</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Юридикалык жана купуялуулук төмөнкү бөлүктөрүн жашыруу</string>
+  <string name="morphe_hide_filter_bar_screen_title">Филтрлөө панели</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Фильтр панелин кайсы жерде жашырууну тандаңыз</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">Канал баракчасында жашыруу</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Комментарийлерде жашыруу</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Ленталарда жашыруу</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Окшош видеолордо жашыруу</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Издөө натыйжаларынан жашыруу</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Көрүү тарыхынан жашыруу</string>
+  <string name="morphe_hide_keyword_content_screen_title">Ачкыч сөздөр боюнча чыпка</string>
+  <string name="morphe_hide_keyword_content_screen_summary">Ленталарда жана издөөдө видеолорду жашыруу үчүн белгилүү бир сөздөрдү же сөздөрдүн айкалыштарын тандаңыз</string>
+  <string name="morphe_hide_keyword_content_comments_title">Комментарийлерди ачкыч сөздөр боюнча жашыруу</string>
+  <string name="morphe_hide_keyword_content_home_title">Башкы беттеги видеолорду ачкыч сөздөр боюнча жашыруу</string>
+  <string name="morphe_hide_keyword_content_search_title">Издөө жыйынтыктарын ачкыч сөздөр боюнча жашыруу</string>
+  <string name="morphe_hide_keyword_content_subscriptions_title">Жазылуулар видеолорун ачкыч сөздөр боюнча жашыруу</string>
+  <string name="morphe_hide_keyword_content_phrases_title">Жашырыла турган ачкыч сөздөр</string>
+  <string name="morphe_hide_keyword_content_phrases_summary">"Жашырыла турган ачкыч сөздөрдү жана фразаларды жаңы саптар менен бөлүп киргизиңиз
+
+Ачкыч сөздөр видеолордун аталыштарында көрсөтүлгөн каалаган текст болушу мүмкүн. @UserName ачкыч сөзү белгилүү бир авторлордун бардык контентин жашырат"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Башкы бет / Жазылуулар / Издөө / Комментарийлер ачкыч сөздөргө дал келген мазмунду жашыруу үчүн чыпкалат
+
+Чектөөлөр:
+• Кээ бир Shorts каналдын аты боюнча жашырылбайт
+• Кээ бир UI компоненттери жашырылбашы мүмкүн"</string>
+  <string name="morphe_hide_keyword_content_about_whole_words_title">Сөздөрдү толугу менен дал келтирүү</string>
+  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <string name="morphe_hide_keyword_content_about_whole_words_summary">Ачкыч сөздү/фразаны кош тырмакчага алуу видео аталыштарынын жана канал аттарынын жарым-жартылай дал келишин алдын алат&lt;br&gt;&lt;br&gt;Мисалы,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; видеону жашырат: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;бирок муну жашырбайт: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_toast_invalid_length">Ачкыч сөз өтө кыска жана тырмакчаларды талап кылат: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_broad">Ачкыч сөз бардык видеолорду жашырат: %s</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Башкы бет: %1$s
+• Жазылуулар: %2$s
+• Издөө: %3$s
+• Комментарийлер: %4$s
+• Жалпы: %5$s"</string>
+  <string name="morphe_hide_stats_category_title">Статистика</string>
+  <string name="morphe_hide_stats_hidden_24h_title">Жашырылган видеолор, акыркы 24 саат</string>
+  <string name="morphe_hide_stats_hidden_all_title">Жашырылган видеолор, бардык убакыт</string>
+  <string name="morphe_hide_stats_hidden_24h_reset_title">Акыркы 24 сааттык эсептегичти нөлдөө?</string>
+  <string name="morphe_hide_stats_hidden_all_reset_title">Жалпы убакыттын эсептегичин нөлдөө?</string>
+  <string name="morphe_post_buttons_screen_title">Посттун баскычтары</string>
+  <string name="morphe_post_buttons_screen_summary">Коомчулук постторунун астындагы баскычтардын жайгашуусун жана кайсы баскычтарды жашырууну тандаңыз</string>
+  <string name="morphe_post_buttons_layout_title">Пост баскычтарынын жайгашуусу</string>
+  <string name="morphe_post_buttons_layout_entry_1">Сервер</string>
+  <string name="morphe_post_buttons_layout_entry_2">Мажбурланган</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Жакты жана Жакпайт баскычтарын жашыруу</string>
+  <string name="morphe_hide_post_dislike_button_title">Жактырбаган баскычын жашыруу</string>
+  <string name="morphe_hide_post_dislike_button_summary">Мажбурланган жайгашуу менен баскычтын орду бош калат</string>
+  <string name="morphe_hide_post_comment_button_title">Комментарий баскычын жашыруу</string>
+  <string name="morphe_hide_post_comments_preview_title">Комментарийлердин алдын көрүүнү жашыруу</string>
+  <string name="morphe_hide_post_comments_preview_summary">Посттордун астындагы комментарийлердин алдын көрүүнү жашырат</string>
+  <string name="morphe_hide_post_share_button_title">Бөлүшүү баскычын жашыруу</string>
+  <string name="morphe_hide_post_share_button_summary">Пост сүрөттөрүнүн жүктөө баскычы Бөлүшүү баскычынын жанында жайгашкан, ошондуктан ал да жашырылат</string>
+  <string name="morphe_hide_ask_gemini_button_title">\'Gemini\'ден суроо\' баскычын жашыруу</string>
+  <string name="morphe_hide_ask_gemini_button_summary">\'Бул видео жөнүндө суроо\' панелинин төмөгүндөгү \'Gemini\'ден суроо\' баскычын жашырат</string>
+  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <string name="morphe_hide_autoplay_preview_title">Автоплей алдын ала көрүүсүн жашыруу</string>
+  <string name="morphe_hide_autoplay_preview_summary">Автоплей башталардан мурун толук экрандагы алдыдагы видеонун алдын көрүүнү жашырат</string>
+  <string name="morphe_hide_channel_bar_title">Канал панелисин жашыруу</string>
+  <string name="morphe_hide_channel_watermark_title">Каналдын суу белгисин жашыруу</string>
+  <string name="morphe_hide_chapters_timeline_button_title">Бөлүмдөрдү жана \"Бул видеодо\" баскычын жашыруу</string>
+  <string name="morphe_hide_crowdfunding_box_title">Краудфандинг блогун жашыруу</string>
+  <string name="morphe_hide_emergency_box_title">Шашылыш кутуларды жашыруу</string>
+  <string name="morphe_hide_info_panels_title">Маалымат панелдерин жашыруу</string>
+  <string name="morphe_hide_info_panels_summary">Маалыматтык контексттик панелдерди, мисалы, медициналык маалыматтарды жашырат</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the video player for certain videos. -->
+  <string name="morphe_hide_join_membership_button_title">\"Кошулуу\" баскычын жашыруу</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">\"Түз эфирдеги чаттагы кайталоо\" баскычын жашыруу</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">Толук экрандуу режимдеги чатты кайра ойнотуу баскычын жашырат</string>
+  <string name="morphe_hide_medical_panels_title">Медициналык панелдерди жашыруу</string>
+  <string name="morphe_hide_player_gesture_hints_title">Плеердин жест-кеңештерин жашыруу</string>
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Ойнотуучунун жесттери учурунда көрсөтүлгөн «Так издөө үчүн жогору тартыңыз», «Жокко чыгаруу үчүн коё бериңиз» жана «2x» сыяктуу кеңештерди жашырат</string>
+  <string name="morphe_hide_subscribers_community_guidelines_title">Жазылуучулардын эрежелерин жашыруу</string>
+  <string name="morphe_hide_sync_button_title">\'Видео менен синхрондостоо\' баскычын жашыруу</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">Басып кармоо градиентин жашыруу</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Ылдамдыкты жогорулатуу үчүн басып кармап, манжаңызды жылдырганда ойноткучтун башкаруу градиентин жашырат</string>
+  <string name="morphe_hide_timed_reactions_title">Убакыттык реакцияларды жашыруу</string>
+  <string name="morphe_hide_timed_reactions_summary">Колдонуучуларга комментарийлер бөлүмүндө жана түз эфирдеги чатта эмодзилер менен реакция кылууга мүмкүндүк берүүчү функцияны жашырат</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">\'Жардам &amp; кайтарым\' менюсун жашыруу</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Издөө жыйынтыктарындагы сыяктуу үч чекиттүү баскычты колдонгондо \'Жардам &amp; кайтарым\' менюсун жашырат</string>
+  <string name="morphe_hide_handle_title">Псевдонимди жашыруу</string>
+  <string name="morphe_hide_handle_summary">\'Сиз\' өтмөгүндө каналдын туткасын жашырат</string>
+  <string name="morphe_hide_video_title_title">Видеонун аталышын жашыруу</string>
+  <string name="morphe_hide_video_title_summary">Толук экрандуу режимде видеонун аталышын жашырат</string>
+  <string name="morphe_sanitize_video_subtitle_title">Видеосубтитрлерди тазалоо</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Видео субтитрлеринен \'#\', \'Фандрейзинг\', \'продукция(лар)\' жана \'Дүкөн\' сыяктуу сөздөрдү тазалайт</string>
+  <!-- layout.buttons.action.hideButtonsPatch -->
+  <string name="morphe_action_buttons_screen_title">Аракет баскычтары</string>
+  <string name="morphe_action_buttons_screen_summary">Портрет жана толук экрандуу режимде кайсы аракет баскычтары пайда болорун тандаңыз</string>
+  <string name="morphe_portrait_buttons">Портрет баскычтары</string>
+  <string name="morphe_disable_like_subscribe_glow_title">\"Лайк\" жана \"Жазылуу\" жаркыратуусун өчүрүү</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">Автор алар жөнүндө айтканда, «Жакты» жана «Жазылуу» баскычтарынын жаркырашын алдын алат</string>
+  <string name="morphe_hide_action_bar_title">Аракеттер панелин жашыруу</string>
+  <string name="morphe_hide_like_dislike_button_title">«Жакты» жана «Жактырбадым» баскычтарын жашыруу</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_share_button_title">«Бөлүшүү» баскычын жашыруу</string>
+  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_stop_ads_button_title">«Жарнамаларды токтотуу» баскычын жашыруу</string>
+  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <string name="morphe_hide_comments_button_title">Комментарийлерди жашыруу баскычы</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">«Жанашуу» баскычын жашыруу</string>
+  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on live stream videos. -->
+  <string name="morphe_hide_report_button_title">Арыз жасоо баскычын жашыруу</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_remix_button_title">Ремикс баскычын жашыруу</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_download_button_title">Жүктөп алуу баскычын жашыруу</string>
+  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on videos uploaded by the logged-in user. -->
+  <string name="morphe_hide_hype_button_title">Хайп баскычын жашыруу</string>
+  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_promote_button_title">Жайылтуу баскычын жашыруу</string>
+  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_thanks_button_title">Ыраазычылык билдирүү баскычын жашыруу</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <string name="morphe_hide_ask_button_title">«Суроо» баскычын жашыруу</string>
+  <string name="morphe_hide_channel_profile_button_title">Каналды жана Жазылуу баскычын жашыруу</string>
+  <string name="morphe_hide_channel_profile_button_summary">Аракеттик панелдин башында каналдын аватарын жана Жазылуу баскычын жашырат</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Жазылуу баскычын жашыруу</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Иш-аракеттер панелинин башында каналдын аватасынын жанындагы Жазылуу жана Кошулуу баскычтарын жашырат</string>
+  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_clip_button_title">«Клип» баскычын жашыруу</string>
+  <string name="morphe_hide_clip_button_summary">Бул айрым колдонуучулардын аккаунттары үчүн иштебеши мүмкүн</string>
+  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shop_button_title">«Дүкөн» баскычын жашыруу</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_save_button_title">«Сактоо» баскычын жашыруу</string>
+  <string name="morphe_hide_more_button_title">\"Көбүрөөк\" баскычын жашыруу</string>
+  <string name="morphe_fullscreen_buttons">Толук экран баскычтары</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">«Жакпайт» баскычын жашыруу</string>
+  <string name="morphe_hide_quick_actions_like_button_title">«Жагат» баскычын жашыруу</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">«Түз эфирдеги чат» баскычын жашыруу</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">«Микс» баскычын жашыруу</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">«Көбүрөөк видеолор» баскычын жашыруу</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Плейлист баскычын жашыруу</string>
+  <string name="morphe_quick_actions_top_margin_title">Тез аракеттердин жогорку чети</string>
+  <string name="morphe_quick_actions_top_margin_summary">Тез аракеттер панелинин жогорку четин белгилөө (0-32 dp)</string>
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">Ambient режими</string>
+  <string name="morphe_ambient_mode_screen_summary">Ambient режимдин көрүнүүсүн жана кубаттуулук чектөөлөрүн башкаруу</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Ambient режиминин чектөөлөрүн айланып өтүү</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary">Ambient режимге батареяны үнөмдөө режиминде активдүү калууга мүмкүнчүлүк берет</string>
+  <string name="morphe_disable_ambient_mode_title">Ambient режимин өчүрүү</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_title">Толук экранда Ambient режимин өчүрүү</string>
+  <string name="morphe_enhanced_ambient_mode_title">Жақшыртылган Ambient режими</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ambient режиминин ордуна бүткүл көрүү бетин жана кара тилкелерди видео менен жарыктандырат</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Жарыктын күчү</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Саат беттинде жана кара тилкелерде жарыктын канчалык күчтүү болорун аныктайт</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Жарыкты тегирдөө</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Жарык видеону канча убакыт бою коштоп жүрөрү. 0 болгондо, ал видеону так коштоп жүрөт</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Жарыкты бүлөңдөө</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Видеонун жанындагы жарыктын канчалык бүлөңдөлөрү. 0 болгондо, ал видеонун формаларын сактайт</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Текстти окула турган кылып сактоо</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Жарык видеолордогу жарыкты азайтып, беттеги тексттин окула турган болушун камсыздайт</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Скроллинг учурунда карартуу</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Баракчаны сыртка чыгарганда же тийгенде жарыкты карартат</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Карартуу узатылышы</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Скроллинг токтогондон кийин жарык канча убакытка караңгы бойдон калат. 0 болсо, жарык скроллинг учурунда гана карартат жана скроллинг токтосо дароо калыбына келет</string>
+  <string name="morphe_comments_screen_title">Пикирлер</string>
+  <string name="morphe_comments_screen_summary">Комментарийлер бөлүмүндө кайсы компоненттер көрүнөрүн тандаңыз</string>
+  <string name="morphe_hide_comments_carousel_title">Комментарийлер каруселинин фильтрин күйгүзүү</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Ачкыч сөздү же толук атты киргизиңиз (мисалы, Ask, Community, Hype, Listen)
+• Бардык элементтерди жашыруу комментарийлер бөлүмүн толугу менен жашырат"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Комментарийлер каруселинин фильтри</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Фильтрлөө үчүн комментарийлер каруселинин аттарын жаңы саптар менен бөлүп жазыңыз</string>
+  <string name="morphe_hide_comments_ai_chat_summary_title">AI чаттын кыскача мазмунун жашыруу</string>
+  <string name="morphe_hide_comments_channel_guidelines_title">Каналдын эрежелерин жашыруу</string>
+  <string name="morphe_hide_comments_contexts_title">Контексттик билдирүүлөрдү жашыруу</string>
+  <string name="morphe_hide_comments_by_members_header_title">\"Мүчөлөрдүн комментарийлери\" башын жашыруу</string>
+  <string name="morphe_hide_comments_section_title">Комментарийлер бөлүмүн жашыруу</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Башкы лентадагы комментарийлер бөлүмүн жашыруу</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Жамааттык эрежелерди жашыруу</string>
+  <string name="morphe_hide_comments_create_a_short_button_title">\"Short түзүү\" баскычын жашыруу</string>
+  <string name="morphe_hide_comments_dislike_button_title">Жакпады баскычын жашыруу</string>
+  <string name="morphe_hide_comments_emoji_button_title">Эмодзи баскычын жашыруу</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Фильтр панелинин параметрлерин жашыруу</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">\'Эң мыкты\' жана \'Жаңы\' параметрлеринден башка бардык фильтр панелинин параметрлерин жашырат</string>
+  <string name="morphe_hide_comments_gif_button_title">GIF баскычын жашыруу</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">GIF-терди жана сүрөттөрдү жашыруу</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Комментарийлерге жана жоопторго тиркелген GIF-терди жана сүрөттөрдү жашырат</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Белектердин анимациясын жана карталарын жашыруу</string>
+  <string name="morphe_hide_comments_gift_button_title">Белек баскычын жашыруу</string>
+  <string name="morphe_hide_comments_info_button_title">Маалымат баскычын жашыруу</string>
+  <string name="morphe_hide_comments_live_chat_donators_bar_title">Түз эфирдеги чаттын донаторлор тилкесин жашыруу</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Түз эфирдеги чаттын төмөн карай жылдыруу баскычын жашыруу</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Түз эфирдеги чаттын кеңири маалыматтарын жашыруу</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Чаттын киргизүү панелинин жанында көрсөтүлгөн кеңири маалыматтарды, мисалы, жазылуучулар үчүн гана чат эскертүүсүн жашырат</string>
+  <string name="morphe_hide_comments_menu_button_title">Меню баскычын жашыруу</string>
+  <string name="morphe_hide_comments_menu_button_summary">Ар бир комментарийдин 3 чекиттик меню баскычын жашырат</string>
+  <string name="morphe_hide_comments_preview_comment_title">Комментарийдин алдын көрүүнү жашыруу</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Толук комментарийлер бөлүмүн ачкыча чейин видеонун астындагы комментарийлердин алдын ала көрүнүшүн жашырат</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Комментарий Morphe тарабынан жашырылган…</string>
+  <string name="morphe_minimal_comments_button_title">Минималдуу комментарийлер баскычын күйгүзүү</string>
+  <string name="morphe_minimal_comments_button_summary">Комментарий баскычында көрсөтүлгөн жылдыргыч карталарды жана алардын барак тандоочусун жашырат</string>
+  <string name="morphe_hide_comments_thanks_button_title">Ыраазычылык билдирүү баскычын жашыруу</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Убакыт белгисинин баскычын жашыруу</string>
+  <string name="morphe_hide_comments_top_fans_button_title">\'Эң мыкты күйөлдөр\' баскычын жашыруу</string>
+  <string name="morphe_hide_comments_translate_button_title">Котормо баскычын жашыруу</string>
+  <string name="morphe_hide_comments_zero_state_title">\"Азырынча комментарийлер жок\" билдирүүсүн жашыруу</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Белгиленген издөө шилтемелерин тазалоо</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Белгиленген издөө шилтемелерин тазалап, оригиналдуу жөнөкөй текстти гана калтырат</string>
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
+  <string name="morphe_hide_player_flyout_title">Ачыла турган меню</string>
+  <string name="morphe_hide_player_flyout_summary">Ачылма менюда кайсы компоненттер пайда болорун тандаңыз</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">\"Кошумча жөндөөлөр\" / Кененирээк менюсун жашыруу</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">\"Айланалык режим\" менюсун жашыруу</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"\"Audio Track\" менюсу жашыруун
+
+\"Audio Track\" менюсун көрсөтүү үчүн, \"Spoof video streams\" параметрин \"Android Studio\" жана \"Android VR Downgraded\" эмес башка каалаган клиентке өзгөртүңүз"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">\"Аудио треги\" менюсун жашыруу</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">\"Аудио треги\" менюсунун төмөнкү бөлүгүн жашыруу</string>
+  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_captions_title">Субтитрлер менюсун жашыруу</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Субтитрлер менюсунун төмөнкү бөлүгүн жашыруу</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Субтитрлер менюсунун жогорку бөлүгүн жашыруу</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_help_title">\"Жардам &amp; кайтарым байланыш\" менюсун жашыруу</string>
+  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">\"YouTube Music менен угуу\" менюсун жашыруу</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">\"Экранды бөгөттөө\" менюсун жашыруу</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">\"Видеону кайталоо\" менюсун жашыруу</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">\'Жолдо\' менюсун жашыруу</string>
+  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_quality_title">Сапат менюсун жашыруу</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Сапат менюсунун төмөнкү бөлүгүн жашыруу</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Сапат менюсунун жогорку бөлүгүн жашыруу</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">\"Уйку таймери\" менюсун жашыруу</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">\"Ойнотуу ылдамдыгы\" менюсун жашыруу</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">\"Туруктуу үн\" менюсун жашыруу</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">\"VR\'де көрүү\" менюсун жашыруу</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_overlay_buttons_screen_title">Үстүңкү баскычтар</string>
+  <string name="morphe_overlay_buttons_screen_summary">Видео плеердин үстүндө кайсы баскычтар пайда болорун тандаңыз</string>
+  <string name="morphe_hide_autoplay_button_title">Автоплей баскычын жашыруу</string>
+  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_captions_button_title">Субтитрлер баскычын жашыруу</string>
+  <string name="morphe_hide_cast_button_title">Cast баскычын жашыруу</string>
+  <string name="morphe_hide_cast_button_summary">Видео ойноткучудагы жана куралдар панелиндеги Cast баскычын жашырат</string>
+  <string name="morphe_hide_collapse_button_title">Жыгуу баскычын жашыруу</string>
+  <string name="morphe_hide_fullscreen_button_title">Толук экран баскычын жашыруу</string>
+  <string name="morphe_hide_player_control_buttons_background_title">Плеер башкаруу баскычтарынын фонун жашыруу</string>
+  <string name="morphe_hide_player_control_buttons_background_summary">Видео плеердин башкаруу баскычтарын курчоочу кара көлөкөнү жашырат</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Башкаруу баскычтарынын фонунун тунуктугу</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Плеердин башкаруу баскычтары жана убакыт панелинин артындагы фондун тунуктугун жөнгө салыңыз (0 - көрүнбөйт, 100 - толук түстө)</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">Мурунку &amp; Кийинки баскычтарын жашыруу</string>
+  <string name="morphe_hide_settings_button_title">Оңдоолор баскычын жашыруу</string>
+  <string name="morphe_hide_description_components_screen_title">Видеонун сүрөттөлүшү</string>
+  <string name="morphe_hide_description_components_screen_summary">Видеонун сыпаттамасында кайсы компоненттер көрүнөрин тандаңыз</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_title">\"Жасалма интеллект тарабынан түзүлгөн видеонун кыскача мазмуну\" бөлүмүн жашыруу</string>
+  <string name="morphe_hide_ask_section_title">Суроо бөлүмүн жашыруу</string>
+  <string name="morphe_hide_attributes_section_title">Атрибуттар бөлүмүн жашыруу</string>
+  <string name="morphe_hide_attributes_section_summary">Белгиленген жерлер, Оюндар, Музыка жана Эскерилеткен адамдар бөлүмдөрүн жашырат</string>
+  <string name="morphe_hide_channel_links_section_title">Каналдардын шилтемелери бөлүмүн жашыруу</string>
+  <string name="morphe_hide_chapters_section_title">Бөлүмдөр бөлүмүн жашыруу</string>
+  <string name="morphe_hide_corrections_section_title">Оңдоолор бөлүмүн жашыруу</string>
+  <string name="morphe_hide_course_progress_section_title">\"Курстун жүрүшү\" бөлүмүн жашыруу</string>
+  <string name="morphe_hide_explore_section_title">«Издөө» бөлүмүн жашыруу</string>
+  <string name="morphe_hide_explore_section_summary">\"Бул курсту изилдөө\" жана \"Подкастты изилдөө\" бөлүмдөрүн жашырат</string>
+  <string name="morphe_hide_explore_course_section_title">\"Курсту изилдөө\" бөлүмүн жашыруу</string>
+  <string name="morphe_hide_explore_podcast_section_title">\"Подкастты изилдөө\" бөлүмүн жашыруу</string>
+  <string name="morphe_hide_featured_channels_section_title">Тандалган каналдар бөлүмүн жашыруу</string>
+  <string name="morphe_hide_featured_links_section_title">Тандалган шилтемелер бөлүмүн жашыруу</string>
+  <string name="morphe_hide_featured_playlists_section_title">Тандалган плейлисттер бөлүмүн жашыруу</string>
+  <string name="morphe_hide_featured_videos_section_title">Тандалган видеолор бөлүмүн жашыруу</string>
+  <string name="morphe_hide_hashtag_section_title">Хэштег бөлүмүн жашыруу</string>
+  <string name="morphe_hide_how_this_was_made_section_title">\"Бул кантип жасалды\" бөлүмүн жашыруу</string>
+  <string name="morphe_hide_hype_points_title">Hype упайларын жашыруу</string>
+  <string name="morphe_hide_info_cards_section_title">Маалымат карталары бөлүмүн жашыруу</string>
+  <string name="morphe_hide_key_concepts_section_title">\'Негизги түшүнүктөр\' бөлүмүн жашыруу</string>
+  <string name="morphe_hide_quizzes_section_title">Викториналар бөлүмүн жашыруу</string>
+  <string name="morphe_hide_search_inside_this_video_section_title">\"Бул видеонун ичинен издөө\" бөлүмүн жашыруу</string>
+  <string name="morphe_hide_subscribe_button_title">Жазылуу баскычын жашыруу</string>
+  <string name="morphe_hide_transcript_section_title">Транскрипт бөлүмүн жашыруу</string>
+  <string name="morphe_hide_video_details_section_title">\"Видеонун чоо-жайы\" бөлүмүн жашыруу</string>
   <!-- layout.snackbar.snackbarPatch -->
   <string name="morphe_snackbar_screen_title">Снэкбар</string>
   <string name="morphe_snackbar_screen_summary">Снэкбарларды жашырыңыз же алардын түстөрүн жана формасын өзгөртүңүз</string>
@@ -542,8 +677,6 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_disable_chapter_skip_double_tap_title">Бөлүмдөрдү эки жолу басып өткөрүүнү өчүрүү</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Бөлүмдөрдү өткөрүп жиберүүчү эки манжа менен эки жолу басуу жестрин өчүрөт, ал бир манжа менен кокустан иштеп кетиши мүмкүн</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
-  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Үчүнчү тараптын жүктөө колдонмолору менен видеолорду, подкасттарды же ырларды жүктөп алыңыз</string>
   <string name="morphe_external_downloader_overlay_button_title">Плеердин үстүндөгү жүктөө баскычын көрсөтүү</string>
   <string name="morphe_external_downloader_overlay_button_summary">Видео плеерде сырткы жүктөгүчтү ача турган баскычты көрсөтөт</string>
@@ -560,14 +693,16 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_shorts_download_flyout_button_title">Shorts менюсунда жүктөөлөрдү көрсөтүү</string>
   <string name="morphe_shorts_download_flyout_button_summary">Shorts ойноткучунун менюсуна жүктөө пунктун кошот</string>
   <string name="morphe_shorts_download_flyout_title">Жүктөө</string>
-  <string name="morphe_feed_download_flyout_button_title">Видео менюлөрүндө жүктөөлөрдү көрсөтүү</string>
-  <string name="morphe_feed_download_flyout_button_summary">Лентадагы жүктөө функциясы жок видеолордун менюсуна жүктөө пунктун кошот, мисалы, YouTube Premium мүчөлөрүнө гана жүктөөгө мүмкүнчүлүк берген видеолорго</string>
+  <string name="morphe_feed_download_flyout_button_title">Жүктөө менюсүн мажбурлап көрсөтүү</string>
+  <string name="morphe_feed_download_flyout_button_summary">Жүктөө мүмкүнчүлүгү жок лента видеолорунун менюсуна жүктөө пунктун кошот</string>
   <string name="morphe_download_force_4k_title">4K жүктөөсүн мажбурлоо мүмкүнчүлүгү</string>
-  <string name="morphe_download_force_4k_summary">YouTube бул түзүлүш бул видеолорду ойнотуу мүмкүн эмес деп чечсе да, 1440p жана 4K форматтарында жүктөө мүмкүнчүлүгүн берет. Мындай видеолор YouTube\'дун ичинде видеосуз ойнотулушу мүмкүн, бирок аларды түзүлүшкө экспорттосо болот</string>
+  <string name="morphe_download_force_4k_summary">YouTube бул түзмөктө ойнотуу мүмкүн эмес деп чечсе да, 1440p жана 4K сапатында жүктөө мүмкүнчүлүгүн берет</string>
+  <string name="morphe_download_quality_about_title">1080p жеткиликтүү эмес</string>
+  <string name="morphe_download_quality_about_summary">Эгерде колдонмо ичиндеги жүктөөлөр 1080p сунуштабаса, \"Ар түрдүү\" жөндөөлөрөөндөн \"Түзмөктүн өлчөмдөрүн имитациялоо\" функциясын күйгүзүңүз</string>
   <string name="morphe_export_download_folder_title">Сакталган видеолорду экспорттоо</string>
-  <string name="morphe_export_download_folder_summary">"Тиркеменин жүктөөлөр менюсун колдонуп, сакталган видеолорду түзүлүшүңүздүн эс тутумуна экспорттоңуз. Экспорттоло турган папканы өзгөртүү үчүн басыңыз
+  <string name="morphe_export_download_folder_summary">"Тиркемедеги сакталган видеолорду тиркемедеги жүктөөлөр менюсу аркылуу түзмөгүңүздүн эстутумуна экспорттоңуз. Экспорттоо папкасын өзгөртүү үчүн бул жерди басыңыз
 
-Экспорттоло турган папка: %s"</string>
+Экспорттоо папкасы: %s"</string>
   <string name="morphe_export_download_started">Видео экспорттолууда</string>
   <string name="morphe_export_download_progress">Видео экспорттолуп жатат: %s%%</string>
   <string name="morphe_export_download_notification_channel">Видео экспорттору</string>
@@ -899,60 +1034,6 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_swipe_overlay_style_entry_7">Вертикалдык оверлей (минималистика)</string>
   <string name="morphe_swipe_change_video_title">Видеолорду алмаштыруу үчүн сыргытууну күйгүзүү</string>
   <string name="morphe_swipe_change_video_summary">Кийинки же мурунку видеого өтүү үчүн толук экрандуу режимде сыргыңыз</string>
-  <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_action_buttons_screen_title">Аракет баскычтары</string>
-  <string name="morphe_action_buttons_screen_summary">Портрет жана толук экрандуу режимде кайсы аракет баскычтары пайда болорун тандаңыз</string>
-  <string name="morphe_portrait_buttons">Портрет баскычтары</string>
-  <string name="morphe_disable_like_subscribe_glow_title">\"Лайк\" жана \"Жазылуу\" жаркыратуусун өчүрүү</string>
-  <string name="morphe_disable_like_subscribe_glow_summary">Автор алар жөнүндө айтканда, «Жакты» жана «Жазылуу» баскычтарынын жаркырашын алдын алат</string>
-  <string name="morphe_hide_action_bar_title">Аракеттер панелин жашыруу</string>
-  <string name="morphe_hide_like_dislike_button_title">«Жакты» жана «Жактырбадым» баскычтарын жашыруу</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_share_button_title">«Бөлүшүү» баскычын жашыруу</string>
-  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_stop_ads_button_title">«Жарнамаларды токтотуу» баскычын жашыруу</string>
-  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-  <string name="morphe_hide_comments_button_title">Комментарийлерди жашыруу баскычы</string>
-  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_connect_button_title">«Жанашуу» баскычын жашыруу</string>
-  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on live stream videos. -->
-  <string name="morphe_hide_report_button_title">Арыз жасоо баскычын жашыруу</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_remix_button_title">Ремикс баскычын жашыруу</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_download_button_title">Жүктөп алуу баскычын жашыруу</string>
-  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on videos uploaded by the logged-in user. -->
-  <string name="morphe_hide_hype_button_title">Хайп баскычын жашыруу</string>
-  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_promote_button_title">Жайылтуу баскычын жашыруу</string>
-  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_thanks_button_title">Ыраазычылык билдирүү баскычын жашыруу</string>
-  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
-  <string name="morphe_hide_ask_button_title">«Суроо» баскычын жашыруу</string>
-  <string name="morphe_hide_channel_profile_button_title">Каналды жана Жазылуу баскычын жашыруу</string>
-  <string name="morphe_hide_channel_profile_button_summary">Аракеттик панелдин башында каналдын аватарын жана Жазылуу баскычын жашырат</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Жазылуу баскычын жашыруу</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_summary">Иш-аракеттер панелинин башында каналдын аватасынын жанындагы Жазылуу жана Кошулуу баскычтарын жашырат</string>
-  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_clip_button_title">«Клип» баскычын жашыруу</string>
-  <string name="morphe_hide_clip_button_summary">Бул айрым колдонуучулардын аккаунттары үчүн иштебеши мүмкүн</string>
-  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shop_button_title">«Дүкөн» баскычын жашыруу</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_save_button_title">«Сактоо» баскычын жашыруу</string>
-  <string name="morphe_hide_more_button_title">\"Көбүрөөк\" баскычын жашыруу</string>
-  <string name="morphe_fullscreen_buttons">Толук экран баскычтары</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">«Жакпайт» баскычын жашыруу</string>
-  <string name="morphe_hide_quick_actions_like_button_title">«Жагат» баскычын жашыруу</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">«Түз эфирдеги чат» баскычын жашыруу</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">«Микс» баскычын жашыруу</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">«Көбүрөөк видеолор» баскычын жашыруу</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Плейлист баскычын жашыруу</string>
-  <string name="morphe_quick_actions_top_margin_title">Тез аракеттердин жогорку чети</string>
-  <string name="morphe_quick_actions_top_margin_summary">Тез аракеттер панелинин жогорку четин белгилөө (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Субтитрлер</string>
   <string name="morphe_captions_screen_summary">Автоматтык субтитрлерди жана субтитр кукилерини башкаруу</string>
@@ -1067,89 +1148,8 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_show_toolbar_settings_button_type_summary">Иштетилгенде, басуу Morphe жөндөөлөрүн, ал эми узак басуу YouTube жөндөөлөрүн ачат; алмаштыруу үчүн өчүрүңүз</string>
   <string name="morphe_toolbar_buttons_order_title">Куралдар панелинин баскычтарынын тартиби</string>
   <string name="morphe_toolbar_buttons_order_summary">Куралдар панелиндеги баскычтардын тартибин өзгөртүү үчүн аларды сүйрөңүз</string>
-  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">Ачыла турган меню</string>
-  <string name="morphe_hide_player_flyout_summary">Ачылма менюда кайсы компоненттер пайда болорун тандаңыз</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">\"Кошумча жөндөөлөр\" / Кененирээк менюсун жашыруу</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">\"Айланалык режим\" менюсун жашыруу</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"\"Audio Track\" менюсу жашыруун
-
-\"Audio Track\" менюсун көрсөтүү үчүн, \"Spoof video streams\" параметрин \"Android Studio\" жана \"Android VR Downgraded\" эмес башка каалаган клиентке өзгөртүңүз"</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">\"Аудио треги\" менюсун жашыруу</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">\"Аудио треги\" менюсунун төмөнкү бөлүгүн жашыруу</string>
-  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_captions_title">Субтитрлер менюсун жашыруу</string>
-  <string name="morphe_hide_player_flyout_captions_footer_title">Субтитрлер менюсунун төмөнкү бөлүгүн жашыруу</string>
-  <string name="morphe_hide_player_flyout_captions_header_title">Субтитрлер менюсунун жогорку бөлүгүн жашыруу</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_help_title">\"Жардам &amp; кайтарым байланыш\" менюсун жашыруу</string>
-  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">\"YouTube Music менен угуу\" менюсун жашыруу</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">\"Экранды бөгөттөө\" менюсун жашыруу</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">\"Видеону кайталоо\" менюсун жашыруу</string>
-  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_on_the_go_title">\'Жолдо\' менюсун жашыруу</string>
-  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_quality_title">Сапат менюсун жашыруу</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">Сапат менюсунун төмөнкү бөлүгүн жашыруу</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">Сапат менюсунун жогорку бөлүгүн жашыруу</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">\"Уйку таймери\" менюсун жашыруу</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">\"Ойнотуу ылдамдыгы\" менюсун жашыруу</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">\"Туруктуу үн\" менюсун жашыруу</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">\"VR\'де көрүү\" менюсун жашыруу</string>
-  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
-  <string name="morphe_hide_autoplay_preview_title">Автоплей алдын ала көрүүсүн жашыруу</string>
-  <string name="morphe_hide_autoplay_preview_summary">Автоплей башталардан мурун толук экрандагы алдыдагы видеонун алдын көрүүнү жашырат</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_overlay_buttons_screen_title">Үстүңкү баскычтар</string>
-  <string name="morphe_overlay_buttons_screen_summary">Видео плеердин үстүндө кайсы баскычтар пайда болорун тандаңыз</string>
-  <string name="morphe_hide_autoplay_button_title">Автоплей баскычын жашыруу</string>
-  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Субтитрлер баскычын жашыруу</string>
-  <string name="morphe_hide_cast_button_title">Cast баскычын жашыруу</string>
-  <string name="morphe_hide_cast_button_summary">Видео ойноткучудагы жана куралдар панелиндеги Cast баскычын жашырат</string>
-  <string name="morphe_hide_collapse_button_title">Жыгуу баскычын жашыруу</string>
-  <string name="morphe_hide_fullscreen_button_title">Толук экран баскычын жашыруу</string>
-  <string name="morphe_hide_player_control_buttons_background_title">Плеер башкаруу баскычтарынын фонун жашыруу</string>
-  <string name="morphe_hide_player_control_buttons_background_summary">Видео плеердин башкаруу баскычтарын курчоочу кара көлөкөнү жашырат</string>
-  <string name="morphe_player_control_buttons_background_opacity_title">Башкаруу баскычтарынын фонунун тунуктугу</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Плеердин башкаруу баскычтары жана убакыт панелинин артындагы фондун тунуктугун жөнгө салыңыз (0 - көрүнбөйт, 100 - толук түстө)</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Мурунку &amp; Кийинки баскычтарын жашыруу</string>
-  <string name="morphe_hide_settings_button_title">Оңдоолор баскычын жашыруу</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Аяктоо экранынын карталарын жашыруу</string>
-  <!-- layout.hide.ambientmode.ambientModePatch -->
-  <string name="morphe_ambient_mode_screen_title">Ambient режими</string>
-  <string name="morphe_ambient_mode_screen_summary">Ambient режимдин көрүнүүсүн жана кубаттуулук чектөөлөрүн башкаруу</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">Ambient режиминин чектөөлөрүн айланып өтүү</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary">Ambient режимге батареяны үнөмдөө режиминде активдүү калууга мүмкүнчүлүк берет</string>
-  <string name="morphe_disable_ambient_mode_title">Ambient режимин өчүрүү</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_title">Толук экранда Ambient режимин өчүрүү</string>
-  <string name="morphe_enhanced_ambient_mode_title">Жақшыртылган Ambient режими</string>
-  <string name="morphe_enhanced_ambient_mode_summary">Ambient режиминин ордуна бүткүл көрүү бетин жана кара тилкелерди видео менен жарыктандырат</string>
-  <string name="morphe_enhanced_ambient_mode_strength_title">Жарыктын күчү</string>
-  <string name="morphe_enhanced_ambient_mode_strength_summary">Саат беттинде жана кара тилкелерде жарыктын канчалык күчтүү болорун аныктайт</string>
-  <string name="morphe_enhanced_ambient_mode_smoothing_title">Жарыкты тегирдөө</string>
-  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Жарык видеону канча убакыт бою коштоп жүрөрү. 0 болгондо, ал видеону так коштоп жүрөт</string>
-  <string name="morphe_enhanced_ambient_mode_blur_title">Жарыкты бүлөңдөө</string>
-  <string name="morphe_enhanced_ambient_mode_blur_summary">Видеонун жанындагы жарыктын канчалык бүлөңдөлөрү. 0 болгондо, ал видеонун формаларын сактайт</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_title">Текстти окула турган кылып сактоо</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Жарык видеолордогу жарыкты азайтып, беттеги тексттин окула турган болушун камсыздайт</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Скроллинг учурунда карартуу</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Баракчаны сыртка чыгарганда же тийгенде жарыкты карартат</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Карартуу узатылышы</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Скроллинг токтогондон кийин жарык канча убакытка караңгы бойдон калат. 0 болсо, жарык скроллинг учурунда гана карартат жана скроллинг токтосо дароо калыбына келет</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Маалымат карталарын жашыруу</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

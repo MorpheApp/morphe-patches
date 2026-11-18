@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Gunakan pemuat turun luaran untuk menu Muat turun</string>
   <string name="morphe_external_downloader_menu_summary">Pilihan Muat turun pada menu akan membuka pemuat turun luaran anda</string>
+  <string name="morphe_download_force_4k_title">Paksa ketersediaan muat turun 4K</string>
+  <string name="morphe_download_force_4k_summary">Menyimpan muat turun 1440p dan 4K walaupun YouTube Music memutuskan peranti ini tidak boleh memainkannya</string>
   <string name="morphe_export_download_folder_title">Eksport muat turun</string>
   <string name="morphe_export_download_folder_summary">"Eksport lagu dan video yang disimpan dalam aplikasi ke storan peranti anda menggunakan menu flyout muat turun dalam aplikasi. Ketik untuk menukar
 

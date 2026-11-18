@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Folosește descărcător extern pentru meniul Descărcări</string>
   <string name="morphe_external_downloader_menu_summary">Opțiunea Descărcare din meniuri deschide descărcătorul extern al dvs.</string>
+  <string name="morphe_download_force_4k_title">Forțează disponibilitatea descărcării 4K</string>
+  <string name="morphe_download_force_4k_summary">Salvează descărcările 1440p și 4K chiar dacă YouTube Music decide că acest dispozitiv nu le poate reda</string>
   <string name="morphe_export_download_folder_title">Exportă descărcările</string>
   <string name="morphe_export_download_folder_summary">"Exportați melodiile și videoclipurile salvate în aplicație în memoria dispozitivului folosind meniul derulant de descărcări din aplicație. Atingeți pentru a schimba folderul de export
 

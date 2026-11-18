@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">Експорт до файлу</string>
   <string name="morphe_settings_export_file_success">Налаштування успішно експортовано</string>
   <string name="morphe_settings_export_file_failed">Не вдалося експортувати налаштування</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Ви використовуєте останню версію Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Ви використовуєте Morphe Patches версії &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступне оновлення: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Щоб оновити ваші патчі, скористайтесь Morphe для повторного патчингу цього застосунку</string>
-  <string name="morphe_settings_about_links_dev_header">Примітка</string>
-  <string name="morphe_settings_about_links_dev_body">Ця версія є передрелізною, і її робота може бути нестабільною</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Патчі</string>
+  <string name="morphe_settings_about_version">Версія</string>
+  <string name="morphe_settings_about_close">Закрити</string>
+  <string name="morphe_settings_about_prerelease">Попередній реліз</string>
+  <string name="morphe_settings_about_update_available">Доступне оновлення: %s</string>
+  <string name="morphe_settings_about_update_hint">Щоб оновити патчі, скористайтеся Morphe, щоб повторно пропатчити цей застосунок</string>
   <string name="morphe_settings_about_links_header">Офіційні посилання</string>
   <string name="morphe_settings_about_links_website">Вебсайт</string>
   <string name="morphe_settings_about_links_donate">Підтримати</string>
   <string name="morphe_settings_about_links_translations">Переклади</string>
-  <string name="morphe_settings_about_links_credits">Подяки</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">В актуальному стані</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Доступне оновлення</string>
+  <string name="morphe_settings_about_contributors">Учасники</string>
+  <string name="morphe_settings_about_contributors_period">Останні 12 місяців</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Підтримувачі</string>
+  <string name="morphe_settings_about_supporters_summary">Спонсори в Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Стати підтримувачем</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">І ще %s</string>
+  <string name="morphe_settings_about_people_unavailable">Не вдалося завантажити список</string>
   <string name="morphe_settings_about_contributors_current">Поточна розробка</string>
   <string name="morphe_settings_about_contributors_prior">Попередня розробка</string>
   <string name="morphe_settings_about_links_morphe">Активна розробка</string>

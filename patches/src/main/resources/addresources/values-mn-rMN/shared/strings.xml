@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">Файл руу экспортлох</string>
   <string name="morphe_settings_export_file_success">Тохиргоог амжилттай экспортлолоо</string>
   <string name="morphe_settings_export_file_failed">Тохиргоог экспортлох үйлдэл амжилтгүй боллоо</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Та Morphe Patches-ийн хамгийн сүүлийн &lt;i&gt;%s&lt;/i&gt; хувилбарыг ашиглаж байна</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Та Morphe Patches-ийн &lt;i&gt;%1$s&lt;/i&gt; хувилбарыг ашиглаж байна&lt;br&gt;&lt;br&gt;&lt;b&gt;Шинэчлэлт боломжтой: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Патч-аа шинэчлэхийн тулд Morphe-ийг ашиглан энэ аппликейшнийг дахин патчлахыг хүснэ үү</string>
-  <string name="morphe_settings_about_links_dev_header">Тэмдэглэл</string>
-  <string name="morphe_settings_about_links_dev_body">Энэхүү хувилбар нь албан ёсны бус хувилбар тул гэнэтийн алдаа гарч болзошгүй</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Патчууд</string>
+  <string name="morphe_settings_about_version">Хувилбар</string>
+  <string name="morphe_settings_about_close">Хаах</string>
+  <string name="morphe_settings_about_prerelease">Туршилтын хувилбар</string>
+  <string name="morphe_settings_about_update_available">Шинэчлэл боломжтой: %s</string>
+  <string name="morphe_settings_about_update_hint">Патчуудаа шинэчлэхийн тулд Morphe-г ашиглан энэ аппликейшнийг дахин патчлах хэрэгтэй</string>
   <string name="morphe_settings_about_links_header">Албан ёсны холбоосууд</string>
   <string name="morphe_settings_about_links_website">Вэбсайт</string>
   <string name="morphe_settings_about_links_donate">Хандивлах</string>
   <string name="morphe_settings_about_links_translations">Орчуулга</string>
-  <string name="morphe_settings_about_links_credits">Зохиогчид</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Шинэчлэгдсэн</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Шинэчлэл боломжтой</string>
+  <string name="morphe_settings_about_contributors">Зу অবদানчид</string>
+  <string name="morphe_settings_about_contributors_period">Сүүлийн 12 сар</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Дэмжигчид</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective-ийн дэмжигчид</string>
+  <string name="morphe_settings_about_supporters_become">Дэмжигч болох</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Бас %s хүн</string>
+  <string name="morphe_settings_about_people_unavailable">Жагсаалтыг ачаалж чадсангүй</string>
   <string name="morphe_settings_about_contributors_current">Одоогийн хөгжүүлэлт</string>
   <string name="morphe_settings_about_contributors_prior">Өмнөх хөгжүүлэлт</string>
   <string name="morphe_settings_about_links_morphe">Идэвхтэй хөгжүүлэлт</string>

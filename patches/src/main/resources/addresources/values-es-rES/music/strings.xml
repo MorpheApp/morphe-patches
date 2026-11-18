@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Usa el descargador externo para el menú Descargar</string>
   <string name="morphe_external_downloader_menu_summary">La opción Descargar de los menús abre tu descargador externo en su lugar</string>
+  <string name="morphe_download_force_4k_title">Forzar disponibilidad de descarga 4K</string>
+  <string name="morphe_download_force_4k_summary">Guarda descargas de 1440p y 4K incluso si YouTube Music decide que este dispositivo no puede reproducirlas</string>
   <string name="morphe_export_download_folder_title">Exportar descargas</string>
   <string name="morphe_export_download_folder_summary">"Exporta las canciones y los vídeos guardados en la aplicación al almacenamiento de tu dispositivo utilizando el menú desplegable de descargas de la aplicación. Pulsa para cambiar la carpeta de exportación
 

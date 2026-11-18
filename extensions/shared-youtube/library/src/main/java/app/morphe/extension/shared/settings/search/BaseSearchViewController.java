@@ -345,7 +345,7 @@ public abstract class BaseSearchViewController {
             try {
                 PreferenceScreen screen = fragment.getPreferenceScreenForSearch();
                 if (screen != null) {
-                    collectSearchablePreferences(screen);
+                    collectSearchablePreferencesWithKeys(screen, "", new ArrayList<>(), 1, 0);
                     for (BaseSearchResultItem item : allSearchItems) {
                         if (item instanceof BaseSearchResultItem.PreferenceSearchItem prefItem) {
                             String key = prefItem.preference.getKey();
@@ -360,13 +360,6 @@ public abstract class BaseSearchViewController {
                 Logger.printException(() -> "Failed to initialize search data", ex);
             }
         });
-    }
-
-    /**
-     * Collects searchable preferences from a preference group.
-     */
-    protected void collectSearchablePreferences(PreferenceGroup group) {
-        collectSearchablePreferencesWithKeys(group, "", new ArrayList<>(), 1, 0);
     }
 
     /**
@@ -559,7 +552,9 @@ public abstract class BaseSearchViewController {
             searchHistoryManager.showSearchHistory();
             isShowingSearchHistory = true;
         } else {
-            hideAllOverlays();
+            // Hides all overlay containers, including search results and history.
+            hideSearchHistory();
+            hideSearchResults();
         }
     }
 
@@ -569,14 +564,6 @@ public abstract class BaseSearchViewController {
     protected void hideSearchHistory() {
         searchHistoryManager.hideSearchHistoryContainer();
         isShowingSearchHistory = false;
-    }
-
-    /**
-     * Hides all overlay containers, including search results and history.
-     */
-    protected void hideAllOverlays() {
-        hideSearchHistory();
-        hideSearchResults();
     }
 
     /**

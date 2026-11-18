@@ -79,6 +79,6 @@ class MorpheSupportersDialog extends AboutWebViewDialog {
      * @param people The people behind Morphe, or null if they could not be fetched.
      */
     MorpheSupportersDialog(Context context, @Nullable AboutRoutes.People people) {
-        super(context, createDialogHtml(context, people));
+        super(context, createDialogHtml(context, people), false);
     }
 }

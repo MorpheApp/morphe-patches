@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">다운로드 메뉴에 외부 다운로더 사용하기</string>
   <string name="morphe_external_downloader_menu_summary">메뉴에서 다운로드 옵션을 탭하면 외부 다운로더를 실행합니다</string>
+  <string name="morphe_download_force_4k_title">4K 다운로드 강제 사용 가능하게 설정</string>
+  <string name="morphe_download_force_4k_summary">YouTube Music이 이 기기에서 재생할 수 없다고 판단하더라도 1440p 및 4K 다운로드를 저장합니다</string>
   <string name="morphe_export_download_folder_title">다운로드 내보내기</string>
   <string name="morphe_export_download_folder_summary">"앱 내 '오프라인 저장' 메뉴를 사용하여 앱에 저장된 곡과 동영상을 기기 저장소로 내보낼 수 있습니다. 내보내기 폴더를 변경하려면 여기를 탭하세요
 

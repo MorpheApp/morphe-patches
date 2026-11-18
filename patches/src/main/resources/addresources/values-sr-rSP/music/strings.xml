@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Користите спољни преузимач за мени Преузимање</string>
   <string name="morphe_external_downloader_menu_summary">Опција Преузимање у менијима отвара ваш спољни преузимач</string>
+  <string name="morphe_download_force_4k_title">Форсирај доступност 4K преузимања</string>
+  <string name="morphe_download_force_4k_summary">Чува преузимања у 1440p и 4K резолуцији чак и ако YouTube Music одлучи да овај уређај не може да их пусти</string>
   <string name="morphe_export_download_folder_title">Извези преузимања</string>
   <string name="morphe_export_download_folder_summary">"Извезите у апликацији сачуване песме и видеозаписе у складиште вашег уређаја помоћу flyout менија за преузимање у апликацији. Закуцајте да промените извоз
 
@@ -558,6 +560,7 @@ SABR репродукција (када је лажирање видео стр�
   <!-- Total number of votes, always more than one. Example: 44 votes -->
   <!-- Number of votes saying the artist is human. Example: 3 human -->
   <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
   <string name="morphe_music_soundproof_sheet_no_votes_title">Још увек нема гласова за овог уметника</string>
   <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof база података још није доступна</string>
   <string name="morphe_music_soundproof_sheet_unavailable_summary">Преузима се у позадини. Ниједна нумера неће бити прескочена док не буде доступна.</string>

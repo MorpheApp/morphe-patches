@@ -26,4 +26,12 @@ public final class SanitizeSharingLinksPatch {
     public static boolean stripQueryParameters() {
         return Settings.SANITIZE_SHARING_LINKS.get();
     }
+
+    /**
+     * Injection point.
+     * Short links (/r/subreddit/s/id) redirect to the full link with a unique share_id.
+     */
+    public static boolean disableShortLinks() {
+        return Settings.SANITIZE_SHARING_LINKS.get();
+    }
 }

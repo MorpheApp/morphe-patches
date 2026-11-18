@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Externe downloader gebruiken voor menu \'Downloads\'</string>
   <string name="morphe_external_downloader_menu_summary">De optie Download in menu\'s opent je externe downloader</string>
+  <string name="morphe_download_force_4k_title">Forceer beschikbaarheid 4K-download</string>
+  <string name="morphe_download_force_4k_summary">Slaat 1440p- en 4K-downloads op, zelfs als YouTube Music besluit dat dit apparaat ze niet kan afspelen</string>
   <string name="morphe_export_download_folder_title">Downloads exporteren</string>
   <string name="morphe_export_download_folder_summary">"Exporteer in de app opgeslagen nummers en video's naar de opslag van je apparaat via het menu voor downloads in de app. Tik om de exportmap te wijzigen:
 

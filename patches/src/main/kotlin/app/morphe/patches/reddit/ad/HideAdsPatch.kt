@@ -42,8 +42,10 @@ val hideAdsPatch = patch(
         fun hideOldAds(fingerprint: Fingerprint) {
             fingerprint.let {
                 it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val register = getInstruction<TwoRegisterInstruction>(index).registerA
+                    // Use the matched instruction, since other patches can insert at the same index.
+                    val childrenMatch = it.instructionMatches.first()
+                    val index = childrenMatch.index
+                    val register = childrenMatch.getInstruction<TwoRegisterInstruction>().registerA
 
                     addInstructions(
                         index,

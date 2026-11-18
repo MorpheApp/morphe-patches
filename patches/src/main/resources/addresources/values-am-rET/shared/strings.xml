@@ -74,18 +74,27 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">ወደ ፋይል ላክ</string>
   <string name="morphe_settings_export_file_success">ቅንብሮች በተሳካ ሁኔታ ተልከዋል</string>
   <string name="morphe_settings_export_file_failed">ቅንብሮችን መላክ አልተቻለም</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">የቅርብ ጊዜውን የ Morphe Patches ስሪት &lt;i&gt;%s&lt;/i&gt; እየተጠቀሙ ነው</string>
-  <string name="morphe_settings_about_links_body_version_outdated">የ Morphe Patches ስሪት &lt;i&gt;%1$s&lt;/i&gt; እየተጠቀሙ ነው&lt;br&gt;&lt;br&gt;&lt;b&gt;አዲስ ስሪት አለ: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;ፓቾችዎን ለማዘመን፣ ይህንን መተግበሪያ Morphe በመጠቀም እንደገና ፓች ያድርጉ</string>
-  <string name="morphe_settings_about_links_dev_header">ማስታወሻ</string>
-  <string name="morphe_settings_about_links_dev_body">ይህ ስሪት ቅድመ-ልቀት ስሪት ነው እና ያልተጠበቁ ችግሮች ሊያጋጥሙዎት ይችላሉ</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">ፓቾች</string>
+  <string name="morphe_settings_about_version">ትዕይንት</string>
+  <string name="morphe_settings_about_close">ዝጋ</string>
+  <string name="morphe_settings_about_prerelease">ቅድመ-ልቀት</string>
+  <string name="morphe_settings_about_update_available">ማዘመኛ ይገኛል: %s</string>
+  <string name="morphe_settings_about_update_hint">ፓቾችዎን ለማዘመን፣ ይህንን መተግበሪያ እንደገና ለመፓች Morpheን ይጠቀሙ</string>
   <string name="morphe_settings_about_links_header">ይፋዊ ሊንኮች</string>
   <string name="morphe_settings_about_links_website">ድረ-ገጽ</string>
   <string name="morphe_settings_about_links_donate">ልገሳ ያድርጉ</string>
   <string name="morphe_settings_about_links_translations">ትርጉሞች</string>
-  <string name="morphe_settings_about_links_credits">ክሬዲቶች</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">ወቅታዊ ነው</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">አዲስ ስሪት ይገኛል</string>
+  <string name="morphe_settings_about_contributors">አስተዋጽኦ አድራጊዎች</string>
+  <string name="morphe_settings_about_contributors_period">ላለፉት 12 ወራት</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">ደጋፊዎች</string>
+  <string name="morphe_settings_about_supporters_summary">በ Open Collective ላይ ደጋፊዎች</string>
+  <string name="morphe_settings_about_supporters_become">ደጋፊ ይሁኑ</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">እና %s ተጨማሪ</string>
+  <string name="morphe_settings_about_people_unavailable">ዝርዝሩን መጫን አልተቻለም</string>
   <string name="morphe_settings_about_contributors_current">የአሁኑ ልማት</string>
   <string name="morphe_settings_about_contributors_prior">የቀድሞ ልማት</string>
   <string name="morphe_settings_about_links_morphe">ንቁ ልማት</string>
