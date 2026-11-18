@@ -16,6 +16,7 @@ import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
+import app.morphe.extension.reddit.patches.FeedAutoScrollPatch;
 import app.morphe.extension.reddit.patches.FeedMediaMaxHeightPatch;
 import app.morphe.extension.reddit.patches.FlipPostActionBarPatch;
 import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
@@ -72,6 +73,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FlipPostActionBarPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 TabletGridFeedPatch.isPatchIncluded() ||
+                FeedAutoScrollPatch.isPatchIncluded() ||
                 PostSidePanelPatch.isPatchIncluded();
     }
 
@@ -231,6 +233,17 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new CustomDialogListPreference(
                     context,
                     Settings.TABLET_GRID_COLUMNS
+            ));
+        }
+
+        if (FeedAutoScrollPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FEED_AUTO_SCROLL
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.FEED_AUTO_SCROLL_SPEED
             ));
         }
 
