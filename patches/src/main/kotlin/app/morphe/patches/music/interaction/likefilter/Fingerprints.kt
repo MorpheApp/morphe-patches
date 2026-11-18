@@ -5,53 +5,24 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-
 package app.morphe.patches.music.interaction.likefilter
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.instanceOf
-import app.morphe.patcher.newInstance
-import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.string
-import app.morphe.patcher.util.getReference
-import app.morphe.util.findInstructionIndicesReversed
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
-internal fun isEnumType(type: String): Boolean =
-    classDefByOrNull(type)?.let { AccessFlags.ENUM.isSet(it.accessFlags) } == true
-
-/** The enqueue completion callback stores the manager and the command's insertion target. */
-internal fun queueLikeFilterEnqueueCallbackFingerprint(managerType: String) = Fingerprint(
-    name = "<init>",
-    custom = { method, owner ->
-        method.parameterTypes.size == 2 &&
-                method.parameterTypes[0].toString() == managerType &&
-                owner.fields.any { it.type == managerType } &&
-                isEnumType(method.parameterTypes[1].toString())
-    }
-)
-
-/** Enum initialization binds the enqueue target used by the "Play next" action. */
-internal fun queueLikeFilterPlayNextTargetFingerprint(targetType: String) = Fingerprint(
-    definingClass = targetType,
-    name = "<clinit>",
+/**
+ * The success callback of "Play next" and "Add to queue". The first filter reads the list of
+ * songs that are added to the queue from the server response.
+ */
+internal object QueueEnqueueSuccessFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
-        string("INSERT_AFTER_CURRENT_VIDEO"),
-        fieldAccess(definingClass = targetType, type = targetType, opcode = Opcode.SPUT_OBJECT)
+        checkCast("L"),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/util/List;"),
+        string("MusicQueueCallback onSuccess, numItems: %d, insertIndex: %d"),
     )
 )
-
-/** Types referenced by casts, allocations and instanceof checks, in source order. */
-internal fun Method.typeReferences(): List<String> =
-    findInstructionIndicesReversed(
-        anyInstruction(checkCast("L"), newInstance("L"), instanceOf("L"))
-    )
-        .map { getInstruction(it).getReference<TypeReference>()!!.type }
-        .distinct()

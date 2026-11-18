@@ -302,13 +302,10 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_disable_audio_ducking_summary">Volume is not lowered when another app plays a short sound, such as a notification</string>
 
     <!-- interaction.likefilter.queueLikeFilterPatch -->
-    <string name="morphe_music_queue_like_filter_enabled_title">Queue likes filter</string>
-    <string name="morphe_music_queue_like_filter_enabled_summary">Removes songs under the minimum likes from auto-generated mixes and radio. User playlists are left unchanged</string>
-    <string name="morphe_music_queue_like_filter_min_likes_title">Minimum likes</string>
-    <string name="morphe_music_queue_like_filter_min_likes_summary">Songs with fewer likes are removed from auto-generated mixes and radio. Default: 1000</string>
-    <string name="morphe_music_queue_like_filter_active_toast">Queue like filter is active</string>
-    <string name="morphe_music_queue_like_filter_removed_toast">Removed a song with %1$s likes</string>
-    <string name="morphe_music_queue_like_filter_network_toast">Queue like filter cannot reach Return YouTube Dislike</string>
+    <string name="morphe_music_queue_like_filter_title">Queue likes filter</string>
+    <string name="morphe_music_queue_like_filter_summary">Removes songs with few likes from mixes and radio. Playlists, albums and songs you add to the queue are not changed. Like counts are from Return YouTube Dislike</string>
+    <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum likes</string>
+    <string name="morphe_music_queue_like_filter_minimum_likes_summary">Songs with fewer likes are removed from the queue</string>
 
     <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
     <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>
