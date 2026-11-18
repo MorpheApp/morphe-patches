@@ -30,7 +30,12 @@ public final class AdsFilter extends Filter {
                 "music_paid_content_overlay.e"
         );
 
-        addIdentifierCallbacks(alertBannerPromo, paidPromotionLabel);
+        final StringFilterGroup downloadsShelf = new StringFilterGroup(
+                Settings.HIDE_MUSIC_PREMIUM_PROMOTIONS,
+                "music_downloads_shelf.e"
+        );
+
+        addIdentifierCallbacks(alertBannerPromo, paidPromotionLabel, downloadsShelf);
 
         compactBanner = new StringFilterGroup(
                 Settings.HIDE_MUSIC_PREMIUM_PROMOTIONS,
