@@ -190,6 +190,24 @@ public final class DeArrowPatch {
         }
     }
 
+    /**
+     * Available if titles that are not DeArrow titles are replaced: in the navigations
+     * with DeArrow titles, or everywhere if the original titles are restored.
+     */
+    public static final class DeArrowTitleCleanupAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return DeArrowTitlesAvailability.usingDeArrowTitlesAnywhere() || Settings.RESTORE_ORIGINAL_TITLES.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            List<Setting<?>> settings = new ArrayList<>(DeArrowTitlesAvailability.titleSettings());
+            settings.add(Settings.RESTORE_ORIGINAL_TITLES);
+            return settings;
+        }
+    }
+
     public static final class StillImagesAvailability implements Setting.Availability {
         public static boolean usingStillImagesAnywhere() {
             return Settings.DEARROW_THUMBNAIL_HOME.get().useStillImages
@@ -529,6 +547,13 @@ public final class DeArrowPatch {
             // Load the DeArrow thumbnails again, which now use the fallback thumbnails.
             LithoRelayoutPatch.remountListViews();
         }
+    }
+
+    /**
+     * @return If the titles that are not DeArrow titles are cleaned up with {@link TitleCleanup}.
+     */
+    public static boolean cleansUpTitles() {
+        return isPatchIncluded() && Settings.DEARROW_CLEAN_UP_TITLES.get();
     }
 
     /**

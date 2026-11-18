@@ -88,6 +88,7 @@ val deArrowPatch = patch(
                     SwitchPreference("morphe_dearrow_titles_player"),
                     SwitchPreference("morphe_dearrow_titles_search"),
                     SwitchPreference("morphe_dearrow_titles_icon", summary = true),
+                    SwitchPreference("morphe_dearrow_clean_up_titles", summary = true),
                     SwitchPreference(
                         key = "morphe_dearrow_vote_button",
                         summary = true,
