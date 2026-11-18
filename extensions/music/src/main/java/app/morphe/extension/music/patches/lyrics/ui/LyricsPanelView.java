@@ -1958,7 +1958,9 @@ public final class LyricsPanelView extends FrameLayout
             TextView agentTag = createSectionTag(context, agentName);
 
             if (sectionTag != null || agentTag != null) {
-                addTagRow(context, lineRow, sectionTag, agentTag, i, isRightAligned);
+                final int effectiveDuetInset = (isDuetSong && !line.isCentered()
+                        && !Settings.LYRICS_FORCE_CENTER.get()) ? duetSideInset : 0;
+                addTagRow(context, lineRow, sectionTag, agentTag, i, isRightAligned, effectiveDuetInset);
             }
 
             LinearLayout.LayoutParams lineViewParams = new LinearLayout.LayoutParams(
@@ -2079,13 +2081,22 @@ public final class LyricsPanelView extends FrameLayout
 
     /** Adds the section and singer labels above a lead line, on opposite sides. */
     private void addTagRow(Context context, LinearLayout lineRow, @Nullable TextView sectionTag,
-                           @Nullable TextView agentTag, int i, boolean isRightAligned) {
+                           @Nullable TextView agentTag, int i, boolean isRightAligned,
+                           int duetSideInset) {
         FrameLayout tagRow = new FrameLayout(context);
         if (sectionTag != null) {
             tagRow.addView(sectionTag, tagLayoutParams(isRightAligned));
         }
         if (agentTag != null) {
-            tagRow.addView(agentTag, tagLayoutParams(!isRightAligned));
+            FrameLayout.LayoutParams lp = tagLayoutParams(!isRightAligned);
+            if (duetSideInset > 0) {
+                if (isRightAligned) {
+                    lp.leftMargin = -duetSideInset;
+                } else {
+                    lp.rightMargin = -duetSideInset;
+                }
+            }
+            tagRow.addView(agentTag, lp);
         }
         lineRow.addView(tagRow, tagRowLayoutParams(i, Settings.LYRICS_SHOW_SECTION.get()));
     }

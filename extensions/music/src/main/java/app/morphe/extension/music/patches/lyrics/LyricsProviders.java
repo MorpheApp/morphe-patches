@@ -60,15 +60,12 @@ public final class LyricsProviders {
         return providers;
     }
 
-    /**
-     * The providers that can answer a custom title and artist: the ones keyed by the playing
-     * track's video id only know that track, and a prefetch of another track has none to ask with.
-     */
+    /** Only providers keyed by title and artist can answer a custom search; video-id ones can't. */
     public static List<LyricsProvider> searchableProviders(List<LyricsProvider> providers) {
         List<LyricsProvider> result = new ArrayList<>(providers.size());
         for (LyricsProvider provider : providers) {
             switch (provider.name()) {
-                case "YTMusic", "Captions", "Unison", "SimpMusic" -> {
+                case "YTMusic", "Captions" -> {
                 }
                 default -> result.add(provider);
             }
