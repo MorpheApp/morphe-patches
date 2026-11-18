@@ -24,6 +24,7 @@ import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.MetricAffectingSpan;
 import android.text.style.ReplacementSpan;
 import android.util.Pair;
 import android.view.View;
@@ -325,28 +326,44 @@ public final class PostTranslatePatch {
         final int length = spanned.length();
         final int end = translation.length();
         boolean hasColor = false;
+        boolean hasSize = false;
         for (CharacterStyle span : spanned.getSpans(0, length, CharacterStyle.class)) {
             if (isLinkOrImage(span) || spanned.getSpanStart(span) > 0 || spanned.getSpanEnd(span) < length) {
                 continue;
             }
             text.setSpan(span, 0, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
             hasColor |= span instanceof ForegroundColorSpan;
+            hasSize |= span instanceof MetricAffectingSpan;
         }
-        if (!hasColor) {
-            // The color of the first letter, if the text has many colors, such as the color of links.
+        if (!hasColor || !hasSize) {
+            // The color and the size of the first letter, if the text is made of many parts, such as
+            // a text with links, which has the size of the text in each part and not in the paint.
+            // Otherwise, the translation would have the smaller size of the paint.
             for (int i = 0; i < length; i++) {
                 if (!Character.isLetter(spanned.charAt(i))) {
                     continue;
                 }
-                for (ForegroundColorSpan span : spanned.getSpans(i, i + 1, ForegroundColorSpan.class)) {
-                    if (!isLinkOrImage(span)) {
+                for (CharacterStyle span : spanned.getSpans(i, i + 1, CharacterStyle.class)) {
+                    if (isLinkOrImage(span) || text.getSpanStart(span) >= 0) {
+                        continue;
+                    }
+                    if ((!hasColor && span instanceof ForegroundColorSpan)
+                            || (!hasSize && span instanceof MetricAffectingSpan)) {
                         text.setSpan(span, 0, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-                        break;
                     }
                 }
                 break;
             }
         }
+        Logger.printDebug(() -> {
+            List<String> spans = new ArrayList<>();
+            for (CharacterStyle span : spanned.getSpans(0, length, CharacterStyle.class)) {
+                spans.add(span.getClass().getSimpleName() + "[" + spanned.getSpanStart(span)
+                        + "-" + spanned.getSpanEnd(span) + "]");
+            }
+            return "Translation text spans: " + spans + " of length " + length + ", copied: "
+                    + Arrays.toString(text.getSpans(0, end, CharacterStyle.class));
+        });
         return text;
     }
 
