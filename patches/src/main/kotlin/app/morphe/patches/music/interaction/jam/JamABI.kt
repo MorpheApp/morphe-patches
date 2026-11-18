@@ -432,13 +432,7 @@ private fun resolveItem(
                     .matchAllOrNull() != null
             }
             ?.originalMethod ?: error("Missing or ambiguous Jam queue persistent ID")
-    val videoId =
-        queueVideoIdFingerprint(itemTypes)
-            .matchAll()
-            .groupBy { it.originalClassDef.type }
-            .values.singleOrNull { it.size == 1 }
-            ?.single()
-            ?.originalMethod ?: error("Missing or ambiguous Jam queue video ID")
+    val videoId = resolveQueueVideoId(itemType)
 
     val sharedInterfaces =
         itemClasses
@@ -525,6 +519,15 @@ private fun resolveItem(
         factory,
     )
 }
+
+/** The video ID accessor of a queue item, declared by exactly one of its types. */
+internal fun resolveQueueVideoId(itemType: String): Method =
+    queueVideoIdFingerprint(interfaceClosure(itemType))
+        .matchAll()
+        .groupBy { it.originalClassDef.type }
+        .values.singleOrNull { it.size == 1 }
+        ?.single()
+        ?.originalMethod ?: error("Missing or ambiguous Jam queue video ID")
 
 private fun resolveThumbnailType(artworkList: FieldReference): String? {
     val usages =
