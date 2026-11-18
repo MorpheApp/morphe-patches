@@ -82,12 +82,20 @@ internal val miniplayerColorHookPatch = patch {
             }
         }
 
+        // The gray colors the app gives the miniplayer before the colors of the album art are known,
+        // such as on a cold start. The miniplayer resets to them, which is how they are found.
+        val placeholderColorsReference = MiniplayerResetColorsFingerprint.method.let { method ->
+            method.getInstruction<ReferenceInstruction>(method.indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT))
+                .getReference<FieldReference>()!!
+        }
+
         SwitchToggleColorParentFingerprint.method.apply {
             val insertIndex = 0
             val freeRegister = findFreeRegister(insertIndex)
 
             // The extension decides the color of the miniplayer, and keeps the color of the album art
-            // for the navigation bar and the glass.
+            // for the navigation bar and the glass. The placeholder colors are not the colors of a song,
+            // so the miniplayer keeps the color it has.
             addInstructionsWithLabels(
                 insertIndex,
                 """
@@ -95,6 +103,10 @@ internal val miniplayerColorHookPatch = patch {
                     move-result v$freeRegister
                     if-eqz v$freeRegister, :off
                     if-eqz p1, :off
+                    sget-object v$freeRegister, $placeholderColorsReference
+                    invoke-virtual { p1, v$freeRegister }, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+                    move-result v$freeRegister
+                    if-nez v$freeRegister, :off
                     ${getColorMath(freeRegister)}
                     check-cast v$freeRegister, ${colorMathIGetReference.definingClass}
                     iget v$freeRegister, v$freeRegister, $colorMathIGetReference
