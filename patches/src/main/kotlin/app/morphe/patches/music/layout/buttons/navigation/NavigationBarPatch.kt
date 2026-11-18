@@ -87,7 +87,7 @@ val navigationBarPatch = patch(
     execute {
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
-                key = "morphe_music_navigation_bar_screen",
+                key = "morphe_navigation_bar_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_music_hide_navigation_bar_home_button"),

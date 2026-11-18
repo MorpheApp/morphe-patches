@@ -464,9 +464,7 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Enable swipe to dismiss</string>
     <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Allows to dismiss the miniplayer by swiping down on it</string>
 
-    <!-- layout.navigationbar.navigationBarPatch -->
-    <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
-    <string name="morphe_music_navigation_bar_screen_summary">Choose which buttons appear in the bottom navigation bar</string>
+    <!-- layout.buttons.navigation.navigationBarPatch -->
     <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
     <string name="morphe_music_hide_navigation_bar_home_button_title">Hide Home button</string>
     <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -523,7 +521,9 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_navigation_bar_glass_preview_explore">Explore</string>
     <string name="morphe_music_navigation_bar_glass_preview_library">Library</string>
 
+    <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
     <string name="morphe_music_hide_activity_button_title">Hide Activity button</string>
+    <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
     <string name="morphe_music_hide_ask_music_button_title">Hide Ask Music button</string>
     <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_music_hide_history_button_title">Hide History button</string>

@@ -1,4 +1,4 @@
-package app.morphe.patches.music.misc.audio
+package app.morphe.patches.music.video.audio
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_26_or_greater
@@ -23,5 +23,5 @@ val forceOriginalAudioPatch = forceOriginalAudioPatch(
     forcedServerAdaptiveStreaming = { is_9_26_or_greater },
     mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
     subclassExtensionClassDescriptor = "Lapp/morphe/extension/music/patches/ForceOriginalAudioPatch;",
-    preferenceScreen = PreferenceScreen.MISC,
+    preferenceScreen = PreferenceScreen.VIDEO,
 )

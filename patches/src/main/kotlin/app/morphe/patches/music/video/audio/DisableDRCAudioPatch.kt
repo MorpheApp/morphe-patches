@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.music.misc.audio
+package app.morphe.patches.music.video.audio
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_19_or_greater
@@ -26,7 +26,7 @@ val disableDRCAudioPatch = disableDRCAudioPatch(
 
         compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     },
-    preferenceScreen = PreferenceScreen.MISC,
+    preferenceScreen = PreferenceScreen.VIDEO,
     useLegacyNormalizationFlag = { !is_9_19_or_greater },
     // Ignore 9.19 because it's missing a flag and requires version specific changes to support.
     useNormalizationFlag = { is_9_20_or_greater }
