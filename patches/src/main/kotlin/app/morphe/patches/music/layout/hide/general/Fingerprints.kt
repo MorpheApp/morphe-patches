@@ -10,6 +10,7 @@ package app.morphe.patches.music.layout.hide.general
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -158,4 +159,20 @@ internal object ProtoListMutableCopyFingerprint : Fingerprint(
     definingClass = { MusicShelfItemsFingerprint.instructionMatches.first().fieldReference.type },
     returnType = { MusicShelfItemsFingerprint.instructionMatches.first().fieldReference.type },
     parameters = { listOf("I") }
+)
+
+/**
+ * The Library tab binds its floating New button as an extended button. Other fragments bind
+ * a view with the same id as a different class, so the cast tells the Library button apart.
+ */
+internal object NewButtonFingerprint : Fingerprint(
+    name = "onCreateView",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "floating_action_button"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
+        checkCast(
+            "Lcom/google/android/material/floatingactionbutton/ExtendedFloatingActionButton;",
+            location = MatchAfterImmediately()
+        )
+    )
 )

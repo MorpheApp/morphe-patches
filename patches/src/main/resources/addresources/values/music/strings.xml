@@ -194,6 +194,8 @@ Export folder: %s"</string>
     <string name="morphe_music_hide_filter_bar_title">Hide filter bar</string>
     <string name="morphe_music_hide_grid_shelves_title">Hide grid shelves</string>
     <string name="morphe_music_hide_horizontal_shelves_title">Hide horizontal shelves</string>
+    <string name="morphe_music_hide_new_button_title">Hide New button</string>
+    <string name="morphe_music_hide_new_button_summary">Hides the New button in the Library tab</string>
     <string name="morphe_music_hide_list_shelves_title">Hide list shelves</string>
     <string name="morphe_music_hide_lyrics_panel_category_title">Lyrics panel</string>
     <string name="morphe_music_hide_lyrics_share_button_title">Hide Share button</string>
@@ -370,17 +372,6 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_playlist_tags_delete">Delete</string>
     <string name="morphe_music_playlist_tags_hidden">Hidden</string>
 
-    <!-- layout.buttons.hideButtonsPatch -->
-    <string name="morphe_music_hide_ask_music_button_title">Hide Ask Music button</string>
-    <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
-    <string name="morphe_music_hide_history_button_title">Hide History button</string>
-    <string name="morphe_music_hide_notification_button_title">Hide Notification button</string>
-    <string name="morphe_music_hide_search_button_title">Hide Search button</string>
-    <string name="morphe_music_hide_voice_search_button_title">Hide Voice search button</string>
-    <string name="morphe_music_hide_sound_search_button_title">Hide Sound search button</string>
-    <string name="morphe_music_hide_library_new_button_title">Hide New button</string>
-    <string name="morphe_music_hide_library_new_button_summary">Hides the New button in the Library tab</string>
-
     <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
     <string name="morphe_music_action_buttons_screen_title">Action buttons</string>
     <string name="morphe_music_action_buttons_screen_summary">Choose which action buttons appear under the player</string>
@@ -531,6 +522,14 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_navigation_bar_glass_preview_samples">Samples</string>
     <string name="morphe_music_navigation_bar_glass_preview_explore">Explore</string>
     <string name="morphe_music_navigation_bar_glass_preview_library">Library</string>
+
+    <string name="morphe_music_hide_activity_button_title">Hide Activity button</string>
+    <string name="morphe_music_hide_ask_music_button_title">Hide Ask Music button</string>
+    <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
+    <string name="morphe_music_hide_history_button_title">Hide History button</string>
+    <string name="morphe_music_hide_search_button_title">Hide Search button</string>
+    <string name="morphe_music_hide_voice_search_button_title">Hide Voice search button</string>
+    <string name="morphe_music_hide_sound_search_button_title">Hide Sound search button</string>
 
     <!-- interaction.scrobbling.scrobblingPatch -->
     <string name="morphe_music_scrobbling_summary_logged_out">Not logged in. Tap to configure</string>

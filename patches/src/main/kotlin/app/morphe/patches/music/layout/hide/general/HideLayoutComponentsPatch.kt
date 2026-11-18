@@ -60,6 +60,7 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_music_hide_filter_bar"),
             SwitchPreference("morphe_music_hide_horizontal_shelves"),
             SwitchPreference("morphe_music_hide_list_shelves"),
+            SwitchPreference("morphe_music_hide_new_button", summary = true),
             SwitchPreference("morphe_music_hide_new_from_shelf"),
             SwitchPreference("morphe_music_hide_playlist_shelves"),
             SwitchPreference("morphe_music_hide_speed_dial_shelf"),
@@ -335,6 +336,18 @@ val hideLayoutComponentsPatch = patch(
                     "invoke-static { p0, v$sectionListRegister }, $hideSectionMethod"
                 )
             }
+        }
+        // endregion
+
+        // region hide the floating New button in the Library tab
+        NewButtonFingerprint.let {
+            val moveResult = it.instructionMatches[1]
+            val register = moveResult.getInstruction<OneRegisterInstruction>().registerA
+
+            it.method.addInstruction(
+                moveResult.index + 1,
+                "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideNewButton(Landroid/view/View;)V"
+            )
         }
         // endregion
     }

@@ -160,6 +160,13 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static void hideNewButton(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_NEW_BUTTON, view);
+    }
+
+    /**
+     * Injection point.
+     */
     public static void hideRepeatButton(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_REPEAT_BUTTON, view);
     }
