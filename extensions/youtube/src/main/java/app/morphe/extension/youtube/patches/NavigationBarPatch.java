@@ -702,8 +702,16 @@ public final class NavigationBarPatch {
                     if (translucentNavigationBarForced && navigationBar instanceof PivotBarAccess access) {
                         final int room = systemButtonsRoom;
                         view.post(() -> {
+                            final int slimStatusBarRoom = setSlimStatusBarRoom(navigationBar, room);
+                            // Without room for the system navigation buttons, such as with the gesture handle
+                            // hidden, no room is moved. The room the app gives the bar is then kept as it is,
+                            // or the floating room of the glass navigation bar would be taken as room the app
+                            // added to the height, and the bar would lose it for as long as the app runs
+                            // (https://github.com/MorpheApp/morphe-patches/issues/4907).
+                            if (room <= 0) return;
+
                             final int navigationBarRoom = YouTubeGlassNavigationBar.getFloatingRoom(
-                                    navigationBar, setSlimStatusBarRoom(navigationBar, room));
+                                    navigationBar, slimStatusBarRoom);
                             access.patch_setSystemButtonsRoom(navigationBarRoom);
                             YouTubeGlassNavigationBar.setAppRoom(navigationBarRoom);
                             navigationBar.setPadding(navigationBar.getPaddingLeft(), navigationBar.getPaddingTop(),
