@@ -63,6 +63,11 @@ public class YouTubeGlassNavigationBarPreference extends GlassNavigationBarSizeP
     }
 
     @Override
+    protected float getRimScale(int[] values) {
+        return YouTubeGlassNavigationBar.getRimScale();
+    }
+
+    @Override
     protected int getHorizontalMargin() {
         return YouTubeGlassNavigationBar.MARGIN_HORIZONTAL;
     }
