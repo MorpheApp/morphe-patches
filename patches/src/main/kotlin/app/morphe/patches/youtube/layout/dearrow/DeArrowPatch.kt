@@ -14,6 +14,7 @@ package app.morphe.patches.youtube.layout.dearrow
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.glide.GlideRequestBuilderLoadGenericFingerprint
+import app.morphe.patches.shared.misc.litho.relayout.LithoTextDrawableDrawFingerprint
 import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -42,6 +43,9 @@ import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowPatch;"
+
+private const val EXTENSION_TITLE_ICON =
+    "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowTitleIcon;"
 
 private const val EXTENSION_VOTE_BUTTON =
     "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowVoteButton;"
@@ -178,6 +182,35 @@ val deArrowPatch = patch(
             """
                 invoke-static { p1 }, $EXTENSION_CLASS->getImageModel(Ljava/lang/Object;)Ljava/lang/Object;
                 move-result-object p1
+            """
+        )
+
+        // Litho texts handle touches only inside the bounds of the text, so a touch just above or before
+        // the DeArrow icon of a title opens the video. Touches around the icon are moved onto the icon.
+        val layoutField = LithoTextDrawableDrawFingerprint.instructionMatches.first().fieldReference
+        val iconTouchEvent = "$EXTENSION_TITLE_ICON->iconTouchEvent(" +
+                "Landroid/graphics/drawable/Drawable;Landroid/view/MotionEvent;Landroid/text/Layout;" +
+                ")Landroid/view/MotionEvent;"
+
+        LithoTextDrawableShouldHandleTouchEventFingerprint.method.addInstructions(
+            0,
+            """
+                iget-object v0, p0, $layoutField
+                invoke-static { p0, p1, v0 }, $iconTouchEvent
+                move-result-object p1
+            """
+        )
+
+        // The parameter registers are above v15.
+        LithoTextDrawableOnTouchEventFingerprint.method.addInstructions(
+            0,
+            """
+                move-object/from16 v0, p0
+                move-object/from16 v1, p1
+                iget-object v2, v0, $layoutField
+                invoke-static { v0, v1, v2 }, $iconTouchEvent
+                move-result-object v1
+                move-object/from16 p1, v1
             """
         )
 
