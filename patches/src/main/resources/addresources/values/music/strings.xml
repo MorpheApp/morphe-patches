@@ -776,8 +776,14 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_written_by">Written by: %s</string>
     <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
     <string name="morphe_music_lyrics_word_sync_summary">Prioritize word-by-word lyrics when available. When lyrics carry word timing, highlights each word or syllable in time with the music</string>
+    <string name="morphe_music_lyrics_word_smooth_sweep_title">Animate synced words smoothly</string>
+    <string name="morphe_music_lyrics_word_smooth_sweep_summary">Highlights each word with a soft sweep, glow, and slight lift as it is sung. Turn off to save battery or for a sharp fill on slower devices</string>
     <string name="morphe_music_lyrics_spring_scroll_title">Use spring scrolling</string>
     <string name="morphe_music_lyrics_spring_scroll_summary">Scrolls the lyrics with spring physics, and moves each line a little after the one above it. Turn off to save battery on slower devices</string>
+    <string name="morphe_music_lyrics_relax_scroll_title">Relaxed scrolling</string>
+    <string name="morphe_music_lyrics_relax_scroll_summary">Slows down the lyric scroll animation and keeps inactive lines full size</string>
+    <string name="morphe_music_lyrics_blur_inactive_title">Blur inactive lines</string>
+    <string name="morphe_music_lyrics_blur_inactive_summary">Softly blurs every line that is not currently being sung, more so further away (Android 12 and later). Before Android 12, inactive lines stay sharp</string>
     <string name="morphe_music_lyrics_gap_dots_title">Show instrumental break dots</string>
     <string name="morphe_music_lyrics_gap_dots_summary">Shows three dots between the lines during a long instrumental break, which fill up as the break runs out</string>
     <string name="morphe_music_lyrics_focus_spotlight_title">Dim distant lines more</string>
@@ -900,6 +906,8 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_swap_trans_roma_summary">Moves the translation above the lyrics; the reading and romanization stay below</string>
     <string name="morphe_music_lyrics_force_center_title">Always center lyrics</string>
     <string name="morphe_music_lyrics_force_center_summary">ON puts every line in the middle and ignores the source alignment, including duet sides; OFF keeps the alignment the lyrics ask for</string>
+    <string name="morphe_music_lyrics_duet_opposite_side_title">Opposite-side duet alignment</string>
+    <string name="morphe_music_lyrics_duet_opposite_side_summary">Places the second singer on the opposite edge on duet songs. Turn off to keep both singers on the same side</string>
     <string name="morphe_music_lyrics_providers_keep_one">At least one provider must stay on</string>
     <string name="morphe_music_lyrics_translation_provider_title">Translation</string>
     <string name="morphe_music_lyrics_romanization_provider_title">Romanization or transliteration</string>

@@ -10,6 +10,10 @@ import static app.morphe.extension.shared.settings.Setting.parentsAny;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.IGNORE;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
 
+import android.os.Build;
+
+import java.util.List;
+
 import app.morphe.extension.music.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadePatch.CrossFadeDuration;
@@ -27,6 +31,7 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
@@ -174,17 +179,35 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_SWAP_TRANS_ROMA = new BooleanSetting("morphe_music_lyrics_swap_trans_roma", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_SHOW_TRANSLATE_BUTTON, LYRICS_SHOW_ROMANIZE_BUTTON)));
     /** Puts every line in the middle, whatever the format and its duet sides ask for. */
     public static final BooleanSetting LYRICS_FORCE_CENTER = new BooleanSetting("morphe_music_lyrics_force_center", FALSE, false, parent(LYRICS_ENABLED));
+    /** Places the second singer of a duet on the opposite edge, disabled when Always center lyrics is active. */
+    public static final BooleanSetting LYRICS_DUET_OPPOSITE_SIDE = new BooleanSetting("morphe_music_lyrics_duet_opposite_side", TRUE, false, parentsAll(parent(LYRICS_ENABLED), parentNot(LYRICS_FORCE_CENTER)));
     public static final BooleanSetting LYRICS_ROMANIZE = new BooleanSetting("morphe_music_lyrics_romanize", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_ROMANIZE_ONLY = new BooleanSetting("morphe_music_lyrics_romanize_only", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_WORD_SYNC = new BooleanSetting("morphe_music_lyrics_word_sync", TRUE, false, parent(LYRICS_ENABLED));
+    /** Animates synced words with a soft sweep, glow, and slight lift instead of a hard fill. */
+    public static final BooleanSetting LYRICS_WORD_SMOOTH_SWEEP = new BooleanSetting("morphe_music_lyrics_word_smooth_sweep", TRUE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_WORD_SYNC)));
     /** Uses spring physics and staggered FLIP cascading for scrolling lyric lines. */
     public static final BooleanSetting LYRICS_SPRING_SCROLL = new BooleanSetting("morphe_music_lyrics_spring_scroll", TRUE, false, parent(LYRICS_ENABLED));
+    /** Slower scrolling animation and keeps inactive lines full size. */
+    public static final BooleanSetting LYRICS_RELAX_SCROLL = new BooleanSetting("morphe_music_lyrics_relax_scroll", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SPRING_SCROLL)));
     /** Shows animated three-dot instrumental gap indicators between lyric lines. */
     public static final BooleanSetting LYRICS_GAP_DOTS = new BooleanSetting("morphe_music_lyrics_gap_dots", TRUE, false, parent(LYRICS_ENABLED));
     /** Progressively dims inactive lines for a focused spotlight effect. */
     public static final BooleanSetting LYRICS_FOCUS_SPOTLIGHT = new BooleanSetting("morphe_music_lyrics_focus_spotlight", TRUE, false, parent(LYRICS_ENABLED));
-    /** Shrinks every line that is not the one being sung. */
-    public static final BooleanSetting LYRICS_LINE_SCALE = new BooleanSetting("morphe_music_lyrics_line_scale", TRUE, false, parent(LYRICS_ENABLED));
+    /** Blurs inactive lyric lines progressively by distance on Android 12 and later. */
+    public static final BooleanSetting LYRICS_BLUR_INACTIVE = new BooleanSetting("morphe_music_lyrics_blur_inactive", FALSE, false, parentsAll(parent(LYRICS_ENABLED), () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.S));
+    /** Shrinks every line that is not the one being sung. Disabled when Relaxed scrolling is active. */
+    public static final BooleanSetting LYRICS_LINE_SCALE = new BooleanSetting("morphe_music_lyrics_line_scale", TRUE, false, new Setting.Availability() {
+        @Override
+        public boolean isAvailable() {
+            return LYRICS_ENABLED.get() && !(LYRICS_SPRING_SCROLL.get() && LYRICS_RELAX_SCROLL.get());
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(LYRICS_ENABLED, LYRICS_SPRING_SCROLL, LYRICS_RELAX_SCROLL);
+        }
+    });
     public static final BooleanSetting LYRICS_HIDE_PLAYED = new BooleanSetting("morphe_music_lyrics_hide_played", FALSE, false, parent(LYRICS_ENABLED));
     /** Master switch for separating background vocals and harmony from the lead line. */
     public static final BooleanSetting LYRICS_SPLIT_BACKGROUND = new BooleanSetting("morphe_music_lyrics_split_background", TRUE, false, parent(LYRICS_ENABLED));

@@ -81,6 +81,7 @@ final class GapLineView extends View {
     @Nullable
     private ValueAnimator exitAnimator;
     private final Paint dotPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final LyricsViewSupport.BlurTarget blurTarget = new LyricsViewSupport.BlurTarget(this);
 
     GapLineView(Context context, GapInterval interval) {
         super(context);
@@ -99,6 +100,10 @@ final class GapLineView extends View {
 
     GapInterval getInterval() {
         return interval;
+    }
+
+    boolean isGapActive() {
+        return isActive || isOpen || (exitAnimator != null && exitAnimator.isRunning());
     }
 
     /**
@@ -317,7 +322,12 @@ final class GapLineView extends View {
         }
     }
 
+    void animateBlur(float targetRadius, boolean instant) {
+        blurTarget.animateTo(targetRadius, instant, false);
+    }
+
     void destroy() {
+        blurTarget.cancel();
         if (expandAnimator != null) expandAnimator.cancel();
         if (exitAnimator != null) exitAnimator.cancel();
     }
