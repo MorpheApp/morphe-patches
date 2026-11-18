@@ -62,7 +62,6 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideTrendingShelvesPatch.isPatchIncluded() ||
                 FullWidthFeedMediaPatch.isPatchIncluded() ||
                 MediaViewerFadePatch.isPatchIncluded() ||
-                PostSidePanelPatch.isPatchIncluded() ||
                 KeepFeedPositionPatch.isPatchIncluded() ||
                 FeedMediaMaxHeightPatch.isPatchIncluded() ||
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
@@ -72,7 +71,8 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
-                TabletGridFeedPatch.isPatchIncluded();
+                TabletGridFeedPatch.isPatchIncluded() ||
+                PostSidePanelPatch.isPatchIncluded();
     }
 
     @Override
@@ -177,12 +177,6 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (PostSidePanelPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(context, Settings.POST_SIDE_PANEL));
-            addPreference(new CustomDialogListPreference(context, Settings.POST_SIDE_PANEL_WIDTH));
-            addPreference(new CustomDialogListPreference(context, Settings.POST_SIDE_PANEL_DIM));
-        }
-
         if (FeedMediaMaxHeightPatch.isPatchIncluded()) {
             addPreference(new NumberSettingPreference(
                     context,
@@ -237,6 +231,21 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new CustomDialogListPreference(
                     context,
                     Settings.TABLET_GRID_COLUMNS
+            ));
+        }
+
+        if (PostSidePanelPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL_WIDTH
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL_DIM
             ));
         }
 
