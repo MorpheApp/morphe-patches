@@ -216,6 +216,7 @@ public final class YouTubeGlassNavigationBar {
      */
     private static volatile int seenAppRoom;
     private static volatile int seenAppRoomPadding;
+    private static volatile boolean seenAppRoomKnown;
 
     /**
      * How far the room the app adds to the height may differ from the bottom padding.
@@ -234,15 +235,29 @@ public final class YouTubeGlassNavigationBar {
         if (padding != seenAppRoomPadding) {
             seenAppRoom = 0;
             seenAppRoomPadding = padding;
+            seenAppRoomKnown = false;
         }
 
         // The app can round the room it adds differently from the padding, such as 109 for a padding of 110.
         final int base = baseHeight;
         final int room = height - base;
-        if (base > 0 && padding > 0 && Math.abs(room - padding) <= SEEN_ROOM_TOLERANCE && seenAppRoom != room) {
+        if (base > 0 && padding > 0 && isAppRoom(room, padding) && (seenAppRoom != room || !seenAppRoomKnown)) {
             seenAppRoom = room;
+            seenAppRoomKnown = true;
             Logger.printDebug(() -> "Glass navigation bar room added by the app: " + room + " padding: " + padding);
         }
+    }
+
+    /**
+     * @param room    The height the app gives the bar, less its height without the room below the buttons.
+     * @param padding The bottom padding of the bar.
+     * @return If the room is the room the app added for that padding: the padding itself, or with the bottom
+     *         margin, the room for the system navigation buttons the margin was added to.
+     */
+    private static boolean isAppRoom(int room, int padding) {
+        if (Math.abs(room - padding) <= SEEN_ROOM_TOLERANCE) return true;
+        return BOTTOM_MARGIN > 0 && room >= 0
+                && Math.abs(Math.max(room, FLOATING_ROOM) + BOTTOM_MARGIN - padding) <= SEEN_ROOM_TOLERANCE;
     }
 
     /**
@@ -250,6 +265,12 @@ public final class YouTubeGlassNavigationBar {
      */
     private static int getAppRoom(View navigationBar) {
         final int padding = navigationBar.getPaddingBottom();
+        // With the bottom margin, the app adds only the room for the system navigation buttons to the height,
+        // not the margin, so the room seen is the room it added.
+        if (BOTTOM_MARGIN > 0 && padding == seenAppRoomPadding && seenAppRoomKnown) {
+            return seenAppRoom;
+        }
+
         final int seenRoom = padding == seenAppRoomPadding ? seenAppRoom : 0;
         // The stored room can still be the room of a previous bar, such as after switching between
         // gesture and 3-button navigation, and the app never adds more room than the padding.
@@ -539,13 +560,15 @@ public final class YouTubeGlassNavigationBar {
                     // it is put back right before the frame is drawn, so no frame is drawn with the
                     // buttons moved down.
                     // The room is added to the height of the bar when it is measured.
+                    // The padding can also still be the room for the system navigation buttons without
+                    // the bottom margin, if it was set before the bar had a size, so the margin is added to it.
                     final int room = pivotBar.getPaddingBottom();
-                    final int minRoom = FLOATING_ROOM + BOTTOM_MARGIN;
-                    if (room < minRoom) {
-                        Logger.printDebug(() -> "Glass navigation bar floating room set: " + room + " -> " + minRoom);
+                    final int newRoom = getFloatingRoom(pivotBar, room);
+                    if (newRoom != room) {
+                        Logger.printDebug(() -> "Glass navigation bar floating room set: " + room + " -> " + newRoom);
                         // The patched setPadding keeps this room, as it already includes the bottom margin.
                         pivotBar.setPadding(pivotBar.getPaddingLeft(), pivotBar.getPaddingTop(),
-                                pivotBar.getPaddingRight(), getFloatingRoom(pivotBar, 0));
+                                pivotBar.getPaddingRight(), newRoom);
                         layoutChanged = true;
                     }
 
