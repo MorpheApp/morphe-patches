@@ -29,6 +29,7 @@ import app.morphe.extension.reddit.patches.HighQualityAvatarsPatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
 import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
+import app.morphe.extension.reddit.patches.PostSidePanelPatch;
 import app.morphe.extension.reddit.patches.PermanentNsfwPatch;
 import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
@@ -74,7 +75,8 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FlipPostActionBarPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 TabletGridFeedPatch.isPatchIncluded() ||
-                FeedAutoScrollPatch.isPatchIncluded();
+                FeedAutoScrollPatch.isPatchIncluded() ||
+                PostSidePanelPatch.isPatchIncluded();
     }
 
     @Override
@@ -251,6 +253,21 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new CustomDialogListPreference(
                     context,
                     Settings.FEED_AUTO_SCROLL_SPEED
+            ));
+        }
+
+        if (PostSidePanelPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL_WIDTH
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL_DIM
             ));
         }
 

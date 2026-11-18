@@ -150,6 +150,17 @@ This cannot be turned off in the app. Only clearing the app data undoes it."</st
     <string name="morphe_media_viewer_fade_summary">Strength of the dark fade behind the caption when viewing images and videos, from 0 (no fade) to 1 (Reddit\'s default)</string>
     <string name="morphe_keep_feed_position_title">Keep feed position</string>
     <string name="morphe_keep_feed_position_summary">Keeps the feed at the same position after closing a post, image or video, instead of moving the opened post to the top</string>
+    <string name="morphe_post_side_panel_title">Post side panel</string>
+    <string name="morphe_post_side_panel_summary">On wide tablet screens, posts open in a panel next to the feed</string>
+    <string name="morphe_post_side_panel_width_title">Panel width</string>
+    <string name="morphe_post_side_panel_width_entry_one_third">One third of the feed</string>
+    <string name="morphe_post_side_panel_width_entry_two_thirds">Two thirds of the feed</string>
+    <string name="morphe_post_side_panel_dim_title">Feed dimming</string>
+    <string name="morphe_post_side_panel_dim_summary">How dark the feed behind the panel gets</string>
+    <string name="morphe_post_side_panel_dim_entry_off">Off</string>
+    <string name="morphe_post_side_panel_dim_entry_light">Light</string>
+    <string name="morphe_post_side_panel_dim_entry_medium">Medium</string>
+    <string name="morphe_post_side_panel_dim_entry_strong">Strong</string>
     <string name="morphe_feed_media_max_height_title">Feed media max height</string>
     <string name="morphe_feed_media_max_height_summary">Maximum height of images, videos and galleries in the feed, as a multiple of their width. Taller media is cropped. 1.33 is Reddit\'s default</string>
     <string name="morphe_redgifs_audio_title">Play Redgifs with audio</string>
