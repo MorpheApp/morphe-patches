@@ -67,8 +67,8 @@ class AboutWebViewDialog extends Dialog {
         // same color the page is, rather than whatever the device theme happens to be.
         Window window = getWindow();
         if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(ThemeUtils.getDialogBackgroundColor()));
-            window.setNavigationBarColor(ThemeUtils.getDialogBackgroundColor());
+            window.setBackgroundDrawable(new ColorDrawable(ThemeUtils.getAppBackgroundColor()));
+            window.setNavigationBarColor(ThemeUtils.getAppBackgroundColor());
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 window.setNavigationBarContrastEnforced(true);
             }
@@ -91,7 +91,7 @@ class AboutWebViewDialog extends Dialog {
             webView.getSettings().setJavaScriptEnabled(true);
         }
         // A WebView paints white until the page is parsed, which flashes as the dialog opens.
-        webView.setBackgroundColor(ThemeUtils.getDialogBackgroundColor());
+        webView.setBackgroundColor(ThemeUtils.getAppBackgroundColor());
         webView.setWebViewClient(createWebViewClient());
         webView.loadDataWithBaseURL(null, htmlContent, "text/html", "utf-8", null);
 

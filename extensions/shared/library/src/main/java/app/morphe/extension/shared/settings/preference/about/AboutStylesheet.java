@@ -12,7 +12,7 @@ package app.morphe.extension.shared.settings.preference.about;
  * as placeholders for it to fill in.
  * <p>
  * Surfaces are drawn with neutral gray overlays rather than tints of the foreground color, so a
- * single stylesheet reads correctly against both the light and the AMOLED dialog backgrounds.
+ * single stylesheet reads correctly against both the light and the dark app backgrounds.
  */
 final class AboutStylesheet {
 
