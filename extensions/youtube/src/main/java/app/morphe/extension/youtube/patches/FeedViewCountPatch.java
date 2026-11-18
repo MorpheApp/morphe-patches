@@ -1636,10 +1636,6 @@ public final class FeedViewCountPatch {
                 return;
             }
             ComponentHost host = hostRef.get();
-            if (host != null && FeedVideoCardsPatch.isCardPlayingInline(host)) {
-                // The inline player shows its own controls over the thumbnail.
-                return;
-            }
             backgroundPaint.setAlpha(Color.alpha(BACKGROUND_COLOR) * alpha / 255);
             textPaint.setAlpha(alpha);
             iconPaint.setAlpha(alpha);
