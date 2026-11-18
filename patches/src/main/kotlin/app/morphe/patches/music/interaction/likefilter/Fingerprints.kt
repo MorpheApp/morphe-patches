@@ -22,6 +22,9 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
+internal fun isEnumType(type: String): Boolean =
+    classDefByOrNull(type)?.let { AccessFlags.ENUM.isSet(it.accessFlags) } == true
+
 /** The enqueue completion callback stores the manager and the command's insertion target. */
 internal fun queueLikeFilterEnqueueCallbackFingerprint(managerType: String) = Fingerprint(
     name = "<init>",
@@ -29,8 +32,7 @@ internal fun queueLikeFilterEnqueueCallbackFingerprint(managerType: String) = Fi
         method.parameterTypes.size == 2 &&
                 method.parameterTypes[0].toString() == managerType &&
                 owner.fields.any { it.type == managerType } &&
-                classDefByOrNull(method.parameterTypes[1].toString())
-                    ?.let { AccessFlags.ENUM.isSet(it.accessFlags) } == true
+                isEnumType(method.parameterTypes[1].toString())
     }
 )
 

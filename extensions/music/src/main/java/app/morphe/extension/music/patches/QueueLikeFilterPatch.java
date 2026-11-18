@@ -18,7 +18,8 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
@@ -126,15 +127,15 @@ public final class QueueLikeFilterPatch {
     private static final int CHECKED_CACHE_SIZE = 500;
 
     /** Video IDs that are already known to be kept. */
-    private static final Map<String, Boolean> checkedVideoIds = Collections.synchronizedMap(
-            Utils.createSizeRestrictedMap(CHECKED_CACHE_SIZE));
+    private static final Set<String> checkedVideoIds = Collections.synchronizedSet(
+            Collections.newSetFromMap(Utils.createSizeRestrictedMap(CHECKED_CACHE_SIZE)));
 
     /**
      * Video IDs the user queued explicitly with "Play next". Those songs are intentional, so the
      * filter leaves them alone just like it never considers the currently playing track.
      */
-    private static final Map<String, Boolean> explicitlyQueuedVideoIds = Collections.synchronizedMap(
-            Utils.createSizeRestrictedMap(CHECKED_CACHE_SIZE));
+    private static final Set<String> explicitlyQueuedVideoIds = Collections.synchronizedSet(
+            Collections.newSetFromMap(Utils.createSizeRestrictedMap(CHECKED_CACHE_SIZE)));
 
     private static final Object wakeLock = new Object();
     private static final AtomicBoolean workerStarted = new AtomicBoolean();
@@ -148,14 +149,7 @@ public final class QueueLikeFilterPatch {
                 }
 
                 // Let the settings cache update before starting or stopping the worker.
-                Utils.runOnMainThread(() -> {
-                    try {
-                        startWorkerIfEnabled();
-                        wake();
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "queue like filter setting change failure", ex);
-                    }
-                });
+                Utils.runOnMainThread(QueueLikeFilterPatch::wakeWorkerIfEnabled);
             };
 
     private static volatile WeakReference<QueueAccess> queue = new WeakReference<>(null);
@@ -177,25 +171,21 @@ public final class QueueLikeFilterPatch {
      */
     public static void capture(QueueAccess access) {
         queue = new WeakReference<>(access);
-        if (startWorkerIfEnabled()) {
-            wake();
-        }
+        wakeWorkerIfEnabled();
     }
 
     /**
      * Injection point. Called by every queue listener callback.
      */
     public static void onQueueChanged() {
-        if (startWorkerIfEnabled()) {
-            wake();
-        }
+        wakeWorkerIfEnabled();
     }
 
     /**
      * Injection point. Called before songs enqueued with "Play next" are inserted into the queue.
      */
-    public static void onItemsEnqueued(@Nullable List<?> items, boolean playNext) {
-        if (!playNext || items == null) {
+    public static void onPlayNextEnqueued(@Nullable List<?> items) {
+        if (items == null) {
             return;
         }
 
@@ -205,17 +195,10 @@ public final class QueueLikeFilterPatch {
         }
 
         for (Object item : items) {
-            if (item == null) {
-                continue;
-            }
-            try {
-                String videoId = access.patch_qlfVideoId(item);
-                if (videoId != null && !videoId.isEmpty()) {
-                    explicitlyQueuedVideoIds.put(videoId, Boolean.TRUE);
-                    Logger.printDebug(() -> "queue like filter: ignoring play next video " + videoId);
-                }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "queue like filter: could not read a play next video ID", ex);
+            String videoId = readVideoId(access, item);
+            if (videoId != null) {
+                explicitlyQueuedVideoIds.add(videoId);
+                Logger.printDebug(() -> "queue like filter: ignoring play next video " + videoId);
             }
         }
     }
@@ -224,9 +207,7 @@ public final class QueueLikeFilterPatch {
      * Injection point. Called when YouTube Music starts playing another video.
      */
     public static void onVideoIdChanged(@Nullable String videoId) {
-        if (startWorkerIfEnabled()) {
-            wake();
-        }
+        wakeWorkerIfEnabled();
     }
 
     /**
@@ -243,14 +224,12 @@ public final class QueueLikeFilterPatch {
         final String previousPlaylistId = currentPlaylistId;
         currentPlaylistId = playlistId;
         playlistIdKnown = true;
-        if (previousPlaylistId == null ? playlistId != null : !previousPlaylistId.equals(playlistId)) {
+        if (!Objects.equals(previousPlaylistId, playlistId)) {
             explicitlyQueuedVideoIds.clear();
         }
         Logger.printDebug(() -> "queue like filter: playlist " + playlistId
                 + (isRadioPlaylist() ? " (radio/mix)" : " (not filtered)"));
-        if (startWorkerIfEnabled()) {
-            wake();
-        }
+        wakeWorkerIfEnabled();
     }
 
     /**
@@ -289,20 +268,19 @@ public final class QueueLikeFilterPatch {
     }
 
     /**
-     * Starts the worker only when the filter is enabled. When it is off, no worker thread exists.
-     *
-     * @return true if the filter is enabled, so the caller can wake the worker.
+     * Starts and wakes the worker only when the filter is enabled. When it is off, no worker
+     * thread exists.
      */
-    private static boolean startWorkerIfEnabled() {
+    private static void wakeWorkerIfEnabled() {
         try {
             if (Utils.getContext() == null) {
-                return false;
+                return;
             }
 
             registerSettingsListener();
 
             if (!isEnabled()) {
-                return false;
+                return;
             }
 
             if (workerStarted.compareAndSet(false, true)) {
@@ -311,20 +289,16 @@ public final class QueueLikeFilterPatch {
                 thread.setDaemon(true);
                 thread.start();
             }
-            return true;
-        } catch (Exception ex) {
+            synchronized (wakeLock) {
+                wakeLock.notifyAll();
+            }
+        } catch (Exception | LinkageError ex) {
             Logger.printException(() -> "queue like filter start failure", ex);
-            return false;
-        } catch (LinkageError ex) {
-            Logger.printException(() -> "queue like filter start linkage failure", ex);
-            return false;
         }
     }
 
-    private static void wake() {
-        synchronized (wakeLock) {
-            wakeLock.notifyAll();
-        }
+    private static boolean canRun() {
+        return Utils.getContext() != null && isEnabled();
     }
 
     private static void waitForWake(long timeoutMs) {
@@ -340,11 +314,11 @@ public final class QueueLikeFilterPatch {
     private static void runLoop() {
         while (true) {
             try {
-                if (Utils.getContext() == null || !isEnabled()) {
+                if (!canRun()) {
                     workerStarted.set(false);
                     // Close the race where the setting was enabled while the worker was exiting.
-                    if (Utils.getContext() != null && isEnabled()) {
-                        startWorkerIfEnabled();
+                    if (canRun()) {
+                        wakeWorkerIfEnabled();
                     }
                     return;
                 }
@@ -360,13 +334,10 @@ public final class QueueLikeFilterPatch {
                 if (!scanWindow(access)) {
                     waitForWake(IDLE_WAIT_MS);
                 }
-            } catch (Exception ex) {
-                Logger.printException(() -> "queue like filter loop failure", ex);
-                waitForWake(IDLE_WAIT_MS);
-            } catch (LinkageError ex) {
+            } catch (Exception | LinkageError ex) {
                 // A setting or library class failed to initialize. Keep the worker alive and log
                 // it, otherwise a single early failure would silently disable the whole feature.
-                Logger.printException(() -> "queue like filter linkage failure", ex);
+                Logger.printException(() -> "queue like filter loop failure", ex);
                 waitForWake(IDLE_WAIT_MS);
             }
         }
@@ -419,21 +390,41 @@ public final class QueueLikeFilterPatch {
         if (isRadioPlaylist()) {
             Object[] items = access.patch_qlfLaneItems(MAIN_LANE);
             final int currentIndex = access.patch_qlfCurrentIndex();
-            if (items != null && currentIndex >= 0) {
-                for (int i = currentIndex + 1; i < items.length && upcoming.size() < WINDOW_SIZE; i++) {
-                    upcoming.add(items[i]);
-                }
+            if (currentIndex >= 0) {
+                appendUpcoming(upcoming, items, currentIndex + 1);
             }
         }
 
-        Object[] autoplay = access.patch_qlfLaneItems(AUTOPLAY_LANE);
-        if (autoplay != null) {
-            for (int i = 0; i < autoplay.length && upcoming.size() < WINDOW_SIZE; i++) {
-                upcoming.add(autoplay[i]);
-            }
-        }
-
+        appendUpcoming(upcoming, access.patch_qlfLaneItems(AUTOPLAY_LANE), 0);
         return upcoming;
+    }
+
+    private static void appendUpcoming(
+            List<Object> out,
+            @Nullable Object[] items,
+            int startIndex
+    ) {
+        if (items == null) {
+            return;
+        }
+        for (int i = startIndex; i < items.length && out.size() < WINDOW_SIZE; i++) {
+            out.add(items[i]);
+        }
+    }
+
+    @Nullable
+    private static String readVideoId(QueueAccess access, @Nullable Object item) {
+        if (item == null) {
+            return null;
+        }
+        try {
+            String videoId = access.patch_qlfVideoId(item);
+            return (videoId == null || videoId.isEmpty()) ? null : videoId;
+        } catch (Exception ex) {
+            // Some queue entries are not playable media items.
+            Logger.printDebug(() -> "queue like filter: could not read video ID", ex);
+            return null;
+        }
     }
 
     /**
@@ -473,23 +464,10 @@ public final class QueueLikeFilterPatch {
                 break;
             }
 
-            String videoId;
-            try {
-                videoId = access.patch_qlfVideoId(items.get(slot));
-            } catch (Exception ex) {
-                // Some queue entries are not playable media items. Skip them and keep scanning.
-                Logger.printDebug(() -> "queue like filter: could not read the video ID", ex);
-                continue;
-            }
-            if (videoId == null || videoId.isEmpty()) {
-                continue;
-            }
-
-            if (explicitlyQueuedVideoIds.containsKey(videoId)) {
-                continue;
-            }
-
-            if (checkedVideoIds.get(videoId) != null) {
+            String videoId = readVideoId(access, items.get(slot));
+            if (videoId == null
+                    || explicitlyQueuedVideoIds.contains(videoId)
+                    || checkedVideoIds.contains(videoId)) {
                 continue;
             }
 
@@ -510,12 +488,6 @@ public final class QueueLikeFilterPatch {
             checkedSomething = true;
 
             if (lookup.decision == Decision.REMOVE) {
-                // The setting may have changed while the lookup was in flight. The source is
-                // checked again when the item is located for removal.
-                if (!isEnabled()) {
-                    return true;
-                }
-
                 if (removeByVideoId(access, videoId)) {
                     Logger.printInfo(() -> "queue like filter: removed " + videoId
                             + " with " + lookup.likes + " likes");
@@ -524,14 +496,14 @@ public final class QueueLikeFilterPatch {
                 } else {
                     // The queue may have moved on. Do not retry this song on every pass.
                     Logger.printInfo(() -> "queue like filter: could not remove " + videoId);
-                    checkedVideoIds.put(videoId, Boolean.TRUE);
+                    checkedVideoIds.add(videoId);
                 }
 
                 sleep(CHECK_INTERVAL_MS);
                 return true;
             }
 
-            checkedVideoIds.put(videoId, Boolean.TRUE);
+            checkedVideoIds.add(videoId);
             Logger.printInfo(() -> "queue like filter: keeping " + videoId
                     + " with likes=" + lookup.likes);
             sleep(CHECK_INTERVAL_MS);
@@ -545,12 +517,12 @@ public final class QueueLikeFilterPatch {
      * locating the item keeps shifted positions from deleting a different song.
      */
     private static boolean removeByVideoId(QueueAccess access, String videoId) {
-        try {
-            Executor executor = access.patch_qlfExecutor();
-            if (executor == null) {
-                return false;
-            }
+        Executor executor = access.patch_qlfExecutor();
+        if (executor == null) {
+            return false;
+        }
 
+        try {
             final boolean[] removed = {false};
             runOnQueueExecutor(executor, () -> {
                 // Do not remove anything if the filter was disabled. If the user switched to a
@@ -560,14 +532,7 @@ public final class QueueLikeFilterPatch {
                 }
 
                 for (Object item : upcomingItems(access)) {
-                    String candidate;
-                    try {
-                        candidate = access.patch_qlfVideoId(item);
-                    } catch (Exception ex) {
-                        Logger.printDebug(() -> "queue like filter: could not read a candidate video ID", ex);
-                        continue;
-                    }
-                    if (videoId.equals(candidate)) {
+                    if (videoId.equals(readVideoId(access, item))) {
                         access.patch_qlfRemove(item);
                         removed[0] = true;
                         return;
@@ -616,11 +581,8 @@ public final class QueueLikeFilterPatch {
 
             // Negative means the API did not report the value. Not indexed yet means 0 likes and
             // 0 views. Both are treated as "keep".
-            if (likes < 0) {
-                return new Lookup(Decision.KEEP, -1);
-            }
-            if (likes == 0 && views == 0) {
-                return new Lookup(Decision.KEEP, likes);
+            if (likes < 0 || (likes == 0 && views == 0)) {
+                return new Lookup(Decision.KEEP, likes < 0 ? -1 : 0);
             }
 
             return new Lookup(likes < minimumLikes() ? Decision.REMOVE : Decision.KEEP, likes);
@@ -676,16 +638,15 @@ public final class QueueLikeFilterPatch {
     }
 
     private static long minimumLikes() {
-        long minimum = DEFAULT_MINIMUM_LIKES;
         try {
             String raw = Settings.QUEUE_LIKE_FILTER_MIN_LIKES.get();
             if (raw != null) {
-                minimum = Long.parseLong(raw.trim());
+                return Math.max(0, Long.parseLong(raw.trim()));
             }
         } catch (Exception ex) {
             Logger.printDebug(() -> "queue like filter: using the default minimum likes", ex);
         }
-        return Math.max(0, minimum);
+        return DEFAULT_MINIMUM_LIKES;
     }
 
     /** Native queue mutations only ever run on YouTube Music's own queue executor. */

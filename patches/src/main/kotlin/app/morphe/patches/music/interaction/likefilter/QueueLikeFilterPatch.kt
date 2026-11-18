@@ -21,9 +21,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/music/patches/QueueLikeFilterPatch;"
-
 val queueLikeFilterPatch = patch(
     name = "Queue likes filter",
     description = "Adds options to remove low-like songs from auto-generated mixes and radio " +
@@ -51,7 +48,7 @@ val queueLikeFilterPatch = patch(
             ),
         )
 
-        installQueueLikeFilter(resolveQueueLikeFilterAbi())
+        installQueueLikeFilter()
 
         // Wake the worker whenever playback moves to another track.
         musicVideoIdHook("$EXTENSION_CLASS->onVideoIdChanged(Ljava/lang/String;)V")

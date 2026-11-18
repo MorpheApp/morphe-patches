@@ -35,7 +35,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 private const val EXECUTOR = "Ljava/util/concurrent/Executor;"
 private const val LIST = "Ljava/util/List;"
 
-private const val EXTENSION_CLASS =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/QueueLikeFilterPatch;"
 private const val ACCESS =
     $$"Lapp/morphe/extension/music/patches/QueueLikeFilterPatch$QueueAccess;"
@@ -67,8 +67,7 @@ internal data class EnqueueObserverAbi(
 )
 
 internal fun resolveQueueLikeFilterAbi(): QueueLikeFilterAbi {
-    val queueMatch = QueueEnqueueFingerprint.match()
-    val manager = queueMatch.originalClassDef
+    val manager = QueueEnqueueFingerprint.originalClassDef
     val constructor = queueManagerConstructorFingerprint(manager.type).originalMethod
     val executor = manager.fields.singleOrNull { it.type == EXECUTOR }
         ?: error("Missing or ambiguous queue like filter executor")
@@ -89,8 +88,6 @@ internal fun resolveQueueLikeFilterAbi(): QueueLikeFilterAbi {
             ?.originalMethod
             ?: error("Missing or ambiguous queue like filter video ID")
 
-    val enqueueObserver = resolveEnqueueObserver(manager)
-
     return QueueLikeFilterAbi(
         managerType = manager.type,
         constructor = constructor,
@@ -99,7 +96,7 @@ internal fun resolveQueueLikeFilterAbi(): QueueLikeFilterAbi {
         itemType = itemType,
         videoId = videoId,
         executor = executor,
-        enqueueObserver = enqueueObserver,
+        enqueueObserver = resolveEnqueueObserver(manager),
     )
 }
 
@@ -109,40 +106,28 @@ internal fun resolveQueueLikeFilterAbi(): QueueLikeFilterAbi {
  * patch runs.
  */
 private fun resolveEnqueueObserver(manager: ClassDef): EnqueueObserverAbi {
-    val callbackType =
-        queueLikeFilterEnqueueCallbackFingerprint(manager.type).originalMethod.definingClass
-
-    val callback = classDefBy(callbackType)
-    val targetType =
-        callback.fields
-            .map { it.type }
-            .singleOrNull { type ->
-                type != manager.type &&
-                        classDefByOrNull(type)?.let { AccessFlags.ENUM.isSet(it.accessFlags) } == true
-            }
+    val callback = queueLikeFilterEnqueueCallbackFingerprint(manager.type).originalClassDef
+    val target =
+        callback.fields.singleOrNull { it.type != manager.type && isEnumType(it.type) }
             ?: error("Missing or ambiguous queue like filter enqueue target")
-    val target = callback.fields.single { it.type == targetType }
     val playNextTarget =
-        queueLikeFilterPlayNextTargetFingerprint(targetType)
+        queueLikeFilterPlayNextTargetFingerprint(target.type)
             .instructionMatches[1]
             .fieldReference
 
-    val success = queueSuccessCallbackFingerprint(callbackType).originalMethod
+    val success = queueSuccessCallbackFingerprint(callback.type).originalMethod
     val responseType =
         success.typeReferences()
             .singleOrNull { type ->
-                classDefByOrNull(type)?.fields?.any { field ->
-                    field.type == LIST || implementsType(field.type, LIST)
-                } == true
+                classDefByOrNull(type)?.fields?.any { isListType(it.type) } == true
             }
             ?: error("Missing or ambiguous queue like filter enqueue response")
     val responseItems =
-        classDefBy(responseType).fields
-            .singleOrNull { it.type == LIST || implementsType(it.type, LIST) }
+        classDefBy(responseType).fields.singleOrNull { isListType(it.type) }
             ?: error("Missing or ambiguous queue like filter enqueue response items")
 
     return EnqueueObserverAbi(
-        callbackType = callbackType,
+        callbackType = callback.type,
         success = success,
         responseType = responseType,
         responseItems = responseItems,
@@ -151,7 +136,9 @@ private fun resolveEnqueueObserver(manager: ClassDef): EnqueueObserverAbi {
     )
 }
 
-internal fun installQueueLikeFilter(queue: QueueLikeFilterAbi) {
+private fun isListType(type: String): Boolean = type == LIST || implementsType(type, LIST)
+
+internal fun installQueueLikeFilter(queue: QueueLikeFilterAbi = resolveQueueLikeFilterAbi()) {
     val manager = mutableClassDefBy(queue.managerType)
 
     manager.addPatchInterface(
@@ -214,7 +201,7 @@ internal fun installQueueLikeFilter(queue: QueueLikeFilterAbi) {
     )
 
     installQueueListener(queue.storage.listenerType)
-    installEnqueueObserver(queue)
+    installEnqueueObserver(queue.enqueueObserver)
     installQueueConstructorCapture(queue.constructor, "$EXTENSION_CLASS->capture($ACCESS)V")
 }
 
@@ -222,29 +209,25 @@ internal fun installQueueLikeFilter(queue: QueueLikeFilterAbi) {
  * Marks songs the user queued with "Play next" before they enter the queue. The filter must not
  * remove those songs, just like it never considers the currently playing track.
  */
-private fun installEnqueueObserver(queue: QueueLikeFilterAbi) {
-    val callback = mutableClassDefBy(queue.enqueueObserver.callbackType)
+private fun installEnqueueObserver(observer: EnqueueObserverAbi) {
+    val callback = mutableClassDefBy(observer.callbackType)
     callback.addBridge(
         "patch_qlfOnEnqueuedSuccess",
         listOf("Ljava/lang/Object;"),
         "V",
-        5,
+        4,
         body = """
-            check-cast p1, ${queue.enqueueObserver.responseType}
-            iget-object v0, p1, ${queue.enqueueObserver.responseItems}
-            iget-object v1, p0, ${queue.enqueueObserver.target}
-            sget-object v2, ${queue.enqueueObserver.playNextTarget}
-            if-ne v1, v2, :qlf_not_play_next
-            const/4 v1, 0x1
-            goto :qlf_items_enqueued
-            :qlf_not_play_next
-            const/4 v1, 0x0
-            :qlf_items_enqueued
-            invoke-static {v0, v1}, $EXTENSION_CLASS->onItemsEnqueued(Ljava/util/List;Z)V
+            iget-object v0, p0, ${observer.target}
+            sget-object v1, ${observer.playNextTarget}
+            if-ne v0, v1, :qlf_done
+            check-cast p1, ${observer.responseType}
+            iget-object v0, p1, ${observer.responseItems}
+            invoke-static {v0}, $EXTENSION_CLASS->onPlayNextEnqueued(Ljava/util/List;)V
+            :qlf_done
             return-void
         """
     )
-    queue.enqueueObserver.success.getMutableMethod().addInstruction(
+    observer.success.getMutableMethod().addInstruction(
         0,
         "invoke-virtual {p0, p1}, ${callback.type}->patch_qlfOnEnqueuedSuccess(Ljava/lang/Object;)V"
     )
