@@ -18,7 +18,7 @@ private const val CAR_LAUNCHER_CATEGORY = "android.intent.category.CAR_LAUNCHER"
 
 @Suppress("unused")
 val parkedAppPatch = patch(
-    name = "Parked app for Android Auto",
+    name = "Android Auto parked app mode",
     // TODO: Remove "early access only" text when Android Auto feature is widely available.
     description = "Declares YouTube a parked video app, so Android Auto (early access only) and DriveDeck " +
         "(available now) list it on the car screen by themselves. " +
