@@ -40,6 +40,11 @@ public class Settings extends BaseSettings {
 
     // Filters
     /**
+     * Flair filters such as gaming::Discussion, one per line.
+     */
+    public static final StringSetting FLAIR_FILTERS = new StringSetting("morphe_flair_filters", "");
+    public static final BooleanSetting FLAIR_FILTERS_REMEMBER_SEEN = new BooleanSetting("morphe_flair_filters_remember_seen", FALSE);
+    /**
      * Regular expressions, one per line.
      */
     public static final StringSetting KEYWORD_FILTERS = new StringSetting("morphe_keyword_filters", "");

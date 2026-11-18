@@ -48,6 +48,19 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_about_shelf_title">Hide About shelf</string>
 
     <string name="morphe_screen_filters_title">Filters</string>
+    <string name="morphe_flair_filters_title">Flair filters</string>
+    <string name="morphe_flair_filters_summary">Hide feed posts with a flair of a community. Matching ignores case</string>
+    <string name="morphe_flair_filters_empty">No flair filters</string>
+    <string name="morphe_flair_filters_add">Add</string>
+    <string name="morphe_flair_filters_remove">Remove</string>
+    <string name="morphe_flair_filters_hint">community::flair</string>
+    <string name="morphe_flair_filters_invalid">Enter a community and a flair, for example gaming::Discussion</string>
+    <string name="morphe_flair_filters_saved">Refresh the feed to apply the changes</string>
+    <string name="morphe_flair_filters_remember_seen_title">Remember seen flairs</string>
+    <string name="morphe_flair_filters_remember_seen_summary">Remember the flairs of feed posts until the app closes, to choose flair filters from them</string>
+    <string name="morphe_flair_filters_seen_title">Choose seen flairs</string>
+    <string name="morphe_flair_filters_seen_summary">Choose flair filters from the flairs of feed posts</string>
+    <string name="morphe_flair_filters_seen_empty">No flairs seen yet. Turn on Remember seen flairs and browse the feed</string>
     <string name="morphe_keyword_filters_title">Keyword filters</string>
     <string name="morphe_keyword_filters_summary">Hide feed posts with a title or text that matches a regular expression. Matching ignores case</string>
     <string name="morphe_keyword_filters_empty">No keyword filters</string>
