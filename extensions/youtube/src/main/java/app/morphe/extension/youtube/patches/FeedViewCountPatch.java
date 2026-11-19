@@ -213,12 +213,14 @@ public final class FeedViewCountPatch {
             .createSizeRestrictedMap(2 * MAX_VIDEO_VIEW_COUNTS, true);
 
     /**
-     * Videos whose cards show the shortened view count of the metadata as a text of its own,
-     * such as "4.7M" between the channel and the upload time, which the badge does not replace.
+     * Video id -> pattern of the shortened view count of the metadata, which a card of the video shows
+     * as a text of its own, such as "4.7M" between the channel and the upload time, and which the badge
+     * does not replace. Kept when an element of the video in another list does not show it, such as of
+     * the Watch later playlist, as the cards of the first element can still be shown.
      * Oldest videos are removed first.
      */
     @GuardedBy("itself")
-    private static final Map<String, Boolean> ownViewCountTextVideos = Utils
+    private static final Map<String, Pattern> ownViewCountTexts = Utils
             .createSizeRestrictedMap(MAX_VIDEO_VIEW_COUNTS, true);
 
     /**
@@ -698,6 +700,28 @@ public final class FeedViewCountPatch {
     }
 
     /**
+     * @return The pattern of a view count shown in a text, in any language: the spaces and the marks
+     *         of the text direction between its characters can differ, and it must not be part of
+     *         a longer number or word of Latin letters, such as of a URL.
+     */
+    private static Pattern getViewCountTextPattern(String viewCount) {
+        StringBuilder regex = new StringBuilder("(?<![A-Za-z\\p{Nd}])");
+        final int start = regex.length();
+        viewCount.codePoints().forEach(codePoint -> {
+            if (Character.isWhitespace(codePoint) || Character.isSpaceChar(codePoint)
+                    || Character.getType(codePoint) == Character.FORMAT) {
+                return;
+            }
+            if (regex.length() > start) {
+                regex.append(VIEW_COUNT_GAP);
+            }
+            regex.append(Pattern.quote(new String(Character.toChars(codePoint))));
+        });
+        regex.append("(?![A-Za-z\\p{Nd}])");
+        return Pattern.compile(regex.toString());
+    }
+
+    /**
      * Called by {@link FeedVideoCardsPatch} when the element of a video that is not live is loaded,
      * before its cards are drawn. Litho draws only the part of a card that is shown, so a card that
      * enters from the bottom of the list shows its thumbnail before the texts below its title.
@@ -730,23 +754,7 @@ public final class FeedViewCountPatch {
                 // Some cards show it below the title, such as the Shorts of the search results.
                 // They have no badge, decided now, as the texts of a card that enters the list
                 // are drawn after its thumbnail, so the badge would be shown and then removed.
-                // The view count is found in any language: the spaces and the marks of the text
-                // direction between its characters can differ, and it must not be part of
-                // a longer number or word of Latin letters, such as of a URL.
-                StringBuilder regex = new StringBuilder("(?<![A-Za-z\\p{Nd}])");
-                final int start = regex.length();
-                viewCount.codePoints().forEach(codePoint -> {
-                    if (Character.isWhitespace(codePoint) || Character.isSpaceChar(codePoint)
-                            || Character.getType(codePoint) == Character.FORMAT) {
-                        return;
-                    }
-                    if (regex.length() > start) {
-                        regex.append(VIEW_COUNT_GAP);
-                    }
-                    regex.append(Pattern.quote(new String(Character.toChars(codePoint))));
-                });
-                regex.append("(?![A-Za-z\\p{Nd}])");
-                Pattern countPattern = Pattern.compile(regex.toString());
+                Pattern countPattern = getViewCountTextPattern(viewCount);
                 ProtoNode shortItem = null;
                 for (ProtoNode node : textNodes) {
                     if (node.getText().startsWith(FeedVideoCardsPatch.SHORTS_ITEM_PREFIX)) {
@@ -860,11 +868,10 @@ public final class FeedViewCountPatch {
                     break;
                 }
             }
-            synchronized (ownViewCountTextVideos) {
-                if (ownViewCountText) {
-                    ownViewCountTextVideos.put(videoId, Boolean.TRUE);
-                } else {
-                    ownViewCountTextVideos.remove(videoId);
+            if (ownViewCountText) {
+                Pattern pattern = getViewCountTextPattern(shortenedViewCount);
+                synchronized (ownViewCountTexts) {
+                    ownViewCountTexts.put(videoId, pattern);
                 }
             }
             if (metadataViewCount != null) {
@@ -1401,7 +1408,26 @@ public final class FeedViewCountPatch {
                     viewCount = findViewCountInTexts(info.texts);
                     textShowsViewCount = viewCount != null;
                 }
-                if (viewCount == null) {
+                Pattern ownViewCount = null;
+                if (viewCount == null && videoId != null) {
+                    FeedVideoCardsPatch.awaitElementAnalyses();
+                    synchronized (ownViewCountTexts) {
+                        ownViewCount = ownViewCountTexts.get(videoId);
+                    }
+                    if (ownViewCount != null) {
+                        // The card can show the view count as a text of its own, while the cards of the same video
+                        // in other lists do not, such as of the Watch later playlist, whose element can be loaded
+                        // later or earlier, so the view count of the element is not of this card.
+                        for (PlacedText placed : info.texts) {
+                            if (ownViewCount.matcher(placed.text).find()) {
+                                textShowsViewCount = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                // Which of them the card is, is known only when its texts below the title are drawn.
+                if (viewCount == null && !textShowsViewCount && (ownViewCount == null || !isBottomHidden(host))) {
                     // The texts below the title are not drawn yet, such as while only the thumbnail of
                     // a card that enters the list is shown, so the view count of the element is shown.
                     // The element of the video is loaded before its card, so the view count is known
@@ -1425,7 +1451,7 @@ public final class FeedViewCountPatch {
                     }
                 }
                 final String id = videoId == null ? "unknown" : videoId;
-                if (viewCount == null) {
+                if (viewCount == null && !textShowsViewCount) {
                     // Checked again when its texts are drawn, as they can show the view count.
                     FeedVideoCardsPatch.scheduleRetry(host);
                     logTexts(id, info.texts);
@@ -1450,18 +1476,18 @@ public final class FeedViewCountPatch {
         if (viewCount == null) {
             // Litho draws only the part of a card that is shown, so the view count of a card whose texts below
             // the title are below the bottom of the list is not found until they are shown.
-            final Rect visible = new Rect();
-            boolean textsHidden = !textShowsViewCount && shortsFrame == null && videoId != null
-                    && host.getLocalVisibleRect(visible) && visible.top == 0 && visible.bottom < host.getHeight();
+            final boolean bottomHidden = !textShowsViewCount && shortsFrame == null && videoId != null
+                    && isBottomHidden(host);
+            boolean textsHidden = bottomHidden;
             if (textsHidden) {
-                // The view count is shown by a text of its own, which the badge does not replace,
+                // The view count can be shown by a text of its own, which the badge does not replace,
                 // so the like count badge does not wait for the view count badge.
                 FeedVideoCardsPatch.awaitElementAnalyses();
-                synchronized (ownViewCountTextVideos) {
-                    textsHidden = !ownViewCountTextVideos.containsKey(videoId);
+                synchronized (ownViewCountTexts) {
+                    textsHidden = !ownViewCountTexts.containsKey(videoId);
                 }
             }
-            if (textsHidden && badge != null && badge.confirmed && badge.added && videoId.equals(badge.videoId)) {
+            if (bottomHidden && badge != null && badge.confirmed && badge.added && videoId.equals(badge.videoId)) {
                 // The card still shows the same video, such as when it moves back below the bottom of the list,
                 // so its view count is kept.
                 return;
@@ -1486,6 +1512,15 @@ public final class FeedViewCountPatch {
         badge.bind(host, videoId, viewCount, duration, thumbnail);
         // The like count badge can be shown next to the view count.
         FeedEngagementCountsPatch.onViewCountBadgeChanged(host);
+    }
+
+    /**
+     * @return If the bottom of the card is below the bottom of the list, so Litho has not drawn
+     *         the texts below the title yet, such as while the card enters the list.
+     */
+    private static boolean isBottomHidden(View host) {
+        final Rect visible = new Rect();
+        return host.getLocalVisibleRect(visible) && visible.top == 0 && visible.bottom < host.getHeight();
     }
 
     /**
