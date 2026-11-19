@@ -19,6 +19,7 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.playback.speed.ReplayVideoController;
@@ -28,138 +29,207 @@ import app.morphe.extension.youtube.shared.VideoState;
 
 @SuppressWarnings("unused")
 public final class ReplayVideoButton {
-    private static final int MAX_REWIND_SECONDS = 60;
+    private static final String BUTTON_ID = "morphe_replay_video_button";
     private static final String ICON = "morphe_replay_video_button";
+    private static final String ICON_ACTIVE = "morphe_replay_video_button_active";
 
     @Nullable
     private static LegacyPlayerControlButton legacy;
-    private static WeakReference<ImageView> overlayRef = new WeakReference<>(null);
-    private static WeakReference<View> legacyViewRef = new WeakReference<>(null);
-    @Nullable
-    private static volatile ReplayVideoController controller;
-    private static boolean observersRegistered;
+
+    private static WeakReference<ImageView> overlayButtonRef = new WeakReference<>(null);
+
+    private static final ReplayVideoController controller = new ReplayVideoController(
+            new ReplayVideoController.Player() {
+                @Override
+                public String videoId() {
+                    return VideoInformation.getVideoId();
+                }
+
+                @Override
+                public long position() {
+                    return VideoInformation.getVideoTime();
+                }
+
+                @Override
+                public float speed() {
+                    return VideoInformation.getPlaybackSpeed();
+                }
+
+                @Override
+                public long elapsedRealtime() {
+                    return SystemClock.elapsedRealtime();
+                }
+
+                @Override
+                public boolean seekTo(long position) {
+                    return VideoInformation.seekTo(position);
+                }
+
+                @Override
+                public void changeSpeed(float speed) {
+                    VideoInformation.changePlaybackSpeed(speed);
+                }
+            });
+
+    /**
+     * Observers are added with the first replay, so the button does nothing until it is used.
+     */
+    private static boolean observersAdded;
+
     private static boolean positionCheckScheduled;
 
-    /** Injection point. */
-    public static void initializeButton(View sourceButton) {
-        if (!Settings.REPLAY_VIDEO_BUTTON.get()) return;
+    /**
+     * Injection point.
+     */
+    public static void initializeButton(View controlsView) {
         try {
-            if (LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS) return;
-            ImageView button = PlayerOverlayButton.addButton(sourceButton, PlayerIcons.name(ICON),
-                    ReplayVideoButton::isAvailable, view -> toggleReplay(), null);
-            overlayRef = new WeakReference<>(button);
-            if (button != null) {
-                PlayerOverlayButton.setToggleAccessibilityDelegate(button, ReplayVideoButton::isActive);
+            if (LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
+                    || !Settings.REPLAY_VIDEO_BUTTON.get()) {
+                return;
             }
-            updateAppearance();
+
+            ImageView button = PlayerOverlayButton.addButton(
+                    controlsView,
+                    getIconName(),
+                    ReplayVideoButton::isAvailable,
+                    view -> toggleReplay(),
+                    null
+            );
+            overlayButtonRef = new WeakReference<>(button);
+            if (button != null) {
+                setAccessibility(button);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
     }
 
-    /** Injection point. */
+    /**
+     * Injection point.
+     */
     public static void initializeLegacyButton(View controlsView) {
-        if (!Settings.REPLAY_VIDEO_BUTTON.get()) return;
         try {
-            if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS) return;
-            legacy = new LegacyPlayerControlButton(controlsView, ICON, null, PlayerIcons.name(ICON),
-                    () -> isAvailable() ? LegacyPlayerControlButton.ButtonVisibility.ENABLED
-                            : LegacyPlayerControlButton.ButtonVisibility.DISABLED,
-                    view -> toggleReplay(), null);
-            View button = Utils.getChildViewByResourceName(controlsView, ICON);
-            legacyViewRef = new WeakReference<>(button);
-            if (button != null) {
-                PlayerOverlayButton.setToggleAccessibilityDelegate(button, ReplayVideoButton::isActive);
+            if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
+                    || !Settings.REPLAY_VIDEO_BUTTON.get()) {
+                return;
             }
-            updateAppearance();
+
+            legacy = new LegacyPlayerControlButton(
+                    controlsView,
+                    BUTTON_ID,
+                    null,
+                    getIconName(),
+                    () -> isAvailable()
+                            ? LegacyPlayerControlButton.ButtonVisibility.ENABLED
+                            : LegacyPlayerControlButton.ButtonVisibility.DISABLED,
+                    view -> toggleReplay(),
+                    null
+            );
+            setAccessibility(Utils.getChildViewByResourceName(controlsView, BUTTON_ID));
         } catch (Exception ex) {
             Logger.printException(() -> "initializeLegacyButton failure", ex);
         }
     }
 
+    /**
+     * Injection point, before a native absolute or relative seek.
+     */
+    public static void onSeek() {
+        if (!controller.isActive()) return;
+        runAction(controller::onSeek);
+    }
+
+    /**
+     * Injection point, when the player controller of a new video is created.
+     * The current video ID is still the one of the previous video.
+     */
+    public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
+        if (!controller.isActive()) return;
+        runAction(() -> controller.cancel(true));
+    }
+
     private static boolean isAvailable() {
-        return Settings.REPLAY_VIDEO_BUTTON.get() && !VideoInformation.lastVideoIdIsShort()
+        return Settings.REPLAY_VIDEO_BUTTON.get()
+                && !VideoInformation.lastVideoIdIsShort()
                 && !VideoInformation.isLiveStream();
     }
 
-    private static boolean isActive() {
-        return controller != null && controller.isActive();
+    private static void setAccessibility(View button) {
+        button.setContentDescription(str("morphe_replay_video_start"));
+        PlayerOverlayButton.setToggleAccessibilityDelegate(button, controller::isActive);
     }
 
-    private static ReplayVideoController getController() {
-        if (controller == null) {
-            controller = new ReplayVideoController(new ReplayVideoController.Player() {
-                @Override public String videoId() { return VideoInformation.getVideoId(); }
-                @Override public long position() { return VideoInformation.getVideoTime(); }
-                @Override public float speed() { return VideoInformation.getPlaybackSpeed(); }
-                @Override public long elapsedRealtime() { return SystemClock.elapsedRealtime(); }
-                @Override public boolean seekTo(long position) { return VideoInformation.seekTo(position); }
-                @Override public void changeSpeed(float speed) { VideoInformation.changePlaybackSpeed(speed); }
-            });
-        }
-        if (!observersRegistered) {
-            observersRegistered = true;
-            VideoState.getOnChange().addObserver(state -> {
-                if (!isActive()) return;
-                Utils.runOnMainThreadNowOrLater(() -> {
-                    if (state == VideoState.ENDED || state == VideoState.UNRECOVERABLE_ERROR) {
-                        runAction(() -> controller.cancel(true));
-                    } else if (state == VideoState.PLAYING) {
-                        schedulePositionCheck();
-                    }
-                });
-            });
-            PlayerType.getOnChange().addObserver(type -> {
-                if (!isActive()) return;
-                if (type.isNoneOrHidden() || type == PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED
-                        || type == PlayerType.WATCH_WHILE_SLIDING_FULLSCREEN_DISMISSED) {
-                    runAction(() -> controller.cancel(true));
-                }
-            });
-        }
-        return controller;
+    private static void addObservers() {
+        if (observersAdded) return;
+        observersAdded = true;
+
+        VideoState.getOnChange().addObserver(state -> {
+            if (!controller.isActive()) return;
+            if (state == VideoState.ENDED || state == VideoState.UNRECOVERABLE_ERROR) {
+                runAction(() -> controller.cancel(true));
+            } else if (state == VideoState.PLAYING) {
+                Utils.runOnMainThreadNowOrLater(ReplayVideoButton::schedulePositionCheck);
+            }
+        });
+
+        PlayerType.getOnChange().addObserver(type -> {
+            if (!controller.isActive()) return;
+            if (type.isNoneOrHidden()
+                    || type == PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED
+                    || type == PlayerType.WATCH_WHILE_SLIDING_FULLSCREEN_DISMISSED) {
+                runAction(() -> controller.cancel(true));
+            }
+        });
+
+        VideoInformation.onPlaybackSpeedChange.addObserver(speed -> {
+            if (!controller.isActive()) return;
+            runAction(() -> controller.onSpeedChanged(speed));
+        });
+
+        VideoInformation.onUserSelectedPlaybackSpeed.addObserver(speed -> {
+            if (!controller.isActive()) return;
+            runAction(controller::onUserSelectedSpeed);
+        });
     }
 
     private static void toggleReplay() {
         runAction(() -> {
-            ReplayVideoController replay = getController();
-            if (replay.isActive()) {
-                replay.cancel(true);
+            if (controller.isActive()) {
+                controller.cancel(true);
                 return;
             }
             if (!isAvailable()) return;
-            int seconds = Settings.REPLAY_VIDEO_SECONDS.get();
-            if (seconds < 1 || seconds > MAX_REWIND_SECONDS) {
-                Settings.REPLAY_VIDEO_SECONDS.resetToDefault();
-                seconds = Settings.REPLAY_VIDEO_SECONDS.get();
-            }
-            int slowSeconds = Settings.REPLAY_VIDEO_SLOW_SECONDS.get();
-            if (slowSeconds < 1 || slowSeconds > MAX_REWIND_SECONDS) {
-                Settings.REPLAY_VIDEO_SLOW_SECONDS.resetToDefault();
-                slowSeconds = Settings.REPLAY_VIDEO_SLOW_SECONDS.get();
-            }
+
             float speed = Settings.REPLAY_VIDEO_SPEED.get();
-            if (!(speed >= 0.1f && speed <= VideoInformation.PLAYBACK_SPEED_MAXIMUM)) {
-                Settings.REPLAY_VIDEO_SPEED.resetToDefault();
-                speed = Settings.REPLAY_VIDEO_SPEED.get();
+            if (speed <= 0 || speed > VideoInformation.PLAYBACK_SPEED_MAXIMUM) {
+                Utils.showToastLong(str("morphe_replay_video_speed_invalid"));
+                speed = Settings.REPLAY_VIDEO_SPEED.resetToDefault();
             }
-            if (!replay.start(seconds * 1000L, slowSeconds * 1000L, speed)) {
+
+            addObservers();
+            final long rewindMs = SeekBarPreference.clampToRange(Settings.REPLAY_VIDEO_SECONDS) * 1000L;
+            final long slowPlaybackMs = SeekBarPreference.clampToRange(Settings.REPLAY_VIDEO_SLOW_SECONDS) * 1000L;
+            if (controller.start(rewindMs, slowPlaybackMs, speed)) {
+                schedulePositionCheck();
+            } else {
                 Utils.showToastShort(str("morphe_replay_video_unavailable"));
             }
-            schedulePositionCheck();
         });
     }
 
     private static void schedulePositionCheck() {
-        if (positionCheckScheduled || !isActive() || VideoState.getCurrent() == VideoState.PAUSED) return;
+        if (positionCheckScheduled || !controller.isActive()
+                || VideoState.getCurrent() == VideoState.PAUSED) {
+            return;
+        }
+
         positionCheckScheduled = true;
         Utils.runOnMainThreadDelayed(() -> {
             positionCheckScheduled = false;
-            if (!isActive()) return;
+            if (!controller.isActive()) return;
+
             runAction(() -> {
-                if (!Settings.REPLAY_VIDEO_BUTTON.get()) {
-                    controller.cancel(true);
-                } else if (VideoState.getCurrent() != VideoState.PAUSED) {
+                if (VideoState.getCurrent() != VideoState.PAUSED) {
                     controller.tick();
                     schedulePositionCheck();
                 }
@@ -167,62 +237,45 @@ public final class ReplayVideoButton {
         }, controller.nextCheckDelayMillis());
     }
 
-    /** Injection point, before the native absolute or relative seek. */
-    public static void onSeek() {
-        if (!Settings.REPLAY_VIDEO_BUTTON.get() || !isActive()) return;
-        runAction(() -> controller.onSeek());
-    }
-
-    /** Injection point, before a manual selection in either speed menu. */
-    public static void onUserSelectedSpeed(float speed) {
-        if (!Settings.REPLAY_VIDEO_BUTTON.get() || !isActive()) return;
-        runAction(() -> controller.onUserSelectedSpeed());
-    }
-
-    /** Injection point. */
-    public static void onSpeedChanged(float speed) {
-        if (!Settings.REPLAY_VIDEO_BUTTON.get() || !isActive()) return;
-        runAction(() -> controller.onSpeedChanged(speed));
-    }
-
-    /** Injection point, before VideoInformation switches to the new player controller. */
-    public static void onVideoReset() {
-        if (!Settings.REPLAY_VIDEO_BUTTON.get() || !isActive()) return;
-        runAction(() -> controller.cancel(true));
-    }
-
+    /**
+     * Runs a replay action on the main thread, and updates the button if the replay started or ended.
+     */
     private static void runAction(Runnable action) {
         Utils.runOnMainThreadNowOrLater(() -> {
-            final boolean wasActive = isActive();
+            final boolean wasActive = controller.isActive();
             try {
                 action.run();
             } catch (Exception ex) {
                 Logger.printException(() -> "Replay video failure", ex);
-                try {
-                    if (controller != null) controller.cancel(true);
-                } catch (Exception restoreException) {
-                    Logger.printException(() -> "Restore replay speed failure", restoreException);
-                }
             }
-            try {
-                if (wasActive != isActive()) updateAppearance();
-            } catch (Exception ex) {
-                Logger.printException(() -> "Update replay button failure", ex);
+            if (wasActive != controller.isActive()) {
+                updateButtonIcon();
             }
         });
     }
 
-    private static void updateAppearance() {
-        final boolean active = isActive();
-        final int icon = PlayerIcons.id(active ? ICON + "_active" : ICON);
-        String description = str(active ? "morphe_replay_video_cancel" : "morphe_replay_video_start");
-        ImageView overlay = overlayRef.get();
-        if (overlay != null) {
-            overlay.setImageResource(icon);
-            overlay.setContentDescription(description);
+    private static void updateButtonIcon() {
+        try {
+            final int icon = PlayerIcons.id(getIconBaseName());
+
+            ImageView overlayButton = overlayButtonRef.get();
+            if (overlayButton != null) {
+                overlayButton.setImageResource(icon);
+            }
+
+            if (legacy != null) {
+                legacy.setIcon(icon);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "updateButtonIcon failure", ex);
         }
-        if (legacy != null) legacy.setIcon(icon);
-        View legacyView = legacyViewRef.get();
-        if (legacyView != null) legacyView.setContentDescription(description);
+    }
+
+    private static String getIconName() {
+        return PlayerIcons.name(getIconBaseName());
+    }
+
+    private static String getIconBaseName() {
+        return controller.isActive() ? ICON_ACTIVE : ICON;
     }
 }

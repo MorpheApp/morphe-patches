@@ -1404,14 +1404,14 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_replay_video_button_title">Show Replay slower button</string>
     <string name="morphe_replay_video_button_summary">Rewinds and temporarily slows down the video. Tap again to cancel</string>
     <string name="morphe_replay_video_seconds_title">Rewind duration</string>
-    <string name="morphe_replay_video_seconds_summary">Number of seconds to rewind, from 1 to 60</string>
+    <string name="morphe_replay_video_seconds_summary">How many seconds the video rewinds</string>
     <string name="morphe_replay_video_slow_seconds_title">Slow playback duration</string>
-    <string name="morphe_replay_video_slow_seconds_summary">Seconds of video to play at the replay speed after rewinding, from 1 to 60</string>
+    <string name="morphe_replay_video_slow_seconds_summary">How many seconds of the video play at the replay speed after rewinding</string>
     <string name="morphe_replay_video_speed_title">Replay speed</string>
-    <string name="morphe_replay_video_speed_summary">Playback speed during the replay, from 0.1 to 8. Never faster than the current speed</string>
+    <string name="morphe_replay_video_speed_summary">Playback speed of the replay, such as 0.5. The replay is never faster than the current speed</string>
     <string name="morphe_replay_video_start">Replay slower</string>
-    <string name="morphe_replay_video_cancel">Stop slow replay</string>
     <string name="morphe_replay_video_unavailable">Slow replay is unavailable for this video</string>
+    <string name="morphe_replay_video_speed_invalid">Invalid replay speed, reset to default</string>
 
     <!-- layout.player.buttons.muteVideoButtonPatch -->
     <string name="morphe_mute_video_button_title">Show Mute button</string>

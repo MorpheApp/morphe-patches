@@ -18,7 +18,18 @@ public final class ReplayVideoController {
         void changeSpeed(float speed);
     }
 
+    /**
+     * How long to wait for the player to report the position after the rewind.
+     */
     private static final long SEEK_TIMEOUT_MS = 5000;
+    /**
+     * Check interval while waiting for the rewind to land.
+     */
+    private static final long SEEK_CHECK_INTERVAL_MS = 10;
+    /**
+     * Longest check interval while the slowed down part plays.
+     */
+    private static final long MAX_CHECK_INTERVAL_MS = 100;
 
     private final Player player;
     private volatile boolean active;
@@ -110,9 +121,9 @@ public final class ReplayVideoController {
 
     /** Check more closely while the seek is pending or the return position is near. */
     public long nextCheckDelayMillis() {
-        if (!rewindObserved) return 10;
-        return Math.max(1, Math.min(100,
-                (long) Math.ceil((returnPosition - player.position()) / (double) replaySpeed)));
+        if (!rewindObserved) return SEEK_CHECK_INTERVAL_MS;
+        final long untilReturn = (long) Math.ceil((returnPosition - player.position()) / (double) replaySpeed);
+        return Math.max(1, Math.min(MAX_CHECK_INTERVAL_MS, untilReturn));
     }
 
     /** Called before a native seek; our own initial seek is deliberately ignored. */
