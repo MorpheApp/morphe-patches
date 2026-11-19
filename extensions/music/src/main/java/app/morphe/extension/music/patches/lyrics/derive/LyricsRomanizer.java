@@ -459,8 +459,33 @@ public final class LyricsRomanizer {
         if (!LyricsMerge.hasText(result)) {
             return null;
         }
-        List<LyricsLine> aligned = alignIfWordSynced(lyrics, result, isWordSynced);
+        List<LyricsLine> aligned = alignLocalWordSynced(lyrics, result, isWordSynced);
         return new ProviderResult(aligned, false, false, null, dictionary);
+    }
+
+    @Nullable
+    private static List<LyricsLine> alignLocalWordSynced(
+            Lyrics lyrics, @Nullable List<LyricsLine> result, boolean isWordSynced) {
+        if (!isWordSynced || result == null) {
+            return result;
+        }
+        List<LyricsLine> aligned = LocalRomanizer.alignWords(lyrics.lines(), result);
+        if (aligned == null) {
+            return alignLinesToWordSync(lyrics, result);
+        }
+        // Ensure aligned per-word lines still carry the full whole-line text from `result`
+        // alongside per-word timings so both whole-line displays and syllable aligners agree.
+        List<LyricsLine> merged = new ArrayList<>(aligned.size());
+        for (int i = 0; i < aligned.size(); i++) {
+            LyricsLine al = aligned.get(i);
+            LyricsLine orig = i < lyrics.lines().size() ? lyrics.lines().get(i) : al;
+            String wholeText = i < result.size() && result.get(i).text() != null
+                    && !result.get(i).text().trim().isEmpty()
+                    ? result.get(i).text() : al.text();
+            merged.add(new LyricsLine(orig.startTimeMs(), orig.endTimeMs(), wholeText,
+                    al.words(), orig.agentId(), orig.isDuet(), orig.isBG(), orig.songPart()));
+        }
+        return merged;
     }
 
     @Nullable
@@ -487,7 +512,7 @@ public final class LyricsRomanizer {
         if (!LyricsMerge.hasText(result)) {
             return null;
         }
-        List<LyricsLine> aligned = alignIfWordSynced(lyrics, result, isWordSynced);
+        List<LyricsLine> aligned = alignLocalWordSynced(lyrics, result, isWordSynced);
         return new ProviderResult(aligned, false, false, null, dictionary);
     }
 

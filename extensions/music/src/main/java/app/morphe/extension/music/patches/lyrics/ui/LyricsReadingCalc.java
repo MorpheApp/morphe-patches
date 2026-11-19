@@ -16,6 +16,8 @@ import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseMoraSplitter;
+import app.morphe.extension.music.patches.lyrics.romanizers.KoreanReadingAligner;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
@@ -202,7 +204,8 @@ final class LyricsReadingCalc {
                 }
             }
         }
-        if (wantRoman && anyNativeNonEmpty && (hasNativeTimingRomaji || embeddedReading)) {
+        final boolean hasWholeRoman = wholeRoman != null && !wholeRoman.trim().isEmpty();
+        if (wantRoman && anyNativeNonEmpty && (hasNativeTimingRomaji || (embeddedReading && !hasWholeRoman))) {
             for (int i = 0; i < n; i++) {
                 if (isLatinWord[i]) {
                     romTexts[i] = "";
@@ -211,11 +214,14 @@ final class LyricsReadingCalc {
                     String r = timings.get(i).romaji();
                     r = r != null ? LyricsTextUtils.stripBidiControls(LyricsTextUtils.isSecondaryLine(line) ? LyricsBracketSplitter.stripAllBrackets(r) : r) : "";
                     final String trimmed = r.trim();
-                    // A source that reads only some words must not have the rest read for it.
                     if (trimmed.isEmpty() || (!allowTransliteration && ScriptDetector.containsCjk(trimmed))
                             || trimmed.equalsIgnoreCase(ownWords[i])) {
-                        romTexts[i] = "";
-                        romTrailingSpaces[i] = false;
+                        // Fill holes left after slicing mixed Han/Kana ruby words using the slot guide.
+                        String fallback = !hasNativeTimingRomaji ? phoneticGuideFor(ownWords[i], mainText, false) : "";
+                        fallback = fallback != null ? fallback.trim() : "";
+                        romTexts[i] = (!fallback.isEmpty() && (allowTransliteration || !ScriptDetector.containsCjk(fallback))
+                                && !fallback.equalsIgnoreCase(ownWords[i])) ? fallback : "";
+                        romTrailingSpaces[i] = !romTexts[i].isEmpty() && timings.get(i).hasTrailingSpace();
                     } else {
                         romTrailingSpaces[i] = r.endsWith(" ") || timings.get(i).hasTrailingSpace();
                         romTexts[i] = trimmed;
@@ -273,41 +279,90 @@ final class LyricsReadingCalc {
             }
 
             if (wholeRoman != null && !wholeRoman.trim().isEmpty()) {
-                final String readingKey = readingKey(wholeRoman);
-                String[] aligned = LocalRomanizer.allocateReading(
-                        LyricsTextUtils.stripBidiControls(wholeRoman).trim(), n, guides,
-                        LocalRomanizer.hasCjkWord(ownWords));
-                for (int i = 0; i < n; i++) {
-                    if (isLatinWord[i]) {
-                        romTexts[i] = "";
-                        romTrailingSpaces[i] = false;
-                        continue;
+                final String strippedWhole = LyricsTextUtils.stripBidiControls(wholeRoman).trim();
+                final JapaneseMoraSplitter.AlignedChunk[] jaAligned =
+                        JapaneseMoraSplitter.alignJapaneseLineToSlots(
+                                strippedWhole, ownWords, isLatinWord, guides);
+                final JapaneseMoraSplitter.AlignedChunk[] koAligned = (jaAligned == null
+                        && KoreanReadingAligner.hasKoreanScript(ownWords))
+                        ? KoreanReadingAligner.alignKoreanLineToSlots(
+                                strippedWhole, ownWords, isLatinWord, guides)
+                        : null;
+                final JapaneseMoraSplitter.AlignedChunk[] scriptAligned =
+                        jaAligned != null ? jaAligned : koAligned;
+                if (scriptAligned != null && scriptAligned.length == n) {
+                    final String readingKey = readingKey(wholeRoman);
+                    for (int i = 0; i < n; i++) {
+                        if (isLatinWord[i]) {
+                            romTexts[i] = "";
+                            romTrailingSpaces[i] = false;
+                            continue;
+                        }
+                        String chunk = scriptAligned[i] != null && scriptAligned[i].text() != null
+                                ? scriptAligned[i].text().trim() : "";
+                        boolean trailingSpace = scriptAligned[i] != null && scriptAligned[i].trailingSpace();
+                        final boolean hole = chunk.isEmpty();
+                        if (hole || (!allowTransliteration && ScriptDetector.containsCjk(chunk))
+                                || chunk.equalsIgnoreCase(ownWords[i])) {
+                            final String guide = guides.get(i);
+                            final String guideTrim = guide != null ? guide.trim() : "";
+                            if (koAligned != null) {
+                                chunk = (!guideTrim.isEmpty() && !guideTrim.equalsIgnoreCase(ownWords[i]))
+                                        ? guideTrim : "";
+                            } else {
+                                chunk = embeddedReading || guideTrim.isEmpty()
+                                        || (hole && readingKey.contains(readingKey(guideTrim)))
+                                        ? "" : guideTrim;
+                            }
+                            if (!chunk.isEmpty() && hole && i > 0) {
+                                for (int prev = i - 1; prev >= 0; prev--) {
+                                    if (!romTexts[prev].isEmpty()) {
+                                        romTrailingSpaces[prev] = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        romTexts[i] = chunk;
+                        romTrailingSpaces[i] = !chunk.isEmpty() && trailingSpace;
                     }
-                    String chunk = i < aligned.length && aligned[i] != null ? aligned[i] : "";
-                    final boolean chunkTrailingSpace = chunk.endsWith(" ");
-                    chunk = chunk.trim();
-                    final boolean hole = chunk.isEmpty();
-                    if (hole || (!allowTransliteration && ScriptDetector.containsCjk(chunk))
-                            || chunk.equalsIgnoreCase(ownWords[i])) {
-                        final String guide = guides.get(i);
-                        // A hole stays a hole when the line's reading already says this syllable somewhere:
-                        // the guide is then a tail of a word the allocator placed in another slot.
-                        chunk = embeddedReading || (hole && readingKey.contains(readingKey(guide)))
-                                ? "" : guide;
+                } else {
+                    final String readingKey = readingKey(wholeRoman);
+                    String[] aligned = LocalRomanizer.allocateReading(
+                            strippedWhole, n, guides,
+                            LocalRomanizer.hasCjkWord(ownWords));
+                    for (int i = 0; i < n; i++) {
+                        if (isLatinWord[i]) {
+                            romTexts[i] = "";
+                            romTrailingSpaces[i] = false;
+                            continue;
+                        }
+                        String chunk = i < aligned.length && aligned[i] != null ? aligned[i] : "";
+                        final boolean chunkTrailingSpace = chunk.endsWith(" ");
+                        chunk = chunk.trim();
+                        final boolean hole = chunk.isEmpty();
+                        if (hole || (!allowTransliteration && ScriptDetector.containsCjk(chunk))
+                                || chunk.equalsIgnoreCase(ownWords[i])) {
+                            final String guide = guides.get(i);
+                            // A hole stays a hole when the line's reading already says this syllable somewhere:
+                            // the guide is then a tail of a word the allocator placed in another slot.
+                            chunk = embeddedReading || (hole && readingKey.contains(readingKey(guide)))
+                                    ? "" : guide;
+                        }
+                        // Korean without spaces reads as one word
+                        if (!ownWords[i].contains(" ") && chunk.contains(" ")
+                                && ScriptDetector.contains(ownWords[i], Character.UnicodeScript.HANGUL)) {
+                            chunk = chunk.replace(" ", "");
+                        }
+                        romTexts[i] = chunk;
+                        romTrailingSpaces[i] = chunkTrailingSpace;
                     }
-                    // Korean without spaces reads as one word
-                    if (!ownWords[i].contains(" ") && chunk.contains(" ")
-                            && ScriptDetector.contains(ownWords[i], Character.UnicodeScript.HANGUL)) {
-                        chunk = chunk.replace(" ", "");
+                    // Single-token reading can't wrap; spread over syllables so the line can
+                    // break instead of running off the right edge.
+                    if (!embeddedReading && n > 1 && countFilledChunks(aligned) <= 1) {
+                        spreadSingleReading(strippedWhole,
+                                romTexts, romTrailingSpaces, isLatinWord, guides, ownWords);
                     }
-                    romTexts[i] = chunk;
-                    romTrailingSpaces[i] = chunkTrailingSpace;
-                }
-                // Single-token reading can't wrap; spread over syllables so the line can
-                // break instead of running off the right edge.
-                if (!embeddedReading && n > 1 && countFilledChunks(aligned) <= 1) {
-                    spreadSingleReading(LyricsTextUtils.stripBidiControls(wholeRoman).trim(),
-                            romTexts, romTrailingSpaces, isLatinWord, guides, ownWords);
                 }
                 populated = true;
             } else {
@@ -881,5 +936,71 @@ final class LyricsReadingCalc {
     static String lineReading(LyricsLine line, int index,
                               @Nullable List<LyricsLine> romanizedLines, boolean perWordRomaji) {
         return readingFor(line, index, romanizedLines, perWordRomaji, null).text();
+    }
+
+    /**
+     * Resolves clean line-level romanization text for Share Lyrics cards and clipboard copy,
+     * preferring aligned syllable readings or whole-line romanization so incomplete per-word
+     * arrays never leak raw source script characters into the romanization row.
+     */
+    @Nullable
+    static String shareRomanization(
+            LyricsLine line,
+            int index,
+            @Nullable List<LyricsLine> romanizedLines,
+            boolean perWordRomaji,
+            @Nullable List<WordTiming> timings,
+            String mainText) {
+        final boolean embeddedReading = perWordRomaji
+                && (romanizedLines == null || index >= romanizedLines.size());
+        if (timings != null && !timings.isEmpty() && !mainText.isEmpty()
+                && (romanizedLines != null || perWordRomaji)) {
+            List<WordTiming> syl = buildSyllableRomanizedTimings(
+                    line, index, romanizedLines, true, timings, mainText, embeddedReading);
+            if (syl != null && !syl.isEmpty()) {
+                StringBuilder sb = new StringBuilder();
+                boolean prevNeedsSpaceAfter = false;
+                for (int i = 0; i < syl.size(); i++) {
+                    WordTiming wt = syl.get(i);
+                    int s = Math.max(0, Math.min(wt.start(), mainText.length()));
+                    int e = Math.max(s, Math.min(wt.end(), mainText.length()));
+                    String slice = mainText.substring(s, e).trim();
+                    String piece = wt.romaji() != null ? wt.romaji().trim() : "";
+                    boolean latinSlice = LyricsRomanizer.isPurelyLatinScript(slice);
+                    if (piece.isEmpty() && latinSlice) {
+                        piece = slice;
+                    }
+                    if (piece.isEmpty()) {
+                        if (wt.hasTrailingSpace() && Utils.isNotEmpty(sb)) {
+                            prevNeedsSpaceAfter = true;
+                        }
+                        continue;
+                    }
+                    if (Utils.isNotEmpty(sb) && (prevNeedsSpaceAfter || !latinSlice)) {
+                        sb.append(' ');
+                    }
+                    sb.append(piece);
+                    prevNeedsSpaceAfter = wt.hasTrailingSpace() || !latinSlice;
+                }
+                String joined = sb.toString().trim();
+                if (!joined.isEmpty() && !joined.equalsIgnoreCase(mainText.trim())) {
+                    return joined;
+                }
+            }
+        }
+        String whole = lineRomanizationAt(line, index, romanizedLines);
+        if (whole != null && !whole.isEmpty()) {
+            return whole;
+        }
+        if (perWordRomaji) {
+            String fallback = readingFor(line, index, romanizedLines, true, timings).text();
+            if (fallback != null) {
+                String clean = fallback.trim();
+                if (!clean.isEmpty() && !clean.equalsIgnoreCase(mainText.trim())) {
+                    return clean;
+                }
+            }
+        }
+        return null;
     }
 }

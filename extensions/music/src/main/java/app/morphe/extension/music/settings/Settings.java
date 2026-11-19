@@ -237,6 +237,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting LYRICS_MINI_NEXT_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_mini_next_offset_ms", -800, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final BooleanSetting LYRICS_USE_EMBEDDED = new BooleanSetting("morphe_music_lyrics_use_embedded", TRUE, true, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_CAPTION_COOKIES = new StringSetting("morphe_music_lyrics_caption_cookies", "", false, parent(LYRICS_ENABLED));
+    /** Preferred offline Japanese analyzer ("kuromoji" or "sudachi") when both are downloaded. */
+    public static final StringSetting LYRICS_JAPANESE_DICT_ENGINE = new StringSetting("morphe_music_lyrics_japanese_dict_engine", "kuromoji", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
 
     // Lyrics metadata and line filtering live with the filter itself. Touching that class
     // is what puts the three settings into the framework's registry.

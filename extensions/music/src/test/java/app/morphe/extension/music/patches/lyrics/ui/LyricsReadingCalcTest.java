@@ -41,15 +41,17 @@ public class LyricsReadingCalcTest {
 
     private static String joinedRomaji(List<WordTiming> timings) {
         StringBuilder out = new StringBuilder();
+        boolean pendingSpace = false;
         for (WordTiming timing : timings) {
             String romaji = timing.romaji();
             if (romaji == null || romaji.trim().isEmpty()) {
                 continue;
             }
-            if (!out.isEmpty()) {
+            if (!out.isEmpty() && pendingSpace) {
                 out.append(' ');
             }
             out.append(romaji.trim());
+            pendingSpace = timing.hasTrailingSpace() || romaji.endsWith(" ");
         }
         return out.toString();
     }
@@ -229,7 +231,15 @@ public class LyricsReadingCalcTest {
         List<WordTiming> result = LyricsReadingCalc.buildSyllableRomanizedTimings(
                 line, 0, romanized, false, perCharacterTimings("遠回りしてでも"),
                 "遠回りしてでも", false);
-        assertEquals("Toomawari shite demo", joinedRomaji(Objects.requireNonNull(result)));
+        assertNotNull(result);
+        assertEquals("Toomawari shite demo", joinedRomaji(result));
+        assertEquals("Too", result.get(0).romaji());
+        assertEquals("mawa", result.get(1).romaji());
+        assertEquals("ri ", result.get(2).romaji());
+        assertEquals("shi", result.get(3).romaji());
+        assertEquals("te ", result.get(4).romaji());
+        assertEquals("de", result.get(5).romaji());
+        assertEquals("mo", result.get(6).romaji());
     }
 
     @Test
@@ -379,5 +389,139 @@ public class LyricsReadingCalcTest {
                 new WordTiming(5, 9, 10, 20, null, false)));
         assertEquals(1, words.size());
         assertEquals("abc", words.get(0).text());
+    }
+
+    @Test
+    public void syllableTimingsFillEmbeddedPartialRubySlotsFromWholeReading() {
+        String main = "やって来ましたよ真白な";
+        LyricsLine line = new LyricsLine(0, 2200, main, List.of(
+                new Word(0, 700, "やって", null, false, null),
+                new Word(700, 1000, "来", null, false, "き"),
+                new Word(1000, 1400, "ました", null, false, null),
+                new Word(1400, 1600, "よ", "yo", false, null),
+                new Word(1600, 2000, "真白", null, false, "まっしろ"),
+                new Word(2000, 2200, "な", null, false, null)
+        ));
+        List<WordTiming> timings = List.of(
+                new WordTiming(0, 3, 0, 700, null, false),
+                new WordTiming(3, 4, 700, 1000, null, false, "き", false),
+                new WordTiming(4, 7, 1000, 1400, null, false),
+                new WordTiming(7, 8, 1400, 1600, "yo", false),
+                new WordTiming(8, 10, 1600, 2000, null, false, "まっしろ", false),
+                new WordTiming(10, 11, 2000, 2200, null, false)
+        );
+        List<LyricsLine> romanized = List.of(new LyricsLine(0, "yatte kimashita yo masshiro na"));
+        List<WordTiming> result = LyricsReadingCalc.buildSyllableRomanizedTimings(
+                line, 0, romanized, true, timings, main, true);
+        assertNotNull(result);
+        assertEquals(6, result.size());
+        assertEquals("yatte kimashita yo masshiro na", joinedRomaji(result));
+        assertTrue(result.get(1).romaji() != null && !result.get(1).romaji().isEmpty());
+        assertTrue(result.get(4).romaji() != null && !result.get(4).romaji().isEmpty());
+    }
+
+    @Test
+    public void koreanSyllableAlignmentSplitsMultiSyllableTokensAndKeepsLatinUnread() {
+        // Case 1: "다 자연스럽게 알아, give me space" with subword split on 자연스 / 럽 / 게
+        String line1Text = "다 자연스럽게 알아, give me space";
+        List<WordTiming> line1Timings = List.of(
+                new WordTiming(0, 1, 0, 100, null, true),        // 다
+                new WordTiming(2, 5, 100, 300, null, false),     // 자연스
+                new WordTiming(5, 6, 300, 400, null, false),     // 럽
+                new WordTiming(6, 7, 400, 500, null, true),      // 게
+                new WordTiming(8, 11, 500, 700, null, true),     // 알아,
+                new WordTiming(12, 16, 700, 800, null, true),    // give
+                new WordTiming(17, 19, 800, 900, null, true),    // me
+                new WordTiming(20, 25, 900, 1000, null, false)   // space
+        );
+        List<WordTiming> r1 = LyricsReadingCalc.buildSyllableRomanizedTimings(
+                new LyricsLine(0, line1Text), 0,
+                List.of(new LyricsLine(0, "da jayeonseureopge ara, give me space")),
+                false, line1Timings, line1Text, false);
+        assertNotNull(r1);
+        assertEquals("da", r1.get(0).romaji().trim());
+        assertEquals("jayeonseu", r1.get(1).romaji().trim());
+        assertEquals("reop", r1.get(2).romaji().trim());
+        assertEquals("ge", r1.get(3).romaji().trim());
+        assertEquals("ara,", r1.get(4).romaji().trim());
+        assertNull(r1.get(5).romaji());
+        assertNull(r1.get(6).romaji());
+        assertNull(r1.get(7).romaji());
+
+        // Case 2: "언제나 그래 눈에 뛸 my face" with per-syllable split on 언 / 제 / 나
+        String line2Text = "언제나 그래 눈에 뛸 my face";
+        List<WordTiming> line2Timings = List.of(
+                new WordTiming(0, 1, 0, 100, null, false),
+                new WordTiming(1, 2, 100, 200, null, false),
+                new WordTiming(2, 3, 200, 300, null, true),
+                new WordTiming(4, 6, 300, 500, null, true),
+                new WordTiming(7, 9, 500, 700, null, true),
+                new WordTiming(10, 11, 700, 800, null, true),
+                new WordTiming(12, 14, 800, 900, null, true),
+                new WordTiming(15, 19, 900, 1000, null, false)
+        );
+        List<WordTiming> r2 = LyricsReadingCalc.buildSyllableRomanizedTimings(
+                new LyricsLine(0, line2Text), 0,
+                List.of(new LyricsLine(0, "eonjena geurae nune ttuil my face")),
+                false, line2Timings, line2Text, false);
+        assertNotNull(r2);
+        assertEquals("eon", r2.get(0).romaji().trim());
+        assertEquals("je", r2.get(1).romaji().trim());
+        assertEquals("na", r2.get(2).romaji().trim());
+        assertEquals("geurae", r2.get(3).romaji().trim());
+        assertEquals("nune", r2.get(4).romaji().trim());
+        assertEquals("ttuil", r2.get(5).romaji().trim());
+        assertNull(r2.get(6).romaji());
+        assertNull(r2.get(7).romaji());
+
+        // Case 3: "흘겨 보지마, 이건 no race" must never pull Latin "no" / "race" onto Korean "보지마,"
+        String line3Text = "흘겨 보지마, 이건 no race";
+        List<WordTiming> line3Timings = List.of(
+                new WordTiming(0, 1, 0, 100, null, false),       // 흘
+                new WordTiming(1, 2, 100, 200, null, true),      // 겨
+                new WordTiming(3, 7, 200, 500, null, true),      // 보지마,
+                new WordTiming(8, 10, 500, 700, null, true),     // 이건
+                new WordTiming(11, 13, 700, 850, null, true),    // no
+                new WordTiming(14, 18, 850, 1000, null, false)   // race
+        );
+        List<WordTiming> r3 = LyricsReadingCalc.buildSyllableRomanizedTimings(
+                new LyricsLine(0, line3Text), 0,
+                List.of(new LyricsLine(0, "heulgyeobojima, igeon no race")),
+                false, line3Timings, line3Text, false);
+        assertNotNull(r3);
+        assertFalse(r3.get(2).romaji().contains("no"));
+        assertEquals("igeon", r3.get(3).romaji().trim());
+        assertNull(r3.get(4).romaji());
+        assertNull(r3.get(5).romaji());
+    }
+
+    @Test
+    public void shareRomanizationAvoidsLeakingRawKanaWhenWordRomajiIsIncomplete() {
+        // Simulate whole-line romanized text alongside partial first-word romaji metadata
+        List<Word> partialWords = List.of(
+                new Word(0, 300, "いつも", "Itsumodoori", false, null),
+                new Word(300, 600, "通", null, false, null),
+                new Word(600, 800, "り", null, false, null)
+        );
+        String shareOrig = "いつも通り";
+        LyricsLine shareOrigLine = new LyricsLine(0, shareOrig);
+        List<LyricsLine> romanizedLines = List.of(
+                new LyricsLine(0, 800, "Itsumodoori", partialWords)
+        );
+        List<WordTiming> timings = List.of(
+                new WordTiming(0, 3, 0, 300, null, false),
+                new WordTiming(3, 4, 300, 600, null, false),
+                new WordTiming(4, 5, 600, 800, null, false)
+        );
+        String shareRom = LyricsReadingCalc.shareRomanization(
+                shareOrigLine, 0, romanizedLines, false, timings, shareOrig);
+        assertNotNull(shareRom);
+        assertFalse("Must never leak raw kana/kanji into share romaji: " + shareRom,
+                app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector.contains(
+                        shareRom, Character.UnicodeScript.HIRAGANA)
+                        || app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector.contains(
+                                shareRom, Character.UnicodeScript.HAN));
+        assertTrue(shareRom.toLowerCase(java.util.Locale.ROOT).contains("itsumo"));
+        assertTrue(shareRom.toLowerCase(java.util.Locale.ROOT).contains("doo"));
     }
 }

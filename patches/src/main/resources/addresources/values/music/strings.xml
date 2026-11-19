@@ -772,7 +772,12 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_local_romanization_dict_ready">Readings ready (%s entries)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_failed">Download failed - turn this off and on again to retry</string>
     <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline Dictionary</string>
-    <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japanese (SudachiDict, ~75 MB)</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Japanese</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — fast morphological analyzer &amp; ruby</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — full Japanese word dictionary</string>
+    <string name="morphe_music_lyrics_japanese_dict_engine_title">Priority &amp; fallback order</string>
+    <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromoji priority (SudachiDict fallback)</string>
+    <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict priority (Kuromoji fallback)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_unidict">Chinese and Cantonese characters (UniDict, ~8 MB)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chinese words (pinyin-pro, ~17 MB)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_cldr">Greek, Slavic Cyrillic (incl. Russian, Ukrainian, Bulgarian, Serbian, Belarusian, Macedonian), Georgian, Armenian, Hebrew, Arabic, Amharic and Syriac transliteration (CLDR, ~0.5 MB)</string>
