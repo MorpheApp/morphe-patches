@@ -23,6 +23,7 @@ import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
 import app.morphe.extension.reddit.patches.FullWidthFeedMediaPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
+import app.morphe.extension.reddit.patches.HideHomeTabsPatch;
 import app.morphe.extension.reddit.patches.HideInteractivePostsPatch;
 import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
@@ -61,6 +62,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 ForceSystemFontPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
                 HideCommunitiesShelfPatch.isPatchIncluded() ||
+                HideHomeTabsPatch.isPatchIncluded() ||
                 HideInteractivePostsPatch.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
                 FullWidthFeedMediaPatch.isPatchIncluded() ||
@@ -125,6 +127,21 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_COMMUNITIES_SHELF
+            ));
+        }
+
+        if (HideHomeTabsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_FOR_YOU_TAB
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_FOLLOWING_TAB
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_POPULAR_TAB
             ));
         }
 

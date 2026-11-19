@@ -10,6 +10,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
+import static app.morphe.extension.shared.settings.Setting.parentNot;
 
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch.ScrollSpeed;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.FeedDim;
@@ -69,9 +70,12 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting FULL_WIDTH_FEED_MEDIA = new BooleanSetting("morphe_full_width_feed_media", FALSE, true);
     public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("morphe_hide_ask_button", FALSE, true);
     public static final BooleanSetting HIDE_COMMUNITIES_SHELF = new BooleanSetting("morphe_hide_communities_shelf", FALSE, true);
+    public static final BooleanSetting HIDE_FOLLOWING_TAB = new BooleanSetting("morphe_hide_following_tab", FALSE, true, parentNot(DISABLE_MODERN_HOME));
+    public static final BooleanSetting HIDE_FOR_YOU_TAB = new BooleanSetting("morphe_hide_for_you_tab", FALSE, true, parentNot(DISABLE_MODERN_HOME));
     public static final BooleanSetting HIDE_INTERACTIVE_POSTS = new BooleanSetting("morphe_hide_interactive_posts", FALSE, true);
     public static final BooleanSetting HIDE_JOIN_CONVERSATION_BUTTON = new BooleanSetting("morphe_hide_join_conversation_button", FALSE);
     public static final BooleanSetting HIDE_MEDIA_VIEWER_OVERLAY = new BooleanSetting("morphe_hide_media_viewer_overlay", FALSE);
+    public static final BooleanSetting HIDE_POPULAR_TAB = new BooleanSetting("morphe_hide_popular_tab", FALSE, true, parentNot(DISABLE_MODERN_HOME));
     public static final BooleanSetting HIDE_TRENDING_SHELVES = new BooleanSetting("morphe_hide_trending_shelves", FALSE, true);
     public static final BooleanSetting HIGH_QUALITY_AVATARS = new BooleanSetting("morphe_high_quality_avatars", TRUE);
     public static final BooleanSetting KEEP_FEED_POSITION = new BooleanSetting("morphe_keep_feed_position", TRUE);

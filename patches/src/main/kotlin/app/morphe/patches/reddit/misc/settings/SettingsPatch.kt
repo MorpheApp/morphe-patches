@@ -41,6 +41,7 @@ import app.morphe.patches.reddit.misc.version.is_2024_03_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_14_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_25_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_30_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.announcements.patchesUpdateNoticePatch
@@ -168,12 +169,10 @@ val settingsPatch = patch(
             IsModernStyleFingerprint.method.returnEarly(true)
 
             // Use the toggle colors of the app, so the Morphe toggles match the active theme.
-            // Without them, the Morphe settings use the colors of the built-in palette.
-            SettingsToggleFingerprint.matchOrNull()?.let { match ->
-                val colorsClass = match.instructionMatches.last().methodReference.definingClass
-                mutableClassDefBy(colorsClass).methods.first { method ->
-                    MethodUtil.isConstructor(method) && method.parameterTypes.size == 16
-                }.addInstructions(
+            // Before 2026.40.0, the Morphe settings use the colors of the built-in palette.
+            if (is_2026_40_0_or_greater) {
+                // Constructor of the toggle colors.
+                SettingsToggleFingerprint.instructionMatches.last().getMethodCalled().addInstructions(
                     0,
                     """
                         invoke-static/range { p1 .. p16 }, $SETTINGS_STYLE_EXTENSION_CLASS->setAppToggleColors(JJJJJJJJ)V
@@ -181,9 +180,9 @@ val settingsPatch = patch(
                 )
             }
 
-            SettingsToggleCheckMarkFingerprint.matchOrNull()?.let { match ->
-                val index = match.instructionMatches[1].index
-                match.method.apply {
+            SettingsToggleCheckMarkFingerprint.let {
+                val index = it.instructionMatches[1].index
+                it.method.apply {
                     val register = getInstruction<OneRegisterInstruction>(index).registerA
                     addInstructions(
                         index + 1,
