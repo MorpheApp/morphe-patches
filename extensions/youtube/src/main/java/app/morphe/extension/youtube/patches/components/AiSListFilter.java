@@ -47,7 +47,18 @@ public final class AiSListFilter extends BufferPhraseFilter {
     private static boolean keywordMatchIsWholeHandle(byte[] text, int keywordStartIndex, int keywordLength) {
         // No need to check before the mathc because handles starts with @ which is always the start.
         final Integer codePointAfter = getUtf8CodePointAt(text, keywordStartIndex + keywordLength);
-        return codePointAfter == null || !isHandleCharacter(codePointAfter);
+        if (codePointAfter == null || !isHandleCharacter(codePointAfter)) {
+            return true;
+        }
+        // The handle can also be a whole string of the proto of the element, such as the path /@handle
+        // of the channel of a Home video, which the tag of the next field follows. The tag can be a letter
+        // or a digit, so the string is found from the length before it. The length of a handle that is not
+        // URL encoded is one byte below the ASCII letters, which the search changes to lower case.
+        final int stringStart = keywordStartIndex > 0 && text[keywordStartIndex - 1] == '/'
+                ? keywordStartIndex - 1
+                : keywordStartIndex;
+        final int stringLength = keywordStartIndex + keywordLength - stringStart;
+        return stringStart > 0 && stringLength < 'A' && text[stringStart - 1] == stringLength;
     }
 
     /**
