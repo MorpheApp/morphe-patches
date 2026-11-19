@@ -357,8 +357,6 @@ public final class RestoreOriginalTitlesPatch {
 
 
     private static final Pattern LETTER_PATTERN = Pattern.compile("\\p{L}");
-    private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s");
-    private static final Pattern TOKEN_PATTERN = Pattern.compile("[_./:=|-]");
 
     /**
      * Title view -> video id of the title to set.
@@ -1970,7 +1968,7 @@ public final class RestoreOriginalTitlesPatch {
                 () -> findCandidateTitle(textNodes, nodeTexts, texts, videoId, elementVideoId, component),
                 title -> {
                     if (elementVideoId) {
-                        TitleLayouts.confirmTitle(component, videoId, TitleLayouts.fieldPaths(textNodes), nodeTexts, title);
+                        TitleLayouts.confirmTitle(component, videoId, () -> TitleLayouts.fieldPaths(textNodes), nodeTexts, title);
                     }
                 });
     }
@@ -3010,8 +3008,35 @@ public final class RestoreOriginalTitlesPatch {
      * @return If the text can be a part of an accessibility label, and is not a key, url or identifier.
      */
     static boolean isLabelCandidate(String text) {
-        return LETTER_PATTERN.matcher(text).find()
-                && (WHITESPACE_PATTERN.matcher(text).find() || !TOKEN_PATTERN.matcher(text).find());
+        // Called for most texts of the elements, which are parsed on the main thread while a list loads,
+        // so the characters are checked without patterns. The letters outside the BMP are left to the pattern.
+        // The whitespace is the White_Space characters of Unicode, which the "\s" of the Android patterns
+        // matches, and which are all in the BMP.
+        boolean letter = false;
+        boolean token = false;
+        boolean whitespace = false;
+        boolean supplementary = false;
+        for (int i = 0, length = text.length(); i < length; i++) {
+            final char c = text.charAt(i);
+            switch (Character.getType(c)) {
+                case Character.UPPERCASE_LETTER, Character.LOWERCASE_LETTER, Character.TITLECASE_LETTER,
+                     Character.MODIFIER_LETTER, Character.OTHER_LETTER -> letter = true;
+                case Character.SURROGATE -> supplementary = true;
+                default -> {
+                    if (c == '_' || c == '.' || c == '/' || c == ':' || c == '=' || c == '|' || c == '-') {
+                        token = true;
+                    } else if ((c >= '\t' && c <= '\r') || c == ' ' || c == '\u0085' || c == '\u00A0'
+                            || c == '\u1680' || (c >= '\u2000' && c <= '\u200A') || c == '\u2028'
+                            || c == '\u2029' || c == '\u202F' || c == '\u205F' || c == '\u3000') {
+                        whitespace = true;
+                    }
+                }
+            }
+        }
+        if (!letter && (!supplementary || !LETTER_PATTERN.matcher(text).find())) {
+            return false;
+        }
+        return !token || whitespace;
     }
 
     /**

@@ -785,7 +785,7 @@ public class FeedCardLayoutPatch {
 
         try {
             final String elementText = FeedVideoCardsPatch.getElementText(bytes);
-            if (LAYOUT != FeedCardLayout.DEFAULT && !Utils.containsAny(elementText, elementTemplates)) {
+            if (LAYOUT != FeedCardLayout.DEFAULT && !FeedVideoCardsPatch.containsAny(elementText, elementTemplates)) {
                 // The elements of the layout of the setting give the current version of its template:
                 // the uri and the fields are taken from the element, if it's an element of the template.
                 // After the first element, the elements are checked once in a while, to follow a new version.

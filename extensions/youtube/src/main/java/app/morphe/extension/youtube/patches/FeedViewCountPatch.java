@@ -454,6 +454,18 @@ public final class FeedViewCountPatch {
 
     private static List<Segment> splitSegments(String text) {
         List<Segment> segments = new ArrayList<>();
+        // Every text of the elements is split, so the pattern is used only for the texts with a delimiter:
+        // a dot, or two spaces or tabs in a row.
+        boolean delimiter = false;
+        for (int i = 0, length = text.length(); i < length && !delimiter; i++) {
+            final char c = text.charAt(i);
+            delimiter = c == '\u00B7' || c == '\u2022' || ((c == ' ' || c == '\t') && i + 1 < length
+                    && (text.charAt(i + 1) == ' ' || text.charAt(i + 1) == '\t'));
+        }
+        if (!delimiter) {
+            addSegment(text, 0, text.length(), segments);
+            return segments;
+        }
         Matcher matcher = SEGMENT_DELIMITER_PATTERN.matcher(text);
         int start = 0;
         while (matcher.find()) {
