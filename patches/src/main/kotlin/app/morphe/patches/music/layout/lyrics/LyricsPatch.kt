@@ -171,6 +171,14 @@ val lyricsPatch = patch(
                         selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
                     ),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_custom_font",
+                        titleKey = "morphe_music_lyrics_custom_font_title",
+                        summaryKey = "morphe_music_lyrics_custom_font_summary_default",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsCustomFontPreference",
+                        selectable = true,
+                        dependency = "morphe_music_lyrics_enabled"
+                    ),
                     SwitchPreference("morphe_music_lyrics_word_sync", summary = true),
                     SwitchPreference("morphe_music_lyrics_word_smooth_sweep", summary = true),
                     SwitchPreference("morphe_music_lyrics_spring_scroll", summary = true),

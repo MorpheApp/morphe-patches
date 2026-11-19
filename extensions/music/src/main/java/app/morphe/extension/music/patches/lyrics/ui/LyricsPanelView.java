@@ -532,7 +532,7 @@ public final class LyricsPanelView extends FrameLayout
         creditView = new TextView(context);
         creditView.setTextSize(TypedValue.COMPLEX_UNIT_SP, FOOTER_TEXT_SIZE_SP);
         creditView.setTextColor(LyricsColors.lineTextColor());
-        creditView.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
+        creditView.setTypeface(LyricsFontManager.regularOrMainTypeface());
         creditView.setIncludeFontPadding(false);
         creditView.setLineSpacing(Dim.dp(2), 1.18f);
         creditView.setVisibility(GONE);
@@ -2021,9 +2021,9 @@ public final class LyricsPanelView extends FrameLayout
         lineView.setPadding(0, isSec ? Dim.dp(2) : Dim.dp(8), 0, isSec ? Dim.dp(2) : Dim.dp(8));
         lineView.setIncludeFontPadding(false);
         setElegantTextHeight(lineView.getPaint());
-        lineView.setTypeface(Typeface.DEFAULT_BOLD);
+        lineView.setTypeface(LyricsFontManager.mainTypeface());
         LyricsViewSupport.applyLyricsBoldPaint(lineView.getPaint());
-        lineView.setFontVariationSettings(null);
+        lineView.setFontVariationSettings(LyricsFontManager.mainFontVariation());
         lineView.setLetterSpacing(LyricsViewSupport.lineLetterSpacing(line.text(), textSize));
 
         if (isSynced) {
@@ -5615,7 +5615,7 @@ public final class LyricsPanelView extends FrameLayout
             baseRgb = 0x00FFFFFF;
         }
         tag.setTextColor(0xEB000000 | baseRgb);
-        tag.setTypeface(Typeface.DEFAULT_BOLD);
+        tag.setTypeface(LyricsFontManager.mainTypeface());
         LyricsViewSupport.applyLyricsBoldPaint(tag.getPaint());
         tag.setSingleLine(true);
         tag.setGravity(Gravity.CENTER);
@@ -5752,6 +5752,18 @@ public final class LyricsPanelView extends FrameLayout
         final Lyrics current = lyrics;
         if (dualWasUp && current != null && !current.isEmpty()) {
             fadeOutAndRebuild(current);
+        }
+    }
+
+    /** Rebuilds all lyric lines, section tags, and footer views with the newly uploaded or reset font. */
+    public void applyCustomFont() {
+        creditView.setTypeface(LyricsFontManager.regularOrMainTypeface());
+        LyricsViewSupport.applyFooterStyle(footerView);
+        LyricsViewSupport.applyFooterStyle(transcribePromptView);
+        lastBuiltInPlaceSignature = null;
+        Lyrics current = lyrics;
+        if (current != null && !current.isEmpty()) {
+            showLyrics(current);
         }
     }
 
