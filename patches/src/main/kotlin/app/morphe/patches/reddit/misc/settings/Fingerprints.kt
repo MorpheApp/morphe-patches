@@ -303,6 +303,8 @@ internal object IsModernStyleFingerprint : Fingerprint(
  * Toggle of the app settings (Compose), which creates the toggle colors from the active theme.
  * The colors class has a constructor with 16 colors: thumb, track, border and icon
  * of the checked, unchecked, disabled checked and disabled unchecked toggle.
+ *
+ * 2026.40.0+
  */
 internal object SettingsToggleFingerprint : Fingerprint(
     returnType = "V",
@@ -319,6 +321,8 @@ internal object SettingsToggleFingerprint : Fingerprint(
 /**
  * Check mark icon of the app settings toggle.
  * The icon is tinted with a color of the theme, not with the icon color of the toggle colors.
+ *
+ * 2026.25.0+
  */
 internal object SettingsToggleCheckMarkFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),

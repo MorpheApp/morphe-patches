@@ -101,6 +101,12 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_ask_button_summary">Hides the Ask button in the search bar</string>
     <string name="morphe_hide_communities_shelf_title">Hide communities shelf</string>
     <string name="morphe_hide_communities_shelf_summary">Hides the related or suggested communities shelf in subreddits</string>
+    <string name="morphe_hide_for_you_tab_title">Hide For You tab</string>
+    <string name="morphe_hide_for_you_tab_summary">Hides the For You tab of the home feed, which can also be named Discover or Explore</string>
+    <string name="morphe_hide_following_tab_title">Hide Following tab</string>
+    <string name="morphe_hide_following_tab_summary">Hides the Following tab of the home feed</string>
+    <string name="morphe_hide_popular_tab_title">Hide Popular tab</string>
+    <string name="morphe_hide_popular_tab_summary">Hides the Popular tab of the home feed</string>
     <string name="morphe_hide_interactive_posts_title">Hide interactive posts</string>
     <string name="morphe_hide_interactive_posts_summary">Hides game and other interactive app posts from the home feed and other recommended feeds</string>
     <string name="morphe_hide_trending_shelves_title">Hide Trending shelves</string>
