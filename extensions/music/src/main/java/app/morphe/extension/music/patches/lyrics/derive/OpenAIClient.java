@@ -80,7 +80,7 @@ public final class OpenAIClient {
             CRITICAL RULES:
             - Output exactly {count} numbered lines (same as input count)
             - Number format: "N. text" (number, period, space, text)
-            - First line of a section: its name. All other lines: "SKIP"
+            - First line of a section: its name. All other lines: literally just "SKIP" (do NOT repeat or append the lyric text)
             - Repeated sections are numbered in order: Verse 1, Verse 2, Chorus 1, Chorus 2
             - Pick the most specific name from the list above
             - Output ONLY the labels. No reasoning, no explanations.
@@ -118,6 +118,10 @@ public final class OpenAIClient {
             Pattern.compile("(?:/[^/]+)*/v\\d+(?:[a-z]+)?(?:/[^/]+)*");
     private static final Pattern NUMBERED_LINE_PATTERN =
             Pattern.compile("^(?:Line\\s+)?(\\d{1,4})[.)\\]:\\-]\\s*(.*)$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern SKIP_TOKEN_PATTERN = Pattern.compile(
+            "^(?:\\[SKIP]|<SKIP>|\\(SKIP\\))(?:\\s.*|\\s*[:.\\-–—|].*)?$|"
+                    + "^SKIP(?:\\s*[:.\\-–—|].*)?$",
+            Pattern.CASE_INSENSITIVE);
     private static final Pattern PROMPT_VARIABLE = Pattern.compile("\\{(\\w+)\\}");
 
     private OpenAIClient() {
@@ -595,9 +599,7 @@ public final class OpenAIClient {
     public static boolean isSkipToken(@Nullable String s) {
         if (s == null) return true;
         String t = s.trim();
-        return t.isEmpty() || t.equalsIgnoreCase("SKIP") || t.equalsIgnoreCase("[SKIP]")
-                || t.equalsIgnoreCase("<SKIP>") || t.equalsIgnoreCase("(SKIP)")
-                || t.equalsIgnoreCase("SKIP.");
+        return t.isEmpty() || SKIP_TOKEN_PATTERN.matcher(t).matches();
     }
 
     @Nullable

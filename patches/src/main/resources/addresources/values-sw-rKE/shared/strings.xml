@@ -74,18 +74,34 @@ Ili kutafsiri lugha mpya au kuboresha tafsiri zilizopo, tembelea morphe.software
   <string name="morphe_settings_export_file">Export kwenda kwenye faili</string>
   <string name="morphe_settings_export_file_success">Mipangilio imetolewa kwa mafanikio</string>
   <string name="morphe_settings_export_file_failed">Imeshindwa kutoa mipangilio</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Unatumia toleo la hivi punde la Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Unatumia Morphe Patches toleo la &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Sasisho lipo: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ili kusasisha patch zako, tumia Morphe kuweka patch tena kwa programu hii</string>
-  <string name="morphe_settings_about_links_dev_header">Kumbuka</string>
-  <string name="morphe_settings_about_links_dev_body">Toleo hili ni la awali na unaweza kukumbana na matatizo yasiyotarajiwa</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patch</string>
+  <string name="morphe_settings_about_version">Toleo</string>
+  <string name="morphe_settings_about_close">Funga</string>
+  <string name="morphe_settings_about_prerelease">Toleo la awali</string>
+  <string name="morphe_settings_about_update_available">Sasisho linapatikana: %s</string>
+  <string name="morphe_settings_about_update_hint">Ili kusasisha patch zako, tumia Morphe kupatch programu hii tena</string>
   <string name="morphe_settings_about_links_header">Viungo rasmi</string>
   <string name="morphe_settings_about_links_website">Tovuti</string>
   <string name="morphe_settings_about_links_donate">Changia</string>
   <string name="morphe_settings_about_links_translations">Tafsiri</string>
-  <string name="morphe_settings_about_links_credits">Kredi</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Imesasishwa</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Sasisho lipo</string>
+  <string name="morphe_settings_about_contributors">Wachangia</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Muda wote</string>
+  <string name="morphe_settings_about_contributors_6_months">miezi 6</string>
+  <string name="morphe_settings_about_contributors_3_months">miezi 3</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Kipindi cha muda</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">watumiaji %s</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Wafuasi</string>
+  <string name="morphe_settings_about_supporters_summary">Wafadhili kwenye Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Kuwa mfuasi</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Na %s zaidi</string>
+  <string name="morphe_settings_about_people_unavailable">Hakuwezekana kupakia orodha</string>
   <string name="morphe_settings_about_contributors_current">Maendeleo ya sasa</string>
   <string name="morphe_settings_about_contributors_prior">Maendeleo ya awali</string>
   <string name="morphe_settings_about_links_morphe">Maendeleo yanayoendelea</string>
@@ -213,6 +229,9 @@ Ikiwa uboreshaji wa betri hautabadilishwa basi unaweza kupata:
 • Programu inaweza kufungwa bila kutarajia
 • Arifa zinaweza zisifanye kazi
 • Uchezaji wa nyuma unaweza usifanye kazi"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Fungua karatasi ya kushiriki ya mfumo</string>
+  <string name="morphe_open_system_share_sheet_summary">Hufungua ukurasa wa kushiriki wa mfumo badala ya ule wa ndani ya programu wakati wa kushiriki maudhui</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Usimamizi wa viunganishi vya programu</string>
   <string name="morphe_link_handling_summary">Sanidi viungo vifunguliwe katika programu hii</string>

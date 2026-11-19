@@ -78,6 +78,7 @@ Upewnij się, że nazwa pakietu jest poprawna i czy aplikacja jest zainstalowana
   <string name="morphe_export_download_folder_missing">Nie udało się znaleźć folderu eksportu %s</string>
   <string name="morphe_export_download_flyout_title">Eksportuj na urządzenie</string>
   <string name="morphe_export_download_canceled">Anulowano eksportowanie</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Własna</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacji</string>
@@ -265,9 +266,6 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_video_quality_default_mobile_title">Domyślna jakość filmu w sieci komórkowej</string>
   <string name="morphe_remember_video_quality_toast_mobile">Zmieniono domyślną jakość (kom.) na: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Zmieniono domyślną jakość (Wi-Fi) na: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Otwórz systemowe menu udostępniania</string>
-  <string name="morphe_open_system_share_sheet_summary">Otwiera systemowe menu udostępniania zamiast tego wbudowanego w aplikacji</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Logowanie Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Wyłączone</string>
@@ -379,4 +377,8 @@ Identyfikator oglądanego filmu jest wysyłany do API Return YouTube Dislike, a 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nie przekroczono limitu żądań</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Napotkane limity zapytań klienta: %s</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ms</string>
+  <string name="morphe_navigation_bar_screen_title">Pasek nawigacji</string>
+  <string name="morphe_navigation_bar_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
+  <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
+  <string name="morphe_toolbar_screen_summary">Zdecyduj, które elementy będą wyświetlane na pasku narzędzi</string>
 </resources>

@@ -599,8 +599,9 @@ public final class AmbientLightController {
                 lastPageScan = now;
                 clearPage();
             }
-            // The page fades too, without the player moving.
-            if (isSliding() || SeeThroughPage.isPageContentFading()) onMoved();
+            // The page fades too, without the player moving. A panel over the player hides the
+            // video, and the surfaces leave the video out, so the window draws the light.
+            if (isSliding() || SeeThroughPage.isPageContentFading() || SeeThroughPage.isPanelOverPlayer()) onMoved();
             if (veiled) SeeThroughPage.invalidateMovedLight();
         } catch (Exception ex) {
             Logger.printException(() -> "onPreDraw failure", ex);
@@ -635,11 +636,13 @@ public final class AmbientLightController {
                 changed.add(drawable);
             }
         }
-        // Drawables that are mounted in another window keep their own color.
+        // Drawables that are mounted in another window keep their own color. A drawable can
+        // stay in a view that has left the window, as the comments closed with the back button,
+        // and it waits for that view to be in a window again.
         for (Iterator<Drawable> iterator = pendingDrawables.keySet().iterator(); iterator.hasNext(); ) {
             Drawable drawable = iterator.next();
             View host = hostOf(drawable);
-            if (host == null) continue;
+            if (host == null || !host.isAttachedToWindow()) continue;
             iterator.remove();
             if (host.getRootView() == root) changed.add(drawable);
         }
@@ -786,7 +789,7 @@ public final class AmbientLightController {
             if (!active || !veiled) return;
             final long now = SystemClock.uptimeMillis();
             // The surfaces cannot fade with the page, which a player that is held on its way leaves faded.
-            if (isSliding()) lastMove = now;
+            if (isSliding() || SeeThroughPage.isPanelOverPlayer()) lastMove = now;
             if (now - lastMove < REST_MS) {
                 mainHandler.postDelayed(unveilRunnable, REST_MS - (now - lastMove));
                 return;
@@ -1237,9 +1240,12 @@ public final class AmbientLightController {
      *
      * @param alpha How much of the view the light covers, from 0 to 1. The rest shows what is under the view.
      * @param covered The part of the window that is drawn again over this view, or null.
+     * @param hidesVideo If the view hides the video, as a panel dragged up over the player does,
+     *                   so the light is drawn where the video is too.
      * @return False if the surfaces show the light, and nothing was drawn.
      */
-    static boolean drawWindowLight(Canvas canvas, View view, boolean onPage, float alpha, @Nullable Rect covered) {
+    static boolean drawWindowLight(Canvas canvas, View view, boolean onPage, float alpha, @Nullable Rect covered,
+                                   boolean hidesVideo) {
         if (!veiled) return false;
         // Not before the first light of this video.
         if (alpha <= 0f || !pageCleared) return true;
@@ -1281,15 +1287,15 @@ public final class AmbientLightController {
         paint.setAlpha(Math.round(255 * alpha));
 
         // Not where the video is, and not where the light is drawn again over this view: the
-        // player draws its own light around the video.
+        // player draws its own light around the video. A view that hides the video shows the light there too.
         int holes = 0;
         Layout current = layout;
         LightView playerLight = playerLightRef.get();
-        if (onPage && playerLight != null && SeeThroughPage.isDrawnPlain(playerLight, null)
+        if (!hidesVideo && onPage && playerLight != null && SeeThroughPage.isDrawnPlain(playerLight, null)
                 && playerLight.getGlobalVisibleRect(windowHoleBounds)) {
             holes = addWindowHole(holes, windowHoleBounds.left, windowHoleBounds.top, windowHoleBounds.right,
                     windowHoleBounds.bottom, view);
-        } else if (current != null) {
+        } else if (!hidesVideo && current != null) {
             int[] video = current.video();
             holes = addWindowHole(holes, video[0], video[1], video[2], video[3], view);
         }

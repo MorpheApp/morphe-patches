@@ -78,6 +78,7 @@ Verifiqueu que el nom del paquet sigui correcte i que l'aplicació estigui insta
   <string name="morphe_export_download_folder_missing">No s\'ha pogut trobar la carpeta d\'exportació %s</string>
   <string name="morphe_export_download_flyout_title">Exportar al dispositiu</string>
   <string name="morphe_export_download_canceled">Exportació cancel·lada</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalitzat</string>
   <string name="morphe_custom_branding_icon_title">Icona de l\'aplicació</string>
@@ -265,9 +266,6 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
   <string name="morphe_video_quality_default_mobile_title">Qualitat de vídeo per defecte a la xarxa mòbil</string>
   <string name="morphe_remember_video_quality_toast_mobile">S\'ha canviat la qualitat mòbil per defecte a: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">S\'ha canviat la qualitat Wi-Fi per defecte a: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Obre el full de compartició del sistema</string>
-  <string name="morphe_open_system_share_sheet_summary">Obre el full de compartició del sistema en lloc de l\'internal de l\'aplicació en compartir contingut</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Registres de Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Deshabilitat</string>
@@ -379,4 +377,8 @@ L'ID del vídeo que veus s'envia a l'API de Return YouTube Dislike, i els teus \
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">No s\'han trobat límits de velocitat del client</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">S\'ha trobat el límit de freqüència del client %s vegades</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s mil·lisegons</string>
+  <string name="morphe_navigation_bar_screen_title">Barra de navegació</string>
+  <string name="morphe_navigation_bar_screen_summary">Tria quins botons apareixen a la barra de navegació inferior</string>
+  <string name="morphe_toolbar_screen_title">Barra d\'eines</string>
+  <string name="morphe_toolbar_screen_summary">Tria quins components apareixen a la barra d\'eines</string>
 </resources>

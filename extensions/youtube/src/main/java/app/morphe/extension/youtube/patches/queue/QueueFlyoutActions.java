@@ -19,11 +19,11 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
-import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuItem;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
+import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuItem;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;

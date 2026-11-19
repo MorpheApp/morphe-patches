@@ -97,6 +97,21 @@ val hideAdsPatch = patch(
             """
         )
 
+        // Hide the ad overlay drawn over the player while an ad plays on a cast device.
+        AdOverlayInflateFingerprint.let {
+            it.method.apply {
+                val findViewByIdIndex = it.instructionMatches.last().index
+                val overlayRootRegister =
+                    getInstruction<FiveRegisterInstruction>(findViewByIdIndex).registerC
+
+                addInstruction(
+                    findViewByIdIndex,
+                    "invoke-static { v$overlayRootRegister }, $EXTENSION_CLASS->" +
+                            "hideAdOverlay(Landroid/view/ViewGroup;)V"
+                )
+            }
+        }
+
         // Hide Music Premium promotions
         FloatingLayoutFingerprint.method.apply {
             val insertIndex = FloatingLayoutFingerprint.instructionMatches.last().index

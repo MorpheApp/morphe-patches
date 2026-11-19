@@ -74,18 +74,33 @@ Om nieuwe talen te vertalen of bestaande vertalingen te verbeteren, bezoek morph
   <string name="morphe_settings_export_file">Exporteren naar bestand</string>
   <string name="morphe_settings_export_file_success">Instellingen succesvol geëxporteerd</string>
   <string name="morphe_settings_export_file_failed">Het exporteren van instellingen is mislukt</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">U gebruikt de nieuwste Morphe Patches versie &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">U gebruikt Morphe Patches versie &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Bijwerking beschikbaar: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Om uw patches bij te werken, gebruikt u Morphe om deze app opnieuw te patchen</string>
-  <string name="morphe_settings_about_links_dev_header">Opmerking</string>
-  <string name="morphe_settings_about_links_dev_body">Deze versie is een pre-release en je kunt onverwachte problemen ondervinden</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patches</string>
+  <string name="morphe_settings_about_version">Versie</string>
+  <string name="morphe_settings_about_close">Sluiten</string>
+  <string name="morphe_settings_about_prerelease">Pre-release</string>
+  <string name="morphe_settings_about_update_available">Update beschikbaar: %s</string>
+  <string name="morphe_settings_about_update_hint">Om je patches bij te werken, gebruik Morphe om deze app opnieuw te patchen</string>
   <string name="morphe_settings_about_links_header">Officiële links</string>
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Doneren</string>
   <string name="morphe_settings_about_links_translations">Vertalingen</string>
-  <string name="morphe_settings_about_links_credits">Credits</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Up to date</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Update beschikbaar</string>
+  <string name="morphe_settings_about_contributors">Bijdragers</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Altijd</string>
+  <string name="morphe_settings_about_contributors_6_months">6 maanden</string>
+  <string name="morphe_settings_about_contributors_3_months">3 maanden</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tijdsperiode</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Supporters</string>
+  <string name="morphe_settings_about_supporters_summary">Backers op Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Word een supporter</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">En nog %s meer</string>
+  <string name="morphe_settings_about_people_unavailable">Lijst kon niet worden geladen</string>
   <string name="morphe_settings_about_contributors_current">Huidige ontwikkeling</string>
   <string name="morphe_settings_about_contributors_prior">Eerdere ontwikkeling</string>
   <string name="morphe_settings_about_links_morphe">Actieve ontwikkeling</string>
@@ -213,6 +228,9 @@ Als batterijoptimalisaties niet worden gewijzigd, kun je het volgende ervaren:
 • De app kan willekeurig sluiten
 • Meldingen werken mogelijk niet
 • Achtergrondafspelen werkt mogelijk niet"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Systeemdeelblad openen</string>
+  <string name="morphe_open_system_share_sheet_summary">Opent het systeemdeelblad i.p.v. het ingebouwde deelblad bij het delen van content</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-linkbeheer</string>
   <string name="morphe_link_handling_summary">Configureer links om te openen in deze app</string>

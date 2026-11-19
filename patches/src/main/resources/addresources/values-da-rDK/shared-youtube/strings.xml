@@ -78,6 +78,7 @@ Kontroller, at pakkenavnet er korrekt, og at appen er installeret"</string>
   <string name="morphe_export_download_folder_missing">Kunne ikke finde eksportmappe %s</string>
   <string name="morphe_export_download_flyout_title">Eksporter til enhed</string>
   <string name="morphe_export_download_canceled">Eksport annulleret</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Brugerdefineret</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
@@ -265,9 +266,6 @@ Tryk på fortsæt nedenfor for at logge ind"</string>
   <string name="morphe_video_quality_default_mobile_title">Standard videokvalitet på mobilnetværk</string>
   <string name="morphe_remember_video_quality_toast_mobile">Ændrede standard mobilkvalitet til: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Ændrede standard Wi-Fi-kvalitet til: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Åbn systemets delingsark</string>
-  <string name="morphe_open_system_share_sheet_summary">Åbner systemets delingsmenu i stedet for den i appen, når der deles indhold</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logning</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktiveret</string>
@@ -379,4 +377,8 @@ ID'et på den video, du ser, sendes til Return YouTube Dislike's API, og dine li
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ingen klienthastighedsbegrænsninger fundet</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client rate limit mødt %s gange</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekunder</string>
+  <string name="morphe_navigation_bar_screen_title">Navigationslinje</string>
+  <string name="morphe_navigation_bar_screen_summary">Vælg hvilke knapper der vises i den nederste navigationslinje</string>
+  <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
+  <string name="morphe_toolbar_screen_summary">Vælg hvilke komponenter der vises i værktøjslinjen</string>
 </resources>

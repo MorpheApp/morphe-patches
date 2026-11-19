@@ -288,10 +288,6 @@ To sign in, press continue below"</string>
     <string name="morphe_remember_video_quality_toast_mobile">Changed default mobile quality to: %s</string>
     <string name="morphe_remember_video_quality_toast_wifi">Changed default Wi-Fi quality to: %s</string>
 
-    <!-- misc.sharesheet.openSystemShareSheetPatch -->
-    <string name="morphe_open_system_share_sheet_title">Open system share sheet</string>
-    <string name="morphe_open_system_share_sheet_summary">Opens the system share sheet instead of the in-app one when sharing content</string>
-
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_litho_title">Litho logging</string>
     <string name="morphe_debug_litho_entry_disabled">Disabled</string>
@@ -413,4 +409,10 @@ The ID of the video you watch is sent to the Return YouTube Dislike API, and you
     <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">No client rate limits encountered</string>
     <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client rate limit encountered %s times</string>
     <string name="morphe_ryd_statistics_millisecond_text">%s milliseconds</string>
+
+    <string name="morphe_navigation_bar_screen_title">Navigation bar</string>
+    <string name="morphe_navigation_bar_screen_summary">Choose which buttons appear in the bottom navigation bar</string>
+
+    <string name="morphe_toolbar_screen_title">Toolbar</string>
+    <string name="morphe_toolbar_screen_summary">Choose which components appear in the toolbar</string>
 </resources>

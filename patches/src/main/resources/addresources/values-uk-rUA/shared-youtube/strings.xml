@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Не вдалося знайти теку експорту %s</string>
   <string name="morphe_export_download_flyout_title">Експортувати на пристрій</string>
   <string name="morphe_export_download_canceled">Експорт скасовано</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Власна</string>
   <string name="morphe_custom_branding_icon_title">Іконка застосунку</string>
@@ -265,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Типова якість відео у мобільній мережі</string>
   <string name="morphe_remember_video_quality_toast_mobile">Змінено типову якість для мобільної мережі на: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Змінено типову якість для Wi-Fi на: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Відкрити системний діалог поширення</string>
-  <string name="morphe_open_system_share_sheet_summary">Відкриває системне меню поширення замість вбудованого при поширенні контенту</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Журнал Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Вимкнено</string>
@@ -379,4 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Обмежень швидкості клієнта не виявлено</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Обмеження швидкості клієнта виникло %s разів</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s мілісекунд</string>
+  <string name="morphe_navigation_bar_screen_title">Панель навігації</string>
+  <string name="morphe_navigation_bar_screen_summary">Виберіть кнопки, що будуть показуватися на нижній навігаційній панелі</string>
+  <string name="morphe_toolbar_screen_title">Панель інструментів</string>
+  <string name="morphe_toolbar_screen_summary">Виберіть, які компоненти будуть показуватися на панелі інструментів</string>
 </resources>

@@ -74,18 +74,33 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_settings_export_file">In Datei exportieren</string>
   <string name="morphe_settings_export_file_success">Einstellungen erfolgreich exportiert</string>
   <string name="morphe_settings_export_file_failed">Exportieren der Einstellungen fehlgeschlagen </string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Du verwendest die neueste Morphe-Patches-Version &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Sie verwenden die Morphe-Patches-Version &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Update verfügbar: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Um Ihre Patches zu aktualisieren, verwenden Sie Morphe, um diese App erneut zu patchen</string>
-  <string name="morphe_settings_about_links_dev_header">Hinweis</string>
-  <string name="morphe_settings_about_links_dev_body">Diese Version ist eine Vorabversion, es kann zu unerwarteten Problemen kommen</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patches</string>
+  <string name="morphe_settings_about_version">Version</string>
+  <string name="morphe_settings_about_close">Schließen</string>
+  <string name="morphe_settings_about_prerelease">Pre-Release</string>
+  <string name="morphe_settings_about_update_available">Update verfügbar: %s</string>
+  <string name="morphe_settings_about_update_hint">Um Ihre Patches zu aktualisieren, verwenden Sie Morphe, um diese App erneut zu patchen</string>
   <string name="morphe_settings_about_links_header">Offizielle Links</string>
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Spenden</string>
   <string name="morphe_settings_about_links_translations">Übersetzungen</string>
-  <string name="morphe_settings_about_links_credits">Credits</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Auf dem neuesten Stand</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Update verfügbar</string>
+  <string name="morphe_settings_about_contributors">Mitwirkende</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Gesamte Zeit</string>
+  <string name="morphe_settings_about_contributors_6_months">6 Monate</string>
+  <string name="morphe_settings_about_contributors_3_months">3 Monate</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Zeitraum</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Unterstützer</string>
+  <string name="morphe_settings_about_supporters_summary">Unterstützer auf Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Unterstützer werden</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Und %s weitere</string>
+  <string name="morphe_settings_about_people_unavailable">Liste konnte nicht geladen werden</string>
   <string name="morphe_settings_about_contributors_current">Aktuelle Entwicklung</string>
   <string name="morphe_settings_about_contributors_prior">Frühere Entwicklung</string>
   <string name="morphe_settings_about_links_morphe">Aktive Entwicklung</string>
@@ -213,6 +228,9 @@ Wird die Akkuoptimierung nicht geändert, kann es zu folgenden Problemen kommen:
 • Die App kann sich unerwartet schließen
 • Benachrichtigungen funktionieren möglicherweise nicht
 • Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Systemfreigabe öffnen</string>
+  <string name="morphe_open_system_share_sheet_summary">Öffnet die systemeigene Freigabeansicht anstelle der In-App-Ansicht, wenn du Inhalte teilst</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-Link-Behandlung</string>
   <string name="morphe_link_handling_summary">Links konfigurieren, um sie in dieser App zu öffnen</string>

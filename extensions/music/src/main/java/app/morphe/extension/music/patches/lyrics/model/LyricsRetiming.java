@@ -39,7 +39,11 @@ public final class LyricsRetiming {
     public static final long SCROLL_LOOK_AHEAD_MAX_MS = 500L;
     private static final long SCROLL_ANIMATION_MAX_DURATION_MS = 450L;
     private static final float SCROLL_DELAY_INCREMENT_RATIO = 0.1f;
+    private static final float SCROLL_DELAY_INCREMENT_RELAX_RATIO = 0.05f;
+    private static final float RELAX_SCROLL_DURATION_MULTIPLIER = 1.5f;
     public static final long HIGHLIGHT_LOOK_AHEAD_MS = 190L;
+    /** The primary line stays primary this long after it ends, then hands over to the next one. */
+    private static final long PRIMARY_LINE_HOLD_MS = 100L;
 
     public record RetimedEntry(LyricsLine line, long startMs, long actualEndTimeMs,
                                long adjustedEndTimeMs, boolean isSecondary) {
@@ -53,12 +57,21 @@ public final class LyricsRetiming {
     }
 
     public static long calculateScrollDuration(long scrollLookAheadMs) {
-        return Math.min(SCROLL_ANIMATION_MAX_DURATION_MS, Math.max(1L, scrollLookAheadMs));
+        return calculateScrollDuration(scrollLookAheadMs, false);
+    }
+
+    public static long calculateScrollDuration(long scrollLookAheadMs, boolean isRelaxMode) {
+        long base = Math.min(SCROLL_ANIMATION_MAX_DURATION_MS, Math.max(1L, scrollLookAheadMs));
+        return isRelaxMode ? Math.round(base * RELAX_SCROLL_DURATION_MULTIPLIER) : base;
     }
 
     /** {@return how much later each further line starts moving in a scroll of this duration} */
     public static float calculateScrollDelayIncrement(long scrollDurationMs) {
-        return scrollDurationMs * SCROLL_DELAY_INCREMENT_RATIO;
+        return calculateScrollDelayIncrement(scrollDurationMs, false);
+    }
+
+    public static float calculateScrollDelayIncrement(long scrollDurationMs, boolean isRelaxMode) {
+        return scrollDurationMs * (isRelaxMode ? SCROLL_DELAY_INCREMENT_RELAX_RATIO : SCROLL_DELAY_INCREMENT_RATIO);
     }
 
     /**
@@ -171,6 +184,9 @@ public final class LyricsRetiming {
             }
         }
 
+        RetimedEntry currentPrimaryRetimed = (lastActiveIndex >= 0 && lastActiveIndex < retimedLyrics.size())
+                ? retimedLyrics.get(lastActiveIndex) : null;
+
         if (primaryIndex != -1) {
             int groupEnd = activeIndices.size() - 1;
             int groupStart = groupEnd;
@@ -181,6 +197,10 @@ public final class LyricsRetiming {
 
             int candidateIndex = activeIndices.get(Math.max(groupStart, groupEnd - 2));
             boolean lastPrimaryStillActive = activeIndices.contains(lastActiveIndex);
+            if (lastPrimaryStillActive && currentPrimaryRetimed != null
+                    && positionMs > currentPrimaryRetimed.actualEndTimeMs + PRIMARY_LINE_HOLD_MS) {
+                lastPrimaryStillActive = false;
+            }
             primaryIndex = (candidateIndex < lastActiveIndex && lastPrimaryStillActive)
                     ? lastActiveIndex : candidateIndex;
         } else {
@@ -193,8 +213,6 @@ public final class LyricsRetiming {
             }
         }
 
-        RetimedEntry currentPrimaryRetimed = (lastActiveIndex >= 0 && lastActiveIndex < retimedLyrics.size())
-                ? retimedLyrics.get(lastActiveIndex) : null;
         RetimedEntry candidateRetimed = (primaryIndex >= 0 && primaryIndex < retimedLyrics.size())
                 ? retimedLyrics.get(primaryIndex) : null;
 
@@ -203,7 +221,9 @@ public final class LyricsRetiming {
                 && currentPrimaryRetimed != null
                 && candidateRetimed.adjustedEndTimeMs == currentPrimaryRetimed.adjustedEndTimeMs
                 && activeIndices != null && activeIndices.size() <= 3) {
-            return lastActiveIndex;
+            return positionMs <= currentPrimaryRetimed.actualEndTimeMs + PRIMARY_LINE_HOLD_MS
+                    ? lastActiveIndex
+                    : primaryIndex;
         } else {
             return primaryIndex;
         }

@@ -74,18 +74,34 @@ Ji bo wergerandina zimanên nû an baştirkirina wergerandinên heyî, here morp
   <string name="morphe_settings_export_file">Ber bi pelê ve export bike</string>
   <string name="morphe_settings_export_file_success">Mîheng bi serkeftî ber bi pelê ve hatin exportkirin</string>
   <string name="morphe_settings_export_file_failed">Exportkirina mîhengan neserket</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Hûn îro versîyona herî dawî ya Morphe Patches &lt;i&gt;%s&lt;/i&gt; bikar tînin</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Hûn versîyona Morphe Patches &lt;i&gt;%1$s&lt;/i&gt; bikar tînin &lt;br&gt;&lt;br&gt;&lt;b&gt;Nûvekirin heye: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ji bo nûkirina patchên xwe, vê sepanê bi Morphe dîsa patch bike</string>
-  <string name="morphe_settings_about_links_dev_header">Nîşe</string>
-  <string name="morphe_settings_about_links_dev_body">Ev guhertoya pêşdîtinê ye, dibe ku pirsgirêkên nedîtî derkevin</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patchên</string>
+  <string name="morphe_settings_about_version">Versiyon</string>
+  <string name="morphe_settings_about_close">Bigire</string>
+  <string name="morphe_settings_about_prerelease">Berî berhemê</string>
+  <string name="morphe_settings_about_update_available">Nûvekirin heye: %s</string>
+  <string name="morphe_settings_about_update_hint">Ji bo nûkirina patchên xwe, Morphe bikar bîne da ku vê appê dîsa patch bike</string>
   <string name="morphe_settings_about_links_header">Girêdanên fermî</string>
   <string name="morphe_settings_about_links_website">Malper</string>
   <string name="morphe_settings_about_links_donate">Bexşîn</string>
   <string name="morphe_settings_about_links_translations">Wergerandin</string>
-  <string name="morphe_settings_about_links_credits">Spasdarî</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Sergona</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Nûvekirin heye</string>
+  <string name="morphe_settings_about_contributors">Karsaz</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Hemû demen</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mehv</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mehv</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Demên wext</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s bikarhêner</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Piştgir</string>
+  <string name="morphe_settings_about_supporters_summary">Piştgirên li ser Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Bibên piştgir</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Û %s din</string>
+  <string name="morphe_settings_about_people_unavailable">Lîste nehat barkirin</string>
   <string name="morphe_settings_about_contributors_current">Pêşxistina heyî</string>
   <string name="morphe_settings_about_contributors_prior">Pêşxistinên berê</string>
   <string name="morphe_settings_about_links_morphe">Pêşxistina çalak</string>
@@ -213,6 +229,9 @@ Heger optîmîzasyonên bataryayê neyên guhartin, dibe ku hûn ev tiştan bib�
 • Serlêdan carinan bi xweber digire
 • Agahdarî nexebitin
 • Lêdana li paşperdeyê nexebite"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Panela parvekirinê ya sîstemê veke</string>
+  <string name="morphe_open_system_share_sheet_summary">Dema naverok parve dikî, panela parvekirinê ya sîstemê vedike li şûna ya appê</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Birêvebirina lînkên serlêdanê</string>
   <string name="morphe_link_handling_summary">Mîhengkirina lînkan ku di vê serlêdanê de vebin</string>

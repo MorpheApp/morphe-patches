@@ -126,6 +126,17 @@ internal object SendEmptyMediaItemsFingerprint : Fingerprint(
     )
 )
 
+/**
+ * YTM's handler of the page requests of Android Auto,
+ * in the class of [SendEmptyMediaItemsFingerprint] and with the same request parameter.
+ */
+internal object BrowseRequestHandlerFingerprint : Fingerprint(
+    definingClass = { SendEmptyMediaItemsFingerprint.originalMethod.definingClass },
+    returnType = { "V" },
+    parameters = { listOf(SendEmptyMediaItemsFingerprint.originalMethod.parameterTypes.first()) },
+    strings = listOf("MBS: Fetching MBFE root for mediaId: `%s`")
+)
+
 // Locate YTM's phone request clients and browse methods
 
 /**
@@ -221,9 +232,12 @@ internal object PhoneBrowseRequestCallsFingerprint : Fingerprint(
     )
 )
 
-/** Identifies the continuation token field in the phone browse request's diagnostic string. */
-internal fun phoneBrowseContinuationFingerprint(requestType: String) = Fingerprint(
-    definingClass = requestType,
+/**
+ * Identifies the continuation token field in the phone browse request's diagnostic string.
+ * The request is the one [PhoneBrowseRequestCallsFingerprint] creates.
+ */
+internal object PhoneBrowseContinuationFingerprint : Fingerprint(
+    definingClass = { PhoneBrowseRequestCallsFingerprint.instructionMatches.first().methodReference.returnType },
     returnType = "Ljava/lang/String;",
     parameters = emptyList(),
     strings = listOf("browseId"),
@@ -326,6 +340,17 @@ internal object LibraryPaginationDecoderFingerprint : Fingerprint(
     parameters = listOf("L")
 )
 
+/**
+ * Gets the proto of the Library pagination response from the phone browse response
+ * ([PhoneBrowseResponseTabsFingerprint]). It returns the type [LibraryPaginationDecoderFingerprint] decodes.
+ */
+internal object PhoneBrowseResponsePaginationProtoFingerprint : Fingerprint(
+    definingClass = { PhoneBrowseResponseTabsFingerprint.originalMethod.definingClass },
+    isStatic = false,
+    returnType = { LibraryPaginationDecoderFingerprint.originalMethod.parameterTypes.single() },
+    parameters = { emptyList() }
+)
+
 // Read the playlist browse ID from an item's command
 
 /** Reads the BrowseEndpoint, which identifies the YTM page a command opens. */
@@ -340,14 +365,27 @@ internal fun browseEndpointFromCommandFingerprint(
 
 // Playlist titles and artwork
 
-/** Reads an item's artwork container, decodes it, then reads the thumbnail details. */
-internal fun phoneBrowseItemArtworkFingerprint(phoneBrowseItemType: String) = Fingerprint(
+/**
+ * The class of Library items. It is the field read after YTM's presence check in [GridRendererItemsFingerprint].
+ */
+internal val phoneBrowseItemType
+    get() = GridRendererItemsFingerprint.instructionMatches
+        .single { match -> match.instruction.opcode == Opcode.IGET_OBJECT }
+        .fieldReference
+        .type
+
+/**
+ * Reads an item's artwork container, decodes it, then reads the thumbnail details.
+ * The second parameter is the Library item.
+ * YTM has more than one phone thumbnail renderer with this code, so use it only with matchAll().
+ */
+internal object PhoneBrowseItemArtworkFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("L", phoneBrowseItemType, "I"),
+    parameters = { listOf("L", phoneBrowseItemType, "I") },
     filters = listOf(
         fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = phoneBrowseItemType
+            opcodes = listOf(Opcode.IGET_OBJECT),
+            definingClass = { phoneBrowseItemType }
         ),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
@@ -425,15 +463,18 @@ internal fun playlistPlaybackCommandFingerprint(commandType: String) = Fingerpri
 
 // Refresh after Library changes
 
-/** YTM's requests that change the Library. */
-internal fun libraryChangeRequestFingerprint(endpoint: String) = Fingerprint(
+/** The request that creates a playlist, one of YTM's requests that change the Library. */
+internal object LibraryChangeRequestFingerprint : Fingerprint(
     name = "<init>",
     returnType = "V",
-    strings = listOf(endpoint)
+    strings = listOf("playlist/create")
 )
 
-/** Calls the request's success callback with its response. */
-internal fun requestSuccessCallbackFingerprint(requestBaseType: String) = Fingerprint(
+/**
+ * Calls the request's success callback with its response.
+ * The class keeps a request of the base class of [LibraryChangeRequestFingerprint].
+ */
+internal object RequestSuccessCallbackFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Lcom/google/protobuf/MessageLite;"),
@@ -450,6 +491,7 @@ internal fun requestSuccessCallbackFingerprint(requestBaseType: String) = Finger
         )
     ),
     custom = { _, classDef ->
+        val requestBaseType = LibraryChangeRequestFingerprint.originalClassDef.superclass
         classDef.instanceFields.any { field ->
             field.type == requestBaseType
         }

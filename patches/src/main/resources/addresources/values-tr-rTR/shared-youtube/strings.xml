@@ -78,6 +78,7 @@ Paket adının doğru olduğundan ve uygulamanın yüklü olduğundan emin olun"
   <string name="morphe_export_download_folder_missing">Dışa aktarma klasörü %s bulunamadı</string>
   <string name="morphe_export_download_flyout_title">Cihaza dışa aktar</string>
   <string name="morphe_export_download_canceled">Dışa aktarma iptal edildi</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Özel</string>
   <string name="morphe_custom_branding_icon_title">Uygulama simgesi</string>
@@ -264,9 +265,6 @@ Oturum açmak için aşağıdaki devam düğmesine basın"</string>
   <string name="morphe_video_quality_default_mobile_title">Mobil ağdaki varsayılan video kalitesi</string>
   <string name="morphe_remember_video_quality_toast_mobile">Varsayılan mobil kalite şuna değiştirildi: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Varsayılan Wi-Fi kalitesi şuna değiştirildi: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım sayfasını aç</string>
-  <string name="morphe_open_system_share_sheet_summary">İçerik paylaşılırken uygulama içi paylaşım ekranı yerine sistem paylaşım ekranı açılır</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho kayıtları</string>
   <string name="morphe_debug_litho_entry_disabled">Devre dışı</string>
@@ -378,4 +376,8 @@ Daha sonra bu özellik kapatılırsa, arayüz hatalarını önlemek için uygula
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Hiçbir istemci hız sınırıyla karşılaşılmadı</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">İstemci hız sınırı %s kez aşıldı</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisaniye</string>
+  <string name="morphe_navigation_bar_screen_title">Gezinme çubuğu</string>
+  <string name="morphe_navigation_bar_screen_summary">Alt gezinti çubuğunda hangi düğmelerin görüneceğini seçin</string>
+  <string name="morphe_toolbar_screen_title">Araç çubuğu</string>
+  <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
 </resources>

@@ -78,6 +78,7 @@ Controleer of de pakketnaam correct is en of de app is geïnstalleerd"</string>
   <string name="morphe_export_download_folder_missing">Kon exportmap %s niet vinden</string>
   <string name="morphe_export_download_flyout_title">Exporteren naar apparaat</string>
   <string name="morphe_export_download_canceled">Export geannuleerd</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Aangepast</string>
   <string name="morphe_custom_branding_icon_title">App-pictogram</string>
@@ -265,9 +266,6 @@ Om u aan te melden, drukt u hieronder op doorgaan"</string>
   <string name="morphe_video_quality_default_mobile_title">Standaard videokwaliteit op mobiel netwerk</string>
   <string name="morphe_remember_video_quality_toast_mobile">Standaard mobiele kwaliteit gewijzigd naar: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Standaard wifi-kwaliteit gewijzigd naar: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Systeemdeelblad openen</string>
-  <string name="morphe_open_system_share_sheet_summary">Opent het systeemdeelblad i.p.v. het ingebouwde deelblad bij het delen van content</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logboek</string>
   <string name="morphe_debug_litho_entry_disabled">Uitgeschakeld</string>
@@ -379,4 +377,8 @@ De ID van de video die je bekijkt wordt naar de Return YouTube Dislike API gestu
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Geen client snelheidslimieten aangetroffen</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client-snelheidslimiet %s keer bereikt</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milliseconden</string>
+  <string name="morphe_navigation_bar_screen_title">Navigatiebalk</string>
+  <string name="morphe_navigation_bar_screen_summary">Kies welke knoppen er in de onderste navigatiebalk verschijnen</string>
+  <string name="morphe_toolbar_screen_title">Werkbalk</string>
+  <string name="morphe_toolbar_screen_summary">Kies welke componenten in de werkbalk verschijnen</string>
 </resources>

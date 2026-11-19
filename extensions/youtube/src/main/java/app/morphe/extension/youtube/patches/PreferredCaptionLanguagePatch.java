@@ -404,7 +404,11 @@ public class PreferredCaptionLanguagePatch {
         return getLanguageKey(target == null ? actualLanguage : target);
     }
 
-    /** Preserve a selected original; otherwise use the active audio's default caption. */
+    /**
+     * Resolves the untranslated source track for dual-caption translation: returns the direct
+     * original track matching {@code selected} if given, or falls back to the active audio track's
+     * default caption source.
+     */
     @Nullable
     static CaptionTrackInterface blockTranslationSource(SubtitleManagerInterface manager,
             @Nullable CaptionTrackInterface selected) {

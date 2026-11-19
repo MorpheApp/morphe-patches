@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Nota utanaðkomandi niðurhalara fyrir niðurhalsvalmynd</string>
   <string name="morphe_external_downloader_menu_summary">Niðurhalsvalkostur í valmyndum opnar utanaðkomandi niðurhalara í staðinn</string>
+  <string name="morphe_download_force_4k_title">Þvinga aðgengi að 4K niðurhali</string>
+  <string name="morphe_download_force_4k_summary">Vista 1440p og 4K niðurtölu jafnvel ef YouTube Music ákveður að þessu tæki sé ekki hægt að spila þær</string>
   <string name="morphe_export_download_folder_title">Flytja niðurhals út</string>
   <string name="morphe_export_download_folder_summary">"Flytja út lög og myndbönd sem eru vistuð í forritinu í geymslu tækisins með niðurhalsvalmyndinni. Ýttu til að breyta útflutningsmöppu
 
@@ -172,6 +174,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_filter_bar_title">Fela síubjálka</string>
   <string name="morphe_music_hide_grid_shelves_title">Fela ristaraðir</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Fela láréttar raðir</string>
+  <string name="morphe_music_hide_new_button_title">Fela Ný hnappinn</string>
+  <string name="morphe_music_hide_new_button_summary">Felur Nýjan hnapp í bókasafnsfánum</string>
   <string name="morphe_music_hide_list_shelves_title">Fela listaraðir</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Textaspjald</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Fela deilihnappinn</string>
@@ -197,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">Krossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Blanda lagum saman á sléttan hátt</string>
   <string name="morphe_music_crossfade_enabled_title">Virkja crossfade</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Til að nota crossfade, breyttu \'Default client\' í Spoof-myndstraumum í TV Simply eða visionOS</string>
   <string name="morphe_music_crossfade_curve_title">Ferill deyfingar</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Jafnt afl</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Lúmskt hald</string>
@@ -230,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade hefur verið gert hlé á fyrir þessa lotu</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade hefur verið virkjað aftur</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Myndbandsstilling er ekki í boði þegar crossfade er virkt</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade er óvirkt við SABR spilun</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade virkar ekki með visionOS. Breyttu \'Default client\' í Spoof-myndstraumum í TV Simply</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade virkar ekki með þessum spoof-straumsklient</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade er óvirkt meðan streymt er</string>
   <string name="morphe_music_crossfade_about_how_title">Hvernig það virkar</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade lætur enda eins lags skarast við upphaf þess næsta, með þinni lengd og ferli
@@ -247,9 +255,7 @@ Læsiskjárinn eða tilkynningin getur í stutta stund sýnt úrelt ástand mitt
 
 Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum myndbönd eftir svört. Að gera hlé á crossfade áður en þú velur lagið kemur í veg fyrir það"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Ekki stutt</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Streymi eða speglun hljóðs (Chromecast, skjá- eða hljóðspeglun)
-
-SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Sending eða speglun hljóðs (Chromecast, speglun skjáa eða hljóðs)</string>
   <string name="morphe_music_crossfade_about_credit_title">Kredit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade virkni af VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -269,9 +275,19 @@ SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Öðugga hljóðlækkun</string>
   <string name="morphe_music_disable_audio_ducking_summary">Hljóðstyrkurinn lækkar ekki þegar önnur forrit spila stutt hljóð, eins og tilkynningar</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Sía fyrir líka í raðmöguleikahópi</string>
+  <string name="morphe_music_queue_like_filter_summary">Fjarlægir lögum með fáum líkum úr blandaðum listum og útvarpi. Spilunalistir, albúm og lög sem þú bætir við raðmöguleikahópnum breytast ekki. Fjöldi líka er fenginn frá Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Lágmarksfjöldi líka</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Lögum með færri líka er fjarlægt úr raðmöguleikahópnum</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Slökkva á endurbeiningu við mislíkun</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Kemur í veg fyrir að næsta lag spilist þegar smellt er á mislíkunarhnappinn</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Óvirkja sveip til að skipta um lag</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Kemur í veg fyrir að hoppið í næsta eða fyrra lag með því að sveipa til vinstra eða hægra á spilaranum</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Óvirkja sveip til að skipta um lag</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Kemur í veg fyrir að hoppið í næsta eða fyrra lag með því að sveipa til vinstra eða hægra á smáspilaranum</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B lykkja</string>
   <string name="morphe_music_ab_loop_summary">Haldu seekbar niðri til að stilla upphaf lykkju, aftur til að stilla lok lykkju og aftur til að hreinsa lykkjuna</string>
@@ -322,15 +338,6 @@ SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
   <string name="morphe_music_playlist_tags_rename">Endurnefna</string>
   <string name="morphe_music_playlist_tags_delete">Eyða</string>
   <string name="morphe_music_playlist_tags_hidden">Falið</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Fela Cast hnapp</string>
-  <string name="morphe_music_hide_history_button_title">Fela Sögu hnapp</string>
-  <string name="morphe_music_hide_notification_button_title">Fela Tilkynninga hnapp</string>
-  <string name="morphe_music_hide_search_button_title">Fela Leitarhnapp</string>
-  <string name="morphe_music_hide_voice_search_button_title">Fela raddarleitarhnappinn</string>
-  <string name="morphe_music_hide_sound_search_button_title">Fela hljóðleitarhnappinn</string>
-  <string name="morphe_music_hide_library_new_button_title">Fela nýja hnappinn</string>
-  <string name="morphe_music_hide_library_new_button_summary">Felur nýja hnappinn í Library flipanum</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Aðgerðahnappar</string>
   <string name="morphe_music_action_buttons_screen_summary">Veldu hvaða aðgerðahnappar birtast undir spilaranum</string>
@@ -402,22 +409,20 @@ SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Þvinga lóðrétta stefnu</string>
   <string name="morphe_music_force_portrait_orientation_summary">Heldur forritinu í lóðréttri stefnu þegar tækinu er snúið</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Breyta lit mini spilarans</string>
+  <string name="morphe_music_change_miniplayer_color_title">Breyta lit</string>
   <string name="morphe_music_change_miniplayer_color_summary">Samræmir lit smáspilarans við spilarann á öllum skjánum</string>
   <string name="morphe_music_change_navigation_bar_color_title">Breyta lit leiðsögustikunnar</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Samræmir lit leiðsögustikunnar við spilarann á öllum skjánum</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Sýna næsta hnapp í mini spilara</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Sýna fyrri hnapp í smáspilara</string>
+  <string name="morphe_music_miniplayer_next_button_title">Sýna næsti-hnapp</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Sýna fyrri-hnapp</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Virkja þvingaða mini spilara</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Kemur í veg fyrir að spilarinn stækki sjálfkrafa á allan skjáinn þegar nýtt lag hefst</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Virkja að strjúka til að fela smáspilarann</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Virkja að strjúka til að fela</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Leyfir að fela smáspilarann með því að strjúka niður á honum</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Leiðsögustika</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Veldu hvaða hnappi birtast í neðra stjórnbandinu</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Fela heimhnappinn</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -450,7 +455,7 @@ SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Felldir runda hálglóaðinn á bak við valinn hnapp glerleiðsögustikunnar</string>
   <string name="morphe_music_miniplayer_screen_title">Smáspilari</string>
   <string name="morphe_music_miniplayer_screen_summary">Breyttu stíl, hnappum og vistrum smáspilara</string>
-  <string name="morphe_music_miniplayer_glass_title">Virkja gler-smáspilara</string>
+  <string name="morphe_music_miniplayer_glass_title">Virkja gleráhrif</string>
   <string name="morphe_music_miniplayer_glass_summary">Sýnir flوتandi smáspilarann sem runda, hálfgagnsæa glerkort</string>
   <string name="morphe_music_miniplayer_glass_style_title">Stíll gler-smáspilara</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Stilltu horngeislun, fjölnun albúmmyndar, birtu randa og gagnsæi gler-smáspilarans með forskoðun</string>
@@ -473,6 +478,15 @@ SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Sýnishlutar</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Kanna</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Bókasafn</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Fela virknihnappinn</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Fela Spyrja tónlist hnappinn</string>
+  <string name="morphe_music_hide_cast_button_title">Fela Cast hnapp</string>
+  <string name="morphe_music_hide_history_button_title">Fela Sögu hnapp</string>
+  <string name="morphe_music_hide_search_button_title">Fela Leitarhnapp</string>
+  <string name="morphe_music_hide_voice_search_button_title">Fela raddarleitarhnappinn</string>
+  <string name="morphe_music_hide_sound_search_button_title">Fela hljóðleitarhnappinn</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ekki innskráður. Ýttu hér til að stilla</string>
   <string name="morphe_music_scrobbling_log_out">Skrá út</string>
@@ -715,8 +729,14 @@ Nauðsynlegar vafrakökur: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_written_by">Ritið af: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Auðkenna samstillt orð eða atkvæði</string>
   <string name="morphe_music_lyrics_word_sync_summary">Forgangsraðar orð-fyrir-orð texta þegar þeir eru til staðar. Þegar textinn hefur tímasetningu fyrir hvert orð er hvert orð eða atkvæði auðkennt í takt við tónlistina.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Anímera samstillt orð smjöðlega</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Hágæfir hverju orði með mjúkum sveiflu, glóa og örlitlu lyftingu þegar það er sungið. Slökktu til að spara rafhlöðu eða fyrir skarplegra fyllingu á hægari tækjum</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Nota fjarðöggun</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Rullar textanum með fjarðöggun og færir hverja línu örlítið eftir þeirri yfir. Slökkvið til að spara rafhlöðu á hægari tækjum</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Slökkuð skrunning</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Hægir niður á skrunningu texta og heldur óvirkum línum í fullri stærð</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Óskýrð óvirkar línur</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Óskýrir létt hverja línu sem er ekki sungin í augnablikinu, og meira því fjarlegri (Android 12 og seinna). Fyrir Android 12 halda óvirkar línur sér skýrar</string>
   <string name="morphe_music_lyrics_gap_dots_title">Sýna punktana fyrir tækjahluta</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Sýnir þría punktanna á milli línna á meðan langur tækjahluti stendur yfir, sem fyllast eftir því sem hlutanum lýkur</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Dökkva fjarlægar línur frekar</string>
@@ -839,6 +859,8 @@ Textar koma frá þjónustum þriðja aðila sem hvorki tengjast, eru styrktar n
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Flyttir þýðinguna yfir lögini; lestur og rómönun haldast undir</string>
   <string name="morphe_music_lyrics_force_center_title">Alltaf miðstilla texta</string>
   <string name="morphe_music_lyrics_force_center_summary">ON setur hverja línu í miðju og hunsar upprunalega samstillingu, þ.m.t. duet hluta; OFF heldur samstillingunni sem textinn biður um</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Uppsetning tvísöngs á gegnsettu hliðinni</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Setur annan söngmanninn á gegnsetta hliðina í tvísöngsum. Slökkvið til að halda báðum söngmönnum á sömu hliðinni</string>
   <string name="morphe_music_lyrics_providers_keep_one">Að minnsta kosti einn veitandi verður að vera á</string>
   <string name="morphe_music_lyrics_translation_provider_title">Þýðing</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Rómverjun eða transliterering</string>

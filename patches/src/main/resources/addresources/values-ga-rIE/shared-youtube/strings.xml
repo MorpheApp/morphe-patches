@@ -78,6 +78,7 @@ Seiceáil go bhfuil an t-ainm pacáiste ceart agus go bhfuil an aip suiteáilte"
   <string name="morphe_export_download_folder_missing">Níorbh fhéidir an fillteán onnmhairithe %s a aimsiú</string>
   <string name="morphe_export_download_flyout_title">Easpórtáil chuig gléas</string>
   <string name="morphe_export_download_canceled">Cealaíodh an onnmhairiú</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Saincheaptha</string>
   <string name="morphe_custom_branding_icon_title">Deilbhín aip</string>
@@ -265,9 +266,6 @@ Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
   <string name="morphe_video_quality_default_mobile_title">Caighdeán físe réamhshocraithe ar líonra soghluaiste</string>
   <string name="morphe_remember_video_quality_toast_mobile">Athraíodh an caighdeán réamhshocraithe soghluaiste go: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Athraíodh cáilíocht réamhshocraithe Wi-Fi go: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Oscail bileog roinnte an chórais</string>
-  <string name="morphe_open_system_share_sheet_summary">Osclaíonn sé bileog chomhroinnte an chórais, seachas an ceann atá laistigh den aip, nuair a bhíonn ábhar á roinnt</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Logáil Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Díchumasaithe</string>
@@ -379,4 +377,8 @@ Seoltar ID an fhíseáin a fhéachann tú chuig API Return YouTube Dislike, agus
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Níor aimsíodh aon teorainneacha ráta cliant</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Sroicheadh ​​an teorainn ráta don chliant %s uair</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milleasoicind</string>
+  <string name="morphe_navigation_bar_screen_title">Barra nascleanúna</string>
+  <string name="morphe_navigation_bar_screen_summary">Roghnaigh na cnaipí a thaispeánfar sa bharra nascleanúna ag bun an scáileáin</string>
+  <string name="morphe_toolbar_screen_title">Barra uirlisí</string>
+  <string name="morphe_toolbar_screen_summary">Roghnaigh na comhpháirteanna a thaispeánfar sa bharra uirlisí</string>
 </resources>

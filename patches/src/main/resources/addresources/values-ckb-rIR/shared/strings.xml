@@ -74,18 +74,34 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">هەناردەکردن بۆ فایل</string>
   <string name="morphe_settings_export_file_success">ڕێکخستنەکان بە سەرکەوتوویی هەناردەکران</string>
   <string name="morphe_settings_export_file_failed">هەناردەکردنی ڕێکخستنەکان سەرکەوتوو نەبوو</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">تۆ دوایین وەشانی Morphe Patches بەکاردەهێنیت &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">تۆ وەشان &lt;i&gt;%1$s&lt;/i&gt;ی Morphe Patches بەکاردەهێنیت&lt;br&gt;&lt;br&gt;&lt;b&gt;نوێکردنەوە بەردەستە: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;بۆ نوێکردنەوەی پاتچەکانت، Morphe بەکاربهێنە بۆ پاتچکردنەوەی ئەم ئەپڵیکەیشنە</string>
-  <string name="morphe_settings_about_links_dev_header">تێبینی</string>
-  <string name="morphe_settings_about_links_dev_body">ئەم وەشانە پێش-بڵاوکراوەیە و لەوانەیە کێشەی چاوەڕواننەکراو ڕووبدات</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">پاتچەکان</string>
+  <string name="morphe_settings_about_version">وەشان</string>
+  <string name="morphe_settings_about_close">داخستن</string>
+  <string name="morphe_settings_about_prerelease">پێش بڵاوکردنەوە</string>
+  <string name="morphe_settings_about_update_available">نوێکردنەوە بەردەستە: %s</string>
+  <string name="morphe_settings_about_update_hint">بۆ نوێکردنەوەی پاتچەکانت، Morphe بەکاربهێنە بۆ دووبارەکردنەوەی پاتچی ئەم ئەپە</string>
   <string name="morphe_settings_about_links_header">سەرچاوەکانی ڕەسمی</string>
   <string name="morphe_settings_about_links_website">وێب سایت</string>
   <string name="morphe_settings_about_links_donate">بەخشین</string>
   <string name="morphe_settings_about_links_translations">وەرگێڕانەکان</string>
-  <string name="morphe_settings_about_links_credits">بەشداربووان</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">نوێترین وەشانە</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">نوێکردنەوە بەردەستە</string>
+  <string name="morphe_settings_about_contributors">بەشداربووان</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">هەموو کاتەکان</string>
+  <string name="morphe_settings_about_contributors_6_months">٦ مانگ</string>
+  <string name="morphe_settings_about_contributors_3_months">٣ مانگ</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">ماوەی کات</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s بەکارهێنەر</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">پشتگیران</string>
+  <string name="morphe_settings_about_supporters_summary">پشتیوانان لە Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">ببە بە پشتگیر</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">و %s تری</string>
+  <string name="morphe_settings_about_people_unavailable">نەتوانرا لیستەکە باربکرێت</string>
   <string name="morphe_settings_about_contributors_current">گەشەپێدانی ئێستا</string>
   <string name="morphe_settings_about_contributors_prior">گەشەپێدانی پێشوو</string>
   <string name="morphe_settings_about_links_morphe">گەشەپێدانی چالاک</string>
@@ -213,6 +229,9 @@ Second \"item\" text"</string>
  • ڕەنگە ئەپەکە بە شێوەیەکی هەڕەمەکی دابخرێت
  • لەوانەیە ئاگادارکردنەوەکان کار نەکەن
  • ڕەنگە پەخشکردنی پاشبنەما کار نەکات"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">کردنەوەی شیتی بەشکردنی سیستەم</string>
+  <string name="morphe_open_system_share_sheet_summary">Opens the system share sheet instead of the in-app one when sharing content</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">بەڕێوەبردنی لینکی ئەپ</string>
   <string name="morphe_link_handling_summary">ڕێکخستنی لینکەکان بۆ ئەوەی لەم ئەپڵیکەیشنەدا بکرێنەوە</string>

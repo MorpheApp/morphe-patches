@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">გამოიყენეთ გარე ჩამტვირთავი Download მენიუსთვის</string>
   <string name="morphe_external_downloader_menu_summary">მენიუს Download ოფცია ამის ნაცვლად ხსნის თქვენს გარე ჩამტვირთავს</string>
+  <string name="morphe_download_force_4k_title">4K ჩამოტვირთვის ხელმისაწვდომობის იძულება</string>
+  <string name="morphe_download_force_4k_summary">ინახავს 1440p და 4K ჩამოტვირთვებს იმ შემთხვევაშიც კი, თუ YouTube Music ჩათვლის, რომ ამ მოწყობილობას მათი დაკვრა არ შეუძლია</string>
   <string name="morphe_export_download_folder_title">ჩამოტვირთვის ექსპორტი</string>
   <string name="morphe_export_download_folder_summary">"გადაიტანეთ აპლიკაციაში შენახული სიმღერები და ვიდეოები თქვენი მოწყობილობის მეხსიერებაში ჩამოტვირთვის მენიუს გამოყენებით. ექსპორტის საქაღალდის შესაცვლელად შეეხეთ.
 
@@ -172,6 +174,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_filter_bar_title">მოიხსნათ ფილტრების პანელი</string>
   <string name="morphe_music_hide_grid_shelves_title">ბადისებრი თვლების დამალვა</string>
   <string name="morphe_music_hide_horizontal_shelves_title">ჰორიზონტალური თვლების დამალვა</string>
+  <string name="morphe_music_hide_new_button_title">\"ახალი\" ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_new_button_summary">მალავს ღილაკს \"ახალი\" ბიბლიოთეკის ჩანართში</string>
   <string name="morphe_music_hide_list_shelves_title">სიების თვლების დამალვა</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">ტექსტების პანელი</string>
   <string name="morphe_music_hide_lyrics_share_button_title">გაზიარების ღილაკის დამალვა</string>
@@ -197,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">კროსფეიდი</string>
   <string name="morphe_music_crossfade_screen_summary">ტრეკების გლუვად გადაბმა ერთმანეთში</string>
   <string name="morphe_music_crossfade_enabled_title">კროსფეიდის ჩართვა</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">crossfade-ის გამოსაყენებლად, შეცვალეთ Spoof ვიდეო ნაკადების \"Default client\" TV Simply-ით ან visionOS-ით</string>
   <string name="morphe_music_crossfade_curve_title">გაქრობის მრუდი</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">თანაბარი სიმძლავრე</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">მსუბუქი შეკავება</string>
@@ -230,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">ამ სესიისთვის Crossfade-ი შეჩერებულია</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade-ი განახლდა</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">ვიდეო რეჟიმი მიუწვდომელია Crossfade-ის ჩართვისას</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade გამორთულია SABR დაკვრისას</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade არ მუშაობს visionOS-თან. შეცვალეთ Spoof ვიდეო ნაკადების \"Default client\" TV Simply-ით</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade არ მუშაობს ამ spoof ნაკადის კლიენტთან</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade გამორთულია ტრანსლაციისას</string>
   <string name="morphe_music_crossfade_about_how_title">როგორ მუშაობს</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade ერთი სიმღერის დასასრულს ადებს მომდევნო სიმღერის დასაწყისს, თქვენი ხანგრძლივობისა და მრუდის გამოყენებით
@@ -247,9 +255,7 @@ Second \"item\" text"</string>
 
 crossfade-ის შეჩერებამ მუსიკალური ვიდეოს სანახავად შესაძლოა ზოგიერთი ვიდეო გაშავოს. სიმღერის არჩევამდე crossfade-ის შეჩერება ამის თავიდან აცილებას უზრუნველყოფს"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">არ არის მხარდაჭერილი</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"აუდიოს გადაცემა ან სარკისებური ასახვა (Chromecast, ეკრანის ან აუდიოს სარკისებური ასახვა)
-
-SABR დაკვრა (ვიდეო ნაკადების იმიტაცია გამორთულია)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">აუდიოს ტრანსლაცია ან დუბლირება (Chromecast, ეკრანის ან აუდიოს დუბლირება)</string>
   <string name="morphe_music_crossfade_about_credit_title">კრედიტები</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade ფუნქცია VazerOG-სგან</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -269,9 +275,19 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">გათიშეთ აუდიო დაქინგი</string>
   <string name="morphe_music_disable_audio_ducking_summary">ხმა არ დაიკლებს, როდესაც სხვა აპლიკაცია გაიტანს მოკლე ბგერს, მაგალითად, შეტყობინებას</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">რიგის მოწონებების ფილტრი</string>
+  <string name="morphe_music_queue_like_filter_summary">შ एसीმს მິກსებიდან და რადიოდან სულ ცოტა მოწონების მქონე სიმღერები. პლეილისტები, ალბომები და სიმღერები, რომლებიც თავად დაამატეთ რიგში, არ შეიცვლება. მოწონებების რაოდენობა მოწოდებულია Return YouTube Dislike-ის მიერ</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">მინიმალური მოწონებები</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">ნაკლები მოწონების მქონე სიმღერები ამოიშლება რიგიდან</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">არმოწონების გადამისამართების გამორთვა</string>
   <string name="morphe_music_disable_dislike_redirection_summary">თავიდან აგვარდინებს შემდეგ ტრეკზე გადასვლას \"არ მომწონს\" ღილაკზე დაჭერისას</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">გათიშეთ სვაიპი ტრეკის შესაცვლელად</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">აფერხებს შემდეგ ან წინა ტრეკზე გადასვლას პლეიერზე მარცხნივ ან მარჯვნივ სვაიპით</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">გათიშეთ სვაიპი ტრეკის შესაცვლელად</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">აფერხებს შემდეგ ან წინა ტრეკზე გადასვლას მინიპლეიერზე მარცხნივ ან მარჯვნივ სვაიპით</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B ციკლი</string>
   <string name="morphe_music_ab_loop_summary">გააწყვეტინეთ seekbar-ი ციკლის დასაწყისის დასაყენებლად, კიდევ ერთხელ - ციკლის დასასრულის დასაყენებლად და კიდევ ერთხელ - ციკლის გასასუფთავებლად</string>
@@ -322,15 +338,6 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_playlist_tags_rename">გადარქმევა</string>
   <string name="morphe_music_playlist_tags_delete">წაშლა</string>
   <string name="morphe_music_playlist_tags_hidden">დამალული</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Cast ღილაკის დამალვა</string>
-  <string name="morphe_music_hide_history_button_title">ისტორიის ღილაკის დამალვა</string>
-  <string name="morphe_music_hide_notification_button_title">შეტყობინების ღილაკის დამალვა</string>
-  <string name="morphe_music_hide_search_button_title">ძებნის ღილაკის დამალვა</string>
-  <string name="morphe_music_hide_voice_search_button_title">ხმოვანი ძიების ღილაკის დამალვა</string>
-  <string name="morphe_music_hide_sound_search_button_title">ბგერის ძებნის ღილაკის დამალვა</string>
-  <string name="morphe_music_hide_library_new_button_title">ახლის ღილაკის დამალვა</string>
-  <string name="morphe_music_hide_library_new_button_summary">მალავს \"ახლის\" ღილაკს ბიბლიოთეკის ჩანართში</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">მოქმედების ღილაკები</string>
   <string name="morphe_music_action_buttons_screen_summary">აირჩიეთ, რომელი მოქმედების ღილაკები გამოჩნდეს პლეერის ქვემოთ</string>
@@ -402,22 +409,20 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_force_portrait_orientation_title">პორტრეტული ორიენტაციის იძულება</string>
   <string name="morphe_music_force_portrait_orientation_summary">ინახავს აპლიკაციას პორტრეტულ ორიენტაციაში მოწყობილობის დატრიალებისას</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">მინიპლეერის ფერის შეცვლა</string>
+  <string name="morphe_music_change_miniplayer_color_title">ფერის შეცვლა</string>
   <string name="morphe_music_change_miniplayer_color_summary">მინიპლეიერის ფერს ავსებს სრულეკრანიანი პლეიერის ფერამდე</string>
   <string name="morphe_music_change_navigation_bar_color_title">შეცვალეთ ნავიგაციის პანელის ფერი</string>
   <string name="morphe_music_change_navigation_bar_color_summary">ემთხვევა ნავიგაციის პანელის ფერი სრულეკრანიანი პლეერის ფერს</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">შემდეგ ღილაკის ჩვენება მინიპლეერში</string>
-  <string name="morphe_music_miniplayer_previous_button_title">წინა ღილაკის ჩვენება მინი-პლეერში</string>
+  <string name="morphe_music_miniplayer_next_button_title">აჩვენეთ შემდეგი ღილაკი</string>
+  <string name="morphe_music_miniplayer_previous_button_title">აჩვენეთ წინა ღილაკი</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">მინიპლეერის იძულებითი ჩართვა</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">თავიდან აგდებს პლეიერის ავტომატურ გაფართოებას სრულეკრანზე ახალი ტრეკის დაწყებისას</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">ჩართეთ მინიპლეიერის გადაფურცლით დახურვა</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">ჩართეთ გადაფურცლით დახურვა</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">აძლევს საშუალებას დახუროთ მინიპლეიერი მასზე ქვემოთ გადაფურცლით</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">ნავიგაციის პანელი</string>
-  <string name="morphe_music_navigation_bar_screen_summary">აირჩიეთ, რომელი ღილაკები გამოჩნდეს ქვედა ნავიგაციის პანელში</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">მთავარი ღილაკის დამალვა</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -450,7 +455,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">მალავს მომრგვალებულ განმარტებას მინისებრი ნავიგაციის პანელის შერჩეული ღილაკის უკან</string>
   <string name="morphe_music_miniplayer_screen_title">მინი-პლეიერი</string>
   <string name="morphe_music_miniplayer_screen_summary">შეცვალეთ მინი-პლეიერის სტილი, ღილაკები და ჟესტები</string>
-  <string name="morphe_music_miniplayer_glass_title">მინისებრი მინი-პლეიერის ჩართვა</string>
+  <string name="morphe_music_miniplayer_glass_title">ჩართეთ შუშის ეფექტი</string>
   <string name="morphe_music_miniplayer_glass_summary">აჩვენებს მცურავ მინი-პლეიერს მომრგვალებული, გამჭვირვალე მინისებრი ბარათის სახით</string>
   <string name="morphe_music_miniplayer_glass_style_title">მინისებრი მინი-პლეიერის სტილი</string>
   <string name="morphe_music_miniplayer_glass_style_summary">დაარეგულირეთ კუთხის რადიუსი, გلافის დაცილება, კიდის სიკაშკაშე და მინისებრი მინი-პლეიერის გამჭვირვალობა, წინასწარი ნახვით</string>
@@ -473,6 +478,15 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_navigation_bar_glass_preview_samples">ნიმუშები</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">კვლევა</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">ბიბლიოთეკა</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">აქტივობის ღილაკის დამალვა</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Ask Music ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_cast_button_title">Cast ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_history_button_title">ისტორიის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_search_button_title">ძებნის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_voice_search_button_title">ხმოვანი ძიების ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_sound_search_button_title">ბგერის ძებნის ღილაკის დამალვა</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">არ ხართ ავტორიზებული. კონფიგურაციისთვის დააჭირეთ</string>
   <string name="morphe_music_scrobbling_log_out">გასვლა</string>
@@ -715,8 +729,14 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_written_by">დაწერა: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">სინქრონიზებული სიტყვების ან მარცვლების გამოკვეთა</string>
   <string name="morphe_music_lyrics_word_sync_summary">უპირატესობა მიენიჭება სიტყვა-სიტყვა ტექსტს, როდესაც ის ხელმისაწვდომია. როდესაც ტექსტს აქვს სიტყვების ტაიმინგი, მუსიკის ტემპთან სინქრონულად გამოიკვეთება თითოეული სიტყვა ან მარცვალი</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">სინქრონიზებული სიტყვების გლუვი ანიმაცია</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">თითოეულ სიტყვას სინგირებისას ახლავს რბილი გადასვლა, განათება და მსუბუქი ამაღლება. გამორთეთ ელემენტის დასაზოგად ან უფრო ნელი მოწყობილობების შემთხვევაში მკვეთრი შევსებისთვის</string>
   <string name="morphe_music_lyrics_spring_scroll_title">გამოიყენეთ ზამბარისებური სქროლვა</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">სქროლავს ტექსტს ზამბარის ფიზიკით და ყოველი ხაზი ოდნავაა დაშორებული ზედა ხაზისგან. გამორთეთ ელემენტის დაზოგვისთვის შედარებით ნელ მოწყობილობებზე</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">მოდERATE სქროლინგი</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">აანელებს ტექსტის სქროლინგის ანიმაციას და ინარჩუნებს არააქტიური ხაზების სრულ ზომას</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">არააქტიური ხაზების გაბუნდოვნება</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">მსუბუქად ბუნდოვნის ყველა ხაზს, რომელიც ამჟამად არ ისმის, რაც უფრო შორს არის, მით უფრო მეტად (Android 12 და უფრო ახალ ვერსიებზე). Android 12-მდე არააქტიური ხაზები რჩება მკვეთრი</string>
   <string name="morphe_music_lyrics_gap_dots_title">ინსტრუმენტალური პაუზის წერტილების ჩვენება</string>
   <string name="morphe_music_lyrics_gap_dots_summary">გვიჩვენებს სამ წერტილს სტრიქონებს შორის გრძელი ინსტრუმენტალური პაუზის დროს, რომლებიც ივსება პაუზის დასრულებამდე</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">შორს მდებარე სტრიქონების მეტად გაფერმკრთალება</string>
@@ -839,6 +859,8 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_swap_trans_roma_summary">ათავსებს თარგმანს ლირიკის ზემოთ; წაკითხვა და რომანიზაცია რჩება ქვემოთ</string>
   <string name="morphe_music_lyrics_force_center_title">ტექსტის მუდმივად ცენტრირება</string>
   <string name="morphe_music_lyrics_force_center_summary">ON ყველა ხაზს ათავსებს ცენტრში და უგულებელყოფს წყაროს გასწორებას, დუეტის მხარეების ჩათვლით; OFF ინარჩუნებს ტექსტისთვის მითითებულ გასწორებას</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">დუეტის გასწორება საპირისპირო მხარეს</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">დუეტის სიმღერებისას მეორე მომღერალს განათავსებს საპირისპირო მხარეს. გამორთეთ, რათა ორივე მომღერალი დარჩეს ერთ მხარეს</string>
   <string name="morphe_music_lyrics_providers_keep_one">მინიმუმ ერთი პროვაიდერი უნდა დარჩეს ჩართული</string>
   <string name="morphe_music_lyrics_translation_provider_title">თარგმანი</string>
   <string name="morphe_music_lyrics_romanization_provider_title">რომანიზაცია ან ტრანსლიტერაცია</string>

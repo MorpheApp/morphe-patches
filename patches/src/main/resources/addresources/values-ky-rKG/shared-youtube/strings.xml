@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Экспорттоо папкасын табуу мүмкүн болбоду: %s</string>
   <string name="morphe_export_download_flyout_title">Түзмөктке экспорттоо</string>
   <string name="morphe_export_download_canceled">Экспорттоо токтотулду</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Ыйыкталган</string>
   <string name="morphe_custom_branding_icon_title">Тиркеменин иконкасы</string>
@@ -265,9 +266,6 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_video_quality_default_mobile_title">Мобилдик тармактагы видеонун стандарттык сапаты</string>
   <string name="morphe_remember_video_quality_toast_mobile">Мобилдик тармак үчүн стандарттык сапат %s болуп өзгөртүлдү</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi үчүн стандарттык сапат %s болуп өзгөртүлдү</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Системалык бөлүшүү баракчасын ачуу</string>
-  <string name="morphe_open_system_share_sheet_summary">Мазмунду бөлүшүүдө колдонмонун ичиндеги баракчанын ордуна системалык бөлүшүү баракчасын ачат</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho логгоо</string>
   <string name="morphe_debug_litho_entry_disabled">Иштен чыгарылган</string>
@@ -379,4 +377,8 @@ PotHelper тиркемесин жүктөө үчүн бул жерди басы�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Клиенттин чектөөлөрү боюнча маселелер жок</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Клиенттин чектөөсү %s жолу кездешти</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунда</string>
+  <string name="morphe_navigation_bar_screen_title">Навигациялык панель</string>
+  <string name="morphe_navigation_bar_screen_summary">Төмөнкү навигациялык панелде кайсы баскычтар көрүнөрүн тандаңыз</string>
+  <string name="morphe_toolbar_screen_title">Куралдар панели</string>
+  <string name="morphe_toolbar_screen_summary">Куралдар панелинде кайсы компоненттер көрүнөрүн тандаңыз</string>
 </resources>

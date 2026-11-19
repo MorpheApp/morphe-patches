@@ -78,6 +78,7 @@ Pastikan nama paket benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_export_download_folder_missing">Folder ekspor %s tidak ditemukan</string>
   <string name="morphe_export_download_flyout_title">Ekspor ke perangkat</string>
   <string name="morphe_export_download_canceled">Ekspor dibatalkan</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Kustom</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
@@ -265,9 +266,6 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_video_quality_default_mobile_title">Kualitas video bawaan di jaringan seluler</string>
   <string name="morphe_remember_video_quality_toast_mobile">Kualitas seluler bawaan diubah ke: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Kualitas Wi-Fi bawaan diubah ke: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Buka lembar berbagi sistem</string>
-  <string name="morphe_open_system_share_sheet_summary">Membuka lembar berbagi sistem alih-alih lembar berbagi dalam aplikasi saat berbagi konten</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Pencatatan Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Tidak aktif</string>
@@ -379,4 +377,8 @@ ID video yang Anda tonton dikirim ke API Return YouTube Dislike, dan suka dan ti
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tidak ada batas kuota klien yang terdeteksi</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Batas kuota klien terdeteksi %s kali</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milidetik</string>
+  <string name="morphe_navigation_bar_screen_title">Bilah navigasi</string>
+  <string name="morphe_navigation_bar_screen_summary">Pilih tombol mana yang akan ditampilkan di bilah navigasi bawah</string>
+  <string name="morphe_toolbar_screen_title">Bilah alat</string>
+  <string name="morphe_toolbar_screen_summary">Pilih komponen mana yang akan ditampilkan di toolbar</string>
 </resources>

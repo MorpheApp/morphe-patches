@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Фолдер за извоз %s није пронађен</string>
   <string name="morphe_export_download_flyout_title">Извези на уређај</string>
   <string name="morphe_export_download_canceled">Извоз је отказан</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Обичај</string>
   <string name="morphe_custom_branding_icon_title">Иконица апликације</string>
@@ -265,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Подразумевани квалитет видеа на мобилној мрежи</string>
   <string name="morphe_remember_video_quality_toast_mobile">Подразумевани мобилни квалитет је промењен на: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Подразумевани Wi-Fi квалитет је промењен на: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Отвори системски панел за дељење</string>
-  <string name="morphe_open_system_share_sheet_summary">Отвора системски прозор за дељење уместо оног унутар апликације приликом дељења садржаја</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho евидентирање</string>
   <string name="morphe_debug_litho_entry_disabled">Онемогућен</string>
@@ -379,4 +377,8 @@ ID видео снимка који гледате шаље се Return YouTube 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Није наишао ни на једно ограничење брзине клијента</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Суочили смо се са ограничењем стопе клијента %s пута</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s милисекунди</string>
+  <string name="morphe_navigation_bar_screen_title">Трака за навигацију</string>
+  <string name="morphe_navigation_bar_screen_summary">Изаберите која ће дугмад бити приказана у доњој导航навигационој траци</string>
+  <string name="morphe_toolbar_screen_title">Трака са алаткама</string>
+  <string name="morphe_toolbar_screen_summary">Изаберите које компоненте се приказују у алткој траци</string>
 </resources>

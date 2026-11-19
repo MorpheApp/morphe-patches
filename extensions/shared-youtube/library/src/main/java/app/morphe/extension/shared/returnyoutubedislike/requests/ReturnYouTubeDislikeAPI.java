@@ -156,6 +156,15 @@ public class ReturnYouTubeDislikeAPI {
     } // utility class
 
     /**
+     * @return If the API calls are paused, such as after the API limited the requests,
+     *         so a fetch gives no data until they resume.
+     */
+    public static boolean isApiCallsPaused() {
+        final long resumeTime = timeToResumeAPICalls;
+        return resumeTime != 0 && System.currentTimeMillis() <= resumeTime;
+    }
+
+    /**
      * @return True, if api rate limit is in effect.
      */
     private static boolean checkIfRateLimitInEffect(String apiEndPointName) {

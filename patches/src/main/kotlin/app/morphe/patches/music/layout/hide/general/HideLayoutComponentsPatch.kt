@@ -7,7 +7,6 @@
 
 package app.morphe.patches.music.layout.hide.general
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -31,8 +30,6 @@ import app.morphe.patches.youtube.ad.injectHideViewCall
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -63,6 +60,7 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_music_hide_filter_bar"),
             SwitchPreference("morphe_music_hide_horizontal_shelves"),
             SwitchPreference("morphe_music_hide_list_shelves"),
+            SwitchPreference("morphe_music_hide_new_button", summary = true),
             SwitchPreference("morphe_music_hide_new_from_shelf"),
             SwitchPreference("morphe_music_hide_playlist_shelves"),
             SwitchPreference("morphe_music_hide_speed_dial_shelf"),
@@ -203,26 +201,16 @@ val hideLayoutComponentsPatch = patch(
         val shelfType = shelfItemsField.definingClass
         val shelfItemType = searchHistoryField.definingClass
         val protoListType = shelfItemsField.type
-        val protoListMutableCopyMethod = Fingerprint(
-            definingClass = protoListType,
-            returnType = protoListType,
-            parameters = listOf("I")
-        ).method
+        val protoListMutableCopyMethod = ProtoListMutableCopyFingerprint.method
 
         SearchSuggestionsRenderFingerprint.let {
             it.method.apply {
                 val sectionListWrapperInit = it.instructionMatches[1]
-                val sectionListWrapperInitReference = sectionListWrapperInit.getInstruction<ReferenceInstruction>()
-                    .reference as MethodReference
-                val sectionListType = sectionListWrapperInitReference.parameterTypes.first().toString()
+                val sectionListType = sectionListWrapperInit.methodReference.parameterTypes.first().toString()
                 val sectionListRegister = sectionListWrapperInit.instruction.registersUsed[1]
 
                 // The section list wrapper converts a section list item to its renderer.
-                val sectionListItemType = Fingerprint(
-                    definingClass = sectionListWrapperInitReference.definingClass,
-                    returnType = "Lj$/util/Optional;",
-                    parameters = listOf("L")
-                ).method.parameterTypes.first().toString()
+                val sectionListItemType = SectionListItemRendererFingerprint.method.parameterTypes.first().toString()
 
                 val sectionListItemShelfField = classDefBy(sectionListItemType).fields.first { field ->
                     field.type == shelfType
@@ -348,6 +336,18 @@ val hideLayoutComponentsPatch = patch(
                     "invoke-static { p0, v$sectionListRegister }, $hideSectionMethod"
                 )
             }
+        }
+        // endregion
+
+        // region hide the floating New button in the Library tab
+        NewButtonFingerprint.let {
+            val moveResult = it.instructionMatches[1]
+            val register = moveResult.getInstruction<OneRegisterInstruction>().registerA
+
+            it.method.addInstruction(
+                moveResult.index + 1,
+                "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideNewButton(Landroid/view/View;)V"
+            )
         }
         // endregion
     }

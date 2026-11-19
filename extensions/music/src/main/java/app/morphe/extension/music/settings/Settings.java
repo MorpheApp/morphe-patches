@@ -10,9 +10,14 @@ import static app.morphe.extension.shared.settings.Setting.parentsAny;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.IGNORE;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
 
+import android.os.Build;
+
+import java.util.List;
+
 import app.morphe.extension.music.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadePatch.CrossFadeDuration;
+import app.morphe.extension.music.patches.CrossfadePatch.CrossfadeAvailability;
 import app.morphe.extension.music.patches.CrossfadePatch.FadeCurve;
 import app.morphe.extension.music.patches.PlaylistTrackTapPatch.TapAction;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
@@ -27,6 +32,7 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
@@ -48,6 +54,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_GRID_SHELVES = new BooleanSetting("morphe_music_hide_grid_shelves", FALSE, true);
     public static final BooleanSetting HIDE_HORIZONTAL_SHELVES = new BooleanSetting("morphe_music_hide_horizontal_shelves", FALSE, true);
     public static final BooleanSetting HIDE_LIST_SHELVES = new BooleanSetting("morphe_music_hide_list_shelves", FALSE, true);
+    public static final BooleanSetting HIDE_NEW_BUTTON = new BooleanSetting("morphe_music_hide_new_button", FALSE, true);
     public static final BooleanSetting HIDE_NEW_FROM_SHELF = new BooleanSetting("morphe_music_hide_new_from_shelf", FALSE, true);
     public static final BooleanSetting HIDE_PLAYLIST_SHELVES = new BooleanSetting("morphe_music_hide_playlist_shelves", FALSE, true);
     public static final BooleanSetting HIDE_SPEED_DIAL_SHELF = new BooleanSetting("morphe_music_hide_speed_dial_shelf", FALSE, true);
@@ -61,13 +68,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting FORCE_PORTRAIT_ORIENTATION = new BooleanSetting("morphe_music_force_portrait_orientation", FALSE, true);
     public static final EnumSetting<HeaderLogo> HEADER_LOGO = new EnumSetting<>("morphe_header_logo", HeaderLogo.DEFAULT, true);
-    public static final BooleanSetting HIDE_CAST_BUTTON = new BooleanSetting("morphe_music_hide_cast_button", FALSE, true);
-    public static final BooleanSetting HIDE_HISTORY_BUTTON = new BooleanSetting("morphe_music_hide_history_button", FALSE, true);
-    public static final BooleanSetting HIDE_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_search_button", FALSE, true);
-    public static final BooleanSetting HIDE_VOICE_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_voice_search_button", FALSE, true);
-    public static final BooleanSetting HIDE_SOUND_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_sound_search_button", FALSE, true);
-    public static final BooleanSetting HIDE_LIBRARY_NEW_BUTTON = new BooleanSetting("morphe_music_hide_library_new_button", FALSE, true);
-    public static final BooleanSetting HIDE_NOTIFICATION_BUTTON = new BooleanSetting("morphe_music_hide_notification_button", FALSE, true);
 
     // Custom filter
     public static final BooleanSetting CUSTOM_FILTER = new BooleanSetting("morphe_music_custom_filter", FALSE);
@@ -91,6 +91,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting NAVIGATION_BAR_GLASS_HEIGHT = new IntegerSetting("morphe_music_navigation_bar_glass_height", 100, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
     public static final IntegerSetting NAVIGATION_BAR_GLASS_WIDTH = new IntegerSetting("morphe_music_navigation_bar_glass_width", 100, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
     public static final IntegerSetting NAVIGATION_BAR_GLASS_BUTTON_SPACING = new IntegerSetting("morphe_music_navigation_bar_glass_button_spacing", 48, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+
+    // Toolbar
+    public static final BooleanSetting HIDE_ACTIVITY_BUTTON = new BooleanSetting("morphe_music_hide_activity_button", FALSE, true);
+    public static final BooleanSetting HIDE_ASK_MUSIC_BUTTON = new BooleanSetting("morphe_music_hide_ask_music_button", FALSE, true);
+    public static final BooleanSetting HIDE_CAST_BUTTON = new BooleanSetting("morphe_music_hide_cast_button", FALSE, true);
+    public static final BooleanSetting HIDE_HISTORY_BUTTON = new BooleanSetting("morphe_music_hide_history_button", FALSE, true);
+    public static final BooleanSetting HIDE_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_search_button", FALSE, true);
+    public static final BooleanSetting HIDE_SOUND_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_sound_search_button", FALSE, true);
+    public static final BooleanSetting HIDE_VOICE_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_voice_search_button", FALSE, true);
 
     // Playlist tags
     public static final BooleanSetting PLAYLIST_TAGS = new BooleanSetting("morphe_music_playlist_tags", FALSE, true);
@@ -174,17 +183,35 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_SWAP_TRANS_ROMA = new BooleanSetting("morphe_music_lyrics_swap_trans_roma", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_SHOW_TRANSLATE_BUTTON, LYRICS_SHOW_ROMANIZE_BUTTON)));
     /** Puts every line in the middle, whatever the format and its duet sides ask for. */
     public static final BooleanSetting LYRICS_FORCE_CENTER = new BooleanSetting("morphe_music_lyrics_force_center", FALSE, false, parent(LYRICS_ENABLED));
+    /** Places the second singer of a duet on the opposite edge, disabled when Always center lyrics is active. */
+    public static final BooleanSetting LYRICS_DUET_OPPOSITE_SIDE = new BooleanSetting("morphe_music_lyrics_duet_opposite_side", TRUE, false, parentsAll(parent(LYRICS_ENABLED), parentNot(LYRICS_FORCE_CENTER)));
     public static final BooleanSetting LYRICS_ROMANIZE = new BooleanSetting("morphe_music_lyrics_romanize", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_ROMANIZE_ONLY = new BooleanSetting("morphe_music_lyrics_romanize_only", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_WORD_SYNC = new BooleanSetting("morphe_music_lyrics_word_sync", TRUE, false, parent(LYRICS_ENABLED));
+    /** Animates synced words with a soft sweep, glow, and slight lift instead of a hard fill. */
+    public static final BooleanSetting LYRICS_WORD_SMOOTH_SWEEP = new BooleanSetting("morphe_music_lyrics_word_smooth_sweep", TRUE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_WORD_SYNC)));
     /** Uses spring physics and staggered FLIP cascading for scrolling lyric lines. */
     public static final BooleanSetting LYRICS_SPRING_SCROLL = new BooleanSetting("morphe_music_lyrics_spring_scroll", TRUE, false, parent(LYRICS_ENABLED));
+    /** Slower scrolling animation and keeps inactive lines full size. */
+    public static final BooleanSetting LYRICS_RELAX_SCROLL = new BooleanSetting("morphe_music_lyrics_relax_scroll", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SPRING_SCROLL)));
     /** Shows animated three-dot instrumental gap indicators between lyric lines. */
     public static final BooleanSetting LYRICS_GAP_DOTS = new BooleanSetting("morphe_music_lyrics_gap_dots", TRUE, false, parent(LYRICS_ENABLED));
     /** Progressively dims inactive lines for a focused spotlight effect. */
     public static final BooleanSetting LYRICS_FOCUS_SPOTLIGHT = new BooleanSetting("morphe_music_lyrics_focus_spotlight", TRUE, false, parent(LYRICS_ENABLED));
-    /** Shrinks every line that is not the one being sung. */
-    public static final BooleanSetting LYRICS_LINE_SCALE = new BooleanSetting("morphe_music_lyrics_line_scale", TRUE, false, parent(LYRICS_ENABLED));
+    /** Blurs inactive lyric lines progressively by distance on Android 12 and later. */
+    public static final BooleanSetting LYRICS_BLUR_INACTIVE = new BooleanSetting("morphe_music_lyrics_blur_inactive", FALSE, false, parentsAll(parent(LYRICS_ENABLED), () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.S));
+    /** Shrinks every line that is not the one being sung. Disabled when Relaxed scrolling is active. */
+    public static final BooleanSetting LYRICS_LINE_SCALE = new BooleanSetting("morphe_music_lyrics_line_scale", TRUE, false, new Setting.Availability() {
+        @Override
+        public boolean isAvailable() {
+            return LYRICS_ENABLED.get() && !(LYRICS_SPRING_SCROLL.get() && LYRICS_RELAX_SCROLL.get());
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(LYRICS_ENABLED, LYRICS_SPRING_SCROLL, LYRICS_RELAX_SCROLL);
+        }
+    });
     public static final BooleanSetting LYRICS_HIDE_PLAYED = new BooleanSetting("morphe_music_lyrics_hide_played", FALSE, false, parent(LYRICS_ENABLED));
     /** Master switch for separating background vocals and harmony from the lead line. */
     public static final BooleanSetting LYRICS_SPLIT_BACKGROUND = new BooleanSetting("morphe_music_lyrics_split_background", TRUE, false, parent(LYRICS_ENABLED));
@@ -227,6 +254,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_AUDIO_DUCKING = new BooleanSetting("morphe_music_disable_audio_ducking", FALSE, true);
     public static final BooleanSetting DISABLE_AUTO_CAPTIONS = new BooleanSetting("morphe_music_disable_auto_captions", FALSE);
     public static final BooleanSetting DISABLE_DISLIKE_REDIRECTION = new BooleanSetting("morphe_music_disable_dislike_redirection", FALSE, true);
+    public static final BooleanSetting DISABLE_PLAYER_SWIPE_TO_CHANGE_TRACK = new BooleanSetting("morphe_music_disable_player_swipe_to_change_track", FALSE, true);
     public static final BooleanSetting HIDE_AUDIO_VIDEO_TOGGLE = new BooleanSetting("morphe_music_hide_audio_video_toggle", FALSE, true);
     public static final BooleanSetting ENABLE_AUDIO_VIDEO_SWITCH = new BooleanSetting("morphe_music_enable_audio_video_switch", FALSE, true, parentNot(Settings.HIDE_AUDIO_VIDEO_TOGGLE));
     public static final BooleanSetting HIDE_LYRICS_SHARE_BUTTON = new BooleanSetting("morphe_music_hide_lyrics_share_button", FALSE, true);
@@ -236,6 +264,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting PLAYBACK_SPEED = new IntegerSetting("morphe_music_playback_speed", 100);
     public static final BooleanSetting PLAYBACK_SPEED_CHANGE_PITCH = new BooleanSetting("morphe_music_playback_speed_change_pitch", FALSE);
     public static final EnumSetting<TapAction> PLAYLIST_TRACK_TAP_ACTION = new EnumSetting<>("morphe_music_playlist_track_tap_action", TapAction.DEFAULT);
+    public static final BooleanSetting QUEUE_LIKE_FILTER = new BooleanSetting("morphe_music_queue_like_filter", FALSE);
+    public static final IntegerSetting QUEUE_LIKE_FILTER_MINIMUM_LIKES = new IntegerSetting("morphe_music_queue_like_filter_minimum_likes", 1000, parent(QUEUE_LIKE_FILTER));
     public static final BooleanSetting REMEMBER_REPEAT_STATE = new BooleanSetting("morphe_music_remember_repeat_state", FALSE, true, parentNot(HIDE_REPEAT_BUTTON));
     public static final BooleanSetting REMEMBER_SHUFFLE_STATE = new BooleanSetting("morphe_music_remember_shuffle_state", FALSE, true, parentNot(HIDE_SHUFFLE_BUTTON));
     public static final BooleanSetting SAVED_SHUFFLE_STATE = new BooleanSetting("morphe_music_saved_shuffle_state", FALSE, parent(REMEMBER_SHUFFLE_STATE));
@@ -262,12 +292,13 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_COMMENTS_TIMESTAMP_BUTTON = new BooleanSetting("morphe_music_hide_comments_timestamp_button", FALSE);
 
     // Crossfade
-    public static final BooleanSetting CROSSFADE_ENABLED = new BooleanSetting("morphe_music_crossfade_enabled", FALSE, true);
-    public static final EnumSetting<FadeCurve> CROSSFADE_CURVE = new EnumSetting<>("morphe_music_crossfade_curve", FadeCurve.EQUAL_POWER, parent(CROSSFADE_ENABLED));
-    public static final EnumSetting<CrossFadeDuration> CROSSFADE_DURATION = new EnumSetting<>("morphe_music_crossfade_duration", CrossFadeDuration.MILLISECONDS_3000, parent(CROSSFADE_ENABLED));
-    public static final BooleanSetting CROSSFADE_ON_SKIP = new BooleanSetting("morphe_music_crossfade_on_skip", TRUE, parent(CROSSFADE_ENABLED));
-    public static final BooleanSetting CROSSFADE_ON_AUTO_ADVANCE = new BooleanSetting("morphe_music_crossfade_on_auto_advance", TRUE, parent(CROSSFADE_ENABLED));
-    public static final BooleanSetting CROSSFADE_SESSION_CONTROL = new BooleanSetting("morphe_music_crossfade_session_control", TRUE, parent(CROSSFADE_ENABLED));
+    private static final Setting.Availability CROSSFADE_AVAILABILITY = new CrossfadeAvailability();
+    public static final BooleanSetting CROSSFADE_ENABLED = new BooleanSetting("morphe_music_crossfade_enabled", FALSE, true, CROSSFADE_AVAILABILITY);
+    public static final EnumSetting<FadeCurve> CROSSFADE_CURVE = new EnumSetting<>("morphe_music_crossfade_curve", FadeCurve.EQUAL_POWER, parentsAll(CROSSFADE_AVAILABILITY, parent(CROSSFADE_ENABLED)));
+    public static final EnumSetting<CrossFadeDuration> CROSSFADE_DURATION = new EnumSetting<>("morphe_music_crossfade_duration", CrossFadeDuration.MILLISECONDS_3000, parentsAll(CROSSFADE_AVAILABILITY, parent(CROSSFADE_ENABLED)));
+    public static final BooleanSetting CROSSFADE_ON_SKIP = new BooleanSetting("morphe_music_crossfade_on_skip", TRUE, parentsAll(CROSSFADE_AVAILABILITY, parent(CROSSFADE_ENABLED)));
+    public static final BooleanSetting CROSSFADE_ON_AUTO_ADVANCE = new BooleanSetting("morphe_music_crossfade_on_auto_advance", TRUE, parentsAll(CROSSFADE_AVAILABILITY, parent(CROSSFADE_ENABLED)));
+    public static final BooleanSetting CROSSFADE_SESSION_CONTROL = new BooleanSetting("morphe_music_crossfade_session_control", TRUE, parentsAll(CROSSFADE_AVAILABILITY, parent(CROSSFADE_ENABLED)));
 
     // Flyout menu
     public static final BooleanSetting HIDE_FLYOUT_MENU_3_COLUMN_COMPONENT = new BooleanSetting("morphe_music_hide_flyout_menu_3_column_component", FALSE);
@@ -309,8 +340,10 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting JAM_ENABLED = new BooleanSetting("morphe_music_jam_enabled", FALSE, true);
 
     // Miniplayer
+    public static final BooleanSetting DISABLE_MINIPLAYER_SWIPE_TO_CHANGE_TRACK = new BooleanSetting("morphe_music_disable_miniplayer_swipe_to_change_track", FALSE, true);
     public static final BooleanSetting ENABLE_FORCED_MINIPLAYER = new BooleanSetting("morphe_music_enable_forced_miniplayer", FALSE, true);
     public static final BooleanSetting ENABLE_SWIPE_TO_DISMISS_MINIPLAYER = new BooleanSetting("morphe_music_enable_swipe_to_dismiss_miniplayer", FALSE, true);
+    public static final BooleanSetting MINIPLAYER_DISMISSED = new BooleanSetting("morphe_music_miniplayer_dismissed", FALSE, false, false, null, parent(ENABLE_SWIPE_TO_DISMISS_MINIPLAYER));
     public static final BooleanSetting MINIPLAYER_NEXT_BUTTON = new BooleanSetting("morphe_music_miniplayer_next_button", TRUE, true);
     public static final BooleanSetting MINIPLAYER_PREVIOUS_BUTTON = new BooleanSetting("morphe_music_miniplayer_previous_button", TRUE, true);
     public static final BooleanSetting MINIPLAYER_GLASS = new BooleanSetting("morphe_music_miniplayer_glass", FALSE, true);
@@ -389,6 +422,8 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON = new BooleanSetting("morphe_external_downloader_flyout_button", FALSE);
     private static final BooleanSetting DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_MENU = new BooleanSetting("morphe_external_downloader_flyout_menu", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_CATEGORY_BAR = new BooleanSetting("morphe_music_hide_category_bar", FALSE, true);
+    private static final BooleanSetting DEPRECATED_HIDE_LIBRARY_NEW_BUTTON = new BooleanSetting("morphe_music_hide_library_new_button", FALSE, true);
+    private static final BooleanSetting DEPRECATED_HIDE_NOTIFICATION_BUTTON = new BooleanSetting("morphe_music_hide_notification_button", FALSE, true);
     private static final BooleanSetting DEPRECATED_MUSIC_IN_APP_DOWNLOADS = new BooleanSetting("morphe_music_in_app_downloads", FALSE);
     private static final BooleanSetting DEPRECATED_PERMANENT_REPEAT = new BooleanSetting("morphe_music_permanent_repeat", FALSE, true);
     private static final BooleanSetting DEPRECATED_LYRICS_DISPLAY_ARTIST_FIRST = new BooleanSetting("morphe_music_lyrics_display_artist_first", FALSE, false);
@@ -397,6 +432,8 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_LYRICS_LOCAL_ROMANIZATION = new BooleanSetting("morphe_music_lyrics_local_romanization", FALSE, false);
 
     static {
+        migrateOldSettingToNew(DEPRECATED_HIDE_LIBRARY_NEW_BUTTON, HIDE_NEW_BUTTON);
+        migrateOldSettingToNew(DEPRECATED_HIDE_NOTIFICATION_BUTTON, HIDE_ACTIVITY_BUTTON);
         migrateOldSettingToNew(DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON, DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_MENU);
         migrateOldSettingToNew(DEPRECATED_HIDE_CATEGORY_BAR, HIDE_FILTER_BAR);
         migrateOldSettingToNew(DEPRECATED_PERMANENT_REPEAT, REMEMBER_REPEAT_STATE);

@@ -25,6 +25,9 @@ message MenuNavigationItemRenderer {
     optional string morpheExportVideoId = 536870911;
     // Not a field of the app. Marks the export all item added by Morphe.
     optional bool morpheExportAll = 536870910;
+    // Not a field of the app. Marks the export item of a playlist or album added by Morphe,
+    // with the playlist it exports.
+    optional string morpheExportPlaylistId = 536870909;
 }
 
 message MenuText {
@@ -41,8 +44,25 @@ message MenuIcon {
 
 message MenuCommand {
     optional MenuOfflineVideoEndpoint offlineVideoEndpoint = 73080600;
+    optional MenuOfflinePlaylistEndpoint offlinePlaylistEndpoint = 73082583;
+    // Play next and Add to queue.
+    optional MenuQueueAddEndpoint queueAddEndpoint = 163162354;
 }
 
 message MenuOfflineVideoEndpoint {
     optional string videoId = 1;
+}
+
+message MenuOfflinePlaylistEndpoint {
+    optional string playlistId = 1;
+}
+
+message MenuQueueAddEndpoint {
+    optional MenuQueueTarget queueTarget = 1;
+}
+
+// The song or video, or the playlist or album, that is added to the queue.
+message MenuQueueTarget {
+    optional string videoId = 1;
+    optional string playlistId = 2;
 }

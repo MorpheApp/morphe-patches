@@ -48,11 +48,11 @@ Second \"item\" text"</string>
 Noen layouter fra serveren tilbakestilles kanskje ikke.
 
 Endringer inkluderer:
+• Fullskjerm-videoforslag kan bli ødelagt
 • Komponenter i spillerens flyout-meny (eller relaterte innstillinger) fungerer kanskje ikke
-• Rullende tall animeres ikke
-• Biblioteksfanen vises
 • Musikkseksjonen i videobeskrivelsen fungerer kanskje ikke
 • Elementer i spillerens flyout-meny kan ikke skjules
+• Rullende tall animeres ikke
 • Knappen for å bytte konto vises kanskje ikke på Bibliotek-fanen"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Aktiver feed flyout-menufilter</string>
@@ -69,19 +69,6 @@ Endringer inkluderer:
   <string name="morphe_hide_channel_buttons_title">Skjul kanalknapper</string>
   <string name="morphe_hide_channel_buttons_summary">Skjuler knapper som Abonner, Vis kanal, Fellesskap og YouTube Music fra kanalprofiler i søkeresultater</string>
   <string name="morphe_hide_community_posts_title">Skjul fellesskapsinnlegg</string>
-  <string name="morphe_post_buttons_screen_title">Innleggsknapper</string>
-  <string name="morphe_post_buttons_screen_summary">Velg oppsettet for knappene under fellesskapsinnleggene og hvilke knapper som skal skjules</string>
-  <string name="morphe_post_buttons_layout_title">Oppsett for innleggsknapper</string>
-  <string name="morphe_post_buttons_layout_entry_1">Server</string>
-  <string name="morphe_post_buttons_layout_entry_2">Håndhevet</string>
-  <string name="morphe_hide_post_like_dislike_buttons_title">Skjul liker- og misliker-knapper</string>
-  <string name="morphe_hide_post_dislike_button_title">Skjul misliker-knapp</string>
-  <string name="morphe_hide_post_dislike_button_summary">Med det håndhevde oppsettet forblir plassen til knappen tom</string>
-  <string name="morphe_hide_post_comment_button_title">Skjul kommentarknapp</string>
-  <string name="morphe_hide_post_comments_preview_title">Skjul forhåndsvisning av kommentarer</string>
-  <string name="morphe_hide_post_comments_preview_summary">Skjuler forhåndsvisningen av kommentarene under innleggene</string>
-  <string name="morphe_hide_post_share_button_title">Skjul delingsknapp</string>
-  <string name="morphe_hide_post_share_button_summary">Nedlastingsknappen for bildene i innlegget tegnes ved siden av delingsknappen, så den skjules også</string>
   <string name="morphe_hide_compact_banner_title">Skjul kompakte bannere</string>
   <string name="morphe_hide_compact_banner_summary">Skjuler kompakte bannere og mellomrom mellom noen komponenter</string>
   <string name="morphe_hide_expandable_card_title">Utvidbare kort under videoer</string>
@@ -135,7 +122,7 @@ Endringer inkluderer:
   <string name="morphe_hide_upload_time_title">Skjul opplastningstidspunkt</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Begrensninger:
-• Shorts-hyller, kanalsider og søkeresultater kan fortsatt vise opplastningstidspunkter
+• Shorts-hyller kan fortsatt vise opplastingstid
 • Fungerer ikke med biloppsett"</string>
   <string name="morphe_hide_video_thumbnail_title">Skjul videominiatyrbilde</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -144,7 +131,7 @@ Endringer inkluderer:
   <string name="morphe_hide_view_count_title">Skjul visningstall</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Begrensninger:
-• Shorts-hyller, kanalsider og søkeresultater kan fortsatt vise visningstall
+• Shorts-hyller kan fortsatt vise visningstall
 • Fungerer ikke med biloppsett"</string>
   <string name="morphe_hide_web_search_results_title">Skjul websøkeresultater</string>
   <string name="morphe_hide_web_search_results_summary">Skjuler «Resultater fra nettet»-delen fra søkeresultatene</string>
@@ -153,196 +140,6 @@ Endringer inkluderer:
   <string name="morphe_hide_youtube_doodles_title">Skjul YouTube-doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Skjuler sesongbaserte og arrangementbaserte animasjoner på YouTube-logoen</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">Visning av YouTube Doodles kan forhindre at tilpassede overskrifter vises</string>
-  <string name="morphe_hide_channel_bar_title">Skjul kanalstripe</string>
-  <string name="morphe_hide_channel_watermark_title">Skjul kanal-vannmerke</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Skjul kapitler og \'I denne videoen\'-knappen</string>
-  <string name="morphe_hide_crowdfunding_box_title">Skjul crowdfunding-boks</string>
-  <string name="morphe_hide_emergency_box_title">Skjul varslingsbokser</string>
-  <string name="morphe_hide_info_panels_title">Skjul infopaneler</string>
-  <string name="morphe_hide_info_panels_summary">Skjuler informasjonskontekstpaneler, som medisinsk informasjon</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Skjul \'Bli med\'-knapp</string>
-  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Skjul \'Direktestrøm-chat-gjennomgang\'-knappen</string>
-  <string name="morphe_hide_live_chat_replay_button_summary">Skjuler chat-avspillingsknappen i fullskjermmodus</string>
-  <string name="morphe_hide_medical_panels_title">Skjul medisinske paneler</string>
-  <string name="morphe_hide_player_gesture_hints_title">Skjul bevegelseshint for spiller</string>
-  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
-          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <string name="morphe_hide_player_gesture_hints_summary">Skjuler hintene som vises under spillerbevegelser, for eksempel «Dra opp for presis søking», «Slipp for å avbryte» og «2x»</string>
-  <string name="morphe_hide_subscribers_community_guidelines_title">Skjul abonnentretningslinjer</string>
-  <string name="morphe_hide_sync_button_title">Skjul knappen \"Synkroniser til video\"</string>
-  <string name="morphe_hide_tap_and_hold_gradient_title">Skjul gradienten for trykk og hold</string>
-  <string name="morphe_hide_tap_and_hold_gradient_summary">Skjuler gradienten på avspillerkontrollene når du glir med fingeren mens du holder for å øke hastigheten</string>
-  <string name="morphe_hide_timed_reactions_title">Skjul tidsstyrte reaksjoner</string>
-  <string name="morphe_hide_timed_reactions_summary">Skjuler funksjonen som lar brukere reagere med emojier i kommentarfeltet og direktekamp-chatten</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Skjul «Hjelp &amp; tilbakemelding»-menyen</string>
-  <string name="morphe_hide_help_feedback_menu_summary">Skjuler «Hjelp &amp; tilbakemelding»-menyen når du bruker knappen med de tre prikkene, for eksempel på søkeresultatene</string>
-  <string name="morphe_hide_handle_title">Skjul handle</string>
-  <string name="morphe_hide_handle_summary">Skjuler kanalens handle i \'Du\'-fanen</string>
-  <string name="morphe_hide_video_title_title">Skjul videotittel</string>
-  <string name="morphe_hide_video_title_summary">Skjuler videotittelen i fullskjermmodus</string>
-  <string name="morphe_sanitize_video_subtitle_title">Rens videoundertekst</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Renser fraser som \'#\', \'Innsamling\', \'produkt(er)\' og \'Butikk\' fra videoundertekster</string>
-  <string name="morphe_hide_ask_gemini_button_title">Skjul «Spør Gemini»-knappen</string>
-  <string name="morphe_hide_ask_gemini_button_summary">Skjuler «Spør Gemini»-knappen nederst på panelet «Spør om denne videoen»</string>
-  <string name="morphe_hide_description_components_screen_title">Videobeskrivelse</string>
-  <string name="morphe_hide_description_components_screen_summary">Velg hvilke komponenter som vises i videobeskrivelsen</string>
-  <string name="morphe_hide_ai_generated_video_summary_section_title">Skjul «AI-generert videosammendrag»-seksjon</string>
-  <string name="morphe_hide_ask_section_title">Skjul Spørsmål-seksjon</string>
-  <string name="morphe_hide_attributes_section_title">Skjul Attributter-seksjon</string>
-  <string name="morphe_hide_attributes_section_summary">Skjuler Utvalgte steder, Spill, Musikk og Nevnte personer-seksjonene</string>
-  <string name="morphe_hide_channel_links_section_title">Skjul kanallinker-seksjonen</string>
-  <string name="morphe_hide_chapters_section_title">Skjul Kapitler-seksjon</string>
-  <string name="morphe_hide_corrections_section_title">Skjul Korreksjoner-seksjon</string>
-  <string name="morphe_hide_course_progress_section_title">Skjul «Kursfremgang»-seksjon</string>
-  <string name="morphe_hide_explore_section_title">Skjul Utforsk-seksjon</string>
-  <string name="morphe_hide_explore_section_summary">Skjuler «Utforsk dette kurset»- og «Utforsk podkasten»-seksjonene</string>
-  <string name="morphe_hide_explore_course_section_title">Skjul «Utforsk dette kurset»-seksjon</string>
-  <string name="morphe_hide_explore_podcast_section_title">Skjul «Utforsk podkasten»-seksjon</string>
-  <string name="morphe_hide_featured_channels_section_title">Skjul seksjonen med utvalgte kanaler</string>
-  <string name="morphe_hide_featured_links_section_title">Skjul Utvalgte lenker-seksjon</string>
-  <string name="morphe_hide_featured_playlists_section_title">Skjul seksjonen med utvalgte spillelister</string>
-  <string name="morphe_hide_featured_videos_section_title">Skjul Utvalgte videoer-seksjon</string>
-  <string name="morphe_hide_hashtag_section_title">Skjul Hashtag-seksjonen</string>
-  <string name="morphe_hide_how_this_was_made_section_title">Skjul \"Hvordan dette ble laget\"-delen</string>
-  <string name="morphe_hide_hype_points_title">Skjul Hype-poeng</string>
-  <string name="morphe_hide_info_cards_section_title">Skjul Info-kort-seksjon</string>
-  <string name="morphe_hide_key_concepts_section_title">Skjul delen \'Sentrale konsepter\'</string>
-  <string name="morphe_hide_quizzes_section_title">Skjul Quizzer-seksjon</string>
-  <string name="morphe_hide_search_inside_this_video_section_title">Skjul seksjonen \'Søk i denne videoen\'</string>
-  <string name="morphe_hide_subscribe_button_title">Skjul \'Abonner\'-knappen</string>
-  <string name="morphe_hide_transcript_section_title">Skjul Transkripsjon-seksjon</string>
-  <string name="morphe_hide_video_details_section_title">Skjul «Videodetaler»-seksjon</string>
-  <string name="morphe_hide_filter_bar_screen_title">Filterlinje</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Velg hvor du vil skjule filterlinjen som ruller</string>
-  <string name="morphe_hide_filter_bar_in_channel_page_title">Skjul på kanalsiden</string>
-  <string name="morphe_hide_filter_bar_in_comments_title">Skjul i kommentarer</string>
-  <string name="morphe_hide_filter_bar_in_feed_title">Skjul i feeden</string>
-  <string name="morphe_hide_filter_bar_in_related_videos_title">Skjul i relaterte videoer</string>
-  <string name="morphe_hide_filter_bar_in_search_title">Skjul i søkeresultater</string>
-  <string name="morphe_hide_filter_bar_in_history_title">Skjul i visningshistorikk</string>
-  <string name="morphe_channel_screen_title">Kanalside</string>
-  <string name="morphe_channel_screen_summary">Velg hvilke komponenter som vises på kanalsiden</string>
-  <string name="morphe_hide_channel_tab_title">Aktiver filter for kanal-fane</string>
-  <string name="morphe_hide_channel_tab_filter_strings_title">Kanal-fanefilter</string>
-  <string name="morphe_hide_channel_tab_filter_strings_summary">Skriv inn navnene på kanalfaneene du vil filtrere etter, atskilt med nye linjer</string>
-  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_community_button_title">Skjul \'Fellesskap\'-knappen</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_join_button_title">Skjul \'Bli med\'-knappen</string>
-  <string name="morphe_hide_links_preview_title">Skjul koblingsforhåndsvisning</string>
-  <string name="morphe_hide_links_preview_summary">Skjuler de klikkbare nettlenkene i kanalens topptekst</string>
-  <string name="morphe_hide_members_only_chip_title">Skjul \'Kun medlemmer\'-merket</string>
-  <string name="morphe_hide_members_only_chip_summary">Skjuler \'Kun medlemmer\'-merket i filterlinjen på kanalen</string>
-  <string name="morphe_hide_members_shelf_title">Skjul medlemskapshylla</string>
-  <string name="morphe_hide_members_shelf_summary">Skjuler listen over kanallmedlemmer</string>
-  <string name="morphe_hide_posts_shelf_title">Skjul innleggshylle</string>
-  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_store_button_title">Skjul \'Butikk\'-knappen</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Skjul \'Abonner\'-knappen</string>
-  <string name="morphe_explore_menu_screen_title">Utforsk menyen</string>
-  <string name="morphe_explore_menu_screen_summary">Velg hvilke komponenter som skal vises i utforsk-menyen</string>
-  <string name="morphe_hide_courses_menu_title">Skjul Kursmeny</string>
-  <string name="morphe_hide_explore_button_title">Skjul Utforsk-knappen</string>
-  <string name="morphe_hide_fashion_menu_title">Skjul \'Mote og skjønnhet\'-menyen</string>
-  <string name="morphe_hide_gaming_menu_title">Skjul Spillmeny</string>
-  <string name="morphe_hide_hype_menu_title">Skjul Hype-menyen</string>
-  <string name="morphe_hide_learning_menu_title">Skjul Læringsmeny</string>
-  <string name="morphe_hide_live_menu_title">Skjul Direkte-menyen</string>
-  <string name="morphe_hide_memberships_menu_title">Skjul Medlemskapsmeny</string>
-  <string name="morphe_hide_movies_menu_title">Skjul \'Filmer og TV\'-menyen</string>
-  <string name="morphe_hide_music_menu_title">Skjul musikkmenyen</string>
-  <string name="morphe_hide_news_menu_title">Skjul Nyhetsmeny</string>
-  <string name="morphe_hide_playables_menu_title">Skjul Spillbare-menyen</string>
-  <string name="morphe_hide_podcasts_menu_title">Skjul Podcastmeny</string>
-  <string name="morphe_hide_shopping_menu_title">Skjul Shoppingmeny</string>
-  <string name="morphe_hide_sports_menu_title">Skjul Sportsmeny</string>
-  <string name="morphe_hide_youtube_premium_menu_title">Skjul YouTube Premium-menyen</string>
-  <string name="morphe_hide_youtube_studio_menu_title">Skjul YouTube Studio-menyen</string>
-  <string name="morphe_hide_youtube_music_menu_title">Skjul YouTube Music-menyen</string>
-  <string name="morphe_hide_youtube_kids_menu_title">Skjul YouTube Kids-menyen</string>
-  <string name="morphe_hide_youtube_create_menu_title">Skjul YouTube Create-menyen</string>
-  <string name="morphe_hide_youtube_works_menu_title">Skjul \'Hvordan YouTube fungerer\'-menyen</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Skjul juridiske og personvern-bunntekster</string>
-  <string name="morphe_comments_screen_title">Kommentarer</string>
-  <string name="morphe_comments_screen_summary">Velg hvilke komponenter som skal vises i kommentarfeltet</string>
-  <string name="morphe_hide_comments_carousel_title">Aktiver kommentar-karusellfilter</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Angi et søkeord eller fullt navn (f.eks. Ask, Community, Hype, Listen)
-• Om du skjuler alle elementer, skjules hele kommentarfeltet"</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentar-karusellfilter</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_summary">Skriv inn navnene på kommentarkarusellen du vil filtrere etter, atskilt med nye linjer</string>
-  <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chat-sammendrag</string>
-  <string name="morphe_hide_comments_channel_guidelines_title">Skjul kanalens retningslinjer</string>
-  <string name="morphe_hide_comments_contexts_title">Skjul kontekstmeldinger</string>
-  <string name="morphe_hide_comments_by_members_header_title">Skjul \'Kommentarer fra medlemmer\'-overskrift</string>
-  <string name="morphe_hide_comments_section_title">Skjul kommentarseksjon</string>
-  <string name="morphe_hide_comments_section_in_home_feed_title">Skjul kommentarseksjonen i Hjem-feeden</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Skjul retningslinjer for fellesskapet</string>
-  <string name="morphe_hide_comments_create_a_short_button_title">Skjul \'Opprett en Short\'-knapp</string>
-  <string name="morphe_hide_comments_dislike_button_title">Skjul misliker-knappen</string>
-  <string name="morphe_hide_comments_emoji_button_title">Skjul emojiknapp</string>
-  <string name="morphe_hide_comments_filter_bar_options_title">Skjul filterlinjealternativer</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">Skjuler alle filterlinjealternativer unntatt \'Best\' og \'Nyeste\'</string>
-  <string name="morphe_hide_comments_gif_button_title">Skjul GIF-knapp</string>
-  <string name="morphe_hide_comments_gifs_and_images_title">Skjul GIF-er og bilder</string>
-  <string name="morphe_hide_comments_gifs_and_images_summary">Skjuler GIF-er og bilder som er lagt til i kommentarer og svar</string>
-  <string name="morphe_hide_comments_gift_animation_and_cards_title">Skjul gaveanimasjon og -kort</string>
-  <string name="morphe_hide_comments_gift_button_title">Skjul gave-knapp</string>
-  <string name="morphe_hide_comments_info_button_title">Skjul info-knapp</string>
-  <string name="morphe_hide_comments_live_chat_donators_bar_title">Skjul donatorfeltet for livechat</string>
-  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Skjul knappen «Rull ned» for live-chat</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_title">Skjul verktøytips i live-chat</string>
-  <string name="morphe_hide_comments_live_chat_tooltips_summary">Skjuler popup-tips nær chat-inntastingsfeltet, for eksempel varselet om chat kun for abonnenter</string>
-  <string name="morphe_hide_comments_menu_button_title">Skjul menyknappen</string>
-  <string name="morphe_hide_comments_menu_button_summary">Skjuler menyknappen med tre prikker for hver kommentar</string>
-  <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisningskommentar</string>
-  <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentarforslag under videoen før du åpner hele kommentarfeltet</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Kommentar skjult av Morphe…</string>
-  <string name="morphe_minimal_comments_button_title">Aktiver minimal kommentarknapp</string>
-  <string name="morphe_minimal_comments_button_summary">Skjuler de glidende kortene og sidevelgeren deres, som vises på kommentarknappen</string>
-  <string name="morphe_hide_comments_thanks_button_title">Skjul takkeknapp</string>
-  <string name="morphe_hide_comments_timestamp_button_title">Skjul tidsstempelknapp</string>
-  <string name="morphe_hide_comments_top_fans_button_title">Skjul \'Topp fans\'-knappen</string>
-  <string name="morphe_hide_comments_translate_button_title">Skjul oversett-knappen</string>
-  <string name="morphe_hide_comments_zero_state_title">Skjul melding om \'Ingen kommentarer ennå\'</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">Desinfiser fremhevede søkelenker</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Desinfiserer fremhevede søkelenker, og viser kun den originale, rene teksten</string>
-  <string name="morphe_hide_keyword_content_screen_title">Nøkkelordfilter</string>
-  <string name="morphe_hide_keyword_content_screen_summary">Velg spesifikke ord eller fraser for å skjule videoer i feed og søk</string>
-  <string name="morphe_hide_keyword_content_comments_title">Skjul kommentarer etter nøkkelord</string>
-  <string name="morphe_hide_keyword_content_home_title">Skjul Hjem-videoer etter nøkkelord</string>
-  <string name="morphe_hide_keyword_content_search_title">Skjul søkeresultater etter nøkkelord</string>
-  <string name="morphe_hide_keyword_content_subscriptions_title">Skjul videoer fra abonnementer etter nøkkelord</string>
-  <string name="morphe_hide_keyword_content_phrases_title">Nøkkelord som skal skjules</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Angi nøkkelord og fraser som skal skjules, adskilt med linjeskift
-
-Nøkkelord kan være hvilken som helst tekst som vises i videotitler. @Brukernavn-nøkkelord skjuler alt innhold fra spesifikke skapere"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Hjem / Abonnementer / Søk / Kommentarer blir filtrert for å skjule innhold som samsvarer med nøkkelordfraser
-
-Begrensninger:
-• Enkelte Shorts kan ikke skjules etter kanalnavn
-• Enkelte brukergrensesnittkomponenter kan hende ikke blir skjult"</string>
-  <string name="morphe_hide_keyword_content_about_whole_words_title">Treff hele ord</string>
-  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
-  <string name="morphe_hide_keyword_content_about_whole_words_summary">Å omslutte et nøkkelord/en frase med doble anførselstegn vil hindre delvise treff i videotitler og kanalnavn&lt;br&gt;&lt;br&gt;For eksempel,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; vil skjule videoen: &lt;b&gt;Hvordan fungerer AI?&lt;/b&gt;&lt;br&gt;men vil ikke skjule: &lt;b&gt;Hva betyr fair use?&lt;/b&gt;</string>
-  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_length">Nøkkelordet er for kort og krever anførselstegn: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_broad">Nøkkelordet vil skjule alle videoer: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Hjem: %1$s
-• Abonnementer: %2$s
-• Søk: %3$s
-• Kommentarer: %4$s
-• Totalt: %5$s"</string>
-  <string name="morphe_hide_stats_category_title">Statistikk</string>
-  <string name="morphe_hide_stats_hidden_24h_title">Videoer skjult, siste 24 timer</string>
-  <string name="morphe_hide_stats_hidden_all_title">Videoer skjult, totalt</string>
-  <string name="morphe_hide_stats_hidden_24h_reset_title">Tilbakestille teller for siste 24 timer?</string>
-  <string name="morphe_hide_stats_hidden_all_reset_title">Tilbakestill telleren for alle tider?</string>
   <string name="morphe_hide_aislist_screen_title">AI-kanalfilter</string>
   <string name="morphe_hide_aislist_screen_summary">Skjul videoer fra kanaler som er flagget som AI-generert innhold av AiSList-fellesskapet</string>
   <string name="morphe_hide_aislist_blocklist_category_title">Blokkeringsliste: Høy sikkerhet</string>
@@ -390,6 +187,345 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <string name="morphe_aislist_submit_failed_rate_limit">For mange rapporter ble sendt, prøv igjen senere</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList avviste rapporten</string>
   <string name="morphe_aislist_submit_failed">Rapporteringen mislyktes, sjekk tilkoblingen din</string>
+  <string name="morphe_channel_screen_title">Kanalside</string>
+  <string name="morphe_channel_screen_summary">Velg hvilke komponenter som vises på kanalsiden</string>
+  <string name="morphe_hide_channel_tab_title">Aktiver filter for kanal-fane</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">Kanal-fanefilter</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">Skriv inn navnene på kanalfaneene du vil filtrere etter, atskilt med nye linjer</string>
+  <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">Skjul \'Fellesskap\'-knappen</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">Skjul \'Bli med\'-knappen</string>
+  <string name="morphe_hide_links_preview_title">Skjul koblingsforhåndsvisning</string>
+  <string name="morphe_hide_links_preview_summary">Skjuler de klikkbare nettlenkene i kanalens topptekst</string>
+  <string name="morphe_hide_members_only_chip_title">Skjul \'Kun medlemmer\'-merket</string>
+  <string name="morphe_hide_members_only_chip_summary">Skjuler \'Kun medlemmer\'-merket i filterlinjen på kanalen</string>
+  <string name="morphe_hide_members_shelf_title">Skjul medlemskapshylla</string>
+  <string name="morphe_hide_members_shelf_summary">Skjuler listen over kanallmedlemmer</string>
+  <string name="morphe_hide_posts_shelf_title">Skjul innleggshylle</string>
+  <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">Skjul \'Butikk\'-knappen</string>
+  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">Skjul \'Abonner\'-knappen</string>
+  <string name="morphe_explore_menu_screen_title">Utforsk menyen</string>
+  <string name="morphe_explore_menu_screen_summary">Velg hvilke komponenter som skal vises i utforsk-menyen</string>
+  <string name="morphe_hide_courses_menu_title">Skjul Kursmeny</string>
+  <string name="morphe_hide_explore_button_title">Skjul Utforsk-knappen</string>
+  <string name="morphe_hide_fashion_menu_title">Skjul \'Mote og skjønnhet\'-menyen</string>
+  <string name="morphe_hide_gaming_menu_title">Skjul Spillmeny</string>
+  <string name="morphe_hide_hype_menu_title">Skjul Hype-menyen</string>
+  <string name="morphe_hide_learning_menu_title">Skjul Læringsmeny</string>
+  <string name="morphe_hide_live_menu_title">Skjul Direkte-menyen</string>
+  <string name="morphe_hide_memberships_menu_title">Skjul Medlemskapsmeny</string>
+  <string name="morphe_hide_movies_menu_title">Skjul \'Filmer og TV\'-menyen</string>
+  <string name="morphe_hide_music_menu_title">Skjul musikkmenyen</string>
+  <string name="morphe_hide_news_menu_title">Skjul Nyhetsmeny</string>
+  <string name="morphe_hide_playables_menu_title">Skjul Spillbare-menyen</string>
+  <string name="morphe_hide_podcasts_menu_title">Skjul Podcastmeny</string>
+  <string name="morphe_hide_shopping_menu_title">Skjul Shoppingmeny</string>
+  <string name="morphe_hide_sports_menu_title">Skjul Sportsmeny</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Skjul YouTube Premium-menyen</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Skjul YouTube Studio-menyen</string>
+  <string name="morphe_hide_youtube_music_menu_title">Skjul YouTube Music-menyen</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Skjul YouTube Kids-menyen</string>
+  <string name="morphe_hide_youtube_create_menu_title">Skjul YouTube Create-menyen</string>
+  <string name="morphe_hide_youtube_works_menu_title">Skjul \'Hvordan YouTube fungerer\'-menyen</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Skjul juridiske og personvern-bunntekster</string>
+  <string name="morphe_hide_filter_bar_screen_title">Filterlinje</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Velg hvor du vil skjule filterlinjen som ruller</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">Skjul på kanalsiden</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Skjul i kommentarer</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Skjul i feeden</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Skjul i relaterte videoer</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Skjul i søkeresultater</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Skjul i visningshistorikk</string>
+  <string name="morphe_hide_keyword_content_screen_title">Nøkkelordfilter</string>
+  <string name="morphe_hide_keyword_content_screen_summary">Velg spesifikke ord eller fraser for å skjule videoer i feed og søk</string>
+  <string name="morphe_hide_keyword_content_comments_title">Skjul kommentarer etter nøkkelord</string>
+  <string name="morphe_hide_keyword_content_home_title">Skjul Hjem-videoer etter nøkkelord</string>
+  <string name="morphe_hide_keyword_content_search_title">Skjul søkeresultater etter nøkkelord</string>
+  <string name="morphe_hide_keyword_content_subscriptions_title">Skjul videoer fra abonnementer etter nøkkelord</string>
+  <string name="morphe_hide_keyword_content_phrases_title">Nøkkelord som skal skjules</string>
+  <string name="morphe_hide_keyword_content_phrases_summary">"Angi nøkkelord og fraser som skal skjules, adskilt med linjeskift
+
+Nøkkelord kan være hvilken som helst tekst som vises i videotitler. @Brukernavn-nøkkelord skjuler alt innhold fra spesifikke skapere"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Hjem / Abonnementer / Søk / Kommentarer blir filtrert for å skjule innhold som samsvarer med nøkkelordfraser
+
+Begrensninger:
+• Enkelte Shorts kan ikke skjules etter kanalnavn
+• Enkelte brukergrensesnittkomponenter kan hende ikke blir skjult"</string>
+  <string name="morphe_hide_keyword_content_about_whole_words_title">Treff hele ord</string>
+  <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <string name="morphe_hide_keyword_content_about_whole_words_summary">Å omslutte et nøkkelord/en frase med doble anførselstegn vil hindre delvise treff i videotitler og kanalnavn&lt;br&gt;&lt;br&gt;For eksempel,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; vil skjule videoen: &lt;b&gt;Hvordan fungerer AI?&lt;/b&gt;&lt;br&gt;men vil ikke skjule: &lt;b&gt;Hva betyr fair use?&lt;/b&gt;</string>
+  <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_toast_invalid_length">Nøkkelordet er for kort og krever anførselstegn: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_broad">Nøkkelordet vil skjule alle videoer: %s</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Hjem: %1$s
+• Abonnementer: %2$s
+• Søk: %3$s
+• Kommentarer: %4$s
+• Totalt: %5$s"</string>
+  <string name="morphe_hide_stats_category_title">Statistikk</string>
+  <string name="morphe_hide_stats_hidden_24h_title">Videoer skjult, siste 24 timer</string>
+  <string name="morphe_hide_stats_hidden_all_title">Videoer skjult, totalt</string>
+  <string name="morphe_hide_stats_hidden_24h_reset_title">Tilbakestille teller for siste 24 timer?</string>
+  <string name="morphe_hide_stats_hidden_all_reset_title">Tilbakestill telleren for alle tider?</string>
+  <string name="morphe_post_buttons_screen_title">Innleggsknapper</string>
+  <string name="morphe_post_buttons_screen_summary">Velg oppsettet for knappene under fellesskapsinnleggene og hvilke knapper som skal skjules</string>
+  <string name="morphe_post_buttons_layout_title">Oppsett for innleggsknapper</string>
+  <string name="morphe_post_buttons_layout_entry_1">Server</string>
+  <string name="morphe_post_buttons_layout_entry_2">Håndhevet</string>
+  <string name="morphe_hide_post_like_dislike_buttons_title">Skjul Lik- og Mislik-knapper</string>
+  <string name="morphe_hide_post_dislike_button_title">Skjul Misliker-knappen</string>
+  <string name="morphe_hide_post_dislike_button_summary">Med det håndhevde oppsettet forblir plassen til knappen tom</string>
+  <string name="morphe_hide_post_comment_button_title">Skjul Kommentar-knappen</string>
+  <string name="morphe_hide_post_comments_preview_title">Skjul forhåndsvisning av kommentarer</string>
+  <string name="morphe_hide_post_comments_preview_summary">Skjuler forhåndsvisningen av kommentarene under innleggene</string>
+  <string name="morphe_hide_post_share_button_title">Skjul Del-knappen</string>
+  <string name="morphe_hide_post_share_button_summary">Nedlastingsknappen for bildene i innlegget tegnes ved siden av Del-knappen, så den skjules også</string>
+  <string name="morphe_hide_ask_gemini_button_title">Skjul «Spør Gemini»-knappen</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Skjuler «Spør Gemini»-knappen nederst på panelet «Spør om denne videoen»</string>
+  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <string name="morphe_hide_autoplay_preview_title">Skjul automatisk avspilling forhåndsvisning</string>
+  <string name="morphe_hide_autoplay_preview_summary">Skjuler forhåndsvisningen av neste video i fullskjerm før automatisk avspilling starter</string>
+  <string name="morphe_hide_channel_bar_title">Skjul kanalstripe</string>
+  <string name="morphe_hide_channel_watermark_title">Skjul kanal-vannmerke</string>
+  <string name="morphe_hide_chapters_button_title">Skjul Kapitler-knappen</string>
+  <string name="morphe_hide_crowdfunding_box_title">Skjul crowdfunding-boks</string>
+  <string name="morphe_hide_emergency_box_title">Skjul varslingsbokser</string>
+  <string name="morphe_hide_in_this_video_button_title">Skjul \"I denne videoen\"-knappen</string>
+  <string name="morphe_hide_info_panels_title">Skjul infopaneler</string>
+  <string name="morphe_hide_info_panels_summary">Skjuler informasjonskontekstpaneler, som medisinsk informasjon</string>
+  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears in the video player for certain videos. -->
+  <string name="morphe_hide_join_membership_button_title">Skjul \'Bli med\'-knapp</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">Skjul \'Direktestrøm-chat-gjennomgang\'-knappen</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">Skjuler chat-avspillingsknappen i fullskjermmodus</string>
+  <string name="morphe_hide_medical_panels_title">Skjul medisinske paneler</string>
+  <string name="morphe_hide_player_gesture_hints_title">Skjul bevegelseshint for spiller</string>
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Skjuler hintene som vises under spillerbevegelser, for eksempel «Dra opp for presis søking», «Slipp for å avbryte» og «2x»</string>
+  <string name="morphe_hide_subscribers_community_guidelines_title">Skjul abonnentretningslinjer</string>
+  <string name="morphe_hide_sync_button_title">Skjul knappen \"Synkroniser til video\"</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">Skjul gradienten for trykk og hold</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Skjuler gradienten på avspillerkontrollene når du glir med fingeren mens du holder for å øke hastigheten</string>
+  <string name="morphe_hide_timed_reactions_title">Skjul tidsstyrte reaksjoner</string>
+  <string name="morphe_hide_timed_reactions_summary">Skjuler funksjonen som lar brukere reagere med emojier i kommentarfeltet og direktekamp-chatten</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Skjul «Hjelp &amp; tilbakemelding»-menyen</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Skjuler «Hjelp &amp; tilbakemelding»-menyen når du bruker knappen med de tre prikkene, for eksempel på søkeresultatene</string>
+  <string name="morphe_hide_handle_title">Skjul handle</string>
+  <string name="morphe_hide_handle_summary">Skjuler kanalens handle i \'Du\'-fanen</string>
+  <string name="morphe_hide_video_title_title">Skjul videotittel</string>
+  <string name="morphe_hide_video_title_summary">Skjuler videotittelen i fullskjermmodus</string>
+  <string name="morphe_sanitize_video_subtitle_title">Rens videoundertekst</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Renser fraser som \'#\', \'Innsamling\', \'produkt(er)\' og \'Butikk\' fra videoundertekster</string>
+  <!-- layout.buttons.action.hideButtonsPatch -->
+  <string name="morphe_action_buttons_screen_title">Handlingsknapper</string>
+  <string name="morphe_action_buttons_screen_summary">Velg hvilke handlingsknapper som vises i stående og fullskjermmodus</string>
+  <string name="morphe_portrait_buttons">Knapper i stående modus</string>
+  <string name="morphe_disable_like_subscribe_glow_title">Deaktiver Like og Subscribe-glød</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">Hindrer at Liker- og Abonner-knappene lyser når en oppretter nevner dem</string>
+  <string name="morphe_hide_action_bar_title">Skjul actionlinjen</string>
+  <string name="morphe_hide_like_dislike_button_title">Skjul Liker- og Misliker-knapp</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_share_button_title">Skjul Del-knappen</string>
+  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_stop_ads_button_title">Skjul \'Stopp annonser\'-knapp</string>
+  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <string name="morphe_hide_comments_button_title">Skjul Kommentarer-knapp</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Skjul Koble til-knappen</string>
+  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on live stream videos. -->
+  <string name="morphe_hide_report_button_title">Skjul Rapport-knapp</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_remix_button_title">Skjul Remix-knapp</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_download_button_title">Skjul Last ned-knapp</string>
+  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears on videos uploaded by the logged-in user. -->
+  <string name="morphe_hide_hype_button_title">Skjul Hype-knapp</string>
+  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_promote_button_title">Skjul Promoter-knapp</string>
+  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_thanks_button_title">Skjul Takk-knappen</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
+          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <string name="morphe_hide_ask_button_title">Skjul Spør-knapp</string>
+  <string name="morphe_hide_channel_profile_button_title">Skjul kanal- og Abonner-knappen</string>
+  <string name="morphe_hide_channel_profile_button_summary">Skjuler kanalavataren og Abonner-knappen i starten av handlingslinjen</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Skjul Abonner-knappen</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Skjuler Abonner- og Bli med-knappene ved siden av kanalavataren i starten av handlingslinjen</string>
+  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_clip_button_title">Skjul Klipp-knapp</string>
+  <string name="morphe_hide_clip_button_summary">Dette fungerer kanskje ikke for enkelte brukerkontoer</string>
+  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shop_button_title">Skjul Shop-knapp</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_save_button_title">Skjul Lagre-knapp</string>
+  <string name="morphe_hide_more_button_title">Skjul Mer-knappen</string>
+  <string name="morphe_fullscreen_buttons">Knapper i fullskjerm</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Skjul Misliker-knapp</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Skjul Liker-knapp</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Skjul \'Direktechat\'-knapp</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Skjul Miks-knapp</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Skjul \'Flere videoer\'-knapp</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Skjul Spillelisteknapp</string>
+  <string name="morphe_quick_actions_top_margin_title">Toppmarg for hurtighandlinger</string>
+  <string name="morphe_quick_actions_top_margin_summary">Angi toppmargen for hurtighandlingslinjen (0-32 dp)</string>
+  <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">Omgivelsesmodus</string>
+  <string name="morphe_ambient_mode_screen_summary">Administrer synlighet og strømbegrensninger for omgivelsesmodus</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Omgå restriksjoner for omgivelsesmodus</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary">Lar omgivelsesmodus fortsette å være aktiv i batterisparingsmodus</string>
+  <string name="morphe_disable_ambient_mode_title">Deaktiver omgivelsesmodus</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_title">Deaktiver omgivelsesmodus i fullskjerm</string>
+  <string name="morphe_enhanced_ambient_mode_title">Forbedret omgivelsesmodus</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Lyser opp hele se-siden og svarte felt med videoen, i stedet for omgivelsesmodus</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Lysstyrke</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Hvor sterkt lyset er på urskiven og de svarte feltene</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Utjevning av lys</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Hvor lang tid lyset bruker på å følge videoen. Med 0 følger det videoen tett</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Lysuskarphet</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Hvor mye lyset ved siden av videoen er uskarpt. Med 0 bevares formene i videoen</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Hold tekst lesbar</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Demper lyset på lyse videoer slik at teksten på siden forblir lesbar</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Demp ved rulling</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Demper lyset mens siden rulles eller berøres</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dempevarighet</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Hvor lenge lyset forblir dempet etter at rullingen stopper. Med 0 er det bare rulling som demper lyset, og det kommer tilbake så snart rullingen stopper</string>
+  <string name="morphe_comments_screen_title">Kommentarer</string>
+  <string name="morphe_comments_screen_summary">Velg hvilke komponenter som skal vises i kommentarfeltet</string>
+  <string name="morphe_hide_comments_carousel_title">Aktiver kommentar-karusellfilter</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Angi et søkeord eller fullt navn (f.eks. Ask, Community, Hype, Listen)
+• Om du skjuler alle elementer, skjules hele kommentarfeltet"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentar-karusellfilter</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Skriv inn navnene på kommentarkarusellen du vil filtrere etter, atskilt med nye linjer</string>
+  <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chat-sammendrag</string>
+  <string name="morphe_hide_comments_channel_guidelines_title">Skjul kanalens retningslinjer</string>
+  <string name="morphe_hide_comments_contexts_title">Skjul kontekstmeldinger</string>
+  <string name="morphe_hide_comments_by_members_header_title">Skjul \'Kommentarer fra medlemmer\'-overskrift</string>
+  <string name="morphe_hide_comments_section_title">Skjul kommentarseksjon</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Skjul kommentarseksjonen i Hjem-feeden</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Skjul retningslinjer for fellesskapet</string>
+  <string name="morphe_hide_comments_create_a_short_button_title">Skjul \'Opprett en Short\'-knapp</string>
+  <string name="morphe_hide_comments_dislike_button_title">Skjul misliker-knappen</string>
+  <string name="morphe_hide_comments_emoji_button_title">Skjul emojiknapp</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Skjul filterlinjealternativer</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Skjuler alle filterlinjealternativer unntatt \'Best\' og \'Nyeste\'</string>
+  <string name="morphe_hide_comments_gif_button_title">Skjul GIF-knapp</string>
+  <string name="morphe_hide_comments_gifs_and_images_title">Skjul GIF-er og bilder</string>
+  <string name="morphe_hide_comments_gifs_and_images_summary">Skjuler GIF-er og bilder som er lagt til i kommentarer og svar</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Skjul gaveanimasjon og -kort</string>
+  <string name="morphe_hide_comments_gift_button_title">Skjul gave-knapp</string>
+  <string name="morphe_hide_comments_info_button_title">Skjul info-knapp</string>
+  <string name="morphe_hide_comments_live_chat_donators_bar_title">Skjul donatorfeltet for livechat</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Skjul knappen «Rull ned» for live-chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Skjul verktøytips i live-chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Skjuler popup-tips nær chat-inntastingsfeltet, for eksempel varselet om chat kun for abonnenter</string>
+  <string name="morphe_hide_comments_menu_button_title">Skjul menyknappen</string>
+  <string name="morphe_hide_comments_menu_button_summary">Skjuler menyknappen med tre prikker for hver kommentar</string>
+  <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisningskommentar</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentarforslag under videoen før du åpner hele kommentarfeltet</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Kommentar skjult av Morphe…</string>
+  <string name="morphe_minimal_comments_button_title">Aktiver minimal kommentarknapp</string>
+  <string name="morphe_minimal_comments_button_summary">Skjuler de glidende kortene og sidevelgeren deres, som vises på kommentarknappen</string>
+  <string name="morphe_hide_comments_thanks_button_title">Skjul takkeknapp</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Skjul tidsstempelknapp</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Skjul \'Topp fans\'-knappen</string>
+  <string name="morphe_hide_comments_translate_button_title">Skjul oversett-knappen</string>
+  <string name="morphe_hide_comments_zero_state_title">Skjul melding om \'Ingen kommentarer ennå\'</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Desinfiser fremhevede søkelenker</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Desinfiserer fremhevede søkelenker, og viser kun den originale, rene teksten</string>
+  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
+  <string name="morphe_hide_player_flyout_title">Flytende meny</string>
+  <string name="morphe_hide_player_flyout_summary">Velg hvilke komponenter som vises i flyout-menyen</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Skjul \'Ytterligere innstillinger\' / Mer-menyen</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Skjul \'Omgivelsesmodus\'-menyen</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"'Audio Track'-menyen er skjult
+
+For å vise 'Audio Track'-menyen, endre 'Forfalsk videostrømmer' til en hvilken som helst klient unntatt 'Android Studio' og 'Android VR Downgraded'"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Skjul \"Lydspor\"-menyen</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Skjul bunntekst i \'Lydspor\'-menyen</string>
+  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_captions_title">Skjul \'Undertekster\'-menyen</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Skjul bunntekst i undertekstmenyen</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Skjul overskrift i undertekstmenyen</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_help_title">Skjul \'Hjelp og tilbakemelding\'-menyen</string>
+  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Skjul \'Lytt med YouTube Music\'-menyen</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Skjul \'Skjermlås\'-menyen</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Skjul \'Loop video\'-menyen</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Skjul \'På farten\'-menyen</string>
+  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_quality_title">Skjul Kvalitetsmenyen</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Skjul bunntekst i kvalitetsmenyen</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Skjul overskrift i kvalitetsmenyen</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Skjul \'Sovetimer\'-menyen</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Skjul \'Avspillingshastighet\'-menyen</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Skjul \'Stabil volum\'-menyen</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Skjul \'Se i VR\'-menyen</string>
+  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_overlay_buttons_screen_title">Overlay-knapper</string>
+  <string name="morphe_overlay_buttons_screen_summary">Velg hvilke knapper som vises over videospilleren</string>
+  <string name="morphe_hide_autoplay_button_title">Skjul Autoplay-knapp</string>
+  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_captions_button_title">Skjul Undertekster-knapp</string>
+  <string name="morphe_hide_cast_button_title">Skjul Kast-knapp</string>
+  <string name="morphe_hide_cast_button_summary">Skjuler Cast-knappen i videospilleren og verktøylinjen</string>
+  <string name="morphe_hide_collapse_button_title">Skjul Kollaps-knappen</string>
+  <string name="morphe_hide_fullscreen_button_title">Skjul Fullskjerm-knappen</string>
+  <string name="morphe_hide_player_control_buttons_background_title">Skjul spillerkontrollbakgrunn</string>
+  <string name="morphe_hide_player_control_buttons_background_summary">Skjuler den mørke skyggeleggingen rundt videospillerkontrollene</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Bakgrunnsopasitet for kontrollknapper</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Juster opasiteten til bakgrunnen bak avspillerens kontrollknapper og tidslinjen (0 er usynlig, 100 er solid)</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">Skjul Forrige &amp; Neste-knapper</string>
+  <string name="morphe_hide_settings_button_title">Skjul Innstillinger-knappen</string>
+  <string name="morphe_hide_description_components_screen_title">Videobeskrivelse</string>
+  <string name="morphe_hide_description_components_screen_summary">Velg hvilke komponenter som vises i videobeskrivelsen</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_title">Skjul «AI-generert videosammendrag»-seksjon</string>
+  <string name="morphe_hide_ask_section_title">Skjul Spørsmål-seksjon</string>
+  <string name="morphe_hide_attributes_section_title">Skjul Attributter-seksjon</string>
+  <string name="morphe_hide_attributes_section_summary">Skjuler Utvalgte steder, Spill, Musikk og Nevnte personer-seksjonene</string>
+  <string name="morphe_hide_channel_links_section_title">Skjul kanallinker-seksjonen</string>
+  <string name="morphe_hide_chapters_section_title">Skjul Kapitler-seksjon</string>
+  <string name="morphe_hide_corrections_section_title">Skjul Korreksjoner-seksjon</string>
+  <string name="morphe_hide_course_progress_section_title">Skjul «Kursfremgang»-seksjon</string>
+  <string name="morphe_hide_explore_section_title">Skjul Utforsk-seksjon</string>
+  <string name="morphe_hide_explore_section_summary">Skjuler «Utforsk dette kurset»- og «Utforsk podkasten»-seksjonene</string>
+  <string name="morphe_hide_explore_course_section_title">Skjul «Utforsk dette kurset»-seksjon</string>
+  <string name="morphe_hide_explore_podcast_section_title">Skjul «Utforsk podkasten»-seksjon</string>
+  <string name="morphe_hide_featured_channels_section_title">Skjul seksjonen med utvalgte kanaler</string>
+  <string name="morphe_hide_featured_links_section_title">Skjul Utvalgte lenker-seksjon</string>
+  <string name="morphe_hide_featured_playlists_section_title">Skjul seksjonen med utvalgte spillelister</string>
+  <string name="morphe_hide_featured_videos_section_title">Skjul Utvalgte videoer-seksjon</string>
+  <string name="morphe_hide_hashtag_section_title">Skjul Hashtag-seksjonen</string>
+  <string name="morphe_hide_how_this_was_made_section_title">Skjul \"Hvordan dette ble laget\"-delen</string>
+  <string name="morphe_hide_hype_points_title">Skjul Hype-poeng</string>
+  <string name="morphe_hide_info_cards_section_title">Skjul Info-kort-seksjon</string>
+  <string name="morphe_hide_key_concepts_section_title">Skjul delen \'Sentrale konsepter\'</string>
+  <string name="morphe_hide_quizzes_section_title">Skjul Quizzer-seksjon</string>
+  <string name="morphe_hide_search_inside_this_video_section_title">Skjul seksjonen \'Søk i denne videoen\'</string>
+  <string name="morphe_hide_subscribe_button_title">Skjul \'Abonner\'-knappen</string>
+  <string name="morphe_hide_transcript_section_title">Skjul Transkripsjon-seksjon</string>
+  <string name="morphe_hide_video_details_section_title">Skjul «Videodetaler»-seksjon</string>
   <!-- layout.snackbar.snackbarPatch -->
   <string name="morphe_snackbar_screen_title">Snackbar</string>
   <string name="morphe_snackbar_screen_summary">Skjul snackbarer eller endre farger og form</string>
@@ -472,6 +608,9 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <string name="morphe_feed_long_press_menu_summary">Å trykke og holde nede hvor som helst på en feed-video åpner menyen for den</string>
   <string name="morphe_feed_watch_later_button_title">Vis \"Se senere\"-knapp på miniatyrbilder</string>
   <string name="morphe_feed_watch_later_button_summary">En «Se senere»-knapp vises på miniatyrbildene til videoer i feeden, med en hake hvis videoen er lagret. Ved å trykke på den lagres eller fjernes videoen, og ved å trykke og holde åpnes «Lagre i spilleliste»</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Åpne postbilder i fullskjerm</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Ved å trykke på et bilde av et innlegg åpnes det i fullskjerm, i stedet for i feeden</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Last ned bilder fra innlegg</string>
   <string name="morphe_post_image_download_summary">En nedlastingsknapp vises ved siden av Del-knappen for innlegg med bilder eller GIF-er, og et nedlastingsvalg legges til i menyen deres</string>
@@ -542,8 +681,6 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <string name="morphe_disable_chapter_skip_double_tap_title">Deaktiver dobbelttrykk for å hoppe til neste kapittel</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiverer kapittelhopping med tofinger-dobbeltrykk, som kan utløses ved et uhell med én finger</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
-  <string name="morphe_offline_video_quality_2160p">4K (2160p)</string>
   <string name="morphe_external_downloader_screen_summary">Last ned videoer, podkaster eller sanger med nedlastingsapper fra tredjeparter</string>
   <string name="morphe_external_downloader_overlay_button_title">Vis nedlastingsknapp for avspilleroverlegg</string>
   <string name="morphe_external_downloader_overlay_button_summary">Viser en knapp i videospilleren som åpner den eksterne nedlasteren din</string>
@@ -560,14 +697,16 @@ Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med al
   <string name="morphe_shorts_download_flyout_button_title">Vis nedlastinger i Shorts-menyen</string>
   <string name="morphe_shorts_download_flyout_button_summary">Legger til et nedlastingspunkt i menyen for Shorts-spilleren</string>
   <string name="morphe_shorts_download_flyout_title">Last ned</string>
-  <string name="morphe_feed_download_flyout_button_title">Vis nedlasting i videomenyer</string>
-  <string name="morphe_feed_download_flyout_button_summary">Legger til et nedlastingspunkt i menyene til videoer i feeden som mangler dette, slik som videoer YouTube kun lar Premium-medlemmer laste ned</string>
+  <string name="morphe_feed_download_flyout_button_title">Tving nedlastingselement i flyout-meny</string>
+  <string name="morphe_feed_download_flyout_button_summary">Legger til et nedlastingselement i menyene til feed-videoer som ikke har det</string>
   <string name="morphe_download_force_4k_title">Tving tilgjengelighet for 4K-nedlasting</string>
-  <string name="morphe_download_force_4k_summary">Tilbyr 1440p- og 4K-nedlastinger selv om YouTube bestemmer at denne enheten ikke kan spille dem av. Slike videoer kan hende spilles av uten bilde inne i YouTube, men kan eksporteres til enheten din</string>
+  <string name="morphe_download_force_4k_summary">Tilbyr 1440p og 4K-nedlastinger selv om YouTube avgjør at denne enheten ikke kan spille dem av</string>
+  <string name="morphe_download_quality_about_title">1080p er ikke tilgjengelig</string>
+  <string name="morphe_download_quality_about_summary">Hvis nedlastinger i appen ikke tilbyr 1080p, slå på \"Simuler enhetsdimensjoner\" i Diverse-innstillinger</string>
   <string name="morphe_export_download_folder_title">Eksporter lagrede videoer</string>
-  <string name="morphe_export_download_folder_summary">"Eksporter videoer lagret i appen til enhetens lagring ved hjelp av nedlastingsmenyen i appen. Trykk for å endre eksportermappe
+  <string name="morphe_export_download_folder_summary">"Eksporter videoer lagret i appen til enhetens lagring ved hjelp av flyout-menyen for nedlastinger i appen. Trykk her for å endre eksportmappen
 
-Eksportermappe: %s"</string>
+Eksportmappe: %s"</string>
   <string name="morphe_export_download_started">Eksporterer video</string>
   <string name="morphe_export_download_progress">Eksporterer video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Videoeksport</string>
@@ -665,6 +804,7 @@ API-nøkkelen din bør aldri deles. Alle med tilgang til den kan bruke OpenRoute
   <string name="morphe_loop_count_clear_done">Lagrede løkkantall er slettet</string>
   <string name="morphe_loop_count_flyout_name">Løkkantall</string>
   <string name="morphe_loop_count_dialog_message">Hvor mange ganger videoen spilles før neste video, fra %1$s til %2$s. La feltet være tomt for å loope videoen uten begrensning.</string>
+  <string name="morphe_loop_count_times">%s ganger</string>
   <string name="morphe_loop_count_no_limit">Ingen begrensning</string>
   <string name="morphe_loop_count_decrease">Færre ganger</string>
   <string name="morphe_loop_count_increase">Flere ganger</string>
@@ -856,6 +996,7 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_swipe_press_to_engage_title">Aktiver trykk for å sveipe gest</string>
   <string name="morphe_swipe_press_to_engage_summary">Krever at du trykker og holder før en sveipebevegelse gjenkjennes</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiver haptisk tilbakemelding</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibrerer når det å trykke og holde starter en sveipebevegelse</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Lagre og gjenopprett lysstyrke</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Husker lysstyrkenivået når du går inn eller ut av fullskjermmodus</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Aktiver automatisk lysstyrke-gest</string>
@@ -899,60 +1040,6 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_swipe_overlay_style_entry_7">Vertikalt overlegg (minimalt)</string>
   <string name="morphe_swipe_change_video_title">Aktiver sveip for å endre videoer</string>
   <string name="morphe_swipe_change_video_summary">Sveip i fullskjermmodus for å hoppe til neste eller forrige video</string>
-  <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_action_buttons_screen_title">Handlingsknapper</string>
-  <string name="morphe_action_buttons_screen_summary">Velg hvilke handlingsknapper som vises i stående og fullskjermmodus</string>
-  <string name="morphe_portrait_buttons">Knapper i stående modus</string>
-  <string name="morphe_disable_like_subscribe_glow_title">Deaktiver Like og Subscribe-glød</string>
-  <string name="morphe_disable_like_subscribe_glow_summary">Hindrer at Liker- og Abonner-knappene lyser når en oppretter nevner dem</string>
-  <string name="morphe_hide_action_bar_title">Skjul actionlinjen</string>
-  <string name="morphe_hide_like_dislike_button_title">Skjul Liker- og Misliker-knapp</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_share_button_title">Skjul Del-knappen</string>
-  <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_stop_ads_button_title">Skjul \'Stopp annonser\'-knapp</string>
-  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
-  <string name="morphe_hide_comments_button_title">Skjul Kommentarer-knapp</string>
-  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_connect_button_title">Skjul Koble til-knappen</string>
-  <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on live stream videos. -->
-  <string name="morphe_hide_report_button_title">Skjul Rapport-knapp</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_remix_button_title">Skjul Remix-knapp</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_download_button_title">Skjul Last ned-knapp</string>
-  <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on videos uploaded by the logged-in user. -->
-  <string name="morphe_hide_hype_button_title">Skjul Hype-knapp</string>
-  <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_promote_button_title">Skjul Promoter-knapp</string>
-  <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_thanks_button_title">Skjul Takk-knappen</string>
-  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears if the user IP is from a specific region such as the USA or EU. -->
-  <string name="morphe_hide_ask_button_title">Skjul Spør-knapp</string>
-  <string name="morphe_hide_channel_profile_button_title">Skjul kanal- og Abonner-knappen</string>
-  <string name="morphe_hide_channel_profile_button_summary">Skjuler kanalavataren og Abonner-knappen i starten av handlingslinjen</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Skjul Abonner-knappen</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_summary">Skjuler Abonner- og Bli med-knappene ved siden av kanalavataren i starten av handlingslinjen</string>
-  <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_clip_button_title">Skjul Klipp-knapp</string>
-  <string name="morphe_hide_clip_button_summary">Dette fungerer kanskje ikke for enkelte brukerkontoer</string>
-  <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shop_button_title">Skjul Shop-knapp</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_save_button_title">Skjul Lagre-knapp</string>
-  <string name="morphe_hide_more_button_title">Skjul Mer-knappen</string>
-  <string name="morphe_fullscreen_buttons">Knapper i fullskjerm</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Skjul Misliker-knapp</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Skjul Liker-knapp</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Skjul \'Direktechat\'-knapp</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Skjul Miks-knapp</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Skjul \'Flere videoer\'-knapp</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Skjul Spillelisteknapp</string>
-  <string name="morphe_quick_actions_top_margin_title">Toppmarg for hurtighandlinger</string>
-  <string name="morphe_quick_actions_top_margin_summary">Angi toppmargen for hurtighandlingslinjen (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Teksting</string>
   <string name="morphe_captions_screen_summary">Administrer automatisk teksting og informasjonskapsler for teksting</string>
@@ -1001,8 +1088,6 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_caption_block_translation_failed">Noen tekstoversettelser er utilgjengelige. Viser tilgjengelige tekstinger.</string>
   <string name="morphe_caption_blocks_too_large">Begge tekstingsspråkene får ikke plass i denne spilleren. Viser primærspråket.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigasjonslinje</string>
-  <string name="morphe_navigation_bar_screen_summary">Velg hvilke knapper som vises i navigasjonslinjen nederst</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skjul Hjem-knappen</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1020,11 +1105,11 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_watch_later_navigation_label">Se senere</string>
   <string name="morphe_show_settings_button_title">Vis Innstillinger-knapp</string>
   <string name="morphe_show_settings_button_type_title">Innstillingsknapp handling</string>
-  <string name="morphe_show_settings_button_type_summary">Åpner Morphe-innstillinger når den er aktivert, eller YouTube-innstillinger når den er deaktivert</string>
+  <string name="morphe_show_settings_button_type_summary">Når dette er aktivert, åpner et trykk Morphe-innstillinger og et langt trykk åpner YouTube-innstillinger; deaktiver for å bytte om</string>
   <string name="morphe_navigation_buttons_order_title">Rekkefølge for navigasjonsknapper</string>
   <string name="morphe_navigation_buttons_order_summary">Dra knappene for å endre rekkefølgen i navigasjonslinjen</string>
   <string name="morphe_swap_create_with_notifications_button_title">Bytt Create-knappen med Notifications-knappen</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Hvis endring av denne innstillingen ikke trer i kraft, kan du prøve å bytte til inkognitomodus</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Flytter varslingsknappen til navigasjonslinjen og opprett-knappen til verktøylinjen. Hvis endringene ikke trer i kraft, prøv å bytte til inkognitomodus</string>
   <string name="morphe_hide_navigation_button_labels_title">Skjul navigasjonsknappetiketter</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Skjul prikk for nytt innhold</string>
   <string name="morphe_hide_navigation_bar_title">Skjul navigasjonslinjen</string>
@@ -1053,103 +1138,24 @@ For å få tilgang til Innstillinger, aktiver Innstillinger-knappen via Generelt
   <string name="morphe_navigation_bar_glass_opacity_summary">Juster gjennomsiktighetsnivået for glassnavigasjonsfeltet (0 er gjennomsiktig, 100 er ugjennomsiktig)</string>
   <string name="morphe_navigation_bar_glass_round_title">Rund glassnavigasjonslinje</string>
   <string name="morphe_navigation_bar_glass_round_summary">Gir glassnavigasjonslinjen runde ender, i stedet for hjørner som glassminispilleren</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Glasskant for navigasjonsfelt</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Tegner den lyse kanten rundt glassnavigasjonsfeltet</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Nedre marg for glassnavigasjonsfelt</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Juster avstanden mellom glassnavigasjonslinjen og bunnen av skjermen eller systemnavigasjonen</string>
   <string name="morphe_navigation_bar_glass_size_title">Størrelse på glassnavigasjonsfelt</string>
   <string name="morphe_navigation_bar_glass_size_summary">Juster høyden, bredden og knappavstanden til glassnavigasjonsfeltet, med en forhåndsvisning. Knapper som ikke passer innenfor skjermbredden skjules</string>
   <string name="morphe_navigation_bar_glass_size_height">Høyde</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimal bredde</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knappavstand</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Knapper vist: %1$s av %2$s</string>
-  <string name="morphe_toolbar_screen_title">Verktøylinje</string>
-  <string name="morphe_toolbar_screen_summary">Velg hvilke komponenter som vises i verktøylinjen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skjul chat-knapp</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skjul Mikrofon-knapp</string>
   <string name="morphe_hide_toolbar_search_button_title">Skjul Søk-knapp</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Når den er aktivert, åpner et trykk Morphe-innstillinger og et langt trykk YouTube-innstillinger, deaktiver for å bytte</string>
   <string name="morphe_toolbar_buttons_order_title">Rekkefølge for verktøylinje-knapper</string>
   <string name="morphe_toolbar_buttons_order_summary">Dra knappene for å endre rekkefølgen i verktøylinjen</string>
-  <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">Flytende meny</string>
-  <string name="morphe_hide_player_flyout_summary">Velg hvilke komponenter som vises i flyout-menyen</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Skjul \'Ytterligere innstillinger\' / Mer-menyen</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Skjul \'Omgivelsesmodus\'-menyen</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"'Audio Track'-menyen er skjult
-
-For å vise 'Audio Track'-menyen, endre 'Forfalsk videostrømmer' til en hvilken som helst klient unntatt 'Android Studio' og 'Android VR Downgraded'"</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Skjul \"Lydspor\"-menyen</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">Skjul bunntekst i \'Lydspor\'-menyen</string>
-  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_captions_title">Skjul \'Undertekster\'-menyen</string>
-  <string name="morphe_hide_player_flyout_captions_footer_title">Skjul bunntekst i undertekstmenyen</string>
-  <string name="morphe_hide_player_flyout_captions_header_title">Skjul overskrift i undertekstmenyen</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_help_title">Skjul \'Hjelp og tilbakemelding\'-menyen</string>
-  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Skjul \'Lytt med YouTube Music\'-menyen</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Skjul \'Skjermlås\'-menyen</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Skjul \'Loop video\'-menyen</string>
-  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_on_the_go_title">Skjul \'På farten\'-menyen</string>
-  <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_quality_title">Skjul Kvalitetsmenyen</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">Skjul bunntekst i kvalitetsmenyen</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">Skjul overskrift i kvalitetsmenyen</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Skjul \'Sovetimer\'-menyen</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Skjul \'Avspillingshastighet\'-menyen</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Skjul \'Stabil volum\'-menyen</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Skjul \'Se i VR\'-menyen</string>
-  <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
-  <string name="morphe_hide_autoplay_preview_title">Skjul automatisk avspilling forhåndsvisning</string>
-  <string name="morphe_hide_autoplay_preview_summary">Skjuler forhåndsvisningen av neste video i fullskjerm før automatisk avspilling starter</string>
-  <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_overlay_buttons_screen_title">Overlay-knapper</string>
-  <string name="morphe_overlay_buttons_screen_summary">Velg hvilke knapper som vises over videospilleren</string>
-  <string name="morphe_hide_autoplay_button_title">Skjul Autoplay-knapp</string>
-  <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Skjul Undertekster-knapp</string>
-  <string name="morphe_hide_cast_button_title">Skjul Kast-knapp</string>
-  <string name="morphe_hide_cast_button_summary">Skjuler Cast-knappen i videospilleren og verktøylinjen</string>
-  <string name="morphe_hide_collapse_button_title">Skjul Kollaps-knappen</string>
-  <string name="morphe_hide_fullscreen_button_title">Skjul Fullskjerm-knappen</string>
-  <string name="morphe_hide_player_control_buttons_background_title">Skjul spillerkontrollbakgrunn</string>
-  <string name="morphe_hide_player_control_buttons_background_summary">Skjuler den mørke skyggeleggingen rundt videospillerkontrollene</string>
-  <string name="morphe_player_control_buttons_background_opacity_title">Bakgrunnsopasitet for kontrollknapper</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Juster opasiteten til bakgrunnen bak avspillerens kontrollknapper og tidslinjen (0 er usynlig, 100 er solid)</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Skjul Forrige &amp; Neste-knapper</string>
-  <string name="morphe_hide_settings_button_title">Skjul Innstillinger-knappen</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Skjul sluttskjermkort</string>
-  <!-- layout.hide.ambientmode.ambientModePatch -->
-  <string name="morphe_ambient_mode_screen_title">Omgivelsesmodus</string>
-  <string name="morphe_ambient_mode_screen_summary">Administrer synlighet og strømbegrensninger for omgivelsesmodus</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">Omgå restriksjoner for omgivelsesmodus</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary">Lar omgivelsesmodus fortsette å være aktiv i batterisparingsmodus</string>
-  <string name="morphe_disable_ambient_mode_title">Deaktiver omgivelsesmodus</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_title">Deaktiver omgivelsesmodus i fullskjerm</string>
-  <string name="morphe_enhanced_ambient_mode_title">Forbedret omgivelsesmodus</string>
-  <string name="morphe_enhanced_ambient_mode_summary">Lyser opp hele se-siden og svarte felt med videoen, i stedet for omgivelsesmodus</string>
-  <string name="morphe_enhanced_ambient_mode_strength_title">Lysstyrke</string>
-  <string name="morphe_enhanced_ambient_mode_strength_summary">Hvor sterkt lyset er på urskiven og de svarte feltene</string>
-  <string name="morphe_enhanced_ambient_mode_smoothing_title">Utjevning av lys</string>
-  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Hvor lang tid lyset bruker på å følge videoen. Med 0 følger det videoen tett</string>
-  <string name="morphe_enhanced_ambient_mode_blur_title">Lysuskarphet</string>
-  <string name="morphe_enhanced_ambient_mode_blur_summary">Hvor mye lyset ved siden av videoen er uskarpt. Med 0 bevares formene i videoen</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_title">Hold tekst lesbar</string>
-  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Demper lyset på lyse videoer slik at teksten på siden forblir lesbar</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Demp ved rulling</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Demper lyset mens siden rulles eller berøres</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dempevarighet</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Hvor lenge lyset forblir dempet etter at rullingen stopper. Med 0 er det bare rulling som demper lyset, og det kommer tilbake så snart rullingen stopper</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Skjul infokort</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1380,6 +1386,9 @@ Bilvisning
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Deaktiver automatisk feedoppdatering</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Forhindrer at feedene oppdateres automatisk etter at de blir utdaterte</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Opphev gruppering av varsler</string>
+  <string name="morphe_ungroup_notifications_summary">Viser hver video fra en kanals grupperte opplastinger som et eget varsel</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Struktur for innholdskort</string>
   <string name="morphe_feed_card_layout_entry_1">Klassisk</string>
@@ -1492,6 +1501,8 @@ Bilvisning
   <string name="morphe_dearrow_titles_search_title">Søkeresultater</string>
   <string name="morphe_dearrow_titles_icon_title">Vis DeArrow-ikonet</string>
   <string name="morphe_dearrow_titles_icon_summary">Viser DeArrow-ikonet på titler på videoer med en crowdsourcet tittel eller et miniatyrbilde. Trykk på ikonet for å vise den opprinnelige tittelen og det opprinnelige miniatyrbildet</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Rydd opp i titler</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Rydd opp i titlene på videoer uten en DeArrow-tittel. Ord med store bokstaver endres til vanlig skrift, og emojier, fancy tekst og gjentatte utropstegn fjernes</string>
   <string name="morphe_dearrow_casual_mode_title">Uformell modus</string>
   <string name="morphe_dearrow_casual_mode_summary">Viser originaltittelen i stedet for DeArrow-tittelen hvis DeArrow-brukere har stemt at de liker originaltittelen</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum antall uformelle stemmer for å vise originaltittel</string>

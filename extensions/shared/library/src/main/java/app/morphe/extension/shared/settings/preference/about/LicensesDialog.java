@@ -15,8 +15,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Lists the software bundled with the patches or downloaded by them. Picking one opens its notices in
- * {@link LicenseTextDialog}, which is full screen because the texts run to hundreds of lines.
+ * Lists the software bundled with the patches or downloaded by them. Picking one opens its notices
+ * full screen, because the texts run to hundreds of lines.
  */
 class LicensesDialog extends AboutWebViewDialog {
 
@@ -51,7 +51,7 @@ class LicensesDialog extends AboutWebViewDialog {
     private static final String LICENSE_ROUTE_PREFIX = "https://license/";
 
     LicensesDialog(@NonNull Context context) {
-        super(context, buildListHtml(context));
+        super(context, buildListHtml(context), false);
     }
 
     @Override
@@ -99,6 +99,23 @@ class LicensesDialog extends AboutWebViewDialog {
         return null;
     }
 
+    private static String buildLicenseHtml(Context context, List<LicenseContent> content) {
+        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart(context));
+
+        // The notices are pre-formatted English whose alignment only holds left to right, so they
+        // stay unmirrored even when the surrounding app language reads the other way.
+        html.append("<div class=\"license-body\" dir=\"ltr\">");
+        for (LicenseContent item : content) {
+            html.append("<h2>").append(AboutDialogStyle.escapeHtml(item.title())).append("</h2>");
+            // Urls are turned into links, so the addresses named inside a license can be opened.
+            html.append("<pre>").append(AboutDialogStyle.escapeHtml(item.content())
+                    .replaceAll("(https?://[^\\s<>\"]+)", "<a href='$1'>$1</a>")).append("</pre>");
+        }
+        html.append("</div>").append(AboutDialogStyle.DOCUMENT_END);
+
+        return html.toString();
+    }
+
     /**
      * Opens the rows in a license dialog on top of this one, and leaves every other link to the
      * shared handling that sends it to a browser.
@@ -115,7 +132,8 @@ class LicensesDialog extends AboutWebViewDialog {
             if (url.startsWith(LICENSE_ROUTE_PREFIX)) {
                 License license = licenseForRoute(url);
                 if (license != null) {
-                    new LicenseTextDialog(context, license.staticContent()).show();
+                    // The notices of the dependency, full screen because the texts run to hundreds of lines.
+                    new AboutWebViewDialog(context, buildLicenseHtml(context, license.staticContent()), true).show();
                     return true;
                 }
             }

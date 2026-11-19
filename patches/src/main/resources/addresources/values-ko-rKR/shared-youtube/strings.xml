@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">내보내기 폴더 \'%s\'를 찾을 수 없습니다</string>
   <string name="morphe_export_download_flyout_title">기기로 내보내기</string>
   <string name="morphe_export_download_canceled">내보내기를 취소하였습니다</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">사용자 정의</string>
   <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
@@ -265,9 +266,6 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
   <string name="morphe_video_quality_default_mobile_title">모바일 네트워크 이용 시 기본 동영상 화질</string>
   <string name="morphe_remember_video_quality_toast_mobile">모바일 네트워크 이용 시 기본 동영상 화질 값을 %s 로 변경하였습니다</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi 이용 시 기본 동영상 화질 값을 %s 로 변경하였습니다</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">공유 시트 변경하기</string>
-  <string name="morphe_open_system_share_sheet_summary">콘텐츠를 공유할 경우에 앱 기본 공유 시트 대신 시스템 공유 시트를 실행합니다</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho 로깅</string>
   <string name="morphe_debug_litho_entry_disabled">사용 안함</string>
@@ -379,4 +377,8 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">클라이언트 비율 제한이 발생하지 않았습니다</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">클라이언트 비율 제한이 %s 번 발생하였습니다</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s 밀리초</string>
+  <string name="morphe_navigation_bar_screen_title">하단바</string>
+  <string name="morphe_navigation_bar_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
+  <string name="morphe_toolbar_screen_title">툴바</string>
+  <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 설정할 수 있습니다</string>
 </resources>

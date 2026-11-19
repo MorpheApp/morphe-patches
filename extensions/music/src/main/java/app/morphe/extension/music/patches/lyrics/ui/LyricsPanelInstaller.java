@@ -179,17 +179,22 @@ public final class LyricsPanelInstaller {
                 panelView.applyTextSize();
                 panelView.applyLineScale();
             } else if (formatting || Settings.LYRICS_FORCE_CENTER.key.equals(key)
+                    || Settings.LYRICS_DUET_OPPOSITE_SIDE.key.equals(key)
                     || Settings.LYRICS_SWAP_TRANS_ROMA.key.equals(key)
                     || Settings.LYRICS_TAP_TO_SEEK.key.equals(key)) {
                 // These are read while the line is laid out, so the lines need rebuilding.
                 panelView.applyLyricLayoutSettings();
             } else if (Settings.LYRICS_WORD_SYNC.key.equals(key)) {
                 panelView.applyWordSyncSetting();
-            } else if (Settings.LYRICS_SPRING_SCROLL.key.equals(key)) {
+            } else if (Settings.LYRICS_WORD_SMOOTH_SWEEP.key.equals(key)) {
+                panelView.applyWordAnimationSettings();
+            } else if (Settings.LYRICS_SPRING_SCROLL.key.equals(key)
+                    || Settings.LYRICS_RELAX_SCROLL.key.equals(key)) {
                 panelView.applySpringScrollSetting();
             } else if (Settings.LYRICS_GAP_DOTS.key.equals(key)) {
                 panelView.applyGapDotsSetting();
-            } else if (Settings.LYRICS_FOCUS_SPOTLIGHT.key.equals(key)) {
+            } else if (Settings.LYRICS_FOCUS_SPOTLIGHT.key.equals(key)
+                    || Settings.LYRICS_BLUR_INACTIVE.key.equals(key)) {
                 panelView.applyFocusSpotlightSetting();
             } else if (Settings.LYRICS_HIDE_INFO.key.equals(key)) {
                 panelView.applyHideInfo();

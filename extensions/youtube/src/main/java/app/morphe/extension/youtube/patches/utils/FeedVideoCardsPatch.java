@@ -39,6 +39,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.WeakHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -310,6 +312,7 @@ public final class FeedVideoCardsPatch {
      * @return If the video is live, such as of a card that enters the list, which is not known by its texts yet.
      */
     public static boolean isLiveVideo(String videoId) {
+        awaitElementAnalyses();
         synchronized (liveVideoIds) {
             return liveVideoIds.containsKey(videoId);
         }
@@ -382,6 +385,9 @@ public final class FeedVideoCardsPatch {
     public static boolean emlTextLacks(byte[] bytes, String search) {
         String element = getElementText(bytes);
         int index = element.indexOf(".eml");
+        // The first search text from the start of the current text. The texts come one after another,
+        // so it's searched again only once a text starts after it.
+        int found = Integer.MIN_VALUE;
         while (index >= 0) {
             int start = index;
             while (start > 0 && element.charAt(start - 1) >= 0x20 && element.charAt(start - 1) <= 0x7E) {
@@ -391,8 +397,14 @@ public final class FeedVideoCardsPatch {
             while (end < element.length() && element.charAt(end) >= 0x20 && element.charAt(end) <= 0x7E) {
                 end++;
             }
-            final int found = element.indexOf(search, start);
-            if (found >= 0 && found + search.length() <= end) {
+            if (found < start) {
+                found = element.indexOf(search, start);
+                if (found < 0) {
+                    // Not in the rest of the element.
+                    return true;
+                }
+            }
+            if (found + search.length() <= end) {
                 return false;
             }
             index = element.indexOf(".eml", end);
@@ -425,10 +437,72 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
+     * The same as {@link Utils#containsAny(CharSequence, CharSequence...)}, for the string of the bytes
+     * of an element, see {@link #getElementText(byte[])}. The element hooks search every element on the
+     * main thread while a list loads, and the string search is much faster than a loop over the characters
+     * of a char sequence, as most elements include none of the texts and are searched to the end.
+     * <p>
+     * Texts with the same end, such as the templates that end with ".eml", are found by searching the element
+     * once for the end, and each text is then compared where the end is found.
+     *
+     * @return If the text includes any text that is not empty.
+     */
+    public static boolean containsAny(String elementText, String[] texts) {
+        // The end of the texts that are not empty, which every text found in the element ends with.
+        String end = null;
+        for (String text : texts) {
+            if (text.isEmpty()) {
+                continue;
+            }
+            if (end == null) {
+                end = text;
+                continue;
+            }
+            int length = 0;
+            final int maxLength = Math.min(end.length(), text.length());
+            while (length < maxLength
+                    && end.charAt(end.length() - 1 - length) == text.charAt(text.length() - 1 - length)) {
+                length++;
+            }
+            end = end.substring(end.length() - length);
+        }
+        if (end == null) {
+            return false;
+        }
+        if (end.isEmpty()) {
+            for (String text : texts) {
+                if (!text.isEmpty() && elementText.contains(text)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        for (int index = elementText.indexOf(end); index >= 0; index = elementText.indexOf(end, index + 1)) {
+            final int textEnd = index + end.length();
+            for (String text : texts) {
+                final int start = textEnd - text.length();
+                if (!text.isEmpty() && start >= 0 && elementText.startsWith(text, start)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * @return The text as it's matched between an element and a card.
      */
     private static String normalizeText(CharSequence text) {
-        return FORMAT_CHARACTERS_PATTERN.matcher(text).replaceAll("").trim();
+        // Most texts have no format characters, and the texts of the elements are normalized
+        // on the main thread while a list loads, so the pattern is used only for the texts that can have them.
+        // Characters outside the BMP are left to the pattern.
+        for (int i = 0, length = text.length(); i < length; i++) {
+            final int type = Character.getType(text.charAt(i));
+            if (type == Character.FORMAT || type == Character.SURROGATE) {
+                return FORMAT_CHARACTERS_PATTERN.matcher(text).replaceAll("").trim();
+            }
+        }
+        return text.toString().trim();
     }
 
     private static boolean isVideoText(String text) {
@@ -440,6 +514,66 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
+     * Analyses of the elements of videos, and the texts added for videos, that did not run yet,
+     * in the order they were added. The elements are parsed on the main thread while a list loads,
+     * so they are analyzed on another thread, see {@link #awaitElementAnalyses()}.
+     */
+    @GuardedBy("itself")
+    private static final ArrayDeque<Runnable> pendingAnalyses = new ArrayDeque<>();
+    /** Number of analyses added, changed with the lock of {@link #pendingAnalyses}. */
+    private static volatile long addedAnalyses;
+    /** Number of analyses that ran, changed with {@link #analysisLock}. */
+    private static volatile long finishedAnalyses;
+    /** Held while an analysis runs, so the analyses run one at a time in the order they were added. */
+    private static final Object analysisLock = new Object();
+    private static final ExecutorService analysisExecutor = Executors.newSingleThreadExecutor(runnable -> {
+        Thread thread = new Thread(runnable, "morphe-feed-elements");
+        thread.setDaemon(true);
+        return thread;
+    });
+
+    private static void addAnalysis(Runnable analysis) {
+        synchronized (pendingAnalyses) {
+            pendingAnalyses.add(analysis);
+            addedAnalyses++;
+        }
+        analysisExecutor.execute(FeedVideoCardsPatch::runNextAnalysis);
+    }
+
+    private static void runNextAnalysis() {
+        synchronized (analysisLock) {
+            Runnable analysis;
+            synchronized (pendingAnalyses) {
+                analysis = pendingAnalyses.poll();
+            }
+            if (analysis == null) {
+                // Run already by a thread that reads what the analyses find.
+                return;
+            }
+            try {
+                analysis.run();
+            } finally {
+                finishedAnalyses++;
+            }
+        }
+    }
+
+    /**
+     * Runs the analyses that were added before and did not run yet, on the current thread if they are not running.
+     * Called before what the analyses find is read, so it's read as if each element was analyzed when it was parsed.
+     */
+    public static void awaitElementAnalyses() {
+        if (Thread.holdsLock(analysisLock)) {
+            // Read by an analysis, which finds what the analyses before it found.
+            return;
+        }
+        final long added = addedAnalyses;
+        while (finishedAnalyses < added) {
+            runNextAnalysis();
+        }
+    }
+
+    /**
      * Injection point.
      * <p>
      * Called when an element is parsed. The element is not changed.
@@ -448,10 +582,16 @@ public final class FeedVideoCardsPatch {
         if (!VIDEO_CARDS || bytes == null || !contains(bytes, THUMBNAIL_PATH)) {
             return bytes;
         }
+        // The bytes are the buffer of the element, which is never changed.
+        addAnalysis(() -> analyzeElement(bytes));
+        return bytes;
+    }
+
+    private static void analyzeElement(byte[] bytes) {
         try {
             List<ProtoNode> root = ProtoNode.parse(bytes);
             if (root == null) {
-                return bytes;
+                return;
             }
             List<ProtoNode> textNodes = ProtoNode.textNodes(root);
 
@@ -472,7 +612,7 @@ public final class FeedVideoCardsPatch {
                 }
             }
             if (thumbnailCounts.isEmpty()) {
-                return bytes;
+                return;
             }
             // Video id -> its texts.
             Map<String, List<ProtoNode>> videoTextNodes = new LinkedHashMap<>();
@@ -550,7 +690,10 @@ public final class FeedVideoCardsPatch {
                 final List<ProtoNode> videoNodes = entry.getValue();
                 boolean live = false;
                 for (ProtoNode node : videoNodes) {
-                    if (LIVE_ICON_PATTERN.matcher(node.getText()).matches()) {
+                    String text = node.getText();
+                    // Every text of the video is checked, so the pattern is used only for the texts that can match.
+                    if (text.startsWith("yt_") && text.contains("_live_")
+                            && LIVE_ICON_PATTERN.matcher(text).matches()) {
                         live = true;
                         break;
                     }
@@ -606,7 +749,6 @@ public final class FeedVideoCardsPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "onElementLoaded failure", ex);
         }
-        return bytes;
     }
 
     /**
@@ -622,9 +764,12 @@ public final class FeedVideoCardsPatch {
         if (!isVideoText(normalized)) {
             return;
         }
-        synchronized (textVideoIds) {
-            putVideoText(textVideoIds, normalized, videoId);
-        }
+        // Added after the texts of the elements that were parsed before, as they replace each other.
+        addAnalysis(() -> {
+            synchronized (textVideoIds) {
+                putVideoText(textVideoIds, normalized, videoId);
+            }
+        });
     }
 
     /**
@@ -721,12 +866,32 @@ public final class FeedVideoCardsPatch {
      * @return If the text is a duration, such as 4:05, or a badge such as the live badge.
      */
     public static boolean isVideoBadgeText(String text) {
-        return isDurationText(text)
-                || BADGE_PATTERN.matcher(text).matches();
+        if (isDurationText(text)) {
+            return true;
+        }
+        // Every text of the elements is checked, so the pattern is used only for the texts that can match:
+        // 2 to 12 uppercase letters, which are 2 characters each outside the BMP.
+        final int length = text.length();
+        if (length < 2 || length > 24) {
+            return false;
+        }
+        final int firstType = Character.getType(text.charAt(0));
+        return (firstType == Character.UPPERCASE_LETTER || firstType == Character.SURROGATE)
+                && BADGE_PATTERN.matcher(text).matches();
     }
 
     private static boolean isDurationText(String text) {
-        return text.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(text).find();
+        final int length = text.length();
+        if (length == 0 || length > MAX_DURATION_TEXT_LENGTH) {
+            return false;
+        }
+        // A duration ends with a digit, or with a line break after it.
+        final char last = text.charAt(length - 1);
+        if (!Character.isDigit(last) && !Character.isSurrogate(last) && last != '\n' && last != '\r'
+                && last != '\u0085' && last != '\u2028' && last != '\u2029') {
+            return false;
+        }
+        return DURATION_PATTERN.matcher(text).find();
     }
 
     /**
@@ -1005,6 +1170,7 @@ public final class FeedVideoCardsPatch {
         }
 
         Map<String, Integer> scores = new HashMap<>();
+        awaitElementAnalyses();
         synchronized (textVideoIds) {
             for (String text : texts) {
                 String videoId = textVideoIds.get(text);
@@ -1071,6 +1237,7 @@ public final class FeedVideoCardsPatch {
             return null;
         }
         String text = described.getContentDescription().toString();
+        awaitElementAnalyses();
         synchronized (textVideoIds) {
             // A title can contain the delimiter too, so the longest start of the description
             // that is a text of a video is used. The element of a Short has the whole description.

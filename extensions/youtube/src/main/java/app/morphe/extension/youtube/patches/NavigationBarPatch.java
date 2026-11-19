@@ -19,8 +19,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.WindowInsets;
@@ -53,33 +57,34 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.BrowseEndpoint;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRendererAccessibilityData;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonSheetRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Buttons;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationEntrySheetEndpoint;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationMode;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesCommand;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesControlsRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesControlsRendererHolder;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRendererHolder;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationType;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarIconOnlyItemRendererBytes;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemBytes;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.RendererAccessibilityData;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Runs;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Title;
-import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
-import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.Accessibility;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.AccessibilityData;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.BrowseEndpoint;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.ButtonRenderer;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.ButtonRendererAccessibilityData;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.ButtonSheetRenderer;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.Buttons;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.CreationEntrySheetEndpoint;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.CreationMode;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.CreationModesCommand;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.CreationModesControlsRenderer;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.CreationModesControlsRendererHolder;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.CreationModesSwitcherRenderer;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.CreationModesSwitcherRendererHolder;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.NavigationType;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarIconOnlyItemRendererBytes;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemBytes;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.RendererAccessibilityData;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.Runs;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.Title;
+import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
@@ -100,6 +105,30 @@ public final class NavigationBarPatch {
     };
 
     private static final boolean SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+
+    public static final class HideCreateButtonAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return !Settings.HIDE_NAVIGATION_BAR.get() && !Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.HIDE_NAVIGATION_BAR, Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON);
+        }
+    }
+
+    public static final class HideNotificationsButtonAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return !Settings.HIDE_NAVIGATION_BAR.get() && Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.HIDE_NAVIGATION_BAR, Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON);
+        }
+    }
 
     public enum NavigationBarStyle {
         /**
@@ -203,13 +232,35 @@ public final class NavigationBarPatch {
         }
 
         if (SHOW_SETTINGS_BUTTON && button == NavigationBar.NavigationButton.SETTINGS) {
-            Utils.runOnMainThread(() -> tabView.setOnClickListener(v -> {
-                if (SHOW_SETTINGS_BUTTON_TYPE) {
-                    openMorpheSettings(v);
-                } else {
-                    openYouTubeSettings(v);
-                }
-            }));
+            settingsTabRef = new WeakReference<>(tabView);
+            Utils.runOnMainThread(() -> {
+                tabView.setOnClickListener(v -> {
+                    // The tap that ends a long press is not a click.
+                    if (settingsTabLongPressed) {
+                        settingsTabLongPressed = false;
+                        return;
+                    }
+                    if (SHOW_SETTINGS_BUTTON_TYPE) {
+                        openMorpheSettings(v);
+                    } else {
+                        openYouTubeSettings(v);
+                    }
+                });
+                tabView.setOnLongClickListener(v -> {
+                    if (settingsTabTouched) {
+                        // The long press of the navigation bar and of the view itself
+                        // can both be called for the same touch.
+                        if (settingsTabLongPressed) return true;
+                        settingsTabLongPressed = true;
+                    }
+                    if (SHOW_SETTINGS_BUTTON_TYPE) {
+                        openYouTubeSettings(v);
+                    } else {
+                        openMorpheSettings(v);
+                    }
+                    return true;
+                });
+            });
             return;
         }
 
@@ -702,8 +753,16 @@ public final class NavigationBarPatch {
                     if (translucentNavigationBarForced && navigationBar instanceof PivotBarAccess access) {
                         final int room = systemButtonsRoom;
                         view.post(() -> {
+                            final int slimStatusBarRoom = setSlimStatusBarRoom(navigationBar, room);
+                            // Without room for the system navigation buttons, such as with the gesture handle
+                            // hidden, no room is moved. The room the app gives the bar is then kept as it is,
+                            // or the floating room of the glass navigation bar would be taken as room the app
+                            // added to the height, and the bar would lose it for as long as the app runs
+                            // (https://github.com/MorpheApp/morphe-patches/issues/4907).
+                            if (room <= 0) return;
+
                             final int navigationBarRoom = YouTubeGlassNavigationBar.getFloatingRoom(
-                                    navigationBar, setSlimStatusBarRoom(navigationBar, room));
+                                    navigationBar, slimStatusBarRoom);
                             access.patch_setSystemButtonsRoom(navigationBarRoom);
                             YouTubeGlassNavigationBar.setAppRoom(navigationBarRoom);
                             navigationBar.setPadding(navigationBar.getPaddingLeft(), navigationBar.getPaddingTop(),
@@ -889,6 +948,107 @@ public final class NavigationBarPatch {
 
     public static final String SETTINGS_PIVOT_IDENTIFIER = "morphe_settings";
     private static Object pivotBarSettingsRenderer = null;
+
+    private static volatile WeakReference<View> settingsTabRef = new WeakReference<>(null);
+
+    /**
+     * If a touch of the navigation bar started on the Settings button and has not ended.
+     * Always accessed from the main thread.
+     */
+    private static boolean settingsTabTouched;
+
+    /**
+     * If the touch of the Settings button is a long press, so the tap it ends with does not click.
+     * Always accessed from the main thread.
+     */
+    private static boolean settingsTabLongPressed;
+
+    private static float settingsTabTouchX;
+    private static float settingsTabTouchY;
+
+    @Nullable
+    private static Handler settingsTabHandler;
+
+    private static final Runnable settingsTabLongPress = () -> {
+        View tab = settingsTabRef.get();
+        // The long press of the navigation bar can already be called, if its feature flag is on.
+        if (tab != null && settingsTabTouched && !settingsTabLongPressed && tab.isShown()) {
+            tab.performLongClick();
+        }
+    };
+
+    /**
+     * Injection point.
+     * <p>
+     * The navigation bar handles the touches of its buttons itself, with a gesture detector, so the buttons
+     * do not get the touches and their own long press is never called. The gesture detector has long presses
+     * turned off with a feature flag, and then a long press ends as a tap. The long press of the Settings button
+     * is found here instead, and the tap it ends with is ignored by the button.
+     */
+    public static void navigationBarTouched(MotionEvent event) {
+        if (!SHOW_SETTINGS_BUTTON) return;
+
+        try {
+            switch (event.getActionMasked()) {
+                case MotionEvent.ACTION_DOWN -> {
+                    cancelSettingsTabLongPress();
+                    settingsTabLongPressed = false;
+                    View tab = settingsTabRef.get();
+                    settingsTabTouched = tab != null && isTouchInView(event, tab);
+                    if (settingsTabTouched) {
+                        settingsTabTouchX = event.getRawX();
+                        settingsTabTouchY = event.getRawY();
+                        if (settingsTabHandler == null) {
+                            settingsTabHandler = new Handler(Looper.getMainLooper());
+                        }
+                        settingsTabHandler.postDelayed(settingsTabLongPress, ViewConfiguration.getLongPressTimeout());
+                    }
+                }
+                case MotionEvent.ACTION_MOVE -> {
+                    View tab = settingsTabRef.get();
+                    if (settingsTabTouched && tab != null) {
+                        final int touchSlop = ViewConfiguration.get(tab.getContext()).getScaledTouchSlop();
+                        if (Math.abs(event.getRawX() - settingsTabTouchX) > touchSlop
+                                || Math.abs(event.getRawY() - settingsTabTouchY) > touchSlop) {
+                            cancelSettingsTabLongPress();
+                        }
+                    }
+                }
+                case MotionEvent.ACTION_POINTER_DOWN -> cancelSettingsTabLongPress();
+                case MotionEvent.ACTION_UP -> {
+                    cancelSettingsTabLongPress();
+                    settingsTabTouched = false;
+                    // The navigation bar clicks the button right after, while handling the same touch.
+                    if (settingsTabLongPressed && settingsTabHandler != null) {
+                        settingsTabHandler.post(() -> settingsTabLongPressed = false);
+                    }
+                }
+                case MotionEvent.ACTION_CANCEL -> {
+                    cancelSettingsTabLongPress();
+                    settingsTabTouched = false;
+                    settingsTabLongPressed = false;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "navigationBarTouched failure", ex);
+        }
+    }
+
+    private static void cancelSettingsTabLongPress() {
+        if (settingsTabHandler != null) {
+            settingsTabHandler.removeCallbacks(settingsTabLongPress);
+        }
+    }
+
+    private static boolean isTouchInView(MotionEvent event, View view) {
+        if (!view.isShown()) return false;
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        final float x = event.getRawX();
+        final float y = event.getRawY();
+        return x >= location[0] && x < location[0] + view.getWidth()
+                && y >= location[1] && y < location[1] + view.getHeight();
+    }
 
     private static final boolean SHOW_WATCH_LATER_BUTTON = Settings.SHOW_WATCH_LATER_BUTTON.get();
     public static final String WATCH_LATER_PIVOT_IDENTIFIER = "morphe_watch_later";

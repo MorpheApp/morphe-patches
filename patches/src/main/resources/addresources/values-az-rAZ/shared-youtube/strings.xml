@@ -78,6 +78,7 @@ Paket adının düzgün olduğunu və tətbiqin quraşdırıldığını yoxla"</
   <string name="morphe_export_download_folder_missing">%s ixrac qovluğu tapılmadı</string>
   <string name="morphe_export_download_flyout_title">Cihaza köçür</string>
   <string name="morphe_export_download_canceled">İxrac ləğv edildi</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Fərdi</string>
   <string name="morphe_custom_branding_icon_title">Tətbiq simvolu</string>
@@ -265,9 +266,6 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_video_quality_default_mobile_title">Mobil şəbəkədə ilkin video keyfiyyəti</string>
   <string name="morphe_remember_video_quality_toast_mobile">İlkin mobil keyfiyyət %s olaraq dəyişdirildi</string>
   <string name="morphe_remember_video_quality_toast_wifi">İlkin Wi-Fi keyfiyyəti %s olaraq dəyişdirildi</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım səhifəsin aç</string>
-  <string name="morphe_open_system_share_sheet_summary">Məzmun paylaşanda tətbiqdaxili menyu əvəzinə sistem paylaşım cildini açır</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho qeydəalma</string>
   <string name="morphe_debug_litho_entry_disabled">Qapalıdı</string>
@@ -379,4 +377,8 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Heç bir qəbuledici sürət limiti olmadı</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Qəbuledici sürət limiti %s dəfə baş verdi</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisaniyə</string>
+  <string name="morphe_navigation_bar_screen_title">Fəaliyyət zolağı</string>
+  <string name="morphe_navigation_bar_screen_summary">Aşağı fəaliyyət zolağında hansı düymələr görünür seç</string>
+  <string name="morphe_toolbar_screen_title">Alət cərgəsi</string>
+  <string name="morphe_toolbar_screen_summary">Alət cərgəsində hansı elementlər görünür seç</string>
 </resources>

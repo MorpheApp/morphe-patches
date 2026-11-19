@@ -76,7 +76,7 @@ public final class LocalRomanizer {
             script = Script.JAPANESE;
         }
         if (script == null || script == Script.OTHER) return null;
-        final String reading = readAs(syllable, script, RimeDictStore.isActive(), line).text().trim();
+        final String reading = readAs(syllable, script, RimeDictionaryStore.isActive(), line).text().trim();
         return reading.isEmpty() || reading.equals(syllable) ? null : reading;
     }
 
@@ -118,7 +118,7 @@ public final class LocalRomanizer {
             // Kana is what marks a line Japanese; a word of kanji alone says only Han, and would
             // then be looked up in the wrong dictionary.
             final Script script = ScriptDetector.detect(line.text());
-            List<Word> read = exactReadings(line.words(), script, RimeDictStore.isActive(),
+            List<Word> read = exactReadings(line.words(), script, RimeDictionaryStore.isActive(),
                     line.text());
             if (read == null) {
                 read = splitReading(line, wholeLine.get(i).text());
@@ -434,6 +434,25 @@ public final class LocalRomanizer {
         final int T = tokens.length;
         final int M = out.length;
 
+        final String[] normTokens = new String[T];
+        for (int t = 0; t < T; t++) {
+            normTokens[t] = normalizeMatchToken(reading, tokens[t][0], tokens[t][1]);
+        }
+        final String[] normGuides = new String[M];
+        final boolean[] emptyGuides = new boolean[M];
+        for (int i = 0; i < M; i++) {
+            final String guide = guides != null && i < guides.size() ? guides.get(i) : null;
+            if (guide == null || guide.trim().isEmpty()) {
+                emptyGuides[i] = true;
+                normGuides[i] = "";
+            } else {
+                emptyGuides[i] = false;
+                normGuides[i] = normalizeMatchToken(guide, 0, guide.length());
+            }
+        }
+        final StringBuilder matchBuf = new StringBuilder(32);
+        final int[][] levScratch = new int[2][64];
+
         // An empty slot costs more than doubling up tokens, so a short reading spreads before it
         // piles up: "bān-sū jû-ì" over four syllables keeps both words rather than joining them.
         final double emptySlotCost = 4.0;
@@ -445,12 +464,12 @@ public final class LocalRomanizer {
         }
         dp[0][0] = 0.0;
         for (int i = 1; i <= M; i++) {
-            final String guide = guides != null && i - 1 < guides.size()
-                    ? guides.get(i - 1) : null;
+            final boolean emptyGuide = emptyGuides[i - 1];
+            final String normGuide = normGuides[i - 1];
+            final double emptyCost = emptyGuide ? 0.0 : tokenMatchCostNormalized("", normGuide, levScratch);
             for (int t = 0; t <= T; t++) {
                 if (dp[i - 1][t] < Double.MAX_VALUE * 0.5) {
-                    final double cost = dp[i - 1][t] + emptySlotCost
-                            + tokenMatchCost("", guide);
+                    final double cost = dp[i - 1][t] + emptySlotCost + emptyCost;
                     if (cost < dp[i][t]) {
                         dp[i][t] = cost;
                         path[i][t] = t;
@@ -460,9 +479,19 @@ public final class LocalRomanizer {
                     if (dp[i - 1][k] >= Double.MAX_VALUE * 0.5) {
                         continue;
                     }
-                    String piece = joinTokens(reading, tokens, k, t);
-                    double cost = dp[i - 1][k] + tokenMatchCost(piece, guide)
-                            + (t - k - 1) * 0.5;
+                    final double matchCost;
+                    if (emptyGuide) {
+                        matchCost = 0.0;
+                    } else if (t - k == 1) {
+                        matchCost = tokenMatchCostNormalized(normTokens[k], normGuide, levScratch);
+                    } else {
+                        matchBuf.setLength(0);
+                        for (int idx = k; idx < t; idx++) {
+                            matchBuf.append(normTokens[idx]);
+                        }
+                        matchCost = tokenMatchCostNormalized(matchBuf, normGuide, levScratch);
+                    }
+                    double cost = dp[i - 1][k] + matchCost + (t - k - 1) * 0.5;
                     if (cost < dp[i][t]) {
                         dp[i][t] = cost;
                         path[i][t] = k;
@@ -522,28 +551,55 @@ public final class LocalRomanizer {
         return false;
     }
 
-    private static double tokenMatchCost(String piece, @Nullable String guide) {
-        // No guide: any slot matches equally; empty cost lets DP spread freely.
-        if (guide == null || guide.trim().isEmpty()) {
-            return 0.0;
+    /** {@return the text lowercased without spaces, hyphens and apostrophes, for matching} */
+    static String normalizeMatchToken(@Nullable String text, int start, int end) {
+        if (text == null || start >= end) {
+            return "";
         }
-        String a = piece.toLowerCase(Locale.ROOT).replaceAll("[\\s\\-']", "");
-        String b = guide.toLowerCase(Locale.ROOT).replaceAll("[\\s\\-']", "");
-        return levenshtein(a, b) + Math.abs(a.length() - b.length()) * 0.3;
+        StringBuilder sb = new StringBuilder(end - start);
+        for (int i = start; i < end; i++) {
+            final char c = text.charAt(i);
+            if (c != '-' && c != '\'' && !Character.isWhitespace(c)) {
+                sb.append(Character.toLowerCase(c));
+            }
+        }
+        return sb.toString();
     }
 
-    private static int levenshtein(String s1, String s2) {
+    private static double tokenMatchCostNormalized(
+            CharSequence a, String b, int[][] buffers) {
+        final int la = a.length();
+        final int lb = b.length();
+        final int dist;
+        if (la == 0) {
+            dist = lb;
+        } else if (lb == 0) {
+            dist = la;
+        } else {
+            dist = levenshtein(a, b, buffers);
+        }
+        return dist + Math.abs(la - lb) * 0.3;
+    }
+
+    private static int levenshtein(CharSequence s1, CharSequence s2, int[][] buffers) {
+        final int m = s1.length();
         final int n = s2.length();
-        int[] prev = new int[n + 1];
-        int[] curr = new int[n + 1];
+        if (buffers[0].length <= n) {
+            buffers[0] = new int[n + 1];
+            buffers[1] = new int[n + 1];
+        }
+        int[] prev = buffers[0];
+        int[] curr = buffers[1];
         for (int j = 0; j <= n; j++) {
             prev[j] = j;
         }
-        for (int i = 1; i <= s1.length(); i++) {
+        for (int i = 1; i <= m; i++) {
+            final char c1 = s1.charAt(i - 1);
             curr[0] = i;
             for (int j = 1; j <= n; j++) {
+                final int cost = (c1 == s2.charAt(j - 1)) ? 0 : 1;
                 curr[j] = Math.min(Math.min(curr[j - 1] + 1, prev[j] + 1),
-                        prev[j - 1] + (s1.charAt(i - 1) == s2.charAt(j - 1) ? 0 : 1));
+                        prev[j - 1] + cost);
             }
             int[] swap = prev;
             prev = curr;
@@ -618,18 +674,18 @@ public final class LocalRomanizer {
         return switch (script) {
             case HAN -> {
                 if (rime) {
-                    yield RimeDictStore.isReady()
+                    yield RimeDictionaryStore.isReady()
                             ? new Read(RimeRomanizer.romanize(text),
-                            "UniDict, " + RimeDictStore.dictionaryName())
+                            "UniDict, " + RimeDictionaryStore.dictionaryName())
                             : new Read(text, null);
                 }
-                yield PinyinDictStore.isReady()
+                yield PinyinDictionaryStore.isReady()
                         ? new Read(PinyinRomanizer.romanize(text), PINYIN)
                         : new Read(text, null);
             }
             case JAPANESE ->
                 // Kana read by rule are not the dictionary's work, so nothing is credited.
-                    new Read(japanese(text), JapaneseDictStore.isReady() ? JAPANESE : null);
+                    new Read(japanese(text), JapaneseDictionaryStore.isReady() ? JAPANESE : null);
             case KOREAN -> new Read(HangulRomanizer.romanize(text,
                     line != null ? line : text), RULE);
             case GREEK -> new Read(transliterate(text, "greek"), RULE);
@@ -673,7 +729,7 @@ public final class LocalRomanizer {
 
     /** Kana by rule, everything else out of the dictionary. */
     private static String japanese(String line) {
-        WordReadingTable table = JapaneseDictStore.table();
+        WordReadingTable table = JapaneseDictionaryStore.table();
         StringBuilder out = new StringBuilder(line.length() * 2);
         int i = 0;
 

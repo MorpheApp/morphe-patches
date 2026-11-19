@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Δεν βρέθηκε ο φάκελος εξαγωγής %s</string>
   <string name="morphe_export_download_flyout_title">Εξαγωγή στη συσκευή</string>
   <string name="morphe_export_download_canceled">Η εξαγωγή ακυρώθηκε</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Προσαρμοσμένο</string>
   <string name="morphe_custom_branding_icon_title">Εικονίδιο εφαρμογής</string>
@@ -265,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Προεπιλεγμένη ποιότητα βίντεο σε δίκτυο κινητής τηλεφωνίας</string>
   <string name="morphe_remember_video_quality_toast_mobile">Η προεπιλεγμένη ποιότητα κινητής τηλεφωνίας άλλαξε σε: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Η προεπιλεγμένη ποιότητα Wi-Fi άλλαξε σε: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Άνοιγμα φύλλου κοινής χρήσης συστήματος</string>
-  <string name="morphe_open_system_share_sheet_summary">Ανοίγει το φύλλο κοινής χρήσης του συστήματος αντί για αυτό της εφαρμογής κατά την κοινή χρήση περιεχομένου</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Καταγραφή Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Απενεργοποιημένο</string>
@@ -379,4 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Δεν έχουν συναντηθεί όρια ρυθμού πελάτη</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Συναντήθηκε όριο ρυθμού πελάτη %s φορές</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s χιλιοστά δευτερολέπτου</string>
+  <string name="morphe_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
+  <string name="morphe_navigation_bar_screen_summary">Επιλέξτε ποια κουμπιά εμφανίζονται στην κάτω γραμμή πλοήγησης</string>
+  <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
+  <string name="morphe_toolbar_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στη γραμμή εργαλείων</string>
 </resources>

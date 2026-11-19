@@ -199,7 +199,17 @@ public final class CustomFontPatch {
             }
 
             baseTypeface = typeface;
-            replaceSystemTypefaces();
+            // Most text uses the platform default typefaces, and not the fonts of the app.
+            // The default typefaces are not public API, so each one is replaced on its own,
+            // and any that cannot be replaced keeps the system font.
+            Typeface regular = getTypeface(DEFAULT_WEIGHT, false);
+            Typeface bold = getTypeface(BOLD_WEIGHT, false);
+
+            replaceSystemFontMap();
+            replaceDefaultStyles();
+            replaceStaticField("DEFAULT", regular);
+            replaceStaticField("DEFAULT_BOLD", bold);
+            replaceStaticField("SANS_SERIF", regular);
         } catch (Exception ex) {
             Logger.printException(() -> "applyCustomFont failure", ex);
         }
@@ -213,22 +223,6 @@ public final class CustomFontPatch {
         }
 
         Utils.showToastLong(str("morphe_custom_font_failed_to_load"));
-    }
-
-    /**
-     * Most text uses the platform default typefaces, and not the fonts of the app.
-     * The default typefaces are not public API, so each one is replaced on its own,
-     * and any that cannot be replaced keeps the system font.
-     */
-    private static void replaceSystemTypefaces() {
-        Typeface regular = getTypeface(DEFAULT_WEIGHT, false);
-        Typeface bold = getTypeface(BOLD_WEIGHT, false);
-
-        replaceSystemFontMap();
-        replaceDefaultStyles();
-        replaceStaticField("DEFAULT", regular);
-        replaceStaticField("DEFAULT_BOLD", bold);
-        replaceStaticField("SANS_SERIF", regular);
     }
 
     @SuppressLint("DiscouragedPrivateApi")

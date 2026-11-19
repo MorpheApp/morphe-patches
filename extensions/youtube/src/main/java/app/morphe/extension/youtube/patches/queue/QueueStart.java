@@ -13,7 +13,7 @@ import com.google.protobuf.MessageLite;
 import java.util.HashMap;
 import java.util.Map;
 
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
 import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** One immutable start or restore request, separate from an attached native queue. */

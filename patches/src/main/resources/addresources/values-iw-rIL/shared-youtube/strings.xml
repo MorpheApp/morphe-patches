@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">לא ניתן למצוא את תיקיית הייצוא %s</string>
   <string name="morphe_export_download_flyout_title">ייצוא למכשיר</string>
   <string name="morphe_export_download_canceled">הייצוא בוטל</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">מותאם אישית</string>
   <string name="morphe_custom_branding_icon_title">אייקון האפליקציה</string>
@@ -265,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">איכות סרטון ברירת מחדל ברשת סלולרית</string>
   <string name="morphe_remember_video_quality_toast_mobile">איכות סלולרית ברירת מחדל שונתה ל: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">איכות Wi-Fi ברירת מחדל שונתה ל: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">פתח את גיליון השיתוף של המערכת</string>
-  <string name="morphe_open_system_share_sheet_summary">פותח את גליון השיתוף של המערכת במקום את גליון השיתוף שבתוך האפליקציה בעת שיתוף תוכן</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">רישום Litho</string>
   <string name="morphe_debug_litho_entry_disabled">מושבת</string>
@@ -379,4 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">לא נתקלו במגבלות קצב לקוח</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">מגבלת קצב לקוח נתקלה %s פעמים</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s מילישניות</string>
+  <string name="morphe_navigation_bar_screen_title">סרגל ניווט</string>
+  <string name="morphe_navigation_bar_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
+  <string name="morphe_toolbar_screen_title">סרגל כלים</string>
+  <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
 </resources>

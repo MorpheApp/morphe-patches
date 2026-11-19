@@ -69,9 +69,11 @@ public final class LyricsMatch {
     }
 
     /**
-     * The track the search asks with: the released audio's duration, the video minus its SponsorBlock
-     * segments, so candidates written against it pass the duration filter. With
-     * {@link Settings#LYRICS_SB_MATCHING} off none of that is requested or subtracted.
+     * Returns a copy of {@code track} with its duration reduced by the given SponsorBlock segments.
+     * <p>
+     * This aligns the video's runtime with the official audio release so that lyrics timed against
+     * the studio track can pass the duration filter. Returns {@code track} unchanged if
+     * {@link Settings#LYRICS_SB_MATCHING} is disabled or no valid segments are present.
      */
     static TrackInfo withEffectiveDuration(TrackInfo track,
                                            @Nullable List<SkipSegments.Seg> segs) {

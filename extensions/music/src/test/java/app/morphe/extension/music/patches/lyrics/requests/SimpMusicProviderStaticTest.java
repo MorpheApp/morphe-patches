@@ -14,17 +14,35 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 
 public class SimpMusicProviderStaticTest {
+
+    @Before
+    public void setUp() {
+        LyricsTestEnv.bootstrap();
+        LyricsRequests.setCustomMatchMode(false);
+    }
+
+    @After
+    public void tearDown() {
+        LyricsRequests.setCustomMatchMode(false);
+    }
 
     @Test
     public void sanitizeKeepsTagWordBoundarySpaces() {
@@ -546,5 +564,75 @@ public class SimpMusicProviderStaticTest {
 
         assertEquals(1500L, result.get(0).startTimeMs());
         assertEquals(LyricsLine.NO_TIME, result.get(0).endTimeMs());
+    }
+
+    // ── search ranking ──
+
+    private static JSONObject hit(String videoId, String title, String artist, long duration)
+            throws JSONException {
+        return new JSONObject()
+                .put("videoId", videoId)
+                .put("songTitle", title)
+                .put("artistName", artist)
+                .put("durationSeconds", duration);
+    }
+
+    @Test
+    public void rankSearchHitsPrefersMatchingArtist() throws JSONException {
+        JSONArray data = new JSONArray()
+                .put(hit("wrong", "Stay", "Someone Else", 200))
+                .put(hit("right", "Stay", "The Kid LAROI", 200));
+
+        List<SimpMusicProvider.SearchHit> hits = SimpMusicProvider.rankSearchHits(
+                data, new TrackInfo("Stay", "The Kid LAROI", "", 200));
+
+        assertEquals(1, hits.size());
+        assertEquals("right", hits.get(0).videoId());
+        assertEquals("The Kid LAROI", hits.get(0).artist());
+    }
+
+    @Test
+    public void rankSearchHitsKeepsOnlyTheFallbackWhenNothingPasses() throws JSONException {
+        JSONArray data = new JSONArray()
+                .put(hit("a", "Completely Different Song", "Someone Else", 200))
+                .put(hit("b", "Stay", "Another Artist", 200));
+
+        List<SimpMusicProvider.SearchHit> hits = SimpMusicProvider.rankSearchHits(
+                data, new TrackInfo("Stay", "The Kid LAROI", "", 200));
+
+        assertEquals(1, hits.size());
+        assertEquals("b", hits.get(0).videoId());
+    }
+
+    @Test
+    public void rankSearchHitsSkipsEntriesWithoutVideoId() throws JSONException {
+        JSONArray data = new JSONArray()
+                .put(new JSONObject().put("songTitle", "Stay").put("artistName", "The Kid LAROI"))
+                .put(hit("right", "Stay", "The Kid LAROI", 200));
+
+        List<SimpMusicProvider.SearchHit> hits = SimpMusicProvider.rankSearchHits(
+                data, new TrackInfo("Stay", "The Kid LAROI", "", 200));
+
+        assertEquals(1, hits.size());
+        assertEquals("right", hits.get(0).videoId());
+    }
+
+    @Test
+    public void rankSearchHitsCapsAtMaxCandidates() throws JSONException {
+        JSONArray data = new JSONArray();
+        for (int i = 0; i < 8; i++) {
+            data.put(hit("v" + i, "Stay", "The Kid LAROI", 200));
+        }
+
+        List<SimpMusicProvider.SearchHit> hits = SimpMusicProvider.rankSearchHits(
+                data, new TrackInfo("Stay", "The Kid LAROI", "", 200));
+
+        assertEquals(LyricsRequests.MAX_CANDIDATES, hits.size());
+    }
+
+    @Test
+    public void rankSearchHitsEmptyForNullData() {
+        assertTrue(SimpMusicProvider.rankSearchHits(
+                null, new TrackInfo("Stay", "The Kid LAROI", "", 200)).isEmpty());
     }
 }

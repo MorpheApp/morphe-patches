@@ -7,13 +7,13 @@
 
 package app.morphe.extension.youtube.patches.queue;
 
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.ConfirmationDialog;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.ConfirmationDialogRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.ShowConfirmationDialogEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.SwipeAction;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.SwipeButton;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.Text;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.ConfirmationDialog;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.ConfirmationDialogRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.ShowConfirmationDialogEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.SwipeAction;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.SwipeButton;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Text;
 
 /** Native Mix confirmation; each button retains the original watch command and a local capability. */
 final class QueueMixActions {

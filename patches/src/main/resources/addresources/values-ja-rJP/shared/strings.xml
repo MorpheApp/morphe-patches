@@ -74,18 +74,34 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">ファイル出力</string>
   <string name="morphe_settings_export_file_success">設定のファイル出力に成功しました</string>
   <string name="morphe_settings_export_file_failed">設定のファイル出力に失敗しました</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Morphe Patches の最新バージョン &lt;i&gt;%s&lt;/i&gt; を使用しています</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches のバージョン &lt;i&gt;%1$s&lt;/i&gt; を使用しています&lt;br&gt;&lt;br&gt;&lt;b&gt;更新が利用可能です: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;パッチを更新するには、Morphe を使ってアプリを再パッチしてください</string>
-  <string name="morphe_settings_about_links_dev_header">注意</string>
-  <string name="morphe_settings_about_links_dev_body">このバージョンはプレリリース版であり、予期しない問題が発生する可能性があります</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">パッチ数</string>
+  <string name="morphe_settings_about_version">バージョン</string>
+  <string name="morphe_settings_about_close">閉じる</string>
+  <string name="morphe_settings_about_prerelease">プレリリース</string>
+  <string name="morphe_settings_about_update_available">利用可能な更新があります: %s</string>
+  <string name="morphe_settings_about_update_hint">パッチを更新するには、Morphe を使用してこのアプリに再度パッチを適用してください</string>
   <string name="morphe_settings_about_links_header">公式リンク</string>
   <string name="morphe_settings_about_links_website">ウェブサイト</string>
   <string name="morphe_settings_about_links_donate">寄付</string>
   <string name="morphe_settings_about_links_translations">翻訳</string>
-  <string name="morphe_settings_about_links_credits">クレジット</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">最新の状態です</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">更新が利用可能です</string>
+  <string name="morphe_settings_about_contributors">貢献者</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">全期間</string>
+  <string name="morphe_settings_about_contributors_6_months">6ヶ月</string>
+  <string name="morphe_settings_about_contributors_3_months">3ヶ月</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">期間</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s 人のユーザー</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">サポーター</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective の支援者</string>
+  <string name="morphe_settings_about_supporters_become">サポーターになる</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">他 %s 件</string>
+  <string name="morphe_settings_about_people_unavailable">リストを読み込めませんでした</string>
   <string name="morphe_settings_about_contributors_current">現在の開発</string>
   <string name="morphe_settings_about_contributors_prior">過去の開発</string>
   <string name="morphe_settings_about_links_morphe">現在開発中</string>
@@ -213,6 +229,9 @@ MicroG に対するバッテリー最適化を無効にしても、バッテリ�
 • アプリが突然終了する
 • 通知が機能しない
 • バックグラウンド再生が正常に動作しない"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
+  <string name="morphe_open_system_share_sheet_summary">コンテンツを共有するときにアプリ内の共有メニューではなくシステムの共有メニューを開きます</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">対応リンクの関連付け</string>
   <string name="morphe_link_handling_summary">このアプリで対応リンクを開くように設定します</string>

@@ -74,18 +74,33 @@ Til að þýða ný tungumál eða bæta núverandi þýðingar skaltu heimsækj
   <string name="morphe_settings_export_file">Flytja út í skrá</string>
   <string name="morphe_settings_export_file_success">Stillingar fluttar út</string>
   <string name="morphe_settings_export_file_failed">Útflutning mistókst</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Þú notar nýjustu Morphe Patches útgáfuna &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Þú notar Morphe Patches útgáfu &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Uppfærsla í boði: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Til að uppfæra plástrana skaltu nota Morphe til að plástra þetta forrit aftur</string>
-  <string name="morphe_settings_about_links_dev_header">Athugaðu</string>
-  <string name="morphe_settings_about_links_dev_body">Þessi útgáfa er forútgáfa og þú gætir upplifað óvænt vandamál</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Bætur</string>
+  <string name="morphe_settings_about_version">Útgáfa</string>
+  <string name="morphe_settings_about_close">Loka</string>
+  <string name="morphe_settings_about_prerelease">Fyrir útgáfu</string>
+  <string name="morphe_settings_about_update_available">Uppfærsla tiltæk: %s</string>
+  <string name="morphe_settings_about_update_hint">Til að uppfæra bætur þínar, notaðu Morphe til að bæta þetta forrit aftur</string>
   <string name="morphe_settings_about_links_header">Opinberar tenglar</string>
   <string name="morphe_settings_about_links_website">Vefsíða</string>
   <string name="morphe_settings_about_links_donate">Styrkja</string>
   <string name="morphe_settings_about_links_translations">Þýðingar</string>
-  <string name="morphe_settings_about_links_credits">Þakkir</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Uppfært</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Uppfærsla í boði</string>
+  <string name="morphe_settings_about_contributors">Framlagarar</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Allt tímabil</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mánuðir</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mánuðir</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tímabil</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Stuðningsmenn</string>
+  <string name="morphe_settings_about_supporters_summary">Stuðningsmenn á Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Verðu stuðningsmaður</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Og %s fleiri</string>
+  <string name="morphe_settings_about_people_unavailable">Gat ekki hlaðið listanum</string>
   <string name="morphe_settings_about_contributors_current">Núverandi þróun</string>
   <string name="morphe_settings_about_contributors_prior">Fyrri þróun</string>
   <string name="morphe_settings_about_links_morphe">Virk þróun</string>
@@ -213,6 +228,9 @@ Sé rafhlöðusparnaður ekki breyttur gætir þú lent í:
 • Appið lokast óvænt
 • Tilkynningar virka ekki
 • Spilun í bakgrunni virkar ekki"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Opna deilingarvalmynd kerfisins</string>
+  <string name="morphe_open_system_share_sheet_summary">Opnar deilingarvalmynd kerfisins í stað innbyggðrar þegar efni er deilt</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Meðhöndlun app-tengla</string>
   <string name="morphe_link_handling_summary">Stilltu tengla til að opna í þessu appi</string>

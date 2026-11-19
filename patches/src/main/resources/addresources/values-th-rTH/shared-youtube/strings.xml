@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">ไม่พบโฟลเดอร์ส่งออก %s</string>
   <string name="morphe_export_download_flyout_title">ส่งออกไปยังอุปกรณ์</string>
   <string name="morphe_export_download_canceled">ยกเลิกการส่งออก</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">กำหนดเอง</string>
   <string name="morphe_custom_branding_icon_title">ไอคอนแอป</string>
@@ -265,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">คุณภาพวิดีโอเริ่มต้นบนเครือข่ายมือถือ</string>
   <string name="morphe_remember_video_quality_toast_mobile">เปลี่ยนคุณภาพมือถือเริ่มต้นเป็น: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">เปลี่ยนคุณภาพ Wi-Fi เริ่มต้นเป็น: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">เปิดแผ่นแชร์ระบบ</string>
-  <string name="morphe_open_system_share_sheet_summary">เปิดแผ่นแชร์ของระบบแทนแผ่นในแอปเมื่อแชร์เนื้อหา</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">การบันทึก Litho</string>
   <string name="morphe_debug_litho_entry_disabled">ปิดการใช้งาน</string>
@@ -379,4 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">ไม่พบข้อจำกัดอัตราของไคลเอนต์</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">พบขีดจำกัดอัตราการใช้งานของไคลเอ็นต์ %s ครั้ง</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s มิลลิวินาที</string>
+  <string name="morphe_navigation_bar_screen_title">แถบนำทาง</string>
+  <string name="morphe_navigation_bar_screen_summary">เลือกปุ่มที่จะปรากฏในแถบนำทางด้านล่าง</string>
+  <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
+  <string name="morphe_toolbar_screen_summary">เลือกส่วนประกอบที่จะปรากฏในแถบเครื่องมือ</string>
 </resources>

@@ -74,18 +74,34 @@ Hizkuntza berriak itzultzeko edo dauden itzulpenak hobetzeko, bisitatu morphe.so
   <string name="morphe_settings_export_file">Esportatu fitxategira</string>
   <string name="morphe_settings_export_file_success">⚙️ Ezarpenak ondo esportatu dira</string>
   <string name="morphe_settings_export_file_failed">Ezarpenak esportatzeak huts egin du</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Morphe Patches-en azken bertsioa erabiltzen ari zara: &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches-en &lt;i&gt;%1$s&lt;/i&gt; bertsioa erabiltzen ari zara&lt;br&gt;&lt;br&gt;&lt;b&gt;Eguneratzea eskuragarri: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Patch-ak eguneratzeko, erabili Morphe aplikazio honek berriz patchatzeko</string>
-  <string name="morphe_settings_about_links_dev_header">Oharra</string>
-  <string name="morphe_settings_about_links_dev_body">Bertsio hau aurreko argitalpena da eta arazo ustekabeak izan ditzakezu</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patchak</string>
+  <string name="morphe_settings_about_version">Bertsioa</string>
+  <string name="morphe_settings_about_close">Itxi</string>
+  <string name="morphe_settings_about_prerelease">Aurrebertsioa</string>
+  <string name="morphe_settings_about_update_available">Eguneratzea eskuragarri: %s</string>
+  <string name="morphe_settings_about_update_hint">Patchak eguneratzeko, erabili Morphe aplikazio hau berriz patchatzeko</string>
   <string name="morphe_settings_about_links_header">Esteka ofizialak</string>
   <string name="morphe_settings_about_links_website">Webgunea</string>
   <string name="morphe_settings_about_links_donate">Donatu</string>
   <string name="morphe_settings_about_links_translations">Itzulpenak</string>
-  <string name="morphe_settings_about_links_credits">Kredituak</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Eguneratuta</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Eguneratzea eskuragarri</string>
+  <string name="morphe_settings_about_contributors">Collaboradoreak</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Denbora guztia</string>
+  <string name="morphe_settings_about_contributors_6_months">6 hilabete</string>
+  <string name="morphe_settings_about_contributors_3_months">3 hilabete</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Denbora tartea</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s erabiltzaile</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Laguntzaileak</string>
+  <string name="morphe_settings_about_supporters_summary">Sostengatzaileak Open Collective-n</string>
+  <string name="morphe_settings_about_supporters_become">Bihurtu laguntzaile bat</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Eta %s gehiago</string>
+  <string name="morphe_settings_about_people_unavailable">Ezin izan da zerrenda kargatu</string>
   <string name="morphe_settings_about_contributors_current">Uneko garapena</string>
   <string name="morphe_settings_about_contributors_prior">Aurreko garapena</string>
   <string name="morphe_settings_about_links_morphe">Garapen aktiboa</string>
@@ -213,6 +229,9 @@ Bateria optimizazioak aldatzen ez badira, honako hauek gerta daitezke:
 • Aplikazioa ausaz itxi daiteke
 • Jakinarazpenek ez dute funtzionatu
 • Atzeko planoko erreprodukzioak ez du funtzionatu"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ireki sistemaren partekatze panela</string>
+  <string name="morphe_open_system_share_sheet_summary">Edukia partekatzean, aplikazioaren ordez sistemaren partekatze panela irekitzen du</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Aplikazio estekak kudeatzea</string>
   <string name="morphe_link_handling_summary">Konfiguratu aplikazio honetan irekiko diren estekak</string>

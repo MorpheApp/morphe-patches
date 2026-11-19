@@ -60,7 +60,7 @@ internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
 
 private const val EXTENSION_SETTING_ROW_INTERFACE =
-    "Lapp/morphe/extension/reddit/settings/RedditActivityHook\$ComposeSettingRow;"
+    $$"Lapp/morphe/extension/reddit/settings/RedditActivityHook$ComposeSettingRow;"
 
 internal const val SETTINGS_STYLE_EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/preference/RedditSettingsStyle;"
@@ -166,6 +166,33 @@ val settingsPatch = patch(
         if (is_2026_25_0_or_greater) {
             // The app settings use Compose since 2026.25.0. Use the same style for the Morphe settings.
             IsModernStyleFingerprint.method.returnEarly(true)
+
+            // Use the toggle colors of the app, so the Morphe toggles match the active theme.
+            // Without them, the Morphe settings use the colors of the built-in palette.
+            SettingsToggleFingerprint.matchOrNull()?.let { match ->
+                val colorsClass = match.instructionMatches.last().methodReference.definingClass
+                mutableClassDefBy(colorsClass).methods.first { method ->
+                    MethodUtil.isConstructor(method) && method.parameterTypes.size == 16
+                }.addInstructions(
+                    0,
+                    """
+                        invoke-static/range { p1 .. p16 }, $SETTINGS_STYLE_EXTENSION_CLASS->setAppToggleColors(JJJJJJJJ)V
+                    """
+                )
+            }
+
+            SettingsToggleCheckMarkFingerprint.matchOrNull()?.let { match ->
+                val index = match.instructionMatches[1].index
+                match.method.apply {
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static/range { v$register .. v${register + 1} }, $SETTINGS_STYLE_EXTENSION_CLASS->setAppCheckMarkColor(J)V
+                        """
+                    )
+                }
+            }
         }
 
         if (is_2026_30_0_or_greater) {

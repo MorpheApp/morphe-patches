@@ -78,6 +78,7 @@ Egiaztatu pakete-izena zuzena dela eta aplikazioa instalatuta dagoela"</string>
   <string name="morphe_export_download_folder_missing">Ezin izan da %s esportazio karpeta aurkitu</string>
   <string name="morphe_export_download_flyout_title">Gailura esportatu</string>
   <string name="morphe_export_download_canceled">Esportazioa bertan behera utzi da</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pertsonalizatua</string>
   <string name="morphe_custom_branding_icon_title">Aplikazioaren ikonoa</string>
@@ -265,9 +266,6 @@ Sartzeko, sakatu beheko jarraitu botoia"</string>
   <string name="morphe_video_quality_default_mobile_title">Bideo kalitate lehenetsia sare mugikorrean</string>
   <string name="morphe_remember_video_quality_toast_mobile">Lehenetsitako mugikorreko kalitatea aldatu da: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Lehenetsitako Wi-Fi kalitatea aldatu da: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Ireki sistemaren partekatze panela</string>
-  <string name="morphe_open_system_share_sheet_summary">Edukia partekatzean, aplikazioaren ordez sistemaren partekatze panela irekitzen du</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho logeatzea</string>
   <string name="morphe_debug_litho_entry_disabled">Desaktibatuta</string>
@@ -379,4 +377,8 @@ Ikusten ari zaren bideoaren IDa Return YouTube Dislike APIra bidaltzen da, eta z
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ez da bezeroaren tasa mugarik aurkitu</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Bezeroaren tasa-muga %s aldiz aurkitu da</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisegundo</string>
+  <string name="morphe_navigation_bar_screen_title">Nabigazio-barra</string>
+  <string name="morphe_navigation_bar_screen_summary">Aukeratu zein botoi agertu behar diren beheko nabigazio barran</string>
+  <string name="morphe_toolbar_screen_title">Tresna-barra</string>
+  <string name="morphe_toolbar_screen_summary">Aukeratu zein osagai agertzen diren tresna-barran</string>
 </resources>

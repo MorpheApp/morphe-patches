@@ -1,5 +1,6 @@
 package app.morphe.extension.shared.settings;
 
+import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 import app.morphe.extension.shared.patches.PatchesUpdateNoticePatch.UpdateNoticeType;
@@ -20,5 +21,8 @@ public class SharedSettings extends BaseSettings {
 
     /** If the GmsCore battery optimization dialogs should be shown. */
     public static final BooleanSetting GMS_CORE_BATTERY_OPTIMIZATION_DIALOG = new BooleanSetting("morphe_gms_core_battery_optimization_dialog", TRUE, true, "morphe_gms_core_battery_optimization_dialog_user_dialog_message");
+
+    /** Used by YouTube, YouTube Music and Reddit. */
+    public static final BooleanSetting OPEN_SYSTEM_SHARE_SHEET = new BooleanSetting("morphe_open_system_share_sheet", FALSE);
 
 }

@@ -74,18 +74,33 @@ Yangi tillarni tarjima qilish yoki mavjud tarjimalarni yaxshilash uchun morphe.s
   <string name="morphe_settings_export_file">Faylga eksport qilish</string>
   <string name="morphe_settings_export_file_success">Sozlamalar muvaffaqiyatli eksport qilindi</string>
   <string name="morphe_settings_export_file_failed">Sozlamalarni eksport qilishda xato yuz berdi</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Siz Morphe Patches-larning eng so\'nggi versiyasi &lt;i&gt;%s&lt;/i&gt;dan foydalanmoqdasiz</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Siz Morphe Patches-larning &lt;i&gt;%1$s&lt;/i&gt; versiyasidan foydalanmoqdasiz&lt;br&gt;&lt;br&gt;&lt;b&gt;Yangilanish mavjud: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Patch-laringizni yangilash uchun Morphe yordamida ushbu ilovani qayta patch qiling</string>
-  <string name="morphe_settings_about_links_dev_header">Eslatma</string>
-  <string name="morphe_settings_about_links_dev_body">Ushbu versiya pre-reliz hisoblanadi va kutilmagan muammolar yuzaga kelishi mumkin</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patchlar</string>
+  <string name="morphe_settings_about_version">Versiya</string>
+  <string name="morphe_settings_about_close">Yopish</string>
+  <string name="morphe_settings_about_prerelease">Pre-reliz</string>
+  <string name="morphe_settings_about_update_available">Yangilanish mavjud: %s</string>
+  <string name="morphe_settings_about_update_hint">Patchlaringizni yangilash uchun Morphe yordamida ushbu ilovani qayta patchlang</string>
   <string name="morphe_settings_about_links_header">Rasmiy havolalar</string>
   <string name="morphe_settings_about_links_website">Veb-sayt</string>
   <string name="morphe_settings_about_links_donate">Homiylik qilish</string>
   <string name="morphe_settings_about_links_translations">Tarjimalar</string>
-  <string name="morphe_settings_about_links_credits">Minnatdorchiliklar</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Oxirgi versiya</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Yangilanish mavjud</string>
+  <string name="morphe_settings_about_contributors">Hissa qo\'shganlar</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Barcha vaqtlar uchun</string>
+  <string name="morphe_settings_about_contributors_6_months">6 oy</string>
+  <string name="morphe_settings_about_contributors_3_months">3 oy</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Vaqt oralig\'i</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Homiylar</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective platformasidagi homiylar</string>
+  <string name="morphe_settings_about_supporters_become">Homiylikka qo\'shiling</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Va yana %s ta</string>
+  <string name="morphe_settings_about_people_unavailable">Ro\'yxatni yuklab bo\'lmadi</string>
   <string name="morphe_settings_about_contributors_current">Joriy ishlab chiqish</string>
   <string name="morphe_settings_about_contributors_prior">Avvalgi ishlab chiqish</string>
   <string name="morphe_settings_about_links_morphe">Faol ishlab chiqish</string>
@@ -213,6 +228,9 @@ Agar batareya optimallashtiruvlari o'zgartirilmasa, quyidagilar yuz berishi mumk
 • Ilova tasodifiy ravishda yopilib qolishi mumkin
 • Bildirishnomalar ishlamasligi mumkin
 • Fonda ijro etish ishlamasligi mumkin"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Tizim ulashish oynasini ochish</string>
+  <string name="morphe_open_system_share_sheet_summary">Ulashishda ilova ichidagi o\'rniga tizim ulashish varag\'ini ochadi</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Ilova havolalarini boshqarish</string>
   <string name="morphe_link_handling_summary">Havolalarni ushbu ilovada ochishni sozlash</string>

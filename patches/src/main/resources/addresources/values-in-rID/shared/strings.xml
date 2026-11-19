@@ -74,18 +74,34 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_settings_export_file">Ekspor ke berkas</string>
   <string name="morphe_settings_export_file_success">Setelan berhasil diekspor</string>
   <string name="morphe_settings_export_file_failed">Gagal mengekspor setelan</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Anda menggunakan Tambalan Morphe terbaru versi &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Anda menggunakan Tambalan Morphe versi &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Pembaruan tersedia: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Untuk memperbarui tambalan Anda, gunakan Morphe untuk menambal ulang aplikasi ini</string>
-  <string name="morphe_settings_about_links_dev_header">Catatan</string>
-  <string name="morphe_settings_about_links_dev_body">Versi ini adalah pra-rilis dan Anda mungkin mengalami masalah yang tidak terduga</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Penambalan</string>
+  <string name="morphe_settings_about_version">Versi</string>
+  <string name="morphe_settings_about_close">Tutup</string>
+  <string name="morphe_settings_about_prerelease">Pra-rilis</string>
+  <string name="morphe_settings_about_update_available">Tersedia pembaruan: %s</string>
+  <string name="morphe_settings_about_update_hint">Untuk memperbarui patch Anda, gunakan Morphe untuk melakukan patch ulang pada aplikasi ini</string>
   <string name="morphe_settings_about_links_header">Tautan resmi</string>
   <string name="morphe_settings_about_links_website">Situs Web</string>
   <string name="morphe_settings_about_links_donate">Donasi</string>
   <string name="morphe_settings_about_links_translations">Terjemahan</string>
-  <string name="morphe_settings_about_links_credits">Kredit</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Terbaru</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Pembaruan tersedia</string>
+  <string name="morphe_settings_about_contributors">Kontributor</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Sepanjang waktu</string>
+  <string name="morphe_settings_about_contributors_6_months">6 bulan</string>
+  <string name="morphe_settings_about_contributors_3_months">3 bulan</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Periode waktu</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s pengguna</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Pendukung</string>
+  <string name="morphe_settings_about_supporters_summary">Pendukung di Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Jadi pendukung</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Dan %s lainnya</string>
+  <string name="morphe_settings_about_people_unavailable">Tidak dapat memuat daftar</string>
   <string name="morphe_settings_about_contributors_current">Pengembangan saat ini</string>
   <string name="morphe_settings_about_contributors_prior">Pengembangan sebelumnya</string>
   <string name="morphe_settings_about_links_morphe">Pengembangan aktif</string>
@@ -213,6 +229,9 @@ Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
 • Aplikasi mungkin secara acak tertutup
 • Notifikasi mungkin tidak berfungsi
 • Pemutaran latar belakang mungkin tidak berfungsi"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Buka lembar berbagi sistem</string>
+  <string name="morphe_open_system_share_sheet_summary">Membuka lembar berbagi sistem alih-alih lembar berbagi dalam aplikasi saat berbagi konten</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Penanganan tautan aplikasi</string>
   <string name="morphe_link_handling_summary">Konfigurasi tautan untuk dibuka di aplikasi ini</string>

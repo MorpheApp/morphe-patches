@@ -138,6 +138,9 @@ public final class LithoFilterPatch {
         /**
          * Removes the item from the section, which lays itself out again without it.
          * The rows of the grids are laid out again too, also when the section is no longer a grid.
+         * The sections that put their lists in the order that fills the rows of the grid, such as
+         * the feed of the tablet layout, remove the list that holds only the item, and put the
+         * other lists in order again.
          *
          * @return If the section has the item.
          */
@@ -367,7 +370,8 @@ public final class LithoFilterPatch {
                         Utils.runOnMainThread(() -> {
                             // The sections group their items into the rows of some grids, such as
                             // the related videos, and lay the rows out again. Other grids, such as
-                            // the feed, have a list for each item.
+                            // the feed, have a list for each item, which some sections put in the
+                            // order that fills the rows.
                             List<ListSectionInterface> sections = new ArrayList<>();
                             synchronized (listSections) {
                                 Iterator<WeakReference<ListSectionInterface>> iterator = listSections.iterator();

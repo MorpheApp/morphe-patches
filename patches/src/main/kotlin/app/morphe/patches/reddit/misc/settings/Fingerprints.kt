@@ -13,6 +13,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -296,6 +297,41 @@ internal object IsModernStyleFingerprint : Fingerprint(
     name = "isModernStyle",
     returnType = "Z",
     parameters = listOf()
+)
+
+/**
+ * Toggle of the app settings (Compose), which creates the toggle colors from the active theme.
+ * The colors class has a constructor with 16 colors: thumb, track, border and icon
+ * of the checked, unchecked, disabled checked and disabled unchecked toggle.
+ */
+internal object SettingsToggleFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("Switch"),
+        methodCall(
+            name = "<init>",
+            parameters = List(16) { "J" },
+            returnType = "V"
+        )
+    )
+)
+
+/**
+ * Check mark icon of the app settings toggle.
+ * The icon is tinted with a color of the theme, not with the icon color of the toggle colors.
+ */
+internal object SettingsToggleCheckMarkFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I", "L", "L", "Z"),
+    filters = listOf(
+        // Color of an enabled toggle.
+        methodCall(returnType = "J", parameters = listOf()),
+        opcode(Opcode.MOVE_RESULT_WIDE, MatchAfterImmediately()),
+        checkCast("Lcom/reddit/ui/compose/icons/IconStyle;"),
+        // Icon size.
+        literal(12.0f)
+    )
 )
 
 internal object IsPrivacyPolicyReplacedFingerprint : Fingerprint(

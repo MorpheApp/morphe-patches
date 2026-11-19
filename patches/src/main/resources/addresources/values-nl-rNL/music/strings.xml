@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Externe downloader gebruiken voor menu \'Downloads\'</string>
   <string name="morphe_external_downloader_menu_summary">De optie Download in menu\'s opent je externe downloader</string>
+  <string name="morphe_download_force_4k_title">Forceer beschikbaarheid 4K-download</string>
+  <string name="morphe_download_force_4k_summary">Slaat 1440p- en 4K-downloads op, zelfs als YouTube Music besluit dat dit apparaat ze niet kan afspelen</string>
   <string name="morphe_export_download_folder_title">Downloads exporteren</string>
   <string name="morphe_export_download_folder_summary">"Exporteer in de app opgeslagen nummers en video's naar de opslag van je apparaat via het menu voor downloads in de app. Tik om de exportmap te wijzigen:
 
@@ -172,6 +174,8 @@ Exportmap: %s"</string>
   <string name="morphe_music_hide_filter_bar_title">Verberg filterbalk</string>
   <string name="morphe_music_hide_grid_shelves_title">Planken verbergen</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Horizontale planken verbergen</string>
+  <string name="morphe_music_hide_new_button_title">Verberg de knop \"Nieuw\"</string>
+  <string name="morphe_music_hide_new_button_summary">Verbergt de knop \'Nieuw\' in het tabblad Bibliotheek</string>
   <string name="morphe_music_hide_list_shelves_title">Lijstplanken verbergen</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Songtekst paneel</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Verberg de \"Delen\" knop</string>
@@ -197,6 +201,8 @@ Exportmap: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Meng tracks naadloos in elkaar over</string>
   <string name="morphe_music_crossfade_enabled_title">Crossfade inschakelen</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Om crossfade te gebruiken, wijzig de \'Standaardclient\' voor het simuleren van videostreams naar TV Simply of visionOS</string>
   <string name="morphe_music_crossfade_curve_title">Fadecurve</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Gelijke verdeling</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtiele vertraging</string>
@@ -230,7 +236,9 @@ Exportmap: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade gepauzeerd voor deze sessie</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade hervat</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videomodus is niet beschikbaar wanneer crossfade is ingeschakeld</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade staat uit bij SABR-weergave</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade werkt niet met visionOS. Wijzig de \'Standaardclient\' voor het simuleren van videostreams naar TV Simply</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade werkt niet met deze gesimuleerde streamclient</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade staat uit tijdens het casten</string>
   <string name="morphe_music_crossfade_about_how_title">Hoe het werkt</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlapt het einde van het ene nummer met het begin van het volgende, met gebruik van jouw duur en curve
@@ -247,9 +255,7 @@ Het vergrendelscherm of de melding kan tijdens de overgang kort een verouderde s
 
 Crossfade pauzeren om een muziekvideo te bekijken kan sommige video's zwart achterlaten. Crossfade pauzeren voordat je het nummer kiest, voorkomt dit"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Niet ondersteund</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Audio casten of spiegelen (Chromecast, scherm- of audiospiegeling)
-
-SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Casten of spiegelen van audio (Chromecast, scherm- of audiomirroring)</string>
   <string name="morphe_music_crossfade_about_credit_title">Credit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-functie door VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -269,9 +275,19 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Audio-ducking uitschakelen</string>
   <string name="morphe_music_disable_audio_ducking_summary">Het volume wordt niet verlaagd wanneer een andere app een kort geluid afspeelt, zoals een melding</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Wachtrij-likesfilter</string>
+  <string name="morphe_music_queue_like_filter_summary">Verwijder nummers met weinig likes uit mixes en radio. Afspeellijsten, albums en nummers die je aan de wachtrij toevoegt worden niet gewijzigd. Het aantal likes is afkomstig van Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum aantal likes</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Nummers met minder likes worden uit de wachtrij verwijderd</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Schakel dislike omleiding uit</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Voorkomt dat naar het volgende nummer wordt gesprongen wanneer op de dislike-knop wordt gedrukt</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Schakel vegen om te wisselen van track uit</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Voorkomt dat er naar de volgende of vorige track wordt gesprongen door naar links of rechts te vegen op de speler</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Schakel vegen om te wisselen van track uit</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Voorkomt dat er naar de volgende of vorige track wordt gesprongen door naar links of rechts te vegen op de miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B-loop</string>
   <string name="morphe_music_ab_loop_summary">Houd de zoekbalk lang ingedrukt om het begin van de lus in te stellen, nogmaals om het einde van de lus in te stellen en nogmaals om de lus te wissen</string>
@@ -322,15 +338,6 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <string name="morphe_music_playlist_tags_rename">Hernoemen</string>
   <string name="morphe_music_playlist_tags_delete">Verwijderen</string>
   <string name="morphe_music_playlist_tags_hidden">Verborgen</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Cast-knop verbergen</string>
-  <string name="morphe_music_hide_history_button_title">Geschiedenisknop verbergen</string>
-  <string name="morphe_music_hide_notification_button_title">Meldingsknop verbergen</string>
-  <string name="morphe_music_hide_search_button_title">Zoekknop verbergen</string>
-  <string name="morphe_music_hide_voice_search_button_title">Verberg de knop voor spraakzoekopdracht</string>
-  <string name="morphe_music_hide_sound_search_button_title">Verberg de knop voor geluidszoekopdracht</string>
-  <string name="morphe_music_hide_library_new_button_title">Verberg de knop \'Nieuw\'</string>
-  <string name="morphe_music_hide_library_new_button_summary">Verbergt de knop \'Nieuw\' in het tabblad Bibliotheek</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Actieknoppen</string>
   <string name="morphe_music_action_buttons_screen_summary">Kies welke actieknoppen er onder de speler verschijnen</string>
@@ -402,22 +409,20 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Forceer portretstand</string>
   <string name="morphe_music_force_portrait_orientation_summary">Houdt de app in portretstand wanneer het apparaat wordt gedraaid</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Wijzig miniplayerkleur</string>
+  <string name="morphe_music_change_miniplayer_color_title">Kleur wijzigen</string>
   <string name="morphe_music_change_miniplayer_color_summary">Miniplayerkleur komt overeen met de volledigschermspeler</string>
   <string name="morphe_music_change_navigation_bar_color_title">Verander de navigatiebalkkleur</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Past de kleur van de navigatiebalk aan aan de fullscreen player</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Volgende knop weergeven in miniplayer</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Toon vorige knop in miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_title">Toon Volgende-knop</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Toon Vorige-knop</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Geforceerde miniplayer inschakelen</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Voorkomt dat de speler automatisch uitbreidt naar volledig scherm wanneer een nieuw nummer begint</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Schakel vegen om de miniplayer te sluiten in</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Schakel vegen om te sluiten in</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Hiermee kun je de miniplayer sluiten door er omlaag te vegen</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Navigatiebalk</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Kies welke knoppen er in de onderste navigatiebalk verschijnen</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Verberg de knop \"Home\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -450,7 +455,7 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Verbergt de afgeronde markering achter de geselecteerde knop van de glazen navigatiebalk</string>
   <string name="morphe_music_miniplayer_screen_title">Minispeler</string>
   <string name="morphe_music_miniplayer_screen_summary">Wijzig de stijl, de knoppen en de gebaren van de miniplayer</string>
-  <string name="morphe_music_miniplayer_glass_title">Glazen miniplayer inschakelen</string>
+  <string name="morphe_music_miniplayer_glass_title">Schakel glaseffect in</string>
   <string name="morphe_music_miniplayer_glass_summary">Toont de zwevende miniplayer als een afgeronde, doorschijnende glazen kaart</string>
   <string name="morphe_music_miniplayer_glass_style_title">Stijl glazen miniplayer</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Pas de hoekstraal, de padding van de hoes, de randhelderheid en de opaciteit van de glazen miniplayer aan, inclusief voorbeeld</string>
@@ -473,6 +478,15 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Samples</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Verkennen</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Bibliotheek</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Verberg knop Activiteit</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Verberg de knop \"Vraag muziek\"</string>
+  <string name="morphe_music_hide_cast_button_title">Cast-knop verbergen</string>
+  <string name="morphe_music_hide_history_button_title">Geschiedenisknop verbergen</string>
+  <string name="morphe_music_hide_search_button_title">Zoekknop verbergen</string>
+  <string name="morphe_music_hide_voice_search_button_title">Verberg de knop voor spraakzoekopdracht</string>
+  <string name="morphe_music_hide_sound_search_button_title">Verberg de knop voor geluidszoekopdracht</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Niet ingelogd. Tik om te configureren</string>
   <string name="morphe_music_scrobbling_log_out">Afmelden</string>
@@ -715,8 +729,14 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_written_by">Geschreven door: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Gesynchroniseerde woorden of lettergrepen markeren</string>
   <string name="morphe_music_lyrics_word_sync_summary">Geef prioriteit aan woord-voor-woord songteksten wanneer beschikbaar. Wanneer songteksten woordtiming bevatten, wordt elk woord of elke lettergreep gemarkeerd in de maat met de muziek</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Gesynchroniseerde woorden vloeiend animeren</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Markeert elk woord met een zachte veeg, gloed en lichte lift terwijl het gezongen wordt. Schakel dit uit om batterij te besparen of voor een scherpere weergave op tragere apparaten</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Spring-scrolling gebruiken</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Scrollt de songtekst met springfysica en verschuift elke regel een beetje ten opzichte van de regel erboven. Schakel dit uit om batterij te besparen op tragere apparaten</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Ontspannen scrollen</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Vertraagt de scrollanimatie van de songtekst en houdt inactieve regels op volledige grootte</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Inactieve regels vervagen</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Vervaagt zachtjes elke regel die momenteel niet wordt gezongen, waarbij regels die verder weg staan sterker worden vervaagd (Android 12 en later). Voor Android 12 blijven inactieve regels scherp</string>
   <string name="morphe_music_lyrics_gap_dots_title">Instrumentale break-stippen tonen</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Toont drie stippen tussen de regels tijdens een lange instrumentale break, die vollopen naarmate de break afloopt</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Verre regels sterker dimmen</string>
@@ -839,6 +859,8 @@ Songteksten komen van derde-dienstverleners die niet gelieerd zijn aan, gesponso
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Verplaatst de vertaling boven de songtekst; de lezing en romanisering blijven eronder</string>
   <string name="morphe_music_lyrics_force_center_title">Songteksten altijd centreren</string>
   <string name="morphe_music_lyrics_force_center_summary">ON plaatst elke regel in het midden en negeert de bronalignement, inclusief duet-partijen; OFF behoudt de alignement zoals de lyrics vragen</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Uitlijning duet aan tegenovergestelde zijde</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Plaatst de tweede zanger aan de tegenovergestelde rand bij duetnummers. Schakel dit uit om beide zangers aan dezelfde zijde te houden</string>
   <string name="morphe_music_lyrics_providers_keep_one">Minstens één aanbieder moet ingeschakeld blijven</string>
   <string name="morphe_music_lyrics_translation_provider_title">Vertaling</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering of transliteratie</string>

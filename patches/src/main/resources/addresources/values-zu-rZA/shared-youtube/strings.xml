@@ -78,6 +78,7 @@ Qinisekisa ukuthi igama lepakeji lilungile nokuthi i-app ifakiwe"</string>
   <string name="morphe_export_download_folder_missing">Akukwazanga ukutholakala ifolda ye-export %s</string>
   <string name="morphe_export_download_flyout_title">Export ku-device</string>
   <string name="morphe_export_download_canceled">I-export icancelwe</string>
+  <string name="morphe_offline_video_quality_1440p">iQuad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Okuhleliwe</string>
   <string name="morphe_custom_branding_icon_title">I-icon yohlelo</string>
@@ -265,9 +266,6 @@ Ukuze ungene, chiza 'continue' ngezansi"</string>
   <string name="morphe_video_quality_default_mobile_title">Ikhwalithi yevidiyo evamile kunethiwekhi yeselula</string>
   <string name="morphe_remember_video_quality_toast_mobile">Kushintshwe izinga elijwayelekile le-mobile libe ngu: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Kushintshwe izinga elijwayelekile le-Wi-Fi libe ngu: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Vula i-share sheet ehleliwe yesistimu</string>
-  <string name="morphe_open_system_share_sheet_summary">Ivula i-share sheet yesistimu kunaleyo esehlala phakathi kwe-app lapho wabelana ngokuqukethwe</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Ukubhala ama-log e-Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Kukhishwa</string>
@@ -379,4 +377,8 @@ I-ID ye-video oyibukayo ithunyelwa ku-Return YouTube Dislike API, kanti ukuthand
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Azikho imikhawulo yebhadi le-client ehlanganyelwe</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Umkhawulo we-rate limit we-client uhlangana nezikhathi ezi-%s</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milliseconds</string>
+  <string name="morphe_navigation_bar_screen_title">Ibha yokuzulazula</string>
+  <string name="morphe_navigation_bar_screen_summary">Khetha ukuthi yiziphi izinkinobho ezivela kubha yokuhamba engaphansi</string>
+  <string name="morphe_toolbar_screen_title">I-Toolbar</string>
+  <string name="morphe_toolbar_screen_summary">Khetha ukuthi yiziphi izinto ezivela ku-toolbar</string>
 </resources>

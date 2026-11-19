@@ -78,6 +78,7 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
   <string name="morphe_export_download_folder_missing">Não foi possível encontrar a pasta de exportação %s</string>
   <string name="morphe_export_download_flyout_title">Exportar para o dispositivo</string>
   <string name="morphe_export_download_canceled">Exportação cancelada</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizado</string>
   <string name="morphe_custom_branding_icon_title">Ícone do aplicativo</string>
@@ -267,9 +268,6 @@ Para logar-se, toque em continuar abaixo
   <string name="morphe_video_quality_default_mobile_title">Qualidade de vídeo padrão na rede móvel</string>
   <string name="morphe_remember_video_quality_toast_mobile">Qualidade padrão móvel alterada para: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Qualidade padrão de Wi-Fi alterada para: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Abrir a folha de compartilhamento do sistema</string>
-  <string name="morphe_open_system_share_sheet_summary">Abre a folha de compartilhamento do sistema em vez da do aplicativo ao compartilhar conteúdo</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Registro do Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Desativado</string>
@@ -381,4 +379,8 @@ O ID do vídeo que você assiste é enviado para a API do Return YouTube Dislike
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nenhum limite de taxa do cliente encontrado</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limite de taxa do cliente atingido %s vezes</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisegundos</string>
+  <string name="morphe_navigation_bar_screen_title">Barra de navegação</string>
+  <string name="morphe_navigation_bar_screen_summary">Escolha quais botões aparecem na barra de navegação inferior</string>
+  <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
+  <string name="morphe_toolbar_screen_summary">Escolha quais componentes aparecem na barra de ferramentas</string>
 </resources>

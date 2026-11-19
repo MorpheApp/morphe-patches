@@ -278,3 +278,75 @@ internal object PostsToLoadLegacyFingerprint : Fingerprint(
         opcode(Opcode.IF_NEZ, MatchAfterImmediately())
     )
 )
+
+internal object PostFlairFeedPresentationModelConstructorFingerprint : Fingerprint(
+    classFingerprint = PostFlairFeedPresentationModelToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        // Text.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        // Rich text.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+        // Id.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+        // Community name.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+internal object PostFlairsElementConstructorFingerprint : Fingerprint(
+    classFingerprint = PostFlairsElementToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        // Link id.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        // Unique id.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+        // Promoted.
+        fieldAccess(
+            opcode = Opcode.IPUT_BOOLEAN,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        ),
+        // Identifier.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        ),
+        // Flairs.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        )
+    )
+)

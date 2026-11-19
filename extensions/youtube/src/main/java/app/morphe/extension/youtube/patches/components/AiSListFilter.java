@@ -8,6 +8,8 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import android.net.Uri;
+
 import androidx.annotation.Nullable;
 
 import java.nio.charset.StandardCharsets;
@@ -48,8 +50,27 @@ public final class AiSListFilter extends BufferPhraseFilter {
         return codePointAfter == null || !isHandleCharacter(codePointAfter);
     }
 
+    /**
+     * @return A copy of the bytes with the ASCII upper case letters in lower case.
+     *         Handles are matched without case, as YouTube resolves them that way and the list
+     *         does not always have the case the channel shows, such as @thecatfamilyworld
+     *         for @TheCatFamilyWorld.
+     */
+    private static byte[] toLowerCaseAscii(byte[] bytes) {
+        byte[] lowerCase = new byte[bytes.length];
+        for (int i = 0; i < bytes.length; i++) {
+            final byte b = bytes[i];
+            lowerCase[i] = b >= 'A' && b <= 'Z'
+                    ? (byte) (b + ('a' - 'A'))
+                    : b;
+        }
+        return lowerCase;
+    }
+
     private static boolean isHandleCharacter(int codePoint) {
-        return Character.isLetter(codePoint) ||
+        // A URL encoded character, such as of a handle that only starts with a handle of the list.
+        return codePoint == '%' ||
+                Character.isLetter(codePoint) ||
                 Character.isDigit(codePoint) ||
                 codePoint == '_' ||
                 codePoint == '-' ||
@@ -181,7 +202,14 @@ public final class AiSListFilter extends BufferPhraseFilter {
                         ((MutableReference<String>) callbackParam).value = handle;
                         return true;
                     };
-            search.addPattern(handle.getBytes(StandardCharsets.UTF_8), callback);
+            search.addPattern(toLowerCaseAscii(handle.getBytes(StandardCharsets.UTF_8)), callback);
+
+            // The buffer has the characters of a handle that are not ASCII URL encoded, such as
+            // %C3%B3 for an o with an accent, but the list has some of them as they are.
+            String encodedHandle = Uri.encode(handle, "@");
+            if (!encodedHandle.equals(handle) && handle.indexOf('%') < 0) {
+                search.addPattern(toLowerCaseAscii(encodedHandle.getBytes(StandardCharsets.US_ASCII)), callback);
+            }
             count++;
         }
 
@@ -225,20 +253,27 @@ public final class AiSListFilter extends BufferPhraseFilter {
     protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup,
                                  ContextInterface contextInterface) {
         ByteTrieSearch bl = blocklistSearch;
-        final boolean blActive = blocklistActiveForFeedContext(contextInterface);
-        if (bl != null && blActive) {
+        final boolean blActive = bl != null && blocklistActiveForFeedContext(contextInterface);
+        ByteTrieSearch wl = warnlistSearch;
+        final boolean wlActive = wl != null && warnlistActiveForFeedContext(contextInterface);
+        if (!blActive && !wlActive) {
+            return null;
+        }
+
+        // The handles of the lists are in lower case.
+        byte[] lowerCaseBuffer = toLowerCaseAscii(buffer);
+
+        if (blActive) {
             MutableReference<String> ref = new MutableReference<>();
-            if (bl.matches(buffer, ref)) {
+            if (bl.matches(lowerCaseBuffer, ref)) {
                 recordHide(matchedGroup, buffer, contextInterface);
                 return ref.value;
             }
         }
 
-        ByteTrieSearch wl = warnlistSearch;
-        final boolean wlActive = warnlistActiveForFeedContext(contextInterface);
-        if (wl != null && wlActive) {
+        if (wlActive) {
             MutableReference<String> ref = new MutableReference<>();
-            if (wl.matches(buffer, ref)) {
+            if (wl.matches(lowerCaseBuffer, ref)) {
                 recordHide(matchedGroup, buffer, contextInterface);
                 return ref.value;
             }

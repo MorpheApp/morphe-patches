@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">ვერ მოხერხდა ექსპორტის საქაღალდის %s პოვნა</string>
   <string name="morphe_export_download_flyout_title">ექსპორტი მოწყობილობაზე</string>
   <string name="morphe_export_download_canceled">ექსპორტი გაუქმდა</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">საკუთარი</string>
   <string name="morphe_custom_branding_icon_title">აპლიკაციის ხატულა</string>
@@ -265,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">ვიდეოს ნაგულისხმევი ხარისხი მობილურ ქსელში</string>
   <string name="morphe_remember_video_quality_toast_mobile">მობილურისთვის ნაგულისხმევი ხარისხი შეიცვალა: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-სთვის ნაგულისხმევი ხარისხი შეიცვალა: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">გახსნით სისტემური გაზიარების პანელი</string>
-  <string name="morphe_open_system_share_sheet_summary">კონტენტის გაზიარებისას გახსნის სისტემურ გაზიარების პანელს პროგრამის შიდა პანელის ნაცვლად</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-ლოგირება</string>
   <string name="morphe_debug_litho_entry_disabled">გამორთვას</string>
@@ -379,4 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">კლიენტის rate limit-ები არ დაფიქსირებულა</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">კლიენტის rate limit შეგვხვდა %s-ჯერ</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s მილიწამი</string>
+  <string name="morphe_navigation_bar_screen_title">ნავიგაციის პანელი</string>
+  <string name="morphe_navigation_bar_screen_summary">აირჩიეთ, რომელი ღილაკები გამოჩნდეს ქვედა ნავიგაციის პანელზე</string>
+  <string name="morphe_toolbar_screen_title">ინსტრუმენტების პანელი</string>
+  <string name="morphe_toolbar_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს ინსტრუმენტების პანელზე</string>
 </resources>

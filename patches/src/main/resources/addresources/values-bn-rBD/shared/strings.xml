@@ -74,18 +74,33 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">ফাইলে রপ্তানি করুন</string>
   <string name="morphe_settings_export_file_success">সেটিং সফলভাবে এক্সপোর্ট করা হয়েছে</string>
   <string name="morphe_settings_export_file_failed">সেটিং এক্সপোর্ট করা যায়নি</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">আপনি Morphe প্যাচ সংস্করণ &lt;i&gt;%s&lt;/i&gt; ব্যবহার করছেন</string>
-  <string name="morphe_settings_about_links_body_version_outdated">আপনি Morphe প্যাচ সংস্করণ &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;আপডেট উপলব্ধ: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;আপনার প্যাচগুলি আপডেট করতে, Morphe ব্যবহার করে এই অ্যাপ্লিকেশনটিকে পুনরায় প্যাচ করুন</string>
-  <string name="morphe_settings_about_links_dev_header">দ্রষ্টব্য</string>
-  <string name="morphe_settings_about_links_dev_body">এই সংস্করণ একটি প্রাক-প্রকাশনা এবং এতে আপনি অনাকাঙ্ক্ষিত সমস্যার সম্মুখীন হতে পারেন</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">প্যাচগুলি</string>
+  <string name="morphe_settings_about_version">সংস্করণ</string>
+  <string name="morphe_settings_about_close">বন্ধ করুন</string>
+  <string name="morphe_settings_about_prerelease">প্রাক-রিলিজ</string>
+  <string name="morphe_settings_about_update_available">আপডেট উপলব্ধ: %s</string>
+  <string name="morphe_settings_about_update_hint">আপনার প্যাচগুলি আপডেট করতে, এই অ্যাপটি পুনরায় প্যাচ করার জন্য Morphe ব্যবহার করুন</string>
   <string name="morphe_settings_about_links_header">অফিশ্যাল লিংকসমূহ</string>
   <string name="morphe_settings_about_links_website">ওয়েবসাইট</string>
   <string name="morphe_settings_about_links_donate">দান করুন</string>
   <string name="morphe_settings_about_links_translations">অনুবাদগুলি</string>
-  <string name="morphe_settings_about_links_credits">ক্রেডিট</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">আপডেট করা হয়েছে</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">আপডেট উপলব্ধ</string>
+  <string name="morphe_settings_about_contributors">কন্ট্রিবিউটরগণ</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">সর্বকালের</string>
+  <string name="morphe_settings_about_contributors_6_months">৬ মাস</string>
+  <string name="morphe_settings_about_contributors_3_months">৩ মাস</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">সময়কাল</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">সমর্থকগণ</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective-এর সমর্থকগণ</string>
+  <string name="morphe_settings_about_supporters_become">সমর্থক হয়ে উঠুন</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">এবং আরও %s জন</string>
+  <string name="morphe_settings_about_people_unavailable">তালিকাটি লোড করা যায়নি</string>
   <string name="morphe_settings_about_contributors_current">চলমান উন্নয়ন</string>
   <string name="morphe_settings_about_contributors_prior">পূর্ববর্তী উন্নয়ন</string>
   <string name="morphe_settings_about_links_morphe">সক্রিয় উন্নয়ন</string>
@@ -213,6 +228,9 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
 • অ্যাপ এলোমেলোভাবে বন্ধ হয়ে যেতে পারে
 • নোটিফিকেশন কাজ নাও করতে পারে
 • ব্যাকগ্রাউন্ড প্লেব্যাক কাজ নাও করতে পারে"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">সিস্টেম শেয়ার শিট খুলুন</string>
+  <string name="morphe_open_system_share_sheet_summary">কন্টেন্ট শেয়ার করার সময় ইন-অ্যাপ শেয়ার শীটের পরিবর্তে সিস্টেম শেয়ার শীট খোলে</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">অ্যাপ লিঙ্ক হ্যান্ডলিং</string>
   <string name="morphe_link_handling_summary">এই অ্যাপে লিঙ্ক খোলার জন্য কনফিগার করুন</string>

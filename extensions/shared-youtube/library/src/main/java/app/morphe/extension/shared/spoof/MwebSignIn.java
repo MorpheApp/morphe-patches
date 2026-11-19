@@ -288,7 +288,9 @@ public final class MwebSignIn {
                     final boolean signedOutPage = LOGGED_OUT_PATTERN.matcher(page).find();
                     Logger.printDebug(() -> "No DataSyncId in the page, signed out page: " + signedOutPage);
                     if (signedOutPage) {
-                        onSignInExpired();
+                        Logger.printDebug(() -> "Mobile Web sign in is no longer valid");
+                        clearAll();
+                        Utils.showToastLong(str("morphe_spoof_video_streams_sign_in_mweb_toast_expired"));
                     }
                     return null;
                 }
@@ -369,12 +371,6 @@ public final class MwebSignIn {
             dataSyncId = null;
             dataSyncIdSapisid = null;
         }
-    }
-
-    private static void onSignInExpired() {
-        Logger.printDebug(() -> "Mobile Web sign in is no longer valid");
-        clearAll();
-        Utils.showToastLong(str("morphe_spoof_video_streams_sign_in_mweb_toast_expired"));
     }
 
     /**

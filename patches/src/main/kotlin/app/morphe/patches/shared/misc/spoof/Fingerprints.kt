@@ -51,6 +51,20 @@ internal object ReloadPlayerResponseFingerprint : Fingerprint(
     }
 )
 
+/**
+ * Native check of whether the Onesie response of a video, which the app fetches with its own player request,
+ * can be used with the streams of the player response.
+ */
+internal object OnesieResponseCompatibilityFingerprint : Fingerprint(
+    definingClass = $$"Lcom/google/android/libraries/youtube/media/interfaces/OnesieResponseSelector$CppProxy;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(
+        "Ljava/lang/String;",
+        "Lcom/google/android/libraries/youtube/media/interfaces/PlayerResponseCompatibilityRequirements;"
+    )
+)
+
 private object CreateStreamingDataParentFingerprint : Fingerprint(
     strings = listOf("Invalid playback type; streaming data is not playable")
 )

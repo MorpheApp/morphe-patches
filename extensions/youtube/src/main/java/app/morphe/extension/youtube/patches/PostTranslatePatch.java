@@ -24,6 +24,7 @@ import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.MetricAffectingSpan;
 import android.text.style.ReplacementSpan;
 import android.util.Pair;
 import android.view.View;
@@ -228,15 +229,7 @@ public final class PostTranslatePatch {
 
             // Post texts with line breaks are not parsed as text fields.
             List<String> texts = ProtoNode.texts(root);
-
-            String identifier = null;
-            for (String text : texts) {
-                if (text.contains(".eml")) {
-                    identifier = text;
-                    break;
-                }
-            }
-            if (identifier == null || !identifier.contains(POST)) {
+            if (!isPostElement(texts)) {
                 return bytes;
             }
 
@@ -252,6 +245,19 @@ public final class PostTranslatePatch {
             Logger.printException(() -> "onElementLoaded failure", ex);
         }
         return bytes;
+    }
+
+    /**
+     * @return If the texts are of a post element, whose identifier, the first text with ".eml",
+     *         includes "post".
+     */
+    private static boolean isPostElement(List<String> texts) {
+        for (String text : texts) {
+            if (text.contains(".eml")) {
+                return text.contains(POST);
+            }
+        }
+        return false;
     }
 
     /**
@@ -325,28 +331,44 @@ public final class PostTranslatePatch {
         final int length = spanned.length();
         final int end = translation.length();
         boolean hasColor = false;
+        boolean hasSize = false;
         for (CharacterStyle span : spanned.getSpans(0, length, CharacterStyle.class)) {
             if (isLinkOrImage(span) || spanned.getSpanStart(span) > 0 || spanned.getSpanEnd(span) < length) {
                 continue;
             }
             text.setSpan(span, 0, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
             hasColor |= span instanceof ForegroundColorSpan;
+            hasSize |= span instanceof MetricAffectingSpan;
         }
-        if (!hasColor) {
-            // The color of the first letter, if the text has many colors, such as the color of links.
+        if (!hasColor || !hasSize) {
+            // The color and the size of the first letter, if the text is made of many parts, such as
+            // a text with links, which has the size of the text in each part and not in the paint.
+            // Otherwise, the translation would have the smaller size of the paint.
             for (int i = 0; i < length; i++) {
                 if (!Character.isLetter(spanned.charAt(i))) {
                     continue;
                 }
-                for (ForegroundColorSpan span : spanned.getSpans(i, i + 1, ForegroundColorSpan.class)) {
-                    if (!isLinkOrImage(span)) {
+                for (CharacterStyle span : spanned.getSpans(i, i + 1, CharacterStyle.class)) {
+                    if (isLinkOrImage(span) || text.getSpanStart(span) >= 0) {
+                        continue;
+                    }
+                    if ((!hasColor && span instanceof ForegroundColorSpan)
+                            || (!hasSize && span instanceof MetricAffectingSpan)) {
                         text.setSpan(span, 0, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-                        break;
                     }
                 }
                 break;
             }
         }
+        Logger.printDebug(() -> {
+            List<String> spans = new ArrayList<>();
+            for (CharacterStyle span : spanned.getSpans(0, length, CharacterStyle.class)) {
+                spans.add(span.getClass().getSimpleName() + "[" + spanned.getSpanStart(span)
+                        + "-" + spanned.getSpanEnd(span) + "]");
+            }
+            return "Translation text spans: " + spans + " of length " + length + ", copied: "
+                    + Arrays.toString(text.getSpans(0, end, CharacterStyle.class));
+        });
         return text;
     }
 
@@ -670,13 +692,27 @@ public final class PostTranslatePatch {
     /**
      * Adds Translate or Show original to the menu of a post with a text.
      *
-     * @param sender The view that opened the menu.
+     * @param sender      The view that opened the menu.
+     * @param menuBuffer  The element the menu was opened from, or null if the menu has none.
+     * @param menuVideoId The video of the menu, or an empty string if it has none.
      */
-    public static int addFlyoutButton(Object flyoutPanel, int index, @Nullable View sender) {
+    public static int addFlyoutButton(Object flyoutPanel, int index, @Nullable View sender,
+                                      @Nullable byte[] menuBuffer, String menuVideoId) {
         if (!ENABLED || sender == null) {
             return index;
         }
         try {
+            // A video card can show a text of a post, such as the name of the channel,
+            // so only the menus of post elements get the item.
+            if (menuBuffer != null) {
+                List<ProtoNode> menu = ProtoNode.parse(menuBuffer);
+                if (menu == null || !isPostElement(ProtoNode.texts(menu))) {
+                    return index;
+                }
+            } else if (!menuVideoId.isEmpty()) {
+                return index;
+            }
+
             ComponentHost root = FeedVideoCardsPatch.findTappedRootHost(sender);
             if (root == null) {
                 return index;

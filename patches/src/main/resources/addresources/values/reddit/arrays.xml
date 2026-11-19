@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- layout.autoscroll.feedAutoScrollPatch -->
+    <string-array name="morphe_feed_auto_scroll_speed_entries">
+        <item>@string/morphe_feed_auto_scroll_speed_entry_slow</item>
+        <item>@string/morphe_feed_auto_scroll_speed_entry_medium</item>
+        <item>@string/morphe_feed_auto_scroll_speed_entry_fast</item>
+        <item>@string/morphe_feed_auto_scroll_speed_entry_very_fast</item>
+    </string-array>
+    <string-array name="morphe_feed_auto_scroll_speed_entry_values" translatable="false">
+        <item>SLOW</item>
+        <item>MEDIUM</item>
+        <item>FAST</item>
+        <item>VERY_FAST</item>
+    </string-array>
+
+    <!-- layout.tabletgrid.tabletGridFeedPatch -->
+    <string-array name="morphe_tablet_grid_columns_entries">
+        <item>@string/morphe_tablet_grid_columns_entry_auto</item>
+        <item>@string/morphe_tablet_grid_columns_entry_two</item>
+        <item>@string/morphe_tablet_grid_columns_entry_three</item>
+    </string-array>
+    <string-array name="morphe_tablet_grid_columns_entry_values" translatable="false">
+        <item>AUTO</item>
+        <item>TWO</item>
+        <item>THREE</item>
+    </string-array>
+
+    <!-- layout.sidepanel.postSidePanelPatch -->
+    <string-array name="morphe_post_side_panel_width_entries">
+        <item>@string/morphe_post_side_panel_width_entry_one_third</item>
+        <item>@string/morphe_post_side_panel_width_entry_two_thirds</item>
+    </string-array>
+    <string-array name="morphe_post_side_panel_width_entry_values" translatable="false">
+        <item>ONE_THIRD</item>
+        <item>TWO_THIRDS</item>
+    </string-array>
+
+    <string-array name="morphe_post_side_panel_dim_entries">
+        <item>@string/morphe_post_side_panel_dim_entry_off</item>
+        <item>@string/morphe_post_side_panel_dim_entry_light</item>
+        <item>@string/morphe_post_side_panel_dim_entry_medium</item>
+        <item>@string/morphe_post_side_panel_dim_entry_strong</item>
+    </string-array>
+    <string-array name="morphe_post_side_panel_dim_entry_values" translatable="false">
+        <item>OFF</item>
+        <item>LIGHT</item>
+        <item>MEDIUM</item>
+        <item>STRONG</item>
+    </string-array>
+</resources>

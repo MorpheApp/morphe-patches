@@ -74,18 +74,33 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_settings_export_file">Exportare în fișier</string>
   <string name="morphe_settings_export_file_success">Setările exportate cu succes</string>
   <string name="morphe_settings_export_file_failed">Eșec la exportarea setărilor</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Utilizați cea mai recentă versiune a patch-urilor Morphe &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Utilizați versiunea patch-urilor Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualizare disponibilă: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pentru a actualiza patch-urile, folosiți Morphe pentru a repatcha această aplicație</string>
-  <string name="morphe_settings_about_links_dev_header">Notă</string>
-  <string name="morphe_settings_about_links_dev_body">Această versiune este o pre-lansare și este posibil să întâmpinați probleme neașteptate</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patch-uri</string>
+  <string name="morphe_settings_about_version">Versiune</string>
+  <string name="morphe_settings_about_close">Închide</string>
+  <string name="morphe_settings_about_prerelease">Pre-lansare</string>
+  <string name="morphe_settings_about_update_available">Există actualizări disponibile: %s</string>
+  <string name="morphe_settings_about_update_hint">Pentru a actualiza patch-urile, folosește Morphe pentru a repatch-ui această aplicație</string>
   <string name="morphe_settings_about_links_header">Link-uri oficiale</string>
   <string name="morphe_settings_about_links_website">Site web</string>
   <string name="morphe_settings_about_links_donate">Donează</string>
   <string name="morphe_settings_about_links_translations">Traduceri</string>
-  <string name="morphe_settings_about_links_credits">Credite</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Actualizat</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Actualizare disponibilă</string>
+  <string name="morphe_settings_about_contributors">Contribuitori</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Tot timpul</string>
+  <string name="morphe_settings_about_contributors_6_months">6 luni</string>
+  <string name="morphe_settings_about_contributors_3_months">3 luni</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Interval de timp</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Susținători</string>
+  <string name="morphe_settings_about_supporters_summary">Susținători pe Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Devino un susținător</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Și încă %s</string>
+  <string name="morphe_settings_about_people_unavailable">Lista nu a putut fi încărcată</string>
   <string name="morphe_settings_about_contributors_current">Dezvoltare curentă</string>
   <string name="morphe_settings_about_contributors_prior">Dezvoltare anterioară</string>
   <string name="morphe_settings_about_links_morphe">Dezvoltare activă</string>
@@ -213,6 +228,9 @@ Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următo
 • Aplicația se poate închide aleatoriu
 • Notificările pot să nu funcționeze
 • Redarea în fundal poate să nu funcționeze"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Deschide panoul de partajare al sistemului</string>
+  <string name="morphe_open_system_share_sheet_summary">Deschide foaia de partajare a sistemului în loc de cea din aplicație când partajați conținut</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestionarea link-urilor aplicației</string>
   <string name="morphe_link_handling_summary">Configurează legăturile pentru a se deschide în această aplicaţie</string>

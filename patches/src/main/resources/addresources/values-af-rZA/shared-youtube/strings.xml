@@ -78,6 +78,7 @@ Verifieer dat die pakketnaam korrek is en die app geïnstalleer is"</string>
   <string name="morphe_export_download_folder_missing">Kon nie uitvoer-houer %s vind nie</string>
   <string name="morphe_export_download_flyout_title">Voer uit na toestel</string>
   <string name="morphe_export_download_canceled">Uitvoer gekanselleer</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pasgemaak</string>
   <string name="morphe_custom_branding_icon_title">Program ikoon</string>
@@ -265,9 +266,6 @@ Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_video_quality_default_mobile_title">Verstek video-kwaliteit op mobiele netwerk</string>
   <string name="morphe_remember_video_quality_toast_mobile">Verstek mobiele kwaliteit verander na: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Verstek Wi-Fi-kwaliteit verander na: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Maak stelsel-deelblad oop</string>
-  <string name="morphe_open_system_share_sheet_summary">Maak die stelsel se deelblad oop in plaas van die in-app-een wanneer inhoud gedeel word</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logboek</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktiveer</string>
@@ -379,4 +377,8 @@ Die ID van die video wat jy kyk, word na die Return YouTube Dislike API gestuur,
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Geen kliënt-tarieflimiete teëgekom nie</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kliënt-tarieflimiet %s keer teëgekom</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekondes</string>
+  <string name="morphe_navigation_bar_screen_title">Navigasiebalk</string>
+  <string name="morphe_navigation_bar_screen_summary">Kies watter knoppies in die onderste navigasiebalk verskyn</string>
+  <string name="morphe_toolbar_screen_title">Nutsbalk</string>
+  <string name="morphe_toolbar_screen_summary">Kies watter komponente in die wenkbalk verskyn</string>
 </resources>

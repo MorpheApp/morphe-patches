@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">एक्सपोर्ट फ़ोल्डर %s नहीं मिल सका</string>
   <string name="morphe_export_download_flyout_title">डिवाइस पर एक्सपोर्ट करें</string>
   <string name="morphe_export_download_canceled">एक्सपोर्ट रद्द कर दिया गया</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">कस्टम</string>
   <string name="morphe_custom_branding_icon_title">ऐप आइकन</string>
@@ -265,9 +266,6 @@ Android System WebView खोलने के लिए OK पर टैप क�
   <string name="morphe_video_quality_default_mobile_title">मोबाइल नेटवर्क पर डिफ़ॉल्ट वीडियो क्वालिटी</string>
   <string name="morphe_remember_video_quality_toast_mobile">डिफ़ॉल्ट मोबाइल क्वालिटी बदलकर %s कर दी गई</string>
   <string name="morphe_remember_video_quality_toast_wifi">डिफ़ॉल्ट Wi-Fi क्वालिटी बदलकर %s कर दी गई</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">सिस्टम शेयर शीट खोलें</string>
-  <string name="morphe_open_system_share_sheet_summary">कंटेंट शेयर करते समय इन-ऐप शेयर शीट के बजाय सिस्टम शेयर शीट खोलता है</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">लिथो लॉगिंग</string>
   <string name="morphe_debug_litho_entry_disabled">बंद किया गया</string>
@@ -379,4 +377,8 @@ PotHelper डाउनलोड करने के लिए यहां ट�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">कोई क्लाइंट दर सीमा नहीं मिली</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">%s बार क्लाइंट रेट लिमिट का सामना किया गया</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s मिलिसेकंड</string>
+  <string name="morphe_navigation_bar_screen_title">नेविगेशन बार</string>
+  <string name="morphe_navigation_bar_screen_summary">नीचे के नेविगेशन बार में कौन से बटन दिखाई दें, चुनें</string>
+  <string name="morphe_toolbar_screen_title">टूलबार</string>
+  <string name="morphe_toolbar_screen_summary">टूलबार में कौन‑कौन से घटक दिखाई दें, चुनें</string>
 </resources>

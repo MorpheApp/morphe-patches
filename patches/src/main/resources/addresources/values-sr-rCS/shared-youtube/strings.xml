@@ -78,6 +78,7 @@ Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</str
   <string name="morphe_export_download_folder_missing">Folder za izvoz %s nije pronađen</string>
   <string name="morphe_export_download_flyout_title">Izvezi na uređaj</string>
   <string name="morphe_export_download_canceled">Izvoz otkazan</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Prilagođeno</string>
   <string name="morphe_custom_branding_icon_title">Ikonica aplikacije</string>
@@ -265,9 +266,6 @@ Da biste se prijavili, pritisnite „nastavi“ u nastavku"</string>
   <string name="morphe_video_quality_default_mobile_title">Podrazumevani kvalitet videa na mobilnoj mreži</string>
   <string name="morphe_remember_video_quality_toast_mobile">Podrazumevani mobilni kvalitet promenjen na: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Podrazumevani Wi-Fi kvalitet promenjen na: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Otvori sistemski prozor za deljenje</string>
-  <string name="morphe_open_system_share_sheet_summary">Otvara sistemski prozor za deljenje umesto onog u aplikaciji prilikom deljenja sadržaja</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho evidentiranje</string>
   <string name="morphe_debug_litho_entry_disabled">Onemogućen</string>
@@ -378,4 +376,8 @@ ID video zapisa koji gledate šalje se Return YouTube Dislike API-ju, a vaši la
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nije naišlo na ograničenja brzine klijenta</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Suočeni smo sa limitom brzine klijenta %s puta</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekundi</string>
+  <string name="morphe_navigation_bar_screen_title">Трака за навигацију</string>
+  <string name="morphe_navigation_bar_screen_summary">Izaberite koja dugmad se pojavljuju u donjoj traci za navigaciju</string>
+  <string name="morphe_toolbar_screen_title">Alatna traka</string>
+  <string name="morphe_toolbar_screen_summary">Izaberite koje komponente se pojavljuju u traci sa alatkama</string>
 </resources>

@@ -78,6 +78,7 @@ Paket nomi to'g'ri ekanligini va ilova o'rnatilganligini tekshiring"</string>
   <string name="morphe_export_download_folder_missing">%s eksport papkasini topib bo\'lmadi</string>
   <string name="morphe_export_download_flyout_title">Qurilmaga eksport qilish</string>
   <string name="morphe_export_download_canceled">Eksport bekor qilindi</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Maxsus</string>
   <string name="morphe_custom_branding_icon_title">Ilova belgisi</string>
@@ -265,9 +266,6 @@ Tizimga kirish uchun quyidagining 'davom etish' tugmasini bosing"</string>
   <string name="morphe_video_quality_default_mobile_title">Mobil tarmoqdagi odatiy video sifati</string>
   <string name="morphe_remember_video_quality_toast_mobile">Standart mobil sifat: %s ga o\'zgartirildi</string>
   <string name="morphe_remember_video_quality_toast_wifi">Standart Wi-Fi sifati: %s ga o\'zgartirildi</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Tizim ulashish varag\'ini ochish</string>
-  <string name="morphe_open_system_share_sheet_summary">Ulashishda ilova ichidagi o\'rniga tizim ulashish varag\'ini ochadi</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Lito logging</string>
   <string name="morphe_debug_litho_entry_disabled">O\"chirilgan</string>
@@ -379,4 +377,8 @@ Siz tomosha qilayotgan videoning ID-si Return YouTube Dislike API-ga yuboriladi,
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Klient tezligi chegaralariga duch kelinmagan</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klient tezligi chegarasi %s marta uchradi</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekund</string>
+  <string name="morphe_navigation_bar_screen_title">Navigatsiya paneli</string>
+  <string name="morphe_navigation_bar_screen_summary">Pastki navigatsiya panelida qaysi tugmalar ko\'rinishini tanlang</string>
+  <string name="morphe_toolbar_screen_title">Asboblar paneli</string>
+  <string name="morphe_toolbar_screen_summary">Asboblar panelida qaysi komponentlar ko\'rinishini tanlang</string>
 </resources>

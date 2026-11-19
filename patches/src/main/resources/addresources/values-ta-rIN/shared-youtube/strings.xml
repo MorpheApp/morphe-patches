@@ -39,6 +39,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">ஏற்றுமதி கோப்புறை %s-ஐக் கண்டறிய முடியவில்லை</string>
   <string name="morphe_export_download_flyout_title">சாதனத்திற்கு ஏற்றுமதி செய்யவும்</string>
   <string name="morphe_export_download_canceled">ஏற்றுமதி ரத்து செய்யப்பட்டது</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
@@ -109,9 +110,6 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <string name="morphe_video_quality_default_mobile_title">மொபைல் நெட்வொர்க்கில் இயல்பான வீடியோ தரம்</string>
   <string name="morphe_remember_video_quality_toast_mobile">இயல்பான மொபைல் தரம் இதாக மாற்றப்பட்டது: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">இயல்பான Wi-Fi தரம் இதாக மாற்றப்பட்டது: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">சிஸ்டம் பகிர்வுத் தாளைத் திற</string>
-  <string name="morphe_open_system_share_sheet_summary">உள்ளடக்கத்தைப் பகிரும் போது, செயலியின் பகிர்வுப் பட்டியலுக்குப் பதிலாக கணினியின் பகிர்வுப் பட்டியலைத் திறக்கும்</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho பதிவு செய்தல்</string>
   <string name="morphe_debug_litho_entry_disabled">முடக்கப்பட்டது</string>
@@ -140,4 +138,8 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s நெட்வொர்க் அழைப்புகள் செய்யப்பட்டன</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s நெட்வொர்க் அழைப்புகள் காலாவதி ஆகின</string>
+  <string name="morphe_navigation_bar_screen_title">வழிசெலுத்தல் பட்டை</string>
+  <string name="morphe_navigation_bar_screen_summary">கீழ் வழிசெலுத்தல் பட்டையில் எந்த பொத்தான்கள் தோன்ற வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</string>
+  <string name="morphe_toolbar_screen_title">டூல்பார்</string>
+  <string name="morphe_toolbar_screen_summary">டூல்பாரில் எந்தக் கூறுகள் தோன்ற வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</string>
 </resources>
