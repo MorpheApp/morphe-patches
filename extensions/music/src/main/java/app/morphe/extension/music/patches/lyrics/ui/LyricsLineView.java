@@ -658,6 +658,39 @@ final class LyricsLineView extends TextView {
     }
 
     /**
+     * Applies static bright selected or dimmed unselected look during share line selection.
+     */
+    void updateShareSelectionLook(boolean selected, boolean instant) {
+        this.allSung = selected;
+        this.activeLine = selected;
+        this.lastDrawnClockPos = Long.MIN_VALUE;
+        updateLineLook(selected, selected ? 0 : 2, 0L, true, true, instant);
+        this.allSung = selected;
+        if (selected) {
+            lookFromUnsungAlpha = lookToUnsungAlpha = lookCurUnsungAlpha = 1.0f;
+            lookFromAlpha = lookToAlpha = lookCurAlpha = 1.0f;
+            lookFromReadingAlpha = lookToReadingAlpha = lookCurReadingAlpha = LyricsColors.ACTIVE_READING_ALPHA;
+            lookFromTransAlpha = lookToTransAlpha = lookCurTransAlpha = LyricsColors.ACTIVE_TRANSLATION_ALPHA;
+            applyCurrentLineLookToView();
+        }
+        invalidate();
+    }
+
+    /**
+     * Clears static share-selection highlights and word-sweep pins before resuming live playback sync.
+     */
+    void resetShareSelectionWordState() {
+        this.allSung = false;
+        this.activeLine = false;
+        this.lastDrawnClockPos = Long.MIN_VALUE;
+        this.positionMs = Long.MIN_VALUE;
+        if (syllableCache != null && syllableCache.animator != null) {
+            syllableCache.animator.reset();
+        }
+        invalidate();
+    }
+
+    /**
      * Moves the line's alpha and scale to those of a line this many lines from the sung one,
      * each line a little later than the one before it.
      *

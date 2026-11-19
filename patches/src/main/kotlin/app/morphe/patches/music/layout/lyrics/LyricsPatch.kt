@@ -18,6 +18,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.registersUsed
@@ -94,6 +95,10 @@ val lyricsPatch = patch(
                 copyResources(
                     "lyricscurrentbutton",
                     ResourceGroup("drawable", "morphe_yt_crosshair.xml")
+                )
+                copyResources(
+                    "lyricssharebutton",
+                    ResourceGroup("drawable", "morphe_yt_share_bold.xml")
                 )
             }
         }
@@ -506,5 +511,29 @@ val lyricsPatch = patch(
             0,
             "invoke-static {}, $EXTENSION_CLASS->onPlayVideo()V",
         )
+    }
+
+    finalize {
+        // Run in finalize so GmsCore / package transforms have already updated manifest@package.
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            val packageName = manifest.root.attribute("package")
+                ?: "com.google.android.apps.youtube.music"
+            val authority = "$packageName.morphe.lyricsshare"
+            val providerName = "app.morphe.extension.music.patches.lyrics.ui.LyricsShareImageProvider"
+            val application = manifest.elements("application").first()
+            val existing = application.elements("provider").firstOrNull {
+                it.attribute("android:name") == providerName
+            }
+            if (existing != null) {
+                existing.setAttribute("android:authorities", authority)
+            } else {
+                application.appendChild("provider") {
+                    setAttribute("android:name", providerName)
+                    setAttribute("android:authorities", authority)
+                    setAttribute("android:exported", "false")
+                    setAttribute("android:grantUriPermissions", "true")
+                }
+            }
+        }
     }
 }
