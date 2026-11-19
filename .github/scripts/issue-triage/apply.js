@@ -1,0 +1,238 @@
+// Applies the triage decision from the analyze job to an issue.
+// The decision comes from text written by the issue author, so it is treated as untrusted:
+// every field is validated, and comments are built only from fixed text and issue numbers.
+
+const {
+  LABEL_POSSIBLE_DUPLICATE,
+  LABEL_WAITING_ON_AUTHOR,
+  LABEL_QUESTION,
+  LABEL_BUG,
+  LABEL_FEATURE,
+  DUPLICATE_MARKER,
+  ensureLabel,
+  removeLabelIfPresent,
+  commentAndDelete,
+  escapeHtml,
+} = require('./common.js');
+
+const UNSUPPORTED_APP_COMMENT = 'We accept patch requests for YouTube, YT Music, and Reddit.';
+
+const MAX_DUPLICATES = 3;
+
+// bug(YouTube): Summary, feat(YouTube / YT Music): Summary
+const TITLE_PATTERN = /^(bug|feat)\([^()\n]{1,40}\): \S.{2,110}$/;
+
+const MISSING_INFO_TEXT = {
+  steps_to_reproduce: 'Steps to reproduce the bug (Step 1. ... Step 2. ...)',
+  crash_logs: 'The crash logs, captured with `logcat | grep AndroidRuntime`',
+  screenshots: 'A screenshot or screen recording that shows the bug',
+  one_bug_per_issue: 'Only one bug per issue. Please edit this issue to keep one bug, and open a new issue for each of the others',
+};
+
+function validateTitle(title) {
+  if (typeof title !== 'string') return null;
+  const trimmed = title.trim();
+  if (!TITLE_PATTERN.test(trimmed)) return null;
+  // No mentions, links or HTML.
+  if (/[@<>]|https?:|www\./i.test(trimmed)) return null;
+  return trimmed;
+}
+
+async function validateDuplicates(github, owner, repo, issueNumber, numbers) {
+  if (!Array.isArray(numbers)) return [];
+
+  const valid = [];
+  for (const number of numbers) {
+    if (valid.length >= MAX_DUPLICATES) break;
+    if (!Number.isInteger(number) || number <= 0 || number === issueNumber) continue;
+    if (valid.includes(number)) continue;
+
+    let candidate;
+    try {
+      candidate = (await github.rest.issues.get({ owner, repo, issue_number: number })).data;
+    } catch (error) {
+      if (error.status !== 404 && error.status !== 410) throw error;
+      console.log(`Duplicate candidate #${number} does not exist`);
+      continue;
+    }
+    if (candidate.pull_request) {
+      console.log(`Duplicate candidate #${number} is a pull request`);
+      continue;
+    }
+    // A duplicate must be the older issue.
+    if (number > issueNumber) {
+      console.log(`Duplicate candidate #${number} is newer than #${issueNumber}`);
+      continue;
+    }
+    valid.push(number);
+  }
+  return valid;
+}
+
+function duplicateComment(duplicates) {
+  return [
+    `${DUPLICATE_MARKER} ${duplicates.join(' ')} -->`,
+    duplicates.length === 1
+      ? 'This issue may be a duplicate of an existing issue:'
+      : 'This issue may be a duplicate of existing issues:',
+    '',
+    ...duplicates.map((number) => `- #${number}`),
+    '',
+    'If it is, please close this issue and add a 👍 to the existing issue instead.',
+    '',
+    'This issue will be closed automatically in 3 days. To keep it open, add a comment that explains how it is different, or react to this comment with 👎.',
+  ].join('\n');
+}
+
+function missingInfoComment(missing) {
+  return [
+    'Thanks for the report. Please edit the issue to add:',
+    '',
+    ...missing.map((key) => `- ${MISSING_INFO_TEXT[key]}`),
+  ].join('\n');
+}
+
+module.exports = async ({ github, getOctokit, context, core }) => {
+  const { owner, repo } = context.repo;
+  const issueNumber = Number(process.env.ISSUE_NUMBER);
+  const live = process.env.TRIAGE_MODE === 'live';
+
+  let decision;
+  try {
+    decision = JSON.parse(process.env.DECISION || '');
+  } catch (error) {
+    core.setFailed(`Could not parse the triage decision: ${error.message}`);
+    return;
+  }
+
+  const { data: issue } = await github.rest.issues.get({ owner, repo, issue_number: issueNumber });
+  if (issue.state !== 'open') {
+    core.info(`#${issueNumber} is no longer open, nothing to do`);
+    return;
+  }
+
+  // Requests for apps that are not supported are deleted, nothing else is done.
+  if (decision.unsupported_app === true) {
+    await core.summary
+      .addHeading(`Triage of #${issueNumber}${live ? '' : ' (dry run)'}`, 3)
+      .addRaw(`Current title: ${escapeHtml(issue.title)}`, true)
+      .addBreak()
+      .addRaw(`Reasoning: ${escapeHtml(decision.reasoning || '(none)')}`, true)
+      .addList(['Request for an unsupported app: comment and delete'])
+      .write();
+    if (!live) {
+      core.info('Dry run. Set the repository variable ISSUE_TRIAGE_MODE to "live" to apply changes.');
+      return;
+    }
+    await commentAndDelete({ github, getOctokit, core, owner, repo, issue, comment: UNSUPPORTED_APP_COMMENT });
+    return;
+  }
+
+  const labels = issue.labels.map((label) => (typeof label === 'string' ? label : label.name));
+  const actions = [];
+
+  // Title. The prefix must match the type.
+  let title = validateTitle(decision.title);
+  if (title && (decision.type === 'bug' || decision.type === 'feature')) {
+    title = title.replace(/^(bug|feat)\(/, decision.type === 'bug' ? 'bug(' : 'feat(');
+  }
+  if (decision.title && !title) {
+    core.warning(`Ignoring invalid title: ${JSON.stringify(decision.title)}`);
+  }
+  if (title && title !== issue.title) {
+    actions.push({
+      description: `Rename to: ${title}`,
+      run: () => github.rest.issues.update({ owner, repo, issue_number: issueNumber, title }),
+    });
+  }
+
+  // Type
+  const typeLabels = { bug: LABEL_BUG, feature: LABEL_FEATURE, question: LABEL_QUESTION };
+  const typeLabel = typeLabels[decision.type];
+  if (typeLabel && !labels.includes(typeLabel)) {
+    actions.push({
+      description: `Add label: ${typeLabel}`,
+      run: () => github.rest.issues.addLabels({ owner, repo, issue_number: issueNumber, labels: [typeLabel] }),
+    });
+  }
+  if (typeLabel === LABEL_BUG || typeLabel === LABEL_FEATURE) {
+    const otherLabel = typeLabel === LABEL_BUG ? LABEL_FEATURE : LABEL_BUG;
+    if (labels.includes(otherLabel)) {
+      actions.push({
+        description: `Remove label: ${otherLabel}`,
+        run: () => removeLabelIfPresent(github, owner, repo, issueNumber, otherLabel),
+      });
+    }
+  }
+
+  // Duplicates
+  const duplicates = await validateDuplicates(github, owner, repo, issueNumber, decision.duplicates);
+  if (duplicates.length > 0) {
+    actions.push({
+      description: `Possible duplicate of ${duplicates.map((n) => `#${n}`).join(', ')}`,
+      run: async () => {
+        await ensureLabel(github, owner, repo, LABEL_POSSIBLE_DUPLICATE);
+        await github.rest.issues.createComment({
+          owner,
+          repo,
+          issue_number: issueNumber,
+          body: duplicateComment(duplicates),
+        });
+        await github.rest.issues.addLabels({
+          owner,
+          repo,
+          issue_number: issueNumber,
+          labels: [LABEL_POSSIBLE_DUPLICATE],
+        });
+      },
+    });
+  }
+
+  // Missing information. Only for bugs, and not when a duplicate comment is posted.
+  const missing = Array.isArray(decision.missing_info)
+    ? [...new Set(decision.missing_info.filter((key) => key in MISSING_INFO_TEXT))]
+    : [];
+  if (decision.type === 'bug' && duplicates.length === 0 && missing.length > 0) {
+    actions.push({
+      description: `Ask for: ${missing.join(', ')}`,
+      run: async () => {
+        await github.rest.issues.createComment({
+          owner,
+          repo,
+          issue_number: issueNumber,
+          body: missingInfoComment(missing),
+        });
+        await github.rest.issues.addLabels({
+          owner,
+          repo,
+          issue_number: issueNumber,
+          labels: [LABEL_WAITING_ON_AUTHOR],
+        });
+      },
+    });
+  }
+
+  const summary = core.summary
+    .addHeading(`Triage of #${issueNumber}${live ? '' : ' (dry run)'}`, 3)
+    .addRaw(`Current title: ${escapeHtml(issue.title)}`, true)
+    .addBreak()
+    .addRaw(`Reasoning: ${escapeHtml(decision.reasoning || '(none)')}`, true);
+  if (actions.length === 0) {
+    summary.addRaw('<p>No changes.</p>', true);
+  } else {
+    summary.addList(actions.map((action) => escapeHtml(action.description)));
+  }
+  await summary.write();
+
+  if (!live) {
+    core.info('Dry run. Set the repository variable ISSUE_TRIAGE_MODE to "live" to apply changes.');
+    return;
+  }
+
+  for (const action of actions) {
+    core.info(action.description);
+    await action.run();
+  }
+};
+
+module.exports.validateTitle = validateTitle;
