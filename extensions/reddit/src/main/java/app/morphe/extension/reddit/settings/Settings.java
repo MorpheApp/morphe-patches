@@ -34,6 +34,15 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_DISCOVER_BUTTON = new BooleanSetting("morphe_hide_discover_button", FALSE, true);
     public static final BooleanSetting HIDE_GAMES_BUTTON = new BooleanSetting("morphe_hide_games_button", FALSE, true);
 
+    // Post buttons
+    public static final BooleanSetting HIDE_POST_AWARD_BUTTON = new BooleanSetting("morphe_hide_post_award_button", FALSE, true);
+    public static final BooleanSetting HIDE_POST_COMMENT_BUTTON = new BooleanSetting("morphe_hide_post_comment_button", FALSE, true);
+    public static final BooleanSetting HIDE_POST_JOIN_BUTTON = new BooleanSetting("morphe_hide_post_join_button", FALSE, true);
+    public static final BooleanSetting HIDE_POST_MOD_BUTTON = new BooleanSetting("morphe_hide_post_mod_button", FALSE, true);
+    public static final BooleanSetting HIDE_POST_REPOST_BUTTON = new BooleanSetting("morphe_hide_post_repost_button", FALSE, true);
+    public static final BooleanSetting HIDE_POST_SHARE_BUTTON = new BooleanSetting("morphe_hide_post_share_button", FALSE, true);
+    public static final BooleanSetting HIDE_POST_VOTE_BUTTONS = new BooleanSetting("morphe_hide_post_vote_buttons", FALSE, true);
+
     // Sidebar
     public static final BooleanSetting HIDE_ABOUT_SHELF = new BooleanSetting("morphe_hide_about_shelf", FALSE, true);
     public static final BooleanSetting HIDE_DISCOVER_COMMUNITIES_SHELF = new BooleanSetting("morphe_hide_discover_communities_shelf", FALSE, true);

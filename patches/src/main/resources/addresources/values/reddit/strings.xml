@@ -47,6 +47,16 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
     <string name="morphe_hide_about_shelf_title">Hide About shelf</string>
 
+    <string name="morphe_screen_post_buttons_title">Post buttons</string>
+    <string name="morphe_hide_post_award_button_title">Hide Award button</string>
+    <string name="morphe_hide_post_comment_button_title">Hide Comment button</string>
+    <string name="morphe_hide_post_join_button_title">Hide Join button</string>
+    <string name="morphe_hide_post_mod_button_title">Hide Mod button</string>
+    <string name="morphe_hide_post_repost_button_title">Hide Repost button</string>
+    <string name="morphe_hide_post_share_button_title">Hide Share button</string>
+    <string name="morphe_hide_post_vote_buttons_title">Hide Vote buttons</string>
+    <string name="morphe_hide_post_vote_buttons_summary">Hides the Upvote and Downvote buttons</string>
+
     <string name="morphe_screen_filters_title">Filters</string>
     <string name="morphe_flair_filters_title">Flair filters</string>
     <string name="morphe_flair_filters_summary">Hide feed posts with a flair of a community. Matching ignores case</string>
