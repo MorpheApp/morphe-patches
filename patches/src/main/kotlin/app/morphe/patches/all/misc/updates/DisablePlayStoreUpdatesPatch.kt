@@ -87,10 +87,7 @@ internal val disablePlayStoreUpdatesPatch = patch(
                     opcode = Opcode.IGET,
                     smali = "Landroid/content/pm/PackageInfo;->versionCode:I"
                 )
-            ),
-            custom = { _, classDef ->
-                !classDef.type.startsWith("Lapp/morphe/extension")
-            }
+            )
         ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
             val instruction = this.getInstruction<TwoRegisterInstruction>(index)
             val moveResultRegister = instruction.registerA
