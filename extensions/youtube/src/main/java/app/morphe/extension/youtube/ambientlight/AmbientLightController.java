@@ -20,8 +20,11 @@ import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Shader;
+import android.graphics.Xfermode;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
@@ -217,6 +220,7 @@ public final class AmbientLightController {
     private static final int[] windowFilterMul = {0xFFFFFF, 0xFFFFFF};
     private static final int[] windowFilterAdd = new int[2];
     private static final Paint windowColorPaint = new Paint();
+    private static final Xfermode REPLACING = new PorterDuffXfermode(PorterDuff.Mode.SRC);
     private static final Matrix windowShaderMatrix = new Matrix();
     @Nullable
     private static BitmapShader windowShader;
@@ -1242,13 +1246,16 @@ public final class AmbientLightController {
      * @param covered The part of the window that is drawn again over this view, or null.
      * @param hidesVideo If the view hides the video, as a panel dragged up over the player does,
      *                   so the light is drawn where the video is too.
+     * @param replaces If the light replaces what the window holds there, in place of going over it.
+     *                 Nothing is drawn under the view that lies under everything else, and a
+     *                 buffer of the window holds anything there until it is drawn.
      * @return False if the surfaces show the light, and nothing was drawn.
      */
     static boolean drawWindowLight(Canvas canvas, View view, boolean onPage, float alpha, @Nullable Rect covered,
-                                   boolean hidesVideo) {
+                                   boolean hidesVideo, boolean replaces) {
         if (!veiled) return false;
         // Not before the first light of this video.
-        if (alpha <= 0f || !pageCleared) return true;
+        if (!pageCleared || (alpha <= 0f && !replaces)) return true;
 
         View root = rootRef.get();
         BitmapShader shader = windowShader;
@@ -1285,6 +1292,7 @@ public final class AmbientLightController {
             shader.setLocalMatrix(windowShaderMatrix);
         }
         paint.setAlpha(Math.round(255 * alpha));
+        paint.setXfermode(replaces ? REPLACING : null);
 
         // Not where the video is, and not where the light is drawn again over this view: the
         // player draws its own light around the video. A view that hides the video shows the light there too.
