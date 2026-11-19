@@ -971,8 +971,10 @@ public final class WordAnimationUtils {
         Layout unconstrainedResult = useRunAdvance ? null : createStaticLayout(
                 mainText, lyricPaint, Integer.MAX_VALUE / 4, Layout.Alignment.ALIGN_NORMAL, false);
 
-        float[] sylSlotWidths = new float[alignedSyllables.size()];
-        for (int sylIdx = 0; sylIdx < alignedSyllables.size(); sylIdx++) {
+        final int nSyl = alignedSyllables.size();
+        final float minClusterGap = Math.max(1.5f, fontSizePx * 0.05f);
+        float[] sylSlotWidths = new float[nSyl];
+        for (int sylIdx = 0; sylIdx < nSyl; sylIdx++) {
             AlignedSyllable syl = alignedSyllables.get(sylIdx);
             float mainWidth = Math.max(1f, measureMainSpanWidth(
                     mainText, syl.startOffset, syl.endOffset, lyricPaint, unconstrainedResult));
@@ -981,6 +983,12 @@ public final class WordAnimationUtils {
                 String rt = resolvedRoman.texts[sylIdx];
                 if (rt != null && !rt.trim().isEmpty()) {
                     romWidth = measureRunWidth(rt, romRunPaint);
+                    if (!rt.endsWith(" ") && sylIdx + 1 < nSyl) {
+                        String nextRt = resolvedRoman.texts[sylIdx + 1];
+                        if (nextRt != null && !nextRt.trim().isEmpty()) {
+                            romWidth += minClusterGap;
+                        }
+                    }
                 }
             }
             float rubyWidth = 0f;
@@ -988,6 +996,12 @@ public final class WordAnimationUtils {
                 String rb = syl.syllable.ruby;
                 if (rb != null && !rb.trim().isEmpty()) {
                     rubyWidth = measureRunWidth(rb.trim(), rubyRunPaint);
+                    if (sylIdx + 1 < nSyl) {
+                        String nextRb = alignedSyllables.get(sylIdx + 1).syllable.ruby;
+                        if (nextRb != null && !nextRb.trim().isEmpty()) {
+                            rubyWidth += minClusterGap;
+                        }
+                    }
                 }
             }
             sylSlotWidths[sylIdx] = Math.max(Math.max(mainWidth, romWidth), rubyWidth);
@@ -1284,16 +1298,44 @@ public final class WordAnimationUtils {
                 AlignedSyllable syl = alignedSyllables.get(idx);
                 int safeStart = Math.max(0, Math.min(maxCharIdx, syl.startOffset));
                 int li = mainText.isEmpty() ? 0 : textLayoutResult.getLineForOffset(safeStart);
+                int spanEndOffset = syl.endOffset;
+                long spanEndMs = resolved.endMs[idx];
+                int holeIdx = idx + 1;
+                while (holeIdx < n) {
+                    String nextRom = resolved.texts[holeIdx];
+                    if (nextRom != null && !nextRom.trim().isEmpty()) {
+                        break;
+                    }
+                    AlignedSyllable nextSyl = alignedSyllables.get(holeIdx);
+                    if (nextSyl.startOffset != spanEndOffset) {
+                        break;
+                    }
+                    int nextSafeStart = Math.max(0, Math.min(maxCharIdx, nextSyl.startOffset));
+                    if (!mainText.isEmpty() && textLayoutResult.getLineForOffset(nextSafeStart) != li) {
+                        break;
+                    }
+                    String holeSlice = mainText.substring(
+                            Math.max(0, Math.min(mainText.length(), nextSyl.startOffset)),
+                            Math.max(0, Math.min(mainText.length(), nextSyl.endOffset)));
+                    if (!LyricsWordBoundaries.hasCjkCodePoint(holeSlice)) {
+                        break;
+                    }
+                    spanEndOffset = nextSyl.endOffset;
+                    if (resolved.endMs[holeIdx] > spanEndMs) {
+                        spanEndMs = resolved.endMs[holeIdx];
+                    }
+                    holeIdx++;
+                }
                 Layout subLayout = measureRunWithConfiguredPaint(text, configuredRomPaint, false);
                 float hPos = textLayoutResult.getPrimaryHorizontal(Math.min(syl.startOffset, mainText.length()));
                 result.add(new RomanizedWordCluster(
                         idx,
                         syl.startOffset,
-                        syl.endOffset,
+                        spanEndOffset,
                         text,
                         li,
                         resolved.startMs[idx],
-                        resolved.endMs[idx],
+                        spanEndMs,
                         hPos,
                         subLayout
                 ));
@@ -1352,7 +1394,11 @@ public final class WordAnimationUtils {
             List<RomanizedWordCluster> romanClusters,
             List<RomanizedWordCluster> rubyClusters,
             Layout.Alignment alignment) {
-        float[] shiftByWordIndex = new float[romanClusters.size() + rubyClusters.size() + alignedSyllables.size() + 1];
+        final float fontSizePx = textLayoutResult.getPaint() != null
+                ? textLayoutResult.getPaint().getTextSize()
+                : 0f;
+        final int nSyl = alignedSyllables.size();
+        float[] shiftByWordIndex = new float[nSyl * 2 + romanClusters.size() + rubyClusters.size() + 2];
         float[] lineTotalExtra = new float[Math.max(1, lineCount)];
         if ((romanClusters.isEmpty() && rubyClusters.isEmpty()) || LyricsSpanBuilder.isRtlText(mainText) || LyricsTextUtils.containsJoiningScript(mainText)) {
             return new float[][]{shiftByWordIndex, lineTotalExtra};
@@ -1369,11 +1415,13 @@ public final class WordAnimationUtils {
             rubyMap.put(rc.wordIndex, rc);
         }
 
+        float[] deferredExtraAfterSyl = new float[nSyl];
         float runningShift = 0f;
         int currentLine = -1;
         int maxCharIdx = Math.max(0, mainText.length() - 1);
+        final float minClusterGap = Math.max(1.5f, fontSizePx * 0.05f);
 
-        for (int sylIdx = 0; sylIdx < alignedSyllables.size(); sylIdx++) {
+        for (int sylIdx = 0; sylIdx < nSyl; sylIdx++) {
             AlignedSyllable syl = alignedSyllables.get(sylIdx);
             int li = mainText.isEmpty() ? 0 : textLayoutResult.getLineForOffset(Math.max(0, Math.min(maxCharIdx, syl.startOffset)));
             if (li != currentLine) {
@@ -1381,22 +1429,37 @@ public final class WordAnimationUtils {
                 runningShift = 0f;
             }
 
-            if (sylIdx < shiftByWordIndex.length) {
-                shiftByWordIndex[sylIdx] = runningShift;
-            }
+            shiftByWordIndex[sylIdx] = runningShift;
 
             RomanizedWordCluster cluster = clusterMap.get(sylIdx);
             RomanizedWordCluster rubyCluster = rubyMap.get(sylIdx);
-            if (cluster == null && rubyCluster == null) continue;
+            if (cluster == null && rubyCluster == null) {
+                runningShift += deferredExtraAfterSyl[sylIdx];
+                shiftByWordIndex[nSyl + sylIdx] = runningShift;
+                continue;
+            }
 
-            int sylEndLine = mainText.isEmpty() ? 0 : textLayoutResult.getLineForOffset(Math.min(syl.endOffset, maxCharIdx));
+            int spanEndOff = Math.max(syl.endOffset,
+                    Math.max(cluster != null ? cluster.endIndex : 0, rubyCluster != null ? rubyCluster.endIndex : 0));
+            int lastCoveredSyl = sylIdx;
+            while (lastCoveredSyl + 1 < nSyl
+                    && alignedSyllables.get(lastCoveredSyl + 1).endOffset <= spanEndOff) {
+                int candLine = mainText.isEmpty() ? 0 : textLayoutResult.getLineForOffset(
+                        Math.max(0, Math.min(maxCharIdx, alignedSyllables.get(lastCoveredSyl + 1).startOffset)));
+                if (candLine != li) {
+                    break;
+                }
+                lastCoveredSyl++;
+            }
+
+            int sylEndLine = mainText.isEmpty() ? 0 : textLayoutResult.getLineForOffset(Math.min(spanEndOff, maxCharIdx));
             int lineEndOff = getVisibleLineEnd(textLayoutResult, mainText, li);
 
-            int effectiveEndOff = syl.endOffset;
-            if (li == sylEndLine && sylIdx + 1 < alignedSyllables.size()) {
-                AlignedSyllable nextSyl = alignedSyllables.get(sylIdx + 1);
+            int effectiveEndOff = spanEndOff;
+            if (li == sylEndLine && lastCoveredSyl + 1 < nSyl) {
+                AlignedSyllable nextSyl = alignedSyllables.get(lastCoveredSyl + 1);
                 int nextLi = mainText.isEmpty() ? 0 : textLayoutResult.getLineForOffset(Math.max(0, Math.min(maxCharIdx, nextSyl.startOffset)));
-                if (nextLi == li && nextSyl.startOffset > syl.endOffset) {
+                if (nextLi == li && nextSyl.startOffset > spanEndOff) {
                     effectiveEndOff = nextSyl.startOffset;
                 }
             }
@@ -1407,26 +1470,39 @@ public final class WordAnimationUtils {
                     : charXMap[Math.max(0, Math.min(charXMap.length - 1, lineEndOff))];
             float mainWidth = Math.max(1f, endX - startX);
             float romWidth = (cluster != null) ? cluster.romanWidth : 0f;
+            if (cluster != null && !cluster.romanText.endsWith(" ")
+                    && lastCoveredSyl + 1 < nSyl && clusterMap.containsKey(lastCoveredSyl + 1)) {
+                romWidth += minClusterGap;
+            }
             float rubyWidth = (rubyCluster != null) ? rubyCluster.romanWidth : 0f;
+            if (rubyCluster != null && lastCoveredSyl + 1 < nSyl && rubyMap.containsKey(lastCoveredSyl + 1)) {
+                rubyWidth += minClusterGap;
+            }
             float slotSubWidth = Math.max(romWidth, rubyWidth);
 
             if (slotSubWidth > mainWidth) {
                 float extra = slotSubWidth - mainWidth;
-                runningShift += extra;
+                if (lastCoveredSyl > sylIdx) {
+                    deferredExtraAfterSyl[lastCoveredSyl] += extra;
+                } else {
+                    runningShift += extra;
+                }
                 if (li >= 0 && li < lineTotalExtra.length) {
                     lineTotalExtra[li] += extra;
                 }
             }
+            runningShift += deferredExtraAfterSyl[sylIdx];
+            shiftByWordIndex[nSyl + sylIdx] = runningShift;
         }
 
         if (alignment == Layout.Alignment.ALIGN_CENTER || alignment == Layout.Alignment.ALIGN_OPPOSITE) {
-            for (int idx = 0; idx < shiftByWordIndex.length; idx++) {
-                if (idx >= alignedSyllables.size()) continue;
+            for (int idx = 0; idx < nSyl; idx++) {
                 AlignedSyllable syl = alignedSyllables.get(idx);
                 int li = mainText.isEmpty() ? 0 : textLayoutResult.getLineForOffset(Math.max(0, Math.min(maxCharIdx, syl.startOffset)));
                 float totalExtra = (li >= 0 && li < lineTotalExtra.length) ? lineTotalExtra[li] : 0f;
                 float correction = (alignment == Layout.Alignment.ALIGN_CENTER) ? (totalExtra / 2f) : totalExtra;
                 shiftByWordIndex[idx] -= correction;
+                shiftByWordIndex[nSyl + idx] -= correction;
             }
         }
 
@@ -1843,6 +1919,7 @@ public final class WordAnimationUtils {
                             : charXMap[Math.max(0, Math.min(charXMap.length - 1, c.endIndex))];
                 }
             } else {
+                float[] baseDrawX = new float[n];
                 for (int i = 0; i < n; i++) {
                     RomanizedWordCluster c = cs.get(i);
                     float gx = (c.startIndex < 0)
@@ -1851,7 +1928,7 @@ public final class WordAnimationUtils {
                     float shift = (c.wordIndex >= 0 && c.wordIndex < romanStartShift.length)
                             ? romanStartShift[c.wordIndex]
                             : 0f;
-                    drawX[i] = gx - lineStart + lineLeft + shift;
+                    baseDrawX[i] = gx - lineStart + lineLeft + shift;
                     mainStart[i] = (charXMap.length == 0)
                             ? 0f
                             : charXMap[Math.max(0, Math.min(charXMap.length - 1, c.startIndex))];
@@ -1862,6 +1939,28 @@ public final class WordAnimationUtils {
                     if (c.wordIndex > maxWordIdx) {
                         maxWordIdx = c.wordIndex;
                     }
+                }
+                for (int i = 0; i < n; i++) {
+                    RomanizedWordCluster c = cs.get(i);
+                    float dx = baseDrawX[i];
+                    float mainSpanW = mainEnd[i] - mainStart[i];
+                    int trimLen = c.romanText.length();
+                    while (trimLen > 0 && c.romanText.charAt(trimLen - 1) == ' ') {
+                        trimLen--;
+                    }
+                    float visRomW = (trimLen < c.romanText.length() && trimLen > 0
+                            && c.subLayout.getText().length() >= trimLen)
+                            ? Math.max(1f, c.subLayout.getPrimaryHorizontal(trimLen))
+                            : c.romanWidth;
+                    if (mainSpanW > visRomW + 1f && (c.endIndex - c.startIndex <= 4)) {
+                        float centerOffset = (mainSpanW - visRomW) * 0.5f;
+                        if (i + 1 < n) {
+                            float maxOffset = Math.max(0f, baseDrawX[i + 1] - dx - c.romanWidth);
+                            centerOffset = Math.min(centerOffset, maxOffset);
+                        }
+                        dx += Math.max(0f, centerOffset);
+                    }
+                    drawX[i] = dx;
                 }
             }
 
@@ -2024,7 +2123,8 @@ public final class WordAnimationUtils {
         if (lines.length == 0) return;
 
         float pad = romanStatics.extraPaddingPx();
-        float halfGradientWidth = gradientWidth * 0.5f;
+        float subGradientWidth = Math.max(1f, gradientWidth * 0.7f);
+        float halfGradientWidth = subGradientWidth * 0.5f;
         int inactiveColor = Color.TRANSPARENT;
         if (!isActiveLine) {
             int baseColor = (lineColor != Color.TRANSPARENT) ? lineColor : expressiveAccent;
@@ -2080,7 +2180,7 @@ public final class WordAnimationUtils {
             if (isLineInPast) {
                 curRomGX = Float.MAX_VALUE;
             } else if (isLineInFuture || activeSylIdx == -1) {
-                curRomGX = -gradientWidth * 2f;
+                curRomGX = -subGradientWidth * 2f;
             } else if (line.isRtl) {
                 int activeClusterIdx = -1;
                 for (int i = 0; i < n; i++) {
@@ -2096,9 +2196,9 @@ public final class WordAnimationUtils {
                     int lastWordIdx = cs.get(n - 1).wordIndex;
                     int firstWordIdx = cs.get(0).wordIndex;
                     if (activeSylIdx > lastWordIdx) {
-                        curRomGX = line.lastRomEnd + gradientWidth * 2f;
+                        curRomGX = line.lastRomEnd + subGradientWidth * 2f;
                     } else if (activeSylIdx < firstWordIdx) {
-                        curRomGX = -gradientWidth * 2f;
+                        curRomGX = -subGradientWidth * 2f;
                     } else {
                         float foundEnd = 0f;
                         for (int i = 0; i < n; i++) {
@@ -2142,12 +2242,9 @@ public final class WordAnimationUtils {
             boolean activeWordInLine = activeSylIdx >= 0
                     && activeSylIdx < line.hasWordIndex.length
                     && line.hasWordIndex[activeSylIdx];
-            float romLineW = Math.max(1f, line.lastRomEnd);
-            float romLineProg = Math.max(0f, Math.min(1f, curRomGX / romLineW));
-            float endBoost = ((li == activeLineIdx || activeWordInLine) && isActiveSylLastOfLine)
+            float brushShift = ((li == activeLineIdx || activeWordInLine) && isActiveSylLastOfLine)
                     ? (activeSylProgress * halfGradientWidth)
                     : 0f;
-            float brushShift = Math.max(romLineProg * halfGradientWidth, endBoost);
             float localX = curRomGX + brushShift;
             final boolean smoothSweep = Settings.LYRICS_WORD_SMOOTH_SWEEP.get();
 
@@ -2184,7 +2281,7 @@ public final class WordAnimationUtils {
                     float bandEndRel;
                     if (localX < halfGradientWidth) {
                         float growProgress = Math.max(0f, Math.min(1f, localX / halfGradientWidth));
-                        float growWidth = Math.max(0.1f, gradientWidth * growProgress);
+                        float growWidth = Math.max(0.1f, subGradientWidth * growProgress);
                         bandStartRel = -localStart;
                         bandEndRel = growWidth - localStart;
                     } else {

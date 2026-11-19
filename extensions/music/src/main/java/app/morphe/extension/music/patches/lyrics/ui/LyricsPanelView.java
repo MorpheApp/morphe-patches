@@ -2079,6 +2079,11 @@ public final class LyricsPanelView extends FrameLayout
     private void addTagRow(Context context, LinearLayout lineRow, @Nullable TextView sectionTag,
                            @Nullable TextView agentTag, int i, boolean isRightAligned,
                            int duetSideInset) {
+        final boolean showSection = Settings.LYRICS_SHOW_SECTION.get();
+        GapLineView gv = gapLineViewsByLine.get(i);
+        if (gv != null) {
+            gv.setHasTagBelow(showSection);
+        }
         FrameLayout tagRow = new FrameLayout(context);
         if (sectionTag != null) {
             tagRow.addView(sectionTag, tagLayoutParams(isRightAligned));
@@ -2094,7 +2099,7 @@ public final class LyricsPanelView extends FrameLayout
             }
             tagRow.addView(agentTag, lp);
         }
-        lineRow.addView(tagRow, tagRowLayoutParams(i, Settings.LYRICS_SHOW_SECTION.get()));
+        lineRow.addView(tagRow, tagRowLayoutParams(i, showSection));
     }
 
     /** Adds the dots of the break before a line, if a break ends at that line. */
@@ -2455,15 +2460,23 @@ public final class LyricsPanelView extends FrameLayout
                 continue;
             }
             final boolean near = isRowNearViewport(nearViewport, i);
+            final boolean hasRoma = view.hasRomanizationRegion() || view.rubyActive;
             if (contentInBuild) {
+                if (view.transStart >= 0 && (view.transReveal < 0.999f || view.transScaleProgress < 0.999f)) {
+                    view.setRegionAnimProgress(true, 1f, 1f);
+                }
+                if (hasRoma && (view.romaReveal < 0.999f || view.romaScaleProgress < 0.999f)) {
+                    view.setRegionAnimProgress(false, 1f, 1f);
+                }
                 if (near) {
                     view.startContentIn();
                 } else {
                     view.contentReveal = 1f;
                 }
             } else if (near) {
-                if (view.transStart >= 0 && freshTrans != null && i < freshTrans.length && freshTrans[i]) {
-                    if (view.transReveal < 0.99f) {
+                final boolean transIncomplete = view.transReveal < 0.999f || view.transScaleProgress < 0.999f;
+                if (view.transStart >= 0 && ((freshTrans != null && i < freshTrans.length && freshTrans[i]) || transIncomplete)) {
+                    if (view.transReveal < 0.99f || view.transScaleProgress < 0.99f) {
                         view.prepareBatchRegionIn(true);
                         if (transEnterViews == null) transEnterViews = new ArrayList<>();
                         transEnterViews.add(view);
@@ -2475,9 +2488,9 @@ public final class LyricsPanelView extends FrameLayout
                     if (transExitViews == null) transExitViews = new ArrayList<>();
                     transExitViews.add(view);
                 }
-                final boolean hasRoma = view.hasRomanizationRegion() || view.rubyActive;
-                if (hasRoma && freshRoma != null && i < freshRoma.length && freshRoma[i]) {
-                    if (view.romaReveal < 0.99f) {
+                final boolean romaIncomplete = view.romaReveal < 0.999f || view.romaScaleProgress < 0.999f;
+                if (hasRoma && ((freshRoma != null && i < freshRoma.length && freshRoma[i]) || romaIncomplete)) {
+                    if (view.romaReveal < 0.99f || view.romaScaleProgress < 0.99f) {
                         view.prepareBatchRegionIn(false);
                         if (romaEnterViews == null) romaEnterViews = new ArrayList<>();
                         romaEnterViews.add(view);
@@ -2490,10 +2503,12 @@ public final class LyricsPanelView extends FrameLayout
                     romaExitViews.add(view);
                 }
             } else {
-                if (view.transStart >= 0 && freshTrans != null && i < freshTrans.length && freshTrans[i]) {
+                if (view.transStart >= 0 && ((freshTrans != null && i < freshTrans.length && freshTrans[i])
+                        || view.transReveal < 0.999f || view.transScaleProgress < 0.999f)) {
                     view.setRegionAnimProgress(true, 1f, 1f);
                 }
-                if ((view.hasRomanizationRegion() || view.rubyActive) && freshRoma != null && i < freshRoma.length && freshRoma[i]) {
+                if (hasRoma && ((freshRoma != null && i < freshRoma.length && freshRoma[i])
+                        || view.romaReveal < 0.999f || view.romaScaleProgress < 0.999f)) {
                     view.setRegionAnimProgress(false, 1f, 1f);
                 }
             }
@@ -4340,8 +4355,12 @@ public final class LyricsPanelView extends FrameLayout
      * lines sung together by several singers}
      */
     private int activeGroupEdge(int targetIndex, boolean forward) {
-        if (targetIndex < 0 || targetIndex >= lineRows.size()
-                || activeIndicesSet.size() <= 1 || !activeIndicesSet.contains(targetIndex)) {
+        if (targetIndex < 0 || targetIndex >= lineRows.size()) {
+            return targetIndex;
+        }
+        final boolean targetActive = activeIndicesSet.contains(targetIndex)
+                || targetIndex == primaryActiveIndex;
+        if (!targetActive || (activeIndicesSet.isEmpty() && targetIndex != primaryActiveIndex)) {
             return targetIndex;
         }
         final int step = forward ? 1 : -1;
@@ -4352,6 +4371,12 @@ public final class LyricsPanelView extends FrameLayout
             }
             if (!activeIndicesSet.contains(scan)) {
                 break;
+            }
+            if (!forward && retimedLyrics != null && scan < retimedLyrics.size() && lastLivePosMs > 0L) {
+                LyricsRetiming.RetimedEntry cand = retimedLyrics.get(scan);
+                if (lastLivePosMs + LyricsRetiming.SCROLL_LOOK_AHEAD_MIN_MS >= cand.effectiveEndMs()) {
+                    break;
+                }
             }
             edge = scan;
         }
@@ -4391,6 +4416,9 @@ public final class LyricsPanelView extends FrameLayout
         final int runEnd = activeGroupEdge(targetIndex, true);
         int top = Integer.MAX_VALUE;
         int bottom = Integer.MIN_VALUE;
+        final int targetRowTop = targetRow.getTop() + pendingGapDeltaBefore(targetIndex);
+        final int targetRowH = targetRow.getHeight() > 0 ? targetRow.getHeight() : getPrimaryChildHeight(targetRow);
+        final int targetRowBottom = targetRowTop + targetRowH;
         View prevRow = null;
         for (int i = runStart; i <= runEnd; i++) {
             View row = lineRows.get(i);
@@ -4402,14 +4430,19 @@ public final class LyricsPanelView extends FrameLayout
             bottom = Math.max(bottom, rowTop + (row.getHeight() > 0 ? row.getHeight() : getPrimaryChildHeight(row)));
         }
         if (top == Integer.MAX_VALUE) {
-            return Math.max(0, targetRow.getTop() - anchorPx);
+            return Math.max(0, targetRowTop - anchorPx);
         }
 
-        // A run taller than the screen shows its end, where the singing is.
+        // Keep simultaneous duet pairs anchored together, while ensuring sequential 3+ line
+        // overlaps or long-held upper vocals never trap the newly active primary line down low.
         int targetTop = top;
+        final int comfortH = Math.max(Dim.dp(140), Math.round((viewportH - anchorPx) * 0.45f));
+        if (targetRowBottom - targetTop > comfortH && comfortH > 0) {
+            targetTop = Math.min(targetRowTop, Math.max(targetTop, targetRowBottom - comfortH));
+        }
         final int availableH = viewportH - anchorPx - Dim.dp(80);
-        if (bottom - top > availableH && availableH > 0) {
-            targetTop = bottom - availableH;
+        if (bottom - targetTop > availableH && availableH > 0) {
+            targetTop = Math.max(targetTop, bottom - availableH);
         }
         return Math.max(0, targetTop - anchorPx);
     }
@@ -4447,12 +4480,14 @@ public final class LyricsPanelView extends FrameLayout
 
     /** Scrolls to a line together with the rest of the active run it starts. */
     private void scrollToRow(int targetY, int index, long lookAheadMs, long timeGapMs) {
-        final View targetView = lineRows.get(index);
+        final int startIdx = activeGroupEdge(index, false);
+        final View targetView = lineRowAt(startIdx) != null ? lineRowAt(startIdx) : lineRows.get(index);
         final int endIdx = computeActiveGroupEndIndex(index);
         final View endView = lineRowAt(endIdx);
-        final int refIdx = scrollReferenceIndex(index);
+        final int rawRef = scrollReferenceIndex(startIdx);
+        final int refIdx = startIdx < index ? Math.min(rawRef, startIdx) : rawRef;
         final View refView = lineRowAt(refIdx);
-        scrollEngine.scrollTo(targetY, targetView, index, endView != null ? endView : targetView, endIdx,
+        scrollEngine.scrollTo(targetY, targetView, startIdx, endView != null ? endView : targetView, endIdx,
                 refView != null ? refView : targetView, refIdx, lookAheadMs, timeGapMs, false);
     }
 
@@ -5014,8 +5049,9 @@ public final class LyricsPanelView extends FrameLayout
                     clamped = gapScrollTarget(gv);
                 } else if (lineRow != null && lineRow.getTop() > 0) {
                     // The dots are not laid out yet, but go right above the line.
+                    int openGapH = gv != null ? gv.targetOpenHeightPx() : Dim.dp(GapLineView.TARGET_HEIGHT_DP);
                     clamped = Math.max(0, lineRow.getTop() + pendingGapDeltaBefore(targetIdx)
-                            - Dim.dp(GapLineView.TARGET_HEIGHT_DP) - anchorPx);
+                            - openGapH - anchorPx);
                 } else {
                     clamped = -1;
                 }
@@ -5049,9 +5085,12 @@ public final class LyricsPanelView extends FrameLayout
 
             if (primaryActiveIndex >= 0 && primaryActiveIndex < lineRows.size()) {
                 final int clamped = computeBlockScrollTargetY(primaryActiveIndex);
-                if (clamped >= 0 && (isSeek || primaryChanged || creditActiveChanged || lastScrollTarget < 0)) {
-                    lastScrollTarget = clamped;
-                    scrollToRow(clamped, primaryActiveIndex, scrollLookAheadMs, interLineGapMs);
+                final boolean groupShifted = activeSetChanged && clamped != lastScrollTarget;
+                if (clamped >= 0 && (isSeek || primaryChanged || groupShifted || creditActiveChanged || lastScrollTarget < 0)) {
+                    if (clamped != lastScrollTarget || isSeek || primaryChanged) {
+                        lastScrollTarget = clamped;
+                        scrollToRow(clamped, primaryActiveIndex, scrollLookAheadMs, interLineGapMs);
+                    }
                 }
             }
         } catch (Exception ex) {
@@ -5593,18 +5632,23 @@ public final class LyricsPanelView extends FrameLayout
         return tag;
     }
 
-    private static FrameLayout.LayoutParams tagRowLayoutParams(int lineIndex, boolean showSection) {
+    private FrameLayout.LayoutParams tagRowLayoutParams(int lineIndex, boolean showSection) {
         FrameLayout.LayoutParams params = slotLayoutParams();
         applyTagRowMargins(params, lineIndex, showSection);
         return params;
     }
 
-    private static void applyTagRowMargins(ViewGroup.MarginLayoutParams mlp, int lineIndex, boolean showSection) {
-        mlp.topMargin = (showSection && lineIndex > 0) ? Dim.dp20 : 0;
-        mlp.bottomMargin = showSection ? Dim.dp(6) : 0;
+    private void applyTagRowMargins(ViewGroup.MarginLayoutParams mlp, int lineIndex, boolean showSection) {
+        if (!showSection) {
+            mlp.topMargin = 0;
+            mlp.bottomMargin = 0;
+            return;
+        }
+        mlp.topMargin = lineIndex > 0 ? Dim.dp20 : (gapLineViewsByLine.get(0) != null ? Dim.dp(6) : 0);
+        mlp.bottomMargin = Dim.dp(6);
     }
 
-    private static void applyTagListVisibility(List<TextView> tags, boolean showSection, int visibility) {
+    private void applyTagListVisibility(List<TextView> tags, boolean showSection, int visibility) {
         for (int i = 0; i < tags.size(); i++) {
             TextView tag = tags.get(i);
             if (tag == null) {
@@ -5632,6 +5676,12 @@ public final class LyricsPanelView extends FrameLayout
             // A label caught mid-swap would otherwise come back without its opacity.
             applyTagListVisibility(sectionTags, show, visibility);
             applyTagListVisibility(agentTags, show, visibility);
+            for (GapLineView gv : gapLineViews) {
+                int lineIdx = gv.getInterval().beforeLineIndex();
+                boolean hasTag = show && ((lineIdx >= 0 && lineIdx < sectionTags.size() && sectionTags.get(lineIdx) != null)
+                        || (lineIdx >= 0 && lineIdx < agentTags.size() && agentTags.get(lineIdx) != null));
+                gv.setHasTagBelow(hasTag);
+            }
         } finally {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 linesContainer.suppressLayout(false);
