@@ -213,6 +213,15 @@ public final class FeedViewCountPatch {
             .createSizeRestrictedMap(2 * MAX_VIDEO_VIEW_COUNTS, true);
 
     /**
+     * Videos whose cards show the shortened view count of the metadata as a text of its own,
+     * such as "4.7M" between the channel and the upload time, which the badge does not replace.
+     * Oldest videos are removed first.
+     */
+    @GuardedBy("itself")
+    private static final Map<String, Boolean> ownViewCountTextVideos = Utils
+            .createSizeRestrictedMap(MAX_VIDEO_VIEW_COUNTS, true);
+
+    /**
      * Video id -> shortened view count of the element of a Short. The cards of Shorts do not show their view count.
      * Oldest videos are removed first.
      */
@@ -781,10 +790,15 @@ public final class FeedViewCountPatch {
             Locale locale = Locale.getDefault();
             // The shortened and the full view count of the metadata of the video, such as "4.7M" and "4.7M views".
             Set<String> metadataViewCounts = new HashSet<>();
+            String shortenedViewCount = null;
             for (ProtoNode node : textNodes) {
-                if (node.pathEndsWith(METADATA_FIELD, 2, 1, 1)
-                        || node.pathEndsWith(METADATA_FIELD, 2, 3, METADATA_FULL_VIEW_COUNT_FIELD, 2)) {
-                    metadataViewCounts.add(SPACES_PATTERN.matcher(node.getText()).replaceAll(""));
+                final boolean shortened = node.pathEndsWith(METADATA_FIELD, 2, 1, 1);
+                if (shortened || node.pathEndsWith(METADATA_FIELD, 2, 3, METADATA_FULL_VIEW_COUNT_FIELD, 2)) {
+                    String viewCount = SPACES_PATTERN.matcher(node.getText()).replaceAll("");
+                    metadataViewCounts.add(viewCount);
+                    if (shortened) {
+                        shortenedViewCount = viewCount;
+                    }
                 }
             }
             // The texts below the title that have one of them as a part, whatever their other parts are,
@@ -823,6 +837,34 @@ public final class FeedViewCountPatch {
                     }
                     metadataViewCount = parsed.count;
                     break;
+                }
+            }
+            // Newer cards show the shortened view count as a text of its own, between the channel
+            // and the upload time, which is not a text below the title that the badge replaces.
+            boolean ownViewCountText = false;
+            if (metadataViewCount == null && shortenedViewCount != null) {
+                nodes:
+                for (ProtoNode node : textNodes) {
+                    String text = node.getText();
+                    if (text.length() > MAX_SEGMENT_LENGTH
+                            || !SPACES_PATTERN.matcher(text).replaceAll("").equals(shortenedViewCount)) {
+                        continue;
+                    }
+                    for (ProtoNode parent = node.getParent(); parent != null; parent = parent.getParent()) {
+                        final int field = parent.getFieldNumber();
+                        if (field == METADATA_FIELD || field == COMMAND_FIELD) {
+                            continue nodes;
+                        }
+                    }
+                    ownViewCountText = true;
+                    break;
+                }
+            }
+            synchronized (ownViewCountTextVideos) {
+                if (ownViewCountText) {
+                    ownViewCountTextVideos.put(videoId, Boolean.TRUE);
+                } else {
+                    ownViewCountTextVideos.remove(videoId);
                 }
             }
             if (metadataViewCount != null) {
@@ -1409,8 +1451,16 @@ public final class FeedViewCountPatch {
             // Litho draws only the part of a card that is shown, so the view count of a card whose texts below
             // the title are below the bottom of the list is not found until they are shown.
             final Rect visible = new Rect();
-            final boolean textsHidden = !textShowsViewCount && shortsFrame == null && videoId != null
+            boolean textsHidden = !textShowsViewCount && shortsFrame == null && videoId != null
                     && host.getLocalVisibleRect(visible) && visible.top == 0 && visible.bottom < host.getHeight();
+            if (textsHidden) {
+                // The view count is shown by a text of its own, which the badge does not replace,
+                // so the like count badge does not wait for the view count badge.
+                FeedVideoCardsPatch.awaitElementAnalyses();
+                synchronized (ownViewCountTextVideos) {
+                    textsHidden = !ownViewCountTextVideos.containsKey(videoId);
+                }
+            }
             if (textsHidden && badge != null && badge.confirmed && badge.added && videoId.equals(badge.videoId)) {
                 // The card still shows the same video, such as when it moves back below the bottom of the list,
                 // so its view count is kept.
