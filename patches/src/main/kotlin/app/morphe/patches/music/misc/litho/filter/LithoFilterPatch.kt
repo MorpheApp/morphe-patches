@@ -14,7 +14,8 @@ import app.morphe.patches.shared.misc.litho.filter.sharedLithoFilterPatch
 val lithoFilterPatch = sharedLithoFilterPatch(
     // YT Music does not ship the Upb feature flag.
     overrideUpbFeatureFlag = { false },
-    removeFilteredListItems = false
+    removeFilteredListItems = false,
+    hasReorderedListSections = { false }
 ) {
     dependsOn(
         sharedExtensionPatch,
