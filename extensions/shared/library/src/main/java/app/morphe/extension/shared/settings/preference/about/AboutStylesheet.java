@@ -159,6 +159,149 @@ final class AboutStylesheet {
             .list-header + .section {
                 padding-top: 0;
             }
+            /* Periods a list is shown for. Hidden radio buttons ahead of the page hold the one picked,
+               so only its count and menu entry show. Up to three periods are styled. */
+            .period-input {
+                display: none;
+            }
+            .period-input ~ .list-header .period-count {
+                display: none;
+            }
+            #period-0:checked ~ .list-header .period-count.period-0,
+            #period-1:checked ~ .list-header .period-count.period-1,
+            #period-2:checked ~ .list-header .period-count.period-2 {
+                display: inline;
+            }
+            /* The head of a list takes a band of the accent once the list scrolls on under it,
+               as Morphe Manager sets its own. */
+            .list-header::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: -1;
+                border-radius: 0 0 24px 24px;
+                background: linear-gradient({accent}1F, {accent}1F), {bg};
+                opacity: 0;
+                transition: opacity 200ms;
+            }
+            .list-header.scrolled {
+                background: none;
+            }
+            .list-header.scrolled::before {
+                opacity: 1;
+            }
+            .header-text {
+                flex: 1;
+                min-width: 0;
+            }
+            /* The button picking the period, at the end of the header, with its menu hanging off it. */
+            .period-picker {
+                position: relative;
+                flex-shrink: 0;
+            }
+            .period-button {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                border: none;
+                border-radius: 50%;
+                background: {accent}26;
+                color: inherit;
+                box-shadow: inset 0 0 0 1.5px transparent;
+                transition: background 200ms, box-shadow 200ms;
+                -webkit-tap-highlight-color: transparent;
+            }
+            .period-button svg {
+                width: 22px;
+                height: 22px;
+                fill: currentColor;
+            }
+            /* Engaged while its menu is open. */
+            .period-picker.open .period-button {
+                background: {accent}4D;
+                box-shadow: inset 0 0 0 1.5px {accent};
+            }
+            /* A dot once the list is off the period it starts on. */
+            .period-mark {
+                display: none;
+                position: absolute;
+                right: 9px;
+                bottom: 9px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: {accent};
+            }
+            .period-input:not(#period-0):checked ~ .list-header .period-mark {
+                display: block;
+            }
+            .period-menu {
+                position: absolute;
+                top: calc(100% + 6px);
+                inset-inline-end: 0;
+                min-width: 176px;
+                padding: 6px;
+                border-radius: 20px;
+                border: 1px solid rgba(128, 128, 128, 0.28);
+                background: linear-gradient({accent}14, {accent}14), {bg};
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+                transform-origin: top right;
+                transform: scale(0.9);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 150ms, transform 150ms, visibility 0s 150ms;
+            }
+            [dir="rtl"] .period-menu {
+                transform-origin: top left;
+            }
+            .period-picker.open .period-menu {
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                transition: opacity 150ms, transform 150ms;
+            }
+            .period-option {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                height: 48px;
+                padding: 0 14px;
+                border-radius: 14px;
+                font-size: 16px;
+                white-space: nowrap;
+            }
+            .period-option svg {
+                width: 22px;
+                height: 22px;
+                fill: {accent};
+                visibility: hidden;
+            }
+            #period-0:checked ~ .list-header .period-option.period-0,
+            #period-1:checked ~ .list-header .period-option.period-1,
+            #period-2:checked ~ .list-header .period-option.period-2 {
+                background: {accent}29;
+            }
+            #period-0:checked ~ .list-header .period-option.period-0 svg,
+            #period-1:checked ~ .list-header .period-option.period-1 svg,
+            #period-2:checked ~ .list-header .period-option.period-2 svg {
+                visibility: visible;
+            }
+            .list-header ~ .period-list {
+                padding-top: 0;
+            }
+            /* Someone moving to their place in the list of another period is there already, so their
+               picture does not come in again. */
+            .period-list .person.moved .avatar {
+                animation: none;
+            }
             .header-icon {
                 display: flex;
                 align-items: center;

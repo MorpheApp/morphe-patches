@@ -158,15 +158,24 @@ class AboutRoutes {
     }
 
     /**
-     * @param supportersTotal Every backer, the ones too many or too anonymous to list included.
+     * @param contributors          Everyone who committed, most first by what their commits count for.
+     * @param contributors6Months   Who committed over the last 6 months, the same way.
+     * @param contributors3Months   Who committed over the last 3 months, the same way.
+     * @param supportersTotal       Every backer, the ones too many or too anonymous to list included.
      */
-    record People(List<Person> contributors, List<Person> supporters, int supportersTotal) {
+    record People(List<Person> contributors, List<Person> contributors6Months, List<Person> contributors3Months,
+                  List<Person> supporters, int supportersTotal) {
     }
 
     @Nullable
     private static volatile People fetchedPeople;
 
-    private static List<Person> parsePeople(JSONArray array) throws JSONException {
+    /**
+     * @param array Null for a list the API does not serve, which is then empty.
+     */
+    private static List<Person> parsePeople(@Nullable JSONArray array) throws JSONException {
+        if (array == null) return List.of();
+
         List<Person> people = new ArrayList<>(array.length());
         for (int i = 0, length = array.length(); i < length; i++) {
             JSONObject json = array.getJSONObject(i);
@@ -185,7 +194,7 @@ class AboutRoutes {
     }
 
     /**
-     * Who committed to Morphe over the last year and who backs it, as put together by the API.
+     * Who committed to Morphe and who backs it, as put together by the API.
      * Must not be called from the main thread, unless the lists were fetched before.
      *
      * @return null if the lists could not be fetched.
@@ -213,6 +222,8 @@ class AboutRoutes {
             JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
             return fetchedPeople = new People(
                     parsePeople(json.getJSONArray("contributors")),
+                    parsePeople(json.optJSONArray("contributors_6_months")),
+                    parsePeople(json.optJSONArray("contributors_3_months")),
                     parsePeople(json.getJSONArray("supporters")),
                     json.optInt("supporters_total")
             );
