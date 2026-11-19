@@ -501,7 +501,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
     <string name="morphe_hide_captions_button_title">Hide Captions button</string>
     <string name="morphe_hide_cast_button_title">Hide Cast button</string>
-    <string name="morphe_hide_cast_button_summary">Hides the Cast button in the video player and toolbar</string>
     <string name="morphe_hide_collapse_button_title">Hide Collapse button</string>
     <string name="morphe_hide_fullscreen_button_title">Hide Fullscreen button</string>
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
@@ -1230,9 +1229,9 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_glass_size_buttons_shown">Buttons shown: %1$s of %2$s</string>
 
     <string name="morphe_hide_toolbar_chat_button_title">Hide Chat button</string>
+    <string name="morphe_hide_toolbar_companion_button_title">Hide Companion button</string>
     <string name="morphe_hide_toolbar_microphone_button_title">Hide Microphone button</string>
     <string name="morphe_hide_toolbar_search_button_title">Hide Search button</string>
-    <string name="morphe_show_toolbar_settings_button_type_summary">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
     <string name="morphe_toolbar_buttons_order_title">Toolbar buttons order</string>
     <string name="morphe_toolbar_buttons_order_summary">Drag the buttons to change their order in the toolbar</string>
 

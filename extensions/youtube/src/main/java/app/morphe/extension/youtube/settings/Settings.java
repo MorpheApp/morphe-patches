@@ -711,7 +711,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting NARROW_NAVIGATION_BUTTONS = new BooleanSetting("morphe_narrow_navigation_buttons", FALSE, true, parentsAll(parentNot(HIDE_NAVIGATION_BAR), parentNot(NAVIGATION_BAR_GLASS)));
 
     // Toolbar
+    public static final BooleanSetting HIDE_TOOLBAR_CAST_BUTTON = new BooleanSetting("morphe_hide_toolbar_cast_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_CHAT_BUTTON = new BooleanSetting("morphe_hide_toolbar_chat_button", FALSE, true);
+    public static final BooleanSetting HIDE_TOOLBAR_COMPANION_BUTTON = new BooleanSetting("morphe_hide_toolbar_companion_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_CREATE_BUTTON = new BooleanSetting("morphe_hide_toolbar_create_button", FALSE, true, parent(SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON));
     public static final BooleanSetting HIDE_TOOLBAR_MICROPHONE_BUTTON = new BooleanSetting("morphe_hide_toolbar_microphone_button", FALSE, true);
     public static final BooleanSetting HIDE_TOOLBAR_NOTIFICATION_BUTTON = new BooleanSetting("morphe_hide_toolbar_notification_button", FALSE, true, parentNot(SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON));
@@ -953,6 +955,7 @@ public class Settings extends SharedYouTubeSettings {
     // Migration
     private static final BooleanSetting SHORTS_FLYOUT_SETTINGS_MIGRATED = new BooleanSetting("morphe_shorts_flyout_settings_migrated", FALSE, false, false);
     private static final BooleanSetting DOWNLOAD_BUTTON_OVERRIDE_MIGRATED = new BooleanSetting("morphe_download_button_override_migrated", FALSE, false, false);
+    private static final BooleanSetting TOOLBAR_CAST_BUTTON_MIGRATED = new BooleanSetting("morphe_toolbar_cast_button_migrated", FALSE, false, false);
     private static final EnumSetting<ThumbnailOption> DEPRECATED_ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);
     private static final EnumSetting<ThumbnailOption> DEPRECATED_ALT_THUMBNAIL_SUBSCRIPTIONS = new EnumSetting<>("morphe_alt_thumbnail_subscription", ThumbnailOption.ORIGINAL);
     private static final EnumSetting<ThumbnailOption> DEPRECATED_ALT_THUMBNAIL_LIBRARY = new EnumSetting<>("morphe_alt_thumbnail_library", ThumbnailOption.ORIGINAL);
@@ -1125,6 +1128,7 @@ public class Settings extends SharedYouTubeSettings {
         migrateForceCodecToVideoCodec();
         migrateShortsFlyoutSettings();
         migrateDownloadButtonOverride();
+        migrateToolbarCastButton();
 
         // SponsorBlock key namespace unification (sb_* -> morphe_sb_*).
         migrateOldSettingToNew(DEPRECATED_SB_ENABLED, SB_ENABLED);
@@ -1355,6 +1359,21 @@ public class Settings extends SharedYouTubeSettings {
         }
         DEPRECATED_FORCE_AVC_CODEC.resetToDefault();
         DEPRECATED_FORCE_VP9_CODEC.resetToDefault();
+    }
+
+    /**
+     * The toolbar Cast button was hidden with the Cast button of the player before it got its own setting,
+     * so the toolbar button stays hidden if the player button is. The player setting stays in use,
+     * so a marker is the only way to tell this already ran.
+     */
+    private static void migrateToolbarCastButton() {
+        if (TOOLBAR_CAST_BUTTON_MIGRATED.get()) {
+            return;
+        }
+        if (HIDE_CAST_BUTTON.get()) {
+            HIDE_TOOLBAR_CAST_BUTTON.save(true);
+        }
+        TOOLBAR_CAST_BUTTON_MIGRATED.save(true);
     }
 
     /**

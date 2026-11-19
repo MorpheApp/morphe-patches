@@ -19,6 +19,7 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.resource.ResourceType
@@ -382,6 +383,168 @@ internal object ToolBarButtonOrderFingerprint : Fingerprint(
     filters = listOf(
         literal(1000L)
     )
+)
+
+internal object ToolbarCastMenuItemInitializeFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "castmediaroutebutton"),
+        methodCall(name = "setShowAsAction")
+    )
+)
+
+internal object ToolbarCastMenuItemVisibilityFingerprint : Fingerprint(
+    classFingerprint = ToolbarCastMenuItemInitializeFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        methodCall(name = "setVisible")
+    )
+)
+
+/**
+ * The toolbar Cast button is shown only when the cast icon awareness allows it, such as with a cast device nearby.
+ * Two experiments of the same feature, each read with the other. The flags are also read by the Companion button
+ * and by the awareness itself, which are not matched.
+ * 21.30+
+ */
+internal object ToolbarCastButtonAwarenessFeatureFlagFingerprint : Fingerprint(
+    classFingerprint = ToolbarCastMenuItemInitializeFingerprint,
+    filters = listOf(
+        literal(45759129L)
+    )
+)
+
+internal object ToolbarCastButtonAwarenessAlternateFeatureFlagFingerprint : Fingerprint(
+    classFingerprint = ToolbarCastMenuItemInitializeFingerprint,
+    filters = listOf(
+        literal(45758238L)
+    )
+)
+
+/**
+ * Chooses the toolbar Cast button: the Cast button, or the Companion button, see [ToolbarCompanionButtonFingerprint].
+ * The first parameter is the provider of the Cast button, and the second of the Companion button.
+ * The providers give the button with the matched method call.
+ * 21.45+
+ */
+internal object ToolbarCastButtonSelectionFingerprint : Fingerprint(
+    parameters = listOf("L", "L", "L"),
+    filters = listOf(
+        literal(45826964L),
+        literal(45690090L),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(),
+            returnType = "Ljava/lang/Object;"
+        )
+    )
+)
+
+/**
+ * Sets the view of the toolbar Cast button: the media route button, or the entry point button,
+ * which shows the companion icon with the cast icon awareness.
+ * 21.30+
+ */
+internal object ToolbarCastButtonViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        literal(45690090L),
+        resourceLiteral(ResourceType.LAYOUT, "castmediaroutebutton"),
+        methodCall(name = "setShowAsAction")
+    )
+)
+
+/**
+ * The entry point button of the toolbar Cast button. The code that connects the toolbar Cast button
+ * to the cast devices calls it after the same flag as [ToolbarCastButtonViewFingerprint].
+ */
+internal object ToolbarCastEntryPointButtonFingerprint : Fingerprint(
+    parameters = listOf("Landroid/view/MenuItem;"),
+    filters = listOf(
+        methodCall(name = "getActionView"),
+        checkCast("Lcom/google/android/libraries/youtube/mdx/mediaroute/entrypoint/MdxEntryPointButton;")
+    )
+)
+
+/**
+ * The code that connects the toolbar Cast button to the cast devices. It reads the flag again,
+ * to know if the view of the button is the entry point button, see [ToolbarCastButtonViewFingerprint].
+ * 21.30+
+ */
+internal object ToolbarCastButtonConnectionFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45690090L),
+        methodCall(reference = { ToolbarCastEntryPointButtonFingerprint.method })
+    )
+)
+
+/**
+ * The toolbar button that only opens the companion of the watch page, which the app adds instead of the Cast button.
+ * 21.45+
+ */
+internal object ToolbarCompanionButtonFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Landroid/view/MenuItem;", "Landroid/content/Context;"),
+    filters = listOf(
+        newInstance("Landroid/support/v7/widget/AppCompatImageButton;"),
+        resourceLiteral(ResourceType.STRING, "mdx_accessibility_cast_entry_point_name"),
+        methodCall(name = "setActionView")
+    )
+)
+
+/**
+ * The id of the Companion button, which is the id of the Cast button.
+ */
+internal object ToolbarCompanionButtonIdFingerprint : Fingerprint(
+    classFingerprint = ToolbarCompanionButtonFingerprint,
+    returnType = "I",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "menu_cast")
+    )
+)
+
+/**
+ * Adds the buttons to the menu of a toolbar. The buttons are kept by their id.
+ */
+internal object ToolbarMenuCreateFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(
+        "Landroid/view/Menu;",
+        "Landroid/view/MenuInflater;",
+        "L",
+        "Landroid/util/SparseArray;",
+        "I",
+        "Landroid/content/Context;"
+    ),
+    filters = listOf(
+        string("Unhandled menu item %s")
+    )
+)
+
+/**
+ * The view of the toolbar Cast button, which the controller of the cast devices hides while casting
+ * is not available. The method is final, so it is changed and not overridden by the subclass of the app.
+ */
+internal object MediaRouteButtonSetVisibilityFingerprint : Fingerprint(
+    definingClass = "Landroidx/mediarouter/app/MediaRouteButton;",
+    name = "setVisibility",
+    returnType = "V",
+    parameters = listOf("I")
+)
+
+/**
+ * With the cast icon awareness, the media route button opens the companion of the watch page
+ * instead of the cast devices. 21.30+, and its second flag 21.45+.
+ */
+internal object MediaRouteButtonClickFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/mdx/mediaroute/MdxMediaRouteButton;",
+    name = "performClick",
+    returnType = "Z",
+    parameters = listOf()
 )
 
 internal object PivotBarRendererListFingerprint : Fingerprint(

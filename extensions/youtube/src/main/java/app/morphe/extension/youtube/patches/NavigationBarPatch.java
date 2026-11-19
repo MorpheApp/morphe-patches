@@ -21,6 +21,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.SparseArray;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,6 +53,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -1419,7 +1422,11 @@ public final class NavigationBarPatch {
      */
     private static volatile boolean notificationsTabCreated;
 
+    private static final boolean HIDE_TOOLBAR_CAST_BUTTON = Settings.HIDE_TOOLBAR_CAST_BUTTON.get();
+
     private static final boolean HIDE_TOOLBAR_CHAT_BUTTON = Settings.HIDE_TOOLBAR_CHAT_BUTTON.get();
+
+    private static final boolean HIDE_TOOLBAR_COMPANION_BUTTON = Settings.HIDE_TOOLBAR_COMPANION_BUTTON.get();
 
     private static final boolean HIDE_TOOLBAR_CREATE_BUTTON = Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
 
@@ -1460,6 +1467,175 @@ public final class NavigationBarPatch {
     }
 
     private static WeakReference<SettingsController> settingsControllerRef = new WeakReference<>(null);
+
+    /**
+     * Injection point.
+     * <p>
+     * The cast companion features hide the toolbar Cast button unless the cast icon awareness allows it,
+     * such as with a cast device nearby, or replace it with a button that opens the companion of the watch page.
+     * The Cast button is shown again, and opens the cast devices, if it is not hidden with the setting.
+     */
+    public static boolean useCastCompanion(boolean original) {
+        return HIDE_TOOLBAR_CAST_BUTTON && original;
+    }
+
+    private static final int TOOLBAR_CAST_BUTTON_ID = ResourceUtils.getIdentifier(ResourceType.ID, "menu_cast");
+
+    /**
+     * The Companion button has the id of the Cast button, and the toolbar keeps its buttons by their id,
+     * so the Companion button is given its own id.
+     */
+    private static final int TOOLBAR_COMPANION_BUTTON_ID = View.generateViewId();
+
+    /**
+     * The Companion button of each Cast button, as every activity has its own buttons.
+     * The Companion button is kept weakly too, as it holds the activity that holds the Cast button.
+     * Synchronized on itself.
+     */
+    private static final Map<Object, WeakReference<Object>> toolbarCompanionButtons = new WeakHashMap<>();
+
+    /**
+     * The provider of a toolbar button, with a method added during patching.
+     */
+    public interface ToolbarButtonProvider {
+        /**
+         * @return The button, which the provider creates the first time.
+         */
+        Object patch_getButton();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The app adds either the Cast button or the Companion button, which uses the phone as a companion to the
+     * video playing on a TV, to the toolbar. The Cast button is always added, and this is called if the app
+     * chose the Companion button, which is then added next to it, see {@link #addToolbarCompanionButton(SparseArray)}.
+     *
+     * @param castButtonProvider The provider of the Cast button.
+     * @param companionButton    The Companion button the app chose.
+     * @return The Cast button, which the app adds to the toolbar instead.
+     */
+    public static Object getToolbarCastButton(ToolbarButtonProvider castButtonProvider, Object companionButton) {
+        try {
+            Object castButton = castButtonProvider.patch_getButton();
+            Logger.printDebug(() -> "Toolbar Cast button used instead of the Companion button");
+
+            if (!HIDE_TOOLBAR_COMPANION_BUTTON) {
+                synchronized (toolbarCompanionButtons) {
+                    toolbarCompanionButtons.put(castButton, new WeakReference<>(companionButton));
+                }
+            }
+            return castButton;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getToolbarCastButton failure", ex);
+            // The button the app chose.
+            return companionButton;
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static int getToolbarCompanionButtonId() {
+        return TOOLBAR_COMPANION_BUTTON_ID;
+    }
+
+    /**
+     * Injection point.
+     * Called when the menu of a toolbar is created.
+     *
+     * @param buttons The buttons of the toolbar, by their id.
+     */
+    public static void addToolbarCompanionButton(SparseArray<Object> buttons) {
+        if (HIDE_TOOLBAR_COMPANION_BUTTON || buttons == null || TOOLBAR_CAST_BUTTON_ID == 0) return;
+
+        try {
+            Object castButton = buttons.get(TOOLBAR_CAST_BUTTON_ID);
+            if (castButton == null) return;
+
+            final WeakReference<Object> companionButtonRef;
+            synchronized (toolbarCompanionButtons) {
+                companionButtonRef = toolbarCompanionButtons.get(castButton);
+            }
+            // Only if the app chose the Companion button for this Cast button.
+            Object companionButton = companionButtonRef == null ? null : companionButtonRef.get();
+            if (companionButton != null) {
+                buttons.put(TOOLBAR_COMPANION_BUTTON_ID, companionButton);
+                Logger.printDebug(() -> "Toolbar Companion button added");
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "addToolbarCompanionButton failure", ex);
+        }
+    }
+
+    /**
+     * The views of the toolbar Cast buttons. The media route button is also used by the player,
+     * whose Cast button is left as it is. Only accessed from the main thread.
+     */
+    private static final Set<View> toolbarCastButtonViews = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
+     * Injection point.
+     * Called whenever the app shows or hides the toolbar Cast button, which it shows if casting is available.
+     * <p>
+     * After a cold start, the app can find casting not available until it is opened again, such as by going
+     * to the settings and back, and then keeps the button shown. The button is always shown instead.
+     *
+     * @param visible If the app shows the button.
+     */
+    public static boolean hideToolbarCastButton(MenuItem menuItem, boolean visible) {
+        if (HIDE_TOOLBAR_CAST_BUTTON) return false;
+
+        if (!visible) {
+            Logger.printDebug(() -> "Toolbar Cast button shown, the app hides it as casting is not available");
+        }
+        return true;
+    }
+
+    /**
+     * Injection point.
+     * Called when the app creates the toolbar Cast button, for every toolbar menu.
+     */
+    public static void hideToolbarCastButton(MenuItem menuItem) {
+        if (HIDE_TOOLBAR_CAST_BUTTON) {
+            menuItem.setVisible(false);
+            menuItem.setEnabled(false);
+            return;
+        }
+
+        try {
+            // The view of the button is shown and hidden separately, by the controller of the cast devices.
+            View view = menuItem.getActionView();
+            if (view != null) {
+                toolbarCastButtonViews.add(view);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideToolbarCastButton failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called whenever the visibility of a media route button is set.
+     */
+    public static int getToolbarCastButtonVisibility(View view, int visibility) {
+        try {
+            return visibility != View.VISIBLE && toolbarCastButtonViews.contains(view)
+                    ? View.VISIBLE
+                    : visibility;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getToolbarCastButtonVisibility failure", ex);
+            return visibility;
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called whenever a media route button is enabled or disabled.
+     */
+    public static boolean getToolbarCastButtonEnabled(View view, boolean enabled) {
+        return enabled || toolbarCastButtonViews.contains(view);
+    }
 
     /**
      * Injection point.
