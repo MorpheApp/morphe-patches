@@ -979,7 +979,7 @@ final class SeeThroughPage {
                 covered = lightBounds(content, view, 1f, contentLightBounds);
             }
             // A panel dragged up over the player hides the video, and is never see-through.
-            if (!AmbientLightController.drawWindowLight(canvas, view, true, alpha, covered, inPanel)) {
+            if (!AmbientLightController.drawWindowLight(canvas, view, true, alpha, covered, inPanel, false)) {
                 canvas.drawColor(0, PorterDuff.Mode.CLEAR);
             }
         }
