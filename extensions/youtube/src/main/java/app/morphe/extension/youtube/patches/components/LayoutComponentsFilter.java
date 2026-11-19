@@ -811,7 +811,13 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == videoLabels) {
-            return VersionCheckPatch.IS_20_31_OR_GREATER && videoLabelsBuffer.check(buffer).isFiltered();
+            // Only the container of the label itself, in the metadata of a video. Badges are also used
+            // outside the videos, such as in the rows of the menus, where a container that has a badge
+            // can be the whole row.
+            return VersionCheckPatch.IS_20_31_OR_GREATER
+                    && Utils.contains(path, "lockup_metadata.e")
+                    && videoLabelsBuffer.check(buffer).isFiltered()
+                    && Utils.startsWith(asciiStrings.getStrings(), "badge.e");
         }
 
         if (matchedGroup == videoMetadataLabels) {
