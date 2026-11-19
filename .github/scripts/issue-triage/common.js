@@ -10,6 +10,9 @@ const LABEL_COLORS = {
   [LABEL_POSSIBLE_DUPLICATE]: 'cfd3d7',
 };
 
+// Starts the comment that asks for missing details, so close-unanswered.js can find it.
+const MISSING_INFO_MARKER = '<!-- morphe-triage:missing-info -->';
+
 const MAINTAINER_ASSOCIATIONS = ['OWNER', 'MEMBER', 'COLLABORATOR'];
 
 // The main text field of each issue form. Every form also has an Acknowledgements section.
@@ -145,6 +148,7 @@ module.exports = {
   LABEL_QUESTION,
   LABEL_BUG,
   LABEL_FEATURE,
+  MISSING_INFO_MARKER,
   parseForm,
   isFromTemplate,
   isMaintainer,

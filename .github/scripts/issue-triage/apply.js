@@ -8,6 +8,7 @@ const {
   LABEL_QUESTION,
   LABEL_BUG,
   LABEL_FEATURE,
+  MISSING_INFO_MARKER,
   ensureLabel,
   removeLabelIfPresent,
   commentAndDelete,
@@ -82,6 +83,7 @@ function possibleDuplicateComment(duplicates) {
 
 function missingInfoComment(missing) {
   return [
+    MISSING_INFO_MARKER,
     'Thanks for the report. Please edit the issue to add:',
     '',
     ...missing.map((key) => `- ${MISSING_INFO_TEXT[key]}`),
