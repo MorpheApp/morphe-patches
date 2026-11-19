@@ -1,9 +1,10 @@
 // Checks the patches version and app version of a bug report.
-// Bug reports for outdated patches, or for an app version that the patches do not list as compatible,
-// are closed with a comment. Versions that cannot be recognized are not checked.
+// Bug reports for outdated patches, for an app version that the patches do not list as compatible,
+// or with a missing or invalid version are closed with a comment.
 
 const { parseForm } = require('./common.js');
 
+// A stable version must be the latest stable release.
 // Pre-releases are allowed if they are one of the newest ones, or were published recently.
 const ALLOWED_PRE_RELEASE_COUNT = 4;
 const ALLOWED_PRE_RELEASE_DAYS = 4;
@@ -65,26 +66,50 @@ function releaseVersion(release) {
 }
 
 /**
- * Returns the patches versions that bug reports are accepted for, and all known versions.
+ * Returns the latest stable patches version, the pre-releases that bug reports are accepted for,
+ * and all known versions.
  */
 function acceptedPatchesVersions(releases, now) {
   const published = releases.filter((release) => !release.draft);
-  const accepted = new Set();
 
   const latestStable = published.find((release) => !release.prerelease);
-  if (latestStable) accepted.add(releaseVersion(latestStable));
 
   const cutoff = now - ALLOWED_PRE_RELEASE_DAYS * 24 * 60 * 60 * 1000;
-  published
-    .filter((release) => release.prerelease)
-    .forEach((release, index) => {
-      if (index < ALLOWED_PRE_RELEASE_COUNT || Date.parse(release.published_at) >= cutoff) {
-        accepted.add(releaseVersion(release));
-      }
-    });
+  const preReleases = new Set(
+    published
+      .filter((release) => release.prerelease)
+      .filter((release, index) => index < ALLOWED_PRE_RELEASE_COUNT || Date.parse(release.published_at) >= cutoff)
+      .map(releaseVersion)
+  );
 
   const versions = published.map(releaseVersion).filter((version) => parsePatchesVersion(version) === version);
-  return { accepted, known: new Set(versions) };
+  return {
+    latestStable: latestStable ? releaseVersion(latestStable) : null,
+    preReleases,
+    known: new Set(versions),
+  };
+}
+
+/**
+ * Returns "ok", "outdated" or "invalid" for a patches version.
+ * A stable version must be the latest stable release. A pre-release must be one of the accepted pre-releases.
+ */
+function patchesVersionStatus(version, patchesVersions) {
+  if (!version) return 'invalid';
+
+  const { latestStable, preReleases, known } = patchesVersions;
+  if (!latestStable) return 'ok';
+
+  if (version.includes('-dev.')) {
+    if (preReleases.has(version)) return 'ok';
+    const oldest = [...preReleases].sort(compareVersions)[0] || latestStable;
+    if (known.has(version) || compareVersions(version, oldest) < 0) return 'outdated';
+    return 'invalid';
+  }
+
+  if (version === latestStable) return 'ok';
+  if (known.has(version) || compareVersions(version, latestStable) < 0) return 'outdated';
+  return 'invalid';
 }
 
 function parseCompatibleVersions(kotlinSource) {
@@ -120,30 +145,39 @@ async function compatibleAppVersions(github, owner, repo, core) {
  */
 function findVersionProblems(fields, patchesVersions, appVersions) {
   const problems = [];
-
-  const patchesVersion = parsePatchesVersion(fields['Patches version']);
-  // Outdated means a release that is not accepted, or older than every accepted release.
-  // Other versions are not checked, as they are likely a typo or a value entered in the wrong field.
-  if (patchesVersion && !patchesVersions.accepted.has(patchesVersion)) {
-    const accepted = [...patchesVersions.accepted].sort(compareVersions);
-    const olderThanAccepted = accepted.length > 0 && compareVersions(patchesVersion, accepted[0]) < 0;
-    if (patchesVersions.known.has(patchesVersion) || olderThanAccepted) {
-      problems.push('You are using outdated patches');
-    }
-  }
+  let invalid = false;
 
   const selected = SELECTED_APPS[fields['App']];
+  const appName = selected ? selected.join(' or ') : 'the app';
+
+  const patchesStatus = patchesVersionStatus(parsePatchesVersion(fields['Patches version']), patchesVersions);
+  if (patchesStatus === 'outdated') problems.push('You are using outdated patches');
+  if (patchesStatus === 'invalid') invalid = true;
+
   const appVersion = parseAppVersion(fields['App version']);
-  if (selected && appVersion) {
+  if (!appVersion) {
+    invalid = true;
+  } else if (selected) {
     const listsKnown = selected.every((app) => appVersions[app] && appVersions[app].size > 0);
     const compatible = selected.some((app) => appVersions[app] && appVersions[app].has(appVersion));
-    // A version of another app means the wrong app was selected, which is not checked here.
+    // A version of another app means the version or the selected app is wrong.
     const otherApp = Object.keys(appVersions).some(
       (app) => !selected.includes(app) && appVersions[app].has(appVersion)
     );
-    if (listsKnown && !compatible && !otherApp) {
-      problems.push(`You are patching a non recommended version of ${selected.join(' or ')}`);
+    if (listsKnown && !compatible) {
+      if (otherApp) {
+        invalid = true;
+      } else {
+        problems.push(`You are patching a non recommended version of ${appName}`);
+      }
     }
+  }
+
+  if (invalid) {
+    problems.push(
+      `Please include all requested information, including the version of ${appName} you patched ` +
+        `and the patches version as shown in ${selected ? appName : 'the app'} > Settings > Morphe > About`
+    );
   }
 
   return problems;
@@ -190,6 +224,7 @@ module.exports = {
   findVersionProblems,
   acceptedPatchesVersions,
   parsePatchesVersion,
+  patchesVersionStatus,
   compareVersions,
   parseAppVersion,
   parseCompatibleVersions,

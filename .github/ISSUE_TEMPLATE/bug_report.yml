@@ -38,7 +38,7 @@ body:
     id: patches-version
     attributes:
       label: Patches version
-      description: The patches version shown in Settings > About. It must be the latest release or a recent pre-release.
+      description: The patches version shown in the patched app > Settings > Morphe > About. It must be the latest release or a recent pre-release.
       placeholder: 'e.g. 2.3.0'
     validations:
       required: true
