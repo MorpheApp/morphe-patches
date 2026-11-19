@@ -128,8 +128,12 @@ jobs:
             5. Duplicates. Run at least 4 different searches of open and closed issues, using setting names,
                symptoms, error messages and synonyms. Read the most likely candidates. A duplicate reports the
                same problem or asks for the same feature, not just the same app, screen or setting.
-               Return at most 3 issue numbers, most likely first, and only issues older than this one.
-               Return none if you are not sure: a wrong duplicate is worse than a missed one.
+               Only consider issues older than this one, and never pull requests.
+               - duplicate_of: the number of an issue that this issue is almost certainly a duplicate of,
+                 because it describes the same problem or request with the same details. Use 0 unless you
+                 are sure, as this issue is closed as a duplicate without a comment.
+               - possible_duplicates: when duplicate_of is 0, up to 3 issues that may be the same problem or
+                 request but you are not sure, most likely first. Use an empty list if none are likely.
 
             6. Missing information, for bugs only. Be conservative and return none when in doubt:
                - steps_to_reproduce: the report does not say what the user did or where it happens, so a
@@ -137,6 +141,7 @@ jobs:
                - crash_logs: the app crashes or closes, and the Error logs field is empty
                - screenshots: a visual or layout bug that is hard to understand from the text, with no image or video
                - one_bug_per_issue: the report describes two or more unrelated bugs
+               Return none if duplicate_of is not 0.
 
             7. reasoning: one or two sentences for maintainers explaining the type, unsupported app, duplicates and missing information.
           claude_args: |
@@ -144,7 +149,7 @@ jobs:
             --max-turns 40
             --allowedTools "Bash(gh issue view:*),Bash(gh search issues:*)"
             --disallowedTools "WebFetch,WebSearch,Write,Edit,MultiEdit,NotebookEdit"
-            --json-schema '{"type":"object","additionalProperties":false,"required":["title","type","unsupported_app","duplicates","missing_info","reasoning"],"properties":{"title":{"type":"string"},"type":{"type":"string","enum":["bug","feature","question"]},"unsupported_app":{"type":"boolean"},"duplicates":{"type":"array","maxItems":3,"items":{"type":"integer"}},"missing_info":{"type":"array","items":{"type":"string","enum":["steps_to_reproduce","crash_logs","screenshots","one_bug_per_issue"]}},"reasoning":{"type":"string"}}}'
+            --json-schema '{"type":"object","additionalProperties":false,"required":["title","type","unsupported_app","duplicate_of","possible_duplicates","missing_info","reasoning"],"properties":{"title":{"type":"string"},"type":{"type":"string","enum":["bug","feature","question"]},"unsupported_app":{"type":"boolean"},"duplicate_of":{"type":"integer"},"possible_duplicates":{"type":"array","maxItems":3,"items":{"type":"integer"}},"missing_info":{"type":"array","items":{"type":"string","enum":["steps_to_reproduce","crash_logs","screenshots","one_bug_per_issue"]}},"reasoning":{"type":"string"}}}'
 
   apply:
     name: Apply triage

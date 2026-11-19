@@ -10,8 +10,6 @@ const LABEL_COLORS = {
   [LABEL_POSSIBLE_DUPLICATE]: 'cfd3d7',
 };
 
-const DUPLICATE_MARKER = '<!-- morphe-triage:duplicate';
-
 const MAINTAINER_ASSOCIATIONS = ['OWNER', 'MEMBER', 'COLLABORATOR'];
 
 // The main text field of each issue form. Every form also has an Acknowledgements section.
@@ -56,10 +54,6 @@ function isFromTemplate(body) {
 
 function isMaintainer(issue) {
   return MAINTAINER_ASSOCIATIONS.includes(issue.author_association);
-}
-
-function isBot(user) {
-  return user && user.type === 'Bot';
 }
 
 async function ensureLabel(github, owner, repo, name) {
@@ -151,11 +145,9 @@ module.exports = {
   LABEL_QUESTION,
   LABEL_BUG,
   LABEL_FEATURE,
-  DUPLICATE_MARKER,
   parseForm,
   isFromTemplate,
   isMaintainer,
-  isBot,
   ensureLabel,
   removeLabelIfPresent,
   commentAndDelete,

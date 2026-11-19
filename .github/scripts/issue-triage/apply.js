@@ -8,7 +8,6 @@ const {
   LABEL_QUESTION,
   LABEL_BUG,
   LABEL_FEATURE,
-  DUPLICATE_MARKER,
   ensureLabel,
   removeLabelIfPresent,
   commentAndDelete,
@@ -45,7 +44,7 @@ async function validateDuplicates(github, owner, repo, issueNumber, numbers) {
   for (const number of numbers) {
     if (valid.length >= MAX_DUPLICATES) break;
     if (!Number.isInteger(number) || number <= 0 || number === issueNumber) continue;
-    if (valid.includes(number)) continue;
+    if (valid.some((issue) => issue.number === number)) continue;
 
     let candidate;
     try {
@@ -64,14 +63,13 @@ async function validateDuplicates(github, owner, repo, issueNumber, numbers) {
       console.log(`Duplicate candidate #${number} is newer than #${issueNumber}`);
       continue;
     }
-    valid.push(number);
+    valid.push(candidate);
   }
   return valid;
 }
 
-function duplicateComment(duplicates) {
+function possibleDuplicateComment(duplicates) {
   return [
-    `${DUPLICATE_MARKER} ${duplicates.join(' ')} -->`,
     duplicates.length === 1
       ? 'This issue may be a duplicate of an existing issue:'
       : 'This issue may be a duplicate of existing issues:',
@@ -79,8 +77,6 @@ function duplicateComment(duplicates) {
     ...duplicates.map((number) => `- #${number}`),
     '',
     'If it is, please close this issue and add a 👍 to the existing issue instead.',
-    '',
-    'This issue will be closed automatically in 3 days. To keep it open, add a comment that explains how it is different, or react to this comment with 👎.',
   ].join('\n');
 }
 
@@ -165,18 +161,27 @@ module.exports = async ({ github, getOctokit, context, core }) => {
     }
   }
 
-  // Duplicates
-  const duplicates = await validateDuplicates(github, owner, repo, issueNumber, decision.duplicates);
-  if (duplicates.length > 0) {
+  // Duplicates. A sure duplicate is closed without a comment, after the other changes.
+  // Possible duplicates get a comment and stay open for a maintainer to decide.
+  const [duplicateOf] = Number.isInteger(decision.duplicate_of)
+    ? await validateDuplicates(github, owner, repo, issueNumber, [decision.duplicate_of])
+    : [];
+  const possibleDuplicates = duplicateOf
+    ? []
+    : (await validateDuplicates(github, owner, repo, issueNumber, decision.possible_duplicates)).map(
+        (candidate) => candidate.number
+      );
+
+  if (possibleDuplicates.length > 0) {
     actions.push({
-      description: `Possible duplicate of ${duplicates.map((n) => `#${n}`).join(', ')}`,
+      description: `Possible duplicate of ${possibleDuplicates.map((n) => `#${n}`).join(', ')}`,
       run: async () => {
         await ensureLabel(github, owner, repo, LABEL_POSSIBLE_DUPLICATE);
         await github.rest.issues.createComment({
           owner,
           repo,
           issue_number: issueNumber,
-          body: duplicateComment(duplicates),
+          body: possibleDuplicateComment(possibleDuplicates),
         });
         await github.rest.issues.addLabels({
           owner,
@@ -188,11 +193,11 @@ module.exports = async ({ github, getOctokit, context, core }) => {
     });
   }
 
-  // Missing information. Only for bugs, and not when a duplicate comment is posted.
+  // Missing information. Only for bugs that are not duplicates.
   const missing = Array.isArray(decision.missing_info)
     ? [...new Set(decision.missing_info.filter((key) => key in MISSING_INFO_TEXT))]
     : [];
-  if (decision.type === 'bug' && duplicates.length === 0 && missing.length > 0) {
+  if (decision.type === 'bug' && !duplicateOf && possibleDuplicates.length === 0 && missing.length > 0) {
     actions.push({
       description: `Ask for: ${missing.join(', ')}`,
       run: async () => {
@@ -209,6 +214,21 @@ module.exports = async ({ github, getOctokit, context, core }) => {
           labels: [LABEL_WAITING_ON_AUTHOR],
         });
       },
+    });
+  }
+
+  if (duplicateOf) {
+    actions.push({
+      description: `Close as a duplicate of #${duplicateOf.number}`,
+      run: () =>
+        github.graphql(
+          `mutation($issueId: ID!, $duplicateId: ID!) {
+            closeIssue(input: { issueId: $issueId, stateReason: DUPLICATE, duplicateIssueId: $duplicateId }) {
+              clientMutationId
+            }
+          }`,
+          { issueId: issue.node_id, duplicateId: duplicateOf.node_id }
+        ),
     });
   }
 
