@@ -208,4 +208,46 @@ public class LyricsCacheTest {
         LyricsCache.clear();
         assertEquals(0, LyricsCache.size());
     }
+
+    @Test
+    public void statsAndBucketClearSeparateLyricsTranslationAndTransliteration() {
+        LyricsCache.clear();
+        Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "hello"));
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+        LyricsCache.putTranslation(track, "TestProvider", "en", List.of("hello"), List.of("halo"));
+        LyricsCache.putRomanization(track, "TestProvider", List.of("hello"),
+                List.of(new LyricsLine(0, "helo")));
+
+        LyricsCache.CacheStats stats = LyricsCache.stats();
+        assertEquals(1, stats.lyrics().items());
+        assertEquals(1, stats.translation().items());
+        assertEquals(1, stats.transliteration().items());
+        assertEquals(3, stats.total().items());
+        assertTrue(stats.lyrics().bytes() > 0);
+        assertTrue(stats.translation().bytes() > 0);
+        assertTrue(stats.transliteration().bytes() > 0);
+
+        assertTrue(LyricsCache.clear(LyricsCache.CacheBucket.TRANSLATION) > 0);
+        assertNull(LyricsCache.getTranslation(track, "TestProvider", "en", List.of("hello")));
+        assertNotNull(LyricsCache.getRomanization(track, "TestProvider", List.of("hello")));
+        assertNotNull(LyricsCache.get(track, "TestProvider", null));
+
+        LyricsCache.CacheStats afterTransClear = LyricsCache.stats();
+        assertEquals(1, afterTransClear.lyrics().items());
+        assertEquals(0, afterTransClear.translation().items());
+        assertEquals(1, afterTransClear.transliteration().items());
+        assertEquals(2, afterTransClear.total().items());
+
+        assertTrue(LyricsCache.clear(LyricsCache.CacheBucket.TRANSLITERATION) > 0);
+        assertNull(LyricsCache.getRomanization(track, "TestProvider", List.of("hello")));
+        assertNotNull(LyricsCache.get(track, "TestProvider", null));
+
+        LyricsCache.CacheStats afterRomaClear = LyricsCache.stats();
+        assertEquals(1, afterRomaClear.lyrics().items());
+        assertEquals(0, afterRomaClear.transliteration().items());
+        assertEquals(1, afterRomaClear.total().items());
+
+        assertTrue(LyricsCache.clear(LyricsCache.CacheBucket.LYRICS) > 0);
+        assertEquals(0, LyricsCache.stats().total().items());
+    }
 }

@@ -1245,38 +1245,134 @@ public final class LyricsCache {
                 : "VID|" + videoId + "|PREF";
     }
 
+    public enum CacheBucket {
+        LYRICS,
+        TRANSLATION,
+        TRANSLITERATION,
+        ALL
+    }
+
+    public record BucketStats(long bytes, int items) {
+    }
+
+    public record CacheStats(BucketStats lyrics, BucketStats translation,
+                             BucketStats transliteration) {
+        public BucketStats total() {
+            return new BucketStats(
+                    lyrics.bytes() + translation.bytes() + transliteration.bytes(),
+                    lyrics.items() + translation.items() + transliteration.items());
+        }
+
+        public BucketStats forBucket(CacheBucket bucket) {
+            return switch (bucket) {
+                case LYRICS -> lyrics;
+                case TRANSLATION -> translation;
+                case TRANSLITERATION -> transliteration;
+                case ALL -> total();
+            };
+        }
+    }
+
     /**
-     * Empties the stored lyrics.
-     *
-     * <p>The dictionaries sit beside them and cost tens of megabytes and a download apiece to have
-     * back, so they are left alone. A track asked for afterward fetches as it did the first time.
+     * Empties all stored lyrics and derived caches while keeping downloaded dictionaries intact.
      *
      * @return how many bytes were freed.
      */
     public static long clear() {
-        long freed = size();
+        return clear(CacheBucket.ALL);
+    }
+
+    /** Empties one cache bucket (or {@link CacheBucket#ALL}) and returns how many bytes were freed. */
+    public static long clear(CacheBucket bucket) {
+        long freed = 0;
         final File directory = offlineDirectory();
         final File[] files = directory == null ? null : directory.listFiles();
         if (files != null) {
             for (File file : files) {
-                Utils.deleteQuietly(file);
+                if (file.isDirectory()) {
+                    continue;
+                }
+                if (bucket == CacheBucket.ALL || classifyFile(file.getName()) == bucket) {
+                    long len = file.length();
+                    Utils.deleteQuietly(file);
+                    if (!file.exists()) {
+                        freed += len;
+                    }
+                }
             }
         }
         memoryCache.clear();
+        if (bucket == CacheBucket.LYRICS || bucket == CacheBucket.ALL) {
+            videoIdByKey.clear();
+        }
         return freed;
     }
 
     /** How many bytes the stored lyrics occupy, measured the same way {@link #clear()} frees. */
     public static long size() {
-        long total = 0;
+        return stats().total().bytes();
+    }
+
+    /** Computes per-bucket byte sizes and item counts for the offline lyrics cache directory. */
+    public static CacheStats stats() {
+        long lyricsBytes = 0;
+        int lyricsItems = 0;
+        long translationBytes = 0;
+        int translationItems = 0;
+        long transliterationBytes = 0;
+        int transliterationItems = 0;
+
         final File directory = offlineDirectory();
         final File[] files = directory == null ? null : directory.listFiles();
         if (files != null) {
             for (File file : files) {
-                total += file.isDirectory() ? 0 : file.length();
+                if (file.isDirectory()) {
+                    continue;
+                }
+                final String name = file.getName();
+                final long len = file.length();
+                switch (classifyFile(name)) {
+                    case LYRICS -> {
+                        lyricsBytes += len;
+                        if (name.endsWith(".lrc") || name.endsWith(".pref")) {
+                            lyricsItems++;
+                        }
+                    }
+                    case TRANSLATION -> {
+                        translationBytes += len;
+                        translationItems++;
+                    }
+                    case TRANSLITERATION -> {
+                        transliterationBytes += len;
+                        transliterationItems++;
+                    }
+                    default -> {
+                    }
+                }
             }
         }
-        return total;
+        return new CacheStats(
+                new BucketStats(lyricsBytes, lyricsItems),
+                new BucketStats(translationBytes, translationItems),
+                new BucketStats(transliterationBytes, transliterationItems));
+    }
+
+    static CacheBucket classifyFile(String name) {
+        if (name.endsWith(".rombed.txt")
+                || name.endsWith(".rom.txt")
+                || name.endsWith(".wrom.txt")
+                || name.contains(".rom.")
+                || name.contains(".wrom.")
+                || name.contains(".ruby.")) {
+            return CacheBucket.TRANSLITERATION;
+        }
+        if (name.endsWith(".sec.txt")) {
+            return CacheBucket.LYRICS;
+        }
+        if (name.contains(".trans.") || name.endsWith(".txt")) {
+            return CacheBucket.TRANSLATION;
+        }
+        return CacheBucket.LYRICS;
     }
 
     @Nullable

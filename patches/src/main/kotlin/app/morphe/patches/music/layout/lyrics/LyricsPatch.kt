@@ -160,7 +160,9 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_allow_transliteration", summary = true),
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_clear_cache",
+                        summaryKey = "morphe_music_lyrics_cache_loading_summary",
                         tag = "app.morphe.extension.music.settings.preference.LyricsClearCachePreference",
+                        selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
                     )
                 )
