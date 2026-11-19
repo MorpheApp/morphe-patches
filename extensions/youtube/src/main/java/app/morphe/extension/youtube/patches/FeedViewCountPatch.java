@@ -499,6 +499,8 @@ public final class FeedViewCountPatch {
         if (text.length() > MAX_SUBTITLE_LENGTH) {
             return null;
         }
+        // The words of the view counts and the view counts of the elements are found by the analyses.
+        FeedVideoCardsPatch.awaitElementAnalyses();
         List<Segment> segments = splitSegments(text);
         final int size = segments.size();
         if (size == 1 && isSeparator(text.charAt(0))) {
@@ -1310,6 +1312,7 @@ public final class FeedViewCountPatch {
                 && !FeedVideoCardsPatch.isPlaylistCard(host)
                 && !FeedVideoCardsPatch.hasHorizontalList(host)));
         if (shortsFrame != null && videoId != null) {
+            FeedVideoCardsPatch.awaitElementAnalyses();
             synchronized (shortsViewCounts) {
                 viewCount = shortsViewCounts.get(videoId);
             }
@@ -1367,6 +1370,7 @@ public final class FeedViewCountPatch {
                             : FeedVideoCardsPatch.findVideoIdByDescription(host, false);
                     if (cardVideoId != null && (info.badgeText != null || videoId != null)) {
                         ElementViewCount element;
+                        FeedVideoCardsPatch.awaitElementAnalyses();
                         synchronized (videoViewCounts) {
                             element = videoViewCounts.get(cardVideoId);
                         }

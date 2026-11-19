@@ -39,6 +39,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.WeakHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -310,6 +312,7 @@ public final class FeedVideoCardsPatch {
      * @return If the video is live, such as of a card that enters the list, which is not known by its texts yet.
      */
     public static boolean isLiveVideo(String videoId) {
+        awaitElementAnalyses();
         synchronized (liveVideoIds) {
             return liveVideoIds.containsKey(videoId);
         }
@@ -511,6 +514,66 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
+     * Analyses of the elements of videos, and the texts added for videos, that did not run yet,
+     * in the order they were added. The elements are parsed on the main thread while a list loads,
+     * so they are analyzed on another thread, see {@link #awaitElementAnalyses()}.
+     */
+    @GuardedBy("itself")
+    private static final ArrayDeque<Runnable> pendingAnalyses = new ArrayDeque<>();
+    /** Number of analyses added, changed with the lock of {@link #pendingAnalyses}. */
+    private static volatile long addedAnalyses;
+    /** Number of analyses that ran, changed with {@link #analysisLock}. */
+    private static volatile long finishedAnalyses;
+    /** Held while an analysis runs, so the analyses run one at a time in the order they were added. */
+    private static final Object analysisLock = new Object();
+    private static final ExecutorService analysisExecutor = Executors.newSingleThreadExecutor(runnable -> {
+        Thread thread = new Thread(runnable, "morphe-feed-elements");
+        thread.setDaemon(true);
+        return thread;
+    });
+
+    private static void addAnalysis(Runnable analysis) {
+        synchronized (pendingAnalyses) {
+            pendingAnalyses.add(analysis);
+            addedAnalyses++;
+        }
+        analysisExecutor.execute(FeedVideoCardsPatch::runNextAnalysis);
+    }
+
+    private static void runNextAnalysis() {
+        synchronized (analysisLock) {
+            Runnable analysis;
+            synchronized (pendingAnalyses) {
+                analysis = pendingAnalyses.poll();
+            }
+            if (analysis == null) {
+                // Run already by a thread that reads what the analyses find.
+                return;
+            }
+            try {
+                analysis.run();
+            } finally {
+                finishedAnalyses++;
+            }
+        }
+    }
+
+    /**
+     * Runs the analyses that were added before and did not run yet, on the current thread if they are not running.
+     * Called before what the analyses find is read, so it's read as if each element was analyzed when it was parsed.
+     */
+    public static void awaitElementAnalyses() {
+        if (Thread.holdsLock(analysisLock)) {
+            // Read by an analysis, which finds what the analyses before it found.
+            return;
+        }
+        final long added = addedAnalyses;
+        while (finishedAnalyses < added) {
+            runNextAnalysis();
+        }
+    }
+
+    /**
      * Injection point.
      * <p>
      * Called when an element is parsed. The element is not changed.
@@ -519,10 +582,16 @@ public final class FeedVideoCardsPatch {
         if (!VIDEO_CARDS || bytes == null || !contains(bytes, THUMBNAIL_PATH)) {
             return bytes;
         }
+        // The bytes are the buffer of the element, which is never changed.
+        addAnalysis(() -> analyzeElement(bytes));
+        return bytes;
+    }
+
+    private static void analyzeElement(byte[] bytes) {
         try {
             List<ProtoNode> root = ProtoNode.parse(bytes);
             if (root == null) {
-                return bytes;
+                return;
             }
             List<ProtoNode> textNodes = ProtoNode.textNodes(root);
 
@@ -543,7 +612,7 @@ public final class FeedVideoCardsPatch {
                 }
             }
             if (thumbnailCounts.isEmpty()) {
-                return bytes;
+                return;
             }
             // Video id -> its texts.
             Map<String, List<ProtoNode>> videoTextNodes = new LinkedHashMap<>();
@@ -680,7 +749,6 @@ public final class FeedVideoCardsPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "onElementLoaded failure", ex);
         }
-        return bytes;
     }
 
     /**
@@ -696,9 +764,12 @@ public final class FeedVideoCardsPatch {
         if (!isVideoText(normalized)) {
             return;
         }
-        synchronized (textVideoIds) {
-            putVideoText(textVideoIds, normalized, videoId);
-        }
+        // Added after the texts of the elements that were parsed before, as they replace each other.
+        addAnalysis(() -> {
+            synchronized (textVideoIds) {
+                putVideoText(textVideoIds, normalized, videoId);
+            }
+        });
     }
 
     /**
@@ -1099,6 +1170,7 @@ public final class FeedVideoCardsPatch {
         }
 
         Map<String, Integer> scores = new HashMap<>();
+        awaitElementAnalyses();
         synchronized (textVideoIds) {
             for (String text : texts) {
                 String videoId = textVideoIds.get(text);
@@ -1165,6 +1237,7 @@ public final class FeedVideoCardsPatch {
             return null;
         }
         String text = described.getContentDescription().toString();
+        awaitElementAnalyses();
         synchronized (textVideoIds) {
             // A title can contain the delimiter too, so the longest start of the description
             // that is a text of a video is used. The element of a Short has the whole description.
