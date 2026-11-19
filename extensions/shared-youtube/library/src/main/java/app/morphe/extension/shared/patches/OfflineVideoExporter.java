@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/4211
+ * https://github.com/MorpheApp/morphe-patches/pull/5043
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -58,6 +59,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.function.Supplier;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
@@ -172,9 +174,9 @@ public final class OfflineVideoExporter {
     }
 
     /**
-     * If all saved videos are being exported. Set on the main thread, cleared when the exports end.
+     * If a list of saved videos is being exported. Set on the main thread, cleared when the exports end.
      */
-    private static volatile boolean exportingAll;
+    private static volatile boolean exportingList;
 
     private OfflineVideoExporter() {
     }
@@ -225,21 +227,61 @@ public final class OfflineVideoExporter {
     }
 
     /**
+     * @return The videos of the saved playlist or album that are fully saved and can be exported,
+     *         in the order of the playlist.
+     */
+    public static List<String> getExportablePlaylistVideoIds(String playlistId) {
+        Set<String> videoIds = new LinkedHashSet<>();
+        for (File database : getDatabases()) {
+            try (SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                    database.getPath(), null, SQLiteDatabase.OPEN_READONLY);
+                 Cursor cursor = db.query("playlist_video", new String[]{"video_id"},
+                         "playlist_id = ?", new String[]{playlistId},
+                         null, null, "index_in_playlist")) {
+                while (cursor.moveToNext()) {
+                    String videoId = cursor.getString(0);
+                    if (videoId != null && getSavedStreams(db, videoId) != null) {
+                        videoIds.add(videoId);
+                    }
+                }
+            }
+        }
+        return new ArrayList<>(videoIds);
+    }
+
+    /**
      * Exports all saved videos, one after another. Canceling one of the exports stops the others too.
      */
     public static void exportAllVideos() {
-        if (exportingAll) {
+        exportVideos(str("morphe_export_download_all_started"),
+                () -> getExportableVideoIds(Integer.MAX_VALUE));
+    }
+
+    /**
+     * Exports the saved videos of a playlist or album, one after another.
+     * Canceling one of the exports stops the others too.
+     */
+    public static void exportPlaylistVideos(String playlistId) {
+        exportVideos(str("morphe_export_download_playlist_started"),
+                () -> getExportablePlaylistVideoIds(playlistId));
+    }
+
+    /**
+     * @param videoIds Called on a background thread, returns the videos to export.
+     */
+    private static void exportVideos(String startedText, Supplier<List<String>> videoIds) {
+        if (exportingList) {
             Utils.showToastShort(str("morphe_export_download_all_running"));
             return;
         }
-        exportingAll = true;
-        Utils.showToastShort(str("morphe_export_download_all_started"));
+        exportingList = true;
+        Utils.showToastShort(startedText);
 
         Utils.runOnBackgroundThread(() -> {
             try {
-                List<String> videoIds = getExportableVideoIds(Integer.MAX_VALUE);
+                List<String> ids = videoIds.get();
                 int exported = 0;
-                for (String videoId : videoIds) {
+                for (String videoId : ids) {
                     ExportStatus status = exportSavedVideo(videoId);
                     if (status.outcome() == ExportOutcome.CANCELED) {
                         Utils.showToastShort(status.text());
@@ -251,14 +293,14 @@ public final class OfflineVideoExporter {
                 }
 
                 final int exportedCount = exported;
-                Logger.printDebug(() -> "Exported " + exportedCount + " of " + videoIds.size() + " videos");
+                Logger.printDebug(() -> "Exported " + exportedCount + " of " + ids.size() + " videos");
                 Utils.showToastLong(str("morphe_export_download_all_saved",
-                        exportedCount, videoIds.size(), getFolderName()));
+                        exportedCount, ids.size(), getFolderName()));
             } catch (Exception ex) {
-                Logger.printException(() -> "exportAllVideos failure", ex);
+                Logger.printException(() -> "exportVideos failure", ex);
                 Utils.showToastLong(str("morphe_export_download_failed"));
             } finally {
-                exportingAll = false;
+                exportingList = false;
             }
         });
     }
