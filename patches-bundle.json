@@ -1,8 +1,8 @@
 {
-  "created_at": "2026-11-19T11:21:50",
-  "description": "## [2.4.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.3...v2.4.0-dev.4) (2026-11-19)\n\n### 🐛 Bug Fixes\n\n* **Disable Play Store updates:** Keep original version code for Morphe extension code ([6dc03f3](https://github.com/MorpheApp/morphe-patches/commit/6dc03f37cc751f2dc6492f966cff8e56d9139c17)), closes [#5026](https://github.com/MorpheApp/morphe-patches/issues/5026)",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v2.4.0-dev.4/patches-2.4.0-dev.4.mpp",
+  "created_at": "2026-11-19T11:38:27",
+  "description": "## [2.4.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.4...v2.4.0-dev.5) (2026-11-19)\n\n### 🐛 Bug Fixes\n\n* **Disable Play Store updates:** Show original version code in Morphe crash logs ([d059799](https://github.com/MorpheApp/morphe-patches/commit/d0597996481ca1cfbdcc8bccb0d5fbb26a16ce68)), closes [#5026](https://github.com/MorpheApp/morphe-patches/issues/5026)",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v2.4.0-dev.5/patches-2.4.0-dev.5.mpp",
   "signature_download_url": "",
-  "version": "2.4.0-dev.4",
+  "version": "2.4.0-dev.5",
   "public_key": "g8Ys9leTu2yeixojeR35HrNkK6eOSLpA6nNIizRutqI="
 }

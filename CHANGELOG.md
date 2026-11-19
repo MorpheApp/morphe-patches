@@ -1,3 +1,9 @@
+## [2.4.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.4...v2.4.0-dev.5) (2026-11-19)
+
+### 🐛 Bug Fixes
+
+* **Disable Play Store updates:** Show original version code in Morphe crash logs ([d059799](https://github.com/MorpheApp/morphe-patches/commit/d0597996481ca1cfbdcc8bccb0d5fbb26a16ce68)), closes [#5026](https://github.com/MorpheApp/morphe-patches/issues/5026)
+
 ## [2.4.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.3...v2.4.0-dev.4) (2026-11-19)
 
 ### 🐛 Bug Fixes
