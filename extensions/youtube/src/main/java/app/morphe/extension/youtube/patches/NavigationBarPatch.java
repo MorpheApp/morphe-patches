@@ -53,6 +53,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.innertube.GuideResponseOuterClass.Accessibility;
@@ -100,6 +101,30 @@ public final class NavigationBarPatch {
     };
 
     private static final boolean SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+
+    public static final class HideCreateButtonAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return !Settings.HIDE_NAVIGATION_BAR.get() && !Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.HIDE_NAVIGATION_BAR, Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON);
+        }
+    }
+
+    public static final class HideNotificationsButtonAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return !Settings.HIDE_NAVIGATION_BAR.get() && Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.HIDE_NAVIGATION_BAR, Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON);
+        }
+    }
 
     public enum NavigationBarStyle {
         /**
