@@ -41,10 +41,12 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Subscribe
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.SubscriptionConfig;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModelHolder;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItem;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItemContent;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeCount;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeDislike;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarOverflow;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarSize;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarViewModel;
@@ -109,6 +111,11 @@ public class RestoreOldVideoActionBarPatch {
             || LAYOUT == VideoActionBarLayout.CLASSIC_TWO_ROWS;
 
     private static final String VIDEO_ACTION_BAR_TEMPLATE = "compactify_video_action_bar.eml";
+    /**
+     * Template of the action bar of the large screens, such as tablets, whose layout is not changed.
+     * The name is also part of the name of {@link #VIDEO_ACTION_BAR_TEMPLATE}.
+     */
+    private static final String LARGE_SCREEN_VIDEO_ACTION_BAR_TEMPLATE = "video_action_bar.eml";
 
     /**
      * Template of the title of the watch page, with the channel name, the views and the date below it.
@@ -273,19 +280,42 @@ public class RestoreOldVideoActionBarPatch {
      * chooses the style, so the action bar of the chosen layout is built from the element it sends.
      */
     public static byte[] setVideoActionBarLayout(byte[] bytes) {
-        if (!FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_ACTION_BAR_TEMPLATE)) {
+        final String elementText = FeedVideoCardsPatch.getElementText(bytes);
+        if (!elementText.contains(LARGE_SCREEN_VIDEO_ACTION_BAR_TEMPLATE)) {
             return bytes;
         }
 
         try {
             Element element = Element.parseFrom(bytes);
             ComponentType componentType = element.getType().getComponentType();
+            if (!elementText.contains(VIDEO_ACTION_BAR_TEMPLATE)) {
+                // The action bar of the large screens keeps its layout, but the buttons that the server sends
+                // without an icon name, such as the like and dislike buttons, get the icon of the button.
+                VideoActionBarModel actionBarModel = componentType.getModel().getVideoActionBarModel();
+                VideoActionBarData data = actionBarModel.getVideoActionBarData();
+                VideoActionBarViewModel actionBar = VideoActionBarViewModel.newBuilder()
+                        .addAllActions(data.getActionsList())
+                        .build();
+                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar);
+                return newActionBar == actionBar
+                        ? bytes
+                        : element.toBuilder()
+                        .setType(element.getType().toBuilder()
+                                .setComponentType(componentType.toBuilder()
+                                        .setModel(componentType.getModel().toBuilder()
+                                                .setVideoActionBarModel(actionBarModel.toBuilder()
+                                                        .setVideoActionBarData(data.toBuilder()
+                                                                .clearActions()
+                                                                .addAllActions(newActionBar.getActionsList()))))))
+                        .build().toByteArray();
+            }
+
             LockupModel lockupModel = componentType.getModel().getLockupModel();
             VideoActionBarViewModel actionBar = lockupModel.getViewModel().getVideoActionBarViewModel();
             if (LAYOUT == VideoActionBarLayout.DEFAULT) {
-                // The layout of the server is kept, but the items of its More menu that the server
-                // sends without an icon, such as the Save button, get the icon of the button.
-                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar, true);
+                // The layout of the server is kept, but the buttons that the server sends without an icon,
+                // such as the Save item of the More menu, get the icon of the button.
+                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar);
                 return newActionBar == actionBar
                         ? bytes
                         : withActionBar(element, componentType, lockupModel, newActionBar).toByteArray();
@@ -298,7 +328,7 @@ public class RestoreOldVideoActionBarPatch {
                     return bytes;
                 }
 
-                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar, false);
+                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar);
                 return newActionBar == actionBar
                         ? bytes
                         : withActionBar(element, componentType, lockupModel, newActionBar).toByteArray();
@@ -466,7 +496,7 @@ public class RestoreOldVideoActionBarPatch {
             return withActionBar(element, componentType, lockupModel, withButtonIcons(newActionBar
                     .setLayoutStyle(minimal ? LAYOUT_STYLE_MINIMAL : LAYOUT_STYLE_CLASSIC)
                     .setLayoutConfig(actionBar.getLayoutConfig().toBuilder().setIconButtons(minimal))
-                    .build(), false))
+                    .build()))
                     .toByteArray();
         } catch (Exception ex) {
             Logger.printException(() -> "setVideoActionBarLayout failure", ex);
@@ -620,13 +650,12 @@ public class RestoreOldVideoActionBarPatch {
      * Buttons without an icon get the icon that the server sent for the same button,
      * or a fallback icon of the app.
      *
-     * @param overflowOnly If only the buttons of the overflow, which are the items of the More menu, get an icon.
      * @return The same action bar if no button changes.
      */
-    private static VideoActionBarViewModel withButtonIcons(VideoActionBarViewModel actionBar, boolean overflowOnly) {
+    private static VideoActionBarViewModel withButtonIcons(VideoActionBarViewModel actionBar) {
         // The icons of the whole action bar are saved first,
         // because the same button can be in the row and in the overflow.
-        mapButtons(actionBar, false, (button, toggled) -> {
+        mapButtons(actionBar, (button, toggled) -> {
             if (!button.getTargetId().isEmpty() && !button.getIconName().isEmpty()) {
                 serverIcons.put(toggled ? button.getTargetId() + TOGGLED_ICON_KEY : button.getTargetId(),
                         button.getIconName());
@@ -634,7 +663,7 @@ public class RestoreOldVideoActionBarPatch {
             return button;
         });
 
-        return mapButtons(actionBar, overflowOnly, (button, toggled) -> {
+        return mapButtons(actionBar, (button, toggled) -> {
             String targetId = button.getTargetId();
             if (!button.getIconName().isEmpty() || targetId.isEmpty()) {
                 return button;
@@ -674,16 +703,12 @@ public class RestoreOldVideoActionBarPatch {
     }
 
     /**
-     * @param overflowOnly If only the buttons of the overflow are mapped.
      * @return The same action bar if the mapper changes no button.
      */
-    private static VideoActionBarViewModel mapButtons(VideoActionBarViewModel actionBar, boolean overflowOnly, ButtonMapper mapper) {
+    private static VideoActionBarViewModel mapButtons(VideoActionBarViewModel actionBar, ButtonMapper mapper) {
         VideoActionBarViewModel.Builder builder = null;
         for (int i = 0, count = actionBar.getActionsCount(); i < count; i++) {
             VideoActionBarItem action = actionBar.getActions(i);
-            if (overflowOnly && !action.getContent().hasOverflow()) {
-                continue;
-            }
             VideoActionBarItemContent content = mapButtons(action.getContent(), mapper);
             if (content != action.getContent()) {
                 if (builder == null) builder = actionBar.toBuilder();
