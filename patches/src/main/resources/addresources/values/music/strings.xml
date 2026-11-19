@@ -189,7 +189,6 @@ Export folder: %s"</string>
 
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
     <string name="morphe_music_hide_audio_video_toggle_title">Hide Audio / Video toggle</string>
-    <string name="morphe_music_hide_podcast_episode_download_button_title">Hide Download button</string>
     <string name="morphe_music_hide_podcast_episode_download_button_summary">Hides the Download button in podcast show</string>
     <string name="morphe_music_hide_explore_shelf_title">Hide Explore shelf</string>
     <string name="morphe_music_hide_filter_bar_title">Hide filter bar</string>
@@ -199,7 +198,6 @@ Export folder: %s"</string>
     <string name="morphe_music_hide_new_button_summary">Hides the New button in the Library tab</string>
     <string name="morphe_music_hide_list_shelves_title">Hide list shelves</string>
     <string name="morphe_music_hide_lyrics_panel_category_title">Lyrics panel</string>
-    <string name="morphe_music_hide_lyrics_share_button_title">Hide Share button</string>
     <string name="morphe_music_hide_lyrics_translate_button_title">Hide Translate button</string>
     <string name="morphe_music_hide_new_from_shelf_title">Hide \'New from\' shelf</string>
     <string name="morphe_music_hide_playlist_shelves_title">Hide playlist shelves</string>
@@ -319,7 +317,6 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
     <string name="morphe_music_disable_player_swipe_to_change_track_title">Disable swipe to change track</string>
     <string name="morphe_music_disable_player_swipe_to_change_track_summary">Prevents skipping to the next or previous track by swiping left or right on the player</string>
-    <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Disable swipe to change track</string>
     <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Prevents skipping to the next or previous track by swiping left or right on the miniplayer</string>
 
     <!-- interaction.loop.loopVideoPatch -->
@@ -508,11 +505,8 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <string name="morphe_music_miniplayer_glass_artwork_padding_title">Artwork padding</string>
     <string name="morphe_music_miniplayer_glass_rim_title">Rim brightness</string>
     <string name="morphe_music_miniplayer_glass_opacity_title">Opacity</string>
-    <string name="morphe_music_miniplayer_glass_blur_title">Glass blur</string>
     <string name="morphe_music_miniplayer_glass_blur_summary">How much the page behind the glass miniplayer is blurred (Android 14 and later). At 0 the page shows through sharp, and before Android 14 the page is covered</string>
-    <string name="morphe_music_miniplayer_glass_light_title">Light glass</string>
     <string name="morphe_music_miniplayer_glass_light_summary">Tints the glass miniplayer white instead of dark, for a lighter and clearer glass</string>
-    <string name="morphe_music_miniplayer_glass_album_tint_title">Album art tint</string>
     <string name="morphe_music_miniplayer_glass_album_tint_summary">Tints the glass miniplayer with the color of the album art of the song that plays</string>
     <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Spinning artwork</string>
     <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Makes the artwork of the glass miniplayer round, and spins it like a record while a song plays</string>

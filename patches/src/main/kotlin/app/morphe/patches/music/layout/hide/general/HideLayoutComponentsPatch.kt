@@ -54,7 +54,11 @@ val hideLayoutComponentsPatch = patch(
 
     execute {
         PreferenceScreen.FEED.addPreferences(
-            SwitchPreference("morphe_music_hide_podcast_episode_download_button", summary = true),
+            SwitchPreference(
+                "morphe_music_hide_podcast_episode_download_button",
+                titleKey = "morphe_music_hide_download_button_title",
+                summary = true
+            ),
             SwitchPreference("morphe_music_hide_explore_shelf"),
             SwitchPreference("morphe_music_hide_grid_shelves"),
             SwitchPreference("morphe_music_hide_filter_bar"),
@@ -109,7 +113,10 @@ val hideLayoutComponentsPatch = patch(
             PreferenceCategory(
                 titleKey = "morphe_music_hide_lyrics_panel_category_title",
                 preferences = setOf(
-                    SwitchPreference("morphe_music_hide_lyrics_share_button"),
+                    SwitchPreference(
+                        "morphe_music_hide_lyrics_share_button",
+                        titleKey = "morphe_music_hide_share_button_title"
+                    ),
                     SwitchPreference("morphe_music_hide_lyrics_translate_button")
                 )
             ),

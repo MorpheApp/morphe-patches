@@ -129,10 +129,19 @@ val navigationBarPatch = patch(
             ),
             NonInteractivePreference(
                 key = "morphe_music_miniplayer_glass_blur",
+                titleKey = "morphe_music_navigation_bar_glass_blur_title",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
-            SwitchPreference("morphe_music_miniplayer_glass_light", summary = true),
-            SwitchPreference("morphe_music_miniplayer_glass_album_tint", summary = true),
+            SwitchPreference(
+                "morphe_music_miniplayer_glass_light",
+                titleKey = "morphe_music_navigation_bar_glass_light_title",
+                summary = true
+            ),
+            SwitchPreference(
+                "morphe_music_miniplayer_glass_album_tint",
+                titleKey = "morphe_music_navigation_bar_glass_album_tint_title",
+                summary = true
+            ),
             SwitchPreference("morphe_music_miniplayer_glass_spinning_artwork", summary = true),
             SwitchPreference("morphe_music_miniplayer_glass_hide_progress_bar", summary = true),
         )
