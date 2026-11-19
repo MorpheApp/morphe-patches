@@ -29,16 +29,16 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -60,10 +60,11 @@ import app.morphe.extension.youtube.settings.Settings;
  * Translates live chat and live chat replay messages.
  * <p>
  * Chat rows are Litho texts that combine the author name, the badges and the message. A row that is
- * not translated yet gets a {@link PendingChatSpan}. Rows with this span that are on screen are
- * translated in the background, and {@link LithoRelayoutPatch} then lays out the row again, which
- * loads the text again as the translated row. Rows that are never on screen make no requests, as a
- * busy chat or a replay creates far more rows than it shows.
+ * not translated yet gets a {@link PendingChatSpan}. The rows are translated in the background as soon as
+ * their text is loaded, which is a moment before they are shown, and {@link LithoRelayoutPatch} then lays
+ * out the row again, which loads the text again as the translated row. All the rows waiting are translated
+ * with one request. A row that is still not translated a while after it's loaded is only translated while
+ * it's on screen, as a replay or a seek can load many rows that are never shown.
  */
 @SuppressWarnings("unused")
 public final class LiveChatTranslatePatch {
@@ -141,15 +142,30 @@ public final class LiveChatTranslatePatch {
     /** Value of {@link #translations} for a message that is shown as it is. */
     private static final String NOT_TRANSLATED = "";
 
-    private static final int WORKER_THREADS = 2;
-    private static final int WORK_QUEUE_CAPACITY = 24;
+    /**
+     * Messages translated with one request. A busy chat shows more rows than one request per message
+     * can keep up with, so all the rows on screen are translated together. DeepL takes at most 50 texts.
+     */
+    private static final int MAX_BATCH_MESSAGES = 50;
     private static final long WORKER_KEEP_ALIVE_SECONDS = 30;
-    /** The gtx endpoint the shared translator falls back to answers 429 above about one request per second. */
+    /**
+     * Minimum time between the requests to DeepL and to the gtx endpoint the shared translator
+     * falls back to, which answers 429 above about one request per second. The endpoint of the
+     * website translator answers bursts of requests, so its requests are not paced.
+     */
     private static final long MIN_REQUEST_INTERVAL_MILLISECONDS = 700;
+    /**
+     * A row is shown about a second after its text is loaded. A row loaded longer ago than this that is
+     * still not translated is only translated while it's on screen.
+     */
+    private static final long LOADED_ROW_MAX_AGE_MILLISECONDS = 3_000;
     /** Doubles per failure, and resets after a success. */
     private static final long MIN_BACKOFF_MILLISECONDS = 5_000;
     private static final long MAX_BACKOFF_MILLISECONDS = 120_000;
-    private static final long VISIBLE_SCAN_DELAY_MILLISECONDS = 350;
+    /**
+     * The rows loaded or mounted at about the same time, such as in one frame, are scanned together.
+     */
+    private static final long VISIBLE_SCAN_DELAY_MILLISECONDS = 20;
 
     private static final String COPY_ICON = "yt_outline_copy_black_24";
     private static final int COPY_ICON_SIZE_DP = 14;
@@ -161,9 +177,6 @@ public final class LiveChatTranslatePatch {
     private static final Map<String, String> translations =
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(MAX_TRANSLATIONS, true));
 
-    /** Keys of {@link #translations} that are queued or being fetched. */
-    private static final Set<String> pendingLookups = ConcurrentHashMap.newKeySet();
-
     /**
      * Results for the exact text instances Litho loads again, so a row is parsed once and
      * keeps showing the same text instance.
@@ -171,7 +184,18 @@ public final class LiveChatTranslatePatch {
     private static final Map<CharSequence, RowResult> rowResults =
             Collections.synchronizedMap(new IdentityHashMap<>());
 
+    /**
+     * Message key -> the message of a row that is not translated yet, in the order they are loaded.
+     */
+    private static final Map<String, LoadedRow> loadedRows = Collections.synchronizedMap(new LinkedHashMap<>());
+
     private static final ThreadPoolExecutor executor = createExecutor();
+
+    /**
+     * If a request is queued or being fetched. Only one request is made at a time,
+     * and the rows that arrive meanwhile are translated by the next one.
+     */
+    private static final AtomicBoolean requestInFlight = new AtomicBoolean();
 
     private static final AtomicBoolean visibleScanScheduled = new AtomicBoolean();
 
@@ -190,13 +214,16 @@ public final class LiveChatTranslatePatch {
     private record RowResult(int configHash, CharSequence text) {
     }
 
+    private record LoadedRow(String message, String language, long loadTime) {
+    }
+
     private static ThreadPoolExecutor createExecutor() {
         ThreadPoolExecutor pool = new ThreadPoolExecutor(
-                WORKER_THREADS,
-                WORKER_THREADS,
+                1,
+                1,
                 WORKER_KEEP_ALIVE_SECONDS,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(WORK_QUEUE_CAPACITY));
+                new LinkedBlockingQueue<>());
         pool.allowCoreThreadTimeOut(true);
         return pool;
     }
@@ -419,6 +446,7 @@ public final class LiveChatTranslatePatch {
                 return text;
             }
             SpannableString pending = new SpannableString(originalText);
+            loadedRows.putIfAbsent(key, new LoadedRow(message, language, System.currentTimeMillis()));
             pending.setSpan(new PendingChatSpan(originalText, messageStart, message, language, key),
                     0, pending.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             scheduleVisibleScan();
@@ -784,70 +812,114 @@ public final class LiveChatTranslatePatch {
      * Can be called on any thread.
      */
     private static void scheduleVisibleScan() {
+        scheduleVisibleScan(VISIBLE_SCAN_DELAY_MILLISECONDS);
+    }
+
+    private static void scheduleVisibleScan(long delayMilliseconds) {
         if (visibleScanScheduled.compareAndSet(false, true)) {
-            Utils.runOnMainThreadDelayed(LiveChatTranslatePatch::runVisibleScan, VISIBLE_SCAN_DELAY_MILLISECONDS);
+            Utils.runOnMainThreadDelayed(LiveChatTranslatePatch::runVisibleScan, delayMilliseconds);
         }
     }
 
     /**
-     * Requests the translations of the pending rows on screen, and runs again while there are any,
-     * as a request is not made while the queue is full or after a failure.
+     * Translates the rows waiting with one request: the rows on screen first, and then the rows loaded
+     * a moment ago, which are about to be shown. Rows that arrive while a request is made are translated
+     * by the next request, which starts when this one is done.
      */
     private static void runVisibleScan() {
         visibleScanScheduled.set(false);
         try {
+            if (requestInFlight.get()) {
+                // Scanned again when the request is done.
+                return;
+            }
+
+            // Message key -> message. All the messages of a request are translated to one language,
+            // which differs only for rows loaded before the language setting changed.
+            Map<String, String> messages = new LinkedHashMap<>();
+            String[] language = {null};
+            int[] characters = {0};
             boolean rowsWaiting = false;
             for (PendingChatSpan span : LithoRelayoutPatch.findShownSpans(PendingChatSpan.class)) {
                 if (!span.isResolved()) {
                     rowsWaiting = true;
-                    requestTranslation(span);
+                    addToRequest(messages, language, characters, span.key, span.message, span.language);
                 }
             }
-            if (rowsWaiting) {
-                // Kept running while a row is unresolved, so a row whose request failed or was
-                // dropped by the rate limit is picked up again. Only the backoff delays it, and
-                // that now expires on its own.
-                scheduleVisibleScan();
+            final long now = System.currentTimeMillis();
+            synchronized (loadedRows) {
+                Iterator<Map.Entry<String, LoadedRow>> iterator = loadedRows.entrySet().iterator();
+                while (iterator.hasNext()) {
+                    Map.Entry<String, LoadedRow> entry = iterator.next();
+                    LoadedRow row = entry.getValue();
+                    if (translations.containsKey(entry.getKey())
+                            || now - row.loadTime() > LOADED_ROW_MAX_AGE_MILLISECONDS) {
+                        iterator.remove();
+                        continue;
+                    }
+                    rowsWaiting = true;
+                    addToRequest(messages, language, characters, entry.getKey(), row.message(), row.language());
+                }
             }
+            if (!rowsWaiting) {
+                return;
+            }
+
+            // A request that failed is retried by a later scan, so the rows recover on their own
+            // after the backoff instead of staying untranslated for the rest of the session.
+            final long backoffRemaining = retryAfterFailureTime - now;
+            if (backoffRemaining > 0) {
+                scheduleVisibleScan(backoffRemaining);
+                return;
+            }
+
+            requestInFlight.set(true);
+            final String requestLanguage = language[0];
+            executor.execute(() -> fetchTranslations(requestLanguage, messages));
         } catch (Exception ex) {
             Logger.printException(() -> "runVisibleScan failure", ex);
         }
     }
 
-    private static void requestTranslation(PendingChatSpan span) {
-        if (System.currentTimeMillis() < retryAfterFailureTime || !pendingLookups.add(span.key)) {
+    /**
+     * Adds the message to the request, if it fits and has the language of the request.
+     *
+     * @param language   The language of the request, set by the first message.
+     * @param characters The characters of the request.
+     */
+    private static void addToRequest(Map<String, String> messages, String[] language, int[] characters,
+                                     String key, String message, String messageLanguage) {
+        if (language[0] == null) {
+            language[0] = messageLanguage;
+        }
+        if (!messageLanguage.equals(language[0]) || messages.containsKey(key)
+                || messages.size() >= MAX_BATCH_MESSAGES
+                || (!messages.isEmpty() && characters[0] + message.length() > TextTranslator.MAXIMUM_BATCH_CHARACTERS)) {
             return;
         }
-        // A row that failed is not stored, so it stays pending and is asked for again by the next
-        // scan. That is what makes a rate limited endpoint recover on its own instead of leaving
-        // every row of that moment untranslated for the rest of the session.
-        try {
-            executor.execute(() -> {
-                try {
-                    fetchTranslation(span.message, span.language, span.key);
-                } finally {
-                    pendingLookups.remove(span.key);
-                }
-            });
-        } catch (RejectedExecutionException ex) {
-            // Requested again by the next scan if the row is still on screen.
-            Logger.printDebug(() -> "Translation queue is full");
-            pendingLookups.remove(span.key);
-        }
+        messages.put(key, message);
+        characters[0] += message.length();
     }
 
     /**
      * Runs on a worker thread.
+     *
+     * @param messages Message key -> message.
      */
-    private static void fetchTranslation(String message, String language, String key) {
+    private static void fetchTranslations(String language, Map<String, String> messages) {
         try {
-            waitForRequestSlot();
-            final TextTranslator.Translation result = translate(message, language);
-            final String translation = result.text().trim();
-            final String detected = result.detectedLanguage();
-            final boolean isTranslated = !translation.isEmpty() && !translation.equalsIgnoreCase(message)
-                    && (detected == null || !(detected.equalsIgnoreCase(language) || isExcludedLanguage(detected)));
-            translations.put(key, isTranslated ? translation : NOT_TRANSLATED);
+            List<String> keys = new ArrayList<>(messages.keySet());
+            List<String> texts = new ArrayList<>(messages.values());
+            final List<TextTranslator.Translation> results = translate(texts, language);
+            for (int i = 0, size = keys.size(); i < size; i++) {
+                final String message = texts.get(i);
+                final TextTranslator.Translation result = results.get(i);
+                final String translation = result.text().trim();
+                final String detected = result.detectedLanguage();
+                final boolean isTranslated = !translation.isEmpty() && !translation.equalsIgnoreCase(message)
+                        && (detected == null || !(detected.equalsIgnoreCase(language) || isExcludedLanguage(detected)));
+                translations.put(keys.get(i), isTranslated ? translation : NOT_TRANSLATED);
+            }
             backoffMilliseconds = MIN_BACKOFF_MILLISECONDS;
             LithoRelayoutPatch.relayoutOutdatedTexts();
         } catch (InterruptedException ex) {
@@ -867,7 +939,11 @@ public final class LiveChatTranslatePatch {
                 }
             }
 
-            Logger.printInfo(() -> "Could not translate the chat message to: " + language, ex);
+            Logger.printInfo(() -> "Could not translate the chat messages to: " + language, ex);
+        } finally {
+            requestInFlight.set(false);
+            // The rows that arrived meanwhile.
+            scheduleVisibleScan();
         }
     }
 
@@ -882,19 +958,26 @@ public final class LiveChatTranslatePatch {
         return false;
     }
 
-    private static TextTranslator.Translation translate(String message, String language) throws Exception {
+    private static List<TextTranslator.Translation> translate(List<String> messages, String language) throws Exception {
         if (Settings.LIVE_CHAT_TRANSLATE_PROVIDER.get() == TranslationProvider.DEEPL) {
             final String apiKey = Settings.LIVE_CHAT_TRANSLATE_DEEPL_API_KEY.get().trim();
             if (!apiKey.isEmpty()) {
+                waitForRequestSlot();
                 try {
-                    return DeepLClient.translateText(message, language, apiKey);
+                    return DeepLClient.translateTexts(messages, language, apiKey);
                 } catch (Exception ex) {
                     // Such as the monthly character limit of the key being used up.
                     Logger.printInfo(() -> "DeepL failed, using Google", ex);
                 }
             }
         }
-        return TextTranslator.translateText(message, language);
+        try {
+            return TextTranslator.translateTexts(messages, language);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Website translator endpoint failed, using gtx", ex);
+        }
+        waitForRequestSlot();
+        return TextTranslator.translateTextsWithGtx(messages, language);
     }
 
     private static void waitForRequestSlot() throws InterruptedException {
