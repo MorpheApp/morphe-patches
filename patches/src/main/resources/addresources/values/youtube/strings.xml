@@ -952,7 +952,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_ads_channel_whitelist_flyout_menu_title">Ad whitelist in flyout menu</string>
     <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Adds a flyout item that lets ads play on the channel of that video</string>
     <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-    <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">This feature may require using PotHelper or changing \"Spoof video streams\" to TV or Android VR sign-in</string>
+    <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">This feature may require using PotHelper or changing \'Spoof video streams\' to \'TV\' or \'Android VR\' sign-in</string>
     <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Speed whitelist in flyout menu</string>
     <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Adds a flyout item that always plays the channel of that video at 1.0x speed</string>
     <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
@@ -1401,7 +1401,7 @@ Tablet layout
 • Community posts are hidden
 • Playback in feeds setting is not available
 • Remix button and Sound button are not available in Shorts
-• 'More videos' overlay may not be available
+• \'More videos\' overlay may not be available
 • Non collapsed old video action bar is shown
 • Flyout menu items may not work correctly
 
@@ -1409,7 +1409,7 @@ Automotive layout
 • Feed is organized by topics and channels
 • Playback in feeds setting is not available
 • Remix button and Sound button are not available in Shorts
-• 'More videos' overlay may not be available
+• \'More videos\' overlay may not be available
 • Shorts open in the regular player
 • Non collapsed old video action bar is shown"</string>
 
@@ -1865,8 +1865,8 @@ AVC (H.264)
     <string name="morphe_video_quality_prioritize_dialog">If this setting is turned off, then older videos can show no video quality options</string>
 
     <!-- misc.spoof.spoofVideoStreamsPatch -->
-    <string name="morphe_spoof_video_streams_av1_title">Allow \'Android VR\' / visionOS AV1</string>
-    <string name="morphe_spoof_video_streams_av1_summary">Permits software AV1 decoding when using the \'Android VR\' / visionOS client</string>
+    <string name="morphe_spoof_video_streams_av1_title">Allow \'Android VR\' / \'visionOS\' AV1</string>
+    <string name="morphe_spoof_video_streams_av1_summary">Permits software AV1 decoding when using the \'Android VR\' / \'visionOS\' client</string>
     <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Enabling this setting may use software AV1 decoding.
 
 Video playback with AV1 may stutter or drop frames"</string>

@@ -105,10 +105,10 @@ Verify the package name is correct and the app is installed"</string>
 This setting will not change the icon in any of these locations:
 • Device system settings app list
 • Certain push notifications
-• 'Open with' app picker
+• \'Open with\' app picker
 • Android Auto icon
 
-To change the icon everywhere, patch again and change the 'App icon' patch option"</string>
+To change the icon everywhere, patch again and change the \'App icon\' patch option"</string>
     <string name="morphe_custom_branding_notification_icon_title">Notification icon</string>
     <string name="morphe_custom_branding_notification_icon_entry_1">Match app icon</string>
     <string name="morphe_custom_branding_notification_icon_entry_2" translatable="false">Morphe</string>
@@ -152,13 +152,13 @@ Tap OK to open Android System WebView."</string>
     <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Try enabling: Spoof video streams > Android VR sign in</string>
     <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
     <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR sign in</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR requires a separate sign-in. Tap here to continue</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Currently signed into Android VR</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR sign in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' requires a separate sign-in. Tap here to continue</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Currently signed in to \'Android VR\'</string>
     <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">To use this feature, change \'Default client\' to Android VR</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sign in to Android VR</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing in to Android VR can fix playback issues for some users
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">To use this feature, change \'Default client\' to \'Android VR\'</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sign in to \'Android VR\'</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing in to \'Android VR\' can fix playback issues for some users
 
 To sign in, press continue below"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sign out</string>
@@ -181,11 +181,11 @@ To sign in, press continue below"</string>
 • You will need to sign in again if you change your Google password or deregister this device from your Google settings"</string>
     <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobile Web sign in</string>
     <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Optional: sign in to the YouTube website to play videos with your account. Tap here to continue</string>
-    <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Currently signed into Mobile Web</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Currently signed in to \'Mobile Web\'</string>
     <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-    <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">To use this feature, change \'Default client\' to Mobile Web</string>
-    <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Sign in to Mobile Web</string>
-    <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web plays videos signed out, or signed in to the YouTube website
+    <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">To use this feature, change \'Default client\' to \'Mobile Web\'</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Sign in to \'Mobile Web\'</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\'Mobile Web\' plays videos signed out, or signed in to the YouTube website
 
 • Signed in, videos that need an account can be played, such as age-restricted videos
 • The Google sign-in page opens in this app
@@ -195,19 +195,19 @@ To sign in, press continue below"</string>
 To sign in, press continue below"</string>
     <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sign-in saved
 
-• Your Morphe settings will not import/export the Mobile Web sign-in
+• Your Morphe settings will not import/export the \'Mobile Web\' sign-in
 • If Google ends the sign-in, videos are played signed out until you sign in again
 • Signing out also signs this device out of the YouTube website"</string>
-    <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web sign in expired, try signing in to Mobile Web again</string>
-    <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Signed out of Mobile Web</string>
-    <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView is not available. Install or enable it to sign in</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web sign in expired, try signing in to \'Mobile Web\' again</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Signed out of \'Mobile Web\'</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' is not available. Install or enable it to sign in</string>
     <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
-    <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing in to VR again</string>
+    <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' sign in expired, try signing in to VR again</string>
     <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %s)</string>
     <string name="morphe_oauth2_connection_failure_generic">OAuth2 is temporarily not available</string>
     <string name="morphe_oauth2_connection_failure_auth_not_approved">Cannot sign in to VR, website authentication was not approved</string>
     <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign in to VR: %s</string>
-    <string name="morphe_oauth2_toast_reset">Logged out of Android VR</string>
+    <string name="morphe_oauth2_toast_reset">Logged out of \'Android VR\'</string>
     <string name="morphe_oauth2_toast_invalid">Invalid VR sign in token, try signing in to VR again</string>
 
     <!-- misc.medianotification.mediaNotificationControlsPatch -->
@@ -274,7 +274,7 @@ To sign in, press continue below"</string>
     <string name="morphe_replace_music_with_youtube_title">Change share links to youtube.com</string>
     <string name="morphe_replace_music_with_youtube_summary">Replaces music.youtube.com to youtube.com in shared links</string>
     <string name="morphe_replace_links_with_shortener_title">Change share links to youtu.be</string>
-    <string name="morphe_replace_links_with_shortener_summary">Forces videos to use the shortened youtu.be URL format</string>
+    <string name="morphe_replace_links_with_shortener_summary">Forces videos to use the shortened \'youtu.be\' URL format</string>
 
     <!-- video.quality.rememberVideoQualityPatch -->
     <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
@@ -293,7 +293,7 @@ To sign in, press continue below"</string>
     <string name="morphe_debug_litho_entry_disabled">Disabled</string>
     <string name="morphe_debug_litho_entry_path">Path</string>
     <string name="morphe_debug_litho_entry_path_and_buffer">Path and buffer</string>
-    <string name="morphe_debug_litho_user_dialog_message">"Litho logging logs the layout components of the app, including on-screen text for some UI components.
+    <string name="morphe_debug_litho_user_dialog_message">"Logs the layout components of the app, including on-screen text for some UI components.
 
 This can help identify components when creating custom filters.
 

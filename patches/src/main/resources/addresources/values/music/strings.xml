@@ -223,7 +223,7 @@ Export folder: %s"</string>
     <string name="morphe_music_crossfade_screen_summary">Smoothly blend tracks into each other</string>
     <string name="morphe_music_crossfade_enabled_title">Enable crossfade</string>
     <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-    <string name="morphe_music_crossfade_enabled_summary_unavailable">To use crossfade, change the Spoof video streams \'Default client\' to TV Simply or visionOS</string>
+    <string name="morphe_music_crossfade_enabled_summary_unavailable">To use crossfade, change the \'Spoof video streams\' \'Default client\' to \'TV Simply\' or \'visionOS\'</string>
     <string name="morphe_music_crossfade_curve_title">Fade curve</string>
     <string name="morphe_music_crossfade_curve_entry_equal_power">Equal power</string>
     <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtle hold</string>
@@ -259,7 +259,7 @@ Export folder: %s"</string>
     <string name="morphe_music_crossfade_resumed_toast">Crossfade resumed</string>
     <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mode is not available while crossfade is enabled</string>
     <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-    <string name="morphe_music_crossfade_visionos_toast">Crossfade does not work with visionOS. Change the Spoof video streams \'Default client\' to TV Simply</string>
+    <string name="morphe_music_crossfade_visionos_toast">Crossfade does not work with \'visionOS\'. Change the \'Spoof video streams\' \'Default client\' to \'TV Simply\'</string>
     <string name="morphe_music_crossfade_spoof_client_toast">Crossfade does not work with this spoof stream client</string>
     <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is off while casting</string>
     <string name="morphe_music_crossfade_about_how_title">How it works</string>
@@ -521,12 +521,12 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
     <string name="morphe_music_hide_activity_button_title">Hide Activity button</string>
     <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-    <string name="morphe_music_hide_ask_music_button_title">Hide Ask Music button</string>
+    <string name="morphe_music_hide_ask_music_button_title">Hide \'Ask Music\' button</string>
     <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_music_hide_history_button_title">Hide History button</string>
     <string name="morphe_music_hide_search_button_title">Hide Search button</string>
-    <string name="morphe_music_hide_voice_search_button_title">Hide Voice search button</string>
-    <string name="morphe_music_hide_sound_search_button_title">Hide Sound search button</string>
+    <string name="morphe_music_hide_voice_search_button_title">Hide \'Voice search\' button</string>
+    <string name="morphe_music_hide_sound_search_button_title">Hide \'Sound search\' button</string>
 
     <!-- interaction.scrobbling.scrobblingPatch -->
     <string name="morphe_music_scrobbling_summary_logged_out">Not logged in. Tap to configure</string>
