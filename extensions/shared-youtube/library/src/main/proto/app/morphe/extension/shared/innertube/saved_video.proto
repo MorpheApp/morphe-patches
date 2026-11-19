@@ -47,3 +47,18 @@ message OfflineMusicMetadata {
     optional string artist = 3;
     optional string album = 9;
 }
+
+// Data of a saved playlist or album.
+message OfflinePlaylistData {
+    // The artist of an album, or the channel or user that made a playlist.
+    optional OfflinePlaylistOwner owner = 3;
+    optional string title = 5;
+}
+
+message OfflinePlaylistOwner {
+    optional OfflineChannel channel = 75056453;
+}
+
+message OfflineChannel {
+    optional string name = 3;
+}
