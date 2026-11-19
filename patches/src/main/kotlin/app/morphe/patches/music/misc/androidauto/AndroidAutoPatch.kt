@@ -449,7 +449,6 @@ private fun addGridRendererInterface() {
 
 /** Exposes Library playlist metadata and returns YTM's media ID encoder for playback. */
 private fun patchPhoneBrowseItem(): MethodReference {
-    val phoneBrowseItemType = PhoneBrowseItemArtworkFingerprint.originalMethod.parameterTypes[1].toString()
     val phoneBrowseItemFields = classDefBy(phoneBrowseItemType).instanceFields.toList()
 
     // Both phone thumbnail renderers must agree on the container and decoded thumbnail fields.

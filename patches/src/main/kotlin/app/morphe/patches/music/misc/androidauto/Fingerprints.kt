@@ -368,7 +368,7 @@ internal fun browseEndpointFromCommandFingerprint(
 /**
  * The class of Library items. It is the field read after YTM's presence check in [GridRendererItemsFingerprint].
  */
-private val phoneBrowseItemType
+internal val phoneBrowseItemType
     get() = GridRendererItemsFingerprint.instructionMatches
         .single { match -> match.instruction.opcode == Opcode.IGET_OBJECT }
         .fieldReference
@@ -377,6 +377,7 @@ private val phoneBrowseItemType
 /**
  * Reads an item's artwork container, decodes it, then reads the thumbnail details.
  * The second parameter is the Library item.
+ * YTM has more than one phone thumbnail renderer with this code, so use it only with matchAll().
  */
 internal object PhoneBrowseItemArtworkFingerprint : Fingerprint(
     returnType = "V",
