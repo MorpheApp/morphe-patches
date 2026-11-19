@@ -54,7 +54,9 @@ import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -88,6 +90,9 @@ internal const val EXTENSION_CLASS =
 
 private const val EXTENSION_SETTING_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$SettingsController;"
+
+private const val TOOLBAR_BUTTON_PROVIDER_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$ToolbarButtonProvider;"
 
 private const val PIVOT_BAR_ACCESS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$PivotBarAccess;"
@@ -791,13 +796,19 @@ val navigationBarPatch = patch(
         //
 
         val toolbarPreferences = mutableSetOf(
+            SwitchPreference("morphe_hide_toolbar_cast_button", titleKey = "morphe_hide_cast_button_title"),
             SwitchPreference("morphe_hide_toolbar_chat_button"),
+            SwitchPreference("morphe_hide_toolbar_companion_button"),
             SwitchPreference("morphe_hide_toolbar_create_button", titleKey = "morphe_hide_create_button_title"),
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button", titleKey = "morphe_hide_notifications_button_title"),
             SwitchPreference("morphe_hide_toolbar_search_button"),
             SwitchPreference("morphe_show_toolbar_settings_button", titleKey = "morphe_show_settings_button_title"),
-            SwitchPreference("morphe_show_toolbar_settings_button_type", titleKey = "morphe_show_settings_button_type_title", summary = true),
+            SwitchPreference(
+                "morphe_show_toolbar_settings_button_type",
+                titleKey = "morphe_show_settings_button_type_title",
+                summaryKey = "morphe_show_settings_button_type_summary"
+            ),
             NonInteractivePreference(
                 "morphe_toolbar_buttons_order",
                 tag = "app.morphe.extension.youtube.settings.preference.NavigationButtonsOrderPreference",
@@ -862,10 +873,160 @@ val navigationBarPatch = patch(
             }
         }
 
+        hookToolBar("$EXTENSION_CLASS->hideChatButton")
         hookToolBar("$EXTENSION_CLASS->hideCreateButton")
         hookToolBar("$EXTENSION_CLASS->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS->hideSearchButton")
-        hookToolBar("$EXTENSION_CLASS->hideChatButton")
+
+        //
+        // Toolbar Cast button
+        //
+        ToolbarCastMenuItemInitializeFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val menuItemRegister = getInstruction<FiveRegisterInstruction>(index).registerC
+
+                addInstruction(
+                    index,
+                    "invoke-static { v$menuItemRegister }, $EXTENSION_CLASS->hideToolbarCastButton(Landroid/view/MenuItem;)V"
+                )
+            }
+        }
+
+        ToolbarCastMenuItemVisibilityFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val setVisibleInstruction = getInstruction<FiveRegisterInstruction>(index)
+                val menuItemRegister = setVisibleInstruction.registerC
+                val visibilityRegister = setVisibleInstruction.registerD
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$menuItemRegister, v$visibilityRegister }, $EXTENSION_CLASS->hideToolbarCastButton(Landroid/view/MenuItem;Z)Z
+                        move-result v$visibilityRegister
+                    """
+                )
+            }
+        }
+
+        // The cast companion features hide the toolbar Cast button or replace it with a button
+        // that opens the companion of the watch page. They are turned off to show the Cast button.
+        val castCompanionOverride = "$EXTENSION_CLASS->useCastCompanion(Z)Z"
+
+        if (is_21_30_or_greater) {
+            // The app hides the toolbar Cast button unless the cast icon awareness allows it.
+            // Only the Cast button is changed, so the Companion button is shown as the app shows it.
+            // Both flags are read in the same method, so the reads are found by their flag
+            // and not by the index of the match, which the other override moves.
+            mapOf(
+                ToolbarCastButtonAwarenessFeatureFlagFingerprint to 45759129L,
+                ToolbarCastButtonAwarenessAlternateFeatureFlagFingerprint to 45758238L
+            ).forEach { (fingerprint, flag) ->
+                fingerprint.method.insertLiteralOverride(flag, castCompanionOverride)
+            }
+
+            // The Cast button uses the media route button, and not the entry point button that shows the companion icon.
+            // The flag is read elsewhere for the Cast button of the player, which is left as it is.
+            ToolbarCastButtonViewFingerprint.method.insertLiteralOverride(45690090L, castCompanionOverride)
+
+            // The code that connects the toolbar Cast button to the cast devices reads the flag again,
+            // to know the type of its view, so the media route button is not used as the entry point button.
+            ToolbarCastButtonConnectionFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(45690090L, castCompanionOverride)
+            }
+
+            // The media route button opens the cast devices, and not the companion.
+            MediaRouteButtonClickFingerprint.method.insertLiteralOverride(45673420L, castCompanionOverride)
+            if (is_21_45_or_greater) {
+                MediaRouteButtonClickFingerprint.method.insertLiteralOverride(45823676L, castCompanionOverride)
+            }
+        }
+
+        if (is_21_45_or_greater) {
+            // The app adds either the Cast button or the Companion button to the toolbar.
+            // The Cast button is always added, and the Companion button is added next to it
+            // if the app chose it, see addToolbarCompanionButton().
+            val companionButtonClass = ToolbarCompanionButtonFingerprint.classDef
+            val castButtonSelection = ToolbarCastButtonSelectionFingerprint.match()
+
+            // The extension gets the Cast button from its provider.
+            val getButtonMethod = castButtonSelection.instructionMatches.last().getMethodCalled()
+            mutableClassDefBy(getButtonMethod.definingClass).addPatchInterface(
+                TOOLBAR_BUTTON_PROVIDER_INTERFACE,
+                "patch_getButton",
+                getButtonMethod
+            )
+
+            castButtonSelection.method.apply {
+                instructions.withIndex()
+                    .filter { (_, instruction) -> instruction.opcode == Opcode.RETURN_OBJECT }
+                    .map { (index, _) -> index }
+                    .sortedDescending()
+                    .forEach { returnIndex ->
+                        val buttonRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
+                        val freeRegister = findFreeRegister(returnIndex, buttonRegister)
+
+                        addInstructionsAtControlFlowLabel(
+                            returnIndex,
+                            """
+                                instance-of v$freeRegister, v$buttonRegister, ${companionButtonClass.type}
+                                if-eqz v$freeRegister, :cast_button
+                                # The provider of the Cast button is the first parameter.
+                                invoke-static { p0, v$buttonRegister }, $EXTENSION_CLASS->getToolbarCastButton(${TOOLBAR_BUTTON_PROVIDER_INTERFACE}Ljava/lang/Object;)Ljava/lang/Object;
+                                move-result-object v$buttonRegister
+                                check-cast v$buttonRegister, $returnType
+                                :cast_button
+                                nop
+                            """
+                        )
+                    }
+            }
+
+            // Both buttons have the id of the Cast button, and the toolbar keeps its buttons by their id.
+            ToolbarCompanionButtonIdFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->getToolbarCompanionButtonId()I
+                    move-result v0
+                    return v0
+                """
+            )
+
+            ToolbarMenuCreateFingerprint.method.addInstruction(
+                0,
+                "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->addToolbarCompanionButton(Landroid/util/SparseArray;)V"
+            )
+        }
+
+        // The toolbar Cast button is always shown. The controller of the cast devices hides and disables
+        // its view while casting is not available, which after a cold start can be until the app is opened again.
+        MediaRouteButtonSetVisibilityFingerprint.let {
+            it.method.addInstructions(
+                0,
+                """
+                    invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->getToolbarCastButtonVisibility(Landroid/view/View;I)I
+                    move-result p1
+                """
+            )
+
+            it.classDef.apply {
+                // The button does not override setEnabled, so it is added.
+                if (methods.any { method -> method.name == "setEnabled" }) {
+                    throw PatchException("MediaRouteButton already overrides setEnabled")
+                }
+                addBridge(
+                    "setEnabled", listOf("Z"), "V", 2,
+                    """
+                        invoke-static { p0, p1 }, $EXTENSION_CLASS->getToolbarCastButtonEnabled(Landroid/view/View;Z)Z
+                        move-result p1
+                        invoke-super { p0, p1 }, $superclass->setEnabled(Z)V
+                        return-void
+                    """,
+                    AccessFlags.PUBLIC.value
+                )
+            }
+        }
 
         //
         // Hide old search button
