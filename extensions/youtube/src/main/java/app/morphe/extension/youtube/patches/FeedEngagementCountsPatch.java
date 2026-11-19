@@ -40,6 +40,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.shared.returnyoutubedislike.requests.RYDVoteData;
+import app.morphe.extension.shared.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -473,48 +474,62 @@ public final class FeedEngagementCountsPatch {
          * @param wait The number of waits for the same fetch before this one, see {@link #MAX_FETCH_WAITS}.
          */
         private void fetch(View host, String fetchVideoId, int wait) {
+            if (ReturnYouTubeDislikeAPI.isApiCallsPaused()) {
+                // No request is sent while the API calls are paused, such as after the API limited the requests.
+                // The fetch fails at once, so the badge is not shown as loading for a moment on every card.
+                onFetchResult(host, fetchVideoId, wait, null, true);
+                return;
+            }
             fetching = true;
             ReturnYouTubeDislike fetch = ReturnYouTubeDislike.getFetchForVideoId(fetchVideoId);
             Utils.runOnBackgroundThread(() -> {
                 RYDVoteData data = fetch.getFetchData(FETCH_TIMEOUT_MS);
                 final boolean completed = fetch.fetchCompleted();
-                Utils.runOnMainThread(() -> {
-                    try {
-                        // The card may show another video now.
-                        if (!fetchVideoId.equals(videoId) || badges.get(host) != this) {
-                            return;
-                        }
-                        fetching = false;
-                        if (data != null) {
-                            setData(data);
-                            startFadeIn();
-                        } else if (!completed && wait + 1 < MAX_FETCH_WAITS && host.isAttachedToWindow()) {
-                            // The fetch is still running, and the loading spinner is shown until it completes.
-                            fetch(host, fetchVideoId, wait + 1);
-                            return;
-                        } else if (failedFetchRetry == null && failedFetchRetries < MAX_FAILED_FETCH_RETRIES
-                                && host.isAttachedToWindow()) {
-                            // The fetch failed, such as without a connection or while the API limits the requests.
-                            // The card is not laid out again while it's shown, so the fetch is tried again later.
-                            // A layout of the card meanwhile gets the same failed fetch, and keeps this retry.
-                            failedFetchRetries++;
-                            Runnable retry = () -> {
-                                failedFetchRetry = null;
-                                if (fetchVideoId.equals(videoId) && host.isAttachedToWindow() && !hasContent()) {
-                                    requestFetch(host, fetchVideoId, 0);
-                                    place(host);
-                                }
-                            };
-                            failedFetchRetry = retry;
-                            handler.postDelayed(retry, FAILED_FETCH_RETRY_DELAY_MS);
-                        }
-                        // The counts replace the loading spinner, or the badge is removed if the fetch failed.
-                        place(host);
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "Feed counts update failure", ex);
-                    }
-                });
+                Utils.runOnMainThread(() -> onFetchResult(host, fetchVideoId, wait, data, completed));
             });
+        }
+
+        /**
+         * Called on the main thread with the result of a fetch.
+         *
+         * @param completed If the fetch completed, otherwise it's still running.
+         */
+        private void onFetchResult(View host, String fetchVideoId, int wait,
+                                   @Nullable RYDVoteData data, boolean completed) {
+            try {
+                // The card may show another video now.
+                if (!fetchVideoId.equals(videoId) || badges.get(host) != this) {
+                    return;
+                }
+                fetching = false;
+                if (data != null) {
+                    setData(data);
+                    startFadeIn();
+                } else if (!completed && wait + 1 < MAX_FETCH_WAITS && host.isAttachedToWindow()) {
+                    // The fetch is still running, and the loading spinner is shown until it completes.
+                    fetch(host, fetchVideoId, wait + 1);
+                    return;
+                } else if (failedFetchRetry == null && failedFetchRetries < MAX_FAILED_FETCH_RETRIES
+                        && host.isAttachedToWindow()) {
+                    // The fetch failed, such as without a connection or while the API limits the requests.
+                    // The card is not laid out again while it's shown, so the fetch is tried again later.
+                    // A layout of the card meanwhile gets the same failed fetch, and keeps this retry.
+                    failedFetchRetries++;
+                    Runnable retry = () -> {
+                        failedFetchRetry = null;
+                        if (fetchVideoId.equals(videoId) && host.isAttachedToWindow() && !hasContent()) {
+                            requestFetch(host, fetchVideoId, 0);
+                            place(host);
+                        }
+                    };
+                    failedFetchRetry = retry;
+                    handler.postDelayed(retry, FAILED_FETCH_RETRY_DELAY_MS);
+                }
+                // The counts replace the loading spinner, or the badge is removed if the fetch failed.
+                place(host);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Feed counts update failure", ex);
+            }
         }
 
         private void startFadeIn() {
