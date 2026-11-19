@@ -31,6 +31,8 @@ import android.widget.ImageView;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
+import com.reddit.typeahead.TypeaheadResultsScreen;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -70,6 +72,7 @@ final class FeedAutoScrollButton {
     private static boolean isNavBarShown = true;
     private static WeakReference<ImageView> buttonRef = new WeakReference<>(null);
     private static final List<WeakReference<View>> postDetailPagerViews = new ArrayList<>();
+    private static boolean isSearchScreenShown;
 
     /**
      * Covers the screen and gets touches first. Touches outside the button stop scrolling
@@ -299,6 +302,15 @@ final class FeedAutoScrollButton {
         updateVisibility();
     }
 
+    static void onScreenAttachChanged(Object screen, boolean attached) {
+        if (!(screen instanceof TypeaheadResultsScreen)) {
+            return;
+        }
+
+        isSearchScreenShown = attached;
+        updateVisibility();
+    }
+
     private static boolean isPostDetailPagerShown() {
         boolean shown = false;
         for (Iterator<WeakReference<View>> iterator = postDetailPagerViews.iterator(); iterator.hasNext(); ) {
@@ -319,6 +331,7 @@ final class FeedAutoScrollButton {
         final boolean show = isResumed
                 && (isNavBarShown || Utils.isTablet())
                 && !isPostDetailPagerShown()
+                && !isSearchScreenShown
                 && FeedAutoScrollPatch.hasOnScreenFeed();
         if (!show) {
             FeedAutoScrollPatch.stop();

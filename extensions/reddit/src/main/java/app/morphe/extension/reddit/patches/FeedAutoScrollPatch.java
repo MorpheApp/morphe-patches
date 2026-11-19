@@ -327,4 +327,30 @@ public final class FeedAutoScrollPatch {
             Logger.printException(() -> "onPostDetailPagerViewCreated failure", ex);
         }
     }
+
+    /**
+     * Injection point.
+     */
+    public static void onScreenAttached(Object screen) {
+        try {
+            if (isEnabled()) {
+                FeedAutoScrollButton.onScreenAttachChanged(screen, true);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onScreenAttached failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void onScreenDetached(Object screen) {
+        try {
+            if (isEnabled()) {
+                FeedAutoScrollButton.onScreenAttachChanged(screen, false);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onScreenDetached failure", ex);
+        }
+    }
 }

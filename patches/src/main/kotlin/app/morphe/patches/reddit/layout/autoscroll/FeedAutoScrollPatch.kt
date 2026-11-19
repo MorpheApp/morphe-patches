@@ -155,6 +155,16 @@ val feedAutoScrollPatch = patch(
             }
         }
 
+        ScreenAttachFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p0 }, $EXTENSION_CLASS->onScreenAttached(Ljava/lang/Object;)V"
+        )
+
+        ScreenDetachFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p0 }, $EXTENSION_CLASS->onScreenDetached(Ljava/lang/Object;)V"
+        )
+
         // endregion
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)

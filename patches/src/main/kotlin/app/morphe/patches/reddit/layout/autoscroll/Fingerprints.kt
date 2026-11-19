@@ -9,6 +9,7 @@ package app.morphe.patches.reddit.layout.autoscroll
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
@@ -99,5 +100,34 @@ internal object PostDetailPagerInflateFingerprint : Fingerprint(
             opcode = Opcode.MOVE_RESULT_OBJECT,
             location = MatchAfterImmediately()
         )
+    )
+)
+
+/**
+ * Attached callback of a screen in the navigation stack.
+ */
+internal object ScreenAttachFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/navstack/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "DESTROYED"),
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "RESUMED")
+    )
+)
+
+/**
+ * Detached callback of a screen in the navigation stack.
+ */
+internal object ScreenDetachFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/navstack/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "RESUMED"),
+        methodCall(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "isAtLeast"),
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "STARTED")
     )
 )
