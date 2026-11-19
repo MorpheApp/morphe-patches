@@ -91,23 +91,45 @@ async function removeLabelIfPresent(github, owner, repo, issueNumber, name) {
  * but the issue does not stay in the repository.
  * The comment is posted with the workflow token, and the issue is deleted with
  * ISSUE_ADMIN_TOKEN, which must belong to an account with admin access to the repository.
- * Without that token the issue is closed instead.
+ * Without that token, or if deleting fails, the issue is closed instead.
  */
 async function commentAndDelete({ github, getOctokit, core, owner, repo, issue, comment }) {
   await github.rest.issues.createComment({ owner, repo, issue_number: issue.number, body: comment });
 
-  const adminToken = process.env.ISSUE_ADMIN_TOKEN;
-  if (!adminToken) {
-    core.warning(`ISSUE_ADMIN_TOKEN is not set, closing #${issue.number} instead of deleting it`);
-    await github.rest.issues.update({
+  const closeInstead = () =>
+    github.rest.issues.update({
       owner,
       repo,
       issue_number: issue.number,
       state: 'closed',
       state_reason: 'not_planned',
     });
+
+  const adminToken = process.env.ISSUE_ADMIN_TOKEN;
+  if (!adminToken) {
+    core.warning(`ISSUE_ADMIN_TOKEN is not set, closing #${issue.number} instead of deleting it`);
+    await closeInstead();
     return;
   }
+
+  try {
+    const admin = getOctokit(adminToken);
+    await admin.graphql(
+      `mutation($id: ID!) {
+        deleteIssue(input: { issueId: $id }) {
+          clientMutationId
+        }
+      }`,
+      { id: issue.node_id }
+    );
+  } catch (error) {
+    // Fail the run so maintainers are notified that the token needs fixing.
+    core.setFailed(`Could not delete #${issue.number}, closing it instead. Check ISSUE_ADMIN_TOKEN: ${error.message}`);
+    await closeInstead();
+    return;
+  }
+
+  core.info(`Deleted #${issue.number}`);
 
   // Keep a record in the job summary, as a deleted issue cannot be restored.
   await core.summary
@@ -117,17 +139,6 @@ async function commentAndDelete({ github, getOctokit, core, owner, repo, issue, 
     .addRaw(`Title: ${escapeHtml(issue.title)}`, true)
     .addDetails('Body', `<pre>${escapeHtml(issue.body || '')}</pre>`)
     .write();
-
-  const admin = getOctokit(adminToken);
-  await admin.graphql(
-    `mutation($id: ID!) {
-      deleteIssue(input: { issueId: $id }) {
-        clientMutationId
-      }
-    }`,
-    { id: issue.node_id }
-  );
-  core.info(`Deleted #${issue.number}`);
 }
 
 function escapeHtml(text) {
