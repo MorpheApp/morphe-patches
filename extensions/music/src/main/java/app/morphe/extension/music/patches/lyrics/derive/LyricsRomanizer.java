@@ -562,9 +562,15 @@ public final class LyricsRomanizer {
                                                  boolean allowTransliteration) {
         List<LyricsLine> result;
         if (isWordSynced) {
-            result = romanizeWordSynced(lyrics);
-            if (result == null) {
-                return null;
+            result = LyricsCache.getWordRomanization(track, source, lines, lyrics.lines());
+            if (result == null || !hasUsableRomanization(result, lyrics, allowTransliteration)) {
+                result = romanizeWordSynced(lyrics);
+                if (result == null) {
+                    return null;
+                }
+                if (hasUsableRomanization(result, lyrics, allowTransliteration)) {
+                    LyricsCache.putWordRomanization(track, source, lines, result);
+                }
             }
         } else {
             result = LyricsCache.getRomanization(track, source, lines);

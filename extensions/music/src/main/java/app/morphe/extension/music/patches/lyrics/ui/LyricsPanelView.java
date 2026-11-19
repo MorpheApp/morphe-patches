@@ -261,6 +261,10 @@ public final class LyricsPanelView extends FrameLayout
     /** The lyrics as loaded from the source, before ruby enrichment, so re-applying starts clean. */
     @Nullable
     private Lyrics rawLyrics;
+    @Nullable
+    private StashedTranslation stashedTranslation;
+    @Nullable
+    private StashedRomanization stashedRomanization;
     /** Set while a run is going, so the affordances can say so before the client knows it. */
     private boolean transcribeBusy;
     /** The aligned lyrics waiting to be applied, and the track they belong to. */
@@ -1200,6 +1204,8 @@ public final class LyricsPanelView extends FrameLayout
             invalidateRomanize();
             clearTranslatedData();
             clearRomanizedData();
+            stashedTranslation = null;
+            stashedRomanization = null;
             // A transcription in flight belongs to the track that just left.
             transcribeRequestId++;
             transcribeBusy = false;
@@ -2985,6 +2991,17 @@ public final class LyricsPanelView extends FrameLayout
                 return;
             }
 
+            if (restoreStashedTranslation(current)) {
+                Settings.LYRICS_TRANSLATE.save(true);
+                Settings.LYRICS_TRANSLATE_ONLY.save(false);
+                showLyrics(current);
+                updateFooter();
+                flashButtonLabel(translateView,
+                        str("morphe_music_lyrics_translate_hide"),
+                        updateTranslateLabelRunnable, 3000);
+                return;
+            }
+
             Settings.LYRICS_TRANSLATE.save(true);
             Settings.LYRICS_TRANSLATE_ONLY.save(false);
             translateInProgress = true;
@@ -3078,6 +3095,7 @@ public final class LyricsPanelView extends FrameLayout
             Settings.LYRICS_TRANSLATE_ONLY.save(true);
             Settings.LYRICS_TRANSLATE.save(false);
 
+            restoreStashedTranslation(current);
             if (translatedLines != null) {
                 onlyMode = OnlyMode.TRANS;
                 applyOnlyModeState();
@@ -3109,6 +3127,7 @@ public final class LyricsPanelView extends FrameLayout
             disableNormalRomanize();
             updateRomanizeLabel();
         }
+        restoreStashedTranslation(current);
         if (translatedLines != null) {
             onlyMode = Settings.LYRICS_ROMANIZE_ONLY.get() ? OnlyMode.BOTH : OnlyMode.TRANS;
             applyOnlyModeState();
@@ -3175,6 +3194,16 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void requestNormalTranslate(Lyrics current, TrackInfo track) {
+        if (restoreStashedTranslation(current)) {
+            Settings.LYRICS_TRANSLATE.save(true);
+            Settings.LYRICS_TRANSLATE_ONLY.save(false);
+            showLyrics(current);
+            updateFooter();
+            flashButtonLabel(translateView,
+                    str("morphe_music_lyrics_translate_hide"),
+                    updateTranslateLabelRunnable, 3000);
+            return;
+        }
         Settings.LYRICS_TRANSLATE.save(true);
         Settings.LYRICS_TRANSLATE_ONLY.save(false);
         translateInProgress = true;
@@ -3426,6 +3455,7 @@ public final class LyricsPanelView extends FrameLayout
     private void cancelNormalTranslate() {
         invalidateTranslate();
         Settings.LYRICS_TRANSLATE.save(false);
+        stashTranslatedData();
         clearTranslatedData();
         updateFooter();
     }
@@ -3433,8 +3463,114 @@ public final class LyricsPanelView extends FrameLayout
     private void cancelNormalRomanize() {
         invalidateRomanize();
         Settings.LYRICS_ROMANIZE.save(false);
+        stashRomanizedData();
         clearRomanizedData();
         updateFooter();
+    }
+
+    private void stashTranslatedData() {
+        final Lyrics source = lyrics;
+        if (translatedLines == null || source == null) {
+            return;
+        }
+        stashedTranslation = new StashedTranslation(
+                translatedLines, translatedFromGoogle, translatedFromAI, translatedAiModel,
+                source, translateCacheSignature());
+    }
+
+    private void stashRomanizedData() {
+        final Lyrics source = lyrics;
+        if ((romanizedLines == null && !perWordRomaji) || source == null) {
+            return;
+        }
+        stashedRomanization = new StashedRomanization(
+                romanizedLines, perWordRomaji, romanizedFromGoogle, romanizedFromAI,
+                romanizedFromEmbedded, romanizedAiModel, romanizedLocalDictionary,
+                appliedRubyLanguage, hasRubyInLyrics(source) ? source : null,
+                source, romanizeCacheSignature());
+    }
+
+    private boolean restoreStashedTranslation(Lyrics current) {
+        final StashedTranslation stashed = stashedTranslation;
+        if (stashed == null
+                || !sameLineTexts(stashed.sourceLyrics(), current)
+                || !stashed.cacheSignature().equals(translateCacheSignature())) {
+            return false;
+        }
+        translatedLines = stashed.lines();
+        translatedFromGoogle = stashed.fromGoogle();
+        translatedFromAI = stashed.fromAI();
+        translatedAiModel = stashed.aiModel();
+        stashedTranslation = null;
+        return true;
+    }
+
+    private boolean restoreStashedRomanization(Lyrics current) {
+        final StashedRomanization stashed = stashedRomanization;
+        if (stashed == null
+                || !sameLineTexts(stashed.sourceLyrics(), current)
+                || !stashed.cacheSignature().equals(romanizeCacheSignature())) {
+            return false;
+        }
+        romanizedLines = stashed.lines();
+        perWordRomaji = stashed.perWord();
+        romanizedFromGoogle = stashed.fromGoogle();
+        romanizedFromAI = stashed.fromAI();
+        romanizedFromEmbedded = stashed.fromEmbedded();
+        romanizedAiModel = stashed.aiModel();
+        romanizedLocalDictionary = stashed.localDictionary();
+        appliedRubyLanguage = stashed.appliedRubyLanguage();
+        if (stashed.rubyAppliedLyrics() != null) {
+            lyrics = stashed.rubyAppliedLyrics();
+        }
+        stashedRomanization = null;
+        return true;
+    }
+
+    private static boolean sameLineTexts(@Nullable Lyrics a, @Nullable Lyrics b) {
+        if (a == b) {
+            return true;
+        }
+        if (a == null || b == null) {
+            return false;
+        }
+        List<LyricsLine> left = a.lines();
+        List<LyricsLine> right = b.lines();
+        if (left.size() != right.size()) {
+            return false;
+        }
+        for (int i = 0; i < left.size(); i++) {
+            LyricsLine l = left.get(i);
+            LyricsLine r = right.get(i);
+            if (!Objects.equals(l.text(), r.text()) || l.words().size() != r.words().size()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static String translateCacheSignature() {
+        return Settings.LYRICS_TRANSLATION_PROVIDERS.get()
+                + '|' + LyricsRequests.translationLanguage()
+                + '|' + Settings.LYRICS_AI_BASE_URL.get()
+                + '|' + Settings.LYRICS_AI_MODEL.get()
+                + '|' + Settings.LYRICS_AI_TRANSLATION_PROMPT.get()
+                + '|' + (Settings.LYRICS_DEEPL_API_KEY.get().isEmpty() ? 0 : 1);
+    }
+
+    private static String romanizeCacheSignature() {
+        return Settings.LYRICS_ROMANIZATION_PROVIDERS.get()
+                + '|' + LyricsRequests.romanizationLanguage()
+                + '|' + Settings.LYRICS_RUBY_LANGUAGE.get()
+                + '|' + Settings.LYRICS_ALLOW_TRANSLITERATION.get()
+                + '|' + Settings.LYRICS_JAPANESE_DICT_ENGINE.get()
+                + '|' + RubyGenerator.activeJapaneseDictionaryName()
+                + '|' + RimeDictionaryStore.isActive()
+                + '|' + RimeDictionaryStore.isReady()
+                + '|' + Settings.LYRICS_AI_BASE_URL.get()
+                + '|' + Settings.LYRICS_AI_MODEL.get()
+                + '|' + Settings.LYRICS_AI_ROMANIZATION_PROMPT.get()
+                + '|' + Settings.LYRICS_AI_RUBY_PROMPT.get();
     }
 
     private void updateFooter() {
@@ -3499,6 +3635,7 @@ public final class LyricsPanelView extends FrameLayout
         }
         try {
             if (translation) {
+                stashedTranslation = null;
                 if (translatedLines == null && !translateInProgress) {
                     updateFooter();
                     return;
@@ -3514,6 +3651,7 @@ public final class LyricsPanelView extends FrameLayout
             } else {
                 // Keep the Rime row in step with the language, so the provider list needs no trip
                 // to the settings.
+                stashedRomanization = null;
                 setRimeProviderEnabled(RimeDictionaryStore.isActive());
                 if (romanizedLines == null && !perWordRomaji && !romanizeInProgress) {
                     // Romaji off → ruby off; re-applied when romaji turns on
@@ -3820,6 +3958,24 @@ public final class LyricsPanelView extends FrameLayout
                 return;
             }
 
+            if (restoreStashedRomanization(current)) {
+                Settings.LYRICS_ROMANIZE.save(true);
+                Settings.LYRICS_ROMANIZE_ONLY.save(false);
+                final Lyrics targetToShow = lyrics != null ? lyrics : current;
+                if (appliedRubyLanguage == null && !hasRubyInLyrics(targetToShow)) {
+                    applyRuby();
+                } else {
+                    showLyrics(targetToShow);
+                }
+                updateFooter();
+                if (romanizedLines != null) {
+                    flashButtonLabel(romanizeView,
+                            str("morphe_music_lyrics_romanize_hide"),
+                            updateRomanizeLabelRunnable, 3000);
+                }
+                return;
+            }
+
             final Lyrics target = current;
             Settings.LYRICS_ROMANIZE.save(true);
             Settings.LYRICS_ROMANIZE_ONLY.save(false);
@@ -3917,6 +4073,7 @@ public final class LyricsPanelView extends FrameLayout
             Settings.LYRICS_ROMANIZE_ONLY.save(true);
             Settings.LYRICS_ROMANIZE.save(false);
 
+            restoreStashedRomanization(current);
             if (romanizedLines != null || perWordRomaji) {
                 onlyMode = OnlyMode.ROMA;
                 applyOnlyModeState();
@@ -3948,6 +4105,7 @@ public final class LyricsPanelView extends FrameLayout
             disableNormalTranslate();
             updateTranslateLabel();
         }
+        restoreStashedRomanization(current);
         if (romanizedLines != null || perWordRomaji) {
             onlyMode = Settings.LYRICS_TRANSLATE_ONLY.get() ? OnlyMode.BOTH : OnlyMode.ROMA;
             applyOnlyModeState();
@@ -4029,6 +4187,23 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void requestNormalRomanize(Lyrics current, TrackInfo track) {
+        if (restoreStashedRomanization(current)) {
+            Settings.LYRICS_ROMANIZE.save(true);
+            Settings.LYRICS_ROMANIZE_ONLY.save(false);
+            final Lyrics targetToShow = lyrics != null ? lyrics : current;
+            if (appliedRubyLanguage == null && !hasRubyInLyrics(targetToShow)) {
+                applyRuby();
+            } else {
+                showLyrics(targetToShow);
+            }
+            updateFooter();
+            if (romanizedLines != null) {
+                flashButtonLabel(romanizeView,
+                        str("morphe_music_lyrics_romanize_hide"),
+                        updateRomanizeLabelRunnable, 3000);
+            }
+            return;
+        }
         Settings.LYRICS_ROMANIZE.save(true);
         Settings.LYRICS_ROMANIZE_ONLY.save(false);
         romanizeInProgress = true;
@@ -6923,5 +7098,28 @@ public final class LyricsPanelView extends FrameLayout
             spannable.setSpan(new LyricsBoldSpan(), range[0], range[1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spannable;
+    }
+
+    private record StashedTranslation(
+            List<String> lines,
+            boolean fromGoogle,
+            boolean fromAI,
+            @Nullable String aiModel,
+            Lyrics sourceLyrics,
+            String cacheSignature) {
+    }
+
+    private record StashedRomanization(
+            @Nullable List<LyricsLine> lines,
+            boolean perWord,
+            boolean fromGoogle,
+            boolean fromAI,
+            boolean fromEmbedded,
+            @Nullable String aiModel,
+            @Nullable String localDictionary,
+            @Nullable String appliedRubyLanguage,
+            @Nullable Lyrics rubyAppliedLyrics,
+            Lyrics sourceLyrics,
+            String cacheSignature) {
     }
 }

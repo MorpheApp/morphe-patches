@@ -458,6 +458,78 @@ public final class LyricsCache {
         writeLyricsLineList(romanizationFile(track, source, sourceLines), lines);
     }
 
+    /** Reads cached word-synced Google romanization lines (line text + per-word readings). */
+    @Nullable
+    public static List<LyricsLine> getWordRomanization(TrackInfo track,
+                                                       String source,
+                                                       List<String> sourceLines,
+                                                       List<LyricsLine> origLines) {
+        File file = wordRomanizationFile(track, source, sourceLines);
+        List<String> raw = readStringList(file, sourceLines);
+        if (raw == null || raw.size() != origLines.size()) {
+            return null;
+        }
+        List<LyricsLine> restored = new ArrayList<>(origLines.size());
+        for (int i = 0; i < origLines.size(); i++) {
+            LyricsLine orig = origLines.get(i);
+            String row = raw.get(i);
+            int tab = row.indexOf('\t');
+            String lineText = tab >= 0 ? row.substring(0, tab) : row;
+            List<Word> origWords = orig.words();
+            if (origWords.isEmpty()) {
+                restored.add(new LyricsLine(orig.startTimeMs(), orig.endTimeMs(), lineText,
+                        Collections.emptyList(), orig.agentId(), orig.isDuet(), orig.isBG(),
+                        orig.songPart()));
+                continue;
+            }
+            if (tab < 0) {
+                discard(file);
+                return null;
+            }
+            String[] wordRomajis = row.substring(tab + 1).split("␟", -1);
+            if (wordRomajis.length != origWords.size()) {
+                discard(file);
+                return null;
+            }
+            List<Word> words = new ArrayList<>(origWords.size());
+            for (int w = 0; w < origWords.size(); w++) {
+                Word ow = origWords.get(w);
+                words.add(new Word(ow.startMs(), ow.endMs(), ow.text(),
+                        wordRomajis[w], ow.endsWithSpace(), ow.ruby()));
+            }
+            restored.add(new LyricsLine(orig.startTimeMs(), orig.endTimeMs(), lineText, words,
+                    orig.agentId(), orig.isDuet(), orig.isBG(), orig.songPart()));
+        }
+        return restored;
+    }
+
+    /** Writes word-synced Google romanization lines so replays skip extra network lookups. */
+    public static void putWordRomanization(TrackInfo track,
+                                           String source,
+                                           List<String> sourceLines,
+                                           List<LyricsLine> lines) {
+        File file = wordRomanizationFile(track, source, sourceLines);
+        if (file == null || lines.size() != sourceLines.size()) {
+            return;
+        }
+        List<String> rows = new ArrayList<>(lines.size());
+        for (LyricsLine line : lines) {
+            StringBuilder row = new StringBuilder();
+            row.append(sanitizeSingleLine(line.text()).replace('\t', ' '));
+            List<Word> words = line.words();
+            if (!words.isEmpty()) {
+                row.append('\t');
+                for (int w = 0; w < words.size(); w++) {
+                    if (w > 0) row.append('␟');
+                    String rom = words.get(w).romaji();
+                    row.append(sanitizeSingleLine(rom).replace('\t', ' ').replace('␟', ' '));
+                }
+            }
+            rows.add(row.toString());
+        }
+        writeStringList(file, rows);
+    }
+
     @Nullable
     public static List<LyricsLine> getRomanizationAI(TrackInfo track, String source,
                                                      List<String> sourceLines, @Nullable String provider) {
@@ -489,12 +561,26 @@ public final class LyricsCache {
                 "Could not read string list from cache", Function.identity());
     }
 
+    private static String sanitizeSingleLine(@Nullable String value) {
+        if (value == null || value.isEmpty()) {
+            return "";
+        }
+        if (value.indexOf('\n') < 0 && value.indexOf('\r') < 0) {
+            return value;
+        }
+        return value.replace("\r\n", " ").replace('\n', ' ').replace('\r', ' ');
+    }
+
     private static void writeStringList(@Nullable File file, List<String> lines) {
         if (file == null) {
             return;
         }
         try {
-            Files.write(file.toPath(), lines, StandardCharsets.UTF_8);
+            List<String> clean = new ArrayList<>(lines.size());
+            for (String line : lines) {
+                clean.add(sanitizeSingleLine(line));
+            }
+            Files.write(file.toPath(), clean, StandardCharsets.UTF_8);
             noteCacheWrite();
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not write cache", ex);
@@ -550,7 +636,7 @@ public final class LyricsCache {
         try {
             List<String> fileLines = new ArrayList<>(lines.size());
             for (LyricsLine line : lines) {
-                fileLines.add(line.text());
+                fileLines.add(sanitizeSingleLine(line.text()));
             }
             Files.write(file.toPath(), fileLines, StandardCharsets.UTF_8);
             noteCacheWrite();
@@ -573,6 +659,16 @@ public final class LyricsCache {
         return derivedCacheFile(track, source,
                 LyricsRequests.isDefaultRomanizationLanguage()
                         ? ".rom.txt" : ".rom." + language.toLowerCase(Locale.ROOT) + ".txt",
+                sourceLines);
+    }
+
+    @Nullable
+    private static File wordRomanizationFile(TrackInfo track, String source,
+                                             List<String> sourceLines) {
+        final String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
+        return derivedCacheFile(track, source,
+                LyricsRequests.isDefaultRomanizationLanguage()
+                        ? ".wrom.txt" : ".wrom." + language.toLowerCase(Locale.ROOT) + ".txt",
                 sourceLines);
     }
 

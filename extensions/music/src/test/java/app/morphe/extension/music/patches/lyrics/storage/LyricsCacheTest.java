@@ -23,6 +23,7 @@ import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 
 @SuppressWarnings("unused")
 public class LyricsCacheTest {
@@ -141,6 +142,44 @@ public class LyricsCacheTest {
     @Test
     public void romanizationGetReturnsNullWhenMissing() {
         assertNull(LyricsCache.getRomanization(track, "TestProvider", List.of("line 1")));
+    }
+
+    @Test
+    public void translationPutSanitizesEmbeddedNewlines() {
+        List<String> sourceLines = List.of("first", "second");
+        List<String> translation = List.of("first line\nwrapped", "second line\r\nwrapped");
+        LyricsCache.putTranslation(track, "TestProvider", "en", sourceLines, translation);
+        List<String> result = LyricsCache.getTranslation(track, "TestProvider", "en", sourceLines);
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals("first line wrapped", result.get(0));
+        assertEquals("second line wrapped", result.get(1));
+    }
+
+    @Test
+    public void wordRomanizationPutThenGetRoundTrip() {
+        List<Word> origWords = List.of(
+                new Word(100, 300, "君", null, false, null),
+                new Word(300, 600, "と", null, true, null)
+        );
+        LyricsLine origLine = new LyricsLine(100, 600, "君と", origWords, "v1", false, false, "Verse");
+        LyricsLine romLine = new LyricsLine(100, 600, "kimi to", List.of(
+                new Word(100, 300, "君", "kimi", false, null),
+                new Word(300, 600, "と", "to", true, null)
+        ), "v1", false, false, "Verse");
+        List<String> sourceLines = List.of("君と");
+
+        LyricsCache.putWordRomanization(track, "TestProvider", sourceLines, List.of(romLine));
+        List<LyricsLine> restored = LyricsCache.getWordRomanization(
+                track, "TestProvider", sourceLines, List.of(origLine));
+        assertNotNull(restored);
+        assertEquals(1, restored.size());
+        assertEquals("kimi to", restored.get(0).text());
+        assertEquals(2, restored.get(0).words().size());
+        assertEquals("kimi", restored.get(0).words().get(0).romaji());
+        assertEquals("to", restored.get(0).words().get(1).romaji());
+        assertEquals(100, restored.get(0).words().get(0).startMs());
+        assertEquals("v1", restored.get(0).agentId());
     }
 
     // ── preference cache ──
