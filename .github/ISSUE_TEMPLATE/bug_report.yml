@@ -12,6 +12,7 @@ body:
 
         - **Do not submit a duplicate bug report**: Search for existing bug reports [here](https://github.com/MorpheApp/morphe-patches/issues?q=is%3Aissue).
         - **Report one bug per issue**: Open a separate issue for each bug.
+        - **Use the latest patches and a supported app version**: Make sure the bug still happens with the latest release or pre-release of the patches, patched on an app version listed as supported in the [patches list](https://github.com/MorpheApp/morphe-patches#-patches-list). Bug reports for older patches or other app versions are closed.
         - Bug reports that do not use this form are deleted automatically.
   - type: dropdown
     id: app
@@ -29,7 +30,7 @@ body:
     id: app-version
     attributes:
       label: App version
-      description: The version of the app you patched
+      description: The version of the app you patched. It must be a supported version, as listed in the [patches list](https://github.com/MorpheApp/morphe-patches#-patches-list).
       placeholder: 'e.g. 21.30.216'
     validations:
       required: true
@@ -37,7 +38,7 @@ body:
     id: patches-version
     attributes:
       label: Patches version
-      description: The patches version shown in Settings > About
+      description: The patches version shown in Settings > About. It must be the latest release or a recent pre-release.
       placeholder: 'e.g. 2.3.0'
     validations:
       required: true
