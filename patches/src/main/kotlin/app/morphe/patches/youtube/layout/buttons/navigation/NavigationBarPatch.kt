@@ -47,6 +47,7 @@ import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.padding.BrowseListBottomPaddingFingerprint
+import app.morphe.patches.youtube.misc.navigation.PivotBarDispatchTouchEventFingerprint
 import app.morphe.patches.youtube.misc.navigation.SetEnumMapFingerprint
 import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
@@ -670,6 +671,13 @@ val navigationBarPatch = patch(
         }
 
         implementPivotBarItemBuilder(PivotBarItemBuilderFingerprint)
+
+        // The navigation bar handles the touches of its buttons itself, so the long press
+        // of the Settings button is found from the touches of the navigation bar.
+        PivotBarDispatchTouchEventFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p1 }, $EXTENSION_CLASS->navigationBarTouched(Landroid/view/MotionEvent;)V"
+        )
 
         // Allow the extension to read the proto of navigation bar items,
         // used for the navigation buttons order and the classic Subscriptions button.

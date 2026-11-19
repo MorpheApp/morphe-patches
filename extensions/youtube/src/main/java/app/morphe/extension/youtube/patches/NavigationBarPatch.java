@@ -19,8 +19,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.WindowInsets;
@@ -228,13 +232,35 @@ public final class NavigationBarPatch {
         }
 
         if (SHOW_SETTINGS_BUTTON && button == NavigationBar.NavigationButton.SETTINGS) {
-            Utils.runOnMainThread(() -> tabView.setOnClickListener(v -> {
-                if (SHOW_SETTINGS_BUTTON_TYPE) {
-                    openMorpheSettings(v);
-                } else {
-                    openYouTubeSettings(v);
-                }
-            }));
+            settingsTabRef = new WeakReference<>(tabView);
+            Utils.runOnMainThread(() -> {
+                tabView.setOnClickListener(v -> {
+                    // The tap that ends a long press is not a click.
+                    if (settingsTabLongPressed) {
+                        settingsTabLongPressed = false;
+                        return;
+                    }
+                    if (SHOW_SETTINGS_BUTTON_TYPE) {
+                        openMorpheSettings(v);
+                    } else {
+                        openYouTubeSettings(v);
+                    }
+                });
+                tabView.setOnLongClickListener(v -> {
+                    if (settingsTabTouched) {
+                        // The long press of the navigation bar and of the view itself
+                        // can both be called for the same touch.
+                        if (settingsTabLongPressed) return true;
+                        settingsTabLongPressed = true;
+                    }
+                    if (SHOW_SETTINGS_BUTTON_TYPE) {
+                        openYouTubeSettings(v);
+                    } else {
+                        openMorpheSettings(v);
+                    }
+                    return true;
+                });
+            });
             return;
         }
 
@@ -922,6 +948,107 @@ public final class NavigationBarPatch {
 
     public static final String SETTINGS_PIVOT_IDENTIFIER = "morphe_settings";
     private static Object pivotBarSettingsRenderer = null;
+
+    private static volatile WeakReference<View> settingsTabRef = new WeakReference<>(null);
+
+    /**
+     * If a touch of the navigation bar started on the Settings button and has not ended.
+     * Always accessed from the main thread.
+     */
+    private static boolean settingsTabTouched;
+
+    /**
+     * If the touch of the Settings button is a long press, so the tap it ends with does not click.
+     * Always accessed from the main thread.
+     */
+    private static boolean settingsTabLongPressed;
+
+    private static float settingsTabTouchX;
+    private static float settingsTabTouchY;
+
+    @Nullable
+    private static Handler settingsTabHandler;
+
+    private static final Runnable settingsTabLongPress = () -> {
+        View tab = settingsTabRef.get();
+        // The long press of the navigation bar can already be called, if its feature flag is on.
+        if (tab != null && settingsTabTouched && !settingsTabLongPressed && tab.isShown()) {
+            tab.performLongClick();
+        }
+    };
+
+    /**
+     * Injection point.
+     * <p>
+     * The navigation bar handles the touches of its buttons itself, with a gesture detector, so the buttons
+     * do not get the touches and their own long press is never called. The gesture detector has long presses
+     * turned off with a feature flag, and then a long press ends as a tap. The long press of the Settings button
+     * is found here instead, and the tap it ends with is ignored by the button.
+     */
+    public static void navigationBarTouched(MotionEvent event) {
+        if (!SHOW_SETTINGS_BUTTON) return;
+
+        try {
+            switch (event.getActionMasked()) {
+                case MotionEvent.ACTION_DOWN -> {
+                    cancelSettingsTabLongPress();
+                    settingsTabLongPressed = false;
+                    View tab = settingsTabRef.get();
+                    settingsTabTouched = tab != null && isTouchInView(event, tab);
+                    if (settingsTabTouched) {
+                        settingsTabTouchX = event.getRawX();
+                        settingsTabTouchY = event.getRawY();
+                        if (settingsTabHandler == null) {
+                            settingsTabHandler = new Handler(Looper.getMainLooper());
+                        }
+                        settingsTabHandler.postDelayed(settingsTabLongPress, ViewConfiguration.getLongPressTimeout());
+                    }
+                }
+                case MotionEvent.ACTION_MOVE -> {
+                    View tab = settingsTabRef.get();
+                    if (settingsTabTouched && tab != null) {
+                        final int touchSlop = ViewConfiguration.get(tab.getContext()).getScaledTouchSlop();
+                        if (Math.abs(event.getRawX() - settingsTabTouchX) > touchSlop
+                                || Math.abs(event.getRawY() - settingsTabTouchY) > touchSlop) {
+                            cancelSettingsTabLongPress();
+                        }
+                    }
+                }
+                case MotionEvent.ACTION_POINTER_DOWN -> cancelSettingsTabLongPress();
+                case MotionEvent.ACTION_UP -> {
+                    cancelSettingsTabLongPress();
+                    settingsTabTouched = false;
+                    // The navigation bar clicks the button right after, while handling the same touch.
+                    if (settingsTabLongPressed && settingsTabHandler != null) {
+                        settingsTabHandler.post(() -> settingsTabLongPressed = false);
+                    }
+                }
+                case MotionEvent.ACTION_CANCEL -> {
+                    cancelSettingsTabLongPress();
+                    settingsTabTouched = false;
+                    settingsTabLongPressed = false;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "navigationBarTouched failure", ex);
+        }
+    }
+
+    private static void cancelSettingsTabLongPress() {
+        if (settingsTabHandler != null) {
+            settingsTabHandler.removeCallbacks(settingsTabLongPress);
+        }
+    }
+
+    private static boolean isTouchInView(MotionEvent event, View view) {
+        if (!view.isShown()) return false;
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        final float x = event.getRawX();
+        final float y = event.getRawY();
+        return x >= location[0] && x < location[0] + view.getWidth()
+                && y >= location[1] && y < location[1] + view.getHeight();
+    }
 
     private static final boolean SHOW_WATCH_LATER_BUTTON = Settings.SHOW_WATCH_LATER_BUTTON.get();
     public static final String WATCH_LATER_PIVOT_IDENTIFIER = "morphe_watch_later";
