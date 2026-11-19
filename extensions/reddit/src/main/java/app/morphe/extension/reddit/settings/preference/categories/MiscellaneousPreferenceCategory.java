@@ -17,6 +17,7 @@ import app.morphe.extension.reddit.patches.AppIconPatch;
 import app.morphe.extension.reddit.patches.DownloadLocationPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
+import app.morphe.extension.reddit.patches.OpenSystemShareSheetPatch;
 import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.patches.SharePostContentPatch;
@@ -47,6 +48,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                 DownloadLocationPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
+                OpenSystemShareSheetPatch.isPatchIncluded() ||
                 RedgifsAudioPatch.isPatchIncluded() ||
                 SanitizeSharingLinksPatch.isPatchIncluded() ||
                 SharePostContentPatch.isPatchIncluded();
@@ -84,6 +86,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.OPEN_LINKS_EXTERNALLY
+            ));
+        }
+        if (OpenSystemShareSheetPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    SharedSettings.OPEN_SYSTEM_SHARE_SHEET
             ));
         }
         if (RedgifsAudioPatch.isPatchIncluded()) {
