@@ -174,6 +174,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_filter_bar_title">필터 바 숨기기</string>
   <string name="morphe_music_hide_grid_shelves_title">그리드 선반 숨기기</string>
   <string name="morphe_music_hide_horizontal_shelves_title">좌우 슬라이드 선반 숨기기</string>
+  <string name="morphe_music_hide_new_button_title">\'새로 만들기\' 버튼 숨기기</string>
+  <string name="morphe_music_hide_new_button_summary">보관함에서 \'새로 만들기\' 버튼을 숨깁니다</string>
   <string name="morphe_music_hide_list_shelves_title">리스트 선반 숨기기</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">가사 패널</string>
   <string name="morphe_music_hide_lyrics_share_button_title">공유 버튼 숨기기</string>
@@ -199,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">크로스페이드</string>
   <string name="morphe_music_crossfade_screen_summary">트랙을 서로 부드럽게 이어지도록 재생할 수 있습니다</string>
   <string name="morphe_music_crossfade_enabled_title">크로스페이드 활성화하기</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">크로스페이드를 사용하려면 Spoof 비디오 스트림의 \'Default client\'를 TV Simply 또는 visionOS로 변경하십시오</string>
   <string name="morphe_music_crossfade_curve_title">페이드 곡선</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">동일한 음량</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">미묘한 홀드</string>
@@ -232,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">이 세션에서 크로스페이드를 일시 중지하였습니다</string>
   <string name="morphe_music_crossfade_resumed_toast">크로스페이드를 다시 시작하였습니다</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">크로스페이드가 활성화된 동안에는 동영상 모드를 사용할 수 없습니다</string>
-  <string name="morphe_music_crossfade_sabr_toast">SABR 재생 시 크로스페이드가 비활성화됩니다</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">크로스페이드는 visionOS에서 작동하지 않습니다. Spoof 비디오 스트림의 \'Default client\'를 TV Simply로 변경하십시오</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">이 spoof 스트림 클라이언트에서는 크로스페이드가 작동하지 않습니다</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">캐스팅 중에는 크로스페이드가 비활성화됩니다</string>
   <string name="morphe_music_crossfade_about_how_title">작동 방식</string>
   <string name="morphe_music_crossfade_about_how_summary">"크로스페이드는 한 곡의 끝부분과 다음 곡의 시작 부분을 겹쳐 재생하는 기능으로, 설정한 지속 시간과 곡선에 따라 크로스페이드를 적용합니다
@@ -249,9 +255,7 @@ Second \"item\" text"</string>
 
 뮤직비디오를 시청하기 위해 크로스페이드를 일시 중지하면 일부 동영상 화면이 검게 표시될 수 있습니다. 이를 방지하려면 곡을 선택하기 전에 크로스페이드를 일시 중지하세요"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">지원되지 않음</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"오디오 캐스팅 또는 미러링를 사용하는 경우 (Chromecast, 화면 또는 오디오 미러링)
-
-SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속이기가 비활성화된 경우)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">오디오 캐스팅 또는 미러링 (Chromecast, 화면 또는 오디오 미러링)</string>
   <string name="morphe_music_crossfade_about_credit_title">크레딧</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG의 크로스페이드 기능</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,11 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">싫어요 리다이렉션 비활성화하기</string>
   <string name="morphe_music_disable_dislike_redirection_summary">싫어요 버튼을 탭했을 경우에 다음 트랙으로 건너뛰는 것을 방지합니다</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">스와이프 제스처로 트랙 전환하기 비활성화</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">플레이어에서 왼쪽 또는 오른쪽으로 스와이프하여 다음 또는 이전 트랙으로 건너뛰는 것을 방지합니다</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">스와이프 제스처로 트랙 전환하기 비활성화</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">미니플레이어에서 왼쪽 또는 오른쪽으로 스와이프하여 다음 또는 이전 트랙으로 건너뛰는 것을 방지합니다</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B 연속</string>
   <string name="morphe_music_ab_loop_summary">재생바를 길게 탭하여 연속 시작 지점을 설정하고, 다시 길게 탭하여 연속 종료 지점을 설정할 수 있습니다. 한 번 더 길게 탭하면 연속 구간이 해제됩니다</string>
@@ -329,15 +338,6 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_playlist_tags_rename">이름 변경</string>
   <string name="morphe_music_playlist_tags_delete">삭제</string>
   <string name="morphe_music_playlist_tags_hidden">숨겨짐</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">크롬캐스트 버튼 숨기기</string>
-  <string name="morphe_music_hide_history_button_title">기록 버튼 숨기기</string>
-  <string name="morphe_music_hide_notification_button_title">알림 버튼 숨기기</string>
-  <string name="morphe_music_hide_search_button_title">검색 버튼 숨기기</string>
-  <string name="morphe_music_hide_voice_search_button_title">음성 검색 버튼 숨기기</string>
-  <string name="morphe_music_hide_sound_search_button_title">소리 검색 버튼 숨기기</string>
-  <string name="morphe_music_hide_library_new_button_title">\'새로 만들기\' 버튼 숨기기</string>
-  <string name="morphe_music_hide_library_new_button_summary">보관함에서 \'새로 만들기\' 버튼을 숨깁니다</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">작업 버튼</string>
   <string name="morphe_music_action_buttons_screen_summary">플레이어 아래에 표시할 작업 버튼을 설정하세요</string>
@@ -409,22 +409,20 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_force_portrait_orientation_title">세로 방향 강제 활성화하기</string>
   <string name="morphe_music_force_portrait_orientation_summary">기기를 회전해도 앱이 세로 방향을 유지합니다</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">미니 플레이어 색상 변경하기</string>
+  <string name="morphe_music_change_miniplayer_color_title">색상 변경</string>
   <string name="morphe_music_change_miniplayer_color_summary">미니 플레이어 색상을 전체 화면 플레이어와 일치하도록 변경합니다</string>
   <string name="morphe_music_change_navigation_bar_color_title">하단바 색상 변경하기</string>
   <string name="morphe_music_change_navigation_bar_color_summary">하단바 색상을 전체 화면 플레이어와 일치하도록 변경합니다</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">미니 플레이어 다음 재생 버튼 표시하기</string>
-  <string name="morphe_music_miniplayer_previous_button_title">미니 플레이어 이전 재생 버튼 표시하기</string>
+  <string name="morphe_music_miniplayer_next_button_title">다음 버튼 표시하기</string>
+  <string name="morphe_music_miniplayer_previous_button_title">이전 버튼 표시하기</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">강제된 미니 플레이어 활성화하기</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">새 트랙이 시작될 때 플레이어가 자동으로 전체 화면으로 펼쳐지는 것을 방지합니다</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">스와이프 제스처로 미니 플레이어 닫기</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">아래로 스와이프하여 미니 플레이어를 닫을 수 있습니다</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">하단바</string>
-  <string name="morphe_music_navigation_bar_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">홈 버튼 숨기기</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +455,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">글래스 내비게이션 바에서 선택된 버튼 뒤의 둥근 강조 표시를 숨김</string>
   <string name="morphe_music_miniplayer_screen_title">미니 플레이어</string>
   <string name="morphe_music_miniplayer_screen_summary">미니 플레이어의 스타일, 버튼 및 제스처를 변경함</string>
-  <string name="morphe_music_miniplayer_glass_title">글래스 미니 플레이어 활성화</string>
+  <string name="morphe_music_miniplayer_glass_title">글래스 효과 활성화</string>
   <string name="morphe_music_miniplayer_glass_summary">플로팅 미니 플레이어를 둥글고 반투명한 글래스 카드로 표시함</string>
   <string name="morphe_music_miniplayer_glass_style_title">글래스 미니 플레이어 스타일</string>
   <string name="morphe_music_miniplayer_glass_style_summary">글래스 미니 플레이어의 모서리 곡률, 아트워크 패딩, 테두리 밝기 및 불투명도를 미리보기와 함께 조정함</string>
@@ -480,6 +478,15 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_navigation_bar_glass_preview_samples">샘플</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">둘러보기</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">보관함</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">활동 버튼 숨기기</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">음악 요청 버튼 숨기기</string>
+  <string name="morphe_music_hide_cast_button_title">크롬캐스트 버튼 숨기기</string>
+  <string name="morphe_music_hide_history_button_title">기록 버튼 숨기기</string>
+  <string name="morphe_music_hide_search_button_title">검색 버튼 숨기기</string>
+  <string name="morphe_music_hide_voice_search_button_title">음성 검색 버튼 숨기기</string>
+  <string name="morphe_music_hide_sound_search_button_title">소리 검색 버튼 숨기기</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">로그인되어 있지 않습니다. 설정하려면 탭하세요</string>
   <string name="morphe_music_scrobbling_log_out">로그아웃</string>

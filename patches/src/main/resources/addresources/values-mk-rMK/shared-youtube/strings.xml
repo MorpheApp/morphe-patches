@@ -266,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Стандарден квалитет на видеото во мобилна мрежа</string>
   <string name="morphe_remember_video_quality_toast_mobile">Променен е стандардниот мобилен квалитет на: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Променен е стандардниот Wi-Fi квалитет на: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Отвори ја системската листа за споделување</string>
-  <string name="morphe_open_system_share_sheet_summary">Отвора системскиот мени за споделување наместо оној во апликацијата</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho логгирање</string>
   <string name="morphe_debug_litho_entry_disabled">Оневозможено</string>
@@ -380,4 +377,8 @@ ID-то на видеото што го гледате се испраќа до 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Не се сретнати ограничувања на стапката на клиентот</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Ограничувањето на стапката на клиентот беше сретнато %s пати</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s милисекунди</string>
+  <string name="morphe_navigation_bar_screen_title">Навигациска лента</string>
+  <string name="morphe_navigation_bar_screen_summary">Изберете кои копчиња ќе се појавуваат во долната навигациска лента</string>
+  <string name="morphe_toolbar_screen_title">Лента со алатки</string>
+  <string name="morphe_toolbar_screen_summary">Изберете кои компоненти ќе се појавуваат во лентата со алатки</string>
 </resources>

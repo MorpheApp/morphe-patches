@@ -266,9 +266,6 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_video_quality_default_mobile_title">Chất lượng video mặc định trên mạng di động</string>
   <string name="morphe_remember_video_quality_toast_mobile">Đã thay đổi chất lượng mặc định trên mạng di động thành: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Đã thay đổi chất lượng mặc định trên Wi-Fi thành: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Mở bảng chia sẻ của hệ thống</string>
-  <string name="morphe_open_system_share_sheet_summary">Mở bảng chia sẻ của hệ thống thay vì bảng chia sẻ của ứng dụng khi chia sẻ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Nhật ký Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Đang tắt</string>
@@ -380,4 +377,8 @@ ID của video bạn xem được gửi đến API Return YouTube Dislike, và l
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Chưa gặp giới hạn ứng dụng</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Đã gặp giới hạn ứng dụng %s lần</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s mili giây</string>
+  <string name="morphe_navigation_bar_screen_title">Thanh điều hướng</string>
+  <string name="morphe_navigation_bar_screen_summary">Chọn các nút sẽ hiển thị trên thanh điều hướng dưới cùng</string>
+  <string name="morphe_toolbar_screen_title">Thanh công cụ</string>
+  <string name="morphe_toolbar_screen_summary">Chọn những thành phần sẽ hiển thị trên thanh công cụ</string>
 </resources>

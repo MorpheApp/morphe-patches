@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">Տառագրության որոշ թարգմանություններ անհասանելի են: Ցուցադրվում են հասանելի տառագրությունները:</string>
   <string name="morphe_caption_blocks_too_large">Տառագրության երկու լեզուները չեն տեղավորվում այս նվագարկիչում: Ցուցադրվում է հիմնական լեզուն:</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Նավիգացիայի վահանակ</string>
-  <string name="morphe_navigation_bar_screen_summary">Ընտրեք, թե որ կոճակները հայտնվեն ներքևի նավիգացիոն վահանակում</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Թաքցնել «Գլխավոր» կոճակը</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">Դիտել ավելի ուշ</string>
   <string name="morphe_show_settings_button_title">Ցուցադրել կարգավորումների կոճակը</string>
   <string name="morphe_show_settings_button_type_title">Կարգավորումների կոճակի գործողությունը</string>
-  <string name="morphe_show_settings_button_type_summary">Միացված լինելու դեպքում բացում է Morphe-ի կարգավորումները, իսկ անջատված լինելու դեպքում՝ YouTube-ի կարգավորումները</string>
+  <string name="morphe_show_settings_button_type_summary">Երբ ակտիվ է, հպումը բացում է Morphe-ի կարգավորումները, իսկ երկար սեղմելը՝ YouTube-ի կարգավորումները. անջատեք՝ փոխելու համար</string>
   <string name="morphe_navigation_buttons_order_title">Նավիգացիոն կոճակների հերթականությունը</string>
   <string name="morphe_navigation_buttons_order_summary">Քաշեք կոճակները՝ նավիգացիոն վահանակում դրանց հերթականությունը փոխելու համար</string>
   <string name="morphe_swap_create_with_notifications_button_title">Փոխել «Ստեղծել» կոճակը «Ծանուցումների» կոճակի հետ</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Եթե այս կարգավորման փոփոխությունը չի ազդում, փորձեք անցնել Incognito ռեժիմի</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Տեղափոխում է Ծանուցումների կոճակը նավիգացիայի վահանակ, իսկ Ստեղծել կոճակը՝ գործիքների վահանակ: Եթե փոփոխությունները չեն գործում, փորձեք անցնել Ինկոգնիտո ռեժիմի</string>
   <string name="morphe_hide_navigation_button_labels_title">Թաքցնել նավիգացիայի կոճակների պիտակները</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Թաքցնել նոր բովանդակության կետը</string>
   <string name="morphe_hide_navigation_bar_title">Թաքցնել նավիգացիայի վահանակը</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">Առավելագույն լայնություն</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Կոճակների հեռավորություն</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Ցուցադրվող կոճակներ՝ %1$s %2$s-ից</string>
-  <string name="morphe_toolbar_screen_title">Գործիքների վահանակ</string>
-  <string name="morphe_toolbar_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն գործիքների վահանակում</string>
   <string name="morphe_hide_toolbar_chat_button_title">Թաքցնել չաթի կոճակը</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Թաքցնել խոսափողի կոճակը</string>
   <string name="morphe_hide_toolbar_search_button_title">Թաքցնել որոնման կոճակը</string>

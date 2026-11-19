@@ -87,7 +87,13 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <string name="morphe_settings_about_links_translations">Översättningar</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Uppdaterat</string>
   <string name="morphe_settings_about_contributors">Bidragsgivare</string>
-  <string name="morphe_settings_about_contributors_period">Senaste 12 månaderna</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Hela tiden</string>
+  <string name="morphe_settings_about_contributors_6_months">6 månader</string>
+  <string name="morphe_settings_about_contributors_3_months">3 månader</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tidsperiod</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Supporter</string>
   <string name="morphe_settings_about_supporters_summary">Bidragsgivare på Open Collective</string>
@@ -222,6 +228,9 @@ Om batterioptimeringarna inte ändras kan du uppleva att
 • appen stängs slumpmässigt
 • aviseringar inte fungerar
 • uppspelning i bakgrunden inte fungerar"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Öppna systemets delningsblad</string>
+  <string name="morphe_open_system_share_sheet_summary">Öppnar systemets delningsblad istället för appens när du delar innehåll</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Applänkhantering</string>
   <string name="morphe_link_handling_summary">Konfigurera länkar så att de öppnas i den här appen</string>

@@ -1087,8 +1087,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_caption_block_translation_failed">कुछ कैप्शन अनुवाद उपलब्ध नहीं हैं। उपलब्ध कैप्शन दिखाए जा रहे हैं।</string>
   <string name="morphe_caption_blocks_too_large">दोनों कैप्शन भाषाएँ इस प्लेयर में फिट नहीं होती हैं। प्राथमिक भाषा दिखाई जा रही है।</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">नेविगेशन बार</string>
-  <string name="morphe_navigation_bar_screen_summary">नीचे के नेविगेशन बार में कौन से बटन दिखाई दें, चुनें</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">होम बटन छुपाएं</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1106,11 +1104,11 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_watch_later_navigation_label">बाद में देखें</string>
   <string name="morphe_show_settings_button_title">सेटिंग्स बटन दिखाएं</string>
   <string name="morphe_show_settings_button_type_title">सेटिंग बटन कार्रवाई</string>
-  <string name="morphe_show_settings_button_type_summary">सक्षम होने पर Morphe सेटिंग्स खुलती हैं, अक्षम होने पर YouTube सेटिंग्स खुलती हैं</string>
+  <string name="morphe_show_settings_button_type_summary">सक्षम होने पर, टैप करने से Morphe सेटिंग्स खुलती हैं और लॉन्ग प्रेस करने से YouTube सेटिंग्स खुलती हैं, बदलने के लिए अक्षम करें</string>
   <string name="morphe_navigation_buttons_order_title">नविगेशन बटन का क्रम</string>
   <string name="morphe_navigation_buttons_order_summary">नविगेशन बार में उनका क्रम बदलने के लिए बटनों को ड्रैग करें</string>
   <string name="morphe_swap_create_with_notifications_button_title">बनाएं बटन को सूचनाएँ बटन से बदलें</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">यदि इस सेटिंग को बदलने से कोई प्रभाव नहीं होता है, तो गुप्त मोड में स्विच करने का प्रयास करें।</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Notifications बटन को नेविगेशन बार में और Create बटन को टूलबार में ले जाता है। यदि परिवर्तन प्रभावी नहीं होते हैं, तो Incognito मोड में स्विच करने का प्रयास करें</string>
   <string name="morphe_hide_navigation_button_labels_title">नेविगेशन बटन लेबल्स छिपाएं</string>
   <string name="morphe_hide_navigation_new_content_dot_title">नए कंटेंट का डॉट छिपाएं</string>
   <string name="morphe_hide_navigation_bar_title">नेविगेशन बार छिपाएँ</string>
@@ -1149,8 +1147,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_glass_size_width">अधिकतम चौड़ाई</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">बटन स्पेसिंग</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">दिखाए गए बटन: %2$s में से %1$s</string>
-  <string name="morphe_toolbar_screen_title">टूलबार</string>
-  <string name="morphe_toolbar_screen_summary">टूलबार में कौन से घटक दिखाई दें, यह चुनें</string>
   <string name="morphe_hide_toolbar_chat_button_title">चैट बटन छुपाएं</string>
   <string name="morphe_hide_toolbar_microphone_button_title">माइक्रोफ़ोन बटन छुपाएं</string>
   <string name="morphe_hide_toolbar_search_button_title">खोज छिपाएं</string>

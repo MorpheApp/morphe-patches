@@ -266,9 +266,6 @@ Za prijavu pritisnite nastavite u nastavku"</string>
   <string name="morphe_video_quality_default_mobile_title">Zadana kvaliteta videa na mobilnoj mreži</string>
   <string name="morphe_remember_video_quality_toast_mobile">Zadana kvaliteta za mobilnu mrežu promijenjena u: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Zadana kvaliteta za Wi-Fi promijenjena u: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Otvori tablicu dijeljenja sustava</string>
-  <string name="morphe_open_system_share_sheet_summary">Otvara sistemski izbornik za dijeljenje umjesto onog u aplikaciji pri dijeljenju sadržaja</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho zapisivanje</string>
   <string name="morphe_debug_litho_entry_disabled">Onemogućeno</string>
@@ -380,4 +377,8 @@ ID videozapisa koji gledate šalje se u Return YouTube Dislike API, a vaša svi�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nije zabilježen nijedan limit klijentskog API-ja</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limit rate klijenta zabilježen %s puta</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ms</string>
+  <string name="morphe_navigation_bar_screen_title">Traka navigacije</string>
+  <string name="morphe_navigation_bar_screen_summary">Odaberite koje će tipke pojaviti u donjoj navigacijskoj traci</string>
+  <string name="morphe_toolbar_screen_title">Alatka</string>
+  <string name="morphe_toolbar_screen_summary">Odaberite koje komponente trebaju se pojaviti u alatki</string>
 </resources>

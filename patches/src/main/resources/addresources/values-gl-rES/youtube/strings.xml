@@ -1088,8 +1088,6 @@ Deben proporcionarse as 'cookies de subtitulacións'"</string>
   <string name="morphe_caption_block_translation_failed">Algunhas traducións de subtítulos non están dispoñibles. Amósanse os subtítulos dispoñibles.</string>
   <string name="morphe_caption_blocks_too_large">Ambas linguas de subtítulos non caben neste reproductor. Amósase a lingua primaria.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Barra de navegación</string>
-  <string name="morphe_navigation_bar_screen_summary">Escolla que botóns aparecen na barra de navegación inferior</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ocultar botón Inicio</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Deben proporcionarse as 'cookies de subtitulacións'"</string>
   <string name="morphe_watch_later_navigation_label">Ver máis tarde</string>
   <string name="morphe_show_settings_button_title">Mostrar botón de Axustes</string>
   <string name="morphe_show_settings_button_type_title">Acción do botón de Axustes</string>
-  <string name="morphe_show_settings_button_type_summary">Abre os axustes de Morphe cando está activado, ou os axustes de YouTube cando está desactivado</string>
+  <string name="morphe_show_settings_button_type_summary">Cando está activado, o toque abre os axustes de Morphe e a pulsación longa abre os axustes de YouTube, desactívaa para trocalos</string>
   <string name="morphe_navigation_buttons_order_title">Orde dos botóns de navegación</string>
   <string name="morphe_navigation_buttons_order_summary">Arrastra os botóns para cambiar a súa orde na barra de navegación</string>
   <string name="morphe_swap_create_with_notifications_button_title">Trocar o botón Crear polo botón de Notificacións</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Se cambiar esta configuración non surte efecto, tente cambiar ao modo Incógnito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Move o botón de Notificacións á barra de navegación e o botón de Crear á barra de ferramentas. Se os cambios non surten efecto, tente cambiar ao modo Incógnito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ocultar etiquetas dos botóns de navegación</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ocultar punto de novo contido</string>
   <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegación</string>
@@ -1150,8 +1148,6 @@ Para acceder aos Axustes, activa o botón de Axustes a través de Xeral → Barr
   <string name="morphe_navigation_bar_glass_size_width">Largura máxima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espaciado dos botóns</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Botóns amosados: %1$s de %2$s</string>
-  <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
-  <string name="morphe_toolbar_screen_summary">Elixe que compoñentes aparecen na barra de ferramentas</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ocultar botón Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ocultar botón do micrófono</string>
   <string name="morphe_hide_toolbar_search_button_title">Ocultar botón de busca</string>

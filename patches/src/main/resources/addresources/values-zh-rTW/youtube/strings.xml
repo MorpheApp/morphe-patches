@@ -1086,8 +1086,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">部份字幕無法提供。顯示可用的字幕。</string>
   <string name="morphe_caption_blocks_too_large">兩個字幕語言無法在這個播放器中完整顯示。顯示主要語言。</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">導覽列</string>
-  <string name="morphe_navigation_bar_screen_summary">選擇要在底部導覽列中顯示哪些按鈕</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">隱藏首頁按鈕</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1105,11 +1103,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">稍後觀看</string>
   <string name="morphe_show_settings_button_title">顯示設定按鈕</string>
   <string name="morphe_show_settings_button_type_title">設定按鈕動作</string>
-  <string name="morphe_show_settings_button_type_summary">啟用時開啟 Morphe 設定，停用時開啟 YouTube 設定</string>
+  <string name="morphe_show_settings_button_type_summary">啟用時，點擊可開啟 Morphe 設定，長按可開啟 YouTube 設定；停用則將兩者對調</string>
   <string name="morphe_navigation_buttons_order_title">導覽列按鈕順序</string>
   <string name="morphe_navigation_buttons_order_summary">拖曳按鈕以更改其在導覽列中的順序</string>
   <string name="morphe_swap_create_with_notifications_button_title">將「建立」按鈕與「通知」按鈕對調</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">如果變更這項設定沒有生效，請嘗試切換到無痕模式。</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">將「通知」按鈕移至導覽列，並將「建立」按鈕移至工具列。如果變更未生效，請嘗試切換至無痕模式</string>
   <string name="morphe_hide_navigation_button_labels_title">隱藏導覽列按鈕標籤</string>
   <string name="morphe_hide_navigation_new_content_dot_title">隱藏新內容圓點</string>
   <string name="morphe_hide_navigation_bar_title">隱藏導覽列</string>
@@ -1148,8 +1146,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">最大寬度</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">按鈕間距</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">顯示按鈕：%1$s / %2$s</string>
-  <string name="morphe_toolbar_screen_title">工具列</string>
-  <string name="morphe_toolbar_screen_summary">選擇工具列中顯示的元件</string>
   <string name="morphe_hide_toolbar_chat_button_title">隱藏聊天按鈕</string>
   <string name="morphe_hide_toolbar_microphone_button_title">隱藏麥克風按鈕</string>
   <string name="morphe_hide_toolbar_search_button_title">隱藏搜尋按鈕</string>

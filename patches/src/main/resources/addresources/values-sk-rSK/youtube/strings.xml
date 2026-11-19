@@ -1085,8 +1085,6 @@ Je potrebné poskytnúť 'Cookies pre titulky'"</string>
   <string name="morphe_caption_block_translation_failed">Niektoré preklady titulkov nie sú k dispozícii. Zobrazujú sa dostupné titulky.</string>
   <string name="morphe_caption_blocks_too_large">Oba jazyky titulkov sa do tohto prehrávača neviazia. Zobrazuje sa primárny jazyk.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigačný panel</string>
-  <string name="morphe_navigation_bar_screen_summary">Vyberte, ktoré tlačidlá sa zobrazia v dolnom navigačnom paneli</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skryť tlačidlo Domov</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1104,11 +1102,11 @@ Je potrebné poskytnúť 'Cookies pre titulky'"</string>
   <string name="morphe_watch_later_navigation_label">Pozrieť neskôr</string>
   <string name="morphe_show_settings_button_title">Zobraziť tlačidlo Nastavenia</string>
   <string name="morphe_show_settings_button_type_title">Akcia tlačidla Nastavenia</string>
-  <string name="morphe_show_settings_button_type_summary">Otvorí nastavenia Morphe, keď je povolené, alebo nastavenia YouTube, keď je vypnuté</string>
+  <string name="morphe_show_settings_button_type_summary">Keď je táto možnosť zapnutá, klepnutie otvorí nastavenia Morphe a dlhé stlačenie otvorí nastavenia YouTube; vypnite pre prepnutie</string>
   <string name="morphe_navigation_buttons_order_title">Poradie navigačných tlačidiel</string>
   <string name="morphe_navigation_buttons_order_summary">Ťahajte tlačidlá, aby ste zmenili ich poradie v navigačnom paneli</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vymení tlačidlo Vytvoriť za tlačidlo Notifikácie</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ak zmena tohto nastavenia nemá účinok, skúste prepnúť do režimu inkognito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Presunie tlačidlo Oznámenia do navigačného panela a tlačidlo Vytvoriť do nástrojového panela. Ak zmeny nenastupujú, skúste prepnúť do inkognito režimu</string>
   <string name="morphe_hide_navigation_button_labels_title">Skryť popisky navigačných tlačidiel</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Skryť bodku nového obsahu</string>
   <string name="morphe_hide_navigation_bar_title">Skryť navigačný panel</string>
@@ -1147,8 +1145,6 @@ Ak chcete pristúpiť k Nastaveniam, zapnite tlačidlo Nastavenia cez Všeobecn�
   <string name="morphe_navigation_bar_glass_size_width">Maximálna šírka</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Rozostup tlačidiel</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Zobrazené tlačidlá: %1$s z %2$s</string>
-  <string name="morphe_toolbar_screen_title">Panel nástrojov</string>
-  <string name="morphe_toolbar_screen_summary">Vyberte, ktoré komponenty sa zobrazia v lište nástrojov</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skryť tlačidlo Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skryť tlačidlo mikrofónu</string>
   <string name="morphe_hide_toolbar_search_button_title">Skryť tlačidlo vyhľadávania</string>

@@ -266,9 +266,6 @@ Per accedere, premi continua qui sotto"</string>
   <string name="morphe_video_quality_default_mobile_title">Qualità video predefinita sulla rete mobile</string>
   <string name="morphe_remember_video_quality_toast_mobile">Qualità predefinita mobile modificata in: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Qualità predefinita Wi-Fi modificata in: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione di sistema</string>
-  <string name="morphe_open_system_share_sheet_summary">Apre il pannello di condivisione di sistema anziché quello integrato durante la condivisione di un contenuto</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Log di Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Disattivato</string>
@@ -380,4 +377,8 @@ L'ID del video che guardi viene inviato all'API di Return YouTube Dislike, e i t
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nessun limite di frequenza client riscontrato</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limite di frequenza client riscontrato %s volte</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisecondi</string>
+  <string name="morphe_navigation_bar_screen_title">Barra di navigazione</string>
+  <string name="morphe_navigation_bar_screen_summary">Scegli quali pulsanti visualizzare nella barra di navigazione inferiore</string>
+  <string name="morphe_toolbar_screen_title">Barra degli strumenti</string>
+  <string name="morphe_toolbar_screen_summary">Scegli quali componenti mostrare nella barra degli strumenti</string>
 </resources>

@@ -266,9 +266,6 @@ A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
   <string name="morphe_video_quality_default_mobile_title">Alapértelmezett videóminőség mobilhálózaton</string>
   <string name="morphe_remember_video_quality_toast_mobile">Alapértelmezett mobil minőség módosítva: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Alapértelmezett Wi-Fi minőség módosítva: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Rendszer megosztási lapjának megnyitása</string>
-  <string name="morphe_open_system_share_sheet_summary">Tartalom megosztásakor a rendszer megosztási lapját nyitja meg az alkalmazásbéli helyett</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho naplózás</string>
   <string name="morphe_debug_litho_entry_disabled">Kikapcsolva</string>
@@ -380,4 +377,8 @@ A megtekintett videó azonosítóját elküldjük a Return YouTube Dislike API-n
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nem történt ügyfél-sebességkorlátozás</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">%s alkalommal lépett fel ügyfélszintű sebességkorlátozás</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ezredmásodperc</string>
+  <string name="morphe_navigation_bar_screen_title">Navigációs sáv</string>
+  <string name="morphe_navigation_bar_screen_summary">Válassza ki, mely gombok jelenjenek meg az alsó navigációs sávban</string>
+  <string name="morphe_toolbar_screen_title">Eszköztár</string>
+  <string name="morphe_toolbar_screen_summary">Válaszd ki, mely komponensek jelenjenek meg a eszközkötben</string>
 </resources>

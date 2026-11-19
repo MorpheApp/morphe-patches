@@ -266,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">جودة الفيديو الافتراضية على شبكة الجوّال</string>
   <string name="morphe_remember_video_quality_toast_mobile">تم تغيير جودة الجوّال الافتراضية إلى: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">تم تغيير جودة Wi-Fi الافتراضية إلى: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">فتح قائمة مشاركة النظام</string>
-  <string name="morphe_open_system_share_sheet_summary">يفتح قائمة مشاركة الخاصة بالنظام بدلًا من قائمة التطبيق عند مشاركة المحتوى</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">تسجيل Litho</string>
   <string name="morphe_debug_litho_entry_disabled">معطّل</string>
@@ -380,4 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">لم يتم مواجهة أي حدود لمعدل العميل</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">تم تجاوز حد معدل العميل %s مرة</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s جزء الثانية</string>
+  <string name="morphe_navigation_bar_screen_title">شريط التنقل</string>
+  <string name="morphe_navigation_bar_screen_summary">اختر الأزرار التي تظهر في شريط التنقل السفلي</string>
+  <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
+  <string name="morphe_toolbar_screen_summary">اختر المكونات التي تظهر في شريط الأدوات</string>
 </resources>

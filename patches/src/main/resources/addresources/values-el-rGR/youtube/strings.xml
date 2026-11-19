@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">Ορισμένες μεταφράσεις υπότιτλων δεν είναι διαθέσιμες. Εμφάνιση διαθέσιμων υπότιτλων.</string>
   <string name="morphe_caption_blocks_too_large">Και οι δύο γλώσσες υπότιτλων δεν χωράνε σε αυτόν τον πρόγραμμα αναπαραγωγής. Εμφάνιση της κύριας γλώσσας.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
-  <string name="morphe_navigation_bar_screen_summary">Επιλέξτε ποια κουμπιά εμφανίζονται στην κάτω γραμμή πλοήγησης</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Απόκρυψη κουμπιού «Αρχική»</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">Παρακολούθηση αργότερα</string>
   <string name="morphe_show_settings_button_title">Εμφάνιση κουμπιού «Ρυθμίσεις»</string>
   <string name="morphe_show_settings_button_type_title">Ενέργεια κουμπιού ρυθμίσεων</string>
-  <string name="morphe_show_settings_button_type_summary">Ανοίγει τις ρυθμίσεις Morphe όταν είναι ενεργοποιημένο, ή τις ρυθμίσεις YouTube όταν είναι απενεργοποιημένο</string>
+  <string name="morphe_show_settings_button_type_summary">Όταν είναι ενεργοποιημένο, το απλό πάτημα ανοίγει τις ρυθμίσεις Morphe και το παρατεταμένο πάτημα τις ρυθμίσεις YouTube. Απενεργοποιήστε για αντιστροφή</string>
   <string name="morphe_navigation_buttons_order_title">Σειρά κουμπιών πλοήγησης</string>
   <string name="morphe_navigation_buttons_order_summary">Σύρετε τα κουμπιά για να αλλάξετε τη σειρά τους στη γραμμή πλοήγησης</string>
   <string name="morphe_swap_create_with_notifications_button_title">Ανταλλάξτε το κουμπί Δημιουργία με το κουμπί Ειδοποιήσεις</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Εάν η αλλαγή αυτής της ρύθμισης δεν έχει αποτέλεσμα, δοκιμάστε να μεταβείτε σε λειτουργία ανώνυμης περιήγησης</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Μεταφέρει το κουμπί Ειδοποιήσεις στη γραμμή πλοήγησης και το κουμπί Δημιουργία στη γραμμή εργαλείων. Εάν οι αλλαγές δεν εφαρμοστούν, δοκιμάστε να μεταβείτε σε ανώνυμη περιήγηση</string>
   <string name="morphe_hide_navigation_button_labels_title">Ονομασίες κουμπιών γραμμής πλοήγησης</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Απόκρυψη κουκκίδας νέου περιεχομένου</string>
   <string name="morphe_hide_navigation_bar_title">Γραμμή πλοήγησης</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">Μέγιστο πλάτος</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Απόσταση κουμπιών</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Εμφανιζόμενα κουμπιά: %1$s από %2$s</string>
-  <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
-  <string name="morphe_toolbar_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στη γραμμή εργαλείων</string>
   <string name="morphe_hide_toolbar_chat_button_title">Απόκρυψη κουμπιού \"Συνομιλία\"</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Κρύψτε το κουμπί \'Μικρόφωνο\'</string>
   <string name="morphe_hide_toolbar_search_button_title">Κρύψτε το κουμπί \'Αναζήτηση\'</string>

@@ -87,7 +87,14 @@ Ji bo wergerandina zimanên nû an baştirkirina wergerandinên heyî, here morp
   <string name="morphe_settings_about_links_translations">Wergerandin</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Sergona</string>
   <string name="morphe_settings_about_contributors">Karsaz</string>
-  <string name="morphe_settings_about_contributors_period">12 mehên dawî</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Hemû demen</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mehv</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mehv</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Demên wext</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s bikarhêner</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Piştgir</string>
   <string name="morphe_settings_about_supporters_summary">Piştgirên li ser Open Collective</string>
@@ -222,6 +229,9 @@ Heger optîmîzasyonên bataryayê neyên guhartin, dibe ku hûn ev tiştan bib�
 • Serlêdan carinan bi xweber digire
 • Agahdarî nexebitin
 • Lêdana li paşperdeyê nexebite"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Panela parvekirinê ya sîstemê veke</string>
+  <string name="morphe_open_system_share_sheet_summary">Dema naverok parve dikî, panela parvekirinê ya sîstemê vedike li şûna ya appê</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Birêvebirina lînkên serlêdanê</string>
   <string name="morphe_link_handling_summary">Mîhengkirina lînkan ku di vê serlêdanê de vebin</string>

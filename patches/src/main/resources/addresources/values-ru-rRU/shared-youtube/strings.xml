@@ -266,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Качество видео по умолчанию в мобильной сети</string>
   <string name="morphe_remember_video_quality_toast_mobile">Качество в мобильной сети изменено на: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Качество в сети Wi-Fi изменено на: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Открыть системное меню «Поделиться»</string>
-  <string name="morphe_open_system_share_sheet_summary">Открывает системное меню \"Поделиться\" вместо встроенного при отправке контента</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Журналирование Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Выключено</string>
@@ -380,4 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ограничения скорости клиентского API не обнаружены</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Превышен лимит запросов клиента %s раз</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунд</string>
+  <string name="morphe_navigation_bar_screen_title">Панель навигации</string>
+  <string name="morphe_navigation_bar_screen_summary">Выберите, какие кнопки отображаются на нижней панели навигации</string>
+  <string name="morphe_toolbar_screen_title">Панель инструментов</string>
+  <string name="morphe_toolbar_screen_summary">Выберите, какие компоненты отображать на панели инструментов</string>
 </resources>

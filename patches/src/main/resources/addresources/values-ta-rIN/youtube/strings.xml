@@ -355,7 +355,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">சில தலைப்பு மொழிபெயர்ப்புகள் கிடைக்கவில்லை. கிடைக்கக்கூடிய தலைப்புகள் காண்பிக்கப்படுகின்றன.</string>
   <string name="morphe_caption_blocks_too_large">இரண்டு தலைப்பு மொழிகளும் இந்த பிளேயரில் பொருந்தவில்லை. முதன்மை மொழி காண்பிக்கப்படுகிறது.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">வழிசெலுத்தல் பட்டை</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Create' has no display name. Translate normally. -->
@@ -365,8 +364,10 @@ Second \"item\" text"</string>
   <string name="morphe_show_watch_later_button_title">\'பின்னாளும் பாருங்கள்\' பொத்தானைக் காட்டு</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">பின்னாளும் பாருங்கள்</string>
+  <string name="morphe_show_settings_button_type_summary">இயக்குவதற்கு, தட்டினால் Morphe அமைப்புகள் திறக்கும் மற்றும் நீண்ட நேரம் அழுத்தினால் YouTube அமைப்புகள் திறக்கும், இதை மாற்ற முடக்கவும்</string>
   <string name="morphe_navigation_buttons_order_title">வழிசெலுத்தல் பொத்தான்களின் வரிசை</string>
   <string name="morphe_navigation_buttons_order_summary">வழிசெலுத்தல் பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">அறிவிப்புகள் பொத்தானை வழிசெலுத்தல் பட்டிற்கும், உருவாக்கு பொத்தானை கருவிப்பட்டிற்கும் மாற்றுகிறது. மாற்றங்கள் நடைமுறைக்கு வரவில்லை என்றால், மறைநிலை பயன்முறைக்கு மாற முயற்சிக்கவும்</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"இது 'You' டேப் உட்பட நேவிகேஷன் பாரை முழுமையாக மறைக்கிறது.
 
 Settings-ஐ அணுக, General → Toolbar → Show Settings button மூலம் Settings பொத்தானைச் செயல்படுத்தவும்"</string>

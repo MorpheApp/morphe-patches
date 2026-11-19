@@ -1088,8 +1088,6 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <string name="morphe_caption_block_translation_failed">Níl aistriúcháin ar fáil do roinnt fotheideal. Á dtaispeáint: na fotheidil atá ar fáil.</string>
   <string name="morphe_caption_blocks_too_large">Ní fheileann an dá theanga fotheideal don seinnteoir seo. Á thaispeáint: an phríomhtheanga.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Barra nascleanúna</string>
-  <string name="morphe_navigation_bar_screen_summary">Roghnaigh cé na cnaipí a thaispeántar sa bharra nascleanúna bun</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Folaigh an cnaipe Baile</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <string name="morphe_watch_later_navigation_label">Féach níos déanaí</string>
   <string name="morphe_show_settings_button_title">Taispeáin an cnaipe Socruithe</string>
   <string name="morphe_show_settings_button_type_title">Gníomh cnaipe socruithe</string>
-  <string name="morphe_show_settings_button_type_summary">Osclaíonn socruithe Morphe nuair a bhíonn siad cumasaithe, nó socruithe YouTube nuair a bhíonn siad díchumasaithe</string>
+  <string name="morphe_show_settings_button_type_summary">Nuair a bhíonn sé cumasaithe, osclaíonn sconka socruithe Morphe agus osclaíonn brú fada socruithe YouTube; díchumasaigh é chun na feidhmeanna a mhalartú.</string>
   <string name="morphe_navigation_buttons_order_title">Ord na cnaipí nascleanúna</string>
   <string name="morphe_navigation_buttons_order_summary">Tarraing na cnaipí chun a n-ord a athrú sa bharr nascleanúna</string>
   <string name="morphe_swap_create_with_notifications_button_title">Malartaigh an cnaipe Cruthaigh leis an gcnaipe Fógraí</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Mura dtiocfaidh athrú ar an socrú seo i bhfeidhm, déan iarracht aistriú go mód Incognito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Bogann sé an cnaipe Fógraí go dtí an barra nascleanúna agus an cnaipe Cruthaigh go dtí an barra uirlisí. Mura dtagann na hathruithe i bhfeidhm, bain triail as aistriú go dtí an mód Incognito.</string>
   <string name="morphe_hide_navigation_button_labels_title">Folaigh lipéid na gcnaipí nascleanúna</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Folaigh ponc ábhair nua</string>
   <string name="morphe_hide_navigation_bar_title">Folaigh an barra nascleanúna</string>
@@ -1150,8 +1148,6 @@ Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí 
   <string name="morphe_navigation_bar_glass_size_width">Leithead uasta</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spásáil cnaipí</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Cnaipí ar taispeáint: %1$s as %2$s</string>
-  <string name="morphe_toolbar_screen_title">Barra Uirlisí</string>
-  <string name="morphe_toolbar_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeántar sa bharra uirlisí</string>
   <string name="morphe_hide_toolbar_chat_button_title">Folaigh cnaipe Comhrá</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Folaigh an cnaipe Micreafón</string>
   <string name="morphe_hide_toolbar_search_button_title">Folaigh an cnaipe Cuardaigh</string>

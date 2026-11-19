@@ -174,6 +174,8 @@ Ifolder yokuthumela: %s"</string>
   <string name="morphe_music_hide_filter_bar_title">Fihla ibha yokuhlunga</string>
   <string name="morphe_music_hide_grid_shelves_title">Fihla ama-shelf egridi</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Fihla ama-shelf ahamba ngokunye</string>
+  <string name="morphe_music_hide_new_button_title">Fihla inkinobho entsha</string>
+  <string name="morphe_music_hide_new_button_summary">Ifihla inkinobho entsha kwi-tab ye-Library</string>
   <string name="morphe_music_hide_list_shelves_title">Fihla ama-shelf ohlukaniswe ngohlu</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Iphandeli lamazwi omculo</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Fihla inkinobho ye-Share</string>
@@ -199,6 +201,8 @@ Ifolder yokuthumela: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Hlanganisa amaculo ngokulula</string>
   <string name="morphe_music_crossfade_enabled_title">Vula i-crossfade</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Ukuze usebenzise i-crossfade, shintsha i-\'Default client\' ye-Spoof video streams ibe yi-TV Simply noma i-visionOS</string>
   <string name="morphe_music_crossfade_curve_title">Ijika lokufiphala</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Amandla afanayo</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Ukubamba okuncane</string>
@@ -232,7 +236,9 @@ Ifolder yokuthumela: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">I-Crossfade imiswe kule seshini</string>
   <string name="morphe_music_crossfade_resumed_toast">I-Crossfade iqhubekile</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Imodi yevidiyo ayitholakali ngenkathi i-crossfade isebenza</string>
-  <string name="morphe_music_crossfade_sabr_toast">I-Crossfade icishiwe ngokudlala kwe-SABR</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">I-Crossfade ayisebenzi ne-visionOS. Shintsha i-\'Default client\' ye-Spoof video streams ibe yi-TV Simply</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">I-Crossfade ayisebenzi kule kliyenthi ye-spoof stream</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">I-Crossfade icishiwe ngenkathi ukhomba</string>
   <string name="morphe_music_crossfade_about_how_title">Ukusebenza kwayo</string>
   <string name="morphe_music_crossfade_about_how_summary">"I-Crossfade ihlanganisa ukuphela kwengoma eyodwa nokuqala kokulandelayo, isebenzisa isikhathi sakho nejika lakho
@@ -249,9 +255,7 @@ Isikrin samakhala noma isaziso singabonisa isimo esidala kancane phakathi kokush
 
 Ukumisa i-crossfade ukuze ubuke ividiyo yomculo kungashiye amanye amavidiyo emnyama. Ukumisa i-crossfade ngaphambi kokuba ukhethe ingoma kuvimbela lokhu"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Akusekelwa</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Ukudlulisela noma ukukhomba umsindo (Chromecast, ukukhomba isikrini noma umsindo)
-
-Ukudlala kwe-SABR (I-Spoof video streams icishiwe)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Ukuthumela noma ukukopisha umsindo (Chromecast, ukukopisha isikrins noma umsindo)</string>
   <string name="morphe_music_crossfade_about_credit_title">Ukubonga</string>
   <string name="morphe_music_crossfade_about_credit_summary">Isici se-Crossfade sika VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,11 @@ Ukudlala kwe-SABR (I-Spoof video streams icishiwe)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Khansela ukuqondiswa kokungajabuli</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Kuvimbela ukuqhuba komculo owulandelayo lapho kuchotshozwa inkinobho yokungajabuli</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Vimisa ukusula ukuze ushintshe iculo</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Kuvimbela ukugxuma uye kuliculo elilandelayo noma elidlule ngokusula kwesokunxele noma kwesokudla kumdlali</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Vimisa ukusula ukuze ushintshe iculo</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Kuvimbela ukugxuma uye kuliculo elilandelayo noma elidlule ngokusula kwesokunxele noma kwesokudla kumdlali omncane</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">I-loop ye-A-B</string>
   <string name="morphe_music_ab_loop_summary">Cindezela isikhangiso sesikhathi isikhathi eside ukuze ubeke ukuqala kwe-loop, uphinde ucindeze ukuze ubeke ukuphela kwe-loop, bese ucindezela futhi ukuze ususe i-loop</string>
@@ -329,15 +338,6 @@ Ukudlala kwe-SABR (I-Spoof video streams icishiwe)"</string>
   <string name="morphe_music_playlist_tags_rename">Shintsha igama</string>
   <string name="morphe_music_playlist_tags_delete">Susa</string>
   <string name="morphe_music_playlist_tags_hidden">Kufihliwe</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Fihla inkinobho ye-Cast</string>
-  <string name="morphe_music_hide_history_button_title">Fihla inkinobho ye-History</string>
-  <string name="morphe_music_hide_notification_button_title">Fihla inkinobho ye-Notification</string>
-  <string name="morphe_music_hide_search_button_title">Fihla inkinobho ye-Search</string>
-  <string name="morphe_music_hide_voice_search_button_title">Fihla inkinobho yokusesha ngezwi</string>
-  <string name="morphe_music_hide_sound_search_button_title">Fihla inkinobho yokusesha ngomsindo</string>
-  <string name="morphe_music_hide_library_new_button_title">Fihla inkinobho entsha</string>
-  <string name="morphe_music_hide_library_new_button_summary">ifihla inkinobho ethi New kwi-tab ye-Library</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Izinkinobho zezenzo</string>
   <string name="morphe_music_action_buttons_screen_summary">Khetha ukuthi yiziphi izinkinobho zezenzo ezivela ngaphansi komdlali</string>
@@ -409,22 +409,20 @@ Ukudlala kwe-SABR (I-Spoof video streams icishiwe)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Phushela ekubonakaleni kwe-portrait</string>
   <string name="morphe_music_force_portrait_orientation_summary">Igcina i-app isebenza ngokubonakala kwe-portrait lapho idivayisi izungeziswa</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Shintsha umbala we-miniplayer</string>
+  <string name="morphe_music_change_miniplayer_color_title">Shintsha umbala</string>
   <string name="morphe_music_change_miniplayer_color_summary">Kwenza ukuba umbala we-miniplayer ufane nombala we-player ephelele</string>
   <string name="morphe_music_change_navigation_bar_color_title">Shintsha umbala webhala lokuqondisa</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Kwenza umbala webhala lokuqondisa uhambisane nomdlali we-fullscreen</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Khombisa inkinobho elandelayo ku-miniplayer</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Khombisa inkinobho edlule ku-miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_title">Khombisa inkinobho elandelayo</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Khombisa inkinobho engaphambilini</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Vula i-miniplayer eyisheshiswayo</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Kuvimbela umdlali ukuba angandlulele ngokuzenzakalelayo kuscreen ephelele lapho kuqala khona iculo elisha</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Vumela ukuswepha ukuze uvalelwe i-miniplayer</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Vula ukusula ngokuswayiza</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Kuvumela ukuvalwa kwe-miniplayer ngokuyiswepha phansi</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Ibha yokuzulazula</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Khetha izinkinobho ezizovela kubala lokunavigetha eliphansi</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Fihla inkinobho yeKhaya</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +455,7 @@ Ukudlala kwe-SABR (I-Spoof video streams icishiwe)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Fihla ukugqamisa okuyiziyingwana ngemuva kwenkinobho ekhethiwe ye-navigation bar yegilasi</string>
   <string name="morphe_music_miniplayer_screen_title">Umdlali omncane</string>
   <string name="morphe_music_miniplayer_screen_summary">Shintsha isitayela, izinkinobho nemigesto ze-miniplayer</string>
-  <string name="morphe_music_miniplayer_glass_title">Vula i-miniplayer yegilasi</string>
+  <string name="morphe_music_miniplayer_glass_title">Vula umphumela weglasi</string>
   <string name="morphe_music_miniplayer_glass_summary">Khombisa i-miniplayer ephuma phezulu njamekhadi yegilasi eyiziyingwana necacile</string>
   <string name="morphe_music_miniplayer_glass_style_title">Isitayela se-miniplayer yegilasi</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Lungisa u-corner radius, i-artwork padding, ukhanya kwemicimbi nokucaca kwe-miniplayer yegilasi, ngokubona isibonelo</string>
@@ -480,6 +478,15 @@ Ukudlala kwe-SABR (I-Spoof video streams icishiwe)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Izibonelo</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Hlola</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Ilayibrari</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Fihla inkinobho ye-Activity</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Fihla inkinobho ethi Buza Umculo</string>
+  <string name="morphe_music_hide_cast_button_title">Fihla inkinobho ye-Cast</string>
+  <string name="morphe_music_hide_history_button_title">Fihla inkinobho ye-History</string>
+  <string name="morphe_music_hide_search_button_title">Fihla inkinobho ye-Search</string>
+  <string name="morphe_music_hide_voice_search_button_title">Fihla inkinobho yokusesha ngezwi</string>
+  <string name="morphe_music_hide_sound_search_button_title">Fihla inkinobho yokusesha ngomsindo</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Awungenile. Thinta ukuze ulungise</string>
   <string name="morphe_music_scrobbling_log_out">Phuma</string>

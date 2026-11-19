@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">翻訳</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">最新の状態です</string>
   <string name="morphe_settings_about_contributors">貢献者</string>
-  <string name="morphe_settings_about_contributors_period">過去 12 ヶ月</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">全期間</string>
+  <string name="morphe_settings_about_contributors_6_months">6ヶ月</string>
+  <string name="morphe_settings_about_contributors_3_months">3ヶ月</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">期間</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s 人のユーザー</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">サポーター</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective の支援者</string>
@@ -222,6 +229,9 @@ MicroG に対するバッテリー最適化を無効にしても、バッテリ�
 • アプリが突然終了する
 • 通知が機能しない
 • バックグラウンド再生が正常に動作しない"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
+  <string name="morphe_open_system_share_sheet_summary">コンテンツを共有するときにアプリ内の共有メニューではなくシステムの共有メニューを開きます</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">対応リンクの関連付け</string>
   <string name="morphe_link_handling_summary">このアプリで対応リンクを開くように設定します</string>

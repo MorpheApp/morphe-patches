@@ -266,9 +266,6 @@ Kirjautuaksesi paina alta jatka"</string>
   <string name="morphe_video_quality_default_mobile_title">Videon oletuslaatu mobiiliverkossa</string>
   <string name="morphe_remember_video_quality_toast_mobile">Mobiiliverkon oletuslaatu muutettiin muotoon: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-oletuslaatu muutettiin muotoon: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Avaa järjestelmän jakovalikko</string>
-  <string name="morphe_open_system_share_sheet_summary">Avaa järjestelmän jakovalikon sovelluksen oman valikon sijaan sisällön jakamiseksi</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-kirjaaminen</string>
   <string name="morphe_debug_litho_entry_disabled">Pois käytöstä</string>
@@ -380,4 +377,8 @@ Katsomasi videon tunnus lähetetään Return YouTube Dislike -rajapintaan, ja ty
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Asiakkaan nopeusrajoituksia ei havaittu</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Asiakkaan nopeusrajoitus kohtattu %s kertaa</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekuntia</string>
+  <string name="morphe_navigation_bar_screen_title">Navigointipalkki</string>
+  <string name="morphe_navigation_bar_screen_summary">Valitse, mitkä painikkeet näkyvät alanavigointipalkissa</string>
+  <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
+  <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
 </resources>

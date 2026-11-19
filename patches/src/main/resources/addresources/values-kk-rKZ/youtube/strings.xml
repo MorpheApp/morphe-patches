@@ -1088,8 +1088,6 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_caption_block_translation_failed">Кейбір субтитрлер аудармалары қолжетімсіз. Қолжетімді субтитрлер көрсетілуде.</string>
   <string name="morphe_caption_blocks_too_large">Субтитрлердің екі тілі де бұл плеерге сыймайды. Негізгі тіл көрсетілуде.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Навигациялық панель</string>
-  <string name="morphe_navigation_bar_screen_summary">Төменгі навигациялық панельде қай түймелер пайда болатынын таңдаңыз</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Басты бет түймесін жасыру</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_watch_later_navigation_label">Кейінірек көру</string>
   <string name="morphe_show_settings_button_title">Баптаулар түймесін көрсету</string>
   <string name="morphe_show_settings_button_type_title">Баптаулар батырмасының әрекеті</string>
-  <string name="morphe_show_settings_button_type_summary">Қосылғанда Morphe баптауларын, ал өшірілгенде YouTube баптауларын ашады</string>
+  <string name="morphe_show_settings_button_type_summary">Қосылғанда, бір рет басу Morphe параметрлерін, ал ұзақ басу YouTube параметрлерін ашады; ауыстыру үшін өшіріңіз</string>
   <string name="morphe_navigation_buttons_order_title">Навигациялық батырмалардың реті</string>
   <string name="morphe_navigation_buttons_order_summary">Навигациялық панельдегі батырмалардың ретін өзгерту үшін оларды сүйреңіз</string>
   <string name="morphe_swap_create_with_notifications_button_title">\"Жасау\" түймесін \"Хабарландырулар\" түймесімен алмастыру</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Егер бұл параметрді өзгерту әсер етпесе, Инкогнито режиміне ауысып көріңіз</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Хабарландырулар түймесін навигациялық жолаққа, ал Жарату түймесін құралдар панеліне ауыстырады. Егер өзгерістер күшіне енбесе, Инкогнито режиміне ауысып көріңіз</string>
   <string name="morphe_hide_navigation_button_labels_title">Навигациялық түйме белгілерін жасыру</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Жаңа мазмұн нүктесін жасыру</string>
   <string name="morphe_hide_navigation_bar_title">Навигациялық панельді жасыру</string>
@@ -1150,8 +1148,6 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_navigation_bar_glass_size_width">Максималды ені</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Батырмалар арасындағы қашықтық</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Көрсетілген батырмалар: %1$s / %2$s</string>
-  <string name="morphe_toolbar_screen_title">Құралдар жолағы</string>
-  <string name="morphe_toolbar_screen_summary">Құрал жолағында қай компоненттер пайда болатынын таңдаңыз</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат батырмасын жасыру</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Микрофон батырмасын жасыру</string>
   <string name="morphe_hide_toolbar_search_button_title">Іздеу батырмасын жасыру</string>

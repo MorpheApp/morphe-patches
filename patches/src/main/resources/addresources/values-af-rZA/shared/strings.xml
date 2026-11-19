@@ -87,7 +87,13 @@ Om nuwe tale te vertaal of bestaande vertalings te verbeter, besoek morphe.softw
   <string name="morphe_settings_about_links_translations">Vertalings</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Op datum</string>
   <string name="morphe_settings_about_contributors">Bydraers</string>
-  <string name="morphe_settings_about_contributors_period">Laaste 12 maande</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Alle tye</string>
+  <string name="morphe_settings_about_contributors_6_months">6 maande</string>
+  <string name="morphe_settings_about_contributors_3_months">3 maande</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tydperk</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Bespongers</string>
   <string name="morphe_settings_about_supporters_summary">Ondersteuners op Open Collective</string>
@@ -222,6 +228,9 @@ As battery optimerings nie verander word nie dan mag jy ervaar:
 • Program kan willekeurig sluit
 • Kennisgewings werk dalk nie
 • Agtergrondterugspeel werk dalk nie"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Maak stelsel-deelblad oop</string>
+  <string name="morphe_open_system_share_sheet_summary">Maak die stelsel se deelblad oop in plaas van die in-app-een wanneer inhoud gedeel word</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App skakelhantering</string>
   <string name="morphe_link_handling_summary">Konfigureer skakels om in hierdie toepassing oop te maak</string>

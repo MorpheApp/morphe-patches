@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Fordítások</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Naprakész</string>
   <string name="morphe_settings_about_contributors">Hozzájárulók</string>
-  <string name="morphe_settings_about_contributors_period">Utolsó 12 hónap</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Összes időszak</string>
+  <string name="morphe_settings_about_contributors_6_months">6 hónap</string>
+  <string name="morphe_settings_about_contributors_3_months">3 hónap</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Időszak</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s felhasználó</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Támogatók</string>
   <string name="morphe_settings_about_supporters_summary">Támogatók az Open Collective-en</string>
@@ -222,6 +229,9 @@ Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
 • Az alkalmazás véletlenszerűen lezárulhat
 • Az értesítések nem működhetnek
 • A háttérbeli lejátszás nem működhet"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Rendszer megosztási ablakának megnyitása</string>
+  <string name="morphe_open_system_share_sheet_summary">Tartalom megosztásakor a rendszer megosztási felületét nyitja meg az alkalmazásbelüli helyett</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-linkek kezelése</string>
   <string name="morphe_link_handling_summary">A linkek konfigurálása ebben az alkalmazásban történő megnyitáshoz</string>

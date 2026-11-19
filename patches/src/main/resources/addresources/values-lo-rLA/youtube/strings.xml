@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">ບາງຄຳແປຂອງຄຳບັນຍາຍບໍ່ສາມາດນຳໃຊ້ໄດ້. ພວມສະແດງຄຳບັນຍາຍທີ່ມີຢູ່.</string>
   <string name="morphe_caption_blocks_too_large">ທັງສອງພາສາຂອງຄຳບັນຍາຍບໍ່ສາມາດສະແດງໃນເຄື່ອງຫຼິ້ນນີ້ໄດ້. ພວມສະແດງພາສາຫຼັກ.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">ແຖບການນຳທາງ</string>
-  <string name="morphe_navigation_bar_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ປາກົດໃນແຖບນຳທາງດ້ານລຸ່ມ</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">ເຊື່ອງປຸ່ມໜ້າຫຼັກ</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">ເບິ່ງພາຍຫຼັງ</string>
   <string name="morphe_show_settings_button_title">ສະແດງປຸ່ມການຕັ້ງຄ່າ</string>
   <string name="morphe_show_settings_button_type_title">ການເຮັດວຽກຂອງປຸ່ມຕັ້ງຄ່າ</string>
-  <string name="morphe_show_settings_button_type_summary">ເປີດການຕັ້ງຄ່າ Morphe ເມື່ອເປີດໃຊ້ງານ, ຫຼື ການຕັ້ງຄ່າ YouTube ເມື່ອປິດໃຊ້ງານ</string>
+  <string name="morphe_show_settings_button_type_summary">ເມື່ອເປີດໃຊ້ງານ, ແຕະເພື່ອເປີດການຕັ້ງຄ່າ Morphe ແລະ ກົດຄ້າງໄວ້ເພື່ອເປີດການຕັ້ງຄ່າ YouTube, ປິດເພື່ອສະຫຼັບກັນ</string>
   <string name="morphe_navigation_buttons_order_title">ລຳດັບປຸ່ມນຳທາງ</string>
   <string name="morphe_navigation_buttons_order_summary">ລາກປຸ່ມເພື່ອປ່ຽນລຳດັບຂອງພວກມັນໃນແຖບນຳທາງ</string>
   <string name="morphe_swap_create_with_notifications_button_title">ສະຫຼັບປຸ່ມສ້າງ ດ້ວຍປຸ່ມການແຈ້ງເຕືອນ</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">ຖ້າການປ່ຽນແປງການຕັ້ງຄ່ານີ້ບໍ່ມີຜົນ, ໃຫ້ລອງປ່ຽນໄປໃຊ້ໂໝດບໍ່ລະບຸຕົວຕົນ</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">ຍ້າຍປຸ່ມການແຈ້ງເຕືອນໄປທີ່ແຖບການນຳທາງ ແລະ ຍ້າຍປຸ່ມສ້າງໄປທີ່ແຖບເຄື່ອງມື. ຖ້າການປ່ຽນແປງບໍ່ມີຜົນ, ໃຫ້ລອງປ່ຽນໄປໃຊ້ໂໝດບໍ່ລະບຸຕົວຕົນ</string>
   <string name="morphe_hide_navigation_button_labels_title">ເຊື່ອງປ້າຍຊື່ປຸ່ມນຳທາງ</string>
   <string name="morphe_hide_navigation_new_content_dot_title">ເຊື່ອງຈຸດເນື້ອຫາໃໝ່</string>
   <string name="morphe_hide_navigation_bar_title">ເຊື່ອງແຖບການນຳທາງ</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">ຄວາມກວ້າງສູງສຸດ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ໄລຍະຫ່າງຂອງປຸ່ມ</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">ປຸ່ມທີ່ສະແດງ: %1$s ຈາກ %2$s</string>
-  <string name="morphe_toolbar_screen_title">ແຖບເຄື່ອງມື</string>
-  <string name="morphe_toolbar_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນແຖບເຄື່ອງມື</string>
   <string name="morphe_hide_toolbar_chat_button_title">ເຊື່ອງປຸ່ມແຊັດ</string>
   <string name="morphe_hide_toolbar_microphone_button_title">ເຊື່ອງປຸ່ມໄມໂຄຣໂຟນ</string>
   <string name="morphe_hide_toolbar_search_button_title">ເຊື່ອງປຸ່ມຄົ້ນຫາ</string>

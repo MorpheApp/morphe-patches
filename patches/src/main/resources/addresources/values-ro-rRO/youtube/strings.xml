@@ -1088,8 +1088,6 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <string name="morphe_caption_block_translation_failed">Unele traduceri de subtitrări nu sunt disponibile. Se afișează subtitrările disponibile.</string>
   <string name="morphe_caption_blocks_too_large">Ambele limbi ale subtitrărilor nu încap în acest player. Se afișează limba principală.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Bară de navigare</string>
-  <string name="morphe_navigation_bar_screen_summary">Alegeți ce butoane apar în bara de navigare de jos</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ascunde butonul Home</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <string name="morphe_watch_later_navigation_label">Urmărește mai târziu</string>
   <string name="morphe_show_settings_button_title">Afișează butonul Setări</string>
   <string name="morphe_show_settings_button_type_title">Acțiune buton Setări</string>
-  <string name="morphe_show_settings_button_type_summary">Deschide setările Morphe când este activată sau setările YouTube când este dezactivată</string>
+  <string name="morphe_show_settings_button_type_summary">Când este activată, atingerea deschide setările Morphe, iar apăsarea lungă deschide setările YouTube; dezactivați pentru a inversa</string>
   <string name="morphe_navigation_buttons_order_title">Ordinea butoanelor de navigare</string>
   <string name="morphe_navigation_buttons_order_summary">Trage butoanele pentru a le schimba ordinea în bara de navigare</string>
   <string name="morphe_swap_create_with_notifications_button_title">Inversează butonul Creare cu butonul Notificări</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Dacă schimbarea acestei setări nu are efect, încercați să comutați la modul Incognito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Mută butonul de Notificări în bara de navigare și butonul de Creare în bara de instrumente. Dacă modificările nu au efect, încearcă comutarea la modul Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ascunde etichetele butoanelor de navigare</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ascunde punctul de conținut nou</string>
   <string name="morphe_hide_navigation_bar_title">Ascunde bara de navigare</string>
@@ -1150,8 +1148,6 @@ Pentru a accesa Setările, activați butonul Setări prin General → Bara de in
   <string name="morphe_navigation_bar_glass_size_width">Lățime maximă</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spațierea butoanelor</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Butoane afișate: %1$s din %2$s</string>
-  <string name="morphe_toolbar_screen_title">Bara de navigare</string>
-  <string name="morphe_toolbar_screen_summary">Alegeți ce componente apar în bara de instrumente</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ascunde butonul Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ascunde butonul Microfon</string>
   <string name="morphe_hide_toolbar_search_button_title">Ascunde butonul de căutare</string>

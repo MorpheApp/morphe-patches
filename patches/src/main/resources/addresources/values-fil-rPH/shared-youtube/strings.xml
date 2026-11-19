@@ -266,9 +266,6 @@ Para mag-sign in, pindutin ang patuloy sa ibaba"</string>
   <string name="morphe_video_quality_default_mobile_title">Default na kalidad ng video sa mobile network</string>
   <string name="morphe_remember_video_quality_toast_mobile">Binago ang default na kalidad ng mobile sa: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Binago ang default na kalidad ng Wi-Fi sa: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Buksan ang system share sheet</string>
-  <string name="morphe_open_system_share_sheet_summary">Binubuksan ang system share sheet sa halip na ang share sheet sa loob ng app kapag nagbabahagi ng content</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Tala ng Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Nakapatay</string>
@@ -380,4 +377,8 @@ Ang ID ng video na iyong pinapanood ay ipinapadala sa Return YouTube Dislike API
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Walang nakaharap na mga limitasyon ng rate ng client</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kinakaharap ang client rate limit na %s beses</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s miliseconds</string>
+  <string name="morphe_navigation_bar_screen_title">Navigation bar</string>
+  <string name="morphe_navigation_bar_screen_summary">Pumili kung aling mga button ang lilitaw sa bottom navigation bar</string>
+  <string name="morphe_toolbar_screen_title">Toolbar</string>
+  <string name="morphe_toolbar_screen_summary">Pumili kung aling mga component ang lilitaw sa toolbar</string>
 </resources>

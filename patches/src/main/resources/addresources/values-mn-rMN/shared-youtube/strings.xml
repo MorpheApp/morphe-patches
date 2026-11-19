@@ -267,9 +267,6 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_video_quality_default_mobile_title">Мобайл сүлжээн дэх видеоны үндсэн чанар</string>
   <string name="morphe_remember_video_quality_toast_mobile">Мобайл сүлжээний үндсэн чанарыг %s болгож өөрчиллөө</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi сүлжээний үндсэн чанарыг %s болгож өөрчиллөө</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Системийн хуваалцах цэсийг нээх</string>
-  <string name="morphe_open_system_share_sheet_summary">Агуулга хуваалгах үед апп доторх цэсний оронд системийн хуваалцах цэсийг нээнэ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho лог бүртгэл</string>
   <string name="morphe_debug_litho_entry_disabled">Идэвхгүй</string>
@@ -381,4 +378,8 @@ PotHelper татахын тулд энд дарна уу"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Клиентийн хүсэлтийн хязгаарлалтад тулгаагүй</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Клиентийн хүсэлтийн хязгаарлалт %s удаа гарсан</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунд</string>
+  <string name="morphe_navigation_bar_screen_title">Навигацийн мөр</string>
+  <string name="morphe_navigation_bar_screen_summary">Доод навигацийн мөрөнд аль товчнууд харагдахыг сонгоно уу</string>
+  <string name="morphe_toolbar_screen_title">Баруулбаар</string>
+  <string name="morphe_toolbar_screen_summary">Баруулбаар дээр аль бүрэлдэхүүн хэсгүүдийг харуулахыг сонгоно уу</string>
 </resources>

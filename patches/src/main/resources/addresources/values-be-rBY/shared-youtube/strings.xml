@@ -266,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Стандартная якасць відэа ў мабільнай сетцы</string>
   <string name="morphe_remember_video_quality_toast_mobile">Стандартная мабільная якасць зменена на: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Стандартная якасць Wi-Fi зменена на: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Адкрыць сістэмнае акно «Паділіцца»</string>
-  <string name="morphe_open_system_share_sheet_summary">Адкрывае сістэмнае панэль пашырэння замест унутрапрыламінай пры пашырэнні кантэнту</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Лагаванне Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Адключана</string>
@@ -378,4 +375,8 @@ ID відэа, якое вы глядзіце, адпраўляецца ў API R
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ліміты частаты запытаў кліента не сустракаліся</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Ліміт запытаў кліента перавышаны %s разоў</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s мілісекунд</string>
+  <string name="morphe_navigation_bar_screen_title">Панэль навігацыі</string>
+  <string name="morphe_navigation_bar_screen_summary">Выберыце, якія кнопкі будуць адлюстроўвацца ў ніжняй панэлі навігацыі</string>
+  <string name="morphe_toolbar_screen_title">Панэль інструментаў</string>
+  <string name="morphe_toolbar_screen_summary">Выберыце, якія кампаненты будуць паказвацца на панэлі інструментаў</string>
 </resources>

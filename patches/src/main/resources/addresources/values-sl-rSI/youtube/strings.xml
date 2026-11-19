@@ -1088,8 +1088,6 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_caption_block_translation_failed">Nekateri prevodi podnapisov niso na voljo. Prikažemo razpoložljive podnapise.</string>
   <string name="morphe_caption_blocks_too_large">Oba jezika podnapisov se ne prikažeta v tem predvajalniku. Prikažemo primarni jezik.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigacijska vrstica</string>
-  <string name="morphe_navigation_bar_screen_summary">Izberite, kateri gumbi se pojavljajo v spodnji navigacijski vrstici</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skrij gumb Domov</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_watch_later_navigation_label">Glej pozneje</string>
   <string name="morphe_show_settings_button_title">Prikaži gumb za nastavitve</string>
   <string name="morphe_show_settings_button_type_title">Akcija gumba Nastavitve</string>
-  <string name="morphe_show_settings_button_type_summary">Ob omogočitvi odpre nastavitve Morphe, ob onemogočitvi pa nastavitve YouTube</string>
+  <string name="morphe_show_settings_button_type_summary">Ko je omogočeno, tap odpre nastavitve Morphe in dolg pritisk odpre nastavitve YouTube; onemogoči za zamenjavo</string>
   <string name="morphe_navigation_buttons_order_title">Vrstni red navigacijskih gumbov</string>
   <string name="morphe_navigation_buttons_order_summary">Povlecite gumbe, da spremenite njihov vrstni red v navigacijski vrstici</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamenjaj gumb Ustvari z gumbom Obvestila</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Če sprememba te nastavitve ne začne veljati, poskusite preklopiti v način incognito.</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Premakne gumb Obvestila v navigacijsko vrstico in gumb Ustvari v vrstico z orodji. Če spremembe ne začnejo veljati, poskusite preklopiti v inkognito način</string>
   <string name="morphe_hide_navigation_button_labels_title">Skrij oznake gumbov navigacije</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Skrij piko za novo vsebino</string>
   <string name="morphe_hide_navigation_bar_title">Skrij navigacijsko vrstico</string>
@@ -1150,8 +1148,6 @@ Za dostop do nastavitev omogočite gumb Nastavitve prek Splošno → Orodna vrst
   <string name="morphe_navigation_bar_glass_size_width">Maksimalna širina</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Razmik gumbov</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Prikazanih gumbov: %1$s od %2$s</string>
-  <string name="morphe_toolbar_screen_title">Orodna vrstica</string>
-  <string name="morphe_toolbar_screen_summary">Izberite, kateri elementi se pojavljajo v orodni vrstici</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skrij gumb Klepet</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skrij gumb za mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Skrij gumb za iskanje</string>

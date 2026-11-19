@@ -1088,8 +1088,6 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_caption_block_translation_failed">Nogle oversættelser af undertekster er ikke tilgængelige. Viser tilgængelige undertekster.</string>
   <string name="morphe_caption_blocks_too_large">Begge undertekstsprog passer ikke i denne afspiller. Viser det primære sprog.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigationslinje</string>
-  <string name="morphe_navigation_bar_screen_summary">Vælg hvilke knapper der vises i den nederste navigationslinje</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skjul knappen Hjem</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_watch_later_navigation_label">Se senere</string>
   <string name="morphe_show_settings_button_title">Vis Indstillinger-knappen</string>
   <string name="morphe_show_settings_button_type_title">Indstillinger-knappen vises</string>
-  <string name="morphe_show_settings_button_type_summary">Åbner Morphe-indstillinger, når den er aktiveret, eller YouTube-indstillinger, når den er deaktiveret</string>
+  <string name="morphe_show_settings_button_type_summary">Når den er aktiveret, åbner et tryk Morphe-indstillinger, og tryk længe åbner YouTube-indstillinger; deaktiver for at ombytte</string>
   <string name="morphe_navigation_buttons_order_title">Rækkefølge for navigationsknapper</string>
   <string name="morphe_navigation_buttons_order_summary">Træk i knapperne for at ændre deres rækkefølge i navigationslinjen</string>
   <string name="morphe_swap_create_with_notifications_button_title">Byt Opret-knap med Notifikationsknap</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Hvis ændringen af denne indstilling ikke virker, prøv at skifte til Incognito-tilstand</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Flytter knappen Meddelelser til navigationslinjen og knappen Opret til værktøjslinjen. Hvis ændringerne ikke træder i kraft, kan du prøve at skifte til inkognitotilstand</string>
   <string name="morphe_hide_navigation_button_labels_title">Skjul navigationsknappers tekst</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Skjul prik for nyt indhold</string>
   <string name="morphe_hide_navigation_bar_title">Skjul navigationsbjælke</string>
@@ -1150,8 +1148,6 @@ For at få adgang til Indstillinger skal du aktivere Indstillingsknappen via Gen
   <string name="morphe_navigation_bar_glass_size_width">Maksimal bredde</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knapafstand</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Knapper vist: %1$s ud af %2$s</string>
-  <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
-  <string name="morphe_toolbar_screen_summary">Vælg, hvilke komponenter der vises i værktøjslinjen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skjul chat-knappen</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skjul Mikrofon-knappen</string>
   <string name="morphe_hide_toolbar_search_button_title">Skjul Søg-knappen</string>

@@ -266,9 +266,6 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_video_quality_default_mobile_title">モバイルネットワークでのデフォルトの動画画質</string>
   <string name="morphe_remember_video_quality_toast_mobile">デフォルトの画質 (モバイル): %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">デフォルトの画質 (Wi-Fi): %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
-  <string name="morphe_open_system_share_sheet_summary">コンテンツを共有するときにアプリ内の共有メニューではなくシステムの共有メニューを開きます</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho ログ記録</string>
   <string name="morphe_debug_litho_entry_disabled">無効</string>
@@ -380,4 +377,8 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">クライアントのレート制限は発生していません</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">クライアントのレート制限は %s 回発生しました</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ミリ秒</string>
+  <string name="morphe_navigation_bar_screen_title">ナビゲーションバー</string>
+  <string name="morphe_navigation_bar_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
+  <string name="morphe_toolbar_screen_title">ツールバー</string>
+  <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
 </resources>

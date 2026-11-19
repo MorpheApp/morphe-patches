@@ -1089,8 +1089,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">هەندێک لە وەرگێڕانەکانی ژێرنووس بەردەست نین. ژێرنووسە بەردەستەکان نیشان دەدرێن.</string>
   <string name="morphe_caption_blocks_too_large">هەردوو زمانی ژێرنووسەکان لەم پلەیەرەدا جێگەیان نییە. پیشاندانی زمانی سەرەکی.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">شریتی گەشتکردن</string>
-  <string name="morphe_navigation_bar_screen_summary">هەڵبژێرە کام دوگمەیە دەردەکەوێت لە شریتی گەشتکردن</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">دوگمەی ماڵەوە بشارەوە</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1108,11 +1106,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">دواتر بینە</string>
   <string name="morphe_show_settings_button_title">نیشاندانی دوگمەی ڕێکخستنەکان</string>
   <string name="morphe_show_settings_button_type_title">کرداری دوگمەی ڕێکخستنەکان</string>
-  <string name="morphe_show_settings_button_type_summary">کاتێک چالاک بێت، ڕێکخستنەکانی Morphe دەکاتەوە، یان ڕێکخستنەکانی YouTube کاتێک ناچالاک بێت</string>
+  <string name="morphe_show_settings_button_type_summary">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
   <string name="morphe_navigation_buttons_order_title">ڕیزبەندی دووگمەکانی گەشتکردن</string>
   <string name="morphe_navigation_buttons_order_summary">دوگمەکان ڕابکێشە بۆ گۆڕینی ڕیزبەندییان لە شریتی گەشتکردن</string>
   <string name="morphe_swap_create_with_notifications_button_title">گۆڕینی شوێنی دوگمەی دروستکردن بە دوگمەی ئاگادارکردنەوەکان</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">ئەگەر گۆڕینی ئەم ڕێکخستنە کاریگەری نەبوو، هەوڵبدە بگۆڕیت بۆ دۆخی نادیار</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">دوگمەی ئاگادارکردنەوەکان دەگوازێتەوە بۆ شریتی گەڕان و دوگمەی دروستکردن بۆ ئامرازی ئامادەکاری. ئەگەر گۆڕانکارییەکان کاریگەر نەبوون، هەوڵ بدە بگۆڕدرێت بۆ شێوەزی Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">شاردنەوەی ناوەکانی دوگمەی گەشتکردن</string>
   <string name="morphe_hide_navigation_new_content_dot_title">شاردنەوەی خاڵی ناوەڕۆکی نوێ</string>
   <string name="morphe_hide_navigation_bar_title">شاردنەوەی پەڕەکانی گەشتکردن</string>
@@ -1151,8 +1149,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">زۆرترین پانی</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">بۆشایی دوگمەکان</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">دوگمەکانی پیشاندراو: %1$s لە %2$s</string>
-  <string name="morphe_toolbar_screen_title">شریتی ئامرازەکان</string>
-  <string name="morphe_toolbar_screen_summary">دیاری بکە کام پێکهاتەکان لە شریتی ئامرازەکاندا دەربکەون</string>
   <string name="morphe_hide_toolbar_chat_button_title">شاردنەوەی دوگمەی چات</string>
   <string name="morphe_hide_toolbar_microphone_button_title">شاردنەوەی دوگمەی مایکرۆفۆن</string>
   <string name="morphe_hide_toolbar_search_button_title">دوگمەی گەڕان بشارەوە</string>

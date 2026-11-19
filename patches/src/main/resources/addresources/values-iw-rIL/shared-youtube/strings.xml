@@ -266,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">איכות סרטון ברירת מחדל ברשת סלולרית</string>
   <string name="morphe_remember_video_quality_toast_mobile">איכות סלולרית ברירת מחדל שונתה ל: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">איכות Wi-Fi ברירת מחדל שונתה ל: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">פתח את גיליון השיתוף של המערכת</string>
-  <string name="morphe_open_system_share_sheet_summary">פותח את גליון השיתוף של המערכת במקום את גליון השיתוף שבתוך האפליקציה בעת שיתוף תוכן</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">רישום Litho</string>
   <string name="morphe_debug_litho_entry_disabled">מושבת</string>
@@ -380,4 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">לא נתקלו במגבלות קצב לקוח</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">מגבלת קצב לקוח נתקלה %s פעמים</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s מילישניות</string>
+  <string name="morphe_navigation_bar_screen_title">סרגל ניווט</string>
+  <string name="morphe_navigation_bar_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
+  <string name="morphe_toolbar_screen_title">סרגל כלים</string>
+  <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
 </resources>

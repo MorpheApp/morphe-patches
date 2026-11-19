@@ -174,6 +174,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_filter_bar_title">ফিল্টার বার লুকান</string>
   <string name="morphe_music_hide_grid_shelves_title">গ্রিড শেল্ফগুলো লুকান</string>
   <string name="morphe_music_hide_horizontal_shelves_title">অনুভূমিক শেল্ফ লুকান</string>
+  <string name="morphe_music_hide_new_button_title">\'New\' বোতাম লুকান</string>
+  <string name="morphe_music_hide_new_button_summary">লাইব্রেরি ট্যাবের \'New\' বোতামটি লুকায়</string>
   <string name="morphe_music_hide_list_shelves_title">তালিকা শেল্ফগুলো লুকান</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">লিরিক্স প্যানেল</string>
   <string name="morphe_music_hide_lyrics_share_button_title">শেয়ার বোতামটি লুকান</string>
@@ -199,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">ক্রসফেইড</string>
   <string name="morphe_music_crossfade_screen_summary">ট্র্যাকগুলি একে অপরের সাথে মসৃণভাবে মিশিয়ে দিন।</string>
   <string name="morphe_music_crossfade_enabled_title">ক্রসফেইড চালু করুন</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade ব্যবহার করতে, Spoof ভিডিও স্ট্রিমের \'Default client\' পরিবর্তন করে TV Simply অথবা visionOS করুন</string>
   <string name="morphe_music_crossfade_curve_title">ফেড কার্ভ</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">সমান ক্ষমতা</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">সূক্ষ্ম বিলম্ব</string>
@@ -232,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">এই সেশনের জন্য ক্রসফেড সাময়িকভাবে বন্ধ করা হয়েছে</string>
   <string name="morphe_music_crossfade_resumed_toast">ক্রসফেড পুনরায় শুরু করা হয়েছে</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">ক্রসফেড চালু থাকা অবস্থায় ভিডিও মোড উপলব্ধ নয়</string>
-  <string name="morphe_music_crossfade_sabr_toast">SABR প্লেব্যাকের সময় ক্রসফেড বন্ধ থাকে</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade visionOS-এর সাথে কাজ করে না। Spoof ভিডিও স্ট্রিমের \'Default client\' পরিবর্তন করে TV Simply করুন</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade এই spoof স্ট্রিম ক্লায়েন্টের সাথে কাজ করে না</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">কাস্টিংয়ের সময় ক্রসফেড বন্ধ থাকে</string>
   <string name="morphe_music_crossfade_about_how_title">এটি যেভাবে কাজ করে</string>
   <string name="morphe_music_crossfade_about_how_summary">"ক্রসফেড একটি গানের শেষ অংশের সাথে পরের গানের শুরুর অংশ ওভারল্যাপ করে, আপনার নির্ধারিত সময়কাল এবং কার্ভ ব্যবহার করে।
@@ -249,9 +255,7 @@ Second \"item\" text"</string>
 
 মিউজিক ভিডিও দেখতে ক্রসফেড বিরাম দিলে কিছু ভিডিও কালো হয়ে যেতে পারে। গানটি বেছে নেওয়ার আগে ক্রসফেড বিরাম দিলে এটি এড়ানো যায়"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">সমর্থিত নয়</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"অডিও কাস্টিং বা মিররিং (Chromecast, স্ক্রিন বা অডিও মিররিং)
-
-SABR প্লেব্যাক (ভিডিও স্ট্রিম স্পুফ করা বন্ধ থাকলে)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">অডিও কাস্টিং বা মিররিং (Chromecast, স্ক্রিন বা অডিও মিররিং)</string>
   <string name="morphe_music_crossfade_about_credit_title">কৃতজ্ঞতা স্বীকার</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG-এর তৈরি ক্রসফেড ফিচার</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,11 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ডিসলাইক রিডাইরেকশন নিষ্ক্রিয় করুন</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ডিসলাইক বোতাম চাপলে পরবর্তী ট্র্যাকে যাওয়া বন্ধ করে</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">ট্র্যাক পরিবর্তন করতে সোয়াইপ নিষ্ক্রিয় করুন</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">প্লেয়ারে বামে বা ডানে সোয়াইপ করে পরবর্তী বা পূর্ববর্তী ট্র্যাকে যাওয়া প্রতিরোধ করে</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">ট্র্যাক পরিবর্তন করতে সোয়াইপ নিষ্ক্রিয় করুন</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">মিনিপ্লেয়ারে বামে বা ডানে সোয়াইপ করে পরবর্তী বা পূর্ববর্তী ট্র্যাকে যাওয়া প্রতিরোধ করে</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B লুপ</string>
   <string name="morphe_music_ab_loop_summary">লুপ শুরু করতে সিকবারটি লং-প্রেস করুন, লুপ শেষ করতে পুনরায় প্রেস করুন এবং লুপটি মুছতে আরও একবার প্রেস করুন</string>
@@ -329,15 +338,6 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_playlist_tags_rename">পুনঃনামকরণ</string>
   <string name="morphe_music_playlist_tags_delete">মুছে ফেলুন</string>
   <string name="morphe_music_playlist_tags_hidden">লুকানো</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">কাস্ট বোতাম লুকান</string>
-  <string name="morphe_music_hide_history_button_title">ইতিহাস বোতাম লুকান</string>
-  <string name="morphe_music_hide_notification_button_title">বিজ্ঞপ্তি বাটন লুকান</string>
-  <string name="morphe_music_hide_search_button_title">অনুসন্ধান বাটন লুকান</string>
-  <string name="morphe_music_hide_voice_search_button_title">ভয়েস সার্চ বোতাম লুকান</string>
-  <string name="morphe_music_hide_sound_search_button_title">সাউন্ড সার্চ বোতাম লুকান</string>
-  <string name="morphe_music_hide_library_new_button_title">নতুন বাটন লুকান</string>
-  <string name="morphe_music_hide_library_new_button_summary">লাইব্রেরি ট্যাবে নতুন বাটনটি লুকায়</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">অ্যাকশন বোতাম</string>
   <string name="morphe_music_action_buttons_screen_summary">প্লেয়ারের নিচে কোন অ্যাকশন বাটনগুলি প্রদর্শিত হবে তা নির্বাচন করুন</string>
@@ -409,22 +409,20 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_force_portrait_orientation_title">পোর্ট্রেট ওরিয়েন্টেশন বাধ্যতামূলক করুন</string>
   <string name="morphe_music_force_portrait_orientation_summary">ডিভাইসটি ঘোরানো হলে অ্যাপটিকে পোর্ট্রেট ওরিয়েন্টেশনে রাখে</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">মিনিপ্লেয়ারের রঙ পরিবর্তন করুন</string>
+  <string name="morphe_music_change_miniplayer_color_title">রঙ পরিবর্তন করুন</string>
   <string name="morphe_music_change_miniplayer_color_summary">মিনিপ্লেয়ারের রঙ ফুলস্ক্রিন প্লেয়ারের সাথে মেলে।</string>
   <string name="morphe_music_change_navigation_bar_color_title">নেভিগেশন বারের রঙ পরিবর্তন করুন</string>
   <string name="morphe_music_change_navigation_bar_color_summary">নেভিগেশন বারের রঙ ফুলস্ক্রিন প্লেয়ারের সাথে মেলানো হবে</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">মিনিপ্লেয়ারে পরবর্তী বোতাম দেখান</string>
-  <string name="morphe_music_miniplayer_previous_button_title">মিনিপ্লেয়ারে আগের বোতাম দেখান</string>
+  <string name="morphe_music_miniplayer_next_button_title">পরবর্তী বোতাম দেখান</string>
+  <string name="morphe_music_miniplayer_previous_button_title">পূর্ববর্তী বোতাম দেখান</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">জোরপূর্বক মিনিপ্লেয়ার সক্রিয় করুন</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">নতুন ট্র্যাক শুরু হলে প্লেয়ারকে স্বয়ংক্রিয়ভাবে ফুলস্ক্রিনে প্রসারিত করা থেকে এটি বাধা দেয়।</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">মিনিপ্লেয়ার সরিয়ে ফেলার জন্য সোয়াইপ সক্রিয় করুন</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">সরিয়ে ফেলার জন্য সোয়াইপ সক্রিয় করুন</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">এটি আপনাকে মিনিপ্লেয়ারটি নিচের দিকে সোয়াইপ করে সরিয়ে ফেলতে দেয়</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">নেভিগেশন বার</string>
-  <string name="morphe_music_navigation_bar_screen_summary">নীচের নেভিগেশন বারে কোন বোতামগুলি প্রদর্শিত হবে তা নির্বাচন করুন</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">হোম বোতামটি লুকান</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +455,7 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">গ্লাস নেভিগেশন বারের নির্বাচিত বাটনের পিছনের গোলাকার হাইলাইটটি লুকিয়ে ফেলে</string>
   <string name="morphe_music_miniplayer_screen_title">মিনিপ্লেয়ার</string>
   <string name="morphe_music_miniplayer_screen_summary">মিনিপ্লেয়ারের স্টাইল, বাটন এবং জেস্চার পরিবর্তন করুন</string>
-  <string name="morphe_music_miniplayer_glass_title">গ্লাস মিনিপ্লেয়ার সক্রিয় করুন</string>
+  <string name="morphe_music_miniplayer_glass_title">গ্লাস ইফেক্ট সক্রিয় করুন</string>
   <string name="morphe_music_miniplayer_glass_summary">ফ্লোটিং মিনিপ্লেয়ারটিকে একটি গোলাকার, স্বচ্ছ গ্লাস কার্ড হিসেবে দেখায়</string>
   <string name="morphe_music_miniplayer_glass_style_title">গ্লাস মিনিপ্লেয়ার স্টাইল</string>
   <string name="morphe_music_miniplayer_glass_style_summary">একটি প্রিভিউ-এর মাধ্যমে গ্লাস মিনিপ্লেয়ারের কর্নার রেডিয়াস, আর্টওয়ার্ক প্যাডিং, রিমের উজ্জ্বলতা এবং স্বচ্ছতা সামঞ্জস্য করুন</string>
@@ -480,6 +478,15 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_navigation_bar_glass_preview_samples">স্যাম্পল</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">ঘুরে দেখুন</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">লাইব্রেরি</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">অ্যাক্টিভিটি বোতামটি লুকান</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">আস্ক মিউজিক বোতামটি লুকান</string>
+  <string name="morphe_music_hide_cast_button_title">কাস্ট বোতাম লুকান</string>
+  <string name="morphe_music_hide_history_button_title">ইতিহাস বোতাম লুকান</string>
+  <string name="morphe_music_hide_search_button_title">অনুসন্ধান বাটন লুকান</string>
+  <string name="morphe_music_hide_voice_search_button_title">ভয়েস সার্চ বোতাম লুকান</string>
+  <string name="morphe_music_hide_sound_search_button_title">সাউন্ড সার্চ বোতাম লুকান</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">লগ ইন করা হয়নি। কনফিগার করতে ট্যাপ করুন</string>
   <string name="morphe_music_scrobbling_log_out">লগ আউট করুন</string>

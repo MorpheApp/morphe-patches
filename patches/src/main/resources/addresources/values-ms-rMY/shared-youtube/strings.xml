@@ -266,9 +266,6 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_video_quality_default_mobile_title">Kualiti video lalai pada rangkaian mudah alih</string>
   <string name="morphe_remember_video_quality_toast_mobile">Tukar kualiti mudah alih lalai kepada: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Tukar kualiti Wi-Fi lalai kepada: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Buka helaian perkongsian sistem</string>
-  <string name="morphe_open_system_share_sheet_summary">Membuka helaian perkongsian sistem berbanding helaian dalam aplikasi apabila berkongsi kandungan</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Log Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Dilumpuhkan</string>
@@ -378,4 +375,8 @@ ID video yang anda tonton dihantar ke API Return YouTube Dislike, dan suka serta
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tiada had kadar klien ditemui</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Had kadar klien ditemui %s kali</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisaat</string>
+  <string name="morphe_navigation_bar_screen_title">Bar pandu arah</string>
+  <string name="morphe_navigation_bar_screen_summary">Memilih butang yang akan muncul pada bar pandu arah bawah</string>
+  <string name="morphe_toolbar_screen_title">Bar alatan</string>
+  <string name="morphe_toolbar_screen_summary">Pilih komponen yang akan muncul pada bar alatan</string>
 </resources>

@@ -1088,8 +1088,6 @@ Ili kurekebisha hili, washa 'Ghushi mkondo wa video' na ubadilishe 'Mteja chaguo
   <string name="morphe_caption_block_translation_failed">Baadhi ya tafsiri za maelezo hazipatikani. Inaonyesha maelezo yanayopatikana.</string>
   <string name="morphe_caption_blocks_too_large">Lugha zote mbili za maelezo hazitoshi kwenye kicheza hiki. Inaonyesha lugha kuu.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Baa ya urambazaji</string>
-  <string name="morphe_navigation_bar_screen_summary">Chagua ni vitufe gani vionekane kwenye upau wa urambazaji wa chini</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ficha kitufe cha Nyumbani</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Ili kurekebisha hili, washa 'Ghushi mkondo wa video' na ubadilishe 'Mteja chaguo
   <string name="morphe_watch_later_navigation_label">Tazama baadaye</string>
   <string name="morphe_show_settings_button_title">Onyesha kitufe cha Mipangilio</string>
   <string name="morphe_show_settings_button_type_title">Utendaji wa kitufe cha mipangilio</string>
-  <string name="morphe_show_settings_button_type_summary">Inafungua mipangilio ya Morphe inapowezeshwa, au mipangilio ya YouTube inapozimwa</string>
+  <string name="morphe_show_settings_button_type_summary">Inapowashwa, kugusa hufungua mipangilio ya Morphe na kubonyeza kwa muda mrefu hufungua mipangilio ya YouTube, zima ili kubadilisha</string>
   <string name="morphe_navigation_buttons_order_title">Mpangilio wa vitufe vya urambazaji</string>
   <string name="morphe_navigation_buttons_order_summary">Buruta vitufe ili kubadilisha mpangilio wake kwenye baa ya urambazaji</string>
   <string name="morphe_swap_create_with_notifications_button_title">Badilisha kitufe cha Create na kitufe cha Arifa</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ikiwa kubadilisha mpangilio huu hakuleti matokeo, jaribu kubadilisha kwenda kwenye hali ya Incognito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Inasogeza kitufe cha Arifa kwenye baa ya urambazaji na kitufe cha Unda kwenye baa ya zana. Ikiwa mabadiliko hayatatekeleza, jaribu kubadili kwenda kwenye hali ya Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ficha lebo za vitufe vya urambazaji</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ficha nukta ya maudhui mapya</string>
   <string name="morphe_hide_navigation_bar_title">Ficha baa ya urambazaji</string>
@@ -1150,8 +1148,6 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_navigation_bar_glass_size_width">Upana wa juu</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Nafasi ya vitufe</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Vifungo vinavyoonekana: %1$s kati ya %2$s</string>
-  <string name="morphe_toolbar_screen_title">Upau wa zana</string>
-  <string name="morphe_toolbar_screen_summary">Chagua ni vipengele gani vionekane kwenye baa ya zana</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ficha kitufe cha Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ficha kitufe cha Maikrofoni</string>
   <string name="morphe_hide_toolbar_search_button_title">Ficha kitufe cha Tafuta</string>

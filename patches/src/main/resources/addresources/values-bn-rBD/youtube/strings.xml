@@ -1088,8 +1088,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_caption_block_translation_failed">কিছু ক্যাপশন অনুবাদ অনুপলব্ধ। উপলব্ধ ক্যাপশনগুলো দেখানো হচ্ছে।</string>
   <string name="morphe_caption_blocks_too_large">উভয় ক্যাপশন ভাষা এই প্লেয়ারে ধরে যাচ্ছে না। প্রাথমিক ভাষা দেখানো হচ্ছে।</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">নেভিগেশন বার</string>
-  <string name="morphe_navigation_bar_screen_summary">নিচের নেভিগেশন বার-এ কোন বোতামগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">হোম বোতাম লুকান</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_watch_later_navigation_label">পরে দেখুন</string>
   <string name="morphe_show_settings_button_title">সেটিংস বোতাম দেখান</string>
   <string name="morphe_show_settings_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
-  <string name="morphe_show_settings_button_type_summary">সক্রিয় থাকলে Morphe সেটিংস খোলে, নিষ্ক্রিয় থাকলে YouTube সেটিংস খোলে</string>
+  <string name="morphe_show_settings_button_type_summary">সক্রিয় থাকলে, ট্যাপ করলে Morphe সেটিংস এবং লং প্রেস করলে YouTube সেটিংস খুলবে; অদলবদল করতে নিষ্ক্রিয় করুন</string>
   <string name="morphe_navigation_buttons_order_title">নেভিগেশন বোতামের ক্রম</string>
   <string name="morphe_navigation_buttons_order_summary">নেভিগেশন বারে বোতামগুলোর ক্রম পরিবর্তন করতে সেগুলো ড্র্যাগ করুন</string>
   <string name="morphe_swap_create_with_notifications_button_title">তৈরি বোতাম ও বিজ্ঞপ্তি বোতাম অদলবদল করুন</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">যদি এই সেটিংস পরিবর্তন করার পরে কোনো প্রভাব না পড়ে, তবে ইনকগনিটো মোডে স্যুইচ করার চেষ্টা করুন</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Notifications বোতামটি নেভিগেশন বারে এবং Create বোতামটি টুলবারে সরিয়ে নেয়। যদি পরিবর্তনগুলি কার্যকর না হয়, তবে ইনকগনিটো মোডে স্যুইচ করার চেষ্টা করুন</string>
   <string name="morphe_hide_navigation_button_labels_title">নেভিগেশন বোতাম লেবেল লুকান</string>
   <string name="morphe_hide_navigation_new_content_dot_title">নতুন সামগ্রীর ডট লুকান</string>
   <string name="morphe_hide_navigation_bar_title">নেভিগেশন বার লুকান</string>
@@ -1150,8 +1148,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_navigation_bar_glass_size_width">সর্বোচ্চ প্রস্থ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">বাটন স্পেসিং</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">বোতাম দেখানো হয়েছে: %2$s এর মধ্যে %1$s</string>
-  <string name="morphe_toolbar_screen_title">টুলবার</string>
-  <string name="morphe_toolbar_screen_summary">টুলবারে কোন উপাদানগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <string name="morphe_hide_toolbar_chat_button_title">চ্যাট বাটন লুকিয়ে রাখুন</string>
   <string name="morphe_hide_toolbar_microphone_button_title">মাইক্রোফোন বাটন লুকান</string>
   <string name="morphe_hide_toolbar_search_button_title">অনুসন্ধান বাটন লুকান</string>

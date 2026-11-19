@@ -1088,8 +1088,6 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_caption_block_translation_failed">Niektóre tłumaczenia napisów są niedostępne. Wyświetlanie dostępnych napisów</string>
   <string name="morphe_caption_blocks_too_large">Oba języki napisów nie mieszczą się w tym odtwarzaczu. Wyświetlanie głównego języka</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Pasek nawigacji</string>
-  <string name="morphe_navigation_bar_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ukryj przycisk Główna</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_watch_later_navigation_label">Do obejrzenia</string>
   <string name="morphe_show_settings_button_title">Pokaż przycisk Ustawienia</string>
   <string name="morphe_show_settings_button_type_title">Działanie przycisku Ustawienia</string>
-  <string name="morphe_show_settings_button_type_summary">Otwiera ustawienia Morphe, gdy funkcja jest włączona, lub ustawienia YouTube, gdy jest wyłączona</string>
+  <string name="morphe_show_settings_button_type_summary">Gdy włączone, dotknięcie otwiera ustawienia Morphe, a przytrzymanie ustawienia YouTube. Wyłącz, aby odwrócić te akcje</string>
   <string name="morphe_navigation_buttons_order_title">Kolejność przycisków nawigacji</string>
   <string name="morphe_navigation_buttons_order_summary">Przeciągnij przyciski, aby zmienić ich kolejność na pasku nawigacji</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamień przycisk Utwórz z przyciskiem Powiadomienia</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Jeśli zmiana tego ustawienia nie przyniesie efektu, spróbuj przełączyć się w tryb incognito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Przenosi przycisk Powiadomienia do paska nawigacji, a przycisk Utwórz do paska narzędzi. Jeśli zmiany nie wejdą w życie, spróbuj przełączyć się w tryb incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ukryj etykiety przycisków nawigacji</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ukryj kropkę nowych treści</string>
   <string name="morphe_hide_navigation_bar_title">Ukryj pasek nawigacji</string>
@@ -1143,15 +1141,13 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_glass_edge_title">Krawędź szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_edge_summary">Rysuje jasną krawędź wokół szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_title">Dolny margines szklanego paska nawigacji</string>
-  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Dostosuj odstęp między szklanym paskiem nawigacji a dołem ekranu lub systemową nawigacją</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Dostosuj odstęp między szklanym paskiem nawigacji a dołem ekranu lub nawigacją systemową</string>
   <string name="morphe_navigation_bar_glass_size_title">Rozmiar szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość oraz odstępy między przyciskami szklanego paska nawigacji z podglądem na żywo. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
   <string name="morphe_navigation_bar_glass_size_height">Wysokość</string>
   <string name="morphe_navigation_bar_glass_size_width">Maks. szerokość</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Odstęp między przyciskami</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Widoczne przyciski: %1$s z %2$s</string>
-  <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
-  <string name="morphe_toolbar_screen_summary">Zdecyduj, które elementy będą wyświetlane na pasku narzędzi</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ukryj przycisk Czat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ukryj przycisk Mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Ukryj przycisk Szukaj</string>
@@ -1390,8 +1386,8 @@ Układ samochodowy
   <string name="morphe_disable_auto_feed_refresh_title">Wyłącz automatyczne odświeżanie</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Zapobiega automatycznemu odświeżaniu treści, gdy stają się nieaktualne</string>
   <!-- layout.notifications.ungroupNotificationsPatch -->
-  <string name="morphe_ungroup_notifications_title">Rozdziel powiadomienia</string>
-  <string name="morphe_ungroup_notifications_summary">Wyświetla każdy film z pogrupowanych przesyłanek kanału jako osobne powiadomienie</string>
+  <string name="morphe_ungroup_notifications_title">Rozgrupuj powiadomienia</string>
+  <string name="morphe_ungroup_notifications_summary">Wyświetla każdy film ze zgrupowanych publikacji kanału jako osobne powiadomienie</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Układ kart na stronie głównej</string>
   <string name="morphe_feed_card_layout_entry_1">Klasyczny</string>
@@ -1504,8 +1500,8 @@ Układ samochodowy
   <string name="morphe_dearrow_titles_search_title">Wyniki wyszukiwania</string>
   <string name="morphe_dearrow_titles_icon_title">Pokaż ikonę DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Wyświetla ikonę DeArrow przy tytułach filmów z tytułem lub miniaturką zgłoszonymi przez społeczność. Dotknij ikony, aby pokazać oryginalny tytuł i miniaturkę</string>
-  <string name="morphe_dearrow_clean_up_titles_title">Wyczyść tytuły</string>
-  <string name="morphe_dearrow_clean_up_titles_summary">Wycisza tytuły filmów, które nie mają tytułu DeArrow. Słowa pisane wielkimi literami są zmieniane na normalną pisownię, a emoji, ozdobny tekst i powtarzające się wykrzykniki są usuwane</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Oczyszczaj tytuły</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Oczyszcza tytuły filmów, które nie mają tytułu w DeArrow. Słowa pisane wielkimi literami są zmieniane na zwykłą pisownię, a emotki, ozdobny tekst i powtarzające się wykrzykniki są usuwane</string>
   <string name="morphe_dearrow_casual_mode_title">Tryb swobodny</string>
   <string name="morphe_dearrow_casual_mode_summary">Wyświetla oryginalny tytuł zamiast tytułu DeArrow, jeśli użytkownicy DeArrow zagłosowali, że podoba im się oryginał</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalna liczba głosów, aby pokazać oryginalny tytuł</string>

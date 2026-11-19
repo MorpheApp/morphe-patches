@@ -1088,8 +1088,6 @@ Os 'cookies de legenda' devem ser fornecidos"</string>
   <string name="morphe_caption_block_translation_failed">Algumas traduções de legendas não estão disponíveis. Exibindo legendas disponíveis.</string>
   <string name="morphe_caption_blocks_too_large">Ambos os idiomas de legenda não cabem neste player. Exibindo o idioma principal.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Barra de navegação</string>
-  <string name="morphe_navigation_bar_screen_summary">Escolha quais botões aparecem na barra de navegação inferior</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ocultar botão Início</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Os 'cookies de legenda' devem ser fornecidos"</string>
   <string name="morphe_watch_later_navigation_label">Assistir mais tarde</string>
   <string name="morphe_show_settings_button_title">Mostrar botão Configurações</string>
   <string name="morphe_show_settings_button_type_title">Ação do botão Configurações</string>
-  <string name="morphe_show_settings_button_type_summary">Abre as configurações do Morphe quando ativado, ou as configurações do YouTube quando desativado</string>
+  <string name="morphe_show_settings_button_type_summary">Quando ativado, toque abre as configurações do Morphe e pressionar longamente abre as configurações do YouTube, desative para inverter</string>
   <string name="morphe_navigation_buttons_order_title">Ordem dos botões de navegação</string>
   <string name="morphe_navigation_buttons_order_summary">Arraste os botões para alterar a ordem deles na barra de navegação</string>
   <string name="morphe_swap_create_with_notifications_button_title">Trocar o botão Criar pelo botão Notificações</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Se alterar esta configuração não tiver efeito, tente mudar para o modo de navegação anônima</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Move o botão de Notificações para a barra de navegação e o botão Criar para a barra de ferramentas. Se as alterações não surtirem efeito, tente mudar para o modo Incógnito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ocultar rótulos dos botões de navegação</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ocultar ponto de conteúdo novo</string>
   <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegação</string>
@@ -1150,8 +1148,6 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_navigation_bar_glass_size_width">Largura máxima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espaçamento dos botões</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Botões exibidos: %1$s de %2$s</string>
-  <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
-  <string name="morphe_toolbar_screen_summary">Escolha quais componentes aparecem na barra de ferramentas</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ocultar botão Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ocultar botão de Microfone</string>
   <string name="morphe_hide_toolbar_search_button_title">Ocultar botão Pesquisar</string>

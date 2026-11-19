@@ -1089,8 +1089,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_caption_block_translation_failed">一部の字幕翻訳を利用できません。利用可能な字幕を表示しています。</string>
   <string name="morphe_caption_blocks_too_large">両方の字幕言語はこのプレーヤーに収まりません。メイン言語を表示しています。</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">ナビゲーションバー</string>
-  <string name="morphe_navigation_bar_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">ホームボタンを非表示</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1108,11 +1106,11 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_watch_later_navigation_label">後で見る</string>
   <string name="morphe_show_settings_button_title">設定ボタンを表示</string>
   <string name="morphe_show_settings_button_type_title">設定ボタンの動作</string>
-  <string name="morphe_show_settings_button_type_summary">オンの場合は Morphe の設定を、オフの場合は YouTube の設定を開きます</string>
+  <string name="morphe_show_settings_button_type_summary">この設定がオンの場合、タップすると Morphe の設定を、長押しすると YouTube の設定を開きます。オフの場合は動作が入れ替わります</string>
   <string name="morphe_navigation_buttons_order_title">ナビゲーション ボタンの順序</string>
   <string name="morphe_navigation_buttons_order_summary">ボタンをドラッグして、ナビゲーション バー内の順序を変更します</string>
   <string name="morphe_swap_create_with_notifications_button_title">作成ボタンと通知ボタンを入れ替える</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">この設定を変更しても反映されない場合は、シークレット モードへの切り替えをお試しください</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">通知ボタンをナビゲーションバーに、作成ボタンをツールバーに移動します。変更が反映されない場合は、シークレットモードへの切り替えをお試しください</string>
   <string name="morphe_hide_navigation_button_labels_title">ボタンをアイコンのみで表示</string>
   <string name="morphe_hide_navigation_new_content_dot_title">通知ドットを非表示</string>
   <string name="morphe_hide_navigation_bar_title">ナビゲーション バーを非表示</string>
@@ -1151,8 +1149,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_glass_size_width">最大幅</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ボタンの間隔</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">表示ボタン: %2$s 個中 %1$s 個</string>
-  <string name="morphe_toolbar_screen_title">ツールバー</string>
-  <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_toolbar_chat_button_title">チャットボタンを非表示</string>
   <string name="morphe_hide_toolbar_microphone_button_title">検索の音声入力ボタンを非表示</string>
   <string name="morphe_hide_toolbar_search_button_title">検索ボタンを非表示</string>

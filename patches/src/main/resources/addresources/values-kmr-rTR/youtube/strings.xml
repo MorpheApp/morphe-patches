@@ -1088,8 +1088,6 @@ Divê 'Caption cookies' bêne dayîn."</string>
   <string name="morphe_caption_block_translation_failed">Hinek wergera kaptîyonan tune ne. Kaptîyonên heye tên nîşandan.</string>
   <string name="morphe_caption_blocks_too_large">Her du zimanên kaptîyonan di vê playerê de nayên guncankirin. Zimanê sereke tê nîşandan.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Stora navîgasyonê</string>
-  <string name="morphe_navigation_bar_screen_summary">Hilbijêre kîjan bişkojan di barê navîgasyonê yê jêrîn de xuya bibin</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Bişkoja Home veşêre</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Divê 'Caption cookies' bêne dayîn."</string>
   <string name="morphe_watch_later_navigation_label">Dîrûvaniya paş</string>
   <string name="morphe_show_settings_button_title">Bişkoja Settings nîşan bide</string>
   <string name="morphe_show_settings_button_type_title">Çalakiya bişkoja Mîhengan</string>
-  <string name="morphe_show_settings_button_type_summary">Dema çalak be, mîhengên Morphe vedibin; dema neçalak be, mîhengên YouTube vedibin</string>
+  <string name="morphe_show_settings_button_type_summary">Dema çalak be, tikandin mîhengên Morphe vedike û pêl girtin mîhengên YouTube vedike; neçalak bike ji bo guhertinê</string>
   <string name="morphe_navigation_buttons_order_title">Rêza bişkokên navîgasyonê</string>
   <string name="morphe_navigation_buttons_order_summary">Bişkokan bikşîne da ku rêza wan di şirîta navîgasyonê de biguherîne</string>
   <string name="morphe_swap_create_with_notifications_button_title">Bişkoja Create bi bişkoja Notifications biguherîne</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Heke vê mîhengê biguherînî bandor nekir, biceribîne moda Incognito bikar bîne</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Bişkokeya Agahdariyê dikeve şirîta navîgasyonê û bişkokeya Înciharkirinê dikeve toolbarê. Heke guherîn nayên pêkanîn, hewl bide ku tu derbasî moda Incognito bî</string>
   <string name="morphe_hide_navigation_button_labels_title">Etîketên bişkojên navîgasyonê veşêre</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Xala naveroka nû vedişêre</string>
   <string name="morphe_hide_navigation_bar_title">Barê navîgasyonê veşêre</string>
@@ -1150,8 +1148,6 @@ Ji bo gihîştina Settings, bişkokeya Settings bi rêya General → Toolbar →
   <string name="morphe_navigation_bar_glass_size_width">Berfirehiya herî zêde</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spacinga butonan</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Bişkokên hatine nîşandan: %1$s ji %2$s</string>
-  <string name="morphe_toolbar_screen_title">Rêz</string>
-  <string name="morphe_toolbar_screen_summary">Hilbijêre kîjan pêkhate di toolbarê de xuya bibin</string>
   <string name="morphe_hide_toolbar_chat_button_title">Bişkoja Chat veşêre</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Bişkoja mîkrofonê veşêre</string>
   <string name="morphe_hide_toolbar_search_button_title">Bişkoja Search veşêre</string>

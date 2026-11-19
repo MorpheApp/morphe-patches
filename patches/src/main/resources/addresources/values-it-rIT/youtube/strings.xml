@@ -1087,8 +1087,6 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_caption_block_translation_failed">Alcune traduzioni dei sottotitoli non sono disponibili. Vengono mostrati i sottotitoli disponibili.</string>
   <string name="morphe_caption_blocks_too_large">Entrambe le lingue dei sottotitoli non rientrano in questo player. Viene mostrata la lingua principale.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Barra di navigazione</string>
-  <string name="morphe_navigation_bar_screen_summary">Scegli quali pulsanti visualizzare nella barra di navigazione inferiore</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Nascondi il pulsante Home</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1106,11 +1104,11 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_watch_later_navigation_label">Guarda più tardi</string>
   <string name="morphe_show_settings_button_title">Mostra il pulsante Impostazioni</string>
   <string name="morphe_show_settings_button_type_title">Azione pulsante Impostazioni</string>
-  <string name="morphe_show_settings_button_type_summary">Apre le impostazioni di Morphe quando abilitato, o le impostazioni di YouTube quando disabilitato</string>
+  <string name="morphe_show_settings_button_type_summary">Quando abilitato, un tocco apre le impostazioni di Morphe e una pressione prolungata apre le impostazioni di YouTube. Disattiva per scambiare</string>
   <string name="morphe_navigation_buttons_order_title">Ordine dei pulsanti di navigazione</string>
   <string name="morphe_navigation_buttons_order_summary">Trascina i pulsanti per cambiarne l\'ordine nella barra di navigazione</string>
   <string name="morphe_swap_create_with_notifications_button_title">Scambia il pulsante Crea con il pulsante Notifiche</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Se il cambiamento di questa impostazione non ha effetto, prova a passare alla modalità Incognito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Sposta il pulsante Notifiche nella barra di navigazione e il pulsante Crea nella barra degli strumenti. Se le modifiche non hanno effetto, prova a passare alla modalità Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Nascondi etichette dei pulsanti di navigazione</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Nascondi il punto dei nuovi contenuti</string>
   <string name="morphe_hide_navigation_bar_title">Nascondi la barra di navigazione</string>
@@ -1149,8 +1147,6 @@ Per accedere alle Impostazioni, abilita il pulsante Impostazioni tramite General
   <string name="morphe_navigation_bar_glass_size_width">Larghezza massima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spaziatura pulsanti</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Pulsanti mostrati: %1$s di %2$s</string>
-  <string name="morphe_toolbar_screen_title">Barra degli strumenti</string>
-  <string name="morphe_toolbar_screen_summary">Scegli quali componenti mostrare nella barra degli strumenti</string>
   <string name="morphe_hide_toolbar_chat_button_title">Nascondi il pulsante Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Nascondi il pulsante Microfono</string>
   <string name="morphe_hide_toolbar_search_button_title">Nascondi il pulsante Cerca</string>

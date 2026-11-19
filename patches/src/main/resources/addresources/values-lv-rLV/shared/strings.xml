@@ -87,7 +87,14 @@ Lai tulkotu jaunas valodas vai uzlabotu esošos tulkojumus, apmeklējiet morphe.
   <string name="morphe_settings_about_links_translations">Tulkojumi</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Aktuāli</string>
   <string name="morphe_settings_about_contributors">Veicinātāji</string>
-  <string name="morphe_settings_about_contributors_period">Pēdējie 12 mēneši</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Visu laiku</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mēneši</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mēneši</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Laika periods</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s lietotāji</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Atbalstītāji</string>
   <string name="morphe_settings_about_supporters_summary">Atbalstītāji Open Collective</string>
@@ -222,6 +229,9 @@ Ja akumulatora optimizācijas netiek mainītas, iespējams, varat novērot:
 • Lietotne var nejauši aizvērties
 • Paziņojumi var nedarboties
 • Fona atskaņošana var nedarboties"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Atvērt sistēmas kopīgošanas logu</string>
+  <string name="morphe_open_system_share_sheet_summary">Satura kopīšanas laikā atver sistēmas kopīšanas izvēlni vietā lietotnes izvēlnes</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Lietotnes saites apstrāde</string>
   <string name="morphe_link_handling_summary">Konfigurēt saites, lai tās atvērtu šajā lietotnē</string>

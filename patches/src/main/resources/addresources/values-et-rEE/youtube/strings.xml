@@ -609,8 +609,8 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvalise
   <string name="morphe_feed_watch_later_button_title">Kuva \"Vaata hiljem\" nupp pikkpõhilistel piltedel</string>
   <string name="morphe_feed_watch_later_button_summary">Vooguvideode pisipiltidel on nähtav nupp \"Vaata hiljem\", mis on märgitud linnuks, kui video on salvestatud. Nupu vajutamine salvestab või eemaldab video ning nupu vajutamine ja hoidmine avab valiku \"Salvesta esitusloendisse\"</string>
   <!-- interaction.postimages.openPostImagesFullscreenPatch -->
-  <string name="morphe_open_post_images_fullscreen_title">Ava postituse pildid täisekranis</string>
-  <string name="morphe_open_post_images_fullscreen_summary">Postituse pildi puudutamine avab selle täisekranis, mitte postituste voos</string>
+  <string name="morphe_open_post_images_fullscreen_title">Ava postituse pildid täisekraanis</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Postituse pildi puudutamine avab selle täisekraanis, mitte postituste voos</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Laadi alla postituse pildid</string>
   <string name="morphe_post_image_download_summary">Piltide või GIF-idega postituste \"Jaga\" nupu kõrvale kuvatakse allalaadimise nupp ning nende menüüsse lisatakse allalaadimise üksus</string>
@@ -1088,8 +1088,6 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_caption_block_translation_failed">Mõningad subtiitrite tõlked pole saadaval. Kuvatakse saadaval olevad subtiitrid.</string>
   <string name="morphe_caption_blocks_too_large">Mõlemad subtiitrite keeled ei mahu sellesse pleierisse. Kuvatakse esmase keele subtiitrid.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigeerimisriba</string>
-  <string name="morphe_navigation_bar_screen_summary">Valige, millised nupud alumises navigatsioonisribas kuvatakse</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Peida nupp Avaleht</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_watch_later_navigation_label">Vaata Hiljem</string>
   <string name="morphe_show_settings_button_title">Kuva seadete nupp</string>
   <string name="morphe_show_settings_button_type_title">Seadistuste nupu tegevus</string>
-  <string name="morphe_show_settings_button_type_summary">Avab Morphe seaded, kui on aktiveeritud, või YouTube seaded, kui on välja lülitatud</string>
+  <string name="morphe_show_settings_button_type_summary">Kui see on sisse lülitatud, avab lühike puudutus Morphe seaded ja pikk vajutus YouTube\'i seaded. Funktsioonide vastupidiseks muutmiseks lülita see välja</string>
   <string name="morphe_navigation_buttons_order_title">Navigeerimisnuppude järjekord</string>
   <string name="morphe_navigation_buttons_order_summary">Lohistage nuppe, et muuta nende järjekorda navigeerimisribas</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vaheta Loo nuppu Teavituste nupuga</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Kui selle seade muutmise tõttu midagi ei muutu, proovi lülitada Incognito režiimi</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Liigutab Teavituste nuppu navigeerimisribale ja Loomise nuppu tööriistale. Kui muudatused ei jõusta, proovige lülitust Incognito režiimi</string>
   <string name="morphe_hide_navigation_button_labels_title">Peida navigeerimisnuppude märgid</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Peida uue sisu märk</string>
   <string name="morphe_hide_navigation_bar_title">Peida navigatsiooniriba</string>
@@ -1141,7 +1139,7 @@ Seadetele ligipääsemiseks luba seadete nupp menüüs: Üldine → Tööriistar
   <string name="morphe_navigation_bar_glass_round_title">Ümar klaasist navigeerimisriba</string>
   <string name="morphe_navigation_bar_glass_round_summary">Annab klaasist navigeerimisribale ümarad otsad, mitte nurgad nagu klaasist minipleieril</string>
   <string name="morphe_navigation_bar_glass_edge_title">Klaasise navigeerimisriba serv</string>
-  <string name="morphe_navigation_bar_glass_edge_summary">Joonistab klaasise navigeerimisriba ümber valguse servos</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Joonistab klaasise navigeerimisriba ümber valgusriba</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_title">Klaasise navigeerimisriba alumine marginaal</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Reguleeri vahe klaasist navigatsiooniriba ja ekraani alumise osa või süsteemi navigatsiooni vahel</string>
   <string name="morphe_navigation_bar_glass_size_title">Klaasise navigeerimisriba suurus</string>
@@ -1150,8 +1148,6 @@ Seadetele ligipääsemiseks luba seadete nupp menüüs: Üldine → Tööriistar
   <string name="morphe_navigation_bar_glass_size_width">Maksimaalne laius</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Nuppude vahemaa</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Kuvatud nupud: %1$s est %2$s</string>
-  <string name="morphe_toolbar_screen_title">Tööriistariba</string>
-  <string name="morphe_toolbar_screen_summary">Valige, millised komponendid kuvatakse tööriistapaneelil</string>
   <string name="morphe_hide_toolbar_chat_button_title">Peida vestluse nupp</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Peida mikrofoni nupp</string>
   <string name="morphe_hide_toolbar_search_button_title">Peida otsingu nupp</string>
@@ -1391,8 +1387,8 @@ Auto paigutus
   <string name="morphe_disable_auto_feed_refresh_title">Keela voo automaatne värskendamine</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Hoiab ära voode automaatse värskendamise pärast nende aegsumist</string>
   <!-- layout.notifications.ungroupNotificationsPatch -->
-  <string name="morphe_ungroup_notifications_title">Lahti teha märguandete grupid</string>
-  <string name="morphe_ungroup_notifications_summary">Kuvab iga kanali grupeeritud üleslaadimise video üksikuna märguandena</string>
+  <string name="morphe_ungroup_notifications_title">Märguandete gruppide lahutamine</string>
+  <string name="morphe_ungroup_notifications_summary">Kuvab iga kanali grupeeritud üleslaadimise video eraldi märguandena</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Voo kaardi paigutus</string>
   <string name="morphe_feed_card_layout_entry_1">Klassikaline</string>
@@ -1506,7 +1502,7 @@ Auto paigutus
   <string name="morphe_dearrow_titles_icon_title">Näita DeArrow ikooni</string>
   <string name="morphe_dearrow_titles_icon_summary">Kuvab DeArrow ikooni nende videote pealkirjade juures, mille pealkiri või pisipilt on loodud kasutajate poolt. Algse pealkirja ja pisipilt nägemiseks puuduta ikooni</string>
   <string name="morphe_dearrow_clean_up_titles_title">Puhasta pealkirjad</string>
-  <string name="morphe_dearrow_clean_up_titles_summary">Puhastab videote pealkirju, millel puudub DeArrow pealkiri. Suurtähtedega sõnad muutatakse tavaliseks kirjutamiseks ning eemaldatakse emotikonid, fancy tekst ja korduvad hüüatmärgid</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Puhastab videote pealkirju, millel puudub DeArrow pealkiri. Suurtähtedega sõnad muutatakse tavaliseks kirjutamiseks ning eemaldatakse emotikonid, kasutatud dekoratiivne tekst ja korduvad hüüatmärgid</string>
   <string name="morphe_dearrow_casual_mode_title">Vaba režiim</string>
   <string name="morphe_dearrow_casual_mode_summary">Kuvab DeArrow pealkirja asemel algse pealkirja, kui DeArrow kasutajad on hääletanud, et neile meeldib algne pealkiri.</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimaalne häältes arv algse pealkirja kuvamiseks</string>

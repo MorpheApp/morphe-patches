@@ -87,7 +87,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Котормолор</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Актуалдуу</string>
   <string name="morphe_settings_about_contributors">Салым кошкондор</string>
-  <string name="morphe_settings_about_contributors_period">Акыркы 12 ай</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Бардык убакыт</string>
+  <string name="morphe_settings_about_contributors_6_months">6 ай</string>
+  <string name="morphe_settings_about_contributors_3_months">3 ай</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Убакыт аралыгы</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Колдоочулар</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective платформасындагы колдоочулар</string>
@@ -222,6 +228,9 @@ MicroG үчүн батареяны оптималаштырууну өчүрүү
 • Тиркеме кокустуктан жабылып калышы мүмкүн
 • Билдирүүлөр иштебей калышы мүмкүн
 • Фондук ойнотуу иштебей калышы мүмкүн"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Системалык бөлүшүү баракчасын ачуу</string>
+  <string name="morphe_open_system_share_sheet_summary">Мазмунду бөлүшкөндө колдонмонун ичиндеги эмес, системалык бөлүшүү баракчасын ачат</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Тиркеме шилтемелерин иштетүү</string>
   <string name="morphe_link_handling_summary">Шилтемелерди ушул тиркемеде ачууну конфигурациялоо</string>

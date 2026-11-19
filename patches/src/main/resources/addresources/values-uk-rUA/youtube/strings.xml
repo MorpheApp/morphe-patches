@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">Деякі переклади субтитрів недоступні. Показано доступні субтитри.</string>
   <string name="morphe_caption_blocks_too_large">Обидві мови субтитрів не вміщуються в цьому плеєрі. Показано основну мову.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Панель навігації</string>
-  <string name="morphe_navigation_bar_screen_summary">Виберіть, які кнопки будуть показуватися на нижній панелі навігації</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Приховати кнопку \"Головна\"</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">Дивитися пізніше</string>
   <string name="morphe_show_settings_button_title">Показувати кнопку \"Налаштування\"</string>
   <string name="morphe_show_settings_button_type_title">Дія кнопки \"Налаштування\"</string>
-  <string name="morphe_show_settings_button_type_summary">Відкриває налаштування Morphe, якщо ввімкнено, або налаштування YouTube, якщо вимкнено</string>
+  <string name="morphe_show_settings_button_type_summary">Якщо ввімкнено, то натискання відкриває налаштування Morphe, а утримання відкриває YouTube, якщо вимкнено, то навпаки</string>
   <string name="morphe_navigation_buttons_order_title">Порядок кнопок панелі навігації</string>
   <string name="morphe_navigation_buttons_order_summary">Перетягуйте кнопки, щоб змінити їхній порядок на панелі навігації</string>
   <string name="morphe_swap_create_with_notifications_button_title">Поміняти місцями кнопку \"Створити\" та кнопку \"Сповіщення\"</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Якщо зміна цього налаштування не набирає чинності, спробуйте перейти в анонімний режим</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Переміщує кнопку \"Сповіщення\" на панель навігації, а кнопку \"Створити\" — на панель інструментів. Якщо зміни не вступили в силу, спробуйте перейти в режим інкогніто</string>
   <string name="morphe_hide_navigation_button_labels_title">Приховати підписи кнопок навігації</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Приховати крапку нового контенту</string>
   <string name="morphe_hide_navigation_bar_title">Приховати панель навігації</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимальна ширина</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Відступ між кнопками</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Показано кнопок: %1$s із %2$s</string>
-  <string name="morphe_toolbar_screen_title">Панель інструментів</string>
-  <string name="morphe_toolbar_screen_summary">Виберіть, які компоненти будуть показуватися на панелі інструментів</string>
   <string name="morphe_hide_toolbar_chat_button_title">Приховати кнопку \"Чат\"</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Приховати кнопку \"Мікрофон\"</string>
   <string name="morphe_hide_toolbar_search_button_title">Приховати кнопку \"Пошук\"</string>

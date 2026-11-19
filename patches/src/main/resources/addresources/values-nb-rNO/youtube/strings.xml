@@ -1088,8 +1088,6 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_caption_block_translation_failed">Noen tekstoversettelser er utilgjengelige. Viser tilgjengelige tekstinger.</string>
   <string name="morphe_caption_blocks_too_large">Begge tekstingsspråkene får ikke plass i denne spilleren. Viser primærspråket.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigasjonslinje</string>
-  <string name="morphe_navigation_bar_screen_summary">Velg hvilke knapper som vises i navigasjonslinjen nederst</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skjul Hjem-knappen</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_watch_later_navigation_label">Se senere</string>
   <string name="morphe_show_settings_button_title">Vis Innstillinger-knapp</string>
   <string name="morphe_show_settings_button_type_title">Innstillingsknapp handling</string>
-  <string name="morphe_show_settings_button_type_summary">Åpner Morphe-innstillinger når den er aktivert, eller YouTube-innstillinger når den er deaktivert</string>
+  <string name="morphe_show_settings_button_type_summary">Når dette er aktivert, åpner et trykk Morphe-innstillinger og et langt trykk åpner YouTube-innstillinger; deaktiver for å bytte om</string>
   <string name="morphe_navigation_buttons_order_title">Rekkefølge for navigasjonsknapper</string>
   <string name="morphe_navigation_buttons_order_summary">Dra knappene for å endre rekkefølgen i navigasjonslinjen</string>
   <string name="morphe_swap_create_with_notifications_button_title">Bytt Create-knappen med Notifications-knappen</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Hvis endring av denne innstillingen ikke trer i kraft, kan du prøve å bytte til inkognitomodus</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Flytter varslingsknappen til navigasjonslinjen og opprett-knappen til verktøylinjen. Hvis endringene ikke trer i kraft, prøv å bytte til inkognitomodus</string>
   <string name="morphe_hide_navigation_button_labels_title">Skjul navigasjonsknappetiketter</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Skjul prikk for nytt innhold</string>
   <string name="morphe_hide_navigation_bar_title">Skjul navigasjonslinjen</string>
@@ -1150,8 +1148,6 @@ For å få tilgang til Innstillinger, aktiver Innstillinger-knappen via Generelt
   <string name="morphe_navigation_bar_glass_size_width">Maksimal bredde</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knappavstand</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Knapper vist: %1$s av %2$s</string>
-  <string name="morphe_toolbar_screen_title">Verktøylinje</string>
-  <string name="morphe_toolbar_screen_summary">Velg hvilke komponenter som vises i verktøylinjen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skjul chat-knapp</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skjul Mikrofon-knapp</string>
   <string name="morphe_hide_toolbar_search_button_title">Skjul Søk-knapp</string>

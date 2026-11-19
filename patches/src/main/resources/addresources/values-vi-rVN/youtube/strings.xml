@@ -1088,8 +1088,6 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_caption_block_translation_failed">Một số bản dịch phụ đề không khả dụng. Đang hiển thị các phụ đề có sẵn.</string>
   <string name="morphe_caption_blocks_too_large">Cả hai ngôn ngữ phụ đề đều không vừa với trình phát này. Đang hiển thị ngôn ngữ chính.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Thanh điều hướng</string>
-  <string name="morphe_navigation_bar_screen_summary">Chọn các nút sẽ hiển thị trong thanh điều hướng dưới cùng</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ẩn nút Trang chủ</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_watch_later_navigation_label">Xem sau</string>
   <string name="morphe_show_settings_button_title">Hiện nút Cài đặt</string>
   <string name="morphe_show_settings_button_type_title">Thao tác nút cài đặt</string>
-  <string name="morphe_show_settings_button_type_summary">Mở cài đặt Morphe khi bật, hoặc mở cài đặt YouTube khi tắt</string>
+  <string name="morphe_show_settings_button_type_summary">Khi bật, bấm sẽ mở Cài đặt Morphe và giữ sẽ mở Cài đặt YouTube, tắt để đổi ngược lại</string>
   <string name="morphe_navigation_buttons_order_title">Thứ tự các nút điều hướng</string>
   <string name="morphe_navigation_buttons_order_summary">Kéo các nút để thay đổi thứ tự của chúng trong thanh điều hướng</string>
   <string name="morphe_swap_create_with_notifications_button_title">Đổi chỗ nút Tạo với nút Thông báo</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Nếu tắt đi bật lại cài đặt này cũng không có thay đổi gì, bạn có thể thử chuyển sang chế độ Ẩn danh</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Di chuyển nút Thông báo đến thanh điều hướng và nút Tạo đến thanh công cụ. Nếu thay đổi không có tác dụng, hãy thử chuyển sang chế độ Ẩn danh</string>
   <string name="morphe_hide_navigation_button_labels_title">Ẩn tên nút điều hướng</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ẩn dấu chấm nội dung mới</string>
   <string name="morphe_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
@@ -1150,8 +1148,6 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_navigation_bar_glass_size_width">Chiều rộng tối đa</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Khoảng cách nút</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Số nút hiển thị: %1$s trên %2$s</string>
-  <string name="morphe_toolbar_screen_title">Thanh công cụ</string>
-  <string name="morphe_toolbar_screen_summary">Chọn những thành phần sẽ xuất hiện trên thanh công cụ</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ẩn nút Trò chuyện</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ẩn nút Micro</string>
   <string name="morphe_hide_toolbar_search_button_title">Ẩn nút Tìm kiếm</string>

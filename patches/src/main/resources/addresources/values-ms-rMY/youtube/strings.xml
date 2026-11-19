@@ -1088,8 +1088,6 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_caption_block_translation_failed">Sesetengah terjemahan sari kata tidak tersedia. Menunjukkan sari kata yang tersedia.</string>
   <string name="morphe_caption_blocks_too_large">Kedua-dua bahasa sari kata tidak muat dalam pemain ini. Menunjukkan bahasa utama.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Bar pandu arah</string>
-  <string name="morphe_navigation_bar_screen_summary">Memilih butang yang akan muncul pada bar pandu arah bawah</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Sorokkan butang \'Laman Utama\'</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_watch_later_navigation_label">Tonton kemudian</string>
   <string name="morphe_show_settings_button_title">Tunjukkan butang Tetapan</string>
   <string name="morphe_show_settings_button_type_title">Tindakan butang Tetapan</string>
-  <string name="morphe_show_settings_button_type_summary">Membuka tetapan Morphe apabila didayakan, atau tetapan YouTube apabila dinyahdayakan</string>
+  <string name="morphe_show_settings_button_type_summary">Apabila didayakan, ketik untuk membuka tetapan Morphe dan tekan lama untuk membuka tetapan YouTube, nyahdayakan untuk tukar</string>
   <string name="morphe_navigation_buttons_order_title">Susunan butang navigasi</string>
   <string name="morphe_navigation_buttons_order_summary">Seret butang untuk mengubah susunannya dalam bar navigasi</string>
   <string name="morphe_swap_create_with_notifications_button_title">Tukar butang Cipta dengan butang Pemberitahuan</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Jika mengubah tetapan ini tidak berkesan, cuba tukar ke mod penyamaran</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Memindahkan butang Notifikasi ke bar navigasi dan butang Cipta ke toolbar. Jika perubahan tidak berkesan, cuba tukar ke mod Inkognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Sorokkan label butang pandu arah</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Sorokkan titik kandungan baharu</string>
   <string name="morphe_hide_navigation_bar_title">Sorokkan bar pandu arah</string>
@@ -1150,8 +1148,6 @@ Untuk mengakses Tetapan, aktifkan butang Tetapan melalui Umum → Bar Alat → T
   <string name="morphe_navigation_bar_glass_size_width">Lebar maksimum</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Jarak butang</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Butang dipaparkan: %1$s daripada %2$s</string>
-  <string name="morphe_toolbar_screen_title">Bar alatan</string>
-  <string name="morphe_toolbar_screen_summary">Pilih komponen yang akan muncul pada bar alatan</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sorokkan butang Sembang</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sorokkan butang Mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Sorokkan butang carian</string>

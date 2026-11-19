@@ -174,6 +174,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_filter_bar_title">Скриј лента за филтрирање</string>
   <string name="morphe_music_hide_grid_shelves_title">Скриј мрежни полици</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Скриј хоризонтални полици</string>
+  <string name="morphe_music_hide_new_button_title">Скриј копче Ново</string>
+  <string name="morphe_music_hide_new_button_summary">Го крие копчето „Ново“ во табулаторот Библиотека</string>
   <string name="morphe_music_hide_list_shelves_title">Скриј листа-полици</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Панел за текстови</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Скриј копче за споделување</string>
@@ -199,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">Бледеење</string>
   <string name="morphe_music_crossfade_screen_summary">Плавно преклопување на патите еден во друг</string>
   <string name="morphe_music_crossfade_enabled_title">Вклучи бледеење</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">За да користите crossfade, променете го \'Default client\' за Spoof видео стримови во TV Simply или visionOS</string>
   <string name="morphe_music_crossfade_curve_title">Крива на бледнеење</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Подеднавка јачина</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Суптилно држење</string>
@@ -232,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Фадење е паузирано за оваа сесија</string>
   <string name="morphe_music_crossfade_resumed_toast">Фадење е продолжено</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим на видео не е достапен додека е вклучено преминувањето</string>
-  <string name="morphe_music_crossfade_sabr_toast">Кросфејд е исклучен при SABR репродукција</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade не работи со visionOS. Променете го \'Default client\' за Spoof видео стримови во TV Simply</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade не работи со овој spoof стрим клиент</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Кросфејдот е исклучен при пренос</string>
   <string name="morphe_music_crossfade_about_how_title">Како функционира</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade-от го преклопува крајот на една песна со почетокот на следната, користејќи го вашето времење и крива
@@ -249,9 +255,7 @@ Second \"item\" text"</string>
 
 Паузирањето на кросфејдот за гледање музичко видео може да остави некои видеа црни. Паузирајте го кросфејдот пред да ја изберете песната за да го избегнете тоа"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Не е поддржано</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Пренос или рефлектирање на аудио (Chromecast, рефлектирање на екран или аудио)
-
-SABR репродукција (имитирање на видео стримови е исклучено)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Пренесување или рефлектирање аудио (Chromecast, рефлектирање на екранот или аудио)</string>
   <string name="morphe_music_crossfade_about_credit_title">Кредити</string>
   <string name="morphe_music_crossfade_about_credit_summary">Функција Crossfade од VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,11 @@ SABR репродукција (имитирање на видео стримов
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Оневозможи пренасочување при несакање</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Спречува прескокнување на следната песна кога е притиснато копчето за несакање</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Оневозможи прелистување за промена на трака</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Спречува прескокување на следната или претходната трака со прелистување лево или десно на плеерот</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Оневозможи прелистување за промена на трака</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Спречува прескокување на следната или претходната трака со прелистување лево или десно на мини-плеерот</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B циклус</string>
   <string name="morphe_music_ab_loop_summary">Долго притиснете ја лентата за пребарување за да го поставите почетокот на циклусот, повторно за да го поставите крајот на циклусот и уште еднаш за да го избришете циклусот</string>
@@ -329,15 +338,6 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_playlist_tags_rename">Преименувај</string>
   <string name="morphe_music_playlist_tags_delete">Избриши</string>
   <string name="morphe_music_playlist_tags_hidden">Скриено</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Скриј копче за емитување</string>
-  <string name="morphe_music_hide_history_button_title">Скриј копче за историја</string>
-  <string name="morphe_music_hide_notification_button_title">Скриј копче за известувања</string>
-  <string name="morphe_music_hide_search_button_title">Скриј копче за пребарување</string>
-  <string name="morphe_music_hide_voice_search_button_title">Скриј го копчето за гласовно пребарување</string>
-  <string name="morphe_music_hide_sound_search_button_title">Скриј го копчето за пребарување по звук</string>
-  <string name="morphe_music_hide_library_new_button_title">Скриј го копчето „Ново“</string>
-  <string name="morphe_music_hide_library_new_button_summary">Го крие копчето „Ново“ во табулаторот Библиотека</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Копчиња за акции</string>
   <string name="morphe_music_action_buttons_screen_summary">Изберете кои копчиња за акции да се појавуваат под плејорот</string>
@@ -409,22 +409,20 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_force_portrait_orientation_title">Присилно стави портретна ориентација</string>
   <string name="morphe_music_force_portrait_orientation_summary">Ја задржува апликацијата во портретна ориентација кога уредот се ротира</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Промени ја бојата на мини-плеер</string>
+  <string name="morphe_music_change_miniplayer_color_title">Промени боја</string>
   <string name="morphe_music_change_miniplayer_color_summary">Бојата на мини-плеер се прилагодува на целосен екран</string>
   <string name="morphe_music_change_navigation_bar_color_title">Промени ја бојата на лентата за навигација</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Ја усогласува бојата на лентата за навигација со полноекранскиот плеер</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Прикажи копче „Следна“ во мини-плеер</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Прикажи копче „Претходна“ во мини-плеер</string>
+  <string name="morphe_music_miniplayer_next_button_title">Прикажи копче за следно</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Прикажи копче за претходно</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Вклучи принуден мини-плеер</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Спречува плеерот автоматски да се прошири на целосен екран кога почнува нова песна</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Овозможи повлекување за затворање на мини-плејер</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Овозможи повлекување за затворање</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Овозможува затворање на мини-плејерот со повлекување надолу врз него</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Навигациска лента</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Изберете кои копчиња да се појавуваат во долната навигациска лента</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Скриј копче „Почетна“</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +455,7 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Го крие заобленото осветлување зад избраното копче на стаклената лента за навигација</string>
   <string name="morphe_music_miniplayer_screen_title">Миниплејер</string>
   <string name="morphe_music_miniplayer_screen_summary">Променете го стилот, копчињата и гестурите на миниплејерот</string>
-  <string name="morphe_music_miniplayer_glass_title">Овозможи стаклен миниплејер</string>
+  <string name="morphe_music_miniplayer_glass_title">Овозможи стаклен ефект</string>
   <string name="morphe_music_miniplayer_glass_summary">Го прикажува лебтејќиот миниплејер како заоблена, проѕирна стаклена картичка</string>
   <string name="morphe_music_miniplayer_glass_style_title">Стил на стаклен миниплејер</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Прилагодете го радиусот на аголите, растојанието на сликата, јакоста на работот и проѕирностa на стаклениот миниплејер, со преглед</string>
@@ -480,6 +478,15 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_navigation_bar_glass_preview_samples">Примери</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Истражи</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Библиотека</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Скриј копче за активност</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Скриј копче за прашување за музика</string>
+  <string name="morphe_music_hide_cast_button_title">Скриј копче за емитување</string>
+  <string name="morphe_music_hide_history_button_title">Скриј копче за историја</string>
+  <string name="morphe_music_hide_search_button_title">Скриј копче за пребарување</string>
+  <string name="morphe_music_hide_voice_search_button_title">Скриј го копчето за гласовно пребарување</string>
+  <string name="morphe_music_hide_sound_search_button_title">Скриј го копчето за пребарување по звук</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Не сте најавени. Допрете за да конфигурирате</string>
   <string name="morphe_music_scrobbling_log_out">Одјави се</string>

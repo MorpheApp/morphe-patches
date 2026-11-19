@@ -1088,8 +1088,6 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_caption_block_translation_failed">Кээ бир субтитр котормолору жеткиликсиз. Жеткиликтүү субтитрлер көрсөтүлүүдө.</string>
   <string name="morphe_caption_blocks_too_large">Субтитрлердин эки тили тең бул плеерге батпай жатат. Негизги тил көрсөтүлүүдө.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Навигациялык панель</string>
-  <string name="morphe_navigation_bar_screen_summary">Төмөнкү навигациялык панелде кайсы баскычтар көрүнөөрүн тандаңыз</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Башкы бет баскычын жашыруу</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_watch_later_navigation_label">Кийинчерээк көрүү</string>
   <string name="morphe_show_settings_button_title">Оңдоолор баскычын көрсөтүү</string>
   <string name="morphe_show_settings_button_type_title">Жөндөөлөр баскычынын аракеттери</string>
-  <string name="morphe_show_settings_button_type_summary">Иштетилгенде Morphe жөндөөлөрүн, ал эми өчүрүлгөндө YouTube жөндөөлөрүн ачат</string>
+  <string name="morphe_show_settings_button_type_summary">Ишкерленогениңде, басуу Morphe жөндөөлөрүн, ал эми узак басуу YouTube жөндөөлөрүн ачат; алмаштыруу үчүн өчүрүңүз</string>
   <string name="morphe_navigation_buttons_order_title">Навигациялык баскычтардын тартиби</string>
   <string name="morphe_navigation_buttons_order_summary">Навигациялык панелдеги баскычтардын тартибин өзгөртүү үчүн аларды сүйрөңүз</string>
   <string name="morphe_swap_create_with_notifications_button_title">«Жаратуу» баскычын «Билдирүүлөр» баскычы менен алмаштыруу</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Эгер бул жөндөөнү өзгөртүү натыйжа бербесе, Инкогнито режимине өтүп көрүңүз</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Билдирүүлөр баскычын навигациялык панелге, ал эми Жаратуу баскычын куралдар панелине жылдырат. Эгерде өзгөртүүлөр күчүнө кирбесе, Инкогнито режимине которуп көрүңүз</string>
   <string name="morphe_hide_navigation_button_labels_title">Навигация баскычтарынын жазууларын жашыруу</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Жаңы мазмундун чекитин жашыруу</string>
   <string name="morphe_hide_navigation_bar_title">Навигациялык панельди жашыруу</string>
@@ -1150,8 +1148,6 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_navigation_bar_glass_size_width">Максималдуу туурасы</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Баскычтардын аралыгы</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Көрсөтүлгөн баскычтар: %2$s ичинен %1$s</string>
-  <string name="morphe_toolbar_screen_title">Куралдар панели</string>
-  <string name="morphe_toolbar_screen_summary">Куралдар панелинде кайсы компоненттер пайда болорун тандаңыз</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат баскычын жашыруу</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Микрофон баскычын жашыруу</string>
   <string name="morphe_hide_toolbar_search_button_title">Издөө баскычын жашыруу</string>

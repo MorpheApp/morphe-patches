@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">სუბტიტრების ზოგიერთი თარგმანი მიუწვდომელია. ნაჩვენებია ხელმისაწვდომი სუბტიტრები.</string>
   <string name="morphe_caption_blocks_too_large">სუბტიტრების ორივე ენა არ ეტევა ამ პლეიერში. ნაჩვენებია ძირითადი ენა.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">ნავიგაციის პანელი</string>
-  <string name="morphe_navigation_bar_screen_summary">აირჩიეთ, რომელი ღილაკები გამოჩნდეს ქვედა ნავიგაციის პანელზე</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">მთავარი ღილაკის დამალვა</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">მოგვიანებით ნახვა</string>
   <string name="morphe_show_settings_button_title">აჩვენეთ პარამეტრების ღილაკი</string>
   <string name="morphe_show_settings_button_type_title">პარამეტრების ღილაკის მოქმედება</string>
-  <string name="morphe_show_settings_button_type_summary">გახსნის Morphe-ის პარამეტრებს ჩართვისას, ან YouTube-ის პარამეტრებს გამორთვისას</string>
+  <string name="morphe_show_settings_button_type_summary">გააქტიურების შემთხვევაში, დაჭერა ხსნის Morphe-ის პარამეტრებს, ხოლო გრძელვადიანი დაჭერა - YouTube-ის პარამეტრებს; გასაწყვეტად გამორთეთ</string>
   <string name="morphe_navigation_buttons_order_title">ნავიგაციის ღილაკების თანმიმდევრობა</string>
   <string name="morphe_navigation_buttons_order_summary">გადააადგილეთ ღილაკები ნავიგაციის პანელში მათი თანმიმდევრობის შესაცვლელად</string>
   <string name="morphe_swap_create_with_notifications_button_title">შექმნის ღილაკის შეცვლა შეტყობინებების ღილაკით</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">თუ ამ პარამეტრის შეცვლა შედეგს არ იძლევა, სცადეთ ინკოგნიტო რეჟიმზე გადართვა</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">ინ Thông-ების ღილაკს გადაიტანს ნავიგაციის პანელზე, ხოლო შექმნის ღილაკს - ხელსაწყოების პანელზე. თუ ცვლილებები არ აისახა, სცადეთ ინკოგნიტო რეჟიმზე გადართვა</string>
   <string name="morphe_hide_navigation_button_labels_title">დამალეთ ნავიგაციის ღილაკების წარწერები</string>
   <string name="morphe_hide_navigation_new_content_dot_title">ახალი კონტენტის წერტილის დამალვა</string>
   <string name="morphe_hide_navigation_bar_title">დამალეთ ნავიგაციის პანელი</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">მაქსიმალური სიგანე</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ღილაკების დაცილება</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">ნაჩვენები ღილაკები: %1$s %2$s-დან</string>
-  <string name="morphe_toolbar_screen_title">ინსტრუმენტების პანელი</string>
-  <string name="morphe_toolbar_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს ხელსაწყოების პანელზე</string>
   <string name="morphe_hide_toolbar_chat_button_title">დამალეთ ჩატის ღილაკი</string>
   <string name="morphe_hide_toolbar_microphone_button_title">მიკროფონის ღილაკის დამალვა</string>
   <string name="morphe_hide_toolbar_search_button_title">ძებნის ღილაკის დამალვა</string>

@@ -1088,8 +1088,6 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_caption_block_translation_failed">Néhány feliratfordítás nem érhető el. A rendelkezésre álló feliratok jelennek meg.</string>
   <string name="morphe_caption_blocks_too_large">Mindkét feliratnyelv nem fér bele ebbe a lejátszóba. Az elsődleges nyelv jelenik meg.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigációs sáv</string>
-  <string name="morphe_navigation_bar_screen_summary">Válassza ki, mely gombok jelenjenek meg az alsó navigációs sávban</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Kezdőlap gomb elrejtése</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_watch_later_navigation_label">Megnézem később</string>
   <string name="morphe_show_settings_button_title">Beállítások gomb megjelenítése</string>
   <string name="morphe_show_settings_button_type_title">Beállítások gomb művelete</string>
-  <string name="morphe_show_settings_button_type_summary">Ha be van kapcsolva, a koppintás megnyitja a Morphe beállításait, a hosszú megnyomás pedig a YouTube beállításait, a letiltás megcseréli őket</string>
+  <string name="morphe_show_settings_button_type_summary">Ha engedélyezve van, az érintés megnyitja a Morphe beállításait, a hosszú nyomás pedig a YouTube beállításait; a váltáshoz kapcsold ki</string>
   <string name="morphe_navigation_buttons_order_title">Navigációs gombok sorrendje</string>
   <string name="morphe_navigation_buttons_order_summary">Húzd a gombokat a navigációs sávban a sorrendjük módosításához</string>
   <string name="morphe_swap_create_with_notifications_button_title">Cserélje fel a Létrehozás gombot az Értesítések gombbal</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ha ennek a beállításnak a módosítása nem érvényesül, próbálkozzon titkos üzemmóddal.</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Áthelteszi az Értesítések gombját a navigációs sávba, és a Létrehozás gombját az eszköznuclearba. Ha a változások nem lépnek életbe, próbálja meg átkapcsolni Incognito módra</string>
   <string name="morphe_hide_navigation_button_labels_title">A navigációs gombok címkéinek elrejtése</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Új tartalom pont elrejtése</string>
   <string name="morphe_hide_navigation_bar_title">Navigációs sáv elrejtése</string>
@@ -1150,8 +1148,6 @@ A Beállítások eléréséhez aktiválja a Beállítások gombot az Általános
   <string name="morphe_navigation_bar_glass_size_width">Maximális szélesség</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Gombtávolság</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Megjelenített gombok: %1$s a %2$s-ből</string>
-  <string name="morphe_toolbar_screen_title">Eszköztár</string>
-  <string name="morphe_toolbar_screen_summary">Válassza ki, mely komponensek jelenjenek meg az eszköztáron</string>
   <string name="morphe_hide_toolbar_chat_button_title">Csevegés gomb elrejtése</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon gomb elrejtése</string>
   <string name="morphe_hide_toolbar_search_button_title">Keresés gomb elrejtése</string>

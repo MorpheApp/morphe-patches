@@ -1088,8 +1088,6 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <string name="morphe_caption_block_translation_failed">Vissa översättningar av textningen är inte tillgängliga. Visar tillgänglig textning.</string>
   <string name="morphe_caption_blocks_too_large">Båda språken för textningen får inte plats i den här spelaren. Visar det primära språket.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigeringsfält</string>
-  <string name="morphe_navigation_bar_screen_summary">Välj vilka knappar som visas i navigeringsfältet längst ned</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Dölj knappen Hem</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <string name="morphe_watch_later_navigation_label">Titta senare</string>
   <string name="morphe_show_settings_button_title">Visa knappen Inställningar</string>
   <string name="morphe_show_settings_button_type_title">Åtgärd för knappen Inställningar</string>
-  <string name="morphe_show_settings_button_type_summary">Öppnar Morphe-inställningarna när det här alternativet är aktiverat, eller YouTube-inställningarna när det är inaktiverat</string>
+  <string name="morphe_show_settings_button_type_summary">När det här alternativet är aktiverat öppnar ett tryck Morphe-inställningarna och ett långt tryck YouTube-inställningarna. Inaktivera för att byta</string>
   <string name="morphe_navigation_buttons_order_title">Ordning för navigeringsknappar</string>
   <string name="morphe_navigation_buttons_order_summary">Dra knapparna för att ändra deras ordning i navigeringsfältet</string>
   <string name="morphe_swap_create_with_notifications_button_title">Byt knappen Skapa mot knappen Aviseringar</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Om den här inställningen inte träder i kraft kan du testa att byta till inkognitoläget</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Flyttar knappen för aviseringar till navigeringsfältet och knappen Skapa till verktygsfältet. Om ändringarna inte får effekt, försök att byta till inkognitoläge</string>
   <string name="morphe_hide_navigation_button_labels_title">Dölj etiketter för navigeringsknappar</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Dölj pricken för nytt innehåll</string>
   <string name="morphe_hide_navigation_bar_title">Dölj navigeringsfältet</string>
@@ -1150,8 +1148,6 @@ För att komma åt Inställningar, aktivera knappen Inställningar via Allmänt 
   <string name="morphe_navigation_bar_glass_size_width">Maximal bredd</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knappavstånd</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Knappar som visas: %1$s av %2$s</string>
-  <string name="morphe_toolbar_screen_title">Verktygsfält</string>
-  <string name="morphe_toolbar_screen_summary">Välj vilka komponenter som visas i verktygsfältet</string>
   <string name="morphe_hide_toolbar_chat_button_title">Dölj knappen Chatta</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Dölj mikrofonknappen</string>
   <string name="morphe_hide_toolbar_search_button_title">Dölj knappen Sök</string>

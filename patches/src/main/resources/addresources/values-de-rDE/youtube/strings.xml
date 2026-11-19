@@ -1087,8 +1087,6 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_caption_block_translation_failed">Einige Untertitel-Übersetzungen sind nicht verfügbar. Verfügbare Untertitel werden angezeigt.</string>
   <string name="morphe_caption_blocks_too_large">Beide Untertitel-Sprachen passen nicht in diesen Player. Die Primärsprache wird angezeigt.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigationsleiste</string>
-  <string name="morphe_navigation_bar_screen_summary">Wähle aus, welche Schaltflächen in der unteren Navigationsleiste angezeigt werden sollen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Schaltfläche „Startseite“ ausblenden</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1106,11 +1104,11 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_watch_later_navigation_label">Später ansehen</string>
   <string name="morphe_show_settings_button_title">Schaltfläche „Einstellungen“ anzeigen</string>
   <string name="morphe_show_settings_button_type_title">Aktion der Schaltfläche „Einstellungen“</string>
-  <string name="morphe_show_settings_button_type_summary">Öffnet Morphe-Einstellungen, wenn aktiviert; sonst YouTube-Einstellungen</string>
+  <string name="morphe_show_settings_button_type_summary">Bei Aktivierung öffnet Tippen die Morphe-Einstellungen und Langdruck die YouTube-Einstellungen; zum Tauschen deaktivieren.</string>
   <string name="morphe_navigation_buttons_order_title">Reihenfolge der Navigationsschaltflächen</string>
   <string name="morphe_navigation_buttons_order_summary">Ziehe die Schaltflächen, um deren Reihenfolge in der Navigationsleiste zu ändern</string>
   <string name="morphe_swap_create_with_notifications_button_title">Erstellen-Schaltfläche mit Benachrichtigungsschaltfläche tauschen</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Wenn die Änderung dieser Einstellung keinen Effekt hat, versuche in den Inkognito-Modus zu wechseln.</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Verschiebt die Benachrichtigungen-Schaltfläche in die Navigationsleiste und die Erstellen-Schaltfläche in die Symbolleiste. Wenn die Änderungen nicht wirksam werden, versuchen Sie es mit dem Inkognito-Modus</string>
   <string name="morphe_hide_navigation_button_labels_title">Beschriftungen der Navigationsschaltflächen ausblenden</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Punkt für neue Inhalte ausblenden</string>
   <string name="morphe_hide_navigation_bar_title">Navigationsleiste ausblenden</string>
@@ -1149,8 +1147,6 @@ Um auf die Einstellungen zuzugreifen, aktiviere den Einstellungen-Button über A
   <string name="morphe_navigation_bar_glass_size_width">Maximale Breite</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Schaltflächenabstand</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Angezeigte Schaltflächen: %1$s von %2$s</string>
-  <string name="morphe_toolbar_screen_title">Leiste</string>
-  <string name="morphe_toolbar_screen_summary">Wähle aus, welche Schaltflächen in der Toolbar erscheinen sollen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Schaltfläche „Chat“ ausblenden</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Schaltfläche „Mikrofon“ ausblenden</string>
   <string name="morphe_hide_toolbar_search_button_title">Schaltfläche „Suche“ ausblenden</string>

@@ -266,9 +266,6 @@ Ji bo têketinê, li jêr li ser berdewamkirinê bitikîne"</string>
   <string name="morphe_video_quality_default_mobile_title">Kêşiya vîdyoyê ya pêşdebir li ser torê ya mobaylê</string>
   <string name="morphe_remember_video_quality_toast_mobile">Kêşiya mobaylê ya pêşdebir hate guhertin bo: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Kêşiya Wi-Fi ya pêşdebir hate guhertin bo: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Panela parvekirinê ya sîstemê veke</string>
-  <string name="morphe_open_system_share_sheet_summary">Dema naverok parve dikî, panela parvekirinê ya sîstemê vedike li şûna ya appê</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Loggingê Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Vemirandî</string>
@@ -380,4 +377,8 @@ ID'ya vîdyoya ku hûn temaşe dikin ji bo Return YouTube Dislike API tê şandi
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tu sînorkirina klyentê nehat dîtin</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Sînorê rêya klîyentî %s caran hat dîtin</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s mîlîsekond</string>
+  <string name="morphe_navigation_bar_screen_title">Barê navîgasyonê</string>
+  <string name="morphe_navigation_bar_screen_summary">Hilbijêre kîjan bişkojan di barê navîgasyonê yê jêrîn de xuya bibin</string>
+  <string name="morphe_toolbar_screen_title">Toolbar</string>
+  <string name="morphe_toolbar_screen_summary">Hilbijêre kîjan pêkhate di toolbarê de xuya bibin</string>
 </resources>

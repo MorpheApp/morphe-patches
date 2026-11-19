@@ -266,9 +266,6 @@ Pentru a te conecta, apasă continuă mai jos"</string>
   <string name="morphe_video_quality_default_mobile_title">Calitatea video implicită în rețeaua mobilă</string>
   <string name="morphe_remember_video_quality_toast_mobile">Calitate mobilă modificată implicit: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Calitate Wi-Fi modificată implicit: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Deschide panoul de partajare al sistemului</string>
-  <string name="morphe_open_system_share_sheet_summary">Deschide foaia de partajare a sistemului în loc de cea din aplicație când partajați conținut</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Jurnalizare Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Dezactivat</string>
@@ -380,4 +377,8 @@ ID-ul videoclipului pe care îl urmărești este trimis către API-ul Return You
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nici o limită de rată client întâlnită</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limita de rată a clientului a fost întâlnită de %s ori</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisecunde</string>
+  <string name="morphe_navigation_bar_screen_title">Bară de navigare</string>
+  <string name="morphe_navigation_bar_screen_summary">Alegeți ce butoane apar în bara de navigare de jos</string>
+  <string name="morphe_toolbar_screen_title">Bară de instrumente</string>
+  <string name="morphe_toolbar_screen_summary">Alegeți ce componente apar în bara de instrumente</string>
 </resources>

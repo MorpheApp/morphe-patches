@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">חלק מתרגומי הכתוביות אינם זמינים. מציג כתוביות זמינות.</string>
   <string name="morphe_caption_blocks_too_large">שתי שפות הכתוביות אינן נכנסות בנגן זה. מציג את השפה הראשית.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">סרגל ניווט</string>
-  <string name="morphe_navigation_bar_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">הסתר כפתור בית</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">צפייה מאוחר יותר</string>
   <string name="morphe_show_settings_button_title">הצג כפתור הגדרות</string>
   <string name="morphe_show_settings_button_type_title">פעולה של כפתור הגדרות</string>
-  <string name="morphe_show_settings_button_type_summary">פותח את הגדרות Morphe כאשר מופעל, או את הגדרות YouTube כאשר כבוי</string>
+  <string name="morphe_show_settings_button_type_summary">כאשר מופעל, לחיצה קצרה תפתח את הגדרות Morphe ולחיצה ארוכה תפתח את הגדרות YouTube, בטל כדי להחליף ביניהם</string>
   <string name="morphe_navigation_buttons_order_title">סדר לחצני הניווט</string>
   <string name="morphe_navigation_buttons_order_summary">גרור את הכפתורים כדי לשנות את הסדר שלהם בסרגל הניווט</string>
   <string name="morphe_swap_create_with_notifications_button_title">החלף את כפתור \'יצירה\' בכפתור \'התראות\'</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">אם שינוי הגדרה זו לא נכנס לתוקף, נסה לעבור למצב גלישה בסתר</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">מעביר את כפתור ההתראות לסרגל הניווט ואת כפתור היצירה לסרגל הכלים. אם השינויים אינם נכנסים לתוקף, נסה לעבור למצב גלישה בסתר</string>
   <string name="morphe_hide_navigation_button_labels_title">הסתר תוויות לחצני ניווט</string>
   <string name="morphe_hide_navigation_new_content_dot_title">הסתר נקודת תוכן חדש</string>
   <string name="morphe_hide_navigation_bar_title">הסתר סרגל ניווט</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">רוחב מקסימלי</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">מרווח כפתורים</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">כפתורים מוצגים: %1$s מתוך %2$s</string>
-  <string name="morphe_toolbar_screen_title">סרגל כלים</string>
-  <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
   <string name="morphe_hide_toolbar_chat_button_title">הסתר לחצן צ\'אט</string>
   <string name="morphe_hide_toolbar_microphone_button_title">הסתר כפתור מיקרופון</string>
   <string name="morphe_hide_toolbar_search_button_title">הסתר כפתור חיפוש</string>

@@ -1088,8 +1088,6 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_caption_block_translation_failed">Sommige vertalingen van ondertitelingen zijn niet beschikbaar. Beschikbare ondertitelingen worden getoond.</string>
   <string name="morphe_caption_blocks_too_large">Beide talen van de ondertiteling passen niet in deze player. De primaire taal wordt getoond.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigatiebalk</string>
-  <string name="morphe_navigation_bar_screen_summary">Kies welke knoppen er in de onderste navigatiebalk verschijnen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Verberg Home-knop</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_watch_later_navigation_label">Later bekijken</string>
   <string name="morphe_show_settings_button_title">Toon Instellingen-knop</string>
   <string name="morphe_show_settings_button_type_title">Actie van de instellingenknop</string>
-  <string name="morphe_show_settings_button_type_summary">Opent Morphe-instellingen indien ingeschakeld, of YouTube-instellingen indien uitgeschakeld</string>
+  <string name="morphe_show_settings_button_type_summary">Wanneer ingeschakeld, opent een tik de Morphe-instellingen en een lange druk de YouTube-instellingen; schakel uit om te wisselen</string>
   <string name="morphe_navigation_buttons_order_title">Volgorde van navigatieknoppen</string>
   <string name="morphe_navigation_buttons_order_summary">Sleep de knoppen om hun volgorde in de navigatiebalk te wijzigen</string>
   <string name="morphe_swap_create_with_notifications_button_title">Wissel de knop \'Maken\' om met de knop \'Meldingen\'</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Als het wijzigen van deze instelling geen effect heeft, probeer dan over te schakelen naar de Incognitomodus</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Verplaatst de Meldingen-knop naar de navigatiebalk en de Maak-knop naar de werkbalk. Als wijzigingen niet van kracht worden, probeer dan over te schakelen naar de incognitomodus</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigatieknoppenlabels verbergen</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Verberg nieuwe contentstip</string>
   <string name="morphe_hide_navigation_bar_title">Verberg de navigatiebalk</string>
@@ -1150,8 +1148,6 @@ Om toegang te krijgen tot Instellingen, schakel de Instellingen-knop in via Alge
   <string name="morphe_navigation_bar_glass_size_width">Maximale breedte</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knopafstand</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Getoonde knoppen: %1$s van %2$s</string>
-  <string name="morphe_toolbar_screen_title">Werkbalk</string>
-  <string name="morphe_toolbar_screen_summary">Kies welke componenten in de werkbalk verschijnen</string>
   <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knop</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Verberg Microfoon-knop</string>
   <string name="morphe_hide_toolbar_search_button_title">Verberg Zoek-knop</string>

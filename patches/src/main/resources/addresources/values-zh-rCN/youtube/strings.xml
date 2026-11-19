@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">部分字幕翻译不可用。正在显示可用字幕。</string>
   <string name="morphe_caption_blocks_too_large">两种字幕语言都无法适配此播放器。正在显示主要语言。</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">导航栏</string>
-  <string name="morphe_navigation_bar_screen_summary">选择在底部导航栏中显示哪些按钮</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">隐藏首页按钮</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">稍后观看</string>
   <string name="morphe_show_settings_button_title">显示设置按钮</string>
   <string name="morphe_show_settings_button_type_title">设置按钮操作</string>
-  <string name="morphe_show_settings_button_type_summary">启用时打开 Morphe 设置，禁用时打开 YouTube 设置</string>
+  <string name="morphe_show_settings_button_type_summary">启用时，点击打开 Morphe 设置，长按打开 YouTube 设置，禁用以交换两者</string>
   <string name="morphe_navigation_buttons_order_title">导航栏按钮顺序</string>
   <string name="morphe_navigation_buttons_order_summary">拖动按钮以更改它们在导航栏中的顺序</string>
   <string name="morphe_swap_create_with_notifications_button_title">交换“创作”按钮与“通知”按钮</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">如果更改此设置没有生效，请尝试切换到无痕模式。</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">将“通知”按钮移动到导航栏，将“创建”按钮移动到工具栏。如果更改未生效，请尝试切换到无痕模式</string>
   <string name="morphe_hide_navigation_button_labels_title">隐藏导航栏按钮标签</string>
   <string name="morphe_hide_navigation_new_content_dot_title">隐藏新内容圆点</string>
   <string name="morphe_hide_navigation_bar_title">隐藏导航栏</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">最大宽度</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">按钮间距</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">显示按钮：%1$s / %2$s</string>
-  <string name="morphe_toolbar_screen_title">工具栏</string>
-  <string name="morphe_toolbar_screen_summary">选择工具栏中显示哪些组件</string>
   <string name="morphe_hide_toolbar_chat_button_title">隐藏聊天按钮</string>
   <string name="morphe_hide_toolbar_microphone_button_title">隐藏麦克风按钮</string>
   <string name="morphe_hide_toolbar_search_button_title">隐藏搜索按钮</string>

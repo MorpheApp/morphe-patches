@@ -266,9 +266,6 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_video_quality_default_mobile_title">Ubora wa video wa chaguo-asili kwenye mtandao wa simu</string>
   <string name="morphe_remember_video_quality_toast_mobile">Ubora wa chaguo-asili wa simu umebadilishwa kuwa: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Ubora wa chaguo-asili wa Wi-Fi umebadilishwa kuwa: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Fungua ukurasa wa kushiriki wa mfumo</string>
-  <string name="morphe_open_system_share_sheet_summary">Inafungua ukurasa wa kushiriki wa mfumo badala ya ule wa ndani ya programu wakati wa kushiriki maudhui</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Kurekodi kwa Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Zimwa</string>
@@ -380,4 +377,8 @@ ID ya video unayotazama hutumwa kwenye Return YouTube Dislike API, na likes na d
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Hakuna vikomo vya kiwango cha mteja vilivyopatikana</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kikomo cha kiwango cha mteja kimefikiwa mara %s</string>
   <string name="morphe_ryd_statistics_millisecond_text">milisekunde %s</string>
+  <string name="morphe_navigation_bar_screen_title">Upau wa ugesha</string>
+  <string name="morphe_navigation_bar_screen_summary">Chagua ni vitufe gani vionekane kwenye upau wa urambazaji wa chini</string>
+  <string name="morphe_toolbar_screen_title">Zana za Juu</string>
+  <string name="morphe_toolbar_screen_summary">Chagua vipengele gani vionekane kwenye toolbar</string>
 </resources>

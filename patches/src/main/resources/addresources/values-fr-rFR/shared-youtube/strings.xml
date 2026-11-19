@@ -266,9 +266,6 @@ Pour vous connecter, appuyez sur continuer ci-dessous"</string>
   <string name="morphe_video_quality_default_mobile_title">Qualité vidéo par défaut sur le réseau mobile</string>
   <string name="morphe_remember_video_quality_toast_mobile">Qualité mobile par défaut définie sur : %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Qualité Wi-Fi par défaut définie sur : %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Ouverture du menu \'Partager\' du système</string>
-  <string name="morphe_open_system_share_sheet_summary">Ouvre la feuille de partage du système au lieu de celle de l\'application lors du partage de contenu</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Journalisation Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Désactivée</string>
@@ -380,4 +377,8 @@ L'identifiant de la vidéo que vous regardez est envoyé à l'API de Return YouT
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Aucune limite de débit du client n\'a été atteinte</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">La limite de débit du client a été atteinte %s fois</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisecondes</string>
+  <string name="morphe_navigation_bar_screen_title">Barre de navigation</string>
+  <string name="morphe_navigation_bar_screen_summary">Choisissez les boutons qui apparaissent dans la barre de navigation inférieure</string>
+  <string name="morphe_toolbar_screen_title">Barre d\'outils</string>
+  <string name="morphe_toolbar_screen_summary">Choisissez les composants qui apparaissent dans la barre d\'outils</string>
 </resources>

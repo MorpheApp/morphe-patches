@@ -1088,8 +1088,6 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_caption_block_translation_failed">Bazı altyazı çevirileri kullanılamıyor. Kullanılabilir altyazılar gösteriliyor.</string>
   <string name="morphe_caption_blocks_too_large">Her iki altyazı dili bu oynatıcıya sığmıyor. Birincil dil gösteriliyor.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Gezinme çubuğu</string>
-  <string name="morphe_navigation_bar_screen_summary">Alt gezinme çubuğunda hangi düğmelerin görüneceğini seçin</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ana Sayfa düğmesini gizle</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_watch_later_navigation_label">Daha sonra izle</string>
   <string name="morphe_show_settings_button_title">Ayarlar düğmesini göster</string>
   <string name="morphe_show_settings_button_type_title">Ayarlar düğmesi işlevi</string>
-  <string name="morphe_show_settings_button_type_summary">Etkinleştirildiğinde Morphe ayarlarını, devre dışı bırakıldığında YouTube ayarlarını açar</string>
+  <string name="morphe_show_settings_button_type_summary">Etkinleştirildiğinde dokunma Morphe ayarlarını uzun basma YouTube ayarlarını açar, devre dışı bırakmak davranışı değiştirir</string>
   <string name="morphe_navigation_buttons_order_title">Gezinme düğmeleri sırası</string>
   <string name="morphe_navigation_buttons_order_summary">Gezinme çubuğundaki sırasını değiştirmek için düğmeleri sürükleyin</string>
   <string name="morphe_swap_create_with_notifications_button_title">Oluştur düğmesini Bildirimler düğmesiyle değiştir</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Bu ayarı değiştirmek etkili olmazsa, Gizli moda geçmeyi deneyin</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Bildirimler butonunu gezinti çubuğuna, Oluştur butonunu ise araç çubuğuna taşır. Değişiklikler etkili olmazsa Gizli moda geçmeyi deneyin</string>
   <string name="morphe_hide_navigation_button_labels_title">Gezinme düğmesi etiketlerini gizle</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Yeni içerik noktasını gizle</string>
   <string name="morphe_hide_navigation_bar_title">Gezinme çubuğunu gizle</string>
@@ -1150,8 +1148,6 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_navigation_bar_glass_size_width">Maksimum genişlik</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Düğme boşluğu</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Gösterilen düğmeler: %2$s düğmeden %1$s tanesi</string>
-  <string name="morphe_toolbar_screen_title">Araç Çubuğu</string>
-  <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sohbet düğmesini gizle</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon düğmesini gizle</string>
   <string name="morphe_hide_toolbar_search_button_title">Arama düğmesini gizle</string>

@@ -266,9 +266,6 @@ Android System WebView उघडण्यासाठी OK वर टॅप क
   <string name="morphe_video_quality_default_mobile_title">मोबाईल नेटवर्कवरील डीफॉल्ट व्हिडिओ गुणवत्ता</string>
   <string name="morphe_remember_video_quality_toast_mobile">डीफॉल्ट मोबाईल गुणवत्ता बदलून %s केली</string>
   <string name="morphe_remember_video_quality_toast_wifi">डीफॉल्ट Wi-Fi गुणवत्ता बदलून %s केली</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">सिस्टम शेअर शीट उघडा</string>
-  <string name="morphe_open_system_share_sheet_summary">कंटेंट शेअर करताना इन-अ‍ॅप शेअर शीटऐवजी सिस्टम शेअर शीट उघडते</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">लिथो लॉगिंग</string>
   <string name="morphe_debug_litho_entry_disabled">बंद आहे</string>
@@ -380,4 +377,8 @@ PotHelper डाउनलोड करण्यासाठी येथे ट�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">क्लायंट दर मर्यादा आढळली नाही</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">क्लायंट रेट लिमिट %s वेळा आढळली</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s मिलीसेकंद</string>
+  <string name="morphe_navigation_bar_screen_title">नॅव्हिगेशन बार</string>
+  <string name="morphe_navigation_bar_screen_summary">तळ नेव्हिगेशन बारमध्ये कोणती बटणे दिसतील ते निवडा</string>
+  <string name="morphe_toolbar_screen_title">टूलबार</string>
+  <string name="morphe_toolbar_screen_summary">टूलबारमध्ये कोणते घटक दिसावेत ते निवडा</string>
 </resources>

@@ -1087,8 +1087,6 @@ Da biste ovo popravili, uključite 'Spoof video streamova' i promijenite 'Podraz
   <string name="morphe_caption_block_translation_failed">Neki prevodi titlova nisu dostupni. Prikazani su dostupni titlovi.</string>
   <string name="morphe_caption_blocks_too_large">Oba jezika titlova ne stanu u ovaj plejer. Prikazan je primarni jezik.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigacijska traka</string>
-  <string name="morphe_navigation_bar_screen_summary">Odaberite koje će se dugmad pojaviti u donjoj navigacijskoj traci</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Sakrij dugme Početna</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1106,11 +1104,11 @@ Da biste ovo popravili, uključite 'Spoof video streamova' i promijenite 'Podraz
   <string name="morphe_watch_later_navigation_label">Gledaj kasnije</string>
   <string name="morphe_show_settings_button_title">Prikaži dugme za postavke</string>
   <string name="morphe_show_settings_button_type_title">Akcija dugmeta za postavke</string>
-  <string name="morphe_show_settings_button_type_summary">Otvara Morphe postavke kada je omogućeno, ili YouTube postavke kada je onemogućeno</string>
+  <string name="morphe_show_settings_button_type_summary">Kada je omogućeno, dodir otvara Morphe postavke, a dugi pritisak YouTube postavke; onemogućite da zamijenite</string>
   <string name="morphe_navigation_buttons_order_title">Redoslijed navigacijskih dugmadi</string>
   <string name="morphe_navigation_buttons_order_summary">Prevucite dugmad kako biste promijenili njihov redoslijed u navigacijskoj traci</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamijeni dugme \'Kreiraj\' sa dugmetom \'Obavještenja\'</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ako promjena ove postavke nema efekta, pokušajte prebaciti na Inkognito način</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Pomjera dugme Obavještenja u navigacijsku traku, a dugme Kreiraj u alatnu traku. Ako promjene ne stupi na snagu, pokušajte prebaciti na Inkognito način</string>
   <string name="morphe_hide_navigation_button_labels_title">Sakrij oznake navigacijskih dugmadi</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Sakrij tačku za novi sadržaj</string>
   <string name="morphe_hide_navigation_bar_title">Sakrij navigacijsku traku</string>
@@ -1149,8 +1147,6 @@ Da biste pristupili Postavkama, omogućite dugme Postavke putem Opće → Traka 
   <string name="morphe_navigation_bar_glass_size_width">Maksimalna širina</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Razmak između dugmadi</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Prikazano dugmadi: %1$s od %2$s</string>
-  <string name="morphe_toolbar_screen_title">Alatna traka</string>
-  <string name="morphe_toolbar_screen_summary">Odaberite koje komponente se pojavljuju u alatnoj traci</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sakrij dugme za ćaskanje</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sakrij dugme za mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Sakrij dugme za pretragu</string>

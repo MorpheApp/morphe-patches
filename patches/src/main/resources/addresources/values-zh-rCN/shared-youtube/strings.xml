@@ -266,9 +266,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">移动网络上的默认视频画质</string>
   <string name="morphe_remember_video_quality_toast_mobile">已将默认移动网络画质更改为：%s</string>
   <string name="morphe_remember_video_quality_toast_wifi">已将默认 Wi-Fi 画质更改为：%s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">打开系统分享面板</string>
-  <string name="morphe_open_system_share_sheet_summary">在分享内容时，打开系统分享面板而非应用内分享面板</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho 日志</string>
   <string name="morphe_debug_litho_entry_disabled">已禁用</string>
@@ -380,4 +377,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">未遇到客户端速率限制</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">遇到客户端速率限制 %s 次</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s 毫秒</string>
+  <string name="morphe_navigation_bar_screen_title">导航栏</string>
+  <string name="morphe_navigation_bar_screen_summary">选择在底部导航栏中显示哪些按钮</string>
+  <string name="morphe_toolbar_screen_title">工具栏</string>
+  <string name="morphe_toolbar_screen_summary">选择在工具栏中显示哪些组件</string>
 </resources>

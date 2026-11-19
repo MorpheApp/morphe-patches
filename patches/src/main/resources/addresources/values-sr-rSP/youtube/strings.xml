@@ -1087,8 +1087,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">Неки преводи титлова нису доступни. Приказују се доступни титлови.</string>
   <string name="morphe_caption_blocks_too_large">Оба језика титлова не стају у овај плејер. Приказује се примарни језик.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Трака за навигацију</string>
-  <string name="morphe_navigation_bar_screen_summary">Одаберите који дугмићи ће се појавити на доњој навигационој траци.</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Сакриј дугме „Насловна страна“</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1106,11 +1104,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">За касније</string>
   <string name="morphe_show_settings_button_title">Прикажи дугме „Подешавања“</string>
   <string name="morphe_show_settings_button_type_title">Акција дугмета за подешавања</string>
-  <string name="morphe_show_settings_button_type_summary">Када је омогућено, додиром се отварају подешавања Morphe-а, а дугим притиском подешавања YouTube-а.</string>
+  <string name="morphe_show_settings_button_type_summary">Када је омогућено, додиром се отварају подешавања Morphe-а, а дугим притиском подешавања YouTube-а. Онемогућите да бисте их заменили.</string>
   <string name="morphe_navigation_buttons_order_title">Редослед дугмади навигације</string>
   <string name="morphe_navigation_buttons_order_summary">Превуците дугмад да промените њихов редослед у оквиру навигационе траке</string>
   <string name="morphe_swap_create_with_notifications_button_title">Замените дугме „Направи“ дугметом „Обавештења“</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ако промена ове поставке не ступи на снагу, покушајте да пређете у режим инкогнита</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Помера дугме за Обавештења у навигациону траку, а дугме Креирај у алтку. Ако промене не ступе на снагу, покушајте да пребаците на Inkognito режим</string>
   <string name="morphe_hide_navigation_button_labels_title">Сакриј ознаке дугмади за навигацију</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Сакриј тачку новог садржаја</string>
   <string name="morphe_hide_navigation_bar_title">Сакриј траку за навигацију</string>
@@ -1149,8 +1147,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимална ширина</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Размак дугмади</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Приказана дугмад: %1$s од %2$s</string>
-  <string name="morphe_toolbar_screen_title">Трака са алаткама</string>
-  <string name="morphe_toolbar_screen_summary">Одаберите које компоненте ће се појавити у траци са алаткама.</string>
   <string name="morphe_hide_toolbar_chat_button_title">Сакриј дугме за ћаскање</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Сакриј дугме „Микрофон“</string>
   <string name="morphe_hide_toolbar_search_button_title">Сакриј дугме „Претрага“</string>

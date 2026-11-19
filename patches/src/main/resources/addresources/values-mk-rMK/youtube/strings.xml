@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">Некои преводи на титловите не се достапни. Се прикажуваат достапните титлови.</string>
   <string name="morphe_caption_blocks_too_large">Двата јазика за титлови не се собираат во овој плеер. Се прикажува примарниот јазик.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Навигациска лента</string>
-  <string name="morphe_navigation_bar_screen_summary">Изберете кои копчиња да се појавуваат во лентата за навигација</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Прикријте го копчето Home</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">Гледај подоцна</string>
   <string name="morphe_show_settings_button_title">Прикажи копче Settings</string>
   <string name="morphe_show_settings_button_type_title">Акција на копчето за поставки</string>
-  <string name="morphe_show_settings_button_type_summary">Кога е овозможено, допир го отвора Morphe поставените параметри, а долго притискање го отвора YouTube поставените параметри</string>
+  <string name="morphe_show_settings_button_type_summary">Кога е овозможено, допирот ги отвора поставките на Morphe, а долгиот притисок ги отвора поставките на YouTube; исклучете за да ги замените</string>
   <string name="morphe_navigation_buttons_order_title">Редослед на копчињата за навигација</string>
   <string name="morphe_navigation_buttons_order_summary">Превлечете ги копчињата за да го промените нивниот редослед во лентата за навигација</string>
   <string name="morphe_swap_create_with_notifications_button_title">Заменете го копчето „Креирај“ со копчето „Известувања“</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ако промената на оваа поставка нема ефект, обидете се да преминете во Incognito режим</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Го преместува копчето за Известувања во навигациската лента, а копчето Креирај во алатката. Ако промените не стапат на сила, обидете се да преминете во Инкогнито режим</string>
   <string name="morphe_hide_navigation_button_labels_title">Скриј ги ознаките на копчињата за навигација</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Скриј точка за нова содржина</string>
   <string name="morphe_hide_navigation_bar_title">Скриј лента за навигација</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимална ширина</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Растојание помеѓу копчињата</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Прикажани копчиња: %1$s од %2$s</string>
-  <string name="morphe_toolbar_screen_title">Лента со алатки</string>
-  <string name="morphe_toolbar_screen_summary">Изберете кои компоненти да се појавуваат во лентата со алатки</string>
   <string name="morphe_hide_toolbar_chat_button_title">Скриј копче за чет</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Прикријте го копчето Microphone</string>
   <string name="morphe_hide_toolbar_search_button_title">Прикријте го копчето Search</string>

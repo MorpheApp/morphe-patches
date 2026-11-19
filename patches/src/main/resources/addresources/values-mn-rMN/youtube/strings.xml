@@ -1088,8 +1088,6 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_caption_block_translation_failed">Хадмал орчуулгын зарим орчуулга боломжгүй байна. Боломжтой хадмал орчуулгуудыг харуулж байна.</string>
   <string name="morphe_caption_blocks_too_large">Хадмал орчуулгын хоёр хэл энэ тоглуулагчид багтахгүй байна. Үндсэн хэлийг харуулж байна.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Навигацийн самбар</string>
-  <string name="morphe_navigation_bar_screen_summary">Доод навигацийн хэсэгт аль товчнуудыг харуулахыг сонгоно уу</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Нүүр хуудасны товчийг нуух</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_watch_later_navigation_label">Дараа нь үзэх</string>
   <string name="morphe_show_settings_button_title">Тохиргоо товчийг харуулах</string>
   <string name="morphe_show_settings_button_type_title">Тохиргооны товчны үйлдэл</string>
-  <string name="morphe_show_settings_button_type_summary">Идэвхжүүлсэн үед Morphe-ийн тохиргоог, идэвхгүй болгосон үед YouTube-ийн тохиргоог нээнэ</string>
+  <string name="morphe_show_settings_button_type_summary">Идэвхжүүлсэн үед товшихад Morphe-ийн тохиргоо, удаан дарахад YouTube-ийн тохиргоог нээнэ; солихын тулд идэвхгүй болгоно уу</string>
   <string name="morphe_navigation_buttons_order_title">Навигацийн товчлууруудын дараалал</string>
   <string name="morphe_navigation_buttons_order_summary">Навигацийн хэсэг дэх товчлууруудын дарааллыг өөрчлөхийн тулд чирж зөөж тохируулна уу</string>
   <string name="morphe_swap_create_with_notifications_button_title">\"Үүсгэх\" товчийг \"Мэдэгдэл\" товчтой сольно</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Хэрэв энэ тохиргоог өөрчилсөн ч нөлөөлөхгүй бол Инкогнито горим руу шилжүүлж үзнэ үү</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Мэдэгдлийн товчийг навигацийн хэсэг рүү, Үүсгэх товчийг хэрэгсэл барын хэсэг рүү шилжүүлнэ. Хэрэв өөрчлөлтүүд хэрэгжихгүй бол Нууцлаг горим руу шилжих гэж оролдоно уу</string>
   <string name="morphe_hide_navigation_button_labels_title">Навигацийн товчлуурын шовруудыг нуух</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Шинэ контентын цэгийг нуух</string>
   <string name="morphe_hide_navigation_bar_title">Навигацийн мөрийг нуух</string>
@@ -1150,8 +1148,6 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_navigation_bar_glass_size_width">Хамгийн их өргөн</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Товчнуудын зай</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Харагдаж буй товчлуур: %1$s-аас %2$s</string>
-  <string name="morphe_toolbar_screen_title">Баруун дээд хэсгийн цэс</string>
-  <string name="morphe_toolbar_screen_summary">Хэрэгсэлний мөрөнд (toolbar) аль бүрэлдэхүүн хэсгүүдийг харуулахыг сонгоно уу</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат товчийг нуух</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Микрофон товчийг нуух</string>
   <string name="morphe_hide_toolbar_search_button_title">Хайлт товчийг нуух</string>

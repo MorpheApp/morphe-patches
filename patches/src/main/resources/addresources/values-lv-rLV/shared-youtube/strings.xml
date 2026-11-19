@@ -266,9 +266,6 @@ Lai pierakstītos, nospiediet tālāk zemāk"</string>
   <string name="morphe_video_quality_default_mobile_title">Noklusējuma video kvalitāte mobilajā tīklā</string>
   <string name="morphe_remember_video_quality_toast_mobile">Mainīta noklusējuma mobilā kvalitāte uz: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Mainīta noklusējuma Wi-Fi kvalitāte uz: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Atvērt sistēmas kopīgošanas logu</string>
-  <string name="morphe_open_system_share_sheet_summary">Satura kopīgošanai izmantot sistēmas kopīgošanas izvēlni neatkarībā no lietotnes iekšējās izvēlnes</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho žurnālošana</string>
   <string name="morphe_debug_litho_entry_disabled">Atspējots</string>
@@ -380,4 +377,8 @@ Video ID, kuru jūs skatāties, tiek nosūtīts Return YouTube Dislike API, bet 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Klienta ātruma ierobežojumi netika konstatēti</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klienta ātruma ierobežojums sastapts %s reizes</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekundes</string>
+  <string name="morphe_navigation_bar_screen_title">Navigācijas josla</string>
+  <string name="morphe_navigation_bar_screen_summary">Izvēlieties, kuras pogas rādīt apakšējā navigācijas joslā</string>
+  <string name="morphe_toolbar_screen_title">Rīkjosla</string>
+  <string name="morphe_toolbar_screen_summary">Izvēlieties, kuras komponentes parādās rīkjoslā</string>
 </resources>

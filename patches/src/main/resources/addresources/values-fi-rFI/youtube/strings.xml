@@ -1088,8 +1088,6 @@ Korjaa tämä ottamalla käyttöön 'Naamioi videovirrat' ja vaihtamalla 'Oletus
   <string name="morphe_caption_block_translation_failed">Jotkin tekstityskäännökset eivät ole saatavilla. Näytetään saatavilla olevat tekstitykset.</string>
   <string name="morphe_caption_blocks_too_large">Molemmat tekstityskielet eivät mahdu tähän soittimeen. Näytetään pääkieli.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigointipalkki</string>
-  <string name="morphe_navigation_bar_screen_summary">Valitse, mitkä painikkeet näkyvät alanavigointipalkissa</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Piilota Koti-painike</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Korjaa tämä ottamalla käyttöön 'Naamioi videovirrat' ja vaihtamalla 'Oletus
   <string name="morphe_watch_later_navigation_label">Katso myöhemmin</string>
   <string name="morphe_show_settings_button_title">Näytä Asetukset-painike</string>
   <string name="morphe_show_settings_button_type_title">Asetusten painikkeen toiminto</string>
-  <string name="morphe_show_settings_button_type_summary">Avaa Morphen asetukset, kun ne on käytössä, tai YouTuben asetukset, kun ne on poissa käytöstä</string>
+  <string name="morphe_show_settings_button_type_summary">Kun tämä on käytössä, napautus avaa Morphe-asetukset ja pitkä painallus avaa YouTube-asetukset; poista käytöstä vaihtaaksesi nämä päittäin</string>
   <string name="morphe_navigation_buttons_order_title">Navigointipainikkeiden järjestys</string>
   <string name="morphe_navigation_buttons_order_summary">Vedä painikkeita muuttaaksesi niiden järjestystä navigointipalkissa</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vaihdetaan Luo-painike Ilmoitukset-painikkeen kanssa</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Jos asetuksen muuttaminen ei tule voimaan, kokeile vaihtaa incognito-tilaan</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Siirtää Ilmoitukset-painikkeen navigointipalkkiin ja Luo-painikkeen työkalupalkkiin. Jos muutokset eivät tule voimaan, kokeile vaihtaa Incognito-tilaan</string>
   <string name="morphe_hide_navigation_button_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Piilota uuden sisällön piste</string>
   <string name="morphe_hide_navigation_bar_title">Piilota navigointipalkki</string>
@@ -1150,8 +1148,6 @@ Päästäksesi Asetuksiin, ota Asetukset-painike käyttöön kohdasta Yleiset �
   <string name="morphe_navigation_bar_glass_size_width">Maksimileveys</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Painikkeiden väli</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Näytettävät painikkeet: %1$s / %2$s</string>
-  <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
-  <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
   <string name="morphe_hide_toolbar_chat_button_title">Piilota chat-painike</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Piilota Mikrofoni-painike</string>
   <string name="morphe_hide_toolbar_search_button_title">Piilota Haku-painike</string>

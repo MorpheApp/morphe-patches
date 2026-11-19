@@ -174,6 +174,8 @@ Folda ya usadirishaji: %s"</string>
   <string name="morphe_music_hide_filter_bar_title">Ficha upau wa kichujio</string>
   <string name="morphe_music_hide_grid_shelves_title">Ficha rafu za gridi</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ficha rafu za mlalo</string>
+  <string name="morphe_music_hide_new_button_title">Ficha kitufe cha Upya</string>
+  <string name="morphe_music_hide_new_button_summary">Huficha kitufe cha Upya katika tabo ya Maktaba</string>
   <string name="morphe_music_hide_list_shelves_title">Ficha rafu za orodha</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Paneli ya mashairi</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Ficha kitufe cha Shiriki</string>
@@ -199,6 +201,8 @@ Folda ya usadirishaji: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Unganisha nyimbo kwa ulaini moja baada ya nyingine</string>
   <string name="morphe_music_crossfade_enabled_title">Washa crossfade</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Ili kutumia crossfade, badilisha \'Default client\' ya Spoof video streams kuwa TV Simply au visionOS</string>
   <string name="morphe_music_crossfade_curve_title">Mstari wa kufifia</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Nguvu sawa</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Shikilia kidogo</string>
@@ -232,7 +236,9 @@ Folda ya usadirishaji: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade imesitishwa kwa kipindi hiki</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade imeendelea</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Hali ya video haipatikani wakati crossfade imewashwa</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade imezimwa wakati wa uchezaji wa SABR</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade haifanyi kazi na visionOS. Badilisha \'Default client\' ya Spoof video streams kuwa TV Simply</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade haifanyi kazi na spoof stream client hii</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade imezimwa wakati wa kutuma</string>
   <string name="morphe_music_crossfade_about_how_title">Inavyofanya kazi</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade huingiliana mwisho wa wimbo mmoja na mwanzo wa wimbo unaofuata, kwa kutumia muda na msururu wako
@@ -249,9 +255,7 @@ Skrini ya kufunga au taarifa inaweza kuonyesha hali ya zamani kwa muda mfupi kat
 
 Kusitisha crossfade ili kutazama video ya muziki kunaweza kuacha baadhi ya video zikiwa nyeusi. Kusitisha crossfade kabla ya kuchagua wimbo kunazuia jambo hili"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Haiungwi mkono</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Kurusha au kuakisi sauti (Chromecast, kuakisi skrini au sauti)
-
-Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Kurusha au kuakisi sauti (Chromecast, screen or audio mirroring)</string>
   <string name="morphe_music_crossfade_about_credit_title">Sifa</string>
   <string name="morphe_music_crossfade_about_credit_summary">Kipengele cha Crossfade na VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,11 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Zima uelekezaji upya wa kutopenda</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Huzuia kurukia wimbo unaofuata wakati kitufe cha kutopenda kinapobonyezwa</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Zima kutelezesha ili kubadilisha wimbo</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Huzuia kuruka kwenda wimbo unaofuata au uliopita kwa kutelezesha kushoto au kulia kwenye kicheza</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Zima kutelezesha ili kubadilisha wimbo</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Huzuia kuruka kwenda wimbo unaofuata au uliopita kwa kutelezesha kushoto au kulia kwenye kicheza kidogo</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Mzunguko wa A-B</string>
   <string name="morphe_music_ab_loop_summary">Bonyeza na ushikilie seekbar ili kuweka mwanzo wa mzunguko, tena ili kuweka mwisho wa mzunguko, na tena ili kufuta mzunguko</string>
@@ -329,15 +338,6 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <string name="morphe_music_playlist_tags_rename">Badilisha jina</string>
   <string name="morphe_music_playlist_tags_delete">Futa</string>
   <string name="morphe_music_playlist_tags_hidden">Imefichwa</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Ficha kitufe cha Cast</string>
-  <string name="morphe_music_hide_history_button_title">Ficha kitufe cha Historia</string>
-  <string name="morphe_music_hide_notification_button_title">Ficha kitufe cha Taarifa</string>
-  <string name="morphe_music_hide_search_button_title">Ficha kitufe cha Utafutaji</string>
-  <string name="morphe_music_hide_voice_search_button_title">Ficha kitufe cha utafutaji wa sauti</string>
-  <string name="morphe_music_hide_sound_search_button_title">Ficha kitufe cha utafutaji wa sauti ya muziki</string>
-  <string name="morphe_music_hide_library_new_button_title">Ficha kitufe cha Upya</string>
-  <string name="morphe_music_hide_library_new_button_summary">Huficha kitufe cha Upya katika tabo ya Maktaba</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Vitufe vya utendaji</string>
   <string name="morphe_music_action_buttons_screen_summary">Chagua vitufe gani vya utendaji vionekane chini ya kidhibiti</string>
@@ -409,22 +409,20 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Lazimisha mwelekeo wa wima</string>
   <string name="morphe_music_force_portrait_orientation_summary">Huweka programu katika mwelekeo wa wima wakati kifaa kinapozungushwa</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Badilisha rangi ya miniplayer</string>
+  <string name="morphe_music_change_miniplayer_color_title">Badilisha rangi</string>
   <string name="morphe_music_change_miniplayer_color_summary">Inalinganisha rangi ya miniplayer na ya kicheza cha skrini nzima</string>
   <string name="morphe_music_change_navigation_bar_color_title">Badilisha rangi ya baa ya urambazaji</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Oanisha rangi ya baa ya urambazaji na kicheza muziki cha skrini nzima</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Onyesha kitufe cha inayofuata kwenye miniplayer</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Onyesha kitufe cha iliyopita kwenye miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_title">Onyesha kitufe cha inayofuata</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Onyesha kitufe cha iliyopita</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Washa miniplayer ya kulazimisha</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Inazuia kicheza kupanuka kiotomatiki hadi skrini nzima wakati wimbo mpya unapoanza</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Washa utelezi ili kuondoa miniplayer</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Washa utepe wa kuondoa</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Inaruhusu kufunga kicheza kidogo kwa kukisogeza chini</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Upau wa urambazaji</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Chagua ni vitufe gani vionekane kwenye upau wa urambazaji wa chini</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ficha kitufe cha Nyumbani</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +455,7 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Huficha mng\'ao wa duara nyuma ya kitufe kilichochaguliwa cha baa ya urambazaji ya kioo</string>
   <string name="morphe_music_miniplayer_screen_title">Kicheza-mini</string>
   <string name="morphe_music_miniplayer_screen_summary">Badilisha mtindo, vitufe na ishara za kicheza-mini</string>
-  <string name="morphe_music_miniplayer_glass_title">Weka kicheza-mini cha kioo</string>
+  <string name="morphe_music_miniplayer_glass_title">Washa athari ya kioo</string>
   <string name="morphe_music_miniplayer_glass_summary">Huonyesha kicheza-mini kinachoelea kama kadi ya kioo ya duara na inayopitisha mwanga</string>
   <string name="morphe_music_miniplayer_glass_style_title">Mtindo wa kicheza-mini cha kioo</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Rekebisha radius ya kona, nafasi ya picha, mng\'ao wa ukingo na wezeshi wa kicheza-mini cha kioo, pamoja na onyesho la kukagua</string>
@@ -480,6 +478,15 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Sampuli</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Gundua</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Maktaba</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Ficha kitufe cha Shughuli</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Ficha kitufe cha Uliza Muziki</string>
+  <string name="morphe_music_hide_cast_button_title">Ficha kitufe cha Cast</string>
+  <string name="morphe_music_hide_history_button_title">Ficha kitufe cha Historia</string>
+  <string name="morphe_music_hide_search_button_title">Ficha kitufe cha Utafutaji</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ficha kitufe cha utafutaji wa sauti</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ficha kitufe cha utafutaji wa sauti ya muziki</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Hujaingia. Gusa ili kusanidi</string>
   <string name="morphe_music_scrobbling_log_out">Toka</string>

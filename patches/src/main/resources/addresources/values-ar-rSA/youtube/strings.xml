@@ -1092,8 +1092,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_caption_block_translation_failed">بعض ترجمات التسميات التوضيحية غير متاحة. يتم عرض التسميات التوضيحية المتاحة.</string>
   <string name="morphe_caption_blocks_too_large">كلتا لغتي الترجمة النصية لا تتناسبان مع هذا المشغل. يتم عرض اللغة الأساسية.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">شريط التنقل</string>
-  <string name="morphe_navigation_bar_screen_summary">اختر الأزرار التي تظهر في شريط التنقل السفلي</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">إخفاء زر الصفحة الرئيسية</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1111,11 +1109,11 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_watch_later_navigation_label">المشاهدة لاحقًا</string>
   <string name="morphe_show_settings_button_title">عرض زر الإعدادات</string>
   <string name="morphe_show_settings_button_type_title">إجراء زر الإعدادات</string>
-  <string name="morphe_show_settings_button_type_summary">يفتح إعدادات Morphe عند التمكين، أو إعدادات YouTube عند التعطيل</string>
+  <string name="morphe_show_settings_button_type_summary">عند التمكين، يفتح النقر إعدادات Morphe، ويفتح الضغط المطوّل إعدادات YouTube، قم بتعطيله للتبديل بينهما.</string>
   <string name="morphe_navigation_buttons_order_title">ترتيب أزرار التنقل</string>
   <string name="morphe_navigation_buttons_order_summary">اسحب الأزرار لتغيير ترتيبها في شريط التنقل</string>
   <string name="morphe_swap_create_with_notifications_button_title">تبديل زر الإنشاء بزر الإشعارات</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">إذا لم يُؤدِّ تغيير هذا الإعداد إلى أي نتيجة، جرِّب التبديل إلى وضع التصفّح المتخفي</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">ينقل زر الإشعارات إلى شريط التنقل وزر الإنشاء إلى شريط الأدوات. إذا لم يتم تطبيق التغييرات، فجرّب التبديل إلى وضع التصفح المتخفي</string>
   <string name="morphe_hide_navigation_button_labels_title">إخفاء تسميات زر التنقل</string>
   <string name="morphe_hide_navigation_new_content_dot_title">إخفاء نقطة المحتوى الجديد</string>
   <string name="morphe_hide_navigation_bar_title">إخفاء شريط التنقل</string>
@@ -1154,8 +1152,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_glass_size_width">أقصى عرض</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">تباعد الزر</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">الأزرار المعروضة: %1$s من %2$s</string>
-  <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
-  <string name="morphe_toolbar_screen_summary">اختر المكونات التي تظهر في شريط الأدوات</string>
   <string name="morphe_hide_toolbar_chat_button_title">إخفاء زر دردشة</string>
   <string name="morphe_hide_toolbar_microphone_button_title">إخفاء زر الميكروفون</string>
   <string name="morphe_hide_toolbar_search_button_title">إخفاء زر البحث</string>

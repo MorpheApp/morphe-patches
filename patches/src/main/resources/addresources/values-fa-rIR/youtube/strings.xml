@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">برخی ترجمه‌های زیرنویس در دسترس نیستند. نمایش زیرنویس‌های موجود.</string>
   <string name="morphe_caption_blocks_too_large">هر دو زبان زیرنویس در این پخش‌کننده جا نمی‌شوند. نمایش زبان اصلی.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">نوار پیمایش</string>
-  <string name="morphe_navigation_bar_screen_summary">انتخاب کنید کدام دکمه‌ها در نوار پیمایش پایین نمایش داده شوند</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">پنهان‌کردن دکمهٔ خانه</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">بعداً تماشا می‌کنم</string>
   <string name="morphe_show_settings_button_title">نمایش دکمهٔ تنظیمات</string>
   <string name="morphe_show_settings_button_type_title">عملیات دکمهٔ تنظیمات</string>
-  <string name="morphe_show_settings_button_type_summary">وقتی فعال باشد تنظیمات Morphe را باز می‌کند و وقتی غیرفعال باشد تنظیمات YouTube را باز می‌کند</string>
+  <string name="morphe_show_settings_button_type_summary">وقتی فعال باشد، ضربه‌زدن تنظیمات Morphe و لمس طولانی تنظیمات YouTube را باز می‌کند؛ برای جابه‌جایی غیرفعال کنید</string>
   <string name="morphe_navigation_buttons_order_title">ترتیب دکمه‌های پیمایش</string>
   <string name="morphe_navigation_buttons_order_summary">دکمه‌ها را بکشید تا ترتیب آن‌ها در نوار پیمایش تغییر کند</string>
   <string name="morphe_swap_create_with_notifications_button_title">جابه‌جایی دکمهٔ ساخت با دکمهٔ اعلان‌ها</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">اگر تغییر این تنظیم اعمال نشد، حالت ناشناس را روشن و خاموش کنید</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">دکمه اعلان‌ها را به نوار پیمایش و دکمه ایجاد را به نوار ابزار منتقل می‌کند. اگر تغییرات اعمال نشد، حالت Incognito را امتحان کنید</string>
   <string name="morphe_hide_navigation_button_labels_title">پنهان‌کردن برچسب‌های دکمه‌های پیمایش</string>
   <string name="morphe_hide_navigation_new_content_dot_title">پنهان کردن نقطه محتوای جدید</string>
   <string name="morphe_hide_navigation_bar_title">پنهان‌کردن نوار پیمایش</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">حداکثر عرض</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">فاصله‌ی دکمه‌ها</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">دکمه‌های نمایش داده شده: %1$s از %2$s</string>
-  <string name="morphe_toolbar_screen_title">نوار ابزار</string>
-  <string name="morphe_toolbar_screen_summary">انتخاب کنید کدام مؤلفه‌ها در نوار ابزار نمایش داده شوند</string>
   <string name="morphe_hide_toolbar_chat_button_title">پنهان‌کردن دکمهٔ گفت‌وگو</string>
   <string name="morphe_hide_toolbar_microphone_button_title">پنهان‌کردن دکمهٔ میکروفون</string>
   <string name="morphe_hide_toolbar_search_button_title">پنهان‌کردن دکمهٔ جست‌وجو</string>

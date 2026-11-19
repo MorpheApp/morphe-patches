@@ -266,9 +266,6 @@ Android System WebView খুলতে OK ট্যাপ করুন।"</stri
   <string name="morphe_video_quality_default_mobile_title">মোবাইল নেটওয়ার্কে ডিফল্ট ভিডিও গুণমান</string>
   <string name="morphe_remember_video_quality_toast_mobile">ডিফল্ট মোবাইল গুণমান পরিবর্তন করা হয়েছে: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">ডিফল্ট Wi-Fi গুণমান পরিবর্তন করা হয়েছে: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">সিস্টেম শেয়ার শিট খুলুন</string>
-  <string name="morphe_open_system_share_sheet_summary">কন্টেন্ট শেয়ার করার সময় ইন-অ্যাপ শেয়ার শীটের পরিবর্তে সিস্টেম শেয়ার শীট খোলে</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">লিথো লগিং</string>
   <string name="morphe_debug_litho_entry_disabled">বন্ধ রাখুন</string>
@@ -380,4 +377,8 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">কোন ক্লায়েন্ট হার সীমা সম্মুখীন হয়নি</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ক্লায়েন্ট রেট লিমিটের সম্মুখীন হয়েছে %s বার</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s মিলিসেকেন্ড</string>
+  <string name="morphe_navigation_bar_screen_title">নেভিগেশন বার</string>
+  <string name="morphe_navigation_bar_screen_summary">নিচের নেভিগেশন বার-এ কোন বোতামগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
+  <string name="morphe_toolbar_screen_title">টুলবার</string>
+  <string name="morphe_toolbar_screen_summary">টুলবারে কোন উপাদানগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
 </resources>

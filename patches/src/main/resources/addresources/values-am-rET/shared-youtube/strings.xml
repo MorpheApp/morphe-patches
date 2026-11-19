@@ -266,9 +266,6 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <string name="morphe_video_quality_default_mobile_title">በሞባይል ኔትወርክ ላይ መደበኛ የቪዲዮ ጥራት</string>
   <string name="morphe_remember_video_quality_toast_mobile">መደበኛ የሞባይል ጥራት ወደ %s ተቀይሯል</string>
   <string name="morphe_remember_video_quality_toast_wifi">መደበኛ የWi-Fi ጥራት ወደ %s ተቀይሯል</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">የስርዓቱን የ பகிደት ዝርዝር ክፈት</string>
-  <string name="morphe_open_system_share_sheet_summary">ይዘቶችን ሲያጋሩ ከመተግበሪያው ውስጠኛ ማጋሪያ ይልቅ በምትኩ የሲስተም ማጋሪያ ገጹን ይከፍታል</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">የLitho ሎጊንግ</string>
   <string name="morphe_debug_litho_entry_disabled">ተዘግቷል</string>
@@ -380,4 +377,8 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">ምንም የክሊየንት ፍጥነት ገደቦች አልተገኙም</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">የደንበኛው የፍጥነት ገደብ %s ጊዜያት ተጋጥሟል</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ሚሊሰከንድ</string>
+  <string name="morphe_navigation_bar_screen_title">የማሰገጫ አሞሌ</string>
+  <string name="morphe_navigation_bar_screen_summary">በታችኛው የናቪጌሽን ባር ላይ የትኞቹ ቁልፎች እንደሚታዩ ይምረጡ</string>
+  <string name="morphe_toolbar_screen_title">የመሳሪያ አሞሌ</string>
+  <string name="morphe_toolbar_screen_summary">በመሳሪያ ባሩ ላይ የትኞቹ ክፍሎች እንደሚታዩ ይምረጡ</string>
 </resources>

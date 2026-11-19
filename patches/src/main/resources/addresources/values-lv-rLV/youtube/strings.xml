@@ -1088,8 +1088,6 @@ Jānorāda subtitru sīkfaili"</string>
   <string name="morphe_caption_block_translation_failed">Daži titru tulkojumi nav pieejami. Rāda pieejamos titrus.</string>
   <string name="morphe_caption_blocks_too_large">Abas titru valodas neiekļaujas šajā atskaņotājā. Rāda galveno valodu.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigācijas josla</string>
-  <string name="morphe_navigation_bar_screen_summary">Izvēlieties, kuras pogas rādīt apakšējā navigācijas joslā</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Paslēpt pogu Sākums</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Jānorāda subtitru sīkfaili"</string>
   <string name="morphe_watch_later_navigation_label">Skatīties vēlāk</string>
   <string name="morphe_show_settings_button_title">Rādīt iestatījumu pogu</string>
   <string name="morphe_show_settings_button_type_title">Iestatījumu pogas darbība</string>
-  <string name="morphe_show_settings_button_type_summary">Ja iespējots, atver Morphe iestatījumus, ja izslēgts, atver YouTube iestatījumus</string>
+  <string name="morphe_show_settings_button_type_summary">Ja šī iespēja ir iespējota, pieskaršanās atvērs Morphe iestatījumus, bet ilga nospiešana atvērs YouTube iestatījumus; atslēdziet, lai mainītu tos vietu</string>
   <string name="morphe_navigation_buttons_order_title">Navigācijas pogu secība</string>
   <string name="morphe_navigation_buttons_order_summary">Velciet pogas, lai mainītu to secību navigācijas joslā</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamainīt pogu \"Izveidot\" ar pogu \"Paziņojumi\"</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ja šī iestatījuma maiņa nesniedz rezultātu, mēģiniet pārslēgties uz inkognito režīmu</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Pārvieto Paziņojumu pogu uz navigācijas joslu un Izveidot pogu uz rīkjoslu. Ja izmaiņas nestājas spēkā, mēģiniet pārslēgties uz inkognito režīmu</string>
   <string name="morphe_hide_navigation_button_labels_title">Slēpt navigācijas pogu etiķetes</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Slēpt jauna satura punktu</string>
   <string name="morphe_hide_navigation_bar_title">Slēpt navigācijas joslu</string>
@@ -1150,8 +1148,6 @@ Lai piekļūtu iestatījumiem, iespējojiet iestatījumu pogu sadaļā Vispārē
   <string name="morphe_navigation_bar_glass_size_width">Maksimālais platums</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Pogu attālums</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Rādītas pogas: %1$s no %2$s</string>
-  <string name="morphe_toolbar_screen_title">Rīkjosla</string>
-  <string name="morphe_toolbar_screen_summary">Izvēlieties, kuri komponenti parādās rīkjoslā</string>
   <string name="morphe_hide_toolbar_chat_button_title">Slēpt tērzēšanas pogu</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Slēpt mikrofona pogu</string>
   <string name="morphe_hide_toolbar_search_button_title">Slēpt meklēšanas pogu</string>

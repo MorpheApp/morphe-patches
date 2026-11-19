@@ -266,9 +266,6 @@ Android System WebView қолданбасын ашу үшін OK түймесі�
   <string name="morphe_video_quality_default_mobile_title">Мобильді желідегі стандартты видео сапасы</string>
   <string name="morphe_remember_video_quality_toast_mobile">Әдепкі мобильді сапа мынаға өзгертілді: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Әдепкі Wi-Fi сапасы мынаға өзгертілді: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Жүйелік бөлісу парағын ашу</string>
-  <string name="morphe_open_system_share_sheet_summary">Мазмұнмен бөліскен кезде қолданбадағының орнына жүйелік бөлісу парағын ашады</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho логгау</string>
   <string name="morphe_debug_litho_entry_disabled">Өшірілген</string>
@@ -380,4 +377,8 @@ PotHelper жүктеу үшін осында түртіңіз"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Клиенттің жылдамдық шектеулері кездестірілген жоқ</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Клиенттік шектеу лимиті %s рет кездесті</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунд</string>
+  <string name="morphe_navigation_bar_screen_title">Навигациялық панель</string>
+  <string name="morphe_navigation_bar_screen_summary">Төменгі навигациялық жолақта қай түймелер пайда болатынын таңдаңыз</string>
+  <string name="morphe_toolbar_screen_title">Құралдар панелі</string>
+  <string name="morphe_toolbar_screen_summary">Құралдар панелінде көрсетілетін компоненттерді таңдаңыз</string>
 </resources>

@@ -1088,8 +1088,6 @@ Kumele kunikezwe ama-'Caption cookies'"</string>
   <string name="morphe_caption_block_translation_failed">Kuningi okuhumushwe kuma-caption okungatholakali. Khombisa ama-caption atholakala.</string>
   <string name="morphe_caption_blocks_too_large">Kubo zombili izilimi zama-caption azingeni kule player. Khombisa ulimi lweqala.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Ibhali lokuqondisa</string>
-  <string name="morphe_navigation_bar_screen_summary">Khetha ukuthi yiziphi izinkinobho ezivela kubala lokuqondisa laphansi</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Fihla inkinobho yeKhaya</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Kumele kunikezwe ama-'Caption cookies'"</string>
   <string name="morphe_watch_later_navigation_label">Buka kamuva</string>
   <string name="morphe_show_settings_button_title">Khombisa inkinobho yeSettings</string>
   <string name="morphe_show_settings_button_type_title">Isenzo senkinobha yezilungiselelo</string>
-  <string name="morphe_show_settings_button_type_summary">Ivula izilungiselelo zeMorphe lapho kuvunyelwe, noma izilungiselelo zeYouTube lapho kukhishwe</string>
+  <string name="morphe_show_settings_button_type_summary">Uma kuvunyelwe, ukuthinta kuvula izilungiselelo ze-Morphe kanti ukuthinta isikhathi eside kuvula izilungiselelo ze-YouTube; khubaza ukuze uguqule</string>
   <string name="morphe_navigation_buttons_order_title">Ukuhlelwa kwezinestu zokuhamba</string>
   <string name="morphe_navigation_buttons_order_summary">Kudonsa izinestu ukuze ushintshe ukulandelana kwazo kubha yokuhamba</string>
   <string name="morphe_swap_create_with_notifications_button_title">Shintsha inkinobho ye-Create ne-Notifications</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Uma ukushintsha kwalolu sethingi kungasebenzi, zama ukushintshela ku-Incognito mode</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Yisusa inkinobho yeZaziso uyise ebhalazini lokuhamba, bese uyisa inkinobho yeDala ku-toolbar. Uma izinguquko zingasebenzi, zama ukushintshela ku-Incognito mode</string>
   <string name="morphe_hide_navigation_button_labels_title">Fihla amagama ezinkinobho zokuhamba</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Fihla ichashana lokuqukethwe okusha</string>
   <string name="morphe_hide_navigation_bar_title">Fihla i-navigation bar</string>
@@ -1150,8 +1148,6 @@ Ukuze ufike ku-Settings, vula inkinobho ye-Settings nge-General → Toolbar → 
   <string name="morphe_navigation_bar_glass_size_width">Ububanzi obukhulu</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Isikhala sezinkinobho</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Izinkinobizibonakalayo: %1$s kwe-%2$s</string>
-  <string name="morphe_toolbar_screen_title">Ithuliba</string>
-  <string name="morphe_toolbar_screen_summary">Khetha ukuthi yiziphi izinto ezivela kwi-toolbar</string>
   <string name="morphe_hide_toolbar_chat_button_title">Fihla inkinobho ye-Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Fihla inkinobho yeMicrophone</string>
   <string name="morphe_hide_toolbar_search_button_title">Fihla inkinobho yoKusesha</string>

@@ -266,9 +266,6 @@ Um sich anzumelden, drücken Sie unten auf Weiter"</string>
   <string name="morphe_video_quality_default_mobile_title">Standard-Videoqualität im Mobilfunknetz</string>
   <string name="morphe_remember_video_quality_toast_mobile">Standardqualität für Mobilfunk geändert zu: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Standardqualität für Wi-Fi geändert zu: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Systemfreigabe öffnen</string>
-  <string name="morphe_open_system_share_sheet_summary">Öffnet die systemeigene Freigabeansicht anstelle der In-App-Ansicht, wenn du Inhalte teilst</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-Protokollierung</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktiviert</string>
@@ -380,4 +377,8 @@ Die ID des Videos, das du dir ansiehst, wird an die Return YouTube Dislike-API g
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Keine Client-Ratenbegrenzungen festgestellt</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client-Ratenbegrenzung %s-mal aufgetreten</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s Millisekunden</string>
+  <string name="morphe_navigation_bar_screen_title">Navigationsleiste</string>
+  <string name="morphe_navigation_bar_screen_summary">Wähle aus, welche Schaltflächen in der unteren Navigationsleiste angezeigt werden sollen</string>
+  <string name="morphe_toolbar_screen_title">Symbolleiste</string>
+  <string name="morphe_toolbar_screen_summary">Wähle aus, welche Schaltflächen in der Toolbar erscheinen sollen</string>
 </resources>

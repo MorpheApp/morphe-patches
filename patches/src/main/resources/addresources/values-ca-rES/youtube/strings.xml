@@ -1088,8 +1088,6 @@ Cal proporcionar les 'cookies de subtítols'"</string>
   <string name="morphe_caption_block_translation_failed">Algunes traduccions de subtítols no estan disponibles. Mostrant els subtítols disponibles.</string>
   <string name="morphe_caption_blocks_too_large">Els dos idiomes de subtítols no caben en aquest reproductor. Mostrant l\'idioma principal.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Barra de navegació</string>
-  <string name="morphe_navigation_bar_screen_summary">Tria quins botons apareixen a la barra de navegació inferior</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Amaga el botó d\'Inici</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Cal proporcionar les 'cookies de subtítols'"</string>
   <string name="morphe_watch_later_navigation_label">Veure més tard</string>
   <string name="morphe_show_settings_button_title">Mostra el botó de Configuració</string>
   <string name="morphe_show_settings_button_type_title">Acció del botó de Configuració</string>
-  <string name="morphe_show_settings_button_type_summary">Obre els ajusts de Morphe quan està activat, o els ajusts de YouTube quan està desactivat</string>
+  <string name="morphe_show_settings_button_type_summary">Quan està activat, tocar obre els ajustos de Morphe i mantenir premut obre els ajustos de YouTube, desactiva per intercanviar</string>
   <string name="morphe_navigation_buttons_order_title">Ordre dels botons de navegació</string>
   <string name="morphe_navigation_buttons_order_summary">Arrossega els botons per canviar l\'ordre a la barra de navegació</string>
   <string name="morphe_swap_create_with_notifications_button_title">Intercanvia el botó de Crear amb el de Notificacions</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Si canviar aquest ajust no té efecte, intenta passar al mode Incògnit</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Desplaça el botó de Notificacions a la barra de navegació i el botó de Crear a la barra d\'eines. Si els canvis no s\'apliquen, intenta canviar al mode Incògnit</string>
   <string name="morphe_hide_navigation_button_labels_title">Ocultar les etiquetes dels botons de navegació</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Amaga el punt de contingut nou</string>
   <string name="morphe_hide_navigation_bar_title">Ocultar la barra de navegació</string>
@@ -1150,8 +1148,6 @@ Per accedir a la Configuració, activeu el botó de Configuració a través de G
   <string name="morphe_navigation_bar_glass_size_width">Amplada màxima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espaiat dels botons</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Botons mostrats: %1$s de %2$s</string>
-  <string name="morphe_toolbar_screen_title">Barra d\'eines</string>
-  <string name="morphe_toolbar_screen_summary">Tria quins components apareixen a la barra d\'eines</string>
   <string name="morphe_hide_toolbar_chat_button_title">Oculta el botó de Xat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ocultar el botó del Micròfon</string>
   <string name="morphe_hide_toolbar_search_button_title">Ocultar el botó de cerca</string>

@@ -1088,8 +1088,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">Някои преводи на субтитрите не са налични. Показват се наличните субтитри.</string>
   <string name="morphe_caption_blocks_too_large">И двата езика на субтитрите не се събират в този плеър. Показва се основният език.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Навигационна лента</string>
-  <string name="morphe_navigation_bar_screen_summary">Изберете кои бутони да се показват в долната навигационна лента</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Скриване на бутона „Начало“</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">Гледайте по-късно</string>
   <string name="morphe_show_settings_button_title">Показване на бутона „Настройки“</string>
   <string name="morphe_show_settings_button_type_title">Действие на бутона за Настройки</string>
-  <string name="morphe_show_settings_button_type_summary">Отваря настройките на Morphe, когато е включено, или настройките на YouTube, когато е изключено</string>
+  <string name="morphe_show_settings_button_type_summary">Когато е активирано, докосването отваря настройките на Morphe, а продължителното натискане отваря настройките на YouTube; деактивирайте, за да ги размените</string>
   <string name="morphe_navigation_buttons_order_title">Ред на бутоните за навигация</string>
   <string name="morphe_navigation_buttons_order_summary">Плъзгайте бутоните, за да промените техния ред в навигационната лента</string>
   <string name="morphe_swap_create_with_notifications_button_title">Размяна на бутона \"Създаване\" с бутона \"Известия\"</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ако промяната на тази настройка не влезе в сила, опитайте да превключите в режим на инкогнито</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Премества бутона за известия в навигационната лента, а бутона за създаване в лентата с инструменти. Ако промените не влязат в сила, опитайте се да преминете в инкогнито режим</string>
   <string name="morphe_hide_navigation_button_labels_title">Скриване на етикетите на бутоните за навигация</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Скриване на точката за ново съдържание</string>
   <string name="morphe_hide_navigation_bar_title">Скриване на лентата за навигация</string>
@@ -1150,8 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимална ширина</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Разстояние между бутоните</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Показани бутони: %1$s от %2$s</string>
-  <string name="morphe_toolbar_screen_title">Лента с инструменти</string>
-  <string name="morphe_toolbar_screen_summary">Изберете кои компоненти да се показват в лентата с инструменти</string>
   <string name="morphe_hide_toolbar_chat_button_title">Скрий бутона за чат</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Скриване на бутона за микрофон</string>
   <string name="morphe_hide_toolbar_search_button_title">Скриване на бутона за Търсене</string>

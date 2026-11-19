@@ -88,7 +88,14 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_settings_about_links_translations">Traductions</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">À jour</string>
   <string name="morphe_settings_about_contributors">Contributeurs</string>
-  <string name="morphe_settings_about_contributors_period">Les 12 derniers mois</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Depuis toujours</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mois</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mois</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Période temporelle</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s utilisateurs</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Donateurs</string>
   <string name="morphe_settings_about_supporters_summary">Contributeurs sur Open Collective</string>
@@ -223,6 +230,9 @@ Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencon
 • L'application peut se fermer de manière aléatoire
 • Les notifications peuvent ne pas fonctionner
 • La lecture en arrière-plan peut ne pas fonctionner"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ouverture du menu \'Partager\' du système</string>
+  <string name="morphe_open_system_share_sheet_summary">Ouvre la feuille de partage du système au lieu de celle de l\'application lors du partage de contenu</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestion des liens d\'application</string>
   <string name="morphe_link_handling_summary">Configurer les liens pour qu\'ils s\'ouvrent dans cette application</string>

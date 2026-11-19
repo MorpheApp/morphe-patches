@@ -266,9 +266,6 @@ Norėdami prisijungti, paspauskite žemiau esantį mygtuką „Tęsti“"</strin
   <string name="morphe_video_quality_default_mobile_title">Numatytinė vaizdo kokybė naudojant mobilųjį tinklą</string>
   <string name="morphe_remember_video_quality_toast_mobile">Numatytinė mobiliojo tinklo kokybė pakeista į: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Numatytinė Wi-Fi kokybė pakeista į: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Atidaryti sistemos bendrinimo langą</string>
-  <string name="morphe_open_system_share_sheet_summary">Bendrinant turinį, atidaro sistemos bendrinimo langą vietoj programėlės lango</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho žurnalo įrašai</string>
   <string name="morphe_debug_litho_entry_disabled">Išjungta</string>
@@ -380,4 +377,8 @@ Jei vėliau išjungiate, rekomenduojama išvalyti programos duomenis, kad būtų
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nepasitaikė jokių kliento užklausų limitų</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Susidurta su kliento ribotimo apribojimu %s kartus</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekundžių</string>
+  <string name="morphe_navigation_bar_screen_title">Naršymo juosta</string>
+  <string name="morphe_navigation_bar_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apatinėje naršymo juostoje</string>
+  <string name="morphe_toolbar_screen_title">Įrankių juosta</string>
+  <string name="morphe_toolbar_screen_summary">Pasirinkite, kokie komponentai turėtų būti rodomi įrankių juostoje</string>
 </resources>

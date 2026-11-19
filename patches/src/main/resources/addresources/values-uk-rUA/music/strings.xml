@@ -174,6 +174,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_filter_bar_title">Приховати панель фільтрів</string>
   <string name="morphe_music_hide_grid_shelves_title">Приховати панелі сіток</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Приховати горизонтальні панелі</string>
+  <string name="morphe_music_hide_new_button_title">Приховати кнопку \"Новий\"</string>
+  <string name="morphe_music_hide_new_button_summary">Приховує кнопку \"Новий\" на вкладці \"Бібліотека\"</string>
   <string name="morphe_music_hide_list_shelves_title">Приховати панелі-списки</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Панель текстів пісень</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Приховати кнопку \"Поділитися\"</string>
@@ -199,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">Кросфейд</string>
   <string name="morphe_music_crossfade_screen_summary">Плавно змішує треки між собою</string>
   <string name="morphe_music_crossfade_enabled_title">Увімкнути кросфейд</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Щоб використовувати перехресне затухання, змініть \"Default client\" у підміні відеопотоків на TV Simply або visionOS</string>
   <string name="morphe_music_crossfade_curve_title">Крива згасання</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Рівномірна потужність</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Незначна затримка</string>
@@ -232,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Кросфейд призупинено для цього сеансу</string>
   <string name="morphe_music_crossfade_resumed_toast">Кросфейд відновлено</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим відео недоступний, поки кросфейд увімкнено</string>
-  <string name="morphe_music_crossfade_sabr_toast">Кросфейд вимкнено під час відтворення SABR</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Перехресне затухання не працює з visionOS. Змініть \"Default client\" у підміні відеопотоків на TV Simply</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Перехресне затухання не працює з цим клієнтом підміни потоку</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Кросфейд вимкнено під час трансляції</string>
   <string name="morphe_music_crossfade_about_how_title">Як це працює</string>
   <string name="morphe_music_crossfade_about_how_summary">"Кросфейд накладає кінець однієї пісні на початок наступної, використовуючи вашу тривалість і криву
@@ -249,9 +255,7 @@ Second \"item\" text"</string>
 
 Призупинення кросфейду для перегляду музичного відео може залишити частину відео чорними. Щоб цього уникнути, призупиніть кросфейд до вибору пісні"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Не підтримується</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Трансляція або дзеркалення аудіо (Chromecast, дзеркалення екрана чи аудіо)
-
-Відтворення SABR (функцію \"Підміна відеопотоків\" вимкнено)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Трансляція або дублювання аудіо (Chromecast, дублювання екрана або аудіо)</string>
   <string name="morphe_music_crossfade_about_credit_title">Автор</string>
   <string name="morphe_music_crossfade_about_credit_summary">Функцію кросфейду створив VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,11 @@ Second \"item\" text"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Вимкнути перенаправлення при дизлайку</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Запобігає переходу до наступного треку при натисканні кнопки дизлайку</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Вимкнути зміну треку жестом</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Запобігає перемиканню на наступний або попередній трек за допомогою змахнення вліво або вправо у плеєрі</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Вимкнути зміну треку жестом</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Запобігає перемиканню на наступний або попередній трек за допомогою змахнення вліво або вправо у мініплеєрі</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Повтор A-B</string>
   <string name="morphe_music_ab_loop_summary">Натисніть і утримуйте смугу відтворення, щоб задати початок повтору, ще раз, щоб задати кінець повтору, і ще раз, щоб скасувати повтор</string>
@@ -329,15 +338,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_rename">Перейменувати</string>
   <string name="morphe_music_playlist_tags_delete">Видалити</string>
   <string name="morphe_music_playlist_tags_hidden">Приховано</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Приховати кнопку \"Трансляція\"</string>
-  <string name="morphe_music_hide_history_button_title">Приховати кнопку \"Історія\"</string>
-  <string name="morphe_music_hide_notification_button_title">Приховати кнопку \"Сповіщення\"</string>
-  <string name="morphe_music_hide_search_button_title">Приховати кнопку \"Пошук\"</string>
-  <string name="morphe_music_hide_voice_search_button_title">Приховати кнопку \"Голосовий пошук\"</string>
-  <string name="morphe_music_hide_sound_search_button_title">Приховати кнопку \"Пошук звуку\"</string>
-  <string name="morphe_music_hide_library_new_button_title">Приховати кнопку \"Новий\"</string>
-  <string name="morphe_music_hide_library_new_button_summary">Приховує кнопку \"Новий\" на вкладці \"Бібліотека\"</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Кнопки дій</string>
   <string name="morphe_music_action_buttons_screen_summary">Виберіть, які кнопки з\'являються під програвачем</string>
@@ -409,22 +409,20 @@ Second \"item\" text"</string>
   <string name="morphe_music_force_portrait_orientation_title">Примусова портретна орієнтація</string>
   <string name="morphe_music_force_portrait_orientation_summary">Утримує застосунок у портретній орієнтації під час обертання пристрою</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Змінити колір мініплеєра</string>
+  <string name="morphe_music_change_miniplayer_color_title">Змінити колір</string>
   <string name="morphe_music_change_miniplayer_color_summary">Підлаштовує колір мініплеєра під повноекранний плеєр</string>
   <string name="morphe_music_change_navigation_bar_color_title">Змінити колір панелі навігації</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Підлаштовує колір панелі навігації під повноекранний плеєр</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Показувати кнопку наступного треку в мініплеєрі</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Показувати кнопку попереднього треку в мініплеєрі</string>
+  <string name="morphe_music_miniplayer_next_button_title">Показувати кнопку \"Наступний\"</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Показувати кнопку \"Попередній\"</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Увімкнути примусово мініплеєр</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Запобігає автоматичному розгортанню плеєра на весь екран при запуску нового треку</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Увімкнути закриття мініплеєра свайпом</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Увімкнути закриття свайпом</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Дозволяє закрити мініплеєр, провівши по ньому вниз</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Панель навігації</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Виберіть кнопки, що будуть показуватися на нижній навігаційній панелі</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Приховати кнопку \"Додому\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +455,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Приховує закруглене підсвічування за вибраною кнопкою скляної панелі навігації</string>
   <string name="morphe_music_miniplayer_screen_title">Мініплеєр</string>
   <string name="morphe_music_miniplayer_screen_summary">Змініть стиль, кнопки та жести мініплеєра</string>
-  <string name="morphe_music_miniplayer_glass_title">Увімкнути скляний мініплеєр</string>
+  <string name="morphe_music_miniplayer_glass_title">Увімкнути ефект скла</string>
   <string name="morphe_music_miniplayer_glass_summary">Показує плаваючий мініплеєр як закруглену напівпрозору скляну картку</string>
   <string name="morphe_music_miniplayer_glass_style_title">Стиль скляного мініплеєра</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Налаштуйте радіус кутів, відступи обкладинки, яскравість краю та непрозорість скляного мініплеєра з попереднім переглядом</string>
@@ -480,6 +478,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Семпли</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Навігація</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Бібліотека</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Приховати кнопку \"Активність\"</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Приховати \"Запитати про музику\"</string>
+  <string name="morphe_music_hide_cast_button_title">Приховати кнопку \"Трансляція\"</string>
+  <string name="morphe_music_hide_history_button_title">Приховати кнопку \"Історія\"</string>
+  <string name="morphe_music_hide_search_button_title">Приховати кнопку \"Пошук\"</string>
+  <string name="morphe_music_hide_voice_search_button_title">Приховати кнопку \"Голосовий пошук\"</string>
+  <string name="morphe_music_hide_sound_search_button_title">Приховати кнопку \"Пошук звуку\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Не авторизовано. Натисніть, щоб налаштувати</string>
   <string name="morphe_music_scrobbling_log_out">Вийти</string>

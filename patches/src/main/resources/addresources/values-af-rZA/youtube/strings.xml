@@ -1088,8 +1088,6 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_caption_block_translation_failed">Sommige ondertitelvertalings is nie beskikbaar nie. Wys beskikbare ondertitels.</string>
   <string name="morphe_caption_blocks_too_large">Beide ondertiteltale pas nie in hierdie speler nie. Wys die primêre taal.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigasiebalk</string>
-  <string name="morphe_navigation_bar_screen_summary">Kies watter knoppies in die onderste navigasiebalk verskyn</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Verberg Tuis-knoppie</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_watch_later_navigation_label">Kyk later</string>
   <string name="morphe_show_settings_button_title">Wys Instellings-knoppie</string>
   <string name="morphe_show_settings_button_type_title">Instellingsknoppie-aksie</string>
-  <string name="morphe_show_settings_button_type_summary">Maak Morphe-instellings oop wanneer geaktiveer, of YouTube-instellings wanneer gedeaktiveer</string>
+  <string name="morphe_show_settings_button_type_summary">Wanneer geaktiveer, maak tik Morphe-instellings oop en lang druk maak YouTube-instellings oop; deaktiveer om om te ruil</string>
   <string name="morphe_navigation_buttons_order_title">Navigasieknoppies se volgorde</string>
   <string name="morphe_navigation_buttons_order_summary">Sleep die knoppies om hul volgorde in die navigasiebalk te verander</string>
   <string name="morphe_swap_create_with_notifications_button_title">Ruil die \'Skep\'-knoppie met die \'Kennisgewings\'-knoppie</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">As die verandering van hierdie instelling nie effektief is nie, probeer om na incognitomodus oor te skakel</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Skuif die Kennisgewing-knoppie na die navigasiebalk en die Skep-knoppie na dienutsbalk. As veranderinge nie in werking tree nie, probeer om na Inkognito-modus te skakel</string>
   <string name="morphe_hide_navigation_button_labels_title">Verberg navigasieknoppie-etikette</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Versteek nuwe inhoudkolletjie</string>
   <string name="morphe_hide_navigation_bar_title">Versteek navigasiebalk</string>
@@ -1150,8 +1148,6 @@ Om toegang tot Instellings te kry, aktiveer die Instellings-knoppie via Algemeen
   <string name="morphe_navigation_bar_glass_size_width">Maksimum breedte</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knoppiespasiëring</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Knoppies gewys: %1$s van %2$s</string>
-  <string name="morphe_toolbar_screen_title">Nutsbalk</string>
-  <string name="morphe_toolbar_screen_summary">Kies watter komponente in die wenkbalk verskyn</string>
   <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knoppie</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Verberg Mikrofoon-knoppie</string>
   <string name="morphe_hide_toolbar_search_button_title">Verberg Soek-knoppie</string>

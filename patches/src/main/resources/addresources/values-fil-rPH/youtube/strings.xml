@@ -1088,8 +1088,6 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <string name="morphe_caption_block_translation_failed">Hindi available ang ilang mga pagsasalin ng caption. Ipinapakita ang mga available na caption.</string>
   <string name="morphe_caption_blocks_too_large">Hindi kasya ang parehong wika ng caption sa player na ito. Ipinapakita ang primaryang wika.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigation bar</string>
-  <string name="morphe_navigation_bar_screen_summary">Pumili kung aling mga button ang lilitaw sa bottom navigation bar</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Itago ang Home button</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <string name="morphe_watch_later_navigation_label">Panoorin mamaya</string>
   <string name="morphe_show_settings_button_title">Ipakita ang Settings button</string>
   <string name="morphe_show_settings_button_type_title">Aksyon ng button ng Mga Setting</string>
-  <string name="morphe_show_settings_button_type_summary">Binubuksan ang Morphe settings kapag naka-enable, o YouTube settings kapag naka-disable</string>
+  <string name="morphe_show_settings_button_type_summary">Kapag naka-enable, ang pag-tap ay magbubukas ng mga setting ng Morphe at ang long press ay magbubukas ng mga setting ng YouTube, i-disable para pagpalitin</string>
   <string name="morphe_navigation_buttons_order_title">Pagkakasunod-sunod ng mga button ng nabigasyon</string>
   <string name="morphe_navigation_buttons_order_summary">I-drag ang mga button upang baguhin ang pagkakasunod-sunod ng mga ito sa navigation bar</string>
   <string name="morphe_swap_create_with_notifications_button_title">Pagpalitin ang button na Create sa button na Notifications</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Kung ang pagbabago sa setting na ito ay hindi magkaroon ng epekto, subukang lumipat sa Incognito mode.</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Inililipat ang button ng Notifications sa navigation bar at ang button ng Create sa toolbar. Kung hindi gumagana ang mga pagbabago, subukang lumipat sa Incognito mode</string>
   <string name="morphe_hide_navigation_button_labels_title">Itago ang mga label ng navigation button</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Itago ang tuldok ng bagong nilalaman</string>
   <string name="morphe_hide_navigation_bar_title">Itago ang navigation bar</string>
@@ -1150,8 +1148,6 @@ Para ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gene
   <string name="morphe_navigation_bar_glass_size_width">Maximum na lapad</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espasyo ng button</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Mga button na ipinapakita: %1$s sa %2$s</string>
-  <string name="morphe_toolbar_screen_title">Toolbar</string>
-  <string name="morphe_toolbar_screen_summary">Pumili kung aling mga component ang lilitaw sa toolbar</string>
   <string name="morphe_hide_toolbar_chat_button_title">Itago ang Chat button</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Itago ang Microphone button</string>
   <string name="morphe_hide_toolbar_search_button_title">Itago ang Search button</string>

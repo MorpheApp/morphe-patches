@@ -1090,8 +1090,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_caption_block_translation_failed">일부 자막은 번역을 제공하지 않습니다. 번역이 제공되는 자막만 표시합니다</string>
   <string name="morphe_caption_blocks_too_large">이 플레이어에서는 두 가지 자막 언어를 동시에 표시할 공간이 부족합니다. 기본 자막 언어만 표시합니다</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">하단바</string>
-  <string name="morphe_navigation_bar_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">홈 버튼 숨기기</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1109,11 +1107,11 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_watch_later_navigation_label">나중에 볼 동영상</string>
   <string name="morphe_show_settings_button_title">설정 버튼 표시하기</string>
   <string name="morphe_show_settings_button_type_title">설정 버튼 작업</string>
-  <string name="morphe_show_settings_button_type_summary">활성화하면 Morphe 설정이 열리고, 비활성화하면 YouTube 설정을 열립니다</string>
+  <string name="morphe_show_settings_button_type_summary">활성화하면 버튼을 탭했을 경우에 Morphe 설정이 열리고, 길게 탭했을 경우에 YouTube 설정이 열립니다. 비활성화하면 작업이 반대로 바뀝니다</string>
   <string name="morphe_navigation_buttons_order_title">하단바 버튼 순서</string>
   <string name="morphe_navigation_buttons_order_summary">버튼을 드래그하여 하단바의 순서를 변경하세요</string>
   <string name="morphe_swap_create_with_notifications_button_title">만들기 버튼과 알림 버튼의 위치 교환하기</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">이 설정을 변경해도 적용되지 않는 경우에는 시크릿 모드로 전환해 보세요</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">알림 버튼을 탐색 모음으로, 만들기 버튼을 도구 모음으로 이동합니다. 변경 사항이 적용되지 않으면 시크릿 모드로 전환해 보세요</string>
   <string name="morphe_hide_navigation_button_labels_title">하단바 버튼 라벨 숨기기</string>
   <string name="morphe_hide_navigation_new_content_dot_title">새 콘텐츠 알림점 숨기기</string>
   <string name="morphe_hide_navigation_bar_title">하단바 숨기기</string>
@@ -1152,8 +1150,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_navigation_bar_glass_size_width">최대 너비</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">버튼 간격</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">표시된 버튼: %2$s개 중 %1$s개</string>
-  <string name="morphe_toolbar_screen_title">툴바</string>
-  <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_toolbar_chat_button_title">메시지 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_microphone_button_title">음성 검색 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_search_button_title">검색 버튼 숨기기</string>

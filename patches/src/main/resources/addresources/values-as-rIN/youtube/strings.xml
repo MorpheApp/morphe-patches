@@ -1088,8 +1088,6 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_caption_block_translation_failed">কিছুমান কেপচন অনুবাদ উপলব্ধ নহয়। উপলব্ধ কেপচনসমূহ দেখুৱা হৈছে।</string>
   <string name="morphe_caption_blocks_too_large">দুয়োটা কেপচন ভাষা এই প্লেয়াৰত খাপ নাখায়। মুখ্য ভাষাটি দেখুৱা হৈছে।</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">নেভিগেচন বাৰ</string>
-  <string name="morphe_navigation_bar_screen_summary">তলৰ নেভিগেছন বাৰত কোনবোৰ বুটাম দেখুৱাব সেইটো বাছনি কৰক</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">হোম বুটামটো লুকুৱাওক</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_watch_later_navigation_label">পাছত চাম</string>
   <string name="morphe_show_settings_button_title">Settings বুটাম দেখুৱাওক</string>
   <string name="morphe_show_settings_button_type_title">Settings বুটামৰ কাৰ্য</string>
-  <string name="morphe_show_settings_button_type_summary">সক্ৰিয় কৰিলে Morphe settings খোলে, অথবা নিষ্ক্ৰিয় কৰিলে YouTube settings খোলে</string>
+  <string name="morphe_show_settings_button_type_summary">সক্ৰিয় কৰিলে, টেপ কৰিলে Morphe ছেটিংছ আৰু লং প্ৰেছ কৰিলে YouTube ছেটিংছ খোলকৈ আহে, সলনি কৰিবলৈ নিষ্ক্ৰিয় কৰক</string>
   <string name="morphe_navigation_buttons_order_title">নেভিগেচন বুটামৰ ক্ৰম</string>
   <string name="morphe_navigation_buttons_order_summary">নেভিগেচন বাৰত বুটামবোৰৰ ক্ৰম সলনি কৰিবলৈ বুটামবোৰ টানি লৈ যাওক</string>
   <string name="morphe_swap_create_with_notifications_button_title">Create বুটামটো Notifications বুটামটোৰ সৈতে সলনি কৰক</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">যদি এই ছেটিংটো সলনি কৰিও কোনো প্ৰভাৱ নপৰে, তেন্তে ইনকগ্নিটো মোডলৈ পৰিৱৰ্তন কৰি চেষ্টা কৰক</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Notifications বুটনটো নেভিগেচন বাৰলৈ আৰু Create বুটনটো টুলবাৰলৈ স্থানান্তৰ কৰে। যদি পৰিৱৰ্তনবোৰ কাৰ্যকৰী নহয়, তেন্তে Incognito মোডলৈ সংক্ৰান্তৰ কৰিবলৈ চেষ্টা কৰক</string>
   <string name="morphe_hide_navigation_button_labels_title">নেভিগেশ্বন বুটামৰ লেবেলসমূহ লুকুৱাই ৰাখক</string>
   <string name="morphe_hide_navigation_new_content_dot_title">নতুন সমল্ড ডট লুকুৱাওক</string>
   <string name="morphe_hide_navigation_bar_title">নেভিগেচন বাৰ লুকুৱাওক</string>
@@ -1150,8 +1148,6 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_navigation_bar_glass_size_width">সৰ্বোচ্চ প্ৰস্থ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">বুটামৰ ব্যৱধান</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">দেখুৱা বুটাম: %2$s ৰ ভিতৰত %1$s</string>
-  <string name="morphe_toolbar_screen_title">টুলবাৰ</string>
-  <string name="morphe_toolbar_screen_summary">টুলবাৰত কোনবোৰ উপাদান দেখা যাব তাৰ বাবে বাছনি কৰক</string>
   <string name="morphe_hide_toolbar_chat_button_title">চ্যাট বুটামটো লুকুৱাই থওক</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Microphone বুটাম লুকুৱাওক</string>
   <string name="morphe_hide_toolbar_search_button_title">অনুসন্ধান বুটামটো লুকুৱাওক</string>

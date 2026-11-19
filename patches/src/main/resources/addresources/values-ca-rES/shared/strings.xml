@@ -87,7 +87,13 @@ Per traduir nous idiomes o millorar les traduccions existents, visita morphe.sof
   <string name="morphe_settings_about_links_translations">Traduccions</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Actualitzat</string>
   <string name="morphe_settings_about_contributors">Contributors</string>
-  <string name="morphe_settings_about_contributors_period">Els últims 12 mesos</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Tot el temps</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mesos</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mesos</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Període de temps</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Supports</string>
   <string name="morphe_settings_about_supporters_summary">Patrocinadors a Open Collective</string>
@@ -222,6 +228,9 @@ Si no es canvien les optimitzacions de la bateria, és possible que experimenteu
 • L'aplicació es pot tancar aleatòriament
 • Les notificacions podrien no funcionar
 • La reproducció en segon pla podria no funcionar"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Obre la fulla de compartició del sistema</string>
+  <string name="morphe_open_system_share_sheet_summary">Obre el full de compartició del sistema en lloc del de l\'aplicació quan es comparteix contingut</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestió d\'enllaços de l\'app</string>
   <string name="morphe_link_handling_summary">Configureu els enllaços per obrir-los en aquesta aplicació</string>

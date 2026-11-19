@@ -1088,8 +1088,6 @@ Til að laga þetta skaltu kveikja á 'Falsa myndstrauma' og breyta 'Sjálfgefin
   <string name="morphe_caption_block_translation_failed">Sumar þýðingar á texta eru ekki aðgengilegar. Sýni texta sem eru aðgengilegir.</string>
   <string name="morphe_caption_blocks_too_large">Bæði textamálin passa ekki inn í þennan spilara. Sýni aðalmálið.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Leiðsögustika</string>
-  <string name="morphe_navigation_bar_screen_summary">Veldu hvaða hnappar birtast í neðri leiðsögustiku</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Fela Heim-hnappinn</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Til að laga þetta skaltu kveikja á 'Falsa myndstrauma' og breyta 'Sjálfgefin
   <string name="morphe_watch_later_navigation_label">Horfa síðar</string>
   <string name="morphe_show_settings_button_title">Sýna Stillingar-hnappinn</string>
   <string name="morphe_show_settings_button_type_title">Aðgerð stillingarhnapps</string>
-  <string name="morphe_show_settings_button_type_summary">Opnar Morphe-stillingar þegar kveikt er, eða stillingar YouTube þegar slökkt er</string>
+  <string name="morphe_show_settings_button_type_summary">Þegar virkt, opnar stutt ýtt Morphe-stillingar en langt ýtt YouTube-stillingar; slökktu á til að skipta</string>
   <string name="morphe_navigation_buttons_order_title">Röð leiðsögutakka</string>
   <string name="morphe_navigation_buttons_order_summary">Dragðu hnappana til að breyta röð þeirra í leiðsögustikunni</string>
   <string name="morphe_swap_create_with_notifications_button_title">Skipta hnappinum Create út fyrir hnappinn Notifications</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ef breyting á þessari stillingu tekur ekki gildi, prófaðu að skipta yfir í huliðsham</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Flyttir tilkynningahnappinn í siglinguslána og Búa til-hnappinn í verkfærisslána. Ef breytingarnar taka ekki skipti, reyndu að fara í dulmaskýlaðan ham</string>
   <string name="morphe_hide_navigation_button_labels_title">Fela merki leiðsöguhnappa</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Fela punktinn fyrir nýtt efni</string>
   <string name="morphe_hide_navigation_bar_title">Fela leiðsögustiku</string>
@@ -1150,8 +1148,6 @@ Til að opna stillingar skaltu virkja stillingahnappinn undir Almennt → Tækja
   <string name="morphe_navigation_bar_glass_size_width">Hámarksbreidd</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Hnappabil</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Sýndir hnappar: %1$s af %2$s</string>
-  <string name="morphe_toolbar_screen_title">Tækjastika</string>
-  <string name="morphe_toolbar_screen_summary">Veldu hvaða hlutar birtast á tækjastikunni</string>
   <string name="morphe_hide_toolbar_chat_button_title">Fela Chat-hnappinn</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Fela Hljóðnema-hnappinn</string>
   <string name="morphe_hide_toolbar_search_button_title">Fela Leita-hnappinn</string>

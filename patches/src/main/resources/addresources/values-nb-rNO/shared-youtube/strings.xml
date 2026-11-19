@@ -266,9 +266,6 @@ For å logge på, trykk fortsett nedenfor"</string>
   <string name="morphe_video_quality_default_mobile_title">Standard videokvalitet i mobilnettverk</string>
   <string name="morphe_remember_video_quality_toast_mobile">Endret standard mobilkvalitet til: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Endret standard Wi-Fi-kvalitet til: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Åpne systemets delingsmeny</string>
-  <string name="morphe_open_system_share_sheet_summary">Åpner systemets delingsmeny i stedet for appens egen når innhold deles</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logging</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktivert</string>
@@ -380,4 +377,8 @@ ID-en til videoen du ser, sendes til Return YouTube Dislike API, og liker og mis
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ingen klientgrenser for hastighet er registrert</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klientens hastighetsbegrensning ble møtt %s ganger</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekunder</string>
+  <string name="morphe_navigation_bar_screen_title">Navigasjonslinje</string>
+  <string name="morphe_navigation_bar_screen_summary">Velg hvilke knapper som vises i navigasjonslinjen nederst</string>
+  <string name="morphe_toolbar_screen_title">Verktøylinje</string>
+  <string name="morphe_toolbar_screen_summary">Velg hvilke komponenter som vises i verktøylinjen</string>
 </resources>

@@ -87,7 +87,14 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_settings_about_links_translations">Dịch thuật</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Đã cập nhật</string>
   <string name="morphe_settings_about_contributors">Người đóng góp</string>
-  <string name="morphe_settings_about_contributors_period">12 tháng qua</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Mọi thời điểm</string>
+  <string name="morphe_settings_about_contributors_6_months">6 tháng</string>
+  <string name="morphe_settings_about_contributors_3_months">3 tháng</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Khoảng thời gian</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s người dùng</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Người ủng hộ</string>
   <string name="morphe_settings_about_supporters_summary">Người ủng hộ trên Open Collective</string>
@@ -222,6 +229,9 @@ Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể x�
 • Ứng dụng tự tắt bất chợt
 • Không nhận được thông báo
 • Không phát được trong nền"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Mở bảng chia sẻ của hệ thống</string>
+  <string name="morphe_open_system_share_sheet_summary">Mở bảng chia sẻ của hệ thống thay vì bảng chia sẻ của ứng dụng khi chia sẻ</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Xử lý liên kết ứng dụng</string>
   <string name="morphe_link_handling_summary">Cấu hình liên kết mở trong ứng dụng này</string>

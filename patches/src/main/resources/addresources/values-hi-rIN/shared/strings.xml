@@ -87,7 +87,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">ट्रांसलेशन्स</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">नवीनतम</string>
   <string name="morphe_settings_about_contributors">योगदानकर्ता</string>
-  <string name="morphe_settings_about_contributors_period">पिछले 12 महीने</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">हमेशा के लिए</string>
+  <string name="morphe_settings_about_contributors_6_months">6 महीने</string>
+  <string name="morphe_settings_about_contributors_3_months">3 महीने</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">समय अवधि</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">समर्थक</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective पर समर्थक</string>
@@ -222,6 +228,9 @@ MicroG के लिए बैटरी ऑप्टिमाइजेशन क
 • ऐप बेतरतीब ढंग से बंद हो सकता है
 • सूचनाएं काम नहीं कर सकती हैं
 • पृष्ठभूमि प्लेबैक काम नहीं कर सकता है"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">सिस्टम शेयर शीट खोलें</string>
+  <string name="morphe_open_system_share_sheet_summary">सामग्री साझा करते समय इन-ऐप शेयर शीट के बजाय सिस्टम शेयर शीट खोलता है</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">ऐप लिंक हैंडलिंग</string>
   <string name="morphe_link_handling_summary">इस ऐप में खोलने के लिए लिंक कॉन्फ़िगर करें</string>

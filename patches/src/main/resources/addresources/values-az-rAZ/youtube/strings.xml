@@ -609,6 +609,8 @@ Məhdudiyyətlər:
   <string name="morphe_feed_watch_later_button_title">Miniatürlərdə Sonra izləyin düyməsini göstər</string>
   <string name="morphe_feed_watch_later_button_summary">Sonra izləyin düyməsi axın videolarının miniatürlərində göstərilir, əgər video saxlanılıbsa işarələnir. Ona toxunmaq videonu saxlayır və ya silir, basıb saxlamaq isə Pleylistdə saxlayını açır</string>
   <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Post şəkillərini tam ekranda aç</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Post şəklinə toxunduqda post lenti əvəzinə tam ekranda açır</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Post şəkillərini yüklə</string>
   <string name="morphe_post_image_download_summary">Yükləmə düyməsi Şəkil və ya GIF olan postların Paylaş düyməsi ilə yanaşı göstərilir və yükləmə elementi menyularına əlavə edilir</string>
@@ -1086,8 +1088,6 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_caption_block_translation_failed">Bəzi altyazı tərcümələri əlçatmazdır. Mövcud altyazıları göstərir.</string>
   <string name="morphe_caption_blocks_too_large">Hər iki titr dili bu oynadıcıya uyğun gəlmir. Əsas dili göstərir.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Fəaliyyət zolağı</string>
-  <string name="morphe_navigation_bar_screen_summary">Aşağı fəaliyyət cərgəsində hansı düymələr görünür seç</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ev düyməsini gizlət</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1105,11 +1105,10 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_watch_later_navigation_label">Sonra izləyin</string>
   <string name="morphe_show_settings_button_title">Ayarlar düyməsini göstər</string>
   <string name="morphe_show_settings_button_type_title">Ayarlar düyməsi fəaliyyəti</string>
-  <string name="morphe_show_settings_button_type_summary">İşlək olduqda Morphe tənzimləmələrin, qapadılanda YouTube tənzimləmələrin açır</string>
+  <string name="morphe_show_settings_button_type_summary">İşə salındıqda, toxunma Morphe tənzimləmələrin açır və uzun basma YouTube tənzimləmələrin açır, dəyişdirmək üçün qapat</string>
   <string name="morphe_navigation_buttons_order_title">Fəaliyyət düymələrinin ardıcıllığı</string>
   <string name="morphe_navigation_buttons_order_summary">Fəaliyyət zolağındakı sıralarını dəyişdirmək üçün düymələri sürüklə</string>
   <string name="morphe_swap_create_with_notifications_button_title">Yarat düyməsi ilə Bildirişlər düyməsini əvəzlə</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Bu tənzimləməni dəyişdirmək təsir göstərmirsə, Gizli rejimə keçməyi sına</string>
   <string name="morphe_hide_navigation_button_labels_title">Fəaliyyət düymə etiketlərini gizlət</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Yeni məzmun nöqtəsini gizlət</string>
   <string name="morphe_hide_navigation_bar_title">Fəaliyyət cizgisini gizlət</string>
@@ -1138,14 +1137,16 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_navigation_bar_glass_opacity_summary">Şüşə fəaliyyət cərgəsinin şəffaflıq dərəcəsini tənzimlə (0 şəffaf, 100 qeyri-şəffaf)</string>
   <string name="morphe_navigation_bar_glass_round_title">Dəyirmi şüşə fəaliyyət zolağı</string>
   <string name="morphe_navigation_bar_glass_round_summary">Şüşə fəaliyyət zolağına şüşə kiçik oynadıcıdakı kimi künclər əvəzinə dairəvi kənarlar verir</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Şüşə fəaliyyət zolağının kənarı</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Şüşə fəaliyyət zolağı ətrafında işıqlı kənar çəkir</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Şüşə fəaliyyət zolağının aşağı kənar boşluğu</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Şüşə fəaliyyət zolağı və ekranın aşağısı yaxud sistem naviqasiyası arasındakı boşluğu tənzimlə</string>
   <string name="morphe_navigation_bar_glass_size_title">Şüşə fəaliyyət zolağının ölçüsü</string>
   <string name="morphe_navigation_bar_glass_size_summary">Şüşə fəaliyyət zolağının hündürlüyünü, enini və düymə boşluğunu önizləmə ilə tənzimlə. Ekranın eninə uyuşmayan düymələr gizlədilir</string>
   <string name="morphe_navigation_bar_glass_size_height">Hündürlük</string>
   <string name="morphe_navigation_bar_glass_size_width">Ən yüksək en</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Düymə boşluğu</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Göstərilən düymələr: %1$s / %2$s</string>
-  <string name="morphe_toolbar_screen_title">Alət cərgəsi</string>
-  <string name="morphe_toolbar_screen_summary">Alətlər zolağında hansı elementlər görünür seç</string>
   <string name="morphe_hide_toolbar_chat_button_title">Söhbət düyməsin gizlət</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon düyməsini gizlət</string>
   <string name="morphe_hide_toolbar_search_button_title">Axtarış düyməsini gizlət</string>
@@ -1385,6 +1386,8 @@ Avtomobil tərtibatı
   <string name="morphe_disable_auto_feed_refresh_title">Avtomatik axın yeniləməsini qapat</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Axınların köhnəldikdən sonra avtomatik yenilənməsinin qarşısını alır</string>
   <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Bildirişləri qrupdan çıxar</string>
+  <string name="morphe_ungroup_notifications_summary">Kanalın qruplaşdırılmış yükləmələrinin hər bir videosunu ayrı bildiriş kimi göstərir</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Axın kartının tərtibatı</string>
   <string name="morphe_feed_card_layout_entry_1">Klassik</string>
@@ -1497,6 +1500,8 @@ Avtomobil tərtibatı
   <string name="morphe_dearrow_titles_search_title">Axtarış nəticələri</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow işarəsini göstər</string>
   <string name="morphe_dearrow_titles_icon_summary">İcma mənbəli başlıq və ya miniatürü olan videoların başlığında DeArrow simvolunu göstərir. Orijinal başlıq və miniatürü görmək üçün simvola toxun</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Başlıqları təmizlə</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow başlığı olmayan videoların adlarını təmizləyir. Baş hərflərlə olan sözlər normal formaya salınır, emojilər, bəzəkli mətn və təkrarlanan nida işarələri silinir</string>
   <string name="morphe_dearrow_casual_mode_title">Təsadüfi rejim</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow istifadəçiləri orijinal başlığı bəyəndikləri təqdirdə DeArrow başlığı əvəzinə orijinal başlığı göstərir</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Orijinal başlığı göstərmək üçün ən az adi səslər</string>

@@ -1088,8 +1088,6 @@ Hau konpontzeko, aktibatu 'Bideo-emisioak imitatzea' eta aldatu 'Lehenetsitako b
   <string name="morphe_caption_block_translation_failed">Azpitituluen itzulpen batzuk ez daude erabilgarri. Erabilgarri dauden azpituluak erakusten ari dira.</string>
   <string name="morphe_caption_blocks_too_large">Bi azpitituluen hizkuntzak ez dira erreproduzigailu honetan sartzen. Lehen hizkuntza erakusten ari da.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Nabigazio barra</string>
-  <string name="morphe_navigation_bar_screen_summary">Aukeratu zein botoi agertu behar diren beheko nabigazio barran</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ezkutatu Hasiera botoia</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Hau konpontzeko, aktibatu 'Bideo-emisioak imitatzea' eta aldatu 'Lehenetsitako b
   <string name="morphe_watch_later_navigation_label">Gero ikusi</string>
   <string name="morphe_show_settings_button_title">Erakutsi Konfigurazio botoia</string>
   <string name="morphe_show_settings_button_type_title">Konfigurazio botoiaren ekintza</string>
-  <string name="morphe_show_settings_button_type_summary">Gaituta dagoenean Morphe konfigurazioa irekitzen du, edo desaktibatuta dagoenean YouTube konfigurazioa</string>
+  <string name="morphe_show_settings_button_type_summary">Gaituta dagoenean, ukitzean Morphe konfigurazioa irekitzen da eta luze sakatzean YouTube konfigurazioa; desgaitu trukatzeko</string>
   <string name="morphe_navigation_buttons_order_title">Nabigazio botoien ordena</string>
   <string name="morphe_navigation_buttons_order_summary">Arrastatu botoiak nabigazio barrako ordena aldatzeko</string>
   <string name="morphe_swap_create_with_notifications_button_title">Trukatu Sortu botoia Jakinarazpenen botoiarekin</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ezarpen hau aldatzeak eraginik ez badu, saiatu Incognito moduan aldatzen</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Notificationak botoia nabigazio-barraka eta Sortu botoia barrako toolbarra moveTo. Aldaketuek ez badute eragina, saiatu Inkognito moduan aldatzen</string>
   <string name="morphe_hide_navigation_button_labels_title">Ezkutatu nabigazio botoien etiketak</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ezkutatu eduki berriaren puntua</string>
   <string name="morphe_hide_navigation_bar_title">Ezkutatu nabigazio-barra</string>
@@ -1150,8 +1148,6 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_navigation_bar_glass_size_width">Gehienezko zabalera</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Botoien arteko espazioa</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Erakutsitako botoiak: %1$s / %2$s</string>
-  <string name="morphe_toolbar_screen_title">Tresna-barra</string>
-  <string name="morphe_toolbar_screen_summary">Aukeratu zein osagai agertzen diren tresna-barran</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ezkutatu Txat botoia</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofono botoia ezkutatu</string>
   <string name="morphe_hide_toolbar_search_button_title">Ezkutatu Bilatu botoia</string>

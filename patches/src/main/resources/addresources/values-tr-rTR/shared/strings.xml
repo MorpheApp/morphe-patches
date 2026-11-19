@@ -87,7 +87,13 @@ Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.softwa
   <string name="morphe_settings_about_links_translations">Çeviriler</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Güncel</string>
   <string name="morphe_settings_about_contributors">Katkıda Bulunanlar</string>
-  <string name="morphe_settings_about_contributors_period">Son 12 ay</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Tüm zamanlar</string>
+  <string name="morphe_settings_about_contributors_6_months">6 ay</string>
+  <string name="morphe_settings_about_contributors_3_months">3 ay</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Zaman aralığı</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Destekçiler</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective\'deki destekçiler</string>
@@ -222,6 +228,9 @@ Pil optimizasyonu değiştirilmezse şu durumlarla karşılaşabilirsiniz:
 • Uygulama rastgele kapanabilir
 • Bildirimler çalışmayabilir
 • Arka planda oynatma çalışmayabilir"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım sayfasını aç</string>
+  <string name="morphe_open_system_share_sheet_summary">İçerik paylaşılırken uygulama içi paylaşım ekranı yerine sistem paylaşım ekranı açılır</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Uygulama bağlantısı yönetimi</string>
   <string name="morphe_link_handling_summary">Bu uygulamada açılacak bağlantıları yapılandırın</string>

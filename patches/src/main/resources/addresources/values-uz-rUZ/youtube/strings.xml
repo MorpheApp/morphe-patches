@@ -1086,8 +1086,6 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_caption_block_translation_failed">Ba\'zi subtitr tarjimalari mavjud emas. Mavjud subtitrlar ko\'rsatilmoqda.</string>
   <string name="morphe_caption_blocks_too_large">Subtitrlarning har ikkala tili ushbu pleyerga sig\'maydi. Asosiy til ko\'rsatilmoqda.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigatsiya paneli</string>
-  <string name="morphe_navigation_bar_screen_summary">Pastki navigatsiya panelida qaysi tugmalar ko\'rinishini tanlang</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Uy tugmasini yashirish</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1105,11 +1103,11 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_watch_later_navigation_label">Keyinroq ko\'rish</string>
   <string name="morphe_show_settings_button_title">Sozlamalar tugmasini koʻrsatish</string>
   <string name="morphe_show_settings_button_type_title">Sozlamalar tugmasining harakati</string>
-  <string name="morphe_show_settings_button_type_summary">Agar yoqilgan boʻlsa Morphe sozlamalarini ochadi, agar oʻchirilsa YouTube sozlamalarini ochadi</string>
+  <string name="morphe_show_settings_button_type_summary">Yoqilganda bosish Morphe sozlamalarini ochadi, uzoq bosish YouTube sozlamalarini ochadi; almashtirish uchun o\'chiring</string>
   <string name="morphe_navigation_buttons_order_title">Navigatsiya tugmalari tartibi</string>
   <string name="morphe_navigation_buttons_order_summary">Navigatsiya panelidagi tugmalar tartibini o\'zgartirish uchun ularni suring</string>
   <string name="morphe_swap_create_with_notifications_button_title">Yaratish tugmasini bildirishnoma tugmasi bilan almashtirish</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Agar ushbu sozlamani o\'zgartirish ta\'sir qilmasa, inkognito rejimiga o\'ting</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Bildirishnomalar tugmasini navigatsiya paneliga va Yaratish tugmasini asboblar paneliga ko\"chiradi. Agar o\"zgarishlar kuchga kirmasa, Inkognito rejimiga o\"tib ko\"ring</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigatsiya tugma yorliqlarini yashirish</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Yangi kontent nuqtasini yashirish</string>
   <string name="morphe_hide_navigation_bar_title">Navigatsiya panelini yashirish</string>
@@ -1148,8 +1146,6 @@ Sozlamalarga kirish uchun General → Toolbar → Show Settings button orqali So
   <string name="morphe_navigation_bar_glass_size_width">Maksimal kenglik</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Tugmalar oralig\'i</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Ko\'rsatilgan tugmalar: %1$s / %2$s</string>
-  <string name="morphe_toolbar_screen_title">Asboblar paneli</string>
-  <string name="morphe_toolbar_screen_summary">Pleerdagi paydo boʻladigan tugmalarni tanlang</string>
   <string name="morphe_hide_toolbar_chat_button_title">Chat tugmasini yashirish</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon tugmasini yashirish</string>
   <string name="morphe_hide_toolbar_search_button_title">Qidiruv tugmasini yashirish</string>

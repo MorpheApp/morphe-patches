@@ -266,9 +266,6 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_video_quality_default_mobile_title">মবাইল নেটৱৰ্কত ডিফল্ট ভিডিঅ\' কোৱালিটি</string>
   <string name="morphe_remember_video_quality_toast_mobile">ডিফল্ট মবাইল কোৱালিটিলৈ সলনি কৰা হৈছে: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">ডিফল্ট Wi-Fi কোৱালিটিলৈ সলনি কৰা হৈছে: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
-  <string name="morphe_open_system_share_sheet_summary">সামগ্ৰী শ্বেয়াৰ কৰাৰ সময়ত ইন-এপৰ পৰিৱৰ্তে ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">লিথো লগিং</string>
   <string name="morphe_debug_litho_entry_disabled">অক্ষম কৰা হৈছে</string>
@@ -380,4 +377,8 @@ PotHelper ডাউনলোড কৰিবলৈ ইয়াত টিপক"</s
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">কোনো ক্লায়েণ্ট ৰেট লিমিট পোৱা নগ\'ল</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ক্লায়েন্ট ৰেট লিমিট %s বাৰ সন্মুখীন হৈছে</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s মিলিছেকেণ্ড</string>
+  <string name="morphe_navigation_bar_screen_title">নেভিগেচন বাৰ</string>
+  <string name="morphe_navigation_bar_screen_summary">তলৰ নেভিগেচন বাৰত কোনটো বুটাম দেখিব সেইটো বাছনি কৰক</string>
+  <string name="morphe_toolbar_screen_title">টুলবাৰ</string>
+  <string name="morphe_toolbar_screen_summary">টুলবাৰত কোনবোৰ উপাদান দেখা যাব বাছনি কৰক</string>
 </resources>

@@ -1088,8 +1088,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_caption_block_translation_failed">Beberapa terjemahan teks tidak tersedia. Menampilkan teks yang tersedia.</string>
   <string name="morphe_caption_blocks_too_large">Kedua bahasa teks tidak dapat ditampilkan pada pemutar ini. Menampilkan bahasa utama.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Bilah navigasi</string>
-  <string name="morphe_navigation_bar_screen_summary">Pilih tombol mana yang akan ditampilkan di bilah navigasi bawah</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Sembunyikan tombol Beranda</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1105,11 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_watch_later_navigation_label">Tonton nanti</string>
   <string name="morphe_show_settings_button_title">Tampilkan tombol Setelan</string>
   <string name="morphe_show_settings_button_type_title">Tindakan tombol setelan</string>
-  <string name="morphe_show_settings_button_type_summary">Membuka setelan Morphe jika diaktifkan, atau setelan YouTube jika dinonaktifkan</string>
+  <string name="morphe_show_settings_button_type_summary">Saat diaktifkan, ketuk membuka setelan Morphe dan tahan membuka setelan YouTube, nonaktifkan untuk menukarnya</string>
   <string name="morphe_navigation_buttons_order_title">Urutan tombol navigasi</string>
   <string name="morphe_navigation_buttons_order_summary">Seret tombol untuk mengubah urutannya di bilah navigasi</string>
   <string name="morphe_swap_create_with_notifications_button_title">Tukar tombol Buat dengan tombol Notifikasi</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Jika mengubah setelan ini tidak berhasil, coba beralih ke mode Penyamaran</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Memindahkan tombol Notifikasi ke bilah navigasi dan tombol Buat ke toolbar. Jika perubahan tidak diterapkan, coba beralih ke mode Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Sembunyikan label tombol navigasi</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Sembunyikan titik konten baru</string>
   <string name="morphe_hide_navigation_bar_title">Sembunyikan bilah navigasi</string>
@@ -1150,8 +1148,6 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_navigation_bar_glass_size_width">Lebar maksimum</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Jarak tombol</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Tombol yang ditampilkan: %1$s dari %2$s</string>
-  <string name="morphe_toolbar_screen_title">Bilah alat</string>
-  <string name="morphe_toolbar_screen_summary">Pilih komponen mana yang akan ditampilkan di bilah alat</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sembunyikan tombol Chat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sembunyikan tombol Mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Telusuri</string>

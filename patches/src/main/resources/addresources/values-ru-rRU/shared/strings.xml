@@ -87,7 +87,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Переводы</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">В актуальном состоянии</string>
   <string name="morphe_settings_about_contributors">Контрибьюторы</string>
-  <string name="morphe_settings_about_contributors_period">За последние 12 месяцев</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">За все время</string>
+  <string name="morphe_settings_about_contributors_6_months">6 месяцев</string>
+  <string name="morphe_settings_about_contributors_3_months">3 месяца</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Период времени</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Сторонники</string>
   <string name="morphe_settings_about_supporters_summary">Спонсоры на Open Collective</string>
@@ -222,6 +228,9 @@ Second \"item\" text"</string>
 • Приложение может случайно закрываться
 • Уведомления могут не работать
 • Фоновое воспроизведение может не работать"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Открыть системное окно общего доступа</string>
+  <string name="morphe_open_system_share_sheet_summary">Открывает системное меню \"Поделиться\" вместо встроенного при отправке контента</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Обработка ссылок в приложении</string>
   <string name="morphe_link_handling_summary">Настроить открытие ссылок в этом приложении</string>

@@ -174,6 +174,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_filter_bar_title">隐藏过滤栏</string>
   <string name="morphe_music_hide_grid_shelves_title">隐藏网格展示区域</string>
   <string name="morphe_music_hide_horizontal_shelves_title">隐藏横向展示区域</string>
+  <string name="morphe_music_hide_new_button_title">隐藏新建按钮</string>
+  <string name="morphe_music_hide_new_button_summary">在“库”标签页中隐藏“新建”按钮</string>
   <string name="morphe_music_hide_list_shelves_title">隐藏列表展示区域</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">歌词面板</string>
   <string name="morphe_music_hide_lyrics_share_button_title">隐藏分享按钮</string>
@@ -199,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">淡入淡出</string>
   <string name="morphe_music_crossfade_screen_summary">平滑地将曲目混合在一起</string>
   <string name="morphe_music_crossfade_enabled_title">启用淡入淡出</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">要使用交叉淡出，请将模拟视频流的“默认客户端”更改为 TV Simply 或 visionOS</string>
   <string name="morphe_music_crossfade_curve_title">淡入曲线</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">平均功率</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">微妙的延迟</string>
@@ -232,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">此会话已暂停交叉淡入</string>
   <string name="morphe_music_crossfade_resumed_toast">交叉淡入已恢复</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">启用交叉淡入时，视频模式不可用</string>
-  <string name="morphe_music_crossfade_sabr_toast">使用 SABR 播放时交叉淡化已关闭</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">交叉淡出不适用于 visionOS。请将模拟视频流的“默认客户端”更改为 TV Simply</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">交叉淡出不适用于此模拟流客户端</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">投射时交叉淡化已关闭</string>
   <string name="morphe_music_crossfade_about_how_title">它的工作原理</string>
   <string name="morphe_music_crossfade_about_how_summary">"交叉淡化会将一首歌曲的结尾与下一首歌曲的开头重叠，并使用您设置的时长和曲线
@@ -249,9 +255,7 @@ Second \"item\" text"</string>
 
 暂停交叉淡化来观看音乐视频可能会导致某些视频黑屏。在选歌前暂停交叉淡化可避免此问题"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">不支持</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"投射或镜像音频（Chromecast、屏幕或音频镜像）
-
-SABR 播放（模拟视频流已关闭）"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">投放或镜像音频（Chromecast、屏幕或音频镜像）</string>
   <string name="morphe_music_crossfade_about_credit_title">鸣谢</string>
   <string name="morphe_music_crossfade_about_credit_summary">交叉淡入功能由 VazerOG 提供</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,11 @@ SABR 播放（模拟视频流已关闭）"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">禁用不喜欢重定向</string>
   <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜欢按钮时跳转到下一曲</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">禁用滑动切换曲目</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">防止通过在播放器上向左或向右滑动来跳转到下一曲目或上一曲目</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">禁用滑动切换曲目</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">防止通过在迷你播放器上向左或向右滑动来跳转到下一曲目或上一曲目</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B 循环</string>
   <string name="morphe_music_ab_loop_summary">长按进度条设置起点，再次长按设置终点，并在起点与终点之间循环播放，再次长按则取消循环</string>
@@ -329,15 +338,6 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_playlist_tags_rename">重命名</string>
   <string name="morphe_music_playlist_tags_delete">删除</string>
   <string name="morphe_music_playlist_tags_hidden">已隐藏</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">隐藏投屏按钮</string>
-  <string name="morphe_music_hide_history_button_title">隐藏历史记录按钮</string>
-  <string name="morphe_music_hide_notification_button_title">隐藏通知按钮</string>
-  <string name="morphe_music_hide_search_button_title">隐藏搜索按钮</string>
-  <string name="morphe_music_hide_voice_search_button_title">隐藏语音搜索按钮</string>
-  <string name="morphe_music_hide_sound_search_button_title">隐藏声音搜索按钮</string>
-  <string name="morphe_music_hide_library_new_button_title">隐藏“新建”按钮</string>
-  <string name="morphe_music_hide_library_new_button_summary">隐藏“音乐库”标签页中的“新建”按钮</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">操作按钮</string>
   <string name="morphe_music_action_buttons_screen_summary">选择在播放器下方显示哪些操作按钮</string>
@@ -409,22 +409,20 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_force_portrait_orientation_title">强制竖屏方向</string>
   <string name="morphe_music_force_portrait_orientation_summary">当设备旋转时，保持应用为竖屏方向</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">更改迷你播放器颜色</string>
+  <string name="morphe_music_change_miniplayer_color_title">更改颜色</string>
   <string name="morphe_music_change_miniplayer_color_summary">迷你播放器颜色与全屏播放器一致</string>
   <string name="morphe_music_change_navigation_bar_color_title">更改导航栏颜色</string>
   <string name="morphe_music_change_navigation_bar_color_summary">使导航栏颜色与全屏播放器匹配</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">在迷你播放器中显示下一按钮</string>
-  <string name="morphe_music_miniplayer_previous_button_title">显示上一首按钮在迷你播放器</string>
+  <string name="morphe_music_miniplayer_next_button_title">显示下一曲按钮</string>
+  <string name="morphe_music_miniplayer_previous_button_title">显示上一曲按钮</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">启用强制最小播放器</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">防止播放器在新曲目开始时自动扩展到全屏</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">启用滑动以关闭迷你播放器</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">启用滑动关闭</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">允许通过在迷你播放器上向下滑动来关闭它</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">导航栏</string>
-  <string name="morphe_music_navigation_bar_screen_summary">选择在底部导航栏中显示哪些按钮</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">隐藏主页按钮</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +455,7 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">隐藏玻璃导航栏选中按钮背后的圆角高亮</string>
   <string name="morphe_music_miniplayer_screen_title">小型播放器</string>
   <string name="morphe_music_miniplayer_screen_summary">更改迷你播放器的样式、按钮和手势</string>
-  <string name="morphe_music_miniplayer_glass_title">启用玻璃迷你播放器</string>
+  <string name="morphe_music_miniplayer_glass_title">启用玻璃效果</string>
   <string name="morphe_music_miniplayer_glass_summary">将浮动迷你播放器显示为圆角半透明玻璃卡片</string>
   <string name="morphe_music_miniplayer_glass_style_title">玻璃迷你播放器样式</string>
   <string name="morphe_music_miniplayer_glass_style_summary">调整玻璃迷你播放器的圆角半径、封面内边距、边缘亮度和不透明度，并可实时预览</string>
@@ -480,6 +478,15 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">样本</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">探索</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">媒体库</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">隐藏“活动”按钮</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">隐藏「请求音乐」按钮</string>
+  <string name="morphe_music_hide_cast_button_title">隐藏投屏按钮</string>
+  <string name="morphe_music_hide_history_button_title">隐藏历史记录按钮</string>
+  <string name="morphe_music_hide_search_button_title">隐藏搜索按钮</string>
+  <string name="morphe_music_hide_voice_search_button_title">隐藏语音搜索按钮</string>
+  <string name="morphe_music_hide_sound_search_button_title">隐藏声音搜索按钮</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">未登录。点击进行配置</string>
   <string name="morphe_music_scrobbling_log_out">登出</string>
