@@ -25,6 +25,8 @@ import android.content.IntentFilter;
 import android.content.UriPermission;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.media.MediaCodec;
 import android.media.MediaDataSource;
@@ -43,6 +45,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,6 +54,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,6 +72,10 @@ import javax.crypto.spec.SecretKeySpec;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.ThumbnailEntry;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.ThumbnailList;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineMusicMetadata;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineVideoData;
 import app.morphe.extension.shared.innertube.SavedVideo.SavedPlayerResponse;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
@@ -92,6 +100,10 @@ public final class OfflineVideoExporter {
     private static final String STREAMS_FOLDER = "streams";
     private static final String CACHE_INDEX_FILE = "cached_content_index.exi";
     private static final String SPAN_FILE_SUFFIX = ".v3.exo";
+    private static final String IMAGES_FOLDER = "data" + File.separator + "images";
+    private static final String IMAGE_JPEG = "image/jpeg";
+    private static final String IMAGE_PNG = "image/png";
+    private static final int ARTWORK_JPEG_QUALITY = 90;
 
     private static final int CACHE_INDEX_VERSION = 2;
     private static final int CACHE_INDEX_FLAG_ENCRYPTED = 1;
@@ -141,6 +153,8 @@ public final class OfflineVideoExporter {
      */
     private static final int AV1_MUXER_MIN_SDK = 34;
 
+    private static final String OGG_MIME_TYPE = "audio/ogg";
+
     private static final Set<String> WEBM_MIME_TYPES = Set.of(
             MediaFormat.MIMETYPE_VIDEO_VP8,
             MediaFormat.MIMETYPE_VIDEO_VP9,
@@ -158,7 +172,10 @@ public final class OfflineVideoExporter {
     private record SavedStream(int itag, long length) {
     }
 
-    private record SavedVideo(String title, List<SavedStream> streams) {
+    /**
+     * @param database The database of the account that saved the video.
+     */
+    private record SavedVideo(String title, List<SavedStream> streams, File database) {
     }
 
     /**
@@ -456,7 +473,7 @@ public final class OfflineVideoExporter {
                     database.getPath(), null, SQLiteDatabase.OPEN_READONLY)) {
                 List<SavedStream> streams = getSavedStreams(db, videoId);
                 if (streams != null) {
-                    return new SavedVideo(getTitle(db, videoId), streams);
+                    return new SavedVideo(getTitle(db, videoId), streams, database);
                 }
             }
         }
@@ -532,6 +549,110 @@ public final class OfflineVideoExporter {
         return videoId;
     }
 
+    /**
+     * @param title The title of the video, used if the song has no title of its own.
+     * @return The title, artist, album and cover of the song, which are written to exported audio files.
+     */
+    private static AudioTagWriter.Tags getTags(File database, String videoId, String title) {
+        try (SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                database.getPath(), null, SQLiteDatabase.OPEN_READONLY);
+             Cursor cursor = db.query(
+                "videosV2",
+                new String[]{"offline_video_data_proto"},
+                "id = ?",
+                new String[]{videoId},
+                null, null, null)) {
+            if (cursor.moveToFirst() && !cursor.isNull(0)) {
+                OfflineVideoData data = OfflineVideoData.parseFrom(cursor.getBlob(0));
+                OfflineMusicMetadata music = data.getMusicVideoData().getMusicMetadata();
+                return new AudioTagWriter.Tags(
+                        music.getTitle().isEmpty() ? title : music.getTitle(),
+                        music.getArtist(),
+                        music.getAlbum(),
+                        getArtwork(database, data.getThumbnail())
+                );
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not read the tags of: " + videoId, ex);
+        }
+
+        return new AudioTagWriter.Tags(title, null, null, null);
+    }
+
+    /**
+     * The app saves the thumbnails of saved videos in the folder of the account,
+     * named with the hash code of their url.
+     *
+     * @param database The database of the account.
+     * @return The largest saved thumbnail, or null if none is saved.
+     */
+    @Nullable
+    private static AudioTagWriter.Artwork getArtwork(File database, ThumbnailList thumbnails) throws IOException {
+        String name = database.getName();
+        String account = name.substring(DATABASE_PREFIX.length(), name.length() - DATABASE_SUFFIX.length());
+
+        File image = null;
+        int imageWidth = 0;
+        for (File folder : getOfflineFolders()) {
+            File images = new File(folder, account + File.separator + IMAGES_FOLDER);
+            for (ThumbnailEntry thumbnail : thumbnails.getThumbnailsList()) {
+                if (thumbnail.getWidth() <= imageWidth) {
+                    continue;
+                }
+                File file = findImage(images, thumbnail.getUrl());
+                if (file != null) {
+                    image = file;
+                    imageWidth = thumbnail.getWidth();
+                }
+            }
+        }
+        if (image == null) {
+            return null;
+        }
+
+        byte[] data = Files.readAllBytes(image.toPath());
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(data, 0, data.length, options);
+        if (options.outWidth <= 0 || options.outHeight <= 0) {
+            File file = image;
+            Logger.printInfo(() -> "Thumbnail is not an image: " + file);
+            return null;
+        }
+        if (IMAGE_JPEG.equals(options.outMimeType) || IMAGE_PNG.equals(options.outMimeType)) {
+            return new AudioTagWriter.Artwork(data, options.outMimeType, options.outWidth, options.outHeight);
+        }
+
+        // Audio files can only hold JPEG and PNG covers.
+        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+        if (bitmap == null) {
+            File file = image;
+            Logger.printInfo(() -> "Could not decode thumbnail: " + file);
+            return null;
+        }
+        ByteArrayOutputStream jpeg = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, ARTWORK_JPEG_QUALITY, jpeg);
+        AudioTagWriter.Artwork artwork = new AudioTagWriter.Artwork(
+                jpeg.toByteArray(), IMAGE_JPEG, bitmap.getWidth(), bitmap.getHeight());
+        bitmap.recycle();
+        return artwork;
+    }
+
+    /**
+     * Thumbnails with a file type in their url keep the end of the url after the hash code,
+     * such as "1274788442.jpg?sqp=...".
+     */
+    @Nullable
+    private static File findImage(File folder, String url) {
+        String hash = String.valueOf(url.hashCode());
+        File file = new File(folder, hash);
+        if (file.isFile()) {
+            return file;
+        }
+        File[] files = folder.listFiles((dir, fileName) -> fileName.startsWith(hash + "."));
+        return files != null && files.length > 0 ? files[0] : null;
+    }
+
     // endregion
 
     // region Export
@@ -582,17 +703,34 @@ public final class OfflineVideoExporter {
             // If a stream can't be saved, the other streams are deleted too, so no partial export is left.
             List<OutputFile> finished = new ArrayList<>();
             for (int i = 0, size = sources.size(); i < size; i++) {
-                String mimeType = getMimeType(formats.get(i));
+                String codec = formats.get(i).getString(MediaFormat.KEY_MIME);
+                String mimeType = getMimeType(codec);
                 final boolean audio = mimeType.startsWith("audio/");
-                final boolean webm = WEBM_MIME_TYPES.contains(formats.get(i).getString(MediaFormat.KEY_MIME));
-                String extension = webm ? ".webm" : (audio ? ".m4a" : ".mp4");
+                // Opus is written to an Ogg file, see AudioTagWriter.
+                final boolean opus = MediaFormat.MIMETYPE_AUDIO_OPUS.equals(codec);
+                final boolean aac = MediaFormat.MIMETYPE_AUDIO_AAC.equals(codec);
+                final boolean webm = WEBM_MIME_TYPES.contains(codec);
+                String extension = opus ? ".opus" : (webm ? ".webm" : (audio ? ".m4a" : ".mp4"));
                 OutputFile output = OutputFile.create(
                         fileName + (audio && multipleStreams ? " (audio)" : ""),
                         extension,
                         mimeType
                 );
                 try {
-                    copy(sources.get(i), output.descriptor, notification);
+                    // Audio files get the title, artist, album and cover of the song.
+                    if (opus || aac) {
+                        AudioTagWriter.Tags tags = getTags(video.database(), videoId, video.title());
+                        try (OutputStream stream = new FileOutputStream(output.descriptor.getFileDescriptor())) {
+                            if (opus) {
+                                AudioTagWriter.writeOggOpus(extractors.get(i), formats.get(i), videoId.hashCode(),
+                                        stream, tags, notification::showProgress);
+                            } else {
+                                AudioTagWriter.writeMp4(sources.get(i), stream, tags, notification::showProgress);
+                            }
+                        }
+                    } else {
+                        copy(sources.get(i), output.descriptor, notification);
+                    }
                     String location = output.finish();
                     finished.add(output);
                     // The notification opens the video file.
@@ -657,8 +795,14 @@ public final class OfflineVideoExporter {
                 : MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4;
     }
 
-    private static String getMimeType(MediaFormat format) {
-        String mime = format.getString(MediaFormat.KEY_MIME);
+    /**
+     * @param mime The codec of a stream.
+     * @return The type of the file the stream is exported to.
+     */
+    private static String getMimeType(@Nullable String mime) {
+        if (MediaFormat.MIMETYPE_AUDIO_OPUS.equals(mime)) {
+            return OGG_MIME_TYPE;
+        }
         final boolean audio = mime != null && mime.startsWith("audio/");
         if (WEBM_MIME_TYPES.contains(mime)) {
             return audio ? "audio/webm" : "video/webm";
@@ -1037,21 +1181,25 @@ public final class OfflineVideoExporter {
     }
 
     /**
-     * Each account has its own folder, on the internal storage or on an SD card.
+     * @return The folders of the saved videos, on the internal storage or on an SD card.
+     *         Each account has its own folder in them.
      */
-    private static List<File> getStreamsFolders() {
+    private static List<File> getOfflineFolders() {
         Context context = Utils.getContext();
-        List<File> roots = new ArrayList<>();
+        List<File> folders = new ArrayList<>();
         for (File root : context.getExternalFilesDirs(null)) {
             if (root != null) {
-                roots.add(root);
+                folders.add(new File(root, OFFLINE_FOLDER));
             }
         }
-        roots.add(context.getFilesDir());
+        folders.add(new File(context.getFilesDir(), OFFLINE_FOLDER));
+        return folders;
+    }
 
+    private static List<File> getStreamsFolders() {
         List<File> folders = new ArrayList<>();
-        for (File root : roots) {
-            File[] accounts = new File(root, OFFLINE_FOLDER).listFiles();
+        for (File offlineFolder : getOfflineFolders()) {
+            File[] accounts = offlineFolder.listFiles();
             if (accounts == null) {
                 continue;
             }
