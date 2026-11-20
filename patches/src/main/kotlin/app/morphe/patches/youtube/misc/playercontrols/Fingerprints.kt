@@ -64,19 +64,6 @@ internal object PlayerBottomControlsInflateFingerprint : Fingerprint(
 )
 
 /**
- * 21.47+ always uses the exploder bottom controls layout.
- */
-internal object PlayerBottomControlsExploderInflateFingerprint : Fingerprint(
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf(),
-    filters = listOf(
-        resourceLiteral(ResourceType.ID, "video_exploder_bottom_ui_container_stub"),
-        methodCall(smali = "Landroid/view/ViewStub;->inflate()Landroid/view/View;"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
-    )
-)
-
-/**
  * Matches same method as [ControlsOverlayFingerprint] and [CreatePlayerOverviewFingerprint].
  */
 internal object PlayerBottomGradientScrimFingerprint : Fingerprint(

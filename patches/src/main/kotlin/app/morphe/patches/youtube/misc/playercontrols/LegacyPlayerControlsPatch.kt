@@ -83,8 +83,6 @@ lateinit var addLegacyBottomControl: (String) -> Unit
     private set
 
 internal val legacyPlayerControlsResourcePatch = patch {
-    dependsOn(versionCheckPatch)
-
     /**
      * The element to the left of the element being added.
      */
@@ -93,11 +91,9 @@ internal val legacyPlayerControlsResourcePatch = patch {
     lateinit var bottomTargetDocument: ResourceXml
 
     execute {
-        // 21.47+ always uses the exploder layout. Earlier versions are forced to use the regular layout.
-        bottomTargetDocument = resourceXml(
-            if (is_21_47_or_greater) "res/layout/youtube_video_exploder_controls_bottom_ui_container.xml"
-            else "res/layout/youtube_controls_bottom_ui_container.xml"
-        )
+        // The old player buttons are only used with the regular layout.
+        // 21.47+ never inflates it, and always uses the exploder layout with the overlay buttons.
+        bottomTargetDocument = resourceXml("res/layout/youtube_controls_bottom_ui_container.xml")
 
         var bottomInsertBeforeNode: XmlElement = bottomTargetDocument.elementByAttribute(
             "android:inflatedId",
@@ -248,6 +244,9 @@ internal fun initializeTopControl(descriptor: String) {
  * @param descriptor The descriptor of the method which should be called.
  */
 fun initializeLegacyBottomControl(descriptor: String) {
+    // 21.47+ has no layout with the old player buttons.
+    if (is_21_47_or_greater) return
+
     inflateBottomControlMethodRef.get()!!.addInstruction(
         inflateBottomControlInsertIndex++,
         "invoke-static { v$inflateBottomControlRegister }, $descriptor->" +
@@ -482,14 +481,15 @@ val legacyPlayerControlsPatch = patch(
 
         // Must get methods after overriding flags,
         // since flag overrides can add instructions and break the indexes used here.
-        (if (is_21_47_or_greater) PlayerBottomControlsExploderInflateFingerprint
-        else PlayerBottomControlsInflateFingerprint).let {
-            it.method.apply {
-                inflateBottomControlMethodRef = WeakReference(this)
+        if (!is_21_47_or_greater) {
+            PlayerBottomControlsInflateFingerprint.let {
+                it.method.apply {
+                    inflateBottomControlMethodRef = WeakReference(this)
 
-                val inflateReturnObjectIndex = it.instructionMatches.last().index
-                inflateBottomControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
-                inflateBottomControlInsertIndex = inflateReturnObjectIndex + 1
+                    val inflateReturnObjectIndex = it.instructionMatches.last().index
+                    inflateBottomControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
+                    inflateBottomControlInsertIndex = inflateReturnObjectIndex + 1
+                }
             }
         }
 
