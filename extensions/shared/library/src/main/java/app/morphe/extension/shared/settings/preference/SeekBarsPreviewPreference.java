@@ -139,7 +139,12 @@ public abstract class SeekBarsPreviewPreference extends Preference {
                 null,
                 () -> {
                     for (int i = 0; i < settings.length; i++) {
-                        settings[i].save(pending[i]);
+                        if (pending[i] != settings[i].get()) {
+                            settings[i].save(pending[i]);
+                            if (settings[i].rebootApp) {
+                                AbstractPreferenceFragment.setRestartNeeded();
+                            }
+                        }
                     }
                 },
                 () -> {},
