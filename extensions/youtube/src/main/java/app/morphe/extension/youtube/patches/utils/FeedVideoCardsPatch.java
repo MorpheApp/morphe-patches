@@ -1146,8 +1146,17 @@ public final class FeedVideoCardsPatch {
      */
     @Nullable
     public static String findVideoId(ComponentHost root) {
-        // The badge of a card with the thumbnail beside the texts is on the host of the thumbnail.
-        return findVideoId(root, isVideoShaped(root) ? root : findSideThumbnail(root));
+        if (!isVideoShaped(root)) {
+            // The badge of a card with the thumbnail beside the texts is on the host of the thumbnail.
+            return findVideoId(root, findSideThumbnail(root));
+        }
+        String videoId = findVideoId(root, root);
+        // A row of a grid of Shorts is shaped like a full width card, and a text of a Short at the right
+        // of the row, such as a channel name in capital letters, can look like the duration of a video.
+        // The row is not the card of one of its Shorts, which have no duration, so it looks like a mix.
+        synchronized (shortsVideoIds) {
+            return videoId != null && shortsVideoIds.containsKey(videoId) ? PLAYLIST : videoId;
+        }
     }
 
     /**
