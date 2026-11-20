@@ -11,22 +11,49 @@ body:
         Before creating a new bug report, please keep the following in mind:
 
         - **Do not submit a duplicate bug report**: Search for existing bug reports [here](https://github.com/MorpheApp/morphe-patches/issues?q=is%3Aissue).
-  - type: textarea
+        - **Report one bug per issue**: Open a separate issue for each bug.
+        - **Use the latest patches and a supported app version**: Make sure the bug still happens with the latest release or pre-release of the patches, patched on an app version listed as supported in the [patches list](https://github.com/MorpheApp/morphe-patches#-patches-list). Bug reports for older patches or other app versions are closed.
+        - Bug reports that do not use this form are deleted automatically.
+  - type: dropdown
+    id: app
     attributes:
-      label: Bug description
-      description: |
-        - List app version patched, and the patches version shown in Settings > About
-        - Add steps to reproduce the bug if possible (Step 1. ... Step 2. ...)
-        - Add images and videos if possible
+      label: App
+      description: The app that has the bug
+      options:
+        - YouTube
+        - YouTube Music
+        - YouTube and YouTube Music
+        - Reddit
     validations:
-        required: true
+      required: true
   - type: input
+    id: app-version
     attributes:
-      label: App version patched
-      description: What app version you are using
+      label: App version
+      description: The version of the app you patched. It must be a supported version, as listed in the [patches list](https://github.com/MorpheApp/morphe-patches#-patches-list).
+      placeholder: 'e.g. 21.30.216'
+    validations:
+      required: true
+  - type: input
+    id: patches-version
+    attributes:
+      label: Patches version
+      description: The patches version shown in the patched app > Settings > Morphe > About. It must be the latest release or a recent pre-release.
+      placeholder: 'e.g. 2.3.0'
     validations:
       required: true
   - type: textarea
+    id: description
+    attributes:
+      label: Bug description
+      description: |
+        - Describe what happens and what you expected to happen
+        - Add steps to reproduce the bug (Step 1. ... Step 2. ...)
+        - Add images and videos if possible
+    validations:
+      required: true
+  - type: textarea
+    id: logs
     attributes:
       label: Error logs
       description: Exceptions can be captured by running `logcat | grep AndroidRuntime` in a shell.
