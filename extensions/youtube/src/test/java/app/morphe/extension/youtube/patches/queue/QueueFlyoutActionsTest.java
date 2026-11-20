@@ -20,7 +20,9 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
 import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuItem;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
 
@@ -41,6 +43,29 @@ public class QueueFlyoutActionsTest {
             assertEquals(YTIconType.QUEUE_PLAY_LAST, rebound.getItems(1)
                     .getMenuConditionalServiceItemRenderer().getIcon().getYtIconType());
         }
+    }
+
+    @Test
+    public void pageToolbarBindsOnlyLocalNextToItsOwnPlaylist() throws Exception {
+        var next = conditional(YTIconType.QUEUE_PLAY_NEXT_VALUE, 2);
+        var remote = conditional(YTIconType.QUEUE_PLAY_NEXT_VALUE, 1);
+        var shuffle = MenuItem.newBuilder().setMenuServiceItemRenderer(
+                PlaylistQueueRenderer.MenuServiceItem.newBuilder()
+                        .setIcon(Icon.newBuilder().setYtIconType(YTIconType.SHUFFLE))
+                        .setServiceEndpoint(PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
+                                .setWatchEndpoint(PlaylistQueueRenderer.WatchEndpoint.newBuilder()
+                                        .setPlaylistId("PLQdxfrZM11Xg")))).build();
+        var toolbar = MenuRenderer.newBuilder().addItems(next).addItems(remote).build();
+        assertSame(toolbar, QueueFlyoutActions.bindPlaylistPageMenu(toolbar));
+
+        var stock = toolbar.toBuilder().addItems(shuffle).build();
+        var result = MenuRenderer.parseFrom(QueueFlyoutActions.bindPlaylistPageMenu(stock).toByteArray());
+        var command = result.getItems(0).getMenuConditionalServiceItemRenderer().getServiceEndpoint();
+        assertEquals("PLQdxfrZM11Xg", command.getPlaylistPagePlayNextPlaylistId());
+        assertEquals(next.getMenuConditionalServiceItemRenderer().getServiceEndpoint(),
+                command.toBuilder().clearPlaylistPagePlayNextPlaylistId().build());
+        assertEquals(remote, result.getItems(1));
+        assertEquals(shuffle, result.getItems(2));
     }
 
     // Write the native conditional wire shape independently of our schema.

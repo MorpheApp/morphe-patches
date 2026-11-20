@@ -218,6 +218,8 @@ message NavigationEndpoint {
     optional bool queue_mix_add = 500000004;
     // Collection menu actions retain their own target across native menu copies.
     optional string queue_playlist_id = 500000005;
+    // Playlist ID used by the playlist page's Play next in queue action.
+    optional string playlist_page_play_next_playlist_id = 500000006;
     optional ShareEntityServiceEndpoint legacy_share_entity_endpoint = 90650344;
 }
 

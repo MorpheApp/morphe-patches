@@ -74,6 +74,81 @@ public final class QueueFlyoutActions {
         }
     }
 
+    /**
+     * Injection point.
+     * <p>
+     * Binds the Play next in queue item in the playlist page's toolbar menu.
+     */
+    public static MessageLite preparePlaylistPageMenu(@Nullable MessageLite original) {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || !(original instanceof Menu menu)) {
+            return original;
+        }
+        try {
+            var stock = MenuRenderer.parseFrom(original.toByteArray());
+            var bound = bindPlaylistPageMenu(stock);
+            return bound == stock ? original : menu.patch_parseQueueFlyout(bound.toByteArray());
+        } catch (Exception exception) {
+            Logger.printException(() -> "Could not bind playlist page queue action", exception);
+            return original;
+        }
+    }
+
+    static MenuRenderer bindPlaylistPageMenu(MenuRenderer menu) {
+        String playlistId = "";
+        for (var item : menu.getItemsList()) {
+            if (icon(item) != YTIconType.SHUFFLE) {
+                continue;
+            }
+            String target = endpoint(item).getWatchEndpoint().getPlaylistId();
+            if (!PlaylistCardSource.isPlaylistId(target)
+                    || !playlistId.isEmpty() && !playlistId.equals(target)) {
+                return menu;
+            }
+            playlistId = target;
+        }
+        if (playlistId.isEmpty()) {
+            return menu;
+        }
+
+        MenuRenderer.Builder bound = null;
+        for (int index = 0; index < menu.getItemsCount(); index++) {
+            var item = menu.getItems(index);
+            if (icon(item) == YTIconType.QUEUE_PLAY_NEXT && isLocalItem(item)) {
+                if (bound == null) {
+                    bound = menu.toBuilder();
+                }
+                // Preserve the stock command for any tap the local queue declines.
+                bound.setItems(index, withEndpoint(item, endpoint(item).toBuilder()
+                        .setPlaylistPagePlayNextPlaylistId(playlistId)));
+            }
+        }
+        return bound == null ? menu : bound.build();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Handles the Play next in queue command when it carries the playlist page's playlist ID.
+     */
+    public static boolean onPlaylistPageQueueCommand(@Nullable MessageLite original) {
+        if (original == null || !AddToQueuePatch.isNativeQueueEnabled()) {
+            return false;
+        }
+        try {
+            var command = PlaylistQueueRenderer.NavigationEndpoint.parseFrom(original.toByteArray());
+            Runnable action = NativePlaylistQueuePatch.getPlaylistQueueAction(
+                    command.getPlaylistPagePlayNextPlaylistId(), false);
+            if (action == null) {
+                return false;
+            }
+            action.run();
+            return true;
+        } catch (Exception exception) {
+            Logger.printException(() -> "Could not run playlist page queue action", exception);
+            return false;
+        }
+    }
+
     /** Direct native sheet dispatch, which does not run the button model's Runnable. */
     public static boolean onStockQueueItemClick(Enum<?> icon) {
         return icon != null && AddToQueuePatch.isNativeQueueEnabled()
@@ -253,6 +328,10 @@ public final class QueueFlyoutActions {
         var command = PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
                 .setQueuePlaylistId(playlistId)
                 .setWatchEndpoint(PlaylistQueueRenderer.WatchEndpoint.newBuilder().setPlaylistId(playlistId));
+        return withEndpoint(item, command);
+    }
+
+    private static MenuItem withEndpoint(MenuItem item, PlaylistQueueRenderer.NavigationEndpoint.Builder command) {
         if (item.hasMenuConditionalServiceItemRenderer()) {
             return item.toBuilder().setMenuConditionalServiceItemRenderer(item.getMenuConditionalServiceItemRenderer()
                     .toBuilder().setServiceEndpoint(command)).build();

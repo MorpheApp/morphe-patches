@@ -1741,3 +1741,55 @@ internal fun playlistQueueAvailabilityFingerprint(queueType: String, requestType
     returnType = "I",
     filters = listOf(methodCall(opcode = Opcode.INVOKE_INTERFACE, parameters = listOf(requestType), returnType = "I"))
 )
+
+/** Maps the PageHeaderRenderer discriminator to its native toolbar presenter. */
+internal object PlaylistPageHeaderFactoryFingerprint : Fingerprint(
+    parameters = listOf("L"),
+    returnType = "L",
+    filters = listOf(
+        literal(509923604L), // PageHeaderRenderer in BrowseResponse.header.
+        opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately())
+    )
+)
+
+internal fun playlistPageToolbarFingerprint(presenter: String, items: FieldReference) = Fingerprint(
+    definingClass = presenter,
+    parameters = listOf("L"),
+    returnType = "L",
+    filters = listOf(
+        literal(66439850L), // MenuRenderer in BrowseResponse.toolbarMenu.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, reference = items)
+    )
+)
+
+internal fun playlistPageToolbarClickFingerprint(rowType: String) = Fingerprint(
+    parameters = listOf("Landroid/view/MenuItem;"),
+    returnType = "Z",
+    filters = listOf(
+        methodCall(smali = "Landroid/util/SparseArray;->get(I)Ljava/lang/Object;"),
+        checkCast(rowType),
+        methodCall(definingClass = rowType, opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Landroid/view/MenuItem;"), returnType = "Z")
+    )
+)
+
+internal fun playlistPageToolbarCommandFingerprint(
+    callback: MethodReference,
+    commandType: String,
+    isToolbarAction: (String) -> Boolean,
+) = Fingerprint(
+    name = callback.name,
+    parameters = listOf("Landroid/view/MenuItem;"),
+    returnType = "Z",
+    custom = { _, classDef -> classDef.interfaces.any(isToolbarAction) },
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = commandType),
+        anyInstruction(
+            methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "V", parameters = listOf(commandType)),
+            methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "V",
+                parameters = listOf(commandType, "Ljava/util/Map;"))
+        )
+    )
+)
