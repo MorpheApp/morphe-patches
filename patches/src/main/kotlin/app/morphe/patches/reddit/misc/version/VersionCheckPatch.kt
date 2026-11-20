@@ -52,6 +52,8 @@ var is_2026_45_0_or_greater: Boolean by Delegates.notNull()
     private set
 var is_2026_46_0_or_greater: Boolean by Delegates.notNull()
     private set
+var is_2026_47_0_or_greater: Boolean by Delegates.notNull()
+    private set
 
 val versionCheckPatch = patch {
     execute {
@@ -82,5 +84,6 @@ val versionCheckPatch = patch {
         is_2026_44_0_or_greater = isEqualsOrGreaterThan("2026.44.0")
         is_2026_45_0_or_greater = isEqualsOrGreaterThan("2026.45.0")
         is_2026_46_0_or_greater = isEqualsOrGreaterThan("2026.46.0")
+        is_2026_47_0_or_greater = isEqualsOrGreaterThan("2026.47.0")
     }
 }
