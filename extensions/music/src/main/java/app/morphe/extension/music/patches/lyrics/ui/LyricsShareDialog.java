@@ -651,6 +651,7 @@ final class LyricsShareDialog {
                         exportInFlight[0] = false;
                         if (dismissed[0]) {
                             Utils.deleteQuietly(pngFile);
+                            recycleDialogBitmaps.run();
                             recycleSnapshotBitmaps.run();
                             return;
                         }
@@ -683,6 +684,7 @@ final class LyricsShareDialog {
                     Utils.runOnMainThread(() -> {
                         exportInFlight[0] = false;
                         if (dismissed[0]) {
+                            recycleDialogBitmaps.run();
                             recycleSnapshotBitmaps.run();
                             return;
                         }
@@ -699,8 +701,8 @@ final class LyricsShareDialog {
 
         dialog.setOnDismissListener(d -> {
             dismissed[0] = true;
-            recycleDialogBitmaps.run();
             if (!exportInFlight[0]) {
+                recycleDialogBitmaps.run();
                 recycleSnapshotBitmaps.run();
             }
             onFinished.run();
@@ -711,8 +713,8 @@ final class LyricsShareDialog {
         } catch (WindowManager.BadTokenException ex) {
             Logger.printException(() -> "Failed to show fullscreen share preview dialog", ex);
             dismissed[0] = true;
-            recycleDialogBitmaps.run();
             if (!exportInFlight[0]) {
+                recycleDialogBitmaps.run();
                 recycleSnapshotBitmaps.run();
             }
             onFinished.run();

@@ -1172,8 +1172,10 @@ public final class KuromojiRomanizer {
         if (mCount > kCount) {
             // Merge dependent moras (っ, ん, ー) onto their preceding mora first!
             List<String> units = new ArrayList<>(mCount);
-            for (String m : moras) {
-                if (!units.isEmpty() && isDependentCodaMora(m) && units.size() + (moras.length - units.size()) > kCount) {
+            for (int mi = 0; mi < moras.length; mi++) {
+                String m = moras[mi];
+                int remainingMoras = moras.length - 1 - mi;
+                if (!units.isEmpty() && isDependentCodaMora(m) && (units.size() + remainingMoras >= kCount)) {
                     int last = units.size() - 1;
                     units.set(last, units.get(last) + m);
                 } else {

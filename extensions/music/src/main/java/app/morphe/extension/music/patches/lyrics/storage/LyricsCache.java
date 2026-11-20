@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.storage;
 
 import androidx.annotation.Nullable;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -18,10 +19,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 
 import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
@@ -1292,7 +1295,7 @@ public final class LyricsCache {
                 if (file.isDirectory()) {
                     continue;
                 }
-                if (bucket == CacheBucket.ALL || classifyFile(file.getName()) == bucket) {
+                if (shouldDeleteForBucket(file.getName(), bucket)) {
                     long len = file.length();
                     Utils.deleteQuietly(file);
                     if (!file.exists()) {
@@ -1308,6 +1311,21 @@ public final class LyricsCache {
         return freed;
     }
 
+    private static boolean shouldDeleteForBucket(String name, CacheBucket bucket) {
+        if (bucket == CacheBucket.ALL || classifyFile(name) == bucket) {
+            return true;
+        }
+        if (bucket == CacheBucket.LYRICS) {
+            return name.endsWith(".rombed.txt")
+                    || (name.contains(".trans.") && name.endsWith(".txt"))
+                    || name.endsWith(RAW_SUFFIX);
+        }
+        if (bucket == CacheBucket.TRANSLATION) {
+            return name.endsWith(RAW_SUFFIX);
+        }
+        return false;
+    }
+
     /** How many bytes the stored lyrics occupy, measured the same way {@link #clear()} frees. */
     public static long size() {
         return stats().total().bytes();
@@ -1321,6 +1339,7 @@ public final class LyricsCache {
         int translationItems = 0;
         long transliterationBytes = 0;
         int transliterationItems = 0;
+        final Set<String> seenPrefKeys = new HashSet<>();
 
         final File directory = offlineDirectory();
         final File[] files = directory == null ? null : directory.listFiles();
@@ -1334,8 +1353,16 @@ public final class LyricsCache {
                 switch (classifyFile(name)) {
                     case LYRICS -> {
                         lyricsBytes += len;
-                        if (name.endsWith(".lrc") || name.endsWith(".pref")) {
-                            lyricsItems++;
+                        if (name.endsWith(".lrc")) {
+                            if (!isNotFoundFile(file)) {
+                                lyricsItems++;
+                            }
+                        } else if (name.endsWith(".pref")) {
+                            String prefDedupKey = readPrefDedupKey(file);
+                            if (prefDedupKey != null
+                                    && (prefDedupKey.isEmpty() || seenPrefKeys.add(prefDedupKey))) {
+                                lyricsItems++;
+                            }
                         }
                     }
                     case TRANSLATION -> {
@@ -1355,6 +1382,50 @@ public final class LyricsCache {
                 new BucketStats(lyricsBytes, lyricsItems),
                 new BucketStats(translationBytes, translationItems),
                 new BucketStats(transliterationBytes, transliterationItems));
+    }
+
+    private static boolean isNotFoundFile(File file) {
+        try (BufferedReader reader = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8)) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (NOT_FOUND_MARKER.equals(line)) {
+                    return true;
+                }
+                if (!line.startsWith("#")) {
+                    return false;
+                }
+            }
+            return false;
+        } catch (IOException ex) {
+            return false;
+        }
+    }
+
+    @Nullable
+    private static String readPrefDedupKey(File file) {
+        try (BufferedReader reader = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8)) {
+            String track = null;
+            String videoId = null;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (NOT_FOUND_MARKER.equals(line)) {
+                    return null;
+                }
+                if (line.startsWith(HEADER_TRACK)) {
+                    track = emptyToNull(line.substring(HEADER_TRACK.length()));
+                } else if (line.startsWith(HEADER_VIDEO_ID)) {
+                    videoId = emptyToNull(line.substring(HEADER_VIDEO_ID.length()));
+                } else if (!line.startsWith("#")) {
+                    break;
+                }
+            }
+            if (track == null) {
+                return "";
+            }
+            return videoId != null ? track + '\0' + videoId : track;
+        } catch (IOException ex) {
+            return null;
+        }
     }
 
     static CacheBucket classifyFile(String name) {

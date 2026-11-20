@@ -111,7 +111,7 @@ public final class KuromojiDictStore {
     }
 
     /** Removes the packed Kuromoji dictionary from disk and memory. */
-    public static void delete() {
+    public static synchronized void delete() {
         cachedTokenizer = null;
         File file = packedFile();
         if (file != null && file.exists()) {

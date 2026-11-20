@@ -3521,10 +3521,38 @@ public final class LyricsPanelView extends FrameLayout
         romanizedLocalDictionary = stashed.localDictionary();
         appliedRubyLanguage = stashed.appliedRubyLanguage();
         if (stashed.rubyAppliedLyrics() != null) {
-            lyrics = stashed.rubyAppliedLyrics();
+            lyrics = copySectionLabels(stashed.rubyAppliedLyrics(), current);
         }
         stashedRomanization = null;
         return true;
+    }
+
+    private static Lyrics copySectionLabels(Lyrics target, @Nullable Lyrics sectionSource) {
+        if (sectionSource == null || target.lines().size() != sectionSource.lines().size()) {
+            return target;
+        }
+        List<LyricsLine> base = target.lines();
+        List<LyricsLine> sec = sectionSource.lines();
+        List<LyricsLine> updated = null;
+        for (int i = 0; i < base.size(); i++) {
+            LyricsLine b = base.get(i);
+            String part = sec.get(i).songPart();
+            if (Objects.equals(b.songPart(), part)) {
+                if (updated != null) {
+                    updated.add(b);
+                }
+                continue;
+            }
+            if (updated == null) {
+                updated = new ArrayList<>(base.size());
+                for (int j = 0; j < i; j++) {
+                    updated.add(base.get(j));
+                }
+            }
+            updated.add(new LyricsLine(b.startTimeMs(), b.endTimeMs(), b.text(), b.words(),
+                    b.agentId(), b.isDuet(), b.isBG(), part));
+        }
+        return updated != null ? target.withLines(updated) : target;
     }
 
     private static boolean sameLineTexts(@Nullable Lyrics a, @Nullable Lyrics b) {
@@ -3966,6 +3994,7 @@ public final class LyricsPanelView extends FrameLayout
                     applyRuby();
                 } else {
                     showLyrics(targetToShow);
+                    resumeAiRubyIfNeeded(targetToShow);
                 }
                 updateFooter();
                 if (romanizedLines != null) {
@@ -4077,7 +4106,7 @@ public final class LyricsPanelView extends FrameLayout
             if (romanizedLines != null || perWordRomaji) {
                 onlyMode = OnlyMode.ROMA;
                 applyOnlyModeState();
-                showLyrics(current);
+                showLyrics(lyrics != null ? lyrics : current);
                 flashButtonLabel(romanizeView,
                         str("morphe_music_lyrics_romanize_only"),
                         updateRomanizeLabelRunnable, 3000);
@@ -4085,7 +4114,7 @@ public final class LyricsPanelView extends FrameLayout
             }
             onlyMode = OnlyMode.NONE;
             if (hadNormalTranslate) {
-                showLyrics(current);
+                showLyrics(lyrics != null ? lyrics : current);
             }
             requestRomanizeOnly(current);
         } catch (Exception ex) {
@@ -4110,7 +4139,7 @@ public final class LyricsPanelView extends FrameLayout
             onlyMode = Settings.LYRICS_TRANSLATE_ONLY.get() ? OnlyMode.BOTH : OnlyMode.ROMA;
             applyOnlyModeState();
             updateDualPill();
-            showLyrics(current);
+            showLyrics(lyrics != null ? lyrics : current);
             updateRomanizeLabel();
             if (onlyMode == OnlyMode.BOTH && translatedLines == null) {
                 requestTranslateOnly(current);
@@ -4195,6 +4224,7 @@ public final class LyricsPanelView extends FrameLayout
                 applyRuby();
             } else {
                 showLyrics(targetToShow);
+                resumeAiRubyIfNeeded(targetToShow);
             }
             updateFooter();
             if (romanizedLines != null) {
@@ -4291,6 +4321,26 @@ public final class LyricsPanelView extends FrameLayout
                 return;
             }
             if (generated != local) {
+                lyrics = generated;
+                showLyrics(generated);
+            }
+        });
+    }
+
+    private void resumeAiRubyIfNeeded(@Nullable Lyrics target) {
+        if (target == null) {
+            return;
+        }
+        TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
+        if (track == null || !RubyGenerator.usesAi(target)) {
+            return;
+        }
+        final int requestId = ++rubyRequestId;
+        RubyGenerator.requestAi(track, target, generated -> {
+            if (requestId != rubyRequestId || lyrics != target) {
+                return;
+            }
+            if (generated != target && !generated.lines().equals(target.lines())) {
                 lyrics = generated;
                 showLyrics(generated);
             }
@@ -6258,8 +6308,8 @@ public final class LyricsPanelView extends FrameLayout
             return;
         }
         updateShareSelectionBarState();
-        applyShareSelectionHighlights();
         updateLinesDepthOfField(activeIndicesSet, primaryActiveIndex, -1, true);
+        applyShareSelectionHighlights();
     }
 
     private void updateShareSelectionBarState() {
@@ -6475,6 +6525,14 @@ public final class LyricsPanelView extends FrameLayout
                     if (!isAttachedToWindow() || !isShareSelectionMode) {
                         shareExportInProgress = false;
                         updateShareSelectionBarState();
+                        if (snapshot != null) {
+                            if (snapshot.blurredMesh() != null && !snapshot.blurredMesh().isRecycled()) {
+                                snapshot.blurredMesh().recycle();
+                            }
+                            if (snapshot.ownsArtwork() && snapshot.artwork() != null && !snapshot.artwork().isRecycled()) {
+                                snapshot.artwork().recycle();
+                            }
+                        }
                         return;
                     }
                     LyricsShareDialog.show(

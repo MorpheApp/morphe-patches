@@ -90,22 +90,25 @@ public final class LocalRomanizer {
         }
         if (script == Script.JAPANESE && line != null && JapaneseDictionaryStore.isReady()) {
             String contextual = contextualSudachiSyllableReading(syllable, line);
-            if (contextual != null) {
+            if (contextual != null && !ScriptDetector.contains(contextual, Character.UnicodeScript.HAN)) {
                 return contextual;
             }
+        }
+        if (script == null || script == Script.OTHER) return null;
+        final String reading = readAs(syllable, script, RimeDictionaryStore.isActive(), line).text().trim();
+        if (!reading.isEmpty() && !reading.equals(syllable) && !ScriptDetector.contains(reading, Character.UnicodeScript.HAN)) {
+            return reading;
         }
         if (script == Script.JAPANESE && !kuromojiFirst) {
             KuromojiTokenizer tokenizer = KuromojiDictStore.tokenizer();
             if (tokenizer != null) {
                 String kuromojiReading = KuromojiRomanizer.syllableReadingInContext(syllable, line, tokenizer);
-                if (kuromojiReading != null) {
+                if (kuromojiReading != null && !ScriptDetector.contains(kuromojiReading, Character.UnicodeScript.HAN)) {
                     return kuromojiReading;
                 }
             }
         }
-        if (script == null || script == Script.OTHER) return null;
-        final String reading = readAs(syllable, script, RimeDictionaryStore.isActive(), line).text().trim();
-        return reading.isEmpty() || reading.equals(syllable) ? null : reading;
+        return null;
     }
 
     @Nullable

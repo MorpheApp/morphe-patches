@@ -15,8 +15,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
+import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
 
 import app.morphe.extension.music.patches.lyrics.LyricsFixtures;
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
@@ -249,5 +253,69 @@ public class LyricsCacheTest {
 
         assertTrue(LyricsCache.clear(LyricsCache.CacheBucket.LYRICS) > 0);
         assertEquals(0, LyricsCache.stats().total().items());
+    }
+
+    @Test
+    public void statsExcludesNotFoundAndDuplicatePreferences() {
+        LyricsCache.clear();
+        Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "hello"));
+        LyricsCache.put(track, "MissingProvider", Lyrics.NOT_FOUND, "vid1");
+        LyricsCache.putPreference("vid1", track, null, null, lyrics, List.of(), "fp1");
+
+        LyricsCache.CacheStats stats = LyricsCache.stats();
+        assertEquals(1, stats.lyrics().items());
+    }
+
+    @Test
+    public void clearLyricsRemovesEmbeddedAndRawSidecars() {
+        LyricsCache.clear();
+        Lyrics lyrics = new Lyrics(
+                List.of(new LyricsLine(0, "hello")),
+                "TestProvider",
+                true,
+                List.of(new LyricsLine(0, "helo")),
+                Map.of("en", List.of(new LyricsLine(0, "halo"))),
+                null,
+                null,
+                "[00:00.00]hello",
+                "lrc",
+                null);
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+
+        File dir = LyricsDirectories.directory(LyricsDirectories.OFFLINE);
+        assertNotNull(dir);
+        assertTrue(dir.listFiles().length >= 4);
+
+        LyricsCache.clear(LyricsCache.CacheBucket.LYRICS);
+        assertEquals(0, dir.listFiles().length);
+        assertEquals(0, LyricsCache.stats().total().items());
+    }
+
+    @Test
+    public void clearTranslationRemovesRawSidecars() {
+        LyricsCache.clear();
+        Lyrics lyrics = new Lyrics(
+                List.of(new LyricsLine(0, "hello")),
+                "TestProvider",
+                true,
+                List.of(new LyricsLine(0, "helo")),
+                Map.of("en", List.of(new LyricsLine(0, "halo"))),
+                null,
+                null,
+                "<tt>raw</tt>",
+                "ttml",
+                null);
+        LyricsCache.put(track, "TestProvider", lyrics, null);
+        LyricsCache.putTranslation(track, "TestProvider", "en", List.of("hello"), List.of("halo"));
+
+        LyricsCache.clear(LyricsCache.CacheBucket.TRANSLATION);
+        File dir = LyricsDirectories.directory(LyricsDirectories.OFFLINE);
+        assertNotNull(dir);
+        for (File file : dir.listFiles()) {
+            String name = file.getName();
+            assertTrue("Unexpected translation/raw file remained: " + name,
+                    !name.endsWith(".raw") && !name.contains(".trans."));
+        }
+        assertEquals(0, LyricsCache.stats().translation().items());
     }
 }

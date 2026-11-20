@@ -280,19 +280,21 @@ public final class LyricsFontManager {
         if (len < 12 || len > MAX_FONT_BYTES) {
             return FontMetadata.INVALID;
         }
-        byte[] bytes = new byte[(int) len];
-        try (InputStream in = new FileInputStream(file)) {
-            int offset = 0;
-            while (offset < bytes.length) {
-                int r = in.read(bytes, offset, bytes.length - offset);
-                if (r < 0) break;
-                offset += r;
+        try {
+            byte[] bytes = new byte[(int) len];
+            try (InputStream in = new FileInputStream(file)) {
+                int offset = 0;
+                while (offset < bytes.length) {
+                    int r = in.read(bytes, offset, bytes.length - offset);
+                    if (r < 0) break;
+                    offset += r;
+                }
+                if (offset < 12) {
+                    return FontMetadata.INVALID;
+                }
+                return parseFontMetadata(bytes);
             }
-            if (offset < 12) {
-                return FontMetadata.INVALID;
-            }
-            return parseFontMetadata(bytes);
-        } catch (IOException ex) {
+        } catch (Throwable ex) {
             return FontMetadata.INVALID;
         }
     }
@@ -369,7 +371,12 @@ public final class LyricsFontManager {
         }
         Context ctx = Utils.getContext();
         if (ctx != null) {
-            reload(ctx);
+            if (Utils.isCurrentlyOnMainThread()) {
+                initialized = true;
+                Utils.runOnBackgroundThread(() -> reload(ctx));
+            } else {
+                reload(ctx);
+            }
         }
     }
 

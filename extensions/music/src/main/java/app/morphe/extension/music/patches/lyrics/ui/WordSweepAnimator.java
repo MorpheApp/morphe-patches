@@ -1018,7 +1018,7 @@ public final class WordSweepAnimator {
                     float clusterY = lineBaselines[m.lineIdx] - subLayout.getLineBaseline(0);
                     int sIdx = sylIndexFor(m, sylPointer);
                     if (sIdx >= 0) lastSylOnLine = sIdx;
-                    int shiftIdx = sIdx >= 0 ? sIdx : (lastSylOnLine >= 0 ? postShiftBase + lastSylOnLine : sylPointer[0]);
+                    int shiftIdx = sIdx >= 0 ? sIdx : (lastSylOnLine >= 0 ? postShiftBase + lastSylOnLine : (sylPointer[0] < postShiftBase ? sylPointer[0] : -1));
                     list.add(new VisualCluster(
                             m.start, m.end, m.lineIdx, m.x, clusterY, m.width,
                             true, m.disableScale, false, m.isRtl,
@@ -1054,7 +1054,7 @@ public final class WordSweepAnimator {
                     float clusterY = lineBaselines[m.lineIdx] - subLayout.getLineBaseline(0);
                     int sIdx = sylIndexFor(m, sylPointer);
                     if (sIdx >= 0) lastSylOnLine = sIdx;
-                    int shiftIdx = sIdx >= 0 ? sIdx : (lastSylOnLine >= 0 ? postShiftBase + lastSylOnLine : sylPointer[0]);
+                    int shiftIdx = sIdx >= 0 ? sIdx : (lastSylOnLine >= 0 ? postShiftBase + lastSylOnLine : (sylPointer[0] < postShiftBase ? sylPointer[0] : -1));
                     list.add(new VisualCluster(
                             m.start, last.end, m.lineIdx, runLeft, clusterY, runRight - runLeft,
                             true, m.disableScale, true, m.isRtl,
@@ -1068,7 +1068,7 @@ public final class WordSweepAnimator {
             } else {
                 int runSylIdx = sylIndexFor(m, sylPointer);
                 if (runSylIdx >= 0) lastSylOnLine = runSylIdx;
-                int runShiftIdx = runSylIdx >= 0 ? runSylIdx : (lastSylOnLine >= 0 ? postShiftBase + lastSylOnLine : sylPointer[0]);
+                int runShiftIdx = runSylIdx >= 0 ? runSylIdx : (lastSylOnLine >= 0 ? postShiftBase + lastSylOnLine : (sylPointer[0] < postShiftBase ? sylPointer[0] : -1));
                 int j = idx;
                 while (j + 1 < metaList.size()
                         && !metaList.get(j + 1).isHeavy

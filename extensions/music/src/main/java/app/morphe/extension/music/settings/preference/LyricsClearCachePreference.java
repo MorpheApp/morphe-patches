@@ -9,8 +9,10 @@ package app.morphe.extension.music.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import androidx.annotation.Nullable;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
@@ -45,6 +47,8 @@ import app.morphe.extension.shared.ui.Dim;
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class LyricsClearCachePreference extends Preference {
+
+    private boolean dialogOpen;
 
     public LyricsClearCachePreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
@@ -97,20 +101,35 @@ public class LyricsClearCachePreference extends Preference {
 
     @Override
     protected void onClick() {
-        if (!isEnabled()) {
+        if (!isEnabled() || dialogOpen) {
             return;
         }
+        final Context context = getContext();
+        if (isContextInvalid(context)) {
+            return;
+        }
+        dialogOpen = true;
         Utils.runOnBackgroundThread(() -> {
             final CacheStats stats = LyricsCache.stats();
             Utils.runOnMainThread(() -> showCacheDialog(getContext(), stats));
         });
     }
 
+    private static boolean isContextInvalid(@Nullable Context context) {
+        return context == null
+                || (context instanceof Activity activity
+                && (activity.isFinishing() || activity.isDestroyed()));
+    }
+
     private void showCacheDialog(Context context, CacheStats initialStats) {
+        if (isContextInvalid(context)) {
+            dialogOpen = false;
+            return;
+        }
         try {
             final Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
-                    str("morphe_music_lyrics_cache_lyrics_category_title"),
+                    str("morphe_music_lyrics_clear_cache_title"),
                     null,
                     null,
                     str("morphe_music_lyrics_cache_close_action"),
@@ -122,6 +141,7 @@ public class LyricsClearCachePreference extends Preference {
             );
 
             final Dialog dialog = dialogPair.first;
+            dialog.setOnDismissListener(d -> dialogOpen = false);
             final LinearLayout mainLayout = dialogPair.second;
 
             final LinearLayout cardsContainer = new LinearLayout(context);
@@ -141,34 +161,47 @@ public class LyricsClearCachePreference extends Preference {
             scrollView.setOverScrollMode(ScrollView.OVER_SCROLL_NEVER);
             scrollView.addView(cardsContainer);
             LinearLayout.LayoutParams scrollParams = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.0f);
             mainLayout.addView(scrollView, Math.max(0, mainLayout.getChildCount() - 1), scrollParams);
 
             final Button clearAllBtn = ThemedInput.findButton(
                     mainLayout, str("morphe_music_lyrics_cache_clear_all_title"));
 
             final CacheStats[] currentStats = {initialStats};
+            final boolean[] confirmOpen = {false};
             final Runnable[] refreshUi = new Runnable[1];
             refreshUi[0] = () -> {
                 CacheStats s = currentStats[0];
                 bindCard(lyricsCard, CacheBucket.LYRICS, s.lyrics(),
                         () -> confirmAndClear(context, CacheBucket.LYRICS,
-                                currentStats[0],
+                                currentStats[0], confirmOpen,
                                 updated -> {
+                                    applyOuterSummary(updated);
+                                    if (!dialog.isShowing() || isContextInvalid(context)) {
+                                        return;
+                                    }
                                     currentStats[0] = updated;
                                     refreshUi[0].run();
                                 }));
                 bindCard(translationCard, CacheBucket.TRANSLATION, s.translation(),
                         () -> confirmAndClear(context, CacheBucket.TRANSLATION,
-                                currentStats[0],
+                                currentStats[0], confirmOpen,
                                 updated -> {
+                                    applyOuterSummary(updated);
+                                    if (!dialog.isShowing() || isContextInvalid(context)) {
+                                        return;
+                                    }
                                     currentStats[0] = updated;
                                     refreshUi[0].run();
                                 }));
                 bindCard(transliterationCard, CacheBucket.TRANSLITERATION, s.transliteration(),
                         () -> confirmAndClear(context, CacheBucket.TRANSLITERATION,
-                                currentStats[0],
+                                currentStats[0], confirmOpen,
                                 updated -> {
+                                    applyOuterSummary(updated);
+                                    if (!dialog.isShowing() || isContextInvalid(context)) {
+                                        return;
+                                    }
                                     currentStats[0] = updated;
                                     refreshUi[0].run();
                                 }));
@@ -186,7 +219,11 @@ public class LyricsClearCachePreference extends Preference {
 
             if (clearAllBtn != null) {
                 clearAllBtn.setOnClickListener(v -> confirmAndClear(context, CacheBucket.ALL,
-                        currentStats[0], updated -> {
+                        currentStats[0], confirmOpen, updated -> {
+                            applyOuterSummary(updated);
+                            if (!dialog.isShowing() || isContextInvalid(context)) {
+                                return;
+                            }
                             currentStats[0] = updated;
                             refreshUi[0].run();
                         }));
@@ -195,12 +232,20 @@ public class LyricsClearCachePreference extends Preference {
             refreshUi[0].run();
             dialog.show();
         } catch (WindowManager.BadTokenException ex) {
+            dialogOpen = false;
             Logger.printException(() -> "Could not show the clear cache dialog", ex);
+        } catch (RuntimeException ex) {
+            dialogOpen = false;
+            throw ex;
         }
     }
 
     private void confirmAndClear(Context context, CacheBucket bucket, CacheStats stats,
+                                 boolean[] confirmOpen,
                                  java.util.function.Consumer<CacheStats> onCleared) {
+        if (confirmOpen[0] || isContextInvalid(context)) {
+            return;
+        }
         final BucketStats targetStats = stats.forBucket(bucket);
         if (targetStats.bytes() == 0 && targetStats.items() == 0) {
             return;
@@ -218,8 +263,9 @@ public class LyricsClearCachePreference extends Preference {
             case ALL -> "morphe_music_lyrics_cache_confirm_all";
         };
         final String size = megabytes(targetStats.bytes());
+        confirmOpen[0] = true;
         try {
-            CustomDialog.create(context,
+            Dialog confirmDialog = CustomDialog.create(context,
                     title,
                     str(confirmKey, size, targetStats.items()),
                     null,
@@ -235,9 +281,15 @@ public class LyricsClearCachePreference extends Preference {
                     () -> { },
                     null,
                     null,
-                    true).first.show();
+                    true).first;
+            confirmDialog.setOnDismissListener(d -> confirmOpen[0] = false);
+            confirmDialog.show();
         } catch (WindowManager.BadTokenException ex) {
+            confirmOpen[0] = false;
             Logger.printException(() -> "Could not show clear confirmation dialog", ex);
+        } catch (RuntimeException ex) {
+            confirmOpen[0] = false;
+            throw ex;
         }
     }
 
