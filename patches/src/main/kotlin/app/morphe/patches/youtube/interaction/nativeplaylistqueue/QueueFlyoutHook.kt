@@ -12,12 +12,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.youtube.layout.flyout.FeedFlyoutButtonsInitializerFingerprint
 import app.morphe.patches.youtube.layout.hide.general.ActionBarMenuBuilderFingerprint
-import app.morphe.patcher.util.cloneParameters
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -135,7 +136,7 @@ private fun installPlaylistPageToolbar(menuType: String, items: FieldReference) 
     val menus = listOf(presenter, parent).mapNotNull {
         playlistPageToolbarFingerprint(it, items).matchAll(0..1).singleOrNull()
     }
-    if (menus.size != 2) {
+    if (menus.isEmpty()) {
         return
     }
     val rowType = ActionBarMenuBuilderFingerprint.originalMethod.implementation!!.instructions
@@ -147,6 +148,11 @@ private fun installPlaylistPageToolbar(menuType: String, items: FieldReference) 
     val callback = playlistPageToolbarClickFingerprint(rowType).matchAll(0..Int.MAX_VALUE)
         .map { it.instructionMatches.last().methodReference }.distinctBy { it.toString() }
         .singleOrNull() ?: return
+    // The no-argument callback uses the inherited menu; MenuItem callbacks have two presenters.
+    val expectedMenuCount = if (callback.parameterTypes.isEmpty()) 1 else 2
+    if (menus.size != expectedMenuCount) {
+        return
+    }
     val commandType = NativeButtonDispatchFingerprint.instructionMatches.single()
         .methodReference.parameterTypes.first().toString()
 
@@ -160,8 +166,9 @@ private fun installPlaylistPageToolbar(menuType: String, items: FieldReference) 
     }
     for (action in actions) {
         val command = action.instructionMatches.first().fieldReference
-        // The modern direct action may use both of its input registers as locals.
-        val method = if (action.originalMethod.implementation!!.registerCount == 2) {
+        // Some click handlers have no local register to hold the command.
+        val original = action.originalMethod
+        val method = if (original.implementation!!.registerCount == original.numberOfParameterRegistersLogical) {
             action.method.cloneParameters()
         } else {
             action.method

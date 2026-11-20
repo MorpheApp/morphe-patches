@@ -1770,8 +1770,20 @@ internal fun playlistPageToolbarClickFingerprint(rowType: String) = Fingerprint(
     filters = listOf(
         methodCall(smali = "Landroid/util/SparseArray;->get(I)Ljava/lang/Object;"),
         checkCast(rowType),
-        methodCall(definingClass = rowType, opcode = Opcode.INVOKE_INTERFACE,
-            parameters = listOf("Landroid/view/MenuItem;"), returnType = "Z")
+        anyInstruction(
+            methodCall(
+                definingClass = rowType,
+                opcode = Opcode.INVOKE_INTERFACE,
+                parameters = emptyList(),
+                returnType = "Z"
+            ),
+            methodCall(
+                definingClass = rowType,
+                opcode = Opcode.INVOKE_INTERFACE,
+                parameters = listOf("Landroid/view/MenuItem;"),
+                returnType = "Z"
+            )
+        )
     )
 )
 
@@ -1781,7 +1793,8 @@ internal fun playlistPageToolbarCommandFingerprint(
     isToolbarAction: (String) -> Boolean,
 ) = Fingerprint(
     name = callback.name,
-    parameters = listOf("Landroid/view/MenuItem;"),
+    isStatic = false,
+    parameters = callback.parameterTypes.map(CharSequence::toString),
     returnType = "Z",
     custom = { _, classDef -> classDef.interfaces.any(isToolbarAction) },
     filters = listOf(

@@ -79,6 +79,7 @@ public final class QueueFlyoutActions {
      * <p>
      * Binds the Play next in queue item in the playlist page's toolbar menu.
      */
+    @Nullable
     public static MessageLite preparePlaylistPageMenu(@Nullable MessageLite original) {
         if (!AddToQueuePatch.isNativeQueueEnabled() || !(original instanceof Menu menu)) {
             return original;
