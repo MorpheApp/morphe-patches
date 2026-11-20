@@ -320,6 +320,39 @@ public final class NavigationBarPatch {
     }
 
     /**
+     * Feed scroll behavior of the navigation bar with which it hides while scrolling.
+     */
+    private static final int FEED_SCROLL_HIDES_NAVIGATION_BAR = 2;
+
+    /**
+     * Feed scroll behavior of the navigation bar of a page that does not set it, with which it is always shown.
+     */
+    private static final int FEED_SCROLL_KEEPS_NAVIGATION_BAR = 1;
+
+    /**
+     * Injection point.
+     * <p>
+     * The server sets for each feed page if the navigation bar hides while scrolling,
+     * and some accounts never get the pages with it, so the navigation bar is always shown.
+     */
+    public static int getFeedScrollNavigationBarBehavior() {
+        return DISABLE_AUTO_HIDE_NAVIGATION_BAR || HIDE_NAVIGATION_BAR
+                ? FEED_SCROLL_KEEPS_NAVIGATION_BAR
+                : FEED_SCROLL_HIDES_NAVIGATION_BAR;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Before 21.20 this flag also hides the navigation bar while scrolling, whatever the page sets,
+     * so it is turned off and only {@link #getFeedScrollNavigationBarBehavior()} decides.
+     */
+    @SuppressWarnings("SameReturnValue")
+    public static boolean useAutoHideNavigationBarFlag(boolean original) {
+        return false;
+    }
+
+    /**
      * Injection point.
      */
     public static void hideNavigationBar(View view) {

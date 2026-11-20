@@ -71,6 +71,10 @@ internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+/**
+ * The feed page sets with an enum of its response if the navigation bar hides while scrolling.
+ * The last match is the result of the enum conversion, and the navigation bar hides only if it is 2.
+ */
 internal object AutoHideNavigationBarOnFeedScrollingFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -80,7 +84,15 @@ internal object AutoHideNavigationBarOnFeedScrollingFingerprint : Fingerprint(
         methodCall(
             smali = "Landroid/view/ViewConfiguration;->getScaledTouchSlop()I",
             location = MatchAfterWithin(5)
-        )
+        ),
+        fieldAccess(opcode = Opcode.IGET, type = "I"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("I"),
+            returnType = "I",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
     )
 )
 

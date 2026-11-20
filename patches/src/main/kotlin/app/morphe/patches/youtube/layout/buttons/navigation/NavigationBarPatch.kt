@@ -53,6 +53,7 @@ import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
@@ -614,19 +615,38 @@ val navigationBarPatch = patch(
         }
 
         if (is_20_31_or_greater) {
-            buildList {
-                add(AutoHideNavigationBarOnFeedScrollingFingerprint)
-                if (is_21_23_or_greater) add(AutoHideNavigationBarOnDismissMiniplayerFingerprint)
-            }.forEach {
-                it.method.addInstructionsWithLabels(
+            AutoHideNavigationBarOnFeedScrollingFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { }, $EXTENSION_CLASS->getFeedScrollNavigationBarBehavior()I
+                            move-result v$register
+                        """
+                    )
+
+                    if (!is_21_20_or_greater) {
+                        insertLiteralOverride(
+                            45677535L,
+                            "$EXTENSION_CLASS->useAutoHideNavigationBarFlag(Z)Z"
+                        )
+                    }
+                }
+            }
+
+            if (is_21_23_or_greater) {
+                AutoHideNavigationBarOnDismissMiniplayerFingerprint.method.addInstructionsWithLabels(
                     0,
                     """
                         invoke-static { }, $EXTENSION_CLASS->disableAutoHidingNavigationBar()Z
-                        move-result v0      
+                        move-result v0
                         if-eqz v0, :show
-                        return-void      
+                        return-void
                         :show
-                        nop      
+                        nop
                     """
                 )
             }
