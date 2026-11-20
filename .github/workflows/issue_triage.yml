@@ -105,7 +105,7 @@ jobs:
                - Summary: one short, specific phrase in sentence case that says what is broken or what is wanted,
                  naming the patch, setting or screen involved. Put setting names in double quotes as they appear
                  in the app, such as "Hide community posts". Never include app or patches versions, device names,
-                 emoji, all caps words, "please", "help", "urgent", "bug:", or ending punctuation. At most 80 characters.
+                 emoji, all caps words, "please", "help", "urgent", "bug:", or ending punctuation. At most 120 characters.
                - Keep the author's meaning. Do not add details the issue does not state.
                - If the issue describes several bugs, title it after the first one.
                - If the current title already follows these rules, return it unchanged.
@@ -172,7 +172,7 @@ jobs:
           DECISION: ${{ needs.analyze.outputs.decision }}
           ISSUE_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
           # Changes are only applied when this repository variable is "live".
-          # Otherwise the planned changes are only written to the job summary.
+          # Otherwise, the planned changes are only written to the job summary.
           TRIAGE_MODE: ${{ vars.ISSUE_TRIAGE_MODE }}
           ISSUE_ADMIN_TOKEN: ${{ secrets.ISSUE_ADMIN_TOKEN }}
         with:
