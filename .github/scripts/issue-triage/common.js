@@ -13,6 +13,9 @@ const LABEL_COLORS = {
 // Starts the comment that asks for missing details, so close-unanswered.js can find it.
 const MISSING_INFO_MARKER = '<!-- morphe-triage:missing-info -->';
 
+// Start of the comment that lists possible duplicates, so delete-rejected-comments.js can remove the label with it.
+const POSSIBLE_DUPLICATE_PREFIX = 'This issue may be a duplicate of';
+
 const MAINTAINER_ASSOCIATIONS = ['OWNER', 'MEMBER', 'COLLABORATOR'];
 
 // The main text field of each issue form. Every form also has an Acknowledgements section.
@@ -149,6 +152,7 @@ module.exports = {
   LABEL_BUG,
   LABEL_FEATURE,
   MISSING_INFO_MARKER,
+  POSSIBLE_DUPLICATE_PREFIX,
   parseForm,
   isFromTemplate,
   isMaintainer,

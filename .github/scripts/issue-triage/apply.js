@@ -9,6 +9,7 @@ const {
   LABEL_BUG,
   LABEL_FEATURE,
   MISSING_INFO_MARKER,
+  POSSIBLE_DUPLICATE_PREFIX,
   ensureLabel,
   removeLabelIfPresent,
   commentAndDelete,
@@ -72,8 +73,8 @@ async function validateDuplicates(github, owner, repo, issueNumber, numbers) {
 function possibleDuplicateComment(duplicates) {
   return [
     duplicates.length === 1
-      ? 'This issue may be a duplicate of an existing issue:'
-      : 'This issue may be a duplicate of existing issues:',
+      ? `${POSSIBLE_DUPLICATE_PREFIX} an existing issue:`
+      : `${POSSIBLE_DUPLICATE_PREFIX} existing issues:`,
     '',
     ...duplicates.map((number) => `- #${number}`),
     '',
