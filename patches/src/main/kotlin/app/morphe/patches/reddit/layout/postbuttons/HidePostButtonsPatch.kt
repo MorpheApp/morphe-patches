@@ -92,6 +92,10 @@ val hidePostButtonsPatch = patch(
             }
         }
 
+        CommentAwardButtonFingerprint.method.returnEarlyIf(
+            "invoke-static { }, $EXTENSION_CLASS->hideCommentAwardButton()Z"
+        )
+
         if (!is_2026_24_0_or_greater) {
             Logger.getLogger(this::class.java.name).warning(
                 "Hiding the buttons below posts requires Reddit 2026.24.0+"
@@ -153,11 +157,6 @@ private fun hideActionBarButtons() {
     } else {
         buttonFingerprint = ActionBarButtonLegacyFingerprint
         voteButtonsFingerprint = ActionBarVoteButtonsLegacyFingerprint
-
-        Fingerprint(
-            definingClass = EXTENSION_CLASS,
-            name = "isAwardButtonIncluded"
-        ).method.returnEarly(true)
     }
 
     // Don't show the action bar buttons whose states are marked as hidden.

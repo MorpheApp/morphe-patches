@@ -31,12 +31,10 @@ public class PostButtonsPreferenceCategory extends ConditionalPreferenceCategory
 
     @Override
     public void addPreferences(Context context) {
-        if (HidePostButtonsPatch.isAwardButtonIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_POST_AWARD_BUTTON
-            ));
-        }
+        addPreference(new BooleanSettingPreference(
+                context,
+                Settings.HIDE_POST_AWARD_BUTTON
+        ));
         addPreference(new BooleanSettingPreference(
                 context,
                 Settings.HIDE_POST_COMMENT_BUTTON

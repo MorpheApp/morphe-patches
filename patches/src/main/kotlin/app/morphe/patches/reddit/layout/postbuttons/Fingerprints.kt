@@ -265,6 +265,18 @@ internal object PostJoinButtonLegacyFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Award button of a comment.
+ * Parameters: enabled, comment id, awards state, on award click, composer, flags.
+ */
+internal object CommentAwardButtonFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Z", "Ljava/lang/String;", "L", "L", "L", "I"),
+    filters = listOf(
+        string("award_comment_icon")
+    )
+)
+
 private val postDetailHostScreenFilter = fieldAccess(
     opcode = Opcode.SGET_OBJECT,
     definingClass = "Lcom/reddit/subscriptions/HostScreen;",

@@ -21,6 +21,8 @@ import app.morphe.extension.reddit.settings.Settings;
  * <p>
  * The media viewer can also show the buttons in a column on the side of the post instead,
  * which only it uses.
+ * <p>
+ * The Award button of comments is also hidden, which is shown by its own composable.
  */
 @SuppressWarnings("unused")
 public final class HidePostButtonsPatch {
@@ -63,12 +65,10 @@ public final class HidePostButtonsPatch {
     }
 
     /**
-     * @return If hiding the award button was included during patching.
-     *         Only older app versions show it.
+     * Injection point.
      */
-    @SuppressWarnings("SameReturnValue")
-    public static boolean isAwardButtonIncluded() {
-        return false;  // Modified during patching.
+    public static boolean hideCommentAwardButton() {
+        return Settings.HIDE_POST_AWARD_BUTTON.get();
     }
 
     /**
