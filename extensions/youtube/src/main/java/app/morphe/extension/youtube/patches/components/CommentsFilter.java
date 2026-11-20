@@ -24,6 +24,8 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.InvalidProtocolBufferException;
+
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -503,6 +505,15 @@ public class CommentsFilter extends Filter {
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
         try {
+            if (Settings.HIDE_COMMENTS_TOPICS.get()) {
+                String elementText = FeedVideoCardsPatch.getElementText(bytes);
+                if (elementText.contains(CHIP_BAR_PATH_PREFIX)) {
+                    bytes = removeTopicsFilter(bytes);
+                } else if (elementText.contains(VIDEO_METADATA_CAROUSEL_PATH)) {
+                    bytes = removeTopicPreviews(bytes);
+                }
+            }
+
             // Every element is parsed here otherwise, on the main thread. The identifier of the carousel
             // is also in the bytes of its element, see FeedVideoCardsPatch.getElementText().
             if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()
@@ -569,6 +580,147 @@ public class CommentsFilter extends Filter {
         }
 
         return bytes;
+    }
+
+    /**
+     * Removes the 'Topics' option of the comments filter bar, so the comments are never grouped by topic.
+     * The filter bar is either the element itself or one of its child elements.
+     *
+     * @return The modified element, or the original bytes if it has no 'Topics' option.
+     */
+    private static byte[] removeTopicsFilter(byte[] bytes) throws InvalidProtocolBufferException {
+        var element = NewElement.parseFrom(bytes);
+
+        var newElement = removeTopicsFilter(element);
+        if (newElement != null) {
+            return newElement.toByteArray();
+        }
+
+        var elementBuilder = element.toBuilder();
+        boolean modified = false;
+        for (int i = 0, count = element.getChildElementsCount(); i < count; i++) {
+            var newChildElement = removeTopicsFilter(element.getChildElements(i));
+            if (newChildElement != null) {
+                elementBuilder.setChildElements(i, newChildElement);
+                modified = true;
+            }
+        }
+
+        return modified
+                ? elementBuilder.build().toByteArray()
+                : bytes;
+    }
+
+    /**
+     * @return The element without the 'Topics' option, or null if it is not a chip bar with that option.
+     */
+    @Nullable
+    private static NewElement removeTopicsFilter(NewElement element) {
+        var model = element.getType().getComponentType().getModel();
+        if (!model.hasChipBarModel()) {
+            return null;
+        }
+
+        var chipBar = model.getChipBarModel().toBuilder();
+        final int defaultIndex = chipBar.getDefaultFilterIndex();
+        int newDefaultIndex = defaultIndex;
+        // Index of the option over all sort options, as the default index counts them all.
+        int optionIndex = 0;
+        boolean modified = false;
+
+        for (int i = 0, sortCount = chipBar.getSortOptionsCount(); i < sortCount; i++) {
+            var sortOptions = chipBar.getSortOptions(i).toBuilder();
+
+            int j = 0;
+            while (j < sortOptions.getFilterOptionsCount()) {
+                var formData = sortOptions.getFilterOptions(j).getOnSelected()
+                        .getApplyFilterCommand().getFilterFormData().getCommentsFilterFormData();
+
+                if (formData.hasCommentsTopicParams()) {
+                    Logger.printDebug(() -> "Removing comments topics filter");
+                    sortOptions.removeFilterOptions(j);
+                    modified = true;
+
+                    if (optionIndex == defaultIndex) {
+                        // Use the first option, usually 'Top'.
+                        newDefaultIndex = 0;
+                    } else if (optionIndex < defaultIndex) {
+                        newDefaultIndex--;
+                    }
+                } else {
+                    j++;
+                }
+
+                optionIndex++;
+            }
+
+            chipBar.setSortOptions(i, sortOptions);
+        }
+
+        if (!modified) {
+            return null;
+        }
+
+        chipBar.setDefaultFilterIndex(newDefaultIndex);
+
+        var newModel = model.toBuilder().setChipBarModel(chipBar);
+        var newComponentType = element.getType().getComponentType().toBuilder().setModel(newModel);
+        var newType = element.getType().toBuilder().setComponentType(newComponentType);
+        return element.toBuilder().setType(newType).build();
+    }
+
+    /**
+     * Removes the 'Topic' previews from the comment previews below the video. Tapping one opens
+     * the comments grouped by that topic.
+     *
+     * @return The modified element, or the original bytes if it has no 'Topic' preview.
+     */
+    private static byte[] removeTopicPreviews(byte[] bytes) throws InvalidProtocolBufferException {
+        var element = NewElement.parseFrom(bytes);
+        String identifier = element.getProperties().getIdentifierProperties().getIdentifier();
+        if (!identifier.contains(VIDEO_METADATA_CAROUSEL_PATH)) {
+            return bytes;
+        }
+
+        var model = element.getType().getComponentType().getModel();
+        var data = model.getVideoMetadataCarouselModel().getData().toBuilder();
+        boolean modified = false;
+
+        for (int i = 0, itemCount = data.getCarouselItemDatasCount(); i < itemCount; i++) {
+            var itemViewModel = data.getCarouselItemDatas(i).getCarouselItemViewModel();
+            if (!itemViewModel.hasCommentTeaserCarouselItemViewModel()) {
+                continue;
+            }
+
+            var teaserItem = itemViewModel.getCommentTeaserCarouselItemViewModel().toBuilder();
+            boolean teasersModified = false;
+
+            for (int j = teaserItem.getTeasersCount() - 1; j >= 0; j--) {
+                // Unlike the comment previews, a 'Topic' preview has no author.
+                if (!teaserItem.getTeasers(j).getCommentsEntryPointTeaserViewModel().hasAuthor()) {
+                    Logger.printDebug(() -> "Removing comments topic preview");
+                    teaserItem.removeTeasers(j);
+                    teasersModified = true;
+                }
+            }
+
+            if (teasersModified) {
+                var newItemViewModel = itemViewModel.toBuilder().setCommentTeaserCarouselItemViewModel(teaserItem);
+                data.setCarouselItemDatas(i, data.getCarouselItemDatas(i).toBuilder()
+                        .setCarouselItemViewModel(newItemViewModel));
+                modified = true;
+            }
+        }
+
+        if (!modified) {
+            return bytes;
+        }
+
+        var newCarouselModel = model.getVideoMetadataCarouselModel().toBuilder().setData(data);
+        var newModel = model.toBuilder().setVideoMetadataCarouselModel(newCarouselModel);
+        var newComponentType = element.getType().getComponentType().toBuilder().setModel(newModel);
+        var newType = element.getType().toBuilder().setComponentType(newComponentType);
+        return element.toBuilder().setType(newType).build().toByteArray();
     }
 
     /**
