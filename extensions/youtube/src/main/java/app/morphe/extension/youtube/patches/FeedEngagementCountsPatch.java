@@ -38,6 +38,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.NetworkReconnect;
 import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.shared.returnyoutubedislike.requests.RYDVoteData;
 import app.morphe.extension.shared.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
@@ -193,6 +194,20 @@ public final class FeedEngagementCountsPatch {
      * that are not drawn by Litho. Used only on the main thread.
      */
     private static final Map<View, CountsBadge> badges = new WeakHashMap<>();
+
+    /**
+     * Fetches again at once the counts that failed to fetch while the device was offline,
+     * instead of after the retry delay.
+     */
+    private static final Runnable RETRY_FAILED_FETCHES = () -> {
+        for (CountsBadge badge : badges.values().toArray(new CountsBadge[0])) {
+            Runnable retry = badge.failedFetchRetry;
+            if (retry != null) {
+                handler.removeCallbacks(retry);
+                retry.run();
+            }
+        }
+    };
 
     private static final String ROUNDED_LIKE_ICON = "yt_outline_experimental_thumb_up_black_24";
 
@@ -524,6 +539,7 @@ public final class FeedEngagementCountsPatch {
                     };
                     failedFetchRetry = retry;
                     handler.postDelayed(retry, FAILED_FETCH_RETRY_DELAY_MS);
+                    NetworkReconnect.runWhenOnline(RETRY_FAILED_FETCHES);
                 }
                 // The counts replace the loading spinner, or the badge is removed if the fetch failed.
                 place(host);
