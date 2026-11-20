@@ -27,6 +27,7 @@ import app.morphe.extension.reddit.patches.HideHomeTabsPatch;
 import app.morphe.extension.reddit.patches.HideInteractivePostsPatch;
 import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
+import app.morphe.extension.reddit.patches.HideVideosForYouShelfPatch;
 import app.morphe.extension.reddit.patches.HighQualityAvatarsPatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
@@ -65,6 +66,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideHomeTabsPatch.isPatchIncluded() ||
                 HideInteractivePostsPatch.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
+                HideVideosForYouShelfPatch.isPatchIncluded() ||
                 FullWidthFeedMediaPatch.isPatchIncluded() ||
                 MediaViewerFadePatch.isPatchIncluded() ||
                 KeepFeedPositionPatch.isPatchIncluded() ||
@@ -156,6 +158,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_TRENDING_SHELVES
+            ));
+        }
+
+        if (HideVideosForYouShelfPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_VIDEOS_FOR_YOU_SHELF
             ));
         }
 
