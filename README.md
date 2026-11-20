@@ -35,7 +35,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.4.0-dev.5](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.5)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;224 patches total
+> **[v2.4.0-dev.6](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.6)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;227 patches total
 <details>
 <summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;58 patches</summary>
 <br>
@@ -179,7 +179,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide info cards](#hide-info-cards) | Adds an option to hide info cards that creators add in the video player. |  |
 | [Hide layout components](#hide-layout-components) | Adds options to hide general layout components. |  |
 | [Hide player flyout menu components](#hide-player-flyout-menu-components) | Adds options to hide menu components that appear when pressing the gear icon in the video player. |  |
-| [Hide player overlay buttons](#hide-player-overlay-buttons) | Adds options to hide the Cast button, the player Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background. |  |
+| [Hide player overlay buttons](#hide-player-overlay-buttons) | Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background. |  |
 | [Hide related video overlay](#hide-related-video-overlay) | Adds an option to hide the related video overlay shown when swiping up in fullscreen. |  |
 | [Hide related videos](#hide-related-videos) | Adds options to hide related videos. |  |
 | [Hide status bar](#hide-status-bar) | Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment. |  |
@@ -244,12 +244,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;40 patches</summary>
+<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;43 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.46.0 | 🧪&nbsp;2026.45.0 | 🧪&nbsp;2026.44.0 | 2026.40.0 | 2026.24.0 | 2026.10.0 |
+| 🧪&nbsp;2026.47.0 | 🧪&nbsp;2026.46.0 | 🧪&nbsp;2026.45.0 | 2026.40.0 | 2026.24.0 | 2026.10.0 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -259,7 +259,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Custom branding name for Reddit](#custom-branding-name-for-reddit) | Changes the Reddit app name to the name specified in patch options. | • App name |
 | [Custom font](#custom-font) | Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime. |  |
 | [Customize post layout](#customize-post-layout) | Adds options to show the view count of posts, to move the vote and comment buttons of posts to the right side, and to swap the vote and comment buttons. Moving and swapping the buttons works with Reddit 2026.39.0 and newer. |  |
-| [Disable modern home](#disable-modern-home) | Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier. |  |
+| [Disable modern home](#disable-modern-home) | Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier, and 2026.40.0 and later. |  |
 | [Disable screenshot popup](#disable-screenshot-popup) | Adds an option to disable the popup that appears when taking a screenshot. |  |
 | [Download location](#download-location) | Adds options to choose the folder and file name of downloaded images and videos, which can use the subreddit, author and account, and can be set per account. |  |
 | [Feed auto-scroll](#feed-auto-scroll) | Adds an option to slowly scroll the feed on screen automatically. |  |
@@ -270,11 +270,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide Ask button](#hide-ask-button) | Adds an option to hide Ask button in the search bar. |  |
 | [Hide Reddit search](#hide-reddit-search) | Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting |  |
 | [Hide Trending shelves](#hide-trending-shelves) | Adds an option to hide the Trending shelves from feed and search suggestions. |  |
+| [Hide Videos for you shelf](#hide-videos-for-you-shelf) | Adds an option to hide the 'Videos for you' shelf in the home feed. This patch works with Reddit 2026.40.0 and newer. |  |
 | [Hide ads](#hide-ads) | Adds options to hide ads. |  |
 | [Hide communities shelf](#hide-communities-shelf) | Adds an option to hide the related or suggested communities shelf in subreddits. |  |
+| [Hide home tabs](#hide-home-tabs) | Adds options to hide the For You, Following and Popular tabs of the home feed. This patch works with Reddit 2026.40.0 and later. |  |
 | [Hide interactive posts](#hide-interactive-posts) | Adds an option to hide game and other interactive app posts from the home feed and other recommended feeds. |  |
 | [Hide media viewer components](#hide-media-viewer-components) | Adds options to hide the "See the conversation" button and the title, buttons and video controls of the media viewer. Hiding the title, buttons and video controls requires Reddit 2026.38.0 or newer. |  |
 | [Hide navigation buttons](#hide-navigation-buttons) | Adds options to hide buttons in the navigation bar. |  |
+| [Hide post buttons](#hide-post-buttons) | Adds options to hide the buttons of posts in the feeds, the post detail screen and the media viewer, such as the Join, vote, comment, award, repost and share buttons. Hiding the buttons below posts works with Reddit 2026.24.0 and newer. |  |
 | [Hide sidebar components](#hide-sidebar-components) | Adds options to hide the sidebar components. |  |
 | [High quality avatars](#high-quality-avatars) | Adds an option to show user avatars in full resolution instead of the low resolution version. |  |
 | [Keep feed position](#keep-feed-position) | Adds an option to keep the feed at the same position after closing a post, image or video, instead of moving the opened post to the top of the screen. |  |
