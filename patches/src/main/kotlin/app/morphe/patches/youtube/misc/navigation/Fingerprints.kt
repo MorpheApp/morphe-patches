@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.misc.navigation
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchBeforeAnywhere
 import app.morphe.patcher.checkCast
@@ -208,5 +209,34 @@ internal object SearchResultsFragmentOnCreateViewFingerprint : Fingerprint(
     ),
     filters = listOf(
         string("search_cache_key")
+    )
+)
+
+/**
+ * Controller of the tabs of a page with tabs, such as the tabs at the top of Home or the tabs of a channel.
+ */
+internal object TabListControllerFingerprint : Fingerprint(
+    filters = listOf(
+        string("Tab's description cannot be generated due to a formatting error.")
+    )
+)
+
+/**
+ * A tab is selected. Parameters: index of the tab, and two flags of the selection.
+ */
+internal object TabListControllerTabSelectedFingerprint : Fingerprint(
+    classFingerprint = TabListControllerFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I", "Z", "Z"),
+    filters = listOf(
+        // TabRenderer of the selected tab.
+        opcode(Opcode.CHECK_CAST),
+        // Tab identifier of the TabRenderer.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        )
     )
 )
