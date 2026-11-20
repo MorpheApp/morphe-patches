@@ -1,6 +1,7 @@
 // Deletes new issues that were not created with an issue form, after a comment that tells the author why.
 // Closes bug reports for outdated patches or app versions that are not compatible.
-// Sets the "triage" output to "true" if the issue should go on to the analyze job.
+// Sets the "triage" output to "true" if the issue should go on to the analyze job,
+// and the "closed" output to "true" if it was closed here. A closed issue is still analyzed for its title.
 
 const { isFromTemplate, isMaintainer, commentAndDelete } = require('./common.js');
 const { checkVersions } = require('./check-versions.js');
@@ -30,7 +31,8 @@ module.exports = async ({ github, getOctokit, context, core }) => {
     // Manual runs only triage, they never close issues.
     const closed =
       context.eventName !== 'workflow_dispatch' && (await checkVersions({ github, core, owner, repo, issue }));
-    core.setOutput('triage', closed ? 'false' : 'true');
+    core.setOutput('triage', 'true');
+    core.setOutput('closed', closed ? 'true' : 'false');
     return;
   }
 
