@@ -124,6 +124,10 @@ public class SpoofVideoStreamsPatch {
          * If the response starts with a SABR error.
          */
         boolean sabrError;
+        /**
+         * If the response failed as a SABR error, and the next request built on the thread is sent without UMP.
+         */
+        boolean retryWithoutUmp;
     }
 
     private static final ThreadLocal<StreamResponse> streamResponseOnThread = ThreadLocal.withInitial(StreamResponse::new);
@@ -742,12 +746,19 @@ public class SpoofVideoStreamsPatch {
             priorityDataSourceOpenOnThread.set(false);
             streamRangeLimitedOnThread.set(false);
             StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
+            final boolean retryWithoutUmp = response.retryWithoutUmp;
+            response.retryWithoutUmp = false;
             response.checkFirstPart = false;
             response.sabrError = false;
             if (url == null || !isPlainStreamRequest(url)) {
                 return url;
             }
 
+            if (retryWithoutUmp) {
+                // The SABR error stands for a redirect (status 302), but the response does not have the url.
+                // Without UMP the server sends a regular redirect, which the app follows.
+                url = url.replace("&ump=1", "");
+            }
             Uri uri = Uri.parse(url);
             response.checkFirstPart = "1".equals(uri.getQueryParameter("ump"));
             if (!priorityDataSource) {
@@ -845,7 +856,8 @@ public class SpoofVideoStreamsPatch {
      * Called when the response of a network request is read.
      *
      * @return If the response is a SABR error, and must fail like a response with a server error status.
-     *         The app then requests the range again from a fallback host.
+     *         The app then requests the range again, and {@link #limitPlainStreamRange(String)}
+     *         sends that request without UMP.
      */
     public static boolean isStreamSabrErrorResponse() {
         StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
@@ -854,7 +866,8 @@ public class SpoofVideoStreamsPatch {
         }
 
         response.sabrError = false;
-        Logger.printDebug(() -> "Stream response is a SABR error, failing it so the range is requested from a fallback host");
+        response.retryWithoutUmp = true;
+        Logger.printDebug(() -> "Stream response is a SABR error, failing it so the range is requested again without UMP");
         return true;
     }
 
