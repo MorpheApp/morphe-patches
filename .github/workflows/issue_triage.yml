@@ -25,6 +25,7 @@ jobs:
       issues: write
     outputs:
       triage: ${{ steps.check.outputs.triage }}
+      closed: ${{ steps.check.outputs.closed }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -90,6 +91,8 @@ jobs:
             Use only these commands:
             - `gh issue view <number> --repo ${{ github.repository }} --json number,title,body,state,stateReason,labels,createdAt` to read an issue
             - `gh search issues "<keywords>" --repo ${{ github.repository }} --limit 20 --json number,title,state,createdAt` to search open and closed issues
+
+            ${{ needs.check-template.outputs.closed == 'true' && 'This issue was already closed because of its patches or app version. Only do steps 1 to 3 and 7. Set unsupported_app to false, duplicate_of to 0, and possible_duplicates and missing_info to empty lists.' || '' }}
 
             Steps:
 
