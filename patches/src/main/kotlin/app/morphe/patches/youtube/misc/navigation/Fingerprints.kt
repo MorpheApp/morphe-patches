@@ -230,12 +230,16 @@ internal object TabListControllerTabSelectedFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I", "Z", "Z"),
     filters = listOf(
-        // TabRenderer of the selected tab.
-        opcode(Opcode.CHECK_CAST),
-        // Tab identifier of the TabRenderer.
+        // Tab identifier of the TabRenderer of the selected tab.
+        // Some versions read the TabRenderer from a typed field, and others cast it first.
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            type = "Ljava/lang/String;",
+            type = "Ljava/lang/String;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "V",
+            parameters = listOf("Ljava/lang/String;"),
             location = MatchAfterImmediately()
         )
     )

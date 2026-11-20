@@ -293,7 +293,7 @@ val navigationBarHookPatch = patch(description = "Hooks the active navigation or
         if (is_21_35_or_greater) {
             TabListControllerTabSelectedFingerprint.let {
                 it.method.apply {
-                    val index = it.instructionMatches.last().index
+                    val index = it.instructionMatches.first().index
                     val tabIdentifierRegister = getInstruction<TwoRegisterInstruction>(index).registerA
 
                     addInstruction(
