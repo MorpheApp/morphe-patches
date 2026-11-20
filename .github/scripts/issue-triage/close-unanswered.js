@@ -1,5 +1,5 @@
 // Closes issues where the author did not reply within 7 days after missing details were requested.
-// A reply is a comment by the author, or an edit of the issue, after the request.
+// A reply is a comment by the author, or an edit of the issue that was not made by a bot, after the request.
 // If the author replied, the "waiting on author" label is removed so a maintainer can look at the issue.
 // Only requests posted by the triage workflow are handled, not labels added by maintainers.
 
@@ -43,18 +43,27 @@ module.exports = async ({ github, context, core }) => {
       (comment) => Date.parse(comment.created_at) > requestedAt && comment.user && comment.user.id === issue.user.id
     );
 
+    // Edits by the workflow itself, such as wrapping screenshots, are not a reply.
     const { repository } = await github.graphql(
       `query($owner: String!, $repo: String!, $number: Int!) {
         repository(owner: $owner, name: $repo) {
           issue(number: $number) {
-            lastEditedAt
+            userContentEdits(last: 20) {
+              nodes {
+                editedAt
+                editor {
+                  __typename
+                }
+              }
+            }
           }
         }
       }`,
       { owner, repo, number: issue.number }
     );
-    const lastEditedAt = repository.issue.lastEditedAt;
-    const authorEdited = lastEditedAt !== null && Date.parse(lastEditedAt) > requestedAt;
+    const authorEdited = repository.issue.userContentEdits.nodes.some(
+      (edit) => Date.parse(edit.editedAt) > requestedAt && edit.editor && edit.editor.__typename !== 'Bot'
+    );
 
     if (authorCommented || authorEdited) {
       core.info(`#${issue.number} was answered, removing the label for a maintainer to look at`);
