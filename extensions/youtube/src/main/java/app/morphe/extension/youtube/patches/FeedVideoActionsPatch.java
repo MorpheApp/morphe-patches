@@ -953,7 +953,7 @@ public final class FeedVideoActionsPatch {
             if (child.getVisibility() != View.VISIBLE) {
                 continue;
             }
-            if (child instanceof ImageView && child.getWidth() >= dp(root, FeedVideoCardsPatch.MIN_SIDE_THUMBNAIL_WIDTH_DP)
+            if (child instanceof ImageView && child.getHeight() >= dp(root, FeedEngagementCountsPatch.MIN_THUMBNAIL_HEIGHT_DP)
                     && child.getHeight() >= dp(root, BADGE_SIZE_DP + 2 * BADGE_MARGIN_DP)) {
                 setRectInRoot(root, child, bounds);
                 // The thumbnail can be wider than half of the card, so it is known by the duration

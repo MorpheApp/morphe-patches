@@ -149,6 +149,11 @@ public final class FeedEngagementCountsPatch {
      * too small to fit the badge above the duration, such as of the rows of a list on phones.
      */
     private static final int COMPACT_HEIGHT_DP = 20;
+    /**
+     * Height of the smallest thumbnail that fits the compact badge at its top, above the row of the duration,
+     * such as of the rows of a list. Smaller thumbnails are not known as thumbnails.
+     */
+    public static final int MIN_THUMBNAIL_HEIGHT_DP = RIGHT_MARGIN_DP + COMPACT_HEIGHT_DP + ABOVE_DURATION_DP;
     private static final int COMPACT_PADDING_DP = 4;
     private static final int COMPACT_ICON_DP = 12;
     private static final int COMPACT_CORNER_RADIUS_DP = 4;

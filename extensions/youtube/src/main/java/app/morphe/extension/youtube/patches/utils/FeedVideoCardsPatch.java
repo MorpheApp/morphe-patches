@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.GuardedBy;
@@ -960,16 +961,14 @@ public final class FeedVideoCardsPatch {
      * Cards of some layouts show the thumbnail inset from their edges, such as by 12 dp.
      */
     public static final int MAX_THUMBNAIL_INSET_DP = 16;
-    /** A duration badge larger than this is not the badge itself, but a host around it. */
-    public static final int MAX_DURATION_WIDTH_DP = 120;
-    public static final int MAX_DURATION_HEIGHT_DP = 32;
 
     /**
      * @param rect The host that shows a badge text, such as a duration or 'LIVE', relative to the root host.
      * @return If the text is a badge of the thumbnail: the host is as wide as the thumbnail and starts in it,
-     *         such as the host of the whole thumbnail, or it's as large as a badge, on the side of the duration
-     *         (the right, or the left in right to left languages). Not a badge text elsewhere on the card,
-     *         such as the live badge on the avatar of a channel that is live, at the top of its page.
+     *         such as the host of the whole thumbnail, or it's drawn on an image much larger than it, such as
+     *         the thumbnail, on the side of the duration (the right, or the left in right to left languages).
+     *         Not a badge text elsewhere on the card, such as a channel name in capital letters below the
+     *         thumbnail, or the live badge on the avatar of a channel that is live, at the top of its page.
      */
     public static boolean isThumbnailBadge(ComponentHost root, Rect rect) {
         final float density = root.getResources().getDisplayMetrics().density;
@@ -978,9 +977,48 @@ public final class FeedVideoCardsPatch {
                 && rect.top < width * THUMBNAIL_RATIO) {
             return true;
         }
-        return rect.width() <= MAX_DURATION_WIDTH_DP * density
-                && rect.height() <= MAX_DURATION_HEIGHT_DP * density
-                && (FeedViewCountPatch.isRtl(root) ? rect.centerX() < width / 2 : rect.centerX() > width / 2);
+        // A host only as large as the badge is on the thumbnail, on the side of the duration.
+        Rect image = findBadgeImage(root, rect);
+        return image != null && (FeedViewCountPatch.isRtl(root)
+                ? rect.centerX() < image.centerX()
+                : rect.centerX() > image.centerX());
+    }
+
+    /** An image that a badge of its video is drawn on, such as the thumbnail, is at least this many times as large. */
+    private static final int MIN_IMAGE_SIZE_OF_BADGE = 2;
+
+    /**
+     * @param badge The host of a badge text, relative to the root host.
+     * @return The image of the card that the badge is drawn on, such as the thumbnail, relative to the root host.
+     *         Null if the badge is not on an image much larger than it, such as a text below the thumbnail
+     *         or the live badge on the avatar of a channel.
+     */
+    @Nullable
+    public static Rect findBadgeImage(ComponentHost root, Rect badge) {
+        Rect rect = new Rect();
+        ArrayDeque<View> views = new ArrayDeque<>();
+        views.add(root);
+        View view;
+        // The queue holds no nulls, so poll() is null only once it is empty.
+        while ((view = views.poll()) != null) {
+            if (view instanceof ImageView) {
+                rect.set(0, 0, view.getWidth(), view.getHeight());
+                root.offsetDescendantRectToMyCoords(view, rect);
+                if (rect.contains(badge) && rect.width() >= badge.width() * MIN_IMAGE_SIZE_OF_BADGE
+                        && rect.height() >= badge.height() * MIN_IMAGE_SIZE_OF_BADGE) {
+                    return rect;
+                }
+            }
+            if (view instanceof ViewGroup group) {
+                for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                    View child = group.getChildAt(i);
+                    if (child.getVisibility() == View.VISIBLE) {
+                        views.add(child);
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -1078,7 +1116,8 @@ public final class FeedVideoCardsPatch {
      * so what is drawn on the thumbnail of a full width card is drawn on it.
      *
      * @return The host of the thumbnail at the start side of a card shaped like that: as tall as the card,
-     *         16:9 and at least {@link #MIN_SIDE_THUMBNAIL_WIDTH_DP} wide. Null if the card is not shaped like that.
+     *         16:9 and at least {@link FeedEngagementCountsPatch#MIN_THUMBNAIL_HEIGHT_DP} tall. Null if the card is not
+     *         shaped like that.
      */
     @Nullable
     public static ComponentHost findSideThumbnail(ComponentHost root) {
@@ -1102,7 +1141,8 @@ public final class FeedVideoCardsPatch {
                 continue;
             }
             if (child.getHeight() >= root.getHeight() - 2 * inset
-                    && child.getWidth() >= MIN_SIDE_THUMBNAIL_WIDTH_DP * density && child.getWidth() <= width / 2
+                    && child.getHeight() >= FeedEngagementCountsPatch.MIN_THUMBNAIL_HEIGHT_DP * density
+                    && child.getWidth() <= width / 2
                     && Math.abs(child.getWidth() * THUMBNAIL_RATIO - child.getHeight())
                     <= child.getHeight() * SIDE_THUMBNAIL_RATIO_TOLERANCE) {
                 return child;
@@ -1116,12 +1156,6 @@ public final class FeedVideoCardsPatch {
         }
         return null;
     }
-
-    /**
-     * Smallest thumbnail beside the texts, such as of the rows of a list on phones,
-     * which fits the compact like count at the top of the thumbnail.
-     */
-    public static final int MIN_SIDE_THUMBNAIL_WIDTH_DP = 120;
 
     /** How far the height of a thumbnail beside the texts may differ from 16:9, relative to its height. */
     private static final float SIDE_THUMBNAIL_RATIO_TOLERANCE = 0.1f;
