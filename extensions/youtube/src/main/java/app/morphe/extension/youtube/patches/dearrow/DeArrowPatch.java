@@ -30,6 +30,7 @@ import java.util.Map;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
+import app.morphe.extension.shared.requests.NetworkReconnect;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
@@ -299,6 +300,11 @@ public final class DeArrowPatch {
      */
     private static volatile long timeToResumeDeArrowAPICalls;
 
+    /**
+     * Loads again the thumbnails that failed to load while the device was offline.
+     */
+    private static final Runnable REMOUNT_LIST_VIEWS = LithoRelayoutPatch::remountListViews;
+
     static {
         dearrowAPIURI = validateSettings();
         final int port = dearrowAPIURI.getPort();
@@ -531,9 +537,14 @@ public final class DeArrowPatch {
     }
 
     /**
-     * Turns off DeArrow titles and thumbnails for a while.
+     * Turns off DeArrow titles and thumbnails for a while, unless the request failed because the device is offline.
      */
     static void handleDeArrowError(String url, int statusCode) {
+        if (statusCode == 0 && NetworkReconnect.runWhenOnline(REMOUNT_LIST_VIEWS)) {
+            // Not an error of DeArrow, so DeArrow is used again as soon as the device is online.
+            Logger.printDebug(() -> "DeArrow request failed while offline.  URL: " + url);
+            return;
+        }
         Logger.printDebug(() -> "Encountered DeArrow error.  URL: " + url);
         final long now = System.currentTimeMillis();
         if (timeToResumeDeArrowAPICalls < now) {

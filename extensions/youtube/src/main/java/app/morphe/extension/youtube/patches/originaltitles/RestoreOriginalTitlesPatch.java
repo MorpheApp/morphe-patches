@@ -60,6 +60,7 @@ import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.shared.requests.NetworkReconnect;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
@@ -520,6 +521,20 @@ public final class RestoreOriginalTitlesPatch {
      * If the hidden retries are checked. Accessed only on the main thread.
      */
     private static boolean hiddenRetryCheckScheduled;
+
+    /**
+     * Fetches again at once the titles that failed to fetch while the device was offline,
+     * instead of after the retry time, and lays out again their loading texts. Runs on the main thread.
+     */
+    static final Runnable RETRY_FAILED_TITLES = () -> {
+        OriginalTitleRequest.retryFailedTitlesNow();
+        final long now = System.currentTimeMillis();
+        for (CandidateRetry retry : pendingRetries) {
+            retry.retryTime = Math.min(retry.retryTime, now);
+        }
+        checkPendingRetries();
+        LithoRelayoutPatch.relayoutOutdatedTexts();
+    };
 
     /**
      * Length of the longest translated title, so longer texts are ignored without copying them.
@@ -2326,6 +2341,7 @@ public final class RestoreOriginalTitlesPatch {
         }
 
         CandidateRetry retry = new CandidateRetry(videoId, texts, candidate, retries, requests, failedRequest);
+        NetworkReconnect.runWhenOnline(RETRY_FAILED_TITLES);
         // Saved before the failed request is done, so the texts laid out again find the retry.
         candidateRetries.put(candidateKey(videoId), retry);
         final long retryTime = System.currentTimeMillis() + delay;
