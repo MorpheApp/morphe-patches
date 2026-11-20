@@ -12,18 +12,35 @@ body:
 
         - We are currently only accept feature requests for YouTube, YT Music, and Reddit.
         - **Do not submit a duplicate feature request**: Search for existing feature requests, including closed issues, [here](https://github.com/MorpheApp/morphe-patches/issues?q=is%3Aissue).
+        - Feature requests that do not use this form are deleted automatically.
+  - type: dropdown
+    id: app
+    attributes:
+      label: App
+      description: The app the feature is for
+      options:
+        - YouTube
+        - YouTube Music
+        - YouTube and YouTube Music
+        - Reddit
+    validations:
+      required: true
   - type: textarea
+    id: description
     attributes:
       label: Feature description
       description: |
         - Describe your feature in detail
+    validations:
+      required: true
   - type: textarea
+    id: motivation
     attributes:
       label: Motivation
-      description: | 
+      description: |
         A strong motivation is necessary for a feature request to be considered.
-        
-        - Why should this feature be implemented? 
+
+        - Why should this feature be implemented?
         - What is the explicit use case?
         - What are the benefits?
         - What makes this feature important?
