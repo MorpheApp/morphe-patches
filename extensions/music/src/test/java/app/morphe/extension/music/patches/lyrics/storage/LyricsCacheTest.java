@@ -292,11 +292,11 @@ public class LyricsCacheTest {
     }
 
     @Test
-    public void clearTranslationRemovesRawSidecars() {
+    public void clearTranslationRemovesTtmlRawButPreservesNonTtmlRaw() {
         LyricsCache.clear();
-        Lyrics lyrics = new Lyrics(
+        Lyrics ttmlLyrics = new Lyrics(
                 List.of(new LyricsLine(0, "hello")),
-                "TestProvider",
+                "TtmlProvider",
                 true,
                 List.of(new LyricsLine(0, "helo")),
                 Map.of("en", List.of(new LyricsLine(0, "halo"))),
@@ -305,17 +305,33 @@ public class LyricsCacheTest {
                 "<tt>raw</tt>",
                 "ttml",
                 null);
-        LyricsCache.put(track, "TestProvider", lyrics, null);
-        LyricsCache.putTranslation(track, "TestProvider", "en", List.of("hello"), List.of("halo"));
+        Lyrics krcLyrics = new Lyrics(
+                List.of(new LyricsLine(0, "world")),
+                "KrcProvider",
+                true,
+                null,
+                null,
+                null,
+                null,
+                "[00:00.00]world",
+                "krc",
+                null);
+        LyricsCache.put(track, "TtmlProvider", ttmlLyrics, null);
+        LyricsCache.put(track, "KrcProvider", krcLyrics, null);
+        LyricsCache.putTranslation(track, "TtmlProvider", "en", List.of("hello"), List.of("halo"));
 
         LyricsCache.clear(LyricsCache.CacheBucket.TRANSLATION);
         File dir = LyricsDirectories.directory(LyricsDirectories.OFFLINE);
         assertNotNull(dir);
+        int remainingRawCount = 0;
         for (File file : dir.listFiles()) {
             String name = file.getName();
-            assertTrue("Unexpected translation/raw file remained: " + name,
-                    !name.endsWith(".raw") && !name.contains(".trans."));
+            assertTrue("Unexpected translation file remained: " + name, !name.contains(".trans."));
+            if (name.endsWith(".raw")) {
+                remainingRawCount++;
+            }
         }
+        assertEquals(1, remainingRawCount);
         assertEquals(0, LyricsCache.stats().translation().items());
     }
 }

@@ -1295,7 +1295,7 @@ public final class LyricsCache {
                 if (file.isDirectory()) {
                     continue;
                 }
-                if (shouldDeleteForBucket(file.getName(), bucket)) {
+                if (shouldDeleteForBucket(file, bucket)) {
                     long len = file.length();
                     Utils.deleteQuietly(file);
                     if (!file.exists()) {
@@ -1311,7 +1311,8 @@ public final class LyricsCache {
         return freed;
     }
 
-    private static boolean shouldDeleteForBucket(String name, CacheBucket bucket) {
+    private static boolean shouldDeleteForBucket(File file, CacheBucket bucket) {
+        final String name = file.getName();
         if (bucket == CacheBucket.ALL || classifyFile(name) == bucket) {
             return true;
         }
@@ -1321,9 +1322,38 @@ public final class LyricsCache {
                     || name.endsWith(RAW_SUFFIX);
         }
         if (bucket == CacheBucket.TRANSLATION) {
-            return name.endsWith(RAW_SUFFIX);
+            return isTtmlOrOrphanRaw(file);
         }
         return false;
+    }
+
+    private static boolean isTtmlOrOrphanRaw(File rawFile) {
+        final String name = rawFile.getName();
+        if (!name.endsWith(RAW_SUFFIX)) {
+            return false;
+        }
+        final File parent = rawFile.getParentFile();
+        if (parent == null) {
+            return false;
+        }
+        final File companion = new File(parent, name.substring(0, name.length() - RAW_SUFFIX.length()));
+        if (!companion.isFile()) {
+            return true;
+        }
+        try (BufferedReader reader = Files.newBufferedReader(companion.toPath(), StandardCharsets.UTF_8)) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith(HEADER_FORMAT_TYPE)) {
+                    return TTML_FORMAT_TYPE.equals(line.substring(HEADER_FORMAT_TYPE.length()));
+                }
+                if (!line.startsWith("#")) {
+                    return false;
+                }
+            }
+            return false;
+        } catch (IOException ex) {
+            return false;
+        }
     }
 
     /** How many bytes the stored lyrics occupy, measured the same way {@link #clear()} frees. */

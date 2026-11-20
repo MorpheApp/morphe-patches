@@ -26,6 +26,8 @@ import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
@@ -373,7 +375,13 @@ public final class LyricsFontManager {
         if (ctx != null) {
             if (Utils.isCurrentlyOnMainThread()) {
                 initialized = true;
-                Utils.runOnBackgroundThread(() -> reload(ctx));
+                Context appContext = ctx.getApplicationContext();
+                Utils.runOnBackgroundThread(() -> {
+                    reload(appContext);
+                    if (cachedMainTypeface != null) {
+                        Utils.runOnMainThread(LyricsPanelInstaller::onCustomFontLoaded);
+                    }
+                });
             } else {
                 reload(ctx);
             }
@@ -507,16 +515,14 @@ public final class LyricsFontManager {
 
             String targetName = STORED_FONT_BASENAME + ext;
             File targetFile = new File(dir, targetName);
+            Files.move(tempFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             File[] existing = dir.listFiles();
             if (existing != null) {
                 for (File f : existing) {
-                    if (!f.equals(tempFile)) {
+                    if (!f.equals(tempFile) && !f.equals(targetFile)) {
                         Utils.deleteQuietly(f);
                     }
                 }
-            }
-            if (!tempFile.renameTo(targetFile)) {
-                return new FontImportResult(false, "");
             }
 
             String label = !meta.displayName().isEmpty()

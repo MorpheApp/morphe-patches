@@ -169,12 +169,13 @@ public class LyricsClearCachePreference extends Preference {
 
             final CacheStats[] currentStats = {initialStats};
             final boolean[] confirmOpen = {false};
+            final boolean[] clearingInProgress = {false};
             final Runnable[] refreshUi = new Runnable[1];
             refreshUi[0] = () -> {
                 CacheStats s = currentStats[0];
                 bindCard(lyricsCard, CacheBucket.LYRICS, s.lyrics(),
                         () -> confirmAndClear(context, CacheBucket.LYRICS,
-                                currentStats[0], confirmOpen,
+                                currentStats[0], confirmOpen, clearingInProgress,
                                 updated -> {
                                     applyOuterSummary(updated);
                                     if (!dialog.isShowing() || isContextInvalid(context)) {
@@ -185,7 +186,7 @@ public class LyricsClearCachePreference extends Preference {
                                 }));
                 bindCard(translationCard, CacheBucket.TRANSLATION, s.translation(),
                         () -> confirmAndClear(context, CacheBucket.TRANSLATION,
-                                currentStats[0], confirmOpen,
+                                currentStats[0], confirmOpen, clearingInProgress,
                                 updated -> {
                                     applyOuterSummary(updated);
                                     if (!dialog.isShowing() || isContextInvalid(context)) {
@@ -196,7 +197,7 @@ public class LyricsClearCachePreference extends Preference {
                                 }));
                 bindCard(transliterationCard, CacheBucket.TRANSLITERATION, s.transliteration(),
                         () -> confirmAndClear(context, CacheBucket.TRANSLITERATION,
-                                currentStats[0], confirmOpen,
+                                currentStats[0], confirmOpen, clearingInProgress,
                                 updated -> {
                                     applyOuterSummary(updated);
                                     if (!dialog.isShowing() || isContextInvalid(context)) {
@@ -219,7 +220,7 @@ public class LyricsClearCachePreference extends Preference {
 
             if (clearAllBtn != null) {
                 clearAllBtn.setOnClickListener(v -> confirmAndClear(context, CacheBucket.ALL,
-                        currentStats[0], confirmOpen, updated -> {
+                        currentStats[0], confirmOpen, clearingInProgress, updated -> {
                             applyOuterSummary(updated);
                             if (!dialog.isShowing() || isContextInvalid(context)) {
                                 return;
@@ -241,9 +242,9 @@ public class LyricsClearCachePreference extends Preference {
     }
 
     private void confirmAndClear(Context context, CacheBucket bucket, CacheStats stats,
-                                 boolean[] confirmOpen,
+                                 boolean[] confirmOpen, boolean[] clearingInProgress,
                                  java.util.function.Consumer<CacheStats> onCleared) {
-        if (confirmOpen[0] || isContextInvalid(context)) {
+        if (confirmOpen[0] || clearingInProgress[0] || isContextInvalid(context)) {
             return;
         }
         final BucketStats targetStats = stats.forBucket(bucket);
@@ -270,14 +271,29 @@ public class LyricsClearCachePreference extends Preference {
                     str(confirmKey, size, targetStats.items()),
                     null,
                     str("morphe_music_lyrics_cache_clear_action"),
-                    () -> Utils.runOnBackgroundThread(() -> {
-                        final String freed = megabytes(LyricsCache.clear(bucket));
-                        final CacheStats updated = LyricsCache.stats();
-                        Utils.runOnMainThread(() -> {
-                            Utils.showToastShort(str("morphe_music_lyrics_clear_cache_done", freed));
-                            onCleared.accept(updated);
+                    () -> {
+                        clearingInProgress[0] = true;
+                        Utils.runOnBackgroundThread(() -> {
+                            String freed = null;
+                            CacheStats updated = null;
+                            try {
+                                freed = megabytes(LyricsCache.clear(bucket));
+                                updated = LyricsCache.stats();
+                            } finally {
+                                final String finalFreed = freed;
+                                final CacheStats finalUpdated = updated;
+                                Utils.runOnMainThread(() -> {
+                                    clearingInProgress[0] = false;
+                                    if (finalFreed != null) {
+                                        Utils.showToastShort(str("morphe_music_lyrics_clear_cache_done", finalFreed));
+                                    }
+                                    if (finalUpdated != null) {
+                                        onCleared.accept(finalUpdated);
+                                    }
+                                });
+                            }
                         });
-                    }),
+                    },
                     () -> { },
                     null,
                     null,

@@ -47,6 +47,7 @@ public class LyricsCustomFontPreference extends Preference {
 
     private static final AtomicBoolean IMPORT_IN_FLIGHT = new AtomicBoolean(false);
     private static WeakReference<LyricsCustomFontPreference> shownPreference = new WeakReference<>(null);
+    private boolean dialogOpen;
 
     public LyricsCustomFontPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -86,7 +87,14 @@ public class LyricsCustomFontPreference extends Preference {
     }
 
     private void showFontDialog(Context context) {
+        if (dialogOpen || context == null
+                || (context instanceof Activity activity
+                && (activity.isFinishing() || activity.isDestroyed()))) {
+            return;
+        }
         boolean hasActiveFont = !LyricsFontManager.activeFontSummaryName().isEmpty();
+        dialogOpen = true;
+        Context appContext = context.getApplicationContext();
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
                 str("morphe_music_lyrics_custom_font_title"),
@@ -96,17 +104,24 @@ public class LyricsCustomFontPreference extends Preference {
                 this::openPicker,
                 () -> {},
                 hasActiveFont ? str("morphe_music_lyrics_custom_font_reset") : null,
-                hasActiveFont ? () -> {
-                    LyricsFontManager.clearCustomFont(context);
-                    updateSummary();
-                    Utils.showToastShort(str("morphe_music_lyrics_custom_font_cleared"));
-                } : null,
+                hasActiveFont ? () -> Utils.runOnBackgroundThread(() -> {
+                    LyricsFontManager.clearCustomFont(appContext);
+                    Utils.runOnMainThread(() -> {
+                        updateSummary();
+                        Utils.showToastShort(str("morphe_music_lyrics_custom_font_cleared"));
+                    });
+                }) : null,
                 true
         );
+        dialogPair.first.setOnDismissListener(d -> dialogOpen = false);
         try {
             dialogPair.first.show();
         } catch (WindowManager.BadTokenException ex) {
+            dialogOpen = false;
             Logger.printDebug(() -> "Could not show custom font dialog", ex);
+        } catch (RuntimeException ex) {
+            dialogOpen = false;
+            throw ex;
         }
     }
 

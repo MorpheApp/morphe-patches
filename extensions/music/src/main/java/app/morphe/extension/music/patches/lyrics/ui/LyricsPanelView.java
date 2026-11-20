@@ -3016,11 +3016,12 @@ public final class LyricsPanelView extends FrameLayout
                         translateInProgress = false;
 
                         // The track moved on while the translation was in flight.
-                        if (lyrics != current) {
+                        if (!isSameCurrentLyrics(current)) {
                             return;
                         }
 
-                        translatedLines = LyricsViewSupport.hasTranslation(lines, current.lines()) ? lines : null;
+                        final Lyrics activeLyrics = lyrics != null ? lyrics : current;
+                        translatedLines = LyricsViewSupport.hasTranslation(lines, activeLyrics.lines()) ? lines : null;
                         translatedFromGoogle = translatedLines != null && fromGoogle;
                         translatedFromAI = translatedLines != null && fromAI;
                         if (translatedFromAI && model != null) {
@@ -3029,7 +3030,7 @@ public final class LyricsPanelView extends FrameLayout
                         if (lines == null && !skipped) {
                             toastError(str("morphe_music_lyrics_translate_failed"));
                         }
-                        showLyrics(current);
+                        showLyrics(activeLyrics);
                         if (translatedLines != null) {
                             flashButtonLabel(translateView,
                                     str("morphe_music_lyrics_translate_hide"),
@@ -3151,11 +3152,12 @@ public final class LyricsPanelView extends FrameLayout
                     if (requestId != translateRequestId || !asOnly && !translateInProgress) {
                         return;
                     }
-                    if (lyrics != current) {
+                    translateInProgress = false;
+                    if (!isSameCurrentLyrics(current)) {
                         return;
                     }
-                    translateInProgress = false;
-                    translatedLines = LyricsViewSupport.hasTranslation(lines, current.lines()) ? lines : null;
+                    final Lyrics activeLyrics = lyrics != null ? lyrics : current;
+                    translatedLines = LyricsViewSupport.hasTranslation(lines, activeLyrics.lines()) ? lines : null;
                     translatedFromGoogle = translatedLines != null && fromGoogle;
                     translatedFromAI = translatedLines != null && fromAI;
                     if (translatedFromAI && model != null) {
@@ -3170,7 +3172,7 @@ public final class LyricsPanelView extends FrameLayout
                         return;
                     }
                     if (!asOnly) {
-                        showLyrics(current);
+                        showLyrics(activeLyrics);
                         flashButtonLabel(translateView,
                                 str("morphe_music_lyrics_translate_hide"),
                                 updateTranslateLabelRunnable, 3000);
@@ -3179,11 +3181,11 @@ public final class LyricsPanelView extends FrameLayout
                     onlyMode = Settings.LYRICS_ROMANIZE_ONLY.get() ? OnlyMode.BOTH : OnlyMode.TRANS;
                     applyOnlyModeState();
                     updateDualPill();
-                    showLyrics(current);
+                    showLyrics(activeLyrics);
                     if (onlyMode == OnlyMode.BOTH) {
                         // The other side already flagged itself, so only this one was missing.
                         if (romanizedLines == null && !perWordRomaji) {
-                            requestRomanizeOnly(current);
+                            requestRomanizeOnly(activeLyrics);
                         }
                         return;
                     }
@@ -3218,11 +3220,12 @@ public final class LyricsPanelView extends FrameLayout
                     translateInProgress = false;
 
                     // The track moved on while the translation was in flight.
-                    if (lyrics != current) {
+                    if (!isSameCurrentLyrics(current)) {
                         return;
                     }
 
-                    translatedLines = LyricsViewSupport.hasTranslation(lines, current.lines()) ? lines : null;
+                    final Lyrics activeLyrics = lyrics != null ? lyrics : current;
+                    translatedLines = LyricsViewSupport.hasTranslation(lines, activeLyrics.lines()) ? lines : null;
                     translatedFromGoogle = translatedLines != null && fromGoogle;
                     translatedFromAI = translatedLines != null && fromAI;
                     if (translatedFromAI && model != null) {
@@ -3231,7 +3234,7 @@ public final class LyricsPanelView extends FrameLayout
                     if (lines == null && !skipped) {
                         toastError(str("morphe_music_lyrics_translate_failed"));
                     }
-                    showLyrics(current);
+                    showLyrics(activeLyrics);
                     if (translatedLines != null) {
                         flashButtonLabel(translateView,
                                 str("morphe_music_lyrics_translate_hide"),
@@ -4020,10 +4023,11 @@ public final class LyricsPanelView extends FrameLayout
                         romanizeInProgress = false;
 
                         // The track moved on while the romanization was in flight.
-                        if (lyrics != target) {
+                        if (!isSameCurrentLyrics(target)) {
                             return;
                         }
 
+                        final Lyrics activeLyrics = lyrics != null ? lyrics : target;
                         final boolean romaOk = LyricsMerge.hasText(lines);
                         romanizedLines = romaOk ? lines : null;
                         romanizedFromGoogle = romaOk && fromGoogle;
@@ -4042,7 +4046,7 @@ public final class LyricsPanelView extends FrameLayout
                         if (appliedRubyLanguage == null) {
                             applyRuby();
                         } else {
-                            showLyrics(target);
+                            showLyrics(activeLyrics);
                         }
                         if (romaOk) {
                             flashButtonLabel(romanizeView,
@@ -4157,10 +4161,11 @@ public final class LyricsPanelView extends FrameLayout
                     if (requestId != romanizeRequestId || !asOnly && !romanizeInProgress) {
                         return;
                     }
-                    if (lyrics != current) {
+                    romanizeInProgress = false;
+                    if (!isSameCurrentLyrics(current)) {
                         return;
                     }
-                    romanizeInProgress = false;
+                    final Lyrics activeLyrics = lyrics != null ? lyrics : current;
                     final boolean romaOk = LyricsMerge.hasText(lines);
                     romanizedLines = romaOk ? lines : null;
                     romanizedFromGoogle = romaOk && fromGoogle;
@@ -4184,7 +4189,7 @@ public final class LyricsPanelView extends FrameLayout
                             // Ruby follows the romanization, so make sure it is on for this reading.
                             applyRuby();
                         } else {
-                            showLyrics(current);
+                            showLyrics(activeLyrics);
                         }
                         if (romaOk) {
                             flashButtonLabel(romanizeView,
@@ -4200,12 +4205,12 @@ public final class LyricsPanelView extends FrameLayout
                         // Ruby follows the romanization, so make sure it is on for this reading.
                         applyRuby();
                     } else {
-                        showLyrics(current);
+                        showLyrics(activeLyrics);
                     }
                     if (onlyMode == OnlyMode.BOTH) {
                         // The other side already flagged itself, so only this one was missing.
                         if (translatedLines == null) {
-                            requestTranslateOnly(current);
+                            requestTranslateOnly(activeLyrics);
                         }
                         return;
                     }
@@ -4248,10 +4253,11 @@ public final class LyricsPanelView extends FrameLayout
                     romanizeInProgress = false;
 
                     // The track moved on while the romanization was in flight.
-                    if (lyrics != current) {
+                    if (!isSameCurrentLyrics(current)) {
                         return;
                     }
 
+                    final Lyrics activeLyrics = lyrics != null ? lyrics : current;
                     final boolean romaOk = LyricsMerge.hasText(lines);
                     romanizedLines = romaOk ? lines : null;
                     romanizedFromGoogle = romaOk && fromGoogle;
@@ -4271,7 +4277,7 @@ public final class LyricsPanelView extends FrameLayout
                         // Ruby follows the romanization, so make sure it is on for this reading.
                         applyRuby();
                     } else {
-                        showLyrics(current);
+                        showLyrics(activeLyrics);
                     }
                     if (romaOk) {
                         flashButtonLabel(romanizeView,
@@ -4317,7 +4323,7 @@ public final class LyricsPanelView extends FrameLayout
             return;
         }
         RubyGenerator.requestAi(track, local, generated -> {
-            if (requestId != rubyRequestId) {
+            if (requestId != rubyRequestId || !isSameCurrentLyrics(local)) {
                 return;
             }
             if (generated != local) {
@@ -4337,7 +4343,7 @@ public final class LyricsPanelView extends FrameLayout
         }
         final int requestId = ++rubyRequestId;
         RubyGenerator.requestAi(track, target, generated -> {
-            if (requestId != rubyRequestId || lyrics != target) {
+            if (requestId != rubyRequestId || !isSameCurrentLyrics(target)) {
                 return;
             }
             if (generated != target && !generated.lines().equals(target.lines())) {
@@ -4345,6 +4351,10 @@ public final class LyricsPanelView extends FrameLayout
                 showLyrics(generated);
             }
         });
+    }
+
+    private boolean isSameCurrentLyrics(@Nullable Lyrics expected) {
+        return expected != null && (lyrics == expected || sameLineTexts(lyrics, expected));
     }
 
     private void onRefreshClicked() {
