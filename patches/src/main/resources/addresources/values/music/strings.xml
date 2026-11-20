@@ -292,6 +292,21 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <string name="morphe_music_pause_when_muted_title">Pause when muted</string>
     <string name="morphe_music_pause_when_muted_summary">Pauses playback when the system volume is muted and resumes it when the volume is raised</string>
 
+    <!-- interaction.sonos.sonosCastPatch -->
+    <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+    <string name="morphe_music_sonos_cast_summary">The Cast button can also stream to Sonos and other UPnP speakers on your Wi-Fi network</string>
+    <string name="morphe_music_sonos_cast_sheet_title">Connect to a device</string>
+    <string name="morphe_music_sonos_cast_searching">Searching for speakers on your Wi-Fi network…</string>
+    <string name="morphe_music_sonos_cast_choose_speaker">Choose a speaker on your Wi-Fi network</string>
+    <string name="morphe_music_sonos_cast_casting_to">Casting to %s</string>
+    <string name="morphe_music_sonos_cast_connected">Connected</string>
+    <string name="morphe_music_sonos_cast_disconnect">Disconnect</string>
+    <string name="morphe_music_sonos_cast_speakers_header">Speakers on Wi-Fi</string>
+    <string name="morphe_music_sonos_cast_active">Active</string>
+    <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+    <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest and Google TV devices</string>
+    <string name="morphe_music_sonos_cast_connection_failed">Could not connect to %s</string>
+
     <!-- video.speed.playbackSpeedPatch -->
     <string name="morphe_music_playback_speed_title">Playback speed</string>
     <string name="morphe_music_playback_speed_summary">Speed used for all tracks. At 100% the app speed is used, such as the podcast playback speed</string>
