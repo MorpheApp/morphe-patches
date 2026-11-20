@@ -19,6 +19,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/TabletGridFeedPatch;"
 
+internal const val FEED_TYPE_CLASS = "Lcom/reddit/feeds/data/FeedType;"
+
 @Suppress("unused")
 val tabletGridFeedPatch = patch(
     name = "Tablet grid feed",
@@ -51,8 +53,13 @@ val tabletGridFeedPatch = patch(
         val footerField = SearchGridFeedFooterFingerprint.instructionMatches[1].fieldReference
         val paddingType = gridParameters[4]
 
-        ListFeedFingerprint.method.apply {
+        LatestFeedScreenFingerprint.instructionMatches[1].getMethodCalled().apply {
             val listParameters = parameterTypes.map { it.toString() }
+
+            // Some app versions sort the list feed parameters by type,
+            // so the list feed arguments are found by type and not by position.
+            // Each argument used is the first of its type, and the first float is the top padding.
+            fun listRegister(type: String) = "p${listParameters.indexOf(type)}"
 
             // The leading grid parameters are the same in all app versions.
             // The number of boolean flags and Compose int flags after them differ.
@@ -60,10 +67,8 @@ val tabletGridFeedPatch = patch(
             val setGridArguments = gridParameters.mapIndexedNotNull { index, type ->
                 val register = "v$index"
                 when (index) {
-                    0 -> "move-object/from16 $register, p0" // Feed state.
-                    1 -> "move-object/from16 $register, p1" // Event sink.
-                    2 -> "move-object/from16 $register, p2"
-                    3 -> "move-object/from16 $register, p4" // Modifier.
+                    // Feed state, event sink, the first function and modifier.
+                    0, 1, 2, 3 -> "move-object/from16 $register, ${listRegister(type)}"
                     4 -> null // Padding.
                     5 -> "const/4 $register, 0x0" // Item spacing.
                     6 -> "const/4 $register, 0x0" // Arrangement.
@@ -72,7 +77,7 @@ val tabletGridFeedPatch = patch(
                         "Z" -> "const/4 $register, 0x1"
                         "I" -> "const/4 $register, 0x0"
                         // Same object the list feed gets, such as the Compose composer.
-                        else -> "move-object/from16 $register, p${listParameters.indexOf(type)}"
+                        else -> "move-object/from16 $register, ${listRegister(type)}"
                     }
                 }
             }.joinToString("\n")
@@ -80,12 +85,12 @@ val tabletGridFeedPatch = patch(
             addInstructionsWithLabels(
                 0,
                 """
-                    move-object/from16 v0, p5
+                    move-object/from16 v0, ${listRegister(FEED_TYPE_CLASS)}
                     invoke-static { v0 }, $EXTENSION_CLASS->showGridFeed(Ljava/lang/Enum;)Z
                     move-result v0
                     if-eqz v0, :list_feed
 
-                    move/from16 v0, p6
+                    move/from16 v0, ${listRegister("F")}
                     invoke-static { v0 }, $EXTENSION_CLASS->getGridTopPadding(F)F
                     move-result v1
                     const/high16 v0, 0x41800000 # 16.0f
