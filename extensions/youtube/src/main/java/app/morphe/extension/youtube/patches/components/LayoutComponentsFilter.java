@@ -152,8 +152,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroupList linearLayoutGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup liveStream;
     private final ByteArrayFilterGroup liveStreamBuffer;
-    private final StringFilterGroup libraryDownloads;
-    private final ByteArrayFilterGroup libraryDownloadsBuffer;
+    private final StringFilterGroup libraryItem;
+    private final ByteArrayFilterGroupList libraryItemGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup notificationsMenuHeader;
     private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
@@ -239,17 +239,37 @@ public final class LayoutComponentsFilter extends Filter {
                 "yt_outline_experimental_live_black"
         );
 
-        // 'Downloads' item of the 'You' tab. It's a lockup, so the bottom menu filter can't match its name.
-        libraryDownloads = new StringFilterGroup(
-                Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
+        // Built-in items of the 'You' tab, such as 'Downloads'. They are lockups, so the bottom menu
+        // filter can't match their names. The settings are checked by the buffer groups.
+        libraryItem = new StringFilterGroup(
+                null,
                 "video_lockup_with_attachment.e"
         );
 
-        // The title is localized, but only the 'Downloads' item has this icon.
-        libraryDownloadsBuffer = new ByteArrayFilterGroup(
-                null,
-                "yt_outline_download_black",
-                "yt_outline_experimental_download_black"
+        // The titles are localized, so the items are found by their thumbnail, icon, playlist or page.
+        // Newer layouts of the 'You' tab show a thumbnail instead of the icon.
+        libraryItemGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_BADGES,
+                        "/youtube/app_shell/badges_thumbnail",
+                        "FEtrophies"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
+                        "yt_outline_download_black",
+                        "yt_outline_experimental_download_black",
+                        "/youtube/app_shell/download_background"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_LIKED_VIDEOS,
+                        "/youtube/app_shell/thumb_up_background",
+                        "/playlist?list=LL"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_WATCH_LATER,
+                        "/youtube/app_shell/clock_background",
+                        "/playlist?list=WL"
+                )
         );
 
         // The hint shown in the player during seek gestures. The identifier is versioned.
@@ -264,7 +284,7 @@ public final class LayoutComponentsFilter extends Filter {
                 linearLayout,
                 liveChatReplay,
                 liveStream,
-                libraryDownloads,
+                libraryItem,
                 seekEduOverlay
         );
 
@@ -790,12 +810,11 @@ public final class LayoutComponentsFilter extends Filter {
             return isLockupRoot(path) && liveStreamBuffer.check(buffer).isFiltered();
         }
 
-        if (matchedGroup == libraryDownloads) {
+        if (matchedGroup == libraryItem) {
             // Only check the whole lockup, for the same reason as the live streams.
-            return Settings.HIDE_ACCOUNT_MENU.get()
-                    && isLockupRoot(path)
+            return isLockupRoot(path)
                     && NavigationButton.getSelectedNavigationButton(contextInterface) == NavigationButton.LIBRARY
-                    && libraryDownloadsBuffer.check(buffer).isFiltered();
+                    && libraryItemGroupList.check(buffer).isFiltered();
         }
 
         if (matchedGroup == notificationsMenuHeader) {
