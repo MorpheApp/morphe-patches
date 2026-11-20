@@ -141,15 +141,15 @@ Ustawić %2$s jako domyślnego klienta?"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Fałszuj strumienie filmów i Logowanie Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Domyślny klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logowanie Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR wymaga osobnego logowania. Dotknij tutaj, aby kontynuować</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Obecnie zalogowano do Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logowanie \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" wymaga osobnego logowania. Dotknij tutaj, aby kontynuować</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Obecnie zalogowano do \"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">By używać tej funkcji, zmień \"Domyślny klient\" na Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Zaloguj się do Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Zalogowanie się do Android VR może rozwiązać problemy z odtwarzaniem u niektórych użytkowników
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Aby korzystać z tej funkcji, zmień \"Domyślny klient\" na \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Zaloguj się do \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Zalogowanie się do \"Android VR\" może rozwiązać problemy z odtwarzaniem u niektórych użytkowników
 
-Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
+Aby się zalogować, naciśnij Kontynuuj poniżej"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Wyloguj się</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instrukcja</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -170,10 +170,10 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
 • W przypadku zmiany hasła lub wyrejestrowania urządzenia w ustawieniach konta Google konieczne będzie ponowne zalogowanie się"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logowanie w Mobile Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcjonalnie: zaloguj się na stronie internetowej YouTube, aby odtwarzać filmy przy użyciu swojego konta. Dotknij tutaj, aby kontynuować</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Obecnie zalogowano w Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Obecnie zalogowano w \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Aby używać tej funkcji, zmień \"Domyślny klient\" na Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Zaloguj się do Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Aby używać tej funkcji, zmień \"Domyślny klient\" na \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Zaloguj się do \"Mobile Web\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web odtwarza filmy bez logowania lub po zalogowaniu na stronie internetowej YouTube
 
 • Po zalogowaniu można odtwarzać filmy wymagające konta, np. z ograniczeniem wiekowym
@@ -184,19 +184,19 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
 Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Zapisano logowanie
 
-• Twoje ustawienia Morphe nie będą importować ani eksportować logowania w Mobile Web
+• Twoje ustawienia Morphe nie będą importować ani eksportować logowania w 'Mobile Web'
 • Jeśli Google zakończy sesję logowania, filmy będą odtwarzane bez zalogowania, dopóki nie zalogujesz się ponownie
 • Wylogowanie powoduje również wylogowanie tego urządzenia ze strony internetowej YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Logowanie w Mobile Web wygasło, spróbuj zalogować się w Mobile Web ponownie</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Wylogowano z Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView jest niedostępny. Zainstaluj lub włącz go, aby się zalogować</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Logowanie w Mobile Web wygasło, spróbuj zalogować się w \'Mobile Web\' ponownie</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Wylogowano z \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" jest niedostępny. Zainstaluj lub włącz go, aby się zalogować</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 jest tymczasowo niedostępny (API nie reaguje)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Sesja logowania Android VR wygasła, spróbuj zalogować się ponownie</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Sesja logowania \"Android VR\" wygasła, spróbuj zalogować się ponownie do VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 jest tymczasowo niedostępny (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 jest tymczasowo niedostępny</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nie można zalogować się do VR, autoryzacja na stronie nie została zatwierdzona</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie można zalogować się do VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Wylogowano z Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Wylogowano z \"Android VR\"</string>
   <string name="morphe_oauth2_toast_invalid">Nieprawidłowy token logowania VR, spróbuj zalogować się ponownie</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Sterowanie multimediami</string>
@@ -271,11 +271,11 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_debug_litho_entry_disabled">Wyłączone</string>
   <string name="morphe_debug_litho_entry_path">Ścieżka</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Ścieżka i bufor</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Rejestrowanie Litho zapisuje w dzienniku komponenty układu aplikacji, w tym tekst wyświetlany na ekranie dla niektórych elementów interfejsu.
+  <string name="morphe_debug_litho_user_dialog_message">"Rejestrowanie komponentów układu aplikacji, w tym tekstu wyświetlanego na ekranie dla niektórych elementów interfejsu.
 
 Może to pomóc w identyfikacji elementów podczas tworzenia własnych filtrów.
 
-​Włączenie tej opcji spowoduje jednak również zapisywanie niektórych danych użytkownika, takich jak adres IP"</string>
+Jednakże spowoduje to również zapisywanie niektórych danych użytkownika, takich jak adres IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Własny filtr</string>
   <string name="morphe_custom_filter_screen_summary">Skonfiguruj własne filtry, aby ukryć dowolny element</string>

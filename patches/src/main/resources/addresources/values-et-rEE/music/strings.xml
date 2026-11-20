@@ -144,6 +144,8 @@ Ekspordikaust: %s"</string>
   <string name="morphe_export_download_failed">Allalaadimise eksportimine ebaõnnestus</string>
   <string name="morphe_export_download_all_flyout_title">Ekspordi kõik seadmesse</string>
   <string name="morphe_export_download_all_started">Eksporditakse kõiki allalaadimisi</string>
+  <string name="morphe_export_download_all_title">Kõik allalaadimised</string>
+  <string name="morphe_export_download_playlist_started">Allalaadimiste eksportimine</string>
   <string name="morphe_export_download_all_running">Allalaadimisi eksporditakse juba</string>
   <string name="morphe_export_download_all_saved">Eksporditi %1$s allalaadimist %2$s-st asukohta %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Ekspordikaust: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Peida videoreklaamid</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Peida heli/video lüliti</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Peida allalaadimisnupp</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Peidab taskuhäälingusaates allalaadimisnupu</string>
   <string name="morphe_music_hide_explore_shelf_title">Peida jaotis Avasta</string>
   <string name="morphe_music_hide_filter_bar_title">Peida filtririba</string>
@@ -178,7 +179,6 @@ Ekspordikaust: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Peidab teegivahekaardil nupu \"Uus\"</string>
   <string name="morphe_music_hide_list_shelves_title">Peida loendiriiulid</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Laulusõnade paneel</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Peida nuppu Jaga</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Peida tõlkenupp</string>
   <string name="morphe_music_hide_new_from_shelf_title">Peida riiul \"Uued...-st\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Peida esitusloendite riiulid</string>
@@ -202,7 +202,7 @@ Ekspordikaust: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Sujuta lood üksteisesse</string>
   <string name="morphe_music_crossfade_enabled_title">Luba üleminek</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Ristikanaliseerimise kasutamiseks muutke videovoolide imiteerimise \'Default client\' väärtuseks TV Simply või visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Sujuv üleminek kasutamiseks muutke videovoogude imiteerimise \'Vaikimisi klient\' väärtuseks \'TV Simply\' või \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Hääbumiskõver</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Võrdne energiatase</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Kerge hoid</string>
@@ -237,8 +237,8 @@ Ekspordikaust: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Üleminek jätkus</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videorežiim pole saadaval, kui sujuv üleminek on lubatud</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Ristikanaliseerimine ei tööta visionOS-iga. Muutke videovoolide imiteerimise \'Default client\' väärtuseks TV Simply</string>
-  <string name="morphe_music_crossfade_spoof_client_toast">Ristikanaliseerimine ei tööta selle imiteeritava voolikliendiga</string>
+  <string name="morphe_music_crossfade_visionos_toast">Sujuv üleminek ei tööta \'visionOS\'-iga. Muutke videovoogude imiteerimise \'Vaikimisi klient\' väärtuseks \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Üleminek ei tööta selle imiteeritava voolikliendiga</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Ülekande ajal on sujuv üleminek välja lülitatud</string>
   <string name="morphe_music_crossfade_about_how_title">Kuidas see töötab</string>
   <string name="morphe_music_crossfade_about_how_summary">"Üleminek kattub ühe loo lõpu ja järgmise loo algusega, lähtudes sinu määratud kestusest ja kõverast
@@ -286,7 +286,6 @@ Kui peatad sujuva ülemineku muusikavideo vaatamiseks, võib video jääda musta
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Keela pühkimine loo muutmiseks</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Hoiab ära järgmisele või eelmisele loole pühkimise vasakule või paremale mängijal</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Keela pühkimine loo muutmiseks</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Hoiab ära järgmisele või eelmisele loole pühkimise vasakule või paremale minimängijal</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B tsükkel</string>
@@ -463,11 +462,8 @@ Kui peatad sujuva ülemineku muusikavideo vaatamiseks, võib video jääda musta
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Kaane padding</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Serva heledus</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Läbipaistvus</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Klaasihõgu</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Kui palju on klaasise minipleieri taga olev lehk hägustatud (Android 14 ja uuem). Väärtuse 0 juures on lehekuva terav ning enne Android 14 on lehekuv covered</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Hele klaas</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Värvab klaasise minipleieri tumeda asemel valgeks, et saada hele ja selgem klaas</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumi kaane toon</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Värvab klaasise minipleieri mängivat laulu albumikaane värviga</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Kevitav albumikaan</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Muudab klaasise minipleieri albumikaane ümaraks ja pöörab seda laulu ajal nagu plaati</string>
@@ -481,12 +477,12 @@ Kui peatad sujuva ülemineku muusikavideo vaatamiseks, võib video jääda musta
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Peida tegevuse nupp</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Peida \"Küsi muusikat\" nupp</string>
+  <string name="morphe_music_hide_ask_music_button_title">Peida nupp \"Küsi muusikat\"</string>
   <string name="morphe_music_hide_cast_button_title">Peida ülekandmisnupp</string>
   <string name="morphe_music_hide_history_button_title">Peida ajaloo nupp</string>
   <string name="morphe_music_hide_search_button_title">Peida otsingunupp</string>
-  <string name="morphe_music_hide_voice_search_button_title">Peida häälotsingu nupp</string>
-  <string name="morphe_music_hide_sound_search_button_title">Peida heliotsingu nupp</string>
+  <string name="morphe_music_hide_voice_search_button_title">Peida nupp \"Häälotsing\"</string>
+  <string name="morphe_music_hide_sound_search_button_title">Peida \"heliotsingu\" nupp</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Pole sisse logitud. Puudutage seadistamiseks</string>
   <string name="morphe_music_scrobbling_log_out">Logi välja</string>

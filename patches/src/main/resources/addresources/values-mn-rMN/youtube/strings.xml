@@ -205,8 +205,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">Постуудын хэсгийг нуух</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Дэлгүүрийн товчийг нуух</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Бүртгүүлэх товчийг нуух</string>
   <string name="morphe_explore_menu_screen_title">Хайгуул цэс</string>
   <string name="morphe_explore_menu_screen_summary">Хайгуул цэсэнд аль бүрэлдэхүүн хэсгүүдийг харуулахыг сонгоно уу</string>
   <string name="morphe_hide_courses_menu_title">Курсуудын цэсийг нуух</string>
@@ -281,7 +279,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">Сэтгэгдэл товчийг нуух</string>
   <string name="morphe_hide_post_comments_preview_title">Сэтгэгдлийн урьдчилан харахыг нуух</string>
   <string name="morphe_hide_post_comments_preview_summary">Постуудын доорх сэтгэгдлүүдийн урьдчилан харах хэсгийг нууна</string>
-  <string name="morphe_hide_post_share_button_title">Хуваалцах товчийг нуух</string>
   <string name="morphe_hide_post_share_button_summary">Постын зургийн татаж авах товч нь Хуваалцах товчны хажууд байрладаг тул энэ нь мөн нуугдана</string>
   <string name="morphe_hide_ask_gemini_button_title">\'Gemini-гээс асуух\' товчийг нуух</string>
   <string name="morphe_hide_ask_gemini_button_summary">\'Энэ видеоны талаар асуух\' хэсгийн доор байрлах \'Gemini-ээс асуух\' товчийг нуух</string>
@@ -296,9 +293,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_in_this_video_button_title">\'Энэ видеонд\' товчийг нуух</string>
   <string name="morphe_hide_info_panels_title">Мэдээлэл харуулах хэсгийг нуух</string>
   <string name="morphe_hide_info_panels_summary">Анагаах ухааны мэдээлэл гэх мэт мэдээлэл өгөх контекст панелуудыг нуух</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">\"Нэгдэх\" товчийг нуух</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">\'Шууд чатын давталт\' товчийг нуух</string>
@@ -314,8 +308,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Хурдшруулахын тулд хуруугаа дараад чирж эхлэхэд тоглуулах хяналтын градиентыг нуух</string>
   <string name="morphe_hide_timed_reactions_title">Хугацаатай урвалгуудыг нуух</string>
   <string name="morphe_hide_timed_reactions_summary">Сэтгэгдэл болон шууд чат хэсэгт эможи-оор хариу үйлдэл үзүүлэх функцийг нуух</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">\'Тусламж &amp; санал хүсэлт\' цэсийг нуух</string>
   <string name="morphe_hide_help_feedback_menu_summary">Хайлтын үр дүн гэх мэт дээрх гурав цэгтэй товчлуурыг ашиглах үед \'Тусламж &amp; санал хүсэлт\' цэсийг нуух</string>
   <string name="morphe_hide_handle_title">Хандлагын нэрийг нуух</string>
   <string name="morphe_hide_handle_summary">\'Та\' таб доторх таны сувгийн хандлагын нэрийг нууна</string>
@@ -358,7 +350,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">\"Асуух\" товчийг нуух</string>
   <string name="morphe_hide_channel_profile_button_title">Суваг болон Бүртгүүлэх товчлуурыг нуух</string>
   <string name="morphe_hide_channel_profile_button_summary">Үйлдэл гүйцэтгэх мөрний эхэнд байрлах сувгийн аватар болон Бүртгүүлэх товчлуурыг нууна</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Бүртгэх товчийг нуух</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Үйлдэл гүйцэтгэх хэсгийн эхэнд байгаа сувгийн дүрсийн хажуугийн Бүртгэх болон Нэгдэх товчнуудыг нууна</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">\"Clip\" товчийг нуух</string>
@@ -434,7 +425,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Сэтгэгдлийг Morphe нуусан…</string>
   <string name="morphe_minimal_comments_button_title">Минималист сэтгэгдлийн товчлуурыг идэвхжүүлэх</string>
   <string name="morphe_minimal_comments_button_summary">Сэтгэгдлийн товчлууран дээр харагддаг гулсдаг карт болон хуудас сонгогчийг нууна</string>
-  <string name="morphe_hide_comments_thanks_button_title">\"Баярлалаа\" товчийг нуух</string>
   <string name="morphe_hide_comments_timestamp_button_title">Цаг хугацааны товчийг нуух</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Шилдэг шүтэн бишрэгчид\' товчийг нуух</string>
   <string name="morphe_hide_comments_translate_button_title">Орчуулгын товчийг нуух</string>
@@ -489,7 +479,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Хадмал орчуулгын товчийг нуух</string>
   <string name="morphe_hide_cast_button_title">Cast товчлуурыг нуух</string>
-  <string name="morphe_hide_cast_button_summary">Видео тоглуулагч болон хэрэгслийн мөрний Cast товчийг нуух</string>
   <string name="morphe_hide_collapse_button_title">Хумигдуулгах товчлуурыг нуух</string>
   <string name="morphe_hide_fullscreen_button_title">Дүүрэн дэлгэцийн товчлуурыг нуух</string>
   <string name="morphe_hide_player_control_buttons_background_title">Тоглуулагчийн удирдлагын арын дэвсгэрийг нуух</string>
@@ -891,7 +880,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Хурдан цэсний зар сурталчилгааны зөвшөөрлийн жагсаалт</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Тухайн видеоны суваг дээр зар сурталчилгааг тоглуулах боломжтой хурдан цэсний элемент нэмнэ</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Энэхүү функц нь PotHelper ашиглах эсвэл \"Видео урсгалыг хуурах\" тохиргоог TV эсвэл Android VR нэвтрэлт болгож өөрчлөхийг шаардаж болзошгүй</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Энэхүү функцийг ашиглахын тулд PotHelper-ийг ашиглах эсвэл \'Видео урсгалыг хуурах\'-ийг \'ТВ\' эсвэл \'Android VR\' нэвтрэлт болгон өөрчлөх шаардлагатай байж магадгүй юм</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Хурдан цэсний хурдны зөвшөөрлийн жагсаалт</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Тухайн видеоны сувгийг үргэлж 1.0x хурдтайгаар тоглуулах хурдан цэсний элемент нэмнэ</string>
   <string name="morphe_queue_manager_check_failed_auth">Нэвтрээгүй</string>
@@ -1149,9 +1138,9 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Товчнуудын зай</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Харагдаж буй товчлуур: %1$s-аас %2$s</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат товчийг нуух</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Companion товчийг нуух</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Микрофон товчийг нуух</string>
   <string name="morphe_hide_toolbar_search_button_title">Хайлт товчийг нуух</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Идэвхжүүлсэн үед товшихад Morphe-ийн тохиргоо, удаан дарахад YouTube-ийн тохиргоог нээнэ; солихын тулд идэвхгүй болгоно уу</string>
   <string name="morphe_toolbar_buttons_order_title">Багажны хэсгийн товчлууруудын дараалал</string>
   <string name="morphe_toolbar_buttons_order_summary">Багажны хэсэг дэх товчлууруудын дарааллыг өөрчлөхийн тулд чирж зөөж тохируулна уу</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1182,43 +1171,28 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Хоёр удаа товшлон лайк дарахыг идэвхгүй болгох</string>
   <string name="morphe_hide_shorts_ai_button_title">AI товчийг нуух</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">\'Автоматаар орчуулсан\' шовгийг нуух</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Сувгийн хэсгийг нуух</string>
-  <string name="morphe_hide_shorts_comments_button_title">Сэтгэгдэл товчийг нуух</string>
   <string name="morphe_hide_shorts_effect_button_title">Эффект товчийг нуух</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Видео холбоосын шовгийг нуух</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Дохио заагчийг нуух</string>
   <string name="morphe_hide_shorts_green_screen_button_title">\'Ногоон дэлгэц\' товчийг нуух</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Хаштаг товчийг нуух</string>
   <string name="morphe_hide_shorts_info_panel_title">Мэдээллийн хэсгийг нуух</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Нэгдэх товчийг нуух</string>
   <string name="morphe_hide_shorts_like_button_title">Танд таалагдсан товчийг нуух</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Танд таалагдсан товчны урсгал хөдөлгөөнийг нуух</string>
   <string name="morphe_hide_shorts_live_preview_title">Шууд дамжуулалтын урьдчилан харалтыг нуух</string>
   <string name="morphe_hide_shorts_location_label_title">Байршлын шовжийг нуух</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Навигацийн хэсгийг нуух</string>
   <string name="morphe_hide_shorts_new_posts_button_title">\'Шинэ нийтлэл\' товчийг нуух</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Түр зогсоох үеийн давхаргуур товчнуудыг нуух</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Сэтгэгдлийн урьдчилгаа харах хэсгийг нуух</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Ремикс товчийг нуух</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Хадгалах товчийг нуух</string>
   <string name="morphe_hide_shorts_save_sound_button_title">\'Хөгжим хадгалах\' товчийг нуух</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Хайлтын санал болголтыг нуух</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Хуваалцах товчийг нуух</string>
-  <string name="morphe_hide_shorts_shop_button_title">Дэлгүүр товчийг нуух</string>
   <string name="morphe_hide_shorts_sound_button_title">Дууны товчийг нуух</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Дууны мета өгөгдлийн шовгийг нуух</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Бүртгүүлэх товчийг нуух</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">\'Super Thanks худалдаж авах\' товчийг нуух</string>
   <string name="morphe_hide_shorts_tagged_products_title">Тэмдэглэгдсэн бүтээгдэхүүнийг нуух</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Удахгүй товчийг нуух</string>
   <string name="morphe_hide_shorts_use_sound_button_title">\'Энэхүү дууг ашиглах\' товчийг нуух</string>
   <string name="morphe_hide_shorts_use_template_button_title">\'Энэхүү загварыг ашиглах\' товчийг нуух</string>
-  <string name="morphe_hide_shorts_video_title_title">Видеоны гарчгийг нуух</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Төгсгөлийн дэлгэцийн санал болгосон видеог нуух</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Видео дууссаны дараа гарч ирэх санал болгох видеоны давхаргаыг нуух
@@ -1728,8 +1702,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Кодекийн үр ашгаас илүү боломжтой хамгийн өндөр видео чанарыг тэргүүн эрэмбэжүүлнэ</string>
   <string name="morphe_video_quality_prioritize_dialog">Хэрэв энэ тохиргоог унтраавал хуучин видеонууд дээр видеоны чанарын сонголтууд харагдахгүй байж болно</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1-ийг зөвшөөрөх</string>
-  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS клиент ашиглах үед програм хангамжийн AV1 декодчилолтыг зөвшөөрнө</string>
+  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1-ийг зөвшөөрөх</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' клиент ашиглах үед програм хангамжийн AV1 декодлохыг зөвшөөрнө</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Энэ тохиргоог идэвхжүүлснээр AV1 программ хангамжийн декодинг ашиглаж магадгүй.
 
 AV1-тэй видеог тоглуулах үед гацалт үүсэх эсвэл кадр алдагдах магадлалтай"</string>
@@ -1966,7 +1940,6 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_live_chat_translate_language_title">Орчуулах хэл</string>
   <string name="morphe_live_chat_translate_exclude_title">Хасах хэлнүүд</string>
   <string name="morphe_live_chat_translate_exclude_summary">id,en гэх мэт таслалаар тугаарсан хэлний кодууд. Эдгээр хэл дээрх зурвасуудыг орчуулахгүй</string>
-  <string name="morphe_live_chat_translate_provider_title">Орчуулгын үйлчилгээ үзүүлэгч</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API түлхүүр</string>

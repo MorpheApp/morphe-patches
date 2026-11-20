@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Yükləməni ixrac etmək olmadı</string>
   <string name="morphe_export_download_all_flyout_title">Hamısını cihaza ixrac et</string>
   <string name="morphe_export_download_all_started">Bütün yükləmələri ixrac edir</string>
+  <string name="morphe_export_download_all_title">Bütün yükləmələr</string>
+  <string name="morphe_export_download_playlist_started">Yükləmələri ixrac edir</string>
   <string name="morphe_export_download_all_running">Yükləmələr artıq ixrac edilir</string>
   <string name="morphe_export_download_all_saved">%2$s yükləmədən %1$s \'ı %3$s \'a ixrac edildi</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Video reklamlarını gizlət</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Səs / Video keçiricisini gizlət</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Endirin düyməsini gizlət</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Podkastda göstərilən Yükləmə düyməsini gizlədir</string>
   <string name="morphe_music_hide_explore_shelf_title">Kəşf et bölməsini gizlət</string>
   <string name="morphe_music_hide_filter_bar_title">Filtr cərgəsini gizlət</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">Kitabxana panelində Yeni düyməsini gizlədir</string>
   <string name="morphe_music_hide_list_shelves_title">Siyahı bölmələrini gizlət</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Mahnı sözləri paneli</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Paylaş düyməsini gizlət</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Tərcümə et düyməsini gizlət</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'Kanalından yeni\' bölməsini gizlət</string>
   <string name="morphe_music_hide_playlist_shelves_title">Pleylist bölmələrini gizlət</string>
@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">Parçaları bir-birinə hamarca qarışdır</string>
   <string name="morphe_music_crossfade_enabled_title">Çarpaz solmanı aktivləşdir</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Çarpaz soldurma istifadə etmək üçün \'Video yayımlarını saxtalaşdırın\' \"İlkin qəbuledicisini\" \'TV Simply\' və ya \'visionOS\' olaraq dəyişdir</string>
   <string name="morphe_music_crossfade_curve_title">Soldurma əyrisi</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Bərabər güc</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">İncə saxlanma</string>
@@ -236,6 +237,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Çarpaz Soldurma yenidən başladı</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Çarpaz Soldurma işlək olduqda video rejimi əlçatan deyil</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Çarpaz soldurma \'visionOS\' ilə işləmir. \'Video yayımlarını saxtalaşdırın\' \"İlkin qəbuledicisini\" \'TV Simply\' olaraq dəyişdir\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Çarpaz soldurma bu saxta yayım qəbuledicisi ilə işləmir</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Yayımlanarkən çarpaz soldurma qapadılır</string>
   <string name="morphe_music_crossfade_about_how_title">Bu necə işləyir</string>
   <string name="morphe_music_crossfade_about_how_summary">"Çarpaz soldurma müddətinizə və əyriyə əsasən bir mahnının sonunu növbəti mahnının əvvəli ilə üst-üstə salır
@@ -252,6 +255,7 @@ Second \"item\" text"</string>
 
 ​Musiqi videosuna baxmaq üçün çarpaz soldurmanı dayandırmaq bəzi videoların qara qalmasına səbəb ola bilər. Mahnını seçməzdən əvvəl çarpaz soldurmanı dayandırmaq bunun qarşısını alır"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Dəstəklənmir</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Səsin yayımlanması və ya əks olunması (Chromecast, ekran və ya səs əks olunması)</string>
   <string name="morphe_music_crossfade_about_credit_title">Hazırladı</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG tərəfindən Çarpaz soldurma xüsusiyyəti</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -282,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Treki dəyişdirmək üçün sürüşdürməni qapat</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Oynadıcıda sola və ya sağa sürüşdürməklə növbəti və ya əvvəlki trekə keçməyə mane olur</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Treki dəyişdirmək üçün sürüşdürməni qapat</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Kiçik oynadıcıda sola və ya sağa sürüşdürməklə növbəti və ya əvvəlki trekə keçməyə mane olur</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B təkrarı</string>
@@ -459,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Örtük boşluğu</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Çərçivə parlaqlığı</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Qeyri-şəffaflıq</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Şüşə bulanıqlığı</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Şüşə kiçik oynadıcının arxasındakı səhifənin bulanıqlıq dərəcəsi (Android 14 və sonrakı). 0 olduqda səhifə tam aydın görünür, Android 14-dən əvvəl isə səhifə örtülür</string>
-  <string name="morphe_music_miniplayer_glass_light_title">İşıqlı şüşə</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Daha açıq və şəffaf şüşə üçün şüşə kiçik oynadıcını qara əvəzinə ağa boyayır</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albom cildi rəngi</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Şüşə kiçik oynadıcını səslənən mahnının albom cildinin rəngi ilə rəngləndirir</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Fırlanan üzlük</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Şüşə kiçik oynadıcının üzlüyünü dairəvi edir və mahnı səslənərkən onu val kimi fırladır</string>
@@ -477,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Fəaliyyət düyməsini gizlət</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Musiqi Soruş düyməsini gizlət</string>
+  <string name="morphe_music_hide_ask_music_button_title">\'Musiqi Soruş\' düyməsini gizlət</string>
   <string name="morphe_music_hide_cast_button_title">Yayımla düyməsini gizlət</string>
   <string name="morphe_music_hide_history_button_title">Tarixçə düyməsini gizlət</string>
   <string name="morphe_music_hide_search_button_title">Axtarış düyməsini gizlət</string>
-  <string name="morphe_music_hide_voice_search_button_title">Səsli axtarış düyməsini gizlət</string>
-  <string name="morphe_music_hide_sound_search_button_title">Mahnı axtarışı düyməsini gizlət</string>
+  <string name="morphe_music_hide_voice_search_button_title">\'Səsli axtarış\' düyməsini gizlət</string>
+  <string name="morphe_music_hide_sound_search_button_title">\'Mahnı axtarışı\' düyməsini gizlət</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Daxil olmamısınız. Tənzimləmək üçün toxun</string>
   <string name="morphe_music_scrobbling_log_out">Çıxış et</string>

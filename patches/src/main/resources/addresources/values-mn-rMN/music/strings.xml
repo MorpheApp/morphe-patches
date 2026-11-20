@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Татаж авсан файлыг экспортлож чадсангүй</string>
   <string name="morphe_export_download_all_flyout_title">Бүгдийг төхөөрөмж рүү экспортлох</string>
   <string name="morphe_export_download_all_started">Бүх татаж авсан файлуудыг экспортлож байна</string>
+  <string name="morphe_export_download_all_title">Бүх татаж авалтууд</string>
+  <string name="morphe_export_download_playlist_started">Татаж авсан файлуудыг экспортлож байна</string>
   <string name="morphe_export_download_all_running">Татаж авсан файлуудыг экспортлож байна</string>
   <string name="morphe_export_download_all_saved">%2$s татаан авсан файлын %1$s-ыг %3$s руу экспортлолоо</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Видео сурталчилгааг нуух</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Аудио / Видео шилжүүлэгчийг нуух</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Татах товчийг нуух</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Подкаст шоуны Татах товчийг нууна</string>
   <string name="morphe_music_hide_explore_shelf_title">Хайгуурын хэсгийг нуух</string>
   <string name="morphe_music_hide_filter_bar_title">Шүүлтүүрийн хэсгийг нуух</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">Санг таб дахь \"Шинэ\" товчийг нуух</string>
   <string name="morphe_music_hide_list_shelves_title">Жагсаалтын тавиурыг нуух</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Дууны үгний хэсэг</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Хуваалцах товчийг нуух</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Орчуулах товчийг нуух</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'Шинэ\' тавиурыг нуух</string>
   <string name="morphe_music_hide_playlist_shelves_title">Playlist-ийн талбайг нуух</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">Дуунуудыг хооронд нь зөөлөн шилжүүлэх</string>
   <string name="morphe_music_crossfade_enabled_title">Кросфейдыг идэвхжүүлэх</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade-ийг ашиглахын тулд Spoof видео урсгалын \'Default client\'-ийг TV Simply эсвэл visionOS болгож өөрчилнө үү</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade-ийг ашиглахын тулд \'Spoof video streams\' хэсгийн \'Default client\'-ийг \'TV Simply\' эсвэл \'visionOS\' болгож өөрчилнө үү</string>
   <string name="morphe_music_crossfade_curve_title">Бүдгэрэх муруй</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Тэнцүү хүч</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Нарийн барилт</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Кроссфейдийг сэргээлээ</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Кроссфейд идэвхжсэн үед видео горимыг ашиглах боломжгүй</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade нь visionOS-той ажиллахгүй. Spoof видео урсгалын \'Default client\'-ийг TV Simply болгож өөрчилнө үү</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade нь \'visionOS\'-той ажиллахгүй. \'Spoof video streams\' хэсгийн \'Default client\'-ийг \'TV Simply\' болгож өөрчилнө үү</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade нь энэхүү spoof урсгалын клиенттэй ажиллахгүй байна</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Casting хийж байх үед Crossfade идэвхгүй байна</string>
   <string name="morphe_music_crossfade_about_how_title">Хэрхэн ажилладаг вэ</string>
@@ -286,7 +286,6 @@ Fade-ийн хугацаанаас богино дуунууд crossfade хий�
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Трек солигдох хуруугаар гүйлгэх үйлдлийг идэвхгүй болгох</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Тоглуулагч дээр зүүн эсвэл баруун тийш хуруугаар гүйлгэж дараах эсвэл өмнөх трек рүү шилжих боломжийг хязгаарлана</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Трек солигдох хуруугаар гүйлгэх үйлдлийг идэвхгүй болгох</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Мини-тоглуулагч дээр зүүн эсвэл баруун тийш хуруугаар гүйлгэж дараах эсвэл өмнөх трек рүү шилжих боломжийг хязгаарлана</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B давталт</string>
@@ -463,11 +462,8 @@ Fade-ийн хугацаанаас богино дуунууд crossfade хий�
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Зургийн зай</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Ирмэгийн гэрэлтүүлэг</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Тунгалаг байдал</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Шилэн бүдгэрүүлэлт</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Шилэн мини-плеерийн ард байгаа хуудас хэр зэрэг бүдгэрсэн байхыг тохируулна (Android 14 ба түүнээс дээш). 0 дээр хуудас тод харагдах бөгөөд Android 14-өөс өмнөх хувилбаруудад хуудас бүрхэгдэнэ</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Цайвар шил</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Илүү цайвар, тод харагдуулахын тулд шилэн мини-плеерийг бараан өнгөний оронд цагаан өнгөөр бунаа</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Цомгийн зургийн өнгө</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Шилэн мини-плеерийн өнгийг тоглуулагдаж буй дууны цомгийн зургийн өнгөөр бунаа</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Эргэдэг зураг</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Шилэн мини-плеерийн зургийг бөөрөнхий болгож, дуу тоглуулах үед диск шиг эргэлдүүлнэ</string>
@@ -481,12 +477,12 @@ Fade-ийн хугацаанаас богино дуунууд crossfade хий�
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">\"Үйл ажиллагаа\" товчийг нуух</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">\"Хөгжим асуух\" товчийг нуух</string>
+  <string name="morphe_music_hide_ask_music_button_title">\'Хөгжимээс асуух\' товчийг нуух</string>
   <string name="morphe_music_hide_cast_button_title">Cast товчийг нуух</string>
   <string name="morphe_music_hide_history_button_title">Түүх товчийг нуух</string>
   <string name="morphe_music_hide_search_button_title">Хайлт товчийг нуух</string>
-  <string name="morphe_music_hide_voice_search_button_title">Дуу хоолойгоор хайх товчийг нуух</string>
-  <string name="morphe_music_hide_sound_search_button_title">Дууны хайлтын товчийг нуух</string>
+  <string name="morphe_music_hide_voice_search_button_title">\'Дуу хоолойгоор хайх\' товчийг нуух</string>
+  <string name="morphe_music_hide_sound_search_button_title">\'Дууны хайлт\' товчийг нуух</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Нэвтрээгүй байна. Тохируулахын тулд дарна уу</string>
   <string name="morphe_music_scrobbling_log_out">Гарах</string>

@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">ບໍ່ສາມາດສົ່ງອອກລາຍການດາວໂຫຼດໄດ້</string>
   <string name="morphe_export_download_all_flyout_title">ສົ່ງອອກທັງໝົດໄປຍັງອຸປະກອນ</string>
   <string name="morphe_export_download_all_started">ກຳລັງສົ່ງອອກລາຍການດາວໂຫຼດທັງໝົດ</string>
+  <string name="morphe_export_download_all_title">ດາວໂຫຼດທັງໝົດ</string>
+  <string name="morphe_export_download_playlist_started">ກຳລັງສົ່ງອອກລາຍການທີ່ດາວໂຫຼດ</string>
   <string name="morphe_export_download_all_running">ລາຍການດາວໂຫຼດກຳລັງຖືກສົ່ງອອກຢູ່ແລ້ວ</string>
   <string name="morphe_export_download_all_saved">ສົ່ງອອກ %1$s ຈາກທັງໝົດ %2$s ການດາວໂຫຼດ ໄປยัง %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">ເຊື່ອງໂຄສະນາວິດີໂອ</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">ເຊື່ອງປຸ່ມປ່ຽນ ລະຫັດສຽງ / ວິດີໂອ</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">ເຊື່ອງປຸ່ມດາວໂຫຼດ</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">ເຊື່ອງປຸ່ມດາວໂຫຼດໃນລາຍການພອດແຄສ</string>
   <string name="morphe_music_hide_explore_shelf_title">ເຊື່ອງຊັ້ນ Explore</string>
   <string name="morphe_music_hide_filter_bar_title">ເຊື່ອງແຖບກັ່ນຕອງ</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">ເຊື່ອງປຸ່ມ ໃໝ່ ໃນແຖບ Library</string>
   <string name="morphe_music_hide_list_shelves_title">ເຊື່ອງຊັ້ນແບບລາຍການ</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">ແຜງເນື້ອເພງ</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">ເຊື່ອງປຸ່ມແຊຣ໌</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">ເຊື່ອງປຸ່ມແປພາສາ</string>
   <string name="morphe_music_hide_new_from_shelf_title">ເຊື່ອງຊັ້ນ \'ຂອງໃໝ່ຈາກ\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">ເຊື່ອງຊັ້ນລາຍການເພງ</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">ປະສົມຜສານແທຣັກເຂົ້າກັນຢ່າງນຸ້ມນວນ</string>
   <string name="morphe_music_crossfade_enabled_title">ເປີດໃຊ້ງານ crossfade</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">ເພື່ອໃຊ້ crossfade, ໃຫ້ປ່ຽນ \'Default client\' ຂອງ Spoof video streams ເປັນ TV Simply ຫຼື visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">ເພື່ອໃຊ້ crossfade, ໃຫ້ປ່ຽນ \'Default client\' ຂອງ \'Spoof video streams\' ເປັນ \'TV Simply\' ຫຼື \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">ເສັ້ນໂຄ້ງການຄ່ອຍໆປ່ຽນ</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">ກຳລັງໄຟເທົ່າກັນ</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">ຄ້າງໄວ້ແບບບາງເບົາ</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">ດຳເນີນການ Crossfade ຕໍ່</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">ໂໝດວິດີໂອບໍ່ສາມາດໃຊ້ໄດ້ໃນຂະນະທີ່ເປີດໃຊ້ Crossfade</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade ບໍ່ສາມາດໃຊ້ງານໄດ້ກັບ visionOS. ໃຫ້ປ່ຽນ \'Default client\' ຂອງ Spoof video streams ເປັນ TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade ບໍ່ເຮັດວຽກກັບ \'visionOS\'. ໃຫ້ປ່ຽນ \'Default client\' ຂອງ \'Spoof video streams\' ເປັນ \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade ບໍ່ສາມາດໃຊ້ງານໄດ້ກັບ spoof stream client ນີ້</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade ຖືກປິດໃນຂະນະທີ່ກຳລັງ cast</string>
   <string name="morphe_music_crossfade_about_how_title">ວິທີການເຮັດວຽກ</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">ປິດການປັດເພື່ອປ່ຽນເພງ</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">ປ້ອງກັນການຂ້າມໄປເພງຖັດໄປ ຫຼື ເພງກ່ອນໜ້ານີ້ ໂດຍການປັດຊ້າຍ ຫຼື ຂວາ ໃນເຄື່ອງຫຼິ້ນ</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">ປິດການປັດເພື່ອປ່ຽນເພງ</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">ປ້ອງກັນການຂ້າມໄປເພງຖັດໄປ ຫຼື ເພງກ່ອນໜ້ານີ້ ໂດຍການປັດຊ້າຍ ຫຼື ຂວາ ໃນເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍ</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">ລູບ A-B</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">ໄລຍະຫ່າງຂອງຮູບປົກ</string>
   <string name="morphe_music_miniplayer_glass_rim_title">ຄວາມສະຫວ່າງຂອງຂອບ</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">ຄວາມໂປ່ງໃສ</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">ຄວາມມົວຂອງແກ້ວ</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">ລະດັບຄວາມມົວຂອງໜ້າທີ່ຢູ່ຫຼັງມິນິເພລເຍີແບບແກ້ວ (Android 14 ແລະ ຫຼັງຈາກນັ້ນ). ທີ່ 0 ໜ້າຈະສະແດງຜ່ານຢ່າງຊັດເຈນ, ແລະ ກ່ອນ Android 14 ໜ້າຈະຖືກປິດທັບ</string>
-  <string name="morphe_music_miniplayer_glass_light_title">ແກ້ວສີແຈ້ງ</string>
   <string name="morphe_music_miniplayer_glass_light_summary">ຍ້ອມມິນິເພລເຍີແບບແກ້ວເປັນສີຂາວແທນສີເຂັ້ມ, ເພື່ອໃຫ້ແກ້ວເບິ່ງສີແຈ້ງ ແລະ ໃສຂຶ້ນ</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">ສີຍ້ອມຂອງຮູບປົກອັລບັ້ມ</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">ຍ້ອມມິນິເພລເຍີແບບແກ້ວດ້ວຍສີຂອງຮູບປົກອັລບັ້ມຂອງເພງທີ່ກຳລັງຫຼິ້ນ</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">ຮູບປົກໝູນໄດ້</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">ເຮັດໃຫ້ຮູບປົກຂອງມິນິເພລເຍີແບບແກ້ວເປັນຮູບຊົງມົນ, ແລະ ໝູນຄືກັບແຜ່ນຮາຍນຳໃນຂະນະທີ່ເພງກຳລັງຫຼິ້ນ</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">ເຊື່ອງປຸ່ມ Activity</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">ເຊື່ອງປຸ່ມ Ask Music</string>
+  <string name="morphe_music_hide_ask_music_button_title">ເຊື່ອງປຸ່ມ \'ຖາມ Music\'</string>
   <string name="morphe_music_hide_cast_button_title">ເຊື່ອງປຸ່ມ Cast</string>
   <string name="morphe_music_hide_history_button_title">ເຊື່ອງປຸ່ມປະຫວັດ</string>
   <string name="morphe_music_hide_search_button_title">ເຊື່ອງປຸ່ມຄົ້ນຫາ</string>
-  <string name="morphe_music_hide_voice_search_button_title">ເຊື່ອງປຸ່ມຄົ້ນຫາດ້ວຍສຽງ</string>
-  <string name="morphe_music_hide_sound_search_button_title">ເຊື່ອງປຸ່ມຄົ້ນຫາດ້ວຍສຽງເພງ</string>
+  <string name="morphe_music_hide_voice_search_button_title">ເຊື່ອງປຸ່ມ \'ຄົ້ນຫາດ້ວຍສຽງ\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">ເຊື່ອງປຸ່ມ \'ຄົ້ນຫາດ້ວຍສຽງ\'</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">ຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ. ແຕະເພື່ອຕັ້ງຄ່າ</string>
   <string name="morphe_music_scrobbling_log_out">ອອກຈາກລະບົບ</string>

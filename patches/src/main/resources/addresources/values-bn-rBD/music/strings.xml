@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">ডাউনলোডটি এক্সপোর্ট করা সম্ভব হয়নি</string>
   <string name="morphe_export_download_all_flyout_title">সব ডিভাইসে এক্সপোর্ট করুন</string>
   <string name="morphe_export_download_all_started">সমস্ত ডাউনলোড এক্সপোর্ট করা হচ্ছে</string>
+  <string name="morphe_export_download_all_title">সব ডাউনলোড</string>
+  <string name="morphe_export_download_playlist_started">ডাউনলোডগুলো এক্সপোর্ট করা হচ্ছে</string>
   <string name="morphe_export_download_all_running">ডাউনলোডগুলো ইতিমধ্যেই এক্সপোর্ট করা হচ্ছে</string>
   <string name="morphe_export_download_all_saved">%2$sটি ডাউনলোডের মধ্যে %1$sটি %3$s-এ এক্সপোর্ট করা হয়েছে</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">অডিও / ভিডিও টগল লুকান</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">ডাউনলোড বোতাম লুকান</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">পডকাস্ট শোতে ডাউনলোড বোতামটি লুকিয়ে রাখে</string>
   <string name="morphe_music_hide_explore_shelf_title">এক্সপ্লোর শেল্ফ লুকান</string>
   <string name="morphe_music_hide_filter_bar_title">ফিল্টার বার লুকান</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">লাইব্রেরি ট্যাবের \'New\' বোতামটি লুকায়</string>
   <string name="morphe_music_hide_list_shelves_title">তালিকা শেল্ফগুলো লুকান</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">লিরিক্স প্যানেল</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">শেয়ার বোতামটি লুকান</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">অনুবাদ বোতামটি লুকান</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'নতুন\' শেল্ফ লুকান</string>
   <string name="morphe_music_hide_playlist_shelves_title">প্লেলিস্ট শেল্ফগুলো লুকান</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">ট্র্যাকগুলি একে অপরের সাথে মসৃণভাবে মিশিয়ে দিন।</string>
   <string name="morphe_music_crossfade_enabled_title">ক্রসফেইড চালু করুন</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade ব্যবহার করতে, Spoof ভিডিও স্ট্রিমের \'Default client\' পরিবর্তন করে TV Simply অথবা visionOS করুন</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">ক্রসফেড ব্যবহার করতে, \'Spoof video streams\' এর \'Default client\' পরিবর্তন করে \'TV Simply\' অথবা \'visionOS\' করুন</string>
   <string name="morphe_music_crossfade_curve_title">ফেড কার্ভ</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">সমান ক্ষমতা</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">সূক্ষ্ম বিলম্ব</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">ক্রসফেড পুনরায় শুরু করা হয়েছে</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">ক্রসফেড চালু থাকা অবস্থায় ভিডিও মোড উপলব্ধ নয়</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade visionOS-এর সাথে কাজ করে না। Spoof ভিডিও স্ট্রিমের \'Default client\' পরিবর্তন করে TV Simply করুন</string>
+  <string name="morphe_music_crossfade_visionos_toast">\'visionOS\'-এর সাথে ক্রসফেড কাজ করে না। \'Spoof video streams\' এর \'Default client\' পরিবর্তন করে \'TV Simply\' করুন</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade এই spoof স্ট্রিম ক্লায়েন্টের সাথে কাজ করে না</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">কাস্টিংয়ের সময় ক্রসফেড বন্ধ থাকে</string>
   <string name="morphe_music_crossfade_about_how_title">এটি যেভাবে কাজ করে</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">ট্র্যাক পরিবর্তন করতে সোয়াইপ নিষ্ক্রিয় করুন</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">প্লেয়ারে বামে বা ডানে সোয়াইপ করে পরবর্তী বা পূর্ববর্তী ট্র্যাকে যাওয়া প্রতিরোধ করে</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">ট্র্যাক পরিবর্তন করতে সোয়াইপ নিষ্ক্রিয় করুন</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">মিনিপ্লেয়ারে বামে বা ডানে সোয়াইপ করে পরবর্তী বা পূর্ববর্তী ট্র্যাকে যাওয়া প্রতিরোধ করে</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B লুপ</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">আর্টওয়ার্ক প্যাডিং</string>
   <string name="morphe_music_miniplayer_glass_rim_title">রিমের উজ্জ্বলতা</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">স্বচ্ছতা</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">গ্লাস ব্লার</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">গ্লাস মিনিপ্লেয়ারের পিছনের পৃষ্ঠাটি কতটা ব্লার হবে (অ্যান্ড্রয়েড ১৪ এবং পরবর্তী)। ০-তে পৃষ্ঠাটি পরিষ্কারভাবে দেখা যায় এবং অ্যান্ড্রয়েড ১৪-এর আগে পৃষ্ঠাটি ঢাকা থাকে</string>
-  <string name="morphe_music_miniplayer_glass_light_title">লাইট গ্লাস</string>
   <string name="morphe_music_miniplayer_glass_light_summary">একটি হালকা এবং স্বচ্ছ গ্লাসের জন্য গ্লাস মিনিপ্লেয়ারটিকে ডার্কের পরিবর্তে সাদা টিন্ট করে</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">অ্যালবাম আর্ট টিন্ট</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">চলানো গানের অ্যালবাম আর্টের রঙ অনুযায়ী গ্লাস মিনিপ্লেয়ারটি টিন্ট করে</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">ঘূর্ণায়মান আর্টওয়ার্ক</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">গ্লাস মিনিপ্লেয়ারের আর্টওয়ার্কটিকে গোলাকার করে এবং গান চলার সময় এটিকে রেকর্ডের মতো ঘোরায়</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">অ্যাক্টিভিটি বোতামটি লুকান</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">আস্ক মিউজিক বোতামটি লুকান</string>
+  <string name="morphe_music_hide_ask_music_button_title">\'মিউজিক জিজ্ঞাসা করুন\' বোতাম লুকান</string>
   <string name="morphe_music_hide_cast_button_title">কাস্ট বোতাম লুকান</string>
   <string name="morphe_music_hide_history_button_title">ইতিহাস বোতাম লুকান</string>
   <string name="morphe_music_hide_search_button_title">অনুসন্ধান বাটন লুকান</string>
-  <string name="morphe_music_hide_voice_search_button_title">ভয়েস সার্চ বোতাম লুকান</string>
-  <string name="morphe_music_hide_sound_search_button_title">সাউন্ড সার্চ বোতাম লুকান</string>
+  <string name="morphe_music_hide_voice_search_button_title">\'ভয়েস সার্চ\' বোতাম লুকান</string>
+  <string name="morphe_music_hide_sound_search_button_title">\'সাউন্ড সার্চ\' বাটন লুকান</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">লগ ইন করা হয়নি। কনফিগার করতে ট্যাপ করুন</string>
   <string name="morphe_music_scrobbling_log_out">লগ আউট করুন</string>

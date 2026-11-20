@@ -144,6 +144,8 @@ Cartella di esportazione: %s"</string>
   <string name="morphe_export_download_failed">Impossibile esportare il download</string>
   <string name="morphe_export_download_all_flyout_title">Esporta tutto sul dispositivo</string>
   <string name="morphe_export_download_all_started">Esportazione di tutti i download</string>
+  <string name="morphe_export_download_all_title">Tutti i download</string>
+  <string name="morphe_export_download_playlist_started">Esportazione download</string>
   <string name="morphe_export_download_all_running">I download sono già in fase di esportazione</string>
   <string name="morphe_export_download_all_saved">Esportati %1$s di %2$s download in %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Cartella di esportazione: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Nascondi annunci video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Nascondi attivatore Audio / Video</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Nascondi il pulsante Download</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Nasconde il pulsante di download nel programma podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Nascondi sezione Esplora</string>
   <string name="morphe_music_hide_filter_bar_title">Nascondi barra dei filtri</string>
@@ -178,7 +179,6 @@ Cartella di esportazione: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Nasconde il pulsante Nuovo nella scheda Libreria</string>
   <string name="morphe_music_hide_list_shelves_title">Nascondi sezioni a elenco</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Pannello testi</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Nascondi il pulsante Condividi</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Nascondi il pulsante Traduci</string>
   <string name="morphe_music_hide_new_from_shelf_title">Nascondi sezione \"Nuovi da...\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Nascondi sezioni playlist</string>
@@ -202,7 +202,7 @@ Cartella di esportazione: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Unisci fluidamente le tracce tra loro</string>
   <string name="morphe_music_crossfade_enabled_title">Abilita dissolvenza incrociata</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Per usare il crossfade, cambia il \"Client predefinito\" degli stream video simulati in TV Simply o visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Per usare il crossfade, cambia il \"Client predefinito\" di \"Simula flussi video\" in \"TV Simply\" o \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Curva della dissolvenza</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Uguale potenza</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Attesa discreta</string>
@@ -237,7 +237,7 @@ Cartella di esportazione: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Dissolvenza incrociata ripresa</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">La modalità video non è disponibile quando la dissolvenza incrociata è abilitata</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Il crossfade non funziona con visionOS. Cambia il \"Client predefinito\" degli stream video simulati in TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Il crossfade non funziona con \"visionOS\". Cambia il \"Client predefinito\" di \"Simula flussi video\" in \"TV Simply\"</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Il crossfade non funziona con questo client di stream simulato</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Il crossfade è disattivato durante il casting</string>
   <string name="morphe_music_crossfade_about_how_title">Come funziona</string>
@@ -286,7 +286,6 @@ Mettere in pausa il crossfade per guardare un video musicale può lasciare neri 
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Disattiva il gesto per cambiare traccia</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Impedisce di passare alla traccia successiva o precedente scorrendo a sinistra o a destra sul player</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Disattiva il gesto per cambiare traccia</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Impedisce di passare alla traccia successiva o precedente scorrendo a sinistra o a destra sul miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Loop A-B</string>
@@ -463,11 +462,8 @@ Mettere in pausa il crossfade per guardare un video musicale può lasciare neri 
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Imbottitura immagine</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Luminosità del bordo</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacità</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Sfocatura vetro</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Quanto la pagina dietro il lettore minimizzato in vetro sia sfocata (Android 14 e versioni successive). A 0 la pagina appare nitida e, prima di Android 14, la pagina è coperta</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Vetro chiaro</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Tinge il lettore minimizzato in vetro di bianco invece che di scuro, per un vetro più leggero e chiaro</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Tinta della copertina dell\'album</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Tinge il lettore minimizzato in vetro con il colore della copertina dell\'album della canzone in riproduzione</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Immagine rotante</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Rende l\'immagine del lettore minimizzato in vetro rotonda e la fa ruotare come un disco durante la riproduzione di una canzone</string>
@@ -481,12 +477,12 @@ Mettere in pausa il crossfade per guardare un video musicale può lasciare neri 
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Nascondi pulsante Attività</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Nascondi il pulsante Chiedi Musica</string>
+  <string name="morphe_music_hide_ask_music_button_title">Nascondi il pulsante \"Chiedi a Musica\"</string>
   <string name="morphe_music_hide_cast_button_title">Nascondi pulsante trasmetti</string>
   <string name="morphe_music_hide_history_button_title">Nascondi pulsante cronologia</string>
   <string name="morphe_music_hide_search_button_title">Nascondi pulsante ricerca</string>
-  <string name="morphe_music_hide_voice_search_button_title">Nascondi il pulsante di ricerca vocale</string>
-  <string name="morphe_music_hide_sound_search_button_title">Nascondi il pulsante di ricerca audio</string>
+  <string name="morphe_music_hide_voice_search_button_title">Nascondi il pulsante \"Ricerca vocale\"</string>
+  <string name="morphe_music_hide_sound_search_button_title">Nascondi pulsante \"Ricerca sonora\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Non effettuato l\'accesso. Tocca per configurare</string>
   <string name="morphe_music_scrobbling_log_out">Esci</string>

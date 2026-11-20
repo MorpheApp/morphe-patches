@@ -144,6 +144,8 @@ Folder de export: %s"</string>
   <string name="morphe_export_download_failed">Nu s-a putut exporta descărcarea</string>
   <string name="morphe_export_download_all_flyout_title">Exportați totul pe dispozitiv</string>
   <string name="morphe_export_download_all_started">Se exportă toate descărcările</string>
+  <string name="morphe_export_download_all_title">Toate descărcările</string>
+  <string name="morphe_export_download_playlist_started">Exportare descărcări</string>
   <string name="morphe_export_download_all_running">Descărcările sunt deja în curs de export</string>
   <string name="morphe_export_download_all_saved">S-au exportat %1$s din %2$s descărcări în %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Folder de export: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Ascunde anunțurile video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ascunde comutatorul Audio / Video</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Ascunde butonul de descărcare</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Ascunde butonul de descărcare din emisiunea de podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Ascunde raftul Explore</string>
   <string name="morphe_music_hide_filter_bar_title">Ascunde bara de filtre</string>
@@ -178,7 +179,6 @@ Folder de export: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Ascunde butonul Nou din fila Bibliotecă</string>
   <string name="morphe_music_hide_list_shelves_title">Ascunde rafturile tip listă</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panou versuri</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Ascunde butonul Distribuie</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ascunde butonul Traducere</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ascunde raftul „New from”</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ascunde rafturile listelor de redare</string>
@@ -202,7 +202,7 @@ Folder de export: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Amestecă lin piesele una în alta</string>
   <string name="morphe_music_crossfade_enabled_title">Activează estomparea încrucișată</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Pentru a utiliza crossfade, modificați „Clientul implicit” al fluxurilor video spoof în TV Simply sau visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Pentru a utiliza crossfade, modificați \"Clientul implicit\" din \"Simulează fluxurile video\" în \"TV Simply\" sau \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Curba de estompare</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Putere egală</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Pauză subtilă</string>
@@ -237,7 +237,7 @@ Folder de export: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Estomparea încrucișată reluată</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Modul video nu este disponibil când estomparea încrucișată este activată</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade nu funcționează cu visionOS. Modificați „Clientul implicit” al fluxurilor video spoof în TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade nu funcționează cu \"visionOS\". Modificați \"Clientul implicit\" din \"Simulează fluxurile video\" în \"TV Simply\"</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade nu funcționează cu acest client de flux spoof</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade-ul este dezactivat în timpul difuzării</string>
   <string name="morphe_music_crossfade_about_how_title">Cum funcționează</string>
@@ -286,7 +286,6 @@ Ecranul de blocare sau notificarea pot afișa temporar o stare învechită în t
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Dezactivați glisarea pentru a schimba piesa</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Previne trecerea la piesa următoare sau anterioară prin glisarea stânga sau dreapta pe player</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Dezactivați glisarea pentru a schimba piesa</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Previne trecerea la piesa următoare sau anterioară prin glisarea stânga sau dreapta pe miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Buclă A-B</string>
@@ -463,11 +462,8 @@ Ecranul de blocare sau notificarea pot afișa temporar o stare învechită în t
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding copertă</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Luminozitatea marginii</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacitate</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Efect de blur sticlat</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Cât de mult este blurată pagina din spatele miniplayerului din sticlă (Android 14 și ulterior). La 0 pagina apare clară, iar înainte de Android 14 pagina este acoperită</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Sticlă deschisă</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Colorează miniplayerul din sticlă în alb în loc de închis, pentru o sticlă mai deschisă și mai clară</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Nuanță copertă album</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Colorează miniplayerul din sticlă cu culoarea copertei albumului melodiei care se redă</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Copertă care se rotește</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Face coperta miniplayerului din sticlă rotundă și o rotește ca pe o placă în timp ce se redă o melodie</string>
@@ -481,12 +477,12 @@ Ecranul de blocare sau notificarea pot afișa temporar o stare învechită în t
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Ascunde butonul Activitate</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Ascunde butonul Solicită muzică</string>
+  <string name="morphe_music_hide_ask_music_button_title">Ascunde butonul \"Întreabă Music\"</string>
   <string name="morphe_music_hide_cast_button_title">Ascunde butonul de transmisie</string>
   <string name="morphe_music_hide_history_button_title">Ascunde butonul de istoric</string>
   <string name="morphe_music_hide_search_button_title">Ascunde butonul de căutare</string>
-  <string name="morphe_music_hide_voice_search_button_title">Ascunde butonul de căutare vocală</string>
-  <string name="morphe_music_hide_sound_search_button_title">Ascunde butonul de căutare sonoră</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ascunde butonul \"Căutare vocală\"</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ascunde butonul \"Căutare sonoră\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Nu sunteți conectat. Atingeți pentru a configura</string>
   <string name="morphe_music_scrobbling_log_out">Deconectare</string>

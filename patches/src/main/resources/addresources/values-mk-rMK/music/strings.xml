@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Не успеа експортирањето на преземањето</string>
   <string name="morphe_export_download_all_flyout_title">Експортирај сè во уредот</string>
   <string name="morphe_export_download_all_started">Експортирање на сите преземања</string>
+  <string name="morphe_export_download_all_title">Сите преземања</string>
+  <string name="morphe_export_download_playlist_started">Експортирање преземања</string>
   <string name="morphe_export_download_all_running">Преземањата веќе се експортираат</string>
   <string name="morphe_export_download_all_saved">Експортирани се %1$s од %2$s преземања во %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Скриј видео реклами</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Скриј прекинувач за аудио / видео</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Скриј копче за преземање</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Го крие копчето за преземање во подкаст емисијата</string>
   <string name="morphe_music_hide_explore_shelf_title">Скриј полица за истражување</string>
   <string name="morphe_music_hide_filter_bar_title">Скриј лента за филтрирање</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">Го крие копчето „Ново“ во табулаторот Библиотека</string>
   <string name="morphe_music_hide_list_shelves_title">Скриј листа-полици</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Панел за текстови</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Скриј копче за споделување</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Скриј копче за преведување</string>
   <string name="morphe_music_hide_new_from_shelf_title">Скриј полица \"Ново од\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Скриј полици за плејлисти</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">Плавно преклопување на патите еден во друг</string>
   <string name="morphe_music_crossfade_enabled_title">Вклучи бледеење</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">За да користите crossfade, променете го \'Default client\' за Spoof видео стримови во TV Simply или visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">За да го користите crossfade, променете го \'Default client\' во \'Spoof video streams\' на \'TV Simply\' или \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Крива на бледнеење</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Подеднавка јачина</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Суптилно држење</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Фадење е продолжено</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим на видео не е достапен додека е вклучено преминувањето</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade не работи со visionOS. Променете го \'Default client\' за Spoof видео стримови во TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade не работи со \'visionOS\'. Променете го \'Default client\' во \'Spoof video streams\' на \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade не работи со овој spoof стрим клиент</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Кросфејдот е исклучен при пренос</string>
   <string name="morphe_music_crossfade_about_how_title">Како функционира</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Оневозможи прелистување за промена на трака</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Спречува прескокување на следната или претходната трака со прелистување лево или десно на плеерот</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Оневозможи прелистување за промена на трака</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Спречува прескокување на следната или претходната трака со прелистување лево или десно на мини-плеерот</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B циклус</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Растојание на сликата</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Јакост на работот</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Непровидност</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Стаклено заматовање</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Колку е заматена страницата зад стаклениот миниплејер (Android 14 и понови). На 0 страницата се гледа јасно, а пред Android 14 страницата е покриена</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Светло стакло</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Го нијансира стаклениот миниплејер во бело наместо во темно, за посветло и појасно стакло</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Нијанса на сликата од албумот</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Го нијансира стаклениот миниплејер со бојата на сликата од албумот на песната што се пушта</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Слика што се врти</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Ја прави сликата на стаклениот миниплејер круг и ја врти како плоча додека се пушта песната</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Скриј копче за активност</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Скриј копче за прашување за музика</string>
+  <string name="morphe_music_hide_ask_music_button_title">Скриј го копчето \'Прашај музика\'</string>
   <string name="morphe_music_hide_cast_button_title">Скриј копче за емитување</string>
   <string name="morphe_music_hide_history_button_title">Скриј копче за историја</string>
   <string name="morphe_music_hide_search_button_title">Скриј копче за пребарување</string>
-  <string name="morphe_music_hide_voice_search_button_title">Скриј го копчето за гласовно пребарување</string>
-  <string name="morphe_music_hide_sound_search_button_title">Скриј го копчето за пребарување по звук</string>
+  <string name="morphe_music_hide_voice_search_button_title">Скриј го копчето \'Гласовно пребарување</string>
+  <string name="morphe_music_hide_sound_search_button_title">Скриј копче за \"Пребарување со звук\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Не сте најавени. Допрете за да конфигурирате</string>
   <string name="morphe_music_scrobbling_log_out">Одјави се</string>

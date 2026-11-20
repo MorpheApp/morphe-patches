@@ -144,6 +144,8 @@ Dossier d'exportation : %s"</string>
   <string name="morphe_export_download_failed">Impossible d\'exporter le téléchargement</string>
   <string name="morphe_export_download_all_flyout_title">Tout exporter vers l\'appareil</string>
   <string name="morphe_export_download_all_started">Exportation de tous les téléchargements</string>
+  <string name="morphe_export_download_all_title">Tous les téléchargements</string>
+  <string name="morphe_export_download_playlist_started">Exportation des téléchargements</string>
   <string name="morphe_export_download_all_running">Les téléchargements sont déjà en cours d\'exportation</string>
   <string name="morphe_export_download_all_saved">%1$s téléchargements sur %2$s exportés vers %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Dossier d'exportation : %s"</string>
   <string name="morphe_music_hide_video_ads_title">Masquer les publicités vidéo</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Masquer le sélecteur \'Audio / Vidéo\'</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Masquer le bouton \'Télécharger\'</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Masque le bouton \'Télécharger\' dans les épisodes de podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Masquer l\'étagère \'Explorer\'</string>
   <string name="morphe_music_hide_filter_bar_title">Masquer la barre de filtres</string>
@@ -178,7 +179,6 @@ Dossier d'exportation : %s"</string>
   <string name="morphe_music_hide_new_button_summary">Masque le bouton \'Nouveau\' dans l\'onglet \'Bibliothèque\'</string>
   <string name="morphe_music_hide_list_shelves_title">Masquer les étagères de listes</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panneau des paroles</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Masquer le bouton \'Partager\'</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Masquer le bouton \'Traduire\'</string>
   <string name="morphe_music_hide_new_from_shelf_title">Masquer l\'étagère \'Nouveauté de\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Masquer les étagères de playlists</string>
@@ -202,7 +202,7 @@ Dossier d'exportation : %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Enchaîner harmonieusement les morceaux les uns avec les autres</string>
   <string name="morphe_music_crossfade_enabled_title">Activer le fondu enchaîné</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Pour utiliser le fondu enchaîné, changez le \"Client par défaut\" des flux vidéo simulés pour TV Simply ou visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Pour utiliser le fondu enchaîné, définissez \'Client par défaut\' dans \'Falsifier les flux vidéo\' sur \'TV Simply\' ou \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Courbe de fondu</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Puissance égale</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Maintien subtil</string>
@@ -237,8 +237,8 @@ Dossier d'exportation : %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Fondu enchaîné repris</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Le mode vidéo n\'est pas disponible lorsque le fondu enchaîné est activé</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Le fondu enchaîné ne fonctionne pas avec visionOS. Changez le \"Client par défaut\" des flux vidéo simulés pour TV Simply</string>
-  <string name="morphe_music_crossfade_spoof_client_toast">Le fondu enchaîné ne fonctionne pas avec ce client de flux simulé</string>
+  <string name="morphe_music_crossfade_visionos_toast">Le fondu enchaîné ne fonctionne pas avec \'visionOS\'. Définissez \'Client par défaut\' dans \'Falsifier les flux vidéo\' sur \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Le fondu enchaîné ne fonctionne pas avec ce client de falsification des flux vidéo</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Le fondu enchaîné est désactivé pendant la diffusion</string>
   <string name="morphe_music_crossfade_about_how_title">Comment ça marche</string>
   <string name="morphe_music_crossfade_about_how_summary">"Le fondu enchaîné superpose la fin d'une chanson au début de la suivante, en utilisant la durée et la courbe que vous avez définies
@@ -255,7 +255,7 @@ L'écran de verrouillage ou la notification peut brièvement afficher un état o
 
 Mettre le fondu enchaîné en pause pour regarder un clip musical peut entraîner l'affichage d'un écran noir sur certaines vidéos. Mettre le fondu enchaîné en pause avant de sélectionner la chanson permet d'éviter ce problème"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Non pris en charge</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">Diffusion ou recopie audio (Chromecast, recopie d\'écran ou audio)</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Diffusion ou duplication audio (Chromecast, duplication de l\'écran ou audio)</string>
   <string name="morphe_music_crossfade_about_credit_title">Crédit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Fonctionnalité de fondu enchaîné par VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -286,7 +286,6 @@ Mettre le fondu enchaîné en pause pour regarder un clip musical peut entraîne
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Désactiver le balayage pour changer de morceau</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Empêche le passage au morceau suivant ou précédent en balayant vers la gauche ou la droite sur le lecteur</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Désactiver le balayage pour changer de morceau</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Empêche le passage au morceau suivant ou précédent en balayant vers la gauche ou la droite sur le mini-lecteur</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Boucle A-B</string>
@@ -463,11 +462,8 @@ Mettre le fondu enchaîné en pause pour regarder un clip musical peut entraîne
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Marge de la pochette</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Luminosité du contour</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacité </string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Flou du verre</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Niveau de flou de la page derrière le mini-lecteur en verre (Android 14 et versions ultérieures). À 0, la page reste nette à travers le mini-lecteur. Sur les versions antérieures à Android 14, la page est masquée</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Verre clair</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Teinte le mini-lecteur en verre en blanc plutôt qu\'en sombre, pour un verre plus clair et lumineux</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Teinte de la pochette d\'album</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Teinte le mini-lecteur en verre avec la couleur de la pochette de l\'album de la chanson en cours de lecture</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Pochette en rotation</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Rend la pochette du mini-lecteur en verre ronde et la fait tourner comme un disque pendant la lecture d\'une chanson</string>

@@ -144,6 +144,8 @@ Vientikansio: %s"</string>
   <string name="morphe_export_download_failed">Latausta ei voitu viedä</string>
   <string name="morphe_export_download_all_flyout_title">Vie kaikki laitteelle</string>
   <string name="morphe_export_download_all_started">Viedään kaikkia latauksia</string>
+  <string name="morphe_export_download_all_title">Kaikki lataukset</string>
+  <string name="morphe_export_download_playlist_started">Viedään latauksia</string>
   <string name="morphe_export_download_all_running">Latauksia viedään jo parhaillaan</string>
   <string name="morphe_export_download_all_saved">Vietiin %1$s / %2$s latausta kohteeseen %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Vientikansio: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Piilota videomainokset</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Piilota äänen/videon vaihtokytkin</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Piilota latauspainike</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Piilottaa latauspainikkeen podcast-ohjelmassa</string>
   <string name="morphe_music_hide_explore_shelf_title">Piilota Tutustu-hylly</string>
   <string name="morphe_music_hide_filter_bar_title">Piilota suodatinpalkki</string>
@@ -178,7 +179,6 @@ Vientikansio: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Piilottaa Uusi-painikkeen Kirjasto-välilehdeltä</string>
   <string name="morphe_music_hide_list_shelves_title">Piilota luettelohyllyt</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Lyriikkapaneeli</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Piilota Jaa-painike</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Piilota Käännä-painike</string>
   <string name="morphe_music_hide_new_from_shelf_title">Piilota \"Uutta\"-hylly</string>
   <string name="morphe_music_hide_playlist_shelves_title">Piilota soittolistahyllyt</string>
@@ -202,7 +202,7 @@ Vientikansio: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Sekoita raidat sujuvasti toisiinsa</string>
   <string name="morphe_music_crossfade_enabled_title">Ota ristihäivytys käyttöön</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Käyttääksesi crossfadea, vaihda Spoof-videovirtojen \"Default client\" asetukseksi TV Simply tai visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Käyttääksesi crossfade-toimintoa, vaihda \"Spoof video streams\" -asetuksen \"Default client\" arvoksi \"TV Simply\" tai \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Himmennyskäyrä</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Tasainen voima</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Hienovarainen häivytys</string>
@@ -237,7 +237,7 @@ Vientikansio: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade-toiminto jatkettu</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videon toimitila ei ole käytettävissä, kun crossfade on käytössä</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade ei toimi visionOS:n kanssa. Vaihda Spoof-videovirtojen \"Default client\" asetukseksi TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade ei toimi \"visionOS\"-asetuksella. Vaihda \"Spoof video streams\" -asetuksen \"Default client\" arvoksi \"TV Simply\"</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade ei toimi tämän spoof-virta-asiakasohjelman kanssa</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade on pois päältä heiton aikana</string>
   <string name="morphe_music_crossfade_about_how_title">Miten se toimii</string>
@@ -286,7 +286,6 @@ Crossfaden keskeyttäminen musiikkivideon katsomiseksi voi jättää jotkin vide
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Poista kappaleen vaihto pyyhkäisemällä käytöstä</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Estää seuraavaan tai edelliseen kappaleeseen siirtymisen pyyhkäisemällä soittimessa vasemmalle tai oikealle</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Poista kappaleen vaihto pyyhkäisemällä käytöstä</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Estää seuraavaan tai edelliseen kappaleeseen siirtymisen pyyhkäisemällä minisoittimessa vasemmalle tai oikealle</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B-silmukka</string>
@@ -463,11 +462,8 @@ Crossfaden keskeyttäminen musiikkivideon katsomiseksi voi jättää jotkin vide
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Kansikuvan sisäreunustus</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Reunan kirkkaus</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Peittävyys</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Lasin sumentaminen</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Kuinka paljon lasisen minisoittimen takana oleva sivu on sumentunut (Android 14 ja uudemmat). Arvolla 0 sivu näkyy terävänä, ja ennen Android 14 -versiota sivu on peitetty</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Vaalea lasi</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Sävyttää lasisen minisoittimen valkoiseksi tumman sijasta, jolloin lasista tulee vaaleampi ja kirkkaampi</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Kansikuvan sävy</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Sävyttää lasisen minisoittimen soittavan kappaleen kansikuvan mukaan</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Pyörivä kansikuva</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Muuttaa lasisen minisoittimen kansikuvan pyöreäksi ja pyörittää sitä kuin levyä kappaleen aikana</string>
@@ -481,12 +477,12 @@ Crossfaden keskeyttäminen musiikkivideon katsomiseksi voi jättää jotkin vide
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Piilota Aktiviteetti-painike</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Piilota Kysy musiikkia -painike</string>
+  <string name="morphe_music_hide_ask_music_button_title">Piilota \"Kysy Musiikilta\" -painike</string>
   <string name="morphe_music_hide_cast_button_title">Piilota Cast-painike</string>
   <string name="morphe_music_hide_history_button_title">Piilota historia-painike</string>
   <string name="morphe_music_hide_search_button_title">Piilota hakupainike</string>
-  <string name="morphe_music_hide_voice_search_button_title">Piilota Äänihaku-painike</string>
-  <string name="morphe_music_hide_sound_search_button_title">Piilota äänihakupainike</string>
+  <string name="morphe_music_hide_voice_search_button_title">Piilota \"Äänihaku\"-painike</string>
+  <string name="morphe_music_hide_sound_search_button_title">Piilota \"Äänihaku\"-painike</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Kirjaudu ulos. Napauta määrittääksesi</string>
   <string name="morphe_music_scrobbling_log_out">Kirjaudu ulos</string>

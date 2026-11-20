@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">डाउनलोड एक्सपोर्ट नहीं किया जा सका</string>
   <string name="morphe_export_download_all_flyout_title">सभी को डिवाइस में एक्सपोर्ट करें</string>
   <string name="morphe_export_download_all_started">सभी डाउनलोड एक्सपोर्ट किए जा रहे हैं</string>
+  <string name="morphe_export_download_all_title">सभी डाउनलोड</string>
+  <string name="morphe_export_download_playlist_started">डाउनलोड एक्सपोर्ट किए जा रहे हैं</string>
   <string name="morphe_export_download_all_running">डाउनलोड पहले से ही एक्सपोर्ट किए जा रहे हैं</string>
   <string name="morphe_export_download_all_saved">%3$s में %2$s में से %1$s डाउनलोड एक्सपोर्ट किए गए</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">वीडियो विज्ञापन छिपाएं</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">ऑडियो / वीडियो टॉगल छुपाएं</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">डाउनलोड बटन छिपाएँ</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">पॉडकास्ट शो में डाउनलोड बटन को छिपाता है</string>
   <string name="morphe_music_hide_explore_shelf_title">एक्सप्लोर शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_filter_bar_title">फ़िल्टर बार छुपाएं</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">लाइब्रेरी टैब में मौजूद नया बटन छिपाता है</string>
   <string name="morphe_music_hide_list_shelves_title">सूची शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">गीत के बोल पैनल</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">शेयर बटन छुपाएं</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">अनुवाद बटन छुपाएं</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'नया से\' शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_playlist_shelves_title">प्लेलिस्ट शेल्फ छुपाएं</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">ट्रैक को आपस में सहजता से मिलाएं</string>
   <string name="morphe_music_crossfade_enabled_title">क्रॉसफ़ेड सक्षम करें</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">क्रॉसफ़ेड का उपयोग करने के लिए, Spoof वीडियो स्ट्रीम्स के \'Default client\' को TV Simply या visionOS में बदलें</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade का उपयोग करने के लिए, \'Spoof video streams\' के \'Default client\' को \'TV Simply\' या \'visionOS\' में बदलें</string>
   <string name="morphe_music_crossfade_curve_title">फे़ड वक्र</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">समान शक्ति</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">सूक्ष्म होल्ड</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">क्रॉसफ़ेड फिर से शुरू हुआ</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">क्रॉसफ़ेड सक्षम होने पर वीडियो मोड उपलब्ध नहीं है</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">क्रॉसफ़ेड visionOS के साथ काम नहीं करता है। Spoof वीडियो स्ट्रीम्स के \'Default client\' को TV Simply में बदलें</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade \'visionOS\' के साथ काम नहीं करता है। \'Spoof video streams\' के \'Default client\' को \'TV Simply\' में बदलें</string>
   <string name="morphe_music_crossfade_spoof_client_toast">क्रॉसफ़ेड इस spoof स्ट्रीम क्लाइंट के साथ काम नहीं करता है</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">कास्टिंग करते समय क्रॉसफ़ेड बंद है</string>
   <string name="morphe_music_crossfade_about_how_title">यह कैसे काम करता है</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">ट्रैक बदलने के लिए स्वाइप अक्षम करें</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">प्लेयर पर बाएँ या दाएँ स्वाइप करके अगले या पिछले ट्रैक पर जाने से रोकता है</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">ट्रैक बदलने के लिए स्वाइप अक्षम करें</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">मिनीप्लेयर पर बाएँ या दाएँ स्वाइप करके अगले या पिछले ट्रैक पर जाने से रोकता है</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B लूप</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">आर्टवर्क पैडिंग</string>
   <string name="morphe_music_miniplayer_glass_rim_title">रिम ब्राइटनेस</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">अपारदर्शिता</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">ग्लास ब्लर</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">ग्लास मिनीप्लेयर के पीछे का पेज कितना धुंधला है (Android 14 और उसके बाद)। 0 पर पेज स्पष्ट दिखता है, और Android 14 से पहले पेज ढका रहता है</string>
-  <string name="morphe_music_miniplayer_glass_light_title">लाइट ग्लास</string>
   <string name="morphe_music_miniplayer_glass_light_summary">हल्के और स्पष्ट ग्लास के लिए, ग्लास मिनीप्लेयर को डार्क के बजाय सफेद टिंट करता है</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">एल्बम आर्ट टिंट</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">चल रहे गाने के एल्बम आर्ट के रंग से ग्लास मिनीप्लेयर को टिंट करता है</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">घूमता हुआ आर्टवर्क</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">ग्लास मिनीप्लेयर के आर्टवर्क को गोल बनाता है, और गाना बजने के दौरान इसे रिकॉर्ड की तरह घुमाता है</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">एक्टिविटी बटन छुपाएं</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Music पूछें बटन छिपाएँ</string>
+  <string name="morphe_music_hide_ask_music_button_title">\'म्यूज़िक से पूछें\' बटन छुपाएं</string>
   <string name="morphe_music_hide_cast_button_title">कास्ट बटन छुपाएं</string>
   <string name="morphe_music_hide_history_button_title">इतिहास बटन छुपाएं</string>
   <string name="morphe_music_hide_search_button_title">खोज बटन छुपाएं</string>
-  <string name="morphe_music_hide_voice_search_button_title">वॉइस सर्च बटन छिपाएँ</string>
-  <string name="morphe_music_hide_sound_search_button_title">साउंड सर्च बटन छिपाएँ</string>
+  <string name="morphe_music_hide_voice_search_button_title">\'वॉयस सर्च\' बटन छुपाएं</string>
+  <string name="morphe_music_hide_sound_search_button_title">\'साउंड सर्च\' बटन छुपाएं</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">लॉग इन नहीं किया गया। कॉन्फ़िगर करने के लिए टैप करें</string>
   <string name="morphe_music_scrobbling_log_out">लॉग आउट करें</string>

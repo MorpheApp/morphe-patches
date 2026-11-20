@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Δεν ήταν δυνατή η εξαγωγή της λήψης</string>
   <string name="morphe_export_download_all_flyout_title">Εξαγωγή όλων στη συσκευή</string>
   <string name="morphe_export_download_all_started">Εξαγωγή όλων των λήψεων</string>
+  <string name="morphe_export_download_all_title">Όλες οι λήψεις</string>
+  <string name="morphe_export_download_playlist_started">Εξαγωγή λήψεις</string>
   <string name="morphe_export_download_all_running">Οι λήψεις εξάγονται ήδη</string>
   <string name="morphe_export_download_all_saved">Εξήχθησαν %1$s από τις %2$s λήψεις στο %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Απόκρυψη διαφημίσεων βίντεο</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Απόκρυψη εναλλαγής ήχου / βίντεο</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Απόκρυψη κουμπιού λήψης</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Αποκρύπτει το κουμπί Λήψης στην εκπομπή podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Απόκρυψη ραφιού «Εξερεύνηση»</string>
   <string name="morphe_music_hide_filter_bar_title">Απόκρυψη γραμμής φίλτρων</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">Αποκρύπτει το κουμπί Νέο στην καρτέλα Βιβλιοθήκη</string>
   <string name="morphe_music_hide_list_shelves_title">Απόκρυψη ραφιών λίστας</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Πίνακας στίχων</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Απόκρυψη κουμπιού «Κοινοποίηση»</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Απόκρυψη κουμπιού «Μετάφραση»</string>
   <string name="morphe_music_hide_new_from_shelf_title">Απόκρυψη ραφιού «Νέο από»</string>
   <string name="morphe_music_hide_playlist_shelves_title">Απόκρυψη ραφιών λίστας αναπαραγωγής</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">Εναρμόνιση κομματιών μεταξύ τους</string>
   <string name="morphe_music_crossfade_enabled_title">Ενεργοποίηση σταδιακής μετάβασης</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Για να χρησιμοποιήσετε το crossfade, αλλάξτε το \"Προεπιλεγμένος πελάτης\" των ροών spoof βίντεο σε TV Simply ή visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Για να χρησιμοποιήσετε τη σταδιακή μετάβαση, αλλάξτε τον \"Προεπιλεγμένο πελάτη\" του \"Προσποίηση ροών βίντεο\" σε \"TV Simply\" ή \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Κάμπυλα εξασθένισης</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Ίση ισχύς</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Απαλή καθυστέρηση</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Συνέχιση της σταδιακής μετάβασης ήχου</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Η λειτουργία βίντεο δεν είναι διαθέσιμη όταν είναι ενεργοποιημένη η σταδιακή μετάβαση ήχου</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Το crossfade δεν λειτουργεί με το visionOS. Αλλάξτε το \"Προεπιλεγμένος πελάτης\" των ροών spoof βίντεο σε TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Η σταδιακή μετάβαση δεν λειτουργεί με το \"visionOS\". Αλλάξτε τον \"Προεπιλεγμένο πελάτη\" του \"Προσποίηση ροών βίντεο\" σε \"TV Simply\"</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Το crossfade δεν λειτουργεί με αυτόν τον πελάτη ροής spoof</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Το Crossfade είναι απενεργοποιημένο κατά τη μετάδοση</string>
   <string name="morphe_music_crossfade_about_how_title">Πώς λειτουργεί</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Απενεργοποίηση χειρονομίας για αλλαγή κομματιού</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Αποτρέπει τη μετάβαση στο επόμενο ή το προηγούμενο κομμάτι με σύρσιμο αριστερά ή δεξιά στον πρόδραμο</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Απενεργοποίηση χειρονομίας για αλλαγή κομματιού</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Αποτρέπει τη μετάβαση στο επόμενο ή το προηγούμενο κομμάτι με σύρσιμο αριστερά ή δεξιά στον ελαχιστοποιημένο πρόδραμο</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Βρόχος A-B</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Απόσταση εξώφυλλου</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Φωτεινότητα περιγράμματος</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Αδιαφάνεια</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Θόλωμα γυαλιού</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Πόσο θολруется η σελίδα πίσω από το γυάλινο miniplayer (Android 14 και μεταγενέστερα). Στο 0 η σελίδα εμφανίζεται καθαρά και πριν από το Android 14 η σελίδα καλύπτεται</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Φως γυαλιού</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Χρωματίζει το γυάλινο miniplayer σε λευκό αντί για σκούρο, για ένα πιο ελαφρύ και καθαρό γυαλί</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Αποχρώμα εξώφυλλου άλμπουμ</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Χρωματίζει το γυάλινο miniplayer με το χρώμα του εξώφυλλου του τραγουδιού που αναπαράγεται</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Περιστρεφόμενο εξώφυλλο</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Κάνει το εξώφυλλο του γυάλινου miniplayer στρογγυλό και το περιστρέφει σαν δίσκο ενώ αναπαράγεται ένα τραγούδι</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Κουμπί απόκρυψης Δραστηριότητας</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Κρύψτε το κουμπί «Ζήτα μουσική»</string>
+  <string name="morphe_music_hide_ask_music_button_title">Απόκρυψη κουμπιού «Ρώτησε τη Μουσική»</string>
   <string name="morphe_music_hide_cast_button_title">Απόκρυψη κουμπιού μετάδοσης</string>
   <string name="morphe_music_hide_history_button_title">Απόκρυψη κουμπιού ιστορικού</string>
   <string name="morphe_music_hide_search_button_title">Απόκρυψη κουμπιού αναζήτησης</string>
-  <string name="morphe_music_hide_voice_search_button_title">Απόκρυψη κουμπιού φωνητικής αναζήτησης</string>
-  <string name="morphe_music_hide_sound_search_button_title">Απόκρυψη κουμπιού αναζήτησης ήχου</string>
+  <string name="morphe_music_hide_voice_search_button_title">Απόκρυψη κουμπιού «Φωνητική αναζήτηση»</string>
+  <string name="morphe_music_hide_sound_search_button_title">Απόκρυψη κουμπιού \"Αναζήτηση ήχου\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Δεν έχετε συνδεθεί. Πατήστε για να ρυθμίσετε</string>
   <string name="morphe_music_scrobbling_log_out">Αποσύνδεση</string>

@@ -144,6 +144,8 @@ Priečinok na export: %s"</string>
   <string name="morphe_export_download_failed">Nepodarilo sa exportovať sťahovanie</string>
   <string name="morphe_export_download_all_flyout_title">Exportovať všetko do zariadenia</string>
   <string name="morphe_export_download_all_started">Exportovanie všetkých sťahovaní</string>
+  <string name="morphe_export_download_all_title">Všetky sťahovania</string>
+  <string name="morphe_export_download_playlist_started">Exportovanie sťahovaní</string>
   <string name="morphe_export_download_all_running">Sťahovania sa už exportujú</string>
   <string name="morphe_export_download_all_saved">Exportovaných %1$s z %2$s sťahovaní do %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Priečinok na export: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Skryť videoreklamy</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Skryť prepínač zvuku/videa</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Skryť tlačidlo Stiahnuť</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Skryje tlačidlo Stiahnuť v podcaste</string>
   <string name="morphe_music_hide_explore_shelf_title">Skryť poličku Preskúmať</string>
   <string name="morphe_music_hide_filter_bar_title">Skryť filterový panel</string>
@@ -178,7 +179,6 @@ Priečinok na export: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Skryje tlačidlo Nový na karte Knihovňa</string>
   <string name="morphe_music_hide_list_shelves_title">Skryť zoznamové poličky</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel s textom piesne</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Skryť tlačidlo Zdieľať</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skryť tlačidlo Preložiť</string>
   <string name="morphe_music_hide_new_from_shelf_title">Skryť poličku \'Novinky od\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Skryť poličky zoznamov skladieb</string>
@@ -202,7 +202,7 @@ Priečinok na export: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Plynulo prelínajte skladby</string>
   <string name="morphe_music_crossfade_enabled_title">Povoliť prechádzanie skladieb</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Ak chcete použiť crossfade, zmeňte v časti Spoof video streams \"Default client\" na TV Simply alebo visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Ak chcete použiť crossfade, zmeňte v možnosti \'Spoof video streams\' \'Default client\' na \'TV Simply\' alebo \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Priebeh prechodu</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Rovnaká úroveň</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Jemné oneskorenie</string>
@@ -237,7 +237,7 @@ Priečinok na export: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Prechádzanie skladieb obnovené</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Režim videa nie je dostupný, keď je zapnuté prechádzanie skladieb</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade nefunguje s visionOS. Zmeňte v časti Spoof video streams \"Default client\" na TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade nefunguje s \'visionOS\'. Zmeňte v možnosti \'Spoof video streams\' \'Default client\' na \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade nefunguje s týmto spoof klientom streamu</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade je vypnutý počas castovania</string>
   <string name="morphe_music_crossfade_about_how_title">Ako to funguje</string>
@@ -286,7 +286,6 @@ Pozastavenie crossfade kvôli sledovaniu hudobného videa môže spôsobiť, že
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Zakázať potiahnutie na zmenu skladby</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Zabraňuje preskočeniu na nasledujúcu alebo predchádzajúcu skladbu potiahnutm doľava alebo doprava v prehrávači</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Zakázať potiahnutie na zmenu skladby</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Zabraňuje preskočeniu na nasledujúcu alebo predchádzajúcu skladbu potiahnutm doľava alebo doprava v miniplayeri</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Smyčka A-B</string>
@@ -462,11 +461,8 @@ Pozastavenie crossfade kvôli sledovaniu hudobného videa môže spôsobiť, že
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Odsadenie obalu</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Jas okrajov</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Priehľadnosť</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Rozostlenie skla</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Do akej miery je stránka za skleným miniprehrávačom rozostlená (Android 14 a novšie). Pri hodnote 0 je stránka viditeľná ostro a vo verziách pred Androidom 14 je stránka prekrytá</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Svetlé sklo</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Zafarbuje sklený miniprehrávač do bielej namiesto tmavej farby pre ľahší a jasnejší vzhľad skla</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Odtieň obalu albumu</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Zafarbuje sklený miniprehrávač farbou obalu albumu skladby, ktorá hrá</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Točivý obal</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Zmení obal skleného miniprehrávača na okrúhly a počas prehrávania skladby ho otáča ako platovú唱</string>
@@ -480,12 +476,12 @@ Pozastavenie crossfade kvôli sledovaniu hudobného videa môže spôsobiť, že
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Skryť tlačidlo Aktivita</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Skryť tlačidlo Spýtaj sa hudby</string>
+  <string name="morphe_music_hide_ask_music_button_title">Skryť tlačidlo \'Spýtajte sa Music\'</string>
   <string name="morphe_music_hide_cast_button_title">Skryť tlačidlo Prenos</string>
   <string name="morphe_music_hide_history_button_title">Skryť tlačidlo histórie</string>
   <string name="morphe_music_hide_search_button_title">Skryť tlačidlo vyhľadávania</string>
-  <string name="morphe_music_hide_voice_search_button_title">Skryť tlačidlo hlasového vyhľadávania</string>
-  <string name="morphe_music_hide_sound_search_button_title">Skryť tlačidlo vyhľadávania zvuku</string>
+  <string name="morphe_music_hide_voice_search_button_title">Skryť tlačidlo \'Hlasové vyhľadávanie</string>
+  <string name="morphe_music_hide_sound_search_button_title">Skryť tlačidlo „Vyhľadávanie zvukom“</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Neprihlásený. Klepnite na tlačidlo na konfiguráciu</string>
   <string name="morphe_music_scrobbling_log_out">Odhlásiť sa</string>

@@ -205,8 +205,6 @@ Salaketak publikoak dira eta kanal bat zerrendara gehitu aurretik berrikusten di
   <string name="morphe_hide_posts_shelf_title">Ezkutatu argitalpen atala</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Ezkutatu Denda botoia</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Ezkutatu Harpidetu botoia</string>
   <string name="morphe_explore_menu_screen_title">Arakatu menua</string>
   <string name="morphe_explore_menu_screen_summary">Aukeratu zein osagai agertzen diren arakatu menuan</string>
   <string name="morphe_hide_courses_menu_title">Ezkutatu Ikastaroen menua</string>
@@ -281,7 +279,6 @@ Mugak:
   <string name="morphe_hide_post_comment_button_title">Ezkutatu Iruzkinak botoia</string>
   <string name="morphe_hide_post_comments_preview_title">Ezkutatu iruzkinen aurrebista</string>
   <string name="morphe_hide_post_comments_preview_summary">Argitalpenen azpian dauden iruzkinen aurrebista ezkutatzen du</string>
-  <string name="morphe_hide_post_share_button_title">Ezkutatu Partekatu botoia</string>
   <string name="morphe_hide_post_share_button_summary">Argitalpen irudien deskarga botoia partekatu botoiaren ondoan marrazten da, beraz hura ere ezkutatzen da</string>
   <string name="morphe_hide_ask_gemini_button_title">Ezkutatu \'Galdetu Gemini\' botoia</string>
   <string name="morphe_hide_ask_gemini_button_summary">\'Galdetu bideo honi buruz\' panelaren beheko \'Galdetu Gemini\' botoia ezkutatzen du</string>
@@ -296,9 +293,6 @@ Mugak:
   <string name="morphe_hide_in_this_video_button_title">Ezkutatu \'Bideo honetan\' botoia</string>
   <string name="morphe_hide_info_panels_title">Ezkutatu informazio panelak</string>
   <string name="morphe_hide_info_panels_summary">Informazio testuinguru panelak ezkutatzen ditu, adibidez informazio medikoa</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Ezkutatu Elkartu botoia</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Ezkutatu \'Zuzeneko txataren berrikuspena\' botoia</string>
@@ -314,8 +308,6 @@ Mugak:
   <string name="morphe_hide_tap_and_hold_gradient_summary">Abiadura handitzeko eutsi bitartean hatza irristatzen denean, erreproduzigailuaren kontrolen gradientea ezkutatzen du</string>
   <string name="morphe_hide_timed_reactions_title">Ezkutatu denbora mugatuko erreakzioak</string>
   <string name="morphe_hide_timed_reactions_summary">Iruzkinen atalean eta zuzeneko txatean emotikonoekin erreakzionatzeko aukera ezkutatzen du</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Ezkutatu \'Laguntza &amp; iritzia\' menua</string>
   <string name="morphe_hide_help_feedback_menu_summary">Hiru-puntu botoia erabiltzean \'Laguntza &amp; iritzia\' menua ezkutatzen du, bilaketa emaitzetan bezalakoetan</string>
   <string name="morphe_hide_handle_title">Ezkutatu erabiltzaile-izena</string>
   <string name="morphe_hide_handle_summary">Zure kanalaren erabiltzaile-izena ezkutatzen du \'Zu\' fitxan</string>
@@ -358,7 +350,6 @@ Mugak:
   <string name="morphe_hide_ask_button_title">Ezkutatu Galdetu botoia</string>
   <string name="morphe_hide_channel_profile_button_title">Ezkutatu kanala eta Harpidetu botoia</string>
   <string name="morphe_hide_channel_profile_button_summary">Ekintza-barraren hasieran dagoen kanalaren avatarra eta Harpidetu botoia ezkutatzen ditu</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Ezkutatu Harpidetu botoia</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Ekintza-barrari hasieran, kanalaren avatarraren ondoan dauden Harpidetu eta Elkartu botoiak ezkutatzen ditu</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Ezkutatu Klip botoia</string>
@@ -434,7 +425,6 @@ Mugak:
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe-k ezkutatutako iruzkina…</string>
   <string name="morphe_minimal_comments_button_title">Gaitu iruzkin minimalistikoen botoia</string>
   <string name="morphe_minimal_comments_button_summary">Ezkutatzen ditu iruzkin-botoian agertzen diren txartel mugikorrak eta haien orrialde-hautatzailea</string>
-  <string name="morphe_hide_comments_thanks_button_title">Ezkutatu Eskerrak botoia</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ezkutatu Denbora-zigilua botoia</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ezkutatu \'Fan nagusiak\' botoia</string>
   <string name="morphe_hide_comments_translate_button_title">Ezkutatu Itzuli botoia</string>
@@ -489,7 +479,6 @@ Mugak:
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ezkutatu Azpitituluak botoia</string>
   <string name="morphe_hide_cast_button_title">Ezkutatu Cast botoia</string>
-  <string name="morphe_hide_cast_button_summary">Ezkutatzen du Cast botoia bideo erreproduzigailuan eta tresna-barran</string>
   <string name="morphe_hide_collapse_button_title">Ezkutatu Tolestu botoia</string>
   <string name="morphe_hide_fullscreen_button_title">Ezkutatu Pantaila osoa botoia</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ezkutatu erreprodukzio kontrolen atzeko planoa</string>
@@ -891,7 +880,7 @@ Info: Agian ez da funtzionatuko zuzeneko emankizunetan"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Iragarki zerrenda zuria flyout menuan</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Flyout elementu bat gehitzen du, bideo horren kanalean iragarkiak erreproduzitzea ahalbidetzen duena</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ezaugarri honek PotHelper erabiltzea edo \"Spoof video streams\" TV edo Android VR saioa hasteko moduan aldatzea eska dezake</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ezaugarri honek PotHelper erabiltzea edo \"Spoof video streams\" \'TV\' edo \'Android VR\' saio-hasierako moduan aldatzea eska dezake</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Abiadura zerrenda zuria flyout menuan</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Flyout elementu bat gehitzen du, bideo horren kanala beti 1.0x abiaduran erreproduzitzen duena</string>
   <string name="morphe_queue_manager_check_failed_auth">Ez dago saioa hasita</string>
@@ -1149,9 +1138,9 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_navigation_bar_glass_size_button_spacing">Botoien arteko espazioa</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Erakutsitako botoiak: %1$s / %2$s</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ezkutatu Txat botoia</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Ezkutatu Laguntzailea botoia</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofono botoia ezkutatu</string>
   <string name="morphe_hide_toolbar_search_button_title">Ezkutatu Bilatu botoia</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Gaituta dagoenean, ukitzean Morphe konfigurazioa irekitzen da eta luze sakatzean YouTube konfigurazioa; desgaitu trukatzeko</string>
   <string name="morphe_toolbar_buttons_order_title">Tresna-barraren botoien ordena</string>
   <string name="morphe_toolbar_buttons_order_summary">Arrastatu botoiak tresna-barrako ordena aldatzeko</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1182,43 +1171,28 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_disable_shorts_double_tap_to_like_title">Desaktibatu bi-sakatzea gustuko izateko</string>
   <string name="morphe_hide_shorts_ai_button_title">Ezkutatu AI botoia</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Ezkutatu \'Automatikoki doblatua\' etiketa</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Ezkutatu kanal barra</string>
-  <string name="morphe_hide_shorts_comments_button_title">Ezkutatu Iruzkinak botoia</string>
   <string name="morphe_hide_shorts_effect_button_title">Ezkutatu Efektu botoia</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Ezkutatu bideoaren esteka etiketa</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Ezkutatu keinu aholkuak</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Ezkutatu \'Pantaila berdea\' botoia</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Hashtag botoia ezagutu</string>
   <string name="morphe_hide_shorts_info_panel_title">Ezkutatu informazio panela</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Elkartu botoia ezagutu</string>
   <string name="morphe_hide_shorts_like_button_title">Ezkutatu Gustatzen zait botoia</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Ezkutatu Gustatzen zait botoiaren iturri animazioa</string>
   <string name="morphe_hide_shorts_live_preview_title">Ezkutatu zuzeneko aurrebista</string>
   <string name="morphe_hide_shorts_location_label_title">Ezkutatu kokapen etiketa</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Ezkutatu nabigazio barra</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Ezkutatu \'Bidalketa berriak\' botoia</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Ezkutatu pausa gainjarritako botoiak</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Ezkutatu iruzkin aurrebista</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Remix botoia ezkutatu</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Ezkutatu Gorde botoia</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Ezkutatu \'Musika gordetu\' botoia</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Ezkutatu bilaketa iradokizunak</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Ezkutatu Partekatu botoia</string>
-  <string name="morphe_hide_shorts_shop_button_title">Denda botoia ezagutu</string>
   <string name="morphe_hide_shorts_sound_button_title">Ezkutatu Soinua botoia</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Ezkutatu soinuaren metadatu etiketa</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Ezkutatu Harpidetu botoia</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Ezkutatu \'Super Thanks erosi\' botoia</string>
   <string name="morphe_hide_shorts_tagged_products_title">Ezkutatu etiketatutako produktuak</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Ezkutatu Datorren botoia</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Ezkutatu \'Soinu hau erabili\' botoia</string>
   <string name="morphe_hide_shorts_use_template_button_title">Ezkutatu \'Txantiloi hau erabili\' botoia</string>
-  <string name="morphe_hide_shorts_video_title_title">Ezkutatu bideoaren izenburua</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Ezkutatu amaiera-pantailako iradokitako bideoa</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Bideoa amaitu ondoren agertzen den bideo iradokizun gainjarria ezkutatzen du
@@ -1728,8 +1702,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Eskuragarri dagoen bideo kalitate altuena kodekaren eraginkortasunaren gainetik lehenesten du</string>
   <string name="morphe_video_quality_prioritize_dialog">Ezarpen hau desaktibatuta badago, bideo zaharrek ez dute kalitate aukerarik erakutsi ahal izango</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Baimendu \'Android VR\' / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Software AV1 dekodetzea baimentzen du \'Android VR\' / visionOS bezeroa erabiltzean</string>
+  <string name="morphe_spoof_video_streams_av1_title">Baimendu \'Android VR\' / \'visionOS\' AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Software AV1 dekodetzea baimentzen du \'Android VR\' / \'visionOS\' bezeroa erabiltzean</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ezarpen hau aktibatzeak AV1 software dekodeketa erabili dezake.
 
 AV1-ekin bideoaren erreprodukzioak trabak edo fotograma galerak izan ditzake"</string>
@@ -1966,7 +1940,6 @@ Grabaketa automatikoa aukerakoa da. Inkognito moduan edo kontua aldatzean geldit
   <string name="morphe_live_chat_translate_language_title">Itzulpen hizkuntza</string>
   <string name="morphe_live_chat_translate_exclude_title">Baztertutako hizkuntzak</string>
   <string name="morphe_live_chat_translate_exclude_summary">Komaz bereizitako hizkuntza kodeak, adibidez id,en. Hizkuntza hauetako mezuak ez dira itzultzen</string>
-  <string name="morphe_live_chat_translate_provider_title">Itzulpen hornitzailea</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API giltzea</string>

@@ -144,6 +144,8 @@ Folder ekspor: %s"</string>
   <string name="morphe_export_download_failed">Tidak dapat mengekspor unduhan</string>
   <string name="morphe_export_download_all_flyout_title">Ekspor semua ke perangkat</string>
   <string name="morphe_export_download_all_started">Mengekspor semua unduhan</string>
+  <string name="morphe_export_download_all_title">Semua unduhan</string>
+  <string name="morphe_export_download_playlist_started">Mengekspor unduhan</string>
   <string name="morphe_export_download_all_running">Unduhan sedang diekspor</string>
   <string name="morphe_export_download_all_saved">Mengekspor %1$s dari %2$s unduhan ke %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Folder ekspor: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Sembunyikan iklan video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Sembunyikan tombol pengalih Audio / Video</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Sembunyikan tombol Unduh</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Menyembunyikan tombol Unduh di acara podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Sembunyikan rak Jelajah</string>
   <string name="morphe_music_hide_filter_bar_title">Sembunyikan bilah penyaring</string>
@@ -178,7 +179,6 @@ Folder ekspor: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Menyembunyikan tombol Baru di tab Koleksi</string>
   <string name="morphe_music_hide_list_shelves_title">Sembunyikan rak daftar</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel Lirik</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Sembunyikan tombol Bagikan</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sembunyikan tombol Terjemahan</string>
   <string name="morphe_music_hide_new_from_shelf_title">Sembunyikan rak \'Baru dari\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Sembunyikan deretan daftar putar</string>
@@ -202,7 +202,7 @@ Folder ekspor: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Padukan trek satu sama lain dengan mulus</string>
   <string name="morphe_music_crossfade_enabled_title">Aktifkan pudar silang</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Untuk menggunakan crossfade, ubah \'Default client\' spoof video streams ke TV Simply atau visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Untuk menggunakan crossfade, ubah \'Klien default\' \'Spoof video streams\' menjadi \'TV Simply\' atau \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Kurva pemudaran</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Daya yang sama</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Genggaman yang halus</string>
@@ -237,7 +237,7 @@ Folder ekspor: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Pudar silang dilanjutkan</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Mode video tidak tersedia saat pudar silang diaktifkan</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade tidak berfungsi dengan visionOS. Ubah \'Default client\' spoof video streams ke TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade tidak berfungsi dengan \'visionOS\'. Ubah \'Klien default\' \'Spoof video streams\' menjadi \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade tidak berfungsi dengan klien spoof stream ini</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade nonaktif saat casting</string>
   <string name="morphe_music_crossfade_about_how_title">Cara kerjanya</string>
@@ -286,7 +286,6 @@ Menjeda crossfade untuk menonton video musik dapat membuat beberapa video menjad
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Nonaktifkan usapan untuk beralih trek</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Mencegah lompatan ke trek berikutnya atau sebelumnya dengan mengusap ke kiri atau kanan pada pemutar</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Nonaktifkan usapan untuk beralih trek</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Mencegah lompatan ke trek berikutnya atau sebelumnya dengan mengusap ke kiri atau kanan pada miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Loop A-B</string>
@@ -463,11 +462,8 @@ Menjeda crossfade untuk menonton video musik dapat membuat beberapa video menjad
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding karya seni</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kecerahan tepi</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opasitas</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Blur kaca</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Seberapa banyak halaman di belakang pemutar mini kaca dikaburkan (Android 14 dan versi terbaru). Pada angka 0 halaman terlihat tajam, dan sebelum Android 14 halaman akan tertutup</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Kaca terang</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Memberi warna putih pada pemutar mini kaca alih-alih gelap, untuk kaca yang lebih terang dan jernih</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Warna sampul album</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Memberi warna pada pemutar mini kaca dengan warna sampul album dari lagu yang sedang diputar</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Karya seni berputar</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Membuat karya seni pada pemutar mini kaca menjadi bulat, dan memutarnya seperti piringan hitam saat lagu diputar</string>
@@ -481,12 +477,12 @@ Menjeda crossfade untuk menonton video musik dapat membuat beberapa video menjad
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Sembunyikan tombol Aktivitas</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Sembunyikan tombol Minta Musik</string>
+  <string name="morphe_music_hide_ask_music_button_title">Sembunyikan tombol \'Tanya Musik\'</string>
   <string name="morphe_music_hide_cast_button_title">Sembunyikan tombol transmisi</string>
   <string name="morphe_music_hide_history_button_title">Sembunyikan tombol Riwayat</string>
   <string name="morphe_music_hide_search_button_title">Sembunyikan tombol Telusuri</string>
-  <string name="morphe_music_hide_voice_search_button_title">Sembunyikan tombol pencarian Suara</string>
-  <string name="morphe_music_hide_sound_search_button_title">Sembunyikan tombol pencarian suara</string>
+  <string name="morphe_music_hide_voice_search_button_title">Sembunyikan tombol \'Pencarian suara\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">Sembunyikan tombol \'Pencarian suara\'</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Belum masuk. Ketuk untuk mengonfigurasi</string>
   <string name="morphe_music_scrobbling_log_out">Keluar</string>

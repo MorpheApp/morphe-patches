@@ -144,6 +144,8 @@ Carpeta de exportación: %s"</string>
   <string name="morphe_export_download_failed">No se ha podido exportar la descarga</string>
   <string name="morphe_export_download_all_flyout_title">Exportar todo al dispositivo</string>
   <string name="morphe_export_download_all_started">Exportando todas las descargas</string>
+  <string name="morphe_export_download_all_title">Todas las descargas</string>
+  <string name="morphe_export_download_playlist_started">Exportando descargas</string>
   <string name="morphe_export_download_all_running">Las descargas ya se están exportando</string>
   <string name="morphe_export_download_all_saved">Se han exportado %1$s de %2$s descargas a %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Carpeta de exportación: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Ocultar anuncios de vídeo</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ocultar selector Audio / Vídeo</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Ocultar botón Descargar</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Oculta el botón Descargar en la página del podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Ocultar estantería Explorar</string>
   <string name="morphe_music_hide_filter_bar_title">Ocultar barra de filtro</string>
@@ -178,7 +179,6 @@ Carpeta de exportación: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Oculta el botón Nueva en la pestaña Biblioteca</string>
   <string name="morphe_music_hide_list_shelves_title">Ocultar estanterías en lista</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel de letras</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Ocultar botón Compartir</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ocultar botón Traducir</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ocultar estantería \'Novedades de\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ocultar estanterías de listas de reproducción</string>
@@ -202,7 +202,7 @@ Carpeta de exportación: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Realiza una transición suave entre canciones</string>
   <string name="morphe_music_crossfade_enabled_title">Activar fundido entre canciones</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Para usar el crossfade, cambie el \"Cliente predeterminado\" de los flujos de video simulados a TV Simply o visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Para usar el fundido cruzado, cambia el \"Cliente predeterminado\" de \"Suplantar flujos de vídeo\" a \"TV Simply\" o \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Curva de fundido</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Potencia constante</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Retención sutil</string>
@@ -237,7 +237,7 @@ Carpeta de exportación: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Fundido entre canciones reanudado</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">El modo de vídeo no está disponible mientras el fundido entre canciones está activado</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">El crossfade no funciona con visionOS. Cambie el \"Cliente predeterminado\" de los flujos de video simulados a TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">El fundido cruzado no funciona con \"visionOS\". Cambia el \"Cliente predeterminado\" de \"Suplantar flujos de vídeo\" a \"TV Simply\"</string>
   <string name="morphe_music_crossfade_spoof_client_toast">El crossfade no funciona con este cliente de flujo simulado</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">El fundido entre canciones está desactivado durante la transmisión</string>
   <string name="morphe_music_crossfade_about_how_title">Cómo funciona</string>
@@ -286,7 +286,6 @@ Pausar el fundido para ver un vídeo musical puede dejar algunos vídeos en negr
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Desactivar deslizamiento para cambiar pista</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Evita saltar a la pista siguiente o anterior al deslizar hacia la izquierda o derecha en el reproductor</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Desactivar deslizamiento para cambiar pista</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Evita saltar a la pista siguiente o anterior al deslizar hacia la izquierda o derecha en el miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Bucle A-B</string>
@@ -463,11 +462,8 @@ Pausar el fundido para ver un vídeo musical puede dejar algunos vídeos en negr
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Relleno de la carátula</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Brillo del borde</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacidad</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Desenfoque de cristal</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Cuánto se desenfoca la página detrás del reproductor en miniatura de cristal (Android 14 y posteriores). En 0 la página se ve nítida y, antes de Android 14, la página queda cubierta</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Cristal claro</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Tiñe el reproductor en miniatura de cristal de blanco en lugar de oscuro, para un cristal más ligero y claro</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Tinte de la carátula del álbum</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Tiñe el reproductor en miniatura de cristal con el color de la carátula del álbum de la canción que se reproduce</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Carátula giratoria</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Hace que la carátula del reproductor en miniatura de cristal sea redonda y la hace girar como un disco mientras se reproduce una canción</string>
@@ -481,12 +477,12 @@ Pausar el fundido para ver un vídeo musical puede dejar algunos vídeos en negr
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Ocultar botón \'Actividad\'</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Ocultar botón \"Pedir música\"</string>
+  <string name="morphe_music_hide_ask_music_button_title">Ocultar el botón \"Preguntar a Music\"</string>
   <string name="morphe_music_hide_cast_button_title">Ocultar botón Transmitir</string>
   <string name="morphe_music_hide_history_button_title">Ocultar botón Historial</string>
   <string name="morphe_music_hide_search_button_title">Ocultar botón de búsqueda</string>
-  <string name="morphe_music_hide_voice_search_button_title">Ocultar botón de búsqueda por voz</string>
-  <string name="morphe_music_hide_sound_search_button_title">Ocultar botón de búsqueda por sonido</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ocultar el botón \"Búsqueda por voz\"</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ocultar botón de \"Búsqueda por sonido\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">No has iniciado sesión. Pulsa para configurar</string>
   <string name="morphe_music_scrobbling_log_out">Cerrar sesión</string>

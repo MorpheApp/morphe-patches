@@ -144,6 +144,8 @@ Eksportmappe: %s"</string>
   <string name="morphe_export_download_failed">Kunne ikke eksportere nedlastingen</string>
   <string name="morphe_export_download_all_flyout_title">Eksporter alt til enhet</string>
   <string name="morphe_export_download_all_started">Eksporterer alle nedlastinger</string>
+  <string name="morphe_export_download_all_title">Alle nedlastinger</string>
+  <string name="morphe_export_download_playlist_started">Eksporterer nedlastinger</string>
   <string name="morphe_export_download_all_running">Nedlastinger blir allerede eksportert</string>
   <string name="morphe_export_download_all_saved">Eksporterte %1$s av %2$s nedlastinger til %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Eksportmappe: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Skjul videoannonser</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Skjul Lyd-/Video-bryter</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Skjul nedlastingsknappen</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Skjuler nedlastingsknappen i podkastprogrammet</string>
   <string name="morphe_music_hide_explore_shelf_title">Skjul Utforsk-hyllen</string>
   <string name="morphe_music_hide_filter_bar_title">Skjul filterlinjen</string>
@@ -178,7 +179,6 @@ Eksportmappe: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Skjuler Ny-knappen i Bibliotek-fanen</string>
   <string name="morphe_music_hide_list_shelves_title">Skjul listevisning hyller</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Tekstpanel</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Skjul Del-knapp</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skjul Oversett-knapp</string>
   <string name="morphe_music_hide_new_from_shelf_title">Skjul \'Nytt fra\'-hyllen</string>
   <string name="morphe_music_hide_playlist_shelves_title">Skjul spillelistehyller</string>
@@ -202,7 +202,7 @@ Eksportmappe: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Bland sporene sømløst inn i hverandre</string>
   <string name="morphe_music_crossfade_enabled_title">Aktiver overgang</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">For å bruke crossfade, endre \"Default client\" for spoof-videostrømmer til TV Simply eller visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">For å bruke crossfade, endre \'Standardklient\' for \'Spoof videostrømmer\' til \'TV Simply\' eller \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Fade-kurve</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Lik effekt</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtil demping</string>
@@ -237,7 +237,7 @@ Eksportmappe: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Overgang gjenopptas</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videomodus er ikke tilgjengelig når overgang er aktivert</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade fungerer ikke med visionOS. Endre \"Default client\" for spoof-videostrømmer til TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade fungerer ikke med \'visionOS\'. Endre \'Standardklient\' for \'Spoof videostrømmer\' til \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade fungerer ikke med denne spoof-strømmeklienten</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade er av under casting</string>
   <string name="morphe_music_crossfade_about_how_title">Hvordan det fungerer</string>
@@ -286,7 +286,6 @@ Låseskjermen eller varselet kan kort vise en utdatert tilstand midt i en overga
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Deaktiver sveip for å bytte spor</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Forhindrer hopping til neste eller forrige spor ved å sveipe til venstre eller høyre på spilleren</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Deaktiver sveip for å bytte spor</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Forhindrer hopping til neste eller forrige spor ved å sveipe til venstre eller høyre på minispilleren</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B-sløyfe</string>
@@ -463,11 +462,8 @@ Låseskjermen eller varselet kan kort vise en utdatert tilstand midt i en overga
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Polstring for albumkunst</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kantlyshet</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opasitet</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Glassuskarphet</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Hvor mye siden bak glassminispilleren er uskarp (Android 14 og nyere). Ved 0 vises siden skarpt, og før Android 14 er siden dekket</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Lyst glass</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Farger glassminispilleren hvit i stedet for mørk, for et lysere og klarere glass</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Fargetone for albumkunst</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Farger glassminispilleren med fargen fra albumkunsten til sangen som spilles</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Roterende albumkunst</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Gjør albumkunsten i glassminispilleren rund, og roterer den som en plate mens en sang spilles</string>
@@ -481,12 +477,12 @@ Låseskjermen eller varselet kan kort vise en utdatert tilstand midt i en overga
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Skjul Aktivitet-knappen</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Skjul Spør musikk-knapp</string>
+  <string name="morphe_music_hide_ask_music_button_title">Skjul \'Spør Musikk\'-knapp</string>
   <string name="morphe_music_hide_cast_button_title">Skjul Cast-knapp</string>
   <string name="morphe_music_hide_history_button_title">Skjul Historikk-knapp</string>
   <string name="morphe_music_hide_search_button_title">Skjul Søk-knapp</string>
-  <string name="morphe_music_hide_voice_search_button_title">Skjul talesøk-knappen</string>
-  <string name="morphe_music_hide_sound_search_button_title">Skjul lydsøk-knappen</string>
+  <string name="morphe_music_hide_voice_search_button_title">Skjul \'Talesøk\'-knapp</string>
+  <string name="morphe_music_hide_sound_search_button_title">Skjul knappen \"Lydsøk\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ikke logget inn. Trykk for å konfigurere</string>
   <string name="morphe_music_scrobbling_log_out">Logg ut</string>

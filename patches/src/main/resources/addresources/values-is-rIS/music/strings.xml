@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Tókst ekki að flytja niðurhaldið út</string>
   <string name="morphe_export_download_all_flyout_title">Flytja allt í tæki</string>
   <string name="morphe_export_download_all_started">Villa að flytja öll niðurhald</string>
+  <string name="morphe_export_download_all_title">Öll niðurhöl</string>
+  <string name="morphe_export_download_playlist_started">Útflutningur á hlaðnum lgöngum</string>
   <string name="morphe_export_download_all_running">Niðurhald er þegar að vera flutt út</string>
   <string name="morphe_export_download_all_saved">Flutt %1$s af %2$s niðurhaldum út í %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Fela myndbandsauglýsingar</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Fela Audio / Video rofann</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Fela niðurhalshnapp</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Felur niðurhalshnappinn í podcastþætti</string>
   <string name="morphe_music_hide_explore_shelf_title">Fela Explore-röðina</string>
   <string name="morphe_music_hide_filter_bar_title">Fela síubjálka</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">Felur Nýjan hnapp í bókasafnsfánum</string>
   <string name="morphe_music_hide_list_shelves_title">Fela listaraðir</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Textaspjald</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Fela deilihnappinn</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Fela Þýðingarhnappinn</string>
   <string name="morphe_music_hide_new_from_shelf_title">Fela \'Nýtt frá\' röðina</string>
   <string name="morphe_music_hide_playlist_shelves_title">Fela spilunarlistaraðir</string>
@@ -202,7 +202,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">Blanda lagum saman á sléttan hátt</string>
   <string name="morphe_music_crossfade_enabled_title">Virkja crossfade</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Til að nota crossfade, breyttu \'Default client\' í Spoof-myndstraumum í TV Simply eða visionOS</string>
   <string name="morphe_music_crossfade_curve_title">Ferill deyfingar</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Jafnt afl</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Lúmskt hald</string>
@@ -237,7 +236,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade hefur verið virkjað aftur</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Myndbandsstilling er ekki í boði þegar crossfade er virkt</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade virkar ekki með visionOS. Breyttu \'Default client\' í Spoof-myndstraumum í TV Simply</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade virkar ekki með þessum spoof-straumsklient</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade er óvirkt meðan streymt er</string>
   <string name="morphe_music_crossfade_about_how_title">Hvernig það virkar</string>
@@ -286,7 +284,6 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Óvirkja sveip til að skipta um lag</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Kemur í veg fyrir að hoppið í næsta eða fyrra lag með því að sveipa til vinstra eða hægra á spilaranum</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Óvirkja sveip til að skipta um lag</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Kemur í veg fyrir að hoppið í næsta eða fyrra lag með því að sveipa til vinstra eða hægra á smáspilaranum</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B lykkja</string>
@@ -463,11 +460,8 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Fjölnun albúmmyndar</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Birta randa</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Ógegnsæni</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Gler-slærð</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Hversu mikið síðan á bak við gler-smáspilarann er slærð (Android 14 og nýrra). Ef þetta er 0 sýnist síðan skýrt, og fyrir Android 14 er síðan huldin</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Ljós gler</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Litar gler-smáspilarann hvítan í stað þess að vera dökkur, fyrir ljóslæga og heiðari gler</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Litarefni albúmmyndartinnar</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Litar gler-smáspilarann eftir lit albúmmynd lagsins sem spilar</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Snúnandi albúmmynd</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Gerir albúmmynd gler-smáspilarans runda og snýr henni eins og plata á meðan lag spilar</string>
@@ -481,12 +475,10 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Fela virknihnappinn</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Fela Spyrja tónlist hnappinn</string>
   <string name="morphe_music_hide_cast_button_title">Fela Cast hnapp</string>
   <string name="morphe_music_hide_history_button_title">Fela Sögu hnapp</string>
   <string name="morphe_music_hide_search_button_title">Fela Leitarhnapp</string>
-  <string name="morphe_music_hide_voice_search_button_title">Fela raddarleitarhnappinn</string>
-  <string name="morphe_music_hide_sound_search_button_title">Fela hljóðleitarhnappinn</string>
+  <string name="morphe_music_hide_sound_search_button_title">Fela \"Hljóðleit\"-hnappinn</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ekki innskráður. Ýttu hér til að stilla</string>
   <string name="morphe_music_scrobbling_log_out">Skrá út</string>

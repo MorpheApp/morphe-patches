@@ -144,6 +144,8 @@ Export folder: %s"</string>
   <string name="morphe_export_download_failed">Hindi ma-export ang download</string>
   <string name="morphe_export_download_all_flyout_title">I-export ang lahat sa device</string>
   <string name="morphe_export_download_all_started">Inie-export ang lahat ng download</string>
+  <string name="morphe_export_download_all_title">Lahat ng mga download</string>
+  <string name="morphe_export_download_playlist_started">Inelu-export ng mga download</string>
   <string name="morphe_export_download_all_running">Kasalukuyan nang ine-export ang mga download</string>
   <string name="morphe_export_download_all_saved">Na-export ang %1$s mula sa %2$s na mga download sa %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Export folder: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Itago ang mga patalastas sa video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Itago ang Audio / Video toggle</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Itago ang Download button</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Itinatago ang Download button sa podcast show</string>
   <string name="morphe_music_hide_explore_shelf_title">Itago ang Explore shelf</string>
   <string name="morphe_music_hide_filter_bar_title">Itago ang filter bar</string>
@@ -178,7 +179,6 @@ Export folder: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Itinatago ang button na New sa tab ng Library</string>
   <string name="morphe_music_hide_list_shelves_title">Itago ang mga list shelf</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel ng liriko</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Itago ang button na Magbahagi</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Itago ang button na Isalin</string>
   <string name="morphe_music_hide_new_from_shelf_title">Itago ang \'New from\' shelf</string>
   <string name="morphe_music_hide_playlist_shelves_title">Itago ang mga playlist shelf</string>
@@ -202,7 +202,7 @@ Export folder: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Pagsamahin nang maayos ang mga track sa isa\'t isa</string>
   <string name="morphe_music_crossfade_enabled_title">I-enable ang crossfade</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Para gamitin ang crossfade, palitan ang \'Default client\' ng Spoof video streams sa TV Simply o visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Para gamitin ang crossfade, palitan ang \'Default client\' ng \'Spoof video streams\' sa \'TV Simply\' o \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Kurba ng fade</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Pantay na kapangyarihan</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Mahinang pagpapanatili</string>
@@ -237,7 +237,7 @@ Export folder: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Ipinagpatuloy ang crossfade</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Hindi magagamit ang video mode habang naka-enable ang crossfade</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Hindi gumagana ang Crossfade sa visionOS. Palitan ang \'Default client\' ng Spoof video streams sa TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Hindi gumagana ang Crossfade sa \'visionOS\'. Palitan ang \'Default client\' ng \'Spoof video streams\' sa \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Hindi gumagana ang Crossfade sa spoof stream client na ito</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Naka-off ang crossfade habang nag-ca-cast</string>
   <string name="morphe_music_crossfade_about_how_title">Paano ito gumagana</string>
@@ -286,7 +286,6 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">I-disable ang swipe para baguhin ang track</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Pinipigilan ang paglaktaw sa susunod o naunang track sa pamamagitan ng pag-swipe pakaliwa o pakanan sa player</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">I-disable ang swipe para baguhin ang track</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Pinipigilan ang paglaktaw sa susunod o naunang track sa pamamagitan ng pag-swipe pakaliwa o pakanan sa miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B loop</string>
@@ -463,11 +462,8 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding ng artwork</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Liwanag ng rim</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacity</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Glass blur</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Kung gaano kalabo ang page sa likod ng glass miniplayer (Android 14 at mas bago). Sa 0, ang page ay malinaw na nakikita, at bago ang Android 14, ang page ay natatakpan</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Light glass</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Binibigyan ng tint ang glass miniplayer ng kulay puti sa halip na madilim, para sa mas maliwanag at mas malinaw na glass</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Tint ng album art</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Binibigyan ng tint ang glass miniplayer gamit ang kulay ng album art ng kantang pino-play</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Umiikot na artwork</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Gawing bilog ang artwork ng glass miniplayer, at paikutin ito na parang record habang may kantang pino-play</string>
@@ -481,12 +477,12 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Itago ang button na Activity</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Itago ang button na Ask Music</string>
+  <string name="morphe_music_hide_ask_music_button_title">Itago ang button na \'Magtanong sa Musika\'</string>
   <string name="morphe_music_hide_cast_button_title">Itago ang Cast button</string>
   <string name="morphe_music_hide_history_button_title">Itago ang History button</string>
   <string name="morphe_music_hide_search_button_title">Itago ang Search button</string>
-  <string name="morphe_music_hide_voice_search_button_title">Itago ang Voice search button</string>
-  <string name="morphe_music_hide_sound_search_button_title">Itago ang Sound search button</string>
+  <string name="morphe_music_hide_voice_search_button_title">Itago ang button na \'Voice search\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">Itago ang \'Sound search\' button</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Hindi naka-log in. I-tap para i-configure</string>
   <string name="morphe_music_scrobbling_log_out">Mag-sign out</string>

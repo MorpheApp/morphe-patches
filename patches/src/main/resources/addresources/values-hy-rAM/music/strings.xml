@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Չհաջողվեց արտահանել ներբեռնումը</string>
   <string name="morphe_export_download_all_flyout_title">Արտահանել ամենը սարքի մեջ</string>
   <string name="morphe_export_download_all_started">Բոլոր ներբեռնումների արտահանում</string>
+  <string name="morphe_export_download_all_title">Բոլոր ներբեռնումները</string>
+  <string name="morphe_export_download_playlist_started">Ներբեռնումների արտահանում</string>
   <string name="morphe_export_download_all_running">Ներբեռնումներն արդեն արտահանվում են</string>
   <string name="morphe_export_download_all_saved">Արտահանվեց %2$s ներբեռնումներից %1$s-ը դեպի %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Թաքցնել տեսանյութերի գովազդները</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Թաքցնել Աուդիո / Վիդեո փոխանցիչը</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Թաքցնել «Ներբեռնել» կոճակը</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Թաքցնում է «Ներբեռնել» կոճակը պոդկաստ ծրագրում</string>
   <string name="morphe_music_hide_explore_shelf_title">Թաքցնել «Բացահայտել» դարակը</string>
   <string name="morphe_music_hide_filter_bar_title">Թաքցնել զտիչների տողը</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">Թաքցնում է «Նոր» կոճակը «Գրադարան» ներդիրում</string>
   <string name="morphe_music_hide_list_shelves_title">Թաքցնել ցուցակային դարակները</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Տեքստերի վահանակ</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Թաքցնել Կիսվելու կոճակը</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Թաքցնել Թարգմանելու կոճակը</string>
   <string name="morphe_music_hide_new_from_shelf_title">Թաքցնել «Նորություններ» դարակը</string>
   <string name="morphe_music_hide_playlist_shelves_title">Թաքցնել плейլիստերի դարակները</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">Հարթ կերպով միացրեք տրեկները միմյանց</string>
   <string name="morphe_music_crossfade_enabled_title">Միացնել crossfade-ը</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade-ն օգտագործելու համար փոխեք Spoof վիդեո հոսքերի \'Default client\'-ը TV Simply-ի կամ visionOS-ի</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade-ն օգտագործելու համար փոխեք \"Spoof video streams\" բաժնի \"Default client\"-ը \"TV Simply\"-ի կամ \"visionOS\"-ի</string>
   <string name="morphe_music_crossfade_curve_title">Մարման կորը</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Հավասար հզորություն</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Նուրբ պահում</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade-ը վերսկսված է</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Տեսանյութի ռեժիմը հասանելի չէ, երբ crossfade-ը միացված է</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade-ը չի աշխատում visionOS-ի հետ: Փոխեք Spoof վիդեո հոսքերի \'Default client\'-ը TV Simply-ի</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade-ը չի աշխատում \"visionOS\"-ի հետ: Փոխեք \"Spoof video streams\" բաժնի \"Default client\"-ը \"TV Simply\"-ի</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade-ը չի աշխատում այս spoof հոսքի կլիենտի հետ</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade-ը անջատված է casting-ի ժամանակ</string>
   <string name="morphe_music_crossfade_about_how_title">Ինչպես է այն աշխատում</string>
@@ -286,7 +286,6 @@ Crossfade-ի դադարեցումը տեսահոլովակը դիտելու հա
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Անջատել սլայդումը տրեկը փոխելու համար</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Կանխում է հաջորդ կամ նախորդ տրեկին անցումը՝ նվագիչի վրա ձախ կամ աջ սլայդելու միջոցով</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Անջատել սլայդումը տրեկը փոխելու համար</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Կանխում է հաջորդ կամ նախորդ տրեկին անցումը՝ մինի-նվագիչի վրա ձախ կամ աջ սլայդելու միջոցով</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B ցիկլ</string>
@@ -463,11 +462,8 @@ Crossfade-ի դադարեցումը տեսահոլովակը դիտելու հա
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Շապիկի ներդիր</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Եզրերի պայծառություն</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Թափանցիկություն</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Ապակե լղոզում</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Որքան է լղոզվում էջը ապակե մինի-նվագարկիչի հետևում (Android 14 և ավելի ուշ): 0-ի դեպքում էջը երևում է հստակ, իսկ մինչև Android 14-ը էջը ծածկված է</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Բաց ապակի</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Ապակե մինի-նվագարկիչին հաղորդում է սպիտակ երանգ՝ մուգի փոխարեն, ավելի թեթև և թափանցիկ ապակու համար</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Ալբոմի շապիկի երանգ</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Ապակե մինի-նվագարկիչին հաղորդում է նվագարկվող երգի ալբոմի շապիկի գույնը</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Պտտվող շապիկ</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Դարձնում է ապակե մինի-նվագարկիչի շապիկը կլոր և պտտում այն ինչպես and vinyl սկավառակը, երբ երգն է հնչում</string>
@@ -481,12 +477,12 @@ Crossfade-ի դադարեցումը տեսահոլովակը դիտելու հա
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Թաքցնել «Ակտիվություն» կոճակը</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Թաքցնել «Հարցնել երաժշտության մասին» կոճակը</string>
+  <string name="morphe_music_hide_ask_music_button_title">Թաքցնել \"Հարցրու Music\" կոճակը</string>
   <string name="morphe_music_hide_cast_button_title">Թաքցնել Cast կոճակը</string>
   <string name="morphe_music_hide_history_button_title">Թաքցնել Պատմության կոճակը</string>
   <string name="morphe_music_hide_search_button_title">Թաքցնել Որոնման կոճակը</string>
-  <string name="morphe_music_hide_voice_search_button_title">Թաքցնել ձայնային որոնման կոճակը</string>
-  <string name="morphe_music_hide_sound_search_button_title">Թաքցնել ձայնի որոնման կոճակը</string>
+  <string name="morphe_music_hide_voice_search_button_title">Թաքցնել \"Ձայնային որոնում\" կոճակը</string>
+  <string name="morphe_music_hide_sound_search_button_title">Թաքցնել \"Ձայնային որոնման\" կոճակը</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Չեք մուտք գործել: Կարգավորելու համար հպեք</string>
   <string name="morphe_music_scrobbling_log_out">Ելք</string>

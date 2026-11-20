@@ -141,15 +141,15 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">请尝试启用：欺骗视频流 &gt; 登录 Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">默认客户端</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR 登录</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR 需要单独登录。点击此处继续</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">当前已登录 Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR 登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' 需要单独登录。点击此处继续</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">当前已登录 \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">要使用此功能，请将“默认客户端”更改为Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">登录 Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登录Android VR可以解决一些用户的播放问题
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">要使用此功能，请将“默认客户端”更改为 \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">登录“Android VR”</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登录“Android VR”可以解决部分用户的播放问题
 
-要登录，请按下面的“继续”按钮"</string>
+要登录，请点击下方继续"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">登出</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">说明</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -170,33 +170,33 @@ Second \"item\" text"</string>
 • 更改 Google 密码或在 Google 设置中注销本设备后，需重新登录"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">移动版网页登录</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">可选：登录 YouTube 网站以使用您的账号播放视频。点击此处继续</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">当前已登录移动版网页</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">当前已登录“Mobile Web”</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">要使用此功能，请将“默认客户端”更改为 Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">登录 Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web 在退出登录或登录 YouTube 网站时播放视频
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">要使用此功能，请将“默认客户端”更改为“Mobile Web”</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">登录“Mobile Web”</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"移动版网页\"在退出登录或登录 YouTube 网站时播放视频
 
-• 登录后，可以播放需要账户的视频，例如年龄限制的视频
+• 登录后可播放需要账号的视频，例如年龄限制视频
 • Google 登录页面将在本应用中打开
 • 登录仅用于获取您播放的视频
 • 登录信息仅保存在此设备上
 
-要登录，请点击下方的继续"</string>
+要登录，请点击下方继续"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"登录信息已保存
 
-• 您的 Morphe 设置将不会导入/导出移动版网页登录
-• 如果 Google 终止登录，在您再次登录之前，视频将以登出状态播放
-• 登出同时也会使此设备退出 YouTube 网站的登录"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">移动版网页登录已过期，请尝试再次登录移动版网页</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">已退出移动版网页登录</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView 不可用。请安装或启用它以进行登录</string>
+• 您的 Morphe 设置将不会导入/导出\"移动版网页\"的登录信息
+• 如果 Google 终止登录，在您重新登录之前，视频将以退出登录状态播放
+• 退出登录同时也会使此设备退出 YouTube 网站的登录状态"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">移动版网页登录已过期，请尝试重新登录\"移动版网页\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">已退出\"移动版网页\"登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">无法使用“Android System WebView”。请安装或启用它以进行登录</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暂时不可用（API 超时）</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR登录已过期，请重新登录VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">“Android VR”登录已过期，请尝试重新登录 VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 暂时不可用 (状态 %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 暂时不可用</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">无法登录VR，网站认证未批准</string>
   <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
-  <string name="morphe_oauth2_toast_reset">已从 Android VR 登出</string>
+  <string name="morphe_oauth2_toast_reset">已从“Android VR”登出</string>
   <string name="morphe_oauth2_toast_invalid">无效的 VR 登录令牌，请重新登录 VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">通知媒体控件</string>
@@ -254,7 +254,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">将分享链接更改为 youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">将共享链接中的music.youtube.com替换为youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">将分享链接更改为 youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">强制视频使用缩短的 youtu.be URL 格式</string>
+  <string name="morphe_replace_links_with_shortener_summary">强制视频使用简短的“youtu.be”URL 格式</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自动</string>
@@ -271,9 +271,9 @@ Second \"item\" text"</string>
   <string name="morphe_debug_litho_entry_disabled">已禁用</string>
   <string name="morphe_debug_litho_entry_path">路径</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">路径和缓冲区</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho 日志记录应用的布局组件，包括某些 UI 组件的屏幕文本。
+  <string name="morphe_debug_litho_user_dialog_message">"记录应用的布局组件，包括某些 UI 组件的屏幕文本
 
-这有助于在创建自定义过滤器时识别组件。
+这有助于在创建自定义过滤器时识别组件
 
 但是，这也会记录一些用户数据，例如您的 IP 地址"</string>
   <!-- Custom filter -->

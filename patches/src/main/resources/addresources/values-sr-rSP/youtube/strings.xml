@@ -205,8 +205,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">Сакриј полицу објава</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Сакриј дугме „Магазин”</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Сакриј дугме „Запрати”</string>
   <string name="morphe_explore_menu_screen_title">Истражи мени</string>
   <string name="morphe_explore_menu_screen_summary">Изаберите које компоненте ће се појавити у менију за истраживање</string>
   <string name="morphe_hide_courses_menu_title">Сакриј мени Курсева</string>
@@ -281,7 +279,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">Сакриј дугме „Коментари”</string>
   <string name="morphe_hide_post_comments_preview_title">Сакриј преглед коментара</string>
   <string name="morphe_hide_post_comments_preview_summary">Сакрива преглед коментара испод објава</string>
-  <string name="morphe_hide_post_share_button_title">Сакриј дугме „Дели”</string>
   <string name="morphe_hide_post_share_button_summary">Дугме за преузимање слика објаве је нацртано поред дугмета за делење, па је и оно сакривено</string>
   <string name="morphe_hide_ask_gemini_button_title">Сакриј дугме „Ask Gemini“</string>
   <string name="morphe_hide_ask_gemini_button_summary">Сакрива дугме „Ask Gemini“ на дну панела „Ask about this video“</string>
@@ -296,9 +293,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_in_this_video_button_title">Сакриј дугме „У овом видео снимку“</string>
   <string name="morphe_hide_info_panels_title">Сакриј окна са информацијама</string>
   <string name="morphe_hide_info_panels_summary">Сакрива информативне панеле са контекстом, као што су медицинске информације</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Сакриј дугме „Учлани ме”</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Сакриј дугме \"Погледај поново живи чат\"</string>
@@ -314,8 +308,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Сакрива градијент контрола плејера када превлачите прстом док држите да бисте убрзали</string>
   <string name="morphe_hide_timed_reactions_title">Сакриј временске реакције</string>
   <string name="morphe_hide_timed_reactions_summary">Сакрива функцију која корисницима омогућава да реагују емотиконима у одељку за коментаре и ћаскању уживо</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Сакриј мени \'Помоћ &amp; повратне информације\'</string>
   <string name="morphe_hide_help_feedback_menu_summary">Сакрива мени \'Помоћ &amp; повратне информације\' када користите дугме са три тачке, на пример на резултатима претраге</string>
   <string name="morphe_hide_handle_title">Сакриј хендл</string>
   <string name="morphe_hide_handle_summary">Сакрива хендл вашег канала у картици „Ви”</string>
@@ -358,7 +350,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">Сакриј дугме „Питај”</string>
   <string name="morphe_hide_channel_profile_button_title">Сакриј канал и дугме Претплати се</string>
   <string name="morphe_hide_channel_profile_button_summary">Сакрива аватар канала и дугме Претплати се на почетку акционе траке</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Сакриј дугме „Запрати”</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Сакрива дугмад „Претплати се” и „Придружи се” поред аватара канала на почетку траке са акцијама</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Сакриј дугме „Исечак”</string>
@@ -434,7 +425,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Коментар сакривен од Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Омогући минимално дугме за коментаре</string>
   <string name="morphe_minimal_comments_button_summary">Сакрива клизне картице и њихов селектор страница, који су приказани на дугмету за коментаре.</string>
-  <string name="morphe_hide_comments_thanks_button_title">Сакриј дугме „Хвала”</string>
   <string name="morphe_hide_comments_timestamp_button_title">Сакриј дугме за временску ознаку</string>
   <string name="morphe_hide_comments_top_fans_button_title">Сакриј дугме „Топ фанови“</string>
   <string name="morphe_hide_comments_translate_button_title">Сакриј дугме „Преведи“</string>
@@ -489,7 +479,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Сакриј дугме „Титл”</string>
   <string name="morphe_hide_cast_button_title">Сакриј дугме „Пребацуј”</string>
-  <string name="morphe_hide_cast_button_summary">Скрива дугме за пренос у видео плејеру и алатној траци</string>
   <string name="morphe_hide_collapse_button_title">Сакриј дугме „Скрати”</string>
   <string name="morphe_hide_fullscreen_button_title">Сакриј дугме „Пребаци на цео екран”</string>
   <string name="morphe_hide_player_control_buttons_background_title">Сакриј позадину контрола плејера</string>
@@ -890,7 +879,7 @@ Second \"item\" text"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Бела листа за огласе у искачућем менију</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Додаје ставку у искачући мени која омогућава да се огласи репродукују на каналу тог видеа</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ова функција можда захтева коришћење PotHelper-а или промену „Лажирање видео стримова” на „TV” или пријаву на Android VR</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ова функција можда захтева коришћење PotHelper-а или промену „Лажирање видео стримова” на „TV” или пријаву на „Android VR”</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Бела листа за брзину у искачућем менију</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Додаје ставку у искачући мени која увек репродукује канал тог видеа брзином 1,0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Нисте пријављени</string>
@@ -1148,9 +1137,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Размак дугмади</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Приказана дугмад: %1$s од %2$s</string>
   <string name="morphe_hide_toolbar_chat_button_title">Сакриј дугме за ћаскање</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Сакриј дугме „Пратилац”</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Сакриј дугме „Микрофон“</string>
   <string name="morphe_hide_toolbar_search_button_title">Сакриј дугме „Претрага“</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Када је омогућено, додиром се отварају подешавања Morphe-а, а дугим притиском подешавања YouTube-а. Онемогућите да бисте их заменили.</string>
   <string name="morphe_toolbar_buttons_order_title">Редослед дугмади алатне траке</string>
   <string name="morphe_toolbar_buttons_order_summary">Превуците дугмад да промените њихов редослед у оквиру алатне траке</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1181,43 +1170,28 @@ Second \"item\" text"</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Онемогући двапут додир за свиђање</string>
   <string name="morphe_hide_shorts_ai_button_title">Сакриј дугме \"АИ\"</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Сакриј етикету „Аутоматски синхронизовано”</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Сакриј траку канала</string>
-  <string name="morphe_hide_shorts_comments_button_title">Сакриј дугме „Коментари”</string>
   <string name="morphe_hide_shorts_effect_button_title">Сакриј дугме „Ефекат”</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Сакриј ознаку линка видеа</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Сакриј наговештаје за гестове</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Сакриј дугме \'Зелени екран\'</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Сакриј дугме хеш-ознаке</string>
   <string name="morphe_hide_shorts_info_panel_title">Сакриј окно са информацијама</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Сакриј дугме „Учлани ме”</string>
   <string name="morphe_hide_shorts_like_button_title">Сакриј дугме „Свиђање”</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Сакриј анимацију дугмета „Свиђање”</string>
   <string name="morphe_hide_shorts_live_preview_title">Сакриј живи преглед</string>
   <string name="morphe_hide_shorts_location_label_title">Сакриј ознаку локације</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Сакриј траку за навигацију</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Сакриј дугме \'Нове објаве\'</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Сакриј дугмад у плејеру при паузи</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Сакриј преглед коментара</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Сакриј дугме „Ремикс”</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Сакриј дугме „Сачувај”</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Сакриј дугме \'Сачувај музику\'</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Сакриј предлоге за претрагу</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Сакриј дугме „Дели”</string>
-  <string name="morphe_hide_shorts_shop_button_title">Сакриј дугме „Продавница”</string>
   <string name="morphe_hide_shorts_sound_button_title">Сакриј дугме „Звук”</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Сакриј ознаку метаподатака звука</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Сакриј дугме „Запрати”</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Сакриј дугме за куповину \'Суперхвала\'</string>
   <string name="morphe_hide_shorts_tagged_products_title">Сакриј означене производе</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Сакриј дугме „Предстојеће”</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Сакриј дугме \'Користи овај звук\'</string>
   <string name="morphe_hide_shorts_use_template_button_title">Сакриј дугме \'Користи овај шаблон\'</string>
-  <string name="morphe_hide_shorts_video_title_title">Сакриј наслов Shorts видеа</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Сакриј предложени видео на завршном екрану</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Сакрива прекривајући слој са предложеним видео-снимцима који се појављује након завршетка видео-снимка
@@ -1726,8 +1700,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Даје предност највишем доступном видео квалитету у односу на ефикасност кодека</string>
   <string name="morphe_video_quality_prioritize_dialog">Ако је ова поставка искључена, старији видео снимци можда неће приказивати опције видео квалитета</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Дозволи „Android VR” / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Омогућава софтверско AV1 декодирање када се користи „Android VR” / visionOS клијент</string>
+  <string name="morphe_spoof_video_streams_av1_title">Дозволи \'Android VR\' / \'visionOS\' AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Дозвољава софтверско AV1 декодирање при коришћењу \'Android VR\' / \'visionOS\' клијента</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Омогућавање ове опције може користити софтверско декодирање AV1.
 
 Репродукција видеа са AV1 може да муца или прескаче кадрове"</string>
@@ -1961,7 +1935,6 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">Језик превода</string>
   <string name="morphe_live_chat_translate_exclude_title">Искључени језици</string>
   <string name="morphe_live_chat_translate_exclude_summary">Кодови језика одвојени запетом, као што су id,en. Поруке на овим језицима се не преводе</string>
-  <string name="morphe_live_chat_translate_provider_title">Пружалац превода</string>
   <string name="morphe_live_chat_translate_provider_google">Google превод</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API кључ</string>

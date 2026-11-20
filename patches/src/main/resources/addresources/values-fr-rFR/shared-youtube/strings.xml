@@ -141,15 +141,15 @@ Appuyez sur 'OK' pour ouvrir Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Essayez d\'activer : Falsifier les flux vidéo &gt; Connexion à Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client par défaut</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Connexion à Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR nécessite une connexion distincte. Appuyez ici pour continuer</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Actuellement connecté à Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Connexion à \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' nécessite une connexion distincte. Appuyez ici pour continuer</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Actuellement connecté à \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pour utiliser cette fonctionnalité, définissez \'Client par défaut\' sur \'Android VR\'</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Se connecter à Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Se connecter à Android VR peut résoudre les problèmes de lecture pour certains utilisateurs.
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Connexion à \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Se connecter à 'Android VR' peut résoudre les problèmes de lecture pour certains utilisateurs
 
-Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
+Pour vous connecter, appuyez sur continuer ci-dessous"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Se déconnecter</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructions</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -170,11 +170,11 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
 • Vous devrez vous reconnecter si vous changez votre mot de passe Google ou si vous dissociez cet appareil de vos paramètres Google"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Connexion via Mobile Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Facultatif : connectez-vous au site Web YouTube pour lire des vidéos avec votre compte. Appuyez ici pour continuer</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Actuellement connecté au Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Actuellement connecté à \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Pour utiliser cette fonctionnalité, définissez \'Client par défaut\' sur Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Se connecter à Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web lit les vidéos sans être connecté, ou en étant connecté au site YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Pour utiliser cette fonctionnalité, définissez \'Client par défaut\' sur \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Connexion à \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' lit les vidéos sans être connecté, ou en étant connecté au site YouTube
 
 • Une fois connecté, les vidéos nécessitant un compte peuvent être lues, comme les vidéos soumises à une restriction d'âge
 • La page de connexion Google s'ouvre dans cette application
@@ -184,19 +184,19 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
 Pour vous connecter, appuyez sur continuer ci-dessous"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Connexion enregistrée
 
-• Vos paramètres Morphe n'importeront/exporteront pas la connexion à Mobile Web
-• Si Google met fin à votre connexion, les vidéos seront lues sans connexion jusqu'à ce que vous vous reconnectiez.
+• Vos paramètres Morphe n'importeront/exporteront pas la connexion 'Mobile Web'
+• Si Google met fin à la connexion, les vidéos seront lues sans connexion jusqu'à ce que vous vous reconnectiez
 • La déconnexion déconnecte également cet appareil du site web YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">La connexion Mobile Web a expiré, réessayez de vous connecter à Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Déconnecté de Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView n\'est pas disponible. Installez ou activez-le pour vous connecter</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">La connexion à Mobile Web a expiré, réessayez de vous connecter à \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Déconnecté de \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' n\'est pas disponible. Installez ou activez-le pour vous connecter</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 est temporairement indisponible (délai d\'attente de l\'API dépassé)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">La connexion à Android VR a expiré, réessayez de vous connecter à VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">La connexion à \'Android VR\' a expiré, réessayez de vous connecter à VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 est temporairement indisponible (statut %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 est temporairement indisponible</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Impossible de se connecter à la VR, l\'authentification sur le site web n\'a pas été approuvée</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Impossible de se connecter à VR : %s</string>
-  <string name="morphe_oauth2_toast_reset">Déconnexion de Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Déconnexion de \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Jeton de connexion à VR invalide, veuillez réessayer la connexion à VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Contrôles des notifications multimédias</string>
@@ -254,7 +254,7 @@ Pour vous connecter, appuyez sur continuer ci-dessous"</string>
   <string name="morphe_replace_music_with_youtube_title">Changer les liens de partage vers youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Remplace music.youtube.com par youtube.com dans les liens partagés</string>
   <string name="morphe_replace_links_with_shortener_title">Changer les liens de partage vers youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Force les vidéos à utiliser le format d\'URL raccourcie youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Force les vidéos à utiliser le format d\'URL raccourcie \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -271,7 +271,7 @@ Pour vous connecter, appuyez sur continuer ci-dessous"</string>
   <string name="morphe_debug_litho_entry_disabled">Désactivée</string>
   <string name="morphe_debug_litho_entry_path">Chemin</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Chemin et tampon</string>
-  <string name="morphe_debug_litho_user_dialog_message">"La journalisation Litho enregistre les composants de mise en page de l'application, y compris le texte affiché à l'écran pour certains composants de l'interface utilisateur.
+  <string name="morphe_debug_litho_user_dialog_message">"Enregistre les composants de mise en page de l'application, y compris le texte affiché à l'écran pour certains composants de l'interface utilisateur.
 
 Cela peut aider à identifier les composants lors de la création de filtres personnalisés.
 

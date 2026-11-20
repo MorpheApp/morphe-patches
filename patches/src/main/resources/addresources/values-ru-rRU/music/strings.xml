@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Не удалось экспортировать загрузку</string>
   <string name="morphe_export_download_all_flyout_title">Экспортировать всё на устройство</string>
   <string name="morphe_export_download_all_started">Экспорт всех загрузок</string>
+  <string name="morphe_export_download_all_title">Все загрузки</string>
+  <string name="morphe_export_download_playlist_started">Экспорт загрузок</string>
   <string name="morphe_export_download_all_running">Загрузки уже экспортируются</string>
   <string name="morphe_export_download_all_saved">Экспортировано %1$s из %2$s загрузки в %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Скрыть видеорекламу</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Скрыть переключатель \"аудио/видео\"</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Скрыть кнопку загрузки</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Скрывает кнопку загрузки в подкасте</string>
   <string name="morphe_music_hide_explore_shelf_title">Скрыть секцию \"Обзор\"</string>
   <string name="morphe_music_hide_filter_bar_title">Скрыть панель фильтров</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">Скрывает кнопку \"Новый\" во вкладке \"Библиотека\"</string>
   <string name="morphe_music_hide_list_shelves_title">Скрыть секции-списки</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Панель с текстом песни</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Скрыть кнопку \"Поделиться\"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Скрыть кнопку \"Перевести\"</string>
   <string name="morphe_music_hide_new_from_shelf_title">Скрыть секцию \"Новое от\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Скрыть секции плейлистов</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">Плавное переключение между треками</string>
   <string name="morphe_music_crossfade_enabled_title">Включить плавный переход</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Чтобы использовать кроссфейд, измените \"Клиент по умолчанию\" в подмене видеопотоков на TV Simply или visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Чтобы использовать кроссфейд, измените «Клиент по умолчанию» в параметре «Подмена видеопотоков» на «TV Simply» или «visionOS»</string>
   <string name="morphe_music_crossfade_curve_title">Кривая плавного затухания</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Равномерная мощность</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Плавное удержание</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Плавный переход возобновлен</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Видеорежим недоступен при включенном плавном переходе</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Кроссфейд не работает с visionOS. Измените \"Клиент по умолчанию\" в подмене видеопотоков на TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Кроссфейд не работает с «visionOS». Измените «Клиент по умолчанию» в параметре «Подмена видеопотоков» на «TV Simply»</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Кроссфейд не работает с этим клиентом подменного потока</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Плавный переход отключён во время трансляции</string>
   <string name="morphe_music_crossfade_about_how_title">Как это работает</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Отключить переключение треков жестом</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Запрещает переход к следующему или предыдущему треку с помощью свайпа влево или вправо в плеере</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Отключить переключение треков жестом</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Запрещает переход к следующему или предыдущему треку с помощью свайпа влево или вправо в миниплеере</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Петля A-B</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Отступы обложки</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Яркость кромки</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Непрозрачность</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Размытие стекла</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Степень размытия страницы за стеклянным миниплеером (Android 14 и новее). При значении 0 страница видна четко, а в версиях до Android 14 страница перекрыта</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Светлое стекло</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Окрашивает стеклянный миниплеер в белый цвет вместо темного для создания более легкого и прозрачного эффекта стекла</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Оттенок обложки альбома</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Окрашивает стеклянный миниплеер в цвет обложки альбома воспроизводимой песни</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Вращающаяся обложка</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Делает обложку стеклянного миниплеера круглой и вращает её, как пластинку, во время воспроизведения песни</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Скрыть кнопку \"Активность\"</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Скрыть кнопку \"Спросить музыку\"</string>
+  <string name="morphe_music_hide_ask_music_button_title">Скрыть кнопку «Спросить музыку»</string>
   <string name="morphe_music_hide_cast_button_title">Скрыть кнопку \"Трансляция\"</string>
   <string name="morphe_music_hide_history_button_title">Скрыть кнопку \"История\"</string>
   <string name="morphe_music_hide_search_button_title">Скрыть кнопку поиска</string>
-  <string name="morphe_music_hide_voice_search_button_title">Скрыть кнопку Голосового поиска</string>
-  <string name="morphe_music_hide_sound_search_button_title">Скрыть кнопку поиска звука</string>
+  <string name="morphe_music_hide_voice_search_button_title">Скрыть кнопку «Голосовой поиск»</string>
+  <string name="morphe_music_hide_sound_search_button_title">Скрыть кнопку \"Звукового поиска\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Вы не вошли в систему. Нажмите, чтобы настроить</string>
   <string name="morphe_music_scrobbling_log_out">Выйти</string>

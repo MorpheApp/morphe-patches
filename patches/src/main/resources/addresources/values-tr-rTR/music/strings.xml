@@ -144,6 +144,8 @@ Dışa aktarma klasörü: %s"</string>
   <string name="morphe_export_download_failed">İndirme dışa aktarılamadı</string>
   <string name="morphe_export_download_all_flyout_title">Tümünü cihaza aktar</string>
   <string name="morphe_export_download_all_started">Tüm indirmeler aktarılıyor</string>
+  <string name="morphe_export_download_all_title">Tüm indirmeler</string>
+  <string name="morphe_export_download_playlist_started">İndirmeler dışa aktarılıyor</string>
   <string name="morphe_export_download_all_running">İndirmeler zaten aktarılıyor</string>
   <string name="morphe_export_download_all_saved">%2$s indirmeden %1$s tanesi %3$s konumuna aktarıldı</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Dışa aktarma klasörü: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Video reklamlarını gizle</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ses/Video geçişini gizle</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">İndir düğmesini gizle</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Podcast programındaki İndir düğmesini gizler</string>
   <string name="morphe_music_hide_explore_shelf_title">Keşfet rafını gizle</string>
   <string name="morphe_music_hide_filter_bar_title">Filtre çubuğunu gizle</string>
@@ -178,7 +179,6 @@ Dışa aktarma klasörü: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Kitaplık sekmesindeki Yeni düğmesini gizler</string>
   <string name="morphe_music_hide_list_shelves_title">Liste rafını gizle</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Şarkı Sözü Paneli</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Paylaş düğmesini gizle</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Çevir düğmesini gizle</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'Bundan Yeni\' rafını gizle</string>
   <string name="morphe_music_hide_playlist_shelves_title">Oynatma listesi rafını gizle</string>
@@ -202,7 +202,7 @@ Dışa aktarma klasörü: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Parçaları yumuşak bir şekilde birbirine karıştırır</string>
   <string name="morphe_music_crossfade_enabled_title">Geçişi etkinleştir</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade özelliğini kullanmak için, Spoof video akışları \"Varsayılan istemci\" ayarını TV Simply veya visionOS olarak değiştirin</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Çapraz geçişi kullanmak için \'Video akışlarını taklit et\' \'Varsayılan istemci\' ayarını \'TV Simply\' veya \'visionOS\' olarak değiştirin</string>
   <string name="morphe_music_crossfade_curve_title">Solma eğrisi</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Eşit güç</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Hafif tutma</string>
@@ -237,7 +237,7 @@ Dışa aktarma klasörü: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Geçiş devam ettirildi</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Geçiş etkinken video modu kullanılamaz</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade, visionOS ile çalışmaz. Spoof video akışları \"Varsayılan istemci\" ayarını TV Simply olarak değiştirin</string>
+  <string name="morphe_music_crossfade_visionos_toast">Çapraz geçiş \'visionOS\' ile çalışmaz. \'Video akışlarını taklit et\' \'Varsayılan istemci\' ayarını \'TV Simply\' olarak değiştirin</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade, bu spoof akış istemcisiyle çalışmaz</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Yayınlama sırasında çapraz geçiş kapalı</string>
   <string name="morphe_music_crossfade_about_how_title">Nasıl çalışır</string>
@@ -286,7 +286,6 @@ Müzik videosu izlemek için çapraz geçişi duraklatmak bazı videoların siya
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Kaydırarak parça değiştirmeyi devre dışı bırak</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Oynatıcıda sola veya sağa kaydırarak bir sonraki veya önceki parçaya geçilmesini engeller</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Kaydırarak parça değiştirmeyi devre dışı bırak</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Mini oynatıcıda sola veya sağa kaydırarak bir sonraki veya önceki parçaya geçilmesini engeller</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B döngüsü</string>
@@ -463,11 +462,8 @@ Müzik videosu izlemek için çapraz geçişi duraklatmak bazı videoların siya
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Kapak resmi boşluğu</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kenar parlaklığı</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opaklık</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Cam bulanıklığı</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Cam mini oynatıcının arkasındaki sayfanın ne kadar bulanık olacağı (Android 14 ve sonrası). 0 değerinde sayfa net görünür ve Android 14 öncesinde sayfa örtülür</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Açık renk cam</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Daha hafif ve daha net bir cam için, cam mini oynatıcıyı koyu renk yerine beyaza boyar</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albüm kapağı rengi</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Cam mini oynatıcıyı, çalan şarkının albüm kapağı rengiyle renklendirir</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Dönen kapak resmi</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Cam mini oynatıcının kapak resmini yuvarlak yapar ve bir şarkı çalarken bir plak gibi döndürür</string>
@@ -481,12 +477,12 @@ Müzik videosu izlemek için çapraz geçişi duraklatmak bazı videoların siya
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Etkinlik düğmesini gizle</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Ask Music düğmesini gizle</string>
+  <string name="morphe_music_hide_ask_music_button_title">\'Music\'e Sor\' düğmesini gizle</string>
   <string name="morphe_music_hide_cast_button_title">Yayınla düğmesini gizle</string>
   <string name="morphe_music_hide_history_button_title">Geçmiş düğmesini gizle</string>
   <string name="morphe_music_hide_search_button_title">Arama düğmesini gizle</string>
-  <string name="morphe_music_hide_voice_search_button_title">Sesli arama düğmesini gizle</string>
-  <string name="morphe_music_hide_sound_search_button_title">Ses arama düğmesini gizle</string>
+  <string name="morphe_music_hide_voice_search_button_title">\'Sesli arama\' düğmesini gizle</string>
+  <string name="morphe_music_hide_sound_search_button_title">\'Sesle arama\' düğmesini gizle</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Oturum açılmadı. Yapılandırmak için dokunun</string>
   <string name="morphe_music_scrobbling_log_out">Oturumu Kapat</string>

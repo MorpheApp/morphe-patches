@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">تعذر تصدير التنزيل</string>
   <string name="morphe_export_download_all_flyout_title">تصدير الكل إلى الجهاز</string>
   <string name="morphe_export_download_all_started">جاري تصدير جميع التنزيلات</string>
+  <string name="morphe_export_download_all_title">جميع التنزيلات</string>
+  <string name="morphe_export_download_playlist_started">جاري تصدير التنزيلات</string>
   <string name="morphe_export_download_all_running">جاري تصدير التنزيلات بالفعل</string>
   <string name="morphe_export_download_all_saved">تم تصدير %1$s من أصل %2$s تنزيلات إلى %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">إخفاء زر تبديل الصوت/الفيديو</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">إخفاء زر التنزيل</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">يخفي زر التنزيل في عرض البودكاست</string>
   <string name="morphe_music_hide_explore_shelf_title">إخفاء رف الاستكشاف</string>
   <string name="morphe_music_hide_filter_bar_title">إخفاء شريط التصفية</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">يخفي زر \"جديد\" في علامة تبويب المكتبة</string>
   <string name="morphe_music_hide_list_shelves_title">إخفاء رفوف القائمة</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">لوحة كلمات الأغنية</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">إخفاء زر المشاركة</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">إخفاء زر الترجمة</string>
   <string name="morphe_music_hide_new_from_shelf_title">إخفاء رف \'جديد من\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">إخفاء رفوف قوائم التشغيل</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">امزج المسارات مع بعضها بسلاسة</string>
   <string name="morphe_music_crossfade_enabled_title">تفعيل التلاشي</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">لاستخدام التلاشي المتقاطع، قم بتغيير \"العميل الافتراضي\" لتدفقات فيديو المحاكاة إلى TV Simply أو visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">لاستخدام التلاشي المتداخل، قم بتغيير \'العميل الافتراضي\' في \'تزييف تدفقات الفيديو\' إلى \'TV Simply\' أو \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">منحنى التلاشي</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">قوة متساوية</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">تأخير لطيف</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">تم استئناف التلاشي التدريجي</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">وضع الفيديو غير متاح أثناء تمكين التلاشي التدريجي</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">التلاشي المتقاطع لا يعمل مع visionOS. قم بتغيير \"العميل الافتراضي\" لتدفقات فيديو المحاكاة إلى TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">التلاشي المتداخل لا يعمل مع \'visionOS\'. قم بتغيير \'العميل الافتراضي\' في \'تزييف تدفقات الفيديو\' إلى \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">التلاشي المتقاطع لا يعمل مع عميل تدفق المحاكاة هذا</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">التلاشي المتقاطع متوقف أثناء الإرسال</string>
   <string name="morphe_music_crossfade_about_how_title">كيف يعمل</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">تعطيل التمرير لتغيير المسار</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">يمنع الانتقال إلى المسار التالي أو السابق عن طريق التمرير لليسار أو اليمين في المشغل</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">تعطيل التمرير لتغيير المسار</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">يمنع الانتقال إلى المسار التالي أو السابق عن طريق التمرير لليسار أو اليمين في المشغل المصغر</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">حلقة A-B</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">هوامش غلاف العمل الفني</string>
   <string name="morphe_music_miniplayer_glass_rim_title">سطوع الحافة</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">الشفافية</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">تغبيش الزجاج</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">مدى تغبيش الصفحة خلف المشغل المصغر الزجاجي (Android 14 والإصدارات الأحدث). عند القيمة 0 تظهر الصفحة بوضوح، وقبل Android 14 تكون الصفحة مغطاة</string>
-  <string name="morphe_music_miniplayer_glass_light_title">زجاج فاتح</string>
   <string name="morphe_music_miniplayer_glass_light_summary">يلون المشغل المصغر الزجاجي باللون الأبيض بدلاً من الداكن، للحصول على زجاج أكثر إشراقاً ووضوحاً</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">تلوين غلاف الألبوم</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">يلون المشغل المصغر الزجاجي بلون غلاف الألبوم للأغنية التي يتم تشغيلها</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">تدوير غلاف العمل الفني</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">يجعل غلاف العمل الفني للمشغل المصغر الزجاجي مستديراً، ويدوره مثل الأسطوانة أثناء تشغيل الأغنية</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">إخفاء زر النشاط</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">إخفاء زر طلب الموسيقى</string>
+  <string name="morphe_music_hide_ask_music_button_title">إخفاء زر \'اسأل Music\'</string>
   <string name="morphe_music_hide_cast_button_title">إخفاء زر البث</string>
   <string name="morphe_music_hide_history_button_title">إخفاء زر السجل</string>
   <string name="morphe_music_hide_search_button_title">إخفاء زر البحث</string>
-  <string name="morphe_music_hide_voice_search_button_title">إخفاء زر البحث الصوتي</string>
-  <string name="morphe_music_hide_sound_search_button_title">إخفاء زر البحث عن الصوت</string>
+  <string name="morphe_music_hide_voice_search_button_title">إخفاء زر \'البحث الصوتي\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">إخفاء زر \"البحث عن طريق الصوت\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">لم يتم تسجيل الدخول. اضغط للتكوين</string>
   <string name="morphe_music_scrobbling_log_out">تسجيل خروج</string>

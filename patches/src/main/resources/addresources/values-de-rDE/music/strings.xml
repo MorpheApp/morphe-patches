@@ -144,6 +144,8 @@ Exportordner: %s"</string>
   <string name="morphe_export_download_failed">Download konnte nicht exportiert werden</string>
   <string name="morphe_export_download_all_flyout_title">Alles auf Gerät exportieren</string>
   <string name="morphe_export_download_all_started">Alle Downloads werden exportiert</string>
+  <string name="morphe_export_download_all_title">Alle Downloads</string>
+  <string name="morphe_export_download_playlist_started">Downloads werden exportiert</string>
   <string name="morphe_export_download_all_running">Downloads werden bereits exportiert</string>
   <string name="morphe_export_download_all_saved">%1$s von %2$s Downloads nach %3$s exportiert</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Exportordner: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Videowerbungen ausblenden</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Audio-/Video-Umschalter ausblenden</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Schaltfläche „Herunterladen“ ausblenden</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Blendet die Download-Schaltfläche in der Podcast-Show aus</string>
   <string name="morphe_music_hide_explore_shelf_title">Entdecken-Bereich ausblenden</string>
   <string name="morphe_music_hide_filter_bar_title">Filterleiste ausblenden</string>
@@ -178,7 +179,6 @@ Exportordner: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Blendet den Button „Neu“ im Tab Mediathek aus</string>
   <string name="morphe_music_hide_list_shelves_title">Listen-Regale ausblenden</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Songtext-Fenster</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Schaltfläche „Teilen“ ausblenden</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Schaltfläche „Übersetzen“ ausblenden</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'Neu von\'-Regal ausblenden</string>
   <string name="morphe_music_hide_playlist_shelves_title">Playlist-Regale ausblenden</string>
@@ -202,7 +202,7 @@ Exportordner: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Titel ineinander überblenden</string>
   <string name="morphe_music_crossfade_enabled_title">Nahtlose Wiedergabe aktivieren</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Um Crossfade zu verwenden, ändern Sie den \"Standardclient\" der Spoof-Videostreams auf TV Simply oder visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Um Crossfade zu nutzen, ändern Sie den \"Standard-Client\" für \"Videostreams vortäuschen\" auf \"TV Simply\" oder \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Überblendungsmodus</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Gleiche Lautstärke</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Sanftes Halten</string>
@@ -237,7 +237,7 @@ Exportordner: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Nahtlose Wiedergabe fortgesetzt</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Der Videomodus ist nicht verfügbar, während die nahtlose Wiedergabe aktiviert ist</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade funktioniert nicht mit visionOS. Ändern Sie den \"Standardclient\" der Spoof-Videostreams auf TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade funktioniert nicht mit \"visionOS\". Ändern Sie den \"Standard-Client\" für \"Videostreams vortäuschen\" auf \"TV Simply\"</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade funktioniert nicht mit diesem Spoof-Stream-Client</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Beim Casten ist Crossfade deaktiviert</string>
   <string name="morphe_music_crossfade_about_how_title">Wie es funktioniert</string>
@@ -286,7 +286,6 @@ Wenn du Crossfade pausierst, um ein Musikvideo anzusehen, kann das dazu führen,
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Wischen zum Wechseln der Titel deaktivieren</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Verhindert das Springen zum nächsten oder vorherigen Titel durch Wischen nach links oder rechts im Player</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Wischen zum Wechseln der Titel deaktivieren</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Verhindert das Springen zum nächsten oder vorherigen Titel durch Wischen nach links oder rechts im Miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B-Loop</string>
@@ -463,11 +462,8 @@ Wenn du Crossfade pausierst, um ein Musikvideo anzusehen, kann das dazu führen,
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Artwork-Abstand</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Randhelligkeit</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Deckkraft</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Glas-Unschärfe</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Wie stark die Seite hinter dem Glas-Miniplayer unscharf ist (Android 14 und neuer). Bei 0 ist die Seite scharf zu sehen, vor Android 14 ist die Seite abgedeckt</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Helles Glas</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Tönt den Glas-Miniplayer weiß statt dunkel für ein helleres und klareres Glas</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumcover-Tönung</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Tönt den Glas-Miniplayer mit der Farbe des Albumcovers des gerade abgespielten Songs</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Rotierendes Artwork</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Macht das Artwork des Glas-Miniplayers rund und lässt es wie eine Schallplatte rotieren, während ein Song abgespielt wird</string>
@@ -481,12 +477,12 @@ Wenn du Crossfade pausierst, um ein Musikvideo anzusehen, kann das dazu führen,
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Schaltfläche „Aktivität“ ausblenden</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">\"Musik anfragen\"-Button ausblenden</string>
+  <string name="morphe_music_hide_ask_music_button_title">Schaltfläche „Musik fragen“ ausblenden</string>
   <string name="morphe_music_hide_cast_button_title">Cast-Button ausblenden</string>
   <string name="morphe_music_hide_history_button_title">Verlauf-Button ausblenden</string>
   <string name="morphe_music_hide_search_button_title">Suche-Button ausblenden</string>
-  <string name="morphe_music_hide_voice_search_button_title">Sprachsuche-Schaltfläche ausblenden</string>
-  <string name="morphe_music_hide_sound_search_button_title">Soundsuche-Schaltfläche ausblenden</string>
+  <string name="morphe_music_hide_voice_search_button_title">Schaltfläche „Sprachsuche“ ausblenden</string>
+  <string name="morphe_music_hide_sound_search_button_title">\"Tonsuche\"-Button ausblenden</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Nicht angemeldet. Tippe zum Konfigurieren</string>
   <string name="morphe_music_scrobbling_log_out">Abmelden</string>

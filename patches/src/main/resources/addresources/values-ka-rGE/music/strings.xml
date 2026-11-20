@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">ჩამოტვირთვების ექსპორტირება ვერ მოხერხდა</string>
   <string name="morphe_export_download_all_flyout_title">ყველას ექსპორტირება მოწყობილობაში</string>
   <string name="morphe_export_download_all_started">ყველა ჩამოტვირთვების ექსპორტირება</string>
+  <string name="morphe_export_download_all_title">ყველა ჩამოტვირთვა</string>
+  <string name="morphe_export_download_playlist_started">გადმოწერვების ექსპორტი</string>
   <string name="morphe_export_download_all_running">ჩამოტვირთვების ექსპორტირება უკვე მიმდინარეობს</string>
   <string name="morphe_export_download_all_saved">%2$s ჩამოტვირთვიდან %1$s ექსპორტირებულია %3$s-ში</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">ვიდეორეკლამების დამალვა</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">დამალეთ აუდიოს / ვიდეოს გადამრთველი</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">ჩამოტვირთვის ღილაკის დამალვა</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">მალავს ჩამოტვირთვის ღილაკს პოდკასთის შოუში</string>
   <string name="morphe_music_hide_explore_shelf_title">დამალეთ Explore-ის თარო</string>
   <string name="morphe_music_hide_filter_bar_title">მოიხსნათ ფილტრების პანელი</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">მალავს ღილაკს \"ახალი\" ბიბლიოთეკის ჩანართში</string>
   <string name="morphe_music_hide_list_shelves_title">სიების თვლების დამალვა</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">ტექსტების პანელი</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">გაზიარების ღილაკის დამალვა</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">თარგმნის ღილაკის დამალვა</string>
   <string name="morphe_music_hide_new_from_shelf_title">დამალეთ თარო „ახალია“</string>
   <string name="morphe_music_hide_playlist_shelves_title">ფლეილისტების თვლების დამალვა</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">ტრეკების გლუვად გადაბმა ერთმანეთში</string>
   <string name="morphe_music_crossfade_enabled_title">კროსფეიდის ჩართვა</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">crossfade-ის გამოსაყენებლად, შეცვალეთ Spoof ვიდეო ნაკადების \"Default client\" TV Simply-ით ან visionOS-ით</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">crossfade-ის გამოსაყენებლად, შეცვალეთ \'Spoof video streams\'-ის \'Default client\' მნიშვნელობა \'TV Simply\'-ით ან \'visionOS\'-ით</string>
   <string name="morphe_music_crossfade_curve_title">გაქრობის მრუდი</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">თანაბარი სიმძლავრე</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">მსუბუქი შეკავება</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade-ი განახლდა</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">ვიდეო რეჟიმი მიუწვდომელია Crossfade-ის ჩართვისას</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade არ მუშაობს visionOS-თან. შეცვალეთ Spoof ვიდეო ნაკადების \"Default client\" TV Simply-ით</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade არ მუშაობს \'visionOS\'-თან. შეცვალეთ \'Spoof video streams\'-ის \'Default client\' მნიშვნელობა \'TV Simply\'-ით</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade არ მუშაობს ამ spoof ნაკადის კლიენტთან</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade გამორთულია ტრანსლაციისას</string>
   <string name="morphe_music_crossfade_about_how_title">როგორ მუშაობს</string>
@@ -286,7 +286,6 @@ crossfade-ის შეჩერებამ მუსიკალური ვ�
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">გათიშეთ სვაიპი ტრეკის შესაცვლელად</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">აფერხებს შემდეგ ან წინა ტრეკზე გადასვლას პლეიერზე მარცხნივ ან მარჯვნივ სვაიპით</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">გათიშეთ სვაიპი ტრეკის შესაცვლელად</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">აფერხებს შემდეგ ან წინა ტრეკზე გადასვლას მინიპლეიერზე მარცხნივ ან მარჯვნივ სვაიპით</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B ციკლი</string>
@@ -463,11 +462,8 @@ crossfade-ის შეჩერებამ მუსიკალური ვ�
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">გلافის დაცილება</string>
   <string name="morphe_music_miniplayer_glass_rim_title">კიდის სიკაშკაშე</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">გაუმჭვირვალობა</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">მინისებრი ბლური</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">რამდენად იქნება ბლურირებული გვერდი მინისებრი მინი-პლეიერის უკან (Android 14 და უფრო ახალი). 0-ის დროს გვერდი მკვეთრად ჩანს, ხოლო Android 14-მდე გვერდი დაფარულია</string>
-  <string name="morphe_music_miniplayer_glass_light_title">ღია მინისი</string>
   <string name="morphe_music_miniplayer_glass_light_summary">მინისებრი მინი-პლეიერი ელვებს თეთრად და არა მუქად, უფრო მსუბუქი და გამჭვირვალე მინისთვის</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">ალბომის გلافის ელფერი</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">მინისებრი მინი-პლეიერი ელვებს იმ სიმღერის ალბომის გلافის ფერით, რომელიც უკვრება</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">მბრუნავი გلافის გამოსახულება</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">მინისებრი მინი-პლეიერის გلافს ხდის მრგვალს და ატრიალებს მას, როგორც ფირფიტას, სიმღერის დაკვრისას</string>
@@ -481,12 +477,12 @@ crossfade-ის შეჩერებამ მუსიკალური ვ�
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">აქტივობის ღილაკის დამალვა</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Ask Music ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_ask_music_button_title">დამალეთ ღილაკი \'Ask Music\'</string>
   <string name="morphe_music_hide_cast_button_title">Cast ღილაკის დამალვა</string>
   <string name="morphe_music_hide_history_button_title">ისტორიის ღილაკის დამალვა</string>
   <string name="morphe_music_hide_search_button_title">ძებნის ღილაკის დამალვა</string>
-  <string name="morphe_music_hide_voice_search_button_title">ხმოვანი ძიების ღილაკის დამალვა</string>
-  <string name="morphe_music_hide_sound_search_button_title">ბგერის ძებნის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_voice_search_button_title">ღილაკის \"ხმოვანი ძებნის\" დამალვა</string>
+  <string name="morphe_music_hide_sound_search_button_title">\'ხმოვანი ძებნების\' ღილაკის დამალვა</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">არ ხართ ავტორიზებული. კონფიგურაციისთვის დააჭირეთ</string>
   <string name="morphe_music_scrobbling_log_out">გასვლა</string>

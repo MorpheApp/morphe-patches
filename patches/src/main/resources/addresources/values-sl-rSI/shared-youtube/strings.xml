@@ -141,15 +141,15 @@ Kliknite V redu za odpiranje Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Poskusite omogočiti: Ponarejanje video pretočnih poti &gt; Prijava v Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Privzeti odjemalec</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava v Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Za Android VR je potrebna ločena prijava. Dotaknite se tukaj za nadaljevanje</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutno ste prijavljeni v Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava v \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' zahteva ločeno prijavo. Dotaknite se tukaj za nadaljevanje</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutno ste prijavljeni v \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Če želite uporabljati to funkcijo, spremenite \'Privzeti odjemalec\' v Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prijava v Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijava v VR lahko odpravi težave pri predvajanju za nekatere uporabnike
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Če želite uporabljati to funkcijo, spremenite \'Privzeti odjemalec\' v \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prijava v \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijava v \"Android VR\" lahko odpravi težave pri predvajanju za nekatere uporabnike
 
-Pritisnite \"nadaljujte\", da se prijavite"</string>
+Če se želite prijaviti, pritisnite spodaj Nadaljuj"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odjava</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Navodila</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -170,33 +170,33 @@ Pritisnite \"nadaljujte\", da se prijavite"</string>
 • Ponovno se boste morali prijaviti, če spremenite geslo Google ali odstranite napravo iz nastavitev Google"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prijava preko mobilne spletne strani</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Neobvezno: prijavite se na spletno stran YouTube, da predvajate videoposnetke s svojim računom. Dotaknite se tukaj za nadaljevanje</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Trenutno ste prijavljeni v mobilno spletno stran</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Trenutno ste prijavljeni v \"Mobilni splet\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Če želite uporabljati to funkcijo, spremenite \'Privzeti odjemalec\' v Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prijava v Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web predvaja videoposnetke brez prijave ali z prijavo na spletno mesto YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Če želite uporabljati to funkcijo, spremenite \'Privzeti odjemalec\' v \'Mobilni splet\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prijavite se v \'Mobilni splet\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobilni splet' predvaja videoposnetke brez prijave ali z prijavo na spletno mesto YouTube
 
-• Če ste prijavljeni, lahko predvajate videoposnetke, za katere je potreben račun, npr. videoposnetke z omejitvijo starosti
-• Stran za prijavo v račun Google se odpre v tej aplikaciji
+• Če ste prijavljeni, lahko predvajate videoposnetke, ki zahtevajo račun, na primer videoposnetke z omejitvijo starosti
+• Stran za prijavo v Google se odpre v tej aplikaciji
 • Prijava se uporablja samo za pridobivanje videoposnetkov, ki jih predvajate
 • Prijava se shrani samo na tej napravi
 
-Za prijavo pritisnite spodnji gumb za nadaljevanje"</string>
+Za prijavo pritisnite spodaj Nadaljujte"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Prijava shranjena
 
-• Nastavitve Morphe ne bodo uvozile/izvozile prijave v mobilno spletno različijo
+• Nastavitve aplikacije Morphe ne bodo uvozile/izvozile prijave za \"mobilno spletno različico\"
 • Če Google zaključi prijavo, se videi predvajajo brez prijave, dokler se ponovno ne prijavite
-• Odjava hkrati odjavi to napravo tudi s spletne strani YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Prijava v mobilno spletno različijo je potekla, poskusite se znova prijaviti v mobilno spletno različijo</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odjavljeno iz mobilne spletne različije</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView ni na voljo. Namestite ga ali omogočite, da se lahko prijavite</string>
+• Odjava tudi odjavi to napravo s spletne strani YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Prijava v mobilno spletno različico je potekla, poskusite se znova prijaviti v \"mobilno spletno različico\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odjavljeni iz \"mobilne spletne različice\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" ni na voljo. Namestite ga ali omogočite, da se lahko prijavite</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 je začasno nedostopen (API je potekel)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Iztek prijave v VR, poskusite se znova prijaviti v VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Iztek prijave v \'Android VR\', poskusite se znova prijaviti v VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 je začasno nedostopen (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 je začasno nedostopen</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Ni se mogoče prijaviti v VR, avtentikacija na spletnem mestu ni bila odobrena</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ni se mogoče prijaviti v VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Odjavljeni ste iz VR</string>
+  <string name="morphe_oauth2_toast_reset">Odjavljeni ste iz \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Neveljavni znak prijave v VR, poskusite se znova prijaviti v VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Nadzor predvajanja v obvestilih</string>
@@ -254,7 +254,7 @@ Za prijavo pritisnite spodnji gumb za nadaljevanje"</string>
   <string name="morphe_replace_music_with_youtube_title">Spremeni povezave za deljenje v youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Nadomešča music.youtube.com z youtube.com v skupnih povezavah.</string>
   <string name="morphe_replace_links_with_shortener_title">Spremenite povezave za deljenje v youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Prisilno uporablja skrajšano obliko URL-jev youtu.be za videe</string>
+  <string name="morphe_replace_links_with_shortener_summary">Prisili videoposnetke k uporabi skrajšanega URL formata \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Samodejno</string>
@@ -271,11 +271,11 @@ Za prijavo pritisnite spodnji gumb za nadaljevanje"</string>
   <string name="morphe_debug_litho_entry_disabled">Onemogočeno</string>
   <string name="morphe_debug_litho_entry_path">Pot</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Pot in predrazrednik</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho beleženje beleži komponente razmerja aplikacije, vključno z besedilom na zaslonu za nekatere UI komponente.
+  <string name="morphe_debug_litho_user_dialog_message">"Beleži komponente razmerja aplikacije, vključno z besedilom na zaslonu za nekatere UI komponente.
 
 To lahko pomaga pri prepoznavanju komponent pri ustvarjanju prilagojenih filtrov.
 
-Vendar bo to beležilo tudi nekaj uporabniških podatkov, kot je vaš IP naslov"</string>
+Vendar pa bo to beležilo tudi nekaj uporabniških podatkov, kot je vaš IP naslov"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtri po meri</string>
   <string name="morphe_custom_filter_screen_summary">Nastavite prilagodljive filtre tako, da skrijete katerokoli komponento</string>

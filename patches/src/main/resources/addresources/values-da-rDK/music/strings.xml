@@ -144,6 +144,8 @@ Eksportermappe: %s"</string>
   <string name="morphe_export_download_failed">Kunne ikke eksportere downloaden</string>
   <string name="morphe_export_download_all_flyout_title">Eksporter alle til enhed</string>
   <string name="morphe_export_download_all_started">Eksporterer alle downloads</string>
+  <string name="morphe_export_download_all_title">Alle downloads</string>
+  <string name="morphe_export_download_playlist_started">Eksporterer downloads</string>
   <string name="morphe_export_download_all_running">Downloads bliver allerede eksporteret</string>
   <string name="morphe_export_download_all_saved">Eksporterede %1$s ud af %2$s downloads til %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Eksportermappe: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Skjul videoannoncer</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Skjul lyd/video-skift</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Skjul Download-knappen</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Skjuler Download-knappen i podcastshowet</string>
   <string name="morphe_music_hide_explore_shelf_title">Skjul Udforsk-hylden</string>
   <string name="morphe_music_hide_filter_bar_title">Skjul filterlinje</string>
@@ -178,7 +179,6 @@ Eksportermappe: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Skjuler Ny-knappen i fanen Bibliotek</string>
   <string name="morphe_music_hide_list_shelves_title">Skjul listehylder</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Tekstpanel</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Skjul Del-knappen</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skjul Oversæt-knappen</string>
   <string name="morphe_music_hide_new_from_shelf_title">Skjul \'Fra\' hylden</string>
   <string name="morphe_music_hide_playlist_shelves_title">Skjul playlistehylder</string>
@@ -202,7 +202,7 @@ Eksportermappe: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Blander numre glidende over i hinanden</string>
   <string name="morphe_music_crossfade_enabled_title">Aktivér crossfade</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">For at bruge crossfade, skal du ændre \'Default client\' for Spoof-videostreams til TV Simply eller visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">For at bruge crossfade skal du ændre \'Standardklient\' under \'Spoof videostreams\' til \'TV Simply\' eller \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Fade-kurve</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Lige effekt</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtil udskydning</string>
@@ -237,7 +237,7 @@ Eksportermappe: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade genoptaget</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videotilstand er ikke tilgængelig, når crossfade er aktiveret</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade fungerer ikke med visionOS. Ændr \'Default client\' for Spoof-videostreams til TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade fungerer ikke med \'visionOS\'. Ændr \'Standardklient\' under \'Spoof videostreams\' til \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade fungerer ikke med denne spoof-streamklient</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade er slået fra under casting</string>
   <string name="morphe_music_crossfade_about_how_title">Sådan fungerer det</string>
@@ -286,7 +286,6 @@ Hvis du sætter crossfade på pause for at se en musikvideo, kan nogle videoer f
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Deaktivér strygning for at skifte nummer tackles</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Forhindrer spring til næste eller forrige nummer ved at stryge til venstre eller højre på afspilleren</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Deaktivér strygning for at skifte nummer</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Forhindrer spring til næste eller forrige nummer ved at stryge til venstre eller højre på miniafspilleren</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B-loop</string>
@@ -463,11 +462,8 @@ Hvis du sætter crossfade på pause for at se en musikvideo, kan nogle videoer f
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding for albumcover</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kantens lysstyrke</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacitet</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Glass-sløring</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Hvor meget siden bag glass-miniafspilleren er sløret (Android 14 og nyere). Ved 0 vises siden skarpt, og før Android 14 er siden dækket</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Lyst glas</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Farver glass-miniafspilleren hvid i stedet for mørk for et lysere og klarere glas</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Farvning fra albumcover</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Farver glass-miniafspilleren med farven fra albumcoveret på den sang, der afspilles</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Roterende albumcover</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Gør albumcoveret i glass-miniafspilleren rundt og roterer det som en plade, mens en sang afspilles</string>
@@ -481,12 +477,12 @@ Hvis du sætter crossfade på pause for at se en musikvideo, kan nogle videoer f
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Skjul knappen Aktivitet</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Skjul knappen Anmod om musik</string>
+  <string name="morphe_music_hide_ask_music_button_title">Skjul knappen \'Spørg Musik\'</string>
   <string name="morphe_music_hide_cast_button_title">Skjul cast-knap</string>
   <string name="morphe_music_hide_history_button_title">Skjul historikknap</string>
   <string name="morphe_music_hide_search_button_title">Skjul søgeknap</string>
-  <string name="morphe_music_hide_voice_search_button_title">Skjul stemmesøgningsknappen</string>
-  <string name="morphe_music_hide_sound_search_button_title">Skjul lydsøgningsknappen</string>
+  <string name="morphe_music_hide_voice_search_button_title">Skjul knappen \'Stemmesøgning\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">Skjul knap til \"Lydsøgning\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ikke logget ind. Tryk for at konfigurere</string>
   <string name="morphe_music_scrobbling_log_out">Log ud</string>

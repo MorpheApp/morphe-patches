@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">לא ניתן היה לייצא את ההורדה</string>
   <string name="morphe_export_download_all_flyout_title">ייצוא הכל למכשיר</string>
   <string name="morphe_export_download_all_started">מייצא את כל ההורדות</string>
+  <string name="morphe_export_download_all_title">כל ההורדות</string>
+  <string name="morphe_export_download_playlist_started">מייצא הורדות</string>
   <string name="morphe_export_download_all_running">ההורדות כבר נמצאות בתהליך ייצוא</string>
   <string name="morphe_export_download_all_saved">יוצאו %1$s מתוך %2$s הורדות ל-%3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">הסתר מודעות וידאו</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">הסתר החלפת שמע/וידאו</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">הסתר כפתור הורדה</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">מסתיר את כפתור ההורדה במסך הפודקאסט</string>
   <string name="morphe_music_hide_explore_shelf_title">הסתר מדף \'explore\'</string>
   <string name="morphe_music_hide_filter_bar_title">הסתר סרגל סינון</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">מסתיר את לחצן \'חדש\' בלשונית הספרייה</string>
   <string name="morphe_music_hide_list_shelves_title">הסתר מדפים ברשימה</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">פאנל מילים</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">הסתר לחצן שיתוף</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">הסתר לחצן תרגום</string>
   <string name="morphe_music_hide_new_from_shelf_title">הסתר מדף \'חדש מ...\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">הסתר מדפי פלייליסט</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">ערבבו בצורה חלקה רצועות זו בזו</string>
   <string name="morphe_music_crossfade_enabled_title">הפעלת מעבר הדרגתי</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">כדי להשתמש ב-crossfade, שנה את \'Default client\' של זרמי הווידאו המזוייפים ל-TV Simply או visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">כדי להשתמש ב-crossfade, שנה את \'Default client\' תחת \'Spoof video streams\' ל-\'TV Simply\' או \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">עקומת דעיכה</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">עוצמה שווה</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">השהייה עדינה</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">המעבר בין השירים התחדש</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">מצב וידאו אינו זמין כאשר מעבר בין השירים מופעל</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade אינו עובד עם visionOS. שנה את \'Default client\' של זרמי הווידאו המזוייפים ל-TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade אינו עובד עם \'visionOS\'. שנה את \'Default client\' תחת \'Spoof video streams\' ל-\'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade אינו עובד עם לקוח זרם מזויף זה</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">קרוספייד כבוי בזמן שידור</string>
   <string name="morphe_music_crossfade_about_how_title">איך זה עובד</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">בטל החלקה לשינוי רצועה</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">מונע דילוג לרצועה הבאה או הקודמת על ידי החלקה שמאלה או ימינה בנגן</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">בטל החלקה לשינוי רצועה</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">מונע דילוג לרצועה הבאה או הקודמת על ידי החלקה שמאלה או ימינה בנגן הממוזער</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">לולאת A-B</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">מרווח עטיפה</string>
   <string name="morphe_music_miniplayer_glass_rim_title">בהירות השוליים</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">אטימות</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">טשטוש זכוכית</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">עד כמה הדף מאחורי מיני-פלייר הזכוכית מטושטש (Android 14 ומעלה). ב-0 הדף נראה חד, ולפני Android 14 הדף מכוסה.</string>
-  <string name="morphe_music_miniplayer_glass_light_title">זכוכית בהירה</string>
   <string name="morphe_music_miniplayer_glass_light_summary">צובע את מיני-פלייר הזכוכית בלבן במקום בכהה, למראה זכוכית בהירה וצלולה יותר.</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">גוון עטיפת אלבום</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">צובע את מיני-פלייר הזכוכית בגוון של עטיפת האלבום של השיר שמתנגן.</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">עטיפה מסתובבת</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">הופך את העטיפה של מיני-פלייר הזכוכית לעגולה, ומסובב אותה כמו תקליט בזמן ששיר מתנגן.</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">הסתר לחצן פעילות</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">הסתר לחצן בקש מוזיקה</string>
+  <string name="morphe_music_hide_ask_music_button_title">הסתר לחצן \'שאל את המוזיקה\'</string>
   <string name="morphe_music_hide_cast_button_title">הסתר לחצן שידור</string>
   <string name="morphe_music_hide_history_button_title">הסתר לחצן היסטוריה</string>
   <string name="morphe_music_hide_search_button_title">הסתר לחצן חיפוש</string>
-  <string name="morphe_music_hide_voice_search_button_title">הסתר את לחצן החיפוש הקולי</string>
-  <string name="morphe_music_hide_sound_search_button_title">הסתר את לחצן חיפוש הצלילים</string>
+  <string name="morphe_music_hide_voice_search_button_title">הסתר לחצן \'חיפוש קולי\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">הסתר את לחצן \"חיפוש קולי\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">לא מחובר. הקש להגדרה</string>
   <string name="morphe_music_scrobbling_log_out">התנתק</string>

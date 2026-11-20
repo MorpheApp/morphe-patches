@@ -144,6 +144,8 @@ Uitvoergids: %s"</string>
   <string name="morphe_export_download_failed">Kon nie die aflaai uitvoer nie</string>
   <string name="morphe_export_download_all_flyout_title">Voer alles uit na toestel</string>
   <string name="morphe_export_download_all_started">Voer alle aflaaiings uit</string>
+  <string name="morphe_export_download_all_title">Alle aflaaiings</string>
+  <string name="morphe_export_download_playlist_started">Exporteer aflaai-items</string>
   <string name="morphe_export_download_all_running">Aflaaiings word reeds uitgevoer</string>
   <string name="morphe_export_download_all_saved">Het %1$s van %2$s aflaaiings uitgevoer na %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Uitvoergids: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Versteek video-advertensies</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Verberg Klank/Video-wisselknoppie</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Versteek die aflaaiknoppie</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Versteek die aflaaiknoppie in die podcast-program</string>
   <string name="morphe_music_hide_explore_shelf_title">Verberg Verken-rak</string>
   <string name="morphe_music_hide_filter_bar_title">Versteek filterbalk</string>
@@ -178,7 +179,6 @@ Uitvoergids: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Verberg die Nuut-knoppie in die Biblioteek-tab</string>
   <string name="morphe_music_hide_list_shelves_title">Verberg lys-rakke</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Lirieke paneel</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Verberg Deel-knoppie</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Verberg Vertaal-knoppie</string>
   <string name="morphe_music_hide_new_from_shelf_title">Verberg \'Nuut van\'-rak</string>
   <string name="morphe_music_hide_playlist_shelves_title">Verberg playlist-rakke</string>
@@ -202,7 +202,7 @@ Uitvoergids: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Meng snitte glad in mekaar</string>
   <string name="morphe_music_crossfade_enabled_title">Aktiveer kruisverdof</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Om crossfade te gebruik, verander die Spoof-videostrome se \'Default client\' na TV Simply of visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Om crossfade te gebruik, verander die \'Spoof video streams\' \'Default client\' na \'TV Simply\' of \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Vervaagkurwe</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Gelyke krag</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtiele vas</string>
@@ -237,7 +237,7 @@ Uitvoergids: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Die oorgangsvervaging hervat</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videoweergave is nie beskikbaar terwyl oorgangsvervaging geaktiveer is nie</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade werk nie met visionOS nie. Verander die Spoof-videostrome se \'Default client\' na TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade werk nie met \'visionOS\' nie. Verander die \'Spoof video streams\' \'Default client\' na \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade werk nie met hierdie spoof-stroomkliënt nie</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Oorgangsvervaging is af terwyl jy cast</string>
   <string name="morphe_music_crossfade_about_how_title">Hoe dit werk</string>
@@ -286,7 +286,6 @@ As jy oorgangsvervaging onderbreek om 'n musiekvideo te kyk, kan sommige video's
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Deaktiveer swiep om snit te verander</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Voorkom dat daar na die volgende of vorige snit gespring word deur links of regs op die speler te swiep</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Deaktiveer swiep om snit te verander</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Voorkom dat daar na die volgende of vorige snit gespring word deur links of regs op die miniplayer te swiep</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B-lus</string>
@@ -463,11 +462,8 @@ As jy oorgangsvervaging onderbreek om 'n musiekvideo te kyk, kan sommige video's
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Kunswerk-padding</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Randhelderheid</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Dekking</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Glas-waas</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Hoeveel die bladsy agter die glas mini-speler gewaas is (Android 14 en later). By 0 is die bladsy skerp sigbaar, en voor Android 14 word die bladsy bedek</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Ligte glas</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Tint die glas mini-speler wit in plaas van donker, vir \'n ligter en helderder glas</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumkunste-tint</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Tint die glas mini-speler met die kleur van die albumkuns van die liedjie wat speel</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Draaiekunswerk</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Maak die kunswerk van die glas mini-speler rond, en laat dit soos \'n plaat draai terwyl \'n liedjie speel</string>
@@ -481,12 +477,12 @@ As jy oorgangsvervaging onderbreek om 'n musiekvideo te kyk, kan sommige video's
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Verberg Aktiwiteit-knoppie</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Verberg Vra Musiek-knoppie</string>
+  <string name="morphe_music_hide_ask_music_button_title">Verberg \'Vra Musiek\'-knoppie</string>
   <string name="morphe_music_hide_cast_button_title">Verberg Cast-knoppie</string>
   <string name="morphe_music_hide_history_button_title">Verberg Geskiedenis-knoppie</string>
   <string name="morphe_music_hide_search_button_title">Verberg Soek-knoppie</string>
-  <string name="morphe_music_hide_voice_search_button_title">Verberg stemsoektogknoppie</string>
-  <string name="morphe_music_hide_sound_search_button_title">Verberg klanksoektogknoppie</string>
+  <string name="morphe_music_hide_voice_search_button_title">Verberg \'Stemsoektog\'-knoppie</string>
+  <string name="morphe_music_hide_sound_search_button_title">Verberg \'Klanksoek\'-knoppie</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Nie aangemeld nie. Tik om te konfigureer</string>
   <string name="morphe_music_scrobbling_log_out">Uitlog</string>

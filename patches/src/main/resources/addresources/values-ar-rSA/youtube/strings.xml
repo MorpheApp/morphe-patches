@@ -205,8 +205,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">إخفاء رف المنشورات</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">إخفاء زر المتجر</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">إخفاء زر اشتراك</string>
   <string name="morphe_explore_menu_screen_title">قائمة استكشاف</string>
   <string name="morphe_explore_menu_screen_summary">اختر المكونات التي تظهر في قائمة استكشاف</string>
   <string name="morphe_hide_courses_menu_title">إخفاء قائمة الدورات التدريبية</string>
@@ -281,7 +279,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">إخفاء زر التعليقات</string>
   <string name="morphe_hide_post_comments_preview_title">إخفاء تعليقات المعاينة</string>
   <string name="morphe_hide_post_comments_preview_summary">يُخفي تعليقات المعاينة أسفل المنشورات</string>
-  <string name="morphe_hide_post_share_button_title">إخفاء زر مشاركة</string>
   <string name="morphe_hide_post_share_button_summary">زر تنزيل صور المنشور مرسوم بجانب زر مشاركة، لذلك فهو مخفي أيضًا</string>
   <string name="morphe_hide_ask_gemini_button_title">إخفاء زر \'اسأل Gemini\'</string>
   <string name="morphe_hide_ask_gemini_button_summary">يخفي زر \'اسأل Gemini\' في أسفل لوحة \'طرح سؤال حول هذا الفيديو\'</string>
@@ -296,9 +293,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_in_this_video_button_title">إخفاء زر \'في هذا الفيديو\'</string>
   <string name="morphe_hide_info_panels_title">إخفاء لوحات المعلومات</string>
   <string name="morphe_hide_info_panels_summary">يخفي لوحات المعلومات السياقية، مثل المعلومات الطبية</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">إخفاء زر الانضمام</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">إخفاء زر \'إعادة عرض المحادثة المباشرة\'</string>
@@ -314,8 +308,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">يخفي تدرج عناصر تحكم المشغل عند تحريك إصبعك أثناء الضغط للتسريع</string>
   <string name="morphe_hide_timed_reactions_title">إخفاء ردود الفعل المؤقتة</string>
   <string name="morphe_hide_timed_reactions_summary">يخفي الميزة التي تسمح للمستخدمين بالتفاعل باستخدام الرموز التعبيرية في قسم التعليقات والمحادثة المباشرة</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">إخفاء قائمة \'المساعدة &amp; الملاحظات\'</string>
   <string name="morphe_hide_help_feedback_menu_summary">يخفي قائمة \'المساعدة &amp; الملاحظات\' عند استخدام زر النقاط الثلاث، مثل نتائج البحث</string>
   <string name="morphe_hide_handle_title">إخفاء المعرّف</string>
   <string name="morphe_hide_handle_summary">يخفي معرّف قناتك في تبويب \'أنت\'</string>
@@ -358,7 +350,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">إخفاء زر طرح سؤال</string>
   <string name="morphe_hide_channel_profile_button_title">إخفاء القناة وزر اشتراك</string>
   <string name="morphe_hide_channel_profile_button_summary">يخفي صورة القناة وزر اشتراك في بداية شريط الإجراءات</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">إخفاء زر اشتراك</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">يخفي زري اشتراك والانضمام بجوار الصورة الرمزية للقناة في بداية شريط الإجراءات</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">إخفاء زر المقطع</string>
@@ -434,7 +425,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">تم إخفاء التعليق بواسطة Morphe...</string>
   <string name="morphe_minimal_comments_button_title">تمكين زر التعليقات المبسّط</string>
   <string name="morphe_minimal_comments_button_summary">يخفي البطاقات المنزلقة ومحدد الصفحات الخاص بها، الظاهرة على زر التعليقات</string>
-  <string name="morphe_hide_comments_thanks_button_title">إخفاء زر شكرًا</string>
   <string name="morphe_hide_comments_timestamp_button_title">إخفاء زر الطابع الزمني</string>
   <string name="morphe_hide_comments_top_fans_button_title">إخفاء زر \'أهم المعجبين\'</string>
   <string name="morphe_hide_comments_translate_button_title">إخفاء زر الترجمة</string>
@@ -489,7 +479,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">إخفاء زر الترجمة</string>
   <string name="morphe_hide_cast_button_title">إخفاء زر البث</string>
-  <string name="morphe_hide_cast_button_summary">يخفي زر البث في مشغل الفيديو وشريط الأدوات</string>
   <string name="morphe_hide_collapse_button_title">إخفاء زر الطَيّ</string>
   <string name="morphe_hide_fullscreen_button_title">إخفاء زر ملء الشاشة</string>
   <string name="morphe_hide_player_control_buttons_background_title">إخفاء خلفية عناصر التحكم بالمشغل</string>
@@ -1109,7 +1098,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_watch_later_navigation_label">المشاهدة لاحقًا</string>
   <string name="morphe_show_settings_button_title">عرض زر الإعدادات</string>
   <string name="morphe_show_settings_button_type_title">إجراء زر الإعدادات</string>
-  <string name="morphe_show_settings_button_type_summary">عند التمكين، يفتح النقر إعدادات Morphe، ويفتح الضغط المطوّل إعدادات YouTube، قم بتعطيله للتبديل بينهما.</string>
+  <string name="morphe_show_settings_button_type_summary">عند التمكين، يفتح النقر إعدادات Morphe، ويفتح الضغط المطوّل إعدادات YouTube، قم بتعطيله للتبديل بينهما</string>
   <string name="morphe_navigation_buttons_order_title">ترتيب أزرار التنقل</string>
   <string name="morphe_navigation_buttons_order_summary">اسحب الأزرار لتغيير ترتيبها في شريط التنقل</string>
   <string name="morphe_swap_create_with_notifications_button_title">تبديل زر الإنشاء بزر الإشعارات</string>
@@ -1153,9 +1142,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_glass_size_button_spacing">تباعد الزر</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">الأزرار المعروضة: %1$s من %2$s</string>
   <string name="morphe_hide_toolbar_chat_button_title">إخفاء زر دردشة</string>
+  <string name="morphe_hide_toolbar_companion_button_title">إخفاء زر الرفيق</string>
   <string name="morphe_hide_toolbar_microphone_button_title">إخفاء زر الميكروفون</string>
   <string name="morphe_hide_toolbar_search_button_title">إخفاء زر البحث</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">عند التمكين، يفتح النقر إعدادات Morphe، ويفتح الضغط المطوّل إعدادات YouTube، قم بتعطيله للتبديل بينهما.</string>
   <string name="morphe_toolbar_buttons_order_title">ترتيب أزرار شريط الأدوات</string>
   <string name="morphe_toolbar_buttons_order_summary">اسحب الأزرار لتغيير ترتيبها في شريط الأدوات</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1186,43 +1175,28 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_disable_shorts_double_tap_to_like_title">تعطيل النقر المزدوج للإعجاب في Shorts</string>
   <string name="morphe_hide_shorts_ai_button_title">إخفاء زر الذكاء الاصطناعي</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">إخفاء علامة \'مُدبلج تلقائيًا\'</string>
-  <string name="morphe_hide_shorts_channel_bar_title">إخفاء شريط القناة</string>
-  <string name="morphe_hide_shorts_comments_button_title">إخفاء زر التعليقات</string>
   <string name="morphe_hide_shorts_effect_button_title">إخفاء زر التأثير</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">إخفاء تسمية رابط الفيديو</string>
   <string name="morphe_hide_shorts_gesture_hints_title">إخفاء تلميحات الإيماءات</string>
   <string name="morphe_hide_shorts_green_screen_button_title">إخفاء زر \'الشاشة الخضراء\'</string>
   <string name="morphe_hide_shorts_hashtag_button_title">إخفاء زر هاشتاغ</string>
   <string name="morphe_hide_shorts_info_panel_title">إخفاء لوحة المعلومات</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">إخفاء زر الانضمام</string>
   <string name="morphe_hide_shorts_like_button_title">إخفاء زر أعجبني</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">إخفاء التأثير الفوّار لـزر أعجبني</string>
   <string name="morphe_hide_shorts_live_preview_title">إخفاء مشاهدة البث المباشر</string>
   <string name="morphe_hide_shorts_location_label_title">إخفاء تسمية الموقع</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">إخفاء شريط التنقل</string>
   <string name="morphe_hide_shorts_new_posts_button_title">إخفاء زر \'منشورات جديدة\'</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">إخفاء أزرار واجهة التوقف</string>
-  <string name="morphe_hide_shorts_preview_comment_title">إخفاء تعليق المعاينة</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">إخفاء زر ريمكس</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">إخفاء زر حفظ</string>
   <string name="morphe_hide_shorts_save_sound_button_title">إخفاء زر \'حفظ الموسيقى\'</string>
   <string name="morphe_hide_shorts_search_suggestions_title">إخفاء اقتراحات البحث</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">إخفاء زر مشاركة</string>
-  <string name="morphe_hide_shorts_shop_button_title">إخفاء زر المتجر</string>
   <string name="morphe_hide_shorts_sound_button_title">إخفاء زر الصوت</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">إخفاء تسمية بيانات التعريف الصوتية</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">إخفاء زر اشتراك</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">إخفاء زر \'شراء Super Thanks\'</string>
   <string name="morphe_hide_shorts_tagged_products_title">إخفاء المنتجات الموسومة</string>
   <string name="morphe_hide_shorts_upcoming_button_title">إخفاء زر الفيديوهات القادمة</string>
   <string name="morphe_hide_shorts_use_sound_button_title">إخفاء زر \'استخدام هذا الصوت\'</string>
   <string name="morphe_hide_shorts_use_template_button_title">إخفاء زر \'استخدام هذا النموذج\'</string>
-  <string name="morphe_hide_shorts_video_title_title">إخفاء عنوان الفيديو</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">إخفاء الفيديو المقترح في شاشة النهاية</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"يخفي عنصر الفيديو المقترح الذي يظهر بعد انتهاء الفيديو
@@ -1732,8 +1706,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">يُعطي الأولوية لأعلى جودة فيديو متاحة على حساب كفاءة الترميز</string>
   <string name="morphe_video_quality_prioritize_dialog">إذا تم إيقاف هذا الإعداد، فقد لا تعرض الفيديوهات القديمة خيارات جودة الفيديو</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">السماح بترميز AV1 لـ Android VR / visionOS</string>
-  <string name="morphe_spoof_video_streams_av1_summary">يسمح بفك ترميز AV1 برمجيًا عند استخدام العميل Android VR / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_title">السماح بترميز AV1 لـ \'Android VR\' / \'visionOS\'</string>
+  <string name="morphe_spoof_video_streams_av1_summary">يسمح بفك ترميز AV1 برمجيًا عند استخدام العميل \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"قد يؤدي تمكين هذا الإعداد إلى استخدام فك تشفير AV1 البرمجي.
 
 قد يتسبب تشغيل الفيديو باستخدام AV1 في التقطيع أو إسقاط الإطارات"</string>
@@ -1970,7 +1944,6 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">لغة الترجمة</string>
   <string name="morphe_live_chat_translate_exclude_title">اللغات المستبعدة</string>
   <string name="morphe_live_chat_translate_exclude_summary">رموز اللغات مفصولة بفواصل مثل id,en. الرسائل بهذه اللغات غير مترجمة</string>
-  <string name="morphe_live_chat_translate_provider_title">مزوّد الترجمة</string>
   <string name="morphe_live_chat_translate_provider_google">ترجمة Google</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">مفتاح DeepL API</string>

@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Жүктемені экспорттау мүмкін болмады</string>
   <string name="morphe_export_download_all_flyout_title">Барлығын құрылғыға экспорттау</string>
   <string name="morphe_export_download_all_started">Барлық жүктемелер экспортталуда</string>
+  <string name="morphe_export_download_all_title">Барлық жүктеулер</string>
+  <string name="morphe_export_download_playlist_started">Жүктемелерді экспорттау</string>
   <string name="morphe_export_download_all_running">Жүктемелер қазірдің өзінде экспортталуда</string>
   <string name="morphe_export_download_all_saved">%2$s жүктеменің %1$s бөлігі %3$s жеріне экспортталды</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Бейнежарнамаларды жасыру</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Аудио / Видео ауыстырып қосу түймесін жасыру</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Жүктеу түймесін жасыру</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Подкаст шоуында Жүктеу түймесін жасырады</string>
   <string name="morphe_music_hide_explore_shelf_title">«Explore» сөресін жасыру</string>
   <string name="morphe_music_hide_filter_bar_title">Сүзгі жолағын жасыру</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">Кітапхана қойындысындағы Жаңа түймесін жасырады</string>
   <string name="morphe_music_hide_list_shelves_title">Тізім сөрелерін жасыру</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Мәтіндер панелі</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Бөлісу батырмасын жасыру</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Аудару батырмасын жасыру</string>
   <string name="morphe_music_hide_new_from_shelf_title">«New from» сөресін жасыру</string>
   <string name="morphe_music_hide_playlist_shelves_title">Плейлист сөрелерін жасыру</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">Тректерді бір-біріне бірқалыпты қосыңыз</string>
   <string name="morphe_music_crossfade_enabled_title">Кросфейдті қосу</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade функциясын пайдалану үшін Spoof бейне ағындарының \"Default client\" параметрін TV Simply немесе visionOS мәніне өзгертіңіз</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade функциясын пайдалану үшін «Spoof video streams» бөліміндегі «Default client» мәнін «TV Simply» немесе «visionOS» мәніне өзгертіңіз</string>
   <string name="morphe_music_crossfade_curve_title">Бәсеңдету қисығы</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Тең қуат</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Жеңіл ұстау</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Кросфейд қайта қорылды</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Crossfade қосылып тұрғанда бейне режимі қолжетімді емес</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade visionOS-пен жұмыс істемейді. Spoof бейне ағындарының \"Default client\" параметрін TV Simply мәніне өзгертіңіз</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade «visionOS»-пен жұмыс істемейді. «Spoof video streams» бөліміндегі «Default client» мәнін «TV Simply» мәніне өзгертіңіз</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade осы spoof ағын клиентімен жұмыс істемейді</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Трансляция кезінде Crossfade өшірулі</string>
   <string name="morphe_music_crossfade_about_how_title">Жұмыс істеу принципі</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Тректі ауыстыру үшін сырғытуды өшіру</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Плеерде солға немесе оңға сырғыту арқылы келесі немесе алдыңғы трекке ауысуды болдырмайды</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Тректі ауыстыру үшін сырғытуды өшіру</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Миниплеерде солға немесе оңға сырғыту арқылы келесі немесе алдыңғы трекке ауысуды болдырмайды</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B циклі</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Мұқаба арақашықтығы</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Жиегінің жарықтығы</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Мөлдірлік</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Шыны бұлдырлығы</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Шыны миниплеердің артындағы беттің қаншалықты бұлдыр болатыны (Android 14 және одан кейінгі нұсқалар). 0 мәнінде бет анық көрінеді, ал Android 14-ке дейінгі нұсқаларда бет жабылады</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Ашық шыны</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Жеңіл әрі анық шыны үшін шыны миниплеерді қараңғы емес, ақ түспен реңктейді</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Альбом мұқабасының реңкі</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Шыны миниплеерді ойнатылып жатқан әннің альбом мұқабасының түсімен реңктейді</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Айнымалы мұқаба</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Шыны миниплеердің мұқабасын дөңгелек етеді және ән ойнап тұрғанда оны пластинка сияқты айналдырады</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Белсенділік түймесін жасыру</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">«Музыка сұрау» түймесін жасыру</string>
+  <string name="morphe_music_hide_ask_music_button_title">«Музыкадан сұрау» түймесін жасыру</string>
   <string name="morphe_music_hide_cast_button_title">Cast батырмасын жасыру</string>
   <string name="morphe_music_hide_history_button_title">Тарих батырмасын жасыру</string>
   <string name="morphe_music_hide_search_button_title">Іздеу батырмасын жасыру</string>
-  <string name="morphe_music_hide_voice_search_button_title">Дауыспен іздеу батырмасын жасыру</string>
-  <string name="morphe_music_hide_sound_search_button_title">Дыбыспен іздеу батырмасын жасыру</string>
+  <string name="morphe_music_hide_voice_search_button_title">«Дауыспен іздеу» түймесін жасыру</string>
+  <string name="morphe_music_hide_sound_search_button_title">\"Дыбыспен іздеу\" түймесін жасыру</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Жүйеге кірілмеген. Баптау үшін басыңыз</string>
   <string name="morphe_music_scrobbling_log_out">Шығу</string>

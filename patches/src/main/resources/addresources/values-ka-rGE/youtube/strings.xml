@@ -205,8 +205,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">პოსტების თაროს დამალვა</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">მაღაზიის ღილაკის დამალვა</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">გამოწერის ღილაკის დამალვა</string>
   <string name="morphe_explore_menu_screen_title">კვლევის მენიუ</string>
   <string name="morphe_explore_menu_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს კვლევის მენიუში</string>
   <string name="morphe_hide_courses_menu_title">კურსების მენიუს დამალვა</string>
@@ -281,7 +279,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">კომენტარის ღილაკის დამალვა</string>
   <string name="morphe_hide_post_comments_preview_title">კომენტარების გადახედვის დამალვა</string>
   <string name="morphe_hide_post_comments_preview_summary">მალავს პოსტების ქვემოთ მოთავსებული კომენტარების გადახედვას</string>
-  <string name="morphe_hide_post_share_button_title">გაზიარების ღილაკის დამალვა</string>
   <string name="morphe_hide_post_share_button_summary">პოსტის სურათების ჩამოტვირთვის ღილაკი გამორჩეულია გაზიარების ღილაკის გვერდით, ამიტომ ისიც மறைებულია</string>
   <string name="morphe_hide_ask_gemini_button_title">დამალეთ ღილაკი \'Ask Gemini\'</string>
   <string name="morphe_hide_ask_gemini_button_summary">მალავს ღილაკს \'Ask Gemini\' პანელის \'Ask about this video\' ქვედა ნაწილში</string>
@@ -296,9 +293,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_in_this_video_button_title">\'ამ ვიდეოში\' ღილაკის დამალვა</string>
   <string name="morphe_hide_info_panels_title">ინფორმაციული პანელების დამალვა</string>
   <string name="morphe_hide_info_panels_summary">მალავს საინფორმაციო კონტექსტური პანელებს, მაგალითად, სამედიცინო ინფორმაციას</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">„გაწევრიანების“ ღილაკის დამალვა</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">ღილაკის \"ცოცხალი ჩატის განმეორება\" დამალვა</string>
@@ -314,8 +308,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">მალავს პლეერის მართვის გრადიენტს თითის გადასვლისას, როდესაც დაჭერილს გინდავთ სიჩქარის გასაზრდელად</string>
   <string name="morphe_hide_timed_reactions_title">დროით შეზღუდული რეაქციების დამალვა</string>
   <string name="morphe_hide_timed_reactions_summary">მალავს ფუნქციას, რომელიც მომხმარებლებს საშუალებას აძლევს გამოიყენონ ემოჯი-რეაქციები კომენტარების სექციასა და პირდაპირ ჩატში</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">დამალეთ მენიუ \"დახმარება &amp; უკუკავშირი\"</string>
   <string name="morphe_hide_help_feedback_menu_summary">მალავს მენიუს \'დახმარება &amp; უკუკავშირი\' სამწერტიანი ღილაკის გამოყენებისას, მაგალითად, ძიების შედეგებში</string>
   <string name="morphe_hide_handle_title">ჰენდლის დამალვა</string>
   <string name="morphe_hide_handle_summary">მალავს თქვენი არხის ჰენდლს ჩანართში \"თქვენ\"</string>
@@ -358,7 +350,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">ღილაკის „კითხვა“ დამალვა</string>
   <string name="morphe_hide_channel_profile_button_title">არხისა და გამოწერის ღილაკის დამალვა</string>
   <string name="morphe_hide_channel_profile_button_summary">მალავს არხის ავატარს და გამოწერის ღილაკს მოქმედებათა პანელის დასაწყისში</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">გამოწერის ღილაკის დამალვა</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">მალავს გამოწერისა და შეერთების ღილაკებს არხის ავატარის გვერდით მოქმედებათა პანელის დასაწყისში</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">კლიპის ღილაკის დამალვა</string>
@@ -434,7 +425,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">კომენტარი დამალულია Morphe-ის მიერ…</string>
   <string name="morphe_minimal_comments_button_title">მინიმალისტური კომენტარების ღილაკის ჩართვა</string>
   <string name="morphe_minimal_comments_button_summary">მალავს მოცურავე ბარათებსა და მათ გვერდების ამომრჩევს, რომლებიც კომენტარების ღილაკზე ჩნდება</string>
-  <string name="morphe_hide_comments_thanks_button_title">ღილაკის \"მადლობა\" დამალვა</string>
   <string name="morphe_hide_comments_timestamp_button_title">დროის აღნიშვნის ღილაკის დამალვა</string>
   <string name="morphe_hide_comments_top_fans_button_title">დამალეთ ღილაკი \"ტოპ ფანები\"</string>
   <string name="morphe_hide_comments_translate_button_title">თარგმნის ღილაკის დამალვა</string>
@@ -489,7 +479,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">სუბტიტრების დამალვის ღილაკი</string>
   <string name="morphe_hide_cast_button_title">Cast ღილაკის დამალვა</string>
-  <string name="morphe_hide_cast_button_summary">მალავს Cast ღილაკს ვიდეო პლეერში და ინსტრუმენტების პანელში</string>
   <string name="morphe_hide_collapse_button_title">Collapse ღილაკის დამალვა</string>
   <string name="morphe_hide_fullscreen_button_title">სრულეკრანის ღილაკის დამალვა</string>
   <string name="morphe_hide_player_control_buttons_background_title">მოთამაშის მართვის ღილაკების ფონის დამალვა</string>
@@ -1149,9 +1138,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ღილაკების დაცილება</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">ნაჩვენები ღილაკები: %1$s %2$s-დან</string>
   <string name="morphe_hide_toolbar_chat_button_title">დამალეთ ჩატის ღილაკი</string>
+  <string name="morphe_hide_toolbar_companion_button_title">თანამგზავრის ღილაკის დამალვა</string>
   <string name="morphe_hide_toolbar_microphone_button_title">მიკროფონის ღილაკის დამალვა</string>
   <string name="morphe_hide_toolbar_search_button_title">ძებნის ღილაკის დამალვა</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">ჩართვისას, დაჭერით იხსნება Morphe-ის პარამეტრები, ხოლო გრძელი დაჭერით YouTube-ის პარამეტრები; გამორთეთ მათი გასაცვლელად</string>
   <string name="morphe_toolbar_buttons_order_title">ინსტრუმენტების პანელის ღილაკების თანმიმდევრობა</string>
   <string name="morphe_toolbar_buttons_order_summary">გადააადგილეთ ღილაკები ინსტრუმენტების პანელში მათი თანმიმდევრობის შესაცვლელად</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1182,43 +1171,28 @@ Second \"item\" text"</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">გამოთიშეთ ორჯერ დაჭერით მოწონება</string>
   <string name="morphe_hide_shorts_ai_button_title">AI ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">\"ავტომატურად გახმოვანებული\" სტიკერის დამალვა</string>
-  <string name="morphe_hide_shorts_channel_bar_title">არხის პანელის დამალვა</string>
-  <string name="morphe_hide_shorts_comments_button_title">კომენტარების ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_effect_button_title">ეფექტის ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">ვიდეოს ბმულის ეტიკეტის დამალვა</string>
   <string name="morphe_hide_shorts_gesture_hints_title">ჟესტების მინიშნებების დამალვა</string>
   <string name="morphe_hide_shorts_green_screen_button_title">\"მწვანე ეკრანის\" ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_hashtag_button_title">ჰეშთეგის ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_info_panel_title">ინფორმაციის პანელის დამალვა</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">ღილაკის \"გაწევრიანება\" დამალვა</string>
   <string name="morphe_hide_shorts_like_button_title">მოწონების ღილაკის დამალვა</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">მოწონების ღილაკის შადრევნის ანიმაციის დამალვა</string>
   <string name="morphe_hide_shorts_live_preview_title">ცოცხალი წინასწარი ნახვის დამალვა</string>
   <string name="morphe_hide_shorts_location_label_title">ლოკაციის სტიკერის დამალვა</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">ნავიგაციის პანელის დამალვა</string>
   <string name="morphe_hide_shorts_new_posts_button_title">\"ახალი პოსტების\" ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">პაუზის დროს გამოჩენილი ღილაკების დამალვა</string>
-  <string name="morphe_hide_shorts_preview_comment_title">კომენტარის პრევიუს დამალვა</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">რემიქსის ღილაკის დამალვა</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">დამალეთ შენახვის ღილაკი</string>
   <string name="morphe_hide_shorts_save_sound_button_title">\'მუსიკის შენახვის\' ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_search_suggestions_title">ძიების რეკომენდაციების დამალვა</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">გაზიარების ღილაკის დამალვა</string>
-  <string name="morphe_hide_shorts_shop_button_title">მაღაზიის ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_sound_button_title">ხმის ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">ხმის მეტამონაცემების ეტიკეტის დამალვა</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">დამალეთ გამოწერის ღილაკი</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">\"Super Thanks-ის ყიდვა\" ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_tagged_products_title">მონიშნული პროდუქტების დამალვა</string>
   <string name="morphe_hide_shorts_upcoming_button_title">მომავლის ღილაკის დამალვა</string>
   <string name="morphe_hide_shorts_use_sound_button_title">დამალეთ ღილაკი \"გამოიყენეთ ეს ბგერა\"</string>
   <string name="morphe_hide_shorts_use_template_button_title">დამალეთ ღილაკი \"გამოიყენეთ ეს შაბლონი\"</string>
-  <string name="morphe_hide_shorts_video_title_title">ვიდეოს სათაურის დამალვა</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">საბოლოო ეკრანზე რეკომენდებული ვიდეოს დამალვა</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"მალავს რეკომენდებული ვიდეოს გადაფარვას, რომელიც ჩნდება ვიდეოს დასრულების შემდეგ
@@ -1728,8 +1702,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">ანიჭებს პრიორიტეტს მაქსიმალურ ხელმისაწვდომ ვიდეო ხარისხს კოდეკის ეფექტურობაზე</string>
   <string name="morphe_video_quality_prioritize_dialog">ამ პარამეტრის გამორთვის შემთხვევაში, ძველ ვიდეოებს შესაძლოა არ ჰქონდეთ ვიდეოს ხარისხის არჩევანის შესაძლებლობა</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">ნებართვა \'Android VR\' / visionOS AV1-ისთვის</string>
-  <string name="morphe_spoof_video_streams_av1_summary">დაუშვებს პროგრამულ AV1 დეკოდირებას \'Android VR\' / visionOS კლიენტის გამოყენებისას</string>
+  <string name="morphe_spoof_video_streams_av1_title">ნებართვა \'Android VR\' / \'visionOS\' AV1-ისთვის</string>
+  <string name="morphe_spoof_video_streams_av1_summary">დაუშვებს პროგრამულ AV1 დეკოდირებას \'Android VR\' / \'visionOS\' კლიენტის გამოყენებისას</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"ამ პარამეტრის ჩართვამ შესაძლოა გამოიწვიოს AV1-ის პროგრამული დეკოდირების გამოყენება.
 
 AV1-ით ვიდეოს დაკვრა შესაძლოა იყოს შეფერხებული ან კადრები დაიკარგოს"</string>
@@ -1966,7 +1940,6 @@ AV1-ით ვიდეოს დაკვრა შესაძლოა იყ
   <string name="morphe_live_chat_translate_language_title">თარგმნის ენა</string>
   <string name="morphe_live_chat_translate_exclude_title">გამორიცხული ენები</string>
   <string name="morphe_live_chat_translate_exclude_summary">მძიმით გამოყოფილი ენის კოდები, მაგალითად: id,en. ამ ენებზე დაწერილი შეტყობინებები არ თარგმნება</string>
-  <string name="morphe_live_chat_translate_provider_title">თარგმანის პროვაიდერი</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API გასაღები</string>

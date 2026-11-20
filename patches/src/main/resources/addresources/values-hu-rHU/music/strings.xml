@@ -144,6 +144,8 @@ Export mappa: %s"</string>
   <string name="morphe_export_download_failed">Nem sikerült exportálni a letöltést</string>
   <string name="morphe_export_download_all_flyout_title">Összes letöltés exportálása a készülékre</string>
   <string name="morphe_export_download_all_started">Összes letöltés exportálása</string>
+  <string name="morphe_export_download_all_title">Összes letöltés</string>
+  <string name="morphe_export_download_playlist_started">Letöltések exportálása</string>
   <string name="morphe_export_download_all_running">A letöltések exportálása már folyamatban van</string>
   <string name="morphe_export_download_all_saved">%2$s letöltésből %1$s exportálva a következőbe: %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Export mappa: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Videóhirdetések elrejtése</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Hang / Videó be- és kikapcsolása elrejtése</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Letöltés gomb elrejtése</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Elrejti a Letöltés gombot a podcast műsorban</string>
   <string name="morphe_music_hide_explore_shelf_title">Felfedezés polc elrejtése</string>
   <string name="morphe_music_hide_filter_bar_title">Szűrőpanel elrejtése</string>
@@ -178,7 +179,6 @@ Export mappa: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Elrejti az Új gombot a Könyvtár fülön</string>
   <string name="morphe_music_hide_list_shelves_title">Lista polcok elrejtése</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Szövegpanelek</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Megosztás gomb elrejtése</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Fordítás gomb elrejtése</string>
   <string name="morphe_music_hide_new_from_shelf_title">\"Új\" polc elrejtése</string>
   <string name="morphe_music_hide_playlist_shelves_title">Lejálisták polcai elrejtése</string>
@@ -202,7 +202,7 @@ Export mappa: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Zökkenőmentesen keverd össze a számokat</string>
   <string name="morphe_music_crossfade_enabled_title">Áttűnés engedélyezése</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">A crossfade használatához módosítsa a Spoof videóstromok „Alapértelmezett kliense” beállítását TV Simply vagy visionOS értékre</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">A crossfade használatához változtasd a „Spoof video streams” „Default client” beállítást „TV Simply” vagy „visionOS” értékre</string>
   <string name="morphe_music_crossfade_curve_title">Áttűnési görbe</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Egyenletes teljesítmény</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Enyhe kitartás</string>
@@ -237,7 +237,7 @@ Export mappa: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Áttűnés folytatva</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Bekapcsolt áttűnés mellett a videómód nem használható</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">A crossfade nem működik a visionOS rendszerrel. Módosítsa a Spoof videóstromok „Alapértelmezett kliense” beállítását TV Simply értékre</string>
+  <string name="morphe_music_crossfade_visionos_toast">A crossfade nem működik a „visionOS” rendszerrel. Változtasd a „Spoof video streams” „Default client” beállítást „TV Simply” értékre</string>
   <string name="morphe_music_crossfade_spoof_client_toast">A crossfade nem működik ezzel a spoof streaming kliensevel</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">A crossfade ki van kapcsolva casting közben</string>
   <string name="morphe_music_crossfade_about_how_title">A működése</string>
@@ -286,7 +286,6 @@ A crossfade szüneteltetése a zenei videó megtekintéséhez néhány videót f
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Csúsztatással történő számváltás engedélyezése</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Megakadályozza a következő vagy előző számra való átugratást a lejátszó jobb vagy bal irányú csúsztatásával</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Csúsztatással történő számváltás engedélyezése</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Megakadályozza a következő vagy előző számra való átugratást a miniplayer jobb vagy bal irányú csúsztatásával</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B ciklus</string>
@@ -463,11 +462,8 @@ A crossfade szüneteltetése a zenei videó megtekintéséhez néhány videót f
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Borítók paddingje</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Szegély fényerője</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Áttetszőség</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Üveg elmosódás</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Mennyire legyen elmosódva az üveg minilejátszó mögött lévő oldal (Android 14 és újabb verziók). 0 esetén az oldal élesen látszik, Android 14 előtt az oldal takarva marad</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Világos üveg</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Az üveg minilejátsót fehérre árnyalja a sötétszín helyett, egy világosabb és tisztább üveghatás érdekében</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumborító árnyalása</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Az üveg minilejáts sót a lejárzó dal albumborítójának színével árnyalja</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Forgó albumborító</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Az üveg minilejátszó borítóját körre teszi, és egy lemez처럼 forgatja a dal lejátszása közben</string>
@@ -481,12 +477,12 @@ A crossfade szüneteltetése a zenei videó megtekintéséhez néhány videót f
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Aktivitás gomb elrejtése</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Zene kérése gomb elrejtése</string>
+  <string name="morphe_music_hide_ask_music_button_title">Rejtsd el a „Kérd a Zenét” gombot</string>
   <string name="morphe_music_hide_cast_button_title">Átküldés gomb elrejtése</string>
   <string name="morphe_music_hide_history_button_title">Előzmények gomb elrejtése</string>
   <string name="morphe_music_hide_search_button_title">Keresés gomb elrejtése</string>
-  <string name="morphe_music_hide_voice_search_button_title">Hangalapú keresés gombjának elrejtése</string>
-  <string name="morphe_music_hide_sound_search_button_title">Zene keresése gombjának elrejtése</string>
+  <string name="morphe_music_hide_voice_search_button_title">Rejtsd el a „Hangalapú keresés” gombot</string>
+  <string name="morphe_music_hide_sound_search_button_title">\"Hang alapú keresés\" gomb elrejtése</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Nem jelentkezett be. A konfiguráláshoz koppintson ide.</string>
   <string name="morphe_music_scrobbling_log_out">Kijelentkezés</string>

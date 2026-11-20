@@ -144,6 +144,8 @@ Folder za izvoz: %s"</string>
   <string name="morphe_export_download_failed">Nije moguće izvesti preuzimanje</string>
   <string name="morphe_export_download_all_flyout_title">Izvezi sve na uređaj</string>
   <string name="morphe_export_download_all_started">Izvoz svih preuzimanja</string>
+  <string name="morphe_export_download_all_title">Sva preuzimanja</string>
+  <string name="morphe_export_download_playlist_started">Izvoz preuzetih datoteka</string>
   <string name="morphe_export_download_all_running">Preuzimanja se već izvoze</string>
   <string name="morphe_export_download_all_saved">Izvezeno %1$s od %2$s preuzimanja u %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Folder za izvoz: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Sakrij video oglase</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Sakrij audio / video prekidač</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Sakrij dugme za preuzimanje</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Sakriva dugme za preuzimanje u podkast emisiji</string>
   <string name="morphe_music_hide_explore_shelf_title">Sakrij policu sa otkrićima</string>
   <string name="morphe_music_hide_filter_bar_title">Sakrij traku filtera</string>
@@ -178,7 +179,6 @@ Folder za izvoz: %s"</string>
   <string name="morphe_music_hide_new_button_summary">Skriva dugme „Novo” u kartici Biblioteka</string>
   <string name="morphe_music_hide_list_shelves_title">Sakrij police sa listom</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel tekstova</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Sakrij dugme „Deli”</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sakrij dugme „Prevedi”</string>
   <string name="morphe_music_hide_new_from_shelf_title">Sakrij policu „Novi od”</string>
   <string name="morphe_music_hide_playlist_shelves_title">Sakrij police sa plejliztama</string>
@@ -202,7 +202,7 @@ Folder za izvoz: %s"</string>
   <string name="morphe_music_crossfade_screen_summary">Glatko spajanje numera jedna u drugu</string>
   <string name="morphe_music_crossfade_enabled_title">Omogući preklapanje</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Da biste koristili crossfade, promenite \'Default client\' za spoof video strimove na TV Simply ili visionOS</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Da biste koristili crossfade, promenite „Default client” u opciji „Spoof video streams” na „TV Simply” ili „visionOS”</string>
   <string name="morphe_music_crossfade_curve_title">Kriva preklapanja</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Jednaka snaga</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Suptilno zadržavanje</string>
@@ -237,7 +237,7 @@ Folder za izvoz: %s"</string>
   <string name="morphe_music_crossfade_resumed_toast">Preklapanje je nastavljeno</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Video režim nije dostupan dok je omogućen prelazni efekat</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade ne radi sa visionOS. Promenite \'Default client\' za spoof video strimove na TV Simply</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade ne radi sa „visionOS”. Promenite „Default client” u opciji „Spoof video streams” na „TV Simply”</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade ne radi sa ovim spoof strim klijentom</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade je isključen tokom emitovanja</string>
   <string name="morphe_music_crossfade_about_how_title">Kako funkcioniše</string>
@@ -286,7 +286,6 @@ Pauziranje Crossfade-a da biste gledali muzički spot može ostaviti neke spotov
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">Onemogući prevlačenje za promenu trake</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">Sprečava preskakanje na sledeću ili prethodnu traku prevlačenjem levo ili desno na plejeru</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Onemogući prevlačenje za promenu trake</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Sprečava preskakanje na sledeću ili prethodnu traku prevlačenjem levo ili desno na mini-plejeru</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B petlja</string>
@@ -463,11 +462,8 @@ Pauziranje Crossfade-a da biste gledali muzički spot može ostaviti neke spotov
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding omota</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Osvetljenost ivice</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Neprozirnost</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Zamućenje stakla</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Koliko je stranica iza staklenog miniplejera zamućena (Android 14 i noviji). Na 0 stranica se vidi jasno, a pre Androida 14 stranica je prekrivena</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Svetlo staklo</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Boja staklenog miniplejera postaje bela umesto tamne, za svetlije i čistije staklo</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Nijansa omota albuma</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Boja staklenog miniplejera se prilagođava boji omota albuma pesme koja se pušta</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Rotirajući omot</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Čini omot staklenog miniplejera okruglim i rotira ga kao ploču dok pesma traje</string>
@@ -481,12 +477,12 @@ Pauziranje Crossfade-a da biste gledali muzički spot može ostaviti neke spotov
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Sakrij dugme Aktivnost</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Sakrij dugme „Zatraži muziku”</string>
+  <string name="morphe_music_hide_ask_music_button_title">Sakrij dugme „Pitaj muziku”</string>
   <string name="morphe_music_hide_cast_button_title">Sakrij dugme „Prebacuj”</string>
   <string name="morphe_music_hide_history_button_title">Sakrij dugme „Istorija”</string>
   <string name="morphe_music_hide_search_button_title">Sakrij dugme „Pretraga”</string>
-  <string name="morphe_music_hide_voice_search_button_title">Sakrij dugme za glasovnu pretragu</string>
-  <string name="morphe_music_hide_sound_search_button_title">Sakrij dugme za pretragu zvuka</string>
+  <string name="morphe_music_hide_voice_search_button_title">Sakrij dugme „Glasovna pretraga”</string>
+  <string name="morphe_music_hide_sound_search_button_title">Sakrij dugme „Pretraga zvukom”</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Niste prijavljeni. Dodirnite za konfigurisanje</string>
   <string name="morphe_music_scrobbling_log_out">Odjavite se</string>

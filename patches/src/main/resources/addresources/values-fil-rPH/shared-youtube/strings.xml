@@ -141,13 +141,13 @@ I-tap ang OK para buksan ang Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Subukang paganahin: Gayahin ang mga video stream &gt; Pag-sign in sa Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Default na kliyente</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Pag-sign in sa Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nangangailangan ang Android VR ng hiwalay na sign-in. I-tap dito para magpatuloy</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kasalukuyang naka-sign in sa Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Pag-sign in sa Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nangangailangan ang \'Android VR\' ng hiwalay na pag-sign in. I-tap dito para magpatuloy</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kasalukuyang naka-sign in sa \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Upang gamitin ang tampok na ito, baguhin ang \'Default na kliyente\' sa Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Mag-sign in sa Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Maaaring ayusin ng pag-sign in sa Android VR ang mga isyu sa pag-playback para sa ilang user
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Upang gamitin ang tampok na ito, baguhin ang \'Default na kliyente\' sa \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Mag-sign in sa \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Maaaring ayusin ng pag-sign in sa 'Android VR' ang mga isyu sa pag-playback para sa ilang user
 
 Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Mag-sign out</string>
@@ -170,33 +170,33 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
 • Kakailanganin mong mag-sign in muli kung babaguhin mo ang iyong password sa Google o aalisin sa pagkakarehistro ang device na ito sa iyong mga pagpipilian sa Google"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mag-sign in sa Mobile Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opsyonal: mag-sign in sa website ng YouTube para i-play ang mga video gamit ang iyong account. Mag-tap dito para magpatuloy</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kasalukuyang naka-sign in sa Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kasalukuyang naka-sign in sa \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Upang gamitin ang tampok na ito, baguhin ang \'Default na kliyente\' sa Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mag-sign in sa Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Pinapatugtog ng Mobile Web ang mga video nang signed out, o signed in sa website ng YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Upang gamitin ang tampok na ito, baguhin ang \'Default na kliyente\' sa \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mag-sign in sa \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Ang 'Mobile Web' ay nagpe-play ng mga video nang naka-sign out, o naka-sign in sa website ng YouTube
 
-• Kapag signed in, maaaring patugtugin ang mga video na nangangailangan ng account, tulad ng mga video na may age restriction
-• Magbubukas ang page ng Google sign-in sa app na ito
-• Ang sign-in ay ginagamit lamang para makuha ang mga video na pinapatugtog mo
-• Ang sign-in ay naka-save lamang sa device na ito
+• Kapag naka-sign in, maaaring i-play ang mga video na nangangailangan ng account, gaya ng mga video na may age-restriction
+• Magbubukas ang Google sign-in page sa app na ito
+• Ang sign-in ay ginagamit lamang para makuha ang mga video na ipe-play mo
+• Ang sign-in ay ise-save lamang sa device na ito
 
-Para mag-sign in, pindutin ang patuloy sa ibaba"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Na-save ang sign-in
+Para mag-sign in, pindutin ang continue sa ibaba"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Naka-save na ang sign-in
 
-• Hindi i-import/export ng iyong mga setting ng Morphe ang sign-in sa Mobile Web
-• Kung tatapusin ng Google ang sign-in, mapapatugtog ang mga video nang signed out hanggang sa mag-sign in ka muli
+• Hindi i-import/export ng iyong mga setting sa Morphe ang sign-in ng 'Mobile Web'
+• Kung tatapusin ng Google ang sign-in, mapapatugtog ang mga video nang naka-sign out hanggang sa mag-sign in ka muli
 • Ang pag-sign out ay mag-si-sign out din sa device na ito mula sa website ng YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Natapos na ang sign in sa Mobile Web, subukang mag-sign in muli sa Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Na-sign out na sa Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Hindi available ang Android System WebView. I-install o i-enable ito para makapag-sign in</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Natapos na ang sign in sa Mobile Web, subukang mag-sign in muli sa \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Naka-sign out na sa \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Hindi available ang \'Android System WebView\'. I-install o i-enable ito para makapag-sign in</string>
   <string name="morphe_oauth2_connection_failure_timeout">Pansamantalang hindi magagamit ang OAuth2 (Nag-time out ang API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Natapos ang pag-sign in sa Android VR, subukang mag-sign muli sa VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Natapos ang pag-sign in sa Android VR, subukang mag-sign in muli sa VR</string>
   <string name="morphe_oauth2_connection_failure_status">Pansamantalang hindi magagamit ang OAuth2 (katayuan %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Pansamantalang hindi magagamit ang OAuth2</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Hindi maka-sign in sa VR, hindi naaprubahan ang pagpapatunay sa website</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Hindi maka-sign in sa VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Nag-log out sa Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Nag-log out sa \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Imbalido ang sign in token ng VR, subukang mag-sign in muli sa VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Mga kontrol ng media sa notification</string>
@@ -254,7 +254,7 @@ Para mag-sign in, pindutin ang patuloy sa ibaba"</string>
   <string name="morphe_replace_music_with_youtube_title">Baguhin ang mga nakabahaging link sa youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Pinapalitan ang music.youtube.com sa youtube.com sa mga ibinahaging link</string>
   <string name="morphe_replace_links_with_shortener_title">Baguhin ang mga nakabahaging link sa youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Pinipilit ang mga video na gamitin ang pinaikling format ng URL na youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Pinipilit ang mga video na gamitin ang pinaikling format ng URL na \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Awtomatiko</string>
@@ -271,11 +271,11 @@ Para mag-sign in, pindutin ang patuloy sa ibaba"</string>
   <string name="morphe_debug_litho_entry_disabled">Nakapatay</string>
   <string name="morphe_debug_litho_entry_path">Landas</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Path at buffer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Itinatala ng Litho logging ang mga layout component ng app, kabilang ang on-screen na teksto para sa ilang bahagi ng UI.
+  <string name="morphe_debug_litho_user_dialog_message">"Itatala ang mga layout component ng app, kabilang ang on-screen na teksto para sa ilang bahagi ng UI.
 
 Makakatulong ito na matukoy ang mga komponente kapag gumagawa ng mga pasadyang filter.
 
-Gayunpaman, magtatala din ito ng ilang datos ng tagagamit gaya ng iyong IP address"</string>
+Gayunpaman, magtatala rin ito ng ilang datos ng tagagamit kagaya ng iyong IP address"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Pasadyang filter</string>
   <string name="morphe_custom_filter_screen_summary">I-configure ang mga pasadyang filter upang itago ang anumang component</string>

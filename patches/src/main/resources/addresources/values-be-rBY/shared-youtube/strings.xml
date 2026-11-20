@@ -141,13 +141,13 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Паспрабуйце ўключыць: Імітацыя відэапатокаў &gt; Уваход у Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Кліент па змаўчанні</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Уваход у Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Для Android VR патрабуецца асобны ўваход. Націсніце тут, каб працягнуць</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">У дадзены момант вы ўвайшли ў Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Уваход у \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Для \'Android VR\' патрабуецца асобны ўваход. Націсніце тут, каб працягнуць</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">У дадзены момант вы ўвайшли ў \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Каб скарыстацца гэтай функцыяй, змяніце \"Кліент па змаўчанні\" на Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Увайсці ў Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Уваход у Android VR можа выправіць праблемы з прайграваннем для некаторых карыстальнікаў
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Каб скарыстацца гэтай функцыяй, змяніце \'Кліент па змаўчанні\' на \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Увайсці ў \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Уваход у \"Android VR\" можа выправіць праблемы з прайграваннем для некаторых карыстальнікаў
 
 Каб увайсці, націсніце «Працягнуць» ніжэй"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Выйсці</string>
@@ -170,33 +170,33 @@ Second \"item\" text"</string>
 • Вам спатрэбіцца ўвайсці ў сістэму зноў, калі вы змяніце пароль Google або адключаце гэтую прыладу ў наладках Google"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Уваход праз мабільную версію сайта</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Неабавязкова: ўвойдзіце на 웹-сайт YouTube, каб праглядаць відэа са свайго ўліковага запісу. Націсніце тут, каб працягнуць</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">У дадзены момант вы ўвайшли ў Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">У дадзены момант вы ўвайшли ў \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Каб скарыстацца гэтай функцыяй, змяніце \"Кліент па змаўчанні\" на Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Увайсці ў Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web прайграе відэа без ўваходу ў сістэму або пры ўваходзе на вебсайт YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Каб скарыстацца гэтай функцыяй, змяніце \"Кліент па змаўчанні\" на \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Увайсці ў \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" працуе з відэа без ўваходу ў сістэму або з ўваходом на сайт YouTube
 
-• Пры ўваходзе ў сістэму можна прайграваць відэа, для якіх патрабуецца ўлічавы запіс, напрыклад, відэа з абмежаваннем па ўзросце
-• Старонка ўваходу Google адкрываецца ў гэтай праграме
-• Уваход выкарыстоўваецца толькі для атрымання відэа, якія вы прайграваеце
-• Даныя ўваходу захаўваюцца толькі на гэтай прыладнасці
+• Пры ўваходзе ў сістэму можна праглядаць відэа, якія патрабуюць узмоўны ўліковыя запісы, напрыклад, відэа з абмежаваннем па ўзросце
+• Старонка ўваходу ў Google адкрываецца ў гэтым дадатку
+• Уваход выкарыстоўваецца толькі для атрымання відэа, якія вы праглядаеце
+• Даныя ўваходу захаваны толькі на гэтай прыладзе
 
-Каб увайсці, націсніце \"Працягнуць"</string>
+Каб увойсці ў сістэму, націсніце «Працягнуць» ніжэй"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Уваход захаваны
 
-• Налады Morphe не будуць імпартаваць/экспартаваць даныя ўваходу Mobile Web
-• Калі Google завершыць сесію ўваходу, відэа будуць прайгравацца без ўваходу, пакуль вы не ўвайдзеце зноў
-• Выхад з сістэмы таксама выведзе гэтую прыладнасць з вебсайта YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Тэрмін сесіі ў мабільнай вэб-версіі скончыўся, паспрабуйце ўвайсці ў мабільную вэб-версію зноў</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Вы выйшылі з мабільнай вэб-версіі</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недаступны. Усталюйце або ўключыце яго, каб увайти ў сістэму</string>
+• Вашы налады Morphe не будуць імпартаваць/экспартаваць даныя ўваходу ў \"Mobile Web\"
+• Калі Google завершыць сеанс, відэа будуць прагравацца без ўваходу ў сістэму, пакуль вы не ўвойдзеце зноў
+• Выхад з сістэмы таксама адключае гэтую прыладу ад сайта YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Тэрмін дзеяння ўваходу ў Mobile Web скончыўся, паспрабуйце ўвойсці ў \"Mobile Web\" зноў</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Выхід з сістэмы \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' недаступны. Усталюйце або ўключайце яго, каб выканаць уваход</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 часова недаступны (таймаўт API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Тэрмін дзеяння сесіі Android VR скончыўся, паспрабуйце ўвайсці ў VR зноў</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Тэрмін сесіі ўваходу ў \'Android VR\' скончыўся, паспрабуйце ўвайсці ў VR зноў</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 часова недаступны (статус %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 часова недаступны</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Не ўдалося ўвайсці ў VR, аўтэнтыфікацыя на веб-сайце не была пацверджана</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не ўдалося ўвайсці ў VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Выйшлі з уліковага запісу Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Выйшлі з уліковага запісу \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Несапраўдны токен уваходу ў VR, паспрабуйце ўвайсці ў VR зноў</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Кіраванне медыя ў апавяшчэннях</string>
@@ -254,7 +254,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">Змяніць спасылкі для абагульвання на youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Замяняе music.youtube.com на youtube.com у падзеленых спасылках</string>
   <string name="morphe_replace_links_with_shortener_title">Змяніць спасылкі для падзелу на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Прымушае відэа выкарыстоўваць скарочаны фармат URL youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Прымушае відэа выкарыстоўваць скарочаны фармат URL \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Аўтаматычна</string>
@@ -271,11 +271,11 @@ Second \"item\" text"</string>
   <string name="morphe_debug_litho_entry_disabled">Адключана</string>
   <string name="morphe_debug_litho_entry_path">Шлях</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Шлях і буфер</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Лагаванне Litho запісвае кампаненты макета праграмы, уключаючы тэкст на экране для некаторых кампанентаў інтэрфейса.
+  <string name="morphe_debug_litho_user_dialog_message">"Рэгіструе кампаненты макета праграмы, уключаючы тэкст на экране для некаторых кампанентаў інтэрфейса.
 
-Гэта можа дапамагчы ідэнтыфікаваць кампаненты пры стварэнні кастомных фільтраў.
+Гэта можа дапамагчы вызначыць кампаненты пры стварэнні карыстальніцкіх фільтраў.
 
-Аднак гэта таксама запісвае некаторыя даныя карыстальніка, такія як ваш IP-адрас"</string>
+Аднак гэта таксама зарэгіструе некаторыя даныя карыстальніка, такія як ваш IP-адрас"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Спецыяльны фільтр</string>
   <string name="morphe_custom_filter_screen_summary">Настройце спецыяльныя фільтры, каб схаваць любы кампанент</string>

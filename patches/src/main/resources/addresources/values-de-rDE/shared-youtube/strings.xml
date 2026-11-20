@@ -141,13 +141,13 @@ Tippen Sie auf OK, um Android System WebView zu öffnen."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Versuch, dies zu aktivieren: „Video-Streams spoofen“ &gt; Android VR Anmeldung</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standard-Client</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR Anmeldung</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Für Android VR ist eine separate Anmeldung erforderlich. Tippen Sie hier, um fortzufahren</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Derzeit bei Android VR angemeldet</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR-Anmeldung</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' erfordert eine separate Anmeldung. Tippen Sie hier, um fortzufahren</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Derzeit bei \'Android VR\' angemeldet</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Um diese Funktion zu nutzen, ändern Sie ihren \"Standard-Client\" zu Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Bei Android VR anmelden</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Die Anmeldung bei Android VR kann Wiedergabeprobleme für einige Benutzer beheben
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Um diese Funktion zu nutzen, ändern Sie den \'Standard-Client\' zu \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Bei \'Android VR\' anmelden</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Die Anmeldung bei \"Android VR\" kann Wiedergabeprobleme für einige Benutzer beheben
 
 Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Abmelden</string>
@@ -170,33 +170,33 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
 • Wenn Sie Ihr Google-Kennwort ändern oder dieses Gerät von Ihren Google-Einstellungen deregistrieren, müssen Sie sich erneut anmelden"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Anmeldung über mobiles Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Optional: Melden Sie sich auf der YouTube-Website an, um Videos mit Ihrem Konto abzuspielen. Tippen Sie hier, um fortzufahren</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Derzeit bei Mobile Web angemeldet</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Derzeit bei \"Mobile Web\" angemeldet</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Um diese Funktion zu nutzen, ändern Sie den \"Standard-Client\" zu Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Bei Mobile Web anmelden</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web spielt Videos ohne Anmeldung oder mit einer Anmeldung bei der YouTube-Website ab
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Um diese Funktion zu nutzen, ändern Sie den \"Standard-Client\" auf \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Bei \"Mobile Web\" anmelden</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" spielt Videos ohne Anmeldung oder bei Anmeldung an der YouTube-Website ab
 
-• Wenn Sie angemeldet sind, können Videos abgespielt werden, die ein Konto erfordern, z. B. altersbeschränkte Videos
-• Die Google-Anmeldeseite wird in dieser App geöffnet
+• Bei Anmeldung können Videos abgespielt werden, für die ein Konto erforderlich ist, z. B. altersbeschränkte Videos
+• Die Google-Anmeldeseite öffnet sich in dieser App
 • Die Anmeldung wird nur verwendet, um die von Ihnen abgespielten Videos abzurufen
 • Die Anmeldung wird nur auf diesem Gerät gespeichert
 
 Um sich anzumelden, drücken Sie unten auf Weiter"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Anmeldung gespeichert
 
-• Ihre Morphe-Einstellungen importieren/exportieren nicht die Anmeldung für das mobile Web
-• Wenn Google die Anmeldung beendet, werden Videos abgemeldet abgespielt, bis Sie sich erneut anmelden
+• Ihre Morphe-Einstellungen importieren/exportieren nicht die \"Mobile Web\"-Anmeldung
+• Wenn Google die Anmeldung beendet, werden Videos nicht angemeldet abgespielt, bis Sie sich erneut anmelden
 • Das Abmelden meldet dieses Gerät auch von der YouTube-Website ab"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Anmeldung für das mobile Web abgelaufen, versuchen Sie erneut, sich beim mobilen Web anzumelden</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Vom mobilen Web abgemeldet</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView ist nicht verfügbar. Installieren oder aktivieren Sie es, um sich anzumelden</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web-Anmeldung abgelaufen, versuchen Sie erneut, sich bei \"Mobile Web\" anzumelden</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Von \'Mobile Web\' abgemeldet</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' ist nicht verfügbar. Installieren oder aktivieren Sie es, um sich anzumelden</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ist vorübergehend nicht verfügbar (API Timeout)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR-Anmeldung abgelaufen, versuchen Sie erneut sich bei VR anzumelden</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\'-Anmeldung abgelaufen, versuchen Sie erneut sich bei VR anzumelden</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ist vorübergehend nicht verfügbar (Status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 ist vorübergehend nicht verfügbar</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Eine Anmeldung bei VR ist nicht möglich, da die Website-Authentifizierung nicht genehmigt wurde</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Eine Anmeldung bei VR ist nicht möglich: %s</string>
-  <string name="morphe_oauth2_toast_reset">Von Android VR abgemeldet</string>
+  <string name="morphe_oauth2_toast_reset">Von \'Android VR\' abgemeldet</string>
   <string name="morphe_oauth2_toast_invalid">Ungültiger VR-Anmelde-Token, melden Sie sich erneut in VR an</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Mediensteuerung in Benachrichtigungen</string>
@@ -254,7 +254,7 @@ Um sich anzumelden, drücken Sie unten auf Weiter"</string>
   <string name="morphe_replace_music_with_youtube_title">Freigabe-Links zu youtube.com ändern</string>
   <string name="morphe_replace_music_with_youtube_summary">Ersetzt music.youtube.com durch youtube.com in geteilten Links</string>
   <string name="morphe_replace_links_with_shortener_title">Freigabe-Links zu youtu.be ändern</string>
-  <string name="morphe_replace_links_with_shortener_summary">Sorgt dafür, dass geteilte Links das kürzere youtu.be URL-Format nutzen</string>
+  <string name="morphe_replace_links_with_shortener_summary">Sorgt dafür, dass Videos das kürzere \'youtu.be\' URL-Format nutzen</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -271,7 +271,7 @@ Um sich anzumelden, drücken Sie unten auf Weiter"</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktiviert</string>
   <string name="morphe_debug_litho_entry_path">Pfad</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Pfad und Puffer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho-Logging protokolliert die Layout-Komponenten der App, einschließlich des eingeblendeten Texts einiger UI-Elemente.
+  <string name="morphe_debug_litho_user_dialog_message">"Protokolliert die Layout-Komponenten der App, einschließlich des eingeblendeten Texts einiger UI-Elemente.
 
 Das kann beim Erstellen benutzerdefinierter Filter helfen, Komponenten besser zu identifizieren.
 

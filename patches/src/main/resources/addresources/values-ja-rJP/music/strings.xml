@@ -27,7 +27,7 @@ Second \"item\" text"</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">一時停止 / 再開を使用するには、ホスト側の Jam パッチを更新してください</string>
   <string name="morphe_music_jam_probe_title">Jam キューの共有</string>
-  <string name="morphe_music_jam_probe_summary">近くのJamをホストするか参加して、Jam Layerでそのキューを編集します</string>
+  <string name="morphe_music_jam_probe_summary">近くの Jam をホストまたは参加し、Jam Layer でキューを編集します</string>
   <string name="morphe_music_jam_enabled_title">Jam キューの共有を有効にする</string>
   <string name="morphe_music_jam_enabled_summary">YouTube Musicの再起動後にJam連携を有効にします</string>
   <string name="morphe_music_jam_download_title">Jam Layer をダウンロードして利用できるようにする</string>
@@ -59,7 +59,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">QR コードを表示</string>
   <string name="morphe_music_jam_done">完了</string>
   <string name="morphe_music_jam_invite_title">あなたの Jam に招待</string>
-  <string name="morphe_music_jam_invite_message">スキャンしてこのキューに参加・編集しましょう。Jamを終了すると招待が取り消されます</string>
+  <string name="morphe_music_jam_invite_message">スキャンして参加し、このキューを編集してください。Jam を終了すると、招待が取り消されます</string>
   <string name="morphe_music_jam_copy_link">リンクをコピー</string>
   <string name="morphe_music_jam_invitation_clip">Jam の招待</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam は再接続中です。しばらくしてもう一度お試しください</string>
@@ -88,7 +88,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_invite_people">人を招待</string>
   <string name="morphe_music_jam_guest_edits">ゲストはキューを編集できます</string>
   <string name="morphe_music_jam_end_jam">Jam を終了</string>
-  <string name="morphe_music_jam_participant_help">ホストが音楽を再生します。YouTube Musicのキューで直接曲の追加、移動、削除を行うことができます</string>
+  <string name="morphe_music_jam_participant_help">ホストが音楽を再生します。YouTube Music のキューで、曲の追加・移動・削除を直接行えます</string>
   <string name="morphe_music_jam_joining_help">両方のデバイスを近くに置いてください。ホストを探す間にキャンセルできます</string>
   <string name="morphe_music_jam_cancel_joining">参加をキャンセル</string>
   <string name="morphe_music_jam_leave_jam">Jam から退出</string>
@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">ダウンロードをエクスポートできませんでした</string>
   <string name="morphe_export_download_all_flyout_title">すべてデバイスに書き出す</string>
   <string name="morphe_export_download_all_started">すべてのダウンロードを書き出し中</string>
+  <string name="morphe_export_download_all_title">すべてのダウンロード</string>
+  <string name="morphe_export_download_playlist_started">ダウンロードをエクスポートしています</string>
   <string name="morphe_export_download_all_running">ダウンロードは既に書き出し中です</string>
   <string name="morphe_export_download_all_saved">%2$s件のダウンロードのうち%1$s件を%3$sに書き出しました</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">動画広告を非表示</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">音声と動画の切り替えスイッチを非表示</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">ダウンロード ボタンを非表示</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">ポッドキャスト内の各エピソードに表示される、ダウンロード アイコンのボタンを非表示にします</string>
   <string name="morphe_music_hide_explore_shelf_title">探索欄を非表示</string>
   <string name="morphe_music_hide_filter_bar_title">フィルタバーを非表示</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">ライブラリタブに表示される新規作成ボタンを非表示にします</string>
   <string name="morphe_music_hide_list_shelves_title">リスト表示欄を非表示</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">歌詞欄</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">共有ボタンを非表示</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">翻訳ボタンを非表示</string>
   <string name="morphe_music_hide_new_from_shelf_title">「\"アーティスト名\" の新作」欄を非表示</string>
   <string name="morphe_music_hide_playlist_shelves_title">プレイリスト欄を非表示</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">前後のトラックを重ね合わせてなめらかにつなぎます</string>
   <string name="morphe_music_crossfade_enabled_title">クロスフェードを有効化</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">クロスフェードを使用するには、ビデオストリームの偽装「デフォルトクライアント」を TV Simply または visionOS に変更してください</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">クロスフェードを使用するには、[動画ストリームを偽装] で [デフォルト クライアント] を「TV Simply」または「visionOS」に変更してください</string>
   <string name="morphe_music_crossfade_curve_title">フェードカーブ</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">等電力（全体音量一定）</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">ゆるやかなホールド（持続）</string>
@@ -237,8 +237,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">クロスフェードを再開しました</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">クロスフェードが有効になっている間は、動画モードは利用できません</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">visionOS ではクロスフェードは動作しません。ビデオストリームの偽装「デフォルトクライアント」を TV Simply に変更してください</string>
-  <string name="morphe_music_crossfade_spoof_client_toast">この偽装ストリームクライアントではクロスフェードは動作しません</string>
+  <string name="morphe_music_crossfade_visionos_toast">クロスフェードは「visionOS」では動作しません。[動画ストリームを偽装] で [デフォルト クライアント] を「TV Simply」に変更してください</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">この偽装ストリーム クライアントではクロスフェードが動作しません</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">キャスト中はクロスフェードがオフになります</string>
   <string name="morphe_music_crossfade_about_how_title">仕組み</string>
   <string name="morphe_music_crossfade_about_how_summary">"クロスフェードは、指定した時間とカーブを使用して、一曲の終わりと次の曲の始まりを重ねます。
@@ -255,9 +255,9 @@ Second \"item\" text"</string>
 
 クロスフェードを一時停止してミュージックビデオを視聴すると、一部のビデオが黒い画面のままになることがあります。曲を選ぶ前にクロスフェードを一時停止しておけば、これを回避できます"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">非対応</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">オーディオのキャストまたはミラーリング (Chromecast、画面またはオーディオミラーリング)</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">オーディオのキャストまたはミラーリング（Chromecast、画面またはオーディオのミラーリング）</string>
   <string name="morphe_music_crossfade_about_credit_title">クレジット</string>
-  <string name="morphe_music_crossfade_about_credit_summary">Crossfade機能はVazerOGによるものです</string>
+  <string name="morphe_music_crossfade_about_credit_summary">VazerOG によるクロスフェード機能</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <string name="morphe_music_remember_repeat_state_title">リピート再生の状態を保存</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
@@ -277,7 +277,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_disable_audio_ducking_summary">通知などの短い音が他のアプリで再生されたときに、音量が下がらなくなります</string>
   <!-- interaction.likefilter.queueLikeFilterPatch -->
   <string name="morphe_music_queue_like_filter_title">キューの高評価フィルター</string>
-  <string name="morphe_music_queue_like_filter_summary">ミックスやラジオから高評価数の少ない曲を削除します。プレイリスト、アルバム、およびキューに追加した曲は変更されません。高評価数はReturn YouTube Dislikeに基づいています</string>
+  <string name="morphe_music_queue_like_filter_summary">高評価数が少ない楽曲を、ミックスやラジオから除外します。プレイリスト、アルバム、およびキューに追加した楽曲は変更されません。高評価数は、Return YouTube Dislike に基づいています</string>
   <string name="morphe_music_queue_like_filter_minimum_likes_title">最小高評価数</string>
   <string name="morphe_music_queue_like_filter_minimum_likes_summary">高評価数がこれより少ない曲はキューから削除されます</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">スワイプによる曲の切り替えを無効化</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">プレイヤー上で左右にスワイプして次の曲や前の曲にスキップすることを防ぎます</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">スワイプによる曲の切り替えを無効化</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">ミニプレイヤー上で左右にスワイプして次の曲や前の曲にスキップすることを防ぎます</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-Bループ</string>
@@ -435,24 +434,24 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">アップグレード ボタンを非表示</string>
   <string name="morphe_music_hide_navigation_bar_title">ナビゲーション バーを非表示</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ボタンをアイコンのみで表示</string>
-  <string name="morphe_music_navigation_bar_glass_title">グラスナビゲーションバーを有効にする</string>
+  <string name="morphe_music_navigation_bar_glass_title">ガラス風ナビゲーション バーを有効にする</string>
   <string name="morphe_music_navigation_bar_glass_summary">ナビゲーション バーを、フローティングで丸みを帯びた半透明のカプセルとして表示します</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">グラスナビゲーションバーのサイズとスタイル</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">プレビューを見ながら、グラスナビゲーションバーの高さ、幅、ボタンの間隔、不透明度、リムの明るさを調整します。画面幅に収まらないボタンは非表示になります</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">ガラス風ナビゲーション バーのサイズとスタイル</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">プレビューを見ながら、ガラス風ナビゲーション バーの高さ、幅、ボタンの間隔、不透明度、縁の明るさを調整します。画面幅に収まらないボタンは非表示になります</string>
   <string name="morphe_music_navigation_bar_glass_size_height">高さ</string>
   <string name="morphe_music_navigation_bar_glass_size_width">最大幅</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">ボタンの間隔</string>
-  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">表示ボタン数: %2$s個中 %1$s個</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">表示ボタン数: %2$s 個中 %1$s 個</string>
   <string name="morphe_music_navigation_bar_glass_opacity_title">透明度</string>
-  <string name="morphe_music_navigation_bar_glass_rim_title">リムの明るさ</string>
-  <string name="morphe_music_navigation_bar_glass_blur_title">グラスのぼかし</string>
-  <string name="morphe_music_navigation_bar_glass_blur_summary">グラスナビゲーションバーの背面にあるページのぼかし具合（Android 14以降）。0の場合、ページが鮮明に表示され、Android 14より前のバージョンではページが覆われます</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">縁の明るさ</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">ガラスのぼかし</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">ガラス風ナビゲーション バーの背後にあるページのぼかし具合（Android 14 以降）。0 の場合、ページが鮮明に表示されます。Android 14 以前のバージョンではページが覆われます</string>
   <string name="morphe_music_navigation_bar_glass_light_title">ライトグラス</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">グラス ナビゲーション バーを暗い色ではなく白に色付けし、より明るくクリアな質感にします</string>
-  <string name="morphe_music_navigation_bar_glass_album_tint_title">アルバムアートのティント</string>
-  <string name="morphe_music_navigation_bar_glass_album_tint_summary">再生中の曲のアルバムアートの色でグラスナビゲーションバーを色付けします</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">ガラス風ナビゲーション バーを暗い色ではなく白に色付けし、より明るくクリアな質感にします</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">アルバムアートの色調</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">再生中の曲のアルバムアートの色でガラス風ナビゲーション バーを色付けします</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_title">選択済みボタンのインジケーターを隠す</string>
-  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">グラスナビゲーションバーの選択済みボタンの背後にある丸いハイライトを非表示にします</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">ガラス風ナビゲーション バーの選択済みボタンの背後にある丸いハイライトを非表示にします</string>
   <string name="morphe_music_miniplayer_screen_title">ミニプレーヤー</string>
   <string name="morphe_music_miniplayer_screen_summary">ミニプレーヤーのスタイル、ボタン、ジェスチャを変更します</string>
   <string name="morphe_music_miniplayer_glass_title">グラスエフェクトを有効にする</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">アートワークのパディング</string>
   <string name="morphe_music_miniplayer_glass_rim_title">リムの明るさ</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">透明度</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">グラスのぼかし</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">グラスミニプレーヤーの背面にあるページのぼかし具合（Android 14以降）。0の場合、ページが鮮明に表示され、Android 14より前のバージョンではページが覆われます</string>
-  <string name="morphe_music_miniplayer_glass_light_title">ライトグラス</string>
   <string name="morphe_music_miniplayer_glass_light_summary">グラスミニプレーヤーを暗い色ではなく白色に色付けし、より明るくクリアなグラスにします</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">アルバムアートのティント</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">再生中の曲のアルバムアートの色でグラスミニプレーヤーを色付けします</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">回転するアートワーク</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">グラスミニプレーヤーのアートワークを円形にし、曲の再生中にレコードのように回転させます</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">アクティビティボタンを非表示</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">「音楽をリクエスト」ボタンを非表示</string>
+  <string name="morphe_music_hide_ask_music_button_title">「Music に質問」ボタンを非表示</string>
   <string name="morphe_music_hide_cast_button_title">キャストボタンを非表示</string>
   <string name="morphe_music_hide_history_button_title">履歴ボタンを非表示</string>
   <string name="morphe_music_hide_search_button_title">検索ボタンを非表示</string>
-  <string name="morphe_music_hide_voice_search_button_title">検索の音声入力ボタンを非表示</string>
-  <string name="morphe_music_hide_sound_search_button_title">サウンド検索ボタンを非表示</string>
+  <string name="morphe_music_hide_voice_search_button_title">「音声検索」ボタンを非表示</string>
+  <string name="morphe_music_hide_sound_search_button_title">\"サウンド検索\"ボタンを非表示</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">ログインしていません。タップして設定してください</string>
   <string name="morphe_music_scrobbling_log_out">ログアウト</string>

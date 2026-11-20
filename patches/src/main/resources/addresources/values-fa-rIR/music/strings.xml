@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">خروجی گرفتن از دانلود امکان‌پذیر نبود</string>
   <string name="morphe_export_download_all_flyout_title">صادر کردن همه به دستگاه</string>
   <string name="morphe_export_download_all_started">در حال صادر کردن همه دانلودها</string>
+  <string name="morphe_export_download_all_title">همه دانلودها</string>
+  <string name="morphe_export_download_playlist_started">در حال خروجی گرفتن از دانلودها</string>
   <string name="morphe_export_download_all_running">دانلودها در حال صادر شدن هستند</string>
   <string name="morphe_export_download_all_saved">%1$s از %2$s دانلود به %3$s صادر شد</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">مخفی کردن تبلیغات ویدیویی</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">پنهان‌کردن کلید صوتی / ویدئویی</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">پنهان‌کردن دکمهٔ دانلود</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">دکمهٔ دانلود را در نمایش پادکست پنهان می‌کند</string>
   <string name="morphe_music_hide_explore_shelf_title">پنهان‌کردن قفسهٔ کاوش</string>
   <string name="morphe_music_hide_filter_bar_title">پنهان‌کردن نوار فیلتر</string>
@@ -178,7 +179,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_new_button_summary">دکمهٔ New را در زبانهٔ Library پنهان می‌کند</string>
   <string name="morphe_music_hide_list_shelves_title">پنهان‌کردن قفسه‌های فهرستی</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">پنل متن آهنگ</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">پنهان‌کردن دکمهٔ اشتراک‌گذاری</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">پنهان‌کردن دکمهٔ ترجمه</string>
   <string name="morphe_music_hide_new_from_shelf_title">پنهان‌کردن قفسهٔ «جدید از»</string>
   <string name="morphe_music_hide_playlist_shelves_title">پنهان‌کردن قفسه‌های فهرست پخش</string>
@@ -202,7 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">آهنگ‌ها را به‌نرمی در یکدیگر ادغام می‌کند</string>
   <string name="morphe_music_crossfade_enabled_title">فعال‌کردن محو متقاطع</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">برای استفاده از crossfade، عبارت \'Default client\' در Spoof video streams را به TV Simply یا visionOS تغییر دهید</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">برای استفاده از crossfade، «Default client» در بخش «Spoof video streams» را به «TV Simply» یا «visionOS» تغییر دهید</string>
   <string name="morphe_music_crossfade_curve_title">منحنی محو</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">توان برابر</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">مکث ملایم</string>
@@ -237,7 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">محو متقاطع ادامه یافت</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">وقتی محو متقاطع فعال است، حالت ویدئو در دسترس نیست</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade با visionOS کار نمی‌کند. عبارت \'Default client\' در Spoof video streams را به TV Simply تغییر دهید</string>
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade با «visionOS» کار نمی‌کند. «Default client» در بخش «Spoof video streams» را به «TV Simply» تغییر دهید</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade با این کلاینت spoof stream کار نمی‌کند</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">کراسفید هنگام Cast کردن خاموش است</string>
   <string name="morphe_music_crossfade_about_how_title">نحوهٔ کار</string>
@@ -286,7 +286,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">غیرفعال‌کردن کشیدن برای تغییر آهنگ</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">از پرش به آهنگ بعدی یا قبلی با کشیدن به چپ یا راست در پخش‌کننده جلوگیری می‌کند</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">غیرفعال‌کردن کشیدن برای تغییر آهنگ</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">از پرش به آهنگ بعدی یا قبلی با کشیدن به چپ یا راست در پخش‌کننده کوچک‌شده جلوگیری می‌کند</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">حلقه A-B</string>
@@ -463,11 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">فاصله کاور</string>
   <string name="morphe_music_miniplayer_glass_rim_title">روشنایی لبه</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">شفافیت</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">تاری شیشه</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">میزان تاری صفحه‌ای که پشت مینی‌پخش‌کننده شیشه‌ای قرار دارد (اندروید ۱۴ و بالاتر). در مقدار ۰، صفحه به‌صورت واضح دیده می‌شود و در نسخه‌های پیش از اندروید ۱۴، صفحه پوشانده می‌شود</string>
-  <string name="morphe_music_miniplayer_glass_light_title">شیشه روشن</string>
   <string name="morphe_music_miniplayer_glass_light_summary">به جای رنگ تیره، مینی‌پخش‌کننده شیشه‌ای را به رنگ سفید در می‌آورد تا شیشه روشن‌تر و شفاف‌تر به نظر برسد</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">رنگ‌مایه کاور آلبوم</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">مینی‌پخش‌کننده شیشه‌ای را با رنگ کاور آلبومی که آهنگش در حال پخش است، رنگ‌آمیزی می‌کند</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">چرخش کاور</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">کاور مینی‌پخش‌کننده شیشه‌ای را گرد کرده و هنگام پخش آهنگ، مانند یک صفحه گرامافون آن را می‌چرخاند</string>
@@ -481,12 +477,12 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">پنهان‌کردن دکمهٔ Activity</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">پنهان‌کردن دکمهٔ پرسش از موسیقی</string>
+  <string name="morphe_music_hide_ask_music_button_title">پنهان‌کردن دکمهٔ «از موسیقی بپرس»</string>
   <string name="morphe_music_hide_cast_button_title">پنهان‌کردن دکمهٔ ارسال</string>
   <string name="morphe_music_hide_history_button_title">پنهان‌کردن دکمهٔ سابقه</string>
   <string name="morphe_music_hide_search_button_title">پنهان‌کردن دکمهٔ جست‌وجو</string>
-  <string name="morphe_music_hide_voice_search_button_title">پنهان‌کردن دکمهٔ جستجوی صوتی</string>
-  <string name="morphe_music_hide_sound_search_button_title">پنهان‌کردن دکمهٔ جستجوی صدا</string>
+  <string name="morphe_music_hide_voice_search_button_title">پنهان‌کردن دکمهٔ «جستجوی صوتی»</string>
+  <string name="morphe_music_hide_sound_search_button_title">پنهان‌کردن دکمهٔ \"جست‌وجوی صوتی\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">وارد نشده‌اید. برای پیکربندی ضربه بزنید</string>
   <string name="morphe_music_scrobbling_log_out">خروج</string>

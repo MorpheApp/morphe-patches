@@ -40,6 +40,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">பதிவிறக்கத்தை ஏற்றுமதி செய்ய முடியவில்லை</string>
   <string name="morphe_export_download_all_flyout_title">அனைத்தையும் சாதனத்திற்கு ஏற்றுமதி செய்</string>
   <string name="morphe_export_download_all_started">அனைத்துப் பதிவிறக்கங்களையும் ஏற்றுமதி செய்கிறது</string>
+  <string name="morphe_export_download_all_title">அனைத்து பதிவிறக்கங்கள்</string>
+  <string name="morphe_export_download_playlist_started">பதிவிறக்கங்களை ஏற்றுமதி செய்கிறது</string>
   <string name="morphe_export_download_all_running">பதிவிறக்கங்கள் ஏற்கனவே ஏற்றுமதி செய்யப்படுகின்றன</string>
   <string name="morphe_export_download_all_saved">%2$s பதிவிறக்கங்களில் %1$s பதிவிறக்கங்கள் %3$s-க்கு ஏற்றுமதி செய்யப்பட்டன</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -66,10 +68,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கும்</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade-ஐப் பயன்படுத்த, Spoof வீடியோ ஸ்ட்ரீம்களின் \'Default client\'-ஐ TV Simply அல்லது visionOS ஆக மாற்றவும்</string>
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade-ஐப் பயன்படுத்த, \'Spoof video streams\'-ன் \'Default client\'-ஐ \'TV Simply\' அல்லது \'visionOS\' என மாற்றவும்</string>
   <!-- Empty string because custom preference handles the title itself -->
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-  <string name="morphe_music_crossfade_visionos_toast">Crossfade visionOS-இல் வேலை செய்யாது. Spoof வீடியோ ஸ்ட்ரீம்களின் \'Default client\'-ஐ TV Simply ஆக மாற்றவும்</string>
+  <string name="morphe_music_crossfade_visionos_toast">\'visionOS\'-இல் crossfade வேலை செய்யாது. \'Spoof video streams\'-ன் \'Default client\'-ஐ \'TV Simply\' என மாற்றவும்</string>
   <string name="morphe_music_crossfade_spoof_client_toast">இந்த spoof ஸ்ட்ரீம் கிளைன்ட்டில் Crossfade வேலை செய்யாது</string>
   <string name="morphe_music_crossfade_about_unsupported_summary">ஆடியோவை कास्ट செய்தல் அல்லது மிர்ரரிங் செய்தல் (Chromecast, ஸ்கிரீன் அல்லது ஆடியோ மிர்ரரிங்)</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -93,7 +95,6 @@ Second \"item\" text"</string>
   <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
   <string name="morphe_music_disable_player_swipe_to_change_track_title">பாட்டை மாற்ற ஸ்வைப் செய்வதை முடக்கவும்</string>
   <string name="morphe_music_disable_player_swipe_to_change_track_summary">பிளேயரில் இடது அல்லது வலதுபுறமாக ஸ்வைப் செய்வதன் மூலம் அடுத்த அல்லது முந்தைய பாட்டிற்குச் செல்வதைத் தடுக்கிறது</string>
-  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">பாட்டை மாற்ற ஸ்வைப் செய்வதை முடக்கவும்</string>
   <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">மினிபிளேயரில் இடது அல்லது வலதுபுறமாக ஸ்வைப் செய்வதன் மூலம் அடுத்த அல்லது முந்தைய பாட்டிற்குச் செல்வதைத் தடுக்கிறது</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B லூப்</string>
@@ -192,11 +193,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">கலைப்படைப்பு இடைவெளி</string>
   <string name="morphe_music_miniplayer_glass_rim_title">விளிம்பு பிரகாசம்</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">ஒளிபுகும் தன்மை</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">கிளாஸ் மங்கலாக்கம்</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">கண்ணாடி மினிப்ளேயருக்குப் பின்னால் உள்ள பக்கம் எவ்வளவு மங்கலாக உள்ளது (Android 14 மற்றும் அதற்குப் பிறகு). 0-இல் பக்கம் தெளிவாகத் தெரியும், Android 14-க்கு முன் பக்கம் மறைக்கப்படும்</string>
-  <string name="morphe_music_miniplayer_glass_light_title">லேசான கண்ணாடி</string>
   <string name="morphe_music_miniplayer_glass_light_summary">லேசான மற்றும் தெளிவான கண்ணாடிக்கு, கண்ணாடி மினிப்ளேயரை இருண்ட நிறத்திற்குப் பதிலாக வெள்ளை நிறத்தில் மாற்றுகிறது</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">ஆல்பம் கலை வண்ணம்</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">இயங்கும் பாடலின் ஆல்பம் கலை வண்ணத்தைக் கொண்டு கண்ணாடி மினிப்ளேயரை வண்ணப்படுத்துகிறது</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">சுழலும் கலைப்படைப்பு</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">கிளாஸ் மினிப்ளேயரின் கலைப்படைப்பை வட்டமாக்கி, பாடல் இயங்கும்போது அதை ஒரு ரெக்கார்டு போல சுழலச் செய்கிறது</string>
@@ -210,7 +208,9 @@ Second \"item\" text"</string>
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">செயல்பாட்டு பொத்தானை மறைக்கவும்</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_ask_music_button_title">Ask Music பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_music_hide_ask_music_button_title">\'மியூசிக்கிடம் கேளுங்கள்\' பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_music_hide_voice_search_button_title">\'குரல் தேடல்\' பொத்தானை மறைக்கவும்</string>
+  <string name="morphe_music_hide_sound_search_button_title">\'ஒலி தேடல்\' பொத்தானை மறைக்கவும்</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbled' must be kept untranslated -->
