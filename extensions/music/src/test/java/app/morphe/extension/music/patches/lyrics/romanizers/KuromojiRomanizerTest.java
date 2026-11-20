@@ -57,7 +57,36 @@ public class KuromojiRomanizerTest {
                 new TestLexeme("まし", (short) 3, (short) 3, (short) 1900, "助動詞", "*", "ます", "マシ", "マシ"),
                 new TestLexeme("よ", (short) 2, (short) 2, (short) 1800, "助詞", "終助詞", "よ", "ヨ", "ヨ"),
                 new TestLexeme("真白", (short) 1, (short) 1, (short) 2800, "名詞", "形容動詞語幹", "真白", "マッシロ", "マッシロ"),
-                new TestLexeme("な", (short) 3, (short) 3, (short) 1800, "助動詞", "*", "だ", "ナ", "ナ")
+                new TestLexeme("な", (short) 3, (short) 3, (short) 1800, "助動詞", "*", "だ", "ナ", "ナ"),
+                // Tokens for Japanese reading, particle, and attachment rule coverage
+                new TestLexeme("限り", (short) 1, (short) 1, (short) 2500, "名詞", "一般", "限り", "カギリ", "カギリ"),
+                new TestLexeme("の", (short) 2, (short) 2, (short) 1500, "助詞", "連体化", "の", "ノ", "ノ"),
+                new TestLexeme("無い", (short) 1, (short) 1, (short) 2500, "形容詞", "自立", "無い", "ナイ", "ナイ"),
+                new TestLexeme("時", (short) 1, (short) 1, (short) 2500, "名詞", "一般", "時", "トキ", "トキ"),
+                new TestLexeme("を", (short) 2, (short) 2, (short) 1500, "助詞", "格助詞", "を", "ヲ", "ヲ"),
+                new TestLexeme("越え", (short) 1, (short) 1, (short) 2500, "動詞", "自立", "越える", "コエ", "コエ"),
+                new TestLexeme("て", (short) 2, (short) 2, (short) 1500, "助詞", "接続助詞", "て", "テ", "テ"),
+                new TestLexeme("今", (short) 1, (short) 1, (short) 2500, "名詞", "副詞可能", "今", "イマ", "イマ"),
+                new TestLexeme("その", (short) 1, (short) 1, (short) 2500, "連体詞", "*", "その", "ソノ", "ソノ"),
+                new TestLexeme("手", (short) 1, (short) 1, (short) 2500, "名詞", "一般", "手", "テ", "テ"),
+                new TestLexeme("に", (short) 2, (short) 2, (short) 1500, "助詞", "格助詞", "に", "ニ", "ニ"),
+                new TestLexeme("触れ", (short) 1, (short) 1, (short) 2500, "動詞", "自立", "触れる", "フレ", "フレ"),
+                new TestLexeme("させ", (short) 2, (short) 2, (short) 1800, "動詞", "接尾", "させる", "サセ", "サセ"),
+                new TestLexeme("黒い", (short) 1, (short) 1, (short) 2500, "形容詞", "自立", "黒い", "クロイ", "クロイ"),
+                new TestLexeme("感情", (short) 1, (short) 1, (short) 2500, "名詞", "一般", "感情", "カンジョウ", "カンジョー"),
+                new TestLexeme("も", (short) 2, (short) 2, (short) 1500, "助詞", "係助詞", "も", "モ", "モ"),
+                new TestLexeme("君", (short) 1, (short) 1, (short) 2500, "名詞", "代名詞", "君", "キミ", "キミ"),
+                new TestLexeme("へ", (short) 2, (short) 2, (short) 1500, "助詞", "格助詞", "へ", "ヘ", "エ"),
+                new TestLexeme("繋ぐ", (short) 1, (short) 1, (short) 2500, "動詞", "自立", "繋ぐ", "ツナグ", "ツナグ"),
+                new TestLexeme("だから", (short) 1, (short) 1, (short) 2500, "接続詞", "*", "だから", "ダカラ", "ダカラ"),
+                new TestLexeme("どうか", (short) 1, (short) 1, (short) 2500, "副詞", "一般", "どうか", "ドウカ", "ドーカ"),
+                new TestLexeme("すべて", (short) 1, (short) 1, (short) 2500, "名詞", "副詞可能", "すべて", "スベテ", "スベテ"),
+                new TestLexeme("愛し", (short) 1, (short) 1, (short) 2500, "動詞", "自立", "愛する", "アイシ", "アイシ"),
+                new TestLexeme("は", (short) 2, (short) 2, (short) 1500, "助詞", "係助詞", "は", "ハ", "ワ"),
+                new TestLexeme("たら", (short) 2, (short) 2, (short) 1500, "助詞", "接続助詞", "たら", "タラ", "タラ"),
+                new TestLexeme("いく", (short) 2, (short) 2, (short) 1800, "動詞", "非自立", "いく", "イク", "イク"),
+                new TestLexeme("何", (short) 1, (short) 1, (short) 2500, "名詞", "代名詞", "何", "ナニ", "ナニ"),
+                new TestLexeme("か", (short) 2, (short) 2, (short) 1500, "助詞", "副助詞", "か", "カ", "カ")
         );
         KuromojiDictionary dict = KuromojiDictionary.buildSyntheticForTest(lexemes);
         assertNotNull(dict);
@@ -260,5 +289,59 @@ public class KuromojiRomanizerTest {
             //noinspection ResultOfMethodCallIgnored
             dir.delete();
         }
+    }
+
+    @Test
+    public void romanizeLinesAppliesHepburnParticlesAndAttachmentRules() {
+        assertEquals("kagiri no nai toki o koete ima",
+                KuromojiRomanizer.romanizeLine("限りの無い時を越えて今", tokenizer));
+
+        List<Word> l1Words = KuromojiRomanizer.alignLineWords("限りの無い時を越えて今",
+                java.util.Arrays.asList(
+                        new Word(0, 100, "限", null, false),
+                        new Word(100, 200, "りの", null, false),
+                        new Word(200, 300, "無い", null, false),
+                        new Word(300, 400, "時を", null, false),
+                        new Word(400, 500, "越", null, false),
+                        new Word(500, 600, "えて", null, false),
+                        new Word(600, 700, "今", null, false)
+                ), tokenizer);
+        assertEquals(7, l1Words.size());
+        assertEquals("kagi", l1Words.get(0).romaji().trim());
+        assertEquals("ri no", l1Words.get(1).romaji().trim());
+        assertEquals("nai", l1Words.get(2).romaji().trim());
+        assertEquals("toki o", l1Words.get(3).romaji().trim());
+        assertEquals("ko", l1Words.get(4).romaji().trim());
+        assertEquals("ete", l1Words.get(5).romaji().trim());
+        assertEquals("ima", l1Words.get(6).romaji().trim());
+
+        assertEquals("sono te ni furesasete",
+                KuromojiRomanizer.romanizeLine("その手に触れさせて", tokenizer));
+        assertEquals("kuroi kanjou mo kimi e tsunagu",
+                KuromojiRomanizer.romanizeLine("黒い感情も君へ繋ぐ", tokenizer));
+        assertEquals("dakara douka subete aishite",
+                KuromojiRomanizer.romanizeLine("だからどうかすべて 愛して", tokenizer));
+
+        // Attachment rules: 助詞+助詞 (には), 接続助詞 (たら), 補助動詞 (ていく), 何+か
+        assertEquals("kimi niwa", KuromojiRomanizer.romanizeLine("君には", tokenizer));
+        assertEquals("koetara", KuromojiRomanizer.romanizeLine("越えたら", tokenizer));
+        assertEquals("koeteiku", KuromojiRomanizer.romanizeLine("越えていく", tokenizer));
+        assertEquals("nanika", KuromojiRomanizer.romanizeLine("何か", tokenizer));
+    }
+
+    @Test
+    public void syllableReadingsForSlotsMapsOkuriganaAndPreservesParticles() {
+        String line = "限りの無い時を越えて今";
+        int[] starts = {0, 1, 3, 5, 7, 8, 10};
+        int[] ends = {1, 3, 5, 7, 8, 10, 11};
+        String[] readings = KuromojiRomanizer.syllableReadingsForSlots(line, starts, ends, tokenizer);
+        assertEquals(7, readings.length);
+        assertEquals("kagi", readings[0].trim());
+        assertEquals("ri no", readings[1].trim());
+        assertEquals("nai", readings[2].trim());
+        assertEquals("toki o", readings[3].trim());
+        assertEquals("ko", readings[4].trim());
+        assertEquals("ete", readings[5].trim());
+        assertEquals("ima", readings[6].trim());
     }
 }

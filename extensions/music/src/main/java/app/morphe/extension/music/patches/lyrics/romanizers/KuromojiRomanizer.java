@@ -91,24 +91,10 @@ public final class KuromojiRomanizer {
         return out.toString().trim();
     }
 
-    /**
-     * Contextually aligns a line's timed {@link Word}s by tokenizing the full {@code lineText}
-     * once and slicing character-level readings onto each {@link Word}'s span inside the line.
-     */
-    @Nullable
-    public static List<Word> alignLineWords(
-            String lineText,
-            List<Word> words,
-            KuromojiTokenizer tokenizer) {
-        if (lineText == null || lineText.isEmpty() || words == null || words.isEmpty()) {
-            return null;
-        }
-        List<Token> tokens = tokenizer.tokenize(lineText);
-        if (tokens.isEmpty()) {
-            return null;
-        }
+    private record LineCharRomaji(String[] charRomaji, boolean[] bunsetsuBreakAfterChar) {
+    }
 
-        // Build per-UTF-16-char romaji array across `lineText`, plus bunsetsu boundary flags!
+    private static LineCharRomaji buildLineCharRomaji(String lineText, List<Token> tokens) {
         final int lineLen = lineText.length();
         String[] charRomaji = new String[lineLen];
         boolean[] bunsetsuBreakAfterChar = new boolean[lineLen];
@@ -148,7 +134,8 @@ public final class KuromojiRomanizer {
             Token token = tokens.get(t);
             String surf = token.surfaceForm();
             int len = surf.length();
-            int start = cursor;
+            int foundStart = !surf.isEmpty() ? lineText.indexOf(surf, cursor) : cursor;
+            int start = foundStart >= 0 ? foundStart : Math.min(lineLen, cursor);
             int end = Math.min(lineLen, start + len);
             cursor = end;
 
@@ -177,6 +164,49 @@ public final class KuromojiRomanizer {
             prevNonWs = token;
             sawPendingSpace = false;
         }
+        return new LineCharRomaji(charRomaji, bunsetsuBreakAfterChar);
+    }
+
+    private static String sliceCharRomaji(
+            String[] charRomaji,
+            boolean[] bunsetsuBreakAfterChar,
+            int start,
+            int end) {
+        StringBuilder rom = new StringBuilder();
+        for (int c = start; c < end; c++) {
+            String piece = charRomaji[c];
+            if (piece != null && !piece.isEmpty()) {
+                rom.append(piece);
+            }
+            if (c < end - 1 && bunsetsuBreakAfterChar[c]
+                    && rom.length() > 0 && rom.charAt(rom.length() - 1) != ' ') {
+                rom.append(' ');
+            }
+        }
+        return rom.toString().trim();
+    }
+
+    /**
+     * Contextually aligns a line's timed {@link Word}s by tokenizing the full {@code lineText}
+     * once and slicing character-level readings onto each {@link Word}'s span inside the line.
+     */
+    @Nullable
+    public static List<Word> alignLineWords(
+            String lineText,
+            List<Word> words,
+            KuromojiTokenizer tokenizer) {
+        if (lineText == null || lineText.isEmpty() || words == null || words.isEmpty()) {
+            return null;
+        }
+        List<Token> tokens = tokenizer.tokenize(lineText);
+        if (tokens.isEmpty()) {
+            return null;
+        }
+
+        final int lineLen = lineText.length();
+        LineCharRomaji mapped = buildLineCharRomaji(lineText, tokens);
+        String[] charRomaji = mapped.charRomaji;
+        boolean[] bunsetsuBreakAfterChar = mapped.bunsetsuBreakAfterChar;
 
         // Map each `Word` onto its character span in `lineText`.
         List<Word> out = new ArrayList<>(words.size());
@@ -218,22 +248,11 @@ public final class KuromojiRomanizer {
                 continue;
             }
 
-            StringBuilder rom = new StringBuilder();
-            for (int c = found; c < spanEnd; c++) {
-                String piece = charRomaji[c];
-                if (piece != null && !piece.isEmpty()) {
-                    rom.append(piece);
-                }
-                if (c < spanEnd - 1 && bunsetsuBreakAfterChar[c]
-                        && rom.length() > 0 && rom.charAt(rom.length() - 1) != ' ') {
-                    rom.append(' ');
-                }
-            }
+            String built = sliceCharRomaji(charRomaji, bunsetsuBreakAfterChar, found, spanEnd);
             boolean trailingSpace = word.endsWithSpace()
                     || (spanEnd > 0 && spanEnd <= lineLen && bunsetsuBreakAfterChar[spanEnd - 1])
                     || (spanEnd < lineLen && Character.isWhitespace(lineText.charAt(spanEnd)));
 
-            String built = rom.toString().trim();
             if (built.isEmpty() || built.equalsIgnoreCase(trimmedWord)) {
                 out.add(word);
             } else {
@@ -245,6 +264,50 @@ public final class KuromojiRomanizer {
         }
 
         return anyChanged ? out : null;
+    }
+
+    /**
+     * Contextually reads every {@code [start, end)} character range in {@code lineText} using a
+     * single Kuromoji tokenization pass so repeated kana/kanji (such as {@code は} or {@code い})
+     * always receive the exact reading at their position in the line.
+     */
+    @Nullable
+    public static String[] syllableReadingsForSlots(
+            String lineText,
+            int[] starts,
+            int[] ends,
+            KuromojiTokenizer tokenizer) {
+        if (lineText == null || lineText.isEmpty() || starts == null || ends == null
+                || starts.length != ends.length || starts.length == 0) {
+            return null;
+        }
+        List<Token> tokens = tokenizer.tokenize(lineText);
+        if (tokens.isEmpty()) {
+            return null;
+        }
+        LineCharRomaji mapped = buildLineCharRomaji(lineText, tokens);
+        String[] charRomaji = mapped.charRomaji;
+        boolean[] bunsetsuBreakAfterChar = mapped.bunsetsuBreakAfterChar;
+        final int lineLen = lineText.length();
+        String[] out = new String[starts.length];
+
+        for (int i = 0; i < starts.length; i++) {
+            int s = Math.max(0, Math.min(lineLen, starts[i]));
+            int e = Math.max(s, Math.min(lineLen, ends[i]));
+            if (e <= s) {
+                out[i] = "";
+                continue;
+            }
+            String rawSlice = lineText.substring(s, e).trim();
+            if (rawSlice.isEmpty() || isPurelyAsciiOrPunct(rawSlice)) {
+                out[i] = "";
+                continue;
+            }
+            String built = sliceCharRomaji(charRomaji, bunsetsuBreakAfterChar, s, e);
+            out[i] = (!built.isEmpty() && !ScriptDetector.contains(built, Character.UnicodeScript.HAN)
+                    && !built.equalsIgnoreCase(rawSlice)) ? built : "";
+        }
+        return out;
     }
 
     /**
@@ -333,7 +396,8 @@ public final class KuromojiRomanizer {
         int cursor = 0;
         for (Token token : tokens) {
             String surf = token.surfaceForm();
-            int start = cursor;
+            int foundStart = !surf.isEmpty() ? lineText.indexOf(surf, cursor) : cursor;
+            int start = foundStart >= 0 ? foundStart : Math.min(lineLen, cursor);
             int end = Math.min(lineLen, start + surf.length());
             tokenBoundaryBefore[start] = true;
             tokenBoundaryBefore[end] = true;
@@ -810,24 +874,37 @@ public final class KuromojiRomanizer {
                     || ("ない".equals(surf) && ("じゃ".equals(prevSurf) || "ちゃ".equals(prevSurf)))));
         }
 
-        // Conjunctive particle て / で ("して" -> "shite", "飛んで" -> "tonde") attaches to verb/adj!
-        if ("助詞".equals(pos) && "接続助詞".equals(detail1)
-                && ("て".equals(surf) || "で".equals(surf) || "ちゃ".equals(surf) || "じゃ".equals(surf))) {
+        // Conjunctive particles (接続助詞: て, で, ば, たら, たり, ながら, etc.) attach to verb/adj/suffix/aux!
+        if ("助詞".equals(pos) && "接続助詞".equals(detail1)) {
             return "動詞".equals(prevToken.pos())
                     || "形容詞".equals(prevToken.pos())
-                    || "助動詞".equals(prevToken.pos());
+                    || "助動詞".equals(prevToken.pos())
+                    || "接尾".equals(prevToken.posDetail1());
+        }
+
+        // Particle attached to particle (に + は -> niwa, で + は -> dewa, て + も -> temo).
+        if ("助詞".equals(pos) && "助詞".equals(prevToken.pos())) {
+            return true;
         }
 
         // Dependent / suffix verbs & adjectives (e.g. してる = し + て + る, しまう, いく, くる after て/で, or 接尾)
-        if (("動詞".equals(pos) || "形容詞".equals(pos)) && "非自立".equals(detail1)) {
-            if ("助詞".equals(prevToken.pos()) && "接続助詞".equals(prevToken.posDetail1())) {
-                return true;
-            }
-            if ("動詞".equals(prevToken.pos())) {
-                return true;
-            }
+        if ("非自立".equals(detail1)
+                && ("動詞".equals(prevToken.pos())
+                || "接続助詞".equals(prevToken.posDetail1())
+                || "て".equals(prevSurf)
+                || "で".equals(prevSurf))) {
+            return true;
         }
         if ("接尾".equals(detail1)) {
+            return true;
+        }
+
+        // Indefinite pronouns (何か -> nanika, 誰も -> daremo, どこか -> dokoka, いつも -> itsumo)
+        if ("か".equals(surf) && "何".equals(prevSurf)) {
+            return true;
+        }
+        if ("も".equals(surf) && ("誰".equals(prevSurf) || "何".equals(prevSurf)
+                || "いつ".equals(prevSurf) || "どこ".equals(prevSurf))) {
             return true;
         }
 

@@ -158,4 +158,89 @@ public class WordAnimationUtilsTest {
         Assert.assertNotNull(enabled.alignedIfUnchanged);
         Assert.assertEquals(2, enabled.alignedIfUnchanged.size());
     }
+
+    @Test
+    public void testJapaneseClusterJoinMergesOkuriganaAndRespectsWordSpaces() {
+        // Kanji stem + okurigana merge when unspaced ("限"+"りの", "黒"+"い", "越"+"えて", "愛"+"し"+"て")
+        Assert.assertTrue(WordAnimationUtils.canJoinUnspacedJapaneseSyllables(
+                "限", "りの", 1, 1, false, "kagi"));
+        Assert.assertTrue(WordAnimationUtils.canJoinUnspacedJapaneseSyllables(
+                "黒", "い", 1, 1, false, "kuro"));
+        Assert.assertTrue(WordAnimationUtils.canJoinUnspacedJapaneseSyllables(
+                "愛", "し", 1, 1, false, "ai"));
+
+        // Particle/word boundaries with trailing space or explicit gap stop cluster merging
+        Assert.assertFalse(WordAnimationUtils.canJoinUnspacedJapaneseSyllables(
+                "りの", "無い", 3, 3, true, "ri no "));
+        Assert.assertFalse(WordAnimationUtils.canJoinUnspacedJapaneseSyllables(
+                "りの", "無い", 3, 3, false, "ri no "));
+        Assert.assertFalse(WordAnimationUtils.canJoinUnspacedJapaneseSyllables(
+                "すべて", "愛", 3, 4, false, "subete"));
+
+        // Latin syllables remain separate unless explicitly continuous in Latin logic
+        Assert.assertFalse(WordAnimationUtils.canJoinUnspacedJapaneseSyllables(
+                "for", "ev", 3, 3, false, "for"));
+    }
+
+    @Test
+    public void testIndependentRomanWipeFollowsRomajiSegmentTimings() {
+        // Simulates merged cluster "kagiri no" [0..40px="kagi" 100..300ms, 40..90px="ri no" 300..700ms]
+        // followed by a gap/space [90..110px], then "nai" [110..150px 800..1200ms]
+        float[] segStartX = {0f, 40f, 110f};
+        float[] segEndX = {40f, 90f, 150f};
+        long[] segStartMs = {100L, 300L, 800L};
+        long[] segEndMs = {300L, 700L, 1200L};
+        float lastRomEnd = 150f;
+        float subGrad = 20f;
+        float[] out = new float[2];
+
+        // Before first segment -> unlit
+        WordAnimationUtils.computeIndependentRomanWipe(
+                segStartX, segEndX, segStartMs, segEndMs, lastRomEnd, 50L, subGrad, false, out);
+        Assert.assertTrue(out[0] < 0f);
+        Assert.assertEquals(0f, out[1], 0.01f);
+
+        // Midpoint of first sub-segment "kagi" (200ms -> halfway across [0..40px])
+        WordAnimationUtils.computeIndependentRomanWipe(
+                segStartX, segEndX, segStartMs, segEndMs, lastRomEnd, 200L, subGrad, false, out);
+        Assert.assertEquals(20f, out[0], 0.05f);
+
+        // Midpoint of second sub-segment "ri no" (500ms -> halfway across [40..90px])
+        WordAnimationUtils.computeIndependentRomanWipe(
+                segStartX, segEndX, segStartMs, segEndMs, lastRomEnd, 500L, subGrad, false, out);
+        Assert.assertEquals(65f, out[0], 0.05f);
+
+        // Inside pause between words (750ms -> halfway across space [90..110px])
+        WordAnimationUtils.computeIndependentRomanWipe(
+                segStartX, segEndX, segStartMs, segEndMs, lastRomEnd, 750L, subGrad, false, out);
+        Assert.assertEquals(100f, out[0], 0.05f);
+
+        // Midpoint of final word "nai" (1000ms -> halfway across [110..150px] + half feather shift)
+        WordAnimationUtils.computeIndependentRomanWipe(
+                segStartX, segEndX, segStartMs, segEndMs, lastRomEnd, 1000L, subGrad, false, out);
+        Assert.assertEquals(130f, out[0], 0.05f);
+        Assert.assertEquals(5f, out[1], 0.05f);
+
+        // Past end of line -> full pastColor
+        WordAnimationUtils.computeIndependentRomanWipe(
+                segStartX, segEndX, segStartMs, segEndMs, lastRomEnd, 1250L, subGrad, false, out);
+        Assert.assertEquals(Float.MAX_VALUE, out[0], 0.01f);
+
+        // Forced past (even before endMs) -> full pastColor
+        WordAnimationUtils.computeIndependentRomanWipe(
+                segStartX, segEndX, segStartMs, segEndMs, lastRomEnd, 500L, subGrad, true, out);
+        Assert.assertEquals(Float.MAX_VALUE, out[0], 0.01f);
+    }
+
+    @Test
+    public void testShouldForceRomanPastWaitsForActiveFinishingSweep() {
+        // Deactivating while still finishing the final word sweep must NOT force romaji past.
+        Assert.assertFalse(WordSweepAnimator.shouldForceRomanPast(false, false, true, true, true));
+        // Once finishing completes while deactivating fade is still running, allow forcing past.
+        Assert.assertTrue(WordSweepAnimator.shouldForceRomanPast(false, false, true, false, true));
+        // Explicit allSung always forces past.
+        Assert.assertTrue(WordSweepAnimator.shouldForceRomanPast(true, true, true, true, false));
+        // Active line never forces past unless allSung.
+        Assert.assertFalse(WordSweepAnimator.shouldForceRomanPast(false, true, true, false, true));
+    }
 }

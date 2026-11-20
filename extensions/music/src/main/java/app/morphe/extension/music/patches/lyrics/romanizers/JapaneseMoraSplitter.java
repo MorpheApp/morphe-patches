@@ -481,8 +481,13 @@ public final class JapaneseMoraSplitter {
             if (isLatinWord[origIdx]) {
                 slotNormGuides[s] = normalizeLetters(w);
             } else if (slotIsKanaOrPunct(w)) {
-                String kanaRom = KanaRomanizer.romanize(w);
-                slotNormGuides[s] = normalizeLetters(!kanaRom.isEmpty() ? kanaRom : g);
+                String cleanGuide = normalizeLetters(g);
+                if (!cleanGuide.isEmpty() && isParticleGuideOverride(w, cleanGuide)) {
+                    slotNormGuides[s] = cleanGuide;
+                } else {
+                    String kanaRom = KanaRomanizer.romanize(w);
+                    slotNormGuides[s] = normalizeLetters(!kanaRom.isEmpty() ? kanaRom : g);
+                }
             } else {
                 slotNormGuides[s] = normalizeLetters(g);
             }
@@ -732,8 +737,18 @@ public final class JapaneseMoraSplitter {
         return cost;
     }
 
+    private static boolean isParticleGuideOverride(String kanaSlot, String normGuide) {
+        String trimmed = kanaSlot.trim();
+        return ("は".equals(trimmed) && ("wa".equals(normGuide) || "ha".equals(normGuide)))
+                || ("へ".equals(trimmed) && ("e".equals(normGuide) || "he".equals(normGuide)))
+                || ("を".equals(trimmed) && ("o".equals(normGuide) || "wo".equals(normGuide)));
+    }
+
     private static double editCost(String a, String b, int[][] buffers) {
         if (a.equals(b)) return 0.0;
+        if (("o".equals(a) && "wo".equals(b)) || ("wo".equals(a) && "o".equals(b))) {
+            return 0.1;
+        }
         // Equivalence between Hepburn long vowels ("oo"/"ou"/"uu") for low-cost matching.
         String ca = collapseLongVowels(a);
         String cb = collapseLongVowels(b);

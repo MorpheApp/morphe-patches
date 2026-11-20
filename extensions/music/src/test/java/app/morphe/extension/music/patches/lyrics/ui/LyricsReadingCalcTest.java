@@ -524,4 +524,130 @@ public class LyricsReadingCalcTest {
         assertTrue(shareRom.toLowerCase(java.util.Locale.ROOT).contains("itsumo"));
         assertTrue(shareRom.toLowerCase(java.util.Locale.ROOT).contains("doo"));
     }
+
+    @Test
+    public void buildSyllableRomanizedTimings_keepsJapaneseWordsAndReadsOkuriganaCleanly() {
+        String text = "限りの無い時を越えて今";
+        LyricsLine origLine = new LyricsLine(0, LyricsLine.NO_TIME, text,
+                List.of(
+                        new Word(0, 100, "限", "かぎ", false),
+                        new Word(100, 200, "りの", null, false),
+                        new Word(200, 300, "無い", "な", false),
+                        new Word(300, 400, "時を", "とき", false),
+                        new Word(400, 500, "越", "こ", false),
+                        new Word(500, 600, "えて", null, false),
+                        new Word(600, 700, "今", "いま", false)
+                ),
+                null, false, false, null);
+        List<WordTiming> slots = List.of(
+                new WordTiming(0, 1, 0, 100, "かぎ", false),
+                new WordTiming(1, 3, 100, 200, null, false),
+                new WordTiming(3, 5, 200, 300, "な", false),
+                new WordTiming(5, 7, 300, 400, "とき", false),
+                new WordTiming(7, 8, 400, 500, "こ", false),
+                new WordTiming(8, 10, 500, 600, null, false),
+                new WordTiming(10, 11, 600, 700, "いま", false)
+        );
+        List<LyricsLine> romanized = List.of(
+                new LyricsLine(0, LyricsLine.NO_TIME, text,
+                        List.of(
+                                new Word(0, 100, "限", "kagi", false),
+                                new Word(100, 200, "りの", "ri no", false),
+                                new Word(200, 300, "無い", "nai", false),
+                                new Word(300, 400, "時を", "toki o", false),
+                                new Word(400, 500, "越", "ko", false),
+                                new Word(500, 600, "えて", "ete", false),
+                                new Word(600, 700, "今", "ima", false)
+                        ),
+                        null, false, false, null)
+        );
+
+        List<WordTiming> timings = LyricsReadingCalc.buildSyllableRomanizedTimings(
+                origLine, 0, romanized, true, slots, text, true);
+
+        assertNotNull(timings);
+        assertEquals(slots.size(), timings.size());
+        assertEquals("kagi", timings.get(0).romaji().trim());
+        assertEquals("ri no", timings.get(1).romaji().trim());
+        assertEquals("nai", timings.get(2).romaji().trim());
+        assertEquals("toki o", timings.get(3).romaji().trim());
+        assertEquals("ko", timings.get(4).romaji().trim());
+        assertEquals("ete", timings.get(5).romaji().trim());
+        assertEquals("ima", timings.get(6).romaji().trim());
+    }
+
+    @Test
+    public void buildSyllableRomanizedTimings_consumesPreAlignedRomanizedSlotsDirectly() {
+        String text = "黒い感情も君へ繋ぐ";
+        LyricsLine origLine = new LyricsLine(0, LyricsLine.NO_TIME, text,
+                List.of(
+                        new Word(0, 100, "黒い", null, false),
+                        new Word(100, 250, "感情も", null, false),
+                        new Word(250, 350, "君へ", null, false),
+                        new Word(350, 500, "繋ぐ", null, false)
+                ),
+                null, false, false, null);
+        List<WordTiming> slots = List.of(
+                new WordTiming(0, 2, 0, 100, null, false),
+                new WordTiming(2, 5, 100, 250, null, false),
+                new WordTiming(5, 7, 250, 350, null, false),
+                new WordTiming(7, 9, 350, 500, null, false)
+        );
+        List<LyricsLine> romanized = List.of(
+                new LyricsLine(0, LyricsLine.NO_TIME, "Kuroi kanjou mo kimi e tsunagu",
+                        List.of(
+                                new Word(0, 100, "黒い", "Kuroi", false),
+                                new Word(100, 250, "感情も", "kanjou mo", false),
+                                new Word(250, 350, "君へ", "kimi e", false),
+                                new Word(350, 500, "繋ぐ", "tsunagu", false)
+                        ),
+                        null, false, false, null)
+        );
+
+        List<WordTiming> timings = LyricsReadingCalc.buildSyllableRomanizedTimings(
+                origLine, 0, romanized, true, slots, text, false);
+
+        assertNotNull(timings);
+        assertEquals(4, timings.size());
+        assertEquals("Kuroi", timings.get(0).romaji().trim());
+        assertEquals("kanjou mo", timings.get(1).romaji().trim());
+        assertEquals("kimi e", timings.get(2).romaji().trim());
+        assertEquals("tsunagu", timings.get(3).romaji().trim());
+    }
+
+    @Test
+    public void buildSyllableRomanizedTimings_partialRWordsWithWholeRomanFallsBackToWholeAlignment() {
+        String text = "黒い感情も君へ繋ぐ";
+        LyricsLine origLine = new LyricsLine(0, LyricsLine.NO_TIME, text,
+                List.of(
+                        new Word(0, 100, "黒い", null, false),
+                        new Word(100, 250, "感情も", null, false),
+                        new Word(250, 350, "君へ", null, false),
+                        new Word(350, 500, "繋ぐ", null, false)
+                ),
+                null, false, false, null);
+        List<WordTiming> slots = List.of(
+                new WordTiming(0, 2, 0, 100, null, false),
+                new WordTiming(2, 5, 100, 250, null, false),
+                new WordTiming(5, 7, 250, 350, null, false),
+                new WordTiming(7, 9, 350, 500, null, false)
+        );
+        // Partial per-word reading (only slot 0 populated) must not skip wholeRoman alignment.
+        List<LyricsLine> romanized = List.of(
+                new LyricsLine(0, LyricsLine.NO_TIME, "kuroi kanjou mo kimi e tsunagu",
+                        List.of(
+                                new Word(0, 100, "黒い", "kuroi", false),
+                                new Word(100, 250, "感情も", null, false),
+                                new Word(250, 350, "君へ", null, false),
+                                new Word(350, 500, "繋ぐ", null, false)
+                        ),
+                        null, false, false, null)
+        );
+
+        List<WordTiming> timings = LyricsReadingCalc.buildSyllableRomanizedTimings(
+                origLine, 0, romanized, true, slots, text, true);
+
+        assertNotNull(timings);
+        assertEquals("kuroi kanjou mo kimi e tsunagu", joinedRomaji(timings));
+    }
 }

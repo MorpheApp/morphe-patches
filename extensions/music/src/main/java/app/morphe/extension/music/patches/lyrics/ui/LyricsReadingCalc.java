@@ -17,6 +17,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseMoraSplitter;
+import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.KoreanReadingAligner;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
@@ -231,6 +232,16 @@ final class LyricsReadingCalc {
             populated = true;
         }
 
+        // If romanizedLines itself already carries per-word readings (for example Kuromoji-aligned
+        // words) matching these timing slots 1-to-1, use them directly rather than joining and
+        // re-guessing. Only bypass wholeRoman when all readable non-Latin slots are already covered.
+        if (wantRoman && !populated && tryPopulateAlignedWordReadings(
+                line, index, romanizedLines, timings, mainText, ownWords, isLatinWord,
+                ownRuby, rubyIsOriginal, allowTransliteration, hasWholeRoman,
+                romTexts, romTrailingSpaces)) {
+            populated = true;
+        }
+
         // Otherwise the line's whole reading, or one joined up from its words, is cut into pieces that
         // best match a reading worked out locally for each syllable.
         if (wantRoman && !populated) {
@@ -262,11 +273,7 @@ final class LyricsReadingCalc {
                 }
             }
 
-            List<String> guides = new ArrayList<>(n);
-            for (int i = 0; i < n; i++) {
-                // Skip ruby that equals the original, as the guide would misalign allocateReading.
-                guides.add(rubyIsOriginal[i] ? "" : phoneticGuideFor(ownWords[i], mainText, isLatinWord[i]));
-            }
+            List<String> guides = buildSlotGuides(mainText, timings, ownWords, isLatinWord, ownRuby, rubyIsOriginal);
 
             // Han in wholeRoman is original text, not a reading; replace with spaces.
             if (wholeRoman != null) {
@@ -480,6 +487,13 @@ final class LyricsReadingCalc {
             return;
         }
 
+        // Split Japanese single-token romaji by moras rather than raw code-point offsets so
+        // syllables never cut mid-consonant (e.g. "Kag" + "irin" or "t" + "ok" + "i").
+        if (JapaneseMoraSplitter.hasJapaneseScript(ownWords)) {
+            spreadJapaneseMoras(reading, readingSlots, romTexts, romTrailingSpaces, isLatinWord, guides, ownWords);
+            return;
+        }
+
         // Otherwise cut it by how much of the line each syllable is written with.
         final int[] weights = new int[n];
         int totalWeight = 0;
@@ -515,6 +529,37 @@ final class LyricsReadingCalc {
         }
         if (lastSlot >= 0 && previous < reading.length()) {
             romTexts[lastSlot] = (romTexts[lastSlot] + reading.substring(previous)).trim();
+        }
+    }
+
+    private static void spreadJapaneseMoras(
+            String reading,
+            int readingSlots,
+            String[] romTexts,
+            boolean[] romTrailingSpaces,
+            boolean[] isLatinWord,
+            List<String> guides,
+            String[] ownWords) {
+        int[] slotIndices = new int[readingSlots];
+        String[] slotTexts = new String[readingSlots];
+        List<String> slotGuides = new ArrayList<>(readingSlots);
+        int k = 0;
+        for (int i = 0; i < romTexts.length; i++) {
+            if (!isLatinWord[i] && hasReadableText(ownWords[i])) {
+                slotIndices[k] = i;
+                slotTexts[k] = ownWords[i];
+                slotGuides.add(guides != null && i < guides.size() ? guides.get(i) : "");
+                k++;
+            } else {
+                romTexts[i] = "";
+                romTrailingSpaces[i] = false;
+            }
+        }
+        List<String> moras = JapaneseMoraSplitter.partitionMorasToSlots(
+                reading, readingSlots, slotGuides, slotTexts);
+        for (int s = 0; s < readingSlots && s < moras.size(); s++) {
+            romTexts[slotIndices[s]] = moras.get(s) != null ? moras.get(s).trim() : "";
+            romTrailingSpaces[slotIndices[s]] = false;
         }
     }
 
@@ -562,6 +607,160 @@ final class LyricsReadingCalc {
      * A local reading of one syllable, so the alignment compares Latin letters with Latin letters
      * and never with the script being read.
      */
+    private static boolean tryPopulateAlignedWordReadings(
+            LyricsLine line,
+            int index,
+            @Nullable List<LyricsLine> romanizedLines,
+            List<WordTiming> timings,
+            String mainText,
+            String[] ownWords,
+            boolean[] isLatinWord,
+            String[] ownRuby,
+            boolean[] rubyIsOriginal,
+            boolean allowTransliteration,
+            boolean hasWholeRoman,
+            String[] romTexts,
+            boolean[] romTrailingSpaces) {
+        if (romanizedLines == null || index >= romanizedLines.size()) {
+            return false;
+        }
+        final int n = ownWords.length;
+        List<Word> rWords = romanizedLines.get(index).words();
+        boolean secondaryLine = LyricsTextUtils.isSecondaryLine(line);
+        if (rWords.size() != n || !anyReading(rWords)
+                || !wordsMatchSlots(rWords, ownWords, secondaryLine)) {
+            return false;
+        }
+        if (hasWholeRoman && !allNonLatinWordsHaveReading(
+                rWords, ownWords, isLatinWord, allowTransliteration, secondaryLine)) {
+            return false;
+        }
+        List<String> fallbackGuides = null;
+        boolean anyFilled = false;
+        for (int i = 0; i < n; i++) {
+            if (isLatinWord[i]) {
+                romTexts[i] = "";
+                romTrailingSpaces[i] = false;
+                continue;
+            }
+            Word rw = rWords.get(i);
+            String trimmed = cleanWordRomanization(rw.romaji(), secondaryLine);
+            if (trimmed.isEmpty() || (!allowTransliteration && ScriptDetector.containsCjk(trimmed))
+                    || trimmed.equalsIgnoreCase(ownWords[i])) {
+                if (fallbackGuides == null) {
+                    fallbackGuides = buildSlotGuides(mainText, timings, ownWords, isLatinWord, ownRuby, rubyIsOriginal);
+                }
+                String fallback = (!rubyIsOriginal[i] && i < fallbackGuides.size()) ? fallbackGuides.get(i) : "";
+                romTexts[i] = (!fallback.isEmpty() && (allowTransliteration || !ScriptDetector.containsCjk(fallback))
+                        && !fallback.equalsIgnoreCase(ownWords[i])) ? fallback : "";
+                romTrailingSpaces[i] = !romTexts[i].isEmpty() && (rw.endsWithSpace() || timings.get(i).hasTrailingSpace());
+            } else {
+                String rawRom = rw.romaji() != null ? rw.romaji() : "";
+                romTexts[i] = trimmed;
+                romTrailingSpaces[i] = rawRom.endsWith(" ") || rw.endsWithSpace() || timings.get(i).hasTrailingSpace();
+            }
+            if (!romTexts[i].isEmpty()) {
+                anyFilled = true;
+            }
+        }
+        return anyFilled;
+    }
+
+    private static String cleanWordRomanization(@Nullable String raw, boolean secondary) {
+        if (raw == null) {
+            return "";
+        }
+        return LyricsTextUtils.stripBidiControls(
+                secondary ? LyricsBracketSplitter.stripAllBrackets(raw) : raw).trim();
+    }
+
+    private static boolean allNonLatinWordsHaveReading(
+            List<Word> rWords,
+            String[] ownWords,
+            boolean[] isLatinWord,
+            boolean allowTransliteration,
+            boolean secondary) {
+        for (int i = 0; i < ownWords.length; i++) {
+            if (isLatinWord[i] || !hasReadableText(ownWords[i])) {
+                continue;
+            }
+            String trimmed = cleanWordRomanization(rWords.get(i).romaji(), secondary);
+            if (trimmed.isEmpty()
+                    || (!allowTransliteration && ScriptDetector.containsCjk(trimmed))
+                    || trimmed.equalsIgnoreCase(ownWords[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean wordsMatchSlots(List<Word> rWords, String[] ownWords, boolean secondary) {
+        if (rWords.size() != ownWords.length) {
+            return false;
+        }
+        for (int i = 0; i < ownWords.length; i++) {
+            String raw = rWords.get(i).text();
+            if (raw == null) {
+                raw = "";
+            }
+            String clean = LyricsTextUtils.stripBidiControls(
+                    secondary ? LyricsBracketSplitter.stripAllBrackets(raw) : raw).trim();
+            if (!clean.equals(ownWords[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static List<String> buildSlotGuides(
+            String mainText,
+            List<WordTiming> timings,
+            String[] ownWords,
+            boolean[] isLatinWord,
+            String[] ownRuby,
+            boolean[] rubyIsOriginal) {
+        final int n = timings.size();
+        int[] starts = new int[n];
+        int[] ends = new int[n];
+        for (int i = 0; i < n; i++) {
+            WordTiming wt = timings.get(i);
+            starts[i] = Math.max(0, Math.min(wt.start(), mainText.length()));
+            ends[i] = Math.max(starts[i], Math.min(wt.end(), mainText.length()));
+        }
+        String[] contextual = LocalRomanizer.syllableReadingsInContext(mainText, starts, ends);
+        List<String> guides = new ArrayList<>(n);
+        for (int i = 0; i < n; i++) {
+            if (rubyIsOriginal[i]) {
+                guides.add("");
+                continue;
+            }
+            if (isLatinWord[i]) {
+                guides.add(ownWords[i]);
+                continue;
+            }
+            String g = (contextual != null && i < contextual.length) ? contextual[i] : "";
+            if (g == null || g.isEmpty()) {
+                g = guideFromRubyOrSlot(ownWords[i], ownRuby[i], mainText);
+            }
+            guides.add(g != null ? g : "");
+        }
+        return guides;
+    }
+
+    private static String guideFromRubyOrSlot(String ownWord, @Nullable String ruby, String fullLineText) {
+        if (ruby != null && !ruby.trim().isEmpty() && !ruby.equalsIgnoreCase(ownWord)) {
+            String cleanRuby = ruby.trim();
+            if (ScriptDetector.containsKana(cleanRuby)
+                    && !ScriptDetector.contains(cleanRuby, Character.UnicodeScript.HAN)) {
+                String kanaRom = KanaRomanizer.romanize(cleanRuby);
+                if (!kanaRom.isEmpty()) {
+                    return kanaRom;
+                }
+            }
+        }
+        return phoneticGuideFor(ownWord, fullLineText, false);
+    }
+
     static String phoneticGuideFor(String ownWord, String fullLineText, boolean isLatin) {
         if (ownWord == null || ownWord.isEmpty()) {
             return "";

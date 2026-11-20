@@ -64,6 +64,32 @@ public final class LocalRomanizer {
     }
 
     /**
+     * Reads every {@code [starts[i], ends[i])} slot in {@code line} using a single Kuromoji
+     * morphological pass when Japanese Kuromoji is active, returning {@code null} to let the caller
+     * fall back per-syllable otherwise.
+     */
+    @Nullable
+    public static String[] syllableReadingsInContext(String line, int[] starts, int[] ends) {
+        if (line == null || line.isEmpty() || starts == null || ends == null
+                || starts.length != ends.length || starts.length == 0) {
+            return null;
+        }
+        if (ScriptDetector.detect(line) != Script.JAPANESE && !RubyGenerator.isJapaneseDictionaryReady()) {
+            return null;
+        }
+        if (RimeDictionaryStore.isActive()) {
+            return null;
+        }
+        if (RubyGenerator.useKuromojiEngine()) {
+            KuromojiTokenizer tokenizer = KuromojiDictStore.tokenizer();
+            if (tokenizer != null) {
+                return KuromojiRomanizer.syllableReadingsForSlots(line, starts, ends, tokenizer);
+            }
+        }
+        return null;
+    }
+
+    /**
      * The reading of one syllable, or null when it is not read here.
      *
      * @param line The line the syllable opens, so a Korean coda reads the way the line reads it.
