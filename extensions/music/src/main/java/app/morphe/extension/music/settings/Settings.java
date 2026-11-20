@@ -42,6 +42,9 @@ import app.morphe.extension.shared.spoof.ClientType;
 @SuppressWarnings("unused")
 public class Settings extends SharedYouTubeSettings {
 
+    // Apple Music animated album artwork.
+    public static final BooleanSetting APPLE_MUSIC_ARTWORK_ENABLED = new BooleanSetting("morphe_apple_music_artwork_enabled", TRUE, false);
+
     // Ads
     public static final BooleanSetting HIDE_GET_PREMIUM_LABEL = new BooleanSetting("morphe_music_hide_get_premium_label", TRUE, true);
     public static final BooleanSetting HIDE_MUSIC_PREMIUM_PROMOTIONS = new BooleanSetting("morphe_music_hide_music_premium_promotions", TRUE, true);
