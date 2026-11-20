@@ -55,6 +55,7 @@ import app.morphe.patches.youtube.misc.fix.accessibility.fixShortsAccessibilityP
 import app.morphe.patches.youtube.misc.fix.accessibility.fixTouchExplorationPatch
 import app.morphe.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
 import app.morphe.patches.youtube.misc.fix.delayedping.fixDelayedPingCrashPatch
+import app.morphe.patches.youtube.misc.fix.location.fixLocationSettingPatch
 import app.morphe.patches.youtube.misc.fix.guidecache.fixGuideCachePatch
 import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.mediasession.fixMediaSessionStopPatch
@@ -222,6 +223,7 @@ val settingsPatch = patch(
         fixLikeButtonPatch,
         fixContentProviderPatch,
         fixDelayedPingCrashPatch,
+        fixLocationSettingPatch,
         fixGuideCachePatch,
         fixPipChatBarPatch,
         fixPagePaddingPatch,
