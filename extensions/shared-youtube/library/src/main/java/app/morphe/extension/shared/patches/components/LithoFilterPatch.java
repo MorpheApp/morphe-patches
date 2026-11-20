@@ -366,74 +366,100 @@ public final class LithoFilterPatch {
                 if (decorator instanceof ListItemDecoratorInterface listItemDecorator) {
                     Object item = listItemDecorator.patch_getListItem();
                     if (item != null) {
-                        // The lists can only be changed on the main thread.
-                        Utils.runOnMainThread(() -> {
-                            // The sections group their items into the rows of some grids, such as
-                            // the related videos, and lay the rows out again. Other grids, such as
-                            // the feed, have a list for each item, which some sections put in the
-                            // order that fills the rows.
-                            List<ListSectionInterface> sections = new ArrayList<>();
-                            synchronized (listSections) {
-                                Iterator<WeakReference<ListSectionInterface>> iterator = listSections.iterator();
-                                while (iterator.hasNext()) {
-                                    ListSectionInterface section = iterator.next().get();
-                                    if (section == null) {
-                                        iterator.remove();
-                                        continue;
-                                    }
-                                    sections.add(section);
-                                }
-                            }
-
-                            // Removing the item notifies the list observers, so it is done outside the lock.
-                            isRemovingListItem = true;
-                            try {
-                                for (ListSectionInterface section : sections) {
-                                    if (section.patch_removeListItem(item)) {
-                                        Logger.printDebug(() -> "Removed list item of filtered element: " + item);
-                                        return;
-                                    }
-                                }
-                            } finally {
-                                isRemovingListItem = false;
-                            }
-
-                            List<?> itemList = null;
-                            int itemIndex = -1;
-                            synchronized (observableLists) {
-                                Iterator<WeakReference<List<?>>> iterator = observableLists.iterator();
-                                while (iterator.hasNext()) {
-                                    List<?> list = iterator.next().get();
-                                    if (list == null) {
-                                        iterator.remove();
-                                        continue;
-                                    }
-
-                                    itemIndex = list.indexOf(item);
-                                    if (itemIndex >= 0) {
-                                        itemList = list;
-                                        break;
-                                    }
-                                }
-                            }
-
-                            // Removing the item notifies the list observers, so it is done outside the lock.
-                            if (itemList != null) {
-                                isRemovingListItem = true;
-                                try {
-                                    itemList.remove(itemIndex);
-                                } finally {
-                                    isRemovingListItem = false;
-                                }
-                                Logger.printDebug(() -> "Removed list item of filtered element: " + item);
-                            }
-                        });
+                        removeListItem(item);
                     }
                 }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "removeFilteredElementListItem failure", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     * Called when the item of an element in a list is created, with the bytes of the element after the element hooks.
+     * <p>
+     * The element hooks hide some elements by removing all their bytes, such as the YouTube Premium promotions.
+     * The item of the element stays in its list, and the grids of the tablet layout, such as the feed, show an empty
+     * cell in its place. The Litho filter does not see these elements, so the item is removed here.
+     */
+    public static void removeHiddenElementListItem(Object item, @Nullable byte[] element) {
+        try {
+            if (element != null && element.length == 0) {
+                removeListItem(item);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "removeHiddenElementListItem failure", ex);
+        }
+    }
+
+    /**
+     * Removes the item from its list, on the main thread after the code that is running now,
+     * such as the code that adds the item to its list.
+     */
+    private static void removeListItem(Object item) {
+        // The lists can only be changed on the main thread.
+        Utils.runOnMainThread(() -> {
+            // The sections group their items into the rows of some grids, such as
+            // the related videos, and lay the rows out again. Other grids, such as
+            // the feed, have a list for each item, which some sections put in the
+            // order that fills the rows.
+            List<ListSectionInterface> sections = new ArrayList<>();
+            synchronized (listSections) {
+                Iterator<WeakReference<ListSectionInterface>> iterator = listSections.iterator();
+                while (iterator.hasNext()) {
+                    ListSectionInterface section = iterator.next().get();
+                    if (section == null) {
+                        iterator.remove();
+                        continue;
+                    }
+                    sections.add(section);
+                }
+            }
+
+            // Removing the item notifies the list observers, so it is done outside the lock.
+            isRemovingListItem = true;
+            try {
+                for (ListSectionInterface section : sections) {
+                    if (section.patch_removeListItem(item)) {
+                        Logger.printDebug(() -> "Removed list item of hidden element: " + item);
+                        return;
+                    }
+                }
+            } finally {
+                isRemovingListItem = false;
+            }
+
+            List<?> itemList = null;
+            int itemIndex = -1;
+            synchronized (observableLists) {
+                Iterator<WeakReference<List<?>>> iterator = observableLists.iterator();
+                while (iterator.hasNext()) {
+                    List<?> list = iterator.next().get();
+                    if (list == null) {
+                        iterator.remove();
+                        continue;
+                    }
+
+                    itemIndex = list.indexOf(item);
+                    if (itemIndex >= 0) {
+                        itemList = list;
+                        break;
+                    }
+                }
+            }
+
+            // Removing the item notifies the list observers, so it is done outside the lock.
+            if (itemList != null) {
+                isRemovingListItem = true;
+                try {
+                    itemList.remove(itemIndex);
+                } finally {
+                    isRemovingListItem = false;
+                }
+                Logger.printDebug(() -> "Removed list item of hidden element: " + item);
+            }
+        });
     }
 
     /**
