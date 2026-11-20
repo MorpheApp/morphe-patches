@@ -332,13 +332,3 @@ Morphe Patches are licensed under the [GNU General Public License v3.0](LICENSE)
 - **Name & Branding Restrictions (7c & 7e):** Derivative works must use their own distinct branding. The **"Morphe"** name, logos, and trademarks may not be used for the branding or title of derivative works (e.g., names like *"Morphe Plus"*, *"Morphe Expanded"*, or *"Morphe UserXYZ"* are strictly prohibited).
 
 See the [LICENSE](LICENSE) file for full GPLv3 terms and the [NOTICE](NOTICE) file for full conditions of GPLv3 Section 7.
-
-
-## Apple Music animated artwork (YouTube Music)
-
-The **Apple Music animated artwork** patch adds animated Apple Music album artwork to the
-YouTube Music player when a matching motion-artwork asset is available. It is configured
-from **Morphe settings → Player → Apple Music animated artwork**.
-
-The implementation is maintained in the Morphe music extension. Its upstream project
-and licensing notices are preserved in `licenses/apple-music-artwork/`.
