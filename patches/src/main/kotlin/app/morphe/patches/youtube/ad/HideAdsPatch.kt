@@ -18,6 +18,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -46,7 +47,6 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -230,16 +230,15 @@ val hideAdsPatch = patch(
 
         // Hide get premium
 
-        GetPremiumViewFingerprint.method.apply {
-            val startIndex = GetPremiumViewFingerprint.instructionMatches.first().index
-            val measuredWidthRegister = getInstruction<TwoRegisterInstruction>(startIndex).registerA
-            val measuredHeightInstruction = getInstruction<TwoRegisterInstruction>(startIndex + 1)
+        GetPremiumViewFingerprint.let {
+            val setMeasuredDimension = it.instructionMatches.first()
+            val index = setMeasuredDimension.index
+            val measuredWidthRegister = setMeasuredDimension.instruction.registersUsed[1]
+            val measuredHeightRegister = setMeasuredDimension.instruction.registersUsed[2]
+            val tempRegister = it.method.findFreeRegister(index, measuredWidthRegister, measuredHeightRegister)
 
-            val measuredHeightRegister = measuredHeightInstruction.registerA
-            val tempRegister = measuredHeightInstruction.registerB
-
-            addInstructionsWithLabels(
-                startIndex + 2,
+            it.method.addInstructionsWithLabels(
+                index,
                 """
                     # Override the internal measurement of the layout with zero values.
                     invoke-static {}, $EXTENSION_CLASS->hideGetPremiumView()Z

@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4542
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.music.layout.buttons.navigation
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -21,6 +31,7 @@ import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -51,35 +62,8 @@ val navigationBarPatch = patch(
         miniplayerColorHookPatch,
         // If a song plays, for the spinning artwork of the glass miniplayer.
         mediaSessionHookPatch,
-        patch {
-            dependsOn(versionCheckPatch)
-
-            execute {
-                // Ensure the first ImageView has 'layout_weight' to stay properly sized
-                // when the TextView is hidden.
-                resourceXml("res/layout/image_with_text_tab.xml").use { layout ->
-                    layout.elements("ImageView").firstOrNull()?.let {
-                        if (!it.hasAttribute("android:layout_weight")) it.setAttribute("android:layout_weight", "0.5")
-                    }
-                }
-
-                // The floating miniplayer, used with the glass navigation bar and miniplayer, gets the same room
-                // on its sides as the pages and the capsule. The attribute is only read by the floating miniplayer.
-                if (is_9_39_or_greater) {
-                    listOf(
-                        "res/layout/watch_while_layout.xml",
-                        // Inflated instead of the layout above when a server flag defers the player.
-                        "res/layout/watch_while_layout_deferred.xml"
-                    ).forEach { path ->
-                        resourceXml(path).use { layout ->
-                            val root = layout.root
-                            root.attributeNames.filter { it.endsWith(":floatingMiniPlayerHorizontalMargin") }
-                                .forEach { root.setAttribute(it, "@dimen/item_large_spacing") }
-                        }
-                    }
-                }
-            }
-        }
+        fixProtoLibraryPatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -370,5 +354,29 @@ val navigationBarPatch = patch(
                 move-result p1
             """
         )
+
+        // Ensure the first ImageView has 'layout_weight' to stay properly sized
+        // when the TextView is hidden.
+        resourceXml("res/layout/image_with_text_tab.xml").use { layout ->
+            layout.elements("ImageView").first().let {
+                if (!it.hasAttribute("android:layout_weight")) it.setAttribute("android:layout_weight", "0.5")
+            }
+        }
+
+        // The floating miniplayer, used with the glass navigation bar and miniplayer, gets the same room
+        // on its sides as the pages and the capsule. The attribute is only read by the floating miniplayer.
+        if (is_9_39_or_greater) {
+            listOf(
+                "res/layout/watch_while_layout.xml",
+                // Inflated instead of the layout above when a server flag defers the player.
+                "res/layout/watch_while_layout_deferred.xml"
+            ).forEach { path ->
+                resourceXml(path).use { layout ->
+                    val root = layout.root
+                    root.attributeNames.filter { it.endsWith(":floatingMiniPlayerHorizontalMargin") }
+                        .forEach { root.setAttribute(it, "@dimen/item_large_spacing") }
+                }
+            }
+        }
     }
 }

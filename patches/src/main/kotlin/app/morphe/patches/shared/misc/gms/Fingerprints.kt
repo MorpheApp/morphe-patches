@@ -33,9 +33,11 @@ internal object GnpRegistrationTargetFingerprint : Fingerprint(
 
 /**
  * YouTube 21.45+ and YT Music 9.45+ read the Android ID in another class.
+ * The coroutine invokeSuspend method, which YouTube 21.47+ obfuscates.
  */
 internal object GnpRegistrationTargetSuspendFingerprint : Fingerprint(
-    name = "invokeSuspend",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,

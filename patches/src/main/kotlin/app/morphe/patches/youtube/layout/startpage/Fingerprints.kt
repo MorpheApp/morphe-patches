@@ -1,9 +1,22 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.startpage
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -20,8 +33,19 @@ internal object BrowseIdFingerprint : Fingerprint(
     //parameters() // 20.30 and earlier is no parameters = listOf(.  20.31+ parameter is L.),
     filters = listOf(
         string("FEwhat_to_watch"),
-        literal(512),
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Ljava/lang/String;")
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Ljava/lang/String;"),
+            location = MatchAfterImmediately()
+        ),
+        // Sets the has bit of the browse id, which is 0x400 in 21.47+ and 0x200 before.
+        opcode(Opcode.OR_INT_LIT16),
+        opcode(Opcode.IPUT, location = MatchAfterImmediately()),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        )
     )
 )
 

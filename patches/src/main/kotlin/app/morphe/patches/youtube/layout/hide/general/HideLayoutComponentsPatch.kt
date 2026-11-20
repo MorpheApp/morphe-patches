@@ -66,8 +66,6 @@ import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -1158,9 +1156,9 @@ val hideLayoutComponentsPatch = patch(
                     protoObjectIndex
                 ).reference as FieldReference
 
-                // 21.36 - 21.41 reads the tab proto from a typed field.
-                // Other versions read an Object field and cast it.
-                val isTypedProtoField = is_21_36_or_greater && !is_21_42_or_greater
+                // Some versions (21.36 - 21.41, 21.47+) read the tab proto from a typed field.
+                // Others read an Object field and cast it.
+                val isTypedProtoField = auluFieldRef.type != "Ljava/lang/Object;"
 
                 val insertIndex = if (isTypedProtoField) {
                     protoObjectIndex + 1

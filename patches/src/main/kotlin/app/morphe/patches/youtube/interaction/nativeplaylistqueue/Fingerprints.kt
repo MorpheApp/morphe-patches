@@ -282,20 +282,18 @@ internal fun nativeQueueAutoplayConstructorFingerprint(autoplayType: String) = F
     parameters = List(3) { "Lj$/util/Optional;" }
 )
 
-/** The wrapper disposes its active navigator. */
+/**
+ * The wrapper disposes its active navigator.
+ * The wrapper implements the navigator interface, so its dispose has the same name.
+ * 21.47+ disposes the navigator in a helper method instead of calling it directly.
+ */
 internal fun nativeQueueWrapperDisposeFingerprint(navigator: FieldReference, disposeName: String) = Fingerprint(
     definingClass = navigator.definingClass,
+    name = disposeName,
     returnType = "V",
     parameters = emptyList(),
     filters = listOf(
-        fieldAccess(reference = navigator, opcode = Opcode.IGET_OBJECT),
-        methodCall(
-            definingClass = navigator.type,
-            name = disposeName,
-            parameters = emptyList(),
-            returnType = "V",
-            location = MatchAfterImmediately()
-        )
+        fieldAccess(reference = navigator, opcode = Opcode.IGET_OBJECT)
     )
 )
 

@@ -21,14 +21,14 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.readXml
 import app.morphe.patcher.patch.resourceXml
-import app.morphe.patcher.xml.ResourceXml
-import app.morphe.patcher.xml.XmlElement
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.xml.ResourceXml
+import app.morphe.patcher.xml.XmlElement
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
@@ -53,6 +53,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_38_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -82,9 +83,8 @@ lateinit var addLegacyBottomControl: (String) -> Unit
     private set
 
 internal val legacyPlayerControlsResourcePatch = patch {
-    /**
-     * The element to the left of the element being added.
-     */
+    dependsOn(versionCheckPatch)
+
     /**
      * The element to the left of the element being added.
      */
@@ -93,7 +93,11 @@ internal val legacyPlayerControlsResourcePatch = patch {
     lateinit var bottomTargetDocument: ResourceXml
 
     execute {
-        bottomTargetDocument = resourceXml("res/layout/youtube_controls_bottom_ui_container.xml")
+        // 21.47+ always uses the exploder layout. Earlier versions are forced to use the regular layout.
+        bottomTargetDocument = resourceXml(
+            if (is_21_47_or_greater) "res/layout/youtube_video_exploder_controls_bottom_ui_container.xml"
+            else "res/layout/youtube_controls_bottom_ui_container.xml"
+        )
 
         var bottomInsertBeforeNode: XmlElement = bottomTargetDocument.elementByAttribute(
             "android:inflatedId",
@@ -420,9 +424,10 @@ val legacyPlayerControlsPatch = patch(
 
         // A/B test for a slightly different bottom overlay controls,
         // that uses layout file youtube_video_exploder_controls_bottom_ui_container.xml
-        // The change to support this is simple and only requires adding buttons to both layout files,
-        // but for now force this different layout off since it's still an experimental test.
-        overrideExploderLayout(PlayerBottomControlsExploderFeatureFlagFingerprint)
+        // Force it off until 21.47, which always uses it.
+        if (!is_21_47_or_greater) {
+            overrideExploderLayout(PlayerBottomControlsExploderFeatureFlagFingerprint)
+        }
 
         // Turn off a/b tests of ugly player buttons that don't match the style of custom player buttons.
         if (!is_21_36_or_greater) {
@@ -477,7 +482,8 @@ val legacyPlayerControlsPatch = patch(
 
         // Must get methods after overriding flags,
         // since flag overrides can add instructions and break the indexes used here.
-        PlayerBottomControlsInflateFingerprint.let {
+        (if (is_21_47_or_greater) PlayerBottomControlsExploderInflateFingerprint
+        else PlayerBottomControlsInflateFingerprint).let {
             it.method.apply {
                 inflateBottomControlMethodRef = WeakReference(this)
 
