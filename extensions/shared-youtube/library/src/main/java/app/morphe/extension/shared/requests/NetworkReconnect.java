@@ -7,6 +7,7 @@
 
 package app.morphe.extension.shared.requests;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
@@ -15,6 +16,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import androidx.annotation.GuardedBy;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -54,6 +56,7 @@ public final class NetworkReconnect {
      * @return If the device has a network with a working connection to the internet,
      *         or true if it's not known.
      */
+    @SuppressLint("MissingPermission")
     public static boolean isOnline() {
         try {
             Context context = Utils.getContext();
@@ -71,10 +74,11 @@ public final class NetworkReconnect {
 
     /**
      * Runs the action on the main thread once the device is online again, if it's offline now.
-     * An action added again before it runs runs only once. Can be called on any thread.
+     * An action added again before it runs only once. Can be called on any thread.
      *
      * @return If the device is offline, and the action runs once it's online again.
      */
+    @SuppressLint("MissingPermission")
     public static boolean runWhenOnline(Runnable action) {
         if (isOnline()) {
             return false;
@@ -87,7 +91,7 @@ public final class NetworkReconnect {
             ConnectivityManager manager = Utils.getContext().getSystemService(ConnectivityManager.class);
             ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
                 @Override
-                public void onCapabilitiesChanged(Network network, NetworkCapabilities capabilities) {
+                public void onCapabilitiesChanged(@NonNull Network network, NetworkCapabilities capabilities) {
                     if (!capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)) {
                         return;
                     }
