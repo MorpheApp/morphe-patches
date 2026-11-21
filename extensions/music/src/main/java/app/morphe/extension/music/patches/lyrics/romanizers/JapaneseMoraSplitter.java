@@ -125,12 +125,8 @@ public final class JapaneseMoraSplitter {
             }
 
             // 3. Geminate sokuon consonant ('kk', 'ss', 'tt', 'pp', 'tch', 'ssh', 'dd', 'gg', 'zz', 'jj'):
-            //    Keep the doubled consonant attached to the following CV mora ("kitte" -> "ki", "tte";
-            //    "gakkou" -> "ga", "kko", "u"; "kocchi" -> "ko", "cchi" / "kotchi" -> "ko", "tchi")
-            //    unless the caller needs raw mora count, wait: in Japanese lyrics, っ is its own char
-            //    in "きって" (3 chars: き, っ, て), whereas in kanji "学校" (2 chars: 学, 校) "gakkou" splits
-            //    into ["gak", "kou"]! Keeping sokuon as its own mora ["ki", "t", "te"] makes "きって" (3 slots)
-            //    match 3 moras 1:1 AND lets 2-kanji compounds group ["ga"+"k" -> "gak", "ko"+"u" -> "kou"]!
+            //    Keep the sokuon as its own mora ("kitte" -> ["ki", "t", "te"]) so per-character kana
+            //    slots match 1:1 and multi-kanji compounds can coalesce ["ga"+"k" -> "gak", "ko"+"u" -> "kou"].
             if (i + 1 < n && isRomajiLetter(token.charAt(i + 1))) {
                 char lc1 = lowerAscii(token.charAt(i + 1));
                 if ((c0 == lc1 && !isVowelOrMacron(token.charAt(i)) && c0 != 'n')

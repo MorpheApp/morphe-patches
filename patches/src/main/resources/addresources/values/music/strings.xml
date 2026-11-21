@@ -776,8 +776,11 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_tap_to_seek_summary">Tap a line to jump to that moment in the song, long-press it to copy the word under your finger, or the whole line when the press is not on a word. Off takes both gestures away</string>
     <string name="morphe_music_lyrics_show_section_title">Show section tags</string>
     <string name="morphe_music_lyrics_show_section_summary">Label each new section of the lyrics with a small tag, such as Verse or Chorus</string>
-    <string name="morphe_music_lyrics_show_copy_button_title">Show Share button</string>
-    <string name="morphe_music_lyrics_show_copy_button_summary">Tap to select 1–5 lines and share a styled lyrics card; long-press to copy lyrics as plain text or save the raw lyrics source and converted TTML file to Downloads</string>
+    <string name="morphe_music_lyrics_show_copy_button_title">Show Copy / Share button</string>
+    <string name="morphe_music_lyrics_show_copy_button_summary">Show the Copy or Share button on the lyrics panel toolbar</string>
+    <string name="morphe_music_lyrics_copy_button_mode_title">Copy button mode</string>
+    <string name="morphe_music_lyrics_copy_mode_copy">Copy mode (tap to copy, long-press to save)</string>
+    <string name="morphe_music_lyrics_copy_mode_share">Share mode (tap to select 1-5 lines, long-press for copy or save)</string>
     <string name="morphe_music_lyrics_show_translate_button_title">Show Translate button</string>
     <string name="morphe_music_lyrics_show_translate_button_summary">Tap to toggle translation; long-press for translation only. Uses the enabled translation providers in their listed order</string>
     <string name="morphe_music_lyrics_show_romanize_button_title">Show Romanize or Transliterate button</string>

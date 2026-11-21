@@ -170,6 +170,9 @@ public final class LyricsPanelView extends FrameLayout
 
     private static final String REFRESH_ICON = "ic_mtrl_arrow_circle";
 
+    /** Copy button icon used in classic copy mode. */
+    private static final String COPY_ICON = "morphe_yt_copy_bold";
+
     /** Share button icon used for card sharing and long-press copy/save actions. */
     private static final String SHARE_ICON = "morphe_yt_share_bold";
 
@@ -368,7 +371,8 @@ public final class LyricsPanelView extends FrameLayout
             boolean duetOpposite,
             boolean forceCenter,
             boolean formattingEnabled,
-            boolean relaxScroll) {
+            boolean relaxScroll,
+            boolean splitBackground) {
     }
 
     @Nullable
@@ -1633,7 +1637,8 @@ public final class LyricsPanelView extends FrameLayout
                 Settings.LYRICS_DUET_OPPOSITE_SIDE.get(),
                 Settings.LYRICS_FORCE_CENTER.get(),
                 LyricsPresentation.isFormattingEnabled(),
-                LyricsViewSupport.isRelaxScrollEnabled());
+                LyricsViewSupport.isRelaxScrollEnabled(),
+                Settings.LYRICS_SPLIT_BACKGROUND.get());
     }
 
     static boolean hasMatchingSongParts(Lyrics a, Lyrics b) {
@@ -1821,24 +1826,6 @@ public final class LyricsPanelView extends FrameLayout
             }
         }
         retimedLyrics = LyricsRetiming.retimeLyrics(newLyrics.lines(), manualGaps, rows.isSecFlags);
-        if (!retimedLyrics.isEmpty()) {
-            for (int i = 0; i < retimedLyrics.size(); i++) {
-                if (!rows.isSecFlags[i]) {
-                    long maxEnd = retimedLyrics.get(i).adjustedEndTimeMs();
-                    for (int j = i + 1; j < retimedLyrics.size() && rows.isSecFlags[j]; j++) {
-                        maxEnd = Math.max(maxEnd, retimedLyrics.get(j).adjustedEndTimeMs());
-                    }
-                    if (maxEnd > retimedLyrics.get(i).adjustedEndTimeMs()) {
-                        LyricsRetiming.RetimedEntry old = retimedLyrics.get(i);
-                        retimedLyrics.set(i, new LyricsRetiming.RetimedEntry(old.line(), old.startMs(), old.actualEndTimeMs(), maxEnd, false));
-                    }
-                    for (int j = i + 1; j < retimedLyrics.size() && rows.isSecFlags[j]; j++) {
-                        LyricsRetiming.RetimedEntry oldSec = retimedLyrics.get(j);
-                        retimedLyrics.set(j, new LyricsRetiming.RetimedEntry(oldSec.line(), oldSec.startMs(), oldSec.actualEndTimeMs(), maxEnd, true));
-                    }
-                }
-            }
-        }
         retimedAdjustedEndMax = LyricsRetiming.buildAdjustedEndMaxByIndex(retimedLyrics);
 
         final int lineTotalCount = newLyrics.lines().size();
@@ -5578,28 +5565,38 @@ public final class LyricsPanelView extends FrameLayout
         }
 
         final boolean springScrollOn = Settings.LYRICS_SPRING_SCROLL.get();
+        final boolean splitBgOn = Settings.LYRICS_SPLIT_BACKGROUND.get();
         for (int i = 0; i < count; i++) {
             final TextView lv = lineViews.get(i);
             if (lv instanceof LyricsLineView slv && slv.isSecondary() && slv.getParentLineIndex() >= 0) {
                 int pIdx = slv.getParentLineIndex();
                 if (isShareSelectionMode) {
                     boolean parentSelected = shareSelection.isSelected(pIdx);
-                    boolean isExpanded = !isLrcSynced || parentSelected || activeSet.contains(i);
+                    boolean isExpanded = !isLrcSynced || !splitBgOn || parentSelected || activeSet.contains(i);
                     slv.updateShareSelectionLook(parentSelected, instant);
                     slv.clearBlur();
-                    slv.animateSecondaryExpansion(isExpanded, instant);
-                    slv.setAlpha(parentSelected ? 1.0f : 0.36f);
+                    slv.animateSecondaryExpansion(isExpanded, instant || !splitBgOn);
+                    slv.setAlpha((!splitBgOn || parentSelected) ? 1.0f : 0.36f);
                     continue;
                 }
                 boolean parentActive = activeSet.contains(pIdx) || activeParentsFromSecondary.contains(pIdx);
-                boolean isExpanded = !isLrcSynced || activeSet.contains(i) || parentActive;
-                slv.setActiveLine(isExpanded);
-                slv.setPrewarmMasks(isExpanded);
-                slv.updateLineLook(isExpanded, isExpanded ? 0 : 1, 0L, isAutoScrollEnabled, isLrcSynced, instant);
+                boolean isExpanded = !isLrcSynced || !splitBgOn || activeSet.contains(i) || parentActive;
+                boolean isLineSinging = !isLrcSynced || activeSet.contains(i);
+                final int secDist = (isLineSinging || anchorOrd < 0) ? 0 : Math.abs(mainOrd[i] - anchorOrd);
+                final long secStaggerMs = (!splitBgOn && springScrollOn)
+                        ? Math.min(MAX_LOOK_STAGGER_MS, Math.round(secDist * delayIncrementMs)) : 0L;
+                slv.setActiveLine(isLineSinging);
+                slv.setPrewarmMasks(splitBgOn ? isExpanded : (isLineSinging || secDist <= 1));
+                slv.updateLineLook(isLineSinging, splitBgOn ? (isLineSinging ? 0 : 1) : secDist,
+                        secStaggerMs, isAutoScrollEnabled, isLrcSynced, instant);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    slv.clearBlur();
+                    if (splitBgOn) {
+                        slv.clearBlur();
+                    } else {
+                        animateInactiveLineBlur(slv, blurInactiveOn, isLineSinging, secDist, instant);
+                    }
                 }
-                slv.animateSecondaryExpansion(isExpanded, instant);
+                slv.animateSecondaryExpansion(isExpanded, instant || !splitBgOn);
                 continue;
             }
 
@@ -5627,10 +5624,7 @@ public final class LyricsPanelView extends FrameLayout
                 llv.setPrewarmMasks(isActive || dist <= 1);
                 llv.updateLineLook(isActive, dist, staggerDelayMs, isAutoScrollEnabled, isLrcSynced, instant);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    float targetBlur = (!blurInactiveOn || isActive || dist == 0 || dist > BLUR_MAX_DISTANCE_LINES)
-                            ? 0f
-                            : LyricsViewSupport.inactiveBlurRadius(dist, llv.getTextSize());
-                    llv.animateBlur(targetBlur, instant);
+                    animateInactiveLineBlur(llv, blurInactiveOn, isActive, dist, instant);
                 }
             } else {
                 final float targetAlpha;
@@ -5651,6 +5645,17 @@ public final class LyricsPanelView extends FrameLayout
             animateCreditBlockLook(creditLineActive, creditDist, creditStaggerMs,
                     isAutoScrollEnabled, isLrcSynced, blurInactiveOn, instant);
         }
+    }
+
+    private static void animateInactiveLineBlur(
+            LyricsLineView view, boolean blurInactiveOn, boolean isActive, int dist, boolean instant) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            return;
+        }
+        float targetBlur = (!blurInactiveOn || isActive || dist == 0 || dist > BLUR_MAX_DISTANCE_LINES)
+                ? 0f
+                : LyricsViewSupport.inactiveBlurRadius(dist, view.getTextSize());
+        view.animateBlur(targetBlur, instant);
     }
 
     private void animateCreditBlockLook(
@@ -6131,16 +6136,23 @@ public final class LyricsPanelView extends FrameLayout
     }
 
     private void createToolbarButtons() {
+        final boolean shareMode = "share".equalsIgnoreCase(Settings.LYRICS_COPY_BUTTON_MODE.get());
         copyView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_COPY_BUTTON.get(),
-                SHARE_ICON,
-                view -> onShareButtonClicked(),
+                shareMode ? SHARE_ICON : COPY_ICON,
+                shareMode ? view -> onShareButtonClicked() : view -> onCopyClicked(),
                 view -> {
-                    showShareLongPressDialog();
+                    if (shareMode) {
+                        showShareLongPressDialog();
+                    } else {
+                        onCopyLongPressed();
+                    }
                     return true;
                 },
                 false);
         if (copyView != null) {
-            copyView.setContentDescription(str("morphe_music_lyrics_share_button"));
+            copyView.setContentDescription(str(shareMode
+                    ? "morphe_music_lyrics_share_button"
+                    : "morphe_music_lyrics_copy"));
         }
 
         translateView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_TRANSLATE_BUTTON.get(),

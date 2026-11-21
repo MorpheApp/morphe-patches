@@ -37,6 +37,7 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -221,6 +222,7 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_dynamic_background", summary = true),
                     SwitchPreference("morphe_music_lyrics_dynamic_background_animated", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
+                    ListPreference("morphe_music_lyrics_copy_button_mode"),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),

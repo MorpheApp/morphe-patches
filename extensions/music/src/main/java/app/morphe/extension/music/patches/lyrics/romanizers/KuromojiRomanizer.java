@@ -343,10 +343,6 @@ public final class KuromojiRomanizer {
         return direct.isEmpty() || direct.equalsIgnoreCase(cleanSyl) ? null : direct;
     }
 
-    // =========================================================================
-    // Furigana Ruby Generation (Task 2 — Kuromoji Ruby Alternative)
-    // =========================================================================
-
     /** Enriches every line containing Han characters with context-accurate furigana ruby. */
     public static Lyrics enrichLyricsRuby(
             Lyrics lyrics,
@@ -720,10 +716,6 @@ public final class KuromojiRomanizer {
         }
         return words;
     }
-
-    // =========================================================================
-    // Morphological Rules & Sub-Token Kana Splitting
-    // =========================================================================
 
     private static String tokenRomaji(Token token) {
         String surface = token.surfaceForm();

@@ -186,14 +186,14 @@ public class LyricsCacheTest {
         assertEquals("v1", restored.get(0).agentId());
     }
 
-    // ── preference cache ──
+    // -- preference cache --
 
     @Test
     public void preferenceGetReturnsNullWhenMissing() {
         assertNull(LyricsCache.getPreference("video123", track));
     }
 
-    // ── clear / size ──
+    // -- clear / size --
 
     @Test
     public void clearRemovesAllEntries() {

@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Pure-Java Viterbi morphological tokenizer matching {@code kuromoji.js} (IPADIC).
+ * Pure-Java Viterbi morphological tokenizer for packed IPADIC tables.
  *
  * <p>Performs code-point-aware Double-Array Trie prefix lookup, unknown character category
  * grouping, and minimum-cost connection-matrix Viterbi search in a single forward pass.

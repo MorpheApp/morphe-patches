@@ -436,10 +436,10 @@ public final class WordSweepAnimator {
     private float curSimpleVel = 0f;
     private long lastDrawUptimeMs = -1L;
     private long lastRawUptimeMs = -1L;
-    private boolean lastWasPlaying = false;
     private long animClockMs = 10_000L;
     private boolean prewarmMasks;
     private boolean stillAnimating = false;
+    private boolean transitionAnimating = false;
 
     private final EmphasisSample sampleScratch = new EmphasisSample();
     private final WipeResult wipeScratch = new WipeResult();
@@ -972,6 +972,19 @@ public final class WordSweepAnimator {
         return stillAnimating;
     }
 
+    public boolean isTransitionAnimating() {
+        return transitionAnimating;
+    }
+
+    /** Clears active sweep progress without snapping visual color transitions. */
+    public void clearSeekProgress() {
+        lastActiveGX = 0f;
+        lastActivePosMs = Long.MIN_VALUE;
+        finishStartUptimeMs = -1L;
+        finishStartGX = 0f;
+        finishAlpha = 0f;
+    }
+
     private static final long OFF_WINDOW_EVICT_DELAY_MS = 600L;
 
     public void setPrewarmMasks(boolean prewarmMasks) {
@@ -1432,8 +1445,12 @@ public final class WordSweepAnimator {
         }
     }
 
+    private boolean shouldHoldBackgroundLit(boolean allSung) {
+        return isBackground && allSung && Settings.LYRICS_SPLIT_BACKGROUND.get();
+    }
+
     private void updateColorAndSimpleStates(long currentPosition, boolean isActiveLine, boolean allSung, long nowUptimeMs) {
-        float targetCS = (!isActiveLine && !(isBackground && allSung)) ? 1f : 0f;
+        float targetCS = (!isActiveLine && !shouldHoldBackgroundLit(allSung)) ? 1f : 0f;
         float targetSS = (isActiveLine && currentPosition >= lineStartTime && currentPosition <= effectiveEndTimeMs) ? 1f : 0f;
 
         if (isFirstRun || lastDrawUptimeMs < 0L) {
@@ -1648,14 +1665,13 @@ public final class WordSweepAnimator {
             everActivated = true;
         }
         long rawUptimeMs = SystemClock.uptimeMillis();
-        if (lastRawUptimeMs >= 0L && isPlaying && lastWasPlaying) {
+        if (lastRawUptimeMs >= 0L) {
             long elapsed = rawUptimeMs - lastRawUptimeMs;
             if (elapsed > 0L && elapsed < 250L) {
                 animClockMs += elapsed;
             }
         }
         lastRawUptimeMs = rawUptimeMs;
-        lastWasPlaying = isPlaying;
         long nowUptimeMs = animClockMs;
         float safeSpeed = Math.max(0.1f, playbackSpeed);
 
@@ -1678,7 +1694,9 @@ public final class WordSweepAnimator {
                 && curGX >= 1f
                 && curGX <= (lineEndX - 0.5f);
 
+        final boolean holdBackgroundLit = shouldHoldBackgroundLit(allSung);
         boolean isDeactivatingFade = !isActiveLine
+                && !holdBackgroundLit
                 && reachedLineEnd
                 && (curColorState < 0.995f || curSimpleState > 0.005f);
 
@@ -1699,7 +1717,7 @@ public final class WordSweepAnimator {
                 ? WordAnimationUtils.lerpColor(baseUnlitColor, pastColor, finishAlpha)
                 : baseUnlitColor;
 
-        boolean showWipe = isActiveLine || isFinishing || isDeactivatingFade || (isBackground && allSung);
+        boolean showWipe = isActiveLine || isFinishing || isDeactivatingFade || holdBackgroundLit;
         int lineColorValue = showWipe ? Color.TRANSPARENT : lineColor;
         float simpleFrac = (currentPosition > effectiveEndTimeMs) ? 0f : Math.max(0f, Math.min(1f, curSimpleState));
         int inactiveColor = !showWipe
@@ -1727,7 +1745,9 @@ public final class WordSweepAnimator {
                     effLastOfLine, effSylProgress,
                     pastColor, unlitColor, litColor, lineColor, expressiveAccent,
                     romaPosMs, romaForcePast);
-            stillAnimating = isActiveLine || isFinishing || isDeactivatingFade;
+            transitionAnimating = isFinishing || isDeactivatingFade
+                    || isColorStateConverging(currentPosition, isActiveLine, allSung);
+            stillAnimating = isActiveLine || transitionAnimating;
         } else {
             boolean drewFastInactive = false;
             if (!showWipe
@@ -1744,6 +1764,7 @@ public final class WordSweepAnimator {
                             effLastOfLine, effSylProgress,
                             pastColor, unlitColor, litColor, lineColor,
                             curSimpleState, expressiveAccent, romaPosMs, romaForcePast, null);
+                    transitionAnimating = false;
                     stillAnimating = false;
                     drewFastInactive = true;
                 } else if (shiftActive) {
@@ -1753,6 +1774,7 @@ public final class WordSweepAnimator {
                             effLastOfLine, effSylProgress,
                             pastColor, unlitColor, litColor, lineColor,
                             curSimpleState, expressiveAccent, romaPosMs, romaForcePast, null);
+                    transitionAnimating = false;
                     stillAnimating = false;
                     drewFastInactive = true;
                 }
@@ -1760,7 +1782,7 @@ public final class WordSweepAnimator {
             if (!drewFastInactive) {
                 updateSmoothAnimationStates(currentPosition, isActiveLine, safeSpeed, nowUptimeMs);
                 drawSmooth(
-                        canvas, currentPosition, isActiveLine, isFinishing, isDeactivatingFade, showWipe,
+                        canvas, currentPosition, isActiveLine, allSung, isFinishing, isDeactivatingFade, showWipe,
                         shiftProgress, wipeSylIdx, wipeLineIdx, curGX,
                         effLastOfLine, effSylProgress,
                         pastColor, unlitColor, litColor, inactiveColor, lineColor, expressiveAccent, nowUptimeMs,
@@ -2054,10 +2076,18 @@ public final class WordSweepAnimator {
                 0f, expressiveAccent, romaPosMs, romaForcePast, null);
     }
 
+    private boolean isColorStateConverging(long currentPosition, boolean isActiveLine, boolean allSung) {
+        float targetCS = (!isActiveLine && !shouldHoldBackgroundLit(allSung)) ? 1f : 0f;
+        float targetSS = (isActiveLine && currentPosition >= lineStartTime && currentPosition <= effectiveEndTimeMs) ? 1f : 0f;
+        return Math.abs(curColorState - targetCS) > 0.002f
+                || Math.abs(curSimpleState - targetSS) > 0.002f;
+    }
+
     private void drawSmooth(
             Canvas canvas,
             long currentPosition,
             boolean isActiveLine,
+            boolean allSung,
             boolean isFinishing,
             boolean isDeactivatingFade,
             boolean showWipe,
@@ -2081,6 +2111,9 @@ public final class WordSweepAnimator {
         int n = clusters.size();
         boolean anyGlow = false;
         boolean anyRunningAnim = isActiveLine || isFinishing || isDeactivatingFade;
+        boolean elevMoving = false;
+        boolean heavyReleasePending = false;
+        float activeGlowFade = isActiveLine ? 1f : Math.max(0f, 1f - curColorState);
 
         for (int idx = 0; idx < n; idx++) {
             VisualCluster vc = clusters.get(idx);
@@ -2091,6 +2124,7 @@ public final class WordSweepAnimator {
                 elevValue = sylElev.current[sIdx];
                 float dur = sylElev.animDurationMs[sIdx] > 0f ? sylElev.animDurationMs[sIdx] : 1000f;
                 if (nowUptimeMs - sylElev.animStartMs[sIdx] < (long) dur || Math.abs(elevValue - sylElev.animTarget[sIdx]) > 0.001f) {
+                    elevMoving = true;
                     anyRunningAnim = true;
                 }
             }
@@ -2114,6 +2148,7 @@ public final class WordSweepAnimator {
 
                 float heavyRelease = clusterReleaseValues[idx];
                 if (!isActiveLine && (heavyRelease < 1f || (deactivatedPosMs >= vc.wordStartMs() && clusterGrowValues[idx] < 1f))) {
+                    heavyReleasePending = true;
                     anyRunningAnim = true;
                 }
 
@@ -2127,7 +2162,8 @@ public final class WordSweepAnimator {
                         scale = 1f + emphasisScaleGain * pulse;
                         shift = vc.normX() * emphasisShiftEm * fontSizePx * pulse;
                     }
-                    glowAlpha = Math.max(0f, Math.min(1f, vc.charShadowIntensity() * sampleScratch.glow));
+                    glowAlpha = Math.max(0f, Math.min(1f,
+                            vc.charShadowIntensity() * sampleScratch.glow * activeGlowFade));
                 }
             } else {
                 lift = elevValue;
@@ -2137,7 +2173,7 @@ public final class WordSweepAnimator {
             float baseY = restBaseY(idx, shiftProgress);
             float drawX = baseX + shift;
             float drawY = baseY + lift + rise;
-            boolean isGlowing = !disableGlowAndGrow && isGrowableWord && isEmphasised;
+            boolean isGlowing = !disableGlowAndGrow && isGrowableWord && isEmphasised && glowAlpha > 0.005f;
 
             clusterScaleX[idx] = scale;
             clusterGlowAlphas[idx] = glowAlpha;
@@ -2154,6 +2190,8 @@ public final class WordSweepAnimator {
         }
 
         if (anyGlow) {
+            ColorFilter glowFilter = (maskCache != null)
+                    ? maskCache.glowTint.get(pastColor | 0xFF000000) : null;
             for (int idx = 0; idx < n; idx++) {
                 if (clusterIsGlowing[idx]) {
                     float glowAlpha = clusterGlowAlphas[idx];
@@ -2165,7 +2203,8 @@ public final class WordSweepAnimator {
                     float tx = drawX + extraPaddingPx;
                     float ty = drawY + extraPaddingPx;
 
-                    Bitmap glowMask = (maskCache != null) ? maskCache.obtainGlow(idx, vc.subLayout(), glowBlurRadius) : null;
+                    Bitmap glowMask = (maskCache != null && glowFilter != null)
+                            ? maskCache.obtainGlow(idx, vc.subLayout(), glowBlurRadius) : null;
                     if (glowMask != null) {
                         canvas.save();
                         canvas.translate(tx, ty);
@@ -2176,7 +2215,7 @@ public final class WordSweepAnimator {
                                 canvas,
                                 glowMask,
                                 maskCache.glowScaleOf(idx),
-                                maskCache.glowFilter,
+                                glowFilter,
                                 glowAlpha,
                                 true);
                         canvas.restore();
@@ -2266,15 +2305,13 @@ public final class WordSweepAnimator {
                 pastColor, unlitColor, litColor, lineColor,
                 curSimpleState, expressiveAccent, romaPosMs, romaForcePast, romanLineElevY);
 
-        float targetCS = (!isActiveLine || currentPosition > effectiveEndTimeMs) ? 1f : 0f;
-        float targetSS = (isActiveLine && currentPosition >= lineStartTime && currentPosition <= effectiveEndTimeMs) ? 1f : 0f;
-        stillAnimating = anyRunningAnim
+        transitionAnimating = elevMoving
                 || romanElevMoving
+                || heavyReleasePending
                 || isFinishing
                 || isDeactivatingFade
-                || (!isActiveLine && (curSimpleState > 0.002f || (currentPosition >= lineStartTime && currentPosition <= effectiveEndTimeMs)))
-                || Math.abs(curColorState - targetCS) > 0.002f
-                || Math.abs(curSimpleState - targetSS) > 0.002f;
+                || isColorStateConverging(currentPosition, isActiveLine, allSung);
+        stillAnimating = anyRunningAnim || transitionAnimating;
     }
 
     private static int scaleAlpha(int color, float factor) {
@@ -2284,11 +2321,7 @@ public final class WordSweepAnimator {
     }
 
     public void reset() {
-        lastActiveGX = 0f;
-        lastActivePosMs = Long.MIN_VALUE;
-        finishStartUptimeMs = -1L;
-        finishStartGX = 0f;
-        finishAlpha = 0f;
+        clearSeekProgress();
         curColorState = 0f;
         curColorVel = 0f;
         curSimpleState = 0f;
@@ -2298,10 +2331,10 @@ public final class WordSweepAnimator {
         wasActiveLine = false;
         isFirstRun = true;
         stillAnimating = false;
+        transitionAnimating = false;
         everActivated = false;
         lastDrawUptimeMs = -1L;
         lastRawUptimeMs = -1L;
-        lastWasPlaying = false;
         if (!renderStateBuilt) {
             return;
         }
