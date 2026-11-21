@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches.glassmenus;
+package app.morphe.extension.shared.patches.glassmenus;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;

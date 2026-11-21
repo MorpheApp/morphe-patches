@@ -1262,17 +1262,6 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_glass_bottom_margin_summary">Adjust the space between the glass navigation bar and the bottom of the screen or the system navigation</string>
     <string name="morphe_navigation_bar_glass_size_title">Glass navigation bar size</string>
     <string name="morphe_navigation_bar_glass_size_summary">Adjust the height, the width and the button spacing of the glass navigation bar, with a preview. Buttons that do not fit in the width of the screen are hidden</string>
-    <string name="morphe_glass_menus_screen_title">Glass menus</string>
-    <string name="morphe_glass_menus_screen_summary">Menus as frosted glass over the blurred content behind them</string>
-    <string name="morphe_glass_menus_title">Enable glass menus</string>
-    <string name="morphe_glass_menus_summary">Shows menus and bottom sheets as frosted glass, with the content behind them blurred</string>
-    <string name="morphe_glass_menus_user_dialog_message">Menus are shown nearly opaque while the battery saver is on, or if the device does not support blur</string>
-    <string name="morphe_glass_menus_opacity_title">Glass opacity</string>
-    <string name="morphe_glass_menus_opacity_summary">How much the menu covers the blurred content (0 is clear, 100 is opaque)</string>
-    <string name="morphe_glass_menus_blur_title">Blur</string>
-    <string name="morphe_glass_menus_blur_summary">How much the content behind the menu is blurred</string>
-    <string name="morphe_glass_menus_dim_title">Dim</string>
-    <string name="morphe_glass_menus_dim_summary">How much the screen around a bottom sheet is darkened</string>
     <string name="morphe_navigation_bar_glass_size_height">Height</string>
     <string name="morphe_navigation_bar_glass_size_width">Maximum width</string>
     <string name="morphe_navigation_bar_glass_size_button_spacing">Button spacing</string>
