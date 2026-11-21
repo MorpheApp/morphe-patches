@@ -9,6 +9,7 @@ package app.morphe.patches.music.video.quality
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -17,6 +18,7 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoIdHook
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
+import app.morphe.patches.shared.PlaybackStartParametersConstructorFingerprint
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -68,6 +70,25 @@ val rememberVideoQualityPatch = patch(
                 )
             )
         )
+
+        // The player starts a video with the quality last set in the quality menu,
+        // such as the highest quality of the previous track, and the default quality is set
+        // only after the media of that quality is buffered. The default quality is used
+        // as the initial quality instead, so the video starts with it.
+        PlaybackStartParametersConstructorFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->getInitialVideoQuality(Lj$/util/Optional;)Lj$/util/Optional;
+                        move-result-object v$register
+                    """
+                )
+            }
+        }
 
         val itemOnClickFingerprint = VideoQualityItemOnClickFingerprint
         val setQualitiesFingerprint = VideoQualityMenuSetQualitiesFingerprint
