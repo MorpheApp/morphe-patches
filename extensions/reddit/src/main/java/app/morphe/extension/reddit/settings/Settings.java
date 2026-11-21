@@ -15,14 +15,18 @@ import static app.morphe.extension.shared.settings.Setting.parentNot;
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch.ScrollSpeed;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.FeedDim;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.PanelWidth;
+import app.morphe.extension.reddit.patches.PermanentNsfwPatch;
 import app.morphe.extension.reddit.patches.TabletGridFeedPatch.GridColumns;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 
 public class Settings extends BaseSettings {
+    private static final Setting.Availability NSFW_NOT_PERMANENTLY_DISABLED = () -> !PermanentNsfwPatch.isEnabled();
+
     // Ads
     public static final BooleanSetting HIDE_COMMENT_ADS = new BooleanSetting("morphe_hide_comment_ads", TRUE, true);
     public static final BooleanSetting HIDE_POST_ADS = new BooleanSetting("morphe_hide_post_ads", TRUE, true);
@@ -96,9 +100,14 @@ public class Settings extends BaseSettings {
             new EnumSetting<>("morphe_post_side_panel_width", PanelWidth.ONE_THIRD, parent(POST_SIDE_PANEL));
     public static final EnumSetting<FeedDim> POST_SIDE_PANEL_DIM =
             new EnumSetting<>("morphe_post_side_panel_dim", FeedDim.MEDIUM, parent(POST_SIDE_PANEL));
+    /**
+     * Cannot be turned off again, so it is not included with import/export.
+     */
+    public static final BooleanSetting PERMANENTLY_DISABLE_NSFW = new BooleanSetting("morphe_permanently_disable_nsfw", FALSE, true, false,
+            "morphe_permanently_disable_nsfw_user_dialog_message", NSFW_NOT_PERMANENTLY_DISABLED);
     public static final BooleanSetting REMEMBER_COLLAPSED_COMMENTS = new BooleanSetting("morphe_remember_collapsed_comments", TRUE);
     public static final BooleanSetting REMOVE_NOTIFICATION_DIALOG = new BooleanSetting("morphe_remove_notification_dialog", FALSE, true);
-    public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true);
+    public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true, NSFW_NOT_PERMANENTLY_DISABLED);
     public static final BooleanSetting SHOW_FLAIRS_IN_HOME_FEED = new BooleanSetting("morphe_show_flairs_in_home_feed", FALSE, true, "morphe_show_flairs_in_home_feed_user_dialog_message");
     public static final BooleanSetting SHOW_VIEW_COUNT = new BooleanSetting("morphe_show_view_count", FALSE, true);
     public static final BooleanSetting SWAP_POST_VOTE_COMMENT_BUTTONS = new BooleanSetting("morphe_swap_post_vote_comment_buttons", FALSE, true);
@@ -114,8 +123,8 @@ public class Settings extends BaseSettings {
     public static final StringSetting DOWNLOAD_ACCOUNTS = new StringSetting("morphe_download_accounts", "");
     public static final BooleanSetting OPEN_LINKS_DIRECTLY = new BooleanSetting("morphe_open_links_directly", TRUE);
     public static final BooleanSetting OPEN_LINKS_EXTERNALLY = new BooleanSetting("morphe_open_links_externally", TRUE);
-    public static final BooleanSetting REDGIFS_AUDIO = new BooleanSetting("morphe_redgifs_audio", TRUE, true);
-    public static final BooleanSetting REDGIFS_HD = new BooleanSetting("morphe_redgifs_hd", FALSE);
+    public static final BooleanSetting REDGIFS_AUDIO = new BooleanSetting("morphe_redgifs_audio", TRUE, true, NSFW_NOT_PERMANENTLY_DISABLED);
+    public static final BooleanSetting REDGIFS_HD = new BooleanSetting("morphe_redgifs_hd", FALSE, NSFW_NOT_PERMANENTLY_DISABLED);
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
     public static final BooleanSetting SHARE_POST_CONTENT = new BooleanSetting("morphe_share_post_content", FALSE);
 

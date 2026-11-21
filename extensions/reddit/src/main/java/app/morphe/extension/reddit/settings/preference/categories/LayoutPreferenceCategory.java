@@ -33,6 +33,7 @@ import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
 import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch;
+import app.morphe.extension.reddit.patches.PermanentNsfwPatch;
 import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
@@ -73,6 +74,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FeedMediaMaxHeightPatch.isPatchIncluded() ||
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
                 MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
+                PermanentNsfwPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded() ||
                 HighQualityAvatarsPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
@@ -172,6 +174,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIGH_QUALITY_AVATARS
+            ));
+        }
+
+        if (PermanentNsfwPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.PERMANENTLY_DISABLE_NSFW
             ));
         }
 
