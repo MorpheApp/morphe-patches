@@ -9,7 +9,8 @@ group = "app.morphe"
 
 patches {
     about {
-        name = "Morphe Patches"
+        // Pull request builds pass -PpatchesName to tell test builds apart from releases.
+        name = providers.gradleProperty("patchesName").getOrElse("Morphe Patches")
         description = "Patches for Morphe"
         source = "git@github.com:MorpheApp/morphe-patches.git"
         author = "MorpheApp"

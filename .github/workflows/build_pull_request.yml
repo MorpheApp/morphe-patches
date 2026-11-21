@@ -37,7 +37,7 @@ jobs:
       - name: Build Android bundle
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew :patches:buildAndroid --no-daemon
+        run: ./gradlew :patches:buildAndroid -PpatchesName="Morphe Test Build" --no-daemon
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
