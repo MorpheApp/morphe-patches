@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches.glassmenus;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.View;
@@ -29,16 +30,23 @@ import app.morphe.extension.shared.Logger;
  * the background of the menu, it blurs only behind the menu, and follows it while it moves. The drawable is created
  * by the window of the view ({@code ViewRootImpl.createBackgroundBlurDrawable()}), which is not a public API, so if
  * it is not available, the menu has no blur and is nearly opaque instead.
+ * <p>
+ * Samsung devices report the cross-window blur of Android as off, but blur behind this drawable with the window blur
+ * of One UI, which is what {@code View.semSetBlurInfo} of Samsung uses.
  */
 @RequiresApi(Build.VERSION_CODES.S)
 final class BlurRegion {
+
+    private static final String SAMSUNG_CORE_RUNE = "com.samsung.android.rune.CoreRune";
 
     private static boolean initialized;
     @Nullable
     private static Method getViewRootImpl;
     @Nullable
     private static Method createBackgroundBlurDrawable;
+    private static boolean samsungWindowBlurSupported;
 
+    @SuppressLint({"DiscouragedPrivateApi", "BlockedPrivateApi", "PrivateApi"})
     private static void initialize() {
         if (initialized) return;
         initialized = true;
@@ -49,13 +57,31 @@ final class BlurRegion {
                     "Lcom/android/internal/graphics/drawable/BackgroundBlurDrawable;"
             );
             getViewRootImpl = View.class.getDeclaredMethod("getViewRootImpl");
-            Class<?> viewRootClass = Class.forName("android.view.ViewRootImpl");
+             Class<?> viewRootClass = Class.forName("android.view.ViewRootImpl");
             createBackgroundBlurDrawable = viewRootClass.getDeclaredMethod("createBackgroundBlurDrawable");
         } catch (Throwable ex) {
             Logger.printException(() -> "Background blur is not available", ex);
             getViewRootImpl = null;
             createBackgroundBlurDrawable = null;
         }
+
+        try {
+            Class<?> coreRune = Class.forName(SAMSUNG_CORE_RUNE);
+            HiddenApiBypass.addHiddenApiExemptions("L" + SAMSUNG_CORE_RUNE.replace('.', '/') + ";");
+            samsungWindowBlurSupported = coreRune.getField("FW_WINDOW_BLUR_SUPPORTED").getBoolean(null);
+        } catch (ClassNotFoundException ex) {
+            Logger.printDebug(() -> "Not a Samsung device");
+        } catch (Throwable ex) {
+            Logger.printException(() -> "Samsung window blur support is not known", ex);
+        }
+    }
+
+    /**
+     * @return If the device is a Samsung device that blurs behind the drawable with its own window blur.
+     */
+    static boolean isSamsungWindowBlurSupported() {
+        initialize();
+        return samsungWindowBlurSupported;
     }
 
     /**

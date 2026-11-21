@@ -446,10 +446,15 @@ public final class GlassMenusPatch {
                 windowManager = view.getContext().getSystemService(WindowManager.class);
                 blur = BlurRegion.create(view);
                 if (blur != null) {
-                    BlurRegion.setBlurRadius(blur, 0);
                     view.setBackground(new LayerDrawable(new Drawable[]{blur, tint}));
-                    // Called right away with the current state, and again when the system turns the blur on or off.
-                    windowManager.addCrossWindowBlurEnabledListener(blurListener);
+                    if (BlurRegion.isSamsungWindowBlurSupported()) {
+                        onBlurEnabledChanged(true);
+                    } else {
+                        BlurRegion.setBlurRadius(blur, 0);
+                        // Called right away with the current state, and again when the system turns the blur
+                        // on or off.
+                        windowManager.addCrossWindowBlurEnabledListener(blurListener);
+                    }
                 }
                 updateCorners(true);
                 attachedTime = SystemClock.uptimeMillis();
@@ -471,7 +476,7 @@ public final class GlassMenusPatch {
                 }
                 hiddenDrawables.clear();
                 if (blur != null) {
-                    if (windowManager != null) {
+                    if (windowManager != null && !BlurRegion.isSamsungWindowBlurSupported()) {
                         windowManager.removeCrossWindowBlurEnabledListener(blurListener);
                     }
                     blur = null;
