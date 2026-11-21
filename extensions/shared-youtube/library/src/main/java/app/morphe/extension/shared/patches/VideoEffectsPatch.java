@@ -31,7 +31,9 @@ public final class VideoEffectsPatch {
      */
     public enum VideoEffect {
         NONE("pick(uv)"),
-        ENHANCE("enhance(uv)"),
+        ENHANCE_LOW("enhance(uv, 0.33)"),
+        ENHANCE_MEDIUM("enhance(uv, 0.67)"),
+        ENHANCE_HIGH("enhance(uv, 1.0)"),
         VIVID_COLORS("vivid(pick(uv))"),
         MORE_CONTRAST("contrast(pick(uv), 0.55)"),
         SHARPEN("sharpen(uv, 0.7)"),
@@ -213,8 +215,11 @@ public final class VideoEffectsPatch {
                 return c * min(min(brightened / l, 1.0 / max(brightest, 0.001)), 4.0);
             }
 
-            vec3 enhance(vec2 uv) {
-                return contrast(vivid(sharpen(uv, 0.4)), 0.25);
+            // Sharpens and adds color and contrast. A strength of 1 is the full effect.
+            vec3 enhance(vec2 uv, float strength) {
+                vec3 c = sharpen(uv, 0.4 * strength);
+                c = mix(c, vivid(c), strength);
+                return contrast(c, 0.25 * strength);
             }
 
             // Moves the colors that a color blind viewer can't tell apart into colors that they can see.

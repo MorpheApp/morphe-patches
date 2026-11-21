@@ -249,7 +249,9 @@ To sign in, press continue below"</string>
     <!-- misc.videoeffects.videoEffectsPatch -->
     <string name="morphe_video_effect_title">Video effect</string>
     <string name="morphe_video_effect_entry_none">Off</string>
-    <string name="morphe_video_effect_entry_enhance">Enhance</string>
+    <string name="morphe_video_effect_entry_enhance_low">Enhance (low)</string>
+    <string name="morphe_video_effect_entry_enhance_medium">Enhance (medium)</string>
+    <string name="morphe_video_effect_entry_enhance_high">Enhance (high)</string>
     <string name="morphe_video_effect_entry_vivid_colors">Vivid colors</string>
     <string name="morphe_video_effect_entry_more_contrast">More contrast</string>
     <string name="morphe_video_effect_entry_sharpen">Sharpen</string>
