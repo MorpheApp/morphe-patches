@@ -118,6 +118,19 @@ internal object ScreenAttachFingerprint : Fingerprint(
 )
 
 /**
+ * Attached callback of a screen in the navigation stack, for app versions before 2026.40.0.
+ */
+internal object ScreenAttachLegacyFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/navstack/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$Event;", name = "ON_RESUME")
+    )
+)
+
+/**
  * Detached callback of a screen in the navigation stack.
  */
 internal object ScreenDetachFingerprint : Fingerprint(
@@ -129,5 +142,20 @@ internal object ScreenDetachFingerprint : Fingerprint(
         fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "RESUMED"),
         methodCall(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "isAtLeast"),
         fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "STARTED")
+    )
+)
+
+/**
+ * Detached callback of a screen in the navigation stack, for app versions before 2026.40.0.
+ */
+internal object ScreenDetachLegacyFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/navstack/",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "RESUMED"),
+        methodCall(definingClass = "Landroidx/lifecycle/Lifecycle\$State;", name = "isAtLeast"),
+        fieldAccess(definingClass = "Landroidx/lifecycle/Lifecycle\$Event;", name = "ON_PAUSE")
     )
 )
