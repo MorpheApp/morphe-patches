@@ -127,12 +127,12 @@ public final class GlassMenusPatch {
     private static final Set<View> glassViews = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
-     * How often the drawables of Litho hosts are checked while a menu is shown, as finding them uses reflection.
+     * How often the fills of Litho are checked while a menu is shown.
      */
     private static final long LITHO_SCAN_INTERVAL_MS = 150;
 
     /**
-     * How long the drawables of Litho hosts are checked on every frame after a menu is attached.
+     * How long the fills of Litho are checked on every frame after a menu is attached.
      */
     private static final long LITHO_SCAN_EVERY_FRAME_MS = 1000;
 
@@ -188,6 +188,19 @@ public final class GlassMenusPatch {
             }
         } catch (Throwable ex) {
             Logger.printException(() -> "onBottomSheetDialog failure", ex);
+        }
+    }
+
+    /**
+     * Injection point: the color a Litho background is drawn with.
+     */
+    public static void onLithoBackgroundColor(Drawable drawable, @ColorInt int color) {
+        if (!isEnabled()) return;
+
+        try {
+            LithoFills.onColor(drawable, color);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onLithoBackgroundColor failure", ex);
         }
     }
 
@@ -515,7 +528,8 @@ public final class GlassMenusPatch {
                 final boolean scanLitho = now - attachedTime < LITHO_SCAN_EVERY_FRAME_MS
                         || now - lastLithoScan >= LITHO_SCAN_INTERVAL_MS;
                 if (scanLitho) lastLithoScan = now;
-                removeMenuBackgrounds(view, scanLitho);
+                removeMenuBackgrounds(view);
+                if (scanLitho) hideLithoFills();
             } catch (Throwable ex) {
                 Logger.printException(() -> "GlassSurface onPreDraw failure", ex);
             }
@@ -546,44 +560,44 @@ public final class GlassMenusPatch {
             }
         }
 
-        private void removeMenuBackgrounds(View parent, boolean scanLitho) {
+        private void removeMenuBackgrounds(View parent) {
             if (!(parent instanceof ViewGroup group)) return;
 
             final int minWidth = view.getWidth() / 2;
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
                 View child = group.getChildAt(i);
-                try {
-                    Drawable background = child.getBackground();
-                    // Only fills of the menu, not small views such as buttons or a progress circle.
-                    if (background != null && child.getWidth() >= minWidth) {
-                        hideIfMenuColor(background);
-                    }
-                    if (scanLitho && LithoDrawables.isHost(child)) {
-                        boolean hidden = false;
-                        for (Drawable drawable : LithoDrawables.drawablesOf(child)) {
-                            if (drawable.getBounds().width() >= minWidth) {
-                                hidden |= hideIfMenuColor(drawable);
-                            }
-                        }
-                        if (hidden) child.invalidate();
-                    }
-                } catch (Throwable ex) {
-                    Logger.printDebug(() -> "Menu background check failed: " + child + ": " + ex);
+                Drawable background = child.getBackground();
+                // Only fills of the menu, not small views such as buttons or a progress circle.
+                if (background != null && child.getWidth() >= minWidth) {
+                    hideIfMenuColor(background);
                 }
-                removeMenuBackgrounds(child, scanLitho);
+                removeMenuBackgrounds(child);
+            }
+        }
+
+        /**
+         * Hides the fills of Litho inside the menu that have the color of the menu.
+         */
+        private void hideLithoFills() {
+            final int minWidth = view.getWidth() / 2;
+            for (LithoFills.Fill fill : LithoFills.fillsInside(view)) {
+                Drawable drawable = fill.drawable();
+                if (drawable.getBounds().width() >= minWidth && isMenuColor(fill.color())
+                        && hiddenDrawables.add(drawable)) {
+                    drawable.setColorFilter(TRANSPARENT_FILTER);
+                    fill.host().invalidate();
+                }
             }
         }
 
         /**
          * Hides a drawable of the color of the menu with a transparent color filter. The drawable itself is not
          * changed, as the app can draw it again elsewhere, and the filter is removed when the menu is detached.
-         *
-         * @return If the drawable was hidden now.
          */
-        private boolean hideIfMenuColor(Drawable drawable) {
-            // Checked every time: Litho can mount another drawable in the same wrapper.
+        private void hideIfMenuColor(Drawable drawable) {
+            // Checked every time: the drawable a wrapper holds can change.
             List<Drawable> chain = new ArrayList<>();
-            if (!isMenuColor(SolidColors.colorOf(drawable, chain))) return false;
+            if (!isMenuColor(SolidColors.colorOf(drawable, chain))) return;
 
             // A wrapper may not pass the filter on, so every drawable down to the color gets it.
             boolean hidden = false;
@@ -594,7 +608,6 @@ public final class GlassMenusPatch {
                 }
             }
             if (hidden) drawable.invalidateSelf();
-            return hidden;
         }
 
         /**
@@ -603,14 +616,14 @@ public final class GlassMenusPatch {
         private void logViewTree() {
             try {
                 StringBuilder builder = new StringBuilder("Glass menu views:\n");
-                appendViewTree(builder, view, 0);
+                appendViewTree(builder, view, LithoFills.fillsInside(view), 0);
                 Logger.printDebug(builder::toString);
             } catch (Throwable ex) {
                 Logger.printException(() -> "logViewTree failure", ex);
             }
         }
 
-        private void appendViewTree(StringBuilder builder, View current, int depth) {
+        private void appendViewTree(StringBuilder builder, View current, List<LithoFills.Fill> fills, int depth) {
             if (depth > 12) return;
             for (int i = 0; i < depth; i++) builder.append("  ");
             builder.append(current.getClass().getName());
@@ -624,15 +637,13 @@ public final class GlassMenusPatch {
             }
             builder.append(' ').append(current.getWidth()).append('x').append(current.getHeight());
             appendDrawable(builder, "bg", current.getBackground());
-            if (LithoDrawables.isHost(current)) {
-                for (Drawable drawable : LithoDrawables.drawablesOf(current)) {
-                    appendDrawable(builder, "litho", drawable);
-                }
+            for (LithoFills.Fill fill : fills) {
+                if (fill.host() == current) appendDrawable(builder, "litho", fill.drawable());
             }
             builder.append('\n');
             if (current instanceof ViewGroup group) {
                 for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                    appendViewTree(builder, group.getChildAt(i), depth + 1);
+                    appendViewTree(builder, group.getChildAt(i), fills, depth + 1);
                 }
             }
         }

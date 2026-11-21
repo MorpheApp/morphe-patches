@@ -10,12 +10,16 @@ package app.morphe.patches.youtube.layout.glassmenus
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
+import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
+import app.morphe.patches.shared.layout.theme.lithoDrawableDrawnColorHook
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -38,8 +42,11 @@ val glassMenusPatch = patch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        versionCheckPatch,
         // The popup menus are passed on by the flyout menu hooks.
         flyoutPatch,
+        // The backgrounds Litho draws inside the menus are passed on by the Litho color hook.
+        lithoColorHookPatch { is_21_30_or_greater },
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -99,6 +106,8 @@ val glassMenusPatch = patch(
                 )
             }
         }
+
+        lithoDrawableDrawnColorHook("$EXTENSION_CLASS->onLithoBackgroundColor(Landroid/graphics/drawable/Drawable;I)V")
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
