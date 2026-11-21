@@ -302,23 +302,13 @@ public final class VideoEffectsPatch {
                 return vec3(0.61, 0.74, 0.06);
             }
 
-            // 320 pixels wide with the 4 colors of an early PC graphics card.
+            // 320 pixels wide with the 64 colors of an EGA graphics card (4 levels of each color channel),
+            // and ordered dithering between the levels.
             vec3 retroPc(vec2 uv) {
                 float pixel = max(1.0, floor(uResolution.x / 320.0));
                 vec2 cell = floor(uv * uResolution / pixel);
-                vec3 c = adjustSaturation(pick((cell + 0.5) * pixel / uResolution), 1.4);
-                c += (bayer4(cell) - 0.47) * 0.5;
-                vec3 cyan = vec3(0.33, 1.0, 1.0);
-                vec3 magenta = vec3(1.0, 0.33, 1.0);
-                vec3 result = vec3(0.0);
-                float best = dot(c, c);
-                float d = dot(c - cyan, c - cyan);
-                if (d < best) { best = d; result = cyan; }
-                d = dot(c - magenta, c - magenta);
-                if (d < best) { best = d; result = magenta; }
-                d = dot(c - 1.0, c - 1.0);
-                if (d < best) { result = vec3(1.0); }
-                return result;
+                vec3 c = adjustSaturation(pick((cell + 0.5) * pixel / uResolution), 1.15);
+                return clamp(floor(c * 3.0 + bayer4(cell) + 1.0 / 32.0) / 3.0, 0.0, 1.0);
             }
 
             // 5x5 bitmaps of the characters, from dark to bright. Bits 0 to 14 hold the top 3 rows,
