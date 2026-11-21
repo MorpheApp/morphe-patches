@@ -2,8 +2,10 @@
 
 [versions]
 agp = "9.1.0"
+android-api-signature = "8.0.0_r2"
 androidx-core = "1.18.0"    # 1.19.0+ requires upgrading android compile sdk
 androidx-javascriptengine = "1.1.1"
+animalsniffer = "2.0.1"
 annotation = "1.11.0"
 collections4 = "4.6.0"
 gson = "2.15.0"
@@ -21,6 +23,7 @@ protoc = "4.36.2"
 smali = "4220ae75f7"
 
 [libraries]
+android-api-signature = { module = "net.sf.androidscents.signature:android-api-level-26", version.ref = "android-api-signature" }
 androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 androidx-javascriptengine = { module = "androidx.javascriptengine:javascriptengine", version.ref = "androidx-javascriptengine" }
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -40,4 +43,5 @@ protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoc
 
 [plugins]
 android-library = { id = "com.android.library" }
+animalsniffer = { id = "ru.vyarus.animalsniffer", version.ref = "animalsniffer" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
