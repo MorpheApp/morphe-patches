@@ -1739,3 +1739,29 @@ internal fun playlistQueueAvailabilityFingerprint(queueType: String, requestType
     returnType = "I",
     filters = listOf(methodCall(opcode = Opcode.INVOKE_INTERFACE, parameters = listOf(requestType), returnType = "I"))
 )
+
+/**
+ * Creates the native presenter of the PageHeaderRenderer header of a browse response, such as of a playlist page.
+ * The last match is the presenter instance.
+ */
+internal object PlaylistPageHeaderFactoryFingerprint : Fingerprint(
+    returnType = "L",
+    filters = listOf(
+        literal(509923604L), // PageHeaderRenderer in BrowseResponse.header.
+        opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+        opcode(Opcode.NEW_INSTANCE, location = MatchAfterWithin(10))
+    )
+)
+
+/** Builds the toolbar menu rows of a page header presenter from BrowseResponse.toolbarMenu. */
+internal fun playlistPageToolbarFingerprint(presenter: String, items: FieldReference) = Fingerprint(
+    definingClass = presenter,
+    parameters = listOf("L"),
+    returnType = "L",
+    filters = listOf(
+        literal(66439850L), // MenuRenderer in BrowseResponse.toolbarMenu.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, reference = items)
+    )
+)

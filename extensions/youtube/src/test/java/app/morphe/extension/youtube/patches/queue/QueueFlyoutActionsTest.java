@@ -20,7 +20,9 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
 import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuItem;
 import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
 
@@ -41,6 +43,76 @@ public class QueueFlyoutActionsTest {
             assertEquals(YTIconType.QUEUE_PLAY_LAST, rebound.getItems(1)
                     .getMenuConditionalServiceItemRenderer().getIcon().getYtIconType());
         }
+    }
+
+    @Test
+    public void pageToolbarAddsLastImmediatelyAfterLocalNext() throws Exception {
+        var next = toolbarItem(YTIconType.QUEUE_PLAY_NEXT, "Next", "PL-stock-next");
+        var remote = conditional(YTIconType.QUEUE_PLAY_NEXT_VALUE, 1);
+        var shuffle = toolbarItem(YTIconType.SHUFFLE, "Shuffle", "PLQdxfrZM11Xg");
+        var stock = MenuRenderer.newBuilder().addItems(remote).addItems(next).addItems(shuffle).build();
+        var result = MenuRenderer.parseFrom(QueueFlyoutActions.bindPlaylistPageMenu(stock, "Last").toByteArray());
+
+        assertEquals(4, result.getItemsCount());
+        assertEquals(remote, result.getItems(0));
+        var command = result.getItems(1).getMenuServiceItemRenderer().getServiceEndpoint();
+        assertEquals("PLQdxfrZM11Xg", command.getPlaylistPagePlayNextPlaylistId());
+        assertFalse(command.hasPlaylistPagePlayLastPlaylistId());
+        assertEquals(next.getMenuServiceItemRenderer().getServiceEndpoint(),
+                command.toBuilder().clearPlaylistPagePlayNextPlaylistId().build());
+        var last = result.getItems(2).getMenuServiceItemRenderer();
+        assertEquals(YTIconType.QUEUE_PLAY_LAST, last.getIcon().getYtIconType());
+        assertEquals("Last", last.getText().getSimpleText());
+        assertEquals("PLQdxfrZM11Xg", last.getServiceEndpoint().getPlaylistPagePlayLastPlaylistId());
+        assertFalse(last.getServiceEndpoint().hasPlaylistPagePlayNextPlaylistId());
+        assertFalse(last.getServiceEndpoint().hasWatchEndpoint());
+        assertEquals(shuffle, result.getItems(3));
+        assertSame(result, QueueFlyoutActions.bindPlaylistPageMenu(result, "Last"));
+    }
+
+    @Test
+    public void pageToolbarDoesNotInsertLastWithoutLocalVisibleNextAndPlaylistId() throws Exception {
+        var remote = conditional(YTIconType.QUEUE_PLAY_NEXT_VALUE, 1);
+        var shuffle = toolbarItem(YTIconType.SHUFFLE, "Shuffle", "PLQdxfrZM11Xg");
+        var castOnly = MenuRenderer.newBuilder().addItems(shuffle).addItems(remote).build();
+        assertSame(castOnly, QueueFlyoutActions.bindPlaylistPageMenu(castOnly, "Last"));
+
+        var local = conditional(YTIconType.QUEUE_PLAY_NEXT_VALUE, 2);
+        var conditionalOnly = castOnly.toBuilder().addItems(local).build();
+        assertEquals(conditionalOnly.getItemsCount(),
+                QueueFlyoutActions.bindPlaylistPageMenu(conditionalOnly, "Last").getItemsCount());
+
+        var next = toolbarItem(YTIconType.QUEUE_PLAY_NEXT, "Next", "PL-stock-next");
+        var noShuffle = MenuRenderer.newBuilder().addItems(next).build();
+        assertSame(noShuffle, QueueFlyoutActions.bindPlaylistPageMenu(noShuffle, "Last"));
+    }
+
+    @Test
+    public void pageToolbarMovesExistingLastAfterNextAndPreservesItsStockEndpoint() {
+        var next = toolbarItem(YTIconType.QUEUE_PLAY_NEXT, "Next", "PL-stock-next");
+        var last = toolbarItem(YTIconType.QUEUE_PLAY_LAST, "Stock Last", "PL-stock-last");
+        var shuffle = toolbarItem(YTIconType.SHUFFLE, "Shuffle", "PLQdxfrZM11Xg");
+        var menu = MenuRenderer.newBuilder().addItems(last).addItems(shuffle).addItems(next).build();
+        var result = QueueFlyoutActions.bindPlaylistPageMenu(menu, "Last");
+
+        assertEquals(3, result.getItemsCount());
+        assertEquals(shuffle, result.getItems(0));
+        assertEquals(YTIconType.QUEUE_PLAY_NEXT, result.getItems(1).getMenuServiceItemRenderer().getIcon().getYtIconType());
+        var lastRow = result.getItems(2).getMenuServiceItemRenderer();
+        assertEquals("Stock Last", lastRow.getText().getSimpleText());
+        assertEquals("PLQdxfrZM11Xg", lastRow.getServiceEndpoint().getPlaylistPagePlayLastPlaylistId());
+        assertEquals(last.getMenuServiceItemRenderer().getServiceEndpoint(),
+                lastRow.getServiceEndpoint().toBuilder().clearPlaylistPagePlayLastPlaylistId().build());
+    }
+
+    private static MenuItem toolbarItem(YTIconType icon, String label, String playlistId) {
+        return MenuItem.newBuilder().setMenuServiceItemRenderer(
+                PlaylistQueueRenderer.MenuServiceItem.newBuilder()
+                        .setText(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(label))
+                        .setIcon(Icon.newBuilder().setYtIconType(icon))
+                        .setServiceEndpoint(PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
+                                .setWatchEndpoint(PlaylistQueueRenderer.WatchEndpoint.newBuilder()
+                                        .setPlaylistId(playlistId)))).build();
     }
 
     // Write the native conditional wire shape independently of our schema.
