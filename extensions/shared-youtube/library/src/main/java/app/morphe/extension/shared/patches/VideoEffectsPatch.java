@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches;
+package app.morphe.extension.shared.patches;
 
 import android.opengl.GLES20;
 import android.os.SystemClock;
@@ -13,14 +13,14 @@ import android.os.SystemClock;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
  * Draws videos with an effect shader.
  * <p>
- * YouTube can draw videos with its own OpenGL renderer instead of showing the decoder output
- * directly. Its passthrough shader is replaced with one that holds all effects, and the effect
- * is picked with a uniform for every frame, so it can be changed while a video plays.
+ * YouTube and YouTube Music can draw videos with their own OpenGL renderer instead of showing
+ * the decoder output directly. Its passthrough shader is replaced with one that holds all effects,
+ * and the effect is picked with a uniform for every frame, so it can be changed while a video plays.
  */
 @SuppressWarnings("unused")
 public final class VideoEffectsPatch {
@@ -396,6 +396,12 @@ public final class VideoEffectsPatch {
     private static final int[] viewport = new int[4];
 
     /**
+     * The video that is playing.
+     */
+    @Nullable
+    private static volatile String currentVideoId;
+
+    /**
      * The last video drawn with the effect shader.
      */
     @Nullable
@@ -413,11 +419,19 @@ public final class VideoEffectsPatch {
      * @return If the current video is drawn with the effect shader.
      */
     public static boolean isCurrentVideoDrawnWithEffects() {
-        return VideoInformation.getVideoId().equals(lastEffectVideoId);
+        String videoId = currentVideoId;
+        return videoId != null && videoId.equals(lastEffectVideoId);
     }
 
     private static boolean isEnabled() {
-        return Settings.VIDEO_EFFECT.get() != VideoEffect.NONE;
+        return SharedYouTubeSettings.VIDEO_EFFECT.get() != VideoEffect.NONE;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setVideoId(String videoId) {
+        currentVideoId = videoId;
     }
 
     /**
@@ -458,9 +472,9 @@ public final class VideoEffectsPatch {
             // Program with the original shader.
             if (effectLocation < 0) return;
 
-            lastEffectVideoId = VideoInformation.getVideoId();
+            lastEffectVideoId = currentVideoId;
 
-            GLES20.glUniform1i(effectLocation, Settings.VIDEO_EFFECT.get().ordinal());
+            GLES20.glUniform1i(effectLocation, SharedYouTubeSettings.VIDEO_EFFECT.get().ordinal());
             GLES20.glUniform1f(timeLocation, (SystemClock.elapsedRealtime() % TIME_WRAP_MILLISECONDS) / 1000f);
             GLES20.glGetIntegerv(GLES20.GL_VIEWPORT, viewport, 0);
             GLES20.glUniform2f(resolutionLocation, viewport[2], viewport[3]);

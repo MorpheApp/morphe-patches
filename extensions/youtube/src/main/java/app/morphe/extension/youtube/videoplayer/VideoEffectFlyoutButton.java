@@ -17,13 +17,13 @@ import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.patches.VideoEffectsPatch;
+import app.morphe.extension.shared.patches.VideoEffectsPatch.VideoEffect;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ListPreferenceArrayAdapter;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.LoadVideoPatch;
-import app.morphe.extension.youtube.patches.VideoEffectsPatch;
-import app.morphe.extension.youtube.patches.VideoEffectsPatch.VideoEffect;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;

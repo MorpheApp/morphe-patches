@@ -87,7 +87,6 @@ import app.morphe.extension.youtube.patches.PlaybackBufferPatch.PlaybackBufferSi
 import app.morphe.extension.youtube.patches.PlaybackInFeedsPatch;
 import app.morphe.extension.youtube.patches.RestoreOldVideoActionBarPatch.VideoActionBarLayout;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
-import app.morphe.extension.youtube.patches.VideoEffectsPatch.VideoEffect;
 import app.morphe.extension.youtube.patches.WideSearchBarPatch.SearchbarType;
 import app.morphe.extension.youtube.patches.YouTubeGlassNavigationBar.GlassAvailability;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.ExpandableCardStyle;
@@ -129,7 +128,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<PlaybackBufferSize> PLAYBACK_BUFFER_SIZE = new EnumSetting<>("morphe_playback_buffer_size", PlaybackBufferSize.DEFAULT, true);
     public static final IntegerSetting VIDEO_DELAY = new IntegerSetting("morphe_video_delay", 0);
     public static final BooleanSetting VIDEO_DELAY_BLUETOOTH_ONLY = new BooleanSetting("morphe_video_delay_bluetooth_only", TRUE);
-    public static final EnumSetting<VideoEffect> VIDEO_EFFECT = new EnumSetting<>("morphe_video_effect", VideoEffect.NONE);
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("morphe_advanced_video_quality_menu", TRUE);
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
     public static final BooleanSetting FORCE_HDR_VIDEO = new BooleanSetting("morphe_force_hdr_video", FALSE, true, "morphe_force_hdr_video_user_dialog_message", parentNot(DISABLE_HDR_VIDEO));
