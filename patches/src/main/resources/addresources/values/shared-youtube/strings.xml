@@ -152,7 +152,7 @@ Tap OK to open Android System WebView."</string>
     <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Try enabling: Spoof video streams > Android VR sign in</string>
     <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
     <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR sign in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' sign in</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' requires a separate sign-in. Tap here to continue</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Currently signed in to \'Android VR\'</string>
     <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -179,7 +179,7 @@ To sign in, press continue below"</string>
 • Your Morphe settings will not import/export Android VR authentication
 • If this app is unused for 6 months then Google will remove this authentication
 • You will need to sign in again if you change your Google password or deregister this device from your Google settings"</string>
-    <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobile Web sign in</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobile Web\' sign in</string>
     <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Optional: sign in to the YouTube website to play videos with your account. Tap here to continue</string>
     <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Currently signed in to \'Mobile Web\'</string>
     <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
