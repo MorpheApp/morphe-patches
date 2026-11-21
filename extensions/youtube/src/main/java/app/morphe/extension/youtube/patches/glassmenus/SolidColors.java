@@ -16,6 +16,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableWrapper;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Build;
 
@@ -24,6 +25,8 @@ import androidx.annotation.Nullable;
 
 import java.lang.reflect.Field;
 import java.util.List;
+
+import app.morphe.extension.shared.Logger;
 
 /**
  * Finds the color of a drawable that fills its bounds with one color, such as the background of a menu,
@@ -78,7 +81,7 @@ final class SolidColors {
         }
         if (drawable instanceof LayerDrawable layers) {
             // Ripples and drawables of more than one layer are not a fill of one color.
-            return layers.getNumberOfLayers() == 1 && !(drawable instanceof android.graphics.drawable.RippleDrawable)
+            return layers.getNumberOfLayers() == 1 && !(drawable instanceof RippleDrawable)
                     ? resolve(layers.getDrawable(0), depth + 1, chain)
                     : null;
         }
@@ -105,8 +108,8 @@ final class SolidColors {
                         && fill.getShader() == null && fill.getMaskFilter() == null) {
                     return fill.getColor();
                 }
-            } catch (Throwable ignored) {
-                // Not accessible.
+            } catch (IllegalAccessException ex) {
+                Logger.printDebug(() -> "Drawable fields are not accessible: " + drawable, ex);
             }
         }
         return null;

@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches.glassmenus;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -45,7 +46,7 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.function.Consumer;
@@ -90,8 +91,11 @@ public final class GlassMenusPatch {
     /**
      * Theme colors the app gives the background of its menus.
      */
-    private static final String[] MENU_COLOR_ATTRIBUTES = {
-            "ytRaisedBackground", "ytBaseBackground", "ytMenuBackground", "ytAdditiveBackground",
+    private static final int[] MENU_COLOR_ATTRIBUTES = {
+            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytRaisedBackground"),
+            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytBaseBackground"),
+            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytMenuBackground"),
+            ResourceUtils.getIdentifier(ResourceType.ATTR, "ytAdditiveBackground"),
     };
 
     /**
@@ -117,7 +121,10 @@ public final class GlassMenusPatch {
      */
     private static final int CORNERS_NONE = 2;
 
-    private static final Map<View, GlassSurface> surfaces = new WeakHashMap<>();
+    /**
+     * Views that are drawn as glass. Each view keeps its {@link GlassSurface} as its attach listener.
+     */
+    private static final Set<View> glassViews = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
      * How often the drawables of Litho hosts are checked while a menu is shown, as finding them uses reflection.
@@ -175,7 +182,7 @@ public final class GlassMenusPatch {
                 window.setDimAmount(dimAmount());
             }
 
-            View sheet = DESIGN_BOTTOM_SHEET == 0 ? null : dialog.findViewById(DESIGN_BOTTOM_SHEET);
+            View sheet = dialog.findViewById(DESIGN_BOTTOM_SHEET);
             if (sheet != null) {
                 GlassSurface.apply(sheet, CORNERS_AUTO);
             }
@@ -214,11 +221,11 @@ public final class GlassMenusPatch {
         if (root == null || !isEnabled()) return;
 
         try {
-            View list = PLAYLIST_LIST == 0 ? null : root.findViewById(PLAYLIST_LIST);
+            View list = root.findViewById(PLAYLIST_LIST);
             if (list != null) {
                 GlassSurface.apply(list, CORNERS_TOP);
             }
-            View closeBar = PLAYLIST_CLOSE_BAR == 0 ? null : root.findViewById(PLAYLIST_CLOSE_BAR);
+            View closeBar = root.findViewById(PLAYLIST_CLOSE_BAR);
             if (closeBar != null) {
                 GlassSurface.apply(closeBar, CORNERS_NONE);
             }
@@ -254,7 +261,7 @@ public final class GlassMenusPatch {
 
             View content = decor.findViewById(android.R.id.content);
             Drawable background = decor.getBackground();
-            if (content == null || background == null || surfaces.containsKey(content)) return;
+            if (content == null || background == null || glassViews.contains(content)) return;
             if (!isMenuColor(decor.getContext(), SolidColors.colorOf(background))) return;
 
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -301,7 +308,7 @@ public final class GlassMenusPatch {
      */
     private static List<Integer> menuColors(Context context) {
         List<Integer> colors = new ArrayList<>();
-        for (String attribute : MENU_COLOR_ATTRIBUTES) {
+        for (int attribute : MENU_COLOR_ATTRIBUTES) {
             Integer color = resolveThemeColor(context, attribute);
             if (color != null) colors.add(color);
         }
@@ -338,10 +345,7 @@ public final class GlassMenusPatch {
     }
 
     @Nullable
-    private static Integer resolveThemeColor(Context context, String attributeName) {
-        final int attribute = ResourceUtils.getIdentifier(ResourceType.ATTR, attributeName);
-        if (attribute == 0) return null;
-
+    private static Integer resolveThemeColor(Context context, int attribute) {
         TypedValue value = new TypedValue();
         if (!context.getTheme().resolveAttribute(attribute, value, true)) return null;
         if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT) {
@@ -350,8 +354,8 @@ public final class GlassMenusPatch {
         if (value.resourceId != 0) {
             try {
                 return context.getColor(value.resourceId);
-            } catch (Exception ignored) {
-                // Not a color.
+            } catch (Resources.NotFoundException ex) {
+                Logger.printDebug(() -> "Theme attribute is not a color: " + attribute, ex);
             }
         }
         return null;
@@ -397,10 +401,12 @@ public final class GlassMenusPatch {
         private boolean blurEnabled;
         private boolean roundBottom = true;
         private boolean roundTop = true;
+        private final int[] location = new int[2];
 
         static void apply(View view, int corners) {
-            if (surfaces.containsKey(view)) return;
-            surfaces.put(view, new GlassSurface(view, corners));
+            if (glassViews.add(view)) {
+                new GlassSurface(view, corners);
+            }
         }
 
         private GlassSurface(View view, int corners) {
@@ -519,7 +525,6 @@ public final class GlassMenusPatch {
             boolean bottom = false;
             if (corners == CORNERS_AUTO) {
                 if (windowManager == null) return;
-                int[] location = new int[2];
                 view.getLocationOnScreen(location);
                 final int screenBottom = windowManager.getCurrentWindowMetrics().getBounds().bottom;
                 bottom = location[1] + view.getHeight() < screenBottom - Dim.dp(2);
@@ -607,8 +612,9 @@ public final class GlassMenusPatch {
             if (current.getId() != View.NO_ID) {
                 try {
                     builder.append(" #").append(current.getResources().getResourceEntryName(current.getId()));
-                } catch (Exception ignored) {
-                    // No resource name.
+                } catch (Resources.NotFoundException ex) {
+                    // A generated id.
+                    builder.append(" #").append(Integer.toHexString(current.getId()));
                 }
             }
             builder.append(' ').append(current.getWidth()).append('x').append(current.getHeight());
@@ -636,10 +642,11 @@ public final class GlassMenusPatch {
                     if (i > 0) builder.append('>');
                     builder.append(chain.get(i).getClass().getSimpleName());
                 }
-                builder.append(String.format("(#%08X %dx%d%s)", color, drawable.getBounds().width(),
+                builder.append(String.format(Locale.US, "(#%08X %dx%d%s)", color, drawable.getBounds().width(),
                         drawable.getBounds().height(), hiddenDrawables.contains(drawable) ? " hidden" : ""));
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 builder.append(drawable.getClass().getSimpleName()).append("(?)");
+                Logger.printDebug(() -> "Drawable color check failed: " + drawable, ex);
             }
         }
 

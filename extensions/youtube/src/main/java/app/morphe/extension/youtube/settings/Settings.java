@@ -89,7 +89,6 @@ import app.morphe.extension.youtube.patches.RestoreOldVideoActionBarPatch.VideoA
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.WideSearchBarPatch.SearchbarType;
 import app.morphe.extension.youtube.patches.YouTubeGlassNavigationBar.GlassAvailability;
-import app.morphe.extension.youtube.patches.glassmenus.GlassMenusPatch.GlassMenusAvailability;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.ExpandableCardStyle;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.PostButtonsLayout;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAmbientModeFlyoutMenuAvailability;
@@ -105,6 +104,7 @@ import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitlesAv
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.StillImagesAvailability;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.ThumbnailOption;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.ThumbnailStillTime;
+import app.morphe.extension.youtube.patches.glassmenus.GlassMenusPatch.GlassMenusAvailability;
 import app.morphe.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
 import app.morphe.extension.youtube.patches.theme.ThemePatch.RiveSplashScreenDurationAvailability;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;

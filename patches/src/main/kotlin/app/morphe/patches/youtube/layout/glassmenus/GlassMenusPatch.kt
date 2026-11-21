@@ -19,6 +19,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
@@ -67,7 +68,8 @@ val glassMenusPatch = patch(
         AddToPlaylistCreateViewFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
-                addInstruction(
+                // A jump to the return must also reach the call.
+                addInstructionsAtControlFlowLabel(
                     index,
                     "invoke-static { v$register }, $EXTENSION_CLASS->onAddToPlaylistView(Landroid/view/View;)V",
                 )
@@ -91,7 +93,7 @@ val glassMenusPatch = patch(
         SlideDialogCreateFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
-                addInstruction(
+                addInstructionsAtControlFlowLabel(
                     index,
                     "invoke-static { v$register }, $EXTENSION_CLASS->onSlideDialog(Landroid/app/Dialog;)V",
                 )

@@ -20,8 +20,6 @@ dependencies {
     compileOnly(project(":extensions:youtube:stub"))
 
     implementation(libs.collections4)
-
-    // Used by GlassMenusPatch.
     implementation(libs.hiddenapi)
     implementation(libs.protobuf.javalite)
 }

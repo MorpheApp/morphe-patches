@@ -118,8 +118,8 @@ final class LithoDrawables {
                 try {
                     field.setAccessible(true);
                     fields.add(field);
-                } catch (Throwable ignored) {
-                    // Not accessible.
+                } catch (RuntimeException ex) {
+                    Logger.printDebug(() -> "Field is not accessible: " + field, ex);
                 }
             }
         }

@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.layout.glassmenus
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
@@ -47,13 +48,21 @@ internal object DialogFragmentOnStartFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         methodCall(definingClass = "Landroid/app/Dialog;", name = "show"),
-        methodCall(definingClass = "Landroid/view/Window;", name = "getDecorView"),
-        resourceLiteral(ResourceType.ID, "view_tree_view_model_store_owner"),
+        methodCall(
+            definingClass = "Landroid/app/Dialog;",
+            name = "getWindow",
+            location = MatchAfterWithin(5)
+        ),
+        methodCall(
+            definingClass = "Landroid/view/Window;",
+            name = "getDecorView",
+            location = MatchAfterWithin(5)
+        )
     )
 )
 
 /**
- * The bottom sheets of Morphe (playback speed, voice over translation, …), in the shared extension.
+ * The bottom sheets of Morphe (playback speed, voice over translation), in the shared extension.
  */
 internal object SlideDialogCreateFingerprint : Fingerprint(
     definingClass = "Lapp/morphe/extension/shared/ui/SheetBottomDialog;",
