@@ -1744,8 +1744,11 @@ internal fun playlistQueueAvailabilityFingerprint(queueType: String, requestType
 
 /** Maps the PageHeaderRenderer discriminator to its native toolbar presenter. */
 internal object PlaylistPageHeaderFactoryFingerprint : Fingerprint(
-    parameters = listOf("L"),
     returnType = "L",
+    custom = { method, _ ->
+        // The newer factory also receives a navigation endpoint.
+        method.parameterTypes.size in 1..2 && method.parameterTypes.all { it.startsWith('L') }
+    },
     filters = listOf(
         literal(509923604L), // PageHeaderRenderer in BrowseResponse.header.
         opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
