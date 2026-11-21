@@ -26,27 +26,43 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 public final class VideoEffectsPatch {
 
     /**
-     * The order is the effect number in {@link #FRAGMENT_SHADER}.
+     * Each effect holds the shader expression that draws it, from the picture coordinates {@code uv}.
+     * The order is the effect number in the fragment shader.
      */
     public enum VideoEffect {
-        NONE,
-        BLACK_AND_WHITE,
-        OLD_FILM,
-        INVERT,
-        THERMAL,
-        NIGHT_VISION,
-        VHS,
-        ALIEN,
-        RAINBOW,
-        POP_ART,
-        RETRO_HANDHELD,
-        RETRO_PC,
-        ASCII_ART,
-        NEON_EDGES,
-        COMIC_BOOK,
-        PENCIL_SKETCH,
-        UNDERWATER,
-        KALEIDOSCOPE
+        NONE("pick(uv)"),
+        ENHANCE("enhance(uv)"),
+        VIVID_COLORS("vivid(pick(uv))"),
+        MORE_CONTRAST("contrast(pick(uv), 0.55)"),
+        SHARPEN("sharpen(uv, 0.7)"),
+        BRIGHTEN_SHADOWS("brightenShadows(pick(uv))"),
+        WARM_COLORS("pick(uv) * vec3(1.0, 0.86, 0.66)"),
+        COLOR_BLIND_DEUTERANOPIA("daltonize(pick(uv), 1)"),
+        COLOR_BLIND_PROTANOPIA("daltonize(pick(uv), 2)"),
+        COLOR_BLIND_TRITANOPIA("daltonize(pick(uv), 3)"),
+        BLACK_AND_WHITE("vec3(luma(pick(uv)))"),
+        OLD_FILM("oldFilm(uv)"),
+        INVERT("1.0 - pick(uv)"),
+        THERMAL("thermal(luma(pick(uv)))"),
+        NIGHT_VISION("nightVision(uv)"),
+        VHS("vhs(uv)"),
+        ALIEN("adjustSaturation(pick(uv).brg, 1.3)"),
+        RAINBOW("clamp(hueRotate(adjustSaturation(pick(uv), 1.4), uTime * 1.2), 0.0, 1.0)"),
+        POP_ART("popArt(uv)"),
+        RETRO_HANDHELD("retroHandheld(uv)"),
+        RETRO_PC("retroPc(uv)"),
+        ASCII_ART("asciiArt(uv)"),
+        NEON_EDGES("neonEdges(uv)"),
+        COMIC_BOOK("comicBook(uv)"),
+        PENCIL_SKETCH("pencilSketch(uv)"),
+        UNDERWATER("underwater(uv)"),
+        KALEIDOSCOPE("kaleidoscope(uv)");
+
+        private final String shaderExpression;
+
+        VideoEffect(String shaderExpression) {
+            this.shaderExpression = shaderExpression;
+        }
     }
 
     /**
@@ -81,7 +97,7 @@ public final class VideoEffectsPatch {
             }
             """;
 
-    private static final String FRAGMENT_SHADER = """
+    private static final String FRAGMENT_SHADER_FUNCTIONS = """
             #extension GL_OES_EGL_image_external : require
             #ifdef GL_FRAGMENT_PRECISION_HIGH
             precision highp float;
@@ -166,6 +182,67 @@ public final class VideoEffectsPatch {
                 if (t < 3.0) return mix(vec3(0.9, 0.0, 0.45), vec3(1.0, 0.45, 0.0), t - 2.0);
                 if (t < 4.0) return mix(vec3(1.0, 0.45, 0.0), vec3(1.0, 0.95, 0.2), t - 3.0);
                 return mix(vec3(1.0, 0.95, 0.2), vec3(1.0), t - 4.0);
+            }
+
+            // S curve for each color channel, that darkens the dark parts and brightens the bright parts.
+            vec3 contrast(vec3 c, float amount) {
+                return mix(c, c * c * (3.0 - 2.0 * c), amount);
+            }
+
+            // Raises the saturation of dull colors more than of colors that are already saturated.
+            vec3 vivid(vec3 c) {
+                float saturation = max(c.r, max(c.g, c.b)) - min(c.r, min(c.g, c.b));
+                return adjustSaturation(c, 1.15 + 0.5 * (1.0 - smoothstep(0.0, 0.5, saturation)));
+            }
+
+            // Unsharp mask with the 4 neighbor pixels.
+            vec3 sharpen(vec2 uv, float amount) {
+                vec2 px = 1.0 / uResolution;
+                vec3 c = pick(uv);
+                vec3 blur = (pick(uv + vec2(px.x, 0.0)) + pick(uv - vec2(px.x, 0.0))
+                        + pick(uv + vec2(0.0, px.y)) + pick(uv - vec2(0.0, px.y))) * 0.25;
+                return clamp(c + (c - blur) * amount, 0.0, 1.0);
+            }
+
+            // Brightens the dark parts with a gamma curve and keeps the bright parts the same.
+            // No channel is made brighter than full, so the colors don't change.
+            vec3 brightenShadows(vec3 c) {
+                float l = max(luma(c), 0.001);
+                float brightened = mix(pow(l, 0.6), l, smoothstep(0.2, 0.7, l));
+                float brightest = max(c.r, max(c.g, c.b));
+                return c * min(min(brightened / l, 1.0 / max(brightest, 0.001)), 4.0);
+            }
+
+            vec3 enhance(vec2 uv) {
+                return contrast(vivid(sharpen(uv, 0.4)), 0.25);
+            }
+
+            // Moves the colors that a color blind viewer can't tell apart into colors that they can see.
+            // The color blindness is simulated with the matrices of Machado, Oliveira and Fernandes (2009),
+            // and the difference to the original is added to the color channels that the viewer can see.
+            vec3 daltonize(vec3 c, int type) {
+                vec3 simulated;
+                if (type == 1) {
+                    simulated = vec3(
+                        dot(c, vec3(0.367322, 0.860646, -0.227968)),
+                        dot(c, vec3(0.280085, 0.672501, 0.047413)),
+                        dot(c, vec3(-0.011820, 0.042940, 0.968881)));
+                } else if (type == 2) {
+                    simulated = vec3(
+                        dot(c, vec3(0.152286, 1.052583, -0.204868)),
+                        dot(c, vec3(0.114503, 0.786281, 0.099216)),
+                        dot(c, vec3(-0.003882, -0.048116, 1.051998)));
+                } else {
+                    simulated = vec3(
+                        dot(c, vec3(1.255528, -0.076749, -0.178779)),
+                        dot(c, vec3(-0.078411, 0.930809, 0.147602)),
+                        dot(c, vec3(0.004733, 0.691367, 0.303900)));
+                }
+                vec3 error = c - simulated;
+                vec3 correction = type == 3
+                    ? vec3(error.r + 0.7 * error.b, error.g + 0.7 * error.b, 0.0)
+                    : vec3(0.0, 0.7 * error.r + error.g, 0.7 * error.r + error.b);
+                return clamp(c + correction, 0.0, 1.0);
             }
 
             vec3 oldFilm(vec2 uv) {
@@ -342,49 +419,9 @@ public final class VideoEffectsPatch {
                 return pick(mirrored);
             }
 
-            void main() {
-                vec2 uv = vUv;
-                vec3 c;
-                if (uEffect == 1) {
-                    c = vec3(luma(pick(uv)));
-                } else if (uEffect == 2) {
-                    c = oldFilm(uv);
-                } else if (uEffect == 3) {
-                    c = 1.0 - pick(uv);
-                } else if (uEffect == 4) {
-                    c = thermal(luma(pick(uv)));
-                } else if (uEffect == 5) {
-                    c = nightVision(uv);
-                } else if (uEffect == 6) {
-                    c = vhs(uv);
-                } else if (uEffect == 7) {
-                    c = adjustSaturation(pick(uv).brg, 1.3);
-                } else if (uEffect == 8) {
-                    c = clamp(hueRotate(adjustSaturation(pick(uv), 1.4), uTime * 1.2), 0.0, 1.0);
-                } else if (uEffect == 9) {
-                    c = popArt(uv);
-                } else if (uEffect == 10) {
-                    c = retroHandheld(uv);
-                } else if (uEffect == 11) {
-                    c = retroPc(uv);
-                } else if (uEffect == 12) {
-                    c = asciiArt(uv);
-                } else if (uEffect == 13) {
-                    c = neonEdges(uv);
-                } else if (uEffect == 14) {
-                    c = comicBook(uv);
-                } else if (uEffect == 15) {
-                    c = pencilSketch(uv);
-                } else if (uEffect == 16) {
-                    c = underwater(uv);
-                } else if (uEffect == 17) {
-                    c = kaleidoscope(uv);
-                } else {
-                    c = pick(uv);
-                }
-                gl_FragColor = vec4(c, 1.0);
-            }
             """;
+
+    private static final String FRAGMENT_SHADER = createFragmentShader();
 
     /**
      * The program that the uniform locations belong to. Only used on the render thread.
@@ -410,6 +447,28 @@ public final class VideoEffectsPatch {
     @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
+    }
+
+    /**
+     * Adds the main method that draws the effect of the uEffect uniform.
+     */
+    private static String createFragmentShader() {
+        StringBuilder shader = new StringBuilder(FRAGMENT_SHADER_FUNCTIONS);
+        shader.append("void main() {\n");
+        shader.append("    vec2 uv = vUv;\n");
+        shader.append("    vec3 c;\n");
+        VideoEffect[] effects = VideoEffect.values();
+        for (int i = 1; i < effects.length; i++) {
+            shader.append(i == 1 ? "    if" : "    } else if")
+                    .append(" (uEffect == ").append(i).append(") {\n")
+                    .append("        c = ").append(effects[i].shaderExpression).append(";\n");
+        }
+        shader.append("    } else {\n");
+        shader.append("        c = ").append(VideoEffect.NONE.shaderExpression).append(";\n");
+        shader.append("    }\n");
+        shader.append("    gl_FragColor = vec4(c, 1.0);\n");
+        shader.append("}\n");
+        return shader.toString();
     }
 
     /**

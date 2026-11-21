@@ -249,6 +249,15 @@ To sign in, press continue below"</string>
     <!-- misc.videoeffects.videoEffectsPatch -->
     <string name="morphe_video_effect_title">Video effect</string>
     <string name="morphe_video_effect_entry_none">Off</string>
+    <string name="morphe_video_effect_entry_enhance">Enhance</string>
+    <string name="morphe_video_effect_entry_vivid_colors">Vivid colors</string>
+    <string name="morphe_video_effect_entry_more_contrast">More contrast</string>
+    <string name="morphe_video_effect_entry_sharpen">Sharpen</string>
+    <string name="morphe_video_effect_entry_brighten_shadows">Brighten dark scenes</string>
+    <string name="morphe_video_effect_entry_warm_colors">Warm colors (less blue light)</string>
+    <string name="morphe_video_effect_entry_color_blind_deuteranopia">Color blind assist (deuteranopia)</string>
+    <string name="morphe_video_effect_entry_color_blind_protanopia">Color blind assist (protanopia)</string>
+    <string name="morphe_video_effect_entry_color_blind_tritanopia">Color blind assist (tritanopia)</string>
     <string name="morphe_video_effect_entry_black_and_white">Black and white</string>
     <string name="morphe_video_effect_entry_old_film">Old film</string>
     <string name="morphe_video_effect_entry_invert">Inverted colors</string>

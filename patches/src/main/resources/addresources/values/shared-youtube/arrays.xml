@@ -144,6 +144,15 @@
     <!-- misc.videoeffects.videoEffectsPatch -->
     <string-array name="morphe_video_effect_entries">
         <item>@string/morphe_video_effect_entry_none</item>
+        <item>@string/morphe_video_effect_entry_enhance</item>
+        <item>@string/morphe_video_effect_entry_vivid_colors</item>
+        <item>@string/morphe_video_effect_entry_more_contrast</item>
+        <item>@string/morphe_video_effect_entry_sharpen</item>
+        <item>@string/morphe_video_effect_entry_brighten_shadows</item>
+        <item>@string/morphe_video_effect_entry_warm_colors</item>
+        <item>@string/morphe_video_effect_entry_color_blind_deuteranopia</item>
+        <item>@string/morphe_video_effect_entry_color_blind_protanopia</item>
+        <item>@string/morphe_video_effect_entry_color_blind_tritanopia</item>
         <item>@string/morphe_video_effect_entry_black_and_white</item>
         <item>@string/morphe_video_effect_entry_old_film</item>
         <item>@string/morphe_video_effect_entry_invert</item>
@@ -164,6 +173,15 @@
     </string-array>
     <string-array name="morphe_video_effect_entry_values">
         <item>NONE</item>
+        <item>ENHANCE</item>
+        <item>VIVID_COLORS</item>
+        <item>MORE_CONTRAST</item>
+        <item>SHARPEN</item>
+        <item>BRIGHTEN_SHADOWS</item>
+        <item>WARM_COLORS</item>
+        <item>COLOR_BLIND_DEUTERANOPIA</item>
+        <item>COLOR_BLIND_PROTANOPIA</item>
+        <item>COLOR_BLIND_TRITANOPIA</item>
         <item>BLACK_AND_WHITE</item>
         <item>OLD_FILM</item>
         <item>INVERT</item>
