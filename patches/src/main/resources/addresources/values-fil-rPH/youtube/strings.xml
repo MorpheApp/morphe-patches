@@ -61,7 +61,10 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_account_menu_title">Paganahin ang Library / Filter ng iyong menu sa ibaba</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Library / Filter ng iyong menu sa ibaba</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Ilagay ang mga pangalan ng Library / You bottom menu na sasalain, na pinaghihiwalay ng mga bagong linya</string>
+  <string name="morphe_hide_account_menu_badges_title">Itago ang mga Badge</string>
   <string name="morphe_hide_account_menu_downloads_title">Itago ang mga Download</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Itago ang \'Mga nagustuhang video\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Itago ang \'Panoorin mamaya\'</string>
   <string name="morphe_hide_album_cards_title">Itago ang mga album card</string>
   <string name="morphe_hide_album_cards_summary">Itinatago ang mga album card sa ilalim ng paglalarawan ng artist</string>
   <string name="morphe_hide_artist_cards_title">Itago ang mga artist card</string>
@@ -427,6 +430,8 @@ Mga Limitasyon:
   <string name="morphe_minimal_comments_button_summary">Itinatago ang mga dumudulas na card at ang tagapili ng pahina nito, na ipinapakita sa button ng mga komento</string>
   <string name="morphe_hide_comments_timestamp_button_title">Itago ang Timestamp button</string>
   <string name="morphe_hide_comments_top_fans_button_title">Itago ang button na \'Top fans\'</string>
+  <string name="morphe_hide_comments_topics_title">Itago ang \'Mga Paksa\'</string>
+  <string name="morphe_hide_comments_topics_summary">Itinatago ang opsyon ng filter bar na \'Mga Paksa\' at ang mga preview ng komento ng \'Paksa\' sa ibaba ng video</string>
   <string name="morphe_hide_comments_translate_button_title">Itago ang button na Isalin</string>
   <string name="morphe_hide_comments_zero_state_title">Itago ang mensahe na \'Walang komento pa\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Linisin ang mga naka-highlight na link sa paghahanap</string>
@@ -1029,6 +1034,39 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_swipe_overlay_style_entry_7">Vertical overlay (minimal)</string>
   <string name="morphe_swipe_change_video_title">I-enable ang swipe para magpalit ng video</string>
   <string name="morphe_swipe_change_video_summary">Mag-swipe sa fullscreen mode upang lumaktaw sa susunod o nakaraang video</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Hold gesture</string>
+  <string name="morphe_hold_gesture_screen_summary">Baguhin at i-lock ang playback speed sa pamamagitan ng pag-drag pagkatapos i-tap at i-hold</string>
+  <string name="morphe_hold_gesture_title">I-enable ang hold gesture</string>
+  <string name="morphe_hold_gesture_summary">Ang pag-tap at pag-hold sa video ay maaaring sundan ng pag-drag. Ang speed habang naka-hold ay ang tap and hold playback speed</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Hindi ginagamit habang naka-on ang press to swipe. I-tap para baguhin</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Naka-on ang press to swipe</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Parehong nagsisimula sa pagtap at pag-hold ang hold gesture at ang press to swipe gesture ng mga swipe control, kaya isa lamang sa mga ito ang maaaring naka-on.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">I-off ang press to swipe</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Hindi ginagamit ang hold gesture habang naka-on ang press to swipe</string>
+  <string name="morphe_hold_gesture_dialog_title">Naka-on ang hold gesture</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">I-off ang hold gesture</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">I-enable ang haptic feedback</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Nagba-vibrate kapag nagbabago ang bilis at kapag naka-lock ang bilis</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">I-drag nang pabalagbag para baguhin ang bilis</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Pagkatapos i-tap at i-hold, i-drag pakaliwa para mag-play nang mas mabagal at pakanan para mag-play nang mas mabilis. Habang papalayo, patuloy na magbabago ang bilis hanggang sa bumalik ang daliri</string>
+  <string name="morphe_hold_gesture_speed_step_title">Hakbang ng bilis</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Sensitibidad ng pag-drag</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Mababa</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Mataas</string>
+  <string name="morphe_hold_gesture_speed_min_title">Pinakamabagal na bilis</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Ang pinakamabagal na bilis na maaaring maabot ng drag</string>
+  <string name="morphe_hold_gesture_speed_max_title">Pinakamabilis na bilis</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Ang pinakamabilis na bilis na maaaring maabot ng drag (hanggang 8)</string>
+  <string name="morphe_hold_gesture_lock_title">I-drag pababa para i-lock ang bilis</string>
+  <string name="morphe_hold_gesture_lock_summary">Pagkatapos i-tap at i-hold, i-drag pababa para panatilihin ang bilis kapag iniangat ang daliri. I-tap ang badge o i-tap at i-hold muli para i-unlock</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Laging ipakita ang lock badge</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Ang badge ng naka-lock na bilis ay mananatiling nakikita habang nakatago ang mga player control</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">I-unlock kapag nagbago ang video</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Ang naka-lock na bilis ay magtatapos kapag nagsimula ang ibang video</string>
+  <string name="morphe_hold_gesture_lock_hint">Hilahin pababa para i-lock</string>
+  <string name="morphe_hold_gesture_lock_release">Bitawan para i-lock ang %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Mga caption</string>
   <string name="morphe_captions_screen_summary">Pamahalaan ang mga automatic caption at caption cookies</string>
@@ -1133,6 +1171,17 @@ Para ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gene
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">I-adjust ang espasyo sa pagitan ng glass navigation bar at ng ibaba ng screen o ng system navigation</string>
   <string name="morphe_navigation_bar_glass_size_title">Laki ng glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_size_summary">I-adjust ang taas, lapad at button spacing ng glass navigation bar, na may preview. Ang mga button na hindi kasya sa lapad ng screen ay nakatago</string>
+  <string name="morphe_glass_menus_screen_title">Mga glass menu</string>
+  <string name="morphe_glass_menus_screen_summary">Mga menu bilang frosted glass sa ibabaw ng malabong content sa likuran nito</string>
+  <string name="morphe_glass_menus_title">I-enable ang glass menus</string>
+  <string name="morphe_glass_menus_summary">Ipinapakita ang mga menu at bottom sheet bilang frosted glass, na may malabong content sa likuran nito</string>
+  <string name="morphe_glass_menus_user_dialog_message">Ang mga menu ay ipinapakitang halos opaque kapag naka-on ang battery saver, o kung hindi suportado ng device ang blur</string>
+  <string name="morphe_glass_menus_opacity_title">Opacity ng glass</string>
+  <string name="morphe_glass_menus_opacity_summary">Kung gaano tinatakpan ng menu ang blurred na content (0 ay clear, 100 ay opaque)</string>
+  <string name="morphe_glass_menus_blur_title">Blur</string>
+  <string name="morphe_glass_menus_blur_summary">Kung gaano ka-blur ang content sa likod ng menu</string>
+  <string name="morphe_glass_menus_dim_title">Dim</string>
+  <string name="morphe_glass_menus_dim_summary">Kung gaano kadilim ang screen sa paligid ng bottom sheet</string>
   <string name="morphe_navigation_bar_glass_size_height">Taas</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximum na lapad</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espasyo ng button</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Nilalaktawan ang menu ng pagpili ng kalidad at direktang binubuksan ang Advanced na menu ng kalidad</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Itago ang mga opsyon ng Premium na kalidad</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Unahin ang kalidad ng video</string>
-  <string name="morphe_video_quality_prioritize_summary">Inuuna ang pinakamataas na magagamit na kalidad ng video kaysa sa kahusayan ng codec</string>
-  <string name="morphe_video_quality_prioritize_dialog">Kung naka-patay ang setting na ito, maaaring walang opsyon sa kalidad ng video ang mga lumang video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Payagan ang \'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Pinapayagan ang software AV1 decoding kapag ginagamit ang \'Android VR\' / \'visionOS\' client</string>

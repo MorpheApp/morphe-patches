@@ -265,6 +265,20 @@ Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng il
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">I-pause kapag naka-mute</string>
   <string name="morphe_music_pause_when_muted_summary">I-pa-pause ang playback kapag ang system volume ay naka-mute at itutuloy ito kapag itinaas ang volume</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Ang Cast button ay maaari ring mag-stream sa Sonos at iba pang mga UPnP speaker sa iyong Wi-Fi network</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Kumonekta sa isang device</string>
+  <string name="morphe_music_sonos_cast_searching">Naghahanap ng mga speaker sa iyong Wi-Fi network…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Pumili ng speaker sa iyong Wi-Fi network</string>
+  <string name="morphe_music_sonos_cast_casting_to">Nagca-cast sa %s</string>
+  <string name="morphe_music_sonos_cast_connected">Konektado</string>
+  <string name="morphe_music_sonos_cast_disconnect">I-disconnect</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Mga speaker sa Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktibo</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Mga device na Chromecast, Nest at Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Hindi makakonekta sa %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Bilis ng pag-playback</string>
   <string name="morphe_music_playback_speed_summary">Bilis na ginagamit para sa lahat ng mga track. Sa 100%, ginagamit ang bilis ng app, gaya ng bilis ng pag-playback ng podcast</string>
@@ -586,6 +600,9 @@ Para matiyak na naka-sync ang scrobbling habang nagpe-play sa background, sigura
   <string name="morphe_music_soundproof_about_summary">"Ang data ng artist ay galing sa SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), na dina-download minsan sa isang araw. Ang pag-skip ay walang ipapadalang impormasyon tungkol sa iyong pinapatugtog. Ang pagbubukas ng SoundProof sheet ay nagpapadala ng kasalukuyang pangalan ng artist sa SoundProof server upang ipakita ang mga bagong boto at para makaboto. Kinikilala ng server ang mga botante sa pamamagitan ng IP address, kaya ang iyong boto ay maaaring magpakita nang magkaiba sa ibang network.
 
 Ang database ay lisensyado sa ilalim ng ODC Open Database License (ODbL). Ang mga entry mula sa Soul Over AI ni xoundbyte ay lisensyado sa ilalim ng CC BY 4.0. Hindi kaakibat o hindi sinusuportahan ng SoundProof o Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Animated artwork ng Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Ipinapakita ang animated album artwork ng Apple Music sa player, kung ang album ay mayroon nito. Ang pamagat, artist at album ng bawat kanta ay ipinapadala sa Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Hindi available ang lyrics para sa file ng device na ito.</string>
   <string name="morphe_music_lyrics_enabled_title">Gumamit ng mga liriko mula sa third-party</string>

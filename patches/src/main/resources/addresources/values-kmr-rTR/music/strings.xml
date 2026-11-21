@@ -265,6 +265,20 @@ Rawestandina crossfade ji bo temaşekirina vîdyoyeke muzîkê dikare hin vîdyo
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Dema bêdeng be rawestîne</string>
   <string name="morphe_music_pause_when_muted_summary">Dema dengê sîstemê bêdeng be lîstina muzîkê rawestîne û gava deng zêde dibe dîsa dest pê bike</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Bişkokeya Cast dikare her wiha berbi Sonos û speakerên din ên UPnP li ser tora Wi-Fi ya we stream bike</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Bi amûrekê ve girê bide</string>
+  <string name="morphe_music_sonos_cast_searching">Li speakeran li ser tora Wi-Fi ya we digere…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Speakerê li ser tora Wi-Fi ya we hilbijêre</string>
+  <string name="morphe_music_sonos_cast_casting_to">Vegerandina ber bi %s</string>
+  <string name="morphe_music_sonos_cast_connected">Hatiye girêdan</string>
+  <string name="morphe_music_sonos_cast_disconnect">Ji girêdanê derxe</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Speakerên li ser Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Çalak</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Amûrên Chromecast, Nest û Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Neskêrt bi %s girêdar bû</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Leza lêdanê</string>
   <string name="morphe_music_playback_speed_summary">Leza ku ji bo hemû trakan tê bikaranîn. Li %100 leza sepanê tê bikaranîn, wekî leza lêdana podkastê</string>
@@ -586,6 +600,9 @@ Ji bo ku bêyî astengiyê scrobbling li ser lîstikên paşnavê were hevdengki
   <string name="morphe_music_soundproof_about_summary">"Daneyên hunermendan ji SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) tên, carekê di rojê de tên daxistin. Derbaskirin tiştekî ji bo tiştê ku hûn guhdar dikin nayê şandin. Vekirina rûpela SoundProof navê hunermendê niha ji bo servera SoundProof dişîne da ku dengên nû nîşan bide û hûn dengê bidin. Server dengderan bi navnîşa IP ji hev cuda dike, ji ber vê yekê dengdana we dibe ku li ser torekê cuda xuya bike.
 
 Database bi lisansa ODC Open Database License (ODbL) ye. Tomarên ji Soul Over AI ji aliyê xoundbyte ve bi lisansa CC BY 4.0 in. Ne bi SoundProof an Soul Over AI ve girêdayî ye û ne jî ji aliyê wan ve hatiye pesendkirin."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Hunerê animate yê Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Hunerê albûma animate ya Apple Music di deryayê de nîşan dide, heger albûm yek hebe. Nav, hunermend û albûma her stranê ji bo Apple Music têne şandin</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Ji bo vê şopa amûrê, gotinên stranê nîn in.</string>
   <string name="morphe_music_lyrics_enabled_title">Şarkîyên partiyê sêyemîn bikar bîne</string>

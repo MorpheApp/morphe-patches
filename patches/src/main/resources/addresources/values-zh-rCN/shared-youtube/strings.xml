@@ -141,7 +141,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">请尝试启用：欺骗视频流 &gt; 登录 Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">默认客户端</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR 登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' 登录</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' 需要单独登录。点击此处继续</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">当前已登录 \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Second \"item\" text"</string>
 • 您的 Morphe 设置将无法导出/导入 Android VR 认证
 • 长期未使用时，该认证可能被 Google 移除
 • 更改 Google 密码或在 Google 设置中注销本设备后，需重新登录"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">移动版网页登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'移动版网页\' 登录</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">可选：登录 YouTube 网站以使用您的账号播放视频。点击此处继续</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">当前已登录“Mobile Web”</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">搜索长度必须在 %s 到 1 秒之间。使用默认值</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">禁用QUIC协议</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">优先视频画质</string>
+  <string name="morphe_prioritize_video_quality_summary">优先考虑最高可用视频画质而非编解码器效率</string>
+  <string name="morphe_prioritize_video_quality_dialog">如果关闭此设置，较旧的视频可能不显示任何视频画质选项</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">禁用 DRC 音频</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

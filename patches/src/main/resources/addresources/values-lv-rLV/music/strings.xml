@@ -265,6 +265,20 @@ Pāreju apturēšana mūzikas video skatīšanai var izraisīt melnu ekrānu da�
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pauzēt, ja skaņa ir izslēgta</string>
   <string name="morphe_music_pause_when_muted_summary">Pauzē atskaņošanu, ja sistēmas skaļums ir izslēgts, un atsāk to, kad skaļums tiek palielināts</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Pārraidīšanas pogu var izmantot arī straumēšanai uz Sonos un citiem UPnP skaļruņiem jūsu Wi-Fi tīklā</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Pieslēgties ierīcei</string>
+  <string name="morphe_music_sonos_cast_searching">Meklē skaļruņus jūsu Wi-Fi tīklā…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Izvēlieties skaļruni jūsu Wi-Fi tīklā</string>
+  <string name="morphe_music_sonos_cast_casting_to">Pārraide uz %s</string>
+  <string name="morphe_music_sonos_cast_connected">Savienots</string>
+  <string name="morphe_music_sonos_cast_disconnect">Atvienot</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Skaļruņi Wi-Fi tīklā</string>
+  <string name="morphe_music_sonos_cast_active">Aktīvs</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest un Google TV ierīces</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Neizdevās savienoties ar %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Atskaņošanas ātrums</string>
   <string name="morphe_music_playback_speed_summary">Ātrums, ko izmanto visiem trekiem. Pie 100% tiek izmantots lietotnes ātrums, piemēram, podkāstu atskaņošanas ātrums</string>
@@ -586,6 +600,9 @@ Lai nodrošinātu, ka scrobbling tiek sinhronizēts fona atskaņošanas laikā, 
   <string name="morphe_music_soundproof_about_summary">"Mākslinieku dati tiek ņemti no SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) un lejupielādēti vienreiz dienā. Izvēloties izlaist, nekas par jūsu atskaņotajiem gabaliem netiek nosūtīts. Atverot SoundProof lapu, pašreizējā mākslinieka vārds tiek nosūtīts uz SoundProof serveri, lai rādītu jaunākās balsis un ļautu balsot. Serveris atšķir balsotājus pēc IP adreses, tāpēc jūsu balss citā tīklā var izskatīties citādi.
 
 Datubāze ir licencēta saskaņā ar ODC Open Database License (ODbL). Soul Over AI (autors xoundbyte) ieraksti ir licencēti saskaņā ar CC BY 4.0. Nav saistīts ar SoundProof vai Soul Over AI un nav to apstiprināts."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animētais mākslas darbs</string>
+  <string name="morphe_music_apple_music_artwork_summary">Atskaņāšanas ierīcē rāda Apple Music animēto albuma mākslas darbu, ja albumam tāds ir. Katras dziesmas nosaukums, izpildītājs un albums tiek nosūtīti Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Dziesmu teksti šai ierīces failam nav pieejami.</string>
   <string name="morphe_music_lyrics_enabled_title">Izmantot trešo pušu dziesmu tekstus</string>

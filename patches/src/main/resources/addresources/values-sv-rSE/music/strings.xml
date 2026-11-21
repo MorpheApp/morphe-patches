@@ -265,6 +265,20 @@ Att pausa crossfade för att titta på en musikvideo kan lämna vissa videor sva
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pausa när ljudet är avstängt</string>
   <string name="morphe_music_pause_when_muted_summary">Pausar uppspelningen när systemvolymen är avstängd och återupptar den när volymen höjs</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast-knappen kan även strömma till Sonos och andra UPnP-högtalare på ditt Wi-Fi-nätverk</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Anslut till en enhet</string>
+  <string name="morphe_music_sonos_cast_searching">Söker efter högtalare på ditt Wi-Fi-nätverk…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Välj en högtalare på ditt Wi-Fi-nätverk</string>
+  <string name="morphe_music_sonos_cast_casting_to">Streamar till %s</string>
+  <string name="morphe_music_sonos_cast_connected">Ansluten</string>
+  <string name="morphe_music_sonos_cast_disconnect">Koppla från</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Högtalare på Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktiv</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast-, Nest- och Google TV-enheter</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Kunde inte ansluta till %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Uppspelningshastighet</string>
   <string name="morphe_music_playback_speed_summary">Hastighet som används för alla spår. Vid 100 % används appens hastighet, till exempel uppspelningshastigheten för poddar.</string>
@@ -586,6 +600,9 @@ För att säkerställa att scrobbling synkroniseras under bakgrundsuppspelning, 
   <string name="morphe_music_soundproof_about_summary">"Artistdata kommer från SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), nedladdad en gång om dagen. Hoppning skickar ingenting om vad du spelar. Att öppna SoundProof-bladet skickar det aktuella artistnamnet till SoundProof-servern för att visa aktuella röster och för att rösta. Servern skiljer på väljare via IP-adress, så din röst kan visas annorlunda på ett annat nätverk.
 
 Databasen är licensierad under ODC Open Database License (ODbL). Poster från Soul Over AI av xoundbyte är licensierade under CC BY 4.0. Inte ansluten till eller godkänd av SoundProof eller Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animerat omslag</string>
+  <string name="morphe_music_apple_music_artwork_summary">Visar det animerade albumomslaget från Apple Music i spelaren, om albumet har ett. Titel, artist och album för varje låt skickas till Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Texten är inte tillgänglig för den här enhetsfilen.</string>
   <string name="morphe_music_lyrics_enabled_title">Använd tredjeparts sångtexter</string>

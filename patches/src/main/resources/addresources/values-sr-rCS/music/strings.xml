@@ -265,6 +265,20 @@ Pauziranje Crossfade-a da biste gledali muzički spot može ostaviti neke spotov
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pauziraj kada je zvuk isključen</string>
   <string name="morphe_music_pause_when_muted_summary">Pauzira reprodukciju kada je sistemska jačina zvuka iskljuчена i nastavlja je kada se jačina zvuka poveća</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Dugme Cast takođe može prenositi zvuk na Sonos i druge UPnP zvučnike na vašoj Wi-Fi mreži</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Povežite se sa uređajem</string>
+  <string name="morphe_music_sonos_cast_searching">Pretraživanje zvučnika na vašoj Wi-Fi mreži…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Izaberite zvučnik na vašoj Wi-Fi mreži</string>
+  <string name="morphe_music_sonos_cast_casting_to">Emitovanje na %s</string>
+  <string name="morphe_music_sonos_cast_connected">Povezano</string>
+  <string name="morphe_music_sonos_cast_disconnect">Raskini vezu</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Zvučnici na Wi-Fi mreži</string>
+  <string name="morphe_music_sonos_cast_active">Aktivno</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest i Google TV uređaji</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Nije moguće povezivanje sa %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Brzina reprodukcije</string>
   <string name="morphe_music_playback_speed_summary">Brzina koja se koristi za sve numere. Na 100% koristi se brzina aplikacije, kao što je brzina reprodukcije podkasta</string>
@@ -586,6 +600,9 @@ Da biste obezbedili sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, u
   <string name="morphe_music_soundproof_about_summary">"Podaci o izvođačima potiču iz SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), preuzeti jednom dnevno. Preskakanje ne šalje ništa o onome što puštate. Otvaranje SoundProof tabele šalje trenutno ime izvođača na SoundProof server kako bi se prikazali najnoviji glasovi i omogućilo glasanje. Server razlikuje glasače putem IP adrese, tako da se vaš glas može prikazati drugačije na drugoj mreži.
 
 Baza podataka je licencirana pod ODC Open Database License (ODbL). Unosi iz Soul Over AI od xoundbyte su licencirani pod CC BY 4.0. Nije povezano sa SoundProof-om ili Soul Over AI-jem, niti od strane njih odobreno."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animirani omot</string>
+  <string name="morphe_music_apple_music_artwork_summary">Prikazuje animirani omot albuma sa Apple Music-a u plejeru, ako album ima takav. Naslov, izvođač i album svake pesme se šalju Apple Music-u</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Tekst pesme nije dostupan za ovu datoteku uređaja.</string>
   <string name="morphe_music_lyrics_enabled_title">Koristi tekstove pesama trećih strana</string>

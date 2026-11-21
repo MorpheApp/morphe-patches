@@ -94,6 +94,7 @@ For å oversette nye språk eller forbedre de eksisterende oversettelsene, besø
   <!-- Spoken name of the button in the header that opens the menu of periods -->
   <string name="morphe_settings_about_contributors_period_menu">Tidsperiode</string>
   <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s brukere</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Støttespillere</string>
   <string name="morphe_settings_about_supporters_summary">Bidragsytere på Open Collective</string>

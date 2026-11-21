@@ -141,7 +141,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Спробуйте увімкнути: Підміна відеопотоків > Android VR з входом</string>
   <string name="morphe_spoof_video_streams_client_type_title">Типовий клієнт</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Вхід у \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Вхід у \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' потребує окремого входу. Натисніть тут, щоб продовжити</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Наразі ви ввійшли в \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Second \"item\" text"</string>
 • Налаштування Morphe не імпортують/експортують автентифікацію Android VR
 • Якщо застосунок не використовується 6 місяців, Google видалить цю автентифікацію
 • Вам потрібно буде увійти знову, якщо ви зміните пароль Google або скасуєте реєстрацію цього пристрою в налаштуваннях Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вхід у Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вхід у \'Mobile Web\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Необов\'язково: увійдіть на вебсайт YouTube, щоб відтворювати відео зі своїм обліковим записом. Натисніть тут, щоб продовжити</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Наразі ви ввійшли в \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">Тривалість перемотування має бути від 1 до %s секунд. Використовується типове значення</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Вимкнути протокол QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Пріоритет якості відео</string>
+  <string name="morphe_prioritize_video_quality_summary">Надає пріоритет найвищій доступній якості відео над ефективністю кодека</string>
+  <string name="morphe_prioritize_video_quality_dialog">Якщо це налаштування вимкнено, старіші відео можуть не показувати параметри якості відео</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Вимкнути аудіо DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

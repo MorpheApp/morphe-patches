@@ -141,7 +141,7 @@ Ketik OK untuk membuka Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cuba dayakan: Spoof penstriman video &gt; Log masuk VR Android</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klien lalai</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Log masuk VR \'Android\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Log masuk \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' memerlukan log masuk berasingan. Ketik di sini untuk meneruskan</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kini log masuk ke \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Untuk log masuk, tekan teruskan di bawah"</string>
 • Tetapan Morphe anda tidak akan mengimport/mengeksport pengesahan Android VR
 • Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan membuang pengesahan ini
 • Anda perlu log masuk semula jika anda menukar kata laluan Google anda atau menyahdaftar peranti ini daripada tetapan Google anda"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Log masuk Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Log masuk \'Web Mudah Alih\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Pilihan: log masuk ke laman web YouTube untuk memainkan video dengan akaun anda. Ketik di sini untuk meneruskan</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kini log masuk ke \'Web Mudah Alih\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_seek_notification_media_length_invalid">Panjang carian mestilah antara 1 dan %s saat. Menggunakan lalai</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nyahaktifkan protokol QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Utamakan kualiti video</string>
+  <string name="morphe_prioritize_video_quality_summary">Mengutamakan kualiti video tertinggi yang tersedia berbanding kecekapan codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Jika tetapan ini dimatikan, video lama mungkin tidak menunjukkan pilihan kualiti video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Nyahaktifkan audio DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

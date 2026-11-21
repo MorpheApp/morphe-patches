@@ -39,6 +39,9 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_summary">कोडेक दक्षता भन्दा उपलब्ध उच्चतम भिडियो गुणस्तरलाई प्राथमिकता दिन्छ</string>
+  <string name="morphe_prioritize_video_quality_dialog">यदि यो सेटिङ बन्द गरिएको छ भने, पुराना भिडियोहरूमा कुनै भिडियो गुणस्तर विकल्पहरू नदेखिन सक्छन्</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <!-- misc.audio.silence.skipSilencePatch -->

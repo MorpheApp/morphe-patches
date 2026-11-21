@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">የላይብረሪ / የእርስዎ የታችኛው ሜኑ ማጣሪያን አብራ</string>
   <string name="morphe_hide_account_menu_filter_strings_title">የላይብረሪ / የእርስዎ የታችኛው ሜኑ ማጣሪያ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">ለማጣሪያ የሚፈለጉትን የላይብረሪ / የእርስዎ የታችኛው ሜኑ ስሞች በአዲስ መስመር በመለየት ያስገቡ</string>
+  <string name="morphe_hide_account_menu_badges_title">ባጅዎችን ደብቅ</string>
   <string name="morphe_hide_account_menu_downloads_title">ውርዶችን ደብቅ</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\'የተወደዱ ቪዲዮዎችን\' ደብቅ</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\'በኋላ ይመልከቱ\'ን ደብቅ</string>
   <string name="morphe_hide_album_cards_title">የአልበም ካርዶችን ደብቅ</string>
   <string name="morphe_hide_album_cards_summary">ከአርቲስቱ መግለጫ በታች ያሉትን የአልበም ካርዶች ይደብቃል</string>
   <string name="morphe_hide_artist_cards_title">የአርቲስት ካርዶችን ደብቅ</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">በአስተያየቶች ቁልፍ ላይ የሚታዩትን ተንሸራታች ካርዶች እና የገጽ መራጫውን ይደብቃል</string>
   <string name="morphe_hide_comments_timestamp_button_title">የጊዜ ማህተም ቁልፉን ደብቅ</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Top fans\' ቁልፍን ደብቅ</string>
+  <string name="morphe_hide_comments_topics_title">\'ርዕሶችን\' ደብቅ</string>
+  <string name="morphe_hide_comments_topics_summary">የ\'ርዕሶች\' ማጣሪያ ባር አማራጭን እና ከቪዲዮው በታች ያሉትን የ\'ርዕስ\' አስተያየት ቅድመ እይታዎችን ይደብቃል</string>
   <string name="morphe_hide_comments_translate_button_title">የትርጉም አዝራሩን ደብቅ</string>
   <string name="morphe_hide_comments_zero_state_title">\'ገና ምንም አስተያየት የለም\' የሚለውን መልእክት ደብቅ</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">የተደመቁ የፍለጋ ሊንኮችን አጽዳ</string>
@@ -1029,6 +1034,39 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_swipe_overlay_style_entry_7">ቁመታዊ ኦቨርሌ (ሚኒማሊስት)</string>
   <string name="morphe_swipe_change_video_title">ቪዲዮዎችን ለመቀየር ስዊፕን ያግብሩ</string>
   <string name="morphe_swipe_change_video_summary">ወደ ቀጣዩ ወይም የቀድሞው ቪዲዮ ለመዝለል በሙሉ ስክሪን ሞድ ውስጥ ያሳልጥዱ</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">የመያዝ ምልክት</string>
+  <string name="morphe_hold_gesture_screen_summary">በመጫን እና በመያዝ לאחר በመጎተት የትየባ ፍጥነቱን ይቀይሩ እና ይቆልፉ</string>
+  <string name="morphe_hold_gesture_title">የመያዝ ምልክትን ያግብሩ</string>
+  <string name="morphe_hold_gesture_summary">ቪዲዮውን መጫን እና መያዝ በመጎተት ሊከተል ይችላል። በሚያዙበት ጊዜ ፍጥነቱ የመጫን እና የመያዝ ትየባ ፍጥነት ነው</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">\"ለመጫንና ለማስለቀቅ\" በሚበራበት ጊዜ ጥቅም ላይ አይውልም። ለመለወጥ ይጫኑ</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">ለመጫንና ለማስለቀቅ በርቷል</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">የመያዣ ምልክት እና የመጫንና የማስለቀቅ ምልክት ሁለቱም የሚጀምሩት በመጫንና በመያዝ ስለሆነ፣ አንዱ ብቻ ነው በርቶ መቆየት የሚችለው።</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">ለመጫንና ለማስለቀቅ ያጥፉ</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">ለመጫንና ለማስለቀቅ በርቶ ሳለ የመያዣ ምልክት ጥቅም ላይ አይውልም</string>
+  <string name="morphe_hold_gesture_dialog_title">የመያዣ ምልክት በርቷል</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">የመያዣ ምልክትን ያጥፉ</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">የሃፕቲክ ግብረ-መልስን ያብሩ</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">ፍጥነቱ ሲቀየር እና ፍጥነቱ ሲቆለፍ ይርገበገባል</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">ፍጥነቱን ለመቀየር ወደ ጎን ይሳቡ</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">ነክሮ በመያዝ፣ በዝግታ ለማጫወት ወደ ግራ እና በፍጥነት ለማጫወት ወደ ቀኝ ይሳቡ። ጣትዎ እስኪመለስ ድረስ ፍጥነቱ ይቀጥላል</string>
+  <string name="morphe_hold_gesture_speed_step_title">የፍጥነት ደረጃ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">የመሳብ ስሜታዊነት</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">ዝቅተኛ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">መደበኛ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">ከፍተኛ</string>
+  <string name="morphe_hold_gesture_speed_min_title">ዝቅተኛው ፍጥነት</string>
+  <string name="morphe_hold_gesture_speed_min_summary">አንድ ሳቢ ሊደርስበት የሚችለው ዝቅተኛው ፍጥነት</string>
+  <string name="morphe_hold_gesture_speed_max_title">ከፍተኛው ፍጥነት</string>
+  <string name="morphe_hold_gesture_speed_max_summary">አንድ ሳቢ ሊደርስበት የሚችለው ከፍተኛው ፍጥነት (እስከ 8)</string>
+  <string name="morphe_hold_gesture_lock_title">ፍጥነቱን ለመቆለፍ ወደ ታች ይሳቡ</string>
+  <string name="morphe_hold_gesture_lock_summary">በጫኑበት ጊዜ ይያዙ እና ጣትዎን ሲያነሱ ፍጥነቱ እንዳይቀየር ወደ ታች ይሳቡ። ለመክፈት ምልክቱን ይጫኑ ወይም እንደገና ተጭነው ይያዙ</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">የመቆለፊያ ምልክቱ ሁል ጊዜ ይታይ</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">የተቆለፈ ፍጥነት ምልክቱ የቪዲዮ ማጫወቻ መቆጣጠሪያዎች ተደብቀው ሳሉ ይታያል</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">ቪዲዮው ሲቀየር ይክፈት</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">ሌላ ቪዲዮ ሲጀምር የተቆለፈው ፍጥነት ያበቃል</string>
+  <string name="morphe_hold_gesture_lock_hint">ለመቆለፍ ወደ ታች ይሳቡ</string>
+  <string name="morphe_hold_gesture_lock_release">%s ለመቆለፍ ይልቀቁ</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">የግርጌ ጽሁፎች</string>
   <string name="morphe_captions_screen_summary">ራስ-ሰር የግርጌ ጽሁፎችን እና የግርጌ ጽሁፍ ኩኪዎችን ያስተዳድሩ</string>
@@ -1133,6 +1171,17 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">በብርጭቆው የናቪጌሽን ባር እና በስክሪኑ ግርጌ ወይም በሲስተም ናቪጌሽን መካከል ያለውን ክፍተት ያስተካክሉ</string>
   <string name="morphe_navigation_bar_glass_size_title">የብርጭቆ ናቪጌሽን ባር መጠን</string>
   <string name="morphe_navigation_bar_glass_size_summary">የብርጭቆ ናቪጌሽን ባርን ቁመት፣ ስፋት እና የቁልፎች ክፍተት በቅድመ እይታ ያስተካክሉ። በስክሪኑ ስፋት ውስጥ የማይገቡ ቁልፎች ይደበቃሉ</string>
+  <string name="morphe_glass_menus_screen_title">የመስታወት ሜኑዎች</string>
+  <string name="morphe_glass_menus_screen_summary">ከበስተጀርባቸው ባለው የደበዘዘ ይዘት ላይ እንደ በረዶ መስተዋት የሚታዩ ሜኑዎች</string>
+  <string name="morphe_glass_menus_title">የመስታወት ሜኑዎችን አግብር</string>
+  <string name="morphe_glass_menus_summary">ሜኑዎችን እና የታችኛውን ስክሪን እንደ በረዶ መስተዋት ያሳያል፣ ከበስተጀርባቸው ያለው ይዘት ደግሞ ይደበዝዛል</string>
+  <string name="morphe_glass_menus_user_dialog_message">የባትሪ ቆጣቢ ሲበራ ወይም መሳሪያው የደብዘዛ ባህሪን የማይደግፍ ከሆነ ሜኑዎቹ ሙሉ በሙሉ ግልጽ ባልሆነ መልኩ ይታያሉ</string>
+  <string name="morphe_glass_menus_opacity_title">የብርጭቆ ግልጽነት</string>
+  <string name="morphe_glass_menus_opacity_summary">ሜኑው ብዥ ያለውን ይዘት ምን ያህል እንደሚሸፍን (0 ጥርኝ ነው፣ 100 ደግሞ የማይበየን ነው)</string>
+  <string name="morphe_glass_menus_blur_title">ብዥታ</string>
+  <string name="morphe_glass_menus_blur_summary">ከሜኑው በስተጀርባ ያለው ይዘት ምን ያህል ብዥ እንደሚሆን</string>
+  <string name="morphe_glass_menus_dim_title">መጋረድ</string>
+  <string name="morphe_glass_menus_dim_summary">ከታችኛው ስክሪን ዙሪያ ያለው ስክሪን ምን ያህል እንደሚጨልም</string>
   <string name="morphe_navigation_bar_glass_size_height">ቁመት</string>
   <string name="morphe_navigation_bar_glass_size_width">ከፍተኛ ስፋት</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">የቁልፎች ክፍተት</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">የጥራት ምርጫ ዝርዝሩን ዘልሎ በቀጥታ የላቀ የጥራት ዝርዝሩን ይከፍታል</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">የPremium ጥራት አማራጮችን ደብቅ</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">ለቪዲዮ ጥራት ቅድሚያ ስጥ</string>
-  <string name="morphe_video_quality_prioritize_summary">ከኮዴክ ብቃት ይልቅ ከፍተኛ ለሆነው የቪዲዮ ጥራት ቅድሚያ ይሰጣል</string>
-  <string name="morphe_video_quality_prioritize_dialog">ይህ ቅንብር ከተጠፋ፣ የቆዩ ቪዲዮዎች ምንም ዓይነት የጥራት አማራጮችን ላያሳዩ ይችላሉ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1ን ፍቀድ</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' ደንበኛን በሚጠቀሙበት ጊዜ የሶፍትዌር AV1 decodingን ይፈቅዳል</string>

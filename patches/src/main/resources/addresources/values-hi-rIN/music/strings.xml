@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">म्यूट होने पर रोकें</string>
   <string name="morphe_music_pause_when_muted_summary">जब सिस्टम वॉल्यूम म्यूट होता है तो प्लेबैक रुक जाता है और वॉल्यूम बढ़ाने पर फिर से शुरू हो जाता है</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast बटन आपके वाई-फाई नेटवर्क पर Sonos और अन्य UPnP स्पीकरों पर भी स्ट्रीम कर सकता है</string>
+  <string name="morphe_music_sonos_cast_sheet_title">डिवाइस से कनेक्ट करें</string>
+  <string name="morphe_music_sonos_cast_searching">आपके वाई-फाई नेटवर्क पर स्पीकरों की खोज की जा रही है…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">अपने वाई-फाई नेटवर्क पर एक स्पीकर चुनें</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s पर कास्ट किया जा रहा है</string>
+  <string name="morphe_music_sonos_cast_connected">जुड़ा हुआ</string>
+  <string name="morphe_music_sonos_cast_disconnect">डिस्कनेक्ट करें</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi पर स्पीकर</string>
+  <string name="morphe_music_sonos_cast_active">सक्रिय</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest और Google TV डिवाइस</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s से कनेक्ट नहीं हो सका</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">प्लेबैक गति</string>
   <string name="morphe_music_playback_speed_summary">सभी ट्रैक के लिए उपयोग की जाने वाली गति। 100% पर ऐप की गति उपयोग की जाती है, जैसे पॉडकास्ट प्लेबैक गति।</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"कलाकार का डेटा SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) से आता है, जिसे दिन में एक बार डाउनलोड किया जाता है। स्किप करने पर आप जो बजाते हैं उसके बारे में कुछ भी नहीं भेजा जाता है। SoundProof शीट खोलने पर ताज़ा वोट दिखाने और वोट करने के लिए वर्तमान कलाकार का नाम SoundProof सर्वर पर भेजा जाता है। सर्वर IP एड्रेस के ज़रिए वोटरों के बीच अंतर करता है, इसलिए आपका वोट दूसरे नेटवर्क पर अलग दिख सकता है।
 
 डेटाबेस ODC ओपन डेटाबेस लाइसेंस (ODbL) के तहत लाइसेंस प्राप्त है। xoundbyte द्वारा Soul Over AI की प्रविष्टियाँ CC BY 4.0 के तहत लाइसेंस प्राप्त हैं। SoundProof या Soul Over AI से संबद्ध या समर्थित नहीं है।"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music एनिमेटेड आर्टवर्क</string>
+  <string name="morphe_music_apple_music_artwork_summary">यदि एल्बम में एनिमेटेड आर्टवर्क है, तो यह प्लेयर में Apple Music का एनिमेटेड एल्बम आर्टवर्क दिखाता है। प्रत्येक गीत का शीर्षक, कलाकार और एल्बम Apple Music को भेजे जाते हैं</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">इस डिवाइस फ़ाइल के लिए लिरिक्स उपलब्ध नहीं हैं।</string>
   <string name="morphe_music_lyrics_enabled_title">तृतीय-पक्ष गीत का उपयोग करें</string>

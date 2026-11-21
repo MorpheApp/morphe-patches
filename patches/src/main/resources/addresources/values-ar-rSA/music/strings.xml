@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">إيقاف مؤقت عند كتم الصوت</string>
   <string name="morphe_music_pause_when_muted_summary">يوقف التشغيل مؤقتاً عند كتم صوت النظام ويستأنفه عند رفع مستوى الصوت</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">بث Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">يمكن لزر البث أيضًا البث إلى Sonos ومكبرات الصوت الأخرى التي تدعم UPnP على شبكة Wi-Fi الخاصة بك</string>
+  <string name="morphe_music_sonos_cast_sheet_title">الاتصال بجهاز</string>
+  <string name="morphe_music_sonos_cast_searching">جاري البحث عن مكبرات صوت على شبكة Wi-Fi الخاصة بك…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">اختر مكبر صوت على شبكة Wi-Fi الخاصة بك</string>
+  <string name="morphe_music_sonos_cast_casting_to">بث إلى %s</string>
+  <string name="morphe_music_sonos_cast_connected">متصل</string>
+  <string name="morphe_music_sonos_cast_disconnect">قطع الاتصال</string>
+  <string name="morphe_music_sonos_cast_speakers_header">مكبرات الصوت عبر Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">نشط</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">أجهزة Chromecast وNest وGoogle TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">تعذر الاتصال بـ %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">سرعة التشغيل</string>
   <string name="morphe_music_playback_speed_summary">السرعة المستخدمة لجميع المسارات. عند 100%، تُستخدم سرعة التطبيق، مثل سرعة تشغيل البودكاست</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"تأتي بيانات الفنان من SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps)، ويتم تنزيلها مرة واحدة يومياً. التخطي لا يرسل أي شيء بخصوص ما تشغله. فتح ورقة SoundProof يرسل اسم الفنان الحالي إلى خادم SoundProof لعرض أحدث الأصوات وللتصويت. يميز الخادم المصوتين عن طريق عنوان IP، لذا قد يظهر تصويتك بشكل مختلف على شبكة أخرى.
 
 قاعدة البيانات مرخصة بموجب رخصة قاعدة البيانات المفتوحة ODC (ODbL). المدخلات من Soul Over AI بواسطة xoundbyte مرخصة بموجب CC BY 4.0. غير تابع لـ SoundProof أو Soul Over AI أو معتمد منهما."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">غلاف Apple Music المتحرك</string>
+  <string name="morphe_music_apple_music_artwork_summary">يعرض غلاف الألبوم المتحرك من Apple Music في المشغل، إذا كان الألبوم يحتوي على واحد. يتم إرسال عنوان كل أغنية والفنان والألبوم إلى Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">كلمات الأغاني غير متوفرة لملف الجهاز هذا.</string>
   <string name="morphe_music_lyrics_enabled_title">استخدام كلمات أغاني من طرف ثالث</string>

@@ -141,7 +141,7 @@ Prehrávanie videa môže zlyhať, kým nebude Android System WebView aktualizov
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Skúste povoliť: Falšovanie toku videa &gt; Prihlásenie do Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Predvolený klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prihlásenie do \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prihlásenie k „Android VR“</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" vyžaduje samostatné prihlásenie. Ak chcete pokračovať, klepnite sem</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Aktuálne prihlásené do \"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
 • Nastavenia Morphe nebudú importovať/exportovať overenie pre Android VR
 • Po 6 mesiacoch od posledného použitia tejto aplikácie Google odstráni toto overenie
 • Budete sa musieť znova prihlásiť, ak zmeníte svoje heslo Google alebo zrušíte registráciu tohto zariadenia v nastaveniach Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prihlásenie cez mobilný web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prihlásenie k „Mobile Web“</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Voliteľné: prihláste sa na webovú stránku YouTube, aby ste mohli prehrávať videá so svojím účtom. Pokračujte Ťuknutím sem</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálne prihlásené do \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Ak sa chcete prihlásiť, stlačte nižšie tlačidlo Pokračovať"</string>
   <string name="morphe_seek_notification_media_length_invalid">Dĺžka preskoku musí byť medzi 1 a %s sekundami. Používa sa predvolená hodnota</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Zakázať protokol QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Uprednostniť kvalitu videa</string>
+  <string name="morphe_prioritize_video_quality_summary">Uprednostní najvyššiu dostupnú kvalitu videa pred efektivitou kodeku</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ak je toto nastavenie vypnuté, pri starších videách sa nemusí zobraziť žiadne možnosti kvality videa</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Zakázať zvuk DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

@@ -265,6 +265,20 @@ Tạm dừng crossfade để xem video ca nhạc có thể khiến một số vi
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Tạm dừng khi tắt tiếng</string>
   <string name="morphe_music_pause_when_muted_summary">Tạm dừng phát nhạc khi âm lượng hệ thống bị tắt tiếng và tiếp tục phát khi tăng âm lượng</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Truyền Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">Nút Cast cũng có thể truyền phát đến Sonos và các loa UPnP khác trên mạng Wi-Fi của bạn</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Kết nối với một thiết bị</string>
+  <string name="morphe_music_sonos_cast_searching">Đang tìm kiếm loa trên mạng Wi-Fi của bạn…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Chọn một loa trên mạng Wi-Fi của bạn</string>
+  <string name="morphe_music_sonos_cast_casting_to">Đang truyền đến %s</string>
+  <string name="morphe_music_sonos_cast_connected">Đã kết nối</string>
+  <string name="morphe_music_sonos_cast_disconnect">Ngắt kết nối</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Loa trên Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Đang hoạt động</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Các thiết bị Chromecast, Nest và Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Không thể kết nối với %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Tốc độ phát</string>
   <string name="morphe_music_playback_speed_summary">Tốc độ dùng cho tất cả các bản nhạc. Ở mức 100%, tốc độ của ứng dụng sẽ được dùng, chẳng hạn như tốc độ phát podcast</string>
@@ -586,6 +600,9 @@ Tạm dừng crossfade để xem video ca nhạc có thể khiến một số vi
   <string name="morphe_music_soundproof_about_summary">"Dữ liệu nghệ sĩ đến từ SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), được tải xuống một lần mỗi ngày. Việc bỏ qua sẽ không gửi bất kỳ thông tin nào về nội dung bạn đang phát. Khi mở trang SoundProof, tên nghệ sĩ hiện tại sẽ được gửi đến máy chủ SoundProof để hiển thị các lượt bình chọn mới nhất và để bình chọn. Máy chủ phân biệt người bình chọn bằng địa chỉ IP, vì vậy lượt bình chọn của bạn có thể hiển thị khác nhau trên một mạng khác.
 
 Cơ sở dữ liệu được cấp phép theo Giấy phép Cơ sở Dữ liệu Mở ODC (ODbL). Các mục từ Soul Over AI của xoundbyte được cấp phép theo CC BY 4.0. Không liên kết với hoặc được xác nhận bởi SoundProof hoặc Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Ảnh bìa động Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Hiển thị ảnh bìa album động của Apple Music trong trình phát, nếu album đó có. Tiêu đề, nghệ sĩ và album của mỗi bài hát sẽ được gửi đến Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Lời bài hát không khả dụng cho tệp thiết bị này.</string>
   <string name="morphe_music_lyrics_enabled_title">Dùng lời nhạc từ bên thứ ba</string>

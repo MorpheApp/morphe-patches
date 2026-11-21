@@ -61,7 +61,10 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_account_menu_title">Cumasaigh an Leabharlann / Scagaire an roghchláir ag bun an scáileáin</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Leabharlann / Scagaire an roghchláir ag bun an scáileáin</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Cuir isteach ainmneacha na roghchlár fillte le scagadh a dhéanamh orthu, scartha le línte nua</string>
+  <string name="morphe_hide_account_menu_badges_title">Folaigh Suaitheantais</string>
   <string name="morphe_hide_account_menu_downloads_title">Folaigh Íoslódálacha</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Folaigh \'Físeáin ar thaitin leat\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Folaigh \'Féach níos déanaí\'</string>
   <string name="morphe_hide_album_cards_title">Folaigh cártaí albam</string>
   <string name="morphe_hide_album_cards_summary">Folaíonn sé na cártaí albaim faoin tuairisc ar an ealaíontóir</string>
   <string name="morphe_hide_artist_cards_title">Folaigh cártaí ealaíontóra</string>
@@ -427,6 +430,8 @@ Teorainneacha:
   <string name="morphe_minimal_comments_button_summary">Folaíonn sé na cártaí sleamhnáin agus a roghnóir leathanaigh, a thaispeántar ar an gcnaipe tráchtaí</string>
   <string name="morphe_hide_comments_timestamp_button_title">Cnaipe Folaigh an Stampa Ama</string>
   <string name="morphe_hide_comments_top_fans_button_title">Folaigh cnaipe \'Top fans\'</string>
+  <string name="morphe_hide_comments_topics_title">Folaigh \'Topaicí\'</string>
+  <string name="morphe_hide_comments_topics_summary">Folaíonn sé an rogha sa bharra scagtha \'Topaicí\' agus na réamhamhairc ar thuairimí faoin \'Topaic\' faoi bhun an fhíseáin</string>
   <string name="morphe_hide_comments_translate_button_title">Folaigh an cnaipe Aistrigh</string>
   <string name="morphe_hide_comments_zero_state_title">Folaigh teachtaireacht \'Gan aon trácht go fóill\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Glanadh naisc chuardaigh aibhsithe</string>
@@ -1029,6 +1034,39 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
   <string name="morphe_swipe_overlay_style_entry_7">Forleagan ingearach (íosmhéid)</string>
   <string name="morphe_swipe_change_video_title">Cumasaigh svaidhpeáil chun físeáin a athrú</string>
   <string name="morphe_swipe_change_video_summary">Svaidhpeáil i mód lánscáileáin chun léim go dtí an chéad fhíseán eile nó an físeán roimhe sin</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Gotha coinneála</string>
+  <string name="morphe_hold_gesture_screen_summary">Athraigh agus glasáil an luas athsheinm trí tharraingt tar éis tapáil agus coinneáil</string>
+  <string name="morphe_hold_gesture_title">Cumasaigh gotha ​​coinneála</string>
+  <string name="morphe_hold_gesture_summary">Is féidir an físeán a tharraingt tar éis é a thapáil agus a choinneáil. Is é an luas athsheinm le linn an ghnímh ‘tapáil agus coinnigh’ ná an luas a bhíonn i bhfeidhm agus an físeán á choinneáil.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Ní úsáidtear é seo nuair atá an ghné \'brúigh chun swipeáil\' casta air. Beartaigh chun é a athrú</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Tá brúigh chun svaidhpeáil ar siúl</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Tosaíonn an gotha ​​‘coinnigh’ agus an gotha ​​‘brúigh chun swipeáil’ araon le tapáil agus coinneáil; dá bhrí sin, ní féidir ach ceann amháin acu a bheith gníomhach.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Múch brúigh chun svaidhpeáil</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Ní úsáidtear gotha coinneála agus brúigh chun svaidhpeáil ar siúl</string>
+  <string name="morphe_hold_gesture_dialog_title">Tá an gotha ​​coinneála gníomhach</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Múch an gotha ​​coinneála</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Cumasaigh aiseolas haptic</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Crithann sé nuair a athraíonn an luas agus nuair a ghlasáiltear an luas</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Tarraing ar an taobh chun an luas a athrú</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Tar éis duit tapáil agus coinneáil, tarraing ar chlé chun an t-ábhar a sheinm níos moille, agus ar dheis chun é a sheinm níos tapúla. Dá fhaide amach a théann tú, is ea is mó a leanann an luas ag athrú, go dtí go bhfilleann an mhéar ar ais.</string>
+  <string name="morphe_hold_gesture_speed_step_title">Céim luais</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Íogaireacht tarraingthe</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Íseal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Gnáth</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Ard</string>
+  <string name="morphe_hold_gesture_speed_min_title">An luas is moille</string>
+  <string name="morphe_hold_gesture_speed_min_summary">An luas is moille ar féidir le coscán a bhaint amach</string>
+  <string name="morphe_hold_gesture_speed_max_title">An luas is tapúla</string>
+  <string name="morphe_hold_gesture_speed_max_summary">An luas is tapúla is féidir le tarraingt a bhaint amach (suas le 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Tarraing síos chun an luas a ghlasáil</string>
+  <string name="morphe_hold_gesture_lock_summary">Tar éis tapáil agus coinneáil, tarraing síos chun an luas a choinneáil nuair a thógtar an mhéar den scáileán. Tapáil an suaitheantas, nó tapáil agus coinnigh arís chun an glas a scaoileadh.</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Taispeáin an suaitheantas glais i gcónaí</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Fanann an comhartha a léiríonn luas faoi ghlas le feiceáil fad is atá rialuithe an imreora i bhfolach.</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Díghlasáil nuair a athraíonn an físeán</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Críochnaíonn luas faoi ghlas nuair a thosaíonn físeán eile</string>
+  <string name="morphe_hold_gesture_lock_hint">Tarraing síos chun glasáil</string>
+  <string name="morphe_hold_gesture_lock_release">Scaoil chun %s a ghlasáil</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Fotheidil</string>
   <string name="morphe_captions_screen_summary">Bainistigh fotheidil uathoibríocha agus fianáin fotheidil</string>
@@ -1133,6 +1171,17 @@ Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Coigeartaigh an spás idir an barra nascleanúna gloine agus bun an scáileáin nó nascleanúint an chórais</string>
   <string name="morphe_navigation_bar_glass_size_title">Méid an bharra nascleanúna gloine</string>
   <string name="morphe_navigation_bar_glass_size_summary">Coigeartaigh airde, leithead agus spásáil cnaipí an bharra nascleanúna ghloine, agus féach ar réamhamharc. Déantar cnaipí nach n-oireann laistigh de leithead an scáileáin a cheilt.</string>
+  <string name="morphe_glass_menus_screen_title">Menuí gloine</string>
+  <string name="morphe_glass_menus_screen_summary">Menuí mar ghloine fhrostaithe os cionn an ábhair doiléire taobh thiar acu</string>
+  <string name="morphe_glass_menus_title">Cumasaigh menuí gloine</string>
+  <string name="morphe_glass_menus_summary">Taispeánann menuí agus bileoga boscaí mar ghloine fhrostaithe, leis an ábhar taobh thiar acu doiléire</string>
+  <string name="morphe_glass_menus_user_dialog_message">Taispeánann an córas na menuí bealainneach beagnach nuair a bhíonn sábhálaí batterí uactha, nó má ní thacaíonn an gléas le doiléire</string>
+  <string name="morphe_glass_menus_opacity_title">Teimhneacht ghloine</string>
+  <string name="morphe_glass_menus_opacity_summary">Cé mhéid a chlúdaíonn an menu an t-ábhar truaghaithe (is é 0 an soiléir, is é 100 an docht)</string>
+  <string name="morphe_glass_menus_blur_title">Doiléire</string>
+  <string name="morphe_glass_menus_blur_summary">Cé mhéid a truaghaithear an t-ábhar taobh thiar den menu</string>
+  <string name="morphe_glass_menus_dim_title">Dím</string>
+  <string name="morphe_glass_menus_dim_summary">Cé mhéid a dhronnaítear an scáileán thart ar bhile bun</string>
   <string name="morphe_navigation_bar_glass_size_height">Airde</string>
   <string name="morphe_navigation_bar_glass_size_width">Leithead uasta</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spásáil cnaipí</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Léimeann sé an roghchlár um roghnú cáilíochta agus osclaíonn sé an roghchlár Ardchaighdeán go díreach</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Folaigh roghanna cáilíochta Préimhe</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Tabhair tús áite do cháilíocht físe</string>
-  <string name="morphe_video_quality_prioritize_summary">Tugann sé tús áite don cháilíocht físe is airde atá ar fáil thar éifeachtúlacht an chóidéic</string>
-  <string name="morphe_video_quality_prioritize_dialog">Mura bhfuil an socrú seo ar siúl, ní féidir le físeáin níos sine aon roghanna cáilíochta físe a thaispeáint.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Ceadaigh \'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Ceadaíonn sé díchódú bogearraí AV1 agus cliant \'Android VR\' / \'visionOS\' in úsáid</string>

@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Дыбыс өшірілгенде кідірту</string>
   <string name="morphe_music_pause_when_muted_summary">Жүйе дыбысы өшірілгенде ойнатуды кідіртеді және дыбыс көтерілгенде қайта бастайды</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast түймесі Sonos-қа және Wi-Fi желіңіздегі басқа UPnP динамиктеріне де ағындарды жібере алады</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Құрылғыға қосылыңыз</string>
+  <string name="morphe_music_sonos_cast_searching">Wi-Fi желіңіздегі динамиктер ізделіп жатыр…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Wi-Fi желіңіздегі динамикті таңдаңыз</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s құрылғысына жіберілгенде</string>
+  <string name="morphe_music_sonos_cast_connected">Қосылды</string>
+  <string name="morphe_music_sonos_cast_disconnect">Ажырату</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi желісіндегі динамиктер</string>
+  <string name="morphe_music_sonos_cast_active">Белсенді</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest және Google TV құрылғылары</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s құрылғысына қосылу мүмкін болмады</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Ойнату жылдамдығы</string>
   <string name="morphe_music_playback_speed_summary">Барлық тректер үшін қолданылатын жылдамдық. 100% кезінде қолданбаның жылдамдығы, мысалы, подкастты ойнату жылдамдығы қолданылады</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"Әртістер туралы деректер SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) жүйесінен күніне бір рет жүктеледі. Бұл функцияны өшіру сіздің не тыңдап жатқаныңыз туралы ешқандай мәлімет жібермейді. SoundProof парағын ашу ағымдағы әртістің атын жаңа дауыстарды көрсету және дауыс беру үшін SoundProof серверіне жібереді. Сервер дауыс берушілерді IP-мекенжайы бойынша ажыратады, сондықтан сіздің дауысыңыз басқа желіде әртүрлі көрінуі мүмкін.
 
 Деректер қоры ODC Open Database License (ODbL) лицензиясы бойынша берілген. xoundbyte жасаған Soul Over AI жазбалары CC BY 4.0 лицензиясы бойынша берілген. SoundProof немесе Soul Over AI ұйымдарымен байланысы жоқ және олардың қолдауымен жасалмаған."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music анимацияланған мұқабасы</string>
+  <string name="morphe_music_apple_music_artwork_summary">Егер альбомда болса, плеерде Apple Music-тің анимацияланған альбом мұқабасын көрсетеді. Әр әннің атауы, орындаушысы және альбомы Apple Music-ке жіберіледі</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Бұл құрылғы файлы үшін мәтіндер қолжетімді емес.</string>
   <string name="morphe_music_lyrics_enabled_title">Үшінші тарап мәтіндерін қолдану</string>

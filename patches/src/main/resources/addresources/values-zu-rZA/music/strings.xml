@@ -265,6 +265,20 @@ Ukumisa i-crossfade ukuze ubuke ividiyo yomculo kungashiye amanye amavidiyo emny
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Yima lapho kuthulekile</string>
   <string name="morphe_music_pause_when_muted_summary">Yimisa ukudlalela lapho ivolume yesistimu ithulekile futhi iqhubeke lapho ivolume iphakamisiwe</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Thumela ku-Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">Inkinobhotoni ye-Cast ingaphinde idlale imisindo ku-Sonos nakwezinye izikhulumi ze-UPnP kwinetwork yakho ye-Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Xhumana nedivayisi</string>
+  <string name="morphe_music_sonos_cast_searching">Kufunwa izikhulumi kwinetwork yakho ye-Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Khetha isikhulumi kwinetwork yakho ye-Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Kuthunyelwa ku-%s</string>
+  <string name="morphe_music_sonos_cast_connected">Kuxhumekile</string>
+  <string name="morphe_music_sonos_cast_disconnect">Qeda ukuxhuma</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Izikhulumizi ku-Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Kusebenza</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Amadivayisi e-Chromecast, i-Nest ne-Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Akukwazanga ukuxhumana no-%s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Isivinini sokudlala</string>
   <string name="morphe_music_playback_speed_summary">Isivinini esisetshenziswa kuzo zonke izingoma. Ku-100% isivinini se-app siyasetshenziswa, njengesivinini sokudlala i-podcast</string>
@@ -586,6 +600,9 @@ Ukuqinisekisa ukuthi i-scrobbling ihlanganiswa ngesikhathi sokudlala ngemuva, qi
   <string name="morphe_music_soundproof_about_summary">"Idatha yomculi ivela ku-SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), idownloadwa kanye ngosuku. Ukunqanda lokhu akuthumeli lutho ngalokho okudlalayo. Ukuvula i-SoundProof sheet kuthumela igama lomculi wamanje ku-SoundProof server ukuze kukhombise amavoti amasha nokuvota. I-server ihlukanisa abavoti nge-IP address, ngakho ivoti lakho lingase libonakale ngokuhlukile kwelinye inetwork.
 
 Idatha ibhaliswe ngaphansi kwe-ODC Open Database License (ODbL). Okubhalwe ku-Soul Over AI ngu-xoundbyte kubhaliswe ngaphansi kwe-CC BY 4.0. Ayihambisani noma ayisekelwa yi-SoundProof noma i-Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Umsebenzi wobuciko ohambayo we-Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Ikhombisa ubuciko be-album ohambayo lwe-Apple Music kudlali, uma i-album inalo. Isihloko, umculi ne-album yengoma ngayinye kuthunyelwa ku-Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Amazwi awatholakali kule fayela ledivayisi.</string>
   <string name="morphe_music_lyrics_enabled_title">Sebenzisa amazwi angaphandle</string>

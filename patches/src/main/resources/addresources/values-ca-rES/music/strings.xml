@@ -265,6 +265,20 @@ Pausar el crossfade per veure un vídeo musical pot deixar alguns vídeos en neg
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pausa quan està silenciat</string>
   <string name="morphe_music_pause_when_muted_summary">Atura la reproducció quan el volum del sistema està silenciat i la reprende quan es puja el volum</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">El botó de Cast també pot transmetre a Sonos i altres altaveus UPnP de la vostra xarxa Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Connecta\'t a un dispositiu</string>
+  <string name="morphe_music_sonos_cast_searching">Buscant altaveus a la vostra xarxa Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Trieu un altaveu de la vostra xarxa Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Transmetent a %s</string>
+  <string name="morphe_music_sonos_cast_connected">Connectat</string>
+  <string name="morphe_music_sonos_cast_disconnect">Desconnectar</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Altoparlants en Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Actiu</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Dispositius Chromecast, Nest i Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">No s\'ha pogut connectar a %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Velocitat de reproducció</string>
   <string name="morphe_music_playback_speed_summary">Velocitat utilitzada per a totes les pistes. Al 100% s\'utilitza la velocitat de l\'aplicació, com la velocitat de reproducció del podcast</string>
@@ -586,6 +600,9 @@ Per assegurar que el scrobbling es sincronitzi durant la reproducció en segon p
   <string name="morphe_music_soundproof_about_summary">"Les dades de l'artista provenen de SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), descarregades una vegada al dia. Saltar cançons no envia res sobre el que escoltes. Obrir la fulla de SoundProof envia el nom de l'artista actual al servidor de SoundProof per mostrar vots actuals i per votar. El servidor diferencia els votants per l'adreça IP, per la qual cosa el teu vot pot aparèixer de manera diferent en una altra xarxa.
 
 La base de dades està llicenciada sota la llicència ODC Open Database License (ODbL). Les entrades de Soul Over AI de xoundbyte estan llicenciades sota CC BY 4.0. No està afiliat ni recolzat per SoundProof o Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Portada animada d\'Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Mostra la portada animada de l\'àlbum d\'Apple Music al reproductor, si l\'àlbum en té una. El títol, l\'artista i l\'àlbum de cada cançó s\'envien a Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">La lletra no està disponible per a aquest arxiu del dispositiu.</string>
   <string name="morphe_music_lyrics_enabled_title">Utilitzar lletres de tercers</string>

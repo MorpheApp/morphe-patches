@@ -265,6 +265,20 @@ As jy oorgangsvervaging onderbreek om 'n musiekvideo te kyk, kan sommige video's
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pause wanneer gedemp</string>
   <string name="morphe_music_pause_when_muted_summary">Pauseer terugspeel wanneer die sisteemvolume gedemp is en hervat dit wanneer die volume verhoog word</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Die Cast-knoppie kan ook stroom na Sonos en ander UPnP-luidsprekers op jou Wi-Fi-netwerk</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Koppel aan \'n toestel</string>
+  <string name="morphe_music_sonos_cast_searching">Soek vir luidsprekers op jou Wi-Fi-netwerk…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Kies \'n luidspreker op jou Wi-Fi-netwerk</string>
+  <string name="morphe_music_sonos_cast_casting_to">Stuur na %s</string>
+  <string name="morphe_music_sonos_cast_connected">Verbind</string>
+  <string name="morphe_music_sonos_cast_disconnect">Ontkoppel</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Luidsprekers op Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktief</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast-, Nest- en Google TV-toestelle</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Kon nie met %s verbind nie</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Afspeelspoed</string>
   <string name="morphe_music_playback_speed_summary">Spoed wat vir alle snitte gebruik word. Teen 100% word die toepassing se spoed gebruik, soos die podcast-afspeelspoed</string>
@@ -586,6 +600,9 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
   <string name="morphe_music_soundproof_about_summary">"Kunstenaardata kom van SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), wat een keer per dag afgelaai word. Om dit oor te sla, stuur niks oor wat jy speel nie. Deur die SoundProof-blad oop te maak, word die huidige kunstenaar se naam na die SoundProof-bediener gestuur om nuwe stemme te wys en om te stem. Die bediener onderskei stemmers volgens IP-adres, so jou stem kan anders verskyn op 'n ander netwerk.
 
 Die databasis is gelisensieer onder die ODC Open Database License (ODbL). Inskrywings vanaf Soul Over AI deur xoundbyte is gelisensieer onder CC BY 4.0. Nie geaffilieerd met of goedgekeur deur SoundProof of Soul Over AI nie."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music geanimeerde kunswerk</string>
+  <string name="morphe_music_apple_music_artwork_summary">Wys die geanimeerde albumkunswerk van Apple Music in die speler, indien die album een het. Die titel, kunstenaar en album van elke lied is na Apple Music gestuur</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Lirieke is nie beskikbaar vir hierdie toestel-lêer nie.</string>
   <string name="morphe_music_lyrics_enabled_title">Gebruik derdeparty lirieke</string>

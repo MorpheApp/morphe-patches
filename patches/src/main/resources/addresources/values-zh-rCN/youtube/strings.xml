@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">启用资料库/您底部的菜单筛选</string>
   <string name="morphe_hide_account_menu_filter_strings_title">资料库/您底部的菜单筛选</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">输入要筛选的资料库/您底部菜单名称，用换行符分隔</string>
+  <string name="morphe_hide_account_menu_badges_title">隐藏徽章</string>
   <string name="morphe_hide_account_menu_downloads_title">隐藏下载</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">隐藏“赞过视频”</string>
+  <string name="morphe_hide_account_menu_watch_later_title">隐藏“稍后观看”</string>
   <string name="morphe_hide_album_cards_title">隐藏专辑卡片</string>
   <string name="morphe_hide_album_cards_summary">隐藏艺术家描述下方的专辑卡片</string>
   <string name="morphe_hide_artist_cards_title">隐藏艺人卡片</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">隐藏评论按钮上显示的滑动卡片及其页面选择器</string>
   <string name="morphe_hide_comments_timestamp_button_title">隐藏时间戳按钮</string>
   <string name="morphe_hide_comments_top_fans_button_title">隐藏“Top fans”按钮</string>
+  <string name="morphe_hide_comments_topics_title">隐藏“话题”</string>
+  <string name="morphe_hide_comments_topics_summary">隐藏“话题”过滤栏选项以及视频下方的“话题”评论预览</string>
   <string name="morphe_hide_comments_translate_button_title">隐藏翻译按钮</string>
   <string name="morphe_hide_comments_zero_state_title">隐藏“暂无评论”提示</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">清理高亮显示的搜索链接</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">垂直提示层 (极简)</string>
   <string name="morphe_swipe_change_video_title">启用滑动切换视频</string>
   <string name="morphe_swipe_change_video_summary">在全屏模式下滑动将切换到下一个/上一个视频</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">长按手势</string>
+  <string name="morphe_hold_gesture_screen_summary">点击并长按后通过拖动来更改并锁定播放速度</string>
+  <string name="morphe_hold_gesture_title">启用长按手势</string>
+  <string name="morphe_hold_gesture_summary">点击并长按视频后可以进行拖动。长按时的速度即为点击并长按的播放速度</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">在“按压以滑动”开启时不可用。点击进行更改</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">按压以滑动已启用</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">长按手势和滑动控制的“按压以滑动”手势都始于点击并按住，因此两者只能启用其中一个。</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">关闭按压以滑动</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">在“按压以滑动”开启时，长按手势不可用</string>
+  <string name="morphe_hold_gesture_dialog_title">长按手势已启用</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">关闭长按手势</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">使用触感反馈</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">在速度变化和速度锁定阶段振动</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">向两侧拖动以更改速度</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">点击并按住后，向左拖动可减速播放，向右拖动可加速播放。拖动距离越远，速度变化越大，直到手指返回</string>
+  <string name="morphe_hold_gesture_speed_step_title">速度步长</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">拖动灵敏度</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">低</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">正常</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">高</string>
+  <string name="morphe_hold_gesture_speed_min_title">最低速度</string>
+  <string name="morphe_hold_gesture_speed_min_summary">拖动可达到的最低速度</string>
+  <string name="morphe_hold_gesture_speed_max_title">最高速度</string>
+  <string name="morphe_hold_gesture_speed_max_summary">拖动可达的最高速度（最高 8 倍）</string>
+  <string name="morphe_hold_gesture_lock_title">向下滑动以锁定速度</string>
+  <string name="morphe_hold_gesture_lock_summary">点击并按住后，向下滑动即可在手指抬起时保持速度。点击徽标或再次点击并按住以解锁</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">始终显示锁定徽标</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">当播放控件隐藏时，锁定速度的徽标仍保持可见</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">视频更改时解锁</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">当另一个视频开始播放时，锁定速度将结束</string>
+  <string name="morphe_hold_gesture_lock_hint">向下滑动以锁定</string>
+  <string name="morphe_hold_gesture_lock_release">松开以锁定 %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">字幕</string>
   <string name="morphe_captions_screen_summary">管理自动字幕和字幕 Cookie</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">调整玻璃导航栏与屏幕底部或系统导航之间的间距</string>
   <string name="morphe_navigation_bar_glass_size_title">玻璃导航栏尺寸</string>
   <string name="morphe_navigation_bar_glass_size_summary">通过预览来调整玻璃导航栏的高度、宽度和按钮间距。超出屏幕宽度的按钮将被隐藏</string>
+  <string name="morphe_glass_menus_screen_title">玻璃菜单</string>
+  <string name="morphe_glass_menus_screen_summary">菜单在背后的模糊内容之上呈现为磨砂玻璃效果</string>
+  <string name="morphe_glass_menus_title">启用玻璃菜单</string>
+  <string name="morphe_glass_menus_summary">将菜单和底部工作表显示为磨砂玻璃，并使其背后的内容模糊</string>
+  <string name="morphe_glass_menus_user_dialog_message">在开启省电模式或设备不支持模糊效果时，菜单将显示为近乎不透明</string>
+  <string name="morphe_glass_menus_opacity_title">玻璃不透明度</string>
+  <string name="morphe_glass_menus_opacity_summary">菜单覆盖模糊内容的程度（0 为透明，100 为不透明）</string>
+  <string name="morphe_glass_menus_blur_title">模糊</string>
+  <string name="morphe_glass_menus_blur_summary">菜单背后内容的模糊程度</string>
+  <string name="morphe_glass_menus_dim_title">变暗</string>
+  <string name="morphe_glass_menus_dim_summary">底部工作表周围屏幕的变暗程度</string>
   <string name="morphe_navigation_bar_glass_size_height">高度</string>
   <string name="morphe_navigation_bar_glass_size_width">最大宽度</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">按钮间距</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">跳过画质选择菜单，直接打开高级画质菜单</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">隐藏 Premium 画质选项</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">优先视频画质</string>
-  <string name="morphe_video_quality_prioritize_summary">优先考虑最高视频画质而不是编解码器效率</string>
-  <string name="morphe_video_quality_prioritize_dialog">如果关闭此设置，旧视频可能不显示视频质量选项</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">允许“Android VR”/“visionOS”AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">在使用“Android VR”/“visionOS”客户端时允许软件 AV1 解码</string>

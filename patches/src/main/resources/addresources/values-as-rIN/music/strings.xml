@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">মিউট কৰিলে ৰখক</string>
   <string name="morphe_music_pause_when_muted_summary">প্ৰণালীৰ ভলিউম মিউট কৰিলে প্লেবেকে ৰৈ যাব আৰু ভলিউম বঢ়ালে পুনৰ আৰম্ভ হ\'ব</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast বুটামটোৱে আপোনাৰ Wi-Fi নেটৱৰ্কৰ Sonos আৰু অন্যান্য UPnP স্পিকাৰবোৰলৈকো ষ্ট্ৰীম কৰিব পাৰে</string>
+  <string name="morphe_music_sonos_cast_sheet_title">এটা ডিভাইচৰ সৈতে সংযোগ কৰক</string>
+  <string name="morphe_music_sonos_cast_searching">আপোনাৰ Wi-Fi নেটৱৰ্কত স্পিকাৰবোৰৰ বাবে সন্ধান কৰা হৈছে…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">আপোনাৰ Wi-Fi নেটৱৰ্কৰ এটা স্পিকাৰ বাছনি কৰক</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s লৈ কাস্টিং কৰা হৈছে</string>
+  <string name="morphe_music_sonos_cast_connected">সংযুক্ত</string>
+  <string name="morphe_music_sonos_cast_disconnect">সংযোগ বিচ্ছিন্ন কৰক</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi ত স্পীকাৰসমূহ</string>
+  <string name="morphe_music_sonos_cast_active">সক্ৰিয়</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest আৰু Google TV ডিভাইচসমূহ</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s ৰ সৈতে সংযোগ কৰিব পৰা নগ\'ল</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">প্লেবেকৰ গতি</string>
   <string name="morphe_music_playback_speed_summary">সকলো ট্ৰেকৰ বাবে ব্যৱহাৰ কৰা গতি। ১০০% ত এপৰ গতি ব্যৱহাৰ কৰা হয়, যেনে পডকাস্ট প্লেবেকৰ গতি</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"শিল্পীৰ তথ্য SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps)ৰ পৰা আহে, যিবোৰ দিনটোত এবাৰ ডাউনলোড কৰা হয়। স্কিপ কৰিলে আপুনি কি বজাইছে সেই বিষয়ে একো প্ৰেৰণ নকৰে। SoundProof শ্বীটটো খুলিলে বৰ্তমানৰ শিল্পীৰ নামটো SoundProof চাৰ্ভাৰলৈ পঠোৱা হয় যাতে নতুন ভোটবোৰ দেখুৱাব পাৰি আৰু ভোট দিব পাৰি। চাৰ্ভাৰটোৱে IP ঠিকনাৰ দ্বাৰা ভোটাৰসকলক পৃথক কৰে, গতিকে আন নেটৱৰ্কত আপোনাৰ ভোটটো ভিন্ন ধৰণে দেখা যাব পাৰে।
 
 ডেটাবেচটো ODC Open Database License (ODbL) ৰ অধীনত লাইচেন্সযুক্ত। xoundbyte-ৰ Soul Over AI ৰ এন্ট্ৰীসমূহ CC BY 4.0 ৰ অধীনত লাইচেন্সযুক্ত। SoundProof বা Soul Over AI ৰ সৈতে কোনো সম্পৰ্ক নাই বা তেওঁলোকৰ দ্বাৰা অনুমোদিত নহয়।"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music এনিমেটেড আৰ্টৱৰ্ক</string>
+  <string name="morphe_music_apple_music_artwork_summary">যদি এলবামটোত থাকে, তেন্তে প্লেয়াৰত Apple Music ৰ এনিমেটেড এলবাম আৰ্টৱৰ্ক দেখুৱায়। প্ৰতিটো গানৰ শিৰোনাম, শিল্পী আৰু এলবাম Apple Music লৈ পঠোৱা হয়</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">এই ডিভাইচ ফাইলটোৰ বাবে গীতৰ কথা উপলব্ধ নহয়।</string>
   <string name="morphe_music_lyrics_enabled_title">তৃতীয়-পক্ষৰ গীতৰ কথা ব্যৱহাৰ কৰক</string>

@@ -61,7 +61,10 @@ Perubahan mencakup:
   <string name="morphe_hide_account_menu_title">Aktifkan penyaring menu bawah Koleksi / Anda</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Penyaring menu bawah Koleksi / Anda</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Masukkan nama menu Koleksi / Anda yang ingin disaring, dipisahkan oleh baris baru</string>
+  <string name="morphe_hide_account_menu_badges_title">Sembunyikan Lencana</string>
   <string name="morphe_hide_account_menu_downloads_title">Sembunyikan Download</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Sembunyikan \'Video yang disukai\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Sembunyikan \'Tonton Nanti\'</string>
   <string name="morphe_hide_album_cards_title">Sembunyikan kartu album</string>
   <string name="morphe_hide_album_cards_summary">Menyembunyikan kartu album di bawah deskripsi artis</string>
   <string name="morphe_hide_artist_cards_title">Sembunyikan kartu artis</string>
@@ -427,6 +430,8 @@ Batasan:
   <string name="morphe_minimal_comments_button_summary">Menyembunyikan kartu geser dan pemilih halamannya, yang ditampilkan pada tombol komentar</string>
   <string name="morphe_hide_comments_timestamp_button_title">Sembunyikan tombol Stempel Waktu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Sembunyikan tombol \'Penggemar teratas\'</string>
+  <string name="morphe_hide_comments_topics_title">Sembunyikan \'Topik\'</string>
+  <string name="morphe_hide_comments_topics_summary">Menyembunyikan opsi bilah filter \'Topik\' dan pratinjau komentar \'Topik\' di bawah video</string>
   <string name="morphe_hide_comments_translate_button_title">Sembunyikan tombol Terjemahkan</string>
   <string name="morphe_hide_comments_zero_state_title">Sembunyikan pesan \'Belum ada komentar\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Bersihkan tautan pencarian yang disorot</string>
@@ -1029,6 +1034,39 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_swipe_overlay_style_entry_7">Hamparan vertikal (minimal)</string>
   <string name="morphe_swipe_change_video_title">Aktifkan usapan untuk beralih video</string>
   <string name="morphe_swipe_change_video_summary">Usap layar dalam mode layar penuh untuk melewati ke video berikutnya atau sebelumnya</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Gerakan tahan</string>
+  <string name="morphe_hold_gesture_screen_summary">Ubah dan kunci kecepatan pemutaran dengan menggeser setelah mengetuk dan menahan</string>
+  <string name="morphe_hold_gesture_title">Aktifkan gerakan tahan</string>
+  <string name="morphe_hold_gesture_summary">Mengetuk dan menahan video dapat dilanjutkan dengan menggeser. Kecepatan saat menahan adalah kecepatan pemutaran ketuk dan tahan</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Tidak digunakan saat tekan untuk menggeser aktif. Ketuk untuk mengubah</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Tekan untuk menggeser diaktifkan</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Gestur tahan dan gestur tekan untuk menggeser pada kontrol geser keduanya dimulai dengan mengetuk dan menahan, jadi hanya salah satu yang bisa aktif.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Matikan tekan untuk menggeser</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Gestur tahan tidak digunakan saat tekan untuk menggeser aktif</string>
+  <string name="morphe_hold_gesture_dialog_title">Gestur tahan aktif</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Matikan gestur tahan</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Aktifkan umpan balik getar</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Bergetar saat kecepatan berubah dan saat kecepatan dikunci</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Geser ke samping untuk mengubah kecepatan</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Setelah mengetuk dan menahan, geser ke kiri untuk memutar lebih lambat dan ke kanan untuk memutar lebih cepat. Semakin jauh, kecepatan akan terus berubah sampai jari kembali</string>
+  <string name="morphe_hold_gesture_speed_step_title">Tahap kecepatan</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Sensitivitas geser</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Rendah</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Tinggi</string>
+  <string name="morphe_hold_gesture_speed_min_title">Kecepatan terlambat</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Kecepatan terlambat yang dapat dicapai dengan menggeser</string>
+  <string name="morphe_hold_gesture_speed_max_title">Kecepatan tercepat</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Kecepatan tercepat yang dapat dicapai dengan menggeser (hingga 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Tarik ke bawah untuk mengunci kecepatan</string>
+  <string name="morphe_hold_gesture_lock_summary">Setelah mengetuk dan menahan, tarik ke bawah untuk mempertahankan kecepatan saat jari diangkat. Ketuk lencana atau ketuk dan tahan lagi untuk membuka kunci</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Selalu tampilkan lencana kunci</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Lencana kecepatan yang terkunci tetap terlihat saat kontrol pemutar tersembunyi</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Buka kunci saat video berubah</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Kecepatan yang terkunci berakhir saat video lain dimulai</string>
+  <string name="morphe_hold_gesture_lock_hint">Tarik ke bawah untuk mengunci</string>
+  <string name="morphe_hold_gesture_lock_release">Lepaskan untuk mengunci %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Teks</string>
   <string name="morphe_captions_screen_summary">Kelola teks otomatis dan cookie teks</string>
@@ -1133,6 +1171,17 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Sesuaikan jarak antara bilah navigasi kaca dan bagian bawah layar atau navigasi sistem</string>
   <string name="morphe_navigation_bar_glass_size_title">Ukuran bilah navigasi kaca</string>
   <string name="morphe_navigation_bar_glass_size_summary">Sesuaikan tinggi, lebar, dan jarak tombol bilah navigasi kaca, lengkap dengan pratinjau. Tombol yang tidak muat dalam lebar layar akan disembunyikan</string>
+  <string name="morphe_glass_menus_screen_title">Menu kaca</string>
+  <string name="morphe_glass_menus_screen_summary">Menu sebagai kaca buram di atas konten yang dikaburkan di belakangnya</string>
+  <string name="morphe_glass_menus_title">Aktifkan menu kaca</string>
+  <string name="morphe_glass_menus_summary">Menampilkan menu dan lembar bawah sebagai kaca buram, dengan konten di belakangnya dikaburkan</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menu ditampilkan hampir tidak transparan saat penghemat baterai aktif, atau jika perangkat tidak mendukung pengaburan</string>
+  <string name="morphe_glass_menus_opacity_title">Opasitas kaca</string>
+  <string name="morphe_glass_menus_opacity_summary">Seberapa banyak menu menutupi konten yang dikaburkan (0 adalah bening, 100 adalah opak)</string>
+  <string name="morphe_glass_menus_blur_title">Blur</string>
+  <string name="morphe_glass_menus_blur_summary">Seberapa banyak konten di belakang menu dikaburkan</string>
+  <string name="morphe_glass_menus_dim_title">Redup</string>
+  <string name="morphe_glass_menus_dim_summary">Seberapa banyak layar di sekitar lembar bawah digelapkan</string>
   <string name="morphe_navigation_bar_glass_size_height">Tinggi</string>
   <string name="morphe_navigation_bar_glass_size_width">Lebar maksimum</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Jarak tombol</string>
@@ -1696,10 +1745,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Melewati menu pemilihan kualitas dan langsung membuka menu kualitas Lanjutan</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sembunyikan pilihan kualitas premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Prioritaskan kualitas video</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioritaskan kualitas video tertinggi yang tersedia daripada efisiensi codec</string>
-  <string name="morphe_video_quality_prioritize_dialog">Jika setelan ini dimatikan, maka video lama tidak dapat menampilkan pilihan kualitas video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Izinkan \'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Mengizinkan dekode perangkat lunak AV1 saat menggunakan klien \'Android VR\' / \'visionOS\'</string>

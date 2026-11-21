@@ -61,7 +61,10 @@ Izmaiņas ietver:
   <string name="morphe_hide_account_menu_title">Iespējot apakšējās izvēlnes Bibliotēka / Jūs filtru</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Apakšējās izvēlnes Bibliotēka / Jūs filtrs</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Ievadiet Bibliotēkas / Jūs apakšējās izvēlnes nosaukumus filtrēšanai, atdalot tos ar jaunām rindām</string>
+  <string name="morphe_hide_account_menu_badges_title">Slēpt plaques</string>
   <string name="morphe_hide_account_menu_downloads_title">Slēpt lejupielādes</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Slēpt \"Patīktie video\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Slēpt \"Skatīt vēlāk\"</string>
   <string name="morphe_hide_album_cards_title">Slēpt albumu kartes</string>
   <string name="morphe_hide_album_cards_summary">Paslēpj albumu kartes zem mākslinieka apraksta</string>
   <string name="morphe_hide_artist_cards_title">Slēpt mākslinieku kartes</string>
@@ -427,6 +430,8 @@ ierobežojumi:
   <string name="morphe_minimal_comments_button_summary">Slēpj slīdošās kartes un tās lapas atlasītāju, kas tiek rādītas uz komentāru pogas</string>
   <string name="morphe_hide_comments_timestamp_button_title">Slēpt laika zīmju pogu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Slēpt pogu \"Top fans\"</string>
+  <string name="morphe_hide_comments_topics_title">Slēpt \"Tēmas\"</string>
+  <string name="morphe_hide_comments_topics_summary">Slēpj \"Tēmas\" filtra joslas opciju un \"Tēmas\" komentāru prizkadrus zem video</string>
   <string name="morphe_hide_comments_translate_button_title">Slēpt tulkošanas pogu</string>
   <string name="morphe_hide_comments_zero_state_title">Slēpt ziņojumu \"Komentāru vēl nav\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitizēt izceltās meklēšanas saites</string>
@@ -1029,6 +1034,39 @@ Lai to labotu, ieslēdziet \"Viltot video straumes\" un mainiet \"Privāto klien
   <string name="morphe_swipe_overlay_style_entry_7">Vertikāls pārklājums (minimalistisks)</string>
   <string name="morphe_swipe_change_video_title">Iespējot slīdināšanu, lai mainītu video</string>
   <string name="morphe_swipe_change_video_summary">Pārvelciet pilnekrāna režīmā, lai pārietu uz nākamo vai iepriekšējo video</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Turēšanas žests</string>
+  <string name="morphe_hold_gesture_screen_summary">Mainiet un fiksējiet atgrozīšanas ātrumu, velkot pēc pieskaršanās un aizturēšanas</string>
+  <string name="morphe_hold_gesture_title">Iespējot turēšanas žestu</string>
+  <string name="morphe_hold_gesture_summary">Video pieskaršanās un aizturēšana var būt papildināta ar velcienu. Ātrums turēšanas laikā ir pieskaršanās un aizturēšanas atgrozīšanas ātrums</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Netiek izmantots, kamēr ir ieslēgta funkcija \"Nospied, lai slidētu\". Pieskarieties, lai mainītu</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Funkcija \"Nospied, lai slidētu\" ir ieslēgta</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Gan turēšanas žests, gan slīdīšanas vadības žests \"nospied, lai slidētu\" sākas ar pieskaršanos un turēšanu, tāpēc var būt ieslēgts tikai viens no tiem.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Izslēgt funkciju \"nospied, lai slidētu\"</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Turēšanas žests netiek izmantots, kamēr ir ieslēgta funkcija \"nospied, lai slidētu\"</string>
+  <string name="morphe_hold_gesture_dialog_title">Turēšanas žests ir ieslēgts</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Izslēgt turēšanas žestu</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Ienablekt haptisko atgriezenisko saiti</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibrē, kad ātrums mainās un kad ātrums ir fiksēts</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Velciet sāniski, lai mainītu ātrumu</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Pēc nospiešanas un aizturēšanas velciet pa kreisi, lai atskañotu lēnāk, un pa labi, lai atskañotu ātrāk. Jo tālāk velciet, jo vairāk mainās ātrums, līdz pirksts tiek pārvietots atpakaļ</string>
+  <string name="morphe_hold_gesture_speed_step_title">Ātruma solis</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Velciena jutīgums</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Zems</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normāls</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Augsts</string>
+  <string name="morphe_hold_gesture_speed_min_title">Lēnākais ātrums</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Lēnākais ātrums, kuru var sasniegt velkot</string>
+  <string name="morphe_hold_gesture_speed_max_title">Ātrākais ātrums</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Ātrākais ātrums, kuru var sasniegt velkot (līdz 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Velciet uz leju, lai fiksētu ātrumu</string>
+  <string name="morphe_hold_gesture_lock_summary">Pēc nospiešanas un aizturēšanas velciet uz leju, lai saglabātu ātrumu, kad pirksts tiek pacelts. Pieskarieties apzīmei vai vēlreiz nospiediet un aizturiet, lai atbloķētu</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Vienmēr rādīt fiksēšanas apzīmi</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Fiksētā ātruma apzīme paliek redzama, kamēr atskaidītāja vadības elementi ir slēgti</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Atbloķēt, kad video mainās</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Fiksētais ātrums beidzas, kad sākas cits video</string>
+  <string name="morphe_hold_gesture_lock_hint">Vilciet uz leju, lai bloķētu</string>
+  <string name="morphe_hold_gesture_lock_release">Atlaidiet, lai bloķētu %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtitri</string>
   <string name="morphe_captions_screen_summary">Pārvaldiet automātiskos titrus un titru sīkfailus</string>
@@ -1133,6 +1171,17 @@ Lai piekļūtu iestatījumiem, iespējojiet iestatījumu pogu sadaļā Vispārē
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Regulēt atstarpi starp stklaino navigācijas joslu un ekrāna apakšu vai sistēmas navigāciju</string>
   <string name="morphe_navigation_bar_glass_size_title">Stikla navigācijas joslas izmērs</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ar priekšskatījumu pielāgojiet stikla navigācijas joslas augstumu, platumu un pogu attālumu. Pogas, kas neiekļaujas ekrāna platumā, tiek slēptas</string>
+  <string name="morphe_glass_menus_screen_title">Stikla izvēlnes</string>
+  <string name="morphe_glass_menus_screen_summary">Izvēlnes kā matēts stikls pār izplūmējušu saturu aiz tām</string>
+  <string name="morphe_glass_menus_title">Ienable stikla izvēlnes</string>
+  <string name="morphe_glass_menus_summary">Rāda izvēlnes un apakšlapas kā matētu stiklu, izplūminot saturu aiz tām</string>
+  <string name="morphe_glass_menus_user_dialog_message">Izvēlnes tiek rādītas gandrīz necaurspīdīgas, kamēr ir ieslēgts akumulatora taupītājs vai ja ierīce neatbalsta izplūmēšanu</string>
+  <string name="morphe_glass_menus_opacity_title">Stikla caurspīdīgums</string>
+  <string name="morphe_glass_menus_opacity_summary">Cik stipri izvēlne pārklāj izplūmēto saturu (0 ir caurspīdīgs, 100 ir necaurspīdīgs)</string>
+  <string name="morphe_glass_menus_blur_title">Izplūmēšana</string>
+  <string name="morphe_glass_menus_blur_summary">Cik stipri ir izplūmēts saturs aiz izvēlnes</string>
+  <string name="morphe_glass_menus_dim_title">Kārtot</string>
+  <string name="morphe_glass_menus_dim_summary">Cik stipri ekrāns ap apakšlapu tiek aptumšināts</string>
   <string name="morphe_navigation_bar_glass_size_height">Augstums</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimālais platums</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Pogu attālums</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Izlaiž kvalitātes izvēles izvēlni un tieši atver paplašināto kvalitātes izvēlni</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Slēpt Premium kvalitātes opcijas</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Prioritizēt video kvalitāti</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioritizē augstāko pieejamo video kvalitāti, novērtējot to augstāk par kodeka efektivitāti</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ja šis iestatījums ir izslēgts, vecākiem video var nebūt pieejamas video kvalitātes iespējas</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Atļaut \"Android VR\" / \"visionOS\" AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Atļauj programmatiskā AV1 dekodēšanu, izmantojot \"Android VR\" / \"visionOS\" klientu</string>

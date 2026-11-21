@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_speed_step_title">వేగ దశ</string>
   <!-- layout.captions.captionsPatch -->
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
@@ -238,7 +240,6 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
-  <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->

@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">بوەستێنە کاتێک دەنگ کپ کراوە</string>
   <string name="morphe_music_pause_when_muted_summary">لەکاتی کپ کردنی دەنگی سیستەمەکە، لایەنە لایەنە پاشکەوت دەکات و کاتێک دەنگەکە بەرز دەکرێتەوە دووبارە دەست پێدەکاتەوە</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Cast-ی Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">دوگمەی Cast دەتوانێت دەنگ بگوزێرێت بۆ Sonos و ترسی سپیکەرەکانی UPnP لە تۆڕی Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">بەستنەوە بە ئامێرێک</string>
+  <string name="morphe_music_sonos_cast_searching">گەڕان بەدوای سپیکەرەکان لە تۆڕی Wi-Fi...</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">سپیکەرێک لە تۆڕی Wi-Fi هەڵبژێرە</string>
+  <string name="morphe_music_sonos_cast_casting_to">گواستن بۆ %s</string>
+  <string name="morphe_music_sonos_cast_connected">پەیوەندکراوە</string>
+  <string name="morphe_music_sonos_cast_disconnect">پچڕاندنی پەیوەندی</string>
+  <string name="morphe_music_sonos_cast_speakers_header">سپیکەرەکانی سەر Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">چالاک</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">ئامێرەکانی Chromecast, Nest و Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">نەتوانرا پەیوەندی بە %s بکرێت</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">خێرایی لێدانی موزیک</string>
   <string name="morphe_music_playback_speed_summary">خێرایی بەکارهاتوو بۆ هەموو تراکەکان. لە ١٠٠٪ خێرایی ئەپەکە بەکاردێت، وەک خێرایی لێدانی پۆدکاست</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"زانیارییەکانی هونەرمەند لە SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) دێن، کە ڕۆژانە جارێک دابەزێنرێت. تێپەڕاندن هیچ شتێک دەربارەی ئەوەی لێی گوێ دەگریت نەنێرێت. کردنەوەی لاپەڕەی SoundProof ناوی هونەرمەندی ئێستا دەنێرێت بۆ سێرڤەری SoundProof بۆ پیشاندانی دەنگە نوێیەکان و بۆ دەنگدان. سێرڤەر دەنگدەران لە ڕێگەی ناونیشانی IPـەوە جیا دەکاتەوە، بۆیە دەنگەکەت ڕەنگە لە تۆڕێکی تر بە شێوەیەکی جیاواز دەربکەوێت.
 
 بنکەی زانیارییەکە بە مۆڵەتی ODC Open Database License (ODbL) لیسەنسی کراوە. تۆمارەکانی Soul Over AI لەلایەن xoundbyte بە مۆڵەتی CC BY 4.0 لیسەنسی کراون. پەیوەندی بە SoundProof یان Soul Over AI یان پشتگیرییان نەکراوە."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">وێنەی جوڵاوەری Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">وێنەی جوڵاوەری ئەلبومی Apple Music لەناو پلەیەرەکەدا پیشان دەدات، ئەگەر ئەلبومەکە هەبێت. ناوی گۆرانی، هونەرمەند و ئەلبومی هەر گۆرانییەک دەنێردرێت بۆ Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">تێکستەکان بۆ ئەم فایلەی ئامێرە بەردەست نین.</string>
   <string name="morphe_music_lyrics_enabled_title">بەکارهێنانی تێکستی گۆرانی لەلایەن لایەنی سێیەمەوە</string>

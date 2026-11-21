@@ -61,7 +61,10 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_account_menu_title">Vula ifiltha lemenu yezansi yeLibrary / You</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Ifiltha lemenu yezansi yeLibrary / You</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Faka amagama emenu yezansi yeLibrary / You okufanele uhlungwe ngawo, uhlukanise ngemigqa emisha</string>
+  <string name="morphe_hide_account_menu_badges_title">Fihla ama-Badge</string>
   <string name="morphe_hide_account_menu_downloads_title">Fihla ama-Downloads</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Fihla \'amavidiyo athandekile\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Fihla \'bukela kamuva\'</string>
   <string name="morphe_hide_album_cards_title">Fihla amakhadi e-album</string>
   <string name="morphe_hide_album_cards_summary">Yifihla ama-album cards ngaphansi kwencazelo yomculi</string>
   <string name="morphe_hide_artist_cards_title">Fihla amakhadi abadlali</string>
@@ -427,6 +430,8 @@ Imingcele:
   <string name="morphe_minimal_comments_button_summary">Ifihla amakhadi ahambayo kanye nesikhethelo sekhasi saso, okubonakala enkinobhweni yokuphawula</string>
   <string name="morphe_hide_comments_timestamp_button_title">Fihla inkinobho yesikhathi</string>
   <string name="morphe_hide_comments_top_fans_button_title">Fihla inkinobho ethi \'Abafani abavelele\'</string>
+  <string name="morphe_hide_comments_topics_title">Fihla \'Izihloko\'</string>
+  <string name="morphe_hide_comments_topics_summary">Kufihla inketho yebha yokuhlunga \'Izihloko\' kanye nemibono yezihloko engaphansi kwevidiyo</string>
   <string name="morphe_hide_comments_translate_button_title">Fihla inkinobho yokuhumusha</string>
   <string name="morphe_hide_comments_zero_state_title">Fihla umlayezo othi \'Ayikho imibono okwamanje\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Hlanza ama-link okusesha agundwe</string>
@@ -1029,6 +1034,39 @@ Ukuze ulungise lokhu, vula 'Spoof video streams' bese ushintsha 'Default client'
   <string name="morphe_swipe_overlay_style_entry_7">I-overlay ngokumile (minimal)</string>
   <string name="morphe_swipe_change_video_title">Vumela uku-swipe ukuze ushintshe amavidiyo</string>
   <string name="morphe_swipe_change_video_summary">Hwebha emodini yesikrin sawonke ukuze uye ku-video elandelayo noma edlule</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Isizwayo sokubamba</string>
+  <string name="morphe_hold_gesture_screen_summary">Shintsha futhi lock isivinyela sokudlala ngokudonsa ngemuva kokuthinta nokubamba</string>
+  <string name="morphe_hold_gesture_title">Vula isizwayo sokubamba</string>
+  <string name="morphe_hold_gesture_summary">Ukuthinta nokubamba ividiyo kungalandelwa ukudonsa. Isivinyela ngenkathi ubamba yisivinyela sokudlala sokuthinta nokubamba</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Ayisetshenziswa ngenkathi ukucindezela ukuze uswebe kuvuliwe. Thinta ukuze ushintshe</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Ukucindezela ukuze uswebe kuvuliwe</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Isenzo sokubamba nesenzo sokucindezela ukuze uswebe kwezincwadi zokusweba zombili ziqala ngokuthinta nokubamba, ngakho eyodwa yazo kuphela engaba ivuliwe.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Vala ukucindezela ukuze uswebe</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Isenzo sokubamba asisetshenziswa ngenkathi ukucindezela ukuze uswebe kuvuliwe</string>
+  <string name="morphe_hold_gesture_dialog_title">Isenzo sokubamba sivuliwe</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Vala isenzo sokubamba</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Vula impendulo ye-haptic</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Yinyaka lapho isivinywa siguquka nalapho isivinywa sivimbelekile</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Kudonswa ohlangothini ukuze ushintshe isivinywa</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Ngemuva kokuthinta nokubamba, donsa kwesobunxele ukuze udlale kancane nokwesokudla ukuze udlale ngokushesha. Uma uya kude, isivinywa siyaqhubeka siguquke kuze kube yilapho umunwe ubuyela khona</string>
+  <string name="morphe_hold_gesture_speed_step_title">Isinyathelo sesivinini</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Ubunzima bokudonsa</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Euphansi</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Okujwayelekile</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Okuphezulu</string>
+  <string name="morphe_hold_gesture_speed_min_title">Isivinywa esiphansi kakhulu</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Isivinywa esiphansi kakhulu ukuba ukudonsa kungafinyelela kukho</string>
+  <string name="morphe_hold_gesture_speed_max_title">Isivinywa esisheshayo</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Isivinywa esisheshayo ukuba i-drag ingafinyelela kukho (kuze kube ngu-8)</string>
+  <string name="morphe_hold_gesture_lock_title">Dhonsa phansi ukuze ukhiye isivinywa</string>
+  <string name="morphe_hold_gesture_lock_summary">Ngemuva kokuchofoza nokubamba, dhonsa phansi ukuze ugcine isivinywa lapho umunwe ususwa. Chofoza ibhejini noma uchofoze ubambe futhi ukuze uvule</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Khombisa ibhejini lokukhiya ngaso sonke isikhathi</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Ibhejini likesivinywa esikhiywe lihlala libonakala ngenkathi izilawuli zomdlali zifihliwe</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Vula lapho ividiyo ishintsha</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Isivinywa esikhiywe siphela lapho kunye kuqala ividiyo</string>
+  <string name="morphe_hold_gesture_lock_hint">Dhonsa phansi ukuze ukhiye</string>
+  <string name="morphe_hold_gesture_lock_release">Khipha ukuze ukhiye %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Izincazelo</string>
   <string name="morphe_captions_screen_summary">Phatha ama-captions azenzayo nama-caption cookies</string>
@@ -1133,6 +1171,17 @@ Ukuze ufike ku-Settings, vula inkinobho ye-Settings nge-General → Toolbar → 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Lungisa isikhala phakathi kwe-glass navigation bar naphansi kwesikrini noma i-system navigation</string>
   <string name="morphe_navigation_bar_glass_size_title">Usayizi we-glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_size_summary">Lungisa ubude, ububanzi nesikhala sezinkinobho se-glass navigation bar, ngokubona isibonelo. Izinobho ezingangeni kububanzi besikrini ziyacashwa</string>
+  <string name="morphe_glass_menus_screen_title">Imenyu yengilazi</string>
+  <string name="morphe_glass_menus_screen_summary">Imenyu ebukeka njengengilazi efakekile phezu okuqukethwe okufihliwe ngemuva kwayo</string>
+  <string name="morphe_glass_menus_title">Vumela imenyu yengilazi</string>
+  <string name="morphe_glass_menus_summary">Ikhombisa imenyu namasheethi aphansi njengengilazi efakekile, lapho okuqukethwe okungemuva kuvele kufihliwe</string>
+  <string name="morphe_glass_menus_user_dialog_message">Imenyu ibonakala ingafihliwe kakhulu lapho isondlo bamathibathiba bebhathri buvuliwe, noma uma idivayisi ingasekeli ukufihla okungemuva</string>
+  <string name="morphe_glass_menus_opacity_title">Ukucaca kwengilazi</string>
+  <string name="morphe_glass_menus_opacity_summary">Ukuthi imenyu ibamba kangakanani okuqukethwe okungacacile (0 kusho ukuthi kucace, 100 kusho ukuthi kubonakale)</string>
+  <string name="morphe_glass_menus_blur_title">Ukufifala</string>
+  <string name="morphe_glass_menus_blur_summary">Ukuthi okuqukethwe okungemuva kwemenyu kufifala kangakanani</string>
+  <string name="morphe_glass_menus_dim_title">Ukumnyama</string>
+  <string name="morphe_glass_menus_dim_summary">Ukuthi isikrini esizungeze i-bottom sheet simnyama kangakanani</string>
   <string name="morphe_navigation_bar_glass_size_height">Ubude</string>
   <string name="morphe_navigation_bar_glass_size_width">Ububanzi obukhulu</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Isikhala sezinkinobho</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Iqeda imenyu yokukhetha izinga futhi ivule imenyu yezinga ePhambili ngokuqondile</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Fihla izinketho zezimiso ze-Premium quality</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Phakamisa ikhwalithi yevidiyo</string>
-  <string name="morphe_video_quality_prioritize_summary">Iphakamisa ikhwalithi yevidiyo ephezulu kunokusebenza kwe-codec</string>
-  <string name="morphe_video_quality_prioritize_dialog">Uma le setting icishiwe, amavidiyo amadala angase akhombise okunye okungakho mayelana nekhwalithi yevidiyo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Vumela i\'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Kuvumela i-software AV1 decoding lapho kusetshenziswa i-\'Android VR\' / \'visionOS\' client</string>

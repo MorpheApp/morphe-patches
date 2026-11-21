@@ -141,7 +141,7 @@ Tik op OK om Android System WebView te openen."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Probeer het volgende inschakelen: Spoof video streams > Inloggen in Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standaard client</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR-aanmelding</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Aanmelden voor \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' vereist een aparte aanmelding. Tik hier om door te gaan</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Momenteel aangemeld bij \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Klik hieronder op doorgaan om aan te melden"</string>
 • Je Morphe-instellingen importeren of exporteren de Android VR-authenticatie niet
 • Als deze app 6 maanden niet wordt gebruikt, verwijdert Google deze authenticatie
 • Je moet opnieuw inloggen als je je Google-wachtwoord wijzigt of dit apparaat verwijdert uit je Google-instellingen"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Aanmelden via mobiel web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Aanmelden voor \"Mobile Web\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Optioneel: meld je aan bij de YouTube-website om video\'s met je account af te spelen. Tik hier om door te gaan</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Momenteel aangemeld bij \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Druk hieronder op doorgaan om aan te melden"</string>
   <string name="morphe_seek_notification_media_length_invalid">De zoeklengte moet tussen 1 en %s seconden liggen. Standaardwaarde wordt gebruikt</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC-protocol uitschakelen</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Geef prioriteit aan videokwaliteit</string>
+  <string name="morphe_prioritize_video_quality_summary">Geeft prioriteit aan de hoogste beschikbare videokwaliteit boven codec-efficiëntie</string>
+  <string name="morphe_prioritize_video_quality_dialog">Als deze instelling is uitgeschakeld, kunnen oudere video\'s geen opties voor videokwaliteit tonen</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC-audio uitschakelen</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

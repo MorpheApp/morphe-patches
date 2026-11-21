@@ -61,7 +61,10 @@ Guherînên ku tê de hene:
   <string name="morphe_hide_account_menu_title">Fîltera menuya jêrîn a Library / You çalak bike</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Fîltera menuya jêrîn a Library / You</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Navên menuya jêrîn a Library / You ku dê fîlter bikin binivîse, bi xêzên nû ji hev cuda</string>
+  <string name="morphe_hide_account_menu_badges_title">Nîşanên xirab veşêre</string>
   <string name="morphe_hide_account_menu_downloads_title">Daxistinên veşêre</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\'Vîdyoyên hatine hezkirin\' veşêre</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\'Paşê temaşe bike\' veşêre</string>
   <string name="morphe_hide_album_cards_title">Kartên album hidin</string>
   <string name="morphe_hide_album_cards_summary">Kartên albûmê di bin danasîna hunermend de veşêre</string>
   <string name="morphe_hide_artist_cards_title">Kartên hunermend hidin</string>
@@ -427,6 +430,8 @@ Sînor:
   <string name="morphe_minimal_comments_button_summary">Kartên xişandinê û hilbijêrka rûpelê ku li ser bişkoja şîroveyan tê nîşandan veşêre</string>
   <string name="morphe_hide_comments_timestamp_button_title">Bişkoja Timestamp veşêre</string>
   <string name="morphe_hide_comments_top_fans_button_title">Bişkoja \'Top fans\' veşêre</string>
+  <string name="morphe_hide_comments_topics_title">\'Mijar\' veşire</string>
+  <string name="morphe_hide_comments_topics_summary">Optiona şirîteya şirîna \'Mijar\' û pêşniviyên şîroveyên \'Mijar\' ên bin vîdyoyê veşire</string>
   <string name="morphe_hide_comments_translate_button_title">Butona Wergerînê vedişêre</string>
   <string name="morphe_hide_comments_zero_state_title">Payama \'Hêj tu koment nînin\' veşêre</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Girêdên lêgerînê yên ronahîkirî paqij bike</string>
@@ -1029,6 +1034,39 @@ Ji bo rastkirina vê, 'Spoof video streams' çalak bike û 'Default client' bike
   <string name="morphe_swipe_overlay_style_entry_7">Pêşandana astiq (kêm)</string>
   <string name="morphe_swipe_change_video_title">Çalak bike ji bo guhertina vîdyoyên</string>
   <string name="morphe_swipe_change_video_summary">Di tam-ekranê de swipe bike da ku biçe vîdyoya pêş an berê</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Îşaretê girtinê</string>
+  <string name="morphe_hold_gesture_screen_summary">Piştî ku tu li ser bitikînî û bigirî, bi kişandinê xêza lêdanê biguherîne û qifil bike</string>
+  <string name="morphe_hold_gesture_title">Îşaretê girtinê çalak bike</string>
+  <string name="morphe_hold_gesture_summary">Tikinîn û girtina vîdyoyê dikare bi kişandinekê were şopandin. Leza girtinê, leza lêdana tikinîn û girtinê ye</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Gava \'bi pressingê bikeşe\' çalak e nayê bikaranîn. Ji bo guhertinê bitapîne</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">\'Bi pressingê bikeşe\' çalak e</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Gestê ragirtinê û gestê \'bi pressingê bikeşe\' ya kontrolên kişandinê her du bi tapkirin û ragirtinê dest pê dikin, lewma tenê yek ji wan dikare çalak be.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">\'Bi pressingê bikeşe\' veguherîne</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Gava \'bi pressingê bikeşe\' çalak e, gestê ragirtinê nayê bikaranîn</string>
+  <string name="morphe_hold_gesture_dialog_title">Gestê ragirtinê çalak e</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Gestê ragirtinê veguherîne</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Vegera hestiyarî çalak bike</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Gava lez diguhere û gava lez tê qiflkirin dilirziye</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Ji bo guherandina lezê, bi alîyên latiyan bikişîne</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Piştî ku tu lê lê dikişînî û digirî, ji bo lîstikê ya hêdî ber bi çepê ve û ji bo ya lehvî ber bi rastê ve bikişîne. Her ku tu zêdetir dikişînî, lez diguhere heta ku tiliyê vegere</string>
+  <string name="morphe_hold_gesture_speed_step_title">Gava lezê</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Hessasiyeta kişandinê</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Kêm</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Asayî</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Zêde</string>
+  <string name="morphe_hold_gesture_speed_min_title">Leza herî hêdî</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Leza herî hêdî ya ku kişandinek dikare bigihîje</string>
+  <string name="morphe_hold_gesture_speed_max_title">Leza herî lehvî</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Leza le xira kirin a herî bilez ku kishan dikare bigihîje (heta 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Ji bo qiflkirina lezê, xwarê bikişîne</string>
+  <string name="morphe_hold_gesture_lock_summary">Piştî ku tu lê lêda û girtî, xwarê bikişîne da ku gava tiliyê hildikîşînî lez bimîne. Ji bo veqiflkirinê, li nîşanê bitikîne an careke din lê bide û bigire</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Her tim nîşana qiflkirinê nîşan bide</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Nîşana leza qiflkirî xuya dimîne gava kontrolên playerê veşartî ne</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Gava vîdyo diguhere veqifilîne</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Leza qiflkirî bi dawî dibe gava vîdyoyeke din dest pê dike</string>
+  <string name="morphe_hold_gesture_lock_hint">Ji bo qiflkirinê xwarê bikişîne</string>
+  <string name="morphe_hold_gesture_lock_release">Berde da ku %s were qiflkirin</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Binnivîs</string>
   <string name="morphe_captions_screen_summary">Binnivîsên otomatîk û cookieyên binnivîsan birêve bibe</string>
@@ -1133,6 +1171,17 @@ Ji bo gihîştina Settings, bişkokeya Settings bi rêya General → Toolbar →
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Spaceya di navbera şirîteya navîgasyonê û binê ekranê an navîgasyona sîstemê de rast bike</string>
   <string name="morphe_navigation_bar_glass_size_title">Mezinahiya şirîta navîgasyonê ya şûşê</string>
   <string name="morphe_navigation_bar_glass_size_summary">Bilindî, berfirehî û spacinga butonên şirîta navîgasyonê ya şûşê bi pêşnêrînekê rês bike. Butonên ku di berfirehiya ekrânê de nayên girtin tên veşartin</string>
+  <string name="morphe_glass_menus_screen_title">Menuyên camê</string>
+  <string name="morphe_glass_menus_screen_summary">Menuyên wekî camê şilî li ser naveroka li pişt wan a blurkirî</string>
+  <string name="morphe_glass_menus_title">Menuyên camê çalak bike</string>
+  <string name="morphe_glass_menus_summary">Menuyan û rûpelên jêrîn wekî camê şilî nîşan dide, bi naveroka blurkirî li pişt wan</string>
+  <string name="morphe_glass_menus_user_dialog_message">Gava parastina bataryayê çalak e, an jî heger amûr piştgirîyê nayê dayîn ji blurê, menuya wekî opacity nêzîkî tam nîşan tê dan</string>
+  <string name="morphe_glass_menus_opacity_title">Şeffafiya cam</string>
+  <string name="morphe_glass_menus_opacity_summary">Çiqas menu naveroka blurkirî daggerê (0 zelal e, 100 şeffaf nahiye)</string>
+  <string name="morphe_glass_menus_blur_title">Blur</string>
+  <string name="morphe_glass_menus_blur_summary">Çiqas naveroka li pişt menyuyê blurkirî ye</string>
+  <string name="morphe_glass_menus_dim_title">Tîrêkirin</string>
+  <string name="morphe_glass_menus_dim_summary">Çiqas ekrana li derdorê \'bottom sheet\'ê tarî dibe</string>
   <string name="morphe_navigation_bar_glass_size_height">Bilindî</string>
   <string name="morphe_navigation_bar_glass_size_width">Berfirehiya herî zêde</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spacinga butonan</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Menuya hilbijartina kalîteyê derbas dike û rasterast menuya kalîteya Pêşkeftî vedike</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Vebijarkên kalîteya Premium veşêre</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Kalîteya vîdyoyê pêşî bike</string>
-  <string name="morphe_video_quality_prioritize_summary">Kalîteya herî bilind a vîdyoyê li ser bandorkariya kodekê pêşî dike</string>
-  <string name="morphe_video_quality_prioritize_dialog">Heke ev mîheng neçalak be, vîdyoyên kevn dibe ku tu vebijarkên kalîteyê nîşan nedin</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">AV1 ê \'Android VR\' / \'visionOS\' bidestûre</string>
   <string name="morphe_spoof_video_streams_av1_summary">Dema client ê \'Android VR\' / \'visionOS\' tê bikaranîn, destûrê dide deşîfrekirina AV1 ya nermalavê</string>

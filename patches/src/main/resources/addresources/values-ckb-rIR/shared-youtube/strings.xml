@@ -168,7 +168,7 @@ Second \"item\" text"</string>
 • ڕێکخستنەکانی Morphe پشتڕاستکردنی Android VR ناهێنێت یان هەناردە ناکات
 • ئەگەر ئەم ئەپە بۆ ٦ مانگ بەکار نەهێنرێت، گوگڵ ئەم پشتڕاستکردنە لا دەبات
 • ئەگەر وشەی نهێنی گوگڵەکەت بگۆڕیت یان ئەم ئامێرە لە ڕێکخستنەکانی گوگڵدا لاببەیت، پێویست دەبێت دووبارە بچیتە ژوورەوە"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">چوونەژوورەوەی وێبی مۆبایل</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">چوونەژوورەوە بۆ \'Mobile Web\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ئارەزوومەندانە: بچۆ ژوورەوە بۆ ماڵپەڕی YouTube بۆ ئەوەی ڤیدیۆکان بە هەژمارەکەت لایبەن. لێرە کلیک بکە بۆ بەردەوامبوون</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ئێستا چووەتە ژوورەوە بۆ \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">درێژی گەڕان دەبێت لە نێوان ١ و %s چرکە بێت. بەهای بنەڕەت بەکاردەهێنرێت</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">ناچالاککردنی پڕۆتۆکۆلی QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">به‌هۆی باوه‌ڕی به‌رهه‌می ڤیدۆ، خاڵه‌کان پێشێل بکه‌.</string>
+  <string name="morphe_prioritize_video_quality_summary">بەرزترین کوالێتی بەردەستی ڤیدیۆ لە پێش کارایی کۆدێکەوە دادەنێت</string>
+  <string name="morphe_prioritize_video_quality_dialog">ئەگەر ئەم ڕێکخستنە کوژێندرا بێت، ئەوا ڤیدیۆ کۆنەکان ڕەنگە هیچ بژاردەیەکی کوالێتی ڤیدیۆیان نیشان نەدات</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">ناچالاککردنی دەنگی DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

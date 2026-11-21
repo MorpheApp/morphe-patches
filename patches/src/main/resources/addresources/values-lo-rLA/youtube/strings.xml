@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">ເປີດໃຊ້ການກັ່ນກອງເມນູລຸ່ມ ຫ້ອງສະໝຸດ / ທ່ານ</string>
   <string name="morphe_hide_account_menu_filter_strings_title">ການກັ່ນກອງເມນູລຸ່ມ ຫ້ອງສະໝຸດ / ທ່ານ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">ປ້ອນຊື່ເມນູລຸ່ມ ຫ້ອງສະໝຸດ / ທ່ານ ທີ່ຕ້ອງການກັ່ນກອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່</string>
+  <string name="morphe_hide_account_menu_badges_title">ເຊື່ອງແທັກ</string>
   <string name="morphe_hide_account_menu_downloads_title">ເຊື່ອງລາຍການດາວໂຫຼດ</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">ເຊື່ອງ \'ວິດີໂອທີ່ມັກ\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">ເຊື່ອງ \'ເບິ່ງພາຍຫຼັງ\'</string>
   <string name="morphe_hide_album_cards_title">ເຊື່ອງບັດອັນບັ້ມ</string>
   <string name="morphe_hide_album_cards_summary">ເຊື່ອງບັດອັນບັ້ມ ພາຍໃຕ້ຄໍາອະທິບາຍຂອງສິລະປິນ</string>
   <string name="morphe_hide_artist_cards_title">ເຊື່ອງບັດສິລະປິນ</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">ເຊື່ອງບັດທີ່ເລື່ອນໄດ້ ແລະ ຕົວເລືອກໜ້າຂອງມັນ, ທີ່ສະແດງຢູ່ໃນປຸ່ມຄຳຄິດເຫັນ</string>
   <string name="morphe_hide_comments_timestamp_button_title">ເຊື່ອງປຸ່ມປະທັບເວລາ</string>
   <string name="morphe_hide_comments_top_fans_button_title">ເຊື່ອງປຸ່ມ \'ແຟນໂຕຍິ່ງ\'</string>
+  <string name="morphe_hide_comments_topics_title">ເຊື່ອງ \'ຫົວຂໍ້\'</string>
+  <string name="morphe_hide_comments_topics_summary">ເຊື່ອງຕົວເລືອກແຖບຕົວຕອງ \'ຫົວຂໍ້\' ແລະ ການທ່ອງເບິ່ງຄຳເຫັນ \'ຫົວຂໍ້\' ທີ່ຢູ່ລຸ່ມວິດີໂອ</string>
   <string name="morphe_hide_comments_translate_button_title">ເຊື່ອງປຸ່ມແປພາສາ</string>
   <string name="morphe_hide_comments_zero_state_title">ເຊື່ອງຂໍ້ຄວາມ \'ຍັງບໍ່ມີຄຳຄິດເຫັນ\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">ເຮັດຄວາມສະອາດລິ້ງການຄົ້ນຫາທີ່ເນັ້ນ</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">ຊັ້ນທັບແນວຕັ້ງ (ແບບມິນິມໍ)</string>
   <string name="morphe_swipe_change_video_title">ເປີດໃຊ້ການປັດເພື່ອປ່ຽນວິດີໂອ</string>
   <string name="morphe_swipe_change_video_summary">ປັດໃນໂໝດເຕັມໜ້າຈໍ ເພື່ອຂ້າມໄປວິດີໂອຖັດໄປ ຫຼື ວິດີໂອກ່ອນໜ້ານີ້</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">ທ່າທາງການກົດຄ້າງ</string>
+  <string name="morphe_hold_gesture_screen_summary">ປ່ຽນ ແລະ ລັອກຄວາມໄວໃນການຫຼິ້ນໂດຍການລາກ ຫຼັງຈາກແຕະ ແລະ ກົດຄ້າງ</string>
+  <string name="morphe_hold_gesture_title">ເປີດໃຊ້ທ່າທາງການກົດຄ້າງ</string>
+  <string name="morphe_hold_gesture_summary">ການແຕະ ແລະ ກົດຄ້າງທີ່ວິດີໂອສາມາດຕາມດ້ວຍການລາກ. ຄວາມໄວໃນຂະນະທີ່ກົດຄ້າງແມ່ນຄວາມໄວໃນການຫຼິ້ນແບບແຕະ ແລະ ກົດຄ້າງ</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">ບໍ່ໄດ້ຖືກນຳໃຊ້ໃນຂະນະທີ່ເປີດ \'ກົດເພື່ອປັດ\'. ແຕະເພື່ອປ່ຽນແປງ</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">ເປີດ \'ກົດເພື່ອປັດ\' ຢູ່</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">ທັງທ່າທາງການກົດຄ້າງ ແລະ ທ່າທາງການກົດເພື່ອປັດຂອງຕົວຄວບຄຸມການປັດແມ່ນເລີ່ມຕົ້ນດ້ວຍການແຕະ ແລະ ກົດຄ້າງ, ດັ່ງນັ້ນຈຶ່ງສາມາດເປີດໃຊ້ໄດ້ພຽງຢ່າງດຽວເທົ່ານັ້ນ.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">ປິດ \'ກົດເພື່ອປັດ\'</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">ທ່າທາງການກົດຄ້າງບໍ່ໄດ້ຖືກນຳໃຊ້ໃນຂະນະທີ່ເປີດ \'ກົດເພື່ອປັດ\'</string>
+  <string name="morphe_hold_gesture_dialog_title">ເປີດທ່າທາງການກົດຄ້າງຢູ່</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">ປິດທ່າທາງການກົດຄ້າງ</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">ເປີດໃຊ້ການຕອບສະໜອງດ້ວຍການສັ່ນ</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">ສັ່ນເມື່ອຄວາມໄວປ່ຽນແປງ ແລະ ເມື່ອຄວາມໄວຖືກລັອກໄວ້</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">ລາກໄປທາງຂ້າງເພື່ອປ່ຽນຄວາມໄວ</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">ຫຼັງຈາກແຕະຄ້າງໄວ້, ໃຫ້ລາກໄປທາງຊ້າຍເພື່ອຫຼິ້ນຊ້າລົງ ແລະ ໄປທາງຂວາເພື່ອຫຼິ້ນໄວຂຶ້ນ. ຍິ່ງລາກອອກໄປໄກ, ຄວາມໄວຈະປ່ຽນແປງໄປເລື້ອຍໆ ຈົນກວ່າຈະນຳນິ້ວມືກັບຄືນມາ</string>
+  <string name="morphe_hold_gesture_speed_step_title">ຂັ້ນຄວາມໄວ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">ຄວາມໄວໃນການຕອບສະໜອງຂອງການລາກ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">ຕ່ຳ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">ປົກກະຕິ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">ສູງ</string>
+  <string name="morphe_hold_gesture_speed_min_title">ຄວາມໄວຊ້າທີ່ສຸດ</string>
+  <string name="morphe_hold_gesture_speed_min_summary">ຄວາມໄວທີ່ຊ້າທີ່ສຸດທີ່ການລາກສາມາດບັນລຸໄດ້</string>
+  <string name="morphe_hold_gesture_speed_max_title">ຄວາມໄວທີ່ໄວທີ່ສຸດ</string>
+  <string name="morphe_hold_gesture_speed_max_summary">ຄວາມໄວທີ່ໄວທີ່ສຸດທີ່ການລາກສາມາດບັນລຸໄດ້ (ສູງສຸດ 8)</string>
+  <string name="morphe_hold_gesture_lock_title">ລາກລົງເພື່ອລັອກຄວາມໄວ</string>
+  <string name="morphe_hold_gesture_lock_summary">ຫຼັງຈາກແຕະຄ້າງໄວ້, ໃຫ້ລາກລົງເພື່ອຮັກສາຄວາມໄວເມື່ອຍົກນິ້ວມືອອກ. ແຕະທີ່ປ້າຍ ຫຼື ແຕະຄ້າງໄວ້ອີກຄັ້ງເພື່ອປົດລັອກ</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">ສະແດງປ້າຍລັອກສະເໝີ</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">ປ້າຍຂອງຄວາມໄວທີ່ຖືກລັອກຈະຍັງຄົງສະແດງຢູ່ ໃນຂະນະທີ່ຕົວຄວບຄຸມເຄື່ອງຫຼິ້ນຖືກເຊື່ອງໄວ້</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">ປົດລັອກເມື່ອວິດີໂອປ່ຽນ</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">ຄວາມໄວທີ່ຖືກລັອກຈະສິ້ນສຸດລົງເມື່ອວິດີໂອອື່ນເລີ່ມຫຼິ້ນ</string>
+  <string name="morphe_hold_gesture_lock_hint">ດຶງລົງເພື່ອລັອກ</string>
+  <string name="morphe_hold_gesture_lock_release">ປ່ອຍເພື່ອລັອກ %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">ຄຳບັນຍາກຳກັບ</string>
   <string name="morphe_captions_screen_summary">ຈັດການຄຳບັນຍາກົດອັດຕະໂນມັດ ແລະ ຄຸກກີຂອງຄຳບັນຍາກົດ</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ປັບໄລຍະຫ່າງລະຫວ່າງແຖບນຳທາງແບບແກ້ວ ແລະ ດ້ານລຸ່ມຂອງໜ້າຈໍ ຫຼື ການນຳທາງຂອງລະບົບ</string>
   <string name="morphe_navigation_bar_glass_size_title">ຂະໜາດຂອງແຖບນຳທາງແບບແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ ແລະ ໄລຍະຫ່າງຂອງປຸ່ມຂອງແຖບນຳທາງແບບແກ້ວ, ພ້ອມກັບການເບິ່ງຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
+  <string name="morphe_glass_menus_screen_title">ເມນູແບບແກ້ວ</string>
+  <string name="morphe_glass_menus_screen_summary">ເມນູທີ່ເປັນຄືກັບແກ້ວຝ້າ ທັບເທິງເນື້ອຫາທີ່ມົວຢູ່ທາງຫຼັງ</string>
+  <string name="morphe_glass_menus_title">ເປີດໃຊ້ງານເມນູແບບແກ້ວ</string>
+  <string name="morphe_glass_menus_summary">ສະແດງເມນູ ແລະ bottom sheets ເປັນແບບແກ້ວຝ້າ, ໂດຍທີ່ເນື້ອຫາທາງຫຼັງຈະຖືກເຮັດໃຫ້ມົວ</string>
+  <string name="morphe_glass_menus_user_dialog_message">ເມນູຈະຖືກສະແດງແບບເກືອບທຶບ ໃນຂະນະທີ່ເປີດໂໝດປະຢັດແບັດເຕີຣີ, ຫຼື ຖ້າອຸປະກອນບໍ່ຮອງຮັບການເຮັດໃຫ້ມົວ</string>
+  <string name="morphe_glass_menus_opacity_title">ຄວາມຂຸ່ນຂອງແກ້ວ</string>
+  <string name="morphe_glass_menus_opacity_summary">ເມນູປິດບັງເນື້ອຫາທີ່ມົວຫຼາຍປານໃດ (0 ແມ່ນໃສ, 100 ແມ່ນຂຸ່ນ)</string>
+  <string name="morphe_glass_menus_blur_title">ຄວາມມົວ</string>
+  <string name="morphe_glass_menus_blur_summary">ເນື້ອຫາທີ່ຢູ່ທາງຫຼັງເມນູມີຄວາມມົວຫຼາຍປານໃດ</string>
+  <string name="morphe_glass_menus_dim_title">ຄວາມມືດ</string>
+  <string name="morphe_glass_menus_dim_summary">ໜ້າຈໍອ້ອມຮອບ bottom sheet ມີຄວາມມືດຫຼາຍປານໃດ</string>
   <string name="morphe_navigation_bar_glass_size_height">ຄວາມສູງ</string>
   <string name="morphe_navigation_bar_glass_size_width">ຄວາມກວ້າງສູງສຸດ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ໄລຍະຫ່າງຂອງປຸ່ມ</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">ຂ້າມເມນູເລືອກຄຸນນະພາບ ແລະ ເປີດເມນູຄຸນນະພາບຂັ້ນສູງໂດຍກົງ</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">ເຊື່ອງຕົວເລືອກຄຸນນະພາບ Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">ໃຫ້ບຸລິມະສິດດ້ານຄຸນນະພາບຂອງວິດີໂອ</string>
-  <string name="morphe_video_quality_prioritize_summary">ໃຫ້ບຸລິມະສິດຄຸນນະພາບວິດີໂອທີ່ສູງທີ່ສຸດທີ່ມີຢູ່ ເໜືອກວ່າປະສິດທິພາບຂອງ codec</string>
-  <string name="morphe_video_quality_prioritize_dialog">ຖ້າປິດການຕັ້ງຄ່ານີ້, ວິດີໂອເກົ່າອາດຈະບໍ່ສະແດງຕົວເລືອກຄຸນນະພາບຂອງວິດີໂອ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">ອະນຸຍາດ \'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">ອະນຸຍາດໃຫ້ມີການຖອດລະຫັດ AV1 ດ້ວຍຊອບແວ ເມື່ອໃຊ້ໄຄລຽນ \'Android VR\' / \'visionOS\'</string>

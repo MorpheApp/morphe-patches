@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Паўза пры выключанні гуку</string>
   <string name="morphe_music_pause_when_muted_summary">Спыняе відватворэнне, калі сістэмны гук выключаны, і ўзнаўляе яго пры павелічэнні гуку</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Трансляцыя Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">Кнопка Cast таксама можа трансліраваць музыку на Sonos і іншыя дынамікі UPnP ў вашай сетцы Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Падключыцца да прылады</string>
+  <string name="morphe_music_sonos_cast_searching">Пошук дынамікаў у вашай сетцы Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Выберыце дынамік у вашай сетцы Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Трансляцыя на %s</string>
+  <string name="morphe_music_sonos_cast_connected">Падключана</string>
+  <string name="morphe_music_sonos_cast_disconnect">Адключыць</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Дынамікі ў Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Актыўны</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Прылады Chromecast, Nest і Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Не ўдалося падключыцца да %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Хуткасць прайгравання</string>
   <string name="morphe_music_playback_speed_summary">Хуткасць, якая выкарыстоўваецца для ўсіх трэкаў. Пры 100% выкарыстоўваецца хуткасць праграмы, напрыклад, хуткасць прайгравання падкастаў</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"Даныя аб артыстах бяруцца з SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) і абнаўляюцца раз у дзень. Прапуск не перадае інфармацыі пра тое, што вы слухаеце. Адкрыццё панэлі SoundProof адпраўляе бягучае імя артыста на сервер SoundProof, каб паказаць свежыя голасы і даць магчымасць прагаласаваць. Сервер адрознівае галасуючых па IP-адрасе, таму ваш голас можа паказвацца інакш у іншай сетцы.
 
 База дадзеных ліцэнзіруецца па ліцэнзіі ODC Open Database License (ODbL). Запісы з Soul Over AI ад xoundbyte ліцэнзіруюцца па CC BY 4.0. Не звязана з SoundProof або Soul Over AI і не падтрымліваецца імі."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Анімаваная абложка Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Паказвае анімаваную абложку альбома Apple Music у праграматэры, калі яна ёсць у альбома. Назва, выканаўца і альбом кожнай песні перадаюцца ў Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Тэксты песень недаступныя для гэтага файла прылады.</string>
   <string name="morphe_music_lyrics_enabled_title">Выкарыстоўваць тэксты іншых пастаўшчыкаў</string>

@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">فعال‌کردن فیلتر منوی پایین کتابخانه / شما</string>
   <string name="morphe_hide_account_menu_filter_strings_title">فیلتر منوی پایین کتابخانه / شما</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">نام‌های منوی پایین کتابخانه / شما را که باید بر اساس آن‌ها فیلتر شود، هرکدام در یک خط وارد کنید</string>
+  <string name="morphe_hide_account_menu_badges_title">پنهان کردن نشان‌ها</string>
   <string name="morphe_hide_account_menu_downloads_title">پنهان‌کردن دانلودها</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">پنهان کردن \"ویدئوهای پسندیده\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">پنهان کردن \"مته بعداً تماشا کنید\"</string>
   <string name="morphe_hide_album_cards_title">پنهان‌کردن کارت‌های آلبوم</string>
   <string name="morphe_hide_album_cards_summary">کارت‌های آلبوم زیر توضیحات هنرمند را پنهان می‌کند</string>
   <string name="morphe_hide_artist_cards_title">پنهان‌کردن کارت‌های هنرمند</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">کارت‌های کشویی و انتخاب‌گر صفحه آن را که روی دکمه نظرات نمایش داده می‌شود، پنهان می‌کند</string>
   <string name="morphe_hide_comments_timestamp_button_title">پنهان‌کردن دکمهٔ زمان‌نما</string>
   <string name="morphe_hide_comments_top_fans_button_title">پنهان‌کردن دکمهٔ «طرفداران برتر»</string>
+  <string name="morphe_hide_comments_topics_title">مخفی کردن \"موضوعات\"</string>
+  <string name="morphe_hide_comments_topics_summary">گزینه نوار فیلتر \"موضوعات\" و پیش‌نمایش‌های کامنت \"موضوع\" در زیر ویدیو را مخفی می‌کند</string>
   <string name="morphe_hide_comments_translate_button_title">پنهان‌کردن دکمهٔ ترجمه</string>
   <string name="morphe_hide_comments_zero_state_title">پنهان کردن پیام «هنوز نظری ثبت نشده است»</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">پاک‌سازی پیوندهای جست‌وجوی برجسته</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">روی‌هم‌افتادهٔ عمودی (حداقلی)</string>
   <string name="morphe_swipe_change_video_title">فعال‌کردن کشیدن برای تغییر ویدئوها</string>
   <string name="morphe_swipe_change_video_summary">در حالت تمام‌صفحه بکشید تا به ویدئوی بعدی یا قبلی بروید</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">ژست نگه داشتن</string>
+  <string name="morphe_hold_gesture_screen_summary">با ضربه زدن و نگه داشتن و سپس کشیدن، سرعت پخش را تغییر داده و قفل کنید</string>
+  <string name="morphe_hold_gesture_title">فعال کردن ژست نگه داشتن</string>
+  <string name="morphe_hold_gesture_summary">پس از ضربه زدن و نگه داشتن روی ویدیو، می‌توان آن را کشید. سرعت هنگام نگه داشتن، همان سرعت پخش ضربه و نگه داشتن است</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">زمانی که «فشار برای کشیدن» فعال است، استفاده نمی‌شود. برای تغییر ضربه کنید</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">«فشار برای کشیدن» فعال است</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">ژست نگه‌داشتن و ژست «فشار برای کشیدن» در کنترل‌های کشیدن، هر دو با ضربه زدن و نگه‌داشتن شروع می‌شوند، بنابراین تنها یکی از آن‌ها می‌تواند فعال باشد.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">خاموش کردن فشار برای کشیدن</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">زمانی که «فشار برای کشیدن» فعال است، ژست نگه‌داشتن استفاده نمی‌شود</string>
+  <string name="morphe_hold_gesture_dialog_title">ژست نگه‌داشتن فعال است</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">خاموش کردن ژست نگه‌داشتن</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">فعال‌کردن بازخورد لمسی</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">هنگام تغییر سرعت و زمانی که سرعت قفل می‌شود، ویبره می‌زند</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">برای تغییر سرعت به طرفین بکشید</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">پس از لمس و نگه داشتن، برای پخش کندتر به چپ و برای پخش سریع‌تر به راست بکشید. هرچه بیشتر بکشید، سرعت تا زمانی که انگشت برگردد تغییر می‌کند</string>
+  <string name="morphe_hold_gesture_speed_step_title">گام سرعت</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">حساسیت کشیدن</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">کم</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">معمولی</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">زیاد</string>
+  <string name="morphe_hold_gesture_speed_min_title">کندترین سرعت</string>
+  <string name="morphe_hold_gesture_speed_min_summary">کندترین سرعتی که با کشیدن می‌توان به آن رسید</string>
+  <string name="morphe_hold_gesture_speed_max_title">سریع‌ترین سرعت</string>
+  <string name="morphe_hold_gesture_speed_max_summary">بیشترین سرعتی که یک کشیدن می‌تواند به آن برسد (تا ۸)</string>
+  <string name="morphe_hold_gesture_lock_title">برای قفل کردن سرعت، به پایین بکشید</string>
+  <string name="morphe_hold_gesture_lock_summary">بعد از ضربه زدن و نگه داشتن، به پایین بکشید تا سرعت هنگام بلند کردن انگشت حفظ شود. برای باز کردن قفل، روی نشان ضربه بزنید یا دوباره ضربه بزنید و نگه دارید</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">همیشه نشان قفل را نمایش بده</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">نشان سرعت قفل شده در حالی که کنترل‌های پخش‌کننده پنهان هستند، قابل مشاهده می‌ماند</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">هنگام تغییر ویدیو، قفل را باز کن</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">با شروع یک ویدیوی دیگر، سرعت قفل شده پایان می‌یابد</string>
+  <string name="morphe_hold_gesture_lock_hint">برای قفل کردن به پایین بکشید</string>
+  <string name="morphe_hold_gesture_lock_release">رها کنید تا %s قفل شود</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">زیرنویس‌ها</string>
   <string name="morphe_captions_screen_summary">زیرنویس‌های خودکار و کوکی‌های زیرنویس را مدیریت کنید</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">تنظیم فاصله بین نوار ناوبری شیشه‌ای و پایین صفحه یا ناوبری سیستم</string>
   <string name="morphe_navigation_bar_glass_size_title">اندازه‌ی نوار پیمایش شیشه‌ای</string>
   <string name="morphe_navigation_bar_glass_size_summary">تنظیم ارتفاع، عرض و فاصله‌ی دکمه‌های نوار پیمایش شیشه‌ای به همراه پیش‌نمایش. دکمه‌هایی که در عرض صفحه‌ی نمایش جای نمی‌گیرند، پنهان می‌شوند</string>
+  <string name="morphe_glass_menus_screen_title">منوهای شیشه‌ای</string>
+  <string name="morphe_glass_menus_screen_summary">منوها به صورت شیشه مات روی محتوای محو شده در پشت آن‌ها</string>
+  <string name="morphe_glass_menus_title">فعال‌سازی منوهای شیشه‌ای</string>
+  <string name="morphe_glass_menus_summary">منوها و صفحات پایین را به صورت شیشه مات نمایش می‌دهد، به گونه‌ای که محتوای پشت آن‌ها محو شود</string>
+  <string name="morphe_glass_menus_user_dialog_message">هنگام فعال بودن حالت ذخیره باتری یا در صورتی که دستگاه از قابلیت محو کردن پشتیبانی نکند، منوها تقریباً کدر نمایش داده می‌شوند</string>
+  <string name="morphe_glass_menus_opacity_title">شفافیت شیشه‌ای</string>
+  <string name="morphe_glass_menus_opacity_summary">میزان پوشش محتوای محوشده توسط منو (۰ شفاف، ۱۰۰ مات)</string>
+  <string name="morphe_glass_menus_blur_title">تاری</string>
+  <string name="morphe_glass_menus_blur_summary">میزان تاری محتوای پشت منو</string>
+  <string name="morphe_glass_menus_dim_title">تاریکی</string>
+  <string name="morphe_glass_menus_dim_summary">میزان تیره شدن صفحه در اطراف یک bottom sheet</string>
   <string name="morphe_navigation_bar_glass_size_height">ارتفاع</string>
   <string name="morphe_navigation_bar_glass_size_width">حداکثر عرض</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">فاصله‌ی دکمه‌ها</string>
@@ -1696,10 +1745,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">منوی انتخاب کیفیت را رد می‌کند و مستقیماً منوی کیفیت پیشرفته را باز می‌کند</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">پنهان‌کردن گزینه‌های کیفیت Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">اولویت‌دادن به کیفیت ویدئو</string>
-  <string name="morphe_video_quality_prioritize_summary">بالاترین کیفیت موجود را بر کارایی کدک اولویت می‌دهد</string>
-  <string name="morphe_video_quality_prioritize_dialog">اگر این تنظیم خاموش باشد، ویدئوهای قدیمی ممکن است هیچ گزینهٔ کیفیت ویدئویی نشان ندهند</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">اجازه‌دادن به AV1 در \"Android VR\" / \"visionOS\"</string>
   <string name="morphe_spoof_video_streams_av1_summary">هنگام استفاده از کلاینت «Android VR» / «visionOS»، رمزگشایی نرم‌افزاری AV1 را مجاز می‌کند</string>

@@ -265,6 +265,20 @@ Crossfaden keskeyttäminen musiikkivideon katsomiseksi voi jättää jotkin vide
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Tauota, kun mykistetty</string>
   <string name="morphe_music_pause_when_muted_summary">Tauottaa toiston, kun järjestelmän äänenvoimakkuus on mykistetty, ja jatkaa sitä, kun äänenvoimakkuutta nostetaan</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast-painikkeella voidaan suoratoistaa sisältöä myös Sonosiin ja muihin Wi-Fi-verkkosi UPnP-kaiuttimiin</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Yhdistä laitteeseen</string>
+  <string name="morphe_music_sonos_cast_searching">Etsitään Wi-Fi-verkkosi kaiuttimia…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Valitse Wi-Fi-verkkosi kaiutin</string>
+  <string name="morphe_music_sonos_cast_casting_to">Lähetetään kohteeseen %s</string>
+  <string name="morphe_music_sonos_cast_connected">Yhdistetty</string>
+  <string name="morphe_music_sonos_cast_disconnect">Katkaise yhteys</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Kaiuttimet Wi-Fi-verkossa</string>
+  <string name="morphe_music_sonos_cast_active">Aktiivinen</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast-, Nest- ja Google TV -laitteet</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Yhteyttä ei voitu muodostaa kohteeseen %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Toistonopeus</string>
   <string name="morphe_music_playback_speed_summary">Nopeus, jota käytetään kaikille kappaleille. 100 %:n kohdalla käytetään sovelluksen nopeutta, kuten podcastin toistonopeutta.</string>
@@ -586,6 +600,9 @@ Varmistaaksesi, että scrobbling synkronoidaan taustatoiston aikana, varmista, e
   <string name="morphe_music_soundproof_about_summary">"Artistitiedot tulevat SoundProof-Dumps-palvelusta (github.com/NuclearBlox/SoundProof-Dumps), josta tiedot ladataan kerran päivässä. Ohittaminen ei lähetä tietoja siitä, mitä kuuntelet. SoundProof-taulukon avaaminen lähettää nykyisen artistin nimen SoundProof-palvelimelle tuoreiden äänien näyttämiseksi ja äänestämistä varten. Palvelin tunnistaa äänestäjät IP-osoitteen perusteella, joten äänesi voi näkyä eri tavalla toisessa verkossa.
 
 Tietokanta on lisensoitu ODC Open Database License (ODbL) -lisenssillä. xoundbyten Soul Over AI -merkinnät on lisensoitu CC BY 4.0 -lisenssillä. Ei liity SoundProofiin tai Soul Over AI:hin, eikä niillä ole tämän tukea."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Musicin animoitu kansikuva</string>
+  <string name="morphe_music_apple_music_artwork_summary">Näyttää Apple Musicin animoidun albuminkansikuvan soittimessa, jos albumilla on sellainen. Jokaisen kappaleen nimi, artisti ja albumi lähetetään Apple Musicille</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Sanoituksia ei ole saatavilla tämän laitetyypin tiedostolle.</string>
   <string name="morphe_music_lyrics_enabled_title">Käytä kolmannen osapuolen lyriikoita</string>

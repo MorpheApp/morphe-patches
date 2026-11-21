@@ -265,6 +265,20 @@ Musiqa videosini tomosha qilish uchun krossfeydni to'xtatish ba'zi videolarni qo
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Ovoz o\'chirilganda to\'xtatish</string>
   <string name="morphe_music_pause_when_muted_summary">Tizim ovozi o\'chirilganda ijroni to\'xtatadi va ovoz ko\'tarilganda uni davom ettiradi</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast tugmasi shuningdek Sonos va Wi-Fi tarmog\'ingizdagi boshqa UPnP karnaylariga uzatish imkonini beradi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Qurilmaga ulaning</string>
+  <string name="morphe_music_sonos_cast_searching">Wi-Fi tarmog\'ingizdan karnaylar qidirilmoqda…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Wi-Fi tarmog\'ingizdagi karnayni tanlang</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s qurilmasiga uzatilmoqda</string>
+  <string name="morphe_music_sonos_cast_connected">Ulangan</string>
+  <string name="morphe_music_sonos_cast_disconnect">Ulanishni uzish</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi dagi karnaylar</string>
+  <string name="morphe_music_sonos_cast_active">Faol</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest va Google TV qurilmalari</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s ga ulanib bo\"lmadi</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Ijro tezligi</string>
   <string name="morphe_music_playback_speed_summary">Barcha treklar uchun foydalaniladigan tezlik. 100% da ilova tezligi, masalan, podkast ijro tezligi ishlatiladi</string>
@@ -586,6 +600,9 @@ Foydalanish ma'lumotlari fon tartibda ham sinxronlashini ta'minlash uchun, YouTu
   <string name="morphe_music_soundproof_about_summary">"Artist ma'lumotlari SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) sahifasidan olinadi va kuniga bir marta yuklab olinadi. Uni o'tkazib yuborish siz nima tinglayotganingiz haqida hech qanday ma'lumot yubormaydi. SoundProof varag'ini ochish, yangi ovozlarni ko'rsatish va ovoz berish uchun joriy artist nomini SoundProof serveriga yuboradi. Server ovoz beruvchilarni IP manzili orqali ajratadi, shuning uchun sizning ovozingiz boshqa tarmoqda turlicha ko'rinishi mumkin.
 
 Ma'lumotlar bazasi ODC Open Database License (ODbL) litsenziyasi ostida taqdim etilgan. xoundbyte tomonidan yaratilgan Soul Over AI yozuvlari CC BY 4.0 litsenziyasi ostida taqdim etilgan. SoundProof yoki Soul Over AI bilan bog'liq emas va ular tomonidan tasdiqlanmagan."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animatsiyali muqovasi</string>
+  <string name="morphe_music_apple_music_artwork_summary">Agar albomda mavjud bo\'lsa, pleyerda Apple Music\'ning animatsiyali albom muqovasini ko\'rsatadi. Har bir qo\'shiqning nomi, ijrochisi va albomi Apple Music\'ga yuboriladi</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Ushbu qurilma fayli uchun matnlar mavjud emas.</string>
   <string name="morphe_music_lyrics_enabled_title">Uchinchi tomon matnlaridan foydalanish</string>

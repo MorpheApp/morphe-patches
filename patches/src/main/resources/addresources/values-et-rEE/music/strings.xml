@@ -265,6 +265,20 @@ Kui peatad sujuva ülemineku muusikavideo vaatamiseks, võib video jääda musta
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pausa, kui heli on vaigistatud</string>
   <string name="morphe_music_pause_when_muted_summary">Peatab taespelutuse, kui süsteemi heli on vaigistatud, ja jätkab seda, kui heli tõstetakse</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast-nupuga saab voimida helid ka Sonosile ja teile teie Wi-Fi võrgus olevatele UPnP kõlaritele</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Ühenda seadmega</string>
+  <string name="morphe_music_sonos_cast_searching">Otsitakse teie Wi-Fi võrgust kõlarid…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Valige teie Wi-Fi võrgust kõlar</string>
+  <string name="morphe_music_sonos_cast_casting_to">Streaming %s seadmesse</string>
+  <string name="morphe_music_sonos_cast_connected">Ühendatud</string>
+  <string name="morphe_music_sonos_cast_disconnect">Lülita ühendus lahti</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Kõlarid Wi-Fi võrgus</string>
+  <string name="morphe_music_sonos_cast_active">Aktiivne</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast-, Nest- ja Google TV seadmed</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Ühendamine %s seadmega ebaõnnestus</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Taasesituskiirus</string>
   <string name="morphe_music_playback_speed_summary">Kiirus, mida rakendatakse kõigi lugude puhul. 100% juures kasutatakse rakenduse kiirust, näiteks taskuhäälingusaadete taasesituskiirust</string>
@@ -586,6 +600,9 @@ Et tagada scrobblingi sünkroonimine taustal taasesituse ajal, veendu, et YouTub
   <string name="morphe_music_soundproof_about_summary">"Artistide andmed pärinevad SoundProof-Dumpsist (github.com/NuclearBlox/SoundProof-Dumps) ja neid laaditakse alla kord päevas. Loo vahelejätmisel ei saadeta mingit teavet selle kohta, mida parasjagu kuulad. SoundProofi tabeli avamisel saadetakse praeguse artisti nimi SoundProofi serverisse, et kuvada värskeid hääli ja võimaldada hääletamist. Server eristab hääletajaid IP-aadressi alusel, mistõttu võib sinu hääl teises võrgus teistmoodi kajastuda.
 
 Andmebaas on litsentseeritud ODC Open Database License (ODbL) järgi. xoundbyte'i Soul Over AI kirjekandmed on litsentseeritud CC BY 4.0 järgi. Mitte seotud SoundProofi või Soul Over AI-ga ega nende poolt heaks kiidetud."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Musici animeeritud albumikunst</string>
+  <string name="morphe_music_apple_music_artwork_summary">Kuvab mängijas Apple Musici animeeritud albumikunsti, kui albumil selline on. Iga laulu pealkiri, artist ja album saadetakse Apple Musici</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Laulusõnad ei ole selle seadme faili jaoks saadaval.</string>
   <string name="morphe_music_lyrics_enabled_title">Kasuta kolmandate osapoolte laulusõnu</string>

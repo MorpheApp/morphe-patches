@@ -265,6 +265,20 @@ Pausar o crossfade para ver um videoclipe pode deixar alguns vídeos a preto. Pa
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pausar quando silenciado</string>
   <string name="morphe_music_pause_when_muted_summary">Pausa a reprodução quando o volume do sistema está silenciado e a retoma quando o volume é aumentado</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">O botão Cast também pode transmitir para Sonos e outros alto-falantes UPnP em sua rede Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Conectar a um dispositivo</string>
+  <string name="morphe_music_sonos_cast_searching">Procurando alto-falantes em sua rede Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Escolha um alto-falante em sua rede Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Transmitindo para %s</string>
+  <string name="morphe_music_sonos_cast_connected">Conectado</string>
+  <string name="morphe_music_sonos_cast_disconnect">Desconectar</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Colunas no Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Ativo</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Dispositivos Chromecast, Nest e Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Não foi possível conectar-se a %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Velocidade de reprodução</string>
   <string name="morphe_music_playback_speed_summary">Velocidade usada em todas as faixas. A 100%, é usada a velocidade da aplicação, como a velocidade de reprodução de podcasts</string>
@@ -586,6 +600,9 @@ Para garantir que o scrobbling seja sincronizado durante a reprodução em segun
   <string name="morphe_music_soundproof_about_summary">"Os dados dos artistas vêm do SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), transferidos uma vez por dia. Saltar não envia nada sobre o que tocas. Abrir a folha do SoundProof envia o nome do artista atual para o servidor do SoundProof para mostrar votos atualizados e para votar. O servidor diferencia os votantes pelo endereço IP, portanto, o teu voto pode aparecer de forma diferente noutra rede.
 
 O banco de dados é licenciado sob a Licença de Banco de Dados Aberto ODC (ODbL). Entradas do Soul Over AI por xoundbyte são licenciadas sob CC BY 4.0. Não afiliada ou endossada pelo SoundProof ou Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Capa animada do Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Exibe a capa animada do álbum do Apple Music no player, se o álbum possuir uma. O título, artista e álbum de cada música são enviados ao Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">As letras não estão disponíveis para este arquivo do dispositivo.</string>
   <string name="morphe_music_lyrics_enabled_title">Usar letras de terceiros</string>

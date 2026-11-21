@@ -265,6 +265,20 @@ Ecranul de blocare sau notificarea pot afișa temporar o stare învechită în t
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pauză când este pe mut</string>
   <string name="morphe_music_pause_when_muted_summary">Pune redarea pe pauză când volumul sistemului este pe mut și o reia când volumul este crescut</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Butonul Cast poate transmite fluxul audio și către Sonos și către alte difuzoare UPnP din rețeaua Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Conectare la un dispozitiv</string>
+  <string name="morphe_music_sonos_cast_searching">Se caută difuzoare în rețeaua Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Alegeți un difuzor din rețeaua Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Transmitare către %s</string>
+  <string name="morphe_music_sonos_cast_connected">Conectat</string>
+  <string name="morphe_music_sonos_cast_disconnect">Deconectare</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Difuzoare pe Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Activ</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Dispozitive Chromecast, Nest și Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Nu s-a putut stabili conexiunea cu %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Viteza de redare</string>
   <string name="morphe_music_playback_speed_summary">Viteza folosită pentru toate melodiile. La 100% se folosește viteza aplicației, cum ar fi viteza de redare a podcastului.</string>
@@ -586,6 +600,9 @@ Pentru a vă asigura că scrobbling-ul este sincronizat în timpul redării în 
   <string name="morphe_music_soundproof_about_summary">"Datele artistului provin de la SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), descărcate o dată pe zi. Opțiunea de ignorare nu trimite nimic despre ce redați. Deschiderea foii SoundProof trimite numele artistului actual către serverul SoundProof pentru a afișa voturile recente și pentru a vota. Serverul îi diferențiază pe votanți după adresa IP, deci votul dvs. poate apărea diferit pe o altă rețea.
 
 Baza de date este licențiată sub Licența de Bază de Date Deschisă ODC (ODbL). Intrările de la Soul Over AI de xoundbyte sunt licențiate sub CC BY 4.0. Neafiliat și neaprobat de SoundProof sau Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Coperta animată Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Afișează coperta animată a albumului din Apple Music în player, dacă albumul are una. Titlul, artistul și albumul fiecărei melodii sunt trimise către Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Versurile nu sunt disponibile pentru acest fișier de pe dispozitiv.</string>
   <string name="morphe_music_lyrics_enabled_title">Utilizați versuri de la terți</string>

@@ -61,7 +61,10 @@ O'zgarishlar quyidagilarni o'z ichiga oladi:
   <string name="morphe_hide_account_menu_title">Kutubxona / Siz pastki menyu filtrini yoqish</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kutubxona / Siz pastki menyu filtri</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Kutubxona / Siz pastki menyu nomlarini filtrlash uchun, yangi qatorlar bilan ajratilgan holda kiriting</string>
+  <string name="morphe_hide_account_menu_badges_title">Bejlarni yashirish</string>
   <string name="morphe_hide_account_menu_downloads_title">Yuklab olishlarni yashirish</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\"Yoqtirilgan videolar\"ni yashirish</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\"Keyinroq ko\'rish\"ni yashirish</string>
   <string name="morphe_hide_album_cards_title">Albom kartalarini yashirish</string>
   <string name="morphe_hide_album_cards_summary">Ijodkor tavsifi ostidagi albom kartalarini yashiradi</string>
   <string name="morphe_hide_artist_cards_title">Ijodkor kartalarini yashirish</string>
@@ -427,6 +430,8 @@ Cheklovlar:
   <string name="morphe_minimal_comments_button_summary">Izohlar tugmasida ko\'rsatiladigan sirpanuvchi kartalar va ularning sahifalar selektorini yashiradi</string>
   <string name="morphe_hide_comments_timestamp_button_title">Vaqt belgisi tugmasini yashirish</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Top muxlislar\' tugmasini yashirish</string>
+  <string name="morphe_hide_comments_topics_title">\"Mavzular\"ni yashirish</string>
+  <string name="morphe_hide_comments_topics_summary">\"Mavzular\" filtrlash paneli opsiyasini va videoning pastidagi \"Mavzu\" izohlari oldindan ko\'rishlarini yashiradi</string>
   <string name="morphe_hide_comments_translate_button_title">Tarjima tugmasini yashirish</string>
   <string name="morphe_hide_comments_zero_state_title">\"Hali izohlar yo\"q\" xabarini yashirish</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Ajratilgan qidiruv havolalarini tozalash</string>
@@ -1027,6 +1032,39 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_swipe_overlay_style_entry_7">Vertikal qoplama (minimal)</string>
   <string name="morphe_swipe_change_video_title">Videolarga o\'tish uchun sirt bilan surishni yoqish</string>
   <string name="morphe_swipe_change_video_summary">To\'liq ekran rejimida surib keyingi yoki oldingi videoga o\'tish</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Ushlab turish jesti</string>
+  <string name="morphe_hold_gesture_screen_summary">Bosib ushlab turgan holda surish orqali ijro tezligini o\'zgartiring va qulflang</string>
+  <string name="morphe_hold_gesture_title">Ushlab turish jestini yoqish</string>
+  <string name="morphe_hold_gesture_summary">Videoni bosib ushlab turganingizdan so\'ng uni surish mumkin. Ushlab turgan paytdagi tezlik - bu bosib ushlab turish ijro tezligidir</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">\"Bosib surish\" yoqilganda foydalanilmaydi. O\'zgartirish uchun bosing</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">\"Bosib surish\" yoqilgan</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Ushlab turish imo-ishorasi va surish boshqaruvlarining \"bosib surish\" imo-ishorasi ham bosib ushlash bilan boshlanadi, shuning uchun ulardan faqat bittasi yoqilgan bo\'lishi mumkin.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">\"Bosib surish\"ni o\'chirish</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">\"Bosib surish\" yoqilganda ushlab turish imo-ishorasi foydalanilmaydi</string>
+  <string name="morphe_hold_gesture_dialog_title">Ushlab turish imo-ishorasi yoqilgan</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Ushlab turish imo-ishorasini o\'chirish</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Haptik javobni yoqish</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Tezlik o\'zgarganda va tezlik qulflanganida tebranadi</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Tezlikni o\'zgartirish uchun yon tomonga torting</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Bosib turganingizdan so\'ng, sekinroq ijro etish uchun chapga va tezroq ijro etish uchun o\'ngga torting. Barmoq qaytib kelguniga qadar, uzoqroq tortilganda tezlik o\'zgarishda davom etadi</string>
+  <string name="morphe_hold_gesture_speed_step_title">Tezlik qadami</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Tortish sezgirligi</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Past</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Yuqori</string>
+  <string name="morphe_hold_gesture_speed_min_title">Eng past tezlik</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Tortish orqali erishish mumkin bo\'lgan eng past tezlik</string>
+  <string name="morphe_hold_gesture_speed_max_title">Eng yuqori tezlik</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Surgish orqali erishish mumkin bo\'lgan eng yuqori tezlik (8 gacha)</string>
+  <string name="morphe_hold_gesture_lock_title">Tezlikni qulflash uchun pastga suring</string>
+  <string name="morphe_hold_gesture_lock_summary">Bosib turganingizdan so\'ng, barmoq ko\'tarilganda tezlikni saqlab qolish uchun pastga suring. Qulfni ochish uchun belgini bosing yoki qaytadan bosib turing</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Qulf belgisini doim ko\'rsatish</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Pleer boshqaruvi yashirilgan bo\'lganda ham qulflangan tezlik belgisi ko\'rinib turadi</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Video o\'zgarganda qulfni ochish</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Boshqa video boshlanganda qulflangan tezlik bekor qilinadi</string>
+  <string name="morphe_hold_gesture_lock_hint">Qulflash uchun pastga torting</string>
+  <string name="morphe_hold_gesture_lock_release">%s ni bloklash uchun qo\"yib yuboring</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Yozuvlar</string>
   <string name="morphe_captions_screen_summary">Avtomatik yozuvlar va yozuv kukilarini boshqarish</string>
@@ -1131,6 +1169,17 @@ Sozlamalarga kirish uchun General → Toolbar → Show Settings button orqali So
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Shisha navigatsiya paneli va ekranning pastki qismi yoki tizim navigatsiyasi orasidagi masofani sozlang</string>
   <string name="morphe_navigation_bar_glass_size_title">Shishasimon navigatsiya paneli o\'lchami</string>
   <string name="morphe_navigation_bar_glass_size_summary">Shishasimon navigatsiya panelining balandligi, kengligi va tugmalar oralig\'ini oldindan ko\'rish imkoniyati bilan sozlang. Ekran kengligiga sig\'magan tugmalar yashiriladi</string>
+  <string name="morphe_glass_menus_screen_title">Shisha menyular</string>
+  <string name="morphe_glass_menus_screen_summary">Menyular orqadagi xiralashgan kontent ustida xira shisha ko\'rinishida bo\'ladi</string>
+  <string name="morphe_glass_menus_title">Shisha menyularni yoqish</string>
+  <string name="morphe_glass_menus_summary">Menyular va pastki panellarni xira shisha ko\'rinishida ko\'rsatadi, bunda ularning orqasidagi kontent xiralashadi</string>
+  <string name="morphe_glass_menus_user_dialog_message">Energiya tejash rejimi yoqilganda yoki qurilma xiralashishni qo\'llab-quvvatlamasa, menyular deyarli shaffof bo\'lmagan holda ko\'rsatiladi</string>
+  <string name="morphe_glass_menus_opacity_title">Shishaning shaffofligi</string>
+  <string name="morphe_glass_menus_opacity_summary">Menyu xiralashgan kontentni qanchalik qoplaydi (0 - shaffof, 100 - yopiq)</string>
+  <string name="morphe_glass_menus_blur_title">Xiralashtirish</string>
+  <string name="morphe_glass_menus_blur_summary">Menyu orqasidagi kontent qanchalik xiralashganligi</string>
+  <string name="morphe_glass_menus_dim_title">Xiralashtirish</string>
+  <string name="morphe_glass_menus_dim_summary">Pastki varaq atrofidagi ekranning qanchalik qorong\'i ekanligi</string>
   <string name="morphe_navigation_bar_glass_size_height">Balandligi</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimal kenglik</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Tugmalar oralig\'i</string>
@@ -1695,10 +1744,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Sifat tanlash menyusini o\'tkib uzatadi va to\'g\'ridan-to\'g\'ri ilg\'or sifat menyusini ochadi</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium video sifatini yashirish</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Video sifatini ustun qo\'ying</string>
-  <string name="morphe_video_quality_prioritize_summary">Kodek samaradorligidan ko\'ra mavjud bo\'lgan eng yuqori video sifatiga ustunlik beradi</string>
-  <string name="morphe_video_quality_prioritize_dialog">Agar bu sozlama o\'chirilgan bo\'lsa, eski videolar uchun video sifatini tanlash imkoniyati ko\'rinmasligi mumkin</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\"Android VR\" / \"visionOS\" AV1 ga ruxsat berish</string>
   <string name="morphe_spoof_video_streams_av1_summary">\"Android VR\" / \"visionOS\" mijozidan foydalanganda dasturiy AV1 dekodlashiga ruxsat beradi</string>

@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">靜音時暫停</string>
   <string name="morphe_music_pause_when_muted_summary">當系統音量靜音時暫停播放，並在調高音量時恢復播放</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">投放按鈕也可以串流至您 Wi-Fi 網路上的 Sonos 及其他 UPnP 喇叭</string>
+  <string name="morphe_music_sonos_cast_sheet_title">連線至裝置</string>
+  <string name="morphe_music_sonos_cast_searching">正在搜尋您 Wi-Fi 網路上的喇叭……</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">請選擇您 Wi-Fi 網路上的喇叭</string>
+  <string name="morphe_music_sonos_cast_casting_to">正在投送到 %s</string>
+  <string name="morphe_music_sonos_cast_connected">已連線</string>
+  <string name="morphe_music_sonos_cast_disconnect">中斷連線</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi 上的喇叭</string>
+  <string name="morphe_music_sonos_cast_active">啟動中</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast、Nest 和 Google TV 裝置</string>
+  <string name="morphe_music_sonos_cast_connection_failed">無法連線至 %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">播放速度</string>
   <string name="morphe_music_playback_speed_summary">用於所有曲目的速度。在 100% 時，使用應用程式的速度，例如播客播放速度。</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"藝人數據來自 SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps)，每天下載一次。跳過不會發送任何關於您播放內容的資訊。開啟 SoundProof 表格會將目前的藝人名稱發送到 SoundProof 伺服器，以顯示最新投票並進行投票。伺服器透過 IP 地址區分投票者，因此您的投票在另一個網路上的顯示方式可能會有所不同。
 
 該資料庫採用 ODC 開放資料庫許可證 (ODbL) 授權。來自 xoundbyte 的 Soul Over AI 條目採用 CC BY 4.0 授權。與 SoundProof 或 Soul Over AI 無關且未獲得其認可。"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music 動態封面</string>
+  <string name="morphe_music_apple_music_artwork_summary">如果專輯具有動態封面，則在播放器中顯示 Apple Music 的動態專輯封面。每首歌曲的標題、藝人與專輯將會傳送至 Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">此裝置檔案不提供歌詞。</string>
   <string name="morphe_music_lyrics_enabled_title">使用第三方歌詞</string>

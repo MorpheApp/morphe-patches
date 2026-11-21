@@ -141,7 +141,7 @@ Toca en OK para abrir Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Proba a activar: Simular fluxos de vídeo &gt; Inicio de sesión en Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliente predefinido</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Inicio de sesión de VR en \'Android\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Inicio de sesión de \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' require un inicio de sesión separado. Toca aquí para continuar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Actualmente iniciado sesión en \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Para iniciar sesión, preme en continuar abaixo"</string>
 • As túas configuracións de Morphe non importarán/exportarán a autenticación de Android VR
 • Se esta aplicación non se usa durante 6 meses, Google eliminará esta autenticación
 • Terás que iniciar sesión de novo se cambias o teu contrasinal de Google ou se desrexistras este dispositivo nas túas configuracións de Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Inicio de sesión na web móbil</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Inicio de sesión de \"Web móbil\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcional: inicia sesión no sitio web de YouTube para reproducir vídeos coa túa conta. Toca aquí para continuar</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Actualmente sesión iniciada en \'Web móbil\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Para iniciar sesión, preme continuar abaixo"</string>
   <string name="morphe_seek_notification_media_length_invalid">A duración do salto debe estar entre 1 e %s segundos. Usando o valor predefinido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desactivar o protocolo QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorizar a calidade do vídeo</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriza a calidade de vídeo máis alta dispoñible sobre a eficiencia do códec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Se esta configuración está desactivada, os vídeos máis antigos poden non amosar opcións de calidade de vídeo</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Desactivar o audio DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

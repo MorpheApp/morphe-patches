@@ -265,6 +265,20 @@ Crossfade pausatzeak musika bideo bat ikusteko zenbait bideo beltz utz ditzake. 
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Gelditu isilduta dagoenean</string>
   <string name="morphe_music_pause_when_muted_summary">Erregengatzea gelditua izango da sistemaren bolumena isilduta dagoenean eta berriz hartuko du bolumena igotzean</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast botoia Sonos-era eta zure Wi-Fi sareko beste UPnP altavozaietara ere transmitit edo sakatu ahal izateko da</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Gailu batean konektatu</string>
+  <string name="morphe_music_sonos_cast_searching">Zure Wi-Fi sareko altavozaiak bilatzen...</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Aukeratu zure Wi-Fi sareko altabozai bat</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s-ra bidaltzen</string>
+  <string name="morphe_music_sonos_cast_connected">Konektatuta</string>
+  <string name="morphe_music_sonos_cast_disconnect">Deskonektatu</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Bokaltzailak Wi-Fi-n</string>
+  <string name="morphe_music_sonos_cast_active">Aktibo</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest eta Google TV gailuak</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s-rekin konektatu ezin da</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Erreprodukzio abiadura</string>
   <string name="morphe_music_playback_speed_summary">Pista guztietan erabiltzen den abiadura. %100ean, aplikazioaren abiadura erabiltzen da, podcasten erreprodukzio abiadura bezalakoa</string>
@@ -586,6 +600,9 @@ Atzealdean erreproduktu duten bitartean scrobbling-a sinkronizatua dagoela ziurt
   <string name="morphe_music_soundproof_about_summary">"Artistaren datuak SoundProof-Dumps-etik datoz (github.com/NuclearBlox/SoundProof-Dumps), eguneko behin deskargatuta. Saltzeak ez du zer erreproduzitzen duzun buruz ezer bidaltzen. SoundProof orria irekitzean uneko artistaren izena bidaltzen da SoundProof zerbitzarira boto berriak erakusteko eta botatzeko. Zerbitzariak botoemaileak IP helbidearen bidez bereizten ditu, beraz zure botoa beste sare batean ezberdin agertu daiteke.
 
 Datu-basea ODC Open Database License (ODbL) lizentziapean dago. xoundbyte-ren Soul Over AI-ko sarrerak CC BY 4.0 lizentziapean daude. Ez dago SoundProof edo Soul Over AI-rekin lotura edo babesik."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music-en animazio artelana</string>
+  <string name="morphe_music_apple_music_artwork_summary">Apple Music-en albumeko animazio artelana erakutsi playback-ean, albumak bago bada. Kantu bakoitzaren izenburua, artista eta albuma Apple Music-era bidaltzen dira</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Letrak ez daude eskuragarriak gailuko fitxamen honek.</string>
   <string name="morphe_music_lyrics_enabled_title">Erabili hirugarren aldeko letrak</string>

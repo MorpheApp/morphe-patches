@@ -61,7 +61,10 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_account_menu_title">Bật bộ lọc menu trong thẻ Thư viện / Bạn ở dưới cùng</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Bộ lọc menu trong thẻ Thư viện / Bạn ở dưới cùng</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Nhập tên các menu trong thẻ Thư viện / Bạn mà bạn muốn lọc, mỗi dòng một menu</string>
+  <string name="morphe_hide_account_menu_badges_title">Ẩn Huy hiệu</string>
   <string name="morphe_hide_account_menu_downloads_title">Ẩn Tải xuống</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Ẩn \"Video đã thích\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Ẩn \"Xem sau\"</string>
   <string name="morphe_hide_album_cards_title">Ẩn thẻ đĩa nhạc</string>
   <string name="morphe_hide_album_cards_summary">Ẩn các thẻ album bên dưới phần mô tả nghệ sĩ</string>
   <string name="morphe_hide_artist_cards_title">Ẩn thẻ nghệ sĩ</string>
@@ -427,6 +430,8 @@ Hạn chế:
   <string name="morphe_minimal_comments_button_summary">Ẩn các thẻ trượt và bộ chọn trang của chúng, hiển thị trên nút bình luận</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ẩn nút Dấu thời gian</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ẩn nút \'Người hâm mộ hàng đầu\'</string>
+  <string name="morphe_hide_comments_topics_title">Ẩn \"Chủ đề\"</string>
+  <string name="morphe_hide_comments_topics_summary">Ẩn tùy chọn thanh bộ lọc \"Chủ đề\" và các xem trước bình luận theo \"Chủ đề\" bên dưới video</string>
   <string name="morphe_hide_comments_translate_button_title">Ẩn nút Dịch</string>
   <string name="morphe_hide_comments_zero_state_title">Ẩn thông báo \'Chưa có bình luận\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Loại bỏ chữ xanh</string>
@@ -1029,6 +1034,39 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_swipe_overlay_style_entry_7">Lớp phủ dọc (tối giản)</string>
   <string name="morphe_swipe_change_video_title">Bật vuốt để chuyển video</string>
   <string name="morphe_swipe_change_video_summary">Vuốt trong chế độ toàn màn hình để chuyển đến video tiếp theo hoặc trước</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Cử chỉ nhấn giữ</string>
+  <string name="morphe_hold_gesture_screen_summary">Thay đổi và khóa tốc độ phát bằng cách kéo sau khi nhấn và giữ</string>
+  <string name="morphe_hold_gesture_title">Bật cử chỉ nhấn giữ</string>
+  <string name="morphe_hold_gesture_summary">Nhấn và giữ video sau đó có thể kéo. Tốc độ khi giữ là tốc độ phát khi nhấn và giữ</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Không được sử dụng khi tính năng bấm giữ để vuốt đang bật. Nhấn để thay đổi</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Bấm giữ để vuốt đã được bật</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Cả cử chỉ nhấn giữ và cử chỉ bấm giữ để vuốt của trình điều khiển vuốt đều bắt đầu bằng việc nhấn và giữ, vì vậy chỉ một trong hai tính năng có thể được bật.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Tắt bấm giữ để vuốt</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Cử chỉ nhấn giữ không được sử dụng khi tính năng bấm giữ để vuốt đang bật</string>
+  <string name="morphe_hold_gesture_dialog_title">Cử chỉ nhấn giữ đang bật</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Tắt cử chỉ nhấn giữ</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Bật phản hồi xúc giác</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Rung khi tốc độ thay đổi và khi tốc độ được khóa</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Kéo sang hai bên để thay đổi tốc độ</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Sau khi nhấn và giữ, kéo sang trái để phát chậm hơn và kéo sang phải để phát nhanh hơn. Càng kéo ra xa, tốc độ càng thay đổi cho đến khi ngón tay quay trở lại</string>
+  <string name="morphe_hold_gesture_speed_step_title">Mức tốc độ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Độ nhạy khi kéo</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Thấp</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Bình thường</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Cao</string>
+  <string name="morphe_hold_gesture_speed_min_title">Tốc độ chậm nhất</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Tốc độ chậm nhất mà thao tác kéo có thể đạt được</string>
+  <string name="morphe_hold_gesture_speed_max_title">Tốc độ nhanh nhất</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Tốc độ tối đa mà thao tác kéo có thể đạt được (lên đến 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Kéo xuống để khóa tốc độ</string>
+  <string name="morphe_hold_gesture_lock_summary">Sau khi chạm và giữ, hãy kéo xuống để duy trì tốc độ khi nhấc ngón tay lên. Chạm vào biểu tượng hoặc chạm và giữ lần nữa để mở khóa</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Luôn hiển thị biểu tượng khóa</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Biểu tượng của tốc độ đã khóa vẫn hiển thị khi các điều khiển trình phát bị ẩn</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Mở khóa khi video thay đổi</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Tốc độ đã khóa sẽ kết thúc khi một video khác bắt đầu</string>
+  <string name="morphe_hold_gesture_lock_hint">Kéo xuống để khóa</string>
+  <string name="morphe_hold_gesture_lock_release">Thả để khóa %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Phụ đề</string>
   <string name="morphe_captions_screen_summary">Quản lý phụ đề tự động và cookie phụ đề</string>
@@ -1133,6 +1171,17 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Điều chỉnh khoảng cách giữa thanh điều hướng kính và cạnh dưới của màn hình hoặc điều hướng hệ thống</string>
   <string name="morphe_navigation_bar_glass_size_title">Kích thước thanh điều hướng dạng kính</string>
   <string name="morphe_navigation_bar_glass_size_summary">Điều chỉnh chiều cao, chiều rộng và khoảng cách nút của thanh điều hướng dạng kính, kèm theo bản xem trước. Các nút không vừa với chiều rộng của màn hình sẽ bị ẩn</string>
+  <string name="morphe_glass_menus_screen_title">Menu dạng kính</string>
+  <string name="morphe_glass_menus_screen_summary">Menu hiển thị như kính mờ trên nội dung bị làm mờ phía sau</string>
+  <string name="morphe_glass_menus_title">Bật menu dạng kính</string>
+  <string name="morphe_glass_menus_summary">Hiển thị menu và trang dưới dạng kính mờ, với nội dung phía sau được làm mờ</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menu sẽ hiển thị gần như đục khi chế độ tiết kiệm pin đang bật, hoặc nếu thiết bị không hỗ trợ làm mờ</string>
+  <string name="morphe_glass_menus_opacity_title">Độ mờ của kính</string>
+  <string name="morphe_glass_menus_opacity_summary">Mức độ menu che phủ nội dung bị làm mờ (0 là trong suốt, 100 là đục)</string>
+  <string name="morphe_glass_menus_blur_title">Làm mờ</string>
+  <string name="morphe_glass_menus_blur_summary">Mức độ nội dung phía sau menu bị làm mờ</string>
+  <string name="morphe_glass_menus_dim_title">Làm tối</string>
+  <string name="morphe_glass_menus_dim_summary">Mức độ màn hình xung quanh bottom sheet bị làm tối</string>
   <string name="morphe_navigation_bar_glass_size_height">Chiều cao</string>
   <string name="morphe_navigation_bar_glass_size_width">Chiều rộng tối đa</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Khoảng cách nút</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Bỏ qua menu chọn chất lượng và mở trực tiếp menu chất lượng nâng cao</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ẩn tùy chọn chất lượng Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Ưu tiên chất lượng video</string>
-  <string name="morphe_video_quality_prioritize_summary">Ưu tiên chất lượng video cao nhất hơn là tối ưu codec</string>
-  <string name="morphe_video_quality_prioritize_dialog">Nếu tắt tính năng này, các video cũ có thể không hiển thị tùy chọn chất lượng video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Cho phép AV1 \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_summary">Cho phép giải mã AV1 bằng phần mềm khi sử dụng client \'Android VR\' / \'visionOS\'</string>

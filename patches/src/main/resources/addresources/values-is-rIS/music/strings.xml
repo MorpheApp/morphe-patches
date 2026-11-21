@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_summary">Blanda lagum saman á sléttan hátt</string>
   <string name="morphe_music_crossfade_enabled_title">Virkja crossfade</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Til að nota crossfade, breyttu \'Default client\' fyrir \'Spoof video streams\' í \'TV Simply\' eða \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Ferill deyfingar</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Jafnt afl</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Lúmskt hald</string>
@@ -236,6 +237,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade hefur verið virkjað aftur</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Myndbandsstilling er ekki í boði þegar crossfade er virkt</string>
   <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade virkar ekki með \'visionOS\'. Breyttu \'Default client\' fyrir \'Spoof video streams\' í \'TV Simply\'</string>
   <string name="morphe_music_crossfade_spoof_client_toast">Crossfade virkar ekki með þessum spoof-straumsklient</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade er óvirkt meðan streymt er</string>
   <string name="morphe_music_crossfade_about_how_title">Hvernig það virkar</string>
@@ -263,6 +265,20 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Stöðva þegar slökkt er á hljóði</string>
   <string name="morphe_music_pause_when_muted_summary">Stöðvar spilun þegar hljóðstyrkur kerfisins er slökkvaður og hefur hana aftur upp þegar hljóðstyrkurinn hækkar</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast-hnappinn getur einnig streymið til Sonos og annarra UPnP-háttara á Wi-Fi netinu þínu</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Tengist tæki</string>
+  <string name="morphe_music_sonos_cast_searching">Leita að háttörum á Wi-Fi netinu þínu…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Veldu háttara á Wi-Fi netinu þínu</string>
+  <string name="morphe_music_sonos_cast_casting_to">Sendi til %s</string>
+  <string name="morphe_music_sonos_cast_connected">Tengt</string>
+  <string name="morphe_music_sonos_cast_disconnect">Taka af tengingu</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Hátalar á Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Virk</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest og Google TV tæki</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Gat ekki tengt við %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Spilunarhraði</string>
   <string name="morphe_music_playback_speed_summary">Hraði sem notaður er fyrir öll lög. Við 100% er hraði forritsins notaður, eins og spilunarhraði hlaðvarpsins.</string>
@@ -475,9 +491,11 @@ Að gera hlé á crossfade til að horfa á tónlistarmyndband getur skilið sum
   <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_activity_button_title">Fela virknihnappinn</string>
   <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Fela hnappinn \'Spyrja tónlist\'</string>
   <string name="morphe_music_hide_cast_button_title">Fela Cast hnapp</string>
   <string name="morphe_music_hide_history_button_title">Fela Sögu hnapp</string>
   <string name="morphe_music_hide_search_button_title">Fela Leitarhnapp</string>
+  <string name="morphe_music_hide_voice_search_button_title">Fela hnappinn \'Raddaleit\'</string>
   <string name="morphe_music_hide_sound_search_button_title">Fela \"Hljóðleit\"-hnappinn</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ekki innskráður. Ýttu hér til að stilla</string>
@@ -582,6 +600,9 @@ Til að tryggja að skrobbun samstillist við spilun í bakgrunni skaltu ganga �
   <string name="morphe_music_soundproof_about_summary">"Gögn um listamenn koma frá SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) og eru sótt einu sinni á dag. Að sleppa lögum sendir ekkert um það sem þú spilar. Þegar SoundProof-blaðið er opnað er núverandi nafn listamanns sent á SoundProof-þjóninn til að sýna nýjustu atkvæði og til að kjósa. Þjónninn greinir kjósendur eftir IP-tölu, svo atkvæðin þín geta birst öðruvísi á öðru neti.
 
 Gagnagrunnurinn er gefinn út undir ODC Open Database License (ODbL). Færslur frá Soul Over AI eftir xoundbyte eru með leyfi samkvæmt CC BY 4.0. Ekki tengt SoundProof eða Soul Over AI og ekki stutt af þeim."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Hreyfð myndlist Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Sýnir hreyfðu albúmmyndlist Apple Music í spilaranum ef albúmið býr yfir slíkri. Titill, listamaður og albúm hvers lags eru send til Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Lög eru ekki aðgengileg fyrir þessa tækjatáknskrár.</string>
   <string name="morphe_music_lyrics_enabled_title">Nota texta frá þriðja aðila</string>

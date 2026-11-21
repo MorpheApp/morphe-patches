@@ -168,7 +168,7 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
 • Vaše nastavení Morphe neimportuje ani neexportuje ověření Android VR
 • Pokud tuto aplikaci nepoužijete 6 měsíců, Google toto ověření odstraní
 • Pokud změníte heslo ke Googlu nebo toto zařízení odeberete z nastavení Googlu, budete se muset znovu přihlásit"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Přihlášení přes mobilní web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Přihlášení do \"Mobilního webu\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Volitelně: přihlaste se na webovou stránku YouTube, abyste mohli přehrávat videa se svým účtem. Poklepejte sem pro pokračování</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálně přihlášeno k \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_seek_notification_media_length_invalid">Délka hledání musí být mezi 1 a %s sekundami. Používá se výchozí hodnota</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Vypnout protokol QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Upřednostnit kvalitu videa</string>
+  <string name="morphe_prioritize_video_quality_summary">Upřednostňuje nejvyšší dostupnou kvalitu videa před efektivitou kodeku</string>
+  <string name="morphe_prioritize_video_quality_dialog">Pokud je toto nastavení vypnuté, u starších videí nemusí být k dispozici žádné možnosti kvality videa</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Vypnout zvuk DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

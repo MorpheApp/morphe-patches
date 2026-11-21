@@ -265,6 +265,20 @@ A crossfade szüneteltetése a zenei videó megtekintéséhez néhány videót f
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Szüneteltetés némításkor</string>
   <string name="morphe_music_pause_when_muted_summary">Szünetelteti a lejátszást, ha a rendszerhangerő némítva van, és újraindítja azt, ha a hangerőt növelik</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">A Cast gomb segítségével a Sonos és más UPnP hangszórókra is lehet közvetíteni a Wi-Fi hálózatodon</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Csatlakozás egy eszközhöz</string>
+  <string name="morphe_music_sonos_cast_searching">Hangszórók keresése a Wi-Fi hálózatodon…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Válassz egy hangszórót a Wi-Fi hálózatodon</string>
+  <string name="morphe_music_sonos_cast_casting_to">Átadás: %s</string>
+  <string name="morphe_music_sonos_cast_connected">Csatlakoztatva</string>
+  <string name="morphe_music_sonos_cast_disconnect">Leválasztás</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi hangszórók</string>
+  <string name="morphe_music_sonos_cast_active">Aktív</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest és Google TV eszközök</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Nem sikerült csatlakozni a(z) %s eszközhöz</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Lejátszási sebesség</string>
   <string name="morphe_music_playback_speed_summary">Az összes számra használt sebesség. 100%-nál az alkalmazás sebessége használatos, például a podcast lejátszási sebessége</string>
@@ -586,6 +600,9 @@ A háttérlejátszás közbeni szinkronizálás biztosításához győződjön m
   <string name="morphe_music_soundproof_about_summary">"A művészadatok a SoundProof-Dumps-ból (github.com/NuclearBlox/SoundProof-Dumps) származnak, és naponta egyszer töltődnek le. A számok kihagyása nem küld semmit arról, mit játszol le. A SoundProof lap megnyitásakor az aktuális előadó neve elküldésre kerül a SoundProof szerverének a friss szavazatok megjelenítéséhez és a szavazáshoz. A szerver IP-cím alapján különbözteti meg a szavazókat, így a szavazatod másik hálózaton eltérően jelenhet meg.
 
 Az adatbázis az ODC Open Database License (ODbL) licenc alatt áll. Az xoundbyte által készített Soul Over AI bejegyzések CC BY 4.0 licenc alatt vannak. Nem áll kapcsolatban a SoundProof-fal vagy a Soul Over AI-jal, és nem is támogatják őket."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animált albumborítók</string>
+  <string name="morphe_music_apple_music_artwork_summary">Megjeleníti az Apple Music animált albumborítóját a lejátszóban, ha az albumnak van ilyen. Minden dal címe, előাদítója és albuma továbbítva kerül az Apple Musichez</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Ehhez az eszközfájlhoz nincsenek elérhető dalszövegek.</string>
   <string name="morphe_music_lyrics_enabled_title">Külső szolgáltató dalszövegeinek használata</string>

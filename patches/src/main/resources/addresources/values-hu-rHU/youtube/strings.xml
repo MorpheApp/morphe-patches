@@ -61,7 +61,10 @@ A változások ezeket tartalmazzák:
   <string name="morphe_hide_account_menu_title">Könyvtár / Az alsó menü szűrője</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Könyvtár / Az alsó menü szűrője</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Add meg a szűrni kívánt felugró menüpontok nevét, soronként elválasztva</string>
+  <string name="morphe_hide_account_menu_badges_title">Jelzők elrejtése</string>
   <string name="morphe_hide_account_menu_downloads_title">Letöltések elrejtése</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\"Tetsző videók\" elrejtése</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\"Megnézem később\" elrejtése</string>
   <string name="morphe_hide_album_cards_title">Albumkártyák elrejtése</string>
   <string name="morphe_hide_album_cards_summary">Elrejti az albumkártyákat az előadó leírása alatt</string>
   <string name="morphe_hide_artist_cards_title">Előadó kártyák elrejtése</string>
@@ -427,6 +430,8 @@ Korlátok:
   <string name="morphe_minimal_comments_button_summary">Elrejti a hozzászólásgombon megjelenő csúsztatható kártyákat és azok oldalválasztóját</string>
   <string name="morphe_hide_comments_timestamp_button_title">Időbélyeg gomb elrejtése</string>
   <string name="morphe_hide_comments_top_fans_button_title">A \'Top fans\' gomb elrejtése</string>
+  <string name="morphe_hide_comments_topics_title">\'Témák\' elrejtése</string>
+  <string name="morphe_hide_comments_topics_summary">Elrejti a \'Témák\' szűrési sáv opcióját és a videó alatti \'Téma\' hozzászólási előnézeteket</string>
   <string name="morphe_hide_comments_translate_button_title">Fordítás gomb elrejtése</string>
   <string name="morphe_hide_comments_zero_state_title">A \'Nincsenek még megjegyzések\' üzenet elrejtése</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">A kiemelt keresési hivatkozások higiénikusabbá tétele</string>
@@ -1029,6 +1034,39 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_swipe_overlay_style_entry_7">Függőleges fedvény (minimalista)</string>
   <string name="morphe_swipe_change_video_title">Csúsztatással történő videóváltás engedélyezése</string>
   <string name="morphe_swipe_change_video_summary">A teljes képernyős módban történő gesztus átugorja a következő vagy az előző videóra</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Tartási kézmozdulat</string>
+  <string name="morphe_hold_gesture_screen_summary">A lejátszási sebesség megváltoztatása és rögzítése érintéssel, tartással és húzással</string>
+  <string name="morphe_hold_gesture_title">Tartási kézmozdulat engedélyezése</string>
+  <string name="morphe_hold_gesture_summary">A videó érintésével és tartásával, majd húzással módosíthatjuk a sebességet. A tartás közbeni sebesség a tap and hold lejátszási sebességgel megegyezik</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Nem használható, ha a csúsztatáshoz nyomva tartás bekapcsolva van. Koppints a módosításhoz</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">A csúsztatáshoz nyomva tartás engedélyezve</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">A tartási gesztus és a csúsztatás vezérlőinek a csúsztatáshoz nyomva tartás gesztusa mindegyik koppintással és tartással kezdődik, ezért csak egyikük lehet aktív.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Kapcsolja ki a csúsztatáshoz nyomva tartást</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">A tartási gesztus nem használható, ha a csúsztatáshoz nyomva tartás bekapcsolva van</string>
+  <string name="morphe_hold_gesture_dialog_title">A tartási gesztus bekapcsolva</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Kapcsolja ki a tartási gesztust</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Haptikus visszajelzés engedélyezése</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Rázkódik, ha a sebesség megváltozik, vagy ha a sebesség rögzítve van</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Húzza oldalra a sebesség módosításához</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">A koppintás és nyomtatás után húzzon balra a lassabb, jobbra pedig a gyorsabb lejátszáshoz. Minél távolabb húzza, annál tovább változik a sebesség, amíg az ujj visszatér</string>
+  <string name="morphe_hold_gesture_speed_step_title">Sebesség lépés</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Húzási érzékenység</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Alacsony</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normál</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Magas</string>
+  <string name="morphe_hold_gesture_speed_min_title">Leglassabb sebesség</string>
+  <string name="morphe_hold_gesture_speed_min_summary">A leglassabb sebesség, amelyet a húzás elérhet</string>
+  <string name="morphe_hold_gesture_speed_max_title">Legnagyobb sebesség</string>
+  <string name="morphe_hold_gesture_speed_max_summary">A húzással elérhető legnagyobb sebesség (maximum 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Húzza le a sebesség rögzítéséhez</string>
+  <string name="morphe_hold_gesture_lock_summary">A koppintás és nyomtatás után húzza le, hogy fenntartsa a sebességet az ujj felemelése után is. Koppintson a jelzésre, vagy nyom sassy újra a feloldáshoz</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Mindig jelenítsed a rögzítés jelzését</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">A rögzített sebesség jelzése látható marad, amíg a lejátszó vezérlései rejtve vannak</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Feloldás a videó váltásakor</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">A rögzített sebesség megszűnik, amikor egy másik videó indul</string>
+  <string name="morphe_hold_gesture_lock_hint">Húzza le a rögzítéshez</string>
+  <string name="morphe_hold_gesture_lock_release">Engedje el a(z) %s zároláshoz</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Feliratok</string>
   <string name="morphe_captions_screen_summary">A feliratok automatikus fordításának és a feliratok cookie-jainak kezelése</string>
@@ -1133,6 +1171,17 @@ A Beállítások eléréséhez aktiválja a Beállítások gombot az Általános
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Állítsa be a téret az üveg navigációs sáv és a képernyő alja vagy a rendszer navigációja között</string>
   <string name="morphe_navigation_bar_glass_size_title">Üveg navigációs sáv mérete</string>
   <string name="morphe_navigation_bar_glass_size_summary">Állítsa be az üveg navigációs sáv magasságát, szélességét és a gombok közötti távolságot, előnézettel. A képernyő szélességébe nem férő gombok el lesznek rejtve</string>
+  <string name="morphe_glass_menus_screen_title">Üvegmenük</string>
+  <string name="morphe_glass_menus_screen_summary">A menük frosted glass hatással jelennek meg a mögötte lévő elmosódott tartalom felett</string>
+  <string name="morphe_glass_menus_title">Üvegmenük engedélyezése</string>
+  <string name="morphe_glass_menus_summary">A menük és az alsó lapok frosted glass hatással jelennek meg, miközben a mögöttük lévő tartalom elmosódik</string>
+  <string name="morphe_glass_menus_user_dialog_message">A menük majdnem teljesen átláthatatlanul jelennek meg, ha az energiamegtakarítás be van kapcsolva, vagy ha az eszköz nem támogatja az elmosódást</string>
+  <string name="morphe_glass_menus_opacity_title">Üveg átlátszósága</string>
+  <string name="morphe_glass_menus_opacity_summary">Hogy mennyire takarja a menü a homályos tartalmat (0 az átlátszó, 100 az átláthatatlan)</string>
+  <string name="morphe_glass_menus_blur_title">Homályosítás</string>
+  <string name="morphe_glass_menus_blur_summary">Hogy mennyire legyen homályos a menü mögötti tartalom</string>
+  <string name="morphe_glass_menus_dim_title">Sötétítés</string>
+  <string name="morphe_glass_menus_dim_summary">Hogy mennyire legyen sötétebb a képernyő egy alsó lap körül</string>
   <string name="morphe_navigation_bar_glass_size_height">Magasság</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximális szélesség</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Gombtávolság</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">A minőségi beállítások menüt kihagyva közvetlenül megnyitja a Speciális minőségi menüt</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium minőség opciók elrejtése</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Videóminőség prioritása</string>
-  <string name="morphe_video_quality_prioritize_summary">A legmagasabb elérhető videóminőség részesít előnyben a kodek hatékonyságával szemben.</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ha ez a beállítás ki van kapcsolva, akkor a régebbi videóknál nem jelenik meg videóminőségi opció.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Engedélyezze az \"Android VR\" / \"visionOS\" AV1-et</string>
   <string name="morphe_spoof_video_streams_av1_summary">Lehetővé teszi a szoftveres AV1 dekódolást az \"Android VR\" / \"visionOS\" kliens használatakor</string>

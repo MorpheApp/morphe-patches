@@ -168,7 +168,7 @@ Second \"item\" text"</string>
 • لن يتم استيراد/تصدير بيانات مصادقة Android VR من إعدادات Morphe الخاصة بك
 • إذا لم يتم استخدام هذا التطبيق لمدة 6 أشهر، فستقوم Google بإزالة بيانات المصادقة هذه
 • ستحتاج إلى تسجيل الدخول مرة أخرى إذا قمت بتغيير كلمة مرور Google أو إلغاء تسجيل هذا الجهاز من إعدادات Google الخاصة بك"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">تسجيل الدخول إلى ويب الجوّال</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">تسجيل الدخول إلى \'Mobile Web\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">اختياري: سجل الدخول إلى موقع YouTube الإلكتروني لتشغيل الفيديوهات باستخدام حسابك. انقر هنا للمتابعة</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">تم تسجيل الدخول حاليًا في \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">يجب أن تكون مدة التمرير بين 1 و %s ثانية. سيتم استخدام الإعداد الافتراضي</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">تعطيل بروتوكول QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">إعطاء الأولوية لجودة فيديو</string>
+  <string name="morphe_prioritize_video_quality_summary">يعطي الأولوية لأعلى جودة فيديو متاحة على كفاءة الترميز</string>
+  <string name="morphe_prioritize_video_quality_dialog">إذا تم إيقاف هذا الإعداد، فقد لا تعرض الفيديوهات القديمة خيارات جودة الفيديو</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">تعطيل صوت DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

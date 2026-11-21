@@ -35,7 +35,10 @@ Second \"item\" text"</string>
 • உருளும் எண்கள் அனிமேட் செய்யப்படாது
 • லைப்ரரி டேபில் கணக்கு மாற்றும் பொத்தான் தோன்றாமல் போகலாம்"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_account_menu_badges_title">பேட்ஜ்களை மறைக்கவும்</string>
   <string name="morphe_hide_account_menu_downloads_title">பதிவிறக்கங்களை மறைக்கவும்</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\'பிடித்த வீடியோக்களை\' மறைக்கவும்</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\'பின்னாள்களில் பார்க்க\' என்பதை மறைக்கவும்</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
@@ -135,6 +138,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
   <string name="morphe_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கிறது</string>
+  <string name="morphe_hide_comments_topics_title">\'தலைப்புகள்\'-ஐ மறைக்கவும்</string>
+  <string name="morphe_hide_comments_topics_summary">\'தலைப்புகள்\' வடிகட்டி பட்டை விருப்பத்தையும், வீடியோவிற்கு கீழே உள்ள \'தலைப்பு\' கருத்து முன்னோட்டங்களையும் மறைக்கிறது</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -326,6 +331,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_seek_sensitivity_summary">ஒவ்வொரு ஸ்வைப்பிற்கும் சீக் பார் எவ்வளவு தூரம் நகர்கிறது</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_haptic_feedback_summary">ஸ்வைப் செய்கையைத் தொடங்கும் போது அழுத்திப் பிடித்தால் அதிர்வுகள் ஏற்படும்</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Hold gesture gesture</string>
+  <string name="morphe_hold_gesture_screen_summary">தட்டி and பிடித்து இழுப்பதன் மூலம் பிளேபேக் வேகத்தை மாற்றி லாக் செய்யலாம்</string>
+  <string name="morphe_hold_gesture_title">Hold gesture-ஐ எனேபிள் செய்யவும்</string>
+  <string name="morphe_hold_gesture_summary">வீடியோவைத் தட்டி பிடிப்பதன் பிறகு இழுக்கலாம். பிடித்து வைத்திருக்கும்போது கிடைக்கும் வேகம், தட்டி பிடிப்பதன் பிளேபேக் வேகமாகும்</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">ஸ்வைப் செய்ய அழுத்தவும் செயல்பாட்டில் இருக்கும்போது இது பயன்படுத்தப்படாது. மாற்றத் தட்டவும்</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">ஸ்வைப் செய்ய அழுத்தவும் செயல்பாட்டில் உள்ளது</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Hold gesture மற்றும் ஸ்வைப் கட்டுப்பாடுகளின் press to swipe gesture ஆகிய இரண்டும் தட்டிப் பிடிப்பதன் மூலம் தொடங்குவதால், அவற்றில் ஏதேனும் ஒன்று மட்டுமே செயல்பாட்டில் இருக்க முடியும்.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">ஸ்வைப் செய்ய அழுத்தவும் என்பதை முடக்கவும்</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">ஸ்வைப் செய்ய அழுத்தவும் செயல்பாட்டில் இருக்கும்போது Hold gesture பயன்படுத்தப்படுவதில்லை</string>
+  <string name="morphe_hold_gesture_dialog_title">Hold gesture செயல்பாட்டில் உள்ளது</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Hold gesture-ஐ முடக்கவும்</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">ஹாப்டிக் பின்னூட்டத்தை இயக்கவும்</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">வேகம் மாறும்போது மற்றும் வேகம் பூட்டப்படும்போது அதிர்வுகளாக உணர்த்தும்</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">வேகத்தை மாற்ற பக்கவாட்டில் இழுக்கவும்</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">தட்டிப் பிடிப்பதன் பிறகு, மெதுவாக இயக்க இடதுபுறமாகவும், வேகமாக இயக்க வலதுபுறமாகவும் இழுக்கவும். விரல் மீண்டும் வரும் வரை, வெளிப்பக்கத்திற்கு இழுக்க இழுக்க வேகம் மாறிக்கொண்டே இருக்கும்</string>
+  <string name="morphe_hold_gesture_speed_step_title">வேகப் படி</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">இழுக்கும் உணர்திறன்</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">குறைந்த</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">சாதாரண</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">அதிக</string>
+  <string name="morphe_hold_gesture_speed_min_title">மிகக் குறைந்த வேகம்</string>
+  <string name="morphe_hold_gesture_speed_min_summary">ஒரு இழுவை அடையக்கூடிய மிகக்குறைந்த வேகம்</string>
+  <string name="morphe_hold_gesture_speed_max_title">மிகவேகமான வேகம்</string>
+  <string name="morphe_hold_gesture_speed_max_summary">ஒரு இழுவை அடையக்கூடிய மிகவேகமான வேகம் (8 வரை)</string>
+  <string name="morphe_hold_gesture_lock_title">வேகத்தைப் பூட்டக் கீழே இழுக்கவும்</string>
+  <string name="morphe_hold_gesture_lock_summary">தட்டிப் பிடித்துள்ள பிறகு, விரலை உயர்த்தும் போதும் வேகத்தைத் தக்கவைக்கக் கீழே இழுக்கவும். பூட்டை நீக்க பேட்ஜைத் தட்டவும் அல்லது மீண்டும் தட்டிப் பிடிக்கவும்</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">பூட்டு பேட்ஜை எப்போதும் காட்டவும்</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">பிளேயர் கட்டுப்பாடுகள் மறைந்திருக்கும் போது, பூட்டப்பட்ட வேகத்தின் பேட்ஜ் தெரியும்</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">வீடியோ மாறும்போது பூட்டை நீக்கவும்</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">மற்றொரு வீடியோ தொடங்கும் போது பூட்டப்பட்ட வேகம் முடிவடையும்</string>
+  <string name="morphe_hold_gesture_lock_hint">பூட்ட கீழே இழுக்கவும்</string>
+  <string name="morphe_hold_gesture_lock_release">%s-ஐ பூட்ட விடுவிக்கவும்</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_languages_title">மொழியும் மொழிபெயர்ப்பும்</string>
   <string name="morphe_captions_presentation_title">தோற்றம் மற்றும் செயல்பாடு</string>
@@ -379,6 +417,17 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">கண்ணாடி நேவிகேஷன் பார் மற்றும் திரையின் அடிப்பகுதி அல்லது சிஸ்டம் நேவிகேஷனுக்கும் இடையிலான இடைவெளியை சரிசெய்யவும்</string>
   <string name="morphe_navigation_bar_glass_size_title">கண்ணாடி நேவிகேஷன் பார் அளவு</string>
   <string name="morphe_navigation_bar_glass_size_summary">கண்ணாடி நேவிகேஷன் பாரின் உயரம், அகலம் மற்றும் பொத்தான் இடைவெளியை முன்னோட்டத்துடன் சரிசெய்யவும். திரையின் அகலத்திற்குள் பொருந்தாத பொத்தான்கள் மறைக்கப்படும்</string>
+  <string name="morphe_glass_menus_screen_title">கிளாஸ் மெனுக்கள்</string>
+  <string name="morphe_glass_menus_screen_summary">பின்னணியில் உள்ள மங்கலான உள்ளடக்கத்திற்கு மேல் உறைபனி கண்ணாடி போன்ற மெனுக்கள் இருக்கும்</string>
+  <string name="morphe_glass_menus_title">கிளாஸ் மெனுக்களை இயக்கு</string>
+  <string name="morphe_glass_menus_summary">மெனுக்கள் மற்றும் bottom sheets-களை உறைபனி கண்ணாடி போலக் காட்டும், அதன் பின்னணியில் உள்ள உள்ளடக்கம் மங்கலாக இருக்கும்</string>
+  <string name="morphe_glass_menus_user_dialog_message">பேட்டரி சேவர் ஆன் செய்யப்பட்டிருக்கும் போதோ அல்லது சாதனத்தில் blur வசதி இல்லையென்றாலோ, மெனுக்கள் கிட்டத்தட்ட ஒளிபுகாத நிலையில் காட்டப்படும்</string>
+  <string name="morphe_glass_menus_opacity_title">கண்ணாடி ஒளிபுகும் தன்மை</string>
+  <string name="morphe_glass_menus_opacity_summary">மெனு மங்கலான உள்ளடக்கத்தை எவ்வளவு மறைக்கிறது (0 என்பது தெளிவானது, 100 என்பது ஒளிபுகாதது)</string>
+  <string name="morphe_glass_menus_blur_title">மங்கலான தன்மை</string>
+  <string name="morphe_glass_menus_blur_summary">மெனுவிற்குப் பின்னால் உள்ள உள்ளடக்கம் எவ்வளவு மங்கலாக உள்ளது</string>
+  <string name="morphe_glass_menus_dim_title">மங்கல்</string>
+  <string name="morphe_glass_menus_dim_summary">தரைத்தாளையைச் சுற்றியுள்ள திரை எவ்வளவு இருட்டாக்கப்பட்டுள்ளது</string>
   <string name="morphe_navigation_bar_glass_size_height">உயரம்</string>
   <string name="morphe_navigation_bar_glass_size_width">அதிகபட்ச அகலம்</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">பொத்தான் இடைவெளி</string>
@@ -566,7 +615,6 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
-  <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1-ஐ அனுமதிக்கவும்</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' கிளையண்ட்டைப் பயன்படுத்தும் போது மென்பொருள் AV1 டிகோடிங்கை அனுமதிக்கிறது</string>

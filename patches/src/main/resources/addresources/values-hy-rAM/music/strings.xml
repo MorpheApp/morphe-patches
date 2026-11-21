@@ -265,6 +265,20 @@ Crossfade-ի դադարեցումը տեսահոլովակը դիտելու հա
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Դադարեցնել ձայնազրկման ժամանակ</string>
   <string name="morphe_music_pause_when_muted_summary">Դադարեցնում է հետազոտումը, երբ համակարգի ձայնը ձայնազրկված է, և վերսկսում է այն, երբ ձայնը բարձրացվում է</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast կոճակը կարող է հոսք ուղարկել նաև Sonos-ին և ձեր Wi-Fi ցանցի այլ UPnP բարձրախոսներին</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Միացեք սարքին</string>
+  <string name="morphe_music_sonos_cast_searching">Փնտրվում են բարձրախոսներ ձեր Wi-Fi ցանցում…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Ընտրեք բարձրախոս ձեր Wi-Fi ցանցում</string>
+  <string name="morphe_music_sonos_cast_casting_to">Հեռարձակվում է դեպի %s</string>
+  <string name="morphe_music_sonos_cast_connected">Միացված է</string>
+  <string name="morphe_music_sonos_cast_disconnect">Անջատել</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Բարձրախոսներ Wi-Fi-ի միջոցով</string>
+  <string name="morphe_music_sonos_cast_active">Ակտիվ</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest և Google TV սարքեր</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Չհաջողվեց միանալ %s-ին</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Վերարտադրման արագություն</string>
   <string name="morphe_music_playback_speed_summary">Արագությունը, որն օգտագործվում է բոլոր թրեկների համար: 100%-ի դեպքում օգտագործվում է հավելվածի արագությունը, օրինակ՝ փոդքասթի վերարտադրման արագությունը</string>
@@ -586,6 +600,9 @@ Crossfade-ի դադարեցումը տեսահոլովակը դիտելու հա
   <string name="morphe_music_soundproof_about_summary">"Կատարողների տվյալները ստացվում են SoundProof-Dumps-ից (github.com/NuclearBlox/SoundProof-Dumps), որը ներբեռնվում է օրական մեկ անգամ: Բաց թողնելը նշանակում է, որ ոչինչ չի ուղարկվի ձեր լսած երգերի մասին: SoundProof աղյուսակի բացումը ուղարկում է արտիստի ընթացիկ անունը SoundProof սերվերին՝ թարմ ձայներ ցուցադրելու և քվեարկելու համար: Սերվերը տարբերակում է քվեարկողներին IP հասցեով, ուստի ձեր ձայնը կարող է տարբեր կերպ արտացոլվել մեկ այլ ցանցում:
 
 Տվյալների բազան լիցենզավորված է ODC Open Database License (ODbL)-ով: xoundbyte-ի Soul Over AI-ից վերցված գրառումները լիցենզավորված են CC BY 4.0-ով: Կապված չէ և չի հաստատվել SoundProof-ի կամ Soul Over AI-ի կողմից:"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music-ի անիմացիոն շապատը</string>
+  <string name="morphe_music_apple_music_artwork_summary">Ցուցադրում է Apple Music-ի անիմացիոն ալբոմի շապատը նվագարկիչում, եթե ալբոմն ունի նմանը: Յուրաքանչյուր երգի վերնագիրը, կատարողը և ալբոմը ուղարկվում են Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Տեքստերը հասանելի չեն այս սարքի ֆայլի համար:</string>
   <string name="morphe_music_lyrics_enabled_title">Օգտագործել երրորդ կողմի բառերը</string>

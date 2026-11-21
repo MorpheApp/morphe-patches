@@ -61,7 +61,10 @@ Aldaketen artean daude:
   <string name="morphe_hide_account_menu_title">Gaitu Liburutegia / Zu beheko menuaren iragazkia</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Liburutegia / Zu beheko menuaren iragazkia</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Sartu Liburutegia / Zu beheko menuaren izenak iragazteko, lerro berriz bereiziak</string>
+  <string name="morphe_hide_account_menu_badges_title">Ezkutatu Abadureak</string>
   <string name="morphe_hide_account_menu_downloads_title">Ezkutatu deskargak</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Ezkutatu \'Gustuko bideoak\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Ezkutatu \'Gero ikusi\'</string>
   <string name="morphe_hide_album_cards_title">Ezkutatu album-txartelak</string>
   <string name="morphe_hide_album_cards_summary">Album-txartelak ezkutatzen ditu artistaren deskribapenaren azpian</string>
   <string name="morphe_hide_artist_cards_title">Ezkutatu artista-txartelak</string>
@@ -427,6 +430,8 @@ Mugak:
   <string name="morphe_minimal_comments_button_summary">Ezkutatzen ditu iruzkin-botoian agertzen diren txartel mugikorrak eta haien orrialde-hautatzailea</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ezkutatu Denbora-zigilua botoia</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ezkutatu \'Fan nagusiak\' botoia</string>
+  <string name="morphe_hide_comments_topics_title">Ezkutatu \'Gaiak\'</string>
+  <string name="morphe_hide_comments_topics_summary">Ezkutatzen du \'Gaiak\' filter-barraren aukera eta bideoaren gaineko \'Gaia\' iruzkin-aurbistuek</string>
   <string name="morphe_hide_comments_translate_button_title">Ezkutatu Itzuli botoia</string>
   <string name="morphe_hide_comments_zero_state_title">Ezkutatu \"Oraindik iruzkinik ez\" mezua</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Garbitu bilaketa estekak nabarmenduta</string>
@@ -1029,6 +1034,39 @@ Hau konpontzeko, aktibatu 'Bideo-emisioak imitatzea' eta aldatu 'Lehenetsitako b
   <string name="morphe_swipe_overlay_style_entry_7">Gainjarri bertikala (minimoa)</string>
   <string name="morphe_swipe_change_video_title">Gaitu irristatzea bideoak aldatzeko</string>
   <string name="morphe_swipe_change_video_summary">Irristatu pantaila osoko moduan hurrengo edo aurreko bideora saltatzeko</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Eutsi jestura</string>
+  <string name="morphe_hold_gesture_screen_summary">Aldatu eta blokeatu erreprodukzio-abiadusa, ukitu eta eutsi ondoren arrastearierek</string>
+  <string name="morphe_hold_gesture_title">Aktiba eutsi jestura</string>
+  <string name="morphe_hold_gesture_summary">Bideoa ukitu eta eutsi ondoren arrasteari ekin daiteke. Eutsi bitartean abiadura da ukitu eta eutsi playback-eko abiadura</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Ez da erabiltzen \'sakatu eta irrastu\' aktibatuta dagoen bitartean. Tokatu aldatzeko</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">\'Sakatu eta irrastu\' aktibatuta dago</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Eusteko geroa eta irrasteko kontrolen \'sakatu eta irrastu\' geroa tokatu eta eustearekin hasten dira, beraz, bat bakarrik aktiba izan daiteke.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Desaktibu \'sakatu eta irrastu\'</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Eusteko geroa ez da erabiltzen \'sakatu eta irrastu\' aktibatuta dagoen bitartean</string>
+  <string name="morphe_hold_gesture_dialog_title">Eusteko geroa aktibatuta dago</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Desaktibu eusteko geroa</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Aktibu haptic erantzuna</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibrazioa abiadura aldatzen denean eta abiadura blokeatzen denean</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Arrastatu alboa abiadura aldatzeko</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Sakatu eta eutsi ondoren, arrastatu ezkerrera motelagoa izateko eta eskuenera azkaragoa izateko. Gehiago arrastatu zuen heinean, abiadura aldatzen jarraituko du hatza itzuli arte</string>
+  <string name="morphe_hold_gesture_speed_step_title">Abiadura urratsa</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Arrastatzeko sensitibitatea</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Txikia</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normala</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Horia</string>
+  <string name="morphe_hold_gesture_speed_min_title">Abiadura motelena</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Arrastapen batek iragarri dion abiadarekin slowesten abiadaria</string>
+  <string name="morphe_hold_gesture_speed_max_title">Abiadarekin azkarrena</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Arrastapen batek iragarri dion abiadarekin azkarrena (8 arte)</string>
+  <string name="morphe_hold_gesture_lock_title">Beheko aldatzea abiadaria blokeatzeko</string>
+  <string name="morphe_hold_gesture_lock_summary">Sakatu eta eutsi ondoren, behera arrastatu abiadaria mantentzeko hatza altxatu zuenean. Sakatu insignia edo sakatu eta eutsi berriro desblokeatzeko</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Erosi beti blokeatzeko insignia</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Blokeatutako abiadura insignia ikusgarri izaten da seiatzailearen kontrolak ezkuturatuta daudenean</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Desblokeatu bideoa aldatzen denean</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Blokeatutako abiadura amaitzen da beste bideo bat hasten denean</string>
+  <string name="morphe_hold_gesture_lock_hint">Behera egin blokeatzeko</string>
+  <string name="morphe_hold_gesture_lock_release">Askatu %s blokeatzeko</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Azpitituluak</string>
   <string name="morphe_captions_screen_summary">Kudeatu azpititulu automatikoak eta azpitituluen cookie-ak</string>
@@ -1133,6 +1171,17 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Doitu navigation barreko beiramenaren eta pantailaren beheko aldearen edo sistemaren nabigazioaren arteko espazioa</string>
   <string name="morphe_navigation_bar_glass_size_title">Nabigazio barra beiraren tamaina</string>
   <string name="morphe_navigation_bar_glass_size_summary">Doitu nabigazio barra beiraren altuera, zabalera eta botoien arteko espazioa, aurrebistarekin. Pantailaren zabalerara egokitzen ez diren botoiak ezkutatzen dira</string>
+  <string name="morphe_glass_menus_screen_title">Beiramenko menuak</string>
+  <string name="morphe_glass_menus_screen_summary">Menuak beiramen itxurakoak, atzealdequeko edukia bluratuta</string>
+  <string name="morphe_glass_menus_title">Gaitu beiramenko menuak</string>
+  <string name="morphe_glass_menus_summary">Menuak eta beheko panelak beiramen itxurako gisa erakutsiko dira, atzealdequeko edukia bluratuta</string>
+  <string name="morphe_glass_menus_user_dialog_message">Bateriagorrizko gailua aktibatuta dagoenean edo gailuak blurra ez badu onartzen, menuak opa Peabody erakutsiko dira</string>
+  <string name="morphe_glass_menus_opacity_title">Beira opakutasuna</string>
+  <string name="morphe_glass_menus_opacity_summary">Zenbat sailatzen duen menuak eduki difumina (0 garbia da, 100 opakoa)</string>
+  <string name="morphe_glass_menus_blur_title">Lausotu</string>
+  <string name="morphe_glass_menus_blur_summary">Zenbat difumina dagoen menuaren atzealeko edukian</string>
+  <string name="morphe_glass_menus_dim_title">Iluntzea</string>
+  <string name="morphe_glass_menus_dim_summary">Zenbat iluntzen den pantaila beheri-orrialde baten inguruan</string>
   <string name="morphe_navigation_bar_glass_size_height">Altitudea</string>
   <string name="morphe_navigation_bar_glass_size_width">Gehienezko zabalera</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Botoien arteko espazioa</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Kalitate hautaketa menua saltatzen du eta Kalitate aurreratua menua zuzenean irekitzen du</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ezkutatu Premium kalitate aukerak</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Lehenetsi bideo kalitatea</string>
-  <string name="morphe_video_quality_prioritize_summary">Eskuragarri dagoen bideo kalitate altuena kodekaren eraginkortasunaren gainetik lehenesten du</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ezarpen hau desaktibatuta badago, bideo zaharrek ez dute kalitate aukerarik erakutsi ahal izango</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Baimendu \'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Software AV1 dekodetzea baimentzen du \'Android VR\' / \'visionOS\' bezeroa erabiltzean</string>

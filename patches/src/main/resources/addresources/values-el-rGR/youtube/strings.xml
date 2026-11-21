@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Ενεργοποίηση Βιβλιοθήκης / Φίλτρο στο κάτω μενού σας</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Φίλτρο κάτω μενού Βιβλιοθήκη / Εσείς</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Εισαγάγετε τα ονόματα των βιβλιοθηκών / Φίλτρο στο κάτω μενού για φιλτράρισμα, χωρισμένα με νέες γραμμές</string>
+  <string name="morphe_hide_account_menu_badges_title">Απόκρυψη ενδείξεων</string>
   <string name="morphe_hide_account_menu_downloads_title">Απόκρυψη λήψεων</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Απόκρυψη της ενότητας \"Βίντεο που σας άρεσαν\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Απόκρυψη της ενότητας \"Παρακολούθηση αργότερα\"</string>
   <string name="morphe_hide_album_cards_title">Απόκρυψη καρτών άλμπουμ</string>
   <string name="morphe_hide_album_cards_summary">Απόκρυψη των καρτών άλμπουμ κάτω από την περιγραφή του καλλιτέχνη</string>
   <string name="morphe_hide_artist_cards_title">Απόκρυψη καρτών καλλιτεχνών</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">Αποκρύπτει τις συρόμενες κάρτες και τον επιλογέα σελίδας τους, που εμφανίζονται στο κουμπί σχολίων.</string>
   <string name="morphe_hide_comments_timestamp_button_title">Απόκρυψη κουμπιού ώρας</string>
   <string name="morphe_hide_comments_top_fans_button_title">Απόκρυψη κουμπιού \'Κορυφαίοι θαυμαστές\'</string>
+  <string name="morphe_hide_comments_topics_title">Απόκρυψη \"Θέμάτων\"</string>
+  <string name="morphe_hide_comments_topics_summary">Απόκρυψη της επιλογής \"Θέματα\" στη γραμμή φίλτρου και των προεπισκοπήσεων σχολίων \"Θέμα\" κάτω από το βίντεο</string>
   <string name="morphe_hide_comments_translate_button_title">Απόκρυψη κουμπιού Μετάφρασης</string>
   <string name="morphe_hide_comments_zero_state_title">Απόκρυψη μηνύματος «Δεν υπάρχουν σχόλια ακόμη»</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Απολυμαίνετε τις διασυνδεδεμένες αναζητήσεις</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Κάθετη διάταξη (μινιμαλιστική)</string>
   <string name="morphe_swipe_change_video_title">Χειρονομία εναλλαγής βίντεο στην πλήρη οθόνη</string>
   <string name="morphe_swipe_change_video_summary">Σάρωση σε λειτουργία πλήρους οθόνης για μετάβαση στο επόμενο ή στο προηγούμενο βίντεο</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Χειρονομία συγκράτησης</string>
+  <string name="morphe_hold_gesture_screen_summary">Αλλάξτε και κλειδώστε την ταχύτητα αναπαραγωγής σύροντας μετά από πάτημα και συγκράτηση</string>
+  <string name="morphe_hold_gesture_title">Ενεργοποίηση χειρονομίας συγκράτησης</string>
+  <string name="morphe_hold_gesture_summary">Το πάτημα και η συγκράτηση του βίντεο μπορεί να ακολουθηθεί από σύρσιμο. Η ταχύτητα κατά τη συγκράτηση είναι η ταχύτητα αναπαραγωγής κατά το πάτημα και τη συγκράτηση</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Δεν χρησιμοποιείται όταν είναι ενεργοποιημένη η χειρονομία πατήματος για σάρωση. Πατήστε για να αλλάξετε</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Η χειρονομία παρατεταμένου πατήματος για σάρωση είναι ενεργοποιημένη</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Η χειρονομία παρακράτησης και η χειρονομία πατήματος για σάρωση των ελέγχων σάρωσης ξεκινούν και οι δύο με πάτημα και κράτημα, επομένως μπορεί να είναι ενεργοποιημένη μόνο μία από αυτές.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Απενεργοποίηση πατήματος για σάρωση</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Η χειρονομία παρακράτησης δεν χρησιμοποιείται όταν είναι ενεργοποιημένη η χειρονομία πατήματος για σάρωση</string>
+  <string name="morphe_hold_gesture_dialog_title">Η χειρονομία παρακράτησης είναι ενεργοποιημένη</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Απενεργοποίηση χειρονομίας παρακράτησης</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Απόκριση δόνησης</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Δονεί όταν αλλάζει η ταχύτητα και όταν κλειδώνει η ταχύτητα</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Σύρετε πλευρικά για να αλλάξετε την ταχύτητα</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Μετά από πάτημα και συγκράτηση, σύρετε αριστερά για πιο αργή αναπαραγωγή και δεξιά για πιο γρήγορη. Όσο πιο έξω σύρετε, τόσο περισσότερο αλλάζει η ταχύτητα μέχρι το δάχτυλο να επιστρέψει</string>
+  <string name="morphe_hold_gesture_speed_step_title">Βήμα ταχύτητας</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Ευαισθησία σύρσης</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Χαμηλή</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Κανονική</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Υψηλή</string>
+  <string name="morphe_hold_gesture_speed_min_title">Ελάχιστη ταχύτητα</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Η ελάχιστη ταχύτητα που μπορεί να φτάσει μια σύρση</string>
+  <string name="morphe_hold_gesture_speed_max_title">Μέγιστη ταχύτητα</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Η μέγιστη ταχύτητα που μπορεί να φτάσει μια σύρση (έως 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Σύρση προς τα κάτω για κλείδωμα της ταχύτητας</string>
+  <string name="morphe_hold_gesture_lock_summary">Μετά από πάτημα και συγκράτηση, σύρτε προς τα κάτω για να διατηρηθεί η ταχύτητα όταν σηκώσετε το δάκτυλό σας. Πατήστε το σήμα ή πατήστε και κρατήστε ξανά για ξεκλείδωμα</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Πάντα εμφάνιση του σήματος κλειδώματος</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Το σήμα μιας κλειδωμένης ταχύτητας παραμένει ορατό ενώ τα στοιχεία ελέγχου του παίκτη είναι κρυμμένα</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Ξεκλείδωμα όταν αλλάζει το βίντεο</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Μια κλειδωμένη ταχύτητα τερματίζει όταν ξεκινά ένα άλλο βίντεο</string>
+  <string name="morphe_hold_gesture_lock_hint">Σύρετε προς τα κάτω για κλείδωμα</string>
+  <string name="morphe_hold_gesture_lock_release">Αφήστε για κλείδωμα %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Υπότιτλοι</string>
   <string name="morphe_captions_screen_summary">Διαχείριση αυτόματων υποτίτλων και cookies υποτίτλων</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Προσαρμόστε τον χώρο μεταξύ της γυάλινης γραμμής πλοήγησης και του κάτω μέρους της οθόνης ή της πλοήγησης του συστήματος</string>
   <string name="morphe_navigation_bar_glass_size_title">Μέγεθος γυάλινης γραμμής πλοήγησης</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ρυθμίστε το ύψος, το πλάτος και την απόσταση των κουμπιών της γυάλινης γραμμής πλοήγησης, με προεπισκόπηση. Τα κουμπιά που δεν χωράνε στο πλάτος της οθόνης κρύβονται</string>
+  <string name="morphe_glass_menus_screen_title">Γυάλινα μενού</string>
+  <string name="morphe_glass_menus_screen_summary">Μενού σαν θολό γυαλί πάνω από το θολό περιεχόμενο πίσω τους</string>
+  <string name="morphe_glass_menus_title">Ενεργοποίηση γυάλινων μενού</string>
+  <string name="morphe_glass_menus_summary">Εμφανίζει τα μενού και τα bottom sheets ως θολό γυαλί, με το περιεχόμενο πίσω τους να είναι θολό</string>
+  <string name="morphe_glass_menus_user_dialog_message">Τα μενού εμφανίζονται σχεδόν αδιαφανή όταν είναι ενεργή η εξοικονόμηση μπαταρίας ή εάν η συσκευή δεν υποστηρίζει θόλωμα</string>
+  <string name="morphe_glass_menus_opacity_title">Αδιαφάνεια γυαλιού</string>
+  <string name="morphe_glass_menus_opacity_summary">Το πόσο καλύπτει το μενού το θολό περιεχόμενο (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
+  <string name="morphe_glass_menus_blur_title">Θόλωμα</string>
+  <string name="morphe_glass_menus_blur_summary">Το πόσο θολρίζει το περιεχόμενο πίσω από το μενού</string>
+  <string name="morphe_glass_menus_dim_title">Σκότος</string>
+  <string name="morphe_glass_menus_dim_summary">Το πόσο σκουρόνιασε η οθόνη γύρω από ένα φύλλο στο κάτω μέρος</string>
   <string name="morphe_navigation_bar_glass_size_height">Ύψος</string>
   <string name="morphe_navigation_bar_glass_size_width">Μέγιστο πλάτος</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Απόσταση κουμπιών</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Παρακάμπτει το μενού επιλογής ποιότητας και ανοίγει απευθείας το μενού ποιότητας \'Προχωρημένων\'</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Απόκρυψη επιλογών υψηλής ποιότητας</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Προτεραιότητα στην ποιότητα βίντεο</string>
-  <string name="morphe_video_quality_prioritize_summary">Δίνει προτεραιότητα στην υψηλότερη διαθέσιμη ποιότητα βίντεο έναντι της αποδοτικότητας του κωδικοποιητή</string>
-  <string name="morphe_video_quality_prioritize_dialog">Εάν αυτή η ρύθμιση είναι απενεργοποιημένη, τότε παλαιότερα βίντεο ενδέχεται να μην εμφανίζουν επιλογές ποιότητας βίντεο</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Να επιτραπεί AV1 για \"Android VR\" / \"visionOS\"</string>
   <string name="morphe_spoof_video_streams_av1_summary">Επιτρέπει την αποκωδικοποίηση AV1 μέσω λογισμικού κατά τη χρήση του πελάτη \"Android VR\" / \"visionOS\"</string>

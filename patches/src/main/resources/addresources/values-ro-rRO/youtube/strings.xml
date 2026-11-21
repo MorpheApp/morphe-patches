@@ -61,7 +61,10 @@ Modificările includ:
   <string name="morphe_hide_account_menu_title">Activează Biblioteca / Filtrul din meniul de jos</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Activează Biblioteca / Filtrul din meniul de jos</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introduceți numele meniurilor din Bibliotecă / din meniul de jos, separate prin linii noi, pentru filtrare</string>
+  <string name="morphe_hide_account_menu_badges_title">Ascunde insignenele</string>
   <string name="morphe_hide_account_menu_downloads_title">Ascunde Descărcările</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Ascunde \"Videoclipuri apreciate\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Ascunde \"Urmărește mai târziu\"</string>
   <string name="morphe_hide_album_cards_title">Ascundeți cardurile de album</string>
   <string name="morphe_hide_album_cards_summary">Ascunde cardurile de albume de sub descrierea artistului</string>
   <string name="morphe_hide_artist_cards_title">Ascunde cardurile artistului</string>
@@ -427,6 +430,8 @@ Limitări:
   <string name="morphe_minimal_comments_button_summary">Ascunde cardurile glisante și selectorul de pagini al acestora de pe butonul de comentarii</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ascunde butonul Timestamp</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ascunde butonul \'Top fani\'</string>
+  <string name="morphe_hide_comments_topics_title">Ascunde \"Subiecte\"</string>
+  <string name="morphe_hide_comments_topics_summary">Ascunde opțiunea barei de filtrare \"Subiecte\" și previzualizările comentariilor pe subiect din beneath videoclip</string>
   <string name="morphe_hide_comments_translate_button_title">Ascunde butonul de traducere</string>
   <string name="morphe_hide_comments_zero_state_title">Ascunde mesajul „Nu sunt încă comentarii”</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Dezactivează legăturile de căutare evidențiate</string>
@@ -1029,6 +1034,39 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
   <string name="morphe_swipe_overlay_style_entry_7">Suprapunere verticală (minimală)</string>
   <string name="morphe_swipe_change_video_title">Activați glisarea pentru a schimba videoclipurile</string>
   <string name="morphe_swipe_change_video_summary">Glisați în modul ecran complet pentru a trece la videoclipul următor sau anterior</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Gest de menținere</string>
+  <string name="morphe_hold_gesture_screen_summary">Schimbă și blochează viteza de redare prin tragere după atingere și menținere</string>
+  <string name="morphe_hold_gesture_title">Activare gest de menținere</string>
+  <string name="morphe_hold_gesture_summary">Atingerea și menținerea videoclipului pot fi urmate de o tragere. Viteza în timpul meninerii este viteza de redare pentru atingere și menținere</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Nu este utilizat în timp ce „apăsarea pentru a trage” este activată. Apasă pentru a schimba</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Apăsarea pentru a trage este activată</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Gestul de menținere și gestul de apăsare pentru a trage al controlelor de glisare încep ambele prin atingere și menținere, deci doar unul dintre acestea poate fi activat.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Dezactivează apăsarea pentru a trage</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Gestul de menținere nu este utilizat în timp ce „apăsarea pentru a trage” este activată</string>
+  <string name="morphe_hold_gesture_dialog_title">Gestul de menținere este activat</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Dezactivează gestul de menținere</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Activează feedback haptic</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibrează atunci când viteza se modifică și atunci când viteza este blocată</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Trage lateral pentru a schimba viteza</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">După atingere și menținere, trage spre stânga pentru a reda mai lent și spre dreapta pentru a reda mai rapid. Pe măsură ce tragi mai departe, viteza continuă să se schimbe până când degetul revine</string>
+  <string name="morphe_hold_gesture_speed_step_title">Pas de viteză</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Sensibilitatea tragerii</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Scăzută</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normală</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Ridicată</string>
+  <string name="morphe_hold_gesture_speed_min_title">Viteza minimă</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Cea mai mică viteză pe care o poate atinge o tragere</string>
+  <string name="morphe_hold_gesture_speed_max_title">Viteza maximă</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Cea mai mare viteză pe care o poate atinge tragerea (până la 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Trageți în jos pentru a bloca viteza</string>
+  <string name="morphe_hold_gesture_lock_summary">După atingerea și menținerea, trageți în jos pentru a păstra viteza atunci când ridicați degetul. Atingeți insigna sau atingeți și mențineți din nou pentru a debloca</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Afișați întotdeauna insigna de blocare</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Insigna unei viteze blocate rămâne vizibilă în timp ce controlerele playerului sunt ascunse</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Deblocați atunci când videoclipul se schimbă</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">O viteză blocată se termină atunci când începe un alt videoclip</string>
+  <string name="morphe_hold_gesture_lock_hint">Trageți în jos pentru a bloca</string>
+  <string name="morphe_hold_gesture_lock_release">Eliberați pentru a bloca %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtitrări</string>
   <string name="morphe_captions_screen_summary">Gestionați subtitrările automate și cookie-urile subtitrărilor</string>
@@ -1133,6 +1171,17 @@ Pentru a accesa Setările, activați butonul Setări prin General → Bara de in
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Ajustați spațiul dintre bara de navigare din sticlă și partea de jos a ecranului sau navigarea de sistem</string>
   <string name="morphe_navigation_bar_glass_size_title">Dimensiunea barei de navigare de sticlă</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajustați înălțimea, lățimea și spațierea butoanelor barei de navigare de sticlă, cu o previzualizare. Butoanele care nu încap în lățimea ecranului sunt ascunse</string>
+  <string name="morphe_glass_menus_screen_title">Meniu de sticlă</string>
+  <string name="morphe_glass_menus_screen_summary">Meniuri sub formă de sticlă mată peste conținutul blurat de dedesubt</string>
+  <string name="morphe_glass_menus_title">Activați meniurile de sticlă</string>
+  <string name="morphe_glass_menus_summary">Afișează meniurile și panourile inferioare ca sticlă mată, cu conținutul din spate blurat</string>
+  <string name="morphe_glass_menus_user_dialog_message">Meniurile sunt afișate aproape opace atunci când economisirea bateriei este activată sau dacă dispozitivul nu suportă blurul</string>
+  <string name="morphe_glass_menus_opacity_title">Opacitatea sticlei</string>
+  <string name="morphe_glass_menus_opacity_summary">Cât de mult acoperă meniul conținutul blurat (0 este transparent, 100 este opac)</string>
+  <string name="morphe_glass_menus_blur_title">Estompare</string>
+  <string name="morphe_glass_menus_blur_summary">Cât de mult este blurat conținutul din spatele meniului</string>
+  <string name="morphe_glass_menus_dim_title">Întunecare</string>
+  <string name="morphe_glass_menus_dim_summary">Cât de mult este întunecat ecranul din jurul unei foi de jos</string>
   <string name="morphe_navigation_bar_glass_size_height">Înălțime</string>
   <string name="morphe_navigation_bar_glass_size_width">Lățime maximă</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spațierea butoanelor</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Sare peste meniul de selecție a calității și deschide direct meniul de calitate avansat.</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ascunde opțiunile de calitate Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Prioritizează calitatea video</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioritizează cea mai înaltă calitate video disponibilă în detrimentul eficienței codec-ului</string>
-  <string name="morphe_video_quality_prioritize_dialog">Dacă această setare este dezactivată, videoclipurile mai vechi pot să nu afișeze opțiuni de calitate video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Permite AV1 pentru \"Android VR\" / \"visionOS\"</string>
   <string name="morphe_spoof_video_streams_av1_summary">Permite decodarea software AV1 atunci când se utilizează clientul \"Android VR\" / \"visionOS\"</string>

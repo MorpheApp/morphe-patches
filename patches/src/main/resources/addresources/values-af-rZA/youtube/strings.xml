@@ -61,7 +61,10 @@ Veranderinge sluit in:
   <string name="morphe_hide_account_menu_title">Aktiveer Biblioteek / Jy onderste menu filter</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Biblioteek / Jy onderste menu filter</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Voer die Biblioteek / Jy onderste menu-name in om volgens te filter, geskei deur nuwe reëls</string>
+  <string name="morphe_hide_account_menu_badges_title">Versteek kentekens</string>
   <string name="morphe_hide_account_menu_downloads_title">Verberg Aflaaie</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Versteek \"Gelike video\'s\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Versteek \"Kyk later\"</string>
   <string name="morphe_hide_album_cards_title">Verberg albumkaarte</string>
   <string name="morphe_hide_album_cards_summary">Verberg die albumkaarte onder die kunstenaar se beskrywing</string>
   <string name="morphe_hide_artist_cards_title">Verberg kunstenaarskaarte</string>
@@ -427,6 +430,8 @@ Beperkings:
   <string name="morphe_minimal_comments_button_summary">Versteek die skuifkaarte en hul bladsykieser wat op die kommentaarknoppie vertoon word</string>
   <string name="morphe_hide_comments_timestamp_button_title">Verberg Tydstempel-knoppie</string>
   <string name="morphe_hide_comments_top_fans_button_title">Versteek die \'Top fans\'-knoppie</string>
+  <string name="morphe_hide_comments_topics_title">Steek \'Onderwerpe\' weg</string>
+  <string name="morphe_hide_comments_topics_summary">Steek die \'Onderwerpe\'-filterbalk-opsie en die \'Onderwerp\'-kommentaarvoorskoue onder die video weg</string>
   <string name="morphe_hide_comments_translate_button_title">Versteek vertaalknoppie</string>
   <string name="morphe_hide_comments_zero_state_title">Versteek boodskap \'Nog geen kommentaar nie\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Saniteer uitgeligte soekskakels</string>
@@ -1029,6 +1034,39 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_swipe_overlay_style_entry_7">Vertikale oorleg (minimaal)</string>
   <string name="morphe_swipe_change_video_title">Aktiveer swiep om video\'s te verander</string>
   <string name="morphe_swipe_change_video_summary">Veeg in volskermmodus om na die volgende of vorige video te spring</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Hou-gebaar</string>
+  <string name="morphe_hold_gesture_screen_summary">Verander en sluit die terugspeelspoed deur te sleep nadat jy getik en gehou het</string>
+  <string name="morphe_hold_gesture_title">Aktiveer hou-gebaar</string>
+  <string name="morphe_hold_gesture_summary">Tik en hou die video vas, gevolg deur \'n sleepbeweging. Die spoed terwyl jy hou, is die tik-en-hou-terugspeelspoed</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Nie gebruik terwyl \"druk om te vee\" aan is nie. Tik om te verander</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Druk om te vee is aan</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Die vashou-gebaar en die \"druk om te vee\"-gebaar van die vee-beheer begin albei deur te tik en vas te hou, so slegs een van hulle kan aan wees.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Skakel druk om te vee af</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Vashou-gebaar word nie gebruik terwyl \"druk om te vee\" aan is nie</string>
+  <string name="morphe_hold_gesture_dialog_title">Vashou-gebaar is aan</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Skakel vashou-gebaar af</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Aktiveer haptiese terugvoer</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibreer wanneer die spoed verander en wanneer die spoed geslot is</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Sleep sywaarts om die spoed te verander</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Nadat jy getik en gehou het, sleep links om stadiger te speel en regs om vinniger te speel. Hoe verder uit, hoe meer verander die spoed totdat die vinger terugkom</string>
+  <string name="morphe_hold_gesture_speed_step_title">Spoedstap</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Sleepgevoeligheid</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Laag</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normaal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Hoog</string>
+  <string name="morphe_hold_gesture_speed_min_title">Stadigste spoed</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Die stadigste spoed wat \'n sleep kan bereik</string>
+  <string name="morphe_hold_gesture_speed_max_title">Vinnigste spoed</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Die vinnigste spoed wat \'n sleepbeweging kan bereik (tot 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Sleep af om die spoed te sluit</string>
+  <string name="morphe_hold_gesture_lock_summary">Nadat jy getik en gehou het, sleep af om die spoed te behou wanneer die vinger opgelig word. Tik op die kenteken of tik en hou weer om te ontsluit</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Wys altyd die slot-kenteken</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Die kenteken van \'n geslote spoed bly sigbaar terwyl die spelerbeheerder versteek is</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Ontsluit wanneer die video verander</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">\'n Geslote spoed eindig wanneer \'n ander video begin</string>
+  <string name="morphe_hold_gesture_lock_hint">Trek af om te sluit</string>
+  <string name="morphe_hold_gesture_lock_release">Laat los om %s te sluit</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Ondertitels</string>
   <string name="morphe_captions_screen_summary">Bestuur outomatiese onderskrifte en onderskrifkoekies</string>
@@ -1133,6 +1171,17 @@ Om toegang tot Instellings te kry, aktiveer die Instellings-knoppie via Algemeen
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Pas die spasie tussen die glas navigasiebalk en die onderkant van die skerm of die stelselnavigasie aan</string>
   <string name="morphe_navigation_bar_glass_size_title">Glas-navigasiebalk grootte</string>
   <string name="morphe_navigation_bar_glass_size_summary">Pas die hoogte, die breedte en die knoppiespasiëring van die glas-navigasiebalk aan, met \'n voorbeeld. Knoppies wat nie in die breedte van die skerm pas nie, word versteek</string>
+  <string name="morphe_glass_menus_screen_title">Glasmenu\'s</string>
+  <string name="morphe_glass_menus_screen_summary">Menu\'s as matglas oor die vervaagde inhoud agter hulle</string>
+  <string name="morphe_glass_menus_title">Aktiveer glasmenu\'s</string>
+  <string name="morphe_glass_menus_summary">Wys menu\'s en onderste blaaie as matglas, met die inhoud agter hulle vervaag</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menu\'s word byna ondoorsigtig gewys terwyl die batterybespaarder aan is, of as die toestel nie vervaging ondersteun nie</string>
+  <string name="morphe_glass_menus_opacity_title">Glas-opasiteit</string>
+  <string name="morphe_glass_menus_opacity_summary">Hoeveel die spyskaart die vervaagde inhoud bedek (0 is helder, 100 is opak)</string>
+  <string name="morphe_glass_menus_blur_title">Vervaag</string>
+  <string name="morphe_glass_menus_blur_summary">Hoeveel die inhoud agter die spyskaart vervaag is</string>
+  <string name="morphe_glass_menus_dim_title">Verdonker</string>
+  <string name="morphe_glass_menus_dim_summary">Hoeveel die skerm rondom \'n onderste vel verdonker is</string>
   <string name="morphe_navigation_bar_glass_size_height">Hoogte</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimum breedte</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knoppiespasiëring</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Slaan die kwaliteitkeusemenu oor en open die Gevorderde kwaliteitmenu direk</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Versteek Premium kwaliteit opsies</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Prioriteer videokwaliteit</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioriteer die hoogste beskikbare videokwaliteit bo kodekdoeltreffendheid</string>
-  <string name="morphe_video_quality_prioritize_dialog">As hierdie instelling afgeskakel is, kan ouer video\'s geen videokwaliteitsopsies vertoon nie</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Laat \'Android VR\' / \'visionOS\' AV1 toe</string>
   <string name="morphe_spoof_video_streams_av1_summary">Laat sagteware AV1-dekodering toe wanneer die \'Android VR\' / \'visionOS\'-kliënt gebruik word</string>

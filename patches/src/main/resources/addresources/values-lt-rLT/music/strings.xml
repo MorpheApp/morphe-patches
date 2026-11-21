@@ -265,6 +265,20 @@ Pristabdžius crossfade norint žiūrėti muzikinį vaizdo įrašą, kai kurie v
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Ilgstoti, kai garsas išjungtas</string>
   <string name="morphe_music_pause_when_muted_summary">Ilgsto atkūrimą, kai sistemos garsumas išjungtas, ir vėl jį paleidžia, kai garsumas padidinamas</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">„Cast“ mygtukas taip pat gali transliuoti į „Sonos“ ir kitus UPnP garsiakalbius jūsų Wi-Fi tinkle</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Prisijunkite prie įrenginio</string>
+  <string name="morphe_music_sonos_cast_searching">Ieškoma garsiakalbių jūsų Wi-Fi tinkle…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Pasirinkite garsiakalbį savo Wi-Fi tinkle</string>
+  <string name="morphe_music_sonos_cast_casting_to">Transliuojama į %s</string>
+  <string name="morphe_music_sonos_cast_connected">Prijungta</string>
+  <string name="morphe_music_sonos_cast_disconnect">Atjungti</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Prastumėkliai per Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktyvu</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest ir „Google TV“ įrenginiai</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Nepavyko prisijungti prie %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Atkūrimo greitis</string>
   <string name="morphe_music_playback_speed_summary">Greitis taikomas visiems kūriniams. Esant 100 % naudojamas programėlės greitis, pvz., tinklalaidės atkūrimo greitis</string>
@@ -586,6 +600,9 @@ Kad scrobbling būtų sinchronizuojamas foninio atkūrimo metu, įsitikinkite, k
   <string name="morphe_music_soundproof_about_summary">"Atlikėjo duomenys imami iš SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) ir atsisiunčiami kartą per dieną. Praleidžiant niekas negauna informacijos apie tai, ką grojate. Atidarant SoundProof lapą, dabartinis atlikėjo pavadinimas siunčiamas į SoundProof serverį, kad būtų parodyti naujausi balsai ir galima būtų balsuoti. Serveris atskiria balsuojančiuosius pagal IP adresą, todėl jūsų balsas kitame tinkle gali būti matomas kitaip.
 
 Duomenų bazė licencijuota pagal ODC Open Database License (ODbL). Įrašai iš Soul Over AI (aut. xoundbyte) licencijuoti pagal CC BY 4.0. Nėra susieta su SoundProof ar Soul Over AI ir jie to nepatvirtino."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">\"Apple Music\" animuota viršutinė iliustracija</string>
+  <string name="morphe_music_apple_music_artwork_summary">Leiduvyje rodo animuotą \"Apple Music\" albumo viršutinę iliustraciją, jei albumas ją turi. Kiekvienos dainos pavadinimas, atlikėjas ir albumas siunčiami į \"Apple Music\"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Šiam įrenginio failui dainos žodžiai nepriejengimi.</string>
   <string name="morphe_music_lyrics_enabled_title">Naudoti trečiųjų šalių dainų tekstus</string>

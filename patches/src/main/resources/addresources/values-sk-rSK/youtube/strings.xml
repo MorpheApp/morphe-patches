@@ -61,7 +61,10 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_account_menu_title">Povoliť knižnicu / Filter v dolnom menu</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Knižnica / Filter v dolnom menu</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Zadajte názvy knižníc / položiek dolného menu, ktoré chcete filtrovať, oddelené novými riadkami</string>
+  <string name="morphe_hide_account_menu_badges_title">Skryť odznaky</string>
   <string name="morphe_hide_account_menu_downloads_title">Skryť sťahovania</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Skryť \"Obľubené videá\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Skryť \"Pozrieť neskôr\"</string>
   <string name="morphe_hide_album_cards_title">Skryť karty albumov</string>
   <string name="morphe_hide_album_cards_summary">Skryje karty albumov pod popisom interpreta</string>
   <string name="morphe_hide_artist_cards_title">Skryť karty interpreta</string>
@@ -427,6 +430,8 @@ Obmedzenia:
   <string name="morphe_minimal_comments_button_summary">Skryje posuvné karty aj ich výber stránok zobrazené na tlačidle komentárov.</string>
   <string name="morphe_hide_comments_timestamp_button_title">Skryť tlačidlo Časové značky</string>
   <string name="morphe_hide_comments_top_fans_button_title">Skryť tlačidlo \'Top fans\'</string>
+  <string name="morphe_hide_comments_topics_title">Skryť „Témy“</string>
+  <string name="morphe_hide_comments_topics_summary">Skryje možnosť lišty filtra „Témy“ a náhľady komentárov k témam pod videom</string>
   <string name="morphe_hide_comments_translate_button_title">Skryť tlačidlo Preložiť</string>
   <string name="morphe_hide_comments_zero_state_title">Skryť správu „Zatiaľ žiadne komentáre“</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Vyčistí zvýraznené odkazy vo vyhľadávaní</string>
@@ -1026,6 +1031,39 @@ Ak to chcete vyriešiť, zapnite 'Spoofovať video streamy' a zmeňte 'Predvolen
   <string name="morphe_swipe_overlay_style_entry_7">Vertikálny prekryv (minimálny)</string>
   <string name="morphe_swipe_change_video_title">Povoliť posúvanie na zmenu videa</string>
   <string name="morphe_swipe_change_video_summary">Posúvaním v režime na celú obrazovku preskočíte na ďalšie alebo predchádzajúce video</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Gesto podržania</string>
+  <string name="morphe_hold_gesture_screen_summary">Zmeňte a uzamknite rýchlosť prehrávania potiahnutím po ťapkaní a podržaní</string>
+  <string name="morphe_hold_gesture_title">Povoliť gesto podržania</string>
+  <string name="morphe_hold_gesture_summary">Ťapkanie a podržanie videa môže nasledovať potiahnutie. Rýchlosť pri podržaní je rýchlosť prehrávania pri ťapkaní a podržaní</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Nepoužíva sa, keď je zapnuté stlačiť a potiahnuť. Klepnutím zmeníte</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Stlačiť a potiahnuť je zapnuté</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Gesto podržania a gesto stlačiť a potiahnuť ovládania potiahnutia začínajú klepnutím a podržaním, takže môže byť zapnuté len jedno z nich.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Vypnúť stlačiť a potiahnuť</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Gesto podržania sa nepoužíva, keď je zapnuté stlačiť a potiahnuť</string>
+  <string name="morphe_hold_gesture_dialog_title">Gesto podržania je zapnuté</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Vypnúť gesto podržania</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Povoliť haptickú spätnú väzbu</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibruje pri zmene rýchlosti a pri jej zamknutí</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Ťahajte do strany na zmenu rýchlosti</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Po podržaní ťahajte doľava pre pomalšie prehrávanie a doprava pre rýchlejšie. Čím ďalej potiahnete, tým sa viac mení rýchlosť, kým prst nevrátite</string>
+  <string name="morphe_hold_gesture_speed_step_title">Krok rýchlosti</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Citlivosť ťahania</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Nízka</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normálna</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Vysoká</string>
+  <string name="morphe_hold_gesture_speed_min_title">Najpomalšia rýchlosť</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Najpomalšia rýchlosť, ktorú možno ťahaním dosiahnuť</string>
+  <string name="morphe_hold_gesture_speed_max_title">Najvyššia rýchlosť</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Najvyššia rýchlosť, ktorú môže pretiahnutie dosiahnuť (do 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Pretiahnutím nadol zamknite rýchlosť</string>
+  <string name="morphe_hold_gesture_lock_summary">Po klepnutí a podržaní pretiahnite nadol, aby ste zachovali rýchlosť aj po zdvihnutí prsta. Klepnutím na odznaku alebo opätovným klepnutím a podržaním rýchlosť odomknite</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Vždy zobrazovať odznak zámku</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Odznak zamknutej rýchlosti zostáva viditeľný aj vtedy, keď sú ovládacie prvky prehrávača skryté</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Odomknúť pri zmene videa</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Zamknutá rýchlosť končí s aníciom ďalšieho videa</string>
+  <string name="morphe_hold_gesture_lock_hint">Potiahnite nadol na zamknutie</string>
+  <string name="morphe_hold_gesture_lock_release">K uvoľneniu pre zamknutie %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Titulky</string>
   <string name="morphe_captions_screen_summary">Správa automatických titulkov a súborov cookie s titulkami</string>
@@ -1130,6 +1168,17 @@ Ak chcete pristúpiť k Nastaveniam, zapnite tlačidlo Nastavenia cez Všeobecn�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Upravte medzeru medzi skleneným navigačným panelom a spodnou časťou obrazovky alebo systémovou navigáciou</string>
   <string name="morphe_navigation_bar_glass_size_title">Veľkosť skleného navigačného panela</string>
   <string name="morphe_navigation_bar_glass_size_summary">Upravte výšku, šírku a rozostup tlačidiel skleného navigačného panela s náhľadom. Tlačidlá, ktoré sa nezmestia do šírky obrazovky, sa skryjú</string>
+  <string name="morphe_glass_menus_screen_title">Sklenené ponuky</string>
+  <string name="morphe_glass_menus_screen_summary">Ponuky ako mliečne sklo nad rozostreným obsahom za nimi</string>
+  <string name="morphe_glass_menus_title">Povoliť sklenené ponuky</string>
+  <string name="morphe_glass_menus_summary">Zobrazuje ponuky a spodné panely ako mliečne sklo s rozostreným obsahom za nimi</string>
+  <string name="morphe_glass_menus_user_dialog_message">Ponuky sa zobrazia takmer nepriehľadné, keď je zapnutý režim úspory batérie alebo ak zariadenie nepodporuje rozostrenie</string>
+  <string name="morphe_glass_menus_opacity_title">Nepriehľadnosť skla</string>
+  <string name="morphe_glass_menus_opacity_summary">Do akej miery menu zakryva rozmazaný obsah (0 je priehľadné, 100 je nepriehľadné)</string>
+  <string name="morphe_glass_menus_blur_title">Rozmazanie</string>
+  <string name="morphe_glass_menus_blur_summary">Do akej miery je obsah za menu rozmazaný</string>
+  <string name="morphe_glass_menus_dim_title">Stmavenie</string>
+  <string name="morphe_glass_menus_dim_summary">Do akej miery je obrazovka okolo spodného panelu stmavená</string>
   <string name="morphe_navigation_bar_glass_size_height">Výška</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximálna šírka</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Rozostup tlačidiel</string>
@@ -1691,10 +1740,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Preskočí menu výberu kvality a otvorí priamo menu kvality \'Pokročilé\'</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skryť možnosti kvality videa Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Uprednostniť kvalitu videa</string>
-  <string name="morphe_video_quality_prioritize_summary">Uprednostňuje najvyššiu dostupnú kvalitu videa pred efektivitou kodeku</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ak je toto nastavenie vypnuté, staršie videá môžu zobrazovať žiadne možnosti kvality videa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Povoliť AV1 pre „Android VR“ / „visionOS“</string>
   <string name="morphe_spoof_video_streams_av1_summary">Umožňuje softvérové dekódovanie AV1 pri používaní klienta „Android VR“ / „visionOS“</string>

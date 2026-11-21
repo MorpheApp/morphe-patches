@@ -140,7 +140,7 @@ Android System WebView'u açmak için TAMAM'a dokunun."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Şunu etkinleştirmeyi dene: Video akışlarını taklit et &gt; Android VR oturum açma</string>
   <string name="morphe_spoof_video_streams_client_type_title">Varsayılan istemci</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR oturum açma</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' oturum açma</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ayrı bir oturum açma işlemi gerektirir. Devam etmek için buraya dokunun</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Şu anda \'Android VR\' oturumu açık</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -167,7 +167,7 @@ Oturum açmak için aşağıdan devam'a basın"</string>
 • Morphe ayarlarınız, Android VR kimlik doğrulamasını içe/dışa aktarmaz 
 • Bu uygulama 6 ay boyunca kullanılmazsa Google bu kimlik doğrulamasını kaldıracaktır 
 • Google şifrenizi değiştirirseniz veya bu cihazı Google ayarlarınızdan kaldırırsanız tekrar oturum açmanız gerekir"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobil Web oturum açma</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobil Web\' oturum açma</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">İsteğe bağlı: Videoları hesabınızla oynatmak için YouTube web sitesinde oturum açın. Devam etmek için buraya dokunun</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Şu anda \'Mobil Web\' oturumu açık</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -213,6 +213,10 @@ Oturum açmak için aşağıdan devam'a basın"</string>
   <string name="morphe_seek_notification_media_length_invalid">Sardırma süresi 1 ile %s saniye arasında olmalıdır. Varsayılan kullanılıyor</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolünü devre dışı bırak</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Video kalitesine öncelik ver</string>
+  <string name="morphe_prioritize_video_quality_summary">Kodek verimliliğinden ziyade en yüksek video kalitesine öncelik verir</string>
+  <string name="morphe_prioritize_video_quality_dialog">Bu ayar kapatılırsa, eski videolarda hiçbir video kalitesi seçeneği görünmeyebilir</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC sesi devre dışı bırak</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

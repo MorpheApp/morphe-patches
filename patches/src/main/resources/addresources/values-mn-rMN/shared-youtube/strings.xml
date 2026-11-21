@@ -142,7 +142,7 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Дараах тохиргоог идэвхжүүлж үзнэ үү: Видео стрийм дуурайх &gt; Android VR-т нэвтрэх</string>
   <string name="morphe_spoof_video_streams_client_type_title">Үндсэн клиент</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR нэвтрэх</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\'-ээр нэвтрэх</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-т тусад нь нэвтрэх шаардлагатай. Үргэлжлүүлэхийн тулд энд дарна уу</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Одоогоор \'Android VR\'-т нэвтэрсэн байна</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -169,7 +169,7 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
 • Таны Morphe тохиргоо Android VR баталгаажуулалтыг импортлах/экспортлохгүй
 • Хэрэв энэ аппликейшнийг 6 сарын турш ашиглаагүй бол Google энэ баталгаажуулалтыг устгах болно
 • Хэрэв та Google нууц үгээ сольсон эсвэл Google тохиргооноосоо энэ төхөөрөмжийг хассан бол дахин нэвтрэх шаардлагатай болно"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Мобайл вебээр нэвтрэх</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Мобайл веб\'-ээр нэвтрэх</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Сонголттой: Өөрийн бүртгэлээр видео үзэхийн тулд YouTube вэбсайтад нэвтрэнэ үү. Үргэлжлүүлэхийн тулд энд дарна уу</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Одоогоор \'Mobile Web\'-д нэвтэрсэн байна</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -215,6 +215,10 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_seek_notification_media_length_invalid">Хайлтын хугацаа 1-ээс %s секундын хооронд байх ёстой. Үндсэн утгыг ашиглана уу</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC протоколыг идэвхгүй болгох</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Видеоны чанарыг тэргүүн эрэмбэлэх</string>
+  <string name="morphe_prioritize_video_quality_summary">Кодекийн үр ашгаас илүү боломжтой хамгийн өндөр видео чанарыг ưuгоолно</string>
+  <string name="morphe_prioritize_video_quality_dialog">Хэрэв энэ тохиргоог унтраавал хуучин видеонууд дээр видео чанарын сонголтууд харагдахгүй байж болно</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC аудиог идэвхгүй болгох</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

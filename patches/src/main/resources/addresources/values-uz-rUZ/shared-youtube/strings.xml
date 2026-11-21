@@ -141,7 +141,7 @@ Android System WebView’ni ochish uchun OK tugmasini bosing."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Agar mijozlar topilmasa: Android VR ga kirish imkoniyatini sinab ko‘ring</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standart mijoz</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR tizimiga kirish</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android VR\"ga kirish</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' alohida tizimga kirishni talab qiladi. Davom etish uchun bu yerni bosing</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hozirda \'Android VR\' tizimiga kirilgan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Kirish uchun quyidagidan davom eting"</string>
 • Morphe sozlamalaringiz Android VR kimlik tasdiqlanishini import yoki eksport qilmaydi
 • Agar ushbu ilovadan 6 oy davomida foydalanilmasa, Google ushbu kimlik tasdiqlanishini olib tashlaydi
 • Google parolingizni o'zgartirsangiz yoki ushbu qurilmani Google sozlamalaridan olib tashlasangiz, qayta kirishingiz kerak"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobil veb-versiyada tizimga kirish</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\"Mobil Web\"ga kirish</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Ixtiyoriy: videolarni o\"z hisobingiz orqali ko\"rish uchun YouTube veb-saytiga kiring. Davom etish uchun bu yerni bosing</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hozirda \'Mobile Web\'ga kirilgan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Tizimga kirish uchun quyidagidan davom eting"</string>
   <string name="morphe_seek_notification_media_length_invalid">Qidiruv davomiyligi 1 va %s soniya oralig\'ida bo\'lishi kerak. Standart qiymat ishlatilmoqda</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolini o‘chirish</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Video sifatiga ustunlik berish</string>
+  <string name="morphe_prioritize_video_quality_summary">Kodek samaradorligidan ko\'ra mavjud bo\'lgan eng yuqori video sifatiga ustunlik beradi</string>
+  <string name="morphe_prioritize_video_quality_dialog">Agar ushbu sozlama o\'chirilgan bo\'lsa, eski videolarda video sifati variantlari ko\'rinmasligi mumkin</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC tovushini o‘chirish</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

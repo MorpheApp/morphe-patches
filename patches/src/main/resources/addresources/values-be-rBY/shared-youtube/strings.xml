@@ -141,7 +141,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Паспрабуйце ўключыць: Імітацыя відэапатокаў &gt; Уваход у Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Кліент па змаўчанні</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Уваход у \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Уваход праз \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Для \'Android VR\' патрабуецца асобны ўваход. Націсніце тут, каб працягнуць</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">У дадзены момант вы ўвайшли ў \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Second \"item\" text"</string>
 • Налады Morphe не будуць імпартаваць/экспартаваць аўтэнтыфікацыю Android VR
 • Калі гэтая праграма не будзе выкарыстоўвацца на працягу 6 месяцаў, Google выдаліць гэтую аўтэнтыфікацыю
 • Вам спатрэбіцца ўвайсці ў сістэму зноў, калі вы змяніце пароль Google або адключаце гэтую прыладу ў наладках Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Уваход праз мабільную версію сайта</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Уваход праз \"Mobile Web\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Неабавязкова: ўвойдзіце на 웹-сайт YouTube, каб праглядаць відэа са свайго ўліковага запісу. Націсніце тут, каб працягнуць</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">У дадзены момант вы ўвайшли ў \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">Даўжыня пераматывання павінна быць ад 1 да %s секунд. Выкарыстоўваецца значэнне па змаўчанні</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Адключаць пратакол QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Прыярытэзаваць якасць відэа</string>
+  <string name="morphe_prioritize_video_quality_summary">Надае прыярытэт найвышэйшай даступнай якасці відэа над эфектыўнасцю кодэка</string>
+  <string name="morphe_prioritize_video_quality_dialog">Калі гэтую наладу выключыць, для старых відэа могуць быць недаступныя параметры якасці</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Адключаць DRC-аудыё</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

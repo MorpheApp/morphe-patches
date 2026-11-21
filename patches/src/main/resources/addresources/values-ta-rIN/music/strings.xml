@@ -79,6 +79,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">முடக்கப்படும்போது நிறுத்து</string>
   <string name="morphe_music_pause_when_muted_summary">சிஸ்டம் வால்யூம் முடக்கப்படும்போது ஒலியீர்ப்பை நிறுத்தும் மற்றும் வால்யூம் உயர்த்தப்படும்போது மீண்டும் தொடங்கும்</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos காஸ்ட்</string>
+  <string name="morphe_music_sonos_cast_summary">Cast பொத்தானைப் பயன்படுத்தி உங்கள் Wi-Fi நெட்வொர்க்கில் உள்ள Sonos மற்றும் பிற UPnP ஸ்பீக்கர்களுக்கு ஸ்ட்ரீம் செய்யலாம்</string>
+  <string name="morphe_music_sonos_cast_sheet_title">ஒரு சாதனத்துடன் இணைக்கவும்</string>
+  <string name="morphe_music_sonos_cast_searching">உங்கள் Wi-Fi நெட்வொர்க்கில் ஸ்பீக்கர்களுக்காகத் தேடுகிறது…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">உங்கள் Wi-Fi நெட்வொர்க்கில் ஒரு ஸ்பீக்கரைத் தேர்ந்தெடுக்கவும்</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s-க்கு कास्ट செய்கிறது</string>
+  <string name="morphe_music_sonos_cast_connected">இணைக்கப்பட்டது</string>
+  <string name="morphe_music_sonos_cast_disconnect">இணைப்பைத் துண்டி</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi-யில் உள்ள ஸ்பீக்கர்கள்</string>
+  <string name="morphe_music_sonos_cast_active">செயலில் உள்ளது</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest மற்றும் Google TV சாதனங்கள்</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s உடன் இணைக்க முடியவில்லை</string>
   <!-- video.speed.playbackSpeedPatch -->
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">தானியங்கி தலைப்புகளை முடக்கவும்</string>
@@ -263,6 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"கலைஞர் தரவு SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) இலிருந்து வருகிறது, இது ஒரு நாளைக்கு ஒரு முறை பதிவிறக்கம் செய்யப்படுகிறது. இதைத் தவிர்த்தால் நீங்கள் எதைப் இயக்குகிறீர்கள் என்பது பற்றிய எந்தத் தகவலும் அனுப்பப்படாது. SoundProof தாளைத் திறப்பது, சமீபத்திய வாக்குகளைக் காட்டவும் வாக்களிக்கவும் தற்போதைய கலைஞர் பெயரை SoundProof சேவையகத்திற்கு அனுப்பும். சேவையகம் வாக்காளர்களை IP முகவரி மூலம் வேறுபடுத்துகிறது, எனவே உங்கள் வாக்கு மற்றொரு நெட்வொர்க்கில் வித்தியாசமாகத் தோன்றலாம்.
 
 தரவுத்தளம் ODC Open Database License (ODbL) கீழ் உரிமம் பெற்றுள்ளது. xoundbyte-ன் Soul Over AI-லிருந்து பெறப்பட்ட பதிவுகள் CC BY 4.0 கீழ் உரிமம் பெற்றுள்ளன. SoundProof அல்லது Soul Over AI உடன் இணைக்கப்படவில்லை அல்லது அங்கீகரிக்கப்படவில்லை."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music அனிமேட்டட் கலைப்படைப்பு</string>
+  <string name="morphe_music_apple_music_artwork_summary">ஆல்பத்தில் இருந்தால், Apple Music-ன் அனிமேட்டட் ஆல்பம் கலைப்படைப்பை பிளேயரில் காட்டுகிறது. ஒவ்வொரு பாடலின் தலைப்பு, கலைஞர் மற்றும் ஆல்பம் ஆகியவை Apple Music-க்கு அனுப்பப்படுகின்றன</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">இந்த சாதனக் கோப்பிற்கு பாடல் வரிகள் கிடைக்கவில்லை.</string>
   <string name="morphe_music_lyrics_rime_dict_title">Rime வார்த்தைப் பட்டியல்</string>

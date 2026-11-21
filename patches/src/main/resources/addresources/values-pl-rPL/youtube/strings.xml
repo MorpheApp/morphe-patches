@@ -61,7 +61,10 @@ Zmiany obejmują:
   <string name="morphe_hide_account_menu_title">Włącz filtr zakładki Ty / Biblioteka</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filtr zakładki Ty / Biblioteka</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Wprowadź nazwy elementów do filtrowania, każda w nowej linii</string>
+  <string name="morphe_hide_account_menu_badges_title">Ukryj plakietki</string>
   <string name="morphe_hide_account_menu_downloads_title">Ukryj Pobrane</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Ukryj \"Polubione filmy\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Ukryj \"Do obejrzenia\"</string>
   <string name="morphe_hide_album_cards_title">Ukryj karty albumów</string>
   <string name="morphe_hide_album_cards_summary">Ukrywa karty albumów pod opisem artysty</string>
   <string name="morphe_hide_artist_cards_title">Ukryj karty artystów</string>
@@ -427,6 +430,8 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_minimal_comments_button_summary">Ukrywa przesuwane karty oraz ich selektor stron, które wyświetlają się na przycisku komentarzy</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ukryj przycisk Znacznik czasu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ukryj przycisk \"Najlepsi odbiorcy\"</string>
+  <string name="morphe_hide_comments_topics_title">Ukryj \"Tematy\"</string>
+  <string name="morphe_hide_comments_topics_summary">Ukrywa opcję \"Tematy\" na pasku filtrów oraz podglądy komentarzy \"Temat\" pod filmem</string>
   <string name="morphe_hide_comments_translate_button_title">Ukryj przycisk Przetłumacz</string>
   <string name="morphe_hide_comments_zero_state_title">Ukryj komunikat \"Nie ma jeszcze komentarzy\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Oczyść wyróżnione frazy wyszukiwania</string>
@@ -880,7 +885,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Biała lista reklam w menu filmu</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Dodaje do menu opcję, która pozwala na wyświetlanie reklam na kanale danego filmu</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ta funkcja może wymagać użycia PotHelpera lub zmiany opcji \"Fałszowanie strumieni filmów\" na logowanie TV lub Android VR</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ta funkcja może wymagać użycia PotHelpera lub zmiany opcji \"Fałszowanie strumieni filmów\" na \"TV\" albo logowanie \"Android VR\"</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Biała lista prędkości w menu filmu</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Dodaje do menu opcję, która zawsze odtwarza kanał danego filmu z prędkością 1x</string>
   <string name="morphe_queue_manager_check_failed_auth">Nie zalogowano</string>
@@ -1029,6 +1034,39 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Pionowa (minimalna)</string>
   <string name="morphe_swipe_change_video_title">Włącz gest zmiany filmu</string>
   <string name="morphe_swipe_change_video_summary">Przesuń palcem w poziomie w trybie pełnoekranowym, aby przejść do następnego lub poprzedniego filmu</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Gest przytrzymania</string>
+  <string name="morphe_hold_gesture_screen_summary">Zmień i zablokuj prędkość odtwarzania, przeciągając po dotknięciu i przytrzymaniu</string>
+  <string name="morphe_hold_gesture_title">Włącz gest przytrzymania</string>
+  <string name="morphe_hold_gesture_summary">Dotknięcie i przytrzymanie filmu może być kontynuowane przeciągnięciem. Prędkość podczas przytrzymania to prędkość odtwarzania przy dotknięciu i przytrzymaniu</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Nieużywane, gdy funkcja naciśnij i przesuń jest włączona. Dotknij, aby zmienić</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Włączone</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Gesty przytrzymania oraz naciśnij i przesuń w sterowaniu przesuwaniem zaczynają się od dotknięcia i przytrzymania, dlatego może być aktywny tylko jeden z nich.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Wyłącz funkcję naciśnij i przesuń</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Gest przytrzymania nie jest używany, gdy funkcja naciśnij i przesuń jest włączona</string>
+  <string name="morphe_hold_gesture_dialog_title">Gest przytrzymania jest włączony</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Wyłącz gest przytrzymania</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Włącz wibracje</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Wibruje podczas zmiany prędkości oraz gdy prędkość jest zablokowana</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Przesuń w bok, aby zmienić prędkość</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Po dotknięciu i przytrzymaniu przesuń w lewo, aby odtworzyć wolniej, i w prawo, aby odtworzyć szybciej. Im dalej, tym bardziej zmienia się prędkość, aż do momentu powrotu palca</string>
+  <string name="morphe_hold_gesture_speed_step_title">Skok prędkości</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Czułość przeciągania</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Mały</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normalna</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Wysoka</string>
+  <string name="morphe_hold_gesture_speed_min_title">Najniższa prędkość</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Najniższa prędkość, jaką można osiągnąć poprzez przeciąganie</string>
+  <string name="morphe_hold_gesture_speed_max_title">Najwyższa prędkość</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Najwyższa prędkość, jaką można osiągnąć poprzez przeciąganie (do 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Przeciągnij w dół, aby zablokować prędkość</string>
+  <string name="morphe_hold_gesture_lock_summary">Po naciśnięciu i przytrzymaniu przeciągnij w dół, aby zachować prędkość po podniesieniu palca. Dotknij plakietki lub ponownie naciśnij i przytrzymaj, aby odblokować</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Zawsze pokazuj plakietkę blokady</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Plakietka zablokowanej prędkości pozostaje widoczna, gdy elementy sterujące odtwarzaczem są ukryte</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Odblokuj przy zmianie filmu</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Zablokowana prędkość zostaje zresetowana po rozpoczęciu innego filmu</string>
+  <string name="morphe_hold_gesture_lock_hint">Przeciągnij w dół, aby zablokować</string>
+  <string name="morphe_hold_gesture_lock_release">Puść, aby zablokować %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Napisy</string>
   <string name="morphe_captions_screen_summary">Zarządzaj automatycznymi napisami i plikami cookie napisów</string>
@@ -1133,6 +1171,17 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Dostosuj odstęp między szklanym paskiem nawigacji a dołem ekranu lub nawigacją systemową</string>
   <string name="morphe_navigation_bar_glass_size_title">Rozmiar szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość oraz odstępy między przyciskami szklanego paska nawigacji z podglądem na żywo. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
+  <string name="morphe_glass_menus_screen_title">Szklane menu</string>
+  <string name="morphe_glass_menus_screen_summary">Menu w formie matowego szkła nad rozmytą treścią pod nimi</string>
+  <string name="morphe_glass_menus_title">Włącz szklane menu</string>
+  <string name="morphe_glass_menus_summary">Wyświetla menu i dolne arkusze jako matowe szkło, z rozmytą treścią pod nimi</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menu są wyświetlane jako prawie nieprzezroczyste, gdy włączony jest tryb oszczędzania baterii lub gdy urządzenie nie obsługuje rozmycia</string>
+  <string name="morphe_glass_menus_opacity_title">Krycie szkła</string>
+  <string name="morphe_glass_menus_opacity_summary">W jakim stopniu menu zakrywa rozmyte treści (0 to przejrzyste, 100 to nieprzezroczyste)</string>
+  <string name="morphe_glass_menus_blur_title">Rozmycie</string>
+  <string name="morphe_glass_menus_blur_summary">W jakim stopniu treść za menu jest rozmyta</string>
+  <string name="morphe_glass_menus_dim_title">Przyciemnienie</string>
+  <string name="morphe_glass_menus_dim_summary">W jakim stopniu ekran wokół dolnego arkusza jest przyciemniony</string>
   <string name="morphe_navigation_bar_glass_size_height">Wysokość</string>
   <string name="morphe_navigation_bar_glass_size_width">Maks. szerokość</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Odstęp między przyciskami</string>
@@ -1696,12 +1745,8 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Pomija podstawowe menu wyboru i od razu otwiera zaawansowane menu jakości</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ukryj opcje jakości Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Priorytet jakości filmu</string>
-  <string name="morphe_video_quality_prioritize_summary">Nadaje priorytet najwyższej dostępnej jakości filmu kosztem wydajności kodeka</string>
-  <string name="morphe_video_quality_prioritize_dialog">Jeśli to ustawienie będzie wyłączone, starsze filmy mogą nie wyświetlać opcji wyboru jakości filmu</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Zezwalaj na AV1 w \"Android VR\" / \"visionOS\"</string>
+  <string name="morphe_spoof_video_streams_av1_title">Zezwalaj na AV1 dla \"Android VR\" / \"visionOS\"</string>
   <string name="morphe_spoof_video_streams_av1_summary">Umożliwia programowe dekodowanie AV1 podczas korzystania z klienta \"Android VR\" / \"visionOS\"</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Włączenie tej opcji może wymusić programowe dekodowanie AV1.
 

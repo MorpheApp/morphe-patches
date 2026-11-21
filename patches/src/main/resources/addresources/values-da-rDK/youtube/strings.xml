@@ -61,7 +61,10 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_account_menu_title">Aktiver Bibliotek / Dit nederste menufilter</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Bibliotek / Dit nederste menufilter</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Indtast Bibliotek / Dine bundmenu navne, der skal filtreres efter, adskilt af nye linjer</string>
+  <string name="morphe_hide_account_menu_badges_title">Skjul badges</string>
   <string name="morphe_hide_account_menu_downloads_title">Skjul downloads</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Skjul \"Synes godt om-videoer\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Skjul \"Se senere\"</string>
   <string name="morphe_hide_album_cards_title">Skjul albumkort</string>
   <string name="morphe_hide_album_cards_summary">Skjuler albumkortene under kunstnerbeskrivelsen</string>
   <string name="morphe_hide_artist_cards_title">Skjul kunstnerkort</string>
@@ -427,6 +430,8 @@ Begrænsninger:
   <string name="morphe_minimal_comments_button_summary">Skjuler de glidende kort og deres sidevælger, der vises på kommentarknappen</string>
   <string name="morphe_hide_comments_timestamp_button_title">Skjul Tidsstempel-knap</string>
   <string name="morphe_hide_comments_top_fans_button_title">Skjul \'Top fans\'-knappen</string>
+  <string name="morphe_hide_comments_topics_title">Skjul \"Emner\"</string>
+  <string name="morphe_hide_comments_topics_summary">Skjuler filterlinjemuligheden \"Emner\" og forhåndsvisninger af \"Emne\"-kommentarer under videoen</string>
   <string name="morphe_hide_comments_translate_button_title">Skjul oversæt-knappen</string>
   <string name="morphe_hide_comments_zero_state_title">Skjul besked om, at der endnu ikke er nogen kommentarer</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Renser fremhævede søgelinks</string>
@@ -1029,6 +1034,39 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_swipe_overlay_style_entry_7">Lodret overlejring (minimal)</string>
   <string name="morphe_swipe_change_video_title">Aktivér strygning for at skifte videoer</string>
   <string name="morphe_swipe_change_video_summary">Stryg i fuldskærmstilstand for at springe til næste eller forrige video</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Hold-bevægelse</string>
+  <string name="morphe_hold_gesture_screen_summary">Skift og lås afspilningshastigheden ved at trække efter at have trykket og holdt</string>
+  <string name="morphe_hold_gesture_title">Aktiver hold-bevægelse</string>
+  <string name="morphe_hold_gesture_summary">Tryk og hold på videoen kan efterfølges af et træk. Hastigheden under hold er afspilningshastigheden for tryk og hold</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Bruges ikke, når \"tryk for at swipe\" er slået til. Tryk for at ændre</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Tryk for at swipe er slået til</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Både hold-gestussen og \"tryk for at swipe\"-gestussen til swipe-kontrollerne starter med at trykke og holde, så kun én af dem kan være slået til.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Slå tryk for at swipe fra</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Hold-gestussen bruges ikke, når \"tryk for at swipe\" er slået til</string>
+  <string name="morphe_hold_gesture_dialog_title">Hold-gestussen er slået til</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Slå hold-gestussen fra</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Aktiver haptisk feedback</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibrerer, når hastigheden ændres, og når hastigheden låses</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Træk sidelæns for at ændre hastigheden</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Efter at have trykket og holdt, skal du trække til venstre for at afspille langsommere og til højre for at afspille hurtigere. Jo længere ud, jo mere ændres hastigheden, indtil fingeren kommer tilbage</string>
+  <string name="morphe_hold_gesture_speed_step_title">Hastighedstrin</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Trækfølsomhed</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Lav</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Høj</string>
+  <string name="morphe_hold_gesture_speed_min_title">Langsomste hastighed</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Den langsomste hastighed, et træk kan nå</string>
+  <string name="morphe_hold_gesture_speed_max_title">Hurtigste hastighed</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Den hurtigste hastighed, et træk kan nå (op til 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Træk ned for at låse hastigheden</string>
+  <string name="morphe_hold_gesture_lock_summary">Efter at have trykket og holdt, skal du trække ned for at bevare hastigheden, når fingeren løftes. Tryk på mærket eller tryk og hold igen for at låse op</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Vis altid låsemærket</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Mærket for en låst hastighed forbliver synligt, mens afspillerkontrollerne er skjult</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Lås op når videoen ændres</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">En låst hastighed ophører, når en anden video starter</string>
+  <string name="morphe_hold_gesture_lock_hint">Træk ned for at låse</string>
+  <string name="morphe_hold_gesture_lock_release">Slip for at låse %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Undertekster</string>
   <string name="morphe_captions_screen_summary">Administrer automatiske undertekster og cookies til undertekster</string>
@@ -1133,6 +1171,17 @@ For at få adgang til Indstillinger skal du aktivere Indstillingsknappen via Gen
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Juster afstanden mellem den gennemsigtige navigationslinje og bunden af skærmen eller systemnavigationen</string>
   <string name="morphe_navigation_bar_glass_size_title">Glass-navigationslinjens størrelse</string>
   <string name="morphe_navigation_bar_glass_size_summary">Juster højden, bredden og knapafstanden for glass-navigationslinjen med en forhåndsvisning. Knapper, der ikke passer i skærmens bredde, skjules</string>
+  <string name="morphe_glass_menus_screen_title">Glasmenuer</string>
+  <string name="morphe_glass_menus_screen_summary">Menuer som matglas over det slørede indhold bag dem</string>
+  <string name="morphe_glass_menus_title">Aktiver glasmenuer</string>
+  <string name="morphe_glass_menus_summary">Viser menuer og bottom sheets som matglas, hvor indholdet bag dem er sløret</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menuer vises næsten ugennemsigtigt, mens strømsparefunktionen er slået til, eller hvis enheden ikke understøtter sløring</string>
+  <string name="morphe_glass_menus_opacity_title">Glas-uigennemsigtighed</string>
+  <string name="morphe_glass_menus_opacity_summary">Hvor meget menuen dækker det slørede indhold (0 er gennemsigtigt, 100 er uigennemsigtigt)</string>
+  <string name="morphe_glass_menus_blur_title">Sløring</string>
+  <string name="morphe_glass_menus_blur_summary">Hvor meget indholdet bag menuen er sløret</string>
+  <string name="morphe_glass_menus_dim_title">Dæmpning</string>
+  <string name="morphe_glass_menus_dim_summary">Hvor meget skærmen omkring et bottom sheet er mørklagt</string>
   <string name="morphe_navigation_bar_glass_size_height">Højde</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimal bredde</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knapafstand</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Springer kvalitetsvalgsmenuen over og åbner menuen \'Avanceret\' kvalitet direkte</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skjul Premium kvalitetsindstillinger</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Prioritering af videokvalitet</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioriterer den højest tilgængelige videokvalitet over codec-effektivitet</string>
-  <string name="morphe_video_quality_prioritize_dialog">Hvis denne indstilling er slået fra, kan ældre videoer vise ingen videokvalitetsmuligheder</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Tillad \"Android VR\" / \"visionOS\" AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Tillader software AV1-dekodning, når \"Android VR\" / \"visionOS\"-klienten bruges</string>

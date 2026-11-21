@@ -145,7 +145,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_flyout_title">Eksportuj wszystko na urządzenie</string>
   <string name="morphe_export_download_all_started">Eksportowanie wszystkich pobranych plików</string>
   <string name="morphe_export_download_all_title">Wszystkie pobrane</string>
-  <string name="morphe_export_download_playlist_started">Eksportowanie pobrań</string>
+  <string name="morphe_export_download_playlist_started">Eksportowanie pobranych</string>
   <string name="morphe_export_download_all_running">Pobrane pliki są już eksportowane</string>
   <string name="morphe_export_download_all_saved">Wyeksportowano pobrane pliki (%1$s z %2$s) do: %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -265,6 +265,20 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Wstrzymaj po wyciszeniu</string>
   <string name="morphe_music_pause_when_muted_summary">Wstrzymuje odtwarzanie po wyciszeniu głośności systemowej i wznawia je po jej zwiększeniu</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Przesyłanie do Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">Przycisk \"Przesyłaj\" może również przesyłać strumieniowo do głośników Sonos i innych głośników UPnP w Twojej sieci Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Połącz z urządzeniem</string>
+  <string name="morphe_music_sonos_cast_searching">Wyszukiwanie głośników w sieci Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Wybierz głośnik w sieci Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Przesyłanie do %s</string>
+  <string name="morphe_music_sonos_cast_connected">Połączono</string>
+  <string name="morphe_music_sonos_cast_disconnect">Rozłącz</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Głośniki w sieci Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktywne</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Urządzenia Chromecast, Nest i Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Nie udało się połączyć z %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Prędkość odtwarzania</string>
   <string name="morphe_music_playback_speed_summary">Prędkość stosowana dla wszystkich utworów. Przy 100% używana jest prędkość aplikacji, np. prędkość odtwarzania podcastów</string>
@@ -586,6 +600,9 @@ Aby zapewnić ciągłość synchronizacji podczas odtwarzania w tle, upewnij si�
   <string name="morphe_music_soundproof_about_summary">"Dane wykonawców pochodzą z repozytorium SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) i są pobierane raz dziennie. Pomijanie utworów nie przesyła żadnych informacji o tym, co odtwarzasz. Otwarcie karty SoundProof wysyła nazwę bieżącego wykonawcy do serwera SoundProof, aby wyświetlić aktualne głosy oraz umożliwić głosowanie. Serwer rozróżnia głosujących na podstawie adresu IP, dlatego Twój głos może wyświetlać się inaczej w innej sieci.
 
 ​Baza danych jest udostępniana na licencji ODC Open Database License (ODbL). Wpisy z projektu Soul Over AI autorstwa xoundbyte są objęte licencją CC BY 4.0. Funkcja nie jest powiązana z projektami SoundProof ani Soul Over AI, ani nie jest przez nie wspierana."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Animowana okładka Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Wyświetla animowaną okładkę albumu z Apple Music w odtwarzaczu, jeśli album ją posiada. Tytuł, wykonawca i album każdego utworu są przesyłane do Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Tekst utworu nie jest dostępny dla tego pliku z urządzenia</string>
   <string name="morphe_music_lyrics_enabled_title">Używaj zewnętrznych tekstów</string>

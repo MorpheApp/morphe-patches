@@ -141,7 +141,6 @@ YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Aktivləşdirməyə cəhd edin: Video yayımların saxtalaşdır &gt; Android VR girişi</string>
   <string name="morphe_spoof_video_streams_client_type_title">İlkin qəbuledici</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' girişi</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ayrıca giriş tələb edir. Davam etmək üçün buraya toxun</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hazırda \'Android VR\'-a daxil olunub</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +167,6 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
 • Morphe tənzimləmələriniz Android VR təsdiqlənməsini idxal/ixrac etməyəcək
 • Bu tətbiq 6 ay ərzində istifadə olunmazsa, Google bu təsdiqlənməni siləcək
 • Google parolunuzu dəyişdirsəniz və ya bu cihazı Google tənzimləmələrinizdən çıxarsanız, təkrar daxil olmalı olacaqsınız"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobil Web Girişi</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Könüllü: Hesabınızla videoları oynatmaq üçün YouTube veb saytına daxil olun. Davam etmək üçün bura toxun</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hazırda \'Mobil Web\'-ə daxil olunub</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +212,10 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_seek_notification_media_length_invalid">Çevirmə müddəti 1 və %s saniyə arasında olmalıdır. Standartı istifadə edir</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolunu qeyri-aktiv et</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Video keyfiyyətinə üstünlük ver</string>
+  <string name="morphe_prioritize_video_quality_summary">Kodek səmərəliliyindən artıq mövcud ən yüksək video keyfiyyətinə üstünlük verir</string>
+  <string name="morphe_prioritize_video_quality_dialog">Bu seçim qapalıdırsa, daha köhnə videolar video keyfiyyəti seçimlərini göstərməyə bilər</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC səsin qapat</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

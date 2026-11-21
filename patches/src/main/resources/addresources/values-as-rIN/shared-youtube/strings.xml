@@ -141,7 +141,7 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">এনেদৰে চেষ্টা কৰক: Spoof video streams &gt; Android VR sign in</string>
   <string name="morphe_spoof_video_streams_client_type_title">ডিফল্ট ক্লায়েন্ট</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR ছাইন ইন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' ছাইন ইন</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-ৰ বাবে এক পৃথক ছাইন-ইনৰ প্ৰয়োজন। আগবাঢ়িবলৈ ইয়াত টেপ কৰক</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">বৰ্তমান \'Android VR\'-ত ছাইন ইন কৰা হৈছে</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
 • আপোনাৰ Morphe ছেটিংছবোৰে Android VR প্ৰমাণীকৰণ আমদানি/ৰপ্তানি নকৰিব
 • যদি এই এপটো ৬ মাহৰ বাবে ব্যৱহাৰ নকৰা হয় তেন্তে Google-এ এই প্ৰমাণীকৰণটো আঁতৰাই দিব
 • যদি আপুনি আপোনাৰ Google পাছৱৰ্ড সলনি কৰে বা আপোনাৰ Google ছেটিংছৰ পৰা এই ডিভাইচটো ডি-ৰেজিষ্টৰ কৰে তেন্তে আপুনি পুনৰ ছাইন ইন কৰিব লাগিব"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ম’বাইল ৱেব ছাইন ইন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobile Web\' ছাইন ইন</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ঐচ্ছিক: আপোনাৰ একাউণ্টৰ সৈতে ভিডিঅ’বোৰ চাবলৈ YouTube ৱেবছাইটত ছাইন ইন কৰক। আগবাঢ়িবলৈ ইয়াত টেপ কৰক</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">বৰ্তমান \'Mobile Web\'ত ছাইন ইন কৰা হৈছে</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_seek_notification_media_length_invalid">সীকৰ দৈৰ্ঘ্য ১ আৰু %s ছেকেণ্ডৰ ভিতৰত হ\'ব লাগে। ডিফল্ট ব্যৱহাৰ কৰা হৈছে</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC প্ৰটোকল নিষ্ক্ৰীয় কৰক</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">ভিডিঅ’ৰ গুণগতমানক অগ্ৰাধিকাৰ দিয়ক</string>
+  <string name="morphe_prioritize_video_quality_summary">কোডেক কাৰ্যক্ষমতাৰ পৰিবৰ্তে উপলব্ধ উচ্চতম ভিডিঅ’ গুণগতমানক অগ্ৰাধিকাৰ দিয়ে</string>
+  <string name="morphe_prioritize_video_quality_dialog">যদি এই ছেটিংটো বন্ধ কৰা হয়, তেন্তে পুৰণি ভিডিঅ’বোৰত কোনো ভিডিঅ’ গুণগতমানৰ বিকল্প দেখা নাযাব পাৰে</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC অডিঅ\' নিষ্ক্ৰীয় কৰক</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

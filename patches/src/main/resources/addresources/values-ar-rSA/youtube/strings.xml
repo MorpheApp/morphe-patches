@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">تمكين تصفية قائمة المكتبة / أنت السفلية</string>
   <string name="morphe_hide_account_menu_filter_strings_title">تصفية قائمة المكتبة / أنت السفلية</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">أدخل أسماء قائمة المكتبة / أنت السفلية التي تريد تصفية النتائج بناءً عليها، مفصولة بأسطر جديدة</string>
+  <string name="morphe_hide_account_menu_badges_title">إخفاء الشارات</string>
   <string name="morphe_hide_account_menu_downloads_title">إخفاء التنزيلات</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">إخفاء \'فيديوهات أعجبتك\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">إخفاء \'المشاهدة لاحقًا\'</string>
   <string name="morphe_hide_album_cards_title">إخفاء بطاقات الألبوم</string>
   <string name="morphe_hide_album_cards_summary">يخفي بطاقات الألبوم أسفل وصف الفنان</string>
   <string name="morphe_hide_artist_cards_title">إخفاء بطاقات الفنان</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">يخفي البطاقات المنزلقة ومحدد الصفحات الخاص بها، الظاهرة على زر التعليقات</string>
   <string name="morphe_hide_comments_timestamp_button_title">إخفاء زر الطابع الزمني</string>
   <string name="morphe_hide_comments_top_fans_button_title">إخفاء زر \'أهم المعجبين\'</string>
+  <string name="morphe_hide_comments_topics_title">إخفاء \'المواضيع\'</string>
+  <string name="morphe_hide_comments_topics_summary">يخفي خيار \'المواضيع\' بشريط تصفية التعليقات ومعاينات تعليق \'الموضوع\' أسفل الفيديو</string>
   <string name="morphe_hide_comments_translate_button_title">إخفاء زر الترجمة</string>
   <string name="morphe_hide_comments_zero_state_title">إخفاء رسالة \'ليس هناك أي تعليقات حتى الآن\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">تنظيف روابط البحث المميزة</string>
@@ -1033,6 +1038,39 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_overlay_style_entry_7">النمط العمودي (بسيط)</string>
   <string name="morphe_swipe_change_video_title">تمكين إيماءة التمرير لتغيير الفيديوهات</string>
   <string name="morphe_swipe_change_video_summary">التمرير في وضع ملء الشاشة للانتقال إلى الفيديو التالي أو السابق</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">إيماءة الضغط المطول</string>
+  <string name="morphe_hold_gesture_screen_summary">تغيير سرعة التشغيل وقفلها عن طريق السحب بعد الضغط مع الاستمرار</string>
+  <string name="morphe_hold_gesture_title">تمكين إيماءة الضغط المطول</string>
+  <string name="morphe_hold_gesture_summary">يمكن أن يتبع الضغط المطول على الفيديو عملية سحب. تكون السرعة أثناء الضغط المطول هي سرعة تشغيل الضغط والاستمرار</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">لا تُستخدم أثناء تفعيل ميزة الضغط للتمرير. اضغط للتغيير</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">تم تمكين الضغط لتمرير الإيماءة</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">تبدأ كل من إيماءة الاستمرار وإيماءة الضغط للتمرير في عناصر تحكم التمرير بالنقر والاستمرار، لذا يمكن تفعيل واحدة منهما فقط.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">إيقاف تشغيل الضغط للتمرير</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">لا تُستخدم إيماءة الاستمرار أثناء تفعيل ميزة الضغط للتمرير</string>
+  <string name="morphe_hold_gesture_dialog_title">إيماءة الاستمرار مفعلة</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">إيقاف تشغيل إيماءة الاستمرار</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">الاهتزاز عند الضغط</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">يهتز الجهاز عند تغير السرعة وعند قفل السرعة</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">اسحب جانبيًا لتغيير السرعة</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">بعد الضغط مع الاستمرار، اسحب لليسار للتشغيل بشكل أبطأ ولليمين للتشغيل بشكل أسرع. كلما زادت المسافة، تستمر السرعة في التغير حتى يعود الإصبع</string>
+  <string name="morphe_hold_gesture_speed_step_title">مستوى تغيير السرعة</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">حساسية السحب</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">منخفضة</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">عادية</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">عالية</string>
+  <string name="morphe_hold_gesture_speed_min_title">أبطأ سرعة</string>
+  <string name="morphe_hold_gesture_speed_min_summary">أبطأ سرعة يمكن أن يصل إليها السحب</string>
+  <string name="morphe_hold_gesture_speed_max_title">أسرع سرعة</string>
+  <string name="morphe_hold_gesture_speed_max_summary">أقصى سرعة يمكن أن يصل إليها السحب (حتى 8)</string>
+  <string name="morphe_hold_gesture_lock_title">اسحب لأسفل لقفل السرعة</string>
+  <string name="morphe_hold_gesture_lock_summary">بعد الضغط مع الاستمرار، اسحب لأسفل للحفاظ على السرعة عند رفع الإصبع. اضغط على الشارة أو اضغط مع الاستمرار مرة أخرى لإلغاء القفل</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">إظهار شارة القفل دائمًا</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">تظل شارة السرعة المقفلة مرئية بينما تكون عناصر التحكم في المشغل مخفية</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">إلغاء القفل عند تغيير الفيديو</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">ينتهي قفل السرعة عند بدء فيديو آخر</string>
+  <string name="morphe_hold_gesture_lock_hint">اسحب لأسفل للقفل</string>
+  <string name="morphe_hold_gesture_lock_release">اترك للقفل %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">الترجمة</string>
   <string name="morphe_captions_screen_summary">التحكم في الترجمة التلقائية وملفات تعريف ارتباط الترجمة</string>
@@ -1137,6 +1175,17 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ضبط المسافة بين شريط التنقل الزجاجي وأسفل الشاشة أو تنقل النظام</string>
   <string name="morphe_navigation_bar_glass_size_title">حجم شريط التنقل الزجاجي</string>
   <string name="morphe_navigation_bar_glass_size_summary">ضبط ارتفاع, عرض وتباعد أزرار شريط التنقل الزجاجي، مع المعاينة. يتم إخفاء الأزرار التي لا تتناسب مع عرض الشاشة</string>
+  <string name="morphe_glass_menus_screen_title">قوائم زجاجية</string>
+  <string name="morphe_glass_menus_screen_summary">تظهر القوائم كزجاج متجمد فوق المحتوى المموّه خلفها</string>
+  <string name="morphe_glass_menus_title">تفعيل القوائم الزجاجية</string>
+  <string name="morphe_glass_menus_summary">إظهار القوائم والصفحات السفلية كزجاج متجمد، مع تمويه المحتوى الموجود خلفها</string>
+  <string name="morphe_glass_menus_user_dialog_message">تظهر القوائم معتمة تقريبًا عند تشغيل موفر البطارية، أو إذا كان الجهاز لا يدعم التمويه</string>
+  <string name="morphe_glass_menus_opacity_title">شفافية الزجاج</string>
+  <string name="morphe_glass_menus_opacity_summary">مدى تغطية القائمة للمحتوى المموّه (0 شفاف، 100 معتم)</string>
+  <string name="morphe_glass_menus_blur_title">الضبابية</string>
+  <string name="morphe_glass_menus_blur_summary">مدى تمويه المحتوى الموجود خلف القائمة</string>
+  <string name="morphe_glass_menus_dim_title">تعتيم</string>
+  <string name="morphe_glass_menus_dim_summary">مدى تعتيم الشاشة المحيطة بالورقة السفلية</string>
   <string name="morphe_navigation_bar_glass_size_height">الارتفاع</string>
   <string name="morphe_navigation_bar_glass_size_width">أقصى عرض</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">تباعد الزر</string>
@@ -1701,10 +1750,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">يتخطى قائمة تحديد الجودة ويفتح قائمة الجودة المتقدمة مباشرة</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">إخفاء خيارات جودة Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">إعطاء الأولوية لجودة فيديو</string>
-  <string name="morphe_video_quality_prioritize_summary">يُعطي الأولوية لأعلى جودة فيديو متاحة على حساب كفاءة الترميز</string>
-  <string name="morphe_video_quality_prioritize_dialog">إذا تم إيقاف هذا الإعداد، فقد لا تعرض الفيديوهات القديمة خيارات جودة الفيديو</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">السماح بترميز AV1 لـ \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_summary">يسمح بفك ترميز AV1 برمجيًا عند استخدام العميل \'Android VR\' / \'visionOS\'</string>

@@ -61,7 +61,10 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_account_menu_title">Filter für das untere Menü „Mediathek / You\" aktivieren</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filter für das untere Menü „Mediathek / You</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Gib die Namen der Einträge im unteren Menü „Mediathek / You“, nach denen gefiltert werden soll, durch Zeilenumbrüche getrennt ein.</string>
+  <string name="morphe_hide_account_menu_badges_title">Badges ausblenden</string>
   <string name="morphe_hide_account_menu_downloads_title">Downloads ausblenden</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\"Gefällt mir\"-Videos ausblenden</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\"Später ansehen\" ausblenden</string>
   <string name="morphe_hide_album_cards_title">Albumkarten ausblenden</string>
   <string name="morphe_hide_album_cards_summary">Verbirgt die Albumkarten unter der Künstlerbeschreibung</string>
   <string name="morphe_hide_artist_cards_title">Künstler-Infokarten ausblenden</string>
@@ -427,6 +430,8 @@ Einschränkungen:
   <string name="morphe_minimal_comments_button_summary">Blendet die Schiebekarten und deren Seitenauswahl aus, die auf dem Kommentare-Button angezeigt werden.</string>
   <string name="morphe_hide_comments_timestamp_button_title">Zeitstempel-Schaltfläche ausblenden</string>
   <string name="morphe_hide_comments_top_fans_button_title">„Top-Fans“-Button ausblenden</string>
+  <string name="morphe_hide_comments_topics_title">\"Themen\" ausblenden</string>
+  <string name="morphe_hide_comments_topics_summary">Blendet die Option \"Themen\" in der Filterleiste und die Themen-Kommentarvorschauen unter dem Video aus</string>
   <string name="morphe_hide_comments_translate_button_title">Schaltfläche „Übersetzen“ ausblenden</string>
   <string name="morphe_hide_comments_zero_state_title">\'Noch keine Kommentare\'-Nachricht ausblenden</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Hervorgehobene Suchlinks bereinigen</string>
@@ -1028,6 +1033,39 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_swipe_overlay_style_entry_7">Vertikales Overlay (minimal)</string>
   <string name="morphe_swipe_change_video_title">Wischen zum Wechseln der Videos aktivieren</string>
   <string name="morphe_swipe_change_video_summary">Wische im Vollbildmodus, um zum nächsten oder vorherigen Video zu springen</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Halte-Geste</string>
+  <string name="morphe_hold_gesture_screen_summary">Ändern und sperren Sie die Wiedergabegeschwindigkeit, indem Sie nach dem Tippen und Halten ziehen</string>
+  <string name="morphe_hold_gesture_title">Geste für Geschwindigkeitssteuerung aktivieren</string>
+  <string name="morphe_hold_gesture_summary">Auf das Video tippen und halten kann durch Ziehen ergänzt werden. Die Geschwindigkeit während des Haltens entspricht der Wiedergabegeschwindigkeit beim Tippen und Halten</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Wird nicht verwendet, wenn \"Wischen durch Drücken\" aktiviert ist. Zum Ändern tippen</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Wischen durch Drücken ist aktiviert</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Die Haltegeste und die Geste \"Wischen durch Drücken\" der Wischsteuerung beginnen beide mit Tippen und Halten, daher kann nur eine von beiden aktiviert sein.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Wischen durch Drücken deaktivieren</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Haltegeste wird nicht verwendet, wenn \"Wischen durch Drücken\" aktiviert ist</string>
+  <string name="morphe_hold_gesture_dialog_title">Haltegeste ist aktiviert</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Haltegeste deaktivieren</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Haptisches Feedback aktivieren</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibriert, wenn sich die Geschwindigkeit ändert und wenn die Geschwindigkeit gesperrt ist</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Seitwärts ziehen, um die Geschwindigkeit zu ändern</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Nach dem Tippen und Halten nach links ziehen, um langsamer abzuspielen, und nach rechts, um schneller abzuspielen. Je weiter man zieht, desto mehr ändert sich die Geschwindigkeit, bis der Finger zurückkehrt</string>
+  <string name="morphe_hold_gesture_speed_step_title">Geschwindigkeitsinkrement</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Ziehempfindlichkeit</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Niedrig</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Hoch</string>
+  <string name="morphe_hold_gesture_speed_min_title">Niedrigste Geschwindigkeit</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Die niedrigste Geschwindigkeit, die durch Ziehen erreicht werden kann</string>
+  <string name="morphe_hold_gesture_speed_max_title">Höchste Geschwindigkeit</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Die höchste Geschwindigkeit, die durch Ziehen erreicht werden kann (bis zu 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Nach unten ziehen, um die Geschwindigkeit zu sperren</string>
+  <string name="morphe_hold_gesture_lock_summary">Nach dem Halten nach unten ziehen, um die Geschwindigkeit beizubehalten, wenn der Finger angehoben wird. Tippen Sie auf das Symbol oder halten Sie es erneut gedrückt, um zu entsperren</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Sperrsymbol immer anzeigen</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Das Symbol einer gesperrten Geschwindigkeit bleibt sichtbar, während die Player-Steuerungen ausgeblendet sind</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Entsperren bei Videoänderung</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Eine gesperrte Geschwindigkeit wird beendet, wenn ein anderes Video startet</string>
+  <string name="morphe_hold_gesture_lock_hint">Nach unten ziehen zum Sperren</string>
+  <string name="morphe_hold_gesture_lock_release">Loslassen, um %s zu sperren</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Untertitel</string>
   <string name="morphe_captions_screen_summary">Automatische Untertitel und Untertitel-Cookies verwalten</string>
@@ -1132,6 +1170,17 @@ Um auf die Einstellungen zuzugreifen, aktiviere den Einstellungen-Button über A
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Passen Sie den Abstand zwischen der gläsernen Navigationsleiste und dem unteren Bildschirmrand oder der Systemnavigation an</string>
   <string name="morphe_navigation_bar_glass_size_title">Größe der Glas-Navigationsleiste</string>
   <string name="morphe_navigation_bar_glass_size_summary">Passe die Höhe, die Breite und den Schaltflächenabstand der Glas-Navigationsleiste mithilfe einer Vorschau an. Schaltflächen, die nicht in die Bildschirmbreite passen, werden ausgeblendet</string>
+  <string name="morphe_glass_menus_screen_title">Glas-Menüs</string>
+  <string name="morphe_glass_menus_screen_summary">Menüs als Milchglas über dem weichgezeichneten Inhalt dahinter</string>
+  <string name="morphe_glass_menus_title">Glas-Menüs aktivieren</string>
+  <string name="morphe_glass_menus_summary">Zeigt Menüs und Bottom-Sheets als Milchglas an, wobei der Inhalt dahinter weichgezeichnet wird</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menüs werden fast undurchsichtig angezeigt, wenn der Energiesparmodus aktiviert ist oder das Gerät keine Weichzeichnung unterstützt</string>
+  <string name="morphe_glass_menus_opacity_title">Glas-Deckkraft</string>
+  <string name="morphe_glass_menus_opacity_summary">Wie stark das Menü den weichgezeichneten Inhalt überdeckt (0 ist transparent, 100 ist undurchsichtig)</string>
+  <string name="morphe_glass_menus_blur_title">Weichzeichnung</string>
+  <string name="morphe_glass_menus_blur_summary">Wie stark der Inhalt hinter dem Menü weichgezeichnet wird</string>
+  <string name="morphe_glass_menus_dim_title">Abdunkelung</string>
+  <string name="morphe_glass_menus_dim_summary">Wie stark der Bildschirm um ein Bottom-Sheet herum abgedunkelt wird</string>
   <string name="morphe_navigation_bar_glass_size_height">Höhe</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximale Breite</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Schaltflächenabstand</string>
@@ -1696,10 +1745,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Überspringt das Menü zur Qualitätsauswahl und öffnet direkt die erweiterten Qualitätseinstellungen</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium-Qualitätsoptionen ausblenden</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Videoqualität priorisieren</string>
-  <string name="morphe_video_quality_prioritize_summary">Priorisiert die höchstmögliche Videoqualität gegenüber der Codec-Effizienz</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ist diese Einstellung deaktiviert, werden bei älteren Videos möglicherweise keine Optionen zur Videoqualität angezeigt</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\"Android VR\" / \"visionOS\" AV1 erlauben</string>
   <string name="morphe_spoof_video_streams_av1_summary">Erlaubt softwareseitige AV1-Dekodierung bei Verwendung des \"Android VR\" / \"visionOS\"-Clients</string>

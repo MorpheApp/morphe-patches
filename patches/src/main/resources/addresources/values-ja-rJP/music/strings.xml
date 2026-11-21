@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">ミュート時に一時停止</string>
   <string name="morphe_music_pause_when_muted_summary">システムボリュームがミュートになると再生を一時停止し、ボリュームを上げると再開します</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonosキャスト</string>
+  <string name="morphe_music_sonos_cast_summary">キャストボタンを使用すると、Wi-Fiネットワーク上のSonosやその他のUPnPスピーカーへのストリーミングも可能です</string>
+  <string name="morphe_music_sonos_cast_sheet_title">デバイスに接続</string>
+  <string name="morphe_music_sonos_cast_searching">Wi-Fiネットワーク上のスピーカーを検索中…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Wi-Fiネットワーク上のスピーカーを選択してください</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s へキャスト中</string>
+  <string name="morphe_music_sonos_cast_connected">接続済み</string>
+  <string name="morphe_music_sonos_cast_disconnect">切断</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi上のスピーカー</string>
+  <string name="morphe_music_sonos_cast_active">オン</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast、Nest、Google TV デバイス</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s に接続できませんでした</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">再生速度</string>
   <string name="morphe_music_playback_speed_summary">すべてのトラックに使用される速度です。100%の場合、ポッドキャストの再生速度など、アプリの速度が使用されます</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"アーティストデータは、1日に1回ダウンロードされるSoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps)から提供されています。スキップしても、再生内容に関する情報は送信されません。SoundProofシートを開くと、最新の投票結果の表示および投票のために、現在のアーティスト名がSoundProofサーバーに送信されます。サーバーはIPアドレスで投票者を識別するため、別のネットワークでは投票状況が異なる場合があります。
 
 データベースはODC Open Database License (ODbL)の下でライセンスされています。xoundbyteによるSoul Over AIからのエントリはCC BY 4.0の下でライセンスされています。SoundProofまたはSoul Over AIとの提携や承認を受けているものではありません。"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music アニメーションアートワーク</string>
+  <string name="morphe_music_apple_music_artwork_summary">アルバムにアニメーションアートワークがある場合、プレーヤーに Apple Music のアニメーションアルバムアートワークを表示します。各曲のタイトル、アーティスト、アルバムが Apple Music に送信されます</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">このデバイスファイルでは歌詞を利用できません。</string>
   <string name="morphe_music_lyrics_enabled_title">外部サービスの歌詞を使用</string>
