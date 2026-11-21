@@ -1379,6 +1379,19 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Show only in fullscreen</string>
     <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Hide the video scale button in the portrait player</string>
 
+    <!-- video.speed.replay.replayVideoPatch -->
+    <string name="morphe_replay_video_button_title">Show Replay slower button</string>
+    <string name="morphe_replay_video_button_summary">Rewinds and temporarily slows down the video. Tap again to cancel</string>
+    <string name="morphe_replay_video_seconds_title">Rewind duration</string>
+    <string name="morphe_replay_video_seconds_summary">How many seconds the video rewinds</string>
+    <string name="morphe_replay_video_slow_seconds_title">Slow playback duration</string>
+    <string name="morphe_replay_video_slow_seconds_summary">How many seconds of the video play at the replay speed after rewinding</string>
+    <string name="morphe_replay_video_speed_title">Replay speed</string>
+    <string name="morphe_replay_video_speed_summary">Playback speed of the replay, such as 0.5. The replay is never faster than the current speed</string>
+    <string name="morphe_replay_video_start">Replay slower</string>
+    <string name="morphe_replay_video_unavailable">Slow replay is unavailable for this video</string>
+    <string name="morphe_replay_video_speed_invalid">Invalid replay speed, reset to default</string>
+
     <!-- layout.player.buttons.muteVideoButtonPatch -->
     <string name="morphe_mute_video_button_title">Show Mute button</string>
 
