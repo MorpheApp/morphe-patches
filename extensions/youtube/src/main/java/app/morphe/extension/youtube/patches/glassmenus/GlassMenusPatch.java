@@ -24,6 +24,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.NinePatchDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Build;
 import android.os.SystemClock;
@@ -567,8 +568,13 @@ public final class GlassMenusPatch {
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
                 View child = group.getChildAt(i);
                 Drawable background = child.getBackground();
-                // Only fills of the menu, not small views such as buttons or a progress circle.
-                if (background != null && child.getWidth() >= minWidth) {
+                if (background instanceof NinePatchDrawable && child.getWidth() == view.getWidth()
+                        && child.getHeight() == view.getHeight()) {
+                    // A frame with the shadow of the menu. The shadow is drawn under the whole menu,
+                    // so it would darken the glass.
+                    hide(background);
+                } else if (background != null && child.getWidth() >= minWidth) {
+                    // Only fills of the menu, not small views such as buttons or a progress circle.
                     hideIfMenuColor(background);
                 }
                 removeMenuBackgrounds(child);
@@ -582,9 +588,7 @@ public final class GlassMenusPatch {
             final int minWidth = view.getWidth() / 2;
             for (LithoFills.Fill fill : LithoFills.fillsInside(view)) {
                 Drawable drawable = fill.drawable();
-                if (drawable.getBounds().width() >= minWidth && isMenuColor(fill.color())
-                        && hiddenDrawables.add(drawable)) {
-                    drawable.setColorFilter(TRANSPARENT_FILTER);
+                if (drawable.getBounds().width() >= minWidth && isMenuColor(fill.color()) && hide(drawable)) {
                     fill.host().invalidate();
                 }
             }
@@ -602,12 +606,18 @@ public final class GlassMenusPatch {
             // A wrapper may not pass the filter on, so every drawable down to the color gets it.
             boolean hidden = false;
             for (Drawable link : chain) {
-                if (hiddenDrawables.add(link)) {
-                    link.setColorFilter(TRANSPARENT_FILTER);
-                    hidden = true;
-                }
+                hidden |= hide(link);
             }
             if (hidden) drawable.invalidateSelf();
+        }
+
+        /**
+         * @return If the drawable was hidden now.
+         */
+        private boolean hide(Drawable drawable) {
+            if (!hiddenDrawables.add(drawable)) return false;
+            drawable.setColorFilter(TRANSPARENT_FILTER);
+            return true;
         }
 
         /**
