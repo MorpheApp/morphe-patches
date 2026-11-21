@@ -43,22 +43,22 @@ public final class VideoEffectsPatch {
         COLOR_BLIND_PROTANOPIA("daltonize(pick(uv), 2)"),
         COLOR_BLIND_TRITANOPIA("daltonize(pick(uv), 3)"),
         BLACK_AND_WHITE("vec3(luma(pick(uv)))"),
-        OLD_FILM("oldFilm(uv)"),
-        INVERT("1.0 - pick(uv)"),
-        THERMAL("thermal(luma(pick(uv)))"),
-        NIGHT_VISION("nightVision(uv)"),
-        VHS("vhs(uv)"),
         ALIEN("adjustSaturation(pick(uv).brg, 1.3)"),
-        RAINBOW("clamp(hueRotate(adjustSaturation(pick(uv), 1.4), uTime * 1.2), 0.0, 1.0)"),
+        ASCII_ART("asciiArt(uv)"),
+        COMIC_BOOK("comicBook(uv)"),
+        INVERT("1.0 - pick(uv)"),
+        KALEIDOSCOPE("kaleidoscope(uv)"),
+        NEON_EDGES("neonEdges(uv)"),
+        NIGHT_VISION("nightVision(uv)"),
+        OLD_FILM("oldFilm(uv)"),
+        PENCIL_SKETCH("pencilSketch(uv)"),
         POP_ART("popArt(uv)"),
+        RAINBOW("clamp(hueRotate(adjustSaturation(pick(uv), 1.4), uTime * 1.2), 0.0, 1.0)"),
         RETRO_HANDHELD("retroHandheld(uv)"),
         RETRO_PC("retroPc(uv)"),
-        ASCII_ART("asciiArt(uv)"),
-        NEON_EDGES("neonEdges(uv)"),
-        COMIC_BOOK("comicBook(uv)"),
-        PENCIL_SKETCH("pencilSketch(uv)"),
+        THERMAL("thermal(luma(pick(uv)))"),
         UNDERWATER("underwater(uv)"),
-        KALEIDOSCOPE("kaleidoscope(uv)");
+        VHS("vhs(uv)");
 
         private final String shaderExpression;
 
