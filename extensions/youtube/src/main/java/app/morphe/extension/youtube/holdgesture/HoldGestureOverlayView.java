@@ -105,6 +105,7 @@ final class HoldGestureOverlayView extends View {
     private long rulerUsedAt;
     private float lockProgress;
     private boolean lockIsArmed;
+    private String lockLabel = "";
     private long rippleStart;
     private float badgeSpeed;
     private boolean badgeLocked;
@@ -184,6 +185,7 @@ final class HoldGestureOverlayView extends View {
     void showLockTarget() {
         lockProgress = 0;
         lockIsArmed = false;
+        lockLabel = str("morphe_hold_gesture_lock_hint");
         lockArmed.snapTo(0);
         lockShown.setTarget(1);
         invalidate();
@@ -191,8 +193,13 @@ final class HoldGestureOverlayView extends View {
 
     void setLockProgress(float progress, boolean armed) {
         lockProgress = progress;
-        if (armed && !lockIsArmed) {
-            rippleStart = SystemClock.uptimeMillis();
+        if (armed != lockIsArmed) {
+            if (armed) {
+                rippleStart = SystemClock.uptimeMillis();
+            }
+            lockLabel = armed
+                    ? str("morphe_hold_gesture_lock_release", speedText)
+                    : str("morphe_hold_gesture_lock_hint");
         }
         lockIsArmed = armed;
         lockArmed.setTarget(armed ? 1 : 0);
@@ -553,9 +560,7 @@ final class HoldGestureOverlayView extends View {
         drawLockIcon(canvas, centerX, centerY, dp(LOCK_ICON_SIZE), armedColor, withAlpha(WHITE, alpha));
         canvas.restore();
 
-        final String label = lockIsArmed
-                ? str("morphe_hold_gesture_lock_release", speedText)
-                : str("morphe_hold_gesture_lock_hint");
+        final String label = lockLabel;
         text.setTextSize(dp(11));
         final float labelWidth = text.measureText(label) + dp(20);
         rect.set(centerX - labelWidth / 2, labelCenterY - dp(LABEL_HEIGHT / 2),

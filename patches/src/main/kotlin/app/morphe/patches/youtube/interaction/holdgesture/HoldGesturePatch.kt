@@ -32,6 +32,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/holdgesture/HoldGestureController;"
 
+@Suppress("unused")
 val holdGesturePatch = patch(
     name = "Hold gesture",
     description = "Adds options to change the playback speed and to keep it " +
