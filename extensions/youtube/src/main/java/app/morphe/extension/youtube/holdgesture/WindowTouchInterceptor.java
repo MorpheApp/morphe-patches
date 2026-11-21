@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
@@ -100,22 +101,22 @@ final class WindowTouchInterceptor implements Window.Callback {
     }
 
     @Override
-    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+    public boolean onCreatePanelMenu(int featureId, @NonNull Menu menu) {
         return wrapped.onCreatePanelMenu(featureId, menu);
     }
 
     @Override
-    public boolean onPreparePanel(int featureId, @Nullable View view, Menu menu) {
+    public boolean onPreparePanel(int featureId, @Nullable View view, @NonNull Menu menu) {
         return wrapped.onPreparePanel(featureId, view, menu);
     }
 
     @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
+    public boolean onMenuOpened(int featureId, @NonNull Menu menu) {
         return wrapped.onMenuOpened(featureId, menu);
     }
 
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    public boolean onMenuItemSelected(int featureId, @NonNull MenuItem item) {
         return wrapped.onMenuItemSelected(featureId, item);
     }
 
@@ -145,7 +146,7 @@ final class WindowTouchInterceptor implements Window.Callback {
     }
 
     @Override
-    public void onPanelClosed(int featureId, Menu menu) {
+    public void onPanelClosed(int featureId, @NonNull Menu menu) {
         wrapped.onPanelClosed(featureId, menu);
     }
 

@@ -46,7 +46,7 @@ import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
  * the touch away from the app until the finger is lifted.
  */
 @SuppressWarnings("unused")
-public final class HoldGestureController implements HoldGesture.Listener, WindowTouchInterceptor.TouchHandler {
+public final class HoldGestureController implements HoldGesture.Listener {
 
     public enum SpeedStep {
         STEP_005(0.05f),
@@ -160,7 +160,7 @@ public final class HoldGestureController implements HoldGesture.Listener, Window
         final Window window = activity.getWindow();
         if (windowRef.get() != window) {
             windowRef = new WeakReference<>(window);
-            interceptor = WindowTouchInterceptor.install(window, this);
+            interceptor = WindowTouchInterceptor.install(window, this::onWindowTouchEvent);
         }
 
         final HoldGestureOverlayView previous = overlayRef.get();
@@ -189,8 +189,7 @@ public final class HoldGestureController implements HoldGesture.Listener, Window
 
     // region touch
 
-    @Override
-    public boolean onWindowTouchEvent(WindowTouchInterceptor source, MotionEvent event) {
+    private boolean onWindowTouchEvent(WindowTouchInterceptor source, MotionEvent event) {
         try {
             // An interceptor of an earlier window can still be in a chain of callbacks.
             if (source != interceptor) return false;
@@ -577,12 +576,12 @@ public final class HoldGestureController implements HoldGesture.Listener, Window
         }
     }
 
+    @SuppressWarnings("deprecation")
     private void haptic(int constant) {
         if (!Settings.HOLD_GESTURE_HAPTIC_FEEDBACK.get()) return;
 
         final HoldGestureOverlayView overlay = overlayRef.get();
         if (overlay != null) {
-            //noinspection deprecation
             overlay.performHapticFeedback(constant, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         }
     }
