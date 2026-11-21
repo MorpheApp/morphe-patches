@@ -314,6 +314,7 @@ public class SpoofVideoStreamsPatch {
         if (!SPOOF_VIDEO_STREAMS) {
             return false;
         }
+        StreamingDataRequest.setPlayerVideoId(videoId);
         final boolean useSABR = StreamingDataRequest.playerClientUsesSABR(videoId);
         Logger.printDebug(() -> "Player uses SABR: " + useSABR + " for: " + videoId);
         return !useSABR;
@@ -880,7 +881,7 @@ public class SpoofVideoStreamsPatch {
                     && Utils.isNotEmpty(videoFormat)) {
                 // Force LTR layout, to match the same LTR video time/length layout YouTube uses for all languages.
                 return "\u202D" + videoFormat + "\u2009(" // u202D = left to right override
-                        + StreamingDataRequest.getLastSpoofedClientName() + ")";
+                        + StreamingDataRequest.getPlayerClientName() + ")";
             }
         } catch (Exception ex) {
             Logger.printException(() -> "appendSpoofedClient failure", ex);
