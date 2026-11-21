@@ -11,6 +11,7 @@ package app.morphe.extension.shared.patches;
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.text.Spanned;
+import android.view.Choreographer;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -18,10 +19,12 @@ import androidx.annotation.Nullable;
 
 import com.facebook.litho.TextContent;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -48,7 +51,9 @@ import app.morphe.extension.shared.Utils;
  * Laying out a view again is calculated on the main thread, so the requests made while a list scrolls,
  * such as the titles and thumbnails of the elements scrolled on screen, are done with a single pass
  * once the list stops scrolling. The elements bound to a view meanwhile already show what was fetched,
- * and the texts unmounted meanwhile are not laid out again.
+ * and the texts unmounted meanwhile are not laid out again. A fast scroll, such as a fling,
+ * is waited for longer than a slow scroll, and the views are laid out again one per frame,
+ * so a single frame does not calculate the layouts of all the views.
  */
 @SuppressWarnings("unused")
 public final class LithoRelayoutPatch {
@@ -108,6 +113,17 @@ public final class LithoRelayoutPatch {
     private static final long MAX_SCROLL_WAIT_MILLISECONDS = 500;
 
     /**
+     * Longest time a relayout waits for a fast scroll to slow down, such as a fling.
+     */
+    private static final long MAX_FAST_SCROLL_WAIT_MILLISECONDS = 2000;
+
+    /**
+     * Speed above which a scroll is fast, in density-independent pixels per millisecond.
+     * A fling is faster, and a slow scroll or a live chat that scrolls to new messages is slower.
+     */
+    private static final float FAST_SCROLL_DP_PER_MILLISECOND = 0.5f;
+
+    /**
      * Mounted text drawables that showed a text with a {@link RelayoutSpan}.
      * Accessed only on the main thread.
      */
@@ -139,8 +155,75 @@ public final class LithoRelayoutPatch {
      */
     private static final Set<ViewTreeObserver> scrollObservers = Collections.newSetFromMap(new WeakHashMap<>());
 
-    private static final ViewTreeObserver.OnScrollChangedListener scrollListener =
-            () -> lastScrollTime = SystemClock.uptimeMillis();
+    /**
+     * Item of a scrolling list, whose position gives the speed of the scroll. Accessed only on the main thread.
+     */
+    private static WeakReference<View> scrollReferenceView = new WeakReference<>(null);
+    private static final int[] scrollReferenceLocation = new int[2];
+
+    /**
+     * Speed of the last scroll, in density-independent pixels per millisecond,
+     * or 0 if not known. Accessed only on the main thread.
+     */
+    private static float scrollSpeed;
+
+    private static final ViewTreeObserver.OnScrollChangedListener scrollListener = () -> {
+        final long now = SystemClock.uptimeMillis();
+        final long elapsed = now - lastScrollTime;
+        lastScrollTime = now;
+        if (!relayoutScheduled.get()) {
+            return;
+        }
+        View reference = scrollReferenceView.get();
+        final int lastX = scrollReferenceLocation[0];
+        final int lastY = scrollReferenceLocation[1];
+        if (reference == null || !reference.isShown()) {
+            // Litho views of list items, which move while their list scrolls.
+            reference = null;
+            for (View view : lithoViews) {
+                if (view.isShown() && view.getParent() instanceof View parent
+                        && (parent.canScrollVertically(1) || parent.canScrollVertically(-1)
+                        || parent.canScrollHorizontally(1) || parent.canScrollHorizontally(-1))) {
+                    reference = view;
+                    break;
+                }
+            }
+            scrollReferenceView = new WeakReference<>(reference);
+            scrollSpeed = 0;
+            if (reference != null) {
+                reference.getLocationInWindow(scrollReferenceLocation);
+            }
+            return;
+        }
+        reference.getLocationInWindow(scrollReferenceLocation);
+        if (elapsed > 0 && elapsed < SCROLL_IDLE_MILLISECONDS) {
+            final int distance = Math.max(Math.abs(scrollReferenceLocation[0] - lastX),
+                    Math.abs(scrollReferenceLocation[1] - lastY));
+            scrollSpeed = distance / (reference.getResources().getDisplayMetrics().density * elapsed);
+        } else {
+            scrollSpeed = 0;
+        }
+    };
+
+    /**
+     * Litho views waiting to be laid out again, or mounted again, one per frame.
+     * Accessed only on the main thread.
+     */
+    private static final Set<LithoViewInterface> pendingRelayoutViews = new LinkedHashSet<>();
+    private static final Set<LithoViewInterface> pendingRemountViews = new LinkedHashSet<>();
+
+    /**
+     * Views mounted again since the pending views started to be processed. A nested Litho view
+     * of a view mounted again is already mounted again. Accessed only on the main thread.
+     */
+    private static final Set<View> remountedViews = Collections.newSetFromMap(new WeakHashMap<>());
+
+    private static boolean pendingViewsFrameCallbackPosted;
+
+    private static final Choreographer.FrameCallback pendingViewsFrameCallback = frameTimeNanos -> {
+        pendingViewsFrameCallbackPosted = false;
+        processNextPendingView();
+    };
 
     /**
      * Called on the main thread when a Litho view is measured, such as when a list item is scrolled
@@ -278,7 +361,9 @@ public final class LithoRelayoutPatch {
     private static void relayoutOutdatedViews() {
         final long now = SystemClock.uptimeMillis();
         final long scrollIdleTime = lastScrollTime + SCROLL_IDLE_MILLISECONDS;
-        final long maxWaitTime = relayoutRequestTime + MAX_SCROLL_WAIT_MILLISECONDS;
+        final long maxWaitTime = relayoutRequestTime + (scrollSpeed > FAST_SCROLL_DP_PER_MILLISECOND
+                ? MAX_FAST_SCROLL_WAIT_MILLISECONDS
+                : MAX_SCROLL_WAIT_MILLISECONDS);
         if (now < scrollIdleTime && now < maxWaitTime) {
             // A list is scrolling. The relayout waits, so it's done once for all the requests
             // made while scrolling, and not while the list calculates the layouts of new elements.
@@ -353,17 +438,65 @@ public final class LithoRelayoutPatch {
                 }
             }
             if (!remountViews.isEmpty()) {
-                for (LithoViewInterface lithoView : remountViews) {
-                    lithoView.patch_forceRemount();
-                }
-                Logger.printDebug(() -> "Remounted Litho views: " + remountViews.size());
+                Logger.printDebug(() -> "Remounting Litho views: " + remountViews.size());
             }
-
-            for (LithoViewInterface lithoView : relayoutViews) {
-                lithoView.patch_forceRelayout();
+            // A view mounted again by an earlier relayout can be requested again, such as for another image.
+            remountedViews.clear();
+            pendingRemountViews.addAll(remountViews);
+            pendingRelayoutViews.addAll(relayoutViews);
+            // Started by a frame callback, so the first view is laid out alone in the frame.
+            if (!pendingViewsFrameCallbackPosted && (!pendingRelayoutViews.isEmpty() || !pendingRemountViews.isEmpty())) {
+                pendingViewsFrameCallbackPosted = true;
+                Choreographer.getInstance().postFrameCallback(pendingViewsFrameCallback);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "relayoutOutdatedViews failure", ex);
+        }
+    }
+
+    /**
+     * Lays out again, or mounts again, the next pending Litho view, and the next in the next frame.
+     * Each layout is calculated on the main thread, so the layouts are calculated in different frames.
+     */
+    private static void processNextPendingView() {
+        try {
+            final boolean remount = !pendingRemountViews.isEmpty();
+            Iterator<LithoViewInterface> iterator = (remount ? pendingRemountViews : pendingRelayoutViews).iterator();
+            if (!iterator.hasNext()) {
+                remountedViews.clear();
+                return;
+            }
+            LithoViewInterface lithoView = iterator.next();
+            iterator.remove();
+            View view = (View) lithoView;
+            if (remount && isShownOrInBackground(view) && !isRemountedMeanwhile(view)) {
+                lithoView.patch_forceRemount();
+                remountedViews.add(view);
+            }
+            // A recycled view that is no longer attached is laid out again when it's bound again.
+            if ((!remount || pendingRelayoutViews.remove(lithoView)) && view.isAttachedToWindow()) {
+                lithoView.patch_forceRelayout();
+            }
+            pendingViewsFrameCallbackPosted = true;
+            Choreographer.getInstance().postFrameCallback(pendingViewsFrameCallback);
+        } catch (Exception ex) {
+            Logger.printException(() -> "processNextPendingView failure", ex);
+        }
+    }
+
+    /**
+     * @return If the view or a view that contains it was mounted again since the pending views
+     *         started to be processed, which also mounted again the view.
+     */
+    private static boolean isRemountedMeanwhile(View view) {
+        while (true) {
+            if (remountedViews.contains(view)) {
+                return true;
+            }
+            if (!(view.getParent() instanceof View parent)) {
+                return false;
+            }
+            view = parent;
         }
     }
 
