@@ -2636,14 +2636,22 @@ public final class LyricsPanelView extends FrameLayout
         boolean invitesContribution = newLyrics.synced()
                 && QuickLRCClient.PROVIDER_NAME.equals(newLyrics.providerName());
 
-        List<String> creditInputs = new ArrayList<>();
-        if (songwriters != null) creditInputs.addAll(songwriters);
-        if (credits != null) creditInputs.addAll(credits);
-        if (hasAbout) creditInputs.add(about);
-        if (invitesContribution) creditInputs.add(str(LYRICS_CONTRIBUTE_CREDIT_KEY));
+        List<String> lines = new ArrayList<>();
+        if (songwriters != null && !songwriters.isEmpty()) {
+            lines.add(str("morphe_music_lyrics_written_by", String.join(", ", songwriters)));
+        }
+        if (credits != null) {
+            lines.addAll(credits);
+        }
+        if (hasAbout) {
+            lines.add(about);
+        }
+        if (invitesContribution) {
+            lines.add(str(LYRICS_CONTRIBUTE_CREDIT_KEY));
+        }
 
-        if (!creditInputs.isEmpty()) {
-            creditView.setText(formatSongwritersSpannable(creditInputs));
+        if (!lines.isEmpty()) {
+            creditView.setText(buildFooterSpannable(lines));
             creditView.setVisibility(Settings.LYRICS_HIDE_INFO.get() ? GONE : VISIBLE);
         } else {
             creditView.setText("");
@@ -6211,57 +6219,13 @@ public final class LyricsPanelView extends FrameLayout
         }
     }
 
-    private static SpannableString formatSongwritersSpannable(List<String> songwriters) {
-        Set<String> writerNames = new LinkedHashSet<>();
-        List<String> otherLines = new ArrayList<>();
-
-        for (String raw : songwriters) {
-            if (raw == null) continue;
-            for (String partLine : raw.split("\\r?\\n")) {
-                String trimmed = partLine.trim();
-                if (trimmed.isEmpty()) continue;
-                String lower = trimmed.toLowerCase(Locale.ROOT);
-                if (lower.startsWith("written by:") || lower.startsWith("written by ")
-                        || lower.startsWith("ditulis oleh:") || lower.startsWith("ditulis oleh ")
-                        || lower.startsWith("songwriter:") || lower.startsWith("songwriters:")) {
-                    int colonIdx = trimmed.indexOf(':');
-                    String namesPart = (colonIdx >= 0)
-                            ? trimmed.substring(colonIdx + 1).trim()
-                            : trimmed.substring(lower.startsWith("ditulis oleh") ? "ditulis oleh".length() : "written by".length()).trim();
-                    for (String name : namesPart.split(",")) {
-                        String n = name.trim();
-                        if (!n.isEmpty()) {
-                            writerNames.add(n);
-                        }
-                    }
-                } else if (trimmed.indexOf(':') < 0 && trimmed.indexOf('：') < 0
-                        && !lower.startsWith("lyrics ") && !lower.startsWith("©") && !lower.startsWith("(c)")) {
-                    for (String name : trimmed.split(",")) {
-                        String n = name.trim();
-                        if (!n.isEmpty()) {
-                            writerNames.add(n);
-                        }
-                    }
-                } else {
-                    if (!otherLines.contains(trimmed)) {
-                        otherLines.add(trimmed);
-                    }
-                }
-            }
-        }
-
-        List<String> finalLines = new ArrayList<>();
-        if (!writerNames.isEmpty()) {
-            finalLines.add(str("morphe_music_lyrics_written_by", String.join(", ", writerNames)));
-        }
-        finalLines.addAll(otherLines);
-
+    private static SpannableString buildFooterSpannable(List<String> lines) {
         StringBuilder fullText = new StringBuilder();
         List<int[]> boldRanges = new ArrayList<>();
 
-        for (int i = 0; i < finalLines.size(); i++) {
+        for (int i = 0; i < lines.size(); i++) {
             if (i > 0) fullText.append('\n');
-            String line = finalLines.get(i);
+            String line = lines.get(i);
             int lineStart = fullText.length();
             fullText.append(line);
             int colonIdx = line.indexOf(':');
