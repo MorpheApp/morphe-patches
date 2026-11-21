@@ -302,13 +302,57 @@ public final class VideoEffectsPatch {
                 return vec3(0.61, 0.74, 0.06);
             }
 
-            // 320 pixels wide with the 64 colors of an EGA graphics card (4 levels of each color channel),
-            // and ordered dithering between the levels.
+            // Keeps the palette color that is closest to c. The colors are from 0 to 255.
+            void closerColor(vec3 c, vec3 color, inout float best, inout vec3 result) {
+                vec3 diff = c - color / 255.0;
+                float d = dot(diff * diff, vec3(2.0, 4.0, 3.0));
+                if (d < best) {
+                    best = d;
+                    result = color / 255.0;
+                }
+            }
+
+            // 320 pixels wide with the 32 colors of the DawnBringer 32 pixel art palette, and ordered dithering.
             vec3 retroPc(vec2 uv) {
                 float pixel = max(1.0, floor(uResolution.x / 320.0));
                 vec2 cell = floor(uv * uResolution / pixel);
-                vec3 c = adjustSaturation(pick((cell + 0.5) * pixel / uResolution), 1.15);
-                return clamp(floor(c * 3.0 + bayer4(cell) + 1.0 / 32.0) / 3.0, 0.0, 1.0);
+                vec3 c = adjustSaturation(pick((cell + 0.5) * pixel / uResolution), 1.2);
+                c += (bayer4(cell) - 0.47) * 0.2;
+                float best = 100.0;
+                vec3 result = vec3(0.0);
+                closerColor(c, vec3(0.0, 0.0, 0.0), best, result);
+                closerColor(c, vec3(34.0, 32.0, 52.0), best, result);
+                closerColor(c, vec3(69.0, 40.0, 60.0), best, result);
+                closerColor(c, vec3(102.0, 57.0, 49.0), best, result);
+                closerColor(c, vec3(143.0, 86.0, 59.0), best, result);
+                closerColor(c, vec3(223.0, 113.0, 38.0), best, result);
+                closerColor(c, vec3(217.0, 160.0, 102.0), best, result);
+                closerColor(c, vec3(238.0, 195.0, 154.0), best, result);
+                closerColor(c, vec3(251.0, 242.0, 54.0), best, result);
+                closerColor(c, vec3(153.0, 229.0, 80.0), best, result);
+                closerColor(c, vec3(106.0, 190.0, 48.0), best, result);
+                closerColor(c, vec3(55.0, 148.0, 110.0), best, result);
+                closerColor(c, vec3(75.0, 105.0, 47.0), best, result);
+                closerColor(c, vec3(82.0, 75.0, 36.0), best, result);
+                closerColor(c, vec3(50.0, 60.0, 57.0), best, result);
+                closerColor(c, vec3(63.0, 63.0, 116.0), best, result);
+                closerColor(c, vec3(48.0, 96.0, 130.0), best, result);
+                closerColor(c, vec3(91.0, 110.0, 225.0), best, result);
+                closerColor(c, vec3(99.0, 155.0, 255.0), best, result);
+                closerColor(c, vec3(95.0, 205.0, 228.0), best, result);
+                closerColor(c, vec3(203.0, 219.0, 252.0), best, result);
+                closerColor(c, vec3(255.0, 255.0, 255.0), best, result);
+                closerColor(c, vec3(155.0, 173.0, 183.0), best, result);
+                closerColor(c, vec3(132.0, 126.0, 135.0), best, result);
+                closerColor(c, vec3(105.0, 106.0, 106.0), best, result);
+                closerColor(c, vec3(89.0, 86.0, 82.0), best, result);
+                closerColor(c, vec3(118.0, 66.0, 138.0), best, result);
+                closerColor(c, vec3(172.0, 50.0, 50.0), best, result);
+                closerColor(c, vec3(217.0, 87.0, 99.0), best, result);
+                closerColor(c, vec3(215.0, 123.0, 186.0), best, result);
+                closerColor(c, vec3(143.0, 151.0, 74.0), best, result);
+                closerColor(c, vec3(138.0, 111.0, 48.0), best, result);
+                return result;
             }
 
             // 5x5 bitmaps of the characters, from dark to bright. Bits 0 to 14 hold the top 3 rows,
