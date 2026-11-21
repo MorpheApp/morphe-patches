@@ -314,6 +314,7 @@ public final class InAppDownloadsPatch {
             Logger.printDebug(() -> "AUDIOTRACK-DIAG consumed selected audio track id: " + selectedAudioTrackId);
             OfflinePlayerResponse original = OfflinePlayerResponse.parseFrom(message.toByteArray());
             if (!original.hasOfflineState()) {
+                Logger.printDebug(() -> "AUDIOTRACK-DIAG original response has no offline state");
                 return null;
             }
 
@@ -338,14 +339,24 @@ public final class InAppDownloadsPatch {
                             .toByteArray();
                 }
                 Logger.printDebug(() -> "AUDIOTRACK-DIAG branch: own response, selected track unavailable");
+                for (OfflineStreamFormat format : original.getStreamingData().getAdaptiveFormatsList()) {
+                    if (format.getMimeType().startsWith("audio/")) {
+                        String audioTrackId = format.hasAudioTrack() ? format.getAudioTrack().getId() : "none";
+                        String mimeType = format.getMimeType();
+                        boolean offlineEligible = format.getOfflineEligible();
+                        Logger.printDebug(() -> "AUDIOTRACK-DIAG unavailable selected-track audio format id: "
+                                + audioTrackId + " mimeType: " + mimeType
+                                + " offlineEligible: " + offlineEligible);
+                    }
+                }
                 return null;
             }
 
-            Logger.printDebug(() -> "AUDIOTRACK-DIAG branch: other client's response");
             if (videoId.isEmpty()) {
                 Logger.printDebug(() -> "Declined offline player response has no video id");
                 return null;
             }
+            Logger.printDebug(() -> "AUDIOTRACK-DIAG branch: other client's response");
 
             StreamingDataRequest.StreamData streams = StreamingDataRequest.fetchRequestForDownload(
                     videoId, DOWNLOAD_CLIENTS, DOWNLOAD_CLIENTS.get(0)).getStream();
