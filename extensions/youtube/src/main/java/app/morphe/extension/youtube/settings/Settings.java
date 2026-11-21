@@ -89,6 +89,7 @@ import app.morphe.extension.youtube.patches.RestoreOldVideoActionBarPatch.VideoA
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.WideSearchBarPatch.SearchbarType;
 import app.morphe.extension.youtube.patches.YouTubeGlassNavigationBar.GlassAvailability;
+import app.morphe.extension.youtube.patches.glassmenus.GlassMenusPatch.GlassMenusAvailability;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.ExpandableCardStyle;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.PostButtonsLayout;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAmbientModeFlyoutMenuAvailability;
@@ -714,6 +715,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting NAVIGATION_BAR_GLASS_BUTTON_SPACING = new IntegerSetting("morphe_navigation_bar_glass_button_spacing", 48, true, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR), new GlassAvailability()));
     // The glass navigation bar sets the spacing of its buttons.
     public static final BooleanSetting NARROW_NAVIGATION_BUTTONS = new BooleanSetting("morphe_narrow_navigation_buttons", FALSE, true, parentsAll(parentNot(HIDE_NAVIGATION_BAR), parentNot(NAVIGATION_BAR_GLASS)));
+
+    // Glass menus
+    public static final BooleanSetting GLASS_MENUS = new BooleanSetting("morphe_glass_menus", FALSE, false, new GlassMenusAvailability());
+    public static final IntegerSetting GLASS_MENUS_OPACITY = new IntegerSetting("morphe_glass_menus_opacity", 30, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
+    public static final IntegerSetting GLASS_MENUS_BLUR = new IntegerSetting("morphe_glass_menus_blur", 24, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
+    public static final IntegerSetting GLASS_MENUS_DIM = new IntegerSetting("morphe_glass_menus_dim", 20, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
 
     // Toolbar
     public static final BooleanSetting HIDE_TOOLBAR_CAST_BUTTON = new BooleanSetting("morphe_hide_toolbar_cast_button", FALSE, true);
@@ -1469,6 +1476,12 @@ public class Settings extends SharedYouTubeSettings {
                 50, 100, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(NAVIGATION_BAR_GLASS_BUTTON_SPACING,
                 8, 96, 4, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_MENUS_OPACITY,
+                0, 100, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_MENUS_BLUR,
+                4, 60, 2, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_MENUS_DIM,
+                0, 80, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(PLAYER_OVERLAY_OPACITY,
                 0, 100, 1, "%"));
         SeekBarPreference.register(new SeekBarConfig(PLAYER_CONTROL_BUTTONS_BACKGROUND_OPACITY,
