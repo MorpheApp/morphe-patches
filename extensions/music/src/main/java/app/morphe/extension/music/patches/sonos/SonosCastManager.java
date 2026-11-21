@@ -52,6 +52,11 @@ final class SonosCastManager {
     private static final int UNKNOWN_VOLUME = -1;
     private static final int COVER_JPEG_QUALITY = 90;
     private static final String LOCK_TAG = "Morphe:SonosCast";
+    /**
+     * How long the wake lock is held if it is not renewed. Every poll renews it, so it only times out
+     * if polling stops without a disconnect.
+     */
+    private static final long WAKE_LOCK_TIMEOUT_MILLIS = TimeUnit.MINUTES.toMillis(1);
 
     // Hidden AudioManager constants.
     private static final String VOLUME_CHANGED_ACTION = "android.media.VOLUME_CHANGED_ACTION";
@@ -109,7 +114,7 @@ final class SonosCastManager {
     @Nullable
     private static WifiManager.WifiLock lowLatencyWifiLock;
     @Nullable
-    private static PowerManager.WakeLock wakeLock;
+    private static volatile PowerManager.WakeLock wakeLock;
 
     private SonosCastManager() {
     }
@@ -322,6 +327,7 @@ final class SonosCastManager {
             if (device == null) {
                 return;
             }
+            renewWakeLock();
 
             final Integer volume = SonosSoapClient.getVolume(device);
             if (volume != null && volume != speakerVolume) {
@@ -428,9 +434,19 @@ final class SonosCastManager {
             lowLatencyWifiLock.acquire();
         }
 
-        wakeLock = context.getSystemService(PowerManager.class).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, LOCK_TAG);
-        wakeLock.setReferenceCounted(false);
-        wakeLock.acquire();
+        final PowerManager.WakeLock lock = context.getSystemService(PowerManager.class)
+                .newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, LOCK_TAG);
+        lock.setReferenceCounted(false);
+        lock.acquire(WAKE_LOCK_TIMEOUT_MILLIS);
+        wakeLock = lock;
+    }
+
+    private static void renewWakeLock() {
+        final PowerManager.WakeLock lock = wakeLock;
+        if (lock != null) {
+            // Not reference counted, so this only moves the timeout.
+            lock.acquire(WAKE_LOCK_TIMEOUT_MILLIS);
+        }
     }
 
     private static void releaseLocks() {
@@ -442,9 +458,10 @@ final class SonosCastManager {
             lowLatencyWifiLock.release();
             lowLatencyWifiLock = null;
         }
-        if (wakeLock != null) {
-            wakeLock.release();
+        final PowerManager.WakeLock lock = wakeLock;
+        if (lock != null) {
             wakeLock = null;
+            lock.release();
         }
     }
 }

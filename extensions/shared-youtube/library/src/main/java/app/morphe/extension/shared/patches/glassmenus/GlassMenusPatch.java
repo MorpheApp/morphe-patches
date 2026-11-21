@@ -36,6 +36,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
+import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -119,7 +120,7 @@ public final class GlassMenusPatch {
      */
     private static final int CORNERS_TOP = 1;
     /**
-     * No round corners.
+     * Does not round the corners.
      */
     private static final int CORNERS_NONE = 2;
 
@@ -151,11 +152,14 @@ public final class GlassMenusPatch {
      */
     public static final class GlassMenusAvailability implements Setting.Availability {
         @Override
+        @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
         public boolean isAvailable() {
             return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S;
         }
     }
 
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isEnabled() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && SharedYouTubeSettings.GLASS_MENUS.get();
     }
@@ -272,6 +276,7 @@ public final class GlassMenusPatch {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     private static void styleWindowPanel(Window window, View decor) {
         try {
             if (window.getAttributes().height != WindowManager.LayoutParams.WRAP_CONTENT) return;
@@ -303,7 +308,7 @@ public final class GlassMenusPatch {
             Deque<View> queue = new ArrayDeque<>();
             queue.add(window.getDecorView());
             while (!queue.isEmpty()) {
-                View view = queue.poll();
+                View view = queue.remove();
                 if (view.getBackground() instanceof ShapeDrawable shape
                         && Color.alpha(shape.getPaint().getColor()) == 255) {
                     GlassSurface.apply(view, CORNERS_AUTO);
@@ -460,7 +465,8 @@ public final class GlassMenusPatch {
         public void onViewAttachedToWindow(@NonNull View attached) {
             try {
                 // The blur belongs to the window the view is attached to.
-                windowManager = view.getContext().getSystemService(WindowManager.class);
+                WindowManager manager = view.getContext().getSystemService(WindowManager.class);
+                windowManager = manager;
                 blur = BlurRegion.create(view);
                 if (blur != null) {
                     view.setBackground(new LayerDrawable(new Drawable[]{blur, tint}));
@@ -470,7 +476,9 @@ public final class GlassMenusPatch {
                         BlurRegion.setBlurRadius(blur, 0);
                         // Called right away with the current state, and again when the system turns the blur
                         // on or off.
-                        windowManager.addCrossWindowBlurEnabledListener(blurListener);
+                        if (manager != null) {
+                            manager.addCrossWindowBlurEnabledListener(blurListener);
+                        }
                     }
                 }
                 updateCorners(true);
@@ -598,7 +606,7 @@ public final class GlassMenusPatch {
         }
 
         /**
-         * Hides a drawable of the color of the menu with a transparent color filter. The drawable itself is not
+         * Hides a drawable that has the color of the menu with a transparent color filter. The drawable itself is not
          * changed, as the app can draw it again elsewhere, and the filter is removed when the menu is detached.
          */
         private void hideIfMenuColor(Drawable drawable) {
@@ -709,7 +717,7 @@ public final class GlassMenusPatch {
             final boolean dark = Utils.isDarkModeEnabled();
             final int background = ThemeUtils.getAppBackgroundColor();
             // A menu is raised above the page, so it is a little lighter than the page, as in the app.
-            fill.setColor(blend(background, Color.WHITE, dark ? 0.08f : 0.6f));
+            fill.setColor(blendWithWhite(background, dark ? 0.08f : 0.6f));
 
             rim.setStyle(Paint.Style.STROKE);
             rim.setStrokeWidth(RIM_WIDTH);
@@ -730,12 +738,13 @@ public final class GlassMenusPatch {
             invalidateSelf();
         }
 
-        private static int blend(int color, int with, float amount) {
+        private static int blendWithWhite(@ColorInt int color, float amount) {
             final float keep = 1 - amount;
+            final float white = 255 * amount;
             return Color.rgb(
-                    (int) (Color.red(color) * keep + Color.red(with) * amount),
-                    (int) (Color.green(color) * keep + Color.green(with) * amount),
-                    (int) (Color.blue(color) * keep + Color.blue(with) * amount));
+                    (int) (Color.red(color) * keep + white),
+                    (int) (Color.green(color) * keep + white),
+                    (int) (Color.blue(color) * keep + white));
         }
 
         @Override
@@ -795,6 +804,7 @@ public final class GlassMenusPatch {
         public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;
