@@ -143,6 +143,22 @@ tasks {
         }
     }
 
+    register<JavaExec>("validateAndroidAutoThirdPartyApps") {
+        description = "Patches a supplied YouTube Music APK for Android Auto third-party apps validation"
+        group = "verification"
+
+        dependsOn("testClasses")
+        classpath = sourceSets["test"].runtimeClasspath
+        mainClass.set("app.morphe.patches.music.misc.androidauto.AndroidAutoThirdPartyAppsDeviceBuildKt")
+
+        doFirst {
+            val apk = providers.gradleProperty("androidAutoThirdPartyAppsApk").orNull
+                ?: throw GradleException("validateAndroidAutoThirdPartyApps requires -PandroidAutoThirdPartyAppsApk=/absolute/path/to/ytm.apk")
+            val output = providers.gradleProperty("androidAutoThirdPartyAppsOutput").orNull
+            setArgs(listOfNotNull(apk, output))
+        }
+    }
+
     register<JavaExec>("validatePlaylistQueue") {
         description = "Applies Native playlist queue to a stock APK and verifies it with Android SDK tools"
         group = "verification"
