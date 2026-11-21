@@ -1742,21 +1742,22 @@ internal fun playlistQueueAvailabilityFingerprint(queueType: String, requestType
     filters = listOf(methodCall(opcode = Opcode.INVOKE_INTERFACE, parameters = listOf(requestType), returnType = "I"))
 )
 
-/** Maps the PageHeaderRenderer discriminator to its native toolbar presenter. */
+/**
+ * Creates the native presenter of the PageHeaderRenderer header of a browse response, such as of a playlist page.
+ * The last match is the presenter instance.
+ */
 internal object PlaylistPageHeaderFactoryFingerprint : Fingerprint(
     returnType = "L",
-    custom = { method, _ ->
-        // The newer factory also receives a navigation endpoint.
-        method.parameterTypes.size in 1..2 && method.parameterTypes.all { it.startsWith('L') }
-    },
     filters = listOf(
         literal(509923604L), // PageHeaderRenderer in BrowseResponse.header.
         opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
         opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
-        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately())
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+        opcode(Opcode.NEW_INSTANCE, location = MatchAfterWithin(10))
     )
 )
 
+/** Builds the toolbar menu rows of a page header presenter from BrowseResponse.toolbarMenu. */
 internal fun playlistPageToolbarFingerprint(presenter: String, items: FieldReference) = Fingerprint(
     definingClass = presenter,
     parameters = listOf("L"),
@@ -1764,48 +1765,5 @@ internal fun playlistPageToolbarFingerprint(presenter: String, items: FieldRefer
     filters = listOf(
         literal(66439850L), // MenuRenderer in BrowseResponse.toolbarMenu.
         fieldAccess(opcode = Opcode.IGET_OBJECT, reference = items)
-    )
-)
-
-internal fun playlistPageToolbarClickFingerprint(rowType: String) = Fingerprint(
-    parameters = listOf("Landroid/view/MenuItem;"),
-    returnType = "Z",
-    filters = listOf(
-        methodCall(smali = "Landroid/util/SparseArray;->get(I)Ljava/lang/Object;"),
-        checkCast(rowType),
-        anyInstruction(
-            methodCall(
-                definingClass = rowType,
-                opcode = Opcode.INVOKE_INTERFACE,
-                parameters = emptyList(),
-                returnType = "Z"
-            ),
-            methodCall(
-                definingClass = rowType,
-                opcode = Opcode.INVOKE_INTERFACE,
-                parameters = listOf("Landroid/view/MenuItem;"),
-                returnType = "Z"
-            )
-        )
-    )
-)
-
-internal fun playlistPageToolbarCommandFingerprint(
-    callback: MethodReference,
-    commandType: String,
-    isToolbarAction: (String) -> Boolean,
-) = Fingerprint(
-    name = callback.name,
-    isStatic = false,
-    parameters = callback.parameterTypes.map(CharSequence::toString),
-    returnType = "Z",
-    custom = { _, classDef -> classDef.interfaces.any(isToolbarAction) },
-    filters = listOf(
-        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = commandType),
-        anyInstruction(
-            methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "V", parameters = listOf(commandType)),
-            methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "V",
-                parameters = listOf(commandType, "Ljava/util/Map;"))
-        )
     )
 )

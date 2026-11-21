@@ -8,23 +8,23 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.classDefByOrNull
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.addPatchInterface
-import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
-import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.youtube.layout.flyout.FeedFlyoutButtonsInitializerFingerprint
-import app.morphe.patches.youtube.layout.hide.general.ActionBarMenuBuilderFingerprint
+import app.morphe.patches.youtube.misc.commandrouter.CommandRouterExecuteCommandFingerprint
+import app.morphe.patches.youtube.misc.commandrouter.CommandRouterFragmentFingerprint
+import app.morphe.patches.youtube.misc.commandrouter.accountScopedCommandRouterExecuteCommandFingerprint
+import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private const val ACTIONS = "Lapp/morphe/extension/youtube/patches/queue/QueueFlyoutActions;"
 private const val MESSAGE = "Lcom/google/protobuf/MessageLite;"
@@ -124,80 +124,43 @@ internal fun installQueueFlyout() {
     installPlaylistPageToolbar(menuType, itemFields.single())
 }
 
+/** Bind the playlist page toolbar menu and run its queue commands with the native queue. */
 private fun installPlaylistPageToolbar(menuType: String, items: FieldReference) {
-    // This is an optional surface. Older builds may use the legacy playlist header.
-    val factory = PlaylistPageHeaderFactoryFingerprint.matchAll(0..1).singleOrNull() ?: return
-    val headerType = factory.instructionMatches.last().instruction.getReference<TypeReference>()!!.type
-    val presenter = factory.originalMethod.implementation!!.instructions
-        .mapNotNull { it.getReference<MethodReference>() }
-        .filter { it.name == "<init>" && it.parameterTypes.lastOrNull() == headerType }
-        .map { it.definingClass }.distinct().singleOrNull() ?: return
-    val parent = classDefByOrNull(presenter)?.superclass ?: return
-    val menus = listOf(presenter, parent).mapNotNull {
-        playlistPageToolbarFingerprint(it, items).matchAll(0..1).singleOrNull()
-    }
-    if (menus.isEmpty()) {
-        return
-    }
-    val rowType = ActionBarMenuBuilderFingerprint.originalMethod.implementation!!.instructions
-        .mapNotNull { it.getReference<MethodReference>() }
-        .filter {
-            it.returnType == "V" &&
-                it.parameterTypes.map(CharSequence::toString) == listOf("Landroid/view/MenuItem;", "Landroid/content/Context;")
-        }.map { it.definingClass }.distinct().singleOrNull() ?: return
-    val callback = playlistPageToolbarClickFingerprint(rowType).matchAll(0..Int.MAX_VALUE)
-        .map { it.instructionMatches.last().methodReference }.distinctBy { it.toString() }
-        .singleOrNull() ?: return
-    // The no-argument callback uses the inherited menu; MenuItem callbacks have two presenters.
-    val expectedMenuCount = if (callback.parameterTypes.isEmpty()) 1 else 2
-    if (menus.size != expectedMenuCount) {
-        return
-    }
-    val commandType = NativeButtonDispatchFingerprint.instructionMatches.single()
-        .methodReference.parameterTypes.first().toString()
-
-    fun isToolbarAction(type: String): Boolean =
-        type == rowType || classDefByOrNull(type)?.interfaces?.any(::isToolbarAction) == true
-
-    val actions = playlistPageToolbarCommandFingerprint(callback, commandType, ::isToolbarAction)
-        .matchAll(0..Int.MAX_VALUE)
-    if (actions.isEmpty()) {
-        return
-    }
-    for (action in actions) {
-        val command = action.instructionMatches.first().fieldReference
-        // Some click handlers have no local register to hold the command.
-        val original = action.originalMethod
-        val method = if (original.implementation!!.registerCount == original.numberOfParameterRegistersLogical) {
-            action.method.cloneParameters()
-        } else {
-            action.method
+    val presenter = PlaylistPageHeaderFactoryFingerprint.instructionMatches.last()
+        .getInstruction<ReferenceInstruction>().reference.toString()
+    val menuBuilders = buildList {
+        add(playlistPageToolbarFingerprint(classDefBy(presenter).superclass!!, items))
+        // 21.25+ presenters also build the menu themselves.
+        if (is_21_25_or_greater) {
+            add(playlistPageToolbarFingerprint(presenter, items))
         }
-        method.addInstructionsAtControlFlowLabel(
-            0,
-            """
-                move-object/from16 v0, p0
-                iget-object v0, v0, $command
-                invoke-static {v0}, $ACTIONS->onPlaylistPageQueueCommand($MESSAGE)Z
-                move-result v0
-                if-eqz v0, :stock_page_toolbar
-                const/4 v0, 0x1
-                return v0
-                :stock_page_toolbar
-                nop
-            """
-        )
     }
-    for (menu in menus) {
-        val read = menu.instructionMatches.last()
-        val source = read.getInstruction<TwoRegisterInstruction>().registerB
-        menu.method.addInstructionsAtControlFlowLabel(
+    menuBuilders.forEach {
+        val read = it.instructionMatches.last()
+        val menu = read.getInstruction<TwoRegisterInstruction>().registerB
+        it.method.addInstructionsAtControlFlowLabel(
             read.index,
             """
-                invoke-static/range {v$source .. v$source}, $ACTIONS->preparePlaylistPageMenu($MESSAGE)$MESSAGE
-                move-result-object v$source
-                check-cast v$source, $menuType
+                invoke-static/range { v$menu .. v$menu }, $ACTIONS->preparePlaylistPageMenu($MESSAGE)$MESSAGE
+                move-result-object v$menu
+                check-cast v$menu, $menuType
             """
         )
     }
+
+    // The toolbar rows run their commands with the account scoped command router.
+    accountScopedCommandRouterExecuteCommandFingerprint(
+        CommandRouterFragmentFingerprint.originalMethod.returnType,
+        CommandRouterExecuteCommandFingerprint.originalMethod.parameterTypes.first().toString()
+    ).method.addInstructionsWithLabels(
+        0,
+        """
+            invoke-static/range { p1 .. p1 }, $ACTIONS->onPlaylistPageCommand($MESSAGE)Z
+            move-result v0
+            if-eqz v0, :run_command
+            return-void
+            :run_command
+            nop
+        """
+    )
 }
