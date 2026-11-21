@@ -46,19 +46,31 @@ public final class VideoEffectsPatch {
         ALIEN("adjustSaturation(pick(uv).brg, 1.3)"),
         ASCII_ART("asciiArt(uv)"),
         COMIC_BOOK("comicBook(uv)"),
+        CRT_TV("crtTv(uv)"),
+        FISHEYE("fisheye(uv)"),
+        GLITCH("glitch(uv)"),
         INVERT("1.0 - pick(uv)"),
         KALEIDOSCOPE("kaleidoscope(uv)"),
+        MIRROR_IMAGE("pick(vec2(1.0 - uv.x, uv.y))"),
         NEON_EDGES("neonEdges(uv)"),
         NIGHT_VISION("nightVision(uv)"),
         OLD_FILM("oldFilm(uv)"),
         PENCIL_SKETCH("pencilSketch(uv)"),
         POP_ART("popArt(uv)"),
+        PUZZLE("puzzle(uv)"),
         RAINBOW("clamp(hueRotate(adjustSaturation(pick(uv), 1.4), uTime * 1.2), 0.0, 1.0)"),
         RETRO_HANDHELD("retroHandheld(uv)"),
         RETRO_PC("retroPc(uv)"),
+        RIPPLE("ripple(uv)"),
+        SHATTERED_GLASS("shatteredGlass(uv)"),
+        SLICES("slices(uv)"),
+        SWIRL("swirl(uv)"),
         THERMAL("thermal(luma(pick(uv)))"),
+        TILT_SHIFT("tiltShift(uv)"),
+        TINY_PLANET("tinyPlanet(uv)"),
         UNDERWATER("underwater(uv)"),
-        VHS("vhs(uv)");
+        VHS("vhs(uv)"),
+        VIDEO_WALL("videoWall(uv)");
 
         private final String shaderExpression;
 
@@ -432,9 +444,7 @@ public final class VideoEffectsPatch {
 
             vec3 underwater(vec2 uv) {
                 vec2 wave = vec2(sin(uv.y * 22.0 + uTime * 2.0), cos(uv.x * 18.0 + uTime * 1.6)) * 0.006;
-                vec3 c = pick(uv + wave) * vec3(0.7, 0.92, 1.1);
-                float caustic = pow(abs(sin((uv.x + uv.y) * 28.0 + uTime * 2.5) * sin((uv.x - uv.y) * 23.0 - uTime * 1.9)), 4.0);
-                return clamp(c + caustic * vec3(0.08, 0.14, 0.16) * smoothstep(0.02, 0.3, luma(c)), 0.0, 1.0);
+                return clamp(pick(uv + wave) * vec3(0.7, 0.92, 1.1), 0.0, 1.0);
             }
 
             vec3 kaleidoscope(vec2 uv) {
@@ -449,6 +459,176 @@ public final class VideoEffectsPatch {
                 p.x /= aspect;
                 vec2 mirrored = 1.0 - abs(1.0 - mod(p + 0.5, 2.0));
                 return pick(mirrored);
+            }
+
+            // Point with the center of the picture at (0, 0) and the same scale on both axes.
+            vec2 centered(vec2 uv) {
+                return (uv - 0.5) * vec2(uResolution.x / max(uResolution.y, 1.0), 1.0);
+            }
+
+            vec2 uncentered(vec2 p) {
+                return p / vec2(uResolution.x / max(uResolution.y, 1.0), 1.0) + 0.5;
+            }
+
+            vec2 rotate(vec2 p, float angle) {
+                float c = cos(angle);
+                float s = sin(angle);
+                return vec2(c * p.x - s * p.y, s * p.x + c * p.y);
+            }
+
+            // Magnifies the middle and squeezes the sides, like a wide angle lens.
+            vec3 fisheye(vec2 uv) {
+                vec2 p = centered(uv);
+                float radius = 0.45 * length(vec2(uResolution.x / max(uResolution.y, 1.0), 1.0));
+                float r = length(p) / radius;
+                if (r < 1.0) p *= mix(0.45, 1.0, r * r);
+                return pick(uncentered(p));
+            }
+
+            // The bottom of the picture in the middle and the top all around, like a little planet.
+            vec3 tinyPlanet(vec2 uv) {
+                vec2 p = centered(uv);
+                float angle = atan(p.x, -p.y) / (2.0 * PI) + 0.5 + uTime * 0.02;
+                // Two mirrored copies around the circle, so there is no seam.
+                return pick(vec2(abs(fract(angle) * 2.0 - 1.0), length(p) * 2.0));
+            }
+
+            // A whirlpool in the middle that slowly turns one way and then the other.
+            vec3 swirl(vec2 uv) {
+                vec2 p = centered(uv);
+                float t = max(0.0, 1.0 - length(p) / 0.6);
+                return pick(uncentered(rotate(p, t * t * 3.0 * sin(uTime * 0.5))));
+            }
+
+            // Round waves that move out from the middle.
+            vec3 ripple(vec2 uv) {
+                vec2 p = centered(uv);
+                float r = max(length(p), 0.0001);
+                p += p / r * sin(r * 50.0 - uTime * 4.0) * 0.006 * smoothstep(0.0, 0.1, r);
+                return pick(uncentered(p));
+            }
+
+            // The picture broken into shards that are each moved and turned a little.
+            vec3 shatteredGlass(vec2 uv) {
+                vec2 p = centered(uv) * 5.0;
+                vec2 base = floor(p);
+                float best = 10.0;
+                float secondBest = 10.0;
+                vec2 bestId = vec2(0.0);
+                vec2 bestSeed = vec2(0.0);
+                for (int y = -1; y <= 1; y++) {
+                    for (int x = -1; x <= 1; x++) {
+                        vec2 id = base + vec2(float(x), float(y));
+                        vec2 seed = id + vec2(rand(id), rand(id + 17.31));
+                        float d = length(p - seed);
+                        if (d < best) {
+                            secondBest = best;
+                            best = d;
+                            bestId = id;
+                            bestSeed = seed;
+                        } else if (d < secondBest) {
+                            secondBest = d;
+                        }
+                    }
+                }
+                vec2 q = rotate(p - bestSeed, (rand(bestId + 3.7) - 0.5) * 0.12);
+                vec2 shift = (vec2(rand(bestId + 5.1), rand(bestId + 9.3)) - 0.5) * 0.15;
+                vec3 c = pick(uncentered((bestSeed + q + shift) / 5.0));
+                // Thin light lines where the glass is cracked.
+                float crack = 1.0 - smoothstep(0.0, 0.04, secondBest - best);
+                return mix(c, vec3(0.9), crack * 0.5);
+            }
+
+            // Horizontal strips that slide left and right at different times.
+            vec3 slices(vec2 uv) {
+                float strip = floor(uv.y * 12.0);
+                float shift = 0.08 * sin(uTime * 1.5 + rand(vec2(strip, 1.0)) * 2.0 * PI);
+                return pick(vec2(fract(uv.x + shift), uv.y));
+            }
+
+            // Blocks of the picture that jump to the wrong place now and then.
+            vec3 glitch(vec2 uv) {
+                float tick = floor(uTime * 12.0);
+                float band = floor(uv.y * 24.0);
+                float block = floor(uv.x * 6.0);
+                vec2 offset = vec2(0.0);
+                bool burst = rand(vec2(floor(uTime * 3.0), 7.0)) > 0.75;
+                if (burst && rand(vec2(band * 7.0 + block, tick)) > 0.85) {
+                    offset = (vec2(rand(vec2(band, tick + 1.0)), rand(vec2(block, tick + 2.0))) - 0.5) * vec2(0.3, 0.1);
+                }
+                if (rand(vec2(band * 3.1, tick)) > 0.97) {
+                    offset.x += (rand(vec2(band, tick + 5.0)) - 0.5) * 0.05;
+                }
+                return pick(fract(uv + offset));
+            }
+
+            // The video on a wall of 3x3 screens.
+            vec3 videoWall(vec2 uv) {
+                vec2 tile = fract(uv * 3.0);
+                vec2 border = 12.0 / uResolution;
+                vec2 inside = step(border, tile) * step(border, 1.0 - tile);
+                return pick(tile) * inside.x * inside.y;
+            }
+
+            // The picture cut into 4x4 pieces that fly to mixed up places and back again.
+            vec3 puzzle(vec2 uv) {
+                float cycle = floor(uTime / 10.0);
+                float phase = fract(uTime / 10.0);
+                // Piece j goes to place j * k + offset (mod 16), which is a different place for every
+                // piece when k is odd.
+                float k = 3.0 + 2.0 * floor(rand(vec2(cycle, 1.0)) * 6.0);
+                float offset = floor(rand(vec2(cycle, 2.0)) * 16.0);
+                vec3 result = vec3(0.05);
+                bool found = false;
+                for (int i = 0; i < 16; i++) {
+                    float j = float(i);
+                    float delay = rand(vec2(j, cycle)) * 0.08;
+                    float scatter = smoothstep(0.2 + delay, 0.3 + delay, phase)
+                            - smoothstep(0.65 + delay, 0.75 + delay, phase);
+                    float away = mod(j * k + offset, 16.0);
+                    vec2 home = vec2(mod(j, 4.0), floor(j / 4.0));
+                    vec2 pos = mix(home, vec2(mod(away, 4.0), floor(away / 4.0)), scatter) / 4.0;
+                    vec2 local = (uv - pos) * 4.0;
+                    if (local.x >= 0.0 && local.x < 1.0 && local.y >= 0.0 && local.y < 1.0) {
+                        // A moving piece is drawn on top of the pieces that don't move.
+                        bool moving = scatter > 0.0 && scatter < 1.0;
+                        if (!found || moving) {
+                            float edge = min(min(local.x, 1.0 - local.x), min(local.y, 1.0 - local.y));
+                            float outline = mix(1.0, smoothstep(0.0, 0.02, edge), min(scatter * 4.0, 1.0));
+                            result = pick((home + local) / 4.0) * outline;
+                            found = true;
+                        }
+                    }
+                }
+                return result;
+            }
+
+            // A curved tube TV screen with scanlines and red, green and blue phosphor stripes.
+            vec3 crtTv(vec2 uv) {
+                vec2 cc = uv - 0.5;
+                vec2 curved = uv + cc * dot(cc, cc) * 0.35;
+                if (curved.x < 0.0 || curved.x > 1.0 || curved.y < 0.0 || curved.y > 1.0) return vec3(0.0);
+                vec3 c = pick(curved);
+                float lineSize = max(2.0, floor(uResolution.y / 240.0));
+                float scanline = 0.7 + 0.3 * abs(sin(curved.y * uResolution.y * PI / lineSize));
+                float column = mod(gl_FragCoord.x, 3.0);
+                vec3 mask = column < 1.0 ? vec3(1.0, 0.7, 0.7) : (column < 2.0 ? vec3(0.7, 1.0, 0.7) : vec3(0.7, 0.7, 1.0));
+                vec2 edge = smoothstep(0.0, 0.03, curved) * smoothstep(0.0, 0.03, 1.0 - curved);
+                return clamp(c * scanline * mask * 1.35 * edge.x * edge.y * vignette(uv, 0.8), 0.0, 1.0);
+            }
+
+            // Blurs the top and bottom and adds color, so the video looks like a miniature model.
+            vec3 tiltShift(vec2 uv) {
+                float blur = smoothstep(0.12, 0.45, abs(uv.y - 0.5)) * 0.012;
+                float aspect = uResolution.x / max(uResolution.y, 1.0);
+                vec3 sum = vec3(0.0);
+                for (int i = 0; i < 16; i++) {
+                    float fi = float(i);
+                    float r = sqrt((fi + 0.5) / 16.0) * blur;
+                    float a = fi * 2.39996;
+                    sum += pick(uv + vec2(cos(a) / aspect, sin(a)) * r);
+                }
+                return contrast(adjustSaturation(sum / 16.0, 1.4), 0.2);
             }
 
             """;
