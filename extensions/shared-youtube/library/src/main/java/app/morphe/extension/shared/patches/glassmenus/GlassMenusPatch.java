@@ -31,6 +31,7 @@ import android.os.SystemClock;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
@@ -48,6 +49,7 @@ import java.util.Deque;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.function.Consumer;
@@ -186,7 +188,8 @@ public final class GlassMenusPatch {
 
             View sheet = dialog.findViewById(DESIGN_BOTTOM_SHEET);
             if (sheet != null) {
-                GlassSurface.apply(sheet, CORNERS_AUTO);
+                // The panel of the sheet is a fill inside it, with a margin at the top and the sides.
+                GlassSurface.apply(sheet, CORNERS_AUTO, true);
             }
         } catch (Throwable ex) {
             Logger.printException(() -> "onBottomSheetDialog failure", ex);
@@ -404,6 +407,18 @@ public final class GlassMenusPatch {
          * is detached. They are never removed: the app can use the background of a view it set.
          */
         private final Set<Drawable> hiddenDrawables = Collections.newSetFromMap(new IdentityHashMap<>());
+        /**
+         * The fills of the menu color that were hidden, and the view each is drawn in. The panel of the menu is
+         * where these are: the view drawn as glass can be larger than the panel, such as the bottom sheet, whose
+         * panel is a fill inside it with a margin at the top and the sides.
+         */
+        private final Map<Drawable, View> panelFills = new IdentityHashMap<>();
+        /**
+         * How far the panel of the menu is inside the view, at each side.
+         */
+        private final Rect panelInsets = new Rect();
+        private final int[] viewLocation = new int[2];
+        private final int[] hostLocation = new int[2];
         private long lastLithoScan;
         /**
          * When the menu was attached. Litho is checked on every frame right after, so the menu is not shown
@@ -420,15 +435,25 @@ public final class GlassMenusPatch {
         private boolean roundTop = true;
         private final int[] location = new int[2];
 
+        /**
+         * If the glass is drawn only where the fills of the menu color are, and not over the whole view.
+         */
+        private final boolean findPanel;
+
         static void apply(View view, int corners) {
+            apply(view, corners, false);
+        }
+
+        static void apply(View view, int corners, boolean findPanel) {
             if (glassViews.add(view)) {
-                new GlassSurface(view, corners);
+                new GlassSurface(view, corners, findPanel);
             }
         }
 
-        private GlassSurface(View view, int corners) {
+        private GlassSurface(View view, int corners, boolean findPanel) {
             this.view = view;
             this.corners = corners;
+            this.findPanel = findPanel;
 
             originalBackground = view.getBackground();
             tint = new GlassDrawable(corners == CORNERS_NONE ? 0 : cornerRadiusOf(originalBackground));
@@ -437,7 +462,13 @@ public final class GlassMenusPatch {
             menuColors.addAll(menuColors(view.getContext()));
             sampleOriginalBackground();
 
-            view.setBackground(tint);
+            setBackgroundLayers();
+            view.setOutlineProvider(new ViewOutlineProvider() {
+                @Override
+                public void getOutline(View outlineView, Outline outline) {
+                    tint.getOutline(outline);
+                }
+            });
             if (corners != CORNERS_NONE) {
                 view.setClipToOutline(true);
             }
@@ -463,7 +494,7 @@ public final class GlassMenusPatch {
                 windowManager = view.getContext().getSystemService(WindowManager.class);
                 blur = BlurRegion.create(view);
                 if (blur != null) {
-                    view.setBackground(new LayerDrawable(new Drawable[]{blur, tint}));
+                    setBackgroundLayers();
                     if (BlurRegion.isSamsungWindowBlurSupported()) {
                         onBlurEnabledChanged(true);
                     } else {
@@ -492,18 +523,104 @@ public final class GlassMenusPatch {
                     drawable.setColorFilter(null);
                 }
                 hiddenDrawables.clear();
+                panelFills.clear();
                 if (blur != null) {
                     if (windowManager != null && !BlurRegion.isSamsungWindowBlurSupported()) {
                         windowManager.removeCrossWindowBlurEnabledListener(blurListener);
                     }
                     blur = null;
                     blurEnabled = false;
-                    view.setBackground(tint);
+                    setBackgroundLayers();
                     updateOpacity();
                 }
                 windowManager = null;
             } catch (Throwable ex) {
                 Logger.printException(() -> "GlassSurface detach failure", ex);
+            }
+        }
+
+        /**
+         * The background of the view: the blur and the tint, both drawn within the panel of the menu.
+         */
+        private void setBackgroundLayers() {
+            LayerDrawable layers = new LayerDrawable(blur != null
+                    ? new Drawable[]{blur, tint}
+                    : new Drawable[]{tint});
+            for (int i = 0; i < layers.getNumberOfLayers(); i++) {
+                layers.setLayerInset(i, panelInsets.left, panelInsets.top, panelInsets.right, panelInsets.bottom);
+            }
+            view.setBackground(layers);
+        }
+
+        /**
+         * Finds the panel of the menu, the area of the fills of the menu color, and draws the glass only there.
+         */
+        private void updatePanel() {
+            final int width = view.getWidth();
+            final int height = view.getHeight();
+            if (!findPanel || width <= 0 || height <= 0) return;
+
+            view.getLocationInWindow(viewLocation);
+            Rect panel = null;
+            Drawable largest = null;
+            long largestArea = 0;
+            for (Map.Entry<Drawable, View> entry : panelFills.entrySet()) {
+                Drawable drawable = entry.getKey();
+                View host = entry.getValue();
+                // The fill may no longer be drawn by the view.
+                if (host.getBackground() != drawable && LithoFills.hostOf(drawable) != host) continue;
+                if (!host.isShown() || !LithoFills.isInside(host, view)) continue;
+
+                Rect bounds = new Rect(drawable.getBounds());
+                if (bounds.isEmpty()) continue;
+                host.getLocationInWindow(hostLocation);
+                bounds.offset(hostLocation[0] - viewLocation[0], hostLocation[1] - viewLocation[1]);
+                if (!bounds.intersect(0, 0, width, height)) continue;
+
+                if (panel == null) {
+                    panel = bounds;
+                } else {
+                    panel.union(bounds);
+                }
+                final long area = (long) bounds.width() * bounds.height();
+                if (area > largestArea) {
+                    largestArea = area;
+                    largest = drawable;
+                }
+            }
+
+            Rect insets = panel == null
+                    ? new Rect()
+                    : new Rect(panel.left, panel.top, width - panel.right, height - panel.bottom);
+            boolean changed = !insets.equals(panelInsets);
+            if (changed) {
+                panelInsets.set(insets);
+                Drawable background = view.getBackground();
+                if (background instanceof LayerDrawable layers) {
+                    for (int i = 0; i < layers.getNumberOfLayers(); i++) {
+                        layers.setLayerInset(i, insets.left, insets.top, insets.right, insets.bottom);
+                    }
+                    // The insets are applied when the bounds change.
+                    Rect bounds = new Rect(layers.getBounds());
+                    layers.setBounds(0, 0, 0, 0);
+                    layers.setBounds(bounds);
+                }
+                Logger.printDebug(() -> "Glass menu panel insets: " + insets);
+            }
+
+            if (largest != null && corners != CORNERS_NONE) {
+                Outline outline = new Outline();
+                largest.getOutline(outline);
+                final float radius = outline.getRadius();
+                if (radius > 0 && radius != tint.radius) {
+                    tint.setRadius(radius);
+                    changed = true;
+                }
+            }
+
+            if (changed) {
+                updateCorners(true);
+                view.invalidate();
             }
         }
 
@@ -534,6 +651,7 @@ public final class GlassMenusPatch {
                 if (scanLitho) lastLithoScan = now;
                 removeMenuBackgrounds(view);
                 if (scanLitho) hideLithoFills();
+                updatePanel();
             } catch (Throwable ex) {
                 Logger.printException(() -> "GlassSurface onPreDraw failure", ex);
             }
@@ -550,7 +668,7 @@ public final class GlassMenusPatch {
                 if (windowManager == null) return;
                 view.getLocationOnScreen(location);
                 final int screenBottom = windowManager.getCurrentWindowMetrics().getBounds().bottom;
-                bottom = location[1] + view.getHeight() < screenBottom - Dim.dp(2);
+                bottom = location[1] + view.getHeight() - panelInsets.bottom < screenBottom - Dim.dp(2);
             }
             if (!force && top == roundTop && bottom == roundBottom) return;
 
@@ -578,7 +696,9 @@ public final class GlassMenusPatch {
                     hide(background);
                 } else if (background != null && child.getWidth() >= minWidth) {
                     // Only fills of the menu, not small views such as buttons or a progress circle.
-                    hideIfMenuColor(background);
+                    if (hideIfMenuColor(background)) {
+                        panelFills.put(background, child);
+                    }
                 }
                 removeMenuBackgrounds(child);
             }
@@ -591,8 +711,11 @@ public final class GlassMenusPatch {
             final int minWidth = view.getWidth() / 2;
             for (LithoFills.Fill fill : LithoFills.fillsInside(view)) {
                 Drawable drawable = fill.drawable();
-                if (drawable.getBounds().width() >= minWidth && isMenuColor(fill.color()) && hide(drawable)) {
-                    fill.host().invalidate();
+                if (drawable.getBounds().width() >= minWidth && isMenuColor(fill.color())) {
+                    panelFills.put(drawable, fill.host());
+                    if (hide(drawable)) {
+                        fill.host().invalidate();
+                    }
                 }
             }
         }
@@ -600,11 +723,13 @@ public final class GlassMenusPatch {
         /**
          * Hides a drawable of the color of the menu with a transparent color filter. The drawable itself is not
          * changed, as the app can draw it again elsewhere, and the filter is removed when the menu is detached.
+         *
+         * @return If the drawable has the color of the menu.
          */
-        private void hideIfMenuColor(Drawable drawable) {
+        private boolean hideIfMenuColor(Drawable drawable) {
             // Checked every time: the drawable a wrapper holds can change.
             List<Drawable> chain = new ArrayList<>();
-            if (!isMenuColor(SolidColors.colorOf(drawable, chain))) return;
+            if (!isMenuColor(SolidColors.colorOf(drawable, chain))) return false;
 
             // A wrapper may not pass the filter on, so every drawable down to the color gets it.
             boolean hidden = false;
@@ -612,6 +737,7 @@ public final class GlassMenusPatch {
                 hidden |= hide(link);
             }
             if (hidden) drawable.invalidateSelf();
+            return true;
         }
 
         /**
@@ -693,7 +819,7 @@ public final class GlassMenusPatch {
     private static final class GlassDrawable extends Drawable {
         private static final float RIM_WIDTH = Dim.dp(1);
 
-        final float radius;
+        float radius;
         private boolean roundTop = true;
         private boolean roundBottom = true;
         private final Paint fill = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -720,6 +846,12 @@ public final class GlassMenusPatch {
         void setOpacityPercent(int percent) {
             opacityPercent = Math.max(0, Math.min(100, percent));
             fill.setAlpha(255 * opacityPercent / 100);
+            invalidateSelf();
+        }
+
+        void setRadius(float radius) {
+            this.radius = radius;
+            updatePaths();
             invalidateSelf();
         }
 
