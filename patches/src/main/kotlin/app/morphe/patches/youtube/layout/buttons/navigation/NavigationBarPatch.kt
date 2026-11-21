@@ -99,6 +99,9 @@ private const val TOOLBAR_BUTTON_PROVIDER_INTERFACE =
 private const val PIVOT_BAR_ACCESS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$PivotBarAccess;"
 
+private const val BOTTOM_UI_HEIGHTS_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$BottomUiHeightsAccess;"
+
 private const val EXTENSION_SUBSCRIPTIONS_CLASS =
     "Lapp/morphe/extension/youtube/patches/ClassicSubscriptionsLayoutPatch;"
 
@@ -645,6 +648,20 @@ val navigationBarPatch = patch(
                 0,
                 "invoke-static { p0, p2 }, $EXTENSION_CLASS->onListScrolled(Landroid/view/View;I)V"
             )
+
+            // The app places the miniplayer and other views above the height it keeps for the navigation bar,
+            // which it sets to none only when it hides the bar itself. The extension sets the height again
+            // when it hides or shows the bar, and the height is none while the bar is hidden on scroll.
+            setBottomUiHeightFingerprint(BottomUiEnumFingerprint.originalClassDef.type).let {
+                it.method.addInstructions(
+                    0,
+                    """
+                        invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->getBottomUiHeight(${BOTTOM_UI_HEIGHTS_INTERFACE}Ljava/lang/Enum;I)I
+                        move-result p2
+                    """
+                )
+                it.classDef.addPatchInterface(BOTTOM_UI_HEIGHTS_INTERFACE, "patch_setBottomUiHeight", it.method)
+            }
 
             // The AI search results hide the navigation bar through the controllers whatever the page sets.
             // The controllers are not called, and the header of the page still follows the scroll.
