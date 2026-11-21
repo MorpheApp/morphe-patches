@@ -228,6 +228,11 @@ To sign in, press continue below"</string>
     <!-- misc.quic.disableQUICProtocolPatch -->
     <string name="morphe_disable_quic_protocol_title">Disable QUIC protocol</string>
 
+    <!-- video.quality.prioritizeVideoQualityPatch -->
+    <string name="morphe_prioritize_video_quality_title">Prioritize video quality</string>
+    <string name="morphe_prioritize_video_quality_summary">Prioritizes the highest available video quality over codec efficiency</string>
+    <string name="morphe_prioritize_video_quality_dialog">If this setting is turned off, then older videos can show no video quality options</string>
+
     <!-- misc.audio.drc.disableDRCAudioPatch  -->
     <string name="morphe_disable_drc_audio_title">Disable DRC audio</string>
 

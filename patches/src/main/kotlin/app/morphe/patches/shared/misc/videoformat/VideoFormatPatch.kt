@@ -1,0 +1,111 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
+package app.morphe.patches.shared.misc.videoformat
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.numberOfParameterRegistersLogical
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
+import app.morphe.patches.shared.VideoStreamingDataConstructorFingerprint
+import app.morphe.util.findMethodFromToString
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction22c
+import java.lang.ref.WeakReference
+
+internal const val EXTENSION_CLASS =
+    "Lapp/morphe/extension/shared/patches/VideoFormat;"
+private const val EXTENSION_FORMAT_INTERFACE =
+    $$"Lapp/morphe/extension/shared/patches/VideoFormat$FormatInterface;"
+
+private lateinit var adaptiveFormatMethod : WeakReference<MutableMethod>
+
+internal fun videoFormatPatch(
+    block: PatchDefinition.() -> Unit
+) = patch(
+    description = "Hooks the formats of the video streams."
+) {
+    block()
+
+    execute {
+        val formatStreamModelFormatField = FormatStreamModelToStringFingerprint
+            .instructionMatches[5]
+            .fieldReference
+
+        getFormatFingerprint(formatStreamModelFormatField.type).classDef.apply {
+            mapOf(
+                "width" to "patch_getWidth",
+                "height" to "patch_getHeight",
+                "mimeType" to "patch_getMimeType",
+                "itag" to "patch_getItag"
+            ).forEach { (protoFieldName, patchInterfaceMethodName) ->
+                val targetMethod =
+                    FormatStreamModelToStringFingerprint.originalMethod.findMethodFromToString(protoFieldName)
+
+                val instructionMatches = getFormatStreamModelMethodFingerprint(
+                    formatStreamModelFormatField, targetMethod
+                ).instructionMatches
+
+                val fieldInstruction = instructionMatches[1].instruction as Instruction22c
+                val returnOpcode = instructionMatches[2].instruction.opcode.name
+
+                addPatchInterface(
+                    EXTENSION_FORMAT_INTERFACE,
+                    patchInterfaceMethodName,
+                    """
+                        ${fieldInstruction.opcode.name} v0, p0, ${fieldInstruction.reference}
+                        $returnOpcode v0
+                    """
+                )
+            }
+        }
+
+        VideoStreamingDataConstructorFingerprint.let {
+            // Clone method to preserve parameters.
+            it.method.cloneParameters().apply {
+                // Must offset match indexes since cloning adds additional move instructions.
+                val matchIndexOffset = numberOfParameterRegistersLogical
+                val videoIdIndex = it.instructionMatches[1].index + matchIndexOffset
+                val videoIdField = getInstruction<ReferenceInstruction>(videoIdIndex).reference
+                val adaptiveFormatsIndex = it.instructionMatches.last().index + matchIndexOffset
+                val adaptiveFormatsRegister = getInstruction<TwoRegisterInstruction>(adaptiveFormatsIndex).registerA
+                val insertIndex = adaptiveFormatsIndex + 1
+                val videoIdRegister = findFreeRegister(insertIndex, adaptiveFormatsRegister)
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        # Get video ID.
+                        move-object/from16 v$videoIdRegister, p0
+                        iget-object v$videoIdRegister, v$videoIdRegister, $videoIdField
+                        
+                        # Override adaptive formats.
+                        invoke-static { v$videoIdRegister, v$adaptiveFormatsRegister }, $EXTENSION_CLASS->hookAdaptiveFormats(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
+                        move-result-object v$adaptiveFormatsRegister
+                    """
+                )
+            }
+        }
+
+        adaptiveFormatMethod = WeakReference(HookAdaptiveFormatsFingerprint.method)
+    }
+}
+
+internal fun hookAdaptiveFormat(descriptor: String) = adaptiveFormatMethod.get()!!.addInstructions(
+    0,
+    """
+        invoke-static { p0, p1 }, $descriptor(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
+        move-result-object p1
+    """
+)

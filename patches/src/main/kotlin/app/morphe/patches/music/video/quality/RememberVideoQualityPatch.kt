@@ -40,6 +40,7 @@ val rememberVideoQualityPatch = patch(
         sharedExtensionPatch,
         settingsPatch,
         musicVideoInformationPatch,
+        prioritizeVideoQualityPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)

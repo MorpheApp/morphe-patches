@@ -56,6 +56,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.VideoFormat;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -1592,7 +1593,7 @@ public final class MinimalMiniplayerPatch {
      * The views drawn before the bar container, which are behind it, in the order they are drawn.
      * The player is left out, its video is drawn over the glass.
      */
-    private static void collectViewsBehind(View target, List<View> out) {
+    private static void collectViewsBehind(View target) {
         View player = watchPlayer();
         View child = target;
         for (ViewParent parent = target.getParent(); parent instanceof ViewGroup group; parent = group.getParent()) {
@@ -1601,7 +1602,7 @@ public final class MinimalMiniplayerPatch {
                 View view = group.getChildAt(i);
                 if (view.getVisibility() == View.VISIBLE && view.getWidth() > 0 && view.getHeight() > 0
                         && view.getAlpha() > 0 && !holds(view, player)) {
-                    out.add(0, view);
+                    MinimalMiniplayerPatch.viewsBehind.add(0, view);
                 }
             }
             child = group;
@@ -1657,7 +1658,7 @@ public final class MinimalMiniplayerPatch {
 
         /**
          * The page behind type 1 is blurred, on Android 14 and later like the glass navigation bar.
-         * Otherwise the page is covered by the background of the app, or the sharp page would show through.
+         * Otherwise, the page is covered by the background of the app, or the sharp page would show through.
          */
         @Override
         public void drawBackdrop(Canvas canvas) {
@@ -1673,7 +1674,7 @@ public final class MinimalMiniplayerPatch {
 
             recordingBackdrop = true;
             try {
-                collectViewsBehind(container, viewsBehind);
+                collectViewsBehind(container);
                 if (glassBackdrop == null) {
                     glassBackdrop = new GlassBackdrop("GlassMinimalMiniplayer", GLASS_BLUR_RADIUS);
                 }
