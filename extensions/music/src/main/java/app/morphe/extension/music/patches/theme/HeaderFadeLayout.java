@@ -31,7 +31,8 @@ import app.morphe.extension.shared.theme.ThemeUtils;
  * <p>
  * The app ends the artwork of the header in a translucent black, which only blends into a pure
  * black background. With any other background the header ends in a hard edge against the page,
- * so a fade into the background color is drawn over the lower part of the artwork.
+ * so a fade into the background color is drawn over the lower part of the artwork, and over
+ * the separate black gradient that newer app versions draw on top of the artwork.
  */
 @SuppressWarnings("unused")
 public class HeaderFadeLayout extends FrameLayout {
@@ -77,18 +78,25 @@ public class HeaderFadeLayout extends FrameLayout {
             }
 
             ImageView artwork = findArtwork(this, 0, 0);
-            if (artwork == null || artwork.getForeground() instanceof HeaderFadeDrawable) {
+            if (artwork == null) {
+                return;
+            }
+
+            // The fade goes on the view drawn last over the bottom edge of the artwork, which
+            // is the black gradient of the app if the header has one, and otherwise the artwork.
+            View fadeTarget = findFadeTarget(this, 0, artwork.getHeight(), artwork);
+            if (fadeTarget.getForeground() instanceof HeaderFadeDrawable) {
                 return;
             }
 
             // The app always shows its dark theme, while the shared background color
             // follows the night mode of the device.
             @ColorInt final int backgroundColor = ThemeUtils.getThemeDarkColor();
-            artwork.setForeground(new HeaderFadeDrawable(backgroundColor));
+            fadeTarget.setForeground(new HeaderFadeDrawable(backgroundColor));
 
             // Litho reuses the views of its components, and a fade left behind shows up
             // on whatever the view is used for next.
-            artwork.addOnAttachStateChangeListener(new OnAttachStateChangeListener() {
+            fadeTarget.addOnAttachStateChangeListener(new OnAttachStateChangeListener() {
                 @Override
                 public void onViewAttachedToWindow(@NonNull View view) {
                 }
@@ -140,5 +148,34 @@ public class HeaderFadeLayout extends FrameLayout {
         }
 
         return null;
+    }
+
+    /**
+     * The last full width image drawn over the bottom edge of the artwork.
+     *
+     * @param offsetY       Position of the group in this container.
+     * @param artworkBottom Bottom of the artwork in this container.
+     * @param lastMatch     Last match found before this group.
+     */
+    private View findFadeTarget(ViewGroup group, int offsetY, int artworkBottom, View lastMatch) {
+        for (int i = 0, count = group.getChildCount(); i < count; i++) {
+            View child = group.getChildAt(i);
+            final int childTop = offsetY + child.getTop();
+            final int childBottom = childTop + child.getHeight();
+
+            if (child instanceof ImageView) {
+                if (child.getLeft() == 0
+                        && child.getWidth() == getWidth()
+                        && childTop < artworkBottom
+                        && childBottom >= artworkBottom
+                        && childBottom < getHeight()) {
+                    lastMatch = child;
+                }
+            } else if (child instanceof ViewGroup) {
+                lastMatch = findFadeTarget((ViewGroup) child, childTop, artworkBottom, lastMatch);
+            }
+        }
+
+        return lastMatch;
     }
 }
