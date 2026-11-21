@@ -60,7 +60,8 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting PROXY_AUTH_PASSWORD = new StringSetting("morphe_proxy_auth_password", "", true, false, null, parent(PROXY_AUTH_ENABLED));
     public static final BooleanSetting PROXY_ALLOW_DIRECT_FALLBACK = new BooleanSetting("morphe_proxy_allow_direct_fallback", FALSE, true, parent(PROXY_ENABLED));
 
-    public static final BooleanSetting DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio", FALSE, true);
+    public static final BooleanSetting DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio_stream", FALSE, true);
+    public static final BooleanSetting DISABLE_LOUDNESS_NORMALIZATION = new BooleanSetting("morphe_disable_loudness_normalization", FALSE, true);
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
     public static final BooleanSetting PRIORITIZE_VIDEO_QUALITY = new BooleanSetting("morphe_prioritize_video_quality", TRUE, true, "morphe_prioritize_video_quality_dialog");
     public static final BooleanSetting SKIP_SILENCE = new BooleanSetting("morphe_skip_silence", FALSE, true);
@@ -171,6 +172,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     // Migration
     private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
     private static final BooleanSetting DEPRECATED_VIDEO_QUALITY_PRIORITIZE = new BooleanSetting("morphe_video_quality_prioritize", TRUE);
+    private static final BooleanSetting DEPRECATED_DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio", FALSE);
     private static final BooleanSetting DEPRECATED_DEBUG_PROTOBUFFER = new BooleanSetting("morphe_debug_protobuffer", FALSE, false, false);
     private static final EnumSetting<SplashScreenAnimationStyle> DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("morphe_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND);
 
@@ -187,6 +189,11 @@ public class SharedYouTubeSettings extends BaseSettings {
         // TODO: Eventually remove these migrations
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
         migrateOldSettingToNew(DEPRECATED_VIDEO_QUALITY_PRIORITIZE, PRIORITIZE_VIDEO_QUALITY);
+        if (DEPRECATED_DISABLE_DRC_AUDIO.get()) {
+            DISABLE_DRC_AUDIO.save(true);
+            DISABLE_LOUDNESS_NORMALIZATION.save(true);
+            DEPRECATED_DISABLE_DRC_AUDIO.resetToDefault();
+        }
         if (DEPRECATED_DEBUG_PROTOBUFFER.get()) {
             DEBUG_LITHO.save(LithoLogging.PATH_AND_BUFFER);
             DEPRECATED_DEBUG_PROTOBUFFER.resetToDefault();
