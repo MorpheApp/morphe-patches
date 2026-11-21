@@ -23,6 +23,7 @@ import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
+import app.morphe.patches.shared.PlaybackStartParametersConstructorFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
