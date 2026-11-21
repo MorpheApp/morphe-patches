@@ -162,6 +162,23 @@ internal object SearchVoiceButtonsFingerprint : Fingerprint(
     )
 )
 
+internal object PlayerAskMusicButtonFingerprint : Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "ask_music_global_entry_button"),
+        methodCall(smali = "Landroid/view/View;->findViewById(I)Landroid/view/View;", location = MatchAfterImmediately()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately()),
+        checkCast("Landroid/widget/ImageView;", MatchAfterImmediately()),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Landroid/widget/ImageView;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
 internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",

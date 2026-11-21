@@ -124,6 +124,14 @@ public class NavigationBarPatch {
     }
 
     /**
+     * Injection point.
+     */
+    @Nullable
+    public static Object hideAskMusicButton(@Nullable Object renderer) {
+        return Settings.HIDE_ASK_MUSIC_BUTTON.get() ? null : renderer;
+    }
+
+    /**
      * Injection point
      */
     public static int hideCastButton(int original) {
