@@ -48,12 +48,13 @@ import app.morphe.extension.shared.Utils;
  * as the image components do not change. When the views that show the images are known,
  * only the Litho views of these views are mounted again.
  * <p>
- * Laying out a view again is calculated on the main thread, so the requests made while a list scrolls,
- * such as the titles and thumbnails of the elements scrolled on screen, are done with a single pass
- * once the list stops scrolling. The elements bound to a view meanwhile already show what was fetched,
- * and the texts unmounted meanwhile are not laid out again. A fast scroll, such as a fling,
- * is waited for longer than a slow scroll, and the views are laid out again one per frame,
- * so a single frame does not calculate the layouts of all the views.
+ * The layout of a view is calculated again on the layout thread of its component tree, as Litho does
+ * for the layouts of list items, and the main thread only mounts the new layout. The requests made
+ * while a list scrolls, such as the titles and thumbnails of the elements scrolled on screen,
+ * are done with a single pass once the list stops scrolling. The elements bound to a view meanwhile
+ * already show what was fetched, and the texts unmounted meanwhile are not laid out again.
+ * A fast scroll, such as a fling, is waited for longer than a slow scroll, and the views are laid out
+ * again or mounted again one per frame, so a single frame does not mount all the views.
  */
 @SuppressWarnings("unused")
 public final class LithoRelayoutPatch {
@@ -63,14 +64,27 @@ public final class LithoRelayoutPatch {
      */
     public interface LithoViewInterface {
         /**
-         * Forces the Litho view to calculate the layout again.
+         * @return The component tree that calculates the layout of the Litho view, or null if none.
          */
-        void patch_forceRelayout();
+        @Nullable
+        ComponentTreeInterface patch_getComponentTree();
 
         /**
          * Unmounts all content of the Litho view, which is mounted again by the next layout.
          */
         void patch_forceRemount();
+    }
+
+    /**
+     * Interface added to the Litho component tree class during patching.
+     */
+    public interface ComponentTreeInterface {
+        /**
+         * Forces the component tree to calculate the layout again on its layout thread.
+         * The new layout is then mounted on the main thread, and the Litho view is laid out again
+         * only if the size changed.
+         */
+        void patch_forceLayoutAsync();
     }
 
     /**
@@ -456,7 +470,7 @@ public final class LithoRelayoutPatch {
 
     /**
      * Lays out again, or mounts again, the next pending Litho view, and the next in the next frame.
-     * Each layout is calculated on the main thread, so the layouts are calculated in different frames.
+     * Mounting is done on the main thread, so the views are mounted in different frames.
      */
     private static void processNextPendingView() {
         try {
@@ -475,7 +489,10 @@ public final class LithoRelayoutPatch {
             }
             // A recycled view that is no longer attached is laid out again when it's bound again.
             if ((!remount || pendingRelayoutViews.remove(lithoView)) && view.isAttachedToWindow()) {
-                lithoView.patch_forceRelayout();
+                ComponentTreeInterface componentTree = lithoView.patch_getComponentTree();
+                if (componentTree != null) {
+                    componentTree.patch_forceLayoutAsync();
+                }
             }
             pendingViewsFrameCallbackPosted = true;
             Choreographer.getInstance().postFrameCallback(pendingViewsFrameCallback);

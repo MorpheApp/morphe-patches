@@ -12,6 +12,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -46,6 +47,20 @@ internal object LithoViewOnMeasureFingerprint : Fingerprint(
             parameters = listOf("I", "I", "[I", "Z"),
             location = MatchAfterWithin(20)
         )
+    )
+)
+
+/**
+ * Sets the root component and the size specs of the component tree, and calculates the layout
+ * if they are not compatible with the committed layout, or if the layout is forced.
+ * An async layout is calculated on the layout thread of the tree, and then mounted on the main thread.
+ */
+internal object ComponentTreeSetRootAndSizeSpecFingerprint : Fingerprint(
+    definingClass = COMPONENT_TREE_CLASS,
+    returnType = "V",
+    parameters = listOf("L", "I", "I", "Z", "L", "I", "Ljava/lang/String;", "L", "Z", "Z"),
+    filters = listOf(
+        string("The layout can't be calculated asynchronously if we need the Size back")
     )
 )
 
