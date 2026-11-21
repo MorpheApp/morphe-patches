@@ -656,6 +656,10 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
 
 The database is licensed under the ODC Open Database License (ODbL). Entries from Soul Over AI by xoundbyte are licensed under CC BY 4.0. Not affiliated with or endorsed by SoundProof or Soul Over AI."</string>
 
+    <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+    <string name="morphe_music_apple_music_artwork_title">Apple Music animated artwork</string>
+    <string name="morphe_music_apple_music_artwork_summary">Shows the animated album artwork of Apple Music in the player, if the album has one. The title, artist and album of each song are sent to Apple Music</string>
+
     <!-- layout.lyrics.lyricsPatch -->
     <string name="morphe_music_lyrics_device_unavailable">Lyrics are not available for this device file.</string>
     <string name="morphe_music_lyrics_enabled_title">Use third-party lyrics</string>
