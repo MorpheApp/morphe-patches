@@ -50,6 +50,7 @@ public class ForceOriginalAudioPatch {
      */
     public static void setSelectedAudioTrackId(@Nullable String audioTrackId) {
         selectedAudioTrackId = audioTrackId == null || audioTrackId.isEmpty() ? null : audioTrackId;
+        Logger.printDebug(() -> "AUDIOTRACK-DIAG setSelectedAudioTrackId received id: " + audioTrackId);
     }
 
     /**

@@ -303,12 +303,15 @@ public final class InAppDownloadsPatch {
     @Nullable
     public static byte[] replaceDeclinedOfflinePlayerResponse(@Nullable Object playerResponse) {
         try {
+            Logger.printDebug(() -> "AUDIOTRACK-DIAG replaceDeclinedOfflinePlayerResponse entry");
+            Logger.printDebug(() -> "AUDIOTRACK-DIAG DOWNLOAD_MODE: " + Settings.DOWNLOAD_MODE.get());
             if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP
                     || !(playerResponse instanceof MessageLite message)) {
                 return null;
             }
 
             String selectedAudioTrackId = ForceOriginalAudioPatch.consumeSelectedAudioTrackId();
+            Logger.printDebug(() -> "AUDIOTRACK-DIAG consumed selected audio track id: " + selectedAudioTrackId);
             OfflinePlayerResponse original = OfflinePlayerResponse.parseFrom(message.toByteArray());
             if (!original.hasOfflineState()) {
                 return null;
@@ -320,19 +323,25 @@ public final class InAppDownloadsPatch {
 
             final boolean allowed = original.getOfflineState().getActionValue()
                     == OfflineStateAction.OFFLINE_STATE_ACTION_OK_VALUE;
+            final int adaptiveFormatCount = original.getStreamingData().getAdaptiveFormatsCount();
+            Logger.printDebug(() -> "AUDIOTRACK-DIAG response allowed: " + allowed);
+            Logger.printDebug(() -> "AUDIOTRACK-DIAG adaptive format count: " + adaptiveFormatCount);
             if (allowed && original.getStreamingData().getAdaptiveFormatsCount() > 0) {
                 if (!videoId.isEmpty()) {
                     SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
                 }
                 if (hasSelectedAudioTrack(original.getStreamingData(), selectedAudioTrackId)) {
+                    Logger.printDebug(() -> "AUDIOTRACK-DIAG branch: own response, selected track available");
                     return original.toBuilder()
                             .setStreamingData(savableStreamingData(original.getStreamingData(), selectedAudioTrackId))
                             .build()
                             .toByteArray();
                 }
+                Logger.printDebug(() -> "AUDIOTRACK-DIAG branch: own response, selected track unavailable");
                 return null;
             }
 
+            Logger.printDebug(() -> "AUDIOTRACK-DIAG branch: other client's response");
             if (videoId.isEmpty()) {
                 Logger.printDebug(() -> "Declined offline player response has no video id");
                 return null;
@@ -696,6 +705,9 @@ public final class InAppDownloadsPatch {
             }
         }
 
+        final boolean selectedTrackAvailableForLog = selectedTrackAvailable;
+        Logger.printDebug(() -> "AUDIOTRACK-DIAG selectedTrackAvailable: " + selectedTrackAvailableForLog);
+
         for (int i = 0, count = builder.getAdaptiveFormatsCount(); i < count; i++) {
             OfflineStreamFormat format = builder.getAdaptiveFormats(i);
             String mimeType = format.getMimeType();
@@ -704,11 +716,29 @@ public final class InAppDownloadsPatch {
                     || (format.hasAudioTrack()
                     && selectedAudioTrackId.equals(format.getAudioTrack().getId()));
 
+            if (isAudio) {
+                String audioTrackId = format.hasAudioTrack() ? format.getAudioTrack().getId() : "none";
+                Logger.printDebug(() -> "AUDIOTRACK-DIAG audio format BEFORE filtering id: " + audioTrackId
+                        + " mimeType: " + mimeType
+                        + " offlineEligible: " + format.getOfflineEligible());
+            }
+
+            boolean offlineEligibleAfterFiltering = format.getOfflineEligible();
             if (selectedAudio && !mimeType.isEmpty()
                     && !mimeType.startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX)) {
+                offlineEligibleAfterFiltering = true;
                 builder.setAdaptiveFormats(i, format.toBuilder().setOfflineEligible(true));
             } else if (selectedTrackAvailable && isAudio && !selectedAudio) {
+                offlineEligibleAfterFiltering = false;
                 builder.setAdaptiveFormats(i, format.toBuilder().setOfflineEligible(false));
+            }
+
+            if (isAudio) {
+                String audioTrackId = format.hasAudioTrack() ? format.getAudioTrack().getId() : "none";
+                final boolean eligibleForLog = offlineEligibleAfterFiltering;
+                Logger.printDebug(() -> "AUDIOTRACK-DIAG audio format AFTER filtering id: " + audioTrackId
+                        + " mimeType: " + mimeType
+                        + " offlineEligible: " + eligibleForLog);
             }
         }
         return builder.build();
