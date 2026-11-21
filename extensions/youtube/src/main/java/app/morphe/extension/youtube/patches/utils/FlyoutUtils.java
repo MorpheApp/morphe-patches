@@ -71,6 +71,7 @@ import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoDelayPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter;
+import app.morphe.extension.youtube.patches.glassmenus.GlassMenusPatch;
 import app.morphe.extension.youtube.patches.onthego.OnTheGoPatch;
 import app.morphe.extension.youtube.patches.playback.speed.ShortsPlaybackSpeedFlyoutPatch;
 import app.morphe.extension.youtube.patches.queue.PlaylistCardSource;
@@ -557,6 +558,9 @@ public final class FlyoutUtils {
             OnTheGoPatch.onFlyoutCreated();
         }
         flyoutPopupWindow = popupWindow;
+        if (GlassMenusPatch.isPatchIncluded()) {
+            GlassMenusPatch.onPopupWindow(popupWindow);
+        }
 
         // The app can set the content view after this call, in the same method that shows the popup.
         Utils.runOnMainThreadDelayed(() -> {
