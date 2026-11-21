@@ -361,16 +361,19 @@ public final class VideoEffectsPatch {
 
             // Ink outlines, flat colors and halftone dots in the shadows.
             vec3 comicBook(vec2 uv) {
-                vec3 c = adjustSaturation(pick(uv), 1.6);
+                vec3 c = adjustSaturation(pick(uv), 1.5);
                 float l = luma(c);
-                float level = (floor(l * 4.0) + 0.6) / 4.0;
+                // 5 brightness levels with soft steps, each as bright as the top of its range.
+                float steps = l * 5.0;
+                float level = (floor(steps) + smoothstep(0.8, 1.0, fract(steps)) + 1.0) / 5.0;
                 vec3 flatColor = clamp(c * level / max(l, 0.04), 0.0, 1.0);
-                float dotSize = max(4.0, floor(uResolution.x / 110.0));
+                // Halftone dots only in the dark parts.
+                float dotSize = max(3.0, floor(uResolution.x / 140.0));
                 vec2 p = uv * uResolution / dotSize;
                 vec2 grid = fract(vec2(p.x + p.y, p.y - p.x) * 0.7071) - 0.5;
-                float radius = 0.55 * smoothstep(0.35, 0.95, 1.0 - l);
+                float radius = 0.45 * smoothstep(0.6, 1.0, 1.0 - l);
                 float halftone = 1.0 - smoothstep(radius - 0.08, radius + 0.08, length(grid));
-                flatColor *= 1.0 - 0.55 * halftone;
+                flatColor *= 1.0 - 0.35 * halftone;
                 float ink = smoothstep(0.3, 0.6, edges(uv, 2.0));
                 return mix(flatColor, vec3(0.03), ink);
             }
