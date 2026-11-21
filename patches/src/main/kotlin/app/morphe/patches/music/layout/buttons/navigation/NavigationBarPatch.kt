@@ -10,20 +10,15 @@
 
 package app.morphe.patches.music.layout.buttons.navigation
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.resource.ResourceType
-import app.morphe.patcher.resource.hasResourceId
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.p0Register
@@ -31,6 +26,7 @@ import app.morphe.patches.music.layout.miniplayer.miniplayerColorHookPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.mediasession.addSetPlaybackStateHook
 import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
+import app.morphe.patches.music.misc.playservice.is_9_38_or_greater
 import app.morphe.patches.music.misc.playservice.is_9_39_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -48,7 +44,6 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/NavigationBarPatch;"
@@ -366,31 +361,8 @@ val navigationBarPatch = patch(
         // Region for hide Ask Music button in the player, miniplayer and fullscreen.
         // All three take the button renderer from one method. Without a renderer
         // the app hides the buttons and the space next to them on its own.
-        if (hasResourceId(ResourceType.ID, "ask_music_global_entry_button")) {
-            val bindButtonMethod = PlayerAskMusicButtonFingerprint.let {
-                val buttonField = it.instructionMatches.last().fieldReference
-
-                it.classDef.methods.single { method ->
-                    !MethodUtil.isConstructor(method) && method.parameterTypes.size == 1 &&
-                            method.implementation?.instructions?.any { instruction ->
-                                instruction.opcode == Opcode.IGET_OBJECT &&
-                                        (instruction as ReferenceInstruction).reference == buttonField
-                            } == true
-                }
-            }
-            val rendererType = bindButtonMethod.parameterTypes.first().toString()
-
-            val rendererMethod = Fingerprint(
-                filters = listOf(
-                    methodCall(opcode = Opcode.INVOKE_STATIC, returnType = rendererType),
-                    opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately()),
-                    methodCall(reference = bindButtonMethod, location = MatchAfterImmediately())
-                )
-            ).match().instructionMatches.first().methodReference
-
-            mutableClassDefBy(rendererMethod.definingClass).methods.single { method ->
-                MethodUtil.methodSignaturesMatch(method, rendererMethod)
-            }.apply {
+        if (is_9_38_or_greater) {
+            PlayerAskMusicButtonRendererFingerprint.instructionMatches.first().getMethodCalled().apply {
                 findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                     val register = getInstruction<OneRegisterInstruction>(index).registerA
 
@@ -398,9 +370,9 @@ val navigationBarPatch = patch(
                     addInstructionsAtControlFlowLabel(
                         index,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS->hideAskMusicButton(Ljava/lang/Object;)Ljava/lang/Object;
+                            invoke-static { v$register }, $EXTENSION_CLASS->hidePlayerAskMusicButton(Ljava/lang/Object;)Ljava/lang/Object;
                             move-result-object v$register
-                            check-cast v$register, $rendererType
+                            check-cast v$register, $returnType
                         """
                     )
                 }
