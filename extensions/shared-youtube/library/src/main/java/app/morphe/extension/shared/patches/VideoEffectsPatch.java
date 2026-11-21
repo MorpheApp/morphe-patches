@@ -274,11 +274,6 @@ public final class VideoEffectsPatch {
                 float frame = floor(uTime * 30.0);
                 float row = floor(uv.y * 240.0);
                 float shift = (rand(vec2(row, frame)) - 0.5) * 0.002;
-                float band = fract(uTime * 0.12);
-                float bandDistance = abs(uv.y - band);
-                if (bandDistance < 0.04) {
-                    shift += (1.0 - bandDistance / 0.04) * 0.02 * rand(vec2(row, frame + 1.0));
-                }
                 float r = pick(uv + vec2(shift + 0.004, 0.0)).r;
                 float g = pick(uv + vec2(shift, 0.0)).g;
                 float b = pick(uv + vec2(shift - 0.004, 0.0)).b;
