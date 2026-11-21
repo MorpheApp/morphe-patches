@@ -254,12 +254,7 @@ public final class VideoEffectsPatch {
                 float frame = floor(uTime * 18.0);
                 float grain = (rand(uv * 1000.0 + frame) - 0.5) * 0.12;
                 float flicker = 0.94 + 0.06 * rand(vec2(frame, 7.0));
-                vec3 result = (sepia + grain) * flicker * vignette(uv, 1.8);
-                float scratchX = rand(vec2(floor(uTime * 3.0), 1.0));
-                if (rand(vec2(floor(uTime * 3.0), 2.0)) > 0.4 && abs(uv.x - scratchX) < 0.0012) {
-                    result *= 0.55;
-                }
-                return clamp(result, 0.0, 1.0);
+                return clamp((sepia + grain) * flicker * vignette(uv, 1.8), 0.0, 1.0);
             }
 
             vec3 nightVision(vec2 uv) {
