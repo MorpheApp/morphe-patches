@@ -7,12 +7,22 @@
 
 package app.morphe.extension.shared.patches;
 
+import android.opengl.EGL14;
+import android.opengl.EGLConfig;
+import android.opengl.EGLContext;
+import android.opengl.EGLDisplay;
+import android.opengl.EGLSurface;
 import android.opengl.GLES20;
 import android.os.SystemClock;
 
 import androidx.annotation.Nullable;
 
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
@@ -48,7 +58,6 @@ public final class VideoEffectsPatch {
         COMIC_BOOK("comicBook(uv)"),
         CRT_TV("crtTv(uv)"),
         FISHEYE("fisheye(uv)"),
-        GLITCH("glitch(uv)"),
         INVERT("1.0 - pick(uv)"),
         KALEIDOSCOPE("kaleidoscope(uv)"),
         MIRROR_IMAGE("pick(vec2(1.0 - uv.x, uv.y))"),
@@ -61,16 +70,13 @@ public final class VideoEffectsPatch {
         RAINBOW("clamp(hueRotate(adjustSaturation(pick(uv), 1.4), uTime * 1.2), 0.0, 1.0)"),
         RETRO_HANDHELD("retroHandheld(uv)"),
         RETRO_PC("retroPc(uv)"),
-        RIPPLE("ripple(uv)"),
-        SHATTERED_GLASS("shatteredGlass(uv)"),
-        SLICES("slices(uv)"),
-        SWIRL("swirl(uv)"),
         THERMAL("thermal(luma(pick(uv)))"),
         TILT_SHIFT("tiltShift(uv)"),
         TINY_PLANET("tinyPlanet(uv)"),
         UNDERWATER("underwater(uv)"),
         VHS("vhs(uv)"),
-        VIDEO_WALL("videoWall(uv)");
+        VIDEO_WALL("videoWall(uv)"),
+        CUSTOM("customEffect(uv)");
 
         private final String shaderExpression;
 
@@ -493,75 +499,6 @@ public final class VideoEffectsPatch {
                 return pick(vec2(abs(fract(angle) * 2.0 - 1.0), length(p) * 2.0));
             }
 
-            // A whirlpool in the middle that slowly turns one way and then the other.
-            vec3 swirl(vec2 uv) {
-                vec2 p = centered(uv);
-                float t = max(0.0, 1.0 - length(p) / 0.6);
-                return pick(uncentered(rotate(p, t * t * 3.0 * sin(uTime * 0.5))));
-            }
-
-            // Round waves that move out from the middle.
-            vec3 ripple(vec2 uv) {
-                vec2 p = centered(uv);
-                float r = max(length(p), 0.0001);
-                p += p / r * sin(r * 50.0 - uTime * 4.0) * 0.006 * smoothstep(0.0, 0.1, r);
-                return pick(uncentered(p));
-            }
-
-            // The picture broken into shards that are each moved and turned a little.
-            vec3 shatteredGlass(vec2 uv) {
-                vec2 p = centered(uv) * 5.0;
-                vec2 base = floor(p);
-                float best = 10.0;
-                float secondBest = 10.0;
-                vec2 bestId = vec2(0.0);
-                vec2 bestSeed = vec2(0.0);
-                for (int y = -1; y <= 1; y++) {
-                    for (int x = -1; x <= 1; x++) {
-                        vec2 id = base + vec2(float(x), float(y));
-                        vec2 seed = id + vec2(rand(id), rand(id + 17.31));
-                        float d = length(p - seed);
-                        if (d < best) {
-                            secondBest = best;
-                            best = d;
-                            bestId = id;
-                            bestSeed = seed;
-                        } else if (d < secondBest) {
-                            secondBest = d;
-                        }
-                    }
-                }
-                vec2 q = rotate(p - bestSeed, (rand(bestId + 3.7) - 0.5) * 0.12);
-                vec2 shift = (vec2(rand(bestId + 5.1), rand(bestId + 9.3)) - 0.5) * 0.15;
-                vec3 c = pick(uncentered((bestSeed + q + shift) / 5.0));
-                // Thin light lines where the glass is cracked.
-                float crack = 1.0 - smoothstep(0.0, 0.04, secondBest - best);
-                return mix(c, vec3(0.9), crack * 0.5);
-            }
-
-            // Horizontal strips that slide left and right at different times.
-            vec3 slices(vec2 uv) {
-                float strip = floor(uv.y * 12.0);
-                float shift = 0.08 * sin(uTime * 1.5 + rand(vec2(strip, 1.0)) * 2.0 * PI);
-                return pick(vec2(fract(uv.x + shift), uv.y));
-            }
-
-            // Blocks of the picture that jump to the wrong place now and then.
-            vec3 glitch(vec2 uv) {
-                float tick = floor(uTime * 12.0);
-                float band = floor(uv.y * 24.0);
-                float block = floor(uv.x * 6.0);
-                vec2 offset = vec2(0.0);
-                bool burst = rand(vec2(floor(uTime * 3.0), 7.0)) > 0.75;
-                if (burst && rand(vec2(band * 7.0 + block, tick)) > 0.85) {
-                    offset = (vec2(rand(vec2(band, tick + 1.0)), rand(vec2(block, tick + 2.0))) - 0.5) * vec2(0.3, 0.1);
-                }
-                if (rand(vec2(band * 3.1, tick)) > 0.97) {
-                    offset.x += (rand(vec2(band, tick + 5.0)) - 0.5) * 0.05;
-                }
-                return pick(fract(uv + offset));
-            }
-
             // The video on a wall of 3x3 screens.
             vec3 videoWall(vec2 uv) {
                 vec2 tile = fract(uv * 3.0);
@@ -633,7 +570,52 @@ public final class VideoEffectsPatch {
 
             """;
 
-    private static final String FRAGMENT_SHADER = createFragmentShader();
+    /**
+     * Default code of the custom effect. It shows the video as it is, and the comment tells
+     * an AI chatbot how to write an effect.
+     */
+    public static final String CUSTOM_EFFECT_TEMPLATE = """
+            // CUSTOM VIDEO EFFECT
+            // Copy all of this text to an AI chatbot, and describe the effect you want after it. Then replace all of this text with the code the AI gives you.
+            //
+            // Instructions for the AI:
+            // - Write GLSL ES 1.00 (OpenGL ES 2.0) fragment shader code for a video effect.
+            // - Write the function vec3 customEffect(vec2 uv) that returns the RGB color (0.0 to 1.0) of the pixel at uv. uv is (0.0, 0.0) at the bottom left of the video and (1.0, 1.0) at the top right.
+            // - Available: vec3 pick(vec2 uv) is the video color at uv. float uTime is the time in seconds, and goes back to 0.0 every 10 minutes. vec2 uResolution is the size in pixels. PI. float luma(vec3 color). float rand(vec2 seed) is from 0.0 to 1.0. vec2 rotate(vec2 p, float angle). vec3 adjustSaturation(vec3 color, float amount). vec3 hueRotate(vec3 color, float angle). vec2 centered(vec2 uv) is the point with the center of the video at (0.0, 0.0) and square pixels, and vec2 uncentered(vec2 p) changes it back to uv.
+            // - Don't write #version, #extension, precision, uniforms, varyings, main() or texture2D.
+            // - Start the names of other functions and global constants with "my".
+            // - Write floats with a decimal point (1.0, not 1). Loops must have constant bounds.
+            // - Answer with only the code.
+
+            vec3 customEffect(vec2 uv) {
+                return pick(uv);
+            }
+            """;
+
+    /**
+     * Line of the fragment shader where the custom effect code starts.
+     */
+    private static final int CUSTOM_EFFECT_FIRST_LINE = countLines(FRAGMENT_SHADER_FUNCTIONS) + 1;
+
+    /**
+     * Line number in compiler messages, such as "ERROR: 0:123: ...".
+     */
+    private static final Pattern COMPILER_LINE_NUMBER = Pattern.compile("\\b0:(\\d+):");
+
+    /**
+     * Custom effect code of the last fragment shader, and the shader made from it.
+     * The shader holds the template instead if the code has an error.
+     */
+    @Nullable
+    private static volatile String cachedCustomEffectCode;
+    @Nullable
+    private static volatile String cachedFragmentShader;
+
+    /**
+     * Custom effect code that the program in use was made with. Only used on the render thread.
+     */
+    @Nullable
+    private static String programCustomEffectCode;
 
     /**
      * The program that the uniform locations belong to. Only used on the render thread.
@@ -661,11 +643,20 @@ public final class VideoEffectsPatch {
         return false; // Modified during patching.
     }
 
+    private static int countLines(String text) {
+        int lines = 0;
+        for (int i = 0, length = text.length(); i < length; i++) {
+            if (text.charAt(i) == '\n') lines++;
+        }
+        return lines;
+    }
+
     /**
-     * Adds the main method that draws the effect of the uEffect uniform.
+     * Adds the custom effect code and the main method that draws the effect of the uEffect uniform.
      */
-    private static String createFragmentShader() {
+    private static String createFragmentShader(String customEffectCode) {
         StringBuilder shader = new StringBuilder(FRAGMENT_SHADER_FUNCTIONS);
+        shader.append(customEffectCode).append('\n');
         shader.append("void main() {\n");
         shader.append("    vec2 uv = vUv;\n");
         shader.append("    vec3 c;\n");
@@ -681,6 +672,171 @@ public final class VideoEffectsPatch {
         shader.append("    gl_FragColor = vec4(c, 1.0);\n");
         shader.append("}\n");
         return shader.toString();
+    }
+
+    /**
+     * @return The fragment shader with the custom effect code, or with the template
+     *         if the code has an error.
+     */
+    private static String getEffectFragmentShader() {
+        String code = SharedYouTubeSettings.VIDEO_EFFECT_CUSTOM_CODE.get();
+        String shader = cachedFragmentShader;
+        if (shader != null && code.equals(cachedCustomEffectCode)) {
+            return shader;
+        }
+
+        shader = createFragmentShader(code);
+        if (!code.equals(CUSTOM_EFFECT_TEMPLATE)) {
+            String error;
+            try {
+                error = findShaderError(VERTEX_SHADER, shader);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not check the custom video effect", ex);
+                error = ex.toString();
+            }
+            if (error != null) {
+                String message = error;
+                Logger.printInfo(() -> "Custom video effect has an error: " + message);
+                shader = createFragmentShader(CUSTOM_EFFECT_TEMPLATE);
+            }
+        }
+
+        cachedCustomEffectCode = code;
+        cachedFragmentShader = shader;
+        return shader;
+    }
+
+    /**
+     * Compiles the custom effect code with the other effects, to find errors before it is used.
+     *
+     * @return The compiler errors, with the line numbers of the custom code,
+     *         or null if the code has no error.
+     */
+    @Nullable
+    public static String findCustomEffectError(String customEffectCode) {
+        String error = findShaderError(VERTEX_SHADER, createFragmentShader(customEffectCode));
+        if (error == null) return null;
+
+        Matcher matcher = COMPILER_LINE_NUMBER.matcher(error);
+        // StringBuffer, because appendReplacement with a StringBuilder needs Android 14.
+        StringBuffer result = new StringBuffer();
+        while (matcher.find()) {
+            int line = Integer.parseInt(matcher.group(1)) - CUSTOM_EFFECT_FIRST_LINE + 1;
+            matcher.appendReplacement(result, line > 0 ? "line " + line + ":" : "$0");
+        }
+        matcher.appendTail(result);
+        return result.toString().trim();
+    }
+
+    /**
+     * Compiles and links a shader program in a small temporary OpenGL context.
+     * The context of the app is never used, because a shader that fails to compile in it
+     * can make the next shaders of the app fail too.
+     *
+     * @return The compiler or linker errors, or null if there is no error.
+     */
+    @Nullable
+    private static String findShaderError(String vertexShader, String fragmentShader) {
+        if (EGL14.eglGetCurrentContext().equals(EGL14.EGL_NO_CONTEXT)) {
+            return findShaderErrorInNewContext(vertexShader, fragmentShader);
+        }
+
+        // The thread has a context of the app. Check on another thread with its own context.
+        String[] error = new String[1];
+        RuntimeException[] failure = new RuntimeException[1];
+        Thread thread = new Thread(() -> {
+            try {
+                error[0] = findShaderErrorInNewContext(vertexShader, fragmentShader);
+            } catch (RuntimeException ex) {
+                failure[0] = ex;
+            }
+        }, "VideoEffectsShaderCheck");
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("Interrupted while checking the shader", ex);
+        }
+        if (failure[0] != null) throw failure[0];
+        return error[0];
+    }
+
+    /**
+     * Must be called on a thread without an OpenGL context.
+     */
+    @Nullable
+    private static String findShaderErrorInNewContext(String vertexShader, String fragmentShader) {
+        EGLDisplay display = EGL14.EGL_NO_DISPLAY;
+        EGLContext context = EGL14.EGL_NO_CONTEXT;
+        EGLSurface surface = EGL14.EGL_NO_SURFACE;
+        int vertex = 0;
+        int fragment = 0;
+        int program = 0;
+        try {
+            display = EGL14.eglGetDisplay(EGL14.EGL_DEFAULT_DISPLAY);
+            int[] version = new int[2];
+            if (!EGL14.eglInitialize(display, version, 0, version, 1)) {
+                throw new IllegalStateException("eglInitialize failed: " + EGL14.eglGetError());
+            }
+            int[] configAttributes = {
+                    EGL14.EGL_RENDERABLE_TYPE, EGL14.EGL_OPENGL_ES2_BIT,
+                    EGL14.EGL_SURFACE_TYPE, EGL14.EGL_PBUFFER_BIT,
+                    EGL14.EGL_NONE
+            };
+            EGLConfig[] configs = new EGLConfig[1];
+            int[] configCount = new int[1];
+            if (!EGL14.eglChooseConfig(display, configAttributes, 0, configs, 0, 1, configCount, 0)
+                    || configCount[0] == 0) {
+                throw new IllegalStateException("eglChooseConfig failed: " + EGL14.eglGetError());
+            }
+            context = EGL14.eglCreateContext(display, configs[0], EGL14.EGL_NO_CONTEXT,
+                    new int[]{EGL14.EGL_CONTEXT_CLIENT_VERSION, 2, EGL14.EGL_NONE}, 0);
+            surface = EGL14.eglCreatePbufferSurface(display, configs[0],
+                    new int[]{EGL14.EGL_WIDTH, 1, EGL14.EGL_HEIGHT, 1, EGL14.EGL_NONE}, 0);
+            if (context.equals(EGL14.EGL_NO_CONTEXT) || surface.equals(EGL14.EGL_NO_SURFACE)
+                    || !EGL14.eglMakeCurrent(display, surface, surface, context)) {
+                throw new IllegalStateException("Could not make an OpenGL context: " + EGL14.eglGetError());
+            }
+
+            vertex = GLES20.glCreateShader(GLES20.GL_VERTEX_SHADER);
+            String error = compileShader(vertex, vertexShader);
+            if (error != null) return error;
+
+            fragment = GLES20.glCreateShader(GLES20.GL_FRAGMENT_SHADER);
+            error = compileShader(fragment, fragmentShader);
+            if (error != null) return error;
+
+            program = GLES20.glCreateProgram();
+            GLES20.glAttachShader(program, vertex);
+            GLES20.glAttachShader(program, fragment);
+            GLES20.glLinkProgram(program);
+            int[] status = new int[1];
+            GLES20.glGetProgramiv(program, GLES20.GL_LINK_STATUS, status, 0);
+            return status[0] == GLES20.GL_TRUE ? null : GLES20.glGetProgramInfoLog(program);
+        } finally {
+            if (program != 0) GLES20.glDeleteProgram(program);
+            if (fragment != 0) GLES20.glDeleteShader(fragment);
+            if (vertex != 0) GLES20.glDeleteShader(vertex);
+            if (!display.equals(EGL14.EGL_NO_DISPLAY)) {
+                EGL14.eglMakeCurrent(display, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
+                if (!surface.equals(EGL14.EGL_NO_SURFACE)) EGL14.eglDestroySurface(display, surface);
+                if (!context.equals(EGL14.EGL_NO_CONTEXT)) EGL14.eglDestroyContext(display, context);
+                // No eglTerminate, because the display is shared with the contexts of the app.
+            }
+        }
+    }
+
+    /**
+     * @return The compiler errors, or null if there is no error.
+     */
+    @Nullable
+    private static String compileShader(int shader, String source) {
+        GLES20.glShaderSource(shader, source);
+        GLES20.glCompileShader(shader);
+        int[] status = new int[1];
+        GLES20.glGetShaderiv(shader, GLES20.GL_COMPILE_STATUS, status, 0);
+        return status[0] == GLES20.GL_TRUE ? null : GLES20.glGetShaderInfoLog(shader);
     }
 
     /**
@@ -724,7 +880,12 @@ public final class VideoEffectsPatch {
      * Injection point.
      */
     public static String getFragmentShader(String original) {
-        return isEnabled() ? FRAGMENT_SHADER : original;
+        try {
+            return isEnabled() ? getEffectFragmentShader() : original;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getFragmentShader failure", ex);
+            return original;
+        }
     }
 
     /**
@@ -735,22 +896,103 @@ public final class VideoEffectsPatch {
         try {
             if (program != lastProgram) {
                 lastProgram = program;
-                effectLocation = GLES20.glGetUniformLocation(program, "uEffect");
-                timeLocation = GLES20.glGetUniformLocation(program, "uTime");
-                resolutionLocation = GLES20.glGetUniformLocation(program, "uResolution");
+                // The program was made from the last shader that getFragmentShader() returned.
+                programCustomEffectCode = cachedCustomEffectCode;
+                findUniformLocations(program);
             }
 
             // Program with the original shader.
             if (effectLocation < 0) return;
 
+            VideoEffect effect = SharedYouTubeSettings.VIDEO_EFFECT.get();
+            if (effect == VideoEffect.CUSTOM) {
+                String code = SharedYouTubeSettings.VIDEO_EFFECT_CUSTOM_CODE.get();
+                //noinspection StringEquality
+                if (code != programCustomEffectCode && !code.equals(programCustomEffectCode)) {
+                    // The app keeps the program while the player exists,
+                    // so the program is changed to use the new code.
+                    programCustomEffectCode = code;
+                    relinkProgram(program, getEffectFragmentShader());
+                    findUniformLocations(program);
+                    if (effectLocation < 0) return;
+                }
+            }
+
             lastEffectVideoId = currentVideoId;
 
-            GLES20.glUniform1i(effectLocation, SharedYouTubeSettings.VIDEO_EFFECT.get().ordinal());
+            GLES20.glUniform1i(effectLocation, effect.ordinal());
             GLES20.glUniform1f(timeLocation, (SystemClock.elapsedRealtime() % TIME_WRAP_MILLISECONDS) / 1000f);
             GLES20.glGetIntegerv(GLES20.GL_VIEWPORT, viewport, 0);
             GLES20.glUniform2f(resolutionLocation, viewport[2], viewport[3]);
         } catch (Exception ex) {
             Logger.printException(() -> "onUseProgram failure", ex);
+        }
+    }
+
+    private static void findUniformLocations(int program) {
+        effectLocation = GLES20.glGetUniformLocation(program, "uEffect");
+        timeLocation = GLES20.glGetUniformLocation(program, "uTime");
+        resolutionLocation = GLES20.glGetUniformLocation(program, "uResolution");
+    }
+
+    /**
+     * Compiles a new fragment shader into the program and links it again. The vertex attributes
+     * keep their locations, because the app found them when it made the program. The uniforms
+     * keep theirs too, because they are the same in every effect shader.
+     * Must be called on the render thread, with the program in use.
+     */
+    private static void relinkProgram(int program, String fragmentShader) {
+        int[] shaders = new int[2];
+        int[] count = new int[1];
+        GLES20.glGetAttachedShaders(program, shaders.length, count, 0, shaders, 0);
+        int fragment = 0;
+        int[] type = new int[1];
+        for (int i = 0; i < count[0]; i++) {
+            GLES20.glGetShaderiv(shaders[i], GLES20.GL_SHADER_TYPE, type, 0);
+            if (type[0] == GLES20.GL_FRAGMENT_SHADER) fragment = shaders[i];
+        }
+        if (fragment == 0) {
+            Logger.printException(() -> "Video shader program has no fragment shader");
+            return;
+        }
+
+        int[] attributeCount = new int[1];
+        GLES20.glGetProgramiv(program, GLES20.GL_ACTIVE_ATTRIBUTES, attributeCount, 0);
+        int[] size = new int[1];
+        for (int i = 0; i < attributeCount[0]; i++) {
+            String name = GLES20.glGetActiveAttrib(program, i, size, 0, type, 0);
+            int location = GLES20.glGetAttribLocation(program, name);
+            if (location >= 0) GLES20.glBindAttribLocation(program, location, name);
+        }
+
+        String error = compileShader(fragment, fragmentShader);
+        if (error == null) {
+            GLES20.glLinkProgram(program);
+            int[] status = new int[1];
+            GLES20.glGetProgramiv(program, GLES20.GL_LINK_STATUS, status, 0);
+            if (status[0] == GLES20.GL_TRUE) {
+                Logger.printDebug(() -> "Video shader program changed to the new custom effect code");
+                return;
+            }
+            error = GLES20.glGetProgramInfoLog(program);
+        }
+
+        String message = error;
+        Logger.printException(() -> "Could not change the video shader program: " + message);
+        if (!fragmentShader.equals(createFragmentShader(CUSTOM_EFFECT_TEMPLATE))) {
+            relinkProgram(program, createFragmentShader(CUSTOM_EFFECT_TEMPLATE));
+        }
+    }
+
+    public static final class VideoEffectCustomCodeAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return SharedYouTubeSettings.VIDEO_EFFECT.get() == VideoEffect.CUSTOM;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(SharedYouTubeSettings.VIDEO_EFFECT);
         }
     }
 }

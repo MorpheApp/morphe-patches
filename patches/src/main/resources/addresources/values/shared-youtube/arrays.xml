@@ -161,7 +161,6 @@
         <item>@string/morphe_video_effect_entry_comic_book</item>
         <item>@string/morphe_video_effect_entry_crt_tv</item>
         <item>@string/morphe_video_effect_entry_fisheye</item>
-        <item>@string/morphe_video_effect_entry_glitch</item>
         <item>@string/morphe_video_effect_entry_invert</item>
         <item>@string/morphe_video_effect_entry_kaleidoscope</item>
         <item>@string/morphe_video_effect_entry_mirror_image</item>
@@ -174,16 +173,13 @@
         <item>@string/morphe_video_effect_entry_rainbow</item>
         <item>@string/morphe_video_effect_entry_retro_handheld</item>
         <item>@string/morphe_video_effect_entry_retro_pc</item>
-        <item>@string/morphe_video_effect_entry_ripple</item>
-        <item>@string/morphe_video_effect_entry_shattered_glass</item>
-        <item>@string/morphe_video_effect_entry_slices</item>
-        <item>@string/morphe_video_effect_entry_swirl</item>
         <item>@string/morphe_video_effect_entry_thermal</item>
         <item>@string/morphe_video_effect_entry_tilt_shift</item>
         <item>@string/morphe_video_effect_entry_tiny_planet</item>
         <item>@string/morphe_video_effect_entry_underwater</item>
         <item>@string/morphe_video_effect_entry_vhs</item>
         <item>@string/morphe_video_effect_entry_video_wall</item>
+        <item>@string/morphe_video_effect_entry_custom</item>
     </string-array>
     <string-array name="morphe_video_effect_entry_values">
         <item>NONE</item>
@@ -204,7 +200,6 @@
         <item>COMIC_BOOK</item>
         <item>CRT_TV</item>
         <item>FISHEYE</item>
-        <item>GLITCH</item>
         <item>INVERT</item>
         <item>KALEIDOSCOPE</item>
         <item>MIRROR_IMAGE</item>
@@ -217,16 +212,13 @@
         <item>RAINBOW</item>
         <item>RETRO_HANDHELD</item>
         <item>RETRO_PC</item>
-        <item>RIPPLE</item>
-        <item>SHATTERED_GLASS</item>
-        <item>SLICES</item>
-        <item>SWIRL</item>
         <item>THERMAL</item>
         <item>TILT_SHIFT</item>
         <item>TINY_PLANET</item>
         <item>UNDERWATER</item>
         <item>VHS</item>
         <item>VIDEO_WALL</item>
+        <item>CUSTOM</item>
     </string-array>
 
     <!-- layout.theme.baseThemePatch -->

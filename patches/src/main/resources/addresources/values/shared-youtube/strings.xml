@@ -266,7 +266,6 @@ To sign in, press continue below"</string>
     <string name="morphe_video_effect_entry_comic_book">Comic book</string>
     <string name="morphe_video_effect_entry_crt_tv">CRT TV</string>
     <string name="morphe_video_effect_entry_fisheye">Fisheye</string>
-    <string name="morphe_video_effect_entry_glitch">Glitch</string>
     <string name="morphe_video_effect_entry_invert">Inverted colors</string>
     <string name="morphe_video_effect_entry_kaleidoscope">Kaleidoscope</string>
     <string name="morphe_video_effect_entry_mirror_image">Mirror image</string>
@@ -279,16 +278,20 @@ To sign in, press continue below"</string>
     <string name="morphe_video_effect_entry_rainbow">Rainbow</string>
     <string name="morphe_video_effect_entry_retro_handheld">Retro handheld</string>
     <string name="morphe_video_effect_entry_retro_pc">Retro PC</string>
-    <string name="morphe_video_effect_entry_ripple">Ripple</string>
-    <string name="morphe_video_effect_entry_shattered_glass">Shattered glass</string>
-    <string name="morphe_video_effect_entry_slices">Slices</string>
-    <string name="morphe_video_effect_entry_swirl">Swirl</string>
     <string name="morphe_video_effect_entry_thermal">Thermal camera</string>
     <string name="morphe_video_effect_entry_tilt_shift">Tilt-shift (miniature)</string>
     <string name="morphe_video_effect_entry_tiny_planet">Tiny planet</string>
     <string name="morphe_video_effect_entry_underwater">Underwater</string>
     <string name="morphe_video_effect_entry_vhs">VHS tape</string>
     <string name="morphe_video_effect_entry_video_wall">Video wall</string>
+    <string name="morphe_video_effect_entry_custom">Custom</string>
+    <string name="morphe_video_effect_custom_code_title">Video effect code</string>
+    <string name="morphe_video_effect_custom_code_summary">Code of the Custom effect. Copy all of the text to an AI chatbot, describe the effect you want, and paste its answer here. Changes show from the next video</string>
+    <string name="morphe_video_effect_custom_code_error_title">Custom effect has an error</string>
+    <string name="morphe_video_effect_custom_code_error_message">"Videos are shown without the effect until the code is fixed. Give this error to the AI that wrote the code:
+
+%s"</string>
+    <string name="morphe_video_effect_custom_code_copy_error">Copy error</string>
 
     <!-- misc.proxy.networkProxyPatch -->
     <string name="morphe_proxy_screen_title">Network proxy</string>

@@ -13,7 +13,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
+import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -48,7 +50,12 @@ internal fun videoEffectsPatch(
         }
 
         preferenceScreen.addPreferences(
-            ListPreference("morphe_video_effect")
+            ListPreference("morphe_video_effect"),
+            TextPreference(
+                key = "morphe_video_effect_custom_code",
+                tag = "app.morphe.extension.shared.settings.preference.VideoEffectCustomCodePreference",
+                inputType = InputType.TEXT_MULTI_LINE
+            )
         )
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
