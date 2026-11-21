@@ -334,17 +334,19 @@ public final class LithoRelayoutPatch {
 
             // Unmounting a Litho view also unmounts its nested Litho views,
             // so the views are found before any is unmounted.
+            // The views of the app in the background are mounted again too, as they are not bound
+            // again when the app is opened again.
             Set<LithoViewInterface> remountViews = new LinkedHashSet<>();
             if (remountListViews) {
                 for (View view : new ArrayList<>(lithoViews)) {
-                    if (view.isShown() && view instanceof LithoViewInterface lithoView) {
+                    if (isShownOrInBackground(view) && view instanceof LithoViewInterface lithoView) {
                         remountViews.add(lithoView);
                     }
                 }
             } else {
                 // A view that is no longer shown loads its images again when it's bound again.
                 for (View view : requestedViews) {
-                    LithoViewInterface lithoView = view.isShown() ? findLithoView(view) : null;
+                    LithoViewInterface lithoView = isShownOrInBackground(view) ? findLithoView(view) : null;
                     if (lithoView != null) {
                         remountViews.add(lithoView);
                     }
@@ -363,6 +365,30 @@ public final class LithoRelayoutPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "relayoutOutdatedViews failure", ex);
         }
+    }
+
+    /**
+     * The window of a stopped activity is hidden, such as while the app is in the background,
+     * and its views are shown again when the app is opened again. Must be called on the main thread.
+     *
+     * @return If the view is shown, or is hidden only because its window is hidden.
+     */
+    public static boolean isShownOrInBackground(View view) {
+        if (view.isShown()) {
+            return true;
+        }
+        if (!view.isAttachedToWindow()) {
+            return false;
+        }
+        View current = view;
+        while (current.getParent() instanceof View parent) {
+            if (current.getVisibility() != View.VISIBLE) {
+                return false;
+            }
+            current = parent;
+        }
+        // The root view is the decor view of the window.
+        return current.getVisibility() != View.VISIBLE;
     }
 
     /**
