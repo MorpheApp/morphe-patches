@@ -76,7 +76,7 @@ final class LithoFills {
      * @return The view that draws the drawable. Litho can mount it in a wrapper drawable.
      */
     @Nullable
-    private static View hostOf(Drawable drawable) {
+    static View hostOf(Drawable drawable) {
         Drawable.Callback callback = drawable.getCallback();
         while (callback instanceof Drawable parent) {
             callback = parent.getCallback();
@@ -84,7 +84,7 @@ final class LithoFills {
         return callback instanceof View view ? view : null;
     }
 
-    private static boolean isInside(View child, View view) {
+    static boolean isInside(View child, View view) {
         for (Object current = child; current instanceof View currentView; current = currentView.getParent()) {
             if (currentView == view) return true;
         }
