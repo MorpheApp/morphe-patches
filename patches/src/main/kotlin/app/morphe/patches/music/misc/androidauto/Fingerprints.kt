@@ -156,8 +156,8 @@ internal fun browserServiceOnCreateFingerprint(
     )
 )
 
-/** Obtains YTM's object for sending phone browse or search requests, depending on the supplied type. */
-internal fun phoneClientProviderFingerprint(phoneClientType: String) = Fingerprint(
+internal fun serviceDependencyProviderFingerprint(dependencyType: String, injector: String? = null) = Fingerprint(
+    definingClass = injector,
     filters = listOf(
         fieldAccess(opcode = Opcode.IGET_OBJECT),
         methodCall(
@@ -167,7 +167,7 @@ internal fun phoneClientProviderFingerprint(phoneClientType: String) = Fingerpri
             location = MatchAfterImmediately()
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        checkCast(phoneClientType, location = MatchAfterImmediately())
+        checkCast(dependencyType, location = MatchAfterImmediately())
     )
 )
 

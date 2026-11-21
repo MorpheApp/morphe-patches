@@ -162,7 +162,7 @@ private fun patchPhoneBrowseClient() {
         phoneBrowseRequestType,
         sendPhoneBrowseRequestMethod,
     )
-    hookPhoneClientOnServiceCreate(
+    hookServiceDependency(
         phoneBrowseClientType,
         PHONE_BROWSE_CLIENT,
         "$EXTENSION_CLASS->setPhoneBrowseClient($PHONE_BROWSE_CLIENT)V",
@@ -249,15 +249,16 @@ private fun addLibraryPaginationRequestMethod(
     )
 }
 
-// Obtain YTM's phone request clients
+// Obtain dependencies when YTM's media service starts
 
-internal fun hookPhoneClientOnServiceCreate(
-    clientType: String,
-    clientInterface: String,
+internal fun hookServiceDependency(
+    dependencyType: String,
+    extensionInterface: String,
     setter: String,
+    injector: String? = null,
 ) {
     val providerCandidates =
-        phoneClientProviderFingerprint(clientType)
+        serviceDependencyProviderFingerprint(dependencyType, injector)
             .matchAll()
             .map { match ->
                 val (providerFieldMatch, providerGetMatch) = match.instructionMatches
@@ -267,7 +268,7 @@ internal fun hookPhoneClientOnServiceCreate(
                 providerField to providerGetMethod
             }
             .distinctBy { (field, _) -> field }
-    // Several providers create this request sender. Select the one used when MusicBrowserService starts.
+    // Select the provider on the component used when MusicBrowserService starts.
     val (onCreateMatch, providerField, providerGetMethod) = providerCandidates
         .mapNotNull { (providerField, providerGetMethod) ->
             browserServiceOnCreateFingerprint(
@@ -279,7 +280,7 @@ internal fun hookPhoneClientOnServiceCreate(
         }
         .singleOrNull()
         ?: throw PatchException(
-            "Could not resolve MusicBrowserService's phone client provider: $clientType",
+            "Could not resolve MusicBrowserService's provider for $dependencyType",
         )
     val mutableOnCreateMethod = onCreateMatch.method
     val generatedComponentReadIndex = onCreateMatch.instructionMatches.single { match ->
@@ -289,7 +290,7 @@ internal fun hookPhoneClientOnServiceCreate(
     val generatedComponentRegister = mutableOnCreateMethod
         .getInstruction<TwoRegisterInstruction>(generatedComponentReadIndex)
         .registerA
-    val clientRegister = mutableOnCreateMethod.findFreeRegister(
+    val dependencyRegister = mutableOnCreateMethod.findFreeRegister(
         generatedComponentReadIndex + 1,
         mutableOnCreateMethod.p0Register,
     )
@@ -297,11 +298,11 @@ internal fun hookPhoneClientOnServiceCreate(
     mutableOnCreateMethod.addInstructions(
         generatedComponentReadIndex + 1,
         """
-            iget-object v$clientRegister, v$generatedComponentRegister, $providerField
-            invoke-interface/range { v$clientRegister .. v$clientRegister }, $providerGetMethod
-            move-result-object v$clientRegister
-            check-cast v$clientRegister, $clientInterface
-            invoke-static/range { v$clientRegister .. v$clientRegister }, $setter
+            iget-object v$dependencyRegister, v$generatedComponentRegister, $providerField
+            invoke-interface/range { v$dependencyRegister .. v$dependencyRegister }, $providerGetMethod
+            move-result-object v$dependencyRegister
+            check-cast v$dependencyRegister, $extensionInterface
+            invoke-static/range { v$dependencyRegister .. v$dependencyRegister }, $setter
         """
     )
 }
