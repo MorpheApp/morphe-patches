@@ -1750,7 +1750,7 @@ internal object PlaylistPageHeaderFactoryFingerprint : Fingerprint(
         literal(509923604L), // PageHeaderRenderer in BrowseResponse.header.
         opcode(Opcode.IF_NE, location = MatchAfterImmediately()),
         opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
-        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(5)),
         opcode(Opcode.NEW_INSTANCE, location = MatchAfterWithin(10))
     )
 )
