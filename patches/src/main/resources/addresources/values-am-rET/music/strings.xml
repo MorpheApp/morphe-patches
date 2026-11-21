@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">ሲጠፋ ያቁም</string>
   <string name="morphe_music_pause_when_muted_summary">የስርዓቱ ድምጽ ሲጠፋ ተጫውቶ የነበረውን ያቆማል፣ ድምጹ ሲጨምር ደግሞ ይቀጥላል</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">የ Cast ቁልፍ ወደ Sonos እና በ Wi-Fi አውታረ መረብዎ ላይ ወደሚገኙ ሌሎች UPnP ስፒከሮች ስትሪም ሊያደርግ ይችላል</string>
+  <string name="morphe_music_sonos_cast_sheet_title">ከመሣሪያ ጋር ያገናኙ</string>
+  <string name="morphe_music_sonos_cast_searching">በ Wi-Fi አውታረ መረብዎ ላይ ስፒከሮች በመፈለግ ላይ…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">በ Wi-Fi አውታረ መረብዎ ላይ ስፒከር ይምረጡ</string>
+  <string name="morphe_music_sonos_cast_casting_to">ወደ %s በመላክ ላይ ነው</string>
+  <string name="morphe_music_sonos_cast_connected">ተገናኝቷል</string>
+  <string name="morphe_music_sonos_cast_disconnect">ግንኙነቱን አቋርጥ</string>
+  <string name="morphe_music_sonos_cast_speakers_header">በWi-Fi ላይ ያሉ ስፒከሮች</string>
+  <string name="morphe_music_sonos_cast_active">ንቁ</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">የChromecast፣ Nest እና Google TV መሳሪያዎች</string>
+  <string name="morphe_music_sonos_cast_connection_failed">ከ %s ጋር መገናኘት አልተቻለም</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">የማጫወት ፍጥነት</string>
   <string name="morphe_music_playback_speed_summary">ለሁሉም ትራኮች የሚያገለግል ፍጥነት። በ100% ላይ የመተግበሪያው ፍጥነት ጥቅም ላይ ይውላል፣ ለምሳሌ የፖድካስት ማጫወቻ ፍጥነት</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"የአርቲስት መረጃዎች የሚመጡት ከ SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) ሲሆን በቀን አንድ ጊዜ ይወርዳል። ማለፍ (Skipping) የሚጫወቱትን ምንም ዓይነት መረጃ አይልክም። የ SoundProof ሰንጠረዥን መክፈት አዳዲስ ድምጾችን ለማሳየት እና ለመምረጥ አሁን ያለውን የአርቲስት ስም ወደ SoundProof ሰርቨር ይልካል። ሰርቨሩ መራጮችን የሚለየው በ IP አድራሻ ስለሆነ፣ የእርስዎ ምርጫ በሌላ ኔትወርክ ላይ የተለየ ሆኖ ሊታይ ይችላል።
 
 የመረጃ ቋቱ በ ODC Open Database License (ODbL) ፈቃድ የተሰጠው ነው። በ xoundbyte የተዘጋጁት የ Soul Over AI መግቢያዎች በ CC BY 4.0 ፈቃድ የተሰጡ ናቸው። ከ SoundProof ወይም ከ Soul Over AI ጋር ግንኙነት የሌለው ወይም በነሱ የማይደገፍ ነው።"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">የApple Music ተንቀሳቃሽ የጥበብ ስራ</string>
+  <string name="morphe_music_apple_music_artwork_summary">አልበሙ ካለው፣ የApple Music ተንቀሳቃሽ የአልበም ጥበብ ስራን በጫናዩ ውስጥ ያሳያል። የእያንዳንዱ ዘፈን ርዕስ፣ አርቲስት እና አልበም ወደ Apple Music ይላካሉ</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">ለዚህ የጥበብ ፋይል ግጥሞች አይገኙም።</string>
   <string name="morphe_music_lyrics_enabled_title">የሶስተኛ ወገን ግጥሞችን ተጠቀም</string>

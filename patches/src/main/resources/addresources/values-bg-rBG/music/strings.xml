@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Пауза при изключен звук</string>
   <string name="morphe_music_pause_when_muted_summary">Спира възпроизвеждането, когато системният звук е изключен, и го възобновява, когато звукът бъде повишен</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Бутонът Cast може също така да стриймва към Sonos и други UPnP говорители във вашата Wi-Fi мрежа</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Свържете се с устройство</string>
+  <string name="morphe_music_sonos_cast_searching">Търсене на говорители във вашата Wi-Fi мрежа…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Изберете говорител във вашата Wi-Fi мрежа</string>
+  <string name="morphe_music_sonos_cast_casting_to">Изпращане към %s</string>
+  <string name="morphe_music_sonos_cast_connected">Свързано</string>
+  <string name="morphe_music_sonos_cast_disconnect">Прекъсване на връзката</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Говорители в Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Активен</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Устройства Chromecast, Nest и Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Не успяхме да се свържем с %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Скорост на възпроизвеждане</string>
   <string name="morphe_music_playback_speed_summary">Скорост, използвана за всички песни. При 100% се използва скоростта на приложението, като скоростта на възпроизвеждане на подкаст.</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"Данните за изпълнителите идват от SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) и се изтеглят веднъж дневно. Прескачането не изпраща нищо относно това какво възпроизвеждате. Отварянето на таблицата на SoundProof изпраща текущото име на изпълнителя към сървъра на SoundProof, за да се покажат актуалните гласове и да се гласува. Сървърът разпознава гласуващите по IP адрес, така че вашият глас може да се вижда различно в друга мрежа.
 
 Базата данни е лицензирана по ODC Open Database License (ODbL). Записите от Soul Over AI на xoundbyte са лицензирани по CC BY 4.0. Не е свързано с или одобрено от SoundProof или Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Анимирано обложка на Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Показва анимираното обложка на албума от Apple Music в плейъра, ако албумът има такава. Заглавието, изпълнителят и албумът на всяка песен се изпращат към Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Текстовете не са налични за този файл на устройството.</string>
   <string name="morphe_music_lyrics_enabled_title">Използване на текстове от трети страни</string>

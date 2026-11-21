@@ -265,6 +265,20 @@ Wenn du Crossfade pausierst, um ein Musikvideo anzusehen, kann das dazu führen,
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pause bei Stummschaltung</string>
   <string name="morphe_music_pause_when_muted_summary">Pause die Wiedergabe, wenn die Systemlautstärke stummgeschaltet ist, und setzt sie fort, wenn die Lautstärke erhöht wird</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Mit der Cast-Schaltfläche kann auch an Sonos und andere UPnP-Lautsprecher in Ihrem WLAN-Netzwerk gestreamt werden</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Mit einem Gerät verbinden</string>
+  <string name="morphe_music_sonos_cast_searching">Suche nach Lautsprechern in Ihrem WLAN-Netzwerk…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Wählen Sie einen Lautsprecher in Ihrem WLAN-Netzwerk aus</string>
+  <string name="morphe_music_sonos_cast_casting_to">Übertragung an %s</string>
+  <string name="morphe_music_sonos_cast_connected">Verbunden</string>
+  <string name="morphe_music_sonos_cast_disconnect">Trennen</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Lautsprecher im WLAN</string>
+  <string name="morphe_music_sonos_cast_active">Aktiv</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast-, Nest- und Google-TV-Geräte</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Verbindung zu %s konnte nicht hergestellt werden</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Wiedergabegeschwindigkeit</string>
   <string name="morphe_music_playback_speed_summary">Geschwindigkeit für alle Titel. Bei 100 % wird die App-Geschwindigkeit verwendet, z. B. die Wiedergabegeschwindigkeit von Podcasts.</string>
@@ -586,6 +600,9 @@ Um sicherzustellen, dass Scrobbling während der Wiedergabe im Hintergrund synch
   <string name="morphe_music_soundproof_about_summary">"Künstlerdaten stammen von SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) und werden einmal täglich heruntergeladen. Wenn du dies überspringst, werden keine Informationen über das gespielte Lied gesendet. Das Öffnen des SoundProof-Blatts sendet den aktuellen Künstlernamen an den SoundProof-Server, um aktuelle Stimmen anzuzeigen und abzustimmen. Der Server unterscheidet Wähler anhand der IP-Adresse, sodass deine Stimme in einem anderen Netzwerk anders angezeigt werden kann.
 
 Die Datenbank ist unter der ODC Open Database License (ODbL) lizenziert. Einträge von Soul Over AI von xoundbyte sind unter CC BY 4.0 lizenziert. Nicht mit SoundProof oder Soul Over AI verbunden oder von diesen unterstützt."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animiertes Artwork</string>
+  <string name="morphe_music_apple_music_artwork_summary">Zeigt das animierte Album-Artwork von Apple Music im Player an, sofern das Album eines besitzt. Titel, Interpret und Album jedes Songs werden an Apple Music gesendet</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Songtexte sind für diese Gerätedatei nicht verfügbar.</string>
   <string name="morphe_music_lyrics_enabled_title">Texte von Drittanbietern verwenden</string>

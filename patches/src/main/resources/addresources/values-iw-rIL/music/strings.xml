@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">השהה כשהשמע מושתק</string>
   <string name="morphe_music_pause_when_muted_summary">משהה את הניגון כאשר עוVOLUME המערכת מושתק ומחדש אותו כאשר עוVOLUME מועלה</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">ניתן להשתמש גם בכפתור ה-Cast להזרמה לרמקולי Sonos ולרמקולי UPnP אחרים ברשת ה-Wi-Fi שלך</string>
+  <string name="morphe_music_sonos_cast_sheet_title">התחבר למכשיר</string>
+  <string name="morphe_music_sonos_cast_searching">מחפש רמקולים ברשת ה-Wi-Fi שלך…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">בחר רמקול ברשת ה-Wi-Fi שלך</string>
+  <string name="morphe_music_sonos_cast_casting_to">שידור אל %s</string>
+  <string name="morphe_music_sonos_cast_connected">מחובר</string>
+  <string name="morphe_music_sonos_cast_disconnect">ניתוק</string>
+  <string name="morphe_music_sonos_cast_speakers_header">רמקולים ב-Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">פעיל</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">מכשירי Chromecast, Nest ו-Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">לא ניתן היה להתחבר אל %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">מהירות השמעה</string>
   <string name="morphe_music_playback_speed_summary">המהירות המשמשת לכל הרצועות. ב-100% נעשה שימוש במהירות האפליקציה, כמו מהירות השמעת הפודקאסט</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"נתוני האמנים מגיעים מ-SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), ומוורדים פעם ביום. דילוג אינו שולח מידע על מה שאתה משמיע. פתיחת גיליון ה-SoundProof שולחת את שם האמן הנוכחי לשרת של SoundProof כדי להציג הצבעות עדכניות ולאפשר הצבעה. השרת מבדיל בין מצביעים לפי כתובת IP, לכן ההצבעה שלך עשויה להופיע באופן שונה ברשת אחרת.
 
 מסד הנתונים מוגן תחת רישיון ODC Open Database License (ODbL). רשומות מ-Soul Over AI מאת xoundbyte מוגנות תחת רישיון CC BY 4.0. לא קשור ל-SoundProof או ל-Soul Over AI ולא נתמך על ידיהם."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">עטיפה מונפשת של Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">מציג בנגן את עטיפת האלבום המונפשת של Apple Music, אם קיימת כזו לאלבום. שם השיר, האמן והאלבום של כל שיר נשלחים ל-Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">מילים אינן זמינות עבור קובץ מכשיר זה.</string>
   <string name="morphe_music_lyrics_enabled_title">השתמש במילות שירים של צד שלישי</string>

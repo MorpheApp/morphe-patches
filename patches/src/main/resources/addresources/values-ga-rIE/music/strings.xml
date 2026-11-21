@@ -265,6 +265,20 @@ Má chuirtear croschéimniú ar sos chun féachaint ar fhíseán ceoil, d'fhéad
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Cuir sos nuair a bhíonn sé balbhaithe</string>
   <string name="morphe_music_pause_when_muted_summary">Cuireann sé an athsheinm ar sos nuair a bhíonn toirt an chórais balbhaithe, agus tosaíonn sé arís í nuair a ardaítear an toirt</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Cast Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">Is féidir leis an gcnaipe Cast sruthú go Sonos agus go cainteoirí UPnP eile ar do líonra Wi-Fi freisin</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Nascigh le gléas</string>
+  <string name="morphe_music_sonos_cast_searching">Ag searcháil ar chainteoirí ar do líonra Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Roghnaigh cainteoir ar do líonra Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Ag teilgean chuig %s</string>
+  <string name="morphe_music_sonos_cast_connected">Ceangailte</string>
+  <string name="morphe_music_sonos_cast_disconnect">Dícheangail</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Cainteoirí ar Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Gníomhach</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Gléasanna Chromecast, Nest agus Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Níorbh fhéidir ceangal a dhéanamh le %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Luas athsheinm</string>
   <string name="morphe_music_playback_speed_summary">An luas a úsáidtear do gach rian. Ag 100%, úsáidtear luas an aip, mar shampla luas athsheinm an phodchraolta.</string>
@@ -586,6 +600,9 @@ Chun a chinntiú go ndéantar sioncronú le linn athsheinm sa chúlra, cinntigh 
   <string name="morphe_music_soundproof_about_summary">"Tagann sonraí faoi ealaíontóirí ó SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), a íoslódáiltear uair sa lá. Ní sheoltar aon fhaisnéis faoi na rudaí a sheinneann tú nuair a sháraíonn tú amhrán. Má osclaíonn tú an bhileog SoundProof, seoltar ainm an ealaíontóra atá i gceist chuig freastalaí SoundProof chun vótaí nua a thaispeáint agus chun ligean duit vóta a chaitheamh. Déanann an freastalaí idirdhealú idir vótálaithe bunaithe ar a seoladh IP; dá bhrí sin, d’fhéadfadh cuma dhifriúil a bheith ar do vóta má úsáideann tú líonra eile.
 
 Tá an bunachar sonraí ceadúnaithe faoin ODC Open Database License (ODbL). Tá iontrálacha ó Soul Over AI, cruthaithe ag xoundbyte, ceadúnaithe faoin gceadúnas CC BY 4.0. Níl aon bhaint ag an tseirbhís seo le SoundProof ná le Soul Over AI, agus níl sí formhuinithe acu ach an oiread."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Ealaín animate Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Taispeánann ealaín an ailbhiom animate de Apple Music sa seinnir, má tá ceann ag an ailbhom. Seoltaíonn sé teideal, ealaíontóir agus ailbhom gach amhráin chuig Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Níl liricí ar fáil don chomhad gléas seo.</string>
   <string name="morphe_music_lyrics_enabled_title">Úsáid liricí tríú páirtí</string>

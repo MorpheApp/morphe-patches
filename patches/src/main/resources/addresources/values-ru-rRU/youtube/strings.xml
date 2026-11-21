@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Включить фильтр нижнего меню \"Библиотека\" / \"Вы\"</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Фильтр нижнего меню \"Библиотека\" / \"Вы\"</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Введите названия пунктов нижнего меню \"Библиотека\" / \"Вы\" для фильтрации, по одному в строке</string>
+  <string name="morphe_hide_account_menu_badges_title">Скрыть бейджи</string>
   <string name="morphe_hide_account_menu_downloads_title">Скрыть загрузки</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Скрыть \"Понравившиеся видео\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Скрыть \"Смотреть позже\"</string>
   <string name="morphe_hide_album_cards_title">Скрыть карточки альбомов</string>
   <string name="morphe_hide_album_cards_summary">Скрывает карточки альбомов под описанием исполнителя</string>
   <string name="morphe_hide_artist_cards_title">Скрыть карточки исполнителей</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">Скрывает скользящие карточки и их переключатель страниц, отображаемые на кнопке комментариев</string>
   <string name="morphe_hide_comments_timestamp_button_title">Скрыть кнопку метки времени</string>
   <string name="morphe_hide_comments_top_fans_button_title">Скрыть кнопку «Лучшие фанаты»</string>
+  <string name="morphe_hide_comments_topics_title">Скрыть \"Темы\"</string>
+  <string name="morphe_hide_comments_topics_summary">Скрывает опцию \"Темы\" на панели фильтров и предпросмотр комментариев по темам под видео</string>
   <string name="morphe_hide_comments_translate_button_title">Скрыть кнопку \"Перевести\"</string>
   <string name="morphe_hide_comments_zero_state_title">Скрыть сообщение «Нет комментариев»</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Очистить выделенные ссылки поиска</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Вертикальный индикатор (минимальный)</string>
   <string name="morphe_swipe_change_video_title">Включить переключение видео жестом</string>
   <string name="morphe_swipe_change_video_summary">Свайпните в полноэкранном режиме, чтобы перескочить к следующему или предыдущему видео</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Жест удержания</string>
+  <string name="morphe_hold_gesture_screen_summary">Изменяйте и фиксируйте скорость воспроизведения, перемещая палец после нажатия и удержания</string>
+  <string name="morphe_hold_gesture_title">Включить жест удержания</string>
+  <string name="morphe_hold_gesture_summary">После нажатия и удержания видео можно переместить палец. Скорость при удержании соответствует скорости воспроизведения при нажатии и удержании</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Не используется, когда включено «Нажатие для выполнения жестов». Нажмите, чтобы изменить</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Нажатие для выполнения жестов включено</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Жест удержания и жест «нажатие для выполнения жестов» в элементах управления свайпами начинаются с нажатия и удержания, поэтому может быть включен только один из них.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Выключить нажатие для выполнения жестов</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Жест удержания не используется, когда включено «Нажатие для выполнения жестов»</string>
+  <string name="morphe_hold_gesture_dialog_title">Жест удержания включен</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Выключить жест удержания</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Включить виброотклик при жестах</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Вибрирует при изменении скорости и при ее фиксации</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Перетащите в сторону, чтобы изменить скорость</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">После нажатия и удержания перетащите влево, чтобы замедлить воспроизведение, и вправо, чтобы ускорить его. Чем дальше перетаскивание, тем больше меняется скорость, пока палец не вернется назад</string>
+  <string name="morphe_hold_gesture_speed_step_title">Шаг скорости</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Чувствительность перетаскивания</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Низкая</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Нормальная</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Высокая</string>
+  <string name="morphe_hold_gesture_speed_min_title">Минимальная скорость</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Минимальная скорость, которой можно достичь при перетаскивании</string>
+  <string name="morphe_hold_gesture_speed_max_title">Максимальная скорость</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Максимальная скорость перетягивания (до 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Потяните вниз, чтобы зафиксировать скорость</string>
+  <string name="morphe_hold_gesture_lock_summary">После нажатия и удержания потяните вниз, чтобы сохранить скорость после отпускания пальца. Нажмите на значок или снова нажмите и удерживайте, чтобы разблокировать</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Всегда показывать значок блокировки</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Значок зафиксированной скорости остается видимым, когда элементы управления плеером скрыты</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Разблокировать при смене видео</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Фиксация скорости прекращается при запуске другого видео</string>
+  <string name="morphe_hold_gesture_lock_hint">Потяните вниз для блокировки</string>
+  <string name="morphe_hold_gesture_lock_release">Отпустить для блокировки %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Субтитры</string>
   <string name="morphe_captions_screen_summary">Управление автоматическими субтитрами и cookie-файлами субтитров</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Настройте расстояние между стеклянной панелью навигации и нижней частью экрана или системной навигацией</string>
   <string name="morphe_navigation_bar_glass_size_title">Размер стеклянной панели навигации</string>
   <string name="morphe_navigation_bar_glass_size_summary">Настройка высоты, ширины и интервала между кнопками стеклянной панели навигации с предварительным просмотром. Кнопки, которые не помещаются по ширине экрана, скрываются</string>
+  <string name="morphe_glass_menus_screen_title">Стеклянные меню</string>
+  <string name="morphe_glass_menus_screen_summary">Меню в виде матового стекла поверх размытого содержимого</string>
+  <string name="morphe_glass_menus_title">Включить стеклянные меню</string>
+  <string name="morphe_glass_menus_summary">Отображает меню и нижние панели в виде матового стекла с размытием содержимого за ними</string>
+  <string name="morphe_glass_menus_user_dialog_message">Меню отображаются почти непрозрачными при включенном режиме энергосбережения или если устройство не поддерживает размытие</string>
+  <string name="morphe_glass_menus_opacity_title">Непрозрачность стекла</string>
+  <string name="morphe_glass_menus_opacity_summary">Насколько меню перекрывает размытое содержимое (0 — прозрачно, 100 — непрозрачно)</string>
+  <string name="morphe_glass_menus_blur_title">Размытие</string>
+  <string name="morphe_glass_menus_blur_summary">Степень размытия содержимого за меню</string>
+  <string name="morphe_glass_menus_dim_title">Затемнение</string>
+  <string name="morphe_glass_menus_dim_summary">Насколько затемняется экран вокруг нижней панели</string>
   <string name="morphe_navigation_bar_glass_size_height">Высота</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимальная ширина</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Интервал между кнопками</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Пропускает меню выбора качества и сразу открывает меню расширенных настроек качества</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Скрыть параметры Premium качества</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Приоритет качества видео</string>
-  <string name="morphe_video_quality_prioritize_summary">Отдает приоритет максимально доступному качеству видео перед эффективностью кодека</string>
-  <string name="morphe_video_quality_prioritize_dialog">Если эта настройка отключена, в старых видео могут отсутствовать варианты выбора качества</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Разрешить \"Android VR\" / \"visionOS\" AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Разрешает программное декодирование AV1 при использовании клиента \"Android VR\" / \"visionOS\"</string>

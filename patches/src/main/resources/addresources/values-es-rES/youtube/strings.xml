@@ -61,7 +61,10 @@ Los cambios incluyen:
   <string name="morphe_hide_account_menu_title">Activar el filtro del menú inferior «Biblioteca / Tú»</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filtro del menú inferior «Biblioteca / Tú»</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introduce los nombres de los elementos del menú inferior «Biblioteca / Tú» que quieres filtrar, separados por saltos de línea</string>
+  <string name="morphe_hide_account_menu_badges_title">Ocultar insignias</string>
   <string name="morphe_hide_account_menu_downloads_title">Ocultar Descargas</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Ocultar \"Vídeos que me gustan\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Ocultar \"Ver más tarde\"</string>
   <string name="morphe_hide_album_cards_title">Ocultar tarjetas de álbum</string>
   <string name="morphe_hide_album_cards_summary">Oculta las tarjetas de álbum debajo de la descripción del artista</string>
   <string name="morphe_hide_artist_cards_title">Ocultar tarjetas de artista</string>
@@ -427,6 +430,8 @@ Limitaciones:
   <string name="morphe_minimal_comments_button_summary">Oculta las tarjetas deslizantes y su selector de páginas, que se muestran en el botón de comentarios</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ocultar botón de marca de tiempo</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ocultar botón \'Top Fans\'</string>
+  <string name="morphe_hide_comments_topics_title">Ocultar \"Temas\"</string>
+  <string name="morphe_hide_comments_topics_summary">Oculta la opción de la barra de filtro \"Temas\" y las vistas previas de comentarios de \"Temas\" debajo del video</string>
   <string name="morphe_hide_comments_translate_button_title">Ocultar botón Traducir</string>
   <string name="morphe_hide_comments_zero_state_title">Ocultar mensaje \'Aún no hay comentarios\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Limpiar enlaces de búsqueda resaltados</string>
@@ -1029,6 +1034,39 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_swipe_overlay_style_entry_7">Superposición vertical (mínima)</string>
   <string name="morphe_swipe_change_video_title">Activar deslizamiento para cambiar vídeos</string>
   <string name="morphe_swipe_change_video_summary">Desliza en modo pantalla completa para saltar al vídeo siguiente o al anterior</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Gesto de mantener</string>
+  <string name="morphe_hold_gesture_screen_summary">Cambia y bloquea la velocidad de reproducción arrastrando después de pulsar y mantener</string>
+  <string name="morphe_hold_gesture_title">Activar gesto de mantener</string>
+  <string name="morphe_hold_gesture_summary">Pulsar y mantener el vídeo puede ir seguido de un arrastre. La velocidad al mantener es la velocidad de reproducción de pulsar y mantener</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">No se usa mientras Pulsar para deslizar esté activado. Toca para cambiar</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Pulsar para deslizar está activado</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Tanto el gesto de mantener como el gesto de pulsar para deslizar de los controles de deslizamiento comienzan tocando y manteniendo, por lo que solo uno de ellos puede estar activado.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Desactivar Pulsar para deslizar</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">El gesto de mantener no se usa mientras Pulsar para deslizar esté activado</string>
+  <string name="morphe_hold_gesture_dialog_title">El gesto de mantener está activado</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Desactivar el gesto de mantener</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Activar vibración</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibra cuando la velocidad cambia y cuando la velocidad está bloqueada</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Arrastra lateralmente para cambiar la velocidad</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Después de mantener pulsado, arrastra hacia la izquierda para reproducir más lento y hacia la derecha para reproducir más rápido. Cuanto más lejos, la velocidad seguirá cambiando hasta que el dedo regrese</string>
+  <string name="morphe_hold_gesture_speed_step_title">Paso de velocidad</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Sensibilidad del arrastre</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Bajo</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Alta</string>
+  <string name="morphe_hold_gesture_speed_min_title">Velocidad mínima</string>
+  <string name="morphe_hold_gesture_speed_min_summary">La velocidad más lenta que puede alcanzar un arrastre</string>
+  <string name="morphe_hold_gesture_speed_max_title">Velocidad máxima</string>
+  <string name="morphe_hold_gesture_speed_max_summary">La velocidad más rápida que puede alcanzar un arrastre (hasta 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Arrastra hacia abajo para bloquear la velocidad</string>
+  <string name="morphe_hold_gesture_lock_summary">Después de mantener pulsado, arrastra hacia abajo para mantener la velocidad al levantar el dedo. Toca la insignia o mantén pulsado de nuevo para desbloquear</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Mostrar siempre la insignia de bloqueo</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">La insignia de una velocidad bloqueada permanece visible mientras los controles del reproductor están ocultos</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Desbloquear cuando cambie el vídeo</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Una velocidad bloqueada finaliza cuando comienza otro vídeo</string>
+  <string name="morphe_hold_gesture_lock_hint">Desliza hacia abajo para bloquear</string>
+  <string name="morphe_hold_gesture_lock_release">Suelta para bloquear %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtítulos</string>
   <string name="morphe_captions_screen_summary">Administra subtítulos automáticos y cookies de subtítulos</string>
@@ -1133,6 +1171,17 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Ajusta el espacio entre la barra de navegación de cristal y la parte inferior de la pantalla o la navegación del sistema</string>
   <string name="morphe_navigation_bar_glass_size_title">Tamaño de barra de navegación de cristal</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajusta la altura, el ancho y el espacio de los botones de la barra de navegación de cristal, con una vista previa. Los botones que no caben en el ancho de la pantalla se ocultan.</string>
+  <string name="morphe_glass_menus_screen_title">Menús de cristal</string>
+  <string name="morphe_glass_menus_screen_summary">Menús como cristal esmerilado sobre el contenido desenfocado detrás de ellos</string>
+  <string name="morphe_glass_menus_title">Activar menús de cristal</string>
+  <string name="morphe_glass_menus_summary">Muestra los menús y las hojas inferiores como cristal esmerilado, con el contenido detrás de ellos desenfocado</string>
+  <string name="morphe_glass_menus_user_dialog_message">Los menús se muestran casi opacos mientras el ahorrador de batería esté activado, o si el dispositivo no es compatible con el desenfoque</string>
+  <string name="morphe_glass_menus_opacity_title">Opacidad del cristal</string>
+  <string name="morphe_glass_menus_opacity_summary">Cuánto cubre el menú el contenido desenfocado (0 es transparente, 100 es opaco)</string>
+  <string name="morphe_glass_menus_blur_title">Desenfoque</string>
+  <string name="morphe_glass_menus_blur_summary">Cuánto se desenfoca el contenido detrás del menú</string>
+  <string name="morphe_glass_menus_dim_title">Atenuación</string>
+  <string name="morphe_glass_menus_dim_summary">Cuánto se oscurece la pantalla alrededor de una hoja inferior</string>
   <string name="morphe_navigation_bar_glass_size_height">Altura</string>
   <string name="morphe_navigation_bar_glass_size_width">Ancho máximo</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espacio de botones</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Omite el menú de selección de calidad y abre el menú de calidad Avanzada directamente</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ocultar opciones de calidad premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Priorizar la calidad del vídeo</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioriza la calidad de vídeo más alta sobre la eficiencia del códec</string>
-  <string name="morphe_video_quality_prioritize_dialog">Si este ajuste está desactivado, los vídeos más antiguos podrían no mostrar opciones de calidad de vídeo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Permitir AV1 en \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_summary">Permite la decodificación por software de AV1 al usar el cliente \'Android VR\' / \'visionOS\'</string>

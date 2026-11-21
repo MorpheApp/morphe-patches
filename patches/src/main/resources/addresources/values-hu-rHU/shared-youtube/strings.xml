@@ -141,7 +141,7 @@ Koppintson az OK gombra az Android System WebView megnyitásához."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Próbálja meg a következők engedélyezését: Videófolyamok hamisítása &gt; Android VR bejelentkezés</string>
   <string name="morphe_spoof_video_streams_client_type_title">Alapértelmezett kliens</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR bejelentkezés</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' bejelentkezés</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Az \'Android VR\' külön bejelentkezést igényel. Koppints ide a folytatáshoz</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Jelenleg az \'Android VR\' fiókba van bejelentkezve</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ A bejelentkezéshez nyomd meg lent a folytatást"</string>
 • A Morphe-beállítások exportálása és importálása nem tartalmazza az Android VR-hitelesítést
 • Ha ez az alkalmazás 6 hónapig nem használatos, a Google eltávolítja a hitelesítést
 • Újra be kell jelentkeznie, ha megváltoztatja a Google-jelszavát, vagy eltávolítja ezt az eszközt a Google-beállításaiból"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Bejelentkezés mobilweben</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobil web\' bejelentkezés</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcionális: jelentkezz be a YouTube weboldalára, hogy a fiókoddal játszass videókat. Koppints ide a folytatáshoz</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Jelenleg a \'Mobil web\'-be van bejelentkezve</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ A bejelentkezéshez nyomd meg alul a folytatás gombot"</string>
   <string name="morphe_seek_notification_media_length_invalid">A keresési hossznak 1 és %s másodperc közötti értéknek kell lennie. Az alapértelmezett érték lesz használva</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokoll letiltása</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorizáld a videó minőségét</string>
+  <string name="morphe_prioritize_video_quality_summary">A rendelkezésre álló legmagasabb videóminőséget prioritásba helyezi a kódolási hatékonyságnak</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ha ez a beállítás ki van kapcsolva, a régebbi videóknál előfordulhat, hogy nem érhető el videóminőségi választás</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC hang letiltása</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

@@ -265,6 +265,20 @@ Kusitisha crossfade ili kutazama video ya muziki kunaweza kuacha baadhi ya video
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Sitanisha wakati imenyamazishwa</string>
   <string name="morphe_music_pause_when_muted_summary">Husitanisha uchezaji wakati sauti ya mfumo imenyamazishwa na kuendelea wakati sauti inapoongezwa</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Kitufe cha Cast kinaweza pia kurusha sauti kwenye Sonos na spika zingine za UPnP kwenye mtandao wako wa Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Unganisha kwenye kifaa</string>
+  <string name="morphe_music_sonos_cast_searching">Inatafuta spika kwenye mtandao wako wa Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Chagua spika kwenye mtandao wako wa Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Inarusha kwenda %s</string>
+  <string name="morphe_music_sonos_cast_connected">Imeunganishwa</string>
+  <string name="morphe_music_sonos_cast_disconnect">Tenganisha</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Spika kwenye Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Inashughulika</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Vifaa vya Chromecast, Nest na Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Hakuwezekana kuunganisha kwa %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Kasi ya uchezaji</string>
   <string name="morphe_music_playback_speed_summary">Kasi inayotumika kwa nyimbo zote. Katika 100% kasi ya programu hutumiwa, kama vile kasi ya uchezaji wa podcast</string>
@@ -586,6 +600,9 @@ Ili kuhakikisha scrobbling inasawazishwa wakati wa uchezaji wa nyuma, hakikisha 
   <string name="morphe_music_soundproof_about_summary">"Data za msanii zinatoka SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), zinapakuliwa mara moja kwa siku. Kuruka hakutumi kitu chochote kuhusu kile unachocheza. Kufungua karatasi ya SoundProof hutuma jina la msanii wa sasa kwenda kwenye seva ya SoundProof ili kuonyesha kura mpya na kupiga kura. Seva huwatofautisha wapiga kura kwa anwani ya IP, hivyo kura yako inaweza kuonekana tofauti kwenye mtandao mwingine.
 
 Hifadhidata hii ina leseni chini ya ODC Open Database License (ODbL). Maingizo kutoka Soul Over AI ya xoundbyte yana leseni chini ya CC BY 4.0. Haihusiani na au kuidhinishwa na SoundProof au Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Sanaa ya Apple Music inayocheza</string>
+  <string name="morphe_music_apple_music_artwork_summary">Inaonyesha sanaa ya albamu inayocheza ya Apple Music kwenye kicheza, ikiwa albamu ina sanaa hiyo. Kichwa, msanii na albamu ya kila wimbo hutumwa kwenda Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Mashairi hayapatikani kwa faili hili la kifaa.</string>
   <string name="morphe_music_lyrics_enabled_title">Tumia mashairi ya upande wa tatu</string>

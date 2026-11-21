@@ -94,6 +94,7 @@ Yangi tillarni tarjima qilish yoki mavjud tarjimalarni yaxshilash uchun morphe.s
   <!-- Spoken name of the button in the header that opens the menu of periods -->
   <string name="morphe_settings_about_contributors_period_menu">Vaqt oralig\'i</string>
   <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s foydalanuvchi</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Homiylar</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective platformasidagi homiylar</string>

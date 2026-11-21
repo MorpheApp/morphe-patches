@@ -141,7 +141,7 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ይህንን ለማብራት ይሞክሩ፦ የቪዲዮ ስትሪሞችን አስመስል &gt; Android VR ይግቡ</string>
   <string name="morphe_spoof_video_streams_client_type_title">መደበኛ ደንበኛ</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR መግቢያ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' መግቢያ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' የተለየ መግቢያ ይፈልጋል። ለመቀጠል እዚህ ይጫኑ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">በአሁኑ ጊዜ ወደ \'Android VR\' ተገብቷል</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
 • የMorphe ቅንብሮች የAndroid VR ማረጋገጫን ወደ ውስጥ አያስገቡም/ወደ ውጭ አይልኩም
 • ይህ መተግበሪያ ለ6 ወራት ጥቅም ላይ ካልዋለ Google ይህን ማረጋገጫ ያስወግደዋል
 • የGoogle የይለፍ ቃልዎን ከቀየሩ ወይም ይህን መሣሪያ ከGoogle ቅንብሮችዎ ካስወገዱ እንደገና መግባት ይኖርብዎታል"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">በሞባይል ድረ-ገጽ መግቢያ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobile Web\' መግቢያ</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">አማራጭ፦ በ አካውንትዎ ቪዲዮዎችን ለማጫወት በ YouTube ድረ-ገጽ ላይ ይግቡ። ለመቀጠል እዚህ ይጫኑ</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">በአሁኑ ጊዜ በ\'Mobile Web\' ውስጥ ተስርተዋል</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <string name="morphe_seek_notification_media_length_invalid">የፍለጋ ርዝመቱ በ1 እና %s ሰከንዶች መካከል መሆን አለበት። መደበኛው ጥቅም ላይ እየዋለ ነው</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">የ QUIC ፕሮቶኮልን አጥፋ</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">የቪዲዮ ጥራትን ቅድሚያ ይስጡ</string>
+  <string name="morphe_prioritize_video_quality_summary">ከኮዴክ ብቃት ይልቅ ከፍተኛውን የሚገኝ የቪዲዮ ጥራት ቅድሚያ ይሰጣል</string>
+  <string name="morphe_prioritize_video_quality_dialog">ይህ ቅንብር ከተጠፋ፣ የድሮ ቪዲዮዎች ምንም ዓይነት የቪዲዮ ጥራት አማራጮችን ላያሳዩ ይችላሉ</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">የ DRC ኦዲዮን አጥፋ</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

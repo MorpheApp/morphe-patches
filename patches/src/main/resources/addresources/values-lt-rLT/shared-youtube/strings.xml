@@ -168,7 +168,7 @@ Kad prisijungtumėte, paspauskite Tęsti žemiau"</string>
 • Jūsų „Morphe“ nustatymai neimportuos ir neeksportuos „Android VR“ autentifikavimo
 • Jei ši programa nenaudojama 6 mėnesius, „Google“ pašalins šį autentifikavimą
 • Turėsite prisijungti iš naujo, jei pakeisite „Google“ slaptažodį arba išregistruosite šį įrenginį „Google“ nustatymuose"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prisijungimas per mobiliąją naršyklę</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">„Mobiliojo tinklo naršyklės“ prisijungimas</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Neprivaloma: prisijunkite prie „YouTube“ svetainės, kad galėtumėte žiūrėti vaizdo įrašus su savo paskyra. Norėdami tęsti, bakstelėkite čia</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Šiuo metu prisijungta prie „Mobiliojo tinklo“</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Norėdami prisijungti, žemiau spauskite „Tęsti“"</string>
   <string name="morphe_seek_notification_media_length_invalid">Paieškos ilgis turi būti nuo 1 iki %s sekundžių. Bus naudojama numatytoji reikšmė</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Išjungti QUIC protokolą</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritizuoti vaizdo kokybę</string>
+  <string name="morphe_prioritize_video_quality_summary">Teikia pirmenybę aukščiausiai pasiekiamai vaizdo įrašo kokybei, o ne kodeko efektyvumui.</string>
+  <string name="morphe_prioritize_video_quality_dialog">Jei šis nustatymas išjungtas, tada senesniuose vaizdo įrašuose gali nerodyti vaizdo įrašo kokybės parinkčių.</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Išjungti DRC garsą</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

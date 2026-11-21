@@ -61,7 +61,10 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_account_menu_title">Kirjaston valikko / Suodatin alavalikussa</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kirjaston valikko / Suodatin alavalikussa</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Kirjoita suodatettavat valikkokohtien nimet, yksi riviä kohden</string>
+  <string name="morphe_hide_account_menu_badges_title">Piilota merkit</string>
   <string name="morphe_hide_account_menu_downloads_title">Piilota lataukset</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Piilota \"Tykätyt videot\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Piilota \"Katso myöhemmin\"</string>
   <string name="morphe_hide_album_cards_title">Piilota albumikortit</string>
   <string name="morphe_hide_album_cards_summary">Piilottaa albumikortit artistin kuvauksen alapuolelta</string>
   <string name="morphe_hide_artist_cards_title">Piilota artistikortit</string>
@@ -427,6 +430,8 @@ Rajoitukset:
   <string name="morphe_minimal_comments_button_summary">Piilottaa liukuvat kortit ja niiden sivunvalitsimen, jotka näkyvät kommenttipainikkeessa</string>
   <string name="morphe_hide_comments_timestamp_button_title">Piilota aikaleima-painike</string>
   <string name="morphe_hide_comments_top_fans_button_title">Piilota \'Top-fanit\' -painike</string>
+  <string name="morphe_hide_comments_topics_title">Piilota \"Aiheet\"</string>
+  <string name="morphe_hide_comments_topics_summary">Piilottaa \"Aiheet\"-suodatinpalkin vaihtoehdon ja \"Aihe\"-kommenttien esikatselut videon alta</string>
   <string name="morphe_hide_comments_translate_button_title">Piilota Käännä-painike</string>
   <string name="morphe_hide_comments_zero_state_title">Piilota viesti \"Ei vielä kommentteja\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Puhdistaa korostettujen hakulinkkien koodin</string>
@@ -1029,6 +1034,39 @@ Korjaa tämä ottamalla käyttöön 'Naamioi videovirrat' ja vaihtamalla 'Oletus
   <string name="morphe_swipe_overlay_style_entry_7">Pystysuuntainen peittokuva (minimaalinen)</string>
   <string name="morphe_swipe_change_video_title">Ota videon vaihto pyyhkäisemällä käyttöön</string>
   <string name="morphe_swipe_change_video_summary">Pyyhkäise koko näytön tilassa siirtyäksesi seuraavaan tai edelliseen videoon</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Pidätusele</string>
+  <string name="morphe_hold_gesture_screen_summary">Muuta ja lukitse toistonopeus vetämällä napautuksen ja pidämisen jälkeen</string>
+  <string name="morphe_hold_gesture_title">Ota pidätusele käyttöön</string>
+  <string name="morphe_hold_gesture_summary">Videon napauttamista ja pidämistä voi seurata vetäminen. Pitämisen aikana nopeus on napautuksen ja pidämisen toistonopeus</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Ei käytössä, kun Pyyhkäise painamalla on päällä. Napauta muuttaaksesi</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Pyyhkäise painamalla -ele on käytössä</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Sekä pitkä painallus -ele että Pyyhkäise painamalla -ele alkavat napautuksella ja pitämisellä, joten vain yksi niistä voi olla käytössä.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Kytke Pyyhkäise painamalla pois päältä</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Pitkä painallus -ele ei ole käytössä, kun Pyyhkäise painamalla on päällä</string>
+  <string name="morphe_hold_gesture_dialog_title">Pitkä painallus -ele on päällä</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Kytke pitkä painallus -ele pois päältä</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Ota haptinen palaute käyttöön</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Värisee, kun nopeus muuttuu ja kun nopeus lukitaan</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Vedä sivusuunnassa muuttaaksesi nopeutta</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Napauttamisen ja pitämisen jälkeen vedä vasemmalle hidastaaksesi toistoa ja oikealle nopeuttaaksesi sitä. Mitä pidemmälle vedät, sitä enemmän nopeus muuttuu, kunnes sormi palaa takaisin</string>
+  <string name="morphe_hold_gesture_speed_step_title">Nopeusaskel</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Vedon herkkyys</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Matala</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normaali</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Korkea</string>
+  <string name="morphe_hold_gesture_speed_min_title">Himin nopeus</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Himin nopeus, jonka vedolla voidaan saavuttaa</string>
+  <string name="morphe_hold_gesture_speed_max_title">Nopein nopeus</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Nopein nopeus, jonka raahaus voi saavuttaa (enintään 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Raahaa alas lukitaksesi nopeuden</string>
+  <string name="morphe_hold_gesture_lock_summary">Napauta ja pidä pohjassa, raahaa sitten alas pitääksesi nopeuden, kun sormi nostetaan. Napauta merkkiä tai napauta ja pidä pohjassa uudelleen avataksesi lukituksen</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Näytä lukitusmerkki aina</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Lukitun nopeuden merkki pysyy näkyvissä, vaikka soittimen ohjaimet on piilotettu</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Avaa lukitus, kun video vaihtuu</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Lukittu nopeus päättyy, kun toinen video alkaa</string>
+  <string name="morphe_hold_gesture_lock_hint">Vedä alas lukitaksesi</string>
+  <string name="morphe_hold_gesture_lock_release">Vapauta lukitaksesi %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Tekstitykset</string>
   <string name="morphe_captions_screen_summary">Hallitse automaattisia tekstityksiä ja tekstitysevästeitä</string>
@@ -1133,6 +1171,17 @@ Päästäksesi Asetuksiin, ota Asetukset-painike käyttöön kohdasta Yleiset �
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Säädä väliä lasisen navigointipalkin ja näytön alareunan tai järjestelmän navigoinnin välillä</string>
   <string name="morphe_navigation_bar_glass_size_title">Lasisen navigointipalkin koko</string>
   <string name="morphe_navigation_bar_glass_size_summary">Säädä lasisen navigointipalkin korkeutta, leveyttä ja painikkeiden välistä etäisyyttä esikatselun avulla. Painikkeet, jotka eivät mahdu näytön leveyteen, piilotetaan</string>
+  <string name="morphe_glass_menus_screen_title">Lasivalikot</string>
+  <string name="morphe_glass_menus_screen_summary">Valikot näkyvät huurretun lasin tavoin sumennetun sisällön päällä</string>
+  <string name="morphe_glass_menus_title">Ota lasivalikot käyttöön</string>
+  <string name="morphe_glass_menus_summary">Näyttää valikot ja alavalikot huurretun lasin tavoin, jolloin niiden takana oleva sisältö sumennetaan</string>
+  <string name="morphe_glass_menus_user_dialog_message">Valikot näkyvät lähes läpinäkymättöminä, kun virransäästötila on päällä tai jos laite ei tue sumennusta</string>
+  <string name="morphe_glass_menus_opacity_title">Lasin läpinäkymättömyys</string>
+  <string name="morphe_glass_menus_opacity_summary">Kuinka paljon valikko peittää sumennetun sisällön (0 on läpinäkyvä, 100 on läpinäkymätön)</string>
+  <string name="morphe_glass_menus_blur_title">Sumennus</string>
+  <string name="morphe_glass_menus_blur_summary">Kuinka paljon valikon takana oleva sisältö on sumennettu</string>
+  <string name="morphe_glass_menus_dim_title">Himmennys</string>
+  <string name="morphe_glass_menus_dim_summary">Kuinka paljon näyttö alavalikon ympäriltä on tummennettu</string>
   <string name="morphe_navigation_bar_glass_size_height">Korkeus</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimileveys</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Painikkeiden väli</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Ohittaa laadunvalintavalikon ja avaa Laatu-valikon lisääsetukset suoraan</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Piilota Premium-laatuvalinnat</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Priorisoi videon laatua</string>
-  <string name="morphe_video_quality_prioritize_summary">Priorisoi korkein saatavilla oleva videon laatu koodaustehostavuuden sijaan</string>
-  <string name="morphe_video_quality_prioritize_dialog">Jos tämä asetus on pois päältä, vanhemmat videot eivät ehkä näytä videon laatuvaihtoehtoja</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Salli \"Android VR\" / \"visionOS\" AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Sallii ohjelmistopohjaisen AV1-dekoodauksen, kun käytetään \"Android VR\" / \"visionOS\" -asiakasohjelmaa</string>

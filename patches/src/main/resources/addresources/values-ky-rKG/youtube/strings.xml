@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Китепкана / Сиз төмөнкү менюнун фильтрин күйгүзүү</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Китепкана / Сиз төмөнкү менюнун фильтри</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Фильтрлөө үчүн Китепкана / Сиз төмөнкү менюсунун аталыштарын жаңы саптар менен бөлүп жазыңыз</string>
+  <string name="morphe_hide_account_menu_badges_title">Белгилерди жашыруу</string>
   <string name="morphe_hide_account_menu_downloads_title">Жүктүүлөрдү жашыруу</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\"Жактырылган видеолорду\" жашыруу</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\"Кийинчерээк көрүү\" бөлүмүн жашыруу</string>
   <string name="morphe_hide_album_cards_title">Альбом карталарын жашыруу</string>
   <string name="morphe_hide_album_cards_summary">Артисттин сүрөттөмөсүнүн астындагы альбом карталарын жашырат</string>
   <string name="morphe_hide_artist_cards_title">Артист карталарын жашыруу</string>
@@ -427,6 +430,8 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_minimal_comments_button_summary">Комментарий баскычында көрсөтүлгөн жылдыргыч карталарды жана алардын барак тандоочусун жашырат</string>
   <string name="morphe_hide_comments_timestamp_button_title">Убакыт белгисинин баскычын жашыруу</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Эң мыкты күйөлдөр\' баскычын жашыруу</string>
+  <string name="morphe_hide_comments_topics_title">\'Темаларды\' жашыруу</string>
+  <string name="morphe_hide_comments_topics_summary">\'Темаларды\' чыпкалоо панелинин опциясын жана видеонун төмөнүндөгү \'Тема\' комментарийлеринин алдын ала көрүнүштөрүн жашырат</string>
   <string name="morphe_hide_comments_translate_button_title">Котормо баскычын жашыруу</string>
   <string name="morphe_hide_comments_zero_state_title">\"Азырынча комментарийлер жок\" билдирүүсүн жашыруу</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Белгиленген издөө шилтемелерин тазалоо</string>
@@ -1029,6 +1034,39 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_swipe_overlay_style_entry_7">Вертикалдык оверлей (минималистика)</string>
   <string name="morphe_swipe_change_video_title">Видеолорду алмаштыруу үчүн сыргытууну күйгүзүү</string>
   <string name="morphe_swipe_change_video_summary">Кийинки же мурунку видеого өтүү үчүн толук экрандуу режимде сыргыңыз</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Басуу кармалоо жест</string>
+  <string name="morphe_hold_gesture_screen_summary">Басып кармагандан кийин сүйрөө аркылуу ойнотуу ылдамдыгын өзгөртүңүз жана бекитиңиз</string>
+  <string name="morphe_hold_gesture_title">Басуу кармалоо жестин иштетүү</string>
+  <string name="morphe_hold_gesture_summary">Видеону басып кармаган соң аны сүйрөсө болот. Кармап турушуңуздагы ылдамдык — бул басып кармалгандагы ойнотуу ылдамдыгы</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">\"Басып сыдыруу\" күйгөн учурда колдонулбайт. Өзгөртүү үчүн басыңыз</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">\"Басып сыдыруу\" күйгөн</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Басып кармоо жестү жана сыдыруу башкарууларынын \"басып сыдыруу\" жестү экөө тең басып кармоодон башталат, ошондуктан алардын бири гана күйүшү мүмкүн.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">\"Басып сыдырууну\" өчүрүү</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">\"Басып сыдыруу\" күйгөн учурда басып кармоо жестү колдонулбайт</string>
+  <string name="morphe_hold_gesture_dialog_title">Басып кармоо жестү күйгөн</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Басып кармоо жестүн өчүрүү</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Гаптикалык кайтарымды күйгүзүү</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Ылдамдык өзгөргөндө жана ылдамдык бекитилгенде вибрирует</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Ылдамдыкты өзгөртүү үчүн капталга сүйрөңүз</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Басып кармагандан кийин, жайраак ойнотуу үчүн солго, ал эми тезdeployedрөөк ойнотуу үчүн оңго сүйрөңүз. Манжа кайтып келгенге чейин, сүйрөгүөн сайын ылдамдык өзгөрө берет</string>
+  <string name="morphe_hold_gesture_speed_step_title">Ылдамдык кадамы</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Сүйрөө сезгичтиги</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Төмөн</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Нормалдуу</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Жогорку</string>
+  <string name="morphe_hold_gesture_speed_min_title">Эң жай ылдамдык</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Сүйрөө аркылуу жетүүгө мүмкүн болгон эң жай ылдамдык</string>
+  <string name="morphe_hold_gesture_speed_max_title">Эң жогорку ылдамдык</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Сүйрөөдө жеткиле турган эң жогорку ылдамдык (8ге чейин)</string>
+  <string name="morphe_hold_gesture_lock_title">Ылдамдыкты бекитүү үчүн төмөн сүйрөңүз</string>
+  <string name="morphe_hold_gesture_lock_summary">Басып кармагандан кийин, манжаны көтөргөндө ылдамдыкты сактоо үчүн төмөн сүйрөңүз. Бекитүүнү алып салуу үчүн белгини басыңыз же кайрадан басып кармаңыз</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Бекитүү белгисин дайыма көрсөтүү</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Плеердин башкаруу элементтери жашыруун болгондо, бекитилген ылдамдыктын белгиси көрүнүп турат</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Видео алмашканда бекитүүнү алып салуу</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Башка видео башталганда, бекитилген ылдамдык токтойт</string>
+  <string name="morphe_hold_gesture_lock_hint">Бекитүү үчүн төмөн тартыңыз</string>
+  <string name="morphe_hold_gesture_lock_release">%s бөгөттөө үчүн коёңуз</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Субтитрлер</string>
   <string name="morphe_captions_screen_summary">Автоматтык субтитрлерди жана субтитр кукилерини башкаруу</string>
@@ -1133,6 +1171,17 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Айнек навигациялык панель менен экрандын төмөн жагынын же системалык навигациянын ортосундагы боштукту жөнгө салыңыз</string>
   <string name="morphe_navigation_bar_glass_size_title">Айнек навигациялык панелинин өлчөмү</string>
   <string name="morphe_navigation_bar_glass_size_summary">Айнек навигациялык панелинин бийиктигин, туурасын жана баскычтардын аралыгын алдын ала көрүү менен жөнгө салыңыз. Экрандын туурасына батпаган баскычтар жашырылат</string>
+  <string name="morphe_glass_menus_screen_title">Айнек менюлар</string>
+  <string name="morphe_glass_menus_screen_summary">Менюлар ачык айнек сыяктуу, алардын артындагы мазмун бүдөмүк көрсөтүлөт</string>
+  <string name="morphe_glass_menus_title">Айнек менюларды күйгүзүү</string>
+  <string name="morphe_glass_menus_summary">Менюларды жана төмөнкү барактарды ачык айнек сыяктуу көрсөтөт, алардын артындагы мазмун бүдөмүк болот</string>
+  <string name="morphe_glass_menus_user_dialog_message">Батареяны үнөмдөө режими күйгөндө же түзүлүш бүдөмүк кылууну колдобосо, менюлар дээрлик тунук эмес болуп көрсөтүлөт</string>
+  <string name="morphe_glass_menus_opacity_title">Айнектин тунуктугу</string>
+  <string name="morphe_glass_menus_opacity_summary">Меню бүлөңкөлгөн мазмунду канчалык жабат (0 - тунук, 100 - коюу)</string>
+  <string name="morphe_glass_menus_blur_title">Булдуруу</string>
+  <string name="morphe_glass_menus_blur_summary">Менюнун артындагы мазмун канчалык бүлөңкөлгөн</string>
+  <string name="morphe_glass_menus_dim_title">Көлөңкөлөтүү</string>
+  <string name="morphe_glass_menus_dim_summary">Төмөнкү барактын айланасындагы экран канчалык караңгылат</string>
   <string name="morphe_navigation_bar_glass_size_height">Бийиктиги</string>
   <string name="morphe_navigation_bar_glass_size_width">Максималдуу туурасы</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Баскычтардын аралыгы</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Сапатты тандоо менюсүн аттап, түз эле Жогорку сапат менюсун ачат</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium сапаттын опцияларын жашыруу</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Видео сапатына артыкчылык берүү</string>
-  <string name="morphe_video_quality_prioritize_summary">Кодектин натыйжалуулугунан көрө жеткиликтүү эң жогорку видео сапатына артыкчылык берет</string>
-  <string name="morphe_video_quality_prioritize_dialog">Эгер бул жөндөө өчүрүлгөн болсо, анда эски видеолордо видео сапатынын параметрлери көрсөтүлбөй калышы мүмкүн</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1га уруксат берүү</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' клиентин колдонууда программалык AV1 декоддоосуна уруксат берет</string>

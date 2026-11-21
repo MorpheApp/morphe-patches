@@ -141,7 +141,7 @@ Kliknite V redu za odpiranje Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Poskusite omogočiti: Ponarejanje video pretočnih poti &gt; Prijava v Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Privzeti odjemalec</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava v \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava v \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' zahteva ločeno prijavo. Dotaknite se tukaj za nadaljevanje</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutno ste prijavljeni v \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Kliknite V redu za odpiranje Android System WebView."</string>
 • Vaše nastavitve Morphe ne bodo uvažale/izvažale avtentikacije Android VR.
 • Če te aplikacijo ne boste uporabljali 6 mesecev, bo Google izbrisal to avtentikacijo.
 • Ponovno se boste morali prijaviti, če spremenite geslo Google ali odstranite napravo iz nastavitev Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prijava preko mobilne spletne strani</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prijava v \"Mobilni splet\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Neobvezno: prijavite se na spletno stran YouTube, da predvajate videoposnetke s svojim računom. Dotaknite se tukaj za nadaljevanje</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Trenutno ste prijavljeni v \"Mobilni splet\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Za prijavo pritisnite spodaj Nadaljujte"</string>
   <string name="morphe_seek_notification_media_length_invalid">Dolžina iskanja mora biti med 1 in %s sekundami. Uporablja se privzeto vrednost</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Onemogoči protokol QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Daj prednost kvaliteti videa</string>
+  <string name="morphe_prioritize_video_quality_summary">Daj prednost najboljši možni kvaliteti videa preko učinkovitosti kodeka</string>
+  <string name="morphe_prioritize_video_quality_dialog">Če je ta nastavitev izklopljena, starejši videi lahko ne kažejo nastavitev za kvaliteto videa</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Onemogoči zvok DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

@@ -141,7 +141,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">נסה להפעיל: זיוף זרמי וידאו > כניסה ל-Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">לקוח ברירת מחדל</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">כניסה ל-\"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">כניסה ל-Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" דורש כניסה נפרדת. הקש כאן כדי להמשיך</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">כרגע מחובר ל-\"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Second \"item\" text"</string>
 • הגדרות Morphe לא ייובאו או ייוצאו עם אימות Android VR
 • אם לא תשתמש באפליקציה זו במשך 6 חודשים, Google תסיר את האימות
 • יהיה עליך להתחבר שוב אם תשנה את סיסמת Google שלך או תבטל את רישום המכשיר בהגדרות Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">התחברות דרך דפדפן בנייד</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">כניסה ל-Mobile Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">אופציונלי: התחבר לאתר YouTube כדי להפעיל סרטונים עם החשבון שלך. הקש כאן כדי להמשיך</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">כרגע מחובר ל- \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">אורך החיפוש חייב להיות בין 1 ל-%s שניות. ייעשה שימוש בברירת המחדל</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">השבת פרוטוקול QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">תעדוף איכות וידאו</string>
+  <string name="morphe_prioritize_video_quality_summary">מתעדף את איכות הווידאו הגבוהה ביותר הזמינה על פני יעילות המקודד</string>
+  <string name="morphe_prioritize_video_quality_dialog">אם הגדרה זו כבויה, ייתכן שסרטונים ישנים יותר לא יציגו אפשרויות לאיכות הווידאו</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">השבת אודיו DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

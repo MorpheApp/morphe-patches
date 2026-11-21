@@ -141,7 +141,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Покушајте да укључите: Лажирани видео стримови &gt; Пријава на Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Подразумевани клијент</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Пријављивање на \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Пријављивање за \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">За \'Android VR\' је потребно посебно пријављивање. Додирните овде да наставите</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Тренутно сте пријављени на \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Second \"item\" text"</string>
 • Ваша Morphe подешавања неће увозити/извозити ауторизацију за Android VR
 • Ако се ова апликација не користи 6 месеци, Google ће уклонити ту ауторизацију
 • Мораћете поново да се пријавите ако промените Google лозинку или уклоните овај уређај из Google подешавања"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Пријављивање путем мобилне веб верзије</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Пријављивање за \"Mobile Web\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Опционо: пријавите се на YouTube веб сајт да бисте пустили видео снимке са својим налогом. Додирните овде да наставите</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Тренутно сте пријављени на „Mobile Web”</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">Дужина претраге мора бити између 1 и %s секунди. Користи се подразумевана</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Онемогући QUIC протокол</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Приоритет квалитета видеа</string>
+  <string name="morphe_prioritize_video_quality_summary">Даје приоритет највишем доступном квалитету видеа у односу на ефикасност кодека</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ако је ова подешавање искључено, старији видеи можда неће приказивати опције квалитета видеа</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Онемогућити аудио ДРЦ</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

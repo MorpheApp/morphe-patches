@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Səssiz olduqda fasilə ver</string>
   <string name="morphe_music_pause_when_muted_summary">Sistem səsi səssizləşdirildikdə oynatmanı dayandırır və səs yüksəldildikdə davam etdirir</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Yayımla düyməsi həmçinin Wi-Fi şəbəkənizdəki Sonos və digər UPnP dinamiklərə yayımlaya bilər</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Cihaza qoşul</string>
+  <string name="morphe_music_sonos_cast_searching">Wi-Fi şəbəkənizdəki dinamikləri axtarır...</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Wi-Fi şəbəkənizdəki dinamiki seç</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s \'ə yayımlanır</string>
+  <string name="morphe_music_sonos_cast_connected">Qoşuldu</string>
+  <string name="morphe_music_sonos_cast_disconnect">Bağlantını kəs</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi-dəki Dinamiklər</string>
+  <string name="morphe_music_sonos_cast_active">İşlək</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest və Google TV cihazları</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s ilə əlaqə qurmaq olmadı</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Oynatma sürəti</string>
   <string name="morphe_music_playback_speed_summary">Bütün treklər üçün istifadə olunan sürət. 100% olduqda tətbiqin sürəti, məsələn, podkastın oynatma sürəti istifadə olunur</string>
@@ -586,6 +600,7 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <string name="morphe_music_soundproof_about_summary">"​Sənətçi məlumatları gündə bir dəfə yüklənilmiş SoundProof-Dumps-dan (github.com/NuclearBlox/SoundProof-Dumps) götürülür. Ötürmə səsləndirdiyiniz haqqında heçnə göndərmir. SoundProof vərəqini açdıqda yenilənmiş səsləri görmək və səs vermək üçün cari sənətçinin adı SoundProof serverinə göndərilir. Server səsverənləri IP ünvanına görə fərqləndirir, buna görə də səsverməniz başqa şəbəkədə fərqli görünə bilər.
 
 Məlumat bazası ODC Open Database License (ODbL) lisenziyası altındadır. xoundbyte tərəfindən hazırlanmış Soul Over AI daxilolmaları CC BY 4.0 lisenziyasına tabedir. SoundProof və ya Soul Over AI ilə heç bir əlaqəsi yoxdur və ya onlar tərəfindən təsdiqlənmir."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Bu cihaz faylı üçün mahnı sözləri mövcud deyil.</string>
   <string name="morphe_music_lyrics_enabled_title">Üçüncü tərəf mahnı sözlərin istifadə et</string>

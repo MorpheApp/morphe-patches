@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">ライブラリ / マイページの最下部メニューのフィルタを有効化</string>
   <string name="morphe_hide_account_menu_filter_strings_title">ライブラリ / マイページの最下部メニューのフィルタ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">非表示にする、ライブラリ / マイページの最下部メニューのメニュー名を改行区切りで入力してください</string>
+  <string name="morphe_hide_account_menu_badges_title">バッジを非表示</string>
   <string name="morphe_hide_account_menu_downloads_title">ダウンロードを非表示にする</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">「高く評価した動画」を非表示</string>
+  <string name="morphe_hide_account_menu_watch_later_title">「後で見る」を非表示</string>
   <string name="morphe_hide_album_cards_title">アルバムカードを非表示</string>
   <string name="morphe_hide_album_cards_summary">アーティストの概要欄の下のアルバムカードを非表示にします</string>
   <string name="morphe_hide_artist_cards_title">アーティスト カードを非表示</string>
@@ -428,6 +431,8 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_minimal_comments_button_summary">コメント セクションの横スワイプ欄を切り替える機能を無効にし、コンパクトなスタイルで表示します</string>
   <string name="morphe_hide_comments_timestamp_button_title">タイムスタンプ ボタンを非表示</string>
   <string name="morphe_hide_comments_top_fans_button_title">「トップファン」ボタンを非表示</string>
+  <string name="morphe_hide_comments_topics_title">\"トピック\"を非表示にする</string>
+  <string name="morphe_hide_comments_topics_summary">\"トピック\"フィルターバーのオプションと、動画下の\"トピック\"コメントプレビューを非表示にします</string>
   <string name="morphe_hide_comments_translate_button_title">翻訳 / 原文ボタンを非表示</string>
   <string name="morphe_hide_comments_zero_state_title">「まだコメントがありません」メッセージを非表示にする</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">テキスト内の検索リンクを除去</string>
@@ -952,7 +957,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
 この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV Simply」または「visionOS」に変更してください"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
-  <string name="morphe_slide_to_seek_summary">ビデオを長押しすると、2倍速で再生する代わりにスライドしてシークできます</string>
+  <string name="morphe_slide_to_seek_summary">動画を長押しすると、2 倍速で再生する代わりに、スライドして再生位置を移動できます</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">タップによるシークを有効化</string>
   <string name="morphe_tap_to_seek_summary">シークバーをタップすると、ドラッグせずにその位置にジャンプします</string>
@@ -1030,6 +1035,39 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_overlay_style_entry_7">縦型（シンプル）</string>
   <string name="morphe_swipe_change_video_title">スワイプによる動画の切り替えを有効化</string>
   <string name="morphe_swipe_change_video_summary">全画面表示モードで左 / 右にスワイプすると前 / 次の動画に移動します</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">ホールドジェスチャー</string>
+  <string name="morphe_hold_gesture_screen_summary">タップして長押しした後、ドラッグして再生速度を変更し、固定します</string>
+  <string name="morphe_hold_gesture_title">ホールドジェスチャーを有効化</string>
+  <string name="morphe_hold_gesture_summary">ビデオをタップして長押しした後、ドラッグすることができます。長押し中の速度は、タップ＆ホールド再生速度になります</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">長押しスワイプがオンの間は使用できません。タップして変更してください</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">長押しスワイプは有効です</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">ホールドジェスチャーとスワイプコントロールの長押しスワイプジェスチャーは、どちらもタップして保持することから始まるため、どちらか一方のみをオンにできます。</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">長押しスワイプをオフにする</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">長押しスワイプがオンの間はホールドジェスチャーは使用できません</string>
+  <string name="morphe_hold_gesture_dialog_title">ホールドジェスチャーがオンです</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">ホールドジェスチャーをオフにする</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">触覚フィードバックを有効化</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">速度が変更されたときと、速度が固定されたときに振動します</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">横にドラッグして速度を変更します</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">タップして長押しした後、左にドラッグすると低速で、右にドラッグすると高速で再生されます。指を戻すまで、外側に行くほど速度が変わり続けます</string>
+  <string name="morphe_hold_gesture_speed_step_title">再生速度の変化量 (1 段階)</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">ドラッグ感度</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">低</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">標準</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">高</string>
+  <string name="morphe_hold_gesture_speed_min_title">最低速度</string>
+  <string name="morphe_hold_gesture_speed_min_summary">ドラッグで到達できる最低速度</string>
+  <string name="morphe_hold_gesture_speed_max_title">最高速度</string>
+  <string name="morphe_hold_gesture_speed_max_summary">ドラッグで到達できる最高速度（最大8倍）</string>
+  <string name="morphe_hold_gesture_lock_title">下にドラッグして速度を固定</string>
+  <string name="morphe_hold_gesture_lock_summary">タップして長押しした後、下にドラッグすると、指を離した後も速度が維持されます。バッジをタップするか、もう一度長押しすると固定が解除されます</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">常に固定バッジを表示</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">プレイヤーコントロールが非表示の間も、速度固定のバッジが表示され続けます</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">動画が変わったときに固定を解除</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">別の動画が開始されると、速度の固定が終了します</string>
+  <string name="morphe_hold_gesture_lock_hint">下に引いて固定</string>
+  <string name="morphe_hold_gesture_lock_release">%sを離してロック</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">字幕</string>
   <string name="morphe_captions_screen_summary">自動字幕表示の設定と字幕 Cookie を管理します</string>
@@ -1134,6 +1172,17 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ガラス風ナビゲーション バーと、画面下部またはシステム ナビゲーションとの間隔を調整します</string>
   <string name="morphe_navigation_bar_glass_size_title">ガラス風ナビゲーション バーのサイズ</string>
   <string name="morphe_navigation_bar_glass_size_summary">プレビューを見ながら、ガラス風ナビゲーション バーの高さ、幅、ボタンの間隔を調整します。画面幅に収まらないボタンは非表示になります</string>
+  <string name="morphe_glass_menus_screen_title">ガラスメニュー</string>
+  <string name="morphe_glass_menus_screen_summary">背後のコンテンツをぼかし、メニューをすりガラスのように表示します</string>
+  <string name="morphe_glass_menus_title">ガラスメニューを有効にする</string>
+  <string name="morphe_glass_menus_summary">メニューとボトムシートをすりガラスのように表示し、背後のコンテンツをぼかします</string>
+  <string name="morphe_glass_menus_user_dialog_message">バッテリーセーバーがオンの場合、またはデバイスがぼかしに対応していない場合は、メニューはほぼ不透明に表示されます</string>
+  <string name="morphe_glass_menus_opacity_title">ガラスの透明度</string>
+  <string name="morphe_glass_menus_opacity_summary">メニューがぼかしコンテンツをどの程度覆うか (0は透明、100は不透明)</string>
+  <string name="morphe_glass_menus_blur_title">ぼかし</string>
+  <string name="morphe_glass_menus_blur_summary">メニュー背後のコンテンツをどの程度ぼかすか</string>
+  <string name="morphe_glass_menus_dim_title">調光</string>
+  <string name="morphe_glass_menus_dim_summary">ボトムシート周囲の画面をどの程度暗くするか</string>
   <string name="morphe_navigation_bar_glass_size_height">高さ</string>
   <string name="morphe_navigation_bar_glass_size_width">最大幅</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ボタンの間隔</string>
@@ -1425,7 +1474,7 @@ Automotive レイアウト
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">フラッシュ</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe（フラッシュ 1）</string>
-  <string name="morphe_splash_screen_style_entry_8">Morphe （フラッシュ 2）</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe（フラッシュ 2）</string>
   <string name="morphe_splash_screen_style_glow_not_supported">このデバイスはフラッシュ系の起動アニメーションには対応していません</string>
   <string name="morphe_splash_screen_duration_title">起動アニメーションの長さ</string>
   <string name="morphe_splash_screen_duration_summary">グローアニメーションが再生される時間です。アニメーションをタップするとスキップできます</string>
@@ -1623,7 +1672,7 @@ Automotive レイアウト
   <string name="morphe_playback_speed_button_cycle_title">再生速度ボタンをタップして速度を切り替える</string>
   <string name="morphe_playback_speed_button_cycle_summary">タップするとリストの次の速度に切り替わります。長押しすると速度メニューが開きます</string>
   <string name="morphe_playback_speed_button_cycle_speeds_title">再生速度ボタンの速度設定</string>
-  <string name="morphe_playback_speed_button_cycle_speeds_summary">タップすると、1行につき1つの速度で切り替わります。最後の速度に達した後、タップすると最初の速度に戻ります</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">タップ 1 回ごとに速度が切り替わり、1 行につき 1 つの速度が表示されます。最後の速度に到達した状態でタップすると最初の速度に戻ります</string>
   <string name="morphe_playback_speed_button_cycle_speeds_invalid">速度切り替えリストが無効です。デフォルトにリセットします</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">画質ボタンを表示</string>
@@ -1698,10 +1747,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">画質メニューをスキップして画質の「詳細設定」メニューを直接開きます</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium 画質を非表示</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">画質を優先</string>
-  <string name="morphe_video_quality_prioritize_summary">コーデックの圧縮効率よりも利用可能な最高画質を優先します</string>
-  <string name="morphe_video_quality_prioritize_dialog">この設定をオフにすると、古い動画で画質を手動で選択できなくなる場合があります</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\"Android VR\" / \"visionOS\" AV1 を許可</string>
   <string name="morphe_spoof_video_streams_av1_summary">\"Android VR\" / \"visionOS\" クライアントを使用しているときに AV1 のソフトウェア デコードを許可します</string>

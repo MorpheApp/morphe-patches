@@ -141,7 +141,7 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">以下を試す: [動画ストリームを偽装] &gt; [Android VR (ログイン)] をオン</string>
   <string name="morphe_spoof_video_streams_client_type_title">デフォルトのクライアント</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android\" VR ログイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android VR\" ログイン</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" では別途ログインが必要です。こちらをタップして続行してください</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">現在 \"Android VR\" にログインしています</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
 • Morphe の設定のインポート / エクスポートには Android VR 認証は含まれません
 • このアプリが 6 ヶ月間使用されなかった場合、Google はこの認証を削除します
 • Google アカウントのパスワードを変更した場合、または Google アカウントの設定からこのデバイスの登録を解除した場合は、再度ログインする必要があります"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">モバイルウェブでのログイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\"モバイル ウェブ\" ログイン</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">オプション：YouTube ウェブサイトにログインすると、アカウントを使用して動画を再生できます。続行するにはここをタップしてください</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">現在 \"Mobile Web\" にログインしています</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_seek_notification_media_length_invalid">シーク時間は1〜%s秒の間で指定してください。デフォルト値を使用します</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC プロトコルを無効化</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">画質を優先</string>
+  <string name="morphe_prioritize_video_quality_summary">コーデックの圧縮効率よりも利用可能な最高画質を優先します</string>
+  <string name="morphe_prioritize_video_quality_dialog">この設定をオフにすると、古い動画で画質を手動で選択できなくなる場合があります</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">オーディオ DRC を無効化</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

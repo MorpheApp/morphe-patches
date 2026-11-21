@@ -141,7 +141,7 @@ Toque em OK para abrir o Android System WebView. "</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Tente ativar: Simular streams de vídeo &gt; Fazer login no Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliente padrão</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logar-se no Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Login do \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' requer um login separado. Toque aqui para continuar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Atualmente conectado ao Android VR.</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Para fazer login, pressione continuar abaixo"</string>
 • Suas configurações do Morphe não vão importar/exportar a autenticação do Android VR
 • Se este app não for usado por 6 meses, o Google removerá esta autenticação
 • Você precisará fazer o login novamente se alterar sua senha do Google ou desregistrar este dispositivo das configurações do Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Login via Web Mobile</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Login da \"Web Mobile\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcional: faça o login através do site do YouTube para reproduzir vídeos com sua conta. Toque aqui para continuar </string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Atualmente logado via Web Mobile\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Para logar-se, toque em continuar abaixo"</string>
   <string name="morphe_seek_notification_media_length_invalid">O comprimento da procura deve estar entre 1 e %s segundos. Usando o padrão</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desativar protocolo QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorizar qualidade de vídeo</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriza a maior qualidade de vídeo disponível sobre eficiência do codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Se esta configuração estiver desativada, vídeos antigos podem não mostrar opções de qualidade de vídeo</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Desativar áudio DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

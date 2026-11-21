@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">הפעל מסנן תפריט תחתון: ספרייה / שלך</string>
   <string name="morphe_hide_account_menu_filter_strings_title">מסנן תפריט תחתון: ספרייה / שלך</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">הזן את שמות התפריטים התחתונים של הספרייה שעל פיהם תסנן, מופרדים בשורות חדשות</string>
+  <string name="morphe_hide_account_menu_badges_title">הסתר תגים</string>
   <string name="morphe_hide_account_menu_downloads_title">הסתר הורדות</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">הסתר \"סרטונים שאהבתי\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">הסתר \"צפייה מאוחר יותר\"</string>
   <string name="morphe_hide_album_cards_title">הסתר כרטיסי אלבום</string>
   <string name="morphe_hide_album_cards_summary">מסתיר את כרטיסי האלבומים מתחת לתיאור האמן</string>
   <string name="morphe_hide_artist_cards_title">הסתר כרטיסי אמן</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">מסתיר את הכרטיסים המחליקים ואת בורר העמודים שלהם, המוצגים על כפתור התגובות</string>
   <string name="morphe_hide_comments_timestamp_button_title">הסתר לחצן חותמת זמן</string>
   <string name="morphe_hide_comments_top_fans_button_title">הסתר כפתור \'המעריצים המובילים\'</string>
+  <string name="morphe_hide_comments_topics_title">הסתר \'נושאים\'</string>
+  <string name="morphe_hide_comments_topics_summary">מסתיר את אפשרות סרגל הסינון \'נושאים\' ואת תצוגות המקדימה של תגובות \'נושא\' מתחת לסרטון</string>
   <string name="morphe_hide_comments_translate_button_title">הסתר את כפתור התרגום</string>
   <string name="morphe_hide_comments_zero_state_title">הסתר את ההודעה \'אין תגובות עדיין\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">ניקוי קישורים בחיפוש מודגשים</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">שכבת-על אנכית (מזערית)</string>
   <string name="morphe_swipe_change_video_title">הפעל החלקה כדי לשנות סרטונים</string>
   <string name="morphe_swipe_change_video_summary">החלק במצב מסך מלא כדי לדלג לסרטון הבא או הקודם</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">מחוות החזקה</string>
+  <string name="morphe_hold_gesture_screen_summary">שנה ונעול את מהירות ההשמעה על ידי גרירה לאחר לחיצה והחזקה</string>
+  <string name="morphe_hold_gesture_title">הפעל מחוות החזקה</string>
+  <string name="morphe_hold_gesture_summary">לחיצה והחזקה על הסרטון יכולים להוביל לגרירה. המהירות בזמן ההחזקה היא מהירות ההשמעה של לחיצה והחזקה</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">אינו בשימוש כאשר \"לחץ כדי להחליק\" מופעל. הקשה לשינוי</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">לחץ כדי להחליק מופעל</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">מחוות ההחזקה ומחוות \"לחץ כדי להחליק\" של בקר ההחלקה מתחילות שתיהן בהקשה והחזקה, לכן רק אחת מהן יכולה להיות מופעלת.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">כיבוי של לחץ כדי להחליק</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">מחוות החזקה אינה בשימוש כאשר \"לחץ כדי להחליק\" מופעל</string>
+  <string name="morphe_hold_gesture_dialog_title">מחוות החזקה מופעלת</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">כיבוי של מחוות החזקה</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">הפעל משוב ברטט</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">רוטט כאשר המהירות משתנה וכאשר המהירות נעולה</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">גרור לצדדים כדי לשנות את המהירות</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">לאחר לחיצה ארוכה, גרור שמאלה להפעלה איטית יותר וימינה להפעלה מהירה יותר. ככל שתגרור רחוק יותר, המהירות תמשיך להשתנות עד שהאצבע תחזור</string>
+  <string name="morphe_hold_gesture_speed_step_title">מדרגת מהירות</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">רגישות גרירה</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">נמוכה</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">רגילה</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">גבוהה</string>
+  <string name="morphe_hold_gesture_speed_min_title">המהירות האיטית ביותר</string>
+  <string name="morphe_hold_gesture_speed_min_summary">המהירות האיטית ביותר שניתן להגיע אליה באמצעות גרירה</string>
+  <string name="morphe_hold_gesture_speed_max_title">המהירות המקסימלית</string>
+  <string name="morphe_hold_gesture_speed_max_summary">המהירות המקסימלית שגרירה יכולה להגיע אליה (עד 8)</string>
+  <string name="morphe_hold_gesture_lock_title">גרור למטה כדי לנעול את המהירות</string>
+  <string name="morphe_hold_gesture_lock_summary">לאחר לחיצה והחזקה, גרור למטה כדי לשמור על המהירות כאשר האצבע מורמת. הקש על התג או לחץ והחזק שוב כדי לבטל את הנעילה</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">הצג תמיד את תג הנעילה</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">התג של מהירות נעולה נשאר גלוי בזמן שבקרים של הנגן מוסתרים</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">בטל נעילה כאשר הסרטון משתנה</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">מהירות נעולה מסתיימת כאשר סרטון אחר מתחיל</string>
+  <string name="morphe_hold_gesture_lock_hint">משוך למטה כדי לנעול</string>
+  <string name="morphe_hold_gesture_lock_release">שחרר כדי לנעול את %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">כתוביות</string>
   <string name="morphe_captions_screen_summary">ניהול כתוביות אוטומטיות ועוגיות כתוביות</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">התאם את המרווח בין סרגל הניווט השקוף לבין תחתית המסך או ניווט המערכת</string>
   <string name="morphe_navigation_bar_glass_size_title">גודל סרגל ניווט מזכוכית</string>
   <string name="morphe_navigation_bar_glass_size_summary">התאמת הגובה, הרוחב ומרווח הכפתורים של סרגל הניווט מזכוכית, עם תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים</string>
+  <string name="morphe_glass_menus_screen_title">תפריטי זכוכית</string>
+  <string name="morphe_glass_menus_screen_summary">תפריטים כזכוכית חלבית מעל התוכן המטושטש שמאחוריהם</string>
+  <string name="morphe_glass_menus_title">הפעלת תפריטי זכוכית</string>
+  <string name="morphe_glass_menus_summary">מציג תפריטים וגיליונות תחתונים כזכוכית חלבית, כאשר התוכן שמאחוריהם מטושטש</string>
+  <string name="morphe_glass_menus_user_dialog_message">תפריטים מוצגים כמעט אטומים כאשר חסכון בסוללה מופעל, או אם המכשיר אינו תומך בטשטוש</string>
+  <string name="morphe_glass_menus_opacity_title">אטימות זכוכית</string>
+  <string name="morphe_glass_menus_opacity_summary">עד כמה התפריט מכסה את התוכן המטושטש (0 הוא שקוף, 100 הוא אטום)</string>
+  <string name="morphe_glass_menus_blur_title">טשטוש</string>
+  <string name="morphe_glass_menus_blur_summary">עד כמה התוכן שמאחורי התפריט מטושטש</string>
+  <string name="morphe_glass_menus_dim_title">החשכה</string>
+  <string name="morphe_glass_menus_dim_summary">עד כמה המסך מסביב לגיליון תחתון מוכהשכה</string>
   <string name="morphe_navigation_bar_glass_size_height">גובה</string>
   <string name="morphe_navigation_bar_glass_size_width">רוחב מקסימלי</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">מרווח כפתורים</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">מדלג על תפריט בחירת האיכות ופותח ישירות את תפריט האיכות המתקדם</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">הסתר אפשרויות איכות וידאו פרימיום</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">תעדוף איכות וידאו</string>
-  <string name="morphe_video_quality_prioritize_summary">מתעדף את איכות הווידאו הגבוהה ביותר הזמינה על פני יעילות הקידוד</string>
-  <string name="morphe_video_quality_prioritize_dialog">אם ההגדרה הזו כבויה, ייתכן שסרטונים ישנים לא יציגו אפשרויות איכות וידאו</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">אפשר AV1 עבור \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_summary">מאפשר פענוח AV1 תוכנתי בעת שימוש בלקוח \'Android VR\' / \'visionOS\'</string>

@@ -168,7 +168,7 @@ Tryck på Fortsätt nedan för att logga in"</string>
 • Dina Morphe-inställningar importerar och exporterar inte Android VR-autentiseringen
 • Om den här appen inte används på 6 månader tar Google bort den här autentiseringen
 • Du måste logga in igen om du ändrar ditt Google-lösenord eller avregistrerar den här enheten i dina Google-inställningar"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logga in via mobilwebb</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Inloggning i \"Mobilwebb\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valfritt: logga in på YouTubes webbplats för att spela upp videor med ditt konto. Tryck här för att fortsätta</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">För närvarande inloggad i \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Tryck på fortsätt nedan för att logga in"</string>
   <string name="morphe_seek_notification_media_length_invalid">Söklängden måste vara mellan 1 och %s sekunder. Använder standardvärde</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Inaktivera QUIC-protokoll</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritera videokvalitet</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriterar högsta möjliga videokvalitet framför kodekseffektivitet</string>
+  <string name="morphe_prioritize_video_quality_dialog">Om den här inställningen är avstängd kan äldre videor sakna alternativ för videokvalitet</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Inaktivera dynamisk intervallkomprimering för ljud</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

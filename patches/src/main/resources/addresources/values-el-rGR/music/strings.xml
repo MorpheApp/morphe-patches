@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Παύση όταν είναι σε σίγαση</string>
   <string name="morphe_music_pause_when_muted_summary">Παύει την αναπαραγωγή όταν η ένταση του συστήματος είναι σε σίγαση και την συνεχίζει όταν η ένταση αυξηθεί</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Το κουμπί Cast μπορεί επίσης να μεταδίδει σε συσκευές Sonos και άλλα ηχεία UPnP στο δίκτυο Wi-Fi σας</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Σύνδεση σε συσκευή</string>
+  <string name="morphe_music_sonos_cast_searching">Αναζήτηση ηχείων στο δίκτυο Wi-Fi σας…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Επιλέξτε ένα ηχείο στο δίκτυο Wi-Fi σας</string>
+  <string name="morphe_music_sonos_cast_casting_to">Μεταφορά στο %s</string>
+  <string name="morphe_music_sonos_cast_connected">Συνδεδεμένο</string>
+  <string name="morphe_music_sonos_cast_disconnect">Αποσύνδεση</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Ηχεία σε Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Ενεργό</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Συσκευές Chromecast, Nest και Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Δεν ήταν δυνατή η σύνδεση στο %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Ταχύτητα αναπαραγωγής</string>
   <string name="morphe_music_playback_speed_summary">Ταχύτητα που χρησιμοποιείται για όλα τα κομμάτια. Στο 100% χρησιμοποιείται η ταχύτητα της εφαρμογής, όπως η ταχύτητα αναπαραγωγής podcast</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"Τα δεδομένα του καλλιτέχνη προέρχονται από το SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), τα οποία λαμβάνονται μία φορά την ημέρα. Η παράλειψη δεν στέλνει τίποτα σχετικά με αυτό που αναπαράγετε. Το άνοιγμα του φύλλου SoundProof στέλνει το τρέχον όνομα του καλλιτέχνη στον διακομιστή του SoundProof για την εμφάνιση πρόσφατων ψήφων και για την ψηφοφορία. Ο διακομιστής ξεχωρίζει τους ψηφοφόρους μέσω της διεύθυνσης IP, οπότε η ψήφος σας μπορεί να εμφανίζεται διαφορετικά σε άλλο δίκτυο.
 
 Η βάση δεδομένων είναι αδειοδοτημένη υπό την Άδεια Ανοικτής Βάσης Δεδομένων ODC (ODbL). Οι εγγραφές από το Soul Over AI του xoundbyte είναι αδειοδοτημένες υπό την CC BY 4.0. Δεν συνδέεται με το SoundProof ή το Soul Over AI ούτε υποστηρίζεται από αυτά."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Κινούμενο εξώφυλλο Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Εμφανίζει το κινούμενο εξώφυλλο άλμπουμ του Apple Music στον παίκτη, εάν το άλμπουμ διαθέτει ένα τέτοιο. Ο τίτλος, ο καλλιτέχνης και το άλμπουμ κάθε τραγουδιού αποστέλλονται στο Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Οι στίχοι δεν είναι διαθέσιμοι για το αρχείο αυτής της συσκευής.</string>
   <string name="morphe_music_lyrics_enabled_title">Χρήση στίχων από τρίτους</string>

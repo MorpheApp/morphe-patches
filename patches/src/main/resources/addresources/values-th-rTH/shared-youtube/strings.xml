@@ -141,7 +141,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ลองเปิดใช้งาน: ปลอมแปลงสตรีมวิดีโอ &gt; เข้าสู่ระบบ Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">ไคลเอ็นต์เริ่มต้น</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">การลงชื่อเข้าใช้ VR ของ \'Android\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">การลงชื่อเข้าใช้ \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ต้องมีการลงชื่อเข้าใช้แยกต่างหาก แตะที่นี่เพื่อดำเนินการต่อ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">ลงชื่อเข้าใช้ \'Android VR\' อยู่ในขณะนี้</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Second \"item\" text"</string>
 • การตั้งค่า Morphe ของคุณจะไม่นำเข้า/ส่งออกการตรวจสอบสิทธิ์ Android VR
 • หากไม่มีการใช้แอปนี้เป็นเวลา 6 เดือน Google จะลบการตรวจสอบสิทธิ์นี้
 • คุณจะต้องลงชื่อเข้าใช้อีกครั้งหากคุณเปลี่ยนรหัสผ่าน Google หรือยกเลิกการลงทะเบียนอุปกรณ์นี้จากการตั้งค่า Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ลงชื่อเข้าใช้ผ่านเว็บบนมือถือ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">การลงชื่อเข้าใช้ \'เว็บบนมือถือ\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ไม่บังคับ: ลงชื่อเข้าใช้เว็บไซต์ YouTube เพื่อเล่นวิดีโอด้วยบัญชีของคุณ แตะที่นี่เพื่อดำเนินการต่อ</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ขณะนี้ลงชื่อเข้าใช้ \'Mobile Web\' อยู่</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">ความยาวในการเลื่อนต้องอยู่ระหว่าง 1 ถึง %s วินาที ใช้ค่าเริ่มต้น</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">ปิดใช้งานโพรโทคอล QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">ให้ลำดับความสำคัญกับคุณภาพวิดีโอ</string>
+  <string name="morphe_prioritize_video_quality_summary">ให้ลำดับความสำคัญกับคุณภาพวิดีโอสูงสุดที่มีอยู่มากกว่าประสิทธิภาพของโคเดก</string>
+  <string name="morphe_prioritize_video_quality_dialog">หากปิดการตั้งค่านี้ วิดีโอรุ่นเก่าอาจไม่แสดงตัวเลือกคุณภาพวิดีโอ</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">ปิดใช้งานเสียง DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

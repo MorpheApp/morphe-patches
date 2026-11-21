@@ -141,7 +141,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Փորձեք միացնել. Տեսանյութերի հոսքերի կեղծում &gt; Մուտք Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Լռելյայն հաճախորդ</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR մուտք</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Մուտք \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-ը պահանջում է առանձին մուտք: Շարունակելու համար հպեք այստեղ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Այս պահին մուտք եք կատարել \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Second \"item\" text"</string>
 • Ձեր Morphe կարգավորումները չեն ներմուծի/արտահանի Android VR հավաստիացումը
 • Եթե այս հավելվածը չօգտագործվի 6 ամիս, Google-ը կհեռացնի այս հավաստիացումը
 • Ձեզ պետք կլինի նորից մուտք գործել, եթե փոխեք Google-ի ձեր գաղտնաբառը կամ հեռացնեք այս սարքը Google-ի ձեր կարգավորումներից"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Մուտք 모բիլ վեբ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Մուտք \'Mobile Web\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Կամընտիր․ մուտք գործեք YouTube կայք, որպեսզի տեսանյութերը դիտեք ձեր հաշվով: Շարունակելու համար հպեք այստեղ</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Այս պահին մուտք եք գործել \"Mobile Web\"-ի</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">Փնտրման տևողությունը պետք է լինի 1-ից %s վայրկյանի միջակայքում: Օգտագործվում է լռելյայն արժեքը</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Անջատել QUIC արձանագրությունը</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Առաջնահերթություն տալ տեսանյութի որակին</string>
+  <string name="morphe_prioritize_video_quality_summary">Առաջնահերթություն է տալիս տեսանյութի առկա ամենաբարձր որակին՝ կոդեկի արդյունավետությունից վեր</string>
+  <string name="morphe_prioritize_video_quality_dialog">Եթե այս կարգավորումը անջատված է, ապա հին տեսանյութերի համար տեսանյութի որակի տարբերակները կարող են չցուցադրվել</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Անջատել DRC աուդիոն</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

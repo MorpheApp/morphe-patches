@@ -141,7 +141,7 @@ Myndspilun gæti mistekist þar til Android System WebView er uppfært í nýjas
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Reyndu að virkja: Spoof myndstreymi > Android VR innskráning</string>
   <string name="morphe_spoof_video_streams_client_type_title">Sjálfgefinn biðlari</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Innskráning á \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Innskráning á \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' krefst sérstakrar innskráningar. Ýttu hér til að halda áfram</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Núna skráð inn á \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Til að skrá þig inn ýttu á Halda áfram hér að neðan"</string>
 • Morphe stillingar flytja ekki út eða inn Android VR auðkenningu
 • Ef þetta forrit er ekki notað í 6 mánuði mun Google fjarlægja þessa auðkenningu
 • Þú þarft að skrá þig inn aftur ef þú breytir Google lykilorðinu þínu eða afskráir þetta tæki í Google stillingum þínum"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Innskráning í vefútgáfu fyrir farsíma</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Innskráning á \"farsímavef\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valfrjáls: skráðu þig inn á YouTube vefsíðuna til að spila myndbönd með reikningnum þínum. Ýttu hér til að halda áfram</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Nú skráður inn á \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Til að skrá þig inn, Ýttu á halda áfram hér að neðan"</string>
   <string name="morphe_seek_notification_media_length_invalid">Leitarlengd verður að vera á bilinu 1 til %s sekúndur. Notar sjálfgefið gildi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Slökktu á QUIC samskiptareglum</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Forgangsraða myndgæðum</string>
+  <string name="morphe_prioritize_video_quality_summary">Forgangsraðar hæstu tiltæku myndgæðum fram yfir skilvirkni kóðunar</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ef þessi stilling er slökkt geta eldri myndskeið sýnt engan valkost fyrir myndgæði</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Slökktu á DRC hljóðrás</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

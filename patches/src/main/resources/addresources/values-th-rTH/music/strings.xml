@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">หยุดชั่วคราวเมื่อปิดเสียง</string>
   <string name="morphe_music_pause_when_muted_summary">หยุดการเล่นเมื่อปิดเสียงระบบ และเล่นต่อเมื่อเพิ่มระดับเสียง</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">ปุ่ม Cast ยังสามารถสตรีมไปยัง Sonos และลำโพง UPnP อื่นๆ ในเครือข่าย Wi-Fi ของคุณได้ด้วย</string>
+  <string name="morphe_music_sonos_cast_sheet_title">เชื่อมต่อกับอุปกรณ์</string>
+  <string name="morphe_music_sonos_cast_searching">กำลังค้นหาลำโพงในเครือข่าย Wi-Fi ของคุณ…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">เลือกลำโพงในเครือข่าย Wi-Fi ของคุณ</string>
+  <string name="morphe_music_sonos_cast_casting_to">กำลังแคสต์ไปยัง %s</string>
+  <string name="morphe_music_sonos_cast_connected">เชื่อมต่อแล้ว</string>
+  <string name="morphe_music_sonos_cast_disconnect">ยกเลิกการเชื่อมต่อ</string>
+  <string name="morphe_music_sonos_cast_speakers_header">ลำโพงบน Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">ใช้งานอยู่</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">อุปกรณ์ Chromecast, Nest และ Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">ไม่สามารถเชื่อมต่อกับ %s ได้</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">ความเร็วในการเล่น</string>
   <string name="morphe_music_playback_speed_summary">ความเร็วที่ใช้สำหรับทุกแทร็ก ที่ 100% จะใช้ความเร็วของแอป เช่น ความเร็วในการเล่นพอดแคสต์</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"ข้อมูลศิลปินมาจาก SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) ซึ่งจะดาวน์โหลดวันละครั้ง การกดข้ามจะไม่ส่งข้อมูลใดๆ เกี่ยวกับสิ่งที่คุณเล่น การเปิดแผ่นข้อมูล SoundProof จะส่งชื่อศิลปินปัจจุบันไปยังเซิร์ฟเวอร์ SoundProof เพื่อแสดงคะแนนโหวตล่าสุดและเพื่อทำการโหวต เซิร์ฟเวอร์จะแยกแยะผู้โหวตด้วยที่อยู่ IP ดังนั้นคะแนนโหวตของคุณอาจแสดงผลแตกต่างกันในเครือข่ายอื่น
 
 ฐานข้อมูลนี้ได้รับอนุญาตภายใต้ ODC Open Database License (ODbL) รายการจาก Soul Over AI โดย xoundbyte ได้รับอนุญาตภายใต้ CC BY 4.0 ไม่มีความเกี่ยวข้องหรือได้รับการรับรองโดย SoundProof หรือ Soul Over AI"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">ภาพอาร์ตเวิร์กแบบเคลื่อนไหวของ Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">แสดงภาพอาร์ตเวิร์กของอัลบั้มแบบเคลื่อนไหวของ Apple Music ในเครื่องเล่น หากอัลบั้มนั้นมีภาพดังกล่าว โดยชื่อเพลง ศิลปิน และอัลบั้มของแต่ละเพลงจะถูกส่งไปยัง Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">ไม่มีเนื้อเพลงสำหรับไฟล์ในอุปกรณ์นี้</string>
   <string name="morphe_music_lyrics_enabled_title">ใช้เนื้อเพลงของบุคคลที่สาม</string>

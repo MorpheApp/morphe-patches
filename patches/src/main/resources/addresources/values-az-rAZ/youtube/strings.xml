@@ -61,7 +61,10 @@ Dəyişikliklərə aşağıdakılar daxildir:
   <string name="morphe_hide_account_menu_title">Kitabxananı / Aşağı menyu filtrinizi aktivləşdirin</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kitabxana / Aşağı menyu filtriniz</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Filtrləmək üçün Kitabxana / Siz alt menyu adlarını yeni sətirlərlə ayrılmış şəkildə qeyd et</string>
+  <string name="morphe_hide_account_menu_badges_title">Nişanları Gizlət</string>
   <string name="morphe_hide_account_menu_downloads_title">Yükləmələri Gizlət</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\"Bəyənilmiş videoları\" Gizlət</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\"Sonra izləni\" Gizlət</string>
   <string name="morphe_hide_album_cards_title">Albom kartlarını gizlət</string>
   <string name="morphe_hide_album_cards_summary">Albom kartlarını sənətkar təsviri altında gizlədir</string>
   <string name="morphe_hide_artist_cards_title">Sənətkar kartlarını gizlət</string>
@@ -427,6 +430,8 @@ Məhdudiyyətlər:
   <string name="morphe_minimal_comments_button_summary">Şərhlər düyməsində göstərilən sürüşən kartları və səhifə seçicisini gizlədir</string>
   <string name="morphe_hide_comments_timestamp_button_title">Vaxt möhürü düyməsini gizlət</string>
   <string name="morphe_hide_comments_top_fans_button_title">\"Ən aktiv fanatlar\" düyməsini gizlət</string>
+  <string name="morphe_hide_comments_topics_title">\'Mövzuları\' Gizlət</string>
+  <string name="morphe_hide_comments_topics_summary">Videonun altındakı \"Mövzular\" filtr zolağı seçimini və \"Mövzu\" şərh önizləmələrini gizlədir</string>
   <string name="morphe_hide_comments_translate_button_title">Tərcümə et düyməsini gizlət</string>
   <string name="morphe_hide_comments_zero_state_title">​\'Hələ ki şərh yoxdur\' bildirişini gizlət</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Vurğulanmış axtarış linklərini təmizlə</string>
@@ -1029,6 +1034,10 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_swipe_overlay_style_entry_7">Şaquli örtük (ən kiçik)</string>
   <string name="morphe_swipe_change_video_title">Videoları dəyişmək üçün sürüşdürməni aktivləşdir</string>
   <string name="morphe_swipe_change_video_summary">Növbəti yaxud əvvəlki videoya keçmək üçün tam ekran rejimində sürüşdür</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_haptic_feedback_title">Əks-əlaqə reaksiyasını aktivləşdir</string>
+  <string name="morphe_hold_gesture_speed_step_title">Sürət pilləsi</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Aşağı</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Titrlər</string>
   <string name="morphe_captions_screen_summary">Avtomatik titrləri və titr bazaların idarə et</string>
@@ -1133,6 +1142,8 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Şüşə fəaliyyət zolağı və ekranın aşağısı yaxud sistem naviqasiyası arasındakı boşluğu tənzimlə</string>
   <string name="morphe_navigation_bar_glass_size_title">Şüşə fəaliyyət zolağının ölçüsü</string>
   <string name="morphe_navigation_bar_glass_size_summary">Şüşə fəaliyyət zolağının hündürlüyünü, enini və düymə boşluğunu önizləmə ilə tənzimlə. Ekranın eninə uyuşmayan düymələr gizlədilir</string>
+  <string name="morphe_glass_menus_opacity_title">Şüşə tutqunluğu</string>
+  <string name="morphe_glass_menus_blur_title">Bulanıqlıq</string>
   <string name="morphe_navigation_bar_glass_size_height">Hündürlük</string>
   <string name="morphe_navigation_bar_glass_size_width">Ən yüksək en</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Düymə boşluğu</string>
@@ -1697,10 +1708,6 @@ Məhdudiyyətlər:
   <string name="morphe_advanced_video_quality_menu_summary">Keyfiyyət seçimi menyusunu ötürür və birbaşa Təkmil keyfiyyət menyusunu açır</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium keyfiyyət seçimlərini gizlət</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Video keyfiyyətinə üstünlük ver</string>
-  <string name="morphe_video_quality_prioritize_summary">Kodek səmərəliliyindən artıq mövcud ən yüksək video keyfiyyətinə üstünlük verir</string>
-  <string name="morphe_video_quality_prioritize_dialog">Bu seçim qapalıdırsa, daha köhnə videolar video keyfiyyəti seçimlərini göstərməyə bilər</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1-ə icazə ver</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' qəbuledici istifadə edərkən AV1 təminatını dekodlamağa icazə verir</string>

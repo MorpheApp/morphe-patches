@@ -141,7 +141,7 @@ Nospiediet OK, lai atvērtu Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Mēģiniet iespējot: Viltot video straumes &gt; Android VR pieslēgšanās</string>
   <string name="morphe_spoof_video_streams_client_type_title">Noklusējuma klients</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR pierakstīšanās</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Piecelgšanās \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' prasīta atsevišķa pierakstīšanās. Pieskarieties šeit, lai turpinātu</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Šobrīd pierakstīts \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Lai pieslēgtos, zemāk nospiediet pogu Turpināt"</string>
 • Jūsu Morphe iestatījumi neimportēs/neeksportēs Android VR autentifikāciju
 • Ja šī lietotne netiek izmantota 6 mēnešus, Google izdzēs šo autentifikāciju
 • Jums būs jāpieslēdzas vēlreiz, ja mainīsiet savu Google paroli vai noņemiet šo ierīci no saviem Google iestatījumiem"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Pieteikšanās mobilajā tīmekļa vietnē</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Piecelgšanās \'Mobilā tīeleja\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Nekā Obligāti: pietiecieties YouTube tīmekļa vietnei, lai atskañotu video ar savu kontu. Pieskarieties šeit, lai turpinātu</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Šobrīd pieslēgts uz \'Mobilā tīmekļa versija\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Lai pierakstītos, apakšā nospiediet \"Turpināt\""</string>
   <string name="morphe_seek_notification_media_length_invalid">Meklēšanas garumam jābūt no 1 līdz %s sekundēm. Tiek izmantota noklusējuma vērtība</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Atslēgt QUIC protokolu</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritizēt video kvalitāti</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioritizē augstāko pieejamo video kvalitāti, nodalot to no kodeka efektivitātes</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ja šī iestatījums ir izslēgts, vecākiem video var nebūt pieejamas video kvalitātes iespējas</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Atslēgt DRC audio</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

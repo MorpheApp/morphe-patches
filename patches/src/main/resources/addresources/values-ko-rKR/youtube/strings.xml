@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">\'보관함\' / \'내 페이지\' 하단 메뉴 필터 활성화하기</string>
   <string name="morphe_hide_account_menu_filter_strings_title">\'보관함\' / \'내 페이지\' 하단 메뉴 필터</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">필터링할 \'보관함\' / \'내 페이지\' 하단 메뉴 이름을 줄바꿈으로 구분하여 설정하세요</string>
+  <string name="morphe_hide_account_menu_badges_title">배지 숨기기</string>
   <string name="morphe_hide_account_menu_downloads_title">\'오프라인 저장 동영상\' 숨기기</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\'좋아요 표시한 동영상\' 숨기기</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\'나중에 볼 동영상\' 숨기기</string>
   <string name="morphe_hide_album_cards_title">음악 앨범 카드 숨기기</string>
   <string name="morphe_hide_album_cards_summary">아티스트 설명 아래에서 앨범 카드를 숨깁니다</string>
   <string name="morphe_hide_artist_cards_title">아티스트 카드 숨기기</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">댓글 버튼에 표시되는 슬라이딩 카드와 페이지 선택기를 숨깁니다</string>
   <string name="morphe_hide_comments_timestamp_button_title">타임스탬프 버튼 숨기기</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'탑 팬\' 버튼 숨기기</string>
+  <string name="morphe_hide_comments_topics_title">\'주제\' 숨기기</string>
+  <string name="morphe_hide_comments_topics_summary">\'주제\' 필터 막대 옵션과 동영상 아래의 \'주제\' 댓글 미리보기를 숨깁니다</string>
   <string name="morphe_hide_comments_translate_button_title">번역 버튼 숨기기</string>
   <string name="morphe_hide_comments_zero_state_title">\'아직 댓글이 없습니다\' 메시지 숨기기</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">강조 표시된 검색 링크 정리하기</string>
@@ -1031,6 +1036,39 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_overlay_style_entry_7">세로 (최소화)</string>
   <string name="morphe_swipe_change_video_title">스와이프 제스처로 동영상 전환하기</string>
   <string name="morphe_swipe_change_video_summary">전체 화면 모드에서 스와이프하여 다음 또는 이전 동영상으로 건너뜁니다</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">홀드 제스처</string>
+  <string name="morphe_hold_gesture_screen_summary">탭하고 길게 누른 후 드래그하여 재생 속도를 변경하고 고정하세요</string>
+  <string name="morphe_hold_gesture_title">스와이프 제스처로 속도 조절하기</string>
+  <string name="morphe_hold_gesture_summary">동영상을 탭하고 길게 누른 후 드래그할 수 있습니다. 누르고 있는 동안의 속도는 탭 앤 홀드 재생 속도입니다</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">\'화면을 길게 탭하여 스와이프\'가 켜져 있는 동안에는 사용되지 않습니다. 탭하여 변경하세요</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">화면을 길게 탭하여 스와이프 제스처를 사용합니다</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">길게 누르기 제스처와 스와이프 컨트롤의 \'화면을 길게 탭하여 스와이프\' 제스처는 모두 탭하고 유지하는 것으로 시작하므로, 둘 중 하나만 사용할 수 있습니다.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">화면을 길게 탭하여 스와이프 끄기</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">\'화면을 길게 탭하여 스와이프\'가 켜져 있는 동안에는 길게 누르기 제스처를 사용할 수 없습니다</string>
+  <string name="morphe_hold_gesture_dialog_title">길게 누르기 제스처가 켜져 있습니다</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">길게 누르기 제스처 끄기</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">진동 피드백 활성화하기</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">속도가 변경되거나 속도가 고정될 때 진동합니다</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">옆으로 드래그하여 속도 변경</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">탭한 상태에서 유지한 후, 왼쪽으로 드래그하면 더 느리게, 오른쪽으로 드래그하면 더 빠르게 재생됩니다. 손가락이 돌아올 때까지 더 멀리 드래그할수록 속도가 계속 변경됩니다</string>
+  <string name="morphe_hold_gesture_speed_step_title">속도 단계</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">드래그 민감도</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">낮음</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">보통</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">높음</string>
+  <string name="morphe_hold_gesture_speed_min_title">최저 속도</string>
+  <string name="morphe_hold_gesture_speed_min_summary">드래그로 설정 가능한 최저 속도</string>
+  <string name="morphe_hold_gesture_speed_max_title">최고 속도</string>
+  <string name="morphe_hold_gesture_speed_max_summary">드래그로 설정 가능한 최고 속도 (최대 8배)</string>
+  <string name="morphe_hold_gesture_lock_title">아래로 드래그하여 속도 고정</string>
+  <string name="morphe_hold_gesture_lock_summary">길게 누른 후 아래로 드래그하면 손가락을 떼어도 속도가 유지됩니다. 배지를 탭하거나 다시 길게 눌러 고정을 해제하세요</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">고정 배지 항상 표시</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">플레이어 컨트롤이 숨겨져 있는 동안에도 고정된 속도의 배지가 계속 표시됩니다</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">동영상 변경 시 고정 해제</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">다른 동영상이 시작되면 고정된 속도가 해제됩니다</string>
+  <string name="morphe_hold_gesture_lock_hint">아래로 당겨서 고정</string>
+  <string name="morphe_hold_gesture_lock_release">떼어서 %s 고정</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">자막</string>
   <string name="morphe_captions_screen_summary">자동 자막 및 자막 쿠키를 관리할 수 있습니다</string>
@@ -1135,6 +1173,17 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">글래스 내비게이션 바와 화면 하단 또는 시스템 내비게이션 사이의 간격을 조정합니다</string>
   <string name="morphe_navigation_bar_glass_size_title">글래스 내비게이션 바 크기</string>
   <string name="morphe_navigation_bar_glass_size_summary">미리보기를 통해 글래스 내비게이션 바의 높이, 너비 및 버튼 간격을 조정합니다. 화면 너비에 맞지 않는 버튼은 숨겨집니다</string>
+  <string name="morphe_glass_menus_screen_title">글래스 메뉴</string>
+  <string name="morphe_glass_menus_screen_summary">배경 콘텐츠가 블러 처리된 위에 프로스트 글래스 스타일의 메뉴를 표시합니다</string>
+  <string name="morphe_glass_menus_title">글래스 메뉴 활성화</string>
+  <string name="morphe_glass_menus_summary">메뉴와 바텀 시트를 프로스트 글래스 스타일로 표시하며, 배경 콘텐츠는 블러 처리됩니다</string>
+  <string name="morphe_glass_menus_user_dialog_message">배터리 절약 모드가 켜져 있거나 기기가 블러를 지원하지 않는 경우, 메뉴가 거의 불투명하게 표시됩니다</string>
+  <string name="morphe_glass_menus_opacity_title">글래스 불투명도</string>
+  <string name="morphe_glass_menus_opacity_summary">메뉴가 흐릿한 콘텐츠를 어느 정도 덮는지 설정합니다 (0은 투명, 100은 불투명)</string>
+  <string name="morphe_glass_menus_blur_title">흐림</string>
+  <string name="morphe_glass_menus_blur_summary">메뉴 뒤의 콘텐츠가 얼마나 흐릿하게 처리되는지 설정합니다</string>
+  <string name="morphe_glass_menus_dim_title">어둡게 하기</string>
+  <string name="morphe_glass_menus_dim_summary">바텀 시트 주변의 화면이 얼마나 어둡게 처리되는지 설정합니다</string>
   <string name="morphe_navigation_bar_glass_size_height">높이</string>
   <string name="morphe_navigation_bar_glass_size_width">최대 너비</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">버튼 간격</string>
@@ -1698,10 +1747,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">화질 선택 메뉴를 건너뛰고 고급 화질 메뉴를 바로 엽니다</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium 화질 옵션 숨기기</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">동영상 우선순위를 화질로 지정하기</string>
-  <string name="morphe_video_quality_prioritize_summary">코덱 효율성보다 사용 가능한 최고 동영상 화질을 우선합니다</string>
-  <string name="morphe_video_quality_prioritize_dialog">이 설정을 비활성화하면, 일부 오래된 동영상에서 화질 옵션이 표시되지 않을 수 있습니다</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1 허용</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' 클라이언트를 사용할 경우에 AV1 디코딩을 허용합니다\n\n하드웨어 AV1 디코딩이 지원되지 않는 기기에서 소프트웨어 AV1 디코딩이 사용될 수 있습니다</string>

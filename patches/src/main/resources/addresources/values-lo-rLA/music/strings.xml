@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">ຢຸດຊົ່ວຄາວເມື່ອປິດສຽງ</string>
   <string name="morphe_music_pause_when_muted_summary">ຢຸດການຫຼິ້ນເມື່ອລະບົບປິດສຽງ ແລະ ຫຼິ້ນຕໍ່ເມື່ອເພີ່ມລະດັບສຽງ</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">ສົ່ງໄປຍັງ Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">ປຸ່ມ Cast ຍັງສາມາດສະຕຣີມໄປຍັງ Sonos ແລະ ລຳໂພງ UPnP ອື່ນໆ ໃນເຄືອຂ່າຍ Wi-Fi ຂອງທ່ານໄດ້</string>
+  <string name="morphe_music_sonos_cast_sheet_title">ເຊື່ອມຕໍ່ກັບອຸປະກອນ</string>
+  <string name="morphe_music_sonos_cast_searching">ກຳລັງຄົ້ນຫາລຳໂພງໃນເຄືອຂ່າຍ Wi-Fi ຂອງທ່ານ…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">ເລືອກລຳໂພງໃນເຄືອຂ່າຍ Wi-Fi ຂອງທ່ານ</string>
+  <string name="morphe_music_sonos_cast_casting_to">ກຳລັງສົ່ງສັນຍານໄປຍັງ %s</string>
+  <string name="morphe_music_sonos_cast_connected">ເຊື່ອມຕໍ່ແລ້ວ</string>
+  <string name="morphe_music_sonos_cast_disconnect">ຍົກເລີກການເຊື່ອມຕໍ່</string>
+  <string name="morphe_music_sonos_cast_speakers_header">ລຳໂພງໃນ Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">ກຳລັງເຮັດວຽກ</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">ອຸປະກອນ Chromecast, Nest ແລະ Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບ %s ໄດ້</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">ຄວາມໄວໃນການຫຼິ້ນ</string>
   <string name="morphe_music_playback_speed_summary">ຄວາມໄວທີ່ໃຊ້ສຳລັບທຸກແທຣັກ. ທີ່ 100% ຈະໃຊ້ຄວາມໄວຂອງແອັບ, ເຊັ່ນ ຄວາມໄວໃນການຫຼິ້ນພອດແຄສ</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"ຂໍ້ມູນສິລະປິນມາຈາກ SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), ເຊິ່ງຖືກດາວໂຫຼດມື້ລະຄັ້ງ. ການຂ້າມຈະບໍ່ສົ່ງຂໍ້ມູນຫຍັງກ່ຽວກັບສິ່ງທີ່ທ່ານກຳລັງຫຼິ້ນ. ການເປີດແຜ່ນ SoundProof ຈະສົ່ງຊື່ສິລະປິນປັດຈຸບັນໄປຍັງເຊີເວີ SoundProof ເພື່ອສະແດງຜົນໂຫວດຫຼ້າສຸດ ແລະ ເພື່ອໂຫວດ. ເຊີເວີຈະແຍກຜູ້ໂຫວດດ້ວຍທີ່ຢູ່ IP, ດັ່ງນັ້ນການໂຫວດຂອງທ່ານອາດຈະສະແດງຜົນແຕກຕ່າງກັນໃນເຄືອຂ່າຍອື່ນ.
 
 ຖານຂໍ້ມູນນີ້ໄດ້ຮັບອະນຸຍາດພາຍໃຕ້ ODC Open Database License (ODbL). ລາຍການຈາກ Soul Over AI ໂດຍ xoundbyte ໄດ້ຮັບອະນຸຍາດພາຍໃຕ້ CC BY 4.0. ບໍ່ມີສ່ວນກ່ຽວຂ້ອງ ຫຼື ໄດ້ຮັບການຮັບຮອງໂດຍ SoundProof ຫຼື Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">ຮູບປົກເຄື່ອນໄຫວຂອງ Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">ສະແດງຮູບປົກອັນບັມແບບເຄື່ອນໄຫວຂອງ Apple Music ໃນເຄື່ອງຫຼິ້ນ, ຖ້າອັນບັມນັ້ນມີ. ຊື່ເພງ, ສิลปິນ ແລະ ອັນບັມຂອງແຕ່ລະເພງຈະຖືກສົ່ງໄປຍັງ Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">ເນື້ອເພງບໍ່ມີໃຫ້ໃຊ້ສຳລັບໄຟລ໌ຂອງອຸປະກອນນີ້.</string>
   <string name="morphe_music_lyrics_enabled_title">ໃຊ້ເນື້ອເພງຈາກບຸກຄົນທີສາມ</string>

@@ -141,7 +141,7 @@ Atingeți OK pentru a deschide Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Încearcă activarea: Spoof video streams > Autentificare Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client implicit</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Autentificare VR \"Android\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Autentificare \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" necesită o autentificare separată. Apasă aici pentru a continua</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">În prezent, ești autentificat în \"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Pentru a te autentifica, apasă butonul Continuă de mai jos"</string>
 • Configurațiile Morphe nu vor importa/exporta autentificarea Android VR
 • Dacă această aplicație nu este folosită timp de 6 luni, Google va șterge această autentificare
 • Dacă schimbi parola Google sau elimini acest dispozitiv din setările Google, va trebui să te autentifici din nou"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Autentificare în versiunea web mobilă</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Autentificare \"Web mobil\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opțional: autentifică-te pe site-ul YouTube pentru a reda videoclipuri cu contul tău. Apasă aici pentru a continua</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">În prezent, ești autentificat la „Mobile Web”</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Pentru a te autentifica, apasă pe continuă mai jos"</string>
   <string name="morphe_seek_notification_media_length_invalid">Lungimea derulării trebuie să fie între 1 și %s secunde. Se utilizează valoarea implicită</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Dezactivați protocolul QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritizează calitatea video</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioritizează cea mai înaltă calitate video disponibilă în detrimentul eficienței codec-ului</string>
+  <string name="morphe_prioritize_video_quality_dialog">Dacă această setare este dezactivată, videoclipurile mai vechi pot să nu afișeze opțiuni de calitate video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Dezactivați sunetul DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

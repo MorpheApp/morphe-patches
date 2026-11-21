@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">ჩართეთ ბიბლიოთეკის / თქვენი ქვედა მენიუს ფილტრი</string>
   <string name="morphe_hide_account_menu_filter_strings_title">ბიბლიოთეკის / თქვენი ქვედა მენიუს ფილტრი</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">შეიყვანეთ ბიბლიოთეკის / თქვენი ქვედა მენიუს სახელები გასაფილტრად, ახალ ხაზებზე გამოყოფილი</string>
+  <string name="morphe_hide_account_menu_badges_title">ბეიჯების დამალვა</string>
   <string name="morphe_hide_account_menu_downloads_title">ჩამოტვირთვების დამალვა</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\"მოწონებული ვიდეოების\" დამალვა</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\"მოგვიანებით ნახვის\" დამალვა</string>
   <string name="morphe_hide_album_cards_title">ალბომის ბარათების დამალვა</string>
   <string name="morphe_hide_album_cards_summary">მალავს ალბომის ბარათებს არტისტის აღწერილობის ქვემოთ</string>
   <string name="morphe_hide_artist_cards_title">არტისტების ბარათების დამალვა</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">მალავს მოცურავე ბარათებსა და მათ გვერდების ამომრჩევს, რომლებიც კომენტარების ღილაკზე ჩნდება</string>
   <string name="morphe_hide_comments_timestamp_button_title">დროის აღნიშვნის ღილაკის დამალვა</string>
   <string name="morphe_hide_comments_top_fans_button_title">დამალეთ ღილაკი \"ტოპ ფანები\"</string>
+  <string name="morphe_hide_comments_topics_title">დამალეთ \"თემები\"</string>
+  <string name="morphe_hide_comments_topics_summary">მალავს \"თემების\" ფილტრის პანელის ოფციას და \"თემის\" კომენტარების წინასწარ გადახედვას ვიდეოს ქვემოთ</string>
   <string name="morphe_hide_comments_translate_button_title">თარგმნის ღილაკის დამალვა</string>
   <string name="morphe_hide_comments_zero_state_title">დამალეთ შეტყობინება \"კომენტარები ჯერ არ არის\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">გამოკვეთილი საძიებო ბმულების გასუფთავება</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">ვერტიკალური ფენა (მინიმალისტური)</string>
   <string name="morphe_swipe_change_video_title">ჩართეთ ვიდეოების შესაცვლელად გადასვლების ფუნქცია</string>
   <string name="morphe_swipe_change_video_summary">გადაფურცლეთ სრული ეკრანის რეჟიმში შემდეგ ან წინა ვიდეოზე გადასასვლელად</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">დაჭერის ჟესტი</string>
+  <string name="morphe_hold_gesture_screen_summary">შეცვალეთ და დააფიქსირეთ უკუკავშირის სიჩქარე დაჭერისა და გადმოტანის მეშვეობით</string>
+  <string name="morphe_hold_gesture_title">ჩართეთ hold ჟესტი</string>
+  <string name="morphe_hold_gesture_summary">ვიდეოზე დაჭერას და Hold-ს შეიძლება მოჰყვეს გადმოტანა. დაჭერის დროს სიჩქარე არის tap and hold უკუკავშირის სიჩქარე</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">არ გამოიყენება, როდესაც ჩართულია \"დააჭირეთ გადასაწევად\". შეეხებათ შესაცვლელად</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">ჩართულია \"დააჭირეთ გადასაწევად\"</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">როგორც დაჭერისა და როგორც \"დააჭირეთ გადასაწევად\" ჟესტები იწყება დაჭერითა და ღილაკის გრძელად პოვებით, ამიტომ მხოლოდ ერთ-ერთი მათგანი შეიძლება იყოს ჩართული.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">გამორთეთ \"დააჭირეთ გადასაწევად\"</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">დაჭერის ჟესტი არ გამოიყენება, როდესაც ჩართულია \"დააჭირეთ გადასაწევად\"</string>
+  <string name="morphe_hold_gesture_dialog_title">ჩართულია დაჭერის ჟესტი</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">გამორთეთ დაჭერის ჟესტი</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">ჩართეთ ჰაპტიკური უკუკავშირი</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">ვიბრირებს სიჩქარის შეცვლისას და სიჩქარის ჩაკეტვისას</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">გადაარიეთ გვერდზე სიჩქარის შესაცვლელად</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">დაჭერისა და გაჭერილ მდგომარეობაში ყოფნის შემდეგ, გადაარიეთ მარცხნივ უფრო ნელად დასაკვეთად და მარჯვნივ უფრო სწრაფად. რაც უფრო შორს წაწევთ, სიჩქარე კვლავ იცვლება თითის დაბრუნებამდე</string>
+  <string name="morphe_hold_gesture_speed_step_title">სიჩქარის ნაბიჯი</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">გადაზელვის სენსიტივობა</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">დაბალი</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">ნორმალური</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">მაღალი</string>
+  <string name="morphe_hold_gesture_speed_min_title">სულ მცირესი სიჩქარე</string>
+  <string name="morphe_hold_gesture_speed_min_summary">მინიმალური სიჩქარე, რომელსაც გადატანა აღწევს</string>
+  <string name="morphe_hold_gesture_speed_max_title">მაქსიმალური სიჩქარე</string>
+  <string name="morphe_hold_gesture_speed_max_summary">მაქსიმალური სიჩქარე, რომელსაც გადატანა აღწევს (8-მდე)</string>
+  <string name="morphe_hold_gesture_lock_title">გადაიტანეთ ქვემოთ სიჩქარის გასაֆიქსირებლად</string>
+  <string name="morphe_hold_gesture_lock_summary">დაჭერისა და შესაყვანის შემდეგ, გადაიტანეთ ქვემოთ, რათა სიჩქარე შენარჩუნდეს თითის ასიდვის შემდეგ. დააწკაპუნეთ ნიშანს ან კვლავ დააჭირეთ და გეჭიროთ განსაფიქსირებლად</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">ყოველთვის აჩვენეთ ფიქსაციის ნიშანი</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">გაფიქსირებული სიჩქარის ნიშანი რჩება ხილული, როდესაც პლეერის მართვის პანელი மறைულია</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">გააუქმეთ ფიქსაცია ვიდეოს შეცვლისას</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">გაფიქსირებული სიჩქარე წყდება სხვა ვიდეოს დაწყებისას</string>
+  <string name="morphe_hold_gesture_lock_hint">ჩამოსწივეთ დასაბლოკად</string>
+  <string name="morphe_hold_gesture_lock_release">გაუშვეთ %s-ის დასაბლოკად</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">სუბტიტრები</string>
   <string name="morphe_captions_screen_summary">ავტომატური სუბტიტრების და სუბტიტრების ქუქი-ფაილების მართვა</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">დაარეგულირეთ სივრცე შუშის навіგაციის პანელსა და ეკრანის ქვედა ნაწილს ან სისტემურ навіგაციას შორის</string>
   <string name="morphe_navigation_bar_glass_size_title">მინისებრი ნავიგაციის პანელის ზომა</string>
   <string name="morphe_navigation_bar_glass_size_summary">დაარეგულირეთ მინისებრი ნავიგაციის პანელის სიმაღლე, სიგანე და ღილაკების დაცილება, წინასწარი ნახვით. ღილაკები, რომლებიც არ ეტევა ეკრანის სიგანეში, იმალება</string>
+  <string name="morphe_glass_menus_screen_title">შუშის მენიები</string>
+  <string name="morphe_glass_menus_screen_summary">მენიები, როგორც დაზラლი შუშა მათ უკან არსებულ ბლურირებულ კონტენტზე</string>
+  <string name="morphe_glass_menus_title">შუშის მენიების ჩართვა</string>
+  <string name="morphe_glass_menus_summary">აჩვენებს მენიებსა და ქვედა ფანჯრებს როგორც დაზლალ შუშას, ხოლო მათ უკან არსებული კონტენტი ბლურირებულია</string>
+  <string name="morphe_glass_menus_user_dialog_message">მენიები ჩანს თითქმის andმკვეთრად, როდესაც ჩართულია ელემენტის დაზოგვის რეჟიმი, ან თუ მოწყობილობას არ აქვს ბლურის მხარდაჭერა</string>
+  <string name="morphe_glass_menus_opacity_title">შუშის გამჭვირვალობა</string>
+  <string name="morphe_glass_menus_opacity_summary">რამდენად ფარავს მენიუ გაბუნდულ შინაარსს (0 არის გამჭვირვალე, 100 არის andაბსოლუტურად andგამუქებული)</string>
+  <string name="morphe_glass_menus_blur_title">ბუნდოვანება</string>
+  <string name="morphe_glass_menus_blur_summary">რამდენად არის გაბუნდული მენიუს უკან არსებული შინაარსი</string>
+  <string name="morphe_glass_menus_dim_title">გამუქება</string>
+  <string name="morphe_glass_menus_dim_summary">რამდენად არის დაგმუქებული ეკრანი ქვედა ფენის გარშემო</string>
   <string name="morphe_navigation_bar_glass_size_height">სიმაღლე</string>
   <string name="morphe_navigation_bar_glass_size_width">მაქსიმალური სიგანე</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ღილაკების დაცილება</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">პირდაპირ ხსნის გაფართოებულ ხარისხის მენიუს</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium ხარისხის ოფციების დამალვა</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">ვიდეოს ხარისხის პრიორიტეტიზაცია</string>
-  <string name="morphe_video_quality_prioritize_summary">ანიჭებს პრიორიტეტს მაქსიმალურ ხელმისაწვდომ ვიდეო ხარისხს კოდეკის ეფექტურობაზე</string>
-  <string name="morphe_video_quality_prioritize_dialog">ამ პარამეტრის გამორთვის შემთხვევაში, ძველ ვიდეოებს შესაძლოა არ ჰქონდეთ ვიდეოს ხარისხის არჩევანის შესაძლებლობა</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">ნებართვა \'Android VR\' / \'visionOS\' AV1-ისთვის</string>
   <string name="morphe_spoof_video_streams_av1_summary">დაუშვებს პროგრამულ AV1 დეკოდირებას \'Android VR\' / \'visionOS\' კლიენტის გამოყენებისას</string>

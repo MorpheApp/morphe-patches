@@ -61,7 +61,10 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_account_menu_title">Kütüphane / Siz alt menü filtresini etkinleştir</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Kütüphane / Siz alt menü filtresi</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Filtrelemek istediğiniz Kütüphane / Siz alt menü adlarını yeni satırlarla ayırarak girin</string>
+  <string name="morphe_hide_account_menu_badges_title">Rozetleri Gizle</string>
   <string name="morphe_hide_account_menu_downloads_title">İndirmeleri gizle</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\"Beğendiğim videolar\" kısmını gizle</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\"Daha sonra izle\" kısmını gizle</string>
   <string name="morphe_hide_album_cards_title">Albüm kartlarını gizle</string>
   <string name="morphe_hide_album_cards_summary">Sanatçı açıklamasının altındaki albüm kartlarını gizler</string>
   <string name="morphe_hide_artist_cards_title">Sanatçı kartlarını gizle</string>
@@ -427,6 +430,8 @@ Kısıtlamalar:
   <string name="morphe_minimal_comments_button_summary">Yorumlar düğmesinde görüntülenen kayan kartları ve sayfa seçicisini gizler</string>
   <string name="morphe_hide_comments_timestamp_button_title">Zaman damgası düğmesini gizle</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'En iyi hayranlar\' düğmesini gizle</string>
+  <string name="morphe_hide_comments_topics_title">\'Konular\'ı gizle</string>
+  <string name="morphe_hide_comments_topics_summary">\'Konular\' filtre çubuğu seçeneğini ve videonun altındaki \'Konu\' yorum önizlemelerini gizler</string>
   <string name="morphe_hide_comments_translate_button_title">Çevir düğmesini gizle</string>
   <string name="morphe_hide_comments_zero_state_title">\'Henüz yorum yok\' mesajını gizle</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Öne çıkan arama bağlantılarını temizle</string>
@@ -1029,6 +1034,39 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_swipe_overlay_style_entry_7">Dikey katman (minimal)</string>
   <string name="morphe_swipe_change_video_title">Kaydırarak video değiştirmeyi etkinleştir</string>
   <string name="morphe_swipe_change_video_summary">Tam ekran modunda kaydırarak sonraki veya önceki videoya geçin</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Basılı tutma hareketi</string>
+  <string name="morphe_hold_gesture_screen_summary">Dokunup basılı tuttuktan sonra sürükleyerek oynatma hızını değiştirin ve kilitleyin</string>
+  <string name="morphe_hold_gesture_title">Basılı tutma hareketini etkinleştir</string>
+  <string name="morphe_hold_gesture_summary">Videoya dokunup basılı tutma işlemi bir sürükleme ile takip edilebilir. Basılı tutma sırasındaki hız, dokunup basılı tutma oynatma hızıdır</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Basılı tutup kaydırma hareketi açıkken kullanılmaz. Değiştirmek için dokunun</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Basılı tutup kaydırma hareketi etkin</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Basılı tutma hareketi ve kaydırma kontrollerinin basılı tutup kaydırma hareketi, her ikisi de dokunup basılı tutmakla başladığı için bunlardan yalnızca biri açık olabilir.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Basılı tutup kaydırma hareketini kapat</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Basılı tutup kaydırma hareketi açıkken basılı tutma hareketi kullanılmaz</string>
+  <string name="morphe_hold_gesture_dialog_title">Basılı tutma hareketi açık</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Basılı tutma hareketini kapat</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Titreşimli geri bildirimi etkinleştir</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Hız değiştiğinde ve hız kilitlendiğinde titrer</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Hızı değiştirmek için yanlara sürükleyin</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Dokunup basılı tuttuktan sonra, daha yavaş oynatmak için sola, daha hızlı oynatmak için sağa sürükleyin. Parmak geri gelene kadar, dışarıya doğru sürüklendikçe hız değişmeye devam eder</string>
+  <string name="morphe_hold_gesture_speed_step_title">Hız adımı</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Sürükleme hassasiyeti</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Düşük</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Yüksek</string>
+  <string name="morphe_hold_gesture_speed_min_title">En düşük hız</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Sürüklemenin ulaşabileceği en düşük hız</string>
+  <string name="morphe_hold_gesture_speed_max_title">En yüksek hız</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Sürüklemenin ulaşabileceği en yüksek hız (8\'e kadar)</string>
+  <string name="morphe_hold_gesture_lock_title">Hızı kilitlemek için aşağı sürükleyin</string>
+  <string name="morphe_hold_gesture_lock_summary">Dokunup basılı tuttuktan sonra, parmak kaldırıldığında hızı korumak için aşağı sürükleyin. Kilidi açmak için rozete dokunun veya tekrar dokunup basılı tutun</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Kilit rozetini her zaman göster</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Kilitli bir hızın rozeti, oynatıcı kontrolleri gizliyken görünür kalır</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Video değiştiğinde kilidi aç</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Başka bir video başladığında kilitli hız sona erer</string>
+  <string name="morphe_hold_gesture_lock_hint">Kilitlemek için aşağı çekin</string>
+  <string name="morphe_hold_gesture_lock_release">%s kilitlemek için bırakın</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Altyazılar</string>
   <string name="morphe_captions_screen_summary">Otomatik altyazıları ve altyazı çerezlerini yönetin</string>
@@ -1133,6 +1171,17 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Cam navigasyon çubuğu ile ekranın altı veya sistem navigasyonu arasındaki boşluğu ayarlayın</string>
   <string name="morphe_navigation_bar_glass_size_title">Cam gezinme çubuğu boyutu</string>
   <string name="morphe_navigation_bar_glass_size_summary">Cam gezinme çubuğunun yüksekliğini, genişliğini ve düğme boşluğunu bir önizleme ile ayarlayın. Ekran genişliğine sığmayan düğmeler gizlenir</string>
+  <string name="morphe_glass_menus_screen_title">Cam menüler</string>
+  <string name="morphe_glass_menus_screen_summary">Arkalarındaki bulanık içeriğin üzerinde buzlu cam şeklinde menüler</string>
+  <string name="morphe_glass_menus_title">Cam menüleri etkinleştir</string>
+  <string name="morphe_glass_menus_summary">Menüleri ve alt sayfaları, arkalarındaki içerik bulanık olacak şekilde buzlu cam olarak gösterir</string>
+  <string name="morphe_glass_menus_user_dialog_message">Pil tasarrufu açıkken veya cihaz bulanıklaştırmayı desteklemiyorsa menüler neredeyse opak olarak gösterilir</string>
+  <string name="morphe_glass_menus_opacity_title">Cam opaklığı</string>
+  <string name="morphe_glass_menus_opacity_summary">Menünün bulanık içeriği ne kadar kapladığı (0 şeffaf, 100 opaktır)</string>
+  <string name="morphe_glass_menus_blur_title">Bulanıklık</string>
+  <string name="morphe_glass_menus_blur_summary">Menünün arkasındaki içeriğin ne kadar bulanık olduğu</string>
+  <string name="morphe_glass_menus_dim_title">Karartma</string>
+  <string name="morphe_glass_menus_dim_summary">Alt sayfanın etrafındaki ekranın ne kadar karartıldığı</string>
   <string name="morphe_navigation_bar_glass_size_height">Yükseklik</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimum genişlik</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Düğme boşluğu</string>
@@ -1698,10 +1747,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Kalite seçim menüsünü atlar ve doğrudan Gelişmiş kalite menüsünü açar</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium kalite seçeneklerini gizle</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Video kalitesine öncelik ver</string>
-  <string name="morphe_video_quality_prioritize_summary">Kodek verimliliğinden ziyade en yüksek video kalitesine öncelik verir</string>
-  <string name="morphe_video_quality_prioritize_dialog">Bu ayar devre dışı bırakılırsa, eski videolar için video kalitesi seçenekleri görüntülenmeyebilir</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1\'ye izin ver</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' istemcisi kullanılırken yazılımsal AV1 kod çözmeye izin verir</string>

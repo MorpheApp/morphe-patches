@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Միացնել Գրադարան / Դուք ներքևի մենյուի զտիչը</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Գրադարան / Դուք ներքևի մենյուի զտիչ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Մուտքագրեք Գրադարան / Դուք ներքևի մենյուի անվանումները զտելու համար՝ բաժանելով նոր տողերով</string>
+  <string name="morphe_hide_account_menu_badges_title">Թաքցնել կնարները</string>
   <string name="morphe_hide_account_menu_downloads_title">Թաքցնել ներբեռնումները</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Թաքցնել \"Հավանած տեսանյութերը\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Թաքցնել \"Դիտել ավելի ուշ\"</string>
   <string name="morphe_hide_album_cards_title">Թաքցնել ալբոմների քարտերը</string>
   <string name="morphe_hide_album_cards_summary">Թաքցնում է ալբոմի քարտերը արտիստի նկարագրության տակ</string>
   <string name="morphe_hide_artist_cards_title">Թաքցնել արտիստների քարտերը</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">Թաքցնում է սահող քարտերը և դրանց էջերի ընտրիչը, որոնք ցուցադրվում են մեկնաբանությունների կոճակի վրա</string>
   <string name="morphe_hide_comments_timestamp_button_title">Թաքցնել ժամանակային նշման կոճակը</string>
   <string name="morphe_hide_comments_top_fans_button_title">Թաքցնել \"Լավագույն երկրպագուները\" կոճակը</string>
+  <string name="morphe_hide_comments_topics_title">Թաքցնել \"Թեմաները\"</string>
+  <string name="morphe_hide_comments_topics_summary">Թաքցնում է \"Թեմաների\" զտիչների տողի տարբերակը և տեսանյութի ներքևում գտնվող \"Թեմայի\" մեկնաբանությունների նախադիտումները</string>
   <string name="morphe_hide_comments_translate_button_title">Թաքցնել թարգմանության կոճակը</string>
   <string name="morphe_hide_comments_zero_state_title">Թաքցնել \"Մեկնաբանություններ դեռ չկան\" հաղորդագրությունը</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Մաքրել ընդգծված որոնման հղումները</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Ուղղահայաց overlay (մինիմալիստական)</string>
   <string name="morphe_swipe_change_video_title">Միացնել սվայպը տեսանյութերը փոխելու համար</string>
   <string name="morphe_swipe_change_video_summary">Սահեցրեք լրիվ էկրանի ռեժիմում՝ անցնելու հաջորդ կամ նախորդ տեսանյութին</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Սեղմելու ժեստ</string>
+  <string name="morphe_hold_gesture_screen_summary">Փոխեք և արգելափակեք կայացման արագությունը՝ սեղմելու և պահելուց հետո քաշելով</string>
+  <string name="morphe_hold_gesture_title">Միացնել սեղմելու ժեստը</string>
+  <string name="morphe_hold_gesture_summary">Տեսանյութը սեղմելուն և պահելուն կարող է հաջորդել քաշումը: Սեղմած պահելու ընթացքում արագությունը հավասար է սեղմելու և պահելու կայացման արագությանը</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Չի օգտագործվում, երբ միացված է սեղմելով սլայդելը: Հպեք՝ փոփոխելու համար</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Սեղմելով սլայդելը միացված է</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Սեղմելու և պահելու ժեստը և սլայդելու կառավարման սեղմելով սլայդելու ժեստը երկուսն էլ սկսվում են հպումից և պահումից, ուստի դրանցից միայն մեկը կարող է միացված լինել:</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Անջատել սեղմելով սլայդելը</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Սեղմելու և պահելու ժեստը չի օգտագործվում, երբ միացված է սեղմելով սլայդելը</string>
+  <string name="morphe_hold_gesture_dialog_title">Սեղմելու և պահելու ժեստը միացված է</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Անջատել սեղմելու և պահելու ժեստը</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Միացնել հապտիկ հետադարձ կապը</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Թռչնում է, երբ արագությունը փոխվում է և երբ արագությունը ստվարվում է</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Քաշեք կողքի՝ արագությունը փոխելու համար</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Հպပြီး սեղմած պահելուց հետո քաշեք ձախ՝ ավելի դանդաղ նվագելու համար, և աջ՝ ավելի արագ նվագելու համար: Որքան հեռու քաշեք, արագությունը կշարունակի փոխվել, մինչև մատը վերադառնա</string>
+  <string name="morphe_hold_gesture_speed_step_title">Արագության քայլ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Քաշելու զգայունություն</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Ցածր</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Նորմալ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Բարձր</string>
+  <string name="morphe_hold_gesture_speed_min_title">Ամենադանդաղ արագություն</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Ամենադանդաղ արագությունը, որին կարող է հասնել քաշումը</string>
+  <string name="morphe_hold_gesture_speed_max_title">Ամենաարագ արագությունը</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Ամենաարագ արագությունը, որին կարող է հասնել քաշումը (մինչև 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Քաշեք ներքև՝ արագությունը սառեցնելու համար</string>
+  <string name="morphe_hold_gesture_lock_summary">Հպատակելու և սեղմած պահելուց հետո, քաշեք ներքև, որպեսզի արագությունը պահպանվի մ আঙիտը բարձրացնելիս: Հպեք նշանին կամ նորից սեղմած պահեք՝ սառեցումը հանելու համար</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Միշտ ցույց տալ սառեցման նշանը</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Սառեցված արագության նշանը մնում է տեսանելի, նույնիսկ երբ ընտռայցի կառավարման գործիքները թաքցված են</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Սառեցումը հանել տեսանյութի փոփոխության ժամանակ</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Սառեցված արագությունը դադարում է, երբ սկսվում է մեկ այլ տեսանյութ</string>
+  <string name="morphe_hold_gesture_lock_hint">Քաշեք ներքև՝ արգելափակելու համար</string>
+  <string name="morphe_hold_gesture_lock_release">Բաց թողեք՝ %s-ը արգելափակելու համար</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Ենթագրեր</string>
   <string name="morphe_captions_screen_summary">Կառավարել ավտոմատ ենթագրերը և ենթագրերի cookie-ները</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Կարգավորեք հեռավորությունը ապակե նավիգացիայի վահանակի և էկրանի հատակի կամ համակարգային նավիգացիայի միջև</string>
   <string name="morphe_navigation_bar_glass_size_title">Ապակե նավիգացիոն վահանակի չափսը</string>
   <string name="morphe_navigation_bar_glass_size_summary">Կարգավորեք ապակե նավիգացիոն վահանակի բարձրությունը, լայնությունը և կոճակների հեռավորությունը՝ նախնական դիտման հնարավորությամբ: Էկրանի լայնությանը չհամապատասխանող կոճակները թաքցվում են</string>
+  <string name="morphe_glass_menus_screen_title">Ապակյա մենյուներ</string>
+  <string name="morphe_glass_menus_screen_summary">Մենյուներ՝ որպես մատե ապակի՝ իրենց հետևում գտնվող լղկված բովանդակության վրա</string>
+  <string name="morphe_glass_menus_title">Միացնել ապակյա մենյուները</string>
+  <string name="morphe_glass_menus_summary">Ցուցադրում է մենյուները և ներքևի թերթերը որպես մատե ապակի, ընդ որում՝ դրանց հետևում գտնվող բովանդակությունը լղկված է</string>
+  <string name="morphe_glass_menus_user_dialog_message">Մենյուները ցուցադրվում են գրեթե անթափանց, երբ միացված է մարտկոցի խնայողը, կամ եթե սարքը չի աջակցում լղկմանը</string>
+  <string name="morphe_glass_menus_opacity_title">Ապակու թափանցիկությունը</string>
+  <string name="morphe_glass_menus_opacity_summary">Որքանով է մենյուն ծածկում լղիզված բովանդակությունը (0-ն թափանցիկ է, 100-ը՝ անթափանցիկ)</string>
+  <string name="morphe_glass_menus_blur_title">Մշուշում</string>
+  <string name="morphe_glass_menus_blur_summary">Որքանով է լղիզված մենյուի հետևում գտնվող բովանդակությունը</string>
+  <string name="morphe_glass_menus_dim_title">Մգլում</string>
+  <string name="morphe_glass_menus_dim_summary">Որքանով է մգացվում էկրանը ներքևի թերթի շուրջ</string>
   <string name="morphe_navigation_bar_glass_size_height">Բարձրություն</string>
   <string name="morphe_navigation_bar_glass_size_width">Առավելագույն լայնություն</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Կոճակների հեռավորություն</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Բաց է թողնում որակի ընտրության մենյուն և անմիջապես բացում որակի առաջացած մենյուն</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Թաքցնել Premium որակի տարբերակները</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Առաջնահերթություն տալ տեսանյութի որակին</string>
-  <string name="morphe_video_quality_prioritize_summary">Տեսանյութի առկայ բարձրագույն որակն ավելի կարևոր է համարում, քան կոդեկի արդյունավետությունը</string>
-  <string name="morphe_video_quality_prioritize_dialog">Եթե այս կարգավորումը անջատված է, ապա հին տեսանյութերի համար որակի ընտրության հնարավորությունները կարող են չլինել</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Թույլատրել \"Android VR\" / \"visionOS\" AV1-ը</string>
   <string name="morphe_spoof_video_streams_av1_summary">Թույլ է տալիս AV1-ի ծրագրային դեկոդավորում \"Android VR\" / \"visionOS\" հաճախորդի օգտագործման ժամանակ</string>

@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">음소거 시 일시정지</string>
   <string name="morphe_music_pause_when_muted_summary">시스템 볼륨이 음소거되면 재생을 일시정지하고, 볼륨을 높이면 다시 시작합니다</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos 전송</string>
+  <string name="morphe_music_sonos_cast_summary">전송 버튼을 사용하여 Wi-Fi 네트워크의 Sonos 및 기타 UPnP 스피커로 스트리밍할 수도 있습니다</string>
+  <string name="morphe_music_sonos_cast_sheet_title">기기에 연결</string>
+  <string name="morphe_music_sonos_cast_searching">Wi-Fi 네트워크에서 스피커를 검색하는 중…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Wi-Fi 네트워크에서 스피커를 선택하세요</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s(으)로 캐스팅 중</string>
+  <string name="morphe_music_sonos_cast_connected">연결됨</string>
+  <string name="morphe_music_sonos_cast_disconnect">연결 해제</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi 스피커</string>
+  <string name="morphe_music_sonos_cast_active">활성화됨</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest 및 Google TV 기기</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s(으)로 연결할 수 없습니다</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">재생 속도</string>
   <string name="morphe_music_playback_speed_summary">모든 트랙에 사용되는 속도입니다. 100%로 설정하면 팟캐스트 재생 속도와 같은 앱 속도가 사용됩니다</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"아티스트 데이터는 하루에 한 번 다운로드되는 SoundProof-Dumps(github.com/NuclearBlox/SoundProof-Dumps)에서 제공됩니다. 건너뛰기를 사용하면 재생 중인 곡에 대한 정보가 전송되지 않습니다. SoundProof 시트를 열면 최신 투표 결과 확인 및 투표를 위해 현재 아티스트 이름이 SoundProof 서버로 전송됩니다. 서버는 IP 주소로 투표자를 구분하므로, 다른 네트워크에서는 투표 결과가 다르게 표시될 수 있습니다.
 
 데이터베이스는 ODC Open Database License (ODbL)에 따라 라이선스가 부여됩니다. xoundbyte의 Soul Over AI 항목은 CC BY 4.0 라이선스를 따릅니다. SoundProof 또는 Soul Over AI와 제휴하거나 보증받지 않았습니다."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music 애니메이션 아트워크</string>
+  <string name="morphe_music_apple_music_artwork_summary">앨범에 애니메이션 아트워크가 있는 경우, 플레이어에 Apple Music의 애니메이션 앨범 아트워크를 표시합니다. 각 곡의 제목, 아티스트 및 앨범 정보가 Apple Music으로 전송됩니다</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">이 기기 파일에서는 가사를 사용할 수 없습니다.</string>
   <string name="morphe_music_lyrics_enabled_title">서드파티 가사 사용하기</string>

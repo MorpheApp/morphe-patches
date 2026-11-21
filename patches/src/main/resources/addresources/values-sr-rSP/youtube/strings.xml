@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Омогући филтер доњег менија: Библиотека / Ви</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Филтер доњег менија: Библиотека / Ви</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Унесите називе ставки доњег менија библиотеке / Ви, одвојене новим редовима</string>
+  <string name="morphe_hide_account_menu_badges_title">Сакриј значке</string>
   <string name="morphe_hide_account_menu_downloads_title">Сакриј преузимања</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Сакриј „Свиђају ми се видео снимци”</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Сакриј „Погледај касније”</string>
   <string name="morphe_hide_album_cards_title">Сакриј картице албума</string>
   <string name="morphe_hide_album_cards_summary">Сакрива картице албума испод описа уметника</string>
   <string name="morphe_hide_artist_cards_title">Сакриј картице извођача</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">Сакрива клизне картице и њихов селектор страница, који су приказани на дугмету за коментаре.</string>
   <string name="morphe_hide_comments_timestamp_button_title">Сакриј дугме за временску ознаку</string>
   <string name="morphe_hide_comments_top_fans_button_title">Сакриј дугме „Топ фанови“</string>
+  <string name="morphe_hide_comments_topics_title">Сакриј „Теме”</string>
+  <string name="morphe_hide_comments_topics_summary">Сакрије опцију „Теме” у траци за филтрирање и прегледе коментара по темама испод видео снимка</string>
   <string name="morphe_hide_comments_translate_button_title">Сакриј дугме „Преведи“</string>
   <string name="morphe_hide_comments_zero_state_title">Сакриј поруку „Још нема коментара“</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Дезинфикуј истакнуте линкове претраге</string>
@@ -793,6 +798,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_count_clear_done">Сачувани бројеви пуштања у петљи су обрисани</string>
   <string name="morphe_loop_count_flyout_name">Број пуштања</string>
   <string name="morphe_loop_count_dialog_message">Колико пута ће се видео пустити пре следећег видеа, од %1$s до %2$s. Оставите празно да би се видео пуштао без ограничења.</string>
+  <string name="morphe_loop_count_times">%s times</string>
   <string name="morphe_loop_count_no_limit">Без ограничења</string>
   <string name="morphe_loop_count_decrease">Мање пута</string>
   <string name="morphe_loop_count_increase">Више пута</string>
@@ -1028,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Вертикални преклоп (минимални)</string>
   <string name="morphe_swipe_change_video_title">Омогући превлачење за промену видеа</string>
   <string name="morphe_swipe_change_video_summary">Превлачење у режиму пуног екрана за прелазак на следећи или претходни видео снимак</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Покрет задржавања</string>
+  <string name="morphe_hold_gesture_screen_summary">Промените и закључајте брзину репродукције превлачењем након додира и задржавања</string>
+  <string name="morphe_hold_gesture_title">Омогући покрет задржавања</string>
+  <string name="morphe_hold_gesture_summary">Додир и задржавање видео снимка могу бити праћени превлачењем. Брзина током задржавања је брзина репродукције при додиру и задржавању</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Не користи се док је притисак за превлачење укључен. Додирните да промените</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Притисак за превлачење је омогућен</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Гест задржавања и гест притиска за превлачење контрола за превлачење оба почињу додиром и задржавањем, па само један од њих може бити укључен.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Искључите притисак за превлачење</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Гест задржавања се не користи док је притисак за превлачење укључен</string>
+  <string name="morphe_hold_gesture_dialog_title">Гест задржавања је укључен</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Искључите гест задржавања</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Омогући вибрацију при додиру</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Вибрира када се брзина промени и када је брзина закључана</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Вуците у страну да промените брзину</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Након додира и задржавања, вуците лево за спорије пуштање и десно за брже. Што више вучете, брзина се и даље мења све док прст не вратите</string>
+  <string name="morphe_hold_gesture_speed_step_title">Корак брзине</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Осетљивост вучења</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Ниска</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Нормална</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Висока</string>
+  <string name="morphe_hold_gesture_speed_min_title">Најспорија брзина</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Најспорија брзина коју превлачење може постићи</string>
+  <string name="morphe_hold_gesture_speed_max_title">Најбржа брзина</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Најбржа брзина коју превлачење може постићи (до 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Превлачите надоле да закључате брзину</string>
+  <string name="morphe_hold_gesture_lock_summary">Након додира и задржавања, превлачите надоле да задржите брзину када подигнете прст. Додирните знаку или поново додирните и задржите да откључате</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Увек приказуј знак закључавања</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Знак закључане брзине остаје видљив док су контроле плејера скривене</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Откључај када се видео промени</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Закључана брзина се завршава када почне други видео</string>
+  <string name="morphe_hold_gesture_lock_hint">Повуците надоле да закључате</string>
+  <string name="morphe_hold_gesture_lock_release">Пустите да закључате %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Титлови</string>
   <string name="morphe_captions_screen_summary">Управљајте аутоматским титловима и колачићима за титлове</string>
@@ -1132,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Подесите размак између стаклене导航траке и дна екрана или системске навигације</string>
   <string name="morphe_navigation_bar_glass_size_title">Величина стаклене траке за навигацију</string>
   <string name="morphe_navigation_bar_glass_size_summary">Прилагодите висину, ширину и размак дугмади стаклене траке за навигацију, уз преглед. Дугмад која не стају у ширину екрана су сакривена</string>
+  <string name="morphe_glass_menus_screen_title">Стаклени менији</string>
+  <string name="morphe_glass_menus_screen_summary">Менији као матирано стакло преко замућеног садржаја иза њих</string>
+  <string name="morphe_glass_menus_title">Омогући стаклене меније</string>
+  <string name="morphe_glass_menus_summary">Приказује меније и доње плоче као матирано стакло, са замућеним садржајем иза њих</string>
+  <string name="morphe_glass_menus_user_dialog_message">Менији се приказују скоро непрозирно док је укључен штедња батерије, или ако уређај не подржава замућивање</string>
+  <string name="morphe_glass_menus_opacity_title">Непрозирност стакла</string>
+  <string name="morphe_glass_menus_opacity_summary">Колико мени покрива замућени садржај (0 је прозирно, 100 је непрозирно)</string>
+  <string name="morphe_glass_menus_blur_title">Замућење</string>
+  <string name="morphe_glass_menus_blur_summary">Колико је садржај иза менија замућен</string>
+  <string name="morphe_glass_menus_dim_title">Затамњење</string>
+  <string name="morphe_glass_menus_dim_summary">Колико је екран око доњег листа затамњен</string>
   <string name="morphe_navigation_bar_glass_size_height">Висина</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимална ширина</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Размак дугмади</string>
@@ -1224,6 +1274,7 @@ Second \"item\" text"</string>
   <string name="morphe_autoplay_mode_entry_3">Изаључено</string>
   <string name="morphe_autoplay_mix_stop_after_title">Дужина Mix-а</string>
   <string name="morphe_autoplay_mix_stop_after_summary">У режиму Auto, Mix се зауставља након овог броја видеа. 0 = нема ограничења</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s videos</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: нема ограничења</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Подсетник \"Продужите са гледањем\"</string>
@@ -1695,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Прескаче мени за избор квалитета и директно отвара Напредне опције квалитета</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Сакриј опције Premium квалитета</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Приоритет видео квалитету</string>
-  <string name="morphe_video_quality_prioritize_summary">Даје предност највишем доступном видео квалитету у односу на ефикасност кодека</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ако је ова поставка искључена, старији видео снимци можда неће приказивати опције видео квалитета</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Дозволи \'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Дозвољава софтверско AV1 декодирање при коришћењу \'Android VR\' / \'visionOS\' клијента</string>
@@ -1814,6 +1861,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">Поништи</string>
   <string name="morphe_series_tracker_enable_short">Омогући</string>
   <string name="morphe_series_tracker_new_episode">1 нова епизода</string>
+  <string name="morphe_series_tracker_new_episodes">%s new episodes</string>
   <string name="morphe_series_tracker_record_short">Бележи напредак на овом уређају</string>
   <string name="morphe_series_tracker_follow_consent">"Ваш серијали и напредак остају на овом уређају, дељећи се између YouTube налога. YouTube контроле историје не мењају их. Обришите напредак из менија Серијали.
 
@@ -1847,6 +1895,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_episode_order">Редослед епизода</string>
   <string name="morphe_series_tracker_playlist_order">Редослед плејлиста</string>
   <string name="morphe_series_tracker_reverse_order">Обрнут редослед плејлиста</string>
+  <string name="morphe_series_tracker_view_count">%s views</string>
   <string name="morphe_series_tracker_view_count_one">%s преглед</string>
   <string name="morphe_series_tracker_completion_title">Означи епизоде као одгледане</string>
   <string name="morphe_series_tracker_completion_summary">Најмање %1$s%% прегледано са највише 90 секунди преостало, или %2$s секунди преостало</string>
@@ -1867,6 +1916,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">Врати резервну копију</string>
   <string name="morphe_series_tracker_backup_preview">Додајте %1$s серија. %2$s серија које су већ у вашој библиотеци остају. Постојећи напредак видео снимака се задржава</string>
   <string name="morphe_series_tracker_backup_saved">Резервна копија серија је сачувана</string>
+  <string name="morphe_series_tracker_backup_restored">Restored %s series</string>
   <string name="morphe_series_tracker_error_backup_invalid">Ова датотека није подржана резервна копија серијала или је превише велика. Ваша библиотека није промењена</string>
   <string name="morphe_series_tracker_error_backup_write">Није могуће сачувати резервну копију. Покушајте другу локацију</string>
   <string name="morphe_series_tracker_removed">Серија уклоњена</string>

@@ -141,7 +141,7 @@ Gusa Sawa ili kufungua Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Jaribu kuwezesha: Ghushi mkondo wa video &gt; Ingia kwenye Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Kliyenti ya kawaida</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Kuingia kwenye \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Kuingia kwa \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' inahitaji kuingia kando. Gusa hapa ili kuendelea</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hivi sasa umeingia kwenye \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
 • Mipangilio yako ya Morphe haitaagiza/kuhamisha uthibitisho wa Android VR
 • Ikiwa programu hii haitatumika kwa miezi 6 basi Google itaondoa uthibitisho huu
 • Utahitajika kuingia tena ikiwa utabadilisha nywila yako ya Google au kuondoa kifaa hiki kwenye mipangilio yako ya Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Kuingia kwenye Wavuti ya Simu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Kuingia kwa \"Web ya Simu\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Hiari: ingia kwenye tovuti ya YouTube ili ucheze video kwa kutumia akaunti yako. Gusa hapa ili kuendelea</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hivi sasa umeingia kwenye \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_seek_notification_media_length_invalid">Urefu wa utafutaji lazima uwe kati ya sekunde 1 na %s. Inatumia chaguo-msingi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Zima itifaki ya QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Paweke kipaumbele ubora wa video</string>
+  <string name="morphe_prioritize_video_quality_summary">Inapawekea kipaumbele ubora wa juu zaidi wa video unaopatikana kuliko ufanisi wa codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ikiwa mipangilio hii imezimwa, basi video za zamani zinaweza zisioonyeshe chaguzi za ubora wa video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Zima sauti ya DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

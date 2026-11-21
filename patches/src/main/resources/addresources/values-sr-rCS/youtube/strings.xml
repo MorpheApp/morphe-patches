@@ -61,7 +61,10 @@ Promene uključuju:
   <string name="morphe_hide_account_menu_title">Omogući filter donjeg menija Biblioteka / Vi</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filter donjeg menija Biblioteka / Vi</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Unesite nazive biblioteke / Filter menija na dnu, odvojene novim redovima</string>
+  <string name="morphe_hide_account_menu_badges_title">Sakrij značke</string>
   <string name="morphe_hide_account_menu_downloads_title">Sakrij preuzimanja</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Sakrij „Omiljene video snimke”</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Sakrij „Pogledaj kasnije”</string>
   <string name="morphe_hide_album_cards_title">Sakrij kartice albuma</string>
   <string name="morphe_hide_album_cards_summary">Sakriva kartice albuma ispod opisa umetnika</string>
   <string name="morphe_hide_artist_cards_title">Sakrij kartice izvođača</string>
@@ -427,6 +430,8 @@ Ograničenja:
   <string name="morphe_minimal_comments_button_summary">Sakriva klizne kartice i njihov selektor stranica, prikazani na dugmetu za komentare</string>
   <string name="morphe_hide_comments_timestamp_button_title">Sakrij dugme za vremensku oznaku</string>
   <string name="morphe_hide_comments_top_fans_button_title">Sakrij dugme \'Top fanovi\'</string>
+  <string name="morphe_hide_comments_topics_title">Sakrij \"Teme\"</string>
+  <string name="morphe_hide_comments_topics_summary">Sakriva opciju \"Teme\" u traci filtera i preglede komentara po temama ispod videa</string>
   <string name="morphe_hide_comments_translate_button_title">Sakrij dugme za prevod</string>
   <string name="morphe_hide_comments_zero_state_title">Sakrij poruku „Nema komentara“</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Dezinfikuje naglašene linkove za pretragu</string>
@@ -1029,6 +1034,39 @@ Da biste to popravili, uključite 'Spoof video strimovi' i promenite 'Podrazumev
   <string name="morphe_swipe_overlay_style_entry_7">Vertikalni preklop (minimalni)</string>
   <string name="morphe_swipe_change_video_title">Omogući prevlačenje za promenu videa</string>
   <string name="morphe_swipe_change_video_summary">Prevlačenjem u režimu celog ekrana preskačete na sledeći ili prethodni video</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Pokret zadržavanja</string>
+  <string name="morphe_hold_gesture_screen_summary">Promenite i zaključajte brzinu reprodukcije prevlačenjem nakon dodira i zadržavanja</string>
+  <string name="morphe_hold_gesture_title">Omogući pokret zadržavanja</string>
+  <string name="morphe_hold_gesture_summary">Dodir i zadržavanje videa može biti praćeno prevlačenjem. Brzina tokom zadržavanja je brzina reprodukcije pri dodiru i zadržavanju</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Ne koristi se dok je pritisak za prevlačenje uključen. Dodirnite za promenu</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Pritisak za prevlačenje je omogućen</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Gesta držanja i gesta pritiska za prevlačenje kontrola prevlačenja obe počinju dodirivanjem i držanjem, tako da samo jedna od njih može biti uključena.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Isključite pritisak za prevlačenje</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Gesta držanja se ne koristi dok je pritisak za prevlačenje uključen</string>
+  <string name="morphe_hold_gesture_dialog_title">Gesta držanja je uključena</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Isključite gestu držanja</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Omogući vibraciju pri dodiru</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibrira kada se brzina promeni i kada je brzina zaključana</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Prevucite u stranu da promenite brzinu</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Nakon pritiska i držanja, prevucite levo za sporije puštanje i desno za brže puštanje. Što više prevučete, brzina će se nastaviti menjati sve dok prst ne vratite</string>
+  <string name="morphe_hold_gesture_speed_step_title">Korak brzine</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Osetljivost prevlačenja</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Niska</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normalna</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Visoka</string>
+  <string name="morphe_hold_gesture_speed_min_title">Najmanja brzina</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Najmanja brzina koju prevlačenje može dostići</string>
+  <string name="morphe_hold_gesture_speed_max_title">Najbrža brzina</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Najbrža brzina koju prevlačenje može dostići (do 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Prevucite nadole da zaključate brzinu</string>
+  <string name="morphe_hold_gesture_lock_summary">Nakon dodira i držanja, prevucite nadole da zadržite brzinu kada podignete prst. Dodirnite značku ili ponovo dodirnite i držite da otključate</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Uvek prikaži značku za zaključavanje</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Značka zaključane brzine ostaje vidljiva dok su kontrole plejera skrivene</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Otključaj kada se video promeni</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Zaključana brzina se poništava kada počne drugi video</string>
+  <string name="morphe_hold_gesture_lock_hint">Povucite nadole za zaključavanje</string>
+  <string name="morphe_hold_gesture_lock_release">Otpustite za zaključavanje %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Titlovi</string>
   <string name="morphe_captions_screen_summary">Upravljajte automatskim titlovima i kolačićima za titlove</string>
@@ -1133,6 +1171,17 @@ Da biste pristupili Podešavanjima, omogućite dugme Podešavanja putem Opšte �
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Prilagodite razmak između staklene navigacione trake i dna ekrana ili sistemske navigacije</string>
   <string name="morphe_navigation_bar_glass_size_title">Veličina staklene trake za navigaciju</string>
   <string name="morphe_navigation_bar_glass_size_summary">Podesite visinu, širinu i razmak između dugmića staklene trake za navigaciju, uz pregled. Dugmići koji ne stanu u širinu ekrana su sakriveni</string>
+  <string name="morphe_glass_menus_screen_title">Stakleni meniji</string>
+  <string name="morphe_glass_menus_screen_summary">Meniji kao zamućeno staklo preko zamućenog sadržaja iza njih</string>
+  <string name="morphe_glass_menus_title">Omogući staklene menije</string>
+  <string name="morphe_glass_menus_summary">Prikazuje menije i donje tabele kao zamućeno staklo, pri čemu je sadržaj iza njih zamućen</string>
+  <string name="morphe_glass_menus_user_dialog_message">Meniji se prikazuju skoro neprozirno dok je uključena ušteda baterije, ili ako uređaj ne podržava zamućenje</string>
+  <string name="morphe_glass_menus_opacity_title">Neprozirnost stakla</string>
+  <string name="morphe_glass_menus_opacity_summary">Koliko meni prekriva zamućeni sadržaj (0 je potpuno providno, 100 je neprozirno)</string>
+  <string name="morphe_glass_menus_blur_title">Zamućenje</string>
+  <string name="morphe_glass_menus_blur_summary">Koliko je sadržaj iza menija zamućen</string>
+  <string name="morphe_glass_menus_dim_title">Zatamnjenje</string>
+  <string name="morphe_glass_menus_dim_summary">Koliko je ekran oko donje ploče zatamnjen</string>
   <string name="morphe_navigation_bar_glass_size_height">Visina</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimalna širina</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Razmak između dugmića</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Preskače meni za izbor kvaliteta i direktno otvara meni kvaliteta \"Napredno\"</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije Premium kvaliteta</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Prioritizuj kvalitet videa</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioritizuje najviši dostupni kvalitet videa u odnosu na efikasnost kodeka</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ako je ova postavka isključena, stariji video snimci mogu da nemaju opcije kvaliteta videa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Dozvoli \'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Omogućava softversko AV1 dekodiranje prilikom korišćenja \'Android VR\' / \'visionOS\' klijenta</string>

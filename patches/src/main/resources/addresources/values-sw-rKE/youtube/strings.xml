@@ -61,7 +61,10 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_account_menu_title">Washa chujio cha menyu ya chini ya Maktaba / Wewe</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Chujio cha menyu ya chini ya Maktaba / Wewe</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Ingiza majina ya menyu ya chini ya Maktaba / Wewe ya kuchuja, yakitenganishwa kwa mistari mipya</string>
+  <string name="morphe_hide_account_menu_badges_title">Ficha Beji</string>
   <string name="morphe_hide_account_menu_downloads_title">Ficha Pakua</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Ficha \'Video zilizopendwa\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Ficha \'Tazama baadaye\'</string>
   <string name="morphe_hide_album_cards_title">Ficha kadi za albamu</string>
   <string name="morphe_hide_album_cards_summary">Huficha kadi za albamu chini ya maelezo ya msanii</string>
   <string name="morphe_hide_artist_cards_title">Ficha kadi za msanii</string>
@@ -427,6 +430,8 @@ Vikwazo:
   <string name="morphe_minimal_comments_button_summary">Huficha kadi zinazoteleza na kichaguzi chake cha ukurasa, kinachoonekana kwenye kitufe cha maoni</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ficha kitufe cha Muda</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ficha kitufe cha \'Mashabiki wakuu\'</string>
+  <string name="morphe_hide_comments_topics_title">Ficha \'Mada\'</string>
+  <string name="morphe_hide_comments_topics_summary">Huficha chaguo la upau wa vichujio vya \'Mada\' na vionjo vya maoni ya \'Mada\' chini ya video</string>
   <string name="morphe_hide_comments_translate_button_title">Ficha kitufe cha Tafsiri</string>
   <string name="morphe_hide_comments_zero_state_title">Ficha ujumbe wa \'Hakuna maoni bado\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Safisha viungo vya utafutaji vilivyotiwa rangi</string>
@@ -1029,6 +1034,39 @@ Ili kurekebisha hili, washa 'Ghushi mkondo wa video' na ubadilishe 'Mteja chaguo
   <string name="morphe_swipe_overlay_style_entry_7">Tabaka la wima (minimal)</string>
   <string name="morphe_swipe_change_video_title">Washa kutelezesha ili kubadilisha video</string>
   <string name="morphe_swipe_change_video_summary">Telezesha katika hali ya skrini nzima ili kuruka kwenda video inayofuata au ya awali</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Ishara ya kushikilia</string>
+  <string name="morphe_hold_gesture_screen_summary">Badilisha na kufunga kasi ya uchezaji kwa kuburudisha baada ya kugusa na kushikilia</string>
+  <string name="morphe_hold_gesture_title">Washa ishara ya kushikilia</string>
+  <string name="morphe_hold_gesture_summary">Kugusa na kushikilia video kunaweza kufuatwa na kuburudisha. Kasi wakati wa kushikilia ndiyo kasi ya uchezaji ya kugusa na kushikilia</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Haitumiki wakati \'bonyeza ili usogeze\' imewashwa. Gusa ili kubadilisha</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Bonyeza ili usogeze imewashwa</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Ishara ya kushikilia na ishara ya bonyeza ili usogeze ya vidhibiti vya kusogeza zote huanza kwa kugusa na kushikilia, hivyo moja tu kati ya hizo inaweza kuwa imewashwa.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Zima bonyeza ili usogeze</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Ishara ya kushikilia haitumiki wakati \'bonyeza ili usogeze\' imewashwa</string>
+  <string name="morphe_hold_gesture_dialog_title">Ishara ya kushikilia imewashwa</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Zima ishara ya kushikilia</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Washa mrejesho wa haptiki</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Hutetema kasi inapobadilika na inapofungwa</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Burudisha pembeni ili kubadilisha kasi</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Baada ya kugusa na kushikilia, burudisha kushoto ili kucheza polepole na kulia ili kucheza haraka. Kadiri unavyozidi kwenda mbali, kasi inaendelea kubadilika hadi kidole kirudi</string>
+  <string name="morphe_hold_gesture_speed_step_title">Hatua ya kasi</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Usikivu wa kuburudisha</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Chini</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Kawaida</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Juu</string>
+  <string name="morphe_hold_gesture_speed_min_title">Kasi ya polepole zaidi</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Kasi ya polepole zaidi ambayo kuvuta kunaweza kufikia</string>
+  <string name="morphe_hold_gesture_speed_max_title">Kasi ya haraka zaidi</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Kasi ya haraka zaidi ambayo kuvuta kunaweza kufikia (hadi 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Vuta chini ili kufunga kasi</string>
+  <string name="morphe_hold_gesture_lock_summary">Baada ya kugusa na kushikilia, vuta chini ili kuendelea na kasi hiyo wakati kidole kinapoondolewa. Gusa alama au gusa na ushikilie tena ili kufungua</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Onyesha alama ya kufuli kila wakati</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Alama ya kasi iliyofungwa inabaki kuonekana wakati vidhibiti vya kinawiri vimefichwa</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Fungua wakati video inapobadilika</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Kasi iliyofungwa inaishia wakati video nyingine inapoanza</string>
+  <string name="morphe_hold_gesture_lock_hint">Vuta chini ili kufunga</string>
+  <string name="morphe_hold_gesture_lock_release">Achia ili kufunga %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Maelezo</string>
   <string name="morphe_captions_screen_summary">Simamia maelezo ya maandishi ya kiotomatiki na kuki za maelezo</string>
@@ -1133,6 +1171,17 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Rekebisha nafasi kati ya baa ya urambazaji ya kioo na sehemu ya chini ya skrini au urambazaji wa mfumo</string>
   <string name="morphe_navigation_bar_glass_size_title">Ukubwa wa baa ya urambazaji ya kioo</string>
   <string name="morphe_navigation_bar_glass_size_summary">Rekebisha urefu, upana na nafasi ya vitufe ya baa ya urambazaji ya kioo, pamoja na onyesho la kukagua. Vitufe visivyoendana na upana wa skrini hufichwa</string>
+  <string name="morphe_glass_menus_screen_title">Menyu za kioo</string>
+  <string name="morphe_glass_menus_screen_summary">Menyu kama kioo cha ukungu juu ya maudhui yaliyofifia nyuma yake</string>
+  <string name="morphe_glass_menus_title">Washa menyu za kioo</string>
+  <string name="morphe_glass_menus_summary">Inaonyesha menyu na shuka za chini kama kioo cha ukungu, huku maudhui ya nyuma yakififia</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menyu zinaonyeshwa zikiwa hazipitishi mwanga wakati msaidizi wa betri akiwa amewashwa, au ikiwa kifaa hakitumii ufifishaji</string>
+  <string name="morphe_glass_menus_opacity_title">Ufifi wa kioo</string>
+  <string name="morphe_glass_menus_opacity_summary">Kiasi gani menyu inafunika maudhui yaliyofifishwa (0 ni wazi, 100 ni fufi)</string>
+  <string name="morphe_glass_menus_blur_title">Fifisha</string>
+  <string name="morphe_glass_menus_blur_summary">Kiasi gani maudhui ya nyuma ya menyu yamefifishwa</string>
+  <string name="morphe_glass_menus_dim_title">Fifisha mwanga</string>
+  <string name="morphe_glass_menus_dim_summary">Kiasi gani skrini inayozunguka shuka ya chini imefifishwa</string>
   <string name="morphe_navigation_bar_glass_size_height">Urefu</string>
   <string name="morphe_navigation_bar_glass_size_width">Upana wa juu</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Nafasi ya vitufe</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Ruka menyu ya uteuzi wa ubora na ufungue menyu ya Ubora wa Juu moja kwa moja</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ficha chaguzi za ubora wa Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Toa kipaumbele kwa ubora wa video</string>
-  <string name="morphe_video_quality_prioritize_summary">Hutoa kipaumbele kwa ubora wa juu zaidi wa video unaopatikana badala ya ufanisi wa codec</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ikiwa mpangilio huu umezimwa, basi video za zamani zinaweza zisioonyeshe chaguzi zozote za ubora wa video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Ruhusu AV1 ya \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_summary">Inaruhusu udekodishaji wa programu ya AV1 wakati unapotumia mteja wa \'Android VR\' / \'visionOS\'</string>

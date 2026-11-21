@@ -141,7 +141,7 @@ Sakatu AD to Android System WebView irekitzeko."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Saiatu aktibatzen: Bideo-fluxuak imitatu &gt; Android VR saioa hasi</string>
   <string name="morphe_spoof_video_streams_client_type_title">Bezero lehenetsia</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR saioa hasi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' sarrera</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-k saio bakarra eta berezia eskatzen du. Sakatu hemen jarraitzeko</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Une honetan \'Android VR\'-en saioa hasita dago</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Saioa hasteko, sakatu behean jarraitu"</string>
 • Morphe konfigurazioek ez dute Android VR autentifikazioa inportatu/esportatuko
 • Aplikazio hau 6 hilabetez erabili gabe badago, Googlek autentifikazio hau kenduko du
 • Google pasahitza aldatzen baduzu edo gailu hau Google ezarpenetatik kentzen baduzu, berriro saioa hasi beharko duzu"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web Mobile bidez saioa hasi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Web mugikorra\' sarrera</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Aukeratua: saioa hasi YouTube webgunetan zure kontuarekin bideoaka izateko. Egun hemen jarraitzeko</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Une honetan \'Web Mobile\'-n saioa hasita dago</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Sartzeko, sakatu beheko jarraitu botoia"</string>
   <string name="morphe_seek_notification_media_length_invalid">Bilaketa luzerak 1 eta %s segundo artekoa izan behar du. Lehenetsia erabiliko da</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desaktibu QUIC protokoloa</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Lehenetsi bideo kalitatea</string>
+  <string name="morphe_prioritize_video_quality_summary">Eskuragarri dagoen bideo kalitate altuena kodekaren eraginkortasunaren gainetik lehenesten du</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ezarpen hau desaktibatuta badago, bideo zaharrek ez dute kalitate aukerarik erakutsi ahal izango</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Desaktibatu DRC audioa</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

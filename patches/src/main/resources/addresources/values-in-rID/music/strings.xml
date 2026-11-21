@@ -265,6 +265,20 @@ Menjeda crossfade untuk menonton video musik dapat membuat beberapa video menjad
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Jeda saat dibisukan</string>
   <string name="morphe_music_pause_when_muted_summary">Menjeda pemutaran saat volume sistem dibisukan dan melanjutkannya saat volume dinaikkan</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Tombol Cast juga dapat melakukan streaming ke Sonos dan speaker UPnP lainnya di jaringan Wi-Fi Anda</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Hubungkan ke perangkat</string>
+  <string name="morphe_music_sonos_cast_searching">Mencari speaker di jaringan Wi-Fi Anda…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Pilih speaker di jaringan Wi-Fi Anda</string>
+  <string name="morphe_music_sonos_cast_casting_to">Menyambungkan ke %s</string>
+  <string name="morphe_music_sonos_cast_connected">Tersambung</string>
+  <string name="morphe_music_sonos_cast_disconnect">Putuskan Sambungan</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Speaker di Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktif</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Perangkat Chromecast, Nest, dan Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Tidak dapat menyambung ke %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Kecepatan pemutaran</string>
   <string name="morphe_music_playback_speed_summary">Kecepatan yang digunakan untuk semua trek. Pada 100%, kecepatan aplikasi digunakan, seperti kecepatan pemutaran podcast.</string>
@@ -586,6 +600,9 @@ Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastik
   <string name="morphe_music_soundproof_about_summary">"Data artis berasal dari SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), yang diunduh sekali sehari. Melewati tidak mengirimkan apa pun tentang apa yang Anda mainkan. Membuka lembar SoundProof mengirimkan nama artis saat ini ke server SoundProof untuk menampilkan pemungutan suara terbaru dan untuk memberikan suara. Server membedakan pemilih berdasarkan alamat IP, sehingga suara Anda mungkin muncul secara berbeda di jaringan lain.
 
 Basis data ini dilisensikan di bawah ODC Open Database License (ODbL). Entri dari Soul Over AI oleh xoundbyte dilisensikan di bawah CC BY 4.0. Tidak terafiliasi dengan atau didukung oleh SoundProof atau Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Karya seni animasi Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Menampilkan karya seni album animasi dari Apple Music di pemutar, jika album tersebut memilikinya. Judul, artis, dan album dari setiap lagu dikirim ke Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Lirik tidak tersedia untuk file perangkat ini.</string>
   <string name="morphe_music_lyrics_enabled_title">Gunakan lirik pihak ketiga</string>

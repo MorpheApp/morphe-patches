@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">เปิดใช้งานตัวกรองเมนูด้านล่าง คลัง / คุณ</string>
   <string name="morphe_hide_account_menu_filter_strings_title">ตัวกรองเมนูด้านล่าง คลัง / คุณ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">ป้อนชื่อเมนูด้านล่างคลัง / คุณที่คุณต้องการกรอง คั่นด้วยบรรทัดใหม่</string>
+  <string name="morphe_hide_account_menu_badges_title">ซ่อนป้ายกำกับ</string>
   <string name="morphe_hide_account_menu_downloads_title">ซ่อนรายการดาวน์โหลด</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">ซ่อน \'วิดีโอที่ชอบ\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">ซ่อน \'ดูภายหลัง\'</string>
   <string name="morphe_hide_album_cards_title">ซ่อนการ์ดอัลบั้ม</string>
   <string name="morphe_hide_album_cards_summary">ซ่อนการ์ดอัลบั้มภายใต้คำอธิบายของศิลปิน</string>
   <string name="morphe_hide_artist_cards_title">ซ่อนการ์ดศิลปิน</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">ซ่อนการ์ดเลื่อนและตัวเลือกหน้าซึ่งแสดงอยู่บนปุ่มความคิดเห็น</string>
   <string name="morphe_hide_comments_timestamp_button_title">ซ่อนปุ่มตราประทับเวลา</string>
   <string name="morphe_hide_comments_top_fans_button_title">ซ่อนปุ่ม \'Top fans\'</string>
+  <string name="morphe_hide_comments_topics_title">ซ่อน \'หัวข้อ\'</string>
+  <string name="morphe_hide_comments_topics_summary">ซ่อนตัวเลือกแถบตัวกรอง \'หัวข้อ\' และตัวอย่างความคิดเห็นแบบ \'หัวข้อ\' ใต้คำบรรยายวิดีโอ</string>
   <string name="morphe_hide_comments_translate_button_title">ซ่อนปุ่มแปลภาษา</string>
   <string name="morphe_hide_comments_zero_state_title">ซ่อนข้อความ \"ไม่มีความคิดเห็น\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">ทำให้ลิงก์การค้นหาที่ไฮไลต์เป็นรูปแบบปกติ</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">ภาพซ้อนทับแนวตั้ง (มินิมอล)</string>
   <string name="morphe_swipe_change_video_title">เปิดใช้การปัดเพื่อเปลี่ยนวิดีโอ</string>
   <string name="morphe_swipe_change_video_summary">ปัดในโหมดเต็มหน้าจอเพื่อข้ามไปยังวิดีโอถัดไปหรือก่อนหน้า</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">ท่าทางกดค้าง</string>
+  <string name="morphe_hold_gesture_screen_summary">เปลี่ยนและล็อคความเร็วในการเล่นโดยการลากหลังจากแตะและกดค้างไว้</string>
+  <string name="morphe_hold_gesture_title">เปิดใช้งานท่าทางกดค้าง</string>
+  <string name="morphe_hold_gesture_summary">การแตะและกดค้างที่วิดีโอสามารถตามด้วยการลาก ความเร็วขณะกดค้างคือความเร็วในการเล่นแบบแตะและกดค้าง</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">ไม่ได้ใช้งานเมื่อเปิดกดเพื่อปัด แตะเพื่อเปลี่ยน</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">เปิดใช้งานกดเพื่อปัด</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">ท่าทางแบบกดค้างและท่าทางแบบกดเพื่อปัดของการควบคุมการปัดต่างเริ่มต้นด้วยการแตะและค้างไว้ ดังนั้นจึงสามารถเปิดใช้งานได้เพียงอย่างใดอย่างหนึ่งเท่านั้น</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">ปิดกดเพื่อปัด</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">ไม่ได้ใช้งานท่าทางแบบกดค้างเมื่อเปิดกดเพื่อปัด</string>
+  <string name="morphe_hold_gesture_dialog_title">เปิดท่าทางแบบกดค้าง</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">ปิดท่าทางแบบกดค้าง</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">เปิดใช้งานการตอบสนองแบบสัมผัส</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">สั่นเมื่อความเร็วเปลี่ยนและเมื่อความเร็วถูกล็อก</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">ลากไปด้านข้างเพื่อเปลี่ยนความเร็ว</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">หลังจากแตะค้างไว้ ให้ลากไปทางซ้ายเพื่อเล่นให้ช้าลง และลากไปทางขวาเพื่อเล่นให้เร็วขึ้น ยิ่งลากออกไปไกล ความเร็วจะยิ่งเปลี่ยนไปเรื่อยๆ จนกว่าจะดึงนิ้วกลับมา</string>
+  <string name="morphe_hold_gesture_speed_step_title">ขั้นความเร็ว</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">ความไวในการลาก</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">ต่ำ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">ปกติ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">สูง</string>
+  <string name="morphe_hold_gesture_speed_min_title">ความเร็วต่ำสุด</string>
+  <string name="morphe_hold_gesture_speed_min_summary">ความเร็วต่ำที่สุดที่สามารถทำได้จากการลาก</string>
+  <string name="morphe_hold_gesture_speed_max_title">ความเร็วสูงสุด</string>
+  <string name="morphe_hold_gesture_speed_max_summary">ความเร็วสูงสุดที่การลากสามารถเข้าถึงได้ (สูงสุด 8)</string>
+  <string name="morphe_hold_gesture_lock_title">ลากลงเพื่อล็อกความเร็ว</string>
+  <string name="morphe_hold_gesture_lock_summary">หลังจากแตะค้างไว้ ให้ลากลงเพื่อรักษาความเร็วเมื่อยกนิ้วขึ้น แตะที่ป้ายกำกับหรือแตะค้างไว้อีกครั้งเพื่อปลดล็อก</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">แสดงป้ายกำกับล็อกเสมอ</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">ป้ายกำกับของความเร็วที่ล็อกไว้จะยังคงปรากฏอยู่แม้ว่าการควบคุมเครื่องเล่นจะถูกซ่อนไว้</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">ปลดล็อกเมื่อวิดีโอเปลี่ยน</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">ความเร็วที่ล็อกไว้จะสิ้นสุดลงเมื่อวิดีโออื่นเริ่มเล่น</string>
+  <string name="morphe_hold_gesture_lock_hint">ดึงลงเพื่อล็อก</string>
+  <string name="morphe_hold_gesture_lock_release">ปล่อยเพื่อล็อก %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">คำบรรยาย</string>
   <string name="morphe_captions_screen_summary">จัดการคำบรรยายอัตโนมัติและคุกกี้คำบรรยาย</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ปรับระยะห่างระหว่างแถบนำทางแบบกระจกกับด้านล่างของหน้าจอหรือการนำทางของระบบ</string>
   <string name="morphe_navigation_bar_glass_size_title">ขนาดแถบนำทางแบบกระจก</string>
   <string name="morphe_navigation_bar_glass_size_summary">ปรับความสูง ความกว้าง และระยะห่างระหว่างปุ่มของแถบนำทางแบบกระจก พร้อมการแสดงตัวอย่าง ปุ่มที่ไม่พอดีกับความกว้างของหน้าจอจะถูกซ่อนไว้</string>
+  <string name="morphe_glass_menus_screen_title">เมนูกระจก</string>
+  <string name="morphe_glass_menus_screen_summary">เมนูจะมีลักษณะเป็นกระจกฝ้าทับบนเนื้อหาที่เบลออยู่ด้านหลัง</string>
+  <string name="morphe_glass_menus_title">เปิดใช้งานเมนูกระจก</string>
+  <string name="morphe_glass_menus_summary">แสดงเมนูและ bottom sheets เป็นกระจกฝ้า โดยจะเบลอเนื้อหาที่อยู่ด้านหลัง</string>
+  <string name="morphe_glass_menus_user_dialog_message">เมนูจะแสดงผลแบบเกือบทึบเมื่อเปิดโหมดประหยัดแบตเตอรี่ หรือหากอุปกรณ์ไม่รองรับการเบลอ</string>
+  <string name="morphe_glass_menus_opacity_title">ความทึบแสงของกระจก</string>
+  <string name="morphe_glass_menus_opacity_summary">ระดับที่เมนูจะบดบังเนื้อหาที่เบลอ (0 คือโปร่งใส, 100 คือทึบแสง)</string>
+  <string name="morphe_glass_menus_blur_title">เบลอ</string>
+  <string name="morphe_glass_menus_blur_summary">ระดับความเบลอของเนื้อหาที่อยู่ด้านหลังเมนู</string>
+  <string name="morphe_glass_menus_dim_title">ลดแสง</string>
+  <string name="morphe_glass_menus_dim_summary">ระดับความมืดของหน้าจอรอบๆ บอตทอมชีต</string>
   <string name="morphe_navigation_bar_glass_size_height">ความสูง</string>
   <string name="morphe_navigation_bar_glass_size_width">ความกว้างสูงสุด</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ระยะห่างระหว่างปุ่ม</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">ข้ามเมนูการเลือกคุณภาพและเปิดเมนูคุณภาพขั้นสูงโดยตรง</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">ซ่อนตัวเลือกคุณภาพสูงสุด</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">จัดลำดับความสำคัญของคุณภาพวิดีโอ</string>
-  <string name="morphe_video_quality_prioritize_summary">จัดลำดับความสำคัญของคุณภาพวิดีโอสูงสุดเหนือประสิทธิภาพของ codec</string>
-  <string name="morphe_video_quality_prioritize_dialog">หากปิดการตั้งค่านี้ วิดีโอเก่าบางรายการอาจไม่แสดงตัวเลือกคุณภาพวิดีโอ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">อนุญาต AV1 สำหรับ \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_summary">อนุญาตการถอดรหัส AV1 ด้วยซอฟต์แวร์เมื่อใช้ไคลเอนต์ \'Android VR\' / \'visionOS\'</string>

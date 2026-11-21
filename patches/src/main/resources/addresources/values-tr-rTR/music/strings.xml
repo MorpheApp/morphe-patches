@@ -265,6 +265,20 @@ Müzik videosu izlemek için çapraz geçişi duraklatmak bazı videoların siya
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Sessizken duraklat</string>
   <string name="morphe_music_pause_when_muted_summary">Sistem sesi sessiz iken oynatmayı duraklatır ve ses yükseltildiğinde devam ettirir</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Yayınla düğmesi ayrıca Sonos\'a ve Wi-Fi ağınızdaki diğer UPnP hoparlörlere akış sağlayabilir</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Bir cihaza bağlan</string>
+  <string name="morphe_music_sonos_cast_searching">Wi-Fi ağınızdaki hoparlörler aranıyor…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Wi-Fi ağınızdaki bir hoparlörü seçin</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s cihazına aktarılıyor</string>
+  <string name="morphe_music_sonos_cast_connected">Bağlandı</string>
+  <string name="morphe_music_sonos_cast_disconnect">Bağlantıyı Kes</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi üzerindeki hoparlörler</string>
+  <string name="morphe_music_sonos_cast_active">Aktif</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest ve Google TV cihazları</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s cihazına bağlanamadı</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Oynatma hızı</string>
   <string name="morphe_music_playback_speed_summary">Tüm parçalar için kullanılan hız. Yüzde 100\'de uygulama hızı kullanılır, örneğin podcast oynatma hızı gibi</string>
@@ -586,6 +600,9 @@ Scrobbling'in arka planda çalma sırasında senkronize olduğundan emin olmak i
   <string name="morphe_music_soundproof_about_summary">"Sanatçı verileri, günde bir kez indirilen SoundProof-Dumps'tan (github.com/NuclearBlox/SoundProof-Dumps) gelmektedir. Atlamak, çaldıklarınız hakkında hiçbir şey göndermez. SoundProof sayfasını açmak, güncel oyları göstermek ve oy vermek için mevcut sanatçı adını SoundProof sunucusuna gönderir. Sunucu, oylayanları IP adresiyle ayırır, bu nedenle oyunuz başka bir ağda farklı görünebilir.
 
 Veritabanı ODC Açık Veritabanı Lisansı (ODbL) kapsamında lisanslanmıştır. xoundbyte tarafından Soul Over AI'dan alınan kayıtlar CC BY 4.0 kapsamında lisanslanmıştır. SoundProof veya Soul Over AI ile bağlantılı değildir veya onlar tarafından onaylanmamıştır."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music hareketli kapak görseli</string>
+  <string name="morphe_music_apple_music_artwork_summary">Albümün varsa, Apple Music\'in hareketli albüm kapak görselünü oynatıcıda gösterir. Her şarkının başlığı, sanatçısı ve albümü Apple Music\'e gönderilir</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Bu cihaz dosyası için şarkı sözleri mevcut değil.</string>
   <string name="morphe_music_lyrics_enabled_title">Üçüncü taraf şarkı sözlerini kullan</string>

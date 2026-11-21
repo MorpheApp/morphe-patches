@@ -265,6 +265,20 @@ Fade-ийн хугацаанаас богино дуунууд crossfade хий�
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Дууггүй болгох үед түр зогсоох</string>
   <string name="morphe_music_pause_when_muted_summary">Системийн дууг дууггүй болгох үед тоглуулалтыг түр зогсоож, дууг ихэсгэх үед дахин ажиллуулна</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast товчлуур нь таны Wi-Fi сүлжээн дэх Sonos болон бусад UPnP чанга яригчид руу дамжуулах боломжтой</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Төхөөрөмжтэй холбох</string>
+  <string name="morphe_music_sonos_cast_searching">Таны Wi-Fi сүлжээнээс чанга яригч хайж байна…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Таны Wi-Fi сүлжээн дэх чанга яригчийг сонгоно уу</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s рүү дамжуулж байна</string>
+  <string name="morphe_music_sonos_cast_connected">Холбогдсон</string>
+  <string name="morphe_music_sonos_cast_disconnect">Салгах</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi сүлжээний чанга яригчууд</string>
+  <string name="morphe_music_sonos_cast_active">Идэвхтэй</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest болон Google TV төхөөрөмжүүд</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s-тэй холбогдож чадсангүй</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Тоглуулах хурд</string>
   <string name="morphe_music_playback_speed_summary">Бүх трект ашиглагдах хурд. 100% дээр аппликейшны хурд, жишээ нь подкаст тоглуулах хурдыг ашиглана</string>
@@ -586,6 +600,9 @@ Fade-ийн хугацаанаас богино дуунууд crossfade хий�
   <string name="morphe_music_soundproof_about_summary">"Уран бүтээлчдийн мэдээлэл SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps)-оос өдөр бүр нэг удаа татагдаж шинэчлэгддэг. Алгасах нь таны тоглуулж буй зүйлийн талаар юу ч илгээхгүй. SoundProof хүснэгтийг нээхэд сүүлийн үеийн саналаа харах болон санал өгөх зорилгоор одоогийн уран бүтээлчийн нэрийг SoundProof сервер рүү илгээдэг. Сервер нь санал өгөгчдийг IP хаягаар нь ялгадаг тул таны санал өөр сүлжээнд өөр харагдаж болно.
 
 Өгөгдлийн сан нь ODC Open Database License (ODbL) лицензийн дагуу зөвшөөрөгдсөн. xoundbyte-ийн Soul Over AI-аас авсан бичлэгүүд нь CC BY 4.0 лицензийн дагуу зөвшөөрөгдсөн. SoundProof болон Soul Over AI-тай холбогдоогүй, тэдгээрийн дэмжлэггүйгээр ажилладаг."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music-ийн хөдөлгөөнт зураг</string>
+  <string name="morphe_music_apple_music_artwork_summary">Хэрэв альбомд байгаа бол тоглуулагч дээр Apple Music-ийн хөдөлгөөнт альбомын зургийг харуулна. Дуу бүрийн нэр, уран бүтээлч болон альбомыг Apple Music рүү илгээнэ</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Энэ төхөөрөмжийн файлд дууны үг байхгүй байна.</string>
   <string name="morphe_music_lyrics_enabled_title">Гуравдагч талын дууны үг ашиглах</string>

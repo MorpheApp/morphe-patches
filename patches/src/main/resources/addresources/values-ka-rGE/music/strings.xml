@@ -265,6 +265,20 @@ crossfade-ის შეჩერებამ მუსიკალური ვ�
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">შეაჩეროს ხმის გათიშვისას</string>
   <string name="morphe_music_pause_when_muted_summary">აჩერებს დაკვრას, როდესაც სისტემის ხმა გათიშულია და განაახლებს მას ხმის მომატებისას</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast ღილაკით ასევე შესაძლებელია სთრიმინგი Sonos-ზე და სხვა UPnP დინამიკებზე თქვენს Wi-Fi ქსელში</string>
+  <string name="morphe_music_sonos_cast_sheet_title">დაუკავშირდით მოწყობილობას</string>
+  <string name="morphe_music_sonos_cast_searching">თქვენს Wi-Fi ქსელში დინამიკების ძებნა...</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">აირჩიეთ დინამიკი თქვენს Wi-Fi ქსელში</string>
+  <string name="morphe_music_sonos_cast_casting_to">გადაცემა %s-ზე</string>
+  <string name="morphe_music_sonos_cast_connected">დაკავშირებულია</string>
+  <string name="morphe_music_sonos_cast_disconnect">გათიშვა</string>
+  <string name="morphe_music_sonos_cast_speakers_header">დინამიკები Wi-Fi-ზე</string>
+  <string name="morphe_music_sonos_cast_active">აქტიური</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast-ის, Nest-ის და Google TV-ის მოწყობილობები</string>
+  <string name="morphe_music_sonos_cast_connection_failed">ვერ მოხერხდა დაკავშირება %s-თან</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">დაკვრის სიჩქარე</string>
   <string name="morphe_music_playback_speed_summary">სიჩქარე, რომელიც გამოიყენება ყველა ტრეკისთვის. 100%-ის შემთხვევაში გამოიყენება აპლიკაციის სიჩქარე, მაგალითად, პოდკასტის დაკვრის სიჩქარე</string>
@@ -586,6 +600,9 @@ crossfade-ის შეჩერებამ მუსიკალური ვ�
   <string name="morphe_music_soundproof_about_summary">"არტისტის მონაცემები მოდის SoundProof-Dumps-იდან (github.com/NuclearBlox/SoundProof-Dumps), რომელიც განახლდება დღეში ერთხელ. გამოტოვებისას თქვენი დაკვრის შესახებ არაფერი იგზავნება. SoundProof-ის გვერდის გახსნისას სერვერს ეგზავნება მიმდინარე შემსრულებლის სახელი, რათა ნაჩვენები იყოს ახალი ხმები და თქვენ შეძლოთ ხმის მიცემა. სერვერი ხმის მიმცემებს IP მისამართით განასხვავებს, ამიტომ თქვენი ხმა სხვა ქსელში შესაძლოა სხვაგვარად გამოჩნდეს.
 
 მონაცემთა ბაზა ლიცენზირებულია ODC Open Database License (ODbL)-ით. Soul Over AI-ის (xoundbyte) ჩანაწერები ლიცენზირებულია CC BY 4.0-ით. არ არის დაკავშირებული და არ არის დამტკიცებული SoundProof-ის ან Soul Over AI-ს მიერ."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music-ის ანიმირებული გრაფიკა一项</string>
+  <string name="morphe_music_apple_music_artwork_summary">აჩვენებს Apple Music-ის ალბომის ანიმირებულ გრაფიკას პლეიერში, თუ ალბომს აქვს ასეთი. თითოეული სიმღერის სათაური, შემსრულებელი და ალბომი იგზავნება Apple Music-ში</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">ტექსტი ამ მოწყობილობის ფაილისთვის недоступებელია.</string>
   <string name="morphe_music_lyrics_enabled_title">მესამე მხარის ტექსტების გამოყენება</string>

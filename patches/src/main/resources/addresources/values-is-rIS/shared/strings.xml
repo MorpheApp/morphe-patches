@@ -94,6 +94,7 @@ Til að þýða ný tungumál eða bæta núverandi þýðingar skaltu heimsækj
   <!-- Spoken name of the button in the header that opens the menu of periods -->
   <string name="morphe_settings_about_contributors_period_menu">Tímabil</string>
   <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s notendur</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Stuðningsmenn</string>
   <string name="morphe_settings_about_supporters_summary">Stuðningsmenn á Open Collective</string>

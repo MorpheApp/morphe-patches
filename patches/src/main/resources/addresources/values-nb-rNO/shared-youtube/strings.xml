@@ -141,7 +141,7 @@ Trykk OK for å åpne Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prøv å aktivere: Forfalske videostrømmer > Android VR-pålogging</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardklient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logg inn på \"Android\" VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Pålogging for \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" krever en separat pålogging. Trykk her for å fortsette</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Logget inn på \"Android VR\" for øyeblikket</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Trykk fortsett nedenfor for å logge inn"</string>
 • Dine Morphe-innstillinger vil ikke importere/eksportere Android VR-autentisering
 • Hvis denne appen ikke brukes på 6 måneder, vil Google fjerne denne autentiseringen
 • Du må logge inn igjen hvis du endrer Google-passordet ditt eller avregistrerer denne enheten fra Google-innstillingene dine"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logg inn på mobilnett</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Pålogging for \"Mobilnett\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valgfritt: Logg på YouTube-nettstedet for å spille av videoer med kontoen din. Trykk her for å fortsette</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Logget inn på \"Mobile Web\" for øyeblikket</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ For å logge inn, trykk fortsett nedenfor"</string>
   <string name="morphe_seek_notification_media_length_invalid">Søkelengden må være mellom 1 og %s sekunder. Bruker standardverdi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokollen</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioriter videokvalitet</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriterer høyeste tilgjengelige videokvalitet over kodekeffektivitet</string>
+  <string name="morphe_prioritize_video_quality_dialog">Hvis denne innstillingen er slått av, kan eldre videoer vise ingen alternativer for videokvalitet</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Deaktiver DRC-lyd</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

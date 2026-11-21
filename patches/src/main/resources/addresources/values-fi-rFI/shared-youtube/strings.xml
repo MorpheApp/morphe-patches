@@ -141,7 +141,7 @@ Napauta OK avataksesi Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Kokeile ottaa käyttöön: Naamioi videovirrat &gt; Android VR -kirjautuminen</string>
   <string name="morphe_spoof_video_streams_client_type_title">Oletusasiakasohjelma</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR -kirjautuminen</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' -kirjautuminen</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' vaatii erillisen kirjautumisen. Napauta tästä jatkaaksesi</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kirjautuneena \'Android VR\' -tilaan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Kirjaudu sisään painamalla alta Jatka-painiketta"</string>
 • Morphe-asetuksesi tuonti/vienti ei sisällä Android VR -tunnistautumista
 • Jos tätä sovellusta ei käytetä 6 kuukauteen, Google poistaa tämän tunnistautumisen
 • Sinun on kirjauduttava uudelleen sisään, jos vaihdat Google-salasanasi tai poistat tämän laitteen rekisteröinnin Google-asetuksistasi"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Kirjautuminen mobiiliwebiin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobiiliverkko\' -kirjautuminen</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valinnainen: kirjaudu YouTube-verkkosivustolle toistaaksesi videoita tililläsi. Napauta tästä jatkaaksesi</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kirjautuneena Mobile Web -tilaan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Kirjautuaksesi sisään paina alla olevaa Jatka-painiketta"</string>
   <string name="morphe_seek_notification_media_length_invalid">Kelauksen pituuden on oltava välillä 1 ja %s sekuntia. Käytetään oletusarvoa</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Poista QUIC-protokolla käytöstä</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorisoi videon laatua</string>
+  <string name="morphe_prioritize_video_quality_summary">Priorisoi korkeinta saatavilla olevaa videon laatua koodekin tehokkuuden sijaan</string>
+  <string name="morphe_prioritize_video_quality_dialog">Jos tämä asetus on pois päältä, vanhemmissa videoissa ei välttämättä näy videon laatuasetuksia</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Poista DRC-ääni käytöstä</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

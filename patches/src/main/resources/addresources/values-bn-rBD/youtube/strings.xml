@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">লাইব্রেরি / আপনি নিচের মেনু ফিল্টার সক্রিয় করুন</string>
   <string name="morphe_hide_account_menu_filter_strings_title">লাইব্রেরি / আপনি নিচের মেনু ফিল্টার</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">ফিল্টার করতে লাইব্রেরি / আপনি নিচের মেনুর নামগুলো লিখুন, প্রতি লাইনে একটি করে</string>
+  <string name="morphe_hide_account_menu_badges_title">ব্যাজগুলি লুকান</string>
   <string name="morphe_hide_account_menu_downloads_title">ডাউনলোডগুলো হাইড করুন</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\'পছন্দের ভিডিও\' লুকান</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\'পরে দেখুন\' লুকান</string>
   <string name="morphe_hide_album_cards_title">অ্যালবাম কার্ড লুকান</string>
   <string name="morphe_hide_album_cards_summary">শিল্পীর বিবরণের নীচে অ্যালবাম কার্ডগুলি লুকিয়ে রাখে</string>
   <string name="morphe_hide_artist_cards_title">আর্টিস্ট কার্ড লুকান</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">মন্তব্য বোতামে প্রদর্শিত স্লাইডিং কার্ডগুলো এবং এর পৃষ্ঠা নির্বাচকটি লুকিয়ে রাখে</string>
   <string name="morphe_hide_comments_timestamp_button_title">টাইমস্ট্যাম্প বোতাম লুকান</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'টপ ফ্যান\' বোতামটি লুকান</string>
+  <string name="morphe_hide_comments_topics_title">\'টপিকস\' লুকান</string>
+  <string name="morphe_hide_comments_topics_summary">\'টপিকস\' ফিল্টার বার অপশন এবং ভিডিওর নিচে থাকা \'টপিক\' কমেন্ট প্রিভিউগুলো লুকায়</string>
   <string name="morphe_hide_comments_translate_button_title">অনুবাদ বোতাম লুকান</string>
   <string name="morphe_hide_comments_zero_state_title">\'এখনও কোনো মন্তব্য নেই\' বার্তা লুকান</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">হাইলাইট করা অনুসন্ধান লিঙ্কগুলি স্যানিটাইজ করুন</string>
@@ -1029,6 +1034,39 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_swipe_overlay_style_entry_7">উল্লম্ব ওভারলে (ন্যূনতম)</string>
   <string name="morphe_swipe_change_video_title">ভিডিও পরিবর্তন করতে সোয়াইপ সক্রিয় করুন</string>
   <string name="morphe_swipe_change_video_summary">ফুলস্ক্রিন মোডে সোয়াইপ করে পরবর্তী বা পূর্ববর্তী ভিডিওতে যান</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">হোল্ড জেসচার</string>
+  <string name="morphe_hold_gesture_screen_summary">ট্যাপ করে ধরে রাখার পর ড্র্যাগ করে প্লেব্যাক স্পিড পরিবর্তন এবং লক করুন</string>
+  <string name="morphe_hold_gesture_title">হোল্ড অঙ্গভঙ্গি সক্রিয় করুন</string>
+  <string name="morphe_hold_gesture_summary">ভিডিওতে ট্যাপ করে ধরে রাখার পর ড্র্যাগ করা যেতে পারে। ধরে রাখার সময়কার গতি হবে ট্যাপ এবং হোল্ড প্লেব্যাক স্পিড</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">সোয়াইপ করার জন্য প্রেস করা সক্রিয় থাকা অবস্থায় এটি ব্যবহৃত হয় না। পরিবর্তন করতে ট্যাপ করুন</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">সোয়াইপ করার জন্য প্রেস করা সক্রিয় করা হয়েছে</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">হোল্ড জেসচার এবং সোয়াইপ কন্ট্রোলসের সোয়াইপ করার জন্য প্রেস জেসচার উভয়ই ট্যাপ এবং হোল্ড করার মাধ্যমে শুরু হয়, তাই এই দুটির মধ্যে কেবল একটি সক্রিয় থাকতে পারে।</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">সোয়াইপ করার জন্য প্রেস করা বন্ধ করুন</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">সোয়াইপ করার জন্য প্রেস করা সক্রিয় থাকা অবস্থায় হোল্ড জেসচার ব্যবহৃত হয় না</string>
+  <string name="morphe_hold_gesture_dialog_title">হোল্ড জেসচার সক্রিয় করা হয়েছে</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">হোল্ড জেসচার বন্ধ করুন</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">কম্পন প্রতিক্রিয়া সক্রিয় করুন</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">গতি পরিবর্তন হলে এবং গতি লক হলে ভাইব্রেট করে</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">গতি পরিবর্তন করতে পাশে ড্র্যাগ করুন</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">ট্যাপ করে ধরে রাখার পর, ধীরগতিতে চালানোর জন্য বাম দিকে এবং দ্রুত চালানোর জন্য ডান দিকে ড্র্যাগ করুন। আঙুল ফিরে না আসা পর্যন্ত ড্র্যাগ যত দূরে যাবে, গতি তত পরিবর্তিত হতে থাকবে</string>
+  <string name="morphe_hold_gesture_speed_step_title">গতির ধাপ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">ড্র্যাগ সেনসিটিভিটি</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">কম</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">সাধারণ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">বেশি</string>
+  <string name="morphe_hold_gesture_speed_min_title">সবচেয়ে ধীর গতি</string>
+  <string name="morphe_hold_gesture_speed_min_summary">একটি ড্র্যাগ যে সর্বনিম্ন গতিতে পৌঁছাতে পারে</string>
+  <string name="morphe_hold_gesture_speed_max_title">দ্রুততম গতি</string>
+  <string name="morphe_hold_gesture_speed_max_summary">একটি ড্র্যাগ যে দ্রুততম গতিতে পৌঁছাতে পারে (৮ পর্যন্ত)</string>
+  <string name="morphe_hold_gesture_lock_title">গতি লক করতে নিচে ড্র্যাগ করুন</string>
+  <string name="morphe_hold_gesture_lock_summary">ট্যাপ করে ধরে রাখার পর, আঙুল সরিয়ে নিলেও গতি বজায় রাখতে নিচে ড্র্যাগ করুন। আনলক করতে ব্যাজে ট্যাপ করুন অথবা পুনরায় ট্যাপ করে ধরে রাখুন</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">সবসময় লক ব্যাজটি দেখান</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">প্লেয়ার কন্ট্রোলগুলি লুকানো থাকলেও লক করা গতির ব্যাজটি দৃশ্যমান থাকে</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">ভিডিও পরিবর্তন হলে আনলক করুন</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">অন্য একটি ভিডিও শুরু হলে লক করা গতি শেষ হয়ে যায়</string>
+  <string name="morphe_hold_gesture_lock_hint">লক করতে নিচে টানুন</string>
+  <string name="morphe_hold_gesture_lock_release">%s লক করতে ছেড়ে দিন</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">ক্যাপশন</string>
   <string name="morphe_captions_screen_summary">স্বয়ংক্রিয় ক্যাপশন এবং ক্যাপশন কুকি পরিচালনা করুন</string>
@@ -1133,6 +1171,17 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">গ্লাস নেভিগেশন বার এবং স্ক্রিনের নিচের অংশ বা সিস্টেম নেভিগেশনের মধ্যবর্তী স্পেস অ্যাডজাস্ট করুন</string>
   <string name="morphe_navigation_bar_glass_size_title">গ্লাস নেভিগেশন বারের আকার</string>
   <string name="morphe_navigation_bar_glass_size_summary">একটি প্রিভিউ-এর সাথে গ্লাস নেভিগেশন বারের উচ্চতা, প্রস্থ এবং বাটনের স্পেসিং অ্যাডজাস্ট করুন। স্ক্রিনের প্রস্থে ধরে না এমন বাটনগুলো লুকানো থাকে</string>
+  <string name="morphe_glass_menus_screen_title">গ্লাস মেনু</string>
+  <string name="morphe_glass_menus_screen_summary">পেছনের ঝাপসা কন্টেন্টের উপর ফ্রস্টেড গ্লাসের মতো মেনু</string>
+  <string name="morphe_glass_menus_title">গ্লাস মেনু সক্রিয় করুন</string>
+  <string name="morphe_glass_menus_summary">মেনু এবং বটম শিটগুলোকে ফ্রস্টেড গ্লাসের মতো দেখাবে, যেখানে পেছনের কন্টেন্ট ঝাপসা থাকবে</string>
+  <string name="morphe_glass_menus_user_dialog_message">ব্যাটারি সেভার চালু থাকলে, অথবা ডিভাইসটি ব্লার সাপোর্ট না করলে মেনুগুলো প্রায় অস্বচ্ছ হিসেবে প্রদর্শিত হবে</string>
+  <string name="morphe_glass_menus_opacity_title">গ্লাসের অস্বচ্ছতা</string>
+  <string name="morphe_glass_menus_opacity_summary">মেনুটি ব্লার করা বিষয়বস্তুকে কতটা ঢেকে রাখবে (০ মানে স্বচ্ছ, ১০০ মানে অস্বচ্ছ)</string>
+  <string name="morphe_glass_menus_blur_title">ব্লার</string>
+  <string name="morphe_glass_menus_blur_summary">মেনুর পিছনের বিষয়বস্তু কতটা ব্লার হবে</string>
+  <string name="morphe_glass_menus_dim_title">ডিম</string>
+  <string name="morphe_glass_menus_dim_summary">বটম শিটের চারপাশের স্ক্রিনটি কতটা অন্ধকার হবে</string>
   <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
   <string name="morphe_navigation_bar_glass_size_width">সর্বোচ্চ প্রস্থ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">বাটন স্পেসিং</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">গুণমানের নির্বাচন মেনু এড়িয়ে সরাসরি \"অ্যাডভান্সড\" গুণমানের মেনু খুলুন</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">প্রিমিয়াম গুণমান বিকল্প লুকান</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">ভিডিওর গুণমানকে অগ্রাধিকার দিন</string>
-  <string name="morphe_video_quality_prioritize_summary">কোডেক দক্ষতার চেয়ে সর্বোচ্চ উপলব্ধ ভিডিও গুণমানকে অগ্রাধিকার দেয়</string>
-  <string name="morphe_video_quality_prioritize_dialog">যদি এই সেটিংস বন্ধ করা হয়, তাহলে পুরোনো ভিডিওতে ভিডিওর গুণমানের কোনো বিকল্প নাও দেখাতে পারে</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1 অনুমতি দিন</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' ক্লায়েন্ট ব্যবহার করার সময় সফটওয়্যার AV1 ডিকোডিং করার অনুমতি দেয়</string>

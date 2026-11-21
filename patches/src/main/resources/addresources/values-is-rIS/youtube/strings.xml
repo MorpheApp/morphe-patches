@@ -61,7 +61,10 @@ Breytingar fela í sér:
   <string name="morphe_hide_account_menu_title">Virkja síu fyrir neðri valmynd „Safn / Þú“</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Sía fyrir neðri valmynd „Safn / Þú“</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Sláðu inn nöfn atriða í neðri valmynd „Safn / Þú“ sem á að sía eftir, eitt nafn í hverri línu</string>
+  <string name="morphe_hide_account_menu_badges_title">Fela merki</string>
   <string name="morphe_hide_account_menu_downloads_title">Fela niðurhal</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Fela \"Líkað myndskeið\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Fela \"Skoða síðar\"</string>
   <string name="morphe_hide_album_cards_title">Fela albúmspjöld</string>
   <string name="morphe_hide_album_cards_summary">Felur albúmspjöld undir lýsingu listamannsins</string>
   <string name="morphe_hide_artist_cards_title">Fela listamannaspjöld</string>
@@ -427,6 +430,8 @@ Takmörk:
   <string name="morphe_minimal_comments_button_summary">Felur rennispjöldin og síðuveljarann sem birtast á athugasemdahnappinum</string>
   <string name="morphe_hide_comments_timestamp_button_title">Fela tímamerkjahnappinn</string>
   <string name="morphe_hide_comments_top_fans_button_title">Fela \'Topp aðdáendur\' hnappinn</string>
+  <string name="morphe_hide_comments_topics_title">Fela \"Efni\"</string>
+  <string name="morphe_hide_comments_topics_summary">Felur valmuni \"Efni\" í sía og fyrirlega af athugasmdum um \"Efni\" neðan við myndbandið</string>
   <string name="morphe_hide_comments_translate_button_title">Fela þýðingarhnappinn</string>
   <string name="morphe_hide_comments_zero_state_title">Fela skilaboðin \'Engar athugasemdir ennþá\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Hreinsa auðkenndar leitartengla</string>
@@ -1029,6 +1034,39 @@ Til að laga þetta skaltu kveikja á 'Falsa myndstrauma' og breyta 'Sjálfgefin
   <string name="morphe_swipe_overlay_style_entry_7">Lóðrétt yfirlag (lágmarks)</string>
   <string name="morphe_swipe_change_video_title">Virkja sveip til að skipta um myndskeið</string>
   <string name="morphe_swipe_change_video_summary">Sveipaðu í fullskjá til að fara á næsta eða fyrra myndskeið</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Haldatákn</string>
+  <string name="morphe_hold_gesture_screen_summary">Breyttu og læstu spilunarhraða með því að draga eftir því að smella og halda</string>
+  <string name="morphe_hold_gesture_title">Virkja haldatákn</string>
+  <string name="morphe_hold_gesture_summary">Eftir því að smella og halda myndbandinu má draga. Hraðinn á meðan haldið er er spilunarhraðinn við smell og hold</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Ekki notað þegar „ Ýta til að renna“ er virkt. Ýttu til að breyta</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Ýta til að renna er virkt</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Bæði haldningin og „ýta til að renna“-haldningin í rennistýringunum byrja á því að ýta og halda, svo að aðeins ein af þeim getur verið virk.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Slökkva á Ýta til að renna</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Haldning er ekki notuð þegar „Ýta til að renna“ er virkt</string>
+  <string name="morphe_hold_gesture_dialog_title">Haldning er virk</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Slökkva á haldning</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Virkja titringsviðbrögð</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Titrar þegar hraðinn breytist og þegar hraðinn er fastur</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Dragið til hliðar til að breyta hraðanum</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Eftir að hafa smellið og haldið áfram, dragið til vinstra til að spila hægar og til hægri til að spila hraðar. Því lengra er dragið, því meiri breyting er á hraðanum þar til fingurinn snýr aftur</string>
+  <string name="morphe_hold_gesture_speed_step_title">Hraðaskref</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Kveikni draga</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Lágt</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Eðlilegt</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Hátt</string>
+  <string name="morphe_hold_gesture_speed_min_title">Hægasti hraðinn</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Hægasti hraðinn sem draga getur náð</string>
+  <string name="morphe_hold_gesture_speed_max_title">Hraðasti hraðinn</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Hraðasti hraðinn sem draga getur náð (upp að 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Dragið niður til að læsa hraðann</string>
+  <string name="morphe_hold_gesture_lock_summary">Eftir að hafa smellið og haldið áfram, dragið niður til að halda hraðanum þegar fingurinn er lyftur. Smelltu á merkið eða smelltu og haldið áfram til að útlæsa</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Sýna alltaf loka-merkið</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Merkið fyrir læstan hraða helst sýnilegt þótt stjórnborð spilarans sé falið</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Útlæsa þegar myndbandið breytist</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Læstur hraði lýkur þegar annað myndband hefst</string>
+  <string name="morphe_hold_gesture_lock_hint">Dragið niður til að læsa</string>
+  <string name="morphe_hold_gesture_lock_release">Sleppið til að læsa %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Textar</string>
   <string name="morphe_captions_screen_summary">Stjórna sjálfvirkum textum og vafrakökum fyrir texta</string>
@@ -1133,6 +1171,17 @@ Til að opna stillingar skaltu virkja stillingahnappinn undir Almennt → Tækja
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Stilltu bilið á milli glerstangar stýrinnar og botns skjárins eða kerfisstýrinnar</string>
   <string name="morphe_navigation_bar_glass_size_title">Stærð glerleiðsögustikunnar</string>
   <string name="morphe_navigation_bar_glass_size_summary">Stilltu hæð, breidd og hnappabil glerleiðsögustikunnar með forskoðun. Hnappar sem komast ekki fyrir í breidd skjásins eru faldir</string>
+  <string name="morphe_glass_menus_screen_title">Gler-valmyndir</string>
+  <string name="morphe_glass_menus_screen_summary">Valmyndir sem frostuð gler yfir óskýrum efnum fyrir þeim</string>
+  <string name="morphe_glass_menus_title">Virkja gler-valmyndir</string>
+  <string name="morphe_glass_menus_summary">Sýnir valmyndir og neðri glugga sem frostuð gler, þar sem efnið fyrir þeim er óskýrt</string>
+  <string name="morphe_glass_menus_user_dialog_message">Valmyndir eru sýndar næstum ógegnumNotaðar þegar rafsparnaður er virkur, eða ef tækið styður ekki óskýrðingu</string>
+  <string name="morphe_glass_menus_opacity_title">Gegnsæi glers</string>
+  <string name="morphe_glass_menus_opacity_summary">Hversu mikið valmyndin hylur óskýrt efni (0 er gegnsætt, 100 er ógegnsætt)</string>
+  <string name="morphe_glass_menus_blur_title">Þoka</string>
+  <string name="morphe_glass_menus_blur_summary">Hversu mikið efnið á bak við valmyndina er óskýrt</string>
+  <string name="morphe_glass_menus_dim_title">Dimmari</string>
+  <string name="morphe_glass_menus_dim_summary">Hversu mikið skjónumstigið í kringum neðri glugga er dökkað</string>
   <string name="morphe_navigation_bar_glass_size_height">Hæð</string>
   <string name="morphe_navigation_bar_glass_size_width">Hámarksbreidd</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Hnappabil</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Sleppir valmynd gæðavals og opnar Advanced gæðavalmyndina beint</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Fela Premium gæðavalmyndir</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Forgangsraða myndgæðum</string>
-  <string name="morphe_video_quality_prioritize_summary">Forgangsraðar hæstu tiltæku myndgæðum fram yfir skilvirkni kóðunar</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ef þessi stilling er slökkt geta eldri myndskeið sýnt engan valkost fyrir myndgæði</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Leyfa \'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Leyfir hugbúnaðarafkóðun AV1 þegar \'Android VR\' / \'visionOS\' biðlarinn er notaður</string>

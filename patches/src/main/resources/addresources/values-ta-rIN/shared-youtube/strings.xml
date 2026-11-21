@@ -64,7 +64,7 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR உள்நுழைவு</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' உள்நுழைவு</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-க்கு தனி உள்நுழைவு தேவை. தொடர இங்கே தட்டவும்</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">தற்போது \'Android VR\'-இல் உள்நுழைந்துள்ளீர்கள்</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -74,7 +74,7 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
 
 உள்நுழைய, கீழே உள்ள தொடர பொத்தானை அழுத்தவும்"</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">மொபைல் வெப் உள்நுழைவு</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobile Web\' உள்நுழைவு</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">விருப்பத்தேர்வு: உங்கள் கணக்கைப் பயன்படுத்தி வீடியோக்களை இயக்க YouTube இணையதளத்தில் உள்நுழையவும். தொடர இங்கே தட்டவும்</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">தற்போது \'Mobile Web\'-இல் உள்நுழைந்துள்ளீர்கள்</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -100,6 +100,10 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <string name="morphe_oauth2_toast_reset">\'Android VR\'-லிருந்து வெளியேறப்பட்டது</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">வீடியோ தரத்திற்கு முன்னுரிமை அளிக்கவும்</string>
+  <string name="morphe_prioritize_video_quality_summary">கோடெக் செயல்திறனை விடக் கிடைக்கும் மிக உயர்ந்த வீடியோ தரத்திற்கு முன்னுரிமை அளிக்கிறது</string>
+  <string name="morphe_prioritize_video_quality_dialog">இந்த அமைப்பு அணைக்கப்பட்டிருந்தால், பழைய வீடியோக்களில் வீடியோ தர விருப்பங்கள் எதுவும் தோன்றாமல் இருக்கலாம்</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <!-- misc.audio.silence.skipSilencePatch -->

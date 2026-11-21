@@ -61,7 +61,10 @@ Muudatused hõlmavad:
   <string name="morphe_hide_account_menu_title">Luba Raamatukogu / Sina alumise menüü filter</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Raamatukogu / Sina alumise menüü filter</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Sisestage Raamatukogu / Sina alumise menüü nimed filtreerimiseks, eraldades neid uue rea abil</string>
+  <string name="morphe_hide_account_menu_badges_title">Peida märgid</string>
   <string name="morphe_hide_account_menu_downloads_title">Peida allalaadimised</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Peida \"Meeldivad videod\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Peida \"Vaata hiljem\"</string>
   <string name="morphe_hide_album_cards_title">Peida albumikaardid</string>
   <string name="morphe_hide_album_cards_summary">Peidab albumikaardid artisti kirjelduse alt</string>
   <string name="morphe_hide_artist_cards_title">Peida artistikaarte</string>
@@ -427,6 +430,8 @@ Piirangud:
   <string name="morphe_minimal_comments_button_summary">Peidab libisevad kaardid ja nende leheseliku valimiku, mis kuvatakse kommentaaride nupul</string>
   <string name="morphe_hide_comments_timestamp_button_title">Peida ajatempli nuppu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Peida nupp \"Peakfännid\"</string>
+  <string name="morphe_hide_comments_topics_title">Peida \"Teemad\"</string>
+  <string name="morphe_hide_comments_topics_summary">Peidab filtri riba valiku \"Teemad\" ja kommentaaride eelvaate \"Teema\" video all</string>
   <string name="morphe_hide_comments_translate_button_title">Peita tõlkimise nupp</string>
   <string name="morphe_hide_comments_zero_state_title">Peida teadet \"Kommentaare pole veel\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Puhasta esile tõstetud otsingulingid</string>
@@ -1029,6 +1034,39 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_swipe_overlay_style_entry_7">Vertikaalne kattekiht (minimalistlik)</string>
   <string name="morphe_swipe_change_video_title">Luba videote vahetamine pühkimisega</string>
   <string name="morphe_swipe_change_video_summary">Pühkige täisekraani režiimis, et hüppata järgmise või eelmise videole</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Hoidmise žest</string>
+  <string name="morphe_hold_gesture_screen_summary">Muutke ja lukastage taasesituskiirus, lohistades pärast puudutamise ja hoidmise tegevust</string>
+  <string name="morphe_hold_gesture_title">Luba hoidmise žest</string>
+  <string name="morphe_hold_gesture_summary">Videole puudutamise ja hoidmise tegevusele võib järgneda lohistamine. Hoidmise ajal on kiirus vastav puudutamise ja hoidmise taasesituskiirus</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Ei kasutata, kui \"Vajuta ja libista\" on sisse lülitatud. Puuduta, et muuta</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">\"Vajuta ja libista\" on sisse lülitatud</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Nii hoidmise žest kui libistamise juhtimiste \"vajuta ja libista\" žest algavad puudutamise ja hoidmisega, seega võib olla sisse lülitatud ainult üks neist.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Lülita \"vajuta ja libista\" välja</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Hoidmise žestit ei kasutata, kui \"vajuta ja libista\" on sisse lülitatud</string>
+  <string name="morphe_hold_gesture_dialog_title">Hoidmise žest on sisse lülitatud</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Lülita hoidmise žest välja</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Lülita sisse haptiline tagasiside</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibreerib kiiruse muutumisel ja kiiruse lukustamisel</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Kiiruse muutmiseks lohista külgvisele</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Pärast vajutamise ja hoidmise lohista vasakule aeglustamiseks ja paremale kiirendamiseks. Mida kaugumale lohistad, seda rohkem kiirus muutub kuni sõrm tagasi tuleb</string>
+  <string name="morphe_hold_gesture_speed_step_title">Kiiruse aste</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Lohutundlikkus</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Madal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normaalne</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Kõrge</string>
+  <string name="morphe_hold_gesture_speed_min_title">Kõige aeglasem kiirus</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Kõige aeglasem kiirus, millega lohistamine võib jõuda</string>
+  <string name="morphe_hold_gesture_speed_max_title">Kõige kiirem kiirus</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Kõige kiirem kiirus, millega lohistamine võib jõuda (kuni 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Lohistage alla, et lukustada kiirus</string>
+  <string name="morphe_hold_gesture_lock_summary">Pärast puudutamise ja hoidmist lohistage alla, et säilitada kiirus sõrme tõstmisel. Puudutage märki või puudutage ja hoidke uuesti, et lukustamine vabastada</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Kuva alati lukustamise märki</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Lukustatud kiiruse märk jääb nähtavaks, kui mängija juhtimispaneel on peidetud</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Vabasta lukustus video muutmisel</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Lukustatud kiirus lõppeb, kui algab teine video</string>
+  <string name="morphe_hold_gesture_lock_hint">Tõmba alla, et lukustada</string>
+  <string name="morphe_hold_gesture_lock_release">Lase lahti, et lukustada %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Altekstid</string>
   <string name="morphe_captions_screen_summary">Halda automaatseid suletitreid ja suletitre küpsiseid</string>
@@ -1133,6 +1171,17 @@ Seadetele ligipääsemiseks luba seadete nupp menüüs: Üldine → Tööriistar
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Reguleeri vahe klaasist navigatsiooniriba ja ekraani alumise osa või süsteemi navigatsiooni vahel</string>
   <string name="morphe_navigation_bar_glass_size_title">Klaasise navigeerimisriba suurus</string>
   <string name="morphe_navigation_bar_glass_size_summary">Reguleerige klaasise navigeerimisriba kõrgust, laialgust ja nuppude vahemaad koos eelvaatega. Nupud, mis ei mahu ekraani laialgusse, on peidetud</string>
+  <string name="morphe_glass_menus_screen_title">Klaasmenüüd</string>
+  <string name="morphe_glass_menus_screen_summary">Menüüd on nagu matt klaas nende taga olevas hägusetatud sisu kohal</string>
+  <string name="morphe_glass_menus_title">Luba klaasmenüüd</string>
+  <string name="morphe_glass_menus_summary">Kuvab menüüd ja alumised paneelid kui matt klaas, kus nende taga olev sisu on hägusetatud</string>
+  <string name="morphe_glass_menus_user_dialog_message">Kui akusäästur on sisse lülitatud või kui seade ei toeta hägusetust, kuvatakse menüüd peaaegu läbipaistmatult</string>
+  <string name="morphe_glass_menus_opacity_title">Klaasi läbipaistmatus</string>
+  <string name="morphe_glass_menus_opacity_summary">Kui palju menüü läbib häguse sisu (0 on läbipaistev, 100 on läbimatu)</string>
+  <string name="morphe_glass_menus_blur_title">Hägu</string>
+  <string name="morphe_glass_menus_blur_summary">Kui palju on menüü taga olev sisu hägus</string>
+  <string name="morphe_glass_menus_dim_title">Tõmbedus</string>
+  <string name="morphe_glass_menus_dim_summary">Kui palju on ekraan alumise lehe ümber pimestatud</string>
   <string name="morphe_navigation_bar_glass_size_height">Kõrgus</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimaalne laius</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Nuppude vahemaa</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Möödub kvaliteedi valikumenüüst ja avab otse täpsema kvaliteedimenüü</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Peida Premium kvaliteedi valikud</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Prioritiseeri video kvaliteeti</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioritiseerib kõige kõrgemat saadaval olevat video kvaliteeti kodeki efektiivsuse asemel</string>
-  <string name="morphe_video_quality_prioritize_dialog">Kui see seade on väljas, siis vanematel videodel ei pruugi olla video kvaliteedi valikuid</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Luba \"Android VR\" / \"visionOS\" AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Luba tarkvaraline AV1 dekodeerimine, kui kasutatakse \"Android VR\" / \"visionOS\" klienti</string>

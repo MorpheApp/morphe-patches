@@ -265,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">توقف هنگام بی‌صدا بودن</string>
   <string name="morphe_music_pause_when_muted_summary">پخش را هنگام بی‌صدا بودن صدای سیستم متوقف کرده و با افزایش صدا، آن را از سر می‌گیرد</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">پخش Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">دکمه Cast همچنین می‌تواند موسیقی را به Sonos و سایر بلندگوهای UPnP در شبکه Wi-Fi شما استریم کند</string>
+  <string name="morphe_music_sonos_cast_sheet_title">اتصال به یک دستگاه</string>
+  <string name="morphe_music_sonos_cast_searching">در حال جستجوی بلندگوها در شبکه Wi-Fi شما…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">یک بلندگو در شبکه Wi-Fi خود انتخاب کنید</string>
+  <string name="morphe_music_sonos_cast_casting_to">در حال پخش در %s</string>
+  <string name="morphe_music_sonos_cast_connected">متصل شد</string>
+  <string name="morphe_music_sonos_cast_disconnect">قطع اتصال</string>
+  <string name="morphe_music_sonos_cast_speakers_header">بلندگوهای روی Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">فعال</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">دستگاه‌های Chromecast، Nest و Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">امکان اتصال به %s وجود ندارد</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">سرعت پخش</string>
   <string name="morphe_music_playback_speed_summary">سرعت استفاده‌شده برای همهٔ آهنگ‌ها. در ۱۰۰٪ از سرعت برنامه استفاده می‌شود، مانند سرعت پخش پادکست</string>
@@ -586,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"داده‌های هنرمند از SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) تامین می‌شوند و هر روز یک بار دانلود می‌شوند. رد کردن آهنگ هیچ اطلاعاتی درباره آنچه پخش می‌کنید ارسال نمی‌کند. باز کردن صفحه SoundProof نام هنرمند فعلی را به سرور SoundProof ارسال می‌کند تا آرای به‌روز نمایش داده شوند و امکان رای دادن فراهم شود. سرور رای‌دهندگان را از طریق آدرس IP تشخیص می‌دهد، بنابراین رای شما ممکن است در شبکه‌های دیگر متفاوت نمایش داده شود.
 
 این دیتابیس تحت مجوز ODC Open Database License (ODbL) است. ورودی‌های Soul Over AI توسط xoundbyte تحت مجوز CC BY 4.0 هستند. این برنامه با SoundProof یا Soul Over AI وابستگی ندارد و توسط آن‌ها تایید نشده است."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">کاور متحرک Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">اگر آلبومی دارای کاور متحرک باشد، این قابلیت کاور متحرک Apple Music را در پخش‌کننده نمایش می‌دهد. عنوان، هنرمند و آلبوم هر آهنگ به Apple Music ارسال می‌شود</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">متن ترانه برای این فایل دستگاه در دسترس نیست.</string>
   <string name="morphe_music_lyrics_enabled_title">استفاده از متن آهنگ شخص ثالث</string>

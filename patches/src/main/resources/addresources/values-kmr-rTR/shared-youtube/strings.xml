@@ -168,7 +168,7 @@ Ji bo têketinê, li jêr bitikîne 'Berdewam bike'"</string>
 • Mîhengên Morphe rastandina Android VR import/export nakin
 • Heke ev serlêdan 6 mehan neyê bikaranîn, Google dê vê rastandinê rake
 • Heke şîfreya Google-a xwe biguherînî an vê alavê ji mîhengên Google-ê rakî, wê demê divê tu dîsa têkevî"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Têketina Webê ya Mobil</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Têketina \'Webê Mobîl\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Hêvîdar: ji bo ku hûn vîdyoyan bi hesabê xwe lêbidin, di malpera YouTube de têketin bikin. Ji bo berdewamkirinê li vir bitikînin</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Niha li \'Mobile Web\' têketî ye</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Ji bo têkçûnê, li jêr li ser berdewam bike"</string>
   <string name="morphe_seek_notification_media_length_invalid">Dirêjiya lêgerînê divê di navbera 1 û %s saniyan de be. Ya default tê bikaranîn</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Protokola QUIC neçalak bike</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Kalîteya vîdyoyê pêşî bike</string>
+  <string name="morphe_prioritize_video_quality_summary">Kalîteya herî bilind a vîdyoyê li ser bandorkariya kodekê pêşî dike</string>
+  <string name="morphe_prioritize_video_quality_dialog">Heke ev mîheng neçalak be, vîdyoyên kevn dibe ku tu vebijarkên kalîteyê nîşan nedin</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Dengê DRC neçalak bike</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

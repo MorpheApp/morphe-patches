@@ -141,7 +141,7 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Төмөнкүнү иштетип көрүңүз: Видео агымдарын имитациялоо &gt; Android VR кириш</string>
   <string name="morphe_spoof_video_streams_client_type_title">Стандарттуу клиент</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR каттоосунан кирүү</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android VR\" кирип кирүү</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' үчүн өзүнчө каттоосунан кирүү талап кылынат. Улантуу үчүн бул жерди басыңыз</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Учурда \'Android VR\' каттоосунан киргенсиз</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
 • Сиздин Morphe жөндөөлөрүңүз Android VR авторизациясын импорттобойт/экспорттобойт
 • Эгер бул колдонмо 6 ай бою колдонулбаса, Google бул авторизацияны өчүрөт
 • Эгер сиз Google сырсөзүн өзгөртсөңүз же бул түзмөктү Google жөндөөлөрүнөн алып салсаңыз, кайрадан кирүү керек болот"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Мобилдик веб-сайт аркылуу кирүү</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\"Мобилдик веб\" кирип кирүү</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Ыктыярдуу: видеолорду өз аккаунтуңуз менен ойнотуу үчүн YouTube веб-сайтына кириңиз. Улантуу үчүн бул жерди басыңыз</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Учурда \'Мобилдик веб\' үчүн киргенсиз</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_seek_notification_media_length_invalid">Издөө узундугу 1 жана %s секундтун ортосунда болушу керек. Стандарттуу маани колдонулат</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC протоколун өчүрүү</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Видео сапасына артыкчылык берүү</string>
+  <string name="morphe_prioritize_video_quality_summary">Кодектин натыйжалуулугуна караганда, жеткиликтүү эң жогорку видео сапатына артыкчылык берет</string>
+  <string name="morphe_prioritize_video_quality_dialog">Эгерде бул жөндөө өчүpүлгөн болсо, анда эски видеолордо видео сапатынын варианттары көрсөтүлбөй калышы мүмкүн</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC аудиосун өчүрүү</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

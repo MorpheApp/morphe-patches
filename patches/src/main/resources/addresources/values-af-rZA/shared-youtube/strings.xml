@@ -141,7 +141,7 @@ Tik OK om Android System WebView oop te maak."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Probeer om dit te aktiveer: Verfraai videostrome &gt; Android VR aanteken</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standaard kliënt</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR-aanteken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' teken in</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' vereis \'n aparte aantekeningsproses. Tik hier om voort te gaan</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Tans by \'Android VR\' aangeteken</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Om aan te meld, tik hieronder op Gaan voort"</string>
 • U Morphe-instellings sal nie Android VR-verifikasie invoer/uitvoer nie.
 • Indien hierdie app vir 6 maande nie gebruik word nie, sal Google hierdie verifikasie verwyder nie.
 • U moet weer aanteken indien u u Google-wagwoord verander of hierdie toestel van u Google-instellings deregistreer."</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Teken in op mobiele web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobiele Web\' teken in</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opsioneel: teken in op die YouTube-webwerf om video\'s met jou rekening te speel. Tik hier om voort te gaan</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Tans by \'Mobile Web\' aangemeld</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Om in te teken, druk voortgaan hieronder"</string>
   <string name="morphe_seek_notification_media_length_invalid">Soeklengte moet tussen 1 en %s sekondes wees. Gebruik verstekwaarde</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiveer QUIC-protokol</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Gee prioriteit aan videokwaliteit</string>
+  <string name="morphe_prioritize_video_quality_summary">Gee prioriteit aan die hoogste beskikbare videokwaliteit bo kodek-doeltreffendheid</string>
+  <string name="morphe_prioritize_video_quality_dialog">As hierdie instelling afgeskakel is, kan ouer video\'s geen videokwaliteitsopsies toon nie</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Deaktiveer DRC-oudio</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

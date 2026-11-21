@@ -265,6 +265,20 @@ Pozastavení crossfade kvůli sledování hudebního videa může zanechat někt
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pozastavit při vypnutém zvuku</string>
   <string name="morphe_music_pause_when_muted_summary">Pozastaví přehrávání, když je systémový zvuk vypnutý, a obnoví jej po zvýšení hlasitosti</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Tlačítko Cast může streamovat i do zařízení Sonos a ostatních reproduktorů UPnP ve vaší Wi-Fi síti</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Připojte se k zařízení</string>
+  <string name="morphe_music_sonos_cast_searching">Hledání reproduktorů ve vaší Wi-Fi síti…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Vyberte reproduktor ve vaší Wi-Fi síti</string>
+  <string name="morphe_music_sonos_cast_casting_to">Přisílání do %s</string>
+  <string name="morphe_music_sonos_cast_connected">Připojeno</string>
+  <string name="morphe_music_sonos_cast_disconnect">Odpojit</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Reproduktory v Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktivní</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Zařízení Chromecast, Nest a Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Nepodařilo se připojit k %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Rychlost přehrávání</string>
   <string name="morphe_music_playback_speed_summary">Rychlost použitá pro všechny skladby. Při 100 % se používá rychlost aplikace, jako je rychlost přehrávání podcastů.</string>
@@ -586,6 +600,9 @@ Pro zajištění synchronizace scrobblingu během přehrávání na pozadí se u
   <string name="morphe_music_soundproof_about_summary">"Data o umělcích pocházejí ze SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) a stahují se jednou denně. Přeskakování neodesílá nic o tom, co hrajete. Otevření panelu SoundProof odešle jméno aktuálního umělce na server SoundProof, aby bylo možné zobrazit aktuální hlasy a hlasovat. Server rozlišuje hlasující podle IP adresy, takže váš hlas se na jiné síti může zobrazit odlišně.
 
 Databáze je licencována podle licence ODC Open Database License (ODbL). Záznamy z Soul Over AI od xoundbyte jsou licencovány podle CC BY 4.0. Není spojeno se SoundProof ani se Soul Over AI a není jimi podporováno."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Animovaný obal Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">V přehrávači zobrazí animovaný obal alba z Apple Music, pokud jej album má. Název, interpret a album každé skladby jsou odeslány do Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Pro tento soubor zařízení nejsou k dispozici texty písní.</string>
   <string name="morphe_music_lyrics_enabled_title">Používat texty od třetí strany</string>

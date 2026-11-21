@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Сан / Та доод цэсний шүүлтүүрийг идэвхжүүлэх</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Сан / Та доод цэсний шүүлтүүр</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Шүүх Сан / Та доод цэсний нэрсийг шинэ мөрөөр тусгаарлан оруулна уу</string>
+  <string name="morphe_hide_account_menu_badges_title">Тэмдгүүдийг нуух</string>
   <string name="morphe_hide_account_menu_downloads_title">Татаж авсан файлуудыг нуух</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\'Таалагдсан видео\'-г нуух</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\'Дараа үзэх\'-ийг нуух</string>
   <string name="morphe_hide_album_cards_title">Альбомын картуудыг нуух</string>
   <string name="morphe_hide_album_cards_summary">Уран бүтээлчийн тайлбарын доорх цомгийн картуудыг нуух</string>
   <string name="morphe_hide_artist_cards_title">Уран бүтээгчийн картыг нуух</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">Сэтгэгдлийн товчлууран дээр харагддаг гулсдаг карт болон хуудас сонгогчийг нууна</string>
   <string name="morphe_hide_comments_timestamp_button_title">Цаг хугацааны товчийг нуух</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Шилдэг шүтэн бишрэгчид\' товчийг нуух</string>
+  <string name="morphe_hide_comments_topics_title">\'Сэдэв\'-ийг нуух</string>
+  <string name="morphe_hide_comments_topics_summary">\'Сэдэв\' шүүлтүүрийн мөрийг болон видеоны доорх \'Сэдэв\'-ийн сэтгэгдлийн урьдчилсан харагдлыг нуух</string>
   <string name="morphe_hide_comments_translate_button_title">Орчуулгын товчийг нуух</string>
   <string name="morphe_hide_comments_zero_state_title">\'Одоогоор сэтгэгдэлгүй байна\' гэсэн мэдэгдлийг нуух</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Хайлтын онцгой тэмдэглэгээтэй холбоосуудыг цэвэрлэх</string>
@@ -1029,6 +1034,39 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Босоо давхарга (минималист)</string>
   <string name="morphe_swipe_change_video_title">Видеог солихын тулд гүйлгэхийг идэвхжүүлэх</string>
   <string name="morphe_swipe_change_video_summary">Дараагийн эсвэл өмнөх видео руу шилжихдээ бүтэн дэлгэц горимд гүйлгэх</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Дарж барих жест</string>
+  <string name="morphe_hold_gesture_screen_summary">Дарж бариад чирж тоглуулах хурдыг өөрчлөх болон түгжих</string>
+  <string name="morphe_hold_gesture_title">Дарж барих жестийг идэвхжүүлэх</string>
+  <string name="morphe_hold_gesture_summary">Видеог дарж барисны дараа чирж болно. Барьж байх үеийн хурд нь дарж барих тоглуулах хурд байх болно</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">\"Дарлаад гүйлгэх\" идэвхтэй байх үед ашиглахгүй. Өөрчлөхийн тулд товшино уу</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">\"Дарлаад гүйлгэх\" идэвхтэй байна</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Барих жест болон гүйлгэх удирдлагын \"дарлаад гүйлгэх\" жест нь хоёулаа товшиж барих үйлдлээр эхэлдэг тул зөвхөн нэгийг нь идэвхжүүлж болно.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">\"Дарлаад гүйлгэх\"-ийг унтраах</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">\"Дарлаад гүйлгэх\" идэвхтэй байх үед барих жест ашиглахгүй</string>
+  <string name="morphe_hold_gesture_dialog_title">Барих жест идэвхтэй байна</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Барих жестийг унтраах</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Хүрч мэдрэх хариу үйлдлийг идэвхжүүлэх</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Хурд өөрчлөгдөх болон хурд түгжигдэх үед чичиргээнэ</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Хурдыг өөрчлөхийн тулд хажуу тийш чирнэ үү</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Дарж барьсны дараа, удаан тоглуулахын тулд зүүн тийш, хурдан тоглуулахын тулд баруун тийш чирнэ. Хуруугаа буцааж автал хүртэл хурд өөрчлөösгөө үргэлжилнэ</string>
+  <string name="morphe_hold_gesture_speed_step_title">Хурдны алхам</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Чирэх мэдрэмж</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Бага</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Хэвийн</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Өндөр</string>
+  <string name="morphe_hold_gesture_speed_min_title">Хамгийн удаан хурд</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Чирэх үед хүрч болох хамгийн бага хурд</string>
+  <string name="morphe_hold_gesture_speed_max_title">Хамгийн их хурд</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Чирэх үед хүрч болох хамгийн их хурд (8 хүртэл)</string>
+  <string name="morphe_hold_gesture_lock_title">Хурдыг түгжихдээ доош чирнэ үү</string>
+  <string name="morphe_hold_gesture_lock_summary">Дарж удержисны дараа, хуруугаа авсан ч хурдыг хэвээр үлдээхийн тулд доош чирнэ үү. Түгжээг тайлахын тулд тэмдэг дээр дарах эсвэл дахин дарж удержинэ үү</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Түгжээний тэмдгийг үргэлж харуулах</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Тоглуулагчийн удирдлага нуугдсан үед түгжигдсэн хурдны тэмдэг харагдах хэвээр байна</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Видео өөрчлөгдөхөд түгжээг тайлах</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Өөр видео эхлэхэд түгжигдсэн хурд дуусна</string>
+  <string name="morphe_hold_gesture_lock_hint">Түгжээрэй гэж доошоо татна уу</string>
+  <string name="morphe_hold_gesture_lock_release">%s-г түгжэхийн тулд тавь</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Хадмал орчуулга</string>
   <string name="morphe_captions_screen_summary">Автомат хадмал орчуулга болон хадмал орчуулгын кукиг удирдах</string>
@@ -1133,6 +1171,17 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Шилэн навигацийн мөр болон дэлгэцийн доод хэсэг эсвэл системийн навигацийн хоорондох зайг тохируулах</string>
   <string name="morphe_navigation_bar_glass_size_title">Шилэн навигацийн панелийн хэмжээ</string>
   <string name="morphe_navigation_bar_glass_size_summary">Шилэн навигацийн панелийн өндөр, өргөн болон товчнуудын зайг урьдчилан харах боломжтойгоор тохируулна. Дэлгэцийн өргөнд багтахгүй байгаа товчнууд нуугдана</string>
+  <string name="morphe_glass_menus_screen_title">Шилэн цэснүүд</string>
+  <string name="morphe_glass_menus_screen_summary">Цэснүүдийг тэдгээрийн ард байгаа бүдгэрсэн агуулга дээрх бүрүүн шилэн мэт харуулах</string>
+  <string name="morphe_glass_menus_title">Шилэн цэснүүдийг идэвхжүүлэх</string>
+  <string name="morphe_glass_menus_summary">Цэс болон доод хуудсуудыг бүрүүн шилэн мэт харуулах бөгөөд тэдгээрийн ард байгаа агуулга бүдгэрнэ</string>
+  <string name="morphe_glass_menus_user_dialog_message">Цагны хэмнэлт горим асаалттай эсвэл төхөөрөмж бүдгэрүүлэлтийг дэмжихгүй бол цэснүүд бараг бүрэн харагдана</string>
+  <string name="morphe_glass_menus_opacity_title">Шилэн тунгалаг байдал</string>
+  <string name="morphe_glass_menus_opacity_summary">Цэс нь бүдгэрсэн агуулгыг хэр зэрэг бүрхэх (0 нь тунгалаг, 100 нь бүрэн бүрхэг)</string>
+  <string name="morphe_glass_menus_blur_title">Бүдгэрүүлэлт</string>
+  <string name="morphe_glass_menus_blur_summary">Цэсний ард байгаа агуулга хэр зэрэг бүдгэрсэн байх</string>
+  <string name="morphe_glass_menus_dim_title">Бүдгэрүүлэх</string>
+  <string name="morphe_glass_menus_dim_summary">Доод хуудсаны эргэн тойрон дахь дэлгэц хэр зэрэг бүдгэрсэн байх</string>
   <string name="morphe_navigation_bar_glass_size_height">Өндөр</string>
   <string name="morphe_navigation_bar_glass_size_width">Хамгийн их өргөн</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Товчнуудын зай</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Чанарын сонголтын цэснээс алгасаж, Нарийвчилсан чанарын цэсийг шууд нээнэ</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium чанарын сонголтуудыг нуух</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Видеоны чанарыг тэргүүн эрэмбэлэх</string>
-  <string name="morphe_video_quality_prioritize_summary">Кодекийн үр ашгаас илүү боломжтой хамгийн өндөр видео чанарыг тэргүүн эрэмбэжүүлнэ</string>
-  <string name="morphe_video_quality_prioritize_dialog">Хэрэв энэ тохиргоог унтраавал хуучин видеонууд дээр видеоны чанарын сонголтууд харагдахгүй байж болно</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1-ийг зөвшөөрөх</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' клиент ашиглах үед програм хангамжийн AV1 декодлохыг зөвшөөрнө</string>

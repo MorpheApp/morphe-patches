@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Овозможи филтер за долното мени Библиотека / Вие</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Библиотека / Вие филтер во долното мени</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Внесете ги имињата на менито Библиотека / Вие во долниот дел за филтрирање, одвоени со нови редови</string>
+  <string name="morphe_hide_account_menu_badges_title">Скриј ги значките</string>
   <string name="morphe_hide_account_menu_downloads_title">Скриј ги преземањата</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Скриј ги \"Додадени во омилени видеа\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Скриј ги \"Гледај подоцна\"</string>
   <string name="morphe_hide_album_cards_title">Скриј ги албумските картички</string>
   <string name="morphe_hide_album_cards_summary">Прикриј ги картичките на албуми под описот на изведувачот</string>
   <string name="morphe_hide_artist_cards_title">Скриј ги картичките на изведувачите</string>
@@ -427,6 +430,8 @@ Second \"item\" text"</string>
   <string name="morphe_minimal_comments_button_summary">Ги крие лизгачките картички и нивниот селектор на страници, прикажани на копчето за коментари</string>
   <string name="morphe_hide_comments_timestamp_button_title">Скриј копче за временски печат</string>
   <string name="morphe_hide_comments_top_fans_button_title">Скриј копче „Најдобри обожаватели“</string>
+  <string name="morphe_hide_comments_topics_title">Скриј „Теми“</string>
+  <string name="morphe_hide_comments_topics_summary">Ја крие опцијата за филтрирање „Теми“ во лентата и прегледите на коментари по теми под видеото</string>
   <string name="morphe_hide_comments_translate_button_title">Скриј копче за превод</string>
   <string name="morphe_hide_comments_zero_state_title">Скриј ја пораката \"Сè уште нема коментари\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Исчисти ги истакнатите линкови за пребарување</string>
@@ -1029,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Вертикална прекривка (минимална)</string>
   <string name="morphe_swipe_change_video_title">Овозможете повлекување за префрлување видеа</string>
   <string name="morphe_swipe_change_video_summary">Повлечете во режим на полн екран за да прескокнете на следно или претходно видео</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Гезтура за држење</string>
+  <string name="morphe_hold_gesture_screen_summary">Променете ја и заклучете ја брзината на репродукција со влечење по допир и држење</string>
+  <string name="morphe_hold_gesture_title">Овозможи гезтура за држење</string>
+  <string name="morphe_hold_gesture_summary">Допирот и држењето на видеото може да биде следено со влечење. Брзината при држењето е брзината на репродукција при допир и држење</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Не се користи додека е вклучено притисни за прелистување. Допрете за да промените</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Притисни за прелистување е вклучено</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Гестот за држење и гестот притисни за прелистување на контролите за прелистување започнуваат со допир и држење, па затоа може да биде вклучен само еден од нив.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Исклучи го притисни за прелистување</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Гестот за држење не се користи додека е вклучено притисни за прелистување</string>
+  <string name="morphe_hold_gesture_dialog_title">Гестот за држење е вклучен</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Исклучи го гестот за држење</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Овозможи хаптичка повратна врска</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Вибрира кога брзината се менува и кога брзината е заклучена</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Влечете настрана за да ја промените брзината</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">По допир и држење, влечете лево за побавно 재생 и десно за побрзо 재생. Колку подалеку, брзината продолжува да се менува додека прстот не се врати</string>
+  <string name="morphe_hold_gesture_speed_step_title">Чекор на брзината</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Осетливост на влечење</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Ниска</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Нормална</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Висока</string>
+  <string name="morphe_hold_gesture_speed_min_title">Најбавна брзина</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Најниската брзина што може да ја достигне влечењето</string>
+  <string name="morphe_hold_gesture_speed_max_title">Најбрза брзина</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Најбрзата брзина што може да ја достигне влечењето (до 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Повлечете надолу за да ја заклучите брзината</string>
+  <string name="morphe_hold_gesture_lock_summary">По допир и држење, повлечете надолу за да ја задржите брзината кога прстот ќе се подигне. Допрете ја ознаката или повторно допрете и држете за да одклучите</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Секогаш прикажи ја ознаката за заклучување</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Ознаката за заклучена брзина останува видлива додека контролите на плеерот се skjлени</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Одклучи кога видеото ќе се промени</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Заклучената брзина завршува кога започнува друго видео</string>
+  <string name="morphe_hold_gesture_lock_hint">Повлечете надолу за да заклучите</string>
+  <string name="morphe_hold_gesture_lock_release">Пуштете за да го заклучите %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Титри</string>
   <string name="morphe_captions_screen_summary">Управувајте со автоматските титри и колачињата за титри</string>
@@ -1133,6 +1171,17 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Прилагодете го просторот помеѓу стаклената лента за навигација и дното на екранот или системската навигација</string>
   <string name="morphe_navigation_bar_glass_size_title">Големина на стаклена лента за навигација</string>
   <string name="morphe_navigation_bar_glass_size_summary">Прилагодете ја висината, ширината и растојанието помеѓу копчињата на стаклената лента за навигација, со преглед. Копчињата што не се сместаат во ширината на екранот се кријат</string>
+  <string name="morphe_glass_menus_screen_title">Стаклени менија</string>
+  <string name="morphe_glass_menus_screen_summary">Менија како матирано стакло над заматената содржина зад нив</string>
+  <string name="morphe_glass_menus_title">Овозможи стаклени менија</string>
+  <string name="morphe_glass_menus_summary">Прикажува менија и долни листови како матирано стакло, при што содржината зад нив е заматена</string>
+  <string name="morphe_glass_menus_user_dialog_message">Менијата се прикажани речиси непроѕирно додека е вклучен зачувувачот на батеријата или ако уредот не поддржува заматување</string>
+  <string name="morphe_glass_menus_opacity_title">Проѕирност на стаклото</string>
+  <string name="morphe_glass_menus_opacity_summary">Колку менито го покрива замаглениот содржина (0 е проѕирно, 100 е непроѕирно)</string>
+  <string name="morphe_glass_menus_blur_title">Замаглување</string>
+  <string name="morphe_glass_menus_blur_summary">Колку е замаглена содржината зад менито</string>
+  <string name="morphe_glass_menus_dim_title">Затемнување</string>
+  <string name="morphe_glass_menus_dim_summary">Колку е затемнет екранот околу долниот лист</string>
   <string name="morphe_navigation_bar_glass_size_height">Висина</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимална ширина</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Растојание помеѓу копчињата</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Го прескокнува менито за избор на квалитет и го отвора директно менито за напреден квалитет</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Скриј опции за квалитет на Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Приоритет на квалитетот на видеото</string>
-  <string name="morphe_video_quality_prioritize_summary">Дава приоритет на највисокиот достапен квалитет на видеото пред ефикасноста на кодекот</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ако оваа поставка е исклучена, постарите видеа може да не прикажуваат опции за квалитет на видеото</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Дозволи \'Android VR\' / \'visionOS\' AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Овозможува софтверско AV1 декодирање при користење на клиентот \'Android VR\' / \'visionOS\'</string>

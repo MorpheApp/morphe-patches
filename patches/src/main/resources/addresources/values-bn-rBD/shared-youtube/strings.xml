@@ -141,7 +141,7 @@ Android System WebView খুলতে OK ট্যাপ করুন।"</stri
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">চেষ্টা করুন সক্রিয় করতে: ভিডিও স্ট্রিম স্পুফ &gt; অ্যান্ড্রয়েড ভিআর সাইন ইন করুন</string>
   <string name="morphe_spoof_video_streams_client_type_title">ডিফল্ট ক্লায়েন্ট</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR সাইন ইন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' সাইন ইন</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-এর জন্য আলাদা সাইন-ইন প্রয়োজন। এগিয়ে যেতে এখানে ট্যাপ করুন</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">বর্তমানে \'Android VR\'-এ সাইন ইন করা আছে</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Android System WebView খুলতে OK ট্যাপ করুন।"</stri
 • আপনার Morphe সেটিংস অ্যান্ড্রয়েড ভিআর প্রমাণীকরণ আমদানি / রফতানি করবে না
 • যদি এই অ্যাপটি ৬ মাসের জন্য অব্যবহৃত থাকে তাহলে গুগল এই প্রমাণীকরণ সরিয়ে দেবে
 • যদি আপনি আপনার গুগল পাসওয়ার্ড পরিবর্তন করেন বা আপনার গুগল সেটিংস থেকে এই ডিভাইসের নিবন্ধন বাতিল করেন তাহলে আপনাকে আবার সাইন ইন করতে হবে"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">মোবাইল ওয়েব সাইন ইন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobile Web\' সাইন ইন</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ঐচ্ছিক: আপনার অ্যাকাউন্টের মাধ্যমে ভিডিও চালানোর জন্য YouTube ওয়েবসাইটে সাইন ইন করুন। চালিয়ে যেতে এখানে ট্যাপ করুন</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">বর্তমানে \'Mobile Web\'-এ সাইন ইন করা আছে</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Android System WebView খুলতে OK ট্যাপ করুন।"</stri
   <string name="morphe_seek_notification_media_length_invalid">সিক দৈর্ঘ্য 1 থেকে %s সেকেন্ডের মধ্যে হতে হবে। ডিফল্ট ব্যবহার করা হচ্ছে</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">কিউআইসি প্রোটোকল বন্ধ করুন</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">ভিডিওর গুণমানের অগ্রাধিকার দিন</string>
+  <string name="morphe_prioritize_video_quality_summary">কোডেক দক্ষতার চেয়ে উপলব্ধ সর্বোচ্চ ভিডিও গুণমানকে অগ্রাধিকার দেয়</string>
+  <string name="morphe_prioritize_video_quality_dialog">যদি এই সেটিংটি বন্ধ থাকে, তবে পুরনো ভিডিওগুলিতে কোনো ভিডিও গুণমানের বিকল্প নাও দেখা যেতে পারে</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">ডিআরসি অডিও নিষ্ক্রিয় করুন</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

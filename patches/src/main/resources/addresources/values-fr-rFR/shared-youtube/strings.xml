@@ -168,7 +168,7 @@ Pour vous connecter, appuyez sur continuer ci-dessous"</string>
 • Vos paramètres Morphe n'importeront/exportent pas l'authentification Android VR
 • Si cette application reste inutilisée pendant 6 mois, Google supprimera cette authentification
 • Vous devrez vous reconnecter si vous changez votre mot de passe Google ou si vous dissociez cet appareil de vos paramètres Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Connexion via Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Connexion via \'Mobile Web\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Facultatif : connectez-vous au site Web YouTube pour lire des vidéos avec votre compte. Appuyez ici pour continuer</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Actuellement connecté à \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Pour vous connecter, appuyez sur continuer ci-dessous"</string>
   <string name="morphe_seek_notification_media_length_invalid">La durée du saut doit être comprise entre 1 et %s secondes. Utilisation de la valeur par défaut</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Désactiver le protocole QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioriser la qualité vidéo</string>
+  <string name="morphe_prioritize_video_quality_summary">Privilégie la qualité vidéo la plus élevée disponible plutôt que l\'efficacité du codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Si ce paramètre est désactivé, les vidéos plus anciennes peuvent ne proposer aucune option de qualité vidéo</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Désactiver l\'audio DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

@@ -141,7 +141,7 @@ I-tap ang OK para buksan ang Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Subukang paganahin: Gayahin ang mga video stream &gt; Pag-sign in sa Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Default na kliyente</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Pag-sign in sa Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Pag-sign in sa Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nangangailangan ang \'Android VR\' ng hiwalay na pag-sign in. I-tap dito para magpatuloy</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kasalukuyang naka-sign in sa \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
 • Hindi mag-i-import/mag-export ng pagpapatunay sa Android VR ang iyong mga pagpipilian
 • Kung hindi ginagamit ang aplikasyong ito sa loob ng 6 na buwan, aalisin ng Google ang pagpapatunay na ito 
 • Kakailanganin mong mag-sign in muli kung babaguhin mo ang iyong password sa Google o aalisin sa pagkakarehistro ang device na ito sa iyong mga pagpipilian sa Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mag-sign in sa Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Pag-sign in sa \'Mobile Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opsyonal: mag-sign in sa website ng YouTube para i-play ang mga video gamit ang iyong account. Mag-tap dito para magpatuloy</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kasalukuyang naka-sign in sa \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Para mag-sign in, pindutin ang continue sa ibaba"</string>
   <string name="morphe_seek_notification_media_length_invalid">Dapat nasa pagitan ng 1 at %s segundo ang haba ng paghahanap. Ginagamit ang default</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Patayin ang QUIC protocol</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Bigyang-priyoridad ang kalidad ng video</string>
+  <string name="morphe_prioritize_video_quality_summary">Binibigyang-priyoridad ang pinakamataas na available na kalidad ng video kaysa sa efficiency ng codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Kung naka-off ang setting na ito, maaaring walang ipakitang mga opsyon sa kalidad ng video ang mga lumang video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Patayin ang tunog ng DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->

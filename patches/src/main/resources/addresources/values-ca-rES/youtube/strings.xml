@@ -61,7 +61,10 @@ Els canvis inclouen:
   <string name="morphe_hide_account_menu_title">Habilita el filtre del menú inferior de Biblioteca / Tu</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filtre del menú inferior de Biblioteca / Tu</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introdueix els noms del menú inferior de Biblioteca / Tu per filtrar, separats per noves línies</string>
+  <string name="morphe_hide_account_menu_badges_title">Amaga els distintius</string>
   <string name="morphe_hide_account_menu_downloads_title">Oculta les descàrregues</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Amaga \"Vídeos que m\'agraden\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Amaga \"Veure més tard\"</string>
   <string name="morphe_hide_album_cards_title">Ocultar targetes d\'àlbums</string>
   <string name="morphe_hide_album_cards_summary">Amaga les targetes d\'àlbums sota la descripció de l\'artista</string>
   <string name="morphe_hide_artist_cards_title">Ocultar targetes d\'artistes</string>
@@ -427,6 +430,8 @@ Limitacions:
   <string name="morphe_minimal_comments_button_summary">Amaga les cartes lliscants i el seu selector de pàgina, mostrat al botó de comentaris</string>
   <string name="morphe_hide_comments_timestamp_button_title">Amaga el botó de la marca temporal</string>
   <string name="morphe_hide_comments_top_fans_button_title">Amaga el botó \"Fans principals\"</string>
+  <string name="morphe_hide_comments_topics_title">Ocultar \"Temes\"</string>
+  <string name="morphe_hide_comments_topics_summary">Oculta l\'opció de la barra de filtres \"Temes\" i les previsualitzacions de comentaris per \"Tema\" sota el vídeo</string>
   <string name="morphe_hide_comments_translate_button_title">Amaga el botó de Tradueix</string>
   <string name="morphe_hide_comments_zero_state_title">Ocultar el missatge \"Encara no hi ha comentaris\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Netejar els enllaços de cerca ressaltats</string>
@@ -1029,6 +1034,39 @@ Per solucionar-ho, activa 'Simular fluxos de vídeo' i canvia el 'Client per def
   <string name="morphe_swipe_overlay_style_entry_7">Superposició vertical (minimalista)</string>
   <string name="morphe_swipe_change_video_title">Habilita el desllisament per canviar de vídeo</string>
   <string name="morphe_swipe_change_video_summary">Desllisa en mode de pantalla completa per saltar al vídeo següent o a l\'anterior</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Gest de mantenir</string>
+  <string name="morphe_hold_gesture_screen_summary">Canvia i bloqueja la velocitat de reproducció arrossegant després de tocar i mantenir</string>
+  <string name="morphe_hold_gesture_title">Habilita el gest de mantenir</string>
+  <string name="morphe_hold_gesture_summary">Tocar i mantenir el vídeo pot anar seguit d\'un arrossegament. La velocitat mentre es manté és la velocitat de reproducció de tocar i mantenir</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">No s\'utilitza mentre l\'opció de premer per descriptors està activada. Toqueu per canviar</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Premer per descriptors està activat</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Tant el gest de mantenir premut com el gest de premer per descriptors dels controls de descriptors comencen tocant i mantenint premut, per això només n\'hi pot haver-hi un d\'activat.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Desactiva premer per descriptors</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">El gest de mantenir premut no s\'utilitza mentre l\'opció de premer per descriptors està activada</string>
+  <string name="morphe_hold_gesture_dialog_title">El gest de mantenir premut està activat</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Desactiva el gest de mantenir premut</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Habilita la retroalimentació hàptica</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibra quan la velocitat canvia i quan la velocitat queda bloquejada</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Arrossega lateralment per canviar la velocitat</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Després de tocar i mantenir premut, arrossega a l\'esquerra per reproduir més lent i a la dreta per reproduir més ràpid. Com més lluny, més canviarà la velocitat fins que el dit torni</string>
+  <string name="morphe_hold_gesture_speed_step_title">Pas de velocitat</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Sensibilitat d\'arrossegament</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Baixa</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normal</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Alta</string>
+  <string name="morphe_hold_gesture_speed_min_title">Velocitat mínima</string>
+  <string name="morphe_hold_gesture_speed_min_summary">La velocitat més baixa que es pot assolir amb un arrossegament</string>
+  <string name="morphe_hold_gesture_speed_max_title">Velocitat màxima</string>
+  <string name="morphe_hold_gesture_speed_max_summary">La velocitat màxima que pot assolir un desplaçament (fins a 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Desllisa cap avall per bloquejar la velocitat</string>
+  <string name="morphe_hold_gesture_lock_summary">Després de tocar i mantenir premut, desllisa cap avall per mantenir la velocitat quan aixequis el dit. Toca l\'insignia o toca i mantén premutC noument per desbloquejar</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Mostra sempre l\'insignia de bloqueig</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">L\'insignia d\'una velocitat bloquejada roman visible mentre els controls del reproductor estan ocults</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Desbloqueja quan el vídeo canviï</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Una velocitat bloquejada finalitza quan comença un altre vídeo</string>
+  <string name="morphe_hold_gesture_lock_hint">Tira cap avall per bloquejar</string>
+  <string name="morphe_hold_gesture_lock_release">Deixa anar per bloquejar %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtítols</string>
   <string name="morphe_captions_screen_summary">Gestiona els subtítols automàtics i les cookies de subtítols</string>
@@ -1133,6 +1171,17 @@ Per accedir a la Configuració, activeu el botó de Configuració a través de G
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Ajusta l\'espai entre la barra de navegació de vidre i la part inferior de la pantalla o la navegació del sistema</string>
   <string name="morphe_navigation_bar_glass_size_title">Mida de la barra de navegació de vidre</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajusta l\'alçada, l\'amplada i l\'espaiat dels botons de la barra de navegació de vidre, amb una vista prèvia. Els botons que no caben a l\'amplada de la pantalla es solen ocultar</string>
+  <string name="morphe_glass_menus_screen_title">Menús de vidre</string>
+  <string name="morphe_glass_menus_screen_summary">Menús amb aspecte de vidre esmerilat sobre el contingut desenfocat que hi ha darrere</string>
+  <string name="morphe_glass_menus_title">Habilitar menús de vidre</string>
+  <string name="morphe_glass_menus_summary">Mostra els menús i les fulles inferiors amb aspecte de vidre esmerilat, amb el contingut posterior desenfocat</string>
+  <string name="morphe_glass_menus_user_dialog_message">Els menús es mostren gairebé opacs quan l\'estalvidor de bateria està activat o si el dispositiu no admet el desenfocat</string>
+  <string name="morphe_glass_menus_opacity_title">Opacitat del vidre</string>
+  <string name="morphe_glass_menus_opacity_summary">Quant cobreix el menú el contingut desfoscat (0 és transparent, 100 és opac)</string>
+  <string name="morphe_glass_menus_blur_title">Desenfocament</string>
+  <string name="morphe_glass_menus_blur_summary">Quant de desfoscat està el contingut darrere del menú</string>
+  <string name="morphe_glass_menus_dim_title">Atenuar</string>
+  <string name="morphe_glass_menus_dim_summary">Quant s\'oscureix la pantalla al voltant d\'una fulla inferior</string>
   <string name="morphe_navigation_bar_glass_size_height">Alçada</string>
   <string name="morphe_navigation_bar_glass_size_width">Amplada màxima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espaiat dels botons</string>
@@ -1697,10 +1746,6 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Omet el menú de selecció de qualitat i obre directament el menú de qualitat avançada</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ocultar opcions de qualitat Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Prioritzar la qualitat del vídeo</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioritza la qualitat de vídeo més alta disponible per sobre de l\'eficiència del còdec</string>
-  <string name="morphe_video_quality_prioritize_dialog">Si aquest ajust està desactivat, els vídeos més antics podrien no mostrar opcions de qualitat de vídeo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Permetre AV1 de \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_summary">Permet la descodificació per programari d\'AV1 quan s\'utilitza el client \'Android VR\' / \'visionOS\'</string>

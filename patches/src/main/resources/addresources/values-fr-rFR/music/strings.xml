@@ -265,6 +265,20 @@ Mettre le fondu enchaîné en pause pour regarder un clip musical peut entraîne
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Mettre en pause quand coupé</string>
   <string name="morphe_music_pause_when_muted_summary">Met la lecture en pause lorsque le volume du système est coupé et la reprend lorsque le volume est augmenté</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Le bouton \'Caster\' peut également diffuser du contenu sur les enceintes Sonos et autres enceintes UPnP de votre réseau Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Se connecter à un appareil</string>
+  <string name="morphe_music_sonos_cast_searching">Recherche d\'enceintes sur votre réseau Wi-Fi…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Choisissez une enceinte sur votre réseau Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_casting_to">Diffusion vers %s</string>
+  <string name="morphe_music_sonos_cast_connected">Connectée</string>
+  <string name="morphe_music_sonos_cast_disconnect">Déconnecter</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Enceintes sur le Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Actif</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Appareils Chromecast, Nest et Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Impossible de se connecter à %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Vitesse de lecture</string>
   <string name="morphe_music_playback_speed_summary">Vitesse utilisée pour tous les morceaux. À 100% la vitesse de l\'application est utilisée, comme pour la vitesse de lecture des podcasts</string>
@@ -586,6 +600,9 @@ Pour que le scrobbling continue à se synchroniser pendant la lecture en arrièr
   <string name="morphe_music_soundproof_about_summary">"Les données des artistes proviennent de SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), téléchargées une fois par jour. Le passage des morceaux n'envoie aucune information sur ce que vous écoutez. L'ouverture de la feuille SoundProof envoie le nom de l'artiste en cours d'écoute au serveur SoundProof pour afficher les votes les plus récents et permettre de voter. Le serveur distingue les votants à l'aide de leur adresse IP, donc votre vote peut apparaître différemment sur un autre réseau.
 
 La base de données est sous licence ODC Open Database License (ODbL). Les entrées de Soul Over AI par xoundbyte sont sous licence CC BY 4.0. Non affilié ni approuvé par SoundProof ou Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Pochette animée Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Affiche la pochette d\'album animée d\'Apple Music dans le lecteur, si l\'album en possède une. Le titre, l\'artiste et l\'album de chaque chanson sont envoyés à Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Les paroles ne sont pas disponibles pour ce fichier sur cet appareil</string>
   <string name="morphe_music_lyrics_enabled_title">Utiliser les paroles de tiers</string>

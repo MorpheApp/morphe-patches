@@ -141,7 +141,7 @@ Nhấn OK để mở Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Hãy thử bật: Giả mạo luồng phát video &gt; Đăng nhập Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client mặc định</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Đăng nhập VR \'Android\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Đăng nhập \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' yêu cầu đăng nhập riêng. Nhấn vào đây để tiếp tục</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hiện đang đăng nhập vào \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -168,7 +168,7 @@ Nhấn OK để mở Android System WebView."</string>
 • Các cài đặt Morphe của bạn sẽ không nhập/xuất xác thực Android VR
 • Nếu ứng dụng này không được sử dụng trong 6 tháng thì Google sẽ xóa xác thực này
 • Nếu bạn thay đổi mật khẩu Google hoặc xóa bỏ cài đặt thiết bị này khỏi cài đặt Google thì cần đăng nhập lại"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Đăng nhập Web di động</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Đăng nhập \'Web di động\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Tùy chọn: đăng nhập vào trang web YouTube để phát video bằng tài khoản của bạn. Nhấn vào đây để tiếp tục</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hiện đang đăng nhập vào \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
@@ -214,6 +214,10 @@ Nhấn OK để mở Android System WebView."</string>
   <string name="morphe_seek_notification_media_length_invalid">Độ dài tua phải nằm trong khoảng từ 1 đến %s giây. Sử dụng mặc định</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Tắt giao thức QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Ưu tiên chất lượng video</string>
+  <string name="morphe_prioritize_video_quality_summary">Ưu tiên chất lượng video cao nhất hơn là tối ưu codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Nếu tắt cài đặt này, các video cũ hơn có thể không hiển thị tùy chọn chất lượng video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Tắt âm thanh DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
