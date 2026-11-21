@@ -366,8 +366,9 @@ public final class TitleCleanup {
     /**
      * Changes the fancy text characters to plain letters and numbers, such as math bold,
      * circled, fullwidth and small capital letters.
+     * Also used by the keyword filter, so keywords match titles written in fancy text.
      */
-    private static String replaceFancyText(String text) {
+    public static String replaceFancyText(String text) {
         StringBuilder builder = null;
         for (int i = 0, length = text.length(); i < length; ) {
             final int codePoint = text.codePointAt(i);

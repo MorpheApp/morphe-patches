@@ -56,6 +56,14 @@ public class TitleCleanupTest {
     }
 
     @Test
+    public void replaceFancyTextKeepsOtherCharacters() {
+        // Used by the keyword filter, which searches the result.
+        assertEquals("Biboo's random encounter with these NPCs in GTA 6 is HILARIOUS",
+                TitleCleanup.replaceFancyText("𝗕𝗶𝗯𝗼𝗼'𝘀 𝗿𝗮𝗻𝗱𝗼𝗺 𝗲𝗻𝗰𝗼𝘂𝗻𝘁𝗲𝗿 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲𝘀𝗲 𝗡𝗣𝗖𝘀 𝗶𝗻 𝗚𝗧𝗔 𝟲 𝗶𝘀 𝗛𝗜𝗟𝗔𝗥𝗜𝗢𝗨𝗦"));
+        assertEquals("HELLO 😂 x²", TitleCleanup.replaceFancyText("ʜᴇʟʟᴏ 😂 x²"));
+    }
+
+    @Test
     public void emojis() {
         check("Fun😂Time", "Fun Time");
         check("Watch this (😂)", "Watch this");
