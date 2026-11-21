@@ -30,6 +30,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.view.ViewStub;
 import android.view.WindowInsets;
 import android.widget.ImageView;
@@ -844,6 +845,35 @@ public final class NavigationBarPatch {
             return false;
         }
         return original;
+    }
+
+    /**
+     * The container of the scroll to bottom button of the live chat.
+     */
+    private static final int liveChatScrollButtonContainerId = NAVIGATION_BAR_STYLE != NavigationBarStyle.DEFAULT
+            ? ResourceUtils.getIdentifier(ResourceType.ID, "more_comments_icon_container")
+            : 0;
+
+    /**
+     * Injection point.
+     * <p>
+     * The live chat hides its scroll to bottom button by moving it below its container, where the bottom
+     * of the chat cuts it off. With the navigation bar covering the system navigation buttons, the chat
+     * keeps the room for the system navigation buttons below the container, so half of the hidden button
+     * is still shown there (<a href="https://github.com/MorpheApp/morphe-patches/issues/5100">...</a>).
+     * The container cuts the button off at its own bounds instead.
+     */
+    public static void clipLiveChatScrollButton(@Nullable View button) {
+        try {
+            if (translucentNavigationBarForced && button != null
+                    && button.getParent() instanceof View container
+                    && container.getId() == liveChatScrollButtonContainerId) {
+                container.setOutlineProvider(ViewOutlineProvider.BOUNDS);
+                container.setClipToOutline(true);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "clipLiveChatScrollButton failure", ex);
+        }
     }
 
     /**

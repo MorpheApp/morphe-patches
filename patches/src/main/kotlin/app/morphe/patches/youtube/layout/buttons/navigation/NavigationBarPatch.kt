@@ -41,6 +41,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.hide.general.MoreCommentsIconFingerprint
 import app.morphe.patches.youtube.layout.hide.shorts.ShortsBottomBarContainerFingerprint
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
@@ -496,6 +497,24 @@ val navigationBarPatch = patch(
                     move-result v$register
                 """
             )
+        }
+
+        // The live chat hides its scroll to bottom button by moving it below its container. With the bar covering
+        // the system navigation buttons, the room for them is left below the container, so the hidden button
+        // is still shown there. The container is set to cut the button off at its bounds.
+        MoreCommentsIconFingerprint.apply {
+            clearMatch()
+            matchAll().forEach { match ->
+                match.method.apply {
+                    val index = match.instructionMatches.last().index
+                    val buttonRegister = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstruction(
+                        index + 1,
+                        "invoke-static { v$buttonRegister }, $EXTENSION_CLASS->clipLiveChatScrollButton(Landroid/view/View;)V"
+                    )
+                }
+            }
         }
 
         // The slim status bar ("No connection", "Back online") is laid out below the bar covering
