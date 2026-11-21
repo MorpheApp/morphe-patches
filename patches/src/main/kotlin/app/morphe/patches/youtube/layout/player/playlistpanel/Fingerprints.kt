@@ -58,12 +58,17 @@ internal object PanelModeFingerprint : Fingerprint(
         ),
         // The fullscreen state.
         literal(3, location = MatchAfterWithin(10)),
-        opcode(Opcode.IF_EQ, location = MatchAfterImmediately()),
+        // 21.47+ inverts the check and also checks another state before the panel.
+        anyInstruction(
+            opcode(Opcode.IF_EQ),
+            opcode(Opcode.IF_NE),
+            location = MatchAfterImmediately()
+        ),
         // The panel beside the player.
         fieldAccess(
             opcode = Opcode.SGET_OBJECT,
             type = { PanelModeEnumFingerprint.originalClassDef.type },
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(5)
         )
     )
 )

@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Фолдер за извоз %s није пронађен</string>
   <string name="morphe_export_download_flyout_title">Извези на уређај</string>
   <string name="morphe_export_download_canceled">Извоз је отказан</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Обичај</string>
   <string name="morphe_custom_branding_icon_title">Иконица апликације</string>
@@ -140,15 +141,15 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Покушајте да укључите: Лажирани видео стримови &gt; Пријава на Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Подразумевани клијент</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Најава на Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR zahteva посебну пријаву. Додирните овде да наставите</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Профилисан на Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Пријављивање за \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">За \'Android VR\' је потребно посебно пријављивање. Додирните овде да наставите</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Тренутно сте пријављени на \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Да бисте користили ову функцију, промените „Подразумевани клијент“ на Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Најавите се на Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Пријављивање на Android VR може да реши проблеме са репродукцијом за неке кориснике
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Да бисте користили ову функцију, промените „Подразумевани клијент“ на \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Пријавите се на \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Пријављивање на „Android VR” може да реши проблеме са репродукцијом за неке кориснике
 
-Да бисте се пријавили, притисните „Настави“ испод"</string>
+Да бисте се пријавили, притисните „Настави” испод"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Одјави</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкције</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -167,35 +168,35 @@ Second \"item\" text"</string>
 • Ваша Morphe подешавања неће увозити/извозити ауторизацију за Android VR
 • Ако се ова апликација не користи 6 месеци, Google ће уклонити ту ауторизацију
 • Мораћете поново да се пријавите ако промените Google лозинку или уклоните овај уређај из Google подешавања"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Пријављивање путем мобилне веб верзије</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Пријављивање за \"Mobile Web\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Опционо: пријавите се на YouTube веб сајт да бисте пустили видео снимке са својим налогом. Додирните овде да наставите</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Тренутно сте пријављени на мобилну веб верзију</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Тренутно сте пријављени на „Mobile Web”</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Да бисте користили ову функцију, промените „Подразумевани клијент“ на Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Пријавите се на Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web пушта видео-записе када нисте пријављени или када сте пријављени на YouTube веб-сајт
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Да бисте користили ову функцију, промените „Подразумевани клијент” на „Mobile Web”</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Пријавите се на „Mobile Web”</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' пушта видео снимке када нисте пријављени или када сте пријављени на YouTube веб-сајт
 
-• Када сте пријављени, могу се пуштати видео-записи који захтевају налог, као што су видео-записи са ограничењем по години
-• Страница за Google пријављивање отвара се у овој апликацији
-• Пријављивање се користи само за преузимање видео-записа које пуштате
-• Пријављивање се чува само на овом уређају
+• Када сте пријављени, могу се пуштати видео снимци који захтевају налог, као што су снимци са ограничењем по години
+• Страница за Google пријаву отвара се у овој апликацији
+• Пријава се користи само за приступ видео снимцима које пуштате
+• Пријава се чува само на овом уређају
 
-Да бисте се пријавили, притисните „Настави“ испод"</string>
+Да бисте се пријавили, притисните „настави“ испод"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Пријава је сачувана
 
-• Ваша Morphe подешавања неће увези/извези пријаву за мобилну веб верзију
-• Ако Google заврши пријаву, видео снимци се репродуктују без пријављености док се поново не пријавите
-• Одјава такође одјављује овај уређај са YouTube веб сајта"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Пријава на мобилну веб верзију је истекла, покушајте поново да се пријавите на мобилну веб верзију</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Одјављено са мобилне веб верзије</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView није доступан. Инсталирајте га или омогућите да бисте се пријавили</string>
+• Ваша Morphe подешавања неће увезити/извезти пријаву за 'Mobile Web'
+• Ако Google прекине пријаву, видео снимци ће се пуштати без пријављености док се поново не пријавите
+• Одјава такође одјављује овај уређај са YouTube веб-сајта"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Пријава на Mobile Web је истекла, покушајте поново да се пријавите на \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Одјављено са \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' није доступан. Инсталирајте га или омогућите да бисте се пријавили</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 привремено није доступан (API је истекао)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Пријава на Android VR је истекла, покушајте поново да се пријавите на VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Пријава на Android VR је истекла, покушајте поново да се пријавите на VR\'</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 је привремено недоступан (статус %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 привремено није доступан</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Не могу да се пријавим на VR, веб аутентификација није одобрена</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може се ући у VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Одјављен са Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Одјављено са \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Неважећи токен за улаз у VR, покушајте поново да уђете у VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Контроле медија у обавештењу</string>
@@ -213,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">Дужина претраге мора бити између 1 и %s секунди. Користи се подразумевана</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Онемогући QUIC протокол</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Приоритет квалитета видеа</string>
+  <string name="morphe_prioritize_video_quality_summary">Даје приоритет највишем доступном квалитету видеа у односу на ефикасност кодека</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ако је ова подешавање искључено, старији видеи можда неће приказивати опције квалитета видеа</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Онемогућити аудио ДРЦ</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -253,7 +258,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">Промени линкове за дељење на youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Замењује music.youtube.com са youtube.com у дељеним линковима</string>
   <string name="morphe_replace_links_with_shortener_title">Промени линкове за дељење на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Форсира видео записе да користе скраћени URL формат youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Форсира видео записе да користе скраћени URL формат \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Аутоматски</string>
@@ -265,15 +270,12 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Подразумевани квалитет видеа на мобилној мрежи</string>
   <string name="morphe_remember_video_quality_toast_mobile">Подразумевани мобилни квалитет је промењен на: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Подразумевани Wi-Fi квалитет је промењен на: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Отвори системски панел за дељење</string>
-  <string name="morphe_open_system_share_sheet_summary">Отвора системски прозор за дељење уместо оног унутар апликације приликом дељења садржаја</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho евидентирање</string>
   <string name="morphe_debug_litho_entry_disabled">Онемогућен</string>
   <string name="morphe_debug_litho_entry_path">Путања</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Путања и бафер</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho забележник евидентира компоненте изгледа апликације, укључујући текст на екрану за неке компоненте корисничког интерфејса.
+  <string name="morphe_debug_litho_user_dialog_message">"Евидентира компоненте изгледа апликације, укључујући текст на екрану за неке компоненте корисничког интерфејса.
 
 Ово може помоћи у идентификацији компоненти приликом прављења прилагођених филтера.
 
@@ -379,4 +381,8 @@ ID видео снимка који гледате шаље се Return YouTube 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Није наишао ни на једно ограничење брзине клијента</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Суочили смо се са ограничењем стопе клијента %s пута</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s милисекунди</string>
+  <string name="morphe_navigation_bar_screen_title">Трака за навигацију</string>
+  <string name="morphe_navigation_bar_screen_summary">Изаберите која ће дугмад бити приказана у доњој导航навигационој траци</string>
+  <string name="morphe_toolbar_screen_title">Трака са алаткама</string>
+  <string name="morphe_toolbar_screen_summary">Изаберите које компоненте се приказују у алткој траци</string>
 </resources>

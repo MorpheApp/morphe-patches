@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.3.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.3.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;212 patches total
+> **[v2.4.0-dev.7](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.7)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;231 patches total
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;57 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;60 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -50,6 +50,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [A-B loop](#a-b-loop) | Adds an option to loop part of a song by long-pressing the seekbar to set the loop start and end. |  |
 | [Android Auto](#android-auto) | Bypasses certificate checks and restores YouTube Music Home recommendations, Library collections, and podcasts in Android Auto. |  |
 | [App refresh rate](#app-refresh-rate) | Adds an option to change the app refresh rate. |  |
+| [Apple Music animated artwork](#apple-music-animated-artwork) | Adds an option to show the animated album artwork of Apple Music in the player. |  |
 | [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
 | [Change miniplayer color](#change-miniplayer-color) | Adds an option to change the miniplayer background color to match the fullscreen player. |  |
 | [Change start page](#change-start-page) | Adds an option to set which page the app opens in instead of the homepage. |  |
@@ -62,6 +63,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Disable audio ducking](#disable-audio-ducking) | Adds an option to keep the volume unchanged when another app plays a short sound, such as a notification. |  |
 | [Disable auto captions](#disable-auto-captions) | Adds an option to disable captions from being automatically enabled. |  |
 | [Disable dislike redirection](#disable-dislike-redirection) | Adds an option to prevent skipping to the next track when the dislike button is pressed. |  |
+| [Disable swipe to change track](#disable-swipe-to-change-track) | Adds options to disable changing the track by swiping left or right on the player or the miniplayer. |  |
 | [Downloads](#downloads) | Adds support to download songs, albums, and playlists using the in-app download button, either inside YouTube Music or with an external downloader app, and exports songs and videos saved by the app to the device. |  |
 | [Enable audio/video switch](#enable-audio-video-switch) | Adds an option to switch between the audio and the video version of a track by redirecting videoId. |  |
 | [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
@@ -72,14 +74,13 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Force portrait orientation](#force-portrait-orientation) | Adds an option to keep the app in portrait orientation when the device is rotated. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
 | [Hide ads](#hide-ads) | Adds options to hide fullscreen ads, Premium promotions and video ads. |  |
-| [Hide buttons](#hide-buttons) | Adds options to hide the cast, history, notification, search, voice search, sound search, and Library New buttons. |  |
 | [Hide flyout menu components](#hide-flyout-menu-components) | Adds options to hide individual items from the player and queue flyout menus. |  |
 | [Hide layout components](#hide-layout-components) | Adds options to hide general layout components. |  |
 | [Hide music action buttons](#hide-music-action-buttons) | Adds options to hide action buttons under the player. |  |
 | [Jam queue sharing](#jam-queue-sharing) | Shares the host queue and playback controls through an authenticated Jam bridge. Root installation is not supported. |  |
 | [Media notification controls](#media-notification-controls) | Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls. |  |
 | [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
-| [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons, and to show the navigation bar and miniplayer as glass. |  |
+| [Navigation bar](#navigation-bar) | Adds options to hide and change the bottom navigation bar (such as the Samples button) and the upper navigation toolbar. |  |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
 | [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. |  |
 | [Pause when muted](#pause-when-muted) | Adds an option to pause playback when the system volume is muted, and to resume it when the volume is raised. |  |
@@ -88,6 +89,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Playlist tags](#playlist-tags) | Adds an option to tag playlists from their menu, and to filter the Library playlists by tag. |  |
 | [Playlist track tap action](#playlist-track-tap-action) | Adds an option to play only the tapped track of a playlist or album, or to add it to the queue, instead of replacing the queue with the whole playlist. |  |
 | [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
+| [Queue likes filter](#queue-likes-filter) | Adds an option to remove songs with few likes from auto-generated mixes and radio, using the like counts of Return YouTube Dislike. Playlists and albums are left unchanged. |  |
 | [Remember repeat state](#remember-repeat-state) | Adds an option to remember the repeat state when playing a new track or playlist. |  |
 | [Remember shuffle state](#remember-shuffle-state) | Adds an option to remember the shuffle state when playing a new track or playlist. |  |
 | [Remember video quality](#remember-video-quality) | Adds options to set default video qualities and remember the last selected video quality. |  |
@@ -98,6 +100,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Scrobbling](#scrobbling) | Adds options to add played tracks to Last.fm and ListenBrainz. |  |
 | [Settings menu filter](#settings-menu-filter) | Adds an option to hide items on the standard YouTube Music settings screen by their visible name. |  |
 | [Skip silence](#skip-silence) | Adds an option to automatically skip silent pauses in audio playback. |  |
+| [Sonos Cast](#sonos-cast) | Adds an option to stream the audio to Sonos and other UPnP speakers on the same Wi-Fi network from the Cast button. |  |
 | [SoundProof](#soundproof) | Adds an option to skip tracks of artists reported as AI in the SoundProof community database. |  |
 | [SponsorBlock](#sponsorblock) | Adds options to enable and configure SponsorBlock, which can skip non-music segments. |  |
 | [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
@@ -108,12 +111,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;118 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;123 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.45.82 | 🧪&nbsp;21.44.528 | 🧪&nbsp;21.43.523 | 21.30.216 | 21.28.208 | 21.23.492 | 20.51.39 | 20.26.46 |
+| 🧪&nbsp;21.46.522 | 🧪&nbsp;21.45.82 | 🧪&nbsp;21.44.528 | 21.30.216 | 21.28.208 | 21.23.492 | 20.51.39 | 20.26.46 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -121,6 +124,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [AI channel filter](#ai-channel-filter) | Adds options to hide videos from channels flagged as AI-generated by the AiSList community list and to report AI channels from the video menu. |  |
 | [Add to queue](#add-to-queue) | Adds a video queue to the feed flyout menu, using either the Morphe queue or a native queue that uses YouTube's playlist interface. |  |
 | [Ambient mode](#ambient-mode) | Adds Enhanced Ambient mode and options to force Ambient mode on, bypass its power saving restrictions, and disable it entirely or in fullscreen. |  |
+| [Android Auto parked app mode](#android-auto-parked-app-mode) | Declares YouTube a parked video app, so Android Auto (early access only) and DriveDeck (available now) list it on the car screen by themselves. Android Auto still needs Unknown sources in its developer settings for a patched app. |  |
 | [App refresh rate](#app-refresh-rate) | Adds an option to change the app refresh rate. |  |
 | [Ask flyout menu](#ask-flyout-menu) | Adds a video menu entry that opens Ask for the video and summarizes the video. This patch works with YouTube 21.16.256 and newer. |  |
 | [Autoplay control](#autoplay-control) | Adds a player button and a rule for the next video: playlists and queues go on, a Mix stops after a number of videos, a suggested video never plays. |  |
@@ -168,6 +172,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [Fullscreen playlist panel](#fullscreen-playlist-panel) | Adds an option to show the playlist panel over the fullscreen player on tablets, instead of exiting fullscreen. |  |
 | [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode. |  |
+| [Glass menus](#glass-menus) | Adds an option to show the menus as frosted glass, with the content behind the menu blurred. This patch works on Android 12 and newer. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
 | [Hide Shorts components](#hide-shorts-components) | Adds options to hide components related to Shorts. | • Hide Shorts app shortcut<br>• Hide Shorts widget |
 | [Hide ads](#hide-ads) | Adds options to hide general ads, Premium promotions and video ads. |  |
@@ -177,12 +182,13 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide info cards](#hide-info-cards) | Adds an option to hide info cards that creators add in the video player. |  |
 | [Hide layout components](#hide-layout-components) | Adds options to hide general layout components. |  |
 | [Hide player flyout menu components](#hide-player-flyout-menu-components) | Adds options to hide menu components that appear when pressing the gear icon in the video player. |  |
-| [Hide player overlay buttons](#hide-player-overlay-buttons) | Adds options to hide the Cast button, the player Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background. |  |
+| [Hide player overlay buttons](#hide-player-overlay-buttons) | Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background. |  |
 | [Hide related video overlay](#hide-related-video-overlay) | Adds an option to hide the related video overlay shown when swiping up in fullscreen. |  |
 | [Hide related videos](#hide-related-videos) | Adds options to hide related videos. |  |
 | [Hide status bar](#hide-status-bar) | Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment. |  |
 | [Hide timestamp](#hide-timestamp) | Adds an option to hide the timestamp in the bottom left of the video player. |  |
 | [Hide video action buttons](#hide-video-action-buttons) | Adds options to hide video action buttons in fullscreen and portrait modes. |  |
+| [Hold gesture](#hold-gesture) | Adds options to change the playback speed and to keep it by dragging after tapping and holding the video player. |  |
 | [Loop count](#loop-count) | Adds a player settings menu item to choose how many times the app loops a video, before it plays the next video. In a playlist, the loop count is remembered for each video. |  |
 | [Loop video](#loop-video) | Adds an option to loop videos and display loop video button in the video player. |  |
 | [Media notification controls](#media-notification-controls) | Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls. |  |
@@ -195,6 +201,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Open Shorts in regular player](#open-shorts-in-regular-player) | Adds options to open Shorts in the regular video player. |  |
 | [Open channel of live avatar](#open-channel-of-live-avatar) | Adds an option to prevent a channel's current live video from opening when tapping its avatar. |  |
 | [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app browser. |  |
+| [Open post images in fullscreen](#open-post-images-in-fullscreen) | Adds an option to open the images of posts in fullscreen with one tap, instead of the posts feed. |  |
 | [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. |  |
 | [Open videos fullscreen](#open-videos-fullscreen) | Adds options to automatically open videos in fullscreen portrait or landscape mode. |  |
 | [Override YouTube Music buttons](#override-youtube-music-buttons) | Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client. |  |
@@ -232,6 +239,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color<br>• Light theme color |
 | [Translate live chat](#translate-live-chat) | Adds an option to translate live chat and live chat replay messages. |  |
 | [Translate posts](#translate-posts) | Adds a menu item to translate the text of posts. |  |
+| [Ungroup notifications](#ungroup-notifications) | Adds an option to show every video of the notifications that YouTube groups by channel as its own notification. |  |
 | [Video delay](#video-delay) | Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 | [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
@@ -240,12 +248,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;32 patches</summary>
+<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;43 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.46.0 | 🧪&nbsp;2026.45.0 | 🧪&nbsp;2026.44.0 | 2026.40.0 | 2026.24.0 | 2026.10.0 |
+| 🧪&nbsp;2026.47.0 | 🧪&nbsp;2026.46.0 | 🧪&nbsp;2026.45.0 | 2026.40.0 | 2026.24.0 | 2026.10.0 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -255,33 +263,44 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Custom branding name for Reddit](#custom-branding-name-for-reddit) | Changes the Reddit app name to the name specified in patch options. | • App name |
 | [Custom font](#custom-font) | Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime. |  |
 | [Customize post layout](#customize-post-layout) | Adds options to show the view count of posts, to move the vote and comment buttons of posts to the right side, and to swap the vote and comment buttons. Moving and swapping the buttons works with Reddit 2026.39.0 and newer. |  |
-| [Disable modern home](#disable-modern-home) | Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier. |  |
+| [Disable modern home](#disable-modern-home) | Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier, and 2026.40.0 and later. |  |
 | [Disable screenshot popup](#disable-screenshot-popup) | Adds an option to disable the popup that appears when taking a screenshot. |  |
 | [Download location](#download-location) | Adds options to choose the folder and file name of downloaded images and videos, which can use the subreddit, author and account, and can be set per account. |  |
+| [Feed auto-scroll](#feed-auto-scroll) | Adds an option to slowly scroll the feed on screen automatically. |  |
 | [Feed media max height](#feed-media-max-height) | Adds an option to change the maximum height of images, videos and galleries in the feed. |  |
+| [Flair filters](#flair-filters) | Adds an option to hide feed posts with a flair of a community. |  |
 | [Force system font](#force-system-font) | Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto. |  |
 | [Full width feed media](#full-width-feed-media) | Adds an option to show images and videos edge to edge in the feed and post details, without side padding and rounded corners. |  |
 | [Hide Ask button](#hide-ask-button) | Adds an option to hide Ask button in the search bar. |  |
 | [Hide Reddit search](#hide-reddit-search) | Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting |  |
 | [Hide Trending shelves](#hide-trending-shelves) | Adds an option to hide the Trending shelves from feed and search suggestions. |  |
+| [Hide Videos for you shelf](#hide-videos-for-you-shelf) | Adds an option to hide the 'Videos for you' shelf in the home feed. This patch works with Reddit 2026.40.0 and newer. |  |
 | [Hide ads](#hide-ads) | Adds options to hide ads. |  |
 | [Hide communities shelf](#hide-communities-shelf) | Adds an option to hide the related or suggested communities shelf in subreddits. |  |
+| [Hide home tabs](#hide-home-tabs) | Adds options to hide the For You, Following and Popular tabs of the home feed. This patch works with Reddit 2026.40.0 and later. |  |
+| [Hide interactive posts](#hide-interactive-posts) | Adds an option to hide game and other interactive app posts from the home feed and other recommended feeds. |  |
 | [Hide media viewer components](#hide-media-viewer-components) | Adds options to hide the "See the conversation" button and the title, buttons and video controls of the media viewer. Hiding the title, buttons and video controls requires Reddit 2026.38.0 or newer. |  |
 | [Hide navigation buttons](#hide-navigation-buttons) | Adds options to hide buttons in the navigation bar. |  |
+| [Hide post buttons](#hide-post-buttons) | Adds options to hide the buttons of posts in the feeds, the post detail screen and the media viewer, such as the Join, vote, comment, award, repost and share buttons. Hiding the buttons below posts works with Reddit 2026.24.0 and newer. |  |
 | [Hide sidebar components](#hide-sidebar-components) | Adds options to hide the sidebar components. |  |
 | [High quality avatars](#high-quality-avatars) | Adds an option to show user avatars in full resolution instead of the low resolution version. |  |
 | [Keep feed position](#keep-feed-position) | Adds an option to keep the feed at the same position after closing a post, image or video, instead of moving the opened post to the top of the screen. |  |
+| [Keyword filters](#keyword-filters) | Adds an option to hide feed posts with a title or text that matches a regular expression. |  |
 | [Media viewer black background](#media-viewer-black-background) | Adds an option to use a black background behind images and videos in the media viewer, instead of the theme background color. |  |
 | [Media viewer fade](#media-viewer-fade) | Adds an option to lower or remove the dark fade behind the caption when viewing images and videos. |  |
 | [Open links directly](#open-links-directly) | Adds an option to skip over redirection URLs in external links. |  |
 | [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app-browser. |  |
+| [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. This patch works with Reddit 2026.24.0 and newer. |  |
+| [Post side panel](#post-side-panel) | Adds an option to open posts in a panel next to the feed on wide tablet screens. |  |
 | [Redgifs audio](#redgifs-audio) | Adds an option to play the original Redgifs video, which has audio, instead of Reddit's silent copy. |  |
 | [Remember collapsed comments](#remember-collapsed-comments) | Adds an option to keep comments you collapsed collapsed when reopening a post. |  |
 | [Remove subreddit dialog](#remove-subreddit-dialog) | Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Adds an option to sanitize sharing links by removing tracking query parameters. |  |
+| [Share post content](#share-post-content) | Adds an option to share the image, video or text of a post instead of its link when using app shortcuts or "Share via…" in the share sheet. |  |
 | [Show flairs in home feed](#show-flairs-in-home-feed) | Adds an option to show post flair badges in the home feed. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Spoof signature](#spoof-signature) | Spoofs the signature of the app to fix notification issues. |  |
 | [Start as guest](#start-as-guest) | Skips the forced startup login screen using Reddit's native guest browsing mode. |  |
+| [Tablet grid feed](#tablet-grid-feed) | Adds an option to show feeds as a grid with 2 or 3 columns on tablets. |  |
 
 </details>
 

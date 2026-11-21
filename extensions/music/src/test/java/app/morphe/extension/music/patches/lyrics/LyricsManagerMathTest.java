@@ -23,22 +23,22 @@ public class LyricsManagerMathTest {
 
     @Test
     public void correctSmoothEstimateLargeErrorUsesFullFactor() throws Exception {
-        assertEquals(200L, callCorrectSmoothEstimate(0L, 200L));
+        assertEquals(300L, callCorrectSmoothEstimate(0L, 300L));
     }
 
     @Test
-    public void correctSmoothEstimateMediumErrorUsesEightyFive() throws Exception {
-        assertEquals(85L, callCorrectSmoothEstimate(0L, 100L));
+    public void correctSmoothEstimateMediumErrorUsesFortyFive() throws Exception {
+        assertEquals(90L, callCorrectSmoothEstimate(0L, 200L));
     }
 
     @Test
-    public void correctSmoothEstimateSmallErrorUsesHalf() throws Exception {
-        assertEquals(10L, callCorrectSmoothEstimate(0L, 20L));
+    public void correctSmoothEstimateSmallErrorUsesTwenty() throws Exception {
+        assertEquals(20L, callCorrectSmoothEstimate(0L, 100L));
     }
 
     @Test
     public void correctSmoothEstimateNegativeError() throws Exception {
-        assertEquals(58L, callCorrectSmoothEstimate(100L, 50L));
+        assertEquals(90L, callCorrectSmoothEstimate(100L, 50L));
     }
 
     @Test
@@ -52,23 +52,23 @@ public class LyricsManagerMathTest {
     }
 
     @Test
-    public void correctSmoothEstimateBoundaryError150() throws Exception {
-        assertEquals(128L, callCorrectSmoothEstimate(0L, 150L));
+    public void correctSmoothEstimateBoundaryError120() throws Exception {
+        assertEquals(24L, callCorrectSmoothEstimate(0L, 120L));
     }
 
     @Test
-    public void correctSmoothEstimateBoundaryError151() throws Exception {
-        assertEquals(151L, callCorrectSmoothEstimate(0L, 151L));
+    public void correctSmoothEstimateBoundaryError121() throws Exception {
+        assertEquals(54L, callCorrectSmoothEstimate(0L, 121L));
     }
 
     @Test
-    public void correctSmoothEstimateBoundaryError30() throws Exception {
-        assertEquals(15L, callCorrectSmoothEstimate(0L, 30L));
+    public void correctSmoothEstimateBoundaryError250() throws Exception {
+        assertEquals(113L, callCorrectSmoothEstimate(0L, 250L));
     }
 
     @Test
-    public void correctSmoothEstimateBoundaryError31() throws Exception {
-        assertEquals(26L, callCorrectSmoothEstimate(0L, 31L));
+    public void correctSmoothEstimateBoundaryError251() throws Exception {
+        assertEquals(251L, callCorrectSmoothEstimate(0L, 251L));
     }
 
     @Test
@@ -78,7 +78,7 @@ public class LyricsManagerMathTest {
 
     @Test
     public void correctSmoothEstimateFromNonZeroBase() throws Exception {
-        assertEquals(585L, callCorrectSmoothEstimate(500L, 600L));
+        assertEquals(520L, callCorrectSmoothEstimate(500L, 600L));
     }
 
     private static long callCorrectSmoothEstimate(long current, long reported) throws Exception {

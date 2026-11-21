@@ -74,18 +74,34 @@ Ukuze uhumushe izilimi ezintsha noma uthuthukise izihumushi ezikhona, vusela i-m
   <string name="morphe_settings_export_file">Thumela kufayela</string>
   <string name="morphe_settings_export_file_success">Izilungiselelo zithunyelwe ngempumelelo</string>
   <string name="morphe_settings_export_file_failed">Kwahluleka ukuthumela izilungiselelo</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Usebenzisa inguqulo yakamuva ye-Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Usebenzisa i-Morphe Patches inguqulo &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;I-update itholakala: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ukuze uvuselele ama-patches akho, sebenzisa i-Morphe ukuze uphinde u-patch le app</string>
-  <string name="morphe_settings_about_links_dev_header">Isaziso</string>
-  <string name="morphe_settings_about_links_dev_body">Le nguqulo iyingxenye yokukhishwa kwesikhathi esingaphambili futhi ungahlangabezana nezinkinga ezingalindelekile</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Ama-Patches</string>
+  <string name="morphe_settings_about_version">Inguqulo</string>
+  <string name="morphe_settings_about_close">Vala</string>
+  <string name="morphe_settings_about_prerelease">Inguqulo yokuqala</string>
+  <string name="morphe_settings_about_update_available">Ukuvuselelwa okutholakalayo: %s</string>
+  <string name="morphe_settings_about_update_hint">Ukuze uvuselele ama-patches akho, sebenzisa iMorphe ukuze ufake phinda ama-patch kule app</string>
   <string name="morphe_settings_about_links_header">Izixhumeli ezisemthethweni</string>
   <string name="morphe_settings_about_links_website">Iwebhusayithi</string>
   <string name="morphe_settings_about_links_donate">Nikela</string>
   <string name="morphe_settings_about_links_translations">Izihumushi</string>
-  <string name="morphe_settings_about_links_credits">Amakhredithi</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Sekuvuselelwe</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Kukhona ukuthuthukiswa okutholakala</string>
+  <string name="morphe_settings_about_contributors">Abanikela</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Isikhathi sonke</string>
+  <string name="morphe_settings_about_contributors_6_months">izinyanga ezingu-6</string>
+  <string name="morphe_settings_about_contributors_3_months">izinyanga ezingu-3</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Isikhathi</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">abasebenzisi abangu-%s</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Abasekeli</string>
+  <string name="morphe_settings_about_supporters_summary">Abaxhasi ku-Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Ba ba sekeli</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Kanye nabanye abangu %s</string>
+  <string name="morphe_settings_about_people_unavailable">Akukwazanga ukulanda uhlu</string>
   <string name="morphe_settings_about_contributors_current">Ukuthuthukiswa kwamanje</string>
   <string name="morphe_settings_about_contributors_prior">Ukuthuthukiswa kwangaphambilini</string>
   <string name="morphe_settings_about_links_morphe">Ukuthuthukiswa okusebenzayo</string>
@@ -213,6 +229,9 @@ Uma ukuthuthukiswa kwebhathri kungashintshwa ungase uhlangabezane nalokhu:
 • I-App ingavala ngokuzenzela
 • Izaziso zingase zingasebenzi
 • Ukudlala ngemuva kungase kungasebenzi"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Vula i-share sheet yesistimu</string>
+  <string name="morphe_open_system_share_sheet_summary">Ivula ikhasi lokwabelana leh যাবu kunaleli lase-app lapho wabelana okuqukethwe</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Ukuphathwa kwezingxenye ze-App</string>
   <string name="morphe_link_handling_summary">Lungisa ama-link ukuba avulwe kule app</string>

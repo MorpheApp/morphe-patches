@@ -191,30 +191,14 @@ val copyTextPatch = patch(
 
         // Make the SelectionContainer content a Compose lambda.
         mutableClassDefBy(EXTENSION_RICH_TEXT_CONTENT_CLASS).apply {
-            interfaces.add("Lkotlin/jvm/functions/Function2;")
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "invoke",
-                    listOf(
-                        ImmutableMethodParameter("Ljava/lang/Object;", null, null),
-                        ImmutableMethodParameter("Ljava/lang/Object;", null, null)
-                    ),
-                    "Ljava/lang/Object;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(4)
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0, p1 }, $type->render(Ljava/lang/Object;)V
-                            const/4 v0, 0x0
-                            return-object v0
-                        """
-                    )
-                }
+            addPatchInterface(
+                "Lkotlin/jvm/functions/Function2;",
+                "invoke",
+                """
+                    invoke-virtual { p0, p1 }, $type->render(Ljava/lang/Object;)V
+                    const/4 v0, 0x0
+                    return-object v0
+                """
             )
         }
 

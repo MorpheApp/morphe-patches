@@ -91,15 +91,13 @@ internal object QueueAddEndpointCommandFingerprint : Fingerprint(
 
 /**
  * Gets an extension of the command builder, such as the watch endpoint.
- *
- * @param extendableBuilderClass Class of the command builder that sets the extension.
- * @param extensionType Type of the extension descriptor.
+ * The builder class and the type of the extension descriptor are those of the method that sets
+ * the extension in [WatchEndpointCommandBuilderFingerprint].
  */
-internal fun getCommandBuilderExtensionFingerprint(
-    extendableBuilderClass: String,
-    extensionType: String
-) = Fingerprint(
-    definingClass = extendableBuilderClass,
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf(extensionType)
+internal object CommandBuilderGetExtensionFingerprint : Fingerprint(
+    definingClass = { WatchEndpointCommandBuilderFingerprint.instructionMatches[9].methodReference.definingClass },
+    returnType = { "Ljava/lang/Object;" },
+    parameters = {
+        listOf(WatchEndpointCommandBuilderFingerprint.instructionMatches[9].methodReference.parameterTypes.first())
+    }
 )

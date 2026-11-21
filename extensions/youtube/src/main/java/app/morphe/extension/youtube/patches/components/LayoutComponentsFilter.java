@@ -14,7 +14,9 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +90,22 @@ public final class LayoutComponentsFilter extends Filter {
     private static final String POST_DETAIL_BROWSE_ID = "FEpost_detail";
 
     /**
+     * Path of the metadata of a video of a channel page, such as "1M · 2d ago".
+     */
+    private static final String VIDEO_METADATA_CONTENT_PATH = "|metadata_content.e";
+
+    /**
+     * Spaces between the view count and the upload time of a feed subtitle with an icon.
+     * The view count and the upload time have no two spaces in a row.
+     */
+    private static final String ICON_SUBTITLE_SEPARATOR = "  ";
+
+    /**
+     * Delimiters between the sections of a feed subtitle.
+     */
+    private static final String[] SUBTITLE_DELIMITERS = {" · ", " • "};
+
+    /**
      * Browse id of the page that is shown, or empty for the search feed.
      * Also used by {@link HorizontalShelvesFilter}.
      */
@@ -119,6 +137,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup channelMembersOnlyChipId;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup communityPosts;
+    private final StringFilterGroup communityPostsNew;
+    private final ByteArrayFilterGroup communityPostsNewBuffer;
     private final StringFilterGroup compactChannel;
     private final StringFilterGroup compactChannelMusicBanner;
     private final ByteArrayFilterGroup youtubeMusicChannelLink;
@@ -132,8 +152,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroupList linearLayoutGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup liveStream;
     private final ByteArrayFilterGroup liveStreamBuffer;
-    private final StringFilterGroup libraryDownloads;
-    private final ByteArrayFilterGroup libraryDownloadsBuffer;
+    private final StringFilterGroup libraryItem;
+    private final ByteArrayFilterGroupList libraryItemGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup notificationsMenuHeader;
     private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
@@ -219,17 +239,37 @@ public final class LayoutComponentsFilter extends Filter {
                 "yt_outline_experimental_live_black"
         );
 
-        // 'Downloads' item of the 'You' tab. It's a lockup, so the bottom menu filter can't match its name.
-        libraryDownloads = new StringFilterGroup(
-                Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
+        // Built-in items of the 'You' tab, such as 'Downloads'. They are lockups, so the bottom menu
+        // filter can't match their names. The settings are checked by the buffer groups.
+        libraryItem = new StringFilterGroup(
+                null,
                 "video_lockup_with_attachment.e"
         );
 
-        // The title is localized, but only the 'Downloads' item has this icon.
-        libraryDownloadsBuffer = new ByteArrayFilterGroup(
-                null,
-                "yt_outline_download_black",
-                "yt_outline_experimental_download_black"
+        // The titles are localized, so the items are found by their thumbnail, icon, playlist or page.
+        // Newer layouts of the 'You' tab show a thumbnail instead of the icon.
+        libraryItemGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_BADGES,
+                        "/youtube/app_shell/badges_thumbnail",
+                        "FEtrophies"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
+                        "yt_outline_download_black",
+                        "yt_outline_experimental_download_black",
+                        "/youtube/app_shell/download_background"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_LIKED_VIDEOS,
+                        "/youtube/app_shell/thumb_up_background",
+                        "/playlist?list=LL"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_WATCH_LATER,
+                        "/youtube/app_shell/clock_background",
+                        "/playlist?list=WL"
+                )
         );
 
         // The hint shown in the player during seek gestures. The identifier is versioned.
@@ -244,7 +284,7 @@ public final class LayoutComponentsFilter extends Filter {
                 linearLayout,
                 liveChatReplay,
                 liveStream,
-                libraryDownloads,
+                libraryItem,
                 seekEduOverlay
         );
 
@@ -378,6 +418,16 @@ public final class LayoutComponentsFilter extends Filter {
                 "text_post_root_slim.e",
                 "videos_post_responsive_root.e",
                 "videos_post_root.e"
+        );
+
+        communityPostsNew = new StringFilterGroup(
+                Settings.HIDE_COMMUNITY_POSTS,
+                "lockup.e"
+        );
+
+        communityPostsNewBuffer = new ByteArrayFilterGroup(
+                null,
+                "FEpost_home"
         );
 
         final var crowdfundingBox = new StringFilterGroup(
@@ -552,6 +602,7 @@ public final class LayoutComponentsFilter extends Filter {
                 compactChannelMusicBanner,
                 compactChannelBarInner,
                 communityPosts,
+                communityPostsNew,
                 crowdfundingBox,
                 emergencyBox,
                 expandableMetadata,
@@ -624,6 +675,23 @@ public final class LayoutComponentsFilter extends Filter {
         return Utils.endsWith(path, "|CellType|");
     }
 
+    private static boolean isCommunityPostHidden(ContextInterface contextInterface) {
+        // YouTube now also shows community posts on a dedicated community page for channels,
+        // and hiding its posts prevents any posts from loading (the page shows a loading
+        // spinner forever) (https://github.com/MorpheApp/morphe-patches/issues/4101).
+        // The page is found by its browse id, as the back button it is navigated with is also
+        // visible on other pages, such as the search results, and on the page below the watch page.
+        // The watch page, with its related videos, comments and other panels, covers the page
+        // below it, also when the video is opened from the community page
+        // (https://github.com/MorpheApp/morphe-patches/issues/4170).
+        if ((COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
+                && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+            return false;
+        }
+
+        return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
+    }
+
     @Override
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
@@ -676,20 +744,15 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == communityPosts) {
-            // YouTube now also shows community posts on a dedicated community page for channels,
-            // and hiding its posts prevents any posts from loading (the page shows a loading
-            // spinner forever) (https://github.com/MorpheApp/morphe-patches/issues/4101).
-            // The page is found by its browse id, as the back button it is navigated with is also
-            // visible on other pages, such as the search results, and on the page below the watch page.
-            // The watch page, with its related videos, comments and other panels, covers the page
-            // below it, also when the video is opened from the community page
-            // (https://github.com/MorpheApp/morphe-patches/issues/4170).
-            if ((COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
-                    && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-                return false;
-            }
+            return isCommunityPostHidden(contextInterface);
+        }
 
-            return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
+        if (matchedGroup == communityPostsNew) {
+            // Only the root lockup holds the post endpoint, and the identifier is shared with
+            // other feed items, such as videos.
+            return isLockupRoot(path)
+                    && communityPostsNewBuffer.check(buffer).isFiltered()
+                    && isCommunityPostHidden(contextInterface);
         }
 
         if (matchedGroup == compactChannel) {
@@ -747,12 +810,11 @@ public final class LayoutComponentsFilter extends Filter {
             return isLockupRoot(path) && liveStreamBuffer.check(buffer).isFiltered();
         }
 
-        if (matchedGroup == libraryDownloads) {
+        if (matchedGroup == libraryItem) {
             // Only check the whole lockup, for the same reason as the live streams.
-            return Settings.HIDE_ACCOUNT_MENU.get()
-                    && isLockupRoot(path)
+            return isLockupRoot(path)
                     && NavigationButton.getSelectedNavigationButton(contextInterface) == NavigationButton.LIBRARY
-                    && libraryDownloadsBuffer.check(buffer).isFiltered();
+                    && libraryItemGroupList.check(buffer).isFiltered();
         }
 
         if (matchedGroup == notificationsMenuHeader) {
@@ -793,7 +855,13 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == videoLabels) {
-            return VersionCheckPatch.IS_20_31_OR_GREATER && videoLabelsBuffer.check(buffer).isFiltered();
+            // Only the container of the label itself, in the metadata of a video. Badges are also used
+            // outside the videos, such as in the rows of the menus, where a container that has a badge
+            // can be the whole row.
+            return VersionCheckPatch.IS_20_31_OR_GREATER
+                    && Utils.contains(path, "lockup_metadata.e")
+                    && videoLabelsBuffer.check(buffer).isFiltered()
+                    && Utils.startsWith(asciiStrings.getStrings(), "badge.e");
         }
 
         if (matchedGroup == videoMetadataLabels) {
@@ -1196,6 +1264,15 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      *
+     * @return If the HaTS survey of the bottom UI container should not be shown.
+     */
+    public static boolean hideHatsSurvey() {
+        return Settings.HIDE_SURVEYS.get();
+    }
+
+    /**
+     * Injection point.
+     *
      * @return If every element in a box of the fullscreen engagement panel was filtered,
      *         so the empty box with its rounded border is collapsed, such as with "Hide channel bar".
      */
@@ -1379,6 +1456,70 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Injection point.
+     * <p>
+     * The metadata of the videos of channel pages, such as "1M · 2d ago", which is not created
+     * by {@link #modifyFeedSubtitleSpan(SpannableString, float)}.
+     */
+    public static CharSequence modifyVideoMetadataText(ContextInterface context, CharSequence text) {
+        try {
+            final boolean hideViewCount = Settings.HIDE_VIEW_COUNT.get();
+            final boolean hideUploadTime = Settings.HIDE_UPLOAD_TIME.get();
+            if ((!hideViewCount && !hideUploadTime) || text == null
+                    || !Utils.contains(context.patch_getPathBuilder(), VIDEO_METADATA_CONTENT_PATH)) {
+                return text;
+            }
+
+            // Only the view count and the upload time, without the channel name.
+            int[] sections = getDelimitedSubtitleSections(text);
+            if (sections == null || sections[0] != 0) {
+                return text;
+            }
+
+            SpannableStringBuilder builder = removeSubtitleSections(text, sections, hideViewCount, hideUploadTime);
+            if (hideUploadTime && !hideViewCount) {
+                // The app does not show a text of two characters or fewer here, such as "1M",
+                // so a space that is not trimmed is kept.
+                builder.append('\u00A0');
+            }
+
+            Logger.printDebug(() -> "Replacing video metadata: " + text + " with: " + builder);
+            return builder;
+        } catch (Exception ex) {
+            Logger.printException(() -> "modifyVideoMetadataText failure", ex);
+            return text;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The metadata of the videos of a playlist, such as "1M views • 2 years ago",
+     * which 20.51 and lower show in a text view of its own.
+     */
+    public static void modifyPlaylistVideoMetadata(@Nullable TextView view) {
+        try {
+            final boolean hideViewCount = Settings.HIDE_VIEW_COUNT.get();
+            final boolean hideUploadTime = Settings.HIDE_UPLOAD_TIME.get();
+            if ((!hideViewCount && !hideUploadTime) || view == null) {
+                return;
+            }
+
+            CharSequence text = view.getText();
+            int[] sections = getDelimitedSubtitleSections(text);
+            if (sections == null || sections[0] != 0) {
+                return;
+            }
+
+            SpannableStringBuilder builder = removeSubtitleSections(text, sections, hideViewCount, hideUploadTime);
+            Logger.printDebug(() -> "Replacing playlist video metadata: " + text + " with: " + builder);
+            view.setText(builder);
+        } catch (Exception ex) {
+            Logger.printException(() -> "modifyPlaylistVideoMetadata failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
      */
     public static SpannableString modifyFeedSubtitleSpan(SpannableString subtitle, float truncationDimension) {
         // Before the view count is hidden, so the Feed view count patch can still find it.
@@ -1392,40 +1533,16 @@ public final class LayoutComponentsFilter extends Filter {
 
             // Applies only for these specific dimensions.
             if (truncationDimension == 16f || truncationDimension == 42f) {
-                String delimiter = " · ";
-                final int delimiterLength = delimiter.length();
-
-                // Index includes the starting delimiter.
-                final int viewCountStartIndex = TextUtils.indexOf(original, delimiter);
-                if (viewCountStartIndex < 0) {
+                int[] sections = getDelimitedSubtitleSections(original);
+                if (sections == null) {
+                    sections = getIconSubtitleSections(original);
+                }
+                if (sections == null) {
                     return original;
                 }
 
-                final int uploadTimeStartIndex = TextUtils.indexOf(original, delimiter,
-                        viewCountStartIndex + delimiterLength);
-                if (uploadTimeStartIndex < 0) {
-                    return original;
-                }
-
-                // Ensure there is exactly 2 delimiters.
-                if (TextUtils.indexOf(original, delimiter,
-                        uploadTimeStartIndex + delimiterLength) >= 0) {
-                    return original;
-                }
-
-                // Make a mutable copy that keeps existing span styling.
-                SpannableStringBuilder builder = new SpannableStringBuilder(original);
-
-                // Remove the sections.
-                if (hideUploadTime) {
-                    builder.delete(uploadTimeStartIndex, original.length());
-                }
-
-                if (hideViewCount) {
-                    builder.delete(viewCountStartIndex, uploadTimeStartIndex);
-                }
-
-                SpannableString replacement = new SpannableString(builder);
+                SpannableString replacement = new SpannableString(
+                        removeSubtitleSections(original, sections, hideViewCount, hideUploadTime));
                 Logger.printDebug(() -> "Replacing feed subtitle span: " + original + " with: " + replacement);
 
                 return replacement;
@@ -1435,6 +1552,111 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return original;
+    }
+
+    /**
+     * @param sections The start and end index of the view count, and the start index of the upload time.
+     *                 The view count section includes a separator, so no separator is left alone.
+     * @return A copy of the subtitle, which keeps its spans, without the sections that are hidden.
+     */
+    private static SpannableStringBuilder removeSubtitleSections(CharSequence subtitle, int[] sections,
+                                                                 boolean hideViewCount, boolean hideUploadTime) {
+        SpannableStringBuilder builder = new SpannableStringBuilder(subtitle);
+        if (hideUploadTime) {
+            builder.delete(sections[2], subtitle.length());
+        }
+        if (hideViewCount) {
+            builder.delete(sections[0], Math.min(sections[1], builder.length()));
+        }
+        return builder;
+    }
+
+    /**
+     * Subtitle with delimiters, such as "Channel · 1M views · 2 days ago",
+     * or without the channel name, such as "1M views • 2 years ago" of the videos of a show.
+     *
+     * @return The start and end index of the view count, and the start index of the upload time,
+     *         or null if not found.
+     */
+    @Nullable
+    private static int[] getDelimitedSubtitleSections(CharSequence subtitle) {
+        for (String delimiter : SUBTITLE_DELIMITERS) {
+            final int delimiterLength = delimiter.length();
+
+            final int firstDelimiterIndex = TextUtils.indexOf(subtitle, delimiter);
+            if (firstDelimiterIndex < 0) {
+                continue;
+            }
+
+            final int secondDelimiterIndex = TextUtils.indexOf(subtitle, delimiter,
+                    firstDelimiterIndex + delimiterLength);
+            if (secondDelimiterIndex < 0) {
+                // The view count starts with a digit, unlike a channel name.
+                if (firstDelimiterIndex == 0 || !Character.isDigit(subtitle.charAt(0))) {
+                    return null;
+                }
+                return new int[]{0, firstDelimiterIndex + delimiterLength, firstDelimiterIndex};
+            }
+
+            // Ensure there is exactly 2 delimiters.
+            if (TextUtils.indexOf(subtitle, delimiter, secondDelimiterIndex + delimiterLength) >= 0) {
+                return null;
+            }
+
+            return new int[]{firstDelimiterIndex, secondDelimiterIndex, secondDelimiterIndex};
+        }
+
+        return null;
+    }
+
+    /**
+     * Subtitle with an icon before the view count, such as "Channel   [icon]1M   2d ago".
+     * The sections are separated by spaces, and the icon is drawn over some of them.
+     * The channel name can also have an icon, such as the badge of an official artist channel.
+     * The videos of a playlist can show no channel name, or no view count, such as "Channel   2d ago".
+     *
+     * @return The start and end index of the view count, and the start index of the upload time,
+     *         or null if not found.
+     */
+    @Nullable
+    private static int[] getIconSubtitleSections(Spanned subtitle) {
+        // The icon of the view count is the last icon.
+        ImageSpan viewCountIcon = null;
+        for (ImageSpan icon : subtitle.getSpans(0, subtitle.length(), ImageSpan.class)) {
+            if (viewCountIcon == null || subtitle.getSpanStart(icon) > subtitle.getSpanStart(viewCountIcon)) {
+                viewCountIcon = icon;
+            }
+        }
+
+        // The upload time starts with the spaces after the view count, or after the channel name.
+        final int uploadTimeStartIndex = TextUtils.indexOf(subtitle, ICON_SUBTITLE_SEPARATOR,
+                viewCountIcon == null ? 0 : subtitle.getSpanEnd(viewCountIcon));
+        if (uploadTimeStartIndex <= 0) {
+            return null;
+        }
+        int uploadTimeTextIndex = uploadTimeStartIndex;
+        while (uploadTimeTextIndex < subtitle.length() && subtitle.charAt(uploadTimeTextIndex) == ' ') {
+            uploadTimeTextIndex++;
+        }
+        if (TextUtils.indexOf(subtitle, ICON_SUBTITLE_SEPARATOR, uploadTimeTextIndex) >= 0) {
+            return null;
+        }
+
+        if (viewCountIcon == null) {
+            // No view count.
+            return new int[]{uploadTimeStartIndex, uploadTimeStartIndex, uploadTimeStartIndex};
+        }
+
+        // The view count starts with the spaces before its icon.
+        int viewCountStartIndex = subtitle.getSpanStart(viewCountIcon);
+        while (viewCountStartIndex > 0 && subtitle.charAt(viewCountStartIndex - 1) == ' ') {
+            viewCountStartIndex--;
+        }
+
+        // Without a channel name, the spaces after the view count are removed with it.
+        final int viewCountEndIndex = viewCountStartIndex == 0 ? uploadTimeTextIndex : uploadTimeStartIndex;
+
+        return new int[]{viewCountStartIndex, viewCountEndIndex, uploadTimeStartIndex};
     }
 
     /**
@@ -1678,7 +1900,7 @@ public final class LayoutComponentsFilter extends Filter {
         return Settings.HIDE_YOU_MAY_LIKE_SECTION.get()
                 // The 'You may like' section is only visible when no search terms are entered.
                 // To avoid unnecessary collection traversals, filtering is performed only when the typedString is empty.
-                && TextUtils.isEmpty(typedString);
+                && Utils.isEmpty(typedString);
     }
 
     /**
@@ -1765,10 +1987,55 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static void hideChaptersTimelineButton(View view) {
-        if (view != null && Settings.HIDE_CHAPTERS_TIMELINE_BUTTON.get()) {
+        // The button shows either the chapter or 'In this video', so it is removed only if both are hidden.
+        // Otherwise, it is hidden by showTimeBarEntryPoint(boolean, boolean).
+        if (view != null && Settings.HIDE_CHAPTERS_BUTTON.get() && Settings.HIDE_IN_THIS_VIDEO_BUTTON.get()) {
             Utils.hideViewByLayoutParams(view);
             view.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The button next to the timestamp shows the chapter title, or 'In this video'
+     * (which opens the transcript) for videos without chapters.
+     *
+     * @param show      If YouTube shows the button.
+     * @param isChapter If the button shows the chapter title.
+     * @return If the button is shown.
+     */
+    public static boolean showTimeBarEntryPoint(boolean show, boolean isChapter) {
+        if (!show) {
+            return false;
+        }
+        return isChapter
+                ? !Settings.HIDE_CHAPTERS_BUTTON.get()
+                : !Settings.HIDE_IN_THIS_VIDEO_BUTTON.get();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Older app targets always show the button next to the timestamp,
+     * and show the chapter title in it separately.
+     *
+     * @return If the chapter title is shown.
+     */
+    public static boolean showTimeBarChapterTitle(boolean show) {
+        return show && !Settings.HIDE_CHAPTERS_BUTTON.get();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Older app targets always show the button next to the timestamp,
+     * and show 'In this video' in it separately.
+     *
+     * @return If 'In this video' is shown.
+     */
+    public static boolean showTimeBarInThisVideo(boolean show) {
+        return show && !Settings.HIDE_IN_THIS_VIDEO_BUTTON.get();
     }
 
     /**
@@ -1778,7 +2045,7 @@ public final class LayoutComponentsFilter extends Filter {
      * of inside the entry point button hidden by {@link #hideChaptersTimelineButton(View)}.
      */
     public static void hideChapterTitle(View view) {
-        if (view == null || !Settings.HIDE_CHAPTERS_TIMELINE_BUTTON.get()) {
+        if (view == null || !Settings.HIDE_CHAPTERS_BUTTON.get()) {
             return;
         }
 

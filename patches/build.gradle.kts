@@ -1,10 +1,16 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
+plugins {
+    // Fails the build if patch code uses JDK APIs that do not exist on Android.
+    alias(libs.plugins.animalsniffer)
+}
+
 group = "app.morphe"
 
 patches {
     about {
-        name = "Morphe Patches"
+        // Pull request builds pass -PpatchesName to tell test builds apart from releases.
+        name = providers.gradleProperty("patchesName").getOrElse("Morphe Patches")
         description = "Patches for Morphe"
         source = "git@github.com:MorpheApp/morphe-patches.git"
         author = "MorpheApp"
@@ -58,6 +64,14 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.core)
     testImplementation(libs.protobuf.javalite)
     testRuntimeOnly(libs.junit.jupiter.engine)
+
+    // Android API level 26 is the minimum API the patches are compiled for (see buildAndroid).
+    signature(libs.android.api.signature) { artifact { type = "signature" } }
+}
+
+animalsniffer {
+    // Only the main source set ships in the patches file.
+    sourceSets = listOf(project.sourceSets["main"])
 }
 
 // The translated strings of addresources, converted to JSON at build time by the converter of
@@ -157,6 +171,12 @@ tasks {
             setArgs(listOfNotNull(apk, mode, output))
         }
     }
+
+    // The check task already runs it, but buildAndroid does not depend on check.
+    named("buildAndroid") {
+        dependsOn("animalsnifferMain")
+    }
+
     // Used by gradle-semantic-release-plugin.
     publish {
         dependsOn("generatePatchesList")

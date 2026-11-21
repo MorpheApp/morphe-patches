@@ -78,6 +78,7 @@ Upewnij się, że nazwa pakietu jest poprawna i czy aplikacja jest zainstalowana
   <string name="morphe_export_download_folder_missing">Nie udało się znaleźć folderu eksportu %s</string>
   <string name="morphe_export_download_flyout_title">Eksportuj na urządzenie</string>
   <string name="morphe_export_download_canceled">Anulowano eksportowanie</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Własna</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacji</string>
@@ -137,16 +138,16 @@ Ustawić %2$s jako domyślnego klienta?"</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nie jest zainstalowany. Zainstaluj go, aby naprawić odtwarzanie</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Fałszuj strumienie filmów i Logowanie Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Fałszuj strumienie filmów &gt; Logowanie \"Android VR\"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Domyślny klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logowanie Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR wymaga osobnego logowania. Dotknij tutaj, aby kontynuować</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Obecnie zalogowano do Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logowanie \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" wymaga osobnego logowania. Dotknij tutaj, aby kontynuować</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Obecnie zalogowano do \"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">By używać tej funkcji, zmień \"Domyślny klient\" na Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Zaloguj się do Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Zalogowanie się do Android VR może rozwiązać problemy z odtwarzaniem u niektórych użytkowników
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Aby użyć tej funkcji, zmień \"Domyślny klient\" na \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Zaloguj się do \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Zalogowanie się do \"Android VR\" może rozwiązać problemy z odtwarzaniem u niektórych użytkowników
 
 Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Wyloguj się</string>
@@ -167,13 +168,13 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
 • Przy imporcie/eksporcie ustawień Morphe autoryzacja Android VR jest pomijana
 • Jeśli aplikacja nie będzie używana przez 6 miesięcy, Google usunie autoryzację
 • W przypadku zmiany hasła lub wyrejestrowania urządzenia w ustawieniach konta Google konieczne będzie ponowne zalogowanie się"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logowanie w Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logowanie \"Mobile Web\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcjonalnie: zaloguj się na stronie internetowej YouTube, aby odtwarzać filmy przy użyciu swojego konta. Dotknij tutaj, aby kontynuować</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Obecnie zalogowano w Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Obecnie zalogowano do \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Aby używać tej funkcji, zmień \"Domyślny klient\" na Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Zaloguj się do Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web odtwarza filmy bez logowania lub po zalogowaniu na stronie internetowej YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Aby użyć tej funkcji, zmień \"Domyślny klient\" na \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Zaloguj się do \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" odtwarza filmy bez logowania lub po zalogowaniu na stronie internetowej YouTube
 
 • Po zalogowaniu można odtwarzać filmy wymagające konta, np. z ograniczeniem wiekowym
 • Strona logowania Google otwiera się w tej aplikacji
@@ -183,19 +184,19 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
 Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Zapisano logowanie
 
-• Twoje ustawienia Morphe nie będą importować ani eksportować logowania w Mobile Web
+• Twoje ustawienia Morphe nie będą importować ani eksportować logowania w \"Mobile Web\"
 • Jeśli Google zakończy sesję logowania, filmy będą odtwarzane bez zalogowania, dopóki nie zalogujesz się ponownie
 • Wylogowanie powoduje również wylogowanie tego urządzenia ze strony internetowej YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Logowanie w Mobile Web wygasło, spróbuj zalogować się w Mobile Web ponownie</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Wylogowano z Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView jest niedostępny. Zainstaluj lub włącz go, aby się zalogować</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Sesja logowania \"Mobile Web\" wygasła, spróbuj zalogować się do \"Mobile Web\" ponownie</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Wylogowano z \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" jest niedostępny. Zainstaluj lub włącz go, aby się zalogować</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 jest tymczasowo niedostępny (API nie reaguje)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Sesja logowania Android VR wygasła, spróbuj zalogować się ponownie</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Sesja logowania \"Android VR\" wygasła, spróbuj zalogować się do VR ponownie</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 jest tymczasowo niedostępny (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 jest tymczasowo niedostępny</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nie można zalogować się do VR, autoryzacja na stronie nie została zatwierdzona</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie można zalogować się do VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Wylogowano z Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Wylogowano z \"Android VR\"</string>
   <string name="morphe_oauth2_toast_invalid">Nieprawidłowy token logowania VR, spróbuj zalogować się ponownie</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Sterowanie multimediami</string>
@@ -213,6 +214,10 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_seek_notification_media_length_invalid">Czas przewijania musi wynosić od 1 do %s sekund. Użyto wartości domyślnej</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Wyłącz protokół QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Nadaj priorytet jakości filmu</string>
+  <string name="morphe_prioritize_video_quality_summary">Nadaje priorytet najwyższej dostępnej jakości filmu kosztem wydajności kodeka</string>
+  <string name="morphe_prioritize_video_quality_dialog">Jeśli to ustawienie będzie wyłączone, starsze filmy mogą nie wyświetlać opcji wyboru jakości filmu</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Wyłącz kompresję dźwięku</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -253,7 +258,7 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_replace_music_with_youtube_title">Zmień linki udostępniania na youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Zamienia music.youtube.com na youtube.com w udostępnianych linkach</string>
   <string name="morphe_replace_links_with_shortener_title">Zmień linki udostępniania na youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Wymusza używanie skróconych linków youtu.be dla filmów</string>
+  <string name="morphe_replace_links_with_shortener_summary">Wymusza używanie skróconych linków \"youtu.be\" dla filmów</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatyczna</string>
@@ -265,19 +270,16 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_video_quality_default_mobile_title">Domyślna jakość filmu w sieci komórkowej</string>
   <string name="morphe_remember_video_quality_toast_mobile">Zmieniono domyślną jakość (kom.) na: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Zmieniono domyślną jakość (Wi-Fi) na: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Otwórz systemowe menu udostępniania</string>
-  <string name="morphe_open_system_share_sheet_summary">Otwiera systemowe menu udostępniania zamiast tego wbudowanego w aplikacji</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Logowanie Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Wyłączone</string>
   <string name="morphe_debug_litho_entry_path">Ścieżka</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Ścieżka i bufor</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Rejestrowanie Litho zapisuje w dzienniku komponenty układu aplikacji, w tym tekst wyświetlany na ekranie dla niektórych elementów interfejsu.
+  <string name="morphe_debug_litho_user_dialog_message">"Zapisuje w logach elementy układu aplikacji, w tym tekst wyświetlany na ekranie dla niektórych elementów interfejsu.
 
 Może to pomóc w identyfikacji elementów podczas tworzenia własnych filtrów.
 
-​Włączenie tej opcji spowoduje jednak również zapisywanie niektórych danych użytkownika, takich jak adres IP"</string>
+Jednakże spowoduje to również zapisywanie niektórych danych użytkownika, takich jak adres IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Własny filtr</string>
   <string name="morphe_custom_filter_screen_summary">Skonfiguruj własne filtry, aby ukryć dowolny element</string>
@@ -379,4 +381,8 @@ Identyfikator oglądanego filmu jest wysyłany do API Return YouTube Dislike, a 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nie przekroczono limitu żądań</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Napotkane limity zapytań klienta: %s</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ms</string>
+  <string name="morphe_navigation_bar_screen_title">Pasek nawigacji</string>
+  <string name="morphe_navigation_bar_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
+  <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
+  <string name="morphe_toolbar_screen_summary">Zdecyduj, które elementy będą wyświetlane na pasku narzędzi</string>
 </resources>

@@ -16,15 +16,15 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.youtube.innertube.BrowseResponseOuterClass.BrowseTab;
-import app.morphe.extension.youtube.innertube.BrowseResponseOuterClass.TabRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.FormattedString;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarIconOnlyItemRendererBytes;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemBytes;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.TextRun;
-import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.BrowseTab;
+import app.morphe.extension.shared.innertube.BrowseResponseOuterClass.TabRenderer;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.FormattedString;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarIconOnlyItemRendererBytes;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemBytes;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.TextRun;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**

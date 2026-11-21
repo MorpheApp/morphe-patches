@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -45,7 +46,7 @@ public class LyricsReadingCalcTest {
             if (romaji == null || romaji.trim().isEmpty()) {
                 continue;
             }
-            if (out.length() > 0) {
+            if (!out.isEmpty()) {
                 out.append(' ');
             }
             out.append(romaji.trim());
@@ -120,7 +121,7 @@ public class LyricsReadingCalcTest {
         List<WordTiming> timings = List.of(new WordTiming(0, 1, 0, 10, null, false, null, true));
         LyricsReadingCalc.Reading reading = LyricsReadingCalc.readingFor(
                 line, 0, romanized, true, timings);
-        assertTrue(reading.spans().get(0).averaged());
+        assertTrue(Objects.requireNonNull(reading.spans()).get(0).averaged());
     }
 
     @Test
@@ -131,7 +132,7 @@ public class LyricsReadingCalcTest {
         List<WordTiming> timings = List.of(new WordTiming(0, 1, 0, 10, null, false, null, false));
         LyricsReadingCalc.Reading reading = LyricsReadingCalc.readingFor(
                 line, 0, romanized, true, timings);
-        assertFalse(reading.spans().get(0).averaged());
+        assertFalse(Objects.requireNonNull(reading.spans()).get(0).averaged());
     }
 
     @Test
@@ -228,7 +229,7 @@ public class LyricsReadingCalcTest {
         List<WordTiming> result = LyricsReadingCalc.buildSyllableRomanizedTimings(
                 line, 0, romanized, false, perCharacterTimings("遠回りしてでも"),
                 "遠回りしてでも", false);
-        assertEquals("Toomawari shite demo", joinedRomaji(result));
+        assertEquals("Toomawari shite demo", joinedRomaji(Objects.requireNonNull(result)));
     }
 
     @Test

@@ -32,6 +32,7 @@ import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchSingle
+import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.context.ConversionContextToStringFingerprint
@@ -119,12 +120,15 @@ fun addLithoFilter(classDescriptor: String) {
  * @param removeFilteredListItems Whether to remove the items of the lists (such as the feed) whose
  *                                whole element is filtered. Otherwise, the grids, such as the feed
  *                                of the tablet layout, show an empty cell in their place.
+ * @param hasReorderedListSections Whether the lists have sections that put their lists in the order that
+ *                                 fills the rows of the grid, such as the feed of the tablet layout.
  * @param block Callback to add app-specific dependencies (sharedExtensionPatch, conversionContextPatch,
  *              versionCheckPatch, and any app-specific fixes).
  */
 internal fun sharedLithoFilterPatch(
     overrideUpbFeatureFlag: () -> Boolean,
     removeFilteredListItems: Boolean,
+    hasReorderedListSections: () -> Boolean,
     block: PatchDefinition.() -> Unit,
 ): Patch = patch(
     description = "Hooks the method which parses the bytes into a ComponentContext to filter components."
@@ -311,32 +315,41 @@ internal fun sharedLithoFilterPatch(
         // region Remove the items of the lists whose whole element is filtered.
 
         if (removeFilteredListItems) {
+            // Gives the extension each created section of a class of sections, to remove the items from them.
+            // Only the constructors that call the constructor of the superclass, the others call those.
+            fun MutableClass.addListSectionOnCreate() {
+                methods.filter { method -> MethodUtil.isConstructor(method) }.forEach { constructor ->
+                    val superConstructorIndex = constructor.indexOfFirstInstruction(
+                        methodCall(
+                            opcode = Opcode.INVOKE_DIRECT,
+                            definingClass = superclass,
+                            name = "<init>"
+                        )
+                    )
+                    if (superConstructorIndex < 0) return@forEach
+
+                    // The instance the superclass was initialized with.
+                    val sectionRegister = constructor
+                        .getInstruction<FiveRegisterInstruction>(superConstructorIndex).registerC
+
+                    constructor.addInstruction(
+                        superConstructorIndex + 1,
+                        "invoke-static/range { v$sectionRegister .. v$sectionRegister }, $EXTENSION_CLASS->" +
+                                "addListSection($EXTENSION_LIST_SECTION_INTERFACE)V"
+                    )
+                }
+            }
+
             // Give the extension the decorators of the conversion context.
             val decoratorsMethod = commandEventDataDecoratorsFingerprint(
                 ConversionContextToStringFingerprint.method
                     .findFieldFromToString(COMMAND_EVENT_DATA_DECORATORS_PROPERTY)
             ).method
 
-            conversionContextClassDef.methods.add(
-                ImmutableMethod(
-                    conversionContextClassDef.type,
-                    "patch_getCommandEventDataDecorators",
-                    listOf(),
-                    "Ljava/util/List;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0 }, $decoratorsMethod
-                            move-result-object v0
-                            return-object v0
-                        """
-                    )
-                }
+            conversionContextClassDef.addPatchInterface(
+                EXTENSION_CONTEXT_INTERFACE,
+                "patch_getCommandEventDataDecorators",
+                decoratorsMethod,
             )
 
             // Give the extension the item that the decorator holds.
@@ -450,27 +463,134 @@ internal fun sharedLithoFilterPatch(
                                 "removeListSection($EXTENSION_LIST_SECTION_INTERFACE)V"
                     )
 
-                    // Only the constructors that call the constructor of the superclass,
-                    // the others call those.
-                    methods.filter { method -> MethodUtil.isConstructor(method) }.forEach { constructor ->
-                        val superConstructorIndex = constructor.indexOfFirstInstruction(
-                            methodCall(
-                                opcode = Opcode.INVOKE_DIRECT,
-                                definingClass = superclass,
-                                name = "<init>"
+                    addListSectionOnCreate()
+                }
+            }
+
+            // The element hooks hide some elements by removing their bytes, such as the YouTube Premium promotions.
+            // The Litho filter does not see these elements, so their items are removed when they are created.
+            ElementItemConstructorFingerprint.let {
+                it.method.apply {
+                    val elementBytesIndex = it.instructionMatches[1].index
+                    val elementBytesRegister = getInstruction<TwoRegisterInstruction>(elementBytesIndex).registerA
+
+                    addInstruction(
+                        elementBytesIndex + 1,
+                        "invoke-static { p0, v$elementBytesRegister }, $EXTENSION_CLASS->" +
+                                "removeHiddenElementListItem(Ljava/lang/Object;[B)V"
+                    )
+                }
+            }
+
+            // The grids of the tablet layout, such as the feed, have a list for each item in a section that puts
+            // its lists in the order that fills the rows of the grid, and lays out each list with more or less than
+            // one item as wide as the grid. A list emptied by removing its item then breaks its row, and the order
+            // leaves cells empty. So the list of the item is removed from the section instead.
+            if (hasReorderedListSections()) {
+                ReorderedListSectionFingerprint.let {
+                    val listsField = it.instructionMatches[0].fieldReference
+                    val sectionType = listsField.definingClass
+
+                    val (listField, removeListMethod) = ReorderedListSectionRemoveListFingerprint.let { remove ->
+                        remove.instructionMatches[2].fieldReference to remove.method
+                    }
+                    val listType = listField.type
+                    val listSizeMethodName = listSectionIsEmptyFingerprint(sectionType)
+                        .instructionMatches.first().methodReference.name
+
+                    // Only a list that holds just the item is removed, and not a section in the section,
+                    // which can get more items later.
+                    // Some app versions also have a parameter to put the lists in order again.
+                    val removeList = if (removeListMethod.parameterTypes.size == 2) {
+                        "invoke-virtual { p0, v2, v4 }, $removeListMethod"
+                    } else {
+                        "invoke-virtual { p0, v2 }, $removeListMethod"
+                    }
+
+                    it.classDef.apply {
+                        addPatchInterface(
+                            EXTENSION_LIST_SECTION_INTERFACE,
+                            "patch_removeListItem",
+                            """
+                                iget-object v0, p0, $listsField
+                                invoke-interface { v0 }, Ljava/util/List;->size()I
+                                move-result v1
+                                const/4 v4, 0x1
+                                :next_list
+                                add-int/lit8 v1, v1, -0x1
+                                if-ltz v1, :not_found
+                                invoke-interface { v0, v1 }, Ljava/util/List;->get(I)Ljava/lang/Object;
+                                move-result-object v2
+                                check-cast v2, ${listField.definingClass}
+                                iget-object v2, v2, $listField
+                                instance-of v3, v2, $sectionType
+                                if-nez v3, :next_list
+                                invoke-interface { v2 }, $listType->$listSizeMethodName()I
+                                move-result v3
+                                if-ne v3, v4, :next_list
+                                invoke-interface { v2, p1 }, $listType->contains(Ljava/lang/Object;)Z
+                                move-result v3
+                                if-eqz v3, :next_list
+                                $removeList
+                                return v4
+                                :not_found
+                                const/4 v0, 0x0
+                                return v0
+                            """
+                        )
+
+                        addListSectionOnCreate()
+                    }
+                }
+            }
+
+            // The view of an item of a Litho list keeps the size it was laid out with when the item is updated with
+            // new render info, such as when a section puts its lists in another order after an item was removed. An
+            // item that is laid out as wide as the list, such as a shelf, is then drawn as small as a cell of the grid,
+            // and a card in its place as wide as the list. So the view is bound again if only one of them is that wide.
+            LithoBinderUpdateItemFingerprint.let { update ->
+                val renderInfoType = update.method.parameterTypes[1].toString()
+                val isFullSpanMethodName = RenderInfoIsFullSpanFingerprint.method.name
+
+                listOf(update.method, LithoBinderUpdateItemRangeFingerprint.method).forEach { updateMethod ->
+                    lithoBinderUpdateRenderInfoFingerprint(
+                        updateMethod.definingClass,
+                        updateMethod.name,
+                        updateMethod.parameterTypes.map { type -> type.toString() },
+                        renderInfoType
+                    ).let {
+                        it.method.apply {
+                            val oldRenderInfoMethod = it.instructionMatches[0].methodReference
+                            val itemRegister = getInstruction<FiveRegisterInstruction>(
+                                it.instructionMatches[0].index
+                            ).registerC
+                            val bindAgainIndex = it.instructionMatches[3].index
+                            val bindAgainRegister = getInstruction<OneRegisterInstruction>(bindAgainIndex).registerA
+                            val newRenderInfoRegister = getInstruction<FiveRegisterInstruction>(
+                                it.instructionMatches[4].index
+                            ).registerD
+
+                            addInstructionsWithLabels(
+                                bindAgainIndex + 1,
+                                """
+                                    if-nez v$bindAgainRegister, :bound_again
+                                    invoke-virtual { v$itemRegister }, $oldRenderInfoMethod
+                                    move-result-object v$bindAgainRegister
+                                    invoke-interface { v$bindAgainRegister }, $renderInfoType->$isFullSpanMethodName()Z
+                                    move-result v$bindAgainRegister
+                                    if-eqz v$bindAgainRegister, :old_not_full_span
+                                    invoke-interface { v$newRenderInfoRegister }, $renderInfoType->$isFullSpanMethodName()Z
+                                    move-result v$bindAgainRegister
+                                    xor-int/lit8 v$bindAgainRegister, v$bindAgainRegister, 0x1
+                                    goto :bound_again
+                                    :old_not_full_span
+                                    invoke-interface { v$newRenderInfoRegister }, $renderInfoType->$isFullSpanMethodName()Z
+                                    move-result v$bindAgainRegister
+                                    :bound_again
+                                    nop
+                                """
                             )
-                        )
-                        if (superConstructorIndex < 0) return@forEach
-
-                        // The instance the superclass was initialized with.
-                        val sectionRegister = constructor
-                            .getInstruction<FiveRegisterInstruction>(superConstructorIndex).registerC
-
-                        constructor.addInstruction(
-                            superConstructorIndex + 1,
-                            "invoke-static/range { v$sectionRegister .. v$sectionRegister }, $EXTENSION_CLASS->" +
-                                    "addListSection($EXTENSION_LIST_SECTION_INTERFACE)V"
-                        )
+                        }
                     }
                 }
             }

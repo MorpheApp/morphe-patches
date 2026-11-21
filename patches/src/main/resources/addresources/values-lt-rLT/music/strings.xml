@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Naudoti išorinę atsisiuntimo programą meniu „Atsisiųsti“</string>
   <string name="morphe_external_downloader_menu_summary">Meniu parinktis „Atsisiųsti“ atveria jūsų išorinę atsisiuntimo programą vietoje</string>
+  <string name="morphe_download_force_4k_title">Pristygstyti 4K atsisiuntimo galimybę</string>
+  <string name="morphe_download_force_4k_summary">Išsaugo 1440p ir 4K atsisiuntimus, net jei \"YouTube Music\" nuspręs, kad ši įrenginio modelio aparatūra jų negali paleisti</string>
   <string name="morphe_export_download_folder_title">Eksportuoti atsisiuntimus</string>
   <string name="morphe_export_download_folder_summary">"Eksportuokite programėlėje išsaugotas dainas ir vaizdo įrašus į savo įrenginio atmintį naudodamiesi programėlės atsisiuntimų išskleidžiamu meniu. Bakstelėkite, kad pakeistumėte eksportavimo
 
@@ -142,6 +144,8 @@ Eksportavimo aplankas: %s"</string>
   <string name="morphe_export_download_failed">Nepavyko eksportuoti atsisiuntimo</string>
   <string name="morphe_export_download_all_flyout_title">Eksportuoti viską į įrenginį</string>
   <string name="morphe_export_download_all_started">Eksportuojami visi atsisiuntimai</string>
+  <string name="morphe_export_download_all_title">Visi atsisiuntimai</string>
+  <string name="morphe_export_download_playlist_started">Eksportuojami atsisiuntimai</string>
   <string name="morphe_export_download_all_running">Atsisiuntimai jau eksportuojami</string>
   <string name="morphe_export_download_all_saved">Eksportuota %1$s iš %2$s atsisiuntimų į %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -166,15 +170,15 @@ Eksportavimo aplankas: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Slėpti vaizdo įrašo skelbimus</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Slėpti garso / vaizdo perjungiklį</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Slėpti atsisiuntimo mygtuką</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Slėpti atsisiuntimo mygtuką tinklalaidės puslapyje</string>
   <string name="morphe_music_hide_explore_shelf_title">Slėpti naršymo lentyną</string>
   <string name="morphe_music_hide_filter_bar_title">Slėpti filtro juostą</string>
   <string name="morphe_music_hide_grid_shelves_title">Slėpti tinklelio lentynas</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Slėpti horizontalias lentynas</string>
+  <string name="morphe_music_hide_new_button_title">Paslėpti Naujo mygtuką</string>
+  <string name="morphe_music_hide_new_button_summary">Paslepia mygtuką „Naujas“ bibliotekos skirtyvėje</string>
   <string name="morphe_music_hide_list_shelves_title">Slėpti sąrašo lentynas</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Dainų tekstų skydelis</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Slėpti bendrinimo mygtuką</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Slėpti vertimo mygtuką</string>
   <string name="morphe_music_hide_new_from_shelf_title">Slėpti „Nauja iš“ lentyną</string>
   <string name="morphe_music_hide_playlist_shelves_title">Slėpti grojaraščių lentynas</string>
@@ -197,6 +201,8 @@ Eksportavimo aplankas: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Kryžminis išnykimas</string>
   <string name="morphe_music_crossfade_screen_summary">Sklandžiai susijungti takelius vienas su kitu</string>
   <string name="morphe_music_crossfade_enabled_title">Įjungti kryžminis išnykimo efektą</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Norėdami naudoti perėjimo efektą, pakeiskite „Spoof video streams“ „Default client“ į „TV Simply“ arba „visionOS“</string>
   <string name="morphe_music_crossfade_curve_title">Išnykimo kreivė</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Lygi galia</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Švelnus laikymas</string>
@@ -230,7 +236,9 @@ Eksportavimo aplankas: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Kryžminis išnykimas pristabdytas šiai sesijai</string>
   <string name="morphe_music_crossfade_resumed_toast">Kryžminis išnykimas atnaujintas</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Vaizdo režimas neprieinamas, kai įjungtas kryžminis išnykimas</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade išjungtas naudojant SABR atkūrimą</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Perėjimo efektas neveikia su „visionOS“. Pakeiskite „Spoof video streams“ „Default client“ į „TV Simply“</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Perėjimo efektas neveikia su šiuo imituojamų srautų klientu</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Transliuojant crossfade išjungtas</string>
   <string name="morphe_music_crossfade_about_how_title">Kaip tai veikia</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade uždeda vienos dainos pabaigą ant kitos pradžios, naudodamas jūsų nustatytą trukmę ir kreivę
@@ -247,9 +255,7 @@ Užrakintame ekrane arba pranešime perėjimo metu trumpam gali būti rodoma pas
 
 Pristabdžius crossfade norint žiūrėti muzikinį vaizdo įrašą, kai kurie vaizdo įrašai gali likti juodi. Pristabdžius crossfade prieš pasirenkant dainą to išvengiama"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Nepalaikoma</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Garso perdavimas arba veidrodinis atkūrimas (Chromecast, ekrano ar garso atspindėjimas)
-
-SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Garso transliacija arba atkūrimas (Chromecast, ekrano arba garso atkūrimas)</string>
   <string name="morphe_music_crossfade_about_credit_title">Kūrėjas</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade funkcija sukūrė VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -259,6 +265,20 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Ilgstoti, kai garsas išjungtas</string>
   <string name="morphe_music_pause_when_muted_summary">Ilgsto atkūrimą, kai sistemos garsumas išjungtas, ir vėl jį paleidžia, kai garsumas padidinamas</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">„Cast“ mygtukas taip pat gali transliuoti į „Sonos“ ir kitus UPnP garsiakalbius jūsų Wi-Fi tinkle</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Prisijunkite prie įrenginio</string>
+  <string name="morphe_music_sonos_cast_searching">Ieškoma garsiakalbių jūsų Wi-Fi tinkle…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Pasirinkite garsiakalbį savo Wi-Fi tinkle</string>
+  <string name="morphe_music_sonos_cast_casting_to">Transliuojama į %s</string>
+  <string name="morphe_music_sonos_cast_connected">Prijungta</string>
+  <string name="morphe_music_sonos_cast_disconnect">Atjungti</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Prastumėkliai per Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktyvu</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest ir „Google TV“ įrenginiai</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Nepavyko prisijungti prie %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Atkūrimo greitis</string>
   <string name="morphe_music_playback_speed_summary">Greitis taikomas visiems kūriniams. Esant 100 % naudojamas programėlės greitis, pvz., tinklalaidės atkūrimo greitis</string>
@@ -269,9 +289,18 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Išjungti garso primalėjimą</string>
   <string name="morphe_music_disable_audio_ducking_summary">Garsas nepamažinamas, kai kita programėlė groja trumpą garsą, pavyzdžiui, pranešimą</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Kiekio patinkimų filtras</string>
+  <string name="morphe_music_queue_like_filter_summary">Pašalina dainas, turinčias mažai patinkimų, iš miksų ir radijo. Atgrojimo eilės sąrašo grožimo sąrašai, albumai ir dainos, kurias pridėjote patys, nepakista. Patinkimų skaičius imamas iš Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimalus patinkimų skaičius</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Dainos, turinčios mažiau patinkimų, yra pašalinamos iš eilės</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Išjungti „Nepatinka“ peradresavimą</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Neleidžia peršokti prie kito kūrinio paspaudus „Nepatinka“ mygtuką</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Išjungti braukymą takui pakeitmui</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Neleidžia perleisti į kitą arba ankstesnį taką braukiant į kairę arba į dešinę grotuve</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Neleidžia perleisti į kitą arba ankstesnį taką braukiant į kairę arba į dešinę miniplayery</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B ciklas</string>
   <string name="morphe_music_ab_loop_summary">Ilgai paspauskite ieškomąją juostą, kad nustatytumėte ciklo pradžią, dar kartą – ciklo pabaigą, o dar kartą – norėdami ciklo ištrinti</string>
@@ -322,15 +351,6 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <string name="morphe_music_playlist_tags_rename">Pervardyti</string>
   <string name="morphe_music_playlist_tags_delete">Ištrinti</string>
   <string name="morphe_music_playlist_tags_hidden">Paslėpta</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Slėpti perdavimo mygtuką</string>
-  <string name="morphe_music_hide_history_button_title">Slėpti istorijos mygtuką</string>
-  <string name="morphe_music_hide_notification_button_title">Slėpti pranešimų mygtuką</string>
-  <string name="morphe_music_hide_search_button_title">Slėpti paieškos mygtuką</string>
-  <string name="morphe_music_hide_voice_search_button_title">Slėpti balso paieškos mygtuką</string>
-  <string name="morphe_music_hide_sound_search_button_title">Slėpti garso paieškos mygtuką</string>
-  <string name="morphe_music_hide_library_new_button_title">Slėpti „Nauja“ mygtuką</string>
-  <string name="morphe_music_hide_library_new_button_summary">Slėpti „Nauja“ mygtuką skirtuke „Biblioteka“</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Veiksmų mygtukai</string>
   <string name="morphe_music_action_buttons_screen_summary">Pasirinkite, kurie veiksmų mygtukai rodomi po grotuvu</string>
@@ -402,22 +422,20 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Priverstinė portretinė orientacija</string>
   <string name="morphe_music_force_portrait_orientation_summary">Laiko programėlę portretine orientacija, kai įrenginys pasukamas</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Pakeisti mini leistuvės spalvą</string>
+  <string name="morphe_music_change_miniplayer_color_title">Pakeisti spalvą</string>
   <string name="morphe_music_change_miniplayer_color_summary">Atitinka mini grotuvo spalvą visame ekrane</string>
   <string name="morphe_music_change_navigation_bar_color_title">Keisti navigacijos juostos spalvą</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Suderina navigacijos juostos spalvą su viso ekrano grotuvu</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Rodyti sekantį mygtuką mini grotuve</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Rodyti ankstesnį mygtuką mini grotuve</string>
+  <string name="morphe_music_miniplayer_next_button_title">Rodyti „Kitas“ mygtuką</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Rodyti „Anksčiau“ mygtuką</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Įjungti priverstinį mini grotuvą</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Neleidžia automatiškai pereiti į viso ekrano režimą, kai prasideda naujas takelis</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Įgalinti mini grotuvo uždarymą braukimu</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Įjungti nuvalymą braukiant</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Leidžia uždaryti mini grotuvą braukiant žemyn</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Naršymo juosta</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Paslėpti pagrindinį mygtuką</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -450,7 +468,7 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Slėpia apvalų paryškinimą už pasirinkto stiklo navigacijos juostos mygtuko</string>
   <string name="morphe_music_miniplayer_screen_title">Mini grotuvas</string>
   <string name="morphe_music_miniplayer_screen_summary">Keiskite mini grotuvo stilių, mygtukus ir gestus</string>
-  <string name="morphe_music_miniplayer_glass_title">Įjungti stiklo mini grotuvą</string>
+  <string name="morphe_music_miniplayer_glass_title">Įjungti stiklo efektą</string>
   <string name="morphe_music_miniplayer_glass_summary">Rodo plauriančią mini grotuvą kaip apvalią, pusiau skaidrią stiklo kortelę</string>
   <string name="morphe_music_miniplayer_glass_style_title">Stiklo mini grotuvo stilius</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Sureguliuokite stiklo mini grotuvo kampų radius, viršelio atstumus, kraštų ryškumą ir skaidrumą su peržiūra</string>
@@ -458,11 +476,8 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Viršelio atstumai</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kraštų ryškumas</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Skaidrumas</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Stiklo dulnumas</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Kiek puslapis už stiklo mini grotuvo yra sudulintas (Android 14 ir vėlesnės versijos). Nustatant 0, puslapis matomas ryškiai, o prieš Android 14 puslapis yra uždengtas</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Šviesus stiklas</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Stiklo mini grotuvas įspalvinamas balta, o ne tamsia, kad stiklas būtų šviesesnis ir airesnis</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumo viršelio atspalvis</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Stiklo mini grotuvas įspalvinamas grojamais albumo viršelio spalvomis</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Sukinąsias viršelis</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Padaro stiklo mini grotuvo viršelį apvalų ir sukrinta jį kaip plokštuką dainai groti</string>
@@ -473,6 +488,15 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Pavyzdžiai</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Išnagrinėti</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Biblioteka</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Paslėpti Veiklos mygtuką</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Paslėpti mygtuką „Klausti Muziką“</string>
+  <string name="morphe_music_hide_cast_button_title">Slėpti perdavimo mygtuką</string>
+  <string name="morphe_music_hide_history_button_title">Slėpti istorijos mygtuką</string>
+  <string name="morphe_music_hide_search_button_title">Slėpti paieškos mygtuką</string>
+  <string name="morphe_music_hide_voice_search_button_title">Paslėpti mygtuką „Balsinė paieška“</string>
+  <string name="morphe_music_hide_sound_search_button_title">Paslepti \"Garsu paieškos\" mygtuką</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Neprisijungta. Palieskite norėdami konfigūruoti</string>
   <string name="morphe_music_scrobbling_log_out">Atsijungti</string>
@@ -576,6 +600,9 @@ Kad scrobbling būtų sinchronizuojamas foninio atkūrimo metu, įsitikinkite, k
   <string name="morphe_music_soundproof_about_summary">"Atlikėjo duomenys imami iš SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) ir atsisiunčiami kartą per dieną. Praleidžiant niekas negauna informacijos apie tai, ką grojate. Atidarant SoundProof lapą, dabartinis atlikėjo pavadinimas siunčiamas į SoundProof serverį, kad būtų parodyti naujausi balsai ir galima būtų balsuoti. Serveris atskiria balsuojančiuosius pagal IP adresą, todėl jūsų balsas kitame tinkle gali būti matomas kitaip.
 
 Duomenų bazė licencijuota pagal ODC Open Database License (ODbL). Įrašai iš Soul Over AI (aut. xoundbyte) licencijuoti pagal CC BY 4.0. Nėra susieta su SoundProof ar Soul Over AI ir jie to nepatvirtino."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">\"Apple Music\" animuota viršutinė iliustracija</string>
+  <string name="morphe_music_apple_music_artwork_summary">Leiduvyje rodo animuotą \"Apple Music\" albumo viršutinę iliustraciją, jei albumas ją turi. Kiekvienos dainos pavadinimas, atlikėjas ir albumas siunčiami į \"Apple Music\"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Šiam įrenginio failui dainos žodžiai nepriejengimi.</string>
   <string name="morphe_music_lyrics_enabled_title">Naudoti trečiųjų šalių dainų tekstus</string>
@@ -715,8 +742,14 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Parašė: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Paryškinti sinchronizuotus žodžius ar skiemenis</string>
   <string name="morphe_music_lyrics_word_sync_summary">Teikti pirmenybę žodis po žodžio sinchronizuotiems dainų tekstams, kai jie prieinami. Kai dainų tekstai turi žodžių laiką, kiekvienas žodis ar skiemuo paryškinamas pagal muziką</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Sklandžiai animuoti sinchronizuotus žodžius</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Kiekvienas žodis dainuojamas švelniau pabrėžiamas, šviečia ir šiek tiek pakilęs. Išjunkite, kad sutaupytumėte akumuliatoriaus energijos arba norėdami gauti ryškesnį užpildymą lėtesniuose įrenginiuose</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Naudoti „spring“ ritinimą</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Ritina dainos žodžius naudojant „spring“ fiziką ir kiek paslepia kiekvieną eilutę po viršutinės. Išjunkite, kad sutaupytumėte baterijos lėtesniuose įrenginiuose</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Ramuose teksto judesiai</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Složina dainos žodžių judėjimo animaciją ir išlaiko neaktyvias eilutes pilno dydžio</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Sumaistyti neaktyvias eilutes</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Švelniai sumaistoma kiekviena eilutė, kuri šiuo metu nėra dainuojama, o kuo toliau eilutė, tuo sumaistymas stipresnis („Android 12“ ir vėlesnėse versijose). Ankstesnėse nei „Android 12“ versijose neaktyvios eilutės lieka ryškios</string>
   <string name="morphe_music_lyrics_gap_dots_title">Rodyti instrumentalios pertraukos taškus</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Rodo tris taškus tarp eilučių ilgos instrumentalios pertraukos metu, kurie užsipildoma pertraukai baigiantis</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Labiau priglaistyti tolesnes eilutes</string>
@@ -839,6 +872,8 @@ Dainų tekstai ateina iš trečiųjų paslaugų, kurios nėra susijusios su Morp
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Perkelia vertimą virš lyrics; skaitymas ir romanizacija lieka žemiau</string>
   <string name="morphe_music_lyrics_force_center_title">Visada centruoti dainų tekstą</string>
   <string name="morphe_music_lyrics_force_center_summary">ĮJUNGTAS leidžia kiekvienai eilučiai būti viduryje ir ignoruoja šaltinio išdėstymą, įskaitant duoletines puses; IŠJUNGTAS išlaiko tokią poziciją, kokios prašo dainų tekstas</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Dueto išlyginavimas priešingose pusėse</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Dueto dainose antrasis dainininkas nukeliamas į priešingą kraštą. Išjunkite, jei norite, kad abu dainininkai būtų toje pačioje pusėje</string>
   <string name="morphe_music_lyrics_providers_keep_one">Bent vienas tiekėjas privalo būti aktyvus</string>
   <string name="morphe_music_lyrics_translation_provider_title">Vertimas</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Transliteracija arba transliteravimas</string>

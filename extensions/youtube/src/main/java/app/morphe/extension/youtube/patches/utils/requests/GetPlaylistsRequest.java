@@ -23,18 +23,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
 public class GetPlaylistsRequest {
-    private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
-
     public static final Map<String, GetPlaylistsRequest> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(50));
 
@@ -46,20 +41,7 @@ public class GetPlaylistsRequest {
 
     @Nullable
     public List<Pair<String, String>> getPlaylists() {
-        try {
-            Logger.printExceptionIfDebug(() -> !future.isDone() && Utils.isCurrentlyOnMainThread()
-                    ? "Debug: Blocking main thread"
-                    : null);
-            return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
-        } catch (TimeoutException ex) {
-            Logger.printInfo(() -> "getPlaylists timed out", ex);
-        } catch (InterruptedException ex) {
-            Logger.printException(() -> "getPlaylists interrupted", ex);
-            Thread.currentThread().interrupt();
-        } catch (ExecutionException ex) {
-            Logger.printException(() -> "getPlaylists failure", ex);
-        }
-        return null;
+        return PlaylistRoutes.getResult(future, "getPlaylists");
     }
 
     public static void clear() {
@@ -71,10 +53,6 @@ public class GetPlaylistsRequest {
                 Objects.requireNonNull(playlistId),
                 k -> new GetPlaylistsRequest(playlistId, requestHeader)
         );
-    }
-
-    private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
-        Logger.printInfo(() -> toastMessage, ex);
     }
 
     @Nullable
@@ -94,11 +72,11 @@ public class GetPlaylistsRequest {
             if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return Requester.parseJSONObject(connection);
             }
-            handleConnectionError("Get playlists failed with code: " + responseCode, null);
+            PlaylistRoutes.handleConnectionError("Get playlists failed with code: " + responseCode, null);
         } catch (SocketTimeoutException ex) {
-            handleConnectionError("Connection timeout", ex);
+            PlaylistRoutes.handleConnectionError("Connection timeout", ex);
         } catch (IOException ex) {
-            handleConnectionError("Network error", ex);
+            PlaylistRoutes.handleConnectionError("Network error", ex);
         } catch (Exception ex) {
             Logger.printException(() -> "sendRequest failed", ex);
         } finally {

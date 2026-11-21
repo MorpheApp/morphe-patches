@@ -143,6 +143,8 @@ Second \"item\" text"</string>
     <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
     <string name="morphe_external_downloader_menu_title">Use external downloader for Download menu</string>
     <string name="morphe_external_downloader_menu_summary">The Download option of menus opens your external downloader instead</string>
+    <string name="morphe_download_force_4k_title">Force 4K download availability</string>
+    <string name="morphe_download_force_4k_summary">Saves 1440p and 4K downloads even if YouTube Music decides this device cannot play them</string>
     <string name="morphe_export_download_folder_title">Export downloads</string>
     <string name="morphe_export_download_folder_summary">"Export in-app saved songs and videos to your device storage using the in-app downloads flyout menu. Tap to change the export
 
@@ -154,6 +156,8 @@ Export folder: %s"</string>
     <string name="morphe_export_download_failed">Could not export the download</string>
     <string name="morphe_export_download_all_flyout_title">Export all to device</string>
     <string name="morphe_export_download_all_started">Exporting all downloads</string>
+    <string name="morphe_export_download_all_title">All downloads</string>
+    <string name="morphe_export_download_playlist_started">Exporting downloads</string>
     <string name="morphe_export_download_all_running">Downloads are already being exported</string>
     <string name="morphe_export_download_all_saved">Exported %1$s of %2$s downloads to %3$s</string>
 
@@ -186,15 +190,15 @@ Export folder: %s"</string>
 
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
     <string name="morphe_music_hide_audio_video_toggle_title">Hide Audio / Video toggle</string>
-    <string name="morphe_music_hide_podcast_episode_download_button_title">Hide Download button</string>
     <string name="morphe_music_hide_podcast_episode_download_button_summary">Hides the Download button in podcast show</string>
     <string name="morphe_music_hide_explore_shelf_title">Hide Explore shelf</string>
     <string name="morphe_music_hide_filter_bar_title">Hide filter bar</string>
     <string name="morphe_music_hide_grid_shelves_title">Hide grid shelves</string>
     <string name="morphe_music_hide_horizontal_shelves_title">Hide horizontal shelves</string>
+    <string name="morphe_music_hide_new_button_title">Hide New button</string>
+    <string name="morphe_music_hide_new_button_summary">Hides the New button in the Library tab</string>
     <string name="morphe_music_hide_list_shelves_title">Hide list shelves</string>
     <string name="morphe_music_hide_lyrics_panel_category_title">Lyrics panel</string>
-    <string name="morphe_music_hide_lyrics_share_button_title">Hide Share button</string>
     <string name="morphe_music_hide_lyrics_translate_button_title">Hide Translate button</string>
     <string name="morphe_music_hide_new_from_shelf_title">Hide \'New from\' shelf</string>
     <string name="morphe_music_hide_playlist_shelves_title">Hide playlist shelves</string>
@@ -219,6 +223,8 @@ Export folder: %s"</string>
     <string name="morphe_music_crossfade_screen_title">Crossfade</string>
     <string name="morphe_music_crossfade_screen_summary">Smoothly blend tracks into each other</string>
     <string name="morphe_music_crossfade_enabled_title">Enable crossfade</string>
+    <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+    <string name="morphe_music_crossfade_enabled_summary_unavailable">To use crossfade, change the \'Spoof video streams\' \'Default client\' to \'TV Simply\' or \'visionOS\'</string>
     <string name="morphe_music_crossfade_curve_title">Fade curve</string>
     <string name="morphe_music_crossfade_curve_entry_equal_power">Equal power</string>
     <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtle hold</string>
@@ -253,7 +259,9 @@ Export folder: %s"</string>
     <string name="morphe_music_crossfade_paused_toast">Crossfade paused for this session</string>
     <string name="morphe_music_crossfade_resumed_toast">Crossfade resumed</string>
     <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mode is not available while crossfade is enabled</string>
-    <string name="morphe_music_crossfade_sabr_toast">Crossfade is off with SABR playback</string>
+    <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+    <string name="morphe_music_crossfade_visionos_toast">Crossfade does not work with \'visionOS\'. Change the \'Spoof video streams\' \'Default client\' to \'TV Simply\'</string>
+    <string name="morphe_music_crossfade_spoof_client_toast">Crossfade does not work with this spoof stream client</string>
     <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is off while casting</string>
     <string name="morphe_music_crossfade_about_how_title">How it works</string>
     <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlaps the end of one song with the start of the next, using your duration and curve
@@ -270,9 +278,7 @@ The lock screen or notification can briefly show a stale state mid-transition
 
 Pausing crossfade to watch a music video can leave some videos black. Pausing crossfade before you pick the song avoids it"</string>
     <string name="morphe_music_crossfade_about_unsupported_title">Not supported</string>
-    <string name="morphe_music_crossfade_about_unsupported_summary">"Casting or mirroring audio (Chromecast, screen or audio mirroring)
-
-SABR playback (Spoof video streams turned off)"</string>
+    <string name="morphe_music_crossfade_about_unsupported_summary">Casting or mirroring audio (Chromecast, screen or audio mirroring)</string>
     <string name="morphe_music_crossfade_about_credit_title">Credit</string>
     <string name="morphe_music_crossfade_about_credit_summary">Crossfade feature by VazerOG</string>
 
@@ -285,6 +291,21 @@ SABR playback (Spoof video streams turned off)"</string>
     <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
     <string name="morphe_music_pause_when_muted_title">Pause when muted</string>
     <string name="morphe_music_pause_when_muted_summary">Pauses playback when the system volume is muted and resumes it when the volume is raised</string>
+
+    <!-- interaction.sonos.sonosCastPatch -->
+    <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+    <string name="morphe_music_sonos_cast_summary">The Cast button can also stream to Sonos and other UPnP speakers on your Wi-Fi network</string>
+    <string name="morphe_music_sonos_cast_sheet_title">Connect to a device</string>
+    <string name="morphe_music_sonos_cast_searching">Searching for speakers on your Wi-Fi network…</string>
+    <string name="morphe_music_sonos_cast_choose_speaker">Choose a speaker on your Wi-Fi network</string>
+    <string name="morphe_music_sonos_cast_casting_to">Casting to %s</string>
+    <string name="morphe_music_sonos_cast_connected">Connected</string>
+    <string name="morphe_music_sonos_cast_disconnect">Disconnect</string>
+    <string name="morphe_music_sonos_cast_speakers_header">Speakers on Wi-Fi</string>
+    <string name="morphe_music_sonos_cast_active">Active</string>
+    <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+    <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest and Google TV devices</string>
+    <string name="morphe_music_sonos_cast_connection_failed">Could not connect to %s</string>
 
     <!-- video.speed.playbackSpeedPatch -->
     <string name="morphe_music_playback_speed_title">Playback speed</string>
@@ -299,9 +320,20 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_disable_audio_ducking_title">Disable audio ducking</string>
     <string name="morphe_music_disable_audio_ducking_summary">Volume is not lowered when another app plays a short sound, such as a notification</string>
 
+    <!-- interaction.likefilter.queueLikeFilterPatch -->
+    <string name="morphe_music_queue_like_filter_title">Queue likes filter</string>
+    <string name="morphe_music_queue_like_filter_summary">Removes songs with few likes from mixes and radio. Playlists, albums and songs you add to the queue are not changed. Like counts are from Return YouTube Dislike</string>
+    <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum likes</string>
+    <string name="morphe_music_queue_like_filter_minimum_likes_summary">Songs with fewer likes are removed from the queue</string>
+
     <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
     <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>
     <string name="morphe_music_disable_dislike_redirection_summary">Prevents skipping to the next track when the dislike button is pressed</string>
+
+    <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+    <string name="morphe_music_disable_player_swipe_to_change_track_title">Disable swipe to change track</string>
+    <string name="morphe_music_disable_player_swipe_to_change_track_summary">Prevents skipping to the next or previous track by swiping left or right on the player</string>
+    <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Prevents skipping to the next or previous track by swiping left or right on the miniplayer</string>
 
     <!-- interaction.loop.loopVideoPatch -->
     <string name="morphe_music_ab_loop_title">A-B loop</string>
@@ -355,16 +387,6 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_playlist_tags_rename">Rename</string>
     <string name="morphe_music_playlist_tags_delete">Delete</string>
     <string name="morphe_music_playlist_tags_hidden">Hidden</string>
-
-    <!-- layout.buttons.hideButtonsPatch -->
-    <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
-    <string name="morphe_music_hide_history_button_title">Hide History button</string>
-    <string name="morphe_music_hide_notification_button_title">Hide Notification button</string>
-    <string name="morphe_music_hide_search_button_title">Hide Search button</string>
-    <string name="morphe_music_hide_voice_search_button_title">Hide Voice search button</string>
-    <string name="morphe_music_hide_sound_search_button_title">Hide Sound search button</string>
-    <string name="morphe_music_hide_library_new_button_title">Hide New button</string>
-    <string name="morphe_music_hide_library_new_button_summary">Hides the New button in the Library tab</string>
 
     <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
     <string name="morphe_music_action_buttons_screen_title">Action buttons</string>
@@ -441,26 +463,24 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_force_portrait_orientation_summary">Keeps the app in portrait orientation when the device is rotated</string>
 
     <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-    <string name="morphe_music_change_miniplayer_color_title">Change miniplayer color</string>
+    <string name="morphe_music_change_miniplayer_color_title">Change color</string>
     <string name="morphe_music_change_miniplayer_color_summary">Matches the miniplayer color to the fullscreen player</string>
     <string name="morphe_music_change_navigation_bar_color_title">Change navigation bar color</string>
     <string name="morphe_music_change_navigation_bar_color_summary">Matches the navigation bar color to the fullscreen player</string>
 
     <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-    <string name="morphe_music_miniplayer_next_button_title">Show next button in miniplayer</string>
-    <string name="morphe_music_miniplayer_previous_button_title">Show previous button in miniplayer</string>
+    <string name="morphe_music_miniplayer_next_button_title">Show Next button</string>
+    <string name="morphe_music_miniplayer_previous_button_title">Show Previous button</string>
 
     <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
     <string name="morphe_music_enable_forced_miniplayer_title">Enable forced miniplayer</string>
     <string name="morphe_music_enable_forced_miniplayer_summary">Prevents the player from automatically expanding to fullscreen when a new track starts</string>
 
     <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Enable swipe to dismiss miniplayer</string>
+    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Enable swipe to dismiss</string>
     <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Allows to dismiss the miniplayer by swiping down on it</string>
 
-    <!-- layout.navigationbar.navigationBarPatch -->
-    <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
-    <string name="morphe_music_navigation_bar_screen_summary">Choose which buttons appear in the bottom navigation bar</string>
+    <!-- layout.buttons.navigation.navigationBarPatch -->
     <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
     <string name="morphe_music_hide_navigation_bar_home_button_title">Hide Home button</string>
     <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -493,7 +513,7 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Hides the rounded highlight behind the selected button of the glass navigation bar</string>
     <string name="morphe_music_miniplayer_screen_title">Miniplayer</string>
     <string name="morphe_music_miniplayer_screen_summary">Change the style, the buttons and the gestures of the miniplayer</string>
-    <string name="morphe_music_miniplayer_glass_title">Enable glass miniplayer</string>
+    <string name="morphe_music_miniplayer_glass_title">Enable glass effect</string>
     <string name="morphe_music_miniplayer_glass_summary">Shows the floating miniplayer as a rounded, translucent glass card</string>
     <string name="morphe_music_miniplayer_glass_style_title">Glass miniplayer style</string>
     <string name="morphe_music_miniplayer_glass_style_summary">Adjust the corner radius, the artwork padding, the rim brightness and the opacity of the glass miniplayer, with a preview</string>
@@ -501,11 +521,8 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_miniplayer_glass_artwork_padding_title">Artwork padding</string>
     <string name="morphe_music_miniplayer_glass_rim_title">Rim brightness</string>
     <string name="morphe_music_miniplayer_glass_opacity_title">Opacity</string>
-    <string name="morphe_music_miniplayer_glass_blur_title">Glass blur</string>
     <string name="morphe_music_miniplayer_glass_blur_summary">How much the page behind the glass miniplayer is blurred (Android 14 and later). At 0 the page shows through sharp, and before Android 14 the page is covered</string>
-    <string name="morphe_music_miniplayer_glass_light_title">Light glass</string>
     <string name="morphe_music_miniplayer_glass_light_summary">Tints the glass miniplayer white instead of dark, for a lighter and clearer glass</string>
-    <string name="morphe_music_miniplayer_glass_album_tint_title">Album art tint</string>
     <string name="morphe_music_miniplayer_glass_album_tint_summary">Tints the glass miniplayer with the color of the album art of the song that plays</string>
     <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Spinning artwork</string>
     <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Makes the artwork of the glass miniplayer round, and spins it like a record while a song plays</string>
@@ -516,6 +533,16 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_navigation_bar_glass_preview_samples">Samples</string>
     <string name="morphe_music_navigation_bar_glass_preview_explore">Explore</string>
     <string name="morphe_music_navigation_bar_glass_preview_library">Library</string>
+
+    <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+    <string name="morphe_music_hide_activity_button_title">Hide Activity button</string>
+    <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+    <string name="morphe_music_hide_ask_music_button_title">Hide \'Ask Music\' button</string>
+    <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
+    <string name="morphe_music_hide_history_button_title">Hide History button</string>
+    <string name="morphe_music_hide_search_button_title">Hide Search button</string>
+    <string name="morphe_music_hide_voice_search_button_title">Hide \'Voice search\' button</string>
+    <string name="morphe_music_hide_sound_search_button_title">Hide \'Sound search\' button</string>
 
     <!-- interaction.scrobbling.scrobblingPatch -->
     <string name="morphe_music_scrobbling_summary_logged_out">Not logged in. Tap to configure</string>
@@ -628,6 +655,10 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_soundproof_about_summary">"Artist data comes from SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), downloaded once a day. Skipping sends nothing about what you play. Opening the SoundProof sheet sends the current artist name to the SoundProof server to show fresh votes and to vote. The server tells voters apart by IP address, so your vote can show differently on another network.
 
 The database is licensed under the ODC Open Database License (ODbL). Entries from Soul Over AI by xoundbyte are licensed under CC BY 4.0. Not affiliated with or endorsed by SoundProof or Soul Over AI."</string>
+
+    <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+    <string name="morphe_music_apple_music_artwork_title">Apple Music animated artwork</string>
+    <string name="morphe_music_apple_music_artwork_summary">Shows the animated album artwork of Apple Music in the player, if the album has one. The title, artist and album of each song are sent to Apple Music</string>
 
     <!-- layout.lyrics.lyricsPatch -->
     <string name="morphe_music_lyrics_device_unavailable">Lyrics are not available for this device file.</string>
@@ -774,8 +805,14 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_written_by">Written by: %s</string>
     <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
     <string name="morphe_music_lyrics_word_sync_summary">Prioritize word-by-word lyrics when available. When lyrics carry word timing, highlights each word or syllable in time with the music</string>
+    <string name="morphe_music_lyrics_word_smooth_sweep_title">Animate synced words smoothly</string>
+    <string name="morphe_music_lyrics_word_smooth_sweep_summary">Highlights each word with a soft sweep, glow, and slight lift as it is sung. Turn off to save battery or for a sharp fill on slower devices</string>
     <string name="morphe_music_lyrics_spring_scroll_title">Use spring scrolling</string>
     <string name="morphe_music_lyrics_spring_scroll_summary">Scrolls the lyrics with spring physics, and moves each line a little after the one above it. Turn off to save battery on slower devices</string>
+    <string name="morphe_music_lyrics_relax_scroll_title">Relaxed scrolling</string>
+    <string name="morphe_music_lyrics_relax_scroll_summary">Slows down the lyric scroll animation and keeps inactive lines full size</string>
+    <string name="morphe_music_lyrics_blur_inactive_title">Blur inactive lines</string>
+    <string name="morphe_music_lyrics_blur_inactive_summary">Softly blurs every line that is not currently being sung, more so further away (Android 12 and later). Before Android 12, inactive lines stay sharp</string>
     <string name="morphe_music_lyrics_gap_dots_title">Show instrumental break dots</string>
     <string name="morphe_music_lyrics_gap_dots_summary">Shows three dots between the lines during a long instrumental break, which fill up as the break runs out</string>
     <string name="morphe_music_lyrics_focus_spotlight_title">Dim distant lines more</string>
@@ -898,6 +935,8 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_swap_trans_roma_summary">Moves the translation above the lyrics; the reading and romanization stay below</string>
     <string name="morphe_music_lyrics_force_center_title">Always center lyrics</string>
     <string name="morphe_music_lyrics_force_center_summary">ON puts every line in the middle and ignores the source alignment, including duet sides; OFF keeps the alignment the lyrics ask for</string>
+    <string name="morphe_music_lyrics_duet_opposite_side_title">Opposite-side duet alignment</string>
+    <string name="morphe_music_lyrics_duet_opposite_side_summary">Places the second singer on the opposite edge on duet songs. Turn off to keep both singers on the same side</string>
     <string name="morphe_music_lyrics_providers_keep_one">At least one provider must stay on</string>
     <string name="morphe_music_lyrics_translation_provider_title">Translation</string>
     <string name="morphe_music_lyrics_romanization_provider_title">Romanization or transliteration</string>

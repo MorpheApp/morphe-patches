@@ -30,9 +30,11 @@ import com.android.tools.smali.dexlib2.Opcode
  * and the fourth one is the mode of the navigation bar.
  */
 internal object ShortsNavigationBarModeFingerprint : Fingerprint(
+    // The Shorts watch fragment. 21.47+ no longer uses the layout reel_watch_fragment.
     classFingerprint = Fingerprint(
+        name = "<clinit>",
         filters = listOf(
-            resourceLiteral(ResourceType.LAYOUT, "reel_watch_fragment")
+            string("\$ReelSequenceControllerStateKey")
         )
     ),
     filters = listOf(

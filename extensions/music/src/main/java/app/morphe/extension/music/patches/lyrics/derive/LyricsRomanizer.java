@@ -27,7 +27,7 @@ import app.morphe.extension.music.patches.lyrics.romanizers.HangulRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.IcuRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
-import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictionaryStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
@@ -445,11 +445,11 @@ public final class LyricsRomanizer {
     @Nullable
     private static ProviderResult romanizeRime(Lyrics lyrics, List<String> lines,
                                                boolean isWordSynced) {
-        if (!RimeDictStore.isActive()) {
+        if (!RimeDictionaryStore.isActive()) {
             return null;
         }
         // Fetching happens only when the row is turned on or a choice is saved, never here.
-        if (!RimeDictStore.isReady()) {
+        if (!RimeDictionaryStore.isReady()) {
             return null;
         }
 
@@ -470,7 +470,7 @@ public final class LyricsRomanizer {
         // read. Reading them here as well would give the line the Mandarin reading, and since
         // this provider usually comes first the word table would never be used at all. The whole
         // lyric is left to that provider, which reads the scripts around the Han the same way.
-        if (rimeMapEnabled() && RimeDictStore.isActive()) {
+        if (rimeMapEnabled() && RimeDictionaryStore.isActive()) {
             return null;
         }
 
@@ -741,7 +741,7 @@ public final class LyricsRomanizer {
                 Word w = origWords.get(wIdx);
                 String rom = (wIdx < alignedChunks.size() && alignedChunks.get(wIdx) != null) ? alignedChunks.get(wIdx) : "";
                 romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
-                if (lineRomBuilder.length() > 0 && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
+                if (Utils.isNotEmpty(lineRomBuilder) && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
                     lineRomBuilder.append(' ');
                 }
                 lineRomBuilder.append(rom);
@@ -877,8 +877,7 @@ public final class LyricsRomanizer {
                 if (text == null) continue;
                 text = stripParentheses(text).trim();
                 if (!text.isEmpty()) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (merged.length() > 0) merged.append('\n');
+                    if (Utils.isNotEmpty(merged)) merged.append('\n');
                     merged.append(text);
                 }
             }
@@ -1256,8 +1255,7 @@ public final class LyricsRomanizer {
     }
 
     public static boolean isPurelyLatinScript(@Nullable CharSequence text) {
-        //noinspection SizeReplaceableByIsEmpty
-        if (text == null || text.length() == 0) return true;
+        if (Utils.isEmpty(text)) return true;
         for (int i = 0; i < text.length(); ) {
             int cp = Character.codePointAt(text, i);
             i += Character.charCount(cp);

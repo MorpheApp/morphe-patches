@@ -31,3 +31,34 @@ enum OfflineStateAction {
     // The saved video stays in the downloads, but can't be played.
     OFFLINE_STATE_ACTION_DISABLE = 3;
 }
+
+// Data of a saved video, such as the data shown in the downloads list.
+message OfflineVideoData {
+    optional ThumbnailList thumbnail = 2;
+    optional OfflineMusicVideoData musicVideoData = 14;
+}
+
+message OfflineMusicVideoData {
+    optional OfflineMusicMetadata musicMetadata = 112520939;
+}
+
+message OfflineMusicMetadata {
+    optional string title = 1;
+    optional string artist = 3;
+    optional string album = 9;
+}
+
+// Data of a saved playlist or album.
+message OfflinePlaylistData {
+    // The artist of an album, or the channel or user that made a playlist.
+    optional OfflinePlaylistOwner owner = 3;
+    optional string title = 5;
+}
+
+message OfflinePlaylistOwner {
+    optional OfflineChannel channel = 75056453;
+}
+
+message OfflineChannel {
+    optional string name = 3;
+}

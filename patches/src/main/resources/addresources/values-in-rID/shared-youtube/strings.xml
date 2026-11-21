@@ -78,6 +78,7 @@ Pastikan nama paket benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_export_download_folder_missing">Folder ekspor %s tidak ditemukan</string>
   <string name="morphe_export_download_flyout_title">Ekspor ke perangkat</string>
   <string name="morphe_export_download_canceled">Ekspor dibatalkan</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Kustom</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
@@ -140,13 +141,13 @@ Ketuk OK untuk membuka Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cobalah mengaktifkan: Palsukan aliran video &gt; Masuk Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klien bawaan</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Masuk Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR memerlukan login terpisah. Ketuk di sini untuk melanjutkan</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Saat ini sedang masuk ke Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Masuk \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' memerlukan masuk secara terpisah. Ketuk di sini untuk melanjutkan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Saat ini sedang masuk ke \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' ke Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Masuk ke Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Masuk ke Android VR dapat memperbaiki masalah pemutaran untuk beberapa pengguna
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' menjadi \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Masuk ke \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Masuk ke 'Android VR' dapat memperbaiki masalah pemutaran untuk beberapa pengguna
 
 Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Keluar</string>
@@ -167,15 +168,15 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 • Setelan Morphe Anda tidak akan mengimpor/mengekspor autentikasi Android VR
 • Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan menghapus autentikasi ini
 • Anda perlu masuk kembali jika Anda mengubah kata sandi Google Anda atau menghapus pendaftaran perangkat ini dari setelan Google Anda"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Login Web Seluler</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Masuk \'Web Seluler\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opsional: masuk ke situs web YouTube untuk memutar video dengan akun Anda. Ketuk di sini untuk melanjutkan</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Saat ini sedang masuk ke Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Saat ini sedang masuk ke \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' ke Web Seluler</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Login ke Web Seluler</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web Seluler memutar video saat keluar, atau login ke situs web YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' menjadi \'Web Seluler\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Login ke \'Web Seluler\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Web Seluler' memutar video tanpa login, atau login ke situs web YouTube
 
-• Saat login, video yang membutuhkan akun dapat diputar, seperti video dengan batasan usia
+• Saat login, video yang memerlukan akun dapat diputar, seperti video yang dibatasi usia
 • Halaman login Google terbuka di aplikasi ini
 • Login hanya digunakan untuk mendapatkan video yang Anda putar
 • Login hanya disimpan di perangkat ini
@@ -183,19 +184,19 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Masuk tersimpan
 
-• Pengaturan Morphe Anda tidak akan mengimpor/mengekspor masuk Web Seluler
+• Pengaturan Morphe Anda tidak akan mengimpor/mengekspor masuk 'Web Seluler'
 • Jika Google mengakhiri sesi masuk, video akan diputar tanpa masuk sampai Anda masuk kembali
 • Keluar juga akan mengeluarkan perangkat ini dari situs web YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Masuk ke Web Seluler telah kadaluwarsa, coba masuk ke Web Seluler lagi</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Keluar dari Web Seluler</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView tidak tersedia. Instal atau aktifkan untuk masuk</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Masuk Web Seluler telah kadaluwarsa, coba masuk ke \'Web Seluler\' lagi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Keluar dari \'Web Seluler\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' tidak tersedia. Instal atau aktifkan untuk masuk</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 sementara tidak tersedia (API kehabisan waktu)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Masuk ke Android VR telah kadaluwarsa, coba masuk ke VR lagi</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Masuk ke \'Android VR\' telah kadaluwarsa, coba masuk ke VR lagi</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 untuk sementara tidak tersedia (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 sementara tidak tersedia</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Tidak dapat masuk ke VR, autentikasi situs web tidak disetujui</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Keluar dari \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kontrol media notifikasi</string>
@@ -213,6 +214,10 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_seek_notification_media_length_invalid">Durasi pencarian harus antara 1 dan %s detik. Menggunakan default</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nonaktifkan protokol QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritaskan kualitas video</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioritaskan kualitas video tertinggi yang tersedia daripada efisiensi codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Jika setelan ini dimatikan, maka video lama tidak dapat menampilkan pilihan kualitas video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Nonaktifkan audio DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -253,7 +258,7 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_replace_music_with_youtube_title">Ubah tautan berbagi ke youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Mengganti music.youtube.com dengan youtube.com di tautan yang dibagikan</string>
   <string name="morphe_replace_links_with_shortener_title">Ubah tautan berbagi ke youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Memaksa video untuk menggunakan format pemendek URL youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Memaksa video untuk menggunakan format pemendek URL \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Otomatis</string>
@@ -265,19 +270,16 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_video_quality_default_mobile_title">Kualitas video bawaan di jaringan seluler</string>
   <string name="morphe_remember_video_quality_toast_mobile">Kualitas seluler bawaan diubah ke: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Kualitas Wi-Fi bawaan diubah ke: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Buka lembar berbagi sistem</string>
-  <string name="morphe_open_system_share_sheet_summary">Membuka lembar berbagi sistem alih-alih lembar berbagi dalam aplikasi saat berbagi konten</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Pencatatan Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Tidak aktif</string>
   <string name="morphe_debug_litho_entry_path">Jalur</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Jalur dan buffer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Pencatatan Litho mencatat komponen tata letak aplikasi, termasuk teks pada layar untuk beberapa komponen UI.
+  <string name="morphe_debug_litho_user_dialog_message">"Mencatat komponen tata letak aplikasi, termasuk teks pada layar untuk beberapa komponen UI.
 
 Ini dapat membantu mengidentifikasi komponen saat membuat penyaring khusus.
 
-Namun, ini juga akan mencatat beberapa data pengguna seperti alamat IP Anda"</string>
+Namun, hal ini juga akan mencatat beberapa data pengguna seperti alamat IP Anda"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Penyaring khusus</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurasikan penyaring khusus untuk menyembunyikan komponen apa pun</string>
@@ -379,4 +381,8 @@ ID video yang Anda tonton dikirim ke API Return YouTube Dislike, dan suka dan ti
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tidak ada batas kuota klien yang terdeteksi</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Batas kuota klien terdeteksi %s kali</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milidetik</string>
+  <string name="morphe_navigation_bar_screen_title">Bilah navigasi</string>
+  <string name="morphe_navigation_bar_screen_summary">Pilih tombol mana yang akan ditampilkan di bilah navigasi bawah</string>
+  <string name="morphe_toolbar_screen_title">Bilah alat</string>
+  <string name="morphe_toolbar_screen_summary">Pilih komponen mana yang akan ditampilkan di toolbar</string>
 </resources>

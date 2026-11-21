@@ -37,7 +37,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Opens a dialog showing official links.
+ * Opens a dialog showing the patches version, the official links and the people behind Morphe.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class MorpheAboutPreference extends Preference {
@@ -54,34 +54,31 @@ public class MorpheAboutPreference extends Preference {
                     put("website", websiteStringKey);
                     put("donate", "morphe_settings_about_links_donate");
                     put("translations", "morphe_settings_about_links_translations");
-                    put("credits", "morphe_settings_about_links_credits");
                 }
             }
         };
 
         final boolean preferred;
+        /**
+         * Whether the link asks for a donation, which leads the other links on a row of its own.
+         */
+        final boolean donation;
         final String name;
-        @Nullable
-        final String subText;
         final String url;
 
-        WebLink(JSONObject json) throws JSONException {
-            this(json.getBoolean("preferred"),
-                    json.getString("name"),
-                    null,
-                    json.getString("url")
-            );
+        WebLink(JSONObject json, boolean donation) throws JSONException {
+            this(json.getBoolean("preferred"), donation, json.getString("name"), json.getString("url"));
         }
 
-        WebLink(String name, @Nullable String subText, String url) {
-            this(false, name, subText, url);
+        WebLink(String name, String url) {
+            this(true, false, name, url);
         }
 
-        WebLink(boolean preferred, String name, @Nullable String subText, String url) {
+        private WebLink(boolean preferred, boolean donation, String name, String url) {
             this.preferred = preferred;
+            this.donation = donation;
             String localizedNameKey = webLinkNameReplacements.get(name.toLowerCase(Locale.US));
             this.name = (localizedNameKey != null) ? str(localizedNameKey) : name;
-            this.subText = subText;
             this.url = url;
         }
 
@@ -90,8 +87,8 @@ public class MorpheAboutPreference extends Preference {
         public String toString() {
             return "WebLink{" +
                     "preferred=" + preferred +
+                    ", donation=" + donation +
                     ", name='" + name + '\'' +
-                    ", subText='" + subText + '\'' +
                     ", url='" + url + '\'' +
                     '}';
         }
@@ -101,15 +98,24 @@ public class MorpheAboutPreference extends Preference {
         MorpheCreditsDialog.showVancedAsPastContributor = includeVanced;
     }
 
-    // Dummy url
+    // Dummy urls. Tapping one opens the list of people it stands for rather than a page.
     static final String CREDITS_LINK_PLACEHOLDER_URL = "https://morphe.software/credits/";
-
-    static final WebLink CREDITS_LINK = new WebLink("credits", null, CREDITS_LINK_PLACEHOLDER_URL);
+    static final String SUPPORTERS_LINK_PLACEHOLDER_URL = "https://morphe.software/supporters/";
+    // Opens Morphe itself, to patch the app again.
+    static final String MANAGER_LINK_PLACEHOLDER_URL = "https://morphe.software/manager/";
 
     private static String useNonBreakingHyphens(String text) {
         // Replace any dashes with non-breaking dashes, so the English text 'pre-release'
         // and the dev release number does not break and cover two lines.
         return text.replace("-", "&#8209;"); // #8209 = non-breaking hyphen.
+    }
+
+    private static void appendTile(StringBuilder html, String url, String title, String icon, boolean wide) {
+        html.append("<a href=\"").append(AboutDialogStyle.escapeHtml(url))
+                .append(wide ? "\" class=\"tile wide\">" : "\" class=\"tile\">")
+                .append(icon)
+                .append("<span class=\"tile-title\">").append(title).append("</span>")
+                .append("</a>");
     }
 
     /**
@@ -122,77 +128,71 @@ public class MorpheAboutPreference extends Preference {
     }
 
     private String createDialogHtml(List<WebLink> aboutLinks, @Nullable String currentVersion) {
-        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart());
+        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart(getContext()))
+                .append(AboutDialogStyle.pageStart(true));
 
-        html.append("<div class=\"dialog-header\">");
+        html.append("<div class=\"dialog-header\"><div class=\"about-header\">");
 
-        // The logo is fetched over the network, so the container is skipped entirely when offline.
-        if (Utils.isNetworkConnected()) {
-            html.append(String.format("""
-                    <div class="app-logo">
-                        <div class="app-logo-inner">
-                            <img src="%s" onerror="this.parentElement.parentElement.style.display='none';" />
-                        </div>
-                    </div>
-                    """, AboutRoutes.aboutLogoUrl));
-        }
+        html.append("<div class=\"app-logo\">").append(AboutDialogStyle.LOGO).append("</div>");
 
-        html.append("<div class=\"app-name\">Morphe</div>");
+        // Names which part of Morphe this is, as Morphe itself names the manager.
+        html.append("<div><div class=\"app-name\">Morphe</div><div class=\"app-component\">")
+                .append(getString("morphe_settings_about_component"))
+                .append("</div></div></div>");
 
         String appPatchesVersion = Utils.getPatchesReleaseVersion();
-        final boolean isUpToDate = currentVersion == null || appPatchesVersion.equalsIgnoreCase(currentVersion);
 
-        // Version status card.
-        html.append(String.format("""
-                        <div class="info-card">
-                            <h3>%s</h3>
-                            <p>%s</p>
-                        </div>
-                        """,
-                useNonBreakingHyphens(isUpToDate
-                        ? getString("morphe_settings_about_links_dev_header_up_to_date")
-                        : getString("morphe_settings_about_links_dev_header_update_available")),
-                useNonBreakingHyphens(isUpToDate
-                        ? getString("morphe_settings_about_links_body_version_current",
-                                AboutDialogStyle.isolateLtr(appPatchesVersion))
-                        : getString("morphe_settings_about_links_body_version_outdated",
-                                AboutDialogStyle.isolateLtr(appPatchesVersion),
-                                AboutDialogStyle.isolateLtr(currentVersion)))
-        ));
-
-        // Dev note card.
+        html.append("<div class=\"version-card\"><div class=\"version-label-row\"><span class=\"version-label\">")
+                .append(getString("morphe_settings_about_version"))
+                .append("</span>");
         if (Utils.isPreReleasePatches()) {
-            html.append(String.format("""
-                            <div class="info-card">
-                                <h3>%s</h3>
-                                <p>%s</p>
-                            </div>
-                            """,
-                    useNonBreakingHyphens(getString("morphe_settings_about_links_dev_header")),
-                    getString("morphe_settings_about_links_dev_body")
-            ));
+            html.append("<span class=\"badge\">")
+                    .append(useNonBreakingHyphens(getString("morphe_settings_about_prerelease")))
+                    .append("</span>");
+        }
+        html.append("</div><div class=\"version\">")
+                .append(useNonBreakingHyphens(AboutDialogStyle.isolateLtr(appPatchesVersion)))
+                .append("</div>");
+
+        // Nothing stands here while the latest version is unknown: that is not the same as up to date.
+        if (currentVersion != null) {
+            if (appPatchesVersion.equalsIgnoreCase(currentVersion)) {
+                html.append("<div class=\"version-status\">")
+                        .append(getString("morphe_settings_about_links_dev_header_up_to_date"))
+                        .append("</div>");
+            } else {
+                html.append("<div class=\"version-status update\"><div class=\"version-status-text\">")
+                        .append(useNonBreakingHyphens(getString("morphe_settings_about_update_available",
+                                AboutDialogStyle.isolateLtr(currentVersion))))
+                        .append("<div class=\"version-hint\">")
+                        .append(getString("morphe_settings_about_update_hint"))
+                        .append("</div></div><a href=\"").append(MANAGER_LINK_PLACEHOLDER_URL)
+                        .append("\" class=\"update-button\">")
+                        .append(getString("morphe_patches_update_notice_dialog_update"))
+                        .append("</a></div>");
+            }
         }
 
-        html.append("</div>"); // end .dialog-header
+        html.append("</div></div>"); // end .version-card and .dialog-header
 
-        // Links section.
-        html.append("<div class=\"section\">")
-                .append(AboutDialogStyle.sectionTitle(getString("morphe_settings_about_links_header")))
-                .append("<div class=\"settings-group\">");
+        html.append("<div class=\"section\"><div class=\"group-label\">")
+                .append(getString("morphe_settings_about_links_header"))
+                .append("</div><div class=\"tiles\">");
 
         for (WebLink link : aboutLinks) {
-            html.append("<a href=\"").append(link.url).append("\" class=\"settings-item\">")
-                    .append("<span class=\"item-icon\">")
-                    .append(AboutDialogStyle.linkIcon(link.url))
-                    .append("</span>")
-                    .append("<div class=\"item-text\"><div class=\"item-title\">")
-                    .append(link.name)
-                    .append("</div></div>")
-                    .append(AboutDialogStyle.chevron())
-                    .append("</a>");
+            appendTile(html, link.url, link.name,
+                    link.donation ? AboutDialogStyle.donateIcon() : AboutDialogStyle.linkIcon(link.url),
+                    link.donation);
         }
 
-        html.append("</div></div>").append(AboutDialogStyle.DOCUMENT_END);
+        // The people behind the project close the same grid the links are in.
+        appendTile(html, CREDITS_LINK_PLACEHOLDER_URL, getString("morphe_settings_about_contributors"),
+                AboutDialogStyle.linkIcon(CREDITS_LINK_PLACEHOLDER_URL), false);
+        appendTile(html, SUPPORTERS_LINK_PLACEHOLDER_URL, getString("morphe_settings_about_supporters"),
+                AboutDialogStyle.linkIcon(SUPPORTERS_LINK_PLACEHOLDER_URL), false);
+        html.append("</div></div>")
+                .append(AboutDialogStyle.pageEnd(getString("morphe_settings_about_close"), null))
+                .append(AboutDialogStyle.DOCUMENT_END);
 
         return html.toString();
     }
@@ -255,7 +255,7 @@ public class MorpheAboutPreference extends Preference {
             if (progress != null && progress.isShowing()) {
                 progress.dismiss();
             }
-            new AboutWebViewDialog(getContext(), htmlDialog).show();
+            new AboutWebViewDialog(getContext(), htmlDialog, false).show();
         });
     }
 

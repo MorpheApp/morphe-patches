@@ -22,7 +22,7 @@ import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
 import app.morphe.extension.music.patches.lyrics.requests.GeniusProvider;
 import app.morphe.extension.music.patches.lyrics.requests.KuGouProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LRCLIBProvider;
-import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LRCRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricifyProvider;
@@ -60,15 +60,12 @@ public final class LyricsProviders {
         return providers;
     }
 
-    /**
-     * The providers that can answer a custom title and artist: the ones keyed by the playing
-     * track's video id only know that track, and a prefetch of another track has none to ask with.
-     */
+    /** Only providers keyed by title and artist can answer a custom search; video-id ones can't. */
     public static List<LyricsProvider> searchableProviders(List<LyricsProvider> providers) {
         List<LyricsProvider> result = new ArrayList<>(providers.size());
         for (LyricsProvider provider : providers) {
             switch (provider.name()) {
-                case "YTMusic", "Captions", "Unison", "SimpMusic" -> {
+                case "YTMusic", "Captions" -> {
                 }
                 default -> result.add(provider);
             }
@@ -139,7 +136,7 @@ public final class LyricsProviders {
             case "Musixmatch" -> new MusixmatchProvider();
             case "Deezer" -> new DeezerProvider();
             case "Genius" -> new GeniusProvider();
-            case "LrcRed" -> new LrcRedProvider();
+            case "LrcRed" -> new LRCRedProvider();
             default -> null;
         };
     }

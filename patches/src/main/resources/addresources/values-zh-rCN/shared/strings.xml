@@ -74,18 +74,34 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">导出到文件</string>
   <string name="morphe_settings_export_file_success">设置导出成功</string>
   <string name="morphe_settings_export_file_failed">导出设置失败</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">您正在使用最新的Morphe Patches版本 &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">您正在使用Morphe Patches版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;可用更新版本: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;要更新您的补丁,请使用Morphe重新修补此应用程序</string>
-  <string name="morphe_settings_about_links_dev_header">注意</string>
-  <string name="morphe_settings_about_links_dev_body">此版本是预发布版本，您可能会遇到意外问题</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">补丁</string>
+  <string name="morphe_settings_about_version">版本</string>
+  <string name="morphe_settings_about_close">关闭</string>
+  <string name="morphe_settings_about_prerelease">预发布版本</string>
+  <string name="morphe_settings_about_update_available">有可用更新：%s</string>
+  <string name="morphe_settings_about_update_hint">要更新补丁，请使用 Morphe 重新为该应用打补丁</string>
   <string name="morphe_settings_about_links_header">官方链接</string>
   <string name="morphe_settings_about_links_website">网站</string>
   <string name="morphe_settings_about_links_donate">捐助</string>
   <string name="morphe_settings_about_links_translations">翻译</string>
-  <string name="morphe_settings_about_links_credits">贡献表</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">最新</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">有可用更新</string>
+  <string name="morphe_settings_about_contributors">贡献者</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">所有时间</string>
+  <string name="morphe_settings_about_contributors_6_months">6个月</string>
+  <string name="morphe_settings_about_contributors_3_months">3个月</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">时间范围</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s 位用户</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">支持者</string>
+  <string name="morphe_settings_about_supporters_summary">Open Collective 上的支持者</string>
+  <string name="morphe_settings_about_supporters_become">成为支持者</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">以及另外 %s 人</string>
+  <string name="morphe_settings_about_people_unavailable">无法加载列表</string>
   <string name="morphe_settings_about_contributors_current">当前开发</string>
   <string name="morphe_settings_about_contributors_prior">早期开发</string>
   <string name="morphe_settings_about_links_morphe">当前开发</string>
@@ -213,6 +229,9 @@ Second \"item\" text"</string>
 • 应用可能会随机关闭
 • 通知可能无法正常工作
 • 后台播放可能无法正常工作"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">打开系统分享面板</string>
+  <string name="morphe_open_system_share_sheet_summary">分享内容时，使用系统分享面板而非应用内分享面板</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">应用链接处理</string>
   <string name="morphe_link_handling_summary">配置链接在此应用中打开</string>

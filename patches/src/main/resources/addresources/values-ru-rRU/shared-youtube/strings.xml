@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">Не удалось найти папку экспорта %s</string>
   <string name="morphe_export_download_flyout_title">Экспорт на устройство</string>
   <string name="morphe_export_download_canceled">Экспорт отменен</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Пользовательское</string>
   <string name="morphe_custom_branding_icon_title">Иконка приложения</string>
@@ -140,13 +141,13 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Попробуйте включить: Поддельные видео потоки &gt; Вход в Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Клиент по умолчанию</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Войти в Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Для Android VR требуется отдельный вход в систему. Нажмите здесь, чтобы продолжить</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Теперь вы вошли в Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Вход в \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Для \"Android VR\" требуется отдельный вход. Нажмите здесь, чтобы продолжить</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">В данный момент выполнен вход в \"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Чтобы использовать эту функцию, измените «Клиент по умолчанию» на Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Войти в Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вход в Android VR может решать проблемы с воспроизведением для некоторых пользователей
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Чтобы использовать эту функцию, измените \"Клиент по умолчанию\" на \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Войти в \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вход в \"Android VR\" может решить проблемы с воспроизведением для некоторых пользователей
 
 Чтобы войти, нажмите кнопку \"Продолжить\" ниже"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Выйти</string>
@@ -167,13 +168,13 @@ Second \"item\" text"</string>
 • В настройках Morphe не будет импортироваться/экспортироваться аутентификация Android VR
 • Если это приложение не будет использоваться в течение 6 месяцев, Google удалит эту аутентификацию
 • Вам нужно будет снова войти, если вы измените пароль Google или отмените регистрацию этого устройства в настройках Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вход через мобильную версию сайта</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вход в \"мобильную веб-версию\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Необязательно: войдите в свою учетную запись на сайте YouTube, чтобы воспроизводить видео. Нажмите здесь, чтобы продолжить</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Теперь вы вошли в мобильную версию сайта</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">В данный момент выполнен вход в \"Мобильную версию веб-сайта\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Чтобы использовать эту функцию, измените «Клиент по умолчанию» на Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Войти в Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web воспроизводит видео без авторизации или при входе в аккаунт на сайте YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Чтобы использовать эту функцию, измените «Клиент по умолчанию» на «Mobile Web»</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Войти в «Mobile Web»</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"«Mobile Web» воспроизводит видео без авторизации или с авторизацией на сайте YouTube
 
 • При авторизации можно смотреть видео, требующие наличия аккаунта, например, видео с возрастными ограничениями
 • Страница входа в Google открывается в этом приложении
@@ -183,19 +184,19 @@ Second \"item\" text"</string>
 Чтобы войти, нажмите «Продолжить» ниже"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Вход сохранен
 
-• Настройки Morphe не будут импортировать/экспортировать вход в мобильную веб-версию
-• Если Google завершит сеанс, видео будут воспроизводиться без авторизации, пока вы не войдете снова
-• Выход из системы также приведет к выходу из аккаунта на веб-сайте YouTube на этом устройстве"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Срок действия входа в мобильную веб-версию истек. Попробуйте войти в мобильную веб-версию снова</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Выход из мобильной веб-версии выполнен</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недоступен. Установите или включите его, чтобы войти в систему</string>
+• Настройки Morphe не будут импортировать/экспортировать данные входа в «Мобильную веб-версию»
+• Если сессия Google завершится, видео будут воспроизводиться без авторизации, пока вы не войдете снова
+• Выход из системы также приведет к выходу из учетной записи на сайте YouTube на этом устройстве"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Срок действия входа в «Мобильную веб-версию» истек. Попробуйте войти в «Мобильную веб-версию» снова</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Выход из «Мобильной веб-версии» выполнен</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">«Android System WebView» недоступен. Установите или включите его, чтобы войти в систему</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 временно недоступен (время ожидания API истекло)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Срок действия входа в Android VR истек. Попробуйте войти в VR снова</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Срок действия входа в \"Android VR\" истек, попробуйте войти в VR снова</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 временно недоступен (статус %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 временно недоступна</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Невозможно войти в VR, веб-авторизация не была одобрена</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не удается войти в VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Выход из Android VR выполнен</string>
+  <string name="morphe_oauth2_toast_reset">Выход из \"Android VR\" выполнен</string>
   <string name="morphe_oauth2_toast_invalid">Недействительный токен входа в VR, попробуйте войти в VR еще раз</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Элементы управления мультимедиа в уведомлении</string>
@@ -213,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">Длина перемотки должна быть от 1 до %s секунд. Используется значение по умолчанию</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Отключить протокол QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Приоритизировать качество видео</string>
+  <string name="morphe_prioritize_video_quality_summary">Отдает приоритет максимально доступному качеству видео перед эффективностью кодека</string>
+  <string name="morphe_prioritize_video_quality_dialog">Если эта настройка отключена, для старых видео могут быть недоступны параметры качества</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Отключить DRC аудио</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -253,7 +258,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">Изменить ссылки для обмена на youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Заменяет music.youtube.com на youtube.com в общих ссылках.</string>
   <string name="morphe_replace_links_with_shortener_title">Изменить ссылки для обмена на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Принудительно использует сокращенный формат URL youtu.be для видео</string>
+  <string name="morphe_replace_links_with_shortener_summary">Принудительно использовать сокращенный формат URL \"youtu.be\" для видео</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
@@ -265,15 +270,12 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Качество видео по умолчанию в мобильной сети</string>
   <string name="morphe_remember_video_quality_toast_mobile">Качество в мобильной сети изменено на: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Качество в сети Wi-Fi изменено на: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Открыть системное меню «Поделиться»</string>
-  <string name="morphe_open_system_share_sheet_summary">Открывает системное меню \"Поделиться\" вместо встроенного при отправке контента</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Журналирование Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Выключено</string>
   <string name="morphe_debug_litho_entry_path">Путь</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Путь и буфер</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Логирование Litho регистрирует компоненты макета приложения, включая текст на экране для некоторых компонентов пользовательского интерфейса.
+  <string name="morphe_debug_litho_user_dialog_message">"Регистрирует компоненты макета приложения, включая текст на экране для некоторых компонентов пользовательского интерфейса.
 
 Это может помочь определить компоненты при создании пользовательских фильтров.
 
@@ -379,4 +381,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ограничения скорости клиентского API не обнаружены</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Превышен лимит запросов клиента %s раз</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунд</string>
+  <string name="morphe_navigation_bar_screen_title">Панель навигации</string>
+  <string name="morphe_navigation_bar_screen_summary">Выберите, какие кнопки отображаются на нижней панели навигации</string>
+  <string name="morphe_toolbar_screen_title">Панель инструментов</string>
+  <string name="morphe_toolbar_screen_summary">Выберите, какие компоненты отображать на панели инструментов</string>
 </resources>

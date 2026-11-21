@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">የላክ ፎልደር %s ማግኘት አልተቻለም</string>
   <string name="morphe_export_download_flyout_title">ወደ መሳሪያው ላክ</string>
   <string name="morphe_export_download_canceled">መላኩ ተሰርዟል</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">ብጁ</string>
   <string name="morphe_custom_branding_icon_title">የመተግበሪያ ምልክት</string>
@@ -140,15 +141,15 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ይህንን ለማብራት ይሞክሩ፦ የቪዲዮ ስትሪሞችን አስመስል &gt; Android VR ይግቡ</string>
   <string name="morphe_spoof_video_streams_client_type_title">መደበኛ ደንበኛ</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR ይግቡ</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR የተለየ ስርጭት መግቢያ ይጠይቃል። ለመቀጠል እዚህ ይንኩ</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">በአሁኑ ጊዜ ወደ Android VR ገብተዋል</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' መግቢያ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' የተለየ መግቢያ ይፈልጋል። ለመቀጠል እዚህ ይጫኑ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">በአሁኑ ጊዜ ወደ \'Android VR\' ተገብቷል</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">ይህንን ባህሪ ለመጠቀም፣ \'Default client\'ን ወደ Android VR ይቀይሩ</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">ወደ Android VR ይግቡ</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"ወደ Android VR መግባት ለአንዳንድ ተጠቃሚዎች የቪዲዮ ማጫወቻ ችግሮችን ሊያስተካክል ይችላል
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">ይህን ባህሪ ለመጠቀም፣ \'Default client\'ን ወደ \'Android VR\' ይቀይሩ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">ወደ \'Android VR\' ይግቡ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"ወደ 'Android VR' መግባት ለአንዳንድ ተጠቃሚዎች የቪዲዮ ማጫወቻ ችግሮችን ሊያስተካክል ይችላል
 
-ለመግባት ከታች ያለውን ይቀጥሉ የሚለውን ይጫኑ"</string>
+ለመግባት፣ ከታች ያለውን ይቀጥሉ የሚለውን ይጫኑ"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">ውጣ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">መመሪያዎች</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -167,35 +168,35 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
 • የMorphe ቅንብሮች የAndroid VR ማረጋገጫን ወደ ውስጥ አያስገቡም/ወደ ውጭ አይልኩም
 • ይህ መተግበሪያ ለ6 ወራት ጥቅም ላይ ካልዋለ Google ይህን ማረጋገጫ ያስወግደዋል
 • የGoogle የይለፍ ቃልዎን ከቀየሩ ወይም ይህን መሣሪያ ከGoogle ቅንብሮችዎ ካስወገዱ እንደገና መግባት ይኖርብዎታል"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">በሞባይል ድረ-ገጽ መግቢያ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobile Web\' መግቢያ</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">አማራጭ፦ በ አካውንትዎ ቪዲዮዎችን ለማጫወት በ YouTube ድረ-ገጽ ላይ ይግቡ። ለመቀጠል እዚህ ይጫኑ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">በአሁኑ ጊዜ በሞባይል ድረ-ገጽ ውስጥ ገብተዋል</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">በአሁኑ ጊዜ በ\'Mobile Web\' ውስጥ ተስርተዋል</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ይህን ባህሪ ለመጠቀም \'መደበኛ ደንበኛ\'ን ወደ ሞባይል ዌብ ይቀይሩ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ወደ ሞባይል ዌብ ይግቡ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"ሞባይል ዌብ ቪዲዮዎችን ያለ አካውንት ወይም ወደ YouTube ድረ-ገጽ በመግባት ያጫውታል
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ይህን ባህሪ ለመጠቀም \'Default client\'ን ወደ \'Mobile Web\' ይቀይሩ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">በ\'Mobile Web\' ውስጥ ይግቡ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' ቪዲዮዎችን ያለ አካውንት ወይም በYouTube ድረ-ገጽ በኩል በመግባት ያጫውታል
 
-• ሲገቡ፣ እንደ የዕድሜ ገደብ ያላቸው ቪዲዮዎች ያሉ አካውንት የሚጠይቁ ቪዲዮዎችን ማጫወት ይቻላል
+• በገቡበት ጊዜ፣ እንደ ዕድሜ ገደብ ያለባቸው ቪዲዮዎች ያሉ አካውንት የሚፈልጉ ቪዲዮዎችን ማጫወት ይቻላል
 • የGoogle መግቢያ ገጽ በዚህ መተግበሪያ ውስጥ ይከፈታል
-• መግቢያው የሚያጫውቷቸውን ቪዲዮዎች ለማግኘት ብቻ ጥቅም ላይ ይውላል
-• መግቢያው በዚህ መሳሪያ ላይ ብቻ ይቀመጣል
+• መግቢያው የሚያገለግለው የሚያጫውቷቸውን ቪዲዮዎች ለማግኘት ብቻ ነው
+• መግቢያው በዚህ መሣሪያ ላይ ብቻ ይቀመጣል
 
 ለመግባት፣ ከታች ያለውን ቀጥል የሚለውን ይጫኑ"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"መግቢያ ተቀምጧል
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"የመግቢያ መረጃ ተቀምጧል
 
-• የMorphe ቅንብሮች የሞባይል ዌብ መግቢያን አያስገቡም/አላስወጡም
-• Google መግቢያውን ካበቃ፣ እንደገና እስኪገቡ ድረስ ቪዲዮዎች ያለ አካውንት ይጫወታሉ
-• መውጣት በዚህ መሳሪያ ላይ ከYouTube ድረ-ገጽም እንዲወጡ ያደርጋል"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">የሞባይል ዌብ መግቢያ ጊዜው አብቅቷል፣ እባክዎ እንደገና ወደ ሞባይል ዌብ ለመግባት ይሞክሩ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ከሞባይል ዌብ ወጥተዋል</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView አይገኝም። ለመግባት እባክዎ ይጫኑት ወይም ያብሩት</string>
+• የMorphe ቅንብሮች የ'Mobile Web' መግቢያን ወደ ውስጥ አያስገቡም/ወደ ውጭ አይልኩም
+• Google መግቢያውን ካቆመው፣ እንደገና እስኪገቡ ድረስ ቪዲዮዎች ያለ መግቢያ ይጫወታሉ
+• መውጣት ይህንን መሣሪያ ከYouTube ድረ-ገጽም ያስወጣዋል"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">የMobile Web መግቢያ ጊዜው አልፎታል፣ እንደገና ወደ \'Mobile Web\' ለመግባት ይሞክሩ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ከ\'Mobile Web\' ተወጥቷል</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' ዝግጁ አይደለም። ለመግባት ይጫኑት ወይም ያብሩት</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ለጊዜው ዝግጁ አይደለም (የAPI ጊዜው አልፏል)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">የAndroid VR መግቢያ ጊዜ አልፏል፣ እባክዎ በድጋሚ ወደ VR ለመግባት ይሞክሩ</string>
+  <string name="morphe_oauth2_connection_failure_status_400">የ\'Android VR\' መግቢያ ጊዜው አልፎታል፣ እንደገና ወደ VR ለመግባት ይሞክሩ</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ለጊዜው አይገኝም (ሁኔታ %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 ለጊዜው ዝግጁ አይደለም</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">ወደ VR መግባት አይቻልም፣ የድረ-ገጽ ማረጋገጫ አልተፈቀደም</string>
   <string name="morphe_oauth2_connection_failure_auth_error">ወደ VR መግባት አይቻልም፡ %s</string>
-  <string name="morphe_oauth2_toast_reset">ከAndroid VR ተወጥተዋል</string>
+  <string name="morphe_oauth2_toast_reset">ከ\'Android VR\' ተወጥተዋል</string>
   <string name="morphe_oauth2_toast_invalid">የ VR መግቢያ ማረጋገጫ ትክክል አይደለም፣ እባክዎ በድጋሚ ወደ VR ለመግባት ይሞክሩ</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">የማሳወቂያ ሚዲያ መቆጣጠሪያዎች</string>
@@ -213,6 +214,10 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <string name="morphe_seek_notification_media_length_invalid">የፍለጋ ርዝመቱ በ1 እና %s ሰከንዶች መካከል መሆን አለበት። መደበኛው ጥቅም ላይ እየዋለ ነው</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">የ QUIC ፕሮቶኮልን አጥፋ</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">የቪዲዮ ጥራትን ቅድሚያ ይስጡ</string>
+  <string name="morphe_prioritize_video_quality_summary">ከኮዴክ ብቃት ይልቅ ከፍተኛውን የሚገኝ የቪዲዮ ጥራት ቅድሚያ ይሰጣል</string>
+  <string name="morphe_prioritize_video_quality_dialog">ይህ ቅንብር ከተጠፋ፣ የድሮ ቪዲዮዎች ምንም ዓይነት የቪዲዮ ጥራት አማራጮችን ላያሳዩ ይችላሉ</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">የ DRC ኦዲዮን አጥፋ</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -253,7 +258,7 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <string name="morphe_replace_music_with_youtube_title">የማጋሪያ ሊንኮችን ወደ youtube.com ይቀይሩ</string>
   <string name="morphe_replace_music_with_youtube_summary">በተጋሩ ሊንኮች ውስጥ music.youtube.comን በ youtube.com ይተካል</string>
   <string name="morphe_replace_links_with_shortener_title">የማጋሪያ ሊንኮችን ወደ youtu.be ቀይር</string>
-  <string name="morphe_replace_links_with_shortener_summary">ቪዲዮዎች አጭር የሆነውን youtu.be URL ፎርማትን እንዲጠቀሙ ያስገድዳል</string>
+  <string name="morphe_replace_links_with_shortener_summary">ቪዲዮዎች አጫጭር የ\'youtu.be\' URL ቅርጸትን እንዲጠቀሙ ያስገድዳል</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">ራስ-ሰር</string>
@@ -265,19 +270,16 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <string name="morphe_video_quality_default_mobile_title">በሞባይል ኔትወርክ ላይ መደበኛ የቪዲዮ ጥራት</string>
   <string name="morphe_remember_video_quality_toast_mobile">መደበኛ የሞባይል ጥራት ወደ %s ተቀይሯል</string>
   <string name="morphe_remember_video_quality_toast_wifi">መደበኛ የWi-Fi ጥራት ወደ %s ተቀይሯል</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">የስርዓቱን የ பகிደት ዝርዝር ክፈት</string>
-  <string name="morphe_open_system_share_sheet_summary">ይዘቶችን ሲያጋሩ ከመተግበሪያው ውስጠኛ ማጋሪያ ይልቅ በምትኩ የሲስተም ማጋሪያ ገጹን ይከፍታል</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">የLitho ሎጊንግ</string>
   <string name="morphe_debug_litho_entry_disabled">ተዘግቷል</string>
   <string name="morphe_debug_litho_entry_path">መንገድ</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">መንገድ እና በፈር</string>
-  <string name="morphe_debug_litho_user_dialog_message">"የሊቶ መዝገብ አንዳንድ የዩአይ አካላትን ስክሪን ላይ የሚታዩ ጽሁፎችን ጨምሮ የ приложениеውን የሌይአውት አካላት ይመዘግባል።
+  <string name="morphe_debug_litho_user_dialog_message">"የአንዳንድ UI አካላትን በስክሪን ላይ የሚታዩ ጽሁፎችን ጨምሮ የመተግበሪያውን የሌይአውት አካላት ይመዘግባል።
 
 ይህ የራስዎን ማጣሪያዎች ሲፈጥሩ አካላትን ለመለየት ይረዳል
 
-ነገር ግን፣ ይህ እንደ አይፒ አድራሻዎ ያሉ አንዳንድ የተጠቃሚ መረጃዎችንም ይመዘግባል"</string>
+ሆኖም ግን፣ ይህ እንደ IP አድራሻዎ ያሉ አንዳንድ የተጠቃሚ መረጃዎችንም ይመዘግባል"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">ብጁ ማጣሪያ</string>
   <string name="morphe_custom_filter_screen_summary">ማንኛውንም አካል ለመደበቅ ብጁ ማጣሪያዎችን ያዋቅሩ</string>
@@ -379,4 +381,8 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">ምንም የክሊየንት ፍጥነት ገደቦች አልተገኙም</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">የደንበኛው የፍጥነት ገደብ %s ጊዜያት ተጋጥሟል</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ሚሊሰከንድ</string>
+  <string name="morphe_navigation_bar_screen_title">የማሰገጫ አሞሌ</string>
+  <string name="morphe_navigation_bar_screen_summary">በታችኛው የናቪጌሽን ባር ላይ የትኞቹ ቁልፎች እንደሚታዩ ይምረጡ</string>
+  <string name="morphe_toolbar_screen_title">የመሳሪያ አሞሌ</string>
+  <string name="morphe_toolbar_screen_summary">በመሳሪያ ባሩ ላይ የትኞቹ ክፍሎች እንደሚታዩ ይምረጡ</string>
 </resources>

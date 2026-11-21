@@ -668,14 +668,13 @@ public final class LyricsCache {
                 + ".trans." + sanitizeFileComponent(language) + ".txt");
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static String sanitizeFileComponent(String value) {
         StringBuilder sb = new StringBuilder(value.length());
         for (int i = 0; i < value.length(); i++) {
             char c = value.charAt(i);
             sb.append(Character.isLetterOrDigit(c) || c == '-' ? c : '_');
         }
-        return sb.length() == 0 ? "und" : sb.toString();
+        return Utils.isEmpty(sb) ? "und" : sb.toString();
     }
 
     @Nullable

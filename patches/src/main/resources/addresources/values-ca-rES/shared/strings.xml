@@ -74,18 +74,34 @@ Per traduir nous idiomes o millorar les traduccions existents, visita morphe.sof
   <string name="morphe_settings_export_file">Exportar a un fitxer</string>
   <string name="morphe_settings_export_file_success">Configuració exportada correctament</string>
   <string name="morphe_settings_export_file_failed">Error en exportar la configuració</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Estàs utilitzant l\'última versió de Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Estàs utilitzant la versió &lt;i&gt;%1$s&lt;/i&gt; de Morphe Patches&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualització disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Per actualitzar els teus retalls, utilitza Morphe per tornar a retallar aquesta aplicació</string>
-  <string name="morphe_settings_about_links_dev_header">Nota</string>
-  <string name="morphe_settings_about_links_dev_body">Aquesta versió és una versió preliminar i és possible que experimenteu problemes inesperats</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Patxes</string>
+  <string name="morphe_settings_about_version">Versió</string>
+  <string name="morphe_settings_about_close">Tanca</string>
+  <string name="morphe_settings_about_prerelease">Pre-llançament</string>
+  <string name="morphe_settings_about_update_available">Actualització disponible: %s</string>
+  <string name="morphe_settings_about_update_hint">Per actualitzar els vostres patxes, utilitzeu Morphe per tornar a patxar aquesta aplicació</string>
   <string name="morphe_settings_about_links_header">Enllaços oficials</string>
   <string name="morphe_settings_about_links_website">Lloc web</string>
   <string name="morphe_settings_about_links_donate">Donació</string>
   <string name="morphe_settings_about_links_translations">Traduccions</string>
-  <string name="morphe_settings_about_links_credits">Crèdits</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Actualitzat</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Actualització disponible</string>
+  <string name="morphe_settings_about_contributors">Contributors</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Tot el temps</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mesos</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mesos</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Període de temps</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s usuaris</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Supports</string>
+  <string name="morphe_settings_about_supporters_summary">Patrocinadors a Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Converteix-te en un suport</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">I %s més</string>
+  <string name="morphe_settings_about_people_unavailable">No s\'ha pogut carregar la llista</string>
   <string name="morphe_settings_about_contributors_current">Desenvolupament actual</string>
   <string name="morphe_settings_about_contributors_prior">Desenvolupament anterior</string>
   <string name="morphe_settings_about_links_morphe">Desenvolupament actiu</string>
@@ -213,6 +229,9 @@ Si no es canvien les optimitzacions de la bateria, és possible que experimenteu
 • L'aplicació es pot tancar aleatòriament
 • Les notificacions podrien no funcionar
 • La reproducció en segon pla podria no funcionar"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Obre la fulla de compartició del sistema</string>
+  <string name="morphe_open_system_share_sheet_summary">Obre el full de compartició del sistema en lloc del de l\'aplicació quan es comparteix contingut</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestió d\'enllaços de l\'app</string>
   <string name="morphe_link_handling_summary">Configureu els enllaços per obrir-los en aquesta aplicació</string>

@@ -12,8 +12,12 @@
 package app.morphe.patches.youtube.layout.dearrow
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
+import app.morphe.patches.shared.misc.glide.GlideRequestBuilderIntoFingerprint
 import app.morphe.patches.shared.misc.glide.GlideRequestBuilderLoadGenericFingerprint
+import app.morphe.patches.shared.misc.glide.GlideViewTargetGetRequestFingerprint
+import app.morphe.patches.shared.misc.litho.relayout.LithoTextDrawableDrawFingerprint
 import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -42,6 +46,9 @@ import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowPatch;"
+
+private const val EXTENSION_TITLE_ICON =
+    "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowTitleIcon;"
 
 private const val EXTENSION_VOTE_BUTTON =
     "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowVoteButton;"
@@ -88,6 +95,7 @@ val deArrowPatch = patch(
                     SwitchPreference("morphe_dearrow_titles_player"),
                     SwitchPreference("morphe_dearrow_titles_search"),
                     SwitchPreference("morphe_dearrow_titles_icon", summary = true),
+                    SwitchPreference("morphe_dearrow_clean_up_titles", summary = true),
                     SwitchPreference(
                         key = "morphe_dearrow_vote_button",
                         summary = true,
@@ -177,6 +185,56 @@ val deArrowPatch = patch(
             """
                 invoke-static { p1 }, $EXTENSION_CLASS->getImageModel(Ljava/lang/Object;)Ljava/lang/Object;
                 move-result-object p1
+            """
+        )
+
+        // The views that load the thumbnails are remembered, so a thumbnail that is loaded again
+        // mounts again only the Litho views that show the thumbnail, instead of all the shown Litho views.
+        val imageModelField = GlideRequestBuilderLoadGenericFingerprint.instructionMatches.first().fieldReference
+        val viewTargetType = GlideViewTargetGetRequestFingerprint.classDef.type
+        val viewTargetViewField = GlideViewTargetGetRequestFingerprint.instructionMatches.first().fieldReference
+
+        GlideRequestBuilderIntoFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                const/4 v0, 0x0
+                instance-of v1, p1, $viewTargetType
+                if-eqz v1, :load_started
+                move-object v0, p1
+                check-cast v0, $viewTargetType
+                iget-object v0, v0, $viewTargetViewField
+                :load_started
+                iget-object v1, p0, $imageModelField
+                invoke-static { v0, v1 }, $EXTENSION_CLASS->onImageLoadStarted(Landroid/view/View;Ljava/lang/Object;)V
+            """
+        )
+
+        // Litho texts handle touches only inside the bounds of the text, so a touch just above or before
+        // the DeArrow icon of a title opens the video. Touches around the icon are moved onto the icon.
+        val layoutField = LithoTextDrawableDrawFingerprint.instructionMatches.first().fieldReference
+        val iconTouchEvent = "$EXTENSION_TITLE_ICON->iconTouchEvent(" +
+                "Landroid/graphics/drawable/Drawable;Landroid/view/MotionEvent;Landroid/text/Layout;" +
+                ")Landroid/view/MotionEvent;"
+
+        LithoTextDrawableShouldHandleTouchEventFingerprint.method.addInstructions(
+            0,
+            """
+                iget-object v0, p0, $layoutField
+                invoke-static { p0, p1, v0 }, $iconTouchEvent
+                move-result-object p1
+            """
+        )
+
+        // The parameter registers are above v15.
+        LithoTextDrawableOnTouchEventFingerprint.method.addInstructions(
+            0,
+            """
+                move-object/from16 v0, p0
+                move-object/from16 v1, p1
+                iget-object v2, v0, $layoutField
+                invoke-static { v0, v1, v2 }, $iconTouchEvent
+                move-result-object v1
+                move-object/from16 p1, v1
             """
         )
 

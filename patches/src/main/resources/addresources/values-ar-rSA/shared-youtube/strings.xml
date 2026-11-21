@@ -78,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_missing">تعذر العثور على مجلد التصدير %s</string>
   <string name="morphe_export_download_flyout_title">تصدير إلى جهاز</string>
   <string name="morphe_export_download_canceled">تم إلغاء التصدير</string>
+  <string name="morphe_offline_video_quality_1440p">Quad HD (1440p)</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">مُخصّص</string>
   <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>
@@ -140,15 +141,15 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">جرب تمكين: Spoof Video Streams &gt; تسجيل الدخول إلى Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">العميل الافتراضي</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">تسجيل الدخول إلى Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">يتطلب Android VR تسجيل دخول منفصل. انقر هنا للمتابعة</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">مسجل حاليًا في Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">تسجيل الدخول إلى \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">يتطلب \'Android VR\' تسجيل دخول منفصل. انقر هنا للمتابعة</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">مسجّل حاليًا في \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">للحصول على هذه الميزة، غيّر \'العميل الافتراضي\' إلى Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">تسجيل الدخول إلى Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"تسجيل الدخول إلى Android VR يمكنه إصلاح مشكلات التشغيل لبعض المستخدمين
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">لاستخدام هذه الميزة، غيّر \'العميل الافتراضي\' إلى \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">تسجيل الدخول إلى \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"تسجيل الدخول إلى 'Android VR' يمكنه إصلاح مشكلات التشغيل لبعض المستخدمين
 
-لتسجيل الدخول، اضغط على 'متابعة' بالأسفل"</string>
+لتسجيل الدخول، اضغط على متابعة بالأسفل"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">تسجيل خروج</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">تعليمات</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -167,13 +168,13 @@ Second \"item\" text"</string>
 • لن يتم استيراد/تصدير بيانات مصادقة Android VR من إعدادات Morphe الخاصة بك
 • إذا لم يتم استخدام هذا التطبيق لمدة 6 أشهر، فستقوم Google بإزالة بيانات المصادقة هذه
 • ستحتاج إلى تسجيل الدخول مرة أخرى إذا قمت بتغيير كلمة مرور Google أو إلغاء تسجيل هذا الجهاز من إعدادات Google الخاصة بك"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">تسجيل الدخول إلى ويب الجوّال</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">تسجيل الدخول إلى \'Mobile Web\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">اختياري: سجل الدخول إلى موقع YouTube الإلكتروني لتشغيل الفيديوهات باستخدام حسابك. انقر هنا للمتابعة</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">تم تسجيل الدخول حاليًا في ويب الجوّال</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">تم تسجيل الدخول حاليًا في \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">للحصول على هذه الميزة، غيّر \'العميل الافتراضي\' إلى Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">تسجيل الدخول إلى Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"يقوم Mobile Web بتشغيل الفيديوهات عند تسجيل الخروج، أو عند تسجيل الدخول إلى موقع YouTube الإلكتروني
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">لاستخدام هذه الميزة، غيّر \'العميل الافتراضي\' إلى \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">تسجيل الدخول إلى \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"يقوم 'Mobile Web' بتشغيل الفيديوهات عند تسجيل الخروج، أو عند تسجيل الدخول إلى موقع YouTube الإلكتروني
 
 • عند تسجيل الدخول، يمكن تشغيل الفيديوهات التي تتطلب حسابًا، مثل الفيديوهات المقيدة بفئة عمرية
 • تفتح صفحة تسجيل الدخول إلى Google في هذا التطبيق
@@ -186,16 +187,16 @@ Second \"item\" text"</string>
 • لن تقوم إعدادات Morphe باستيراد/تصدير تسجيل الدخول إلى الويب على الجوّال
 • إذا أنهى Google تسجيل الدخول، فسيتم تشغيل الفيديوهات دون تسجيل الدخول حتى تقوم بتسجيل الدخول مرة أخرى
 • يؤدي تسجيل الخروج أيضًا إلى تسجيل خروج هذا الجهاز من موقع YouTube الإلكتروني"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">انتهت صلاحية تسجيل الدخول إلى الويب على الجوّال، حاول تسجيل الدخول إلى الويب على الجوّال مرة أخرى</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">تم تسجيل الخروج من الويب على الجوّال</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView غير متاح. يرجى تثبيته أو تفعيله لتسجيل الدخول</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">انتهت صلاحية تسجيل الدخول إلى الويب على الجوّال، حاول تسجيل الدخول إلى \'Mobile Web\' مرة أخرى</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">تم تسجيل الخروج من \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' غير متاح. يرجى تثبيته أو تمكينه لتسجيل الدخول</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 غير متاح مؤقتًا (انتهت مهلة API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">انتهت صلاحية تسجيل الدخول إلى Android VR، حاول تسجيل الدخول إلى VR مرة أخرى</string>
+  <string name="morphe_oauth2_connection_failure_status_400">انتهت صلاحية تسجيل الدخول إلى \'Android VR\'، حاول تسجيل الدخول إلى VR مرة أخرى</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 غير متاح مؤقتًا (الحالة %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 غير متاح مؤقتًا</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">لا يمكن تسجيل الدخول إلى VR، لم تتم الموافقة على مصادقة الموقع الإلكتروني</string>
   <string name="morphe_oauth2_connection_failure_auth_error">فشل تسجيل الدخول إلى VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">تم تسجيل الخروج من Android VR</string>
+  <string name="morphe_oauth2_toast_reset">تم تسجيل الخروج من \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">رمز تسجيل الدخول إلى VR غير صالح، حاول تسجيل الدخول مرة أخرى إلى VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">عناصر التحكم في وسائط الإشعارات</string>
@@ -213,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">يجب أن تكون مدة التمرير بين 1 و %s ثانية. سيتم استخدام الإعداد الافتراضي</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">تعطيل بروتوكول QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">إعطاء الأولوية لجودة فيديو</string>
+  <string name="morphe_prioritize_video_quality_summary">يعطي الأولوية لأعلى جودة فيديو متاحة على كفاءة الترميز</string>
+  <string name="morphe_prioritize_video_quality_dialog">إذا تم إيقاف هذا الإعداد، فقد لا تعرض الفيديوهات القديمة خيارات جودة الفيديو</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">تعطيل صوت DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -253,7 +258,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">تغيير روابط المشاركة إلى youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">يستبدل music.youtube.com بـ youtube.com في الروابط المُشاركة</string>
   <string name="morphe_replace_links_with_shortener_title">تغيير روابط المشاركة إلى youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">يُلزم استخدام تنسيق رابط youtu.be المختصر للفيديوهات</string>
+  <string name="morphe_replace_links_with_shortener_summary">يُلزم استخدام تنسيق رابط \'youtu.be\' المختصر للفيديوهات</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">تلقائي</string>
@@ -265,15 +270,12 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">جودة الفيديو الافتراضية على شبكة الجوّال</string>
   <string name="morphe_remember_video_quality_toast_mobile">تم تغيير جودة الجوّال الافتراضية إلى: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">تم تغيير جودة Wi-Fi الافتراضية إلى: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">فتح قائمة مشاركة النظام</string>
-  <string name="morphe_open_system_share_sheet_summary">يفتح قائمة مشاركة الخاصة بالنظام بدلًا من قائمة التطبيق عند مشاركة المحتوى</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">تسجيل Litho</string>
   <string name="morphe_debug_litho_entry_disabled">معطّل</string>
   <string name="morphe_debug_litho_entry_path">المسار</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">المسار والمخزن المؤقت</string>
-  <string name="morphe_debug_litho_user_dialog_message">"يقوم تسجيل Litho بتسجيل مكونات تخطيط التطبيق، بما في ذلك النص الظاهر على الشاشة لبعض مكونات واجهة المستخدم.
+  <string name="morphe_debug_litho_user_dialog_message">"يقوم بتسجيل مكونات تخطيط التطبيق، بما في ذلك النص الظاهر على الشاشة لبعض مكونات واجهة المستخدم.
 
 يمكن أن يساعد ذلك في تحديد المكونات عند إنشاء عوامل تصفية مخصصة.
 
@@ -379,4 +381,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">لم يتم مواجهة أي حدود لمعدل العميل</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">تم تجاوز حد معدل العميل %s مرة</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s جزء الثانية</string>
+  <string name="morphe_navigation_bar_screen_title">شريط التنقل</string>
+  <string name="morphe_navigation_bar_screen_summary">اختر الأزرار التي تظهر في شريط التنقل السفلي</string>
+  <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
+  <string name="morphe_toolbar_screen_summary">اختر المكونات التي تظهر في شريط الأدوات</string>
 </resources>

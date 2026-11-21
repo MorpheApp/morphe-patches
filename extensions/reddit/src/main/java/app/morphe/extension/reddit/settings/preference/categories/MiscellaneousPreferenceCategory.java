@@ -17,8 +17,10 @@ import app.morphe.extension.reddit.patches.AppIconPatch;
 import app.morphe.extension.reddit.patches.DownloadLocationPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
+import app.morphe.extension.reddit.patches.OpenSystemShareSheetPatch;
 import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
+import app.morphe.extension.reddit.patches.SharePostContentPatch;
 import app.morphe.extension.reddit.settings.RedditActivityHook;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
@@ -46,8 +48,10 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                 DownloadLocationPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
+                OpenSystemShareSheetPatch.isPatchIncluded() ||
                 RedgifsAudioPatch.isPatchIncluded() ||
-                SanitizeSharingLinksPatch.isPatchIncluded();
+                SanitizeSharingLinksPatch.isPatchIncluded() ||
+                SharePostContentPatch.isPatchIncluded();
     }
 
     @Override
@@ -84,6 +88,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     Settings.OPEN_LINKS_EXTERNALLY
             ));
         }
+        if (OpenSystemShareSheetPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    SharedSettings.OPEN_SYSTEM_SHARE_SHEET
+            ));
+        }
         if (RedgifsAudioPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
@@ -98,6 +108,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SANITIZE_SHARING_LINKS
+            ));
+        }
+        if (SharePostContentPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SHARE_POST_CONTENT
             ));
         }
 

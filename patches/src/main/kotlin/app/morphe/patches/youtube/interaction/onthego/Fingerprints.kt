@@ -28,10 +28,11 @@ internal object OnTheGoSkipToNextActionFingerprint : Fingerprint(
 )
 
 /**
- * The first parameter is the On-the-go state.
+ * Constructor of the superclass of the media session actions. The first parameter is the On-the-go state.
+ * 21.47+ removes the constructor of the action, which only calls this one.
  */
 internal object OnTheGoSkipToNextActionConstructorFingerprint : Fingerprint(
-    classFingerprint = OnTheGoSkipToNextActionFingerprint,
+    definingClass = { OnTheGoSkipToNextActionFingerprint.originalClassDef.superclass!! },
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     name = "<init>"
 )

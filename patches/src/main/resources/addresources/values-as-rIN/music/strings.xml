@@ -131,6 +131,8 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Download মেনুৰ বাবে বাহ্যিক ডাউনলোডাৰ ব্যৱহাৰ কৰক</string>
   <string name="morphe_external_downloader_menu_summary">মেনুৰ Download বিকল্পটোৱে তাৰ পৰিৱৰ্তে আপোনাৰ বাহ্যিক ডাউনলোডাৰটো খুলিব</string>
+  <string name="morphe_download_force_4k_title">4K ডাউনলোড উপলব্ধতা বল বাধ্য কৰক</string>
+  <string name="morphe_download_force_4k_summary">YouTube Music-এ এই ডিভাইচটোত প্লে কৰিব নোৱাৰি বুলি সিদ্ধান্ত ল\'লেও 1440p আৰু 4K ডাউনলোডসমূহ সংৰক্ষণ কৰে</string>
   <string name="morphe_export_download_folder_title">ডাউনলোডসমূহ এক্সপোর্ট কৰক</string>
   <string name="morphe_export_download_folder_summary">"ইন-এপ ডাউনলোড ফ্লাইআউট মেনু ব্যৱহাৰ কৰি ইন-এপত সংৰক্ষিত গান আৰু ভিডিঅ’সমূহ আপোনাৰ ডিভাইচৰ ষ্টোৰেজলৈ এক্সপৰ্ট কৰক। এক্সপৰ্ট ফোল্ডাৰ সলনি কৰিবলৈ ট্যাপ কৰক
 
@@ -142,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">ডাউনলোডটো এক্সপোর্ট কৰিব পৰা নগ\'ল</string>
   <string name="morphe_export_download_all_flyout_title">সকলোবোৰ ডিভাইসলৈ এক্সপোর্ট কৰক</string>
   <string name="morphe_export_download_all_started">সকলো ডাউনলোড এক্সপোর্ট কৰা হৈছে</string>
+  <string name="morphe_export_download_all_title">সকলো ডাউনলোড</string>
+  <string name="morphe_export_download_playlist_started">ডাউনলোডসমূহ এক্সপৰ্ট কৰা হৈছে</string>
   <string name="morphe_export_download_all_running">ডাউনলোডসমূহ ইতিমধ্যে এক্সপোর্ট কৰা হৈছে</string>
   <string name="morphe_export_download_all_saved">%2$s টা ডাউনলোডৰ ভিতৰত %1$s টা %3$s ত এক্সপোর্ট কৰা হৈছে</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -166,15 +170,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">ভিডিঅ\' বিজ্ঞাপনবোৰ লুকুৱাওক</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">অডিও / ভিডিঅ\' টগেলটো লুকুৱাই ৰাখক</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">ডাউনলোড বুটামটো লুকুৱাওক</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">পডকাস্ট শ্ব’ত ডাউনলোড বুটামটো লুকুৱায়</string>
   <string name="morphe_music_hide_explore_shelf_title">Explore শ্বেল্ফটো লুকুৱাই ৰাখক</string>
   <string name="morphe_music_hide_filter_bar_title">ফিল্টাৰ বাৰটো লুকুৱাওক</string>
   <string name="morphe_music_hide_grid_shelves_title">গ্ৰিড শ্বেল্ফবোৰ লুকুৱাই ৰাখক</string>
   <string name="morphe_music_hide_horizontal_shelves_title">অনুভূমিক শ্বেল্ফসমূহ লুকুৱাওক</string>
+  <string name="morphe_music_hide_new_button_title">New বুটামটো লুকুৱাওক</string>
+  <string name="morphe_music_hide_new_button_summary">Library টেবত থকা New বুটামটো লুকুৱায়</string>
   <string name="morphe_music_hide_list_shelves_title">লিস্ট শ্বেল্ফসমূহ লুকুৱাওক</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">লিৰিকছ পেনেল</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">শেয়াৰ বুটামটো লুকুৱাওক</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">অনুবাদ বুটামটো লুকুৱাওক</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'New from\' শ্বেল্ফটো লুকুৱাওক</string>
   <string name="morphe_music_hide_playlist_shelves_title">প্লেলিষ্ট শ্বেল্ফসমূহ লুকুৱাওক</string>
@@ -197,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">ক্ৰচফেড</string>
   <string name="morphe_music_crossfade_screen_summary">ট্ৰেকবোৰক ইটোৰ পিছত সিটো মসৃণভাৱে মিলাই দিয়ক</string>
   <string name="morphe_music_crossfade_enabled_title">ক্ৰচফেড সক্ৰিয় কৰক</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade ব্যৱহাৰ কৰিবলৈ, \'Spoof video streams\' ৰ \'Default client\' টো \'TV Simply\' বা \'visionOS\' লৈ সলনি কৰক</string>
   <string name="morphe_music_crossfade_curve_title">ফেড কাৰ্ভ</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">সমান শক্তি</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">সূক্ষ্ম ধৰণ</string>
@@ -230,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">এই ছেচনৰ বাবে ক্ৰছফেইড বন্ধ কৰা হৈছে</string>
   <string name="morphe_music_crossfade_resumed_toast">ক্ৰছফেইড পুনৰ আৰম্ভ কৰা হৈছে</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">ক্ৰচফেইড সক্ৰিয় থাকোতে ভিডিঅ\' মোড উপলব্ধ নহয়</string>
-  <string name="morphe_music_crossfade_sabr_toast">SABR প্লেবেকৰ সৈতে ক্ৰচফেইড বন্ধ হৈ আছে</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">\'visionOS\' ৰ সৈতে Crossfade কাম নকৰে। \'Spoof video streams\' ৰ \'Default client\' টো \'TV Simply\' লৈ সলনি কৰক</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">এই spoof ষ্ট্ৰীম ক্লায়েন্টৰ সৈতে Crossfade কাম নকৰে</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">কাস্টিং কৰাৰ সময়ত ক্ৰচফেইড বন্ধ হৈ থাকে</string>
   <string name="morphe_music_crossfade_about_how_title">ই কেনেকৈ কাম কৰে</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade-এ আপোনাৰ স্থায়িত্ব আৰু কৰ্ভ ব্যৱহাৰ কৰি এটা গানৰ শেষৰ অংশটোক আন এটা গানৰ আৰম্ভণিৰ সৈতে মিলাই দিয়ে
@@ -247,9 +255,7 @@ Second \"item\" text"</string>
 
 মিউজিক ভিডিঅ’ এটা চাবলৈ ক্ৰচফেইড পজ কৰিলে কিছুমান ভিডিঅ’ ক’লা হৈ থাকিব পাৰে। গানটো বাছনি কৰাৰ আগতে ক্ৰচফেইড পজ কৰিলে ইয়াৰ পৰিহাৰ কৰিব পাৰি"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">সমৰ্থন কৰা হোৱা নাই</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"অডিঅ’ কাস্টিং বা মিৰৰিং (Chromecast, স্ক্ৰীন বা অডিঅ’ মিৰৰিং)
-
-SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰিমবোৰ বন্ধ কৰা হৈছে)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">অডিঅ\' কেষ্টিং বা মিৰৰিং (Chromecast, স্ক্ৰীন বা অডিঅ\' মিৰৰিং)</string>
   <string name="morphe_music_crossfade_about_credit_title">কৃতিত্ব</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG ৰ দ্বাৰা ক্ৰচফেড বৈশিষ্ট্য</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -259,6 +265,20 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">মিউট কৰিলে ৰখক</string>
   <string name="morphe_music_pause_when_muted_summary">প্ৰণালীৰ ভলিউম মিউট কৰিলে প্লেবেকে ৰৈ যাব আৰু ভলিউম বঢ়ালে পুনৰ আৰম্ভ হ\'ব</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast বুটামটোৱে আপোনাৰ Wi-Fi নেটৱৰ্কৰ Sonos আৰু অন্যান্য UPnP স্পিকাৰবোৰলৈকো ষ্ট্ৰীম কৰিব পাৰে</string>
+  <string name="morphe_music_sonos_cast_sheet_title">এটা ডিভাইচৰ সৈতে সংযোগ কৰক</string>
+  <string name="morphe_music_sonos_cast_searching">আপোনাৰ Wi-Fi নেটৱৰ্কত স্পিকাৰবোৰৰ বাবে সন্ধান কৰা হৈছে…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">আপোনাৰ Wi-Fi নেটৱৰ্কৰ এটা স্পিকাৰ বাছনি কৰক</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s লৈ কাস্টিং কৰা হৈছে</string>
+  <string name="morphe_music_sonos_cast_connected">সংযুক্ত</string>
+  <string name="morphe_music_sonos_cast_disconnect">সংযোগ বিচ্ছিন্ন কৰক</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi ত স্পীকাৰসমূহ</string>
+  <string name="morphe_music_sonos_cast_active">সক্ৰিয়</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest আৰু Google TV ডিভাইচসমূহ</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s ৰ সৈতে সংযোগ কৰিব পৰা নগ\'ল</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">প্লেবেকৰ গতি</string>
   <string name="morphe_music_playback_speed_summary">সকলো ট্ৰেকৰ বাবে ব্যৱহাৰ কৰা গতি। ১০০% ত এপৰ গতি ব্যৱহাৰ কৰা হয়, যেনে পডকাস্ট প্লেবেকৰ গতি</string>
@@ -269,9 +289,18 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">অডিঅ’ ডাক্কিং নিষ্ক্ৰিয় কৰক</string>
   <string name="morphe_music_disable_audio_ducking_summary">যেতিয়া আন এটা এপ্লিকেচনে এটা চুটি শব্দ, যেনে জাননী বজাব, তেতিয়া ভলিউমটো কমাব নোৱাৰিব</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">কিউ লাইক ফিল্টাৰ</string>
+  <string name="morphe_music_queue_like_filter_summary">মিক্স আৰু ৰেডিঅ\'ৰ পৰা কম লাইক থকা গানবোৰ আঁতৰ কৰে। আপুনি কিউত যোগ কৰা প্লেলিষ্ট, এলবাম আৰু গানবোৰ পৰিৱৰ্তন নহয়। লাইকৰ সংখ্যা Return YouTube Dislike ৰ পৰা লোৱা হৈছে</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">নূন্যতম লাইক</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">কম লাইক থকা গানবোৰ কিউৰ পৰা আঁতৰ কৰা হয়</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ডিসলাইক ৰিডাইৰেকচন নিষ্ক্ৰিয় কৰক</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ডিসলাইক বুটামটো টিপিলে পৰৱৰ্তী ট্ৰেকলৈ যোৱাটো প্ৰতিৰোধ কৰে</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">ট্ৰেক সলনি কৰিবলৈ সোয়াইপ কৰাটো নিষ্ক্ৰীয় কৰক</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">প্লেয়াৰত বাওঁত বা সোঁত সোয়াইপ কৰি পৰৱৰ্তী বা পূৰ্বৰ ট্ৰেকলৈ যোৱাটো প্ৰতিৰোধ কৰে</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">মিনিপ্লেয়াৰত বাওঁত বা সোঁত সোয়াইপ কৰি পৰৱৰ্তী বা পূৰ্বৰ ট্ৰেকলৈ যোৱাটো প্ৰতিৰোধ কৰে</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B লুপ</string>
   <string name="morphe_music_ab_loop_summary">লুপ আৰম্ভটো নিৰ্ধাৰণ কৰিবলৈ seekbar-ত লং-প্ৰেছ কৰক, লুপৰ শেষটো নিৰ্ধাৰণ কৰিবলৈ পুনৰ লং-প্ৰেছ কৰক, আৰু লুপটো মুছিবলৈ পুনৰ লং-প্ৰেছ কৰক</string>
@@ -322,15 +351,6 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_playlist_tags_rename">নাম সলনি কৰক</string>
   <string name="morphe_music_playlist_tags_delete">ডিলিট কৰক</string>
   <string name="morphe_music_playlist_tags_hidden">লুকাই আছে</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Cast বুটামটো লুকুৱাওক</string>
-  <string name="morphe_music_hide_history_button_title">History বুটামটো লুকুৱাওক</string>
-  <string name="morphe_music_hide_notification_button_title">Notification বুটামটো লুকুৱাওক</string>
-  <string name="morphe_music_hide_search_button_title">সন্ধান বুটামটো লুকুৱাওক</string>
-  <string name="morphe_music_hide_voice_search_button_title">ভইচ চাৰ্চ বুটামটো লুকুৱাওক</string>
-  <string name="morphe_music_hide_sound_search_button_title">চাউণ্ড চাৰ্চ বুটামটো লুকুৱাওক</string>
-  <string name="morphe_music_hide_library_new_button_title">New বুটামটো লুকুৱাওক</string>
-  <string name="morphe_music_hide_library_new_button_summary">Library টেবৰত New বুটামটো লুকুৱায়</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">কাৰ্য বুটামসমূহ</string>
   <string name="morphe_music_action_buttons_screen_summary">প্লেয়াৰৰ তলত কোনটো কাৰ্য বুটাম দেখাব সেয়া বাছনি কৰক</string>
@@ -402,22 +422,20 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_force_portrait_orientation_title">পৰ্ট্ৰেইট অৰিয়েণ্টেচন বলবৎ কৰক</string>
   <string name="morphe_music_force_portrait_orientation_summary">ডিভাইচটো ঘূৰোৱাৰ সময়ত এপটো পৰ্ট্ৰেইট অৰিয়েণ্টেচনত ৰাখে</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Miniplayer ৰ ৰং সলনি কৰক</string>
+  <string name="morphe_music_change_miniplayer_color_title">ৰং সলনি কৰক</string>
   <string name="morphe_music_change_miniplayer_color_summary">মিনিপ্লেয়াৰৰ ৰংটো ফুলস্ক্ৰীন প্লেয়াৰৰ সৈতে মিলাই দিয়ে</string>
   <string name="morphe_music_change_navigation_bar_color_title">নেভিগেচন বাৰৰ ৰং সলনি কৰক</string>
   <string name="morphe_music_change_navigation_bar_color_summary">নেভিগেচন বাৰৰ ৰংটো ফুলস্ক্ৰীন প্লেয়াৰৰ সৈতে মিল কৰায়</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">মিনিপ্লেয়াৰত নেক্সট বুটামটো দেখুৱাওক</string>
-  <string name="morphe_music_miniplayer_previous_button_title">মিনিপ্লেয়াৰত প্ৰিভিয়াছ বুটামটো দেখুৱাওক</string>
+  <string name="morphe_music_miniplayer_next_button_title">পিছৰ বুটামটো দেখুৱাওক</string>
+  <string name="morphe_music_miniplayer_previous_button_title">আগৰ বুটামটো দেখুৱাওক</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">বাধ্যতামূলক মিনিপ্লেয়াৰ সক্ৰিয় কৰক</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">নতুন ট্ৰেক আৰম্ভ হোৱাৰ সময়ত প্লেয়াৰটো স্বয়ংক্ৰিয়ভাৱে ফুলস্ক্ৰীনলৈ বিস্তাৰিত হোৱাত বাধা দিয়ে</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">মিনিপ্লেয়াৰটো আঁতৰাবলৈ সোয়াইপ সক্ৰিয় কৰক</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">বাতিল কৰিবলৈ সোয়াইপ সক্ৰিয় কৰক</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">মিনিপ্লেয়াৰটোৰ ওপৰত তললৈ সোয়াইপ কৰি ইয়াক আঁতৰাব দিয়ে</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">নেভিগেচন বাৰ</string>
-  <string name="morphe_music_navigation_bar_screen_summary">তলৰ নেভিগেচন বাৰত কোনবোৰ বুটাম দেখা যাব তাৰ বাছনি কৰক</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">মুখ্য পৃষ্ঠা বুটামটো লুকুৱাওক</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -450,7 +468,7 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">গ্লাছ নেভিগেচন বাৰৰ নিৰ্বাচিত বুটামটোৰ পিছৰ গোলাকাৰ হাইলাইটটো লুকুৱায়</string>
   <string name="morphe_music_miniplayer_screen_title">মিনিপ্লেয়াৰ</string>
   <string name="morphe_music_miniplayer_screen_summary">মিনিপ্লেয়াৰৰ শৈলী, বুটাম আৰু জেচ্চাৰবোৰ সলনি কৰক</string>
-  <string name="morphe_music_miniplayer_glass_title">গ্লাছ মিনিপ্লেয়াৰ সক্ৰিয় কৰক</string>
+  <string name="morphe_music_miniplayer_glass_title">গ্লাছ ইফেক্ট সক্ৰিয় কৰক</string>
   <string name="morphe_music_miniplayer_glass_summary">ফ্লোটিং মিনিপ্লেয়াৰটোক এটা গোলাকাৰ, অৰ্ধ-স্বচ্ছ গ্লাছ কাৰ্ড হিচাপে দেখুৱায়</string>
   <string name="morphe_music_miniplayer_glass_style_title">গ্লাছ মিনিপ্লেয়াৰ শৈলী</string>
   <string name="morphe_music_miniplayer_glass_style_summary">প্ৰিভিউৰ সৈতে গ্লাছ মিনিপ্লেয়াৰৰ কৰ্ণাৰ ৰেডিয়াছ, আৰ্টৱৰ্ক পেডিং, ৰিম ব্ৰাইটনেছ আৰু অপাসিটি সামঞ্জস্য কৰক</string>
@@ -458,11 +476,8 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">আৰ্টৱৰ্ক পেডিং</string>
   <string name="morphe_music_miniplayer_glass_rim_title">ৰিম ব্ৰাইটনেছ</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">অপাসিটি</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">গ্লাছ ব্লাৰ</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">গ্লাছ মিনিপ্লেয়াৰৰ পিছৰ পৃষ্ঠাখন কিমান ব্লাৰ হ\'ব (Android 14 আৰু তাৰ পিছৰ সংস্কৰণ)। 0ত পৃষ্ঠাখন স্পষ্টকৈ দেখা যায়, আৰু Android 14ৰ আগৰ সংস্কৰণত পৃষ্ঠাখন ঢাকি থাকে</string>
-  <string name="morphe_music_miniplayer_glass_light_title">লাইট গ্লাছ</string>
   <string name="morphe_music_miniplayer_glass_light_summary">এটা অধিক উজ্জ্বল আৰু স্বচ্ছ গ্লাছৰ বাবে গ্লাছ মিনিপ্লেয়াৰটোক ক’লাৰ পৰিৱৰ্তে বগা ৰঙেৰে টিন্ট কৰে</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">এলবাম আৰ্ট টিন্ট</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">বজা গানটোৰ এলবাম আৰ্টৰ ৰঙেৰে গ্লাছ মিনিপ্লেয়াৰটোক টিন্ট কৰে</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">ঘূৰ্ণীয়মান আৰ্টৱৰ্ক</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">গ্লাছ মিনিপ্লেয়াৰৰ আৰ্টৱৰ্কটোক গোলাকাৰ কৰে আৰু গানটো বজাৰ সময়ত এটা ৰেকৰডৰ দৰে ইয়াক ঘূৰায়</string>
@@ -473,6 +488,15 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_navigation_bar_glass_preview_samples">চেম্পলছ</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">এক্সপ্লোৰ</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">লাইব্ৰেৰী</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Activity বুটামটো লুকুৱাওক</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">\'সংগীতক সোধক\' বুটামটো লুকুৱাওক</string>
+  <string name="morphe_music_hide_cast_button_title">Cast বুটামটো লুকুৱাওক</string>
+  <string name="morphe_music_hide_history_button_title">History বুটামটো লুকুৱাওক</string>
+  <string name="morphe_music_hide_search_button_title">সন্ধান বুটামটো লুকুৱাওক</string>
+  <string name="morphe_music_hide_voice_search_button_title">\'ভইচ চাৰ্চ\' বুটামটো লুকুৱাওক</string>
+  <string name="morphe_music_hide_sound_search_button_title">\'চাউণ্ড চাৰ্চ\' বুটামটো লুকুৱাওক</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">লগ ইন কৰা নাই। কনফিগাৰ কৰিবলৈ টেপ কৰক</string>
   <string name="morphe_music_scrobbling_log_out">লগ আউট কৰক</string>
@@ -576,6 +600,9 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_soundproof_about_summary">"শিল্পীৰ তথ্য SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps)ৰ পৰা আহে, যিবোৰ দিনটোত এবাৰ ডাউনলোড কৰা হয়। স্কিপ কৰিলে আপুনি কি বজাইছে সেই বিষয়ে একো প্ৰেৰণ নকৰে। SoundProof শ্বীটটো খুলিলে বৰ্তমানৰ শিল্পীৰ নামটো SoundProof চাৰ্ভাৰলৈ পঠোৱা হয় যাতে নতুন ভোটবোৰ দেখুৱাব পাৰি আৰু ভোট দিব পাৰি। চাৰ্ভাৰটোৱে IP ঠিকনাৰ দ্বাৰা ভোটাৰসকলক পৃথক কৰে, গতিকে আন নেটৱৰ্কত আপোনাৰ ভোটটো ভিন্ন ধৰণে দেখা যাব পাৰে।
 
 ডেটাবেচটো ODC Open Database License (ODbL) ৰ অধীনত লাইচেন্সযুক্ত। xoundbyte-ৰ Soul Over AI ৰ এন্ট্ৰীসমূহ CC BY 4.0 ৰ অধীনত লাইচেন্সযুক্ত। SoundProof বা Soul Over AI ৰ সৈতে কোনো সম্পৰ্ক নাই বা তেওঁলোকৰ দ্বাৰা অনুমোদিত নহয়।"</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music এনিমেটেড আৰ্টৱৰ্ক</string>
+  <string name="morphe_music_apple_music_artwork_summary">যদি এলবামটোত থাকে, তেন্তে প্লেয়াৰত Apple Music ৰ এনিমেটেড এলবাম আৰ্টৱৰ্ক দেখুৱায়। প্ৰতিটো গানৰ শিৰোনাম, শিল্পী আৰু এলবাম Apple Music লৈ পঠোৱা হয়</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">এই ডিভাইচ ফাইলটোৰ বাবে গীতৰ কথা উপলব্ধ নহয়।</string>
   <string name="morphe_music_lyrics_enabled_title">তৃতীয়-পক্ষৰ গীতৰ কথা ব্যৱহাৰ কৰক</string>
@@ -715,8 +742,14 @@ Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেই
   <string name="morphe_music_lyrics_written_by">লিখেছে: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">চিঙ্ক্ৰোনাইজ কৰা শব্দ বা শব্দাংশসমূহ হাইলাইট কৰক</string>
   <string name="morphe_music_lyrics_word_sync_summary">উপলব্ধ থাকিলে শব্দ-অনুসৰি লৰিক্সক অগ্ৰাধিকাৰ দিয়ক। যেতিয়া লৰিক্সত শব্দৰ সময় থাকে, ই সংগীতৰ সৈতে মিল খাই প্ৰতিটো শব্দ বা শব্দাংশ হাইলাইট কৰে</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">চিহ্নিত শব্দবোৰ মসৃণভাৱে অ্যানিমেট কৰক</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">শব্দবোৰ গাইলৈ গৈ থাকোতে প্ৰতিটো শব্দক এটা কোমল সোৱিপ, গ্লো আৰু সামান্য লিফ্টৰ সৈতে হাইলাইট কৰে। বেটাৰী ৰাহি কৰিবলৈ বা ধীৰ ডিভাইচবোৰত সঠিক ফিলৰ বাবে ইয়াক বন্ধ কৰক</string>
   <string name="morphe_music_lyrics_spring_scroll_title">স্প্ৰিং স্ক্ৰলিং ব্যৱহাৰ কৰক</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">স্প্ৰিং ফিজিক্সৰ সৈতে লৰিক্সবোৰ স্ক্ৰল কৰে, আৰু প্ৰতিটো লাইন ওপৰৰটোৰ অলপ পিছত সৰকায়। লেট ডিভাইচবোৰত বেটাৰী ৰাহি কৰিবলৈ ইয়াক বন্ধ কৰক</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">ৰিলাক্সড স্ক্ৰলিং</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">লিরিক স্ক্ৰল অ্যানিমেশ্যনটোৰ গতি ধীৰ কৰে আৰু নিষ্ক্ৰিয় লাইনবোৰ সম্পূৰ্ণ আকাৰত ৰাখে</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">নিষ্ক্ৰীয় শাৰীবোৰক ধোঁৱাটেৰা কৰক</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">বৰ্তমান গাব পৰা যিকোনো শাৰী নহয় এনে প্ৰতিটো শাৰীক কোমলকৈ ধোঁৱাটেৰা কৰে, যিটো অধিক দূৰত থাকে সেয়া অধিক ধোঁৱাটেৰা হয় (Android 12 আৰু তাৰ পিছৰ সংস্কৰণ)। Android 12 ৰ আগৰ সংস্কৰণত, নিষ্ক্ৰীয় শাৰীবোৰ স্পষ্ট হৈ থাকে</string>
   <string name="morphe_music_lyrics_gap_dots_title">ইনষ্ট্ৰুমেণ্টেল ব্ৰেক ডটবোৰ দেখুৱাওক</string>
   <string name="morphe_music_lyrics_gap_dots_summary">এটা দীঘলীয়া ইনষ্ট্ৰুমেণ্টেল ব্ৰেকৰ সময়ত লাইনবোৰৰ মাজত তিনিটা ডট দেখুৱায়, যিবোৰ ব্ৰেকটো শেষ হোৱাৰ লগে লগে ভৰি পৰে</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">দূৰৰ লাইনবোৰ অধিক ম্লান কৰক</string>
@@ -839,6 +872,8 @@ Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেই
   <string name="morphe_music_lyrics_swap_trans_roma_summary">অনুবাদটো কথাৰ ওপৰলৈ লৈ যায়; পঢ়া আৰু ৰোমানাইজেশ্যন তলত থাকে</string>
   <string name="morphe_music_lyrics_force_center_title">গীতৰ কথা সদায় কেন্দ্ৰত ৰাখক</string>
   <string name="morphe_music_lyrics_force_center_summary">ON কৰিলে প্ৰতিটো শাৰী মাজত থাকে আৰু উৎসৰ এলাইনমেণ্টক, ডুয়েটৰ দিশসমূহৰ সৈতে, আওকাণ কৰে; OFF কৰিলে গীতত বিচৰা ধৰণে এলাইনমেণ্ট থাকে</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">বিৰুদ্ধ দিশৰ ডুৱেট সংৰেখণ</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">ডুৱেট গানবোৰত দ্বিতীয় গায়কজনক বিপৰীত কাষত ৰাখে। দুয়োজন গায়কক একে দিশত ৰাখিবলৈ ইয়াক বন্ধ কৰক</string>
   <string name="morphe_music_lyrics_providers_keep_one">অন্তত এজন প্ৰদানকাৰী অন থাকিব লাগিব</string>
   <string name="morphe_music_lyrics_translation_provider_title">অনুবাদ</string>
   <string name="morphe_music_lyrics_romanization_provider_title">ৰোমানাইজেশান বা লিপ্যন্তৰ</string>

@@ -228,11 +228,6 @@ final class LyricsWordBoundaries {
         return ScriptDetector.isCjkCodePoint(codePoint);
     }
 
-    /** A break may fall before or after it, since the script has no word spaces. */
-    static boolean isUnspacedCodePoint(int codePoint) {
-        return ScriptDetector.isUnspacedCodePoint(codePoint);
-    }
-
     /** A CJK glyph spells a word on its own, so a neighbouring one is not part of a longer word. */
     static boolean isWordContinuation(char c) {
         return Character.isLetterOrDigit(c) && !isCjkCodePoint(c);

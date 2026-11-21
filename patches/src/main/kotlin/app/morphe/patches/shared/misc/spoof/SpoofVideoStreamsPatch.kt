@@ -163,6 +163,21 @@ internal fun spoofVideoStreamsPatch(
             "invoke-static { }, $EXTENSION_CLASS->onReloadPlayerResponse()V"
         )
 
+        // The Onesie response of the app cannot be used with replaced SABR streams,
+        // and its native check reports an error for each video. YouTube Music may not have it.
+        OnesieResponseCompatibilityFingerprint.methodOrNull?.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->skipOnesieCompatibilityCheck(Ljava/lang/String;)Z
+                move-result v0
+                if-eqz v0, :check
+                const/4 v0, 0x0
+                return v0
+                :check
+                nop
+            """
+        )
+
         // endregion
 
         // region Make the media requests of the streams of TV clients name the TV client.
@@ -432,7 +447,7 @@ internal fun spoofVideoStreamsPatch(
         // The server can also answer a range with only a SABR error and no media. The app finds no media
         // and requests the same range again right away, over and over, until the server sends it, which
         // freezes playback for seconds or minutes. Instead, the response fails like a response with a
-        // server error status, and the app requests the range from a fallback host.
+        // server error status, and the range is requested again without UMP.
         CronetDataSourceReadFingerprint.let {
             val remainingBytesField = it.instructionMatches.last().fieldReference
             val pauseExceptionType = PriorityTooLowExceptionFingerprint.method.definingClass

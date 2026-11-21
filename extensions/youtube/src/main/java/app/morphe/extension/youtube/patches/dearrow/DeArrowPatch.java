@@ -13,6 +13,7 @@ package app.morphe.extension.youtube.patches.dearrow;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.net.Uri;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
@@ -26,10 +27,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
+import app.morphe.extension.shared.requests.NetworkReconnect;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
@@ -190,6 +194,24 @@ public final class DeArrowPatch {
         }
     }
 
+    /**
+     * Available if titles that are not DeArrow titles are replaced: in the navigations
+     * with DeArrow titles, or everywhere if the original titles are restored.
+     */
+    public static final class DeArrowTitleCleanupAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return DeArrowTitlesAvailability.usingDeArrowTitlesAnywhere() || Settings.RESTORE_ORIGINAL_TITLES.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            List<Setting<?>> settings = new ArrayList<>(DeArrowTitlesAvailability.titleSettings());
+            settings.add(Settings.RESTORE_ORIGINAL_TITLES);
+            return settings;
+        }
+    }
+
     public static final class StillImagesAvailability implements Setting.Availability {
         public static boolean usingStillImagesAnywhere() {
             return Settings.DEARROW_THUMBNAIL_HOME.get().useStillImages
@@ -280,6 +302,26 @@ public final class DeArrowPatch {
      * If non-zero, then the system time of when DeArrow API calls can resume.
      */
     private static volatile long timeToResumeDeArrowAPICalls;
+
+    /**
+     * Loads again the thumbnails that failed to load while the device was offline.
+     */
+    private static final Runnable REMOUNT_LIST_VIEWS = LithoRelayoutPatch::remountListViews;
+
+    /**
+     * View that loads a video thumbnail -> video id of the thumbnail, so a thumbnail that is loaded again
+     * mounts again only the views that show it. A view reused for another image is updated when the image
+     * starts loading. Accessed on the main thread and the network threads.
+     */
+    private static final Map<View, String> thumbnailViewVideoIds =
+            Collections.synchronizedMap(new WeakHashMap<>());
+
+    /**
+     * Video ids of thumbnails that were loaded without a view, such as by a view whose image target
+     * is not known. The views that show them are not known, so all the shown views are mounted again.
+     */
+    private static final Set<String> untrackedThumbnailVideoIds = Collections.synchronizedSet(
+            Collections.newSetFromMap(Utils.createSizeRestrictedMap(100)));
 
     static {
         dearrowAPIURI = validateSettings();
@@ -482,15 +524,51 @@ public final class DeArrowPatch {
      * that failed to generate or is not generated yet.
      *
      * @param url DeArrow thumbnail URL.
+     * @return The video id of the thumbnail, or null if the URL has none.
      */
-    private static void setThumbnailUnavailable(String url) {
+    @Nullable
+    private static String setThumbnailUnavailable(String url) {
         String videoId = Uri.parse(url).getQueryParameter("videoID");
         if (videoId == null) {
-            return;
+            return null;
         }
         Logger.printDebug(() -> "DeArrow thumbnail not available for video: " + videoId);
         unavailableThumbnailRetryTimes.put(videoId,
                 System.currentTimeMillis() + DEARROW_THUMBNAIL_RETRY_MILLISECONDS);
+        return videoId;
+    }
+
+    /**
+     * Loads again the thumbnail of the video, by mounting again the Litho views that show it.
+     * A view that shows it later loads it with the current settings, and is not mounted again.
+     * Can be called on any thread.
+     */
+    static void remountThumbnailViews(String videoId) {
+        if (untrackedThumbnailVideoIds.contains(videoId)) {
+            // The thumbnail can be shown by a view that is not known.
+            LithoRelayoutPatch.remountListViews();
+            return;
+        }
+        List<View> views = new ArrayList<>();
+        synchronized (thumbnailViewVideoIds) {
+            for (Map.Entry<View, String> entry : thumbnailViewVideoIds.entrySet()) {
+                if (videoId.equals(entry.getValue())) {
+                    views.add(entry.getKey());
+                }
+            }
+        }
+        LithoRelayoutPatch.remountListViews(views);
+    }
+
+    /**
+     * @return If the thumbnails of any navigation are replaced, with DeArrow thumbnails or still captures.
+     */
+    private static boolean replacesThumbnailsAnywhere() {
+        return Settings.DEARROW_THUMBNAIL_HOME.get() != ThumbnailOption.ORIGINAL
+                || Settings.DEARROW_THUMBNAIL_SUBSCRIPTIONS.get() != ThumbnailOption.ORIGINAL
+                || Settings.DEARROW_THUMBNAIL_LIBRARY.get() != ThumbnailOption.ORIGINAL
+                || Settings.DEARROW_THUMBNAIL_PLAYER.get() != ThumbnailOption.ORIGINAL
+                || Settings.DEARROW_THUMBNAIL_SEARCH.get() != ThumbnailOption.ORIGINAL;
     }
 
     private static boolean urlIsDeArrow(String imageURL) {
@@ -513,9 +591,14 @@ public final class DeArrowPatch {
     }
 
     /**
-     * Turns off DeArrow titles and thumbnails for a while.
+     * Turns off DeArrow titles and thumbnails for a while, unless the request failed because the device is offline.
      */
     static void handleDeArrowError(String url, int statusCode) {
+        if (statusCode == 0 && NetworkReconnect.runWhenOnline(REMOUNT_LIST_VIEWS)) {
+            // Not an error of DeArrow, so DeArrow is used again as soon as the device is online.
+            Logger.printDebug(() -> "DeArrow request failed while offline.  URL: " + url);
+            return;
+        }
         Logger.printDebug(() -> "Encountered DeArrow error.  URL: " + url);
         final long now = System.currentTimeMillis();
         if (timeToResumeDeArrowAPICalls < now) {
@@ -529,6 +612,13 @@ public final class DeArrowPatch {
             // Load the DeArrow thumbnails again, which now use the fallback thumbnails.
             LithoRelayoutPatch.remountListViews();
         }
+    }
+
+    /**
+     * @return If the titles that are not DeArrow titles are cleaned up with {@link TitleCleanup}.
+     */
+    public static boolean cleansUpTitles() {
+        return isPatchIncluded() && Settings.DEARROW_CLEAN_UP_TITLES.get();
     }
 
     /**
@@ -550,6 +640,33 @@ public final class DeArrowPatch {
             return originalURL.substring(0, originalURL.length() - ORIGINAL_THUMBNAIL_MARKER.length());
         }
         return replaceImageURL(originalURL, thumbnailOptionForCurrentNavigation());
+    }
+
+    /**
+     * Injection point. Called when an image starts loading, before it's fetched.
+     *
+     * @param view  View that the image is loaded into, or null if the image is not loaded into a view.
+     * @param model Image model, such as the URL of the image.
+     */
+    public static void onImageLoadStarted(@Nullable View view, @Nullable Object model) {
+        try {
+            if (!replacesThumbnailsAnywhere()) {
+                return;
+            }
+            String url = model instanceof String || model instanceof Uri ? model.toString() : null;
+            DecodedThumbnailURL decodedURL = url == null ? null : DecodedThumbnailURL.decodeImageURL(url);
+            if (view == null) {
+                if (decodedURL != null) {
+                    untrackedThumbnailVideoIds.add(decodedURL.videoId);
+                }
+            } else if (decodedURL == null) {
+                thumbnailViewVideoIds.remove(view);
+            } else {
+                thumbnailViewVideoIds.put(view, decodedURL.videoId);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onImageLoadStarted failure", ex);
+        }
     }
 
     /**
@@ -692,8 +809,10 @@ public final class DeArrowPatch {
                 if (statusCode == 204) {
                     // The thumbnail cache has no thumbnail, and does not redirect to fallback urls
                     // that are not of the primary thumbnail domain. Load the original thumbnail instead.
-                    setThumbnailUnavailable(url);
-                    LithoRelayoutPatch.remountListViews();
+                    String videoId = setThumbnailUnavailable(url);
+                    if (videoId != null) {
+                        remountThumbnailViews(videoId);
+                    }
                     return;
                 }
                 handleDeArrowError(url, statusCode);
@@ -725,7 +844,7 @@ public final class DeArrowPatch {
                 UnavailableQualities.unavailableVideoIdLookup.computeIfAbsent(
                         decodedURL.videoId, key -> new UnavailableQualities()
                 ).setNotAvailable(decodedURL.videoId, quality);
-                LithoRelayoutPatch.remountListViews();
+                remountThumbnailViews(decodedURL.videoId);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Callback success error", ex);

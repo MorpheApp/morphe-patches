@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -585,6 +586,11 @@ public final class PostImageDownloadPatch {
         }
     }
 
+    /**
+     * The languages are only changed to read texts of the app. If the app does not have a language
+     * (such as an APKM bundle without it), the texts fall back like the texts the app shows.
+     */
+    @SuppressLint("AppBundleLocaleChanges")
     private static List<String> getShareLabels(View view) {
         Set<Locale> locales = getShareLabelLocales(view);
         String languages = locales.toString();

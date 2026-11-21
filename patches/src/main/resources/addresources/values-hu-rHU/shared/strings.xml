@@ -74,18 +74,34 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file">Fájlba exportálás</string>
   <string name="morphe_settings_export_file_success">A beállítások sikeresen exportálva</string>
   <string name="morphe_settings_export_file_failed">Hiba történt a beállítások exportálásakor</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">A Morphe Patches legfrissebb, &lt;i&gt;%s&lt;/i&gt; verzióját használja</string>
-  <string name="morphe_settings_about_links_body_version_outdated">A Morphe Patches &lt;i&gt;%1$s&lt;/i&gt; verzióját használja&lt;br&gt;&lt;br&gt;&lt;b&gt;Frissítés elérhető: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;A javítások frissítéséhez javítsa újra ezt az alkalmazást a Morphe segítségével</string>
-  <string name="morphe_settings_about_links_dev_header">Megjegyzés</string>
-  <string name="morphe_settings_about_links_dev_body">Ez a verzió egy előzetes kiadás, és nem kívánt hibákat tapasztalhat</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Módosítások</string>
+  <string name="morphe_settings_about_version">Verzió</string>
+  <string name="morphe_settings_about_close">Bezárás</string>
+  <string name="morphe_settings_about_prerelease">Előzetes kiadás</string>
+  <string name="morphe_settings_about_update_available">Frissítés elérhető: %s</string>
+  <string name="morphe_settings_about_update_hint">A javítások frissítéséhez használd a Morphe-t az alkalmazás újabb javításhoz</string>
   <string name="morphe_settings_about_links_header">Hivatalos linkek</string>
   <string name="morphe_settings_about_links_website">Weboldal</string>
   <string name="morphe_settings_about_links_donate">Adományozás</string>
   <string name="morphe_settings_about_links_translations">Fordítások</string>
-  <string name="morphe_settings_about_links_credits">Közreműködők</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Naprakész</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Frissítés elérhető</string>
+  <string name="morphe_settings_about_contributors">Hozzájárulók</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Összes időszak</string>
+  <string name="morphe_settings_about_contributors_6_months">6 hónap</string>
+  <string name="morphe_settings_about_contributors_3_months">3 hónap</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Időszak</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s felhasználó</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Támogatók</string>
+  <string name="morphe_settings_about_supporters_summary">Támogatók az Open Collective-en</string>
+  <string name="morphe_settings_about_supporters_become">Legyen támogató</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">És további %s</string>
+  <string name="morphe_settings_about_people_unavailable">A lista nem tölthető</string>
   <string name="morphe_settings_about_contributors_current">Folyamatos fejlesztés</string>
   <string name="morphe_settings_about_contributors_prior">Korábbi fejlesztés</string>
   <string name="morphe_settings_about_links_morphe">Folyamatban lévő fejlesztés</string>
@@ -213,6 +229,9 @@ Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
 • Az alkalmazás véletlenszerűen lezárulhat
 • Az értesítések nem működhetnek
 • A háttérbeli lejátszás nem működhet"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Rendszer megosztási ablakának megnyitása</string>
+  <string name="morphe_open_system_share_sheet_summary">Tartalom megosztásakor a rendszer megosztási felületét nyitja meg az alkalmazásbelüli helyett</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-linkek kezelése</string>
   <string name="morphe_link_handling_summary">A linkek konfigurálása ebben az alkalmazásban történő megnyitáshoz</string>

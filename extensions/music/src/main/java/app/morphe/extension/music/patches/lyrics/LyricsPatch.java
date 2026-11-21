@@ -12,6 +12,7 @@ import android.media.session.PlaybackState;
 
 import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class LyricsPatch {
@@ -28,6 +29,32 @@ public final class LyricsPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "onSetMetadata failure", ex);
         }
+    }
+
+    /**
+     * Injection point. Immediately freezes word-sync when MedialibPlayer pauses audio.
+     */
+    public static void onPauseVideo() {
+        Utils.runOnMainThreadNowOrLater(() -> {
+            try {
+                LyricsManager.getInstance().onPauseVideo();
+            } catch (Exception ex) {
+                Logger.printException(() -> "onPauseVideo failure", ex);
+            }
+        });
+    }
+
+    /**
+     * Injection point. Immediately resumes word-sync when MedialibPlayer resumes audio.
+     */
+    public static void onPlayVideo() {
+        Utils.runOnMainThreadNowOrLater(() -> {
+            try {
+                LyricsManager.getInstance().onPlayVideo();
+            } catch (Exception ex) {
+                Logger.printException(() -> "onPlayVideo failure", ex);
+            }
+        });
     }
 
     /**

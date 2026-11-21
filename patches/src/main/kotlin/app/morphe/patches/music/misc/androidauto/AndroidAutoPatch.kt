@@ -7,7 +7,6 @@
 
 package app.morphe.patches.music.misc.androidauto
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -27,7 +26,6 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.implementsType
-import app.morphe.patches.music.interaction.jam.installNativeAccessor
 import app.morphe.patches.music.interaction.jam.resolveProto
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
@@ -195,8 +193,7 @@ private fun addPhoneBrowseRequestMethod(
         """
     )
 
-    val continuationField = phoneBrowseContinuationFingerprint(createPhoneBrowseRequestMethod.returnType)
-        .instructionMatches.last().fieldReference
+    val continuationField = PhoneBrowseContinuationFingerprint.instructionMatches.last().fieldReference
     phoneBrowseClientClass.addPatchInterface(
         PHONE_BROWSE_CLIENT,
         "patch_requestBrowseContinuation",
@@ -358,13 +355,7 @@ private fun addPhoneBrowseResponseInterface() {
     val getTabsMethod = PhoneBrowseResponseTabsFingerprint.originalMethod
     val decodePaginatedLibraryGridMethod = LibraryPaginationDecoderFingerprint.originalMethod
 
-    val getLibraryPaginationResponseProtoMethod = Fingerprint(
-        definingClass = getTabsMethod.definingClass,
-        isStatic = false,
-        returnType = decodePaginatedLibraryGridMethod
-            .parameterTypes.single().toString(),
-        parameters = listOf()
-    ).method
+    val getLibraryPaginationResponseProtoMethod = PhoneBrowseResponsePaginationProtoFingerprint.method
 
     val paginatedLibraryGridDecoderMethod = addPaginatedLibraryGridDecoder(
         decodePaginatedLibraryGridMethod,
@@ -385,10 +376,7 @@ private fun addPhoneBrowseResponseInterface() {
             return-object p0
         """
     )
-    installNativeAccessor(
-        phoneBrowseResponseClass, "patch_getTabs", getTabsMethod,
-        resultType = findInterfaceMethod(PHONE_BROWSE_RESPONSE, "patch_getTabs").returnType,
-    )
+    phoneBrowseResponseClass.addPatchInterface(PHONE_BROWSE_RESPONSE, "patch_getTabs", getTabsMethod)
 
     phoneBrowseResponseClass.addPatchInterface(
         PHONE_BROWSE_RESPONSE,
@@ -461,16 +449,10 @@ private fun addGridRendererInterface() {
 
 /** Exposes Library playlist metadata and returns YTM's media ID encoder for playback. */
 private fun patchPhoneBrowseItem(): MethodReference {
-    // The field read after YTM's presence check identifies the class used for Library items.
-    val phoneBrowseItemType = GridRendererItemsFingerprint
-        .instructionMatches
-        .single { match -> match.instruction.opcode == Opcode.IGET_OBJECT }
-        .fieldReference
-        .type
     val phoneBrowseItemFields = classDefBy(phoneBrowseItemType).instanceFields.toList()
 
     // Both phone thumbnail renderers must agree on the container and decoded thumbnail fields.
-    val (artworkContainerField, thumbnailDetailsField) = phoneBrowseItemArtworkFingerprint(phoneBrowseItemType)
+    val (artworkContainerField, thumbnailDetailsField) = PhoneBrowseItemArtworkFingerprint
         .matchAll()
         .map { match ->
             match.instructionMatches.mapNotNull { it.instruction.getReference<FieldReference>() }
@@ -506,7 +488,6 @@ private fun patchPhoneBrowseItem(): MethodReference {
     val formatTextMethod = formatTextFingerprint(titleField.type).originalMethod
 
     val phoneBrowseItemClass = mutableClassDefBy(phoneBrowseItemType)
-    phoneBrowseItemClass.interfaces.add(PHONE_BROWSE_ITEM)
     phoneBrowseItemClass.addPlaylistBrowseIdGetter(
         "patch_getPlaylistBrowseId",
         commandFields[0],
@@ -623,9 +604,18 @@ private fun addArtworkUriGetter(
 private fun patchBrowseRequests() {
     val sendEmptyItemsMethod = SendEmptyMediaItemsFingerprint.originalMethod
     addBrowseRequestInterface(sendEmptyItemsMethod)
-    hookBrowseRequest(
-        sendEmptyItemsMethod.definingClass,
-        sendEmptyItemsMethod.parameterTypes.first().toString(),
+
+    // When the patch handles a page request, skip YTM's handler to avoid returning two results.
+    BrowseRequestHandlerFingerprint.method.addInstructionsWithLabels(
+        0,
+        """
+            invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->handleBrowseRequest($BROWSE_REQUEST)Z
+            move-result v0
+            if-eqz v0, :resume
+            return-void
+            :resume
+            nop
+        """
     )
 }
 
@@ -693,29 +683,6 @@ private fun skipCustomMediaIdDecoding(requestedMediaIdField: FieldReference) {
             if-eqz v0, :resume
             const/4 v0, 0x0
             return-object v0
-            :resume
-            nop
-        """
-    )
-}
-
-/** When the patch handles a page request, skip YTM's handler to avoid returning two results. */
-private fun hookBrowseRequest(
-    requestHandlerType: String,
-    requestType: String,
-) {
-    Fingerprint(
-        definingClass = requestHandlerType,
-        returnType = "V",
-        parameters = listOf(requestType),
-        strings = listOf("MBS: Fetching MBFE root for mediaId: `%s`")
-    ).method.addInstructionsWithLabels(
-        0,
-        """
-            invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->handleBrowseRequest($BROWSE_REQUEST)Z
-            move-result v0
-            if-eqz v0, :resume
-            return-void
             :resume
             nop
         """
@@ -815,14 +782,13 @@ private fun addFolderReload(
 
 /** Refreshes Android Auto when a successful request changes the Library. */
 private fun hookLibraryChangeCompletion() {
-    val createRequestType = libraryChangeRequestFingerprint("playlist/create").originalMethod.definingClass
-    val requestBaseType = classDefBy(createRequestType).superclass
+    val requestBaseType = LibraryChangeRequestFingerprint.originalClassDef.superclass
         ?: throw PatchException("Could not resolve the Library request base class")
     val endpointOwnerType = classDefBy(requestBaseType).superclass
         ?: throw PatchException("Could not resolve the request endpoint's declaring class")
 
     // Callback and future requests both clear their serialized body after a successful response.
-    val completionMethods = requestSuccessCallbackFingerprint(requestBaseType).matchAll()
+    val completionMethods = RequestSuccessCallbackFingerprint.matchAll()
         .map { match -> match.instructionMatches.first().methodReference }
         .distinct()
     completionMethods.forEach { completionReference ->
@@ -937,11 +903,5 @@ private fun patchCommandEncoder(encoder: MethodReference) {
         return-object v0
     """)
 }
-
-internal fun findInterfaceMethod(
-    interfaceType: String,
-    name: String,
-) = classDefBy(interfaceType).methods.singleOrNull { method -> method.name == name }
-    ?: throw PatchException("Could not resolve $name in $interfaceType")
 
 // endregion

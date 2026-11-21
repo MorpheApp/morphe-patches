@@ -1,27 +1,24 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.video.quality
 
-import app.morphe.patcher.patch.patch
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.videoquality.prioritizeVideoQualityPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/playback/quality/PrioritizeVideoQualityPatch;"
-
-internal val prioritizeVideoQualityPatch = patch {
-    dependsOn(
-        sharedExtensionPatch,
-        settingsPatch,
-        videoFormatPatch,
-    )
-
-    execute {
-        settingsMenuVideoQualityGroup.add(
-            SwitchPreference("morphe_video_quality_prioritize", summary = true)
+internal val prioritizeVideoQualityPatch = prioritizeVideoQualityPatch(
+    block = {
+        dependsOn(
+            sharedExtensionPatch,
+            settingsPatch,
+            videoFormatPatch,
         )
-
-        hookAdaptiveFormat("$EXTENSION_CLASS->prioritizeVideoQuality")
-    }
-}
+    },
+    addPreference = { settingsMenuVideoQualityGroup.add(it) }
+)

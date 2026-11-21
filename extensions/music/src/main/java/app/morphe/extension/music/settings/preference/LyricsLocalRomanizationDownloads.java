@@ -14,10 +14,10 @@ import java.util.Locale;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.lyrics.romanizers.CldrTransformsStore;
-import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
-import app.morphe.extension.music.patches.lyrics.romanizers.PinyinDictStore;
-import app.morphe.extension.music.patches.lyrics.romanizers.RomanizationDict;
-import app.morphe.extension.music.patches.lyrics.romanizers.UniDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictionaryStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.PinyinDictionaryStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.RomanizationDictionary;
+import app.morphe.extension.music.patches.lyrics.romanizers.UniDictionaryStore;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
 
@@ -111,13 +111,13 @@ public final class LyricsLocalRomanizationDownloads {
         }
         final boolean[] before = chosen();
         if (!sudachi && before[SUDACHI]) {
-            JapaneseDictStore.delete();
+            JapaneseDictionaryStore.delete();
         }
         if (!unidict && before[UNIDICT]) {
-            UniDictStore.delete();
+            UniDictionaryStore.delete();
         }
         if (!pinyin && before[PINYIN]) {
-            PinyinDictStore.delete();
+            PinyinDictionaryStore.delete();
         }
         if (!cldr && before[CLDR]) {
             CldrTransformsStore.delete();
@@ -127,23 +127,19 @@ public final class LyricsLocalRomanizationDownloads {
             value.append("sudachi");
         }
         if (unidict) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (value.length() > 0) value.append(',');
+            if (Utils.isNotEmpty(value)) value.append(',');
             value.append("unidict");
         }
         if (pinyin) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (value.length() > 0) value.append(',');
+            if (Utils.isNotEmpty(value)) value.append(',');
             value.append("pinyin");
         }
         if (cldr) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (value.length() > 0) value.append(',');
+            if (Utils.isNotEmpty(value)) value.append(',');
             value.append("cldr");
         }
         // Kept distinct from blank, which is a copy that never chose.
-        //noinspection SizeReplaceableByIsEmpty
-        Settings.LYRICS_LOCAL_DICTIONARIES.save(value.length() == 0 ? NONE : value.toString());
+        Settings.LYRICS_LOCAL_DICTIONARIES.save(Utils.isEmpty(value) ? NONE : value.toString());
     }
 
     /** Starts only the providers the choice needs. */
@@ -158,9 +154,9 @@ public final class LyricsLocalRomanizationDownloads {
             return;
         }
         if (!started) {
-            if ((!needsSudachi || JapaneseDictStore.isReady())
-                    && (!needsUniDict || UniDictStore.isReady())
-                    && (!needsPinyin || PinyinDictStore.isComplete())
+            if ((!needsSudachi || JapaneseDictionaryStore.isReady())
+                    && (!needsUniDict || UniDictionaryStore.isReady())
+                    && (!needsPinyin || PinyinDictionaryStore.isComplete())
                     && (!needsCldr || CldrTransformsStore.isReady())) {
                 return;
             }
@@ -169,13 +165,13 @@ public final class LyricsLocalRomanizationDownloads {
         }
         // Reattach in case runtime setup replaced the settings listeners.
         if (needsUniDict) {
-            UniDictStore.ensure(listener(UNIDICT));
+            UniDictionaryStore.ensure(listener(UNIDICT));
         }
         if (needsPinyin) {
-            PinyinDictStore.ensure(listener(PINYIN));
+            PinyinDictionaryStore.ensure(listener(PINYIN));
         }
         if (needsSudachi) {
-            JapaneseDictStore.ensure(listener(SUDACHI));
+            JapaneseDictionaryStore.ensure(listener(SUDACHI));
         }
         if (needsCldr) {
             CldrTransformsStore.ensure(listener(CLDR));
@@ -200,13 +196,13 @@ public final class LyricsLocalRomanizationDownloads {
     /** Whether every provider the choice needs is ready. */
     public static boolean isReady() {
         final boolean[] picked = chosen();
-        if (picked[SUDACHI] && !JapaneseDictStore.isReady()) {
+        if (picked[SUDACHI] && !JapaneseDictionaryStore.isReady()) {
             return false;
         }
-        if (picked[UNIDICT] && !UniDictStore.isReady()) {
+        if (picked[UNIDICT] && !UniDictionaryStore.isReady()) {
             return false;
         }
-        if (picked[PINYIN] && !PinyinDictStore.isComplete()) {
+        if (picked[PINYIN] && !PinyinDictionaryStore.isComplete()) {
             return false;
         }
         return !picked[CLDR] || CldrTransformsStore.isReady();
@@ -258,17 +254,17 @@ public final class LyricsLocalRomanizationDownloads {
                     str("morphe_music_lyrics_local_romanization_download_started")));
         }
         if (unidict) {
-            UniDictStore.ensure(listener(UNIDICT));
+            UniDictionaryStore.ensure(listener(UNIDICT));
         } else {
             progress[UNIDICT].done = true;
         }
         if (pinyin) {
-            PinyinDictStore.ensure(listener(PINYIN));
+            PinyinDictionaryStore.ensure(listener(PINYIN));
         } else {
             progress[PINYIN].done = true;
         }
         if (sudachi) {
-            JapaneseDictStore.ensure(listener(SUDACHI));
+            JapaneseDictionaryStore.ensure(listener(SUDACHI));
         } else {
             progress[SUDACHI].done = true;
         }
@@ -279,9 +275,9 @@ public final class LyricsLocalRomanizationDownloads {
         }
     }
 
-    private static RomanizationDict.Listener listener(int which) {
+    private static RomanizationDictionary.Listener listener(int which) {
         final Progress slot = progress[which];
-        return new RomanizationDict.Listener() {
+        return new RomanizationDictionary.Listener() {
             @Override
             public void onDownload(String fileName, int percent) {
                 slot.label = fileName;

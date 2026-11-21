@@ -99,3 +99,123 @@ internal object FloatingMiniplayerFeatureFlagFingerprint : Fingerprint(
         literal(45823962L)
     )
 )
+
+internal object MediaRouteButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Z",
+    strings = listOf("MediaRouteButton")
+)
+
+internal object PlayerOverlayChipFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "player_overlay_chip")
+    )
+)
+
+internal object HistoryMenuItemFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/Menu;"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "history_menu_item"),
+        methodCall(smali = "Landroid/view/MenuItem;->setVisible(Z)Landroid/view/MenuItem;"),
+        opcode(Opcode.RETURN_VOID, MatchAfterImmediately()),
+    ),
+    custom = { _, classDef ->
+        classDef.methods.count() == 4 || classDef.methods.count() == 5
+    }
+)
+
+internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/Menu;"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "offline_settings_menu_item"),
+        resourceLiteral(ResourceType.ID, "history_menu_item"),
+        methodCall(smali = "Landroid/view/MenuItem;->setVisible(Z)Landroid/view/MenuItem;"),
+    )
+)
+
+internal object SearchActionViewFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/music/search/SearchActionProvider;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "search_button")
+    )
+)
+
+/**
+ * Matches the search toolbar view constructor in newer app targets,
+ * and the search fragments that build the toolbar in older app targets.
+ */
+internal object SearchVoiceButtonsFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "voice_search"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
+        resourceLiteral(ResourceType.ID, "sound_search"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3))
+    )
+)
+
+/**
+ * Matches the constructor of the player page presenter, which finds the Ask Music buttons
+ * of the player and of the miniplayer. 9.38+
+ */
+internal object PlayerAskMusicButtonFingerprint : Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "ask_music_global_entry_button")
+    )
+)
+
+/**
+ * Matches the method that shows the Ask Music buttons for a button renderer,
+ * or hides the buttons and the space next to them if there is no renderer.
+ */
+internal object PlayerAskMusicButtonBindFingerprint : Fingerprint(
+    classFingerprint = PlayerAskMusicButtonFingerprint,
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(smali = "Landroid/widget/Space;->setVisibility(I)V")
+    )
+)
+
+/**
+ * Matches the method that binds the Ask Music button renderer to the buttons of the player.
+ * The first filter is the call that gets the renderer, which the fullscreen player uses too.
+ */
+internal object PlayerAskMusicButtonRendererFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            returnType = { PlayerAskMusicButtonBindFingerprint.originalMethod.parameterTypes.first() },
+            opcode = Opcode.INVOKE_STATIC
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately()),
+        methodCall(
+            reference = { PlayerAskMusicButtonBindFingerprint.originalMethod },
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "top_bar_menu_item_image_view"),
+        opcode(Opcode.MOVE_RESULT_OBJECT),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Lj$/util/Optional;"
+        )
+    )
+)

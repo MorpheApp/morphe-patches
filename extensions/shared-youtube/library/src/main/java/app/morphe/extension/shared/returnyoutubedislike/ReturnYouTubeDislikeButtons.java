@@ -433,7 +433,7 @@ public final class ReturnYouTubeDislikeButtons {
         try {
             ComponentHost likeHost = buttonBefore(dislikeHost);
             if (likeHost == null || iconButtonCounts.containsKey(likeHost)
-                    || !TextUtils.isEmpty(likeHost.getContentDescription())) {
+                    || Utils.isNotEmpty(likeHost.getContentDescription())) {
                 return;
             }
             String accessibilityId = accessibilityIdOf(likeHost);

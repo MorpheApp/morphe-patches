@@ -30,6 +30,7 @@ internal const val MINIPLAYER_MODERN_FEATURE_KEY = 45622882L
 internal const val MINIPLAYER_DOUBLE_TAP_FEATURE_KEY = 45628823L
 internal const val MINIPLAYER_INITIAL_SIZE_FEATURE_KEY = 45640023L
 internal const val MINIPLAYER_DISABLED_FEATURE_KEY = 45657015L
+internal const val MINIPLAYER_DISABLED_SEARCH_FEATURE_KEY = 45649493L
 internal const val MINIPLAYER_DRAG_DROP_FEATURE_KEY = 45628752L
 internal const val MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY = 45644360L
 internal const val MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY = 45658112L
@@ -180,10 +181,12 @@ internal object MiniplayerHorizontalDragPlaybackFingerprint : Fingerprint (
     )
 )
 
+/**
+ * Rect of the miniplayer when it is dragged. The second instruction match is the
+ * field of the previous rect, which is in the class of the miniplayer drag.
+ * 21.47+ inlines this into a method of another class.
+ */
 internal object MiniplayerRectDragFieldsNameFingerprint : Fingerprint (
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/graphics/Rect;",
-    parameters = listOf("I", "I"),
     filters = listOf(
         opcode(opcode = Opcode.IF_GEZ),
         fieldAccess(
@@ -217,7 +220,9 @@ internal object MiniplayerRectDragFieldsNameFingerprint : Fingerprint (
 )
 
 internal object MiniplayerHorizontalRepositionFingerprint : Fingerprint(
-    classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
+    definingClass = {
+        MiniplayerRectDragFieldsNameFingerprint.instructionMatches[1].fieldReference.definingClass
+    },
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/graphics/Rect;"),
@@ -255,7 +260,9 @@ internal object MiniplayerOffscreenRectValidatorFingerprint : Fingerprint (
 )
 
 internal object MiniplayerOffscreenHandlerFingerprint : Fingerprint(
-    classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
+    definingClass = {
+        MiniplayerRectDragFieldsNameFingerprint.instructionMatches[1].fieldReference.definingClass
+    },
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "I", "I", "I"),
@@ -416,6 +423,16 @@ internal object MiniplayerResponseModelSizeCheckFingerprint : Fingerprint(
 internal object MiniplayerOnCloseHandlerFingerprint : Fingerprint(
     filters = listOf(
         literal(MINIPLAYER_DISABLED_FEATURE_KEY)
+    )
+)
+
+/**
+ * The search results page does not use [MINIPLAYER_DISABLED_FEATURE_KEY], and minimizes
+ * the player when going back to the page unless this flag is on.
+ */
+internal object SearchMiniplayerOnCloseHandlerFingerprint : Fingerprint(
+    filters = listOf(
+        literal(MINIPLAYER_DISABLED_SEARCH_FEATURE_KEY)
     )
 )
 

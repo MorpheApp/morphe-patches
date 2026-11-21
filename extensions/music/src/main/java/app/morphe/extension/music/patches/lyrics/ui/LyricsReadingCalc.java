@@ -19,6 +19,7 @@ import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 
 /**
  * The reading a line is drawn with: the whole-line romanization, the provider's per-word one, and
@@ -61,8 +62,18 @@ final class LyricsReadingCalc {
                 final boolean secondary = LyricsTextUtils.isSecondaryLine(line);
                 int at = 0;
                 String previous = null;
-                for (Word word : words) {
-                    String reading = word.romaji() != null ? word.romaji() : word.text().trim();
+                final boolean avg = timings != null && isEntirelyAveraged(timings);
+                for (int wIdx = 0; wIdx < words.size(); wIdx++) {
+                    Word word = words.get(wIdx);
+                    // The line's own spacing tells a word handed over in pieces from one written whole; an
+                    // unplaced word keeps the gap.
+                    String own = (secondary ? LyricsBracketSplitter.stripAllBrackets(word.text()) : word.text()).trim();
+                    String reading;
+                    if (word.romaji() != null && !word.romaji().trim().isEmpty()) {
+                        reading = word.romaji();
+                    } else {
+                        reading = word.text().trim();
+                    }
                     if (secondary) {
                         reading = LyricsBracketSplitter.stripAllBrackets(reading);
                     }
@@ -70,25 +81,35 @@ final class LyricsReadingCalc {
                     if (reading.isEmpty()) {
                         continue;
                     }
-                    // The line's own spacing tells a word handed over in pieces from one written whole; an
-                    // unplaced word keeps the gap.
-                    String own = (secondary ? LyricsBracketSplitter.stripAllBrackets(word.text()) : word.text()).trim();
                     final int found = own.isEmpty() ? -1 : original.indexOf(own, at);
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (text.length() > 0 && !sameWrittenWord(at, found, previous, own)) {
+                    if (Utils.isNotEmpty(text) && !sameWrittenWord(at, found, previous, own)) {
                         text.append(' ');
                     }
                     final int start = text.length();
                     text.append(reading);
-                    spans.add(new WordTiming(start, text.length(), word.startMs(), word.endMs(),
-                            null, false, null, timings != null && isEntirelyAveraged(timings)));
+                    int[][] subTokens = LocalRomanizer.readingTokens(reading);
+                    long wStart = word.startMs();
+                    long wEnd = windowEndFor(words, wIdx, word.endMs());
+                    if (subTokens.length > 1 && wStart != LyricsLine.NO_TIME && wEnd > wStart) {
+                        int[][] shiftedTokens = new int[subTokens.length][2];
+                        for (int st = 0; st < subTokens.length; st++) {
+                            shiftedTokens[st][0] = start + subTokens[st][0];
+                            shiftedTokens[st][1] = start + subTokens[st][1];
+                        }
+                        spreadWordWindow(spans, shiftedTokens, 0, shiftedTokens.length, wStart, wEnd, avg);
+                    } else {
+                        spans.add(new WordTiming(start, text.length(), wStart, word.endMs(),
+                                null, false, null, avg));
+                    }
                     if (found >= 0) {
                         at = found + own.length();
                         previous = own;
                     }
                 }
-                if (!spans.isEmpty()) {
-                    return new Reading(text.toString(), closeReadingGaps(spans, line));
+                String builtReading = text.toString();
+                int totalTokens = LocalRomanizer.readingTokens(builtReading).length;
+                if (!spans.isEmpty() && (spans.size() > 1 || totalTokens <= 1 || timings == null || timings.size() <= 1)) {
+                    return new Reading(builtReading, closeReadingGaps(spans, line));
                 }
             }
         }
@@ -219,8 +240,7 @@ final class LyricsReadingCalc {
                             if (LyricsTextUtils.isSecondaryLine(line)) {
                                 r = LyricsBracketSplitter.stripAllBrackets(r);
                             }
-                            //noinspection SizeReplaceableByIsEmpty
-                            if (sb.length() > 0 && sb.charAt(sb.length() - 1) != ' ') {
+                            if (Utils.isNotEmpty(sb) && sb.charAt(sb.length() - 1) != ' ') {
                                 sb.append(' ');
                             }
                             sb.append(r.trim());
@@ -508,7 +528,8 @@ final class LyricsReadingCalc {
         if (whole == null || timings == null || timings.isEmpty()) {
             return new Reading(whole, null);
         }
-        return new Reading(whole, spreadOverWords(whole, LyricsTextUtils.displayLineText(line), timings));
+        List<WordTiming> spans = spreadOverWords(whole, LyricsTextUtils.displayLineText(line), timings);
+        return new Reading(whole, spans != null && !spans.isEmpty() ? closeReadingGaps(spans, line) : null);
     }
 
     static boolean anyReading(List<Word> words) {
@@ -680,12 +701,12 @@ final class LyricsReadingCalc {
         if (tokens.length == 0) {
             return null;
         }
+        boolean averaged = isEntirelyAveraged(lineTimings);
         int[][] spread = LocalRomanizer.spreadReading(words, effective);
         if (spread == null) {
-            return null;
+            return spreadTokensProportionally(words, tokens, averaged);
         }
         List<WordTiming> spans = new ArrayList<>(tokens.length);
-        boolean averaged = isEntirelyAveraged(lineTimings);
         for (int i = 0; i < words.size(); i++) {
             Word word = words.get(i);
             final int from = spread[i][0];
@@ -697,6 +718,84 @@ final class LyricsReadingCalc {
                     windowEndFor(words, i, word.endMs()), averaged);
         }
         return spans.isEmpty() ? null : spans;
+    }
+
+    /**
+     * Proportional fallback when the romanized token count differs from the spoken word count
+     * (e.g. Arabic clitics like al-/wa- or compound transliterations). Guarantees that every
+     * romanized token receives a monotonic karaoke timing window.
+     */
+    @Nullable
+    private static List<WordTiming> spreadTokensProportionally(
+            List<Word> words, int[][] tokens, boolean averaged) {
+        if (words.isEmpty() || tokens.length == 0) {
+            return null;
+        }
+        List<Integer> spokenIdx = new ArrayList<>(words.size());
+        int totalWeight = 0;
+        for (int i = 0; i < words.size(); i++) {
+            String wText = words.get(i).text();
+            if (hasReadableText(wText)) {
+                spokenIdx.add(i);
+                totalWeight += Math.max(1, spokenWeight(wText));
+            }
+        }
+        if (spokenIdx.isEmpty()) {
+            for (int i = 0; i < words.size(); i++) {
+                spokenIdx.add(i);
+                totalWeight += 1;
+            }
+        }
+        final int M = spokenIdx.size();
+        final int T = tokens.length;
+        List<WordTiming> spans = new ArrayList<>(T);
+
+        if (T >= M) {
+            int remainingTokens = T - M;
+            int remainingWeight = totalWeight;
+            int tokenCursor = 0;
+            for (int k = 0; k < M; k++) {
+                int wordIndex = spokenIdx.get(k);
+                Word word = words.get(wordIndex);
+                int w = Math.max(1, spokenWeight(word.text()));
+                int extra = (k == M - 1 || remainingWeight <= 0)
+                        ? remainingTokens
+                        : Math.min(remainingTokens, Math.round((float) remainingTokens * w / remainingWeight));
+                int countHere = 1 + Math.max(0, extra);
+                remainingTokens -= (countHere - 1);
+                remainingWeight -= w;
+                int from = tokenCursor;
+                int to = (k == M - 1) ? T : Math.min(T, from + countHere);
+                tokenCursor = to;
+                if (to > from) {
+                    spreadWordWindow(spans, tokens, from, to, word.startMs(),
+                            windowEndFor(words, wordIndex, word.endMs()), averaged);
+                }
+            }
+        } else {
+            for (int t = 0; t < T; t++) {
+                int kStart = (t * M) / T;
+                int kEnd = Math.max(kStart + 1, ((t + 1) * M) / T);
+                int firstWordIdx = spokenIdx.get(Math.min(M - 1, kStart));
+                int lastWordIdx = spokenIdx.get(Math.min(M - 1, kEnd - 1));
+                long startMs = words.get(firstWordIdx).startMs();
+                long endMs = windowEndFor(words, lastWordIdx, words.get(lastWordIdx).endMs());
+                spans.add(new WordTiming(tokens[t][0], tokens[t][1], startMs,
+                        Math.max(endMs, startMs + 1), null, false, null, averaged));
+            }
+        }
+        return spans.isEmpty() ? null : spans;
+    }
+
+    private static int spokenWeight(@Nullable String text) {
+        if (text == null) return 1;
+        int count = 0;
+        for (int i = 0; i < text.length(); i++) {
+            if (Character.isLetterOrDigit(text.charAt(i))) {
+                count++;
+            }
+        }
+        return Math.max(1, count);
     }
 
     /**

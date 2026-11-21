@@ -23,8 +23,8 @@ import java.util.Locale;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.lyrics.romanizers.CldrTransformsStore;
-import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
-import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictionaryStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictionaryStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.RubyGenerator;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -125,10 +125,10 @@ public class LyricsTargetLanguagePreference extends Preference {
             return null;
         }
         if (isAddedByUser(ruby)) {
-            return RimeDictStore.customLabel(ruby);
+            return RimeDictionaryStore.customLabel(ruby);
         }
         if (RubyGenerator.isJapaneseRubyLanguage(ruby)) {
-            return JapaneseDictStore.isReady() ? JAPANESE_DICTIONARY : null;
+            return JapaneseDictionaryStore.isReady() ? JAPANESE_DICTIONARY : null;
         }
         return null;
     }
@@ -216,12 +216,12 @@ public class LyricsTargetLanguagePreference extends Preference {
         }
         final boolean kanaRubyStyle = "ja-Hira".equalsIgnoreCase(value)
                 || "ja-Kana".equalsIgnoreCase(value);
-        return kanaRubyStyle && !JapaneseDictStore.isReady();
+        return kanaRubyStyle && !JapaneseDictionaryStore.isReady();
     }
 
     private static boolean isAddedByUser(String value) {
-        for (String code : RimeDictStore.customLanguages()) {
-            if (code.equalsIgnoreCase(value) && !RimeDictStore.isReserved(code)) {
+        for (String code : RimeDictionaryStore.customLanguages()) {
+            if (code.equalsIgnoreCase(value) && !RimeDictionaryStore.isReserved(code)) {
                 return true;
             }
         }
@@ -290,7 +290,7 @@ public class LyricsTargetLanguagePreference extends Preference {
             if (isWaitingForDownload(value)) {
                 continue;
             }
-            if (RubyGenerator.isJapaneseRubyLanguage(value) && JapaneseDictStore.isReady()) {
+            if (RubyGenerator.isJapaneseRubyLanguage(value) && JapaneseDictionaryStore.isReady()) {
                 merged.add(base[i] + " (" + JAPANESE_DICTIONARY + ")");
             } else {
                 merged.add(base[i]);
@@ -298,7 +298,7 @@ public class LyricsTargetLanguagePreference extends Preference {
         }
         final List<String> added = addedLanguages(values);
         for (String code : added) {
-            final String label = RimeDictStore.customLabel(code);
+            final String label = RimeDictionaryStore.customLabel(code);
             merged.add((label == null ? code : label) + " (Rime)");
         }
         merged.add(str("morphe_music_lyrics_romanize_language_none"));
@@ -332,8 +332,8 @@ public class LyricsTargetLanguagePreference extends Preference {
     /** A language the user added a Rime word table for, unless this build already reads it. */
     private static List<String> addedLanguages(CharSequence[] shipped) {
         final List<String> added = new ArrayList<>();
-        for (String code : RimeDictStore.customLanguages()) {
-            if (RimeDictStore.isReserved(code)) {
+        for (String code : RimeDictionaryStore.customLanguages()) {
+            if (RimeDictionaryStore.isReserved(code)) {
                 continue;
             }
             boolean listed = false;

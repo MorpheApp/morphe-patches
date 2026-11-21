@@ -42,6 +42,31 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public final class DeviceLyricsTab {
 
+    /**
+     * Implemented by the builder of the tabs of a watch next response during patching.
+     */
+    public interface TabsBuilderAccess {
+        void patch_appendTab(Object tab);
+    }
+
+    /**
+     * Implemented by the tab model of a tabbed view during patching.
+     */
+    public interface TabModelAccess {
+        /**
+         * @return The tab renderer of the tab model, or null when it was not built from one.
+         */
+        @Nullable
+        byte[] patch_serializeTabRenderer();
+    }
+
+    /**
+     * Implemented by the controller of the tabs of a tabbed view during patching.
+     */
+    public interface TabControllerAccess {
+        void patch_removeTab(Object tab);
+    }
+
     /** Field of the tab renderer in a tab of the watch next response. */
     private static final int TAB_RENDERER_FIELD = 58174010;
 
@@ -92,7 +117,7 @@ public final class DeviceLyricsTab {
         try {
             String title = LyricsPanelInstaller.lyricsTitle(Utils.getContext());
             if (title != null) {
-                appendTab(tabsBuilder, parseTab(defaultTab(), createTab(title)));
+                ((TabsBuilderAccess) tabsBuilder).patch_appendTab(parseTab(defaultTab(), createTab(title)));
             }
         } catch (Exception ex) {
             Logger.printException(() -> "addTab failure", ex);
@@ -112,7 +137,7 @@ public final class DeviceLyricsTab {
             return page;
         }
         try {
-            byte[] tabRenderer = serializeTabRenderer(tab);
+            byte[] tabRenderer = ((TabModelAccess) tab).patch_serializeTabRenderer();
             if (tabRenderer == null || !isAddedTabRenderer(tabRenderer)) {
                 return page;
             }
@@ -147,9 +172,8 @@ public final class DeviceLyricsTab {
      */
     static void removeTabs() {
         for (Map.Entry<Object, Object> entry : addedTabs.entrySet()) {
-            removeTab(entry.getKey(), entry.getValue());
+            ((TabControllerAccess) entry.getKey()).patch_removeTab(entry.getValue());
         }
-        //noinspection RedundantOperationOnEmptyContainer
         addedTabs.clear();
     }
 
@@ -160,22 +184,6 @@ public final class DeviceLyricsTab {
     }
 
     private static Object parseTab(Object defaultTab, byte[] tab) {
-        throw new UnsupportedOperationException();
-    }
-
-    private static void appendTab(Object tabsBuilder, Object tab) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * @return The tab renderer of the tab model, or null when it was not built from one.
-     */
-    @Nullable
-    private static byte[] serializeTabRenderer(Object tab) {
-        throw new UnsupportedOperationException();
-    }
-
-    private static void removeTab(Object tabController, Object tab) {
         throw new UnsupportedOperationException();
     }
 }

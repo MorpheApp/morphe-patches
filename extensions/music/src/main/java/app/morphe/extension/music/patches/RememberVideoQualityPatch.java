@@ -15,6 +15,7 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.IntegerSetting;
+import j$.util.Optional;
 
 @SuppressWarnings("unused")
 public final class RememberVideoQualityPatch {
@@ -69,6 +70,31 @@ public final class RememberVideoQualityPatch {
                 ? Settings.VIDEO_QUALITY_DEFAULT_MOBILE
                 : Settings.VIDEO_QUALITY_DEFAULT_WIFI;
         return setting.get();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the playback start parameters of a video are created, before the video starts.
+     * Without an initial quality, the video starts with the quality last set in the quality menu,
+     * such as the highest quality of the previous track, until the media of that quality
+     * that is already buffered has played.
+     * If the video does not have the default quality, the player uses the highest quality below it.
+     *
+     * @param optional Initial video quality of the app.
+     * @return The default quality, or the initial video quality of the app if the default quality is automatic.
+     */
+    public static Optional<Integer> getInitialVideoQuality(Optional<Integer> optional) {
+        try {
+            final int defaultResolution = getDefaultQualityResolution();
+            if (defaultResolution != AUTOMATIC_VIDEO_QUALITY_VALUE) {
+                return Optional.of(defaultResolution);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getInitialVideoQuality failure", ex);
+        }
+
+        return optional;
     }
 
     /**

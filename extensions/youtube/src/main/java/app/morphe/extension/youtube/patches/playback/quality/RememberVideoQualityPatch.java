@@ -27,7 +27,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
-import app.morphe.extension.youtube.patches.VideoFormat.FormatInterface;
+import app.morphe.extension.shared.patches.VideoFormat.FormatInterface;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.innertube.ClientAbrStateOuterClass.ClientAbrState;
 import app.morphe.extension.youtube.patches.VideoInformation.*;
@@ -720,6 +720,33 @@ public class RememberVideoQualityPatch {
      */
     public static boolean useAdvancedVideoQualitySetting() {
         return isDefaultQualitySet();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The quality menu of regular videos shows a check mark on the quality of the last
+     * quality event. When the video loads, the event is the 'Advanced' video quality setting
+     * (see {@link #useAdvancedVideoQualitySetting()}) without a quality, so no quality is checked
+     * until the user selects one. The quality playing is checked instead, as if it was selected.
+     *
+     * @param resolution Resolution of the last quality event, or 'Auto' if the event has no quality.
+     * @return The resolution of the quality the menu checks.
+     */
+    public static int getQualityMenuSelectedResolution(int resolution) {
+        try {
+            if (resolution != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE || !isDefaultQualitySet()) {
+                return resolution;
+            }
+
+            final VideoQualityInterface currentQuality = VideoInformation.getCurrentQuality();
+            return currentQuality == null
+                    ? resolution
+                    : currentQuality.patch_getResolution();
+        } catch (Exception ex) {
+            Logger.printException(() -> "getQualityMenuSelectedResolution failure", ex);
+            return resolution;
+        }
     }
 
     /**

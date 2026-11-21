@@ -90,18 +90,18 @@ public final class RubyGenerator {
 
         // A manual language is read by its own dictionary, whichever romanization providers are on.
         if (isJapaneseRubyLanguage(rubyLanguage)) {
-            final WordReadingTable table = JapaneseDictStore.table();
+            final WordReadingTable table = JapaneseDictionaryStore.table();
             return table != null ? enrichFromDictionary(current, table, style) : current;
         }
         // What is left is a language the user added a Rime word table for.
-        final WordReadingTable words = RimeDictStore.word(rubyLanguage);
-        if (words == null || !RimeDictStore.isReady(rubyLanguage)) {
+        final WordReadingTable words = RimeDictionaryStore.word(rubyLanguage);
+        if (words == null || !RimeDictionaryStore.isReady(rubyLanguage)) {
             return current;
         }
         return enrichByCharacter(current, words, text -> {
             final String reading = lookupExactReading(text, words);
             return reading != null ? reading
-                    : characterReading(text, c -> RimeDictStore.reading(c, rubyLanguage));
+                    : characterReading(text, c -> RimeDictionaryStore.reading(c, rubyLanguage));
         }, style);
     }
 
@@ -146,7 +146,7 @@ public final class RubyGenerator {
                         aiLines = ai.lines();
                         LyricsCache.putRubyAI(track, lyrics.providerName(), lines, aiLines, provider);
                     }
-                    result = enrichFromAiLines(lyrics, aiLines, JapaneseDictStore.table(), style);
+                    result = enrichFromAiLines(lyrics, aiLines, JapaneseDictionaryStore.table(), style);
                     break;
                 }
             } catch (Exception ex) {
@@ -376,7 +376,6 @@ public final class RubyGenerator {
      * Characters the character tables do not cover are skipped, so a word that is only partly
      * covered still shows the reading of the characters that are covered.
      */
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Nullable
     private static String characterReading(String text, Function<Character, String> reader) {
         StringBuilder out = new StringBuilder();
@@ -384,11 +383,11 @@ public final class RubyGenerator {
             char c = text.charAt(i);
             String reading = ScriptDetector.isHan(c) ? reader.apply(c) : null;
             if (reading != null) {
-                if (out.length() > 0) out.append(' ');
+                if (Utils.isNotEmpty(out)) out.append(' ');
                 out.append(reading);
             }
         }
-        return out.length() > 0 ? out.toString() : null;
+        return Utils.isNotEmpty(out) ? out.toString() : null;
     }
 
     /**

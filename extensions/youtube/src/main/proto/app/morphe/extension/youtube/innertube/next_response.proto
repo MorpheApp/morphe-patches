@@ -96,6 +96,8 @@ message ElementRenderer {
 message NewElement {
     Type type = 1;
     Properties properties = 2;
+    // Elements inside a container element, such as the filter bar of the comments header.
+    repeated NewElement childElements = 3;
 }
 
 message Properties {
@@ -118,6 +120,7 @@ message Model {
     oneof data {
         BottomSheetHeaderModel bottomSheetHeaderModel = 269594834;
         VideoActionBarModel videoActionBarModel = 389155117;
+        ChipBarModel chipBarModel = 400159923;
         VideoMetadataCarouselModel videoMetadataCarouselModel = 408379376;
         YoutubeModel youtubeModel = 413471385;
     }
@@ -147,6 +150,64 @@ message CarouselTitleDatas {
 }
 
 message CarouselItemDatas {
+    CarouselItemViewModel carouselItemViewModel = 11;
+}
+
+message CarouselItemViewModel {
+    CommentTeaserCarouselItemViewModel commentTeaserCarouselItemViewModel = 33561759;
+}
+
+message CommentTeaserCarouselItemViewModel {
+    repeated CommentTeasers teasers = 7;
+}
+
+message CommentTeasers {
+    CommentsEntryPointTeaserViewModel commentsEntryPointTeaserViewModel = 1178;
+}
+
+message CommentsEntryPointTeaserViewModel {
+    // Not set for a 'Topic' preview.
+    CommentTeaserAuthor author = 12;
+}
+
+message CommentTeaserAuthor {
+}
+
+// endregion
+
+// region chip bar
+
+message ChipBarModel {
+    repeated SortOptions sortOptions = 5;
+    int32 defaultFilterIndex = 13;
+}
+
+message SortOptions {
+    repeated FilterOptions filterOptions = 2;
+}
+
+message FilterOptions {
+    FilterOnSelected onSelected = 2;
+}
+
+message FilterOnSelected {
+    ApplyFilterCommand applyFilterCommand = 303917309;
+}
+
+message ApplyFilterCommand {
+    FilterFormData filterFormData = 1;
+}
+
+message FilterFormData {
+    CommentsFilterFormData commentsFilterFormData = 304456058;
+}
+
+message CommentsFilterFormData {
+    // Set for the 'Topics' chip, instead of the sort of the other chips.
+    CommentsTopicParams commentsTopicParams = 4;
+}
+
+message CommentsTopicParams {
 }
 
 // endregion

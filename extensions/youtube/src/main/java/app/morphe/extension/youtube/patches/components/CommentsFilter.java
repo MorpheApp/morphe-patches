@@ -22,6 +22,9 @@ import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
+import androidx.annotation.Nullable;
+
+import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -438,9 +441,14 @@ public class CommentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideLiveChatGiftButton(View view) {
+    public static void hideLiveChatGiftButton(@Nullable View view) {
         if (Settings.HIDE_COMMENTS_GIFT_BUTTON.get() && view != null) {
             ViewGroup.LayoutParams lp = view.getLayoutParams();
+            // Called each time the app gets the button container, so it is hidden only once.
+            if (view.getVisibility() == View.GONE && lp != null && lp.width == 0 && lp.height == 0) {
+                return;
+            }
+
             if (lp != null) {
                 lp.width = 0;
                 lp.height = 0;
@@ -496,66 +504,26 @@ public class CommentsFilter extends Filter {
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
         try {
-            // Every element is parsed here otherwise, on the main thread. The identifier of the carousel
-            // is also in the bytes of its element, see FeedVideoCardsPatch.getElementText().
-            if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()
-                    && FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_METADATA_CAROUSEL_PATH)) {
-                var newElement = NewElement.parseFrom(bytes).toBuilder();
-                var identifier = newElement.getProperties().getIdentifierProperties().getIdentifier();
-                if (identifier != null && identifier.contains(VIDEO_METADATA_CAROUSEL_PATH)) {
-                    var type = newElement.getType().toBuilder();
-                    var componentType = type.getComponentType().toBuilder();
-                    var model = componentType.getModel().toBuilder();
-                    var videoMetadataCarouselModel = model.getVideoMetadataCarouselModel().toBuilder();
-                    var data = videoMetadataCarouselModel.getData().toBuilder();
-                    var carouselTitleDatasList = data.getCarouselTitleDatasList();
+            final boolean hideTopics = Settings.HIDE_COMMENTS_TOPICS.get();
+            final boolean filterCarousel = Settings.HIDE_COMMENTS_CAROUSEL.get()
+                    && !commentsCarouselFilterStrings.isEmpty();
+            if (!hideTopics && !filterCarousel) {
+                return bytes;
+            }
 
-                    if (!carouselTitleDatasList.isEmpty()) {
-                        boolean modified = false;
+            // Every element is parsed here otherwise, on the main thread. The identifiers of the filter bar
+            // and the carousel are also in the bytes of their element, see FeedVideoCardsPatch.getElementText().
+            String elementText = FeedVideoCardsPatch.getElementText(bytes);
+            NewElement newElement = null;
+            if (hideTopics && elementText.contains(CHIP_BAR_PATH_PREFIX)) {
+                newElement = CommentsElements.removeTopicsFilter(NewElement.parseFrom(bytes));
+            } else if (elementText.contains(VIDEO_METADATA_CAROUSEL_PATH)) {
+                newElement = CommentsElements.filterCarousel(NewElement.parseFrom(bytes), hideTopics,
+                        filterCarousel ? commentsCarouselFilterStrings : Collections.emptyList());
+            }
 
-                        for (int i = carouselTitleDatasList.size() - 1; i > -1; i--) {
-                            var carouselTitleData = carouselTitleDatasList.get(i);
-
-                            String title = carouselTitleData.getTitle();
-                            Logger.printDebug(() -> "comments title: " + title);
-
-                            if (title != null) {
-                                for (String filter : commentsCarouselFilterStrings) {
-                                    if (title.contains(filter)) {
-                                        data.removeCarouselItemDatas(i);
-                                        data.removeCarouselTitleDatas(i);
-                                        modified = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-
-                        if (modified) {
-                            var newBuild = data.build();
-                            videoMetadataCarouselModel.clearData();
-                            videoMetadataCarouselModel.setData(newBuild);
-
-                            var newVideoMetadataCarouselModel = videoMetadataCarouselModel.build();
-                            model.clearVideoMetadataCarouselModel();
-                            model.setVideoMetadataCarouselModel(newVideoMetadataCarouselModel);
-
-                            var newModel = model.build();
-                            componentType.clearModel();
-                            componentType.setModel(newModel);
-
-                            var newComponentType = componentType.build();
-                            type.clearComponentType();
-                            type.setComponentType(newComponentType);
-
-                            var newType = type.build();
-                            newElement.clearType();
-                            newElement.setType(newType);
-
-                            return newElement.build().toByteArray();
-                        }
-                    }
-                }
+            if (newElement != null) {
+                return newElement.toByteArray();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onCommentsLoaded failure", ex);

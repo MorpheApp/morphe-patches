@@ -80,7 +80,7 @@ public final class MwebSignIn {
      */
     private static final Pattern DATA_SYNC_ID_PATTERN = Pattern.compile("\"DATASYNC_ID\":\"([^\"]+)");
     /**
-     * The config of a page of a signed out user.
+     * The config of a page of a signed-out user.
      */
     private static final Pattern LOGGED_OUT_PATTERN = Pattern.compile("\"LOGGED_IN\":false");
     private static final Pattern VISITOR_DATA_PATTERN = Pattern.compile("\"VISITOR_DATA\":\"([^\"]+)");
@@ -95,7 +95,7 @@ public final class MwebSignIn {
     private static final Object fetchLock = new Object();
 
     /**
-     * Id of the signed in account, with the session of the user that the authorization names.
+     * ID of the signed in account, with the session of the user that the authorization names.
      */
     @Nullable
     @GuardedBy("MwebSignIn.class")
@@ -234,7 +234,7 @@ public final class MwebSignIn {
                 }
                 String hashInput = userSessionId + " " + seconds + " " + sid + " " + ORIGIN;
                 byte[] digest = sha1.digest(hashInput.getBytes(StandardCharsets.UTF_8));
-                if (authorization.length() > 0) {
+                if (Utils.isNotEmpty(authorization)) {
                     authorization.append(' ');
                 }
                 authorization.append(scheme[0]).append(' ').append(seconds).append('_');
@@ -248,13 +248,13 @@ public final class MwebSignIn {
             Logger.printException(() -> "getAuthorization failure", ex);
             return null;
         }
-        return authorization.length() == 0 ? null : authorization.toString();
+        return Utils.isEmpty(authorization) ? null : authorization.toString();
     }
 
     /**
      * The id of the signed in account, with the session of the user that the authorization names.
      *
-     * @return The id, or null if signed out or it could not be fetched.
+     * @return The id, or null if signed out, or it could not be fetched.
      */
     @Nullable
     private static String getDataSyncId(@Nullable String cookies) {
@@ -283,12 +283,14 @@ public final class MwebSignIn {
                 String page = Requester.parseString(connection);
                 Matcher matcher = DATA_SYNC_ID_PATTERN.matcher(page);
                 if (!matcher.find()) {
-                    // The page is of a signed out user, so the sign in is no longer valid.
+                    // The page is of a signed-out user, so the sign in is no longer valid.
                     // Any other page, as a page about unusual traffic, keeps the sign in.
                     final boolean signedOutPage = LOGGED_OUT_PATTERN.matcher(page).find();
                     Logger.printDebug(() -> "No DataSyncId in the page, signed out page: " + signedOutPage);
                     if (signedOutPage) {
-                        onSignInExpired();
+                        Logger.printDebug(() -> "Mobile Web sign in is no longer valid");
+                        clearAll();
+                        Utils.showToastLong(str("morphe_spoof_video_streams_sign_in_mweb_toast_expired"));
                     }
                     return null;
                 }
@@ -369,12 +371,6 @@ public final class MwebSignIn {
             dataSyncId = null;
             dataSyncIdSapisid = null;
         }
-    }
-
-    private static void onSignInExpired() {
-        Logger.printDebug(() -> "Mobile Web sign in is no longer valid");
-        clearAll();
-        Utils.showToastLong(str("morphe_spoof_video_streams_sign_in_mweb_toast_expired"));
     }
 
     /**

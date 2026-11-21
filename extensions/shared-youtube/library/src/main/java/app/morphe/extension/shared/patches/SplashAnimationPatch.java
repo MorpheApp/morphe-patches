@@ -178,10 +178,14 @@ public class SplashAnimationPatch {
             final int color = ThemeUtils.getAppForegroundColor();
             final String flatColor = getColorStringArray(color);
 
+            final String stop = Color.red(color) / 255.0 + ", "
+                    + Color.green(color) / 255.0 + ", "
+                    + Color.blue(color) / 255.0;
+            String gradientStringArray = "[0, " + stop + ", 1, " + stop + "]";
             replaceColorsAndPlay(view, animation, Map.of(
                     BRAND_PRIMARY_COLOR, flatColor,
                     BRAND_SECONDARY_COLOR, flatColor,
-                    BRAND_GRADIENT, getGradientStringArray(color)
+                    BRAND_GRADIENT, gradientStringArray
             ), COLOR_KEYS);
         } else {
             view.patch_setAnimation(animation);
@@ -247,14 +251,6 @@ public class SplashAnimationPatch {
 
         // cacheKey is not needed since the animation will not be reused.
         view.patch_setAnimation(new ByteArrayInputStream(replacement.getBytes()), null);
-    }
-
-    private static String getGradientStringArray(int color) {
-        final String stop = Color.red(color) / 255.0 + ", "
-                + Color.green(color) / 255.0 + ", "
-                + Color.blue(color) / 255.0;
-
-        return "[0, " + stop + ", 1, " + stop + "]";
     }
 
     private static String getColorStringArray(int color) {

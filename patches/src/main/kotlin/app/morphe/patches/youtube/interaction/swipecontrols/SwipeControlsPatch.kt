@@ -125,8 +125,13 @@ private val swipeControlsResourcePatch = patch {
             ),
             ListPreference("morphe_swipe_speed_step"),
             SwitchPreference("morphe_swipe_ignore_when_locked", summary = true),
-            SwitchPreference("morphe_swipe_press_to_engage", summary = true),
-            SwitchPreference("morphe_swipe_haptic_feedback"),
+            SwitchPreference(
+                key = "morphe_swipe_press_to_engage",
+                summary = true,
+                // Asks which one to keep when the hold gesture is on, which starts with a long press too.
+                tag = "app.morphe.extension.youtube.settings.preference.PressToSwipeSwitchPreference"
+            ),
+            SwitchPreference("morphe_swipe_haptic_feedback", summary = true),
             SwitchPreference("morphe_swipe_save_and_restore_brightness", summary = true),
             SwitchPreference("morphe_swipe_lowest_value_enable_auto_brightness", summary = true),
             ListPreference("morphe_swipe_overlay_style"),

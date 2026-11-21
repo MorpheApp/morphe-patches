@@ -74,18 +74,34 @@ Lai tulkotu jaunas valodas vai uzlabotu esošos tulkojumus, apmeklējiet morphe.
   <string name="morphe_settings_export_file">Eksportēt failā</string>
   <string name="morphe_settings_export_file_success">Iestatījumi veiksmīgi eksportēti</string>
   <string name="morphe_settings_export_file_failed">Iestatījumu eksportēšana neizdevās</string>
-  <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Jūs izmantojat jaunāko Morphe Patches versiju &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Jūs izmantojat Morphe Patches versiju &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Pieejams atjauninājums: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Lai atjauninātu patchus, izmantojiet Morphe, lai pārlabotu šo lietotni</string>
-  <string name="morphe_settings_about_links_dev_header">Piezīme</string>
-  <string name="morphe_settings_about_links_dev_body">Šī versija ir pirmizlaide, un iespējams, ka tiks novērotas negaidītas kļūdas</string>
+  <!-- Names which part of Morphe the About dialog is about, under the name "Morphe". The Morphe app says "Manager" in the same place -->
+  <string name="morphe_settings_about_component">Lāpījumi</string>
+  <string name="morphe_settings_about_version">Versija</string>
+  <string name="morphe_settings_about_close">Aizvērt</string>
+  <string name="morphe_settings_about_prerelease">Pirmsizlaide</string>
+  <string name="morphe_settings_about_update_available">Pieejams atjauninājums: %s</string>
+  <string name="morphe_settings_about_update_hint">Lai atjauninātu savus lappisumus, izmantojiet Morphe, lai ponovo lappisotu šo lietotni</string>
   <string name="morphe_settings_about_links_header">Oficiālās saites</string>
   <string name="morphe_settings_about_links_website">Tīmekļa vietne</string>
   <string name="morphe_settings_about_links_donate">Ziedot</string>
   <string name="morphe_settings_about_links_translations">Tulkojumi</string>
-  <string name="morphe_settings_about_links_credits">Krediti</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Aktuāli</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Pieejams atjauninājums</string>
+  <string name="morphe_settings_about_contributors">Veicinātāji</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Visu laiku</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mēneši</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mēneši</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Laika periods</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s lietotāji</string>
+  <!-- People who donate to Morphe -->
+  <string name="morphe_settings_about_supporters">Atbalstītāji</string>
+  <string name="morphe_settings_about_supporters_summary">Atbalstītāji Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Kļūstiet par atbalstītāju</string>
+  <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
+  <string name="morphe_settings_about_people_more">Un vēl %s</string>
+  <string name="morphe_settings_about_people_unavailable">Neizdevās ielādēt sarakstu</string>
   <string name="morphe_settings_about_contributors_current">Pašreizējā izstrāde</string>
   <string name="morphe_settings_about_contributors_prior">Iepriekšējā izstrāde</string>
   <string name="morphe_settings_about_links_morphe">Aktīva izstrāde</string>
@@ -213,6 +229,9 @@ Ja akumulatora optimizācijas netiek mainītas, iespējams, varat novērot:
 • Lietotne var nejauši aizvērties
 • Paziņojumi var nedarboties
 • Fona atskaņošana var nedarboties"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Atvērt sistēmas kopīgošanas logu</string>
+  <string name="morphe_open_system_share_sheet_summary">Satura kopīšanas laikā atver sistēmas kopīšanas izvēlni vietā lietotnes izvēlnes</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Lietotnes saites apstrāde</string>
   <string name="morphe_link_handling_summary">Konfigurēt saites, lai tās atvērtu šajā lietotnē</string>
