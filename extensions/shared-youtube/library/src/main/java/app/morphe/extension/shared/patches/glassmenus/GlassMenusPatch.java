@@ -48,6 +48,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.IdentityHashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -422,8 +423,15 @@ public final class GlassMenusPatch {
          * How far the panel of the menu is inside the view, at each side.
          */
         private final Rect panelInsets = new Rect();
+        private final Rect panel = new Rect();
+        private final Rect fillBounds = new Rect();
+        private final Outline fillOutline = new Outline();
         private final int[] viewLocation = new int[2];
         private final int[] hostLocation = new int[2];
+        /**
+         * The background of the view: the blur and the tint.
+         */
+        private LayerDrawable layers;
         private long lastLithoScan;
         /**
          * When the menu was attached. Litho is checked on every frame right after, so the menu is not shown
@@ -551,75 +559,79 @@ public final class GlassMenusPatch {
          * The background of the view: the blur and the tint, both drawn within the panel of the menu.
          */
         private void setBackgroundLayers() {
-            LayerDrawable layers = new LayerDrawable(blur != null
+            layers = new LayerDrawable(blur != null
                     ? new Drawable[]{blur, tint}
                     : new Drawable[]{tint});
-            for (int i = 0; i < layers.getNumberOfLayers(); i++) {
+            setLayerInsets();
+            view.setBackground(layers);
+        }
+
+        private void setLayerInsets() {
+            for (int i = 0, count = layers.getNumberOfLayers(); i < count; i++) {
                 layers.setLayerInset(i, panelInsets.left, panelInsets.top, panelInsets.right, panelInsets.bottom);
             }
-            view.setBackground(layers);
         }
 
         /**
          * Finds the panel of the menu, the area of the fills of the menu color, and draws the glass only there.
          */
         private void updatePanel() {
+            if (!findPanel) return;
             final int width = view.getWidth();
             final int height = view.getHeight();
-            if (!findPanel || width <= 0 || height <= 0) return;
+            if (width <= 0 || height <= 0) return;
 
             view.getLocationInWindow(viewLocation);
-            Rect panel = null;
+            panel.setEmpty();
             Drawable largest = null;
             long largestArea = 0;
-            for (Map.Entry<Drawable, View> entry : panelFills.entrySet()) {
+            Iterator<Map.Entry<Drawable, View>> iterator = panelFills.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<Drawable, View> entry = iterator.next();
                 Drawable drawable = entry.getKey();
                 View host = entry.getValue();
-                // The fill may no longer be drawn by the view.
-                if (host.getBackground() != drawable && LithoFills.hostOf(drawable) != host) continue;
-                if (!host.isShown() || !LithoFills.isInside(host, view)) continue;
-
-                Rect bounds = new Rect(drawable.getBounds());
-                if (bounds.isEmpty()) continue;
-                host.getLocationInWindow(hostLocation);
-                bounds.offset(hostLocation[0] - viewLocation[0], hostLocation[1] - viewLocation[1]);
-                if (!bounds.intersect(0, 0, width, height)) continue;
-
-                if (panel == null) {
-                    panel = bounds;
-                } else {
-                    panel.union(bounds);
+                // The fill is no longer drawn in the menu. It is added again if it is mounted again.
+                if (LithoFills.hostOf(drawable) != host || !LithoFills.isInside(host, view)) {
+                    iterator.remove();
+                    continue;
                 }
-                final long area = (long) bounds.width() * bounds.height();
+                if (!host.isShown()) continue;
+
+                fillBounds.set(drawable.getBounds());
+                if (fillBounds.isEmpty()) continue;
+                host.getLocationInWindow(hostLocation);
+                fillBounds.offset(hostLocation[0] - viewLocation[0], hostLocation[1] - viewLocation[1]);
+                if (!fillBounds.intersect(0, 0, width, height)) continue;
+
+                panel.union(fillBounds);
+                final long area = (long) fillBounds.width() * fillBounds.height();
                 if (area > largestArea) {
                     largestArea = area;
                     largest = drawable;
                 }
             }
 
-            Rect insets = panel == null
-                    ? new Rect()
-                    : new Rect(panel.left, panel.top, width - panel.right, height - panel.bottom);
-            boolean changed = !insets.equals(panelInsets);
-            if (changed) {
-                panelInsets.set(insets);
-                Drawable background = view.getBackground();
-                if (background instanceof LayerDrawable layers) {
-                    for (int i = 0; i < layers.getNumberOfLayers(); i++) {
-                        layers.setLayerInset(i, insets.left, insets.top, insets.right, insets.bottom);
-                    }
-                    // The insets are applied when the bounds change.
-                    Rect bounds = new Rect(layers.getBounds());
-                    layers.setBounds(0, 0, 0, 0);
-                    layers.setBounds(bounds);
-                }
-                Logger.printDebug(() -> "Glass menu panel insets: " + insets);
+            boolean changed = false;
+            final int left = panel.isEmpty() ? 0 : panel.left;
+            final int top = panel.isEmpty() ? 0 : panel.top;
+            final int right = panel.isEmpty() ? 0 : width - panel.right;
+            final int bottom = panel.isEmpty() ? 0 : height - panel.bottom;
+            if (left != panelInsets.left || top != panelInsets.top
+                    || right != panelInsets.right || bottom != panelInsets.bottom) {
+                panelInsets.set(left, top, right, bottom);
+                setLayerInsets();
+                // The layers are placed again only when the bounds change.
+                Rect bounds = layers.copyBounds();
+                layers.setBounds(0, 0, 0, 0);
+                layers.setBounds(bounds);
+                changed = true;
+                Logger.printDebug(() -> "Glass menu panel insets: " + left + ", " + top + ", " + right + ", " + bottom);
             }
 
             if (largest != null && corners != CORNERS_NONE) {
-                Outline outline = new Outline();
-                largest.getOutline(outline);
-                final float radius = outline.getRadius();
+                fillOutline.setEmpty();
+                largest.getOutline(fillOutline);
+                final float radius = fillOutline.getRadius();
                 if (radius > 0 && radius != tint.radius) {
                     tint.setRadius(radius);
                     changed = true;
@@ -704,7 +716,7 @@ public final class GlassMenusPatch {
                     hide(background);
                 } else if (background != null && child.getWidth() >= minWidth) {
                     // Only fills of the menu, not small views such as buttons or a progress circle.
-                    if (hideIfMenuColor(background)) {
+                    if (hideIfMenuColor(background) && findPanel) {
                         panelFills.put(background, child);
                     }
                 }
@@ -720,7 +732,7 @@ public final class GlassMenusPatch {
             for (LithoFills.Fill fill : LithoFills.fillsInside(view)) {
                 Drawable drawable = fill.drawable();
                 if (drawable.getBounds().width() >= minWidth && isMenuColor(fill.color())) {
-                    panelFills.put(drawable, fill.host());
+                    if (findPanel) panelFills.put(drawable, fill.host());
                     if (hide(drawable)) {
                         fill.host().invalidate();
                     }
