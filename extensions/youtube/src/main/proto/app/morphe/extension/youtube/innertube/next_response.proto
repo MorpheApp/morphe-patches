@@ -96,6 +96,7 @@ message ElementRenderer {
 message NewElement {
     Type type = 1;
     Properties properties = 2;
+    // Elements inside a container element, such as the filter bar of the comments header.
     repeated NewElement childElements = 3;
 }
 
@@ -119,9 +120,9 @@ message Model {
     oneof data {
         BottomSheetHeaderModel bottomSheetHeaderModel = 269594834;
         VideoActionBarModel videoActionBarModel = 389155117;
+        ChipBarModel chipBarModel = 400159923;
         VideoMetadataCarouselModel videoMetadataCarouselModel = 408379376;
         YoutubeModel youtubeModel = 413471385;
-        ChipBarModel chipBarModel = 400159923;
     }
 }
 
