@@ -124,6 +124,15 @@ public class NavigationBarPatch {
     }
 
     /**
+     * Injection point.
+     * Without a renderer the app hides the Ask Music buttons of the player, miniplayer and fullscreen.
+     */
+    @Nullable
+    public static Object hidePlayerAskMusicButton(@Nullable Object renderer) {
+        return Settings.HIDE_ASK_MUSIC_BUTTON.get() ? null : renderer;
+    }
+
+    /**
      * Injection point
      */
     public static int hideCastButton(int original) {

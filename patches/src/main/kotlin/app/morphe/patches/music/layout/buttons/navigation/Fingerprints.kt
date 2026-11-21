@@ -162,6 +162,49 @@ internal object SearchVoiceButtonsFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches the constructor of the player page presenter, which finds the Ask Music buttons
+ * of the player and of the miniplayer. 9.38+
+ */
+internal object PlayerAskMusicButtonFingerprint : Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "ask_music_global_entry_button")
+    )
+)
+
+/**
+ * Matches the method that shows the Ask Music buttons for a button renderer,
+ * or hides the buttons and the space next to them if there is no renderer.
+ */
+internal object PlayerAskMusicButtonBindFingerprint : Fingerprint(
+    classFingerprint = PlayerAskMusicButtonFingerprint,
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(smali = "Landroid/widget/Space;->setVisibility(I)V")
+    )
+)
+
+/**
+ * Matches the method that binds the Ask Music button renderer to the buttons of the player.
+ * The first filter is the call that gets the renderer, which the fullscreen player uses too.
+ */
+internal object PlayerAskMusicButtonRendererFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            returnType = { PlayerAskMusicButtonBindFingerprint.originalMethod.parameterTypes.first() },
+            opcode = Opcode.INVOKE_STATIC
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately()),
+        methodCall(
+            reference = { PlayerAskMusicButtonBindFingerprint.originalMethod },
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
 internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",

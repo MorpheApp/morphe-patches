@@ -26,6 +26,7 @@ import app.morphe.patches.music.layout.miniplayer.miniplayerColorHookPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.mediasession.addSetPlaybackStateHook
 import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
+import app.morphe.patches.music.misc.playservice.is_9_38_or_greater
 import app.morphe.patches.music.misc.playservice.is_9_39_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -35,6 +36,8 @@ import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -354,6 +357,27 @@ val navigationBarPatch = patch(
                 move-result p1
             """
         )
+
+        // Region for hide Ask Music button in the player, miniplayer and fullscreen.
+        // All three take the button renderer from one method. Without a renderer
+        // the app hides the buttons and the space next to them on its own.
+        if (is_9_38_or_greater) {
+            PlayerAskMusicButtonRendererFingerprint.instructionMatches.first().getMethodCalled().apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    // A branch jumps straight to the return, so the code goes at its label.
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->hidePlayerAskMusicButton(Ljava/lang/Object;)Ljava/lang/Object;
+                            move-result-object v$register
+                            check-cast v$register, $returnType
+                        """
+                    )
+                }
+            }
+        }
 
         // Ensure the first ImageView has 'layout_weight' to stay properly sized
         // when the TextView is hidden.
