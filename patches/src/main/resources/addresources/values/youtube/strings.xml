@@ -1265,7 +1265,8 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_glass_menus_screen_title">Glass menus</string>
     <string name="morphe_glass_menus_screen_summary">Menus as frosted glass over the blurred content behind them</string>
     <string name="morphe_glass_menus_title">Enable glass menus</string>
-    <string name="morphe_glass_menus_summary">Shows the menus, such as the menu of a video, the player settings, the video quality, the playback speed, the share sheet and the sheet to save to a playlist, as frosted glass: the content behind the menu is blurred and shows through it. Needs Android 12 or later. While the system turns the blur off, such as with the battery saver, the menus are nearly opaque</string>
+    <string name="morphe_glass_menus_summary">Shows menus and bottom sheets as frosted glass, with the content behind them blurred</string>
+    <string name="morphe_glass_menus_user_dialog_message">Menus are shown nearly opaque while the battery saver is on, or if the device does not support blur</string>
     <string name="morphe_glass_menus_opacity_title">Glass opacity</string>
     <string name="morphe_glass_menus_opacity_summary">How much the menu covers the blurred content (0 is clear, 100 is opaque)</string>
     <string name="morphe_glass_menus_blur_title">Blur</string>

@@ -717,7 +717,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting NARROW_NAVIGATION_BUTTONS = new BooleanSetting("morphe_narrow_navigation_buttons", FALSE, true, parentsAll(parentNot(HIDE_NAVIGATION_BAR), parentNot(NAVIGATION_BAR_GLASS)));
 
     // Glass menus
-    public static final BooleanSetting GLASS_MENUS = new BooleanSetting("morphe_glass_menus", FALSE, false, new GlassMenusAvailability());
+    public static final BooleanSetting GLASS_MENUS = new BooleanSetting("morphe_glass_menus", FALSE, false, "morphe_glass_menus_user_dialog_message", new GlassMenusAvailability());
     public static final IntegerSetting GLASS_MENUS_OPACITY = new IntegerSetting("morphe_glass_menus_opacity", 30, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
     public static final IntegerSetting GLASS_MENUS_BLUR = new IntegerSetting("morphe_glass_menus_blur", 24, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
     public static final IntegerSetting GLASS_MENUS_DIM = new IntegerSetting("morphe_glass_menus_dim", 20, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
