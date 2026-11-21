@@ -247,7 +247,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // Miscellaneous
     public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type", ClientType.TV_SIMPLY, true, parent(SPOOF_VIDEO_STREAMS));
-    public static final BooleanSetting PLAY_ALBUMS_SONGS = new BooleanSetting("morphe_music_play_album_songs", FALSE, true, parent(SPOOF_VIDEO_STREAMS));
+    public static final BooleanSetting PLAY_ALBUMS_SONGS = new BooleanSetting("morphe_music_play_album_songs", FALSE, true);
 
     // Player
     public static final BooleanSetting AB_LOOP = new BooleanSetting("morphe_music_ab_loop", FALSE);
