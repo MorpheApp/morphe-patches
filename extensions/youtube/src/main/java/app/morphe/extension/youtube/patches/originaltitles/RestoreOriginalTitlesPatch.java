@@ -829,9 +829,12 @@ public final class RestoreOriginalTitlesPatch {
                             return spannedText(translatedText, LOADING_TITLE.toString(), new RetryTitleSpan(retry));
                         }
                     }
-                    // The title found by the layout of the element is replaced even if no request verified it.
+                    // The title found by the layout of the element is replaced even if no request verified it,
+                    // unless it's the title of other videos, such as of an element of the opened video
+                    // parsed before the new video is loaded.
                     for (String layoutVideoId : videoIds) {
                         String replacement = trimmedText.equals(layoutTitles.get(layoutVideoId))
+                                && !isTitleOfOtherVideos(trimmedText, layoutVideoId)
                                 ? OriginalTitleRequest.getIfAvailable(layoutVideoId, trimmedText)
                                 : null;
                         if (replacement != null && !replacement.trim().equals(trimmedText)) {
@@ -1356,6 +1359,11 @@ public final class RestoreOriginalTitlesPatch {
         if (videoId == null) {
             return null;
         }
+        if (titleVideoId == null && isTitleOfOtherVideos(title.trim(), videoId)) {
+            // The title is of other videos, such as the next video of a playlist
+            // that plays before the new video is loaded.
+            return null;
+        }
 
         CompletableFuture<OriginalTitleRequest.Titles> future = OriginalTitleRequest.fetch(videoId);
         OriginalTitleRequest.Titles titles = future.getNow(null);
@@ -1762,6 +1770,23 @@ public final class RestoreOriginalTitlesPatch {
     }
 
     /**
+     * The opened video can change before its video id is known, so elements and views
+     * of the opened video can show the title of the new video while the video id is of the previous video.
+     *
+     * @return If the text is a title seen before only for other videos, and is not a verified title of the video.
+     */
+    private static boolean isTitleOfOtherVideos(String text, String videoId) {
+        synchronized (translatedTitles) {
+            Set<String> videoIds = translatedTitles.get(text);
+            if (videoIds == null || videoIds.contains(videoId)) {
+                return false;
+            }
+        }
+        List<String> titles = verifiedTitles(videoId);
+        return titles == null || findTitle(videoId, Collections.singleton(text), titles) == null;
+    }
+
+    /**
      * @param preferredVideoId Video used if different videos have the title, such as the opened video.
      * @return The video id of the translated title, or null if the title is unknown,
      *         or different videos have the title and none is the preferred video.
@@ -2039,7 +2064,11 @@ public final class RestoreOriginalTitlesPatch {
             }
             // The video can show a title that no request returns, such as a title tested by the uploader.
             // The title is not saved as a translated title, as no request verified it.
-            String replacement = layoutTitle ? OriginalTitleRequest.getIfAvailable(videoId, candidate) : null;
+            // A title of other videos is not replaced, such as the title of the next video of a playlist
+            // shown by an element of the opened video parsed before the new video is loaded.
+            String replacement = layoutTitle && !isTitleOfOtherVideos(candidate, videoId)
+                    ? OriginalTitleRequest.getIfAvailable(videoId, candidate)
+                    : null;
             return replacement != null && !candidate.equals(replacement.trim())
                     && replaceTitle(textNodes, videoId, candidate, Collections.emptySet(), replacement,
                     findLabelOfTitle(candidate, texts));
