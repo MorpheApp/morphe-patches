@@ -887,4 +887,115 @@ public class GmsCoreSupportPatch {
     private static String getGmsCoreVendorGroupId() {
         return "app.revanced"; // Modified during patching.
     }
+
+    // ==========================================
+    // GNP (Google Notifications Platform) Support
+    // ==========================================
+
+    private static volatile String cachedOriginalSignature = null;
+
+    public static String getOriginalPackageSignature() {
+        if (cachedOriginalSignature != null) {
+            return cachedOriginalSignature;
+        }
+        try {
+            Context context = Utils.getContext();
+            if (context != null) {
+                cachedOriginalSignature = getEffectivePackageSignature(context);
+            }
+        } catch (Exception ignored) {}
+        if (cachedOriginalSignature == null) {
+            cachedOriginalSignature = "38918a453d07199354f8b19af05ec6562ced5788";
+        }
+        return cachedOriginalSignature;
+    }
+
+    public static String getEffectiveOriginalPackageName(Context context) {
+        String original = getOriginalPackageName();
+        if (original != null && !original.isEmpty()) {
+            return original;
+        }
+        if (context != null) {
+            String current = context.getPackageName();
+            if (current != null) {
+                if (current.startsWith("app.morphe.android.apps.")) {
+                    return "com.google.android.apps." + current.substring("app.morphe.android.apps.".length());
+                } else if (current.startsWith("app.morphe.")) {
+                    return "com.google.android." + current.substring("app.morphe.".length());
+                } else if (current.startsWith("app.revanced.android.apps.")) {
+                    return "com.google.android.apps." + current.substring("app.revanced.android.apps.".length());
+                } else if (current.startsWith("app.revanced.")) {
+                    return "com.google.android." + current.substring("app.revanced.".length());
+                }
+                return current;
+            }
+        }
+        return "com.google.android.youtube";
+    }
+
+    public static String getEffectivePackageSignature(Context context) {
+        try {
+            if (context != null) {
+                String targetPkg = getEffectiveOriginalPackageName(context);
+                PackageManager pm = context.getPackageManager();
+                PackageInfo info = pm.getPackageInfo(targetPkg, PackageManager.GET_SIGNATURES);
+                if (info != null && info.signatures != null && info.signatures.length > 0) {
+                    MessageDigest md = MessageDigest.getInstance("SHA-1");
+                    byte[] digest = md.digest(info.signatures[0].toByteArray());
+                    StringBuilder sb = new StringBuilder();
+                    for (byte b : digest) {
+                        sb.append(String.format("%02x", b));
+                    }
+                    return sb.toString();
+                }
+            }
+        } catch (Exception ignored) {}
+        return "38918a453d07199354f8b19af05ec6562ced5788";
+    }
+
+    public static String spoofHeaderValue(String key, String value) {
+        if ("X-Android-Package".equalsIgnoreCase(key)) {
+            Context ctx = Utils.getContext();
+            String original = getEffectiveOriginalPackageName(ctx);
+            Logger.printInfo(() -> "GmsCoreSupportPatch: Spoofing X-Android-Package from [" + value + "] to [" + original + "]");
+            return original;
+        }
+        if ("X-Android-Cert".equalsIgnoreCase(key)) {
+            String originalSig = getOriginalPackageSignature();
+            Logger.printInfo(() -> "GmsCoreSupportPatch: Spoofing X-Android-Cert to [" + originalSig + "]");
+            return originalSig;
+        }
+        return value;
+    }
+
+    public static Object spoofHeaderValue(Object keyObj, Object valueObj) {
+        if (keyObj != null && valueObj instanceof String) {
+            String keyStr = keyObj.toString();
+            if (keyStr.equalsIgnoreCase("X-Android-Package") || keyStr.equalsIgnoreCase("X-Android-Package-bin")) {
+                Context ctx = Utils.getContext();
+                String original = getEffectiveOriginalPackageName(ctx);
+                Logger.printInfo(() -> "GmsCoreSupportPatch: Spoofing gRPC metadata package from [" + valueObj + "] to [" + original + "]");
+                return original;
+            }
+            if (keyStr.equalsIgnoreCase("X-Android-Cert") || keyStr.equalsIgnoreCase("X-Android-Cert-bin")) {
+                String originalSig = getOriginalPackageSignature();
+                Logger.printInfo(() -> "GmsCoreSupportPatch: Spoofing gRPC metadata cert to [" + originalSig + "]");
+                return originalSig;
+            }
+        }
+        return valueObj;
+    }
+
+    public static String spoofPackageName(String packageName) {
+        Context ctx = Utils.getContext();
+        String targetPkg = getEffectiveOriginalPackageName(ctx);
+        if (packageName != null && !packageName.equals(targetPkg)) {
+            if (packageName.contains("morphe") || packageName.contains("revanced") ||
+                packageName.startsWith("app.") || (ctx != null && packageName.equals(ctx.getPackageName()))) {
+                Logger.printInfo(() -> "GmsCoreSupportPatch: Spoofing registration package name from [" + packageName + "] to [" + targetPkg + "]");
+                return targetPkg;
+            }
+        }
+        return packageName;
+    }
 }

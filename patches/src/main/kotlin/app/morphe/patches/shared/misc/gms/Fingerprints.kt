@@ -13,6 +13,7 @@ package app.morphe.patches.shared.misc.gms
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
@@ -102,3 +103,44 @@ internal object OriginalPackageNameExtensionFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     parameters = listOf()
 )
+
+private object GnpRequestBuilderClassFingerprint : Fingerprint(
+    strings = listOf("Property \"headers\" has not been set"),
+)
+
+/**
+ * Matches the GNP (Google Notifications Platform / Chime) HTTP request builder method
+ * which adds headers to requests destined for notifications-pa.googleapis.com.
+ */
+internal object GnpRequestBuilderFingerprint : Fingerprint(
+    classFingerprint = GnpRequestBuilderClassFingerprint,
+    parameters = listOf("Ljava/lang/String;", "Ljava/lang/String;"),
+    returnType = "V",
+)
+
+private object GrpcMetadataClassFingerprint : Fingerprint(
+    strings = listOf("Metadata("),
+)
+
+/**
+ * Matches io.grpc.Metadata.put(Metadata.Key, Object) method across Google apps.
+ */
+internal object GrpcMetadataPutFingerprint : Fingerprint(
+    classFingerprint = GrpcMetadataClassFingerprint,
+    parameters = listOf("L", "Ljava/lang/Object;"),
+    returnType = "V",
+)
+
+/**
+ * Matches the GNP certificate hash calculation method in com.google.android.libraries.notifications
+ * which queries PackageInfo.signatures and computes the SHA-1 digest.
+ */
+internal object GnpCertProviderSignaturesFingerprint : Fingerprint(
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(name = "signatures", type = "[Landroid/content/pm/Signature;"),
+    ),
+    strings = listOf("SHA-1"),
+)
+

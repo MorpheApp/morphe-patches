@@ -59,6 +59,8 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
  * @param extensionPatch The patch responsible for the extension.
  * @param useLegacyGnpFingerprint If the app builds the GNP registration target in the legacy method.
  * Resolved when the patch runs so that it can depend on the app version.
+ * @param enableGnpPushSupport If the app supports GNP push notification registration spoofing.
+ * Resolved when the patch runs so that it can depend on the app version.
  * @param executeBlock The additional execution block of the patch.
  * @param block The additional block to build the patch.
  */
@@ -71,6 +73,7 @@ fun gmsCoreSupportPatch(
     extensionPatch: Patch,
     gmsCoreSupportResourcePatchFactory: () -> Patch,
     useLegacyGnpFingerprint: () -> Boolean,
+    enableGnpPushSupport: () -> Boolean = { false },
     executeBlock: () -> Unit = {},
     block: PatchDefinition.() -> Unit = {},
 ) = patch(
@@ -175,7 +178,7 @@ fun gmsCoreSupportPatch(
         } else {
             GnpRegistrationTargetSuspendFingerprint
         }
-        gnpFingerprint.let { match ->
+        gnpFingerprint.matchOrNull()?.let { match ->
             val result = match.instructionMatches[1]
             match.method.replaceInstruction(
                 result.index,
@@ -185,6 +188,39 @@ fun gmsCoreSupportPatch(
                     ImmutableStringReference(fromPackageName),
                 ),
             )
+        }
+
+        if (enableGnpPushSupport()) {
+            GnpCertProviderSignaturesFingerprint.matchAll().forEach { match ->
+                match.method.addInstruction(
+                    0,
+                    """
+                    invoke-static {}, $EXTENSION_CLASS->getOriginalPackageSignature()Ljava/lang/String;
+                    move-result-object v0
+                    return-object v0
+                    """.trimIndent(),
+                )
+            }
+
+            GnpRequestBuilderFingerprint.matchAll().forEach { match ->
+                match.method.addInstruction(
+                    0,
+                    """
+                    invoke-static {p0, p1}, $EXTENSION_CLASS->spoofHeaderValue(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+                    move-result-object p1
+                    """.trimIndent(),
+                )
+            }
+
+            GrpcMetadataPutFingerprint.matchAll().forEach { match ->
+                match.method.addInstruction(
+                    0,
+                    """
+                    invoke-static {p0, p1}, $EXTENSION_CLASS->spoofHeaderValue(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+                    move-result-object p1
+                    """.trimIndent(),
+                )
+            }
         }
 
         executeBlock()
