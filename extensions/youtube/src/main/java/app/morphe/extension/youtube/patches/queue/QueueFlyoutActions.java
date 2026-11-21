@@ -77,7 +77,7 @@ public final class QueueFlyoutActions {
     /**
      * Injection point.
      * <p>
-     * Binds the Play next in queue item in the playlist page's toolbar menu.
+     * Binds the queue items in the playlist page's toolbar menu.
      */
     @Nullable
     public static MessageLite preparePlaylistPageMenu(@Nullable MessageLite original) {
@@ -86,7 +86,7 @@ public final class QueueFlyoutActions {
         }
         try {
             var stock = MenuRenderer.parseFrom(original.toByteArray());
-            var bound = bindPlaylistPageMenu(stock);
+            var bound = bindPlaylistPageMenu(stock, str("morphe_native_playlist_queue_last"));
             return bound == stock ? original : menu.patch_parseQueueFlyout(bound.toByteArray());
         } catch (Exception exception) {
             Logger.printException(() -> "Could not bind playlist page queue action", exception);
@@ -94,7 +94,7 @@ public final class QueueFlyoutActions {
         }
     }
 
-    static MenuRenderer bindPlaylistPageMenu(MenuRenderer menu) {
+    static MenuRenderer bindPlaylistPageMenu(MenuRenderer menu, String lastLabel) {
         String playlistId = "";
         for (var item : menu.getItemsList()) {
             if (icon(item) != YTIconType.SHUFFLE) {
@@ -112,24 +112,58 @@ public final class QueueFlyoutActions {
         }
 
         MenuRenderer.Builder bound = null;
+        int nextIndex = -1;
+        int lastIndex = -1;
         for (int index = 0; index < menu.getItemsCount(); index++) {
             var item = menu.getItems(index);
-            if (icon(item) == YTIconType.QUEUE_PLAY_NEXT && isLocalItem(item)) {
+            if (!isLocalItem(item)) {
+                continue;
+            }
+            // The toolbar presenters can skip the conditional renderer used by feed menus.
+            boolean isToolbarRow = item.hasMenuServiceItemRenderer() || item.hasMenuNavigationItemRenderer();
+            var icon = icon(item);
+            if (icon == YTIconType.QUEUE_PLAY_NEXT) {
                 if (bound == null) {
                     bound = menu.toBuilder();
                 }
                 // Preserve the stock command for any tap the local queue declines.
                 bound.setItems(index, withEndpoint(item, endpoint(item).toBuilder()
                         .setPlaylistPagePlayNextPlaylistId(playlistId)));
+                if (nextIndex < 0 && isToolbarRow) {
+                    nextIndex = index;
+                }
+            } else if (icon == YTIconType.QUEUE_PLAY_LAST && lastIndex < 0 && isToolbarRow) {
+                lastIndex = index;
             }
         }
-        return bound == null ? menu : bound.build();
+        if (bound == null) {
+            return menu;
+        }
+        if (nextIndex >= 0) {
+            MenuItem last;
+            if (lastIndex >= 0) {
+                last = bound.getItems(lastIndex);
+                bound.removeItems(lastIndex);
+                if (lastIndex < nextIndex) {
+                    nextIndex--;
+                }
+            } else {
+                last = MenuItem.newBuilder().setMenuServiceItemRenderer(
+                        PlaylistQueueRenderer.MenuServiceItem.newBuilder()
+                                .setText(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(lastLabel))
+                                .setIcon(Icon.newBuilder().setYtIconType(YTIconType.QUEUE_PLAY_LAST))).build();
+            }
+            bound.addItems(nextIndex + 1, withEndpoint(last, endpoint(last).toBuilder()
+                    .setPlaylistPagePlayLastPlaylistId(playlistId)));
+        }
+        var result = bound.build();
+        return result.equals(menu) ? menu : result;
     }
 
     /**
      * Injection point.
      * <p>
-     * Handles the Play next in queue command when it carries the playlist page's playlist ID.
+     * Handles a queue command when it carries the playlist page's playlist ID.
      */
     public static boolean onPlaylistPageQueueCommand(@Nullable MessageLite original) {
         if (original == null || !AddToQueuePatch.isNativeQueueEnabled()) {
@@ -137,8 +171,10 @@ public final class QueueFlyoutActions {
         }
         try {
             var command = PlaylistQueueRenderer.NavigationEndpoint.parseFrom(original.toByteArray());
+            boolean isPlayLast = command.hasPlaylistPagePlayLastPlaylistId();
             Runnable action = NativePlaylistQueuePatch.getPlaylistQueueAction(
-                    command.getPlaylistPagePlayNextPlaylistId(), false);
+                    isPlayLast ? command.getPlaylistPagePlayLastPlaylistId() : command.getPlaylistPagePlayNextPlaylistId(),
+                    isPlayLast);
             if (action == null) {
                 return false;
             }

@@ -220,6 +220,8 @@ message NavigationEndpoint {
     optional string queue_playlist_id = 500000005;
     // Playlist ID used by the playlist page's Play next in queue action.
     optional string playlist_page_play_next_playlist_id = 500000006;
+    // Playlist ID used by the playlist page's Play last in queue action.
+    optional string playlist_page_play_last_playlist_id = 500000007;
     optional ShareEntityServiceEndpoint legacy_share_entity_endpoint = 90650344;
 }
 
