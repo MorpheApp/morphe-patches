@@ -206,6 +206,7 @@ val hideLayoutComponentsPatch = patch(
                     SwitchPreference("morphe_hide_comments_thanks_button", titleKey = "morphe_hide_thanks_button_title"),
                     SwitchPreference("morphe_hide_comments_timestamp_button"),
                     SwitchPreference("morphe_hide_comments_top_fans_button"),
+                    SwitchPreference("morphe_hide_comments_topics", summary = true),
                     SwitchPreference("morphe_hide_comments_translate_button"),
                     SwitchPreference("morphe_sanitize_comments_highlighted_search_links", summary = true)
                 ),
@@ -614,7 +615,7 @@ val hideLayoutComponentsPatch = patch(
 
         // endregion
 
-        // region hide comments carousel
+        // region hide comments carousel and Topics
 
         hookElement("$COMMENTS_FILTER->onCommentsLoaded")
 
