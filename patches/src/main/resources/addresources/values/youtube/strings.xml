@@ -1118,7 +1118,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
 
     <!-- interaction.holdgesture.holdGesturePatch -->
     <string name="morphe_hold_gesture_screen_title">Hold gesture</string>
-    <string name="morphe_hold_gesture_screen_summary">Change and lock the playback speed by dragging after tapping and holding</string>
+    <string name="morphe_hold_gesture_screen_summary">Change and lock the playback speed, and run actions, by dragging after tapping and holding</string>
     <string name="morphe_hold_gesture_title">Enable hold gesture</string>
     <string name="morphe_hold_gesture_summary">Tapping and holding the video can be followed by a drag. The speed while holding is the tap and hold playback speed</string>
     <string name="morphe_hold_gesture_press_to_swipe_summary">Not used while press to swipe is on. Tap to change</string>
@@ -1144,11 +1144,28 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_hold_gesture_lock_title">Drag down to lock the speed</string>
     <string name="morphe_hold_gesture_lock_summary">After tapping and holding, drag down to keep the speed when the finger is lifted. Tap the badge or tap and hold again to unlock</string>
     <string name="morphe_hold_gesture_lock_badge_always_title">Always show the lock badge</string>
-    <string name="morphe_hold_gesture_lock_badge_always_summary">The badge of a locked speed stays visible while the player controls are hidden</string>
+    <string name="morphe_hold_gesture_lock_badge_always_summary">Shows the badge of a locked speed also when the player controls are not shown. If off, the badge shows together with the player controls</string>
     <string name="morphe_hold_gesture_unlock_on_video_change_title">Unlock when the video changes</string>
     <string name="morphe_hold_gesture_unlock_on_video_change_summary">A locked speed ends when another video starts</string>
     <string name="morphe_hold_gesture_lock_hint">Pull down to lock</string>
     <string name="morphe_hold_gesture_lock_release">Release to lock %s</string>
+    <string name="morphe_hold_gesture_launcher_title">Drag up to open the launcher</string>
+    <string name="morphe_hold_gesture_launcher_summary">After tapping and holding, drag up to show actions around the finger. Lift the finger on an action to run it</string>
+    <string name="morphe_hold_gesture_launcher_slot_count_title">Number of actions</string>
+    <string name="morphe_hold_gesture_launcher_slot_1_title">Action 1</string>
+    <string name="morphe_hold_gesture_launcher_slot_2_title">Action 2</string>
+    <string name="morphe_hold_gesture_launcher_slot_3_title">Action 3</string>
+    <string name="morphe_hold_gesture_launcher_slot_4_title">Action 4</string>
+    <string name="morphe_hold_gesture_launcher_slot_5_title">Action 5</string>
+    <string name="morphe_hold_gesture_launcher_action_screen_lock">Lock screen</string>
+    <string name="morphe_hold_gesture_launcher_action_loop">Loop video</string>
+    <string name="morphe_hold_gesture_launcher_action_loop_off">Stop looping</string>
+    <string name="morphe_hold_gesture_launcher_action_screenshot">Save frame</string>
+    <string name="morphe_hold_gesture_launcher_action_watch_later">Save to Watch later</string>
+    <string name="morphe_hold_gesture_launcher_action_timestamp_url">Copy link at current time</string>
+    <string name="morphe_hold_gesture_screen_unlock">Tap to unlock</string>
+    <string name="morphe_hold_gesture_frame_saved">Frame saved to %s</string>
+    <string name="morphe_hold_gesture_frame_failed">Could not save the frame</string>
 
     <!-- layout.captions.captionsPatch -->
     <string name="morphe_captions_screen_title">Captions</string>

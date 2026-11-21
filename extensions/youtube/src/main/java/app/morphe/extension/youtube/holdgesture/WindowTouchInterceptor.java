@@ -25,7 +25,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 /**
- * Sees every touch of a window before the views do, and can keep touches from them.
+ * Sees every touch and key of a window before the views do, and can keep them from the views.
  * Everything else goes to the callback the window had before.
  */
 final class WindowTouchInterceptor implements Window.Callback {
@@ -37,19 +37,29 @@ final class WindowTouchInterceptor implements Window.Callback {
         boolean onWindowTouchEvent(WindowTouchInterceptor source, MotionEvent event);
     }
 
+    interface KeyHandler {
+        /**
+         * @return True to keep the event from the views of the window.
+         */
+        boolean onWindowKeyEvent(WindowTouchInterceptor source, KeyEvent event);
+    }
+
     private final Window.Callback wrapped;
     private final TouchHandler handler;
+    private final KeyHandler keyHandler;
 
-    private WindowTouchInterceptor(Window.Callback wrapped, TouchHandler handler) {
+    private WindowTouchInterceptor(Window.Callback wrapped, TouchHandler handler, KeyHandler keyHandler) {
         this.wrapped = wrapped;
         this.handler = handler;
+        this.keyHandler = keyHandler;
     }
 
     /**
      * @return The interceptor that is now the callback of the window.
      */
-    static WindowTouchInterceptor install(Window window, TouchHandler handler) {
-        final WindowTouchInterceptor interceptor = new WindowTouchInterceptor(window.getCallback(), handler);
+    static WindowTouchInterceptor install(Window window, TouchHandler handler, KeyHandler keyHandler) {
+        final WindowTouchInterceptor interceptor =
+                new WindowTouchInterceptor(window.getCallback(), handler, keyHandler);
         window.setCallback(interceptor);
         return interceptor;
     }
@@ -71,6 +81,9 @@ final class WindowTouchInterceptor implements Window.Callback {
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
+        if (keyHandler.onWindowKeyEvent(this, event)) {
+            return true;
+        }
         return wrapped.dispatchKeyEvent(event);
     }
 

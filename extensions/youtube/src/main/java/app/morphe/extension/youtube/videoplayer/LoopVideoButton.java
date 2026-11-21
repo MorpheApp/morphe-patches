@@ -227,7 +227,10 @@ public class LoopVideoButton {
         return LOOP_VIDEO_ON;
     }
 
-    private static void updateButtonIcon() {
+    /**
+     * Shows the state of the loop, after it was changed somewhere else.
+     */
+    public static void updateButtonIcon() {
         LegacyPlayerControlButton localInstance = legacy;
         if (localInstance == null) return;
         localInstance.setIcon(getTargetIcon());

@@ -1264,13 +1264,20 @@ public final class PostImageDownloadPatch {
     /**
      * @return The folder the images are saved to, as shown to the user.
      */
-    private static String getSaveFolderName() {
+    public static String getSaveFolderName() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
                 ? Environment.DIRECTORY_PICTURES + File.separator + FOLDER
                 : getLegacySaveFolder().getPath();
     }
 
-    private static boolean save(byte[] data, String name) throws Exception {
+    /**
+     * Saves an image to the pictures of the device.
+     *
+     * @param data Image file as JPEG, PNG or WebP.
+     * @param name File name without the extension.
+     * @return Whether the image was saved.
+     */
+    public static boolean save(byte[] data, String name) throws Exception {
         ImageType type = getType(data);
         String fileName = name + '.' + type.extension;
 
