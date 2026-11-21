@@ -954,6 +954,48 @@
         <item>AVC</item>
     </string-array>
 
+    <!-- video.effects.videoEffectsPatch -->
+    <string-array name="morphe_video_effect_entries">
+        <item>@string/morphe_video_effect_entry_none</item>
+        <item>@string/morphe_video_effect_entry_black_and_white</item>
+        <item>@string/morphe_video_effect_entry_old_film</item>
+        <item>@string/morphe_video_effect_entry_invert</item>
+        <item>@string/morphe_video_effect_entry_thermal</item>
+        <item>@string/morphe_video_effect_entry_night_vision</item>
+        <item>@string/morphe_video_effect_entry_vhs</item>
+        <item>@string/morphe_video_effect_entry_alien</item>
+        <item>@string/morphe_video_effect_entry_rainbow</item>
+        <item>@string/morphe_video_effect_entry_pop_art</item>
+        <item>@string/morphe_video_effect_entry_retro_handheld</item>
+        <item>@string/morphe_video_effect_entry_retro_pc</item>
+        <item>@string/morphe_video_effect_entry_ascii_art</item>
+        <item>@string/morphe_video_effect_entry_neon_edges</item>
+        <item>@string/morphe_video_effect_entry_comic_book</item>
+        <item>@string/morphe_video_effect_entry_pencil_sketch</item>
+        <item>@string/morphe_video_effect_entry_underwater</item>
+        <item>@string/morphe_video_effect_entry_kaleidoscope</item>
+    </string-array>
+    <string-array name="morphe_video_effect_entry_values">
+        <item>NONE</item>
+        <item>BLACK_AND_WHITE</item>
+        <item>OLD_FILM</item>
+        <item>INVERT</item>
+        <item>THERMAL</item>
+        <item>NIGHT_VISION</item>
+        <item>VHS</item>
+        <item>ALIEN</item>
+        <item>RAINBOW</item>
+        <item>POP_ART</item>
+        <item>RETRO_HANDHELD</item>
+        <item>RETRO_PC</item>
+        <item>ASCII_ART</item>
+        <item>NEON_EDGES</item>
+        <item>COMIC_BOOK</item>
+        <item>PENCIL_SKETCH</item>
+        <item>UNDERWATER</item>
+        <item>KALEIDOSCOPE</item>
+    </string-array>
+
     <!-- video.quality.rememberVideoQualityPatch -->
     <!-- Forcing video qualities lower than what's available doesn't work with Shorts, such as 144p.
          If 144p is forced, after a few seconds the quality resets back to 720p/1080p. -->

@@ -70,6 +70,7 @@ import app.morphe.extension.youtube.patches.PostImageDownloadPatch;
 import app.morphe.extension.youtube.patches.PostTranslatePatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoDelayPatch;
+import app.morphe.extension.youtube.patches.VideoEffectsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter;
 import app.morphe.extension.youtube.patches.onthego.OnTheGoPatch;
@@ -86,6 +87,7 @@ import app.morphe.extension.youtube.videoplayer.PictureinPictureButton;
 import app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton;
 import app.morphe.extension.youtube.videoplayer.ShortsDownloadButton;
 import app.morphe.extension.youtube.videoplayer.VideoDelayDialogButton;
+import app.morphe.extension.youtube.videoplayer.VideoEffectFlyoutButton;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
 
 @SuppressWarnings("unused")
@@ -830,6 +832,14 @@ public final class FlyoutUtils {
 
         if (VideoDelayPatch.isPatchIncluded()) {
             nextButtonIndex = VideoDelayDialogButton.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
+            );
+        }
+
+        if (VideoEffectsPatch.isPatchIncluded()) {
+            nextButtonIndex = VideoEffectFlyoutButton.addFlyoutButton(
                     flyoutPanel,
                     nextButtonIndex,
                     PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
