@@ -255,4 +255,56 @@ public class LyricsWordTimingCalcTest {
         assertEquals(3, timings.get(0).end());
         assertEquals(100, timings.get(0).endMs());
     }
+
+    @Test
+    public void singleEnglishWordLineGetsCharacterSweepSpansInsteadOfLineSync() {
+        // Pretender ("Goodbye") when Unison provides a single whole-word span on the line.
+        LyricsLine pretenderChorus = line(1000, 2400, "Goodbye",
+                List.of(new Word(1000, 2400, "Goodbye")));
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(pretenderChorus), 0, false);
+        assertEquals(7, timings.size());
+        assertEquals(0, timings.get(0).start());
+        assertEquals(7, timings.get(6).end());
+        assertEquals(1000, timings.get(0).startMs());
+        assertEquals(2400, timings.get(6).endMs());
+        for (WordTiming wt : timings) {
+            assertFalse(wt.averaged());
+        }
+    }
+
+    @Test
+    public void singleKatakanaWordLineGetsCharacterSweepSpansInsteadOfLineSync() {
+        LyricsLine gubbai = line(1000, 2200, "グッバイ",
+                List.of(new Word(1000, 2200, "グッバイ")));
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(
+                List.of(gubbai), 0, false);
+        assertEquals(4, timings.size());
+        assertEquals(1000, timings.get(0).startMs());
+        assertEquals(2200, timings.get(3).endMs());
+        for (WordTiming wt : timings) {
+            assertFalse(wt.averaged());
+        }
+    }
+
+    @Test
+    public void wordlessLineInsideWordSyncedSongGetsSynthesizedNonAveragedSweepSpans() {
+        // Pretender when one line in a word-synced song arrives with empty words[] from provider.
+        LyricsLine wordSyncedLine = line(0, 1000, "君の運命のヒトは僕じゃない",
+                List.of(
+                        new Word(0, 400, "君の"),
+                        new Word(400, 1000, "運命のヒトは僕じゃない")));
+        LyricsLine loneLineSynced = line(1000, 2400, "Goodbye", List.of());
+        List<LyricsLine> songLines = List.of(wordSyncedLine, loneLineSynced);
+
+        List<WordTiming> timings = LyricsWordTimingCalc.computeWordTimings(songLines, 1, false);
+        assertFalse(timings.isEmpty());
+        assertEquals(0, timings.get(0).start());
+        assertEquals(7, timings.get(timings.size() - 1).end());
+        assertEquals(1000, timings.get(0).startMs());
+        assertEquals(2400, timings.get(timings.size() - 1).endMs());
+        for (WordTiming wt : timings) {
+            assertFalse(wt.averaged());
+        }
+    }
 }

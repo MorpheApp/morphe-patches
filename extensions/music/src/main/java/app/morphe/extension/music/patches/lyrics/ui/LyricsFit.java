@@ -91,7 +91,14 @@ final class LyricsFit {
                 .build();
     }
 
+    public static void invalidateFontCache() {
+        widthAxisSupport = null;
+    }
+
     private static boolean widthAxisSupported(TextPaint paint) {
+        if (!LyricsFontManager.activeFontSupportsWidthAxis()) {
+            return false;
+        }
         if (widthAxisSupport == null) {
             final TextPaint probe = new TextPaint(paint);
             probe.setTextSize(100f);

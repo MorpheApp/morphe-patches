@@ -23,7 +23,6 @@ import java.util.Locale;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.lyrics.romanizers.CldrTransformsStore;
-import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictionaryStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictionaryStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.RubyGenerator;
 import app.morphe.extension.music.settings.Settings;
@@ -51,7 +50,6 @@ public class LyricsTargetLanguagePreference extends Preference {
     private static final String SYRIAC = "SYC";
     private static final String DEFAULT = "DEFAULT";
     private static final String NONE = "NONE";
-    private static final String JAPANESE_DICTIONARY = "SudachiDict";
 
     public LyricsTargetLanguagePreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
@@ -128,7 +126,7 @@ public class LyricsTargetLanguagePreference extends Preference {
             return RimeDictionaryStore.customLabel(ruby);
         }
         if (RubyGenerator.isJapaneseRubyLanguage(ruby)) {
-            return JapaneseDictionaryStore.isReady() ? JAPANESE_DICTIONARY : null;
+            return RubyGenerator.activeJapaneseDictionaryName();
         }
         return null;
     }
@@ -216,7 +214,7 @@ public class LyricsTargetLanguagePreference extends Preference {
         }
         final boolean kanaRubyStyle = "ja-Hira".equalsIgnoreCase(value)
                 || "ja-Kana".equalsIgnoreCase(value);
-        return kanaRubyStyle && !JapaneseDictionaryStore.isReady();
+        return kanaRubyStyle && !RubyGenerator.isJapaneseDictionaryReady();
     }
 
     private static boolean isAddedByUser(String value) {
@@ -284,14 +282,15 @@ public class LyricsTargetLanguagePreference extends Preference {
         if (translation || base.length != values.length) {
             return base;
         }
+        final String jaDictName = RubyGenerator.activeJapaneseDictionaryName();
         final List<CharSequence> merged = new ArrayList<>(base.length + 1);
         for (int i = 0; i < base.length; i++) {
             final String value = values[i].toString();
             if (isWaitingForDownload(value)) {
                 continue;
             }
-            if (RubyGenerator.isJapaneseRubyLanguage(value) && JapaneseDictionaryStore.isReady()) {
-                merged.add(base[i] + " (" + JAPANESE_DICTIONARY + ")");
+            if (RubyGenerator.isJapaneseRubyLanguage(value) && jaDictName != null) {
+                merged.add(base[i] + " (" + jaDictName + ")");
             } else {
                 merged.add(base[i]);
             }

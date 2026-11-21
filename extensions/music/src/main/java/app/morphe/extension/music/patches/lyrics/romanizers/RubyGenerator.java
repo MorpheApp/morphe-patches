@@ -68,6 +68,35 @@ public final class RubyGenerator {
         return enabled;
     }
 
+    /** Whether any offline Japanese dictionary (Kuromoji or SudachiDict) is ready on disk. */
+    public static boolean isJapaneseDictionaryReady() {
+        return KuromojiDictStore.isReady() || JapaneseDictionaryStore.isReady();
+    }
+
+    /**
+     * Whether {@link KuromojiDictStore} should be used for Japanese analysis (either because it is
+     * the only downloaded Japanese dictionary, or because it is selected in settings when both are
+     * downloaded).
+     */
+    public static boolean useKuromojiEngine() {
+        if (!KuromojiDictStore.isReady()) {
+            return false;
+        }
+        if (!JapaneseDictionaryStore.isReady()) {
+            return true;
+        }
+        return !"sudachi".equalsIgnoreCase(Settings.LYRICS_JAPANESE_DICT_ENGINE.get());
+    }
+
+    /** Display name of the active offline Japanese dictionary, or {@code null} when none is ready. */
+    @Nullable
+    public static String activeJapaneseDictionaryName() {
+        if (useKuromojiEngine()) {
+            return KuromojiRomanizer.DICTIONARY_NAME;
+        }
+        return JapaneseDictionaryStore.isReady() ? "SudachiDict" : null;
+    }
+
     /**
      * The ruby the source ships, or none if that provider is off, plus the offline dictionary
      * readings once the dictionary is downloaded.
@@ -89,9 +118,31 @@ public final class RubyGenerator {
         }
 
         // A manual language is read by its own dictionary, whichever romanization providers are on.
+        // Respect priority + fallback when both Kuromoji and SudachiDict are available.
         if (isJapaneseRubyLanguage(rubyLanguage)) {
-            final WordReadingTable table = JapaneseDictionaryStore.table();
-            return table != null ? enrichFromDictionary(current, table, style) : current;
+            Lyrics updated = current;
+            if (useKuromojiEngine()) {
+                final KuromojiTokenizer tokenizer = KuromojiDictStore.tokenizer();
+                if (tokenizer != null) {
+                    updated = KuromojiRomanizer.enrichLyricsRuby(updated, tokenizer, style);
+                }
+                try (WordReadingTable table = JapaneseDictionaryStore.table()) {
+                    if (table != null && hasUnrubiedHanWords(updated)) {
+                        updated = enrichFromDictionary(updated, table, style);
+                    }
+                }
+                return updated;
+            }
+            try (WordReadingTable table = JapaneseDictionaryStore.table()) {
+                if (table != null) {
+                    updated = enrichFromDictionary(updated, table, style);
+                }
+            }
+            final KuromojiTokenizer tokenizer = KuromojiDictStore.tokenizer();
+            if (tokenizer != null && hasUnrubiedHanWords(updated)) {
+                updated = KuromojiRomanizer.enrichLyricsRuby(updated, tokenizer, style);
+            }
+            return updated;
         }
         // What is left is a language the user added a Rime word table for.
         final WordReadingTable words = RimeDictionaryStore.word(rubyLanguage);
@@ -161,6 +212,23 @@ public final class RubyGenerator {
         for (LyricsLine line : lines) {
             if (ScriptDetector.contains(line.text(), Character.UnicodeScript.HAN) || hasRuby(line)) {
                 return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasUnrubiedHanWords(Lyrics lyrics) {
+        for (LyricsLine line : lyrics.lines()) {
+            if (!ScriptDetector.contains(line.text(), Character.UnicodeScript.HAN)) {
+                continue;
+            }
+            if (line.words().isEmpty()) {
+                return true;
+            }
+            for (Word word : line.words()) {
+                if (!hasRuby(word) && ScriptDetector.contains(word.text(), Character.UnicodeScript.HAN)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -251,6 +319,11 @@ public final class RubyGenerator {
         int i = 0;
         while (i < words.size()) {
             Word word = words.get(i);
+            if (hasRuby(word)) {
+                read.add(word);
+                i++;
+                continue;
+            }
             String text = word.text().trim();
             if (!ScriptDetector.contains(text, Character.UnicodeScript.HAN)) {
                 read.add(word);
@@ -406,9 +479,10 @@ public final class RubyGenerator {
             if (!hasRuby(word) && needsSplit(word.text(), table)) {
                 List<Word> parts = segmentText(word.text(), word.startMs(), word.endMs(), table);
                 if (parts.size() > 1) {
+                    distributeWordRomajiToParts(word, parts, table);
                     Word last = parts.get(parts.size() - 1);
                     parts.set(parts.size() - 1, new Word(last.startMs(), last.endMs(),
-                            last.text(), last.romaji(), word.endsWithSpace(), null));
+                            last.text(), last.romaji(), word.endsWithSpace(), last.ruby()));
                     expanded.addAll(parts);
                     continue;
                 }
@@ -416,6 +490,62 @@ public final class RubyGenerator {
             expanded.add(word);
         }
         return expanded;
+    }
+
+    private static void distributeWordRomajiToParts(
+            Word originalWord, List<Word> parts, @Nullable WordReadingTable table) {
+        String origRom = originalWord.romaji();
+        if (origRom == null || origRom.trim().isEmpty()) {
+            return;
+        }
+        String cleanRom = origRom.trim();
+        int count = parts.size();
+        String[] partTexts = new String[count];
+        List<String> guides = new ArrayList<>(count);
+        for (int p = 0; p < count; p++) {
+            String t = parts.get(p).text() != null ? parts.get(p).text().trim() : "";
+            partTexts[p] = t;
+            String g = "";
+            if (table != null && ScriptDetector.contains(t, Character.UnicodeScript.HAN)) {
+                String r = lookupReading(t, table);
+                if (r != null && !r.isEmpty()) {
+                    g = KanaRomanizer.romanize(r);
+                }
+            } else if (ScriptDetector.containsKana(t)) {
+                g = KanaRomanizer.romanize(t);
+            }
+            guides.add(g);
+        }
+        boolean[] latinFlags = new boolean[count];
+        JapaneseMoraSplitter.AlignedChunk[] aligned = JapaneseMoraSplitter.alignJapaneseLineToSlots(
+                cleanRom, partTexts, latinFlags, guides);
+        String[] assigned = new String[count];
+        if (aligned != null && aligned.length == count) {
+            for (int p = 0; p < count; p++) {
+                String txt = aligned[p].text() != null ? aligned[p].text().trim() : "";
+                if (!txt.isEmpty()) {
+                    assigned[p] = aligned[p].trailingSpace() ? (txt + " ") : txt;
+                }
+            }
+        } else {
+            List<String> split = JapaneseMoraSplitter.partitionMorasToSlots(cleanRom, count, guides, partTexts);
+            for (int p = 0; p < count && p < split.size(); p++) {
+                String piece = split.get(p) != null ? split.get(p).trim() : "";
+                if (!piece.isEmpty()) {
+                    assigned[p] = piece;
+                }
+            }
+        }
+        for (int p = 0; p < count; p++) {
+            String rom = assigned[p];
+            if ((rom == null || rom.trim().isEmpty()) && p < guides.size() && !guides.get(p).isEmpty()) {
+                rom = guides.get(p);
+            }
+            if (rom != null && !rom.isEmpty()) {
+                Word w = parts.get(p);
+                parts.set(p, new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
+            }
+        }
     }
 
     /**

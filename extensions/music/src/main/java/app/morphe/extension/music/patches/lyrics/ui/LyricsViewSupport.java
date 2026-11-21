@@ -19,7 +19,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Paint;
 import android.graphics.RenderEffect;
 import android.graphics.Shader;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
@@ -77,14 +76,14 @@ final class LyricsViewSupport {
     private LyricsViewSupport() {
     }
 
-    /** Bolds a paint for lyrics; a typeface set on it afterward undoes the weight. */
+    /** Bolds a paint for lyrics (using the active custom lyrics font when set). */
     static void applyLyricsBoldPaint(Paint paint) {
-        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        paint.setTypeface(LyricsFontManager.mainTypeface());
         paint.setFlags(paint.getFlags()
                 | Paint.ANTI_ALIAS_FLAG
                 | Paint.SUBPIXEL_TEXT_FLAG
                 | Paint.LINEAR_TEXT_FLAG);
-        paint.setFontVariationSettings(null);
+        paint.setFontVariationSettings(LyricsFontManager.mainFontVariation());
         paint.setFakeBoldText(false);
     }
 
@@ -252,6 +251,7 @@ final class LyricsViewSupport {
     static void applyFooterStyle(TextView footer) {
         footer.setTextSize(TypedValue.COMPLEX_UNIT_SP, FOOTER_TEXT_SIZE_SP);
         footer.setTextColor(LyricsColors.secondaryTextColor());
+        footer.setTypeface(LyricsFontManager.regularOrMainTypeface());
         // The secondary color alone is brighter than the app draws this line, which
         // sits dimmer than even the inactive lyrics above it.
         footer.setAlpha(FOOTER_ALPHA);
