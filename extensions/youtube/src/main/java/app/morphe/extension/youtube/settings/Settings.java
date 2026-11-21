@@ -38,6 +38,8 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.youtube.holdgesture.HoldGestureController.Sensitivity;
+import app.morphe.extension.youtube.holdgesture.HoldGestureController.SpeedStep;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NativeQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NotLocalQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
@@ -851,6 +853,18 @@ public class Settings extends SharedYouTubeSettings {
     public static final FloatSetting SWIPE_BRIGHTNESS_VALUE = new FloatSetting("morphe_swipe_brightness_value", -1f);
     public static final BooleanSetting SWIPE_LOWEST_VALUE_ENABLE_AUTO_BRIGHTNESS = new BooleanSetting("morphe_swipe_lowest_value_enable_auto_brightness", FALSE, true, new SwipeActionAvailability(SwipeZoneAction.BRIGHTNESS));
     public static final IntegerSetting SWIPE_ZONE_WIDTH = new IntegerSetting("morphe_swipe_zone_width", 37, true, new SideSwipeZonesAvailability());
+
+    // Hold gesture
+    public static final BooleanSetting HOLD_GESTURE = new BooleanSetting("morphe_hold_gesture", FALSE, true);
+    public static final BooleanSetting HOLD_GESTURE_HAPTIC_FEEDBACK = new BooleanSetting("morphe_hold_gesture_haptic_feedback", TRUE, parent(HOLD_GESTURE));
+    public static final BooleanSetting HOLD_GESTURE_SPEED_SWIPE = new BooleanSetting("morphe_hold_gesture_speed_swipe", TRUE, parent(HOLD_GESTURE));
+    public static final EnumSetting<SpeedStep> HOLD_GESTURE_SPEED_STEP = new EnumSetting<>("morphe_hold_gesture_speed_step", SpeedStep.STEP_025, parent(HOLD_GESTURE_SPEED_SWIPE));
+    public static final EnumSetting<Sensitivity> HOLD_GESTURE_SPEED_SENSITIVITY = new EnumSetting<>("morphe_hold_gesture_speed_sensitivity", Sensitivity.NORMAL, parent(HOLD_GESTURE_SPEED_SWIPE));
+    public static final FloatSetting HOLD_GESTURE_SPEED_MIN = new FloatSetting("morphe_hold_gesture_speed_min", 0.25f, parent(HOLD_GESTURE_SPEED_SWIPE));
+    public static final FloatSetting HOLD_GESTURE_SPEED_MAX = new FloatSetting("morphe_hold_gesture_speed_max", 4.0f, parent(HOLD_GESTURE_SPEED_SWIPE));
+    public static final BooleanSetting HOLD_GESTURE_LOCK = new BooleanSetting("morphe_hold_gesture_lock", TRUE, parent(HOLD_GESTURE));
+    public static final BooleanSetting HOLD_GESTURE_LOCK_BADGE_ALWAYS = new BooleanSetting("morphe_hold_gesture_lock_badge_always", FALSE, parent(HOLD_GESTURE_LOCK));
+    public static final BooleanSetting HOLD_GESTURE_UNLOCK_ON_VIDEO_CHANGE = new BooleanSetting("morphe_hold_gesture_unlock_on_video_change", TRUE, parent(HOLD_GESTURE_LOCK));
 
     // Niconico comments
     public static final BooleanSetting NICONICO_COMMENTS = new BooleanSetting("morphe_niconico_comments", FALSE, true);
