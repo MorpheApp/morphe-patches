@@ -34,14 +34,27 @@ final class LithoFills {
 
     private static final Map<Drawable, Integer> colors = new WeakHashMap<>();
 
+    /**
+     * Counts the opaque fills Litho has drawn, so a menu can hide a new fill before it is drawn.
+     */
+    private static volatile int changes;
+
     static void onColor(Drawable drawable, @ColorInt int color) {
         synchronized (colors) {
             if (Color.alpha(color) >= 0xF0) {
                 colors.put(drawable, color);
+                changes++;
             } else {
                 colors.remove(drawable);
             }
         }
+    }
+
+    /**
+     * @return A number that changes when Litho draws an opaque fill.
+     */
+    static int changes() {
+        return changes;
     }
 
     /**
