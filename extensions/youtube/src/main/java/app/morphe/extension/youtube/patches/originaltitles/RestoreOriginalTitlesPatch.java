@@ -8,10 +8,13 @@
 
 package app.morphe.extension.youtube.patches.originaltitles;
 
+import android.app.Activity;
+import android.app.Application;
 import android.media.MediaMetadata;
 import android.media.session.MediaSession;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -508,7 +511,8 @@ public final class RestoreOriginalTitlesPatch {
      * Texts whose other titles were not fetched again as they were not shown, such as the elements
      * scrolled off-screen. They are fetched again when shown again, which is checked only when Litho views
      * are measured, as Litho does not load again the texts of the elements scrolled on screen again
-     * from the cache of the list. Nothing is done meanwhile. Accessed only on the main thread.
+     * from the cache of the list, and when the app is opened again. Nothing is done meanwhile.
+     * Accessed only on the main thread.
      */
     private static final List<CandidateRetry> hiddenRetries = new ArrayList<>();
 
@@ -521,6 +525,31 @@ public final class RestoreOriginalTitlesPatch {
      * If the hidden retries are checked. Accessed only on the main thread.
      */
     private static boolean hiddenRetryCheckScheduled;
+
+    /**
+     * Callback when an activity is resumed. No text is shown while the app is in the background,
+     * as the window of a stopped activity is hidden, so the pending retries checked meanwhile are hidden.
+     * The Litho views are not always measured again when the app is opened again, so the hidden retries
+     * are checked once the window is shown again.
+     */
+    private static final Application.ActivityLifecycleCallbacks HIDDEN_RETRIES_LIFECYCLE_CALLBACKS
+            = new Application.ActivityLifecycleCallbacks() {
+
+        public void onActivityResumed(@NonNull Activity activity) {
+            if (!hiddenRetries.isEmpty()) {
+                onLithoViewMeasured();
+            }
+        }
+
+        public void onActivityCreated(@NonNull Activity a, @Nullable Bundle b) {}
+        public void onActivityStarted(@NonNull Activity a) {}
+        public void onActivityPaused(@NonNull Activity a) {}
+        public void onActivityStopped(@NonNull Activity a) {}
+        public void onActivitySaveInstanceState(@NonNull Activity a, @NonNull Bundle b) {}
+        public void onActivityDestroyed(@NonNull Activity a) {}
+    };
+
+    private static boolean hiddenRetriesLifecycleCallbacksRegistered;
 
     /**
      * Fetches again at once the titles that failed to fetch while the device was offline,
@@ -1158,7 +1187,9 @@ public final class RestoreOriginalTitlesPatch {
                 return;
             }
             String originalTitle = titles.replacement(shownTitle, useDeArrow);
-            if (originalTitle == null && titleView.isShown() && OriginalTitleRequest.isPending(videoId)) {
+            // The view is shown again when the app is opened again, so the title is still fetched again meanwhile.
+            if (originalTitle == null && LithoRelayoutPatch.isShownOrInBackground(titleView)
+                    && OriginalTitleRequest.isPending(videoId)) {
                 Utils.runOnMainThreadDelayed(
                         () -> setViewTitleWhenFetched(viewRef, videoId, useDeArrow, translatedTitle, shownTitle),
                         OriginalTitleRequest.retryRemainingMilliseconds(videoId) + VIEW_TITLE_RETRY_MARGIN_MILLISECONDS);
@@ -2469,6 +2500,11 @@ public final class RestoreOriginalTitlesPatch {
                     cancelRetry(hiddenRetries.remove(0));
                 }
                 LithoRelayoutPatch.setLithoViewMeasuredListener(RestoreOriginalTitlesPatch::onLithoViewMeasured);
+                if (!hiddenRetriesLifecycleCallbacksRegistered) {
+                    hiddenRetriesLifecycleCallbacksRegistered = true;
+                    ((Application) Utils.getContext().getApplicationContext())
+                            .registerActivityLifecycleCallbacks(HIDDEN_RETRIES_LIFECYCLE_CALLBACKS);
+                }
             }
         }
         if (startedVideoIds.isEmpty()) {
@@ -2497,6 +2533,8 @@ public final class RestoreOriginalTitlesPatch {
     private static void cancelRetry(CandidateRetry retry) {
         retry.requests.remove(retry.candidate, retry.failedRequest);
         retry.done.complete(null);
+        // No request is done when the retry is cancelled, so its loading texts are laid out again here.
+        LithoRelayoutPatch.relayoutOutdatedTexts();
     }
 
     /**
