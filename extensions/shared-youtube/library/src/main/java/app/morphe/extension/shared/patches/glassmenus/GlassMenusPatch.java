@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches.glassmenus;
+package app.morphe.extension.shared.patches.glassmenus;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -59,16 +59,16 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Draws the menus of the app as frosted glass: the bottom sheets (the menu of a video, the player settings,
- * the share sheet), the popup menus, the sheet to save a video to a playlist, the dialogs that are a panel at the
- * bottom of the screen (the video quality, the download quality) and the sheets of Morphe
- * (playback speed, voice over translation).
+ * Draws the menus of YouTube and YT Music as frosted glass: the bottom sheets (the menu of a video or a song,
+ * the player settings, the share sheet), the dialogs that are a panel at the bottom of the screen
+ * (the video quality, the download quality) and the sheets of Morphe (playback speed, voice over translation).
+ * In YouTube also the popup menus and the sheet to save a video to a playlist.
  * <p>
  * Only the content behind the menu is blurred ({@link BlurRegion}), and the menu is a translucent tint of the app
  * background with a light rim, so the blurred content shows through it. The rest of the screen is only dimmed, as
@@ -87,6 +87,7 @@ public final class GlassMenusPatch {
     static final int MIN_OPACITY_WITHOUT_BLUR = 92;
 
     private static final int DESIGN_BOTTOM_SHEET = ResourceUtils.getIdentifier(ResourceType.ID, "design_bottom_sheet");
+    // YouTube only.
     private static final int PLAYLIST_LIST = ResourceUtils.getIdentifier(ResourceType.ID, "list");
     private static final int PLAYLIST_CLOSE_BAR =
             ResourceUtils.getIdentifier(ResourceType.ID, "add_to_playlist_bottom_sheet_close_button");
@@ -158,19 +159,19 @@ public final class GlassMenusPatch {
     }
 
     private static boolean isEnabled() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && Settings.GLASS_MENUS.get();
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && SharedYouTubeSettings.GLASS_MENUS.get();
     }
 
     private static int opacityPercent() {
-        return SeekBarPreference.clampToRange(Settings.GLASS_MENUS_OPACITY);
+        return SeekBarPreference.clampToRange(SharedYouTubeSettings.GLASS_MENUS_OPACITY);
     }
 
     private static int blurRadiusPx() {
-        return Dim.dp(SeekBarPreference.clampToRange(Settings.GLASS_MENUS_BLUR));
+        return Dim.dp(SeekBarPreference.clampToRange(SharedYouTubeSettings.GLASS_MENUS_BLUR));
     }
 
     private static float dimAmount() {
-        return SeekBarPreference.clampToRange(Settings.GLASS_MENUS_DIM) / 100f;
+        return SeekBarPreference.clampToRange(SharedYouTubeSettings.GLASS_MENUS_DIM) / 100f;
     }
 
     /**
@@ -209,7 +210,8 @@ public final class GlassMenusPatch {
     }
 
     /**
-     * Injection point: a popup menu, before it is shown. The app can set its content view after this call.
+     * Injection point (YouTube only): a popup menu, before it is shown. The app can set its content view after
+     * this call.
      */
     public static void onPopupWindow(@Nullable PopupWindow popup) {
         if (popup == null || !isEnabled()) return;
@@ -232,7 +234,8 @@ public final class GlassMenusPatch {
     }
 
     /**
-     * Injection point: the view of the sheet to save a video to a playlist, which is not a bottom sheet dialog.
+     * Injection point (YouTube only): the view of the sheet to save a video to a playlist, which is not a bottom
+     * sheet dialog.
      */
     public static void onAddToPlaylistView(@Nullable View root) {
         if (root == null || !isEnabled()) return;

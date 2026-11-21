@@ -18,6 +18,8 @@ import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patches.reddit.layout.tabletgrid.FEED_TYPE_CLASS
 import app.morphe.patches.reddit.layout.tabletgrid.LatestFeedScreenFingerprint
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -39,7 +41,7 @@ val feedAutoScrollPatch = patch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
         // region Feed visibility.
@@ -165,12 +167,18 @@ val feedAutoScrollPatch = patch(
             }
         }
 
-        ScreenAttachFingerprint.method.addInstruction(
+        val (screenAttachFingerprint, screenDetachFingerprint) = if (is_2026_40_0_or_greater) {
+            ScreenAttachFingerprint to ScreenDetachFingerprint
+        } else {
+            ScreenAttachLegacyFingerprint to ScreenDetachLegacyFingerprint
+        }
+
+        screenAttachFingerprint.method.addInstruction(
             0,
             "invoke-static { p0 }, $EXTENSION_CLASS->onScreenAttached(Ljava/lang/Object;)V"
         )
 
-        ScreenDetachFingerprint.method.addInstruction(
+        screenDetachFingerprint.method.addInstruction(
             0,
             "invoke-static { p0 }, $EXTENSION_CLASS->onScreenDetached(Ljava/lang/Object;)V"
         )

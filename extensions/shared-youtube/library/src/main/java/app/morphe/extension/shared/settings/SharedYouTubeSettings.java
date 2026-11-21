@@ -7,6 +7,7 @@ import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
+import static app.morphe.extension.shared.settings.Setting.parentsAll;
 
 import java.util.EnumSet;
 
@@ -23,6 +24,7 @@ import app.morphe.extension.shared.patches.SkipSilencePatch.MinimumPause;
 import app.morphe.extension.shared.patches.SplashAnimationPatch;
 import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
 import app.morphe.extension.shared.patches.components.LithoFilterPatch.LithoLogging;
+import app.morphe.extension.shared.patches.glassmenus.GlassMenusPatch.GlassMenusAvailability;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference.ExternalDownloaderAvailability;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
@@ -147,6 +149,12 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting APP_REFRESH_RATE = new StringSetting("morphe_app_refresh_rate", "DEFAULT", true);
     public static final EnumSetting<AppRefreshType> APP_REFRESH_RATE_TYPE = new EnumSetting<>("morphe_app_refresh_rate_type", AppRefreshType.ALWAYS, true, new RefreshRateType());
 
+    // Glass menus
+    public static final BooleanSetting GLASS_MENUS = new BooleanSetting("morphe_glass_menus", FALSE, false, "morphe_glass_menus_user_dialog_message", new GlassMenusAvailability());
+    public static final IntegerSetting GLASS_MENUS_OPACITY = new IntegerSetting("morphe_glass_menus_opacity", 30, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
+    public static final IntegerSetting GLASS_MENUS_BLUR = new IntegerSetting("morphe_glass_menus_blur", 24, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
+    public static final IntegerSetting GLASS_MENUS_DIM = new IntegerSetting("morphe_glass_menus_dim", 20, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
+
     // Custom font
     public static final EnumSetting<FontType> CUSTOM_FONT_TYPE = new EnumSetting<>("morphe_custom_font_type", FontType.DEFAULT, true);
     public static final StringSetting CUSTOM_FONT_FILE = new StringSetting("morphe_custom_font_file", "", CUSTOM_FONT_TYPE.availability(FontType.CUSTOM));
@@ -169,6 +177,12 @@ public class SharedYouTubeSettings extends BaseSettings {
     static {
         SeekBarPreference.register(new SeekBarConfig(SETTINGS_NEW_INDICATOR_DAYS,
                 0, 14, 1, "", 1, sf("morphe_settings_new_indicator_days_off"), null));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_MENUS_OPACITY,
+                0, 100, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_MENUS_BLUR,
+                4, 60, 2, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_MENUS_DIM,
+                0, 80, 5, "%"));
 
         // TODO: Eventually remove these migrations
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);

@@ -1,6 +1,6 @@
 // Checks the patches version and app version of a bug report.
 // Bug reports for outdated patches, for an app version that the patches do not list as compatible,
-// or with a missing or invalid version are closed with a comment.
+// or with a missing or invalid version are closed with a comment by apply.js, after the duplicate check.
 
 const { parseForm } = require('./common.js');
 
@@ -184,13 +184,13 @@ function findVersionProblems(fields, patchesVersions, appVersions) {
 }
 
 /**
- * Closes the issue if its versions are not supported.
- * Returns true if the issue was closed.
+ * Returns the problems found with the versions of the issue, as comment lines.
+ * The list is empty if the versions are supported, or if the issue is not a bug report.
  */
 async function checkVersions({ github, core, owner, repo, issue }) {
   const fields = parseForm(issue.body);
   // Only bug reports have version fields.
-  if (!('Patches version' in fields) && !('App version' in fields)) return false;
+  if (!('Patches version' in fields) && !('App version' in fields)) return [];
 
   const releases = (await github.rest.repos.listReleases({ owner, repo, per_page: 50 })).data;
   const patchesVersions = acceptedPatchesVersions(releases, Date.now());
@@ -199,24 +199,10 @@ async function checkVersions({ github, core, owner, repo, issue }) {
   const problems = findVersionProblems(fields, patchesVersions, appVersions);
   if (problems.length === 0) {
     core.info(`#${issue.number} versions are supported`);
-    return false;
+  } else {
+    core.info(`#${issue.number}: ${problems.join(', ')}`);
   }
-
-  core.info(`#${issue.number}: ${problems.join(', ')}`);
-  await github.rest.issues.createComment({
-    owner,
-    repo,
-    issue_number: issue.number,
-    body: problems.join('\n\n'),
-  });
-  await github.rest.issues.update({
-    owner,
-    repo,
-    issue_number: issue.number,
-    state: 'closed',
-    state_reason: 'not_planned',
-  });
-  return true;
+  return problems;
 }
 
 module.exports = {
