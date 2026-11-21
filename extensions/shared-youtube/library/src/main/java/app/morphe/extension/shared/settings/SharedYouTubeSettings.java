@@ -60,6 +60,7 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final BooleanSetting DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio", FALSE, true);
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
+    public static final BooleanSetting PRIORITIZE_VIDEO_QUALITY = new BooleanSetting("morphe_prioritize_video_quality", TRUE, true, "morphe_prioritize_video_quality_dialog");
     public static final BooleanSetting SKIP_SILENCE = new BooleanSetting("morphe_skip_silence", FALSE, true);
     public static final EnumSetting<MinimumPause> SKIP_SILENCE_MINIMUM_PAUSE = new EnumSetting<>("morphe_skip_silence_minimum_pause", MinimumPause.MS_700, true, parent(SKIP_SILENCE));
 
@@ -161,6 +162,7 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     // Migration
     private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
+    private static final BooleanSetting DEPRECATED_VIDEO_QUALITY_PRIORITIZE = new BooleanSetting("morphe_video_quality_prioritize", TRUE);
     private static final BooleanSetting DEPRECATED_DEBUG_PROTOBUFFER = new BooleanSetting("morphe_debug_protobuffer", FALSE, false, false);
     private static final EnumSetting<SplashScreenAnimationStyle> DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("morphe_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND);
 
@@ -170,6 +172,7 @@ public class SharedYouTubeSettings extends BaseSettings {
 
         // TODO: Eventually remove these migrations
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
+        migrateOldSettingToNew(DEPRECATED_VIDEO_QUALITY_PRIORITIZE, PRIORITIZE_VIDEO_QUALITY);
         if (DEPRECATED_DEBUG_PROTOBUFFER.get()) {
             DEBUG_LITHO.save(LithoLogging.PATH_AND_BUFFER);
             DEPRECATED_DEBUG_PROTOBUFFER.resetToDefault();

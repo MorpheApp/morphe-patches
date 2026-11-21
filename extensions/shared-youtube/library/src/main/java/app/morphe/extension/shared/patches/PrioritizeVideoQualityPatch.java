@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-package app.morphe.extension.youtube.patches.playback.quality;
+package app.morphe.extension.shared.patches;
 
 import androidx.annotation.NonNull;
 
@@ -13,9 +13,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.VideoFormat.FormatInterface;
-import app.morphe.extension.youtube.patches.VideoInformation;
-import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.shared.patches.VideoFormat.FormatInterface;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
 public final class PrioritizeVideoQualityPatch {
@@ -25,7 +24,7 @@ public final class PrioritizeVideoQualityPatch {
      * <p>
      * Sometimes, they may have inconsistent values.
      * e.g. height: 288, qualityLabel: 240p, qualityOrdinal: QUALITY_ORDINAL_360P
-     * These video formats are fixed by {@link VideoInformation#fixVideoQualityResolution(String, int)}.
+     * In YouTube, these video formats are fixed by {@code VideoInformation.fixVideoQualityResolution}.
      * <p>
      * If AVC is the only available video codec and only inconsistent values exist, SABR playback is not starting.
      * See: <a href="https://github.com/MorpheApp/morphe-patches/issues/2713">morphe-patches#2713</a>.
@@ -37,7 +36,7 @@ public final class PrioritizeVideoQualityPatch {
             480, 360, 240, 144
     );
 
-    private static final boolean PRIORITIZE_VIDEO_QUALITY = Settings.VIDEO_QUALITY_PRIORITIZE.get();
+    private static final boolean PRIORITIZE_VIDEO_QUALITY = SharedYouTubeSettings.PRIORITIZE_VIDEO_QUALITY.get();
 
     /**
      * Injection point.

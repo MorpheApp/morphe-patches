@@ -10,10 +10,10 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.videoformat.hookAdaptiveFormat
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch

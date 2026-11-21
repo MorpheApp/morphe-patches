@@ -13,6 +13,7 @@ import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.shared.misc.videoformat.hookAdaptiveFormat
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
@@ -26,7 +27,6 @@ import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 
