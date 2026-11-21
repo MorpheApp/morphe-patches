@@ -54,6 +54,34 @@ internal object IsGoogleSignedFingerprint : Fingerprint(
     parameters = listOf("Ljava/lang/String;")
 )
 
+// Stock settings intent, screen, and rows
+
+internal object AndroidAutoSettingsIntentFingerprint : Fingerprint(
+    filters = listOf(
+        string("androidx.media.BrowserRoot.Extras.APPLICATION_PREFERENCES_USING_CAR_APP_LIBRARY_INTENT"),
+        methodCall(
+            definingClass = "Landroid/os/Bundle;",
+            name = "putParcelable",
+            parameters = listOf("Ljava/lang/String;", "Landroid/os/Parcelable;"),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+internal object StockSettingsTemplateFingerprint : Fingerprint(
+    parameters = emptyList(),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT),
+        opcode(Opcode.CONST, location = MatchAfterImmediately()),
+        methodCall(name = "getString", parameters = listOf("I"), returnType = "Ljava/lang/String;", location = MatchAfterImmediately()),
+        methodCall(parameters = listOf("Ljava/lang/CharSequence;"), returnType = "V", location = MatchAfterWithin(4)),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        methodCall(definingClass = "Landroidx/car/app/model/Toggle;", name = "<init>"),
+        methodCall(definingClass = "Landroidx/car/app/model/ListTemplate;", name = "<init>"),
+    ),
+)
+
 // Android Auto browse requests, media items, and folder refresh
 
 private const val SINGLE_COLUMN_BROWSE = 58_173_949L
@@ -124,6 +152,12 @@ internal object SendEmptyMediaItemsFingerprint : Fingerprint(
     filters = listOf(
         string("Invalid media id: ")
     )
+)
+
+internal object RemoteUserInfoConstructorFingerprint : Fingerprint(
+    name = "<init>",
+    parameters = listOf("Ljava/lang/String;", "I", "I"),
+    filters = listOf(string("packageName should be nonempty"), string("package shouldn't be null")),
 )
 
 // Locate YTM's phone request clients and browse methods

@@ -107,6 +107,7 @@ val androidAutoPatch = patch(
         patchPlaylistMediaIdBuilder(encodeCommandMediaIdMethod)
         patchCommandEncoder(encodeCommandMediaIdMethod)
         patchSearch()
+        replaceSettingsButton()
     }
 }
 
@@ -659,6 +660,23 @@ private fun addBrowseRequestInterface(
             iget-object p0, p0, $requestedMediaIdHolderField
             iget-object p0, p0, $requestedMediaIdField
             return-object p0
+        """
+    )
+
+    val browserInfoConstructor = RemoteUserInfoConstructorFingerprint.originalMethod
+    val browserInfo = requestClass.instanceFields.single { it.type == browserInfoConstructor.definingClass }
+    // RemoteUserInfo compares the package name and UID when the expected process ID is unknown (-1).
+    requestClass.addPatchInterface(
+        BROWSE_REQUEST,
+        "patch_isFromBrowser",
+        """
+            new-instance v0, ${browserInfo.type}
+            const/4 v1, -0x1
+            invoke-direct { v0, p1, v1, p2 }, $browserInfoConstructor
+            iget-object v1, p0, $browserInfo
+            invoke-virtual { v0, v1 }, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+            move-result v0
+            return v0
         """
     )
 

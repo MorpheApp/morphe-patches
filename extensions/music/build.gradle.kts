@@ -11,6 +11,7 @@ dependencies {
     testImplementation(libs.morphe.extensions.library)
     testImplementation(project(":extensions:shared-youtube:library"))
     compileOnly(libs.morphe.extensions.library)
+    compileOnly(libs.androidx.car.app) { isTransitive = false }
     compileOnly(project(":extensions:shared-youtube:library"))
     compileOnly(project(":extensions:shared-youtube:stub"))
     compileOnly(project(":extensions:shared:library"))

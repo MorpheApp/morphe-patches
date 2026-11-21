@@ -2,6 +2,7 @@
 
 [versions]
 agp = "9.1.0"
+androidx-car-app = "1.7.0"
 androidx-core = "1.18.0"    # 1.19.0+ requires upgrading android compile sdk
 androidx-javascriptengine = "1.1.1"
 annotation = "1.11.0"
@@ -21,6 +22,7 @@ protoc = "4.36.2"
 smali = "4220ae75f7"
 
 [libraries]
+androidx-car-app = { module = "androidx.car.app:app", version.ref = "androidx-car-app" }
 androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 androidx-javascriptengine = { module = "androidx.javascriptengine:javascriptengine", version.ref = "androidx-javascriptengine" }
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
