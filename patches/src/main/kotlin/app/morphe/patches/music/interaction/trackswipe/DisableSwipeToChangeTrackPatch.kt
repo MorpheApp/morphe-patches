@@ -47,7 +47,11 @@ val disableSwipeToChangeTrackPatch = patch(
             SwitchPreference("morphe_music_disable_player_swipe_to_change_track", summary = true)
         )
         PreferenceScreen.addMiniplayerPreferences(
-            SwitchPreference("morphe_music_disable_miniplayer_swipe_to_change_track", summary = true)
+            SwitchPreference(
+                "morphe_music_disable_miniplayer_swipe_to_change_track",
+                titleKey = "morphe_music_disable_player_swipe_to_change_track_title",
+                summary = true
+            )
         )
 
         // The controller turns the swipe of each pager on whenever it shows the pager.

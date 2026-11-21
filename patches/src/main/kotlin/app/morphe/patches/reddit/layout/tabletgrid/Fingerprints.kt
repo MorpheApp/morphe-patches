@@ -15,19 +15,17 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * Composable that shows a feed as a list.
+ * Latest feed screen, which calls the composable that shows a feed as a list.
  */
-internal object ListFeedFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/feeds/ui/composables/feed/",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
-    returnType = "V",
-    custom = { method, _ ->
-        val parameters = method.parameterTypes
-        parameters.size > 6
-                && parameters[3].startsWith("Landroidx/compose/foundation/lazy/")
-                && parameters[5] == "Lcom/reddit/feeds/data/FeedType;"
-                && parameters[6] == "F"
-    }
+internal object LatestFeedScreenFingerprint : Fingerprint(
+    filters = listOf(
+        string("latest_screen_surface"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            definingClass = "Lcom/reddit/feeds/ui/composables/feed/",
+            returnType = "V"
+        )
+    )
 )
 
 /**

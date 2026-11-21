@@ -144,6 +144,8 @@ Folder eksport: %s"</string>
   <string name="morphe_export_download_failed">Tidak dapat mengeksport muat turun</string>
   <string name="morphe_export_download_all_flyout_title">Eksport semua ke peranti</string>
   <string name="morphe_export_download_all_started">Mengeksport semua muat turun</string>
+  <string name="morphe_export_download_all_title">Semua muat turun</string>
+  <string name="morphe_export_download_playlist_started">Mengeksport muat turun</string>
   <string name="morphe_export_download_all_running">Muat turun sedang dieksport</string>
   <string name="morphe_export_download_all_saved">%1$s daripada %2$s muat turun telah dieksport ke %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +170,15 @@ Folder eksport: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Sorokkan iklan video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Sorokkan suis Audio / Video</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Sorokkan butang Muat Turun</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Menyembunyikan butang Muat Turun dalam pertunjukan podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Sorokkan rak Teroka</string>
   <string name="morphe_music_hide_filter_bar_title">Sorokkan bar penapis</string>
   <string name="morphe_music_hide_grid_shelves_title">Sorokkan rak grid</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Sorokkan laci mengufuk</string>
+  <string name="morphe_music_hide_new_button_title">Sorokkan butang \'Baru\'</string>
+  <string name="morphe_music_hide_new_button_summary">Menyembunyikan butang Baru dalam tab Perpustakaan</string>
   <string name="morphe_music_hide_list_shelves_title">Sorokkan laci senarai</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel lirik</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Sorokkan butang Kongsi</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sorokkan butang Terjemah</string>
   <string name="morphe_music_hide_new_from_shelf_title">Sorokkan laci \'Baharu daripada\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Sorokkan laci senarai main</string>
@@ -199,6 +201,8 @@ Folder eksport: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Pudar silang</string>
   <string name="morphe_music_crossfade_screen_summary">Mengadunkan runut di antara satu sama lain dengan lancar</string>
   <string name="morphe_music_crossfade_enabled_title">Dayakan pudar silang</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Untuk menggunakan crossfade, tukar \'Klien lalai\' \'Spoof strim video\' kepada \'TV Simply\' atau \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Lengkung pudar</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Kuasa yang sama</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Pendam halus</string>
@@ -232,7 +236,9 @@ Folder eksport: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Pudar silang dijedakan untuk sesi ini</string>
   <string name="morphe_music_crossfade_resumed_toast">Pudar silang disambung semula</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Mod video tidak tersedia semasa pudar silang didayakan</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade dimatikan dengan mainan semula SABR</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade tidak berfungsi dengan \'visionOS\'. Tukar \'Klien lalai\' \'Spoof strim video\' kepada \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade tidak berfungsi dengan klien strim spoof ini</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade dimatikan semasa casting</string>
   <string name="morphe_music_crossfade_about_how_title">Bagaimana pudar silang berfungsi</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade bertindih hujung satu lagu dengan permulaan lagu seterusnya, menggunakan tempoh dan lengkung anda
@@ -249,9 +255,7 @@ Skrin kunci atau pemberitahuan mungkin menunjukkan keadaan lama sebentar semasa 
 
 Menjeda crossfade untuk menonton video muzik boleh menyebabkan beberapa video menjadi hitam. Menjeda crossfade sebelum anda memilih lagu dapat mengelakkannya"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Tidak disokong</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting atau mirroring audio (Chromecast, mirroring skrin atau audio)
-
-Mainan SABR (Aliran video spoof dimatikan)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Menghantar atau mencerminkan audio (Chromecast, pencerminan skrin atau audio)</string>
   <string name="morphe_music_crossfade_about_credit_title">Kredit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Ciri pudar silang oleh VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,10 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Nyahaktifkan penghalaan tidak suka</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Menghalang peralihan ke trek seterusnya apabila butang tidak suka ditekan</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Nyahaktifkan leret untuk tukar trek</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Menghalang peralihan ke trek seterusnya atau sebelumnya dengan meleret ke kiri atau kanan pada pemain</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Menghalang peralihan ke trek seterusnya atau sebelumnya dengan meleret ke kiri atau kanan pada pemain mini</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Gelung A-B</string>
   <string name="morphe_music_ab_loop_summary">Tekan lama seekbar untuk menetapkan permulaan gelung, sekali lagi untuk menetapkan akhir gelung, dan sekali lagi untuk mengosongkan gelung</string>
@@ -329,15 +337,6 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_playlist_tags_rename">Namakan semula</string>
   <string name="morphe_music_playlist_tags_delete">Padam</string>
   <string name="morphe_music_playlist_tags_hidden">Tersembunyi</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Sorokkan butang siaran</string>
-  <string name="morphe_music_hide_history_button_title">Sorokkan butang sejarah</string>
-  <string name="morphe_music_hide_notification_button_title">Sorokkan butang pemberitahuan</string>
-  <string name="morphe_music_hide_search_button_title">Sorokkan butang Carian</string>
-  <string name="morphe_music_hide_voice_search_button_title">Sorokkan butang carian Suara</string>
-  <string name="morphe_music_hide_sound_search_button_title">Sorokkan butang carian Bunyi</string>
-  <string name="morphe_music_hide_library_new_button_title">Sorokkan butang Baru</string>
-  <string name="morphe_music_hide_library_new_button_summary">Menyembunyikan butang Baharu dalam tab Perpustakaan</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Butang tindakan</string>
   <string name="morphe_music_action_buttons_screen_summary">Pilih butang tindakan yang muncul di bawah pemain</string>
@@ -409,22 +408,20 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Paksa orientasi potret</string>
   <string name="morphe_music_force_portrait_orientation_summary">Mengekalkan aplikasi dalam orientasi potret apabila peranti dipusingkan</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Tukar warna pemain mini</string>
+  <string name="morphe_music_change_miniplayer_color_title">Tukar warna</string>
   <string name="morphe_music_change_miniplayer_color_summary">Padankan warna pemain mini dengan pemain skrin penuh</string>
   <string name="morphe_music_change_navigation_bar_color_title">Tukar warna bar navigasi</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Padankan warna bar navigasi dengan pemain skrin penuh</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Tunjukkan butang seterusnya dalam pemain mini</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Tunjukkan butang sebelumnya dalam pemain mini</string>
+  <string name="morphe_music_miniplayer_next_button_title">Tunjukkan butang Seterusnya</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Tunjukkan butang Sebelumnya</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Dayakan pemain mini secara paksa</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Mengelakkan pemain daripada dikembangkan kepada skrin penuh secara automatik apabila runut baru dimainkan</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Dayakan leretan untuk menutup pemain mini</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Dayakan leretan untuk menutup</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Membenarkan pemain mini ditutup dengan meleretnya ke bawah</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Bar pandu arah</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Memilih butang yang akan muncul pada bar pandu arah bawah</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Sorokkan butang \'Laman Utama\'</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +454,7 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Menyembunyikan sorotan bulat di belakang butang terpilih pada bar navigasi kaca</string>
   <string name="morphe_music_miniplayer_screen_title">Pemain mini</string>
   <string name="morphe_music_miniplayer_screen_summary">Tukar gaya, butang dan gerak isyarat pemain mini</string>
-  <string name="morphe_music_miniplayer_glass_title">Dayakan pemain mini kaca</string>
+  <string name="morphe_music_miniplayer_glass_title">Dayakan kesan kaca</string>
   <string name="morphe_music_miniplayer_glass_summary">Menunjukkan pemain mini terapung sebagai kad kaca lutsinar yang bulat</string>
   <string name="morphe_music_miniplayer_glass_style_title">Gaya pemain mini kaca</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Laraskan radius bucu, padding karya seni, kecerahan rim dan kelegapan pemain mini kaca, dengan pratonton</string>
@@ -465,11 +462,8 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding karya seni</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kecerahan rim</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Kelegapan</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Kekaburan kaca</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Tahap kekaburan halaman di belakang pemain mini kaca (Android 14 dan versi kemudian). Pada 0 halaman dipaparkan dengan tajam, dan sebelum Android 14 halaman tersebut tertutup</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Kaca terang</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Mewarnakan pemain mini kaca dengan warna putih berbanding gelap, untuk kaca yang lebih terang dan jelas</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Kewarnaan seni album</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Mewarnakan pemain mini kaca dengan warna seni album lagu yang sedang dimainkan</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Karya seni berputar</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Menjadikan karya seni pemain mini kaca berbentuk bulat, dan memutarkannya seperti piring hitam semasa lagu dimainkan</string>
@@ -480,6 +474,15 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Sampel</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Teroka</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Pustaka</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Sorokkan butang Aktiviti</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Sorokkan butang \'Tanya Muzik\'</string>
+  <string name="morphe_music_hide_cast_button_title">Sorokkan butang siaran</string>
+  <string name="morphe_music_hide_history_button_title">Sorokkan butang sejarah</string>
+  <string name="morphe_music_hide_search_button_title">Sorokkan butang Carian</string>
+  <string name="morphe_music_hide_voice_search_button_title">Sorokkan butang \'Carian suara\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">Sorokkan butang \'Carian bunyi\'</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Tidak log masuk. Ketik untuk konfigurasikan</string>
   <string name="morphe_music_scrobbling_log_out">Log keluar</string>

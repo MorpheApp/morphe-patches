@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">無法匯出下載內容</string>
   <string name="morphe_export_download_all_flyout_title">將全部匯出至裝置</string>
   <string name="morphe_export_download_all_started">正在匯出所有下載內容</string>
+  <string name="morphe_export_download_all_title">所有下載</string>
+  <string name="morphe_export_download_playlist_started">正在匯出下載項目</string>
   <string name="morphe_export_download_all_running">下載內容已在匯出中</string>
   <string name="morphe_export_download_all_saved">已將 %2$s 個下載內容中的 %1$s 個匯出至 %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +170,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">隱藏影片廣告</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">隱藏音訊/影片切換按鈕</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">隱藏下載按鈕</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">隱藏 Podcast 節目中的下載按鈕</string>
   <string name="morphe_music_hide_explore_shelf_title">隱藏「探索」區塊</string>
   <string name="morphe_music_hide_filter_bar_title">隱藏篩選列</string>
   <string name="morphe_music_hide_grid_shelves_title">隱藏格狀區塊</string>
   <string name="morphe_music_hide_horizontal_shelves_title">隱藏橫向區塊</string>
+  <string name="morphe_music_hide_new_button_title">隱藏新建按鈕</string>
+  <string name="morphe_music_hide_new_button_summary">隱藏「媒體庫」分頁中的「新增」按鈕</string>
   <string name="morphe_music_hide_list_shelves_title">隱藏列表區塊</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">歌詞面板</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">隱藏「分享」按鈕</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">隱藏「翻譯」按鈕</string>
   <string name="morphe_music_hide_new_from_shelf_title">隱藏「來自」區塊</string>
   <string name="morphe_music_hide_playlist_shelves_title">隱藏歌單區塊</string>
@@ -199,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">淡入淡出</string>
   <string name="morphe_music_crossfade_screen_summary">將音軌平滑地混合在一起</string>
   <string name="morphe_music_crossfade_enabled_title">啟用淡入淡出</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">若要使用交叉淡出，請將「偽裝視訊串流」的「預設用戶端」更改為 \"TV Simply\" 或 \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">淡出曲線</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">等功率</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">微妙延遲</string>
@@ -232,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">已暫停此工作階段的淡入淡出效果</string>
   <string name="morphe_music_crossfade_resumed_toast">已復原淡入淡出效果</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">啟用淡入淡出時，影片模式不可用</string>
-  <string name="morphe_music_crossfade_sabr_toast">SABR 播放時交叉淡化已關閉</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">交叉淡出不支援 \"visionOS\"。請將「偽裝視訊串流」的「預設用戶端」更改為 \"TV Simply\"</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">淡入淡出不支援此模擬串流用戶端</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">投放時交叉淡化已關閉</string>
   <string name="morphe_music_crossfade_about_how_title">運作方式</string>
   <string name="morphe_music_crossfade_about_how_summary">"交叉淡化會將一首歌曲的結尾與下一首的開頭重疊，並使用您設定的持續時間和曲線
@@ -249,9 +255,7 @@ Second \"item\" text"</string>
 
 暫停交叉淡化以觀看音樂影片時，部份影片可能會變成黑畫面。在選擇歌曲前暫停交叉淡化即可避免此情況"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">不支援</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"投放或鏡像音訊（Chromecast、螢幕鏡像或音訊鏡像）
-
-SABR 播放（影片串流模擬已關閉）"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">投放或鏡像音訊（Chromecast、螢幕或音訊鏡像）</string>
   <string name="morphe_music_crossfade_about_credit_title">鳴謝</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade 功能由 VazerOG 提供</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,10 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">停用取消喜歡重新導向</string>
   <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜歡按鈕時跳到下一首歌曲</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">停用滑動切換曲目</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">防止透過在播放器上向左或向右滑動來跳至下一首或上一首曲目</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">防止透過在迷你播放器上向左或向右滑動來跳至下一首或上一首曲目</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B 循環</string>
   <string name="morphe_music_ab_loop_summary">長按進度條以設定循環開始點，再次長按以設定循環結束點，再次長按以清除循環</string>
@@ -329,15 +337,6 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_playlist_tags_rename">重新命名</string>
   <string name="morphe_music_playlist_tags_delete">刪除</string>
   <string name="morphe_music_playlist_tags_hidden">已隱藏</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">隱藏投放按鈕</string>
-  <string name="morphe_music_hide_history_button_title">隱藏歷史記錄按鈕</string>
-  <string name="morphe_music_hide_notification_button_title">隱藏通知按鈕</string>
-  <string name="morphe_music_hide_search_button_title">隱藏搜尋按鈕</string>
-  <string name="morphe_music_hide_voice_search_button_title">隱藏語音搜尋按鈕</string>
-  <string name="morphe_music_hide_sound_search_button_title">隱藏聲音搜尋按鈕</string>
-  <string name="morphe_music_hide_library_new_button_title">隱藏新增按鈕</string>
-  <string name="morphe_music_hide_library_new_button_summary">隱藏媒體庫分頁中的「新增」按鈕</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">動作按鈕</string>
   <string name="morphe_music_action_buttons_screen_summary">選擇要在播放器下方顯示哪些動作按鈕</string>
@@ -409,22 +408,20 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_force_portrait_orientation_title">強制直向顯示</string>
   <string name="morphe_music_force_portrait_orientation_summary">當裝置旋轉時，讓應用程式保持直向顯示</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">變更迷你播放器顏色</string>
+  <string name="morphe_music_change_miniplayer_color_title">更改顏色</string>
   <string name="morphe_music_change_miniplayer_color_summary">迷你播放器顏色符合全螢幕播放器</string>
   <string name="morphe_music_change_navigation_bar_color_title">變更導航列顏色</string>
   <string name="morphe_music_change_navigation_bar_color_summary">將導航列顏色調整為全螢幕播放器的顏色</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">顯示下一首按鈕於迷你播放器</string>
-  <string name="morphe_music_miniplayer_previous_button_title">顯示上一首按鈕於迷你播放器</string>
+  <string name="morphe_music_miniplayer_next_button_title">顯示下一首按鈕</string>
+  <string name="morphe_music_miniplayer_previous_button_title">顯示上一首按鈕</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">啟用強制迷你播放器</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">防止播放器在開始播放新歌曲時自動展開至全螢幕</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">啟用滑動手勢關閉迷你播放器</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">啟用滑動關閉</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">允許透過在迷你播放器上滑動來關閉它</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">導覽列</string>
-  <string name="morphe_music_navigation_bar_screen_summary">選擇在底部導航欄中顯示哪些按鈕</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">隱藏「首頁」按鈕</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +454,7 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">隱藏玻璃導航欄已選按鈕後方的圓形高亮顯示</string>
   <string name="morphe_music_miniplayer_screen_title">迷你播放器</string>
   <string name="morphe_music_miniplayer_screen_summary">更改迷你播放器的樣式、按鈕和手勢</string>
-  <string name="morphe_music_miniplayer_glass_title">啟用玻璃迷你播放器</string>
+  <string name="morphe_music_miniplayer_glass_title">啟用玻璃效果</string>
   <string name="morphe_music_miniplayer_glass_summary">將浮動迷你播放器顯示為圓角、半透明的玻璃卡片</string>
   <string name="morphe_music_miniplayer_glass_style_title">玻璃迷你播放器樣式</string>
   <string name="morphe_music_miniplayer_glass_style_summary">調整玻璃迷你播放器的圓角半徑、封面內邊距、邊框亮度和不透明度，並提供預覽</string>
@@ -465,11 +462,8 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">封面內邊距</string>
   <string name="morphe_music_miniplayer_glass_rim_title">邊框亮度</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">不透明度</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">玻璃模糊</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">玻璃迷你播放器後方頁面的模糊程度（Android 14 及更高版本）。設定為 0 時頁面清晰可見，而在 Android 14 之前頁面會被遮蓋</string>
-  <string name="morphe_music_miniplayer_glass_light_title">淺色玻璃</string>
   <string name="morphe_music_miniplayer_glass_light_summary">將玻璃迷你播放器著色為白色而非深色，使玻璃質感更輕盈、更清澈</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">專輯封面著色</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">使用播放歌曲的專輯封面顏色為玻璃迷你播放器著色</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">旋轉封面</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">將玻璃迷你播放器的封面設為圓形，並在歌曲播放時像唱片一樣旋轉</string>
@@ -480,6 +474,15 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">樣本</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">探索</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">媒體庫</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">隱藏「活動」按鈕</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">隱藏「詢問音樂」按鈕</string>
+  <string name="morphe_music_hide_cast_button_title">隱藏投放按鈕</string>
+  <string name="morphe_music_hide_history_button_title">隱藏歷史記錄按鈕</string>
+  <string name="morphe_music_hide_search_button_title">隱藏搜尋按鈕</string>
+  <string name="morphe_music_hide_voice_search_button_title">隱藏「語音搜尋」按鈕</string>
+  <string name="morphe_music_hide_sound_search_button_title">隱藏 \"歌曲搜尋\" 按鈕</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">未登入。點擊以設定</string>
   <string name="morphe_music_scrobbling_log_out">登出</string>

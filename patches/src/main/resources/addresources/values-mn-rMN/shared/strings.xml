@@ -87,7 +87,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Орчуулга</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Шинэчлэгдсэн</string>
   <string name="morphe_settings_about_contributors">Зу অবদানчид</string>
-  <string name="morphe_settings_about_contributors_period">Сүүлийн 12 сар</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Бүх цаг хугацаанд</string>
+  <string name="morphe_settings_about_contributors_6_months">6 сар</string>
+  <string name="morphe_settings_about_contributors_3_months">3 сар</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Хугацаа</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Дэмжигчид</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective-ийн дэмжигчид</string>
@@ -222,6 +228,9 @@ MicroG-ийн батерейны оновчлолыг идэвхгүй болг�
 • Аппликейшн гэнэт хаагдах
 • Мэдэгдэл ирэхгүй байх
 • Ард тал дээр тоглуулах үйлдэл ажиллахгүй байх"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Системийн хуваалцах цонхыг нээх</string>
+  <string name="morphe_open_system_share_sheet_summary">Агуулгыг хуваалцах үед апп-ны хуваалцах цэсний оронд системийн хуваалцах цэсийг нээнэ</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Апп-ын холбоосын удирдлага</string>
   <string name="morphe_link_handling_summary">Холбоосыг энэ апп-д нээх тохиргоо</string>

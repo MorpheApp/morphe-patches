@@ -205,8 +205,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">ເຊື່ອງຊັ້ນໂພສ</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">ເຊື່ອງປຸ່ມຮ້ານຄ້າ</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">ເຊື່ອງປຸ່ມຕິດຕາມ</string>
   <string name="morphe_explore_menu_screen_title">ເມນູສຳຫຼວດ</string>
   <string name="morphe_explore_menu_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນເມນູສຳຫຼວດ</string>
   <string name="morphe_hide_courses_menu_title">ເຊື່ອງເມນູຫຼັກສູດ</string>
@@ -281,7 +279,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">ເຊື່ອງປຸ່ມ ຄຳຄິດເຫັນ</string>
   <string name="morphe_hide_post_comments_preview_title">ເຊື່ອງການເບິ່ງຄອມເມັ້ນລ່ວງໜ້າ</string>
   <string name="morphe_hide_post_comments_preview_summary">ເຊື່ອງການເບິ່ງຄອມເມັ້ນລ່ວງໜ້າທີ່ຢູ່ລຸ່ມໂພສ</string>
-  <string name="morphe_hide_post_share_button_title">ເຊື່ອງປຸ່ມ ແຊຣ໌</string>
   <string name="morphe_hide_post_share_button_summary">ປຸ່ມດາວໂຫຼດຮູບພາບຂອງໂພສຈະຖືກວາງໄວ້ຂ້າງປຸ່ມ ແຊຣ໌, ດັ່ງນັ້ນມັນຈຶ່ງຖືກເຊື່ອງໄປນຳ</string>
   <string name="morphe_hide_ask_gemini_button_title">ເຊື່ອງປຸ່ມ \'ຖາມ Gemini\'</string>
   <string name="morphe_hide_ask_gemini_button_summary">ເຊື່ອງປຸ່ມ \'ຖາມ Gemini\' ຢູ່ລຸ່ມສຸດຂອງແຜງ \'ຖາມກ່ຽວກັບວິດີໂອນີ້\'</string>
@@ -296,9 +293,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_in_this_video_button_title">ເຊື່ອງປຸ່ມ \'ໃນວິດີໂອນີ້\'</string>
   <string name="morphe_hide_info_panels_title">ເຊື່ອງແຜງຂໍ້ມູນ</string>
   <string name="morphe_hide_info_panels_summary">ເຊື່ອງແຜງຂໍ້ມູນບໍລິບົດ, ເຊັ່ນ ຂໍ້ມູນທາງການແພດ</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">ເຊື່ອງປຸ່ມເຂົ້າຮ່ວມ</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">ເຊື່ອງປຸ່ມ \'ຫຼິ້ນຊ້ຳການແຊັດສົດ\'</string>
@@ -314,8 +308,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">ເຊື່ອງການໄລ່ສີຂອງຕົວຄວບຄຸມເຄື່ອງຫຼິ້ນ ເມື່ອເລື່ອນນິ້ວມືໃນຂະນະທີ່ກົດຄ້າງໄວ້ເພື່ອເພີ່ມຄວາມໄວ</string>
   <string name="morphe_hide_timed_reactions_title">ເຊື່ອງການຕອບສະໜອງແບບກຳນົດເວລາ</string>
   <string name="morphe_hide_timed_reactions_summary">ເຊື່ອງຟີເຈີທີ່ຊ່ວຍໃຫ້ຜູ້ໃຊ້ສາມາດຕອບໂຕ້ດ້ວຍອີໂມຈິໃນສ່ວນຄຳຄິດເຫັນ ແລະ ແຊັດສົດ</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">ເຊື່ອງເມນູ \'ຄວາມຊ່ວຍເຫຼືອ &amp; ຄຳຄິດເຫັນ\'</string>
   <string name="morphe_hide_help_feedback_menu_summary">ເຊື່ອງເມນູ \'ຄວາມຊ່ວຍເຫຼືອ &amp; ຄຳຄິດເຫັນ\' ເມື່ອໃຊ້ປຸ່ມສາມຈຸດ, ເຊັ່ນ ໃນຜົນການຄົ້ນຫາ</string>
   <string name="morphe_hide_handle_title">ເຊື່ອງ handle</string>
   <string name="morphe_hide_handle_summary">ເຊື່ອງ handle ຂອງຊ່ອງທ່ານໃນແຖບ \'ທ່ານ\'</string>
@@ -358,7 +350,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">ເຊື່ອງປຸ່ມ ຖາມ</string>
   <string name="morphe_hide_channel_profile_button_title">ເຊື່ອງຊ່ອງ ແລະ ປຸ່ມຕິດຕາມ</string>
   <string name="morphe_hide_channel_profile_button_summary">ເຊື່ອງຮູບໂປຣຟາຍຂອງຊ່ອງ ແລະ ປຸ່ມຕິດຕາມ ຢູ່ທີ່ຕອນເລີ່ມຕົ້ນຂອງແຖບການເຮັດວຽກ</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">ເຊື່ອງປຸ່ມຕິດຕາມ</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">ເຊື່ອງປຸ່ມຕິດຕາມ ແລະ ປຸ່ມເຂົ້າຮ່ວມ ທີ່ຢູ່ຂ້າງຮູບໂປຣໄຟລ໌ຂອງຊ່ອງ ຢູ່ສ່ວນເລີ່ມຕົ້ນຂອງແຖບການເຮັດວຽກ</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">ເຊື່ອງປຸ່ມ ຄລິບ</string>
@@ -434,7 +425,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">ຄວາມຄິດເຫັນຖືກເຊື່ອງໂດຍ Morphe…</string>
   <string name="morphe_minimal_comments_button_title">ເປີດໃຊ້ປຸ່ມຄຳຄິດເຫັນແບບມິນິມອລ</string>
   <string name="morphe_minimal_comments_button_summary">ເຊື່ອງບັດທີ່ເລື່ອນໄດ້ ແລະ ຕົວເລືອກໜ້າຂອງມັນ, ທີ່ສະແດງຢູ່ໃນປຸ່ມຄຳຄິດເຫັນ</string>
-  <string name="morphe_hide_comments_thanks_button_title">ເຊື່ອງປຸ່ມຂອບໃຈ</string>
   <string name="morphe_hide_comments_timestamp_button_title">ເຊື່ອງປຸ່ມປະທັບເວລາ</string>
   <string name="morphe_hide_comments_top_fans_button_title">ເຊື່ອງປຸ່ມ \'ແຟນໂຕຍິ່ງ\'</string>
   <string name="morphe_hide_comments_translate_button_title">ເຊື່ອງປຸ່ມແປພາສາ</string>
@@ -489,7 +479,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">ເຊື່ອງປຸ່ມຄຳບັນຍາຍ</string>
   <string name="morphe_hide_cast_button_title">ເຊື່ອງປຸ່ມ Cast</string>
-  <string name="morphe_hide_cast_button_summary">ເຊື່ອງປຸ່ມ Cast ໃນເຄື່ອງຫຼິ້ນວິດີໂອ ແລະ ແຖບເຄື່ອງມື</string>
   <string name="morphe_hide_collapse_button_title">ເຊື່ອງປຸ່ມ Collapse</string>
   <string name="morphe_hide_fullscreen_button_title">ເຊື່ອງປຸ່ມໜ້າຈໍເຕັມ</string>
   <string name="morphe_hide_player_control_buttons_background_title">ເຊື່ອງພື້ນຫຼັງຂອງປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນ</string>
@@ -891,7 +880,7 @@ Second \"item\" text"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">ລາຍຊື່ຂາວໂຄສະນາໃນເມນູ flyout</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">ເພີ່ມລາຍການ flyout ທີ່ອະນຸຍາດໃຫ້ໂຄສະນາຫຼິ້ນໃນຊ່ອງຂອງວິດີໂອນັ້ນ</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">ຟີເຈີນີ້ອາດຈະຕ້ອງໃຊ້ PotHelper ຫຼື ປ່ຽນ \"Spoof video streams\" ເປັນການເຂົ້າສູ່ລະບົບຂອງ TV ຫຼື Android VR</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">ຟີເຈີນີ້ອາດຈະຕ້ອງໃຊ້ PotHelper ຫຼື ປ່ຽນ \'Spoof video streams\' ເປັນການລົງຊື່ເຂົ້າໃຊ້ \'TV\' ຫຼື \'Android VR\'</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">ລາຍຊື່ຂາວຄວາມໄວໃນເມນູ flyout</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">ເພີ່ມລາຍການ flyout ທີ່ຫຼິ້ນຊ່ອງຂອງວິດີໂອນັ້ນດ້ວຍຄວາມໄວ 1.0x ສະເໝີ</string>
   <string name="morphe_queue_manager_check_failed_auth">ບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ</string>
@@ -1088,8 +1077,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">ບາງຄຳແປຂອງຄຳບັນຍາຍບໍ່ສາມາດນຳໃຊ້ໄດ້. ພວມສະແດງຄຳບັນຍາຍທີ່ມີຢູ່.</string>
   <string name="morphe_caption_blocks_too_large">ທັງສອງພາສາຂອງຄຳບັນຍາຍບໍ່ສາມາດສະແດງໃນເຄື່ອງຫຼິ້ນນີ້ໄດ້. ພວມສະແດງພາສາຫຼັກ.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">ແຖບການນຳທາງ</string>
-  <string name="morphe_navigation_bar_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ປາກົດໃນແຖບນຳທາງດ້ານລຸ່ມ</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">ເຊື່ອງປຸ່ມໜ້າຫຼັກ</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1094,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">ເບິ່ງພາຍຫຼັງ</string>
   <string name="morphe_show_settings_button_title">ສະແດງປຸ່ມການຕັ້ງຄ່າ</string>
   <string name="morphe_show_settings_button_type_title">ການເຮັດວຽກຂອງປຸ່ມຕັ້ງຄ່າ</string>
-  <string name="morphe_show_settings_button_type_summary">ເປີດການຕັ້ງຄ່າ Morphe ເມື່ອເປີດໃຊ້ງານ, ຫຼື ການຕັ້ງຄ່າ YouTube ເມື່ອປິດໃຊ້ງານ</string>
+  <string name="morphe_show_settings_button_type_summary">ເມື່ອເປີດໃຊ້ງານ, ແຕະເພື່ອເປີດການຕັ້ງຄ່າ Morphe ແລະ ກົດຄ້າງໄວ້ເພື່ອເປີດການຕັ້ງຄ່າ YouTube, ປິດເພື່ອສະຫຼັບກັນ</string>
   <string name="morphe_navigation_buttons_order_title">ລຳດັບປຸ່ມນຳທາງ</string>
   <string name="morphe_navigation_buttons_order_summary">ລາກປຸ່ມເພື່ອປ່ຽນລຳດັບຂອງພວກມັນໃນແຖບນຳທາງ</string>
   <string name="morphe_swap_create_with_notifications_button_title">ສະຫຼັບປຸ່ມສ້າງ ດ້ວຍປຸ່ມການແຈ້ງເຕືອນ</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">ຖ້າການປ່ຽນແປງການຕັ້ງຄ່ານີ້ບໍ່ມີຜົນ, ໃຫ້ລອງປ່ຽນໄປໃຊ້ໂໝດບໍ່ລະບຸຕົວຕົນ</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">ຍ້າຍປຸ່ມການແຈ້ງເຕືອນໄປທີ່ແຖບການນຳທາງ ແລະ ຍ້າຍປຸ່ມສ້າງໄປທີ່ແຖບເຄື່ອງມື. ຖ້າການປ່ຽນແປງບໍ່ມີຜົນ, ໃຫ້ລອງປ່ຽນໄປໃຊ້ໂໝດບໍ່ລະບຸຕົວຕົນ</string>
   <string name="morphe_hide_navigation_button_labels_title">ເຊື່ອງປ້າຍຊື່ປຸ່ມນຳທາງ</string>
   <string name="morphe_hide_navigation_new_content_dot_title">ເຊື່ອງຈຸດເນື້ອຫາໃໝ່</string>
   <string name="morphe_hide_navigation_bar_title">ເຊື່ອງແຖບການນຳທາງ</string>
@@ -1150,12 +1137,10 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_size_width">ຄວາມກວ້າງສູງສຸດ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ໄລຍະຫ່າງຂອງປຸ່ມ</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">ປຸ່ມທີ່ສະແດງ: %1$s ຈາກ %2$s</string>
-  <string name="morphe_toolbar_screen_title">ແຖບເຄື່ອງມື</string>
-  <string name="morphe_toolbar_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນແຖບເຄື່ອງມື</string>
   <string name="morphe_hide_toolbar_chat_button_title">ເຊື່ອງປຸ່ມແຊັດ</string>
+  <string name="morphe_hide_toolbar_companion_button_title">ເຊື່ອງປຸ່ມ Companion</string>
   <string name="morphe_hide_toolbar_microphone_button_title">ເຊື່ອງປຸ່ມໄມໂຄຣໂຟນ</string>
   <string name="morphe_hide_toolbar_search_button_title">ເຊື່ອງປຸ່ມຄົ້ນຫາ</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">ເມື່ອເປີດໃຊ້ງານ, ແຕະເພື່ອເປີດການຕັ້ງຄ່າ Morphe ແລະ ກົດຄ້າງໄວ້ເພື່ອເປີດການຕັ້ງຄ່າ YouTube, ປິດເພື່ອສະຫຼັບກັນ</string>
   <string name="morphe_toolbar_buttons_order_title">ລຳດັບປຸ່ມແຖບເຄື່ອງມື</string>
   <string name="morphe_toolbar_buttons_order_summary">ລາກປຸ່ມເພື່ອປ່ຽນລຳດັບຂອງພວກມັນໃນແຖບເຄື່ອງມື</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1186,43 +1171,28 @@ Second \"item\" text"</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">ປິດການໃຊ້ງານການແຕະສອງຄັ້ງເພື່ອຖືກໃຈ</string>
   <string name="morphe_hide_shorts_ai_button_title">ເຊື່ອງປຸ່ມ AI</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">ເຊື່ອງປ້າຍກຳກັບ \'ພາກສຽງອັດຕະໂນມັດ\'</string>
-  <string name="morphe_hide_shorts_channel_bar_title">ເຊື່ອງແຖບຊ່ອງ</string>
-  <string name="morphe_hide_shorts_comments_button_title">ເຊື່ອງປຸ່ມຄວາມຄິດເຫັນ</string>
   <string name="morphe_hide_shorts_effect_button_title">ເຊື່ອງປຸ່ມເອັບເຟັກ</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">ເຊື່ອງປ້າຍລິ້ງວິດີໂອ</string>
   <string name="morphe_hide_shorts_gesture_hints_title">ເຊື່ອງຄຳແນະນຳການໃຊ້ທ່າທາງ</string>
   <string name="morphe_hide_shorts_green_screen_button_title">ເຊື່ອງປຸ່ມ \'ຈໍສີຂຽວ\'</string>
   <string name="morphe_hide_shorts_hashtag_button_title">ເຊື່ອງປຸ່ມແຮຊແທັກ</string>
   <string name="morphe_hide_shorts_info_panel_title">ເຊື່ອງແຜງຂໍ້ມູນ</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">ເຊື່ອງປຸ່ມເຂົ້າຮ່ວມ</string>
   <string name="morphe_hide_shorts_like_button_title">ເຊື່ອງປຸ່ມຖືກໃຈ</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">ເຊື່ອງແອນິເມຊັນນ້ຳພຸຂອງປຸ່ມຖືກໃຈ</string>
   <string name="morphe_hide_shorts_live_preview_title">ເຊື່ອງການເບິ່ງລ່ວງໜ້າແບບສົດ</string>
   <string name="morphe_hide_shorts_location_label_title">ເຊື່ອງປ້າຍບອກສະຖານທີ່</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">ເຊື່ອງແຖບນຳທາງ</string>
   <string name="morphe_hide_shorts_new_posts_button_title">ເຊື່ອງປຸ່ມ \'ໂພສໃໝ່\'</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">ເຊື່ອງປຸ່ມຊ້ອນທັບໃນຂະນະທີ່ຢຸດຊົ່ວຄາວ</string>
-  <string name="morphe_hide_shorts_preview_comment_title">ເຊື່ອງການເບິ່ງຄຳຄິດເຫັນລ່ວງໜ້າ</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">ເຊື່ອງປຸ່ມຣີມິກຊ໌</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">ເຊື່ອງປຸ່ມບັນທຶກ</string>
   <string name="morphe_hide_shorts_save_sound_button_title">ເຊື່ອງປຸ່ມ \'ບັນທຶກເພງ\'</string>
   <string name="morphe_hide_shorts_search_suggestions_title">ເຊື່ອງຄຳແນະນຳໃນການຄົ້ນຫາ</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">ເຊື່ອງປຸ່ມແຊຣ໌</string>
-  <string name="morphe_hide_shorts_shop_button_title">ເຊື່ອງປຸ່ມຮ້ານຄ້າ</string>
   <string name="morphe_hide_shorts_sound_button_title">ເຊື່ອງປຸ່ມສຽງ</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">ເຊື່ອງປ້າຍຂໍ້ມູນເມຕາດາຕາຂອງສຽງ</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">ເຊື່ອງປຸ່ມຕິດຕາມ</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">ເຊື່ອງປຸ່ມ \'ຊື້ Super Thanks\'</string>
   <string name="morphe_hide_shorts_tagged_products_title">ເຊື່ອງສິນຄ້າທີ່ຖືກແທັກ</string>
   <string name="morphe_hide_shorts_upcoming_button_title">ເຊື່ອງປຸ່ມທີ່ກຳລັງຈະມາເຖິງ</string>
   <string name="morphe_hide_shorts_use_sound_button_title">ເຊື່ອງປຸ່ມ \'ໃຊ້ສຽງນີ້\'</string>
   <string name="morphe_hide_shorts_use_template_button_title">ເຊື່ອງປຸ່ມ \'ໃຊ້ແມ່ແບບນີ້\'</string>
-  <string name="morphe_hide_shorts_video_title_title">ເຊື່ອງຫົວຂໍ້ວິດີໂອ</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">ເຊື່ອງວິດີໂອທີ່ແນະນຳໃນໜ້າຈໍຈົບ</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"ເຊື່ອງວິດີໂອແນະນຳທີ່ປາກົດຂຶ້ນຫຼັງຈາກວິດີໂອສິ້ນສຸດ
@@ -1732,8 +1702,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">ໃຫ້ບຸລິມະສິດຄຸນນະພາບວິດີໂອທີ່ສູງທີ່ສຸດທີ່ມີຢູ່ ເໜືອກວ່າປະສິດທິພາບຂອງ codec</string>
   <string name="morphe_video_quality_prioritize_dialog">ຖ້າປິດການຕັ້ງຄ່ານີ້, ວິດີໂອເກົ່າອາດຈະບໍ່ສະແດງຕົວເລືອກຄຸນນະພາບຂອງວິດີໂອ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">ອະນຸຍາດ \'Android VR\' / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">ອະນຸຍາດການຖອດລະຫັດ AV1 ດ້ວຍຊອບແວ ເມື່ອໃຊ້ຄລາຍເອນ \'Android VR\' / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_title">ອະນຸຍາດ \'Android VR\' / \'visionOS\' AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">ອະນຸຍາດໃຫ້ມີການຖອດລະຫັດ AV1 ດ້ວຍຊອບແວ ເມື່ອໃຊ້ໄຄລຽນ \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"ການເປີດໃຊ້ການຕັ້ງຄ່ານີ້ອາດຈະໃຊ້ການຖອດລະຫັດ AV1 ດ້ວຍຊອບແວ.
 
 ການຫຼິ້ນວິດີໂອດ້ວຍ AV1 ອາດຈະກະຕຸກ ຫຼື ມີການຕົກຂອງເຟຣມ"</string>
@@ -1970,7 +1940,6 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">ພາສາໃນການແປ</string>
   <string name="morphe_live_chat_translate_exclude_title">ພາສາທີ່ຍົກເວັ້ນ</string>
   <string name="morphe_live_chat_translate_exclude_summary">ລະຫັດພາສາທີ່ແຍກດ້ວຍເຄື່ອງໝາຍຈຸລະພາກ ເຊັ່ນ id,en. ຂໍ້ຄວາມໃນພາສາເຫຼົ່ານີ້ຈະບໍ່ຖືກແປ</string>
-  <string name="morphe_live_chat_translate_provider_title">ຜູ້ໃຫ້ບໍລິການແປພາສາ</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">ຄີ DeepL API</string>

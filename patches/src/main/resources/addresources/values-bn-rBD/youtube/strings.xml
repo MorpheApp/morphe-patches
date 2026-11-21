@@ -205,8 +205,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">পোস্ট শেল্ফ লুকান</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">\'স্টোর\' বোতামটি লুকান</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">সাবস্ক্রাইব বোতামটি লুকান</string>
   <string name="morphe_explore_menu_screen_title">অন্বেষণ মেনু</string>
   <string name="morphe_explore_menu_screen_summary">অন্বেষণ মেনুতে কোন উপাদানগুলো দেখাতে চান তা নির্বাচন করুন</string>
   <string name="morphe_hide_courses_menu_title">কোর্স মেনু লুকান</string>
@@ -281,7 +279,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">কমেন্ট বোতামটি লুকান</string>
   <string name="morphe_hide_post_comments_preview_title">কমেন্ট পূর্বরূপ লুকান</string>
   <string name="morphe_hide_post_comments_preview_summary">পোস্টের নিচের কমেন্টগুলোর পূর্বরূপ লুকায়</string>
-  <string name="morphe_hide_post_share_button_title">শেয়ার বোতামটি লুকান</string>
   <string name="morphe_hide_post_share_button_summary">পোস্ট ছবির ডাউনলোড বোতামটি শেয়ার বোতামের পাশে থাকে, তাই এটিও লুকানো হয়</string>
   <string name="morphe_hide_ask_gemini_button_title">\'Ask Gemini\' বোতামটি লুকান</string>
   <string name="morphe_hide_ask_gemini_button_summary">\'এই ভিডিও সম্পর্কে জিজ্ঞাসা করুন\' প্যানেলের নীচে থাকা \'Ask Gemini\' বোতামটি লুকায়</string>
@@ -296,9 +293,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_in_this_video_button_title">\'এই ভিডিওতে\' বাটনটি লুকিয়ে রাখুন</string>
   <string name="morphe_hide_info_panels_title">তথ্য প্যানেল লুকান</string>
   <string name="morphe_hide_info_panels_summary">চিকিৎসা সংক্রান্ত তথ্যের মতো তথ্যমূলক প্রসঙ্গ প্যানেল লুকায়</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">যোগদান বোতাম লুকান</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">\'লাইভ চ্যাট রিপ্লে\' বোতাম লুকান</string>
@@ -314,8 +308,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">দ্রুততর করতে হোল্ড করার সময় আঙুল স্লাইড করলে প্লেয়ার কন্ট্রোলের গ্রেডিয়েন্ট লুকিয়ে রাখে</string>
   <string name="morphe_hide_timed_reactions_title">সময় অনুযায়ী প্রতিক্রিয়া লুকান</string>
   <string name="morphe_hide_timed_reactions_summary">মন্তব্য এবং লাইভ চ্যাট বিভাগে ইমোজি দিয়ে প্রতিক্রিয়া জানানোর বৈশিষ্ট্যটি লুকায়</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">\'সাহায্য &amp; মতামত\' মেনু লুকান</string>
   <string name="morphe_hide_help_feedback_menu_summary">\'সাহায্য &amp; মতামত\' মেনুটি তিন-বিন্দু বোতাম ব্যবহার করার সময় লুকায়, যেমন অনুসন্ধান ফলাফলে</string>
   <string name="morphe_hide_handle_title">হ্যান্ডেল লুকান</string>
   <string name="morphe_hide_handle_summary">আপনার চ্যানেল হ্যান্ডেল \'You\' ট্যাবে লুকিয়ে রাখে</string>
@@ -358,7 +350,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">\'জিজ্ঞাসা\' বোতাম লুকান</string>
   <string name="morphe_hide_channel_profile_button_title">চ্যানেল এবং সাবস্ক্রাইব বোতাম লুকান</string>
   <string name="morphe_hide_channel_profile_button_summary">অ্যাকশন বারের শুরুতে চ্যানেলের অ্যাভাটার এবং সাবস্ক্রাইব বোতাম লুকিয়ে রাখে</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">সাবস্ক্রাইব বোতামটি লুকান</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">অ্যাকশন বারের শুরুতে চ্যানেল অ্যাভাটারের পাশে থাকা সাবস্ক্রাইব এবং জয়েন বাটনগুলো লুকিয়ে রাখে</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">ক্লিপ বোতাম লুকান</string>
@@ -434,7 +425,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe দ্বারা মন্তব্য লুকানো…</string>
   <string name="morphe_minimal_comments_button_title">ন্যূনতম মন্তব্য বোতাম সক্রিয় করুন</string>
   <string name="morphe_minimal_comments_button_summary">মন্তব্য বোতামে প্রদর্শিত স্লাইডিং কার্ডগুলো এবং এর পৃষ্ঠা নির্বাচকটি লুকিয়ে রাখে</string>
-  <string name="morphe_hide_comments_thanks_button_title">ধন্যবাদ বাটন লুকান</string>
   <string name="morphe_hide_comments_timestamp_button_title">টাইমস্ট্যাম্প বোতাম লুকান</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'টপ ফ্যান\' বোতামটি লুকান</string>
   <string name="morphe_hide_comments_translate_button_title">অনুবাদ বোতাম লুকান</string>
@@ -489,7 +479,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">ক্যাপশন বোতামটি লুকান</string>
   <string name="morphe_hide_cast_button_title">কাস্ট বোতামটি লুকান</string>
-  <string name="morphe_hide_cast_button_summary">ভিডিও প্লেয়ার এবং টুলবারে কাস্ট বোতামটি লুকায়</string>
   <string name="morphe_hide_collapse_button_title">সংকুচিত বোতাম লুকান</string>
   <string name="morphe_hide_fullscreen_button_title">Fullscreen বোতামটি লুকান</string>
   <string name="morphe_hide_player_control_buttons_background_title">প্লেয়ার কন্ট্রোল ব্যাকগ্রাউন্ড লুকান</string>
@@ -1088,8 +1077,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_caption_block_translation_failed">কিছু ক্যাপশন অনুবাদ অনুপলব্ধ। উপলব্ধ ক্যাপশনগুলো দেখানো হচ্ছে।</string>
   <string name="morphe_caption_blocks_too_large">উভয় ক্যাপশন ভাষা এই প্লেয়ারে ধরে যাচ্ছে না। প্রাথমিক ভাষা দেখানো হচ্ছে।</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">নেভিগেশন বার</string>
-  <string name="morphe_navigation_bar_screen_summary">নিচের নেভিগেশন বার-এ কোন বোতামগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">হোম বোতাম লুকান</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1094,11 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_watch_later_navigation_label">পরে দেখুন</string>
   <string name="morphe_show_settings_button_title">সেটিংস বোতাম দেখান</string>
   <string name="morphe_show_settings_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
-  <string name="morphe_show_settings_button_type_summary">সক্রিয় থাকলে Morphe সেটিংস খোলে, নিষ্ক্রিয় থাকলে YouTube সেটিংস খোলে</string>
+  <string name="morphe_show_settings_button_type_summary">সক্রিয় থাকলে, ট্যাপ করলে Morphe সেটিংস এবং লং প্রেস করলে YouTube সেটিংস খুলবে; অদলবদল করতে নিষ্ক্রিয় করুন</string>
   <string name="morphe_navigation_buttons_order_title">নেভিগেশন বোতামের ক্রম</string>
   <string name="morphe_navigation_buttons_order_summary">নেভিগেশন বারে বোতামগুলোর ক্রম পরিবর্তন করতে সেগুলো ড্র্যাগ করুন</string>
   <string name="morphe_swap_create_with_notifications_button_title">তৈরি বোতাম ও বিজ্ঞপ্তি বোতাম অদলবদল করুন</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">যদি এই সেটিংস পরিবর্তন করার পরে কোনো প্রভাব না পড়ে, তবে ইনকগনিটো মোডে স্যুইচ করার চেষ্টা করুন</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Notifications বোতামটি নেভিগেশন বারে এবং Create বোতামটি টুলবারে সরিয়ে নেয়। যদি পরিবর্তনগুলি কার্যকর না হয়, তবে ইনকগনিটো মোডে স্যুইচ করার চেষ্টা করুন</string>
   <string name="morphe_hide_navigation_button_labels_title">নেভিগেশন বোতাম লেবেল লুকান</string>
   <string name="morphe_hide_navigation_new_content_dot_title">নতুন সামগ্রীর ডট লুকান</string>
   <string name="morphe_hide_navigation_bar_title">নেভিগেশন বার লুকান</string>
@@ -1150,12 +1137,10 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_navigation_bar_glass_size_width">সর্বোচ্চ প্রস্থ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">বাটন স্পেসিং</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">বোতাম দেখানো হয়েছে: %2$s এর মধ্যে %1$s</string>
-  <string name="morphe_toolbar_screen_title">টুলবার</string>
-  <string name="morphe_toolbar_screen_summary">টুলবারে কোন উপাদানগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <string name="morphe_hide_toolbar_chat_button_title">চ্যাট বাটন লুকিয়ে রাখুন</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Companion বোতামটি লুকান</string>
   <string name="morphe_hide_toolbar_microphone_button_title">মাইক্রোফোন বাটন লুকান</string>
   <string name="morphe_hide_toolbar_search_button_title">অনুসন্ধান বাটন লুকান</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">সক্ষম করা হলে, ট্যাপ করলে Morphe সেটিংস খুলবে এবং দীর্ঘক্ষণ চাপলে YouTube সেটিংস খুলবে, পরিবর্তন করতে অক্ষম করুন</string>
   <string name="morphe_toolbar_buttons_order_title">টুলবার বোতামের ক্রম</string>
   <string name="morphe_toolbar_buttons_order_summary">টুলবারে বোতামগুলোর ক্রম পরিবর্তন করতে সেগুলো ড্র্যাগ করুন</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1186,43 +1171,28 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_disable_shorts_double_tap_to_like_title">ডাবল ট্যাপে লাইক করা অক্ষম করুন</string>
   <string name="morphe_hide_shorts_ai_button_title">এআই বোতাম লুকান</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">\'অটো-ডাব\' লেবেল লুকান</string>
-  <string name="morphe_hide_shorts_channel_bar_title">চ্যানেল বার লুকান</string>
-  <string name="morphe_hide_shorts_comments_button_title">কমেন্টস বোতামটি লুকান</string>
   <string name="morphe_hide_shorts_effect_button_title">ইফেক্ট বোতাম লুকান</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">ভিডিও লিঙ্ক লেবেল লুকান</string>
   <string name="morphe_hide_shorts_gesture_hints_title">জেসচার ইঙ্গিত লুকান</string>
   <string name="morphe_hide_shorts_green_screen_button_title">\'গ্রিন স্ক্রিন\' বোতাম লুকান</string>
   <string name="morphe_hide_shorts_hashtag_button_title">হ্যাশট্যাগ বোতাম লুকান</string>
   <string name="morphe_hide_shorts_info_panel_title">তথ্য প্যানেল লুকান</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">যোগদান বোতাম লুকান</string>
   <string name="morphe_hide_shorts_like_button_title">লাইক বোতামটি লুকান</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">লাইক বোতাম ফাউন্টেন অ্যানিমেশনটি লুকান</string>
   <string name="morphe_hide_shorts_live_preview_title">লাইভ পূর্বরূপ লুকান</string>
   <string name="morphe_hide_shorts_location_label_title">অবস্থান লেবেল লুকান</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">নেভিগেশন বার লুকান</string>
   <string name="morphe_hide_shorts_new_posts_button_title">\'নতুন পোস্ট\' বোতাম লুকান</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">থেমে থাকা ওভারলে বোতাম লুকান</string>
-  <string name="morphe_hide_shorts_preview_comment_title">মন্তব্যের পূর্বরূপ লুকান</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">রিমিক্স বোতামটি লুকান</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">সেভ বোতামটি লুকান</string>
   <string name="morphe_hide_shorts_save_sound_button_title">\'মিউজিক সেভ\' বোতাম লুকান</string>
   <string name="morphe_hide_shorts_search_suggestions_title">অনুসন্ধান পরামর্শগুলি লুকান</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">শেয়ার বোতামটি লুকান</string>
-  <string name="morphe_hide_shorts_shop_button_title">শপ বোতামটি লুকান</string>
   <string name="morphe_hide_shorts_sound_button_title">সাউন্ড বোতাম লুকান</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">সাউন্ড মেটাডেটা লেবেল লুকান</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">সাবস্ক্রাইব বোতামটি লুকান</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">\'সুপার থ্যাঙ্কস কিনুন\' বোতাম লুকান</string>
   <string name="morphe_hide_shorts_tagged_products_title">ট্যাগ করা প্রোডাক্টগুলি লুকান</string>
   <string name="morphe_hide_shorts_upcoming_button_title">আসন্ন বোতামটি লুকান</string>
   <string name="morphe_hide_shorts_use_sound_button_title">\'এই সাউন্ড ব্যবহার করুন\' বোতাম লুকান</string>
   <string name="morphe_hide_shorts_use_template_button_title">\'এই টেমপ্লেট ব্যবহার করুন\' বোতাম লুকান</string>
-  <string name="morphe_hide_shorts_video_title_title">ভিডিওর শিরোনাম লুকান</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">শেষ স্ক্রিনের প্রস্তাবিত ভিডিও লুকান</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"ভিডিও শেষ হওয়ার পরে যে প্রস্তাবিত ভিডিওর ওভারলে প্রদর্শিত হয় তা লুকায়
@@ -1732,8 +1702,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">কোডেক দক্ষতার চেয়ে সর্বোচ্চ উপলব্ধ ভিডিও গুণমানকে অগ্রাধিকার দেয়</string>
   <string name="morphe_video_quality_prioritize_dialog">যদি এই সেটিংস বন্ধ করা হয়, তাহলে পুরোনো ভিডিওতে ভিডিওর গুণমানের কোনো বিকল্প নাও দেখাতে পারে</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1 অনুমতি দিন</string>
-  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS ক্লায়েন্ট ব্যবহার করার সময় সফটওয়্যার AV1 ডিকোডিং অনুমতি দেয়</string>
+  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1 অনুমতি দিন</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' ক্লায়েন্ট ব্যবহার করার সময় সফটওয়্যার AV1 ডিকোডিং করার অনুমতি দেয়</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"এই সেটিংটি চালু করলে সফটওয়্যার AV1 ডিকোডিং ব্যবহার হতে পারে।
 
 AV1 দিয়ে ভিডিও প্লেব্যাকে ঝাঁকুনি বা ফ্রেম বাদ দেওয়া হতে পারে"</string>
@@ -1970,7 +1940,6 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_live_chat_translate_language_title">অনুবাদ ভাষা</string>
   <string name="morphe_live_chat_translate_exclude_title">বাদ দেওয়া ভাষা</string>
   <string name="morphe_live_chat_translate_exclude_summary">কমা দিয়ে আলাদা করা ল্যাঙ্গুয়েজ কোড যেমন id,en। এই ভাষাগুলোর মেসেজ অনুবাদ করা হবে না</string>
-  <string name="morphe_live_chat_translate_provider_title">অনুবাদ প্রদানকারী</string>
   <string name="morphe_live_chat_translate_provider_google">গুগল ট্রান্সলেট</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API কী</string>

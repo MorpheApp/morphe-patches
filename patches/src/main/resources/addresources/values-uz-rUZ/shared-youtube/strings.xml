@@ -141,15 +141,15 @@ Android System WebView’ni ochish uchun OK tugmasini bosing."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Agar mijozlar topilmasa: Android VR ga kirish imkoniyatini sinab ko‘ring</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standart mijoz</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR ga kirish</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR alohida tizimga kirishni talab qiladi. Davom etish uchun bu yerni bosing</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hozirda Android VR ga kiritilgan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR tizimiga kirish</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' alohida tizimga kirishni talab qiladi. Davom etish uchun bu yerni bosing</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hozirda \'Android VR\' tizimiga kirilgan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ushbu funksiyadan foydalanish uchun, \'Standart mijoz\'ni Android VR yoki TV ga o\'zgartiring</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR ga kirish</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Ba’zi foydalanuvchilar uchun o‘ynatish muammolarini hal qilish uchun Android VR ga kirish mumkin
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ushbu funksiyadan foydalanish uchun \'Standart mijoz\'ni \'Android VR\'ga o\'zgartiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\'Android VR\' tizimiga kiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"'Android VR'ga kirish ba'zi foydalanuvchilar uchun ijro muammolarini bartaraf etishi mumkin
 
-Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
+Kirish uchun quyidagidan davom eting"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Chiqib ketish</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Ko‘rsatmalar</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -170,33 +170,33 @@ Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
 • Google parolingizni o'zgartirsangiz yoki ushbu qurilmani Google sozlamalaridan olib tashlasangiz, qayta kirishingiz kerak"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobil veb-versiyada tizimga kirish</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Ixtiyoriy: videolarni o\"z hisobingiz orqali ko\"rish uchun YouTube veb-saytiga kiring. Davom etish uchun bu yerni bosing</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hozirda Mobil veb-versiyada tizimga kirilgan</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hozirda \'Mobile Web\'ga kirilgan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ushbu funksiyadan foydalanish uchun, \'Standart mijoz\'ni Mobile Web ga o\'zgartiring</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-ga kiring</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web videolarni tizimga kirmagan holda yoki YouTube veb-saytiga kirgan holda ijro etadi
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ushbu funksiyadan foydalanish uchun \'Standart mijoz\'ni \'Mobile Web\'ga o\'zgartiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobile Web\'ga kiring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobil Web\" videolarni tizimga kirmasdan yoki YouTube veb-saytiga kirgan holda ijro etadi
 
-• Tizimga kirgan holda, hisob talab qiladigan videolarni, masalan, yosh cheklovi mavjud videolarni ko'rish mumkin
-• Google tizimga kirish sahifasi ushbu ilovada ochiladi
+• Tizimga kirgan holda, yosh chegarasi bilan cheklangan videolar kabi akkaunt talab qiladigan videolarni ko'rish mumkin
+• Google-ga kirish sahifasi ushbu ilovada ochiladi
 • Tizimga kirish faqat siz ijro etadigan videolarni olish uchun ishlatiladi
 • Tizimga kirish ma'lumotlari faqat ushbu qurilmada saqlanadi
 
-Tizimga kirish uchun quyidagining 'davom etish' tugmasini bosing"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kirish ma'lumotlari saqlandi
+Tizimga kirish uchun quyidagidan davom eting"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Tizimga kirish ma'lumotlari saqlandi
 
-• Morphe sozlamalari Mobile Web kirish ma'lumotlarini import/eksport qilmaydi
-• Agar Google kirish seansini tugatsa, qayta kirguningizga qadar videolar tizimga kirmagan holda ijro etiladi
+• Sizning Morphe sozlamalaringiz \"Mobil Web\" tizimiga kirish ma'lumotlarini import qilmaydi/eksport qilmaydi
+• Agar Google tizimdan chiqarsa, siz qayta tizimga kirguningizcha videolar tizimga kirmagan holda ijro etiladi
 • Tizimdan chiqish ushbu qurilmani YouTube veb-saytidan ham chiqaradi"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web kirish muddati tugadi, Mobile Web\'ga qayta kirishga harakat qiling</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web tizimidan chiqildi</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView mavjud emas. Kirish uchun uni o\'rnating yoki yoqing</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobil Web tizimiga kirish muddati tugadi, \"Mobil Web\"ga qayta kirishga harakat qilib ko\'ring</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\"Mobil Web\" tizimidan chiqildi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" mavjud emas. Tizimga kirish uchun uni o\"rnating yoki yoqing</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 vaqtinchalik mavjud emas (API vaqti tugadi)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR ga kirish muddati tugadi, VR ga yana kirishni sinab ko‘ring</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\"Android VR\" tizimiga kirish muddati tugadi, VR’ga qaytadan kirishga harakat qiling</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 vaqtincha mavjud emas (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 vaqtinchalik mavjud emas</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR ga kirishning iloji yo‘q, veb-sayt kimlik tasdiqlanishiga ruxsat berilmagan</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR ga kirishning iloji yo‘q: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR dan chiqib ketdi</string>
+  <string name="morphe_oauth2_toast_reset">\"Android VR\" tizimidan chiqildi</string>
   <string name="morphe_oauth2_toast_invalid">Yaroqsiz VR kirish tokeni, VR ga yana kirishni sinab ko‘ring</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Bildirishnoma media boshqaruvlari</string>
@@ -254,7 +254,7 @@ Tizimga kirish uchun quyidagining 'davom etish' tugmasini bosing"</string>
   <string name="morphe_replace_music_with_youtube_title">Ulash linklarini youtube.com ga o\'zgartirish</string>
   <string name="morphe_replace_music_with_youtube_summary">Ulash linklarida music.youtube.com ni youtube.com ga o\'zgartiradi</string>
   <string name="morphe_replace_links_with_shortener_title">Ulash manzillarini youtu.be ga o‘zgartirish</string>
-  <string name="morphe_replace_links_with_shortener_summary">Videolarni qisqartirilgan youtu.be URL formatidan foydalanishga majbur qiladi</string>
+  <string name="morphe_replace_links_with_shortener_summary">Videolar uchun qisqartirilgan \"youtu.be\" URL formatidan foydalanishni majburiy qiladi</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Avtomatik</string>
@@ -266,19 +266,16 @@ Tizimga kirish uchun quyidagining 'davom etish' tugmasini bosing"</string>
   <string name="morphe_video_quality_default_mobile_title">Mobil tarmoqdagi odatiy video sifati</string>
   <string name="morphe_remember_video_quality_toast_mobile">Standart mobil sifat: %s ga o\'zgartirildi</string>
   <string name="morphe_remember_video_quality_toast_wifi">Standart Wi-Fi sifati: %s ga o\'zgartirildi</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Tizim ulashish varag\'ini ochish</string>
-  <string name="morphe_open_system_share_sheet_summary">Ulashishda ilova ichidagi o\'rniga tizim ulashish varag\'ini ochadi</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Lito logging</string>
   <string name="morphe_debug_litho_entry_disabled">O\"chirilgan</string>
   <string name="morphe_debug_litho_entry_path">Yo\'l</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Yo\'l va bufer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho logging ilovaning maket komponentlarini, jumladan, ba'zi UI komponentlari uchun ekrandagi matnlarni qayd etadi.
+  <string name="morphe_debug_litho_user_dialog_message">"Ilova maket komponentlarini, jumladan, ba\"zi UI komponentlarining ekrandagi matnlarini qayd etadi.
 
 Bu maxsus filtrlarni yaratishda komponentlarni aniqlashga yordam beradi.
 
-Biroq, bu shuningdek, IP manzilingiz kabi ba'zi foydalanuvchi ma'lumotlarini ham qayd etadi"</string>
+Biroq, bu shuningdek, IP-manzilingiz kabi ba\"zi foydalanuvchi ma\"lumotlarini ham qayd etadi"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Maxsus filtr</string>
   <string name="morphe_custom_filter_screen_summary">Yashirish uchun maxsus filtrni sozlang</string>
@@ -380,4 +377,8 @@ Siz tomosha qilayotgan videoning ID-si Return YouTube Dislike API-ga yuboriladi,
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Klient tezligi chegaralariga duch kelinmagan</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klient tezligi chegarasi %s marta uchradi</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekund</string>
+  <string name="morphe_navigation_bar_screen_title">Navigatsiya paneli</string>
+  <string name="morphe_navigation_bar_screen_summary">Pastki navigatsiya panelida qaysi tugmalar ko\'rinishini tanlang</string>
+  <string name="morphe_toolbar_screen_title">Asboblar paneli</string>
+  <string name="morphe_toolbar_screen_summary">Asboblar panelida qaysi komponentlar ko\'rinishini tanlang</string>
 </resources>

@@ -141,13 +141,13 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">다음을 활성화해 보세요: 동영상 스트림 속이기 &gt; Android VR에 로그인하기</string>
   <string name="morphe_spoof_video_streams_client_type_title">기본 클라이언트</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR에 로그인하기</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR은 별도의 로그인이 필요합니다. 계속하려면 여기를 탭하세요</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">현재 Android VR에 로그인되어 있습니다</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android\' VR 로그인</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'은 별도의 로그인이 필요합니다. 계속하려면 여기를 탭하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">현재 \'Android VR\'에 로그인되어 있습니다</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">이 기능을 사용하려면, \'동영상 스트림 속이기\'에서 \'기본 클라이언트\'를 \'Android VR\'로 변경하세요</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR에 로그인하기</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR에 로그인하면 일부 사용자의 재생 문제가 해결될 수 있습니다
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">이 기능을 사용하려면 \'기본 클라이언트\'를 \'Android VR\'로 변경하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\'Android VR\'에 로그인하기</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"'Android VR'에 로그인하면 일부 사용자의 재생 문제가 해결될 수 있습니다
 
 로그인하려면 아래에 있는 '계속' 버튼을 탭하세요"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">로그아웃</string>
@@ -170,33 +170,33 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
 • Google 암호를 변경하거나 Google 설정에서 이 기기 등록을 해제하면 다시 로그인해야 합니다"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">모바일 웹 로그인</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">선택 사항: 계정으로 동영상을 재생하려면 YouTube 웹사이트에 로그인하세요. 여기를 탭하여 계속하세요</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">현재 모바일 웹에 로그인되어 있습니다</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">현재 \'모바일 웹\'에 로그인되어 있습니다</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">이 기능을 사용하려면 \'기본 클라이언트\'를 Mobile Web으로 변경하세요</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web에 로그인</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web은 로그아웃 상태 또는 YouTube 웹사이트에 로그인된 상태로 동영상을 재생합니다
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">이 기능을 사용하려면 \'기본 클라이언트\'를 \'모바일 웹\'으로 변경하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'모바일 웹\'에 로그인</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'모바일 웹'은 로그아웃 상태 또는 YouTube 웹사이트에 로그인한 상태로 동영상을 재생합니다
 
 • 로그인하면 연령 제한 동영상과 같이 계정이 필요한 동영상을 재생할 수 있습니다
 • 이 앱에서 Google 로그인 페이지가 열립니다
-• 로그인은 재생하려는 동영상을 가져오는 용도로만 사용됩니다
+• 로그인은 재생할 동영상을 가져오는 용도로만 사용됩니다
 • 로그인 정보는 이 기기에만 저장됩니다
 
-로그인하려면 아래의 계속 버튼을 누르세요"</string>
+로그인하려면 아래의 계속을 누르세요"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"로그인이 저장되었습니다
 
-• Morphe 설정에서는 모바일 웹 로그인을 가져오거나 내보내지 않습니다
-• Google에서 로그인을 종료하면 다시 로그인할 때까지 로그아웃된 상태로 동영상이 재생됩니다
+• Morphe 설정에서 '모바일 웹' 로그인은 가져오기/내보내기를 지원하지 않습니다
+• Google 로그인이 종료되면 다시 로그인할 때까지 로그아웃 상태로 동영상이 재생됩니다
 • 로그아웃하면 이 기기의 YouTube 웹사이트에서도 로그아웃됩니다"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">모바일 웹 로그인이 만료되었습니다. 모바일 웹에 다시 로그인하세요</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">모바일 웹에서 로그아웃되었습니다</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView를 사용할 수 없습니다. 로그인하려면 설치하거나 활성화하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">모바일 웹 로그인이 만료되었습니다. \'모바일 웹\'에 다시 로그인하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'모바일 웹\'에서 로그아웃되었습니다</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\'를 사용할 수 없습니다. 로그인하려면 설치하거나 활성화하세요</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2를 일시적으로 사용할 수 없습니다 (API 시간 초과)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR 로그인이 만료되었습니다. VR에 다시 로그인하세요</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' 로그인이 만료되었습니다. VR에 다시 로그인하세요</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2을 일시적으로 사용할 수 없습니다 (상태 코드: %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2를 일시적으로 사용할 수 없습니다</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR에 로그인할 수 없습니다. 웹사이트 인증이 승인되지 않았습니다</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR에 로그인할 수 없습니다: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR에서 로그아웃되었습니다</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\'에서 로그아웃되었습니다</string>
   <string name="morphe_oauth2_toast_invalid">잘못된 VR 로그인 토큰입니다. 다시 VR에 로그인하세요</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">미디어 알림 컨트롤</string>
@@ -254,7 +254,7 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
   <string name="morphe_replace_music_with_youtube_title">공유 링크를 \'youtube.com\'으로 변경하기</string>
   <string name="morphe_replace_music_with_youtube_summary">공유 링크에서 music.youtube.com을 youtube.com으로 변경합니다</string>
   <string name="morphe_replace_links_with_shortener_title">공유 링크를 youtu.be로 변경하기</string>
-  <string name="morphe_replace_links_with_shortener_summary">동영상이 단축된 youtu.be URL 형식을 사용하도록 강제합니다</string>
+  <string name="morphe_replace_links_with_shortener_summary">동영상이 단축된 \'youtu.be\' URL 형식을 사용하도록 강제합니다</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">자동</string>
@@ -266,19 +266,16 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
   <string name="morphe_video_quality_default_mobile_title">모바일 네트워크 이용 시 기본 동영상 화질</string>
   <string name="morphe_remember_video_quality_toast_mobile">모바일 네트워크 이용 시 기본 동영상 화질 값을 %s 로 변경하였습니다</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi 이용 시 기본 동영상 화질 값을 %s 로 변경하였습니다</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">공유 시트 변경하기</string>
-  <string name="morphe_open_system_share_sheet_summary">콘텐츠를 공유할 경우에 앱 기본 공유 시트 대신 시스템 공유 시트를 실행합니다</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho 로깅</string>
   <string name="morphe_debug_litho_entry_disabled">사용 안함</string>
   <string name="morphe_debug_litho_entry_path">경로</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">경로 및 버퍼</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho 로깅은 일부 UI 구성 요소의 화면 텍스트를 포함하여 앱의 레이아웃 구성 요소를 기록합니다
+  <string name="morphe_debug_litho_user_dialog_message">"일부 UI 구성 요소에 대한 화면 텍스트를 포함하여 앱의 레이아웃 구성 요소를 기록합니다
 
 이는 사용자 정의 필터를 만들 때 구성 요소를 식별하는 데 도움이 될 수 있습니다
 
-하지만 IP 주소와 같은 일부 사용자 데이터도 함께 기록됩니다"</string>
+하지만 이 작업은 IP 주소와 같은 일부 사용자 데이터도 함께 기록합니다"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">사용자 정의 필터</string>
   <string name="morphe_custom_filter_screen_summary">원하는 구성 요소를 숨기기 위한 사용자 정의 필터를 설정합니다</string>
@@ -380,4 +377,8 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">클라이언트 비율 제한이 발생하지 않았습니다</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">클라이언트 비율 제한이 %s 번 발생하였습니다</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s 밀리초</string>
+  <string name="morphe_navigation_bar_screen_title">하단바</string>
+  <string name="morphe_navigation_bar_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
+  <string name="morphe_toolbar_screen_title">툴바</string>
+  <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 설정할 수 있습니다</string>
 </resources>

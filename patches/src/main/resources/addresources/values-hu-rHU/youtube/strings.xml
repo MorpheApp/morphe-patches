@@ -205,8 +205,6 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_hide_posts_shelf_title">Bejegyzéspolc elrejtése</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Bolt gomb elrejtése</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Feliratkozás gomb elrejtése</string>
   <string name="morphe_explore_menu_screen_title">Felfedezés menü</string>
   <string name="morphe_explore_menu_screen_summary">Válaszd ki, mely elemek jelenjenek meg a felfedezés menüben</string>
   <string name="morphe_hide_courses_menu_title">Kurzusok menü elrejtése</string>
@@ -281,7 +279,6 @@ Korlátok:
   <string name="morphe_hide_post_comment_button_title">Hozzászólások gomb elrejtése</string>
   <string name="morphe_hide_post_comments_preview_title">Kommentek előnézetének elrejtése</string>
   <string name="morphe_hide_post_comments_preview_summary">Elrejti a bejegyzések alatti kommentek előnézetét</string>
-  <string name="morphe_hide_post_share_button_title">Megosztás gomb elrejtése</string>
   <string name="morphe_hide_post_share_button_summary">A bejegyzés képeinek letöltő gombja a megosztás gomb mellett jelenik meg, így ez is rejtve lesz</string>
   <string name="morphe_hide_ask_gemini_button_title">\'Ask Gemini\' gomb elrejtése</string>
   <string name="morphe_hide_ask_gemini_button_summary">Elrejti az \'Ask Gemini\' gombot a \'Kérdezés erről a videóról\' panel alján</string>
@@ -296,9 +293,6 @@ Korlátok:
   <string name="morphe_hide_in_this_video_button_title">„Ebben a videóban” gomb elrejtése</string>
   <string name="morphe_hide_info_panels_title">Információs panelek elrejtése</string>
   <string name="morphe_hide_info_panels_summary">Tájékoztató kontextusüzenetek elrejtése, mint pl. az orvosi információk</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">„Csatlakozás” gomb elrejtése</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">„Élő csevegés ismétlése” gomb elrejtése</string>
@@ -314,8 +308,6 @@ Korlátok:
   <string name="morphe_hide_tap_and_hold_gradient_summary">Elrejti a lejátszóvezérlők színátmenetét, amikor a gyorsításhoz nyomva tartva húzza az ujját</string>
   <string name="morphe_hide_timed_reactions_title">Időzített reakciók elrejtése</string>
   <string name="morphe_hide_timed_reactions_summary">Kikapcsolja az emojikkal való reagálást a kommenteknél és az élő chaten</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">\'Súgó &amp; visszajelzés\' menü elrejtése</string>
   <string name="morphe_hide_help_feedback_menu_summary">Elrejti a \'Súgó &amp; visszajelzés\' menüt a hárompontos gomb használatakor, például a keresési találatoknál</string>
   <string name="morphe_hide_handle_title">Handle elrejtése</string>
   <string name="morphe_hide_handle_summary">Elrejti a csatornád handle-jét a „Neked” lapon</string>
@@ -358,7 +350,6 @@ Korlátok:
   <string name="morphe_hide_ask_button_title">Kérdés gomb elrejtése</string>
   <string name="morphe_hide_channel_profile_button_title">Csatorna és Feliratkozás gomb elrejtése</string>
   <string name="morphe_hide_channel_profile_button_summary">Elrejti a csatorna avatárját és a Feliratkozás gombot a műveletsáv elején</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Feliratkozás gomb elrejtése</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Elrejti a Feliratkozás és Csatlakozás gombokat a csatorna avatarja mellett a műveletsáv elején</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Vágás gomb elrejtése</string>
@@ -434,7 +425,6 @@ Korlátok:
   <string name="morphe_hide_comments_preview_comment_hidden">A megjegyzést Morphe… elrejtette</string>
   <string name="morphe_minimal_comments_button_title">Minimális hozzászólásgomb engedélyezése</string>
   <string name="morphe_minimal_comments_button_summary">Elrejti a hozzászólásgombon megjelenő csúsztatható kártyákat és azok oldalválasztóját</string>
-  <string name="morphe_hide_comments_thanks_button_title">Köszönet gomb elrejtése</string>
   <string name="morphe_hide_comments_timestamp_button_title">Időbélyeg gomb elrejtése</string>
   <string name="morphe_hide_comments_top_fans_button_title">A \'Top fans\' gomb elrejtése</string>
   <string name="morphe_hide_comments_translate_button_title">Fordítás gomb elrejtése</string>
@@ -489,7 +479,6 @@ Az 'Audio Track' menü megjelenítéséhez állítsa a 'Videóstream-ek megtéve
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Felirat gomb elrejtése</string>
   <string name="morphe_hide_cast_button_title">Átküldés gomb elrejtése</string>
-  <string name="morphe_hide_cast_button_summary">Elrejti a Cast gombot a videolejátszóban és az eszköztárban</string>
   <string name="morphe_hide_collapse_button_title">Összecsukás gomb elrejtése</string>
   <string name="morphe_hide_fullscreen_button_title">Teljes képernyős gomb elrejtése</string>
   <string name="morphe_hide_player_control_buttons_background_title">Lejátszóvezérlők hátterének elrejtése</string>
@@ -891,7 +880,7 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Hirdetési fehérlista a felugró menüben</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Felugró menüelemet ad hozzá, amely lehetővé teszi, hogy hirdetések jelenjenek meg az adott videó csatornáján</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ez a funkció igénybe veheti a PotHelper használatát vagy a \"Videófolyamok hamisítása\" TV-re vagy Android VR bejelentkezésre állítását</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ehhez a funkcióhoz szükség lehet a PotHelper használatára, vagy a \"Videóstreamek spoofolása\" beállításának \"TV\" vagy \"Android VR\" bejelentkezésre váltására</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Sebességfehérlista a felugró menüben</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Hozzáad egy felugró menüelemet, amely az adott videó csatornáját mindig 1.0x sebességgel játssza le</string>
   <string name="morphe_queue_manager_check_failed_auth">Nem jelentkezett be</string>
@@ -1088,8 +1077,6 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_caption_block_translation_failed">Néhány feliratfordítás nem érhető el. A rendelkezésre álló feliratok jelennek meg.</string>
   <string name="morphe_caption_blocks_too_large">Mindkét feliratnyelv nem fér bele ebbe a lejátszóba. Az elsődleges nyelv jelenik meg.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigációs sáv</string>
-  <string name="morphe_navigation_bar_screen_summary">Válassza ki, mely gombok jelenjenek meg az alsó navigációs sávban</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Kezdőlap gomb elrejtése</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1094,11 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_watch_later_navigation_label">Megnézem később</string>
   <string name="morphe_show_settings_button_title">Beállítások gomb megjelenítése</string>
   <string name="morphe_show_settings_button_type_title">Beállítások gomb művelete</string>
-  <string name="morphe_show_settings_button_type_summary">Ha be van kapcsolva, a koppintás megnyitja a Morphe beállításait, a hosszú megnyomás pedig a YouTube beállításait, a letiltás megcseréli őket</string>
+  <string name="morphe_show_settings_button_type_summary">Ha engedélyezve van, az érintés megnyitja a Morphe beállításait, a hosszú nyomás pedig a YouTube beállításait; a váltáshoz kapcsold ki</string>
   <string name="morphe_navigation_buttons_order_title">Navigációs gombok sorrendje</string>
   <string name="morphe_navigation_buttons_order_summary">Húzd a gombokat a navigációs sávban a sorrendjük módosításához</string>
   <string name="morphe_swap_create_with_notifications_button_title">Cserélje fel a Létrehozás gombot az Értesítések gombbal</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ha ennek a beállításnak a módosítása nem érvényesül, próbálkozzon titkos üzemmóddal.</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Áthelteszi az Értesítések gombját a navigációs sávba, és a Létrehozás gombját az eszköznuclearba. Ha a változások nem lépnek életbe, próbálja meg átkapcsolni Incognito módra</string>
   <string name="morphe_hide_navigation_button_labels_title">A navigációs gombok címkéinek elrejtése</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Új tartalom pont elrejtése</string>
   <string name="morphe_hide_navigation_bar_title">Navigációs sáv elrejtése</string>
@@ -1150,12 +1137,10 @@ A Beállítások eléréséhez aktiválja a Beállítások gombot az Általános
   <string name="morphe_navigation_bar_glass_size_width">Maximális szélesség</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Gombtávolság</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Megjelenített gombok: %1$s a %2$s-ből</string>
-  <string name="morphe_toolbar_screen_title">Eszköztár</string>
-  <string name="morphe_toolbar_screen_summary">Válassza ki, mely komponensek jelenjenek meg az eszköztáron</string>
   <string name="morphe_hide_toolbar_chat_button_title">Csevegés gomb elrejtése</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Companion gomb elrejtése</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon gomb elrejtése</string>
   <string name="morphe_hide_toolbar_search_button_title">Keresés gomb elrejtése</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Ha be van kapcsolva, a koppintás megnyitja a Morphe beállításait és a hosszú megnyomás megnyitja a YouTube beállításait, a letiltás kicseréli őket</string>
   <string name="morphe_toolbar_buttons_order_title">Eszköztár gombjainak sorrendje</string>
   <string name="morphe_toolbar_buttons_order_summary">Húzd a gombokat az eszköztárban a sorrendjük módosításához</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1186,43 +1171,28 @@ A Beállítások eléréséhez aktiválja a Beállítások gombot az Általános
   <string name="morphe_disable_shorts_double_tap_to_like_title">A dupla koppintásos lájkolás letiltása</string>
   <string name="morphe_hide_shorts_ai_button_title">AI gomb elrejtése</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Rejtsd el az „Automatikus szinkronizálás” címkét</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Csatornasáv elrejtése</string>
-  <string name="morphe_hide_shorts_comments_button_title">Hozzászólások gomb elrejtése</string>
   <string name="morphe_hide_shorts_effect_button_title">Effekt gomb elrejtése</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Videóhivatkozás címkéjének elrejtése</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Gesztustippek elrejtése</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Rejtsd el a „Zöld háttér” gombot</string>
   <string name="morphe_hide_shorts_hashtag_button_title">A hashtag gomb elrejtése</string>
   <string name="morphe_hide_shorts_info_panel_title">Infó panel elrejtése</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Csatlakozás gomb elrejtése</string>
   <string name="morphe_hide_shorts_like_button_title">Tetszik gomb elrejtése</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Tetszik gomb szökőkút animációjának elrejtése</string>
   <string name="morphe_hide_shorts_live_preview_title">Élő előnézet elrejtése</string>
   <string name="morphe_hide_shorts_location_label_title">Helycímke elrejtése</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Navigációs sáv elrejtése</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Rejtsd el az „Új bejegyzések” gombot</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Szüneteltetett fedő gombok elrejtése</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Előnézeti megjegyzés elrejtése</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Remix gomb elrejtése</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Mentés gomb elrejtése</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Rejtsd el a „Zene mentése” gombot</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Keresési javaslatok elrejtése</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Megosztás gomb elrejtése</string>
-  <string name="morphe_hide_shorts_shop_button_title">Shop gomb elrejtése</string>
   <string name="morphe_hide_shorts_sound_button_title">Hang gomb elrejtése</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Hang metaadatcímke elrejtése</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Feliratkozás gomb elrejtése</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Rejtsd el a „Vásárlás Szuperköszönettel” gombot</string>
   <string name="morphe_hide_shorts_tagged_products_title">Címkézett termékek elrejtése</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Következő videó gomb elrejtése</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Rejtsd el a „Használj ezt a hangot” gombot</string>
   <string name="morphe_hide_shorts_use_template_button_title">Rejtsd el a „Használj ezt a sablont” gombot</string>
-  <string name="morphe_hide_shorts_video_title_title">Videó címének elrejtése</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Javasolt videó elrejtése a befejező képernyőn</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Elrejti a videó lejáratakor megjelenő javasolt videó felülhúzást.
@@ -1732,8 +1702,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">A legmagasabb elérhető videóminőség részesít előnyben a kodek hatékonyságával szemben.</string>
   <string name="morphe_video_quality_prioritize_dialog">Ha ez a beállítás ki van kapcsolva, akkor a régebbi videóknál nem jelenik meg videóminőségi opció.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">„Android VR” / visionOS AV1 engedélyezése</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Lehetővé teszi a szoftveres AV1 dekódolást az „Android VR” / visionOS kliens használatakor.</string>
+  <string name="morphe_spoof_video_streams_av1_title">Engedélyezze az \"Android VR\" / \"visionOS\" AV1-et</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Lehetővé teszi a szoftveres AV1 dekódolást az \"Android VR\" / \"visionOS\" kliens használatakor</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ennek a beállításnak az engedélyezése szoftveres AV1 dekódolást használhat.
 
 Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet"</string>
@@ -1970,7 +1940,6 @@ Az automatikus rögzítés opcionális. Inkognitó módban vagy a fiókváltás 
   <string name="morphe_live_chat_translate_language_title">Fordítási nyelv</string>
   <string name="morphe_live_chat_translate_exclude_title">Kizárt nyelvek</string>
   <string name="morphe_live_chat_translate_exclude_summary">Vesszővel elválasztott nyelvkódok, például id,en. Az ezeken a nyelveken írt üzenetek nem lesznek lefordítva</string>
-  <string name="morphe_live_chat_translate_provider_title">Fordítási szolgáltató</string>
   <string name="morphe_live_chat_translate_provider_google">Google Fordító</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API kulcs</string>

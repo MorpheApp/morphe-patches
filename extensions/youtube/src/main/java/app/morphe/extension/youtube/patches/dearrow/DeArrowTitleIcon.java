@@ -165,11 +165,9 @@ public final class DeArrowTitleIcon {
         }
 
         if (DeArrowPatch.replacesThumbnailForCurrentNavigation(videoId)) {
-            // Also lays out the titles again.
-            LithoRelayoutPatch.remountListViews();
-        } else {
-            LithoRelayoutPatch.relayoutOutdatedTexts();
+            DeArrowPatch.remountThumbnailViews(videoId);
         }
+        LithoRelayoutPatch.relayoutOutdatedTexts();
     }
 
     /**

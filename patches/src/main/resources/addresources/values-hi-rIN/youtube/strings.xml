@@ -205,8 +205,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">पोस्ट शेल्फ छिपाएं</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">स्टोर बटन छुपाएं</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">चैनल पेज पर सबस्क्राइब बटन छुपाएं</string>
   <string name="morphe_explore_menu_screen_title">एक्सप्लोर मेनू</string>
   <string name="morphe_explore_menu_screen_summary">चुनें कि एक्सप्लोर मेनू में कौन से घटक दिखाई दें</string>
   <string name="morphe_hide_courses_menu_title">कोर्स मेनू छिपाएं</string>
@@ -281,7 +279,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">कमेंट बटन छुपाएं</string>
   <string name="morphe_hide_post_comments_preview_title">टिप्पणियों का पूर्वावलोकन छुपाएं</string>
   <string name="morphe_hide_post_comments_preview_summary">पोस्ट के नीचे टिप्पणियों के पूर्वावलोकन को छुपाता है</string>
-  <string name="morphe_hide_post_share_button_title">शेयर बटन छुपाएं</string>
   <string name="morphe_hide_post_share_button_summary">पोस्ट इमेज का डाउनलोड बटन शेयर बटन के बगल में बना होता है, इसलिए वह भी छुप जाता है</string>
   <string name="morphe_hide_ask_gemini_button_title">\'Ask Gemini\' बटन छिपाएँ</string>
   <string name="morphe_hide_ask_gemini_button_summary">\'Ask about this video\' पैनल के नीचे \'Ask Gemini\' बटन को छिपाता है</string>
@@ -296,9 +293,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_in_this_video_button_title">\'इस वीडियो में\' बटन छिपाएँ</string>
   <string name="morphe_hide_info_panels_title">इन्फो पैनल्स को छुपाएं</string>
   <string name="morphe_hide_info_panels_summary">जानकारी पैनल को छुपाता है, जैसे कि चिकित्सा जानकारी</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">जॉइन बटन छुपाएं</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">\'लाइव चैट रिप्ले\' बटन छुपाएं</string>
@@ -314,8 +308,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">तेज़ करने के लिए उंगली दबाकर स्लाइड करने पर प्लेयर कंट्रोल्स का ग्रेडिएंट छिपाता है</string>
   <string name="morphe_hide_timed_reactions_title">समयबद्ध प्रतिक्रियाएं छुपाएं</string>
   <string name="morphe_hide_timed_reactions_summary">टिप्पणी अनुभाग और लाइव चैट में इमोजी के साथ प्रतिक्रिया देने की अनुमति देने वाली सुविधा को छुपाता है</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">\'सहायता &amp; सुझाव\' मेनू छिपाएँ</string>
   <string name="morphe_hide_help_feedback_menu_summary">जब आप तीन-बिंदु वाले बटन का उपयोग करते हैं, जैसे कि खोज परिणामों पर, तो \'सहायता और सुझाव\' मेनू छिपा दिया जाता है</string>
   <string name="morphe_hide_handle_title">हैंडल छिपाएँ</string>
   <string name="morphe_hide_handle_summary">आप टैब में आपका चैनल हैंडल छिपाता है</string>
@@ -358,7 +350,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">पूछें बटन छुपाएं</string>
   <string name="morphe_hide_channel_profile_button_title">चैनल और सब्सक्राइब बटन छिपाएँ</string>
   <string name="morphe_hide_channel_profile_button_summary">एक्शन बार की शुरुआत में चैनल अवतार और सब्सक्राइब बटन छिपाता है</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Subscribe बटन छिपाएँ</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">चैनल अवतार के बगल में एक्शन बार की शुरुआत में Subscribe और Join बटन छिपाता है</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">क्लिप बटन छुपाएं</string>
@@ -434,7 +425,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe द्वारा टिप्पणी छुपाई गई…</string>
   <string name="morphe_minimal_comments_button_title">न्यूनतम कमेंट बटन सक्षम करें</string>
   <string name="morphe_minimal_comments_button_summary">कमेंट बटन पर प्रदर्शित स्लाइडिंग कार्ड और उनका पेज चयनकर्ता छिपाता है</string>
-  <string name="morphe_hide_comments_thanks_button_title">\'धन्यवाद\' बटन छुपाएं</string>
   <string name="morphe_hide_comments_timestamp_button_title">टाइमस्टैम्प बटन छुपाएं</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'टॉप फैंस\' बटन छिपाएँ</string>
   <string name="morphe_hide_comments_translate_button_title">अनुवाद बटन छिपाएँ</string>
@@ -489,7 +479,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">कैप्शन बटन छुपाएं</string>
   <string name="morphe_hide_cast_button_title">कास्ट बटन छुपाएं</string>
-  <string name="morphe_hide_cast_button_summary">वीडियो प्लेयर और टूलबार में Cast बटन को छिपाता है</string>
   <string name="morphe_hide_collapse_button_title">कोलैप्स बटन छुपाएं</string>
   <string name="morphe_hide_fullscreen_button_title">फुलस्क्रीन बटन छुपाएं</string>
   <string name="morphe_hide_player_control_buttons_background_title">प्लेयर नियंत्रण पृष्ठभूमि छिपाएं</string>
@@ -890,7 +879,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">फ़्लाईआउट मेनू में विज्ञापन श्वेतसूची</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">एक फ़्लाईआउट आइटम जोड़ता है जो उस वीडियो के चैनल पर विज्ञापन चलाने की अनुमति देता है</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">इस सुविधा के लिए PotHelper का उपयोग या \"वीडियो स्ट्रीम्स को स्पोफ़ करें\" को टीवी या Android VR साइन-इन पर बदलने की आवश्यकता हो सकती है</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">इस सुविधा के लिए PotHelper का उपयोग करना या \'Spoof video streams\' को \'TV\' या \'Android VR\' साइन-इन में बदलना आवश्यक हो सकता है</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">फ़्लाईआउट मेनू में स्पीड श्वेतसूची</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">एक फ़्लाईआउट आइटम जोड़ता है जो उस वीडियो के चैनल को हमेशा 1.0x गति पर चलाता है</string>
   <string name="morphe_queue_manager_check_failed_auth">लॉग इन नहीं किया गया</string>
@@ -1087,8 +1076,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_caption_block_translation_failed">कुछ कैप्शन अनुवाद उपलब्ध नहीं हैं। उपलब्ध कैप्शन दिखाए जा रहे हैं।</string>
   <string name="morphe_caption_blocks_too_large">दोनों कैप्शन भाषाएँ इस प्लेयर में फिट नहीं होती हैं। प्राथमिक भाषा दिखाई जा रही है।</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">नेविगेशन बार</string>
-  <string name="morphe_navigation_bar_screen_summary">नीचे के नेविगेशन बार में कौन से बटन दिखाई दें, चुनें</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">होम बटन छुपाएं</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1106,11 +1093,11 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_watch_later_navigation_label">बाद में देखें</string>
   <string name="morphe_show_settings_button_title">सेटिंग्स बटन दिखाएं</string>
   <string name="morphe_show_settings_button_type_title">सेटिंग बटन कार्रवाई</string>
-  <string name="morphe_show_settings_button_type_summary">सक्षम होने पर Morphe सेटिंग्स खुलती हैं, अक्षम होने पर YouTube सेटिंग्स खुलती हैं</string>
+  <string name="morphe_show_settings_button_type_summary">सक्षम होने पर, टैप करने से Morphe सेटिंग्स खुलती हैं और लॉन्ग प्रेस करने से YouTube सेटिंग्स खुलती हैं, बदलने के लिए अक्षम करें</string>
   <string name="morphe_navigation_buttons_order_title">नविगेशन बटन का क्रम</string>
   <string name="morphe_navigation_buttons_order_summary">नविगेशन बार में उनका क्रम बदलने के लिए बटनों को ड्रैग करें</string>
   <string name="morphe_swap_create_with_notifications_button_title">बनाएं बटन को सूचनाएँ बटन से बदलें</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">यदि इस सेटिंग को बदलने से कोई प्रभाव नहीं होता है, तो गुप्त मोड में स्विच करने का प्रयास करें।</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Notifications बटन को नेविगेशन बार में और Create बटन को टूलबार में ले जाता है। यदि परिवर्तन प्रभावी नहीं होते हैं, तो Incognito मोड में स्विच करने का प्रयास करें</string>
   <string name="morphe_hide_navigation_button_labels_title">नेविगेशन बटन लेबल्स छिपाएं</string>
   <string name="morphe_hide_navigation_new_content_dot_title">नए कंटेंट का डॉट छिपाएं</string>
   <string name="morphe_hide_navigation_bar_title">नेविगेशन बार छिपाएँ</string>
@@ -1149,12 +1136,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_glass_size_width">अधिकतम चौड़ाई</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">बटन स्पेसिंग</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">दिखाए गए बटन: %2$s में से %1$s</string>
-  <string name="morphe_toolbar_screen_title">टूलबार</string>
-  <string name="morphe_toolbar_screen_summary">टूलबार में कौन से घटक दिखाई दें, यह चुनें</string>
   <string name="morphe_hide_toolbar_chat_button_title">चैट बटन छुपाएं</string>
+  <string name="morphe_hide_toolbar_companion_button_title">कंपैनियन बटन छुपाएं</string>
   <string name="morphe_hide_toolbar_microphone_button_title">माइक्रोफ़ोन बटन छुपाएं</string>
   <string name="morphe_hide_toolbar_search_button_title">खोज छिपाएं</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">जब सक्षम हो, तो टैप करने पर Morphe सेटिंग्स खुलती है और लंबे समय तक दबाने पर YouTube सेटिंग्स खुलती है, स्वैप करने के लिए अक्षम करें</string>
   <string name="morphe_toolbar_buttons_order_title">टूलबार बटन का क्रम</string>
   <string name="morphe_toolbar_buttons_order_summary">टूलबार में उनका क्रम बदलने के लिए बटनों को ड्रैग करें</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1185,43 +1170,28 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_disable_shorts_double_tap_to_like_title">डबल टैप से लाइक को अक्षम करें</string>
   <string name="morphe_hide_shorts_ai_button_title">AI बटन छुपाएं</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">शॉर्ट्स \'ऑटो-डब्ब्ड\' लेबल छुपाएं</string>
-  <string name="morphe_hide_shorts_channel_bar_title">चैनल बार को छुपाएं</string>
-  <string name="morphe_hide_shorts_comments_button_title">टिप्पणियाँ बटन छुपाएं</string>
   <string name="morphe_hide_shorts_effect_button_title">इफेक्ट बटन छिपाएं</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">वीडियो लिंक लेबल छुपाएं</string>
   <string name="morphe_hide_shorts_gesture_hints_title">जेस्चर संकेत छिपाएँ</string>
   <string name="morphe_hide_shorts_green_screen_button_title">\'ग्रीन स्क्रीन\' बटन छुपाएं</string>
   <string name="morphe_hide_shorts_hashtag_button_title">हैशटैग बटन छिपाएं</string>
   <string name="morphe_hide_shorts_info_panel_title">इन्फो पैनल्स को छुपाएं</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">जॉइन बटन छिपाएं</string>
   <string name="morphe_hide_shorts_like_button_title">लाइक बटन छुपाएं</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">लाइक बटन का फव्वारा एनिमेशन छिपाएं</string>
   <string name="morphe_hide_shorts_live_preview_title">शॉर्ट्स लाइव पूर्वावलोकन छुपाएं</string>
   <string name="morphe_hide_shorts_location_label_title">स्थान लेबल छिपाएं</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">नेविगेशन बार छिपाएं</string>
   <string name="morphe_hide_shorts_new_posts_button_title">\'नए पोस्ट\' बटन छुपाएं</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">पॉज्ड ओवरले बटन छिपाएं</string>
-  <string name="morphe_hide_shorts_preview_comment_title">पूर्वावलोकन टिप्पणी छिपाएं</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">रीमिक्स बटन छुपाएं</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">सेव बटन छुपाएं</string>
   <string name="morphe_hide_shorts_save_sound_button_title">\'साउंड सहेजें\' बटन छुपाएं</string>
   <string name="morphe_hide_shorts_search_suggestions_title">खोज सुझाव छुपाएं</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">शेयर बटन छुपाएं</string>
-  <string name="morphe_hide_shorts_shop_button_title">शॉप बटन छुपाएं</string>
   <string name="morphe_hide_shorts_sound_button_title">साउंड बटन छुपाएं</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">ध्वनि मेटाडेटा लेबल छिपाएं</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">सब्सक्राइब बटन छुपाएं</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">\'खरीदें सुपर धन्यवाद\' बटन छुपाएं</string>
   <string name="morphe_hide_shorts_tagged_products_title">टैग किए गए उत्पादों को छिपाएँ</string>
   <string name="morphe_hide_shorts_upcoming_button_title">\'आगामी\' बटन छुपाएं</string>
   <string name="morphe_hide_shorts_use_sound_button_title">\'इस साउंड का उपयोग करें\' बटन छुपाएं</string>
   <string name="morphe_hide_shorts_use_template_button_title">\'इस टेम्पलेट का उपयोग करें\' बटन छुपाएं</string>
-  <string name="morphe_hide_shorts_video_title_title">वीडियो शीर्षक छुपाएं</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">अंत स्क्रीन सुझाए गए वीडियो छुपाएं</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"वीडियो समाप्त होने के बाद दिखने वाला सुझाया गया वीडियो ओवरले छुपाता है
@@ -1731,8 +1701,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">कोडेक दक्षता पर सबसे अच्छी उपलब्ध वीडियो गुणवत्ता को प्राथमिकता देता है।</string>
   <string name="morphe_video_quality_prioritize_dialog">यदि यह सेटिंग बंद है, तो पुराने वीडियो में कोई वीडियो गुणवत्ता विकल्प नहीं दिख सकता है।</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1 की अनुमति दें</string>
-  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS क्लाइंट का उपयोग करते समय सॉफ़्टवेयर AV1 डिकोडिंग की अनुमति देता है</string>
+  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1 की अनुमति दें</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' क्लाइंट का उपयोग करते समय सॉफ़्टवेयर AV1 डिकोडिंग की अनुमति देता है</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"इस सेटिंग को सक्षम करने से सॉफ्टवेयर AV1 डिकोडिंग का उपयोग हो सकता है।
 
 AV1 के साथ वीडियो प्लेबैक में झटके आ सकते हैं या फ्रेम गिर सकते हैं"</string>
@@ -1968,7 +1938,6 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_live_chat_translate_language_title">अनुवाद भाषा</string>
   <string name="morphe_live_chat_translate_exclude_title">अपवादित भाषाएँ</string>
   <string name="morphe_live_chat_translate_exclude_summary">कोमा से अलग किए गए भाषा कोड जैसे id,en। इन भाषाओं के संदेशों का अनुवाद नहीं किया जाता है</string>
-  <string name="morphe_live_chat_translate_provider_title">अनुवाद प्रदाता</string>
   <string name="morphe_live_chat_translate_provider_google">गूगल ट्रांसलेट</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API कुंजी</string>

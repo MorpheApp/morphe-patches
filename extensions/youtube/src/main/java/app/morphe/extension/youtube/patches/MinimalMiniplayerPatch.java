@@ -283,6 +283,19 @@ public final class MinimalMiniplayerPatch {
     private static WeakReference<View> glassContainerRef = new WeakReference<>(null);
     @Nullable
     private static Drawable glassOriginalBackground;
+
+    /**
+     * The page behind the bar is blurred, so the glass is drawn again when the page scrolls.
+     * A single listener serves the current container, and it's added once to the window of the container.
+     */
+    private static final ViewTreeObserver.OnScrollChangedListener glassScrollListener = () -> {
+        View container = glassContainerRef.get();
+        if (container != null && inBarMode() && container.getBackground() instanceof GlassCapsuleDrawable) {
+            container.invalidate();
+        }
+    };
+    private static WeakReference<ViewTreeObserver> glassScrollObserverRef = new WeakReference<>(null);
+
     @Nullable
     private static GlassBackdrop glassBackdrop;
     private static boolean recordingBackdrop;
@@ -1525,12 +1538,20 @@ public final class MinimalMiniplayerPatch {
         glassContainerRef = new WeakReference<>(container);
         glassOriginalBackground = null;
 
-        // The page behind the bar is blurred, so the glass is drawn again when the page scrolls.
-        container.getViewTreeObserver().addOnScrollChangedListener(() -> {
-            if (inBarMode() && container.getBackground() instanceof GlassCapsuleDrawable) {
-                container.invalidate();
+        // A new glass is made for every new container, and again for the same container once the old
+        // glass is garbage collected, so the listener is moved instead of added again. A view that is not
+        // attached has a temporary observer, whose listeners are merged into the observer of the window
+        // when it's attached, so the listener is also removed from the new observer before it's added.
+        ViewTreeObserver observer = container.getViewTreeObserver();
+        ViewTreeObserver previousObserver = glassScrollObserverRef.get();
+        if (observer != previousObserver) {
+            if (previousObserver != null && previousObserver.isAlive()) {
+                previousObserver.removeOnScrollChangedListener(glassScrollListener);
             }
-        });
+            observer.removeOnScrollChangedListener(glassScrollListener);
+            observer.addOnScrollChangedListener(glassScrollListener);
+            glassScrollObserverRef = new WeakReference<>(observer);
+        }
 
         Logger.printDebug(() -> "Glass miniplayer applied");
         return glass;

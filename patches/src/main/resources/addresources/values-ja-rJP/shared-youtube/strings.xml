@@ -141,13 +141,13 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">以下を試す: [動画ストリームを偽装] &gt; [Android VR (ログイン)] をオン</string>
   <string name="morphe_spoof_video_streams_client_type_title">デフォルトのクライアント</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR (ログイン)</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VRでは別途サインインが必要です。こちらをタップして続行してください</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">現在、Android VR にログインしています</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android\" VR ログイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" では別途ログインが必要です。こちらをタップして続行してください</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">現在 \"Android VR\" にログインしています</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を Android VR に変更してください</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR にログイン</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR にログインすると、動画の再生が止まる問題が一部のユーザーで解決する場合があります。
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">この機能を使用するには、\"デフォルトのクライアント\" を \"Android VR\" に変更してください</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\"Android VR\" にログイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"\"Android VR\" にログインすると、動画の再生が止まる問題が一部のユーザーで解決する場合があります。
 
 ログインするには、[続行] をタップしてください"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">ログアウト</string>
@@ -170,33 +170,33 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
 • Google アカウントのパスワードを変更した場合、または Google アカウントの設定からこのデバイスの登録を解除した場合は、再度ログインする必要があります"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">モバイルウェブでのログイン</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">オプション：YouTube ウェブサイトにログインすると、アカウントを使用して動画を再生できます。続行するにはここをタップしてください</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">現在、モバイルウェブにログインしています</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">現在 \"Mobile Web\" にログインしています</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を Mobile Web に変更してください</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web にサインイン</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web では、サインアウトした状態、または YouTube ウェブサイトにサインインした状態で動画を再生します
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を \"Mobile Web\" に変更してください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\"Mobile Web\" にサインイン</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" では、サインアウトした状態、または YouTube ウェブサイトにサインインした状態で動画を再生します
 
-• サインインすると、年齢制限付き動画など、アカウントが必要な動画を再生できます
-• このアプリで Google サインインページが開きます
+• サインインすると、年齢制限のある動画など、アカウントが必要な動画を再生できます
+• このアプリ内で Google サインイン ページが開きます
 • サインインは、再生する動画を取得するためだけに使用されます
 • サインイン情報は、このデバイスにのみ保存されます
 
 サインインするには、下の [続行] を押してください"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"サインインが保存されました
 
-• Morphe の設定ではモバイル Web のサインインはインポート/エクスポートされません
+• Morphe の設定では「モバイルウェブ」のサインインはインポート/エクスポートされません
 • Google がサインインを終了した場合、再度サインインするまでビデオはサインアウト状態で再生されます
 • サインアウトすると、このデバイスの YouTube ウェブサイトからもサインアウトされます"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">モバイル Web へのログインが期限切れです。再度モバイル Web にログインしてください</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">モバイル Web からサインアウトしました</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView が利用できません。サインインするには、インストールまたは有効にしてください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">モバイルウェブのサインインが期限切れです。再度「モバイルウェブ」にサインインしてください</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">「モバイルウェブ」からサインアウトしました</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">「Android System WebView」が利用できません。サインインするには、インストールまたは有効にしてください</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 は一時的に利用できません (API タイムアウト)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR へのログインが期限切れです。再度ログインしてください</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' へのログインが期限切れです。再度ログインしてください</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 は現在利用できません (ステータス %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 は一時的に利用できません</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR にログインできません。ウェブサイトの認証が承認されませんでした</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR にログインできません: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR からログアウトしました</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\' からログアウトしました</string>
   <string name="morphe_oauth2_toast_invalid">無効な VR ログイン トークンです。再度ログインしてください</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">メディア通知コントロール</string>
@@ -254,7 +254,7 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_replace_music_with_youtube_title">共有リンクを youtube.com に変更</string>
   <string name="morphe_replace_music_with_youtube_summary">共有リンクの music.youtube.com を youtube.com に置き換えます</string>
   <string name="morphe_replace_links_with_shortener_title">共有リンクを youtu.be に変更</string>
-  <string name="morphe_replace_links_with_shortener_summary">動画の共有 URL を短縮ドメインである youtu.be に固定します</string>
+  <string name="morphe_replace_links_with_shortener_summary">動画の共有 URL を短縮ドメインである \'youtu.be\' に固定します</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自動</string>
@@ -266,15 +266,12 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_video_quality_default_mobile_title">モバイルネットワークでのデフォルトの動画画質</string>
   <string name="morphe_remember_video_quality_toast_mobile">デフォルトの画質 (モバイル): %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">デフォルトの画質 (Wi-Fi): %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
-  <string name="morphe_open_system_share_sheet_summary">コンテンツを共有するときにアプリ内の共有メニューではなくシステムの共有メニューを開きます</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho ログ記録</string>
   <string name="morphe_debug_litho_entry_disabled">無効</string>
   <string name="morphe_debug_litho_entry_path">パス</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">パスとバッファ</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho ロギングでは、一部の UI コンポーネントの画面上のテキストを含む、アプリのレイアウト コンポーネントがログに記録されます
+  <string name="morphe_debug_litho_user_dialog_message">"一部の UI コンポーネントの画面上に表示されるテキストを含む、アプリのレイアウト コンポーネントをログに記録します
 
 これにより、カスタム フィルタを作成する際にコンポーネントを識別しやすくなります
 
@@ -380,4 +377,8 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">クライアントのレート制限は発生していません</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">クライアントのレート制限は %s 回発生しました</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ミリ秒</string>
+  <string name="morphe_navigation_bar_screen_title">ナビゲーション バー</string>
+  <string name="morphe_navigation_bar_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
+  <string name="morphe_toolbar_screen_title">ツールバー</string>
+  <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
 </resources>

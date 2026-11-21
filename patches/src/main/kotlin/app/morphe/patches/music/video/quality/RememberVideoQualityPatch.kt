@@ -18,8 +18,9 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoIdHook
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.shared.misc.videoinformation.VideoQualityFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -45,19 +46,26 @@ val rememberVideoQualityPatch = patch(
 
     execute {
         PreferenceScreen.VIDEO.addPreferences(
-            noTitleUnsortedPreferenceCategory(
-                ListPreference(
-                    key = "morphe_video_quality_default_wifi",
-                    entriesKey = "morphe_video_quality_default_entries",
-                    entryValuesKey = "morphe_video_quality_default_entry_values"
-                ),
-                ListPreference(
-                    key = "morphe_video_quality_default_mobile",
-                    entriesKey = "morphe_video_quality_default_entries",
-                    entryValuesKey = "morphe_video_quality_default_entry_values"
-                ),
-                SwitchPreference("morphe_remember_video_quality_last_selected", summary = true),
-                SwitchPreference("morphe_remember_video_quality_last_selected_toast", summary = true)
+            // Keep the preferences organized together.
+            PreferenceCategory(
+                key = "morphe_01_video_key", // Dummy key to force the quality preferences first.
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    ListPreference(
+                        key = "morphe_video_quality_default_mobile",
+                        entriesKey = "morphe_video_quality_default_entries",
+                        entryValuesKey = "morphe_video_quality_default_entry_values"
+                    ),
+                    ListPreference(
+                        key = "morphe_video_quality_default_wifi",
+                        entriesKey = "morphe_video_quality_default_entries",
+                        entryValuesKey = "morphe_video_quality_default_entry_values"
+                    ),
+                    SwitchPreference("morphe_remember_video_quality_last_selected", summary = true),
+                    SwitchPreference("morphe_remember_video_quality_last_selected_toast", summary = true)
+                )
             )
         )
 

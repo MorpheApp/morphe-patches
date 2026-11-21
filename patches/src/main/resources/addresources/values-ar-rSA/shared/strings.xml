@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">الترجمات</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">محدث</string>
   <string name="morphe_settings_about_contributors">المساهمون</string>
-  <string name="morphe_settings_about_contributors_period">آخر 12 شهرًا</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">كل الوقت</string>
+  <string name="morphe_settings_about_contributors_6_months">6 أشهر</string>
+  <string name="morphe_settings_about_contributors_3_months">3 أشهر</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">الفترة الزمنية</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s مستخدمًا</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">الداعمون</string>
   <string name="morphe_settings_about_supporters_summary">الداعمون على Open Collective</string>
@@ -222,6 +229,9 @@ Second \"item\" text"</string>
 • قد يغلق التطبيق بشكل عشوائي
 • قد لا تعمل الإشعارات
 • قد لا يعمل التشغيل في الخلفية"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">فتح قائمة مشاركة النظام</string>
+  <string name="morphe_open_system_share_sheet_summary">يفتح قائمة مشاركة الخاصة بالنظام بدلًا من قائمة التطبيق عند مشاركة المحتوى</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">معالجة روابط التطبيق</string>
   <string name="morphe_link_handling_summary">تكوين الروابط لفتحها في هذا التطبيق</string>

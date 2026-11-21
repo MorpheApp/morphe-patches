@@ -12,8 +12,11 @@
 package app.morphe.patches.youtube.layout.dearrow
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
+import app.morphe.patches.shared.misc.glide.GlideRequestBuilderIntoFingerprint
 import app.morphe.patches.shared.misc.glide.GlideRequestBuilderLoadGenericFingerprint
+import app.morphe.patches.shared.misc.glide.GlideViewTargetGetRequestFingerprint
 import app.morphe.patches.shared.misc.litho.relayout.LithoTextDrawableDrawFingerprint
 import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -182,6 +185,27 @@ val deArrowPatch = patch(
             """
                 invoke-static { p1 }, $EXTENSION_CLASS->getImageModel(Ljava/lang/Object;)Ljava/lang/Object;
                 move-result-object p1
+            """
+        )
+
+        // The views that load the thumbnails are remembered, so a thumbnail that is loaded again
+        // mounts again only the Litho views that show the thumbnail, instead of all the shown Litho views.
+        val imageModelField = GlideRequestBuilderLoadGenericFingerprint.instructionMatches.first().fieldReference
+        val viewTargetType = GlideViewTargetGetRequestFingerprint.classDef.type
+        val viewTargetViewField = GlideViewTargetGetRequestFingerprint.instructionMatches.first().fieldReference
+
+        GlideRequestBuilderIntoFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                const/4 v0, 0x0
+                instance-of v1, p1, $viewTargetType
+                if-eqz v1, :load_started
+                move-object v0, p1
+                check-cast v0, $viewTargetType
+                iget-object v0, v0, $viewTargetViewField
+                :load_started
+                iget-object v1, p0, $imageModelField
+                invoke-static { v0, v1 }, $EXTENSION_CLASS->onImageLoadStarted(Landroid/view/View;Ljava/lang/Object;)V
             """
         )
 

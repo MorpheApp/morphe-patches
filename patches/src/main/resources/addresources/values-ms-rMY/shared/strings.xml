@@ -87,7 +87,14 @@ Untuk menterjemah bahasa baharu atau menambah baik terjemahan sedia ada, layari 
   <string name="morphe_settings_about_links_translations">Terjemahan</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Kemas kini</string>
   <string name="morphe_settings_about_contributors">Penyumbang</string>
-  <string name="morphe_settings_about_contributors_period">12 bulan terakhir</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Sepanjang masa</string>
+  <string name="morphe_settings_about_contributors_6_months">6 bulan</string>
+  <string name="morphe_settings_about_contributors_3_months">3 bulan</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tempoh masa</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s pengguna</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Penyokong</string>
   <string name="morphe_settings_about_supporters_summary">Penyokong di Open Collective</string>
@@ -222,6 +229,9 @@ Jika pengoptimuman bateri tidak diubah, anda mungkin mengalami:
 • Aplikasi mungkin tertutup secara rawak
 • Notifikasi mungkin tidak berfungsi
 • Main balik latar belakang mungkin tidak berfungsi"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Buka helaian kongsi sistem</string>
+  <string name="morphe_open_system_share_sheet_summary">Membuka helaian kongsi sistem dan bukannya helaian dalam aplikasi apabila berkongsi kandungan</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Pengendalian pautan aplikasi</string>
   <string name="morphe_link_handling_summary">Konfigurasikan pautan untuk dibuka dalam aplikasi ini</string>

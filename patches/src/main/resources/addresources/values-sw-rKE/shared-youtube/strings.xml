@@ -141,13 +141,13 @@ Gusa Sawa ili kufungua Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Jaribu kuwezesha: Ghushi mkondo wa video &gt; Ingia kwenye Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Kliyenti ya kawaida</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Ingia kwenye Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR inahitaji kuingia kando. Gusa hapa ili kuendelea</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hivi sasa umeingia kwenye Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Kuingia kwenye \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' inahitaji kuingia kando. Gusa hapa ili kuendelea</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hivi sasa umeingia kwenye \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Ingia kwenye Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kuingia kwenye Android VR kunaweza kurekebisha matatizo ya uchezaji kwa baadhi ya watumiaji
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Ingia kwenye \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kuingia kwenye 'Android VR' kunaweza kurekebisha matatizo ya uchezaji kwa baadhi ya watumiaji
 
 Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Toka</string>
@@ -170,33 +170,33 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
 • Utahitajika kuingia tena ikiwa utabadilisha nywila yako ya Google au kuondoa kifaa hiki kwenye mipangilio yako ya Google"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Kuingia kwenye Wavuti ya Simu</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Hiari: ingia kwenye tovuti ya YouTube ili ucheze video kwa kutumia akaunti yako. Gusa hapa ili kuendelea</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hivi sasa umeingia kwenye Wavuti ya Simu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hivi sasa umeingia kwenye \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Ingia kwenye Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web hucheza video bila kuingia, au ukiwa umeingia kwenye tovuti ya YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Ingia kwenye \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' inacheza video bila kuingia, au ukiwa umeingia kwenye tovuti ya YouTube
 
 • Ukiwa umeingia, video zinazohitaji akaunti zinaweza kuchezwa, kama vile video zenye vizuizi vya umri
-• Ukurasa wa kuingia kwenye Google unafunguliwa katika programu hii
-• Kuingia hutumiwa tu kupata video unazocheza
+• Ukurasa wa kuingia wa Google unafunguka katika programu hii
+• Kuingia kunatumika tu kupata video unazocheza
 • Kuingia huhifadhiwa kwenye kifaa hiki pekee
 
 Ili kuingia, bonyeza endelea hapa chini"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kuingia kuhifadhiwa
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kuingia kumehifadhiwa
 
-•Mipangilio yako ya Morphe haitaingiza/kutoatoka kuingia kwa Web ya Simu
-•Ikiwa Google itakatisha kuingia, video zitachezwa bila kuingia hadi utakapoingia tena
-•Kujitoka pia kunatoa kifaa hiki kwenye tovuti ya YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Kuingia kwa Web ya Simu kumeisha muda wake, jaribu kuingia kwenye Web ya Simu tena</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Umetoka kwenye Web ya Simu</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView haipatikani. Isakinishe au iwashe ili kuingia</string>
+• Mipangilio yako ya Morphe haitaingiza/kutoa kuingia kwa 'Mobile Web'
+• Ikiwa Google itakatisha kuingia, video zitachezwa bila kuingia hadi utakapoingia tena
+• Kujisajili kutoka pia kutatoa kifaa hiki kwenye tovuti ya YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Kuingia kwa Wavuti ya Simu kumeisha muda wake, jaribu kuingia tena kwenye \'Wavuti ya Simu\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Umetoka kwenye \'Wavuti ya Simu\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' haipatikani. Isakinishe au iwezeshe ili uweze kuingia</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 haipatikani kwa muda (API imeisha muda)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Muda wa kuingia kwenye Android VR umeisha, jaribu kuingia kwenye VR tena</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Muda wa kuingia kwenye \'Android VR\' umeisha, jaribu kuingia kwenye VR tena</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 haipatikani kwa muda (hali %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 haipatikani kwa muda</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Huwezi kuingia kwenye VR, uthibitishaji wa tovuti haukukubaliwa</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Huwezi kuingia kwenye VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Umetoka kwenye Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Umetoka kwenye \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Tokeni ya kuingia kwenye VR si sahihi, jaribu kuingia tena kwenye VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Vidhibiti vya vyombo vya habari vya taarifa</string>
@@ -254,7 +254,7 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_replace_music_with_youtube_title">Badilisha viungo vya kushiriki kuwa youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Inabadilisha music.youtube.com kuwa youtube.com katika viungo vilivyoshirikishwa</string>
   <string name="morphe_replace_links_with_shortener_title">Badilisha viunganishi vya kushiriki kuwa youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Inalazimisha video kutumia muundo mfupi wa URL wa youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Inalazimisha video kutumia muundo wa URL mfupi wa \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Kiotomatiki</string>
@@ -266,17 +266,14 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_video_quality_default_mobile_title">Ubora wa video wa chaguo-asili kwenye mtandao wa simu</string>
   <string name="morphe_remember_video_quality_toast_mobile">Ubora wa chaguo-asili wa simu umebadilishwa kuwa: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Ubora wa chaguo-asili wa Wi-Fi umebadilishwa kuwa: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Fungua ukurasa wa kushiriki wa mfumo</string>
-  <string name="morphe_open_system_share_sheet_summary">Inafungua ukurasa wa kushiriki wa mfumo badala ya ule wa ndani ya programu wakati wa kushiriki maudhui</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Kurekodi kwa Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Zimwa</string>
   <string name="morphe_debug_litho_entry_path">Njia</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Njia na bahari</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Kurekodi kwa Litho hurekodi vipengele vya mpangilio vya programu, ikiwa ni pamoja na maandishi yanayoonekana kwenye skrini kwa baadhi ya vipengele vya UI.
+  <string name="morphe_debug_litho_user_dialog_message">"Inarekodi vipengele vya mpangilio wa programu, ikiwa ni pamoja na maandishi ya kwenye skrini kwa baadhi ya vipengele vya UI.
 
-Hii inaweza kusaidia kutambua vipengele wakati wa kuunda vichujio vya kitalaamu.
+Hii inaweza kusaidia kutambua vipengele wakati wa kuunda vichujio vya kawaida.
 
 Hata hivyo, hii pia itarekodi baadhi ya data za mtumiaji kama vile anwani yako ya IP"</string>
   <!-- Custom filter -->
@@ -380,4 +377,8 @@ ID ya video unayotazama hutumwa kwenye Return YouTube Dislike API, na likes na d
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Hakuna vikomo vya kiwango cha mteja vilivyopatikana</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kikomo cha kiwango cha mteja kimefikiwa mara %s</string>
   <string name="morphe_ryd_statistics_millisecond_text">milisekunde %s</string>
+  <string name="morphe_navigation_bar_screen_title">Upau wa ugesha</string>
+  <string name="morphe_navigation_bar_screen_summary">Chagua ni vitufe gani vionekane kwenye upau wa urambazaji wa chini</string>
+  <string name="morphe_toolbar_screen_title">Zana za Juu</string>
+  <string name="morphe_toolbar_screen_summary">Chagua vipengele gani vionekane kwenye toolbar</string>
 </resources>

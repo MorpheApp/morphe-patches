@@ -467,6 +467,21 @@ internal fun sharedLithoFilterPatch(
                 }
             }
 
+            // The element hooks hide some elements by removing their bytes, such as the YouTube Premium promotions.
+            // The Litho filter does not see these elements, so their items are removed when they are created.
+            ElementItemConstructorFingerprint.let {
+                it.method.apply {
+                    val elementBytesIndex = it.instructionMatches[1].index
+                    val elementBytesRegister = getInstruction<TwoRegisterInstruction>(elementBytesIndex).registerA
+
+                    addInstruction(
+                        elementBytesIndex + 1,
+                        "invoke-static { p0, v$elementBytesRegister }, $EXTENSION_CLASS->" +
+                                "removeHiddenElementListItem(Ljava/lang/Object;[B)V"
+                    )
+                }
+            }
+
             // The grids of the tablet layout, such as the feed, have a list for each item in a section that puts
             // its lists in the order that fills the rows of the grid, and lays out each list with more or less than
             // one item as wide as the grid. A list emptied by removing its item then breaks its row, and the order

@@ -156,6 +156,8 @@ Export folder: %s"</string>
     <string name="morphe_export_download_failed">Could not export the download</string>
     <string name="morphe_export_download_all_flyout_title">Export all to device</string>
     <string name="morphe_export_download_all_started">Exporting all downloads</string>
+    <string name="morphe_export_download_all_title">All downloads</string>
+    <string name="morphe_export_download_playlist_started">Exporting downloads</string>
     <string name="morphe_export_download_all_running">Downloads are already being exported</string>
     <string name="morphe_export_download_all_saved">Exported %1$s of %2$s downloads to %3$s</string>
 
@@ -188,7 +190,6 @@ Export folder: %s"</string>
 
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
     <string name="morphe_music_hide_audio_video_toggle_title">Hide Audio / Video toggle</string>
-    <string name="morphe_music_hide_podcast_episode_download_button_title">Hide Download button</string>
     <string name="morphe_music_hide_podcast_episode_download_button_summary">Hides the Download button in podcast show</string>
     <string name="morphe_music_hide_explore_shelf_title">Hide Explore shelf</string>
     <string name="morphe_music_hide_filter_bar_title">Hide filter bar</string>
@@ -198,7 +199,6 @@ Export folder: %s"</string>
     <string name="morphe_music_hide_new_button_summary">Hides the New button in the Library tab</string>
     <string name="morphe_music_hide_list_shelves_title">Hide list shelves</string>
     <string name="morphe_music_hide_lyrics_panel_category_title">Lyrics panel</string>
-    <string name="morphe_music_hide_lyrics_share_button_title">Hide Share button</string>
     <string name="morphe_music_hide_lyrics_translate_button_title">Hide Translate button</string>
     <string name="morphe_music_hide_new_from_shelf_title">Hide \'New from\' shelf</string>
     <string name="morphe_music_hide_playlist_shelves_title">Hide playlist shelves</string>
@@ -224,7 +224,7 @@ Export folder: %s"</string>
     <string name="morphe_music_crossfade_screen_summary">Smoothly blend tracks into each other</string>
     <string name="morphe_music_crossfade_enabled_title">Enable crossfade</string>
     <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-    <string name="morphe_music_crossfade_enabled_summary_unavailable">To use crossfade, change the Spoof video streams \'Default client\' to TV Simply or visionOS</string>
+    <string name="morphe_music_crossfade_enabled_summary_unavailable">To use crossfade, change the \'Spoof video streams\' \'Default client\' to \'TV Simply\' or \'visionOS\'</string>
     <string name="morphe_music_crossfade_curve_title">Fade curve</string>
     <string name="morphe_music_crossfade_curve_entry_equal_power">Equal power</string>
     <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtle hold</string>
@@ -260,7 +260,7 @@ Export folder: %s"</string>
     <string name="morphe_music_crossfade_resumed_toast">Crossfade resumed</string>
     <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mode is not available while crossfade is enabled</string>
     <!--- "TV Simply" and "visionOS" must be kept untranslated -->
-    <string name="morphe_music_crossfade_visionos_toast">Crossfade does not work with visionOS. Change the Spoof video streams \'Default client\' to TV Simply</string>
+    <string name="morphe_music_crossfade_visionos_toast">Crossfade does not work with \'visionOS\'. Change the \'Spoof video streams\' \'Default client\' to \'TV Simply\'</string>
     <string name="morphe_music_crossfade_spoof_client_toast">Crossfade does not work with this spoof stream client</string>
     <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is off while casting</string>
     <string name="morphe_music_crossfade_about_how_title">How it works</string>
@@ -292,6 +292,21 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <string name="morphe_music_pause_when_muted_title">Pause when muted</string>
     <string name="morphe_music_pause_when_muted_summary">Pauses playback when the system volume is muted and resumes it when the volume is raised</string>
 
+    <!-- interaction.sonos.sonosCastPatch -->
+    <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+    <string name="morphe_music_sonos_cast_summary">The Cast button can also stream to Sonos and other UPnP speakers on your Wi-Fi network</string>
+    <string name="morphe_music_sonos_cast_sheet_title">Connect to a device</string>
+    <string name="morphe_music_sonos_cast_searching">Searching for speakers on your Wi-Fi network…</string>
+    <string name="morphe_music_sonos_cast_choose_speaker">Choose a speaker on your Wi-Fi network</string>
+    <string name="morphe_music_sonos_cast_casting_to">Casting to %s</string>
+    <string name="morphe_music_sonos_cast_connected">Connected</string>
+    <string name="morphe_music_sonos_cast_disconnect">Disconnect</string>
+    <string name="morphe_music_sonos_cast_speakers_header">Speakers on Wi-Fi</string>
+    <string name="morphe_music_sonos_cast_active">Active</string>
+    <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+    <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest and Google TV devices</string>
+    <string name="morphe_music_sonos_cast_connection_failed">Could not connect to %s</string>
+
     <!-- video.speed.playbackSpeedPatch -->
     <string name="morphe_music_playback_speed_title">Playback speed</string>
     <string name="morphe_music_playback_speed_summary">Speed used for all tracks. At 100% the app speed is used, such as the podcast playback speed</string>
@@ -318,7 +333,6 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
     <string name="morphe_music_disable_player_swipe_to_change_track_title">Disable swipe to change track</string>
     <string name="morphe_music_disable_player_swipe_to_change_track_summary">Prevents skipping to the next or previous track by swiping left or right on the player</string>
-    <string name="morphe_music_disable_miniplayer_swipe_to_change_track_title">Disable swipe to change track</string>
     <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Prevents skipping to the next or previous track by swiping left or right on the miniplayer</string>
 
     <!-- interaction.loop.loopVideoPatch -->
@@ -507,11 +521,8 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <string name="morphe_music_miniplayer_glass_artwork_padding_title">Artwork padding</string>
     <string name="morphe_music_miniplayer_glass_rim_title">Rim brightness</string>
     <string name="morphe_music_miniplayer_glass_opacity_title">Opacity</string>
-    <string name="morphe_music_miniplayer_glass_blur_title">Glass blur</string>
     <string name="morphe_music_miniplayer_glass_blur_summary">How much the page behind the glass miniplayer is blurred (Android 14 and later). At 0 the page shows through sharp, and before Android 14 the page is covered</string>
-    <string name="morphe_music_miniplayer_glass_light_title">Light glass</string>
     <string name="morphe_music_miniplayer_glass_light_summary">Tints the glass miniplayer white instead of dark, for a lighter and clearer glass</string>
-    <string name="morphe_music_miniplayer_glass_album_tint_title">Album art tint</string>
     <string name="morphe_music_miniplayer_glass_album_tint_summary">Tints the glass miniplayer with the color of the album art of the song that plays</string>
     <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Spinning artwork</string>
     <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Makes the artwork of the glass miniplayer round, and spins it like a record while a song plays</string>
@@ -526,12 +537,12 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
     <string name="morphe_music_hide_activity_button_title">Hide Activity button</string>
     <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
-    <string name="morphe_music_hide_ask_music_button_title">Hide Ask Music button</string>
+    <string name="morphe_music_hide_ask_music_button_title">Hide \'Ask Music\' button</string>
     <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_music_hide_history_button_title">Hide History button</string>
     <string name="morphe_music_hide_search_button_title">Hide Search button</string>
-    <string name="morphe_music_hide_voice_search_button_title">Hide Voice search button</string>
-    <string name="morphe_music_hide_sound_search_button_title">Hide Sound search button</string>
+    <string name="morphe_music_hide_voice_search_button_title">Hide \'Voice search\' button</string>
+    <string name="morphe_music_hide_sound_search_button_title">Hide \'Sound search\' button</string>
 
     <!-- interaction.scrobbling.scrobblingPatch -->
     <string name="morphe_music_scrobbling_summary_logged_out">Not logged in. Tap to configure</string>

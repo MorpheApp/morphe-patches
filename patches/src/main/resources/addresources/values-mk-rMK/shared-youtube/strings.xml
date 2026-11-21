@@ -141,15 +141,15 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Обидете се да го овозможите: Лажирај видео стримови &gt; Пријава во Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Подрачјуван клиент</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Пријава во Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR бара посебно најавување. Допрете тука за да продолжите</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Сега сте најавени во Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Најава за \'Android\' VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">За \'Android VR\' е потребна посебна најава. Допрете овде за да продолжите</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Моментално сте најавени во \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">За да ја користите оваа функција, променете го „Подрачјуваниот клиент“ на Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Пријавете се во Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Најавувањето во Android VR може да реши проблеми со репродукцијата за некои корисници
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">За да ја користите оваа функција, променете го \'Стандардниот клиент\' во \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Најавете се во \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Најавувањето во 'Android VR' може да ги реши проблемите со репродукцијата за некои корисници
 
-За да се најавите, притиснете продолжете подолу"</string>
+За да се најавите, притиснете продолжи подолу"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Одјави се</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкции</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -170,33 +170,33 @@ Second \"item\" text"</string>
 • Ќе треба повторно да се најавите ако ја промените вашата Google лозинка или го откажете овој уред од вашите поставки на Google."</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Најавување преку мобилен веб</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Опционално: најавете се на веб-страницата на YouTube за да ги пуштите видеата со вашата сметка. Допрете тука за да продолжите</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Моментално сте најавени во мобилниот веб</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Моментално сте најавени во \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">За да ја користите оваа функција, променете го \"Default client\" во Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Најавете се во Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web ги репродуцира видеата без најава или најавени на веб-страницата на YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">За да ја користите оваа функција, променете го \"Default client\" во \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Најавете се во \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" ги пушта видеата без најава или најавени на веб-страницата на YouTube
 
-• Кога сте најавени, можат да се репродуцираат видеа што бараат сметка, како што се видеата со ограничување на возраста
+• Кога сте најавени, може да се пуштаат видеа кои бараат сметка, како што се видеата со ограничување на возраста
 • Страницата за најава на Google се отвора во оваа апликација
-• Најавата се користи само за да се добијат видеата што ги репродуцирате
+• Најавата се користи само за да се добијат видеата што ги пуштате
 • Најавата се зачувува само на овој уред
 
-За да се најавите, притиснете „продолжи“ подолу"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Најавата е зачувана
+За да се најавите, притиснете продолжи подолу"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Пријавата е зачувана
 
-• Вашите Morphe поставки нема да ја увезат/извезат најавата за Mobile Web
-• Ако Google ја прекине најавата, видеата се репродуцираат без најава додека не се најавите повторно
+• Вашите Morphe поставки нема да ги увезат/извезат пријавата за „Mobile Web“
+• Ако Google ја прекине пријавата, видеата ќе се репродуцираат без најава додека повторно не се најавите
 • Одјавувањето исто така го одјавува овој уред од веб-страницата на YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Пријавата за Mobile Web е истечена, обидете се повторно да се најавите во Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Одјавено од Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView не е достапен. Инсталирајте го или овозможете го за да се најавите</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Пријавата за Mobile Web е истечена, обидете се повторно да се најавите во „Mobile Web“</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Одјавено од „Mobile Web“</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">„Android System WebView“ не е достапен. Инсталирајте го или овозможете го за да се најавите</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 е привремено недостапен (истекот на рокот на API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Пријавата за Android VR е истечена, обидете се повторно да се најавите во VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Пријавата за \'Android VR\' е истечена, обидете се повторно да се најавите во VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 е привремено недоступен (статус %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 е привремено недостапен</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Не може да се најавите во VR, одобрувањето на веб-страницата не е одобрено</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се најавите во VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Одјавени од Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Одјавен од \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Невалиден токен за пријава во VR, обидете се да се најавите во VR повторно</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Контроли за медиуми во известувањата</string>
@@ -254,7 +254,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">Промени линковите за споделување на youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Ја заменува music.youtube.com со youtube.com во споделуваните линкови.</string>
   <string name="morphe_replace_links_with_shortener_title">Промени линковите за споделување на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Принудува видеата да го користат скратениот формат на URL youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Присилува видеата да го користат скратениот URL формат \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Автоматски</string>
@@ -266,19 +266,16 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Стандарден квалитет на видеото во мобилна мрежа</string>
   <string name="morphe_remember_video_quality_toast_mobile">Променен е стандардниот мобилен квалитет на: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Променен е стандардниот Wi-Fi квалитет на: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Отвори ја системската листа за споделување</string>
-  <string name="morphe_open_system_share_sheet_summary">Отвора системскиот мени за споделување наместо оној во апликацијата</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho логгирање</string>
   <string name="morphe_debug_litho_entry_disabled">Оневозможено</string>
   <string name="morphe_debug_litho_entry_path">Патка</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Патка и бафер</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho логирањето ги запишува компонентите за распоред на апликацијата, вклучувајќи го и текстот на екранот за некои UI компоненти.
+  <string name="morphe_debug_litho_user_dialog_message">"Ги запишува компонентите за распоред на апликацијата, вклучувајќи го текстот на екранот за некои UI компоненти.
 
-Ова може да помогне при идентификување на компонентите при креирање на прилагобени филтри.
+Ова може да помогне при идентификување на компоненти при креирање на прилагобени филтри.
 
-Сепак, со ова ќе се логираат и некои кориснички податоци, како што е вашата IP адреса"</string>
+Сепак, со ова ќе се запишаат и некои кориснички податоци, како што е вашата IP адреса"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Прилагоден филтер</string>
   <string name="morphe_custom_filter_screen_summary">Конфигурирајте прилагодени филтри за да скриете која било компонента</string>
@@ -380,4 +377,8 @@ ID-то на видеото што го гледате се испраќа до 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Не се сретнати ограничувања на стапката на клиентот</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Ограничувањето на стапката на клиентот беше сретнато %s пати</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s милисекунди</string>
+  <string name="morphe_navigation_bar_screen_title">Навигациска лента</string>
+  <string name="morphe_navigation_bar_screen_summary">Изберете кои копчиња ќе се појавуваат во долната навигациска лента</string>
+  <string name="morphe_toolbar_screen_title">Лента со алатки</string>
+  <string name="morphe_toolbar_screen_summary">Изберете кои компоненти ќе се појавуваат во лентата со алатки</string>
 </resources>

@@ -87,7 +87,14 @@ Yeni dilləri tərcümə etmək və ya mövcud tərcümələri təkmilləşdirm�
   <string name="morphe_settings_about_links_translations">Tərcümələr</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Yenilənib</string>
   <string name="morphe_settings_about_contributors">Töhfəçilər</string>
-  <string name="morphe_settings_about_contributors_period">Son 12 ay</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Bütün vaxt</string>
+  <string name="morphe_settings_about_contributors_6_months">6 ay</string>
+  <string name="morphe_settings_about_contributors_3_months">3 ay</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Vaxt dövrü</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s istifadəçi</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Dəstəkçilər</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective-də Dəstəkçilər</string>
@@ -222,6 +229,9 @@ Batareya optimallaşmaları dəyişdirilməsə, görə bilərsiniz:
 • Tətbiq təsadüfən bağlana bilər
 • Bildirişlər işləməyə bilər
 • Fon oynatması işləməyə bilər"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım səhifəsin aç</string>
+  <string name="morphe_open_system_share_sheet_summary">Məzmun paylaşanda tətbiqdaxili menyu əvəzinə sistem paylaşım cildini açır</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Tətbiq linkini idarəetmə</string>
   <string name="morphe_link_handling_summary">Bu tətbiqdə açmaq üçün linkləri təyin et</string>

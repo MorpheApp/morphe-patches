@@ -205,8 +205,6 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_hide_posts_shelf_title">Slėpti įrašų lentyną</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Slėpti mygtuką „Parduotuvė“</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Slėpti mygtuką „Prenumeruoti“</string>
   <string name="morphe_explore_menu_screen_title">Naršymo meniu</string>
   <string name="morphe_explore_menu_screen_summary">Pasirinkite, kurie komponentai rodomi naršymo meniu</string>
   <string name="morphe_hide_courses_menu_title">Slėpti meniu „Kursai“</string>
@@ -281,7 +279,6 @@ Apribojimai:
   <string name="morphe_hide_post_comment_button_title">Paslėpti komentavimo mygtuką</string>
   <string name="morphe_hide_post_comments_preview_title">Paslėpti komentarų peržiūrą</string>
   <string name="morphe_hide_post_comments_preview_summary">Paslepia komentarų peržiūrą po įrašais</string>
-  <string name="morphe_hide_post_share_button_title">Paslėpti bendrinimo mygtuką</string>
   <string name="morphe_hide_post_share_button_summary">Įrašų nuotraukų atsisiuntimo mygtukas vaizduojamas šalia bendrinimo mygtuko, todėl jis taip pat yra paslėptas</string>
   <string name="morphe_hide_ask_gemini_button_title">Slėpti „Ask Gemini“ mygtuką</string>
   <string name="morphe_hide_ask_gemini_button_summary">Paslepia „Ask Gemini“ mygtuką skydelio „Ask about this video“ apačioje</string>
@@ -296,9 +293,6 @@ Apribojimai:
   <string name="morphe_hide_in_this_video_button_title">Paslėpti \"Šiame vaizdo įraše\" mygtuką</string>
   <string name="morphe_hide_info_panels_title">Slėpti informacijos skydelius</string>
   <string name="morphe_hide_info_panels_summary">Paslepia informacinius konteksto skydelius, pvz., medicininę informaciją</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Slėpti mygtuką „Tapti nariu“</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Slėpti mygtuką „Pokalbio įrašas“</string>
@@ -314,8 +308,6 @@ Apribojimai:
   <string name="morphe_hide_tap_and_hold_gradient_summary">Paslepia grotuvo valdiklių gradientą, kai laikydami pirštą braukiate, kad pagreitintumėte</string>
   <string name="morphe_hide_timed_reactions_title">Slėpti laiku rodomas reakcijas</string>
   <string name="morphe_hide_timed_reactions_summary">Paslepia funkciją, leidžiančią vartotojams reaguoti jaustukais komentarų skiltyje ir tiesioginiame pokalbyje</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Slėpti meniu „Žinynas &amp; atsiliepimai“</string>
   <string name="morphe_hide_help_feedback_menu_summary">Paslepia meniu „Žinynas &amp; atsiliepimai“, kai naudojamas trijų taškų mygtukas, pvz., paieškos rezultatuose</string>
   <string name="morphe_hide_handle_title">Slėpti kanalo adresą</string>
   <string name="morphe_hide_handle_summary">Paslepia jūsų kanalo adresą skirtuke „Jūs“</string>
@@ -358,7 +350,6 @@ Apribojimai:
   <string name="morphe_hide_ask_button_title">Paslėpti Klausti mygtuką</string>
   <string name="morphe_hide_channel_profile_button_title">Slėpti kanalą ir „Prenumeruoti“ mygtuką</string>
   <string name="morphe_hide_channel_profile_button_summary">Paslepia kanalo avatarą ir „Prenumeruoti“ mygtuką veiksmų juostos pradžioje</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Slėpti „Prenumeruoti“ mygtuką</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Paslepia „Prenumeruoti“ ir „Prisijungti“ mygtukus šalia kanalo avataro veiksmų juostos pradžioje</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Slėpti mygtuką „Klipas“</string>
@@ -434,7 +425,6 @@ Apribojimai:
   <string name="morphe_hide_comments_preview_comment_hidden">Komentaras paslėptas „Morphe“…</string>
   <string name="morphe_minimal_comments_button_title">Įgalinti minimalistinį komentarų mygtuką</string>
   <string name="morphe_minimal_comments_button_summary">Paslepia slankiąsias korteles ir jų puslapio parinkiklį, rodomus ant komentarų mygtuko</string>
-  <string name="morphe_hide_comments_thanks_button_title">Slėpti mygtuką „Padėkoti“</string>
   <string name="morphe_hide_comments_timestamp_button_title">Slėpti laiko žymos mygtuką</string>
   <string name="morphe_hide_comments_top_fans_button_title">Slėpti mygtuką „Aktyviausi gerbėjai“</string>
   <string name="morphe_hide_comments_translate_button_title">Slėpti vertimo mygtuką</string>
@@ -489,7 +479,6 @@ Kad būtų rodomas meniu „Garso takelis“, parinktyje „Maskuoti vaizdo įra
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Slėpti subtitrų mygtuką</string>
   <string name="morphe_hide_cast_button_title">Slėpti „Cast“ mygtuką</string>
-  <string name="morphe_hide_cast_button_summary">Paslepia „Cast“ mygtuką vaizdo įrašų grotuve ir įrankių juostoje</string>
   <string name="morphe_hide_collapse_button_title">Slėpti sutraukimo mygtuką</string>
   <string name="morphe_hide_fullscreen_button_title">Slėpti viso ekrano mygtuką</string>
   <string name="morphe_hide_player_control_buttons_background_title">Slėpti grotuvo valdiklių foną</string>
@@ -890,7 +879,7 @@ Informacija: gali neveikti tiesioginių transliacijų atveju"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Skelbimų baltasis sąrašas iškylančiajame meniu</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Prideda iškylančiojo meniu elementą, leidžiantį rodyti skelbimus to vaizdo įrašo kanale</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ši funkcija gali reikalauti naudoti „PotHelper“ arba pakeisti nustatymą „Maskuoti vaizdo srautus“ į TV arba Android VR prisijungimą</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ši funkcija gali reikalauti naudoti „PotHelper“ arba pakeisti nustatymą „Maskuoti vaizdo srautus“ į „TV“ arba „Android VR“ prisijungimą</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Atkūrimo greičio baltasis sąrašas iškylančiajame meniu</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Prideda iškylančiojo meniu elementą, kuris to vaizdo įrašo kanalo vaizdo įrašus visada atkuria 1.0x greičiu</string>
   <string name="morphe_queue_manager_check_failed_auth">Neprisijungta</string>
@@ -1087,8 +1076,6 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_caption_block_translation_failed">Kai kurie subtitrų vertimai nepriedaugiami. Rodomi prieinami subtitrai.</string>
   <string name="morphe_caption_blocks_too_large">Abi subtitrų kalbos netelpa šiame spustyklituje. Rodoma pagrindinė kalba.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Naršymo juosta</string>
-  <string name="morphe_navigation_bar_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apatinėje naršymo juostoje</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Paslėpti pagrindinį mygtuką</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1106,11 +1093,11 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_watch_later_navigation_label">Žiūrėti vėliau</string>
   <string name="morphe_show_settings_button_title">Rodyti nustatymų mygtuką</string>
   <string name="morphe_show_settings_button_type_title">Nustatymų mygtuko veiksmas</string>
-  <string name="morphe_show_settings_button_type_summary">Įjungus atidaro Morphe nustatymus, o išjungus – „YouTube“ nustatymus</string>
+  <string name="morphe_show_settings_button_type_summary">Įjungus šią funkciją, paliesus atsidaro \"Morphe\" nustatymai, o ilgiau paspaudus – \"YouTube\" nustatymai; išjunkite, norėdami pakeisti jų vietą</string>
   <string name="morphe_navigation_buttons_order_title">Navigacijos mygtukų tvarka</string>
   <string name="morphe_navigation_buttons_order_summary">Vilkite mygtukus, kad pakeistumėte jų tvarką navigacijos juostoje</string>
   <string name="morphe_swap_create_with_notifications_button_title">Sukeisti „Kurti“ mygtuką su pranešimų mygtuku</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Jei šis nustatymas neveikia, pabandykite įjungti inkognito režimą</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Perkelia pranešimų mygtuką į navigacijos juostą, o kūrimo mygtuką – į įrankių juostą. Jei pakeitimai neįsigaldo, pabandykite perjungti į inkognito režimą</string>
   <string name="morphe_hide_navigation_button_labels_title">Slėpti naršymo mygtukų etiketes</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Slėpti naujo turinio taškelį</string>
   <string name="morphe_hide_navigation_bar_title">Slėpti naršymo juostą</string>
@@ -1149,12 +1136,10 @@ Norėdami pasiekti Nustatymus, įjunkite Nustatymų mygtuką per Bendri → Įra
   <string name="morphe_navigation_bar_glass_size_width">Maksimalus plotis</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Mygtukų tarpas</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Rodomų mygtukų: %1$s iš %2$s</string>
-  <string name="morphe_toolbar_screen_title">Įrankių juosta</string>
-  <string name="morphe_toolbar_screen_summary">Pasirinkite, kurie komponentai rodomi įrankių juostoje</string>
   <string name="morphe_hide_toolbar_chat_button_title">Paslėpti Pokalbių mygtuką</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Paslėpti palydovo mygtuką</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Slėpti mikrofono mygtuką</string>
   <string name="morphe_hide_toolbar_search_button_title">Slėpti paieškos mygtuką</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Įjungus, bakstelėjus atidaromi Morphe nustatymai, o ilgai paspaudus – „YouTube“ nustatymai; išjungus veiksmai apsikeičia</string>
   <string name="morphe_toolbar_buttons_order_title">Įrankių juostos mygtukų tvarka</string>
   <string name="morphe_toolbar_buttons_order_summary">Vilkite mygtukus, kad pakeistumėte jų tvarką įrankių juostoje</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1185,43 +1170,28 @@ Norėdami pasiekti Nustatymus, įjunkite Nustatymų mygtuką per Bendri → Įra
   <string name="morphe_disable_shorts_double_tap_to_like_title">Išjungti dvigubą bakstelėjimą, kad būtų pažymėta „Patinka“</string>
   <string name="morphe_hide_shorts_ai_button_title">Slėpti AI mygtuką</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Slėpti etiketę „Automatinis įgarsinimas“</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Slėpti kanalo juostą</string>
-  <string name="morphe_hide_shorts_comments_button_title">Slėpti komentarų mygtuką</string>
   <string name="morphe_hide_shorts_effect_button_title">Slėpti efekto mygtuką</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Slėpti vaizdo įrašo nuorodos etiketę</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Slėpti gestų užuominas</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Slėpti mygtuką „Žalias ekranas“</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Slėpti grotažymės mygtuką</string>
   <string name="morphe_hide_shorts_info_panel_title">Slėpti informacijos skydelį</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Slėpti mygtuką „Tapti nariu“</string>
   <string name="morphe_hide_shorts_like_button_title">Slėpti „Patinka“ mygtuką</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Slėpti „Patinka“ mygtuko fontano animaciją</string>
   <string name="morphe_hide_shorts_live_preview_title">Slėpti tiesioginės transliacijos peržiūrą</string>
   <string name="morphe_hide_shorts_location_label_title">Slėpti vietos etiketę</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Slėpti naršymo juostą</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Slėpti mygtuką „Nauji įrašai“</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Slėpti pristabdytos perdangos mygtukus</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Slėpti komentaro peržiūrą</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Slėpti „Remix“ mygtuką</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Slėpti mygtuką „Išsaugoti“</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Slėpti mygtuką „Išsaugoti muziką“</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Slėpti paieškos pasiūlymus</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Slėpti bendrinimo mygtuką</string>
-  <string name="morphe_hide_shorts_shop_button_title">Slėpti mygtuką „Parduotuvė“</string>
   <string name="morphe_hide_shorts_sound_button_title">Slėpti garso mygtuką</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Slėpti garso metaduomenų etiketę</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Slėpti mygtuką „Prenumeruoti“</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Slėpti mygtuką „Pirkti „Super Thanks““</string>
   <string name="morphe_hide_shorts_tagged_products_title">Slėpti pažymėtus produktus</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Slėpti mygtuką „Būsimas“</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Slėpti mygtuką „Naudoti šį garsą“</string>
   <string name="morphe_hide_shorts_use_template_button_title">Slėpti mygtuką „Naudoti šį šabloną“</string>
-  <string name="morphe_hide_shorts_video_title_title">Slėpti vaizdo įrašo pavadinimą</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Slėpti pabaigos ekrano siūlomą vaizdo įrašą</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Paslepia siūlomo vaizdo įrašo perdangą, rodomą pasibaigus vaizdo įrašui
@@ -1731,8 +1701,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Teikia pirmenybę aukščiausiai pasiekiamai vaizdo įrašo kokybei, o ne kodeko efektyvumui.</string>
   <string name="morphe_video_quality_prioritize_dialog">Jei šis nustatymas išjungtas, tada senesniuose vaizdo įrašuose gali nerodyti vaizdo įrašo kokybės parinkčių.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Leisti „Android VR“ / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Leidžia programinį AV1 dekodavimą, kai naudojamas „Android VR“ / visionOS klientas</string>
+  <string name="morphe_spoof_video_streams_av1_title">Leidžiamas „Android VR“ / „visionOS“ AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Leidžia programinį AV1 dekodavimą naudojant „Android VR“ / „visionOS“ klientą</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Įgalinus šį nustatymą gali būti naudojamas programinis AV1 dekodavimas.
 
 Vaizdo įrašų atkūrimas su AV1 gali strigti arba praleisti kadrus"</string>
@@ -1969,7 +1939,6 @@ Automatinis įrašymas neprivalomas. Jis sustabdomas slaptajame režime arba pak
   <string name="morphe_live_chat_translate_language_title">Vertimo kalba</string>
   <string name="morphe_live_chat_translate_exclude_title">Išimtos kalbos</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kvinis atskirti kalbų kodai, pavyzdžiui, id,en. Žinutės šiomis kalbomis nėra verčiamos</string>
-  <string name="morphe_live_chat_translate_provider_title">Vertimo teikėjas</string>
   <string name="morphe_live_chat_translate_provider_google">„Google Translate“</string>
   <string name="morphe_live_chat_translate_provider_deepl">„DeepL“</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">„DeepL“ API raktas</string>

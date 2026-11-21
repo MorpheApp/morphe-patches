@@ -123,7 +123,6 @@ public final class FeedViewCountPatch {
     private static final int SMALL_THUMBNAIL_MARGIN_DP = 6;
     /** Cards of a grid of up to three columns, such as the feed in landscape. */
     private static final float MIN_GRID_CARD_WIDTH_OF_SCREEN = 0.3f;
-    private static final int MIN_DURATION_HEIGHT_DP = 12;
     /** Space between the edges of the badge and its content. */
     public static final int PADDING_DP = 5;
     private static final int GAP_DP = 3;
@@ -1218,19 +1217,14 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * @param atThumbnailEnd If the badge must be at the end of a thumbnail as wide as the card.
+     * @param atThumbnailEnd If the badge must be at the end of its image, on the side of the duration.
      */
     private static boolean isDurationBadgeShaped(ComponentHost root, Rect rect, boolean atThumbnailEnd) {
-        final float density = root.getResources().getDisplayMetrics().density;
-        // Thumbnails are 16:9 or square, such as of music videos.
-        return rect.width() > 0
-                && rect.width() <= FeedVideoCardsPatch.MAX_DURATION_WIDTH_DP * density
-                && rect.height() >= MIN_DURATION_HEIGHT_DP * density
-                && rect.height() <= FeedVideoCardsPatch.MAX_DURATION_HEIGHT_DP * density
-                && (!atThumbnailEnd || (isRtl(root)
-                ? rect.centerX() < root.getWidth() / 2
-                : rect.centerX() > root.getWidth() / 2))
-                && rect.bottom <= root.getWidth() + TOLERANCE_DP * density;
+        // The badge is drawn on an image much larger than it, such as the thumbnail.
+        Rect image = rect.width() > 0 ? FeedVideoCardsPatch.findBadgeImage(root, rect) : null;
+        return image != null && (!atThumbnailEnd || (isRtl(root)
+                ? rect.centerX() < image.centerX()
+                : rect.centerX() > image.centerX()));
     }
 
     /**

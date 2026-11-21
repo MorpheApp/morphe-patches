@@ -205,8 +205,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_posts_shelf_title">Ukryj sekcję postów</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Ukryj przycisk Sklep</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Ukryj przycisk Subskrybuj</string>
   <string name="morphe_explore_menu_screen_title">Menu odkrywania</string>
   <string name="morphe_explore_menu_screen_summary">Zdecyduj, które elementy będą wyświetlane w menu odkrywania</string>
   <string name="morphe_hide_courses_menu_title">Ukryj menu Kursy</string>
@@ -281,7 +279,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_post_comment_button_title">Ukryj przycisk Komentarze</string>
   <string name="morphe_hide_post_comments_preview_title">Ukryj podgląd komentarzy</string>
   <string name="morphe_hide_post_comments_preview_summary">Ukrywa podgląd komentarzy pod postami</string>
-  <string name="morphe_hide_post_share_button_title">Ukryj przycisk Udostępnij</string>
   <string name="morphe_hide_post_share_button_summary">Przycisk pobierania obrazów z posta jest rysowany obok przycisku \"Udostępnij\", więc również zostanie ukryty</string>
   <string name="morphe_hide_ask_gemini_button_title">Ukryj przycisk \"Zapytaj Gemini\"</string>
   <string name="morphe_hide_ask_gemini_button_summary">Ukrywa przycisk \"Zapytaj Gemini\" na dole panelu \"Zapytaj o ten film\"</string>
@@ -296,9 +293,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_in_this_video_button_title">Ukryj przycisk \"W tym filmie\"</string>
   <string name="morphe_hide_info_panels_title">Ukryj panele informacyjne</string>
   <string name="morphe_hide_info_panels_summary">Ukrywa informacyjne panele kontekstowe, takie jak informacje medyczne</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Ukryj przycisk Wesprzyj</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Ukryj przycisk \"Powtórka czatu na żywo\"</string>
@@ -314,8 +308,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_tap_and_hold_gradient_summary">Ukrywa gradient elementów sterujących odtwarzacza podczas przesuwania palcem w trakcie przytrzymywania, aby przyspieszyć</string>
   <string name="morphe_hide_timed_reactions_title">Ukryj reakcje czasowe</string>
   <string name="morphe_hide_timed_reactions_summary">Ukrywa funkcję umożliwiającą reagowanie emotikonami w sekcji komentarzy i na czacie na żywo</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Ukryj menu \"Pomoc i opinie\"</string>
   <string name="morphe_hide_help_feedback_menu_summary">Ukrywa menu \"Pomoc i opinie\" pod przyciskiem z trzema kropkami, na przykład w wynikach wyszukiwania</string>
   <string name="morphe_hide_handle_title">Ukryj identyfikator</string>
   <string name="morphe_hide_handle_summary">Ukrywa identyfikator kanału w zakładce Ty</string>
@@ -358,7 +350,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_ask_button_title">Ukryj przycisk Zapytaj</string>
   <string name="morphe_hide_channel_profile_button_title">Ukryj kanał i przycisk Subskrybuj</string>
   <string name="morphe_hide_channel_profile_button_summary">Ukrywa awatar kanału i przycisk Subskrybuj na początku paska akcji</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Ukryj przycisk Subskrybuj</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Ukrywa przyciski Subskrybuj i Wesprzyj obok awatara kanału na początku paska akcji</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Ukryj przycisk Klip</string>
@@ -434,7 +425,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_hide_comments_preview_comment_hidden">Komentarz ukryty przez Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Włącz minimalistyczny przycisk Komentarze</string>
   <string name="morphe_minimal_comments_button_summary">Ukrywa przesuwane karty oraz ich selektor stron, które wyświetlają się na przycisku komentarzy</string>
-  <string name="morphe_hide_comments_thanks_button_title">Ukryj przycisk Podziękuj</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ukryj przycisk Znacznik czasu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ukryj przycisk \"Najlepsi odbiorcy\"</string>
   <string name="morphe_hide_comments_translate_button_title">Ukryj przycisk Przetłumacz</string>
@@ -489,7 +479,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ukryj przycisk Napisy</string>
   <string name="morphe_hide_cast_button_title">Ukryj przycisk Przesyłaj</string>
-  <string name="morphe_hide_cast_button_summary">Ukrywa przycisk Prześlij w odtwarzaczu oraz na pasku narzędzi</string>
   <string name="morphe_hide_collapse_button_title">Ukryj przycisk Zminimalizuj</string>
   <string name="morphe_hide_fullscreen_button_title">Ukryj przycisk Pełny ekran</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ukryj tło przycisków w odtwarzaczu</string>
@@ -891,7 +880,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Biała lista reklam w menu filmu</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Dodaje do menu opcję, która pozwala na wyświetlanie reklam na kanale danego filmu</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ta funkcja może wymagać użycia PotHelpera lub zmiany opcji \"Fałszowanie strumieni filmów\" na TV lub Android VR</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ta funkcja może wymagać użycia PotHelpera lub zmiany opcji \"Fałszowanie strumieni filmów\" na logowanie TV lub Android VR</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Biała lista prędkości w menu filmu</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Dodaje do menu opcję, która zawsze odtwarza kanał danego filmu z prędkością 1x</string>
   <string name="morphe_queue_manager_check_failed_auth">Nie zalogowano</string>
@@ -1088,8 +1077,6 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_caption_block_translation_failed">Niektóre tłumaczenia napisów są niedostępne. Wyświetlanie dostępnych napisów</string>
   <string name="morphe_caption_blocks_too_large">Oba języki napisów nie mieszczą się w tym odtwarzaczu. Wyświetlanie głównego języka</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Pasek nawigacji</string>
-  <string name="morphe_navigation_bar_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ukryj przycisk Główna</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1094,11 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_watch_later_navigation_label">Do obejrzenia</string>
   <string name="morphe_show_settings_button_title">Pokaż przycisk Ustawienia</string>
   <string name="morphe_show_settings_button_type_title">Działanie przycisku Ustawienia</string>
-  <string name="morphe_show_settings_button_type_summary">Otwiera ustawienia Morphe, gdy funkcja jest włączona, lub ustawienia YouTube, gdy jest wyłączona</string>
+  <string name="morphe_show_settings_button_type_summary">Gdy włączone, dotknięcie otwiera ustawienia Morphe, a przytrzymanie ustawienia YouTube. Wyłącz, aby odwrócić te akcje</string>
   <string name="morphe_navigation_buttons_order_title">Kolejność przycisków nawigacji</string>
   <string name="morphe_navigation_buttons_order_summary">Przeciągnij przyciski, aby zmienić ich kolejność na pasku nawigacji</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamień przycisk Utwórz z przyciskiem Powiadomienia</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Jeśli zmiana tego ustawienia nie przyniesie efektu, spróbuj przełączyć się w tryb incognito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Przenosi przycisk Powiadomienia na pasek nawigacji, a przycisk Utwórz na pasek narzędzi. Jeśli zmiany nie zostaną zastosowane, spróbuj przełączyć na tryb incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ukryj etykiety przycisków nawigacji</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ukryj kropkę nowych treści</string>
   <string name="morphe_hide_navigation_bar_title">Ukryj pasek nawigacji</string>
@@ -1143,19 +1130,17 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_glass_edge_title">Krawędź szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_edge_summary">Rysuje jasną krawędź wokół szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_title">Dolny margines szklanego paska nawigacji</string>
-  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Dostosuj odstęp między szklanym paskiem nawigacji a dołem ekranu lub systemową nawigacją</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Dostosuj odstęp między szklanym paskiem nawigacji a dołem ekranu lub nawigacją systemową</string>
   <string name="morphe_navigation_bar_glass_size_title">Rozmiar szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość oraz odstępy między przyciskami szklanego paska nawigacji z podglądem na żywo. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
   <string name="morphe_navigation_bar_glass_size_height">Wysokość</string>
   <string name="morphe_navigation_bar_glass_size_width">Maks. szerokość</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Odstęp między przyciskami</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Widoczne przyciski: %1$s z %2$s</string>
-  <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
-  <string name="morphe_toolbar_screen_summary">Zdecyduj, które elementy będą wyświetlane na pasku narzędzi</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ukryj przycisk Czat</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Ukryj przycisk Towarzysz</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ukryj przycisk Mikrofon</string>
   <string name="morphe_hide_toolbar_search_button_title">Ukryj przycisk Szukaj</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Gdy włączone, dotknięcie otwiera ustawienia Morphe, a przytrzymanie ustawienia YouTube. Wyłącz, aby odwrócić te akcje</string>
   <string name="morphe_toolbar_buttons_order_title">Kolejność przycisków paska narzędzi</string>
   <string name="morphe_toolbar_buttons_order_summary">Przeciągnij przyciski, aby zmienić ich kolejność na pasku narzędzi</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1186,43 +1171,28 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_disable_shorts_double_tap_to_like_title">Wyłącz polubienie podwójnym dotknięciem</string>
   <string name="morphe_hide_shorts_ai_button_title">Ukryj przycisk AI</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Ukryj etykietę \"Z dubbingiem automatycznym\"</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Ukryj pasek kanału</string>
-  <string name="morphe_hide_shorts_comments_button_title">Ukryj przycisk Komentarze</string>
   <string name="morphe_hide_shorts_effect_button_title">Ukryj przycisk Efekt</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Ukryj etykietę linku do filmu</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Ukryj podpowiedzi gestów</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Ukryj przycisk \"Zielone tło\"</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Ukryj przycisk Hashtag</string>
   <string name="morphe_hide_shorts_info_panel_title">Ukryj panel informacyjny</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Ukryj przycisk Wesprzyj</string>
   <string name="morphe_hide_shorts_like_button_title">Ukryj przycisk Lubię</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Ukryj animację przycisku Lubię</string>
   <string name="morphe_hide_shorts_live_preview_title">Ukryj podgląd transmisji na żywo</string>
   <string name="morphe_hide_shorts_location_label_title">Ukryj etykietę lokalizacji</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Ukryj pasek nawigacji</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Ukryj przycisk \"Nowe posty\"</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Ukryj przyciski w zatrzymanym odtwarzaczu</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Ukryj podgląd komentarza</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Ukryj przycisk Remiks</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Ukryj przycisk Zapisz</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Ukryj przycisk \"Zapisz muzykę\"</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Ukryj sugestie wyszukiwania</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Ukryj przycisk Udostępnij</string>
-  <string name="morphe_hide_shorts_shop_button_title">Ukryj przycisk Sklep</string>
   <string name="morphe_hide_shorts_sound_button_title">Ukryj przycisk Dźwięk</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Ukryj etykietę metadanych dźwięku</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Ukryj przycisk Subskrybuj</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Ukryj przycisk \"Kup Super Podziękowanie\"</string>
   <string name="morphe_hide_shorts_tagged_products_title">Ukryj oznaczone produkty</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Ukryj przycisk Nadchodzące</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Ukryj przycisk \"Użyj tego dźwięku\"</string>
   <string name="morphe_hide_shorts_use_template_button_title">Ukryj przycisk \"Użyj tego szablonu\"</string>
-  <string name="morphe_hide_shorts_video_title_title">Ukryj tytuł filmu</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Ukryj proponowane filmy na końcu filmu</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Ukrywa proponowane filmy pojawiające się po zakończeniu odtwarzania
@@ -1390,8 +1360,8 @@ Układ samochodowy
   <string name="morphe_disable_auto_feed_refresh_title">Wyłącz automatyczne odświeżanie</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Zapobiega automatycznemu odświeżaniu treści, gdy stają się nieaktualne</string>
   <!-- layout.notifications.ungroupNotificationsPatch -->
-  <string name="morphe_ungroup_notifications_title">Rozdziel powiadomienia</string>
-  <string name="morphe_ungroup_notifications_summary">Wyświetla każdy film z pogrupowanych przesyłanek kanału jako osobne powiadomienie</string>
+  <string name="morphe_ungroup_notifications_title">Rozgrupuj powiadomienia</string>
+  <string name="morphe_ungroup_notifications_summary">Wyświetla każdy film ze zgrupowanych publikacji kanału jako osobne powiadomienie</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Układ kart na stronie głównej</string>
   <string name="morphe_feed_card_layout_entry_1">Klasyczny</string>
@@ -1504,8 +1474,8 @@ Układ samochodowy
   <string name="morphe_dearrow_titles_search_title">Wyniki wyszukiwania</string>
   <string name="morphe_dearrow_titles_icon_title">Pokaż ikonę DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Wyświetla ikonę DeArrow przy tytułach filmów z tytułem lub miniaturką zgłoszonymi przez społeczność. Dotknij ikony, aby pokazać oryginalny tytuł i miniaturkę</string>
-  <string name="morphe_dearrow_clean_up_titles_title">Wyczyść tytuły</string>
-  <string name="morphe_dearrow_clean_up_titles_summary">Wycisza tytuły filmów, które nie mają tytułu DeArrow. Słowa pisane wielkimi literami są zmieniane na normalną pisownię, a emoji, ozdobny tekst i powtarzające się wykrzykniki są usuwane</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Oczyszczaj tytuły</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Oczyszcza tytuły filmów, które nie mają tytułu w DeArrow. Słowa pisane wielkimi literami są zmieniane na zwykłą pisownię, a emotki, ozdobny tekst i powtarzające się wykrzykniki są usuwane</string>
   <string name="morphe_dearrow_casual_mode_title">Tryb swobodny</string>
   <string name="morphe_dearrow_casual_mode_summary">Wyświetla oryginalny tytuł zamiast tytułu DeArrow, jeśli użytkownicy DeArrow zagłosowali, że podoba im się oryginał</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalna liczba głosów, aby pokazać oryginalny tytuł</string>
@@ -1731,8 +1701,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Nadaje priorytet najwyższej dostępnej jakości filmu kosztem wydajności kodeka</string>
   <string name="morphe_video_quality_prioritize_dialog">Jeśli to ustawienie będzie wyłączone, starsze filmy mogą nie wyświetlać opcji wyboru jakości filmu</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Zezwalaj na AV1 w Android VR / visionOS</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Umożliwia programowe dekodowanie AV1 podczas korzystania z klienta Android VR / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_title">Zezwalaj na AV1 w \"Android VR\" / \"visionOS\"</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Umożliwia programowe dekodowanie AV1 podczas korzystania z klienta \"Android VR\" / \"visionOS\"</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Włączenie tej opcji może wymusić programowe dekodowanie AV1.
 
 Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie klatek"</string>
@@ -1969,7 +1939,6 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_live_chat_translate_language_title">Język tłumaczenia</string>
   <string name="morphe_live_chat_translate_exclude_title">Wykluczone języki</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kody języków oddzielone przecinkami, np. id,en. Wiadomości w tych językach nie są tłumaczone</string>
-  <string name="morphe_live_chat_translate_provider_title">Dostawca tłumaczeń</string>
   <string name="morphe_live_chat_translate_provider_google">Tłumacz Google</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">Klucz API DeepL</string>

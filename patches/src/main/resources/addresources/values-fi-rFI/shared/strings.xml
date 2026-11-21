@@ -87,7 +87,14 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_settings_about_links_translations">Käännökset</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ajantasainen</string>
   <string name="morphe_settings_about_contributors">Avustajat</string>
-  <string name="morphe_settings_about_contributors_period">Viimeiset 12 kuukautta</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Kaikki ajat</string>
+  <string name="morphe_settings_about_contributors_6_months">6 kuukautta</string>
+  <string name="morphe_settings_about_contributors_3_months">3 kuukautta</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Aikaväli</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s käyttäjää</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Tukijat</string>
   <string name="morphe_settings_about_supporters_summary">Tukijat Open Collectivessa</string>
@@ -222,6 +229,9 @@ Jos akun optimointeja ei muuteta, voit kokea:
 • Sovellus saattaa sulkeutua satunnaisesti
 • Ilmoitukset eivät välttämättä toimi
 • Taustalla toistaminen ei välttämättä toimi"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Avaa järjestelmän jakovalikko</string>
+  <string name="morphe_open_system_share_sheet_summary">Avaa järjestelmän jakovalikon sovelluksen oman valikon sijasta sisällön jaettaessa</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Sovelluksen linkkien käsittely</string>
   <string name="morphe_link_handling_summary">Määritä linkit avautumaan tässä sovelluksessa</string>

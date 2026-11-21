@@ -205,8 +205,6 @@ Raporên giştî ne û berî ku kanal li lîsteyê were zêdekirin tên kontrolk
   <string name="morphe_hide_posts_shelf_title">Beşa postan veşêre</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Bişkoja \'Store\' veşêre</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Bişkoja \'Subscribe\' (li rûpela kanalê) veşêre</string>
   <string name="morphe_explore_menu_screen_title">Menuya Explore</string>
   <string name="morphe_explore_menu_screen_summary">Hilbijêre kîjan beşên menûyê Explore xuya bibin</string>
   <string name="morphe_hide_courses_menu_title">Menûya Kursan veşêre</string>
@@ -281,7 +279,6 @@ Sînor:
   <string name="morphe_hide_post_comment_button_title">Bişkoja Comment veşêre</string>
   <string name="morphe_hide_post_comments_preview_title">Şîroveyên pêş-nîşanê veşêre</string>
   <string name="morphe_hide_post_comments_preview_summary">Pêş-nîşana şîroveyên bin postan veşêre</string>
-  <string name="morphe_hide_post_share_button_title">Bişkoja Share veşêre</string>
   <string name="morphe_hide_post_share_button_summary">Bişkoja daxistina wêneyên postê li kêleka bişkoja Parvekirinê ye, lewma ew jî veşartî ye</string>
   <string name="morphe_hide_ask_gemini_button_title">Bişkoja \'Ask Gemini\' veşêre</string>
   <string name="morphe_hide_ask_gemini_button_summary">Bişkoja \'Ask Gemini\' li binê panela \'Ask about this video\' veşêre</string>
@@ -296,9 +293,6 @@ Sînor:
   <string name="morphe_hide_in_this_video_button_title">Bişkoja \'Di vê vîdyoyê de\' veşêre</string>
   <string name="morphe_hide_info_panels_title">Panelên agahdariyê veşêrin</string>
   <string name="morphe_hide_info_panels_summary">Panelên agahiyên giştî, wek agahiya bijîşkî veşêre</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Bi kurtahiya \'Teşîfê bike\' veşêrin</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Bişkoja \'Live chat replay\' veşêre</string>
@@ -314,8 +308,6 @@ Sînor:
   <string name="morphe_hide_tap_and_hold_gradient_summary">Gradyana kontrolên lîstikvanê veşêre dema tiliyê dixişînî û digirî ji bo lezkirinê</string>
   <string name="morphe_hide_timed_reactions_title">Reaksiyonên demdirêj ve nebînîne.</string>
   <string name="morphe_hide_timed_reactions_summary">Taybetmendiya ku dihêle bikarhêner bi emojiyan bersivê bidin di beşa şîroveyan û chata zindî de veşêre</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Menuya \'Help &amp; feedback\' veşêre</string>
   <string name="morphe_hide_help_feedback_menu_summary">Dema bişkoja sê-xalan tê bikaranîn, mînak li encamên lêgerînê, menuya \'Help &amp; feedback\' veşêre</string>
   <string name="morphe_hide_handle_title">Handle veşêre</string>
   <string name="morphe_hide_handle_summary">Handle\'ê kanala te di tabê \'You\' de veşêre</string>
@@ -358,7 +350,6 @@ Sînor:
   <string name="morphe_hide_ask_button_title">Bişkoja Ask veşêre</string>
   <string name="morphe_hide_channel_profile_button_title">Kanal û buttona Subscribe veşêre</string>
   <string name="morphe_hide_channel_profile_button_summary">Avatarê kanalê û buttona Subscribe li destpêka action bar veşêre</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Bişkoja Subscribe veşêre</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Bişkokên \"Subscribe\" û \"Join\" ên li kêleka avatarê kanalê di destpêka action bar de vedişêre</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Bişkoja Clip veşêre</string>
@@ -434,7 +425,6 @@ Sînor:
   <string name="morphe_hide_comments_preview_comment_hidden">Şîrove ji aliyê Morphe ve hate veşartin…</string>
   <string name="morphe_minimal_comments_button_title">Butona şîroveyên mînîmal çalak bike</string>
   <string name="morphe_minimal_comments_button_summary">Kartên xişandinê û hilbijêrka rûpelê ku li ser bişkoja şîroveyan tê nîşandan veşêre</string>
-  <string name="morphe_hide_comments_thanks_button_title">Bişkoka \'Spas\' veşêrin</string>
   <string name="morphe_hide_comments_timestamp_button_title">Bişkoja Timestamp veşêre</string>
   <string name="morphe_hide_comments_top_fans_button_title">Bişkoja \'Top fans\' veşêre</string>
   <string name="morphe_hide_comments_translate_button_title">Butona Wergerînê vedişêre</string>
@@ -489,7 +479,6 @@ Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her c
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Bişkoja Captions veşêre</string>
   <string name="morphe_hide_cast_button_title">Bişkoja Cast veşêre</string>
-  <string name="morphe_hide_cast_button_summary">Butona Cast di playerê vîdyoyê û toolbarê de veşerîne</string>
   <string name="morphe_hide_collapse_button_title">Bişkoja Collapse veşêre</string>
   <string name="morphe_hide_fullscreen_button_title">Bişkoja Fullscreen veşêre</string>
   <string name="morphe_hide_player_control_buttons_background_title">Paşxana kontrolên lîstikvanê veşêre</string>
@@ -891,7 +880,7 @@ Agahî: Dibe ku li ser weşanên zindî nexebite"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Lîsteya spî ya reklamê di menyuya flyout de</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Bendekê flyout zêde dike ku dihêle reklam li kanala vîdyoya wê li ser bilîzin</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ev taybetmendî dibe ku PotHelper bikar bîne, an \"Spoof video streams\" bike TV an Android VR sign-in</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ev taybetmendî dibe ku bikaranîna PotHelper an guhertina \'Spoof video streams\' bo têketina \'TV\' an \'Android VR\' bixwaze</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Listeya spî ya lezê di menyuya flyout de</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Bendekê flyout zêde dike ku kanala wê vîdyoyê her dem bi leza 1.0x lîstik dike</string>
   <string name="morphe_queue_manager_check_failed_auth">Ne têketî ye</string>
@@ -1088,8 +1077,6 @@ Divê 'Caption cookies' bêne dayîn."</string>
   <string name="morphe_caption_block_translation_failed">Hinek wergera kaptîyonan tune ne. Kaptîyonên heye tên nîşandan.</string>
   <string name="morphe_caption_blocks_too_large">Her du zimanên kaptîyonan di vê playerê de nayên guncankirin. Zimanê sereke tê nîşandan.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Stora navîgasyonê</string>
-  <string name="morphe_navigation_bar_screen_summary">Hilbijêre kîjan bişkojan di barê navîgasyonê yê jêrîn de xuya bibin</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Bişkoja Home veşêre</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1094,11 @@ Divê 'Caption cookies' bêne dayîn."</string>
   <string name="morphe_watch_later_navigation_label">Dîrûvaniya paş</string>
   <string name="morphe_show_settings_button_title">Bişkoja Settings nîşan bide</string>
   <string name="morphe_show_settings_button_type_title">Çalakiya bişkoja Mîhengan</string>
-  <string name="morphe_show_settings_button_type_summary">Dema çalak be, mîhengên Morphe vedibin; dema neçalak be, mîhengên YouTube vedibin</string>
+  <string name="morphe_show_settings_button_type_summary">Dema çalak be, tikandin mîhengên Morphe vedike û pêl girtin mîhengên YouTube vedike; neçalak bike ji bo guhertinê</string>
   <string name="morphe_navigation_buttons_order_title">Rêza bişkokên navîgasyonê</string>
   <string name="morphe_navigation_buttons_order_summary">Bişkokan bikşîne da ku rêza wan di şirîta navîgasyonê de biguherîne</string>
   <string name="morphe_swap_create_with_notifications_button_title">Bişkoja Create bi bişkoja Notifications biguherîne</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Heke vê mîhengê biguherînî bandor nekir, biceribîne moda Incognito bikar bîne</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Bişkokeya Agahdariyê dikeve şirîta navîgasyonê û bişkokeya Înciharkirinê dikeve toolbarê. Heke guherîn nayên pêkanîn, hewl bide ku tu derbasî moda Incognito bî</string>
   <string name="morphe_hide_navigation_button_labels_title">Etîketên bişkojên navîgasyonê veşêre</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Xala naveroka nû vedişêre</string>
   <string name="morphe_hide_navigation_bar_title">Barê navîgasyonê veşêre</string>
@@ -1150,12 +1137,10 @@ Ji bo gihîştina Settings, bişkokeya Settings bi rêya General → Toolbar →
   <string name="morphe_navigation_bar_glass_size_width">Berfirehiya herî zêde</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spacinga butonan</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Bişkokên hatine nîşandan: %1$s ji %2$s</string>
-  <string name="morphe_toolbar_screen_title">Rêz</string>
-  <string name="morphe_toolbar_screen_summary">Hilbijêre kîjan pêkhate di toolbarê de xuya bibin</string>
   <string name="morphe_hide_toolbar_chat_button_title">Bişkoja Chat veşêre</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Bişkoja \'Companion\' veşêre</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Bişkoja mîkrofonê veşêre</string>
   <string name="morphe_hide_toolbar_search_button_title">Bişkoja Search veşêre</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Dema çalak be, tikandin mîhengên Morphe vedike û pêl girtin mîhengên YouTube vedike; neçalak bike ji bo guhertinê</string>
   <string name="morphe_toolbar_buttons_order_title">Rêza bişkokên toolbarê</string>
   <string name="morphe_toolbar_buttons_order_summary">Bişkokan bikşîne da ku rêza wan di toolbarê de biguherîne</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1186,43 +1171,28 @@ Ji bo gihîştina Settings, bişkokeya Settings bi rêya General → Toolbar →
   <string name="morphe_disable_shorts_double_tap_to_like_title">Hezkirina bi du-tikandinê asteng bike</string>
   <string name="morphe_hide_shorts_ai_button_title">Bişkoja AI veşêre</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Etîketa \'Auto-dubbed\' veşêre</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Barê kanalê veşêre</string>
-  <string name="morphe_hide_shorts_comments_button_title">Bişkoja Comments veşêre</string>
   <string name="morphe_hide_shorts_effect_button_title">Bişkoja Effect veşêre</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Etîketa girêdana vîdyoyê veşêre</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Nîşanên tevgerê veşêre</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Bişkoja \'Green screen\' veşêre</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Bişkoja hashtagê veşêre</string>
   <string name="morphe_hide_shorts_info_panel_title">Panela agahdariyê veşêre</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Bişkoja Join veşêre</string>
   <string name="morphe_hide_shorts_like_button_title">Bişkoja Like veşêre</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Anîmasyona kaniya bişkoja Like veşêre</string>
   <string name="morphe_hide_shorts_live_preview_title">Pêşdîtina zindî veşêre</string>
   <string name="morphe_hide_shorts_location_label_title">Etîketa cihê veşêre</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Barê navîgasyonê veşêre</string>
   <string name="morphe_hide_shorts_new_posts_button_title">\'Posteyên nû\' veşêre</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Bişkojên pêşandana sekinî veşêre</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Şîroveya pêşdîtinê veşêre</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Bişkoja Remix veşêre</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Bişkoja Save veşêre</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Bişkoja \'Save music\' veşêre</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Pêşniyarên lêgerînê veşêre</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Bişkoja Share veşêre</string>
-  <string name="morphe_hide_shorts_shop_button_title">Bişkoja Shop veşêre</string>
   <string name="morphe_hide_shorts_sound_button_title">Bişkoja Sound veşêre</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Etîketa metadata ya dengê veşêre</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Bişkoja Subscribe veşêre</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Bişkoja \'Buy Super Thanks\' veşêre</string>
   <string name="morphe_hide_shorts_tagged_products_title">Hilberên tagkirî veşêre</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Bişkoja Upcoming veşêre</string>
   <string name="morphe_hide_shorts_use_sound_button_title">\'Wê dengê bikarîne\' veşêre</string>
   <string name="morphe_hide_shorts_use_template_button_title">\'Wê şablonê bikarîne\' veşêre</string>
-  <string name="morphe_hide_shorts_video_title_title">Sernavê vîdyoyê veşêre</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Vîdyoya pêşniyarkirî ya dawiya ekranê veşêre</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Vîdyoya pêşniyarkirî ku piştî dawiya vîdyoyê xuya dibe veşêrin
@@ -1732,8 +1702,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Kalîteya herî bilind a vîdyoyê li ser bandorkariya kodekê pêşî dike</string>
   <string name="morphe_video_quality_prioritize_dialog">Heke ev mîheng neçalak be, vîdyoyên kevn dibe ku tu vebijarkên kalîteyê nîşan nedin</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Destûr bide \'Android VR\' / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Dema client \'Android VR\' / visionOS tê bikaranîn, deşîfrekirina AV1 bi nermalavê destûr dide.</string>
+  <string name="morphe_spoof_video_streams_av1_title">AV1 ê \'Android VR\' / \'visionOS\' bidestûre</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Dema client ê \'Android VR\' / \'visionOS\' tê bikaranîn, destûrê dide deşîfrekirina AV1 ya nermalavê</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Çalakkirina vê mîhengê dibe ku deşîfrekirina AV1 ya nermalavê bikar bîne.
 
 Lîstina vîdyoyê bi AV1 dibe ku lêdan bide an çarçoveyan winda bike"</string>
@@ -1970,7 +1940,6 @@ Tomarkirina otomatîk bijarte ye. Di incognito de an dema hesab diguhere rawest�
   <string name="morphe_live_chat_translate_language_title">Zimanê wergerê</string>
   <string name="morphe_live_chat_translate_exclude_title">Zimanên derveyî</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kodên zimanên ku bi komayê hatine veqetandin wekî id,en. Namên bi van zimanî nayên wergerandin</string>
-  <string name="morphe_live_chat_translate_provider_title">Dabinkira wergerê</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">Kîla API ya DeepL</string>

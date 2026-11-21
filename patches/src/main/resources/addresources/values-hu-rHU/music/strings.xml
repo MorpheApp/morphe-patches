@@ -144,6 +144,8 @@ Export mappa: %s"</string>
   <string name="morphe_export_download_failed">Nem sikerült exportálni a letöltést</string>
   <string name="morphe_export_download_all_flyout_title">Összes letöltés exportálása a készülékre</string>
   <string name="morphe_export_download_all_started">Összes letöltés exportálása</string>
+  <string name="morphe_export_download_all_title">Összes letöltés</string>
+  <string name="morphe_export_download_playlist_started">Letöltések exportálása</string>
   <string name="morphe_export_download_all_running">A letöltések exportálása már folyamatban van</string>
   <string name="morphe_export_download_all_saved">%2$s letöltésből %1$s exportálva a következőbe: %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +170,15 @@ Export mappa: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Videóhirdetések elrejtése</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Hang / Videó be- és kikapcsolása elrejtése</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Letöltés gomb elrejtése</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Elrejti a Letöltés gombot a podcast műsorban</string>
   <string name="morphe_music_hide_explore_shelf_title">Felfedezés polc elrejtése</string>
   <string name="morphe_music_hide_filter_bar_title">Szűrőpanel elrejtése</string>
   <string name="morphe_music_hide_grid_shelves_title">Rács polcok elrejtése</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Vízszintes polcok elrejtése</string>
+  <string name="morphe_music_hide_new_button_title">Új gomb elrejtése</string>
+  <string name="morphe_music_hide_new_button_summary">Elrejti az Új gombot a Könyvtár fülön</string>
   <string name="morphe_music_hide_list_shelves_title">Lista polcok elrejtése</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Szövegpanelek</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Megosztás gomb elrejtése</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Fordítás gomb elrejtése</string>
   <string name="morphe_music_hide_new_from_shelf_title">\"Új\" polc elrejtése</string>
   <string name="morphe_music_hide_playlist_shelves_title">Lejálisták polcai elrejtése</string>
@@ -199,6 +201,8 @@ Export mappa: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Áttűnés</string>
   <string name="morphe_music_crossfade_screen_summary">Zökkenőmentesen keverd össze a számokat</string>
   <string name="morphe_music_crossfade_enabled_title">Áttűnés engedélyezése</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">A crossfade használatához változtasd a „Spoof video streams” „Default client” beállítást „TV Simply” vagy „visionOS” értékre</string>
   <string name="morphe_music_crossfade_curve_title">Áttűnési görbe</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Egyenletes teljesítmény</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Enyhe kitartás</string>
@@ -232,7 +236,9 @@ Export mappa: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Az áttűnés szünetel ebben a munkamenetben</string>
   <string name="morphe_music_crossfade_resumed_toast">Áttűnés folytatva</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Bekapcsolt áttűnés mellett a videómód nem használható</string>
-  <string name="morphe_music_crossfade_sabr_toast">A crossfade ki van kapcsolva SABR lejátszásnál</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">A crossfade nem működik a „visionOS” rendszerrel. Változtasd a „Spoof video streams” „Default client” beállítást „TV Simply” értékre</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">A crossfade nem működik ezzel a spoof streaming kliensevel</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">A crossfade ki van kapcsolva casting közben</string>
   <string name="morphe_music_crossfade_about_how_title">A működése</string>
   <string name="morphe_music_crossfade_about_how_summary">"Átúszás átfedi az egyik dal végét a következő elejével, a beállított időtartam és görbe segítségével
@@ -249,9 +255,7 @@ Az átmenet közben a zárképernyő vagy az értesítés röviden elavult álla
 
 A crossfade szüneteltetése a zenei videó megtekintéséhez néhány videót feketén hagyhat. Ha a crossfade-et a szám kiválasztása előtt szünetelteted, ez elkerülhető"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Nem támogatott</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting vagy hangtükrözés (Chromecast, képernyő- vagy hangtükrözés)
-
-SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Audio casting vagy tükrözés (Chromecast, képernyő- vagy audio tükrözés)</string>
   <string name="morphe_music_crossfade_about_credit_title">Közreműködők</string>
   <string name="morphe_music_crossfade_about_credit_summary">A keresztátmenet funkciót VazerOG készítette</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,10 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">A nemtetszés-átirányítás letiltása</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Megakadályozza, hogy a nemtetszés gomb megnyomása esetén a következő számra ugorjon</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Csúsztatással történő számváltás engedélyezése</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Megakadályozza a következő vagy előző számra való átugratást a lejátszó jobb vagy bal irányú csúsztatásával</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Megakadályozza a következő vagy előző számra való átugratást a miniplayer jobb vagy bal irányú csúsztatásával</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B ciklus</string>
   <string name="morphe_music_ab_loop_summary">Hosszan nyomja a keresősávot a loop kezdete beállításához, újra a loop vége beállításához, és még egyszer a loop törléséhez</string>
@@ -329,15 +337,6 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_playlist_tags_rename">Átnevezés</string>
   <string name="morphe_music_playlist_tags_delete">Törlés</string>
   <string name="morphe_music_playlist_tags_hidden">Elrejtve</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Átküldés gomb elrejtése</string>
-  <string name="morphe_music_hide_history_button_title">Előzmények gomb elrejtése</string>
-  <string name="morphe_music_hide_notification_button_title">Értesítés gomb elrejtése</string>
-  <string name="morphe_music_hide_search_button_title">Keresés gomb elrejtése</string>
-  <string name="morphe_music_hide_voice_search_button_title">Hangalapú keresés gombjának elrejtése</string>
-  <string name="morphe_music_hide_sound_search_button_title">Zene keresése gombjának elrejtése</string>
-  <string name="morphe_music_hide_library_new_button_title">Új gomb elrejtése</string>
-  <string name="morphe_music_hide_library_new_button_summary">Elrejti az Új gombot a Könyvtár fülön</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Művelet gombok</string>
   <string name="morphe_music_action_buttons_screen_summary">Válaszd ki, hogy mely műveletgombok jelenjenek meg a lejátszó alatt</string>
@@ -409,22 +408,20 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Kényszerített álló tájolás</string>
   <string name="morphe_music_force_portrait_orientation_summary">Az alkalmazás álló tájolásban marad, ha a készüléket elforgatják</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Minilejátszó színének módosítása</string>
+  <string name="morphe_music_change_miniplayer_color_title">Szín megváltoztatása</string>
   <string name="morphe_music_change_miniplayer_color_summary">A minilejátszó színe illeszkedjen a teljes képernyős lejátszóhoz</string>
   <string name="morphe_music_change_navigation_bar_color_title">Változtassa meg a navigációs sáv színét</string>
   <string name="morphe_music_change_navigation_bar_color_summary">A navigációs sáv színe igazodik a teljes képernyős lejátszóhoz</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Következő gomb megjelenítése a mini lejátszóban</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Előző gomb megjelenítése a mini lejátszóban</string>
+  <string name="morphe_music_miniplayer_next_button_title">Következő gomb megjelenítése</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Előző gomb megjelenítése</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Kényszerített minilejátszó bekapcsolása</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Ne váltson automatikusan teljes képernyőre új szám indításakor</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Engedélyezze a miniplayer elhúzással való bezárását</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Csúsztatással történő bezárás engedélyezése</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Lehetővé teszi a miniplayer bezárását a rajta végzett lefelé húzással</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Navigációs sáv</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Válaszd ki, mely gombok jelenjenek meg az alsó navigációs sávban</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Kezdőképernyő gomb elrejtése</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +454,7 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Elrejti a kerekletű kiemelést az üveg navigációs sáv kijelölt gombja mögött</string>
   <string name="morphe_music_miniplayer_screen_title">Minilejátszó</string>
   <string name="morphe_music_miniplayer_screen_summary">A minilejátszó stílusának, gombjainak és gesztusainak módosítása</string>
-  <string name="morphe_music_miniplayer_glass_title">Üveg minilejátszó engedélyezése</string>
+  <string name="morphe_music_miniplayer_glass_title">Üvegeffekt engedélyezése</string>
   <string name="morphe_music_miniplayer_glass_summary">A lebeglő minilejátszó egy kerekletű, áttetsző üvegkártyaként jelenik meg</string>
   <string name="morphe_music_miniplayer_glass_style_title">Üveg minilejátszó stílusa</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Állítsa be az üveg minilejátszó sarkainak gömöléset, a borítók paddingjét, a szegély fényerőjét és az átlátszóságot, előnézettel</string>
@@ -465,11 +462,8 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Borítók paddingje</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Szegély fényerője</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Áttetszőség</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Üveg elmosódás</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Mennyire legyen elmosódva az üveg minilejátszó mögött lévő oldal (Android 14 és újabb verziók). 0 esetén az oldal élesen látszik, Android 14 előtt az oldal takarva marad</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Világos üveg</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Az üveg minilejátsót fehérre árnyalja a sötétszín helyett, egy világosabb és tisztább üveghatás érdekében</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumborító árnyalása</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Az üveg minilejáts sót a lejárzó dal albumborítójának színével árnyalja</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Forgó albumborító</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Az üveg minilejátszó borítóját körre teszi, és egy lemez처럼 forgatja a dal lejátszása közben</string>
@@ -480,6 +474,15 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Minták</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Felfedezés</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Könyvtár</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Aktivitás gomb elrejtése</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Rejtsd el a „Kérd a Zenét” gombot</string>
+  <string name="morphe_music_hide_cast_button_title">Átküldés gomb elrejtése</string>
+  <string name="morphe_music_hide_history_button_title">Előzmények gomb elrejtése</string>
+  <string name="morphe_music_hide_search_button_title">Keresés gomb elrejtése</string>
+  <string name="morphe_music_hide_voice_search_button_title">Rejtsd el a „Hangalapú keresés” gombot</string>
+  <string name="morphe_music_hide_sound_search_button_title">\"Hang alapú keresés\" gomb elrejtése</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Nem jelentkezett be. A konfiguráláshoz koppintson ide.</string>
   <string name="morphe_music_scrobbling_log_out">Kijelentkezés</string>

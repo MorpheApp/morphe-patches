@@ -87,7 +87,14 @@ Hizkuntza berriak itzultzeko edo dauden itzulpenak hobetzeko, bisitatu morphe.so
   <string name="morphe_settings_about_links_translations">Itzulpenak</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Eguneratuta</string>
   <string name="morphe_settings_about_contributors">Collaboradoreak</string>
-  <string name="morphe_settings_about_contributors_period">Azken 12 hilabeteak</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Denbora guztia</string>
+  <string name="morphe_settings_about_contributors_6_months">6 hilabete</string>
+  <string name="morphe_settings_about_contributors_3_months">3 hilabete</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Denbora tartea</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s erabiltzaile</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Laguntzaileak</string>
   <string name="morphe_settings_about_supporters_summary">Sostengatzaileak Open Collective-n</string>
@@ -222,6 +229,9 @@ Bateria optimizazioak aldatzen ez badira, honako hauek gerta daitezke:
 • Aplikazioa ausaz itxi daiteke
 • Jakinarazpenek ez dute funtzionatu
 • Atzeko planoko erreprodukzioak ez du funtzionatu"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ireki sistemaren partekatze panela</string>
+  <string name="morphe_open_system_share_sheet_summary">Edukia partekatzean, aplikazioaren ordez sistemaren partekatze panela irekitzen du</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Aplikazio estekak kudeatzea</string>
   <string name="morphe_link_handling_summary">Konfiguratu aplikazio honetan irekiko diren estekak</string>

@@ -17,7 +17,7 @@ import com.android.tools.smali.dexlib2.Opcode
 /**
  * Glide RequestBuilder.into(Target, RequestListener, BaseRequestOptions, Executor).
  */
-private object GlideRequestBuilderIntoFingerprint : Fingerprint(
+internal object GlideRequestBuilderIntoFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("You must call #load() before calling #into()")
@@ -43,5 +43,21 @@ internal object GlideRequestBuilderLoadGenericFingerprint : Fingerprint(
             definingClass = "this",
             location = MatchAfterWithin(3)
         )
+    )
+)
+
+/**
+ * Glide ViewTarget.getRequest(), which reads the request from a tag of the view the target loads into.
+ */
+internal object GlideViewTargetGetRequestFingerprint : Fingerprint(
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Landroid/view/View;"
+        ),
+        string("You must not call setTag() on a view Glide is targeting")
     )
 )

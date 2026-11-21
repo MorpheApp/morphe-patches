@@ -584,6 +584,41 @@ val rememberVideoQualityPatch = patch {
             val bufferManagerClass = getMediaSegmentHolderMethod.definingClass
             val mediaSegmentHolderClass = getMediaSegmentHolderMethod.returnType
 
+            // The method that clears the media after a segment is not public in some versions, such as 21.23,
+            // and the player calls it from another package. The call then fails, the buffered video is not
+            // cleared, and the selected quality plays only after it. A public method of its class calls it instead.
+            val discardBufferAfterSegmentCall = mutableClassDefBy(discardBufferAfterSegmentMethod.definingClass).let { classDef ->
+                val method = classDef.methods.first {
+                    it.name == discardBufferAfterSegmentMethod.name
+                            && it.returnType == discardBufferAfterSegmentMethod.returnType
+                            && it.parameterTypes.map(CharSequence::toString) ==
+                            discardBufferAfterSegmentMethod.parameterTypes.map(CharSequence::toString)
+                }
+                if (AccessFlags.PUBLIC.isSet(method.accessFlags)) {
+                    return@let discardBufferAfterSegmentMethod
+                }
+
+                ImmutableMethod(
+                    classDef.type,
+                    "patch_discardBufferAfterSegment",
+                    listOf(ImmutableMethodParameter("J", null, null)),
+                    "V",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(3),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            invoke-virtual { p0, p1, p2 }, $discardBufferAfterSegmentMethod
+                            return-void
+                        """
+                    )
+                    classDef.methods.add(this)
+                }
+            }
+
             // The video buffered before the segment that is playing is cleared too,
             // otherwise a Short plays the previous quality from its start when it loops.
             // The method of the player is not public before 21.26, so a public method calls it.
@@ -661,7 +696,7 @@ val rememberVideoQualityPatch = patch {
                         iget-object v2, p0, $bufferManagerField
                         invoke-virtual { v2, p1 }, $getMediaSegmentHolderMethod
                         move-result-object v2
-                        invoke-virtual { v2, v0, v1 }, $discardBufferAfterSegmentMethod
+                        invoke-virtual { v2, v0, v1 }, $discardBufferAfterSegmentCall
                         check-cast v2, ${sampleHolderDiscardBufferMethod.definingClass}
                         invoke-virtual { v2, v0, v1 }, $sampleHolderDiscardBufferMethod
                         return-void

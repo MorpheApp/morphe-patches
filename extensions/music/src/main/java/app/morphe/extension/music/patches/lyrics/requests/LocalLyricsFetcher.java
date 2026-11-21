@@ -27,9 +27,9 @@ import java.util.function.IntPredicate;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
-import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
@@ -131,18 +131,18 @@ public final class LocalLyricsFetcher {
         Uri base = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String[] projection = {
                 MediaStore.Audio.Media._ID,
+                MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.ARTIST,
                 MediaStore.Audio.Media.DURATION
         };
 
-        // The raw title widens the net when the title was normalized; the artist is scored per row.
+        // The raw title widens the query. A LIKE query can also find a different song whose title
+        // contains this one, so every row is checked against the playing track.
         List<String> titleCandidates = new ArrayList<>(2);
         titleCandidates.add(title);
         if (rawTitle != null && !rawTitle.equals(title)) {
             titleCandidates.add(rawTitle);
         }
-
-        String wantArtist = normalize(primaryArtist);
 
         Uri best = null;
         long bestScore = Long.MAX_VALUE;
@@ -164,29 +164,24 @@ public final class LocalLyricsFetcher {
                 }
                 try {
                     final int idCol = cursor.getColumnIndex(MediaStore.Audio.Media._ID);
+                    final int titleCol = cursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
                     final int artistCol = cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
                     final int durCol = cursor.getColumnIndex(MediaStore.Audio.Media.DURATION);
                     if (idCol < 0) {
                         continue;
                     }
                     while (cursor.moveToNext()) {
-                        final long id = cursor.getLong(idCol);
+                        String storedTitle = titleCol >= 0 ? cursor.getString(titleCol) : null;
                         String storedArtist = artistCol >= 0 ? cursor.getString(artistCol) : null;
-                        final long durMs = (durCol >= 0) ? cursor.getLong(durCol) : 0;
-
-                        long score = 0;
-                        String normStored = normalize(storedArtist);
-                        if (!wantArtist.isEmpty()) {
-                            if (normStored.isEmpty()) {
-                                score += 1_000_000L;
-                            } else if (normStored.contains(wantArtist) || wantArtist.contains(normStored)) {
-                                score += 0;
-                            } else {
-                                score += 500_000L;
-                            }
+                        if (!isSameTrack(title, rawTitle, primaryArtist, rawArtist, storedTitle, storedArtist)) {
+                            continue;
                         }
+
+                        final long id = cursor.getLong(idCol);
+                        final long durMs = (durCol >= 0) ? cursor.getLong(durCol) : 0;
+                        long score = 0;
                         if (durationSeconds > 0 && durMs > 0) {
-                            score += Math.abs(durMs - (long) durationSeconds * 1000L);
+                            score = Math.abs(durMs - (long) durationSeconds * 1000L);
                         }
                         if (score < bestScore) {
                             bestScore = score;
@@ -202,6 +197,40 @@ public final class LocalLyricsFetcher {
             return null;
         }
         return best;
+    }
+
+    /**
+     * Whether a MediaStore row is the playing track. The title must be equal after normalizing,
+     * and the stored artist must be the full credit or credit the playing artist by name.
+     * A file by another artist is never used, even if its duration is closer.
+     */
+    static boolean isSameTrack(@Nullable String title, @Nullable String rawTitle,
+                               @Nullable String artist, @Nullable String rawArtist,
+                               @Nullable String storedTitle, @Nullable String storedArtist) {
+        String candidateTitle = LyricsRequests.normalizeForMatch(storedTitle);
+        if (candidateTitle.isEmpty()
+                || !(candidateTitle.equals(LyricsRequests.normalizeForMatch(title))
+                || candidateTitle.equals(LyricsRequests.normalizeForMatch(rawTitle)))) {
+            return false;
+        }
+
+        String candidateArtist = LyricsRequests.normalizeForMatch(storedArtist);
+        if (candidateArtist.isEmpty()) {
+            return false;
+        }
+        if (candidateArtist.equals(LyricsRequests.normalizeForMatch(rawArtist))) {
+            return true;
+        }
+        String wantArtist = LyricsRequests.normalizeForMatch(artist);
+        if (wantArtist.isEmpty()) {
+            return false;
+        }
+        for (String credited : MetadataCleaner.splitArtists(storedArtist)) {
+            if (wantArtist.equals(LyricsRequests.normalizeForMatch(credited))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Nullable
@@ -1228,13 +1257,6 @@ public final class LocalLyricsFetcher {
         byte[] r = new byte[len];
         System.arraycopy(src, off, r, 0, len);
         return r;
-    }
-
-    private static String normalize(@Nullable String s) {
-        if (s == null) {
-            return "";
-        }
-        return CharactersConverter.normalize(s);
     }
 
     /** Escapes SQLite LIKE wildcards so the pattern matches the literal string. */

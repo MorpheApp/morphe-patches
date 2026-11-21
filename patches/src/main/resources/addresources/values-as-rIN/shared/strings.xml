@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">অনুবাদ</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">নৱতম সংস্কৰণ</string>
   <string name="morphe_settings_about_contributors">অৱদানকাৰীসকল</string>
-  <string name="morphe_settings_about_contributors_period">যোৱা ১২ মাহ</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">সৰ্বকালৰ</string>
+  <string name="morphe_settings_about_contributors_6_months">৬ মাহ</string>
+  <string name="morphe_settings_about_contributors_3_months">৩ মাহ</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">সময়ৰ পৰ্যায়</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s জন ব্যৱহাৰকাৰী</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">সমৰ্থকসকল</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective-ত সহায়কাৰীসকল</string>
@@ -222,6 +229,9 @@ MicroG-ৰ বাবে ব্যাটাৰী অপ্টিমাইজে�
 • এপটো হঠাতে বন্ধ হ'ব পাৰে
 • নটিফিকেচনবোৰে কাম নকৰিব পাৰে
 • বেকগ্ৰাউণ্ড প্লেবেকে কাম নকৰিব পাৰে"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
+  <string name="morphe_open_system_share_sheet_summary">সামগ্ৰী শ্বেয়াৰ কৰাৰ সময়ত ইন-এপৰ পৰিৱৰ্তে ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">এপ লিংক হেণ্ডলিং</string>
   <string name="morphe_link_handling_summary">এই এপ্লিকেচনত লিংকসমূহ খুলিবলৈ কনফিগাৰ কৰক</string>

@@ -144,6 +144,8 @@ Export folder: %s"</string>
   <string name="morphe_export_download_failed">Hindi ma-export ang download</string>
   <string name="morphe_export_download_all_flyout_title">I-export ang lahat sa device</string>
   <string name="morphe_export_download_all_started">Inie-export ang lahat ng download</string>
+  <string name="morphe_export_download_all_title">Lahat ng mga download</string>
+  <string name="morphe_export_download_playlist_started">Inelu-export ng mga download</string>
   <string name="morphe_export_download_all_running">Kasalukuyan nang ine-export ang mga download</string>
   <string name="morphe_export_download_all_saved">Na-export ang %1$s mula sa %2$s na mga download sa %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +170,15 @@ Export folder: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Itago ang mga patalastas sa video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Itago ang Audio / Video toggle</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Itago ang Download button</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Itinatago ang Download button sa podcast show</string>
   <string name="morphe_music_hide_explore_shelf_title">Itago ang Explore shelf</string>
   <string name="morphe_music_hide_filter_bar_title">Itago ang filter bar</string>
   <string name="morphe_music_hide_grid_shelves_title">Itago ang grid shelves</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Itago ang mga horizontal shelf</string>
+  <string name="morphe_music_hide_new_button_title">Itago ang New button</string>
+  <string name="morphe_music_hide_new_button_summary">Itinatago ang button na New sa tab ng Library</string>
   <string name="morphe_music_hide_list_shelves_title">Itago ang mga list shelf</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel ng liriko</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Itago ang button na Magbahagi</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Itago ang button na Isalin</string>
   <string name="morphe_music_hide_new_from_shelf_title">Itago ang \'New from\' shelf</string>
   <string name="morphe_music_hide_playlist_shelves_title">Itago ang mga playlist shelf</string>
@@ -199,6 +201,8 @@ Export folder: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Pagsamahin nang maayos ang mga track sa isa\'t isa</string>
   <string name="morphe_music_crossfade_enabled_title">I-enable ang crossfade</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Para gamitin ang crossfade, palitan ang \'Default client\' ng \'Spoof video streams\' sa \'TV Simply\' o \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Kurba ng fade</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Pantay na kapangyarihan</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Mahinang pagpapanatili</string>
@@ -232,7 +236,9 @@ Export folder: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Naka-pause ang crossfade para sa sesyong ito</string>
   <string name="morphe_music_crossfade_resumed_toast">Ipinagpatuloy ang crossfade</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Hindi magagamit ang video mode habang naka-enable ang crossfade</string>
-  <string name="morphe_music_crossfade_sabr_toast">Naka-off ang crossfade sa pag-playback ng SABR</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Hindi gumagana ang Crossfade sa \'visionOS\'. Palitan ang \'Default client\' ng \'Spoof video streams\' sa \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Hindi gumagana ang Crossfade sa spoof stream client na ito</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Naka-off ang crossfade habang nag-ca-cast</string>
   <string name="morphe_music_crossfade_about_how_title">Paano ito gumagana</string>
   <string name="morphe_music_crossfade_about_how_summary">"Ang crossfade ay nagsasapawan sa pagtatapos ng isang kanta sa simula ng susunod, gamit ang iyong tagal at kurba
@@ -249,9 +255,7 @@ Ang lock screen o notification ay maaaring magpakita nang sandali ng isang luman
 
 Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng ilang video na itim. Ang pag-pause ng crossfade bago mo piliin ang kanta ay umiiwas dito"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Hindi suportado</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Pag-ca-cast o pag-mirror ng audio (Chromecast, screen o audio mirroring)
-
-Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Pag-cast o pag-mirror ng audio (Chromecast, screen o audio mirroring)</string>
   <string name="morphe_music_crossfade_about_credit_title">Credit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade feature ni VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -279,6 +283,10 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Huwag paganahin ang dislike redirection</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Pinipigilan ang paglaktaw sa susunod na track kapag pinindot ang dislike button</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">I-disable ang swipe para baguhin ang track</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Pinipigilan ang paglaktaw sa susunod o naunang track sa pamamagitan ng pag-swipe pakaliwa o pakanan sa player</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Pinipigilan ang paglaktaw sa susunod o naunang track sa pamamagitan ng pag-swipe pakaliwa o pakanan sa miniplayer</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B loop</string>
   <string name="morphe_music_ab_loop_summary">I-long-press ang seekbar para itakda ang simula ng loop, ulitin para itakda ang dulo ng loop, at ulitin muli para burahin ang loop</string>
@@ -329,15 +337,6 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <string name="morphe_music_playlist_tags_rename">Palitan</string>
   <string name="morphe_music_playlist_tags_delete">Burahin</string>
   <string name="morphe_music_playlist_tags_hidden">Nakatago</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Itago ang Cast button</string>
-  <string name="morphe_music_hide_history_button_title">Itago ang History button</string>
-  <string name="morphe_music_hide_notification_button_title">Itago ang Notification button</string>
-  <string name="morphe_music_hide_search_button_title">Itago ang Search button</string>
-  <string name="morphe_music_hide_voice_search_button_title">Itago ang Voice search button</string>
-  <string name="morphe_music_hide_sound_search_button_title">Itago ang Sound search button</string>
-  <string name="morphe_music_hide_library_new_button_title">Itago ang New button</string>
-  <string name="morphe_music_hide_library_new_button_summary">Itinatago ang New button sa Library tab</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Mga pindutan ng pagkilos</string>
   <string name="morphe_music_action_buttons_screen_summary">Piliin kung aling mga pindutan ng pagkilos ang lalabas sa ilalim ng player</string>
@@ -409,22 +408,20 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Pilitin ang portrait na oryentasyon</string>
   <string name="morphe_music_force_portrait_orientation_summary">Pinapanatili ang app sa portrait na oryentasyon kapag iniikot ang device</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Baguhin ang kulay ng miniplayer</string>
+  <string name="morphe_music_change_miniplayer_color_title">Baguhin ang kulay</string>
   <string name="morphe_music_change_miniplayer_color_summary">Tumutugma sa fullscreen na manlalaro ang kulay ng miniplayer</string>
   <string name="morphe_music_change_navigation_bar_color_title">Baguhin ang kulay ng navigation bar</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Itugma ang kulay ng navigation bar sa fullscreen player</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Ipakita ang susunod na button sa miniplayer</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Ipakita ang nakaraang button sa miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_title">Ipakita ang button na Next</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Ipakita ang button na Previous</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Paganahin ang pinilit na miniplayer</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Pinipigilan ang player na awtomatikong lumawak sa fullscreen kapag nagsimula ang isang bagong track</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Paganahin ang pag-swipe para isara ang miniplayer</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">I-enable ang swipe to dismiss</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Pinapayagan kang isara ang miniplayer sa pamamagitan ng pag-swipe pababa dito</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Piliin kung aling mga button ang lalabas sa ibabang navigation bar</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Itago ang Home button</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -457,7 +454,7 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Itinatago ang rounded highlight sa likod ng napiling button ng glass navigation bar</string>
   <string name="morphe_music_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_music_miniplayer_screen_summary">Baguhin ang istilo, mga button at mga gesture ng miniplayer</string>
-  <string name="morphe_music_miniplayer_glass_title">I-enable ang glass miniplayer</string>
+  <string name="morphe_music_miniplayer_glass_title">I-enable ang glass effect</string>
   <string name="morphe_music_miniplayer_glass_summary">Ipinapakita ang floating miniplayer bilang isang rounded at translucent na glass card</string>
   <string name="morphe_music_miniplayer_glass_style_title">Istilo ng glass miniplayer</string>
   <string name="morphe_music_miniplayer_glass_style_summary">I-adjust ang corner radius, padding ng artwork, liwanag ng rim at opacity ng glass miniplayer, na may preview</string>
@@ -465,11 +462,8 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding ng artwork</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Liwanag ng rim</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacity</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Glass blur</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Kung gaano kalabo ang page sa likod ng glass miniplayer (Android 14 at mas bago). Sa 0, ang page ay malinaw na nakikita, at bago ang Android 14, ang page ay natatakpan</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Light glass</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Binibigyan ng tint ang glass miniplayer ng kulay puti sa halip na madilim, para sa mas maliwanag at mas malinaw na glass</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Tint ng album art</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Binibigyan ng tint ang glass miniplayer gamit ang kulay ng album art ng kantang pino-play</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Umiikot na artwork</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Gawing bilog ang artwork ng glass miniplayer, at paikutin ito na parang record habang may kantang pino-play</string>
@@ -480,6 +474,15 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Mga sample</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Mag-explore</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Aklat</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Itago ang button na Activity</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Itago ang button na \'Magtanong sa Musika\'</string>
+  <string name="morphe_music_hide_cast_button_title">Itago ang Cast button</string>
+  <string name="morphe_music_hide_history_button_title">Itago ang History button</string>
+  <string name="morphe_music_hide_search_button_title">Itago ang Search button</string>
+  <string name="morphe_music_hide_voice_search_button_title">Itago ang button na \'Voice search\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">Itago ang \'Sound search\' button</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Hindi naka-log in. I-tap para i-configure</string>
   <string name="morphe_music_scrobbling_log_out">Mag-sign out</string>

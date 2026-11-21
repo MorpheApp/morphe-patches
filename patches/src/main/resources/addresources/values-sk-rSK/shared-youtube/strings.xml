@@ -141,13 +141,13 @@ Prehrávanie videa môže zlyhať, kým nebude Android System WebView aktualizov
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Skúste povoliť: Falšovanie toku videa &gt; Prihlásenie do Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Predvolený klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prihlásenie Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR vyžaduje samostatné prihlásenie. Poklepnite sem pre pokračovanie</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Aktuálne prihlásené do Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prihlásenie do \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" vyžaduje samostatné prihlásenie. Ak chcete pokračovať, klepnite sem</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Aktuálne prihlásené do \"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Na používanie tejto funkcie zmeňte \'Predvolený klient\' na Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prihláste sa do Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prihlásenie do Android VR môže niektorým používateľom pomôcť pri problémoch s prehrávaním.
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ak chcete túto funkciu používať, zmeňte \"Predvolený klient\" na \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prihláste sa do \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prihlásenie do \"Android VR\" môže niektorým používateľom pomôcť pri problémoch s prehrávaním.
 
 Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odhlásiť sa</string>
@@ -170,33 +170,33 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
 • Budete sa musieť znova prihlásiť, ak zmeníte svoje heslo Google alebo zrušíte registráciu tohto zariadenia v nastaveniach Google"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prihlásenie cez mobilný web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Voliteľné: prihláste sa na webovú stránku YouTube, aby ste mohli prehrávať videá so svojím účtom. Pokračujte Ťuknutím sem</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálne prihlásené do mobilnej webovej verzie</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálne prihlásené do \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Na používanie tejto funkcie zmeňte \'Predvolený klient\' na Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prihláste sa do Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web prehráva videá bez prihlásenia alebo pri prihlásení na webovú stránku YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Na používanie tejto funkcie zmeňte \"Predvolený klient\" na \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prihlásiť sa do \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" prehráva videá bez prihlásenia alebo po prihlásení na webovú stránku YouTube
 
-• Po prihlásení je možné prehrávať videá, ktoré vyžadujú účet, napríklad videá s obmedzením veku
+• Po prihlásení je možné prehrávať videá, ktoré vyžadujú účet, napríklad videá s vekovým obmedzením
 • Stránka prihlásenia do Google sa otvorí v tejto aplikácii
-• Prihlásenie slúži len na získanie videí, ktoré prehrávate
-• Prihlásenie sa ukladá len v tomto zariadení
+• Prihlásenie sa používa len na získanie videí, ktoré prehrávate
+• Prihlásenie sa ukladá iba na tomto zariadení
 
-Ak sa chcete prihlásiť, stlačte nižšie tlačidlo pokračovať"</string>
+Ak sa chcete prihlásiť, stlačte nižšie tlačidlo Pokračovať"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Prihlásenie bolo uložené
 
-• Nastavenia Morphe nebudú importovať/exportovať prihlásenie do mobilného webu
-• Ak Google prihlásenie ukončí, videá sa budú prehrávať bez prihlásenia, kým sa znova prihlásite
-• Odhlásením sa toto zariadenie odhlási aj z webovej stránky YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Vypršala platnosť prihlásenia do mobilného webu, skúste sa do mobilného webu prihlásiť znova</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odhlásené z mobilného webu</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView nie je k dispozícii. Ak sa chcete prihlásiť, nainštalujte ho alebo zapnite</string>
+• Nastavenia aplikácie Morphe nebudú importovať/exportovať prihlásenie do sekcie \"Mobilný web\"
+• Ak Google ukončí prihlásenie, videá sa budú prehrávať bez prihlásenia, kým sa znova prihlásite
+• Odhlásenie z aplikácie zároveň odhlási toto zariadenie z webovej stránky YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Vypršala platnosť prihlásenia do sekcie \"Mobilný web\", skúste sa do niej prihlásiť znova</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odhlásené z sekcie \"Mobilný web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" nie je k dispozícii. Ak sa chcete prihlásiť, nainštalujte si ho alebo ho povolte</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 je dočasne nedostupné (časový limit API vypršal)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Vypršala platnosť prihlásenia Android VR, skúste sa znova prihlásiť do VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Vypršala platnosť prihlásenia k \"Android VR\", skúste sa do VR prihlásiť znova</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 je dočasne nedostupné (stav %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 je dočasne nedostupné</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nie je možné prihlásiť sa do VR, overenie na webovej lokalite nebolo schválené</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie je možné prihlásiť sa do VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Odhlásené z Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Odhlásené z \"Android VR\"</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token prihlásenia VR, skúste sa znova prihlásiť do VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Ovládacie prvky médií v oznámení</string>
@@ -254,7 +254,7 @@ Ak sa chcete prihlásiť, stlačte nižšie tlačidlo pokračovať"</string>
   <string name="morphe_replace_music_with_youtube_title">Zmeniť odkazy na zdieľanie na youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Nahrádza music.youtube.com na youtube.com v zdieľaných odkazoch.</string>
   <string name="morphe_replace_links_with_shortener_title">Zmeniť odkazy na zdieľanie na youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Prinúti videá používať skrátený formát URL youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Vynutí používanie skráteného formátu URL \"youtu.be\" pre videá</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -266,19 +266,16 @@ Ak sa chcete prihlásiť, stlačte nižšie tlačidlo pokračovať"</string>
   <string name="morphe_video_quality_default_mobile_title">Predvolená kvalita videa v mobilnej sieti</string>
   <string name="morphe_remember_video_quality_toast_mobile">Predvolená mobilná kvalita bola zmenená na: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Predvolená kvalita Wi-Fi bola zmenená na: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Otvormy systémové menu zdieľania</string>
-  <string name="morphe_open_system_share_sheet_summary">Pri zdieľaní obsahu otvára systémový zdieľací panel namiesto vstavaného</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Zaznamenávanie Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Vypnutý</string>
   <string name="morphe_debug_litho_entry_path">Cesta</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Cesta a vyrovnávacia pamäť</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho logging zaznamenáva rozloženia komponentov aplikácie, vrátane textu na obrazovke pre niektoré komponenty používateľského rozhrania.
+  <string name="morphe_debug_litho_user_dialog_message">"Zaznamenáva komponenty rozloženia aplikácie, vrátane textu na obrazovke pre niektoré komponenty používateľského rozhrania.
 
-To môže pomôcť pri identifikácii komponentov počas vytvárania vlastných filtrov.
+To môže pomôcť pri identifikácii komponentov pri vytváraní vlastných filtrov.
 
-Zaznamenajú sa však aj niektoré údaje používateľa, napríklad vaša IP adresa"</string>
+Zaznamenajú sa však aj niektoré používateľské údaje, ako napríklad vaša IP adresa"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Vlastný filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurujte vlastné filtre na skrytie akejkoľvek zložky</string>
@@ -380,4 +377,8 @@ ID videa, ktoré sledujete, sa posiela do Return YouTube Dislike API a vaše laj
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Neboli zistené žiadne limity rýchlosti klienta</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Obmedzenie rýchlosti klienta bolo dosiahnuté %s-krát</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekúnd</string>
+  <string name="morphe_navigation_bar_screen_title">Navigačný panel</string>
+  <string name="morphe_navigation_bar_screen_summary">Vyberte, ktoré tlačidlá sa zobrazia v dolnom navigačnom paneli</string>
+  <string name="morphe_toolbar_screen_title">Panel nástrojov</string>
+  <string name="morphe_toolbar_screen_summary">Vyberte, ktoré komponenty sa zobrazia v lište nástrojov</string>
 </resources>

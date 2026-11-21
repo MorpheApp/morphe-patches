@@ -23,6 +23,7 @@ import app.morphe.extension.reddit.settings.preference.categories.FiltersPrefere
 import app.morphe.extension.reddit.settings.preference.categories.LayoutPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.MiscellaneousPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.NavigationBarPreferenceCategory;
+import app.morphe.extension.reddit.settings.preference.categories.PostButtonsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.SidebarPreferenceCategory;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
@@ -50,6 +51,7 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
         new FiltersPreferenceCategory(context, preferenceScreen);
         new NavigationBarPreferenceCategory(context, preferenceScreen);
         new SidebarPreferenceCategory(context, preferenceScreen);
+        new PostButtonsPreferenceCategory(context, preferenceScreen);
         new LayoutPreferenceCategory(context, preferenceScreen);
         new MiscellaneousPreferenceCategory(context, preferenceScreen);
     }

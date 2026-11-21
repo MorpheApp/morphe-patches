@@ -205,8 +205,6 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_hide_posts_shelf_title">Skrýt sekci s příspěvky</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Skrýt tlačítko „Nakupování“</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Skrýt tlačítko „Odebírat“</string>
   <string name="morphe_explore_menu_screen_title">Prozkoumat</string>
   <string name="morphe_explore_menu_screen_summary">Vyberte, které komponenty se mají zobrazovat v menu Prozkoumat</string>
   <string name="morphe_hide_courses_menu_title">Skrýt menu Kurzy</string>
@@ -281,7 +279,6 @@ Omezení:
   <string name="morphe_hide_post_comment_button_title">Skrýt tlačítko Komentáře</string>
   <string name="morphe_hide_post_comments_preview_title">Skrýt náhled komentářů</string>
   <string name="morphe_hide_post_comments_preview_summary">Skryje náhled komentářů pod příspěvky</string>
-  <string name="morphe_hide_post_share_button_title">Skrýt tlačítko Sdílet</string>
   <string name="morphe_hide_post_share_button_summary">Tlačítko Stáhnout obrázky příspěvku je vykresleno vedle tlačítka Sdílet, takže je skryto také</string>
   <string name="morphe_hide_ask_gemini_button_title">Skrýt tlačítko \'Ask Gemini\'</string>
   <string name="morphe_hide_ask_gemini_button_summary">Skryje tlačítko \'Ask Gemini\' v dolní části panelu \'Ask about this video\'</string>
@@ -296,9 +293,6 @@ Omezení:
   <string name="morphe_hide_in_this_video_button_title">Skrýt tlačítko „V tomto videu“</string>
   <string name="morphe_hide_info_panels_title">Skrýt informační panely</string>
   <string name="morphe_hide_info_panels_summary">Skryje kontextové informační panely, jako jsou například lékařské informace</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Skrýt tlačítko „Připojit se“</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Skrýt tlačítko „Záznam chatu“</string>
@@ -314,8 +308,6 @@ Omezení:
   <string name="morphe_hide_tap_and_hold_gradient_summary">Skryje přechod ovládacích prvků přehrávače při posouvání prstu při podržení pro zrychlení</string>
   <string name="morphe_hide_timed_reactions_title">Skrýt reakce v konkrétním čase</string>
   <string name="morphe_hide_timed_reactions_summary">Skryje funkci, která umožňuje uživatelům reagovat emotikony v komentářích a živém chatu</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Skrýt \"Nápověda a zpětná vazba\" menu</string>
   <string name="morphe_hide_help_feedback_menu_summary">Skryje nabídku „Nápověda &amp; zpětná vazba“ při použití tlačítka se třemi tečkami, například ve výsledcích vyhledávání</string>
   <string name="morphe_hide_handle_title">Skrýt handle</string>
   <string name="morphe_hide_handle_summary">Skryje handle vašeho kanálu v záložce \'You\'</string>
@@ -358,7 +350,6 @@ Omezení:
   <string name="morphe_hide_ask_button_title">Skrýt tlačítko Zeptejte se</string>
   <string name="morphe_hide_channel_profile_button_title">Skrýt kanál a tlačítko Odebírat</string>
   <string name="morphe_hide_channel_profile_button_summary">Skryje avatar kanálu a tlačítko Odebírat na začátku panelu akcí.</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Skrýt tlačítko „Odebírat“</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Skryje tlačítka Odebírat a Připojit se vedle avatara kanálu na začátku panelu akcí</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Skrýt tlačítko Klip</string>
@@ -434,7 +425,6 @@ Omezení:
   <string name="morphe_hide_comments_preview_comment_hidden">Komentář skrytý Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Povolit minimální tlačítko komentářů</string>
   <string name="morphe_minimal_comments_button_summary">Skryje posuvné karty a jejich volič stránek zobrazovaný na tlačítku komentářů</string>
-  <string name="morphe_hide_comments_thanks_button_title">Skrýt tlačítko Poděkování</string>
   <string name="morphe_hide_comments_timestamp_button_title">Skrýt tlačítko časového razítka</string>
   <string name="morphe_hide_comments_top_fans_button_title">Skrýt tlačítko \'Top fanoušci\'</string>
   <string name="morphe_hide_comments_translate_button_title">Skrýt tlačítko Přeložit</string>
@@ -489,7 +479,6 @@ Chcete-li zobrazit nabídku „Audio Track“, změňte možnost „Spoof video 
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Skrýt tlačítko Titulky</string>
   <string name="morphe_hide_cast_button_title">Skrýt tlačítko Odeslat</string>
-  <string name="morphe_hide_cast_button_summary">Skryje tlačítko Cast ve videopřehrávači a v nástrojovém panelu</string>
   <string name="morphe_hide_collapse_button_title">Skrýt tlačítko Sbalit</string>
   <string name="morphe_hide_fullscreen_button_title">Skrýt tlačítko Celá obrazovka</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skrýt pozadí ovládacích prvků přehrávače</string>
@@ -891,7 +880,7 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Seznam povolených pro reklamy v rozbalovací nabídce</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Přidá položku do rozbalovací nabídky, která umožňuje přehrávání reklam na kanálu tohoto videa.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Tato funkce může vyžadovat použití PotHelper nebo změnu „Falšovat video streamy“ na TV nebo Android VR přihlášení</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Tato funkce může vyžadovat použití PotHelper nebo změnu „Falšovat video streamy“ na přihlášení „TV“ nebo „Android VR“</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Seznam povolených pro rychlost v rozbalovací nabídce</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Přidá položku do rozbalovací nabídky, která vždy přehrává videa z kanálu tohoto videa rychlostí 1,0x.</string>
   <string name="morphe_queue_manager_check_failed_auth">Není přihlášen</string>
@@ -1088,8 +1077,6 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_caption_block_translation_failed">Některé překlady titulků nejsou k dispozici. Zobrazují se dostupné titulky.</string>
   <string name="morphe_caption_blocks_too_large">Oba jazyky titulků se do tohoto přehrávače nevejdou. Zobrazuje se primární jazyk.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigační panel</string>
-  <string name="morphe_navigation_bar_screen_summary">Vyberte, která tlačítka se zobrazí v dolní navigační liště.</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skrýt tlačítko Domů</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1094,11 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_watch_later_navigation_label">Sledovat později</string>
   <string name="morphe_show_settings_button_title">Zobrazit tlačítko Nastavení</string>
   <string name="morphe_show_settings_button_type_title">Nastavení tlačítka akcí</string>
-  <string name="morphe_show_settings_button_type_summary">Při zapnutí otevře nastavení Morphe, a nastavení YouTube při vypnutí</string>
+  <string name="morphe_show_settings_button_type_summary">Při zapnutí klepnutí otevře nastavení Morphe a dlouhé stisknutí nastavení YouTube. Vypnutím chování prohodíte.</string>
   <string name="morphe_navigation_buttons_order_title">Pořadí navigačních tlačítek</string>
   <string name="morphe_navigation_buttons_order_summary">Tlačítka přetáhněte, abyste změnili jejich pořadí v navigační liště</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vyměňte tlačítko Vytvořit za tlačítko Oznámení</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Pokud změna tohoto nastavení nemá efekt, zkuste přepnout do režimu Inkognito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Přesune tlačítko Oznámení do navigační lišty a tlačítko Vytvořit do nástrojového panelu. Pokud změny nebudou mít účinek, zkuste přepnout do inkognito režimu</string>
   <string name="morphe_hide_navigation_button_labels_title">Skrýt štítky navigačních tlačítek</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Skrýt tečku nového obsahu</string>
   <string name="morphe_hide_navigation_bar_title">Skrýt navigační lištu</string>
@@ -1150,12 +1137,10 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_navigation_bar_glass_size_width">Maximální šířka</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Rozestupy tlačítek</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Zobrazená tlačítka: %1$s z %2$s</string>
-  <string name="morphe_toolbar_screen_title">Nástrojová lišta</string>
-  <string name="morphe_toolbar_screen_summary">Vyberte, které prvky se zobrazí v nástrojové liště</string>
   <string name="morphe_hide_toolbar_chat_button_title">Skrýt tlačítko chatu</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Skrýt tlačítko „Companion“</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skrýt tlačítko mikrofonu</string>
   <string name="morphe_hide_toolbar_search_button_title">Skrýt tlačítko Vyhledávání</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Při zapnutí klepnutí otevře nastavení Morphe a dlouhé stisknutí nastavení YouTube. Vypnutím chování prohodíte.</string>
   <string name="morphe_toolbar_buttons_order_title">Pořadí tlačítek v nástrojovém panelu</string>
   <string name="morphe_toolbar_buttons_order_summary">Tlačítka přetáhněte, abyste změnili jejich pořadí v nástrojovém panelu</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1186,43 +1171,28 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_disable_shorts_double_tap_to_like_title">Zakázat dvojité klepnutí pro lajk</string>
   <string name="morphe_hide_shorts_ai_button_title">Skrýt tlačítko AI</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Skrýt označení \'Automaticky dabován\'</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Skrýt panel kanálu</string>
-  <string name="morphe_hide_shorts_comments_button_title">Skrýt tlačítko Komentáře</string>
   <string name="morphe_hide_shorts_effect_button_title">Skrýt tlačítko efektu</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Skrýt popisek odkazu na video</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Skrýt nápovědy pro gesta</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Skrýt tlačítko \'Zelená obrazovka\'</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Skrýt tlačítko hashtagů</string>
   <string name="morphe_hide_shorts_info_panel_title">Skrýt informační panel</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Skrýt tlačítko Připojit se</string>
   <string name="morphe_hide_shorts_like_button_title">Skrýt tlačítko To se mi líbí</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Skrýt efekt fontány u tlačítka To se mi líbí</string>
   <string name="morphe_hide_shorts_live_preview_title">Skrýt živý náhled</string>
   <string name="morphe_hide_shorts_location_label_title">Skrýt štítek umístění</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Skrýt navigační panel</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Skrýt tlačítko \'Nové příspěvky\'</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Skrýt tlačítka pozastaveného překrytí</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Skrýt náhled komentáře</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Skrýt tlačítko Remix</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Skrýt tlačítko Uložit</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Skrýt tlačítko \'Uložit hudbu\'</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Skrýt návrhy vyhledávání</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Skrýt tlačítko Sdílet</string>
-  <string name="morphe_hide_shorts_shop_button_title">Skrýt tlačítko Obchod</string>
   <string name="morphe_hide_shorts_sound_button_title">Skrýt tlačítko zvuku</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Skrýt štítek metadat zvuku</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Skrýt tlačítko Odebírat</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Skrýt tlačítko \'Koupit Super díky\'</string>
   <string name="morphe_hide_shorts_tagged_products_title">Skrýt označené produkty</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Skrýt tlačítko Nadcházející</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Skrýt tlačítko \'Použít tento zvuk\'</string>
   <string name="morphe_hide_shorts_use_template_button_title">Skrýt tlačítko \'Použít tuto šablonu\'</string>
-  <string name="morphe_hide_shorts_video_title_title">Skrýt název videa</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Skrýt navrhované video na konci obrazovky</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Skryje překryvnou vrstvu s doporučeným videem, která se zobrazí po skončení videa
@@ -1732,8 +1702,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Upřednostňuje nejvyšší dostupnou kvalitu videa před efektivitou kodeku</string>
   <string name="morphe_video_quality_prioritize_dialog">Pokud je toto nastavení vypnuté, u starších videí se nemusí zobrazovat žádné možnosti kvality videa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Povolit \'Android VR\' / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Umožňuje softwarové dekódování AV1 při použití klienta \'Android VR\' / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_title">Povolit AV1 pro „Android VR“ / „visionOS“</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Povolí softwarové AV1 dekódování při použití klienta „Android VR“ / „visionOS“</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Povolení tohoto nastavení může využívat softwarové dekódování AV1.
 
 Přehrávání videa s AV1 se může sekat nebo můžou vypadávat snímky"</string>
@@ -1969,7 +1939,6 @@ Automatické nahrávání je volitelné. Zastavuje se v anonymním režimu nebo 
   <string name="morphe_live_chat_translate_language_title">Jazyk překladu</string>
   <string name="morphe_live_chat_translate_exclude_title">Vyloučené jazyky</string>
   <string name="morphe_live_chat_translate_exclude_summary">Kódy jazyků oddělené čárkou, například id,en. Zprávy v těchto jazycích se nepřekládají</string>
-  <string name="morphe_live_chat_translate_provider_title">Poskytovatel překladu</string>
   <string name="morphe_live_chat_translate_provider_google">Google překladač</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">API klíč DeepL</string>

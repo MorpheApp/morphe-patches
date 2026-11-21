@@ -34,6 +34,8 @@ public final class QueueFlyoutActions {
     private static final int MDX_CONNECTED = 1;
     private static final int MDX_DISCONNECTED = 2;
 
+    private static volatile boolean isPlaylistPageMenuBound;
+
     public interface Menu {
         MessageLite patch_parseQueueFlyout(byte[] bytes);
     }
@@ -71,6 +73,131 @@ public final class QueueFlyoutActions {
         } catch (Exception exception) {
             Logger.printException(() -> "completeQueueMenu failure", exception);
             return original;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Binds Play next of the playlist page toolbar menu to the native queue, and adds Play last after it.
+     */
+    @Nullable
+    public static MessageLite preparePlaylistPageMenu(@Nullable MessageLite original) {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || !(original instanceof Menu menu)) {
+            return original;
+        }
+        try {
+            var stock = MenuRenderer.parseFrom(original.toByteArray());
+            var bound = bindPlaylistPageMenu(stock, str("morphe_native_playlist_queue_last"));
+            if (bound == stock) {
+                return original;
+            }
+            isPlaylistPageMenuBound = true;
+            return menu.patch_parseQueueFlyout(bound.toByteArray());
+        } catch (Exception ex) {
+            Logger.printException(() -> "preparePlaylistPageMenu failure", ex);
+            return original;
+        }
+    }
+
+    static MenuRenderer bindPlaylistPageMenu(MenuRenderer menu, String lastLabel) {
+        String playlistId = shufflePlaylistId(menu);
+        if (playlistId.isEmpty()) {
+            return menu;
+        }
+
+        var bound = menu.toBuilder();
+        int nextIndex = -1;
+        int lastIndex = -1;
+        for (int index = 0; index < menu.getItemsCount(); index++) {
+            MenuItem item = menu.getItems(index);
+            if (!isLocalItem(item)) {
+                continue;
+            }
+            YTIconType icon = icon(item);
+            if (icon == YTIconType.QUEUE_PLAY_NEXT) {
+                // The stock command still runs if the native queue declines the tap.
+                bound.setItems(index, withEndpoint(item, endpoint(item).toBuilder()
+                        .setPlaylistPagePlayNextPlaylistId(playlistId)));
+                if (nextIndex < 0 && isToolbarItem(item)) {
+                    nextIndex = index;
+                }
+            } else if (icon == YTIconType.QUEUE_PLAY_LAST && lastIndex < 0 && isToolbarItem(item)) {
+                lastIndex = index;
+            }
+        }
+
+        if (nextIndex >= 0) {
+            MenuItem last;
+            if (lastIndex >= 0) {
+                last = menu.getItems(lastIndex);
+                bound.removeItems(lastIndex);
+                if (lastIndex < nextIndex) {
+                    nextIndex--;
+                }
+            } else {
+                last = MenuItem.newBuilder().setMenuServiceItemRenderer(
+                        PlaylistQueueRenderer.MenuServiceItem.newBuilder()
+                                .setText(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(lastLabel))
+                                .setIcon(Icon.newBuilder().setYtIconType(YTIconType.QUEUE_PLAY_LAST))).build();
+            }
+            bound.addItems(nextIndex + 1, withEndpoint(last, endpoint(last).toBuilder()
+                    .setPlaylistPagePlayLastPlaylistId(playlistId)));
+        }
+        MenuRenderer result = bound.build();
+        return result.equals(menu) ? menu : result;
+    }
+
+    /** The playlist of the Shuffle items, or an empty string if they have none or differ. */
+    private static String shufflePlaylistId(MenuRenderer menu) {
+        String playlistId = "";
+        for (MenuItem item : menu.getItemsList()) {
+            if (icon(item) != YTIconType.SHUFFLE) {
+                continue;
+            }
+            String target = endpoint(item).getWatchEndpoint().getPlaylistId();
+            if (!PlaylistCardSource.isPlaylistId(target) || !playlistId.isEmpty() && !playlistId.equals(target)) {
+                return "";
+            }
+            playlistId = target;
+        }
+        return playlistId;
+    }
+
+    /** The toolbar does not show the conditional rows of the feed menus. */
+    private static boolean isToolbarItem(MenuItem item) {
+        return item.hasMenuServiceItemRenderer() || item.hasMenuNavigationItemRenderer();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Runs a command of the playlist page toolbar menu with the native queue.
+     *
+     * @return If the command was handled and the original command must not run.
+     */
+    public static boolean onPlaylistPageCommand(@Nullable MessageLite command) {
+        // Commands are only checked after a toolbar menu has been bound.
+        if (!isPlaylistPageMenuBound || command == null) {
+            return false;
+        }
+        try {
+            var endpoint = PlaylistQueueRenderer.NavigationEndpoint.parseFrom(command.toByteArray());
+            final boolean isPlayLast = endpoint.hasPlaylistPagePlayLastPlaylistId();
+            if (!isPlayLast && !endpoint.hasPlaylistPagePlayNextPlaylistId()) {
+                return false;
+            }
+            Runnable action = NativePlaylistQueuePatch.getPlaylistQueueAction(isPlayLast
+                    ? endpoint.getPlaylistPagePlayLastPlaylistId()
+                    : endpoint.getPlaylistPagePlayNextPlaylistId(), isPlayLast);
+            if (action == null) {
+                return false;
+            }
+            action.run();
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "onPlaylistPageCommand failure", ex);
+            return false;
         }
     }
 
@@ -253,6 +380,10 @@ public final class QueueFlyoutActions {
         var command = PlaylistQueueRenderer.NavigationEndpoint.newBuilder()
                 .setQueuePlaylistId(playlistId)
                 .setWatchEndpoint(PlaylistQueueRenderer.WatchEndpoint.newBuilder().setPlaylistId(playlistId));
+        return withEndpoint(item, command);
+    }
+
+    private static MenuItem withEndpoint(MenuItem item, PlaylistQueueRenderer.NavigationEndpoint.Builder command) {
         if (item.hasMenuConditionalServiceItemRenderer()) {
             return item.toBuilder().setMenuConditionalServiceItemRenderer(item.getMenuConditionalServiceItemRenderer()
                     .toBuilder().setServiceEndpoint(command)).build();

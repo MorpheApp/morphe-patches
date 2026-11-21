@@ -141,15 +141,15 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ລອງເປີດໃຊ້: Spoof video streams &gt; ການເຂົ້າສູ່ລະບົບ Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">ໄຄລຽນເລີ່ມຕົ້ນ</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">ການເຂົ້າສູ່ລະບົບ Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR ຮຽກຮ້ອງໃຫ້ມີການລົງຊື່ເຂົ້າໃຊ້ແຍກຕ່າງຫາກ. ແຕະທີ່ນີ້ເພື່ອດຳເນີນການຕໍ່</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">ປັດຈຸບັນໄດ້ເຂົ້າສູ່ລະບົບ Android VR ແລ້ວ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">ການລົງຊື່ເຂົ້າໃຊ້ VR ຂອງ \'Android\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ຮຽກຮ້ອງໃຫ້ມີການລົງຊື່ເຂົ້າໃຊ້ແຍກຕ່າງຫາກ. ແຕະບ່ອນນີ້ເພື່ອດຳເນີນການຕໍ່</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">ປັດຈຸບັນໄດ້ລົງຊື່ເຂົ້າໃຊ້ໃນ \'Android VR\' ແລ້ວ</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">ເພື່ອໃຊ້ຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'ລູກຄ້າເລີ່ມຕົ້ນ\' ເປັນ Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">ເຂົ້າສູ່ລະບົບ Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"ການເຂົ້າສູ່ລະບົບ Android VR ສາມາດແກ້ໄຂບັນຫາການຫຼິ້ນສຳລັບບາງຜູ້ໃຊ້
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">ເພື່ອໃຊ້ຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'ລູກຄ້າເລີ່ມຕົ້ນ\' ເປັນ \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">ລົງຊື່ເຂົ້າໃຊ້ໃນ \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"ການລົງຊື່ເຂົ້າໃຊ້ໃນ 'Android VR' ສາມາດແກ້ໄຂບັນຫາການຫຼິ້ນສຳລັບບາງຜູ້ໃຊ້
 
-ເພື່ອເຂົ້າສູ່ລະບົບ, ໃຫ້ກົດສືບຕໍ່ລຸ່ມນີ້"</string>
+ເພື່ອລົງຊື່ເຂົ້າໃຊ້, ໃຫ້ກົດດຳເນີນການຕໍ່ດ້ານລຸ່ມ"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">ອອກຈາກລະບົບ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">ຄຳແນະນຳ</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -170,33 +170,33 @@ Second \"item\" text"</string>
 • ທ່ານຈະຕ້ອງເຂົ້າສູ່ລະບົບຄືນໃໝ່ ຖ້າທ່ານປ່ຽນລະຫັດຜ່ານ Google ຫຼື ຍົກເລີກການລົງທະບຽນອຸປະກອນນີ້ຈາກການຕັ້ງຄ່າ Google ຂອງທ່ານ"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ລົງຊື່ເຂົ້າໃຊ້ເວັບໄຊທ໌ຜ່ານມືຖື</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ທາງເລືອກ: ລົງຊື່ເຂົ້າໃຊ້ເວັບໄຊທ໌ YouTube ເພື່ອຫຼິ້ນວິດີໂອດ້ວຍບັນຊີຂອງທ່ານ. ແຕະບ່ອນນີ້ເພື່ອສືບຕໍ່</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ປັດຈຸບັນໄດ້ລົງຊື່ເຂົ້າໃຊ້ເວັບໄຊທ໌ຜ່ານມືຖືແລ້ວ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ປັດຈຸບັນໄດ້ລົງຊື່ເຂົ້າໃຊ້ໃນ \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ເພື່ອໃຊ້ງານຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'ລູກຄ້າເລີ່ມຕົ້ນ\' ເປັນ Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ເຂົ້າສູ່ລະບົບໃນ Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web ຫຼິ້ນວິດີໂອໂດຍບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ, ຫຼື ເຂົ້າສູ່ລະບົບໃນເວັບໄຊທ໌ YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ເພື່ອໃຊ້ຄຸນສົມບັດນີ້, ໃຫ້ປ່ຽນ \'ລູກຄ້າເລີ່ມຕົ້ນ\' ເປັນ \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ລົງຊື່ເຂົ້າໃຊ້ໃນ \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' ຫຼິ້ນວິດີໂອແບບບໍ່ໄດ້ລົງຊື່ເຂົ້າໃຊ້, ຫຼື ລົງຊື່ເຂົ້າໃຊ້ໃນເວັບໄຊ YouTube
 
-• ເມື່ອເຂົ້າສູ່ລະບົບ, ວິດີໂອທີ່ຕ້ອງມີບັນຊີຈຶ່ງຈະຫຼິ້ນໄດ້, ເຊັ່ນ ວິດີໂອທີ່ຈຳກັດອາຍຸ
-• ໜ້າເຂົ້າສູ່ລະບົບ Google ຈະເປີດໃນແອັບນີ້
-• ການເຂົ້າສູ່ລະບົບແມ່ນໃຊ້ເພື່ອດຶງຂໍ້ມູນວິດີໂອທີ່ທ່ານຫຼິ້ນເທົ່ານັ້ນ
-• ການເຂົ້າສູ່ລະບົບຈະຖືກບັນທຶກໄວ້ໃນອຸປະກອນນີ້ເທົ່ານັ້ນ
+• ເມື່ອລົງຊື່ເຂົ້າໃຊ້, ວິດີໂອທີ່ຕ້ອງມີບັນຊີຈຶ່ງຈະຫຼິ້ນໄດ້, ເຊັ່ນ ວິດີໂອທີ່ຈຳກັດອາຍຸ
+• ໜ້າລົງຊື່ເຂົ້າໃຊ້ Google ຈະເປີດໃນແອັບນີ້
+• ການລົງຊື່ເຂົ້າໃຊ້ແມ່ນໃຊ້ເພື່ອດຶງວິດີໂອທີ່ທ່ານຫຼິ້ນເທົ່ານັ້ນ
+• ການລົງຊື່ເຂົ້າໃຊ້ຈະຖືກບັນທຶກໄວ້ໃນອຸປະກອນນີ້ເທົ່ານັ້ນ
 
-ເພື່ອເຂົ້າສູ່ລະບົບ, ໃຫ້ກົດດຳເນີນການຕໍ່ລຸ່ມນີ້"</string>
+ເພື່ອລົງຊື່ເຂົ້າໃຊ້, ໃຫ້ກົດ ດຳເນີນການຕໍ່ ດ້ານລຸ່ມ"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ບັນທຶກການເຂົ້າສູ່ລະບົບແລ້ວ
 
-• ການຕັ້ງຄ່າ Morphe ຂອງທ່ານຈະບໍ່ນຳເຂົ້າ/ສົ່ງອອກ ການເຂົ້າສູ່ລະບົບຂອງ Mobile Web
-• ຖ້າ Google ຍົກເລີກການເຂົ້າສູ່ລະບົບ, ວິດີໂອຈະຖືກຫຼິ້ນໂດຍບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ ຈົນກວ່າທ່ານຈະເຂົ້າສູ່ລະບົບອີກຄັ້ງ
+• ການຕັ້ງຄ່າ Morphe ຂອງທ່ານຈະບໍ່ນຳເຂົ້າ/ສົ່ງອອກ ການເຂົ້າສູ່ລະບົບ 'Mobile Web'
+• ຖ້າ Google ຍົກເລີກການເຂົ້າສູ່ລະບົບ, ວິດີໂອຈະຖືກຫຼິ້ນໃນສະຖານະທີ່ບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ ຈົນກວ່າທ່ານຈະເຂົ້າສູ່ລະບົບອີກຄັ້ງ
 • ການອອກຈາກລະບົບ ຈະເຮັດໃຫ້ອຸປະກອນນີ້ອອກຈາກລະບົບຂອງເວັບໄຊທ໌ YouTube ນຳດ້ວຍ"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ການເຂົ້າສູ່ລະບົບ Mobile Web ໝົດອາຍຸແລ້ວ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ Mobile Web ອີກຄັ້ງ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ອອກຈາກລະບົບ Mobile Web ແລ້ວ</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">ບໍ່ສາມາດນຳໃຊ້ Android System WebView ໄດ້. ກະລຸນາຕິດຕັ້ງ ຫຼື ເປີດໃຊ້ງານເພື່ອເຂົ້າສູ່ລະບົບ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ການເຂົ້າສູ່ລະບົບ Mobile Web ໝົດອາຍຸ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ \'Mobile Web\' ອີກຄັ້ງ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ອອກຈາກລະບົບ \'Mobile Web\' ແລ້ວ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' ບໍ່ພ້ອມໃຊ້ງານ. ກະລຸນາຕິດຕັ້ງ ຫຼື ເປີດໃຊ້ງານເພື່ອເຂົ້າສູ່ລະບົບ</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (API ໝົດເວລາ)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">ການເຂົ້າສູ່ລະບົບ Android VR ໝົດອາຍຸ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ VR ອີກຄັ້ງ</string>
+  <string name="morphe_oauth2_connection_failure_status_400">ການເຂົ້າສູ່ລະບົບ \'Android VR\' ໝົດອາຍຸ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ VR ອີກຄັ້ງ</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (ສະຖານະ %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">ບໍ່ສາມາດເຂົ້າສູ່ລະບົບ VR ໄດ້, ການຢືນຢັນຕົວຕົນຜ່ານເວັບໄຊບໍ່ໄດ້ຮັບການອະນຸມັດ</string>
   <string name="morphe_oauth2_connection_failure_auth_error">ບໍ່ສາມາດເຂົ້າສູ່ລະບົບ VR ໄດ້: %s</string>
-  <string name="morphe_oauth2_toast_reset">ອອກຈາກລະບົບຂອງ Android VR ແລ້ວ</string>
+  <string name="morphe_oauth2_toast_reset">ອອກຈາກລະບົບຂອງ \'Android VR\' ແລ້ວ</string>
   <string name="morphe_oauth2_toast_invalid">ໂທເຄັນການເຂົ້າສູ່ລະບົບ VR ບໍ່ຖືກຕ້ອງ, ກະລຸນາລອງເຂົ້າສູ່ລະບົບ VR ອີກຄັ້ງ</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">ການຄວບຄຸມສື່ໃນການແຈ້ງເຕືອນ</string>
@@ -254,7 +254,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">ປ່ຽນລິງກ໌ການແບ່ງປັນເປັນ youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">ປ່ຽນ music.youtube.com ເປັນ youtube.com ໃນລິ້ງທີ່ແບ່ງປັນ</string>
   <string name="morphe_replace_links_with_shortener_title">ປ່ຽນລິ້ງແບ່ງປັນເປັນ youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">ບັງຄັບໃຫ້ວິດີໂອໃຊ້ຮູບແບບ URL youtu.be ທີ່ສັ້ນລົງ</string>
+  <string name="morphe_replace_links_with_shortener_summary">ບັງຄັບໃຫ້ວິດີໂອໃຊ້ຮູບແບບ URL \'youtu.be\' ທີ່ສັ້ນລົງ</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">ອັດຕະໂນມັດ</string>
@@ -266,19 +266,16 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">ຄຸນນະພາບວິດີໂອເລີ່ມຕົ້ນໃນເຄືອຂ່າຍມືຖື</string>
   <string name="morphe_remember_video_quality_toast_mobile">ປ່ຽນຄຸນນະພາບມືຖືເລີ່ມຕົ້ນເປັນ: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">ປ່ຽນຄຸນນະພາບ Wi-Fi ເລີ່ມຕົ້ນເປັນ: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">ເປີດແຜງແບ່ງປັນຂອງລະບົບ</string>
-  <string name="morphe_open_system_share_sheet_summary">ເປີດແຜງແບ່ງປັນຂອງລະບົບ ແທນທີ່ຈະເປັນຂອງໃນແອັບ ເມື່ອແບ່ງປັນເນື້ອຫາ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">ການບັນທຶກ Litho</string>
   <string name="morphe_debug_litho_entry_disabled">ປິດການໃຊ້ງານ</string>
   <string name="morphe_debug_litho_entry_path">ເສັ້ນທາງ</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">ເສັ້ນທາງ ແລະ ບັບເຟີ</string>
-  <string name="morphe_debug_litho_user_dialog_message">"ການບັນທຶກ Litho ຈະບັນທຶກສ່ວນປະກອບຂອງ లేເອົາຂອງແອັບ, ລວມທັງຂໍ້ຄວາມໃນໜ້າຈໍສຳລັບບາງສ່ວນປະກອບຂອງ UI.
+  <string name="morphe_debug_litho_user_dialog_message">"ບັນທຶກສ່ວນປະກອບຂອງເລເອົາສ໌ຂອງແອັບ, ລວມທັງຂໍ້ຄວາມເທິງໜ້າຈໍສຳລັບບາງສ່ວນປະກອບຂອງ UI.
 
 ສິ່ງນີ້ສາມາດຊ່ວຍລະບຸສ່ວນປະກອບໃນເວລາສ້າງຕົວຕອງແບບກຳນົດເອງ.
 
-ຢ່າງໃດກໍຕາມ, ສິ່ງນີ້ຈະບັນທຶກຂໍ້ມູນຜູ້ໃຊ້ບາງຢ່າງເຊັ່ນ: ທີ່ຢູ່ IP ຂອງທ່ານ"</string>
+ແນວໃດກໍ່ຕາມ, ສິ່ງນີ້ຈະບັນທຶກຂໍ້ມູນຜູ້ໃຊ້ບາງຢ່າງເຊັ່ນ: ທີ່ຢູ່ IP ຂອງທ່ານ"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">ຕົວຕອງແບບກຳນົດເອງ</string>
   <string name="morphe_custom_filter_screen_summary">ກຳນົດຄ່າຕົວຕອງແບບກຳນົດເອງເພື່ອເຊື່ອງສ່ວນປະກອບໃດໜຶ່ງ</string>
@@ -380,4 +377,8 @@ ID ຂອງວິດີໂອທີ່ທ່ານເບິ່ງຈະຖື�
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">ບໍ່ພົບຂີດຈຳກັດອັດຕາຂອງ client</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ພົບຂໍ້ຈຳກັດອັດຕາການຮ້ອງຂໍຂອງຄລາຍເອນ %s ຄັ້ງ</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s ມິນລິວິນາທີ</string>
+  <string name="morphe_navigation_bar_screen_title">ແຖບນຳທາງ</string>
+  <string name="morphe_navigation_bar_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ສະແດງໃນແຖບນຳທາງດ້ານລຸ່ມ</string>
+  <string name="morphe_toolbar_screen_title">ແຖບເຄື່ອງມື</string>
+  <string name="morphe_toolbar_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນແຖບເຄື່ອງມື</string>
 </resources>

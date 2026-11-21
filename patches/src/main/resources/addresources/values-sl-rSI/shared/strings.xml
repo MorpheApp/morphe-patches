@@ -87,7 +87,13 @@ Za prevajanje novih jezikov ali izboljšanje že obstoječih prevodov obiščite
   <string name="morphe_settings_about_links_translations">Prevodi</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Posodobljeno</string>
   <string name="morphe_settings_about_contributors">Prispevalci</string>
-  <string name="morphe_settings_about_contributors_period">Zadnjih 12 mesecev</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Vse čas</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mesecev</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mesece</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Časovno obdobje</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Podporniki</string>
   <string name="morphe_settings_about_supporters_summary">Podporniki na Open Collective</string>
@@ -222,6 +228,9 @@ Tapnite gumba Nadaljuj in dovolite spremembe optimizacij"</string>
 • Aplikacija se lahko nenadoma zapre
 • Obvestila morda ne delujejo
 • Ozadna predvajanja morda ne deluje"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Odpri sistemsko okno za deljenje</string>
+  <string name="morphe_open_system_share_sheet_summary">Odpre sistemsko okno za deljenje namesto vgrajenega pri deljenju vsebine</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Obdelava povezav aplikacije</string>
   <string name="morphe_link_handling_summary">Konfiguriraj povezave za odpiranje v tej aplikaciji</string>

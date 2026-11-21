@@ -47,6 +47,17 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
     <string name="morphe_hide_about_shelf_title">Hide About shelf</string>
 
+    <string name="morphe_screen_post_buttons_title">Post buttons</string>
+    <string name="morphe_hide_post_award_button_title">Hide Award button</string>
+    <string name="morphe_hide_post_award_button_summary">Hides the Award button on posts and comments</string>
+    <string name="morphe_hide_post_comment_button_title">Hide Comment button</string>
+    <string name="morphe_hide_post_join_button_title">Hide Join button</string>
+    <string name="morphe_hide_post_mod_button_title">Hide Mod button</string>
+    <string name="morphe_hide_post_repost_button_title">Hide Repost button</string>
+    <string name="morphe_hide_post_share_button_title">Hide Share button</string>
+    <string name="morphe_hide_post_vote_buttons_title">Hide Vote buttons</string>
+    <string name="morphe_hide_post_vote_buttons_summary">Hides the Upvote and Downvote buttons</string>
+
     <string name="morphe_screen_filters_title">Filters</string>
     <string name="morphe_flair_filters_title">Flair filters</string>
     <string name="morphe_flair_filters_summary">Hide feed posts with a flair of a community. Matching ignores case</string>
@@ -101,10 +112,17 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_ask_button_summary">Hides the Ask button in the search bar</string>
     <string name="morphe_hide_communities_shelf_title">Hide communities shelf</string>
     <string name="morphe_hide_communities_shelf_summary">Hides the related or suggested communities shelf in subreddits</string>
+    <string name="morphe_hide_for_you_tab_title">Hide For You tab</string>
+    <string name="morphe_hide_for_you_tab_summary">Hides the For You tab of the home feed, which can also be named Discover or Explore</string>
+    <string name="morphe_hide_following_tab_title">Hide Following tab</string>
+    <string name="morphe_hide_following_tab_summary">Hides the Following tab of the home feed</string>
+    <string name="morphe_hide_popular_tab_title">Hide Popular tab</string>
+    <string name="morphe_hide_popular_tab_summary">Hides the Popular tab of the home feed</string>
     <string name="morphe_hide_interactive_posts_title">Hide interactive posts</string>
     <string name="morphe_hide_interactive_posts_summary">Hides game and other interactive app posts from the home feed and other recommended feeds</string>
     <string name="morphe_hide_trending_shelves_title">Hide Trending shelves</string>
     <string name="morphe_hide_trending_shelves_summary">Hides the Trending shelves from feed and search suggestions</string>
+    <string name="morphe_hide_videos_for_you_shelf_title">Hide \'Videos for you\' shelf</string>
     <string name="morphe_remove_notification_dialog_title">Remove notification suggestion dialog</string>
     <string name="morphe_remove_notification_dialog_summary">Automatically dismisses the notification suggestion dialog when visiting a subreddit</string>
     <string name="morphe_high_quality_avatars_title">High quality avatars</string>

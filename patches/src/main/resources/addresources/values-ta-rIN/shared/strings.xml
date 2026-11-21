@@ -26,7 +26,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_update_available">புதுப்பிப்பு கிடைக்கிறது: %s</string>
   <string name="morphe_settings_about_update_hint">உங்கள் பேட்ச்களைப் புதுப்பிக்க, இந்த செயலியை மீண்டும் பேட்ச் செய்ய Morphe-ஐப் பயன்படுத்தவும்</string>
   <string name="morphe_settings_about_contributors">பங்களிப்பாளர்கள்</string>
-  <string name="morphe_settings_about_contributors_period">கடந்த 12 மாதங்கள்</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">எல்லா நேரமும்</string>
+  <string name="morphe_settings_about_contributors_6_months">6 மாதங்கள்</string>
+  <string name="morphe_settings_about_contributors_3_months">3 மாதங்கள்</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">கால அளவு</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s பயனர்கள்</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">ஆதரவாளர்கள்</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective-ல் ஆதரவளிப்பவர்கள்</string>
@@ -58,6 +65,9 @@ Second \"item\" text"</string>
 
 இதை அகற்றத் தட்டவும், பின்னர் இந்த செயலியை மீண்டும் திறந்து MicroG RE-ஐ நிறுவவும்"</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">சிஸ்டம் ஷேர் ஷீட்டைத் திறக்கவும்</string>
+  <string name="morphe_open_system_share_sheet_summary">உள்ளடக்கத்தைப் பகிரும்போது ஆப்பிற்குள் இருக்கும் பகிர்வுத் திரைக்குப் பதிலாக கணினி பகிர்வுத் திரையைத் திறக்கிறது</string>
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <!-- misc.announcements.patchesUpdateNoticePatch -->

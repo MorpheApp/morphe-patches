@@ -205,8 +205,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">Жазбалар сөресін жасыру</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">\"Дүкен\" батырмасын жасыру</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">\"Жазылу\" батырмасын жасыру</string>
   <string name="morphe_explore_menu_screen_title">Зерттеу мәзірі</string>
   <string name="morphe_explore_menu_screen_summary">Зерттеу мәзірінде қай компоненттер көрсетілетінін таңдаңыз</string>
   <string name="morphe_hide_courses_menu_title">Курстар мәзірін жасыру</string>
@@ -281,7 +279,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">Пікірлер түймесін жасыру</string>
   <string name="morphe_hide_post_comments_preview_title">Пікірлер алдын ала қарауын жасыру</string>
   <string name="morphe_hide_post_comments_preview_summary">Жазбалардың астындағы пікірлердің алдын ала қарауын жасырады</string>
-  <string name="morphe_hide_post_share_button_title">«Бөлісу» түймесін жасыру</string>
   <string name="morphe_hide_post_share_button_summary">Жазба суреттерінің жүктеу түймесі «Бөлісу» түймесінің жанына салынады, сондықтан ол да жасырылады</string>
   <string name="morphe_hide_ask_gemini_button_title">\"Gemini-ден сұрау\" батырмасын жасыру</string>
   <string name="morphe_hide_ask_gemini_button_summary">\"Осы видео туралы сұрау\" панелінің төменгі жағындағы \"Gemini-ден сұрау\" батырмасын жасырады</string>
@@ -296,9 +293,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_in_this_video_button_title">«Осы бейнеде» түймесін жасыру</string>
   <string name="morphe_hide_info_panels_title">Ақпараттық панельдерді жасыру</string>
   <string name="morphe_hide_info_panels_summary">Медициналық ақпарат сияқты ақпараттық контекст панельдерін жасырады</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">\"Қосылу\" батырмасын жасыру</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">\"Тікелей чат қайталамасы\" батырмасын жасыру</string>
@@ -314,8 +308,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Жылдамдыру үшін басып тұрып, саусағыңызды сырғытқанда плеер басқару элементтерінің градиентін жасырады</string>
   <string name="morphe_hide_timed_reactions_title">Уақытша реакцияларды жасыру</string>
   <string name="morphe_hide_timed_reactions_summary">Пайдаланушыларға пікірлер бөлімінде және тікелей чатта эмодзилермен реакция білдіруге мүмкіндік беретін функцияны жасырады</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">\"Көмек &amp; кері байланыс\" мәзірін жасыру</string>
   <string name="morphe_hide_help_feedback_menu_summary">Іздеу нәтижелеріндегі сияқты үш нүктелі түймені қолданғанда \"Көмек &amp; кері байланыс\" мәзірін жасырады</string>
   <string name="morphe_hide_handle_title">Хэндлды жасыру</string>
   <string name="morphe_hide_handle_summary">\"Сіз\" қойындысындағы арнаңыздың хэндлын жасырады</string>
@@ -358,7 +350,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">\"Сұрау\" түймесін жасыру</string>
   <string name="morphe_hide_channel_profile_button_title">Арнаны және Жазылу батырмасын жасыру</string>
   <string name="morphe_hide_channel_profile_button_summary">Әрекеттер жолағының басындағы арна аватарын және Жазылу батырмасын жасырады</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Жазылу батырмасын жасыру</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Әрекеттер жолағының басында канал аватарының жанындағы Жазылу және Қосылу батырмаларын жасырады</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">\"Клип\" түймесін жасыру</string>
@@ -434,7 +425,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Пікір Morphe арқылы жасырылды…</string>
   <string name="morphe_minimal_comments_button_title">Минималистік пікірлер батырмасын қосу</string>
   <string name="morphe_minimal_comments_button_summary">Пікірлер батырмасында көрсетілетін жылжымалы карточкаларды және олардың бет таңдағышын жасырады</string>
-  <string name="morphe_hide_comments_thanks_button_title">\"Рахмет\" батырмасын жасыру</string>
   <string name="morphe_hide_comments_timestamp_button_title">Уақыт белгісі түймесін жасыру</string>
   <string name="morphe_hide_comments_top_fans_button_title">\"Топ-жанкүйерлер\" батырмасын жасыру</string>
   <string name="morphe_hide_comments_translate_button_title">Аудару түймесін жасыру</string>
@@ -489,7 +479,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Субтитрлер түймесін жасыру</string>
   <string name="morphe_hide_cast_button_title">Трансляция түймесін жасыру</string>
-  <string name="morphe_hide_cast_button_summary">Бейне ойнатқышы мен құрал жолағындағы Cast түймесін жасырады</string>
   <string name="morphe_hide_collapse_button_title">Жинақтау түймесін жасыру</string>
   <string name="morphe_hide_fullscreen_button_title">Толық экран түймесін жасыру</string>
   <string name="morphe_hide_player_control_buttons_background_title">Плеер басқару элементтерінің фонын жасыру</string>
@@ -891,7 +880,7 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Ашылмалы мәзірдегі жарнама ақ тізімі</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Осы бейнежазбаның арнасында жарнамалардың ойнауына мүмкіндік беретін жылжымалы элементті қосады</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Бұл мүмкіндік PotHelper-ді қолдануды немесе \"Бейне ағындарын жалғандау\" параметрін TV немесе Android VR кіруіне өзгертуді талап етуі мүмкін</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Бұл мүмкіндік PotHelper қолдануды немесе \'Видео ағындарын имитациялау\' параметрін \'ТВ\' немесе \'Android VR\' кіруіне өзгертуді талап етуі мүмкін</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Ашылмалы мәзірдегі жылдамдық ақ тізімі</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Осы бейненің арнасын әрдайым 1.0x жылдамдықпен ойнататын ашылмалы элементті қосады</string>
   <string name="morphe_queue_manager_check_failed_auth">Жүйеге кірмеген</string>
@@ -1088,8 +1077,6 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_caption_block_translation_failed">Кейбір субтитрлер аудармалары қолжетімсіз. Қолжетімді субтитрлер көрсетілуде.</string>
   <string name="morphe_caption_blocks_too_large">Субтитрлердің екі тілі де бұл плеерге сыймайды. Негізгі тіл көрсетілуде.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Навигациялық панель</string>
-  <string name="morphe_navigation_bar_screen_summary">Төменгі навигациялық панельде қай түймелер пайда болатынын таңдаңыз</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Басты бет түймесін жасыру</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1107,11 +1094,11 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_watch_later_navigation_label">Кейінірек көру</string>
   <string name="morphe_show_settings_button_title">Баптаулар түймесін көрсету</string>
   <string name="morphe_show_settings_button_type_title">Баптаулар батырмасының әрекеті</string>
-  <string name="morphe_show_settings_button_type_summary">Қосылғанда Morphe баптауларын, ал өшірілгенде YouTube баптауларын ашады</string>
+  <string name="morphe_show_settings_button_type_summary">Қосылғанда, бір рет басу Morphe параметрлерін, ал ұзақ басу YouTube параметрлерін ашады; ауыстыру үшін өшіріңіз</string>
   <string name="morphe_navigation_buttons_order_title">Навигациялық батырмалардың реті</string>
   <string name="morphe_navigation_buttons_order_summary">Навигациялық панельдегі батырмалардың ретін өзгерту үшін оларды сүйреңіз</string>
   <string name="morphe_swap_create_with_notifications_button_title">\"Жасау\" түймесін \"Хабарландырулар\" түймесімен алмастыру</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Егер бұл параметрді өзгерту әсер етпесе, Инкогнито режиміне ауысып көріңіз</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Хабарландырулар түймесін навигациялық жолаққа, ал Жарату түймесін құралдар панеліне ауыстырады. Егер өзгерістер күшіне енбесе, Инкогнито режиміне ауысып көріңіз</string>
   <string name="morphe_hide_navigation_button_labels_title">Навигациялық түйме белгілерін жасыру</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Жаңа мазмұн нүктесін жасыру</string>
   <string name="morphe_hide_navigation_bar_title">Навигациялық панельді жасыру</string>
@@ -1150,12 +1137,10 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_navigation_bar_glass_size_width">Максималды ені</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Батырмалар арасындағы қашықтық</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Көрсетілген батырмалар: %1$s / %2$s</string>
-  <string name="morphe_toolbar_screen_title">Құралдар жолағы</string>
-  <string name="morphe_toolbar_screen_summary">Құрал жолағында қай компоненттер пайда болатынын таңдаңыз</string>
   <string name="morphe_hide_toolbar_chat_button_title">Чат батырмасын жасыру</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Companion түймесін жасыру</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Микрофон батырмасын жасыру</string>
   <string name="morphe_hide_toolbar_search_button_title">Іздеу батырмасын жасыру</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Қосулы болғанда, бір рет басу Morphe параметрлерін, ал ұзақ басу YouTube параметрлерін ашады; ауыстыру үшін өшіріңіз</string>
   <string name="morphe_toolbar_buttons_order_title">Құралдар панелі батырмаларының реті</string>
   <string name="morphe_toolbar_buttons_order_summary">Құралдар панеліндегі батырмалардың ретін өзгерту үшін оларды сүйреңіз</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1186,43 +1171,28 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_disable_shorts_double_tap_to_like_title">Лайк қою үшін екі рет түртуді өшіру</string>
   <string name="morphe_hide_shorts_ai_button_title">AI батырмасын жасыру</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">\"Автоматты түрде дубляждалған\" белгісін жасыру</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Арна жолағын жасыру</string>
-  <string name="morphe_hide_shorts_comments_button_title">Пікірлер түймесін жасыру</string>
   <string name="morphe_hide_shorts_effect_button_title">Эффект батырмасын жасыру</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Бейне сілтемесінің белгісін жасыру</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Жест нұсқауларын жасыру</string>
   <string name="morphe_hide_shorts_green_screen_button_title">\'Жасыл экран\' батырмасын жасыру</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Хэштег батырмасын жасыру</string>
   <string name="morphe_hide_shorts_info_panel_title">Ақпараттық панельді жасыру</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Қосылу батырмасын жасыру</string>
   <string name="morphe_hide_shorts_like_button_title">Лайк түймесін жасыру</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Лайк түймесінің фонтан анимациясын жасыру</string>
   <string name="morphe_hide_shorts_live_preview_title">Тікелей эфир алдын қарамасын жасыру</string>
   <string name="morphe_hide_shorts_location_label_title">Орналасқан жер белгісін жасыру</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Навигация жолағын жасыру</string>
   <string name="morphe_hide_shorts_new_posts_button_title">\'Жаңа жазбалар\' батырмасын жасыру</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Кідіртілген күйдегі қабат батырмаларын жасыру</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Пікір алдын ала қарауын жасыру</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Ремикс түймесін жасыру</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">\'Сақтау\' батырмасын жасыру</string>
   <string name="morphe_hide_shorts_save_sound_button_title">\'Музыканы сақтау\' батырмасын жасыру</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Іздеу ұсыныстарын жасыру</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Бөлісу түймесін жасыру</string>
-  <string name="morphe_hide_shorts_shop_button_title">Дүкен батырмасын жасыру</string>
   <string name="morphe_hide_shorts_sound_button_title">Дыбыс түймесін жасыру</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Дыбыс метадеректерінің белгісін жасыру</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Жазылу түймесін жасыру</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">\"Super Thanks сатып алу\" батырмасын жасыру</string>
   <string name="morphe_hide_shorts_tagged_products_title">Белгіленген өнімдерді жасыру</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Алдағы түймесін жасыру</string>
   <string name="morphe_hide_shorts_use_sound_button_title">\'Осы дыбысты пайдалану\' батырмасын жасыру</string>
   <string name="morphe_hide_shorts_use_template_button_title">\'Осы шаблонды пайдалану\' батырмасын жасыру</string>
-  <string name="morphe_hide_shorts_video_title_title">Бейне атауын жасыру</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Аяқтау экранындағы ұсынылған бейнені жасыру</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Бейнеролик аяқталғаннан кейін пайда болатын ұсынылған бейнеқабатты жасырады
@@ -1732,8 +1702,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Кодек тиімділігінен гөрі қолжетімді ең жоғары бейне сапасына басымдық береді</string>
   <string name="morphe_video_quality_prioritize_dialog">Егер бұл параметр өшірілсе, ескі бейнелерде сапа таңдау мүмкіндіктері көрсетілмеуі мүмкін</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1 рұқсат беру</string>
-  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS клиентін қолданғанда AV1 бағдарламалық декодтауға рұқсат береді</string>
+  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1 рұқсат беру</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' клиентін қолданғанда AV1 бағдарламалық декодтауға рұқсат береді</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Бұл параметрді қосу бағдарламалық AV1 декодтауды пайдалануы мүмкін.
 
 AV1-мен бейнеойнату кезінде секірулер болуы немесе кадрлар түсіп қалуы мүмкін"</string>
@@ -1970,7 +1940,6 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_live_chat_translate_language_title">Аудару тілі</string>
   <string name="morphe_live_chat_translate_exclude_title">Шығарылған тілдер</string>
   <string name="morphe_live_chat_translate_exclude_summary">id,en сияқты үтірмен бөлінген тіл кодтары. Бұл тілдердегі хабарламалар аударылмайды</string>
-  <string name="morphe_live_chat_translate_provider_title">Аударма провайдері</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API кілті</string>

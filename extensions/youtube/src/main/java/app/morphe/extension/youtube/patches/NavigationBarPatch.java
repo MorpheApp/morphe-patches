@@ -12,6 +12,9 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +22,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.SparseArray;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.WindowInsets;
@@ -48,11 +56,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.innertube.GuideResponseOuterClass.Accessibility;
@@ -84,6 +95,8 @@ import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.NavigationBar;
+import app.morphe.extension.youtube.shared.PlayerType;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 public final class NavigationBarPatch {
@@ -100,6 +113,30 @@ public final class NavigationBarPatch {
     };
 
     private static final boolean SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+
+    public static final class HideCreateButtonAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return !Settings.HIDE_NAVIGATION_BAR.get() && !Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.HIDE_NAVIGATION_BAR, Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON);
+        }
+    }
+
+    public static final class HideNotificationsButtonAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return !Settings.HIDE_NAVIGATION_BAR.get() && Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.HIDE_NAVIGATION_BAR, Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON);
+        }
+    }
 
     public enum NavigationBarStyle {
         /**
@@ -203,13 +240,35 @@ public final class NavigationBarPatch {
         }
 
         if (SHOW_SETTINGS_BUTTON && button == NavigationBar.NavigationButton.SETTINGS) {
-            Utils.runOnMainThread(() -> tabView.setOnClickListener(v -> {
-                if (SHOW_SETTINGS_BUTTON_TYPE) {
-                    openMorpheSettings(v);
-                } else {
-                    openYouTubeSettings(v);
-                }
-            }));
+            settingsTabRef = new WeakReference<>(tabView);
+            Utils.runOnMainThread(() -> {
+                tabView.setOnClickListener(v -> {
+                    // The tap that ends a long press is not a click.
+                    if (settingsTabLongPressed) {
+                        settingsTabLongPressed = false;
+                        return;
+                    }
+                    if (SHOW_SETTINGS_BUTTON_TYPE) {
+                        openMorpheSettings(v);
+                    } else {
+                        openYouTubeSettings(v);
+                    }
+                });
+                tabView.setOnLongClickListener(v -> {
+                    if (settingsTabTouched) {
+                        // The long press of the navigation bar and of the view itself
+                        // can both be called for the same touch.
+                        if (settingsTabLongPressed) return true;
+                        settingsTabLongPressed = true;
+                    }
+                    if (SHOW_SETTINGS_BUTTON_TYPE) {
+                        openYouTubeSettings(v);
+                    } else {
+                        openMorpheSettings(v);
+                    }
+                    return true;
+                });
+            });
             return;
         }
 
@@ -266,9 +325,255 @@ public final class NavigationBarPatch {
     }
 
     /**
+     * Feed scroll behavior of the navigation bar of a page that does not set it, with which it is always shown.
+     */
+    private static final int FEED_SCROLL_KEEPS_NAVIGATION_BAR = 1;
+
+    /**
+     * Injection point.
+     * <p>
+     * The server sets for each feed page if the app hides the navigation bar while scrolling, and how
+     * the app hides it depends on the account, so some accounts never get the bar hidden.
+     * The app never hides it, and the bar is hidden while scrolling by {@link #onListScrolled(View, int)}.
+     */
+    @SuppressWarnings("SameReturnValue")
+    public static int getFeedScrollNavigationBarBehavior() {
+        return FEED_SCROLL_KEEPS_NAVIGATION_BAR;
+    }
+
+    /**
+     * If the navigation bar is hidden while scrolling the pages.
+     */
+    private static final boolean HIDE_NAVIGATION_BAR_ON_SCROLL = !DISABLE_AUTO_HIDE_NAVIGATION_BAR && !HIDE_NAVIGATION_BAR;
+
+    private static final long NAVIGATION_BAR_SCROLL_ANIMATION_MILLISECONDS = 250;
+
+    /**
+     * Bottom bar container, which holds the navigation bar of any layout the app uses.
+     */
+    private static WeakReference<View> bottomBarContainerRef = new WeakReference<>(null);
+
+    /**
+     * Distance the lists scrolled in the same direction since the last change, accessed only on the main thread.
+     */
+    private static int listScrollDistance;
+
+    /**
+     * Distance in pixels a touch can move before it scrolls, or -1 if not yet read.
+     */
+    private static int listScrollTouchSlop = -1;
+
+    /**
+     * If the navigation bar is hidden by scrolling, accessed only on the main thread.
+     */
+    private static boolean navigationBarHiddenOnScroll;
+
+    @Nullable
+    private static ObjectAnimator navigationBarScrollAnimator;
+
+    private static boolean navigationBarScrollObserversAdded;
+
+    /**
+     * Container of the pages, whose bottom padding is the room the app leaves for the navigation bar
+     * when the pages are not laid out behind it.
+     */
+    private static final int paneFragmentContainerId = HIDE_NAVIGATION_BAR_ON_SCROLL
+            ? ResourceUtils.getIdentifier(ResourceType.ID, "pane_fragment_container")
+            : 0;
+
+    /**
+     * Container of the pages whose room for the navigation bar was removed while the bar is hidden,
+     * the room removed, and the padding it was left with.
+     */
+    private static WeakReference<View> pageRoomViewRef = new WeakReference<>(null);
+    private static int pageRoomRemoved;
+    private static int pageRoomPadding;
+
+    /**
+     * Injection point.
+     * <p>
+     * Called on the main thread when any list scrolls, before its scroll listeners.
+     * The navigation bar is hidden when the list of a page scrolls down, and shown when it scrolls up.
+     *
+     * @param dy The vertical distance scrolled, more than zero when scrolling down.
+     */
+    public static void onListScrolled(View list, int dy) {
+        if (!HIDE_NAVIGATION_BAR_ON_SCROLL || dy == 0) return;
+
+        try {
+            if ((dy > 0) != (listScrollDistance > 0)) {
+                listScrollDistance = 0;
+            }
+            listScrollDistance += dy;
+            if (listScrollTouchSlop < 0) {
+                listScrollTouchSlop = ViewConfiguration.get(list.getContext()).getScaledTouchSlop();
+            }
+            if (Math.abs(listScrollDistance) < listScrollTouchSlop) return;
+
+            final boolean hide = listScrollDistance > 0;
+            listScrollDistance = 0;
+            if (hide == navigationBarHiddenOnScroll) return;
+
+            View container = bottomBarContainerRef.get();
+            if (container == null || (hide && !canHideNavigationBarOnScroll(list, container))) return;
+
+            if (!navigationBarScrollObserversAdded) {
+                navigationBarScrollObserversAdded = true;
+                // Opening the player, the Shorts, or another tab shows the navigation bar again.
+                // The feed videos that play while scrolling do not.
+                PlayerType.getOnChange().addObserver(type -> {
+                    if (!type.isNoneOrHidden() && type != PlayerType.INLINE_MINIMAL) {
+                        Utils.runOnMainThreadNowOrLater(NavigationBarPatch::showNavigationBarHiddenOnScroll);
+                    }
+                });
+                ShortsPlayerState.getOnChange().addObserver(open ->
+                        Utils.runOnMainThreadNowOrLater(NavigationBarPatch::showNavigationBarHiddenOnScroll));
+                NavigationBar.addOnNavigationButtonChangedListener(button ->
+                        Utils.runOnMainThreadNowOrLater(NavigationBarPatch::showNavigationBarHiddenOnScroll));
+            }
+            animateNavigationBarOnScroll(container, list, hide);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onListScrolled failure", ex);
+        }
+    }
+
+    /**
+     * Only the lists of the pages behind or above the navigation bar hide it, not the lists of the player,
+     * the Shorts, the miniplayer pages or other windows, and not the navigation rail along the side.
+     */
+    private static boolean canHideNavigationBarOnScroll(View list, View container) {
+        PlayerType playerType = PlayerType.getCurrent();
+        if ((!playerType.isNoneOrHidden() && playerType != PlayerType.INLINE_MINIMAL) || ShortsPlayerState.isOpen()) {
+            return false;
+        }
+        if (!container.isShown() || !list.isShown() || list.getRootView() != container.getRootView()
+                || container.getWidth() < container.getHeight()) {
+            return false;
+        }
+
+        int[] location = new int[2];
+        list.getLocationOnScreen(location);
+        final int listBottom = location[1] + list.getHeight();
+        container.getLocationOnScreen(location);
+        return listBottom >= location[1];
+    }
+
+    /**
+     * The navigation bar slides out of the screen, and is then removed from the layout so the page fills
+     * the room it leaves, as the app does when it hides the bar. It is added back before it slides in.
+     */
+    private static void animateNavigationBarOnScroll(View container, View list, boolean hide) {
+        navigationBarHiddenOnScroll = hide;
+        ObjectAnimator running = navigationBarScrollAnimator;
+        if (running != null) {
+            running.cancel();
+        }
+
+        if (!hide) {
+            restorePageRoom();
+            if (container.getVisibility() == View.GONE) {
+                container.setTranslationY(container.getHeight());
+            }
+            container.setVisibility(View.VISIBLE);
+        }
+        ObjectAnimator animator = ObjectAnimator.ofFloat(container, View.TRANSLATION_Y,
+                hide ? container.getHeight() : 0);
+        animator.setDuration(NAVIGATION_BAR_SCROLL_ANIMATION_MILLISECONDS);
+        if (hide) {
+            animator.addListener(new AnimatorListenerAdapter() {
+                private boolean cancelled;
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+                    cancelled = true;
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    if (!cancelled) {
+                        container.setVisibility(View.GONE);
+                        removePageRoom(list, container);
+                    }
+                }
+            });
+        }
+        navigationBarScrollAnimator = animator;
+        animator.start();
+    }
+
+    /**
+     * Shows at once the navigation bar hidden by scrolling. Called on the main thread.
+     */
+    private static void showNavigationBarHiddenOnScroll() {
+        if (!navigationBarHiddenOnScroll) return;
+
+        try {
+            navigationBarHiddenOnScroll = false;
+            listScrollDistance = 0;
+            ObjectAnimator running = navigationBarScrollAnimator;
+            if (running != null) {
+                running.cancel();
+            }
+            restorePageRoom();
+            View container = bottomBarContainerRef.get();
+            if (container != null) {
+                container.setTranslationY(0);
+                container.setVisibility(View.VISIBLE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "showNavigationBarHiddenOnScroll failure", ex);
+        }
+    }
+
+    /**
+     * The pages that are not laid out behind the navigation bar keep the room for it below them,
+     * which the app removes only when it hides the bar itself. The room of the bar is removed from the
+     * container of the pages of the scrolled list, so the page fills the room the hidden bar leaves.
+     */
+    private static void removePageRoom(View list, View container) {
+        for (View view = list; view != null; view = view.getParent() instanceof View parent ? parent : null) {
+            if (view.getId() != paneFragmentContainerId) continue;
+
+            final int padding = view.getPaddingBottom();
+            final int removed = Math.min(padding, container.getHeight());
+            if (removed > 0) {
+                pageRoomViewRef = new WeakReference<>(view);
+                pageRoomRemoved = removed;
+                pageRoomPadding = padding - removed;
+                view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), pageRoomPadding);
+            }
+            return;
+        }
+    }
+
+    /**
+     * The room of the navigation bar is added back, unless the app set another room meanwhile.
+     */
+    private static void restorePageRoom() {
+        View view = pageRoomViewRef.get();
+        pageRoomViewRef = new WeakReference<>(null);
+        if (view != null && view.getPaddingBottom() == pageRoomPadding) {
+            view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(),
+                    pageRoomPadding + pageRoomRemoved);
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Before 21.20 this flag also hides the navigation bar while scrolling, whatever the page sets,
+     * so it is turned off and only {@link #getFeedScrollNavigationBarBehavior()} decides.
+     */
+    @SuppressWarnings("SameReturnValue")
+    public static boolean useAutoHideNavigationBarFlag(boolean original) {
+        return false;
+    }
+
+    /**
      * Injection point.
      */
     public static void hideNavigationBar(View view) {
+        bottomBarContainerRef = new WeakReference<>(view);
         Utils.hideViewUnderCondition(HIDE_NAVIGATION_BAR, view);
     }
 
@@ -898,6 +1203,107 @@ public final class NavigationBarPatch {
     public static final String SETTINGS_PIVOT_IDENTIFIER = "morphe_settings";
     private static Object pivotBarSettingsRenderer = null;
 
+    private static volatile WeakReference<View> settingsTabRef = new WeakReference<>(null);
+
+    /**
+     * If a touch of the navigation bar started on the Settings button and has not ended.
+     * Always accessed from the main thread.
+     */
+    private static boolean settingsTabTouched;
+
+    /**
+     * If the touch of the Settings button is a long press, so the tap it ends with does not click.
+     * Always accessed from the main thread.
+     */
+    private static boolean settingsTabLongPressed;
+
+    private static float settingsTabTouchX;
+    private static float settingsTabTouchY;
+
+    @Nullable
+    private static Handler settingsTabHandler;
+
+    private static final Runnable settingsTabLongPress = () -> {
+        View tab = settingsTabRef.get();
+        // The long press of the navigation bar can already be called, if its feature flag is on.
+        if (tab != null && settingsTabTouched && !settingsTabLongPressed && tab.isShown()) {
+            tab.performLongClick();
+        }
+    };
+
+    /**
+     * Injection point.
+     * <p>
+     * The navigation bar handles the touches of its buttons itself, with a gesture detector, so the buttons
+     * do not get the touches and their own long press is never called. The gesture detector has long presses
+     * turned off with a feature flag, and then a long press ends as a tap. The long press of the Settings button
+     * is found here instead, and the tap it ends with is ignored by the button.
+     */
+    public static void navigationBarTouched(MotionEvent event) {
+        if (!SHOW_SETTINGS_BUTTON) return;
+
+        try {
+            switch (event.getActionMasked()) {
+                case MotionEvent.ACTION_DOWN -> {
+                    cancelSettingsTabLongPress();
+                    settingsTabLongPressed = false;
+                    View tab = settingsTabRef.get();
+                    settingsTabTouched = tab != null && isTouchInView(event, tab);
+                    if (settingsTabTouched) {
+                        settingsTabTouchX = event.getRawX();
+                        settingsTabTouchY = event.getRawY();
+                        if (settingsTabHandler == null) {
+                            settingsTabHandler = new Handler(Looper.getMainLooper());
+                        }
+                        settingsTabHandler.postDelayed(settingsTabLongPress, ViewConfiguration.getLongPressTimeout());
+                    }
+                }
+                case MotionEvent.ACTION_MOVE -> {
+                    View tab = settingsTabRef.get();
+                    if (settingsTabTouched && tab != null) {
+                        final int touchSlop = ViewConfiguration.get(tab.getContext()).getScaledTouchSlop();
+                        if (Math.abs(event.getRawX() - settingsTabTouchX) > touchSlop
+                                || Math.abs(event.getRawY() - settingsTabTouchY) > touchSlop) {
+                            cancelSettingsTabLongPress();
+                        }
+                    }
+                }
+                case MotionEvent.ACTION_POINTER_DOWN -> cancelSettingsTabLongPress();
+                case MotionEvent.ACTION_UP -> {
+                    cancelSettingsTabLongPress();
+                    settingsTabTouched = false;
+                    // The navigation bar clicks the button right after, while handling the same touch.
+                    if (settingsTabLongPressed && settingsTabHandler != null) {
+                        settingsTabHandler.post(() -> settingsTabLongPressed = false);
+                    }
+                }
+                case MotionEvent.ACTION_CANCEL -> {
+                    cancelSettingsTabLongPress();
+                    settingsTabTouched = false;
+                    settingsTabLongPressed = false;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "navigationBarTouched failure", ex);
+        }
+    }
+
+    private static void cancelSettingsTabLongPress() {
+        if (settingsTabHandler != null) {
+            settingsTabHandler.removeCallbacks(settingsTabLongPress);
+        }
+    }
+
+    private static boolean isTouchInView(MotionEvent event, View view) {
+        if (!view.isShown()) return false;
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        final float x = event.getRawX();
+        final float y = event.getRawY();
+        return x >= location[0] && x < location[0] + view.getWidth()
+                && y >= location[1] && y < location[1] + view.getHeight();
+    }
+
     private static final boolean SHOW_WATCH_LATER_BUTTON = Settings.SHOW_WATCH_LATER_BUTTON.get();
     public static final String WATCH_LATER_PIVOT_IDENTIFIER = "morphe_watch_later";
     private static final String WATCH_LATER_BROWSE_ID = "VLWL";
@@ -1267,7 +1673,11 @@ public final class NavigationBarPatch {
      */
     private static volatile boolean notificationsTabCreated;
 
+    private static final boolean HIDE_TOOLBAR_CAST_BUTTON = Settings.HIDE_TOOLBAR_CAST_BUTTON.get();
+
     private static final boolean HIDE_TOOLBAR_CHAT_BUTTON = Settings.HIDE_TOOLBAR_CHAT_BUTTON.get();
+
+    private static final boolean HIDE_TOOLBAR_COMPANION_BUTTON = Settings.HIDE_TOOLBAR_COMPANION_BUTTON.get();
 
     private static final boolean HIDE_TOOLBAR_CREATE_BUTTON = Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
 
@@ -1308,6 +1718,175 @@ public final class NavigationBarPatch {
     }
 
     private static WeakReference<SettingsController> settingsControllerRef = new WeakReference<>(null);
+
+    /**
+     * Injection point.
+     * <p>
+     * The cast companion features hide the toolbar Cast button unless the cast icon awareness allows it,
+     * such as with a cast device nearby, or replace it with a button that opens the companion of the watch page.
+     * The Cast button is shown again, and opens the cast devices, if it is not hidden with the setting.
+     */
+    public static boolean useCastCompanion(boolean original) {
+        return HIDE_TOOLBAR_CAST_BUTTON && original;
+    }
+
+    private static final int TOOLBAR_CAST_BUTTON_ID = ResourceUtils.getIdentifier(ResourceType.ID, "menu_cast");
+
+    /**
+     * The Companion button has the id of the Cast button, and the toolbar keeps its buttons by their id,
+     * so the Companion button is given its own id.
+     */
+    private static final int TOOLBAR_COMPANION_BUTTON_ID = View.generateViewId();
+
+    /**
+     * The Companion button of each Cast button, as every activity has its own buttons.
+     * The Companion button is kept weakly too, as it holds the activity that holds the Cast button.
+     * Synchronized on itself.
+     */
+    private static final Map<Object, WeakReference<Object>> toolbarCompanionButtons = new WeakHashMap<>();
+
+    /**
+     * The provider of a toolbar button, with a method added during patching.
+     */
+    public interface ToolbarButtonProvider {
+        /**
+         * @return The button, which the provider creates the first time.
+         */
+        Object patch_getButton();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The app adds either the Cast button or the Companion button, which uses the phone as a companion to the
+     * video playing on a TV, to the toolbar. The Cast button is always added, and this is called if the app
+     * chose the Companion button, which is then added next to it, see {@link #addToolbarCompanionButton(SparseArray)}.
+     *
+     * @param castButtonProvider The provider of the Cast button.
+     * @param companionButton    The Companion button the app chose.
+     * @return The Cast button, which the app adds to the toolbar instead.
+     */
+    public static Object getToolbarCastButton(ToolbarButtonProvider castButtonProvider, Object companionButton) {
+        try {
+            Object castButton = castButtonProvider.patch_getButton();
+            Logger.printDebug(() -> "Toolbar Cast button used instead of the Companion button");
+
+            if (!HIDE_TOOLBAR_COMPANION_BUTTON) {
+                synchronized (toolbarCompanionButtons) {
+                    toolbarCompanionButtons.put(castButton, new WeakReference<>(companionButton));
+                }
+            }
+            return castButton;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getToolbarCastButton failure", ex);
+            // The button the app chose.
+            return companionButton;
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static int getToolbarCompanionButtonId() {
+        return TOOLBAR_COMPANION_BUTTON_ID;
+    }
+
+    /**
+     * Injection point.
+     * Called when the menu of a toolbar is created.
+     *
+     * @param buttons The buttons of the toolbar, by their id.
+     */
+    public static void addToolbarCompanionButton(SparseArray<Object> buttons) {
+        if (HIDE_TOOLBAR_COMPANION_BUTTON || buttons == null || TOOLBAR_CAST_BUTTON_ID == 0) return;
+
+        try {
+            Object castButton = buttons.get(TOOLBAR_CAST_BUTTON_ID);
+            if (castButton == null) return;
+
+            final WeakReference<Object> companionButtonRef;
+            synchronized (toolbarCompanionButtons) {
+                companionButtonRef = toolbarCompanionButtons.get(castButton);
+            }
+            // Only if the app chose the Companion button for this Cast button.
+            Object companionButton = companionButtonRef == null ? null : companionButtonRef.get();
+            if (companionButton != null) {
+                buttons.put(TOOLBAR_COMPANION_BUTTON_ID, companionButton);
+                Logger.printDebug(() -> "Toolbar Companion button added");
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "addToolbarCompanionButton failure", ex);
+        }
+    }
+
+    /**
+     * The views of the toolbar Cast buttons. The media route button is also used by the player,
+     * whose Cast button is left as it is. Only accessed from the main thread.
+     */
+    private static final Set<View> toolbarCastButtonViews = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
+     * Injection point.
+     * Called whenever the app shows or hides the toolbar Cast button, which it shows if casting is available.
+     * <p>
+     * After a cold start, the app can find casting not available until it is opened again, such as by going
+     * to the settings and back, and then keeps the button shown. The button is always shown instead.
+     *
+     * @param visible If the app shows the button.
+     */
+    public static boolean hideToolbarCastButton(MenuItem menuItem, boolean visible) {
+        if (HIDE_TOOLBAR_CAST_BUTTON) return false;
+
+        if (!visible) {
+            Logger.printDebug(() -> "Toolbar Cast button shown, the app hides it as casting is not available");
+        }
+        return true;
+    }
+
+    /**
+     * Injection point.
+     * Called when the app creates the toolbar Cast button, for every toolbar menu.
+     */
+    public static void hideToolbarCastButton(MenuItem menuItem) {
+        if (HIDE_TOOLBAR_CAST_BUTTON) {
+            menuItem.setVisible(false);
+            menuItem.setEnabled(false);
+            return;
+        }
+
+        try {
+            // The view of the button is shown and hidden separately, by the controller of the cast devices.
+            View view = menuItem.getActionView();
+            if (view != null) {
+                toolbarCastButtonViews.add(view);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideToolbarCastButton failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called whenever the visibility of a media route button is set.
+     */
+    public static int getToolbarCastButtonVisibility(View view, int visibility) {
+        try {
+            return visibility != View.VISIBLE && toolbarCastButtonViews.contains(view)
+                    ? View.VISIBLE
+                    : visibility;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getToolbarCastButtonVisibility failure", ex);
+            return visibility;
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called whenever a media route button is enabled or disabled.
+     */
+    public static boolean getToolbarCastButtonEnabled(View view, boolean enabled) {
+        return enabled || toolbarCastButtonViews.contains(view);
+    }
 
     /**
      * Injection point.

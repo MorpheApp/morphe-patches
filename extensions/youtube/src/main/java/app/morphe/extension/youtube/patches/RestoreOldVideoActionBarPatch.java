@@ -993,15 +993,6 @@ public class RestoreOldVideoActionBarPatch {
     /**
      * Injection point.
      */
-    public static String getVideoActionBarAppVersionOverride(String original) {
-        return FIX_VIDEO_ACTION_BAR
-                ? "20.13.41"
-                : original;
-    }
-
-    /**
-     * Injection point.
-     */
     public static boolean fixRelatedVideoOverlay(boolean original) {
         if (FIX_VIDEO_ACTION_BAR
                 && !Settings.INNERTUBE_COLD_CONFIG_DATA.isSetToDefault()

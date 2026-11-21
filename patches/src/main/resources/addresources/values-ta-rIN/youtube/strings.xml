@@ -63,7 +63,6 @@ Second \"item\" text"</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_keyword_content_phrases_summary">"மறைக்க வேண்டிய முக்கிய வார்த்தைகள் மற்றும் சொற்றொடர்களை புதிய வரிகளால் பிரித்து உள்ளிடவும்
 
 வீடியோ தலைப்புகளில் காட்டப்படும் எந்தவொரு உரையையும் முக்கிய வார்த்தைகளாகப் பயன்படுத்தலாம். @UserName முக்கிய வார்த்தை குறிப்பிட்ட படைப்பாளர்களிடமிருந்து அனைத்து உள்ளடக்கத்தையும் மறைக்கும்"</string>
@@ -90,18 +89,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">கருத்து பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_post_comments_preview_title">கருத்துகளின் முன்னோட்டத்தை மறைக்கவும்</string>
   <string name="morphe_hide_post_comments_preview_summary">பதிவுகளுக்குக் கீழே உள்ள கருத்துகளின் முன்னோட்டத்தை மறைக்கிறது</string>
-  <string name="morphe_hide_post_share_button_title">பகிர் பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_post_share_button_summary">பதிவின் படங்களுக்கான பதிவிறக்கு பொத்தான் பகிர் பொத்தானுக்கு அருகில் வரையப்பட்டுள்ளது, எனவே அதுவும் மறைக்கப்படுகிறது</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_chapters_button_title">அத்தியாயங்கள் பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_in_this_video_button_title">\'இந்த வீடியோவில்\' பொத்தானை மறைக்கவும்</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- layout.buttons.action.hideButtonsPatch -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
@@ -159,7 +154,6 @@ Second \"item\" text"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_cast_button_summary">வீடியோ பிளேயர் மற்றும் டூல்பாரில் உள்ள காஸ்ட் (Cast) பொத்தானை மறைக்கிறது</string>
   <!-- layout.snackbar.snackbarPatch -->
   <string name="morphe_snackbar_screen_title">ஸ்நாக் பார்</string>
   <string name="morphe_snackbar_screen_summary">Snackbar-களை மறைக்கவும் அல்லது அவற்றின் நிறங்கள் மற்றும் வடிவத்தை மாற்றவும்</string>
@@ -297,6 +291,7 @@ Second \"item\" text"</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">இந்த வசதிக்கு PotHelper-ஐப் பயன்படுத்துவது அல்லது \'Spoof video streams\'-ஐ \'TV\' அல்லது \'Android VR\' உள்நுழைவாக மாற்றுவது தேவைப்படலாம்</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
   <string name="morphe_native_queue_thumbnail_button_title">தம்ப்நைல்களில் வரிசை பொத்தானைக் காட்டு</string>
   <string name="morphe_native_queue_thumbnail_button_summary">ஃபீட் வீடியோக்களின் தம்ப்நைல்களில் ஒரு வரிசை பொத்தான் காட்டப்படும். அதைத் தட்டினால் வீடியோ வரிசையின் முடிவில் சேர்க்கப்படும், மேலும் அதைத் தட்டிப் பிடித்தால் வீடியோ அடுத்து இயங்கும்</string>
@@ -355,7 +350,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">சில தலைப்பு மொழிபெயர்ப்புகள் கிடைக்கவில்லை. கிடைக்கக்கூடிய தலைப்புகள் காண்பிக்கப்படுகின்றன.</string>
   <string name="morphe_caption_blocks_too_large">இரண்டு தலைப்பு மொழிகளும் இந்த பிளேயரில் பொருந்தவில்லை. முதன்மை மொழி காண்பிக்கப்படுகிறது.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">வழிசெலுத்தல் பட்டை</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Create' has no display name. Translate normally. -->
@@ -365,8 +359,10 @@ Second \"item\" text"</string>
   <string name="morphe_show_watch_later_button_title">\'பின்னாளும் பாருங்கள்\' பொத்தானைக் காட்டு</string>
   <!-- 'Watch later' should be translated using the same localized wording YouTube displays for the playlist. -->
   <string name="morphe_watch_later_navigation_label">பின்னாளும் பாருங்கள்</string>
+  <string name="morphe_show_settings_button_type_summary">இயக்குவதற்கு, தட்டினால் Morphe அமைப்புகள் திறக்கும் மற்றும் நீண்ட நேரம் அழுத்தினால் YouTube அமைப்புகள் திறக்கும், இதை மாற்ற முடக்கவும்</string>
   <string name="morphe_navigation_buttons_order_title">வழிசெலுத்தல் பொத்தான்களின் வரிசை</string>
   <string name="morphe_navigation_buttons_order_summary">வழிசெலுத்தல் பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">அறிவிப்புகள் பொத்தானை வழிசெலுத்தல் பட்டிற்கும், உருவாக்கு பொத்தானை கருவிப்பட்டிற்கும் மாற்றுகிறது. மாற்றங்கள் நடைமுறைக்கு வரவில்லை என்றால், மறைநிலை பயன்முறைக்கு மாற முயற்சிக்கவும்</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"இது 'You' டேப் உட்பட நேவிகேஷன் பாரை முழுமையாக மறைக்கிறது.
 
 Settings-ஐ அணுக, General → Toolbar → Show Settings button மூலம் Settings பொத்தானைச் செயல்படுத்தவும்"</string>
@@ -387,6 +383,7 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_navigation_bar_glass_size_width">அதிகபட்ச அகலம்</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">பொத்தான் இடைவெளி</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">காட்டப்படும் பொத்தான்கள்: %2$s இல் %1$s</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Companion பொத்தானை மறைக்கவும்</string>
   <string name="morphe_toolbar_buttons_order_title">கருவிப்பட்டை பொத்தான்களின் வரிசை</string>
   <string name="morphe_toolbar_buttons_order_summary">கருவிப்பட்டையில் பொத்தான்களின் வரிசையை மாற்ற அவற்றை இழுக்கவும்</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -397,11 +394,7 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_notifications_title">புஷ் அறிவிப்புகளில் மறைக்கவும்</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
@@ -575,6 +568,8 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1-ஐ அனுமதிக்கவும்</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' கிளையண்ட்டைப் பயன்படுத்தும் போது மென்பொருள் AV1 டிகோடிங்கை அனுமதிக்கிறது</string>
   <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
   <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView முடக்கப்பட்டுள்ளது அல்லது நிறுவப்படவில்லை. அதை ஆன் செய்து அப்டேட் செய்யவும், இல்லையெனில் பிளேபேக் தோல்வியடையக்கூடும்</string>
   <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView பழைய பதிப்பாக உள்ளது. அதை அப்டேட் செய்யவும், இல்லையெனில் பிளேபேக் தோல்வியடையக்கூடும்</string>
@@ -640,7 +635,6 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_live_chat_translate_language_title">மொழிபெயர்ப்பு மொழி</string>
   <string name="morphe_live_chat_translate_exclude_title">விலக்கப்பட்ட மொழிகள்</string>
   <string name="morphe_live_chat_translate_exclude_summary">id,en போன்ற கமா மூலம் பிரிக்கப்பட்ட மொழி குறியீடுகள். இந்த மொழிகளில் உள்ள செய்திகள் மொழிபெயர்க்கப்படாது</string>
-  <string name="morphe_live_chat_translate_provider_title">மொழிபெயர்ப்பு வழங்குநர்</string>
   <string name="morphe_live_chat_translate_provider_google">கூகுள் மொழிபெயர்ப்பு</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API விசை</string>

@@ -181,10 +181,12 @@ internal object MiniplayerHorizontalDragPlaybackFingerprint : Fingerprint (
     )
 )
 
+/**
+ * Rect of the miniplayer when it is dragged. The second instruction match is the
+ * field of the previous rect, which is in the class of the miniplayer drag.
+ * 21.47+ inlines this into a method of another class.
+ */
 internal object MiniplayerRectDragFieldsNameFingerprint : Fingerprint (
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/graphics/Rect;",
-    parameters = listOf("I", "I"),
     filters = listOf(
         opcode(opcode = Opcode.IF_GEZ),
         fieldAccess(
@@ -218,7 +220,9 @@ internal object MiniplayerRectDragFieldsNameFingerprint : Fingerprint (
 )
 
 internal object MiniplayerHorizontalRepositionFingerprint : Fingerprint(
-    classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
+    definingClass = {
+        MiniplayerRectDragFieldsNameFingerprint.instructionMatches[1].fieldReference.definingClass
+    },
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/graphics/Rect;"),
@@ -256,7 +260,9 @@ internal object MiniplayerOffscreenRectValidatorFingerprint : Fingerprint (
 )
 
 internal object MiniplayerOffscreenHandlerFingerprint : Fingerprint(
-    classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
+    definingClass = {
+        MiniplayerRectDragFieldsNameFingerprint.instructionMatches[1].fieldReference.definingClass
+    },
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "I", "I", "I"),

@@ -205,8 +205,6 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_hide_posts_shelf_title">Postlar javonini yashirish</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Do\'kon tugmasini yashirish</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Obuna tugmasini yashirish</string>
   <string name="morphe_explore_menu_screen_title">O\'rganish menyusi</string>
   <string name="morphe_explore_menu_screen_summary">O\'rganish menyusida qaysi komponentlar ko\'rinishini tanlang</string>
   <string name="morphe_hide_courses_menu_title">Kurslar menyusini yashirish</string>
@@ -281,7 +279,6 @@ Cheklovlar:
   <string name="morphe_hide_post_comment_button_title">Izohlar tugmasini yashirish</string>
   <string name="morphe_hide_post_comments_preview_title">Izohlar oldindan ko\'rishni yashirish</string>
   <string name="morphe_hide_post_comments_preview_summary">Postlar ostidagi izohlarning oldindan ko\'rish qismini yashiradi</string>
-  <string name="morphe_hide_post_share_button_title">Ulashish tugmasini yashirish</string>
   <string name="morphe_hide_post_share_button_summary">Post rasmlarining yuklab olish tugmasi \"Ulashish\" tugmasi yonida chizilgan, shuning uchun u ham yashirilgan</string>
   <string name="morphe_hide_ask_gemini_button_title">\'Gemini dan so\'rash\' tugmasini yashirish</string>
   <string name="morphe_hide_ask_gemini_button_summary">\'Ushbu video haqida so\'rash\' panelining pastki qismidagi \'Gemini dan so\'rash\' tugmasini yashiradi</string>
@@ -296,9 +293,6 @@ Cheklovlar:
   <string name="morphe_hide_in_this_video_button_title">\"Ushbu videoda\" tugmasini yashirish</string>
   <string name="morphe_hide_info_panels_title">Ma\'lumot panellarini yashirish</string>
   <string name="morphe_hide_info_panels_summary">Maʼlumotli kontekst panellarini yashiradi, masalan, tibbiy maʼlumotlar</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">“A\'zoga qo\'shilish” tugmasini yashirish</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">“Jonli chatni qayta ko\'rish” tugmasini yashirish</string>
@@ -314,8 +308,6 @@ Cheklovlar:
   <string name="morphe_hide_tap_and_hold_gradient_summary">Tezlashtirish uchun bosib turgan holda barmog\'ingizni surganingizda pleyer boshqaruvi gradientini yashiradi</string>
   <string name="morphe_hide_timed_reactions_title">Vaqtli reaksiya bildirishlarni yashirish</string>
   <string name="morphe_hide_timed_reactions_summary">Izohlar boʻlimida va jonli chatda emoji bilan munosabat bildiruvchi funksiyani yashiradi</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">\"Yordam va fikr-mulohazalar\" menyusini yashirish</string>
   <string name="morphe_hide_help_feedback_menu_summary">Qidiruv natijalari kabi joylarda uch nuqtali tugma bosilganda \"Yordam va fikr-mulohazalar\" menyusini yashiradi</string>
   <string name="morphe_hide_handle_title">Handle-ni yashirish</string>
   <string name="morphe_hide_handle_summary">\"Siz\" vkladkasida kanalingiz handle-ini yashiradi</string>
@@ -358,7 +350,6 @@ Cheklovlar:
   <string name="morphe_hide_ask_button_title">So\'rash tugmasini yashirish</string>
   <string name="morphe_hide_channel_profile_button_title">Kanal va Obuna tugmasini yashirish</string>
   <string name="morphe_hide_channel_profile_button_summary">Harakatlar panelining boshida kanal avatarini va Obuna tugmasini yashiradi</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Obuna tugmasini yashirish</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Harakatlar paneli boshidagi kanal avatari yonidagi Obuna va A\'zo bo\'lish tugmalarini yashiradi</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Klip tugmasini yashirish</string>
@@ -434,7 +425,6 @@ Cheklovlar:
   <string name="morphe_hide_comments_preview_comment_hidden">Izoh Morphe tomonidan yashirildi…</string>
   <string name="morphe_minimal_comments_button_title">Minimalistik izohlar tugmasini yoqish</string>
   <string name="morphe_minimal_comments_button_summary">Izohlar tugmasida ko\'rsatiladigan sirpanuvchi kartalar va ularning sahifalar selektorini yashiradi</string>
-  <string name="morphe_hide_comments_thanks_button_title">“Rahmat” tugmasini yashirish</string>
   <string name="morphe_hide_comments_timestamp_button_title">Vaqt belgisi tugmasini yashirish</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Top muxlislar\' tugmasini yashirish</string>
   <string name="morphe_hide_comments_translate_button_title">Tarjima tugmasini yashirish</string>
@@ -489,7 +479,6 @@ Cheklovlar:
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Yozuvlar tugmasini yashirish</string>
   <string name="morphe_hide_cast_button_title">Translyatsiya tugmasini yashirish</string>
-  <string name="morphe_hide_cast_button_summary">Video pleyer va asboblar panelidagi Cast tugmasini yashiradi</string>
   <string name="morphe_hide_collapse_button_title">Qisqartirish tugmasini yashirish</string>
   <string name="morphe_hide_fullscreen_button_title">To\'liq ekran tugmasini yashirish</string>
   <string name="morphe_hide_player_control_buttons_background_title">Pleyer boshqaruv tugmalarining fonini yashirish</string>
@@ -889,7 +878,7 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Yoyiluvchi menyuda reklama oq ro\'yxati</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Ushbu videoning kanalida reklamalar ijro etilishiga imkon beruvchi yoyilma elementni qo\'shadi</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ushbu funksiya PotHelperdan foydalanishni yoki \"Video oqimlarini spoof qilish\"ni TV yoki Android VR tizimiga kirishga o\'zgartirishni talab qilishi mumkin</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ushbu funksiya PotHelperdan foydalanishni yoki \"Video oqimlarini soxtalashtirish\" sozlamasini \"TV\" yoki \"Android VR\" tizimiga kirishga o\'zgartirishni talab qilishi mumkin</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Yoyilma menyudagi tezlik oq ro\'yxati</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Ushbu videoning kanalini doimo 1.0x tezlikda ijro etuvchi yoyma elementni qo\'shadi</string>
   <string name="morphe_queue_manager_check_failed_auth">Tizimga kirmagan</string>
@@ -1086,8 +1075,6 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_caption_block_translation_failed">Ba\'zi subtitr tarjimalari mavjud emas. Mavjud subtitrlar ko\'rsatilmoqda.</string>
   <string name="morphe_caption_blocks_too_large">Subtitrlarning har ikkala tili ushbu pleyerga sig\'maydi. Asosiy til ko\'rsatilmoqda.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigatsiya paneli</string>
-  <string name="morphe_navigation_bar_screen_summary">Pastki navigatsiya panelida qaysi tugmalar ko\'rinishini tanlang</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Uy tugmasini yashirish</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1105,11 +1092,11 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_watch_later_navigation_label">Keyinroq ko\'rish</string>
   <string name="morphe_show_settings_button_title">Sozlamalar tugmasini koʻrsatish</string>
   <string name="morphe_show_settings_button_type_title">Sozlamalar tugmasining harakati</string>
-  <string name="morphe_show_settings_button_type_summary">Agar yoqilgan boʻlsa Morphe sozlamalarini ochadi, agar oʻchirilsa YouTube sozlamalarini ochadi</string>
+  <string name="morphe_show_settings_button_type_summary">Yoqilganda bosish Morphe sozlamalarini ochadi, uzoq bosish YouTube sozlamalarini ochadi; almashtirish uchun o\'chiring</string>
   <string name="morphe_navigation_buttons_order_title">Navigatsiya tugmalari tartibi</string>
   <string name="morphe_navigation_buttons_order_summary">Navigatsiya panelidagi tugmalar tartibini o\'zgartirish uchun ularni suring</string>
   <string name="morphe_swap_create_with_notifications_button_title">Yaratish tugmasini bildirishnoma tugmasi bilan almashtirish</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Agar ushbu sozlamani o\'zgartirish ta\'sir qilmasa, inkognito rejimiga o\'ting</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Bildirishnomalar tugmasini navigatsiya paneliga va Yaratish tugmasini asboblar paneliga ko\"chiradi. Agar o\"zgarishlar kuchga kirmasa, Inkognito rejimiga o\"tib ko\"ring</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigatsiya tugma yorliqlarini yashirish</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Yangi kontent nuqtasini yashirish</string>
   <string name="morphe_hide_navigation_bar_title">Navigatsiya panelini yashirish</string>
@@ -1148,12 +1135,10 @@ Sozlamalarga kirish uchun General → Toolbar → Show Settings button orqali So
   <string name="morphe_navigation_bar_glass_size_width">Maksimal kenglik</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Tugmalar oralig\'i</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Ko\'rsatilgan tugmalar: %1$s / %2$s</string>
-  <string name="morphe_toolbar_screen_title">Asboblar paneli</string>
-  <string name="morphe_toolbar_screen_summary">Pleerdagi paydo boʻladigan tugmalarni tanlang</string>
   <string name="morphe_hide_toolbar_chat_button_title">Chat tugmasini yashirish</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Hamroh tugmasini yashirish</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon tugmasini yashirish</string>
   <string name="morphe_hide_toolbar_search_button_title">Qidiruv tugmasini yashirish</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Yoqilganda bosish Morphe sozlamalarini ochadi, uzoq bosish YouTube sozlamalarini ochadi; almashtirish uchun o\'chiring</string>
   <string name="morphe_toolbar_buttons_order_title">Asboblar paneli tugmalari tartibi</string>
   <string name="morphe_toolbar_buttons_order_summary">Asboblar panelidagi tugmalar tartibini o\'zgartirish uchun ularni suring</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1184,43 +1169,28 @@ Sozlamalarga kirish uchun General → Toolbar → Show Settings button orqali So
   <string name="morphe_disable_shorts_double_tap_to_like_title">Ikki marta bosib yoqtirishni o\'chirish</string>
   <string name="morphe_hide_shorts_ai_button_title">AI tugmasini yashirish</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">\'Auto-dubbed\' yorligʻini yashirish</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Kanal panelini yashirish</string>
-  <string name="morphe_hide_shorts_comments_button_title">Izohlar tugmasini yashirish</string>
   <string name="morphe_hide_shorts_effect_button_title">Effekt tugmasini yashirish</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Video havolasi yorlig\'ini yashirish</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Ishora yordamlarini yashirish</string>
   <string name="morphe_hide_shorts_green_screen_button_title">“Yashil ekran” tugmasini yashirish</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Hashtag tugmasini yashirish</string>
   <string name="morphe_hide_shorts_info_panel_title">Ma\'lumot panelini yashirish</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">“A’zoga qo\'shilish” tugmasini yashirish</string>
   <string name="morphe_hide_shorts_like_button_title">Yoqtirish tugmasini yashirish</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Yoqtirish tugmasi favvora animatsiyasini yashirish</string>
   <string name="morphe_hide_shorts_live_preview_title">Jonli efir ko\'rsatilishini yashirish</string>
   <string name="morphe_hide_shorts_location_label_title">Joy holati yorlig\'ini yashirish</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Navigatsiya panelini yashirish</string>
   <string name="morphe_hide_shorts_new_posts_button_title">“Yangi postlar” tugmasini yashirish</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">To\'xtatilgan qoplama tugmalarini yashirish</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Oldindan ko\'rsatish izohini yashirish</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Remix tugmasini yashirish</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Saqlash tugmasini yashirish</string>
   <string name="morphe_hide_shorts_save_sound_button_title">“Musiqani saqlash” tugmasini yashirish</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Qidiruv takliflarini yashirish</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Ulashish tugmasini yashirish</string>
-  <string name="morphe_hide_shorts_shop_button_title">“Do\'kon” tugmasini yashirish</string>
   <string name="morphe_hide_shorts_sound_button_title">Ovoz tugmasini yashirish</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Tovush metadata yorlig\'ini yashirish</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">“Obuna” tugmasini yashirish</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">“Super rahmat sotib olish” tugmasini yashirish</string>
   <string name="morphe_hide_shorts_tagged_products_title">Teglangan mahsulotlarni yashirish</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Kelgusi tugmasini yashirish</string>
   <string name="morphe_hide_shorts_use_sound_button_title">“Bu ovozdan foydalanish” tugmasini yashirish</string>
   <string name="morphe_hide_shorts_use_template_button_title">“Bu shablondan foydalanish” tugmasini yashirish</string>
-  <string name="morphe_hide_shorts_video_title_title">Video sarlavhasini yashirish</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">End ekrandagi taklif qilinuvchi videolarni yashirish</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Videoning tugashidan keyin paydo bo'ladigan taklif qilinadigan video qoplamasini yashiradi
@@ -1730,8 +1700,8 @@ AVC (H.264)
   <string name="morphe_video_quality_prioritize_summary">Kodek samaradorligidan ko\'ra mavjud bo\'lgan eng yuqori video sifatiga ustunlik beradi</string>
   <string name="morphe_video_quality_prioritize_dialog">Agar bu sozlama o\'chirilgan bo\'lsa, eski videolar uchun video sifatini tanlash imkoniyati ko\'rinmasligi mumkin</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS AV1 ruxsat berish</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Android VR / visionOS mijozidan foydalanilganda dasturiy AV1 dekodlashga ruxsat beradi</string>
+  <string name="morphe_spoof_video_streams_av1_title">\"Android VR\" / \"visionOS\" AV1 ga ruxsat berish</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\"Android VR\" / \"visionOS\" mijozidan foydalanganda dasturiy AV1 dekodlashiga ruxsat beradi</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ushbu sozlamani yoqish dasturiy AV1 dekodlashidan foydalanishga olib kelishi mumkin.
 
 AV1 bilan video ijrosi qotishi yoki kadrlar tushib qolishi mumkin"</string>
@@ -1968,7 +1938,6 @@ Avtomatik yozib olish ixtiyoriy. U inkognito rejimida yoki akkaunt o'zgarganda t
   <string name="morphe_live_chat_translate_language_title">Tarjima tili</string>
   <string name="morphe_live_chat_translate_exclude_title">Istisno qilingan tillar</string>
   <string name="morphe_live_chat_translate_exclude_summary">Vergul bilan ajratilgan til kodlari, masalan id,en. Ushbu tillardagi xabarlar tarjima qilinmaydi</string>
-  <string name="morphe_live_chat_translate_provider_title">Tarjima provayderi</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API kaliti</string>
