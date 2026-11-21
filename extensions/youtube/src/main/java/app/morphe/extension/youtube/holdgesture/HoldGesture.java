@@ -21,6 +21,16 @@ public final class HoldGesture {
         LOCK_TARGET
     }
 
+    /** How a sideways drag changes the speed. */
+    public enum Adjust {
+        /** The distance from the neutral point is the number of steps. */
+        PRECISE,
+        /** Far from the neutral point the speed keeps changing, faster the farther out. */
+        THROTTLE,
+        /** On the way back from there the speed stays, until the finger is back, rests or turns. */
+        COASTING
+    }
+
     public enum Outcome {
         /** Play again at the speed from before the press. */
         RESTORE,
@@ -40,6 +50,14 @@ public final class HoldGesture {
          */
         void onSpeedChanged(float speed, boolean stepped);
 
+        /**
+         * @param direction -1 or 1 while the speed keeps changing by itself, else 0.
+         */
+        void onAdjustChanged(Adjust adjust, int direction);
+
+        /** The speed is the one of now where the finger is now, and changes from there. */
+        void onNeutralMoved();
+
         /** How far the finger is pulled toward the lock, 0 to 1. */
         void onLockProgress(float progress, boolean armed);
 
@@ -53,7 +71,7 @@ public final class HoldGesture {
         public final float speedStep;
         public final float minSpeed;
         public final float maxSpeed;
-        /** Horizontal distance of one speed step, where the screen has room for it. */
+        /** Horizontal distance of one speed step near the neutral point. */
         public final float stepDistance;
 
         public Config(boolean adjustEnabled, boolean lockEnabled,
@@ -83,10 +101,28 @@ public final class HoldGesture {
     }
 
     static final float ADJUST_ENTER = 22;
-    /** Shortest distance of one speed step that a finger can still stop on. */
-    static final float STEP_DISTANCE_MIN = 8;
+    /** Distance from the neutral point where the speed starts to change by itself. */
+    static final float THROTTLE_ENTER = 48;
+    /** Distances beyond that where the second and the third pace begin. */
+    static final float THROTTLE_SECOND = 22;
+    static final float THROTTLE_THIRD = 46;
+    /** The third pace is never closer to the second one than a finger can tell apart. */
+    static final float THROTTLE_THIRD_MIN = 8;
+    static final long[] THROTTLE_INTERVAL_MS = {210, 88, 42};
+    /** What one interval of the third pace changes. Several steps, where the steps are small. */
+    private static final float THROTTLE_THIRD_SPEED = 0.2f;
+    /** With less room than this to a side of the screen, the throttle of that side begins earlier. */
+    static final float THROTTLE_SHORT_ROOM = 60;
+    static final float THROTTLE_SHORT_ROOM_SHARE = 0.55f;
+    static final float THROTTLE_ENTER_MIN = 22;
     /** A finger does not reach the last bit of the screen at its sides. */
-    static final float SIDE_EDGE_MARGIN = 12;
+    static final float SIDE_EDGE_MARGIN = 8;
+    /** Way back from the farthest point that stops the throttle. */
+    static final float CLUTCH_PULL_BACK = 10;
+    /** Rest on the way back that makes the place of the finger the neutral point. */
+    static final long NEUTRAL_REST_MS = 180;
+    /** A resting finger still moves this much. */
+    static final float REST_SLOP = 2;
     static final float LOCK_ENTER = 26;
     /** Farther than {@link #LOCK_ENTER}, because a sideways drag drifts up and down. */
     static final float LOCK_ENTER_FROM_ADJUST = 46;
@@ -100,6 +136,8 @@ public final class HoldGesture {
     static final float LOCK_DISARM = 6;
 
     private static final int MAX_STEPS = 1000;
+    /** Steps to make up for when the throttle was not run for a while. */
+    private static final int THROTTLE_CATCH_UP = 4;
 
     private final Config config;
     private final Listener listener;
@@ -115,11 +153,23 @@ public final class HoldGesture {
     private int minSteps;
     private int maxSteps;
     private int steps;
-    /** Distance of one step slower and of one step faster. */
-    private float stepLeft;
-    private float stepRight;
-    /** Where the finger is at the start speed. */
-    private float zeroX;
+
+    private Adjust adjust = Adjust.PRECISE;
+    /** Where the finger is at {@link #neutralSteps}. */
+    private float neutralX;
+    private int neutralSteps;
+    private float lastX;
+    private int throttleDirection;
+    /** Index into {@link #THROTTLE_INTERVAL_MS}. */
+    private int throttlePace;
+    private long throttleStepAt;
+    private boolean throttleStepped;
+    /** Farthest distance from the neutral point in this throttle. */
+    private float throttlePeak;
+    /** Farthest that the finger came back since the throttle stopped. */
+    private float coastTurnX;
+    private float restX;
+    private long restSince;
 
     private State lockCameFrom;
     private float lockEnter;
@@ -137,6 +187,10 @@ public final class HoldGesture {
 
     public float speed() {
         return speed;
+    }
+
+    public Adjust adjust() {
+        return adjust;
     }
 
     /**
@@ -157,21 +211,22 @@ public final class HoldGesture {
         while (speedAt(minSteps) > config.minSpeed && minSteps > -MAX_STEPS) minSteps--;
         maxSteps = 0;
         while (speedAt(maxSteps) < config.maxSpeed && maxSteps < MAX_STEPS) maxSteps++;
-        stepLeft = stepDistanceFor(room.left, -minSteps);
-        stepRight = stepDistanceFor(room.right, maxSteps);
         speed = holdSpeed;
         setState(State.HOLD_SPEED);
         listener.onSpeedChanged(speed, false);
     }
 
-    public void move(float x, float y) {
+    /**
+     * @param now Time in milliseconds, of the same clock as {@link #tick(long)}.
+     */
+    public void move(float x, float y, long now) {
         final float dx = x - startX;
         final float dy = y - startY;
 
         switch (state) {
             case HOLD_SPEED:
                 if (config.adjustEnabled && Math.abs(dx) > ADJUST_ENTER && Math.abs(dx) > Math.abs(dy)) {
-                    zeroX = x;
+                    setNeutral(x);
                     setState(State.SPEED_ADJUST);
                 } else if (config.lockEnabled && dy > LOCK_ENTER && dy > Math.abs(dx)) {
                     enterLock(LOCK_ENTER, dy);
@@ -181,7 +236,8 @@ public final class HoldGesture {
                 if (config.lockEnabled && dy > LOCK_ENTER_FROM_ADJUST) {
                     enterLock(LOCK_ENTER_FROM_ADJUST, dy);
                 } else {
-                    adjustSpeed(x);
+                    lastX = x;
+                    adjustSpeed(x, now);
                 }
                 break;
             case LOCK_TARGET:
@@ -193,6 +249,19 @@ public final class HoldGesture {
                 break;
             case IDLE:
                 break;
+        }
+    }
+
+    /**
+     * What goes on while the finger rests. To be called about every frame during {@link State#SPEED_ADJUST}.
+     */
+    public void tick(long now) {
+        if (state != State.SPEED_ADJUST) return;
+
+        if (adjust == Adjust.THROTTLE) {
+            runThrottle(now);
+        } else if (adjust == Adjust.COASTING && now - restSince >= NEUTRAL_REST_MS) {
+            moveNeutral(lastX);
         }
     }
 
@@ -221,33 +290,165 @@ public final class HoldGesture {
         }
     }
 
-    /**
-     * Distance of one step toward one side. Shorter than usual when the finger would meet
-     * the edge of the screen before the last step.
-     */
-    private float stepDistanceFor(float roomAtSide, int stepsToLast) {
-        if (stepsToLast == 0) return config.stepDistance;
+    private void adjustSpeed(float x, long now) {
+        final float offset = x - neutralX;
+        final float distance = Math.abs(offset);
+        final int direction = offset < 0 ? -1 : 1;
+        final float enter = throttleEnter(direction);
 
-        final float fitting = (roomAtSide - ADJUST_ENTER - SIDE_EDGE_MARGIN) / stepsToLast;
-        return Math.max(STEP_DISTANCE_MIN, Math.min(config.stepDistance, fitting));
-    }
-
-    private float offsetOf(int steps) {
-        return steps * (steps < 0 ? stepLeft : stepRight);
-    }
-
-    private void adjustSpeed(float x) {
-        final float offset = x - zeroX;
-        int target = Math.round(offset / (offset < 0 ? stepLeft : stepRight));
-        if (target < minSteps || target > maxSteps) {
-            // Start over from the end of the range, so that a turn back takes effect at once.
-            target = Math.max(minSteps, Math.min(maxSteps, target));
-            zeroX = x - offsetOf(target);
+        switch (adjust) {
+            case PRECISE:
+                if (distance <= enter) {
+                    stepTo(x);
+                    break;
+                }
+                stepTo(neutralX + direction * enter);
+                if (canStep(direction)) {
+                    throttleDirection = direction;
+                    startThrottle(distance, now);
+                }
+                break;
+            case THROTTLE:
+                runThrottle(now);
+                if (direction == throttleDirection && distance > enter
+                        && !(throttleStepped && throttlePeak - distance >= CLUTCH_PULL_BACK)) {
+                    throttlePeak = Math.max(throttlePeak, distance);
+                    throttlePace = paceAt(distance, direction);
+                } else if (throttleStepped) {
+                    coastTurnX = x;
+                    restX = x;
+                    restSince = now;
+                    setAdjust(Adjust.COASTING, 0);
+                    adjustSpeed(x, now);
+                } else {
+                    // Out and back before the first step by itself.
+                    setAdjust(Adjust.PRECISE, 0);
+                    stepTo(x);
+                }
+                break;
+            case COASTING:
+                if (Math.abs(x - restX) > REST_SLOP) {
+                    restX = x;
+                    restSince = now;
+                }
+                if (now - restSince >= NEUTRAL_REST_MS) {
+                    moveNeutral(x);
+                } else if ((x - coastEnd()) * throttleDirection <= 0) {
+                    // Back. What the finger moves on from here is a drag the other way.
+                    moveNeutral(coastEnd());
+                    stepTo(x);
+                } else if ((x - coastTurnX) * throttleDirection < CLUTCH_PULL_BACK) {
+                    coastTurnX = throttleDirection > 0 ? Math.min(coastTurnX, x) : Math.max(coastTurnX, x);
+                } else if (offset * throttleDirection > throttleEnter(throttleDirection)) {
+                    // Pushed out again.
+                    startThrottle(distance, now);
+                } else {
+                    // Turned around: the drag goes on from where it turned.
+                    moveNeutral(coastTurnX);
+                    stepTo(x);
+                }
+                break;
         }
+    }
+
+    /**
+     * Sets the speed that the place of the finger stands for near the neutral point.
+     */
+    private void stepTo(float x) {
+        int target = neutralSteps + Math.round((x - neutralX) / config.stepDistance);
+        if (target < minSteps || target > maxSteps) {
+            target = Math.max(minSteps, Math.min(maxSteps, target));
+            // Start over from the end of the range, so that a turn back takes effect at once.
+            neutralX = x;
+            neutralSteps = target;
+        }
+        setSteps(target);
+    }
+
+    private void setSteps(int target) {
         if (target != steps) {
             steps = target;
             speed = speedAt(steps);
             listener.onSpeedChanged(speed, true);
+        }
+    }
+
+    /**
+     * Where the way back ends: at the neutral point, or at the point of the press when that is
+     * farther back, which is where the thumb is at ease.
+     */
+    private float coastEnd() {
+        return throttleDirection > 0 ? Math.min(neutralX, startX) : Math.max(neutralX, startX);
+    }
+
+    private boolean canStep(int direction) {
+        return direction < 0 ? steps > minSteps : steps < maxSteps;
+    }
+
+    private void startThrottle(float distance, long now) {
+        throttlePeak = distance;
+        throttlePace = paceAt(distance, throttleDirection);
+        throttleStepAt = now;
+        throttleStepped = false;
+        setAdjust(Adjust.THROTTLE, throttleDirection);
+    }
+
+    private void runThrottle(long now) {
+        final long interval = THROTTLE_INTERVAL_MS[throttlePace];
+        final int count = throttlePace < 2 ? 1
+                : Math.max(1, Math.round(THROTTLE_THIRD_SPEED / config.speedStep));
+        for (int i = 0; i < THROTTLE_CATCH_UP && now - throttleStepAt >= interval; i++) {
+            throttleStepAt += interval;
+            final int target = Math.max(minSteps, Math.min(maxSteps, steps + throttleDirection * count));
+            if (target != steps) {
+                throttleStepped = true;
+                setSteps(target);
+            }
+        }
+        if (now - throttleStepAt >= interval) {
+            throttleStepAt = now;
+        }
+    }
+
+    private float roomToward(int direction) {
+        final float moved = neutralX - startX;
+        return direction < 0 ? room.left + moved : room.right - moved;
+    }
+
+    private float throttleEnter(int direction) {
+        final float roomAtSide = roomToward(direction);
+        return roomAtSide < THROTTLE_SHORT_ROOM
+                ? Math.max(THROTTLE_ENTER_MIN, roomAtSide * THROTTLE_SHORT_ROOM_SHARE)
+                : THROTTLE_ENTER;
+    }
+
+    /**
+     * The paces move closer together where the screen ends before the third one.
+     */
+    private int paceAt(float distance, int direction) {
+        final float enter = throttleEnter(direction);
+        final float reach = roomToward(direction) - SIDE_EDGE_MARGIN - enter;
+        final float squeeze = Math.max(THROTTLE_THIRD_MIN, Math.min(THROTTLE_THIRD, reach)) / THROTTLE_THIRD;
+        final float beyond = distance - enter;
+        return beyond < THROTTLE_SECOND * squeeze ? 0 : beyond < THROTTLE_THIRD * squeeze ? 1 : 2;
+    }
+
+    private void setNeutral(float x) {
+        neutralX = x;
+        neutralSteps = steps;
+        lastX = x;
+        setAdjust(Adjust.PRECISE, 0);
+    }
+
+    private void moveNeutral(float x) {
+        setNeutral(x);
+        listener.onNeutralMoved();
+    }
+
+    private void setAdjust(Adjust next, int direction) {
+        if (adjust != next) {
+            adjust = next;
+            listener.onAdjustChanged(next, direction);
         }
     }
 
@@ -257,6 +458,7 @@ public final class HoldGesture {
         final float fitting = room.below - enter - LOCK_EDGE_MARGIN;
         lockTravel = Math.max(LOCK_TRAVEL_MIN, Math.min(LOCK_TRAVEL, fitting));
         lockArmed = false;
+        setAdjust(Adjust.PRECISE, 0);
         setState(State.LOCK_TARGET);
         updateLock(dy);
     }
@@ -277,13 +479,14 @@ public final class HoldGesture {
         listener.onLockProgress(0, false);
         if (lockCameFrom == State.SPEED_ADJUST) {
             // The finger may have moved sideways on the way down and back. Keep the speed.
-            zeroX = x - offsetOf(steps);
+            setNeutral(x);
         }
         setState(lockCameFrom);
     }
 
     private void finish(Outcome outcome) {
         final float finalSpeed = speed;
+        setAdjust(Adjust.PRECISE, 0);
         setState(State.IDLE);
         listener.onFinished(outcome, finalSpeed);
     }

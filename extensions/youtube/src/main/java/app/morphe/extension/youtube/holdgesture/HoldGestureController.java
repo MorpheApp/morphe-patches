@@ -25,6 +25,7 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.holdgesture.HoldGesture.Adjust;
 import app.morphe.extension.youtube.holdgesture.HoldGesture.Outcome;
 import app.morphe.extension.youtube.holdgesture.HoldGesture.State;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -48,6 +49,7 @@ import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
 public final class HoldGestureController implements HoldGesture.Listener, WindowTouchInterceptor.TouchHandler {
 
     public enum SpeedStep {
+        STEP_005(0.05f),
         STEP_010(0.1f),
         STEP_025(0.25f),
         STEP_050(0.5f);
@@ -101,6 +103,7 @@ public final class HoldGestureController implements HoldGesture.Listener, Window
     private HoldGesture gesture;
     private boolean lockArmed;
     private boolean toldAboutPressToSwipe;
+    private final Runnable tickGesture = this::tickGesture;
 
     /** Speed to go back to when the hold ends without a lock. */
     private float speedBeforeHold;
@@ -131,23 +134,21 @@ public final class HoldGestureController implements HoldGesture.Listener, Window
     }
 
     /**
-     * Injection point. Called when a long press on the player is reached.
+     * Injection point. Called when a long press on the player is reached
+     * and the app is about to play faster while the press lasts.
      *
-     * @param original Whether YouTube is about to play faster while the press lasts.
-     * @return Whether YouTube should do that itself.
+     * @return Whether the gesture took over, and the app should do nothing for this long press.
      */
-    public static boolean onTapAndHold(boolean original) {
+    public static boolean onTapAndHold() {
         try {
-            if (!Settings.HOLD_GESTURE.get()) return original;
+            if (!Settings.HOLD_GESTURE.get()) return false;
 
-            Logger.printDebug(() -> "Long press, tap and hold of the app: " + original);
-            if (original && instance.begin()) {
-                return false;
-            }
+            Logger.printDebug(() -> "Long press with tap and hold of the app");
+            return instance.begin();
         } catch (Exception ex) {
             Logger.printException(() -> "onTapAndHold failure", ex);
+            return false;
         }
-        return original;
     }
 
     // endregion
@@ -245,7 +246,7 @@ public final class HoldGestureController implements HoldGesture.Listener, Window
                 gesture.cancel();
             } else if (action == MotionEvent.ACTION_MOVE) {
                 final float density = density();
-                gesture.move(fingerX / density, fingerY / density);
+                gesture.move(fingerX / density, fingerY / density, event.getEventTime());
             }
         }
         if (ended) {
@@ -377,6 +378,8 @@ public final class HoldGestureController implements HoldGesture.Listener, Window
             case SPEED_ADJUST -> {
                 overlay.showRuler();
                 overlay.hideLockTarget();
+                overlay.removeCallbacks(tickGesture);
+                overlay.postOnAnimation(tickGesture);
             }
             case LOCK_TARGET -> overlay.showLockTarget();
             case IDLE -> {
@@ -385,6 +388,40 @@ public final class HoldGestureController implements HoldGesture.Listener, Window
             }
         }
         updateBadge();
+    }
+
+    /**
+     * Part of a sideways drag goes on while the finger rests, so the gesture is asked every frame.
+     */
+    private void tickGesture() {
+        final HoldGesture current = gesture;
+        final HoldGestureOverlayView overlay = overlayRef.get();
+        if (current == null || overlay == null || current.state() != State.SPEED_ADJUST) return;
+
+        // The same clock as the times of the touch events.
+        current.tick(SystemClock.uptimeMillis());
+        if (gesture == current && current.state() == State.SPEED_ADJUST) {
+            overlay.postOnAnimation(tickGesture);
+        }
+    }
+
+    @Override
+    public void onAdjustChanged(Adjust adjust, int direction) {
+        Logger.printDebug(() -> "Sideways drag: " + adjust + ", direction: " + direction);
+        final HoldGestureOverlayView overlay = overlayRef.get();
+        if (overlay != null) {
+            overlay.setAdjust(adjust, direction);
+        }
+        if (adjust == Adjust.THROTTLE) {
+            // Stronger than the click of a step, like getting over an edge.
+            haptic(HapticFeedbackConstants.CONTEXT_CLICK);
+        }
+    }
+
+    @Override
+    public void onNeutralMoved() {
+        Logger.printDebug(() -> "Neutral point moved to the finger");
+        haptic(HapticFeedbackConstants.KEYBOARD_TAP);
     }
 
     @Override

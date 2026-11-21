@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.holdgesture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -79,14 +79,22 @@ val holdGesturePatch = patch(
         TapAndHoldSpeedFingerprint.let {
             it.clearMatch()
             it.method.apply {
-                val enabledIndex = it.instructionMatches[3].index
-                val enabledRegister = getInstruction<OneRegisterInstruction>(enabledIndex).registerA
+                // The last check before the app plays faster: "already playing faster".
+                // Asking here and returning leaves out both what the app does for tap and hold
+                // and what it does for a long press without it, which shows the player controls.
+                val alreadyFasterIndex = it.instructionMatches[5].index
+                val register = getInstruction<OneRegisterInstruction>(alreadyFasterIndex).registerA
 
-                addInstructions(
-                    enabledIndex,
+                addInstructionsWithLabels(
+                    alreadyFasterIndex,
                     """
-                        invoke-static { v$enabledRegister }, $EXTENSION_CLASS->onTapAndHold(Z)Z
-                        move-result v$enabledRegister
+                        if-nez v$register, :original
+                        invoke-static { }, $EXTENSION_CLASS->onTapAndHold()Z
+                        move-result v$register
+                        if-eqz v$register, :original
+                        return-void
+                        :original
+                        nop
                     """
                 )
             }

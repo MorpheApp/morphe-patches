@@ -38,6 +38,7 @@ final class HoldGestureOverlayView extends View {
     private static final int WHITE = 0xFFFFFFFF;
     private static final int AMBER = 0xFFFBBF24;
     private static final int RED = 0xFFFF4E45;
+    private static final int PALE_CYAN = 0xFF9BDCF5;
     private static final float BORDER_ALPHA = 0.18f;
 
     /** Player height the sizes are designed for. A lower player shrinks everything. */
@@ -68,6 +69,8 @@ final class HoldGestureOverlayView extends View {
     /** The ruler folds away when the speed has not changed for this long, to uncover the video. */
     private static final long RULER_IDLE_MS = 1200;
     private static final long RIPPLE_MS = 450;
+    private static final long THROTTLE_PULSE_MS = 520;
+    private static final int THROTTLE_GLOW_STRIPS = 24;
 
     private final float density;
     private float scale = 1;
@@ -93,8 +96,10 @@ final class HoldGestureOverlayView extends View {
     /** Where the badge is, as a distance from the top center of the player. */
     private final Spring badgeShiftX = new Spring(300, 0.9f);
     private final Spring badgeShiftY = new Spring(300, 0.9f);
+    private final Spring throttleGlow = new Spring(380, 1);
+    private final Spring coasting = new Spring(380, 1);
     private final Spring[] springs = {pillShown, pillExpanded, speedBump, rulerPosition, accent,
-            lockShown, lockArmed, badgeShown, badgeShiftX, badgeShiftY};
+            lockShown, lockArmed, badgeShown, badgeShiftX, badgeShiftY, throttleGlow, coasting};
 
     private float speedStep = 0.25f;
     private float minSpeed = 0.25f;
@@ -103,6 +108,7 @@ final class HoldGestureOverlayView extends View {
     /** Whether a sideways drag is on, during which a change of speed shows the ruler. */
     private boolean rulerInUse;
     private long rulerUsedAt;
+    private int throttleDirection;
     private float lockProgress;
     private boolean lockIsArmed;
     private String lockLabel = "";
@@ -151,6 +157,8 @@ final class HoldGestureOverlayView extends View {
         rulerPosition.snapTo(speed / speedStep);
         accent.snapTo(accentOf(speed));
         pillExpanded.snapTo(0);
+        throttleGlow.snapTo(0);
+        coasting.snapTo(0);
         rulerInUse = false;
         pillShown.setTarget(1);
         invalidate();
@@ -174,6 +182,22 @@ final class HoldGestureOverlayView extends View {
         rulerPosition.setTarget(speed / speedStep);
         accent.setTarget(accentOf(speed));
         speedBump.kick(6);
+        invalidate();
+    }
+
+    /**
+     * Shows how a sideways drag changes the speed: a glow at the end of the ruler toward which
+     * the speed keeps moving, and a pale ruler while moving the finger does not change it.
+     */
+    void setAdjust(HoldGesture.Adjust adjust, int direction) {
+        if (adjust == HoldGesture.Adjust.THROTTLE) {
+            throttleDirection = direction;
+        }
+        throttleGlow.setTarget(adjust == HoldGesture.Adjust.THROTTLE ? 1 : 0);
+        coasting.setTarget(adjust == HoldGesture.Adjust.COASTING ? 1 : 0);
+        if (rulerInUse && adjust != HoldGesture.Adjust.PRECISE) {
+            showRuler();
+        }
         invalidate();
     }
 
@@ -467,7 +491,7 @@ final class HoldGestureOverlayView extends View {
         drawArrows(canvas, centerX + headerWidth / 2 - arrowsWidth, headerY, now, alpha);
 
         if (expanded > 0.02f) {
-            drawRuler(canvas, centerX, top + dp(31), accentColor, alpha * clamp01(expanded));
+            drawRuler(canvas, centerX, top + dp(31), accentColor, alpha * clamp01(expanded), now);
         }
         canvas.restore();
     }
@@ -491,11 +515,29 @@ final class HoldGestureOverlayView extends View {
         }
     }
 
-    private void drawRuler(Canvas canvas, float centerX, float top, int accentColor, float alpha) {
+    private void drawRuler(Canvas canvas, float centerX, float top, int accentColor, float alpha, long now) {
         final float halfWidth = dp(RULER_HALF_WIDTH);
         final float spacing = dp(RULER_TICK_SPACING);
         final float bottom = top + dp(18);
         final float position = rulerPosition.value();
+        final float pale = clamp01(coasting.value());
+        final int tickColor = lerpColor(WHITE, PALE_CYAN, pale);
+
+        final float glow = clamp01(throttleGlow.value());
+        if (glow > 0.01f) {
+            // Brightest at the end, with a wave that runs toward it.
+            final float strip = halfWidth * 0.6f / THROTTLE_GLOW_STRIPS;
+            final float wave = (now % THROTTLE_PULSE_MS) / (float) THROTTLE_PULSE_MS;
+            for (int i = 0; i < THROTTLE_GLOW_STRIPS; i++) {
+                final float outward = (i + 1) / (float) THROTTLE_GLOW_STRIPS;
+                final float pulse = 0.65f + 0.35f * (float) Math.cos((outward - wave) * 2 * Math.PI);
+                fill.setColor(withAlpha(accentColor, alpha * glow * 0.5f * outward * outward * pulse));
+                final float inner = halfWidth - strip * (THROTTLE_GLOW_STRIPS - i);
+                final float from = centerX + throttleDirection * inner;
+                final float to = from + throttleDirection * strip;
+                canvas.drawRect(Math.min(from, to), top + dp(2), Math.max(from, to), bottom, fill);
+            }
+        }
 
         stroke.setStrokeWidth(dp(1.5f));
         final int first = (int) Math.ceil(position - halfWidth / spacing);
@@ -508,11 +550,11 @@ final class HoldGestureOverlayView extends View {
             // Fade out over the outer third.
             final float fade = clamp01((1 - Math.abs(x - centerX) / halfWidth) * 3);
             final boolean whole = Math.abs(tickSpeed - Math.round(tickSpeed)) < 0.001f;
-            stroke.setColor(withAlpha(WHITE, alpha * fade * (whole ? 0.72f : 0.32f)));
+            stroke.setColor(withAlpha(tickColor, alpha * fade * (whole ? 0.72f : 0.32f)));
             canvas.drawLine(x, bottom - dp(whole ? 12 : 6), x, bottom - dp(1), stroke);
         }
 
-        fill.setColor(withAlpha(accentColor, alpha));
+        fill.setColor(withAlpha(lerpColor(accentColor, PALE_CYAN, pale), alpha));
         rect.set(centerX - dp(1.5f), top, centerX + dp(1.5f), bottom);
         canvas.drawRoundRect(rect, dp(1.5f), dp(1.5f), fill);
     }

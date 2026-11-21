@@ -1129,7 +1129,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_hold_gesture_haptic_feedback_title">Enable haptic feedback</string>
     <string name="morphe_hold_gesture_haptic_feedback_summary">Vibrates when the speed changes and when the speed is locked</string>
     <string name="morphe_hold_gesture_speed_swipe_title">Drag sideways to change the speed</string>
-    <string name="morphe_hold_gesture_speed_swipe_summary">After tapping and holding, drag left to play slower and right to play faster</string>
+    <string name="morphe_hold_gesture_speed_swipe_summary">After tapping and holding, drag left to play slower and right to play faster. Farther out, the speed keeps changing until the finger comes back</string>
     <string name="morphe_hold_gesture_speed_step_title">Speed step</string>
     <string name="morphe_hold_gesture_speed_sensitivity_title">Drag sensitivity</string>
     <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Low</string>
