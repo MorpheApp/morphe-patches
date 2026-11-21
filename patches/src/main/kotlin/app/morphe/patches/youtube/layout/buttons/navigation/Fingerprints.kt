@@ -101,6 +101,47 @@ internal object AutoHideNavigationBarOnFeedScrollingFingerprint : Fingerprint(
  * Other listeners of the same drag cancel autoplay, so only the navigation bar listener is hooked.
  * Before 21.23 the method of the navigation bar for this drag is empty.
  */
+/**
+ * Called by any list when it scrolls, before its scroll listeners are called.
+ */
+internal object ListScrolledFingerprint : Fingerprint(
+    definingClass = "Landroid/support/v7/widget/RecyclerView;",
+    returnType = "V",
+    parameters = listOf("I", "I"),
+    filters = listOf(
+        methodCall(smali = "Landroid/support/v7/widget/RecyclerView;->onScrollChanged(IIII)V")
+    )
+)
+
+/**
+ * Scroll listener of the AI search results, which hides the navigation bar through the bottom bar controller,
+ * and through the newer controller if the feature flag is on, whatever the page sets.
+ */
+internal object SearchResultsAutoHideNavigationBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/support/v7/widget/RecyclerView;", "I", "I"),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Math;->abs(I)I"),
+        // Bottom bar controller, which is not called if null.
+        opcode(Opcode.CHECK_CAST),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Z", "Z"),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        // Newer bottom bar controller.
+        literal(45649805L),
+        methodCall(returnType = "Z", location = MatchAfterImmediately()),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = listOf("Z", "Z"), returnType = "V"),
+        // Header that follows the scroll.
+        fieldAccess(opcode = Opcode.SGET_OBJECT, type = "Landroid/util/Property;")
+    )
+)
+
 internal object AutoHideNavigationBarOnDismissMiniplayerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
