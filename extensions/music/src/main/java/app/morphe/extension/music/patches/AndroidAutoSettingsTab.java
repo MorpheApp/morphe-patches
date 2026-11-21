@@ -15,6 +15,7 @@ import android.support.v4.media.MediaBrowserCompat.MediaItem;
 import android.support.v4.media.MediaDescriptionCompat;
 import android.text.TextUtils;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.Nullable;
 import androidx.car.app.IOnDoneCallback;
 import androidx.car.app.model.IOnCheckedChangeListener;
@@ -22,6 +23,7 @@ import androidx.car.app.model.ListTemplate;
 import androidx.car.app.model.Row;
 import androidx.car.app.model.Toggle;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -58,11 +60,16 @@ public final class AndroidAutoSettingsTab {
     private static final IOnDoneCallback TOGGLE_DONE = new IOnDoneCallback.Default();
     @Nullable
     private static volatile StockSettingsSource settingsSource;
+    private static WeakReference<Object> activeConnection = new WeakReference<>(null);
+    private static final Map<String, Choice> pendingChoices = new HashMap<>();
 
     private AndroidAutoSettingsTab() {}
 
+    @MainThread
     public static void setSettingsSource(StockSettingsSource source) {
         settingsSource = source;
+        activeConnection.clear();
+        pendingChoices.clear();
     }
 
     static MediaItem settingsTab() {
@@ -109,22 +116,28 @@ public final class AndroidAutoSettingsTab {
         return rows;
     }
 
-    record Choice(boolean value, String id) {}
+    private record Choice(boolean value, String id) {}
 
-    static List<MediaItem> open(Context context, String id, Map<String, Choice> choices, Runnable onChange)
+    @MainThread
+    static List<MediaItem> open(Context context, String id, Object connection, Runnable reloadSettings)
             throws RemoteException {
         StockSettingsSource source = settingsSource;
         if (source == null) return Collections.emptyList();
+        if (activeConnection.get() != connection) {
+            if (!SETTINGS_MEDIA_ID.equals(id)) return Collections.emptyList();
+            activeConnection = new WeakReference<>(connection);
+            pendingChoices.clear();
+        }
         var settings = loadSettings(source, context).values();
         if (SETTINGS_MEDIA_ID.equals(id)) return items(settings);
         for (Setting setting : settings) {
-            Choice choice = choices.get(setting.key);
+            Choice choice = pendingChoices.get(setting.key);
             if (id.equals(setting.rowId())) {
                 if (setting.toggle == null) return Collections.singletonList(setting.status());
                 boolean checked = setting.toggle.isChecked();
                 if (choice == null || choice.value == checked) {
                     choice = new Choice(!checked, setting.choicePrefix() + UUID.randomUUID());
-                    choices.put(setting.key, choice);
+                    pendingChoices.put(setting.key, choice);
                 }
                 return Collections.singletonList(row(choice.id, stateLabel(choice.value), setting.title, true));
             }
@@ -132,11 +145,13 @@ public final class AndroidAutoSettingsTab {
             // Android Auto can reopen the last choice after the app restarts.
             // Remove the ID before applying the change so reopening it only shows the current value.
             if (choice != null && id.equals(choice.id)) {
-                choices.remove(setting.key);
+                pendingChoices.remove(setting.key);
                 if (setting.toggle != null && setting.toggle.isChecked() != choice.value) {
                     ((StockToggle) (Object) setting.toggle).patch_getDelegate().patch_getListener()
                             .onCheckedChange(choice.value, TOGGLE_DONE);
-                    onChange.run();
+                    AndroidAutoPatch.mainHandler.post(() -> {
+                        if (activeConnection.get() == connection) reloadSettings.run();
+                    });
                     var refreshed = loadSettings(source, context);
                     setting = refreshed.get(setting.key);
                     if (setting == null) return items(refreshed.values());

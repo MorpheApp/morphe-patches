@@ -331,9 +331,7 @@ public final class AndroidAutoPatch {
     static final Handler mainHandler = new Handler(Looper.getMainLooper());
     private static final Runnable REFRESH_LIBRARY = AndroidAutoPatch::refreshLibrary;
 
-    private record SettingsPage(FolderSubscription folder, Map<String, AndroidAutoSettingsTab.Choice> choices) {}
-    @GuardedBy("AndroidAutoPatch.class")
-    private static final WeakHashMap<Object, SettingsPage> settingsPages = new WeakHashMap<>();
+    private static volatile WeakReference<FolderReload> settingsBrowserService = new WeakReference<>(null);
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
     private static final Set<String> playlistsTitleMatchMediaIds = ConcurrentHashMap.newKeySet();
     // Give each browse load a number to distinguish earlier requests from later requests.
@@ -373,7 +371,7 @@ public final class AndroidAutoPatch {
      */
     public static synchronized void setPhoneBrowseClient(PhoneBrowseClient client) {
         phoneBrowseClient = client;
-        settingsPages.clear();
+        settingsBrowserService.clear();
         libraryMediaId = null;
         librarySubscription = null;
         podcastsSubscription = null;
@@ -683,8 +681,7 @@ public final class AndroidAutoPatch {
             @Nullable String parentMediaId, Object connection) {
         if (parentMediaId == null) return;
         if (SETTINGS_MEDIA_ID.equals(parentMediaId)) {
-            settingsPages.computeIfAbsent(connection, ignored -> new SettingsPage(
-                    new FolderSubscription(browserService, parentMediaId, connection), new HashMap<>()));
+            settingsBrowserService = new WeakReference<>(browserService);
         } else if (parentMediaId.startsWith(LIBRARY_PREFIX)
                 || parentMediaId.startsWith(PODCAST_COLLECTION_PREFIX)
                 || parentMediaId.startsWith(HOME_SHELF_PREFIX)
@@ -888,27 +885,18 @@ public final class AndroidAutoPatch {
 
     private static List<MediaBrowserCompat.MediaItem> settingsItems(BrowseRequest request, String id) {
         try {
-            SettingsPage page;
-            synchronized (AndroidAutoPatch.class) {
-                page = settingsPages.get(request.patch_getBrowserConnection());
-            }
-            if (page == null || !(page.folder.browserService.get() instanceof Context context)) return Collections.emptyList();
+            FolderReload service = settingsBrowserService.get();
+            Object connection = request.patch_getBrowserConnection();
+            if (connection == null || !(service instanceof Context context)) return Collections.emptyList();
             int uid = context.getPackageManager().getPackageUid(ANDROID_AUTO_PACKAGE, 0);
             if (request.patch_isFromBrowser(ANDROID_AUTO_PACKAGE, uid)) {
-                return AndroidAutoSettingsTab.open(context, id, page.choices, () -> mainHandler.post(AndroidAutoPatch::refreshSettings));
+                return AndroidAutoSettingsTab.open(context, id, connection,
+                        () -> new FolderSubscription(service, SETTINGS_MEDIA_ID, connection).reload(false));
             }
         } catch (RuntimeException | RemoteException | PackageManager.NameNotFoundException ex) {
             Logger.printException(() -> "Could not open Android Auto settings", ex);
         }
         return Collections.emptyList();
-    }
-
-    private static void refreshSettings() {
-        List<SettingsPage> pages;
-        synchronized (AndroidAutoPatch.class) {
-            pages = new ArrayList<>(settingsPages.values());
-        }
-        for (SettingsPage page : pages) page.folder.reload(false);
     }
 
     @GuardedBy("AndroidAutoPatch.class")

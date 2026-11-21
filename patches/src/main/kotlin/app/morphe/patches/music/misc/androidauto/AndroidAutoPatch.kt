@@ -663,6 +663,8 @@ private fun addBrowseRequestInterface(
         """
     )
 
+    // AndroidX Media's RemoteUserInfo identifies the app that sent the browse request.
+    // The Settings tab can change a YouTube Music preference on the phone, so it accepts requests only from Android Auto.
     val browserInfoConstructor = RemoteUserInfoConstructorFingerprint.originalMethod
     val browserInfo = requestClass.instanceFields.single { it.type == browserInfoConstructor.definingClass }
     // RemoteUserInfo compares the package name and UID when the expected process ID is unknown (-1).
