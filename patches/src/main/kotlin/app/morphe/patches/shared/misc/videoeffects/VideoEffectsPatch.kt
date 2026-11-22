@@ -51,7 +51,10 @@ internal fun videoEffectsPatch(
         preferenceScreen.addPreferences(
             ListPreference(
                 key = "morphe_video_effect",
-                tag = "app.morphe.extension.shared.settings.preference.VideoEffectListPreference"
+                tag = "app.morphe.extension.shared.settings.preference.VideoEffectListPreference",
+                // The effects are user data, and the preference adds them.
+                entriesKey = null,
+                entryValuesKey = null
             ),
             NonInteractivePreference(
                 key = "morphe_video_effects_custom",

@@ -13,15 +13,9 @@ import android.content.Context;
 import android.view.Window;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.patches.VideoEffectsPatch;
-import app.morphe.extension.shared.patches.VideoEffectsPatch.CustomEffect;
-import app.morphe.extension.shared.patches.VideoEffectsPatch.VideoEffect;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ListPreferenceArrayAdapter;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -64,20 +58,8 @@ public class VideoEffectFlyoutButton {
      */
     private static void showDialog(Context context) {
         try {
-            List<CharSequence> entryList = new ArrayList<>();
-            List<CharSequence> entryValueList = new ArrayList<>();
-            for (VideoEffect effect : VideoEffect.values()) {
-                // Custom effects are listed by their names.
-                if (effect == VideoEffect.CUSTOM) continue;
-                entryList.add(str("morphe_video_effect_entry_" + effect.name().toLowerCase(Locale.US)));
-                entryValueList.add(effect.name());
-            }
-            for (CustomEffect effect : VideoEffectsPatch.getCustomEffects()) {
-                entryList.add(effect.name);
-                entryValueList.add(VideoEffectsPatch.CUSTOM_EFFECT_NAME_PREFIX + effect.name);
-            }
-            CharSequence[] entries = entryList.toArray(new CharSequence[0]);
-            CharSequence[] entryValues = entryValueList.toArray(new CharSequence[0]);
+            CharSequence[] entries = VideoEffectsPatch.getEffectEntries();
+            CharSequence[] entryValues = VideoEffectsPatch.getEffectEntryValues();
 
             SheetBottomDialog.DraggableLinearLayout mainLayout =
                     SheetBottomDialog.createMainLayout(context, LegacyPlayerControlButton.getDialogBackgroundColor());
@@ -94,7 +76,7 @@ public class VideoEffectFlyoutButton {
             };
             listView.setDivider(null);
             ListPreferenceArrayAdapter adapter = new ListPreferenceArrayAdapter(
-                    context, entries, entryValues, VideoEffectsPatch.getSelectedEffectEntryValue());
+                    context, entries, entryValues, Settings.VIDEO_EFFECT.get());
             listView.setAdapter(adapter);
             mainLayout.addView(listView);
 
@@ -104,10 +86,9 @@ public class VideoEffectFlyoutButton {
             listView.setOnItemClickListener((parent, view, position, id) -> {
                 try {
                     String value = entryValues[position].toString();
-                    VideoEffect effect = VideoEffectsPatch.saveCustomEffectNameOfEntryValue(value);
-                    Settings.VIDEO_EFFECT.save(effect);
+                    Settings.VIDEO_EFFECT.save(value);
 
-                    if (effect != VideoEffect.NONE && !VideoEffectsPatch.isCurrentVideoDrawnWithEffects()) {
+                    if (!value.isEmpty() && !VideoEffectsPatch.isCurrentVideoDrawnWithEffects()) {
                         dialog.dismiss();
                         LoadVideoPatch.initializeReloadVideo();
                         return;

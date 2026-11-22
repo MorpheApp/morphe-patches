@@ -7,6 +7,8 @@
 
 package app.morphe.extension.shared.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.opengl.EGL14;
 import android.opengl.EGLConfig;
 import android.opengl.EGLContext;
@@ -32,44 +34,19 @@ import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
  * Draws videos with an effect shader.
  * <p>
  * YouTube and YouTube Music can draw videos with their own OpenGL renderer instead of showing
- * the decoder output directly. Its passthrough shader is replaced with one that holds all effects,
- * and the effect is picked with a uniform for every frame, so it can be changed while a video plays.
+ * the decoder output directly. Its passthrough shader is replaced with one that holds the code of
+ * the selected effect. All effects are user changeable code, and the default ones are in
+ * {@link VideoEffectPresets}.
  */
 @SuppressWarnings("unused")
 public final class VideoEffectsPatch {
-
-    /**
-     * Each effect holds the shader expression that draws it, from the picture coordinates {@code uv}.
-     * The order is the effect number in the fragment shader.
-     */
-    public enum VideoEffect {
-        NONE("pick(uv)"),
-        ENHANCE_LOW("enhance(uv, 0.33)"),
-        ENHANCE_MEDIUM("enhance(uv, 0.67)"),
-        ENHANCE_HIGH("enhance(uv, 1.0)"),
-        VIVID_COLORS("vivid(pick(uv))"),
-        MORE_CONTRAST("contrast(pick(uv), 0.55)"),
-        SHARPEN("sharpen(uv, 0.7)"),
-        BRIGHTEN_SHADOWS("brightenShadows(pick(uv))"),
-        WARM_COLORS("pick(uv) * vec3(1.0, 0.86, 0.66)"),
-        COLOR_BLIND_DEUTERANOPIA("daltonize(pick(uv), 1)"),
-        COLOR_BLIND_PROTANOPIA("daltonize(pick(uv), 2)"),
-        COLOR_BLIND_TRITANOPIA("daltonize(pick(uv), 3)"),
-        BLACK_AND_WHITE("vec3(luma(pick(uv)))"),
-        CUSTOM("customEffect(uv)");
-
-        private final String shaderExpression;
-
-        VideoEffect(String shaderExpression) {
-            this.shaderExpression = shaderExpression;
-        }
-    }
 
     /**
      * Animations use the time in seconds. It wraps so that it keeps its precision in the shader.
@@ -176,65 +153,6 @@ public final class VideoEffectsPatch {
                 return mix(c, c * c * (3.0 - 2.0 * c), amount);
             }
 
-            // Raises the saturation of dull colors more than of colors that are already saturated.
-            vec3 vivid(vec3 c) {
-                float saturation = max(c.r, max(c.g, c.b)) - min(c.r, min(c.g, c.b));
-                return adjustSaturation(c, 1.15 + 0.5 * (1.0 - smoothstep(0.0, 0.5, saturation)));
-            }
-
-            // Unsharp mask with the 4 neighbor pixels.
-            vec3 sharpen(vec2 uv, float amount) {
-                vec2 px = 1.0 / uResolution;
-                vec3 c = pick(uv);
-                vec3 blur = (pick(uv + vec2(px.x, 0.0)) + pick(uv - vec2(px.x, 0.0))
-                        + pick(uv + vec2(0.0, px.y)) + pick(uv - vec2(0.0, px.y))) * 0.25;
-                return clamp(c + (c - blur) * amount, 0.0, 1.0);
-            }
-
-            // Brightens the dark parts with a gamma curve and keeps the bright parts the same.
-            // No channel is made brighter than full, so the colors don't change.
-            vec3 brightenShadows(vec3 c) {
-                float l = max(luma(c), 0.001);
-                float brightened = mix(pow(l, 0.6), l, smoothstep(0.2, 0.7, l));
-                float brightest = max(c.r, max(c.g, c.b));
-                return c * min(min(brightened / l, 1.0 / max(brightest, 0.001)), 4.0);
-            }
-
-            // Sharpens and adds color and contrast. A strength of 1 is the full effect.
-            vec3 enhance(vec2 uv, float strength) {
-                vec3 c = sharpen(uv, 0.4 * strength);
-                c = mix(c, vivid(c), strength);
-                return contrast(c, 0.25 * strength);
-            }
-
-            // Moves the colors that a color blind viewer can't tell apart into colors that they can see.
-            // The color blindness is simulated with the matrices of Machado, Oliveira and Fernandes (2009),
-            // and the difference to the original is added to the color channels that the viewer can see.
-            vec3 daltonize(vec3 c, int type) {
-                vec3 simulated;
-                if (type == 1) {
-                    simulated = vec3(
-                        dot(c, vec3(0.367322, 0.860646, -0.227968)),
-                        dot(c, vec3(0.280085, 0.672501, 0.047413)),
-                        dot(c, vec3(-0.011820, 0.042940, 0.968881)));
-                } else if (type == 2) {
-                    simulated = vec3(
-                        dot(c, vec3(0.152286, 1.052583, -0.204868)),
-                        dot(c, vec3(0.114503, 0.786281, 0.099216)),
-                        dot(c, vec3(-0.003882, -0.048116, 1.051998)));
-                } else {
-                    simulated = vec3(
-                        dot(c, vec3(1.255528, -0.076749, -0.178779)),
-                        dot(c, vec3(-0.078411, 0.930809, 0.147602)),
-                        dot(c, vec3(0.004733, 0.691367, 0.303900)));
-                }
-                vec3 error = c - simulated;
-                vec3 correction = type == 3
-                    ? vec3(error.r + 0.7 * error.b, error.g + 0.7 * error.b, 0.0)
-                    : vec3(0.0, 0.7 * error.r + error.g, 0.7 * error.r + error.b);
-                return clamp(c + correction, 0.0, 1.0);
-            }
-
             // Point with the center of the picture at (0, 0) and the same scale on both axes.
             vec2 centered(vec2 uv) {
                 return (uv - 0.5) * vec2(uResolution.x / max(uResolution.y, 1.0), 1.0);
@@ -271,8 +189,8 @@ public final class VideoEffectsPatch {
             """;
 
     /**
-     * Custom effect code that shows the video as it is. Used when no custom effect is selected,
-     * or the selected one has an error.
+     * Custom effect code that shows the video as it is. Used when no effect is selected,
+     * or the selected one is missing or has an error.
      */
     private static final String CUSTOM_EFFECT_DEFAULT_CODE = """
             vec3 customEffect(vec2 uv) {
@@ -286,8 +204,8 @@ public final class VideoEffectsPatch {
             CUSTOM_EFFECT_INSTRUCTIONS + "\n" + CUSTOM_EFFECT_DEFAULT_CODE;
 
     /**
-     * Start of a line with the name of a custom effect in the saved setting, and of the
-     * entry values of custom effects in the effect lists. It is never valid in shader code.
+     * Start of a line with the name of an effect in the saved setting.
+     * It is never valid in shader code.
      */
     public static final String CUSTOM_EFFECT_NAME_PREFIX = "@";
 
@@ -430,7 +348,7 @@ public final class VideoEffectsPatch {
     public static String encodeCustomEffects(List<CustomEffect> effects) {
         StringBuilder value = new StringBuilder();
         for (CustomEffect effect : effects) {
-            if (value.length() > 0) value.append('\n');
+            if (Utils.isNotEmpty(value)) value.append('\n');
             value.append(CUSTOM_EFFECT_NAME_PREFIX).append(effect.name);
             for (String line : effect.code.trim().split("\n", -1)) {
                 value.append('\n');
@@ -513,6 +431,33 @@ public final class VideoEffectsPatch {
         return cachedCustomEffects;
     }
 
+    /**
+     * @return Off and the names of the effects, for the effect lists.
+     */
+    public static CharSequence[] getEffectEntries() {
+        List<CustomEffect> effects = getCustomEffects();
+        CharSequence[] entries = new CharSequence[effects.size() + 1];
+        entries[0] = str("morphe_video_effect_entry_none");
+        for (int i = 0, size = effects.size(); i < size; i++) {
+            entries[i + 1] = effects.get(i).name;
+        }
+        return entries;
+    }
+
+    /**
+     * @return The values of {@link #getEffectEntries()}, which are the values of
+     *         {@link SharedYouTubeSettings#VIDEO_EFFECT}.
+     */
+    public static CharSequence[] getEffectEntryValues() {
+        List<CustomEffect> effects = getCustomEffects();
+        CharSequence[] values = new CharSequence[effects.size() + 1];
+        values[0] = "";
+        for (int i = 0, size = effects.size(); i < size; i++) {
+            values[i + 1] = effects.get(i).name;
+        }
+        return values;
+    }
+
     @Nullable
     public static CustomEffect findCustomEffect(String name) {
         for (CustomEffect effect : getCustomEffects()) {
@@ -522,62 +467,30 @@ public final class VideoEffectsPatch {
     }
 
     /**
-     * @return The code of the selected custom effect,
-     *         or code that shows the video as it is if no custom effect is selected.
+     * @return The code of the selected effect,
+     *         or code that shows the video as it is if no effect is selected.
      */
     private static String getSelectedCustomEffectCode() {
-        if (SharedYouTubeSettings.VIDEO_EFFECT.get() == VideoEffect.CUSTOM) {
-            CustomEffect effect = findCustomEffect(SharedYouTubeSettings.VIDEO_EFFECT_CUSTOM_NAME.get());
+        String name = SharedYouTubeSettings.VIDEO_EFFECT.get();
+        if (!name.isEmpty()) {
+            CustomEffect effect = findCustomEffect(name);
             if (effect != null) return effect.code;
         }
         return CUSTOM_EFFECT_DEFAULT_CODE;
     }
 
     /**
-     * @return The entry value of the selected effect in the effect lists. The value of an
-     *         effect is its enum name, and of a custom effect its name after {@link #CUSTOM_EFFECT_NAME_PREFIX}.
-     */
-    public static String getSelectedEffectEntryValue() {
-        VideoEffect effect = SharedYouTubeSettings.VIDEO_EFFECT.get();
-        return effect == VideoEffect.CUSTOM
-                ? CUSTOM_EFFECT_NAME_PREFIX + SharedYouTubeSettings.VIDEO_EFFECT_CUSTOM_NAME.get()
-                : effect.name();
-    }
-
-    /**
-     * @param entryValue A value of {@link #getSelectedEffectEntryValue()}.
-     * @return The effect of the entry value. The name of a custom effect is saved.
-     */
-    public static VideoEffect saveCustomEffectNameOfEntryValue(String entryValue) {
-        if (entryValue.startsWith(CUSTOM_EFFECT_NAME_PREFIX)) {
-            SharedYouTubeSettings.VIDEO_EFFECT_CUSTOM_NAME.save(
-                    entryValue.substring(CUSTOM_EFFECT_NAME_PREFIX.length()));
-            return VideoEffect.CUSTOM;
-        }
-        return VideoEffect.valueOf(entryValue);
-    }
-
-    /**
-     * Adds the custom effect code and the main method that draws the effect of the uEffect uniform.
+     * Adds the custom effect code and the main method, which draws the effect if the uEffect
+     * uniform is 1. With 0 it shows the video as it is, so the effect can be turned off while
+     * the app keeps the program.
      */
     private static String createFragmentShader(String customEffectCode) {
-        StringBuilder shader = new StringBuilder(FRAGMENT_SHADER_FUNCTIONS);
-        shader.append(customEffectCode).append('\n');
-        shader.append("void main() {\n");
-        shader.append("    vec2 uv = vUv;\n");
-        shader.append("    vec3 c;\n");
-        VideoEffect[] effects = VideoEffect.values();
-        for (int i = 1; i < effects.length; i++) {
-            shader.append(i == 1 ? "    if" : "    } else if")
-                    .append(" (uEffect == ").append(i).append(") {\n")
-                    .append("        c = ").append(effects[i].shaderExpression).append(";\n");
-        }
-        shader.append("    } else {\n");
-        shader.append("        c = ").append(VideoEffect.NONE.shaderExpression).append(";\n");
-        shader.append("    }\n");
-        shader.append("    gl_FragColor = vec4(c, 1.0);\n");
-        shader.append("}\n");
-        return shader.toString();
+        return FRAGMENT_SHADER_FUNCTIONS + customEffectCode + "\n" + """
+                void main() {
+                    vec3 c = uEffect == 1 ? customEffect(vUv) : pick(vUv);
+                    gl_FragColor = vec4(c, 1.0);
+                }
+                """;
     }
 
     /**
@@ -626,8 +539,10 @@ public final class VideoEffectsPatch {
 
         Matcher matcher = COMPILER_LINE_NUMBER.matcher(error);
         // StringBuffer, because appendReplacement with a StringBuilder needs Android 14.
+        //noinspection StringBufferMayBeStringBuilder
         StringBuffer result = new StringBuffer();
         while (matcher.find()) {
+            //noinspection ConstantConditions
             int line = Integer.parseInt(matcher.group(1)) - CUSTOM_EFFECT_FIRST_LINE + 1;
             matcher.appendReplacement(result, line > 0 ? "line " + line + ":" : "$0");
         }
@@ -758,7 +673,7 @@ public final class VideoEffectsPatch {
     }
 
     private static boolean isEnabled() {
-        return SharedYouTubeSettings.VIDEO_EFFECT.get() != VideoEffect.NONE;
+        return !SharedYouTubeSettings.VIDEO_EFFECT.get().isEmpty();
     }
 
     /**
@@ -829,7 +744,7 @@ public final class VideoEffectsPatch {
             programCustomEffectCode = cachedCustomEffectCode;
         }
 
-        if (appProgramHasEffects && SharedYouTubeSettings.VIDEO_EFFECT.get() == VideoEffect.CUSTOM) {
+        if (appProgramHasEffects && isEnabled()) {
             String code = getSelectedCustomEffectCode();
             //noinspection StringEquality
             if (code != programCustomEffectCode && !code.equals(programCustomEffectCode)) {
@@ -862,7 +777,7 @@ public final class VideoEffectsPatch {
 
         lastEffectVideoId = currentVideoId;
 
-        GLES20.glUniform1i(effectLocation, SharedYouTubeSettings.VIDEO_EFFECT.get().ordinal());
+        GLES20.glUniform1i(effectLocation, isEnabled() ? 1 : 0);
         GLES20.glUniform1f(timeLocation, (SystemClock.elapsedRealtime() % TIME_WRAP_MILLISECONDS) / 1000f);
         GLES20.glGetIntegerv(GLES20.GL_VIEWPORT, viewport, 0);
         GLES20.glUniform2f(resolutionLocation, viewport[2], viewport[3]);

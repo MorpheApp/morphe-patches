@@ -8,8 +8,8 @@
 package app.morphe.extension.shared.patches;
 
 /**
- * The custom video effects that are there by default. Users can change or delete them,
- * and they are examples of custom effect code.
+ * The video effects that are there by default. Users can change, rename or delete them,
+ * and they are examples of effect code.
  */
 public final class VideoEffectPresets {
 
@@ -17,10 +17,154 @@ public final class VideoEffectPresets {
     }
 
     /**
-     * The default custom effects, in the text format of
-     * {@link VideoEffectsPatch#encodeCustomEffects(java.util.List)}, sorted by name.
+     * The default effects, in the text format of
+     * {@link VideoEffectsPatch#encodeCustomEffects(java.util.List)}. The effects that improve
+     * the picture are first, then the fun effects sorted by name.
      */
     public static final String DEFAULT_CUSTOM_EFFECTS = """
+            @Enhance (low)
+            // Sharpens the picture and adds a little color and contrast.
+
+            // Raises the saturation of dull colors more than of colors that are already saturated.
+            vec3 myVivid(vec3 c) {
+                float saturation = max(c.r, max(c.g, c.b)) - min(c.r, min(c.g, c.b));
+                return adjustSaturation(c, 1.15 + 0.5 * (1.0 - smoothstep(0.0, 0.5, saturation)));
+            }
+
+            vec3 customEffect(vec2 uv) {
+                // 1.0 is the strength of Enhance (high).
+                float strength = 0.33;
+                // Unsharp mask with the 4 neighbor pixels.
+                vec2 px = 1.0 / uResolution;
+                vec3 c = pick(uv);
+                vec3 blur = (pick(uv + vec2(px.x, 0.0)) + pick(uv - vec2(px.x, 0.0))
+                        + pick(uv + vec2(0.0, px.y)) + pick(uv - vec2(0.0, px.y))) * 0.25;
+                c = clamp(c + (c - blur) * 0.4 * strength, 0.0, 1.0);
+                c = mix(c, myVivid(c), strength);
+                return contrast(c, 0.25 * strength);
+            }
+            @Enhance (medium)
+            // Sharpens the picture and adds color and contrast.
+
+            // Raises the saturation of dull colors more than of colors that are already saturated.
+            vec3 myVivid(vec3 c) {
+                float saturation = max(c.r, max(c.g, c.b)) - min(c.r, min(c.g, c.b));
+                return adjustSaturation(c, 1.15 + 0.5 * (1.0 - smoothstep(0.0, 0.5, saturation)));
+            }
+
+            vec3 customEffect(vec2 uv) {
+                // 1.0 is the strength of Enhance (high).
+                float strength = 0.67;
+                // Unsharp mask with the 4 neighbor pixels.
+                vec2 px = 1.0 / uResolution;
+                vec3 c = pick(uv);
+                vec3 blur = (pick(uv + vec2(px.x, 0.0)) + pick(uv - vec2(px.x, 0.0))
+                        + pick(uv + vec2(0.0, px.y)) + pick(uv - vec2(0.0, px.y))) * 0.25;
+                c = clamp(c + (c - blur) * 0.4 * strength, 0.0, 1.0);
+                c = mix(c, myVivid(c), strength);
+                return contrast(c, 0.25 * strength);
+            }
+            @Enhance (high)
+            // Sharpens the picture and adds more color and contrast.
+
+            // Raises the saturation of dull colors more than of colors that are already saturated.
+            vec3 myVivid(vec3 c) {
+                float saturation = max(c.r, max(c.g, c.b)) - min(c.r, min(c.g, c.b));
+                return adjustSaturation(c, 1.15 + 0.5 * (1.0 - smoothstep(0.0, 0.5, saturation)));
+            }
+
+            vec3 customEffect(vec2 uv) {
+                float strength = 1.0;
+                // Unsharp mask with the 4 neighbor pixels.
+                vec2 px = 1.0 / uResolution;
+                vec3 c = pick(uv);
+                vec3 blur = (pick(uv + vec2(px.x, 0.0)) + pick(uv - vec2(px.x, 0.0))
+                        + pick(uv + vec2(0.0, px.y)) + pick(uv - vec2(0.0, px.y))) * 0.25;
+                c = clamp(c + (c - blur) * 0.4 * strength, 0.0, 1.0);
+                c = mix(c, myVivid(c), strength);
+                return contrast(c, 0.25 * strength);
+            }
+            @Vivid colors
+            // Raises the saturation of dull colors more than of colors that are already saturated.
+            vec3 customEffect(vec2 uv) {
+                vec3 c = pick(uv);
+                float saturation = max(c.r, max(c.g, c.b)) - min(c.r, min(c.g, c.b));
+                return adjustSaturation(c, 1.15 + 0.5 * (1.0 - smoothstep(0.0, 0.5, saturation)));
+            }
+            @More contrast
+            // S curve for each color channel, that darkens the dark parts and brightens the bright parts.
+            vec3 customEffect(vec2 uv) {
+                return contrast(pick(uv), 0.55);
+            }
+            @Sharpen
+            // Unsharp mask with the 4 neighbor pixels.
+            vec3 customEffect(vec2 uv) {
+                float amount = 0.7;
+                vec2 px = 1.0 / uResolution;
+                vec3 c = pick(uv);
+                vec3 blur = (pick(uv + vec2(px.x, 0.0)) + pick(uv - vec2(px.x, 0.0))
+                        + pick(uv + vec2(0.0, px.y)) + pick(uv - vec2(0.0, px.y))) * 0.25;
+                return clamp(c + (c - blur) * amount, 0.0, 1.0);
+            }
+            @Brighten dark scenes
+            // Brightens the dark parts with a gamma curve and keeps the bright parts the same.
+            // No channel is made brighter than full, so the colors don't change.
+            vec3 customEffect(vec2 uv) {
+                vec3 c = pick(uv);
+                float l = max(luma(c), 0.001);
+                float brightened = mix(pow(l, 0.6), l, smoothstep(0.2, 0.7, l));
+                float brightest = max(c.r, max(c.g, c.b));
+                return c * min(min(brightened / l, 1.0 / max(brightest, 0.001)), 4.0);
+            }
+            @Warm colors (less blue light)
+            // Less blue and a little less green.
+            vec3 customEffect(vec2 uv) {
+                return pick(uv) * vec3(1.0, 0.86, 0.66);
+            }
+            @Color blind assist (deuteranopia)
+            // Moves the colors that a viewer without green cones can't tell apart into colors that they can see.
+            // The color blindness is simulated with the matrix of Machado, Oliveira and Fernandes (2009),
+            // and the difference to the original is added to the color channels that the viewer can see.
+            vec3 customEffect(vec2 uv) {
+                vec3 c = pick(uv);
+                vec3 simulated = vec3(
+                    dot(c, vec3(0.367322, 0.860646, -0.227968)),
+                    dot(c, vec3(0.280085, 0.672501, 0.047413)),
+                    dot(c, vec3(-0.011820, 0.042940, 0.968881)));
+                vec3 error = c - simulated;
+                return clamp(c + vec3(0.0, 0.7 * error.r + error.g, 0.7 * error.r + error.b), 0.0, 1.0);
+            }
+            @Color blind assist (protanopia)
+            // Moves the colors that a viewer without red cones can't tell apart into colors that they can see.
+            // The color blindness is simulated with the matrix of Machado, Oliveira and Fernandes (2009),
+            // and the difference to the original is added to the color channels that the viewer can see.
+            vec3 customEffect(vec2 uv) {
+                vec3 c = pick(uv);
+                vec3 simulated = vec3(
+                    dot(c, vec3(0.152286, 1.052583, -0.204868)),
+                    dot(c, vec3(0.114503, 0.786281, 0.099216)),
+                    dot(c, vec3(-0.003882, -0.048116, 1.051998)));
+                vec3 error = c - simulated;
+                return clamp(c + vec3(0.0, 0.7 * error.r + error.g, 0.7 * error.r + error.b), 0.0, 1.0);
+            }
+            @Color blind assist (tritanopia)
+            // Moves the colors that a viewer without blue cones can't tell apart into colors that they can see.
+            // The color blindness is simulated with the matrix of Machado, Oliveira and Fernandes (2009),
+            // and the difference to the original is added to the color channels that the viewer can see.
+            vec3 customEffect(vec2 uv) {
+                vec3 c = pick(uv);
+                vec3 simulated = vec3(
+                    dot(c, vec3(1.255528, -0.076749, -0.178779)),
+                    dot(c, vec3(-0.078411, 0.930809, 0.147602)),
+                    dot(c, vec3(0.004733, 0.691367, 0.303900)));
+                vec3 error = c - simulated;
+                return clamp(c + vec3(error.r + 0.7 * error.b, error.g + 0.7 * error.b, 0.0), 0.0, 1.0);
+            }
+            @Black and white
+            // Only the brightness of the colors.
+            vec3 customEffect(vec2 uv) {
+                return vec3(luma(pick(uv)));
+            }
             @Alien colors
             // The red, green and blue channels swapped around.
             vec3 customEffect(vec2 uv) {

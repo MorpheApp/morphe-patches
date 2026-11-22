@@ -249,21 +249,9 @@ To sign in, press continue below"</string>
     <!-- misc.videoeffects.videoEffectsPatch -->
     <string name="morphe_video_effect_title">Video effect</string>
     <string name="morphe_video_effect_entry_none">Off</string>
-    <string name="morphe_video_effect_entry_enhance_low">Enhance (low)</string>
-    <string name="morphe_video_effect_entry_enhance_medium">Enhance (medium)</string>
-    <string name="morphe_video_effect_entry_enhance_high">Enhance (high)</string>
-    <string name="morphe_video_effect_entry_vivid_colors">Vivid colors</string>
-    <string name="morphe_video_effect_entry_more_contrast">More contrast</string>
-    <string name="morphe_video_effect_entry_sharpen">Sharpen</string>
-    <string name="morphe_video_effect_entry_brighten_shadows">Brighten dark scenes</string>
-    <string name="morphe_video_effect_entry_warm_colors">Warm colors (less blue light)</string>
-    <string name="morphe_video_effect_entry_color_blind_deuteranopia">Color blind assist (deuteranopia)</string>
-    <string name="morphe_video_effect_entry_color_blind_protanopia">Color blind assist (protanopia)</string>
-    <string name="morphe_video_effect_entry_color_blind_tritanopia">Color blind assist (tritanopia)</string>
-    <string name="morphe_video_effect_entry_black_and_white">Black and white</string>
-    <string name="morphe_video_effects_custom_title">Custom video effects</string>
-    <string name="morphe_video_effects_custom_summary">Change, delete or add video effects with shader code, such as code written by an AI chatbot. These effects show at the end of the Video effect list</string>
-    <string name="morphe_video_effects_custom_empty">No custom effects. Tap Add effect to make one.</string>
+    <string name="morphe_video_effects_custom_title">Edit video effects</string>
+    <string name="morphe_video_effects_custom_summary">Change, rename, delete or add video effects. Effects are shader code, so an AI chatbot can write new ones</string>
+    <string name="morphe_video_effects_custom_empty">No video effects. Tap Add effect to make one.</string>
     <string name="morphe_video_effects_custom_add">Add effect</string>
     <string name="morphe_video_effects_custom_restore">Restore defaults</string>
     <string name="morphe_video_effects_custom_add_title">New effect</string>
