@@ -164,6 +164,11 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_share_post_content_failed">Could not share the media. Sharing the link instead</string>
     <string name="morphe_open_links_directly_title">Open links directly</string>
     <string name="morphe_open_links_directly_summary">Bypasses redirect URLs when opening external links</string>
+    <string name="morphe_private_browsing_mode_title">Private browsing mode</string>
+    <string name="morphe_private_browsing_mode_summary">Whether the account switcher offers Anonymous Browsing or Incognito</string>
+    <string name="morphe_private_browsing_mode_entry_default">Default</string>
+    <string name="morphe_private_browsing_mode_entry_anonymous_browsing">Anonymous Browsing</string>
+    <string name="morphe_private_browsing_mode_entry_incognito">Incognito</string>
     <string name="morphe_full_width_feed_media_title">Full width feed media</string>
     <string name="morphe_full_width_feed_media_summary">Shows images and videos edge to edge in the feed and post details, without side padding and rounded corners</string>
     <string name="morphe_media_viewer_fade_title">Media viewer fade strength</string>
