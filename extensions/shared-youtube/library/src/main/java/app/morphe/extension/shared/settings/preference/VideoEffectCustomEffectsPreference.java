@@ -21,6 +21,7 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -88,9 +89,9 @@ public class VideoEffectCustomEffectsPreference extends Preference {
                     null,
                     str("morphe_video_effects_custom_add"),
                     () -> showEditDialog(null, "", VideoEffectsPatch.CUSTOM_EFFECT_TEMPLATE),
+                    null,
+                    str("morphe_settings_about_close"),
                     () -> {},
-                    missingDefaults.isEmpty() ? null : str("morphe_video_effects_custom_restore"),
-                    () -> restoreDefaultEffects(missingDefaults),
                     true
             );
             Dialog dialog = dialogPair.first;
@@ -105,6 +106,16 @@ public class VideoEffectCustomEffectsPreference extends Preference {
             // Before the dialog buttons.
             mainLayout.addView(scrollView, mainLayout.getChildCount() - 1,
                     new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.0f));
+
+            if (!missingDefaults.isEmpty()) {
+                Button restore = CustomDialog.createButton(context, dialog,
+                        str("morphe_video_effects_custom_restore"),
+                        () -> restoreDefaultEffects(missingDefaults), false, true);
+                LinearLayout.LayoutParams restoreParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, Dim.dp36);
+                restoreParams.setMargins(0, Dim.dp8, 0, 0);
+                mainLayout.addView(restore, mainLayout.getChildCount() - 1, restoreParams);
+            }
 
             dialog.show();
         } catch (Exception ex) {
