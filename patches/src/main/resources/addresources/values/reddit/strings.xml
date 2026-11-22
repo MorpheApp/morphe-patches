@@ -94,6 +94,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_custom_font_invalid_file">Please select a .ttf or .otf font file</string>
     <string name="morphe_custom_font_failed_to_load">Failed to load custom font. Pick a different file</string>
     <string name="morphe_disable_modern_home_title">Disable modern home UI</string>
+    <string name="morphe_home_feed_tabs_title">Home feed tabs</string>
+    <string name="morphe_home_feed_tabs_summary">Shows the For You, Following and Popular tabs on the home feed. Swipe or tap to switch. Following needs you to be signed in</string>
     <string name="morphe_disable_screenshot_popup_title">Disable screenshot popup</string>
     <string name="morphe_disable_screenshot_popup_summary">Disables the popup that appears when taking a screenshot</string>
     <string name="morphe_feed_auto_scroll_title">Feed auto-scroll</string>

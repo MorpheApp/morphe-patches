@@ -10,6 +10,8 @@ package app.morphe.patches.reddit.layout.modern
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -72,4 +74,47 @@ internal object HomePagerTabUiModelsFingerprint : Fingerprint(
     filters = listOf(
         newInstance("Lcom/reddit/feedslegacy/switcher/homepager/model/HomePagerScreenTabUiModel;")
     )
+)
+
+/**
+ * If the Popular tab is shown on the home feed.
+ *
+ * 2026.44.0+
+ */
+internal object PopularHomeTabFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(definingClass = FOR_YOU_FOLLOWING_VARIANT_CLASS, name = "FOR_YOU_NAME"),
+        methodCall(definingClass = "Lcom/reddit/session/Session;", name = "isLoggedOut"),
+        methodCall(definingClass = "Lcom/reddit/session/Session;", name = "isIncognito")
+    )
+)
+
+/**
+ * If the home feed shows its tabs. Matched in the class of [PopularHomeTabFingerprint].
+ *
+ * 2026.44.0+
+ */
+internal object HomeFeedTabsEnabledFingerprint : Fingerprint(
+    classFingerprint = PopularHomeTabFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(definingClass = FOR_YOU_FOLLOWING_VARIANT_CLASS, name = "isEnabled")
+    )
+)
+
+/**
+ * If the tabs of the home feed can be switched by swiping. False for every variant.
+ *
+ * 2026.44.0+
+ */
+internal object PagerSwipeEnabledFingerprint : Fingerprint(
+    definingClass = FOR_YOU_FOLLOWING_VARIANT_CLASS,
+    name = "isPagerSwipeEnabled",
+    returnType = "Z",
+    parameters = listOf()
 )
