@@ -417,17 +417,6 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">கண்ணாடி நேவிகேஷன் பார் மற்றும் திரையின் அடிப்பகுதி அல்லது சிஸ்டம் நேவிகேஷனுக்கும் இடையிலான இடைவெளியை சரிசெய்யவும்</string>
   <string name="morphe_navigation_bar_glass_size_title">கண்ணாடி நேவிகேஷன் பார் அளவு</string>
   <string name="morphe_navigation_bar_glass_size_summary">கண்ணாடி நேவிகேஷன் பாரின் உயரம், அகலம் மற்றும் பொத்தான் இடைவெளியை முன்னோட்டத்துடன் சரிசெய்யவும். திரையின் அகலத்திற்குள் பொருந்தாத பொத்தான்கள் மறைக்கப்படும்</string>
-  <string name="morphe_glass_menus_screen_title">கிளாஸ் மெனுக்கள்</string>
-  <string name="morphe_glass_menus_screen_summary">பின்னணியில் உள்ள மங்கலான உள்ளடக்கத்திற்கு மேல் உறைபனி கண்ணாடி போன்ற மெனுக்கள் இருக்கும்</string>
-  <string name="morphe_glass_menus_title">கிளாஸ் மெனுக்களை இயக்கு</string>
-  <string name="morphe_glass_menus_summary">மெனுக்கள் மற்றும் bottom sheets-களை உறைபனி கண்ணாடி போலக் காட்டும், அதன் பின்னணியில் உள்ள உள்ளடக்கம் மங்கலாக இருக்கும்</string>
-  <string name="morphe_glass_menus_user_dialog_message">பேட்டரி சேவர் ஆன் செய்யப்பட்டிருக்கும் போதோ அல்லது சாதனத்தில் blur வசதி இல்லையென்றாலோ, மெனுக்கள் கிட்டத்தட்ட ஒளிபுகாத நிலையில் காட்டப்படும்</string>
-  <string name="morphe_glass_menus_opacity_title">கண்ணாடி ஒளிபுகும் தன்மை</string>
-  <string name="morphe_glass_menus_opacity_summary">மெனு மங்கலான உள்ளடக்கத்தை எவ்வளவு மறைக்கிறது (0 என்பது தெளிவானது, 100 என்பது ஒளிபுகாதது)</string>
-  <string name="morphe_glass_menus_blur_title">மங்கலான தன்மை</string>
-  <string name="morphe_glass_menus_blur_summary">மெனுவிற்குப் பின்னால் உள்ள உள்ளடக்கம் எவ்வளவு மங்கலாக உள்ளது</string>
-  <string name="morphe_glass_menus_dim_title">மங்கல்</string>
-  <string name="morphe_glass_menus_dim_summary">தரைத்தாளையைச் சுற்றியுள்ள திரை எவ்வளவு இருட்டாக்கப்பட்டுள்ளது</string>
   <string name="morphe_navigation_bar_glass_size_height">உயரம்</string>
   <string name="morphe_navigation_bar_glass_size_width">அதிகபட்ச அகலம்</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">பொத்தான் இடைவெளி</string>
@@ -600,6 +589,8 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.buffer.playbackBufferPatch -->
   <!-- video.delay.videoDelayPatch -->
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">வீடியோ விளைவு மெனுவைக் காட்டு</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_button_cycle_title">வேகங்களை மாற்ற பிளேபேக் வேக பொத்தானை தட்டுங்கள்</string>

@@ -219,7 +219,10 @@ Nhấn OK để mở Android System WebView."</string>
   <string name="morphe_prioritize_video_quality_summary">Ưu tiên chất lượng video cao nhất hơn là tối ưu codec</string>
   <string name="morphe_prioritize_video_quality_dialog">Nếu tắt cài đặt này, các video cũ hơn có thể không hiển thị tùy chọn chất lượng video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Tắt âm thanh DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Tắt âm thanh DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Phát âm thanh gốc thay vì phiên bản có dải động nén</string>
+  <string name="morphe_disable_loudness_normalization_title">Tắt chuẩn hóa độ lớn</string>
+  <string name="morphe_disable_loudness_normalization_summary">Phát âm thanh lớn ở mức âm lượng gốc thay vì giảm xuống mức tiêu chuẩn</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Buộc ngôn ngữ âm thanh gốc</string>
   <string name="morphe_force_original_audio_summary">Luôn phát âm thanh gốc của video thay vì bản lồng tiếng</string>
@@ -228,6 +231,29 @@ Nhấn OK để mở Android System WebView."</string>
   <string name="morphe_skip_silence_summary">Tự động bỏ qua các khoảng dừng im lặng trong âm thanh video</string>
   <string name="morphe_skip_silence_minimum_pause_title">Độ dài khoảng dừng tối thiểu</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Chỉ những khoảng dừng dài ít nhất khoảng thời gian này mới được rút ngắn. Có hiệu lực khi video tiếp theo bắt đầu</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Hiệu ứng video</string>
+  <string name="morphe_video_effect_entry_none">Tắt</string>
+  <string name="morphe_video_effects_custom_title">Chỉnh sửa hiệu ứng video</string>
+  <string name="morphe_video_effects_custom_summary">Thay đổi, đổi tên, xóa hoặc thêm hiệu ứng video. Các hiệu ứng là mã shader, vì vậy chatbot AI có thể viết các hiệu ứng mới</string>
+  <string name="morphe_video_effects_custom_empty">Không có hiệu ứng video. Nhấn Thêm hiệu ứng để tạo một cái.</string>
+  <string name="morphe_video_effects_custom_add">Thêm hiệu ứng</string>
+  <string name="morphe_video_effects_custom_restore">Khôi phục mặc định</string>
+  <string name="morphe_video_effects_custom_add_title">Hiệu ứng mới</string>
+  <string name="morphe_video_effects_custom_edit_title">Chỉnh sửa hiệu ứng</string>
+  <string name="morphe_video_effects_custom_name_hint">Tên</string>
+  <string name="morphe_video_effects_custom_name_empty">Nhập tên cho hiệu ứng</string>
+  <string name="morphe_video_effects_custom_name_exists">Đã tồn tại một hiệu ứng có tên này</string>
+  <string name="morphe_video_effects_custom_copy_code">Sao chép mã</string>
+  <string name="morphe_video_effects_custom_error_title">Hiệu ứng có lỗi</string>
+  <string name="morphe_video_effects_custom_error_message">"Video sẽ được hiển thị mà không có hiệu ứng cho đến khi mã được sửa. Hãy gửi lỗi này cho AI đã viết mã:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Chép lỗi</string>
+  <string name="morphe_video_effects_custom_save_anyway">Vẫn lưu</string>
+  <string name="morphe_video_effects_custom_delete">Xoá</string>
+  <string name="morphe_video_effects_custom_delete_title">Xóa hiệu ứng?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s sẽ bị xóa.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy mạng</string>
   <string name="morphe_proxy_screen_summary">Định tuyến các kết nối mạng được hỗ trợ qua proxy</string>
@@ -344,6 +370,18 @@ Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng 
   <string name="morphe_custom_font_file_summary">Chọn tệp phông chữ TTF hoặc OTF</string>
   <string name="morphe_custom_font_file_invalid">Tệp đã chọn không phải là phông chữ TTF hoặc OTF</string>
   <string name="morphe_custom_font_failed_to_load">Không thể tải phông chữ tùy chỉnh và phông chữ này đã bị tắt</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Menu kính</string>
+  <string name="morphe_glass_menus_screen_summary">Menu hiển thị như kính mờ trên nội dung được làm mờ phía sau</string>
+  <string name="morphe_glass_menus_title">Bật menu kính</string>
+  <string name="morphe_glass_menus_summary">Hiển thị menu và bảng dưới dạng kính mờ, với nội dung phía sau được làm mờ</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menu sẽ hiển thị gần như đục khi chế độ tiết kiệm pin đang bật hoặc nếu thiết bị không hỗ trợ làm mờ</string>
+  <string name="morphe_glass_menus_opacity_title">Độ mờ của kính</string>
+  <string name="morphe_glass_menus_opacity_summary">Mức độ menu che phủ nội dung bị làm mờ (0 là trong suốt, 100 là đục)</string>
+  <string name="morphe_glass_menus_blur_title">Làm mờ</string>
+  <string name="morphe_glass_menus_blur_summary">Mức độ làm mờ nội dung phía sau menu</string>
+  <string name="morphe_glass_menus_dim_title">Làm tối</string>
+  <string name="morphe_glass_menus_dim_summary">Mức độ làm tối màn hình xung quanh một bảng dưới</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Tạm thời không thể tải số lượt không thích (hết thời gian chờ API)</string>

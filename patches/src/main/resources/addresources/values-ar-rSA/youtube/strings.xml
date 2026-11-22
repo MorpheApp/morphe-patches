@@ -1039,17 +1039,17 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_change_video_title">تمكين إيماءة التمرير لتغيير الفيديوهات</string>
   <string name="morphe_swipe_change_video_summary">التمرير في وضع ملء الشاشة للانتقال إلى الفيديو التالي أو السابق</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
-  <string name="morphe_hold_gesture_screen_title">إيماءة الضغط المطول</string>
+  <string name="morphe_hold_gesture_screen_title">إيماءة الضغط المطوّل</string>
   <string name="morphe_hold_gesture_screen_summary">تغيير سرعة التشغيل وقفلها عن طريق السحب بعد الضغط مع الاستمرار</string>
-  <string name="morphe_hold_gesture_title">تمكين إيماءة الضغط المطول</string>
-  <string name="morphe_hold_gesture_summary">يمكن أن يتبع الضغط المطول على الفيديو عملية سحب. تكون السرعة أثناء الضغط المطول هي سرعة تشغيل الضغط والاستمرار</string>
-  <string name="morphe_hold_gesture_press_to_swipe_summary">لا تُستخدم أثناء تفعيل ميزة الضغط للتمرير. اضغط للتغيير</string>
-  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">تم تمكين الضغط لتمرير الإيماءة</string>
-  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">تبدأ كل من إيماءة الاستمرار وإيماءة الضغط للتمرير في عناصر تحكم التمرير بالنقر والاستمرار، لذا يمكن تفعيل واحدة منهما فقط.</string>
+  <string name="morphe_hold_gesture_title">تمكين إيماءة الضغط المطوّل</string>
+  <string name="morphe_hold_gesture_summary">يمكن أن يتبع الضغط المطوّل على الفيديو عملية سحب. تكون السرعة أثناء الضغط المطوّل هي سرعة تشغيل الضغط والاستمرار</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">لا تُستخدم أثناء تمكين ميزة الضغط للتمرير. انقر للتغيير</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">الضغط للتمرير قيد التشغيل</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">إيماءة الضغط المطوّل وإيماءة الضغط للتمرير في عناصر التحكم بالتمرير كلاهما يبدأ بالضغط والاستمرار، لذا يمكن تشغيل واحدة فقط منهما.</string>
   <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">إيقاف تشغيل الضغط للتمرير</string>
-  <string name="morphe_hold_gesture_press_to_swipe_toast">لا تُستخدم إيماءة الاستمرار أثناء تفعيل ميزة الضغط للتمرير</string>
-  <string name="morphe_hold_gesture_dialog_title">إيماءة الاستمرار مفعلة</string>
-  <string name="morphe_hold_gesture_dialog_turn_off">إيقاف تشغيل إيماءة الاستمرار</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">لا تُستخدم إيماءة الضغط المطوّل أثناء تمكين ميزة الضغط للتمرير</string>
+  <string name="morphe_hold_gesture_dialog_title">إيماءة الضغط المطوّل قيد التشغيل</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">إيقاف تشغيل إيماءة الضغط المطوّل</string>
   <string name="morphe_hold_gesture_haptic_feedback_title">الاهتزاز عند الضغط</string>
   <string name="morphe_hold_gesture_haptic_feedback_summary">يهتز الجهاز عند تغير السرعة وعند قفل السرعة</string>
   <string name="morphe_hold_gesture_speed_swipe_title">اسحب جانبيًا لتغيير السرعة</string>
@@ -1175,17 +1175,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ضبط المسافة بين شريط التنقل الزجاجي وأسفل الشاشة أو تنقل النظام</string>
   <string name="morphe_navigation_bar_glass_size_title">حجم شريط التنقل الزجاجي</string>
   <string name="morphe_navigation_bar_glass_size_summary">ضبط ارتفاع, عرض وتباعد أزرار شريط التنقل الزجاجي، مع المعاينة. يتم إخفاء الأزرار التي لا تتناسب مع عرض الشاشة</string>
-  <string name="morphe_glass_menus_screen_title">قوائم زجاجية</string>
-  <string name="morphe_glass_menus_screen_summary">تظهر القوائم كزجاج متجمد فوق المحتوى المموّه خلفها</string>
-  <string name="morphe_glass_menus_title">تفعيل القوائم الزجاجية</string>
-  <string name="morphe_glass_menus_summary">إظهار القوائم والصفحات السفلية كزجاج متجمد، مع تمويه المحتوى الموجود خلفها</string>
-  <string name="morphe_glass_menus_user_dialog_message">تظهر القوائم معتمة تقريبًا عند تشغيل موفر البطارية، أو إذا كان الجهاز لا يدعم التمويه</string>
-  <string name="morphe_glass_menus_opacity_title">شفافية الزجاج</string>
-  <string name="morphe_glass_menus_opacity_summary">مدى تغطية القائمة للمحتوى المموّه (0 شفاف، 100 معتم)</string>
-  <string name="morphe_glass_menus_blur_title">الضبابية</string>
-  <string name="morphe_glass_menus_blur_summary">مدى تمويه المحتوى الموجود خلف القائمة</string>
-  <string name="morphe_glass_menus_dim_title">تعتيم</string>
-  <string name="morphe_glass_menus_dim_summary">مدى تعتيم الشاشة المحيطة بالورقة السفلية</string>
   <string name="morphe_navigation_bar_glass_size_height">الارتفاع</string>
   <string name="morphe_navigation_bar_glass_size_width">أقصى عرض</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">تباعد الزر</string>
@@ -1662,6 +1651,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_video_delay_button_overlay_summary">اضغط مع الاستمرار لإعادة تعيين التأخير إلى 0 جزء ثانية</string>
   <string name="morphe_video_delay_button_flyout_title">عرض قائمة تأخير الفيديو</string>
   <string name="morphe_video_delay_dialog_input_hint">التأخير بجزء الثانية</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">عرض قائمة تأثيرات الفيديو</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">تذكر جودة Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">يطبق تحديد الجودة اليدوي على كل فيديوهات Shorts المستقبلية</string>

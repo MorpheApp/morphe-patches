@@ -1171,17 +1171,6 @@ Om toegang tot Instellings te kry, aktiveer die Instellings-knoppie via Algemeen
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Pas die spasie tussen die glas navigasiebalk en die onderkant van die skerm of die stelselnavigasie aan</string>
   <string name="morphe_navigation_bar_glass_size_title">Glas-navigasiebalk grootte</string>
   <string name="morphe_navigation_bar_glass_size_summary">Pas die hoogte, die breedte en die knoppiespasiëring van die glas-navigasiebalk aan, met \'n voorbeeld. Knoppies wat nie in die breedte van die skerm pas nie, word versteek</string>
-  <string name="morphe_glass_menus_screen_title">Glasmenu\'s</string>
-  <string name="morphe_glass_menus_screen_summary">Menu\'s as matglas oor die vervaagde inhoud agter hulle</string>
-  <string name="morphe_glass_menus_title">Aktiveer glasmenu\'s</string>
-  <string name="morphe_glass_menus_summary">Wys menu\'s en onderste blaaie as matglas, met die inhoud agter hulle vervaag</string>
-  <string name="morphe_glass_menus_user_dialog_message">Menu\'s word byna ondoorsigtig gewys terwyl die batterybespaarder aan is, of as die toestel nie vervaging ondersteun nie</string>
-  <string name="morphe_glass_menus_opacity_title">Glas-opasiteit</string>
-  <string name="morphe_glass_menus_opacity_summary">Hoeveel die spyskaart die vervaagde inhoud bedek (0 is helder, 100 is opak)</string>
-  <string name="morphe_glass_menus_blur_title">Vervaag</string>
-  <string name="morphe_glass_menus_blur_summary">Hoeveel die inhoud agter die spyskaart vervaag is</string>
-  <string name="morphe_glass_menus_dim_title">Verdonker</string>
-  <string name="morphe_glass_menus_dim_summary">Hoeveel die skerm rondom \'n onderste vel verdonker is</string>
   <string name="morphe_navigation_bar_glass_size_height">Hoogte</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimum breedte</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knoppiespasiëring</string>
@@ -1658,6 +1647,8 @@ Video's word met 'n kort voorvoegsel van die gehashte video-ID aangevra, sodat d
   <string name="morphe_video_delay_button_overlay_summary">Tik en hou om die vertraging na 0 ms te herstel</string>
   <string name="morphe_video_delay_button_flyout_title">Wys Videovertraging-menu</string>
   <string name="morphe_video_delay_dialog_input_hint">Vertraging in millisekondes</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Wys Video-effek-menu</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Onthou Shorts kwaliteit</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Pas jou handmatige kwaliteitseleksie toe op alle toekomstige Shorts</string>

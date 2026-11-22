@@ -219,7 +219,10 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_summary">Δίνει προτεραιότητα στην υψηλότερη διαθέσιμη ποιότητα βίντεο έναντι της αποδοτικότητας του κωδικοποιητή</string>
   <string name="morphe_prioritize_video_quality_dialog">Εάν αυτή η ρύθμιση είναι απενεργοποιημένη, τότε τα παλαιότερα βίντεο ενδέχεται να μην εμφανίζουν επιλογές ποιότητας βίντεο</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Απενεργοποίηση ήχου DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Απενεργοποίηση ήχου DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Αναπαράγει τον αρχικό ήχο αντί για την έκδοση με συμπιεσμένο δυναμικό εύρος</string>
+  <string name="morphe_disable_loudness_normalization_title">Απενεργοποίηση κανονικοποίησης έντασης</string>
+  <string name="morphe_disable_loudness_normalization_summary">Αναπαράγει τον δυνατό ήχο στην αρχική του ένταση αντί για τη μείωσή του σε ένα τυπικό επίπεδο</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Εξαναγκασμός αρχικής γλώσσας ήχου</string>
   <string name="morphe_force_original_audio_summary">Παίζει πάντα την αρχική ηχητική γραμμή του βίντεο αντί για μια μεταγλωττισμένη έκδοση</string>
@@ -228,6 +231,29 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">Παραλείπει αυτόματα τις σιωπηλές παύσεις στον ήχο του βίντεο</string>
   <string name="morphe_skip_silence_minimum_pause_title">Ελάχιστη διάρκεια παύσης</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Συντομεύονται μόνο οι παύσεις που διαρκούν τουλάχιστον αυτό. Ισχύει όταν ξεκινήσει το επόμενο βίντεο</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Εφέ βίντεο</string>
+  <string name="morphe_video_effect_entry_none">Ανενεργό</string>
+  <string name="morphe_video_effects_custom_title">Επεξεργασία εφέ βίντεο</string>
+  <string name="morphe_video_effects_custom_summary">Αλλαγή, μετονομασία, διαγραφή ή προσθήκη εφέ βίντεο. Τα εφέ είναι κώδικας shader, επομένως ένα AI chatbot μπορεί να γράψει νέα</string>
+  <string name="morphe_video_effects_custom_empty">Δεν υπάρχουν εφέ βίντεο. Πατήστε Προσθήκη εφέ για να δημιουργήσετε ένα.</string>
+  <string name="morphe_video_effects_custom_add">Προσθήκη εφέ</string>
+  <string name="morphe_video_effects_custom_restore">Επαναφορά προεπιλογών</string>
+  <string name="morphe_video_effects_custom_add_title">Νέο εφέ</string>
+  <string name="morphe_video_effects_custom_edit_title">Επεξεργασία εφέ</string>
+  <string name="morphe_video_effects_custom_name_hint">Όνομα</string>
+  <string name="morphe_video_effects_custom_name_empty">Εισαγάγετε ένα όνομα για το εφέ</string>
+  <string name="morphe_video_effects_custom_name_exists">Υπάρχει ήδη ένα εφέ με αυτό το όνομα</string>
+  <string name="morphe_video_effects_custom_copy_code">Αντιγραφή κώδικα</string>
+  <string name="morphe_video_effects_custom_error_title">Το εφέ παρουσιάζει σφάλμα</string>
+  <string name="morphe_video_effects_custom_error_message">"Τα βίντεο εμφανίζονται χωρίς το εφέ μέχρι να διορθωθεί ο κώδικας. Δώστε αυτό το σφάλμα στο AI που έγραψε τον κώδικα:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Σφάλμα αντιγραφής</string>
+  <string name="morphe_video_effects_custom_save_anyway">Αποθήκευση ούτως ή άλλως</string>
+  <string name="morphe_video_effects_custom_delete">Διαγραφή</string>
+  <string name="morphe_video_effects_custom_delete_title">Διαγραφή εφέ;</string>
+  <string name="morphe_video_effects_custom_delete_message">Το %s θα διαγραφεί.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Μεσολαβητής δικτύου</string>
   <string name="morphe_proxy_screen_summary">Δρομολόγηση υποστηριζόμενων αιτημάτων δικτύου μέσω μεσολαβητή</string>
@@ -344,6 +370,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">Επιλέξτε ένα αρχείο γραμματοσειράς TTF ή OTF</string>
   <string name="morphe_custom_font_file_invalid">Το επιλεγμένο αρχείο δεν είναι γραμματοσειρά TTF ή OTF</string>
   <string name="morphe_custom_font_failed_to_load">Η προσαρμοσμένη γραμματοσειρά δεν ήταν δυνατό να φορτωθεί και είναι απενεργοποιημένη</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Γυάλινα μενού</string>
+  <string name="morphe_glass_menus_screen_summary">Μενού σαν θαλωμένο γυαλί πάνω από το θολό περιεχόμενο πίσω τους</string>
+  <string name="morphe_glass_menus_title">Ενεργοποίηση γυάλινων μενού</string>
+  <string name="morphe_glass_menus_summary">Εμφανίζει τα μενού και τα bottom sheets ως ματ γυαλί, με το περιεχόμενο πίσω από αυτά θολό</string>
+  <string name="morphe_glass_menus_user_dialog_message">Τα μενού εμφανίζονται σχεδόν αδιαφανή όταν η εξοικονόμηση μπαταρίας είναι ενεργή ή εάν η συσκευή δεν υποστηρίζει θόλωμα</string>
+  <string name="morphe_glass_menus_opacity_title">Αδιαφάνεια γυαλιού</string>
+  <string name="morphe_glass_menus_opacity_summary">Πόσο καλύπτει το μενού το θολό περιεχόμενο (0 είναι διαφές, 100 είναι αδιαφανές)</string>
+  <string name="morphe_glass_menus_blur_title">Θόλωμα</string>
+  <string name="morphe_glass_menus_blur_summary">Πόσο θολό είναι το περιεχόμενο πίσω από το μενού</string>
+  <string name="morphe_glass_menus_dim_title">Σκότος</string>
+  <string name="morphe_glass_menus_dim_summary">Πόσο σκουραίνει η οθόνη γύρω από ένα bottom sheet</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Τα Dislike δεν είναι προσωρινά διαθέσιμα (λήξη χρονικού ορίου του API)</string>

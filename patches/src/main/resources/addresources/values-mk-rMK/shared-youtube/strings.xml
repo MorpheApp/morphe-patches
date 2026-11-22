@@ -219,7 +219,10 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_summary">Дава приоритет на највисокиот достапен квалитет на видеото пред ефикасноста на кодекот</string>
   <string name="morphe_prioritize_video_quality_dialog">Ако оваа поставка е исклучена, поточните видеа може да не прикажат опции за квалитет на видеото</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Исклучи DRC аудио</string>
+  <string name="morphe_disable_drc_audio_stream_title">Оневозможи DRC аудио</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Ја репродуцира оригиналната аудио запис наместо верзијата со компримиран динамички опсег</string>
+  <string name="morphe_disable_loudness_normalization_title">Оневозможи нормализација на гласноста</string>
+  <string name="morphe_disable_loudness_normalization_summary">Ја репродуцира гласната аудио запис со нејзиниот оригинален волумен наместо да го намали до стандардно ниво</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудно оригинално аудио</string>
   <string name="morphe_force_original_audio_summary">Секогаш пуштај оригинален аудио трак за видеото наместо дублирана верзија</string>
@@ -228,6 +231,29 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">Автоматски ги прескокнува тивките паузи во аудиото на видеото</string>
   <string name="morphe_skip_silence_minimum_pause_title">Минимална должина на паузата</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Само паузите со најмалку оваа должина се скратуваат. Стапува на сила кога ќе започне следното видео</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Видео ефект</string>
+  <string name="morphe_video_effect_entry_none">Исклучено</string>
+  <string name="morphe_video_effects_custom_title">Уреди видео ефекти</string>
+  <string name="morphe_video_effects_custom_summary">Менувај, преименувај, бриши или додавај видео ефекти. Ефектите се код за шејдер, па затоа AI четбот може да напише нови</string>
+  <string name="morphe_video_effects_custom_empty">Нема видео ефекти. Допрете Додај ефект за да направите еден.</string>
+  <string name="morphe_video_effects_custom_add">Додај ефект</string>
+  <string name="morphe_video_effects_custom_restore">Враќање на почетните поставки</string>
+  <string name="morphe_video_effects_custom_add_title">Нов ефект</string>
+  <string name="morphe_video_effects_custom_edit_title">Уредување ефект</string>
+  <string name="morphe_video_effects_custom_name_hint">Име</string>
+  <string name="morphe_video_effects_custom_name_empty">Внесете име за ефектот</string>
+  <string name="morphe_video_effects_custom_name_exists">Веќе постои ефект со ова име</string>
+  <string name="morphe_video_effects_custom_copy_code">Копирај код</string>
+  <string name="morphe_video_effects_custom_error_title">Ефектот има грешка</string>
+  <string name="morphe_video_effects_custom_error_message">"Видеата се прикажани без ефект додека кодот не се поправи. Испратете ја оваа грешка до ВИИ што го напиша кодот:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Копирај грешка</string>
+  <string name="morphe_video_effects_custom_save_anyway">Зачувај секако</string>
+  <string name="morphe_video_effects_custom_delete">Избриши</string>
+  <string name="morphe_video_effects_custom_delete_title">Избриши го ефектот?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s ќе биде избришан.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Мрежен прокси</string>
   <string name="morphe_proxy_screen_summary">Пренасочете ги поддржаните мрежни барања преку прокси</string>
@@ -344,6 +370,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">Изберете TTF или OTF датотека со фонт</string>
   <string name="morphe_custom_font_file_invalid">Избраната датотека не е TTF или OTF фонт</string>
   <string name="morphe_custom_font_failed_to_load">Прилагодениот фонт не можеше да се вчита и е исклучен</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Стаклени менија</string>
+  <string name="morphe_glass_menus_screen_summary">Менија како матирано стакло над замаглената содржина зад нив</string>
+  <string name="morphe_glass_menus_title">Овозможи стаклени менија</string>
+  <string name="morphe_glass_menus_summary">Прикажува менија и долни листови како матирано стакло, при што содржината зад нив е заматена</string>
+  <string name="morphe_glass_menus_user_dialog_message">Менијата се прикажани речиси непроѕирно додека е вклучен зачувувачот на батеријата или ако уредот не поддржува заматување</string>
+  <string name="morphe_glass_menus_opacity_title">Непроѕирност на стаклото</string>
+  <string name="morphe_glass_menus_opacity_summary">Колку менито ја покрива заматената содржина (0 е проѕирно, 100 е непроѕирно)</string>
+  <string name="morphe_glass_menus_blur_title">Заматување</string>
+  <string name="morphe_glass_menus_blur_summary">Колку е заматена содржината зад менито</string>
+  <string name="morphe_glass_menus_dim_title">Затемнување</string>
+  <string name="morphe_glass_menus_dim_summary">Колку е затемнет екранот околу долниот лист</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Несимпатиите привремено не се достапни (истечен тајмер на API)</string>

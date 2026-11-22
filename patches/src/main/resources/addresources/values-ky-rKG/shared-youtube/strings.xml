@@ -219,7 +219,10 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_prioritize_video_quality_summary">Кодектин натыйжалуулугуна караганда, жеткиликтүү эң жогорку видео сапатына артыкчылык берет</string>
   <string name="morphe_prioritize_video_quality_dialog">Эгерде бул жөндөө өчүpүлгөн болсо, анда эски видеолордо видео сапатынын варианттары көрсөтүлбөй калышы мүмкүн</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC аудиосун өчүрүү</string>
+  <string name="morphe_disable_drc_audio_stream_title">DRC аудиосун өчүрүү</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Динамикалык диапазона压缩 кылынган версиянын ордуна түп нусқадагы аудиону ойнотот</string>
+  <string name="morphe_disable_loudness_normalization_title">Катуулукту нормализациялоону өчүрүү</string>
+  <string name="morphe_disable_loudness_normalization_summary">Катуу аудиону стандарттык деңгээлге чейин төмөндөтүүнүн ордуна, аны түп нусқадагы көлөмдө ойнотот</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Түпкү аудио тилин мажбурлоо</string>
   <string name="morphe_force_original_audio_summary">Дубляждалган версиянын ордуна ар дайым видеонун түпкү аудио жологун ойнотуу</string>
@@ -228,6 +231,29 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_skip_silence_summary">Видео аудиосундагы унсуз тыныгууларды автоматтуу түрдө өткөрүп жиберет</string>
   <string name="morphe_skip_silence_minimum_pause_title">Тыныгуунун минималдуу узундугу</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Кеминде ушунча узалыктагы тыныгуулар гана кыскартылат. Кийинки видео башталганда күчүнө кирет</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Видео эффект</string>
+  <string name="morphe_video_effect_entry_none">Өчүк</string>
+  <string name="morphe_video_effects_custom_title">Видео эффекттерди түзөтүү</string>
+  <string name="morphe_video_effects_custom_summary">Видео эффекттерди өзгөртүү, кайра அதтоо, өчүрүү же кошуу. Эффекттер бул шейдер коду, ошондуктан AI чат-бот жаңыларын жаза алат</string>
+  <string name="morphe_video_effects_custom_empty">Видео эффекттер жок. Жасаңыз үчүн Эффектти кошуу баскычын басыңыз.</string>
+  <string name="morphe_video_effects_custom_add">Эффектти кошуу</string>
+  <string name="morphe_video_effects_custom_restore">Демейкиге кайтаруу</string>
+  <string name="morphe_video_effects_custom_add_title">Жаңы эффект</string>
+  <string name="morphe_video_effects_custom_edit_title">Эффектти түзөтүү</string>
+  <string name="morphe_video_effects_custom_name_hint">Аты</string>
+  <string name="morphe_video_effects_custom_name_empty">Эффект үчүн атты киргизиңиз</string>
+  <string name="morphe_video_effects_custom_name_exists">Бул аттагы эффект буга чейин эле бар</string>
+  <string name="morphe_video_effects_custom_copy_code">Кодду көчүрүү</string>
+  <string name="morphe_video_effects_custom_error_title">Эффектте ката бар</string>
+  <string name="morphe_video_effects_custom_error_message">"Код оңдолгонго чейин видеолор эффектсиз көрсөтүлөт. Бул катаны кодду жазган AIга бериңиз:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Катаны көчүрүү</string>
+  <string name="morphe_video_effects_custom_save_anyway">Баары бир сактоо</string>
+  <string name="morphe_video_effects_custom_delete">Өчүрүү</string>
+  <string name="morphe_video_effects_custom_delete_title">Эффектти өчүрөсүзбү?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s өчүрүлөт.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Тармак проксиси</string>
   <string name="morphe_proxy_screen_summary">Колдоого алынган тармактык суроо-талаптарды прокси аркылуу багыттаңыз</string>
@@ -344,6 +370,18 @@ PotHelper тиркемесин жүктөө үчүн бул жерди басы�
   <string name="morphe_custom_font_file_summary">TTF же OTF шрифт файлын тандаңыз</string>
   <string name="morphe_custom_font_file_invalid">Тандалган файл TTF же OTF шрифти эмес</string>
   <string name="morphe_custom_font_failed_to_load">Ыйыкталган шрифт жүктөлгөн жок жана өчүрүлдү</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Айнек менюлар</string>
+  <string name="morphe_glass_menus_screen_summary">Арткы жагындагы бүдөмүк мазмундун үстүндөгү матирленген айнек сыяктуу менюлар</string>
+  <string name="morphe_glass_menus_title">Айнек менюлөрүн иштетүү</string>
+  <string name="morphe_glass_menus_summary">Менюларды жана төмөнкү барактарды бүдөмүк айнек катары көрсөтөт, алардын артындагы мазмун бүдөмүк болот</string>
+  <string name="morphe_glass_menus_user_dialog_message">Батареяны үнөмдөө режими күйгөндө же түзүлүш бүдөмүк эффектин колдобосо, менюлар дэриңде тунук эмес болуп көрсөтүлөт</string>
+  <string name="morphe_glass_menus_opacity_title">Айнектин тунуктугу</string>
+  <string name="morphe_glass_menus_opacity_summary">Меню бүдөмүк мазмунду канчалык деңгээлде жабат (0 - тунук, 100 - тунук эмес)</string>
+  <string name="morphe_glass_menus_blur_title">Бүдөмүктөө</string>
+  <string name="morphe_glass_menus_blur_summary">Менюнун артындагы мазмун канчалык деңгээлде бүдөмүк болору</string>
+  <string name="morphe_glass_menus_dim_title">Караңгылоо</string>
+  <string name="morphe_glass_menus_dim_summary">Төмөнкү барактын айланасындагы экран канчалык деңгээлде караңгыланары</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Жакпагандар убактылуу жеткиликсиз (API убактысы бүттү)</string>

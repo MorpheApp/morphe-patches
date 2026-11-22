@@ -219,7 +219,10 @@ Tryk på fortsæt nedenfor for at logge ind"</string>
   <string name="morphe_prioritize_video_quality_summary">Prioriterer den højeste tilgængelige videokvalitet over codec-effektivitet</string>
   <string name="morphe_prioritize_video_quality_dialog">Hvis denne indstilling er slået fra, kan ældre videoer vise ingen muligheder for videokvalitet</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Deaktiver DRC lyd</string>
+  <string name="morphe_disable_drc_audio_stream_title">Deaktiver DRC-lyd</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Afspiller den originale lyd i stedet for versionen med komprimeret dynamikområde</string>
+  <string name="morphe_disable_loudness_normalization_title">Deaktiver lydstyrkenormalisering</string>
+  <string name="morphe_disable_loudness_normalization_summary">Afspiller høj lyd ved dens originale volumen i stedet for at sænke den til et standardniveau</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Tving originalt lydsprog</string>
   <string name="morphe_force_original_audio_summary">Spiller altid videoens originale lydspor i stedet for en dubbet version</string>
@@ -228,6 +231,29 @@ Tryk på fortsæt nedenfor for at logge ind"</string>
   <string name="morphe_skip_silence_summary">Spring automatisk over stilhedspauser i video-lyd</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimum pauselængde</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Kun pauser af mindst denne længde forkortes. Træder i kraft, når den næste video starter</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Videoeffekt</string>
+  <string name="morphe_video_effect_entry_none">Fra</string>
+  <string name="morphe_video_effects_custom_title">Rediger videoeffekter</string>
+  <string name="morphe_video_effects_custom_summary">Skift, omdøb, slet eller tilføj videoeffekter. Effekter er shader-kode, så en AI-chatbot kan skrive nye</string>
+  <string name="morphe_video_effects_custom_empty">Ingen videoeffekter. Tryk på Tilføj effekt for at oprette en.</string>
+  <string name="morphe_video_effects_custom_add">Tilføj effekt</string>
+  <string name="morphe_video_effects_custom_restore">Gendan standardindstillinger</string>
+  <string name="morphe_video_effects_custom_add_title">Ny effekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Rediger effekt</string>
+  <string name="morphe_video_effects_custom_name_hint">Navn</string>
+  <string name="morphe_video_effects_custom_name_empty">Indtast et navn for effekten</string>
+  <string name="morphe_video_effects_custom_name_exists">En effekt med dette navn findes allerede</string>
+  <string name="morphe_video_effects_custom_copy_code">Kopier kode</string>
+  <string name="morphe_video_effects_custom_error_title">Effekten har en fejl</string>
+  <string name="morphe_video_effects_custom_error_message">"Videoer vises uden effekten, indtil koden er rettet. Giv denne fejl til den AI, der skrev koden:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopieringsfejl</string>
+  <string name="morphe_video_effects_custom_save_anyway">Gem alligevel</string>
+  <string name="morphe_video_effects_custom_delete">Slet</string>
+  <string name="morphe_video_effects_custom_delete_title">Slet effekt?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s vil blive slettet.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Netværksproxy</string>
   <string name="morphe_proxy_screen_summary">Send understøttede netværksanmodninger gennem en proxy</string>
@@ -344,6 +370,18 @@ Hvis det senere slås fra, anbefales det at rydde app-data for at forhindre UI-f
   <string name="morphe_custom_font_file_summary">Vælg en TTF- eller OTF-skrifttypefil</string>
   <string name="morphe_custom_font_file_invalid">Den valgte fil er ikke en TTF- eller OTF-skrifttype</string>
   <string name="morphe_custom_font_failed_to_load">Den brugerdefinerede skrifttype kunne ikke indlæses og er slået fra</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Glasmenuer</string>
+  <string name="morphe_glass_menus_screen_summary">Menuer som matteret glas over det slørede indhold bagved</string>
+  <string name="morphe_glass_menus_title">Aktiver glasmenuer</string>
+  <string name="morphe_glass_menus_summary">Viser menuer og bottom sheets som frostet glas, hvor indholdet bag dem er sløret</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menuer vises næsten uigennemsigtige, mens strømsparing er aktiveret, eller hvis enheden ikke understøtter sløring</string>
+  <string name="morphe_glass_menus_opacity_title">Glas uigennemsigtighed</string>
+  <string name="morphe_glass_menus_opacity_summary">Hvor meget menuen dækker det slørede indhold (0 er gennemsigtig, 100 er uigennemsigtig)</string>
+  <string name="morphe_glass_menus_blur_title">Sløring</string>
+  <string name="morphe_glass_menus_blur_summary">Hvor meget indholdet bag menuen er sløret</string>
+  <string name="morphe_glass_menus_dim_title">Dæmpning</string>
+  <string name="morphe_glass_menus_dim_summary">Hvor meget skærmen omkring et bottom sheet er mørklagt</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Disliker er midlertidigt ikke tilgængelige (API-timeout)</string>

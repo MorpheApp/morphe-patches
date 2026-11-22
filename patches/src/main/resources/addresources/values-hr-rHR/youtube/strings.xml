@@ -1171,17 +1171,6 @@ Za pristup Postavkama omogućite gumb Postavke putem Općenito → Alatna traka 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Prilagodite razmak između staklene navigacijske trake i dna zaslona ili sustavne navigacije</string>
   <string name="morphe_navigation_bar_glass_size_title">Veličina staklene navigacijske trake</string>
   <string name="morphe_navigation_bar_glass_size_summary">Prilagodite visinu, širinu i razmak između tipki staklene navigacijske trake uz prethodni pregled. Tipke koje ne stanu u širinu zaslona bit će skrivene</string>
-  <string name="morphe_glass_menus_screen_title">Stakleni izbornici</string>
-  <string name="morphe_glass_menus_screen_summary">Izbornici kao matirano staklo preko zamućenog sadržaja iza njih</string>
-  <string name="morphe_glass_menus_title">Omogući staklene izbornike</string>
-  <string name="morphe_glass_menus_summary">Prikazuje izbornike i donje ploče kao matirano staklo, uz zamućen sadržaj iza njih</string>
-  <string name="morphe_glass_menus_user_dialog_message">Izbornici se prikazuju gotovo neprozirno dok je uključen uštednik baterije ili ako uređaj ne podržava zamućenje</string>
-  <string name="morphe_glass_menus_opacity_title">Neprozirnost stakla</string>
-  <string name="morphe_glass_menus_opacity_summary">U kojoj mjeri izbornik prekriva zamućen sadržaj (0 je prozirno, 100 je neprozirno)</string>
-  <string name="morphe_glass_menus_blur_title">Zamućenje</string>
-  <string name="morphe_glass_menus_blur_summary">U kojoj mjeri je sadržaj iza izbornika zamućen</string>
-  <string name="morphe_glass_menus_dim_title">Zatamnjenje</string>
-  <string name="morphe_glass_menus_dim_summary">U kojoj mjeri je zaslon oko donjeg lista zatamnjen</string>
   <string name="morphe_navigation_bar_glass_size_height">Visina</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimalna širina</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Razmak između tipki</string>
@@ -1658,6 +1647,8 @@ Videozapisi se zahtijevaju kratkim prefiksom hashiranog ID-a videozapisa, pa pos
   <string name="morphe_video_delay_button_overlay_summary">Dodirnite i držite za resetiranje kašnjenja na 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Prikaži izbornik Kašnjenje videa</string>
   <string name="morphe_video_delay_dialog_input_hint">Kašnjenje u milisekundama</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Prikaži izbornik za videoefekte</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Zapamti kvalitetu Shorts videozapisa</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Primjenjuje vaš ručni odabir kvalitete na sve buduće Shorts videozapise</string>

@@ -1172,17 +1172,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ガラス風ナビゲーション バーと、画面下部またはシステム ナビゲーションとの間隔を調整します</string>
   <string name="morphe_navigation_bar_glass_size_title">ガラス風ナビゲーション バーのサイズ</string>
   <string name="morphe_navigation_bar_glass_size_summary">プレビューを見ながら、ガラス風ナビゲーション バーの高さ、幅、ボタンの間隔を調整します。画面幅に収まらないボタンは非表示になります</string>
-  <string name="morphe_glass_menus_screen_title">ガラスメニュー</string>
-  <string name="morphe_glass_menus_screen_summary">背後のコンテンツをぼかし、メニューをすりガラスのように表示します</string>
-  <string name="morphe_glass_menus_title">ガラスメニューを有効にする</string>
-  <string name="morphe_glass_menus_summary">メニューとボトムシートをすりガラスのように表示し、背後のコンテンツをぼかします</string>
-  <string name="morphe_glass_menus_user_dialog_message">バッテリーセーバーがオンの場合、またはデバイスがぼかしに対応していない場合は、メニューはほぼ不透明に表示されます</string>
-  <string name="morphe_glass_menus_opacity_title">ガラスの透明度</string>
-  <string name="morphe_glass_menus_opacity_summary">メニューがぼかしコンテンツをどの程度覆うか (0は透明、100は不透明)</string>
-  <string name="morphe_glass_menus_blur_title">ぼかし</string>
-  <string name="morphe_glass_menus_blur_summary">メニュー背後のコンテンツをどの程度ぼかすか</string>
-  <string name="morphe_glass_menus_dim_title">調光</string>
-  <string name="morphe_glass_menus_dim_summary">ボトムシート周囲の画面をどの程度暗くするか</string>
   <string name="morphe_navigation_bar_glass_size_height">高さ</string>
   <string name="morphe_navigation_bar_glass_size_width">最大幅</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ボタンの間隔</string>
@@ -1659,6 +1648,8 @@ Automotive レイアウト
   <string name="morphe_video_delay_button_overlay_summary">タップして長押しすると、遅延が 0 ms にリセットされます</string>
   <string name="morphe_video_delay_button_flyout_title">ビデオ遅延メニューを表示</string>
   <string name="morphe_video_delay_dialog_input_hint">ミリ秒単位の遅延</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">ビデオエフェクトメニューを表示</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">ショートの画質を保存</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">画質メニューでの画質の変更を、設定の [ショートのデフォルトの画質] に反映し、すべてのショート動画に適用します</string>

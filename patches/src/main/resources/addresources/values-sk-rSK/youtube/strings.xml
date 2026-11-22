@@ -1168,17 +1168,6 @@ Ak chcete pristúpiť k Nastaveniam, zapnite tlačidlo Nastavenia cez Všeobecn�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Upravte medzeru medzi skleneným navigačným panelom a spodnou časťou obrazovky alebo systémovou navigáciou</string>
   <string name="morphe_navigation_bar_glass_size_title">Veľkosť skleného navigačného panela</string>
   <string name="morphe_navigation_bar_glass_size_summary">Upravte výšku, šírku a rozostup tlačidiel skleného navigačného panela s náhľadom. Tlačidlá, ktoré sa nezmestia do šírky obrazovky, sa skryjú</string>
-  <string name="morphe_glass_menus_screen_title">Sklenené ponuky</string>
-  <string name="morphe_glass_menus_screen_summary">Ponuky ako mliečne sklo nad rozostreným obsahom za nimi</string>
-  <string name="morphe_glass_menus_title">Povoliť sklenené ponuky</string>
-  <string name="morphe_glass_menus_summary">Zobrazuje ponuky a spodné panely ako mliečne sklo s rozostreným obsahom za nimi</string>
-  <string name="morphe_glass_menus_user_dialog_message">Ponuky sa zobrazia takmer nepriehľadné, keď je zapnutý režim úspory batérie alebo ak zariadenie nepodporuje rozostrenie</string>
-  <string name="morphe_glass_menus_opacity_title">Nepriehľadnosť skla</string>
-  <string name="morphe_glass_menus_opacity_summary">Do akej miery menu zakryva rozmazaný obsah (0 je priehľadné, 100 je nepriehľadné)</string>
-  <string name="morphe_glass_menus_blur_title">Rozmazanie</string>
-  <string name="morphe_glass_menus_blur_summary">Do akej miery je obsah za menu rozmazaný</string>
-  <string name="morphe_glass_menus_dim_title">Stmavenie</string>
-  <string name="morphe_glass_menus_dim_summary">Do akej miery je obrazovka okolo spodného panelu stmavená</string>
   <string name="morphe_navigation_bar_glass_size_height">Výška</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximálna šírka</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Rozostup tlačidiel</string>
@@ -1652,6 +1641,8 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <string name="morphe_video_delay_button_overlay_summary">Podržaním resetujete oneskorenie na 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Zobraziť ponuku Oneskorenie videa</string>
   <string name="morphe_video_delay_dialog_input_hint">Oneskorenie v milisekundách</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Zobraziť ponuku Efekt videa</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Zapamätať kvalitu Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Použije vašu manuálnu voľbu kvality na všetky budúce videá Shorts</string>

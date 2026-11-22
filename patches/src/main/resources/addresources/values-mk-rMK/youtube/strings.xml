@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Прилагодете го просторот помеѓу стаклената лента за навигација и дното на екранот или системската навигација</string>
   <string name="morphe_navigation_bar_glass_size_title">Големина на стаклена лента за навигација</string>
   <string name="morphe_navigation_bar_glass_size_summary">Прилагодете ја висината, ширината и растојанието помеѓу копчињата на стаклената лента за навигација, со преглед. Копчињата што не се сместаат во ширината на екранот се кријат</string>
-  <string name="morphe_glass_menus_screen_title">Стаклени менија</string>
-  <string name="morphe_glass_menus_screen_summary">Менија како матирано стакло над заматената содржина зад нив</string>
-  <string name="morphe_glass_menus_title">Овозможи стаклени менија</string>
-  <string name="morphe_glass_menus_summary">Прикажува менија и долни листови како матирано стакло, при што содржината зад нив е заматена</string>
-  <string name="morphe_glass_menus_user_dialog_message">Менијата се прикажани речиси непроѕирно додека е вклучен зачувувачот на батеријата или ако уредот не поддржува заматување</string>
-  <string name="morphe_glass_menus_opacity_title">Проѕирност на стаклото</string>
-  <string name="morphe_glass_menus_opacity_summary">Колку менито го покрива замаглениот содржина (0 е проѕирно, 100 е непроѕирно)</string>
-  <string name="morphe_glass_menus_blur_title">Замаглување</string>
-  <string name="morphe_glass_menus_blur_summary">Колку е замаглена содржината зад менито</string>
-  <string name="morphe_glass_menus_dim_title">Затемнување</string>
-  <string name="morphe_glass_menus_dim_summary">Колку е затемнет екранот околу долниот лист</string>
   <string name="morphe_navigation_bar_glass_size_height">Висина</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимална ширина</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Растојание помеѓу копчињата</string>
@@ -1658,6 +1647,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">Допрете и држете за да го ресетирате одложувањето на 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Прикажи мени за одложување на видеото</string>
   <string name="morphe_video_delay_dialog_input_hint">Одложување во милисекунди</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Прикажи го менито за видео ефект</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Запамти квалитет на Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Ги применува вашите мануелни избори за квалитет до сите идни Shorts</string>

@@ -220,7 +220,10 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_prioritize_video_quality_summary">Кодекийн үр ашгаас илүү боломжтой хамгийн өндөр видео чанарыг ưuгоолно</string>
   <string name="morphe_prioritize_video_quality_dialog">Хэрэв энэ тохиргоог унтраавал хуучин видеонууд дээр видео чанарын сонголтууд харагдахгүй байж болно</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC аудиог идэвхгүй болгох</string>
+  <string name="morphe_disable_drc_audio_stream_title">DRC аудиог идэвхгүй болгох</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Динамик мужийг шахаж сэргээсэн хувилбарын оронд эх аудиог тоглуулахна</string>
+  <string name="morphe_disable_loudness_normalization_title">Дууны түвшин тэнцвэржүүлэлтийг идэвхгүй болгох</string>
+  <string name="morphe_disable_loudness_normalization_summary">Чанга дууг стандарт түвшинд бууруулахгүйгээр анхны хэмжээгээр нь тоглуулахна</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Эх хэлний аудиог албадан ашиглах</string>
   <string name="morphe_force_original_audio_summary">Дууршуулалтын хувилбарын оронд видеоны эх аудио замыг үргэлж тоглуулах</string>
@@ -229,6 +232,29 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_skip_silence_summary">Видеоны дууны чимээгүй хэсгүүдийг автоматаар алгасна</string>
   <string name="morphe_skip_silence_minimum_pause_title">Түр зогсолтын хамгийн бага хугацаа</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Зөвхөн энэ хугацаанаас дээшх тэмдэглэгээг богиносгоно. Дараагийн видео эхлэхэд хэрэгжиж эхэлнэ</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Видео эффект</string>
+  <string name="morphe_video_effect_entry_none">Унтраасан</string>
+  <string name="morphe_video_effects_custom_title">Видео эффектийг засах</string>
+  <string name="morphe_video_effects_custom_summary">Видео эффектийг өөрчлөх, нэрийг нь солих, устгах эсвэл шинээр нэмэх. Эффектүүд нь шейдерийн код тул AI чатбот шинээр бичих боломжтой</string>
+  <string name="morphe_video_effects_custom_empty">Видео эффект байхгүй байна. Шинээр нэмэхийн тулд \"Эффект нэмэх\" дээр дарна уу.</string>
+  <string name="morphe_video_effects_custom_add">Эффект нэмэх</string>
+  <string name="morphe_video_effects_custom_restore">Үндсэн тохиргоог сэргээх</string>
+  <string name="morphe_video_effects_custom_add_title">Шинэ эффект</string>
+  <string name="morphe_video_effects_custom_edit_title">Эффектийг засах</string>
+  <string name="morphe_video_effects_custom_name_hint">Нэр</string>
+  <string name="morphe_video_effects_custom_name_empty">Эффектийн нэр оруулна уу</string>
+  <string name="morphe_video_effects_custom_name_exists">Энэхүү нэртэй эффект аль хэдийн байна</string>
+  <string name="morphe_video_effects_custom_copy_code">Кодыг хуулах</string>
+  <string name="morphe_video_effects_custom_error_title">Эффект алдаатай байна</string>
+  <string name="morphe_video_effects_custom_error_message">"Кодыг засах хүртлээ видеонуудыг эффектгүйгээр харуулах болно. Энэхүү алдааг кодыг бичсэн AI-д илгээнэ үү:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Хуулах үед алдаа гарлаа</string>
+  <string name="morphe_video_effects_custom_save_anyway">Ямартай ч хамаагүй хадгалах</string>
+  <string name="morphe_video_effects_custom_delete">Устгах</string>
+  <string name="morphe_video_effects_custom_delete_title">Эффектийг устгах уу?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s устгагдана.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Сүлжээний прокси</string>
   <string name="morphe_proxy_screen_summary">Дэмжигдсэн сүлжээний хүсэлтүүдийг проксигоор дамжуулах</string>
@@ -345,6 +371,18 @@ PotHelper татахын тулд энд дарна уу"</string>
   <string name="morphe_custom_font_file_summary">TTF эсвэл OTF фонт файл сонгоно уу</string>
   <string name="morphe_custom_font_file_invalid">Сонгосон файл нь TTF эсвэл OTF фонт биш байна</string>
   <string name="morphe_custom_font_failed_to_load">Загвар фонтыг ачаалж чадсангүй тул унтраалаа</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Шилэн цэснүүд</string>
+  <string name="morphe_glass_menus_screen_summary">Цэснүүдийг ард нь бүдгэрсэн агуулга дээрх бүрсийгээр харуулах</string>
+  <string name="morphe_glass_menus_title">Шилэн цэснүүдийг идэвхжүүлэх</string>
+  <string name="morphe_glass_menus_summary">Цэс болон доод хуудсыг бүрсийгээр бүдгэрүүлсэн шилэн харагдуулна</string>
+  <string name="morphe_glass_menus_user_dialog_message">Батерей хэмнэх горим асаалттай эсвэл төхөөрөмж бүдгэрүүлэлтийг дэмжихгүй бол цэснүүд бараг тунгалаг бус харагдана</string>
+  <string name="morphe_glass_menus_opacity_title">Шилэн тунгалаг байдал</string>
+  <string name="morphe_glass_menus_opacity_summary">Цэс нь бүдгэрүүлсэн агуулгыг хэр зэрэг бүрхэх (0 нь тунгалаг, 100 нь тунгалаг бус)</string>
+  <string name="morphe_glass_menus_blur_title">Бүдгэрүүлэлт</string>
+  <string name="morphe_glass_menus_blur_summary">Цэсний ард байгаа агуулгыг хэр зэрэг бүдгэрүүлэх</string>
+  <string name="morphe_glass_menus_dim_title">Бүдгэрүүлэх</string>
+  <string name="morphe_glass_menus_dim_summary">Доод хуудсыг тойрон дэлгэцийг хэр зэрэг бүдгэрүүлж харанхуйлах</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Таалагдаагүй үзүүлэлт түр зуур боломжгүй (API хугацаа дууссан)</string>

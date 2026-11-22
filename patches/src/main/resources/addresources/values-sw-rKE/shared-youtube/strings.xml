@@ -219,7 +219,10 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_prioritize_video_quality_summary">Inapawekea kipaumbele ubora wa juu zaidi wa video unaopatikana kuliko ufanisi wa codec</string>
   <string name="morphe_prioritize_video_quality_dialog">Ikiwa mipangilio hii imezimwa, basi video za zamani zinaweza zisioonyeshe chaguzi za ubora wa video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Zima sauti ya DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Zima sauti ya DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Inacheza sauti asilia badala ya toleo lenye kiwango cha sauti kilichopunguzwa</string>
+  <string name="morphe_disable_loudness_normalization_title">Zima usawazishaji wa sauti</string>
+  <string name="morphe_disable_loudness_normalization_summary">Inacheza sauti kubwa katika kiwango chake asilia badala ya kuipunguza hadi kiwango cha kawaida</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Lazimisha lugha asilia ya sauti</string>
   <string name="morphe_force_original_audio_summary">Daima hucheza mkondo wa sauti asilia wa video badala ya toleo lililotafsiriwa</string>
@@ -228,6 +231,29 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_skip_silence_summary">Huruka kiotomatiki vipindi vya ukimya katika sauti ya video</string>
   <string name="morphe_skip_silence_minimum_pause_title">Urefu wa chini wa pause</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Ni mapumziko ya urefu huu au zaidi pekee ndiyo yanayofupishwa. Itaanza kutumika video inayofuata inapoanza</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Athari ya video</string>
+  <string name="morphe_video_effect_entry_none">Zima</string>
+  <string name="morphe_video_effects_custom_title">Hariri athari za video</string>
+  <string name="morphe_video_effects_custom_summary">Badilisha, pea jina, futa au ongeza athari za video. Athari hizi ni msimbo wa shader, hivyo chatbot ya AI inaweza kuandika mpya</string>
+  <string name="morphe_video_effects_custom_empty">Hakuna athari za video. Gusa Ongeza athari ili kutengeneza moja.</string>
+  <string name="morphe_video_effects_custom_add">Ongeza efekti</string>
+  <string name="morphe_video_effects_custom_restore">Rudisha mipangilio ya awali</string>
+  <string name="morphe_video_effects_custom_add_title">Efekti mpya</string>
+  <string name="morphe_video_effects_custom_edit_title">Hariri efekti</string>
+  <string name="morphe_video_effects_custom_name_hint">Jina</string>
+  <string name="morphe_video_effects_custom_name_empty">Ingiza jina la efekti</string>
+  <string name="morphe_video_effects_custom_name_exists">Efekti yenye jina hili tayari ipo</string>
+  <string name="morphe_video_effects_custom_copy_code">Nakili msimbo</string>
+  <string name="morphe_video_effects_custom_error_title">Efekti ina hitilafu</string>
+  <string name="morphe_video_effects_custom_error_message">"Video zinaonyeshwa bila athari hadi kodi itakaporekebishwa. Toa kosa hili kwa AI iliyoandika kodi:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Nakili kosa</string>
+  <string name="morphe_video_effects_custom_save_anyway">Hifadhi vyovyote</string>
+  <string name="morphe_video_effects_custom_delete">Futa</string>
+  <string name="morphe_video_effects_custom_delete_title">Futa athari?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s itafutwa.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proksi ya mtandao</string>
   <string name="morphe_proxy_screen_summary">Elekeza maombi ya mtandao yanayoungwa mkono kupitia proksi</string>
@@ -344,6 +370,18 @@ Ikiwa itazimwa baadaye, inapendekezwa kufuta data ya programu ili kuzuia hitilaf
   <string name="morphe_custom_font_file_summary">Chagua faili la fonti la TTF au OTF</string>
   <string name="morphe_custom_font_file_invalid">Faili lililochaguliwa si fonti ya TTF au OTF</string>
   <string name="morphe_custom_font_failed_to_load">Fonti maalum haikuweza kupakiwa na imezimwa</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Menyu za kioo</string>
+  <string name="morphe_glass_menus_screen_summary">Menyu kama kioo cha kigumu juu ya maudhui yaliyofifia nyuma yake</string>
+  <string name="morphe_glass_menus_title">Washa menyu ya kioo</string>
+  <string name="morphe_glass_menus_summary">Inaonyesha menyu na sehemu za chini kama kioo cha ukungu, huku maudhui yaliyo nyuma yake yakififishwa</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menyu huonyeshwa zikiwa hazipitiwi na mwanga wakati kiokozi cha betri kiko wazi, au ikiwa kifaa hakikubali ufifishaji</string>
+  <string name="morphe_glass_menus_opacity_title">Uwazi wa kioo</string>
+  <string name="morphe_glass_menus_opacity_summary">Kiasi ambacho menyu inafunika maudhui yaliyofifishwa (0 ni wazi, 100 ni isiyopitisha mwanga)</string>
+  <string name="morphe_glass_menus_blur_title">Fifisha</string>
+  <string name="morphe_glass_menus_blur_summary">Kiasi ambacho maudhui yaliyo nyuma ya menyu yamefifishwa</string>
+  <string name="morphe_glass_menus_dim_title">Fifisha mwanga</string>
+  <string name="morphe_glass_menus_dim_summary">Kiasi ambacho skrini inayozunguka sehemu ya chini imefifishwa</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Kutopenda hazipatikani kwa muda (API imeisha muda)</string>

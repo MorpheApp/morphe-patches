@@ -1171,17 +1171,6 @@ A Beállítások eléréséhez aktiválja a Beállítások gombot az Általános
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Állítsa be a téret az üveg navigációs sáv és a képernyő alja vagy a rendszer navigációja között</string>
   <string name="morphe_navigation_bar_glass_size_title">Üveg navigációs sáv mérete</string>
   <string name="morphe_navigation_bar_glass_size_summary">Állítsa be az üveg navigációs sáv magasságát, szélességét és a gombok közötti távolságot, előnézettel. A képernyő szélességébe nem férő gombok el lesznek rejtve</string>
-  <string name="morphe_glass_menus_screen_title">Üvegmenük</string>
-  <string name="morphe_glass_menus_screen_summary">A menük frosted glass hatással jelennek meg a mögötte lévő elmosódott tartalom felett</string>
-  <string name="morphe_glass_menus_title">Üvegmenük engedélyezése</string>
-  <string name="morphe_glass_menus_summary">A menük és az alsó lapok frosted glass hatással jelennek meg, miközben a mögöttük lévő tartalom elmosódik</string>
-  <string name="morphe_glass_menus_user_dialog_message">A menük majdnem teljesen átláthatatlanul jelennek meg, ha az energiamegtakarítás be van kapcsolva, vagy ha az eszköz nem támogatja az elmosódást</string>
-  <string name="morphe_glass_menus_opacity_title">Üveg átlátszósága</string>
-  <string name="morphe_glass_menus_opacity_summary">Hogy mennyire takarja a menü a homályos tartalmat (0 az átlátszó, 100 az átláthatatlan)</string>
-  <string name="morphe_glass_menus_blur_title">Homályosítás</string>
-  <string name="morphe_glass_menus_blur_summary">Hogy mennyire legyen homályos a menü mögötti tartalom</string>
-  <string name="morphe_glass_menus_dim_title">Sötétítés</string>
-  <string name="morphe_glass_menus_dim_summary">Hogy mennyire legyen sötétebb a képernyő egy alsó lap körül</string>
   <string name="morphe_navigation_bar_glass_size_height">Magasság</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximális szélesség</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Gombtávolság</string>
@@ -1658,6 +1647,8 @@ A videókat a hash-elt videóazonosító rövid előtagjával kérik le, így a 
   <string name="morphe_video_delay_button_overlay_summary">Érintse meg és tartsa lenyomva a késleltetés 0 ms-ra való visszaállításához</string>
   <string name="morphe_video_delay_button_flyout_title">Videó késleltetés menü megjelenítése</string>
   <string name="morphe_video_delay_dialog_input_hint">Késleltetés ezredmásodpercben</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Videóeffekt menü megjelenítése</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">A Shorts minőség megjegyzése</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Az egyéni minőségválasztás alkalmazása minden jövőbeli Shortsra</string>

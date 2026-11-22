@@ -1170,17 +1170,6 @@ Um auf die Einstellungen zuzugreifen, aktiviere den Einstellungen-Button über A
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Passen Sie den Abstand zwischen der gläsernen Navigationsleiste und dem unteren Bildschirmrand oder der Systemnavigation an</string>
   <string name="morphe_navigation_bar_glass_size_title">Größe der Glas-Navigationsleiste</string>
   <string name="morphe_navigation_bar_glass_size_summary">Passe die Höhe, die Breite und den Schaltflächenabstand der Glas-Navigationsleiste mithilfe einer Vorschau an. Schaltflächen, die nicht in die Bildschirmbreite passen, werden ausgeblendet</string>
-  <string name="morphe_glass_menus_screen_title">Glas-Menüs</string>
-  <string name="morphe_glass_menus_screen_summary">Menüs als Milchglas über dem weichgezeichneten Inhalt dahinter</string>
-  <string name="morphe_glass_menus_title">Glas-Menüs aktivieren</string>
-  <string name="morphe_glass_menus_summary">Zeigt Menüs und Bottom-Sheets als Milchglas an, wobei der Inhalt dahinter weichgezeichnet wird</string>
-  <string name="morphe_glass_menus_user_dialog_message">Menüs werden fast undurchsichtig angezeigt, wenn der Energiesparmodus aktiviert ist oder das Gerät keine Weichzeichnung unterstützt</string>
-  <string name="morphe_glass_menus_opacity_title">Glas-Deckkraft</string>
-  <string name="morphe_glass_menus_opacity_summary">Wie stark das Menü den weichgezeichneten Inhalt überdeckt (0 ist transparent, 100 ist undurchsichtig)</string>
-  <string name="morphe_glass_menus_blur_title">Weichzeichnung</string>
-  <string name="morphe_glass_menus_blur_summary">Wie stark der Inhalt hinter dem Menü weichgezeichnet wird</string>
-  <string name="morphe_glass_menus_dim_title">Abdunkelung</string>
-  <string name="morphe_glass_menus_dim_summary">Wie stark der Bildschirm um ein Bottom-Sheet herum abgedunkelt wird</string>
   <string name="morphe_navigation_bar_glass_size_height">Höhe</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximale Breite</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Schaltflächenabstand</string>
@@ -1657,6 +1646,8 @@ Videos werden über ein kurzes Präfix der gehashten Video-ID angefordert, sodas
   <string name="morphe_video_delay_button_overlay_summary">Tippen und gedrückt halten, um die Verzögerung auf 0 ms zurückzusetzen</string>
   <string name="morphe_video_delay_button_flyout_title">Menü \"Videoverzögerung\" anzeigen</string>
   <string name="morphe_video_delay_dialog_input_hint">Verzögerung in Millisekunden</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Video-Effekt-Menü anzeigen</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts-Qualität merken</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Wendet deine manuelle Qualitätsauswahl auf alle zukünftigen Shorts an.</string>

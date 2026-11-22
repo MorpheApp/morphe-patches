@@ -219,7 +219,10 @@ Ukuze ungene, cindezela uqhubeke ngezansi"</string>
   <string name="morphe_prioritize_video_quality_summary">Iphakamisa ikhwalithi yevidiyo ephezulu kunokusebenza kwe-codec</string>
   <string name="morphe_prioritize_video_quality_dialog">Uma le setting icishwe, ama-video adala angase akhombise izinketho zokusebenza kwe-video quality</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Vala umsindo we-DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Khumesha i-DRC audio</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Idlala umsindo wokuqala esikhundleni senguqulo ene-dynamic range ecindezelwe</string>
+  <string name="morphe_disable_loudness_normalization_title">Khumesha i-loudness normalization</string>
+  <string name="morphe_disable_loudness_normalization_summary">Idlala umsindo omkhulu ngomphiko wawo wokuqala esikhundleni sokuwuphonsa ezingeni elijwayelekile</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Phoqa ulimi lwe-audio lwangokuqala</string>
   <string name="morphe_force_original_audio_summary">Uhlale udlala umkhondo womculo wokuqala wevidiyo esikhundleni senye engihunyushwe</string>
@@ -228,6 +231,29 @@ Ukuze ungene, cindezela uqhubeke ngezansi"</string>
   <string name="morphe_skip_silence_summary">Igxuma ngokuzenzakalelayo izikhala zokuthula ku-audio yevidiyo</string>
   <string name="morphe_skip_silence_minimum_pause_title">Ubude obuncane bokuphetha</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Kufushiswa kuphela okuphumayo okubanzi kangaka. Kuzosebenza lapho kuqala i-video elandelayo</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Umniningwane wevidiyo</string>
+  <string name="morphe_video_effect_entry_none">Valiwe</string>
+  <string name="morphe_video_effects_custom_title">Hlela imiphumela yevidiyo</string>
+  <string name="morphe_video_effects_custom_summary">Shintsha, nikeza igama elisha, susa noma weze imiphumela yevidiyo. Imiphumela iyikhodi yeshader, ngakho i-AI chatbot ingabhala eyintsha</string>
+  <string name="morphe_video_effects_custom_empty">Ayikho imiphumela yevidiyo. Thinta u-Add effect ukuze wenze eyodwa.</string>
+  <string name="morphe_video_effects_custom_add">Weza umphumela</string>
+  <string name="morphe_video_effects_custom_restore">Buyisela izilungiselelo eziyisisekelo</string>
+  <string name="morphe_video_effects_custom_add_title">Umfanekiso omusha</string>
+  <string name="morphe_video_effects_custom_edit_title">Hlela umfanekiso</string>
+  <string name="morphe_video_effects_custom_name_hint">Igama</string>
+  <string name="morphe_video_effects_custom_name_empty">Faka igama lomfanekiso</string>
+  <string name="morphe_video_effects_custom_name_exists">Umfanekiso onemalo elinjalo usekhona</string>
+  <string name="morphe_video_effects_custom_copy_code">Kopisha ikhodi</string>
+  <string name="morphe_video_effects_custom_error_title">Umfanekiso unamaphutha</string>
+  <string name="morphe_video_effects_custom_error_message">"Amanama abonakala ngaphandle komfanekiso kuze kube yilapho ikhodi ilungiswe. Nikeza lolu phutha ku-AI ebhalile ikhodi:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopisha iphutha</string>
+  <string name="morphe_video_effects_custom_save_anyway">Gcina noma kunjani</string>
+  <string name="morphe_video_effects_custom_delete">Susa</string>
+  <string name="morphe_video_effects_custom_delete_title">Susa umphumela?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s izosuswa.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">I-Network proxy</string>
   <string name="morphe_proxy_screen_summary">Lalisa izicelo zenethiworki ezisekelwe ku-proxy</string>
@@ -344,6 +370,18 @@ Uma icishwa kamuva, kunalulekile ukusula idatha ye-app ukuze kuvikelwe amaphutha
   <string name="morphe_custom_font_file_summary">Khetha ifayela lefonti le-TTF noma le-OTF</string>
   <string name="morphe_custom_font_file_invalid">Ifayela ekhethiwe aliyona ifonti ye-TTF noma i-OTF</string>
   <string name="morphe_custom_font_failed_to_load">Ifonti ekhethiwe ayikwazanga ukulayishwa futhi icishiwe</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Imenyu yengilazi</string>
+  <string name="morphe_glass_menus_screen_summary">Imenyu efana nengilazi efuphi phezu okuqukethwe okungacacile ngemuva kwayo</string>
+  <string name="morphe_glass_menus_title">Vula imenyu yengilasi</string>
+  <string name="morphe_glass_menus_summary">Ikhombisa imenyu namashidi aphansi njengengilasi eyisikhanyiso, lapho okuqukethwe ngemuva kwawo kubukeka kungacacile</string>
+  <string name="morphe_glass_menus_user_dialog_message">Imenyu ibonakala ingacacile kakhulu lapho isilondolozi sebhethri sisebenza, noma uma idivayisi ingasekeli ukungacaci</string>
+  <string name="morphe_glass_menus_opacity_title">Ukuvuleka kwengilasi</string>
+  <string name="morphe_glass_menus_opacity_summary">Ukuthi imenyu imboza kangakanani okuqukethwe okungacacile (0 kusho ukuthi kucace, 100 kusho ukuthi akucaci)</string>
+  <string name="morphe_glass_menus_blur_title">Ukungacaci</string>
+  <string name="morphe_glass_menus_blur_summary">Ukuthi okuqukethwe ngemuva kwemenyu kungacaci kangakanani</string>
+  <string name="morphe_glass_menus_dim_title">Ukumnyama</string>
+  <string name="morphe_glass_menus_dim_summary">Ukuthi isikrinini ezungezeni ishidi eliphansi limnyama kangakanani</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Izinto ezingathandeki azitholakali okwamanje (API timed out)</string>

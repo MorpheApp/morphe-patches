@@ -1171,17 +1171,6 @@ Da biste pristupili Podešavanjima, omogućite dugme Podešavanja putem Opšte �
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Prilagodite razmak između staklene navigacione trake i dna ekrana ili sistemske navigacije</string>
   <string name="morphe_navigation_bar_glass_size_title">Veličina staklene trake za navigaciju</string>
   <string name="morphe_navigation_bar_glass_size_summary">Podesite visinu, širinu i razmak između dugmića staklene trake za navigaciju, uz pregled. Dugmići koji ne stanu u širinu ekrana su sakriveni</string>
-  <string name="morphe_glass_menus_screen_title">Stakleni meniji</string>
-  <string name="morphe_glass_menus_screen_summary">Meniji kao zamućeno staklo preko zamućenog sadržaja iza njih</string>
-  <string name="morphe_glass_menus_title">Omogući staklene menije</string>
-  <string name="morphe_glass_menus_summary">Prikazuje menije i donje tabele kao zamućeno staklo, pri čemu je sadržaj iza njih zamućen</string>
-  <string name="morphe_glass_menus_user_dialog_message">Meniji se prikazuju skoro neprozirno dok je uključena ušteda baterije, ili ako uređaj ne podržava zamućenje</string>
-  <string name="morphe_glass_menus_opacity_title">Neprozirnost stakla</string>
-  <string name="morphe_glass_menus_opacity_summary">Koliko meni prekriva zamućeni sadržaj (0 je potpuno providno, 100 je neprozirno)</string>
-  <string name="morphe_glass_menus_blur_title">Zamućenje</string>
-  <string name="morphe_glass_menus_blur_summary">Koliko je sadržaj iza menija zamućen</string>
-  <string name="morphe_glass_menus_dim_title">Zatamnjenje</string>
-  <string name="morphe_glass_menus_dim_summary">Koliko je ekran oko donje ploče zatamnjen</string>
   <string name="morphe_navigation_bar_glass_size_height">Visina</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimalna širina</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Razmak između dugmića</string>
@@ -1658,6 +1647,8 @@ Video snimci se zahtevaju kratkim prefiksom hešovanog ID-ja, tako da server ne 
   <string name="morphe_video_delay_button_overlay_summary">Dodirnite i držite pritisnuto da resetujete kašnjenje na 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Prikaži meni za kašnjenje videa</string>
   <string name="morphe_video_delay_dialog_input_hint">Kašnjenje u milisekundama</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Prikaži meni za video efekt</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Zapamti kvalitet Shorts videa</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Primena ručne selekcije kvaliteta na sve buduće Shorts</string>

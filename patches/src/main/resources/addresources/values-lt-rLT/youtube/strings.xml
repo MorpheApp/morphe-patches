@@ -1170,17 +1170,6 @@ Norėdami pasiekti Nustatymus, įjunkite Nustatymų mygtuką per Bendri → Įra
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Sureguliuokite atstumą tarp stiklinės navigacijos juostos ir ekrano apačios arba sistemos navigacijos</string>
   <string name="morphe_navigation_bar_glass_size_title">Stiklinės naršymo juostos dydis</string>
   <string name="morphe_navigation_bar_glass_size_summary">Su peržiūra nustatykite stiklinės naršymo juostos aukštį, plotį ir mygtukų tarpus. Mygtukai, kurie netelpa į ekrano plotį, yra slėpiami</string>
-  <string name="morphe_glass_menus_screen_title">Stikliniai meniu</string>
-  <string name="morphe_glass_menus_screen_summary">Meniu kaip matuminis stiklas virš aptrumpinto fono</string>
-  <string name="morphe_glass_menus_title">Įjungti stiklinius meniu</string>
-  <string name="morphe_glass_menus_summary">Rodo meniu ir apatines skydeles kaip matuminį stiklą, o turinys už jų yra aptrumpintas</string>
-  <string name="morphe_glass_menus_user_dialog_message">Kai įjungtas akumuliatoriaus taupymas arba įrenginys nepalaiko aptrumpinimo, meniu rodomi beveik nepermatomis</string>
-  <string name="morphe_glass_menus_opacity_title">Stiklo opakasumas</string>
-  <string name="morphe_glass_menus_opacity_summary">Kiek menu uždengia sudumą turinį (0 – skaidrus, 100 – opakas)</string>
-  <string name="morphe_glass_menus_blur_title">Sudumimas</string>
-  <string name="morphe_glass_menus_blur_summary">Kiek yra sudumtas turinys už menu</string>
-  <string name="morphe_glass_menus_dim_title">Prislaikymas</string>
-  <string name="morphe_glass_menus_dim_summary">Kiek yra patemintas ekranas aplink apatinį lapą</string>
   <string name="morphe_navigation_bar_glass_size_height">Aukštis</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimalus plotis</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Mygtukų tarpas</string>
@@ -1657,6 +1646,8 @@ Vaizdo įrašai užklausiami pagal trumpą maišyto vaizdo įrašo ID priešdėl
   <string name="morphe_video_delay_button_overlay_summary">Paspauskite ir laikykite, kad nustatytumėte delsimą į 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Rodyti „Vaizdo delsimas“ meniu</string>
   <string name="morphe_video_delay_dialog_input_hint">Delsimas milisekundėmis</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Rodyti vaizdo efekto meniu</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Įsiminti „Shorts“ kokybę</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Jūsų rankiniu būdu pasirinkta kokybė taikoma visiems būsimiems „Shorts“ įrašams</string>

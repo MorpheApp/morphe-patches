@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Կարգավորեք հեռավորությունը ապակե նավիգացիայի վահանակի և էկրանի հատակի կամ համակարգային նավիգացիայի միջև</string>
   <string name="morphe_navigation_bar_glass_size_title">Ապակե նավիգացիոն վահանակի չափսը</string>
   <string name="morphe_navigation_bar_glass_size_summary">Կարգավորեք ապակե նավիգացիոն վահանակի բարձրությունը, լայնությունը և կոճակների հեռավորությունը՝ նախնական դիտման հնարավորությամբ: Էկրանի լայնությանը չհամապատասխանող կոճակները թաքցվում են</string>
-  <string name="morphe_glass_menus_screen_title">Ապակյա մենյուներ</string>
-  <string name="morphe_glass_menus_screen_summary">Մենյուներ՝ որպես մատե ապակի՝ իրենց հետևում գտնվող լղկված բովանդակության վրա</string>
-  <string name="morphe_glass_menus_title">Միացնել ապակյա մենյուները</string>
-  <string name="morphe_glass_menus_summary">Ցուցադրում է մենյուները և ներքևի թերթերը որպես մատե ապակի, ընդ որում՝ դրանց հետևում գտնվող բովանդակությունը լղկված է</string>
-  <string name="morphe_glass_menus_user_dialog_message">Մենյուները ցուցադրվում են գրեթե անթափանց, երբ միացված է մարտկոցի խնայողը, կամ եթե սարքը չի աջակցում լղկմանը</string>
-  <string name="morphe_glass_menus_opacity_title">Ապակու թափանցիկությունը</string>
-  <string name="morphe_glass_menus_opacity_summary">Որքանով է մենյուն ծածկում լղիզված բովանդակությունը (0-ն թափանցիկ է, 100-ը՝ անթափանցիկ)</string>
-  <string name="morphe_glass_menus_blur_title">Մշուշում</string>
-  <string name="morphe_glass_menus_blur_summary">Որքանով է լղիզված մենյուի հետևում գտնվող բովանդակությունը</string>
-  <string name="morphe_glass_menus_dim_title">Մգլում</string>
-  <string name="morphe_glass_menus_dim_summary">Որքանով է մգացվում էկրանը ներքևի թերթի շուրջ</string>
   <string name="morphe_navigation_bar_glass_size_height">Բարձրություն</string>
   <string name="morphe_navigation_bar_glass_size_width">Առավելագույն լայնություն</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Կոճակների հեռավորություն</string>
@@ -1658,6 +1647,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">Սեղմեք և պահեք՝ հետաձգումը 0 մվ-ի վերակայելու համար</string>
   <string name="morphe_video_delay_button_flyout_title">Ցուցադրել տեսանյութի հետաձգման մենյուն</string>
   <string name="morphe_video_delay_dialog_input_hint">Հետաձգումը միլիվայրկյաններով</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Ցուցադրել տեսանյութի էֆեկտների մենյուն</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Հիշել Shorts-ի որակը</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Կիրառում է ձեր ընտրած որակը բոլոր հետագա Shorts-երի համար</string>

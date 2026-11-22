@@ -219,7 +219,10 @@ Pour vous connecter, appuyez sur continuer ci-dessous"</string>
   <string name="morphe_prioritize_video_quality_summary">Privilégie la qualité vidéo la plus élevée disponible plutôt que l\'efficacité du codec</string>
   <string name="morphe_prioritize_video_quality_dialog">Si ce paramètre est désactivé, les vidéos plus anciennes peuvent ne proposer aucune option de qualité vidéo</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Désactiver l\'audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Désactiver l\'audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Lit l\'audio original au lieu de la version avec une plage dynamique compressée</string>
+  <string name="morphe_disable_loudness_normalization_title">Désactiver la normalisation du volume</string>
+  <string name="morphe_disable_loudness_normalization_summary">Lit l\'audio fort à son volume d\'origine au lieu de le réduire à un niveau standard</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forcer la langue audio d\'origine</string>
   <string name="morphe_force_original_audio_summary">Lit toujours la piste audio originale de la vidéo au lieu d\'une version doublée</string>
@@ -228,6 +231,29 @@ Pour vous connecter, appuyez sur continuer ci-dessous"</string>
   <string name="morphe_skip_silence_summary">Passe automatiquement les pauses silencieuses dans l\'audio des vidéos</string>
   <string name="morphe_skip_silence_minimum_pause_title">Durée minimale de pause</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Seules les pauses d\'au moins cette durée sont raccourcies. Prend effet au démarrage de la vidéo suivante</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Effet vidéo</string>
+  <string name="morphe_video_effect_entry_none">Désactivée</string>
+  <string name="morphe_video_effects_custom_title">Modifier les effets vidéo</string>
+  <string name="morphe_video_effects_custom_summary">Changer, renommer, supprimer ou ajouter des effets vidéo. Les effets sont du code shader, un chatbot IA peut donc en écrire de nouveaux</string>
+  <string name="morphe_video_effects_custom_empty">Aucun effet vidéo. Appuyez sur \'Ajouter un effet\' pour en créer un.</string>
+  <string name="morphe_video_effects_custom_add">Ajouter un effet</string>
+  <string name="morphe_video_effects_custom_restore">Restaurer les effets par défaut</string>
+  <string name="morphe_video_effects_custom_add_title">Nouvel effet</string>
+  <string name="morphe_video_effects_custom_edit_title">Modifier l\'effet</string>
+  <string name="morphe_video_effects_custom_name_hint">Nom</string>
+  <string name="morphe_video_effects_custom_name_empty">Entrez un nom pour l\'effet</string>
+  <string name="morphe_video_effects_custom_name_exists">Un effet portant ce nom existe déjà</string>
+  <string name="morphe_video_effects_custom_copy_code">Copier le code</string>
+  <string name="morphe_video_effects_custom_error_title">L\'effet contient une erreur</string>
+  <string name="morphe_video_effects_custom_error_message">"Les vidéos sont affichées sans l'effet tant que le code n'est pas corrigé. Transmettez cette erreur à l'IA qui a écrit le code :
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Copier l\'erreur</string>
+  <string name="morphe_video_effects_custom_save_anyway">Enregistrer quand même</string>
+  <string name="morphe_video_effects_custom_delete">Supprimer</string>
+  <string name="morphe_video_effects_custom_delete_title">Supprimer l\'effet ?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s sera supprimé.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy réseau</string>
   <string name="morphe_proxy_screen_summary">Acheminer les requêtes réseau prises en charge via un proxy</string>
@@ -344,6 +370,18 @@ Si cette option est désactivée ultérieurement, il est recommandé d'effacer l
   <string name="morphe_custom_font_file_summary">Choisissez un fichier de police au format TTF ou OTF</string>
   <string name="morphe_custom_font_file_invalid">Le fichier sélectionné n\'est pas une police au format TTF ou OTF</string>
   <string name="morphe_custom_font_failed_to_load">La police personnalisée n\'a pas pu être chargée et a été désactivée</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Menus en verre</string>
+  <string name="morphe_glass_menus_screen_summary">Menus en verre dépoli sur le contenu flouté derrière eux</string>
+  <string name="morphe_glass_menus_title">Activer les menus en verre</string>
+  <string name="morphe_glass_menus_summary">Affiche les menus et les menus inférieurs en verre dépoli, avec le contenu derrière eux flouté</string>
+  <string name="morphe_glass_menus_user_dialog_message">Les menus s\'affichent presque opaques lorsque l\'économiseur de batterie est activé, ou si l\'appareil ne prend pas en charge le flou</string>
+  <string name="morphe_glass_menus_opacity_title">Opacité du verre</string>
+  <string name="morphe_glass_menus_opacity_summary">Niveau de recouvrement du contenu flouté par le menu (0 est transparent, 100 est opaque)</string>
+  <string name="morphe_glass_menus_blur_title">Flou</string>
+  <string name="morphe_glass_menus_blur_summary">Niveau de flou du contenu situé derrière le menu</string>
+  <string name="morphe_glass_menus_dim_title">Assombrissement</string>
+  <string name="morphe_glass_menus_dim_summary">Niveau d\'assombrissement de l\'écran autour du menu inférieur</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Les \'Je n\'aime pas\' sont temporairement indisponibles (délai d\'attente de l\'API dépassé)</string>

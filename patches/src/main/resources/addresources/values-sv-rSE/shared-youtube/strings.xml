@@ -219,7 +219,10 @@ Tryck på fortsätt nedan för att logga in"</string>
   <string name="morphe_prioritize_video_quality_summary">Prioriterar högsta möjliga videokvalitet framför kodekseffektivitet</string>
   <string name="morphe_prioritize_video_quality_dialog">Om den här inställningen är avstängd kan äldre videor sakna alternativ för videokvalitet</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Inaktivera dynamisk intervallkomprimering för ljud</string>
+  <string name="morphe_disable_drc_audio_stream_title">Inaktivera dynamisk intervallkomprimering för ljud</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Spelar upp originaljudiet istället för versionen med komprimerat dynamiskt omfång</string>
+  <string name="morphe_disable_loudness_normalization_title">Inaktivera volymnormalisering</string>
+  <string name="morphe_disable_loudness_normalization_summary">Spelar upp högt ljud i dess originalvolym istället för att sänka det till en standardnivå</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Tvinga ursprungligt ljudspråk</string>
   <string name="morphe_force_original_audio_summary">Spelar alltid videons ursprungliga ljudspår istället för en dubbad version</string>
@@ -228,6 +231,29 @@ Tryck på fortsätt nedan för att logga in"</string>
   <string name="morphe_skip_silence_summary">Hoppar automatiskt över tysta pauser i videoljudet</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minsta pauslängd</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Endast pauser som är minst så här långa förkortas. Börjar gälla när nästa video startar</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Videoeffekt</string>
+  <string name="morphe_video_effect_entry_none">Av</string>
+  <string name="morphe_video_effects_custom_title">Redigera videoeffekter</string>
+  <string name="morphe_video_effects_custom_summary">Ändra, byt namn på, ta bort eller lägg till videoeffekter. Effekter är shader-kod, så en AI-chatbot kan skriva nya</string>
+  <string name="morphe_video_effects_custom_empty">Inga videoeffekter. Tryck på Lägg till effekt för att skapa en.</string>
+  <string name="morphe_video_effects_custom_add">Lägg till effekt</string>
+  <string name="morphe_video_effects_custom_restore">Återställ till standard</string>
+  <string name="morphe_video_effects_custom_add_title">Ny effekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Redigera effekt</string>
+  <string name="morphe_video_effects_custom_name_hint">Namn</string>
+  <string name="morphe_video_effects_custom_name_empty">Ange ett namn för effekten</string>
+  <string name="morphe_video_effects_custom_name_exists">En effekt med det här namnet finns redan</string>
+  <string name="morphe_video_effects_custom_copy_code">Kopiera kod</string>
+  <string name="morphe_video_effects_custom_error_title">Effekten har ett fel</string>
+  <string name="morphe_video_effects_custom_error_message">"Videor visas utan effekten tills koden är åtgärdad. Ge det här felet till AI:n som skrev koden:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopieringsfel</string>
+  <string name="morphe_video_effects_custom_save_anyway">Spara ändå</string>
+  <string name="morphe_video_effects_custom_delete">Radera</string>
+  <string name="morphe_video_effects_custom_delete_title">Ta bort effekt?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s kommer att tas bort.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Nätverksproxy</string>
   <string name="morphe_proxy_screen_summary">Dirigera stödda nätverksförfrågningar genom en proxy</string>
@@ -344,6 +370,18 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_custom_font_file_summary">Välj en TTF- eller OTF-teckensnittsfil</string>
   <string name="morphe_custom_font_file_invalid">Den valda filen är inte ett TTF- eller OTF-teckensnitt</string>
   <string name="morphe_custom_font_failed_to_load">Anpassat teckensnitt kunde inte laddas och är avstängt</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Glasmenyer</string>
+  <string name="morphe_glass_menus_screen_summary">Menyer som frostat glas över det suddiga innehållet bakom dem</string>
+  <string name="morphe_glass_menus_title">Aktivera glasmenyer</string>
+  <string name="morphe_glass_menus_summary">Visar menyer och bottenark som frostat glas, där innehållet bakom dem suddas ut</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menyer visas nästan opaka när batterispararen är på, eller om enheten inte stöder oskärpa</string>
+  <string name="morphe_glass_menus_opacity_title">Glasets opacitet</string>
+  <string name="morphe_glass_menus_opacity_summary">Hur mycket menyn täcker det suddiga innehållet (0 är genomskinligt, 100 är opakt)</string>
+  <string name="morphe_glass_menus_blur_title">Oskärpa</string>
+  <string name="morphe_glass_menus_blur_summary">Hur mycket innehållet bakom menyn ska suddas ut</string>
+  <string name="morphe_glass_menus_dim_title">Dämpning</string>
+  <string name="morphe_glass_menus_dim_summary">Hur mycket skärmen runt ett bottenark ska mörknas</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ogilla-markeringar är inte tillgängliga just nu (API-tidsgräns nådd)</string>

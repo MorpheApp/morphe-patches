@@ -1036,21 +1036,21 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_swipe_change_video_summary">Balayez en mode plein écran pour passer à la vidéo suivante ou précédente</string>
   <!-- interaction.holdgesture.holdGesturePatch -->
   <string name="morphe_hold_gesture_screen_title">Geste de maintien</string>
-  <string name="morphe_hold_gesture_screen_summary">Modifiez et verrouillez la vitesse de lecture en faisant glisser après un appui prolongé</string>
+  <string name="morphe_hold_gesture_screen_summary">Changez et verrouillez la vitesse de lecture en faisant glisser votre doigt après avoir appuyé longuement</string>
   <string name="morphe_hold_gesture_title">Activer le geste de maintien</string>
-  <string name="morphe_hold_gesture_summary">Un appui prolongé sur la vidéo peut être suivi d\'un glissement. La vitesse lors du maintien correspond à la vitesse de lecture de l\'appui prolongé</string>
-  <string name="morphe_hold_gesture_press_to_swipe_summary">Non utilisé lorsque l\'option \"Appuyer pour balayer\" est activée. Appuyez pour modifier</string>
-  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Les commandes de balayage sont activées</string>
-  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Le geste de maintien et le geste \"appuyer pour balayer\" des commandes de balayage commencent tous deux par un appui long, donc un seul d\'entre eux peut être activé.</string>
-  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Désactiver \"Appuyer pour balayer\"</string>
-  <string name="morphe_hold_gesture_press_to_swipe_toast">Le geste de maintien n\'est pas utilisé lorsque l\'option \"Appuyer pour balayer\" est activée</string>
+  <string name="morphe_hold_gesture_summary">Appuyer longuement sur la vidéo peut être suivi d\'un glissement. La vitesse pendant l\'appui long correspond à celle définie pour l\'appui long</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Non utilisé lorsque les gestes de balayage sont activés. Appuyez pour changer</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Les gestes de balayage sont activés</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Les gestes de maintien et les gestes de balayage des contrôles de balayage commencent tous deux par un appui long, donc un seul d\'entre eux peut être activé.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Désactiver les gestes de balayage</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Le geste de maintien n\'est pas utilisé lorsque les gestes de balayage sont activée</string>
   <string name="morphe_hold_gesture_dialog_title">Le geste de maintien est activé</string>
   <string name="morphe_hold_gesture_dialog_turn_off">Désactiver le geste de maintien</string>
   <string name="morphe_hold_gesture_haptic_feedback_title">Activer le retour haptique</string>
-  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibre lorsque la vitesse change et lorsque la vitesse est verrouillée</string>
-  <string name="morphe_hold_gesture_speed_swipe_title">Faites glisser latéralement pour modifier la vitesse</string>
-  <string name="morphe_hold_gesture_speed_swipe_summary">Après avoir appuyé et maintenu, faites glisser vers la gauche pour lire plus lentement et vers la droite pour lire plus rapidement. Plus vous allez loin, plus la vitesse change jusqu\'à ce que le doigt revienne</string>
-  <string name="morphe_hold_gesture_speed_step_title">Incrément de vitesse</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibre lorsque la vitesse change et lorsqu\'elle est verrouillée</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Faites glisser latéralement pour changer la vitesse</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Après avoir appuyé longuement, faites glisser vers la gauche pour ralentir la lecture et vers la droite pour l\'accélérer. Plus vous faites glisser votre doigt loin, plus la vitesse continue de changer jusqu\'à ce que vous le rameniez</string>
+  <string name="morphe_hold_gesture_speed_step_title">Palier de vitesse</string>
   <string name="morphe_hold_gesture_speed_sensitivity_title">Sensibilité du glissement</string>
   <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Faible</string>
   <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normale</string>
@@ -1060,11 +1060,11 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_hold_gesture_speed_max_title">Vitesse maximale</string>
   <string name="morphe_hold_gesture_speed_max_summary">La vitesse maximale qu\'un glissement peut atteindre (jusqu\'à 8)</string>
   <string name="morphe_hold_gesture_lock_title">Faites glisser vers le bas pour verrouiller la vitesse</string>
-  <string name="morphe_hold_gesture_lock_summary">Après avoir appuyé et maintenu, faites glisser vers le bas pour conserver la vitesse lorsque vous levez le doigt. Appuyez sur le badge ou appuyez et maintenez à nouveau pour déverrouiller</string>
+  <string name="morphe_hold_gesture_lock_summary">Après avoir appuyé longuement, faites glisser vers le bas pour conserver la vitesse lorsque vous relâchez votre doigt. Appuyez sur le badge ou appuyez longuement à nouveau pour déverrouiller</string>
   <string name="morphe_hold_gesture_lock_badge_always_title">Toujours afficher le badge de verrouillage</string>
-  <string name="morphe_hold_gesture_lock_badge_always_summary">Le badge d\'une vitesse verrouillée reste visible lorsque les commandes du lecteur sont masquées</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Le badge de vitesse verrouillée reste visible lorsque les contrôles du lecteur sont masqués</string>
   <string name="morphe_hold_gesture_unlock_on_video_change_title">Déverrouiller lors du changement de vidéo</string>
-  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Une vitesse verrouillée prend fin lorsqu\'une autre vidéo commence</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Une vitesse verrouillée prend fin lorsqu\'une autre vidéo démarre</string>
   <string name="morphe_hold_gesture_lock_hint">Tirez vers le bas pour verrouiller</string>
   <string name="morphe_hold_gesture_lock_release">Relâchez pour verrouiller %s</string>
   <!-- layout.captions.captionsPatch -->
@@ -1171,17 +1171,6 @@ Pour accéder aux Paramètres, activez le bouton 'Paramètres' via 'Général' �
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Ajustez l\'espace entre la barre de navigation en verre et le bas de l\'écran ou la navigation système</string>
   <string name="morphe_navigation_bar_glass_size_title">Taille de la barre de navigation en verre</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajustez la hauteur, la largeur et l\'espacement des boutons de la barre de navigation en verre, avec un aperçu. Les boutons qui ne tiennent pas dans la largeur de l\'écran sont masqués</string>
-  <string name="morphe_glass_menus_screen_title">Menus en verre</string>
-  <string name="morphe_glass_menus_screen_summary">Menus sous forme de verre dépoli sur le contenu flou situé derrière eux</string>
-  <string name="morphe_glass_menus_title">Activer les menus en verre</string>
-  <string name="morphe_glass_menus_summary">Affiche les menus et les feuilles inférieures comme du verre dépoli, avec le contenu derrière eux flouté</string>
-  <string name="morphe_glass_menus_user_dialog_message">Les menus s\'affichent presque opaques lorsque l\'économiseur de batterie est activé, ou si l\'appareil ne prend pas en charge le flou</string>
-  <string name="morphe_glass_menus_opacity_title">Opacité du verre</string>
-  <string name="morphe_glass_menus_opacity_summary">Degré auquel le menu couvre le contenu flouté (0 est transparent, 100 est opaque)</string>
-  <string name="morphe_glass_menus_blur_title">Flou</string>
-  <string name="morphe_glass_menus_blur_summary">Degré de flou du contenu situé derrière le menu</string>
-  <string name="morphe_glass_menus_dim_title">Assombrissement</string>
-  <string name="morphe_glass_menus_dim_summary">Degré d\'assombrissement de l\'écran autour d\'une feuille inférieure</string>
   <string name="morphe_navigation_bar_glass_size_height">Hauteur</string>
   <string name="morphe_navigation_bar_glass_size_width">Largeur maximale</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espacement des boutons</string>
@@ -1659,6 +1648,8 @@ Les vidéos sont recherchées à l'aide d'un court préfixe de l'identifiant vid
   <string name="morphe_video_delay_button_overlay_summary">Appuyez longuement pour réinitialiser le délai à 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Afficher un menu \'Délai vidéo\'</string>
   <string name="morphe_video_delay_dialog_input_hint">Délai en millisecondes</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Afficher un menu \'Effet vidéo\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Mémoriser la qualité des Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Applique votre sélection de qualité manuelle à tous les Shorts futurs</string>

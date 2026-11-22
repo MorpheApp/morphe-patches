@@ -1171,17 +1171,6 @@ Para ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gene
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">I-adjust ang espasyo sa pagitan ng glass navigation bar at ng ibaba ng screen o ng system navigation</string>
   <string name="morphe_navigation_bar_glass_size_title">Laki ng glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_size_summary">I-adjust ang taas, lapad at button spacing ng glass navigation bar, na may preview. Ang mga button na hindi kasya sa lapad ng screen ay nakatago</string>
-  <string name="morphe_glass_menus_screen_title">Mga glass menu</string>
-  <string name="morphe_glass_menus_screen_summary">Mga menu bilang frosted glass sa ibabaw ng malabong content sa likuran nito</string>
-  <string name="morphe_glass_menus_title">I-enable ang glass menus</string>
-  <string name="morphe_glass_menus_summary">Ipinapakita ang mga menu at bottom sheet bilang frosted glass, na may malabong content sa likuran nito</string>
-  <string name="morphe_glass_menus_user_dialog_message">Ang mga menu ay ipinapakitang halos opaque kapag naka-on ang battery saver, o kung hindi suportado ng device ang blur</string>
-  <string name="morphe_glass_menus_opacity_title">Opacity ng glass</string>
-  <string name="morphe_glass_menus_opacity_summary">Kung gaano tinatakpan ng menu ang blurred na content (0 ay clear, 100 ay opaque)</string>
-  <string name="morphe_glass_menus_blur_title">Blur</string>
-  <string name="morphe_glass_menus_blur_summary">Kung gaano ka-blur ang content sa likod ng menu</string>
-  <string name="morphe_glass_menus_dim_title">Dim</string>
-  <string name="morphe_glass_menus_dim_summary">Kung gaano kadilim ang screen sa paligid ng bottom sheet</string>
   <string name="morphe_navigation_bar_glass_size_height">Taas</string>
   <string name="morphe_navigation_bar_glass_size_width">Maximum na lapad</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espasyo ng button</string>
@@ -1658,6 +1647,8 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <string name="morphe_video_delay_button_overlay_summary">I-tap at pindutin nang matagal upang i-reset ang antala sa 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Ipakita ang menu para sa pag-antala ng video</string>
   <string name="morphe_video_delay_dialog_input_hint">Antala sa milisegundo</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Ipakita ang menu ng effect ng Video</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Tandaan ang kalidad ng Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Inilalapat ang iyong manual na pagpili ng kalidad sa lahat ng Shorts sa hinaharap</string>

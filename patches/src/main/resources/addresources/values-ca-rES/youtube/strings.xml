@@ -1171,17 +1171,6 @@ Per accedir a la Configuració, activeu el botó de Configuració a través de G
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Ajusta l\'espai entre la barra de navegació de vidre i la part inferior de la pantalla o la navegació del sistema</string>
   <string name="morphe_navigation_bar_glass_size_title">Mida de la barra de navegació de vidre</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajusta l\'alçada, l\'amplada i l\'espaiat dels botons de la barra de navegació de vidre, amb una vista prèvia. Els botons que no caben a l\'amplada de la pantalla es solen ocultar</string>
-  <string name="morphe_glass_menus_screen_title">Menús de vidre</string>
-  <string name="morphe_glass_menus_screen_summary">Menús amb aspecte de vidre esmerilat sobre el contingut desenfocat que hi ha darrere</string>
-  <string name="morphe_glass_menus_title">Habilitar menús de vidre</string>
-  <string name="morphe_glass_menus_summary">Mostra els menús i les fulles inferiors amb aspecte de vidre esmerilat, amb el contingut posterior desenfocat</string>
-  <string name="morphe_glass_menus_user_dialog_message">Els menús es mostren gairebé opacs quan l\'estalvidor de bateria està activat o si el dispositiu no admet el desenfocat</string>
-  <string name="morphe_glass_menus_opacity_title">Opacitat del vidre</string>
-  <string name="morphe_glass_menus_opacity_summary">Quant cobreix el menú el contingut desfoscat (0 és transparent, 100 és opac)</string>
-  <string name="morphe_glass_menus_blur_title">Desenfocament</string>
-  <string name="morphe_glass_menus_blur_summary">Quant de desfoscat està el contingut darrere del menú</string>
-  <string name="morphe_glass_menus_dim_title">Atenuar</string>
-  <string name="morphe_glass_menus_dim_summary">Quant s\'oscureix la pantalla al voltant d\'una fulla inferior</string>
   <string name="morphe_navigation_bar_glass_size_height">Alçada</string>
   <string name="morphe_navigation_bar_glass_size_width">Amplada màxima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espaiat dels botons</string>
@@ -1658,6 +1647,8 @@ Els vídeos es sol·liciten mitjançant un prefix curt de l'ID del vídeo hashat
   <string name="morphe_video_delay_button_overlay_summary">Mantingueu premut per restableixir el retard a 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Mostrar el menú de retard de vídeo</string>
   <string name="morphe_video_delay_dialog_input_hint">Retard en mil·lisegons</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Mostrar el menú d\'efectes de vídeo</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Recorda la qualitat dels Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Aplica la teva selecció manual de qualitat a tots els Shorts futurs</string>

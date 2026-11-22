@@ -1173,17 +1173,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">글래스 내비게이션 바와 화면 하단 또는 시스템 내비게이션 사이의 간격을 조정합니다</string>
   <string name="morphe_navigation_bar_glass_size_title">글래스 내비게이션 바 크기</string>
   <string name="morphe_navigation_bar_glass_size_summary">미리보기를 통해 글래스 내비게이션 바의 높이, 너비 및 버튼 간격을 조정합니다. 화면 너비에 맞지 않는 버튼은 숨겨집니다</string>
-  <string name="morphe_glass_menus_screen_title">글래스 메뉴</string>
-  <string name="morphe_glass_menus_screen_summary">배경 콘텐츠가 블러 처리된 위에 프로스트 글래스 스타일의 메뉴를 표시합니다</string>
-  <string name="morphe_glass_menus_title">글래스 메뉴 활성화</string>
-  <string name="morphe_glass_menus_summary">메뉴와 바텀 시트를 프로스트 글래스 스타일로 표시하며, 배경 콘텐츠는 블러 처리됩니다</string>
-  <string name="morphe_glass_menus_user_dialog_message">배터리 절약 모드가 켜져 있거나 기기가 블러를 지원하지 않는 경우, 메뉴가 거의 불투명하게 표시됩니다</string>
-  <string name="morphe_glass_menus_opacity_title">글래스 불투명도</string>
-  <string name="morphe_glass_menus_opacity_summary">메뉴가 흐릿한 콘텐츠를 어느 정도 덮는지 설정합니다 (0은 투명, 100은 불투명)</string>
-  <string name="morphe_glass_menus_blur_title">흐림</string>
-  <string name="morphe_glass_menus_blur_summary">메뉴 뒤의 콘텐츠가 얼마나 흐릿하게 처리되는지 설정합니다</string>
-  <string name="morphe_glass_menus_dim_title">어둡게 하기</string>
-  <string name="morphe_glass_menus_dim_summary">바텀 시트 주변의 화면이 얼마나 어둡게 처리되는지 설정합니다</string>
   <string name="morphe_navigation_bar_glass_size_height">높이</string>
   <string name="morphe_navigation_bar_glass_size_width">최대 너비</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">버튼 간격</string>
@@ -1659,6 +1648,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_video_delay_button_overlay_summary">버튼을 길게 탭하여 딜레이 시간을 0ms로 초기화할 수 있습니다</string>
   <string name="morphe_video_delay_button_flyout_title">동영상 딜레이 메뉴 표시하기</string>
   <string name="morphe_video_delay_dialog_input_hint">딜레이 시간을 설정하세요 (밀리초)</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">동영상 효과 메뉴 표시하기</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts 화질 저장하기</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Shorts 화질 값을 변경할 때마다 기본 Shorts 화질으로 저장합니다</string>

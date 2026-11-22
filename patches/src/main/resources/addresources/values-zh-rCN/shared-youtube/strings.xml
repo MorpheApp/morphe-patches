@@ -219,7 +219,10 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_summary">优先考虑最高可用视频画质而非编解码器效率</string>
   <string name="morphe_prioritize_video_quality_dialog">如果关闭此设置，较旧的视频可能不显示任何视频画质选项</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">禁用 DRC 音频</string>
+  <string name="morphe_disable_drc_audio_stream_title">禁用 DRC 音频</string>
+  <string name="morphe_disable_drc_audio_stream_summary">播放原始音频，而非动态范围压缩后的版本</string>
+  <string name="morphe_disable_loudness_normalization_title">禁用响度标准化</string>
+  <string name="morphe_disable_loudness_normalization_summary">以原始音量播放大声音音频，而非将其降低到标准水平</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">强制使用原始音频语言</string>
   <string name="morphe_force_original_audio_summary">始终播放视频的原始音频轨道，而不是配音版本</string>
@@ -228,6 +231,29 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">自动跳过视频音频中的静音停顿</string>
   <string name="morphe_skip_silence_minimum_pause_title">最短暂停时长</string>
   <string name="morphe_skip_silence_minimum_pause_summary">只有至少达到此长度的暂停才会被缩短。在下一个视频开始时生效</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">视频效果</string>
+  <string name="morphe_video_effect_entry_none">关闭</string>
+  <string name="morphe_video_effects_custom_title">编辑视频效果</string>
+  <string name="morphe_video_effects_custom_summary">更改、重命名、删除或添加视频效果。效果是着色器代码，因此 AI 聊天机器人可以编写新的效果</string>
+  <string name="morphe_video_effects_custom_empty">没有视频效果。点击“添加效果”来创建一个。</string>
+  <string name="morphe_video_effects_custom_add">添加效果</string>
+  <string name="morphe_video_effects_custom_restore">恢复默认值</string>
+  <string name="morphe_video_effects_custom_add_title">新效果</string>
+  <string name="morphe_video_effects_custom_edit_title">编辑效果</string>
+  <string name="morphe_video_effects_custom_name_hint">名称</string>
+  <string name="morphe_video_effects_custom_name_empty">请输入效果名称</string>
+  <string name="morphe_video_effects_custom_name_exists">已存在同名效果</string>
+  <string name="morphe_video_effects_custom_copy_code">复制代码</string>
+  <string name="morphe_video_effects_custom_error_title">效果出错</string>
+  <string name="morphe_video_effects_custom_error_message">"在代码修复前，视频将不显示效果。请将此错误提供给编写该代码的 AI：
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">复制错误</string>
+  <string name="morphe_video_effects_custom_save_anyway">仍然保存</string>
+  <string name="morphe_video_effects_custom_delete">删除</string>
+  <string name="morphe_video_effects_custom_delete_title">删除效果？</string>
+  <string name="morphe_video_effects_custom_delete_message">%s 将被删除。</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">网络代理</string>
   <string name="morphe_proxy_screen_summary">通过代理路由支持的网络请求</string>
@@ -344,6 +370,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">选择 TTF 或 OTF 字体文件</string>
   <string name="morphe_custom_font_file_invalid">所选文件不是 TTF 或 OTF 字体</string>
   <string name="morphe_custom_font_failed_to_load">自定义字体无法加载，已关闭</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">玻璃菜单</string>
+  <string name="morphe_glass_menus_screen_summary">菜单呈现为覆盖在背后模糊内容之上的磨砂玻璃效果</string>
+  <string name="morphe_glass_menus_title">启用玻璃菜单</string>
+  <string name="morphe_glass_menus_summary">将菜单和底部工作表显示为磨砂玻璃效果，并模糊其背后的内容</string>
+  <string name="morphe_glass_menus_user_dialog_message">在省电模式开启或设备不支持模糊效果时，菜单将显示为近乎不透明的状态</string>
+  <string name="morphe_glass_menus_opacity_title">玻璃不透明度</string>
+  <string name="morphe_glass_menus_opacity_summary">菜单覆盖模糊内容的程度（0 为透明，100 为不透明）</string>
+  <string name="morphe_glass_menus_blur_title">模糊</string>
+  <string name="morphe_glass_menus_blur_summary">菜单背后内容的模糊程度</string>
+  <string name="morphe_glass_menus_dim_title">调暗</string>
+  <string name="morphe_glass_menus_dim_summary">底部工作表周围屏幕的变暗程度</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">点踩数暂时不可用 (API 连接超时)</string>

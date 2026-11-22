@@ -219,7 +219,10 @@ Sartzeko, sakatu beheko jarraitu botoia"</string>
   <string name="morphe_prioritize_video_quality_summary">Eskuragarri dagoen bideo kalitate altuena kodekaren eraginkortasunaren gainetik lehenesten du</string>
   <string name="morphe_prioritize_video_quality_dialog">Ezarpen hau desaktibatuta badago, bideo zaharrek ez dute kalitate aukerarik erakutsi ahal izango</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Desaktibatu DRC audioa</string>
+  <string name="morphe_disable_drc_audio_stream_title">Desaktibatu DRC audioa</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Jualdu audio originala, narasi dinaminiko konpresatuko bertsioaren ordez</string>
+  <string name="morphe_disable_loudness_normalization_title">Desaktibu bolumen normalizazioa</string>
+  <string name="morphe_disable_loudness_normalization_summary">Jualdu audio gogorra bere bolumen originalean, maila estandar batean jaitsi beharrean</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Audioren jatorrizko hizkuntza behartu</string>
   <string name="morphe_force_original_audio_summary">Bideoaren jatorrizko audio-pista beti erreproduzitzen du, bertsio doblatua erabili beharrean</string>
@@ -228,6 +231,29 @@ Sartzeko, sakatu beheko jarraitu botoia"</string>
   <string name="morphe_skip_silence_summary">Bideo-audioko isiltasun-tarteak automatikoki saltatzen ditu</string>
   <string name="morphe_skip_silence_minimum_pause_title">Pausaren gutxieneko luzera</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Luzera honetako edo luzeagoak diren pausak soilik laburtzen dira. Hurrengo bideoa hasten denean aplikatzen da</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Bideo efektua</string>
+  <string name="morphe_video_effect_entry_none">Itzalita</string>
+  <string name="morphe_video_effects_custom_title">Editatu bideo efektuak</string>
+  <string name="morphe_video_effects_custom_summary">Aldatu, bizizatu, ezbatu edo gehitu bideo efektuak. Efektuak shader kodeak dira, beraz, AI chatbot batek berriak idatzi ditzake</string>
+  <string name="morphe_video_effects_custom_empty">Ez da bideo efekturik. Sakatu Efektua gehitu bat egiteko.</string>
+  <string name="morphe_video_effects_custom_add">Efektua gehitu</string>
+  <string name="morphe_video_effects_custom_restore">Lehenetsiak berreskuratu</string>
+  <string name="morphe_video_effects_custom_add_title">Efektu berria</string>
+  <string name="morphe_video_effects_custom_edit_title">Efektua editatu</string>
+  <string name="morphe_video_effects_custom_name_hint">Izena</string>
+  <string name="morphe_video_effects_custom_name_empty">Sartu efektuaren izen bat</string>
+  <string name="morphe_video_effects_custom_name_exists">Izen honekin efektu bat dagoeneko existitzen da</string>
+  <string name="morphe_video_effects_custom_copy_code">Kodea kopiatu</string>
+  <string name="morphe_video_effects_custom_error_title">Efektuak errore bat du</string>
+  <string name="morphe_video_effects_custom_error_message">"Bideoak efekturik gabe erakutsiko dira kodea konpondu arte. Eman errore hau kodea idatzi duen AI-ari:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopiatze errorea</string>
+  <string name="morphe_video_effects_custom_save_anyway">Gorde hala ere</string>
+  <string name="morphe_video_effects_custom_delete">Ezabatu</string>
+  <string name="morphe_video_effects_custom_delete_title">Efektua ezabatu?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s ezabatuko da.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Sare proxya</string>
   <string name="morphe_proxy_screen_summary">Bideratu onartutako sare-eskariak proxy baten bidez</string>
@@ -344,6 +370,18 @@ Gero desaktibatuz gero, UI akatsak saihesteko aplikazioaren datuak garbitzea gom
   <string name="morphe_custom_font_file_summary">Hautatu TTF edo OTF letra-tipo fitxategi bat</string>
   <string name="morphe_custom_font_file_invalid">Hautatutako fitxategia ez da TTF edo OTF letra-tipo bat</string>
   <string name="morphe_custom_font_failed_to_load">Letra pertsonalizatua ezin izan da kargatu eta desaktibatu da</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Beiruen menuak</string>
+  <string name="morphe_glass_menus_screen_summary">Menuak beiru opako gisa, atzealdeko edukia difuminatuta</string>
+  <string name="morphe_glass_menus_title">Gactivate beilak menuak</string>
+  <string name="morphe_glass_menus_summary">Menuak eta beheko honekin beilak bezala erakusten ditu, haien atzean dagoen edukia bluratuta</string>
+  <string name="morphe_glass_menus_user_dialog_message">Bateria-aurrekitza aktibo dagoenean, edo gailuak ez badu blurra onartzen, menuak opaez eta hurbilago erakutsiko dira</string>
+  <string name="morphe_glass_menus_opacity_title">Beira opakutasuna</string>
+  <string name="morphe_glass_menus_opacity_summary">Menuak zenbat coverdu duen edukia bluratua (0 garbia da, 100 opaez)</string>
+  <string name="morphe_glass_menus_blur_title">Lausotu</string>
+  <string name="morphe_glass_menus_blur_summary">Menua atzean dagoen edukia zenbat bluratzen den</string>
+  <string name="morphe_glass_menus_dim_title">Iluntzea</string>
+  <string name="morphe_glass_menus_dim_summary">Beheko honekin inguruko pantaila zenbat iluntzen den</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ez-gustuak une batez ez daude eskuragarri (APIak denbora gehiegi behar izan du)</string>
