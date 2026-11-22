@@ -31,6 +31,7 @@ import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
 import app.morphe.extension.reddit.patches.HideVideosForYouShelfPatch;
 import app.morphe.extension.reddit.patches.HighQualityAvatarsPatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
+import app.morphe.extension.reddit.patches.KeepMediaViewerInSubredditPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
 import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch;
@@ -77,6 +78,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FeedMediaMaxHeightPatch.isPatchIncluded() ||
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
                 MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
+                KeepMediaViewerInSubredditPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded() ||
                 SearchHiddenProfilesPatch.isPatchIncluded() ||
                 HighQualityAvatarsPatch.isPatchIncluded() ||
@@ -258,6 +260,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.MEDIA_VIEWER_BLACK_BACKGROUND
+            ));
+        }
+
+        if (KeepMediaViewerInSubredditPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.KEEP_MEDIA_VIEWER_IN_SUBREDDIT
             ));
         }
 

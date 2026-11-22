@@ -227,6 +227,9 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_join_conversation_button_summary">Hides the \"See the conversation\" button at the bottom of the media viewer</string>
     <string name="morphe_media_viewer_black_background_title">Media viewer black background</string>
     <string name="morphe_media_viewer_black_background_summary">Uses a black background behind images and videos in the media viewer, instead of the theme background color</string>
+    <string name="morphe_keep_media_viewer_in_subreddit_title">Keep media viewer in subreddit</string>
+    <string name="morphe_keep_media_viewer_in_subreddit_summary_on">Swiping in the full screen media viewer shows only posts from the subreddit of the post you opened. In small subreddits the list ends sooner</string>
+    <string name="morphe_keep_media_viewer_in_subreddit_summary_off">Swiping in the full screen media viewer can show posts from other subreddits</string>
     <string name="morphe_open_links_externally_title">Open links externally</string>
     <string name="morphe_open_links_externally_summary">Opens links in your browser instead of the in-app browser</string>
     <string name="morphe_remember_collapsed_comments_title">Remember collapsed comments</string>
