@@ -116,7 +116,10 @@ internal object BuildMediaItemFingerprint : Fingerprint(
     )
 )
 
-/** In YTM 9.15.51 and 9.20.53, the overload that takes only the item list forwards to this method. */
+/**
+ * Delivers the items of a browse request to Android Auto.
+ * YTM 9.15 and 9.20 also have an overload that takes only the item list and forwards to this method.
+ */
 internal object DeliverBrowseItemsFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/util/List;", "L"),
@@ -135,10 +138,11 @@ internal object SendEmptyMediaItemsFingerprint : Fingerprint(
     )
 )
 
+/** YTM's handler of Android Auto browse requests. */
 internal object BrowseRequestHandlerFingerprint : Fingerprint(
     classFingerprint = SendEmptyMediaItemsFingerprint,
     returnType = { "V" },
-    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef) },
+    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef.type) },
     filters = listOf(
         methodCall("Lj$/util/concurrent/ConcurrentHashMap;->containsKey(Ljava/lang/Object;)Z"),
         opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
@@ -150,7 +154,7 @@ internal object BrowseRequestHandlerFingerprint : Fingerprint(
 /** YTM can answer from its browse cache or local library here without starting another root fetch. */
 internal object CachedBrowseFingerprint : Fingerprint(
     classFingerprint = SendEmptyMediaItemsFingerprint,
-    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef) },
+    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef.type) },
     returnType = { "Z" }
 )
 

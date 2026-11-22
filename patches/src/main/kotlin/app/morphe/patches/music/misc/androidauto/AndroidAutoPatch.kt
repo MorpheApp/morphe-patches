@@ -652,13 +652,12 @@ private fun patchPendingRootFetch(handler: MutableMethod) {
     // YTM overwrites p0 during delivery, so preserve the fetch object for finishRootFetch.
     val delivery = RootLoadedFingerprint.instructionMatches.last().getMethodCalled().cloneParameters()
     delivery.addInstructionsAtControlFlowLabel(delivery.instructions.lastIndex,
-        "invoke-static { p0 }, $EXTENSION_CLASS->finishRootFetch(Ljava/lang/Object;)V")
+        "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->finishRootFetch(Ljava/lang/Object;)V")
 }
 
 private fun addBrowseRequestInterface() {
     val (holder, mediaId) = SendEmptyMediaItemsFingerprint.instructionMatches
     val requestedMediaIdField = mediaId.fieldReference
-    require(holder.fieldReference.type == requestedMediaIdField.definingClass) { "Unexpected browse media ID holder" }
     skipCustomMediaIdDecoding(requestedMediaIdField)
 
     val requestClass = DeliverBrowseItemsFingerprint.classDef
