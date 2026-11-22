@@ -302,15 +302,17 @@ public final class DownloadLocationPatch {
     }
 
     /**
-     * Saves an item of a gallery downloaded by the Download all from gallery patch,
-     * with the same folder and file name options as images saved by Reddit.
+     * Inserts a gallery item saved by the Download all from gallery patch,
+     * which uses the options of images saved by Reddit.
      */
     @Nullable
-    public static Uri insertGalleryItem(ContentResolver resolver, Uri uri, ContentValues values, Link post, String url, boolean video) {
-        String path = Uri.parse(url).getPath();
-        final boolean isGif = path != null && path.toLowerCase(Locale.ROOT).endsWith(".gif");
-        return insert(resolver, uri, values, new Media(new Source(post.getSubreddit(), post.getAuthor()),
-                video ? TYPE_VIDEO : (isGif ? TYPE_GIF : TYPE_IMAGE), getImageName(url)));
+    public static Uri insertGalleryItem(ContentResolver resolver, Uri uri, ContentValues values, Link post, String url) {
+        String mimeType = values.getAsString(MediaStore.MediaColumns.MIME_TYPE);
+        String type = mimeType.startsWith("video/") ? TYPE_VIDEO
+                : mimeType.equals("image/gif") ? TYPE_GIF
+                : TYPE_IMAGE;
+        return insert(resolver, uri, values,
+                new Media(new Source(post.getSubreddit(), post.getAuthor()), type, getImageName(url)));
     }
 
     @Nullable

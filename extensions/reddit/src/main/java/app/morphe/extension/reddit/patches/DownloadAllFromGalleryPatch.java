@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/5193
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -10,34 +10,26 @@ package app.morphe.extension.reddit.patches;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.util.Pair;
-import android.webkit.MimeTypeMap;
-import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
 import com.reddit.domain.model.Link;
-import com.reddit.domain.model.PostGallery;
-import com.reddit.domain.model.PostGalleryItem;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.reddit.utils.PostMedia;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -46,24 +38,36 @@ import app.morphe.extension.shared.ui.CustomDialog;
 public final class DownloadAllFromGalleryPatch {
 
     /**
-     * Added to the share sheet handler during patching.
+     * Interface to use obfuscated methods of the share sheet action handler.
      */
-    public interface DownloadHandler {
+    public interface ShareActionHandler {
+        // Methods are added during patching.
         void patch_launchDownload(Object block);
+
+        /**
+         * @return The id of the shared post, or null if the share sheet is not for a post.
+         */
+        @Nullable
+        String patch_getPostId();
     }
 
-    private static final String DOWNLOAD_MEDIA_ACTION_CLASS_SUFFIX = "$downloadMedia$1";
-    private static final String DEFAULT_MIME_TYPE = "image/jpeg";
-    private static final String DEFAULT_EXTENSION = "jpg";
+    /**
+     * Folder of the images saved by Reddit.
+     */
     private static final String REDDIT_PICTURES_FOLDER = Environment.DIRECTORY_PICTURES + "/Reddit";
-    private static final int CONNECT_TIMEOUT_MILLIS = 15000;
-    private static final int READ_TIMEOUT_MILLIS = 30000;
-    private static final int BUFFER_SIZE = 8192;
 
-    private static final AtomicBoolean isDownloading = new AtomicBoolean(false);
-    private static volatile boolean bypassNextDownload;
+    /**
+     * @param id   Id of the post of the share sheet.
+     * @param post Post with the content, which is the original post of a crosspost.
+     */
+    private record SharedPost(String id, Link post) {
+    }
+
+    /**
+     * Post of the last share sheet, set when its preview is built.
+     */
     @Nullable
-    private static volatile Link shareSheetPost;
+    private static volatile SharedPost sharedPost;
 
     private static volatile WeakReference<Activity> mediaViewerActivityRef = new WeakReference<>(null);
 
@@ -83,264 +87,193 @@ public final class DownloadAllFromGalleryPatch {
     }
 
     /**
-     * Injection point.
+     * Injection point. Called when the share sheet preview of a post is built.
      */
     public static void setShareSheetLink(@Nullable Link link) {
         try {
-            if (!Settings.DOWNLOAD_ALL_FROM_GALLERY.get()) {
-                return;
-            }
+            if (!Settings.DOWNLOAD_ALL_FROM_GALLERY.get()) return;
 
-            if (link == null) {
-                return;
-            }
-
-            List<Link> crossPosts = link.getCrossPostParentList();
-            shareSheetPost = (crossPosts != null && !crossPosts.isEmpty())
-                    ? crossPosts.get(0)
-                    : link;
+            sharedPost = link == null
+                    ? null
+                    : new SharedPost(link.getId(), PostMedia.getContentPost(link));
         } catch (Exception ex) {
             Logger.printException(() -> "setShareSheetLink failure", ex);
         }
     }
 
     /**
-     * Injection point.
-     *
-     * @return If the dialog is shown instead of Reddit's download.
+     * Injection point. Replaces the launch of the download of the share sheet Download action.
      */
-    public static boolean onDownload(Object handler, Object block) {
+    public static void launchDownload(ShareActionHandler handler, Object block) {
         try {
-            if (bypassNextDownload) {
-                bypassNextDownload = false;
-                return false;
+            Link post = getGalleryPost(handler);
+            if (post != null) {
+                Utils.runOnMainThread(() -> showDownloadDialog(handler, block, post));
+                return;
             }
-
-            if (!Settings.DOWNLOAD_ALL_FROM_GALLERY.get()) {
-                return false;
-            }
-
-            if (block == null || !block.getClass().getName().endsWith(DOWNLOAD_MEDIA_ACTION_CLASS_SUFFIX)) {
-                return false;
-            }
-
-            Link post = shareSheetPost;
-            if (post == null) {
-                return false;
-            }
-
-            PostGallery gallery = post.getGallery();
-            if (gallery == null) {
-                return false;
-            }
-
-            List<PostGalleryItem> rawItems = gallery.getItems();
-            if (rawItems == null) {
-                return false;
-            }
-
-            List<PostGalleryItem> items = new ArrayList<>();
-            for (PostGalleryItem item : rawItems) {
-                if (item != null) {
-                    String url = item.getUrl();
-                    if (url != null && !url.isEmpty()) {
-                        items.add(item);
-                    }
-                }
-            }
-
-            if (items.size() < 2) {
-                return false;
-            }
-
-            Activity mediaViewer = mediaViewerActivityRef.get();
-            Activity activity = (mediaViewer != null && !mediaViewer.isFinishing() && !mediaViewer.isDestroyed())
-                    ? mediaViewer
-                    : Utils.getActivity();
-            if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
-                return false;
-            }
-
-            Utils.runOnMainThread(() -> showDownloadDialog(activity, handler, block, post, items));
-            return true;
         } catch (Exception ex) {
-            Logger.printException(() -> "onDownload failure", ex);
-            return false;
+            Logger.printException(() -> "launchDownload failure", ex);
         }
+
+        handler.patch_launchDownload(block);
     }
 
-    private static void showDownloadDialog(
-            Activity activity,
-            Object handler,
-            Object block,
-            Link post,
-            List<PostGalleryItem> items
-    ) {
-        try {
-            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                    activity,
-                    str("morphe_download_all_dialog_title"),
-                    str("morphe_download_all_dialog_message"),
-                    null,
-                    str("morphe_download_all_all", items.size()),
-                    () -> downloadGallery(post, items),
-                    () -> {},
-                    str("morphe_download_all_this_one"),
-                    () -> {
-                        bypassNextDownload = true;
-                        ((DownloadHandler) handler).patch_launchDownload(block);
-                    },
-                    true
-            );
+    /**
+     * @return The post with more than one gallery item, if the share sheet is for one.
+     */
+    @Nullable
+    private static Link getGalleryPost(ShareActionHandler handler) {
+        if (!Settings.DOWNLOAD_ALL_FROM_GALLERY.get()) return null;
 
-            Utils.showDialog(activity, dialogPair.first, true, null);
+        SharedPost shared = sharedPost;
+        // The preview of a share sheet is built after the post is loaded,
+        // so this can still be the post of an earlier share sheet.
+        if (shared == null || !shared.id.equals(handler.patch_getPostId())) return null;
+
+        return PostMedia.getGalleryUrls(shared.post).size() > 1 ? shared.post : null;
+    }
+
+    private static void showDownloadDialog(ShareActionHandler handler, Object block, Link post) {
+        try {
+            Activity activity = getActivity();
+            if (activity != null) {
+                List<String> urls = PostMedia.getGalleryUrls(post);
+                CustomDialog.create(
+                        activity,
+                        str("morphe_download_all_dialog_title"),
+                        str("morphe_download_all_dialog_message"),
+                        null,
+                        str("morphe_download_all_all", urls.size()),
+                        () -> downloadGallery(post, urls),
+                        () -> {},
+                        str("morphe_download_all_this_one"),
+                        () -> handler.patch_launchDownload(block),
+                        true
+                ).first.show();
+                return;
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "showDownloadDialog failure", ex);
-            try {
-                bypassNextDownload = true;
-                ((DownloadHandler) handler).patch_launchDownload(block);
-            } catch (Exception launchEx) {
-                Logger.printException(() -> "patch_launchDownload failure", launchEx);
-            }
         }
+
+        handler.patch_launchDownload(block);
     }
 
-    private static void downloadGallery(Link post, List<PostGalleryItem> items) {
-        if (!isDownloading.compareAndSet(false, true)) {
-            return;
+    /**
+     * @return The activity in front, which is the media viewer if it's open.
+     */
+    @Nullable
+    private static Activity getActivity() {
+        Activity mediaViewer = mediaViewerActivityRef.get();
+        if (isActive(mediaViewer)) {
+            return mediaViewer;
         }
 
-        final int totalCount = items.size();
+        Activity activity = Utils.getActivity();
+        return isActive(activity) ? activity : null;
+    }
+
+    private static boolean isActive(@Nullable Activity activity) {
+        return activity != null && !activity.isFinishing() && !activity.isDestroyed();
+    }
+
+    private static void downloadGallery(Link post, List<String> urls) {
+        final int totalCount = urls.size();
         Utils.showToastShort(str("morphe_download_all_started", totalCount));
 
         Utils.runOnBackgroundThread(() -> {
-            int savedCount = 0;
             ContentResolver resolver = Utils.getContext().getContentResolver();
-            try {
-                for (int i = 0; i < totalCount; i++) {
-                    final int itemNumber = i + 1;
-                    PostGalleryItem item = items.get(i);
-                    String url = item.getUrl();
-                    if (url == null || url.isEmpty()) {
-                        continue;
-                    }
-                    if (url.startsWith("//")) {
-                        url = "https:" + url;
-                    }
-                    if (url.contains("&amp;")) {
-                        url = url.replace("&amp;", "&");
-                    }
-
-                    HttpURLConnection conn = null;
-                    Uri itemUri = null;
-                    try {
-                        conn = openConnection(url);
-                        final int responseCode = conn.getResponseCode();
-                        if (responseCode != HttpURLConnection.HTTP_OK) {
-                            throw new IOException("HTTP " + responseCode + " for " + url);
-                        }
-
-                        String contentType = conn.getContentType();
-                        if (contentType != null) {
-                            final int semicolon = contentType.indexOf(';');
-                            if (semicolon != -1) {
-                                contentType = contentType.substring(0, semicolon);
-                            }
-                            contentType = contentType.trim().toLowerCase(Locale.ROOT);
-                        }
-
-                        String mimeType = null;
-                        if (contentType != null && !contentType.isEmpty()) {
-                            mimeType = contentType;
-                        } else {
-                            mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(
-                                    MimeTypeMap.getFileExtensionFromUrl(url));
-                        }
-                        if (mimeType == null || mimeType.isEmpty()) {
-                            mimeType = DEFAULT_MIME_TYPE;
-                        }
-
-                        String ext = MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType);
-                        if (ext == null || ext.isEmpty()) {
-                            ext = DEFAULT_EXTENSION;
-                        }
-
-                        final boolean isVideo = mimeType.startsWith("video/");
-
-                        Uri collectionUri = isVideo
-                                ? MediaStore.Video.Media.EXTERNAL_CONTENT_URI
-                                : MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-
-                        ContentValues values = new ContentValues();
-                        String postId = post.getId();
-                        String displayName = "reddit_" + (postId != null ? postId : "") + "_" + itemNumber + "." + ext;
-                        values.put(MediaStore.MediaColumns.DISPLAY_NAME, displayName);
-                        values.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
-                        values.put(MediaStore.MediaColumns.RELATIVE_PATH, REDDIT_PICTURES_FOLDER);
-                        values.put(MediaStore.MediaColumns.IS_PENDING, 1);
-
-                        itemUri = DownloadLocationPatch.insertGalleryItem(resolver, collectionUri, values, post, url, isVideo);
-                        if (itemUri == null) {
-                            throw new IOException("Failed to insert gallery item for " + url);
-                        }
-
-                        try (InputStream in = conn.getInputStream();
-                             OutputStream out = resolver.openOutputStream(itemUri)) {
-                            if (out == null) {
-                                throw new IOException("Failed to open output stream for " + itemUri);
-                            }
-                            byte[] buffer = new byte[BUFFER_SIZE];
-                            int bytesRead;
-                            while ((bytesRead = in.read(buffer)) != -1) {
-                                out.write(buffer, 0, bytesRead);
-                            }
-                            out.flush();
-                        }
-
-                        if (MediaStore.AUTHORITY.equals(itemUri.getAuthority())) {
-                            ContentValues updateValues = new ContentValues();
-                            updateValues.put(MediaStore.MediaColumns.IS_PENDING, 0);
-                            resolver.update(itemUri, updateValues, null, null);
-                        }
-
-                        savedCount++;
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "Failed to download gallery item " + itemNumber, ex);
-                        if (itemUri != null) {
-                            try {
-                                resolver.delete(itemUri, null, null);
-                            } catch (Exception deleteEx) {
-                                Logger.printDebug(() -> "Failed to delete item: " + deleteEx);
-                            }
-                        }
-                    } finally {
-                        if (conn != null) {
-                            conn.disconnect();
-                        }
-                    }
+            int savedCount = 0;
+            for (int i = 0; i < totalCount; i++) {
+                final int itemNumber = i + 1;
+                try {
+                    saveItem(resolver, post, urls.get(i), itemNumber);
+                    savedCount++;
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not save gallery item " + itemNumber, ex);
                 }
-            } finally {
-                isDownloading.set(false);
-                final int finalSavedCount = savedCount;
-                Utils.runOnMainThread(() -> {
-                    if (finalSavedCount == totalCount) {
-                        Utils.showToastShort(str("morphe_download_all_done", finalSavedCount));
-                    } else if (finalSavedCount > 0) {
-                        Utils.showToastShort(str("morphe_download_all_partial", finalSavedCount, totalCount));
-                    } else {
-                        Utils.showToastShort(str("morphe_download_all_failed"));
-                    }
-                });
+            }
+
+            if (savedCount == totalCount) {
+                Utils.showToastShort(str("morphe_download_all_done", savedCount));
+            } else if (savedCount > 0) {
+                Utils.showToastShort(str("morphe_download_all_partial", savedCount, totalCount));
+            } else {
+                Utils.showToastShort(str("morphe_download_all_failed"));
             }
         });
     }
 
-    private static HttpURLConnection openConnection(String urlString) throws IOException {
-        URL url = new URL(urlString);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setConnectTimeout(CONNECT_TIMEOUT_MILLIS);
-        conn.setReadTimeout(READ_TIMEOUT_MILLIS);
-        conn.setInstanceFollowRedirects(true);
-        return conn;
+    /**
+     * Saves an item where Reddit saves images, or where the Download location patch saves them.
+     */
+    private static void saveItem(ContentResolver resolver, Link post, String url, int itemNumber) throws IOException {
+        HttpURLConnection conn = PostMedia.openConnection(url);
+        Uri itemUri = null;
+        boolean saved = false;
+        try {
+            String contentType = PostMedia.getContentType(conn);
+            String extension = PostMedia.getExtension(contentType, url);
+            String mimeType = contentType != null ? contentType : PostMedia.getMimeTypeFromExtension(extension);
+            final boolean isVideo = mimeType.startsWith("video/");
+            if (!isVideo && !mimeType.startsWith("image/")) {
+                throw new IOException("Not an image or video: " + mimeType + " for " + url);
+            }
+
+            ContentValues values = new ContentValues();
+            values.put(MediaStore.MediaColumns.DISPLAY_NAME, "reddit_" + post.getId() + "_" + itemNumber + "." + extension);
+            values.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
+            values.put(MediaStore.MediaColumns.RELATIVE_PATH, REDDIT_PICTURES_FOLDER);
+            values.put(MediaStore.MediaColumns.IS_PENDING, 1);
+
+            Uri collection = isVideo
+                    ? MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                    : MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            itemUri = DownloadLocationPatch.insertGalleryItem(resolver, collection, values, post, url);
+            if (itemUri == null) {
+                throw new IOException("Could not create the file for " + url);
+            }
+
+            try (InputStream in = conn.getInputStream();
+                 OutputStream out = resolver.openOutputStream(itemUri)) {
+                if (out == null) {
+                    throw new IOException("Could not open " + itemUri);
+                }
+                byte[] buffer = new byte[PostMedia.BUFFER_SIZE];
+                int bytesRead;
+                while ((bytesRead = in.read(buffer)) != -1) {
+                    out.write(buffer, 0, bytesRead);
+                }
+            }
+
+            // A file of a folder picked with the system folder picker is not in the media store.
+            if (isInMediaStore(itemUri)) {
+                ContentValues published = new ContentValues();
+                published.put(MediaStore.MediaColumns.IS_PENDING, 0);
+                resolver.update(itemUri, published, null, null);
+            }
+            saved = true;
+        } finally {
+            conn.disconnect();
+            if (!saved && itemUri != null) {
+                deleteItem(resolver, itemUri);
+            }
+        }
+    }
+
+    private static boolean isInMediaStore(Uri uri) {
+        return MediaStore.AUTHORITY.equals(uri.getAuthority());
+    }
+
+    private static void deleteItem(ContentResolver resolver, Uri itemUri) {
+        try {
+            if (isInMediaStore(itemUri)) {
+                resolver.delete(itemUri, null, null);
+            } else {
+                DocumentsContract.deleteDocument(resolver, itemUri);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not delete unfinished file: " + itemUri, ex);
+        }
     }
 }
