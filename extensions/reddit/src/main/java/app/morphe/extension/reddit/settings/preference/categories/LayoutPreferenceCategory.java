@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch;
 import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
@@ -77,6 +78,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HighQualityAvatarsPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
+                AutoModeratorCommentsPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 TabletGridFeedPatch.isPatchIncluded() ||
                 FeedAutoScrollPatch.isPatchIncluded() ||
@@ -250,6 +252,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SWAP_POST_VOTE_COMMENT_BUTTONS
+            ));
+        }
+
+        if (AutoModeratorCommentsPatch.isPatchIncluded()) {
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.AUTOMODERATOR_COMMENTS
             ));
         }
 

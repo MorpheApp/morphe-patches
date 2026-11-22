@@ -14,19 +14,13 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.cloneMutable
-import app.morphe.util.removeFlags
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/RememberCollapsedCommentsPatch;"
@@ -38,41 +32,17 @@ val rememberCollapsedCommentsPatch = patch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(
+        settingsPatch,
+        commentCollapsedSetterPatch,
+    )
 
     execute {
         // 1. Report remembered comments as collapsed. Reddit copies comments in many places
         //    (loading, merging pages, translations), so hook the getter every copy goes through.
         CommentGetCollapsedFingerprint.let {
-            val collapsedField = it.instructionMatches.first().getFieldAccessed()
-
-            it.classDef.methods.apply {
-                // The original getter, so the extension can see the flag Reddit itself set.
-                add(it.method.cloneMutable(name = "patch_getRawCollapsed"))
-
-                // Setter, so the extension can mark a remembered comment as collapsed.
-                collapsedField.removeFlags(AccessFlags.FINAL)
-                add(
-                    ImmutableMethod(
-                        it.classDef.type,
-                        "patch_setCollapsed",
-                        listOf(ImmutableMethodParameter("Z", null, null)),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iput-boolean p1, p0, $collapsedField
-                                return-void
-                            """
-                        )
-                    }
-                )
-            }
+            // The original getter, so the extension can see the flag Reddit itself set.
+            it.classDef.methods.add(it.method.cloneMutable(name = "patch_getRawCollapsed"))
 
             // The getter has no free register, so clone it to keep "this" in p0.
             it.method.cloneParameters().apply {
