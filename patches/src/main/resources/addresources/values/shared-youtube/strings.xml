@@ -267,6 +267,9 @@ To sign in, press continue below"</string>
     <string name="morphe_video_effects_custom_error_message">"Videos are shown without the effect until the code is fixed. Give this error to the AI that wrote the code:
 
 %s"</string>
+    <string name="morphe_video_effects_custom_cut_off_message">"The code ends inside a function or comment, so it was probably cut off while it was copied or pasted. Pasted text can be cut off at %d characters.
+
+Ask the AI for shorter code, or paste the code in parts."</string>
     <string name="morphe_video_effects_custom_copy_error">Copy error</string>
     <string name="morphe_video_effects_custom_save_anyway">Save anyway</string>
     <string name="morphe_video_effects_custom_delete">Delete</string>
