@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
 
+import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch.AutoModeratorComments;
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch.ScrollSpeed;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.FeedDim;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.PanelWidth;
@@ -66,6 +67,7 @@ public class Settings extends BaseSettings {
     public static final StringSetting KEYWORD_FILTERS = new StringSetting("morphe_keyword_filters", "");
 
     // Layout
+    public static final EnumSetting<AutoModeratorComments> AUTOMODERATOR_COMMENTS = new EnumSetting<>("morphe_automoderator_comments", AutoModeratorComments.SHOW);
     public static final BooleanSetting COPY_TEXT = new BooleanSetting("morphe_copy_text", FALSE, true, "morphe_copy_text_user_dialog_message");
     public static final BooleanSetting CUSTOM_FONT = new BooleanSetting("morphe_custom_font", FALSE, true);
     public static final StringSetting CUSTOM_FONT_FILE_PATH = new StringSetting("morphe_custom_font_file_path", "", true);

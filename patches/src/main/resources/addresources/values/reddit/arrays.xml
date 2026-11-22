@@ -48,4 +48,16 @@
         <item>MEDIUM</item>
         <item>STRONG</item>
     </string-array>
+
+    <!-- layout.automod.autoModeratorCommentsPatch -->
+    <string-array name="morphe_automoderator_comments_entries">
+        <item>@string/morphe_automoderator_comments_entry_show</item>
+        <item>@string/morphe_automoderator_comments_entry_collapse</item>
+        <item>@string/morphe_automoderator_comments_entry_hide</item>
+    </string-array>
+    <string-array name="morphe_automoderator_comments_entry_values" translatable="false">
+        <item>SHOW</item>
+        <item>COLLAPSE</item>
+        <item>HIDE</item>
+    </string-array>
 </resources>
