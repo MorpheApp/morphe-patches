@@ -13,6 +13,7 @@ import android.content.Context;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.AccountSwitcherPrivateModePatch;
 import app.morphe.extension.reddit.patches.AppIconPatch;
 import app.morphe.extension.reddit.patches.DownloadLocationPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
@@ -44,7 +45,8 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public boolean getSettingsStatus() {
-        return AppIconPatch.isPatchIncluded() ||
+        return AccountSwitcherPrivateModePatch.isPatchIncluded() ||
+                AppIconPatch.isPatchIncluded() ||
                 DownloadLocationPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
@@ -69,6 +71,13 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
         addPreference(new SortedListPreference(context, BaseSettings.MORPHE_LANGUAGE));
         addPreference(new CustomDialogListPreference(context, SharedSettings.PATCHES_UPDATE_NOTICE));
+
+        if (AccountSwitcherPrivateModePatch.isPatchIncluded()) {
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.ACCOUNT_SWITCHER_PRIVATE_MODE
+            ));
+        }
 
         if (AppIconPatch.isPatchIncluded()) {
             addPreference(AppIconPatch.getIconPreference(context));

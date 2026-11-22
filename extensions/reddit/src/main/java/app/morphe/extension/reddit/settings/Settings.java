@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
 
+import app.morphe.extension.reddit.patches.AccountSwitcherPrivateModePatch.PrivateMode;
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch.ScrollSpeed;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.FeedDim;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.PanelWidth;
@@ -106,6 +107,8 @@ public class Settings extends BaseSettings {
     public static final EnumSetting<GridColumns> TABLET_GRID_COLUMNS = new EnumSetting<>("morphe_tablet_grid_columns", GridColumns.AUTO, parent(TABLET_GRID_FEED));
 
     // Miscellaneous
+    public static final EnumSetting<PrivateMode> ACCOUNT_SWITCHER_PRIVATE_MODE =
+            new EnumSetting<>("morphe_account_switcher_private_mode", PrivateMode.REDDIT_DEFAULT);
     public static final StringSetting DOWNLOAD_FOLDER = new StringSetting("morphe_download_folder", "");
     public static final StringSetting DOWNLOAD_PATH_PATTERN = new StringSetting("morphe_download_path_pattern", "");
     /**
