@@ -42,6 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -58,6 +59,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.QueueAccess;
+import app.morphe.extension.music.patches.album.PlayAlbumSongsPatch;
 import app.morphe.extension.music.patches.album.PlaylistRequest;
 import app.morphe.extension.music.patches.jam.QueueCommand;
 import app.morphe.extension.music.settings.Settings;
@@ -90,7 +92,21 @@ public final class AutoSongVersionPatch {
 
     private static final String NEXT_URL = INNERTUBE_URL + "next" + INNERTUBE_KEY_QUERY;
     private static final String PLAYER_URL = INNERTUBE_URL + "player" + INNERTUBE_KEY_QUERY;
-    private static final String WEB_CLIENT_VERSION = "1.20260914.01.00";
+    private static final String WEB_REMIX_CLIENT_NAME = "WEB_REMIX";
+    private static final String WEB_REMIX_CLIENT_VERSION_MAJOR = "1";
+    private static final String WEB_REMIX_CLIENT_VERSION = "1.20260914.01.00";
+
+    /** The YouTube watch page, the only one with the card that names the album of a music video. */
+    private static final String YOUTUBE_NEXT_URL = "https://www.youtube.com/youtubei/v1/next?prettyPrint=false";
+    private static final String YOUTUBE_CLIENT_NAME = "WEB";
+    private static final String YOUTUBE_CLIENT_VERSION_MAJOR = "2";
+    private static final String YOUTUBE_CLIENT_VERSION = "2.20260914.01.00";
+
+    /** Limits a search to the Albums tab. */
+    private static final String ALBUMS_FILTER = "EgWKAQIYAWoKEAkQAxAEEAkQBQ==";
+    private static final int ALBUMS_TO_CHECK = 3;
+    private static final int ALBUMS_TO_REMEMBER = 20;
+
     private static final long DAY_MILLISECONDS = 86_400_000L;
     private static final int CONNECT_TIMEOUT_MILLISECONDS = 5_000;
     private static final int READ_TIMEOUT_MILLISECONDS = 8_000;
@@ -123,6 +139,10 @@ public final class AutoSongVersionPatch {
     /** So a failed track isn't retried on every queue change. */
     private static final Map<String, Long> failedTracks = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(SONG_VERSIONS_TO_REMEMBER));
+
+    /** Music video to song of every album queue fetched, by album playlist id. */
+    private static final Map<String, Map<String, String>> albumSongs = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(ALBUMS_TO_REMEMBER));
 
     private static final AtomicBoolean lookingAhead = new AtomicBoolean();
     private static final AtomicBoolean lookAheadRequested = new AtomicBoolean();
@@ -545,7 +565,8 @@ public final class AutoSongVersionPatch {
     }
 
     /**
-     * @return Song with the same title, artist and about the same length, or NO_SONG_VERSION.
+     * @return Song of the music video on its album, otherwise a song with the same title, artist
+     *         and about the same length, or NO_SONG_VERSION.
      */
     private static String findSongVersion(String videoId) throws Exception {
         JSONObject track = findQueueTrack(videoId);
@@ -557,6 +578,13 @@ public final class AutoSongVersionPatch {
 
         final String videoType = musicVideoType(endpoint);
         if (AUDIO_TYPE.equals(videoType)) return NO_SONG_VERSION;
+
+        try {
+            String albumSongId = findAlbumSong(videoId);
+            if (!albumSongId.isEmpty()) return albumSongId;
+        } catch (Exception ex) {
+            Logger.printInfo(() -> "song version album lookup failed: " + videoId, ex);
+        }
 
         String title = runsText(track.optJSONObject("title"));
         JSONArray byline = runs(track.optJSONObject("longBylineText"));
@@ -618,6 +646,96 @@ public final class AutoSongVersionPatch {
         return firstMatch;
     }
 
+    /**
+     * The music card of the YouTube watch page names the album of a music video. Album queues
+     * list each music video with the id of its song, so the song is exact and a wrong card
+     * or album only finds nothing.
+     *
+     * @return Song of the music video on its album, or NO_SONG_VERSION.
+     */
+    private static String findAlbumSong(String videoId) throws Exception {
+        JSONObject card = findMusicCard(videoId);
+        if (card == null) return NO_SONG_VERSION;
+
+        JSONObject albumText = card.optJSONObject("secondarySubtitle");
+        String album = albumText == null ? "" : albumText.optString("content", "");
+        String artist = card.optString("subtitle", "");
+        if (album.isEmpty() || artist.isEmpty()) return NO_SONG_VERSION;
+
+        JSONObject results = requestWebRemix(SEARCH_URL, new JSONObject()
+                .put("query", album + " " + artist)
+                .put("params", ALBUMS_FILTER));
+        List<JSONObject> rows = new ArrayList<>();
+        collectRenderers(results, "musicResponsiveListItemRenderer", rows);
+
+        int checked = 0;
+        for (JSONObject row : rows) {
+            String playlistId = albumPlaylistId(row);
+            if (playlistId == null) continue;
+
+            String songId = songsOfAlbum(playlistId).get(videoId);
+            if (songId != null) return songId;
+            if (++checked == ALBUMS_TO_CHECK) break;
+        }
+        return NO_SONG_VERSION;
+    }
+
+    @Nullable
+    private static JSONObject findMusicCard(String videoId) throws Exception {
+        JSONObject response = requestWeb(YOUTUBE_NEXT_URL, new JSONObject().put("videoId", videoId),
+                YOUTUBE_CLIENT_NAME, YOUTUBE_CLIENT_VERSION_MAJOR, YOUTUBE_CLIENT_VERSION);
+        List<JSONObject> cards = new ArrayList<>();
+        collectRenderers(response, "videoAttributeViewModel", cards);
+        for (JSONObject card : cards) {
+            // Cards of people have no album.
+            if (card.has("secondarySubtitle")) return card;
+        }
+        return null;
+    }
+
+    @Nullable
+    private static String albumPlaylistId(JSONObject row) {
+        List<JSONObject> endpoints = new ArrayList<>();
+        collectRenderers(row, "watchPlaylistEndpoint", endpoints);
+        for (JSONObject endpoint : endpoints) {
+            String playlistId = endpoint.optString("playlistId", "");
+            if (playlistId.startsWith(YOUTUBE_MUSIC_ALBUM_PREFIX)) return playlistId;
+        }
+        return null;
+    }
+
+    /**
+     * Also remembers the songs of the other music videos of the album, those need no lookup.
+     *
+     * @return Song of each music video of the album queue.
+     */
+    private static Map<String, String> songsOfAlbum(String playlistId) throws Exception {
+        Map<String, String> songs = albumSongs.get(playlistId);
+        if (songs != null) return songs;
+
+        JSONObject response = requestWebRemix(NEXT_URL, new JSONObject()
+                .put("playlistId", playlistId)
+                .put("isAudioOnly", true));
+        List<JSONObject> tracks = new ArrayList<>();
+        collectRenderers(response, "playlistPanelVideoRenderer", tracks);
+
+        songs = new HashMap<>();
+        for (JSONObject track : tracks) {
+            String videoId = track.optString("videoId", "");
+            JSONObject navigation = track.optJSONObject("navigationEndpoint");
+            JSONObject endpoint = navigation == null ? null : navigation.optJSONObject("watchEndpoint");
+            String songId = endpoint == null
+                    ? null
+                    : PlayAlbumSongsPatch.songVideoIdOfParams(endpoint.optString("params", ""));
+            if (songId == null || !isVideoId(videoId)) continue;
+
+            songs.put(videoId, songId);
+            if (!isDownloaded(videoId)) songVersions.putIfAbsent(videoId, songId);
+        }
+        albumSongs.put(playlistId, songs);
+        return songs;
+    }
+
     /** /next flips between OMV and UGC for the same video, /player has been consistent so far. */
     private static boolean isOfficialMusicVideo(String videoId, String videoType) throws Exception {
         if (VIDEO_TYPE.equals(videoType)) return true;
@@ -643,21 +761,26 @@ public final class AutoSongVersionPatch {
     /**
      * @return Client version from yesterday, old ones can get refused at any time.
      */
-    private static String currentWebClientVersion() {
+    private static String currentWebClientVersion(String major) {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd", Locale.ROOT);
         format.setTimeZone(TimeZone.getTimeZone("UTC"));
-        return "1." + format.format(new Date(System.currentTimeMillis() - DAY_MILLISECONDS)) + ".01.00";
+        return major + "." + format.format(new Date(System.currentTimeMillis() - DAY_MILLISECONDS)) + ".01.00";
     }
 
     private static JSONObject requestWebRemix(String url, JSONObject body) throws Exception {
+        return requestWeb(url, body, WEB_REMIX_CLIENT_NAME, WEB_REMIX_CLIENT_VERSION_MAJOR, WEB_REMIX_CLIENT_VERSION);
+    }
+
+    private static JSONObject requestWeb(String url, JSONObject body, String clientName,
+                                         String versionMajor, String fixedVersion) throws Exception {
         String country = Requester.getAppLocale().getCountry();
         int status = 0;
         // Fixed version is for devices with a wrong date, those get rejected.
-        for (String version : new String[]{currentWebClientVersion(), WEB_CLIENT_VERSION}) {
+        for (String version : new String[]{currentWebClientVersion(versionMajor), fixedVersion}) {
             byte[] payload = body
                     .put("context", new JSONObject()
                             .put("client", new JSONObject()
-                                    .put("clientName", "WEB_REMIX")
+                                    .put("clientName", clientName)
                                     .put("clientVersion", version)
                                     .put("hl", "en")
                                     .put("gl", country.isEmpty() ? "US" : country)))

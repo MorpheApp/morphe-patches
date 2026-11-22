@@ -579,14 +579,25 @@ public final class PlayAlbumSongsPatch {
             return null;
         }
 
-        String params = AlbumProto.stringField(watchEndpoint, WATCH_ENDPOINT_PARAMS_FIELD);
-        if (params.isEmpty()) return null;
-        String songVideoId = AlbumProto.stringField(decodeParams(params), PARAMS_SONG_VIDEO_ID_FIELD);
-        if (!BaseVideoInformation.isVideoId(songVideoId)) return null;
+        String songVideoId = songVideoIdOfParams(
+                AlbumProto.stringField(watchEndpoint, WATCH_ENDPOINT_PARAMS_FIELD));
+        if (songVideoId == null) return null;
 
         // A saved music video plays offline, and the song would not.
         if (isDownloaded(AlbumProto.stringField(watchEndpoint, WATCH_ENDPOINT_VIDEO_ID_FIELD))) return null;
         return songVideoId;
+    }
+
+    /**
+     * Only music videos in an album queue have it.
+     *
+     * @return The video id of the album song in the params of a watch endpoint, or null if there is none.
+     */
+    @Nullable
+    public static String songVideoIdOfParams(String params) {
+        if (params.isEmpty()) return null;
+        String songVideoId = AlbumProto.stringField(decodeParams(params), PARAMS_SONG_VIDEO_ID_FIELD);
+        return BaseVideoInformation.isVideoId(songVideoId) ? songVideoId : null;
     }
 
     private static boolean isDownloaded(String videoId) {
