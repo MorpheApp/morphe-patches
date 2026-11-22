@@ -54,6 +54,17 @@ internal object IsGoogleSignedFingerprint : Fingerprint(
     parameters = listOf("Ljava/lang/String;")
 )
 
+/** Chooses the Google media browser client when Assistant omits its driving mode hint. */
+internal object AssistantBrowseUiModeFingerprint : Fingerprint(
+    returnType = "L",
+    parameters = listOf("L", "Landroid/os/Bundle;"),
+    filters = listOf(
+        string("android.media.browse.ASSISTANT_DRIVING_MODE"),
+        methodCall(definingClass = "Landroid/app/UiModeManager;", name = "getCurrentModeType"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
 // Android Auto browse requests, media items, and folder refresh
 
 private const val SINGLE_COLUMN_BROWSE = 58_173_949L
