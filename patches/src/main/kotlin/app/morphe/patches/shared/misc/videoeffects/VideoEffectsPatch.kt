@@ -15,9 +15,9 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.util.fiveRegisters
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.util.logging.Logger
 
@@ -29,6 +29,7 @@ internal const val EXTENSION_CLASS =
  * @param hookVideoId Adds a call to a method with the id of the video that is playing.
  */
 internal fun videoEffectsPatch(
+    description: String,
     block: PatchDefinition.() -> Unit,
     targetCompatible: PatchDefinition.() -> Boolean = { true },
     preferenceScreen: BasePreferenceScreen.Screen,
@@ -36,8 +37,7 @@ internal fun videoEffectsPatch(
     executeBlock: PatchDefinition.() -> Unit = {},
 ) = patch(
     name = "Video effects",
-    description = "Adds an option to change the colors of videos or add visual effects, such as black and white. " +
-            "This patch works with YouTube 20.51 and newer.",
+    description = description
 ) {
     block()
 
@@ -101,12 +101,8 @@ internal fun videoEffectsPatch(
                     it.instructionMatches[0].index to "useProgram(I)V",
                     it.instructionMatches[1].index to "setTextureTransform(IIZ[FI)V"
                 ).forEach { (index, method) ->
-                    getInstruction<FiveRegisterInstruction>(index).apply {
-                        val registers = listOf(registerC, registerD, registerE, registerF, registerG)
-                            .take(registerCount).joinToString { register -> "v$register" }
-
-                        replaceInstruction(index, "invoke-static { $registers }, $EXTENSION_CLASS->$method")
-                    }
+                    val registers = fiveRegisters(index)
+                    replaceInstruction(index, "invoke-static { $registers }, $EXTENSION_CLASS->$method")
                 }
             }
         }

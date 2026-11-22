@@ -36,6 +36,8 @@ private val videoEffectsResourcePatch = patch {
 
 @Suppress("unused")
 val videoEffectsPatch = videoEffectsPatch(
+    description = "Adds an option to change the colors of videos or add visual effects, such as black and white. " +
+            "This patch works with YouTube 20.51 and newer.",
     block = {
         dependsOn(
             sharedExtensionPatch,
