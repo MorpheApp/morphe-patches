@@ -441,7 +441,7 @@ public final class WordAnimationUtils {
             }
             float originX = (float) Math.floor(minX) - 2f;
             int bmpW = (int) Math.ceil(maxX - originX) + 2;
-            int bmpH = maxH + 2;
+            int bmpH = maxH + 4;
             if (bmpW <= 0 || bmpH <= 0 || bmpW > LyricsGlyphMaskCache.MAX_MASK_SIDE_PX || bmpH > LyricsGlyphMaskCache.MAX_MASK_SIDE_PX) {
                 return false;
             }
@@ -453,7 +453,7 @@ public final class WordAnimationUtils {
             for (int i = 0; i < n; i++) {
                 Layout sl = clusters.get(i).subLayout;
                 if (sl != null) {
-                    drawLayoutWithPaint(c, sl, drawX[i] - originX, 0f, Color.WHITE, null);
+                    drawLayoutWithPaint(c, sl, drawX[i] - originX, 2f, Color.WHITE, null);
                 }
             }
             staticMask = bmp;
@@ -805,6 +805,21 @@ public final class WordAnimationUtils {
         return builder.build();
     }
 
+    private static final String NON_JOINING_FONT_FEATURES = "\"liga\" 0, \"clig\" 0, \"dlig\" 0";
+
+    /**
+     * Aligns ligature/shaping features between full-line layout paints and split cluster sub-layouts
+     * so character-level advances stay consistent on non-joining scripts.
+     */
+    public static void applyClusterFontFeatures(TextPaint paint, boolean hasJoiningScript) {
+        if (hasJoiningScript) {
+            paint.setLetterSpacing(0f);
+            paint.setFontFeatureSettings(null);
+        } else {
+            paint.setFontFeatureSettings(NON_JOINING_FONT_FEATURES);
+        }
+    }
+
     /**
      * Returns a configured {@link TextPaint} for cluster measurement so callers building many runs
      * on one line avoid repeated {@link TextPaint} copies and HarfBuzz font-feature parsing.
@@ -816,12 +831,7 @@ public final class WordAnimationUtils {
         TextPaint runPaint = new TextPaint(basePaint);
         LyricsViewSupport.applyLyricsBoldPaint(runPaint);
         runPaint.setColor(color);
-        if (hasJoiningScript) {
-            runPaint.setLetterSpacing(0f);
-            runPaint.setFontFeatureSettings(null);
-        } else {
-            runPaint.setFontFeatureSettings("\"liga\" 0, \"clig\" 0, \"dlig\" 0");
-        }
+        applyClusterFontFeatures(runPaint, hasJoiningScript);
         return runPaint;
     }
 
@@ -1863,13 +1873,9 @@ public final class WordAnimationUtils {
         int effectiveLineIdx = isPartOfActiveSyl ? vc.lineIdx : activeLineIdx;
 
         float rawLocalX = curGX - lineStart;
-        float lineProg = (lineWidth > 0f)
-                ? Math.max(0f, Math.min(1f, rawLocalX / lineWidth))
-                : 0f;
-        float endBoost = (vc.lineIdx == effectiveLineIdx && isActiveSylLastOfLine)
+        float brushShift = (vc.lineIdx == effectiveLineIdx && isActiveSylLastOfLine)
                 ? (activeSylProgress * halfGradientWidth)
                 : 0f;
-        float brushShift = Math.max(lineProg * halfGradientWidth, endBoost);
 
         float localX;
         float hardLocalX;
@@ -2491,7 +2497,7 @@ public final class WordAnimationUtils {
                         : null;
                 if (existingMask != null) {
                     STATIC_MASK_PAINT.setColor(inactiveColor);
-                    canvas.drawBitmap(existingMask, line.staticMaskOriginX + pad, topY, STATIC_MASK_PAINT);
+                    canvas.drawBitmap(existingMask, line.staticMaskOriginX + pad, topY - 2f, STATIC_MASK_PAINT);
                 } else {
                     for (int i = 0; i < n; i++) {
                         float drawTopY = topY + ((lineElevY != null && i < lineElevY.length) ? lineElevY[i] : 0f);

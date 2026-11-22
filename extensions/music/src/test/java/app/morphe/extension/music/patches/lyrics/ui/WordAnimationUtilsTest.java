@@ -77,13 +77,13 @@ public class WordAnimationUtilsTest {
                 0L, 0L, 0f, 0f, -1f, null,
                 1f, 0f, 0f, 0L, 0);
         WipeResult wipe = new WipeResult();
-        // Leading edge grow ramp when localX < halfGradientWidth (gradientWidth = 20f, half = 10f, localX = 5f + brushShift 0.25f = 5.25f -> growWidth = 10.5f)
+        // Leading edge grow ramp when localX < halfGradientWidth (gradientWidth = 20f, half = 10f, localX = 5f -> growWidth = 10.0f)
         WordAnimationUtils.computeWipe(
                 vc0, false, 0f, 200f, 0f, 50f,
                 0, 0, 5f, false, 0.25f, 20f, wipe);
         Assert.assertEquals(WordAnimationUtils.WIPE_BAND, wipe.mode);
         Assert.assertEquals(0f, wipe.bandStart, 0.001f);
-        Assert.assertEquals(10.5f, wipe.bandEnd, 0.001f);
+        Assert.assertEquals(10.0f, wipe.bandEnd, 0.001f);
     }
 
     @Test
@@ -242,5 +242,41 @@ public class WordAnimationUtilsTest {
         Assert.assertTrue(WordSweepAnimator.shouldForceRomanPast(true, true, true, true, false));
         // Active line never forces past unless allSung.
         Assert.assertFalse(WordSweepAnimator.shouldForceRomanPast(false, true, true, false, true));
+    }
+
+    @Test
+    public void testEmphasisRampsSmoothlyFromOneSecondThreshold() {
+        Assert.assertEquals(0f, WordSweepAnimator.emphasisAmplitude(1.0), 0.0001f);
+        Assert.assertEquals(0f, WordSweepAnimator.emphasisGlowMax(1.0), 0.0001f);
+        Assert.assertEquals(0.25f, WordSweepAnimator.emphasisAmplitude(1.25), 0.0001f);
+        Assert.assertEquals(0.225f, WordSweepAnimator.emphasisGlowMax(1.25), 0.0001f);
+        Assert.assertEquals(1.0f, WordSweepAnimator.emphasisAmplitude(2.5), 0.0001f);
+        Assert.assertEquals(0.45f, WordSweepAnimator.emphasisGlowMax(2.5), 0.0001f);
+    }
+
+    @Test
+    public void testComputeWipeDoesNotShiftBeforeFinalSyllable() {
+        WordAnimationUtils.VisualCluster midCluster = new WordAnimationUtils.VisualCluster(
+                0, 4, 0, 100f, 0f, 40f,
+                false, false, false, false,
+                0L, 400L, 0f, 0f, 0f,
+                null, 1f, 0f, 0f, 0L, 1, 1);
+        WordAnimationUtils.WipeResult out = new WordAnimationUtils.WipeResult();
+
+        // Mid-line active syllable (not last of line): gradient band stays centered on curGX (no lineProg advance).
+        WordAnimationUtils.computeWipe(
+                midCluster, false, 0f, 200f, 100f, 140f,
+                1, 0, 120f, false, 0.5f, 40f, out);
+        Assert.assertEquals(WordAnimationUtils.WIPE_BAND, out.mode);
+        Assert.assertEquals(0f, out.bandStart, 0.01f);
+        Assert.assertEquals(40f, out.bandEnd, 0.01f);
+
+        // Final syllable on line advances by activeSylProgress * halfGradientWidth (0.5 * 20 = 10px).
+        WordAnimationUtils.computeWipe(
+                midCluster, false, 0f, 200f, 100f, 140f,
+                1, 0, 120f, true, 0.5f, 40f, out);
+        Assert.assertEquals(WordAnimationUtils.WIPE_BAND, out.mode);
+        Assert.assertEquals(10f, out.bandStart, 0.01f);
+        Assert.assertEquals(50f, out.bandEnd, 0.01f);
     }
 }

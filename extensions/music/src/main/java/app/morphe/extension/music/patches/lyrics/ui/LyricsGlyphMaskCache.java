@@ -95,6 +95,20 @@ final class LyricsGlyphMaskCache {
         }
 
         @Nullable
+        public Bitmap peek(int idx) {
+            if (idx < 0 || idx >= bitmaps.length) return null;
+            Bitmap existing = bitmaps[idx];
+            return (existing != null && !existing.isRecycled()) ? existing : null;
+        }
+
+        @Nullable
+        public Bitmap peekGlow(int idx) {
+            if (idx < 0 || idx >= glowBitmaps.length) return null;
+            Bitmap existing = glowBitmaps[idx];
+            return (existing != null && !existing.isRecycled()) ? existing : null;
+        }
+
+        @Nullable
         public Bitmap obtain(int idx, Layout layout) {
             Bitmap existing = bitmaps[idx];
             if (existing != null && !existing.isRecycled()) return existing;
@@ -325,12 +339,9 @@ final class LyricsGlyphMaskCache {
         paint.setShader(null);
         paint.clearShadowLayer();
 
-        // Outer soft halo + inner solid bloom (blurRadius = 0.20f * fontSizePx).
+        // Single soft Gaussian halo matching Compose transparent-fill glow (radius = 0.10f * fontSizePx).
         float effectiveBlur = Math.max(0.5f, blurRadius);
         paint.setMaskFilter(new BlurMaskFilter(effectiveBlur, BlurMaskFilter.Blur.NORMAL));
-        subLayout.draw(c);
-        paint.setMaskFilter(new BlurMaskFilter(Math.max(0.5f, effectiveBlur * 0.55f), BlurMaskFilter.Blur.SOLID));
-        paint.setColor(Color.argb(190, 255, 255, 255));
         subLayout.draw(c);
 
         paint.setMaskFilter(prevMask);

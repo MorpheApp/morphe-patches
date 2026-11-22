@@ -2790,6 +2790,7 @@ final class LyricsLineView extends TextView {
         mainPaint.setTextSize(fontSizePx);
         LyricsViewSupport.applyLyricsBoldPaint(mainPaint);
         mainPaint.setLetterSpacing(LyricsViewSupport.lineLetterSpacing(rawMainText, textSizeSp));
+        WordAnimationUtils.applyClusterFontFeatures(mainPaint, LyricsTextUtils.containsJoiningScript(rawMainText));
         return mainPaint;
     }
 

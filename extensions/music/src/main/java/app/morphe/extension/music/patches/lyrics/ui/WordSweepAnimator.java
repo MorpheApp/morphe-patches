@@ -528,11 +528,12 @@ public final class WordSweepAnimator {
         this.isBackground = isBackground;
         this.alignment = alignment;
         this.fontSizePx = basePaint.getTextSize();
+        WordAnimationUtils.applyClusterFontFeatures(basePaint, LyricsTextUtils.containsJoiningScript(mainText));
 
         this.gradientWidth = fontSizePx;
         this.extraPaddingPx = fontSizePx * 0.4f;
         this.elevationAmount = fontSizePx * 0.05f;
-        this.glowBlurRadius = fontSizePx * 0.20f;
+        this.glowBlurRadius = fontSizePx * 0.10f;
         this.shadowBlurRadius = fontSizePx * 0.15f;
 
         List<int[]> ranges = WordAnimationUtils.shapingWordRanges(rawWords);
@@ -1048,7 +1049,7 @@ public final class WordSweepAnimator {
             float hStart = textLayoutResult.getPrimaryHorizontal(safeStart);
             float hEnd = (li == eli)
                     ? textLayoutResult.getPrimaryHorizontal(Math.min(end, textLen))
-                    : textLayoutResult.getLineRight(li);
+                    : (lineIsRtl[li] ? textLayoutResult.getLineLeft(li) : textLayoutResult.getLineRight(li));
             float x = Math.min(hStart, hEnd);
             float w = Math.abs(hEnd - hStart);
             float y = textLayoutResult.getLineTop(li);
@@ -1102,10 +1103,8 @@ public final class WordSweepAnimator {
                 double e = Math.max(0.001, (double) wordDurationMs / 1000.0);
                 double delaySec = Math.min((e / numChars) * 0.4, 0.4);
                 float holdMs = (float) (2.0 * e / numChars * 1000.0);
-                float rawAmp = (float) Math.max(0.0, Math.min(1.0, e - 1.0));
-                float amplitude = 0.35f + 0.65f * rawAmp;
-                float rawGlow = (float) Math.max(0.0, Math.min(1.0, (e - 1.0) / 0.5));
-                float glowMax = 0.30f + 0.35f * rawGlow;
+                float amplitude = emphasisAmplitude(e);
+                float glowMax = emphasisGlowMax(e);
                 float half = Math.max(1f, (numChars - 1) / 2f);
 
                 for (int charIdx = 0; charIdx < charGroups.size(); charIdx++) {
@@ -2119,12 +2118,14 @@ public final class WordSweepAnimator {
             VisualCluster vc = clusters.get(idx);
             final boolean isGrowableWord = vc.isHeavy();
             float elevValue = 0f;
+            boolean clusterElevActive = false;
             int sIdx = vc.syllableIndex() >= 0 ? vc.syllableIndex() : vc.shiftIndex();
             if (sIdx >= 0 && sIdx < sylElev.current.length) {
                 elevValue = sylElev.current[sIdx];
                 float dur = sylElev.animDurationMs[sIdx] > 0f ? sylElev.animDurationMs[sIdx] : 1000f;
                 if (nowUptimeMs - sylElev.animStartMs[sIdx] < (long) dur || Math.abs(elevValue - sylElev.animTarget[sIdx]) > 0.001f) {
                     elevMoving = true;
+                    clusterElevActive = true;
                     anyRunningAnim = true;
                 }
             }
@@ -2183,7 +2184,7 @@ public final class WordSweepAnimator {
 
             float lastY = clusterLastDrawY[idx];
             boolean isYMoving = (!Float.isNaN(lastY) && Math.abs(drawY - lastY) > 0.001f)
-                    || Math.abs(drawY - baseY) > 0.001f;
+                    || clusterElevActive;
             clusterIsYMoving[idx] = isYMoving;
             clusterLastDrawY[idx] = drawY;
             if (isGlowing) anyGlow = true;
@@ -2196,7 +2197,6 @@ public final class WordSweepAnimator {
                 if (clusterIsGlowing[idx]) {
                     float glowAlpha = clusterGlowAlphas[idx];
                     if (glowAlpha <= 0f) continue;
-                    VisualCluster vc = clusters.get(idx);
                     float scale = clusterScaleX[idx];
                     float drawX = clusterDrawX[idx];
                     float drawY = clusterDrawY[idx];
@@ -2204,7 +2204,7 @@ public final class WordSweepAnimator {
                     float ty = drawY + extraPaddingPx;
 
                     Bitmap glowMask = (maskCache != null && glowFilter != null)
-                            ? maskCache.obtainGlow(idx, vc.subLayout(), glowBlurRadius) : null;
+                            ? maskCache.peekGlow(idx) : null;
                     if (glowMask != null) {
                         canvas.save();
                         canvas.translate(tx, ty);
@@ -2242,7 +2242,7 @@ public final class WordSweepAnimator {
             boolean isScaling = cdScale != 1.0f;
             boolean isElevating = clusterIsYMoving[idx];
             boolean isAnimating = (isActiveLine || isFinishing || isDeactivatingFade) && (isScaling || isElevating);
-            Bitmap mask = (isAnimating && maskCache != null) ? maskCache.obtain(idx, vc.subLayout()) : null;
+            Bitmap mask = (isAnimating && maskCache != null) ? maskCache.peek(idx) : null;
 
             if (mask == null) {
                 if (isScaling) {
@@ -2312,6 +2312,14 @@ public final class WordSweepAnimator {
                 || isDeactivatingFade
                 || isColorStateConverging(currentPosition, isActiveLine, allSung);
         stillAnimating = anyRunningAnim || transitionAnimating;
+    }
+
+    static float emphasisAmplitude(double durationSec) {
+        return (float) Math.max(0.0, Math.min(1.0, durationSec - 1.0));
+    }
+
+    static float emphasisGlowMax(double durationSec) {
+        return 0.45f * (float) Math.max(0.0, Math.min(1.0, (durationSec - 1.0) / 0.5));
     }
 
     private static int scaleAlpha(int color, float factor) {
