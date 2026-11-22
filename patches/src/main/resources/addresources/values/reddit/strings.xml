@@ -173,6 +173,10 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_post_side_panel_width_title">Panel width</string>
     <string name="morphe_post_side_panel_width_entry_one_third">One third of the feed</string>
     <string name="morphe_post_side_panel_width_entry_two_thirds">Two thirds of the feed</string>
+    <string name="morphe_post_side_panel_remember_width_title">Remember dragged width</string>
+    <string name="morphe_post_side_panel_remember_width_summary_on">Posts open at the width you last dragged the edge of the panel to, until you choose a panel width</string>
+    <string name="morphe_post_side_panel_remember_width_summary_off">Posts open at the panel width above. Dragging the edge of the panel resizes only the open post</string>
+    <string name="morphe_post_side_panel_resize_handle">Resize panel</string>
     <string name="morphe_post_side_panel_dim_title">Feed dimming</string>
     <string name="morphe_post_side_panel_dim_summary">How dark the feed behind the panel gets</string>
     <string name="morphe_post_side_panel_dim_entry_off">Off</string>
