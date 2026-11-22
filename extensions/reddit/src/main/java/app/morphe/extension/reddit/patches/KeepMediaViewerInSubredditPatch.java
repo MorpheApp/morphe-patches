@@ -7,6 +7,8 @@
 
 package app.morphe.extension.reddit.patches;
 
+import androidx.annotation.Nullable;
+
 import com.reddit.domain.model.Link;
 import com.reddit.domain.model.media.MediaContext;
 import com.reddit.listing.common.ListingType;
@@ -20,12 +22,12 @@ import app.morphe.extension.shared.Logger;
 @SuppressWarnings("unused")
 public final class KeepMediaViewerInSubredditPatch {
 
-    private static final String LISTING_TYPE_USER_SUBMITTED = "USER_SUBMITTED";
-    private static final String LISTING_TYPE_SUBMITTED_POSTS = "SUBMITTED_POSTS";
-
     /**
-     * The opened post's subreddit while a request is in flight.
+     * Subreddit id of the post opened in the media viewer, or null if posts are not filtered.
+     * The request method is suspended between sending the request and creating the Listing,
+     * and the media context is not available after it resumes.
      */
+    @Nullable
     private static volatile String subredditId;
 
     /**
@@ -38,58 +40,58 @@ public final class KeepMediaViewerInSubredditPatch {
 
     /**
      * Injection point.
-     * Sends the request as a subreddit request when the opened post has one subreddit.
+     * Requests posts from the subreddit endpoint when the opened post has a subreddit.
      */
+    @Nullable
     public static ListingType getListingType(MediaContext context) {
         ListingType listingType = context.getListingType();
-        try {
-            if (!Settings.KEEP_MEDIA_VIEWER_IN_SUBREDDIT.get()) {
-                subredditId = null;
-                return listingType;
-            }
-
-            List<String> seeds = context.getSeedSubredditIds();
-            if (seeds != null && seeds.size() == 1 && listingType != null && !isUserProfile(listingType)) {
-                subredditId = seeds.get(0);
-                return ListingType.SUBREDDIT;
-            }
-
-            subredditId = null;
+        if (!Settings.KEEP_MEDIA_VIEWER_IN_SUBREDDIT.get()) {
             return listingType;
+        }
+
+        try {
+            String id = null;
+            // On a user profile, keep swiping through the posts of the user.
+            if (listingType != null && listingType != ListingType.USER_SUBMITTED
+                    && listingType != ListingType.SUBMITTED_POSTS) {
+                List<String> seedSubredditIds = context.getSeedSubredditIds();
+                if (seedSubredditIds != null && seedSubredditIds.size() == 1) {
+                    id = seedSubredditIds.get(0);
+                }
+            }
+
+            subredditId = id;
+            return id == null ? listingType : ListingType.SUBREDDIT;
         } catch (Exception ex) {
             Logger.printException(() -> "getListingType failure", ex);
             return listingType;
         }
     }
 
-    private static boolean isUserProfile(ListingType listingType) {
-        String name = listingType.name();
-        return LISTING_TYPE_USER_SUBMITTED.equals(name) || LISTING_TYPE_SUBMITTED_POSTS.equals(name);
-    }
-
     /**
      * Injection point.
      * Removes posts from other subreddits.
      */
-    public static List<?> filterPosts(List<?> posts) {
+    @Nullable
+    public static List<?> filterPosts(@Nullable List<?> posts) {
+        if (!Settings.KEEP_MEDIA_VIEWER_IN_SUBREDDIT.get()) {
+            return posts;
+        }
+
         try {
             final String id = subredditId;
-            if (id == null || posts == null || posts.isEmpty() || !Settings.KEEP_MEDIA_VIEWER_IN_SUBREDDIT.get()) {
+            if (id == null || posts == null) {
                 return posts;
             }
 
             List<Object> filteredPosts = new ArrayList<>(posts.size());
             for (Object post : posts) {
-                if (!(post instanceof Link) || id.equals(((Link) post).getSubredditId())) {
+                if (!(post instanceof Link link) || id.equals(link.getSubredditId())) {
                     filteredPosts.add(post);
                 }
             }
 
-            if (filteredPosts.size() == posts.size()) {
-                return posts;
-            }
-
-            return filteredPosts;
+            return filteredPosts.size() == posts.size() ? posts : filteredPosts;
         } catch (Exception ex) {
             Logger.printException(() -> "filterPosts failure", ex);
             return posts;

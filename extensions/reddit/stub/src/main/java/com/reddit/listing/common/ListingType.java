@@ -3,5 +3,7 @@ package com.reddit.listing.common;
 @SuppressWarnings("unused")
 public enum ListingType {
     // The app enum has more constants.
-    SUBREDDIT
+    SUBMITTED_POSTS,
+    SUBREDDIT,
+    USER_SUBMITTED
 }

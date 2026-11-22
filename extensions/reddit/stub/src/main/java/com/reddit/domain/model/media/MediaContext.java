@@ -1,8 +1,8 @@
 package com.reddit.domain.model.media;
 
-import java.util.List;
-
 import com.reddit.listing.common.ListingType;
+
+import java.util.List;
 
 @SuppressWarnings("unused")
 public final class MediaContext {
