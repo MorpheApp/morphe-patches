@@ -22,6 +22,7 @@ import org.chromium.net.UrlResponseInfo;
 import org.chromium.net.impl.CronetUrlRequest;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -232,6 +233,27 @@ public final class DeArrowPatch {
         }
     }
 
+    /**
+     * Interface added to the Glide view target class during patching.
+     */
+    public interface ImageTargetInterface {
+        /**
+         * Loads the image again with the request of the target, such as after it failed to load.
+         * Must be called on the main thread.
+         *
+         * @return If the target has a request, which is loaded again.
+         */
+        boolean patch_restartRequest();
+    }
+
+    /**
+     * Thumbnail loaded into a view, and the Glide target that loads it.
+     *
+     * @param target The target, or a cleared reference if the target is not a view target.
+     */
+    private record ThumbnailLoad(String videoId, WeakReference<ImageTargetInterface> target) {
+    }
+
     public enum ThumbnailOption {
         ORIGINAL(false, false),
         DEARROW(true, false),
@@ -309,11 +331,11 @@ public final class DeArrowPatch {
     private static final Runnable REMOUNT_LIST_VIEWS = LithoRelayoutPatch::remountListViews;
 
     /**
-     * View that loads a video thumbnail -> video id of the thumbnail, so a thumbnail that is loaded again
-     * mounts again only the views that show it. A view reused for another image is updated when the image
+     * View that loads a video thumbnail -> thumbnail loaded into the view, so a thumbnail that is loaded again
+     * loads again only the views that show it. A view reused for another image is updated when the image
      * starts loading. Accessed on the main thread and the network threads.
      */
-    private static final Map<View, String> thumbnailViewVideoIds =
+    private static final Map<View, ThumbnailLoad> thumbnailViewLoads =
             Collections.synchronizedMap(new WeakHashMap<>());
 
     /**
@@ -539,25 +561,60 @@ public final class DeArrowPatch {
     }
 
     /**
-     * Loads again the thumbnail of the video, by mounting again the Litho views that show it.
-     * A view that shows it later loads it with the current settings, and is not mounted again.
+     * Loads again the thumbnail of the video. With the same image model, such as with another URL
+     * for a thumbnail that failed to load, only the image requests of the views that show it are loaded again.
+     * Otherwise, the Litho views that show it are mounted again, which load it with the current image model.
+     * A view that shows it later loads it with the current settings, and is not loaded again.
      * Can be called on any thread.
+     *
+     * @param imageModelChanged If the image model of the thumbnail changed,
+     *                          such as after the DeArrow icon of the video was tapped.
      */
-    static void remountThumbnailViews(String videoId) {
+    static void loadThumbnailAgain(String videoId, boolean imageModelChanged) {
         if (untrackedThumbnailVideoIds.contains(videoId)) {
             // The thumbnail can be shown by a view that is not known.
             LithoRelayoutPatch.remountListViews();
             return;
         }
-        List<View> views = new ArrayList<>();
-        synchronized (thumbnailViewVideoIds) {
-            for (Map.Entry<View, String> entry : thumbnailViewVideoIds.entrySet()) {
-                if (videoId.equals(entry.getValue())) {
-                    views.add(entry.getKey());
+        Map<View, ThumbnailLoad> loads = new HashMap<>();
+        synchronized (thumbnailViewLoads) {
+            for (Map.Entry<View, ThumbnailLoad> entry : thumbnailViewLoads.entrySet()) {
+                if (videoId.equals(entry.getValue().videoId())) {
+                    loads.put(entry.getKey(), entry.getValue());
                 }
             }
         }
-        LithoRelayoutPatch.remountListViews(views);
+        if (imageModelChanged) {
+            LithoRelayoutPatch.remountListViews(loads.keySet());
+        } else if (!loads.isEmpty()) {
+            Utils.runOnMainThread(() -> restartThumbnailRequests(loads));
+        }
+    }
+
+    /**
+     * Loads again the thumbnails of the views that still load them, with the image requests of the views.
+     * The Litho views of the views without a request are mounted again instead. Must be called on the main thread.
+     */
+    private static void restartThumbnailRequests(Map<View, ThumbnailLoad> loads) {
+        try {
+            List<View> remountViews = new ArrayList<>();
+            for (Map.Entry<View, ThumbnailLoad> entry : loads.entrySet()) {
+                View view = entry.getKey();
+                ThumbnailLoad load = entry.getValue();
+                // A view that is no longer shown loads its thumbnail again when it's bound again,
+                // and a view reused meanwhile loads another image.
+                if (!LithoRelayoutPatch.isShownOrInBackground(view) || thumbnailViewLoads.get(view) != load) {
+                    continue;
+                }
+                ImageTargetInterface target = load.target().get();
+                if (target == null || !target.patch_restartRequest()) {
+                    remountViews.add(view);
+                }
+            }
+            LithoRelayoutPatch.remountListViews(remountViews);
+        } catch (Exception ex) {
+            Logger.printException(() -> "restartThumbnailRequests failure", ex);
+        }
     }
 
     /**
@@ -645,10 +702,11 @@ public final class DeArrowPatch {
     /**
      * Injection point. Called when an image starts loading, before it's fetched.
      *
-     * @param view  View that the image is loaded into, or null if the image is not loaded into a view.
-     * @param model Image model, such as the URL of the image.
+     * @param view   View that the image is loaded into, or null if the image is not loaded into a view.
+     * @param target Glide target that loads the image.
+     * @param model  Image model, such as the URL of the image.
      */
-    public static void onImageLoadStarted(@Nullable View view, @Nullable Object model) {
+    public static void onImageLoadStarted(@Nullable View view, Object target, @Nullable Object model) {
         try {
             if (!replacesThumbnailsAnywhere()) {
                 return;
@@ -660,9 +718,10 @@ public final class DeArrowPatch {
                     untrackedThumbnailVideoIds.add(decodedURL.videoId);
                 }
             } else if (decodedURL == null) {
-                thumbnailViewVideoIds.remove(view);
+                thumbnailViewLoads.remove(view);
             } else {
-                thumbnailViewVideoIds.put(view, decodedURL.videoId);
+                thumbnailViewLoads.put(view, new ThumbnailLoad(decodedURL.videoId, new WeakReference<>(
+                        target instanceof ImageTargetInterface imageTarget ? imageTarget : null)));
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onImageLoadStarted failure", ex);
@@ -811,7 +870,7 @@ public final class DeArrowPatch {
                     // that are not of the primary thumbnail domain. Load the original thumbnail instead.
                     String videoId = setThumbnailUnavailable(url);
                     if (videoId != null) {
-                        remountThumbnailViews(videoId);
+                        loadThumbnailAgain(videoId, false);
                     }
                     return;
                 }
@@ -844,7 +903,7 @@ public final class DeArrowPatch {
                 UnavailableQualities.unavailableVideoIdLookup.computeIfAbsent(
                         decodedURL.videoId, key -> new UnavailableQualities()
                 ).setNotAvailable(decodedURL.videoId, quality);
-                remountThumbnailViews(decodedURL.videoId);
+                loadThumbnailAgain(decodedURL.videoId, false);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Callback success error", ex);

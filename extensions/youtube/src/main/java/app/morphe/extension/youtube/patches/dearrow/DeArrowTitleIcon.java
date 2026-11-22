@@ -165,7 +165,7 @@ public final class DeArrowTitleIcon {
         }
 
         if (DeArrowPatch.replacesThumbnailForCurrentNavigation(videoId)) {
-            DeArrowPatch.remountThumbnailViews(videoId);
+            DeArrowPatch.loadThumbnailAgain(videoId, true);
         }
         LithoRelayoutPatch.relayoutOutdatedTexts();
     }
