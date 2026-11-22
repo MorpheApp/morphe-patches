@@ -133,7 +133,7 @@ public final class AndroidAutoSettingsTab {
             Choice choice = pendingChoices.get(setting.key);
             if (id.equals(setting.rowId())) {
                 if (setting.toggle == null) return Collections.singletonList(setting.status());
-                boolean checked = setting.toggle.isChecked();
+                final boolean checked = setting.toggle.isChecked();
                 if (choice == null || choice.value == checked) {
                     choice = new Choice(!checked, setting.choicePrefix() + UUID.randomUUID());
                     pendingChoices.put(setting.key, choice);
@@ -148,7 +148,7 @@ public final class AndroidAutoSettingsTab {
                 if (setting.toggle != null && setting.toggle.isChecked() != choice.value) {
                     ((StockToggle) (Object) setting.toggle).patch_getDelegate().patch_getListener()
                             .onCheckedChange(choice.value, TOGGLE_DONE);
-                    AndroidAutoPatch.mainHandler.post(() -> {
+                    Utils.runOnMainThread(() -> {
                         if (activeConnection.get() == connection) reloadSettings.run();
                     });
                     var refreshed = loadSettings(source, context);
@@ -177,7 +177,7 @@ public final class AndroidAutoSettingsTab {
     }
 
     private static String stateLabel(boolean checked) {
-        return getString(checked ? "morphe_music_android_auto_setting_on" : "morphe_music_android_auto_setting_off");
+        return getString(checked ? "v7_preference_on" : "v7_preference_off");
     }
 
     private static MediaItem row(String id, String title, @Nullable String subtitle, boolean browsable) {

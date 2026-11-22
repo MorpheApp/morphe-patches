@@ -397,7 +397,7 @@ public final class AndroidAutoPatch {
         try {
             String requestedMediaId = request.patch_getRequestedMediaId();
             if (isSettingsMediaId(requestedMediaId)) {
-                mainHandler.post(() -> request.patch_deliverBrowseItems(settingsItems(request, requestedMediaId)));
+                Utils.runOnMainThread(() -> request.patch_deliverBrowseItems(settingsItems(request, requestedMediaId)));
                 return true;
             }
             PhoneBrowseClient browseClient = phoneBrowseClient;
