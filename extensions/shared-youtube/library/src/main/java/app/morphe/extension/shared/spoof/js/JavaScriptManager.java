@@ -133,10 +133,10 @@ public final class JavaScriptManager {
     /**
      * Player JavaScript is approximately 3MB in size,
      * So downloading it every time the app is launched results in unnecessary data usage.
-     * Player JavaScript has a lifespan of approximately one month, and new versions are released from the server every 3 days.
-     * Downloaded player JavaScript is saved in the cache directory and remains valid for approximately 3 days.
+     * Player JavaScript has a lifespan of approximately one month.
+     * Downloaded player JavaScript is saved in the cache directory and remains valid for approximately 7 days.
      */
-    private static final long PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS = 3 * 24 * 60 * 60 * 1000L; // 3 days.
+    private static final long PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS = 7 * 24 * 60 * 60 * 1000L; // 7 days.
     /**
      * It should have the same expiration as {@link PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS},
      * but the expiration time is set slightly shorter to account for connection latency.
@@ -372,7 +372,7 @@ public final class JavaScriptManager {
                 String cacheFileName = cacheFile.getName();
                 long currentTime = System.currentTimeMillis();
 
-                // There is a player JavaScript saved in the cache, and it was saved within 3 days.
+                // There is a player JavaScript saved in the cache, and it was saved within 7 days.
                 // Use the player JavaScript saved in the cache.
                 if (cacheFile.exists() && (currentTime - cacheFile.lastModified()) < PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS) {
                     String cachedData = readFromFile(cacheFile);
@@ -384,7 +384,7 @@ public final class JavaScriptManager {
                 }
 
                 // There is no player JavaScript save in the cache,
-                // or if there is a player JavaScript, it has been more than 3 days since it was last saved.
+                // or if there is a player JavaScript, it has been more than 7 days since it was last saved.
                 // Download the latest player JavaScript.
                 String playerJs = downloadUrl(playerJsUrl);
                 if (isNotEmpty(playerJs)) {
@@ -409,14 +409,14 @@ public final class JavaScriptManager {
 
             if (!PLAYER_JS_HASH.get().isEmpty()
                     && currentTime - lastSavedTime < PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS) {
-                // There is a hash saved in the settings and it was saved within 3 days.
+                // There is a hash saved in the settings and it was saved within 7 days.
                 // Use the hash saved in the settings.
                 cachedPlayerJsHash = PLAYER_JS_HASH.get();
                 String playerJsHash = cachedPlayerJsHash;
                 Logger.printDebug(() -> "Player js hash found in cache: " + playerJsHash);
             } else {
                 // There is no hash save in the settings,
-                // or if there is a hash, it has been more than 3 days since it was last saved.
+                // or if there is a hash, it has been more than 7 days since it was last saved.
                 // To get the latest hash, fetch the iframe API.
                 String iframeContent = downloadUrl(IFRAME_API_URL);
                 if (isNotEmpty(iframeContent)) {
