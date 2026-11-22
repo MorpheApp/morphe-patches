@@ -22,15 +22,19 @@ public class HomeFeedTabsPatch {
 
     /**
      * Injection point.
+     *
+     * @return If the tabs are shown. Always false if the modern home is disabled.
      */
     public static boolean showHomeFeedTabs() {
-        return Settings.HOME_FEED_TABS.get();
+        return Settings.HOME_FEED_TABS.get() && Settings.HOME_FEED_TABS.isAvailable();
     }
 
     /**
      * Injection point.
+     *
+     * @param original If the tabs can be switched by swiping.
      */
     public static boolean enableTabSwipe(boolean original) {
-        return Settings.HOME_FEED_TABS.get() || original;
+        return showHomeFeedTabs() || original;
     }
 }

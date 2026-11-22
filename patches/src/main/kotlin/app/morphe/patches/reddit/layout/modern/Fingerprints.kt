@@ -51,7 +51,7 @@ internal object ForYouFollowingVariantOptionFingerprint : Fingerprint(
  * Variant of the "android_for_you_following" experiment, which shows the modern home
  * with the For You, Following and Popular tabs. Null if the user is not in the experiment.
  *
- * 2026.45.0+
+ * 2026.43.0+
  */
 internal object ForYouFollowingVariantFingerprint : Fingerprint(
     returnType = FOR_YOU_FOLLOWING_VARIANT_CLASS,
@@ -77,9 +77,10 @@ internal object HomePagerTabUiModelsFingerprint : Fingerprint(
 )
 
 /**
- * If the Popular tab is shown on the home feed.
+ * If the Popular tab is shown on the home feed. Shown for the For You name variant
+ * if the user is signed in, not incognito, and the Popular tab experiment flag is on.
  *
- * 2026.44.0+
+ * 2026.43.0+
  */
 internal object PopularHomeTabFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -93,24 +94,9 @@ internal object PopularHomeTabFingerprint : Fingerprint(
 )
 
 /**
- * If the home feed shows its tabs. Matched in the class of [PopularHomeTabFingerprint].
- *
- * 2026.44.0+
- */
-internal object HomeFeedTabsEnabledFingerprint : Fingerprint(
-    classFingerprint = PopularHomeTabFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
-    filters = listOf(
-        methodCall(definingClass = FOR_YOU_FOLLOWING_VARIANT_CLASS, name = "isEnabled")
-    )
-)
-
-/**
  * If the tabs of the home feed can be switched by swiping. False for every variant.
  *
- * 2026.44.0+
+ * 2026.43.0+
  */
 internal object PagerSwipeEnabledFingerprint : Fingerprint(
     definingClass = FOR_YOU_FOLLOWING_VARIANT_CLASS,
