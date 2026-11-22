@@ -8,11 +8,13 @@
 package app.morphe.patches.reddit.layout.automod
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.collapsedcomments.commentCollapsedSetterPatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/AutoModeratorCommentsPatch;"
@@ -30,13 +32,20 @@ val autoModeratorCommentsPatch = patch(
     )
 
     execute {
-        SetCommentsConstructorFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p1 }, $EXTENSION_CLASS->filterComments(Ljava/util/List;)Ljava/util/List;
-                move-result-object p1
-            """
-        )
+        CommentsResultConstructorFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->filterComments(Ljava/util/List;)Ljava/util/List;
+                        move-result-object v$register
+                    """
+                )
+            }
+        }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }

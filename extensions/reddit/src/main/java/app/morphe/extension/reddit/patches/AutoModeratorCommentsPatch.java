@@ -7,8 +7,6 @@
 
 package app.morphe.extension.reddit.patches;
 
-import androidx.annotation.Nullable;
-
 import com.reddit.domain.model.Comment;
 import com.reddit.domain.model.IComment;
 
@@ -27,7 +25,7 @@ public final class AutoModeratorCommentsPatch {
         HIDE
     }
 
-    private static final String AUTOMODERATOR = "AutoModerator";
+    private static final String AUTO_MODERATOR = "AutoModerator";
 
     /**
      * @return If this patch was included during patching.
@@ -40,53 +38,51 @@ public final class AutoModeratorCommentsPatch {
     /**
      * Injection point.
      * <p>
-     * Filters comments from the SetComments class constructor.
+     * Called with the comments loaded for a post, in tree order, before Reddit builds the comment tree.
      */
-    @Nullable
-    public static List<?> filterComments(@Nullable List<?> comments) {
-        try {
-            AutoModeratorComments setting = Settings.AUTOMODERATOR_COMMENTS.get();
-            if (setting == AutoModeratorComments.SHOW || comments == null || comments.isEmpty()) {
-                return comments;
-            }
+    public static List<?> filterComments(List<?> comments) {
+        AutoModeratorComments setting = Settings.AUTOMODERATOR_COMMENTS.get();
+        if (setting == AutoModeratorComments.SHOW) return comments;
 
+        try {
             if (setting == AutoModeratorComments.COLLAPSE) {
                 for (Object item : comments) {
-                    if (item instanceof Comment comment && AUTOMODERATOR.equalsIgnoreCase(comment.getAuthor())) {
-                        comment.patch_setCollapsed(true);
+                    if (isAutoModerator(item)) {
+                        ((Comment) item).patch_setCollapsed(true);
                     }
                 }
                 return comments;
             }
 
-            if (setting == AutoModeratorComments.HIDE) {
-                List<Object> filteredComments = new ArrayList<>(comments.size());
-                int skippingDepth = -1;
+            // Hide the comments with all their replies, which follow them with a greater depth.
+            List<Object> filtered = new ArrayList<>(comments.size());
+            int hiddenDepth = -1;
+            for (Object item : comments) {
+                if (item instanceof IComment comment) {
+                    final int depth = comment.getDepth();
+                    if (hiddenDepth >= 0 && depth > hiddenDepth) continue;
+                    hiddenDepth = -1;
 
-                for (Object item : comments) {
-                    if (item instanceof IComment iComment) {
-                        if (skippingDepth >= 0) {
-                            if (iComment.getDepth() > skippingDepth) {
-                                continue;
-                            }
-                            skippingDepth = -1;
-                        }
-
-                        if (item instanceof Comment comment && AUTOMODERATOR.equalsIgnoreCase(comment.getAuthor())) {
-                            skippingDepth = iComment.getDepth();
-                            continue;
-                        }
+                    if (isAutoModerator(item)) {
+                        hiddenDepth = depth;
+                        continue;
                     }
-
-                    filteredComments.add(item);
                 }
-
-                return filteredComments.size() == comments.size() ? comments : filteredComments;
+                filtered.add(item);
             }
+
+            final int hiddenCount = comments.size() - filtered.size();
+            if (hiddenCount == 0) return comments;
+
+            Logger.printDebug(() -> "Hid " + hiddenCount + " AutoModerator comments and replies");
+            return filtered;
         } catch (Exception ex) {
             Logger.printException(() -> "filterComments failure", ex);
+            return comments;
         }
+    }
 
-        return comments;
+    private static boolean isAutoModerator(Object item) {
+        return item instanceof Comment comment && AUTO_MODERATOR.equalsIgnoreCase(comment.getAuthor());
     }
 }

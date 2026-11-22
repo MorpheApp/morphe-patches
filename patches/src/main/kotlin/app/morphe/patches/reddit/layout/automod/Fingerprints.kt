@@ -8,25 +8,23 @@
 package app.morphe.patches.reddit.layout.automod
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.string
+import app.morphe.patcher.fieldAccess
+import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * Resolves the SetComments class by its toString representation.
+ * Constructor of the comments loaded for a post. Every comment load goes through it,
+ * before Reddit builds its comment tree (and its presentation models in older versions).
  */
-private object SetCommentsToStringFingerprint : Fingerprint(
-    name = "toString",
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    filters = listOf(
-        string("SetComments(comments="),
-    ),
-)
-
-/**
- * Constructor of the SetComments class that receives the comments list as its first parameter.
- */
-internal object SetCommentsConstructorFingerprint : Fingerprint(
-    classFingerprint = SetCommentsToStringFingerprint,
+internal object CommentsResultConstructorFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/domain/model/CommentsResultWithSource;",
     name = "<init>",
     returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            name = "comments",
+            type = "Ljava/util/List;"
+        )
+    )
 )
