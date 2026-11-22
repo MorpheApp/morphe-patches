@@ -27,7 +27,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -36,21 +35,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.reddit.domain.model.Link;
 import com.reddit.domain.model.LinkMedia;
-import com.reddit.domain.model.PostGallery;
-import com.reddit.domain.model.PostGalleryItem;
 import com.reddit.domain.model.RedditVideo;
 
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.reddit.utils.PostMedia;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class SharePostContentPatch {
 
-    private static final int CONNECT_TIMEOUT_MILLIS = 15_000;
-    private static final int READ_TIMEOUT_MILLIS = 15_000;
     private static final long MAX_TOTAL_BYTES = 100L * 1024 * 1024;
-    private static final int BUFFER_SIZE = 8192;
     /**
      * Reddit FileProvider cache-path: the cache directory "internal_cache_share" has the uri path "internal_cache_files".
      */
@@ -58,7 +53,6 @@ public final class SharePostContentPatch {
     private static final String PROVIDER_CACHE_PATH_NAME = "internal_cache_files";
     private static final String SHARE_DIR = "morphe_share";
     private static final String FILE_PROVIDER_CLASS = "androidx.core.content.FileProvider";
-    private static final String DEFAULT_EXTENSION = "bin";
 
     private static final AtomicBoolean isSharing = new AtomicBoolean(false);
     /**
@@ -115,11 +109,7 @@ public final class SharePostContentPatch {
         }
 
         // A crosspost shares the content of the original post.
-        Link post = link;
-        List<Link> crossPosts = link.getCrossPostParentList();
-        if (crossPosts != null && !crossPosts.isEmpty()) {
-            post = crossPosts.get(0);
-        }
+        Link post = PostMedia.getContentPost(link);
 
         LinkMedia media = post.getMedia();
         if (media != null) {
@@ -132,21 +122,9 @@ public final class SharePostContentPatch {
             }
         }
 
-        PostGallery gallery = post.getGallery();
-        if (gallery != null) {
-            List<PostGalleryItem> items = gallery.getItems();
-            if (items != null) {
-                List<String> itemUrls = new ArrayList<>(items.size());
-                for (PostGalleryItem item : items) {
-                    String itemUrl = trimToNull(item.getUrl());
-                    if (itemUrl != null) {
-                        itemUrls.add(itemUrl);
-                    }
-                }
-                if (!itemUrls.isEmpty()) {
-                    return shareMedia(context, chooser, inner, itemUrls);
-                }
-            }
+        List<String> galleryUrls = PostMedia.getGalleryUrls(post);
+        if (!galleryUrls.isEmpty()) {
+            return shareMedia(context, chooser, inner, galleryUrls);
         }
 
         String url = trimToNull(post.getUrl());
@@ -241,38 +219,16 @@ public final class SharePostContentPatch {
                 long totalBytes = 0;
 
                 for (int i = 0; i < urls.size(); i++) {
-                    String downloadUrl = urls.get(i);
-                    if (downloadUrl.startsWith("//")) {
-                        // Protocol-relative URL.
-                        downloadUrl = "https:" + downloadUrl;
-                    }
-                    if (downloadUrl.contains("&amp;")) {
-                        // Reddit returns HTML-escaped gallery URLs.
-                        downloadUrl = downloadUrl.replace("&amp;", "&");
-                    }
-
-                    HttpURLConnection conn = openConnection(downloadUrl);
+                    String downloadUrl = PostMedia.toDownloadUrl(urls.get(i));
+                    HttpURLConnection conn = PostMedia.openConnection(downloadUrl);
                     try {
-                        final int responseCode = conn.getResponseCode();
-                        if (responseCode != HttpURLConnection.HTTP_OK) {
-                            throw new IOException("HTTP " + responseCode + " for " + downloadUrl);
-                        }
-
-                        String contentType = conn.getContentType();
-                        if (contentType != null) {
-                            final int semicolon = contentType.indexOf(';');
-                            if (semicolon != -1) {
-                                contentType = contentType.substring(0, semicolon);
-                            }
-                            contentType = contentType.trim().toLowerCase(Locale.ROOT);
-                        }
-
-                        String ext = getExtension(contentType, downloadUrl);
+                        String contentType = PostMedia.getContentType(conn);
+                        String ext = PostMedia.getExtension(contentType, downloadUrl);
                         File destFile = new File(shareDir, "share_" + i + "." + ext);
 
                         try (InputStream in = conn.getInputStream();
                              FileOutputStream out = new FileOutputStream(destFile)) {
-                            byte[] buffer = new byte[BUFFER_SIZE];
+                            byte[] buffer = new byte[PostMedia.BUFFER_SIZE];
                             int bytesRead;
                             while ((bytesRead = in.read(buffer)) != -1) {
                                 totalBytes += bytesRead;
@@ -285,9 +241,9 @@ public final class SharePostContentPatch {
                         }
 
                         downloadedFiles.add(destFile);
-                        mimeTypes.add(contentType != null && !contentType.isEmpty()
+                        mimeTypes.add(contentType != null
                                 ? contentType
-                                : getMimeTypeFromExtension(ext));
+                                : PostMedia.getMimeTypeFromExtension(ext));
                     } finally {
                         conn.disconnect();
                     }
@@ -389,68 +345,6 @@ public final class SharePostContentPatch {
                 Logger.printException(() -> "handleShareFailure startActivity failure", ex);
             }
         });
-    }
-
-    private static HttpURLConnection openConnection(String urlString) throws IOException {
-        URL url = new URL(urlString);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setConnectTimeout(CONNECT_TIMEOUT_MILLIS);
-        conn.setReadTimeout(READ_TIMEOUT_MILLIS);
-        conn.setInstanceFollowRedirects(true);
-        return conn;
-    }
-
-    private static String getExtension(@Nullable String contentType, String urlString) {
-        if (contentType != null) {
-            switch (contentType) {
-                case "image/jpeg":
-                    return "jpg";
-                case "image/png":
-                    return "png";
-                case "image/gif":
-                    return "gif";
-                case "image/webp":
-                    return "webp";
-                case "video/mp4":
-                    return "mp4";
-                default:
-                    break;
-            }
-        }
-        String extFromPath = getExtensionFromUrlPath(urlString);
-        if (extFromPath != null) {
-            return extFromPath;
-        }
-        return DEFAULT_EXTENSION;
-    }
-
-    @Nullable
-    private static String getExtensionFromUrlPath(String urlString) {
-        Uri uri = Uri.parse(urlString);
-        String path = uri.getPath();
-        if (path != null) {
-            final int lastSlash = path.lastIndexOf('/');
-            String filename = lastSlash != -1 ? path.substring(lastSlash + 1) : path;
-            final int lastDot = filename.lastIndexOf('.');
-            if (lastDot != -1 && lastDot < filename.length() - 1) {
-                String ext = filename.substring(lastDot + 1).toLowerCase(Locale.ROOT);
-                if (!ext.isEmpty()) {
-                    return ext;
-                }
-            }
-        }
-        return null;
-    }
-
-    private static String getMimeTypeFromExtension(String ext) {
-        return switch (ext) {
-            case "jpg", "jpeg" -> "image/jpeg";
-            case "png" -> "image/png";
-            case "gif" -> "image/gif";
-            case "webp" -> "image/webp";
-            case "mp4" -> "video/mp4";
-            default -> "application/octet-stream";
-        };
     }
 
     @Nullable

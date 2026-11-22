@@ -196,6 +196,16 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_redgifs_audio_summary">Plays the original Redgifs video instead of Reddit\'s copy, which often has no audio</string>
     <string name="morphe_redgifs_hd_title">Redgifs HD quality</string>
     <string name="morphe_redgifs_hd_summary">Plays the HD Redgifs video. HD videos are larger and can pause to load</string>
+    <string name="morphe_download_all_from_gallery_title">Download all from gallery</string>
+    <string name="morphe_download_all_from_gallery_summary">When you tap Download on a gallery post in the share sheet, choose between the item you are viewing and every item in the gallery</string>
+    <string name="morphe_download_all_dialog_title">Download</string>
+    <string name="morphe_download_all_dialog_message">Save only the item you are viewing, or every item in the gallery?</string>
+    <string name="morphe_download_all_this_one">This one</string>
+    <string name="morphe_download_all_all">All %s</string>
+    <string name="morphe_download_all_started">Downloading %s items</string>
+    <string name="morphe_download_all_done">%s items saved</string>
+    <string name="morphe_download_all_partial">Saved %1$s of %2$s items</string>
+    <string name="morphe_download_all_failed">Could not download the gallery</string>
     <string name="morphe_download_location_title">Download location</string>
     <string name="morphe_download_location_all_title">All accounts</string>
     <string name="morphe_download_location_default_summary">Reddit\'s default: images in Pictures/Reddit, videos in Download</string>

@@ -117,6 +117,7 @@ public class Settings extends BaseSettings {
     public static final EnumSetting<GridColumns> TABLET_GRID_COLUMNS = new EnumSetting<>("morphe_tablet_grid_columns", GridColumns.AUTO, parent(TABLET_GRID_FEED));
 
     // Miscellaneous
+    public static final BooleanSetting DOWNLOAD_ALL_FROM_GALLERY = new BooleanSetting("morphe_download_all_from_gallery", TRUE);
     public static final StringSetting DOWNLOAD_FOLDER = new StringSetting("morphe_download_folder", "");
     public static final StringSetting DOWNLOAD_PATH_PATTERN = new StringSetting("morphe_download_path_pattern", "");
     /**
