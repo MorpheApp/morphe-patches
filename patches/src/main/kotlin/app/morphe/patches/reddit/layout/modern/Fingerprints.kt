@@ -10,6 +10,8 @@ package app.morphe.patches.reddit.layout.modern
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -49,7 +51,7 @@ internal object ForYouFollowingVariantOptionFingerprint : Fingerprint(
  * Variant of the "android_for_you_following" experiment, which shows the modern home
  * with the For You, Following and Popular tabs. Null if the user is not in the experiment.
  *
- * 2026.45.0+
+ * 2026.43.0+
  */
 internal object ForYouFollowingVariantFingerprint : Fingerprint(
     returnType = FOR_YOU_FOLLOWING_VARIANT_CLASS,
@@ -72,4 +74,33 @@ internal object HomePagerTabUiModelsFingerprint : Fingerprint(
     filters = listOf(
         newInstance("Lcom/reddit/feedslegacy/switcher/homepager/model/HomePagerScreenTabUiModel;")
     )
+)
+
+/**
+ * If the Popular tab is shown on the home feed. Shown for the For You name variant
+ * if the user is signed in, not incognito, and the Popular tab experiment flag is on.
+ *
+ * 2026.43.0+
+ */
+internal object PopularHomeTabFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(definingClass = FOR_YOU_FOLLOWING_VARIANT_CLASS, name = "FOR_YOU_NAME"),
+        methodCall(definingClass = "Lcom/reddit/session/Session;", name = "isLoggedOut"),
+        methodCall(definingClass = "Lcom/reddit/session/Session;", name = "isIncognito")
+    )
+)
+
+/**
+ * If the tabs of the home feed can be switched by swiping. False for every variant.
+ *
+ * 2026.43.0+
+ */
+internal object PagerSwipeEnabledFingerprint : Fingerprint(
+    definingClass = FOR_YOU_FOLLOWING_VARIANT_CLASS,
+    name = "isPagerSwipeEnabled",
+    returnType = "Z",
+    parameters = listOf()
 )

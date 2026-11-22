@@ -31,6 +31,7 @@ import app.morphe.extension.reddit.patches.HideRelatedPostsSectionPatch;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
 import app.morphe.extension.reddit.patches.HideVideosForYouShelfPatch;
 import app.morphe.extension.reddit.patches.HighQualityAvatarsPatch;
+import app.morphe.extension.reddit.patches.HomeFeedTabsPatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.KeepMediaViewerInSubredditPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
@@ -62,6 +63,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     @Override
     public boolean getSettingsStatus() {
         return DisableModernHomePatch.isPatchIncluded() ||
+                HomeFeedTabsPatch.isPatchIncluded() ||
                 DisableScreenshotPopupPatch.isPatchIncluded() ||
                 CopyTextPatch.isPatchIncluded() ||
                 CustomFontPatch.isPatchIncluded() ||
@@ -113,6 +115,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.DISABLE_MODERN_HOME
+            ));
+        }
+
+        if (HomeFeedTabsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HOME_FEED_TABS
             ));
         }
 
