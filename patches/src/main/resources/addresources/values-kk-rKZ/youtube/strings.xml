@@ -1171,17 +1171,6 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Шынақ навигациялық панель мен экранның төменгі жағы немесе жүйелік навигация арасындағы кеңістікті реттеңіз</string>
   <string name="morphe_navigation_bar_glass_size_title">Шыны навигациялық панельдің өлшемі</string>
   <string name="morphe_navigation_bar_glass_size_summary">Шыны навигациялық панельдің биіктігін, енін және батырмалар арасындағы қашықтықты алдын ала қарау арқылы реттеңіз. Экран еніне сыймайтын батырмалар жасырылады</string>
-  <string name="morphe_glass_menus_screen_title">Шыны мәзірлер</string>
-  <string name="morphe_glass_menus_screen_summary">Мәзірлер артқы бұлдыратылған мазмұн үстіндегі күңгірт шыны ретінде көрсетіледі</string>
-  <string name="morphe_glass_menus_title">Шыны мәзірлерді қосу</string>
-  <string name="morphe_glass_menus_summary">Мәзірлер мен төменгі парақтарды күңгірт шыны ретінде көрсетеді, ал олардың артындағы мазмұн бұлдыратылады</string>
-  <string name="morphe_glass_menus_user_dialog_message">Батареяны үнемдеу режимі қосулы болса немесе құрылғы бұлдыратуды қолдамаса, мәзірлер дерлік мөлдір емес болып көрсетіледі</string>
-  <string name="morphe_glass_menus_opacity_title">Шыны мөлдірлігі</string>
-  <string name="morphe_glass_menus_opacity_summary">Мәзірдің бұлдыр мазмұнды қаншалықты жабатыны (0 — мөлдір, 100 — мөлдір емес)</string>
-  <string name="morphe_glass_menus_blur_title">Бұлдырату</string>
-  <string name="morphe_glass_menus_blur_summary">Мәзірдің артындағы мазмұнның қаншалықты бұлдыр екендігі</string>
-  <string name="morphe_glass_menus_dim_title">Көлеңкелеу</string>
-  <string name="morphe_glass_menus_dim_summary">Төменгі парақтың айналасындағы экранның қаншалықты күңгірттігі</string>
   <string name="morphe_navigation_bar_glass_size_height">Биіктігі</string>
   <string name="morphe_navigation_bar_glass_size_width">Максималды ені</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Батырмалар арасындағы қашықтық</string>
@@ -1658,6 +1647,8 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_video_delay_button_overlay_summary">Кешіктіруді 0 мс-ке қайтару үшін басып тұрыңыз</string>
   <string name="morphe_video_delay_button_flyout_title">Бейне кешіктіру мәзірін көрсету</string>
   <string name="morphe_video_delay_dialog_input_hint">Кешіктіру миллисекундпен</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Бейне эффектілері мәзірін көрсету</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts сапасын есте сақтау</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Сіз қолмен таңдаған сапаны барлық болашақ Shorts видеоларына қолданады</string>

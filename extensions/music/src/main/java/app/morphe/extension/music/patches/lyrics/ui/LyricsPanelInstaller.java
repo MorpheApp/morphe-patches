@@ -96,6 +96,14 @@ public final class LyricsPanelInstaller {
     private LyricsPanelInstaller() {
     }
 
+    static void onCustomFontLoaded() {
+        LyricsFit.invalidateFontCache();
+        final LyricsPanelView panelView = panelReference.get();
+        if (panelView != null) {
+            panelView.applyCustomFont();
+        }
+    }
+
     public static void registerSettingsListener() {
         if (settingsListenerRegistered) {
             return;
@@ -168,10 +176,17 @@ public final class LyricsPanelInstaller {
                 panelView.releaseOnlyModesForHiddenButtons(translateButtonOff, romanizeButtonOff);
             }
             if (Settings.LYRICS_SHOW_COPY_BUTTON.key.equals(key)
+                    || Settings.LYRICS_COPY_BUTTON_MODE.key.equals(key)
                     || Settings.LYRICS_SHOW_TRANSLATE_BUTTON.key.equals(key)
                     || Settings.LYRICS_SHOW_ROMANIZE_BUTTON.key.equals(key)
                     || Settings.LYRICS_SHOW_REFRESH_BUTTON.key.equals(key)) {
                 panelView.applyToolbarButtonSettings();
+            } else if (Settings.LYRICS_CUSTOM_FONT.key.equals(key)) {
+                Context appContext = panelView.getContext().getApplicationContext();
+                Utils.runOnBackgroundThread(() -> {
+                    LyricsFontManager.reload(appContext);
+                    Utils.runOnMainThread(LyricsPanelInstaller::onCustomFontLoaded);
+                });
             } else if (Settings.LYRICS_SHOW_CURRENT_BUTTON.key.equals(key)) {
                 panelView.applyCurrentButtonSetting();
             } else if (Settings.LYRICS_TEXT_SIZE.key.equals(key)

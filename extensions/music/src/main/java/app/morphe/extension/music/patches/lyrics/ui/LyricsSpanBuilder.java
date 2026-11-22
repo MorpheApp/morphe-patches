@@ -322,11 +322,15 @@ public final class LyricsSpanBuilder {
             transEnd = builder.length();
         }
 
+        final List<WordTiming> activeTimings = showSyllableRomanization ? syllableRomanTimings : timings;
+        final boolean hasActiveWordTimings = line.hasWordTimings()
+                || (activeTimings != null && !activeTimings.isEmpty()
+                        && !LyricsReadingCalc.isEntirelyAveraged(activeTimings));
         SpannableString text = new SpannableString(builder.toString());
         ForegroundColorSpan unsungSpan = applySpans(text,
-                showSyllableRomanization ? syllableRomanTimings : timings,
+                activeTimings,
                 originalStart, originalEnd, romaStart, romaEnd, transStart, transEnd,
-                isRightAligned, centered, line.hasWordTimings());
+                isRightAligned, centered, hasActiveWordTimings);
         final int splitOffset = (!swap && romaStart >= 0 && transStart > romaStart) ? transStart : -1;
         attachUniformSpacing(text, spacing, splitOffset);
         if (rubyStart >= 0 && rubyEnd > rubyStart) {

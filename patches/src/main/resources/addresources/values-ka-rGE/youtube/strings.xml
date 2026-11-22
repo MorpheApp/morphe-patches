@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">დაარეგულირეთ სივრცე შუშის навіგაციის პანელსა და ეკრანის ქვედა ნაწილს ან სისტემურ навіგაციას შორის</string>
   <string name="morphe_navigation_bar_glass_size_title">მინისებრი ნავიგაციის პანელის ზომა</string>
   <string name="morphe_navigation_bar_glass_size_summary">დაარეგულირეთ მინისებრი ნავიგაციის პანელის სიმაღლე, სიგანე და ღილაკების დაცილება, წინასწარი ნახვით. ღილაკები, რომლებიც არ ეტევა ეკრანის სიგანეში, იმალება</string>
-  <string name="morphe_glass_menus_screen_title">შუშის მენიები</string>
-  <string name="morphe_glass_menus_screen_summary">მენიები, როგორც დაზラლი შუშა მათ უკან არსებულ ბლურირებულ კონტენტზე</string>
-  <string name="morphe_glass_menus_title">შუშის მენიების ჩართვა</string>
-  <string name="morphe_glass_menus_summary">აჩვენებს მენიებსა და ქვედა ფანჯრებს როგორც დაზლალ შუშას, ხოლო მათ უკან არსებული კონტენტი ბლურირებულია</string>
-  <string name="morphe_glass_menus_user_dialog_message">მენიები ჩანს თითქმის andმკვეთრად, როდესაც ჩართულია ელემენტის დაზოგვის რეჟიმი, ან თუ მოწყობილობას არ აქვს ბლურის მხარდაჭერა</string>
-  <string name="morphe_glass_menus_opacity_title">შუშის გამჭვირვალობა</string>
-  <string name="morphe_glass_menus_opacity_summary">რამდენად ფარავს მენიუ გაბუნდულ შინაარსს (0 არის გამჭვირვალე, 100 არის andაბსოლუტურად andგამუქებული)</string>
-  <string name="morphe_glass_menus_blur_title">ბუნდოვანება</string>
-  <string name="morphe_glass_menus_blur_summary">რამდენად არის გაბუნდული მენიუს უკან არსებული შინაარსი</string>
-  <string name="morphe_glass_menus_dim_title">გამუქება</string>
-  <string name="morphe_glass_menus_dim_summary">რამდენად არის დაგმუქებული ეკრანი ქვედა ფენის გარშემო</string>
   <string name="morphe_navigation_bar_glass_size_height">სიმაღლე</string>
   <string name="morphe_navigation_bar_glass_size_width">მაქსიმალური სიგანე</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ღილაკების დაცილება</string>
@@ -1658,6 +1647,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">დააჭირეთ და გეჭიროთ დაყოვნების 0 მილიწამზე დასაყენებლად</string>
   <string name="morphe_video_delay_button_flyout_title">ვიდეოს დაგვიანების მენიუს ჩვენება</string>
   <string name="morphe_video_delay_dialog_input_hint">დაგვიანება მილიწამებში</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">ვიდეო ეფექტების მენიუს ჩვენება</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts-ის ხარისხის დამახსოვრება</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">თქვენ მიერ ხელით არჩეული ხარისხი გავრცელდება ყველა მომავალ Shorts-ზე</string>

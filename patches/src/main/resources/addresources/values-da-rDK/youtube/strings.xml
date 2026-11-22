@@ -1171,17 +1171,6 @@ For at få adgang til Indstillinger skal du aktivere Indstillingsknappen via Gen
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Juster afstanden mellem den gennemsigtige navigationslinje og bunden af skærmen eller systemnavigationen</string>
   <string name="morphe_navigation_bar_glass_size_title">Glass-navigationslinjens størrelse</string>
   <string name="morphe_navigation_bar_glass_size_summary">Juster højden, bredden og knapafstanden for glass-navigationslinjen med en forhåndsvisning. Knapper, der ikke passer i skærmens bredde, skjules</string>
-  <string name="morphe_glass_menus_screen_title">Glasmenuer</string>
-  <string name="morphe_glass_menus_screen_summary">Menuer som matglas over det slørede indhold bag dem</string>
-  <string name="morphe_glass_menus_title">Aktiver glasmenuer</string>
-  <string name="morphe_glass_menus_summary">Viser menuer og bottom sheets som matglas, hvor indholdet bag dem er sløret</string>
-  <string name="morphe_glass_menus_user_dialog_message">Menuer vises næsten ugennemsigtigt, mens strømsparefunktionen er slået til, eller hvis enheden ikke understøtter sløring</string>
-  <string name="morphe_glass_menus_opacity_title">Glas-uigennemsigtighed</string>
-  <string name="morphe_glass_menus_opacity_summary">Hvor meget menuen dækker det slørede indhold (0 er gennemsigtigt, 100 er uigennemsigtigt)</string>
-  <string name="morphe_glass_menus_blur_title">Sløring</string>
-  <string name="morphe_glass_menus_blur_summary">Hvor meget indholdet bag menuen er sløret</string>
-  <string name="morphe_glass_menus_dim_title">Dæmpning</string>
-  <string name="morphe_glass_menus_dim_summary">Hvor meget skærmen omkring et bottom sheet er mørklagt</string>
   <string name="morphe_navigation_bar_glass_size_height">Højde</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimal bredde</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Knapafstand</string>
@@ -1658,6 +1647,8 @@ Videoer anmodes ved hjælp af et kort præfiks af den hashede video-ID, så serv
   <string name="morphe_video_delay_button_overlay_summary">Tryk og hold for at nulstille forsinkelsen til 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Vis videoforsinkelses-menu</string>
   <string name="morphe_video_delay_dialog_input_hint">Forsinkelse i millisekunder</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Vis menu for videoeffekt</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Husk Shorts kvalitet</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Anvender din manuelle kvalitetsvalg på alle fremtidige Shorts</string>

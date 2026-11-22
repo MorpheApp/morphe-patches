@@ -1171,17 +1171,6 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Rekebisha nafasi kati ya baa ya urambazaji ya kioo na sehemu ya chini ya skrini au urambazaji wa mfumo</string>
   <string name="morphe_navigation_bar_glass_size_title">Ukubwa wa baa ya urambazaji ya kioo</string>
   <string name="morphe_navigation_bar_glass_size_summary">Rekebisha urefu, upana na nafasi ya vitufe ya baa ya urambazaji ya kioo, pamoja na onyesho la kukagua. Vitufe visivyoendana na upana wa skrini hufichwa</string>
-  <string name="morphe_glass_menus_screen_title">Menyu za kioo</string>
-  <string name="morphe_glass_menus_screen_summary">Menyu kama kioo cha ukungu juu ya maudhui yaliyofifia nyuma yake</string>
-  <string name="morphe_glass_menus_title">Washa menyu za kioo</string>
-  <string name="morphe_glass_menus_summary">Inaonyesha menyu na shuka za chini kama kioo cha ukungu, huku maudhui ya nyuma yakififia</string>
-  <string name="morphe_glass_menus_user_dialog_message">Menyu zinaonyeshwa zikiwa hazipitishi mwanga wakati msaidizi wa betri akiwa amewashwa, au ikiwa kifaa hakitumii ufifishaji</string>
-  <string name="morphe_glass_menus_opacity_title">Ufifi wa kioo</string>
-  <string name="morphe_glass_menus_opacity_summary">Kiasi gani menyu inafunika maudhui yaliyofifishwa (0 ni wazi, 100 ni fufi)</string>
-  <string name="morphe_glass_menus_blur_title">Fifisha</string>
-  <string name="morphe_glass_menus_blur_summary">Kiasi gani maudhui ya nyuma ya menyu yamefifishwa</string>
-  <string name="morphe_glass_menus_dim_title">Fifisha mwanga</string>
-  <string name="morphe_glass_menus_dim_summary">Kiasi gani skrini inayozunguka shuka ya chini imefifishwa</string>
   <string name="morphe_navigation_bar_glass_size_height">Urefu</string>
   <string name="morphe_navigation_bar_glass_size_width">Upana wa juu</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Nafasi ya vitufe</string>
@@ -1658,6 +1647,8 @@ Video huombwa kwa kutumia kiambishi kifupi cha ID ya video iliyofichwa, hivyo se
   <string name="morphe_video_delay_button_overlay_summary">Gusa na ushikilie ili kurudisha ucheleweshaji kuwa 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Onyesha menyu ya kuchelewesha Video</string>
   <string name="morphe_video_delay_dialog_input_hint">Ucheleweshaji katika milisekunde</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Onyesha menyu ya athari za Video</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Kumbuka ubora wa Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Hutumia uchaguzi wako wa ubora wa mwongozo kwa Shorts zote zijazo</string>

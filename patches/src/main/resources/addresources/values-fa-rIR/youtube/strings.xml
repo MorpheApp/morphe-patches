@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">تنظیم فاصله بین نوار ناوبری شیشه‌ای و پایین صفحه یا ناوبری سیستم</string>
   <string name="morphe_navigation_bar_glass_size_title">اندازه‌ی نوار پیمایش شیشه‌ای</string>
   <string name="morphe_navigation_bar_glass_size_summary">تنظیم ارتفاع، عرض و فاصله‌ی دکمه‌های نوار پیمایش شیشه‌ای به همراه پیش‌نمایش. دکمه‌هایی که در عرض صفحه‌ی نمایش جای نمی‌گیرند، پنهان می‌شوند</string>
-  <string name="morphe_glass_menus_screen_title">منوهای شیشه‌ای</string>
-  <string name="morphe_glass_menus_screen_summary">منوها به صورت شیشه مات روی محتوای محو شده در پشت آن‌ها</string>
-  <string name="morphe_glass_menus_title">فعال‌سازی منوهای شیشه‌ای</string>
-  <string name="morphe_glass_menus_summary">منوها و صفحات پایین را به صورت شیشه مات نمایش می‌دهد، به گونه‌ای که محتوای پشت آن‌ها محو شود</string>
-  <string name="morphe_glass_menus_user_dialog_message">هنگام فعال بودن حالت ذخیره باتری یا در صورتی که دستگاه از قابلیت محو کردن پشتیبانی نکند، منوها تقریباً کدر نمایش داده می‌شوند</string>
-  <string name="morphe_glass_menus_opacity_title">شفافیت شیشه‌ای</string>
-  <string name="morphe_glass_menus_opacity_summary">میزان پوشش محتوای محوشده توسط منو (۰ شفاف، ۱۰۰ مات)</string>
-  <string name="morphe_glass_menus_blur_title">تاری</string>
-  <string name="morphe_glass_menus_blur_summary">میزان تاری محتوای پشت منو</string>
-  <string name="morphe_glass_menus_dim_title">تاریکی</string>
-  <string name="morphe_glass_menus_dim_summary">میزان تیره شدن صفحه در اطراف یک bottom sheet</string>
   <string name="morphe_navigation_bar_glass_size_height">ارتفاع</string>
   <string name="morphe_navigation_bar_glass_size_width">حداکثر عرض</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">فاصله‌ی دکمه‌ها</string>
@@ -1657,6 +1646,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">برای بازنشانی تأخیر به ۰ میلی‌ثانیه، لمس کنید و نگه دارید</string>
   <string name="morphe_video_delay_button_flyout_title">نمایش منوی تأخیر ویدئو</string>
   <string name="morphe_video_delay_dialog_input_hint">تأخیر بر حسب میلی‌ثانیه</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">نمایش منوی افکت ویدیو</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">به‌خاطر سپردن کیفیت Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">انتخاب دستی کیفیت شما را برای همهٔ Shortsهای آینده اعمال می‌کند</string>

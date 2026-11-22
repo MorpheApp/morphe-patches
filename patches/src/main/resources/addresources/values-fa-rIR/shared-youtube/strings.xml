@@ -219,7 +219,10 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_summary">بالاترین کیفیت موجود را بر کارایی کدک اولویت می‌دهد</string>
   <string name="morphe_prioritize_video_quality_dialog">اگر این تنظیم خاموش باشد، ویدئوهای قدیمی ممکن است هیچ گزینهٔ کیفیت ویدئویی نشان ندهند</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">غیرفعال‌کردن صدای DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">غیرفعال‌کردن صدای DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">صوت اصلی را به جای نسخه‌ای با محدوده دینامیکی فشرده پخش می‌کند</string>
+  <string name="morphe_disable_loudness_normalization_title">غیرفعال کردن نرمال‌سازی بلندی صدا</string>
+  <string name="morphe_disable_loudness_normalization_summary">صداهای بلند را با صدای اصلی پخش می‌کند، به جای اینکه آن‌ها را به یک سطح استاندارد کاهش دهد</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">اجبار زبان صدای اصلی</string>
   <string name="morphe_force_original_audio_summary">همیشه ترک صوتی اصلی ویدئو را به‌جای نسخهٔ دوبله‌شده پخش می‌کند</string>
@@ -228,6 +231,29 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">به‌طور خودکار مکث‌های بی‌صدا در صدای ویدیو را رد می‌کند</string>
   <string name="morphe_skip_silence_minimum_pause_title">حداقل طول مکث</string>
   <string name="morphe_skip_silence_minimum_pause_summary">فقط مکث‌هایی که حداقل این مدت طول بکشند کوتاه‌تر می‌شوند. با شروع ویدیوی بعدی اعمال می‌شود</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">افکت ویدیو</string>
+  <string name="morphe_video_effect_entry_none">خاموش</string>
+  <string name="morphe_video_effects_custom_title">ویرایش افکت‌های ویدیو</string>
+  <string name="morphe_video_effects_custom_summary">تغییر، تغییر نام، حذف یا افزودن افکت‌های ویدیو. افکت‌ها کدهای شیدر هستند، بنابراین یک چت‌بات هوش مصنوعی می‌تواند موارد جدیدی بنویسد</string>
+  <string name="morphe_video_effects_custom_empty">هیچ افکت ویدیویی وجود ندارد. برای ساخت یکی، روی افزودن افکت ضرب کنید.</string>
+  <string name="morphe_video_effects_custom_add">افزودن افکت</string>
+  <string name="morphe_video_effects_custom_restore">بازیابی پیش‌فرض‌ها</string>
+  <string name="morphe_video_effects_custom_add_title">افکت جدید</string>
+  <string name="morphe_video_effects_custom_edit_title">ویرایش افکت</string>
+  <string name="morphe_video_effects_custom_name_hint">نام</string>
+  <string name="morphe_video_effects_custom_name_empty">یک نام برای افکت وارد کنید</string>
+  <string name="morphe_video_effects_custom_name_exists">افکتی با این نام قبلاً وجود دارد</string>
+  <string name="morphe_video_effects_custom_copy_code">کپی کد</string>
+  <string name="morphe_video_effects_custom_error_title">افکت دارای خطا است</string>
+  <string name="morphe_video_effects_custom_error_message">"تا زمانی که کد اصلاح شود، ویدیوها بدون افکت نمایش داده می‌شوند. این خطا را به هوش مصنوعی که کد را نوشته است بدهید:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">کپی خطا</string>
+  <string name="morphe_video_effects_custom_save_anyway">به‌هر‌حال ذخیره کن</string>
+  <string name="morphe_video_effects_custom_delete">حذف</string>
+  <string name="morphe_video_effects_custom_delete_title">حذف افکت؟</string>
+  <string name="morphe_video_effects_custom_delete_message">%s حذف خواهد شد.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">پروکسی شبکه</string>
   <string name="morphe_proxy_screen_summary">درخواست‌های شبکهٔ پشتیبانی‌شده را از طریق یک پروکسی هدایت کنید</string>
@@ -344,6 +370,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">یک فایل فونت TTF یا OTF انتخاب کنید</string>
   <string name="morphe_custom_font_file_invalid">فایل انتخاب‌شده فونت TTF یا OTF نیست</string>
   <string name="morphe_custom_font_failed_to_load">فونت سفارشی بارگذاری نشد و غیرفعال است</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">منوهای شیشه‌ای</string>
+  <string name="morphe_glass_menus_screen_summary">منوها به صورت شیشه مات روی محتوای محو شده در پشت آن‌ها</string>
+  <string name="morphe_glass_menus_title">فعال‌سازی منوهای شیشه‌ای</string>
+  <string name="morphe_glass_menus_summary">منوها و صفحات پایین را به صورت شیشه مات نمایش می‌دهد، در حالی که محتوای پشت آن‌ها تار می‌شود</string>
+  <string name="morphe_glass_menus_user_dialog_message">در هنگام فعال بودن حالت ذخیره باتری یا اگر دستگاه از قابلیت تار کردن پشتیبانی نکند، منوها تقریباً کدر نمایش داده می‌شوند</string>
+  <string name="morphe_glass_menus_opacity_title">شفافیت شیشه</string>
+  <string name="morphe_glass_menus_opacity_summary">میزان پوشش محتوای تار شده توسط منو (۰ شفاف، ۱۰۰ کدر)</string>
+  <string name="morphe_glass_menus_blur_title">تاری</string>
+  <string name="morphe_glass_menus_blur_summary">میزان تاری محتوای پشت منو</string>
+  <string name="morphe_glass_menus_dim_title">تیرگی</string>
+  <string name="morphe_glass_menus_dim_summary">میزان تیره شدن صفحه اطراف صفحه پایین</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">نپسندیدن‌ها موقتاً در دسترس نیستند (مهلت API تمام شد)</string>

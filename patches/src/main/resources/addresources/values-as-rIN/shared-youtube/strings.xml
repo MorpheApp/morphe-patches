@@ -219,7 +219,10 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_prioritize_video_quality_summary">কোডেক কাৰ্যক্ষমতাৰ পৰিবৰ্তে উপলব্ধ উচ্চতম ভিডিঅ’ গুণগতমানক অগ্ৰাধিকাৰ দিয়ে</string>
   <string name="morphe_prioritize_video_quality_dialog">যদি এই ছেটিংটো বন্ধ কৰা হয়, তেন্তে পুৰণি ভিডিঅ’বোৰত কোনো ভিডিঅ’ গুণগতমানৰ বিকল্প দেখা নাযাব পাৰে</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC অডিঅ\' নিষ্ক্ৰীয় কৰক</string>
+  <string name="morphe_disable_drc_audio_stream_title">DRC অডিঅ\' নিষ্ক্ৰীয় কৰক</string>
+  <string name="morphe_disable_drc_audio_stream_summary">কম্প্ৰেছড ডায়নামিক ৰেঞ্জৰ সংস্কৰণৰ পৰিৱৰ্তে মূল অডিঅ\'টো প্লে কৰে</string>
+  <string name="morphe_disable_loudness_normalization_title">লাউডনেছ নৰ্মালাইজেশ্বন নিষ্ক্ৰীয় কৰক</string>
+  <string name="morphe_disable_loudness_normalization_summary">উচ্চ শব্দৰ অডিঅ\'ক এটা মানক স্তৰলৈ নমোৱাৰ পৰিৱৰ্তে ইয়াৰ মূল ভলিউমত প্লে কৰে</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">মূল অডিঅ\' ভাষা প্ৰয়োগ কৰক</string>
   <string name="morphe_force_original_audio_summary">ডাব কৰা সংস্কৰণৰ পৰিৱৰ্তে সদায় ভিডিঅ\'ৰ মূল অডিঅ\' ট্ৰেকটো প্লে কৰে</string>
@@ -228,6 +231,29 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_skip_silence_summary">ভিডিঅ’ অডিঅ’ত থকা নিৰৱ স্তব্ধতাবোৰ স্বয়ংক্ৰিয়ভাৱে বাদ দিয়ে</string>
   <string name="morphe_skip_silence_minimum_pause_title">নূন্যতম বিৰতিৰ দৈৰ্ঘ্য</string>
   <string name="morphe_skip_silence_minimum_pause_summary">কেৱল এইমান সময়ৰ বাবে হোৱা বিৰতিবোৰহে চুটি কৰা হয়। পৰৱৰ্তী ভিডিঅ\'টো আৰম্ভ হোৱাৰ পিছত ই কাৰ্যকৰী হ\'ব</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">ভিডিঅ\' ইফেক্ট</string>
+  <string name="morphe_video_effect_entry_none">বন্ধ</string>
+  <string name="morphe_video_effects_custom_title">ভিডিঅ\' ইফেক্টসমূহ সম্পাদনা কৰক</string>
+  <string name="morphe_video_effects_custom_summary">ভিডিঅ\' ইফেক্টসমূহ সলনি কৰক, নাম সলনি কৰক, মচি পেলাওক বা যোগ কৰক। ইফেক্টসমূহ হৈছে চেডাৰ কোড, সেয়েহে এটা AI চেটবটে নতুন ইফেক্ট লিখিব পাৰিব</string>
+  <string name="morphe_video_effects_custom_empty">কোনো ভিডিঅ’ এফেক্ট নাই। এটা বনাবলৈ \'এফেক্ট যোগ কৰক\'ত টেপ কৰক।</string>
+  <string name="morphe_video_effects_custom_add">এফেক্ট যোগ কৰক</string>
+  <string name="morphe_video_effects_custom_restore">ডিফল্টসমূহ পুনৰুদ্ধাৰ কৰক</string>
+  <string name="morphe_video_effects_custom_add_title">নতুন এফেক্ট</string>
+  <string name="morphe_video_effects_custom_edit_title">এফেক্ট সম্পাদনা কৰক</string>
+  <string name="morphe_video_effects_custom_name_hint">নাম</string>
+  <string name="morphe_video_effects_custom_name_empty">এফেক্টটোৰ বাবে এটা নাম লিখক</string>
+  <string name="morphe_video_effects_custom_name_exists">এই নামৰ এটা এফেক্ট ইতিমধ্যে আছে</string>
+  <string name="morphe_video_effects_custom_copy_code">কোড কপি কৰক</string>
+  <string name="morphe_video_effects_custom_error_title">এফেক্টটোত এটা ত্ৰুটি আছে</string>
+  <string name="morphe_video_effects_custom_error_message">"কোডটো ঠিক নোহোৱালৈকে ভিডিঅ'সমূহ ইফেক্ট অবিহনে দেখুৱাব। এই ত্ৰুটিটো সেই AI-ক দিয়ক যাৰ দ্বাৰা কোডটো লিখা হৈছিল:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">ত্ৰুটি কপি কৰক</string>
+  <string name="morphe_video_effects_custom_save_anyway">তথাপি সংৰক্ষণ কৰক</string>
+  <string name="morphe_video_effects_custom_delete">মচি পেলাওক</string>
+  <string name="morphe_video_effects_custom_delete_title">ইফেক্টটো মচি পেলাবনে?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s মচি পেলোৱা হ\'ব।</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">নেটৱৰ্ক প্ৰক্সি</string>
   <string name="morphe_proxy_screen_summary">প্ৰক্সিৰ জৰিয়তে সমৰ্থিত নেটৱৰ্ক অনুৰোধসমূহ পৰিচালনা কৰক</string>
@@ -344,6 +370,18 @@ PotHelper ডাউনলোড কৰিবলৈ ইয়াত টিপক"</s
   <string name="morphe_custom_font_file_summary">এটা TTF বা OTF ফণ্ট ফাইল বাছনি কৰক</string>
   <string name="morphe_custom_font_file_invalid">পছন্দ কৰা ফাইলটো TTF বা OTF ফন্ট নহয়</string>
   <string name="morphe_custom_font_failed_to_load">কাষ্টম ফন্টটো লোড কৰিব পৰা নগ’ল আৰু ই বন্ধ হৈ আছে</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">গ্লাছ মেনুসমূহ</string>
+  <string name="morphe_glass_menus_screen_summary">পিছলৈ থকা ব্লাৰ্ড কন্টেন্টৰ ওপৰত ফ্ৰোষ্টেড গ্লাছৰ দৰে মেনু</string>
+  <string name="morphe_glass_menus_title">গ্লাছ মেনুসমূহ সক্ৰিয় কৰক</string>
+  <string name="morphe_glass_menus_summary">মেনু আৰু বটম শ্বিটসমূহক ফ্ৰষ্টেড গ্লাছৰ দৰে দেখুৱায়, যাৰ পিছৰ সমগ্ৰ বিষয়বস্তু ব্লাৰ হৈ থাকে</string>
+  <string name="morphe_glass_menus_user_dialog_message">বেটাৰী চেভাৰ সক্ৰিয় থাকিলে বা ডিভাইচটোৱে ব্লাৰৰ সহায় নকৰিলে মেনুসমূহ প্ৰায় অপেক হৈ থাকে</string>
+  <string name="morphe_glass_menus_opacity_title">গ্লাছ অপেচিটি</string>
+  <string name="morphe_glass_menus_opacity_summary">মেনুৱে ব্লাৰ হোৱা বিষয়বস্তুটোক কিমান ঢাকিব (০ মানে স্বচ্ছ, ১০০ মানে অপেক)</string>
+  <string name="morphe_glass_menus_blur_title">ব্লাৰ</string>
+  <string name="morphe_glass_menus_blur_summary">মেনুৰ পিছৰ বিষয়বস্তুটো কিমান ব্লাৰ হ\'ব</string>
+  <string name="morphe_glass_menus_dim_title">ডিম</string>
+  <string name="morphe_glass_menus_dim_summary">বটম শ্বিটৰ চাৰিওফালৰ স্ক্ৰীনখন কিমান অন্ধকাৰ হ\'ব</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">ডিসলাইকসমূহ সাময়িকভাৱে উপলব্ধ নহয় (API টাইম আউট হৈছে)</string>

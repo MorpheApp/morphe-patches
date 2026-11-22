@@ -18,6 +18,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.registersUsed
@@ -36,6 +37,7 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -94,6 +96,10 @@ val lyricsPatch = patch(
                 copyResources(
                     "lyricscurrentbutton",
                     ResourceGroup("drawable", "morphe_yt_crosshair.xml")
+                )
+                copyResources(
+                    "lyricssharebutton",
+                    ResourceGroup("drawable", "morphe_yt_share_bold.xml")
                 )
             }
         }
@@ -155,7 +161,9 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_allow_transliteration", summary = true),
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_clear_cache",
+                        summaryKey = "morphe_music_lyrics_cache_loading_summary",
                         tag = "app.morphe.extension.music.settings.preference.LyricsClearCachePreference",
+                        selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
                     )
                 )
@@ -168,6 +176,14 @@ val lyricsPatch = patch(
                         key = "morphe_music_lyrics_text_size",
                         summaryKey = "morphe_music_lyrics_text_size_summary",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true,
+                        dependency = "morphe_music_lyrics_enabled"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_custom_font",
+                        titleKey = "morphe_music_lyrics_custom_font_title",
+                        summaryKey = "morphe_music_lyrics_custom_font_summary_default",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsCustomFontPreference",
                         selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
                     ),
@@ -206,6 +222,7 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_dynamic_background", summary = true),
                     SwitchPreference("morphe_music_lyrics_dynamic_background_animated", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
+                    ListPreference("morphe_music_lyrics_copy_button_mode"),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
@@ -498,5 +515,29 @@ val lyricsPatch = patch(
             0,
             "invoke-static {}, $EXTENSION_CLASS->onPlayVideo()V",
         )
+    }
+
+    finalize {
+        // Run in finalize so GmsCore / package transforms have already updated manifest@package.
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            val packageName = manifest.root.attribute("package")
+                ?: "com.google.android.apps.youtube.music"
+            val authority = "$packageName.morphe.lyricsshare"
+            val providerName = "app.morphe.extension.music.patches.lyrics.ui.LyricsShareImageProvider"
+            val application = manifest.elements("application").first()
+            val existing = application.elements("provider").firstOrNull {
+                it.attribute("android:name") == providerName
+            }
+            if (existing != null) {
+                existing.setAttribute("android:authorities", authority)
+            } else {
+                application.appendChild("provider") {
+                    setAttribute("android:name", providerName)
+                    setAttribute("android:authorities", authority)
+                    setAttribute("android:exported", "false")
+                    setAttribute("android:grantUriPermissions", "true")
+                }
+            }
+        }
     }
 }

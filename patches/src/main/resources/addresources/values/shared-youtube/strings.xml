@@ -234,7 +234,10 @@ To sign in, press continue below"</string>
     <string name="morphe_prioritize_video_quality_dialog">If this setting is turned off, then older videos can show no video quality options</string>
 
     <!-- misc.audio.drc.disableDRCAudioPatch  -->
-    <string name="morphe_disable_drc_audio_title">Disable DRC audio</string>
+    <string name="morphe_disable_drc_audio_stream_title">Disable DRC audio</string>
+    <string name="morphe_disable_drc_audio_stream_summary">Plays the original audio instead of the version with compressed dynamic range</string>
+    <string name="morphe_disable_loudness_normalization_title">Disable loudness normalization</string>
+    <string name="morphe_disable_loudness_normalization_summary">Plays loud audio at its original volume instead of lowering it to a standard level</string>
 
     <!-- misc.audio.tracks.forceOriginalAudioPatch -->
     <string name="morphe_force_original_audio_title">Force original audio language</string>
@@ -245,6 +248,30 @@ To sign in, press continue below"</string>
     <string name="morphe_skip_silence_summary">Automatically skips silent pauses in video audio</string>
     <string name="morphe_skip_silence_minimum_pause_title">Minimum pause length</string>
     <string name="morphe_skip_silence_minimum_pause_summary">Only pauses at least this long are shortened. Takes effect when the next video starts</string>
+
+    <!-- misc.videoeffects.videoEffectsPatch -->
+    <string name="morphe_video_effect_title">Video effect</string>
+    <string name="morphe_video_effect_entry_none">Off</string>
+    <string name="morphe_video_effects_custom_title">Edit video effects</string>
+    <string name="morphe_video_effects_custom_summary">Change, rename, delete or add video effects. Effects are shader code, so an AI chatbot can write new ones</string>
+    <string name="morphe_video_effects_custom_empty">No video effects. Tap Add effect to make one.</string>
+    <string name="morphe_video_effects_custom_add">Add effect</string>
+    <string name="morphe_video_effects_custom_restore">Restore defaults</string>
+    <string name="morphe_video_effects_custom_add_title">New effect</string>
+    <string name="morphe_video_effects_custom_edit_title">Edit effect</string>
+    <string name="morphe_video_effects_custom_name_hint">Name</string>
+    <string name="morphe_video_effects_custom_name_empty">Enter a name for the effect</string>
+    <string name="morphe_video_effects_custom_name_exists">An effect with this name already exists</string>
+    <string name="morphe_video_effects_custom_copy_code">Copy code</string>
+    <string name="morphe_video_effects_custom_error_title">Effect has an error</string>
+    <string name="morphe_video_effects_custom_error_message">"Videos are shown without the effect until the code is fixed. Give this error to the AI that wrote the code:
+
+%s"</string>
+    <string name="morphe_video_effects_custom_copy_error">Copy error</string>
+    <string name="morphe_video_effects_custom_save_anyway">Save anyway</string>
+    <string name="morphe_video_effects_custom_delete">Delete</string>
+    <string name="morphe_video_effects_custom_delete_title">Delete effect?</string>
+    <string name="morphe_video_effects_custom_delete_message">%s will be deleted.</string>
 
     <!-- misc.proxy.networkProxyPatch -->
     <string name="morphe_proxy_screen_title">Network proxy</string>

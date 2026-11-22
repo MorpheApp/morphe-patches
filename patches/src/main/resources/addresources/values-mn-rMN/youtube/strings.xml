@@ -1171,17 +1171,6 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Шилэн навигацийн мөр болон дэлгэцийн доод хэсэг эсвэл системийн навигацийн хоорондох зайг тохируулах</string>
   <string name="morphe_navigation_bar_glass_size_title">Шилэн навигацийн панелийн хэмжээ</string>
   <string name="morphe_navigation_bar_glass_size_summary">Шилэн навигацийн панелийн өндөр, өргөн болон товчнуудын зайг урьдчилан харах боломжтойгоор тохируулна. Дэлгэцийн өргөнд багтахгүй байгаа товчнууд нуугдана</string>
-  <string name="morphe_glass_menus_screen_title">Шилэн цэснүүд</string>
-  <string name="morphe_glass_menus_screen_summary">Цэснүүдийг тэдгээрийн ард байгаа бүдгэрсэн агуулга дээрх бүрүүн шилэн мэт харуулах</string>
-  <string name="morphe_glass_menus_title">Шилэн цэснүүдийг идэвхжүүлэх</string>
-  <string name="morphe_glass_menus_summary">Цэс болон доод хуудсуудыг бүрүүн шилэн мэт харуулах бөгөөд тэдгээрийн ард байгаа агуулга бүдгэрнэ</string>
-  <string name="morphe_glass_menus_user_dialog_message">Цагны хэмнэлт горим асаалттай эсвэл төхөөрөмж бүдгэрүүлэлтийг дэмжихгүй бол цэснүүд бараг бүрэн харагдана</string>
-  <string name="morphe_glass_menus_opacity_title">Шилэн тунгалаг байдал</string>
-  <string name="morphe_glass_menus_opacity_summary">Цэс нь бүдгэрсэн агуулгыг хэр зэрэг бүрхэх (0 нь тунгалаг, 100 нь бүрэн бүрхэг)</string>
-  <string name="morphe_glass_menus_blur_title">Бүдгэрүүлэлт</string>
-  <string name="morphe_glass_menus_blur_summary">Цэсний ард байгаа агуулга хэр зэрэг бүдгэрсэн байх</string>
-  <string name="morphe_glass_menus_dim_title">Бүдгэрүүлэх</string>
-  <string name="morphe_glass_menus_dim_summary">Доод хуудсаны эргэн тойрон дахь дэлгэц хэр зэрэг бүдгэрсэн байх</string>
   <string name="morphe_navigation_bar_glass_size_height">Өндөр</string>
   <string name="morphe_navigation_bar_glass_size_width">Хамгийн их өргөн</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Товчнуудын зай</string>
@@ -1658,6 +1647,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_video_delay_button_overlay_summary">Хоцролтыг 0 мс болгон шинэчлэхийн тулд удаан дарна уу</string>
   <string name="morphe_video_delay_button_flyout_title">Видео хоцролтын цэс харуулах</string>
   <string name="morphe_video_delay_dialog_input_hint">Хоцролтыг миллисекундээр</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Видео эффектийн цэсийг харуулах</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts чанарыг санахаа</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Таны гараар сонгосон чанарыг цаашдын бүх Shorts-д хэрэглэнэ</string>

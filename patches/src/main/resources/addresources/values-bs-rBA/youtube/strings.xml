@@ -1171,17 +1171,6 @@ Da biste pristupili Postavkama, omogućite dugme Postavke putem Opće → Traka 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Prilagodite razmak između staklene navigacijske trake i dna ekrana ili sistemske navigacije</string>
   <string name="morphe_navigation_bar_glass_size_title">Veličina staklene navigacijske trake</string>
   <string name="morphe_navigation_bar_glass_size_summary">Prilagodite visinu, širinu i razmak između dugmadi staklene navigacijske trake, uz pregled. Dugmad koja ne stanu u širinu ekrana su skrivena</string>
-  <string name="morphe_glass_menus_screen_title">Stakleni meniji</string>
-  <string name="morphe_glass_menus_screen_summary">Meniji kao matirano staklo preko zamućenog sadržaja iza njih</string>
-  <string name="morphe_glass_menus_title">Omogući staklene menije</string>
-  <string name="morphe_glass_menus_summary">Prikazuje menije i donje ploče kao matirano staklo, sa zamućenim sadržajem iza njih</string>
-  <string name="morphe_glass_menus_user_dialog_message">Meniji se prikazuju gotovo neprozirno kada je uključena ušteda baterije ili ako uređaj ne podržava zamućenje</string>
-  <string name="morphe_glass_menus_opacity_title">Prozirnost stakla</string>
-  <string name="morphe_glass_menus_opacity_summary">Koliko meni prekriva zamućeni sadržaj (0 je potpuno prozirno, 100 je neprozirno)</string>
-  <string name="morphe_glass_menus_blur_title">Zamućenje</string>
-  <string name="morphe_glass_menus_blur_summary">Koliko je sadržaj iza menija zamućen</string>
-  <string name="morphe_glass_menus_dim_title">Zatamnjenje</string>
-  <string name="morphe_glass_menus_dim_summary">Koliko je ekran oko donjeg lista zatamnjen</string>
   <string name="morphe_navigation_bar_glass_size_height">Visina</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimalna širina</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Razmak između dugmadi</string>
@@ -1658,6 +1647,8 @@ Videozapisi se zahtijevaju putem kratkog prefiksa hashiranog ID-a videa, tako da
   <string name="morphe_video_delay_button_overlay_summary">Dodirnite i držite da biste resetovali odlaganje na 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Prikaži meni za odlaganje videa</string>
   <string name="morphe_video_delay_dialog_input_hint">Odlaganje u milisekundama</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Prikaži meni za video efekte</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Zapamti kvalitet Shorts videa</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Primjenjuje vaš ručni odabir kvaliteta na sve buduće Shorts videe</string>

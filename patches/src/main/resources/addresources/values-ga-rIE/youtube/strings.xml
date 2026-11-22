@@ -1171,17 +1171,6 @@ Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Coigeartaigh an spás idir an barra nascleanúna gloine agus bun an scáileáin nó nascleanúint an chórais</string>
   <string name="morphe_navigation_bar_glass_size_title">Méid an bharra nascleanúna gloine</string>
   <string name="morphe_navigation_bar_glass_size_summary">Coigeartaigh airde, leithead agus spásáil cnaipí an bharra nascleanúna ghloine, agus féach ar réamhamharc. Déantar cnaipí nach n-oireann laistigh de leithead an scáileáin a cheilt.</string>
-  <string name="morphe_glass_menus_screen_title">Menuí gloine</string>
-  <string name="morphe_glass_menus_screen_summary">Menuí mar ghloine fhrostaithe os cionn an ábhair doiléire taobh thiar acu</string>
-  <string name="morphe_glass_menus_title">Cumasaigh menuí gloine</string>
-  <string name="morphe_glass_menus_summary">Taispeánann menuí agus bileoga boscaí mar ghloine fhrostaithe, leis an ábhar taobh thiar acu doiléire</string>
-  <string name="morphe_glass_menus_user_dialog_message">Taispeánann an córas na menuí bealainneach beagnach nuair a bhíonn sábhálaí batterí uactha, nó má ní thacaíonn an gléas le doiléire</string>
-  <string name="morphe_glass_menus_opacity_title">Teimhneacht ghloine</string>
-  <string name="morphe_glass_menus_opacity_summary">Cé mhéid a chlúdaíonn an menu an t-ábhar truaghaithe (is é 0 an soiléir, is é 100 an docht)</string>
-  <string name="morphe_glass_menus_blur_title">Doiléire</string>
-  <string name="morphe_glass_menus_blur_summary">Cé mhéid a truaghaithear an t-ábhar taobh thiar den menu</string>
-  <string name="morphe_glass_menus_dim_title">Dím</string>
-  <string name="morphe_glass_menus_dim_summary">Cé mhéid a dhronnaítear an scáileán thart ar bhile bun</string>
   <string name="morphe_navigation_bar_glass_size_height">Airde</string>
   <string name="morphe_navigation_bar_glass_size_width">Leithead uasta</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spásáil cnaipí</string>
@@ -1658,6 +1647,8 @@ Iarrtar físeáin le réimír ghearr den aitheantóir físeáin hasáilte, mar s
   <string name="morphe_video_delay_button_overlay_summary">Beartaigh agus coinnigh chun an mhoill a athshocrú go 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Taispeáin roghchlár moill físe</string>
   <string name="morphe_video_delay_dialog_input_hint">Moill i milleasoicindí</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Taispeáin roghchlár éifeacht físe</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Cuimhnigh ar cháilíocht na Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Cuireann sé seo do rogha cáilíochta láimhe i bhfeidhm ar gach Gearrscannán amach anseo</string>

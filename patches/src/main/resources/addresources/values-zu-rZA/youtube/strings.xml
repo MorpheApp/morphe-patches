@@ -1171,17 +1171,6 @@ Ukuze ufike ku-Settings, vula inkinobho ye-Settings nge-General → Toolbar → 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Lungisa isikhala phakathi kwe-glass navigation bar naphansi kwesikrini noma i-system navigation</string>
   <string name="morphe_navigation_bar_glass_size_title">Usayizi we-glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_size_summary">Lungisa ubude, ububanzi nesikhala sezinkinobho se-glass navigation bar, ngokubona isibonelo. Izinobho ezingangeni kububanzi besikrini ziyacashwa</string>
-  <string name="morphe_glass_menus_screen_title">Imenyu yengilazi</string>
-  <string name="morphe_glass_menus_screen_summary">Imenyu ebukeka njengengilazi efakekile phezu okuqukethwe okufihliwe ngemuva kwayo</string>
-  <string name="morphe_glass_menus_title">Vumela imenyu yengilazi</string>
-  <string name="morphe_glass_menus_summary">Ikhombisa imenyu namasheethi aphansi njengengilazi efakekile, lapho okuqukethwe okungemuva kuvele kufihliwe</string>
-  <string name="morphe_glass_menus_user_dialog_message">Imenyu ibonakala ingafihliwe kakhulu lapho isondlo bamathibathiba bebhathri buvuliwe, noma uma idivayisi ingasekeli ukufihla okungemuva</string>
-  <string name="morphe_glass_menus_opacity_title">Ukucaca kwengilazi</string>
-  <string name="morphe_glass_menus_opacity_summary">Ukuthi imenyu ibamba kangakanani okuqukethwe okungacacile (0 kusho ukuthi kucace, 100 kusho ukuthi kubonakale)</string>
-  <string name="morphe_glass_menus_blur_title">Ukufifala</string>
-  <string name="morphe_glass_menus_blur_summary">Ukuthi okuqukethwe okungemuva kwemenyu kufifala kangakanani</string>
-  <string name="morphe_glass_menus_dim_title">Ukumnyama</string>
-  <string name="morphe_glass_menus_dim_summary">Ukuthi isikrini esizungeze i-bottom sheet simnyama kangakanani</string>
   <string name="morphe_navigation_bar_glass_size_height">Ubude</string>
   <string name="morphe_navigation_bar_glass_size_width">Ububanzi obukhulu</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Isikhala sezinkinobho</string>
@@ -1658,6 +1647,8 @@ Amavidiyo aceleka ngesisekelo esifushane se-hashed video ID, ngakho iserba ayikw
   <string name="morphe_video_delay_button_overlay_summary">Thinta ubambe ukuze ubuyisele ukubambezela ku-0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Khombisa imenyu yokubambezela iVidiyo</string>
   <string name="morphe_video_delay_dialog_input_hint">Ukubambezela ngama-milliseconds</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Khombisa imenyu yomphumela weVidio</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Khumbula izinga le-Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Kusebenzisa ukukhetha kwakho kwekhwalithi kuzo zonke i-Shorts ezizayo</string>

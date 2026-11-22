@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Fərdi</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Albom səs treklərini səsləndir</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Musiqi videosu əvəzinə mahnıların yalnız albom səsi versiyasını səsləndirir. \'Video yayımlarını saxtalaşdırı\' tələb edir</string>
+  <string name="morphe_music_play_album_songs_summary">Musiqi videoları əvəzinə albomun mahnılarını səsləndir</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Səs/video keçidini aktivləşdir</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Səs Treki Versiyasını və Rəsmi Musiqi Videosunu dəyişdirməyə çalış</string>
@@ -283,6 +282,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">Oynatma sürəti</string>
   <string name="morphe_music_playback_speed_summary">Bütün treklər üçün istifadə olunan sürət. 100% olduqda tətbiqin sürəti, məsələn, podkastın oynatma sürəti istifadə olunur</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Ucalığı sürət ilə dəyiş</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Video effekti menyusunu göstər</string>
+  <string name="morphe_music_video_effect_menu_summary">Video oynadılarkən oynadıcı menyusuna video effekti əlavə edir</string>
+  <string name="morphe_music_video_effect_next_video">Effekt növbəti videodan göstərilir</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Avtomatik titrləri qapat</string>
   <string name="morphe_music_disable_auto_captions_summary">Video başladıqda standart aktiv olanlar da daxil olmaqla, titrlər avtomatik açılmır</string>
@@ -601,6 +604,8 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
 
 Məlumat bazası ODC Open Database License (ODbL) lisenziyası altındadır. xoundbyte tərəfindən hazırlanmış Soul Over AI daxilolmaları CC BY 4.0 lisenziyasına tabedir. SoundProof və ya Soul Over AI ilə heç bir əlaqəsi yoxdur və ya onlar tərəfindən təsdiqlənmir."</string>
   <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animasiyalı cildi</string>
+  <string name="morphe_music_apple_music_artwork_summary">Albomun belə örtüyü varsa, oynadıcıda Apple Music-in animasiyalı albom örtüyünü göstərir. Hər mahnının başlığı, ifaçısı və albomu Apple Music-ə göndərilir</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Bu cihaz faylı üçün mahnı sözləri mövcud deyil.</string>
   <string name="morphe_music_lyrics_enabled_title">Üçüncü tərəf mahnı sözlərin istifadə et</string>
@@ -653,6 +658,25 @@ Birinci sütun söz, ikincisi isə onun oxunuşudur; əlavə sütunlar və səhi
   <string name="morphe_music_lyrics_clear_cache_title">Saxlanılmış mahnı sözlərini təmizlə</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Bu cihazda saxlanılan %s MB sözləri sil</string>
   <string name="morphe_music_lyrics_clear_cache_done">%s MB Təmizləndi</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Keş həcmini hesablayır…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Mahnı Sözləri Keşi</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Mahnı Sözləri Keşini Təmizlə</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d mahnı)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Tərcümə Keşi</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Tərcümə Keşini Təmizlə</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d tərcümə)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Transliterasiya Keşi</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Transliterasiya Keşini Təmizlə</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d transliterasiya)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Ümumi Keş İstifadəsi</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Bütün Keşi Təmizlə</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d element)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Təmizlə</string>
+  <string name="morphe_music_lyrics_cache_close_action">Bağla</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">Bu cihazda saxlanılan keşlənmiş sözlərin %1$s MB-ı (%2$d mahnı) silinsin?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">Bu cihazda saxlanılan keşlənmiş tərcümələrin %1$s MB-ı (%2$d tərcümə) silinsin?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">Bu cihazda saxlanılan keşlənmiş transliterasiyaların %1$s MB-ı (%2$d transliterasiya) silinsin?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">Bu cihazda saxlanılan bütün keşlənmiş söz məlumatlarından %1$s MB (%2$d element) silinsin?</string>
   <string name="morphe_music_token_dialog_get_token">Tokeni əldə et</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"music.apple.com 'dan media-user-token kukisini yapışdır
@@ -708,8 +732,11 @@ Birinci sütun söz, ikincisi isə onun oxunuşudur; əlavə sütunlar və səhi
   <string name="morphe_music_lyrics_tap_to_seek_summary">Mahnıda həmin məqama keçmək üçün sətrə toxunun, barmağınızın altındakı sözü köçürmək üçün üzərinə basıb saxlayın, basılan yer sözün üstü olmadıqda isə bütün sətir köçürülür. Qapatma hər iki jesti ləğv edir</string>
   <string name="morphe_music_lyrics_show_section_title">Bölmə etiketlərini göstər</string>
   <string name="morphe_music_lyrics_show_section_summary">Mahnı sözlərinin hər yeni bölməsini Verse və ya Chorus kimi kiçik etiketlə qeyd et</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Köçürmə düyməsini göstər</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Orijinal sözləri sadə mətn kimi köçürmək üçün toxun; işlənməmiş sözlərin mənbə faylını və çevrilmiş TTML faylını Yükləmələrə köçürmək üçün basıb saxla</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Köçür / Paylaş düyməsini göstər</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Sözlər panelinin alət cərgəsində Köçür və ya Paylaş düyməsini göstər</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Köçür düyməsi rejimi</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Köçürmə rejimi (köçürmək üçün toxun, saxlamaq üçün uzun bas)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Paylaşım rejimi (1-5 sətir seçmək üçün toxun, köçürmək və ya saxlamaq üçün uzun bas)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Tərcümə et düyməsini göstər</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Tərcüməni dəyişmək üçün toxun; yalnız tərcümə üçün uzun bas. Siyahıdakı sıra ilə aktiv tərcümə təminatçıları istifadə edilir</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Transkripsiya və ya Transliterasiya düyməsini göstər</string>
@@ -723,7 +750,44 @@ Birinci sütun söz, ikincisi isə onun oxunuşudur; əlavə sütunlar və səhi
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Oxunuşlar hazırdır (%s daxilolma)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">​Yükləmə alınmadı - yenidən cəhd etmək üçün bunu təkrar bağla və aç</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Oflayn Lüğət</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Yaponca (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Yaponca</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — sürətli morfoloji analizator &amp; ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — tam Yaponca söz lüğəti</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Üstünlük &amp; ehtiyat sırası</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromoji üstünlüyü (SudachiDict ehtiyatda)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict üstünlüyü (Kuromoji ehtiyatda)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Fərdi mahnı sözləri şrifti</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">İlkin sistem şrifti (.ttf və ya .otf şrift faylını yükləmək üçün toxun)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Aktiv şrift: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Mahnı sözləri görünüşündə istifadə etmək üçün cihaz yaddaşınızdan .ttf və ya .otf şrift faylı (məsələn, SF Pro Bold, Inter Bold və ya Inter ExtraBold) yükləyin.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Şrifti yüklə</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Standarta qaytar</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Fərdi mahnı sözü şrifti tətbiq edildi: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">İlkin mahnı sözü şriftinə qaytarıldı</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Etibarsız və ya dəstəklənməyən şrift faylı (.ttf və ya .otf tələb olunur)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Mahnı sözlərini paylaş</string>
+  <string name="morphe_music_lyrics_share_button">Paylaş</string>
+  <string name="morphe_music_lyrics_copy">Köçür</string>
+  <string name="morphe_music_lyrics_share_options_title">Mahnı sözləri fəaliyyətləri</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Sözləri düz mətn kimi köçür</string>
+  <string name="morphe_music_lyrics_save_file_option">Sözləri &amp; TTML-i Yükləmələrdə Saxla</string>
+  <string name="morphe_music_lyrics_share_cancel">Ləğv et</string>
+  <string name="morphe_music_lyrics_share_select_hint">Paylaşmaq üçün 1–5 sətirə toxun</string>
+  <string name="morphe_music_lyrics_share_max_lines">Ən çox 5 sətir seçilə bilər</string>
+  <string name="morphe_music_lyrics_share_failed">Söz paylaşma kartı yaradıla bilmədi</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Bulanıqlıq</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Örtük</string>
+  <string name="morphe_music_lyrics_share_bg_color">Rəng</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Şəkil</string>
+  <string name="morphe_music_lyrics_share_branding_logo">YT Music simvolu</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Romaji</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Tərcümə et</string>
+  <string name="morphe_music_lyrics_share_layer_bg">BG vokalları</string>
+  <string name="morphe_music_lyrics_share_custom_color">Fərdi rəng</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Seçilmiş şəkli yükləmək olmadı</string>
+  <string name="morphe_music_lyrics_share_card_cta">Kartı paylaş</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Mətni köçür</string>
+  <string name="morphe_music_lyrics_share_back">Mahnı sözü seçiminə qayıt</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Çincə və Kantonca simvolları (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Çincə sözlər (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Yunanca, Slavyan Kirili (Rusca, Ukraynaca, Bolqarca, Serbcə, Belarusca, Makedonca daxil olmaqla), Gürcücə, Ermənicə, İvritcə, Ərəbcə, Amharca və Süryanicə transliterasiyası (CLDR, ~0.5 MB)</string>

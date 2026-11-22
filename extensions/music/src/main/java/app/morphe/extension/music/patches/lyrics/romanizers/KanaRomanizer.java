@@ -28,11 +28,22 @@ public final class KanaRomanizer {
     private static final int KATAKANA_END = 0x30FA;
     private static final String NAME_PREFIX = "KATAKANA LETTER";
 
-    /** Where the Unicode names read differently from Hepburn, as name then Hepburn. */
+    /** Where the Unicode names read differently from Revised Hepburn, as name then Hepburn. */
     private static final String[][] HEPBURN = {
             {"si", "shi"}, {"ti", "chi"}, {"tu", "tsu"}, {"hu", "fu"},
-            {"zi", "ji"}, {"di", "ji"}, {"du", "zu"},
+            {"zi", "ji"}, {"di", "ji"}, {"du", "zu"}, {"wo", "o"},
     };
+
+    /** Modern/loanword katakana digraphs (after hiragana->katakana folding) matching Hepburn. */
+    private static final Map<String, String> DIGRAPHS = Map.ofEntries(
+            Map.entry("ファ", "fa"), Map.entry("フィ", "fi"), Map.entry("フェ", "fe"), Map.entry("フォ", "fo"),
+            Map.entry("ティ", "ti"), Map.entry("ディ", "di"), Map.entry("トゥ", "tu"), Map.entry("ドゥ", "du"),
+            Map.entry("ウィ", "wi"), Map.entry("ウェ", "we"), Map.entry("ウォ", "wo"),
+            Map.entry("ヴァ", "va"), Map.entry("ヴィ", "vi"), Map.entry("ヴェ", "ve"), Map.entry("ヴォ", "vo"),
+            Map.entry("シェ", "she"), Map.entry("ジェ", "je"), Map.entry("チェ", "che"), Map.entry("ツァ", "tsa"),
+            Map.entry("ツィ", "tsi"), Map.entry("ツェ", "tse"), Map.entry("ツォ", "tso"),
+            Map.entry("クヮ", "kwa"), Map.entry("グヮ", "gwa")
+    );
 
     /** The consonants whose small ya, yo and yu replace the vowel instead of gliding. */
     private static final String[] SIBILANTS = {"ch", "sh", "ts", "j"};
@@ -116,7 +127,11 @@ public final class KanaRomanizer {
             int next = i + 1;
 
             char following = next < kana.length() ? katakana(kana.charAt(next)) : 0;
-            if (isSmallY(following)) {
+            String digraph = following != 0 ? DIGRAPHS.get(String.valueOf(c) + following) : null;
+            if (digraph != null) {
+                syllable = digraph;
+                next++;
+            } else if (isSmallY(following)) {
                 syllable = palatalise(consonant, smallYVowel(following));
                 next++;
             } else if (consonant.isEmpty() && isSmallVowel(following)) {

@@ -219,7 +219,10 @@ Um sich anzumelden, drücken Sie unten auf Weiter"</string>
   <string name="morphe_prioritize_video_quality_summary">Priorisiert die höchstmögliche Videoqualität gegenüber der Codec-Effizienz</string>
   <string name="morphe_prioritize_video_quality_dialog">Ist diese Einstellung deaktiviert, werden bei älteren Videos möglicherweise keine Optionen zur Videoqualität angezeigt</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Audiokompression (DRC) deaktivieren</string>
+  <string name="morphe_disable_drc_audio_stream_title">Audiokompression (DRC) deaktivieren</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Spielt das Original-Audio anstelle der Version mit komprimiertem Dynamikbereich ab</string>
+  <string name="morphe_disable_loudness_normalization_title">Lautstärkenormierung deaktivieren</string>
+  <string name="morphe_disable_loudness_normalization_summary">Spielt lautem Audio in seiner ursprünglichen Lautstärke ab, anstatt es auf ein Standardniveau zu senken</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Original-Audiotrack erzwingen</string>
   <string name="morphe_force_original_audio_summary">Spielt immer die Original-Audiospur des Videos ab, anstatt eine synchronisierte Version</string>
@@ -228,6 +231,29 @@ Um sich anzumelden, drücken Sie unten auf Weiter"</string>
   <string name="morphe_skip_silence_summary">Überspringt automatisch stille Pausen im Video-Audio</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimale Pausenlänge</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Nur Pausen, die mindestens so lang sind, werden verkürzt. Wirkt sich erst aus, wenn das nächste Video startet</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Videoeffekt</string>
+  <string name="morphe_video_effect_entry_none">Deaktiviert</string>
+  <string name="morphe_video_effects_custom_title">Videoeffekte bearbeiten</string>
+  <string name="morphe_video_effects_custom_summary">Videoeffekte ändern, umbenennen, löschen oder hinzufügen. Effekte sind Shader-Code, daher kann ein KI-Chatbot neue schreiben</string>
+  <string name="morphe_video_effects_custom_empty">Keine Videoeffekte. Tippe auf Effekt hinzufügen, um einen zu erstellen.</string>
+  <string name="morphe_video_effects_custom_add">Effekt hinzufügen</string>
+  <string name="morphe_video_effects_custom_restore">Standardwerte wiederherstellen</string>
+  <string name="morphe_video_effects_custom_add_title">Neuer Effekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Effekt bearbeiten</string>
+  <string name="morphe_video_effects_custom_name_hint">Name</string>
+  <string name="morphe_video_effects_custom_name_empty">Geben Sie einen Namen für den Effekt ein</string>
+  <string name="morphe_video_effects_custom_name_exists">Ein Effekt mit diesem Namen existiert bereits</string>
+  <string name="morphe_video_effects_custom_copy_code">Code kopieren</string>
+  <string name="morphe_video_effects_custom_error_title">Effekt enthält einen Fehler</string>
+  <string name="morphe_video_effects_custom_error_message">"Videos werden ohne den Effekt angezeigt, bis der Code korrigiert wurde. Geben Sie diesen Fehler an die KI weiter, die den Code geschrieben hat:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Fehler kopieren</string>
+  <string name="morphe_video_effects_custom_save_anyway">Trotzdem speichern</string>
+  <string name="morphe_video_effects_custom_delete">Löschen</string>
+  <string name="morphe_video_effects_custom_delete_title">Effekt löschen?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s wird gelöscht.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Netzwerkproxy</string>
   <string name="morphe_proxy_screen_summary">Leite unterstützte Netzwerkabfragen über einen Proxy weiter</string>
@@ -344,6 +370,18 @@ Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu
   <string name="morphe_custom_font_file_summary">Wähle eine TTF- oder OTF-Schriftdatei aus</string>
   <string name="morphe_custom_font_file_invalid">Die ausgewählte Datei ist keine TTF- oder OTF-Schriftdatei</string>
   <string name="morphe_custom_font_failed_to_load">Die benutzerdefinierte Schriftartdatei konnte nicht geladen werden und ist deaktiviert</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Glas-Menüs</string>
+  <string name="morphe_glass_menus_screen_summary">Menüs als Milchglas über dem verschwommenen Inhalt dahinter</string>
+  <string name="morphe_glass_menus_title">Glas-Menüs aktivieren</string>
+  <string name="morphe_glass_menus_summary">Zeigt Menüs und Bottom Sheets als Milchglas an, wobei der Inhalt dahinter weichgezeichnet wird</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menüs werden fast undurchsichtig angezeigt, wenn der Energiesparmodus aktiviert ist oder das Gerät keine Weichzeichnung unterstützt</string>
+  <string name="morphe_glass_menus_opacity_title">Glas-Deckkraft</string>
+  <string name="morphe_glass_menus_opacity_summary">Wie stark das Menü den weichgezeichneten Inhalt überdeckt (0 ist transparent, 100 ist undurchsichtig)</string>
+  <string name="morphe_glass_menus_blur_title">Weichzeichnung</string>
+  <string name="morphe_glass_menus_blur_summary">Wie stark der Inhalt hinter dem Menü weichgezeichnet wird</string>
+  <string name="morphe_glass_menus_dim_title">Abdunkelung</string>
+  <string name="morphe_glass_menus_dim_summary">Wie stark der Bildschirm um ein Bottom Sheet herum abgedunkelt wird</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes sind vorübergehend nicht verfügbar (API Timeout)</string>

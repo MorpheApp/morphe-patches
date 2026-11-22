@@ -1171,17 +1171,6 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Điều chỉnh khoảng cách giữa thanh điều hướng kính và cạnh dưới của màn hình hoặc điều hướng hệ thống</string>
   <string name="morphe_navigation_bar_glass_size_title">Kích thước thanh điều hướng dạng kính</string>
   <string name="morphe_navigation_bar_glass_size_summary">Điều chỉnh chiều cao, chiều rộng và khoảng cách nút của thanh điều hướng dạng kính, kèm theo bản xem trước. Các nút không vừa với chiều rộng của màn hình sẽ bị ẩn</string>
-  <string name="morphe_glass_menus_screen_title">Menu dạng kính</string>
-  <string name="morphe_glass_menus_screen_summary">Menu hiển thị như kính mờ trên nội dung bị làm mờ phía sau</string>
-  <string name="morphe_glass_menus_title">Bật menu dạng kính</string>
-  <string name="morphe_glass_menus_summary">Hiển thị menu và trang dưới dạng kính mờ, với nội dung phía sau được làm mờ</string>
-  <string name="morphe_glass_menus_user_dialog_message">Menu sẽ hiển thị gần như đục khi chế độ tiết kiệm pin đang bật, hoặc nếu thiết bị không hỗ trợ làm mờ</string>
-  <string name="morphe_glass_menus_opacity_title">Độ mờ của kính</string>
-  <string name="morphe_glass_menus_opacity_summary">Mức độ menu che phủ nội dung bị làm mờ (0 là trong suốt, 100 là đục)</string>
-  <string name="morphe_glass_menus_blur_title">Làm mờ</string>
-  <string name="morphe_glass_menus_blur_summary">Mức độ nội dung phía sau menu bị làm mờ</string>
-  <string name="morphe_glass_menus_dim_title">Làm tối</string>
-  <string name="morphe_glass_menus_dim_summary">Mức độ màn hình xung quanh bottom sheet bị làm tối</string>
   <string name="morphe_navigation_bar_glass_size_height">Chiều cao</string>
   <string name="morphe_navigation_bar_glass_size_width">Chiều rộng tối đa</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Khoảng cách nút</string>
@@ -1658,6 +1647,8 @@ Video được yêu cầu bằng một tiền tố ngắn của ID video đã b�
   <string name="morphe_video_delay_button_overlay_summary">Nhấn và giữ để đặt lại độ trễ về 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Hiện menu Trì hoãn video</string>
   <string name="morphe_video_delay_dialog_input_hint">Độ trễ tính bằng mili giây</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Hiển thị menu hiệu ứng Video</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Nhớ chất lượng Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Áp dụng chất lượng mà bạn đã chọn cho tất cả Shorts trong tương lai</string>

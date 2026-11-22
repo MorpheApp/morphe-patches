@@ -219,7 +219,10 @@ Pentru a te autentifica, apasă pe continuă mai jos"</string>
   <string name="morphe_prioritize_video_quality_summary">Prioritizează cea mai înaltă calitate video disponibilă în detrimentul eficienței codec-ului</string>
   <string name="morphe_prioritize_video_quality_dialog">Dacă această setare este dezactivată, videoclipurile mai vechi pot să nu afișeze opțiuni de calitate video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Dezactivați sunetul DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Dezactivează audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Redă audio originalul în loc de versiunea cu gamă dinamică comprimată</string>
+  <string name="morphe_disable_loudness_normalization_title">Dezactivează normalizarea volumului</string>
+  <string name="morphe_disable_loudness_normalization_summary">Redă sunetul puternic la volumul său original în loc să îl reducă la un nivel standard</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forțează limba audio originală</string>
   <string name="morphe_force_original_audio_summary">Redă întotdeauna piesa audio originală a videoclipului în loc de o versiune dublată</string>
@@ -228,6 +231,29 @@ Pentru a te autentifica, apasă pe continuă mai jos"</string>
   <string name="morphe_skip_silence_summary">Sare automat peste pauzele de tăcere din sunetul video</string>
   <string name="morphe_skip_silence_minimum_pause_title">Durata minimă a pauzei</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Doar pauzele de cel puțin această durată sunt scurtate. Are efect când începe următorul videoclip</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Efect video</string>
+  <string name="morphe_video_effect_entry_none">Oprit</string>
+  <string name="morphe_video_effects_custom_title">Editează efectele video</string>
+  <string name="morphe_video_effects_custom_summary">Modifică, redenumește, șterge sau adaugă efecte video. Efectele sunt coduri de shader, deci un chatbot AI poate scrie unele noi</string>
+  <string name="morphe_video_effects_custom_empty">Nu există efecte video. Apasă Adaugă efect pentru a crea unul.</string>
+  <string name="morphe_video_effects_custom_add">Adaugă efect</string>
+  <string name="morphe_video_effects_custom_restore">Restaurare valori implicite</string>
+  <string name="morphe_video_effects_custom_add_title">Efect nou</string>
+  <string name="morphe_video_effects_custom_edit_title">Editare efect</string>
+  <string name="morphe_video_effects_custom_name_hint">Nume</string>
+  <string name="morphe_video_effects_custom_name_empty">Introduceți un nume pentru efect</string>
+  <string name="morphe_video_effects_custom_name_exists">Există deja un efect cu acest nume</string>
+  <string name="morphe_video_effects_custom_copy_code">Copiați codul</string>
+  <string name="morphe_video_effects_custom_error_title">Efectul are o eroare</string>
+  <string name="morphe_video_effects_custom_error_message">"Videoclipurile sunt afișate fără efect până când codul este corectat. Trimiteți această eroare AI-ului care a scris codul:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Copiere eroare</string>
+  <string name="morphe_video_effects_custom_save_anyway">Salvează oricum</string>
+  <string name="morphe_video_effects_custom_delete">Șterge</string>
+  <string name="morphe_video_effects_custom_delete_title">Șterge efectul?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s va fi șters.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy de rețea</string>
   <string name="morphe_proxy_screen_summary">Direcționează cererile de rețea prin intermediul unui proxy</string>
@@ -344,6 +370,18 @@ Dacă opțiunea este dezactivată ulterior, se recomandă ștergerea datelor apl
   <string name="morphe_custom_font_file_summary">Alegeți un fișier font TTF sau OTF</string>
   <string name="morphe_custom_font_file_invalid">Fișierul selectat nu este un font TTF sau OTF</string>
   <string name="morphe_custom_font_failed_to_load">Fontul personalizat nu a putut fi încărcat și este dezactivat</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Meniu de sticlă</string>
+  <string name="morphe_glass_menus_screen_summary">Meniu sub formă de sticlă mată peste conținutul blurat de dedesubt</string>
+  <string name="morphe_glass_menus_title">Activați meniurile de sticlă</string>
+  <string name="morphe_glass_menus_summary">Afișează meniurile și foile de jos ca sticlă mată, cu conținutul din spatele lor blurat</string>
+  <string name="morphe_glass_menus_user_dialog_message">Meniurile sunt afișate aproape opace atunci când economisirea bateriei este activată sau dacă dispozitivul nu suportă blurul</string>
+  <string name="morphe_glass_menus_opacity_title">Opacitatea sticlei</string>
+  <string name="morphe_glass_menus_opacity_summary">Cât de mult acoperă meniul conținutul blurat (0 este transparent, 100 este opac)</string>
+  <string name="morphe_glass_menus_blur_title">Estombare</string>
+  <string name="morphe_glass_menus_blur_summary">Cât de mult este blurat conținutul din spatele meniului</string>
+  <string name="morphe_glass_menus_dim_title">Întunecare</string>
+  <string name="morphe_glass_menus_dim_summary">Cât de mult este întunecat ecranul din jurul unei foi de jos</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislike-uri temporar indisponibile (API a expirat)</string>

@@ -219,7 +219,10 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_prioritize_video_quality_summary">コーデックの圧縮効率よりも利用可能な最高画質を優先します</string>
   <string name="morphe_prioritize_video_quality_dialog">この設定をオフにすると、古い動画で画質を手動で選択できなくなる場合があります</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">オーディオ DRC を無効化</string>
+  <string name="morphe_disable_drc_audio_stream_title">オーディオ DRC を無効化</string>
+  <string name="morphe_disable_drc_audio_stream_summary">ダイナミックレンジ圧縮版ではなく、オリジナルのオーディオを再生します</string>
+  <string name="morphe_disable_loudness_normalization_title">ラウドネスノーマライゼーションを無効にする</string>
+  <string name="morphe_disable_loudness_normalization_summary">大きな音のオーディオを標準レベルに下げるのではなく、オリジナルの音量で再生します</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">オリジナルの音声を常に使用</string>
   <string name="morphe_force_original_audio_summary">オリジナルの音声トラック (言語) を常に再生します。オートダビングを含む吹き替えの音声トラックは再生されなくなります</string>
@@ -228,6 +231,29 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_skip_silence_summary">動画内の無音の部分や会話などの間を自動的にスキップします</string>
   <string name="morphe_skip_silence_minimum_pause_title">スキップする区間の長さのしきい値</string>
   <string name="morphe_skip_silence_minimum_pause_summary">この値よりも短い無音の部分や会話などの間はスキップ (短縮) しません。設定後に再生を開始する動画から適用されます</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">ビデオエフェクト</string>
+  <string name="morphe_video_effect_entry_none">オフ</string>
+  <string name="morphe_video_effects_custom_title">ビデオエフェクトを編集</string>
+  <string name="morphe_video_effects_custom_summary">ビデオエフェクトの変更、名前変更、削除、または追加を行います。エフェクトはシェーダーコードであるため、AIチャットボットで新しいエフェクトを作成できます</string>
+  <string name="morphe_video_effects_custom_empty">ビデオエフェクトはありません。「エフェクトを追加」をタップして作成してください。</string>
+  <string name="morphe_video_effects_custom_add">エフェクトを追加</string>
+  <string name="morphe_video_effects_custom_restore">デフォルトに復元</string>
+  <string name="morphe_video_effects_custom_add_title">新しいエフェクト</string>
+  <string name="morphe_video_effects_custom_edit_title">エフェクトを編集</string>
+  <string name="morphe_video_effects_custom_name_hint">言語名</string>
+  <string name="morphe_video_effects_custom_name_empty">エフェクトの名前を入力してください</string>
+  <string name="morphe_video_effects_custom_name_exists">この名前のエフェクトは既に存在します</string>
+  <string name="morphe_video_effects_custom_copy_code">コードをコピー</string>
+  <string name="morphe_video_effects_custom_error_title">エフェクトにエラーがあります</string>
+  <string name="morphe_video_effects_custom_error_message">"コードが修正されるまで、ビデオはエフェクトなしで表示されます。このエラーを、コードを作成したAIに伝えてください:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">エラーをコピー</string>
+  <string name="morphe_video_effects_custom_save_anyway">とにかく保存</string>
+  <string name="morphe_video_effects_custom_delete">削除</string>
+  <string name="morphe_video_effects_custom_delete_title">エフェクトを削除しますか？</string>
+  <string name="morphe_video_effects_custom_delete_message">%sは削除されます。</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">ネットワーク プロキシ</string>
   <string name="morphe_proxy_screen_summary">対応しているネットワーク リクエストをプロキシ経由で送信します</string>
@@ -344,6 +370,18 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_custom_font_file_summary">TTF または OTF フォント ファイルを選択してください</string>
   <string name="morphe_custom_font_file_invalid">選択されたファイルは TTF または OTF フォントではありません</string>
   <string name="morphe_custom_font_failed_to_load">カスタム フォントを読み込めなかったため、無効になっています</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">ガラスメニュー</string>
+  <string name="morphe_glass_menus_screen_summary">背後のぼかしたコンテンツの上に、フロストガラスのようなメニューを表示します</string>
+  <string name="morphe_glass_menus_title">グラスメニューを有効にする</string>
+  <string name="morphe_glass_menus_summary">メニューとボトムシートを、背後のコンテンツがぼかされたすりガラスのように表示します</string>
+  <string name="morphe_glass_menus_user_dialog_message">バッテリーセーバーがオンの場合、またはデバイスがぼかしをサポートしていない場合は、メニューがほぼ不透明に表示されます</string>
+  <string name="morphe_glass_menus_opacity_title">グラスの透明度</string>
+  <string name="morphe_glass_menus_opacity_summary">メニューがぼかされたコンテンツをどの程度覆うか（0は透明、100は不透明）</string>
+  <string name="morphe_glass_menus_blur_title">ぼかし</string>
+  <string name="morphe_glass_menus_blur_summary">メニュー背後のコンテンツをどの程度ぼかすか</string>
+  <string name="morphe_glass_menus_dim_title">調光</string>
+  <string name="morphe_glass_menus_dim_summary">ボトムシート周囲の画面をどの程度暗くするか</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">低評価数表示は一時的に利用できません (API タイムアウト)</string>

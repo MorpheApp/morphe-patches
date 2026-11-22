@@ -219,7 +219,10 @@ Til að skrá þig inn, Ýttu á halda áfram hér að neðan"</string>
   <string name="morphe_prioritize_video_quality_summary">Forgangsraðar hæstu tiltæku myndgæðum fram yfir skilvirkni kóðunar</string>
   <string name="morphe_prioritize_video_quality_dialog">Ef þessi stilling er slökkt geta eldri myndskeið sýnt engan valkost fyrir myndgæði</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Slökktu á DRC hljóðrás</string>
+  <string name="morphe_disable_drc_audio_stream_title">Slökkva á DRC hljóði</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Spilar upp upprunalega hljóðin í stað útgáfunnar með þrýstum hljóðsviglum</string>
+  <string name="morphe_disable_loudness_normalization_title">Slökkva á jafnvægi hljóðstyrks</string>
+  <string name="morphe_disable_loudness_normalization_summary">Spilar hátt hljóð á upprunalegum styrk í stað þess að lækka það í staðalstigi</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Nota upprunalega hljóðrás</string>
   <string name="morphe_force_original_audio_summary">Spilar alltaf upprunalega hljóðrás myndbandsins í stað talsettra útgáfa</string>
@@ -228,6 +231,29 @@ Til að skrá þig inn, Ýttu á halda áfram hér að neðan"</string>
   <string name="morphe_skip_silence_summary">Sleppir sjálfkrafa hljóðlátum hléum í myndbandshljóði</string>
   <string name="morphe_skip_silence_minimum_pause_title">Lágmarkslengd hlés</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Aðeins hlé sem eru að minnsta kosti svona löng verða stytt. Tekur gildi þegar næsta myndband byrjar</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Myndskeiðaáhrif</string>
+  <string name="morphe_video_effect_entry_none">Slökkt</string>
+  <string name="morphe_video_effects_custom_title">Breyta myndskeiðaáhrifum</string>
+  <string name="morphe_video_effects_custom_summary">Breyta, nefna aftur, eyða eða bæta við myndskeiðaáhrifum. Áhrif eru shader-kóði, svo AI-spjallbott skal geta skrifað ný</string>
+  <string name="morphe_video_effects_custom_empty">Engin myndskeiðaáhrif. Ýttu á Bæta við áhrifum til að búa til slík.</string>
+  <string name="morphe_video_effects_custom_add">Bæta við áhrifum</string>
+  <string name="morphe_video_effects_custom_restore">Endurstilla í sjálfgefið</string>
+  <string name="morphe_video_effects_custom_add_title">Ný áhrif</string>
+  <string name="morphe_video_effects_custom_edit_title">Breyta áhrifum</string>
+  <string name="morphe_video_effects_custom_name_hint">Nafn</string>
+  <string name="morphe_video_effects_custom_name_empty">Sláðu inn nafn fyrir áhrifin</string>
+  <string name="morphe_video_effects_custom_name_exists">Áhrif með þessu nafni eru þegar til</string>
+  <string name="morphe_video_effects_custom_copy_code">Afrita kóða</string>
+  <string name="morphe_video_effects_custom_error_title">Villa í áhrifum</string>
+  <string name="morphe_video_effects_custom_error_message">"Myndband sýnst án áhrifa þar til kóðinn er lagaður. Gefðu þessa villu á AI sem skrifaði kóðann:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Afrita villu</string>
+  <string name="morphe_video_effects_custom_save_anyway">Vista samt</string>
+  <string name="morphe_video_effects_custom_delete">Eyða</string>
+  <string name="morphe_video_effects_custom_delete_title">Eyða áhrifum?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s verður eytt.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Netumboð</string>
   <string name="morphe_proxy_screen_summary">Beina studdum netbeiðnum í gegnum umboðsþjón</string>
@@ -344,6 +370,18 @@ Verði þessu síðar slökkt er mælt með að hreinsa gögn forritsins til að
   <string name="morphe_custom_font_file_summary">Veldu TTF- eða OTF-leturskrá</string>
   <string name="morphe_custom_font_file_invalid">Valda skráin er ekki TTF- eða OTF-letur</string>
   <string name="morphe_custom_font_failed_to_load">Ekki tókst að hlaða sérsniðna letrið og það er því óvirkt</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Glerstæðir valmyndir</string>
+  <string name="morphe_glass_menus_screen_summary">Valmyndir sem útsýnast eins og frostað gler yfir óskýrum efni bak við þær</string>
+  <string name="morphe_glass_menus_title">Virkja glerkerfi</string>
+  <string name="morphe_glass_menus_summary">Sýnir valmyndir og botnblað blaðsins sem frostað gler, þar sem efnið á bak við þau er óskýrt</string>
+  <string name="morphe_glass_menus_user_dialog_message">Valmyndir eru sýndar nánast ógegnsæjar þegar sparnaður rafhlöðu er virkur, eða ef tækið styður ekki óskýruleika</string>
+  <string name="morphe_glass_menus_opacity_title">Gegnsæi glers</string>
+  <string name="morphe_glass_menus_opacity_summary">Hversu mikið valmyndin hylur óskýrt efni (0 er gegnsætt, 100 er ógegnsætt)</string>
+  <string name="morphe_glass_menus_blur_title">Þoka</string>
+  <string name="morphe_glass_menus_blur_summary">Hversu mikið efnið á bak við valmyndina er óskýrt</string>
+  <string name="morphe_glass_menus_dim_title">Dimmun</string>
+  <string name="morphe_glass_menus_dim_summary">Hversu mikið skjónsins í kringum botnblaðið er dimmað</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Mislíkin eru tímabundið ekki tiltæk (API rann út á tíma)</string>

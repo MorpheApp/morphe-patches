@@ -219,7 +219,10 @@ Android System WebView उघडण्यासाठी OK वर टॅप क
   <string name="morphe_prioritize_video_quality_summary">कोडेक कार्यक्षमतेपेक्षा उपलब्ध सर्वोच्च व्हिडिओ गुणवत्तेला प्राधान्य देते</string>
   <string name="morphe_prioritize_video_quality_dialog">जर ही सेटिंग बंद असेल, तर जुन्या व्हिडिओंमध्ये व्हिडिओ गुणवत्तेचे पर्याय दिसणार नाहीत</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC ऑडिओ अक्षम करा</string>
+  <string name="morphe_disable_drc_audio_stream_title">DRC ऑडिओ अक्षम करा</string>
+  <string name="morphe_disable_drc_audio_stream_summary">कॉम्प्रेस केलेल्या डायनॅमिक रेंजच्या आवृत्तीऐवजी मूळ ऑडिओ प्ले होतो</string>
+  <string name="morphe_disable_loudness_normalization_title">लाउटनेस नॉर्मलायझेशन अक्षम करा</string>
+  <string name="morphe_disable_loudness_normalization_summary">मोठ्या आवाजाचा ऑडिओ प्रमाण पातळीपर्यंत कमी करण्याऐवजी त्याच्या मूळ आवाजात प्ले होतो</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">मूळ ऑडिओ भाषेचा वापर करा</string>
   <string name="morphe_force_original_audio_summary">डब केलेल्या आवृत्तीऐवजी व्हिडिओचा मूळ ऑडिओ ट्रॅक नेहमी प्ले करा</string>
@@ -228,6 +231,29 @@ Android System WebView उघडण्यासाठी OK वर टॅप क
   <string name="morphe_skip_silence_summary">व्हिडिओ ऑडिओमधील शांत विरामांना आपोआप वगळते</string>
   <string name="morphe_skip_silence_minimum_pause_title">किमान विरामाची लांबी</string>
   <string name="morphe_skip_silence_minimum_pause_summary">केवळ किमान इतक्या लांबीचे विरामच कमी केले जातात. पुढील व्हिडिओ सुरू झाल्यावर याचा प्रभाव पडेल</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">व्हिडिओ इफेक्ट</string>
+  <string name="morphe_video_effect_entry_none">बंद</string>
+  <string name="morphe_video_effects_custom_title">व्हिडिओ इफेक्ट्स संपादित करा</string>
+  <string name="morphe_video_effects_custom_summary">व्हिडिओ इफेक्ट्स बदला, त्यांचे नाव बदला, हटवा किंवा नवीन जोडा. इफेक्ट्स हे शेडर कोड असतात, त्यामुळे AI चॅटबॉट नवीन इफेक्ट्स लिहू शकतो</string>
+  <string name="morphe_video_effects_custom_empty">कोणतेही व्हिडिओ इफेक्ट्स नाहीत. इफेक्ट तयार करण्यासाठी \'इफेक्ट जोडा\' वर टॅप करा.</string>
+  <string name="morphe_video_effects_custom_add">इफेक्ट जोडा</string>
+  <string name="morphe_video_effects_custom_restore">डिफॉल्ट्स रिस्टोर करा</string>
+  <string name="morphe_video_effects_custom_add_title">नवीन इफेक्ट</string>
+  <string name="morphe_video_effects_custom_edit_title">इफेक्ट संपादित करा</string>
+  <string name="morphe_video_effects_custom_name_hint">नाव</string>
+  <string name="morphe_video_effects_custom_name_empty">इफेक्टसाठी नाव प्रविष्ट करा</string>
+  <string name="morphe_video_effects_custom_name_exists">या नावाचा इफेक्ट आधीपासूनच अस्तित्वात आहे</string>
+  <string name="morphe_video_effects_custom_copy_code">कोड कॉपी करा</string>
+  <string name="morphe_video_effects_custom_error_title">इफेक्टमध्ये त्रुटी आहे</string>
+  <string name="morphe_video_effects_custom_error_message">"कोड दुरुस्त होईपर्यंत व्हिडिओ इफेक्टशिवाय दिसतील. ही त्रुटी त्या AI ला द्या ज्याने हा कोड लिहिला आहे:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">कॉपी एरर</string>
+  <string name="morphe_video_effects_custom_save_anyway">तरीही सेव्ह करा</string>
+  <string name="morphe_video_effects_custom_delete">डिलीट करा</string>
+  <string name="morphe_video_effects_custom_delete_title">इफेक्ट डिलीट करायचा आहे?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s डिलीट केला जाईल.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">नेटवर्क प्रॉक्सी</string>
   <string name="morphe_proxy_screen_summary">प्रॉक्सीद्वारे नेटवर्क विनंत्या पाठवा</string>
@@ -344,6 +370,18 @@ PotHelper डाउनलोड करण्यासाठी येथे ट�
   <string name="morphe_custom_font_file_summary">TTF किंवा OTF फॉन्ट फाईल निवडा</string>
   <string name="morphe_custom_font_file_invalid">निवडलेली फाईल TTF किंवा OTF फॉन्ट नाही</string>
   <string name="morphe_custom_font_failed_to_load">कस्टम फॉन्ट लोड होऊ शकला नाही आणि तो बंद करण्यात आला आहे</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">ग्लास मेन्यूज</string>
+  <string name="morphe_glass_menus_screen_summary">मागील अस्पष्ट सामग्रीवर फ्रॉस्टेड ग्लासप्रमाणे दिसणारे मेन्यूज</string>
+  <string name="morphe_glass_menus_title">ग्लास मेनू सक्षम करा</string>
+  <string name="morphe_glass_menus_summary">मेनू आणि बॉटम शीट्स फ्रॉस्टेड ग्लासप्रमाणे दाखवते, ज्यामुळे त्यांच्या मागचे कंटेंट ब्लर होते</string>
+  <string name="morphe_glass_menus_user_dialog_message">बॅटरी सेव्हर चालू असताना किंवा डिव्हाइस ब्लरला सपोर्ट करत नसल्यास, मेनू जवळजवळ अपारदर्शक दिसतात</string>
+  <string name="morphe_glass_menus_opacity_title">ग्लास अपारदर्शकता</string>
+  <string name="morphe_glass_menus_opacity_summary">मेनू ब्लर कंटेंटला किती प्रमाणात व्यापतो (0 म्हणजे पारदर्शक, 100 म्हणजे अपारदर्शक)</string>
+  <string name="morphe_glass_menus_blur_title">ब्लर</string>
+  <string name="morphe_glass_menus_blur_summary">मेनूच्या मागचे कंटेंट किती प्रमाणात ब्लर करायचे</string>
+  <string name="morphe_glass_menus_dim_title">डिम</string>
+  <string name="morphe_glass_menus_dim_summary">बॉटम शीटच्या आजूबाजूची स्क्रीन किती प्रमाणात गडद करायची</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">dislikes तात्पुरते उपलब्ध नाहीत (API टाइमआउट)</string>

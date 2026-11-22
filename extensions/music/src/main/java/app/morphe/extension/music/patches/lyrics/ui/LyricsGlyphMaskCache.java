@@ -55,7 +55,7 @@ final class LyricsGlyphMaskCache {
         public final TintFilterCache pastTint = new TintFilterCache();
         public final TintFilterCache unlitTint = new TintFilterCache();
         public final TintFilterCache inactiveTint = new TintFilterCache();
-        public final ColorFilter glowFilter = new PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+        public final TintFilterCache glowTint = new TintFilterCache();
 
         public final Paint layerPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
         private final Paint maskPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);

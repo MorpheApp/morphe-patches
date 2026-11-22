@@ -219,7 +219,10 @@ Lai pierakstītos, apakšā nospiediet \"Turpināt\""</string>
   <string name="morphe_prioritize_video_quality_summary">Prioritizē augstāko pieejamo video kvalitāti, nodalot to no kodeka efektivitātes</string>
   <string name="morphe_prioritize_video_quality_dialog">Ja šī iestatījums ir izslēgts, vecākiem video var nebūt pieejamas video kvalitātes iespējas</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Atslēgt DRC audio</string>
+  <string name="morphe_disable_drc_audio_stream_title">Aizliegt DRC audio</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Atskaņo oriģinālo audio vietā versijai ar komprimētu dinamikas diapazonu</string>
+  <string name="morphe_disable_loudness_normalization_title">Aizliegt skaļuma normalizāciju</string>
+  <string name="morphe_disable_loudness_normalization_summary">Atskaņo skaļu audio tās oriģinālajā skaļumā, nepiestādāmu to līdz standartlīmenim</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Piespiest oriģinālo audio valodu</string>
   <string name="morphe_force_original_audio_summary">Vienmēr atskaņo video oriģinālo audio celiņu, nevis dublētu versiju</string>
@@ -228,6 +231,29 @@ Lai pierakstītos, apakšā nospiediet \"Turpināt\""</string>
   <string name="morphe_skip_silence_summary">Automātiski izlaiž klusās pauzes video audio ierakstos</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimālais pauzes garums</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Tiek saīsinātas tikai tās pauzes, kas ir vismaz šāda garuma. Stājas spēkā, kad sāks nākamais video</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Video efekts</string>
+  <string name="morphe_video_effect_entry_none">Izslēgts</string>
+  <string name="morphe_video_effects_custom_title">Rediģēt video efektus</string>
+  <string name="morphe_video_effects_custom_summary">Mainīt, pāvērdēt, dzēst vai pievienot video efektus. Efekti ir shader koda, tāpēc AI tērzētājs var rakstīt jaunus</string>
+  <string name="morphe_video_effects_custom_empty">Nav video efektu. Pieskarieties pie Pievienot efektu, lai izveidotu kādu.</string>
+  <string name="morphe_video_effects_custom_add">Pievienot efektu</string>
+  <string name="morphe_video_effects_custom_restore">Atiestatīt uz noklusējumu</string>
+  <string name="morphe_video_effects_custom_add_title">Jauns efekts</string>
+  <string name="morphe_video_effects_custom_edit_title">Rediģēt efektu</string>
+  <string name="morphe_video_effects_custom_name_hint">Nosaukums</string>
+  <string name="morphe_video_effects_custom_name_empty">Ievadiet efekta nosaukumu</string>
+  <string name="morphe_video_effects_custom_name_exists">Efekts ar šādu nosaukumu jau eksistē</string>
+  <string name="morphe_video_effects_custom_copy_code">Kopēt kodu</string>
+  <string name="morphe_video_effects_custom_error_title">Efektam ir kļūda</string>
+  <string name="morphe_video_effects_custom_error_message">"Video tiek rādīti bez efekta, līdz kods tiek labots. Nosūtiet šo kļūdu AI, kas rakstīja kodu:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopēšanas kļūda</string>
+  <string name="morphe_video_effects_custom_save_anyway">Saglabāt jebkurā gadījumā</string>
+  <string name="morphe_video_effects_custom_delete">Dzēst</string>
+  <string name="morphe_video_effects_custom_delete_title">Dzēst efektu?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s tiks dzēsts.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Tīkla proksi</string>
   <string name="morphe_proxy_screen_summary">Maršrutēt atbalstītus tīkla pieprasījumus caur proksi</string>
@@ -344,6 +370,18 @@ Ja vēlāk šī funkcija tiek izslēgta, ieteicams izdzēst lietotnes datus, lai
   <string name="morphe_custom_font_file_summary">Izvēlieties TTF vai OTF fonta failu</string>
   <string name="morphe_custom_font_file_invalid">Izvēlētais fails nav TTF vai OTF fonts</string>
   <string name="morphe_custom_font_failed_to_load">Pielāgotu fontu neizdevās ielādēt, tāpēc tas ir izslēgts</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Stikla izvēlnes</string>
+  <string name="morphe_glass_menus_screen_summary">Izvēlnes kā matēts stikls pāri izplūmētam satura fona attēlumam</string>
+  <string name="morphe_glass_menus_title">Iespējot stikla izvēlnes</string>
+  <string name="morphe_glass_menus_summary">Rāda izvēlnes un apakšlapas kā matēto stiklu, izblurējot saturu aiz tām</string>
+  <string name="morphe_glass_menus_user_dialog_message">Izvēlnes tiek rādītas gandrīz necaurspīdīgas, ja ir ieslēgts akumulatora taupīšanas režīms vai ierīce neatbalsta blurēšanu</string>
+  <string name="morphe_glass_menus_opacity_title">Stikla caurspīdība</string>
+  <string name="morphe_glass_menus_opacity_summary">Cik ļoti izvēlne pārklāj blurētu saturu (0 ir caurspīdīgs, 100 ir necaurspīdīgs)</string>
+  <string name="morphe_glass_menus_blur_title">Blurēšana</string>
+  <string name="morphe_glass_menus_blur_summary">Cik ļoti saturs aiz izvēlnes ir izblurēts</string>
+  <string name="morphe_glass_menus_dim_title">Pamākslēšana</string>
+  <string name="morphe_glass_menus_dim_summary">Cik ļoti ekrāns ap apakšlapu ir aptumšināts</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Nepatikas nav pieejamas (API laika beigas)</string>

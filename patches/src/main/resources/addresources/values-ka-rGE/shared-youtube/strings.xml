@@ -219,7 +219,10 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_summary">ანიჭებს პრიორიტეტს ყველაზე მაღალ ხელმისაწვდომ ვიდეო ხარისხს, კოდეკის ეფექტურობის მაგივრად</string>
   <string name="morphe_prioritize_video_quality_dialog">თუ ეს პარამეტრი გამორთულია, შესაძლოა ძველ ვიდეოებზე არ გამოჩნდეს ვიდეოს ხარისხის არჩევანის ოფციები</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">გამორთეთ DRC აუდიო</string>
+  <string name="morphe_disable_drc_audio_stream_title">გამორთეთ DRC აუდიო</string>
+  <string name="morphe_disable_drc_audio_stream_summary">აუდიოს ორიგინალი ვერსია ნაცვლად შეკუმშული დინამიკური დიაპაზონის ვერსიისა</string>
+  <string name="morphe_disable_loudness_normalization_title">გამორთეთ ხმის სიმძლავრის ნორმალიზაცია</string>
+  <string name="morphe_disable_loudness_normalization_summary">აუდიოს დაკვრა ორიგინალი ხმით, ნაცვლად მისი სტანდარტულ დონემდე დაწევისა</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">აუდიოს ორიგინალი ენის იძულებითი გამოყენება</string>
   <string name="morphe_force_original_audio_summary">ყოველთვის უკრავს ვიდეოს ორიგინალ აუდიოთრეკს დუბლირებული ვერსიის ნაცვლად</string>
@@ -228,6 +231,29 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">ავტომატურად გამოტოვებს ჩუმ პაუზებს ვიდეოს აუდიოში</string>
   <string name="morphe_skip_silence_minimum_pause_title">პაუზის მინიმალური სიგრძე</string>
   <string name="morphe_skip_silence_minimum_pause_summary">მხოლოდ მინიმუმ ამ სიგრძის პაუზები შემცირდება. ძალაში შედის შემდეგი ვიდეოს დაწყებისას</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">ვიდეო ეფექტი</string>
+  <string name="morphe_video_effect_entry_none">გამორთულია</string>
+  <string name="morphe_video_effects_custom_title">ვიდეო ეფექტების რედაქტირება</string>
+  <string name="morphe_video_effects_custom_summary">ვიდეო ეფექტების შეცვლა, გადარქმევა, წაშლა ან დამატება. ეფექტები წარმოადგენს შეიდერის კოდს, ამიტომ AI ჩატბოტს შეუძლია ახლის написание</string>
+  <string name="morphe_video_effects_custom_empty">ვიდეო ეფექტები არ არის. შექმნით ახლისთვის დააჭირეთ „ეფექტის დამატებას“.</string>
+  <string name="morphe_video_effects_custom_add">ეფექტის დამატება</string>
+  <string name="morphe_video_effects_custom_restore">ნაგულისხმევი პარამეტრების აღდგენა</string>
+  <string name="morphe_video_effects_custom_add_title">ახალი ეფექტი</string>
+  <string name="morphe_video_effects_custom_edit_title">ეფექტის რედაქტირება</string>
+  <string name="morphe_video_effects_custom_name_hint">სახელი</string>
+  <string name="morphe_video_effects_custom_name_empty">მიუთითეთ ეფექტის სახელი</string>
+  <string name="morphe_video_effects_custom_name_exists">ამ სახელის მქონე ეფექტი უკვე არსებობს</string>
+  <string name="morphe_video_effects_custom_copy_code">კოდის კოპირება</string>
+  <string name="morphe_video_effects_custom_error_title">ეფექტშია შეცდომა</string>
+  <string name="morphe_video_effects_custom_error_message">"ვიდეოები გამოჩნდება ეფექტის გარეშე, სანამ კოდი არ გამოსწორდება. მიაწოდეთ ეს შეცდომა AI-ს, რომელმაც დაწერა კოდი:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">შეცდომის კოპირება</string>
+  <string name="morphe_video_effects_custom_save_anyway">მიუხედავად ამისა, შეინახეთ</string>
+  <string name="morphe_video_effects_custom_delete">წაშლა</string>
+  <string name="morphe_video_effects_custom_delete_title">წაიშალოს ეფექტი?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s წაიშლება.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">ქსელის პროქსი</string>
   <string name="morphe_proxy_screen_summary">მხარდაჭერილ ქსელურ მოთხოვნებს პროქსის მეშვეობით გადააგზავნის</string>
@@ -344,6 +370,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">აირჩიეთ TTF ან OTF ფონტის ფაილი</string>
   <string name="morphe_custom_font_file_invalid">შერჩეული ფაილი არ არის TTF ან OTF ფონტი</string>
   <string name="morphe_custom_font_failed_to_load">მორგებული ფონტის ჩატვირთვა ვერ მოხერხდა და ის გამორთულია</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">შუშის მენიები</string>
+  <string name="morphe_glass_menus_screen_summary">მენიები, როგორც მქრქალი მინა ფონი მათ უკან არსებულ გაბუნდულ კონტენტზე</string>
+  <string name="morphe_glass_menus_title">გლას-მენიუების ჩართვა</string>
+  <string name="morphe_glass_menus_summary">აჩვენებს მენიუებსა და ქვედა პანელებს როგორც რბილ შუშას, ხოლო მათ უკან არსებული კონტენტი გაბუნდოვნებულია</string>
+  <string name="morphe_glass_menus_user_dialog_message">მენიუები ჩანს თითქმის andგამჭვირვალედ, როდესაც ჩართულია ელემენტის დაზოგვის რეჟიმი, ან თუ მოწყობილობა არ უჭერს მხარს გაბუნდოვნებას</string>
+  <string name="morphe_glass_menus_opacity_title">შუშის გამჭვირვალობა</string>
+  <string name="morphe_glass_menus_opacity_summary">რამდენად ფარავს მენიუ გაბუნდოვნებულ კონტენტს (0 არის გამჭვირვალე, 100 არის andგამჭვირვალე)</string>
+  <string name="morphe_glass_menus_blur_title">ბუნდოვანება</string>
+  <string name="morphe_glass_menus_blur_summary">რამდენად არის გაბუნდოვნებული მენიუს უკან არსებული კონტენტი</string>
+  <string name="morphe_glass_menus_dim_title">გაღრმავება</string>
+  <string name="morphe_glass_menus_dim_summary">რამდენად არის დაგრილული ეკრანი ქვედა პანელის გარშემო</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">დისლაიქები დროებით მიუწვდომელია (API-ს დრო დასრულდა)</string>

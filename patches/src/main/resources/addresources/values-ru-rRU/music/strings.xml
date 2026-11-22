@@ -119,8 +119,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Пользовательское</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Воспроизвести треки альбома</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Воспроизводить только аудиоверсию песен альбома вместо музыкального видео. Требует \'Подмену видеопотоков\'</string>
+  <string name="morphe_music_play_album_songs_summary">Воспроизводить песни из альбома вместо их музыкальных клипов</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Включить переключение аудио/видео</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Пытаться переключать версию аудиодорожки и официальное музыкальное видео</string>
@@ -283,6 +282,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">Скорость воспроизведения</string>
   <string name="morphe_music_playback_speed_summary">Скорость, используемая для всех треков. При значении 100 % используется скорость приложения, например скорость воспроизведения подкастов</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Изменять высоту тона вместе со скоростью</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">Показывать меню видеоэффектов</string>
+  <string name="morphe_music_video_effect_menu_summary">Добавляет видеоэффект в меню плеера во время воспроизведения видео</string>
+  <string name="morphe_music_video_effect_next_video">Эффект будет применен к следующему видео</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Отключить автоматические субтитры</string>
   <string name="morphe_music_disable_auto_captions_summary">Субтитры не будут включаться автоматически при запуске видео, включая субтитры, которые в видео включены по умолчанию</string>
@@ -655,6 +658,20 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_clear_cache_title">Очистить сохраненные тексты песен</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Удалить %s МБ текстов песен, сохраненных на этом устройстве</string>
   <string name="morphe_music_lyrics_clear_cache_done">Очищено %s МБ</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">Вычисление размера кэша…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">Кэш текстов песен</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">Очистить кэш текстов песен</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">Кэш переводов</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">Очистить кэш переводов</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s МБ (%2$d переводов)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">Кэш транслитерации</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">Очистить кэш транслитерации</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s МБ (%2$d транслитераций)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">Общий размер кэша</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">Очистить весь кэш</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s МБ (%2$d элементов)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">Очистить</string>
+  <string name="morphe_music_lyrics_cache_close_action">Закрыть</string>
   <string name="morphe_music_token_dialog_get_token">Получить токен</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Вставьте cookie media-user-token с сайта music.apple.com
@@ -710,8 +727,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Нажмите на строку, чтобы перейти к этому моменту в песне; нажмите и удерживайте, чтобы скопировать слово под пальцем или всю строку, если вы не нажимаете на конкретное слово. Команда \"Off\" отменяет оба жеста</string>
   <string name="morphe_music_lyrics_show_section_title">Показывать теги секций</string>
   <string name="morphe_music_lyrics_show_section_summary">Помечать каждую новую секцию текста песни небольшим тегом, например, «Куплет» или «Припев»</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Показать кнопку копирования</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Нажмите, чтобы скопировать исходный текст песни в виде простого текста; нажмите и удерживайте, чтобы сохранить исходный файл текста песни и сконвертированный файл TTML в папке \"Загрузки\"</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Показать кнопку Копировать / Поделиться</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Показывать кнопку Копировать или Поделиться на панели инструментов текстов песен</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">Режим кнопки Копировать</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">Режим копирования (нажать для копирования, долгое нажатие для сохранения)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">Режим общего доступа (нажмите, чтобы выбрать 1–5 строк, удерживайте для копирования или сохранения)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Показать кнопку перевода</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Нажмите для включения/выключения перевода; длительное нажатие показывает только перевод. Использует включенных провайдеров перевода в порядке их перечисления</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показать кнопку романизации или транслитерации</string>
@@ -725,7 +745,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Варианты произношения готовы (%s записей)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Загрузка не удалась - выключите и включите снова, чтобы повторить попытку</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Офлайн-словарь</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Японский (SudachiDict, ~75 МБ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Японский</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 МБ) — быстрый морфологический анализатор &amp; ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 МБ) — полный словарь японских слов</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">Приоритет &amp; порядок резервных вариантов</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Приоритет Kuromoji (резерв SudachiDict)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">Приоритет SudachiDict (резерв Kuromoji)</string>
+  <string name="morphe_music_lyrics_custom_font_title">Свой шрифт текста песен</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">Системный шрифт по умолчанию (нажмите, чтобы загрузить файл шрифта .ttf или .otf)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">Активный шрифт: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">Загрузите файл шрифта .ttf или .otf (например, SF Pro Bold, Inter Bold или Inter ExtraBold) из памяти вашего устройства, чтобы использовать его в режиме просмотра текста песен.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">Загрузить шрифт</string>
+  <string name="morphe_music_lyrics_custom_font_reset">Сбросить по умолчанию</string>
+  <string name="morphe_music_lyrics_custom_font_applied">Применен свой шрифт текста песен: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">Восстановлен шрифт текста песен по умолчанию</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">Недопустимый или неподдерживаемый файл шрифта (требуется .ttf или .otf)</string>
+  <string name="morphe_music_lyrics_share_preview_title">Поделиться текстом песни</string>
+  <string name="morphe_music_lyrics_share_button">Поделиться</string>
+  <string name="morphe_music_lyrics_copy">Копировать</string>
+  <string name="morphe_music_lyrics_share_options_title">Действия с текстом песни</string>
+  <string name="morphe_music_lyrics_copy_plain_option">Копировать текст песни как обычный текст</string>
+  <string name="morphe_music_lyrics_save_file_option">Сохранить текст &amp; TTML в Загрузки</string>
+  <string name="morphe_music_lyrics_share_cancel">Отмена</string>
+  <string name="morphe_music_lyrics_share_select_hint">Нажмите на 1–5 строк, чтобы поделиться</string>
+  <string name="morphe_music_lyrics_share_max_lines">Можно выбрать не более 5 строк</string>
+  <string name="morphe_music_lyrics_share_failed">Не удалось создать карточку с текстом песни</string>
+  <string name="morphe_music_lyrics_share_bg_blur">Размытие</string>
+  <string name="morphe_music_lyrics_share_bg_cover">Обложка</string>
+  <string name="morphe_music_lyrics_share_bg_color">Цветной</string>
+  <string name="morphe_music_lyrics_share_bg_photo">Фото</string>
+  <string name="morphe_music_lyrics_share_branding_logo">Логотип YT Music</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">Ромадзи</string>
+  <string name="morphe_music_lyrics_share_layer_translate">Перевести</string>
+  <string name="morphe_music_lyrics_share_layer_bg">Бэк-вокал</string>
+  <string name="morphe_music_lyrics_share_custom_color">Свой цвет</string>
+  <string name="morphe_music_lyrics_share_photo_failed">Не удалось загрузить выбранное изображение</string>
+  <string name="morphe_music_lyrics_share_card_cta">Поделиться карточкой</string>
+  <string name="morphe_music_lyrics_copy_text_cta">Скопировать текст</string>
+  <string name="morphe_music_lyrics_share_back">Назад к выбору текста</string>
+  <string name="morphe_music_lyrics_share_loading_photo">Загрузка фото...</string>
+  <string name="morphe_music_lyrics_share_preparing">Создание карточки...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">Цветовой образец %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">Неизвестный трек</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Китайские и кантонийские символы (UniDict, ~8 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Китайские слова (pinyin-pro, ~17 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Транслитерация: греческий, славянская кириллица (включая русский, украинский, болгарский, сербский, белорусский, македонский), грузинский, армянский, иврит, арабский, амхарский и сирийский (CLDR, ~0,5 МБ)</string>
