@@ -13,12 +13,9 @@ import android.graphics.Rect;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.patches.album.PlayAlbumSongsPatch;
-import app.morphe.extension.music.patches.album.PlaylistRequest;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
@@ -48,17 +45,12 @@ public final class MusicSponsorBlockConfig implements Configuration {
 
     private static volatile boolean installed;
 
-    /** Video the player last reported, before any album song substitution. */
-    @Nullable
-    private static volatile String currentVideoId;
-
     /** Idempotent. Configures {@link SponsorBlockApi} on first call. */
     public static void install() {
         if (installed) return;
         synchronized (MusicSponsorBlockConfig.class) {
             if (installed) return;
             SponsorBlockApi.configure(INSTANCE);
-            PlayAlbumSongsPatch.addSubstitutionListener(MusicSponsorBlockConfig::videoIdResolved);
             installed = true;
         }
     }
@@ -79,20 +71,7 @@ public final class MusicSponsorBlockConfig implements Configuration {
     /** Injection point. */
     @SuppressWarnings("unused")
     public static void setCurrentVideoId(@Nullable String videoId) {
-        currentVideoId = videoId;
-        // The album patch can serve the streams of a song under the id of its music video,
-        // and the segments of the music video do not match that audio.
-        PlaylistRequest.Song song = PlayAlbumSongsPatch.getSong(videoId);
-        SegmentPlaybackController.setCurrentVideoId(song == null ? videoId : song.videoId());
-    }
-
-    /**
-     * The song of an album is often only known after the video id is set, so the segments of the
-     * music video are replaced once it is.
-     */
-    private static void videoIdResolved(@NonNull String videoId, @NonNull String resolvedVideoId) {
-        if (!videoId.equals(currentVideoId)) return;
-        Utils.runOnMainThread(() -> SegmentPlaybackController.setCurrentVideoId(resolvedVideoId));
+        SegmentPlaybackController.setCurrentVideoId(videoId);
     }
 
     /** Injection point. Inset by the rounded-end radius so segment markers align with the

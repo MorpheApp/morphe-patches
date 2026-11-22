@@ -23,8 +23,6 @@ import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.rem
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.runOnQueueExecutor;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.switchInQueue;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.videoAt;
-import static app.morphe.extension.music.patches.album.PlayAlbumSongsPatch.DONT_PLAY_VIDEO_SETTING_KEY;
-import static app.morphe.extension.music.patches.album.PlayAlbumSongsPatch.MAX_MILLISECONDS_TO_WAIT_FOR_ALBUM;
 import static app.morphe.extension.music.patches.album.PlayAlbumSongsPatch.YOUTUBE_MUSIC_ALBUM_PREFIX;
 
 import android.content.SharedPreferences;
@@ -83,6 +81,12 @@ public final class AutoSongVersionPatch {
     /** Inserted too late to move. Gets removed if it still shows up during the same track. */
     private record LateInsert(String songId, String playingVideoId) {
     }
+
+    /** Key of the stock 'Don't play music videos' setting. */
+    private static final String DONT_PLAY_VIDEO_SETTING_KEY = "pref_key_dont_play_video";
+
+    /** Giving up leaves the track to the search below. */
+    private static final long MAX_MILLISECONDS_TO_WAIT_FOR_ALBUM = 5000;
 
     private static final String NEXT_URL = INNERTUBE_URL + "next" + INNERTUBE_KEY_QUERY;
     private static final String PLAYER_URL = INNERTUBE_URL + "player" + INNERTUBE_KEY_QUERY;
