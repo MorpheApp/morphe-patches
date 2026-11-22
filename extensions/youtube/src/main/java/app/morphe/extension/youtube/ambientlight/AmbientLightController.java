@@ -164,10 +164,11 @@ public final class AmbientLightController {
 
     /**
      * Immutable snapshot of where the video and the light are. Layouts are compared by
-     * identity, never with equals.
+     * identity, never with equals. The panel is a panel of the player that shows the light,
+     * such as the comments of fullscreen, or null.
      */
-    private record Layout(int[] video, int[] player, int windowWidth, int windowHeight, int gridHeight,
-                          List<Region> regions, boolean hasLight) {
+    private record Layout(int[] video, int[] player, @Nullable int[] panel, int windowWidth, int windowHeight,
+                          int gridHeight, List<Region> regions, boolean hasLight) {
     }
 
     private static final Handler mainHandler = new Handler(Looper.getMainLooper());
@@ -192,6 +193,7 @@ public final class AmbientLightController {
     private static int retries;
     @Nullable
     private static int[] lastGeometry;
+    private static final int[] panelBounds = new int[4];
     private static long lastPageTouch;
     private static long lastInteraction;
     private static long lastFadeStep;
@@ -720,9 +722,12 @@ public final class AmbientLightController {
             playerLightRef = new WeakReference<>(playerLight);
         }
 
+        // A panel of the player takes one side of the player, over all of its height.
+        final boolean hasPanel = SeeThroughPage.playerPanel(panelBounds) && panelBounds[1] <= top
+                && panelBounds[3] >= bottom && (panelBounds[0] >= videoBounds[2] || panelBounds[2] <= videoBounds[0]);
         // This runs for every frame the app draws, and the answer rarely changes.
         int[] geometry = {left, top, right, bottom, videoBounds[0], videoBounds[1], videoBounds[2], videoBounds[3],
-                root.getWidth(), root.getHeight()};
+                root.getWidth(), root.getHeight(), panelBounds[0], panelBounds[1], panelBounds[2], panelBounds[3]};
         if (layout != null && Arrays.equals(geometry, lastGeometry)) return;
         lastGeometry = geometry;
 
@@ -730,8 +735,8 @@ public final class AmbientLightController {
         final boolean hasLight = videoBounds[0] >= MIN_RECT_SIZE || videoBounds[1] >= MIN_RECT_SIZE
                 || root.getWidth() - videoBounds[2] >= MIN_RECT_SIZE || root.getHeight() - videoBounds[3] >= MIN_RECT_SIZE;
         // Without surfaces: the window draws the light until the player rests.
-        layout = new Layout(videoBounds, new int[]{left, top, right, bottom}, root.getWidth(), root.getHeight(),
-                gridHeight(root), Collections.emptyList(), hasLight);
+        layout = new Layout(videoBounds, new int[]{left, top, right, bottom}, hasPanel ? panelBounds.clone() : null,
+                root.getWidth(), root.getHeight(), gridHeight(root), Collections.emptyList(), hasLight);
         settled = false;
         onMoved();
         // The view draws the light around the video, and the video has moved in the view.
@@ -768,8 +773,8 @@ public final class AmbientLightController {
             for (LightSurface surface : playerSurfaces) surface.setTranslationX(away);
             Layout current = layout;
             if (current != null && !current.regions().isEmpty()) {
-                layout = new Layout(current.video(), current.player(), current.windowWidth(), current.windowHeight(),
-                        current.gridHeight(), Collections.emptyList(), current.hasLight());
+                layout = new Layout(current.video(), current.player(), current.panel(), current.windowWidth(),
+                        current.windowHeight(), current.gridHeight(), Collections.emptyList(), current.hasLight());
                 settled = false;
                 scheduleTick();
             }
@@ -841,22 +846,31 @@ public final class AmbientLightController {
         addRect(pageRects, right, top, root.getWidth(), bottom);
         addRect(pageRects, 0, bottom, root.getWidth(), root.getHeight());
 
-        List<int[]> playerRects = new ArrayList<>(4);
+        // A panel of the player has text, so the light under it is the light of a page.
+        int[] panel = current.panel();
+        final int playerLeft = panel != null && panel[2] <= videoBounds[0] ? Math.max(left, panel[2]) : left;
+        final int playerRight = panel != null && panel[0] >= videoBounds[2] ? Math.min(right, panel[0]) : right;
+        List<int[]> playerRects = new ArrayList<>(5);
+        int panelRect = -1;
         if (player instanceof FrameLayout) {
-            addRect(playerRects, left, top, right, videoBounds[1]);
-            addRect(playerRects, left, videoBounds[1], videoBounds[0], videoBounds[3]);
-            addRect(playerRects, videoBounds[2], videoBounds[1], right, videoBounds[3]);
-            addRect(playerRects, left, videoBounds[3], right, bottom);
+            addRect(playerRects, playerLeft, top, playerRight, videoBounds[1]);
+            addRect(playerRects, playerLeft, videoBounds[1], videoBounds[0], videoBounds[3]);
+            addRect(playerRects, videoBounds[2], videoBounds[1], playerRight, videoBounds[3]);
+            addRect(playerRects, playerLeft, videoBounds[3], playerRight, bottom);
+            if (panel != null) {
+                panelRect = playerRects.size();
+                playerRects.add(new int[]{Math.max(left, panel[0]), top, Math.min(right, panel[2]), bottom});
+            }
         }
 
         List<Region> regions = new ArrayList<>(pageRects.size() + playerRects.size());
-        placeSurfaces(pageSurfaces, (ViewGroup) root, 0, false, pageRects, regions);
+        placeSurfaces(pageSurfaces, (ViewGroup) root, 0, false, pageRects, regions, -1);
         View branch = childContaining(player, video);
-        placeSurfaces(playerSurfaces, player, player.indexOfChild(branch) + 1, true, playerRects, regions);
+        placeSurfaces(playerSurfaces, player, player.indexOfChild(branch) + 1, true, playerRects, regions, panelRect);
         surfacesPlaced = true;
         // A new layout, so that the light is drawn on the surfaces also when the picture is still.
-        layout = new Layout(videoBounds, current.player(), current.windowWidth(), current.windowHeight(),
-                current.gridHeight(), regions, current.hasLight());
+        layout = new Layout(videoBounds, current.player(), current.panel(), current.windowWidth(),
+                current.windowHeight(), current.gridHeight(), regions, current.hasLight());
         settled = false;
         scheduleTick();
     }
@@ -884,8 +898,11 @@ public final class AmbientLightController {
         }
     }
 
+    /**
+     * @param pageRect The rectangle that shows the light as a page does, although it is above the video, or -1.
+     */
     private static void placeSurfaces(List<LightSurface> surfaces, ViewGroup parent, int insertIndex,
-                                      boolean aboveVideo, List<int[]> rects, List<Region> regions) {
+                                      boolean aboveVideo, List<int[]> rects, List<Region> regions, int pageRect) {
         int[] parentLocation = new int[2];
         parent.getLocationInWindow(parentLocation);
 
@@ -907,7 +924,7 @@ public final class AmbientLightController {
                 surfaces.add(surface);
                 parent.addView(surface, insertIndex + i, params);
             }
-            regions.add(new Region(surface, rect[0], rect[1], !aboveVideo));
+            regions.add(new Region(surface, rect[0], rect[1], !aboveVideo || i == pageRect));
         }
         removeSurfaces(surfaces, rects.size());
     }
@@ -1413,11 +1430,13 @@ public final class AmbientLightController {
      *         0 to 1: what the light needs at the strength set by the user, fading with the light
      *         and with the content of the page. Without the content, as in fullscreen, there is
      *         no text to keep readable, and a cover would show as a darker frame around a
-     *         fullscreen player that is pulled down.
+     *         fullscreen player that is pulled down. A panel of the player has its text without
+     *         the content of the page.
      */
     private static float shownCover(float shown) {
         final float rest = restStrength() / (float) FULL_STRENGTH;
-        return SeeThroughPage.contentAlpha() * AmbientLightMath.coverAtStrength(cover, rest) * shown / rest;
+        final float text = SeeThroughPage.hasPlayerPanel() ? 1f : SeeThroughPage.contentAlpha();
+        return text * AmbientLightMath.coverAtStrength(cover, rest) * shown / rest;
     }
 
     /**
@@ -1428,19 +1447,28 @@ public final class AmbientLightController {
     private static boolean chooseCover(Layout current, int width, int height) {
         // A panel over the page, such as the comments, is there to be read.
         coverPanel = SeeThroughPage.hasPanel();
+        int[] panel = current.panel();
+        final boolean darkPage = AmbientLightMath.luma(pageColor) < 128;
         if (!Settings.ENHANCED_AMBIENT_MODE_READABLE_TEXT.get() && !coverPanel) {
             wantedCover = 0f;
-            return stepCover();
+        } else if (panel != null) {
+            // The text is in the panel, which lies next to the video over the height of the
+            // window. What the panel leaves free counts as the player.
+            final int panelLeft = panel[0] * width / current.windowWidth();
+            final int panelRight = (panel[2] * width + current.windowWidth() - 1) / current.windowWidth();
+            final boolean atEnd = panel[0] >= current.video()[2];
+            wantedCover = AmbientLightMath.readabilityCover(light, width, height, height, 0,
+                    atEnd ? 0 : panelRight, atEnd ? panelLeft : width, darkPage);
+        } else if (SeeThroughPage.contentAlpha() == 0f) {
+            // Without the content of the page there is nothing below the video to choose the cover
+            // for. The cover of before stays, and is chosen again when the content is back.
+            return false;
+        } else {
+            int[] player = current.player();
+            wantedCover = AmbientLightMath.readabilityCover(light, width, height,
+                    current.video()[3] * height / current.windowHeight(), player[1] * height / current.windowHeight(),
+                    player[0] * width / current.windowWidth(), player[2] * width / current.windowWidth(), darkPage);
         }
-        // Without the content of the page there is nothing below the video to choose the cover
-        // for. The cover of before stays, and is chosen again when the content is back.
-        if (SeeThroughPage.contentAlpha() == 0f) return false;
-
-        int[] player = current.player();
-        wantedCover = AmbientLightMath.readabilityCover(light, width, height,
-                current.video()[3] * height / current.windowHeight(), player[1] * height / current.windowHeight(),
-                player[0] * width / current.windowWidth(), player[2] * width / current.windowWidth(),
-                AmbientLightMath.luma(pageColor) < 128);
         // The cover follows the light of a video that stays in its place with a delay, so that
         // scene cuts do not pump. A video that has moved, as on its way back from fullscreen or
         // the miniplayer, has other light below it, and that light has its own cover at once.
