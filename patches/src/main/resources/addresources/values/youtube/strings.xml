@@ -600,6 +600,9 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_double_tap_length_180s" translatable="false">180</string>
     <string name="morphe_double_tap_length_240s" translatable="false">240</string>
 
+    <!-- Search dialog of channel search and playlist search. -->
+    <string name="morphe_search_dialog_search">Search</string>
+
     <!-- interaction.channelsearch.channelSearchPatch -->
     <string name="morphe_channel_search_title">Search within channel</string>
     <string name="morphe_channel_search_summary">Adds a second search button on channel pages to search only that channel</string>
@@ -617,6 +620,14 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_channel_search_sort_oldest">Oldest</string>
     <string name="morphe_channel_search_sort_shortest">Shortest</string>
     <string name="morphe_channel_search_sort_longest">Longest</string>
+
+    <!-- interaction.playlistsearch.playlistSearchPatch -->
+    <string name="morphe_playlist_search_title">Search within playlist</string>
+    <string name="morphe_playlist_search_summary">Adds a second search button on playlist pages to search only that playlist</string>
+    <string name="morphe_playlist_search_hint">Search playlist</string>
+    <string name="morphe_playlist_search_results">Playlist search results</string>
+    <string name="morphe_playlist_search_no_results">Nothing found in this playlist</string>
+    <string name="morphe_playlist_search_failed">Could not search this playlist</string>
 
     <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
     <string name="morphe_share_copy_link_button_success">Link copied to clipboard</string>
