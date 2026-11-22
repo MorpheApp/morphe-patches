@@ -80,6 +80,7 @@ public class VideoEffectCustomEffectsPreference extends Preference {
     private void showEffectsDialog() {
         try {
             Context context = getContext();
+            List<CustomEffect> missingDefaults = findMissingDefaultEffects();
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
                     getTitle() != null ? getTitle().toString() : "",
@@ -88,9 +89,9 @@ public class VideoEffectCustomEffectsPreference extends Preference {
                     str("morphe_video_effects_custom_add"),
                     () -> showEditDialog(null, "", VideoEffectsPatch.CUSTOM_EFFECT_TEMPLATE),
                     () -> {},
-                    null,
-                    null,
-                    false
+                    missingDefaults.isEmpty() ? null : str("morphe_video_effects_custom_restore"),
+                    () -> restoreDefaultEffects(missingDefaults),
+                    true
             );
             Dialog dialog = dialogPair.first;
             LinearLayout mainLayout = dialogPair.second;
@@ -154,6 +155,56 @@ public class VideoEffectCustomEffectsPreference extends Preference {
         }
     }
 
+    /**
+     * @return The default effects that were deleted. An effect with the name of a default effect
+     *         counts as that effect, even if the code was changed.
+     */
+    private static List<CustomEffect> findMissingDefaultEffects() {
+        List<CustomEffect> missing = new ArrayList<>();
+        for (CustomEffect effect : VideoEffectsPatch.decodeCustomEffects(
+                SharedYouTubeSettings.VIDEO_EFFECTS_CUSTOM.defaultValue)) {
+            if (VideoEffectsPatch.findCustomEffect(effect.name) == null) missing.add(effect);
+        }
+        return missing;
+    }
+
+    private void restoreDefaultEffects(List<CustomEffect> missingDefaults) {
+        try {
+            List<CustomEffect> effects = new ArrayList<>(VideoEffectsPatch.getCustomEffects());
+            effects.addAll(missingDefaults);
+            saveEffects(effects);
+            showEffectsDialog();
+        } catch (Exception ex) {
+            Logger.printException(() -> "restoreDefaultEffects failure", ex);
+        }
+    }
+
+    /**
+     * Saves the effects sorted by name, which is their order in the effect lists.
+     */
+    private void saveEffects(List<CustomEffect> effects) {
+        effects.sort((first, second) -> first.name.compareToIgnoreCase(second.name));
+        if (isDefault(effects)) {
+            // Not in exported settings.
+            SharedYouTubeSettings.VIDEO_EFFECTS_CUSTOM.resetToDefault();
+        } else {
+            SharedYouTubeSettings.VIDEO_EFFECTS_CUSTOM.save(VideoEffectsPatch.encodeCustomEffects(effects));
+        }
+        updateEffectListPreference();
+    }
+
+    private static boolean isDefault(List<CustomEffect> effects) {
+        List<CustomEffect> defaults = VideoEffectsPatch.decodeCustomEffects(
+                SharedYouTubeSettings.VIDEO_EFFECTS_CUSTOM.defaultValue);
+        if (effects.size() != defaults.size()) return false;
+        for (int i = 0, size = effects.size(); i < size; i++) {
+            CustomEffect effect = effects.get(i);
+            CustomEffect defaultEffect = defaults.get(i);
+            if (!effect.name.equals(defaultEffect.name) || !effect.code.equals(defaultEffect.code)) return false;
+        }
+        return true;
+    }
+
     private void confirmDelete(Context context, String name, Runnable onDeleted) {
         CustomDialog.create(
                 context,
@@ -184,8 +235,7 @@ public class VideoEffectCustomEffectsPreference extends Preference {
 
         List<CustomEffect> effects = new ArrayList<>(VideoEffectsPatch.getCustomEffects());
         effects.removeIf(effect -> effect.name.equals(name));
-        SharedYouTubeSettings.VIDEO_EFFECTS_CUSTOM.save(VideoEffectsPatch.encodeCustomEffects(effects));
-        updateEffectListPreference();
+        saveEffects(effects);
     }
 
     private static boolean isSelected(String name) {
@@ -294,14 +344,12 @@ public class VideoEffectCustomEffectsPreference extends Preference {
             } else {
                 effects.add(effect);
             }
-            effects.sort((first, second) -> first.name.compareToIgnoreCase(second.name));
 
             // The name first, so the selected effect is never missing.
             if (originalName != null && isSelected(originalName)) {
                 SharedYouTubeSettings.VIDEO_EFFECT_CUSTOM_NAME.save(name);
             }
-            SharedYouTubeSettings.VIDEO_EFFECTS_CUSTOM.save(VideoEffectsPatch.encodeCustomEffects(effects));
-            updateEffectListPreference();
+            saveEffects(effects);
 
             showEffectsDialog();
         } catch (Exception ex) {

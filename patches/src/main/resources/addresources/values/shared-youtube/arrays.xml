@@ -156,29 +156,6 @@
         <item>@string/morphe_video_effect_entry_color_blind_protanopia</item>
         <item>@string/morphe_video_effect_entry_color_blind_tritanopia</item>
         <item>@string/morphe_video_effect_entry_black_and_white</item>
-        <item>@string/morphe_video_effect_entry_alien</item>
-        <item>@string/morphe_video_effect_entry_ascii_art</item>
-        <item>@string/morphe_video_effect_entry_comic_book</item>
-        <item>@string/morphe_video_effect_entry_crt_tv</item>
-        <item>@string/morphe_video_effect_entry_fisheye</item>
-        <item>@string/morphe_video_effect_entry_invert</item>
-        <item>@string/morphe_video_effect_entry_kaleidoscope</item>
-        <item>@string/morphe_video_effect_entry_mirror_image</item>
-        <item>@string/morphe_video_effect_entry_neon_edges</item>
-        <item>@string/morphe_video_effect_entry_night_vision</item>
-        <item>@string/morphe_video_effect_entry_old_film</item>
-        <item>@string/morphe_video_effect_entry_pencil_sketch</item>
-        <item>@string/morphe_video_effect_entry_pop_art</item>
-        <item>@string/morphe_video_effect_entry_puzzle</item>
-        <item>@string/morphe_video_effect_entry_rainbow</item>
-        <item>@string/morphe_video_effect_entry_retro_handheld</item>
-        <item>@string/morphe_video_effect_entry_retro_pc</item>
-        <item>@string/morphe_video_effect_entry_thermal</item>
-        <item>@string/morphe_video_effect_entry_tilt_shift</item>
-        <item>@string/morphe_video_effect_entry_tiny_planet</item>
-        <item>@string/morphe_video_effect_entry_underwater</item>
-        <item>@string/morphe_video_effect_entry_vhs</item>
-        <item>@string/morphe_video_effect_entry_video_wall</item>
     </string-array>
     <string-array name="morphe_video_effect_entry_values">
         <item>NONE</item>
@@ -194,29 +171,6 @@
         <item>COLOR_BLIND_PROTANOPIA</item>
         <item>COLOR_BLIND_TRITANOPIA</item>
         <item>BLACK_AND_WHITE</item>
-        <item>ALIEN</item>
-        <item>ASCII_ART</item>
-        <item>COMIC_BOOK</item>
-        <item>CRT_TV</item>
-        <item>FISHEYE</item>
-        <item>INVERT</item>
-        <item>KALEIDOSCOPE</item>
-        <item>MIRROR_IMAGE</item>
-        <item>NEON_EDGES</item>
-        <item>NIGHT_VISION</item>
-        <item>OLD_FILM</item>
-        <item>PENCIL_SKETCH</item>
-        <item>POP_ART</item>
-        <item>PUZZLE</item>
-        <item>RAINBOW</item>
-        <item>RETRO_HANDHELD</item>
-        <item>RETRO_PC</item>
-        <item>THERMAL</item>
-        <item>TILT_SHIFT</item>
-        <item>TINY_PLANET</item>
-        <item>UNDERWATER</item>
-        <item>VHS</item>
-        <item>VIDEO_WALL</item>
     </string-array>
 
     <!-- layout.theme.baseThemePatch -->
