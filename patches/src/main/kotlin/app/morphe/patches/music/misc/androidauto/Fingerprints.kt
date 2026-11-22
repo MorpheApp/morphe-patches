@@ -139,7 +139,27 @@ internal object BrowseRequestHandlerFingerprint : Fingerprint(
     classFingerprint = SendEmptyMediaItemsFingerprint,
     returnType = { "V" },
     parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef) },
-    strings = listOf("MBS: Fetching MBFE root for mediaId: `%s`")
+    filters = listOf(
+        methodCall("Lj$/util/concurrent/ConcurrentHashMap;->containsKey(Ljava/lang/Object;)Z"),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, MatchAfterImmediately()),
+        string("MBS: Fetching MBFE root for mediaId: `%s`", MatchAfterWithin(8))
+    )
+)
+
+/** YTM can answer from its browse cache or local library here without starting another root fetch. */
+internal object CachedBrowseFingerprint : Fingerprint(
+    classFingerprint = SendEmptyMediaItemsFingerprint,
+    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef) },
+    returnType = { "Z" }
+)
+
+/** The success callback calls the same delivery method that YTM uses when the root fetch fails. */
+internal object RootLoadedFingerprint : Fingerprint(
+    filters = listOf(
+        string("MBS: MBFE Root loaded for client '%s'"),
+        methodCall(definingClass = "this", parameters = emptyList(), returnType = "V", opcode = Opcode.INVOKE_DIRECT)
+    )
 )
 
 // Locate YTM's phone request clients and browse methods

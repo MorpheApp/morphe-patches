@@ -44,6 +44,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -121,6 +122,11 @@ public final class AndroidAutoPatch {
     /** Calls YTM's browser service to reload an Auto page, such as Albums. */
     public interface FolderReload {
         void patch_reloadFolder(String parentMediaId, Object connection, @Nullable Bundle options);
+    }
+
+    public interface BrowseCache {
+        /** Returns true if YTM sent the result or scheduled delivery from the local library. */
+        boolean patch_sendCachedRoot(BrowseRequest request);
     }
 
     public interface PhoneBrowseItem {
@@ -725,6 +731,35 @@ public final class AndroidAutoPatch {
 
     // Browse delivery, root tabs, and the Podcasts tab
 
+    @GuardedBy("AndroidAutoPatch.class")
+    private static final Map<Object, List<Runnable>> waitingForRoot = new WeakHashMap<>();
+    @GuardedBy("AndroidAutoPatch.class")
+    private static final Set<BrowseRequest> deferredRoots = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
+     * Return -1 when the request is queued and YTM's handler must return.
+     * Otherwise preserve YTM's active fetch check (0 absent, 1 present).
+     */
+    public static synchronized int checkRootFetch(Map<?, ?> fetches, Object client, BrowseRequest request, BrowseCache cache) {
+        Object fetch = fetches.get(client);
+        if (fetch == null) return 0;
+        if (!ROOT_MEDIA_ID.equals(request.patch_getRequestedMediaId())) return 1;
+        waitingForRoot.computeIfAbsent(fetch, ignored -> new ArrayList<>()).add(() -> {
+            if (!cache.patch_sendCachedRoot(request)) request.patch_deliverBrowseItems(Collections.emptyList());
+        });
+        deferredRoots.add(request);
+        return -1;
+    }
+
+    public static void finishRootFetch(Object fetch) {
+        List<Runnable> waiting;
+        synchronized (AndroidAutoPatch.class) {
+            waiting = waitingForRoot.remove(fetch);
+        }
+        // Run callbacks outside the lock because YTM can deliver cached results synchronously.
+        if (waiting != null) waiting.forEach(Runnable::run);
+    }
+
     /** Injection point. Recognizes media IDs handled by the patch instead of YTM's decoder. */
     public static boolean isCustomMediaId(@Nullable String mediaId) {
         if (mediaId == null) return false;
@@ -773,6 +808,13 @@ public final class AndroidAutoPatch {
         try {
             String parentMediaId = request.patch_getRequestedMediaId();
             if (ROOT_MEDIA_ID.equals(parentMediaId)) {
+                // Reinitializing the same tabs for a waiting request would clear folder subscriptions
+                // and Home's cached podcast folders.
+                if (deferredRoots.remove(request) && ytmItems != null && ytmItems.size() == 2
+                        && Objects.equals(ytmItems.get(0).a(), homeMediaId)
+                        && Objects.equals(ytmItems.get(1).a(), libraryMediaId)) {
+                    return addPodcastsTab(ytmItems);
+                }
                 return initializeTabs(ytmItems);
             }
             if (PODCASTS_MEDIA_ID.equals(parentMediaId)) {
@@ -829,6 +871,10 @@ public final class AndroidAutoPatch {
 
         homeMediaId = rootTabs.get(0).a();
         libraryMediaId = rootTabs.get(1).a();
+        return addPodcastsTab(rootTabs);
+    }
+
+    private static List<MediaBrowserCompat.MediaItem> addPodcastsTab(List<MediaBrowserCompat.MediaItem> rootTabs) {
         List<MediaBrowserCompat.MediaItem> updatedRootTabs = new ArrayList<>(rootTabs);
         Bundle podcastsExtras = new Bundle();
         podcastsExtras.putInt(CONTENT_STYLE_BROWSABLE_HINT, CONTENT_STYLE_LIST);

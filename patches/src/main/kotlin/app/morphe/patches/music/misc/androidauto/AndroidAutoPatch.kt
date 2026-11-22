@@ -12,17 +12,21 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addFreeRegisters
+import app.morphe.patcher.util.addInstructionsAtControlFlowLabel
 import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.implementsType
@@ -37,6 +41,7 @@ import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -55,6 +60,8 @@ private const val GRID_RENDERER =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$GridRenderer;"
 private const val BROWSE_REQUEST =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$BrowseRequest;"
+private const val BROWSE_CACHE =
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$BrowseCache;"
 private const val FOLDER_RELOAD =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$FolderReload;"
 private const val PHONE_BROWSE_ITEM =
@@ -604,8 +611,10 @@ private fun addArtworkUriGetter(
 private fun patchBrowseRequests() {
     addBrowseRequestInterface()
 
+    val handler = BrowseRequestHandlerFingerprint.method
+    patchPendingRootFetch(handler)
     // When the patch handles a page request, skip YTM's handler to avoid returning two results.
-    BrowseRequestHandlerFingerprint.method.addInstructionsWithLabels(
+    handler.addInstructionsWithLabels(
         0,
         """
             invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->handleBrowseRequest($BROWSE_REQUEST)Z
@@ -616,6 +625,34 @@ private fun patchBrowseRequests() {
             nop
         """
     )
+}
+
+/**
+ * A root request asks YTM which tabs to show in Android Auto, such as Home and Library.
+ * At startup, Android Auto can open two browse connections, each requesting the same tabs.
+ * Queue the later request so it doesn't get an empty list while YTM is still loading the tabs.
+ */
+private fun patchPendingRootFetch(handler: MutableMethod) {
+    val (containsKey, moveResult, cacheBranch) = BrowseRequestHandlerFingerprint.instructionMatches
+    val (map, client) = containsKey.instruction.registersUsed
+    val result = moveResult.getInstruction<OneRegisterInstruction>().registerA
+    handler.addInstructionsWithLabels(cacheBranch.index, """
+        if-gez v$result, :resume
+        return-void
+        :resume
+        nop
+    """)
+    val checkRootFetch = "$EXTENSION_CLASS->checkRootFetch(Ljava/util/Map;Ljava/lang/Object;$BROWSE_REQUEST$BROWSE_CACHE)I"
+    handler.replaceInstruction(containsKey.index, "invoke-static { v$map, v$client, p1, p0 }, $checkRootFetch")
+
+    CachedBrowseFingerprint.apply {
+        classDef.addPatchInterface(BROWSE_CACHE, "patch_sendCachedRoot", method)
+    }
+
+    // YTM overwrites p0 during delivery, so preserve the fetch object for finishRootFetch.
+    val delivery = RootLoadedFingerprint.instructionMatches.last().getMethodCalled().cloneParameters()
+    delivery.addInstructionsAtControlFlowLabel(delivery.instructions.lastIndex,
+        "invoke-static { p0 }, $EXTENSION_CLASS->finishRootFetch(Ljava/lang/Object;)V")
 }
 
 private fun addBrowseRequestInterface() {
