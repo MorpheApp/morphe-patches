@@ -7,12 +7,14 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.youtube.interaction.copytranscript.copyTranscriptPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
+import java.util.LinkedHashSet
 
 /**
  * Caption settings. Used to organize all caption related settings together.
@@ -69,13 +71,16 @@ val captionsPatch = patch(
         captionViewportPatch,
         captionsInPipPatch,
         captionsAfterSeekPatch,
+        copyTranscriptPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         val remaining = settingsMenuCaptionGroup.associateByTo(mutableMapOf()) { it.key }
-        fun take(vararg keys: String) = keys.mapNotNull { remaining.remove(it) }.toSet()
+        // LinkedHashSet keeps the declared key order (parent switch above children).
+        fun take(vararg keys: String) =
+            keys.mapNotNull { remaining.remove(it) }.toCollection(LinkedHashSet())
 
         val languages = take(
             "morphe_preferred_caption_language",
@@ -87,6 +92,12 @@ val captionsPatch = patch(
             "morphe_stable_caption_blocks",
             "morphe_auto_captions_style",
             "morphe_captions_in_pip",
+        )
+        // Keep parent switch above its children so availability greying is obvious.
+        val copyTranscript = take(
+            "morphe_copy_transcript",
+            "morphe_copy_transcript_timestamps",
+            "morphe_copy_transcript_shorts_flyout",
         )
 
         PreferenceScreen.PLAYER.addPreferences(
@@ -103,6 +114,11 @@ val captionsPatch = patch(
                         key = "morphe_captions_presentation",
                         sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                         preferences = presentation
+                    ),
+                    PreferenceCategory(
+                        key = "morphe_copy_transcript_category",
+                        sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                        preferences = copyTranscript
                     ),
                     PreferenceScreenPreference(
                         key = "morphe_captions_advanced",

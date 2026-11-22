@@ -495,6 +495,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SET_CAPTION_COOKIES = new BooleanSetting("morphe_set_caption_cookies", FALSE, true);
     public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
     public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", TRUE, true);
+    public static final BooleanSetting COPY_TRANSCRIPT = new BooleanSetting("morphe_copy_transcript", TRUE);
+    public static final BooleanSetting COPY_TRANSCRIPT_TIMESTAMPS =
+            new BooleanSetting("morphe_copy_transcript_timestamps", FALSE, false, parent(COPY_TRANSCRIPT));
+    public static final BooleanSetting COPY_TRANSCRIPT_SHORTS_FLYOUT =
+            new BooleanSetting("morphe_copy_transcript_shorts_flyout", FALSE, false, parent(COPY_TRANSCRIPT));
     public static final BooleanSetting CAPTIONS_IN_PIP = new BooleanSetting("morphe_captions_in_pip", FALSE);
     public static final BooleanSetting STABLE_CAPTION_BLOCKS = new BooleanSetting("morphe_stable_caption_blocks", FALSE, true,
             () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q);

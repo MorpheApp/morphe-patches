@@ -63,6 +63,7 @@ import app.morphe.extension.shared.patches.glassmenus.GlassMenusPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
+import app.morphe.extension.youtube.patches.CopyTranscriptPatch;
 import app.morphe.extension.youtube.patches.FeedVideoActionsPatch;
 import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.LoopCountPatch;
@@ -724,6 +725,11 @@ public final class FlyoutUtils {
         final String flyoutVideoId = getFlyoutVideoId();
         final String shortVideoId = flyoutVideoId.isEmpty() ? VideoInformation.getVideoId() : flyoutVideoId;
 
+        if (CopyTranscriptPatch.isPatchIncluded() && CopyTranscriptPatch.showShortsFlyoutButton()) {
+            nextButtonIndex = CopyTranscriptPatch.addShortsFlyoutButton(
+                    flyoutPanel, nextButtonIndex, shortVideoId);
+        }
+
         if (ShortsDownloadButton.isPatchIncluded()) {
             nextButtonIndex = ShortsDownloadButton.addFlyoutButton(flyoutPanel, nextButtonIndex, shortVideoId, true, null);
         }
@@ -802,6 +808,17 @@ public final class FlyoutUtils {
                     flyoutVideoId,
                     isVideoFlyoutWithoutSaveItem,
                     PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
+            );
+        }
+
+        if (isShortFlyout
+                && CopyTranscriptPatch.isPatchIncluded()
+                && CopyTranscriptPatch.showShortsFlyoutButton()
+                && !flyoutVideoId.isEmpty()) {
+            nextButtonIndex = CopyTranscriptPatch.addShortsFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    flyoutVideoId
             );
         }
 
