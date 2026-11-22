@@ -182,7 +182,13 @@ public final class VideoEffectEditor {
             if (!ignoreError) {
                 String error = findError(code);
                 if (error != null) {
-                    showError(context, originalName, name, code, error, onClosed);
+                    if (VideoEffectsPatch.isCustomEffectCodeCutOff(code)) {
+                        showError(context, originalName, name, code, str("morphe_video_effects_custom_cut_off_message",
+                                VideoEffectsPatch.PASTED_TEXT_LENGTH_LIMIT), null, onClosed);
+                    } else {
+                        showError(context, originalName, name, code,
+                                str("morphe_video_effects_custom_error_message", error), error, onClosed);
+                    }
                     return;
                 }
             }
@@ -218,19 +224,22 @@ public final class VideoEffectEditor {
         }
     }
 
+    /**
+     * @param error The compiler errors to copy, or null for no copy button.
+     */
     private static void showError(Context context, @Nullable String originalName, String name,
-                                  String code, String error, Runnable onClosed) {
+                                  String code, String message, @Nullable String error, Runnable onClosed) {
         Dialog dialog = CustomDialog.create(
                 context,
                 str("morphe_video_effects_custom_error_title"),
-                str("morphe_video_effects_custom_error_message", error),
+                message,
                 null,
                 str("morphe_video_effects_custom_save_anyway"),
                 () -> saveEffect(context, originalName, name, code, true, onClosed),
                 // Back to the code.
                 () -> showEditDialog(context, originalName, name, code, onClosed),
-                str("morphe_video_effects_custom_copy_error"),
-                () -> Utils.setClipboard(error),
+                error == null ? null : str("morphe_video_effects_custom_copy_error"),
+                error == null ? null : () -> Utils.setClipboard(error),
                 false
         ).first;
         dialog.setCancelable(false);
