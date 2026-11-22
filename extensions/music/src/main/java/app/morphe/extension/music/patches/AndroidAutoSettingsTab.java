@@ -124,7 +124,6 @@ public final class AndroidAutoSettingsTab {
         StockSettingsSource source = settingsSource;
         if (source == null) return Collections.emptyList();
         if (activeConnection.get() != connection) {
-            if (!SETTINGS_MEDIA_ID.equals(id)) return Collections.emptyList();
             activeConnection = new WeakReference<>(connection);
             pendingChoices.clear();
         }

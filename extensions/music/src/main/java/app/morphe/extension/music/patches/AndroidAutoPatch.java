@@ -21,7 +21,6 @@ import static app.morphe.extension.music.patches.AndroidAutoSettingsTab.SETTINGS
 import static app.morphe.extension.music.patches.ProtoMessage.WIRE_LENGTH_DELIMITED;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -109,8 +108,6 @@ public final class AndroidAutoPatch {
     /** Android Auto's request for the children of a folder media ID. */
     public interface BrowseRequest {
         @Nullable String patch_getRequestedMediaId();
-
-        boolean patch_isFromBrowser(String packageName, int uid);
 
         /**
          * The Android Auto connection for this request, or null if unknown.
@@ -245,7 +242,7 @@ public final class AndroidAutoPatch {
     private static final String EPISODES_FOR_LATER_BROWSE_ID = "VLSE";
     private static final String SPEED_DIAL_BROWSE_ID = "FEmusic_listen_again";
 
-    private static final String ANDROID_AUTO_PACKAGE = "com.google.android.projection.gearhead";
+    private static final String ANDROID_AUTO_ROOT_ID = "com.google.android.projection.gearhead";
     private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
     private static final String PODCASTS_MEDIA_ID = "morphe:aa:podcasts";
     private static final String SPEED_DIAL_MEDIA_ID = "morphe:aa:speed-dial";
@@ -331,7 +328,8 @@ public final class AndroidAutoPatch {
     static final Handler mainHandler = new Handler(Looper.getMainLooper());
     private static final Runnable REFRESH_LIBRARY = AndroidAutoPatch::refreshLibrary;
 
-    private static volatile WeakReference<FolderReload> settingsBrowserService = new WeakReference<>(null);
+    @Nullable
+    private static volatile FolderSubscription settingsSubscription;
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
     private static final Set<String> playlistsTitleMatchMediaIds = ConcurrentHashMap.newKeySet();
     // Give each browse load a number to distinguish earlier requests from later requests.
@@ -371,7 +369,7 @@ public final class AndroidAutoPatch {
      */
     public static synchronized void setPhoneBrowseClient(PhoneBrowseClient client) {
         phoneBrowseClient = client;
-        settingsBrowserService.clear();
+        settingsSubscription = null;
         libraryMediaId = null;
         librarySubscription = null;
         podcastsSubscription = null;
@@ -676,12 +674,13 @@ public final class AndroidAutoPatch {
 
     // Refresh after Library changes
 
-    /** Injection point. Remembers the folder subscriptions that Library changes can refresh. */
+    /** Injection point. Remembers the browser subscriptions used to refresh Settings and Library folders. */
     public static synchronized void rememberSubscription(FolderReload browserService,
             @Nullable String parentMediaId, Object connection) {
         if (parentMediaId == null) return;
-        if (SETTINGS_MEDIA_ID.equals(parentMediaId)) {
-            settingsBrowserService = new WeakReference<>(browserService);
+        if (ANDROID_AUTO_ROOT_ID.equals(parentMediaId)) {
+            // Android Auto can reopen Settings before YouTube Music finishes loading the root menu.
+            settingsSubscription = new FolderSubscription(browserService, SETTINGS_MEDIA_ID, connection);
         } else if (parentMediaId.startsWith(LIBRARY_PREFIX)
                 || parentMediaId.startsWith(PODCAST_COLLECTION_PREFIX)
                 || parentMediaId.startsWith(HOME_SHELF_PREFIX)
@@ -787,7 +786,7 @@ public final class AndroidAutoPatch {
             BrowseRequest request, @Nullable List<MediaBrowserCompat.MediaItem> ytmItems) {
         try {
             String parentMediaId = request.patch_getRequestedMediaId();
-            if (ANDROID_AUTO_PACKAGE.equals(parentMediaId)) {
+            if (ANDROID_AUTO_ROOT_ID.equals(parentMediaId)) {
                 return initializeTabs(ytmItems);
             }
             if (PODCASTS_MEDIA_ID.equals(parentMediaId)) {
@@ -885,15 +884,13 @@ public final class AndroidAutoPatch {
 
     private static List<MediaBrowserCompat.MediaItem> settingsItems(BrowseRequest request, String id) {
         try {
-            FolderReload service = settingsBrowserService.get();
+            FolderSubscription subscription = settingsSubscription;
             Object connection = request.patch_getBrowserConnection();
-            if (connection == null || !(service instanceof Context context)) return Collections.emptyList();
-            int uid = context.getPackageManager().getPackageUid(ANDROID_AUTO_PACKAGE, 0);
-            if (request.patch_isFromBrowser(ANDROID_AUTO_PACKAGE, uid)) {
-                return AndroidAutoSettingsTab.open(context, id, connection,
-                        () -> new FolderSubscription(service, SETTINGS_MEDIA_ID, connection).reload(false));
-            }
-        } catch (RuntimeException | RemoteException | PackageManager.NameNotFoundException ex) {
+            if (subscription == null || connection == null || subscription.connection.get() != connection
+                    || !(subscription.browserService.get() instanceof Context context)) return Collections.emptyList();
+            return AndroidAutoSettingsTab.open(context, id, connection,
+                    () -> subscription.reload(false));
+        } catch (RuntimeException | RemoteException ex) {
             Logger.printException(() -> "Could not open Android Auto settings", ex);
         }
         return Collections.emptyList();

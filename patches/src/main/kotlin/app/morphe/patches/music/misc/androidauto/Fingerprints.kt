@@ -154,12 +154,6 @@ internal object SendEmptyMediaItemsFingerprint : Fingerprint(
     )
 )
 
-internal object RemoteUserInfoConstructorFingerprint : Fingerprint(
-    name = "<init>",
-    parameters = listOf("Ljava/lang/String;", "I", "I"),
-    filters = listOf(string("packageName should be nonempty"), string("package shouldn't be null")),
-)
-
 // Locate YTM's phone request clients and browse methods
 
 /**
