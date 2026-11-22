@@ -8,6 +8,8 @@
 
 package app.morphe.extension.shared.spoof.potoken;
 
+import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Handler;
@@ -30,6 +32,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -147,6 +150,15 @@ public class PoTokenWebView {
         Utils.runOnMainThread(() -> {
             try {
                 PoTokenWebView instance = new PoTokenWebView(future);
+                if (IS_YOUTUBE_MUSIC && instance.webView.getParent() == null) {
+                    // Android Auto can start playback with only YouTube Music's service running on the
+                    // phone, leaving the new WebView without a MusicActivity to attach to.
+                    // Without MusicActivity, no parent view holds the WebView while it loads Google's BotGuard script.
+                    // If nothing else holds a reference during that wait, Android's GC can free the WebView,
+                    // so keep PoTokenWebView alive until the script is ready to create playback tokens.
+                    var pendingWebView = new AtomicReference<>(instance);
+                    future.whenComplete((result, error) -> pendingWebView.set(null));
+                }
                 instance.loadHtmlAndObtainBotGuard();
             } catch (Exception e) {
                 future.completeExceptionally(e);
