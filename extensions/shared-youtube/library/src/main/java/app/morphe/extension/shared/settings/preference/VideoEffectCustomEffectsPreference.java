@@ -85,11 +85,11 @@ public class VideoEffectCustomEffectsPreference extends Preference {
                     getTitle() != null ? getTitle().toString() : "",
                     null,
                     null,
-                    str("morphe_video_effects_custom_add"),
-                    () -> showEditDialog(null, "", VideoEffectsPatch.CUSTOM_EFFECT_TEMPLATE),
-                    null,
                     str("morphe_settings_about_close"),
                     () -> {},
+                    null,
+                    str("morphe_video_effects_custom_add"),
+                    () -> showEditDialog(null, "", VideoEffectsPatch.CUSTOM_EFFECT_TEMPLATE),
                     true
             );
             Dialog dialog = dialogPair.first;
