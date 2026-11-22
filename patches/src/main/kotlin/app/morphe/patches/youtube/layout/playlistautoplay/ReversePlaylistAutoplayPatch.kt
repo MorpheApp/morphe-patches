@@ -10,10 +10,13 @@ package app.morphe.patches.youtube.layout.playlistautoplay
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.interaction.nativeplaylistqueue.playlistNavigationIntentFingerprint
+import app.morphe.patches.youtube.interaction.nativeplaylistqueue.playlistNavigationSingletonFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.information.videoInformationPatch
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ReversePlaylistAutoplayPatch;"
@@ -25,17 +28,22 @@ internal val reversePlaylistAutoplayHookPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         playlistRepeatModeHookPatch,
+        videoInformationPatch,
     )
 
     execute {
+        val enumType = NavigationIntentEnumFingerprint.originalClassDef.type
+        val requestType = NavigationRequestFingerprint.originalClassDef.type
+
+        // The app's own request for the Previous button.
+        val previousIntent = playlistNavigationIntentFingerprint(enumType, "PREVIOUS")
+            .instructionMatches.last().fieldReference
+        val previousRequest = playlistNavigationSingletonFingerprint(requestType, previousIntent)
+            .instructionMatches.last().fieldReference
+
         // A playlist is loaded into the playback queue, which picks the next video for AUTOPLAY and
         // the previous video for PREVIOUS, and repeats the playlist in both directions.
         // Swapping the request only here keeps the rest of the AUTOPLAY handling.
-        val enumType = NavigationIntentEnumFingerprint.originalClassDef.type
-        val requestConstructor = NavigationRequestFingerprint.originalMethod
-        val requestType = requestConstructor.definingClass
-        val requestParameters = requestConstructor.parameterTypes.joinToString("")
-
         queueNavigationItemFingerprint(requestType, enumType).let {
             val enumField = it.instructionMatches.first().fieldReference
 
@@ -43,15 +51,11 @@ internal val reversePlaylistAutoplayHookPatch = patch {
                 0,
                 """
                     move-object/from16 v0, p1
-                    iget-object v1, v0, $enumField
-                    invoke-static { v1 }, $EXTENSION_CLASS->getNavigationIntent(Ljava/lang/Enum;)Ljava/lang/Enum;
-                    move-result-object v2
-                    if-eq v1, v2, :original
-                    check-cast v2, $enumType
-                    new-instance v0, $requestType
-                    # The queue reads only the intent and video of the request, and PREVIOUS has no video.
-                    const/4 v1, 0x0
-                    invoke-direct { v0, v2, v1, v1 }, $requestType-><init>($requestParameters)V
+                    iget-object v0, v0, $enumField
+                    invoke-static { v0 }, $EXTENSION_CLASS->shouldPlayPrevious(Ljava/lang/Enum;)Z
+                    move-result v0
+                    if-eqz v0, :original
+                    sget-object v0, $previousRequest
                     move-object/from16 p1, v0
                     :original
                     nop

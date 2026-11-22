@@ -62,7 +62,7 @@ internal fun queueNavigationItemFingerprint(requestType: String, enumType: Strin
     parameters = listOf(requestType),
     filters = listOf(
         fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = requestType, type = enumType),
-        methodCall(opcode = Opcode.INVOKE_VIRTUAL, definingClass = enumType, name = "ordinal"),
+        methodCall(definingClass = enumType, name = "ordinal"),
     )
 )
 

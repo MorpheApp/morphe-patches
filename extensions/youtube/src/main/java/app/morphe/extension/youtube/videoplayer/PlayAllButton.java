@@ -59,7 +59,7 @@ public class PlayAllButton {
     /**
      * @return If the playlist was generated with Reverse order on.
      */
-    public static boolean isReversePlaylist(@Nullable String playlistId) {
+    public static boolean isReversePlaylist(String playlistId) {
         String reverseId = reversePlaylistId;
         return reverseId != null && Settings.PLAY_ALL_BUTTON_REVERSE.get() && reverseId.equals(playlistId);
     }
