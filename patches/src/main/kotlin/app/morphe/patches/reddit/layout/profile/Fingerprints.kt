@@ -21,7 +21,7 @@ private val EMPTY_FEED_PARAMETERS = listOf(
     "Ljava/lang/String;", // Description.
     "I", // Icon.
     "Z", // Show button.
-    "Lkotlin/jvm/functions/Function0;", // Button click handler.
+    "L", // Button click handler. Kotlin Function0, obfuscated in some app versions.
     "L", // Modifier.
     "L", // Composer.
     "I"
@@ -67,12 +67,11 @@ internal object ProfileEmptyFeedModelConstructorFingerprint : Fingerprint(
  */
 internal object ProfileEmptyFeedFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("L", "Lkotlin/jvm/functions/Function0;", "L", "L", "I"),
+    parameters = listOf("L", "L", "L", "L", "I"),
     filters = listOf(
         resourceLiteral(ResourceType.STRING, "profile_empty_feed_visitor_comment_filtered_description"),
         resourceLiteral(ResourceType.STRING, "profile_empty_feed_visitor_post_filtered_description"),
         methodCall(
-            opcode = Opcode.INVOKE_STATIC_RANGE,
             returnType = "V",
             parameters = EMPTY_FEED_PARAMETERS
         )

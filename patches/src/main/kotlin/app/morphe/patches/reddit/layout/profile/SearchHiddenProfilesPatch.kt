@@ -8,40 +8,33 @@
 package app.morphe.patches.reddit.layout.profile
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
-import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
-import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/SearchHiddenProfilesPatch;"
 private const val EMPTY_FEED_MODEL_INTERFACE =
     $$"Lapp/morphe/extension/reddit/patches/SearchHiddenProfilesPatch$EmptyFeedModel;"
+private const val SEARCH_CLICK_HANDLER_CLASS =
+    $$"Lapp/morphe/extension/reddit/patches/SearchHiddenProfilesPatch$SearchClickHandler;"
 
 @Suppress("unused")
 val searchHiddenProfilesPatch = patch(
     name = "Search hidden profiles",
-    description = "Adds an option to show a search button on profiles that hide their posts or comments. " +
-            "This patch works with Reddit 2026.24.0 and newer."
+    description = "Adds an option to show a search button on profiles that hide their posts or comments."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch, versionCheckPatch)
+    dependsOn(settingsPatch)
 
     execute {
-        if (!is_2026_24_0_or_greater) {
-            return@execute Logger.getLogger(this::class.java.name).warning(
-                "'Search hidden profiles' requires Reddit 2026.24.0+"
-            )
-        }
-
         ProfileEmptyFeedModelConstructorFingerprint.let {
             it.classDef.apply {
                 addPatchInterface(EMPTY_FEED_MODEL_INTERFACE, "patch_getFeedType", it.instructionMatches[0].fieldReference)
@@ -52,6 +45,10 @@ val searchHiddenProfilesPatch = patch(
 
         ProfileEmptyFeedFingerprint.let {
             it.method.apply {
+                // Kotlin Function0, which is obfuscated in some app versions.
+                val clickHandlerType = parameterTypes[1].toString()
+                mutableClassDefBy(SEARCH_CLICK_HANDLER_CLASS).interfaces.add(clickHandlerType)
+
                 // Show the button of the empty feed for visitors. This is the only empty feed
                 // that can show the button, so the label hook knows which label to use.
                 val emptyFeedMatch = it.instructionMatches.last()
@@ -59,11 +56,11 @@ val searchHiddenProfilesPatch = patch(
                 val showButtonRegister = registers[3]
                 val clickHandlerRegister = registers[4]
 
-                // The range call has the two registers next to each other.
+                // The call has too many registers for a non-range call, so the two registers are next to each other.
                 addInstructionsAtControlFlowLabel(
                     emptyFeedMatch.index,
                     """
-                        invoke-static/range { v$showButtonRegister .. v$clickHandlerRegister }, $EXTENSION_CLASS->showEmptyFeedButton(ZLkotlin/jvm/functions/Function0;)Z
+                        invoke-static/range { v$showButtonRegister .. v$clickHandlerRegister }, $EXTENSION_CLASS->showEmptyFeedButton(ZLjava/lang/Object;)Z
                         move-result v$showButtonRegister
                     """
                 )
@@ -72,8 +69,9 @@ val searchHiddenProfilesPatch = patch(
                 addInstructions(
                     0,
                     """
-                        invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->getEmptyFeedButtonClickHandler(${EMPTY_FEED_MODEL_INTERFACE}Lkotlin/jvm/functions/Function0;)Lkotlin/jvm/functions/Function0;
+                        invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->getEmptyFeedButtonClickHandler(${EMPTY_FEED_MODEL_INTERFACE}Ljava/lang/Object;)Ljava/lang/Object;
                         move-result-object p1
+                        check-cast p1, $clickHandlerType
                     """
                 )
             }

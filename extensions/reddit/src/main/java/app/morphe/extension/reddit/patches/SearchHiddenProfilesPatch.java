@@ -20,7 +20,6 @@ import com.reddit.profile.model.ProfileFeedType;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import kotlin.jvm.functions.Function0;
 
 @SuppressWarnings("unused")
 public final class SearchHiddenProfilesPatch {
@@ -45,10 +44,13 @@ public final class SearchHiddenProfilesPatch {
     /**
      * Opens Reddit search with the posts of a profile.
      * A record, so Compose sees equal click handlers and skips recomposition.
+     * The click handler interface of the app (Kotlin Function0) is added during patching,
+     * as it is obfuscated in some app versions.
+     *
+     * @param original The click handler of the empty feed.
      */
-    private record SearchClickHandler(String profileName) implements Function0<Object> {
+    private record SearchClickHandler(String profileName, Object original) {
 
-        @Override
         public Object invoke() {
             try {
                 Activity activity = Utils.getActivity();
@@ -96,8 +98,14 @@ public final class SearchHiddenProfilesPatch {
      * @return A click handler that searches the posts of the profile, if the feed is a visitor
      *         feed with posts or comments the profile hides. Otherwise, the original click handler.
      */
-    public static Function0<?> getEmptyFeedButtonClickHandler(EmptyFeedModel model, Function0<?> original) {
+    public static Object getEmptyFeedButtonClickHandler(EmptyFeedModel model, Object original) {
         try {
+            // When the composable is recomposed on its own,
+            // it is called again with the click handler returned here.
+            if (original instanceof SearchClickHandler handler) {
+                original = handler.original();
+            }
+
             if (!Settings.SEARCH_HIDDEN_PROFILES.get()) {
                 return original;
             }
@@ -111,7 +119,7 @@ public final class SearchHiddenProfilesPatch {
                 return original;
             }
 
-            return new SearchClickHandler(profileName);
+            return new SearchClickHandler(profileName, original);
         } catch (Exception ex) {
             Logger.printException(() -> "getEmptyFeedButtonClickHandler failure", ex);
             return original;
@@ -121,7 +129,7 @@ public final class SearchHiddenProfilesPatch {
     /**
      * Injection point.
      */
-    public static boolean showEmptyFeedButton(boolean original, Function0<?> clickHandler) {
+    public static boolean showEmptyFeedButton(boolean original, Object clickHandler) {
         emptyFeedShowsSearch = clickHandler instanceof SearchClickHandler;
         return original || emptyFeedShowsSearch;
     }
