@@ -37,135 +37,165 @@ import java.util.UUID;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Shows YouTube Music's car settings in the media browser. The original toggle listeners apply changes.
+ * Shows YouTube Music's car settings as an Android Auto browse tab, because Android Auto
+ * rejects the stock settings screen of a patched app.
+ * <p>
+ * A browse folder cannot show a switch. Opening a toggle row shows the new value,
+ * and opening that value applies it with the stock toggle listener.
  */
 public final class AndroidAutoSettingsTab {
-    public interface StockSettingsSource {
-        ListTemplate patch_getSettingsTemplate(Context context, RowTitle rowTitle);
+    /** Added during patching to the controller of the stock car settings screen. */
+    public interface SettingsTemplateSource {
+        /** Builds the stock settings screen, using the given context for resources. */
+        ListTemplate patch_getSettingsTemplate(Context context);
     }
 
-    public interface RowTitle {
-        String get(int resourceId);
-    }
-
+    /** Added during patching to {@link Toggle}. */
     public interface StockToggle {
         StockToggleDelegate patch_getDelegate();
     }
 
+    /** Added during patching to the toggle's delegate. */
     public interface StockToggleDelegate {
         IOnCheckedChangeListener patch_getListener();
     }
 
     static final String SETTINGS_MEDIA_ID = "morphe:aa:settings";
-    private static final String ROW_PREFIX = SETTINGS_MEDIA_ID + ":row:";
+    private static final String SETTINGS_PREFIX = SETTINGS_MEDIA_ID + ":";
+    private static final String ROW_PREFIX = SETTINGS_PREFIX + "row:";
+    private static final String STATUS_PREFIX = SETTINGS_PREFIX + "status:";
+    private static final String TEXT_SEPARATOR = " · ";
     private static final IOnDoneCallback TOGGLE_DONE = new IOnDoneCallback.Default();
+
     @Nullable
-    private static volatile StockSettingsSource settingsSource;
+    private static volatile SettingsTemplateSource settingsSource;
+    // Main thread only.
     private static WeakReference<Object> activeConnection = new WeakReference<>(null);
+    // Main thread only. The value each toggle row offers, by setting title.
     private static final Map<String, Choice> pendingChoices = new HashMap<>();
 
-    private AndroidAutoSettingsTab() {}
+    private AndroidAutoSettingsTab() {
+    }
 
+    /** Injection point. Called when MusicBrowserService starts. */
     @MainThread
-    public static void setSettingsSource(StockSettingsSource source) {
+    public static void setSettingsSource(SettingsTemplateSource source) {
         settingsSource = source;
         activeConnection.clear();
         pendingChoices.clear();
     }
 
+    static boolean isSettingsMediaId(@Nullable String mediaId) {
+        return mediaId != null && (mediaId.equals(SETTINGS_MEDIA_ID) || mediaId.startsWith(SETTINGS_PREFIX));
+    }
+
     static MediaItem settingsTab() {
-        Uri icon = Uri.parse("android.resource://" + Utils.getContext().getPackageName()
-                + "/drawable/yt_outline_experimental_gear_vd_theme_24");
         MediaDescriptionCompat description = new MediaDescriptionCompat(SETTINGS_MEDIA_ID,
-                getString("settings"), null, null, null, icon, null, null);
+                getString("settings"), null, null, null,
+                Uri.parse(AndroidAutoPatch.outlineIconUri("gear")), null, null);
         return new MediaItem(description, MediaItem.FLAG_BROWSABLE);
     }
 
-    private static Map<String, Setting> loadSettings(StockSettingsSource source, Context context) {
-        Map<String, String> titles = new HashMap<>();
-        // The title resource name keeps the row's media ID stable when the app language changes.
-        ListTemplate template = source.patch_getSettingsTemplate(context, id -> {
-            String key = context.getResources().getResourceEntryName(id);
-            titles.put(key, context.getString(id));
-            return key;
-        });
-        Map<String, Setting> settings = new LinkedHashMap<>();
-        for (Object item : template.getSingleList().getItems()) {
-            if (item instanceof Row row) {
-                String key = row.getTitle().toString();
-                String title = titles.get(key);
-                if (title == null) {
-                    title = key;
-                    key = "title/" + Uri.encode(title);
-                }
-                settings.put(key, new Setting(key, title, TextUtils.join(" · ", row.getTexts()), row.getToggle()));
-            }
-        }
-        return settings;
-    }
-
-    private static List<MediaItem> items(Collection<Setting> settings) {
-        List<MediaItem> rows = new ArrayList<>(settings.size());
-        for (Setting setting : settings) {
-            String subtitle = setting.summary;
-            if (setting.toggle != null) {
-                String state = stateLabel(setting.toggle.isChecked());
-                subtitle = subtitle.isEmpty() ? state : state + " · " + subtitle;
-            }
-            rows.add(row(setting.rowId(), setting.title, subtitle, setting.toggle != null));
-        }
-        return rows;
-    }
-
-    private record Choice(boolean value, String id) {}
-
+    /**
+     * @param reloadSettings Reloads the settings list on the connection.
+     * @return The children of a settings media ID.
+     */
     @MainThread
-    static List<MediaItem> open(Context context, String id, Object connection, Runnable reloadSettings)
+    static List<MediaItem> open(Context context, String mediaId, Object connection, Runnable reloadSettings)
             throws RemoteException {
-        StockSettingsSource source = settingsSource;
+        SettingsTemplateSource source = settingsSource;
         if (source == null) return Collections.emptyList();
         if (activeConnection.get() != connection) {
             activeConnection = new WeakReference<>(connection);
             pendingChoices.clear();
         }
-        var settings = loadSettings(source, context).values();
-        if (SETTINGS_MEDIA_ID.equals(id)) return items(settings);
-        for (Setting setting : settings) {
-            Choice choice = pendingChoices.get(setting.key);
-            if (id.equals(setting.rowId())) {
-                if (setting.toggle == null) return Collections.singletonList(setting.status());
-                final boolean checked = setting.toggle.isChecked();
-                if (choice == null || choice.value == checked) {
-                    choice = new Choice(!checked, setting.choicePrefix() + UUID.randomUUID());
-                    pendingChoices.put(setting.key, choice);
+
+        Collection<Setting> settings = loadSettings(source, context).values();
+        if (!mediaId.equals(SETTINGS_MEDIA_ID)) {
+            for (Setting setting : settings) {
+                if (mediaId.equals(setting.rowId())) {
+                    return showChoice(setting);
                 }
-                return Collections.singletonList(row(choice.id, stateLabel(choice.value), setting.title, true));
-            }
-            if (!id.startsWith(setting.choicePrefix())) continue;
-            // Android Auto can reopen the last choice after the app restarts.
-            // Remove the ID before applying the change so reopening it only shows the current value.
-            if (choice != null && id.equals(choice.id)) {
-                pendingChoices.remove(setting.key);
-                if (setting.toggle != null && setting.toggle.isChecked() != choice.value) {
-                    ((StockToggle) (Object) setting.toggle).patch_getDelegate().patch_getListener()
-                            .onCheckedChange(choice.value, TOGGLE_DONE);
-                    Utils.runOnMainThread(() -> {
-                        if (activeConnection.get() == connection) reloadSettings.run();
-                    });
-                    var refreshed = loadSettings(source, context);
-                    setting = refreshed.get(setting.key);
-                    if (setting == null) return items(refreshed.values());
+                if (mediaId.startsWith(setting.choicePrefix())) {
+                    return applyChoice(source, context, setting, mediaId, reloadSettings);
                 }
             }
-            return Collections.singletonList(setting.status());
         }
         // Android Auto can reopen an old ID after YouTube Music renames or removes a setting.
-        return items(settings);
+        return settingsList(settings);
     }
 
-    private record Setting(String key, String title, String summary, @Nullable Toggle toggle) {
+    private static List<MediaItem> showChoice(Setting setting) {
+        Toggle toggle = setting.toggle;
+        if (toggle == null) return Collections.singletonList(setting.status());
+
+        boolean checked = toggle.isChecked();
+        Choice choice = pendingChoices.get(setting.title);
+        // Keep the offered ID while it still changes the setting.
+        if (choice == null || choice.checked == checked) {
+            choice = new Choice(!checked, setting.choicePrefix() + UUID.randomUUID());
+            pendingChoices.put(setting.title, choice);
+        }
+        return Collections.singletonList(item(choice.mediaId, stateLabel(choice.checked), setting.title, true));
+    }
+
+    private static List<MediaItem> applyChoice(SettingsTemplateSource source, Context context, Setting setting,
+            String mediaId, Runnable reloadSettings) throws RemoteException {
+        Choice choice = pendingChoices.get(setting.title);
+        // Android Auto can reopen the last choice after the app restarts, so only the offered ID applies.
+        // Remove it first so reopening it only shows the current value.
+        if (choice == null || !choice.mediaId.equals(mediaId)) return Collections.singletonList(setting.status());
+        pendingChoices.remove(setting.title);
+
+        Toggle toggle = setting.toggle;
+        if (toggle == null || toggle.isChecked() == choice.checked) {
+            return Collections.singletonList(setting.status());
+        }
+        // The listener runs right away on the main thread.
+        ((StockToggle) (Object) toggle).patch_getDelegate().patch_getListener()
+                .onCheckedChange(choice.checked, TOGGLE_DONE);
+        // Update the list that Android Auto shows after going back.
+        Utils.runOnMainThread(reloadSettings);
+
+        // Show the saved value. YouTube Music can also hide the setting after the change.
+        Map<String, Setting> updated = loadSettings(source, context);
+        Setting updatedSetting = updated.get(setting.title);
+        return updatedSetting == null
+                ? settingsList(updated.values())
+                : Collections.singletonList(updatedSetting.status());
+    }
+
+    /** @return The stock settings rows by title, in display order. */
+    private static Map<String, Setting> loadSettings(SettingsTemplateSource source, Context context) {
+        Map<String, Setting> settings = new LinkedHashMap<>();
+        for (Object item : source.patch_getSettingsTemplate(context).getSingleList().getItems()) {
+            if (item instanceof Row row) {
+                String title = row.getTitle().toString();
+                settings.put(title, new Setting(title, TextUtils.join(TEXT_SEPARATOR, row.getTexts()), row.getToggle()));
+            }
+        }
+        return settings;
+    }
+
+    private static List<MediaItem> settingsList(Collection<Setting> settings) {
+        List<MediaItem> items = new ArrayList<>(settings.size());
+        for (Setting setting : settings) {
+            String subtitle = setting.summary;
+            if (setting.toggle != null) {
+                String state = stateLabel(setting.toggle.isChecked());
+                subtitle = subtitle.isEmpty() ? state : state + TEXT_SEPARATOR + subtitle;
+            }
+            items.add(item(setting.rowId(), setting.title, subtitle, setting.toggle != null));
+        }
+        return items;
+    }
+
+    private record Choice(boolean checked, String mediaId) {
+    }
+
+    private record Setting(String title, String summary, @Nullable Toggle toggle) {
         String rowId() {
-            return ROW_PREFIX + key;
+            return ROW_PREFIX + title;
         }
 
         String choicePrefix() {
@@ -173,7 +203,8 @@ public final class AndroidAutoSettingsTab {
         }
 
         MediaItem status() {
-            return row(SETTINGS_MEDIA_ID + ":status:" + key, title, toggle == null ? summary : stateLabel(toggle.isChecked()), false);
+            return item(STATUS_PREFIX + title, title,
+                    toggle == null ? summary : stateLabel(toggle.isChecked()), false);
         }
     }
 
@@ -181,8 +212,9 @@ public final class AndroidAutoSettingsTab {
         return getString(checked ? "v7_preference_on" : "v7_preference_off");
     }
 
-    private static MediaItem row(String id, String title, @Nullable String subtitle, boolean browsable) {
-        var description = new MediaDescriptionCompat(id, title, subtitle, null, null, null, null, null);
+    private static MediaItem item(String mediaId, String title, @Nullable String subtitle, boolean browsable) {
+        MediaDescriptionCompat description = new MediaDescriptionCompat(
+                mediaId, title, subtitle, null, null, null, null, null);
         return new MediaItem(description, browsable ? MediaItem.FLAG_BROWSABLE : 0);
     }
 }

@@ -68,23 +68,36 @@ internal object AndroidAutoSettingsIntentFingerprint : Fingerprint(
             name = "putParcelable",
             parameters = listOf("Ljava/lang/String;", "Landroid/os/Parcelable;"),
             returnType = "V",
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(5)
         )
     )
 )
 
 /**
- * The browse tab reuses the method that builds the stock Settings rows and attaches their toggle listeners.
- * The tab uses title resource names to keep row IDs stable when the app language changes.
+ * Builds the stock Settings screen: its rows and their toggle listeners.
+ * The browse tab copies this method to build the same rows.
  */
 internal object StockSettingsTemplateFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
     parameters = emptyList(),
     filters = listOf(
+        // The screen's CarContext.
         fieldAccess(opcode = Opcode.IGET_OBJECT),
-        opcode(Opcode.CONST, location = MatchAfterImmediately()),
-        methodCall(name = "getString", parameters = listOf("I"), returnType = "Ljava/lang/String;", location = MatchAfterImmediately()),
-        methodCall(parameters = listOf("Ljava/lang/CharSequence;"), returnType = "V", location = MatchAfterWithin(4)),
-        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        methodCall(
+            name = "getString",
+            parameters = listOf("I"),
+            returnType = "Ljava/lang/String;",
+            location = MatchAfterWithin(3)
+        ),
+        // The settings controller, which reads the settings and creates the toggle listeners.
+        fieldAccess(
+            definingClass = "this",
+            opcode = Opcode.IGET_OBJECT,
+            location = MatchAfterWithin(5)
+        ),
+        // Separates the storage used and available.
+        string(",  "),
         methodCall(definingClass = "Landroidx/car/app/model/Toggle;", name = "<init>"),
         methodCall(definingClass = "Landroidx/car/app/model/ListTemplate;", name = "<init>"),
     ),
@@ -207,11 +220,11 @@ internal fun browserServiceOnCreateFingerprint(
  * Finds the provider field and getter for YouTube Music's phone browse client, search client, or car settings controller.
  * The patch repeats that lookup in `MusicBrowserService.onCreate` to pass the object to the Android Auto extension.
  */
-internal fun providerLookupForMusicBrowserServiceFingerprint(
+internal fun dependencyProviderFingerprint(
     dependencyType: String,
-    injector: String? = null,
+    providerReaderClass: String? = null,
 ) = Fingerprint(
-    definingClass = injector,
+    definingClass = providerReaderClass,
     filters = listOf(
         fieldAccess(opcode = Opcode.IGET_OBJECT),
         methodCall(

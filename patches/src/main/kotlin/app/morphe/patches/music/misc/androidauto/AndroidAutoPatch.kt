@@ -106,7 +106,7 @@ val androidAutoPatch = patch(
         patchPlaylistMediaIdBuilder(encodeCommandMediaIdMethod)
         patchCommandEncoder(encodeCommandMediaIdMethod)
         patchSearch()
-        replaceSettingsButton()
+        patchSettingsTab()
     }
 }
 
@@ -250,14 +250,19 @@ private fun addLibraryPaginationRequestMethod(
 
 // Obtain dependencies when YTM's media service starts
 
+/**
+ * Passes a YTM object to the extension when MusicBrowserService starts.
+ *
+ * @param providerReaderClass Limits the provider lookup to this class, if the type alone matches several providers.
+ */
 internal fun hookMusicBrowserServiceDependency(
     dependencyType: String,
     extensionInterface: String,
     setter: String,
-    injector: String? = null,
+    providerReaderClass: String? = null,
 ) {
     val providerCandidates =
-        providerLookupForMusicBrowserServiceFingerprint(dependencyType, injector)
+        dependencyProviderFingerprint(dependencyType, providerReaderClass)
             .matchAll()
             .map { match ->
                 val (providerFieldMatch, providerGetMatch) = match.instructionMatches

@@ -18,6 +18,7 @@ import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.isUploadedCollection;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.libraryItems;
 import static app.morphe.extension.music.patches.AndroidAutoSettingsTab.SETTINGS_MEDIA_ID;
+import static app.morphe.extension.music.patches.AndroidAutoSettingsTab.isSettingsMediaId;
 import static app.morphe.extension.music.patches.ProtoMessage.WIRE_LENGTH_DELIMITED;
 
 import android.content.Context;
@@ -297,9 +298,7 @@ public final class AndroidAutoPatch {
         String mediaId() { return LIBRARY_PREFIX + name(); }
 
         String artworkUri() {
-            // Use this installation's package name so Library icons still load when GmsCore support renames the app.
-            return "android.resource://" + Utils.getContext().getPackageName()
-                    + "/drawable/yt_outline_experimental_" + iconName + "_vd_theme_24";
+            return outlineIconUri(iconName);
         }
 
         MediaBrowserCompat.MediaItem mediaItem() {
@@ -328,6 +327,7 @@ public final class AndroidAutoPatch {
     static final Handler mainHandler = new Handler(Looper.getMainLooper());
     private static final Runnable REFRESH_LIBRARY = AndroidAutoPatch::refreshLibrary;
 
+    // Settings list on the connection that loaded Android Auto's root folder.
     @Nullable
     private static volatile FolderSubscription settingsSubscription;
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
@@ -679,7 +679,7 @@ public final class AndroidAutoPatch {
             @Nullable String parentMediaId, Object connection) {
         if (parentMediaId == null) return;
         if (ANDROID_AUTO_ROOT_ID.equals(parentMediaId)) {
-            // Android Auto can reopen Settings before YouTube Music finishes loading the root menu.
+            // Remember it when the root starts loading. Android Auto can reopen Settings before the root loads.
             settingsSubscription = new FolderSubscription(browserService, SETTINGS_MEDIA_ID, connection);
         } else if (parentMediaId.startsWith(LIBRARY_PREFIX)
                 || parentMediaId.startsWith(PODCAST_COLLECTION_PREFIX)
@@ -832,9 +832,9 @@ public final class AndroidAutoPatch {
         boolean hasNativeFolder = false;
         if (rootTabs != null) {
             for (MediaBrowserCompat.MediaItem tab : rootTabs) {
-                String mediaId = tab.a();
-                if (SETTINGS_MEDIA_ID.equals(mediaId)) return rootTabs;
-                if (isContentFolder(tab) && !isCustomMediaId(mediaId)) hasNativeFolder = true;
+                // The tabs were already updated.
+                if (SETTINGS_MEDIA_ID.equals(tab.a())) return rootTabs;
+                if (isContentFolder(tab)) hasNativeFolder = true;
             }
         }
 
@@ -878,18 +878,20 @@ public final class AndroidAutoPatch {
         return new MediaBrowserCompat.MediaItem(podcastsDescription, MediaBrowserCompat.MediaItem.FLAG_BROWSABLE);
     }
 
-    private static boolean isSettingsMediaId(@Nullable String mediaId) {
-        return SETTINGS_MEDIA_ID.equals(mediaId) || (mediaId != null && mediaId.startsWith(SETTINGS_MEDIA_ID + ":"));
+    /** Uses this installation's package name, so the icons load when GmsCore support renames the app. */
+    static String outlineIconUri(String iconName) {
+        return "android.resource://" + Utils.getContext().getPackageName()
+                + "/drawable/yt_outline_experimental_" + iconName + "_vd_theme_24";
     }
 
-    private static List<MediaBrowserCompat.MediaItem> settingsItems(BrowseRequest request, String id) {
+    private static List<MediaBrowserCompat.MediaItem> settingsItems(BrowseRequest request, String mediaId) {
         try {
             FolderSubscription subscription = settingsSubscription;
             Object connection = request.patch_getBrowserConnection();
+            // Settings change the app on the phone, so only Android Auto can open them.
             if (subscription == null || connection == null || subscription.connection.get() != connection
                     || !(subscription.browserService.get() instanceof Context context)) return Collections.emptyList();
-            return AndroidAutoSettingsTab.open(context, id, connection,
-                    () -> subscription.reload(false));
+            return AndroidAutoSettingsTab.open(context, mediaId, connection, () -> subscription.reload(false));
         } catch (RuntimeException | RemoteException ex) {
             Logger.printException(() -> "Could not open Android Auto settings", ex);
         }
