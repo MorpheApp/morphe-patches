@@ -59,6 +59,13 @@ public final class GhostPlayToolbarButton {
     private static volatile boolean listenersRegistered = false;
     private static volatile boolean isOnShortsTab = false;
 
+    /**
+     * Action menu view of a toolbar, which the button is positioned next to.
+     */
+    private static final class MenuViewRef {
+        WeakReference<View> view = new WeakReference<>(null);
+    }
+
     private GhostPlayToolbarButton() {
     }
 
@@ -82,7 +89,7 @@ public final class GhostPlayToolbarButton {
                 || isOnShortsTab;
     }
 
-    public static void attachToToolbar(@NonNull FrameLayout toolbarContainer) {
+    public static void attachToToolbar(FrameLayout toolbarContainer) {
         if (!GhostPlayPatch.isEnabled() || !Settings.GHOST_PLAY_TOOLBAR_BUTTON.get()) {
             return;
         }
@@ -144,7 +151,7 @@ public final class GhostPlayToolbarButton {
 
                 WeakReference<FrameLayout> containerRef = new WeakReference<>(toolbarContainer);
                 WeakReference<LinearLayout> pillRef = new WeakReference<>(pill);
-                WeakReference<View>[] observedMenuRef = new WeakReference[]{new WeakReference<>(null)};
+                MenuViewRef observedMenuRef = new MenuViewRef();
 
                 View.OnLayoutChangeListener layoutListener = (v, l, t, r, b, ol, ot, or, ob) -> {
                     FrameLayout c = containerRef.get();
@@ -178,7 +185,7 @@ public final class GhostPlayToolbarButton {
                         if (c != null) {
                             c.removeOnLayoutChangeListener(containerLayoutListener);
                         }
-                        View menu = observedMenuRef[0].get();
+                        View menu = observedMenuRef.view.get();
                         if (menu != null) {
                             menu.removeOnLayoutChangeListener(layoutListener);
                         }
@@ -222,7 +229,7 @@ public final class GhostPlayToolbarButton {
         });
     }
 
-    private static void updateButtonVisual(@NonNull LinearLayout pill, boolean animate) {
+    private static void updateButtonVisual(LinearLayout pill, boolean animate) {
         boolean active = GhostPlayPatch.isSessionGhostActive();
         long rem = GhostPlayPatch.getTimedGhostRemainingMinutes();
         ImageView icon = (ImageView) pill.getChildAt(0);
@@ -268,9 +275,9 @@ public final class GhostPlayToolbarButton {
     }
 
     private static void positionNextToActionMenu(
-            @NonNull FrameLayout container,
-            @NonNull LinearLayout pill,
-            @Nullable WeakReference<View>[] observedMenuRef,
+            FrameLayout container,
+            LinearLayout pill,
+            @Nullable MenuViewRef observedMenuRef,
             @Nullable View.OnLayoutChangeListener menuLayoutListener
     ) {
         if (!GhostPlayPatch.isEnabled()
@@ -287,16 +294,16 @@ public final class GhostPlayToolbarButton {
             updateButtonVisual(pill, false);
         }
 
-        View actionMenu = (observedMenuRef != null) ? observedMenuRef[0].get() : null;
+        View actionMenu = (observedMenuRef != null) ? observedMenuRef.view.get() : null;
         if (actionMenu == null || !actionMenu.isAttachedToWindow()) {
             actionMenu = findActionMenuView(container);
             if (actionMenu != null && observedMenuRef != null && menuLayoutListener != null) {
-                View prev = observedMenuRef[0].get();
+                View prev = observedMenuRef.view.get();
                 if (prev != null && prev != actionMenu) {
                     prev.removeOnLayoutChangeListener(menuLayoutListener);
                 }
                 actionMenu.addOnLayoutChangeListener(menuLayoutListener);
-                observedMenuRef[0] = new WeakReference<>(actionMenu);
+                observedMenuRef.view = new WeakReference<>(actionMenu);
             }
         }
 
@@ -339,7 +346,7 @@ public final class GhostPlayToolbarButton {
     }
 
     @Nullable
-    private static View findActionMenuView(@NonNull ViewGroup parent) {
+    private static View findActionMenuView(ViewGroup parent) {
         for (int i = 0, n = parent.getChildCount(); i < n; i++) {
             View child = parent.getChildAt(i);
             if (BUTTON_TAG.equals(child.getTag())) continue;

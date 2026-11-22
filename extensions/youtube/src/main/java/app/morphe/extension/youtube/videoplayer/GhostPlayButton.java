@@ -30,9 +30,9 @@ import app.morphe.extension.youtube.patches.ghostplay.GhostTheme;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Player overlay button for Ghost Play (supports both modern and legacy player controls).
- * Short tap: toggles session Ghost Mode.
- * Long tap: opens the Ghost Play quick menu (timer, channel rules, local history).
+ * Player overlay button for Ghost mode (supports both modern and legacy player controls).
+ * Short tap: toggles Ghost mode.
+ * Long tap: opens the Ghost mode quick menu (timer, channel rules, local history).
  */
 @SuppressWarnings("unused")
 public final class GhostPlayButton {

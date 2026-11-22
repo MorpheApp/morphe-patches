@@ -28,7 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Collections;
@@ -45,7 +44,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.VideoInformation;
 
 /**
- * Interactive manager for Auto-Ghost channels:
+ * Interactive manager for auto-ghost channels:
  * - Search YouTube channels by name, @handle, or URL and add with one tap
  * - Compact expandable list of saved channels (shows avatar, handle, description, and recent videos on tap)
  * - Live search filter over saved channels and one-tap deletion
@@ -58,7 +57,7 @@ public final class GhostChannelManagerDialog {
     private GhostChannelManagerDialog() {
     }
 
-    public static void show(@NonNull Context rawContext, @Nullable Runnable onDismissCallback) {
+    public static void show(Context rawContext, @Nullable Runnable onDismissCallback) {
         try {
             Context context = GhostHistoryDialog.resolveActivityContext(rawContext);
             if (context == null) return;
@@ -260,7 +259,7 @@ public final class GhostChannelManagerDialog {
             styleTab(tabSearchBtn, activeTab == TAB_SEARCH);
         }
 
-        private void triggerDetailFetch(@NonNull String key, @NonNull GhostChannelStore.ChannelEntry entry) {
+        private void triggerDetailFetch(String key, GhostChannelStore.ChannelEntry entry) {
             if (loadingKeys.contains(key)) {
                 return;
             }
@@ -307,7 +306,7 @@ public final class GhostChannelManagerDialog {
             }
         }
 
-        private View buildCurrentChannelBanner(@Nullable String channelId, @NonNull String channelName) {
+        private View buildCurrentChannelBanner(@Nullable String channelId, String channelName) {
             LinearLayout banner = new LinearLayout(context);
             banner.setOrientation(LinearLayout.HORIZONTAL);
             banner.setGravity(Gravity.CENTER_VERTICAL);
@@ -354,7 +353,7 @@ public final class GhostChannelManagerDialog {
             return banner;
         }
 
-        private View buildSavedRow(@NonNull GhostChannelStore.ChannelEntry entry) {
+        private View buildSavedRow(GhostChannelStore.ChannelEntry entry) {
             String key = !entry.channelId().isEmpty() ? entry.channelId() : entry.name();
             boolean expanded = expandedKeys.contains(key);
 
@@ -533,7 +532,7 @@ public final class GhostChannelManagerDialog {
             }
         }
 
-        private View buildSearchResultRow(@NonNull GhostChannelStore.ChannelEntry entry) {
+        private View buildSearchResultRow(GhostChannelStore.ChannelEntry entry) {
             boolean alreadyAdded = GhostChannelStore.contains(entry.channelId(), entry.name());
 
             LinearLayout card = new LinearLayout(context);

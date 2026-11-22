@@ -7,42 +7,34 @@
 
 package app.morphe.extension.youtube.patches.ghostplay;
 
-import android.content.Context;
-import android.util.AtomicFile;
+import android.text.format.Formatter;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * On-device watch history for Ghost Play videos.
- * Stored in app noBackupFilesDir (excluded from Android Auto Backup) using serialized AtomicFile writes.
+ * Watch history of the Ghost mode videos, saved only on the device.
  */
 public final class GhostHistoryStore {
 
-    public static final int DEFAULT_MAX_ENTRIES = 500;
-    private static final String FILE_NAME = "morphe_ghost_history.json";
-    private static final ExecutorService ioExecutor = Executors.newSingleThreadExecutor();
+    private static final GhostJsonFile file = new GhostJsonFile("morphe_ghost_history.json");
 
     public record Entry(
-            @NonNull String videoId,
-            @NonNull String title,
-            @NonNull String channelName,
+            String videoId,
+            String title,
+            String channelName,
             long positionMs,
             long durationMs,
             long watchedAtMs
@@ -52,7 +44,7 @@ public final class GhostHistoryStore {
             return (int) Math.min(100L, (positionMs * 100L) / durationMs);
         }
 
-        public boolean matchesFilter(@NonNull String lowerQuery) {
+        public boolean matchesFilter(String lowerQuery) {
             if (lowerQuery.isEmpty()) return true;
             return title.toLowerCase(Locale.ROOT).contains(lowerQuery)
                     || channelName.toLowerCase(Locale.ROOT).contains(lowerQuery)
@@ -61,31 +53,11 @@ public final class GhostHistoryStore {
     }
 
     @Nullable
-    private static volatile List<Entry> cachedEntries;
+    private static List<Entry> cachedEntries;
 
     private GhostHistoryStore() {
     }
 
-    public static int getConfiguredLimit() {
-        try {
-            return parseLimit(Settings.GHOST_PLAY_HISTORY_LIMIT.get());
-        } catch (Exception ignored) {
-            return DEFAULT_MAX_ENTRIES;
-        }
-    }
-
-    public static int parseLimit(@Nullable String raw) {
-        if (raw == null || raw.trim().isEmpty()) {
-            return DEFAULT_MAX_ENTRIES;
-        }
-        try {
-            return Math.max(0, Integer.parseInt(raw.trim())); // 0 means unlimited.
-        } catch (NumberFormatException ex) {
-            return DEFAULT_MAX_ENTRIES;
-        }
-    }
-
-    @NonNull
     public static synchronized List<Entry> getAll() {
         ensureLoaded();
         return new ArrayList<>(cachedEntries);
@@ -96,31 +68,24 @@ public final class GhostHistoryStore {
         return cachedEntries.size();
     }
 
-    public static synchronized long getApproxSizeBytes() {
+    /**
+     * @return The size of the saved history, formatted for display.
+     */
+    public static synchronized String getFormattedSize() {
         ensureLoaded();
-        File file = getStorageFile();
-        if (file != null && file.isFile()) {
-            return file.length();
+        long bytes = 0;
+        if (!cachedEntries.isEmpty()) {
+            try {
+                bytes = toJson(cachedEntries).toString().getBytes(StandardCharsets.UTF_8).length;
+            } catch (JSONException ex) {
+                Logger.printException(() -> "getFormattedSize failure", ex);
+            }
         }
-        if (cachedEntries.isEmpty()) {
-            return 0L;
-        }
-        return serializeJson(cachedEntries).getBytes(StandardCharsets.UTF_8).length;
-    }
-
-    public static String formatSize(long bytes) {
-        if (bytes < 1024L) {
-            return bytes + " B";
-        }
-        double kb = bytes / 1024.0;
-        if (kb < 1024.0) {
-            return String.format(Locale.US, "%.1f KB", kb);
-        }
-        return String.format(Locale.US, "%.2f MB", kb / 1024.0);
+        return Formatter.formatShortFileSize(Utils.getContext(), bytes);
     }
 
     public static synchronized void record(
-            @NonNull String videoId,
+            String videoId,
             @Nullable String title,
             @Nullable String channelName,
             long positionMs,
@@ -157,17 +122,15 @@ public final class GhostHistoryStore {
                 System.currentTimeMillis()
         ));
 
-        trimToLimit(entries, getConfiguredLimit());
-        cachedEntries = entries;
-        persistAsync(List.copyOf(entries));
+        trimToLimit(entries, Settings.GHOST_PLAY_HISTORY_LIMIT.get());
+        save(entries);
     }
 
-    public static synchronized void remove(@NonNull String videoId) {
+    public static synchronized void remove(String videoId) {
         ensureLoaded();
         List<Entry> entries = new ArrayList<>(cachedEntries);
         if (entries.removeIf(e -> e.videoId().equals(videoId))) {
-            cachedEntries = entries;
-            persistAsync(List.copyOf(entries));
+            save(entries);
         }
     }
 
@@ -177,17 +140,18 @@ public final class GhostHistoryStore {
         int before = entries.size();
         trimToLimit(entries, maxEntries);
         if (entries.size() != before) {
-            cachedEntries = entries;
-            persistAsync(List.copyOf(entries));
+            save(entries);
         }
     }
 
     public static synchronized void clear() {
-        cachedEntries = new ArrayList<>();
-        persistAsync(List.of());
+        save(new ArrayList<>());
     }
 
-    static void trimToLimit(@NonNull List<Entry> entries, int maxEntries) {
+    /**
+     * @param maxEntries Maximum number of entries, or 0 for no limit.
+     */
+    static void trimToLimit(List<Entry> entries, int maxEntries) {
         if (maxEntries <= 0) {
             return;
         }
@@ -197,96 +161,50 @@ public final class GhostHistoryStore {
     }
 
     private static void ensureLoaded() {
-        if (cachedEntries != null) {
-            return;
+        if (cachedEntries == null) {
+            cachedEntries = fromJson(file.read());
         }
-        List<Entry> loaded = new ArrayList<>();
+    }
+
+    private static void save(List<Entry> entries) {
+        cachedEntries = entries;
         try {
-            File file = getStorageFile();
-            if (file != null && file.isFile()) {
-                byte[] bytes = new AtomicFile(file).readFully();
-                loaded = deserializeJson(new String(bytes, StandardCharsets.UTF_8));
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "GhostHistoryStore.ensureLoaded failure", ex);
+            file.writeAsync(toJson(entries));
+        } catch (JSONException ex) {
+            Logger.printException(() -> "GhostHistoryStore save failure", ex);
         }
-        cachedEntries = loaded;
     }
 
-    private static void persistAsync(@NonNull List<Entry> snapshot) {
-        ioExecutor.execute(() -> {
-            File file = getStorageFile();
-            if (file == null) return;
-            AtomicFile atomic = new AtomicFile(file);
-            if (snapshot.isEmpty()) {
-                atomic.delete();
-                return;
-            }
-            byte[] data = serializeJson(snapshot).getBytes(StandardCharsets.UTF_8);
-            FileOutputStream fos = null;
-            try {
-                fos = atomic.startWrite();
-                fos.write(data);
-                atomic.finishWrite(fos);
-            } catch (Exception ex) {
-                if (fos != null) {
-                    atomic.failWrite(fos);
-                }
-                Logger.printException(() -> "Failed to persist GhostHistoryStore", ex);
-            }
-        });
-    }
-
-    @Nullable
-    private static File getStorageFile() {
-        Context ctx = Utils.getContext();
-        if (ctx == null) return null;
-        return new File(ctx.getNoBackupFilesDir(), FILE_NAME);
-    }
-
-    static String serializeJson(@NonNull List<Entry> entries) {
-        if (entries.isEmpty()) return "[]";
-        JSONArray arr = new JSONArray();
+    private static JSONArray toJson(List<Entry> entries) throws JSONException {
+        JSONArray array = new JSONArray();
         for (Entry e : entries) {
-            try {
-                JSONObject obj = new JSONObject();
-                obj.put("v", e.videoId());
-                obj.put("t", e.title());
-                obj.put("c", e.channelName());
-                obj.put("p", e.positionMs());
-                obj.put("d", e.durationMs());
-                obj.put("w", e.watchedAtMs());
-                arr.put(obj);
-            } catch (Exception ignored) {
-            }
+            array.put(new JSONObject()
+                    .put("v", e.videoId())
+                    .put("t", e.title())
+                    .put("c", e.channelName())
+                    .put("p", e.positionMs())
+                    .put("d", e.durationMs())
+                    .put("w", e.watchedAtMs()));
         }
-        return arr.toString();
+        return array;
     }
 
-    @NonNull
-    static List<Entry> deserializeJson(@Nullable String raw) {
-        List<Entry> result = new ArrayList<>();
-        if (raw == null || raw.trim().isEmpty()) {
-            return result;
+    private static List<Entry> fromJson(JSONArray array) {
+        List<Entry> entries = new ArrayList<>(array.length());
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject obj = array.optJSONObject(i);
+            if (obj == null) continue;
+            String videoId = obj.optString("v");
+            if (videoId.isEmpty()) continue;
+            entries.add(new Entry(
+                    videoId,
+                    obj.optString("t"),
+                    obj.optString("c"),
+                    obj.optLong("p"),
+                    obj.optLong("d"),
+                    obj.optLong("w")
+            ));
         }
-        try {
-            JSONArray arr = new JSONArray(raw);
-            for (int i = 0; i < arr.length(); i++) {
-                JSONObject obj = arr.optJSONObject(i);
-                if (obj == null) continue;
-                String videoId = obj.optString("v", "");
-                if (videoId.isEmpty()) continue;
-                result.add(new Entry(
-                        videoId,
-                        obj.optString("t", ""),
-                        obj.optString("c", ""),
-                        obj.optLong("p", 0L),
-                        obj.optLong("d", 0L),
-                        obj.optLong("w", 0L)
-                ));
-            }
-        } catch (Exception ignored) {
-        }
-        return result;
+        return entries;
     }
 }

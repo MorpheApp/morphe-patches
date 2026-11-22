@@ -17,7 +17,7 @@ import app.morphe.extension.youtube.patches.ghostplay.GhostHistoryDialog;
 import app.morphe.extension.youtube.patches.ghostplay.GhostHistoryStore;
 
 /**
- * Settings entry that opens the on-device Ghost Play history dialog and shows live usage.
+ * Settings entry that opens the on-device Ghost mode history dialog and shows live usage.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class GhostHistoryPreference extends Preference implements Preference.OnPreferenceClickListener {
@@ -47,7 +47,7 @@ public class GhostHistoryPreference extends Preference implements Preference.OnP
     private void updateSummary() {
         int count = GhostHistoryStore.count();
         if (count > 0) {
-            String size = GhostHistoryStore.formatSize(GhostHistoryStore.getApproxSizeBytes());
+            String size = GhostHistoryStore.getFormattedSize();
             setSummary(str("morphe_ghost_play_view_history_summary_count", count, size));
         } else {
             setSummary(str("morphe_ghost_play_view_history_summary_empty"));

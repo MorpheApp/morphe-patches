@@ -13,7 +13,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.libraries.youtube.media.interfaces.HttpHeader;
@@ -21,8 +20,6 @@ import com.google.android.libraries.youtube.media.interfaces.HttpHeader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,7 +45,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.videoplayer.GhostPlayButton;
 
 /**
- * Ghost Play: watch specific videos, Shorts, search opens, channels, or whole sessions
+ * Ghost mode: watch specific videos, Shorts, search opens, channels, or whole sessions
  * without affecting YouTube watch history or recommendations, while keeping the current
  * account and settings intact.
  */
@@ -59,6 +56,7 @@ public final class GhostPlayPatch {
     private static final long HISTORY_SAVE_DELAY_MS = 2_500L;
     private static final long HISTORY_PERIODIC_SAVE_MS = 10_000L;
     private static final long PENDING_LAUNCH_WINDOW_MS = 15_000L;
+    private static final long MIN_RESUME_POSITION_MS = 5_000L;
 
     private static final String INNERTUBE_PATH = "/youtubei/v1/";
     private static final String HEADER_AUTHORIZATION = "authorization";
@@ -100,13 +98,11 @@ public final class GhostPlayPatch {
     @Nullable
     private static volatile String pendingToastVideoId;
 
-    // Cached snapshot of the currently playing ghost video so its last position can be flushed on switch.
+    /**
+     * Ghost video whose position is saved to the local history.
+     */
     @Nullable
     private static volatile String activeGhostHistoryVideoId;
-    private static volatile String activeGhostTitle = "";
-    private static volatile String activeGhostChannel = "";
-    private static volatile long activeGhostPosMs = 0L;
-    private static volatile long activeGhostDurationMs = 0L;
 
     private static final Handler mainHandler = new Handler(Looper.getMainLooper());
     private static final Runnable periodicHistorySaver = new Runnable() {
@@ -278,18 +274,9 @@ public final class GhostPlayPatch {
     }
 
     private static void unmarkCurrentVideo() {
-        try {
-            String startingId = VideoInformation.getStartingOrPlayingVideoId();
-            if (Utils.isNotEmpty(startingId)) {
-                ghostVideoIds.remove(startingId);
-            }
-            String playingId = VideoInformation.getVideoId();
-            if (Utils.isNotEmpty(playingId)) {
-                ghostVideoIds.remove(playingId);
-            }
-            clearActiveHistoryTracking();
-        } catch (Exception ignored) {
-        }
+        unmarkGhostVideo(VideoInformation.getStartingOrPlayingVideoId());
+        unmarkGhostVideo(VideoInformation.getVideoId());
+        clearActiveHistoryTracking();
     }
 
     public static boolean isPendingGhostActive() {
@@ -333,7 +320,7 @@ public final class GhostPlayPatch {
     }
 
     /**
-     * Marks the currently playing video protected if it belongs to a saved Auto-Ghost channel.
+     * Marks the currently playing video protected if it belongs to a saved auto-ghost channel.
      */
     public static void markCurrentVideoIfMatchesChannel() {
         if (!isEnabled()) {
@@ -360,7 +347,7 @@ public final class GhostPlayPatch {
     /**
      * Launches a video directly in Ghost mode from a flyout menu or local history.
      */
-    public static void playVideoInGhostMode(@NonNull String videoId, long resumeMillis) {
+    public static void playVideoInGhostMode(String videoId, long resumeMillis) {
         if (!Utils.isNotEmpty(videoId)) {
             return;
         }
@@ -371,7 +358,7 @@ public final class GhostPlayPatch {
         pendingToastVideoId = videoId;
 
         StringBuilder url = new StringBuilder("https://www.youtube.com/watch?v=").append(videoId);
-        if (resumeMillis >= 5_000L) {
+        if (resumeMillis >= MIN_RESUME_POSITION_MS) {
             url.append("&t=").append(resumeMillis / 1000L).append('s');
         }
 
@@ -445,7 +432,6 @@ public final class GhostPlayPatch {
             return;
         }
         try {
-            flushCachedActiveHistory();
             clearActiveHistoryTracking();
 
             final String resolvedVideoId = getCurrentVideoId();
@@ -543,7 +529,7 @@ public final class GhostPlayPatch {
         }
     }
 
-    static boolean isNativeGhostTargetUrl(@NonNull String url) {
+    static boolean isNativeGhostTargetUrl(String url) {
         return url.contains("/youtubei/v1/player")
                 || url.contains("/youtubei/v1/reel/reel_item_watch")
                 || url.contains("/youtubei/v1/get_watch")
@@ -587,8 +573,8 @@ public final class GhostPlayPatch {
      * Core header anonymization logic, separated for deterministic unit testing.
      */
     static Map<String, String> processRequestHeaders(
-            @NonNull String url,
-            @NonNull Map<String, String> headers,
+            String url,
+            Map<String, String> headers,
             @Nullable byte[] body,
             boolean sessionActive,
             boolean autoShorts,
@@ -596,6 +582,11 @@ public final class GhostPlayPatch {
             boolean currentVideoGhost,
             boolean pendingGhostActive
     ) {
+        if (!sessionActive && !autoShorts && !autoSearchNow && !currentVideoGhost
+                && !pendingGhostActive && ghostVideoIds.isEmpty()) {
+            return headers;
+        }
+
         String path = extractPath(url);
         if (path == null) {
             return headers;
@@ -665,7 +656,7 @@ public final class GhostPlayPatch {
         return shouldAnonymize ? stripAuthHeaders(headers) : headers;
     }
 
-    private static boolean isAuthOrVisitorHeader(@NonNull String key) {
+    private static boolean isAuthOrVisitorHeader(String key) {
         String low = key.toLowerCase(Locale.ROOT);
         return low.equals(HEADER_AUTHORIZATION)
                 || low.equals(HEADER_PAGE_ID)
@@ -676,7 +667,7 @@ public final class GhostPlayPatch {
     /**
      * Returns a shallow copy of headers with account-identifying headers removed.
      */
-    static Map<String, String> stripAuthHeaders(@NonNull Map<String, String> original) {
+    static Map<String, String> stripAuthHeaders(Map<String, String> original) {
         Map<String, String> sanitized = new HashMap<>(original.size());
         for (Map.Entry<String, String> entry : original.entrySet()) {
             String key = entry.getKey();
@@ -692,7 +683,7 @@ public final class GhostPlayPatch {
      * Reads videoId (field 2) from a raw or GZIP-compressed InnerTube protobuf request body.
      */
     @Nullable
-    static String readVideoIdFromBody(@NonNull byte[] body, boolean holdsPlayerRequest) {
+    static String readVideoIdFromBody(byte[] body, boolean holdsPlayerRequest) {
         try {
             byte[] message = body.length > 1
                     && (body[0] & 0xFF) == GZIP_MAGIC_FIRST
@@ -709,13 +700,14 @@ public final class GhostPlayPatch {
                 return null;
             }
             return new String(idBytes, StandardCharsets.UTF_8);
-        } catch (Exception ex) {
+        } catch (IOException ex) {
+            Logger.printException(() -> "readVideoIdFromBody failure", ex);
             return null;
         }
     }
 
     @Nullable
-    private static byte[] readLengthDelimitedField(@NonNull byte[] data, int targetFieldNumber) {
+    private static byte[] readLengthDelimitedField(byte[] data, int targetFieldNumber) {
         int pos = 0;
         int len = data.length;
         while (pos < len) {
@@ -783,7 +775,7 @@ public final class GhostPlayPatch {
     }
 
     @Nullable
-    static String extractPath(@NonNull String url) {
+    static String extractPath(String url) {
         int schemeIdx = url.indexOf("://");
         int start = schemeIdx >= 0 ? url.indexOf('/', schemeIdx + 3) : 0;
         if (start < 0) {
@@ -794,7 +786,7 @@ public final class GhostPlayPatch {
     }
 
     @Nullable
-    static String extractQueryParam(@NonNull String url, @NonNull String key) {
+    static String extractQueryParam(String url, String key) {
         int q = url.indexOf('?');
         if (q < 0 || q + 1 >= url.length()) {
             return null;
@@ -804,15 +796,11 @@ public final class GhostPlayPatch {
         if (hash >= 0) {
             query = query.substring(0, hash);
         }
+        // The values used are video ids, which are not URL encoded.
         String prefix = key + "=";
         for (String part : query.split("&")) {
             if (part.startsWith(prefix)) {
-                String rawVal = part.substring(prefix.length());
-                try {
-                    return URLDecoder.decode(rawVal, StandardCharsets.UTF_8.name());
-                } catch (UnsupportedEncodingException | IllegalArgumentException ex) {
-                    return rawVal;
-                }
+                return part.substring(prefix.length());
             }
         }
         return null;
@@ -835,20 +823,16 @@ public final class GhostPlayPatch {
         mainHandler.postDelayed(GhostPlayButton::refreshButtonState, 1000L);
     }
 
-    private static void scheduleLocalHistoryRecording(@NonNull String videoId) {
+    private static void scheduleLocalHistoryRecording(String videoId) {
         if (!Settings.GHOST_PLAY_LOCAL_HISTORY.get()) {
             return;
         }
         activeGhostHistoryVideoId = videoId;
-        activeGhostTitle = "";
-        activeGhostChannel = "";
-        activeGhostPosMs = 0L;
-        activeGhostDurationMs = 0L;
         mainHandler.removeCallbacks(periodicHistorySaver);
         mainHandler.postDelayed(periodicHistorySaver, HISTORY_SAVE_DELAY_MS);
     }
 
-    private static void captureAndSaveCurrentVideo(@NonNull String expectedVideoId) {
+    private static void captureAndSaveCurrentVideo(String expectedVideoId) {
         try {
             if (!Settings.GHOST_PLAY_LOCAL_HISTORY.get()) {
                 return;
@@ -856,44 +840,21 @@ public final class GhostPlayPatch {
             if (!expectedVideoId.equals(getCurrentVideoId())) {
                 return;
             }
-            String title = VideoInformation.getVideoTitle();
-            String channel = VideoInformation.getChannelName();
-            long pos = Math.max(0L, VideoInformation.getVideoTime());
-            long len = Math.max(0L, VideoInformation.getVideoLength());
-
-            activeGhostTitle = title != null ? title : "";
-            activeGhostChannel = channel != null ? channel : "";
-            activeGhostPosMs = pos;
-            activeGhostDurationMs = len;
-            GhostHistoryStore.record(expectedVideoId, activeGhostTitle, activeGhostChannel, pos, len);
+            GhostHistoryStore.record(
+                    expectedVideoId,
+                    VideoInformation.getVideoTitle(),
+                    VideoInformation.getChannelName(),
+                    VideoInformation.getVideoTime(),
+                    VideoInformation.getVideoLength()
+            );
         } catch (Exception ex) {
             Logger.printException(() -> "captureAndSaveCurrentVideo failure", ex);
-        }
-    }
-
-    private static void flushCachedActiveHistory() {
-        String prevId = activeGhostHistoryVideoId;
-        if (prevId == null || !Settings.GHOST_PLAY_LOCAL_HISTORY.get()) {
-            return;
-        }
-        if (activeGhostPosMs > 0L || !activeGhostTitle.isEmpty()) {
-            GhostHistoryStore.record(
-                    prevId,
-                    activeGhostTitle,
-                    activeGhostChannel,
-                    activeGhostPosMs,
-                    activeGhostDurationMs
-            );
         }
     }
 
     private static void clearActiveHistoryTracking() {
         mainHandler.removeCallbacks(periodicHistorySaver);
         activeGhostHistoryVideoId = null;
-        activeGhostTitle = "";
-        activeGhostChannel = "";
-        activeGhostPosMs = 0L;
-        activeGhostDurationMs = 0L;
     }
 
     // Test hooks (package-private).
@@ -904,10 +865,6 @@ public final class GhostPlayPatch {
         pendingGhostUntilMs = 0L;
         pendingToastVideoId = null;
         activeGhostHistoryVideoId = null;
-        activeGhostTitle = "";
-        activeGhostChannel = "";
-        activeGhostPosMs = 0L;
-        activeGhostDurationMs = 0L;
     }
 
     static void addGhostVideoForTests(String videoId) {

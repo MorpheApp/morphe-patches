@@ -17,7 +17,7 @@ import app.morphe.extension.youtube.patches.ghostplay.GhostChannelManagerDialog;
 import app.morphe.extension.youtube.patches.ghostplay.GhostChannelStore;
 
 /**
- * Settings entry that opens the searchable Auto-Ghost channel manager dialog.
+ * Settings entry that opens the searchable auto-ghost channel manager dialog.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class GhostChannelsPreference extends Preference implements Preference.OnPreferenceClickListener {

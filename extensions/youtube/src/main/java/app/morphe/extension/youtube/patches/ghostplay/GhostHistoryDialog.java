@@ -34,7 +34,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -53,11 +52,13 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 
 /**
- * Interactive dialogs for Ghost Play quick controls and on-device ghost history.
+ * Interactive dialogs for Ghost mode quick controls and on-device ghost history.
  */
 public final class GhostHistoryDialog {
 
     private static final String GHOST_SETTINGS_SCREEN_KEY = "morphe_ghost_play_screen";
+    private static final int[] TIMER_PRESET_MINUTES = {15, 30, 60, 120};
+    private static final int TIMER_MAX_MINUTES = 720;
 
     private GhostHistoryDialog() {
     }
@@ -85,7 +86,7 @@ public final class GhostHistoryDialog {
     }
 
     /**
-     * Shows the Ghost Play quick controls dialog (long-press on player or toolbar button).
+     * Shows the Ghost mode quick controls dialog (long-press on player or toolbar button).
      */
     public static void showQuickMenu(@Nullable Context rawContext) {
         try {
@@ -308,7 +309,7 @@ public final class GhostHistoryDialog {
 
                 powerBadge.setText(rem > 0
                         ? str("morphe_ghost_play_toolbar_timed_badge", rem)
-                        : "ON");
+                        : str("morphe_ghost_play_state_on"));
                 powerBadge.setTextColor(GhostTheme.onAccent());
                 powerBadge.setBackground(GhostTheme.morpheGradientRect(Dim.dp12));
             } else {
@@ -322,7 +323,7 @@ public final class GhostHistoryDialog {
                         PorterDuff.Mode.SRC_IN);
                 powerRingIcon.setColorFilter(GhostTheme.mutedText(), PorterDuff.Mode.SRC_IN);
 
-                powerBadge.setText("OFF");
+                powerBadge.setText(str("morphe_ghost_play_state_off"));
                 powerBadge.setTextColor(GhostTheme.mutedText());
                 powerBadge.setBackground(GhostTheme.roundedRect(Dim.dp12, GhostTheme.subtleSurface()));
             }
@@ -390,7 +391,7 @@ public final class GhostHistoryDialog {
 
                 LinearLayout chipsRow = new LinearLayout(context);
                 chipsRow.setOrientation(LinearLayout.HORIZONTAL);
-                int[] presets = new int[]{15, 30, 60, 120};
+                int[] presets = TIMER_PRESET_MINUTES;
                 for (int i = 0; i < presets.length; i++) {
                     int mins = presets[i];
                     TextView chip = buildChip(str("morphe_ghost_play_timer_minutes_chip", mins), false);
@@ -432,7 +433,7 @@ public final class GhostHistoryDialog {
                     String raw = customInput.getText() == null ? "" : customInput.getText().toString().trim();
                     try {
                         int mins = Integer.parseInt(raw);
-                        if (mins >= 1 && mins <= 720) {
+                        if (mins >= 1 && mins <= TIMER_MAX_MINUTES) {
                             applyTimerMinutes(mins);
                         } else {
                             Utils.showSnackbarShort(str("morphe_ghost_play_timer_invalid_toast"));
@@ -509,7 +510,7 @@ public final class GhostHistoryDialog {
 
             if (Utils.isNotEmpty(channelName)) {
                 TextView toggleBtn = new TextView(context);
-                toggleBtn.setText(listed ? "ON" : "OFF");
+                toggleBtn.setText(str(listed ? "morphe_ghost_play_state_on" : "morphe_ghost_play_state_off"));
                 toggleBtn.setTextColor(listed ? GhostTheme.onAccent() : GhostTheme.mutedText());
                 toggleBtn.setTextSize(11.5f);
                 toggleBtn.setTypeface(null, Typeface.BOLD);
@@ -577,7 +578,7 @@ public final class GhostHistoryDialog {
         }
     }
 
-    private static void setDrawable(@NonNull ImageView iv, @NonNull String name) {
+    private static void setDrawable(ImageView iv, String name) {
         int id = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, name);
         if (id != 0) {
             iv.setImageResource(id);
@@ -585,7 +586,7 @@ public final class GhostHistoryDialog {
     }
 
     /**
-     * Shows the on-device Ghost Play history dialog using a recycled ListView and live filter.
+     * Shows the on-device Ghost mode history dialog using a recycled ListView and live filter.
      */
     public static void showHistoryDialog(@Nullable Context rawContext, @Nullable Runnable onDismiss) {
         try {
@@ -594,7 +595,7 @@ public final class GhostHistoryDialog {
 
             List<GhostHistoryStore.Entry> allEntries = GhostHistoryStore.getAll();
             boolean hasEntries = !allEntries.isEmpty();
-            String sizeText = GhostHistoryStore.formatSize(GhostHistoryStore.getApproxSizeBytes());
+            String sizeText = GhostHistoryStore.getFormattedSize();
 
             Pair<Dialog, LinearLayout> result = CustomDialog.create(
                     context,
@@ -696,7 +697,7 @@ public final class GhostHistoryDialog {
         }
     }
 
-    private static void showClearHistoryConfirm(@NonNull Context context, @Nullable Runnable onCleared) {
+    private static void showClearHistoryConfirm(Context context, @Nullable Runnable onCleared) {
         Pair<Dialog, LinearLayout> confirm = CustomDialog.create(
                 context,
                 str("morphe_ghost_play_history_clear_confirm_title"),

@@ -24,13 +24,11 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
- * Centralized visual tokens and micro-interaction helpers for Ghost Play.
- * Harmonized with Morphe's official brand identity (#1E5AA8 Blue -> #00AFAE Teal),
- * paired with a pure white ghost silhouette.
+ * Colors, shapes and animations of the Ghost mode dialogs and buttons.
  */
 public final class GhostTheme {
 
-    // Official Morphe brand colors (from morphe_adaptive_foreground).
+    // Morphe icon colors.
     private static final int MORPHE_BLUE = 0xFF1E5AA8;
     private static final int MORPHE_TEAL = 0xFF00AFAE;
     private static final int ACCENT_DARK = 0xFF19C6C4;
@@ -39,14 +37,6 @@ public final class GhostTheme {
     private static final int DANGER_COLOR = 0xFFEF5350;
 
     private GhostTheme() {
-    }
-
-    public static int morpheBlue() {
-        return MORPHE_BLUE;
-    }
-
-    public static int morpheTeal() {
-        return MORPHE_TEAL;
     }
 
     public static int accent() {
@@ -109,7 +99,7 @@ public final class GhostTheme {
     }
 
     /**
-     * Morphe signature Blue -> Teal horizontal gradient rounded pill/button.
+     * Rounded rectangle with the gradient of the Morphe icon.
      */
     public static GradientDrawable morpheGradientRect(float radiusPx) {
         GradientDrawable d = new GradientDrawable(
@@ -122,7 +112,7 @@ public final class GhostTheme {
     }
 
     /**
-     * Morphe signature Blue -> Teal gradient circle (e.g., Power Orb when Ghost Mode is ON).
+     * Circle with the gradient of the Morphe icon.
      */
     public static GradientDrawable morpheGradientCircle(int strokePx, int strokeColor) {
         GradientDrawable d = new GradientDrawable(
@@ -146,22 +136,13 @@ public final class GhostTheme {
         return d;
     }
 
-    public static boolean areAnimationsEnabled(@Nullable Context context) {
-        if (context == null) return true;
-        try {
-            float scale = Settings.Global.getFloat(
-                    context.getContentResolver(),
-                    Settings.Global.ANIMATOR_DURATION_SCALE,
-                    1.0f
-            );
-            return scale > 0f;
-        } catch (Exception ignored) {
-            return true;
-        }
+    public static boolean areAnimationsEnabled(Context context) {
+        return Settings.Global.getFloat(context.getContentResolver(),
+                Settings.Global.ANIMATOR_DURATION_SCALE, 1.0f) > 0f;
     }
 
     /**
-     * Plays a cute floating ghost bob + playful tilt wiggle when Ghost mode activates.
+     * Bounces the ghost icon when Ghost mode is turned on, and shakes it when turned off.
      */
     public static void playCuteGhostBounce(@Nullable View view, boolean active) {
         if (view == null || !areAnimationsEnabled(view.getContext())) return;
@@ -197,7 +178,7 @@ public final class GhostTheme {
     }
 
     /**
-     * Plays a crisp spring press + sweep nudge on a timer icon (inspired by lucide-animated timer).
+     * Nudges the timer icon.
      */
     public static void playTimerNudge(@Nullable View view) {
         if (view == null || !areAnimationsEnabled(view.getContext())) return;

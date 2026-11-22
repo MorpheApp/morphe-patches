@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/5197
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -8,17 +8,18 @@
 package app.morphe.patches.youtube.misc.privacy.ghostplay
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * Matches VideoStats2Client#sendPing(UriBuilder, PingPolicy).
- * Blocking this method prevents VSS2 playback, watchtime, and delayplay pings
- * from being sent or queued into DelayedPing storage.
+ * VideoStats2Client sendPing. Sends or queues the playback, watchtime and delayplay pings.
  */
 internal object VideoStats2SendPingFingerprint : Fingerprint(
     returnType = "V",
@@ -28,11 +29,11 @@ internal object VideoStats2SendPingFingerprint : Fingerprint(
 )
 
 /**
- * Matches VideoStats2Client method that populates common tracking query parameters
- * ("cpn", "ns", "yt", "docid", "ver", "2").
- * The String field read immediately before "docid" is the video ID field.
+ * VideoStats2Client method that adds the common query parameters of the pings.
+ * The String field read right before "docid" is the video id.
  */
 internal object VideoStats2DocIdFingerprint : Fingerprint(
+    classFingerprint = VideoStats2SendPingFingerprint,
     returnType = "V",
     filters = listOf(
         string("cpn"),
@@ -50,39 +51,21 @@ internal object VideoStats2DocIdFingerprint : Fingerprint(
 )
 
 /**
- * Matches VideoStats2Client GEL logging helper method (1-parameter void method building a proto
- * and dispatching to the event logger, extracted in newer 21.x builds).
+ * VideoStats2Client method that logs the watchtime ping as a log event.
+ * Older app versions log it at the end of the watchtime flush method, newer versions in a method of its own.
  */
-internal object VideoStats2SendGelFingerprint : Fingerprint(
+internal object VideoStats2LogEventFingerprint : Fingerprint(
+    classFingerprint = VideoStats2SendPingFingerprint,
     returnType = "V",
-    parameters = listOf("L"),
     filters = listOf(
         methodCall(name = "createBuilder"),
-        methodCall(name = "copyOnWrite", location = MatchAfterWithin(6)),
-        methodCall(name = "build", location = MatchAfterWithin(10))
+        // Log event field number of the watchtime ping.
+        literal(0x1eb)
     )
 )
 
 /**
- * Matches VideoStats2Client watchtime flush method where GEL watchtime logging is inlined
- * (used on versions where the GEL dispatch helper has not been extracted).
- */
-internal object VideoStats2FlushWatchtimeFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("I"),
-    filters = listOf(
-        string("paused"),
-        string("playing"),
-        string("state"),
-        string("final"),
-        methodCall(name = "createBuilder")
-    )
-)
-
-/**
- * Matches VideoStats3Client#finishWatchTimeSegment(boolean, long).
- * Blocking this method before its monitor-enter prevents VSS3 WatchTimeSegment events
- * from being dispatched to YouTube's event logger.
+ * VideoStats3Client finishWatchTimeSegment.
  */
 internal object VideoStats3FinishSegmentFingerprint : Fingerprint(
     returnType = "V",
@@ -94,8 +77,40 @@ internal object VideoStats3FinishSegmentFingerprint : Fingerprint(
 )
 
 /**
- * Matches PtrackingClient's ping dispatch method (builds cmt/conn/cpn/remarketing params).
- * Blocking this method prevents playback tracking pings sent outside VideoStats2Client.
+ * VideoStats3Client method that sets the CPN and the video id of the WatchTimeSegment.
+ */
+internal object VideoStats3SegmentIdsFingerprint : Fingerprint(
+    classFingerprint = VideoStats3FinishSegmentFingerprint,
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        // CPN.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        methodCall(
+            smali = "Ljava/lang/Object;->getClass()Ljava/lang/Class;",
+            location = MatchAfterImmediately()
+        ),
+        // Video id.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterWithin(15)
+        ),
+        methodCall(
+            smali = "Ljava/lang/Object;->getClass()Ljava/lang/Class;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * PtrackingClient method that sends the playback tracking ping.
  */
 internal object PtrackingSendFingerprint : Fingerprint(
     returnType = "V",

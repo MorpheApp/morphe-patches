@@ -8,12 +8,9 @@
 package app.morphe.patches.youtube.misc.privacy.ghostplay
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
 import app.morphe.patches.shared.misc.request.hookMediaRequest
@@ -47,10 +44,7 @@ import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookP
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ghostplay/GhostPlayPatch;"
@@ -58,75 +52,36 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/GhostPlayButton;"
 
-private val ghostPlayResourcePatch = patch {
-    dependsOn(
-        settingsPatch,
-        legacyPlayerControlsPatch
-    )
+/**
+ * Returns at the start of the method if the extension blocks the stats of the video.
+ *
+ * @param videoIdField Field of this class with the video id of the stats, or null to use the current video.
+ */
+private fun MutableMethod.addStatsGuard(videoIdField: FieldReference? = null) {
+    // v0 is free at the start of the method, as long as it is not a parameter.
+    require(p0Register > 0) { "No free register in $this" }
 
-    execute {
-        copyPlayerButtonIcons(
-            "ghostplay",
-            "morphe_ghost_play_button_off",
-            "morphe_ghost_play_button_on"
-        )
-
-        copyResources(
-            "ghostplay",
-            ResourceGroup(
-                "drawable",
-                "morphe_ghost_play_flyout.xml",
-                "morphe_ghost_play_timer.xml",
-                "morphe_ghost_play_power.xml",
-                "morphe_ghost_play_channels.xml"
-            )
-        )
-
-        addLegacyBottomControl("ghostplay")
-    }
-}
-
-private fun MutableMethod.addGhostStatsGuard(videoIdField: FieldReference?) {
-    val isStatic = AccessFlags.STATIC.isSet(accessFlags)
-    if (videoIdField != null) {
-        require(!isStatic) { "Cannot read instance field $videoIdField inside static method $this" }
-    }
-    val paramRegs = parameterTypes.sumOf { type ->
-        val s = type.toString()
-        if (s == "J" || s == "D") 2 else 1
-    } + if (isStatic) 0 else 1
-    val localRegs = implementation!!.registerCount - paramRegs
-    require(localRegs >= 1) { "Method $this has no local register available for v0 guard" }
-
-    val allowLabel = ExternalLabel("morphe_ghost_allow", getInstruction(0))
-    if (videoIdField != null) {
-        addInstructionsWithLabels(
-            0,
+    addInstructionsWithLabels(
+        0,
+        if (videoIdField == null) {
+            "const/4 v0, 0x0"
+        } else {
             """
                 move-object/from16 v0, p0
                 iget-object v0, v0, $videoIdField
-                invoke-static { v0 }, $EXTENSION_CLASS->shouldBlockStats(Ljava/lang/String;)Z
-                move-result v0
-                if-eqz v0, :morphe_ghost_allow
-                return-void
-            """,
-            allowLabel
-        )
-    } else {
-        addInstructionsWithLabels(
-            0,
             """
-                const/4 v0, 0x0
-                invoke-static { v0 }, $EXTENSION_CLASS->shouldBlockStats(Ljava/lang/String;)Z
-                move-result v0
-                if-eqz v0, :morphe_ghost_allow
-                return-void
-            """,
-            allowLabel
-        )
-    }
+        } + """
+            invoke-static { v0 }, $EXTENSION_CLASS->shouldBlockStats(Ljava/lang/String;)Z
+            move-result v0
+            if-eqz v0, :allow
+            return-void
+            :allow
+            nop
+        """
+    )
 }
 
+@Suppress("unused")
 val ghostPlayPatch = patch(
     name = "Ghost mode",
     description = "Adds a ghost mode to watch videos without affecting YouTube watch history or recommendations."
@@ -145,7 +100,6 @@ val ghostPlayPatch = patch(
         playerOverlayButtonsSettingsPatch,
         playerOverlayButtonsHookPatch,
         legacyPlayerControlsPatch,
-        ghostPlayResourcePatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -170,7 +124,6 @@ val ghostPlayPatch = patch(
                         sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                         preferences = setOf(
                             SwitchPreference("morphe_ghost_play_toolbar_button", summary = true),
-                            SwitchPreference("morphe_ghost_play_player_button", summary = true),
                             SwitchPreference("morphe_ghost_play_flyout_button", summary = true)
                         )
                     ),
@@ -213,17 +166,34 @@ val ghostPlayPatch = patch(
         )
 
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_ghost_play_player_button")
+            SwitchPreference("morphe_ghost_play_player_button", summary = true)
+        )
+
+        copyPlayerButtonIcons(
+            "ghostplay",
+            "morphe_ghost_play_button_off",
+            "morphe_ghost_play_button_on"
+        )
+
+        copyResources(
+            "ghostplay",
+            ResourceGroup(
+                "drawable",
+                "morphe_ghost_play_flyout.xml",
+                "morphe_ghost_play_timer.xml",
+                "morphe_ghost_play_power.xml",
+                "morphe_ghost_play_channels.xml"
+            )
         )
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
-        // Intercept InnerTube requests before downstream hooks so auth headers are stripped early.
+        // Before the other hooks, so they also use the headers without the account.
         hookBuildRequest(
             "$EXTENSION_CLASS->overrideRequestHeaders",
             hookHeader = true,
             includeBody = true,
-            highPriority = true
+            first = true
         )
 
         // Intercept native C++ NetFetch requests (Onesie / player / stats) to strip auth headers.
@@ -238,53 +208,23 @@ val ghostPlayPatch = patch(
         )
         hookVideoStarted("$EXTENSION_CLASS->onVideoStarted()V")
 
-        // Block VSS2 (playback/watchtime/delayplay HTTP pings & GEL logging) for ghost videos.
-        val vss2Class = VideoStats2SendPingFingerprint.classDef
-        val vss2DocIdMatch = VideoStats2DocIdFingerprint.match(vss2Class)
-        val vss2VideoIdField = vss2DocIdMatch.instructionMatches[3].fieldReference
+        // Block the playback, watchtime and delayplay pings and their log events.
+        val videoStats2VideoIdField = VideoStats2DocIdFingerprint.instructionMatches[3].fieldReference
+        VideoStats2SendPingFingerprint.method.addStatsGuard(videoStats2VideoIdField)
+        VideoStats2LogEventFingerprint.method.addStatsGuard(videoStats2VideoIdField)
 
-        VideoStats2SendPingFingerprint.method.addGhostStatsGuard(vss2VideoIdField)
-        val vss2GelMatch = VideoStats2SendGelFingerprint.matchOrNull(vss2Class)
-        if (vss2GelMatch != null) {
-            vss2GelMatch.method.addGhostStatsGuard(vss2VideoIdField)
-        } else {
-            VideoStats2FlushWatchtimeFingerprint.match(vss2Class).method.addGhostStatsGuard(vss2VideoIdField)
-        }
+        // Block the WatchTimeSegment log events.
+        VideoStats3FinishSegmentFingerprint.method.addStatsGuard(
+            VideoStats3SegmentIdsFingerprint.instructionMatches[2].fieldReference
+        )
 
-        // Block VSS3 (WatchTimeSegment GEL logging) before monitor-enter for ghost videos.
-        val vss3Class = VideoStats3FinishSegmentFingerprint.classDef
-        val vss3FillStaticMethodRef = VideoStats3FinishSegmentFingerprint.method.instructions.first { ins ->
-            ins.opcode == Opcode.INVOKE_DIRECT &&
-                ins.getReference<MethodReference>()?.let { ref ->
-                    ref.definingClass == vss3Class.type &&
-                        ref.parameterTypes.isEmpty() &&
-                        ref.returnType == "V"
-                } == true
-        }.getReference<MethodReference>()!!
-
-        val vss3FillStaticMethod = vss3Class.methods.single {
-            it.name == vss3FillStaticMethodRef.name &&
-                it.parameterTypes.isEmpty() &&
-                it.returnType == "V"
-        }
-
-        val vss3StringFields = vss3FillStaticMethod.instructions
-            .filter { it.opcode == Opcode.IGET_OBJECT }
-            .mapNotNull { it.getReference<FieldReference>() }
-            .filter { it.definingClass == vss3Class.type && it.type == "Ljava/lang/String;" }
-            .distinct()
-        require(vss3StringFields.size >= 2) {
-            "Expected at least 2 String fields in VSS3 static field filler $vss3FillStaticMethod"
-        }
-        val vss3VideoIdField = vss3StringFields[1]
-
-        VideoStats3FinishSegmentFingerprint.method.addGhostStatsGuard(vss3VideoIdField)
-
-        // Block PtrackingClient playback tracking pings (cmt/conn/cpn/remarketing).
-        PtrackingSendFingerprint.method.addGhostStatsGuard(null)
+        // Block the playback tracking pings.
+        PtrackingSendFingerprint.method.addStatsGuard()
 
         // Player overlay button (modern + legacy).
         addPlayerBottomButton(EXTENSION_BUTTON)
         initializeLegacyBottomControl(EXTENSION_BUTTON)
+
+        addLegacyBottomControl("ghostplay")
     }
 }

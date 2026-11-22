@@ -7,26 +7,17 @@
 
 package app.morphe.extension.youtube.patches.ghostplay;
 
-import android.content.Context;
-import android.util.AtomicFile;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 
 /**
  * On-device store for auto-ghost channels (channel ID, name, handle, avatar, description,
@@ -34,20 +25,19 @@ import app.morphe.extension.shared.Utils;
  */
 public final class GhostChannelStore {
 
-    private static final String FILE_NAME = "morphe_ghost_channels.json";
-    private static final ExecutorService ioExecutor = Executors.newSingleThreadExecutor();
+    private static final GhostJsonFile file = new GhostJsonFile("morphe_ghost_channels.json");
 
     public record ChannelEntry(
-            @NonNull String channelId,
-            @NonNull String name,
-            @NonNull String handle,
-            @NonNull String avatarUrl,
-            @NonNull String subscriberText,
-            @NonNull String description,
-            @NonNull List<String> recentVideos,
+            String channelId,
+            String name,
+            String handle,
+            String avatarUrl,
+            String subscriberText,
+            String description,
+            List<String> recentVideos,
             long addedAtMs
     ) {
-        public boolean matchesFilter(@NonNull String lowerQuery) {
+        public boolean matchesFilter(String lowerQuery) {
             if (lowerQuery.isEmpty()) return true;
             if (name.toLowerCase(Locale.ROOT).contains(lowerQuery)) return true;
             if (handle.toLowerCase(Locale.ROOT).contains(lowerQuery)) return true;
@@ -60,12 +50,11 @@ public final class GhostChannelStore {
     }
 
     @Nullable
-    private static volatile List<ChannelEntry> cachedEntries;
+    private static List<ChannelEntry> cachedEntries;
 
     private GhostChannelStore() {
     }
 
-    @NonNull
     public static synchronized List<ChannelEntry> getAll() {
         ensureLoaded();
         return new ArrayList<>(cachedEntries);
@@ -81,7 +70,7 @@ public final class GhostChannelStore {
         return matchesEntries(cachedEntries, channelId, channelName);
     }
 
-    public static synchronized void addOrUpdate(@NonNull ChannelEntry entry) {
+    public static synchronized void addOrUpdate(ChannelEntry entry) {
         ensureLoaded();
         List<ChannelEntry> list = new ArrayList<>(cachedEntries);
         for (int i = 0; i < list.size(); i++) {
@@ -100,14 +89,12 @@ public final class GhostChannelStore {
                         existing.addedAtMs() > 0 ? existing.addedAtMs() : entry.addedAtMs()
                 );
                 list.set(i, merged);
-                cachedEntries = list;
-                persistAsync(List.copyOf(list));
+                save(list);
                 return;
             }
         }
         list.add(0, entry);
-        cachedEntries = list;
-        persistAsync(List.copyOf(list));
+        save(list);
     }
 
     public static synchronized boolean remove(@Nullable String channelId, @Nullable String channelName) {
@@ -115,14 +102,13 @@ public final class GhostChannelStore {
         List<ChannelEntry> list = new ArrayList<>(cachedEntries);
         boolean removed = removeFromList(list, channelId, channelName);
         if (removed) {
-            cachedEntries = list;
-            persistAsync(List.copyOf(list));
+            save(list);
         }
         return removed;
     }
 
     static boolean removeFromList(
-            @NonNull List<ChannelEntry> list,
+            List<ChannelEntry> list,
             @Nullable String channelId,
             @Nullable String channelName
     ) {
@@ -138,7 +124,7 @@ public final class GhostChannelStore {
     }
 
     static boolean matchesEntries(
-            @NonNull List<ChannelEntry> entries,
+            List<ChannelEntry> entries,
             @Nullable String channelId,
             @Nullable String channelName
     ) {
@@ -148,10 +134,12 @@ public final class GhostChannelStore {
         if (normId.isEmpty() && normName.isEmpty()) return false;
 
         for (ChannelEntry e : entries) {
-            if (!normId.isEmpty() && !e.channelId().isEmpty() && normId.equals(e.channelId())) {
-                return true;
-            }
-            if (!normName.isEmpty()) {
+            if (!normId.isEmpty() && !e.channelId().isEmpty()) {
+                // Different channels can have the same name, so only the ids are compared.
+                if (normId.equals(e.channelId())) {
+                    return true;
+                }
+            } else if (!normName.isEmpty()) {
                 if (!e.name().isEmpty() && normName.equals(e.name().trim().toLowerCase(Locale.ROOT))) {
                     return true;
                 }
@@ -164,108 +152,63 @@ public final class GhostChannelStore {
     }
 
     private static void ensureLoaded() {
-        if (cachedEntries != null) {
-            return;
+        if (cachedEntries == null) {
+            cachedEntries = fromJson(file.read());
         }
-        List<ChannelEntry> loaded = new ArrayList<>();
+    }
+
+    private static void save(List<ChannelEntry> entries) {
+        cachedEntries = entries;
         try {
-            File file = getStorageFile();
-            if (file != null && file.isFile()) {
-                byte[] bytes = new AtomicFile(file).readFully();
-                loaded = deserializeJson(new String(bytes, StandardCharsets.UTF_8));
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to load GhostChannelStore", ex);
+            file.writeAsync(toJson(entries));
+        } catch (JSONException ex) {
+            Logger.printException(() -> "GhostChannelStore save failure", ex);
         }
-        cachedEntries = loaded;
     }
 
-    private static void persistAsync(@NonNull List<ChannelEntry> snapshot) {
-        ioExecutor.execute(() -> {
-            File file = getStorageFile();
-            if (file == null) return;
-            AtomicFile atomic = new AtomicFile(file);
-            byte[] data = serializeJson(snapshot).getBytes(StandardCharsets.UTF_8);
-            FileOutputStream fos = null;
-            try {
-                fos = atomic.startWrite();
-                fos.write(data);
-                atomic.finishWrite(fos);
-            } catch (Exception ex) {
-                if (fos != null) {
-                    atomic.failWrite(fos);
-                }
-                Logger.printException(() -> "Failed to save GhostChannelStore", ex);
-            }
-        });
-    }
-
-    @Nullable
-    private static File getStorageFile() {
-        Context ctx = Utils.getContext();
-        if (ctx == null) return null;
-        return new File(ctx.getNoBackupFilesDir(), FILE_NAME);
-    }
-
-    static String serializeJson(@NonNull List<ChannelEntry> entries) {
-        JSONArray arr = new JSONArray();
+    private static JSONArray toJson(List<ChannelEntry> entries) throws JSONException {
+        JSONArray array = new JSONArray();
         for (ChannelEntry e : entries) {
-            try {
-                JSONObject obj = new JSONObject();
-                obj.put("id", e.channelId());
-                obj.put("name", e.name());
-                obj.put("handle", e.handle());
-                obj.put("avatar", e.avatarUrl());
-                obj.put("subs", e.subscriberText());
-                obj.put("desc", e.description());
-                obj.put("added", e.addedAtMs());
-                JSONArray vids = new JSONArray();
-                for (String v : e.recentVideos()) {
-                    vids.put(v);
-                }
-                obj.put("videos", vids);
-                arr.put(obj);
-            } catch (Exception ignored) {
-            }
+            array.put(new JSONObject()
+                    .put("id", e.channelId())
+                    .put("name", e.name())
+                    .put("handle", e.handle())
+                    .put("avatar", e.avatarUrl())
+                    .put("subs", e.subscriberText())
+                    .put("desc", e.description())
+                    .put("added", e.addedAtMs())
+                    .put("videos", new JSONArray(e.recentVideos())));
         }
-        return arr.toString();
+        return array;
     }
 
-    @NonNull
-    static List<ChannelEntry> deserializeJson(@Nullable String raw) {
-        List<ChannelEntry> out = new ArrayList<>();
-        if (raw == null || raw.trim().isEmpty()) {
-            return out;
-        }
-        try {
-            JSONArray arr = new JSONArray(raw);
-            for (int i = 0; i < arr.length(); i++) {
-                JSONObject obj = arr.optJSONObject(i);
-                if (obj == null) continue;
-                String id = obj.optString("id", "");
-                String name = obj.optString("name", "");
-                if (id.isEmpty() && name.isEmpty()) continue;
-                List<String> vids = new ArrayList<>();
-                JSONArray vidsArr = obj.optJSONArray("videos");
-                if (vidsArr != null) {
-                    for (int j = 0; j < vidsArr.length(); j++) {
-                        String t = vidsArr.optString(j, "");
-                        if (!t.isEmpty()) vids.add(t);
-                    }
+    private static List<ChannelEntry> fromJson(JSONArray array) {
+        List<ChannelEntry> entries = new ArrayList<>(array.length());
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject obj = array.optJSONObject(i);
+            if (obj == null) continue;
+            String id = obj.optString("id");
+            String name = obj.optString("name");
+            if (id.isEmpty() && name.isEmpty()) continue;
+            List<String> videos = new ArrayList<>();
+            JSONArray videosArray = obj.optJSONArray("videos");
+            if (videosArray != null) {
+                for (int j = 0; j < videosArray.length(); j++) {
+                    String title = videosArray.optString(j);
+                    if (!title.isEmpty()) videos.add(title);
                 }
-                out.add(new ChannelEntry(
-                        id,
-                        name,
-                        obj.optString("handle", ""),
-                        obj.optString("avatar", ""),
-                        obj.optString("subs", ""),
-                        obj.optString("desc", ""),
-                        vids,
-                        obj.optLong("added", 0L)
-                ));
             }
-        } catch (Exception ignored) {
+            entries.add(new ChannelEntry(
+                    id,
+                    name,
+                    obj.optString("handle"),
+                    obj.optString("avatar"),
+                    obj.optString("subs"),
+                    obj.optString("desc"),
+                    videos,
+                    obj.optLong("added")
+            ));
         }
-        return out;
+        return entries;
     }
 }

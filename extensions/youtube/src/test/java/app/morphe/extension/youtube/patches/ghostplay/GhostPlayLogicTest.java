@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/5197
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -14,6 +14,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -195,6 +196,8 @@ public class GhostPlayLogicTest {
         assertTrue(GhostChannelStore.matchesEntries(entries, null, "lofi girl"));
         assertTrue(GhostChannelStore.matchesEntries(entries, null, "@lofigirl"));
         assertFalse(GhostChannelStore.matchesEntries(entries, "UC0000000000000000000000", "Other"));
+        // A different channel with the same name does not match.
+        assertFalse(GhostChannelStore.matchesEntries(entries, "UC0000000000000000000000", "Lofi Girl"));
 
         assertTrue(ch1.matchesFilter("synthwave"));
         assertTrue(ch1.matchesFilter("@lofi"));
@@ -207,7 +210,7 @@ public class GhostPlayLogicTest {
     }
 
     @Test
-    public void parsesChannelUrlsHandlesAndModernVideoTitles() {
+    public void parsesChannelUrlsHandlesAndModernVideoTitles() throws Exception {
         assertEquals("UC1234567890abcdefghijkl",
                 GhostChannelSearchApi.extractChannelId("https://www.youtube.com/channel/UC1234567890abcdefghijkl"));
         assertNull(GhostChannelSearchApi.extractChannelId("lofi music"));
@@ -251,18 +254,15 @@ public class GhostPlayLogicTest {
                   }
                 }
                 """;
-        List<String> extracted = GhostChannelSearchApi.extractVideoTitlesFromJson(modernBrowseJson, 3);
+        List<String> extracted = new ArrayList<>();
+        GhostChannelSearchApi.collectVideoTitles(new JSONObject(modernBrowseJson), extracted, 3);
         assertEquals(2, extracted.size());
         assertEquals("Modern Lockup Video 1", extracted.get(0));
         assertEquals("Legacy Video 2", extracted.get(1));
     }
 
     @Test
-    public void trimsHistoryByConfiguredLimitAndFormatsStorageSize() {
-        assertEquals(100, GhostHistoryStore.parseLimit("100"));
-        assertEquals(0, GhostHistoryStore.parseLimit("0"));
-        assertEquals(GhostHistoryStore.DEFAULT_MAX_ENTRIES, GhostHistoryStore.parseLimit("invalid"));
-
+    public void trimsHistoryAndFormatsDurations() {
         List<GhostHistoryStore.Entry> list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             list.add(new GhostHistoryStore.Entry("vid" + i, "Title " + i, "Ch", 10_000L, 100_000L, i));
@@ -280,8 +280,6 @@ public class GhostPlayLogicTest {
         assertTrue(sample.matchesFilter("first"));
         assertFalse(sample.matchesFilter("nope"));
 
-        assertEquals("512 B", GhostHistoryStore.formatSize(512L));
-        assertEquals("10.0 KB", GhostHistoryStore.formatSize(10_240L));
         assertEquals("1:30", GhostHistoryDialog.formatDuration(90_000L));
         assertEquals("1:01:05", GhostHistoryDialog.formatDuration(3_665_000L));
         assertNull(GhostPlayPatch.extractQueryParam("https://example.com/noquery", "id"));

@@ -14,7 +14,7 @@ import app.morphe.patcher.util.registersUsed
 import java.lang.ref.WeakReference
 
 private lateinit var buildRequestMethod: WeakReference<MutableMethod>
-private var initialBuilderIndex = -1
+private var firstBuilderIndex = -1
 private var builderIndex = -1
 private var urlRegister = -1
 private var mapRegister = -1
@@ -27,7 +27,7 @@ internal val buildRequestPatch = patch(
         BuildRequestFingerprint.let {
             it.method.apply {
                 val builderMatch = it.instructionMatches.first()
-                initialBuilderIndex = builderMatch.index
+                firstBuilderIndex = builderMatch.index
                 builderIndex = builderMatch.index
                 urlRegister = builderMatch.instruction.registersUsed[1]
                 bodyRegister = it.instructionMatches[1].instruction.registersUsed[0]
@@ -39,50 +39,29 @@ internal val buildRequestPatch = patch(
 }
 
 /**
- * @param hookHeader If the hook returns the headers to send. When combined with [includeBody],
- *                   the signature is `(Ljava/lang/String;Ljava/util/Map;[B)Ljava/util/Map;`.
+ * @param hookHeader If the hook returns the headers to send.
  * @param includeBody If the hook is also given the body of the request, which is null if it has none.
- * @param highPriority If true, inserts at the initial request-builder index before non-priority hooks.
- *                     If multiple hooks pass `highPriority = true`, later registrations execute first (LIFO).
+ * @param first If the hook is called before the hooks added before it, so they are given the headers it returns.
  */
 internal fun hookBuildRequest(
     descriptor: String,
     hookHeader: Boolean = false,
     includeBody: Boolean = false,
-    highPriority: Boolean = false
+    first: Boolean = false
 ) {
-    buildRequestMethod.get()!!.apply {
-        val insertIndex = if (highPriority) initialBuilderIndex else builderIndex
-        if (hookHeader && includeBody) {
-            addInstructions(
-                insertIndex,
-                """
-                    invoke-static { v$urlRegister, v$mapRegister, v$bodyRegister }, $descriptor(Ljava/lang/String;Ljava/util/Map;[B)Ljava/util/Map;
-                    move-result-object v$mapRegister
-                """
-            )
-            builderIndex += 2
-        } else if (hookHeader) {
-            addInstructions(
-                insertIndex,
-                """
-                    invoke-static { v$urlRegister, v$mapRegister }, $descriptor(Ljava/lang/String;Ljava/util/Map;)Ljava/util/Map;
-                    move-result-object v$mapRegister
-                """
-            )
-            builderIndex += 2
-        } else if (includeBody) {
-            addInstructions(
-                insertIndex,
-                "invoke-static { v$urlRegister, v$mapRegister, v$bodyRegister }, $descriptor(Ljava/lang/String;Ljava/util/Map;[B)V"
-            )
-            builderIndex += 1
+    val registers = if (includeBody) "v$urlRegister, v$mapRegister, v$bodyRegister" else "v$urlRegister, v$mapRegister"
+    val parameters = if (includeBody) "Ljava/lang/String;Ljava/util/Map;[B" else "Ljava/lang/String;Ljava/util/Map;"
+
+    buildRequestMethod.get()!!.addInstructions(
+        if (first) firstBuilderIndex else builderIndex,
+        if (hookHeader) {
+            """
+                invoke-static { $registers }, $descriptor($parameters)Ljava/util/Map;
+                move-result-object v$mapRegister
+            """
         } else {
-            addInstructions(
-                insertIndex,
-                "invoke-static { v$urlRegister, v$mapRegister }, $descriptor(Ljava/lang/String;Ljava/util/Map;)V"
-            )
-            builderIndex += 1
+            "invoke-static { $registers }, $descriptor($parameters)V"
         }
-    }
+    )
+    builderIndex += if (hookHeader) 2 else 1
 }

@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.youtube.patches.ghostplay.GhostHistoryStore;
+import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * ListPreference for local Ghost history retention limit that dynamically displays
@@ -47,7 +48,7 @@ public class GhostHistoryLimitPreference extends CustomDialogListPreference {
     @Override
     protected boolean persistString(String value) {
         boolean result = super.persistString(value);
-        GhostHistoryStore.enforceLimit(GhostHistoryStore.parseLimit(value));
+        GhostHistoryStore.enforceLimit(Integer.parseInt(value));
         refreshDynamicSummary();
         return result;
     }
@@ -63,11 +64,11 @@ public class GhostHistoryLimitPreference extends CustomDialogListPreference {
         int idx = findIndexOfValue(getValue());
         String limitLabel = (entries != null && idx >= 0 && idx < entries.length)
                 ? entries[idx].toString()
-                : String.valueOf(GhostHistoryStore.getConfiguredLimit());
+                : String.valueOf(Settings.GHOST_PLAY_HISTORY_LIMIT.get());
 
         int count = GhostHistoryStore.count();
         if (count > 0) {
-            String sizeText = GhostHistoryStore.formatSize(GhostHistoryStore.getApproxSizeBytes());
+            String sizeText = GhostHistoryStore.getFormattedSize();
             setSummary(str("morphe_ghost_play_history_limit_summary_active", limitLabel, count, sizeText));
         } else {
             setSummary(str("morphe_ghost_play_history_limit_summary_empty", limitLabel));

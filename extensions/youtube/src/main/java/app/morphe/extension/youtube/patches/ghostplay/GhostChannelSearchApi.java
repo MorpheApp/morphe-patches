@@ -16,18 +16,16 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,7 +69,7 @@ public final class GhostChannelSearchApi {
     );
 
     public interface SearchCallback {
-        void onResults(@NonNull List<GhostChannelStore.ChannelEntry> results, boolean error);
+        void onResults(List<GhostChannelStore.ChannelEntry> results, boolean error);
     }
 
     public interface DetailCallback {
@@ -84,7 +82,7 @@ public final class GhostChannelSearchApi {
     /**
      * Searches YouTube channels by name, @handle, channel ID (UC...), or full YouTube channel URL.
      */
-    public static void searchAsync(@NonNull String rawQuery, @NonNull SearchCallback callback) {
+    public static void searchAsync(String rawQuery, SearchCallback callback) {
         String query = rawQuery.trim();
         if (query.isEmpty()) {
             Utils.runOnMainThread(() -> callback.onResults(Collections.emptyList(), false));
@@ -129,7 +127,7 @@ public final class GhostChannelSearchApi {
     /**
      * Fetches full channel metadata and up to 3 recent video titles in the background.
      */
-    public static void fetchDetailsAsync(@NonNull GhostChannelStore.ChannelEntry base, @NonNull DetailCallback callback) {
+    public static void fetchDetailsAsync(GhostChannelStore.ChannelEntry base, DetailCallback callback) {
         Utils.runOnBackgroundThread(() -> {
             try {
                 String channelId = base.channelId();
@@ -172,7 +170,7 @@ public final class GhostChannelSearchApi {
     /**
      * Loads and caches a circular channel avatar into an ImageView.
      */
-    public static void loadAvatar(@NonNull ImageView target, @Nullable String avatarUrl) {
+    public static void loadAvatar(ImageView target, @Nullable String avatarUrl) {
         if (avatarUrl == null || avatarUrl.isEmpty()) {
             return;
         }
@@ -186,36 +184,39 @@ public final class GhostChannelSearchApi {
         WeakReference<ImageView> ref = new WeakReference<>(target);
         Utils.runOnBackgroundThread(() -> {
             try {
-                HttpURLConnection conn = (HttpURLConnection) new URL(normalized).openConnection();
-                conn.setConnectTimeout(TIMEOUT_MS);
-                conn.setReadTimeout(TIMEOUT_MS);
-                conn.setRequestProperty("User-Agent", USER_AGENT);
-                try (InputStream in = conn.getInputStream()) {
-                    Bitmap raw = BitmapFactory.decodeStream(in);
-                    if (raw == null) return;
-                    Bitmap circle = toCircularBitmap(raw);
-                    avatarCache.put(normalized, circle);
-                    Utils.runOnMainThread(() -> {
-                        ImageView iv = ref.get();
-                        if (iv != null && normalized.equals(iv.getTag())) {
-                            iv.setImageBitmap(circle);
-                        }
-                    });
-                } finally {
-                    conn.disconnect();
+                HttpURLConnection connection = Requester.openConnection(normalized);
+                connection.setConnectTimeout(TIMEOUT_MS);
+                connection.setReadTimeout(TIMEOUT_MS);
+                connection.setRequestProperty("User-Agent", USER_AGENT);
+                byte[] bytes = Requester.parseBytes(connection);
+                connection.disconnect();
+
+                Bitmap raw = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                if (raw == null) {
+                    Logger.printDebug(() -> "Could not decode avatar: " + normalized);
+                    return;
                 }
-            } catch (Exception ignored) {
+                Bitmap circle = toCircularBitmap(raw);
+                avatarCache.put(normalized, circle);
+                Utils.runOnMainThread(() -> {
+                    ImageView iv = ref.get();
+                    if (iv != null && normalized.equals(iv.getTag())) {
+                        iv.setImageBitmap(circle);
+                    }
+                });
+            } catch (IOException ex) {
+                Logger.printInfo(() -> "Could not load avatar: " + normalized, ex);
             }
         });
     }
 
     @Nullable
-    static String extractChannelId(@NonNull String input) {
+    static String extractChannelId(String input) {
         Matcher m = CHANNEL_ID_PATTERN.matcher(input);
         return m.find() ? m.group(1) : null;
     }
 
-    static boolean looksLikeUrlOrHandle(@NonNull String input) {
+    static boolean looksLikeUrlOrHandle(String input) {
         String trimmed = input.trim();
         return trimmed.startsWith("@")
                 || trimmed.startsWith("http://")
@@ -224,7 +225,7 @@ public final class GhostChannelSearchApi {
                 || trimmed.contains("youtu.be/");
     }
 
-    static String normalizeToChannelUrl(@NonNull String input) {
+    static String normalizeToChannelUrl(String input) {
         String trimmed = input.trim();
         if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
             return trimmed;
@@ -243,145 +244,130 @@ public final class GhostChannelSearchApi {
     }
 
     @Nullable
-    private static String resolveUrlToChannelId(@NonNull String url) {
-        try {
-            JSONObject body = new JSONObject();
-            body.put("context", createWebContext());
-            body.put("url", url);
-            JSONObject resp = postJson("navigation/resolve_url?prettyPrint=false", body);
-            if (resp == null) return null;
-            JSONObject endpoint = resp.optJSONObject("endpoint");
-            if (endpoint == null) return null;
-            JSONObject browse = endpoint.optJSONObject("browseEndpoint");
-            if (browse == null) return null;
-            String id = browse.optString("browseId", "");
-            return id.startsWith("UC") ? id : null;
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "resolveUrlToChannelId failed: " + ex.getMessage());
-            return null;
-        }
+    private static String resolveUrlToChannelId(String url) throws IOException, JSONException {
+        JSONObject body = new JSONObject();
+        body.put("context", createWebContext());
+        body.put("url", url);
+        JSONObject resp = postJson("navigation/resolve_url?prettyPrint=false", body);
+        if (resp == null) return null;
+        JSONObject endpoint = resp.optJSONObject("endpoint");
+        if (endpoint == null) return null;
+        JSONObject browse = endpoint.optJSONObject("browseEndpoint");
+        if (browse == null) return null;
+        String id = browse.optString("browseId", "");
+        return id.startsWith("UC") ? id : null;
     }
 
-    @NonNull
-    private static List<GhostChannelStore.ChannelEntry> searchChannelsByKeyword(@NonNull String query) {
+    private static List<GhostChannelStore.ChannelEntry> searchChannelsByKeyword(String query)
+            throws IOException, JSONException {
         List<GhostChannelStore.ChannelEntry> out = new ArrayList<>();
-        try {
-            JSONObject body = new JSONObject();
-            body.put("context", createWebContext());
-            body.put("query", query);
-            body.put("params", CHANNEL_FILTER_PARAMS);
-            JSONObject resp = postJson("search?prettyPrint=false", body);
-            if (resp == null) return out;
+        JSONObject body = new JSONObject();
+        body.put("context", createWebContext());
+        body.put("query", query);
+        body.put("params", CHANNEL_FILTER_PARAMS);
+        JSONObject resp = postJson("search?prettyPrint=false", body);
+        if (resp != null) {
             collectChannelRenderers(resp, out);
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "searchChannelsByKeyword failed: " + ex.getMessage());
         }
         return out;
     }
 
     @Nullable
-    private static GhostChannelStore.ChannelEntry fetchChannelDetails(@NonNull String channelId) {
-        try {
-            JSONObject body = new JSONObject();
-            body.put("context", createWebContext());
-            body.put("browseId", channelId);
-            // Videos tab params ("videos") so recent uploads are directly included.
-            body.put("params", "EgZ2aWRlb3PyBgQKAjoA");
-            JSONObject resp = postJson("browse?prettyPrint=false", body);
-            if (resp == null) return null;
+    private static GhostChannelStore.ChannelEntry fetchChannelDetails(String channelId)
+            throws IOException, JSONException {
+        JSONObject body = new JSONObject();
+        body.put("context", createWebContext());
+        body.put("browseId", channelId);
+        // Params of the Videos tab, so the response has the recent uploads.
+        body.put("params", "EgZ2aWRlb3PyBgQKAjoA");
+        JSONObject resp = postJson("browse?prettyPrint=false", body);
+        if (resp == null) return null;
 
-            String name = "";
-            String handle = "";
-            String avatar = "";
-            String subs = "";
-            String desc = "";
+        String name = "";
+        String handle = "";
+        String avatar = "";
+        String subs = "";
+        String desc = "";
 
-            JSONObject metadata = resp.optJSONObject("metadata");
-            if (metadata != null) {
-                JSONObject cm = metadata.optJSONObject("channelMetadataRenderer");
-                if (cm != null) {
-                    name = cm.optString("title", "");
-                    desc = cm.optString("description", "");
-                    String vanity = cm.optString("vanityChannelUrl", "");
-                    Matcher hm = HANDLE_URL_PATTERN.matcher(vanity);
-                    if (hm.find()) {
-                        handle = hm.group(1);
-                    }
-                    avatar = extractBestThumbnail(cm.optJSONObject("avatar"));
+        JSONObject metadata = resp.optJSONObject("metadata");
+        if (metadata != null) {
+            JSONObject cm = metadata.optJSONObject("channelMetadataRenderer");
+            if (cm != null) {
+                name = cm.optString("title", "");
+                desc = cm.optString("description", "");
+                String vanity = cm.optString("vanityChannelUrl", "");
+                Matcher hm = HANDLE_URL_PATTERN.matcher(vanity);
+                if (hm.find()) {
+                    handle = hm.group(1);
                 }
+                avatar = extractBestThumbnail(cm.optJSONObject("avatar"));
             }
-
-            // Fallback / richer metadata from pageHeaderViewModel or c4TabbedHeaderRenderer.
-            JSONObject header = resp.optJSONObject("header");
-            if (header != null) {
-                JSONObject c4 = header.optJSONObject("c4TabbedHeaderRenderer");
-                if (c4 != null) {
-                    if (name.isEmpty()) name = c4.optString("title", "");
-                    if (avatar.isEmpty()) avatar = extractBestThumbnail(c4.optJSONObject("avatar"));
-                    if (subs.isEmpty()) subs = readText(c4.optJSONObject("subscriberCountText"));
-                }
-                if (subs.isEmpty() || handle.isEmpty()) {
-                    String[] hs = new String[]{handle, subs};
-                    extractFromPageHeader(header, hs);
-                    handle = hs[0];
-                    subs = hs[1];
-                }
-            }
-
-            List<String> recentVideos = new ArrayList<>();
-            collectVideoTitles(resp, recentVideos, MAX_RECENT_VIDEOS);
-
-            if (name.isEmpty()) {
-                name = channelId;
-            }
-            return new GhostChannelStore.ChannelEntry(
-                    channelId,
-                    name,
-                    handle,
-                    avatar,
-                    subs,
-                    trimDescription(desc),
-                    recentVideos,
-                    System.currentTimeMillis()
-            );
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "fetchChannelDetails failed: " + ex.getMessage());
-            return null;
         }
+
+        // Fallback / richer metadata from pageHeaderViewModel or c4TabbedHeaderRenderer.
+        JSONObject header = resp.optJSONObject("header");
+        if (header != null) {
+            JSONObject c4 = header.optJSONObject("c4TabbedHeaderRenderer");
+            if (c4 != null) {
+                if (name.isEmpty()) name = c4.optString("title", "");
+                if (avatar.isEmpty()) avatar = extractBestThumbnail(c4.optJSONObject("avatar"));
+                if (subs.isEmpty()) subs = readText(c4.optJSONObject("subscriberCountText"));
+            }
+            if (subs.isEmpty() || handle.isEmpty()) {
+                String[] hs = new String[]{handle, subs};
+                extractFromPageHeader(header, hs);
+                handle = hs[0];
+                subs = hs[1];
+            }
+        }
+
+        List<String> recentVideos = new ArrayList<>();
+        collectVideoTitles(resp, recentVideos, MAX_RECENT_VIDEOS);
+
+        if (name.isEmpty()) {
+            name = channelId;
+        }
+        return new GhostChannelStore.ChannelEntry(
+                channelId,
+                name,
+                handle,
+                avatar,
+                subs,
+                trimDescription(desc),
+                recentVideos,
+                System.currentTimeMillis()
+        );
     }
 
     private static void extractFromPageHeader(JSONObject header, String[] outHandleSubs) {
-        try {
-            JSONObject p = header.optJSONObject("pageHeaderRenderer");
-            if (p == null) return;
-            JSONObject content = p.optJSONObject("content");
-            if (content == null) return;
-            JSONObject vm = content.optJSONObject("pageHeaderViewModel");
-            if (vm == null) return;
-            JSONObject meta = vm.optJSONObject("metadata");
-            if (meta == null) return;
-            JSONObject rowsObj = meta.optJSONObject("contentMetadataViewModel");
-            if (rowsObj == null) return;
-            JSONArray rows = rowsObj.optJSONArray("metadataRows");
-            if (rows == null) return;
-            for (int i = 0; i < rows.length(); i++) {
-                JSONObject row = rows.optJSONObject(i);
-                if (row == null) continue;
-                JSONArray parts = row.optJSONArray("metadataParts");
-                if (parts == null) continue;
-                for (int j = 0; j < parts.length(); j++) {
-                    JSONObject part = parts.optJSONObject(j);
-                    if (part == null) continue;
-                    JSONObject textObj = part.optJSONObject("text");
-                    String text = textObj != null ? textObj.optString("content", "") : "";
-                    if (text.startsWith("@") && outHandleSubs[0].isEmpty()) {
-                        outHandleSubs[0] = text;
-                    } else if (!text.isEmpty() && !text.startsWith("@") && outHandleSubs[1].isEmpty()) {
-                        outHandleSubs[1] = text;
-                    }
+        JSONObject p = header.optJSONObject("pageHeaderRenderer");
+        if (p == null) return;
+        JSONObject content = p.optJSONObject("content");
+        if (content == null) return;
+        JSONObject vm = content.optJSONObject("pageHeaderViewModel");
+        if (vm == null) return;
+        JSONObject meta = vm.optJSONObject("metadata");
+        if (meta == null) return;
+        JSONObject rowsObj = meta.optJSONObject("contentMetadataViewModel");
+        if (rowsObj == null) return;
+        JSONArray rows = rowsObj.optJSONArray("metadataRows");
+        if (rows == null) return;
+        for (int i = 0; i < rows.length(); i++) {
+            JSONObject row = rows.optJSONObject(i);
+            if (row == null) continue;
+            JSONArray parts = row.optJSONArray("metadataParts");
+            if (parts == null) continue;
+            for (int j = 0; j < parts.length(); j++) {
+                JSONObject part = parts.optJSONObject(j);
+                if (part == null) continue;
+                JSONObject textObj = part.optJSONObject("text");
+                String text = textObj != null ? textObj.optString("content", "") : "";
+                if (text.startsWith("@") && outHandleSubs[0].isEmpty()) {
+                    outHandleSubs[0] = text;
+                } else if (!text.isEmpty() && !text.startsWith("@") && outHandleSubs[1].isEmpty()) {
+                    outHandleSubs[1] = text;
                 }
             }
-        } catch (Exception ignored) {
         }
     }
 
@@ -427,23 +413,7 @@ public final class GhostChannelSearchApi {
         }
     }
 
-    /**
-     * Pure helper for deterministic unit testing of recent video title extraction.
-     */
-    @NonNull
-    static List<String> extractVideoTitlesFromJson(@Nullable String rawJson, int limit) {
-        List<String> out = new ArrayList<>();
-        if (rawJson == null || rawJson.trim().isEmpty()) {
-            return out;
-        }
-        try {
-            collectVideoTitles(new JSONObject(rawJson), out, limit);
-        } catch (Exception ignored) {
-        }
-        return out;
-    }
-
-    private static void collectVideoTitles(Object node, List<String> out, int limit) {
+    static void collectVideoTitles(Object node, List<String> out, int limit) {
         if (out.size() >= limit || node == null) return;
         if (node instanceof JSONObject obj) {
             // Modern YouTube WEB channel videos tab format: richItemRenderer -> content -> lockupViewModel
@@ -486,7 +456,6 @@ public final class GhostChannelSearchApi {
         }
     }
 
-    @NonNull
     private static String readTitleContent(@Nullable JSONObject titleObj) {
         if (titleObj == null) return "";
         String content = titleObj.optString("content", "");
@@ -494,7 +463,6 @@ public final class GhostChannelSearchApi {
         return readText(titleObj);
     }
 
-    @NonNull
     private static String readText(@Nullable JSONObject obj) {
         if (obj == null) return "";
         String simple = obj.optString("simpleText", "");
@@ -509,7 +477,6 @@ public final class GhostChannelSearchApi {
         return sb.toString();
     }
 
-    @NonNull
     private static String extractBestThumbnail(@Nullable JSONObject thumbObj) {
         if (thumbObj == null) return "";
         JSONArray list = thumbObj.optJSONArray("thumbnails");
@@ -528,14 +495,13 @@ public final class GhostChannelSearchApi {
         return chosen.startsWith("//") ? "https:" + chosen : chosen;
     }
 
-    @NonNull
     private static String trimDescription(@Nullable String desc) {
         if (desc == null) return "";
         String collapsed = desc.replaceAll("\\s+", " ").trim();
         return collapsed.length() > 140 ? collapsed.substring(0, 137) + "..." : collapsed;
     }
 
-    private static JSONObject createWebContext() throws Exception {
+    private static JSONObject createWebContext() throws JSONException {
         Locale locale = Requester.getAppLocale();
         String hl = locale.getLanguage().isEmpty() ? "en" : locale.getLanguage();
         String gl = locale.getCountry().isEmpty() ? "US" : locale.getCountry();
@@ -552,8 +518,8 @@ public final class GhostChannelSearchApi {
     }
 
     @Nullable
-    private static JSONObject postJson(@NonNull String endpoint, @NonNull JSONObject body) throws Exception {
-        HttpURLConnection conn = (HttpURLConnection) new URL(YT_API_BASE + endpoint).openConnection();
+    private static JSONObject postJson(String endpoint, JSONObject body) throws IOException, JSONException {
+        HttpURLConnection conn = Requester.openConnection(YT_API_BASE + endpoint);
         conn.setRequestMethod("POST");
         conn.setConnectTimeout(TIMEOUT_MS);
         conn.setReadTimeout(TIMEOUT_MS);
@@ -568,25 +534,15 @@ public final class GhostChannelSearchApi {
         }
 
         int code = conn.getResponseCode();
-        if (code < 200 || code >= 300) {
+        if (code != Requester.HTTP_STATUS_CODE_SUCCESS) {
+            Logger.printInfo(() -> endpoint + " response code: " + code);
             conn.disconnect();
             return null;
         }
-
-        try (InputStream in = conn.getInputStream()) {
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            byte[] buf = new byte[4096];
-            int n;
-            while ((n = in.read(buf)) > 0) {
-                out.write(buf, 0, n);
-            }
-            return new JSONObject(new String(out.toByteArray(), StandardCharsets.UTF_8));
-        } finally {
-            conn.disconnect();
-        }
+        return Requester.parseJSONObjectAndDisconnect(conn);
     }
 
-    private static Bitmap toCircularBitmap(@NonNull Bitmap src) {
+    private static Bitmap toCircularBitmap(Bitmap src) {
         int size = Math.min(src.getWidth(), src.getHeight());
         Bitmap out = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(out);
