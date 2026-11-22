@@ -42,6 +42,7 @@ import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.SearchHiddenProfilesPatch;
 import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
+import app.morphe.extension.reddit.patches.SwipeUpForCommentsPatch;
 import app.morphe.extension.reddit.patches.TabletGridFeedPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
@@ -81,6 +82,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FeedMediaMaxHeightPatch.isPatchIncluded() ||
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
                 MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
+                SwipeUpForCommentsPatch.isPatchIncluded() ||
                 KeepMediaViewerInSubredditPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded() ||
                 SearchHiddenProfilesPatch.isPatchIncluded() ||
@@ -271,6 +273,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.MEDIA_VIEWER_BLACK_BACKGROUND
+            ));
+        }
+
+        if (SwipeUpForCommentsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SWIPE_UP_FOR_COMMENTS
             ));
         }
 
