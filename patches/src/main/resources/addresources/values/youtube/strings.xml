@@ -907,6 +907,8 @@ Info: May not work on live streams"</string>
     <string name="morphe_play_all_button_type_entry_10">Members only videos</string>
     <string name="morphe_play_all_button_type_entry_11">Members only Shorts</string>
     <string name="morphe_play_all_button_type_entry_12">Members only live streams</string>
+    <string name="morphe_play_all_button_reverse_title">Reverse order</string>
+    <string name="morphe_play_all_button_reverse_summary">The generated playlist autoplays from the last video to the first</string>
     <string name="morphe_play_all_button_not_available_toast">Unable to generate playlist due to channel ID mismatch</string>
 
     <!-- interaction.playlistpanel.playlistPanelButtonPatch -->

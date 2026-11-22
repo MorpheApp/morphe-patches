@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.DisablePlaylistAutoplayPatch;
+import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -44,10 +46,51 @@ public class PlayAllButton {
         }
     }
 
+    private static final String NAVIGATION_INTENT_AUTOPLAY = "AUTOPLAY";
+    private static final String NAVIGATION_INTENT_PREVIOUS = "PREVIOUS";
+
+    /**
+     * Playlist generated with Reverse order on, or null.
+     */
+    @Nullable
+    private static volatile String reversePlaylistId;
+
     static {
         if (Settings.PLAY_ALL_BUTTON.get()) {
             LegacyPlayerControlButton.incrementUpperButtonCount();
         }
+    }
+
+    /**
+     * Injection point. Called when the playlist queue looks up the video of a navigation,
+     * such as to show the upcoming video or to autoplay it when the current video ends.
+     *
+     * @return PREVIOUS in place of AUTOPLAY in a playlist generated with Reverse order on,
+     *         so the playlist plays from the last video to the first.
+     */
+    public static Enum<?> getNavigationIntent(Enum<?> navigationIntent) {
+        try {
+            String playlistId = reversePlaylistId;
+            if (playlistId == null || !Settings.PLAY_ALL_BUTTON_REVERSE.get()
+                    || !NAVIGATION_INTENT_AUTOPLAY.equals(navigationIntent.name())) {
+                return navigationIntent;
+            }
+            // YouTube also uses AUTOPLAY to repeat the current video, and the local queue plays its next video.
+            if (DisablePlaylistAutoplayPatch.isRepeatingVideo()
+                    || LocalQueuePatch.hasQueuedVideos()
+                    || !playlistId.equals(VideoInformation.getPlaylistId())) {
+                return navigationIntent;
+            }
+            return previousNavigationIntent(navigationIntent);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getNavigationIntent failure", ex);
+            return navigationIntent;
+        }
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private static Enum<?> previousNavigationIntent(Enum<?> navigationIntent) {
+        return Enum.valueOf((Class) navigationIntent.getDeclaringClass(), NAVIGATION_INTENT_PREVIOUS);
     }
 
     /**
@@ -93,21 +136,22 @@ public class PlayAllButton {
                 sb.append("?t=").append(timeInSeconds);
             }
 
+            String playlistId = null;
             if (playlistIdPrefix != null) {
-                sb.append(timeInSeconds > 0 ? "&" : "?").append("list=").append(playlistIdPrefix.prefixId);
-
                 if (playlistIdPrefix.useChannelId) {
                     if (channelId.startsWith("UC")) {
                         String baseId = channelId.substring(2);
-                        sb.append(baseId);
+                        playlistId = playlistIdPrefix.prefixId + baseId;
                     } else {
                         Logger.printDebug(() -> "Play all button: Invalid or missing Channel ID: " + channelId);
                         Utils.showSnackbarShort(str("morphe_play_all_button_not_available_toast"));
                         return;
                     }
                 } else {
-                    sb.append(videoId);
+                    playlistId = playlistIdPrefix.prefixId + videoId;
                 }
+
+                sb.append(timeInSeconds > 0 ? "&" : "?").append("list=").append(playlistId);
             }
 
             Context activityContext = view.getContext();
@@ -115,6 +159,10 @@ public class PlayAllButton {
                 Logger.printDebug(() -> "Play all button: Activity Context is null. Cannot launch Intent.");
                 return;
             }
+
+            reversePlaylistId = playlistId != null && Settings.PLAY_ALL_BUTTON_REVERSE.get()
+                    ? playlistId
+                    : null;
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sb.toString()));
             intent.setPackage(activityContext.getPackageName());

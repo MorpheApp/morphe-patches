@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.layout.playlistautoplay
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -49,6 +50,20 @@ internal object NativeNavigationStateFingerprint : Fingerprint(
 internal object NavigationRequestFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = { listOf(NavigationIntentEnumFingerprint.originalClassDef.type, "L", "L") }
+)
+
+/**
+ * Method of the playback queue that picks the queue item for a navigation request.
+ * A playlist from the server is loaded into this queue.
+ */
+internal fun queueNavigationItemFingerprint(requestType: String, enumType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(requestType),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = requestType, type = enumType),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, definingClass = enumType, name = "ordinal"),
+    )
 )
 
 /**
