@@ -38,6 +38,8 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.patches.ClassicSubscriptionsLayoutPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
+import app.morphe.extension.youtube.patches.ghostplay.GhostPlayPatch;
+import app.morphe.extension.youtube.patches.ghostplay.GhostPlayToolbarButton;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -135,6 +137,10 @@ public final class NavigationBar {
         }
 
         toolbarResultsRef = new WeakReference<>(toolbar);
+
+        if (GhostPlayPatch.isPatchIncluded()) {
+            GhostPlayToolbarButton.attachToToolbar(layout);
+        }
     }
 
     /**
