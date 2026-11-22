@@ -12,10 +12,10 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
 
-import app.morphe.extension.reddit.patches.AccountSwitcherPrivateModePatch.PrivateMode;
 import app.morphe.extension.reddit.patches.FeedAutoScrollPatch.ScrollSpeed;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.FeedDim;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch.PanelWidth;
+import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch.PrivateBrowsingMode;
 import app.morphe.extension.reddit.patches.TabletGridFeedPatch.GridColumns;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
@@ -107,8 +107,6 @@ public class Settings extends BaseSettings {
     public static final EnumSetting<GridColumns> TABLET_GRID_COLUMNS = new EnumSetting<>("morphe_tablet_grid_columns", GridColumns.AUTO, parent(TABLET_GRID_FEED));
 
     // Miscellaneous
-    public static final EnumSetting<PrivateMode> ACCOUNT_SWITCHER_PRIVATE_MODE =
-            new EnumSetting<>("morphe_account_switcher_private_mode", PrivateMode.REDDIT_DEFAULT);
     public static final StringSetting DOWNLOAD_FOLDER = new StringSetting("morphe_download_folder", "");
     public static final StringSetting DOWNLOAD_PATH_PATTERN = new StringSetting("morphe_download_path_pattern", "");
     /**
@@ -117,6 +115,7 @@ public class Settings extends BaseSettings {
     public static final StringSetting DOWNLOAD_ACCOUNTS = new StringSetting("morphe_download_accounts", "");
     public static final BooleanSetting OPEN_LINKS_DIRECTLY = new BooleanSetting("morphe_open_links_directly", TRUE);
     public static final BooleanSetting OPEN_LINKS_EXTERNALLY = new BooleanSetting("morphe_open_links_externally", TRUE);
+    public static final EnumSetting<PrivateBrowsingMode> PRIVATE_BROWSING_MODE = new EnumSetting<>("morphe_private_browsing_mode", PrivateBrowsingMode.DEFAULT, true);
     public static final BooleanSetting REDGIFS_AUDIO = new BooleanSetting("morphe_redgifs_audio", TRUE, true);
     public static final BooleanSetting REDGIFS_HD = new BooleanSetting("morphe_redgifs_hd", FALSE);
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);

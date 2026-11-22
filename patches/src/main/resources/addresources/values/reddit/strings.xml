@@ -149,11 +149,6 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_screen_miscellaneous_title">Miscellaneous</string>
     <string name="morphe_about_title">About</string>
     <string name="morphe_about_summary">Patch version and official links</string>
-    <string name="morphe_account_switcher_private_mode_title">Account switcher private mode</string>
-    <string name="morphe_account_switcher_private_mode_summary">Which private mode the account switcher offers. Takes effect the next time you open the account switcher</string>
-    <string name="morphe_account_switcher_private_mode_entry_reddit_default">Reddit default</string>
-    <string name="morphe_account_switcher_private_mode_entry_anonymous_browsing">Anonymous Browsing</string>
-    <string name="morphe_account_switcher_private_mode_entry_incognito">Incognito</string>
     <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
     <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
     <string name="morphe_share_post_content_title">Share post content</string>
@@ -162,6 +157,11 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_share_post_content_failed">Could not share the media. Sharing the link instead</string>
     <string name="morphe_open_links_directly_title">Open links directly</string>
     <string name="morphe_open_links_directly_summary">Bypasses redirect URLs when opening external links</string>
+    <string name="morphe_private_browsing_mode_title">Private browsing mode</string>
+    <string name="morphe_private_browsing_mode_summary">Whether the account switcher offers Anonymous Browsing or Incognito</string>
+    <string name="morphe_private_browsing_mode_entry_default">Default</string>
+    <string name="morphe_private_browsing_mode_entry_anonymous_browsing">Anonymous Browsing</string>
+    <string name="morphe_private_browsing_mode_entry_incognito">Incognito</string>
     <string name="morphe_full_width_feed_media_title">Full width feed media</string>
     <string name="morphe_full_width_feed_media_summary">Shows images and videos edge to edge in the feed and post details, without side padding and rounded corners</string>
     <string name="morphe_media_viewer_fade_title">Media viewer fade strength</string>

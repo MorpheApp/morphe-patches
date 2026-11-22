@@ -13,12 +13,12 @@ import android.content.Context;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
-import app.morphe.extension.reddit.patches.AccountSwitcherPrivateModePatch;
 import app.morphe.extension.reddit.patches.AppIconPatch;
 import app.morphe.extension.reddit.patches.DownloadLocationPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.OpenSystemShareSheetPatch;
+import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch;
 import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.patches.SharePostContentPatch;
@@ -45,12 +45,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public boolean getSettingsStatus() {
-        return AccountSwitcherPrivateModePatch.isPatchIncluded() ||
-                AppIconPatch.isPatchIncluded() ||
+        return AppIconPatch.isPatchIncluded() ||
                 DownloadLocationPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
                 OpenSystemShareSheetPatch.isPatchIncluded() ||
+                PrivateBrowsingModePatch.isPatchIncluded() ||
                 RedgifsAudioPatch.isPatchIncluded() ||
                 SanitizeSharingLinksPatch.isPatchIncluded() ||
                 SharePostContentPatch.isPatchIncluded();
@@ -71,13 +71,6 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
         addPreference(new SortedListPreference(context, BaseSettings.MORPHE_LANGUAGE));
         addPreference(new CustomDialogListPreference(context, SharedSettings.PATCHES_UPDATE_NOTICE));
-
-        if (AccountSwitcherPrivateModePatch.isPatchIncluded()) {
-            addPreference(new CustomDialogListPreference(
-                    context,
-                    Settings.ACCOUNT_SWITCHER_PRIVATE_MODE
-            ));
-        }
 
         if (AppIconPatch.isPatchIncluded()) {
             addPreference(AppIconPatch.getIconPreference(context));
@@ -101,6 +94,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new BooleanSettingPreference(
                     context,
                     SharedSettings.OPEN_SYSTEM_SHARE_SHEET
+            ));
+        }
+        if (PrivateBrowsingModePatch.isPatchIncluded()) {
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.PRIVATE_BROWSING_MODE
             ));
         }
         if (RedgifsAudioPatch.isPatchIncluded()) {

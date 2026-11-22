@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.reddit.misc.privatemode
+package app.morphe.patches.reddit.misc.privatebrowsing
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.checkCast
@@ -16,7 +16,8 @@ import com.android.tools.smali.dexlib2.AccessFlags.PUBLIC
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * 2026.44+
+ * Incognito revamp experiment is not the control variant.
+ * Selects between Anonymous Browsing (false) and Incognito (true) everywhere in the app.
  */
 internal object IncognitoRevampEnabledFingerprint : Fingerprint(
     accessFlags = listOf(PUBLIC, FINAL),

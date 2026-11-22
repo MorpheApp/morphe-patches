@@ -10,10 +10,10 @@ package app.morphe.extension.reddit.patches;
 import app.morphe.extension.reddit.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class AccountSwitcherPrivateModePatch {
+public final class PrivateBrowsingModePatch {
 
-    public enum PrivateMode {
-        REDDIT_DEFAULT,
+    public enum PrivateBrowsingMode {
+        DEFAULT,
         ANONYMOUS_BROWSING,
         INCOGNITO
     }
@@ -29,16 +29,13 @@ public final class AccountSwitcherPrivateModePatch {
     /**
      * Injection point.
      *
-     * @return If the account switcher shows Incognito instead of Anonymous Browsing.
+     * @return If private browsing uses Incognito instead of Anonymous Browsing.
      */
     public static boolean isIncognitoEnabled(boolean original) {
-        switch (Settings.ACCOUNT_SWITCHER_PRIVATE_MODE.get()) {
-            case ANONYMOUS_BROWSING:
-                return false;
-            case INCOGNITO:
-                return true;
-            default:
-                return original;
-        }
+        return switch (Settings.PRIVATE_BROWSING_MODE.get()) {
+            case DEFAULT -> original;
+            case ANONYMOUS_BROWSING -> false;
+            case INCOGNITO -> true;
+        };
     }
 }

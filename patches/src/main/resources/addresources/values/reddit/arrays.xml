@@ -49,14 +49,14 @@
         <item>STRONG</item>
     </string-array>
 
-    <!-- misc.privatemode.accountSwitcherPrivateModePatch -->
-    <string-array name="morphe_account_switcher_private_mode_entries">
-        <item>@string/morphe_account_switcher_private_mode_entry_reddit_default</item>
-        <item>@string/morphe_account_switcher_private_mode_entry_anonymous_browsing</item>
-        <item>@string/morphe_account_switcher_private_mode_entry_incognito</item>
+    <!-- misc.privatebrowsing.privateBrowsingModePatch -->
+    <string-array name="morphe_private_browsing_mode_entries">
+        <item>@string/morphe_private_browsing_mode_entry_default</item>
+        <item>@string/morphe_private_browsing_mode_entry_anonymous_browsing</item>
+        <item>@string/morphe_private_browsing_mode_entry_incognito</item>
     </string-array>
-    <string-array name="morphe_account_switcher_private_mode_entry_values" translatable="false">
-        <item>REDDIT_DEFAULT</item>
+    <string-array name="morphe_private_browsing_mode_entry_values" translatable="false">
+        <item>DEFAULT</item>
         <item>ANONYMOUS_BROWSING</item>
         <item>INCOGNITO</item>
     </string-array>
