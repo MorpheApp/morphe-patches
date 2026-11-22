@@ -21,6 +21,7 @@ import app.morphe.extension.reddit.patches.FeedAutoScrollPatch;
 import app.morphe.extension.reddit.patches.FeedMediaMaxHeightPatch;
 import app.morphe.extension.reddit.patches.FlipPostActionBarPatch;
 import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
+import app.morphe.extension.reddit.patches.FullScreenReplyPatch;
 import app.morphe.extension.reddit.patches.FullWidthFeedMediaPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
@@ -89,6 +90,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HighQualityAvatarsPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
+                FullScreenReplyPatch.isPatchIncluded() ||
                 AutoModeratorCommentsPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 TabletGridFeedPatch.isPatchIncluded() ||
@@ -298,6 +300,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SWAP_POST_VOTE_COMMENT_BUTTONS
+            ));
+        }
+
+        if (FullScreenReplyPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FULL_SCREEN_REPLY
             ));
         }
 
