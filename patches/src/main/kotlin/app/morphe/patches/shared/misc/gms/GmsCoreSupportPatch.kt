@@ -23,6 +23,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.replaceStrings
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.string
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.clone.cloneAppPatch
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
@@ -53,13 +54,12 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
  *
  * @param fromPackageName The package name of the original app.
  * @param toPackageNameDefault The package name to fall back to if no custom package name is specified in patch options.
+ * @param spoofedPackageSignature The SHA-1 of the original app signature, as hex.
  * @param primeMethodFingerprint The fingerprint of the "prime" method that needs to be patched.
  * @param earlyReturnFingerprints The fingerprints of methods that need to be returned early.
  * @param mainActivityOnCreateFingerprint The fingerprint of the main activity onCreate method.
  * @param extensionPatch The patch responsible for the extension.
  * @param useLegacyGnpFingerprint If the app builds the GNP registration target in the legacy method.
- * Resolved when the patch runs so that it can depend on the app version.
- * @param enableGnpPushSupport If the app supports GNP push notification registration spoofing.
  * Resolved when the patch runs so that it can depend on the app version.
  * @param executeBlock The additional execution block of the patch.
  * @param block The additional block to build the patch.
@@ -67,13 +67,13 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
 fun gmsCoreSupportPatch(
     fromPackageName: String,
     toPackageNameDefault: String,
+    spoofedPackageSignature: String,
     primeMethodFingerprint: Fingerprint? = null,
     earlyReturnFingerprints: Set<Fingerprint> = setOf(),
     mainActivityOnCreateFingerprint: Fingerprint,
     extensionPatch: Patch,
     gmsCoreSupportResourcePatchFactory: () -> Patch,
     useLegacyGnpFingerprint: () -> Boolean,
-    enableGnpPushSupport: () -> Boolean = { false },
     executeBlock: () -> Unit = {},
     block: PatchDefinition.() -> Unit = {},
 ) = patch(
@@ -178,7 +178,7 @@ fun gmsCoreSupportPatch(
         } else {
             GnpRegistrationTargetSuspendFingerprint
         }
-        gnpFingerprint.matchOrNull()?.let { match ->
+        gnpFingerprint.let { match ->
             val result = match.instructionMatches[1]
             match.method.replaceInstruction(
                 result.index,
@@ -190,35 +190,25 @@ fun gmsCoreSupportPatch(
             )
         }
 
-        if (enableGnpPushSupport()) {
-            GnpCertProviderSignaturesFingerprint.matchAll().forEach { match ->
-                match.method.addInstruction(
-                    0,
-                    """
-                    invoke-static {}, $EXTENSION_CLASS->getOriginalPackageSignature()Ljava/lang/String;
-                    move-result-object v0
-                    return-object v0
-                    """.trimIndent(),
+        // GNP requests made with an API key send the package name and the signature of the app.
+        // The API key only accepts the original app, so registering for push notifications fails.
+        // GNP formats the signature as upper case hex.
+        val originalSignature = spoofedPackageSignature.uppercase()
+        arrayOf(GnpRegistrationHeadersFingerprint, GnpRequestHeadersFingerprint).forEach { fingerprint ->
+            fingerprint.method.apply {
+                // The registers of the header calls are the builder, the header name, then the value.
+                val certHeaderMatch = fingerprint.instructionMatches[3]
+                val certRegister = certHeaderMatch.instruction.registersUsed[2]
+                addInstruction(
+                    certHeaderMatch.index,
+                    "const-string v$certRegister, \"$originalSignature\""
                 )
-            }
 
-            GnpRequestBuilderFingerprint.matchAll().forEach { match ->
-                match.method.addInstruction(
-                    0,
-                    """
-                    invoke-static {p0, p1}, $EXTENSION_CLASS->spoofHeaderValue(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object p1
-                    """.trimIndent(),
-                )
-            }
-
-            GrpcMetadataPutFingerprint.matchAll().forEach { match ->
-                match.method.addInstruction(
-                    0,
-                    """
-                    invoke-static {p0, p1}, $EXTENSION_CLASS->spoofHeaderValue(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-                    move-result-object p1
-                    """.trimIndent(),
+                val packageNameMatch = fingerprint.instructionMatches[1]
+                val packageNameRegister = packageNameMatch.instruction.registersUsed.first()
+                addInstruction(
+                    packageNameMatch.index + 1,
+                    "const-string v$packageNameRegister, \"$fromPackageName\""
                 )
             }
         }

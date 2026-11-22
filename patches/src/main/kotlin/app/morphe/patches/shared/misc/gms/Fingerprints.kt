@@ -13,7 +13,6 @@ package app.morphe.patches.shared.misc.gms
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
@@ -104,43 +103,43 @@ internal object OriginalPackageNameExtensionFingerprint : Fingerprint(
     parameters = listOf()
 )
 
-private object GnpRequestBuilderClassFingerprint : Fingerprint(
-    strings = listOf("Property \"headers\" has not been set"),
-)
-
 /**
- * Matches the GNP (Google Notifications Platform / Chime) HTTP request builder method
- * which adds headers to requests destined for notifications-pa.googleapis.com.
+ * The GNP request header filters. With an API key, X-Android-Package is set to
+ * Context.getPackageName() and X-Android-Cert to the SHA-1 of the app signature.
  */
-internal object GnpRequestBuilderFingerprint : Fingerprint(
-    classFingerprint = GnpRequestBuilderClassFingerprint,
-    parameters = listOf("Ljava/lang/String;", "Ljava/lang/String;"),
-    returnType = "V",
-)
-
-private object GrpcMetadataClassFingerprint : Fingerprint(
-    strings = listOf("Metadata("),
-)
-
-/**
- * Matches io.grpc.Metadata.put(Metadata.Key, Object) method across Google apps.
- */
-internal object GrpcMetadataPutFingerprint : Fingerprint(
-    classFingerprint = GrpcMetadataClassFingerprint,
-    parameters = listOf("L", "Ljava/lang/Object;"),
-    returnType = "V",
-)
-
-/**
- * Matches the GNP certificate hash calculation method in com.google.android.libraries.notifications
- * which queries PackageInfo.signatures and computes the SHA-1 digest.
- */
-internal object GnpCertProviderSignaturesFingerprint : Fingerprint(
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    filters = listOf(
-        fieldAccess(name = "signatures", type = "[Landroid/content/pm/Signature;"),
+private fun gnpAndroidHeadersFilters() = listOf(
+    methodCall(smali = "Landroid/content/Context;->getPackageName()Ljava/lang/String;"),
+    opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+    // Sets the X-Android-Package header.
+    methodCall(
+        parameters = listOf("L", "Ljava/lang/String;"),
+        returnType = "V",
+        location = MatchAfterWithin(3)
     ),
-    strings = listOf("SHA-1"),
+    // Sets the X-Android-Cert header.
+    methodCall(
+        parameters = listOf("L", "Ljava/lang/String;"),
+        returnType = "V",
+        location = MatchAfterWithin(5)
+    )
 )
 
+/**
+ * Adds the authentication headers of GNP registration requests (notifications-pa.googleapis.com).
+ */
+internal object GnpRegistrationHeadersFingerprint : Fingerprint(
+    filters = gnpAndroidHeadersFilters(),
+    strings = listOf("One of Account Name, Zwieback or API Key must be set.")
+)
+
+private object GnpRequestHeadersClassFingerprint : Fingerprint(
+    strings = listOf("One of Account representation or API Key must be set.")
+)
+
+/**
+ * Adds the authentication headers of the other GNP requests.
+ */
+internal object GnpRequestHeadersFingerprint : Fingerprint(
+    classFingerprint = GnpRequestHeadersClassFingerprint,
+    filters = gnpAndroidHeadersFilters()
+)
