@@ -284,14 +284,25 @@ To sign in, press continue below"</string>
     <string name="morphe_video_effect_entry_underwater">Underwater</string>
     <string name="morphe_video_effect_entry_vhs">VHS tape</string>
     <string name="morphe_video_effect_entry_video_wall">Video wall</string>
-    <string name="morphe_video_effect_entry_custom">Custom</string>
-    <string name="morphe_video_effect_custom_code_title">Video effect code</string>
-    <string name="morphe_video_effect_custom_code_summary">Code of the Custom effect. Copy all of the text to an AI chatbot, describe the effect you want, and paste its answer here. Changes show from the next video</string>
-    <string name="morphe_video_effect_custom_code_error_title">Custom effect has an error</string>
-    <string name="morphe_video_effect_custom_code_error_message">"Videos are shown without the effect until the code is fixed. Give this error to the AI that wrote the code:
+    <string name="morphe_video_effects_custom_title">Custom video effects</string>
+    <string name="morphe_video_effects_custom_summary">Add your own video effects with shader code, such as code written by an AI chatbot. Custom effects show at the end of the Video effect list</string>
+    <string name="morphe_video_effects_custom_empty">No custom effects. Tap Add effect to make one.</string>
+    <string name="morphe_video_effects_custom_add">Add effect</string>
+    <string name="morphe_video_effects_custom_add_title">New effect</string>
+    <string name="morphe_video_effects_custom_edit_title">Edit effect</string>
+    <string name="morphe_video_effects_custom_name_hint">Name</string>
+    <string name="morphe_video_effects_custom_name_empty">Enter a name for the effect</string>
+    <string name="morphe_video_effects_custom_name_exists">An effect with this name already exists</string>
+    <string name="morphe_video_effects_custom_copy_code">Copy code</string>
+    <string name="morphe_video_effects_custom_error_title">Effect has an error</string>
+    <string name="morphe_video_effects_custom_error_message">"Videos are shown without the effect until the code is fixed. Give this error to the AI that wrote the code:
 
 %s"</string>
-    <string name="morphe_video_effect_custom_code_copy_error">Copy error</string>
+    <string name="morphe_video_effects_custom_copy_error">Copy error</string>
+    <string name="morphe_video_effects_custom_save_anyway">Save anyway</string>
+    <string name="morphe_video_effects_custom_delete">Delete</string>
+    <string name="morphe_video_effects_custom_delete_title">Delete effect?</string>
+    <string name="morphe_video_effects_custom_delete_message">%s will be deleted.</string>
 
     <!-- misc.proxy.networkProxyPatch -->
     <string name="morphe_proxy_screen_title">Network proxy</string>

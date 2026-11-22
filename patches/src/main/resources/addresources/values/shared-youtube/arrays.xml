@@ -179,7 +179,6 @@
         <item>@string/morphe_video_effect_entry_underwater</item>
         <item>@string/morphe_video_effect_entry_vhs</item>
         <item>@string/morphe_video_effect_entry_video_wall</item>
-        <item>@string/morphe_video_effect_entry_custom</item>
     </string-array>
     <string-array name="morphe_video_effect_entry_values">
         <item>NONE</item>
@@ -218,7 +217,6 @@
         <item>UNDERWATER</item>
         <item>VHS</item>
         <item>VIDEO_WALL</item>
-        <item>CUSTOM</item>
     </string-array>
 
     <!-- layout.theme.baseThemePatch -->

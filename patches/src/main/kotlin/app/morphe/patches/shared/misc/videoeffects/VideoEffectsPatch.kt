@@ -7,15 +7,14 @@
 
 package app.morphe.patches.shared.misc.videoeffects
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
-import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -50,11 +49,14 @@ internal fun videoEffectsPatch(
         }
 
         preferenceScreen.addPreferences(
-            ListPreference("morphe_video_effect"),
-            TextPreference(
-                key = "morphe_video_effect_custom_code",
-                tag = "app.morphe.extension.shared.settings.preference.VideoEffectCustomCodePreference",
-                inputType = InputType.TEXT_MULTI_LINE
+            ListPreference(
+                key = "morphe_video_effect",
+                tag = "app.morphe.extension.shared.settings.preference.VideoEffectListPreference"
+            ),
+            NonInteractivePreference(
+                key = "morphe_video_effects_custom",
+                tag = "app.morphe.extension.shared.settings.preference.VideoEffectCustomEffectsPreference",
+                selectable = true
             )
         )
 
@@ -92,13 +94,17 @@ internal fun videoEffectsPatch(
 
         PassthroughShaderDrawFingerprint.let {
             it.method.apply {
-                val index = it.instructionMatches.first().index
-                val programRegister = getInstruction<FiveRegisterInstruction>(index).registerC
+                listOf(
+                    it.instructionMatches[0].index to "useProgram(I)V",
+                    it.instructionMatches[1].index to "setTextureTransform(IIZ[FI)V"
+                ).forEach { (index, method) ->
+                    getInstruction<FiveRegisterInstruction>(index).apply {
+                        val registers = listOf(registerC, registerD, registerE, registerF, registerG)
+                            .take(registerCount).joinToString { register -> "v$register" }
 
-                addInstruction(
-                    index + 1,
-                    "invoke-static { v$programRegister }, $EXTENSION_CLASS->onUseProgram(I)V"
-                )
+                        replaceInstruction(index, "invoke-static { $registers }, $EXTENSION_CLASS->$method")
+                    }
+                }
             }
         }
 

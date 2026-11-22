@@ -35,6 +35,10 @@ internal object PassthroughShaderDrawFingerprint : Fingerprint(
         ),
         methodCall(
             definingClass = "Landroid/opengl/GLES20;",
+            name = "glUniformMatrix4fv"
+        ),
+        methodCall(
+            definingClass = "Landroid/opengl/GLES20;",
             name = "glDrawArrays"
         ),
         string("null shader input for recomposition")
