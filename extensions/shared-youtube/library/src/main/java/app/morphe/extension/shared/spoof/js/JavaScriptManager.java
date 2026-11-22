@@ -2,6 +2,7 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/340
  * https://github.com/MorpheApp/morphe-patches/pull/3655
+ * https://github.com/MorpheApp/morphe-patches/pull/5170
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -11,6 +12,10 @@ package app.morphe.extension.shared.spoof.js;
 import static app.morphe.extension.shared.Utils.isNotEmpty;
 
 import androidx.annotation.Nullable;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,12 +28,14 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -39,6 +46,9 @@ import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
+
+import meow.nyx.quackjs.PlayerHints;
+import meow.nyx.quackjs.PlayerProgram;
 
 /**
  * The functions used in this class are referenced below:
@@ -80,10 +90,33 @@ public final class JavaScriptManager {
     private static final StringSetting PLAYER_JS_HASH =
             SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_HASH_VALUE;
     /**
-     * Variant of JavaScript url.
+     * Faraday config cached time setting.
      */
-    private static final JavaScriptVariant PLAYER_JS_VARIANT =
-            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_VARIANT.get();
+    private static final LongSetting FARADAY_CONFIG_SAVED_MILLISECONDS =
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FARADAY_CONFIG_SAVED_MILLISECONDS;
+    /**
+     * Faraday sig-function setting.
+     */
+    private static final StringSetting FARADAY_SIG =
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FARADAY_SIG_VALUE;
+    /**
+     * Faraday n-function setting.
+     */
+    private static final StringSetting FARADAY_N =
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_FARADAY_N_VALUE;
+    /**
+     * Whether to use quackjs instead of ejs.
+     */
+    private static final boolean USE_QUACK_JS =
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK.get();
+    /**
+     * Variant of JavaScript url.
+     * If {@link USE_QUACK_JS} is true, the player config is fetched from the MetrolistGroup/faraday repository,
+     * which supports only {@link JavaScriptVariant#WEB}.
+     */
+    private static final JavaScriptVariant PLAYER_JS_VARIANT = USE_QUACK_JS
+            ? JavaScriptVariant.WEB
+            : SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_VARIANT.get();
     /**
      * Format of JavaScript url.
      */
@@ -93,6 +126,11 @@ public final class JavaScriptManager {
      */
     private static final String IFRAME_API_URL = "https://www.youtube.com/iframe_api";
     /**
+     * Player config url within the MetrolistGroup/faraday repository.
+     */
+    private static final String FARADAY_CONFIG_URL =
+            "https://raw.githubusercontent.com/MetrolistGroup/faraday/master/registry/player_configs.json";
+    /**
      * Player JavaScript is approximately 3MB in size,
      * So downloading it every time the app is launched results in unnecessary data usage.
      * Player JavaScript has a lifespan of approximately one month, and new versions are released from the server every 3 days.
@@ -100,15 +138,30 @@ public final class JavaScriptManager {
      */
     private static final long PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS = 3 * 24 * 60 * 60 * 1000L; // 3 days.
     /**
+     * It should have the same expiration as {@link PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS},
+     * but the expiration time is set slightly shorter to account for connection latency.
+     */
+    private static final long FARADAY_CONFIG_CACHE_EXPIRATION_MILLISECONDS = PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS - 5000L;
+    /**
      * User-agent of the Mobile client.
      */
     private static final String USER_AGENT =
             "Mozilla/5.0 (Android 13; Mobile; rv:100.0) Gecko/100.0 Firefox/100.0";
     /**
+     * Faraday config file to be saved in the cache directory.
+     */
+    private static final File FARADAY_CONFIG_FILE =
+            new File(Utils.getContext().getCacheDir(), "faraday_player_configs.json");
+    /**
      * Class used to deobfuscate, powered by SmartTube.
      */
     @Nullable
     private volatile static PlayerDataExtractor cachedPlayerDataExtractor;
+    /**
+     * Class used to deobfuscate, powered by MetrolistGroup.
+     */
+    @Nullable
+    private volatile static PlayerProgram cachedPlayerProgram;
     /**
      * JavaScript contents.
      */
@@ -150,13 +203,17 @@ public final class JavaScriptManager {
      * instead of after its response.
      */
     public static void warmUpInBackground() {
-        if (!Utils.isNetworkConnected() || cachedPlayerDataExtractor != null || !warmUpStarted.compareAndSet(false, true)) {
+        if (!Utils.isNetworkConnected() || cachedPlayerDataExtractor != null || cachedPlayerProgram != null || !warmUpStarted.compareAndSet(false, true)) {
             return;
         }
         Utils.runOnBackgroundThread(() -> {
             try {
                 final long start = System.currentTimeMillis();
-                getPlayerDataExtractor();
+                if (USE_QUACK_JS) {
+                    getPlayerProgram();
+                } else {
+                    getPlayerDataExtractor();
+                }
                 Logger.printDebug(() -> "JavaScript warm up took: " + (System.currentTimeMillis() - start) + "ms");
             } catch (Exception ex) {
                 Logger.printException(() -> "JavaScript warm up failure", ex);
@@ -193,6 +250,113 @@ public final class JavaScriptManager {
     }
 
     @Nullable
+    private static PlayerProgram getPlayerProgram() {
+        synchronized (PLAYER_JS_LOCK) {
+            return getPlayerProgramLocked();
+        }
+    }
+
+    @Nullable
+    private static PlayerProgram getPlayerProgramLocked() {
+        if (cachedPlayerProgram == null) {
+            String configData = null;
+            String playerJs = getPlayerJs();
+            long currentTime = System.currentTimeMillis();
+            long lastSavedTime = FARADAY_CONFIG_SAVED_MILLISECONDS.get();
+
+            boolean shouldFetch = FARADAY_SIG.isSetToDefault()
+                    || FARADAY_N.isSetToDefault()
+                    || FARADAY_CONFIG_SAVED_MILLISECONDS.isSetToDefault()
+                    || !FARADAY_CONFIG_FILE.exists()
+                    || currentTime - lastSavedTime >= FARADAY_CONFIG_CACHE_EXPIRATION_MILLISECONDS;
+
+            if (shouldFetch) {
+                if (isNotEmpty(playerJs)) {
+                    configData = downloadUrl(FARADAY_CONFIG_URL);
+                    if (isNotEmpty(configData)) {
+                        saveToFile(FARADAY_CONFIG_FILE, configData);
+
+                        FARADAY_CONFIG_SAVED_MILLISECONDS.save(currentTime);
+                        Logger.printDebug(() -> "Faraday config updated");
+                    } else {
+                        Logger.printException(() -> "configData not found");
+                    }
+                } else {
+                    Logger.printException(() -> "playerJs not found");
+                }
+            } else {
+                configData = readFromFile(FARADAY_CONFIG_FILE);
+                if (isNotEmpty(configData)) {
+                    Logger.printDebug(() -> "Faraday config cache found");
+                } else {
+                    Logger.printException(() -> "Faraday config cache not found");
+                }
+            }
+
+            cachedPlayerProgram = parseFaradayConfig(configData, playerJs, shouldFetch);
+        }
+
+        return cachedPlayerProgram;
+    }
+
+    @Nullable
+    private static PlayerProgram parseFaradayConfig(String configData, String playerJs, boolean shouldParse) {
+        int signatureTimestamp = Objects.requireNonNull(getSignatureTimestamp());
+
+        if (shouldParse) {
+            try {
+                String javaScriptHash = Objects.requireNonNull(getJavaScriptHash());
+                JSONObject config = new JSONObject(configData);
+                JSONObject players = config.getJSONObject("players");
+                JSONObject faraday = null;
+
+                if (players.has(javaScriptHash)) {
+                    faraday = players.getJSONObject(javaScriptHash);
+                } else {
+                    Iterator<String> keys = players.keys();
+                    while (keys.hasNext()) {
+                        String key = keys.next();
+                        JSONObject entry = players.getJSONObject(key);
+                        int sts = entry.getInt("sts");
+                        if (signatureTimestamp == sts) {
+                            JSONArray aliases = entry.getJSONArray("aliases");
+                            boolean contains = IntStream.range(0, aliases.length())
+                                    .anyMatch(i -> javaScriptHash.equals(aliases.opt(i)));
+                            if (contains) {
+                                faraday = entry;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (faraday != null) {
+                    String sig = faraday.getString("sig");
+                    String nClass = faraday.getString("nClass");
+
+                    FARADAY_SIG.save(sig);
+                    FARADAY_N.save(nClass);
+
+                    Logger.printDebug(() -> "[Faraday player config] javaScriptHash: " + javaScriptHash + ", sig: " + sig + ", nClass: " + nClass + ", sts: " + signatureTimestamp);
+                    cachedPlayerProgram = PlayerProgram.compile(
+                            playerJs, new PlayerHints(sig, nClass, signatureTimestamp)
+                    );
+                } else {
+                    Logger.printException(() -> "Faraday json object not found");
+                }
+            } catch (JSONException ex) {
+                Logger.printException(() -> "Failed to parse configData", ex);
+            }
+        } else {
+            cachedPlayerProgram = PlayerProgram.compile(
+                    playerJs, new PlayerHints(FARADAY_SIG.get(), FARADAY_N.get(), signatureTimestamp)
+            );
+        }
+
+        return cachedPlayerProgram;
+    }
+
+    @Nullable
     private static String getPlayerJs() {
         synchronized (PLAYER_JS_LOCK) {
             return getPlayerJsLocked();
@@ -222,11 +386,6 @@ public final class JavaScriptManager {
                 // There is no player JavaScript save in the cache,
                 // or if there is a player JavaScript, it has been more than 3 days since it was last saved.
                 // Download the latest player JavaScript.
-                if (!Utils.isNetworkConnected()) {
-                    Logger.printInfo(() -> "Cannot download playerJs (network disconnected)");
-                    return null;
-                }
-
                 String playerJs = downloadUrl(playerJsUrl);
                 if (isNotEmpty(playerJs)) {
                     cachedPlayerJs = playerJs;
@@ -315,6 +474,10 @@ public final class JavaScriptManager {
         return cachedPlayerJsHash;
     }
 
+    public static boolean isUseQuackJs() {
+        return USE_QUACK_JS;
+    }
+
     public static String getJavaScriptVariant() {
         return PLAYER_JS_VARIANT.name();
     }
@@ -400,29 +563,52 @@ public final class JavaScriptManager {
         }
 
         // Deobfuscate formats.
-        deobfuscateFormat(
-                streamingDataBuilder,
-                formats,
-                serverAbrStreamingUrl,
-                fallbackParam,
-                poToken,
-                false,
-                requireSABR
-        );
+        if (USE_QUACK_JS) {
+            deobfuscateFormatQuackJS(
+                    streamingDataBuilder,
+                    formats,
+                    serverAbrStreamingUrl,
+                    fallbackParam,
+                    poToken,
+                    false,
+                    requireSABR
+            );
+        } else {
+            deobfuscateFormatEJS(
+                    streamingDataBuilder,
+                    formats,
+                    serverAbrStreamingUrl,
+                    fallbackParam,
+                    poToken,
+                    false,
+                    requireSABR
+            );
+        }
 
         // Initialize streamingDataBuilder before adding adaptiveFormats.
         streamingDataBuilder.clearAdaptiveFormats();
 
         // Deobfuscate adaptiveFormats.
-        boolean deobfuscateResult = deobfuscateFormat(
-                streamingDataBuilder,
-                streamingData.getAdaptiveFormatsList(),
-                serverAbrStreamingUrl,
-                fallbackParam,
-                poToken,
-                true,
-                requireSABR
-        );
+        boolean deobfuscateResult;
+        if (USE_QUACK_JS) {
+            deobfuscateResult = deobfuscateFormatQuackJS(streamingDataBuilder,
+                    streamingData.getAdaptiveFormatsList(),
+                    serverAbrStreamingUrl,
+                    fallbackParam,
+                    poToken,
+                    true,
+                    requireSABR
+            );
+        } else {
+            deobfuscateResult = deobfuscateFormatEJS(streamingDataBuilder,
+                    streamingData.getAdaptiveFormatsList(),
+                    serverAbrStreamingUrl,
+                    fallbackParam,
+                    poToken,
+                    true,
+                    requireSABR
+            );
+        }
 
         if (!deobfuscateResult) {
             return null;
@@ -431,7 +617,7 @@ public final class JavaScriptManager {
         return streamingDataBuilder;
     }
 
-    private static boolean deobfuscateFormat(StreamingData.Builder streamingDataBuilder,
+    private static boolean deobfuscateFormatEJS(StreamingData.Builder streamingDataBuilder,
                                              List<Format> formats,
                                              String serverAbrStreamingUrl,
                                              String fallbackParam,
@@ -506,6 +692,116 @@ public final class JavaScriptManager {
                 }
                 String deobfuscatedNParameter = deobfuscatedNParameters.get(0);
                 List<String> deobfuscatedSParameters = results.second;
+                if (hasSignatureCipher && deobfuscatedSParameters.isEmpty()) {
+                    handleDebugToast("Debug: Failed to deobfuscate signatureCipher");
+                    return false;
+                }
+
+                int i = 0;
+                for (Format format : formats) {
+                    Format.Builder formatBuilder = format.toBuilder();
+                    if (!requireSABR) {
+                        String obfuscatedUrl = hasSignatureCipher
+                                // Assemble the url.
+                                ? obfuscatedUrlParameters.get(i) + "&sig=" + deobfuscatedSParameters.get(i)
+                                : format.getUrl();
+                        String deobfuscatedUrl = obfuscatedUrl.replace(obfuscatedNParameter, deobfuscatedNParameter);
+                        if (isNotEmpty(poToken)) {
+                            deobfuscatedUrl = deobfuscatedUrl + "&pot=" + poToken;
+                        }
+                        formatBuilder.setUrl(deobfuscatedUrl);
+                        formatBuilder.clearSignatureCipher();
+                    }
+                    Format newFormat = formatBuilder.build();
+                    streamingDataBuilder.addAdaptiveFormats(newFormat);
+                    i++;
+                }
+
+                String deobfuscatedServerAbrStreamingUrl = "";
+                if (isNotEmpty(serverAbrStreamingUrl)) {
+                    deobfuscatedServerAbrStreamingUrl = serverAbrStreamingUrl.replace(obfuscatedNParameter, deobfuscatedNParameter);
+
+                    if (isNotEmpty(poToken)) {
+                        deobfuscatedServerAbrStreamingUrl = deobfuscatedServerAbrStreamingUrl + "&pot=" + poToken;
+                    }
+                }
+
+                streamingDataBuilder.setServerAbrStreamingUrl(deobfuscatedServerAbrStreamingUrl);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static boolean deobfuscateFormatQuackJS(StreamingData.Builder streamingDataBuilder,
+                                             List<Format> formats,
+                                             String serverAbrStreamingUrl,
+                                             String fallbackParam,
+                                             String poToken,
+                                             boolean isAdaptiveFormats,
+                                             boolean requireSABR) {
+        if (!isAdaptiveFormats) {
+            // Since formats aren't used for playback, there's no problem using the default instance.
+            streamingDataBuilder.addFormats(Format.newBuilder().build());
+            return true;
+        }
+
+        PlayerProgram playerProgram = getPlayerProgram();
+        if (playerProgram != null && formats != null && !formats.isEmpty()) {
+            // In streamingData, all n-parameters have the same value.
+            String obfuscatedNParameter = null;
+
+            List<String> obfuscatedSParameters = new ArrayList<>();
+            List<String> obfuscatedUrlParameters = new ArrayList<>();
+
+            // formats or adaptiveFormats have a signatureCipher or a url.
+            // Therefore, the computation time can be reduced by checking whether the first format has a signatureCipher or not.
+            final boolean hasSignatureCipher = isNotEmpty(formats.get(0).getSignatureCipher());
+
+            for (Format format : formats) {
+                // If a signatureCipher is present, the url field must be assembled while iterating over each format.
+                if (hasSignatureCipher) {
+                    String signatureCipher = format.getSignatureCipher();
+                    Matcher sParamMatcher = THROTTLING_PARAM_S_PATTERN.matcher(signatureCipher);
+                    Matcher urlParamMatcher = THROTTLING_PARAM_URL_PATTERN.matcher(signatureCipher);
+                    if (sParamMatcher.find() && urlParamMatcher.find()) {
+                        // The s-parameter from signatureCipher.
+                        String obfuscatedSParameter = sParamMatcher.group(1);
+                        // The url-parameter from signatureCipher.
+                        String obfuscatedUrl = urlParamMatcher.group(1);
+                        if (isNotEmpty(obfuscatedSParameter) && isNotEmpty(obfuscatedUrl)) {
+                            obfuscatedUrl = decodeURL(obfuscatedUrl);
+
+                            obfuscatedSParameters.add(decodeURL(obfuscatedSParameter));
+                            obfuscatedUrlParameters.add(obfuscatedUrl);
+
+                            if (obfuscatedNParameter == null) {
+                                obfuscatedNParameter = getNQueryParameter(obfuscatedUrl);
+                            }
+                        }
+                    }
+                } else if (!requireSABR) { // If a url is present, simply iterate over each format and replace the n-parameters.
+                    String nQueryParameter = getNQueryParameter(format.getUrl());
+                    if (isNotEmpty(nQueryParameter)) {
+                        obfuscatedNParameter = nQueryParameter;
+                        break;
+                    }
+                } else if (isNotEmpty(fallbackParam)) {
+                    obfuscatedNParameter = fallbackParam;
+                    break;
+                }
+            }
+
+            // streamingData always has one n-parameter.
+            if (isNotEmpty(obfuscatedNParameter)) {
+                String deobfuscatedNParameter = playerProgram.transformN(obfuscatedNParameter);
+                List<String> deobfuscatedSParameters = new ArrayList<>();
+                for (String encryptedSignature : obfuscatedSParameters) {
+                    deobfuscatedSParameters.add(playerProgram.decipherSignature(encryptedSignature));
+                }
+                // Since there is only one obfuscated n-parameter, there is also only one deobfuscated n-parameter
                 if (hasSignatureCipher && deobfuscatedSParameters.isEmpty()) {
                     handleDebugToast("Debug: Failed to deobfuscate signatureCipher");
                     return false;

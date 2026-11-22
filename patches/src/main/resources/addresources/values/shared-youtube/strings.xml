@@ -209,6 +209,8 @@ To sign in, press continue below"</string>
     <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign in to VR: %s</string>
     <string name="morphe_oauth2_toast_reset">Logged out of \'Android VR\'</string>
     <string name="morphe_oauth2_toast_invalid">Invalid VR sign in token, try signing in to VR again</string>
+    <string name="morphe_spoof_video_streams_player_js_quack_title">Use QuackJS</string>
+    <string name="morphe_spoof_video_streams_player_js_quack_summary">Use QuackJS instead of yt-dlp-ejs (WebView) for deobfuscation</string>
 
     <!-- misc.medianotification.mediaNotificationControlsPatch -->
     <string name="morphe_notification_media_screen_title">Notification media controls</string>

@@ -25,6 +25,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.hiddenapi)
     implementation(libs.protobuf.javalite)
+    implementation(libs.quackjs.java)
     implementation(project(":extensions:shared:library"))
     compileOnly(project(":extensions:shared-youtube:stub"))
 }

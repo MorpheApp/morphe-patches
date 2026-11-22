@@ -53,6 +53,21 @@ public class SpoofVideoStreamsPatch {
         }
     }
 
+    public static final class JavaScriptVariantAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() && preferredClient.requireJS && !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(
+                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS,
+                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_QUACK
+            );
+        }
+    }
+
     private static final boolean SPOOF_VIDEO_STREAMS = isPatchIncluded()
             && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
