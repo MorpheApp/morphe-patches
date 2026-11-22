@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/5190
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -23,7 +23,7 @@ public final class SwipeUpForCommentsPatch {
     /**
      * Injection point.
      *
-     * @return If the full-screen player chains videos vertically (swipe up for the next video).
+     * @return If the media viewer chains posts vertically (swipe up for the next post).
      */
     public static boolean allowVerticalChaining(boolean original) {
         return !Settings.SWIPE_UP_FOR_COMMENTS.get() && original;

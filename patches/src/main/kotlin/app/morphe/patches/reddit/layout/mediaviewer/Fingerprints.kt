@@ -246,7 +246,8 @@ internal val mediaViewerFadeAlphaLegacyFilter = methodCall(
 )
 
 /**
- * Lazy value of the full-screen player that chains videos vertically (swipe up for the next video).
+ * Lazy value of whether the media viewer chains posts vertically (swipe up for the next post),
+ * instead of horizontally.
  */
 internal object VerticalChainingFingerprint : Fingerprint(
     name = "invoke",
@@ -257,10 +258,26 @@ internal object VerticalChainingFingerprint : Fingerprint(
             definingClass = "Lcom/reddit/fullbleedplayer/FbpRedesignM3Variant;",
             name = "VERTICAL_CHAINING"
         ),
-        opcode(Opcode.IF_EQ, location = MatchAfterImmediately()),
         methodCall(
             smali = "Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;",
             location = MatchAfterWithin(5)
         )
+    )
+)
+
+/**
+ * Media viewer pager state constructor, which calls the vertical chaining flag getter.
+ * Used before Reddit 2026.40.0, where the flag is a plain getter.
+ */
+internal object VerticalChainingLegacyFingerprint : Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        methodCall(returnType = "Z", parameters = listOf()),
+        methodCall(
+            smali = "Lcom/reddit/domain/model/media/MediaContext;->isImage()Z",
+            location = MatchAfterWithin(10)
+        ),
+        newInstance("Lcom/reddit/fullbleedplayer/data/viewstateproducers/PagerStateProducer\$1;")
     )
 )
