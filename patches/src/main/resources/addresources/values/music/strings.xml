@@ -312,6 +312,11 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <string name="morphe_music_playback_speed_summary">Speed used for all tracks. At 100% the app speed is used, such as the podcast playback speed</string>
     <string name="morphe_music_playback_speed_change_pitch_title">Change pitch with speed</string>
 
+    <!-- video.effects.videoEffectsPatch -->
+    <string name="morphe_music_video_effect_menu_title">Show Video effect menu</string>
+    <string name="morphe_music_video_effect_menu_summary">Adds Video effect to the player menu while a video plays</string>
+    <string name="morphe_music_video_effect_next_video">The effect shows from the next video</string>
+
     <!-- layout.captions.disableAutoCaptionsPatch -->
     <string name="morphe_music_disable_auto_captions_title">Disable auto captions</string>
     <string name="morphe_music_disable_auto_captions_summary">Captions are not enabled automatically when a video starts, including captions the video enables by default</string>

@@ -23,6 +23,7 @@ import app.morphe.extension.shared.patches.PoTokenProviderPatch.PoTokenProviderA
 import app.morphe.extension.shared.patches.SkipSilencePatch.MinimumPause;
 import app.morphe.extension.shared.patches.SplashAnimationPatch;
 import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
+import app.morphe.extension.shared.patches.VideoEffectPresets;
 import app.morphe.extension.shared.patches.components.LithoFilterPatch.LithoLogging;
 import app.morphe.extension.shared.patches.glassmenus.GlassMenusPatch.GlassMenusAvailability;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference.ExternalDownloaderAvailability;
@@ -66,6 +67,11 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting PRIORITIZE_VIDEO_QUALITY = new BooleanSetting("morphe_prioritize_video_quality", TRUE, true, "morphe_prioritize_video_quality_dialog");
     public static final BooleanSetting SKIP_SILENCE = new BooleanSetting("morphe_skip_silence", FALSE, true);
     public static final EnumSetting<MinimumPause> SKIP_SILENCE_MINIMUM_PAUSE = new EnumSetting<>("morphe_skip_silence_minimum_pause", MinimumPause.MS_700, true, parent(SKIP_SILENCE));
+    /**
+     * Name of the selected effect of {@link #VIDEO_EFFECTS_CUSTOM}, or empty for no effect.
+     */
+    public static final StringSetting VIDEO_EFFECT = new StringSetting("morphe_video_effect", "");
+    public static final StringSetting VIDEO_EFFECTS_CUSTOM = new StringSetting("morphe_video_effects_custom", VideoEffectPresets.DEFAULT_CUSTOM_EFFECTS);
 
     // Ads
     public static final BooleanSetting HIDE_FULLSCREEN_ADS = new BooleanSetting("morphe_hide_fullscreen_ads", TRUE);
