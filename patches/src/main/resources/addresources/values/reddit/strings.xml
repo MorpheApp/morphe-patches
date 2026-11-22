@@ -225,6 +225,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_media_viewer_black_background_summary">Uses a black background behind images and videos in the media viewer, instead of the theme background color</string>
     <string name="morphe_open_links_externally_title">Open links externally</string>
     <string name="morphe_open_links_externally_summary">Opens links in your browser instead of the in-app browser</string>
+    <string name="morphe_full_screen_reply_title">Full-screen reply</string>
+    <string name="morphe_full_screen_reply_summary">Replies open in the older full-screen editor, which shows the comment you are replying to so you can select and quote its text. Image cropping is not available there</string>
     <string name="morphe_remember_collapsed_comments_title">Remember collapsed comments</string>
     <string name="morphe_remember_collapsed_comments_summary">Comments you collapse stay collapsed when you reopen the post</string>
     <string name="morphe_app_icon_title">App icon</string>
