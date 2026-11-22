@@ -48,6 +48,10 @@ public final class Link extends ILink {
         throw new UnsupportedOperationException("Stub");
     }
 
+    public String getSubredditId() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
     public String getKindWithId() {
         throw new UnsupportedOperationException("Stub");
     }
