@@ -19,6 +19,7 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoIdHook
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.PlaybackStartParametersConstructorFingerprint
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -32,6 +33,11 @@ private const val EXTENSION_VIDEO_QUALITY_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/RememberVideoQualityPatch$VideoQualityInterface;"
 private const val EXTENSION_VIDEO_QUALITY_MENU_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/RememberVideoQualityPatch$VideoQualityMenuInterface;"
+
+/**
+ * Other video quality settings. Shown after the default video quality settings.
+ */
+internal val settingsMenuVideoQualityGroup = mutableSetOf<BasePreference>()
 
 @Suppress("unused")
 val rememberVideoQualityPatch = patch(
@@ -68,7 +74,7 @@ val rememberVideoQualityPatch = patch(
                     ),
                     SwitchPreference("morphe_remember_video_quality_last_selected", summary = true),
                     SwitchPreference("morphe_remember_video_quality_last_selected_toast", summary = true)
-                )
+                ) + settingsMenuVideoQualityGroup
             )
         )
 

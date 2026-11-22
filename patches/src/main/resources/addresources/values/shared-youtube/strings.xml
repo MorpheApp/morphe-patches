@@ -234,7 +234,10 @@ To sign in, press continue below"</string>
     <string name="morphe_prioritize_video_quality_dialog">If this setting is turned off, then older videos can show no video quality options</string>
 
     <!-- misc.audio.drc.disableDRCAudioPatch  -->
-    <string name="morphe_disable_drc_audio_title">Disable DRC audio</string>
+    <string name="morphe_disable_drc_audio_stream_title">Disable DRC audio</string>
+    <string name="morphe_disable_drc_audio_stream_summary">Plays the original audio instead of the version with compressed dynamic range</string>
+    <string name="morphe_disable_loudness_normalization_title">Disable loudness normalization</string>
+    <string name="morphe_disable_loudness_normalization_summary">Plays loud audio at its original volume instead of lowering it to a standard level</string>
 
     <!-- misc.audio.tracks.forceOriginalAudioPatch -->
     <string name="morphe_force_original_audio_title">Force original audio language</string>

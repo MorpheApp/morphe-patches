@@ -8,7 +8,6 @@
 package app.morphe.patches.music.video.quality
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.video.format.videoFormatPatch
 import app.morphe.patches.shared.misc.videoquality.prioritizeVideoQualityPatch
@@ -21,5 +20,5 @@ internal val prioritizeVideoQualityPatch = prioritizeVideoQualityPatch(
             videoFormatPatch,
         )
     },
-    addPreference = { PreferenceScreen.VIDEO.addPreferences(it) }
+    addPreference = { settingsMenuVideoQualityGroup.add(it) }
 )
