@@ -1,3 +1,27 @@
+## [2.4.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.7...v2.4.0-dev.8) (2026-11-22)
+
+### ✨ New Features
+
+* **Disable DRC audio:** Disable the DRC version of the audio, and add "Disable loudness normalization" setting ([#5131](https://github.com/MorpheApp/morphe-patches/issues/5131)) ([7f7bbdf](https://github.com/MorpheApp/morphe-patches/commit/7f7bbdf845535723ca98e406d56e6b09f22a44eb))
+* **YouTube / YouTube Music:** Add `Video effects` patch ([#5137](https://github.com/MorpheApp/morphe-patches/issues/5137)) ([f9dbc77](https://github.com/MorpheApp/morphe-patches/commit/f9dbc77961c7f0b9b77168a537a35eec0333b47f))
+* **YouTube Music - Third-party lyrics:** Add offline Kuromoji romanizer, custom font upload, inline share editor, separate cache clearing, and romaji/CJK sweep fixes ([#5072](https://github.com/MorpheApp/morphe-patches/issues/5072)) ([58074f6](https://github.com/MorpheApp/morphe-patches/commit/58074f6c7f041e8d021f467bbbae9475618ac249))
+* **YouTube Music:** Add `Glass menus` patch ([#5123](https://github.com/MorpheApp/morphe-patches/issues/5123)) ([f691df6](https://github.com/MorpheApp/morphe-patches/commit/f691df66b040c8dbcef7b2d93cc8bb860f5e607b))
+
+### 🐛 Bug Fixes
+
+* **Reddit - Feed auto-scroll:** Patching fails with Reddit 2026.24.0 and older ([41650c4](https://github.com/MorpheApp/morphe-patches/commit/41650c4b3913858e005507491e4275990600d2e6))
+* **YouTube - DeArrow:** Elements are mounted again entirely when a still image or DeArrow thumbnail is not available, instead of loading only the thumbnail again ([#4966](https://github.com/MorpheApp/morphe-patches/issues/4966)) ([e2b96b5](https://github.com/MorpheApp/morphe-patches/commit/e2b96b55bdf335893748ba0210593c2701e1ec2f))
+* **YouTube - DeArrow:** Thumbnail keeps the previous branding after tapping the DeArrow icon, as the element is mounted again before it's laid out again ([4aaadac](https://github.com/MorpheApp/morphe-patches/commit/4aaadacd0bb4a1556b4bcab0dd248d5c1aef940b))
+* **YouTube - Download post images:** Download button and menu item are missing on posts with a short text or without text ([#4066](https://github.com/MorpheApp/morphe-patches/issues/4066)) ([6b8be0f](https://github.com/MorpheApp/morphe-patches/commit/6b8be0f63f2d31c6ca388c2f9d847a1081ca6cc0))
+* **YouTube - Glass menus:** Draw the glass only on the panel of a bottom sheet ([#5128](https://github.com/MorpheApp/morphe-patches/issues/5128)) ([ece07e2](https://github.com/MorpheApp/morphe-patches/commit/ece07e2c90b8bd75235a4eafd3aae7f55a859af7))
+* **YouTube - Navigation bar:** Live chat scroll to bottom button stays half visible with the glass or translucent navigation bar ([#5100](https://github.com/MorpheApp/morphe-patches/issues/5100)) ([1f47abd](https://github.com/MorpheApp/morphe-patches/commit/1f47abdbbd9fb964c95297bd01db30622143bc1d))
+* **YouTube - Navigation bar:** Navigation bar does not auto-hide while scrolling when the miniplayer is shown ([#4432](https://github.com/MorpheApp/morphe-patches/issues/4432)) ([db91dbe](https://github.com/MorpheApp/morphe-patches/commit/db91dbebab597bdeb48a3e84a8a5d845610b5386))
+* **YouTube & YouTube Music - Glass menus:** Hide new Litho fills before they are drawn ([#5130](https://github.com/MorpheApp/morphe-patches/issues/5130)) ([1ea74d7](https://github.com/MorpheApp/morphe-patches/commit/1ea74d705d3c4a96a1c0b97d1e8157c7cee055a0))
+* **YouTube Music - Play album songs:** Replace album music videos with their songs in the queue ([#5141](https://github.com/MorpheApp/morphe-patches/issues/5141)) ([dd4c2f0](https://github.com/MorpheApp/morphe-patches/commit/dd4c2f00deb17efb4df4c310868697c3ca40eed7))
+* **YouTube Music - Theme:** Playlist header ends in a hard black edge with a non-black background ([9ab4dcb](https://github.com/MorpheApp/morphe-patches/commit/9ab4dcbc544c206b718ae065a283e7ca2a94429b))
+* **YouTube:** Feed stutters when the titles loaded meanwhile are laid out again, as their layout is calculated on the main thread ([#4966](https://github.com/MorpheApp/morphe-patches/issues/4966)) ([3f02ea1](https://github.com/MorpheApp/morphe-patches/commit/3f02ea1cd0b4d3e5c40760a8c1be90ed97c2c838))
+* **YouTube:** Feed stutters while scrolling fast, as the titles loaded meanwhile are laid out again during the fling and all in the same frame ([#4966](https://github.com/MorpheApp/morphe-patches/issues/4966)) ([f5ee396](https://github.com/MorpheApp/morphe-patches/commit/f5ee3968b3ac218ad24281bd539707ccee37041f))
+
 ## [2.4.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v2.4.0-dev.6...v2.4.0-dev.7) (2026-11-21)
 
 ### ✨ New Features
