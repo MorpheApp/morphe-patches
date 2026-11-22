@@ -54,8 +54,12 @@ internal object IsGoogleSignedFingerprint : Fingerprint(
     parameters = listOf("Ljava/lang/String;")
 )
 
-// Stock settings intent, screen, and rows
+// Replacement Settings tab
 
+/**
+ * Omitting this intent from the media browser root hides the stock Settings button.
+ * YouTube Music can crash when Android Auto rejects the screen that button opens.
+ */
 internal object AndroidAutoSettingsIntentFingerprint : Fingerprint(
     filters = listOf(
         string("androidx.media.BrowserRoot.Extras.APPLICATION_PREFERENCES_USING_CAR_APP_LIBRARY_INTENT"),
@@ -69,6 +73,10 @@ internal object AndroidAutoSettingsIntentFingerprint : Fingerprint(
     )
 )
 
+/**
+ * The browse tab reuses the method that builds the stock Settings rows and attaches their toggle listeners.
+ * The tab uses title resource names to keep row IDs stable when the app language changes.
+ */
 internal object StockSettingsTemplateFingerprint : Fingerprint(
     parameters = emptyList(),
     filters = listOf(
@@ -154,11 +162,11 @@ internal object SendEmptyMediaItemsFingerprint : Fingerprint(
     )
 )
 
-// Locate YTM's phone request clients and browse methods
+// MusicBrowserService startup
 
 /**
  * Initializes MusicBrowserService, which serves YTM's pages and search results to Android Auto.
- * The patch obtains the phone request clients here so they are available when Auto connects.
+ * Its startup code gives the patch access to the generated component that holds the provider fields.
  */
 internal fun browserServiceOnCreateFingerprint(
     musicBrowserServiceType: String,
@@ -184,7 +192,14 @@ internal fun browserServiceOnCreateFingerprint(
     )
 )
 
-internal fun serviceDependencyProviderFingerprint(dependencyType: String, injector: String? = null) = Fingerprint(
+/**
+ * Finds the provider field and getter for YouTube Music's phone browse client, search client, or car settings controller.
+ * The patch repeats that lookup in `MusicBrowserService.onCreate` to pass the object to the Android Auto extension.
+ */
+internal fun providerLookupForMusicBrowserServiceFingerprint(
+    dependencyType: String,
+    injector: String? = null,
+) = Fingerprint(
     definingClass = injector,
     filters = listOf(
         fieldAccess(opcode = Opcode.IGET_OBJECT),
@@ -198,6 +213,8 @@ internal fun serviceDependencyProviderFingerprint(dependencyType: String, inject
         checkCast(dependencyType, location = MatchAfterImmediately())
     )
 )
+
+// Locate YTM's phone request clients and browse methods
 
 /** Creates a request for the phone's Library, Home, or a playlist. */
 internal object CreatePhoneBrowseRequestFingerprint : Fingerprint(

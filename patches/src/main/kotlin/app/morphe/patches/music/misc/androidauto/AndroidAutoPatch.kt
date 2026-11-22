@@ -163,7 +163,7 @@ private fun patchPhoneBrowseClient() {
         phoneBrowseRequestType,
         sendPhoneBrowseRequestMethod,
     )
-    hookServiceDependency(
+    hookMusicBrowserServiceDependency(
         phoneBrowseClientType,
         PHONE_BROWSE_CLIENT,
         "$EXTENSION_CLASS->setPhoneBrowseClient($PHONE_BROWSE_CLIENT)V",
@@ -252,14 +252,14 @@ private fun addLibraryPaginationRequestMethod(
 
 // Obtain dependencies when YTM's media service starts
 
-internal fun hookServiceDependency(
+internal fun hookMusicBrowserServiceDependency(
     dependencyType: String,
     extensionInterface: String,
     setter: String,
     injector: String? = null,
 ) {
     val providerCandidates =
-        serviceDependencyProviderFingerprint(dependencyType, injector)
+        providerLookupForMusicBrowserServiceFingerprint(dependencyType, injector)
             .matchAll()
             .map { match ->
                 val (providerFieldMatch, providerGetMatch) = match.instructionMatches

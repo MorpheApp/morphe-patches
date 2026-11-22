@@ -23,11 +23,13 @@ private const val SETTINGS_SERVICE =
     "Lcom/google/android/apps/youtube/music/mediabrowser/androidautoprojected/AndroidAutoCarAppServices;"
 
 /**
- * Tapping the stock Settings button crashes YouTube Music when Android Auto rejects its settings template.
- * Omit the button's PendingIntent from the media browser root and show the same rows in a browse tab.
+ * Android Auto checks YouTube Music's car app service before opening the stock Settings screen.
+ * If Android Auto rejects the patched app's service, YouTube Music crashes. The extension's
+ * `AndroidAutoSettingsTab` serves the same settings through `MusicBrowserService` as a tab alongside Home and Library.
  */
 internal fun replaceSettingsButton() {
     AndroidAutoSettingsIntentFingerprint.let {
+        // Android Auto adds the stock button when the browser root contains YouTube Music's Settings PendingIntent.
         it.method.removeInstruction(it.instructionMatches.last().index)
     }
 
@@ -35,13 +37,15 @@ internal fun replaceSettingsButton() {
     val contextField = template.instructionMatches.first().fieldReference
     val controllerField = template.instructionMatches[4].fieldReference
     addBrowseSettingsTemplate(contextField, controllerField)
-    // Other providers return the same controller type in 9.44.52 through 9.46.51.
-    hookServiceDependency(
+    hookMusicBrowserServiceDependency(
         controllerField.type, SETTINGS_SOURCE, "$TAB;->setSettingsSource($SETTINGS_SOURCE)V",
+        // At startup MusicBrowserService reuses the provider that the car settings service reads in its superclass.
+        // The controller type alone matches several providers in 9.44.52 through 9.46.51.
         injector = classDefBy(SETTINGS_SERVICE).superclass!!,
     )
 
-    // The tab needs the listener already attached to each toggle. YouTube Music obfuscates its delegate type.
+    // Choosing On or Off opens a media item. The extension calls the original toggle listener so YouTube Music
+    // applies the change. These interfaces expose that listener through the toggle's obfuscated delegate type.
     val toggle = mutableClassDefBy("${MODEL}Toggle;")
     toggle.addPatchInterface("${TAB}\$StockToggle;", "patch_getDelegate",
         toggle.fields.single { it.name == "mOnCheckedChangeDelegate" })
@@ -50,7 +54,10 @@ internal fun replaceSettingsButton() {
         delegate.fields.single { it.type == "${MODEL}IOnCheckedChangeListener;" })
 }
 
-/** Let the browse tab identify each row when the native template reads its title resource. */
+/**
+ * The stock car screen owns the method that builds the settings rows. Copying it onto the settings
+ * controller lets `MusicBrowserService` build those rows using its own `Context` for resource lookups.
+ */
 private fun addBrowseSettingsTemplate(contextField: FieldReference, controllerField: FieldReference) {
     val template = StockSettingsTemplateFingerprint
     val getString = template.instructionMatches[2].methodReference
@@ -71,6 +78,8 @@ private fun addBrowseSettingsTemplate(contextField: FieldReference, controllerFi
             field == contextField -> render.replaceInstruction(index, "move-object/from16 v${registers.first()}, p1")
             field == controllerField -> render.replaceInstruction(index, "move-object/from16 v${registers.first()}, p0")
             call == getString && instructions.getOrNull(index + 2)?.getReference<MethodReference>() == setRowTitle -> {
+                // RowTitle returns the resource name and keeps the translated title for display.
+                // Using that name in the media ID lets Android Auto reopen the row after a language change.
                 render.replaceInstruction(index,
                     "invoke-interface { p2, v${registers[1]} }, ${ROW_TITLE}->get(I)Ljava/lang/String;")
             }
