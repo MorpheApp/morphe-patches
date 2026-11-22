@@ -13,8 +13,6 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.holdgesture.LauncherIcon.Glyph;
 import app.morphe.extension.youtube.patches.LoopVideoPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -28,13 +26,13 @@ import app.morphe.extension.youtube.videoplayer.LoopVideoButton;
  */
 public enum LauncherAction {
     /** Keeps touches from the app until the screen is unlocked again. */
-    SCREEN_LOCK(Glyph.SCREEN_LOCK),
-    LOOP(Glyph.LOOP),
+    SCREEN_LOCK,
+    LOOP,
     /** Saves the picture of the video as an image. */
-    SCREENSHOT(Glyph.CAMERA),
-    WATCH_LATER(Glyph.CLOCK),
+    SCREENSHOT,
+    WATCH_LATER,
     /** Copies a link that opens the video at the time of now. */
-    TIMESTAMP_URL(Glyph.LINK);
+    TIMESTAMP_URL;
 
     /** What an action needs from the player. */
     interface Host {
@@ -45,13 +43,7 @@ public enum LauncherAction {
         View playerView();
 
         /** Shows that a picture of the video was taken. */
-        void flash();
-    }
-
-    final Glyph glyph;
-
-    LauncherAction(Glyph glyph) {
-        this.glyph = glyph;
+        void flashShutter();
     }
 
     /**
@@ -88,15 +80,8 @@ public enum LauncherAction {
     void run(Host host) {
         switch (this) {
             case SCREEN_LOCK -> host.lockScreen();
-            case LOOP -> {
-                final boolean loop = !Settings.LOOP_VIDEO.get();
-                LoopVideoButton.setLoopButton(loop);
-                LoopVideoButton.updateButtonIcon();
-                Utils.showSnackbarShort(str(loop
-                        ? "morphe_loop_video_button_toast_on"
-                        : "morphe_loop_video_button_toast_off"));
-            }
-            case SCREENSHOT -> VideoFrameSaver.save(host.playerView(), host::flash);
+            case LOOP -> LoopVideoButton.toggleLoop();
+            case SCREENSHOT -> VideoFrameSaver.save(host.playerView(), host::flashShutter);
             case WATCH_LATER -> SaveToWatchLaterPatch.saveVideo(VideoInformation.getVideoId());
             case TIMESTAMP_URL -> CopyVideoLinkButton.copyLink(true);
         }

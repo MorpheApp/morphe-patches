@@ -1273,7 +1273,7 @@ public final class PostImageDownloadPatch {
     /**
      * Saves an image to the pictures of the device.
      *
-     * @param data Image file as JPEG, PNG or WebP.
+     * @param data Image file as JPEG, PNG, WebP or GIF.
      * @param name File name without the extension.
      * @return Whether the image was saved.
      */

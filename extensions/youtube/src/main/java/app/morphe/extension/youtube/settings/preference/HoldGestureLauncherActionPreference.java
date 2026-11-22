@@ -47,26 +47,15 @@ public class HoldGestureLauncherActionPreference extends CustomDialogListPrefere
     private void init() {
         CharSequence[] entries = getEntries();
         CharSequence[] entryValues = getEntryValues();
-        if (entries == null || entryValues == null || entries.length != entryValues.length) {
-            return;
-        }
-
         // The preference value is only loaded once it is attached to the hierarchy.
-        Setting<?> setting = Setting.getSettingFromPath(getKey());
-        String currentValue = setting == null ? "" : String.valueOf(setting.get());
+        String currentValue = String.valueOf(Setting.getSettingFromPath(getKey()).get());
         List<CharSequence> shownEntries = new ArrayList<>(entries.length);
         List<CharSequence> shownValues = new ArrayList<>(entryValues.length);
 
         for (int i = 0, length = entryValues.length; i < length; i++) {
             String value = entryValues[i].toString();
-            boolean available;
-            try {
-                available = LauncherAction.valueOf(value).isAvailable();
-            } catch (IllegalArgumentException ex) {
-                available = true;
-            }
             // Keep what the slot is set to, so that the list shows it as picked.
-            if (available || value.equals(currentValue)) {
+            if (LauncherAction.valueOf(value).isAvailable() || value.equals(currentValue)) {
                 shownEntries.add(entries[i]);
                 shownValues.add(value);
             }

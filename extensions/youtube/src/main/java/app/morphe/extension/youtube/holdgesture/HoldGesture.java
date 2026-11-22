@@ -143,6 +143,7 @@ public final class HoldGesture {
     /** Way back up that leaves the lock target, and that disarms it. */
     static final float LOCK_LEAVE = 12;
     static final float LOCK_DISARM = 6;
+    /** Way up that opens the launcher. */
     static final float LAUNCHER_ENTER = 30;
 
     private static final int MAX_STEPS = 1000;

@@ -114,6 +114,10 @@ public final class HoldGestureController implements HoldGesture.Listener, Launch
     private static final long KEEP_LOCK_AFTER_VIDEO_CHANGE_MS = 5000;
     private static final float BADGE_ALPHA_WITHOUT_CONTROLS = 0.55f;
     private static final int LAUNCHER_FEWEST_SLOTS = 3;
+    private static final List<EnumSetting<LauncherAction>> LAUNCHER_SLOTS = List.of(
+            Settings.HOLD_GESTURE_LAUNCHER_SLOT_1, Settings.HOLD_GESTURE_LAUNCHER_SLOT_2,
+            Settings.HOLD_GESTURE_LAUNCHER_SLOT_3, Settings.HOLD_GESTURE_LAUNCHER_SLOT_4,
+            Settings.HOLD_GESTURE_LAUNCHER_SLOT_5);
     private static final long UNLOCK_AFTER_LAUNCHER_MS = 400;
 
     private static final HoldGestureController instance = new HoldGestureController();
@@ -573,7 +577,7 @@ public final class HoldGestureController implements HoldGesture.Listener, Launch
             final HoldLauncherView.Item[] items = new HoldLauncherView.Item[launcherActions.length];
             for (int i = 0; i < items.length; i++) {
                 final LauncherAction action = launcherActions[i];
-                items[i] = new HoldLauncherView.Item(new LauncherIcon(action.glyph), action.label(), action.isOn());
+                items[i] = new HoldLauncherView.Item(new LauncherIcon(action), action.label(), action.isOn());
             }
             Logger.printDebug(() -> "Launcher opens with: " + List.of(launcherActions));
             launcher.open(layout, items, fingerInViewX, fingerInViewY);
@@ -631,14 +635,10 @@ public final class HoldGestureController implements HoldGesture.Listener, Launch
     private static LauncherAction[] launcherActions() {
         if (!Settings.HOLD_GESTURE_LAUNCHER.get()) return new LauncherAction[0];
 
-        final List<EnumSetting<LauncherAction>> slots = List.of(
-                Settings.HOLD_GESTURE_LAUNCHER_SLOT_1, Settings.HOLD_GESTURE_LAUNCHER_SLOT_2,
-                Settings.HOLD_GESTURE_LAUNCHER_SLOT_3, Settings.HOLD_GESTURE_LAUNCHER_SLOT_4,
-                Settings.HOLD_GESTURE_LAUNCHER_SLOT_5);
-        final int count = Math.max(LAUNCHER_FEWEST_SLOTS,
-                Math.min(slots.size(), Settings.HOLD_GESTURE_LAUNCHER_SLOT_COUNT.get()));
+        final int count = Utils.clamp(Settings.HOLD_GESTURE_LAUNCHER_SLOT_COUNT.get(),
+                LAUNCHER_FEWEST_SLOTS, LAUNCHER_SLOTS.size());
         final List<LauncherAction> actions = new ArrayList<>(count);
-        for (EnumSetting<LauncherAction> slot : slots.subList(0, count)) {
+        for (EnumSetting<LauncherAction> slot : LAUNCHER_SLOTS.subList(0, count)) {
             final LauncherAction action = slot.get();
             if (action.isAvailable() && !actions.contains(action)) {
                 actions.add(action);
@@ -662,7 +662,7 @@ public final class HoldGestureController implements HoldGesture.Listener, Launch
     }
 
     @Override
-    public void flash() {
+    public void flashShutter() {
         final HoldLauncherView launcher = launcherRef.get();
         if (launcher != null) {
             launcher.flash();

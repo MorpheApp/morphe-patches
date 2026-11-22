@@ -23,30 +23,19 @@ import androidx.annotation.Nullable;
  */
 final class LauncherIcon extends Drawable {
 
-    enum Glyph {
-        /** A screen with a padlock on it. */
-        SCREEN_LOCK,
-        /** Two arrows that follow each other around. */
-        LOOP,
-        CAMERA,
-        CLOCK,
-        /** Two links of a chain. */
-        LINK
-    }
-
     /** The glyphs are laid out on a square of this size. */
     private static final float GRID = 24;
     private static final float LINE = 2;
 
-    private final Glyph glyph;
+    private final LauncherAction action;
     private final Paint stroke = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint fill = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Path path = new Path();
     private int color = 0xFFFFFFFF;
     private int alpha = 255;
 
-    LauncherIcon(Glyph glyph) {
-        this.glyph = glyph;
+    LauncherIcon(LauncherAction action) {
+        this.action = action;
         stroke.setStyle(Paint.Style.STROKE);
         stroke.setStrokeCap(Paint.Cap.ROUND);
         stroke.setStrokeJoin(Paint.Join.ROUND);
@@ -57,7 +46,7 @@ final class LauncherIcon extends Drawable {
         final Rect bounds = getBounds();
         if (bounds.isEmpty() || alpha == 0) return;
 
-        final int inked = ((color >>> 24) * alpha / 255) << 24 | (color & 0x00FFFFFF);
+        final int inked = Blend.withAlpha(color, alpha / 255f);
         stroke.setColor(inked);
         stroke.setStrokeWidth(LINE);
         fill.setColor(inked);
@@ -66,8 +55,9 @@ final class LauncherIcon extends Drawable {
         canvas.translate(bounds.left, bounds.top);
         canvas.scale(bounds.width() / GRID, bounds.height() / GRID);
         path.rewind();
-        switch (glyph) {
+        switch (action) {
             case SCREEN_LOCK -> {
+                // A screen with a padlock on it.
                 canvas.drawRoundRect(2.5f, 4.5f, 21.5f, 19.5f, 2.5f, 2.5f, stroke);
                 canvas.drawRoundRect(9, 11.5f, 15, 16, 1, 1, fill);
                 stroke.setStrokeWidth(1.6f);
@@ -78,6 +68,7 @@ final class LauncherIcon extends Drawable {
                 canvas.drawPath(path, stroke);
             }
             case LOOP -> {
+                // Two arrows that follow each other around.
                 // The upper line runs to the right, the lower one back to the left.
                 path.moveTo(4, 11);
                 path.lineTo(4, 9.5f);
@@ -95,7 +86,8 @@ final class LauncherIcon extends Drawable {
                 path.lineTo(7.5f, 21);
                 canvas.drawPath(path, stroke);
             }
-            case CAMERA -> {
+            case SCREENSHOT -> {
+                // A camera.
                 path.moveTo(8.2f, 7);
                 path.lineTo(9.8f, 4.5f);
                 path.lineTo(14.2f, 4.5f);
@@ -104,14 +96,16 @@ final class LauncherIcon extends Drawable {
                 canvas.drawRoundRect(2.5f, 7, 21.5f, 19.5f, 2.5f, 2.5f, stroke);
                 canvas.drawCircle(12, 13.2f, 3.3f, stroke);
             }
-            case CLOCK -> {
+            case WATCH_LATER -> {
+                // A clock.
                 canvas.drawCircle(12, 12, 8.8f, stroke);
                 path.moveTo(12, 7.2f);
                 path.lineTo(12, 12);
                 path.lineTo(15.2f, 14);
                 canvas.drawPath(path, stroke);
             }
-            case LINK -> {
+            case TIMESTAMP_URL -> {
+                // Two links of a chain.
                 path.moveTo(10, 8);
                 path.lineTo(7, 8);
                 path.arcTo(3, 8, 11, 16, 270, -180, false);
@@ -150,6 +144,7 @@ final class LauncherIcon extends Drawable {
     }
 
     @Override
+    @Deprecated
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;
     }
