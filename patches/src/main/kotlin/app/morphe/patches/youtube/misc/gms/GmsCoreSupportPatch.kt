@@ -18,6 +18,7 @@ import app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.MORPHE_YOUTUBE_PACKAGE_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
+import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_SIGNATURE
 import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -30,6 +31,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 val gmsCoreSupportPatch = gmsCoreSupportPatch(
     fromPackageName = YOUTUBE_PACKAGE_NAME,
     toPackageNameDefault = MORPHE_YOUTUBE_PACKAGE_NAME,
+    spoofedPackageSignature = YOUTUBE_PACKAGE_SIGNATURE,
     primeMethodFingerprint = PrimeMethodFingerprint,
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
@@ -67,7 +69,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
 private fun gmsCoreSupportResourcePatch() = gmsCoreSupportResourcePatch(
     fromPackageName = YOUTUBE_PACKAGE_NAME,
     toPackageNameDefault = MORPHE_YOUTUBE_PACKAGE_NAME,
-    spoofedPackageSignature = "24bb24c05e47e0aefa68a58a766179d9b613a600",
+    spoofedPackageSignature = YOUTUBE_PACKAGE_SIGNATURE,
     screen = PreferenceScreen.MISC,
     block = {
         dependsOn(

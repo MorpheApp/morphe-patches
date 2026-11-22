@@ -120,6 +120,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_popular_tab_summary">Hides the Popular tab of the home feed</string>
     <string name="morphe_hide_interactive_posts_title">Hide interactive posts</string>
     <string name="morphe_hide_interactive_posts_summary">Hides game and other interactive app posts from the home feed and other recommended feeds</string>
+    <string name="morphe_hide_related_posts_section_title">Hide \'Related Posts\' section</string>
+    <string name="morphe_hide_related_posts_section_summary">Hides the \'Related Posts\' section below the comments of a post</string>
     <string name="morphe_hide_trending_shelves_title">Hide Trending shelves</string>
     <string name="morphe_hide_trending_shelves_summary">Hides the Trending shelves from feed and search suggestions</string>
     <string name="morphe_hide_videos_for_you_shelf_title">Hide \'Videos for you\' shelf</string>
@@ -127,6 +129,9 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_remove_notification_dialog_summary">Automatically dismisses the notification suggestion dialog when visiting a subreddit</string>
     <string name="morphe_high_quality_avatars_title">High quality avatars</string>
     <string name="morphe_high_quality_avatars_summary">Shows user avatars in full resolution</string>
+    <string name="morphe_search_hidden_profiles_title">Search hidden profiles</string>
+    <string name="morphe_search_hidden_profiles_summary">Shows a button on profiles that hide their posts or comments, to find their posts with Reddit search</string>
+    <string name="morphe_search_hidden_profiles_button">Search</string>
     <string name="morphe_show_flairs_in_home_feed_title">Show flairs in home feed</string>
     <string name="morphe_show_flairs_in_home_feed_summary">Shows post flair badges in the home feed</string>
     <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Some feed items may not show a flair</string>

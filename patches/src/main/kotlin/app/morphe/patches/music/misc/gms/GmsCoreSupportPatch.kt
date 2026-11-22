@@ -4,6 +4,7 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.fileprovider.fileProviderPatch
 import app.morphe.patches.music.misc.gms.Constants.MORPHE_MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
+import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_SIGNATURE
 import app.morphe.patches.music.misc.playservice.is_9_45_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -17,6 +18,7 @@ import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
 val gmsCoreSupportPatch = gmsCoreSupportPatch(
     fromPackageName = MUSIC_PACKAGE_NAME,
     toPackageNameDefault = MORPHE_MUSIC_PACKAGE_NAME,
+    spoofedPackageSignature = MUSIC_PACKAGE_SIGNATURE,
     primeMethodFingerprint = PrimeMethodFingerprint,
     mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
@@ -42,7 +44,7 @@ private fun gmsCoreSupportResourcePatch() =
     app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch(
         fromPackageName = MUSIC_PACKAGE_NAME,
         toPackageNameDefault = MORPHE_MUSIC_PACKAGE_NAME,
-        spoofedPackageSignature = "afb0fed5eeaebdd86f56a97742f4b6b33ef59875",
+        spoofedPackageSignature = MUSIC_PACKAGE_SIGNATURE,
         screen = PreferenceScreen.MISC,
         block = {
             dependsOn(

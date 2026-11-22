@@ -1210,6 +1210,17 @@ public final class NativePlaylistQueuePatch {
     }
 
     /**
+     * @return If the playback queue plays this queue, which keeps the playlist ID of a converted playlist.
+     */
+    public static boolean isQueuePlaying() {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || queue == null) {
+            return false;
+        }
+        NativePlayback playback = nativePlaybackRef.get();
+        return playback != null && playback.patch_isLocalQueue();
+    }
+
+    /**
      * Injection point.
      * <p>
      * Read-only response hook; captures commands even when the action bar is hidden.

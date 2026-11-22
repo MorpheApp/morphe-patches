@@ -24,7 +24,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
-import android.graphics.Matrix;
+import android.graphics.ImageDecoder;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PixelFormat;
@@ -35,9 +35,10 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Pair;
+import android.util.Size;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -50,9 +51,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -156,8 +160,8 @@ final class LyricsShareDialog {
             window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
             window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(STAGE_GROUND_COLOR);
-            window.setNavigationBarColor(DOCK_SURFACE_COLOR);
+            setStatusBarColor(window, STAGE_GROUND_COLOR);
+            setNavigationBarColor(window);
         }
 
         LinearLayout root = new LinearLayout(context);
@@ -342,7 +346,7 @@ final class LyricsShareDialog {
             int stageColor = computeStageBackdropColor(baseColor);
             root.setBackgroundColor(stageColor);
             if (window != null) {
-                window.setStatusBarColor(stageColor);
+                setStatusBarColor(window, stageColor);
             }
 
             Bitmap bmp = LyricsShareCardRenderer.renderRichCardBitmap(
@@ -721,6 +725,17 @@ final class LyricsShareDialog {
         }
     }
 
+    // Ignored for apps that draw edge to edge on Android 15 and later, but still used before that.
+    @SuppressWarnings("deprecation")
+    private static void setStatusBarColor(Window window, int color) {
+        window.setStatusBarColor(color);
+    }
+
+    @SuppressWarnings("deprecation")
+    private static void setNavigationBarColor(Window window) {
+        window.setNavigationBarColor(LyricsShareDialog.DOCK_SURFACE_COLOR);
+    }
+
     static String buildCopyTextForSelection(
             List<ShareLineEntry> entries,
             boolean includeBg,
@@ -739,8 +754,10 @@ final class LyricsShareDialog {
             if (includeBg && e.bgAfterText() != null && !e.bgAfterText().trim().isEmpty()) {
                 sb.append('\n').append(e.bgAfterText().trim());
             }
-            String roma = (includeRoma && e.hasRomanization()) ? e.romanizationText().trim() : null;
-            String trans = (includeTrans && e.hasTranslation()) ? e.translationText().trim() : null;
+            final String romaText = e.romanizationText();
+            final String transText = e.translationText();
+            String roma = includeRoma && romaText != null && e.hasRomanization() ? romaText.trim() : null;
+            String trans = includeTrans && transText != null && e.hasTranslation() ? transText.trim() : null;
             if (swapTransRoma) {
                 if (trans != null) sb.append('\n').append(trans);
                 if (roma != null) sb.append('\n').append(roma);
@@ -839,80 +856,60 @@ final class LyricsShareDialog {
         return null;
     }
 
+    /**
+     * Decodes the picked photo, scaled down to at most {@link #MAX_PICKED_IMAGE_DIM} pixels per side.
+     * On Android 9 and later the photo is also turned the way its EXIF orientation says.
+     */
     @Nullable
     static Bitmap decodeSampledImage(Context context, Uri uri) {
         try {
-            BitmapFactory.Options bounds = new BitmapFactory.Options();
-            bounds.inJustDecodeBounds = true;
-            try (InputStream in = context.getContentResolver().openInputStream(uri)) {
-                if (in == null) return null;
-                BitmapFactory.decodeStream(in, null, bounds);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                return decodeWithImageDecoder(context, uri);
             }
-            if (bounds.outWidth <= 0 || bounds.outHeight <= 0) {
-                return null;
-            }
-            int sample = 1;
-            while (bounds.outWidth / sample > MAX_PICKED_IMAGE_DIM
-                    || bounds.outHeight / sample > MAX_PICKED_IMAGE_DIM) {
-                sample *= 2;
-            }
-            BitmapFactory.Options decodeOpts = new BitmapFactory.Options();
-            decodeOpts.inSampleSize = sample;
-            decodeOpts.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            Bitmap decoded;
-            try (InputStream in = context.getContentResolver().openInputStream(uri)) {
-                if (in == null) return null;
-                decoded = BitmapFactory.decodeStream(in, null, decodeOpts);
-            }
-            if (decoded == null) {
-                return null;
-            }
-            return applyExifOrientation(context, uri, decoded);
+            return decodeWithBitmapFactory(context, uri);
         } catch (Throwable ex) {
             Logger.printException(() -> "Failed decoding selected background photo", ex);
             return null;
         }
     }
-    private static Bitmap applyExifOrientation(Context context, Uri uri, Bitmap bitmap) {
-        int orientation = ExifInterface.ORIENTATION_NORMAL;
-        try (InputStream exifIn = context.getContentResolver().openInputStream(uri)) {
-            if (exifIn != null) {
-                ExifInterface exif = new ExifInterface(exifIn);
-                orientation = exif.getAttributeInt(
-                        ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
-            }
-        } catch (Throwable ignored) {
-            return bitmap;
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    private static Bitmap decodeWithImageDecoder(Context context, Uri uri) throws IOException {
+        ImageDecoder.Source source = ImageDecoder.createSource(context.getContentResolver(), uri);
+        return ImageDecoder.decodeBitmap(source, (decoder, info, src) -> {
+            Size size = info.getSize();
+            decoder.setTargetSampleSize(sampleSizeFor(size.getWidth(), size.getHeight()));
+            // The card is drawn on a software canvas, which cannot draw hardware bitmaps.
+            decoder.setAllocator(ImageDecoder.ALLOCATOR_SOFTWARE);
+        });
+    }
+
+    @Nullable
+    private static Bitmap decodeWithBitmapFactory(Context context, Uri uri) throws IOException {
+        BitmapFactory.Options bounds = new BitmapFactory.Options();
+        bounds.inJustDecodeBounds = true;
+        try (InputStream in = context.getContentResolver().openInputStream(uri)) {
+            if (in == null) return null;
+            BitmapFactory.decodeStream(in, null, bounds);
         }
-        Matrix m = new Matrix();
-        switch (orientation) {
-            case ExifInterface.ORIENTATION_ROTATE_90 -> m.postRotate(90f);
-            case ExifInterface.ORIENTATION_ROTATE_180 -> m.postRotate(180f);
-            case ExifInterface.ORIENTATION_ROTATE_270 -> m.postRotate(270f);
-            case ExifInterface.ORIENTATION_FLIP_HORIZONTAL -> m.postScale(-1f, 1f);
-            case ExifInterface.ORIENTATION_FLIP_VERTICAL -> m.postScale(1f, -1f);
-            case ExifInterface.ORIENTATION_TRANSPOSE -> {
-                m.postRotate(90f);
-                m.postScale(-1f, 1f);
-            }
-            case ExifInterface.ORIENTATION_TRANSVERSE -> {
-                m.postRotate(270f);
-                m.postScale(-1f, 1f);
-            }
-            default -> {
-                return bitmap;
-            }
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) {
+            return null;
         }
-        try {
-            Bitmap oriented = Bitmap.createBitmap(
-                    bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), m, true);
-            if (oriented != bitmap) {
-                bitmap.recycle();
-            }
-            return oriented;
-        } catch (Throwable ignored) {
-            return bitmap;
+        BitmapFactory.Options decodeOpts = new BitmapFactory.Options();
+        decodeOpts.inSampleSize = sampleSizeFor(bounds.outWidth, bounds.outHeight);
+        decodeOpts.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        try (InputStream in = context.getContentResolver().openInputStream(uri)) {
+            if (in == null) return null;
+            return BitmapFactory.decodeStream(in, null, decodeOpts);
         }
+    }
+
+    private static int sampleSizeFor(int width, int height) {
+        int sample = 1;
+        while (width / sample > MAX_PICKED_IMAGE_DIM || height / sample > MAX_PICKED_IMAGE_DIM) {
+            sample *= 2;
+        }
+        return sample;
     }
 
     @SuppressWarnings("deprecation")
@@ -1106,7 +1103,7 @@ final class LyricsShareDialog {
         }
 
         @Override
-        public void draw(Canvas canvas) {
+        public void draw(@NonNull Canvas canvas) {
             Rect b = getBounds();
             if (b.isEmpty()) return;
             float cx = b.exactCenterX();
@@ -1131,8 +1128,8 @@ final class LyricsShareDialog {
             paint.setColorFilter(colorFilter);
         }
 
+        @Deprecated
         @Override
-        @SuppressWarnings("deprecation")
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;
         }
@@ -1156,7 +1153,7 @@ final class LyricsShareDialog {
         }
 
         @Override
-        public void draw(Canvas canvas) {
+        public void draw(@NonNull Canvas canvas) {
             Rect b = getBounds();
             if (b.isEmpty()) return;
             float cx = b.exactCenterX();
@@ -1183,8 +1180,8 @@ final class LyricsShareDialog {
             plusPaint.setColorFilter(colorFilter);
         }
 
+        @Deprecated
         @Override
-        @SuppressWarnings("deprecation")
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;
         }

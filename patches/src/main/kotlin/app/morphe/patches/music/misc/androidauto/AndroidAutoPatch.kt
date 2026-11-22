@@ -37,6 +37,7 @@ import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -96,6 +97,18 @@ val androidAutoPatch = patch(
         // Dynamite; authorization still succeeds via the fingerprint patch above.
         IsGoogleSignedFingerprint.method.returnEarly(false)
         // endregion
+
+        AssistantBrowseUiModeFingerprint.let {
+            val result = it.instructionMatches.last()
+            val register = result.getInstruction<OneRegisterInstruction>().registerA
+            it.method.addInstructions(
+                result.index + 1,
+                """
+                    invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getAssistantBrowseUiMode(I)I
+                    move-result v$register
+                """
+            )
+        }
 
         hookPlaylistsTitleMediaIds()
         patchPhoneBrowseClient()

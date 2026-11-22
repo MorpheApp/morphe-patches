@@ -22,6 +22,8 @@ import static app.morphe.extension.music.patches.AndroidAutoSettingsTab.isSettin
 import static app.morphe.extension.music.patches.ProtoMessage.WIRE_LENGTH_DELIMITED;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -244,6 +246,9 @@ public final class AndroidAutoPatch {
     private static final String SPEED_DIAL_BROWSE_ID = "FEmusic_listen_again";
 
     private static final String ANDROID_AUTO_ROOT_ID = "com.google.android.projection.gearhead";
+    private static final Uri CAR_CONNECTION_URI = Uri.parse("content://androidx.car.app.connection");
+    private static final String[] CAR_CONNECTION_COLUMNS = { "CarConnectionState" };
+    private static final int CONNECTION_TYPE_PROJECTION = 2;
     private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
     private static final String PODCASTS_MEDIA_ID = "morphe:aa:podcasts";
     private static final String SPEED_DIAL_MEDIA_ID = "morphe:aa:speed-dial";
@@ -670,6 +675,20 @@ public final class AndroidAutoPatch {
             value >>>= 7;
         }
         output.write(value);
+    }
+
+    /** Android Auto can project while the phone remains in its normal UI mode. */
+    public static int getAssistantBrowseUiMode(int uiMode) {
+        if (uiMode == Configuration.UI_MODE_TYPE_CAR) return uiMode;
+        try (Cursor cursor = Utils.getContext().getContentResolver().query(
+                CAR_CONNECTION_URI, CAR_CONNECTION_COLUMNS, null, null, null)) {
+            if (cursor != null && cursor.moveToFirst() && cursor.getInt(0) == CONNECTION_TYPE_PROJECTION) {
+                return Configuration.UI_MODE_TYPE_CAR;
+            }
+        } catch (RuntimeException ex) {
+            Logger.printException(() -> "Could not read Android Auto connection state", ex);
+        }
+        return uiMode;
     }
 
     // Refresh after Library changes

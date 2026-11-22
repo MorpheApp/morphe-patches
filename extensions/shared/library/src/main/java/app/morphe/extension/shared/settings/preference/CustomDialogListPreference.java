@@ -224,6 +224,10 @@ public class CustomDialogListPreference extends ListPreference implements Settin
         public void setSelectedValue(String value) {
             this.selectedValue = value;
         }
+
+        public CharSequence getEntryValue(int position) {
+            return entryValues[position];
+        }
     }
 
     public CustomDialogListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {

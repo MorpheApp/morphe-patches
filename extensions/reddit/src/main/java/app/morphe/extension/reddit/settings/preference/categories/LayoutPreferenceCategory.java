@@ -26,6 +26,7 @@ import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
 import app.morphe.extension.reddit.patches.HideHomeTabsPatch;
 import app.morphe.extension.reddit.patches.HideInteractivePostsPatch;
 import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
+import app.morphe.extension.reddit.patches.HideRelatedPostsSectionPatch;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
 import app.morphe.extension.reddit.patches.HideVideosForYouShelfPatch;
 import app.morphe.extension.reddit.patches.HighQualityAvatarsPatch;
@@ -35,6 +36,7 @@ import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
 import app.morphe.extension.reddit.patches.PostSidePanelPatch;
 import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
+import app.morphe.extension.reddit.patches.SearchHiddenProfilesPatch;
 import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.patches.TabletGridFeedPatch;
@@ -65,6 +67,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideCommunitiesShelfPatch.isPatchIncluded() ||
                 HideHomeTabsPatch.isPatchIncluded() ||
                 HideInteractivePostsPatch.isPatchIncluded() ||
+                HideRelatedPostsSectionPatch.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
                 HideVideosForYouShelfPatch.isPatchIncluded() ||
                 FullWidthFeedMediaPatch.isPatchIncluded() ||
@@ -74,6 +77,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
                 MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded() ||
+                SearchHiddenProfilesPatch.isPatchIncluded() ||
                 HighQualityAvatarsPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
@@ -154,6 +158,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
+        if (HideRelatedPostsSectionPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_RELATED_POSTS_SECTION
+            ));
+        }
+
         if (HideTrendingShelvesPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
@@ -183,6 +194,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.REMOVE_NOTIFICATION_DIALOG
+            ));
+        }
+
+        if (SearchHiddenProfilesPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SEARCH_HIDDEN_PROFILES
             ));
         }
 

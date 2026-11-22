@@ -23,6 +23,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.replaceStrings
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.string
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.clone.cloneAppPatch
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
@@ -53,6 +54,7 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
  *
  * @param fromPackageName The package name of the original app.
  * @param toPackageNameDefault The package name to fall back to if no custom package name is specified in patch options.
+ * @param spoofedPackageSignature The SHA-1 of the original app signature, as hex.
  * @param primeMethodFingerprint The fingerprint of the "prime" method that needs to be patched.
  * @param earlyReturnFingerprints The fingerprints of methods that need to be returned early.
  * @param mainActivityOnCreateFingerprint The fingerprint of the main activity onCreate method.
@@ -65,6 +67,7 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
 fun gmsCoreSupportPatch(
     fromPackageName: String,
     toPackageNameDefault: String,
+    spoofedPackageSignature: String,
     primeMethodFingerprint: Fingerprint? = null,
     earlyReturnFingerprints: Set<Fingerprint> = setOf(),
     mainActivityOnCreateFingerprint: Fingerprint,
@@ -185,6 +188,29 @@ fun gmsCoreSupportPatch(
                     ImmutableStringReference(fromPackageName),
                 ),
             )
+        }
+
+        // GNP requests made with an API key send the package name and the signature of the app.
+        // The API key only accepts the original app, so registering for push notifications fails.
+        // GNP formats the signature as upper case hex.
+        val originalSignature = spoofedPackageSignature.uppercase()
+        arrayOf(GnpRegistrationHeadersFingerprint, GnpRequestHeadersFingerprint).forEach { fingerprint ->
+            fingerprint.method.apply {
+                // The registers of the header calls are the builder, the header name, then the value.
+                val certHeaderMatch = fingerprint.instructionMatches[3]
+                val certRegister = certHeaderMatch.instruction.registersUsed[2]
+                addInstruction(
+                    certHeaderMatch.index,
+                    "const-string v$certRegister, \"$originalSignature\""
+                )
+
+                val packageNameMatch = fingerprint.instructionMatches[1]
+                val packageNameRegister = packageNameMatch.instruction.registersUsed.first()
+                addInstruction(
+                    packageNameMatch.index + 1,
+                    "const-string v$packageNameRegister, \"$fromPackageName\""
+                )
+            }
         }
 
         executeBlock()

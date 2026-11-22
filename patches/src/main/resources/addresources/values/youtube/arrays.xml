@@ -429,6 +429,18 @@
         <item>ENFORCED</item>
     </string-array>
 
+    <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+    <string-array name="morphe_return_youtube_username_display_format_entries">
+        <item>@string/morphe_return_youtube_username_display_format_entry_1</item>
+        <item>@string/morphe_return_youtube_username_display_format_entry_2</item>
+        <item>@string/morphe_return_youtube_username_display_format_entry_3</item>
+    </string-array>
+    <string-array name="morphe_return_youtube_username_display_format_entry_values">
+        <item>CHANNEL_NAME</item>
+        <item>CHANNEL_NAME_AND_HANDLE</item>
+        <item>HANDLE_AND_CHANNEL_NAME</item>
+    </string-array>
+
     <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
     <string-array name="morphe_ryd_feed_counts_position_entries">
         <item>@string/morphe_ryd_feed_counts_position_entry_1</item>

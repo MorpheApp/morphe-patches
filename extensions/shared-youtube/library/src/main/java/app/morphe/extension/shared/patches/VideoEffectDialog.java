@@ -19,15 +19,17 @@ import androidx.annotation.Nullable;
 import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.VideoEffectsPatch.CustomEffect;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ListPreferenceArrayAdapter;
+import app.morphe.extension.shared.settings.preference.VideoEffectEditor;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 
 /**
  * The effects in a list that stays open, so effects can be tried one after another
- * while the video plays.
+ * while the video plays. A long press on an effect opens its code.
  */
 public final class VideoEffectDialog {
 
@@ -49,9 +51,6 @@ public final class VideoEffectDialog {
                                                        @Nullable @ColorInt Integer backgroundColor,
                                                        int animationDuration,
                                                        Consumer<SheetBottomDialog.SlideDialog> onVideoNeedsReload) {
-        CharSequence[] entries = VideoEffectsPatch.getEffectEntries();
-        CharSequence[] entryValues = VideoEffectsPatch.getEffectEntryValues();
-
         SheetBottomDialog.DraggableLinearLayout mainLayout =
                 SheetBottomDialog.createMainLayout(context, backgroundColor);
         mainLayout.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
@@ -66,9 +65,7 @@ public final class VideoEffectDialog {
             }
         };
         listView.setDivider(null);
-        ListPreferenceArrayAdapter adapter = new ListPreferenceArrayAdapter(
-                context, entries, entryValues, SharedYouTubeSettings.VIDEO_EFFECT.get());
-        listView.setAdapter(adapter);
+        listView.setAdapter(createAdapter(context));
         mainLayout.addView(listView);
 
         SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(
@@ -76,7 +73,8 @@ public final class VideoEffectDialog {
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
             try {
-                String value = entryValues[position].toString();
+                ListPreferenceArrayAdapter adapter = (ListPreferenceArrayAdapter) parent.getAdapter();
+                String value = adapter.getEntryValue(position).toString();
                 SharedYouTubeSettings.VIDEO_EFFECT.save(value);
                 adapter.setSelectedValue(value);
                 adapter.notifyDataSetChanged();
@@ -89,6 +87,24 @@ public final class VideoEffectDialog {
             }
         });
 
+        // Long press opens the code of the effect, to change it while the video plays.
+        listView.setOnItemLongClickListener((parent, view, position, id) -> {
+            try {
+                ListPreferenceArrayAdapter adapter = (ListPreferenceArrayAdapter) parent.getAdapter();
+                CustomEffect effect = VideoEffectsPatch.findCustomEffect(
+                        adapter.getEntryValue(position).toString());
+                // Off has no code.
+                if (effect == null) return false;
+
+                // The name may have changed.
+                VideoEffectEditor.show(context, effect, () -> listView.setAdapter(createAdapter(context)));
+                return true;
+            } catch (Exception ex) {
+                Logger.printException(() -> "Video effect long press failure", ex);
+                return false;
+            }
+        });
+
         // Keep the video visible behind the list, to see the effects while choosing.
         Window window = dialog.getWindow();
         if (window != null) {
@@ -96,5 +112,12 @@ public final class VideoEffectDialog {
         }
 
         return dialog;
+    }
+
+    private static ListPreferenceArrayAdapter createAdapter(Context context) {
+        return new ListPreferenceArrayAdapter(context,
+                VideoEffectsPatch.getEffectEntries(),
+                VideoEffectsPatch.getEffectEntryValues(),
+                SharedYouTubeSettings.VIDEO_EFFECT.get());
     }
 }
