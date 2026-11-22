@@ -263,10 +263,7 @@ internal fun hookMusicBrowserServiceDependency(
             .matchAll()
             .map { match ->
                 val (providerFieldMatch, providerGetMatch) = match.instructionMatches
-                val providerField = providerFieldMatch.fieldReference
-                val providerGetMethod =
-                    providerGetMatch.methodReference
-                providerField to providerGetMethod
+                providerFieldMatch.fieldReference to providerGetMatch.methodReference
             }
             .distinctBy { (field, _) -> field }
     // Select the provider on the component used when MusicBrowserService starts.
@@ -284,20 +281,16 @@ internal fun hookMusicBrowserServiceDependency(
             "Could not resolve MusicBrowserService's provider for $dependencyType",
         )
     val mutableOnCreateMethod = onCreateMatch.method
-    val generatedComponentReadIndex = onCreateMatch.instructionMatches.single { match ->
-        val field = match.instruction.getReference<FieldReference>()
-        match.instruction.opcode == Opcode.IGET_OBJECT && field?.type == providerField.definingClass
-    }.index
-    val generatedComponentRegister = mutableOnCreateMethod
-        .getInstruction<TwoRegisterInstruction>(generatedComponentReadIndex)
-        .registerA
+    val componentRead = onCreateMatch.instructionMatches[1]
+    val generatedComponentRegister = componentRead.getInstruction<TwoRegisterInstruction>().registerA
+    val insertionIndex = componentRead.index + 1
     val dependencyRegister = mutableOnCreateMethod.findFreeRegister(
-        generatedComponentReadIndex + 1,
+        insertionIndex,
         mutableOnCreateMethod.p0Register,
     )
 
     mutableOnCreateMethod.addInstructions(
-        generatedComponentReadIndex + 1,
+        insertionIndex,
         """
             iget-object v$dependencyRegister, v$generatedComponentRegister, $providerField
             invoke-interface/range { v$dependencyRegister .. v$dependencyRegister }, $providerGetMethod
