@@ -244,3 +244,23 @@ internal val mediaViewerFadeAlphaLegacyFilter = methodCall(
     returnType = "J",
     opcodes = listOf(Opcode.INVOKE_STATIC, Opcode.INVOKE_STATIC_RANGE)
 )
+
+/**
+ * Lazy value of the full-screen player that chains videos vertically (swipe up for the next video).
+ */
+internal object VerticalChainingFingerprint : Fingerprint(
+    name = "invoke",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            definingClass = "Lcom/reddit/fullbleedplayer/FbpRedesignM3Variant;",
+            name = "VERTICAL_CHAINING"
+        ),
+        opcode(Opcode.IF_EQ, location = MatchAfterImmediately()),
+        methodCall(
+            smali = "Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
