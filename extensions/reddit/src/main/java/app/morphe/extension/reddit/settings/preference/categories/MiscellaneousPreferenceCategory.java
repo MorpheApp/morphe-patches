@@ -15,6 +15,7 @@ import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.AppIconPatch;
 import app.morphe.extension.reddit.patches.DownloadLocationPatch;
+import app.morphe.extension.reddit.patches.EnableDebuggingPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.OpenSystemShareSheetPatch;
@@ -25,11 +26,13 @@ import app.morphe.extension.reddit.settings.RedditActivityHook;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.DownloadLocationPreference;
+import app.morphe.extension.reddit.settings.preference.FeatureFlagsManagerPreference;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference;
 import app.morphe.extension.shared.settings.preference.ImportExportPreference;
 import app.morphe.extension.shared.settings.preference.SortedListPreference;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
@@ -46,6 +49,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     public boolean getSettingsStatus() {
         return AppIconPatch.isPatchIncluded() ||
                 DownloadLocationPatch.isPatchIncluded() ||
+                EnableDebuggingPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
                 OpenSystemShareSheetPatch.isPatchIncluded() ||
@@ -118,6 +122,14 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         }
 
         addPreference(new CustomDialogListPreference(context, BaseSettings.DEBUG_LEVEL));
+        if (EnableDebuggingPatch.isPatchIncluded()) {
+            Preference exportLogs = new ExportLogToClipboardPreference(context);
+            exportLogs.setTitle(str("morphe_debug_export_logs_title"));
+            exportLogs.setSummary(str("morphe_debug_export_logs_summary"));
+            addPreference(exportLogs);
+
+            addPreference(new FeatureFlagsManagerPreference(context));
+        }
 
         // Include original privacy policy link that was changed to open Morphe settings.
         if (RedditActivityHook.isPrivacyPolicyReplaced()) {
