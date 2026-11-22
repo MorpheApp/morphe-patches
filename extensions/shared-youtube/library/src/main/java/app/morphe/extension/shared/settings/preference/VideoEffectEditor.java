@@ -99,6 +99,7 @@ public final class VideoEffectEditor {
     /**
      * @param originalName The name of the effect that is changed, or null for a new effect.
      */
+    @SuppressWarnings("deprecation")
     private static void showEditDialog(Context context, @Nullable String originalName,
                                        String name, String code, Runnable onClosed) {
         try {
