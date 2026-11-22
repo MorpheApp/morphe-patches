@@ -702,6 +702,16 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_feed_view_count_title">Show view count on thumbnails</string>
     <string name="morphe_feed_view_count_summary">The view count of feed videos is shown at the bottom left of their thumbnails instead of below the title. Some videos, such as in shelves, may not show a view count</string>
 
+    <!-- layout.returnyoutubeusername.returnYouTubeUsernamePatch -->
+    <string name="morphe_return_youtube_username_screen_title">Return YouTube Username</string>
+    <string name="morphe_return_youtube_username_screen_summary">Show channel names instead of handles</string>
+    <string name="morphe_return_youtube_username_title">Show channel names</string>
+    <string name="morphe_return_youtube_username_summary">Channel names are shown instead of handles in comments, below the video title and in Shorts</string>
+    <string name="morphe_return_youtube_username_display_format_title">Channel name format</string>
+    <string name="morphe_return_youtube_username_display_format_entry_1">Channel name</string>
+    <string name="morphe_return_youtube_username_display_format_entry_2">Channel name (@handle)</string>
+    <string name="morphe_return_youtube_username_display_format_entry_3">\@handle (Channel name)</string>
+
     <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
     <string name="morphe_ryd_feed_like_count_title">Show feed thumbnail like count</string>
     <string name="morphe_ryd_feed_like_ratio_title">Show feed thumbnail like percentage</string>

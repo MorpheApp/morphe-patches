@@ -104,6 +104,7 @@ import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitlesAv
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.StillImagesAvailability;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.ThumbnailOption;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.ThumbnailStillTime;
+import app.morphe.extension.youtube.patches.returnyoutubeusername.ReturnYouTubeUsernamePatch;
 import app.morphe.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
 import app.morphe.extension.youtube.patches.theme.ThemePatch.RiveSplashScreenDurationAvailability;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
@@ -435,6 +436,10 @@ public class Settings extends SharedYouTubeSettings {
     // Post translate
     public static final BooleanSetting POST_TRANSLATE = new BooleanSetting("morphe_post_translate", TRUE, true);
     public static final StringSetting POST_TRANSLATE_LANGUAGE = new StringSetting("morphe_post_translate_language", "default", parent(POST_TRANSLATE));
+
+    // Return YouTube Username
+    public static final BooleanSetting RETURN_YOUTUBE_USERNAME = new BooleanSetting("morphe_return_youtube_username", FALSE, true);
+    public static final EnumSetting<ReturnYouTubeUsernamePatch.DisplayFormat> RETURN_YOUTUBE_USERNAME_DISPLAY_FORMAT = new EnumSetting<>("morphe_return_youtube_username_display_format", ReturnYouTubeUsernamePatch.DisplayFormat.CHANNEL_NAME, true, parent(RETURN_YOUTUBE_USERNAME));
 
     // Feed view count
     public static final BooleanSetting FEED_VIEW_COUNT = new BooleanSetting("morphe_feed_view_count", FALSE, true);
