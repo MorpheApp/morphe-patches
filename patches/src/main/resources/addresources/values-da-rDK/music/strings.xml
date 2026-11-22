@@ -144,6 +144,8 @@ Eksportermappe: %s"</string>
   <string name="morphe_export_download_failed">Kunne ikke eksportere downloaden</string>
   <string name="morphe_export_download_all_flyout_title">Eksporter alle til enhed</string>
   <string name="morphe_export_download_all_started">Eksporterer alle downloads</string>
+  <string name="morphe_export_download_all_title">Alle downloads</string>
+  <string name="morphe_export_download_playlist_started">Eksporterer downloads</string>
   <string name="morphe_export_download_all_running">Downloads bliver allerede eksporteret</string>
   <string name="morphe_export_download_all_saved">Eksporterede %1$s ud af %2$s downloads til %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +170,15 @@ Eksportermappe: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Skjul videoannoncer</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Skjul lyd/video-skift</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Skjul Download-knappen</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Skjuler Download-knappen i podcastshowet</string>
   <string name="morphe_music_hide_explore_shelf_title">Skjul Udforsk-hylden</string>
   <string name="morphe_music_hide_filter_bar_title">Skjul filterlinje</string>
   <string name="morphe_music_hide_grid_shelves_title">Skjul gitterhylder</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Skjul vandrette hylder</string>
+  <string name="morphe_music_hide_new_button_title">Skjul Ny-knappen</string>
+  <string name="morphe_music_hide_new_button_summary">Skjuler Ny-knappen i fanen Bibliotek</string>
   <string name="morphe_music_hide_list_shelves_title">Skjul listehylder</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Tekstpanel</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Skjul Del-knappen</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skjul Oversæt-knappen</string>
   <string name="morphe_music_hide_new_from_shelf_title">Skjul \'Fra\' hylden</string>
   <string name="morphe_music_hide_playlist_shelves_title">Skjul playlistehylder</string>
@@ -199,6 +201,8 @@ Eksportermappe: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Blander numre glidende over i hinanden</string>
   <string name="morphe_music_crossfade_enabled_title">Aktivér crossfade</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">For at bruge crossfade skal du ændre \'Standardklient\' under \'Spoof videostreams\' til \'TV Simply\' eller \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Fade-kurve</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Lige effekt</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtil udskydning</string>
@@ -232,7 +236,9 @@ Eksportermappe: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade pauset for denne session</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade genoptaget</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videotilstand er ikke tilgængelig, når crossfade er aktiveret</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade er slået fra under SABR-afspilning</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade fungerer ikke med \'visionOS\'. Ændr \'Standardklient\' under \'Spoof videostreams\' til \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade fungerer ikke med denne spoof-streamklient</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade er slået fra under casting</string>
   <string name="morphe_music_crossfade_about_how_title">Sådan fungerer det</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlapper slutningen af en sang med starten af den næste ved hjælp af din varighed og kurve
@@ -249,9 +255,7 @@ Låseskærmen eller meddelelsen kan kortvarigt vise en forældet tilstand midt i
 
 Hvis du sætter crossfade på pause for at se en musikvideo, kan nogle videoer forblive sorte. Sætter du crossfade på pause, før du vælger sangen, undgår du det"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Ikke understøttet</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting eller spejling af lyd (Chromecast, skærm- eller lydspejling)
-
-SABR-afspilning (spoofing af videostrømme slået fra)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Casting eller spejling af lyd (Chromecast, skærm- eller lydspejling)</string>
   <string name="morphe_music_crossfade_about_credit_title">Kreditering</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-funktionen er lavet af VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,6 +265,20 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Pause når dæmpet</string>
   <string name="morphe_music_pause_when_muted_summary">Pauser afspilningen, når systemlyden er dæmpet, og genoptager den, når lyden skrues op</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast-knappen kan også streame til Sonos og andre UPnP-højttalere på dit Wi-Fi-netværk</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Forbind til en enhed</string>
+  <string name="morphe_music_sonos_cast_searching">Søger efter højttalere på dit Wi-Fi-netværk…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Vælg en højttaler på dit Wi-Fi-netværk</string>
+  <string name="morphe_music_sonos_cast_casting_to">Caster til %s</string>
+  <string name="morphe_music_sonos_cast_connected">Forbundet</string>
+  <string name="morphe_music_sonos_cast_disconnect">Afbryd forbindelse</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Højttalere på Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Aktiv</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast-, Nest- og Google TV-enheder</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Kunne ikke oprette forbindelse til %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Afspilningshastighed</string>
   <string name="morphe_music_playback_speed_summary">Den hastighed, der bruges for alle numre. Ved 100 % bruges appens hastighed, f.eks. podcast-afspilningshastigheden</string>
@@ -271,9 +289,18 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Deaktivér audio ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Lydstyrken sænkes ikke, når en anden app afspiller en kort lyd, såsom en meddelelse</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Kø-synes-filter</string>
+  <string name="morphe_music_queue_like_filter_summary">Fjerner sange med få likes fra mix og radio. Playlister, albummer og sange, du tilføjer til køen, ændres ikke. Antal likes er fra Return YouTube Dislike</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Minimum antal likes</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Sange med færre likes fjernes fra køen</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Deaktiver omdirigering af \'synes ikke godt om\'</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Forhindrer at der springes til næste nummer, når knappen \'synes ikke godt om\' trykkes</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Deaktivér strygning for at skifte nummer tackles</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Forhindrer spring til næste eller forrige nummer ved at stryge til venstre eller højre på afspilleren</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Forhindrer spring til næste eller forrige nummer ved at stryge til venstre eller højre på miniafspilleren</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B-loop</string>
   <string name="morphe_music_ab_loop_summary">Hold seekbaren nede for at indstille loop-start, igen for at indstille loop-slut, og igen for at rydde loopet</string>
@@ -324,15 +351,6 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <string name="morphe_music_playlist_tags_rename">Omdøb</string>
   <string name="morphe_music_playlist_tags_delete">Slet</string>
   <string name="morphe_music_playlist_tags_hidden">Skjult</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Skjul cast-knap</string>
-  <string name="morphe_music_hide_history_button_title">Skjul historikknap</string>
-  <string name="morphe_music_hide_notification_button_title">Skjul notifikationsknap</string>
-  <string name="morphe_music_hide_search_button_title">Skjul søgeknap</string>
-  <string name="morphe_music_hide_voice_search_button_title">Skjul stemmesøgningsknappen</string>
-  <string name="morphe_music_hide_sound_search_button_title">Skjul lydsøgningsknappen</string>
-  <string name="morphe_music_hide_library_new_button_title">Skjul Ny-knappen</string>
-  <string name="morphe_music_hide_library_new_button_summary">Skjuler Ny-knappen i fanen Bibliotek</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Handlingsknapper</string>
   <string name="morphe_music_action_buttons_screen_summary">Vælg hvilke handlingsknapper der vises under afspilleren</string>
@@ -404,22 +422,20 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Tving portrætorientering</string>
   <string name="morphe_music_force_portrait_orientation_summary">Bevarer appen i portrætorientering, når enheden roteres</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Skift miniafspillerfarve</string>
+  <string name="morphe_music_change_miniplayer_color_title">Skift farve</string>
   <string name="morphe_music_change_miniplayer_color_summary">Miniafspillerfarven matcher fuldskærmsafspilleren</string>
   <string name="morphe_music_change_navigation_bar_color_title">Skift navigationslinjens farve</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Tilpasser navigationslinjens farve til fuldskærmsafspilleren</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Vis næste-knap i miniafspiller</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Vis forrige-knap i miniafspiller</string>
+  <string name="morphe_music_miniplayer_next_button_title">Vis Næste-knap</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Vis Forrige-knap</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Aktivér tvungen miniafspiller</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Forhindrer afspilleren i automatisk at udvide til fuldskærm, når et nyt nummer starter</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Aktivér swipe for at lukke miniafspilleren</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Aktivér swipe for at fjerne</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Giver mulighed for at lukke miniafspilleren ved at swipe ned på den</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Navigationslinje</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Vælg hvilke knapper der skal vises i nederste navigationslinje</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Skjul hjem-knap</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -452,7 +468,7 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Skjuler den afrundede markering bag den valgte knap på glass-navigationslinjen</string>
   <string name="morphe_music_miniplayer_screen_title">Mini-afspiller</string>
   <string name="morphe_music_miniplayer_screen_summary">Skift stil, knapper og gestikulationer for miniafspilleren</string>
-  <string name="morphe_music_miniplayer_glass_title">Aktivér glass-miniafspiller</string>
+  <string name="morphe_music_miniplayer_glass_title">Aktivér glaseffekt</string>
   <string name="morphe_music_miniplayer_glass_summary">Viser den flydende miniafspiller som et afrundet, gennemsigtigt glass-kort</string>
   <string name="morphe_music_miniplayer_glass_style_title">Glass-miniafspillerens stil</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Juster hjørneradius, padding for albumcover, kantens lysstyrke og gennemsigtighed for glass-miniafspilleren med en forhåndsvisning</string>
@@ -460,11 +476,8 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding for albumcover</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Kantens lysstyrke</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opacitet</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Glass-sløring</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Hvor meget siden bag glass-miniafspilleren er sløret (Android 14 og nyere). Ved 0 vises siden skarpt, og før Android 14 er siden dækket</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Lyst glas</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Farver glass-miniafspilleren hvid i stedet for mørk for et lysere og klarere glas</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Farvning fra albumcover</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Farver glass-miniafspilleren med farven fra albumcoveret på den sang, der afspilles</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Roterende albumcover</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Gør albumcoveret i glass-miniafspilleren rundt og roterer det som en plade, mens en sang afspilles</string>
@@ -475,6 +488,15 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Prøver</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Udforsk</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Bibliotek</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Skjul knappen Aktivitet</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Skjul knappen \'Spørg Musik\'</string>
+  <string name="morphe_music_hide_cast_button_title">Skjul cast-knap</string>
+  <string name="morphe_music_hide_history_button_title">Skjul historikknap</string>
+  <string name="morphe_music_hide_search_button_title">Skjul søgeknap</string>
+  <string name="morphe_music_hide_voice_search_button_title">Skjul knappen \'Stemmesøgning\'</string>
+  <string name="morphe_music_hide_sound_search_button_title">Skjul knap til \"Lydsøgning\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ikke logget ind. Tryk for at konfigurere</string>
   <string name="morphe_music_scrobbling_log_out">Log ud</string>
@@ -578,6 +600,9 @@ For at sikre, at scrobbling synkroniseres under afspilning i baggrunden, skal du
   <string name="morphe_music_soundproof_about_summary">"Kunstnerdata kommer fra SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps), downloadet én gang om dagen. At springe over sender intet om, hvad du afspiller. Ved at åbne SoundProof-arket sendes det aktuelle kunstnernavn til SoundProof-serveren for at vise nye stemmer og for at stemme. Serveren skelner mellem vælgere via IP-adresse, så din stemme kan fremstå anderledes på et andet netværk.
 
 Databasen er licenseret under ODC Open Database License (ODbL). Indlæg fra Soul Over AI af xoundbyte er licenseret under CC BY 4.0. Ikke tilknyttet eller godkendt af SoundProof eller Soul Over AI."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music animeret artwork</string>
+  <string name="morphe_music_apple_music_artwork_summary">Viser det animerede albumartwork fra Apple Music i afspilleren, hvis albummet har et. Titel, kunstner og album for hver sang sendes til Apple Music</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Sangtekster er ikke tilgængelige for denne enhedsfil.</string>
   <string name="morphe_music_lyrics_enabled_title">Brug tredjeparts-tekster</string>
@@ -717,8 +742,14 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_written_by">Skrevet af: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Fremhæv synkroniserede ord eller stavelser</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritér ord-for-ord-tekster, når de er tilgængelige. Når teksterne har ord-timing, fremhæves hvert ord eller stavelse i takt med musikken.</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Animer synkroniserede ord jævnt</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Fremhæver hvert ord med en blød fejning, glød og et let løft, mens det bliver sunget. Slå fra for at spare batteri eller for en skarp udfyldning på langsommere enheder</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Brug spring-rulning</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Ruller sangteksten med spring-fysik og flytter hver linje lidt efter den ovenstående. Slå det fra for at spare batteri på langsommere enheder</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Afslappet rulning</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Sænker hastigheden på animationen af sangtekstrulningen og bevarer inaktive linjer i fuld størrelse</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Slør inaktive linjer</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Slører blødt enhver linje, der ikke synges i øjeblikket, mere jo længere væk den er (Android 12 og nyere). Før Android 12 forbliver inaktive linjer skarpe</string>
   <string name="morphe_music_lyrics_gap_dots_title">Vis prikker ved instrumentale pauser</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Viser tre prikker mellem linjerne under en lang instrumental pause, som fyldes op, efterhånden som pausen løber ud</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Dæmp fjerne linjer mere</string>
@@ -841,6 +872,8 @@ Sangteksterne stammer fra tredjepartstjenester, som ikke er tilknyttet, sponsore
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Flytter oversættelsen over sangteksterne; læsningen og romaniseringen forbliver nedenunder</string>
   <string name="morphe_music_lyrics_force_center_title">Centrér altid sangtekst</string>
   <string name="morphe_music_lyrics_force_center_summary">TIL sætter alle linjer i midten og ignorerer kildens justering, inklusiv duetsider; FRA bruger den justering, sangteksten anmoder om</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Justering af duet på modsat side</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Placerer den anden sanger på den modsatte kant i duetsange. Slå fra for at holde begge sangere på samme side</string>
   <string name="morphe_music_lyrics_providers_keep_one">Mindst én udbyder skal holdes aktiv</string>
   <string name="morphe_music_lyrics_translation_provider_title">Oversættelse</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering eller translitteration</string>

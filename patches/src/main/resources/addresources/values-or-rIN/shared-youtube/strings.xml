@@ -39,6 +39,10 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">ଭିଡିଓ ଗୁଣବତ୍ତାକୁ ପ୍ରାଥମିକତା ଦିଅନ୍ତୁ</string>
+  <string name="morphe_prioritize_video_quality_summary">କୋଡେକ୍ ଦକ୍ଷତାର ଅପେକ୍ଷା ଉପଲବ୍ଧ ସର୍ବୋଚ୍ଚ ଭିଡିଓ ଗୁଣବତ୍ତାକୁ ପ୍ରାଥମିକତା ଦିଏ</string>
+  <string name="morphe_prioritize_video_quality_dialog">ଯଦି ଏହି ସେଟିଂ ବନ୍ଦ ଅଛି, ତେବେ ପୁରୁଣା ଭିଡିଓଗୁଡ଼ିକରେ କୌଣସି ଭିଡିଓ ଗୁଣବତ୍ତା ବିକଳ୍ପ ଦେଖାଯାଇପାରିବ ନାହିଁ</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <!-- misc.audio.silence.skipSilencePatch -->
@@ -49,7 +53,6 @@ Second \"item\" text"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- Custom filter -->
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->

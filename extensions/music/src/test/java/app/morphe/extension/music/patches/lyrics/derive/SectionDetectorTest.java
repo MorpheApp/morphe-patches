@@ -93,11 +93,15 @@ public class SectionDetectorTest {
     public void applySectionsSkipTokenBecomesNull() {
         Lyrics lyrics = LyricsFixtures.synced(
                 new LyricsLine(0, "first line"),
-                new LyricsLine(1000, "second line"));
-        List<String> sections = List.of("Verse", "SKIP");
+                new LyricsLine(1000, "second line"),
+                new LyricsLine(2000, "third line"),
+                new LyricsLine(3000, "fourth line"));
+        List<String> sections = List.of("Verse", "SKIP", "SKIP: third line", "SKIP fourth line");
         Lyrics result = SectionDetector.applySections(lyrics, sections);
         assertEquals("Verse", result.lines().get(0).songPart());
         assertNull(result.lines().get(1).songPart());
+        assertNull(result.lines().get(2).songPart());
+        assertNull(result.lines().get(3).songPart());
     }
 
     @Test

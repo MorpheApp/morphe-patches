@@ -16,22 +16,28 @@ import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
+import app.morphe.extension.reddit.patches.FeedAutoScrollPatch;
 import app.morphe.extension.reddit.patches.FeedMediaMaxHeightPatch;
 import app.morphe.extension.reddit.patches.FlipPostActionBarPatch;
 import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
 import app.morphe.extension.reddit.patches.FullWidthFeedMediaPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
+import app.morphe.extension.reddit.patches.HideHomeTabsPatch;
+import app.morphe.extension.reddit.patches.HideInteractivePostsPatch;
 import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
+import app.morphe.extension.reddit.patches.HideVideosForYouShelfPatch;
 import app.morphe.extension.reddit.patches.HighQualityAvatarsPatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
 import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
+import app.morphe.extension.reddit.patches.PostSidePanelPatch;
 import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
+import app.morphe.extension.reddit.patches.TabletGridFeedPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.CustomFontFilePreference;
@@ -39,6 +45,7 @@ import app.morphe.extension.reddit.settings.preference.CustomFontTogglePreferenc
 import app.morphe.extension.reddit.settings.preference.ForceSystemFontPreference;
 import app.morphe.extension.reddit.settings.preference.NumberSettingPreference;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 
 @SuppressWarnings("deprecation")
 public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
@@ -56,7 +63,10 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 ForceSystemFontPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
                 HideCommunitiesShelfPatch.isPatchIncluded() ||
+                HideHomeTabsPatch.isPatchIncluded() ||
+                HideInteractivePostsPatch.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
+                HideVideosForYouShelfPatch.isPatchIncluded() ||
                 FullWidthFeedMediaPatch.isPatchIncluded() ||
                 MediaViewerFadePatch.isPatchIncluded() ||
                 KeepFeedPositionPatch.isPatchIncluded() ||
@@ -67,7 +77,10 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HighQualityAvatarsPatch.isPatchIncluded() ||
                 ShowViewCountPatch.isPatchIncluded() ||
                 FlipPostActionBarPatch.isPatchIncluded() ||
-                RememberCollapsedCommentsPatch.isPatchIncluded();
+                RememberCollapsedCommentsPatch.isPatchIncluded() ||
+                TabletGridFeedPatch.isPatchIncluded() ||
+                FeedAutoScrollPatch.isPatchIncluded() ||
+                PostSidePanelPatch.isPatchIncluded();
     }
 
     @Override
@@ -119,10 +132,39 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
+        if (HideHomeTabsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_FOR_YOU_TAB
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_FOLLOWING_TAB
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_POPULAR_TAB
+            ));
+        }
+
+        if (HideInteractivePostsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_INTERACTIVE_POSTS
+            ));
+        }
+
         if (HideTrendingShelvesPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_TRENDING_SHELVES
+            ));
+        }
+
+        if (HideVideosForYouShelfPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_VIDEOS_FOR_YOU_SHELF
             ));
         }
 
@@ -215,6 +257,43 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.REMEMBER_COLLAPSED_COMMENTS
+            ));
+        }
+
+        if (TabletGridFeedPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.TABLET_GRID_FEED
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.TABLET_GRID_COLUMNS
+            ));
+        }
+
+        if (FeedAutoScrollPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FEED_AUTO_SCROLL
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.FEED_AUTO_SCROLL_SPEED
+            ));
+        }
+
+        if (PostSidePanelPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL_WIDTH
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL_DIM
             ));
         }
 

@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Пераклады</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Актуальна</string>
   <string name="morphe_settings_about_contributors">Укладчыкі</string>
-  <string name="morphe_settings_about_contributors_period">Апошнія 12 месяцаў</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">За ўвесь час</string>
+  <string name="morphe_settings_about_contributors_6_months">6 месяцаў</string>
+  <string name="morphe_settings_about_contributors_3_months">3 месяцы</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Перыяд часу</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s карыстальнікаў</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Падтрымліваючыя</string>
   <string name="morphe_settings_about_supporters_summary">Спонсары ў Open Collective</string>
@@ -222,6 +229,9 @@ Second \"item\" text"</string>
 • Праграма можа выпадкова закрывацца
 • Апавешчэнні могуць не працаваць
 • Прайграванне ў фоне можа не працаваць"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Адкрыць сістэмнае акно «Паділіцца»</string>
+  <string name="morphe_open_system_share_sheet_summary">Адкрывае сістэмнае панэль падзелаricing замест убудаванага пры sharing кантэнту</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Апрацоўка спасылак праграмы</string>
   <string name="morphe_link_handling_summary">Наладзіць адкрыццё спасылак у гэтай праграме</string>

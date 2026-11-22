@@ -64,33 +64,46 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-க்கு தனி உள்நுழைவு தேவை. தொடர இங்கே தட்டவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' உள்நுழைவு</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-க்கு தனி உள்நுழைவு தேவை. தொடர இங்கே தட்டவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">தற்போது \'Android VR\'-இல் உள்நுழைந்துள்ளீர்கள்</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">மொபைல் வெப் உள்நுழைவு</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">விருப்பத்தேர்வு: உங்கள் கணக்கைப் பயன்படுத்தி வீடியோக்களை இயக்க YouTube இணையதளத்தில் உள்நுழையவும். தொடர இங்கே தட்டவும்</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">தற்போது மொபைல் வெப்பில் உள்நுழையப்பட்டுள்ளது</string>
-  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">இந்த அம்சத்தைப் பயன்படுத்த, \'Default client\'-ஐ Mobile Web என மாற்றவும்</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-இல் உள்நுழையவும்</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web உள்நுழையாமல் அல்லது YouTube இணையதளத்தில் உள்நுழைந்து வீடியோக்களை இயக்கும்
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">இந்த அம்சத்தைப் பயன்படுத்த, \'Default client\'-ஐ \'Android VR\' என மாற்றவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\'Android VR\'-இல் உள்நுழையவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"'Android VR'-இல் உள்நுழைவது சில பயனர்களுக்குப் பதிப்புவலையில் ஏற்படும் சிக்கல்களைச் சரிசெய்யும்
 
-• உள்நுழைந்திருந்தால், வயது வரம்பு கட்டுப்படுத்தப்பட்ட வீடியோக்கள் போன்ற கணக்கு தேவைப்படும் வீடியோக்களை இயக்க முடியும்
-• இந்த செயலியில் Google உள்நுழைவு பக்கம் திறக்கும்
-• நீங்கள் இயக்கும் வீடியோக்களைப் பெறுவதற்கு மட்டுமே உள்நுழைவு பயன்படுத்தப்படுகிறது
-• உள்நுழைவு இந்த சாதனத்தில் மட்டுமே சேமிக்கப்படும்
+உள்நுழைய, கீழே உள்ள தொடர பொத்தானை அழுத்தவும்"</string>
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobile Web\' உள்நுழைவு</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">விருப்பத்தேர்வு: உங்கள் கணக்கைப் பயன்படுத்தி வீடியோக்களை இயக்க YouTube இணையதளத்தில் உள்நுழையவும். தொடர இங்கே தட்டவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">தற்போது \'Mobile Web\'-இல் உள்நுழைந்துள்ளீர்கள்</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">இந்த அம்சத்தைப் பயன்படுத்த, \'Default client\'-ஐ \'Mobile Web\' என மாற்றவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobile Web\'-இல் உள்நுழையவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' உள்நுழையாமல் அல்லது YouTube இணையதளத்தில் உள்நுழைந்த நிலையில் வீடியோக்களை இயக்கும்
+
+• உள்நுழைந்திருந்தால், வயதுக் கட்டுப்பாடு கொண்ட வீடியோக்கள் போன்ற கணக்கு தேவைப்படும் வீடியோக்களை இயக்க முடியும்
+• இந்த ஆப்பில் Google உள்நுழைவு பக்கம் திறக்கும்
+• நீங்கள் இயக்கும் வீடியோக்களைப் பெறுவதற்கு மட்டுமே இந்த உள்நுழைவு பயன்படுத்தப்படுகிறது
+• இந்த உள்நுழைவு இந்த சாதனத்தில் மட்டுமே சேமிக்கப்படும்
 
 உள்நுழைய, கீழே உள்ள தொடர பொத்தானை அழுத்தவும்"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"உள்நுழைவு சேமிக்கப்பட்டது
 
-• உங்களது Morphe அமைப்புகள் Mobile Web உள்நுழைவை இறக்குமதி/ஏற்றுமதி செய்யாது
+• உங்கள் Morphe அமைப்புகள் 'Mobile Web' உள்நுழைவை இறக்குமதி/ஏற்றுமதி செய்யாது
 • Google உள்நுழைவை முடித்தால், நீங்கள் மீண்டும் உள்நுழையும் வரை வீடியோக்கள் உள்நுழையாமல் இயக்கப்படும்
 • உள்நுழைவை நீக்குவது இந்த சாதனத்தை YouTube இணையதளத்திலிருந்தும் வெளியேற்றும்"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">மொபைல் வெப் உள்நுழைவு காலாவதி ஆகிவிட்டது, மீண்டும் மொபைல் வெப்பில் உள்நுழைய முயற்சிக்கவும்</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">மொபைல் வெப்பில் இருந்து வெளியேறப்பட்டது</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView கிடைக்கவில்லை. உள்நுழைய அதை நிறுவவும் அல்லது இயக்கவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web உள்நுழைவு காலாவதியாகிவிட்டது, மீண்டும் \'Mobile Web\'-இல் உள்நுழைய முயற்சிக்கவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'Mobile Web\'-லிருந்து வெளியேறப்பட்டது</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' கிடைக்கவில்லை. உள்நுழைய அதை நிறுவவும் அல்லது செயல்படுத்தவும்</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' உள்நுழைவு காலாவதியாகிவிட்டது, மீண்டும் VR-இல் உள்நுழைய முயற்சிக்கவும்</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\'-லிருந்து வெளியேறப்பட்டது</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">வீடியோ தரத்திற்கு முன்னுரிமை அளிக்கவும்</string>
+  <string name="morphe_prioritize_video_quality_summary">கோடெக் செயல்திறனை விடக் கிடைக்கும் மிக உயர்ந்த வீடியோ தரத்திற்கு முன்னுரிமை அளிக்கிறது</string>
+  <string name="morphe_prioritize_video_quality_dialog">இந்த அமைப்பு அணைக்கப்பட்டிருந்தால், பழைய வீடியோக்களில் வீடியோ தர விருப்பங்கள் எதுவும் தோன்றாமல் இருக்கலாம்</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <!-- misc.audio.silence.skipSilencePatch -->
@@ -99,6 +112,7 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_replace_links_with_shortener_summary">வீடியோக்கள் சுருக்கப்பட்ட \'youtu.be\' URL வடிவத்தைப் பயன்படுத்துமாறு கட்டாயப்படுத்துகிறது</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">தானியங்கி</string>
@@ -110,17 +124,14 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <string name="morphe_video_quality_default_mobile_title">மொபைல் நெட்வொர்க்கில் இயல்பான வீடியோ தரம்</string>
   <string name="morphe_remember_video_quality_toast_mobile">இயல்பான மொபைல் தரம் இதாக மாற்றப்பட்டது: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">இயல்பான Wi-Fi தரம் இதாக மாற்றப்பட்டது: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">சிஸ்டம் பகிர்வுத் தாளைத் திற</string>
-  <string name="morphe_open_system_share_sheet_summary">உள்ளடக்கத்தைப் பகிரும் போது, செயலியின் பகிர்வுப் பட்டியலுக்குப் பதிலாக கணினியின் பகிர்வுப் பட்டியலைத் திறக்கும்</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho பதிவு செய்தல்</string>
   <string name="morphe_debug_litho_entry_disabled">முடக்கப்பட்டது</string>
   <string name="morphe_debug_litho_entry_path">பாதை</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">பாதை மற்றும் பஃபர்</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho லாகிங், சில UI கூறுகளின் திரையிலுள்ள உரை உட்பட ஆப்பின் லேஅவுட் கூறுகளைப் பதிவு செய்கிறது.
+  <string name="morphe_debug_litho_user_dialog_message">"சில UI கூறுகளுக்கான திரையிலுள்ள உரை உட்பட, ஆப்பின் லேஅவுட் கூறுகளைப் பதிவு செய்கிறது.
 
-தனிப்பயன் வடிகட்டிகளை உருவாக்கும்போது கூறுகளை அடையாளம் காண இது உதவும்.
+தனிப்பயன் வடிகட்டிகளை உருவாக்கும்போது கூறுகளைக் கண்டறிய இது உதவும்.
 
 இருப்பினும், இது உங்கள் IP முகவரி போன்ற சில பயனர் தரவுகளையும் பதிவு செய்யும்"</string>
   <!-- Custom filter -->
@@ -141,4 +152,8 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s நெட்வொர்க் அழைப்புகள் செய்யப்பட்டன</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s நெட்வொர்க் அழைப்புகள் காலாவதி ஆகின</string>
+  <string name="morphe_navigation_bar_screen_title">வழிசெலுத்தல் பட்டை</string>
+  <string name="morphe_navigation_bar_screen_summary">கீழ் வழிசெலுத்தல் பட்டையில் எந்த பொத்தான்கள் தோன்ற வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</string>
+  <string name="morphe_toolbar_screen_title">டூல்பார்</string>
+  <string name="morphe_toolbar_screen_summary">டூல்பாரில் எந்தக் கூறுகள் தோன்ற வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</string>
 </resources>

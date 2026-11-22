@@ -43,7 +43,7 @@ import java.util.Objects;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.lyrics.derive.ProcessingProviders;
-import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictionaryStore;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -340,7 +340,7 @@ public final class LyricsOrderedListPreference extends Preference {
                 || activity.isFinishing() || activity.isDestroyed()) {
             return;
         }
-        LyricsRimeDictDialog.show(context, () -> {
+        LyricsRimeDictionaryDialog.show(context, () -> {
             // A ticked table for the language above turns the row on (checklist §4.1),
             // the same background-fetch + toast model the Local dictionary uses.
             turnOnRimeIfTable();
@@ -353,7 +353,7 @@ public final class LyricsOrderedListPreference extends Preference {
      *  beside that fetch rather than leaving it off until the user taps the switch. */
     private void turnOnRimeIfTable() {
         for (Item item : items) {
-            if (isRimeProvider(item.id) && !item.enabled && RimeDictStore.isActive()) {
+            if (isRimeProvider(item.id) && !item.enabled && RimeDictionaryStore.isActive()) {
                 item.enabled = true;
                 saveItems();
                 rebuildRows();
@@ -366,7 +366,7 @@ public final class LyricsOrderedListPreference extends Preference {
      *  leave it on to return nothing, and toast why. */
     private void turnOffRimeWithoutTable() {
         for (Item item : items) {
-            if (isRimeProvider(item.id) && item.enabled && !RimeDictStore.isActive()) {
+            if (isRimeProvider(item.id) && item.enabled && !RimeDictionaryStore.isActive()) {
                 item.enabled = false;
                 saveItems();
                 rebuildRows();
@@ -386,7 +386,7 @@ public final class LyricsOrderedListPreference extends Preference {
      * table for the chosen language.
      */
     private void enableRime(Switch switchV, TextView name, Runnable onEnabled, Runnable onRefused) {
-        if (!RimeDictStore.isActive()) {
+        if (!RimeDictionaryStore.isActive()) {
             final Context context = getContext();
             if (!(context instanceof Activity activity)
                     || activity.isFinishing() || activity.isDestroyed()) {
@@ -394,8 +394,8 @@ public final class LyricsOrderedListPreference extends Preference {
                 return;
             }
             final boolean[] turnedOn = {false};
-            LyricsRimeDictDialog.show(context, () -> {
-                if (turnedOn[0] || !RimeDictStore.isActive()) {
+            LyricsRimeDictionaryDialog.show(context, () -> {
+                if (turnedOn[0] || !RimeDictionaryStore.isActive()) {
                     return;
                 }
                 // The dialog's "Save" already fetches every ticked table, this language's
@@ -416,7 +416,7 @@ public final class LyricsOrderedListPreference extends Preference {
         enableRow(switchV, name);
         onEnabled.run();
         Utils.runOnBackgroundThread(
-                () -> RimeDictStore.ensureForProvider(RimeDictStore.SILENT));
+                () -> RimeDictionaryStore.ensureForProvider(RimeDictionaryStore.SILENT));
     }
 
     private static void enableRow(Switch switchV, TextView name) {
@@ -1114,7 +1114,7 @@ public final class LyricsOrderedListPreference extends Preference {
             }
             // Rime Wordlist reads through the word list of the language above, so a row with no table
             // is turned off rather than left on to return an empty line.
-            if (isRimeProvider(item.id) && !RimeDictStore.isActive()) {
+            if (isRimeProvider(item.id) && !RimeDictionaryStore.isActive()) {
                 item.enabled = false;
                 changed = true;
             }

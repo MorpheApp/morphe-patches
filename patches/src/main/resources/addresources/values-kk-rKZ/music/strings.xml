@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">Жүктемені экспорттау мүмкін болмады</string>
   <string name="morphe_export_download_all_flyout_title">Барлығын құрылғыға экспорттау</string>
   <string name="morphe_export_download_all_started">Барлық жүктемелер экспортталуда</string>
+  <string name="morphe_export_download_all_title">Барлық жүктеулер</string>
+  <string name="morphe_export_download_playlist_started">Жүктемелерді экспорттау</string>
   <string name="morphe_export_download_all_running">Жүктемелер қазірдің өзінде экспортталуда</string>
   <string name="morphe_export_download_all_saved">%2$s жүктеменің %1$s бөлігі %3$s жеріне экспортталды</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +170,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Бейнежарнамаларды жасыру</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Аудио / Видео ауыстырып қосу түймесін жасыру</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Жүктеу түймесін жасыру</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Подкаст шоуында Жүктеу түймесін жасырады</string>
   <string name="morphe_music_hide_explore_shelf_title">«Explore» сөресін жасыру</string>
   <string name="morphe_music_hide_filter_bar_title">Сүзгі жолағын жасыру</string>
   <string name="morphe_music_hide_grid_shelves_title">Торлы сөрелерді жасыру</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Көлденең сөрелерді жасыру</string>
+  <string name="morphe_music_hide_new_button_title">«Жаңа» түймесін жасыру</string>
+  <string name="morphe_music_hide_new_button_summary">Кітапхана қойындысындағы Жаңа түймесін жасырады</string>
   <string name="morphe_music_hide_list_shelves_title">Тізім сөрелерін жасыру</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Мәтіндер панелі</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Бөлісу батырмасын жасыру</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Аудару батырмасын жасыру</string>
   <string name="morphe_music_hide_new_from_shelf_title">«New from» сөресін жасыру</string>
   <string name="morphe_music_hide_playlist_shelves_title">Плейлист сөрелерін жасыру</string>
@@ -199,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">Кросфейд</string>
   <string name="morphe_music_crossfade_screen_summary">Тректерді бір-біріне бірқалыпты қосыңыз</string>
   <string name="morphe_music_crossfade_enabled_title">Кросфейдті қосу</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Crossfade функциясын пайдалану үшін «Spoof video streams» бөліміндегі «Default client» мәнін «TV Simply» немесе «visionOS» мәніне өзгертіңіз</string>
   <string name="morphe_music_crossfade_curve_title">Бәсеңдету қисығы</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Тең қуат</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Жеңіл ұстау</string>
@@ -232,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Бұл сессия үшін кроссфейд тоқтатылды</string>
   <string name="morphe_music_crossfade_resumed_toast">Кросфейд қайта қорылды</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Crossfade қосылып тұрғанда бейне режимі қолжетімді емес</string>
-  <string name="morphe_music_crossfade_sabr_toast">SABR ойнату кезінде Crossfade өшірулі</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade «visionOS»-пен жұмыс істемейді. «Spoof video streams» бөліміндегі «Default client» мәнін «TV Simply» мәніне өзгертіңіз</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade осы spoof ағын клиентімен жұмыс істемейді</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Трансляция кезінде Crossfade өшірулі</string>
   <string name="morphe_music_crossfade_about_how_title">Жұмыс істеу принципі</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade бір әннің соңын келесі әннің басымен сіз таңдаған ұзақтық пен қисықтықты қолданып қабаттастырады
@@ -249,9 +255,7 @@ Second \"item\" text"</string>
 
 Музыкалық клипті көру үшін кроссфейдті тоқтату кейбір видеоларды қараңғы қалдыруы мүмкін. Әнді таңдамас бұрын кроссфейдті тоқтату бұл мәселені болдырмайды"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Қолдау көрсетілмейді</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Аудионы трансляциялау немесе бейнелеу (Chromecast, экранды немесе аудионы бейнелеу)
-
-SABR ойнатылымы (Видео ағындарын имитациялау өшірілген)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Аудионы трансляциялау немесе көшіру (Chromecast, экранды немесе аудионы көшіру)</string>
   <string name="morphe_music_crossfade_about_credit_title">Авторы</string>
   <string name="morphe_music_crossfade_about_credit_summary">Кросфейд мүмкіндігі VazerOG жасаған</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,6 +265,20 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Дыбыс өшірілгенде кідірту</string>
   <string name="morphe_music_pause_when_muted_summary">Жүйе дыбысы өшірілгенде ойнатуды кідіртеді және дыбыс көтерілгенде қайта бастайды</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast түймесі Sonos-қа және Wi-Fi желіңіздегі басқа UPnP динамиктеріне де ағындарды жібере алады</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Құрылғыға қосылыңыз</string>
+  <string name="morphe_music_sonos_cast_searching">Wi-Fi желіңіздегі динамиктер ізделіп жатыр…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Wi-Fi желіңіздегі динамикті таңдаңыз</string>
+  <string name="morphe_music_sonos_cast_casting_to">%s құрылғысына жіберілгенде</string>
+  <string name="morphe_music_sonos_cast_connected">Қосылды</string>
+  <string name="morphe_music_sonos_cast_disconnect">Ажырату</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Wi-Fi желісіндегі динамиктер</string>
+  <string name="morphe_music_sonos_cast_active">Белсенді</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest және Google TV құрылғылары</string>
+  <string name="morphe_music_sonos_cast_connection_failed">%s құрылғысына қосылу мүмкін болмады</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Ойнату жылдамдығы</string>
   <string name="morphe_music_playback_speed_summary">Барлық тректер үшін қолданылатын жылдамдық. 100% кезінде қолданбаның жылдамдығы, мысалы, подкастты ойнату жылдамдығы қолданылады</string>
@@ -271,9 +289,18 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Аудио ducking-ді өшіру</string>
   <string name="morphe_music_disable_audio_ducking_summary">Басқа қолданба хабарландыру сияқты қысқа дыбыс шығарғанда, дыбыс деңгейі төмендетілмейді</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Кезектегі ұнағандар фильтрі</string>
+  <string name="morphe_music_queue_like_filter_summary">Микстер мен радиодан ұнағандары аз әндерді алып тастайды. Кезекке қосылған плейлисттер, альбомдар мен әндер өзгермейді. Ұнағандар саны Return YouTube Dislike сервисінен алынады</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Минималды ұнағандар саны</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Ұнағандары аз әндер кезектен алып тасталады</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Ұнамау бағыттауын өшіру</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Ұнамау түймесі басылғанда келесі трекке ауысуды болдырмайды</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Тректі ауыстыру үшін сырғытуды өшіру</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Плеерде солға немесе оңға сырғыту арқылы келесі немесе алдыңғы трекке ауысуды болдырмайды</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Миниплеерде солға немесе оңға сырғыту арқылы келесі немесе алдыңғы трекке ауысуды болдырмайды</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B циклі</string>
   <string name="morphe_music_ab_loop_summary">Циклдің басталуын орнату үшін іздеу жолағын ұзақ басыңыз, соңына орнату үшін қайта басыңыз және циклді тазалау үшін тағы бір рет басыңыз</string>
@@ -324,15 +351,6 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_playlist_tags_rename">Қайта атау</string>
   <string name="morphe_music_playlist_tags_delete">Жою</string>
   <string name="morphe_music_playlist_tags_hidden">Жасырылған</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Cast батырмасын жасыру</string>
-  <string name="morphe_music_hide_history_button_title">Тарих батырмасын жасыру</string>
-  <string name="morphe_music_hide_notification_button_title">Хабарлама батырмасын жасыру</string>
-  <string name="morphe_music_hide_search_button_title">Іздеу батырмасын жасыру</string>
-  <string name="morphe_music_hide_voice_search_button_title">Дауыспен іздеу батырмасын жасыру</string>
-  <string name="morphe_music_hide_sound_search_button_title">Дыбыспен іздеу батырмасын жасыру</string>
-  <string name="morphe_music_hide_library_new_button_title">Жаңа батырмасын жасыру</string>
-  <string name="morphe_music_hide_library_new_button_summary">Кітапхана қойындысындағы Жаңа батырмасын жасырады</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Әрекет батырмалары</string>
   <string name="morphe_music_action_buttons_screen_summary">Плеердің астында қай әрекет батырмалары көрінетінін таңдаңыз</string>
@@ -404,22 +422,20 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_force_portrait_orientation_title">Портрет бағытын мәжбүрлеу</string>
   <string name="morphe_music_force_portrait_orientation_summary">Құрылғы бұрылған кезде қолданбаны портрет бағытында сақтайды</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Миниплеер түсін өзгерту</string>
+  <string name="morphe_music_change_miniplayer_color_title">Түсті өзгерту</string>
   <string name="morphe_music_change_miniplayer_color_summary">Миниплеер түсін толық экранды плеер түсімен сәйкестендіреді</string>
   <string name="morphe_music_change_navigation_bar_color_title">Навигациялық жолақтың түсін өзгерту</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Навигациялық жолақтың түсін толық экранды плеерге сәйкестендіреді</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Миниплеерде «Келесі» түймесін көрсету</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Миниплеерде «Алдыңғы» түймесін көрсету</string>
+  <string name="morphe_music_miniplayer_next_button_title">Келесі батырмасын көрсету</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Алдыңғы батырмасын көрсету</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Мәжбүрлі миниплеерді қосу</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Жаңа трек басталғанда плеердің автоматты түрде толық экранды режимге ауысуын болдырмайды</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Миниплеерді сырғытып жабуды қосу</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Жабу үшін сырғытуды қосу</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Миниплеерді төмен қарай сырғыту арқылы жабуға мүмкіндік береді</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Навигациялық панель</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Төменгі навигациялық панельде қай түймелер болатынын таңдаңыз</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Басты бет түймесін жасыру</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -452,7 +468,7 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Шыны навигациялық панельдің таңдалған батырмасының артындағы дөңгелек белгіні жасырады</string>
   <string name="morphe_music_miniplayer_screen_title">Миниплеер</string>
   <string name="morphe_music_miniplayer_screen_summary">Миниплеердің стилін, батырмаларын және қимыл-қозғалыстарын өзгертіңіз</string>
-  <string name="morphe_music_miniplayer_glass_title">Шыны миниплеерді қосу</string>
+  <string name="morphe_music_miniplayer_glass_title">Шыны эффектісін қосу</string>
   <string name="morphe_music_miniplayer_glass_summary">Жүзіргі миниплеерді дөңгеленген, жартылай мөлдір шыны карта ретінде көрсетеді</string>
   <string name="morphe_music_miniplayer_glass_style_title">Шыны миниплеер стилі</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Шыны миниплеердің бұрыш радиусын, мұқаба жағына дейінгі арақашықтықты, жиегінің жарықтығын және мөлдірлігін алдын ала қарау арқылы реттеңіз</string>
@@ -460,11 +476,8 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Мұқаба арақашықтығы</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Жиегінің жарықтығы</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Мөлдірлік</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Шыны бұлдырлығы</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Шыны миниплеердің артындағы беттің қаншалықты бұлдыр болатыны (Android 14 және одан кейінгі нұсқалар). 0 мәнінде бет анық көрінеді, ал Android 14-ке дейінгі нұсқаларда бет жабылады</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Ашық шыны</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Жеңіл әрі анық шыны үшін шыны миниплеерді қараңғы емес, ақ түспен реңктейді</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Альбом мұқабасының реңкі</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Шыны миниплеерді ойнатылып жатқан әннің альбом мұқабасының түсімен реңктейді</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Айнымалы мұқаба</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Шыны миниплеердің мұқабасын дөңгелек етеді және ән ойнап тұрғанда оны пластинка сияқты айналдырады</string>
@@ -475,6 +488,15 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_navigation_bar_glass_preview_samples">Үлгілер</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Зерттеу</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Кітапхана</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Белсенділік түймесін жасыру</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">«Музыкадан сұрау» түймесін жасыру</string>
+  <string name="morphe_music_hide_cast_button_title">Cast батырмасын жасыру</string>
+  <string name="morphe_music_hide_history_button_title">Тарих батырмасын жасыру</string>
+  <string name="morphe_music_hide_search_button_title">Іздеу батырмасын жасыру</string>
+  <string name="morphe_music_hide_voice_search_button_title">«Дауыспен іздеу» түймесін жасыру</string>
+  <string name="morphe_music_hide_sound_search_button_title">\"Дыбыспен іздеу\" түймесін жасыру</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Жүйеге кірілмеген. Баптау үшін басыңыз</string>
   <string name="morphe_music_scrobbling_log_out">Шығу</string>
@@ -578,6 +600,9 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_soundproof_about_summary">"Әртістер туралы деректер SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) жүйесінен күніне бір рет жүктеледі. Бұл функцияны өшіру сіздің не тыңдап жатқаныңыз туралы ешқандай мәлімет жібермейді. SoundProof парағын ашу ағымдағы әртістің атын жаңа дауыстарды көрсету және дауыс беру үшін SoundProof серверіне жібереді. Сервер дауыс берушілерді IP-мекенжайы бойынша ажыратады, сондықтан сіздің дауысыңыз басқа желіде әртүрлі көрінуі мүмкін.
 
 Деректер қоры ODC Open Database License (ODbL) лицензиясы бойынша берілген. xoundbyte жасаған Soul Over AI жазбалары CC BY 4.0 лицензиясы бойынша берілген. SoundProof немесе Soul Over AI ұйымдарымен байланысы жоқ және олардың қолдауымен жасалмаған."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Music анимацияланған мұқабасы</string>
+  <string name="morphe_music_apple_music_artwork_summary">Егер альбомда болса, плеерде Apple Music-тің анимацияланған альбом мұқабасын көрсетеді. Әр әннің атауы, орындаушысы және альбомы Apple Music-ке жіберіледі</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Бұл құрылғы файлы үшін мәтіндер қолжетімді емес.</string>
   <string name="morphe_music_lyrics_enabled_title">Үшінші тарап мәтіндерін қолдану</string>
@@ -717,8 +742,14 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_written_by">Жазған: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Синхрондалған сөздерді немесе буындарды ерекшелеу</string>
   <string name="morphe_music_lyrics_word_sync_summary">Мүмкіндігі болған жағдайда сөздік мәтінге басымдық беру. Мәтінде сөздердің уақыты көрсетілгенде, әр сөз немесе буын музыкамен үйлесімді түрде ерекшеленеді</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Синхрондалған сөздерді бірқалыпты анимациялау</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Әр сөз айтылған кезде оны жұмсақ жылжу, жарқырау және сәл көтерілу арқылы ерекшелейді. Батареяны үнемдеу үшін немесе баяу құрылғыларда анық толтыру үшін өшіріңіз</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Серіппелі айналдыруды қолдану</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Мәтінді серіппе физикасымен айналдырады және әр жолды жоғарғы жолдан сәл ығыстырып орналастырады. Баяу құрылғыларда батареяны үнемдеу үшін өшіріңіз</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Жұмсақ айналдыру</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Лириканың айналу анимациясын баяулатады және белсенді емес жолдарды толық өлшемде сақтайды</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Белсенбеген жолдарды бұлдырату</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Қазіргі уақытта айтылып жатпаған әрбір жолды жұмсақ бұлдыратады, қашықтық сайын бұлдырлық артады (Android 12 және одан кейінгі нұсқалар). Android 12 нұсқасына дейін белсенбеген жолдар анық қалады</string>
   <string name="morphe_music_lyrics_gap_dots_title">Инструменталды үзіліс нүктелерін көрсету</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Ұзақ инструменталды үзіліс кезінде жолдар арасында үш нүктені көрсетеді, үзіліс аяқталған сайын олар толтырылады</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Алыстағы жолдарды көбірек күңіртіңіз</string>
@@ -841,6 +872,8 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Аударманы мәтіннен жоғары жылжытады; оқу және романизация төменде қалады</string>
   <string name="morphe_music_lyrics_force_center_title">Мәтінді әрдайым ортаға қою</string>
   <string name="morphe_music_lyrics_force_center_summary">ҚОСЫЛДЫ күйінде әр жол ортаға қойылады және бастапқы тегістеу (соның ішінде дуэт жақтары) ескерілмейді; ӨШІРІЛДІ күйінде мәтінде көрсетілген тегістеу сақталады</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Дуэттің қарсы жағына тегістеу</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Дуэт әндерінде екінші әншіні қарсы жақ жиекке орналастырады. Екі әншіні де бір жақта қалдыру үшін өшіріңіз</string>
   <string name="morphe_music_lyrics_providers_keep_one">Кемінде бір провайдер қосулы болуы керек</string>
   <string name="morphe_music_lyrics_translation_provider_title">Аударма</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация немесе транслитерация</string>

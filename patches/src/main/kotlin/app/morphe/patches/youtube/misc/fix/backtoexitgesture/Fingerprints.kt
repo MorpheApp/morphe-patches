@@ -48,8 +48,7 @@ internal object RecyclerViewTopScrollingCallingMethodFingerprint : Fingerprint(
             returnType = "V",
             parameters = listOf(),
         ),
-        literal(45359224L, location = MatchAfterWithin(5)),
-        literal(45414493L)
+        literal(45359224L, location = MatchAfterWithin(5))
     )
 )
 

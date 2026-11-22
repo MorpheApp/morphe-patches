@@ -222,6 +222,9 @@ class QueueRuntimeBoundaryTest {
             .first { File(it, "extensions/youtube/src/main/proto").isDirectory }
         val classes = File(root,
             "extensions/youtube/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes")
+        // The queue protos are generated in the shared module.
+        val sharedClasses = File(root,
+            "extensions/shared-youtube/library/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes")
         val protobuf = File(GeneratedMessageLite::class.java.protectionDomain.codeSource.location.toURI())
         val output = createTempDirectory("playlist-queue-runtime").toFile()
         // Only external settings/UI/scheduling boundaries are replaced. Queue state,
@@ -620,8 +623,8 @@ class QueueRuntimeBoundaryTest {
             "Settings" to """
                 package app.morphe.extension.youtube.settings;
                 import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
-                import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
-                import app.morphe.extension.youtube.innertube.IconOuterClass;
+                import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
+                import app.morphe.extension.shared.innertube.IconOuterClass;
                 public class Settings {
                     public static final app.morphe.extension.shared.settings.EnumSetting<QueueType> QUEUE_TYPE =
                         new app.morphe.extension.shared.settings.EnumSetting<>(QueueType.NATIVE);
@@ -680,8 +683,8 @@ class QueueRuntimeBoundaryTest {
                 import app.morphe.extension.shared.*;
                 import app.morphe.extension.youtube.patches.*;
                 import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
-                import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
-                import app.morphe.extension.youtube.innertube.IconOuterClass;
+                import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
+                import app.morphe.extension.shared.innertube.IconOuterClass;
                 import app.morphe.extension.youtube.settings.Settings;
                 import java.lang.ref.WeakReference;
                 import java.lang.reflect.*;
@@ -2158,7 +2161,7 @@ class QueueRuntimeBoundaryTest {
                         call("onPlaybackContextChanged"); Utils.drain();
                         call("onPlaybackContextChanged"); Utils.drain();
                         require(controller.feedbacks == 1, "Close must show exactly one native confirmation");
-                        var action = app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
+                        var action = app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
                             .parseFrom(controller.feedback).getAddToToastAction().getItem().getToastRenderer();
                         require(action.getResponseText().getSimpleText().equals("morphe_native_playlist_queue_cleared"),
                             "Close must use the localized Queue cleared label");
@@ -2171,7 +2174,7 @@ class QueueRuntimeBoundaryTest {
                         var undo = closePlayer(old);
                         var accessible = Utils.getContext().accessibility;
                         accessible.enabled = true; accessible.touchExploration = true;
-                        var toast = app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
+                        var toast = app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
                             .parseFrom(old.feedback).getAddToToastAction().getItem().getToastRenderer();
                         require(QueueSaveFeedback.confirmationDuration(toast) == 0,
                             "Accessible close Undo must retain the native twenty-second timeout");
@@ -2194,8 +2197,8 @@ class QueueRuntimeBoundaryTest {
                             "Do not attach through the detached old controller");
                         require(LoadVideoPatch.activeBlock != 0 && LoadVideoPatch.releases == 0,
                             "The feed preview must stay blocked while the requested player is not accepted");
-                        var watch = app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
-                            .newBuilder().setWatchEndpoint(app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer
+                        var watch = app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
+                            .newBuilder().setWatchEndpoint(app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer
                             .WatchEndpoint.newBuilder().setVideoId("abcdefghijk")).build();
                         require(Boolean.TRUE.equals(NativePlaylistQueuePatch.prepareQueueStartContext(watch, Map.of())
                             .get("start_watch_minimized")), "Undo must reopen in the mini player");
@@ -2207,7 +2210,7 @@ class QueueRuntimeBoundaryTest {
                         call("tryStartQueue");
                         require(replacement.playback.attaches == 1 && old.playback.attaches == 0,
                             "Attach the full restored queue only to the newly accepted backend");
-                        var panel = app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.Panel
+                        var panel = app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.Panel
                             .parseFrom(replacement.playback.panel);
                         require(panel.getItemsCount() == 3 && panel.getSelectedIndex() == 2,
                             "Native panel must retain the selected duplicate, not just the first video");
@@ -2362,8 +2365,8 @@ class QueueRuntimeBoundaryTest {
                     public static void closedPlayerSuperseded() throws Exception {
                         var controller = new Controller(new Playback()); installOwned(controller);
                         var undo = closePlayer(controller);
-                        var watch = app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
-                            .newBuilder().setWatchEndpoint(app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer
+                        var watch = app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
+                            .newBuilder().setWatchEndpoint(app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer
                             .WatchEndpoint.newBuilder().setVideoId("abcdefghijk")).build();
                         NativePlaylistQueuePatch.prepareQueueStartContext(watch, Map.of());
                         NativePlaylistQueuePatch.onQueueUndoCommand(undo);
@@ -2404,8 +2407,8 @@ class QueueRuntimeBoundaryTest {
                     }
                     public static void singleRemovalSilent() throws Exception {
                         var controller = new Controller(new Playback()); installOwned(controller);
-                        var hide = app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
-                            .newBuilder().setHideEnclosingAction(app.morphe.extension.youtube.innertube.queue
+                        var hide = app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
+                            .newBuilder().setHideEnclosingAction(app.morphe.extension.shared.innertube.queue
                             .PlaylistQueueRenderer.HideEnclosingAction.newBuilder().setHack(true)).build();
                         require(NativePlaylistQueuePatch.onQueueMenuCommand(hide, Map.of(
                             "com.google.android.libraries.youtube.innertube.endpoint.tag", controller.row)) == null,
@@ -2423,15 +2426,15 @@ class QueueRuntimeBoundaryTest {
                     }
                     public static void menuClearUndo() throws Exception {
                         var controller = new Controller(new Playback()); var before = installOwned(controller);
-                        var hide = app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
-                            .newBuilder().setHideEnclosingAction(app.morphe.extension.youtube.innertube.queue
+                        var hide = app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
+                            .newBuilder().setHideEnclosingAction(app.morphe.extension.shared.innertube.queue
                             .PlaylistQueueRenderer.HideEnclosingAction.newBuilder().setHack(true)).build();
                         var nativeCommand = (com.google.protobuf.MessageLite) Proxy.newProxyInstance(owner.getClassLoader(),
                             new Class<?>[]{com.google.protobuf.MessageLite.class, QueueUndoActions.Command.class},
                             (proxy, method, args) -> {
                                 if (method.getName().equals("toByteArray")) return hide.toByteArray();
                                 if (method.getName().equals("patch_parseQueueCommand")) return
-                                    app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
+                                    app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
                                         .parseFrom((byte[]) args[0]);
                                 throw new AssertionError("Unexpected native command operation: " + method.getName());
                             });
@@ -2439,7 +2442,7 @@ class QueueRuntimeBoundaryTest {
                             "com.google.android.libraries.youtube.innertube.endpoint.tag", controller.panel));
                         require(field("queue").get(null) == null && controller.playback.clears == 1,
                             "Menu Clear must detach only the local sequence");
-                        var undo = app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
+                        var undo = app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint
                             .parseFrom(feedback.toByteArray()).getAddToToastAction().getItem().getToastRenderer()
                             .getActionButton().getButtonRenderer().getServiceEndpoint();
                         NativePlaylistQueuePatch.onQueueUndoCommand(undo);
@@ -2565,9 +2568,10 @@ class QueueRuntimeBoundaryTest {
         }
         try {
             assertEquals(0, ToolProvider.getSystemJavaCompiler().run(null, null, null,
-                "--release", "17", "-classpath", "${classes.path}${File.pathSeparator}${protobuf.path}",
+                "--release", "17", "-classpath",
+                "${classes.path}${File.pathSeparator}${sharedClasses.path}${File.pathSeparator}${protobuf.path}",
                 "-d", output.path, *stubs.map { it.path }.toTypedArray(), queuePatch.path, fixture.path))
-            URLClassLoader(arrayOf(output.toURI().toURL(), classes.toURI().toURL()),
+            URLClassLoader(arrayOf(output.toURI().toURL(), classes.toURI().toURL(), sharedClasses.toURI().toURL()),
                 GeneratedMessageLite::class.java.classLoader).use { loader ->
                 val runtime = loader.loadClass("app.morphe.extension.youtube.patches.queue.RuntimeFixture")
                 // Existing paging scenarios exercise scroll loading; window scenarios use the default mode.

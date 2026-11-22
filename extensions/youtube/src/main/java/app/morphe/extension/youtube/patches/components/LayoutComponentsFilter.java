@@ -137,6 +137,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup channelMembersOnlyChipId;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup communityPosts;
+    private final StringFilterGroup communityPostsNew;
+    private final ByteArrayFilterGroup communityPostsNewBuffer;
     private final StringFilterGroup compactChannel;
     private final StringFilterGroup compactChannelMusicBanner;
     private final ByteArrayFilterGroup youtubeMusicChannelLink;
@@ -150,8 +152,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroupList linearLayoutGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup liveStream;
     private final ByteArrayFilterGroup liveStreamBuffer;
-    private final StringFilterGroup libraryDownloads;
-    private final ByteArrayFilterGroup libraryDownloadsBuffer;
+    private final StringFilterGroup libraryItem;
+    private final ByteArrayFilterGroupList libraryItemGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup notificationsMenuHeader;
     private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
@@ -237,17 +239,37 @@ public final class LayoutComponentsFilter extends Filter {
                 "yt_outline_experimental_live_black"
         );
 
-        // 'Downloads' item of the 'You' tab. It's a lockup, so the bottom menu filter can't match its name.
-        libraryDownloads = new StringFilterGroup(
-                Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
+        // Built-in items of the 'You' tab, such as 'Downloads'. They are lockups, so the bottom menu
+        // filter can't match their names. The settings are checked by the buffer groups.
+        libraryItem = new StringFilterGroup(
+                null,
                 "video_lockup_with_attachment.e"
         );
 
-        // The title is localized, but only the 'Downloads' item has this icon.
-        libraryDownloadsBuffer = new ByteArrayFilterGroup(
-                null,
-                "yt_outline_download_black",
-                "yt_outline_experimental_download_black"
+        // The titles are localized, so the items are found by their thumbnail, icon, playlist or page.
+        // Newer layouts of the 'You' tab show a thumbnail instead of the icon.
+        libraryItemGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_BADGES,
+                        "/youtube/app_shell/badges_thumbnail",
+                        "FEtrophies"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_DOWNLOADS,
+                        "yt_outline_download_black",
+                        "yt_outline_experimental_download_black",
+                        "/youtube/app_shell/download_background"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_LIKED_VIDEOS,
+                        "/youtube/app_shell/thumb_up_background",
+                        "/playlist?list=LL"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ACCOUNT_MENU_WATCH_LATER,
+                        "/youtube/app_shell/clock_background",
+                        "/playlist?list=WL"
+                )
         );
 
         // The hint shown in the player during seek gestures. The identifier is versioned.
@@ -262,7 +284,7 @@ public final class LayoutComponentsFilter extends Filter {
                 linearLayout,
                 liveChatReplay,
                 liveStream,
-                libraryDownloads,
+                libraryItem,
                 seekEduOverlay
         );
 
@@ -396,6 +418,16 @@ public final class LayoutComponentsFilter extends Filter {
                 "text_post_root_slim.e",
                 "videos_post_responsive_root.e",
                 "videos_post_root.e"
+        );
+
+        communityPostsNew = new StringFilterGroup(
+                Settings.HIDE_COMMUNITY_POSTS,
+                "lockup.e"
+        );
+
+        communityPostsNewBuffer = new ByteArrayFilterGroup(
+                null,
+                "FEpost_home"
         );
 
         final var crowdfundingBox = new StringFilterGroup(
@@ -570,6 +602,7 @@ public final class LayoutComponentsFilter extends Filter {
                 compactChannelMusicBanner,
                 compactChannelBarInner,
                 communityPosts,
+                communityPostsNew,
                 crowdfundingBox,
                 emergencyBox,
                 expandableMetadata,
@@ -642,6 +675,23 @@ public final class LayoutComponentsFilter extends Filter {
         return Utils.endsWith(path, "|CellType|");
     }
 
+    private static boolean isCommunityPostHidden(ContextInterface contextInterface) {
+        // YouTube now also shows community posts on a dedicated community page for channels,
+        // and hiding its posts prevents any posts from loading (the page shows a loading
+        // spinner forever) (https://github.com/MorpheApp/morphe-patches/issues/4101).
+        // The page is found by its browse id, as the back button it is navigated with is also
+        // visible on other pages, such as the search results, and on the page below the watch page.
+        // The watch page, with its related videos, comments and other panels, covers the page
+        // below it, also when the video is opened from the community page
+        // (https://github.com/MorpheApp/morphe-patches/issues/4170).
+        if ((COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
+                && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+            return false;
+        }
+
+        return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
+    }
+
     @Override
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
@@ -694,20 +744,15 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == communityPosts) {
-            // YouTube now also shows community posts on a dedicated community page for channels,
-            // and hiding its posts prevents any posts from loading (the page shows a loading
-            // spinner forever) (https://github.com/MorpheApp/morphe-patches/issues/4101).
-            // The page is found by its browse id, as the back button it is navigated with is also
-            // visible on other pages, such as the search results, and on the page below the watch page.
-            // The watch page, with its related videos, comments and other panels, covers the page
-            // below it, also when the video is opened from the community page
-            // (https://github.com/MorpheApp/morphe-patches/issues/4170).
-            if ((COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
-                    && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-                return false;
-            }
+            return isCommunityPostHidden(contextInterface);
+        }
 
-            return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
+        if (matchedGroup == communityPostsNew) {
+            // Only the root lockup holds the post endpoint, and the identifier is shared with
+            // other feed items, such as videos.
+            return isLockupRoot(path)
+                    && communityPostsNewBuffer.check(buffer).isFiltered()
+                    && isCommunityPostHidden(contextInterface);
         }
 
         if (matchedGroup == compactChannel) {
@@ -765,12 +810,11 @@ public final class LayoutComponentsFilter extends Filter {
             return isLockupRoot(path) && liveStreamBuffer.check(buffer).isFiltered();
         }
 
-        if (matchedGroup == libraryDownloads) {
+        if (matchedGroup == libraryItem) {
             // Only check the whole lockup, for the same reason as the live streams.
-            return Settings.HIDE_ACCOUNT_MENU.get()
-                    && isLockupRoot(path)
+            return isLockupRoot(path)
                     && NavigationButton.getSelectedNavigationButton(contextInterface) == NavigationButton.LIBRARY
-                    && libraryDownloadsBuffer.check(buffer).isFiltered();
+                    && libraryItemGroupList.check(buffer).isFiltered();
         }
 
         if (matchedGroup == notificationsMenuHeader) {
@@ -811,7 +855,13 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == videoLabels) {
-            return VersionCheckPatch.IS_20_31_OR_GREATER && videoLabelsBuffer.check(buffer).isFiltered();
+            // Only the container of the label itself, in the metadata of a video. Badges are also used
+            // outside the videos, such as in the rows of the menus, where a container that has a badge
+            // can be the whole row.
+            return VersionCheckPatch.IS_20_31_OR_GREATER
+                    && Utils.contains(path, "lockup_metadata.e")
+                    && videoLabelsBuffer.check(buffer).isFiltered()
+                    && Utils.startsWith(asciiStrings.getStrings(), "badge.e");
         }
 
         if (matchedGroup == videoMetadataLabels) {
@@ -1209,6 +1259,15 @@ public final class LayoutComponentsFilter extends Filter {
      */
     public static void hideCrowdfundingBox(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_CROWDFUNDING_BOX, view);
+    }
+
+    /**
+     * Injection point.
+     *
+     * @return If the HaTS survey of the bottom UI container should not be shown.
+     */
+    public static boolean hideHatsSurvey() {
+        return Settings.HIDE_SURVEYS.get();
     }
 
     /**

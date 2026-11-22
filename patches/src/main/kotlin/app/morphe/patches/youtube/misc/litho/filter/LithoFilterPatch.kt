@@ -13,13 +13,16 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.morphe.patches.youtube.misc.fix.verticalscroll.fixVerticalScrollPatch
 import app.morphe.patches.youtube.misc.litho.rendernext.disableRenderNextPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 
 val lithoFilterPatch = sharedLithoFilterPatch(
     // Flag was removed in 21.15+.
     overrideUpbFeatureFlag = { !is_21_15_or_greater },
-    removeFilteredListItems = true
+    removeFilteredListItems = true,
+    // The sections that put their lists in order were added in 21.06.
+    hasReorderedListSections = { is_21_06_or_greater }
 ) {
     dependsOn(
         sharedExtensionPatch,

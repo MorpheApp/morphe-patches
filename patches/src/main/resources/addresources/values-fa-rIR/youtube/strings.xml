@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">فعال‌کردن فیلتر منوی پایین کتابخانه / شما</string>
   <string name="morphe_hide_account_menu_filter_strings_title">فیلتر منوی پایین کتابخانه / شما</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">نام‌های منوی پایین کتابخانه / شما را که باید بر اساس آن‌ها فیلتر شود، هرکدام در یک خط وارد کنید</string>
+  <string name="morphe_hide_account_menu_badges_title">پنهان کردن نشان‌ها</string>
   <string name="morphe_hide_account_menu_downloads_title">پنهان‌کردن دانلودها</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">پنهان کردن \"ویدئوهای پسندیده\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">پنهان کردن \"مته بعداً تماشا کنید\"</string>
   <string name="morphe_hide_album_cards_title">پنهان‌کردن کارت‌های آلبوم</string>
   <string name="morphe_hide_album_cards_summary">کارت‌های آلبوم زیر توضیحات هنرمند را پنهان می‌کند</string>
   <string name="morphe_hide_artist_cards_title">پنهان‌کردن کارت‌های هنرمند</string>
@@ -122,7 +125,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">پنهان‌کردن زمان بارگذاری</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"محدودیت‌ها:
-• قفسه‌های Shorts، صفحه‌های کانال و نتایج جست‌وجو ممکن است همچنان زمان بارگذاری را نشان دهند
+• قفسه‌های Shorts ممکن است همچنان زمان بارگذاری را نشان دهند
 • با طرح‌بندی خودرویی کار نمی‌کند"</string>
   <string name="morphe_hide_video_thumbnail_title">پنهان‌کردن تصویر بندانگشتی ویدئو</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +134,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">پنهان‌کردن تعداد بازدید</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"محدودیت‌ها:
-• قفسه‌های Shorts، صفحه‌های کانال و نتایج جست‌وجو ممکن است همچنان تعداد بازدید را نشان دهند
+• قفسه‌های Shorts ممکن است همچنان تعداد بازدید را نشان دهند
 • با طرح‌بندی خودرویی کار نمی‌کند"</string>
   <string name="morphe_hide_web_search_results_title">پنهان‌کردن نتایج جست‌وجوی وب</string>
   <string name="morphe_hide_web_search_results_summary">بخش «نتیجه از وب» را از نتایج جست‌وجو پنهان می‌کند</string>
@@ -205,8 +208,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">پنهان‌کردن قفسهٔ پست‌ها</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">پنهان‌کردن دکمهٔ فروشگاه</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">پنهان‌کردن دکمهٔ عضویت</string>
   <string name="morphe_explore_menu_screen_title">منوی کاوش</string>
   <string name="morphe_explore_menu_screen_summary">انتخاب کنید کدام مؤلفه‌ها در منوی کاوش نمایش داده شوند</string>
   <string name="morphe_hide_courses_menu_title">پنهان‌کردن منوی دوره‌ها</string>
@@ -281,7 +282,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">پنهان‌کردن دکمهٔ دیدگاه‌ها</string>
   <string name="morphe_hide_post_comments_preview_title">پنهان‌کردن پیش‌نمایش دیدگاه‌ها</string>
   <string name="morphe_hide_post_comments_preview_summary">پیش‌نمایش دیدگاه‌های زیر پست‌ها را پنهان می‌کند</string>
-  <string name="morphe_hide_post_share_button_title">پنهان‌کردن دکمهٔ اشتراک‌گذاری</string>
   <string name="morphe_hide_post_share_button_summary">دکمهٔ دانلود تصاویر پست در کنار دکمهٔ اشتراک‌گذاری قرار دارد، بنابراین آن هم پنهان می‌شود</string>
   <string name="morphe_hide_ask_gemini_button_title">پنهان کردن دکمه «Ask Gemini»</string>
   <string name="morphe_hide_ask_gemini_button_summary">دکمه «Ask Gemini» را در پایین پنل «Ask about this video» پنهان می‌کند</string>
@@ -290,14 +290,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">پیش‌نمایش ویدئوی بعدی را در حالت تمام‌صفحه، پیش از شروع پخش خودکار، پنهان می‌کند</string>
   <string name="morphe_hide_channel_bar_title">پنهان‌کردن نوار کانال</string>
   <string name="morphe_hide_channel_watermark_title">پنهان‌کردن واترمارک کانال</string>
-  <string name="morphe_hide_chapters_timeline_button_title">پنهان‌کردن دکمهٔ فصل‌ها و «در این ویدئو»</string>
+  <string name="morphe_hide_chapters_button_title">پنهان‌کردن دکمهٔ فصل‌ها</string>
   <string name="morphe_hide_crowdfunding_box_title">پنهان‌کردن کادر تأمین مالی جمعی</string>
   <string name="morphe_hide_emergency_box_title">پنهان‌کردن کادرهای اضطراری</string>
+  <string name="morphe_hide_in_this_video_button_title">پنهان‌کردن دکمهٔ «در این ویدئو»</string>
   <string name="morphe_hide_info_panels_title">پنهان‌کردن پنل‌های اطلاعاتی</string>
   <string name="morphe_hide_info_panels_summary">پنل‌های اطلاعات زمینه‌ای مانند اطلاعات پزشکی را پنهان می‌کند</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">پنهان‌کردن دکمهٔ پیوستن</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">پنهان‌کردن دکمهٔ «بازپخش گفت‌وگوی زنده»</string>
@@ -313,8 +311,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">گرادیان کنترل‌های پخش‌کننده را هنگام کشیدن انگشت در حالت نگه‌داشتن برای افزایش سرعت پنهان می‌کند</string>
   <string name="morphe_hide_timed_reactions_title">پنهان‌کردن واکنش‌های زمان‌دار</string>
   <string name="morphe_hide_timed_reactions_summary">ویژگی امکان واکنش‌دادن کاربران با ایموجی در بخش دیدگاه‌ها و گفت‌وگوی زنده را پنهان می‌کند</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">پنهان‌کردن منوی «راهنما و بازخورد»</string>
   <string name="morphe_hide_help_feedback_menu_summary">منوی «راهنما و بازخورد» را هنگام استفاده از دکمه سه‌نقطه، مانند نتایج جستجو، پنهان می‌کند</string>
   <string name="morphe_hide_handle_title">پنهان کردن شناسه</string>
   <string name="morphe_hide_handle_summary">شناسه کانال شما را در برگه «شما» پنهان می‌کند</string>
@@ -357,7 +353,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">پنهان‌کردن دکمهٔ پرسش</string>
   <string name="morphe_hide_channel_profile_button_title">پنهان کردن کانال و دکمه اشتراک</string>
   <string name="morphe_hide_channel_profile_button_summary">آواتار کانال و دکمه اشتراک را در ابتدای نوار اکشن پنهان می‌کند</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">پنهان‌کردن دکمهٔ عضویت</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">دکمه‌های «اشتراک» و «عضویت» را کنار آواتار کانال در ابتدای نوار اکشن پنهان می‌کند</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">پنهان‌کردن دکمهٔ کلیپ</string>
@@ -433,9 +428,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">نظر پنهان شده توسط Morphe…</string>
   <string name="morphe_minimal_comments_button_title">فعال کردن دکمه مینیمال نظرات</string>
   <string name="morphe_minimal_comments_button_summary">کارت‌های کشویی و انتخاب‌گر صفحه آن را که روی دکمه نظرات نمایش داده می‌شود، پنهان می‌کند</string>
-  <string name="morphe_hide_comments_thanks_button_title">پنهان‌کردن دکمهٔ تشکر</string>
   <string name="morphe_hide_comments_timestamp_button_title">پنهان‌کردن دکمهٔ زمان‌نما</string>
   <string name="morphe_hide_comments_top_fans_button_title">پنهان‌کردن دکمهٔ «طرفداران برتر»</string>
+  <string name="morphe_hide_comments_topics_title">مخفی کردن \"موضوعات\"</string>
+  <string name="morphe_hide_comments_topics_summary">گزینه نوار فیلتر \"موضوعات\" و پیش‌نمایش‌های کامنت \"موضوع\" در زیر ویدیو را مخفی می‌کند</string>
   <string name="morphe_hide_comments_translate_button_title">پنهان‌کردن دکمهٔ ترجمه</string>
   <string name="morphe_hide_comments_zero_state_title">پنهان کردن پیام «هنوز نظری ثبت نشده است»</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">پاک‌سازی پیوندهای جست‌وجوی برجسته</string>
@@ -488,7 +484,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">پنهان‌کردن دکمهٔ زیرنویس</string>
   <string name="morphe_hide_cast_button_title">پنهان‌کردن دکمهٔ ارسال</string>
-  <string name="morphe_hide_cast_button_summary">دکمهٔ Cast را در پخش‌کنندهٔ ویدیو و نوار ابزار پنهان می‌کند</string>
   <string name="morphe_hide_collapse_button_title">پنهان‌کردن دکمهٔ جمع‌کردن</string>
   <string name="morphe_hide_fullscreen_button_title">پنهان‌کردن دکمهٔ تمام‌صفحه</string>
   <string name="morphe_hide_player_control_buttons_background_title">پنهان‌کردن پس‌زمینهٔ کنترل‌های پخش‌کننده</string>
@@ -607,6 +602,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">ضربه زدن و نگه داشتن در هر جایی از یک ویدیوی فید، منوی آن را باز می‌کند</string>
   <string name="morphe_feed_watch_later_button_title">نمایش دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی</string>
   <string name="morphe_feed_watch_later_button_summary">یک دکمهٔ «تماشای بعدی» روی تصاویر بندانگشتی ویدئوهای فید نمایش داده می‌شود و اگر ویدئو ذخیره شده باشد، یک علامت تیک دارد. ضربه زدن روی آن باعث ذخیره یا حذف ویدئو می‌شود و ضربه طولانی روی آن، گزینهٔ «ذخیره در فهرست پخش» را باز می‌کند</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">باز کردن تصاویر پست در حالت تمام‌صفحه</string>
+  <string name="morphe_open_post_images_fullscreen_summary">با ضربه زدن روی تصویر یک پست، به جای فید پست‌ها، تصویر در حالت تمام‌صفحه باز می‌شود</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">دانلود تصاویر پست</string>
   <string name="morphe_post_image_download_summary">یک دکمه دانلود در کنار دکمه اشتراک‌گذاری پست‌های دارای تصویر یا GIF نمایش داده می‌شود و یک گزینه دانلود به منوی آن‌ها اضافه می‌شود</string>
@@ -887,7 +885,7 @@ Second \"item\" text"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">فهرست مجاز تبلیغات در منوی بازشو</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">موردی به منوی بازشو اضافه می‌کند که اجازه می‌دهد تبلیغات در کانال آن ویدئو پخش شوند</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">این قابلیت ممکن است نیاز داشته باشد از PotHelper استفاده کنید یا گزینه‌ی \"Spoof video streams\" را برای ورود به حساب در TV یا Android VR تغییر دهید</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">این قابلیت ممکن است نیاز داشته باشد از PotHelper استفاده کنید یا گزینه‌ی \"Spoof video streams\" را برای ورود به حساب در \"TV\" یا \"Android VR\" تغییر دهید</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">فهرست مجاز سرعت در منوی بازشو</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">موردی به منوی بازشو اضافه می‌کند که همیشه کانال آن ویدئو را با سرعت ۱٫۰× پخش می‌کند</string>
   <string name="morphe_queue_manager_check_failed_auth">وارد نشده‌اید</string>
@@ -992,6 +990,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">فعال‌کردن حرکت فشردن برای کشیدن</string>
   <string name="morphe_swipe_press_to_engage_summary">پیش از شناسایی حرکت کشیدن، فشردن و نگه‌داشتن را لازم می‌کند</string>
   <string name="morphe_swipe_haptic_feedback_title">فعال‌کردن بازخورد لمسی</string>
+  <string name="morphe_swipe_haptic_feedback_summary">هنگام فشار دادن و نگه داشتن برای شروع ژست کشیدن، لرزش ایجاد می‌کند</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">ذخیره و بازیابی روشنایی</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">هنگام ورود به حالت تمام‌صفحه یا خروج از آن، سطح روشنایی را به‌خاطر می‌سپارد</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">فعال‌کردن حرکت روشنایی خودکار</string>
@@ -1035,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">روی‌هم‌افتادهٔ عمودی (حداقلی)</string>
   <string name="morphe_swipe_change_video_title">فعال‌کردن کشیدن برای تغییر ویدئوها</string>
   <string name="morphe_swipe_change_video_summary">در حالت تمام‌صفحه بکشید تا به ویدئوی بعدی یا قبلی بروید</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">ژست نگه داشتن</string>
+  <string name="morphe_hold_gesture_screen_summary">با ضربه زدن و نگه داشتن و سپس کشیدن، سرعت پخش را تغییر داده و قفل کنید</string>
+  <string name="morphe_hold_gesture_title">فعال کردن ژست نگه داشتن</string>
+  <string name="morphe_hold_gesture_summary">پس از ضربه زدن و نگه داشتن روی ویدیو، می‌توان آن را کشید. سرعت هنگام نگه داشتن، همان سرعت پخش ضربه و نگه داشتن است</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">زمانی که «فشار برای کشیدن» فعال است، استفاده نمی‌شود. برای تغییر ضربه کنید</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">«فشار برای کشیدن» فعال است</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">ژست نگه‌داشتن و ژست «فشار برای کشیدن» در کنترل‌های کشیدن، هر دو با ضربه زدن و نگه‌داشتن شروع می‌شوند، بنابراین تنها یکی از آن‌ها می‌تواند فعال باشد.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">خاموش کردن فشار برای کشیدن</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">زمانی که «فشار برای کشیدن» فعال است، ژست نگه‌داشتن استفاده نمی‌شود</string>
+  <string name="morphe_hold_gesture_dialog_title">ژست نگه‌داشتن فعال است</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">خاموش کردن ژست نگه‌داشتن</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">فعال‌کردن بازخورد لمسی</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">هنگام تغییر سرعت و زمانی که سرعت قفل می‌شود، ویبره می‌زند</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">برای تغییر سرعت به طرفین بکشید</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">پس از لمس و نگه داشتن، برای پخش کندتر به چپ و برای پخش سریع‌تر به راست بکشید. هرچه بیشتر بکشید، سرعت تا زمانی که انگشت برگردد تغییر می‌کند</string>
+  <string name="morphe_hold_gesture_speed_step_title">گام سرعت</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">حساسیت کشیدن</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">کم</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">معمولی</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">زیاد</string>
+  <string name="morphe_hold_gesture_speed_min_title">کندترین سرعت</string>
+  <string name="morphe_hold_gesture_speed_min_summary">کندترین سرعتی که با کشیدن می‌توان به آن رسید</string>
+  <string name="morphe_hold_gesture_speed_max_title">سریع‌ترین سرعت</string>
+  <string name="morphe_hold_gesture_speed_max_summary">بیشترین سرعتی که یک کشیدن می‌تواند به آن برسد (تا ۸)</string>
+  <string name="morphe_hold_gesture_lock_title">برای قفل کردن سرعت، به پایین بکشید</string>
+  <string name="morphe_hold_gesture_lock_summary">بعد از ضربه زدن و نگه داشتن، به پایین بکشید تا سرعت هنگام بلند کردن انگشت حفظ شود. برای باز کردن قفل، روی نشان ضربه بزنید یا دوباره ضربه بزنید و نگه دارید</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">همیشه نشان قفل را نمایش بده</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">نشان سرعت قفل شده در حالی که کنترل‌های پخش‌کننده پنهان هستند، قابل مشاهده می‌ماند</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">هنگام تغییر ویدیو، قفل را باز کن</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">با شروع یک ویدیوی دیگر، سرعت قفل شده پایان می‌یابد</string>
+  <string name="morphe_hold_gesture_lock_hint">برای قفل کردن به پایین بکشید</string>
+  <string name="morphe_hold_gesture_lock_release">رها کنید تا %s قفل شود</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">زیرنویس‌ها</string>
   <string name="morphe_captions_screen_summary">زیرنویس‌های خودکار و کوکی‌های زیرنویس را مدیریت کنید</string>
@@ -1083,8 +1115,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">برخی ترجمه‌های زیرنویس در دسترس نیستند. نمایش زیرنویس‌های موجود.</string>
   <string name="morphe_caption_blocks_too_large">هر دو زبان زیرنویس در این پخش‌کننده جا نمی‌شوند. نمایش زبان اصلی.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">نوار پیمایش</string>
-  <string name="morphe_navigation_bar_screen_summary">انتخاب کنید کدام دکمه‌ها در نوار پیمایش پایین نمایش داده شوند</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">پنهان‌کردن دکمهٔ خانه</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1102,11 +1132,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">بعداً تماشا می‌کنم</string>
   <string name="morphe_show_settings_button_title">نمایش دکمهٔ تنظیمات</string>
   <string name="morphe_show_settings_button_type_title">عملیات دکمهٔ تنظیمات</string>
-  <string name="morphe_show_settings_button_type_summary">وقتی فعال باشد تنظیمات Morphe را باز می‌کند و وقتی غیرفعال باشد تنظیمات YouTube را باز می‌کند</string>
+  <string name="morphe_show_settings_button_type_summary">وقتی فعال باشد، ضربه‌زدن تنظیمات Morphe و لمس طولانی تنظیمات YouTube را باز می‌کند؛ برای جابه‌جایی غیرفعال کنید</string>
   <string name="morphe_navigation_buttons_order_title">ترتیب دکمه‌های پیمایش</string>
   <string name="morphe_navigation_buttons_order_summary">دکمه‌ها را بکشید تا ترتیب آن‌ها در نوار پیمایش تغییر کند</string>
   <string name="morphe_swap_create_with_notifications_button_title">جابه‌جایی دکمهٔ ساخت با دکمهٔ اعلان‌ها</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">اگر تغییر این تنظیم اعمال نشد، حالت ناشناس را روشن و خاموش کنید</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">دکمه اعلان‌ها را به نوار پیمایش و دکمه ایجاد را به نوار ابزار منتقل می‌کند. اگر تغییرات اعمال نشد، حالت Incognito را امتحان کنید</string>
   <string name="morphe_hide_navigation_button_labels_title">پنهان‌کردن برچسب‌های دکمه‌های پیمایش</string>
   <string name="morphe_hide_navigation_new_content_dot_title">پنهان کردن نقطه محتوای جدید</string>
   <string name="morphe_hide_navigation_bar_title">پنهان‌کردن نوار پیمایش</string>
@@ -1135,18 +1165,31 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">سطح شفافیت نوار پیمایش شیشه‌ای را تنظیم کنید (۰ شفاف و ۱۰۰ کدر است)</string>
   <string name="morphe_navigation_bar_glass_round_title">نوار پیمایش شیشه‌ای گرد</string>
   <string name="morphe_navigation_bar_glass_round_summary">به جای گوشه‌هایی مانند مینی‌پلیر شیشه‌ای، به نوار پیمایش شیشه‌ای لبه‌های گرد می‌دهد</string>
+  <string name="morphe_navigation_bar_glass_edge_title">لبه شیشه‌ای نوار پیمایش</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">یک لبه نوری دور نوار پیمایش شیشه‌ای رسم می‌کند</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">حاشیه پایین نوار پیمایش شیشه‌ای</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">تنظیم فاصله بین نوار ناوبری شیشه‌ای و پایین صفحه یا ناوبری سیستم</string>
   <string name="morphe_navigation_bar_glass_size_title">اندازه‌ی نوار پیمایش شیشه‌ای</string>
   <string name="morphe_navigation_bar_glass_size_summary">تنظیم ارتفاع، عرض و فاصله‌ی دکمه‌های نوار پیمایش شیشه‌ای به همراه پیش‌نمایش. دکمه‌هایی که در عرض صفحه‌ی نمایش جای نمی‌گیرند، پنهان می‌شوند</string>
+  <string name="morphe_glass_menus_screen_title">منوهای شیشه‌ای</string>
+  <string name="morphe_glass_menus_screen_summary">منوها به صورت شیشه مات روی محتوای محو شده در پشت آن‌ها</string>
+  <string name="morphe_glass_menus_title">فعال‌سازی منوهای شیشه‌ای</string>
+  <string name="morphe_glass_menus_summary">منوها و صفحات پایین را به صورت شیشه مات نمایش می‌دهد، به گونه‌ای که محتوای پشت آن‌ها محو شود</string>
+  <string name="morphe_glass_menus_user_dialog_message">هنگام فعال بودن حالت ذخیره باتری یا در صورتی که دستگاه از قابلیت محو کردن پشتیبانی نکند، منوها تقریباً کدر نمایش داده می‌شوند</string>
+  <string name="morphe_glass_menus_opacity_title">شفافیت شیشه‌ای</string>
+  <string name="morphe_glass_menus_opacity_summary">میزان پوشش محتوای محوشده توسط منو (۰ شفاف، ۱۰۰ مات)</string>
+  <string name="morphe_glass_menus_blur_title">تاری</string>
+  <string name="morphe_glass_menus_blur_summary">میزان تاری محتوای پشت منو</string>
+  <string name="morphe_glass_menus_dim_title">تاریکی</string>
+  <string name="morphe_glass_menus_dim_summary">میزان تیره شدن صفحه در اطراف یک bottom sheet</string>
   <string name="morphe_navigation_bar_glass_size_height">ارتفاع</string>
   <string name="morphe_navigation_bar_glass_size_width">حداکثر عرض</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">فاصله‌ی دکمه‌ها</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">دکمه‌های نمایش داده شده: %1$s از %2$s</string>
-  <string name="morphe_toolbar_screen_title">نوار ابزار</string>
-  <string name="morphe_toolbar_screen_summary">انتخاب کنید کدام مؤلفه‌ها در نوار ابزار نمایش داده شوند</string>
   <string name="morphe_hide_toolbar_chat_button_title">پنهان‌کردن دکمهٔ گفت‌وگو</string>
+  <string name="morphe_hide_toolbar_companion_button_title">پنهان‌کردن دکمهٔ همراه</string>
   <string name="morphe_hide_toolbar_microphone_button_title">پنهان‌کردن دکمهٔ میکروفون</string>
   <string name="morphe_hide_toolbar_search_button_title">پنهان‌کردن دکمهٔ جست‌وجو</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">وقتی فعال باشد، ضربه‌زدن تنظیمات Morphe و لمس طولانی تنظیمات YouTube را باز می‌کند؛ برای جابه‌جایی غیرفعال کنید</string>
   <string name="morphe_toolbar_buttons_order_title">ترتیب دکمه‌های نوار ابزار</string>
   <string name="morphe_toolbar_buttons_order_summary">دکمه‌ها را بکشید تا ترتیب آن‌ها در نوار ابزار تغییر کند</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1177,43 +1220,28 @@ Second \"item\" text"</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">غیرفعال‌کردن دو ضربه برای پسندیدن</string>
   <string name="morphe_hide_shorts_ai_button_title">پنهان‌کردن دکمهٔ هوش مصنوعی</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">پنهان‌کردن برچسب «دوبلهٔ خودکار»</string>
-  <string name="morphe_hide_shorts_channel_bar_title">پنهان‌کردن نوار کانال</string>
-  <string name="morphe_hide_shorts_comments_button_title">پنهان‌کردن دکمهٔ دیدگاه‌ها</string>
   <string name="morphe_hide_shorts_effect_button_title">پنهان‌کردن دکمهٔ افکت</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">پنهان‌کردن برچسب پیوند ویدئوی کامل</string>
   <string name="morphe_hide_shorts_gesture_hints_title">پنهان‌کردن راهنمای حرکت‌ها</string>
   <string name="morphe_hide_shorts_green_screen_button_title">پنهان‌کردن دکمهٔ «پردهٔ سبز»</string>
   <string name="morphe_hide_shorts_hashtag_button_title">پنهان‌کردن دکمهٔ هشتگ</string>
   <string name="morphe_hide_shorts_info_panel_title">پنهان‌کردن پنل اطلاعات</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">پنهان‌کردن دکمهٔ پیوستن</string>
   <string name="morphe_hide_shorts_like_button_title">پنهان‌کردن دکمهٔ پسندیدن</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">پنهان‌کردن انیمیشن فوارهٔ دکمهٔ پسندیدن</string>
   <string name="morphe_hide_shorts_live_preview_title">پنهان‌کردن پیش‌نمایش زنده</string>
   <string name="morphe_hide_shorts_location_label_title">پنهان‌کردن برچسب مکان</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">پنهان‌کردن نوار پیمایش</string>
   <string name="morphe_hide_shorts_new_posts_button_title">پنهان‌کردن دکمهٔ «پست‌های جدید»</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">پنهان‌کردن دکمه‌های روی‌هم‌افتاده هنگام مکث</string>
-  <string name="morphe_hide_shorts_preview_comment_title">پنهان‌کردن پیش‌نمایش دیدگاه</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">پنهان‌کردن دکمهٔ ریمیکس</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">پنهان‌کردن دکمهٔ ذخیره</string>
   <string name="morphe_hide_shorts_save_sound_button_title">پنهان‌کردن دکمهٔ «ذخیرهٔ موسیقی»</string>
   <string name="morphe_hide_shorts_search_suggestions_title">پنهان‌کردن پیشنهادهای جست‌وجو</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">پنهان‌کردن دکمهٔ اشتراک‌گذاری</string>
-  <string name="morphe_hide_shorts_shop_button_title">پنهان‌کردن دکمهٔ فروشگاه</string>
   <string name="morphe_hide_shorts_sound_button_title">پنهان‌کردن دکمهٔ صدا</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">پنهان‌کردن برچسب فرادادهٔ صدا</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">پنهان‌کردن دکمهٔ عضویت</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">پنهان‌کردن دکمهٔ «خرید Super Thanks»</string>
   <string name="morphe_hide_shorts_tagged_products_title">پنهان‌کردن محصولات برچسب‌خورده</string>
   <string name="morphe_hide_shorts_upcoming_button_title">پنهان‌کردن دکمهٔ «به‌زودی»</string>
   <string name="morphe_hide_shorts_use_sound_button_title">پنهان‌کردن دکمهٔ «استفاده از این صدا»</string>
   <string name="morphe_hide_shorts_use_template_button_title">پنهان‌کردن دکمهٔ «استفاده از این الگو»</string>
-  <string name="morphe_hide_shorts_video_title_title">پنهان‌کردن عنوان ویدئو</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">پنهان‌کردن ویدئوی پیشنهادی صفحهٔ پایان</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"روی‌هم‌افتادگی ویدئوی پیشنهادی را که پس از پایان ویدئو ظاهر می‌شود پنهان می‌کند
@@ -1380,6 +1408,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">غیرفعال کردن تازه‌سازی خودکار فید</string>
   <string name="morphe_disable_auto_feed_refresh_summary">جلوگیری از تازه‌سازی خودکار فیدها پس از قدیمی شدن آن‌ها</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">جدا کردن اعلان‌ها</string>
+  <string name="morphe_ungroup_notifications_summary">هر ویدیو از آپلودهای گروهی یک کانال را به عنوان یک اعلان مجزا نمایش می‌دهد</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">طرح کارت خبرنامه</string>
   <string name="morphe_feed_card_layout_entry_1">کلاسیک</string>
@@ -1492,6 +1523,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">نتایج جستجو</string>
   <string name="morphe_dearrow_titles_icon_title">نمایش آیکون DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">آیکون DeArrow را روی عنوان ویدیوهایی که عنوان یا تصویر بندانگشتی آن‌ها توسط کاربران تامین شده است، نمایش می‌دهد. برای نمایش عنوان و تصویر بندانگشتی اصلی، روی آیکون ضربه بزنید</string>
+  <string name="morphe_dearrow_clean_up_titles_title">پاکسازی عناوین</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">عناوین ویدیوهایی که عنوان DeArrow ندارند را پاکسازی می‌کند. کلمات با حروف بزرگ به حالت عادی تغییر می‌کنند و ایموجی‌ها، متن‌های فانتزی و علامت‌های تعجب تکراری حذف می‌شوند</string>
   <string name="morphe_dearrow_casual_mode_title">حالت غیررسمی</string>
   <string name="morphe_dearrow_casual_mode_summary">اگر کاربران DeArrow رای داده باشند که عنوان اصلی را می‌پسندند، عنوان اصلی را به‌جای عنوان DeArrow نشان می‌دهد</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">حداقل تعداد رای‌های غیررسمی برای نمایش عنوان اصلی</string>
@@ -1712,13 +1745,9 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">منوی انتخاب کیفیت را رد می‌کند و مستقیماً منوی کیفیت پیشرفته را باز می‌کند</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">پنهان‌کردن گزینه‌های کیفیت Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">اولویت‌دادن به کیفیت ویدئو</string>
-  <string name="morphe_video_quality_prioritize_summary">بالاترین کیفیت موجود را بر کارایی کدک اولویت می‌دهد</string>
-  <string name="morphe_video_quality_prioritize_dialog">اگر این تنظیم خاموش باشد، ویدئوهای قدیمی ممکن است هیچ گزینهٔ کیفیت ویدئویی نشان ندهند</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">اجازه‌دادن به AV1 در «Android VR» / visionOS</string>
-  <string name="morphe_spoof_video_streams_av1_summary">هنگام استفاده از کلاینت «Android VR» / visionOS، رمزگشایی نرم‌افزاری AV1 را مجاز می‌کند</string>
+  <string name="morphe_spoof_video_streams_av1_title">اجازه‌دادن به AV1 در \"Android VR\" / \"visionOS\"</string>
+  <string name="morphe_spoof_video_streams_av1_summary">هنگام استفاده از کلاینت «Android VR» / «visionOS»، رمزگشایی نرم‌افزاری AV1 را مجاز می‌کند</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"فعال‌کردن این تنظیم ممکن است از رمزگشایی نرم‌افزاری AV1 استفاده کند.
 
 پخش ویدئو با AV1 ممکن است دچار لکنت شود یا فریم‌ها را از دست بدهد"</string>
@@ -1955,7 +1984,6 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">زبان ترجمه</string>
   <string name="morphe_live_chat_translate_exclude_title">زبان‌های مستثنی‌شده</string>
   <string name="morphe_live_chat_translate_exclude_summary">کدهای زبان با جداکنندهٔ ویرگول، مانند id,en. پیام‌هایی با این زبان‌ها ترجمه نمی‌شوند</string>
-  <string name="morphe_live_chat_translate_provider_title">ارائه‌دهندهٔ ترجمه</string>
   <string name="morphe_live_chat_translate_provider_google">ترجمه گوگل</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">کلید API DeepL</string>

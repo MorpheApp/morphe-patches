@@ -190,6 +190,27 @@ internal object LiveChatDonatorsBarFingerprint : Fingerprint(
 )
 
 /**
+ * Shows a HaTS survey ("Which of these issues do you have?") in the bottom UI container.
+ */
+internal object HatsSurveyDisplayFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(
+            definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+            parameters = listOf(),
+            returnType = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/HatsContainer;"
+        ),
+        methodCall(
+            definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+            parameters = listOf("L", "L", "L"),
+            returnType = "V"
+        )
+    )
+)
+
+/**
  * Makes the engagement panels extend behind the navigation bar, which hides the bottom
  * of the panels that do not add the bottom padding themselves, such as the live chat.
  */

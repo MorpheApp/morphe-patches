@@ -21,11 +21,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+
 /**
  * Static container parsing tests for embedded lyrics. A file may carry several lyrics tags in
  * any order, so the reader must pick by tag priority rather than by storage order.
  */
 public class LocalLyricsFetcherStaticTest {
+
+    private static final String TTML =
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                    + "<tt xmlns=\"http://www.w3.org/ns/ttml\"><head></head><body><div>"
+                    + "<p begin=\"00:01.000\" end=\"00:02.000\">ttml line</p>"
+                    + "</div></body></tt>";
 
     @Test
     public void vorbisPrefersLyricsOverUnsyncedLyrics() {
@@ -71,6 +79,34 @@ public class LocalLyricsFetcherStaticTest {
     public void vorbisTagNamesAreCaseInsensitive() {
         byte[] data = flacWithComments("lyrics=[00:01.00]lower case");
         assertEquals("[00:01.00]lower case", LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void vorbisPrefersTtmlLyricOverSyncedLyrics() {
+        byte[] data = flacWithComments(
+                "SYNCEDLYRICS=[00:02.00]synced line",
+                "TTMLLYRIC=" + TTML);
+        assertEquals(TTML, LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void vorbisTtmlLyricNameIsCaseInsensitive() {
+        byte[] data = flacWithComments("ttmllyric=" + TTML);
+        assertEquals(TTML, LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void vorbisAcceptsLanguageSuffixedTtmlLyric() {
+        byte[] data = flacWithComments("TTMLLYRIC-zho=" + TTML);
+        assertEquals(TTML, LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void vorbisSkipsEmptyTtmlLyric() {
+        byte[] data = flacWithComments(
+                "TTMLLYRIC=",
+                "LYRICS=[00:01.00]line");
+        assertEquals("[00:01.00]line", LocalLyricsFetcher.extractLyrics(data));
     }
 
     @Test
@@ -226,6 +262,35 @@ public class LocalLyricsFetcherStaticTest {
     }
 
     @Test
+    public void id3ReadsTxxxTtmlLyric() {
+        byte[] data = id3Tag(
+                id3Frame("TXXX", txxx("TTMLLYRIC", TTML)));
+        assertEquals(TTML, LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void id3ReadsCommTtmlLyric() {
+        byte[] data = id3Tag(
+                id3Frame("COMM", comm("TTMLLYRIC", TTML)));
+        assertEquals(TTML, LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void id3PrefersTtmlLyricOverSylt() {
+        byte[] data = id3Tag(
+                id3Frame("SYLT", sylt("synced line", 1000)),
+                id3Frame("TXXX", txxx("TTMLLYRIC", TTML)));
+        assertEquals(TTML, LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void id3AcceptsLanguageSuffixedTtmlLyric() {
+        byte[] data = id3Tag(
+                id3Frame("TXXX", txxx("TTMLLYRIC-zho", TTML)));
+        assertEquals(TTML, LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
     public void id3PrefersSyltOverTxxxLyrics() {
         byte[] data = id3Tag(
                 id3Frame("TXXX", txxx("LYRICS", "[00:01.00]tag line")),
@@ -303,6 +368,73 @@ public class LocalLyricsFetcherStaticTest {
         byte[] data = m4a(
                 m4aItem(new byte[]{'L', 'Y', 'R', ' '}, "uppercase line"));
         assertEquals("uppercase line", LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void m4aReadsFreeformTtmlLyric() {
+        byte[] data = m4a(
+                m4aFreeformItem("com.apple.iTunes", "TTMLLYRIC", TTML));
+        assertEquals(TTML, LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void m4aPrefersFreeformTtmlLyricOverCopyrightLyr() {
+        byte[] data = m4a(
+                m4aItem(new byte[]{(byte) 0xA9, 'l', 'y', 'r'}, "copyright line"),
+                m4aFreeformItem("com.apple.iTunes", "TTMLLYRIC", TTML));
+        assertEquals(TTML, LocalLyricsFetcher.extractLyrics(data));
+    }
+
+    @Test
+    public void parsesTtmlLyricValue() {
+        Lyrics lyrics = LocalLyricsFetcher.parseCandidates(
+                LocalLyricsFetcher.extractLyricsCandidates(
+                        flacWithComments("TTMLLYRIC=" + TTML)));
+        assertNotNull(lyrics);
+        assertEquals("ttml", lyrics.formatType());
+        assertTrue(lyrics.synced());
+        assertEquals(1, lyrics.lines().size());
+        assertEquals("ttml line", lyrics.lines().get(0).text());
+    }
+
+    @Test
+    public void parsesTtmlInLyricsTag() {
+        Lyrics lyrics = LocalLyricsFetcher.parseCandidates(
+                LocalLyricsFetcher.extractLyricsCandidates(
+                        flacWithComments("LYRICS=" + TTML)));
+        assertNotNull(lyrics);
+        assertEquals("ttml", lyrics.formatType());
+    }
+
+    @Test
+    public void parsesTtmlInSingularLyricTag() {
+        Lyrics lyrics = LocalLyricsFetcher.parseCandidates(
+                LocalLyricsFetcher.extractLyricsCandidates(
+                        flacWithComments("LYRIC=" + TTML)));
+        assertNotNull(lyrics);
+        assertEquals("ttml", lyrics.formatType());
+    }
+
+    @Test
+    public void malformedTtmlLyricFallsBackToNextTag() {
+        Lyrics lyrics = LocalLyricsFetcher.parseCandidates(
+                LocalLyricsFetcher.extractLyricsCandidates(flacWithComments(
+                        "TTMLLYRIC=<tt><body><div>",
+                        "LYRICS=[00:01.00]fallback line")));
+        assertNotNull(lyrics);
+        assertEquals("lrc", lyrics.formatType());
+        assertEquals("fallback line", lyrics.lines().get(0).text());
+    }
+
+    @Test
+    public void plainTextTtmlLyricFallsBackToNextTag() {
+        Lyrics lyrics = LocalLyricsFetcher.parseCandidates(
+                LocalLyricsFetcher.extractLyricsCandidates(flacWithComments(
+                        "TTMLLYRIC=not xml",
+                        "LYRICS=[00:01.00]fallback line")));
+        assertNotNull(lyrics);
+        assertEquals("lrc", lyrics.formatType());
+        assertEquals("fallback line", lyrics.lines().get(0).text());
     }
 
     @Test
@@ -571,6 +703,16 @@ public class LocalLyricsFetcherStaticTest {
         byte[] data = box("data".getBytes(StandardCharsets.ISO_8859_1),
                 new byte[8], text.getBytes(StandardCharsets.UTF_8));
         return box(type, data);
+    }
+
+    private static byte[] m4aFreeformItem(String mean, String name, String text) {
+        byte[] meanAtom = box("mean".getBytes(StandardCharsets.ISO_8859_1),
+                new byte[4], mean.getBytes(StandardCharsets.UTF_8));
+        byte[] nameAtom = box("name".getBytes(StandardCharsets.ISO_8859_1),
+                new byte[4], name.getBytes(StandardCharsets.UTF_8));
+        byte[] data = box("data".getBytes(StandardCharsets.ISO_8859_1),
+                new byte[8], text.getBytes(StandardCharsets.UTF_8));
+        return box("----".getBytes(StandardCharsets.ISO_8859_1), meanAtom, nameAtom, data);
     }
 
     private static byte[] box(byte[] type, byte[]... payloads) {

@@ -26,6 +26,7 @@ import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
 
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 
 /**
@@ -63,15 +64,21 @@ class AboutWebViewDialog extends Dialog {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); // Remove default title bar.
 
-        // The window fills the screen, so its own background and the navigation bar are painted the
+        // The window fills the screen, so its own background and the system bars are painted the
         // same color the page is, rather than whatever the device theme happens to be.
         Window window = getWindow();
         if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(ThemeUtils.getDialogBackgroundColor()));
-            window.setNavigationBarColor(ThemeUtils.getDialogBackgroundColor());
+            final int backgroundColor = ThemeUtils.getAppBackgroundColor();
+            window.setBackgroundDrawable(new ColorDrawable(backgroundColor));
+            window.setStatusBarColor(backgroundColor);
+            window.setNavigationBarColor(backgroundColor);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 window.setNavigationBarContrastEnforced(true);
             }
+            // Dark system bar icons only on a light background.
+            window.getDecorView().setSystemUiVisibility(Utils.isDarkModeEnabled()
+                    ? 0
+                    : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
         }
 
         WebView webView = new WebView(getContext());
@@ -91,7 +98,7 @@ class AboutWebViewDialog extends Dialog {
             webView.getSettings().setJavaScriptEnabled(true);
         }
         // A WebView paints white until the page is parsed, which flashes as the dialog opens.
-        webView.setBackgroundColor(ThemeUtils.getDialogBackgroundColor());
+        webView.setBackgroundColor(ThemeUtils.getAppBackgroundColor());
         webView.setWebViewClient(createWebViewClient());
         webView.loadDataWithBaseURL(null, htmlContent, "text/html", "utf-8", null);
 

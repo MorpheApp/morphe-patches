@@ -142,12 +142,12 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_client_type_title">לקוח ברירת מחדל</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">כניסה ל-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR דורש התחברות נפרדת. הקש כאן כדי להמשיך</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">כרגע מחובר ל-Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\"Android VR\" דורש כניסה נפרדת. הקש כאן כדי להמשיך</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">כרגע מחובר ל-\"Android VR\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \'לקוח ברירת מחדל\' ל-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">התחברות ל-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"התחברות ל-Android VR יכולה לתקן בעיות השמעה עבור חלק מהמשתמשים
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \"לקוח ברירת מחדל\" ל-\"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">התחברות ל- \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"התחברות ל- 'Android VR' יכולה לתקן בעיות השמעה עבור חלק מהמשתמשים
 
 להתחברות, הקש על 'המשך' למטה"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">התנתק</string>
@@ -168,35 +168,35 @@ Second \"item\" text"</string>
 • הגדרות Morphe לא ייובאו או ייוצאו עם אימות Android VR
 • אם לא תשתמש באפליקציה זו במשך 6 חודשים, Google תסיר את האימות
 • יהיה עליך להתחבר שוב אם תשנה את סיסמת Google שלך או תבטל את רישום המכשיר בהגדרות Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">התחברות דרך דפדפן בנייד</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">כניסה ל-Mobile Web</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">אופציונלי: התחבר לאתר YouTube כדי להפעיל סרטונים עם החשבון שלך. הקש כאן כדי להמשיך</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">כרגע מחובר לדפדפן בנייד</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">כרגע מחובר ל- \'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \'לקוח ברירת מחדל\' ל-Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">התחבר ל-Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web משמיעה סרטונים ללא התחברות, או לאחר התחברות לאתר YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \'לקוח ברירת מחדל\' ל-\'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">התחבר ל-\'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' מפעיל סרטונים ללא התחברות, או לאחר התחברות לאתר YouTube
 
-• כאשר המשתמש מחובר, ניתן להשמיע סרטונים הדורשים חשבון, כגון סרטונים עם הגבלת גיל
-• דף ההתחברות של Google נפתח בתוך אפליקציה זו
-• ההתחברות משמשת רק כדי לקבל את הסרטונים שאתה משמיע
-• ההתחברות נשמרת במכשיר זה בלבד
+• לאחר התחברות, ניתן להפעיל סרטונים הדורשים חשבון, כגון סרטונים עם הגבלת גיל
+• דף ההתחברות של Google נפתח באפליקציה זו
+• ההתחברות משמשת רק כדי לקבל את הסרטונים שאתה מפעיל
+• ההתחברות נשמרת רק במכשיר זה
 
 כדי להתחבר, לחץ על המשך למטה"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ההתחברות נשמרה
 
-• הגדרות ה-Morphe שלך לא ייבאו/יצאי את ההתחברות ל-Mobile Web
-• אם Google יסגור את ההתחברות, סרטונים יופעלו ללא התחברות עד שתתחבר שוב
+• הגדרות ה-Morphe שלך לא יבצעו ייבוא/ייצוא של ההתחברות ל-‘Mobile Web’
+• אם Google יסיים את ההתחברות, סרטונים יופעלו ללא התחברות עד שתתחבר שוב
 • התנתקות תנתק גם את המכשיר הזה מאתר YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ההתחברות ל-Mobile Web פגה, נסה להתחבר ל-Mobile Web שוב</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">התנתקת מ-Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView אינו זמין. התקן או הפעל אותו כדי להתחבר</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ההתחברות ל-Mobile Web פגה, נסה להתחבר ל-‘Mobile Web’ שוב</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">התנתקת מ-‘Mobile Web’</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">‘Android System WebView’ אינו זמין. התקן או הפעל אותו כדי להתחבר</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 אינו זמין כרגע (תם הזמן של ה-API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">ההתחברות ל-Android VR פגה, נסה להתחבר ל-VR שוב</string>
+  <string name="morphe_oauth2_connection_failure_status_400">ההתחברות ל- \'Android VR\' פגה, נסה להתחבר ל-VR שוב</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 אינו זמין זמנית (מצב %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 אינו זמין כרגע</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">לא ניתן להתחבר ל-VR, אימות האתר לא אושר</string>
   <string name="morphe_oauth2_connection_failure_auth_error">לא ניתן להתחבר ל-VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">בוצעה יציאה מ-Android VR</string>
+  <string name="morphe_oauth2_toast_reset">בוצעה יציאה מ- \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">אסימון ההתחברות ל-VR אינו תקין, נסה להתחבר ל-VR שוב</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">בקרות מדיה של התראה</string>
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">אורך החיפוש חייב להיות בין 1 ל-%s שניות. ייעשה שימוש בברירת המחדל</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">השבת פרוטוקול QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">תעדוף איכות וידאו</string>
+  <string name="morphe_prioritize_video_quality_summary">מתעדף את איכות הווידאו הגבוהה ביותר הזמינה על פני יעילות המקודד</string>
+  <string name="morphe_prioritize_video_quality_dialog">אם הגדרה זו כבויה, ייתכן שסרטונים ישנים יותר לא יציגו אפשרויות לאיכות הווידאו</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">השבת אודיו DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -254,7 +258,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">שנה קישורי שיתוף ל-youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">מחליף את music.youtube.com ב-youtube.com בקישורים משותפים</string>
   <string name="morphe_replace_links_with_shortener_title">שנה קישורי שיתוף ל-youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">כופה על סרטונים להשתמש בפורמט הקיצור youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">מכריח סרטונים להשתמש בפורמט ה-URL המקוצר \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">אוטומטי</string>
@@ -266,15 +270,12 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">איכות סרטון ברירת מחדל ברשת סלולרית</string>
   <string name="morphe_remember_video_quality_toast_mobile">איכות סלולרית ברירת מחדל שונתה ל: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">איכות Wi-Fi ברירת מחדל שונתה ל: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">פתח את גיליון השיתוף של המערכת</string>
-  <string name="morphe_open_system_share_sheet_summary">פותח את גליון השיתוף של המערכת במקום את גליון השיתוף שבתוך האפליקציה בעת שיתוף תוכן</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">רישום Litho</string>
   <string name="morphe_debug_litho_entry_disabled">מושבת</string>
   <string name="morphe_debug_litho_entry_path">נתיב</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">נתיב ומסנן</string>
-  <string name="morphe_debug_litho_user_dialog_message">"רישום Litho מתעד את רכיבי הפריסה של האפליקציה, כולל טקסט שעל המסך עבור רכיבי ממשק משתמש מסוימים.
+  <string name="morphe_debug_litho_user_dialog_message">"מתעד את רכיבי הפריסה של האפליקציה, כולל טקסט שעל המסך עבור רכיבי ממשק משתמש מסוימים.
 
 זה יכול לעזור לזהות רכיבים בעת יצירת מסננים מותאמים אישית.
 
@@ -380,4 +381,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">לא נתקלו במגבלות קצב לקוח</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">מגבלת קצב לקוח נתקלה %s פעמים</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s מילישניות</string>
+  <string name="morphe_navigation_bar_screen_title">סרגל ניווט</string>
+  <string name="morphe_navigation_bar_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
+  <string name="morphe_toolbar_screen_title">סרגל כלים</string>
+  <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
 </resources>

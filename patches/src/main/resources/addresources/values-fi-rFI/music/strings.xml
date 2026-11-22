@@ -144,6 +144,8 @@ Vientikansio: %s"</string>
   <string name="morphe_export_download_failed">Latausta ei voitu viedä</string>
   <string name="morphe_export_download_all_flyout_title">Vie kaikki laitteelle</string>
   <string name="morphe_export_download_all_started">Viedään kaikkia latauksia</string>
+  <string name="morphe_export_download_all_title">Kaikki lataukset</string>
+  <string name="morphe_export_download_playlist_started">Viedään latauksia</string>
   <string name="morphe_export_download_all_running">Latauksia viedään jo parhaillaan</string>
   <string name="morphe_export_download_all_saved">Vietiin %1$s / %2$s latausta kohteeseen %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +170,15 @@ Vientikansio: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Piilota videomainokset</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Piilota äänen/videon vaihtokytkin</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Piilota latauspainike</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Piilottaa latauspainikkeen podcast-ohjelmassa</string>
   <string name="morphe_music_hide_explore_shelf_title">Piilota Tutustu-hylly</string>
   <string name="morphe_music_hide_filter_bar_title">Piilota suodatinpalkki</string>
   <string name="morphe_music_hide_grid_shelves_title">Piilota ruudukkohyllyt</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Piilota vaakasuuntaiset hyllyt</string>
+  <string name="morphe_music_hide_new_button_title">Piilota Uusi-painike</string>
+  <string name="morphe_music_hide_new_button_summary">Piilottaa Uusi-painikkeen Kirjasto-välilehdeltä</string>
   <string name="morphe_music_hide_list_shelves_title">Piilota luettelohyllyt</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Lyriikkapaneeli</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Piilota Jaa-painike</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Piilota Käännä-painike</string>
   <string name="morphe_music_hide_new_from_shelf_title">Piilota \"Uutta\"-hylly</string>
   <string name="morphe_music_hide_playlist_shelves_title">Piilota soittolistahyllyt</string>
@@ -199,6 +201,8 @@ Vientikansio: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Ristihäivytys</string>
   <string name="morphe_music_crossfade_screen_summary">Sekoita raidat sujuvasti toisiinsa</string>
   <string name="morphe_music_crossfade_enabled_title">Ota ristihäivytys käyttöön</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Käyttääksesi crossfade-toimintoa, vaihda \"Spoof video streams\" -asetuksen \"Default client\" arvoksi \"TV Simply\" tai \"visionOS\"</string>
   <string name="morphe_music_crossfade_curve_title">Himmennyskäyrä</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Tasainen voima</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Hienovarainen häivytys</string>
@@ -232,7 +236,9 @@ Vientikansio: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Istunnon crossfade-toiminto on tauolla</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade-toiminto jatkettu</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videon toimitila ei ole käytettävissä, kun crossfade on käytössä</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade on pois päältä SABR-toiston aikana</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade ei toimi \"visionOS\"-asetuksella. Vaihda \"Spoof video streams\" -asetuksen \"Default client\" arvoksi \"TV Simply\"</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade ei toimi tämän spoof-virta-asiakasohjelman kanssa</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade on pois päältä heiton aikana</string>
   <string name="morphe_music_crossfade_about_how_title">Miten se toimii</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade limittää yhden kappaleen lopun seuraavan kappaleen alkuun käyttäen kestoasi ja käyrääsi
@@ -249,9 +255,7 @@ Lukitusnäyttö tai ilmoitus voi näyttää hetkellisesti vanhentuneen tilan kes
 
 Crossfaden keskeyttäminen musiikkivideon katsomiseksi voi jättää jotkin videot mustiksi. Crossfaden keskeyttäminen ennen kappaleen valitsemista välttää tämän"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Ei tuettu</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Äänen heitto tai peilaus (Chromecast, näytön peilaus tai äänen peilaus)
-
-SABR-toisto (videovirtojen huijaus pois päältä)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Äänen striimaus tai peilaus (Chromecast, näytön tai äänen peilaus)</string>
   <string name="morphe_music_crossfade_about_credit_title">Lähde</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-ominaisuuden on kehittänyt VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,6 +265,20 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Tauota, kun mykistetty</string>
   <string name="morphe_music_pause_when_muted_summary">Tauottaa toiston, kun järjestelmän äänenvoimakkuus on mykistetty, ja jatkaa sitä, kun äänenvoimakkuutta nostetaan</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Cast-painikkeella voidaan suoratoistaa sisältöä myös Sonosiin ja muihin Wi-Fi-verkkosi UPnP-kaiuttimiin</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Yhdistä laitteeseen</string>
+  <string name="morphe_music_sonos_cast_searching">Etsitään Wi-Fi-verkkosi kaiuttimia…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Valitse Wi-Fi-verkkosi kaiutin</string>
+  <string name="morphe_music_sonos_cast_casting_to">Lähetetään kohteeseen %s</string>
+  <string name="morphe_music_sonos_cast_connected">Yhdistetty</string>
+  <string name="morphe_music_sonos_cast_disconnect">Katkaise yhteys</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Kaiuttimet Wi-Fi-verkossa</string>
+  <string name="morphe_music_sonos_cast_active">Aktiivinen</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast-, Nest- ja Google TV -laitteet</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Yhteyttä ei voitu muodostaa kohteeseen %s</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Toistonopeus</string>
   <string name="morphe_music_playback_speed_summary">Nopeus, jota käytetään kaikille kappaleille. 100 %:n kohdalla käytetään sovelluksen nopeutta, kuten podcastin toistonopeutta.</string>
@@ -271,9 +289,18 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Poista äänen vaimennus käytöstä</string>
   <string name="morphe_music_disable_audio_ducking_summary">Äänenvoimakkuutta ei alenneta, kun toinen sovellus toistaa lyhyen äänen, kuten ilmoituksen</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Jonon tykkäyssuodatin</string>
+  <string name="morphe_music_queue_like_filter_summary">Poistaa vähiten tykättyjä kappaleita mikseistä ja radiosta. Soittolistat, albumit ja jonoon lisäämäsi kappaleet eivät muutu. Tykkäysmäärät on otettu Return YouTube Dislike -lisäosasta</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Vähimmäistykkäykset</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Kappaleet, joilla on vähemmän tykkäyksiä, poistetaan jonosta</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Poista epätykkäysten uudelleenohjaus</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Estää kappaleen ohittamisen, kun epätykkäyspainiketta painetaan</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Poista kappaleen vaihto pyyhkäisemällä käytöstä</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Estää seuraavaan tai edelliseen kappaleeseen siirtymisen pyyhkäisemällä soittimessa vasemmalle tai oikealle</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Estää seuraavaan tai edelliseen kappaleeseen siirtymisen pyyhkäisemällä minisoittimessa vasemmalle tai oikealle</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B-silmukka</string>
   <string name="morphe_music_ab_loop_summary">Pidä haku-palkkia painettuna asettaaksesi silmukan alun, paina uudelleen asettaaksesi silmukan lopun ja paina vielä kerran tyhjentääksesi silmukan</string>
@@ -324,15 +351,6 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_playlist_tags_rename">Nimeä uudelleen</string>
   <string name="morphe_music_playlist_tags_delete">Poista</string>
   <string name="morphe_music_playlist_tags_hidden">Piilotettu</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Piilota Cast-painike</string>
-  <string name="morphe_music_hide_history_button_title">Piilota historia-painike</string>
-  <string name="morphe_music_hide_notification_button_title">Piilota ilmoituspainike</string>
-  <string name="morphe_music_hide_search_button_title">Piilota hakupainike</string>
-  <string name="morphe_music_hide_voice_search_button_title">Piilota Äänihaku-painike</string>
-  <string name="morphe_music_hide_sound_search_button_title">Piilota äänihakupainike</string>
-  <string name="morphe_music_hide_library_new_button_title">Piilota Uusi-painike</string>
-  <string name="morphe_music_hide_library_new_button_summary">Piilottaa Uusi-painikkeen Kirjasto-välilehdellä</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Toimintopainikkeet</string>
   <string name="morphe_music_action_buttons_screen_summary">Valitse, mitkä toimintopainikkeet näkyvät soittimen alla</string>
@@ -404,22 +422,20 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Pakota pystysuunta</string>
   <string name="morphe_music_force_portrait_orientation_summary">Pitää sovelluksen pystyasennossa, kun laitetta käännetään</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Muuta minisoittimen väriä</string>
+  <string name="morphe_music_change_miniplayer_color_title">Vaihda väri</string>
   <string name="morphe_music_change_miniplayer_color_summary">Minisoittimen väri vastaa kokoruudun soitinta</string>
   <string name="morphe_music_change_navigation_bar_color_title">Vaihda navigointipalkin väri</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Sovittaa navigointipalkin värin koko näytön soittimeen</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Näytä seuraava -painike minisoittimessa</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Näytä edellinen painike minisoittimessa</string>
+  <string name="morphe_music_miniplayer_next_button_title">Näytä Seuraava-painike</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Näytä Edellinen-painike</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Ota pakotettu minisoitin käyttöön</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Estää soittimen automaattisen laajenemisen kokoruutuun, kun uusi kappale alkaa</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Ota pyyhkäisyllä sulkeminen käyttöön pienoissoittimessa</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Ota pyyhkäisyllä sulkeminen käyttöön</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Mahdollistaa pienoissoittimen sulkemisen pyyhkäisemällä sitä alaspäin</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Navigointipalkki</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Valitse mitkä painikkeet näkyvät alavalikossa</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Piilota Kotipainike</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -452,7 +468,7 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Piilottaa pyöristetyn korostuksen lasisen navigointipalkin valitun painikkeen takaa</string>
   <string name="morphe_music_miniplayer_screen_title">Minisoitin</string>
   <string name="morphe_music_miniplayer_screen_summary">Muuta minisoittimen tyyliä, painikkeita ja eleitä</string>
-  <string name="morphe_music_miniplayer_glass_title">Ota lasinen minisoitin käyttöön</string>
+  <string name="morphe_music_miniplayer_glass_title">Ota lasiefekti käyttöön</string>
   <string name="morphe_music_miniplayer_glass_summary">Näyttää kelluvan minisoittimen pyöristettynä, läpinäkyvänä lasikorttina</string>
   <string name="morphe_music_miniplayer_glass_style_title">Lasisen minisoittimen tyyli</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Säädä lasisen minisoittimen kulmien pyöristystä, kansikuvan sisäreunusta, reunan kirkkautta ja läpinäkyvyyttä esikatselun avulla</string>
@@ -460,11 +476,8 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Kansikuvan sisäreunustus</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Reunan kirkkaus</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Peittävyys</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Lasin sumentaminen</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Kuinka paljon lasisen minisoittimen takana oleva sivu on sumentunut (Android 14 ja uudemmat). Arvolla 0 sivu näkyy terävänä, ja ennen Android 14 -versiota sivu on peitetty</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Vaalea lasi</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Sävyttää lasisen minisoittimen valkoiseksi tumman sijasta, jolloin lasista tulee vaaleampi ja kirkkaampi</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Kansikuvan sävy</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Sävyttää lasisen minisoittimen soittavan kappaleen kansikuvan mukaan</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Pyörivä kansikuva</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Muuttaa lasisen minisoittimen kansikuvan pyöreäksi ja pyörittää sitä kuin levyä kappaleen aikana</string>
@@ -475,6 +488,15 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Näytteet</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Tutustu</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Kirjasto</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Piilota Aktiviteetti-painike</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Piilota \"Kysy Musiikilta\" -painike</string>
+  <string name="morphe_music_hide_cast_button_title">Piilota Cast-painike</string>
+  <string name="morphe_music_hide_history_button_title">Piilota historia-painike</string>
+  <string name="morphe_music_hide_search_button_title">Piilota hakupainike</string>
+  <string name="morphe_music_hide_voice_search_button_title">Piilota \"Äänihaku\"-painike</string>
+  <string name="morphe_music_hide_sound_search_button_title">Piilota \"Äänihaku\"-painike</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Kirjaudu ulos. Napauta määrittääksesi</string>
   <string name="morphe_music_scrobbling_log_out">Kirjaudu ulos</string>
@@ -578,6 +600,9 @@ Varmistaaksesi, että scrobbling synkronoidaan taustatoiston aikana, varmista, e
   <string name="morphe_music_soundproof_about_summary">"Artistitiedot tulevat SoundProof-Dumps-palvelusta (github.com/NuclearBlox/SoundProof-Dumps), josta tiedot ladataan kerran päivässä. Ohittaminen ei lähetä tietoja siitä, mitä kuuntelet. SoundProof-taulukon avaaminen lähettää nykyisen artistin nimen SoundProof-palvelimelle tuoreiden äänien näyttämiseksi ja äänestämistä varten. Palvelin tunnistaa äänestäjät IP-osoitteen perusteella, joten äänesi voi näkyä eri tavalla toisessa verkossa.
 
 Tietokanta on lisensoitu ODC Open Database License (ODbL) -lisenssillä. xoundbyten Soul Over AI -merkinnät on lisensoitu CC BY 4.0 -lisenssillä. Ei liity SoundProofiin tai Soul Over AI:hin, eikä niillä ole tämän tukea."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Apple Musicin animoitu kansikuva</string>
+  <string name="morphe_music_apple_music_artwork_summary">Näyttää Apple Musicin animoidun albuminkansikuvan soittimessa, jos albumilla on sellainen. Jokaisen kappaleen nimi, artisti ja albumi lähetetään Apple Musicille</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Sanoituksia ei ole saatavilla tämän laitetyypin tiedostolle.</string>
   <string name="morphe_music_lyrics_enabled_title">Käytä kolmannen osapuolen lyriikoita</string>
@@ -717,8 +742,14 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_written_by">Kirjoittanut: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Korosta synkronoidut sanat tai tavut</string>
   <string name="morphe_music_lyrics_word_sync_summary">Priorisoi sana sanalta -lyriikat, kun ne ovat saatavilla. Kun lyriikoissa on sanan ajoitus, korostaa jokaisen sanan tai tavun musiikin tahdissa</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Animoi synkronoidut sanat sulavasti</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Korostaa jokaisen sanan pehmeällä pyyhkäisyllä, hehkulla ja pienellä kohotuksella sen tullessa lauletuksi. Kytke pois päältä säästääksesi akkua tai saadaksesi terävän täytön hitaammilla laitteilla</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Käytä joustavaa vieritystä</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Vierittää lyrics-tekstejä joustavalla fysiikalla ja siirtää jokaista riviä hieman edellisen jälkeen. Kytke pois päältä säästääksesi akkua hitaammilla laitteilla</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Rento vieritys</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Hidastaa sanoitusten vieritysanimaatiota ja pitää ei-aktiiviset rivit täysikokoisina</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Sumeuta ei-aktiiviset rivit</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Sumeuttaa pehmeästi jokaisen rivin, jota ei parhaillaan lauleta, ja sumennus voimistuu etäisyyden kasvaessa (Android 12 ja uudemmat). Ennen Android 12 -versiota ei-aktiiviset rivit pysyvät terävinä</string>
   <string name="morphe_music_lyrics_gap_dots_title">Näytä instrumentaalivälitunnisteet</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Näyttää kolme pistettä rivien välissä pitkän instrumentaalivälin aikana, ja pisteet täyttyvät välin keston edetessä</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Himmennä kaukaiset rivit enemmän</string>
@@ -841,6 +872,8 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Siirtää käännöksen sanoitusten yläpuolelle; lukutapa ja romanisointi pysyvät alapuolella</string>
   <string name="morphe_music_lyrics_force_center_title">Aseta sanoitukset aina keskelle</string>
   <string name="morphe_music_lyrics_force_center_summary">ON asettaa jokaisen rivin keskelle ja sivuuttaa alkuperäisen tasauksen, mukaan lukien dueton puolet; OFF pitää sanoituksen pyytämän tasauksen</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Duetin vastakkainen tasaus</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Sijoittaa toisen laulajan vastakkaiselle reunalle duettikappaleissa. Kytke pois päältä, jotta molemmat laulajat pysyvät samalla puolella</string>
   <string name="morphe_music_lyrics_providers_keep_one">Vähintään yhden providenin tulee olla aktiivisena</string>
   <string name="morphe_music_lyrics_translation_provider_title">Käännös</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisointi tai transkriptio</string>

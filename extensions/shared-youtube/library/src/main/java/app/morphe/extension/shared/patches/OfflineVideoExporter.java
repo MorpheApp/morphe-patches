@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/4211
+ * https://github.com/MorpheApp/morphe-patches/pull/5043
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -24,6 +25,8 @@ import android.content.IntentFilter;
 import android.content.UriPermission;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Icon;
 import android.media.MediaCodec;
 import android.media.MediaDataSource;
@@ -42,6 +45,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -50,14 +54,17 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.function.Supplier;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
@@ -66,6 +73,11 @@ import javax.crypto.spec.SecretKeySpec;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.ThumbnailEntry;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.ThumbnailList;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineMusicMetadata;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflinePlaylistData;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineVideoData;
 import app.morphe.extension.shared.innertube.SavedVideo.SavedPlayerResponse;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
@@ -90,6 +102,14 @@ public final class OfflineVideoExporter {
     private static final String STREAMS_FOLDER = "streams";
     private static final String CACHE_INDEX_FILE = "cached_content_index.exi";
     private static final String SPAN_FILE_SUFFIX = ".v3.exo";
+    /**
+     * Playlist ids of albums start with this.
+     */
+    private static final String ALBUM_PLAYLIST_ID_PREFIX = "OLAK5uy_";
+    private static final String IMAGES_FOLDER = "data" + File.separator + "images";
+    private static final String IMAGE_JPEG = "image/jpeg";
+    private static final String IMAGE_PNG = "image/png";
+    private static final int ARTWORK_JPEG_QUALITY = 90;
 
     private static final int CACHE_INDEX_VERSION = 2;
     private static final int CACHE_INDEX_FLAG_ENCRYPTED = 1;
@@ -128,6 +148,10 @@ public final class OfflineVideoExporter {
     private static final long NOTIFICATION_INTERVAL_MILLISECONDS = 1000;
     private static final int PROGRESS_MAX = 100;
     private static final String CANCEL_ACTION_PREFIX = "app.morphe.extension.shared.EXPORT_CANCEL.";
+    /**
+     * Notification of an export of several videos, such as an album.
+     */
+    private static final int EXPORT_LIST_NOTIFICATION_ID = CANCEL_ACTION_PREFIX.hashCode();
 
     /**
      * Same as MediaFormat.MIMETYPE_VIDEO_AV1, which is only available with Android 10 and newer.
@@ -138,6 +162,8 @@ public final class OfflineVideoExporter {
      * MediaMuxer can write AV1 to MP4 files starting with Android 14.
      */
     private static final int AV1_MUXER_MIN_SDK = 34;
+
+    private static final String OGG_MIME_TYPE = "audio/ogg";
 
     private static final Set<String> WEBM_MIME_TYPES = Set.of(
             MediaFormat.MIMETYPE_VIDEO_VP8,
@@ -156,7 +182,20 @@ public final class OfflineVideoExporter {
     private record SavedStream(int itag, long length) {
     }
 
-    private record SavedVideo(String title, List<SavedStream> streams) {
+    /**
+     * @param database The database of the account that saved the video.
+     */
+    private record SavedVideo(String title, List<SavedStream> streams, File database) {
+        /**
+         * @return The size of all streams of the video.
+         */
+        long length() {
+            long length = 0;
+            for (SavedStream stream : streams) {
+                length += stream.length();
+            }
+            return length;
+        }
     }
 
     /**
@@ -166,15 +205,28 @@ public final class OfflineVideoExporter {
     }
 
     /**
+     * @param folder The subfolder of the export folder the video is exported to, such as
+     *               the folder of its album, or null to export it to the export folder itself.
+     */
+    private record ExportItem(String videoId, @Nullable String folder) {
+    }
+
+    /**
+     * @param title The title of the notification of the export, such as the name of the album.
+     */
+    private record ExportList(String title, List<ExportItem> items) {
+    }
+
+    /**
      * Thrown to stop an export that is canceled with the notification.
      */
     private static final class ExportCanceledException extends IOException {
     }
 
     /**
-     * If all saved videos are being exported. Set on the main thread, cleared when the exports end.
+     * If a list of saved videos is being exported. Set on the main thread, cleared when the exports end.
      */
-    private static volatile boolean exportingAll;
+    private static volatile boolean exportingList;
 
     private OfflineVideoExporter() {
     }
@@ -186,15 +238,36 @@ public final class OfflineVideoExporter {
         return getSavedVideo(videoId) != null;
     }
 
+    /**
+     * Exports a saved video. Its notification shows the progress and the result of the export.
+     */
     public static void exportVideo(String videoId) {
         Utils.showToastShort(str("morphe_export_download_started"));
 
         Utils.runOnBackgroundThread(() -> {
-            ExportStatus status = exportSavedVideo(videoId);
-            if (status.outcome() == ExportOutcome.CANCELED) {
-                Utils.showToastShort(status.text());
-            } else {
-                Utils.showToastLong(status.text());
+            ExportNotification notification = null;
+            try {
+                SavedVideo video = getSavedVideo(videoId);
+                if (video == null) {
+                    throw new IllegalStateException("Video is not saved: " + videoId);
+                }
+
+                notification = new ExportNotification(videoId.hashCode(), video.title(), video.length());
+                ExportResult result = export(videoId, video, null, notification);
+                String text = str("morphe_export_download_saved", result.location());
+                notification.showResult(text, result.uri(), result.mimeType());
+                Utils.showToastLong(text);
+            } catch (ExportCanceledException ex) {
+                Logger.printDebug(() -> "Export canceled: " + videoId);
+                notification.dismiss();
+                Utils.showToastShort(str("morphe_export_download_canceled"));
+            } catch (Exception ex) {
+                Logger.printException(() -> "exportVideo failure: " + videoId, ex);
+                String text = str("morphe_export_download_failed");
+                if (notification != null) {
+                    notification.showResult(text, null, null);
+                }
+                Utils.showToastLong(text);
             }
         });
     }
@@ -225,84 +298,192 @@ public final class OfflineVideoExporter {
     }
 
     /**
-     * Exports all saved videos, one after another. Canceling one of the exports stops the others too.
+     * @return The videos of the saved playlist or album that are fully saved and can be exported,
+     *         in the order of the playlist.
+     */
+    public static List<String> getExportablePlaylistVideoIds(String playlistId) {
+        Set<String> videoIds = new LinkedHashSet<>();
+        for (File database : getDatabases()) {
+            try (SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                    database.getPath(), null, SQLiteDatabase.OPEN_READONLY)) {
+                videoIds.addAll(getExportablePlaylistVideoIds(db, playlistId));
+            }
+        }
+        return new ArrayList<>(videoIds);
+    }
+
+    private static List<String> getExportablePlaylistVideoIds(SQLiteDatabase db, String playlistId) {
+        List<String> videoIds = new ArrayList<>();
+        try (Cursor cursor = db.query("playlist_video", new String[]{"video_id"},
+                "playlist_id = ?", new String[]{playlistId},
+                null, null, "index_in_playlist")) {
+            while (cursor.moveToNext()) {
+                String videoId = cursor.getString(0);
+                if (videoId != null && getSavedStreams(db, videoId) != null) {
+                    videoIds.add(videoId);
+                }
+            }
+        }
+        return videoIds;
+    }
+
+    /**
+     * @return The name of the folder the videos of a saved playlist or album are exported to,
+     *         such as "Artist - Album" for an album.
+     */
+    private static String getPlaylistFolder(SQLiteDatabase db, String playlistId) {
+        try (Cursor cursor = db.query("playlistsV13", new String[]{"offline_playlist_data_proto"},
+                "id = ?", new String[]{playlistId}, null, null, null)) {
+            if (cursor.moveToFirst() && !cursor.isNull(0)) {
+                OfflinePlaylistData data = OfflinePlaylistData.parseFrom(cursor.getBlob(0));
+                String title = data.getTitle();
+                // The owner of an album is its artist. The owner of other playlists is the user
+                // or a channel, which is not added.
+                String artist = data.getOwner().getChannel().getName();
+                if (playlistId.startsWith(ALBUM_PLAYLIST_ID_PREFIX) && !artist.isEmpty() && !title.isEmpty()) {
+                    title = artist + " - " + title;
+                }
+                String folder = getFileName(title);
+                if (!folder.isEmpty()) {
+                    return folder;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not read the title of playlist: " + playlistId, ex);
+        }
+        return playlistId;
+    }
+
+    /**
+     * Exports all saved videos, one after another, in the folders of their saved playlists
+     * and albums like the downloads of the app. Videos saved by themselves are exported
+     * to the export folder. Canceling one of the exports stops the others too.
      */
     public static void exportAllVideos() {
-        if (exportingAll) {
-            Utils.showToastShort(str("morphe_export_download_all_running"));
-            return;
-        }
-        exportingAll = true;
-        Utils.showToastShort(str("morphe_export_download_all_started"));
-
-        Utils.runOnBackgroundThread(() -> {
-            try {
-                List<String> videoIds = getExportableVideoIds(Integer.MAX_VALUE);
-                int exported = 0;
-                for (String videoId : videoIds) {
-                    ExportStatus status = exportSavedVideo(videoId);
-                    if (status.outcome() == ExportOutcome.CANCELED) {
-                        Utils.showToastShort(status.text());
-                        return;
-                    }
-                    if (status.outcome() == ExportOutcome.EXPORTED) {
-                        exported++;
+        exportVideos(str("morphe_export_download_all_started"), () -> {
+            Set<ExportItem> items = new LinkedHashSet<>();
+            Set<String> playlistVideoIds = new HashSet<>();
+            for (File database : getDatabases()) {
+                try (SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                        database.getPath(), null, SQLiteDatabase.OPEN_READONLY);
+                     Cursor cursor = db.query("playlistsV13", new String[]{"id"},
+                             null, null, null, null, "saved_timestamp")) {
+                    while (cursor.moveToNext()) {
+                        String playlistId = cursor.getString(0);
+                        String folder = getPlaylistFolder(db, playlistId);
+                        for (String videoId : getExportablePlaylistVideoIds(db, playlistId)) {
+                            items.add(new ExportItem(videoId, folder));
+                            playlistVideoIds.add(videoId);
+                        }
                     }
                 }
-
-                final int exportedCount = exported;
-                Logger.printDebug(() -> "Exported " + exportedCount + " of " + videoIds.size() + " videos");
-                Utils.showToastLong(str("morphe_export_download_all_saved",
-                        exportedCount, videoIds.size(), getFolderName()));
-            } catch (Exception ex) {
-                Logger.printException(() -> "exportAllVideos failure", ex);
-                Utils.showToastLong(str("morphe_export_download_failed"));
-            } finally {
-                exportingAll = false;
             }
+
+            for (String videoId : getExportableVideoIds(Integer.MAX_VALUE)) {
+                if (!playlistVideoIds.contains(videoId)) {
+                    items.add(new ExportItem(videoId, null));
+                }
+            }
+            return new ExportList(str("morphe_export_download_all_title"), new ArrayList<>(items));
         });
     }
 
-    private enum ExportOutcome {
-        EXPORTED,
-        CANCELED,
-        FAILED
+    /**
+     * Exports the saved videos of a playlist or album to a folder named after it, one after another.
+     * Canceling one of the exports stops the others too.
+     */
+    public static void exportPlaylistVideos(String playlistId) {
+        exportVideos(str("morphe_export_download_playlist_started"), () -> {
+            for (File database : getDatabases()) {
+                try (SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                        database.getPath(), null, SQLiteDatabase.OPEN_READONLY)) {
+                    List<String> videoIds = getExportablePlaylistVideoIds(db, playlistId);
+                    if (!videoIds.isEmpty()) {
+                        String folder = getPlaylistFolder(db, playlistId);
+                        List<ExportItem> items = new ArrayList<>();
+                        for (String videoId : videoIds) {
+                            items.add(new ExportItem(videoId, folder));
+                        }
+                        return new ExportList(folder, items);
+                    }
+                }
+            }
+            return new ExportList(playlistId, List.of());
+        });
     }
 
     /**
-     * @param text The text shown to the user when the export ends.
+     * Exports the videos one after another. One notification shows the progress of all of them,
+     * and canceling it stops the export.
+     *
+     * @param list Called on a background thread, returns the videos to export.
      */
-    private record ExportStatus(ExportOutcome outcome, String text) {
-    }
-
-    /**
-     * Called on a background thread. The notification of the export shows its progress and its result.
-     */
-    private static ExportStatus exportSavedVideo(String videoId) {
-        ExportNotification notification = null;
-        try {
-            SavedVideo video = getSavedVideo(videoId);
-            if (video == null) {
-                throw new IllegalStateException("Video is not saved: " + videoId);
-            }
-
-            notification = new ExportNotification(videoId, video.title());
-            ExportResult result = export(videoId, video, notification);
-            String text = str("morphe_export_download_saved", result.location());
-            notification.showResult(text, result.uri(), result.mimeType());
-            return new ExportStatus(ExportOutcome.EXPORTED, text);
-        } catch (ExportCanceledException ex) {
-            Logger.printDebug(() -> "Export canceled: " + videoId);
-            notification.dismiss();
-            return new ExportStatus(ExportOutcome.CANCELED, str("morphe_export_download_canceled"));
-        } catch (Exception ex) {
-            Logger.printException(() -> "exportSavedVideo failure: " + videoId, ex);
-            String text = str("morphe_export_download_failed");
-            if (notification != null) {
-                notification.showResult(text, null, null);
-            }
-            return new ExportStatus(ExportOutcome.FAILED, text);
+    private static void exportVideos(String startedText, Supplier<ExportList> list) {
+        if (exportingList) {
+            Utils.showToastShort(str("morphe_export_download_all_running"));
+            return;
         }
+        exportingList = true;
+        Utils.showToastShort(startedText);
+
+        Utils.runOnBackgroundThread(() -> {
+            ExportNotification notification = null;
+            try {
+                ExportList exportList = list.get();
+                List<ExportItem> items = exportList.items();
+                // The videos are read first, so the progress is of the size of all videos.
+                List<SavedVideo> videos = new ArrayList<>();
+                long length = 0;
+                for (ExportItem item : items) {
+                    SavedVideo video = getSavedVideo(item.videoId());
+                    videos.add(video);
+                    if (video != null) {
+                        length += video.length();
+                    }
+                }
+
+                notification = new ExportNotification(EXPORT_LIST_NOTIFICATION_ID, exportList.title(), length);
+                int exported = 0;
+                for (int i = 0, size = items.size(); i < size; i++) {
+                    ExportItem item = items.get(i);
+                    SavedVideo video = videos.get(i);
+                    if (video == null) {
+                        Logger.printInfo(() -> "Video is not saved anymore: " + item.videoId());
+                        continue;
+                    }
+
+                    notification.setVideo(video.title());
+                    try {
+                        export(item.videoId(), video, item.folder(), notification);
+                        exported++;
+                    } catch (ExportCanceledException ex) {
+                        throw ex;
+                    } catch (Exception ex) {
+                        Logger.printException(() -> "Could not export: " + item.videoId(), ex);
+                    }
+                    notification.finishVideo(video.length());
+                }
+
+                final int exportedCount = exported;
+                Logger.printDebug(() -> "Exported " + exportedCount + " of " + items.size() + " videos");
+                String text = str("morphe_export_download_all_saved", exportedCount, items.size(), getFolderName());
+                notification.showResult(text, null, null);
+                Utils.showToastLong(text);
+            } catch (ExportCanceledException ex) {
+                Logger.printDebug(() -> "Export canceled");
+                notification.dismiss();
+                Utils.showToastShort(str("morphe_export_download_canceled"));
+            } catch (Exception ex) {
+                Logger.printException(() -> "exportVideos failure", ex);
+                String text = str("morphe_export_download_failed");
+                if (notification != null) {
+                    notification.showResult(text, null, null);
+                }
+                Utils.showToastLong(text);
+            } finally {
+                exportingList = false;
+            }
+        });
     }
 
     /**
@@ -414,7 +595,7 @@ public final class OfflineVideoExporter {
                     database.getPath(), null, SQLiteDatabase.OPEN_READONLY)) {
                 List<SavedStream> streams = getSavedStreams(db, videoId);
                 if (streams != null) {
-                    return new SavedVideo(getTitle(db, videoId), streams);
+                    return new SavedVideo(getTitle(db, videoId), streams, database);
                 }
             }
         }
@@ -490,11 +671,118 @@ public final class OfflineVideoExporter {
         return videoId;
     }
 
+    /**
+     * @param title The title of the video, used if the song has no title of its own.
+     * @return The title, artist, album and cover of the song, which are written to exported audio files.
+     */
+    private static AudioTagWriter.Tags getTags(File database, String videoId, String title) {
+        try (SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                database.getPath(), null, SQLiteDatabase.OPEN_READONLY);
+             Cursor cursor = db.query(
+                "videosV2",
+                new String[]{"offline_video_data_proto"},
+                "id = ?",
+                new String[]{videoId},
+                null, null, null)) {
+            if (cursor.moveToFirst() && !cursor.isNull(0)) {
+                OfflineVideoData data = OfflineVideoData.parseFrom(cursor.getBlob(0));
+                OfflineMusicMetadata music = data.getMusicVideoData().getMusicMetadata();
+                return new AudioTagWriter.Tags(
+                        music.getTitle().isEmpty() ? title : music.getTitle(),
+                        music.getArtist(),
+                        music.getAlbum(),
+                        getArtwork(database, data.getThumbnail())
+                );
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not read the tags of: " + videoId, ex);
+        }
+
+        return new AudioTagWriter.Tags(title, null, null, null);
+    }
+
+    /**
+     * The app saves the thumbnails of saved videos in the folder of the account,
+     * named with the hash code of their url.
+     *
+     * @param database The database of the account.
+     * @return The largest saved thumbnail, or null if none is saved.
+     */
+    @Nullable
+    private static AudioTagWriter.Artwork getArtwork(File database, ThumbnailList thumbnails) throws IOException {
+        String name = database.getName();
+        String account = name.substring(DATABASE_PREFIX.length(), name.length() - DATABASE_SUFFIX.length());
+
+        File image = null;
+        int imageWidth = 0;
+        for (File folder : getOfflineFolders()) {
+            File images = new File(folder, account + File.separator + IMAGES_FOLDER);
+            for (ThumbnailEntry thumbnail : thumbnails.getThumbnailsList()) {
+                if (thumbnail.getWidth() <= imageWidth) {
+                    continue;
+                }
+                File file = findImage(images, thumbnail.getUrl());
+                if (file != null) {
+                    image = file;
+                    imageWidth = thumbnail.getWidth();
+                }
+            }
+        }
+        if (image == null) {
+            return null;
+        }
+
+        byte[] data = Files.readAllBytes(image.toPath());
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(data, 0, data.length, options);
+        if (options.outWidth <= 0 || options.outHeight <= 0) {
+            File file = image;
+            Logger.printInfo(() -> "Thumbnail is not an image: " + file);
+            return null;
+        }
+        if (IMAGE_JPEG.equals(options.outMimeType) || IMAGE_PNG.equals(options.outMimeType)) {
+            return new AudioTagWriter.Artwork(data, options.outMimeType, options.outWidth, options.outHeight);
+        }
+
+        // Audio files can only hold JPEG and PNG covers.
+        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+        if (bitmap == null) {
+            File file = image;
+            Logger.printInfo(() -> "Could not decode thumbnail: " + file);
+            return null;
+        }
+        ByteArrayOutputStream jpeg = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, ARTWORK_JPEG_QUALITY, jpeg);
+        AudioTagWriter.Artwork artwork = new AudioTagWriter.Artwork(
+                jpeg.toByteArray(), IMAGE_JPEG, bitmap.getWidth(), bitmap.getHeight());
+        bitmap.recycle();
+        return artwork;
+    }
+
+    /**
+     * Thumbnails with a file type in their url keep the end of the url after the hash code,
+     * such as "1274788442.jpg?sqp=...".
+     */
+    @Nullable
+    private static File findImage(File folder, String url) {
+        String hash = String.valueOf(url.hashCode());
+        File file = new File(folder, hash);
+        if (file.isFile()) {
+            return file;
+        }
+        File[] files = folder.listFiles((dir, fileName) -> fileName.startsWith(hash + "."));
+        return files != null && files.length > 0 ? files[0] : null;
+    }
+
     // endregion
 
     // region Export
 
-    private static ExportResult export(String videoId, SavedVideo video,
+    /**
+     * @param folder The subfolder of the export folder to save the files in, or null if none.
+     */
+    private static ExportResult export(String videoId, SavedVideo video, @Nullable String folder,
                                        ExportNotification notification) throws Exception {
         SecretKeySpec key = getKey();
         List<StreamSource> sources = new ArrayList<>();
@@ -523,7 +811,7 @@ public final class OfflineVideoExporter {
             if (muxerFormat != null) {
                 final boolean webm = muxerFormat == MediaMuxer.OutputFormat.MUXER_OUTPUT_WEBM;
                 String mimeType = webm ? "video/webm" : "video/mp4";
-                OutputFile output = OutputFile.create(fileName, webm ? ".webm" : ".mp4", mimeType);
+                OutputFile output = OutputFile.create(folder, fileName, webm ? ".webm" : ".mp4", mimeType);
                 try {
                     mux(extractors, formats, output.descriptor, muxerFormat, notification);
                     return new ExportResult(output.finish(), output.uri, mimeType);
@@ -540,17 +828,35 @@ public final class OfflineVideoExporter {
             // If a stream can't be saved, the other streams are deleted too, so no partial export is left.
             List<OutputFile> finished = new ArrayList<>();
             for (int i = 0, size = sources.size(); i < size; i++) {
-                String mimeType = getMimeType(formats.get(i));
+                String codec = formats.get(i).getString(MediaFormat.KEY_MIME);
+                String mimeType = getMimeType(codec);
                 final boolean audio = mimeType.startsWith("audio/");
-                final boolean webm = WEBM_MIME_TYPES.contains(formats.get(i).getString(MediaFormat.KEY_MIME));
-                String extension = webm ? ".webm" : (audio ? ".m4a" : ".mp4");
+                // Opus is written to an Ogg file, see AudioTagWriter.
+                final boolean opus = MediaFormat.MIMETYPE_AUDIO_OPUS.equals(codec);
+                final boolean aac = MediaFormat.MIMETYPE_AUDIO_AAC.equals(codec);
+                final boolean webm = WEBM_MIME_TYPES.contains(codec);
+                String extension = opus ? ".opus" : (webm ? ".webm" : (audio ? ".m4a" : ".mp4"));
                 OutputFile output = OutputFile.create(
+                        folder,
                         fileName + (audio && multipleStreams ? " (audio)" : ""),
                         extension,
                         mimeType
                 );
                 try {
-                    copy(sources.get(i), output.descriptor, notification);
+                    // Audio files get the title, artist, album and cover of the song.
+                    if (opus || aac) {
+                        AudioTagWriter.Tags tags = getTags(video.database(), videoId, video.title());
+                        try (OutputStream stream = new FileOutputStream(output.descriptor.getFileDescriptor())) {
+                            if (opus) {
+                                AudioTagWriter.writeOggOpus(extractors.get(i), formats.get(i), videoId.hashCode(),
+                                        stream, tags, notification::showProgress);
+                            } else {
+                                AudioTagWriter.writeMp4(sources.get(i), stream, tags, notification::showProgress);
+                            }
+                        }
+                    } else {
+                        copy(sources.get(i), output.descriptor, notification);
+                    }
                     String location = output.finish();
                     finished.add(output);
                     // The notification opens the video file.
@@ -615,8 +921,14 @@ public final class OfflineVideoExporter {
                 : MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4;
     }
 
-    private static String getMimeType(MediaFormat format) {
-        String mime = format.getString(MediaFormat.KEY_MIME);
+    /**
+     * @param mime The codec of a stream.
+     * @return The type of the file the stream is exported to.
+     */
+    private static String getMimeType(@Nullable String mime) {
+        if (MediaFormat.MIMETYPE_AUDIO_OPUS.equals(mime)) {
+            return OGG_MIME_TYPE;
+        }
         final boolean audio = mime != null && mime.startsWith("audio/");
         if (WEBM_MIME_TYPES.contains(mime)) {
             return audio ? "audio/webm" : "video/webm";
@@ -704,27 +1016,32 @@ public final class OfflineVideoExporter {
 
         /**
          * Files are never replaced. If the name is taken, a number is added to it.
+         *
+         * @param subfolder The folder in the export folder to create the file in, or null if none.
          */
-        static OutputFile create(String name, String extension, String mimeType) throws IOException {
+        static OutputFile create(@Nullable String subfolder, String name, String extension, String mimeType)
+                throws IOException {
             ContentResolver resolver = Utils.getContext().getContentResolver();
+            String subfolderPath = subfolder == null ? "" : File.separator + subfolder;
 
             Uri pickedFolder = getPickedFolder(resolver);
             if (pickedFolder != null) {
+                Uri parent = subfolder == null ? pickedFolder : getDocumentFolder(resolver, pickedFolder, subfolder);
                 // The documents provider adds a number to a name that is taken.
-                Uri uri = DocumentsContract.createDocument(resolver, pickedFolder, mimeType, name + extension);
+                Uri uri = DocumentsContract.createDocument(resolver, parent, mimeType, name + extension);
                 if (uri == null) {
-                    throw new IOException("Could not create file: " + name + extension + " in: " + pickedFolder);
+                    throw new IOException("Could not create file: " + name + extension + " in: " + parent);
                 }
                 ParcelFileDescriptor descriptor = resolver.openFileDescriptor(uri, "rw");
                 if (descriptor == null) {
                     DocumentsContract.deleteDocument(resolver, uri);
                     throw new IOException("No file descriptor for: " + uri);
                 }
-                return new OutputFile(uri, true, null, descriptor, getFolderName());
+                return new OutputFile(uri, true, null, descriptor, getFolderName() + subfolderPath);
             }
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-                File folder = getLegacyFolder();
+                File folder = new File(getLegacyFolder().getPath() + subfolderPath);
                 if (!folder.exists() && !folder.mkdirs()) {
                     throw new IOException("Could not create folder: " + folder);
                 }
@@ -739,9 +1056,10 @@ public final class OfflineVideoExporter {
                 throw new IOException("Could not create file: " + name + extension);
             }
 
+            String folder = DEFAULT_FOLDER + subfolderPath;
             ContentValues values = new ContentValues();
             values.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
-            values.put(MediaStore.MediaColumns.RELATIVE_PATH, DEFAULT_FOLDER);
+            values.put(MediaStore.MediaColumns.RELATIVE_PATH, folder);
             values.put(MediaStore.MediaColumns.IS_PENDING, 1);
 
             // The media store renames a file whose name is taken, but Android 10 adds the number
@@ -750,7 +1068,7 @@ public final class OfflineVideoExporter {
             Uri uri = null;
             for (int attempt = 0; uri == null && attempt < MAX_FILE_NAME_ATTEMPTS; attempt++) {
                 String fileName = getNumberedName(name, extension, attempt);
-                if (isMediaStoreNameTaken(resolver, DEFAULT_FOLDER, fileName)) {
+                if (isMediaStoreNameTaken(resolver, folder, fileName)) {
                     continue;
                 }
                 values.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
@@ -764,7 +1082,35 @@ public final class OfflineVideoExporter {
                 resolver.delete(uri, null, null);
                 throw new IOException("No file descriptor for: " + uri);
             }
-            return new OutputFile(uri, false, null, descriptor, DEFAULT_FOLDER);
+            return new OutputFile(uri, false, null, descriptor, folder);
+        }
+
+        /**
+         * @return The folder with the name in the parent folder the user picked, which is created if needed.
+         */
+        private static Uri getDocumentFolder(ContentResolver resolver, Uri parent, String name) throws IOException {
+            Uri children = DocumentsContract.buildChildDocumentsUriUsingTree(
+                    parent, DocumentsContract.getDocumentId(parent));
+            // Documents providers ignore query selections, so the children are compared here.
+            try (Cursor cursor = resolver.query(children, new String[]{
+                    DocumentsContract.Document.COLUMN_DOCUMENT_ID,
+                    DocumentsContract.Document.COLUMN_DISPLAY_NAME,
+                    DocumentsContract.Document.COLUMN_MIME_TYPE
+            }, null, null, null)) {
+                while (cursor != null && cursor.moveToNext()) {
+                    if (name.equals(cursor.getString(1))
+                            && DocumentsContract.Document.MIME_TYPE_DIR.equals(cursor.getString(2))) {
+                        return DocumentsContract.buildDocumentUriUsingTree(parent, cursor.getString(0));
+                    }
+                }
+            }
+
+            Uri folder = DocumentsContract.createDocument(resolver, parent,
+                    DocumentsContract.Document.MIME_TYPE_DIR, name);
+            if (folder == null) {
+                throw new IOException("Could not create folder: " + name + " in: " + parent);
+            }
+            return folder;
         }
 
         /**
@@ -827,12 +1173,29 @@ public final class OfflineVideoExporter {
         };
         private volatile boolean canceled;
         private List<StreamSource> sources = List.of();
+        /**
+         * The size of all videos of the export.
+         */
+        private final long length;
+        /**
+         * The size of the videos that are done, if the export has several videos.
+         */
+        private long finishedLength;
+        /**
+         * The video being exported, if the export has several videos.
+         */
+        @Nullable
+        private String videoTitle;
         private long nextUpdateTime;
 
+        /**
+         * @param length The size of all videos of the export.
+         */
         @SuppressLint("UnspecifiedRegisterReceiverFlag") // The flags only exist with Android 13 and newer.
-        ExportNotification(String videoId, String title) {
-            this.id = videoId.hashCode();
+        ExportNotification(int id, String title, long length) {
+            this.id = id;
             this.title = title;
+            this.length = length;
 
             Context context = Utils.getContext();
             String action = CANCEL_ACTION_PREFIX + id;
@@ -854,6 +1217,24 @@ public final class OfflineVideoExporter {
         }
 
         /**
+         * Called when the next video of an export of several videos starts.
+         */
+        void setVideo(String title) {
+            videoTitle = title;
+            sources = List.of();
+            nextUpdateTime = 0;
+            postProgress();
+        }
+
+        /**
+         * Called when a video of an export of several videos is done, also if it failed.
+         */
+        void finishVideo(long videoLength) {
+            finishedLength += videoLength;
+            sources = List.of();
+        }
+
+        /**
          * Called while the export is written.
          *
          * @throws ExportCanceledException If the export was canceled with the notification.
@@ -872,18 +1253,17 @@ public final class OfflineVideoExporter {
             }
             nextUpdateTime = now + NOTIFICATION_INTERVAL_MILLISECONDS;
 
-            long read = 0;
-            long total = 0;
+            long read = finishedLength;
             for (StreamSource source : sources) {
                 read += source.getReadEnd();
-                total += source.getSize();
             }
-            final int progress = total == 0 ? 0 : (int) (read * PROGRESS_MAX / total);
+            final int progress = length == 0 ? 0 : (int) (Math.min(read, length) * PROGRESS_MAX / length);
 
             Notification.Builder builder = createBuilder()
                     .setSmallIcon(android.R.drawable.stat_sys_download)
                     .setContentText(str("morphe_export_download_progress", progress))
-                    .setProgress(PROGRESS_MAX, progress, total == 0)
+                    .setSubText(videoTitle)
+                    .setProgress(PROGRESS_MAX, progress, length == 0)
                     .setOngoing(true)
                     .addAction(new Notification.Action.Builder(
                             Icon.createWithResource(Utils.getContext(), android.R.drawable.ic_menu_close_clear_cancel),
@@ -995,21 +1375,25 @@ public final class OfflineVideoExporter {
     }
 
     /**
-     * Each account has its own folder, on the internal storage or on an SD card.
+     * @return The folders of the saved videos, on the internal storage or on an SD card.
+     *         Each account has its own folder in them.
      */
-    private static List<File> getStreamsFolders() {
+    private static List<File> getOfflineFolders() {
         Context context = Utils.getContext();
-        List<File> roots = new ArrayList<>();
+        List<File> folders = new ArrayList<>();
         for (File root : context.getExternalFilesDirs(null)) {
             if (root != null) {
-                roots.add(root);
+                folders.add(new File(root, OFFLINE_FOLDER));
             }
         }
-        roots.add(context.getFilesDir());
+        folders.add(new File(context.getFilesDir(), OFFLINE_FOLDER));
+        return folders;
+    }
 
+    private static List<File> getStreamsFolders() {
         List<File> folders = new ArrayList<>();
-        for (File root : roots) {
-            File[] accounts = new File(root, OFFLINE_FOLDER).listFiles();
+        for (File offlineFolder : getOfflineFolders()) {
+            File[] accounts = offlineFolder.listFiles();
             if (accounts == null) {
                 continue;
             }

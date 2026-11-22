@@ -87,7 +87,14 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_settings_about_links_translations">Oversættelser</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Opdateret</string>
   <string name="morphe_settings_about_contributors">Bidragydere</string>
-  <string name="morphe_settings_about_contributors_period">Sidste 12 måneder</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Altid</string>
+  <string name="morphe_settings_about_contributors_6_months">6 måneder</string>
+  <string name="morphe_settings_about_contributors_3_months">3 måneder</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tidsperiode</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s brugere</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Støtter</string>
   <string name="morphe_settings_about_supporters_summary">Støtter på Open Collective</string>
@@ -222,6 +229,9 @@ Hvis batterioptimeringer ikke ændres, kan du opleve:
 • Appen kan lukke tilfældigt
 • Notifikationer virker muligvis ikke
 • Baggrundsafspilning virker muligvis ikke"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Åbn systemets delingsark</string>
+  <string name="morphe_open_system_share_sheet_summary">Åbner systemets delingsmenu i stedet for den i appen, når der deles indhold</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-linkshåndtering</string>
   <string name="morphe_link_handling_summary">Konfigurer links, så de åbnes i denne app</string>

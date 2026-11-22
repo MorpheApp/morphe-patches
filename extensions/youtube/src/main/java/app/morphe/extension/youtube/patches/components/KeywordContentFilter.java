@@ -51,6 +51,7 @@ import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupMetadata;
 import app.morphe.extension.youtube.innertube.ElementTexts.ShortsLockupViewModel;
 import app.morphe.extension.youtube.innertube.ElementTexts.VideoData;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.dearrow.TitleCleanup;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -66,7 +67,8 @@ import app.morphe.extension.youtube.shared.PlayerType;
  * Other texts of the buffer are not searched, such as the menu items, the accessibility labels,
  * the search text of the search results and the texts of the comment buttons.
  *
- * Keywords match any casing. Keywords that start with @ also match the channel handle of the videos.
+ * Keywords match any casing, and fancy text such as math bold letters matches the plain letters.
+ * Keywords that start with @ also match the channel handle of the videos.
  *
  * Limitations:
  * - Shorts in the Home and Subscriptions feeds do not show the channel name,
@@ -139,10 +141,11 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     }
 
     /**
-     * Keywords and texts are compared in lower case, so keywords match any casing.
+     * Keywords and texts are compared as plain letters in lower case, so keywords match any casing
+     * and titles written in fancy text, such as math bold letters.
      */
     private static String foldCase(String text) {
-        return text.toLowerCase(Locale.ROOT);
+        return TitleCleanup.replaceFancyText(text).toLowerCase(Locale.ROOT);
     }
 
     /**

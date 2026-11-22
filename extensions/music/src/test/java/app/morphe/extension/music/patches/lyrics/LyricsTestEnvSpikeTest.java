@@ -64,6 +64,6 @@ public class LyricsTestEnvSpikeTest {
         assertEquals(1.0f, LyricsManager.calculateDriftSpeedFactor(-15L), 0.001f);
         assertEquals(0.94f, LyricsManager.calculateDriftSpeedFactor(-60L), 0.001f);
         assertEquals(0.90f, LyricsManager.calculateDriftSpeedFactor(-100L), 0.001f);
-        assertEquals(0.90f, LyricsManager.calculateDriftSpeedFactor(-300L), 0.001f);
+        assertEquals(0.88f, LyricsManager.calculateDriftSpeedFactor(-300L), 0.001f);
     }
 }

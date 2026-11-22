@@ -87,7 +87,13 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_settings_about_links_translations">Překlady</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Aktuální</string>
   <string name="morphe_settings_about_contributors">Přispěvatelé</string>
-  <string name="morphe_settings_about_contributors_period">Posledních 12 měsíců</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Za celou dobu</string>
+  <string name="morphe_settings_about_contributors_6_months">6 měsíců</string>
+  <string name="morphe_settings_about_contributors_3_months">3 měsíce</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Časové období</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Přispěvatelé</string>
   <string name="morphe_settings_about_supporters_summary">Podporovatelé na Open Collective</string>
@@ -222,6 +228,9 @@ Pokud se optimalizace baterie nezmění, můžete zaznamenat:
 • Aplikace se může náhodně zavřít
 • Oznámení nemusí fungovat
 • Přehrávání na pozadí nemusí fungovat"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Otevírat systémový panel sdílení</string>
+  <string name="morphe_open_system_share_sheet_summary">Při sdílení obsahu otevře systémové menu pro sdílení namísto toho v aplikaci</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Zpracování odkazů aplikací</string>
   <string name="morphe_link_handling_summary">Konfigurovat odkazy pro otevírání v této aplikaci</string>

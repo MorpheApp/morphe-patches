@@ -8,6 +8,7 @@
 package app.morphe.extension.shared.settings.preference.about;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.TypedValue;
 
@@ -16,6 +17,8 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -48,6 +51,13 @@ final class AboutDialogStyle {
     private static final int AVATAR_STAGGER_MILLIS = 30;
     private static final int AVATAR_STAGGERED = 32;
 
+    // Width of the picture of a person in the grid, in CSS pixels, which are dips.
+    private static final int PERSON_AVATAR_DIPS = 56;
+
+    // The size a GitHub picture is served at, which the API sets for a smaller picture than ours.
+    private static final Pattern GITHUB_AVATAR_SIZE =
+            Pattern.compile("^(https://avatars\\.githubusercontent\\.com/.*[?&]s=)\\d+$");
+
     // Least difference in luma, out of 255, at which an accent still shows on the background
     private static final int MIN_ACCENT_CONTRAST = 60;
 
@@ -78,6 +88,8 @@ final class AboutDialogStyle {
     private static final String PATH_DESCRIPTION =
             "M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 "
                     + "240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z";
+    private static final String PATH_DATE_RANGE = "M320-400q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm160 0q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm160 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80v80Z";
+    private static final String PATH_CHECK = "M382-354l339-339q12-12 28-12t28 12q12 12 12 28.5T777-636L410-268q-12 12-28 12t-28-12L182-440q-12-12-11.5-28.5T183-497q12-12 28.5-12t28.5 12l142 143Z";
     private static final String PATH_CHEVRON = "M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z";
     private static final String PATH_CODE =
             "M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z";
@@ -193,14 +205,42 @@ final class AboutDialogStyle {
                 + PAGE_REVEAL_SCRIPT;
     }
 
+    static String dateRangeIcon() {
+        return materialIcon(PATH_DATE_RANGE);
+    }
+
+    static String checkIcon() {
+        return materialIcon(PATH_CHECK);
+    }
+
+    /**
+     * Sets the head of a list on a band once the list scrolls on under it, so it reads as standing
+     * over the list rather than as a line of it.
+     */
+    private static final String HEADER_BAND_SCRIPT = "<script>(function () {"
+            + "var header = document.querySelector('.list-header');"
+            + "function update() { header.classList.toggle('scrolled', window.scrollY > 0); }"
+            + "window.addEventListener('scroll', update, { passive: true });"
+            + "update();"
+            + "})();</script>";
+
     /**
      * @param icon Icon of the list, on a disc beside its title, see {@link #linkIcon}.
      * @return The head of a dialog listing people: what the list is, over a line summing it up.
      */
     static String peopleHeader(String icon, String title, String subtitle) {
+        return peopleHeader(icon, title, subtitle, null);
+    }
+
+    /**
+     * @param actions What stands at the end of the header, such as a button opening a menu, or
+     *                null for nothing.
+     */
+    static String peopleHeader(String icon, String title, String subtitle, @Nullable String actions) {
         return "<div class=\"dialog-header list-header\"><span class=\"header-icon\">" + icon
-                + "</span><div><div class=\"dialog-title\">" + title
-                + "</div><div class=\"dialog-subtitle\">" + subtitle + "</div></div></div>";
+                + "</span><div class=\"header-text\"><div class=\"dialog-title\">" + title
+                + "</div><div class=\"dialog-subtitle\">" + subtitle + "</div></div>"
+                + (actions == null ? "" : actions) + "</div>" + HEADER_BAND_SCRIPT;
     }
 
     /**
@@ -227,19 +267,42 @@ final class AboutDialogStyle {
     }
 
     /**
+     * @return The url of a GitHub picture at as many pixels as a picture of a person is drawn
+     *         across on this screen, or the url as it is if it is not one.
+     */
+    @Nullable
+    private static String personAvatarUrl(@Nullable String url) {
+        if (url == null) return null;
+        Matcher matcher = GITHUB_AVATAR_SIZE.matcher(url);
+        if (!matcher.matches()) return url;
+        final int pixels = (int) Math.ceil(PERSON_AVATAR_DIPS * Resources.getSystem().getDisplayMetrics().density);
+        return matcher.group(1) + pixels;
+    }
+
+    /**
      * Appends people as a grid of pictures, each over a name and opening that person's page.
      */
     static void appendPeople(StringBuilder html, List<AboutRoutes.Person> people) {
         html.append("<div class=\"people-grid\">");
         for (int i = 0, size = people.size(); i < size; i++) {
-            AboutRoutes.Person person = people.get(i);
-            html.append("<a href=\"").append(escapeHtml(person.url()))
-                    .append(person.mega() ? "\" class=\"person mega\">" : "\" class=\"person\">")
-                    .append(avatar(person.name(), person.avatar(), i))
-                    .append("<span class=\"person-name\">").append(escapeHtml(person.name()))
-                    .append("</span></a>");
+            appendPerson(html, people.get(i), i, "");
         }
         html.append("</div>");
+    }
+
+    /**
+     * Appends someone of a grid of people, see {@link #appendPeople}.
+     *
+     * @param order      Place in the wave the pictures on screen come in by, see {@link #avatar}.
+     * @param attributes Further attributes of the element, each led by a space.
+     */
+    static void appendPerson(StringBuilder html, AboutRoutes.Person person, int order, String attributes) {
+        html.append("<a href=\"").append(escapeHtml(person.url()))
+                .append(person.mega() ? "\" class=\"person mega\"" : "\" class=\"person\"")
+                .append(attributes).append('>')
+                .append(avatar(person.name(), personAvatarUrl(person.avatar()), order))
+                .append("<span class=\"person-name\">").append(escapeHtml(person.name()))
+                .append("</span></a>");
     }
 
     /**
@@ -259,7 +322,7 @@ final class AboutDialogStyle {
         return DOCUMENT_START
                 .replace("{dir}", Utils.isRightToLeftLocale(
                         BaseSettings.MORPHE_LANGUAGE.get().getLocale()) ? "rtl" : "ltr")
-                .replace("{bg}", Utils.getColorHexString(ThemeUtils.getDialogBackgroundColor()))
+                .replace("{bg}", Utils.getColorHexString(ThemeUtils.getAppBackgroundColor()))
                 .replace("{fg}", Utils.getColorHexString(ThemeUtils.getAppForegroundColor()))
                 .replace("{accent}", String.format(Locale.US, "#%06X", accent & 0xFFFFFF))
                 // Whichever of black and white stands out of the accent.
@@ -296,7 +359,7 @@ final class AboutDialogStyle {
             return fallback;
         }
 
-        final int contrast = Math.abs(luma(accent) - luma(ThemeUtils.getDialogBackgroundColor()));
+        final int contrast = Math.abs(luma(accent) - luma(ThemeUtils.getAppBackgroundColor()));
         return contrast < MIN_ACCENT_CONTRAST ? fallback : accent;
     }
 

@@ -61,7 +61,10 @@ Izmaiņas ietver:
   <string name="morphe_hide_account_menu_title">Iespējot apakšējās izvēlnes Bibliotēka / Jūs filtru</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Apakšējās izvēlnes Bibliotēka / Jūs filtrs</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Ievadiet Bibliotēkas / Jūs apakšējās izvēlnes nosaukumus filtrēšanai, atdalot tos ar jaunām rindām</string>
+  <string name="morphe_hide_account_menu_badges_title">Slēpt plaques</string>
   <string name="morphe_hide_account_menu_downloads_title">Slēpt lejupielādes</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Slēpt \"Patīktie video\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Slēpt \"Skatīt vēlāk\"</string>
   <string name="morphe_hide_album_cards_title">Slēpt albumu kartes</string>
   <string name="morphe_hide_album_cards_summary">Paslēpj albumu kartes zem mākslinieka apraksta</string>
   <string name="morphe_hide_artist_cards_title">Slēpt mākslinieku kartes</string>
@@ -122,8 +125,8 @@ Izmaiņas ietver:
   <string name="morphe_hide_upload_time_title">Slēpt augšupielādes laiku</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Ierobežojumi:
-• Shorts plauktos, kanālu lapās un meklēšanas rezultātos joprojām var būt redzams augšupielādes laiks
-• Nedarbojas ar automobiļa izkārtojumu"</string>
+• Shorts plauktos joprojām var būt redzams augšupielādes laiks
+• Nedarbojas ar automobiļu izkārtojumu"</string>
   <string name="morphe_hide_video_thumbnail_title">Slēpt video miniaturu</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Slēpt video etiķetes</string>
@@ -131,8 +134,8 @@ Izmaiņas ietver:
   <string name="morphe_hide_view_count_title">Slēpt skatījumu skaitu</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Ierobežojumi:
-• Shorts plauktos, kanālu lapās un meklēšanas rezultātos joprojām var būt redzams skatījumu skaits
-• Nedarbojas ar automobiļa izkārtojumu"</string>
+• Shorts plauktos joprojām var būt redzams skatījumu skaits
+• Nedarbojas ar automobiļu izkārtojumu"</string>
   <string name="morphe_hide_web_search_results_title">Slēpt tīmekļa meklēšanas rezultātus</string>
   <string name="morphe_hide_web_search_results_summary">Slēpj sadaļu \"Result from the web\" meklēšanas rezultātos</string>
   <string name="morphe_hide_you_may_like_section_title">Slēpt sadaļu \"Varbūt jums patiks\"</string>
@@ -205,8 +208,6 @@ Ziņojumi ir publiski un tiek pārskatīti pirms kanāla pievienošanas saraksta
   <string name="morphe_hide_posts_shelf_title">Slēpt ierakstu plakti</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Slēpt pogu \"Veikals\"</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Slēpt pogu \"Pierakstīties\"</string>
   <string name="morphe_explore_menu_screen_title">Izpētīt izvēlni</string>
   <string name="morphe_explore_menu_screen_summary">Izvēlieties, kuras komponentes parādīs izpētīšanas izvēlnē</string>
   <string name="morphe_hide_courses_menu_title">Slēpt Kursu izvēlni</string>
@@ -281,7 +282,6 @@ ierobežojumi:
   <string name="morphe_hide_post_comment_button_title">Slēpt pogu Komentāri</string>
   <string name="morphe_hide_post_comments_preview_title">Slēpt komentāru priekšskatījumu</string>
   <string name="morphe_hide_post_comments_preview_summary">Slēpj komentāru priekšskatījumu zem ierakstiem</string>
-  <string name="morphe_hide_post_share_button_title">Slēpt pogu Kopīgot</string>
   <string name="morphe_hide_post_share_button_summary">Lejupielādes poga ierakstu attēliem tiek zīmēta blakus kopīgošanas pogai, tāpēc arī tā tiek slēpta</string>
   <string name="morphe_hide_ask_gemini_button_title">Slēpt pogu \"Ask Gemini\"</string>
   <string name="morphe_hide_ask_gemini_button_summary">Slēpj pogu \"Ask Gemini\" paneļa \"Ask about this video\" apakšdaļā</string>
@@ -290,14 +290,12 @@ ierobežojumi:
   <string name="morphe_hide_autoplay_preview_summary">Slēpj nākamā video priekšskatījumu pilnekrāna režīmā pirms automātiskās atskaņošanas sākuma</string>
   <string name="morphe_hide_channel_bar_title">Slēpt kanāla joslu</string>
   <string name="morphe_hide_channel_watermark_title">Slēpt kanāla ūdenszīmi</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Slēpt nodaļas un pogu \"Šajā video\"</string>
+  <string name="morphe_hide_chapters_button_title">Slēpt nodaļu pogu</string>
   <string name="morphe_hide_crowdfunding_box_title">Slēpt crowdfunding sadaļu</string>
   <string name="morphe_hide_emergency_box_title">Slēpt ārkārtas situāciju informācijas kastes</string>
+  <string name="morphe_hide_in_this_video_button_title">Slēpt pogu \"Šajā video\"</string>
   <string name="morphe_hide_info_panels_title">Slēpt informācijas paneļus</string>
   <string name="morphe_hide_info_panels_summary">Nerādīt informatīvus konteksta paneļus, piemēram, medicīnisku informāciju</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Slēpt pogu \"Pievienot\"</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Slēpt pogu \"Tiešraidē veiktās sarunas atkārtošana\"</string>
@@ -313,8 +311,6 @@ ierobežojumi:
   <string name="morphe_hide_tap_and_hold_gradient_summary">Slēpj atskaņātāja vadības gradientu, bīdot pirkstu, turot pogu, lai paātrinātu atskaņošanu</string>
   <string name="morphe_hide_timed_reactions_title">Slēpt laikā ierobežotās reakcijas</string>
   <string name="morphe_hide_timed_reactions_summary">Slēpj funkciju, kas ļauj lietotājiem reaģēt ar emocijzīmēm komentāru sadaļā un tiešraidē</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Slēpt izvēlni \"Palīdzība un atsauksmes\"</string>
   <string name="morphe_hide_help_feedback_menu_summary">Slēpj izvēlni \"Palīdzība un atsauksmes\", izmantojot trīs punktu pogu, piemēram, meklēšanas rezultātos</string>
   <string name="morphe_hide_handle_title">Slēpt rokturi</string>
   <string name="morphe_hide_handle_summary">Slēpj jūsu kanāla rokturi cilnē \"Jūs\"</string>
@@ -357,7 +353,6 @@ ierobežojumi:
   <string name="morphe_hide_ask_button_title">Slēpt pogu Jautāt</string>
   <string name="morphe_hide_channel_profile_button_title">Slēpt kanālu un pogu Pierakstīties</string>
   <string name="morphe_hide_channel_profile_button_summary">Slēpj kanāla avatāru un pogu Pierakstīties darbību joslas sākumā</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Slēpt abonēšanas pogu</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Slēpj abonēšanas un pievienošanās pogas blakus kanāla avataram darbības joslas sākumā</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Slēpt pogu Izveidot klipu</string>
@@ -433,9 +428,10 @@ ierobežojumi:
   <string name="morphe_hide_comments_preview_comment_hidden">Komentāru slēpis Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Iespējot minimālu komentāru pogu</string>
   <string name="morphe_minimal_comments_button_summary">Slēpj slīdošās kartes un tās lapas atlasītāju, kas tiek rādītas uz komentāru pogas</string>
-  <string name="morphe_hide_comments_thanks_button_title">Slēpt Paldies pogu</string>
   <string name="morphe_hide_comments_timestamp_button_title">Slēpt laika zīmju pogu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Slēpt pogu \"Top fans\"</string>
+  <string name="morphe_hide_comments_topics_title">Slēpt \"Tēmas\"</string>
+  <string name="morphe_hide_comments_topics_summary">Slēpj \"Tēmas\" filtra joslas opciju un \"Tēmas\" komentāru prizkadrus zem video</string>
   <string name="morphe_hide_comments_translate_button_title">Slēpt tulkošanas pogu</string>
   <string name="morphe_hide_comments_zero_state_title">Slēpt ziņojumu \"Komentāru vēl nav\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitizēt izceltās meklēšanas saites</string>
@@ -488,7 +484,6 @@ Lai rādītu izvēlni 'Audio Track', mainiet 'Spoof video streams' uz jebkuru kl
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Slēpt subtitru pogu</string>
   <string name="morphe_hide_cast_button_title">Slēpt Cast pogu</string>
-  <string name="morphe_hide_cast_button_summary">Slēpj Cast pogu video spēlētājā un rīkjoslā</string>
   <string name="morphe_hide_collapse_button_title">Slēpt sakļaušanas pogu</string>
   <string name="morphe_hide_fullscreen_button_title">Slēpt pilnekrāna pogu</string>
   <string name="morphe_hide_player_control_buttons_background_title">Slēpt spēlētāja vadības pogu fonu</string>
@@ -607,6 +602,9 @@ Lai rādītu izvēlni 'Audio Track', mainiet 'Spoof video streams' uz jebkuru kl
   <string name="morphe_feed_long_press_menu_summary">Ilgi pieskaroties jebkurā plūsmas video vietā, tiek atvērta tā izvēlne</string>
   <string name="morphe_feed_watch_later_button_title">Rādīt pogu \"Skatīt vēlāk\" miniaturēs</string>
   <string name="morphe_feed_watch_later_button_summary">Plūsmas video miniatūrās tiek rādīta poga \"Skatīt vēlāk\", un, ja video ir saglabāts, tiek rādīta atzīme. Pieskaroties pogai, video tiek saglabāts vai noņemts, bet, turot nospiestu, tiek atvērta izvēle \"Saglabāt sarakstā\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Atvērt ieraksta attēlus pilnā ekrāna režīm laukumā</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Nospiežot ieraksta attēlu, tas tiek atvērts pilnā ekrāna režīm, nevis ierakstu plūsmā</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Lejupielādēt ieraksta attēlus</string>
   <string name="morphe_post_image_download_summary">Lejupielādes poga tiek rādīta blakus Dalīties pogai ierakstiem ar attēliem vai GIF failiem, un to izvēlne tiek papildīta ar lejupielādes vienumu</string>
@@ -800,6 +798,7 @@ Jūsu API atslēgu nekad nedrīkst kopīgot. Ikviens, kam ir piekļuve tai, var 
   <string name="morphe_loop_count_clear_done">Saglabātās atkārtošanās reizes notīrītas</string>
   <string name="morphe_loop_count_flyout_name">Atskaite cilpas</string>
   <string name="morphe_loop_count_dialog_message">Cik reizes video tiek atskaņots pirms nākamā video, no %1$s līdz %2$s. Atstājiet tukšu, lai atkārtotu video bez ierobežojuma.</string>
+  <string name="morphe_loop_count_times">%s reizes</string>
   <string name="morphe_loop_count_no_limit">Bez ierobežojuma</string>
   <string name="morphe_loop_count_decrease">Mazāk reizes</string>
   <string name="morphe_loop_count_increase">Vairāk reizes</string>
@@ -886,7 +885,7 @@ Info: Var nedarboties tiešraidēs"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Reklāmu baltais saraksts izlaiduma izvēlnē</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Pievieno izlaiduma elementu, kas ļauj reklāmām atskaņoties šī video kanālā</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Šī funkcija var prasīt PotHelper izmantošanu vai \"Video straumju imitēšanu\" mainīšanu uz TV vai Android VR pieslēgšanos</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Šai funkcijai var būt nepieciešams izmantot PotHelper vai mainīt \"Spoof video streams\" uz \"TV\" vai \"Android VR\" pierakstīšanos</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Ātruma baltais saraksts izlaiduma izvēlnē</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Pievieno izlaiduma elementu, kas vienmēr atskaņo šī video kanālu ar 1.0x ātrumu</string>
   <string name="morphe_queue_manager_check_failed_auth">Nav pieslēdzies</string>
@@ -991,6 +990,7 @@ Lai to labotu, ieslēdziet \"Viltot video straumes\" un mainiet \"Privāto klien
   <string name="morphe_swipe_press_to_engage_title">Iespējot nospiešanas un slīdināšanas žestu</string>
   <string name="morphe_swipe_press_to_engage_summary">Prasa nospiest un aizturēt, pirms tiek atpzīts slaucīšanas žests</string>
   <string name="morphe_swipe_haptic_feedback_title">Iespējot haptisko atgriezenisko saiti</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Vibrē, kad nospiežot un turot tiek uzsākts slīdīšanas žests</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Saglabāt un atjaunot spilgtumu</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Atceras spilgtuma līmeni, ieejot / izejot no pilnekrāna režīma</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Iespējot automātiskā spilgtuma žestu</string>
@@ -1034,6 +1034,39 @@ Lai to labotu, ieslēdziet \"Viltot video straumes\" un mainiet \"Privāto klien
   <string name="morphe_swipe_overlay_style_entry_7">Vertikāls pārklājums (minimalistisks)</string>
   <string name="morphe_swipe_change_video_title">Iespējot slīdināšanu, lai mainītu video</string>
   <string name="morphe_swipe_change_video_summary">Pārvelciet pilnekrāna režīmā, lai pārietu uz nākamo vai iepriekšējo video</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Turēšanas žests</string>
+  <string name="morphe_hold_gesture_screen_summary">Mainiet un fiksējiet atgrozīšanas ātrumu, velkot pēc pieskaršanās un aizturēšanas</string>
+  <string name="morphe_hold_gesture_title">Iespējot turēšanas žestu</string>
+  <string name="morphe_hold_gesture_summary">Video pieskaršanās un aizturēšana var būt papildināta ar velcienu. Ātrums turēšanas laikā ir pieskaršanās un aizturēšanas atgrozīšanas ātrums</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Netiek izmantots, kamēr ir ieslēgta funkcija \"Nospied, lai slidētu\". Pieskarieties, lai mainītu</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Funkcija \"Nospied, lai slidētu\" ir ieslēgta</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Gan turēšanas žests, gan slīdīšanas vadības žests \"nospied, lai slidētu\" sākas ar pieskaršanos un turēšanu, tāpēc var būt ieslēgts tikai viens no tiem.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Izslēgt funkciju \"nospied, lai slidētu\"</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Turēšanas žests netiek izmantots, kamēr ir ieslēgta funkcija \"nospied, lai slidētu\"</string>
+  <string name="morphe_hold_gesture_dialog_title">Turēšanas žests ir ieslēgts</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Izslēgt turēšanas žestu</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Ienablekt haptisko atgriezenisko saiti</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Vibrē, kad ātrums mainās un kad ātrums ir fiksēts</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Velciet sāniski, lai mainītu ātrumu</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Pēc nospiešanas un aizturēšanas velciet pa kreisi, lai atskañotu lēnāk, un pa labi, lai atskañotu ātrāk. Jo tālāk velciet, jo vairāk mainās ātrums, līdz pirksts tiek pārvietots atpakaļ</string>
+  <string name="morphe_hold_gesture_speed_step_title">Ātruma solis</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Velciena jutīgums</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Zems</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Normāls</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Augsts</string>
+  <string name="morphe_hold_gesture_speed_min_title">Lēnākais ātrums</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Lēnākais ātrums, kuru var sasniegt velkot</string>
+  <string name="morphe_hold_gesture_speed_max_title">Ātrākais ātrums</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Ātrākais ātrums, kuru var sasniegt velkot (līdz 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Velciet uz leju, lai fiksētu ātrumu</string>
+  <string name="morphe_hold_gesture_lock_summary">Pēc nospiešanas un aizturēšanas velciet uz leju, lai saglabātu ātrumu, kad pirksts tiek pacelts. Pieskarieties apzīmei vai vēlreiz nospiediet un aizturiet, lai atbloķētu</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Vienmēr rādīt fiksēšanas apzīmi</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Fiksētā ātruma apzīme paliek redzama, kamēr atskaidītāja vadības elementi ir slēgti</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Atbloķēt, kad video mainās</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Fiksētais ātrums beidzas, kad sākas cits video</string>
+  <string name="morphe_hold_gesture_lock_hint">Vilciet uz leju, lai bloķētu</string>
+  <string name="morphe_hold_gesture_lock_release">Atlaidiet, lai bloķētu %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtitri</string>
   <string name="morphe_captions_screen_summary">Pārvaldiet automātiskos titrus un titru sīkfailus</string>
@@ -1082,8 +1115,6 @@ Jānorāda subtitru sīkfaili"</string>
   <string name="morphe_caption_block_translation_failed">Daži titru tulkojumi nav pieejami. Rāda pieejamos titrus.</string>
   <string name="morphe_caption_blocks_too_large">Abas titru valodas neiekļaujas šajā atskaņotājā. Rāda galveno valodu.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Navigācijas josla</string>
-  <string name="morphe_navigation_bar_screen_summary">Izvēlieties, kuras pogas rādīt apakšējā navigācijas joslā</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Paslēpt pogu Sākums</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1101,11 +1132,11 @@ Jānorāda subtitru sīkfaili"</string>
   <string name="morphe_watch_later_navigation_label">Skatīties vēlāk</string>
   <string name="morphe_show_settings_button_title">Rādīt iestatījumu pogu</string>
   <string name="morphe_show_settings_button_type_title">Iestatījumu pogas darbība</string>
-  <string name="morphe_show_settings_button_type_summary">Ja iespējots, atver Morphe iestatījumus, ja izslēgts, atver YouTube iestatījumus</string>
+  <string name="morphe_show_settings_button_type_summary">Ja šī iespēja ir iespējota, pieskaršanās atvērs Morphe iestatījumus, bet ilga nospiešana atvērs YouTube iestatījumus; atslēdziet, lai mainītu tos vietu</string>
   <string name="morphe_navigation_buttons_order_title">Navigācijas pogu secība</string>
   <string name="morphe_navigation_buttons_order_summary">Velciet pogas, lai mainītu to secību navigācijas joslā</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamainīt pogu \"Izveidot\" ar pogu \"Paziņojumi\"</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ja šī iestatījuma maiņa nesniedz rezultātu, mēģiniet pārslēgties uz inkognito režīmu</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Pārvieto Paziņojumu pogu uz navigācijas joslu un Izveidot pogu uz rīkjoslu. Ja izmaiņas nestājas spēkā, mēģiniet pārslēgties uz inkognito režīmu</string>
   <string name="morphe_hide_navigation_button_labels_title">Slēpt navigācijas pogu etiķetes</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Slēpt jauna satura punktu</string>
   <string name="morphe_hide_navigation_bar_title">Slēpt navigācijas joslu</string>
@@ -1134,18 +1165,31 @@ Lai piekļūtu iestatījumiem, iespējojiet iestatījumu pogu sadaļā Vispārē
   <string name="morphe_navigation_bar_glass_opacity_summary">Pielāgojiet stikla navigācijas joslas caurspīdības līmeni (0 ir caurspīdīgs, 100 ir necaurspīdīgs)</string>
   <string name="morphe_navigation_bar_glass_round_title">Apaļā stikla navigācijas josla</string>
   <string name="morphe_navigation_bar_glass_round_summary">Piešķir stikla navigācijas joslai apaļus galus, nevis stūrņus, kā tas ir stikla minimspēlierim</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Stikla navigācijas joslas mala</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Uzzīmē gaišu malu ap stikla navigācijas joslu</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Stikla navigācijas joslas apakšējā margine</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Regulēt atstarpi starp stklaino navigācijas joslu un ekrāna apakšu vai sistēmas navigāciju</string>
   <string name="morphe_navigation_bar_glass_size_title">Stikla navigācijas joslas izmērs</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ar priekšskatījumu pielāgojiet stikla navigācijas joslas augstumu, platumu un pogu attālumu. Pogas, kas neiekļaujas ekrāna platumā, tiek slēptas</string>
+  <string name="morphe_glass_menus_screen_title">Stikla izvēlnes</string>
+  <string name="morphe_glass_menus_screen_summary">Izvēlnes kā matēts stikls pār izplūmējušu saturu aiz tām</string>
+  <string name="morphe_glass_menus_title">Ienable stikla izvēlnes</string>
+  <string name="morphe_glass_menus_summary">Rāda izvēlnes un apakšlapas kā matētu stiklu, izplūminot saturu aiz tām</string>
+  <string name="morphe_glass_menus_user_dialog_message">Izvēlnes tiek rādītas gandrīz necaurspīdīgas, kamēr ir ieslēgts akumulatora taupītājs vai ja ierīce neatbalsta izplūmēšanu</string>
+  <string name="morphe_glass_menus_opacity_title">Stikla caurspīdīgums</string>
+  <string name="morphe_glass_menus_opacity_summary">Cik stipri izvēlne pārklāj izplūmēto saturu (0 ir caurspīdīgs, 100 ir necaurspīdīgs)</string>
+  <string name="morphe_glass_menus_blur_title">Izplūmēšana</string>
+  <string name="morphe_glass_menus_blur_summary">Cik stipri ir izplūmēts saturs aiz izvēlnes</string>
+  <string name="morphe_glass_menus_dim_title">Kārtot</string>
+  <string name="morphe_glass_menus_dim_summary">Cik stipri ekrāns ap apakšlapu tiek aptumšināts</string>
   <string name="morphe_navigation_bar_glass_size_height">Augstums</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimālais platums</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Pogu attālums</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Rādītas pogas: %1$s no %2$s</string>
-  <string name="morphe_toolbar_screen_title">Rīkjosla</string>
-  <string name="morphe_toolbar_screen_summary">Izvēlieties, kuri komponenti parādās rīkjoslā</string>
   <string name="morphe_hide_toolbar_chat_button_title">Slēpt tērzēšanas pogu</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Slēpt pogu Companion</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Slēpt mikrofona pogu</string>
   <string name="morphe_hide_toolbar_search_button_title">Slēpt meklēšanas pogu</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Ja šī opcija ir iespējota, pieskaršanās atvērs Morphe iestatījumus, bet ilgspiešana atvērs YouTube iestatījumus; izslēdziet, lai apmainītu tos</string>
   <string name="morphe_toolbar_buttons_order_title">Rīkjoslas pogu secība</string>
   <string name="morphe_toolbar_buttons_order_summary">Velciet pogas, lai mainītu to secību rīkjoslā</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1176,43 +1220,28 @@ Lai piekļūtu iestatījumiem, iespējojiet iestatījumu pogu sadaļā Vispārē
   <string name="morphe_disable_shorts_double_tap_to_like_title">Aizliegt dubulto pieskārumu, lai patiktu</string>
   <string name="morphe_hide_shorts_ai_button_title">Slēpt AI pogu</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Slēpt etiķeti \"Auto-dubbed\"</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Slēpt kanāla joslu</string>
-  <string name="morphe_hide_shorts_comments_button_title">Slēpt pogu \"Komentāri\"</string>
   <string name="morphe_hide_shorts_effect_button_title">Slēpt efektu pogu</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Slēpt video saites etiķeti</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Slēpt žestu norādījumus</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Slēpt pogu \"Green screen\"</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Slēpt hashtag pogu</string>
   <string name="morphe_hide_shorts_info_panel_title">Slēpt info paneli</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Slēpt pogu Pievienoties</string>
   <string name="morphe_hide_shorts_like_button_title">Slēpt pogu \"Patīkt\"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Slēpt pogas \"Patīkt\" fontāna animāciju</string>
   <string name="morphe_hide_shorts_live_preview_title">Slēpt tiešo priekšskatu</string>
   <string name="morphe_hide_shorts_location_label_title">Slēpt atrašanās vietas apzīmētāju</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Slēpt navigācijas joslu</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Slēpt pogu \"New posts\"</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Slēpt pauzes pārklājuma pogas</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Slēpt komentāra priekšskatījumu</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Slēpt pogu \"Remix\"</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Slēpt pogu \'Saglabāt\'</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Slēpt \"Saglabāt mūziku\" pogu</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Slēpt meklēšanas ieteikumus</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Slēpt pogu \"Kopīgot\"</string>
-  <string name="morphe_hide_shorts_shop_button_title">Slēpt Veikala pogu</string>
   <string name="morphe_hide_shorts_sound_button_title">Slēpt skaņas pogu</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Slēpt skaņas metadatu etiķeti</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Slēpt \"Pierakstīties\" pogu</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Slēpt pogu \"Buy Super Thanks\"</string>
   <string name="morphe_hide_shorts_tagged_products_title">Slēpt atzīmētos produktus</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Slēpt \"Gaidāmie\" pogu</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Slēpt \"Izmantot šo skaņu\" pogu</string>
   <string name="morphe_hide_shorts_use_template_button_title">Slēpt \"Izmantot šo šablonu\" pogu</string>
-  <string name="morphe_hide_shorts_video_title_title">Slēpt video nosaukumu</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Slēpt beigu ekrāna ieteikto video</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Slēpj ieteikto video pārklājumu, kas parādās pēc video beigām
@@ -1380,6 +1409,9 @@ Automašīnas izkārtojums
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Aizliegt automātisku plūsmes atjaunināšanu</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Novērš plūsmu automātisku atjaunināšanu, kad tās kļūst novecotušas</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Atšķirt paziņojumus</string>
+  <string name="morphe_ungroup_notifications_summary">Rāda katru kanāla grupēto augšupielāžu video kā atsevišķu paziņojumu</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Plūmes kartes izkārtojums</string>
   <string name="morphe_feed_card_layout_entry_1">Klasisks</string>
@@ -1492,6 +1524,8 @@ Automašīnas izkārtojums
   <string name="morphe_dearrow_titles_search_title">Meklēšanas rezultāti</string>
   <string name="morphe_dearrow_titles_icon_title">Rādīt DeArrow ikonu</string>
   <string name="morphe_dearrow_titles_icon_summary">Rāda DeArrow ikonu video nosaukumos, kamērem ir kopraudzības nodrošināts nosaukums vai miniatures. Pieskaries ikonai, lai redzētu oriģinālo nosaukumu un miniatures</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Notīrīt nosaukumus</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Notīra video nosaukumus, kuriem nav DeArrow nosaukuma. Vārdi ar lielajiem burtiem tiek pārveidoti normālā reģistrā, un emoji, dekoratīvs teksts un atkārtoti izsaucēšanas zīmes tiekdzēsti</string>
   <string name="morphe_dearrow_casual_mode_title">Neformālais režīms</string>
   <string name="morphe_dearrow_casual_mode_summary">Rāda oriģinālo nosaukumu DeArrow nosaukuma vietā, ja DeArrow lietotāji ir balsojuši, ka viņiem patīk oriģinālais nosaukums</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimālais neformālo balsu skaits oriģinālā nosaukuma rādīšanai</string>
@@ -1712,13 +1746,9 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Izlaiž kvalitātes izvēles izvēlni un tieši atver paplašināto kvalitātes izvēlni</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Slēpt Premium kvalitātes opcijas</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Prioritizēt video kvalitāti</string>
-  <string name="morphe_video_quality_prioritize_summary">Prioritizē augstāko pieejamo video kvalitāti, novērtējot to augstāk par kodeka efektivitāti</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ja šis iestatījums ir izslēgts, vecākiem video var nebūt pieejamas video kvalitātes iespējas</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Atļaut \'Android VR\' / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Atļauj programmatūras AV1 dekodēšanu, izmantojot \'Android VR\' / visionOS klientu</string>
+  <string name="morphe_spoof_video_streams_av1_title">Atļaut \"Android VR\" / \"visionOS\" AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Atļauj programmatiskā AV1 dekodēšanu, izmantojot \"Android VR\" / \"visionOS\" klientu</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Šī iestatījuma iespējošana var izmantot programmatūras AV1 dekodēšanu.
 
 Video atskaņošana ar AV1 var kļūt neregulāra vai var izkrist kadri"</string>
@@ -1831,6 +1861,7 @@ Automātiskā reģistrācija pārtraucas incognito režīmā, ja konta identitā
   <string name="morphe_series_tracker_undo">Atsaukt</string>
   <string name="morphe_series_tracker_enable_short">Iespējot</string>
   <string name="morphe_series_tracker_new_episode">1 jauna sērija</string>
+  <string name="morphe_series_tracker_new_episodes">%s jaunas sērijas</string>
   <string name="morphe_series_tracker_record_short">Reģistrēt progresu šajā ierīcē</string>
   <string name="morphe_series_tracker_follow_consent">"Jūsu sērijas un progress paliek šajā ierīcē un tiek kopīgots starp YouTube kontiem. YouTube vēstures kontroles tos nemaina. Dzēsiet progresu sērijas izvēlnē.
 
@@ -1954,7 +1985,6 @@ Automātiskā ierakstīšana ir neobligāta. Tā tiek apturēta inkognito režī
   <string name="morphe_live_chat_translate_language_title">Tulkošanas valoda</string>
   <string name="morphe_live_chat_translate_exclude_title">Izslēgtās valodas</string>
   <string name="morphe_live_chat_translate_exclude_summary">Ar komatu atdalīti valodu kodi, piemēram, id,en. Ziņojumi šajās valodās netiek tulkoti</string>
-  <string name="morphe_live_chat_translate_provider_title">Tulkojuma pakalpojumu sniedzējs</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API atslēga</string>

@@ -87,7 +87,14 @@ Yangi tillarni tarjima qilish yoki mavjud tarjimalarni yaxshilash uchun morphe.s
   <string name="morphe_settings_about_links_translations">Tarjimalar</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Oxirgi versiya</string>
   <string name="morphe_settings_about_contributors">Hissa qo\'shganlar</string>
-  <string name="morphe_settings_about_contributors_period">Oxirgi 12 oy</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Barcha vaqtlar uchun</string>
+  <string name="morphe_settings_about_contributors_6_months">6 oy</string>
+  <string name="morphe_settings_about_contributors_3_months">3 oy</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Vaqt oralig\'i</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s foydalanuvchi</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Homiylar</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective platformasidagi homiylar</string>
@@ -222,6 +229,9 @@ Agar batareya optimallashtiruvlari o'zgartirilmasa, quyidagilar yuz berishi mumk
 • Ilova tasodifiy ravishda yopilib qolishi mumkin
 • Bildirishnomalar ishlamasligi mumkin
 • Fonda ijro etish ishlamasligi mumkin"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Tizim ulashish oynasini ochish</string>
+  <string name="morphe_open_system_share_sheet_summary">Ulashishda ilova ichidagi o\'rniga tizim ulashish varag\'ini ochadi</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Ilova havolalarini boshqarish</string>
   <string name="morphe_link_handling_summary">Havolalarni ushbu ilovada ochishni sozlash</string>

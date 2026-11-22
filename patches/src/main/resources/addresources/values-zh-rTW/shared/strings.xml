@@ -80,14 +80,21 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_close">關閉</string>
   <string name="morphe_settings_about_prerelease">預先發佈</string>
   <string name="morphe_settings_about_update_available">可用更新：%s</string>
-  <string name="morphe_settings_about_update_hint">若要更新您的補丁，請使用 Morphe 重新為此應用程式打補丁</string>
+  <string name="morphe_settings_about_update_hint">若要更新您的修補，請使用 Morphe 重新為此應用程式套用修補</string>
   <string name="morphe_settings_about_links_header">官方連結</string>
   <string name="morphe_settings_about_links_website">網站</string>
   <string name="morphe_settings_about_links_donate">捐贈</string>
   <string name="morphe_settings_about_links_translations">翻譯</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">最新版本</string>
   <string name="morphe_settings_about_contributors">貢獻者</string>
-  <string name="morphe_settings_about_contributors_period">過去 12 個月</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">所有時間</string>
+  <string name="morphe_settings_about_contributors_6_months">6 個月</string>
+  <string name="morphe_settings_about_contributors_3_months">3 個月</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">時間週期</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s 位使用者</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">支持者</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective 上的贊助者</string>
@@ -222,6 +229,9 @@ Second \"item\" text"</string>
 • 應用程式可能隨機關閉
 • 通知可能無法正常運作
 • 背景播放可能無法正常運作"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">開啟系統分享面板</string>
+  <string name="morphe_open_system_share_sheet_summary">分享內容時，開啟系統分享面板而非應用程式內建的面板</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">應用程式連結處理</string>
   <string name="morphe_link_handling_summary">設定連結在此應用程式中開啟</string>

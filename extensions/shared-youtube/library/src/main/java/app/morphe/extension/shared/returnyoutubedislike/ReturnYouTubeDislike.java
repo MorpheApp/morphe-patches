@@ -43,6 +43,7 @@ import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.NetworkReconnect;
 import app.morphe.extension.shared.returnyoutubedislike.requests.RYDVoteData;
 import app.morphe.extension.shared.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -92,6 +93,16 @@ public class ReturnYouTubeDislike {
      */
     @GuardedBy("itself")
     private static final Map<String, ReturnYouTubeDislike> fetchCache = new HashMap<>();
+
+    /**
+     * Removes the fetches that failed, so they are fetched again,
+     * such as the fetches that failed while the device was offline.
+     */
+    private static final Runnable REMOVE_FAILED_FETCHES = () -> {
+        synchronized (fetchCache) {
+            fetchCache.values().removeIf(fetch -> fetch.fetchCompleted() && fetch.getFetchData(0) == null);
+        }
+    };
 
     /**
      * Used to send votes, one by one, in the same order the user created them.
@@ -176,7 +187,15 @@ public class ReturnYouTubeDislike {
     public ReturnYouTubeDislike(String videoId) {
         this.videoId = Objects.requireNonNull(videoId);
         this.timeFetched = System.currentTimeMillis();
-        this.future = Utils.submitOnBackgroundThread(() -> ReturnYouTubeDislikeAPI.fetchVotes(videoId));
+        this.future = Utils.submitOnBackgroundThread(() -> {
+            RYDVoteData votes = ReturnYouTubeDislikeAPI.fetchVotes(videoId);
+            if (votes == null) {
+                // A fetch that failed while the device is offline is not kept for the failure time,
+                // and is fetched again once the device is online.
+                NetworkReconnect.runWhenOnline(REMOVE_FAILED_FETCHES);
+            }
+            return votes;
+        });
     }
 
     /**

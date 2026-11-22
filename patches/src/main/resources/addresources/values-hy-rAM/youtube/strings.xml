@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Միացնել Գրադարան / Դուք ներքևի մենյուի զտիչը</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Գրադարան / Դուք ներքևի մենյուի զտիչ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Մուտքագրեք Գրադարան / Դուք ներքևի մենյուի անվանումները զտելու համար՝ բաժանելով նոր տողերով</string>
+  <string name="morphe_hide_account_menu_badges_title">Թաքցնել կնարները</string>
   <string name="morphe_hide_account_menu_downloads_title">Թաքցնել ներբեռնումները</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Թաքցնել \"Հավանած տեսանյութերը\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Թաքցնել \"Դիտել ավելի ուշ\"</string>
   <string name="morphe_hide_album_cards_title">Թաքցնել ալբոմների քարտերը</string>
   <string name="morphe_hide_album_cards_summary">Թաքցնում է ալբոմի քարտերը արտիստի նկարագրության տակ</string>
   <string name="morphe_hide_artist_cards_title">Թաքցնել արտիստների քարտերը</string>
@@ -122,7 +125,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Թաքցնել վերբեռնման ժամանակը</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Սահմանափակումներ.
-• Shorts-ի դարակները, ալիքի էջերը և որոնման արդյունքները կարող են դեռ ցուցադրել վերբեռնման ժամանակը
+• Shorts-ի դարակները կարող են դեռ ցուցադրել վերբեռնման ժամանակը
 • Չի աշխատում ավտոմոբիլային դասավորության հետ"</string>
   <string name="morphe_hide_video_thumbnail_title">Թաքցնել տեսանյութի նկարը</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -131,7 +134,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Թաքցնել դիտումների քանակը</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Սահմանափակումներ.
-• Shorts-ի դարակները, ալիքի էջերը և որոնման արդյունքները կարող են դեռ ցուցադրել դիտումների քանակը
+• Shorts-ի դարակները կարող են դեռ ցուցադրել դիտումների քանակը
 • Չի աշխատում ավտոմոբիլային դասավորության հետ"</string>
   <string name="morphe_hide_web_search_results_title">Թաքցնել վեբ որոնման արդյունքները</string>
   <string name="morphe_hide_web_search_results_summary">Թաքցնում է «Արդյունքներ վեբից» բաժինը որոնման արդյունքներից</string>
@@ -205,8 +208,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">Թաքցնել գրառումների դարակը</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Թաքցնել «Խանութ» կոճակը</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Թաքցնել «Բաժանորդագրվել» կոճակը</string>
   <string name="morphe_explore_menu_screen_title">Բացահայտման մենյու</string>
   <string name="morphe_explore_menu_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն բացահայտման մենյուում</string>
   <string name="morphe_hide_courses_menu_title">Թաքցնել դասընթացների մենյուն</string>
@@ -281,7 +282,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">Թաքցնել «Մեկնաբանության» կոճակը</string>
   <string name="morphe_hide_post_comments_preview_title">Թաքցնել մեկնաբանությունների նախադիտումը</string>
   <string name="morphe_hide_post_comments_preview_summary">Թաքցնում է գրառումների ներքևում գտնվող մեկնաբանությունների նախադիտումը</string>
-  <string name="morphe_hide_post_share_button_title">Թաքցնել «Կիսվելու» կոճակը</string>
   <string name="morphe_hide_post_share_button_summary">Հրապարակման պատկերների ներբեռնման կոճակը գծված է «Կիսվելու» կոճակի կողքին, ուստի այն նույնպես թաքցվում է</string>
   <string name="morphe_hide_ask_gemini_button_title">Թաքցնել \"Հարցրու Gemini\" կոճակը</string>
   <string name="morphe_hide_ask_gemini_button_summary">Թաքցնում է \"Հարցրու Gemini\" կոճակը \"Հարցրու այս տեսանյութի մասին\" վահանակի ներքևում</string>
@@ -290,14 +290,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Թաքցնում է հաջորդող տեսանյութի նախադիտումը լրիվ էկրանով նախքան ավտոմատ միացումը սկսվելը</string>
   <string name="morphe_hide_channel_bar_title">Թաքցնել ալիքի վահանակը</string>
   <string name="morphe_hide_channel_watermark_title">Թաքցնել ալիքի ջրային նշանը</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Թաքցնել գլուխները և \'Այս տեսանյութում\' կոճակը</string>
+  <string name="morphe_hide_chapters_button_title">Թաքցնել գլուխների կոճակը</string>
   <string name="morphe_hide_crowdfunding_box_title">Թաքցնել crowdfunding բլոկը</string>
   <string name="morphe_hide_emergency_box_title">Թաքցնել արտակարգ իրավիճակների վանդակները</string>
+  <string name="morphe_hide_in_this_video_button_title">Թաքցնել \"Այս տեսանյութում\" կոճակը</string>
   <string name="morphe_hide_info_panels_title">Թաքցնել տեղեկատվական վահանակները</string>
   <string name="morphe_hide_info_panels_summary">Թաքցնում է տեղեկատվական համատեքստի վահանակները, օրինակ՝ բժշկական տեղեկությունները</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Թաքցնել «Անդամակցել» կոճակը</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Թաքցնել «Ուղիղ եթերային չաթի կրկնություն» կոճակը</string>
@@ -313,8 +311,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Թաքցնում է նվագարկիչի կառավարման գրադիենտը, երբ մատով սահեցնում եք՝ պահելով արագացնելու համար</string>
   <string name="morphe_hide_timed_reactions_title">Թաքցնել ժամանակավոր արձագանքները</string>
   <string name="morphe_hide_timed_reactions_summary">Թաքցնում է այն հնարավորությունը, որը թույլ է տալիս օգտատերերին արձագանքել էմոջիներով մեկնաբանությունների բաժնում և ուղիղ չաթում</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Թաքցնել «Օգնություն և հետադարձ կապ» մենյուն</string>
   <string name="morphe_hide_help_feedback_menu_summary">Թաքցնում է «Օգնություն և հետադարձ կապ» մենյուն երբ օգտագործվում է երեք կետերով կոճակը, օրինակ՝ որոնման արդյունքների էջում</string>
   <string name="morphe_hide_handle_title">Թաքցնել հասցեն</string>
   <string name="morphe_hide_handle_summary">Թաքցնում է ձեր ալիքի հասցեն «Դուք» ներդիրում</string>
@@ -357,7 +353,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">Թաքցնել «Հարցնել» կոճակը</string>
   <string name="morphe_hide_channel_profile_button_title">Թաքցնել ալիքը և «Բաժանորդագրվել» կոճակը</string>
   <string name="morphe_hide_channel_profile_button_summary">Թաքցնում է ալիքի նկարը և «Բաժանորդագրվել» կոճակը գործողությունների տողի սկզբում</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Թաքցնել բաժանորդագրվելու կոճակը</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Թաքցնում է «Բաժանորդագրվել» և «Միանալ» կոճակները՝ ալիքի ավատարի կողքին, գործողությունների տողի սկզբում</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Թաքցնել «Հատված» կոճակը</string>
@@ -433,9 +428,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Մեկնաբանությունը թաքցված է Morphe-ի կողմից…</string>
   <string name="morphe_minimal_comments_button_title">Միացնել մինիմալիստական մեկնաբանությունների կոճակը</string>
   <string name="morphe_minimal_comments_button_summary">Թաքցնում է սահող քարտերը և դրանց էջերի ընտրիչը, որոնք ցուցադրվում են մեկնաբանությունների կոճակի վրա</string>
-  <string name="morphe_hide_comments_thanks_button_title">Թաքցնել \"Շնորհակալություն\" կոճակը</string>
   <string name="morphe_hide_comments_timestamp_button_title">Թաքցնել ժամանակային նշման կոճակը</string>
   <string name="morphe_hide_comments_top_fans_button_title">Թաքցնել \"Լավագույն երկրպագուները\" կոճակը</string>
+  <string name="morphe_hide_comments_topics_title">Թաքցնել \"Թեմաները\"</string>
+  <string name="morphe_hide_comments_topics_summary">Թաքցնում է \"Թեմաների\" զտիչների տողի տարբերակը և տեսանյութի ներքևում գտնվող \"Թեմայի\" մեկնաբանությունների նախադիտումները</string>
   <string name="morphe_hide_comments_translate_button_title">Թաքցնել թարգմանության կոճակը</string>
   <string name="morphe_hide_comments_zero_state_title">Թաքցնել \"Մեկնաբանություններ դեռ չկան\" հաղորդագրությունը</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Մաքրել ընդգծված որոնման հղումները</string>
@@ -488,7 +484,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Թաքցնել «Ենթագրեր» կոճակը</string>
   <string name="morphe_hide_cast_button_title">Թաքցնել «Cast» կոճակը</string>
-  <string name="morphe_hide_cast_button_summary">Թաքցնում է Cast կոճակը տեսանյութերի նվագարկիչում և գործիքագոտում</string>
   <string name="morphe_hide_collapse_button_title">Թաքցնել «Փոքրացնել» կոճակը</string>
   <string name="morphe_hide_fullscreen_button_title">Թաքցնել «Լրիվ էկրան» կոճակը</string>
   <string name="morphe_hide_player_control_buttons_background_title">Թաքցնել նվագարկիչի կառավարման կոճակների հետնամասը</string>
@@ -607,6 +602,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Հոսքի տեսանյութի ցանկացած հատվածի վրա սեղմելը և պահելը բացում է դրա մենյուն</string>
   <string name="morphe_feed_watch_later_button_title">Ցույց տալ «Դիտել ավելի ուշ» կոճակը նկարահատվածների վրա</string>
   <string name="morphe_feed_watch_later_button_summary">«Դիտել ավելի ուշ» կոճակը ցուցադրվում է հոսքի տեսանյութերի նկարահատվածների վրա, նշանի հետ, եթե տեսանյութը պահպանված է: Հպումով այն պահպանում է կամ հեռացնում տեսանյութը, իսկ սեղմելով և պահելով՝ բացում է «Պահպանել նվագացուցակում» բաժինը</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Բացել գրառման պատկերները լրիվ էկրանով</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Գրառման պատկերի վրա հպումը այն բացում է լրիվ էկրանով, այլ ոչ թե գրառումների ленտայում</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Ներբեռնել գրառումների պատկերները</string>
   <string name="morphe_post_image_download_summary">Ներբեռնման կոճակը ցուցադրվում է պատկերներով կամ GIF-երով գրառումների «Կիսվել» կոճակի կողքին, իսկ նրանց մենյուին ավելացվում է ներբեռնման տարբերակ</string>
@@ -800,6 +798,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_count_clear_done">Պահպանված կրկնությունների քանակը մաքրվել է</string>
   <string name="morphe_loop_count_flyout_name">Կրկնությունների քանակը</string>
   <string name="morphe_loop_count_dialog_message">Թե քանի անգամ է տեսանյութը նվագարկվում հաջորդ տեսանյութից առաջ, %1$s-ից մինչև %2$s: Թողեք դատարկ, որպեսզի տեսանյութը կրկնվի առանց սահմանափակման:</string>
+  <string name="morphe_loop_count_times">%s անգամ</string>
   <string name="morphe_loop_count_no_limit">Առանց սահմանափակման</string>
   <string name="morphe_loop_count_decrease">Ավելի քիչ անգամ</string>
   <string name="morphe_loop_count_increase">Ավելի շատ անգամ</string>
@@ -886,7 +885,7 @@ Second \"item\" text"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Գովազդային սպիտակ ցուցակը ցատկող մենյուում</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Ավելացնում է ցատկող տարր, որը թույլ է տալիս գովազդները ցուցադրվեն այդ տեսանյութի ալիքում</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Այս գործառույթը կարող է պահանջել PotHelper-ի օգտագործում կամ \"Spoof video streams\"-ի փոփոխումը TV-ի կամ Android VR մուտքի տարբերակին</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Այս հնարավորությունը կարող է պահանջել PotHelper-ի օգտագործում կամ \"Spoof video streams\"-ի փոփոխում \"TV\" կամ \"Android VR\" մուտքի\"</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Արագության սպիտակ ցուցակը ցատկող մենյուում</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Ավելացնում է ցատկող տարր, որը միշտ նվագում է այդ տեսանյութի ալիքը 1.0x արագությամբ</string>
   <string name="morphe_queue_manager_check_failed_auth">Մուտք չէր կատարված</string>
@@ -991,6 +990,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Միացնել սեղմելով սահեցնելու ժեստը</string>
   <string name="morphe_swipe_press_to_engage_summary">Պահանջում է սեղմել և պահել, նախքան սվայպի ժեստի ճանաչումը</string>
   <string name="morphe_swipe_haptic_feedback_title">Միացնել հապտիկ հետադարձ կապը</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Թռչնում է, երբ սեղմելով և պահելով սկսվում է սլայդի ժեստը</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Պահպանել և վերականգնել լուսավորությունը</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Հիշում է պայծառության մակարդակը լրիվ էկրան ռեժիմ մուտք գործելիս / դուրս գալիս</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Միացնել լուսավորության ավտոմատ կարգավորման ժեստը</string>
@@ -1034,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Ուղղահայաց overlay (մինիմալիստական)</string>
   <string name="morphe_swipe_change_video_title">Միացնել սվայպը տեսանյութերը փոխելու համար</string>
   <string name="morphe_swipe_change_video_summary">Սահեցրեք լրիվ էկրանի ռեժիմում՝ անցնելու հաջորդ կամ նախորդ տեսանյութին</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Սեղմելու ժեստ</string>
+  <string name="morphe_hold_gesture_screen_summary">Փոխեք և արգելափակեք կայացման արագությունը՝ սեղմելու և պահելուց հետո քաշելով</string>
+  <string name="morphe_hold_gesture_title">Միացնել սեղմելու ժեստը</string>
+  <string name="morphe_hold_gesture_summary">Տեսանյութը սեղմելուն և պահելուն կարող է հաջորդել քաշումը: Սեղմած պահելու ընթացքում արագությունը հավասար է սեղմելու և պահելու կայացման արագությանը</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Չի օգտագործվում, երբ միացված է սեղմելով սլայդելը: Հպեք՝ փոփոխելու համար</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Սեղմելով սլայդելը միացված է</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Սեղմելու և պահելու ժեստը և սլայդելու կառավարման սեղմելով սլայդելու ժեստը երկուսն էլ սկսվում են հպումից և պահումից, ուստի դրանցից միայն մեկը կարող է միացված լինել:</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Անջատել սեղմելով սլայդելը</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Սեղմելու և պահելու ժեստը չի օգտագործվում, երբ միացված է սեղմելով սլայդելը</string>
+  <string name="morphe_hold_gesture_dialog_title">Սեղմելու և պահելու ժեստը միացված է</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Անջատել սեղմելու և պահելու ժեստը</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Միացնել հապտիկ հետադարձ կապը</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Թռչնում է, երբ արագությունը փոխվում է և երբ արագությունը ստվարվում է</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Քաշեք կողքի՝ արագությունը փոխելու համար</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Հպပြီး սեղմած պահելուց հետո քաշեք ձախ՝ ավելի դանդաղ նվագելու համար, և աջ՝ ավելի արագ նվագելու համար: Որքան հեռու քաշեք, արագությունը կշարունակի փոխվել, մինչև մատը վերադառնա</string>
+  <string name="morphe_hold_gesture_speed_step_title">Արագության քայլ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Քաշելու զգայունություն</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Ցածր</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Նորմալ</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Բարձր</string>
+  <string name="morphe_hold_gesture_speed_min_title">Ամենադանդաղ արագություն</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Ամենադանդաղ արագությունը, որին կարող է հասնել քաշումը</string>
+  <string name="morphe_hold_gesture_speed_max_title">Ամենաարագ արագությունը</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Ամենաարագ արագությունը, որին կարող է հասնել քաշումը (մինչև 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Քաշեք ներքև՝ արագությունը սառեցնելու համար</string>
+  <string name="morphe_hold_gesture_lock_summary">Հպատակելու և սեղմած պահելուց հետո, քաշեք ներքև, որպեսզի արագությունը պահպանվի մ আঙիտը բարձրացնելիս: Հպեք նշանին կամ նորից սեղմած պահեք՝ սառեցումը հանելու համար</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Միշտ ցույց տալ սառեցման նշանը</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Սառեցված արագության նշանը մնում է տեսանելի, նույնիսկ երբ ընտռայցի կառավարման գործիքները թաքցված են</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Սառեցումը հանել տեսանյութի փոփոխության ժամանակ</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Սառեցված արագությունը դադարում է, երբ սկսվում է մեկ այլ տեսանյութ</string>
+  <string name="morphe_hold_gesture_lock_hint">Քաշեք ներքև՝ արգելափակելու համար</string>
+  <string name="morphe_hold_gesture_lock_release">Բաց թողեք՝ %s-ը արգելափակելու համար</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Ենթագրեր</string>
   <string name="morphe_captions_screen_summary">Կառավարել ավտոմատ ենթագրերը և ենթագրերի cookie-ները</string>
@@ -1082,8 +1115,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">Տառագրության որոշ թարգմանություններ անհասանելի են: Ցուցադրվում են հասանելի տառագրությունները:</string>
   <string name="morphe_caption_blocks_too_large">Տառագրության երկու լեզուները չեն տեղավորվում այս նվագարկիչում: Ցուցադրվում է հիմնական լեզուն:</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Նավիգացիայի վահանակ</string>
-  <string name="morphe_navigation_bar_screen_summary">Ընտրեք, թե որ կոճակները հայտնվեն ներքևի նավիգացիոն վահանակում</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Թաքցնել «Գլխավոր» կոճակը</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1101,11 +1132,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">Դիտել ավելի ուշ</string>
   <string name="morphe_show_settings_button_title">Ցուցադրել կարգավորումների կոճակը</string>
   <string name="morphe_show_settings_button_type_title">Կարգավորումների կոճակի գործողությունը</string>
-  <string name="morphe_show_settings_button_type_summary">Միացված լինելու դեպքում բացում է Morphe-ի կարգավորումները, իսկ անջատված լինելու դեպքում՝ YouTube-ի կարգավորումները</string>
+  <string name="morphe_show_settings_button_type_summary">Երբ ակտիվ է, հպումը բացում է Morphe-ի կարգավորումները, իսկ երկար սեղմելը՝ YouTube-ի կարգավորումները. անջատեք՝ փոխելու համար</string>
   <string name="morphe_navigation_buttons_order_title">Նավիգացիոն կոճակների հերթականությունը</string>
   <string name="morphe_navigation_buttons_order_summary">Քաշեք կոճակները՝ նավիգացիոն վահանակում դրանց հերթականությունը փոխելու համար</string>
   <string name="morphe_swap_create_with_notifications_button_title">Փոխել «Ստեղծել» կոճակը «Ծանուցումների» կոճակի հետ</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Եթե այս կարգավորման փոփոխությունը չի ազդում, փորձեք անցնել Incognito ռեժիմի</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Տեղափոխում է Ծանուցումների կոճակը նավիգացիայի վահանակ, իսկ Ստեղծել կոճակը՝ գործիքների վահանակ: Եթե փոփոխությունները չեն գործում, փորձեք անցնել Ինկոգնիտո ռեժիմի</string>
   <string name="morphe_hide_navigation_button_labels_title">Թաքցնել նավիգացիայի կոճակների պիտակները</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Թաքցնել նոր բովանդակության կետը</string>
   <string name="morphe_hide_navigation_bar_title">Թաքցնել նավիգացիայի վահանակը</string>
@@ -1134,18 +1165,31 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Կարգավորեք ապակե նավիգացիոն վահանակի թափանցիկության մակարդակը (0-ն թափանցիկ է, 100-ը՝ անթափանցիկ)</string>
   <string name="morphe_navigation_bar_glass_round_title">Ապակե նավիգացիայի շերտի կլորացում</string>
   <string name="morphe_navigation_bar_glass_round_summary">Ապակե նավիգացիայի շերտին հաղորդում է կլոր ծայրեր՝ ապակե մինի-նվագարկիչի անկյունների փոխարեն</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Ապակե նավիգացիոն վահանակի եզրը</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Գծում է լուսավոր եզր ապակե նավիգացիոն վահանակի շուրջ</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Ապակե նավիգացիոն վահանակի ստորին լրացուցիչ տարածքը</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Կարգավորեք հեռավորությունը ապակե նավիգացիայի վահանակի և էկրանի հատակի կամ համակարգային նավիգացիայի միջև</string>
   <string name="morphe_navigation_bar_glass_size_title">Ապակե նավիգացիոն վահանակի չափսը</string>
   <string name="morphe_navigation_bar_glass_size_summary">Կարգավորեք ապակե նավիգացիոն վահանակի բարձրությունը, լայնությունը և կոճակների հեռավորությունը՝ նախնական դիտման հնարավորությամբ: Էկրանի լայնությանը չհամապատասխանող կոճակները թաքցվում են</string>
+  <string name="morphe_glass_menus_screen_title">Ապակյա մենյուներ</string>
+  <string name="morphe_glass_menus_screen_summary">Մենյուներ՝ որպես մատե ապակի՝ իրենց հետևում գտնվող լղկված բովանդակության վրա</string>
+  <string name="morphe_glass_menus_title">Միացնել ապակյա մենյուները</string>
+  <string name="morphe_glass_menus_summary">Ցուցադրում է մենյուները և ներքևի թերթերը որպես մատե ապակի, ընդ որում՝ դրանց հետևում գտնվող բովանդակությունը լղկված է</string>
+  <string name="morphe_glass_menus_user_dialog_message">Մենյուները ցուցադրվում են գրեթե անթափանց, երբ միացված է մարտկոցի խնայողը, կամ եթե սարքը չի աջակցում լղկմանը</string>
+  <string name="morphe_glass_menus_opacity_title">Ապակու թափանցիկությունը</string>
+  <string name="morphe_glass_menus_opacity_summary">Որքանով է մենյուն ծածկում լղիզված բովանդակությունը (0-ն թափանցիկ է, 100-ը՝ անթափանցիկ)</string>
+  <string name="morphe_glass_menus_blur_title">Մշուշում</string>
+  <string name="morphe_glass_menus_blur_summary">Որքանով է լղիզված մենյուի հետևում գտնվող բովանդակությունը</string>
+  <string name="morphe_glass_menus_dim_title">Մգլում</string>
+  <string name="morphe_glass_menus_dim_summary">Որքանով է մգացվում էկրանը ներքևի թերթի շուրջ</string>
   <string name="morphe_navigation_bar_glass_size_height">Բարձրություն</string>
   <string name="morphe_navigation_bar_glass_size_width">Առավելագույն լայնություն</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Կոճակների հեռավորություն</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Ցուցադրվող կոճակներ՝ %1$s %2$s-ից</string>
-  <string name="morphe_toolbar_screen_title">Գործիքների վահանակ</string>
-  <string name="morphe_toolbar_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն գործիքների վահանակում</string>
   <string name="morphe_hide_toolbar_chat_button_title">Թաքցնել չաթի կոճակը</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Թաքցնել ուղեկցի կոճակը</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Թաքցնել խոսափողի կոճակը</string>
   <string name="morphe_hide_toolbar_search_button_title">Թաքցնել որոնման կոճակը</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Երբ միացված է, հպումը բացում է Morphe-ի կարգավորումները, իսկ երկար սեղմումը՝ YouTube-ի կարգավորումները. անջատեք՝ փոխելու համար</string>
   <string name="morphe_toolbar_buttons_order_title">Գործիքագոտու կոճակների հերթականությունը</string>
   <string name="morphe_toolbar_buttons_order_summary">Քաշեք կոճակները՝ գործիքագոտում դրանց հերթականությունը փոխելու համար</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1176,43 +1220,28 @@ Second \"item\" text"</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Անջատել կրկնակի հպումը՝ հավանելու համար</string>
   <string name="morphe_hide_shorts_ai_button_title">Թաքցնել AI կոճակը</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Թաքցնել «Ավտոմատ թարգմանված» պիտակը</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Թաքցնել ալիքի շերտը</string>
-  <string name="morphe_hide_shorts_comments_button_title">Թաքցնել «Մեկնաբանություններ» կոճակը</string>
   <string name="morphe_hide_shorts_effect_button_title">Թաքցնել էֆեկտի կոճակը</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Թաքցնել տեսանյութի հղման պիտակը</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Թաքցնել ժեստերի հուշումները</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Թաքցնել «Կանաչ էկրան» կոճակը</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Թաքցնել հեշթեգի կոճակը</string>
   <string name="morphe_hide_shorts_info_panel_title">Թաքցնել տեղեկատվական վահանակը</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Թաքցնել Միանալ կոճակը</string>
   <string name="morphe_hide_shorts_like_button_title">Թաքցնել «Հավանել» կոճակը</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Թաքցնել «Հավանել» կոճակի շռայլության անիմացիան</string>
   <string name="morphe_hide_shorts_live_preview_title">Թաքցնել ուղիղ եթերների նախադիտումը</string>
   <string name="morphe_hide_shorts_location_label_title">Թաքցնել տեղադրության պիտակը</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Թաքցնել նավիգացիայի շերտը</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Թաքցնել \"Նոր գրառումներ\" կոճակը</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Թաքցնել դադարեցման վերապատկերման կոճակները</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Թաքցնել նախադիտման մեկնաբանությունը</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Թաքցնել «Ռեմիքս» կոճակը</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Թաքցնել «Պահպանել» կոճակը</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Թաքցնել \"Պահպանել երաժշտությունը\" կոճակը</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Թաքցնել որոնման առաջարկությունները</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Թաքցնել «Կիսվել» կոճակը</string>
-  <string name="morphe_hide_shorts_shop_button_title">Թաքցնել Խանութի կոճակը</string>
   <string name="morphe_hide_shorts_sound_button_title">Թաքցնել «Ձայն» կոճակը</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Թաքցնել ձայնի մետատվյալների պիտակը</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Թաքցնել «Բաժանորդագրվել» կոճակը</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Թաքցնել «Գնել Super Thanks» կոճակը</string>
   <string name="morphe_hide_shorts_tagged_products_title">Թաքցնել թեգված ապրանքները</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Թաքցնել «Առաջիկա» կոճակը</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Թաքցնել \"Օգտագործել այս ձայնը\" կոճակը</string>
   <string name="morphe_hide_shorts_use_template_button_title">Թաքցնել \"Օգտագործել այս կաղապարը\" կոճակը</string>
-  <string name="morphe_hide_shorts_video_title_title">Թաքցնել տեսանյութի վերնագիրը</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Թաքցնել վերջնական էկրանի առաջարկվող տեսանյութը</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Թաքցնում է առաջարկվող տեսանյութի շերտը, որը հայտնվում է տեսանյութի ավարտից հետո
@@ -1380,6 +1409,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Անջատել հոսքի ավտոմատ թարմացումը</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Կանխում է հոսքերի ավտոմատ թարմացումը, երբ դրանք հնացած են դառնում</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Առանձնացնել ծանուցումները</string>
+  <string name="morphe_ungroup_notifications_summary">Ցուցադրում է ալիքի խմբավորված վերբեռնումների յուրաքանչյուր տեսանյութ որպես առանձին ծանուցում</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Լրահոսի քարտի դասավորություն</string>
   <string name="morphe_feed_card_layout_entry_1">Դասական</string>
@@ -1492,6 +1524,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Որոնման արդյունքները</string>
   <string name="morphe_dearrow_titles_icon_title">Ցուցադրել DeArrow-ի սիմվոլը</string>
   <string name="morphe_dearrow_titles_icon_summary">Ցուցադրում է DeArrow-ի սիմվոլը այն տեսանյութերի վերնագրերում, որոնք ունեն հասարակության կողմից տրամադրված վերնագիր կամ նկար: Հպեք սիմվոլին՝ բնօրինակ վերնագիրը և նկարը տեսնելու համար</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Մաքրել վերնագրերը</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Մաքրում է այն տեսանյութերի վերնագրերը, որոնք չունեն DeArrow վերնագիր: Մեծատառերով գրված բառերը փոխվում են սովորականի, իսկ էմոջիները, զարդարված տեքստերը և կրկնվող բացականչական նշանները հեռացվում են</string>
   <string name="morphe_dearrow_casual_mode_title">Casual ռեժիմ</string>
   <string name="morphe_dearrow_casual_mode_summary">Ցույց է տալիս բնօրինակ վերնագիրը DeArrow-ի վերնագրի փոխարեն, եթե DeArrow-ի օգտատերերը քվեարկել են, որ նախընտրում են բնօրինակ վերնագիրը</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Բնօրինակ վերնագիրը ցույց տալու համար անհրաժեշտ casual քվեների նվազագույն քանակը</string>
@@ -1712,13 +1746,9 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Բաց է թողնում որակի ընտրության մենյուն և անմիջապես բացում որակի առաջացած մենյուն</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Թաքցնել Premium որակի տարբերակները</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Առաջնահերթություն տալ տեսանյութի որակին</string>
-  <string name="morphe_video_quality_prioritize_summary">Տեսանյութի առկայ բարձրագույն որակն ավելի կարևոր է համարում, քան կոդեկի արդյունավետությունը</string>
-  <string name="morphe_video_quality_prioritize_dialog">Եթե այս կարգավորումը անջատված է, ապա հին տեսանյութերի համար որակի ընտրության հնարավորությունները կարող են չլինել</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Թույլատրել \'Android VR\' / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Թույլ է տալիս ծրագրային AV1 դեկոդավորում \'Android VR\' / visionOS հաճախորդն օգտագործելիս</string>
+  <string name="morphe_spoof_video_streams_av1_title">Թույլատրել \"Android VR\" / \"visionOS\" AV1-ը</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Թույլ է տալիս AV1-ի ծրագրային դեկոդավորում \"Android VR\" / \"visionOS\" հաճախորդի օգտագործման ժամանակ</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Այս կարգավորման ակտիվացումը կարող է օգտագործել AV1-ի ծրագրային դեկոդավորումը
 
 AV1-ով տեսանյութի վերարտադրությունը կարող է կտրվել կամ կադրեր բաց թողնել"</string>
@@ -1955,7 +1985,6 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_live_chat_translate_language_title">Թարգմանության լեզուն</string>
   <string name="morphe_live_chat_translate_exclude_title">Բացառված լեզուներ</string>
   <string name="morphe_live_chat_translate_exclude_summary">Ստորակետներով բաժանված լեզվական կոդեր, օրինակ՝ id,en: Այս լեզուներով հաղորդագրությունները չեն թարգմանվում</string>
-  <string name="morphe_live_chat_translate_provider_title">Թարգմանչի ծառայություն</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API բանալի</string>

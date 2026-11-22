@@ -142,13 +142,13 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Дараах тохиргоог идэвхжүүлж үзнэ үү: Видео стрийм дуурайх &gt; Android VR-т нэвтрэх</string>
   <string name="morphe_spoof_video_streams_client_type_title">Үндсэн клиент</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR-т нэвтрэх</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-т тусдаа нэвтрэлт шаардлагатай. Үргэлжлүүлэхийн тулд энд дарна уу</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Одоогоор Android VR-т нэвтэрсэн байна</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\'-ээр нэвтрэх</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\'-т тусад нь нэвтрэх шаардлагатай. Үргэлжлүүлэхийн тулд энд дарна уу</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Одоогоор \'Android VR\'-т нэвтэрсэн байна</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Энэ функцийг ашиглахын тулд \'Үндсэн клиент\'-ийг Android VR болгож өөрчилнө үү</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-т нэвтрэх</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-т нэвтрэх нь зарим хэрэглэгчдийн тоглуулах үйлдлийн алдааг засах боломжтой
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Энэхүү функцийг ашиглахын тулд \'Үндсэн клиент\'-ийг \'Android VR\' болгож өөрчилнө үү</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\'Android VR\'-т нэвтрэх</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"'Android VR'-т нэвтрэх нь зарим хэрэглэгчдийн тоглуулалтын асуудлыг шийдвэрлэх боломжтой
 
 Нэвтрэхийн тулд доорх үргэлжлүүлэх товчийг дарна уу"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Гарах</string>
@@ -169,35 +169,35 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
 • Таны Morphe тохиргоо Android VR баталгаажуулалтыг импортлах/экспортлохгүй
 • Хэрэв энэ аппликейшнийг 6 сарын турш ашиглаагүй бол Google энэ баталгаажуулалтыг устгах болно
 • Хэрэв та Google нууц үгээ сольсон эсвэл Google тохиргооноосоо энэ төхөөрөмжийг хассан бол дахин нэвтрэх шаардлагатай болно"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Мобайл вебээр нэвтрэх</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Мобайл веб\'-ээр нэвтрэх</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Сонголттой: Өөрийн бүртгэлээр видео үзэхийн тулд YouTube вэбсайтад нэвтрэнэ үү. Үргэлжлүүлэхийн тулд энд дарна уу</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Одоогоор Мобайл вебээр нэвтэрсэн байна</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Одоогоор \'Mobile Web\'-д нэвтэрсэн байна</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Энэ функцийг ашиглахын тулд \'Үндсэн клиент\'-ийг Mobile Web болгож өөрчилнө үү</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-д нэвтрэх</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web нь нэвтрээгүй эсвэл YouTube вэбсайтад нэвтэрсэн үед видеог тоглуулдаг
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Энэ функцийг ашиглахын тулд \'Үндсэн клиент\'-ийг \'Mobile Web\' болгож өөрчилнө үү</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobile Web\'-д нэвтрэх</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' нь нэвтрээгүй эсвэл YouTube вэбсайтад нэвтэрсэн үед видеог тоглуулах боломжтой
 
-• Нэвтэрсэн үед насны хязгаарлалттай видео шиг бүртгэл шаардлагатай видеог тоглуулж болно
-• Google-ийн нэвтрэх хуудас энэ аппликейшн дээр нээгдэнэ
-• Нэвтрэхийг зөвхөн таны үзэх видеог авах зорилгоор ашиглана
-• Нэвтрэл зөвхөн энэ төхөөрөмж дээр хадгалагдана
+• Нэвтэрсэн тохиолдолд насны хязгаарлалттай видео зэрэг бүртгэл шаардсан видеонуудыг тоглуулж болно
+• Энэ апп дотор Google-ийн нэвтрэх хуудас нээгдэнэ
+• Нэвтрэлтийг зөвхөн таны тоглуулж буй видеонуудыг авах зорилгоор ашиглана
+• Нэвтрэлт зөвхөн энэ төхөөрөмж дээр хадгалагдана
 
-Нэвтрэхийн тулд доорх үргэлжлүүлэх товчийг дарна уу"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Нэвтрэлийг хадгаллаа
+Нэвтрэхийн тулд доор உள்ள 'Үргэлжлүүлэх' товчийг дарна уу"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Нэвтрэлт хадгалагдлаа
 
-• Таны Morphe тохиргоо Mobile Web-ийн нэвтрэлийг импортлох/экспортолохгүй
-• Хэрэв Google нэвтрэлийг дуусгавал, та дахин нэвтрэх хүртэл видеонууд нэвтрээгүй төлөвт тоглогдоно
-• Гарах нь мөн энэ төхөөрөмжийг YouTube вэбсайтаас гаргана"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Мобайл вэб нэвтрэх хугацаа дууслаа, дахин нэвтрэхийг оролдоно уу</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Мобайл вэбээс гарлаа</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView олдохгүй байна. Нэвтрэхийн тулд үүнийг суулгах эсвэл идэвхжүүлнэ үү</string>
+• Таны Morphe тохиргоо нь 'Mobile Web' нэвтрэлтийг импортлох/экспортлохгүй
+• Хэрэв Google нэвтрэлтийг дуусгавал, та дахин нэвтрэх хүртэл видеонууд нэвтрэлгүй горимд тоглогдоно
+• Гарах үед энэ төхөөрөмж YouTube вэбсайтаас мөн гарна"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web нэвтрэлтийн хугацаа дууслаа, \'Mobile Web\'-д дахин нэвтрэхийг оролдоно уу</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'Mobile Web\'-ээс гарлаа</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' олдохгүй байна. Нэвтрэхийн тулд үүнийг суулгах эсвэл идэвхжүүлнэ үү</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 түр хугацаагаар боломжгүй байна (API-ийн хугацаа дууссан)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR нэвтрэх хугацаа дууссан байна, VR-т дахин нэвтрэхийг оролдоно уу</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' нэвтрэлтийн хугацаа дууслаа, VR-т дахин нэвтрэхийг оролдоно уу</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 түр хугацаагаар боломжгүй байна (төлөв %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 түр хугацаагаар боломжгүй байна</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR-т нэвтэрч чадсангүй, вебсайтын баталгаажуулалт зөвшөөрөгдөөгүй байна</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR-т нэвтэрч чадсангүй: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR-ээс гарлаа</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\'-ээс гарлаа</string>
   <string name="morphe_oauth2_toast_invalid">VR нэвтрэх токен хүчингүй байна, VR-т дахин нэвтрэхийг оролдоно уу</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Мэдэгдлийн медиа удирдлага</string>
@@ -215,6 +215,10 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_seek_notification_media_length_invalid">Хайлтын хугацаа 1-ээс %s секундын хооронд байх ёстой. Үндсэн утгыг ашиглана уу</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC протоколыг идэвхгүй болгох</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Видеоны чанарыг тэргүүн эрэмбэлэх</string>
+  <string name="morphe_prioritize_video_quality_summary">Кодекийн үр ашгаас илүү боломжтой хамгийн өндөр видео чанарыг ưuгоолно</string>
+  <string name="morphe_prioritize_video_quality_dialog">Хэрэв энэ тохиргоог унтраавал хуучин видеонууд дээр видео чанарын сонголтууд харагдахгүй байж болно</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC аудиог идэвхгүй болгох</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -255,7 +259,7 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_replace_music_with_youtube_title">Хуваалцах холбоосыг youtube.com болгон өөрчлөх</string>
   <string name="morphe_replace_music_with_youtube_summary">Хуваалцсан холбоосууд дахь music.youtube.com-ыг youtube.com-оор сольно</string>
   <string name="morphe_replace_links_with_shortener_title">Хуваалцах холбоосуудыг youtu.be болгож өөрчлөх</string>
-  <string name="morphe_replace_links_with_shortener_summary">Видеог youtu.be богино URL форматаар ашиглахыг шаардана</string>
+  <string name="morphe_replace_links_with_shortener_summary">Видеог богиносгосон \'youtu.be\' URL формат ашиглахыг шаарддаг</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Автомат</string>
@@ -267,19 +271,16 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_video_quality_default_mobile_title">Мобайл сүлжээн дэх видеоны үндсэн чанар</string>
   <string name="morphe_remember_video_quality_toast_mobile">Мобайл сүлжээний үндсэн чанарыг %s болгож өөрчиллөө</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi сүлжээний үндсэн чанарыг %s болгож өөрчиллөө</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Системийн хуваалцах цэсийг нээх</string>
-  <string name="morphe_open_system_share_sheet_summary">Агуулга хуваалгах үед апп доторх цэсний оронд системийн хуваалцах цэсийг нээнэ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho лог бүртгэл</string>
   <string name="morphe_debug_litho_entry_disabled">Идэвхгүй</string>
   <string name="morphe_debug_litho_entry_path">Зам</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Зам болон буфер</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho-гийн бүртгэл нь апп-ын layout бүрэлдэхүүн хэсгүүдийг, түүний дотор зарим UI бүрэлдэхүүн хэсгүүдийн дэлгэц дээрх текстийг бүртгэдэг
+  <string name="morphe_debug_litho_user_dialog_message">"Аппликейшны бүтцийн бүрэлдэхүүн хэсгүүдийг, түүний дотор зарим UI бүрэлдэхүүн хэсгүүдийн дэлгэц дээрх текстийг бүртгэнэ.
 
-Энэ нь тусгай шүүлтүүр үүсгэхэд бүрэлдэхүүн хэсгүүдийг тодорхойлоход тусална
+Энэ нь тусгай шүүлтүүр үүсгэхэд бүрэлдэхүүн хэсгүүдийг тодорхойлоход тусална.
 
-Гэвч энэ нь таны IP хаяг зэрэг зарим хэрэглэгчийн өгөгдлийг мөн бүртгэх болно"</string>
+Гэвч энэ нь таны IP хаяг зэрэг зарим хэрэглэгчийн мэдээллийг мөн бүртгэх болно"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Тусгай шүүлтүүр</string>
   <string name="morphe_custom_filter_screen_summary">Ямар ч бүрэлдэхүүн хэсгийг нуухын тулд тусгай шүүлтүүрийг тохируулна уу</string>
@@ -381,4 +382,8 @@ PotHelper татахын тулд энд дарна уу"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Клиентийн хүсэлтийн хязгаарлалтад тулгаагүй</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Клиентийн хүсэлтийн хязгаарлалт %s удаа гарсан</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунд</string>
+  <string name="morphe_navigation_bar_screen_title">Навигацийн мөр</string>
+  <string name="morphe_navigation_bar_screen_summary">Доод навигацийн мөрөнд аль товчнууд харагдахыг сонгоно уу</string>
+  <string name="morphe_toolbar_screen_title">Баруулбаар</string>
+  <string name="morphe_toolbar_screen_summary">Баруулбаар дээр аль бүрэлдэхүүн хэсгүүдийг харуулахыг сонгоно уу</string>
 </resources>

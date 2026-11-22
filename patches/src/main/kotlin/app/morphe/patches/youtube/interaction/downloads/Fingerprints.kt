@@ -323,19 +323,45 @@ internal object OfflineUpsellResponseFingerprint : Fingerprint(
 )
 
 /**
- * Fetches the player response a video is saved with, and puts it into the cache.
+ * Reads the player response a video is saved with from the cache, or fetches it and puts it into the cache.
+ * 21.47+ can also share a fetch that is in progress, and then caches a compressed copy.
  */
 internal object OfflinePlayerResponseFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L"),
     filters = listOf(
-        string("Some error occurred when reading from the cache player response"),
+        // Cache read.
+        methodCall(
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "Lcom/google/common/util/concurrent/ListenableFuture;"
+        ),
+        // Cache write.
         methodCall(
             parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
             returnType = "Lcom/google/common/util/concurrent/ListenableFuture;"
+        ),
+        // Callback of the cache write.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf(
+                "Lcom/google/common/util/concurrent/ListenableFuture;",
+                "Ljava/util/concurrent/Executor;",
+                "L"
+            ),
+            returnType = "V",
+            location = MatchAfterWithin(8)
         )
     )
+)
+
+/**
+ * Fetches the player response. 21.47+ has two calls.
+ * Must be used with the method of [OfflinePlayerResponseFingerprint].
+ */
+internal fun offlinePlayerResponseFetchCall(playerResponseModel: String) = methodCall(
+    parameters = listOf("L"),
+    returnType = playerResponseModel
 )
 
 /**

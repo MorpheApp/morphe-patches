@@ -141,15 +141,15 @@ Tryk på OK for at åbne Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prøv at aktivere: Spoof videostreams &gt; Android VR log ind</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standard klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR log ind</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR kræver et separat login. Tryk her for at fortsætte</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Logget ind i Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Log på med \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' kræver et separat login. Tryk her for at fortsætte</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Logget ind på \'Android VR\' i øjeblikket</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">For at bruge denne funktion, ændr \'Standardklient\' til Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Log ind i Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Indlogning på Android VR kan fikse afspilningsproblemer for nogle brugere
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">For at bruge denne funktion skal du ændre \'Standardklient\' til \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Log ind på \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Indlogning på 'Android VR' kan løse afspilningsproblemer for nogle brugere
 
-For at logge ind, tryk på fortsæt nedenfor"</string>
+For at logge ind skal du trykke på fortsæt nedenfor"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Log ud</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Anvisninger</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -168,35 +168,35 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
 • Dine Morphe indstillinger vil ikke importere/eksportere Android VR autentificering
 • Hvis denne app ikke bruges i 6 måneder, vil Google fjerne denne autentificering
 • Du skal logge ind igen, hvis du ændrer din Google-adgangskode eller deautoriserer denne enhed fra dine Google-instillinger"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Log ind via mobilweb</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Log på med \"Mobil web\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valgfrit: log ind på YouTube-webstedet for at afspille videoer med din konto. Tryk her for at fortsætte</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Logget ind på mobilweb i øjeblikket</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Logget ind på \'Mobilweb\' i øjeblikket</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">For at bruge denne funktion skal du ændre \'Standardklient\' til Mobil Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Log ind på Mobil Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobil Web afspiller videoer uden login, eller når der er logget ind på YouTube-webstedet
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">For at bruge denne funktion skal du ændre \'Standardklient\' til \'Mobilweb\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Log ind på \'Mobilweb\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobil web' afspiller videoer uden login eller når du er logget ind på YouTubes websted
 
-• Når der er logget ind, kan videoer, der kræver en konto, afspilles, såsom aldersbegrænsede videoer
+• Når du er logget ind, kan videoer, der kræver en konto, afspilles, f.eks. aldersbegrænsede videoer
 • Googles login-side åbnes i denne app
-• Login bruges kun til at hente de videoer, du afspiller
-• Login gemmes kun på denne enhed
+• Loginet bruges kun til at hente de videoer, du afspiller
+• Loginet gemmes kun på denne enhed
 
 Tryk på fortsæt nedenfor for at logge ind"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Login gemt
 
-• Dine Morphe-indstillinger importerer/eksporterer ikke login til Mobil Web
-• Hvis Google afslutter sessionen, afspilles videoer uden login, indtil du logger ind igen
-• Udlogning logger også denne enhed ud af YouTube-webstedet"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Indlogning på mobilweb er udløbet, prøv at logge ind på mobilweb igen</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Logget ud af mobilweb</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView er ikke tilgængelig. Installer eller aktiver den for at logge ind</string>
+• Dine Morphe-indstillinger importerer/eksporterer ikke login til 'Mobil web'
+• Hvis Google afslutter loginet, afspilles videoer uden login, indtil du logger ind igen
+• Hvis du logger ud, logges denne enhed også ud af YouTubes websted"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Login til mobil web er udløbet. Prøv at logge ind på \'Mobil web\' igen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Logget ud af \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' er ikke tilgængelig. Installer eller aktiver det for at logge ind</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er midlertidigt utilgængelig (API timeout)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR-indlogning er udløbet, prøv at logge ind på VR igen</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR-indlogning er udløbet, prøv at logge ind på VR igen</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 er midlertidigt utilgængelig (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 er midlertidigt utilgængelig</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan ikke logge ind på VR, website autentificering blev ikke godkendt</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge ind på VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Logget ud af Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Logget ud af \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Ugyldigt VR-logge-ind token, prøv at logge ind i VR igen</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Mediekontrol i notifikationer</string>
@@ -214,6 +214,10 @@ Tryk på fortsæt nedenfor for at logge ind"</string>
   <string name="morphe_seek_notification_media_length_invalid">Søgelængden skal være mellem 1 og %s sekunder. Bruger standardværdi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokol</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritering af videokvalitet</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriterer den højeste tilgængelige videokvalitet over codec-effektivitet</string>
+  <string name="morphe_prioritize_video_quality_dialog">Hvis denne indstilling er slået fra, kan ældre videoer vise ingen muligheder for videokvalitet</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Deaktiver DRC lyd</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -254,7 +258,7 @@ Tryk på fortsæt nedenfor for at logge ind"</string>
   <string name="morphe_replace_music_with_youtube_title">Skift delingslinks til youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Erstatter music.youtube.com med youtube.com i delte links.</string>
   <string name="morphe_replace_links_with_shortener_title">Skift delingslinks til youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Tvinger videoer til at bruge det forkortede youtu.be URL-format</string>
+  <string name="morphe_replace_links_with_shortener_summary">Tvinger videoer til at bruge det forkortede \'youtu.be\' URL-format</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatisk</string>
@@ -266,19 +270,16 @@ Tryk på fortsæt nedenfor for at logge ind"</string>
   <string name="morphe_video_quality_default_mobile_title">Standard videokvalitet på mobilnetværk</string>
   <string name="morphe_remember_video_quality_toast_mobile">Ændrede standard mobilkvalitet til: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Ændrede standard Wi-Fi-kvalitet til: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Åbn systemets delingsark</string>
-  <string name="morphe_open_system_share_sheet_summary">Åbner systemets delingsmenu i stedet for den i appen, når der deles indhold</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logning</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktiveret</string>
   <string name="morphe_debug_litho_entry_path">Sti</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Sti og buffer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho-logning logger appens layoutkomponenter, herunder skærmtekst for visse UI-komponenter.
+  <string name="morphe_debug_litho_user_dialog_message">"Logger appens layoutkomponenter, herunder skærmtekst for visse UI-komponenter.
 
 Det kan hjælpe med at identificere komponenter, når der oprettes brugerdefinerede filtre.
 
-Det vil dog også logge visse brugerdata, såsom din IP-adresse"</string>
+Det vil dog også logge nogle brugerdata, såsom din IP-adresse"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Brugerdefineret filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurer brugerdefinerede filtre for at skjule en komponent</string>
@@ -380,4 +381,8 @@ ID'et på den video, du ser, sendes til Return YouTube Dislike's API, og dine li
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ingen klienthastighedsbegrænsninger fundet</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client rate limit mødt %s gange</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekunder</string>
+  <string name="morphe_navigation_bar_screen_title">Navigationslinje</string>
+  <string name="morphe_navigation_bar_screen_summary">Vælg hvilke knapper der vises i den nederste navigationslinje</string>
+  <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
+  <string name="morphe_toolbar_screen_summary">Vælg hvilke komponenter der vises i værktøjslinjen</string>
 </resources>

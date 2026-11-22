@@ -141,15 +141,15 @@ Napauta OK avataksesi Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Kokeile ottaa käyttöön: Naamioi videovirrat &gt; Android VR -kirjautuminen</string>
   <string name="morphe_spoof_video_streams_client_type_title">Oletusasiakasohjelma</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR -kirjautuminen</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR vaatii erillisen kirjautumisen. Napauta tästä jatkaaksesi</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kirjautuneena Android VR -tilaan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' -kirjautuminen</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' vaatii erillisen kirjautumisen. Napauta tästä jatkaaksesi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kirjautuneena \'Android VR\' -tilaan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Käyttääksesi tätä ominaisuutta, aseta Android VR \'Oletusasiakasohjelma\'\'-asetukseksi</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Käyttääksesi tätä ominaisuutta, vaihda \'Oletusasiakasohjelma\' asetukseksi \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Kirjaudu Android VR -tilaan</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kirjautuminen Android VR -tilaan voi korjata toisto-ongelmia joillakin käyttäjillä.
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kirjautuminen Android VR -tilaan voi korjata toisto-ongelmia joillakin käyttäjillä
 
-Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
+Kirjaudu sisään painamalla alta Jatka-painiketta"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Kirjaudu ulos</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Ohjeet</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -168,35 +168,35 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
 • Morphe-asetuksesi tuonti/vienti ei sisällä Android VR -tunnistautumista
 • Jos tätä sovellusta ei käytetä 6 kuukauteen, Google poistaa tämän tunnistautumisen
 • Sinun on kirjauduttava uudelleen sisään, jos vaihdat Google-salasanasi tai poistat tämän laitteen rekisteröinnin Google-asetuksistasi"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Kirjautuminen mobiiliwebiin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobiiliverkko\' -kirjautuminen</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valinnainen: kirjaudu YouTube-verkkosivustolle toistaaksesi videoita tililläsi. Napauta tästä jatkaaksesi</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kirjautuneena mobiiliwebiin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kirjautuneena Mobile Web -tilaan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Käyttääksesi tätä ominaisuutta, aseta \'Oletusasiakasohjelma\'-asetukseksi Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Kirjaudu Mobile Webiin</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web toistaa videot kirjautumatta tai YouTube-sivustolle kirjautuneena
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Käyttääksesi tätä ominaisuutta, aseta \'Oletusasiakasohjelma\'-asetukseksi \'Mobiiliverkko\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Kirjaudu sisään \'Mobiiliverkkoon\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobiiliverkko' toistaa videot kirjautumatta tai YouTube-verkkosivustolle kirjautuneena
 
-• Kirjautuneena voit toistaa videot, jotka vaativat tilin, kuten ikärajoitetut videot
+• Kirjautuneena voit toistaa videoita, jotka vaativat tilin, kuten ikärajoitettuja videoita
 • Googlen kirjautumissivu avautuu tässä sovelluksessa
 • Kirjautumista käytetään vain toistamiesi videoiden hakemiseen
 • Kirjautuminen tallennetaan vain tälle laitteelle
 
-Kirjautuaksesi paina alta jatka"</string>
+Kirjautuaksesi sisään paina alla olevaa Jatka-painiketta"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kirjautuminen tallennettu
 
-• Morphe-asetuksesi eivät tuo sisään tai vie ulos Mobile Web -kirjautumista
-• Jos Google lopettaa kirjautumisen, videot toistetaan kirjautumatta, kunnes kirjaudut uudelleen sisään
-• Uloskirjautuminen kirjaa tämän laitteen myös ulos YouTube-sivustolta"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web -kirjautuminen vanhentui, yritä kirjautua Mobile Webiin uudelleen</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Kirjautuminen ulos Mobile Webistä</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView ei ole käytettävissä. Asenna tai ota se käyttöön kirjautuaksesi sisään</string>
+• Morphe-asetuksesi eivät tuo/vie 'Mobile Web' -kirjautumista
+• Jos Google lopettaa istunnon, videot toistetaan kirjautumatta, kunnes kirjaudut uudelleen
+• Uloskirjautuminen kirjaa tämän laitteen myös ulos YouTube-verkkosivustolta"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web -kirjautuminen vanhentui, yritä kirjautua uudelleen \'Mobile Web\' -tilaan</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Kirjattu ulos \'Mobile Web\' -tilasta</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' ei ole käytettävissä. Asenna tai ota se käyttöön kirjautuaksesi</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ei ole tilapäisesti käytettävissä (API-aikakatkaisu)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR -kirjautuminen vanhentui, yritä kirjautua uudelleen VR-tilaan</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' -kirjautuminen vanhentui, yritä kirjautua uudelleen VR-tilaan</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ei ole tilapäisesti käytettävissä (tila: %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 ei ole tilapäisesti käytettävissä</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Kirjautuminen VR-tilaan epäonnistui, verkkosivuston tunnistautumista ei hyväksytty</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kirjautuminen VR-tilaan epäonnistui: %s</string>
-  <string name="morphe_oauth2_toast_reset">Kirjauduttu ulos Android VR -tilasta</string>
+  <string name="morphe_oauth2_toast_reset">Kirjauduttu ulos \'Android VR\' -tilasta</string>
   <string name="morphe_oauth2_toast_invalid">Virheellinen VR-kirjautumistunniste, yritä kirjautua uudelleen VR-tilaan</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Ilmoituksen mediasäätimet</string>
@@ -214,6 +214,10 @@ Kirjautuaksesi paina alta jatka"</string>
   <string name="morphe_seek_notification_media_length_invalid">Kelauksen pituuden on oltava välillä 1 ja %s sekuntia. Käytetään oletusarvoa</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Poista QUIC-protokolla käytöstä</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Priorisoi videon laatua</string>
+  <string name="morphe_prioritize_video_quality_summary">Priorisoi korkeinta saatavilla olevaa videon laatua koodekin tehokkuuden sijaan</string>
+  <string name="morphe_prioritize_video_quality_dialog">Jos tämä asetus on pois päältä, vanhemmissa videoissa ei välttämättä näy videon laatuasetuksia</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Poista DRC-ääni käytöstä</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -254,7 +258,7 @@ Kirjautuaksesi paina alta jatka"</string>
   <string name="morphe_replace_music_with_youtube_title">Muuta jakolinkit youtube.com-sivustoksi</string>
   <string name="morphe_replace_music_with_youtube_summary">Korvaa music.youtube.com osoitteella youtube.com jaetuissa linkeissä</string>
   <string name="morphe_replace_links_with_shortener_title">Muuta jakolinkit youtu.be-sivustoksi</string>
-  <string name="morphe_replace_links_with_shortener_summary">Pakottaa videot käyttämään lyhennettyä youtu.be-URL-muotoa</string>
+  <string name="morphe_replace_links_with_shortener_summary">Pakottaa videot käyttämään lyhennettyä \'youtu.be\'-URL-muotoa</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automaattinen</string>
@@ -266,15 +270,12 @@ Kirjautuaksesi paina alta jatka"</string>
   <string name="morphe_video_quality_default_mobile_title">Videon oletuslaatu mobiiliverkossa</string>
   <string name="morphe_remember_video_quality_toast_mobile">Mobiiliverkon oletuslaatu muutettiin muotoon: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-oletuslaatu muutettiin muotoon: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Avaa järjestelmän jakovalikko</string>
-  <string name="morphe_open_system_share_sheet_summary">Avaa järjestelmän jakovalikon sovelluksen oman valikon sijaan sisällön jakamiseksi</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-kirjaaminen</string>
   <string name="morphe_debug_litho_entry_disabled">Pois käytöstä</string>
   <string name="morphe_debug_litho_entry_path">Polku</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Polku ja puskuri</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho-lokitus kirjaa sovelluksen asettelukomponentit, mukaan lukien joidenkin käyttöliittymäkomponenttien näyttötekstit.
+  <string name="morphe_debug_litho_user_dialog_message">"Kirjaa sovelluksen asettelukomponentit, mukaan lukien joidenkin käyttöliittymäkomponenttien näyttötekstit.
 
 Tämä voi auttaa komponenttien tunnistamisessa mukautettuja suodattimia luotaessa.
 
@@ -380,4 +381,8 @@ Katsomasi videon tunnus lähetetään Return YouTube Dislike -rajapintaan, ja ty
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Asiakkaan nopeusrajoituksia ei havaittu</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Asiakkaan nopeusrajoitus kohtattu %s kertaa</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekuntia</string>
+  <string name="morphe_navigation_bar_screen_title">Navigointipalkki</string>
+  <string name="morphe_navigation_bar_screen_summary">Valitse, mitkä painikkeet näkyvät alanavigointipalkissa</string>
+  <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
+  <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
 </resources>

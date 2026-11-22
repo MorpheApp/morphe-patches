@@ -255,10 +255,11 @@ public final class RedditSettingsStyle {
         currentPalette = detectPalette(activity);
         Utils.setIsDarkModeEnabled(currentPalette.isDark);
 
-        // Sync ThemeUtils so Morphe's CustomDialog (App Icon picker, Restart, Import/Export, etc.)
+        // Sync ThemeUtils so full screen pages (About) use the app background color,
+        // and Morphe's CustomDialog (App Icon picker, Restart, Import/Export, etc.)
         // uses Reddit's elevated dialog surface color and custom text/button styling.
-        ThemeUtils.setThemeLightColor(currentPalette.isDark ? Palette.LIGHT.dialogSurface : currentPalette.dialogSurface);
-        ThemeUtils.setThemeDarkColor(currentPalette.dialogSurface);
+        ThemeUtils.setThemeLightColor(currentPalette.isDark ? Palette.LIGHT.background : currentPalette.background);
+        ThemeUtils.setThemeDarkColor(currentPalette.background);
         ThemeUtils.setDialogThemeColors(
                 currentPalette.dialogSurface,
                 currentPalette.dialogTitle,
@@ -794,7 +795,11 @@ public final class RedditSettingsStyle {
     private static final float KNOB_CHECKED_RADIUS = Math.round(dpToPx(24)) / 2f;
     private static final float KNOB_UNCHECKED_RADIUS = Math.round(dpToPx(16)) / 2f;
     private static final float TRACK_OUTLINE_WIDTH = (float) Math.ceil(dpToPx(2));
-    private static final float CHECK_STROKE_WIDTH = dpToPx(1.4f);
+    /**
+     * The app check mark is the 20dp icon drawn at 12dp, with a stroke width of 1.8 / 20 of the icon.
+     */
+    private static final int CHECK_ICON_SIZE = Math.round(dpToPx(12));
+    private static final float CHECK_STROKE_WIDTH = dpToPx(1.08f);
 
     // Toggle colors of the app if available, otherwise of the active palette.
     private static int trackCheckedColor() {
@@ -931,6 +936,9 @@ public final class RedditSettingsStyle {
      */
     private static final class ToggleThumbDrawable extends StatefulDrawable {
         private final Path check = new Path();
+        @Nullable
+        private Drawable checkIcon;
+        private boolean checkIconLoaded;
 
         @Override
         public void draw(Canvas canvas) {
@@ -943,21 +951,38 @@ public final class RedditSettingsStyle {
             paint.setColor(color(checked ? knobCheckedColor() : knobUncheckedColor()));
             canvas.drawCircle(cx, cy, radius, paint);
 
-            if (checked) {
-                // Points in dp of a 24dp knob.
-                final float unit = Dim.dp(1);
-                check.reset();
-                check.moveTo(cx - 4.5f * unit, cy + 0.2f * unit);
-                check.lineTo(cx - 1.4f * unit, cy + 3.2f * unit);
-                check.lineTo(cx + 4.6f * unit, cy - 3.4f * unit);
+            if (!checked) return;
 
-                paint.setStyle(Paint.Style.STROKE);
-                paint.setStrokeWidth(CHECK_STROKE_WIDTH);
-                paint.setStrokeCap(Paint.Cap.ROUND);
-                paint.setStrokeJoin(Paint.Join.ROUND);
-                paint.setColor(color(checkMarkColor()));
-                canvas.drawPath(check, paint);
+            final int checkColor = color(checkMarkColor());
+            if (!checkIconLoaded) {
+                checkIconLoaded = true;
+                Drawable icon = ResourceUtils.getDrawable("icon_checkmark");
+                checkIcon = icon != null ? icon.mutate() : null;
             }
+
+            if (checkIcon != null) {
+                // The app check mark icon, centered on the knob.
+                final int left = Math.round(cx - CHECK_ICON_SIZE / 2f);
+                final int top = Math.round(cy - CHECK_ICON_SIZE / 2f);
+                checkIcon.setBounds(left, top, left + CHECK_ICON_SIZE, top + CHECK_ICON_SIZE);
+                checkIcon.setTint(checkColor);
+                checkIcon.draw(canvas);
+                return;
+            }
+
+            // Fallback with the shape of the app icon, in dp from the knob center.
+            final float unit = Dim.dp(1);
+            check.reset();
+            check.moveTo(cx - 4.84f * unit, cy - 0.13f * unit);
+            check.lineTo(cx - 1.75f * unit, cy + 2.85f * unit);
+            check.lineTo(cx + 4.88f * unit, cy - 3.66f * unit);
+
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(CHECK_STROKE_WIDTH);
+            paint.setStrokeCap(Paint.Cap.ROUND);
+            paint.setStrokeJoin(Paint.Join.ROUND);
+            paint.setColor(checkColor);
+            canvas.drawPath(check, paint);
         }
 
         @Override

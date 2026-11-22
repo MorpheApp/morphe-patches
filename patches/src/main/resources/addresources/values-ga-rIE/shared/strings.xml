@@ -80,18 +80,25 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_settings_about_close">Dún</string>
   <string name="morphe_settings_about_prerelease">Réamh-eisiúint</string>
   <string name="morphe_settings_about_update_available">Nuashonrú ar fáil: %s</string>
-  <string name="morphe_settings_about_update_hint">Chun do phataí a nuashonrú, úsáid Morphe chun an app seo a phataí arís</string>
+  <string name="morphe_settings_about_update_hint">Chun do phaistí a nuashonrú, bain úsáid as Morphe chun an aip seo a phaisteáil arís</string>
   <string name="morphe_settings_about_links_header">Naisc oifigiúla</string>
   <string name="morphe_settings_about_links_website">Suíomh Gréasáin</string>
   <string name="morphe_settings_about_links_donate">Tabhair Síntiús</string>
   <string name="morphe_settings_about_links_translations">Aistriúcháin</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Suas chun dáta</string>
-  <string name="morphe_settings_about_contributors">Cuirthaí</string>
-  <string name="morphe_settings_about_contributors_period">12 mhí anuas</string>
+  <string name="morphe_settings_about_contributors">Rannpháirtithe</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Gach am</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mhí</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mhí</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tréimhse ama</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s úsáideoir</string>
   <!-- People who donate to Morphe -->
-  <string name="morphe_settings_about_supporters">Tacaí</string>
-  <string name="morphe_settings_about_supporters_summary">Tacaí ar Open Collective</string>
-  <string name="morphe_settings_about_supporters_become">Éirigh ina thacaí</string>
+  <string name="morphe_settings_about_supporters">Tacadóirí</string>
+  <string name="morphe_settings_about_supporters_summary">Tacaitheoirí ar Open Collective</string>
+  <string name="morphe_settings_about_supporters_become">Bí i do thacadóir</string>
   <!-- Row under a list of people, leading to the rest of them. %s is how many more there are -->
   <string name="morphe_settings_about_people_more">Agus %s eile</string>
   <string name="morphe_settings_about_people_unavailable">Níorbh fhéidir an liosta a luchtú</string>
@@ -222,6 +229,9 @@ Mura n-athraítear na hoptamuithe ceallraí, d’fhéadfadh na nithe seo a leana
 • D’fhéadfadh an aip a dhúnadh go randamach
 • B’fhéidir nach n-oibreoidh fógraí
 • B’fhéidir nach n-oibreoidh athsheinm sa chúlra"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Oscail bileog chomhroinnte an chórais</string>
+  <string name="morphe_open_system_share_sheet_summary">Osclaíonn sé bileog chomhroinnte an chórais, seachas an ceann atá laistigh den aip, nuair a bhíonn ábhar á roinnt</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Láimhseáil nasc aip</string>
   <string name="morphe_link_handling_summary">Cumraigh naisc le hoscailt san aip seo</string>

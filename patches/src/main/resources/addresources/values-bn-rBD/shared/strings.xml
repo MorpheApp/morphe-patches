@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">অনুবাদগুলি</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">আপডেট করা হয়েছে</string>
   <string name="morphe_settings_about_contributors">কন্ট্রিবিউটরগণ</string>
-  <string name="morphe_settings_about_contributors_period">গত ১২ মাস</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">সর্বকালের</string>
+  <string name="morphe_settings_about_contributors_6_months">৬ মাস</string>
+  <string name="morphe_settings_about_contributors_3_months">৩ মাস</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">সময়কাল</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s জন ব্যবহারকারী</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">সমর্থকগণ</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective-এর সমর্থকগণ</string>
@@ -222,6 +229,9 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
 • অ্যাপ এলোমেলোভাবে বন্ধ হয়ে যেতে পারে
 • নোটিফিকেশন কাজ নাও করতে পারে
 • ব্যাকগ্রাউন্ড প্লেব্যাক কাজ নাও করতে পারে"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">সিস্টেম শেয়ার শিট খুলুন</string>
+  <string name="morphe_open_system_share_sheet_summary">কন্টেন্ট শেয়ার করার সময় ইন-অ্যাপ শেয়ার শীটের পরিবর্তে সিস্টেম শেয়ার শীট খোলে</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">অ্যাপ লিঙ্ক হ্যান্ডলিং</string>
   <string name="morphe_link_handling_summary">এই অ্যাপে লিঙ্ক খোলার জন্য কনফিগার করুন</string>

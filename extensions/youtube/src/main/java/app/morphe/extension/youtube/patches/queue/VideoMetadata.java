@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.ColorPalette;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.ColorPalette;
 import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** Server-supplied display data for a native playlist row. */

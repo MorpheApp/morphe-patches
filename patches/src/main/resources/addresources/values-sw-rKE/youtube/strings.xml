@@ -61,7 +61,10 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_account_menu_title">Washa chujio cha menyu ya chini ya Maktaba / Wewe</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Chujio cha menyu ya chini ya Maktaba / Wewe</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Ingiza majina ya menyu ya chini ya Maktaba / Wewe ya kuchuja, yakitenganishwa kwa mistari mipya</string>
+  <string name="morphe_hide_account_menu_badges_title">Ficha Beji</string>
   <string name="morphe_hide_account_menu_downloads_title">Ficha Pakua</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Ficha \'Video zilizopendwa\'</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Ficha \'Tazama baadaye\'</string>
   <string name="morphe_hide_album_cards_title">Ficha kadi za albamu</string>
   <string name="morphe_hide_album_cards_summary">Huficha kadi za albamu chini ya maelezo ya msanii</string>
   <string name="morphe_hide_artist_cards_title">Ficha kadi za msanii</string>
@@ -122,8 +125,8 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_upload_time_title">Ficha muda wa kupakia</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Vikomo:
-• Rafu za Shorts, kurasa za chaneli, na matokeo ya utafutaji bado zinaweza kuonyesha muda wa kupakia
-• Haifanyi kazi na mpangilio wa magari"</string>
+• Rafu za Shorts bado zinaweza kuonyesha muda wa kupakia
+• Haifanyi kazi na mpangilio wa gari"</string>
   <string name="morphe_hide_video_thumbnail_title">Ficha picha ya awali ya video</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Ficha lebo za video</string>
@@ -131,8 +134,8 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_view_count_title">Ficha idadi ya utazamaji</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Vikomo:
-• Rafu za Shorts, kurasa za chaneli, na matokeo ya utafutaji bado zinaweza kuonyesha idadi ya mitazamo
-• Haifanyi kazi na mpangilio wa magari"</string>
+• Rafu za Shorts bado zinaweza kuonyesha idadi ya utazamaji
+• Haifanyi kazi na mpangilio wa gari"</string>
   <string name="morphe_hide_web_search_results_title">Ficha matokeo ya utafutaji wa wavuti</string>
   <string name="morphe_hide_web_search_results_summary">Huficha sehemu ya \'Matokeo kutoka kwenye wavuti\' kutoka kwenye matokeo ya utafutaji</string>
   <string name="morphe_hide_you_may_like_section_title">Ficha sehemu ya \'Unaweza kupenda\'</string>
@@ -205,8 +208,6 @@ Ripoti ni za hadhara na hupitiwa kabla ya chaneli kuongezwa kwenye orodha. Kuond
   <string name="morphe_hide_posts_shelf_title">Ficha rafu ya machapisho</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Ficha kitufe cha Duka</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Ficha kitufe cha Jisajili</string>
   <string name="morphe_explore_menu_screen_title">Menyu ya Gundua</string>
   <string name="morphe_explore_menu_screen_summary">Chagua vipengele gani vionekane kwenye menyu ya Gundua</string>
   <string name="morphe_hide_courses_menu_title">Ficha menyu ya Kozi</string>
@@ -281,7 +282,6 @@ Vikwazo:
   <string name="morphe_hide_post_comment_button_title">Ficha kitufe cha Maoni</string>
   <string name="morphe_hide_post_comments_preview_title">Ficha onyesho la awali la maoni</string>
   <string name="morphe_hide_post_comments_preview_summary">Huficha onyesho la awali la maoni chini ya machapisho</string>
-  <string name="morphe_hide_post_share_button_title">Ficha kitufe cha Shiriki</string>
   <string name="morphe_hide_post_share_button_summary">Kitufe cha kupakua picha za chapisho kinachora kando ya kitufe cha Shiriki, hivyo pia kinafichwa</string>
   <string name="morphe_hide_ask_gemini_button_title">Ficha kitufe cha \'Uliza Gemini\'</string>
   <string name="morphe_hide_ask_gemini_button_summary">Huficha kitufe cha \'Uliza Gemini\' chini ya paneli ya \'Uliza kuhusu video hii\'</string>
@@ -290,14 +290,12 @@ Vikwazo:
   <string name="morphe_hide_autoplay_preview_summary">Huficha onyo la video inayokuja katika skrini nzima kabla ya autoplay kuanza</string>
   <string name="morphe_hide_channel_bar_title">Ficha upau wa chaneli</string>
   <string name="morphe_hide_channel_watermark_title">Ficha alama ya maji ya chaneli</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Ficha Sura na kitufe cha \'Katika video hii\'</string>
+  <string name="morphe_hide_chapters_button_title">Ficha kitufe cha Sura</string>
   <string name="morphe_hide_crowdfunding_box_title">Ficha kisanduku cha ufadhili wa umma</string>
   <string name="morphe_hide_emergency_box_title">Ficha visanduku vya dharura</string>
+  <string name="morphe_hide_in_this_video_button_title">Ficha kitufe cha \"Katika video hii\"</string>
   <string name="morphe_hide_info_panels_title">Ficha paneli za habari</string>
   <string name="morphe_hide_info_panels_summary">Huficha paneli za muktadha wa habari, kama vile habari za matibabu</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Ficha kitufe cha Jiunge</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Ficha kitufe cha \'Rudia soga ya moja kwa moja\'</string>
@@ -313,8 +311,6 @@ Vikwazo:
   <string name="morphe_hide_tap_and_hold_gradient_summary">Huficha mwelekeo wa rangi wa vidhibiti vya kicheza wakati unatelezesha kidole chako ukishikilia ili kuongeza kasi</string>
   <string name="morphe_hide_timed_reactions_title">Ficha miitikio ya muda</string>
   <string name="morphe_hide_timed_reactions_summary">Huficha kipengele kinachoruhusu watumiaji kuitikia kwa emoji katika sehemu ya maoni na soga ya moja kwa moja</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Ficha menyu ya \'Msaada &amp; maoni\'</string>
   <string name="morphe_hide_help_feedback_menu_summary">Huficha menyu ya \'Msaada &amp; maoni\' unapotumia kitufe cha nukta tatu, kama vile kwenye matokeo ya utafutaji</string>
   <string name="morphe_hide_handle_title">Ficha jina la utambulisho</string>
   <string name="morphe_hide_handle_summary">Huficha jina la utambulisho wa chaneli yako kwenye tabo ya \'Wewe\'</string>
@@ -357,7 +353,6 @@ Vikwazo:
   <string name="morphe_hide_ask_button_title">Ficha kitufe cha Uliza</string>
   <string name="morphe_hide_channel_profile_button_title">Ficha chaneli na kitufe cha Jisajili</string>
   <string name="morphe_hide_channel_profile_button_summary">Huficha avatar ya chaneli na kitufe cha Jisajili mwanzoni mwa baa ya utendaji</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Ficha kitufe cha Jisajili</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Huficha vitufe vya Jisajili na Jiunge kando ya avatar ya chaneli mwanzoni mwa upau wa utendaji</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Ficha kitufe cha Kipande</string>
@@ -433,9 +428,10 @@ Vikwazo:
   <string name="morphe_hide_comments_preview_comment_hidden">Maoni yamefichwa na Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Washa kitufe cha maoni chenye mwonekano mdogo</string>
   <string name="morphe_minimal_comments_button_summary">Huficha kadi zinazoteleza na kichaguzi chake cha ukurasa, kinachoonekana kwenye kitufe cha maoni</string>
-  <string name="morphe_hide_comments_thanks_button_title">Ficha kitufe cha Asante</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ficha kitufe cha Muda</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ficha kitufe cha \'Mashabiki wakuu\'</string>
+  <string name="morphe_hide_comments_topics_title">Ficha \'Mada\'</string>
+  <string name="morphe_hide_comments_topics_summary">Huficha chaguo la upau wa vichujio vya \'Mada\' na vionjo vya maoni ya \'Mada\' chini ya video</string>
   <string name="morphe_hide_comments_translate_button_title">Ficha kitufe cha Tafsiri</string>
   <string name="morphe_hide_comments_zero_state_title">Ficha ujumbe wa \'Hakuna maoni bado\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Safisha viungo vya utafutaji vilivyotiwa rangi</string>
@@ -488,7 +484,6 @@ Ili kuonyesha menyu ya 'Audio Track', badilisha 'Spoof video streams' kuwa mteja
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Ficha kitufe cha Maelezo</string>
   <string name="morphe_hide_cast_button_title">Ficha kitufe cha Cast</string>
-  <string name="morphe_hide_cast_button_summary">Huficha kitufe cha Cast kwenye kicheza video na baa ya zana</string>
   <string name="morphe_hide_collapse_button_title">Ficha kitufe cha Kukunja</string>
   <string name="morphe_hide_fullscreen_button_title">Ficha kitufe cha Skrini nzima</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ficha mandhari ya vidhibiti vya kichezaji</string>
@@ -607,6 +602,9 @@ Ili kuonyesha menyu ya 'Audio Track', badilisha 'Spoof video streams' kuwa mteja
   <string name="morphe_feed_long_press_menu_summary">Kugusa na kushikilia popote kwenye feed ya video hufungua menyu yake</string>
   <string name="morphe_feed_watch_later_button_title">Onyesha kitufe cha Tazama baadaye kwenye picha ndogo</string>
   <string name="morphe_feed_watch_later_button_summary">Kitufe cha Tazama baadaye huonyeshwa kwenye picha ndogo za video za feed, kikiwa na alama ya tiki ikiwa video imehifadhiwa. Kukigusa huhifadhi au huondoa video, na kukigusa na kukishikilia hufungua Hifadhi kwenye orodha ya nyimbo</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Fungua picha za chapisho katika skrini nzima</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Kugusa picha ya chapisho kunaifungua katika skrini nzima, badala ya feed ya machapisho</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Pakua picha za chapisho</string>
   <string name="morphe_post_image_download_summary">Kitufe cha kupakua kinaonyeshwa kando ya kitufe cha Shiriki cha machapisho yenye picha au GIF, na kipengele cha kupakua kimeongezwa kwenye menyu yao</string>
@@ -887,7 +885,7 @@ Info: Inaweza isifanye kazi kwenye mirutubisho ya moja kwa moja"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Orodha nyeupe ya matangazo kwenye menyu ya flyout</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Huongeza kipengele cha flyout kinachoruhusu matangazo kuchezwa kwenye chaneli ya video hiyo</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Kipengele hiki kinaweza kuhitaji kutumia PotHelper au kubadilisha \"Spoof video streams\" kuwa TV au kuingia kwa Android VR</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Kipengele hiki kinaweza kuhitaji kutumia PotHelper au kubadilisha \'Spoof video streams\' kuwa kuingia kwa \'TV\' au \'Android VR\'</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Orodha nyeupe ya kasi kwenye menyu ya flyout</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Huongeza kipengele cha flyout kinachocheza chaneli ya video hiyo kila wakati kwa kasi ya 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Hujaingia</string>
@@ -992,6 +990,7 @@ Ili kurekebisha hili, washa 'Ghushi mkondo wa video' na ubadilishe 'Mteja chaguo
   <string name="morphe_swipe_press_to_engage_title">Wezesha ishara ya kubonyeza ili kutelezesha</string>
   <string name="morphe_swipe_press_to_engage_summary">Inahitaji kubonyeza na kushikilia kabla ya ishara ya kutelezesha kutambuliwa</string>
   <string name="morphe_swipe_haptic_feedback_title">Wezesha mrejesho wa haptiki</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Inatetema wakati wa kubonyeza na kushikilia kuanza ishara ya kutelezesha</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Hifadhi na urejeshe mng\'ao</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Hukumbuka kiwango cha mwanga unapoingia / unatoka katika hali ya skrini nzima</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Washa ishara ya mng\'ao wa kiotomatiki</string>
@@ -1035,6 +1034,39 @@ Ili kurekebisha hili, washa 'Ghushi mkondo wa video' na ubadilishe 'Mteja chaguo
   <string name="morphe_swipe_overlay_style_entry_7">Tabaka la wima (minimal)</string>
   <string name="morphe_swipe_change_video_title">Washa kutelezesha ili kubadilisha video</string>
   <string name="morphe_swipe_change_video_summary">Telezesha katika hali ya skrini nzima ili kuruka kwenda video inayofuata au ya awali</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Ishara ya kushikilia</string>
+  <string name="morphe_hold_gesture_screen_summary">Badilisha na kufunga kasi ya uchezaji kwa kuburudisha baada ya kugusa na kushikilia</string>
+  <string name="morphe_hold_gesture_title">Washa ishara ya kushikilia</string>
+  <string name="morphe_hold_gesture_summary">Kugusa na kushikilia video kunaweza kufuatwa na kuburudisha. Kasi wakati wa kushikilia ndiyo kasi ya uchezaji ya kugusa na kushikilia</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Haitumiki wakati \'bonyeza ili usogeze\' imewashwa. Gusa ili kubadilisha</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Bonyeza ili usogeze imewashwa</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Ishara ya kushikilia na ishara ya bonyeza ili usogeze ya vidhibiti vya kusogeza zote huanza kwa kugusa na kushikilia, hivyo moja tu kati ya hizo inaweza kuwa imewashwa.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Zima bonyeza ili usogeze</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Ishara ya kushikilia haitumiki wakati \'bonyeza ili usogeze\' imewashwa</string>
+  <string name="morphe_hold_gesture_dialog_title">Ishara ya kushikilia imewashwa</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Zima ishara ya kushikilia</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Washa mrejesho wa haptiki</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Hutetema kasi inapobadilika na inapofungwa</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Burudisha pembeni ili kubadilisha kasi</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Baada ya kugusa na kushikilia, burudisha kushoto ili kucheza polepole na kulia ili kucheza haraka. Kadiri unavyozidi kwenda mbali, kasi inaendelea kubadilika hadi kidole kirudi</string>
+  <string name="morphe_hold_gesture_speed_step_title">Hatua ya kasi</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Usikivu wa kuburudisha</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Chini</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Kawaida</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Juu</string>
+  <string name="morphe_hold_gesture_speed_min_title">Kasi ya polepole zaidi</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Kasi ya polepole zaidi ambayo kuvuta kunaweza kufikia</string>
+  <string name="morphe_hold_gesture_speed_max_title">Kasi ya haraka zaidi</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Kasi ya haraka zaidi ambayo kuvuta kunaweza kufikia (hadi 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Vuta chini ili kufunga kasi</string>
+  <string name="morphe_hold_gesture_lock_summary">Baada ya kugusa na kushikilia, vuta chini ili kuendelea na kasi hiyo wakati kidole kinapoondolewa. Gusa alama au gusa na ushikilie tena ili kufungua</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Onyesha alama ya kufuli kila wakati</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Alama ya kasi iliyofungwa inabaki kuonekana wakati vidhibiti vya kinawiri vimefichwa</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Fungua wakati video inapobadilika</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Kasi iliyofungwa inaishia wakati video nyingine inapoanza</string>
+  <string name="morphe_hold_gesture_lock_hint">Vuta chini ili kufunga</string>
+  <string name="morphe_hold_gesture_lock_release">Achia ili kufunga %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Maelezo</string>
   <string name="morphe_captions_screen_summary">Simamia maelezo ya maandishi ya kiotomatiki na kuki za maelezo</string>
@@ -1083,8 +1115,6 @@ Ili kurekebisha hili, washa 'Ghushi mkondo wa video' na ubadilishe 'Mteja chaguo
   <string name="morphe_caption_block_translation_failed">Baadhi ya tafsiri za maelezo hazipatikani. Inaonyesha maelezo yanayopatikana.</string>
   <string name="morphe_caption_blocks_too_large">Lugha zote mbili za maelezo hazitoshi kwenye kicheza hiki. Inaonyesha lugha kuu.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Baa ya urambazaji</string>
-  <string name="morphe_navigation_bar_screen_summary">Chagua ni vitufe gani vionekane kwenye upau wa urambazaji wa chini</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ficha kitufe cha Nyumbani</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1102,11 +1132,11 @@ Ili kurekebisha hili, washa 'Ghushi mkondo wa video' na ubadilishe 'Mteja chaguo
   <string name="morphe_watch_later_navigation_label">Tazama baadaye</string>
   <string name="morphe_show_settings_button_title">Onyesha kitufe cha Mipangilio</string>
   <string name="morphe_show_settings_button_type_title">Utendaji wa kitufe cha mipangilio</string>
-  <string name="morphe_show_settings_button_type_summary">Inafungua mipangilio ya Morphe inapowezeshwa, au mipangilio ya YouTube inapozimwa</string>
+  <string name="morphe_show_settings_button_type_summary">Inapowashwa, kugusa hufungua mipangilio ya Morphe na kubonyeza kwa muda mrefu hufungua mipangilio ya YouTube, zima ili kubadilisha</string>
   <string name="morphe_navigation_buttons_order_title">Mpangilio wa vitufe vya urambazaji</string>
   <string name="morphe_navigation_buttons_order_summary">Buruta vitufe ili kubadilisha mpangilio wake kwenye baa ya urambazaji</string>
   <string name="morphe_swap_create_with_notifications_button_title">Badilisha kitufe cha Create na kitufe cha Arifa</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Ikiwa kubadilisha mpangilio huu hakuleti matokeo, jaribu kubadilisha kwenda kwenye hali ya Incognito</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Inasogeza kitufe cha Arifa kwenye baa ya urambazaji na kitufe cha Unda kwenye baa ya zana. Ikiwa mabadiliko hayatatekeleza, jaribu kubadili kwenda kwenye hali ya Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ficha lebo za vitufe vya urambazaji</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ficha nukta ya maudhui mapya</string>
   <string name="morphe_hide_navigation_bar_title">Ficha baa ya urambazaji</string>
@@ -1135,18 +1165,31 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_navigation_bar_glass_opacity_summary">Rekebisha kiwango cha uwazi cha bar ya urambazaji ya kioo (0 ni wazi, 100 isiyopitisha mwanga)</string>
   <string name="morphe_navigation_bar_glass_round_title">Upau wa urambazaji wa kioo wa duara</string>
   <string name="morphe_navigation_bar_glass_round_summary">Hutoa upau wa urambazaji wa kioo ncha za duara, badala ya pembe kama kicheza kidogo cha kioo</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Ukingo wa kioo wa baa ya urambazaji</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Huchora ukingo wa mwanga kuzunguka baa ya kioo ya urambazaji</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Nafasi ya chini ya baa ya kioo ya urambazaji</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Rekebisha nafasi kati ya baa ya urambazaji ya kioo na sehemu ya chini ya skrini au urambazaji wa mfumo</string>
   <string name="morphe_navigation_bar_glass_size_title">Ukubwa wa baa ya urambazaji ya kioo</string>
   <string name="morphe_navigation_bar_glass_size_summary">Rekebisha urefu, upana na nafasi ya vitufe ya baa ya urambazaji ya kioo, pamoja na onyesho la kukagua. Vitufe visivyoendana na upana wa skrini hufichwa</string>
+  <string name="morphe_glass_menus_screen_title">Menyu za kioo</string>
+  <string name="morphe_glass_menus_screen_summary">Menyu kama kioo cha ukungu juu ya maudhui yaliyofifia nyuma yake</string>
+  <string name="morphe_glass_menus_title">Washa menyu za kioo</string>
+  <string name="morphe_glass_menus_summary">Inaonyesha menyu na shuka za chini kama kioo cha ukungu, huku maudhui ya nyuma yakififia</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menyu zinaonyeshwa zikiwa hazipitishi mwanga wakati msaidizi wa betri akiwa amewashwa, au ikiwa kifaa hakitumii ufifishaji</string>
+  <string name="morphe_glass_menus_opacity_title">Ufifi wa kioo</string>
+  <string name="morphe_glass_menus_opacity_summary">Kiasi gani menyu inafunika maudhui yaliyofifishwa (0 ni wazi, 100 ni fufi)</string>
+  <string name="morphe_glass_menus_blur_title">Fifisha</string>
+  <string name="morphe_glass_menus_blur_summary">Kiasi gani maudhui ya nyuma ya menyu yamefifishwa</string>
+  <string name="morphe_glass_menus_dim_title">Fifisha mwanga</string>
+  <string name="morphe_glass_menus_dim_summary">Kiasi gani skrini inayozunguka shuka ya chini imefifishwa</string>
   <string name="morphe_navigation_bar_glass_size_height">Urefu</string>
   <string name="morphe_navigation_bar_glass_size_width">Upana wa juu</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Nafasi ya vitufe</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Vifungo vinavyoonekana: %1$s kati ya %2$s</string>
-  <string name="morphe_toolbar_screen_title">Upau wa zana</string>
-  <string name="morphe_toolbar_screen_summary">Chagua ni vipengele gani vionekane kwenye baa ya zana</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ficha kitufe cha Chat</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Ficha kitufe cha Companion</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ficha kitufe cha Maikrofoni</string>
   <string name="morphe_hide_toolbar_search_button_title">Ficha kitufe cha Tafuta</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Inapowezeshwa, kugusa hufungua mipangilio ya Morphe na kubonyeza kwa muda mrefu hufungua mipangilio ya YouTube, zima ili kubadilisha</string>
   <string name="morphe_toolbar_buttons_order_title">Mpangilio wa vitufe vya baa ya zana</string>
   <string name="morphe_toolbar_buttons_order_summary">Buruta vitufe ili kubadilisha mpangilio wake kwenye baa ya zana</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1177,43 +1220,28 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_disable_shorts_double_tap_to_like_title">Zima kugusa mara mbili ili kupenda</string>
   <string name="morphe_hide_shorts_ai_button_title">Ficha kitufe cha AI</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Ficha lebo ya \'Imeongezewa sauti kiotomatiki\'</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Ficha upau wa chaneli</string>
-  <string name="morphe_hide_shorts_comments_button_title">Ficha kitufe cha Maoni</string>
   <string name="morphe_hide_shorts_effect_button_title">Ficha kitufe cha Athari</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Ficha lebo ya kiungo cha video</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Ficha vidokezo vya ishara</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Ficha kitufe cha \'Skrini ya kijani\'</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Ficha kitufe cha Hashtag</string>
   <string name="morphe_hide_shorts_info_panel_title">Ficha jopo la habari</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Ficha kitufe cha Jiunge</string>
   <string name="morphe_hide_shorts_like_button_title">Ficha kitufe cha Like</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Ficha uhuishaji wa chemchemi ya kitufe cha Like</string>
   <string name="morphe_hide_shorts_live_preview_title">Ficha onyo la moja kwa moja</string>
   <string name="morphe_hide_shorts_location_label_title">Ficha lebo ya eneo</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Ficha upau wa urambazaji</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Ficha kitufe cha \'Posti mpya\'</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Ficha vitufe vya tabaka la kusimama</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Ficha maoni ya utangulizi</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Ficha kitufe cha Remix</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Ficha kitufe cha Hifadhi</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Ficha kitufe cha \'Hifadhi muziki\'</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Ficha mapendekezo ya utafutaji</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Ficha kitufe cha Shiriki</string>
-  <string name="morphe_hide_shorts_shop_button_title">Ficha kitufe cha Duka</string>
   <string name="morphe_hide_shorts_sound_button_title">Ficha kitufe cha Sauti</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Ficha lebo ya metadata ya sauti</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Ficha kitufe cha Jisajili</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Ficha kitufe cha \'Nunua Super Thanks\'</string>
   <string name="morphe_hide_shorts_tagged_products_title">Ficha bidhaa zilizotagwa</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Ficha kitufe cha Inayokuja</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Ficha kitufe cha \'Tumia sauti hii\'</string>
   <string name="morphe_hide_shorts_use_template_button_title">Ficha kitufe cha \'Tumia kiolezo hiki\'</string>
-  <string name="morphe_hide_shorts_video_title_title">Ficha kichwa cha video</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Ficha video inayopendekezwa kwenye skrini ya mwisho</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Huficha tabaka la video inayopendekezwa linalotokea baada ya video kuisha
@@ -1381,6 +1409,9 @@ Mpangilio wa Automotive
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Zima urejesho wa feed kiotomatiki</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Huzuia feed zisijihuishishe kiotomatiki baada ya kupitwa na wakati</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Tenganisha arifa</string>
+  <string name="morphe_ungroup_notifications_summary">Inaonyesha kila video ya uploads zilizokundiwa za chaneli kama arifa yake yenyewe</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Mpangilio wa kadi ya feed</string>
   <string name="morphe_feed_card_layout_entry_1">Kawaida</string>
@@ -1493,6 +1524,8 @@ Mpangilio wa Automotive
   <string name="morphe_dearrow_titles_search_title">Matokeo ya utafutaji</string>
   <string name="morphe_dearrow_titles_icon_title">Onyesha aikoni ya DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Inaonyesha aikoni ya DeArrow kwenye vichwa vya habari vya video vyenye kichwa cha habari au picha ya awali iliyotolewa na jamii. Gusa aikoni ili kuonyesha kichwa cha habari na picha ya awali ya asili</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Safisha vichwa vya habari</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Husafisha vichwa vya habari vya video zisizo na kichwa cha DeArrow. Maneno yaliyo katika herufi kubwa yanabadilishwa kuwa herufi za kawaida, na emoji, maandishi ya urembo na alama za mshangao zinazojirudia huondolewa</string>
   <string name="morphe_dearrow_casual_mode_title">Hali ya kawaida</string>
   <string name="morphe_dearrow_casual_mode_summary">Inaonyesha kichwa asilia badala ya kichwa cha DeArrow ikiwa watumiaji wa DeArrow walipiga kura kwamba wanapenda kichwa asilia</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Kura za chini za kawaida ili kuonyesha kichwa asilia</string>
@@ -1713,13 +1746,9 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Ruka menyu ya uteuzi wa ubora na ufungue menyu ya Ubora wa Juu moja kwa moja</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ficha chaguzi za ubora wa Premium</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Toa kipaumbele kwa ubora wa video</string>
-  <string name="morphe_video_quality_prioritize_summary">Hutoa kipaumbele kwa ubora wa juu zaidi wa video unaopatikana badala ya ufanisi wa codec</string>
-  <string name="morphe_video_quality_prioritize_dialog">Ikiwa mpangilio huu umezimwa, basi video za zamani zinaweza zisioonyeshe chaguzi zozote za ubora wa video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Ruhusu \'Android VR\' / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Inaruhusu udekodishaji wa programu ya AV1 wakati unapotumia mteja wa \'Android VR\' / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_title">Ruhusu AV1 ya \'Android VR\' / \'visionOS\'</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Inaruhusu udekodishaji wa programu ya AV1 wakati unapotumia mteja wa \'Android VR\' / \'visionOS\'</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Kuwezesha mpangilio huu kunaweza kutumia udekodi wa programu ya AV1.
 
 Uchezaji wa video kwa AV1 unaweza kukwama au kupoteza fremu"</string>
@@ -1956,7 +1985,6 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_live_chat_translate_language_title">Lugha ya tafsiri</string>
   <string name="morphe_live_chat_translate_exclude_title">Lugha zilizotengwa</string>
   <string name="morphe_live_chat_translate_exclude_summary">Misimbo ya lugha iliyotenganishwa kwa koma kama vile id,en. Ujumbe katika lugha hizi hautafsiriwa</string>
-  <string name="morphe_live_chat_translate_provider_title">Mtoa huduma wa tafsiri</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">Ufunguo wa API wa DeepL</string>

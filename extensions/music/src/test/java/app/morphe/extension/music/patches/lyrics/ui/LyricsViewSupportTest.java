@@ -17,7 +17,10 @@ import org.junit.Test;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.settings.Settings;
 
 public class LyricsViewSupportTest {
 
@@ -150,5 +153,58 @@ public class LyricsViewSupportTest {
         List<LyricsLine> originals = List.of(
                 new LyricsLine(0, "hello"), new LyricsLine(0, "world"));
         assertTrue(LyricsViewSupport.hasTranslation(translated, originals));
+    }
+
+    @Test
+    public void lineScaleAvailableWhenRelaxScrollStoredTrueButSpringScrollOff() {
+        boolean prevEnabled = Settings.LYRICS_ENABLED.get();
+        boolean prevSpring = Settings.LYRICS_SPRING_SCROLL.get();
+        boolean prevRelax = Settings.LYRICS_RELAX_SCROLL.get();
+        try {
+            Settings.LYRICS_ENABLED.save(true);
+            Settings.LYRICS_SPRING_SCROLL.save(true);
+            Settings.LYRICS_RELAX_SCROLL.save(true);
+            assertFalse(Settings.LYRICS_LINE_SCALE.isAvailable());
+
+            Settings.LYRICS_SPRING_SCROLL.save(false);
+            assertTrue(Settings.LYRICS_LINE_SCALE.isAvailable());
+        } finally {
+            Settings.LYRICS_ENABLED.save(prevEnabled);
+            Settings.LYRICS_SPRING_SCROLL.save(prevSpring);
+            Settings.LYRICS_RELAX_SCROLL.save(prevRelax);
+        }
+    }
+
+    @Test
+    public void sameLineStructureDistinguishesDifferentCandidatesWithSameLineCount() {
+        Lyrics base = new Lyrics(
+                List.of(new LyricsLine(1000L, 3000L, "line one", List.of(), null, false, false, null)),
+                "Musixmatch", true, null, null, null, null, null, null, null, null, null);
+        Lyrics withRuby = base.withLines(List.of(new LyricsLine(
+                1000L, 3000L, "line one",
+                List.of(new Word(1000L, 2000L, "line", null, true, "rain")),
+                null, false, false, "Verse")));
+        Lyrics differentCandidate = new Lyrics(
+                List.of(new LyricsLine(1500L, 3500L, "other line", List.of(), null, false, false, null)),
+                "LRCLIB", true, null, null, null, null, null, null, null, null, null);
+
+        assertTrue(LyricsPanelView.sameLineStructure(base, withRuby, false));
+        assertFalse(LyricsPanelView.sameLineStructure(base, differentCandidate, false));
+    }
+
+    @Test
+    public void hasMatchingSongPartsDetectsSectionChangesForInPlaceSafety() {
+        Lyrics base = new Lyrics(
+                List.of(new LyricsLine(1000L, 3000L, "line one", List.of(), null, false, false, "Verse 1")),
+                "Musixmatch", true, null, null, null, null, null, null, null, null, null);
+        Lyrics samePart = base.withLines(List.of(new LyricsLine(
+                1000L, 3000L, "line one",
+                List.of(new Word(1000L, 2000L, "line", null, true, "rain")),
+                null, false, false, "Verse 1")));
+        Lyrics changedPart = base.withLines(List.of(new LyricsLine(
+                1000L, 3000L, "line one", List.of(), null, false, false, "Chorus")));
+
+        assertTrue(LyricsPanelView.hasMatchingSongParts(base, samePart));
+        assertFalse(LyricsPanelView.hasMatchingSongParts(base, changedPart));
     }
 }

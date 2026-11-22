@@ -27,7 +27,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
-import app.morphe.extension.youtube.patches.VideoFormat.FormatInterface;
+import app.morphe.extension.shared.patches.VideoFormat.FormatInterface;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.innertube.ClientAbrStateOuterClass.ClientAbrState;
 import app.morphe.extension.youtube.patches.VideoInformation.*;

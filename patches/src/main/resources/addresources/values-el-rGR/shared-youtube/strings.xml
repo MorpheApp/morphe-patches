@@ -141,13 +141,13 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Δοκιμάστε να ενεργοποιήσετε: Μίμηση ροής βίντεο &gt; Είσοδος με Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Προεπιλεγμένο πρόγραμμα αναπαραγωγής</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Είσοδος με Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Το Android VR απαιτεί ξεχωριστή σύνδεση. Πατήστε εδώ για να συνεχίσετε</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Τρέχουσα σύνδεση σε Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Είσοδος με \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Το \'Android VR\' απαιτεί ξεχωριστή είσοδο. Πατήστε εδώ για να συνεχίσετε</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Τρέχουσα σύνδεση στο \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Για να χρησιμοποιήσετε αυτή τη δυνατότητα, αλλάξτε \'Το προεπιλεγμένο πρόγραμμα αναπαραγωγής\' σε Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Είσοδος στο Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Η είσοδος στο Android VR μπορεί να επιλύσει τα προβλήματα αναπαραγωγής για ορισμένους χρήστες
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Για να χρησιμοποιήσετε αυτή τη δυνατότητα, αλλάξτε το \'Προεπιλεγμένο πρόγραμμα αναπαραγωγής\' σε \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Είσοδος στο \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Η είσοδος στο \"Android VR\" μπορεί να επιλύσει τα προβλήματα αναπαραγωγής για ορισμένους χρήστες
 
 Για να εισέλθετε, πατήστε \"Συνέχεια\" παρακάτω"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Αποσύνδεση</string>
@@ -168,35 +168,35 @@ Second \"item\" text"</string>
 • Οι ρυθμίσεις του Morphe δεν θα εισάγουν/εξάγουν την ταυτοποίηση Android VR
 • Εάν η εφαρμογή παραμείνει αχρησιμοποίητη για 6 μήνες, η Google θα αφαιρέσει αυτή την ταυτοποίηση
 • Θα χρειαστεί να συνδεθείτε ξανά, εάν αλλάξετε το κωδικό πρόσβασης της Google ή απεγράψετε αυτή την συσκευή από τις ρυθμίσεις της Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Είσοδος μέσω ιστότοπου για κινητά</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Είσοδος με \"Mobile Web\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Προαιρετικά: συνδεθείτε στον ιστότοπο του YouTube για να αναπαράγετε βίντεο με τον λογαριασμό σας. Πατήστε εδώ για να συνεχίσετε</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Τρέχουσα σύνδεση σε Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Τρέχουσα σύνδεση στο \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Για να χρησιμοποιήσετε αυτή τη δυνατότητα, αλλάξτε το \'Προεπιλεγμένο πρόγραμμα κλייαντ\' σε Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Σύνδεση στο Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Το Mobile Web αναπαράγει βίντεο χωρίς σύνδεση ή με σύνδεση στον ιστότοπο του YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Για να χρησιμοποιήσετε αυτή τη δυνατότητα, αλλάξτε το \"Προεπιλεγμένο πρόγραμμα αναπαραγωγής\" σε \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Σύνδεση στο \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Το \"Mobile Web\" αναπαραγειάβει βίντεο χωρίς σύνδεση ή με σύνδεση στον ιστότοπο του YouTube
 
 • Με σύνδεση, μπορούν να αναπαραχθούν βίντεο που απαιτούν λογαριασμό, όπως τα βίντεο με περιορισμό ηλικίας
 • Η σελίδα σύνδεσης του Google ανοίγει σε αυτήν την εφαρμογή
-• Η σύνδεση χρησιμοποιείται μόνο για τη λήψη των βίντεο που αναπαράγετε
+• Η σύνδεση χρησιμοποιείται μόνο για την απόκτηση των βίντεο που αναπαραγάγετε
 • Η σύνδεση αποθηκεύεται μόνο σε αυτή τη συσκευή
 
 Για να συνδεθείτε, πατήστε συνέχεια παρακάτω"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Η σύνδεση αποθηκεύτηκε
 
-• Οι ρυθμίσεις του Morphe δεν θα εισαγάγουν/εξαγάγουν τη σύνδεση στο Mobile Web
+• Οι ρυθμίσεις του Morphe δεν θα εισαγάγουν/εξαγάγουν τη σύνδεση \"Mobile Web\"
 • Εάν η Google τερματίσει τη σύνδεση, τα βίντεο αναπαράγονται χωρίς σύνδεση μέχρι να συνδεθείτε ξανά
 • Η αποσύνδεση αποσυνδέει επίσης αυτή τη συσκευή από τον ιστότοπο του YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Η σύνδεση στο Mobile Web έληξε, προσπαθήστε να συνδεθείτε ξανά στο Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Αποσυνδεθείτε από το Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Το Android System WebView δεν είναι διαθέσιμο. Εγκαταστήστε το ή ενεργοποιήστε το για να συνδεθείτε</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Η σύνδεση Mobile Web έληξε, προσπαθήστε να συνδεθείτε ξανά στο \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Αποσύνδεση από το \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Το \"Android System WebView\" δεν είναι διαθέσιμο. Εγκαταστήστε το ή ενεργοποιήστε το για να συνδεθείτε</string>
   <string name="morphe_oauth2_connection_failure_timeout">Το OAuth2 είναι προσωρινά μη διαθέσιμο (λήξη API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Η σύνδεση Android VR έληξε, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Η σύνδεση στο \'Android VR\' έληξε, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
   <string name="morphe_oauth2_connection_failure_status">Το OAuth2 είναι προσωρινά μη διαθέσιμο (κατάσταση %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Το OAuth2 είναι προσωρινά μη διαθέσιμο</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Δεν είναι δυνατή η είσοδος στο VR, η ταυτοποίηση δεν εγκρίθηκε</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Δεν είναι δυνατή η σύνδεση στο VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Αποσυνδεθήκατε από το Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Αποσυνδεθήκατε από το \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Άκυρο κλειδί εισόδου VR, συνδεθείτε ξανά στο VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Χειριστήρια πολυμέσων ειδοποίησης</string>
@@ -214,6 +214,10 @@ Second \"item\" text"</string>
   <string name="morphe_seek_notification_media_length_invalid">Το μήκος αναζήτησης πρέπει να είναι μεταξύ 1 και %s δευτερολέπτων. Χρήση προεπιλεγμένης τιμής</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Απενεργοποίηση πρωτοκόλλου QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Προτεραιότητα στην ποιότητα βίντεο</string>
+  <string name="morphe_prioritize_video_quality_summary">Δίνει προτεραιότητα στην υψηλότερη διαθέσιμη ποιότητα βίντεο έναντι της αποδοτικότητας του κωδικοποιητή</string>
+  <string name="morphe_prioritize_video_quality_dialog">Εάν αυτή η ρύθμιση είναι απενεργοποιημένη, τότε τα παλαιότερα βίντεο ενδέχεται να μην εμφανίζουν επιλογές ποιότητας βίντεο</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Απενεργοποίηση ήχου DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -254,7 +258,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">Αλλαγή συνδέσμων κοινοποίησης σε youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Αντικαθιστά το music.youtube.com με το youtube.com σε κοινόχρηστους συνδέσμους.</string>
   <string name="morphe_replace_links_with_shortener_title">Αλλαγή συνδέσμων κοινοποίησης σε youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Επιβάλλει τη χρήση της συντομευμένης μορφής URL youtu.be για τα βίντεο</string>
+  <string name="morphe_replace_links_with_shortener_summary">Αναγκάζει τα βίντεο να χρησιμοποιούν τη σύντομη μορφή URL \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Αυτόματη</string>
@@ -266,15 +270,12 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">Προεπιλεγμένη ποιότητα βίντεο σε δίκτυο κινητής τηλεφωνίας</string>
   <string name="morphe_remember_video_quality_toast_mobile">Η προεπιλεγμένη ποιότητα κινητής τηλεφωνίας άλλαξε σε: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Η προεπιλεγμένη ποιότητα Wi-Fi άλλαξε σε: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Άνοιγμα φύλλου κοινής χρήσης συστήματος</string>
-  <string name="morphe_open_system_share_sheet_summary">Ανοίγει το φύλλο κοινής χρήσης του συστήματος αντί για αυτό της εφαρμογής κατά την κοινή χρήση περιεχομένου</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Καταγραφή Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Απενεργοποιημένο</string>
   <string name="morphe_debug_litho_entry_path">Διαδρομή</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Διαδρομή και ανίχνευση</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Η καταγραφή Litho καταγράφει τα στοιχεία διάταξης της εφαρμογής, συμπεριλαμβανομένου του κειμένου στην οθόνη για ορισμένα στοιχεία διεπαφής χρήστη.
+  <string name="morphe_debug_litho_user_dialog_message">"Καταγράφει τα στοιχεία διάταξης της εφαρμογής, συμπεριλαμβανομένου του κειμένου στην οθόνη για ορισμένα στοιχεία διεπαφής χρήστη.
 
 Αυτό μπορεί να βοηθήσει στον εντοπισμό στοιχείων κατά τη δημιουργία προσαρμοσμένων φίλτρων.
 
@@ -380,4 +381,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Δεν έχουν συναντηθεί όρια ρυθμού πελάτη</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Συναντήθηκε όριο ρυθμού πελάτη %s φορές</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s χιλιοστά δευτερολέπτου</string>
+  <string name="morphe_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
+  <string name="morphe_navigation_bar_screen_summary">Επιλέξτε ποια κουμπιά εμφανίζονται στην κάτω γραμμή πλοήγησης</string>
+  <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
+  <string name="morphe_toolbar_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στη γραμμή εργαλείων</string>
 </resources>

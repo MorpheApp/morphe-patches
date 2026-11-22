@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">翻译</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">最新</string>
   <string name="morphe_settings_about_contributors">贡献者</string>
-  <string name="morphe_settings_about_contributors_period">最近 12 个月</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">所有时间</string>
+  <string name="morphe_settings_about_contributors_6_months">6个月</string>
+  <string name="morphe_settings_about_contributors_3_months">3个月</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">时间范围</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s 位用户</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">支持者</string>
   <string name="morphe_settings_about_supporters_summary">Open Collective 上的支持者</string>
@@ -222,6 +229,9 @@ Second \"item\" text"</string>
 • 应用可能会随机关闭
 • 通知可能无法正常工作
 • 后台播放可能无法正常工作"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">打开系统分享面板</string>
+  <string name="morphe_open_system_share_sheet_summary">分享内容时，使用系统分享面板而非应用内分享面板</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">应用链接处理</string>
   <string name="morphe_link_handling_summary">配置链接在此应用中打开</string>

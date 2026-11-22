@@ -141,15 +141,15 @@ Puudutage OK, et avada Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Proovige aktiveerida: Videovoolude imiteerimine &gt; Android VR sisselogimine</string>
   <string name="morphe_spoof_video_streams_client_type_title">Vaikimisi klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR sisselogimine</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR nõuab eraldi sisselogimist. Jätkamiseks puudutage siin</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hetkel on sisse logitud Android VR-i kontole</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\"Android VR\" sisselogimine</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' nõuab eraldi sisselogimist. Jätkamiseks puudutage siin</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hetkel sisse logitud \'Android VR\'-i</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Selle funktsiooni kasutamiseks muutke \'Vaikimisi klient\' Android VR-iks</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Logige sisse Android VR-i kontole</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-i sisselogimine võib mõne kasutaja puhul parandada taastoomise probleeme
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Selle funktsiooni kasutamiseks muutke \'Vaikimisi klient\' \'Android VR\'-iks</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Logige sisse kontole \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kontole \"Android VR\" sisselogimine võib mõne kasutaja puhul parandada taastoetamise probleeme
 
-Sisse logimiseks vajutage allpoolset nuppu Jätka"</string>
+Sisselogimiseks vajutage allpool jätkamist"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Logi välja</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Juhendid</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -168,35 +168,35 @@ Sisse logimiseks vajutage allpoolset nuppu Jätka"</string>
 • Teie Morphe seaded ei importeeri ega eksporteeri Android VR autentimist
 • Kui seda rakendust ei kasutata 6 kuud, eemaldab Google selle autentimise
 • Peate uuesti sisse logima, kui muudate oma Google'i parooli või eemaldate selle seadme oma Google'i seadetest"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobiiliveebi sisselogimine</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\"Mobile Web\" sisselogimine</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valikuline: logige sisse YouTube\'i veebilehele, et videoid oma kontoga esitada. Jätkamiseks puudutage siia</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hetkel on sisse logitud mobiiliveebi kaudu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hetkel on sisse logitud kontole \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Selle funktsiooni kasutamiseks muutke \'Vaikimisi klient\' Mobile Webiks</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logige sisse Mobile Webis</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web esitab videoid ilma sisselogimiseta või YouTube'i veebilehe sisselogitud kontoga
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Selle funktsiooni kasutamiseks muutke \"Vaikimisi klient\" väärtuseks \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logige sisse kontole \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" saab videoid vaadata nii välja logituna kui ka YouTube'i veebisaidile sisse logituna
 
 • Sisselogitud olekul saab esitada videoid, mille jaoks on vaja kontot, näiteks vanusepiiranguga videoid
-• Google'i sisselogimisleht avaneb selles rakenduses
-• Sisselogimist kasutatakse ainult esitatavate videode saamiseks
-• Sisselogimine salvestatakse ainult selles seadmes
+• Selles rakenduses avaneb Google'i sisselogimise lehekülg
+• Sisselogimist kasutatakse ainult videode esitamiseks
+• Sisselogimine on salvestatud ainult sellele seadmele
 
 Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sisselogimine salvestatud
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sisselogimine on salvestatud
 
-• Teie Morphe seaded ei importeeri/eksporteeri Mobile Web sisselogimist
-• Kui Google lõpetab sisselogimise, esitatakse videoid ilma sisselogimiseta, kuni logite uuesti sisse
-• Väljalogimine logib sellest seadmest välja ka YouTube veebilehelt"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web sisselogimine aegus, proovige Mobile Web sisselogimist uuesti</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web-ist logitud välja</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView pole saadaval. Sisselogimiseks installige või aktiveerige see</string>
+• Teie Morphe seaded ei importeeri ega eksporteeri \"Mobiiliveebi\" sisselogimist
+• Kui Google lõpetab istundi, esitatakse videoid ilma sisselogimiseta, kuni logite uuesti sisse
+• Väljalogimine logib selle seadme ka YouTube'i veebisaidilt välja"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web sisselogimise aeg on aegunud, proovige \"Mobile Web\" uuesti sisse logida</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\"Mobile Web\" logitud välja</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\"Android System WebView\" ei ole saadaval. Sisse logimiseks installige või aktiveerige see</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ei ole hetkel saadaval (API aeg läks läbi)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR sisselogimine aegus, proovige VR-i uuesti sisse logida</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\"Android VR\" sisselogimise aeg on aegunud, proovige VR-i uuesti sisse logida</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ei ole ajutiselt saadaval (staatus %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 ei ole hetkel saadaval</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR-i sisse logimine ebaõnnestus, veebilehe autentimist ei ole heaks kiidetud</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR-i sisse logimine ebaõnnestus: %s</string>
-  <string name="morphe_oauth2_toast_reset">Logitud välja Android VR-ist</string>
+  <string name="morphe_oauth2_toast_reset">Logitud välja rakenduse \"Android VR\"-ist</string>
   <string name="morphe_oauth2_toast_invalid">VR sisselogimise token on kehtetu, proovige VR-i uuesti sisse logida</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Teavituste meediakontrollid</string>
@@ -214,6 +214,10 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_seek_notification_media_length_invalid">Otsingu pikkus peab olema 1 ja %s sekundi vahel. Kasutatakse vaikimisseadet</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Võtta QUIC protokoll kasutusest</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Sea videokvaliteet esikohale</string>
+  <string name="morphe_prioritize_video_quality_summary">Eelistab koodeki tõhususele kõrgeimat saadaolevat videokvaliteeti</string>
+  <string name="morphe_prioritize_video_quality_dialog">Kui see seade on välja lülitatud, siis vanematel videotel ei pruugida olla videokvaliteedi valikuid</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Võtta DRC audio kasutusest</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -254,7 +258,7 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_replace_music_with_youtube_title">Asenda jagamislingid aadressiga youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Asendab jagatud linkides aadressi music.youtube.com aadressiga youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Muuda jagamislinkideks youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Sunnib videoid kasutama lühendatud youtu.be URL-i vormingut</string>
+  <string name="morphe_replace_links_with_shortener_summary">Sunnib videoid kasutama lühendatud URL-vormingut \"youtu.be\"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automaatne</string>
@@ -266,17 +270,14 @@ Sisselogimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_video_quality_default_mobile_title">Vaikimisi videokvaliteet mobiilvõrgus</string>
   <string name="morphe_remember_video_quality_toast_mobile">Vaikimisi mobiilikvaliteet on muutunud väärtuseks: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Vaikimisi Wi-Fi kvaliteet on muutunud väärtuseks: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Ava süsteemi jagamisakend</string>
-  <string name="morphe_open_system_share_sheet_summary">Sisu jagamisel avab rakenduse sise jagamisakna asemel süsteemi jagamisakna</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho logimine</string>
   <string name="morphe_debug_litho_entry_disabled">Välja lülitatud</string>
   <string name="morphe_debug_litho_entry_path">Tee</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Tee ja puhver</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho logimine registreerib rakenduse paigutuse komponentide logid, sealhulgas mõningate kasutajaliidesi komponentide ekraaniteksti.
+  <string name="morphe_debug_litho_user_dialog_message">"Logib rakenduse paigutuse komponente, sealhulgas mõningate kasutajaliidese komponentide ekraanitekste.
 
-See võib aidata tuvastada komponente kohandatud filtrite loomisel.
+See võib aidata komponente tuvastada kohandatud filtrite loomisel.
 
 Kuid see logib ka mõningaid kasutajandmeid, näiteks teie IP-aadressi"</string>
   <!-- Custom filter -->
@@ -380,4 +381,8 @@ Vaadatud video ID saadetakse Return YouTube Dislike API-le ning teie meeldimis- 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Kliendi kiirusepiirangutega ei esinenud</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kliendi kiirusepiiranguga tekkis %s korda</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekundit</string>
+  <string name="morphe_navigation_bar_screen_title">Navigeerimisriba</string>
+  <string name="morphe_navigation_bar_screen_summary">Vali, millised nupud kuvatakse alumisel navigeerimisribal</string>
+  <string name="morphe_toolbar_screen_title">Tööriistariba</string>
+  <string name="morphe_toolbar_screen_summary">Vali, millised komponendid kuvatakse tööriistade ribal</string>
 </resources>

@@ -7,6 +7,7 @@ import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
+import static app.morphe.extension.shared.settings.Setting.parentsAll;
 
 import java.util.EnumSet;
 
@@ -23,6 +24,7 @@ import app.morphe.extension.shared.patches.SkipSilencePatch.MinimumPause;
 import app.morphe.extension.shared.patches.SplashAnimationPatch;
 import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
 import app.morphe.extension.shared.patches.components.LithoFilterPatch.LithoLogging;
+import app.morphe.extension.shared.patches.glassmenus.GlassMenusPatch.GlassMenusAvailability;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference.ExternalDownloaderAvailability;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
@@ -60,6 +62,7 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final BooleanSetting DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio", FALSE, true);
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
+    public static final BooleanSetting PRIORITIZE_VIDEO_QUALITY = new BooleanSetting("morphe_prioritize_video_quality", TRUE, true, "morphe_prioritize_video_quality_dialog");
     public static final BooleanSetting SKIP_SILENCE = new BooleanSetting("morphe_skip_silence", FALSE, true);
     public static final EnumSetting<MinimumPause> SKIP_SILENCE_MINIMUM_PAUSE = new EnumSetting<>("morphe_skip_silence_minimum_pause", MinimumPause.MS_700, true, parent(SKIP_SILENCE));
 
@@ -72,8 +75,8 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting DISABLE_NOTIFICATION_MEDIA_SEEKBAR = new BooleanSetting("morphe_disable_notification_media_seekbar", FALSE, true);
     public static final BooleanSetting HIDE_NOTIFICATION_MEDIA_PREV_NEXT = new BooleanSetting("morphe_hide_notification_media_prev_next", FALSE, true);
     public static final BooleanSetting SEEK_NOTIFICATION_MEDIA_PREV_NEXT = new BooleanSetting("morphe_seek_notification_media_prev_next", FALSE, true, parentNot(HIDE_NOTIFICATION_MEDIA_PREV_NEXT));
-    public static final IntegerSetting SEEK_NOTIFICATION_MEDIA_REWIND_LENGTH = new IntegerSetting("morphe_seek_notification_media_rewind_length", 10, parent(SEEK_NOTIFICATION_MEDIA_PREV_NEXT));
-    public static final IntegerSetting SEEK_NOTIFICATION_MEDIA_FAST_FORWARD_LENGTH = new IntegerSetting("morphe_seek_notification_media_fast_forward_length", 10, parent(SEEK_NOTIFICATION_MEDIA_PREV_NEXT));
+    public static final IntegerSetting SEEK_NOTIFICATION_MEDIA_REWIND_LENGTH = new IntegerSetting("morphe_seek_notification_media_rewind_length", 10, true, parent(SEEK_NOTIFICATION_MEDIA_PREV_NEXT));
+    public static final IntegerSetting SEEK_NOTIFICATION_MEDIA_FAST_FORWARD_LENGTH = new IntegerSetting("morphe_seek_notification_media_fast_forward_length", 10, true, parent(SEEK_NOTIFICATION_MEDIA_PREV_NEXT));
 
     public static final BooleanSetting CHECK_WATCH_HISTORY_DOMAIN_NAME = new BooleanSetting("morphe_check_watch_history_domain_name", TRUE, false, false);
 
@@ -89,7 +92,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     // Custom branding
     public static final EnumSetting<SplashScreenAnimationStyle> SPLASH_SCREEN_STYLE = new EnumSetting<>("morphe_splash_screen_style", SplashAnimationPatch.getDefaultStyle(), true);
     public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true, "morphe_custom_branding_icon_user_dialog_message");
-    public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);
+    public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true, "morphe_custom_branding_icon_user_dialog_message");
     public static final IntegerSetting CUSTOM_BRANDING_NAME = new IntegerSetting("morphe_custom_branding_name", CustomBrandingPatch.getDefaultAppNameIndex(), true);
     public static final StringSetting CUSTOM_BRANDING_ICON_PATCHED = new StringSetting("morphe_custom_branding_icon_patched", "", false, false);
 
@@ -103,7 +106,6 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
     public static final BooleanSetting REPLACE_MUSIC_LINKS_WITH_YOUTUBE = new BooleanSetting("morphe_replace_music_with_youtube", FALSE);
     public static final BooleanSetting REPLACE_LINKS_WITH_SHORTENER = new BooleanSetting("morphe_replace_links_with_shortener", FALSE);
-    public static final BooleanSetting OPEN_SYSTEM_SHARE_SHEET = new BooleanSetting("morphe_open_system_share_sheet", FALSE);
 
     // Video quality
     public static final IntegerSetting VIDEO_QUALITY_DEFAULT_WIFI = new IntegerSetting("morphe_video_quality_default_wifi", -2);
@@ -147,6 +149,12 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting APP_REFRESH_RATE = new StringSetting("morphe_app_refresh_rate", "DEFAULT", true);
     public static final EnumSetting<AppRefreshType> APP_REFRESH_RATE_TYPE = new EnumSetting<>("morphe_app_refresh_rate_type", AppRefreshType.ALWAYS, true, new RefreshRateType());
 
+    // Glass menus
+    public static final BooleanSetting GLASS_MENUS = new BooleanSetting("morphe_glass_menus", FALSE, false, "morphe_glass_menus_user_dialog_message", new GlassMenusAvailability());
+    public static final IntegerSetting GLASS_MENUS_OPACITY = new IntegerSetting("morphe_glass_menus_opacity", 30, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
+    public static final IntegerSetting GLASS_MENUS_BLUR = new IntegerSetting("morphe_glass_menus_blur", 24, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
+    public static final IntegerSetting GLASS_MENUS_DIM = new IntegerSetting("morphe_glass_menus_dim", 20, false, parentsAll(parent(GLASS_MENUS), new GlassMenusAvailability()));
+
     // Custom font
     public static final EnumSetting<FontType> CUSTOM_FONT_TYPE = new EnumSetting<>("morphe_custom_font_type", FontType.DEFAULT, true);
     public static final StringSetting CUSTOM_FONT_FILE = new StringSetting("morphe_custom_font_file", "", CUSTOM_FONT_TYPE.availability(FontType.CUSTOM));
@@ -154,7 +162,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     // Return YouTube Dislike
     public static final BooleanSetting RYD_ENABLED = new BooleanSetting("morphe_ryd_enabled", TRUE, true);
     public static final StringSetting RYD_USER_ID = new StringSetting("morphe_ryd_user_id", "", false, false);
-    public static final BooleanSetting RYD_DISLIKE_PERCENTAGE = new BooleanSetting("morphe_ryd_dislike_percentage", FALSE, parent(RYD_ENABLED));
+    public static final BooleanSetting RYD_DISLIKE_PERCENTAGE = new BooleanSetting("morphe_ryd_dislike_percentage", FALSE, true, parent(RYD_ENABLED));
     public static final BooleanSetting RYD_ESTIMATED_LIKE = new BooleanSetting("morphe_ryd_estimated_like", TRUE, true, parent(RYD_ENABLED));
     public static final BooleanSetting RYD_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("morphe_ryd_toast_on_connection_error", TRUE, parent(RYD_ENABLED));
     public static final StringSetting GMS_CORE_IGNORED_VERSION = new StringSetting("morphe_gms_core_update_dialog_ignored_version", "", false, false);
@@ -162,15 +170,23 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     // Migration
     private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
+    private static final BooleanSetting DEPRECATED_VIDEO_QUALITY_PRIORITIZE = new BooleanSetting("morphe_video_quality_prioritize", TRUE);
     private static final BooleanSetting DEPRECATED_DEBUG_PROTOBUFFER = new BooleanSetting("morphe_debug_protobuffer", FALSE, false, false);
     private static final EnumSetting<SplashScreenAnimationStyle> DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("morphe_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND);
 
     static {
         SeekBarPreference.register(new SeekBarConfig(SETTINGS_NEW_INDICATOR_DAYS,
                 0, 14, 1, "", 1, sf("morphe_settings_new_indicator_days_off"), null));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_MENUS_OPACITY,
+                0, 100, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_MENUS_BLUR,
+                4, 60, 2, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(GLASS_MENUS_DIM,
+                0, 80, 5, "%"));
 
         // TODO: Eventually remove these migrations
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
+        migrateOldSettingToNew(DEPRECATED_VIDEO_QUALITY_PRIORITIZE, PRIORITIZE_VIDEO_QUALITY);
         if (DEPRECATED_DEBUG_PROTOBUFFER.get()) {
             DEBUG_LITHO.save(LithoLogging.PATH_AND_BUFFER);
             DEPRECATED_DEBUG_PROTOBUFFER.resetToDefault();

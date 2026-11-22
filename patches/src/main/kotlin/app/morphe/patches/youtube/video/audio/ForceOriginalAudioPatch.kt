@@ -22,6 +22,7 @@ val forceOriginalAudioPatch = forceOriginalAudioPatch(
     // Localized audio track flag was removed in 21.26+ but might be replaced with 45673827L
     fixUseLocalizedAudioTrackFlag = { !is_21_26_or_greater },
     forcedServerAdaptiveStreaming = { is_21_26_or_greater },
+    shortsQualityMenuController = true,
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     subclassExtensionClassDescriptor = "Lapp/morphe/extension/youtube/patches/ForceOriginalAudioPatch;",
     preferenceScreen = PreferenceScreen.VIDEO,

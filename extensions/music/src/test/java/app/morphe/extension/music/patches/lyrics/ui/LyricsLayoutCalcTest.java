@@ -92,6 +92,46 @@ public class LyricsLayoutCalcTest {
         assertFalse(right[1]);
     }
 
+    @Test
+    public void duetOppositeSideDisabledKeepsDuetLineLeft() {
+        app.morphe.extension.music.settings.Settings.LYRICS_DUET_OPPOSITE_SIDE.save(false);
+        try {
+            List<LyricsLine> lines = List.of(
+                    line(0, 5000, LTR, false, false),
+                    line(6000, 5000, LTR, true, false));
+            boolean[] right = LyricsLayoutCalc.rightAlignedLines(lines, noSec(2));
+            assertFalse(right[0]);
+            assertFalse(right[1]);
+        } finally {
+            app.morphe.extension.music.settings.Settings.LYRICS_DUET_OPPOSITE_SIDE.save(true);
+        }
+    }
+
+    @Test
+    public void forceCenterOverridesDuetRightAlignment() {
+        app.morphe.extension.music.settings.Settings.LYRICS_FORCE_CENTER.save(true);
+        try {
+            List<LyricsLine> lines = List.of(
+                    line(0, 5000, LTR, false, false),
+                    line(6000, 5000, LTR, true, false));
+            boolean[] right = LyricsLayoutCalc.rightAlignedLines(lines, noSec(2));
+            assertFalse(right[0]);
+            assertFalse(right[1]);
+        } finally {
+            app.morphe.extension.music.settings.Settings.LYRICS_FORCE_CENTER.save(false);
+        }
+    }
+
+    @Test
+    public void centeredGroupLineIgnoresDuetSide() {
+        List<LyricsLine> lines = List.of(
+                line(0, 5000, LTR, true, false),
+                new LyricsLine(6000, 5000, LTR, List.of(), "v1000", true, false, null));
+        boolean[] right = LyricsLayoutCalc.rightAlignedLines(lines, noSec(2));
+        assertTrue(right[0]);
+        assertFalse(right[1]);
+    }
+
     // -- buildGapIntervals ---------------------------------------------------
 
     @Test

@@ -141,13 +141,13 @@ Nospiediet OK, lai atvērtu Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Mēģiniet iespējot: Viltot video straumes &gt; Android VR pieslēgšanās</string>
   <string name="morphe_spoof_video_streams_client_type_title">Noklusējuma klients</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR pieslēgšanās</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR prasī piēklūgšanu ar atsevišķu kontu. Pieskarieties šeit, lai turpinātu</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Šobrīd pieslēgts pie Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Piecelgšanās \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' prasīta atsevišķa pierakstīšanās. Pieskarieties šeit, lai turpinātu</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Šobrīd pierakstīts \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Lai izmantotu šo funkciju, mainiet \'Noklusējuma klients\' uz Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Pierakstieties Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Pieslēgšanās Android VR var novērst atskaņošanas problēmas dažiem lietotājiem
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Lai izmantotu šo funkciju, mainiet \'Noklusējuma klients\' uz \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Pierakstīties \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Pieslēgšanās 'Android VR' var novērst atskaņošanas problēmas dažiem lietotājiem
 
 Lai pieslēgtos, zemāk nospiediet pogu Turpināt"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Izrakstīties</string>
@@ -168,35 +168,35 @@ Lai pieslēgtos, zemāk nospiediet pogu Turpināt"</string>
 • Jūsu Morphe iestatījumi neimportēs/neeksportēs Android VR autentifikāciju
 • Ja šī lietotne netiek izmantota 6 mēnešus, Google izdzēs šo autentifikāciju
 • Jums būs jāpieslēdzas vēlreiz, ja mainīsiet savu Google paroli vai noņemiet šo ierīci no saviem Google iestatījumiem"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Pieteikšanās mobilajā tīmekļa vietnē</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Piecelgšanās \'Mobilā tīeleja\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Nekā Obligāti: pietiecieties YouTube tīmekļa vietnei, lai atskañotu video ar savu kontu. Pieskarieties šeit, lai turpinātu</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Šobrīd pieteikts mobilajā tīmekļa vietnē</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Šobrīd pieslēgts uz \'Mobilā tīmekļa versija\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Lai izmantotu šo funkciju, mainiet \'Noklusējuma klients\' uz Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Pierakstīties Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web atskaņo video bez pierakstīšanās vai pēc pierakstīšanās YouTube tīmekļa vietnē
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Lai izmantotu šo funkciju, mainiet \'Noklusējuma klients\' uz \'Mobilā tīmekļa versija\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Pieslēgties \'Mobilā tīmekļa versijai\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobilā tīklā\" video tiek atskaņoti bez pierakstīšanās vai pēc pierakstīšanās YouTube vietnē
 
-• Būvjot pierakstīcies, var atskaņot video, kuriem nepieciešams konts, piemēram, video ar vecuma ierobežojumiem
-• Google pierakstīšanās lapa atveras šajā lietotnē
+• Būvniecībā pierakstījies var atskaņot video, kuriem nepieciešams konts, piemēram, video ar vecuma ierobežojumiem
+• Šajā lietotnē atveras Google pierakstīšanās lapa
 • Pierakstīšanās tiek izmantota tikai, lai iegūtu video, kurus atskaņojat
 • Pierakstīšanās tiek saglabāta tikai šajā ierīcē
 
-Lai pierakstītos, nospiediet tālāk zemāk"</string>
+Lai pierakstītos, apakšā nospiediet \"Turpināt\""</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Pierakstīšanās saglabāta
 
-• Jūsu Morphe iestatījumos netiks importēta/eksportēta mobilā tīmekļa pierakstīšanās
-• Ja Googlebeidz pierakstīšanos, video tiks atskaņoti bez pierakstīšanās, līdz pierakstīsieties atkārti
-• Izrakstīšanās no šīs ierīces nozīmē arī izrakstīšanos no YouTube tīmekļa vietnes"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobilā tīmekļa pierakstīšanās termiņš ir beidzies, mēģiniet pierakstīties mobilajā tīmeklī vēlreiz</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Izrakstīts no mobilā tīmekļa</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView nav pieejams. Lai pierakstītos, instalējiet vai iespējojiet to</string>
+• Jūsu Morphe iestatījumos netiks importēta vai eksportēta \"Mobilā tīkla\" pierakstīšanās
+• Ja Google izbeidz sesiju, video tiek atskaņoti bez pierakstīšanās, līdz pierakstīsieties atkal
+• Izrakstīšanās izraksta šo ierīci arī no YouTube vietnes"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">\"Mobilā tīkla\" pierakstīšanās termiņš ir beidzies, mēģiniet pierakstīties \"Mobilajā tīklā\" vēlreiz</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Izrakstījies no \"Mobilā tīkla\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' nav pieejams. Lai pieslēgtos, instalējiet vai iespējojiet to</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 pagaidām nav pieejams (API laika limits beidzies)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR pieslēgšanās termiņš ir beidzies, mēģinieties pieslēgties VR vēlreiz</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' pieslēguma termiņš ir beidzies, mēģiniet pieslēgties VR vēlreiz</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 pagaidām nav pieejams (statuss %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 pagaidām nav pieejams</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nevar pieslēgties VR, tīmekļa vietnes autentifikācija netika apstiprināta</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nevar pieslēgties VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Izrakstīts no Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Izrakstīts no \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">VR pieslēgšanās marķeris ir neatbilstošs, mēģinieties pieslēgties VR vēlreiz</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Paziņojumu mediju vadības elementi</string>
@@ -214,6 +214,10 @@ Lai pierakstītos, nospiediet tālāk zemāk"</string>
   <string name="morphe_seek_notification_media_length_invalid">Meklēšanas garumam jābūt no 1 līdz %s sekundēm. Tiek izmantota noklusējuma vērtība</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Atslēgt QUIC protokolu</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Prioritizēt video kvalitāti</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioritizē augstāko pieejamo video kvalitāti, nodalot to no kodeka efektivitātes</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ja šī iestatījums ir izslēgts, vecākiem video var nebūt pieejamas video kvalitātes iespējas</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Atslēgt DRC audio</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -254,7 +258,7 @@ Lai pierakstītos, nospiediet tālāk zemāk"</string>
   <string name="morphe_replace_music_with_youtube_title">Mainīt kopīgošanas saites uz youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Kopīgotajās saitēs aizstāj music.youtube.com ar youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Mainīt kopīgošanas saites uz youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Piespiež video izmantot saīsināto youtu.be URL formātu</string>
+  <string name="morphe_replace_links_with_shortener_summary">Piespiež video izmantot saīsināto \'youtu.be\' URL formātu</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automātiski</string>
@@ -266,15 +270,12 @@ Lai pierakstītos, nospiediet tālāk zemāk"</string>
   <string name="morphe_video_quality_default_mobile_title">Noklusējuma video kvalitāte mobilajā tīklā</string>
   <string name="morphe_remember_video_quality_toast_mobile">Mainīta noklusējuma mobilā kvalitāte uz: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Mainīta noklusējuma Wi-Fi kvalitāte uz: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Atvērt sistēmas kopīgošanas logu</string>
-  <string name="morphe_open_system_share_sheet_summary">Satura kopīgošanai izmantot sistēmas kopīgošanas izvēlni neatkarībā no lietotnes iekšējās izvēlnes</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho žurnālošana</string>
   <string name="morphe_debug_litho_entry_disabled">Atspējots</string>
   <string name="morphe_debug_litho_entry_path">Ceļš</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Ceļš un bufers</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho žurnālveikšana reģistrē lietotnes izkārtojuma komponentes, tostarp ekrāna tekstu dažām UI komponentēm.
+  <string name="morphe_debug_litho_user_dialog_message">"Reģistrē lietotnes izkārtojuma komponentes, tostarp ekrāna tekstu dažām UI komponentēm.
 
 Tas var palīdzēt identificēt komponentes, izveidojot pielāgotus filtrus.
 
@@ -380,4 +381,8 @@ Video ID, kuru jūs skatāties, tiek nosūtīts Return YouTube Dislike API, bet 
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Klienta ātruma ierobežojumi netika konstatēti</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klienta ātruma ierobežojums sastapts %s reizes</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekundes</string>
+  <string name="morphe_navigation_bar_screen_title">Navigācijas josla</string>
+  <string name="morphe_navigation_bar_screen_summary">Izvēlieties, kuras pogas rādīt apakšējā navigācijas joslā</string>
+  <string name="morphe_toolbar_screen_title">Rīkjosla</string>
+  <string name="morphe_toolbar_screen_summary">Izvēlieties, kuras komponentes parādās rīkjoslā</string>
 </resources>

@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">Թարգմանություններ</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Թարմացված է</string>
   <string name="morphe_settings_about_contributors">Համագործակիցներ</string>
-  <string name="morphe_settings_about_contributors_period">Վերջին 12 ամիսը</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Ամբողջ ժամանակահատվածում</string>
+  <string name="morphe_settings_about_contributors_6_months">6 ամիս</string>
+  <string name="morphe_settings_about_contributors_3_months">3 ամիս</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Ժամանակահատված</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s օգտատեր</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Աջակիցներ</string>
   <string name="morphe_settings_about_supporters_summary">Աջակիցները Open Collective-ում</string>
@@ -222,6 +229,9 @@ MicroG-ի համար մարտկոցի օպտիմիզացիայի անջատու�
 • Հավելվածը կարող է պատահականորեն փակվել
 • Ծանուցումները կարող են չաշխատել
 • Հետնապլանի վերարտադրությունը կարող է չաշխատել"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Բացել համակարգի կիսման էջը</string>
+  <string name="morphe_open_system_share_sheet_summary">Բովանդակությունը կիսելիս բացում է համակարգի կիսման պատուհանը՝ հավելվածի ներսի պատուհանի փոխարեն</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Հավելվածի հղման մշակում</string>
   <string name="morphe_link_handling_summary">Կարգավորեք հղումների բացումն այս հավելվածում</string>

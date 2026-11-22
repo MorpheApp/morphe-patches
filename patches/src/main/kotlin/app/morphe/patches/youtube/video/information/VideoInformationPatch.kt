@@ -192,11 +192,13 @@ val videoInformationPatch = patch(
 
         VideoLengthFingerprint.let {
             it.method.apply {
-                val index = it.instructionMatches.last().index
-                val register = getInstruction<ThreeRegisterInstruction>(index).registerB
+                val register = getInstruction<ThreeRegisterInstruction>(
+                    it.instructionMatches.last().index
+                ).registerB
 
+                // Hooked before the boolean call, where the length is set in all branches.
                 addInstructionsAtControlFlowLabel(
-                    index,
+                    it.instructionMatches[5].index,
                     "invoke-static { v$register, v${register + 1} }, $EXTENSION_CLASS->setVideoLength(J)V",
                 )
             }

@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">ترجمه‌ها</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">به‌روز است</string>
   <string name="morphe_settings_about_contributors">مشارکت‌کنندگان</string>
-  <string name="morphe_settings_about_contributors_period">۱۲ ماه گذشته</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">در تمام زمان‌ها</string>
+  <string name="morphe_settings_about_contributors_6_months">۶ ماه</string>
+  <string name="morphe_settings_about_contributors_3_months">۳ ماه</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">بازه زمانی</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s کاربر</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">حامیان</string>
   <string name="morphe_settings_about_supporters_summary">حامیان در Open Collective</string>
@@ -222,6 +229,9 @@ Second \"item\" text"</string>
 • برنامه ممکن است به‌طور تصادفی بسته شود
 • اعلان‌ها ممکن است کار نکنند
 • پخش در پس‌زمینه ممکن است کار نکند"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">بازکردن برگهٔ اشتراک‌گذاری سیستم</string>
+  <string name="morphe_open_system_share_sheet_summary">هنگام اشتراک‌گذاری محتوا، به‌جای برگهٔ درون‌برنامه‌ای، برگهٔ اشتراک‌گذاری سیستم را باز می‌کند</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">مدیریت پیوندهای برنامه</string>
   <string name="morphe_link_handling_summary">پیوندها را برای بازشدن در این برنامه پیکربندی کنید</string>

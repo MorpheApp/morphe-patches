@@ -144,6 +144,8 @@ Foldera exportê: %s"</string>
   <string name="morphe_export_download_failed">Daxistin nehat export kirin</string>
   <string name="morphe_export_download_all_flyout_title">Hemû ber bi amûrê ve export bike</string>
   <string name="morphe_export_download_all_started">Eksportkirina hemû daxistinan</string>
+  <string name="morphe_export_download_all_title">Hemû daxînan</string>
+  <string name="morphe_export_download_playlist_started">Eksportkirina daxînan</string>
   <string name="morphe_export_download_all_running">Daxistin jixwe tên eksportkirin</string>
   <string name="morphe_export_download_all_saved">%1$s ji %2$s daxistin hatin eksportkirin bo %3$s</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +170,15 @@ Foldera exportê: %s"</string>
   <string name="morphe_music_hide_video_ads_title">Reklamên wîdyoyê veşêre</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Veşartina Guhestina Deng/Vîdyoyê</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Butona Dadegêşandinê veşêre</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Butona Dadegêşandinê di bernameya podkasta de veşêre</string>
   <string name="morphe_music_hide_explore_shelf_title">Veşartina Refê Explore</string>
   <string name="morphe_music_hide_filter_bar_title">Pêvekirina bara fîltreyê veke</string>
   <string name="morphe_music_hide_grid_shelves_title">Veşartina Refên Torê</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Veşartina Refên Horîzontal</string>
+  <string name="morphe_music_hide_new_button_title">Bişkoja Nû veşêre</string>
+  <string name="morphe_music_hide_new_button_summary">Bişkoja Nû di tabê ya Library de veşêre</string>
   <string name="morphe_music_hide_list_shelves_title">Veşartina Refên Lîsteyê</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panela lîrîkê</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Butona Parvekirin veşêrin</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Butona Tercîhê veşêrin</string>
   <string name="morphe_music_hide_new_from_shelf_title">Veşartina Refa \'Nû ji\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Veşartina Refên Playlîstê</string>
@@ -199,6 +201,8 @@ Foldera exportê: %s"</string>
   <string name="morphe_music_crossfade_screen_title">Gerhezkirin</string>
   <string name="morphe_music_crossfade_screen_summary">Şarkıları bi hev re kêrkirin</string>
   <string name="morphe_music_crossfade_enabled_title">Gerhezkirin çêbike</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">Ji bo bikaranîna crossfade, \'Default client\' a \'Spoof video streams\' biguhere bo \'TV Simply\' an \'visionOS\'</string>
   <string name="morphe_music_crossfade_curve_title">Pêwaya girîng</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Hêz yekser</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Dûrî kêmasî</string>
@@ -232,7 +236,9 @@ Foldera exportê: %s"</string>
   <string name="morphe_music_crossfade_paused_toast">Navkirina ji bo vê seseyê rawestiya</string>
   <string name="morphe_music_crossfade_resumed_toast">Navkirin dubare hat destpêkirin</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Moda vîdyoyê dema navkirinê çalak e, nayê xebitîn</string>
-  <string name="morphe_music_crossfade_sabr_toast">Crossfade bi lîstana SABR ve vekirî nayê</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade bi \'visionOS\' re naxebite. \'Default client\' a \'Spoof video streams\' biguhere bo \'TV Simply\'</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade bi vê clienta streamê spoof re naxebite</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade gava ku casting tê kirin vekirî nayê</string>
   <string name="morphe_music_crossfade_about_how_title">Çawa dixebite</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade dawiya straneke bi destpêka ya din re diguhêre, bi bikaranîna dirêjî û xaniyên we
@@ -249,9 +255,7 @@ Ekranê qiflkirî an agahdariyên (notification) dikare di navbera guherînê de
 
 Rawestandina crossfade ji bo temaşekirina vîdyoyeke muzîkê dikare hin vîdyoyan reş bihêle. Rawestandina crossfade berî ku tu stranê hilbijêrî, vê yekê rêdigire"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Nihêr nayê kirin</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Castkirin an nîşandana deng (Chromecast, nîşandana ekranê an a deng)
-
-Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">Castkirin an mirroringkirina audio (Chromecast, mirroringkirina ekranê an audio)</string>
   <string name="morphe_music_crossfade_about_credit_title">Kreya xwedî</string>
   <string name="morphe_music_crossfade_about_credit_summary">Taybeta crossfade ji aliyê VazerOG ve hatî çêkirin</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,6 +265,20 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">Dema bêdeng be rawestîne</string>
   <string name="morphe_music_pause_when_muted_summary">Dema dengê sîstemê bêdeng be lîstina muzîkê rawestîne û gava deng zêde dibe dîsa dest pê bike</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+  <string name="morphe_music_sonos_cast_summary">Bişkokeya Cast dikare her wiha berbi Sonos û speakerên din ên UPnP li ser tora Wi-Fi ya we stream bike</string>
+  <string name="morphe_music_sonos_cast_sheet_title">Bi amûrekê ve girê bide</string>
+  <string name="morphe_music_sonos_cast_searching">Li speakeran li ser tora Wi-Fi ya we digere…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">Speakerê li ser tora Wi-Fi ya we hilbijêre</string>
+  <string name="morphe_music_sonos_cast_casting_to">Vegerandina ber bi %s</string>
+  <string name="morphe_music_sonos_cast_connected">Hatiye girêdan</string>
+  <string name="morphe_music_sonos_cast_disconnect">Ji girêdanê derxe</string>
+  <string name="morphe_music_sonos_cast_speakers_header">Speakerên li ser Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">Çalak</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">Amûrên Chromecast, Nest û Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">Neskêrt bi %s girêdar bû</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Leza lêdanê</string>
   <string name="morphe_music_playback_speed_summary">Leza ku ji bo hemû trakan tê bikaranîn. Li %100 leza sepanê tê bikaranîn, wekî leza lêdana podkastê</string>
@@ -271,9 +289,18 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Audio ducking bêkar bike</string>
   <string name="morphe_music_disable_audio_ducking_summary">Dema aplikasyoneke din dengê kurt dikişîne, wekî agahdarkirinê, sedan nayê kêmkirin</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">Fîltra hezkirinên rêza çalîk</string>
+  <string name="morphe_music_queue_like_filter_summary">Stranên bi hezkirinên kêm ji tevlihev û radyoyê dijide. Lîsteyên stranan, albûm û stranên ku hûn lê zêde dikin naguhherin. Hejmara hezkirinê ji Return YouTube Dislike ye</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">Hêjmara herî kêm a hezkirinan</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">Stranên bi hezkirinên kêmtir ji rêza çalîk tên jêbirin</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Rihiya kirê destûrê da veguherandina hez kirinê</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Êdî dema butonê hez kirinê kişandinê, veguherandina stranê paşê nabe</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">Sûrpêya guherîna trackê rabigihîne</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">Rê li ber derbasbûna trackê ya din an ya berê bi sûrpêya çep an rast li ser playerê digire</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">Rê li ber derbasbûna trackê ya din an ya berê bi sûrpêya çep an rast li ser miniplayerê digire</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Loopa A-B</string>
   <string name="morphe_music_ab_loop_summary">Ji bo diyarkirina destpêka loopê, seekbar bi dirêjî bigire; ji bo dawiya loopê careke din, û ji bo paqirkirina loopê careke din</string>
@@ -324,15 +351,6 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <string name="morphe_music_playlist_tags_rename">Nav biguherîne</string>
   <string name="morphe_music_playlist_tags_delete">Jê bibe</string>
   <string name="morphe_music_playlist_tags_hidden">Veşartî</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Butona Şîrkirinê Veşêrin</string>
-  <string name="morphe_music_hide_history_button_title">Butona Dîrokê Veşêrin</string>
-  <string name="morphe_music_hide_notification_button_title">Butona Notîfîkirinê Veşêrin</string>
-  <string name="morphe_music_hide_search_button_title">Butona Lêkirinê Veşêrin</string>
-  <string name="morphe_music_hide_voice_search_button_title">Butona lêgerîna dengî veşêre</string>
-  <string name="morphe_music_hide_sound_search_button_title">Butona lêgerîna sînorî veşêre</string>
-  <string name="morphe_music_hide_library_new_button_title">Butona Nû veşêre</string>
-  <string name="morphe_music_hide_library_new_button_summary">Butona Nû di tabê Pirtûkxaneyê de veşêre</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Butonên Çalakiyê</string>
   <string name="morphe_music_action_buttons_screen_summary">Hilbijêrin ku kîjan butonên çalakiyê li bin playerê xuya bibin</string>
@@ -404,22 +422,20 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <string name="morphe_music_force_portrait_orientation_title">Sînorê portreyê bi zorê bikin</string>
   <string name="morphe_music_force_portrait_orientation_summary">Dema amûr tê zivirandin, sepanê di sînorê portreyê de diheleve</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Rengê miniplayer-a biguhezîne</string>
+  <string name="morphe_music_change_miniplayer_color_title">Rengê biguherîne</string>
   <string name="morphe_music_change_miniplayer_color_summary">Rengê lîstikvanê biçîk bi rengê lîstikvanê bi tevahî yê veguherîne</string>
   <string name="morphe_music_change_navigation_bar_color_title">Rengê bara pêvajoyê biguherîne</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Rengê bara pêvajoyê bi lîstikvanê tîkê têkildar dike</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">ин cейизиб губи миниплейаибда</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Seroka butona li miniplayerê de</string>
+  <string name="morphe_music_miniplayer_next_button_title">Bişkoja Paşê nîşan bide</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Bişkoja Berê nîşan bide</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Serê pêşandanê tim miniplayer werekî jêdî were çalak kirin</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Îhtimalê veguherîna lîstikvan bi xweber bo tevahî parastin dema ku strana nû dest pê dike</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Mîkroşvanê biçîkirinê çalak bike</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Xişandina ji bo girtinê çalak bike</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Destûr dide ku mîkroşvan bi şûşkirina jorê de were girtin</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Keleka navigasyonê</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Hilbijêrînê ku kîjan butonan li ser barê navîgera jorîn xuya bibin</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Butona Malê veşêrin</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -452,7 +468,7 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Ronahiya dora butonê ya hatî hilbijarkirin a li şirîta navîgasyona şûşeyî veşêre</string>
   <string name="morphe_music_miniplayer_screen_title">Minilîstik</string>
   <string name="morphe_music_miniplayer_screen_summary">Stîl, buton û gestureyên miniplayerê biguherîne</string>
-  <string name="morphe_music_miniplayer_glass_title">Miniplayerê şûşeyî aktîv bike</string>
+  <string name="morphe_music_miniplayer_glass_title">Efekta şûşeyê çalak bike</string>
   <string name="morphe_music_miniplayer_glass_summary">Miniplayerê şevok wekî kartekî şûşeyî yêle dora xweyale û şefaf nîşan dide</string>
   <string name="morphe_music_miniplayer_glass_style_title">Stîla miniplayerê şûşeyî</string>
   <string name="morphe_music_miniplayer_glass_style_summary">Radyusa kune-yên, paddinga wêne, ronahiya çarmandanê û opacityya miniplayerê şûşeyî bi pêşkeftneyekê régler bike</string>
@@ -460,11 +476,8 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">Paddinga wêne</string>
   <string name="morphe_music_miniplayer_glass_rim_title">Ronahiya çarmandanê</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">Opasîte</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">Bluriya şûşeyî</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">Rûpela piştê miniplayerê şûşeyî çi qas blur bûye (Android 14 û piştr). Li 0 rûpel bi zelalî xuya dike, û berî Android 14 rûpel veşartî ye</string>
-  <string name="morphe_music_miniplayer_glass_light_title">Şûşeya ronahî</string>
   <string name="morphe_music_miniplayer_glass_light_summary">Miniplayerê şûşeyî li şuweya tarî bi rengê spî dike, ji bo şûşeyek ronaktir û zelavtir</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">Rengê wêne ya albûmê</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">Miniplayerê şûşeyî bi rengê wêne ya albûma stranêya ku play dibe rengîn dike</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Wêne ya zivirî</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Wêne ya miniplayerê şûşeyî dike dor, û wekî plakê dizivîne gava stranek play dibe</string>
@@ -475,6 +488,15 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Nimûneyên muzîkê</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Sêyara</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Pirtûkxane</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">Bişkoja Activity veşêre</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">Bişkoja \'Ask Music\' veşêre</string>
+  <string name="morphe_music_hide_cast_button_title">Butona Şîrkirinê Veşêrin</string>
+  <string name="morphe_music_hide_history_button_title">Butona Dîrokê Veşêrin</string>
+  <string name="morphe_music_hide_search_button_title">Butona Lêkirinê Veşêrin</string>
+  <string name="morphe_music_hide_voice_search_button_title">Bişkoja \'Voice search\' veşêre</string>
+  <string name="morphe_music_hide_sound_search_button_title">Bişkoja \'Lêgerîna deng\' veşêre</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ne têkeve. Têke da ku konfîg bike</string>
   <string name="morphe_music_scrobbling_log_out">Derkeve</string>
@@ -578,6 +600,9 @@ Ji bo ku bêyî astengiyê scrobbling li ser lîstikên paşnavê were hevdengki
   <string name="morphe_music_soundproof_about_summary">"Daneyên hunermendan ji SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) tên, carekê di rojê de tên daxistin. Derbaskirin tiştekî ji bo tiştê ku hûn guhdar dikin nayê şandin. Vekirina rûpela SoundProof navê hunermendê niha ji bo servera SoundProof dişîne da ku dengên nû nîşan bide û hûn dengê bidin. Server dengderan bi navnîşa IP ji hev cuda dike, ji ber vê yekê dengdana we dibe ku li ser torekê cuda xuya bike.
 
 Database bi lisansa ODC Open Database License (ODbL) ye. Tomarên ji Soul Over AI ji aliyê xoundbyte ve bi lisansa CC BY 4.0 in. Ne bi SoundProof an Soul Over AI ve girêdayî ye û ne jî ji aliyê wan ve hatiye pesendkirin."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">Hunerê animate yê Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">Hunerê albûma animate ya Apple Music di deryayê de nîşan dide, heger albûm yek hebe. Nav, hunermend û albûma her stranê ji bo Apple Music têne şandin</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">Ji bo vê şopa amûrê, gotinên stranê nîn in.</string>
   <string name="morphe_music_lyrics_enabled_title">Şarkîyên partiyê sêyemîn bikar bîne</string>
@@ -717,8 +742,14 @@ Kukiyên pêwîst: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_written_by">Ji rêveberê: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Peyv an heceyên senkronize kirî nîşan bide</string>
   <string name="morphe_music_lyrics_word_sync_summary">Dema ku hebin, pêşînî bide gotinên peyv bi peyv. Dema ku gotin demên peyvan hildigirin, her peyv an heceyê li gorî muzîkê nîşan dide</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">Peydaniyên hevseng bi awayekî nerm animate bike</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">Her peyvekî bi şûveyek nerm, ronahî û hinekî bilindkirinê nîşan dide gava ku tê stran kirin. Ji bo parastina bataryayê yan jî ji bo tijekirineke tûj li ser amûrên hêdî, vegire</string>
   <string name="morphe_music_lyrics_spring_scroll_title">Scrollinga springê bikar bîne</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">Lyrican bi fîzîka springê dixeve, û her rêxê hinekî piştî ya jorîn dixeve. Ji bo parastina bataryayê li ser amûrên hêdî veguherîne</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">Srolkirina aram</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">Anîmasyona srolkirina gotinên stranê hêdî dike û xetên neçalak bi qebareya wan a tam diparêze</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">Xetên neçalak blur bike</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">Her xetê ku niha nayê stran kirin bi nermî blur dike, her ku dûr be zêdetir (Android 12 û piştr). Berî Android 12, xetên neçalak zelal dimînin</string>
   <string name="morphe_music_lyrics_gap_dots_title">Xalên bêdengiya amûran nîşan bide</string>
   <string name="morphe_music_lyrics_gap_dots_summary">Di navbera rêzan de sê xalan nîşan didele di demên bêdengiya amûran a dirêj de, ku her ew qedînin her ku bêdengî bi dawî dibe</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">Rêzên dûr bêtir tarî bike</string>
@@ -841,6 +872,8 @@ Gotinên stranê ji xizmetên third-party tên ku bi Morphe ve girêdayî nîn i
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Wergerê dide ser gotinên stranê; xwendin û romanîzasyon li jêr dimînin</string>
   <string name="morphe_music_lyrics_force_center_title">Hemişê gotinên stranê navendî bike</string>
   <string name="morphe_music_lyrics_force_center_summary">ON her rêyê dike navîn û hevlîna çavkaniyê (bi tevba aliyên duetê re) paşguh nake; OFF hevlîna ku gotinên stranê dixwazin diparêze</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">Rêzkirina duetê ya aliyên dijwar</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">Di stranên duetê de stranbêjê duyemîn li aliyê dijwar danîxe. Ji bo ku her du stranbêj li aliyekê bin, vê veguherîne</string>
   <string name="morphe_music_lyrics_providers_keep_one">Divê herî kêm yek dabinker vekirî be</string>
   <string name="morphe_music_lyrics_translation_provider_title">Werger</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanîzakî yan translîterasyon</string>

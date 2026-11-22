@@ -107,7 +107,7 @@ public final class HidePlayerFlyoutMenuPatch {
             try {
                 // Every element is parsed here otherwise, on the main thread. The identifier of
                 // a header is also in the bytes of its element, see FeedVideoCardsPatch.getElementText().
-                if (!Utils.containsAny(FeedVideoCardsPatch.getElementText(bytes), PLAYER_FLYOUT_HEADER_IDENTIFIERS)) {
+                if (!FeedVideoCardsPatch.containsAny(FeedVideoCardsPatch.getElementText(bytes), PLAYER_FLYOUT_HEADER_IDENTIFIERS)) {
                     return bytes;
                 }
 

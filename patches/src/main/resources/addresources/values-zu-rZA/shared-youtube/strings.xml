@@ -141,15 +141,15 @@ Chofoza u-OK ukuze uvule i-Android System WebView."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Zama ukuvula: Spoof video streams &gt; Android VR sign in</string>
   <string name="morphe_spoof_video_streams_client_type_title">I-client eyisisekelo</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Ngena ku-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">I-Android VR idinga ukungena ngendlela eyizimele. Chofoza lapha ukuze uqhubeke</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Okwamanje ungenile ku-Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Uku-sign in kwe-\'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' idinga ukungena okuhlukile. Thinta lapha ukuze uqhubeke</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Njengamanje ungena ku-\'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ukuze usebenzise lo mshini, shintsha \'Iklayenti elijwayelekile\' kube i-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Ngena ku-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Ukungena ku-Android VR kungalungisa izinkinga zokudlala kubabukeli abathile
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ukuze usebenzise le nsizakalo, shintsha \'Iklayenti eliyona kakhulu\' ibe ngu \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Ngena ku-\'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Ukungena ku-'Android VR' kungalungisa izinkinga zokudlala kubabukeli abathile
 
-Ukuze ungene, cindezela qhubeka ngezansi"</string>
+Ukuze ungene, cindezela uqhubeke ngezansi"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Phuma</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Imiyalelo</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -168,35 +168,35 @@ Ukuze ungene, cindezela qhubeka ngezansi"</string>
 • Izilungiselelo zakho zeMorphe ngeke zingenise/zikhiphe ukuqinisekisa kwe-Android VR
 • Uma lolu hlelo lungasetshenziswa iminyaka eyi-6, i-Google izosusa lokuqinisekisa
 • Kuzodingeka ungene futhi uma ushintsha ipasiwedi lakho loku-Google noma ususa leli kifu ezilungiselelweni zakho ze-Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Ukungena ku-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Uku-sign in kwe-\'Mobile Web\'</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Kukhethweka: ngena kuwebhusayithi ye-YouTube ukuze udlale amavidiyo nge-akhawunti yakho. Thinta lapha ukuze uqhubeke</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Njengamanje ungene ku-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Njengamanje ungena ku-\'Mobile Web\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ukuze usebenzise this feature, shintsha \'Iklayenti elijwayelekile\' kube i-Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Ngena ku-Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"I-Mobile Web idlala amavidiyo ungengenanga, noma ungene kuwebhusayithi ye-YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ukuze usebenzise lo msebenzi, shintsha \'Iklayenti elijwayelekile\' kube \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Ngena ku-\'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobile Web' idlala amavidiyo ungangeni, noma ungene kuwebhusayithi ye-YouTube
 
-• Uma ungene, amavidiyo adinga i-akhawunti angadlala, afana namavidiyo anezinqubo zobudala
-• Ikhasi lokungena lika-Google livulwa kule app
-• Ukungena kusetshenziselwa kuphela ukuthola amavidiyo owadlala
-• Ukungena kusindwa kuleli device kuphela
+• Uma ungene, amavidiyo adinga i-akhawunti angadlala, njengamavidiyo anezinqubo zobudala
+• Ikhasi lokungena le-Google livulwa kulolu hlelo
+• Ukungena kusetshenziswa kuphela ukuze uthole amavidiyo owadlala
+• Ukungena kugcinwa kuleli device kuphela
 
-Ukuze ungene, chiza 'continue' ngezansi"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Ukungena kusindile
+Ukuze ungene, cindezela uqhubeke ngezansi"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Ukungena konke kusindiswe
 
-• Izilungiselelo zakho ze-Morphe ngeke zifake/zikhiphe ukungena kwe-Mobile Web
-• Uma u-Google eqeda ukungena, amavidiyo adlalwa ungengenanga kuze kube uhambe ungene futhi
-• Uma uphuma, leli device liphumayo kuwebhusayithi ye-YouTube"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Ukungena ku-Mobile Web sekuphelelwe yisikhathi, zama ukuvula i-Mobile Web futhi</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Uphumile ku-Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">I-Android System WebView ayitholakali. Ifake noma uyivule ukuze ungene</string>
+• Izilungiselelo zakho zeMorphe ngeke zifake/zikhiphe ukungena kwe-'Mobile Web'
+• Uma iGoogle iqeda ukungena, amavidiyo adlalwa ungengenanga kuze kube yilapho ungena futhi
+• Ukuphuma kuphuma futhi lolu hlobo lwedivayisi kuwebhusayithi yeYouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Ukungena kwe-Mobile Web sekuphelile, zama ukungena ku-\'Mobile Web\' futhi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Uphumile ku-\'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' ayitholakali. Ifake noma uyivule ukuze ungene</string>
   <string name="morphe_oauth2_connection_failure_timeout">I-OAuth2 ayitholakali okwesikhashana (i-API iphelelwe isikhathi)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Isikhathi sokungena ku-Android VR siphelile, zama ukungena ku-VR futhi</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Ukungena kwe-\'Android VR\' sekuphelile, zama ukungena ku-VR futhi</string>
   <string name="morphe_oauth2_connection_failure_status">I-OAuth2 ayitholakali okwesikhashana (isimo %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">I-OAuth2 ayitholakali okwesikhashana</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Awukwazi ukungena ku-VR, ukuqinisekisa kwewebhusayithi akuzange kuvunyelwe</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Awukwazi ukungena ku-VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Uphumile ku-Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Uphumile ku-\'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">I-token yokungena ku-VR ayilungile, zama ukungena ku-VR futhi</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Izilawuli zezimedia zezaziso</string>
@@ -214,6 +214,10 @@ Ukuze ungene, chiza 'continue' ngezansi"</string>
   <string name="morphe_seek_notification_media_length_invalid">Ubude bokufuna kumele bube phakathi kwe-1 kanye ne-%s imizuzwana. Kusetshenziswe okujwayelekile</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Vala iphrothokholi ye-QUIC</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Phakamisa ikhwalithi yevidiyo</string>
+  <string name="morphe_prioritize_video_quality_summary">Iphakamisa ikhwalithi yevidiyo ephezulu kunokusebenza kwe-codec</string>
+  <string name="morphe_prioritize_video_quality_dialog">Uma le setting icishwe, ama-video adala angase akhombise izinketho zokusebenza kwe-video quality</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Vala umsindo we-DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -254,7 +258,7 @@ Ukuze ungene, chiza 'continue' ngezansi"</string>
   <string name="morphe_replace_music_with_youtube_title">Shintsha izixhumanisi zokwabelana zibe yi-youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Shintsha i-music.youtube.com ibe yi-youtube.com ema-links ahlanganyelwe</string>
   <string name="morphe_replace_links_with_shortener_title">Shintsha ama-link okwabelana abe ngu youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Yenza amavidiyo ukuba asebenzise ifomathi ye-URL efishane ye-youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Yenza amavidiyo ukuba asebenzise ifomathi ye-URL efishane ethi \'youtu.be\'</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Okuzenzakalayo</string>
@@ -266,19 +270,16 @@ Ukuze ungene, chiza 'continue' ngezansi"</string>
   <string name="morphe_video_quality_default_mobile_title">Ikhwalithi yevidiyo evamile kunethiwekhi yeselula</string>
   <string name="morphe_remember_video_quality_toast_mobile">Kushintshwe izinga elijwayelekile le-mobile libe ngu: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Kushintshwe izinga elijwayelekile le-Wi-Fi libe ngu: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Vula i-share sheet ehleliwe yesistimu</string>
-  <string name="morphe_open_system_share_sheet_summary">Ivula i-share sheet yesistimu kunaleyo esehlala phakathi kwe-app lapho wabelana ngokuqukethwe</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Ukubhala ama-log e-Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Kukhishwa</string>
   <string name="morphe_debug_litho_entry_path">Indlela</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Indlela kanye ne-buffer</string>
-  <string name="morphe_debug_litho_user_dialog_message">"I-Litho logging ibhala amakomponenti ohlelo lwe-app, kuhlanganise nombhalo osesikrinini kwezinye izici ze-UI.
+  <string name="morphe_debug_litho_user_dialog_message">"Ibhala phansi izakhiro zokuhlela ze-app, kufaka kabanye nombhalo osesikrinini kwezinye izakhiro ze-UI.
 
-Lokhu kungasiza ukuhlonza amakomponenti lapho kudalwa amafiltha okukhethekile.
+Lokhu kungasiza ukuhlonza izakhiro lapho kudalwa ama-filter okuzenzela.
 
-Nokho, lokhu kuzobhala futhi nezinye izidathelu zomsebenzisi njenge-IP address yakho"</string>
+Nokho, lokhu kuzobhala phansi naphika eminye imininingwane yomsebenzisi efana ne-IP address yakho"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Ifiltha elilayishwe</string>
   <string name="morphe_custom_filter_screen_summary">Lungisa amafiltha alayishwe ukuze ufihle noma yisiphi isisindo</string>
@@ -380,4 +381,8 @@ I-ID ye-video oyibukayo ithunyelwa ku-Return YouTube Dislike API, kanti ukuthand
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Azikho imikhawulo yebhadi le-client ehlanganyelwe</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Umkhawulo we-rate limit we-client uhlangana nezikhathi ezi-%s</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milliseconds</string>
+  <string name="morphe_navigation_bar_screen_title">Ibha yokuzulazula</string>
+  <string name="morphe_navigation_bar_screen_summary">Khetha ukuthi yiziphi izinkinobho ezivela kubha yokuhamba engaphansi</string>
+  <string name="morphe_toolbar_screen_title">I-Toolbar</string>
+  <string name="morphe_toolbar_screen_summary">Khetha ukuthi yiziphi izinto ezivela ku-toolbar</string>
 </resources>

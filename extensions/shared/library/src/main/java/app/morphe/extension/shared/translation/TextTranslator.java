@@ -211,35 +211,24 @@ public final class TextTranslator {
     }
 
     /**
-     * Translates a single text and reports the language it was written in.
-     * Always call off the main thread.
+     * Translates texts in one request with the endpoint of the website translator, and reports
+     * the language each was written in. The endpoint answers bursts of requests, so the requests
+     * do not need to be paced. Always call off the main thread.
      *
      * @param targetLanguage Language code such as {@code uk}.
+     * @return The translations, in the order the texts were given.
+     * @see #translateTextsWithGtx(List, String)
      */
-    public static Translation translateText(String text, String targetLanguage) throws Exception {
-        try {
-            return translateHtml(text, targetLanguage);
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Website translator endpoint failed, using gtx", ex);
-        }
-
-        return request(text, GOOGLE_TRANSLATE_URL + targetLanguage,
-                GOOGLE_TRANSLATE_FALLBACK_URL + targetLanguage, false, response -> {
-                    // Index 2 of the response holds the detected language.
-                    String detected = response.isNull(2) ? null : response.getString(2);
-                    return new Translation(joinSentences(response.getJSONArray(0)),
-                            detected == null || detected.isEmpty() ? null : detected);
-                });
-    }
-
-    /**
-     * The endpoint takes HTML, so the text is escaped to keep characters such as {@code <} as
-     * they are, and the escaped result is decoded again.
-     */
-    private static Translation translateHtml(String text, String targetLanguage) throws Exception {
+    public static List<Translation> translateTexts(List<String> texts, String targetLanguage) throws Exception {
+        // The endpoint takes a list of HTML texts, so the texts are escaped to keep characters
+        // such as < as they are, and the escaped results are decoded again.
         // Request: [[[texts], source, target], "wt_lib"]
+        JSONArray encoded = new JSONArray();
+        for (String text : texts) {
+            encoded.put(TextUtils.htmlEncode(text));
+        }
         JSONArray request = new JSONArray()
-                .put(new JSONArray().put(TextUtils.htmlEncode(text)))
+                .put(encoded)
                 .put("auto")
                 .put(targetLanguage);
         JSONArray body = new JSONArray().put(request).put("wt_lib");
@@ -248,11 +237,48 @@ public final class TextTranslator {
         JSONArray response = new JSONArray(post(GOOGLE_TRANSLATE_HTML_URL,
                 "application/json+protobuf", body.toString(),
                 "X-Goog-API-Key", GOOGLE_TRANSLATE_HTML_API_KEY, "Website translation"));
-        String translated = Html.fromHtml(response.getJSONArray(0).getString(0),
-                Html.FROM_HTML_MODE_LEGACY).toString();
+        JSONArray translated = response.getJSONArray(0);
+        if (translated.length() != texts.size()) {
+            throw new JSONException("Translated " + translated.length() + " texts instead of " + texts.size());
+        }
         JSONArray detected = response.optJSONArray(1);
-        String language = detected == null || detected.isNull(0) ? null : detected.getString(0);
-        return new Translation(translated, language == null || language.isEmpty() ? null : language);
+        List<Translation> translations = new ArrayList<>(texts.size());
+        for (int i = 0, length = translated.length(); i < length; i++) {
+            String text = Html.fromHtml(translated.getString(i), Html.FROM_HTML_MODE_LEGACY).toString();
+            String language = detected == null || detected.isNull(i) ? null : detected.getString(i);
+            translations.add(new Translation(text, language == null || language.isEmpty() ? null : language));
+        }
+        return translations;
+    }
+
+    /**
+     * Same as {@link #translateTexts(List, String)} with the gtx endpoint, which answers 429 above
+     * about one request per second, so the caller must pace the requests.
+     * The texts are sent joined by newlines, and the language is only reported for a single text.
+     */
+    public static List<Translation> translateTextsWithGtx(List<String> texts, String targetLanguage) throws Exception {
+        StringBuilder joined = new StringBuilder();
+        for (String text : texts) {
+            if (joined.length() > 0) {
+                joined.append('\n');
+            }
+            joined.append(text.replace('\n', ' '));
+        }
+        return request(joined.toString(), GOOGLE_TRANSLATE_URL + targetLanguage,
+                GOOGLE_TRANSLATE_FALLBACK_URL + targetLanguage, false, response -> {
+                    String[] lines = joinSentences(response.getJSONArray(0)).split("\n", -1);
+                    if (lines.length != texts.size()) {
+                        throw new JSONException("Translated " + lines.length + " lines instead of " + texts.size());
+                    }
+                    // Index 2 of the response holds the detected language of all the texts.
+                    String detected = texts.size() > 1 || response.isNull(2) ? null : response.getString(2);
+                    List<Translation> translations = new ArrayList<>(lines.length);
+                    for (String line : lines) {
+                        translations.add(new Translation(line,
+                                detected == null || detected.isEmpty() ? null : detected));
+                    }
+                    return translations;
+                });
     }
 
 /**

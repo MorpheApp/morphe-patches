@@ -246,8 +246,27 @@ public class StreamingDataRequest {
      */
     private static volatile boolean authHeadersOverrides;
 
-    public static String getLastSpoofedClientName() {
-        ClientType client = lastSpoofedClientType;
+    /**
+     * Video the player was last set up for, or null if the player was not set up for a video yet.
+     * The streams of the next tracks of the queue are given while a track plays, and their client
+     * can be another client if the preferred client cannot play them.
+     */
+    @Nullable
+    private static volatile String playerVideoId;
+
+    /**
+     * Debug toasts of the fetches of videos the player was not set up for yet, by video id.
+     */
+    private static final Map<String, String> pendingDebugToasts = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(50));
+
+    /**
+     * @return The client of the streams of the video the player was last set up for, or the client
+     *         of the streams last given to the player if the player was not set up for a video yet.
+     */
+    public static String getPlayerClientName() {
+        String videoId = playerVideoId;
+        ClientType client = videoId == null ? lastSpoofedClientType : playerClients.get(videoId);
         if (client == null) {
             return "Unknown";
         } else {
@@ -274,6 +293,24 @@ public class StreamingDataRequest {
             playerClients.remove(videoId);
         } else {
             playerClients.put(videoId, client);
+        }
+    }
+
+    /**
+     * Called when the player is set up for a video.
+     *
+     * @param videoId The video, or null if the player gave none,
+     *                and the client of the streams last given to the player is then used.
+     */
+    public static void setPlayerVideoId(@Nullable String videoId) {
+        playerVideoId = videoId;
+        if (videoId == null) {
+            return;
+        }
+
+        String debugToast = pendingDebugToasts.remove(videoId);
+        if (debugToast != null) {
+            Utils.showToastShort(debugToast);
         }
     }
 
@@ -542,10 +579,23 @@ public class StreamingDataRequest {
         Logger.printInfo(() -> toastMessage, ex);
     }
 
+    /**
+     * The toast is shown when the player is set up for the video, and not when the streams are fetched,
+     * because the streams of the next tracks of the queue are fetched while another track plays.
+     */
     private static void handleDebugToast(String toastMessage,
-                                         ClientType clientType) {
-        if (Logger.isDebugEnabled() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
-            Utils.showToastShort(String.format(toastMessage, clientType));
+                                         ClientType clientType,
+                                         String videoId) {
+        String message = String.format(toastMessage, clientType);
+        Logger.printDebug(() -> message + ", videoId: " + videoId);
+        if (!Logger.isDebugEnabled() || !BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+            return;
+        }
+
+        if (videoId.equals(playerVideoId)) {
+            Utils.showToastShort(message);
+        } else {
+            pendingDebugToasts.merge(videoId, message, (first, next) -> first + "\n" + next);
         }
     }
 
@@ -707,7 +757,7 @@ public class StreamingDataRequest {
         // gzip encoding doesn't response with content length (-1),
         // but empty response body does.
         if (connection.getContentLength() == 0) {
-            handleDebugToast("Debug: Ignoring empty spoof stream client (%s)", clientType);
+            handleDebugToast("Debug: Ignoring empty spoof stream client (%s)", clientType, videoId);
             return null;
         }
 
@@ -728,7 +778,7 @@ public class StreamingDataRequest {
 
             String status = playabilityStatus.getStatus().name();
             if (!"OK".equals(status)) {
-                handleDebugToast("Debug: Ignoring unplayable video (%s)", clientType);
+                handleDebugToast("Debug: Ignoring unplayable video (%s)", clientType, videoId);
                 String reason = playabilityStatus.getReason();
                 if (Utils.isNotEmpty(reason)) {
                     Logger.printDebug(() -> String.format(
@@ -740,7 +790,7 @@ public class StreamingDataRequest {
 
             PlayerResponse.Builder responseBuilder = playerResponse.toBuilder();
             if (!playerResponse.hasStreamingData()) {
-                handleDebugToast("Debug: Ignoring empty streaming data (%s)", clientType);
+                handleDebugToast("Debug: Ignoring empty streaming data (%s)", clientType, videoId);
                 return null;
             }
 
@@ -750,7 +800,7 @@ public class StreamingDataRequest {
             // If DASH protocol is not available, the client will be skipped.
             StreamingData streamingData = playerResponse.getStreamingData();
             if (streamingData.getAdaptiveFormatsCount() == 0) {
-                handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", clientType);
+                handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", clientType, videoId);
                 return null;
             }
 
@@ -790,7 +840,7 @@ public class StreamingDataRequest {
                 StreamingData.Builder deobfuscatedStreamingDataBuilder =
                         JavaScriptManager.getDeobfuscatedStreamingData(streamingData, poToken, clientType.requireSABR);
                 if (deobfuscatedStreamingDataBuilder == null) {
-                    handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientType);
+                    handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientType, videoId);
                     return null;
                 }
                 responseBuilder.setStreamingData(deobfuscatedStreamingDataBuilder);

@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Увімкнути фільтр нижнього меню \"Бібліотека\" / \"Ви\"</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Фільтр нижнього меню \"Бібліотека\" / \"Ви\"</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Введіть назви елементів нижнього меню \"Бібліотека\" / \"Ви\", які потрібно приховати, кожен з нового рядка</string>
+  <string name="morphe_hide_account_menu_badges_title">Приховати значки</string>
   <string name="morphe_hide_account_menu_downloads_title">Приховати \"Завантаження\"</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Приховати \"Подобаються\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Приховати \"Дивитися пізніше\"</string>
   <string name="morphe_hide_album_cards_title">Приховати картки альбому</string>
   <string name="morphe_hide_album_cards_summary">Приховує картки альбомів під описом виконавця</string>
   <string name="morphe_hide_artist_cards_title">Приховати картки виконавця</string>
@@ -122,8 +125,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Приховати час завантаження</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Обмеження:
-• Панелі Shorts, сторінки каналів та результати пошуку можуть досі показувати час завантаження
-• Не працює з автомобільним макетом інтерфейсу"</string>
+• Панелі Shorts можуть досі показувати час завантаження
+• Не працює з автомобільним макетом"</string>
   <string name="morphe_hide_video_thumbnail_title">Приховати мініатюру відео</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Приховати мітки відео</string>
@@ -131,8 +134,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Приховати кількість переглядів</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Обмеження:
-• Панелі Shorts, сторінки каналів та результати пошуку можуть досі показувати кількість переглядів
-• Не працює з автомобільним макетом інтерфейсу"</string>
+• Панелі Shorts можуть досі показувати кількість переглядів
+• Не працює з автомобільним макетом"</string>
   <string name="morphe_hide_web_search_results_title">Приховати результати вебпошуку</string>
   <string name="morphe_hide_web_search_results_summary">Приховує секцію \"Результати з інтернету\" у результатах пошуку</string>
   <string name="morphe_hide_you_may_like_section_title">Приховати секцію \"Вам може сподобатися\"</string>
@@ -205,8 +208,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">Приховати панель з дописами</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Приховати кнопку \"Магазин\"</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Приховати кнопку \"Підписатися\"</string>
   <string name="morphe_explore_menu_screen_title">Меню \"Навігація\"</string>
   <string name="morphe_explore_menu_screen_summary">Виберіть, які компоненти будуть показуватися у меню \"Навігація\"</string>
   <string name="morphe_hide_courses_menu_title">Приховати меню \"Навчання\"</string>
@@ -281,7 +282,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">Приховати кнопку \"Коментарі\"</string>
   <string name="morphe_hide_post_comments_preview_title">Приховати попередній перегляд коментарів</string>
   <string name="morphe_hide_post_comments_preview_summary">Приховує попередній перегляд коментарів під дописами</string>
-  <string name="morphe_hide_post_share_button_title">Приховати кнопку \"Поділитися\"</string>
   <string name="morphe_hide_post_share_button_summary">Кнопка завантаження зображень допису показується поруч із кнопкою \"Поділитися\", тому її також приховано</string>
   <string name="morphe_hide_ask_gemini_button_title">Приховати кнопку \"Запитати Gemini\"</string>
   <string name="morphe_hide_ask_gemini_button_summary">Приховує кнопку \"Запитати Gemini\" внизу панелі \"Запитати про це відео\"</string>
@@ -290,14 +290,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Приховує попередній перегляд наступного відео перед автозапуском у повноекранному режимі</string>
   <string name="morphe_hide_channel_bar_title">Приховати панель каналу</string>
   <string name="morphe_hide_channel_watermark_title">Приховати водяний знак каналу</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Приховати розділи та кнопку \"У цьому відео\"</string>
+  <string name="morphe_hide_chapters_button_title">Приховати кнопку \"Розділи\"</string>
   <string name="morphe_hide_crowdfunding_box_title">Приховати скриню фінансування</string>
   <string name="morphe_hide_emergency_box_title">Приховати аварійні скриньки</string>
+  <string name="morphe_hide_in_this_video_button_title">Приховати кнопку \"У цьому відео\"</string>
   <string name="morphe_hide_info_panels_title">Приховати інформаційні панелі</string>
   <string name="morphe_hide_info_panels_summary">Приховує інформаційні панелі, наприклад медичні відомості</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Приховати кнопку \"Підписатися +\"</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Приховати кнопку \"Переглянути запис чату\"</string>
@@ -313,8 +311,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Приховує градієнт елементів керування плеєром, коли ви ведете пальцем, утримуючи для прискорення</string>
   <string name="morphe_hide_timed_reactions_title">Приховати тимчасові реакції</string>
   <string name="morphe_hide_timed_reactions_summary">Приховує функцію реакцій емодзі в секції коментарів і чаті трансляцій</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Приховати меню \"Довідка й відгуки\"</string>
   <string name="morphe_hide_help_feedback_menu_summary">Приховує меню \"Довідка й відгук\" при використанні кнопки з трьома крапками, наприклад у результатах пошуку</string>
   <string name="morphe_hide_handle_title">Приховати ідентифікатор</string>
   <string name="morphe_hide_handle_summary">Приховує ідентифікатор вашого каналу на вкладці \"Ви\"</string>
@@ -357,7 +353,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">Приховати кнопку \"Запитати\"</string>
   <string name="morphe_hide_channel_profile_button_title">Приховати канал та кнопку \"Підписатися\"</string>
   <string name="morphe_hide_channel_profile_button_summary">Приховує аватар каналу та кнопку \"Підписатися\" на початку панелі дій</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Приховати кнопку \"Підписатися\"</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Приховує кнопки \"Підписатися\" та \"Підписатися +\" поруч з аватаром каналу на початку панелі дій</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Приховати кнопку \"Кліп\"</string>
@@ -433,9 +428,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Коментар приховано Morphe</string>
   <string name="morphe_minimal_comments_button_title">Увімкнути мінімалістичну кнопку коментарів</string>
   <string name="morphe_minimal_comments_button_summary">Приховує кнопки-картки, що з\'являються, та їхній перемикач сторінок на кнопці коментарів</string>
-  <string name="morphe_hide_comments_thanks_button_title">Приховати кнопку \"Дякую\"</string>
   <string name="morphe_hide_comments_timestamp_button_title">Приховати кнопку позначки часу</string>
   <string name="morphe_hide_comments_top_fans_button_title">Приховати кнопку \"Топ фанати\"</string>
+  <string name="morphe_hide_comments_topics_title">Приховати \"Теми\"</string>
+  <string name="morphe_hide_comments_topics_summary">Приховує опцію \"Теми\" на панелі фільтрів і попередній перегляд коментарів за темами під відео</string>
   <string name="morphe_hide_comments_translate_button_title">Приховати кнопку \"Перекласти\"</string>
   <string name="morphe_hide_comments_zero_state_title">Приховати повідомлення \"Коментарів поки немає\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Очищувати виділені пошукові посилання</string>
@@ -488,7 +484,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Приховати кнопку \"Субтитри\"</string>
   <string name="morphe_hide_cast_button_title">Приховати кнопку \"Трансляція\"</string>
-  <string name="morphe_hide_cast_button_summary">Приховує кнопку \"Трансляція\" у відеоплеєрі та на панелі інструментів</string>
   <string name="morphe_hide_collapse_button_title">Приховати кнопку \"Згорнути\"</string>
   <string name="morphe_hide_fullscreen_button_title">Приховати кнопку \"Повний екран\"</string>
   <string name="morphe_hide_player_control_buttons_background_title">Приховати фон кнопок керування плеєром</string>
@@ -607,6 +602,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Натискання та утримування будь-де на відео в стрічці відкриває його меню</string>
   <string name="morphe_feed_watch_later_button_title">Показувати кнопку \"Дивитися пізніше\" на мініатюрах</string>
   <string name="morphe_feed_watch_later_button_summary">Кнопка \"Дивитися пізніше\" показується на мініатюрах відео в стрічці, із галочкою, якщо відео збережено. Натискання зберігає або видаляє відео, а натискання та утримування відкриває \"Зберегти в список відтворення\"</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Відкривати зображення дописів у повноекранному режимі</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Натискання на зображення допису відкриває його в повноекранному режимі замість стрічки дописів</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Завантажити зображення з допису</string>
   <string name="morphe_post_image_download_summary">Кнопка завантаження показується поруч із кнопкою \"Поділитися\" для дописів із зображеннями або GIF, а до їхнього меню додається пункт завантаження</string>
@@ -698,7 +696,7 @@ Second \"item\" text"</string>
   <string name="morphe_download_force_4k_title">Примусова доступність завантаження 4K</string>
   <string name="morphe_download_force_4k_summary">Пропонує завантаження у 1440p та 4K, навіть якщо YouTube вирішить, що цей пристрій не може їх відтворити</string>
   <string name="morphe_download_quality_about_title">1080p недоступне</string>
-  <string name="morphe_download_quality_about_summary">Якщо завантаження в додатку не пропонують 1080p, увімкніть \"Імітувати розміри пристрою\" в розділі \"Різне\"</string>
+  <string name="morphe_download_quality_about_summary">Якщо завантаження в застосунку не пропонують 1080p, увімкніть \"Підміна розмірів пристрою\" в налаштуваннях \"Різне\"</string>
   <string name="morphe_export_download_folder_title">Експортувати збережені відео</string>
   <string name="morphe_export_download_folder_summary">"Експортуйте збережені в застосунку відео до сховища пристрою через спливне меню завантажень у застосунку. Натисніть тут, щоб змінити теку експорту
 
@@ -887,7 +885,7 @@ Second \"item\" text"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Білий список реклами у спливному меню</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Додає пункт спливного меню, що дозволяє відтворення реклами на каналі цього відео</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ця функція може вимагати використання PotHelper або зміни \"Підміни відеопотоків\" на \"TV\" чи \"Android VR з входом\"</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ця функція може вимагати використання PotHelper або зміни \"Підміни відеопотоків\" на вхід \"TV\" чи \"Android VR\"</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Білий список швидкості у спливному меню</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Додає пункт спливного меню, що завжди відтворює канал цього відео зі швидкістю 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Не увійшли в систему</string>
@@ -992,6 +990,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Увімкнути натискання для жесту</string>
   <string name="morphe_swipe_press_to_engage_summary">Потребує натискання та утримання перед розпізнаванням жесту</string>
   <string name="morphe_swipe_haptic_feedback_title">Вібрація при жестах</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Вібрує, коли натискання й утримування запускає жест</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Зберігати та відновлювати яскравість</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Запам\'ятовує рівень яскравості при вході та виході з повноекранного режиму</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Жест автояскравості</string>
@@ -1035,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Вертикальна панель (мінімальна)</string>
   <string name="morphe_swipe_change_video_title">Увімкнути зміну відео жестом</string>
   <string name="morphe_swipe_change_video_summary">Жест у повноекранному режимі перемикає на наступне або попереднє відео</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Жест утримання</string>
+  <string name="morphe_hold_gesture_screen_summary">Змінюйте та фіксуйте швидкість відтворення, перетягуючи після натискання та утримання</string>
+  <string name="morphe_hold_gesture_title">Увімкнути жест швидкості</string>
+  <string name="morphe_hold_gesture_summary">Після натискання та утримання відео можна виконати перетягування. Швидкість під час утримання відповідає швидкості відтворення при натисканні та утриманні</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Не використовується, коли ввімкнено натискання та утримання для жесту. Натисніть, щоб змінити</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Натискання та утримання для жесту ввімкнено</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Жест утримання та жест натискання та утримання для прокручування в елементах керування прокручуванням починаються з натискання та утримання, тому може бути ввімкнено лише один із них.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Вимкнути натискання та утримання для жесту</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Жест утримання не використовується, коли ввімкнено натискання та утримання для жесту</string>
+  <string name="morphe_hold_gesture_dialog_title">Жест утримання ввімкнено</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Вимкнути жест утримання</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Вібрація при жестах</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Вібрує під час зміни швидкості та коли швидкість зафіксовано</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Перетягніть убік, щоб змінити швидкість</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Після натискання та утримання перетягніть вліво, щоб відтворити повільніше, і вправо, щоб відтворити швидше. Чим далі від центру, тим більше змінюється швидкість, доки палець не повернеться назад</string>
+  <string name="morphe_hold_gesture_speed_step_title">Крок швидкості</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Чутливість перетягування</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Низький</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Нормальна</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Висока</string>
+  <string name="morphe_hold_gesture_speed_min_title">Найнижча швидкість</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Найнижча швидкість, якої можна досягти перетягуванням</string>
+  <string name="morphe_hold_gesture_speed_max_title">Найвища швидкість</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Максимальна швидкість перетягування (до 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Перетягніть вниз, щоб зафіксувати швидкість</string>
+  <string name="morphe_hold_gesture_lock_summary">Після натискання та утримування перетягніть вниз, щоб зберегти швидкість після відпускання пальця. Натисніть на значок або знову натисніть і утримуйте, щоб розфіксувати</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Завжди показувати значок фіксації</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Значок зафіксованої швидкості залишається видимим, коли елементи керування плеєром приховані</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Розфіксувати при зміні відео</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Фіксація швидкості скасовується, коли починається інше відео</string>
+  <string name="morphe_hold_gesture_lock_hint">Потягніть вниз, щоб зафіксувати</string>
+  <string name="morphe_hold_gesture_lock_release">Відпустіть, щоб заблокувати %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Субтитри</string>
   <string name="morphe_captions_screen_summary">Керування автоматичними субтитрами та cookies субтитрів</string>
@@ -1083,8 +1115,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">Деякі переклади субтитрів недоступні. Показано доступні субтитри.</string>
   <string name="morphe_caption_blocks_too_large">Обидві мови субтитрів не вміщуються в цьому плеєрі. Показано основну мову.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Панель навігації</string>
-  <string name="morphe_navigation_bar_screen_summary">Виберіть, які кнопки будуть показуватися на нижній панелі навігації</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Приховати кнопку \"Головна\"</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1102,11 +1132,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">Дивитися пізніше</string>
   <string name="morphe_show_settings_button_title">Показувати кнопку \"Налаштування\"</string>
   <string name="morphe_show_settings_button_type_title">Дія кнопки \"Налаштування\"</string>
-  <string name="morphe_show_settings_button_type_summary">Відкриває налаштування Morphe, якщо ввімкнено, або налаштування YouTube, якщо вимкнено</string>
+  <string name="morphe_show_settings_button_type_summary">Якщо ввімкнено, натискання відкриває налаштування Morphe, а натискання й утримування відкриває налаштування YouTube. Вимкніть, щоб поміняти місцями</string>
   <string name="morphe_navigation_buttons_order_title">Порядок кнопок панелі навігації</string>
   <string name="morphe_navigation_buttons_order_summary">Перетягуйте кнопки, щоб змінити їхній порядок на панелі навігації</string>
   <string name="morphe_swap_create_with_notifications_button_title">Поміняти місцями кнопку \"Створити\" та кнопку \"Сповіщення\"</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Якщо зміна цього налаштування не набирає чинності, спробуйте перейти в анонімний режим</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Переміщує кнопку \"Сповіщення\" на панель навігації, а кнопку \"Створити\" на панель інструментів. Якщо зміни не набувають чинності, спробуйте перейти в режим інкогніто</string>
   <string name="morphe_hide_navigation_button_labels_title">Приховати підписи кнопок навігації</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Приховати крапку нового контенту</string>
   <string name="morphe_hide_navigation_bar_title">Приховати панель навігації</string>
@@ -1135,18 +1165,31 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Налаштовує рівень прозорості скляної панелі навігації (0 - прозора, 100 - непрозора)</string>
   <string name="morphe_navigation_bar_glass_round_title">Закруглена скляна панель навігації</string>
   <string name="morphe_navigation_bar_glass_round_summary">Надає скляній панелі навігації закруглені краї замість кутів, як у скляного мініплеєра</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Край скляної панелі навігації</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Малює світлий край навколо скляної панелі навігації</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Нижній відступ скляної панелі навігації</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Налаштовує відступ між скляною панеллю навігації та нижнім краєм екрана або системною навігацією</string>
   <string name="morphe_navigation_bar_glass_size_title">Розмір скляної панелі навігації</string>
   <string name="morphe_navigation_bar_glass_size_summary">Налаштуйте висоту, ширину та відступ між кнопками скляної панелі навігації з попереднім переглядом. Кнопки, які не вміщуються в ширину екрана, приховуються</string>
+  <string name="morphe_glass_menus_screen_title">Скляні меню</string>
+  <string name="morphe_glass_menus_screen_summary">Меню у вигляді матового скла поверх розмитого вмісту позаду них</string>
+  <string name="morphe_glass_menus_title">Увімкнути скляні меню</string>
+  <string name="morphe_glass_menus_summary">Відображає меню та нижні панелі як матове скло, при цьому вміст за ними розмивається</string>
+  <string name="morphe_glass_menus_user_dialog_message">Меню відображаються майже непрозорими, якщо увімкнено режим заощадження заряду акумулятора або якщо пристрій не підтримує розмиття</string>
+  <string name="morphe_glass_menus_opacity_title">Непрозорість скла</string>
+  <string name="morphe_glass_menus_opacity_summary">Наскільки меню перекриває розмите вміст (0 — прозоро, 100 — непрозоро)</string>
+  <string name="morphe_glass_menus_blur_title">Розмиття</string>
+  <string name="morphe_glass_menus_blur_summary">Наскільки розмитий вміст за менюм</string>
+  <string name="morphe_glass_menus_dim_title">Затемнення</string>
+  <string name="morphe_glass_menus_dim_summary">Наскільки затемнений екран навколо нижньої панелі</string>
   <string name="morphe_navigation_bar_glass_size_height">Висота</string>
   <string name="morphe_navigation_bar_glass_size_width">Максимальна ширина</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Відступ між кнопками</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Показано кнопок: %1$s із %2$s</string>
-  <string name="morphe_toolbar_screen_title">Панель інструментів</string>
-  <string name="morphe_toolbar_screen_summary">Виберіть, які компоненти будуть показуватися на панелі інструментів</string>
   <string name="morphe_hide_toolbar_chat_button_title">Приховати кнопку \"Чат\"</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Приховати кнопку \"Супутник\"</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Приховати кнопку \"Мікрофон\"</string>
   <string name="morphe_hide_toolbar_search_button_title">Приховати кнопку \"Пошук\"</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Якщо ввімкнено, то натискання відкриває налаштування Morphe, а утримання відкриває YouTube, якщо вимкнено, то навпаки</string>
   <string name="morphe_toolbar_buttons_order_title">Порядок кнопок панелі інструментів</string>
   <string name="morphe_toolbar_buttons_order_summary">Перетягуйте кнопки, щоб змінити їхній порядок на панелі інструментів</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1177,43 +1220,28 @@ Second \"item\" text"</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Вимкнути подвійне натискання для вподобання</string>
   <string name="morphe_hide_shorts_ai_button_title">Приховати кнопку \"ШІ\"</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Приховати мітку \"Дубляж\"</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Приховати панель каналу</string>
-  <string name="morphe_hide_shorts_comments_button_title">Приховати кнопку \"Коментарі\"</string>
   <string name="morphe_hide_shorts_effect_button_title">Приховати кнопку \"Ефект\"</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Приховати мітку посилання відео</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Приховати підказки жестів</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Приховати кнопку \"Зелений екран\"</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Приховати кнопку хештегу</string>
   <string name="morphe_hide_shorts_info_panel_title">Приховати панель інформації</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Приховати кнопку \"Підписатися +\"</string>
   <string name="morphe_hide_shorts_like_button_title">Приховати кнопку \"Лайк\"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Приховати анімацію фонтану кнопки \"Лайк\"</string>
   <string name="morphe_hide_shorts_live_preview_title">Приховати прев\'ю прямої трансляції</string>
   <string name="morphe_hide_shorts_location_label_title">Приховати мітку місцезнаходження</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Приховати панель навігації</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Приховати кнопку \"Нові публікації\"</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Приховати кнопки оверлею паузи</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Приховати попередній перегляд коментаря</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Приховати кнопку \"Реміксувати\"</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Приховати кнопку \"Зберегти\"</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Приховати кнопку \"Зберегти музику\"</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Приховати пропозиції пошуку</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Приховати кнопку \"Поділитися\"</string>
-  <string name="morphe_hide_shorts_shop_button_title">Приховати кнопку \"Магазин\"</string>
   <string name="morphe_hide_shorts_sound_button_title">Приховати кнопку \"Зі звуком\"</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Приховати мітку метаданих звуку</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Приховати кнопку \"Підписатися\"</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Приховати кнопку \"Купити Супердяку\"</string>
   <string name="morphe_hide_shorts_tagged_products_title">Приховати позначені товари</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Приховати кнопку \"Запланована прем\'єра\"</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Приховати кнопку \"Використати цей звук\"</string>
   <string name="morphe_hide_shorts_use_template_button_title">Приховати кнопку \"Використати цей шаблон\"</string>
-  <string name="morphe_hide_shorts_video_title_title">Приховати назву відео</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Приховати рекомендоване відео наприкінці перегляду</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Приховує панель з рекомендованими відео, що з'являється після завершення відео
@@ -1380,6 +1408,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Вимкнути автоматичне оновлення стрічки</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Запобігає автоматичному оновленню стрічок після того, як вони застарівають</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Розгрупувати сповіщення</string>
+  <string name="morphe_ungroup_notifications_summary">Показує кожне відео зі згрупованих завантажень каналу як окреме сповіщення</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Макет карток стрічки</string>
   <string name="morphe_feed_card_layout_entry_1">Класичний</string>
@@ -1492,6 +1523,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Результати пошуку</string>
   <string name="morphe_dearrow_titles_icon_title">Показувати іконку DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Показує значок DeArrow на назвах відео, що мають назву або мініатюру від спільноти. Натисніть на значок, щоб показати оригінальну назву та мініатюру</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Очищення назв</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Очищає назви відео, які не мають назви DeArrow. Слова великими літерами змінюються на звичайний регістр, а емодзі, декоративний текст і повторювані знаки оклику видаляються</string>
   <string name="morphe_dearrow_casual_mode_title">Звичайний режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Показує оригінальну назву замість назви DeArrow, якщо користувачі DeArrow проголосували за оригінальну назву</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Мінімальна кількість голосів у звичайному режимі для показу оригінальної назви</string>
@@ -1712,13 +1745,9 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Пропускає меню вибору якості та відкриває меню \"Розширенні налаштування\" безпосередньо</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Приховати опції Premium якості</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Пріоритет якості відео</string>
-  <string name="morphe_video_quality_prioritize_summary">Надає пріоритет найвищій доступній якості відео над ефективністю кодека</string>
-  <string name="morphe_video_quality_prioritize_dialog">Якщо це налаштування вимкнено, старіші відео можуть не показувати параметри якості відео</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Дозволити AV1 для \"Android VR\" / visionOS</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Дозволяє програмне декодування AV1 при використанні клієнта \"Android VR\" / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_title">Дозволити AV1 для \"Android VR\" / \"visionOS\"</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Дозволяє програмне декодування AV1 при використанні клієнта \"Android VR\" / \"visionOS\"</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Увімкнення цього налаштування може призвести до використання програмного декодування AV1.
 
 Відтворення відео з AV1 може заїкатися або мати пропуски кадрів"</string>
@@ -1955,7 +1984,6 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">Мова перекладу</string>
   <string name="morphe_live_chat_translate_exclude_title">Виключені мови</string>
   <string name="morphe_live_chat_translate_exclude_summary">Коди мов, розділені комами, наприклад id,en. Повідомлення цими мовами не перекладаються</string>
-  <string name="morphe_live_chat_translate_provider_title">Постачальник перекладу</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">Ключ API DeepL</string>

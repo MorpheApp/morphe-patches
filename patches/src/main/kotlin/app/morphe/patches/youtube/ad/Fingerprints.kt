@@ -13,13 +13,12 @@ package app.morphe.patches.youtube.ad
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -54,11 +53,15 @@ internal object GetPremiumViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "I"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.ADD_INT_2ADDR,
-        Opcode.ADD_INT_2ADDR,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.RETURN_VOID,
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "this",
+            name = "setMeasuredDimension",
+            parameters = listOf("I", "I"),
+            returnType = "V"
+        ),
+        opcode(Opcode.RETURN_VOID, MatchAfterImmediately())
     )
 )
 

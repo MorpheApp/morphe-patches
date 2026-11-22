@@ -87,7 +87,14 @@ Para traducir novas linguas ou mellorar as traducións existentes, visita morphe
   <string name="morphe_settings_about_links_translations">Traducións</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ao día</string>
   <string name="morphe_settings_about_contributors">Contribuidores</string>
-  <string name="morphe_settings_about_contributors_period">Últimos 12 meses</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Todo o tempo</string>
+  <string name="morphe_settings_about_contributors_6_months">6 meses</string>
+  <string name="morphe_settings_about_contributors_3_months">3 meses</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Período de tempo</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s usuarios</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Supports</string>
   <string name="morphe_settings_about_supporters_summary">Apoiadores en Open Collective</string>
@@ -222,6 +229,9 @@ Se non se cambian as optimizacións da batería, poderías experimentar:
 • A aplicación pode pecharse aleatoriamente
 • As notificacións poden non funcionar
 • A reprodución en segundo plano pode non funcionar"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Abrir a folla de compartido do sistema</string>
+  <string name="morphe_open_system_share_sheet_summary">Abre a folla de compartido do sistema en vez da da aplicación ao compartir contido</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Xestión de ligazóns da app</string>
   <string name="morphe_link_handling_summary">Configura as ligazóns para que se abran nesta aplicación</string>

@@ -144,6 +144,8 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">خروجی گرفتن از دانلود امکان‌پذیر نبود</string>
   <string name="morphe_export_download_all_flyout_title">صادر کردن همه به دستگاه</string>
   <string name="morphe_export_download_all_started">در حال صادر کردن همه دانلودها</string>
+  <string name="morphe_export_download_all_title">همه دانلودها</string>
+  <string name="morphe_export_download_playlist_started">در حال خروجی گرفتن از دانلودها</string>
   <string name="morphe_export_download_all_running">دانلودها در حال صادر شدن هستند</string>
   <string name="morphe_export_download_all_saved">%1$s از %2$s دانلود به %3$s صادر شد</string>
   <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
@@ -168,15 +170,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">مخفی کردن تبلیغات ویدیویی</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">پنهان‌کردن کلید صوتی / ویدئویی</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">پنهان‌کردن دکمهٔ دانلود</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">دکمهٔ دانلود را در نمایش پادکست پنهان می‌کند</string>
   <string name="morphe_music_hide_explore_shelf_title">پنهان‌کردن قفسهٔ کاوش</string>
   <string name="morphe_music_hide_filter_bar_title">پنهان‌کردن نوار فیلتر</string>
   <string name="morphe_music_hide_grid_shelves_title">پنهان‌کردن قفسه‌های شبکه‌ای</string>
   <string name="morphe_music_hide_horizontal_shelves_title">پنهان‌کردن قفسه‌های افقی</string>
+  <string name="morphe_music_hide_new_button_title">پنهان‌کردن دکمهٔ جدید</string>
+  <string name="morphe_music_hide_new_button_summary">دکمهٔ New را در زبانهٔ Library پنهان می‌کند</string>
   <string name="morphe_music_hide_list_shelves_title">پنهان‌کردن قفسه‌های فهرستی</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">پنل متن آهنگ</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">پنهان‌کردن دکمهٔ اشتراک‌گذاری</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">پنهان‌کردن دکمهٔ ترجمه</string>
   <string name="morphe_music_hide_new_from_shelf_title">پنهان‌کردن قفسهٔ «جدید از»</string>
   <string name="morphe_music_hide_playlist_shelves_title">پنهان‌کردن قفسه‌های فهرست پخش</string>
@@ -199,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">محو متقاطع</string>
   <string name="morphe_music_crossfade_screen_summary">آهنگ‌ها را به‌نرمی در یکدیگر ادغام می‌کند</string>
   <string name="morphe_music_crossfade_enabled_title">فعال‌کردن محو متقاطع</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_enabled_summary_unavailable">برای استفاده از crossfade، «Default client» در بخش «Spoof video streams» را به «TV Simply» یا «visionOS» تغییر دهید</string>
   <string name="morphe_music_crossfade_curve_title">منحنی محو</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">توان برابر</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">مکث ملایم</string>
@@ -232,7 +236,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">محو متقاطع برای این جلسه متوقف شد</string>
   <string name="morphe_music_crossfade_resumed_toast">محو متقاطع ادامه یافت</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">وقتی محو متقاطع فعال است، حالت ویدئو در دسترس نیست</string>
-  <string name="morphe_music_crossfade_sabr_toast">کراسفید هنگام پخش SABR خاموش است</string>
+  <!--- "TV Simply" and "visionOS" must be kept untranslated -->
+  <string name="morphe_music_crossfade_visionos_toast">Crossfade با «visionOS» کار نمی‌کند. «Default client» در بخش «Spoof video streams» را به «TV Simply» تغییر دهید</string>
+  <string name="morphe_music_crossfade_spoof_client_toast">Crossfade با این کلاینت spoof stream کار نمی‌کند</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">کراسفید هنگام Cast کردن خاموش است</string>
   <string name="morphe_music_crossfade_about_how_title">نحوهٔ کار</string>
   <string name="morphe_music_crossfade_about_how_summary">"کراسفید پایان یک آهنگ را با شروع آهنگ بعدی همپوشانی می‌کند و از مدت و منحنی شما استفاده می‌کند
@@ -249,9 +255,7 @@ Second \"item\" text"</string>
 
 توقف کراسفید برای تماشای موزیک‌ویدئو ممکن است برخی ویدیوها را سیاه کند. توقف کراسفید قبل از انتخاب آهنگ از این مشکل جلوگیری می‌کند"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">پشتیبانی نمی‌شود</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"ارسال یا انعکاس صدا (Chromecast، انعکاس صفحه یا صدا)
-
-پخش SABR (جعل جریان‌های ویدیو خاموش است)"</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">پخش یا بازتاب صدا (Chromecast، بازتاب صفحه یا صدا)</string>
   <string name="morphe_music_crossfade_about_credit_title">اعتبار</string>
   <string name="morphe_music_crossfade_about_credit_summary">ویژگی محو متقاطع از VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -261,6 +265,20 @@ Second \"item\" text"</string>
   <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
   <string name="morphe_music_pause_when_muted_title">توقف هنگام بی‌صدا بودن</string>
   <string name="morphe_music_pause_when_muted_summary">پخش را هنگام بی‌صدا بودن صدای سیستم متوقف کرده و با افزایش صدا، آن را از سر می‌گیرد</string>
+  <!-- interaction.sonos.sonosCastPatch -->
+  <string name="morphe_music_sonos_cast_title">پخش Sonos</string>
+  <string name="morphe_music_sonos_cast_summary">دکمه Cast همچنین می‌تواند موسیقی را به Sonos و سایر بلندگوهای UPnP در شبکه Wi-Fi شما استریم کند</string>
+  <string name="morphe_music_sonos_cast_sheet_title">اتصال به یک دستگاه</string>
+  <string name="morphe_music_sonos_cast_searching">در حال جستجوی بلندگوها در شبکه Wi-Fi شما…</string>
+  <string name="morphe_music_sonos_cast_choose_speaker">یک بلندگو در شبکه Wi-Fi خود انتخاب کنید</string>
+  <string name="morphe_music_sonos_cast_casting_to">در حال پخش در %s</string>
+  <string name="morphe_music_sonos_cast_connected">متصل شد</string>
+  <string name="morphe_music_sonos_cast_disconnect">قطع اتصال</string>
+  <string name="morphe_music_sonos_cast_speakers_header">بلندگوهای روی Wi-Fi</string>
+  <string name="morphe_music_sonos_cast_active">فعال</string>
+  <string name="morphe_music_sonos_cast_google_cast">Google Cast</string>
+  <string name="morphe_music_sonos_cast_google_cast_summary">دستگاه‌های Chromecast، Nest و Google TV</string>
+  <string name="morphe_music_sonos_cast_connection_failed">امکان اتصال به %s وجود ندارد</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">سرعت پخش</string>
   <string name="morphe_music_playback_speed_summary">سرعت استفاده‌شده برای همهٔ آهنگ‌ها. در ۱۰۰٪ از سرعت برنامه استفاده می‌شود، مانند سرعت پخش پادکست</string>
@@ -271,9 +289,18 @@ Second \"item\" text"</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">غیرفعال کردن کاهش صدای خودکار</string>
   <string name="morphe_music_disable_audio_ducking_summary">هنگام پخش صدای کوتاه توسط برنامه‌های دیگر، مانند اعلان‌ها، میزان صدا کاهش نمی‌یابد</string>
+  <!-- interaction.likefilter.queueLikeFilterPatch -->
+  <string name="morphe_music_queue_like_filter_title">فیلتر لایک‌های صف پخش</string>
+  <string name="morphe_music_queue_like_filter_summary">آهنگ‌هایی با لایک‌های کم را از میکس‌ها و رادیو حذف می‌کند. لیست‌های پخش، آلبوم‌ها و آهنگ‌هایی که به صف پخش اضافه می‌کنید تغییر نمی‌کنند. تعداد لایک‌ها از Return YouTube Dislike گرفته می‌شود</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_title">حداقل لایک‌ها</string>
+  <string name="morphe_music_queue_like_filter_minimum_likes_summary">آهنگ‌هایی با لایک‌های کمتر از صف پخش حذف می‌شوند</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">غیرفعال‌کردن هدایت dislike</string>
   <string name="morphe_music_disable_dislike_redirection_summary">هنگام فشردن دکمهٔ dislike، از رفتن به آهنگ بعدی جلوگیری می‌کند</string>
+  <!-- interaction.trackswipe.disableSwipeToChangeTrackPatch -->
+  <string name="morphe_music_disable_player_swipe_to_change_track_title">غیرفعال‌کردن کشیدن برای تغییر آهنگ</string>
+  <string name="morphe_music_disable_player_swipe_to_change_track_summary">از پرش به آهنگ بعدی یا قبلی با کشیدن به چپ یا راست در پخش‌کننده جلوگیری می‌کند</string>
+  <string name="morphe_music_disable_miniplayer_swipe_to_change_track_summary">از پرش به آهنگ بعدی یا قبلی با کشیدن به چپ یا راست در پخش‌کننده کوچک‌شده جلوگیری می‌کند</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">حلقه A-B</string>
   <string name="morphe_music_ab_loop_summary">برای تنظیم نقطه شروع حلقه، روی نوار پیشرفت فشار طولانی دهید، برای تنظیم نقطه پایان دوباره این کار را تکرار کنید و برای پاک کردن حلقه، یک بار دیگر فشار دهید</string>
@@ -324,15 +351,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_rename">تغییر نام</string>
   <string name="morphe_music_playlist_tags_delete">حذف</string>
   <string name="morphe_music_playlist_tags_hidden">پنهان‌شده</string>
-  <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">پنهان‌کردن دکمهٔ ارسال</string>
-  <string name="morphe_music_hide_history_button_title">پنهان‌کردن دکمهٔ سابقه</string>
-  <string name="morphe_music_hide_notification_button_title">پنهان‌کردن دکمهٔ اعلان</string>
-  <string name="morphe_music_hide_search_button_title">پنهان‌کردن دکمهٔ جست‌وجو</string>
-  <string name="morphe_music_hide_voice_search_button_title">پنهان‌کردن دکمهٔ جستجوی صوتی</string>
-  <string name="morphe_music_hide_sound_search_button_title">پنهان‌کردن دکمهٔ جستجوی صدا</string>
-  <string name="morphe_music_hide_library_new_button_title">پنهان‌کردن دکمهٔ جدید</string>
-  <string name="morphe_music_hide_library_new_button_summary">دکمهٔ جدید را در برگهٔ Library پنهان می‌کند</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">دکمه‌های عملیات</string>
   <string name="morphe_music_action_buttons_screen_summary">انتخاب کنید کدام دکمه‌های عملیات زیر پخش‌کننده نمایش داده شوند</string>
@@ -404,22 +422,20 @@ Second \"item\" text"</string>
   <string name="morphe_music_force_portrait_orientation_title">اجبار جهت عمودی</string>
   <string name="morphe_music_force_portrait_orientation_summary">پنهان‌کردن متن ترانه‌های پخش‌نشده</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">تغییر رنگ مینی‌پخش‌کننده</string>
+  <string name="morphe_music_change_miniplayer_color_title">تغییر رنگ</string>
   <string name="morphe_music_change_miniplayer_color_summary">رنگ مینی‌پخش‌کننده را با پخش‌کنندهٔ تمام‌صفحه هماهنگ می‌کند</string>
   <string name="morphe_music_change_navigation_bar_color_title">تغییر رنگ نوار پیمایش</string>
   <string name="morphe_music_change_navigation_bar_color_summary">رنگ نوار پیمایش را با پخش‌کنندهٔ تمام‌صفحه هماهنگ می‌کند</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">نمایش دکمهٔ بعدی در مینی‌پخش‌کننده</string>
-  <string name="morphe_music_miniplayer_previous_button_title">نمایش دکمهٔ قبلی در مینی‌پخش‌کننده</string>
+  <string name="morphe_music_miniplayer_next_button_title">نمایش دکمهٔ بعدی</string>
+  <string name="morphe_music_miniplayer_previous_button_title">نمایش دکمهٔ قبلی</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">فعال‌کردن مینی‌پخش‌کنندهٔ اجباری</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">از بازشدن خودکار پخش‌کننده به حالت تمام‌صفحه هنگام شروع آهنگ جدید جلوگیری می‌کند</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">فعال‌کردن کشیدن برای بستن مینی‌پخش‌کننده</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">فعال‌کردن کشیدن برای بستن</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">اجازه می‌دهد با کشیدن مینی‌پخش‌کننده به پایین آن را ببندید</string>
-  <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">نوار پیمایش</string>
-  <string name="morphe_music_navigation_bar_screen_summary">انتخاب کنید کدام دکمه‌ها در نوار پیمایش پایین نمایش داده شوند</string>
+  <!-- layout.buttons.navigation.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">پنهان‌کردن دکمهٔ خانه</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -452,7 +468,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">هایلایت گرد پشت دکمه انتخاب‌شده در نوار ناوبری شیشه‌ای را پنهان می‌کند</string>
   <string name="morphe_music_miniplayer_screen_title">مینی‌پخش‌کننده</string>
   <string name="morphe_music_miniplayer_screen_summary">تغییر استایل، دکمه‌ها و ژست‌های مینی‌پخش‌کننده</string>
-  <string name="morphe_music_miniplayer_glass_title">فعال‌کردن مینی‌پخش‌کننده شیشه‌ای</string>
+  <string name="morphe_music_miniplayer_glass_title">فعال‌کردن جلوه شیشه‌ای</string>
   <string name="morphe_music_miniplayer_glass_summary">مینی‌پخش‌کننده شناور را به صورت یک کارت شیشه‌ای گرد و نیمه‌شفاف نمایش می‌دهد</string>
   <string name="morphe_music_miniplayer_glass_style_title">استایل مینی‌پخش‌کننده شیشه‌ای</string>
   <string name="morphe_music_miniplayer_glass_style_summary">تنظیم شعاع گوشه‌ها، فاصله کاور، روشنایی لبه و شفافیت مینی‌پخش‌کننده شیشه‌ای به‌همراه پیش‌نمایش</string>
@@ -460,11 +476,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_glass_artwork_padding_title">فاصله کاور</string>
   <string name="morphe_music_miniplayer_glass_rim_title">روشنایی لبه</string>
   <string name="morphe_music_miniplayer_glass_opacity_title">شفافیت</string>
-  <string name="morphe_music_miniplayer_glass_blur_title">تاری شیشه</string>
   <string name="morphe_music_miniplayer_glass_blur_summary">میزان تاری صفحه‌ای که پشت مینی‌پخش‌کننده شیشه‌ای قرار دارد (اندروید ۱۴ و بالاتر). در مقدار ۰، صفحه به‌صورت واضح دیده می‌شود و در نسخه‌های پیش از اندروید ۱۴، صفحه پوشانده می‌شود</string>
-  <string name="morphe_music_miniplayer_glass_light_title">شیشه روشن</string>
   <string name="morphe_music_miniplayer_glass_light_summary">به جای رنگ تیره، مینی‌پخش‌کننده شیشه‌ای را به رنگ سفید در می‌آورد تا شیشه روشن‌تر و شفاف‌تر به نظر برسد</string>
-  <string name="morphe_music_miniplayer_glass_album_tint_title">رنگ‌مایه کاور آلبوم</string>
   <string name="morphe_music_miniplayer_glass_album_tint_summary">مینی‌پخش‌کننده شیشه‌ای را با رنگ کاور آلبومی که آهنگش در حال پخش است، رنگ‌آمیزی می‌کند</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_title">چرخش کاور</string>
   <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">کاور مینی‌پخش‌کننده شیشه‌ای را گرد کرده و هنگام پخش آهنگ، مانند یک صفحه گرامافون آن را می‌چرخاند</string>
@@ -475,6 +488,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">نمونه‌ها</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">کاوش</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">کتابخانه</string>
+  <!-- 'Activity' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_activity_button_title">پنهان‌کردن دکمهٔ Activity</string>
+  <!-- 'Ask Music' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_ask_music_button_title">پنهان‌کردن دکمهٔ «از موسیقی بپرس»</string>
+  <string name="morphe_music_hide_cast_button_title">پنهان‌کردن دکمهٔ ارسال</string>
+  <string name="morphe_music_hide_history_button_title">پنهان‌کردن دکمهٔ سابقه</string>
+  <string name="morphe_music_hide_search_button_title">پنهان‌کردن دکمهٔ جست‌وجو</string>
+  <string name="morphe_music_hide_voice_search_button_title">پنهان‌کردن دکمهٔ «جستجوی صوتی»</string>
+  <string name="morphe_music_hide_sound_search_button_title">پنهان‌کردن دکمهٔ \"جست‌وجوی صوتی\"</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">وارد نشده‌اید. برای پیکربندی ضربه بزنید</string>
   <string name="morphe_music_scrobbling_log_out">خروج</string>
@@ -578,6 +600,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_about_summary">"داده‌های هنرمند از SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) تامین می‌شوند و هر روز یک بار دانلود می‌شوند. رد کردن آهنگ هیچ اطلاعاتی درباره آنچه پخش می‌کنید ارسال نمی‌کند. باز کردن صفحه SoundProof نام هنرمند فعلی را به سرور SoundProof ارسال می‌کند تا آرای به‌روز نمایش داده شوند و امکان رای دادن فراهم شود. سرور رای‌دهندگان را از طریق آدرس IP تشخیص می‌دهد، بنابراین رای شما ممکن است در شبکه‌های دیگر متفاوت نمایش داده شود.
 
 این دیتابیس تحت مجوز ODC Open Database License (ODbL) است. ورودی‌های Soul Over AI توسط xoundbyte تحت مجوز CC BY 4.0 هستند. این برنامه با SoundProof یا Soul Over AI وابستگی ندارد و توسط آن‌ها تایید نشده است."</string>
+  <!-- layout.applemusicartwork.appleMusicArtworkPatch -->
+  <string name="morphe_music_apple_music_artwork_title">کاور متحرک Apple Music</string>
+  <string name="morphe_music_apple_music_artwork_summary">اگر آلبومی دارای کاور متحرک باشد، این قابلیت کاور متحرک Apple Music را در پخش‌کننده نمایش می‌دهد. عنوان، هنرمند و آلبوم هر آهنگ به Apple Music ارسال می‌شود</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_device_unavailable">متن ترانه برای این فایل دستگاه در دسترس نیست.</string>
   <string name="morphe_music_lyrics_enabled_title">استفاده از متن آهنگ شخص ثالث</string>
@@ -717,8 +742,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">نوشته شده توسط: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">برجسته‌کردن واژه‌ها یا هجاهای همگام‌شده</string>
   <string name="morphe_music_lyrics_word_sync_summary">اولویت دادن به متن ترانهٔ واژه‌به‌واژه در صورت وجود. وقتی متن ترانه زمان‌بندی واژه دارد، هر واژه یا هجا را هماهنگ با موسیقی برجسته می‌کند</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_title">انیمیشن نرم کلمات همگام‌سازی شده</string>
+  <string name="morphe_music_lyrics_word_smooth_sweep_summary">هر کلمه را با یک حرکت نرم، درخشش و کمی بالا بردن صدا هنگام خواندن، هایلایت می‌کند. برای صرفه‌جویی در مصرف باتری یا برای پر کردن دقیق صدا در دستگاه‌های کندتر، آن را خاموش کنید.</string>
   <string name="morphe_music_lyrics_spring_scroll_title">استفاده از اسکرول فنری</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">متن ترانه را با فیزیک فنری اسکرول می‌کند و هر خط را کمی بعد از خط بالایی قرار می‌دهد. برای ذخیره باتری در دستگاه‌های کندتر، این گزینه را خاموش کنید</string>
+  <string name="morphe_music_lyrics_relax_scroll_title">پیمایش آرام</string>
+  <string name="morphe_music_lyrics_relax_scroll_summary">انیمیشن اسکرول شعر را کند می‌کند و خطوط غیرفعال را در اندازه کامل نگه می‌دارد</string>
+  <string name="morphe_music_lyrics_blur_inactive_title">محو کردن خطوط غیرفعال</string>
+  <string name="morphe_music_lyrics_blur_inactive_summary">هر خطی که در حال حاضر خوانده نمی‌شود را به آرامی محو می‌کند، به خصوص خطوط دورتر (اندروید ۱۲ و بالاتر). قبل از اندروید ۱۲، خطوط غیرفعال واضح باقی می‌ماندند</string>
   <string name="morphe_music_lyrics_gap_dots_title">نمایش نقاط توقف ساز</string>
   <string name="morphe_music_lyrics_gap_dots_summary">نمایش سه نقطه بین خطوط در طول توقف‌های طولانی ساز، که با نزدیک شدن به پایان توقف، پر می‌شوند</string>
   <string name="morphe_music_lyrics_focus_spotlight_title">کاهش بیشتر روشنایی خطوط دورتر</string>
@@ -841,6 +872,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">ترجمه را به بالای متن ترانه منتقل می‌کند؛ خوانش و رومی‌سازی در پایین باقی می‌مانند</string>
   <string name="morphe_music_lyrics_force_center_title">همیشه مرکز ترانه‌ها</string>
   <string name="morphe_music_lyrics_force_center_summary">روشن بودن هر خط را در وسط قرار داده و هم‌ترازی منبع را نادیده می‌گیرد، شامل طرف‌های دیوئلت; خاموش بودن هم‌ترازی درخواست شده توسط ترانه را نگه می‌دارد</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_title">همنوازی دوئت در طرف مقابل</string>
+  <string name="morphe_music_lyrics_duet_opposite_side_summary">در آهنگ‌های دونفره، خواننده دوم را در لبه مخالف قرار می‌دهد. برای اینکه هر دو خواننده در یک طرف قرار بگیرند، آن را خاموش کنید.</string>
   <string name="morphe_music_lyrics_providers_keep_one">حداقل یک ارائه‌دهنده باید روشن بماند</string>
   <string name="morphe_music_lyrics_translation_provider_title">ترجمه</string>
   <string name="morphe_music_lyrics_romanization_provider_title">رومنیزه کردن یا انتقال</string>

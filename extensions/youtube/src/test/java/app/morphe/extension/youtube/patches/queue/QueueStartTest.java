@@ -16,8 +16,8 @@ import org.junit.Test;
 
 import java.util.Map;
 
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.WatchEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
+import app.morphe.extension.shared.innertube.queue.PlaylistQueueRenderer.WatchEndpoint;
 
 public class QueueStartTest {
     private final QueueStart start = new QueueStart(new PlaylistQueue("abcdefghijk", "Selected"), "lmnopqrstuv");

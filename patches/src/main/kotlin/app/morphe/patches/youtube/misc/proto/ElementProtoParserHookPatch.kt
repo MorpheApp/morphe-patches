@@ -16,6 +16,7 @@ val elementProtoParserHookPatch = createElementProtoParserHookPatch(
     sharedExtensionPatch,
     // YouTube 21.40+ can read the inline resources of the responses with the element proto parser.
     readsResourcesWithParser = { is_21_40_or_greater },
+    reusesHookedElements = true,
 ) {
     dependsOn(versionCheckPatch)
 }

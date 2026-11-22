@@ -87,7 +87,14 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <string name="morphe_settings_about_links_translations">Mga Pagsasalin</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Napapanahon</string>
   <string name="morphe_settings_about_contributors">Mga Kontribyutor</string>
-  <string name="morphe_settings_about_contributors_period">Huling 12 buwan</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Habang-buhay</string>
+  <string name="morphe_settings_about_contributors_6_months">6 na buwan</string>
+  <string name="morphe_settings_about_contributors_3_months">3 na buwan</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Panahon</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s na mga user</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Mga Tagasuporta</string>
   <string name="morphe_settings_about_supporters_summary">Mga Backer sa Open Collective</string>
@@ -222,6 +229,9 @@ Kung hindi nagbago ang pag-optimize sa baterya, maaaring makaranas ka ng:
 • Maaaring biglang magsara ang app
 • Maaaring hindi gumana ang mga notification
 • Maaaring hindi gumana ang background playback"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Buksan ang system share sheet</string>
+  <string name="morphe_open_system_share_sheet_summary">Binubuksan ang system share sheet sa halip na ang in-app share sheet kapag nagbabahagi ng content</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Paghawak ng link ng app</string>
   <string name="morphe_link_handling_summary">I-configure ang mga link upang buksan sa app na ito</string>

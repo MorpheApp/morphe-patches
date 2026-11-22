@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Ενεργοποίηση Βιβλιοθήκης / Φίλτρο στο κάτω μενού σας</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Φίλτρο κάτω μενού Βιβλιοθήκη / Εσείς</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Εισαγάγετε τα ονόματα των βιβλιοθηκών / Φίλτρο στο κάτω μενού για φιλτράρισμα, χωρισμένα με νέες γραμμές</string>
+  <string name="morphe_hide_account_menu_badges_title">Απόκρυψη ενδείξεων</string>
   <string name="morphe_hide_account_menu_downloads_title">Απόκρυψη λήψεων</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">Απόκρυψη της ενότητας \"Βίντεο που σας άρεσαν\"</string>
+  <string name="morphe_hide_account_menu_watch_later_title">Απόκρυψη της ενότητας \"Παρακολούθηση αργότερα\"</string>
   <string name="morphe_hide_album_cards_title">Απόκρυψη καρτών άλμπουμ</string>
   <string name="morphe_hide_album_cards_summary">Απόκρυψη των καρτών άλμπουμ κάτω από την περιγραφή του καλλιτέχνη</string>
   <string name="morphe_hide_artist_cards_title">Απόκρυψη καρτών καλλιτεχνών</string>
@@ -122,8 +125,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">Απόκρυψη χρόνου μεταφόρτωσης</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Περιορισμοί:
-• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τον χρόνο μεταφόρτωσης
-• Αυτή η λειτουργία δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
+• Οι ενότητες Shorts ενδέχεται να εξακολουθούν να εμφανίζουν τον χρόνο μεταφόρτωσης
+• Δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
   <string name="morphe_hide_video_thumbnail_title">Απόκρυψη μικρογραφίας βίντεο</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">Απόκρυψη ετικετών βίντεο</string>
@@ -131,8 +134,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Απόκρυψη αριθμού προβολών</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Περιορισμοί:
-• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τους αριθμούς προβολών
-• Αυτή η λειτουργία δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
+• Οι ενότητες Shorts ενδέχεται να εξακολουθούν να εμφανίζουν τους αριθμούς προβολών
+• Δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
   <string name="morphe_hide_web_search_results_title">Αποτελέσματα αναζήτησης στο διαδίκτυο</string>
   <string name="morphe_hide_web_search_results_summary">Κρύβει την ενότητα \'Αποτέλεσμα από το διαδίκτυο\' από τα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_you_may_like_section_title">Απόκρυψη της ενότητας «Μπορεί να σας αρέσει»</string>
@@ -205,8 +208,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">Απόκρυψη ραφιού δημοσιεύσεων</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Απόκρυψη κουμπιού «Κατάστημα»</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Κουμπί «Εγγραφή»</string>
   <string name="morphe_explore_menu_screen_title">Μενού εξερεύνησης</string>
   <string name="morphe_explore_menu_screen_summary">Επιλέξτε ποια στοιχεία θα εμφανίζονται στο μενού εξερεύνησης</string>
   <string name="morphe_hide_courses_menu_title">Απόκρυψη μενού \"Μαθήματα\"</string>
@@ -281,7 +282,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">Απόκρυψη κουμπιού σχολίων</string>
   <string name="morphe_hide_post_comments_preview_title">Απόκρυψη προεπισκόπησης σχολίων</string>
   <string name="morphe_hide_post_comments_preview_summary">Αποκρύπτει την προεπισκόπηση των σχολίων κάτω από τις αναρτήσεις</string>
-  <string name="morphe_hide_post_share_button_title">Απόκρυψη κουμπιού «Κοινοποίηση»</string>
   <string name="morphe_hide_post_share_button_summary">Το κουμπί λήψης των εικόνων της ανάρτησης σχεδιάζεται δίπλα στο κουμπί Κοινοποίησης, οπότε κρύβεται επίσης</string>
   <string name="morphe_hide_ask_gemini_button_title">Απόκρυψη του κουμπιού «Ρωτήστε το Gemini»</string>
   <string name="morphe_hide_ask_gemini_button_summary">Αποκρύπτει το κουμπί «Ρωτήστε το Gemini» στο κάτω μέρος του πλαισίου «Ρωτήστε για αυτό το βίντεο»</string>
@@ -290,14 +290,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">Κρύβει την προεπισκόπηση του επόμενου βίντεο σε πλήρη οθόνη πριν ξεκινήσει η αυτόματη αναπαραγωγή</string>
   <string name="morphe_hide_channel_bar_title">Γραμμή καναλιού</string>
   <string name="morphe_hide_channel_watermark_title">Υδατογράφημα καναλιού</string>
-  <string name="morphe_hide_chapters_timeline_button_title">Απόκρυψη κεφαλαίων και του κουμπιού \'Σε αυτό το βίντεο\'</string>
+  <string name="morphe_hide_chapters_button_title">Απόκρυψη κουμπιού \"Κεφάλαια\"</string>
   <string name="morphe_hide_crowdfunding_box_title">Πλαίσιο δωρεών</string>
   <string name="morphe_hide_emergency_box_title">Πλαίσια έκτακτης ανάγκης</string>
+  <string name="morphe_hide_in_this_video_button_title">Απόκρυψη κουμπιού \"Σε αυτό το βίντεο\"</string>
   <string name="morphe_hide_info_panels_title">Πάνελ πληροφοριών</string>
   <string name="morphe_hide_info_panels_summary">Απόκρυψη ενημερωτικών πλαισίων περιβάλλοντος, όπως ιατρικών πληροφοριών</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Κουμπί «Συμμετοχή»</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Απόκρυψη κουμπιού «Επανάληψη συζήτησης ζωντανής μετάδοσης»</string>
@@ -313,8 +311,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">Αποκρύπτει τη διαβάθμιση των χειριστηρίων του προγράμματος αναπαραγωγής όταν σύρετε το δάχτυλό σας ενώ το κρατάτε πατημένο για να επιταχύνετε</string>
   <string name="morphe_hide_timed_reactions_title">Συγχρονισμένες αντιδράσεις</string>
   <string name="morphe_hide_timed_reactions_summary">Απόκρυψη της λειτουργίας που επιτρέπει στους χρήστες να αντιδρούν με emoji στην ενότητα σχολίων και στη ζωντανή συνομιλία</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Απόκρυψη του μενού \'Βοήθεια &amp; σχόλια\'</string>
   <string name="morphe_hide_help_feedback_menu_summary">Αποκρύπτει το μενού «Βοήθεια και σχόλια» όταν χρησιμοποιείτε το κουμπί με τις τρεις τελείες, όπως στα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_handle_title">Απόκρυψη handle</string>
   <string name="morphe_hide_handle_summary">Αποκρύπτει το handle του καναλιού σας στην καρτέλα «Εσείς»</string>
@@ -357,7 +353,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">Απόκρυψη κουμπιού «Ερώτηση»</string>
   <string name="morphe_hide_channel_profile_button_title">Απόκρυψη καναλιού και κουμπιού Εγγραφής</string>
   <string name="morphe_hide_channel_profile_button_summary">Αποκρύπτει το avatar του καναλιού και το κουμπί Εγγραφής στην αρχή της γραμμής ενεργειών</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Απόκρυψη κουμπιού «Εγγραφή»</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Αποκρύπτει τα κουμπιά «Εγγραφής» και «Συμμετοχής» δίπλα στο avatar του καναλιού στην αρχή της γραμμής ενεργειών</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Απόκρυψη κουμπιού Clip</string>
@@ -433,9 +428,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Σχόλιο κρυμμένο από Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Ενεργοποίηση μίνιμαλ κουμπιού σχολίων</string>
   <string name="morphe_minimal_comments_button_summary">Αποκρύπτει τις συρόμενες κάρτες και τον επιλογέα σελίδας τους, που εμφανίζονται στο κουμπί σχολίων.</string>
-  <string name="morphe_hide_comments_thanks_button_title">Κουμπί «Σας ευχαριστούμε»</string>
   <string name="morphe_hide_comments_timestamp_button_title">Απόκρυψη κουμπιού ώρας</string>
   <string name="morphe_hide_comments_top_fans_button_title">Απόκρυψη κουμπιού \'Κορυφαίοι θαυμαστές\'</string>
+  <string name="morphe_hide_comments_topics_title">Απόκρυψη \"Θέμάτων\"</string>
+  <string name="morphe_hide_comments_topics_summary">Απόκρυψη της επιλογής \"Θέματα\" στη γραμμή φίλτρου και των προεπισκοπήσεων σχολίων \"Θέμα\" κάτω από το βίντεο</string>
   <string name="morphe_hide_comments_translate_button_title">Απόκρυψη κουμπιού Μετάφρασης</string>
   <string name="morphe_hide_comments_zero_state_title">Απόκρυψη μηνύματος «Δεν υπάρχουν σχόλια ακόμη»</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Απολυμαίνετε τις διασυνδεδεμένες αναζητήσεις</string>
@@ -488,7 +484,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">Κουμπί υπότιτλων</string>
   <string name="morphe_hide_cast_button_title">Κουμπί μετάδοσης</string>
-  <string name="morphe_hide_cast_button_summary">Αποκρύπτει το κουμπί Cast στο πρόγραμμα αναπαραγωγής βίντεο και στη γραμμή εργαλείων</string>
   <string name="morphe_hide_collapse_button_title">Κρύψτε το κουμπί \'Σύμπτυξη\'</string>
   <string name="morphe_hide_fullscreen_button_title">Κρύψτε το κουμπί \'Πλήρης οθόνη\'</string>
   <string name="morphe_hide_player_control_buttons_background_title">Φόντο κουμπιών ελέγχου οθόνης αναπαραγωγής</string>
@@ -607,6 +602,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Το πάτημα παρατεταμένα οπουδήποτε σε ένα βίντεο της ροής ανοίγει το μενού του</string>
   <string name="morphe_feed_watch_later_button_title">Εμφάνιση κουμπιού Παρακολούθηση αργότερα στις μικρογραφίες</string>
   <string name="morphe_feed_watch_later_button_summary">Ένα κουμπί «Παρακολούθηση αργότερα» εμφανίζεται στις μικρογραφίες των βίντεο της ροής, με ένα σημάδι ελέγχου εάν το βίντεο έχει αποθηκευτεί. Πατώντας το, το βίντεο αποθηκεύεται ή αφαιρείται, και πατώντας και κρατώντας το, ανοίγει η επιλογή Αποθήκευση σε λίστα αναπαραγωγής</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">Άνοιγμα εικόνων publicación σε πλήρη οθόνη</string>
+  <string name="morphe_open_post_images_fullscreen_summary">Η andαπatiquement σε μια εικόνα μιας publicación την ανοίγει σε πλήρη οθόνη, αντί για το feed των publicación</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Λήψη εικόνων ανάρτησης</string>
   <string name="morphe_post_image_download_summary">Ένα κουμπί λήψης εμφανίζεται δίπλα στο κουμπί Κοινοποίησης των αναρτήσεων με εικόνες ή GIF, και ένα στοιχείο λήψης προστίθεται στο μενού τους</string>
@@ -800,6 +798,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_count_clear_done">Οι αποθηκευμένοι αριθμοί επαναλήψεων καθαρίστηκαν</string>
   <string name="morphe_loop_count_flyout_name">Αριθμός επαναλήψεων</string>
   <string name="morphe_loop_count_dialog_message">Πόσες φορές αναπαράγεται το βίντεο πριν από το επόμενο βίντεο, από %1$s έως %2$s. Αφήστε το κενό για να αναπαράγεται το βίντεο χωρίς περιορισμό.</string>
+  <string name="morphe_loop_count_times">%s φορές</string>
   <string name="morphe_loop_count_no_limit">Χωρίς όριο</string>
   <string name="morphe_loop_count_decrease">Λιγότερες φορές</string>
   <string name="morphe_loop_count_increase">Περισσότερες φορές</string>
@@ -886,7 +885,7 @@ Second \"item\" text"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Λίστα επιτρεπόμενων διαφημίσεων στο αναδυόμενο μενού</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Προσθέτει ένα στοιχείο αναδυόμενου μενού που επιτρέπει την αναπαραγωγή διαφημίσεων στο κανάλι αυτού του βίντεο</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Αυτό το χαρακτηριστικό ενδέχεται να απαιτεί τη χρήση του PotHelper ή την αλλαγή της ρύθμισης «Πλαστογράφηση ροών βίντεο» σε TV ή Android VR για είσοδο στο λογαριασμό</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Αυτό το χαρακτηριστικό ενδέχεται να απαιτεί τη χρήση του PotHelper ή την αλλαγή της ρύθμισης \"Πλαστογράφηση ροών βίντεο\" σε είσοδο \"TV\" ή \"Android VR\"</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Λίστα επιτρεπόμενων ταχυτήτων στο αναδυόμενο μενού</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Προσθέτει ένα στοιχείο αναδυόμενου μενού που αναπαράγει πάντα το κανάλι αυτού του βίντεο σε ταχύτητα 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Δεν έχετε συνδεθεί</string>
@@ -991,6 +990,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Παρατεταμένο πάτημα για σάρωση</string>
   <string name="morphe_swipe_press_to_engage_summary">Απαιτείται πάτημα και κράτημα πριν αναγνωριστεί μια χειρονομία σάρωσης.</string>
   <string name="morphe_swipe_haptic_feedback_title">Απόκριση δόνησης</string>
+  <string name="morphe_swipe_haptic_feedback_summary">Δονεί όταν η πίεση και συγκράτηση ξεκινά μια κίνηση σάρωσης</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Αποθήκευση και επαναφορά φωτεινότητας</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Θυμάται το επίπεδο φωτεινότητας κατά την είσοδο και την έξοδο από την πλήρη οθόνη</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Αυτόματη φωτεινότητα με σάρωση</string>
@@ -1034,6 +1034,39 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_style_entry_7">Κάθετη διάταξη (μινιμαλιστική)</string>
   <string name="morphe_swipe_change_video_title">Χειρονομία εναλλαγής βίντεο στην πλήρη οθόνη</string>
   <string name="morphe_swipe_change_video_summary">Σάρωση σε λειτουργία πλήρους οθόνης για μετάβαση στο επόμενο ή στο προηγούμενο βίντεο</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">Χειρονομία συγκράτησης</string>
+  <string name="morphe_hold_gesture_screen_summary">Αλλάξτε και κλειδώστε την ταχύτητα αναπαραγωγής σύροντας μετά από πάτημα και συγκράτηση</string>
+  <string name="morphe_hold_gesture_title">Ενεργοποίηση χειρονομίας συγκράτησης</string>
+  <string name="morphe_hold_gesture_summary">Το πάτημα και η συγκράτηση του βίντεο μπορεί να ακολουθηθεί από σύρσιμο. Η ταχύτητα κατά τη συγκράτηση είναι η ταχύτητα αναπαραγωγής κατά το πάτημα και τη συγκράτηση</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">Δεν χρησιμοποιείται όταν είναι ενεργοποιημένη η χειρονομία πατήματος για σάρωση. Πατήστε για να αλλάξετε</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">Η χειρονομία παρατεταμένου πατήματος για σάρωση είναι ενεργοποιημένη</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">Η χειρονομία παρακράτησης και η χειρονομία πατήματος για σάρωση των ελέγχων σάρωσης ξεκινούν και οι δύο με πάτημα και κράτημα, επομένως μπορεί να είναι ενεργοποιημένη μόνο μία από αυτές.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">Απενεργοποίηση πατήματος για σάρωση</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">Η χειρονομία παρακράτησης δεν χρησιμοποιείται όταν είναι ενεργοποιημένη η χειρονομία πατήματος για σάρωση</string>
+  <string name="morphe_hold_gesture_dialog_title">Η χειρονομία παρακράτησης είναι ενεργοποιημένη</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">Απενεργοποίηση χειρονομίας παρακράτησης</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">Απόκριση δόνησης</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">Δονεί όταν αλλάζει η ταχύτητα και όταν κλειδώνει η ταχύτητα</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">Σύρετε πλευρικά για να αλλάξετε την ταχύτητα</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">Μετά από πάτημα και συγκράτηση, σύρετε αριστερά για πιο αργή αναπαραγωγή και δεξιά για πιο γρήγορη. Όσο πιο έξω σύρετε, τόσο περισσότερο αλλάζει η ταχύτητα μέχρι το δάχτυλο να επιστρέψει</string>
+  <string name="morphe_hold_gesture_speed_step_title">Βήμα ταχύτητας</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">Ευαισθησία σύρσης</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">Χαμηλή</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">Κανονική</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">Υψηλή</string>
+  <string name="morphe_hold_gesture_speed_min_title">Ελάχιστη ταχύτητα</string>
+  <string name="morphe_hold_gesture_speed_min_summary">Η ελάχιστη ταχύτητα που μπορεί να φτάσει μια σύρση</string>
+  <string name="morphe_hold_gesture_speed_max_title">Μέγιστη ταχύτητα</string>
+  <string name="morphe_hold_gesture_speed_max_summary">Η μέγιστη ταχύτητα που μπορεί να φτάσει μια σύρση (έως 8)</string>
+  <string name="morphe_hold_gesture_lock_title">Σύρση προς τα κάτω για κλείδωμα της ταχύτητας</string>
+  <string name="morphe_hold_gesture_lock_summary">Μετά από πάτημα και συγκράτηση, σύρτε προς τα κάτω για να διατηρηθεί η ταχύτητα όταν σηκώσετε το δάκτυλό σας. Πατήστε το σήμα ή πατήστε και κρατήστε ξανά για ξεκλείδωμα</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">Πάντα εμφάνιση του σήματος κλειδώματος</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">Το σήμα μιας κλειδωμένης ταχύτητας παραμένει ορατό ενώ τα στοιχεία ελέγχου του παίκτη είναι κρυμμένα</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">Ξεκλείδωμα όταν αλλάζει το βίντεο</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">Μια κλειδωμένη ταχύτητα τερματίζει όταν ξεκινά ένα άλλο βίντεο</string>
+  <string name="morphe_hold_gesture_lock_hint">Σύρετε προς τα κάτω για κλείδωμα</string>
+  <string name="morphe_hold_gesture_lock_release">Αφήστε για κλείδωμα %s</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Υπότιτλοι</string>
   <string name="morphe_captions_screen_summary">Διαχείριση αυτόματων υποτίτλων και cookies υποτίτλων</string>
@@ -1082,8 +1115,6 @@ Second \"item\" text"</string>
   <string name="morphe_caption_block_translation_failed">Ορισμένες μεταφράσεις υπότιτλων δεν είναι διαθέσιμες. Εμφάνιση διαθέσιμων υπότιτλων.</string>
   <string name="morphe_caption_blocks_too_large">Και οι δύο γλώσσες υπότιτλων δεν χωράνε σε αυτόν τον πρόγραμμα αναπαραγωγής. Εμφάνιση της κύριας γλώσσας.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
-  <string name="morphe_navigation_bar_screen_summary">Επιλέξτε ποια κουμπιά εμφανίζονται στην κάτω γραμμή πλοήγησης</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Απόκρυψη κουμπιού «Αρχική»</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1101,11 +1132,11 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">Παρακολούθηση αργότερα</string>
   <string name="morphe_show_settings_button_title">Εμφάνιση κουμπιού «Ρυθμίσεις»</string>
   <string name="morphe_show_settings_button_type_title">Ενέργεια κουμπιού ρυθμίσεων</string>
-  <string name="morphe_show_settings_button_type_summary">Ανοίγει τις ρυθμίσεις Morphe όταν είναι ενεργοποιημένο, ή τις ρυθμίσεις YouTube όταν είναι απενεργοποιημένο</string>
+  <string name="morphe_show_settings_button_type_summary">Όταν είναι ενεργοποιημένο, το απλό πάτημα ανοίγει τις ρυθμίσεις Morphe και το παρατεταμένο πάτημα τις ρυθμίσεις YouTube. Απενεργοποιήστε για αντιστροφή</string>
   <string name="morphe_navigation_buttons_order_title">Σειρά κουμπιών πλοήγησης</string>
   <string name="morphe_navigation_buttons_order_summary">Σύρετε τα κουμπιά για να αλλάξετε τη σειρά τους στη γραμμή πλοήγησης</string>
   <string name="morphe_swap_create_with_notifications_button_title">Ανταλλάξτε το κουμπί Δημιουργία με το κουμπί Ειδοποιήσεις</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">Εάν η αλλαγή αυτής της ρύθμισης δεν έχει αποτέλεσμα, δοκιμάστε να μεταβείτε σε λειτουργία ανώνυμης περιήγησης</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Μεταφέρει το κουμπί Ειδοποιήσεις στη γραμμή πλοήγησης και το κουμπί Δημιουργία στη γραμμή εργαλείων. Εάν οι αλλαγές δεν εφαρμοστούν, δοκιμάστε να μεταβείτε σε ανώνυμη περιήγηση</string>
   <string name="morphe_hide_navigation_button_labels_title">Ονομασίες κουμπιών γραμμής πλοήγησης</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Απόκρυψη κουκκίδας νέου περιεχομένου</string>
   <string name="morphe_hide_navigation_bar_title">Γραμμή πλοήγησης</string>
@@ -1134,18 +1165,31 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Προσαρμόστε το επίπεδο διαφάνειας της γυάλινης γραμμής πλοήγησης (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
   <string name="morphe_navigation_bar_glass_round_title">Στρογγυλεμένη γυάλινη γραμμή πλοήγησης</string>
   <string name="morphe_navigation_bar_glass_round_summary">Δίνει στη γυάλινη γραμμή πλοήγησης στρογγυλεμένες άκρες, αντί για γωνίες όπως στο γυάλινο ελαχιστοποιημένο πρόγραμμα αναπαραγωγής</string>
+  <string name="morphe_navigation_bar_glass_edge_title">Γυάλινη άκρη γραμμής πλοήγησης</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">Σχεδιάζει την φωτεινή άκρη γύρω από τη γυάλινη γραμμή πλοήγησης</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">Κάτω περιθώριο γυάλινης γραμμής πλοήγησης</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">Προσαρμόστε τον χώρο μεταξύ της γυάλινης γραμμής πλοήγησης και του κάτω μέρους της οθόνης ή της πλοήγησης του συστήματος</string>
   <string name="morphe_navigation_bar_glass_size_title">Μέγεθος γυάλινης γραμμής πλοήγησης</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ρυθμίστε το ύψος, το πλάτος και την απόσταση των κουμπιών της γυάλινης γραμμής πλοήγησης, με προεπισκόπηση. Τα κουμπιά που δεν χωράνε στο πλάτος της οθόνης κρύβονται</string>
+  <string name="morphe_glass_menus_screen_title">Γυάλινα μενού</string>
+  <string name="morphe_glass_menus_screen_summary">Μενού σαν θολό γυαλί πάνω από το θολό περιεχόμενο πίσω τους</string>
+  <string name="morphe_glass_menus_title">Ενεργοποίηση γυάλινων μενού</string>
+  <string name="morphe_glass_menus_summary">Εμφανίζει τα μενού και τα bottom sheets ως θολό γυαλί, με το περιεχόμενο πίσω τους να είναι θολό</string>
+  <string name="morphe_glass_menus_user_dialog_message">Τα μενού εμφανίζονται σχεδόν αδιαφανή όταν είναι ενεργή η εξοικονόμηση μπαταρίας ή εάν η συσκευή δεν υποστηρίζει θόλωμα</string>
+  <string name="morphe_glass_menus_opacity_title">Αδιαφάνεια γυαλιού</string>
+  <string name="morphe_glass_menus_opacity_summary">Το πόσο καλύπτει το μενού το θολό περιεχόμενο (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
+  <string name="morphe_glass_menus_blur_title">Θόλωμα</string>
+  <string name="morphe_glass_menus_blur_summary">Το πόσο θολρίζει το περιεχόμενο πίσω από το μενού</string>
+  <string name="morphe_glass_menus_dim_title">Σκότος</string>
+  <string name="morphe_glass_menus_dim_summary">Το πόσο σκουρόνιασε η οθόνη γύρω από ένα φύλλο στο κάτω μέρος</string>
   <string name="morphe_navigation_bar_glass_size_height">Ύψος</string>
   <string name="morphe_navigation_bar_glass_size_width">Μέγιστο πλάτος</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Απόσταση κουμπιών</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">Εμφανιζόμενα κουμπιά: %1$s από %2$s</string>
-  <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
-  <string name="morphe_toolbar_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στη γραμμή εργαλείων</string>
   <string name="morphe_hide_toolbar_chat_button_title">Απόκρυψη κουμπιού \"Συνομιλία\"</string>
+  <string name="morphe_hide_toolbar_companion_button_title">Απόκρυψη κουμπιού Συνοδού</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Κρύψτε το κουμπί \'Μικρόφωνο\'</string>
   <string name="morphe_hide_toolbar_search_button_title">Κρύψτε το κουμπί \'Αναζήτηση\'</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">Όταν είναι ενεργοποιημένο, το απλό πάτημα ανοίγει τις ρυθμίσεις Morphe και το παρατεταμένο πάτημα τις ρυθμίσεις YouTube. Απενεργοποιήστε για αντιστροφή</string>
   <string name="morphe_toolbar_buttons_order_title">Σειρά κουμπιών γραμμής εργαλείων</string>
   <string name="morphe_toolbar_buttons_order_summary">Σύρετε τα κουμπιά για να αλλάξετε τη σειρά τους στη γραμμή εργαλείων</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1176,43 +1220,28 @@ Second \"item\" text"</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Απενεργοποιήστε το διπλό άγγιγμα για like</string>
   <string name="morphe_hide_shorts_ai_button_title">Απόκρυψη κουμπιού AI</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Απόκρυψη ετικέτας \'Αυτόματη μεταγλώττιση\'</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Γραμμή καναλιού</string>
-  <string name="morphe_hide_shorts_comments_button_title">Κουμπί σχολίων</string>
   <string name="morphe_hide_shorts_effect_button_title">Κουμπί «Εφέ»</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Ετικέτα συνδέσμου βίντεο</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Απόκρυψη υποδείξεων χειρονομιών</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Απόκρυψη κουμπιού \'Πράσινη οθόνη\'</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Κουμπί hashtag</string>
   <string name="morphe_hide_shorts_info_panel_title">Πίνακας πληροφοριών</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">Κουμπί «Συμμετοχή»</string>
   <string name="morphe_hide_shorts_like_button_title">Κουμπί «Μου αρέσει»</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Απόκρυψη εφέ κουμπιού «Μου αρέσει»</string>
   <string name="morphe_hide_shorts_live_preview_title">Απόκρυψη ζωντανής προεπισκόπησης</string>
   <string name="morphe_hide_shorts_location_label_title">Ετικέτα τοποθεσίας</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Γραμμή πλοήγησης</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Απόκρυψη κουμπιού \'Νέες αναρτήσεις\'</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Απόκρυψη κουμπιών επικάλυψης κατά την παύση</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Απόκρυψη προεπισκόπησης σχολίου</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Κουμπί «Remix»</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Απόκρυψη κουμπιού αποθήκευσης</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Απόκρυψη κουμπιού \'Αποθήκευση μουσικής\'</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Απόκρυψη προτάσεων αναζήτησης</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Κουμπί «Κοινοποίηση»</string>
-  <string name="morphe_hide_shorts_shop_button_title">Κουμπί «Κατάστημα»</string>
   <string name="morphe_hide_shorts_sound_button_title">Κουμπί ήχου</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Ετικέτες μεταδεδομένων ήχου</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">Κουμπί «Εγγραφή»</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Απόκρυψη κουμπιού \'Αγορά Super Thanks\'</string>
   <string name="morphe_hide_shorts_tagged_products_title">Απόκρυψη επισημασμένων προϊόντων</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Κουμπί επερχόμενης πρεμιέρας/ζωντανής ροής</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Απόκρυψη κουμπιού \'Χρήση αυτού του ήχου\'</string>
   <string name="morphe_hide_shorts_use_template_button_title">Απόκρυψη κουμπιού \'Χρήση αυτού του προτύπου\'</string>
-  <string name="morphe_hide_shorts_video_title_title">Τίτλος του βίντεο</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Προτεινόμενο βίντεο τελικής οθόνης</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Απόκρυψη της προτεινόμενης επικάλυψης βίντεο που εμφανίζεται μετά το τέλος του βίντεο
@@ -1380,6 +1409,9 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Απενεργοποίηση αυτόματης ανανέωσης ροής</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Αποτρέπει την αυτόματη ανανέωση των ροών όταν αυτές καταστούν ξεπερασμένες</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">Αποομάδωση ειδοποιήσεων</string>
+  <string name="morphe_ungroup_notifications_summary">Εμφανίζει κάθε βίντεο των ομαδοποιημένων μεταφορτώσεων ενός καναλιού ως ξεχωριστή ειδοποίηση</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">Διάταξη καρτών ροής</string>
   <string name="morphe_feed_card_layout_entry_1">Κλασική</string>
@@ -1492,6 +1524,8 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Αποτελέσματα αναζήτησης</string>
   <string name="morphe_dearrow_titles_icon_title">Εμφάνιση εικονιδίου DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Εμφανίζει το εικονίδιο DeArrow στους τίτλους βιντεοκλίπ με τίτλο ή μικρογραφία από την κοινότητα. Πατήστε το εικονίδιο για να δείτε τον αρχικό τίτλο και τη μικρογραφία</string>
+  <string name="morphe_dearrow_clean_up_titles_title">Καθαρισμός τίτλων</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">Καθαρίζει τους τίτλους των βίντεο που δεν έχουν τίτλο DeArrow. Οι λέξεις σε κεφαλαία αλλάζουν σε κανονική μορφή, ενώ τα emoji, το ιδιαίτερο κείμενο και τα επαναλαμβανόμενα знаки θαυμαστικού αφαιρούνται</string>
   <string name="morphe_dearrow_casual_mode_title">Χαλαρή λειτουργία</string>
   <string name="morphe_dearrow_casual_mode_summary">Εμφανίζει τον αρχικό τίτλο αντί για τον τίτλο DeArrow, αν οι χρήστες του DeArrow ψήφισαν ότι τους αρέσει ο αρχικός τίτλος</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Ελάχιστος αριθμός ψήφων casual για την εμφάνιση του αρχικού τίτλου</string>
@@ -1712,13 +1746,9 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">Παρακάμπτει το μενού επιλογής ποιότητας και ανοίγει απευθείας το μενού ποιότητας \'Προχωρημένων\'</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Απόκρυψη επιλογών υψηλής ποιότητας</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">Προτεραιότητα στην ποιότητα βίντεο</string>
-  <string name="morphe_video_quality_prioritize_summary">Δίνει προτεραιότητα στην υψηλότερη διαθέσιμη ποιότητα βίντεο έναντι της αποδοτικότητας του κωδικοποιητή</string>
-  <string name="morphe_video_quality_prioritize_dialog">Εάν αυτή η ρύθμιση είναι απενεργοποιημένη, τότε παλαιότερα βίντεο ενδέχεται να μην εμφανίζουν επιλογές ποιότητας βίντεο</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Να επιτρέπεται το \'Android VR\' / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Επιτρέπει την αποκωδικοποίηση AV1 μέσω λογισμικού όταν χρησιμοποιείτε τον πελάτη \'Android VR\' / visionOS.</string>
+  <string name="morphe_spoof_video_streams_av1_title">Να επιτραπεί AV1 για \"Android VR\" / \"visionOS\"</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Επιτρέπει την αποκωδικοποίηση AV1 μέσω λογισμικού κατά τη χρήση του πελάτη \"Android VR\" / \"visionOS\"</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Η ενεργοποίηση αυτής της ρύθμισης ενδέχεται να χρησιμοποιήσει αποκωδικοποίηση λογισμικού AV1.
 
 Η αναπαραγωγή βίντεο μπορεί να κολλάει ή να χάνει καρέ"</string>
@@ -1831,6 +1861,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">Αναίρεση</string>
   <string name="morphe_series_tracker_enable_short">Ενεργοποίηση</string>
   <string name="morphe_series_tracker_new_episode">1 νέο επεισόδιο</string>
+  <string name="morphe_series_tracker_new_episodes">%s νέα επεισόδια</string>
   <string name="morphe_series_tracker_record_short">Καταγραφή προόδου σε αυτή τη συσκευή</string>
   <string name="morphe_series_tracker_follow_consent">"Οι σειρές σας και η πρόοδός σας παραμένουν σε αυτή τη συσκευή, κοινή για λογαριασμούς YouTube. Οι έλεγχοι ιστορικού του YouTube δεν τις αλλάζουν. Καθαρίστε την πρόοδο από το μενού Σειρές.
 
@@ -1864,6 +1895,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_episode_order">Σειρά επεισοδίων</string>
   <string name="morphe_series_tracker_playlist_order">Σειρά λίστας αναπαραγωγής</string>
   <string name="morphe_series_tracker_reverse_order">Αντίστροφη σειρά λίστας αναπαραγωγής</string>
+  <string name="morphe_series_tracker_view_count">%s προβολές</string>
   <string name="morphe_series_tracker_view_count_one">%s προβολή</string>
   <string name="morphe_series_tracker_completion_title">Σήμανση επεισοδίων ως παρακολουθούμενων</string>
   <string name="morphe_series_tracker_completion_summary">Τουλάχιστον %1$s%% παρακολουθήθηκε με το πολύ 90 δευτερόλεπτα υπόλοιπο, ή %2$s δευτερόλεπτα εναπομείναντα</string>
@@ -1953,7 +1985,6 @@ AVC (H.264)
   <string name="morphe_live_chat_translate_language_title">Γλώσσα μετάφρασης</string>
   <string name="morphe_live_chat_translate_exclude_title">Εξαιρούμενες γλώσσες</string>
   <string name="morphe_live_chat_translate_exclude_summary">Κώδικες γλωσσών χωρισμένοι με κόμμα, όπως id,en. Τα μηνύματα σε αυτές τις γλώσσες δεν μεταφράζονται</string>
-  <string name="morphe_live_chat_translate_provider_title">Πάροχος μετάφρασης</string>
   <string name="morphe_live_chat_translate_provider_google">Google Translate</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">Κλειδί API DeepL</string>

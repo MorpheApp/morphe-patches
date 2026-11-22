@@ -15,8 +15,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
-import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
+import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
 
 /**
  * Small bounded wire editor; preserves unknown renderer fields and uses the host protobuf runtime.

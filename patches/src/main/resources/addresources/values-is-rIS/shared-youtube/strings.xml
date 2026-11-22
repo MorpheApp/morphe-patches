@@ -141,13 +141,13 @@ Myndspilun gæti mistekist þar til Android System WebView er uppfært í nýjas
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Reyndu að virkja: Spoof myndstreymi > Android VR innskráning</string>
   <string name="morphe_spoof_video_streams_client_type_title">Sjálfgefinn biðlari</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR innskráning</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR krefst sérstaks skráningarferlis. Ýttu hér til að halda áfram</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Skráður inn á Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Innskráning á \"Android VR\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' krefst sérstakrar innskráningar. Ýttu hér til að halda áfram</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Núna skráð inn á \'Android VR\'</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Til að nota þennan eiginleika skaltu breyta \'Sjálfgefinn biðlari\' í Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Skrá þig inn á Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Innskráning á Android VR getur lagað spilunarvandamál hjá sumum notendum
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Til að nota þennan eiginleika skaltu breyta \'Sjálfgefnum biðlara\' í \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Skráðu þig inn á \'Android VR\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Innskráning á \"Android VR\" getur lagað spilunarvandamál hjá sumum notendum
 
 Til að skrá þig inn ýttu á Halda áfram hér að neðan"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Skrá út</string>
@@ -168,35 +168,35 @@ Til að skrá þig inn ýttu á Halda áfram hér að neðan"</string>
 • Morphe stillingar flytja ekki út eða inn Android VR auðkenningu
 • Ef þetta forrit er ekki notað í 6 mánuði mun Google fjarlægja þessa auðkenningu
 • Þú þarft að skrá þig inn aftur ef þú breytir Google lykilorðinu þínu eða afskráir þetta tæki í Google stillingum þínum"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Innskráning í vefútgáfu fyrir farsíma</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Innskráning á \"farsímavef\"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valfrjáls: skráðu þig inn á YouTube vefsíðuna til að spila myndbönd með reikningnum þínum. Ýttu hér til að halda áfram</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in"> núna skráð inn á Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Nú skráður inn á \"Mobile Web\"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Til að nota þennan eiginleika skaltu breyta \'Sjálfgefnum biðlara\' í Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Skráðu þig inn á Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web spilar myndböndum án innskráningar eða þegar skráð er inn á YouTube vefsíðuna
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Til að nota þennan eiginleika skaltu breyta \"Sjálfgefnum biðlara\" í \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Skráðu þig inn á \"Mobile Web\"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"\"Mobile Web\" spilar myndbönd án innskráningar eða eftir að hafa skráð sig inn á YouTube vefsíðuna
 
-• Ef skráð er inn er hægt að spila myndbönd sem krefjast reiknings, svo sem aldurstakmörkuð myndbönd
+• Þegar skráð er inn er hægt að spila myndbönd sem krefjast reiknings, svo sem myndbönd með aldurstakmörkunum
 • Innskráningarsíða Google opnast í þessari forrit
 • Innskráningin er eingöngu notuð til að fá myndböndin sem þú spilar
-• Innskráningin er aðeins vistuð á þessu tæki
+• Innskráningin er aðeins vistuð á þessu ttæki
 
-Til að skrá þig inn skaltu ýta á halda áfram hér að neðan"</string>
+Til að skrá þig inn, Ýttu á halda áfram hér að neðan"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Innskráning vistuð
 
-• Stillingar Morphe munu ekki flytja inn/út innskráningu á farsímavefnum
+• Stillingar Morphe munu ekki flytja inn/út innskráningu fyrir \"Mobile Web\"
 • Ef Google lýkur innskráningunni eru myndbönd spiluð án innskráningar þar til þú skráir þig inn aftur
-• Með því að skrá þig út skráir þú þessu tæki einnig út af YouTube vefsíðunni"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Innskráning á farsímavefnum er runnin út, reyndu að skrá þig inn á farsímavefnum aftur</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Útskráð af farsímavefnum</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView er ekki aðgengilegt. Uppsetja eða virkja það til að skrá þig inn</string>
+• Með því að skrá þig út verður þetta tæki einnig skráð út af YouTube vefsíðunni"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Innskráning á Mobile Web er runnin út, reyndu að skrá þig inn á \"Mobile Web\" aftur</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Útskráð úr \'Mobile Web\'</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' er ekki aðgengilegt. Uppsetja eða virkja það til að skrá þig inn</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er tímabundið ekki tiltækt (API rann út á tíma)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Innskráning á Android VR er runnin út, reyndu að skrá þig inn á VR aftur</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Innskráning á \'Android VR\' er runnin út, reyndu að skrá þig inn á VR aftur</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 er tímabundið ekki tiltækt (staða %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 er tímabundið ekki í boði</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Ekki hægt að skrá inn á VR, staðfesting á vefsíðu var ekki samþykkt</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ekki hægt að skrá inn á VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Skráð út af Android VR</string>
+  <string name="morphe_oauth2_toast_reset">Útskráð úr \'Android VR\'</string>
   <string name="morphe_oauth2_toast_invalid">Ógilt VR innskráningartákn, reyndu að skrá þig inn á VR aftur</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Margmiðlunarstýringar tilkynninga</string>
@@ -214,6 +214,10 @@ Til að skrá þig inn skaltu ýta á halda áfram hér að neðan"</string>
   <string name="morphe_seek_notification_media_length_invalid">Leitarlengd verður að vera á bilinu 1 til %s sekúndur. Notar sjálfgefið gildi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Slökktu á QUIC samskiptareglum</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Forgangsraða myndgæðum</string>
+  <string name="morphe_prioritize_video_quality_summary">Forgangsraðar hæstu tiltæku myndgæðum fram yfir skilvirkni kóðunar</string>
+  <string name="morphe_prioritize_video_quality_dialog">Ef þessi stilling er slökkt geta eldri myndskeið sýnt engan valkost fyrir myndgæði</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Slökktu á DRC hljóðrás</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -254,7 +258,7 @@ Til að skrá þig inn skaltu ýta á halda áfram hér að neðan"</string>
   <string name="morphe_replace_music_with_youtube_title">Breyta deilitenglum í youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Breytir music.youtube.com í youtube.com í deilitenglum</string>
   <string name="morphe_replace_links_with_shortener_title">Breyta deilitenglum í youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Neyðir myndbönd til að nota styttri youtu.be-vefslóðarsnið</string>
+  <string name="morphe_replace_links_with_shortener_summary">Neyðir myndbönd til að nota styttri \'youtu.be\'-vefslóðarsnið</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Sjálfvirkt</string>
@@ -266,19 +270,16 @@ Til að skrá þig inn skaltu ýta á halda áfram hér að neðan"</string>
   <string name="morphe_video_quality_default_mobile_title">Sjálfgefin myndgæði á farsímaneti</string>
   <string name="morphe_remember_video_quality_toast_mobile">Breytt sjálfgefin gæði fyrir farsíma í: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Breytt sjálfgefin Wi-Fi gæði í: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Opna deilingarvalmynd kerfisins</string>
-  <string name="morphe_open_system_share_sheet_summary">Opnar deilingarvalmynd kerfisins í stað innbyggðrar þegar efni er deilt</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-skráning</string>
   <string name="morphe_debug_litho_entry_disabled">Óvirkt</string>
   <string name="morphe_debug_litho_entry_path">Stígur</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Stígur og búfar</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho-skráning skráir uppsetningahluta appsins, þar á meðal texta á skjánum fyrir suma viðmótshluta.
+  <string name="morphe_debug_litho_user_dialog_message">"Skráðar uppsetningareltir appsins, þar á meðal texti á skjánum fyrir suma viðmótshluta.
 
 Þetta getur hjálpað við að bera kennsl á hluta þegar sérsniðnar síur eru búnar til.
 
-Hins vegar verða einnig skráð ákveðin notendagögn, svo sem IP-talan þín"</string>
+Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-talan þín"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Sérsniðin sía</string>
   <string name="morphe_custom_filter_screen_summary">Stilltu sérsniðnar síur til að fela hvaða þátt sem er</string>
@@ -380,4 +381,8 @@ Auðkenni myndbandsins sem þú horfir á er sent til Return YouTube Dislike API
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Engin takmörk API fyrir notanda hefur komið fyrir</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Takmörk API fyrir notanda náðust %s sinnum</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekúndur</string>
+  <string name="morphe_navigation_bar_screen_title">Leiðsögustika</string>
+  <string name="morphe_navigation_bar_screen_summary">Veldu hvaða hnappar birtast í neðri leiðsögustiku</string>
+  <string name="morphe_toolbar_screen_title">Tækjastika</string>
+  <string name="morphe_toolbar_screen_summary">Veldu hvaða hlutar birtast á tækjastikunni</string>
 </resources>

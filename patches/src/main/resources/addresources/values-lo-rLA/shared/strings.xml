@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">ການແປພາສາ</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">ເປັນເວີຊັນຫຼ້າສຸດແລ້ວ</string>
   <string name="morphe_settings_about_contributors">ຜູ້ປະກອບສ່ວນ</string>
-  <string name="morphe_settings_about_contributors_period">12 ເດືອນທີ່ຜ່ານມາ</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">ທັງໝົດ</string>
+  <string name="morphe_settings_about_contributors_6_months">6 ເດືອນ</string>
+  <string name="morphe_settings_about_contributors_3_months">3 ເດືອນ</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">ໄລຍະເວລາ</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s ຜູ້ໃຊ້</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">ຜູ້ສະໜັບສະໜູນ</string>
   <string name="morphe_settings_about_supporters_summary">ຜູ້ສະໜັບສະໜູນໃນ Open Collective</string>
@@ -222,6 +229,9 @@ Second \"item\" text"</string>
 • ແອັບອາດຈະປິດລົງແບບສຸ່ມ
 • ການແຈ້ງເຕືອນອາດຈະບໍ່ເຮັດວຽກ
 • ການຫຼິ້ນໃນພື້ນຫຼັງອາດຈະບໍ່ເຮັດວຽກ"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">ເປີດແຜ່ນແບ່ງປັນຂອງລະບົບ</string>
+  <string name="morphe_open_system_share_sheet_summary">ເປີດແຜ່ນແບ່ງປັນຂອງລະບົບ ແທນທີ່ຈະເປັນຂອງໃນແອັບ ເມື່ອແບ່ງປັນເນື້ອຫາ</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">ການຈັດການລິ້ງຂອງແອັບ</string>
   <string name="morphe_link_handling_summary">ກຳນົດຄ່າລິ້ງເພື່ອເປີດໃນແອັບນີ້</string>

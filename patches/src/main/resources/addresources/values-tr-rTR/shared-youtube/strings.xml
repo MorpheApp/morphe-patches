@@ -140,15 +140,15 @@ Android System WebView'u açmak için TAMAM'a dokunun."</string>
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Şunu etkinleştirmeyi dene: Video akışlarını taklit et &gt; Android VR oturum açma</string>
   <string name="morphe_spoof_video_streams_client_type_title">Varsayılan istemci</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR oturum açma</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR ayrı bir oturum açma işlemi gerektirir. Devam etmek için buraya dokunun</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Şu anda Android VR oturumu açık</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">\'Android VR\' oturum açma</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">\'Android VR\' ayrı bir oturum açma işlemi gerektirir. Devam etmek için buraya dokunun</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Şu anda \'Android VR\' oturumu açık</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi Android VR olarak değiştirin</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR\'da oturum aç</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR'de oturum açmak, bazı kullanıcılar için oynatma sorunlarını çözebilir.
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi \'Android VR\' olarak değiştirin</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">\'Android VR\'da oturum açın</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"'Android VR'da oturum açmak, bazı kullanıcılar için oynatma sorunlarını çözebilir
 
-Oturum açmak için, devam et butonuna basın."</string>
+Oturum açmak için aşağıdan devam'a basın"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Çıkış yap</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Talimatlar</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -167,35 +167,35 @@ Oturum açmak için, devam et butonuna basın."</string>
 • Morphe ayarlarınız, Android VR kimlik doğrulamasını içe/dışa aktarmaz 
 • Bu uygulama 6 ay boyunca kullanılmazsa Google bu kimlik doğrulamasını kaldıracaktır 
 • Google şifrenizi değiştirirseniz veya bu cihazı Google ayarlarınızdan kaldırırsanız tekrar oturum açmanız gerekir"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobil Web oturum açma</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">\'Mobil Web\' oturum açma</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">İsteğe bağlı: Videoları hesabınızla oynatmak için YouTube web sitesinde oturum açın. Devam etmek için buraya dokunun</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Şu anda Mobil Web oturumu açık</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Şu anda \'Mobil Web\' oturumu açık</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi Mobil Web olarak değiştirin</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobil Web\'de oturum açın</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobil Web, videoları oturum açılmamış halde veya YouTube web sitesinde oturum açılmış halde oynatır
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi \'Mobil Web\' olarak değiştirin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">\'Mobil Web\' ile oturum açın</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"'Mobil Web', videoları oturum açmadan veya YouTube web sitesinde oturum açmış şekilde oynatır
 
 • Oturum açıldığında, yaş kısıtlamalı videolar gibi hesap gerektiren videolar oynatılabilir
 • Google oturum açma sayfası bu uygulamada açılır
 • Oturum açma işlemi yalnızca oynattığınız videoları almak için kullanılır
 • Oturum açma bilgileri yalnızca bu cihazda kaydedilir
 
-Oturum açmak için aşağıdaki devam düğmesine basın"</string>
+Oturum açmak için aşağıdan devam'a basın"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Oturum açma kaydedildi
 
-• Morphe ayarlarınız Mobil Web oturum açma işlemini içe/dışa aktarmayacaktır
+• Morphe ayarlarınız 'Mobil Web' oturum açma işlemini içe/dışa aktarmayacaktır
 • Google oturumu sonlandırırsa, tekrar oturum açana kadar videolar oturum açılmamış olarak oynatılır
 • Oturumu kapatmak, bu cihazın YouTube web sitesindeki oturumunu da kapatır"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobil Web oturum süresi doldu, Mobil Web\'de tekrar oturum açmayı deneyin</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobil Web oturumu kapatıldı</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView mevcut değil. Oturum açmak için yükleyin veya etkinleştirin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobil Web oturum süresi doldu, \'Mobil Web\' ile tekrar oturum açmayı deneyin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">\'Mobil Web\' oturumu kapatıldı</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">\'Android System WebView\' mevcut değil. Oturum açmak için yükleyin veya etkinleştirin</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 geçici olarak kullanılamıyor (API zaman aşımına uğradı)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR oturum süresi doldu, VR\'da tekrar oturum açmayı deneyin</string>
+  <string name="morphe_oauth2_connection_failure_status_400">\'Android VR\' oturum süresi doldu, VR\'da tekrar oturum açmayı deneyin</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 geçici olarak kullanılamıyor (durum %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 geçici olarak kullanılamıyor</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR oturumu açılamadı, web sitesi kimlik doğrulaması onaylanmadı</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR oturumu açılamadı: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR oturumu kapatıldı</string>
+  <string name="morphe_oauth2_toast_reset">\'Android VR\' oturumu kapatıldı</string>
   <string name="morphe_oauth2_toast_invalid">Geçersiz VR oturum açma belirteci, VR\'da tekrar oturum açmayı deneyin</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Bildirim medya kontrolleri</string>
@@ -213,6 +213,10 @@ Oturum açmak için aşağıdaki devam düğmesine basın"</string>
   <string name="morphe_seek_notification_media_length_invalid">Sardırma süresi 1 ile %s saniye arasında olmalıdır. Varsayılan kullanılıyor</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolünü devre dışı bırak</string>
+  <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Video kalitesine öncelik ver</string>
+  <string name="morphe_prioritize_video_quality_summary">Kodek verimliliğinden ziyade en yüksek video kalitesine öncelik verir</string>
+  <string name="morphe_prioritize_video_quality_dialog">Bu ayar kapatılırsa, eski videolarda hiçbir video kalitesi seçeneği görünmeyebilir</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC sesi devre dışı bırak</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -253,7 +257,7 @@ Oturum açmak için aşağıdaki devam düğmesine basın"</string>
   <string name="morphe_replace_music_with_youtube_title">Paylaşım bağlantılarını youtube.com olarak değiştir</string>
   <string name="morphe_replace_music_with_youtube_summary">Paylaşılan bağlantılarda music.youtube.com adresini youtube.com ile değiştirir</string>
   <string name="morphe_replace_links_with_shortener_title">Paylaşım bağlantılarını youtu.be olarak değiştir</string>
-  <string name="morphe_replace_links_with_shortener_summary">Videoları kısaltılmış youtu.be URL formatını kullanmaya zorlar</string>
+  <string name="morphe_replace_links_with_shortener_summary">Videoları kısaltılmış \'youtu.be\' URL formatını kullanmaya zorlar</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Oto</string>
@@ -265,19 +269,16 @@ Oturum açmak için aşağıdaki devam düğmesine basın"</string>
   <string name="morphe_video_quality_default_mobile_title">Mobil ağdaki varsayılan video kalitesi</string>
   <string name="morphe_remember_video_quality_toast_mobile">Varsayılan mobil kalite şuna değiştirildi: %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Varsayılan Wi-Fi kalitesi şuna değiştirildi: %s</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım sayfasını aç</string>
-  <string name="morphe_open_system_share_sheet_summary">İçerik paylaşılırken uygulama içi paylaşım ekranı yerine sistem paylaşım ekranı açılır</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho kayıtları</string>
   <string name="morphe_debug_litho_entry_disabled">Devre dışı</string>
   <string name="morphe_debug_litho_entry_path">Yol</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Yol ve ara bellek</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Litho günlükleme, bazı kullanıcı arayüzü bileşenleri için ekrandaki metinler de dahil olmak üzere uygulamanın düzen bileşenlerini günlüğe kaydeder
+  <string name="morphe_debug_litho_user_dialog_message">"Bazı kullanıcı arayüzü bileşenleri için ekrandaki metinler de dahil olmak üzere uygulamanın düzen bileşenlerini günlüğe kaydeder.
 
-Bu, özel filtreler oluştururken bileşenleri tanımlamaya yardımcı olabilir
+Bu, özel filtreler oluştururken bileşenlerin tanımlanmasına yardımcı olabilir.
 
-Ancak, bu işlem IP adresiniz gibi bazı kullanıcı verilerini de günlüğe kaydedecektir"</string>
+Ancak bu işlem, IP adresiniz gibi bazı kullanıcı verilerini de günlüğe kaydedecektir"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Özel filtre</string>
   <string name="morphe_custom_filter_screen_summary">Herhangi bir bileşeni gizlemek için özel filtreleri yapılandırın</string>
@@ -379,4 +380,8 @@ Daha sonra bu özellik kapatılırsa, arayüz hatalarını önlemek için uygula
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Hiçbir istemci hız sınırıyla karşılaşılmadı</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">İstemci hız sınırı %s kez aşıldı</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisaniye</string>
+  <string name="morphe_navigation_bar_screen_title">Gezinme çubuğu</string>
+  <string name="morphe_navigation_bar_screen_summary">Alt gezinti çubuğunda hangi düğmelerin görüneceğini seçin</string>
+  <string name="morphe_toolbar_screen_title">Araç çubuğu</string>
+  <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
 </resources>

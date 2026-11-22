@@ -87,7 +87,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">وەرگێڕانەکان</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">نوێترین وەشانە</string>
   <string name="morphe_settings_about_contributors">بەشداربووان</string>
-  <string name="morphe_settings_about_contributors_period">١٢ مانگی ڕابردوو</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">هەموو کاتەکان</string>
+  <string name="morphe_settings_about_contributors_6_months">٦ مانگ</string>
+  <string name="morphe_settings_about_contributors_3_months">٣ مانگ</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">ماوەی کات</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s بەکارهێنەر</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">پشتگیران</string>
   <string name="morphe_settings_about_supporters_summary">پشتیوانان لە Open Collective</string>
@@ -222,6 +229,9 @@ Second \"item\" text"</string>
  • ڕەنگە ئەپەکە بە شێوەیەکی هەڕەمەکی دابخرێت
  • لەوانەیە ئاگادارکردنەوەکان کار نەکەن
  • ڕەنگە پەخشکردنی پاشبنەما کار نەکات"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">کردنەوەی شیتی بەشکردنی سیستەم</string>
+  <string name="morphe_open_system_share_sheet_summary">Opens the system share sheet instead of the in-app one when sharing content</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">بەڕێوەبردنی لینکی ئەپ</string>
   <string name="morphe_link_handling_summary">ڕێکخستنی لینکەکان بۆ ئەوەی لەم ئەپڵیکەیشنەدا بکرێنەوە</string>

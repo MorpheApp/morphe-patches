@@ -61,7 +61,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">लायब्ररी सक्षम करा / तुम्ही तळाशी मेनू फिल्टर करा</string>
   <string name="morphe_hide_account_menu_filter_strings_title">लायब्ररी सक्षम करा / तुम्ही तळाशी मेनू फिल्टर करा</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">नवीन ओळींनी विभक्त केलेल्या फिल्टरसाठी लायब्ररी / तुम्ही तळाशी मेनू नावे प्रविष्ट करा</string>
+  <string name="morphe_hide_account_menu_badges_title">बॅजेस लपवा</string>
   <string name="morphe_hide_account_menu_downloads_title">डाउनलोड्स लपवा</string>
+  <string name="morphe_hide_account_menu_liked_videos_title">\'आवडलेले व्हिडिओ\' लपवा</string>
+  <string name="morphe_hide_account_menu_watch_later_title">\'नंतर पहा\' लपवा</string>
   <string name="morphe_hide_album_cards_title">अल्बम कार्ड्स लपवा</string>
   <string name="morphe_hide_album_cards_summary">कलाकाराच्या वर्णनाखालील अल्बम कार्ड लपवते</string>
   <string name="morphe_hide_artist_cards_title">कलाकार कार्ड्स लपवा</string>
@@ -122,8 +125,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_title">अपलोड वेळ लपवा</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"मर्यादा:
-• शॉर्ट्स शेल्फ, चॅनेल पृष्ठे आणि शोध परिणामांमध्ये अपलोडचे वेळ अजूनही दिसू शकतो.
-• हे ऑटोमोटिव्ह लेआउटमध्ये कार्य करत नाही."</string>
+• Shorts शेल्व्सवर कदाचित अपलोड वेळ दिसू शकते
+• ऑटोमोटिव्ह लेआउटसह कार्य करत नाही"</string>
   <string name="morphe_hide_video_thumbnail_title">व्हिडिओ थंबनेल लपवा</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">व्हिडिओ लेबल्स लपवा</string>
@@ -131,8 +134,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">व्ह्यू काउंट लपवा</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"मर्यादा:
-• शॉर्ट्स शेल्फ, चॅनेल पृष्ठे आणि शोध परिणामांमध्ये व्ह्यूची संख्या अजूनही दिसू शकते.
-• हे ऑटोमोटिव्ह लेआउटमध्ये कार्य करत नाही."</string>
+• Shorts शेल्व्सवर कदाचित व्ह्यू काउंट्स दिसू शकतात
+• ऑटोमोटिव्ह लेआउटसह कार्य करत नाही"</string>
   <string name="morphe_hide_web_search_results_title">वेब शोध परिणाम लपवा</string>
   <string name="morphe_hide_web_search_results_summary">शोध परिणामांमधून ‘वेबवरील परिणाम’ विभाग लपवा</string>
   <string name="morphe_hide_you_may_like_section_title">\'तुम्हाला आवडेल\' विभाग लपवा</string>
@@ -205,8 +208,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_posts_shelf_title">पोस्ट्स शेल्फ लपवा</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">स्टोअर बटण लपवा</string>
-  <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">सदस्यता बटण लपवा</string>
   <string name="morphe_explore_menu_screen_title">मेनू एक्सप्लोर करा</string>
   <string name="morphe_explore_menu_screen_summary">एक्सप्लोर मेनूमध्ये कोणते घटक दिसतील ते निवडा</string>
   <string name="morphe_hide_courses_menu_title">कोर्सेस मेनू लपवा</string>
@@ -281,7 +282,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_post_comment_button_title">कमेंट बटण लपवा</string>
   <string name="morphe_hide_post_comments_preview_title">कमेंट्स प्रिव्ह्यू लपवा</string>
   <string name="morphe_hide_post_comments_preview_summary">पोस्टच्या खालील कमेंट्सचा प्रिव्ह्यू लपवते</string>
-  <string name="morphe_hide_post_share_button_title">शेअर बटण लपवा</string>
   <string name="morphe_hide_post_share_button_summary">पोस्ट इमेजचे डाउनलोड बटण शेअर बटणाशेजारी असते, त्यामुळे ते देखील लपवले जाते</string>
   <string name="morphe_hide_ask_gemini_button_title">\'Gemini ला विचारा\' बटण लपवा</string>
   <string name="morphe_hide_ask_gemini_button_summary">\'या व्हिडिओबद्दल विचारा\' पॅनेलच्या तळाशी असलेले \'Gemini ला विचारा\' बटण लपवते</string>
@@ -290,14 +290,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary">ऑटोप्ले सुरू होण्यापूर्वी फुलस्क्रीनमध्ये आगामी व्हिडिओ पूर्वावलोकन लपवते</string>
   <string name="morphe_hide_channel_bar_title">चॅनेल बार लपवा</string>
   <string name="morphe_hide_channel_watermark_title">चॅनेल वॉटरमार्क लपवा</string>
-  <string name="morphe_hide_chapters_timeline_button_title">अध्याय आणि \'या व्हिडिओमध्ये\' बटण लपवा</string>
+  <string name="morphe_hide_chapters_button_title">Chapters बटण लपवा</string>
   <string name="morphe_hide_crowdfunding_box_title">क्राउडफंडिंग बॉक्स लपवा</string>
   <string name="morphe_hide_emergency_box_title">आणीबाणीचे बॉक्स लपवा</string>
+  <string name="morphe_hide_in_this_video_button_title">\'In this video\' बटण लपवा</string>
   <string name="morphe_hide_info_panels_title">माहिती पॅनेल लपवा</string>
   <string name="morphe_hide_info_panels_summary">वैद्यकीय माहितीसारखे माहितीपूर्ण संदर्भ पॅनेल लपवते</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">\'सदस्य व्हा\' बटण लपवा</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">\'लाइव्ह चॅट रीप्ले\' बटण लपवा</string>
@@ -313,8 +311,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_tap_and_hold_gradient_summary">वेग वाढवण्यासाठी होल्ड करून ठेवताना बोट सरकवल्यावर प्लेयर कंट्रोल ग्रेडियंट लपवला जातो</string>
   <string name="morphe_hide_timed_reactions_title">वेळेनुसार प्रतिक्रिया लपवा</string>
   <string name="morphe_hide_timed_reactions_summary">टिप्पणी विभागात आणि लाइव्ह चॅटमध्ये इमोजीसह प्रतिक्रिया देण्याची परवानगी देणारे वैशिष्ट्य लपवते</string>
-  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">\'मदत आणि अभिप्राय\' मेनू लपवा</string>
   <string name="morphe_hide_help_feedback_menu_summary">थ्री-डॉट बटण वापरताना, जसे की शोध निकालांवर, \'मदत आणि अभिप्राय\' मेनू लपवते</string>
   <string name="morphe_hide_handle_title">हँडल लपवा</string>
   <string name="morphe_hide_handle_summary">\'तुम्ही\' टॅबमध्ये तुमच्या चॅनेलचे हँडल लपवते</string>
@@ -357,7 +353,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">\'विचारा\'  बटण लपवा</string>
   <string name="morphe_hide_channel_profile_button_title">चॅनेल आणि Subscribe बटण लपवा</string>
   <string name="morphe_hide_channel_profile_button_summary">ॲक्शन बारच्या सुरुवातीला चॅनेल अवतार आणि Subscribe बटण लपवते</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Subscribe बटण लपवा</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">ॲक्शन बारच्या सुरुवातीला चॅनेल अवतारच्या शेजारील Subscribe आणि Join बटणे लपवते</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">\'क्लिप\' बटण लपवा</string>
@@ -433,9 +428,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Morphe कडून लपवलेली टिप्पणी...</string>
   <string name="morphe_minimal_comments_button_title">मिनिमल कमेंट्स बटण सक्षम करा</string>
   <string name="morphe_minimal_comments_button_summary">कमेंट्स बटणावर दिसणारे स्लाइडिंग कार्ड्स आणि त्याचा पेज सिलेक्टर लपवते</string>
-  <string name="morphe_hide_comments_thanks_button_title">धन्यवाद बटण लपवा</string>
   <string name="morphe_hide_comments_timestamp_button_title">टाइमस्टॅम्प बटण लपवा</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Top fans\' बटण लपवा</string>
+  <string name="morphe_hide_comments_topics_title">\'विषय\' लपवा</string>
+  <string name="morphe_hide_comments_topics_summary">\'विषय\' फिल्टर बार पर्याय आणि व्हिडिओच्या खालील \'विषय\' कमेंट प्रिव्ह्यू लपवते</string>
   <string name="morphe_hide_comments_translate_button_title">Translate बटण लपवा</string>
   <string name="morphe_hide_comments_zero_state_title">\'अद्याप कोणतीही टिप्पणी नाही\' संदेश लपवा</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">हायलाइट केलेल्या शोध दुव्यांचे शुद्धीकरण करा</string>
@@ -488,7 +484,6 @@ Second \"item\" text"</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">कॅपशन्स बटण लपवा</string>
   <string name="morphe_hide_cast_button_title">कास्ट बटण लपवा</string>
-  <string name="morphe_hide_cast_button_summary">व्हिडिओ प्लेयर आणि टूलबारमधील कास्ट बटण लपवते</string>
   <string name="morphe_hide_collapse_button_title">कोलॅप्स (Collapse) बटण लपवा</string>
   <string name="morphe_hide_fullscreen_button_title">फुलस्क्रीन बटण लपवा</string>
   <string name="morphe_hide_player_control_buttons_background_title">प्लेअर नियंत्रणांची पार्श्वभूमी लपवा</string>
@@ -607,6 +602,9 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">फीड व्हिडिओवर कोठेही दाबून धरल्यास त्याचे मेनू उघडते</string>
   <string name="morphe_feed_watch_later_button_title">थंबनेलवर \'नंतर पहा\' बटण दाखवा</string>
   <string name="morphe_feed_watch_later_button_summary">फीडमधील व्हिडिओंच्या थंबनॅल्सवर \'नंतर पहा\' बटण दाखवले जाते, आणि व्हिडिओ सेव्ह असल्यास तिथे चेक मार्क असतो. त्यावर टॅप केल्यावर व्हिडिओ सेव्ह होतो किंवा काढला जातो, आणि टॅप करून धरून ठेवल्यास \'प्लेलिस्टमध्ये सेव्ह करा\' हा पर्याय उघडतो</string>
+  <!-- interaction.postimages.openPostImagesFullscreenPatch -->
+  <string name="morphe_open_post_images_fullscreen_title">पोस्टमधील प्रतिमा फुलस्क्रीनमध्ये उघडा</string>
+  <string name="morphe_open_post_images_fullscreen_summary">पोस्टच्या प्रतिमेवर टॅप केल्यावर ती पोस्टच्या फीडऐवजी फुलस्क्रीनमध्ये उघडते</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">पोस्टची चित्रे डाउनलोड करा</string>
   <string name="morphe_post_image_download_summary">चित्रे किंवा GIFs असलेल्या पोस्टच्या शेअर बटणाजवळ डाउनलोड बटण दिसते आणि त्यांच्या मेनूमध्ये डाउनलोड पर्याय जोडला जातो</string>
@@ -887,7 +885,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">फ्लाईआउट मेनूमध्ये जाहिरात व्हाईटलिस्ट</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">एक फ्लाईआउट आयटम जोडते ज्यामुळे त्या व्हिडिओच्या चॅनेलवर जाहिराती प्ले होऊ शकतात</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">या वैशिष्ट्यासाठी PotHelper वापरणे किंवा \"Spoof video streams\" बदलून TV किंवा Android VR साइन-इन करणे आवश्यक असू शकते</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">या वैशिष्ट्यासाठी PotHelper वापरणे किंवा \'Spoof video streams\' बदलून \'TV\' किंवा \'Android VR\' साइन-इन करणे आवश्यक असू शकते</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">फ्लाईआउट मेनूमध्ये स्पीड व्हाईटलिस्ट</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">एक फ्लाईआउट आयटम जोडतो जो नेहमी त्या व्हिडिओच्या चॅनेलला 1.0x वेगाने प्ले करतो</string>
   <string name="morphe_queue_manager_check_failed_auth">लॉग इन केलेले नाही</string>
@@ -992,6 +990,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swipe_press_to_engage_title">प्रेस टू स्वाइप हावभाव सक्षम करा</string>
   <string name="morphe_swipe_press_to_engage_summary">स्वाइप जेश्चर ओळखण्यापूर्वी दाबून ठेवणे आवश्यक आहे</string>
   <string name="morphe_swipe_haptic_feedback_title">हॅप्टिक फीडबॅक सक्षम करा</string>
+  <string name="morphe_swipe_haptic_feedback_summary">स्वइप जेस्चर सुरू करण्यासाठी दाबून धरल्यावर व्हायब्रेट होते</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">ब्राइटनेस जतन करा आणि पुनर्संचयित करा</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">फुलस्क्रीन मोडमध्ये प्रवेश करताना / बाहेर पडताना ब्राइटनेस पातळी लक्षात ठेवते</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">ऑटो-ब्राइटनेस हावभाव सक्षम करा</string>
@@ -1035,6 +1034,39 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swipe_overlay_style_entry_7">उभ्या ओव्हरले (किमान)</string>
   <string name="morphe_swipe_change_video_title">व्हिडिओ बदलण्यासाठी स्वाइप सक्षम करा</string>
   <string name="morphe_swipe_change_video_summary">पुढील किंवा मागील व्हिडिओवर जाण्यासाठी फुलस्क्रीन मोडमध्ये स्वाइप करा</string>
+  <!-- interaction.holdgesture.holdGesturePatch -->
+  <string name="morphe_hold_gesture_screen_title">होल्ड जेस्चर</string>
+  <string name="morphe_hold_gesture_screen_summary">टॅप करून धरून ठेवल्यानंतर ड्रॅग करून प्लेबॅक स्पीड बदला आणि लॉक करा</string>
+  <string name="morphe_hold_gesture_title">होल्ड जेस्चर सक्षम करा</string>
+  <string name="morphe_hold_gesture_summary">व्हिडिओ टॅप करून धरून ठेवल्यानंतर ड्रॅग करता येईल. धरून ठेवल्यास मिळणारा वेग हा टॅप आणि होल्ड प्लेबॅक स्पीड असतो</string>
+  <string name="morphe_hold_gesture_press_to_swipe_summary">\'press to swipe\' चालू असताना वापरले जात नाही. बदलण्यासाठी टॅप करा</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_title">\'press to swipe\' चालू आहे</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_message">होल्ड जेस्चर आणि स्वाइप कंट्रोल्सचे \'press to swipe\' जेस्चर दोन्ही टॅप करून होल्ड करण्यापासून सुरू होतात, त्यामुळे त्यापैकी फक्त एकच चालू असू शकतो.</string>
+  <string name="morphe_hold_gesture_press_to_swipe_dialog_turn_off">\'press to swipe\' बंद करा</string>
+  <string name="morphe_hold_gesture_press_to_swipe_toast">\'press to swipe\' चालू असताना होल्ड जेस्चर वापरले जात नाही</string>
+  <string name="morphe_hold_gesture_dialog_title">होल्ड जेस्चर चालू आहे</string>
+  <string name="morphe_hold_gesture_dialog_turn_off">होल्ड जेस्चर बंद करा</string>
+  <string name="morphe_hold_gesture_haptic_feedback_title">हॅप्टिक फीडबॅक सक्षम करा</string>
+  <string name="morphe_hold_gesture_haptic_feedback_summary">जेव्हा वेग बदलतो आणि जेव्हा वेग लॉक होतो तेव्हा व्हायब्रेट होते</string>
+  <string name="morphe_hold_gesture_speed_swipe_title">वेग बदलण्यासाठी बाजूला ड्रॅग करा</string>
+  <string name="morphe_hold_gesture_speed_swipe_summary">टॅप करून धरल्यानंतर, हळू प्ले करण्यासाठी डावीकडे आणि वेगाने प्ले करण्यासाठी उजवीकडे ड्रॅग करा. बोट परत येईपर्यंत वेग बदलत राहतो</string>
+  <string name="morphe_hold_gesture_speed_step_title">स्पीड स्टेप</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_title">ड्रॅग संवेदनशीलता</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_1">कमी</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_2">सामान्य</string>
+  <string name="morphe_hold_gesture_speed_sensitivity_entry_3">उच्च</string>
+  <string name="morphe_hold_gesture_speed_min_title">सर्वात कमी वेग</string>
+  <string name="morphe_hold_gesture_speed_min_summary">ड्रॅगद्वारे गाठता येणारा सर्वात कमी वेग</string>
+  <string name="morphe_hold_gesture_speed_max_title">सर्वात जास्त वेग</string>
+  <string name="morphe_hold_gesture_speed_max_summary">ड्रॅगद्वारे गाठता येणारा सर्वात जास्त वेग (८ पर्यंत)</string>
+  <string name="morphe_hold_gesture_lock_title">वेग लॉक करण्यासाठी खाली ड्रॅग करा</string>
+  <string name="morphe_hold_gesture_lock_summary">टॅप करून धरल्यानंतर, बोट उचलल्यावरही वेग कायम ठेवण्यासाठी खाली ड्रॅग करा. अनलॉक करण्यासाठी बॅजवर टॅप करा किंवा पुन्हा टॅप करून धरा</string>
+  <string name="morphe_hold_gesture_lock_badge_always_title">लॉक बॅज नेहमी दाखवा</string>
+  <string name="morphe_hold_gesture_lock_badge_always_summary">प्लेयर कंट्रोल्स लपलेले असतानाही लॉक केलेल्या वेगाचा बॅज दिसत राहतो</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_title">व्हिडिओ बदलल्यावर अनलॉक करा</string>
+  <string name="morphe_hold_gesture_unlock_on_video_change_summary">दुसरा व्हिडिओ सुरू झाल्यावर लॉक केलेला वेग संपतो</string>
+  <string name="morphe_hold_gesture_lock_hint">लॉक करण्यासाठी खाली ओढा</string>
+  <string name="morphe_hold_gesture_lock_release">%s लॉक करण्यासाठी सोडा</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">कॅप्शन्स</string>
   <string name="morphe_captions_screen_summary">स्वयंचलित कॅप्शन आणि कॅप्शन कुकीज व्यवस्थापित करा</string>
@@ -1083,8 +1115,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_caption_block_translation_failed">काही कॅप्शन भाषांतरे उपलब्ध नाहीत. उपलब्ध कॅप्शन्स दाखवत आहे.</string>
   <string name="morphe_caption_blocks_too_large">कॅप्शनच्या दोन्ही भाषा या प्लेयरमध्ये बसत नाहीत. प्राथमिक भाषा दाखवत आहे.</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
-  <string name="morphe_navigation_bar_screen_title">नेव्हिगेशन बार</string>
-  <string name="morphe_navigation_bar_screen_summary">तळाच्या नेव्हिगेशन बारमध्ये कोणते घटक दिसतात ते निवडा</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">\'होम\' बटण लपवा</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1102,11 +1132,11 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_watch_later_navigation_label">नंतर पहा</string>
   <string name="morphe_show_settings_button_title">\'सेटिंग्ज\' बटण दर्शवा</string>
   <string name="morphe_show_settings_button_type_title">सेटिंग्स बटण क्रिया</string>
-  <string name="morphe_show_settings_button_type_summary">सक्षम केल्यावर मोर्फ सेटिंग्ज उघडते, अक्षम केल्यावर YouTube सेटिंग्ज उघडते</string>
+  <string name="morphe_show_settings_button_type_summary">सक्षम केल्यावर मोर्फ सेटिंग्ज उघडते आणि धरल्यास YouTube सेटिंग्ज उघडते, बदलण्यासाठी अक्षम करा</string>
   <string name="morphe_navigation_buttons_order_title">नेव्हिगेशन बटणांचा क्रम</string>
   <string name="morphe_navigation_buttons_order_summary">नेव्हिगेशन बारमधील बटणांचा क्रम बदलण्यासाठी ती ड्रॅग करा</string>
   <string name="morphe_swap_create_with_notifications_button_title">क्रिएट (Create) बटण आणि नोटिफिकेशन (Notifications) बटण बदला</string>
-  <string name="morphe_swap_create_with_notifications_button_summary">जर ही सेटिंग बदलल्याचा परिणाम झाला नाही, तर इन्कॉग्निटो मोड वापरून पहा.</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Notifications बटण नेव्हिगेशन बारमध्ये आणि Create बटण टूलबारमध्ये हलवते. जर बदल लागू झाले नाहीत, तर Incognito मोडवर स्विच करण्याचा प्रयत्न करा</string>
   <string name="morphe_hide_navigation_button_labels_title">नेव्हिगेशन बटण लेबल्स लपवा</string>
   <string name="morphe_hide_navigation_new_content_dot_title">नवीन सामग्रीचा डॉट लपवा</string>
   <string name="morphe_hide_navigation_bar_title">नेव्हिगेशन बार लपवा</string>
@@ -1135,18 +1165,31 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_navigation_bar_glass_opacity_summary">ग्लास नेव्हिगेशन बारची पारदर्शकता पातळी समायोजित करा (० पारदर्शक आहे, १०० अपॅक आहे)</string>
   <string name="morphe_navigation_bar_glass_round_title">राउंड ग्लास नेव्हिगेशन बार</string>
   <string name="morphe_navigation_bar_glass_round_summary">ग्लास मिनीप्लेयरप्रमाणे कोपऱ्यांऐवजी, ग्लास नेव्हिगेशन बारला गोलाकार टोके देते</string>
+  <string name="morphe_navigation_bar_glass_edge_title">ग्लास नेव्हिगेशन बार एज</string>
+  <string name="morphe_navigation_bar_glass_edge_summary">ग्लास नेव्हिगेशन बारभोवती प्रकाश देणारी कडा तयार करते</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_title">ग्लास नेव्हिगेशन बार खालचा मार्जिन</string>
+  <string name="morphe_navigation_bar_glass_bottom_margin_summary">ग्लास नेव्हिगेशन बार आणि स्क्रीनच्या तळाकडील भाग किंवा सिस्टम नेव्हिगेशनमधील जागा समायोजित करा</string>
   <string name="morphe_navigation_bar_glass_size_title">ग्लास नेव्हिगेशन बारचा आकार</string>
   <string name="morphe_navigation_bar_glass_size_summary">प्रिव्ह्यूसह ग्लास नेव्हिगेशन बारची उंची, रुंदी आणि बटण स्पेसिंग समायोजित करा. स्क्रीनच्या रुंदीत न बसणारी बटणे लपवली जातात</string>
+  <string name="morphe_glass_menus_screen_title">ग्लास मेनूज</string>
+  <string name="morphe_glass_menus_screen_summary">मागच्या अस्पष्ट मजकुरावर फ्रॉस्टेड ग्लासप्रमाणे दिसणारे मेनूज</string>
+  <string name="morphe_glass_menus_title">ग्लास मेनूज सक्षम करा</string>
+  <string name="morphe_glass_menus_summary">मेनू आणि बॉटम शीट्स फ्रॉस्टेड ग्लासप्रमाणे दिसतात, ज्यामुळे त्यांच्या मागचा मजकूर अस्पष्ट दिसतो</string>
+  <string name="morphe_glass_menus_user_dialog_message">बॅटरी सेव्हर चालू असताना किंवा डिव्हाइस ब्लरला सपोर्ट करत नसल्यास, मेनू जवळजवळ अपारदर्शक दिसतात</string>
+  <string name="morphe_glass_menus_opacity_title">ग्लास ओपॅसिटी</string>
+  <string name="morphe_glass_menus_opacity_summary">मेनू धूसर मजकुराला किती प्रमाणात व्यापतो (० म्हणजे पारदर्शक, १०० म्हणजे अपारदर्शक)</string>
+  <string name="morphe_glass_menus_blur_title">ब्लर</string>
+  <string name="morphe_glass_menus_blur_summary">मेनूच्या मागचा मजकूर किती प्रमाणात धूसर आहे</string>
+  <string name="morphe_glass_menus_dim_title">डिम</string>
+  <string name="morphe_glass_menus_dim_summary">बॉटम शीटच्या आसपासची स्क्रीन किती प्रमाणात गडद आहे</string>
   <string name="morphe_navigation_bar_glass_size_height">उंची</string>
   <string name="morphe_navigation_bar_glass_size_width">कमाल रुंदी</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">बटण स्पेसिंग</string>
   <string name="morphe_navigation_bar_glass_size_buttons_shown">दाखवलेली बटणे: %2$s पैकी %1$s</string>
-  <string name="morphe_toolbar_screen_title">टूलबार</string>
-  <string name="morphe_toolbar_screen_summary">टूलबारमध्ये कोणते घटक दिसतात ते निवडा</string>
   <string name="morphe_hide_toolbar_chat_button_title">\'चॅट\' बटण लपवा</string>
+  <string name="morphe_hide_toolbar_companion_button_title">कॉम्पॅनियन बटण लपवा</string>
   <string name="morphe_hide_toolbar_microphone_button_title">मायक्रोफोन बटण लपवा</string>
   <string name="morphe_hide_toolbar_search_button_title">शोध बटण लपवा</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary">सक्षम केल्यावर मोर्फ सेटिंग्ज उघडते आणि धरल्यास YouTube सेटिंग्ज उघडते, बदलण्यासाठी अक्षम करा</string>
   <string name="morphe_toolbar_buttons_order_title">टूलबार बटणांचा क्रम</string>
   <string name="morphe_toolbar_buttons_order_summary">टूलबारमधील बटणांचा क्रम बदलण्यासाठी ती ड्रॅग करा</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1177,43 +1220,28 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_disable_shorts_double_tap_to_like_title">डबल-टॅप करून लाईक करणे अक्षम करा</string>
   <string name="morphe_hide_shorts_ai_button_title">कृत्रिम बुद्धिमत्तेचे बटण लपवा</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">\'ऑटो-डब\' लेबल लपवा</string>
-  <string name="morphe_hide_shorts_channel_bar_title">चॅनेल बार लपवा</string>
-  <string name="morphe_hide_shorts_comments_button_title">टिप्पणी बटण लपवा</string>
   <string name="morphe_hide_shorts_effect_button_title">इफेक्ट बटण</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">व्हिडिओ लिंक लेबल लपवा</string>
   <string name="morphe_hide_shorts_gesture_hints_title">जेस्चर हिंट्स लपवा</string>
   <string name="morphe_hide_shorts_green_screen_button_title">\'ग्रीन स्क्रीन\' बटन लपवा</string>
   <string name="morphe_hide_shorts_hashtag_button_title">हॅशटॅग बटण</string>
   <string name="morphe_hide_shorts_info_panel_title">माहिती पॅनेल लपवा</string>
-  <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_join_button_title">\'जॉइन\' बटण लपवा</string>
   <string name="morphe_hide_shorts_like_button_title">लाईक बटण लपवा</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">लाईक बटण फाउंटेन ॲनिमेशन लपवा</string>
   <string name="morphe_hide_shorts_live_preview_title">लाइव्ह प्रीव्ह्यू लपवा</string>
   <string name="morphe_hide_shorts_location_label_title">ठिकाणाचे लेबल लपवा</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">नेव्हिगेशन बार लपवा</string>
   <string name="morphe_hide_shorts_new_posts_button_title">\'नवीन पोस्ट\' बटन लपवा</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">पॉज ओव्हरले बटणे लपवा</string>
-  <string name="morphe_hide_shorts_preview_comment_title">Preview comment लपवा</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">रिमिक्स बटण लपवा</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">\'जतन करा\'  बटण लपवा</string>
   <string name="morphe_hide_shorts_save_sound_button_title">\'म्युझिक सेव्ह\' बटन लपवा</string>
   <string name="morphe_hide_shorts_search_suggestions_title">सर्च सूचना लपवा</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">शेअर बटण लपवा</string>
-  <string name="morphe_hide_shorts_shop_button_title">शॉप बटण लपवा</string>
   <string name="morphe_hide_shorts_sound_button_title">ध्वनी बटण लपवा</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">ध्वनी मेटाडेटा लेबल लपवा</string>
-  <string name="morphe_hide_shorts_subscribe_button_title">सबस्क्राईब बटण लपवा</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">\'सुपर थँक्स\' बटन लपवा</string>
   <string name="morphe_hide_shorts_tagged_products_title">टॅग केलेले प्रोडक्ट लपवा</string>
   <string name="morphe_hide_shorts_upcoming_button_title">येणारी पोस्ट्सचे बटण लपवा</string>
   <string name="morphe_hide_shorts_use_sound_button_title">\'हे साउंड वापरा\' बटन लपवा</string>
   <string name="morphe_hide_shorts_use_template_button_title">\'हे टेम्पलेट वापरा\' बटन लपवा</string>
-  <string name="morphe_hide_shorts_video_title_title">व्हिडिओ शीर्षक लपवा</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">एंड स्क्रीन सुचवलेला व्हिडिओ लपवा</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"व्हिडिओ संपल्यानंतर दिसणारे सूचना देणारे व्हिडिओ ओव्हरले लपवते.
@@ -1381,6 +1409,9 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">ऑटो फीड रिफ्रेश अक्षम करा</string>
   <string name="morphe_disable_auto_feed_refresh_summary">फीड्स जुने झाल्यावर ते आपोआप रिफ्रेश होण्यापासून रोखते</string>
+  <!-- layout.notifications.ungroupNotificationsPatch -->
+  <string name="morphe_ungroup_notifications_title">सूचना अनग्रुप करा</string>
+  <string name="morphe_ungroup_notifications_summary">चॅनेलच्या ग्रुप केलेल्या अपलोड्समधील प्रत्येक व्हिडिओ स्वतंत्र सूचना म्हणून दाखवा</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <string name="morphe_feed_card_layout_title">फीड कार्ड लेआउट</string>
   <string name="morphe_feed_card_layout_entry_1">क्लासिक</string>
@@ -1493,6 +1524,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_dearrow_titles_search_title">शोध परिणाम</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow आयकॉन दाखवा</string>
   <string name="morphe_dearrow_titles_icon_summary">क्राउडसोर्स केलेले शीर्षक किंवा थंबनेल असलेल्या व्हिडिओंच्या शीर्षकांवर DeArrow आयकॉन दाखवतो. मूळ शीर्षक आणि थंबनेल पाहण्यासाठी आयकॉनवर टॅप करा</string>
+  <string name="morphe_dearrow_clean_up_titles_title">शीर्षक स्वच्छ करा</string>
+  <string name="morphe_dearrow_clean_up_titles_summary">DeArrow शीर्षक नसलेल्या व्हिडिओंची शीर्षके स्वच्छ करा. कॅपिटल्समधील शब्द सामान्य केसमध्ये बदलले जातात आणि इमोजी, फॅन्सी मजकूर आणि वारंवार येणारे उद्गारचिन्ह काढून टाकले जातात</string>
   <string name="morphe_dearrow_casual_mode_title">कॅज्युअल मोड</string>
   <string name="morphe_dearrow_casual_mode_summary">जर DeArrow वापरकर्त्यांनी मूळ शीर्षक आवडल्याचे मत दिले असेल, तर DeArrow शीर्षकाऐवजी मूळ शीर्षक दाखवते</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">मूळ शीर्षक दाखवण्यासाठी किमान कॅज्युअल मते</string>
@@ -1713,13 +1746,9 @@ AVC (H.264)
   <string name="morphe_advanced_video_quality_menu_summary">गुणवत्ता निवड मेनू वगळून थेट \"Advanced\" गुणवत्ता मेनू उघडतो</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">प्रीमियम गुणवत्ता पर्याय लपवा</string>
-  <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_video_quality_prioritize_title">व्हिडिओ गुणवत्तेला प्राधान्य द्या</string>
-  <string name="morphe_video_quality_prioritize_summary">कोडेक कार्यक्षमतेपेक्षा उच्च प्रतीची व्हिडिओ गुणवत्ता दर्शवते.</string>
-  <string name="morphe_video_quality_prioritize_dialog">हे सेटिंग बंद केल्यास, जुन्या व्हिडिओमध्ये व्हिडिओ गुणवत्तेचे पर्याय दिसणार नाहीत.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1 ला परवानगी द्या</string>
-  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS क्लायंट वापरताना सॉफ्टवेअर AV1 डीकोडिंगची परवानगी देते.</string>
+  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1 ला परवानगी द्या</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' क्लायंट वापरत असताना सॉफ्टवेअर AV1 डिकोडिंगला परवानगी देते</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"ही सेटिंग सक्षम केल्यामुळे सॉफ्टवेअर AV1 डिकोडिंग वापरले जाऊ शकते.
 
 AV1 सह व्हिडिओ प्लेबॅक अडखळू शकतो किंवा फ्रेम्स ड्रॉप होऊ शकतात"</string>
@@ -1956,7 +1985,6 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_live_chat_translate_language_title">भाषांतराची भाषा</string>
   <string name="morphe_live_chat_translate_exclude_title">वगळलेल्या भाषा</string>
   <string name="morphe_live_chat_translate_exclude_summary">स्वल्पविरामाने वेगळे केलेले भाषा कोड जसे की id,en. या भाषांमधील संदेशांचे भाषांतर केले जात नाही</string>
-  <string name="morphe_live_chat_translate_provider_title">अनुवाद प्रदाता</string>
   <string name="morphe_live_chat_translate_provider_google">गुगल ट्रान्सलेट</string>
   <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
   <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API की</string>

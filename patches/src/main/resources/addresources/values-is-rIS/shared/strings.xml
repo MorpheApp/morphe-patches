@@ -87,7 +87,14 @@ Til að þýða ný tungumál eða bæta núverandi þýðingar skaltu heimsækj
   <string name="morphe_settings_about_links_translations">Þýðingar</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Uppfært</string>
   <string name="morphe_settings_about_contributors">Framlagarar</string>
-  <string name="morphe_settings_about_contributors_period">Síðustu 12 mánuðir</string>
+  <!-- Periods the contributors are listed for, picked from a menu in the header -->
+  <string name="morphe_settings_about_contributors_all_time">Allt tímabil</string>
+  <string name="morphe_settings_about_contributors_6_months">6 mánuðir</string>
+  <string name="morphe_settings_about_contributors_3_months">3 mánuðir</string>
+  <!-- Spoken name of the button in the header that opens the menu of periods -->
+  <string name="morphe_settings_about_contributors_period_menu">Tímabil</string>
+  <!-- Under the title of the contributors, how many are listed for the period picked. %s is the number -->
+  <string name="morphe_settings_about_contributors_count">%s notendur</string>
   <!-- People who donate to Morphe -->
   <string name="morphe_settings_about_supporters">Stuðningsmenn</string>
   <string name="morphe_settings_about_supporters_summary">Stuðningsmenn á Open Collective</string>
@@ -222,6 +229,9 @@ Sé rafhlöðusparnaður ekki breyttur gætir þú lent í:
 • Appið lokast óvænt
 • Tilkynningar virka ekki
 • Spilun í bakgrunni virkar ekki"</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Opna deilingarvalmynd kerfisins</string>
+  <string name="morphe_open_system_share_sheet_summary">Opnar deilingarvalmynd kerfisins í stað innbyggðrar þegar efni er deilt</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Meðhöndlun app-tengla</string>
   <string name="morphe_link_handling_summary">Stilltu tengla til að opna í þessu appi</string>
