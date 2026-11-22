@@ -11,7 +11,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patches.reddit.misc.flag.featureFlagHookPatch
 import app.morphe.patches.reddit.misc.flag.hookFeatureFlag
 import app.morphe.patches.reddit.misc.settings.settingsPatch
-import app.morphe.patches.reddit.misc.version.is_2026_40_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -24,7 +24,7 @@ private const val EXTENSION_CLASS =
 val fullScreenReplyPatch = patch(
     name = "Full-screen reply",
     description = "Adds an option to write replies in the older full-screen editor, which shows the comment you are replying to. " +
-        "This patch works with Reddit 2026.40.0 and newer."
+        "This patch works with Reddit 2026.24.0 and newer."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
@@ -35,9 +35,9 @@ val fullScreenReplyPatch = patch(
     )
 
     execute {
-        if (!is_2026_40_0_or_greater) {
+        if (!is_2026_24_0_or_greater) {
             return@execute Logger.getLogger(this::class.java.name).warning(
-                "'Full-screen reply' does not work with Reddit 2026.39.0 and earlier"
+                "'Full-screen reply' does not work with Reddit 2026.23.0 and earlier"
             )
         }
 

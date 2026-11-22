@@ -13,6 +13,11 @@ import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class FullScreenReplyPatch {
+    /**
+     * When this experiment is off, replies open in the older full-screen editor.
+     * The experiment "android_modern_comment_composer_m2" only changes details of the
+     * modern composer, so it is left as is.
+     */
     private static final String MODERN_COMMENT_COMPOSER_EXPERIMENT = "android_modern_comment_composer";
 
     /**
@@ -23,25 +28,21 @@ public final class FullScreenReplyPatch {
         return false;  // Modified during patching.
     }
 
-    private static boolean isContextNotYetSet() {
-        // Possible fix for background crash of app when context is not yet set.
-        if (!Utils.isContextSet()) {
-            Logger.printInfo(() -> "Cannot use full screen reply, context is null");
-            return true;
-        }
-        return false;
-    }
-
     /**
      * Injection point.
      */
     public static boolean useFullScreenReply(String experimentName, boolean original) {
-        // Possible fix for background crash of app when context is not yet set.
-        if (isContextNotYetSet()) {
+        if (!MODERN_COMMENT_COMPOSER_EXPERIMENT.equals(experimentName)) {
             return original;
         }
-        if (Settings.FULL_SCREEN_REPLY.get()
-                && MODERN_COMMENT_COMPOSER_EXPERIMENT.equals(experimentName)) {
+
+        // The flag can be read before the main activity has launched.
+        if (!Utils.isContextSet()) {
+            Logger.printInfo(() -> "Cannot use full-screen reply, context is not set");
+            return original;
+        }
+
+        if (Settings.FULL_SCREEN_REPLY.get()) {
             return false;
         }
 
