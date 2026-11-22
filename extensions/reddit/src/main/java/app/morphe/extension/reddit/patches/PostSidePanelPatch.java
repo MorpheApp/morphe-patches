@@ -7,12 +7,21 @@
 
 package app.morphe.extension.reddit.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
+
+import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Outline;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
 import android.os.Build;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.FrameLayout;
 
 import com.reddit.screen.dialog.ModalBackdropView;
 
@@ -23,6 +32,7 @@ import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("unused")
@@ -67,6 +77,41 @@ public final class PostSidePanelPatch {
      * Width of the navigation rail next to the feed.
      */
     private static final int NAVIGATION_RAIL_WIDTH_DP = 96;
+
+    /**
+     * Minimum width of the post panel.
+     */
+    private static final int MIN_PANEL_WIDTH_DP = 320;
+
+    /**
+     * Minimum feed width left visible next to the panel.
+     */
+    private static final int MIN_FEED_WIDTH_DP = 240;
+
+    /**
+     * Width of the touch area of the resize handle.
+     */
+    private static final int HANDLE_WIDTH_DP = 24;
+
+    /**
+     * Height of the touch area of the resize handle.
+     */
+    private static final int HANDLE_HEIGHT_DP = 96;
+
+    /**
+     * Horizontal inset of the visible handle pill within its touch area.
+     */
+    private static final int HANDLE_INSET_HORIZONTAL_DP = 10;
+
+    /**
+     * Vertical inset of the visible handle pill within its touch area.
+     */
+    private static final int HANDLE_INSET_VERTICAL_DP = 28;
+
+    /**
+     * Opacity of the visible handle pill.
+     */
+    private static final float HANDLE_ALPHA = 0.45f;
 
     private static final long SLIDE_IN_DURATION_MS = 250;
 
@@ -141,10 +186,14 @@ public final class PostSidePanelPatch {
             backdrop.setBackdropAlpha(Settings.POST_SIDE_PANEL_DIM.get().alpha);
             removeSystemBarPadding(backdrop);
 
+            float[] draggedFraction = {
+                    Settings.POST_SIDE_PANEL_REMEMBER_WIDTH.get() ? getDraggedWidthSetting().get() : 0f
+            };
+
             // The post screen keeps some sizes from its first layout, such as the media height.
             // Use the window width from the configuration, so the first layout is already a panel.
             final int windowWidth = Dim.dp(backdrop.getResources().getConfiguration().screenWidthDp);
-            final int startMargin = getPanelStartMargin(windowWidth);
+            final int startMargin = getPanelStartMargin(windowWidth, draggedFraction[0]);
 
             ViewGroup panel = backdrop.findViewById(MODAL_CONTAINER_ID);
             ViewGroup.MarginLayoutParams panelParams = (ViewGroup.MarginLayoutParams) panel.getLayoutParams();
@@ -177,6 +226,9 @@ public final class PostSidePanelPatch {
             contentParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
             content.setLayoutParams(contentParams);
 
+            View handle = addResizeHandle(panel, backdrop, panelParams, draggedFraction);
+            handle.setVisibility(startMargin > 0 ? View.VISIBLE : View.GONE);
+
             if (startMargin > 0) {
                 // The animation starts when the view is attached.
                 final int panelWidth = windowWidth - startMargin;
@@ -191,7 +243,7 @@ public final class PostSidePanelPatch {
             // Window size changes, such as rotating the device.
             backdrop.addOnLayoutChangeListener((view, left, top, right, bottom,
                                                 oldLeft, oldTop, oldRight, oldBottom) -> {
-                final int newStartMargin = getPanelStartMargin(right - left);
+                final int newStartMargin = getPanelStartMargin(right - left, draggedFraction[0]);
                 if (newStartMargin == panelParams.getMarginStart()) {
                     return;
                 }
@@ -201,11 +253,118 @@ public final class PostSidePanelPatch {
                     panelParams.setMarginStart(newStartMargin);
                     panel.setLayoutParams(panelParams);
                     panel.setClipToOutline(newStartMargin > 0);
+                    handle.setVisibility(newStartMargin > 0 ? View.VISIBLE : View.GONE);
                 });
             });
         } catch (Exception ex) {
             Logger.printException(() -> "onScreenViewCreated failure", ex);
         }
+    }
+
+    private static View addResizeHandle(ViewGroup panel, ModalBackdropView backdrop,
+                                        ViewGroup.MarginLayoutParams panelParams,
+                                        float[] draggedFraction) {
+        Context context = backdrop.getContext();
+        View handle = new View(context);
+        FrameLayout.LayoutParams handleParams = new FrameLayout.LayoutParams(
+                Dim.dp(HANDLE_WIDTH_DP), Dim.dp(HANDLE_HEIGHT_DP),
+                Gravity.START | Gravity.CENTER_VERTICAL);
+        handle.setLayoutParams(handleParams);
+
+        GradientDrawable pill = new GradientDrawable();
+        pill.setShape(GradientDrawable.RECTANGLE);
+        pill.setCornerRadius(Dim.dp2);
+        final int baseColor = Utils.isDarkModeEnabled() ? Color.WHITE : Color.BLACK;
+        final int pillColor = Color.argb(
+                Math.round(HANDLE_ALPHA * 255),
+                Color.red(baseColor),
+                Color.green(baseColor),
+                Color.blue(baseColor));
+        pill.setColor(pillColor);
+
+        final int insetH = Dim.dp(HANDLE_INSET_HORIZONTAL_DP);
+        final int insetV = Dim.dp(HANDLE_INSET_VERTICAL_DP);
+        InsetDrawable background = new InsetDrawable(pill, insetH, insetV, insetH, insetV);
+        handle.setBackground(background);
+
+        handle.setContentDescription(str("morphe_post_side_panel_resize_handle"));
+        handle.setElevation(Dim.dp4);
+
+        float[] downRawX = new float[1];
+        int[] downWidth = new int[1];
+
+        handle.setOnTouchListener((v, event) -> {
+            try {
+                if (backdrop.getWidth() <= 0) {
+                    return false;
+                }
+
+                final int action = event.getActionMasked();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN: {
+                        if (v.getParent() != null) {
+                            v.getParent().requestDisallowInterceptTouchEvent(true);
+                        }
+                        downRawX[0] = event.getRawX();
+                        downWidth[0] = backdrop.getWidth() - panelParams.getMarginStart();
+                        return true;
+                    }
+                    case MotionEvent.ACTION_MOVE: {
+                        final float rawX = event.getRawX();
+                        final float dx = rawX - downRawX[0];
+                        final int width = (int) (downWidth[0] + (Utils.isRightToLeftLocale() ? dx : -dx));
+                        final int newWidth = clampPanelWidth(backdrop.getWidth(), width);
+                        final int feedWidth = backdrop.getWidth() - Dim.dp(NAVIGATION_RAIL_WIDTH_DP);
+                        if (feedWidth > 0) {
+                            draggedFraction[0] = newWidth / (float) feedWidth;
+                        }
+                        panelParams.setMarginStart(backdrop.getWidth() - newWidth);
+                        panel.setLayoutParams(panelParams);
+                        panel.invalidateOutline();
+                        return true;
+                    }
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL: {
+                        if (v.getParent() != null) {
+                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                        }
+                        if (draggedFraction[0] > 0 && Settings.POST_SIDE_PANEL_REMEMBER_WIDTH.get()) {
+                            getDraggedWidthSetting().save(draggedFraction[0]);
+                        }
+                        return true;
+                    }
+                    default:
+                        return false;
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "onTouch failure", ex);
+                return false;
+            }
+        });
+
+        panel.addView(handle, handleParams);
+        handle.bringToFront();
+        return handle;
+    }
+
+    private static FloatSetting getDraggedWidthSetting() {
+        switch (Settings.POST_SIDE_PANEL_WIDTH.get()) {
+            case TWO_THIRDS:
+                return Settings.POST_SIDE_PANEL_DRAGGED_WIDTH_TWO_THIRDS;
+            case ONE_THIRD:
+            default:
+                return Settings.POST_SIDE_PANEL_DRAGGED_WIDTH_ONE_THIRD;
+        }
+    }
+
+    private static int clampPanelWidth(int windowWidth, int panelWidth) {
+        final int feedWidth = windowWidth - Dim.dp(NAVIGATION_RAIL_WIDTH_DP);
+        final int min = Dim.dp(MIN_PANEL_WIDTH_DP);
+        final int max = feedWidth - Dim.dp(MIN_FEED_WIDTH_DP);
+        if (max < min) {
+            return panelWidth;
+        }
+        return Math.max(min, Math.min(max, panelWidth));
     }
 
     /**
@@ -226,12 +385,14 @@ public final class PostSidePanelPatch {
     /**
      * @return Start margin of the panel, or 0 to fill a window that is too narrow for a panel.
      */
-    private static int getPanelStartMargin(int windowWidth) {
+    private static int getPanelStartMargin(int windowWidth, float draggedFraction) {
         if (windowWidth < Dim.dp(MIN_WINDOW_WIDTH_DP)) {
             return 0;
         }
 
         final int feedWidth = windowWidth - Dim.dp(NAVIGATION_RAIL_WIDTH_DP);
-        return windowWidth - (int) (feedWidth * Settings.POST_SIDE_PANEL_WIDTH.get().fraction);
+        final float fraction = draggedFraction > 0 ? draggedFraction : Settings.POST_SIDE_PANEL_WIDTH.get().fraction;
+        final int panelWidth = clampPanelWidth(windowWidth, (int) (feedWidth * fraction));
+        return windowWidth - panelWidth;
     }
 }

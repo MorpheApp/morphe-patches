@@ -291,6 +291,10 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.POST_SIDE_PANEL_WIDTH
             ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.POST_SIDE_PANEL_REMEMBER_WIDTH
+            ));
             addPreference(new CustomDialogListPreference(
                     context,
                     Settings.POST_SIDE_PANEL_DIM

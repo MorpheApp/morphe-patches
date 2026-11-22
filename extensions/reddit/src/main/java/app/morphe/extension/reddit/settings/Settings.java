@@ -94,6 +94,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting POST_SIDE_PANEL = new BooleanSetting("morphe_post_side_panel", TRUE);
     public static final EnumSetting<PanelWidth> POST_SIDE_PANEL_WIDTH =
             new EnumSetting<>("morphe_post_side_panel_width", PanelWidth.ONE_THIRD, parent(POST_SIDE_PANEL));
+    public static final BooleanSetting POST_SIDE_PANEL_REMEMBER_WIDTH =
+            new BooleanSetting("morphe_post_side_panel_remember_width", TRUE, parent(POST_SIDE_PANEL));
     public static final EnumSetting<FeedDim> POST_SIDE_PANEL_DIM =
             new EnumSetting<>("morphe_post_side_panel_dim", FeedDim.MEDIUM, parent(POST_SIDE_PANEL));
     public static final BooleanSetting REMEMBER_COLLAPSED_COMMENTS = new BooleanSetting("morphe_remember_collapsed_comments", TRUE);
@@ -123,6 +125,12 @@ public class Settings extends BaseSettings {
      * Highest app version that was ever launched. Used to detect an app downgrade.
      */
     public static final StringSetting HIGHEST_APP_VERSION = new StringSetting("morphe_highest_app_version", "", false, false);
+
+    /**
+     * Panel width dragged to, as a fraction of the feed width. 0 if never dragged.
+     */
+    public static final FloatSetting POST_SIDE_PANEL_DRAGGED_WIDTH_ONE_THIRD = new FloatSetting("morphe_post_side_panel_dragged_width_one_third", 0f, false, false);
+    public static final FloatSetting POST_SIDE_PANEL_DRAGGED_WIDTH_TWO_THIRDS = new FloatSetting("morphe_post_side_panel_dragged_width_two_thirds", 0f, false, false);
 
     private static final BooleanSetting DEPRECATED_HIDE_RECOMMENDED_COMMUNITIES_SHELF = new BooleanSetting("morphe_hide_recommended_communities_shelf", FALSE, true);
     private static final BooleanSetting DEPRECATED_HIDE_TRENDING_TODAY_SHELF = new BooleanSetting("morphe_hide_trending_today_shelf", FALSE, true);
