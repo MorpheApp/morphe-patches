@@ -12,21 +12,27 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.Nullable;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
+import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRoutes;
 
 /**
@@ -41,11 +47,17 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRoutes;
  */
 final class ChannelNameRequest {
 
-    private static final int MAX_CACHED_NAMES = 500;
+    private static final int MAX_CACHED_REQUESTS = 500;
 
     private static final int MAX_SAVED_NAMES = 2000;
 
     private static final long SAVED_NAME_MAX_AGE_MILLISECONDS = TimeUnit.DAYS.toMillis(7);
+
+    /**
+     * Time after which a name that failed to fetch, such as because of a network error,
+     * is fetched again the next time the handle is shown.
+     */
+    private static final long FAILED_REQUEST_RETRY_MILLISECONDS = TimeUnit.SECONDS.toMillis(30);
 
     private static final String PREFERENCES_NAME = "morphe_return_youtube_username";
 
@@ -62,13 +74,14 @@ final class ChannelNameRequest {
 
     /**
      * Handle -> channel name. A null name means the handle or the channel was not found,
-     * or the request failed.
+     * or the request failed and is removed after {@link #FAILED_REQUEST_RETRY_MILLISECONDS}.
      */
     private static final Map<String, CompletableFuture<String>> cache =
-            Collections.synchronizedMap(Utils.createSizeRestrictedMap(MAX_CACHED_NAMES, true));
+            Collections.synchronizedMap(Utils.createSizeRestrictedMap(MAX_CACHED_REQUESTS, true));
 
     /**
-     * Handle -> saved name that is not yet too old. Loaded once, off the main thread.
+     * Handle -> saved name that is not yet too old, and the names fetched since.
+     * Loaded once, off the main thread.
      */
     @Nullable
     private static CompletableFuture<Map<String, String>> savedNames;
@@ -104,17 +117,13 @@ final class ChannelNameRequest {
             CompletableFuture<Map<String, String>> saved = loadSavedNames();
 
             Map<String, String> loaded = saved.getNow(null);
-            if (loaded != null) {
-                String name = loaded.get(key);
-                if (name != null) {
-                    return CompletableFuture.completedFuture(name);
-                }
+            String savedName = loaded == null ? null : loaded.get(key);
+            if (savedName != null) {
+                return CompletableFuture.completedFuture(savedName);
             }
 
-            CompletableFuture<String> future = saved.thenApplyAsync(names -> {
-                String name = names.get(key);
-                return name != null ? name : fetchName(key);
-            }, Utils::runOnBackgroundThread);
+            CompletableFuture<String> future = saved.thenApplyAsync(
+                    names -> getSavedOrFetchName(names, key), Utils::runOnBackgroundThread);
             future.thenRun(LithoRelayoutPatch::relayoutOutdatedTexts);
             return future;
         });
@@ -137,7 +146,8 @@ final class ChannelNameRequest {
      *         are removed if there are too many.
      */
     private static Map<String, String> readSavedNames() {
-        Map<String, String> names = new HashMap<>();
+        // Names fetched later are added from the background threads.
+        Map<String, String> names = new ConcurrentHashMap<>();
         try {
             SharedPreferences preferences = getPreferences();
             final long now = System.currentTimeMillis();
@@ -148,7 +158,7 @@ final class ChannelNameRequest {
                 String handle = entry.getKey();
                 String value = entry.getValue() instanceof String text ? text : "";
                 final int separator = value.indexOf(SAVED_VALUE_SEPARATOR);
-                final long fetchTime = separator > 0 ? parseLong(value.substring(0, separator)) : 0;
+                final long fetchTime = separator > 0 ? parseFetchTime(value.substring(0, separator)) : 0;
                 if (now - fetchTime > SAVED_NAME_MAX_AGE_MILLISECONDS || fetchTime > now) {
                     removed.add(handle);
                     continue;
@@ -180,10 +190,14 @@ final class ChannelNameRequest {
         return names;
     }
 
-    private static long parseLong(String text) {
+    /**
+     * @return The time of a saved value, or 0 if it is not valid, so the value is removed.
+     */
+    private static long parseFetchTime(String text) {
         try {
             return Long.parseLong(text);
         } catch (NumberFormatException ex) {
+            Logger.printException(() -> "Invalid saved channel name time: " + text, ex);
             return 0;
         }
     }
@@ -194,25 +208,76 @@ final class ChannelNameRequest {
                 .apply();
     }
 
+    /**
+     * @param savedNames Saved names, to which the fetched name is added.
+     */
+    @Nullable
+    private static String getSavedOrFetchName(Map<String, String> savedNames, String handle) {
+        String name = savedNames.get(handle);
+        if (name != null) {
+            return name;
+        }
+
+        name = fetchName(handle);
+        if (name != null) {
+            // Found again if the request is removed from the cache.
+            savedNames.put(handle, name);
+            saveName(handle, name);
+        }
+        return name;
+    }
+
     @SuppressWarnings("deprecation")
     @Nullable
     private static String fetchName(String handle) {
-        final long startTime = System.currentTimeMillis();
+        try {
+            final long startTime = System.currentTimeMillis();
 
-        // The endpoint rejects some countries, such as CN, so the default country is used.
-        Locale locale = new Locale(Locale.getDefault().getLanguage());
+            // The endpoint rejects some countries, such as CN, so the default country is used.
+            Locale locale = new Locale(Locale.getDefault().getLanguage());
 
-        String channelId = optString(ChannelSearchRoutes.fetch(ChannelSearchRoutes.RESOLVE_CHANNEL_URL,
-                ChannelSearchRoutes.createUrlBody(CHANNEL_URL + handle, locale)), CHANNEL_ID_PATH, "browseId");
-        String name = channelId == null ? null : optString(ChannelSearchRoutes.fetch(ChannelSearchRoutes.GET_CHANNEL_NAME,
-                ChannelSearchRoutes.createChannelBody(channelId, locale)), CHANNEL_NAME_PATH, "title");
-        if (name != null) {
-            saveName(handle, name);
+            String channelId = optString(request(ChannelSearchRoutes.RESOLVE_CHANNEL_URL,
+                    ChannelSearchRoutes.createUrlBody(CHANNEL_URL + handle, locale)), CHANNEL_ID_PATH, "browseId");
+            String name = channelId == null ? null : optString(request(ChannelSearchRoutes.GET_CHANNEL_NAME,
+                    ChannelSearchRoutes.createChannelBody(channelId, locale)), CHANNEL_NAME_PATH, "title");
+
+            Logger.printDebug(() -> "Fetched channel name of " + handle + ": " + name
+                    + " took: " + (System.currentTimeMillis() - startTime) + "ms");
+            return name;
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "Could not fetch channel name of " + handle, ex);
+            // Not removed right away, as the text is laid out again once the request is done,
+            // which would fetch the name again and again while the device is offline.
+            Utils.runOnMainThreadDelayed(() -> cache.remove(handle), FAILED_REQUEST_RETRY_MILLISECONDS);
+        } catch (Exception ex) {
+            Logger.printException(() -> "fetchName failure", ex);
+        }
+        return null;
+    }
+
+    /**
+     * @return The response, or null if the handle or the channel was not found.
+     * @throws IOException If the request failed and can be sent again later, such as because of
+     *                     a network error or a temporary error of the server.
+     */
+    @Nullable
+    private static JSONObject request(Route.CompiledRoute route, byte[] requestBody) throws IOException, JSONException {
+        HttpURLConnection connection = ChannelSearchRoutes.getConnection(route);
+        connection.setFixedLengthStreamingMode(requestBody.length);
+        try (OutputStream output = connection.getOutputStream()) {
+            output.write(requestBody);
         }
 
-        Logger.printDebug(() -> "Fetched channel name of " + handle + ": " + name
-                + " took: " + (System.currentTimeMillis() - startTime) + "ms");
-        return name;
+        final int responseCode = connection.getResponseCode();
+        if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
+            return Requester.parseJSONObjectAndDisconnect(connection);
+        }
+        String error = Requester.parseErrorStringAndDisconnect(connection);
+        if (responseCode == Requester.HTTP_STATUS_CODE_NOT_FOUND) {
+            return null;
+        }
+        throw new IOException(route.getCompiledRoute() + " failed with code: "
+                + responseCode + " error: " + error);
     }
 
     /**

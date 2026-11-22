@@ -130,17 +130,28 @@ public final class ReturnYouTubeUsernamePatch {
             return 0;
         }
         int handleLength = 1;
-        while (handleLength < length && isHandleCharacter(text.charAt(handleLength))) {
-            handleLength++;
+        while (handleLength < length) {
+            final int codePoint = Character.codePointAt(text, handleLength);
+            if (!isHandleCharacter(codePoint)) {
+                break;
+            }
+            handleLength += Character.charCount(codePoint);
         }
         return handleLength > 1 ? handleLength : 0;
     }
 
     /**
      * Handles can have letters and digits of any language, underscores, hyphens and periods.
+     * Letters of some languages, such as Hindi, include combining marks.
      */
-    private static boolean isHandleCharacter(char c) {
-        return Character.isLetterOrDigit(c) || c == '_' || c == '-' || c == '.';
+    private static boolean isHandleCharacter(int codePoint) {
+        if (Character.isLetterOrDigit(codePoint)
+                || codePoint == '_' || codePoint == '-' || codePoint == '.') {
+            return true;
+        }
+        final int type = Character.getType(codePoint);
+        return type == Character.NON_SPACING_MARK || type == Character.COMBINING_SPACING_MARK
+                || type == Character.ENCLOSING_MARK;
     }
 
     /**
@@ -148,13 +159,8 @@ public final class ReturnYouTubeUsernamePatch {
      *         the verified badge of the channel.
      */
     private static boolean isOnlyHandle(CharSequence text, int handleLength) {
-        final int length = text.length();
-        for (int i = handleLength; i < length; i++) {
-            if (Character.isLetterOrDigit(text.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
+        return text.subSequence(handleLength, text.length()).codePoints()
+                .noneMatch(Character::isLetterOrDigit);
     }
 
     /**
