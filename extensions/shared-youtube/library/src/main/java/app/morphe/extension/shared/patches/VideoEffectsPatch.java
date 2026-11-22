@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.DataFormatException;
@@ -171,10 +172,15 @@ public final class VideoEffectsPatch {
             """;
 
     /**
+     * Pasted text can be cut off at this length, so longer code arrives incomplete.
+     */
+    public static final int PASTED_TEXT_LENGTH_LIMIT = 20_000;
+
+    /**
      * Comment at the start of the code of a new custom effect. It tells an AI chatbot how to write
      * an effect. It is not saved, so it does not fill the settings.
      */
-    private static final String CUSTOM_EFFECT_INSTRUCTIONS = """
+    private static final String CUSTOM_EFFECT_INSTRUCTIONS = String.format(Locale.ROOT, """
             // CUSTOM VIDEO EFFECT
             // Copy all of this text to an AI chatbot, and describe the effect you want after it. Then replace all of this text with the code the AI gives you.
             //
@@ -185,8 +191,9 @@ public final class VideoEffectsPatch {
             // - Don't write #version, #extension, precision, uniforms, varyings, main() or texture2D.
             // - Start the names of other functions and global constants with "my".
             // - Write floats with a decimal point (1.0, not 1). Loops must have constant bounds.
+            // - Keep the code, comments included, shorter than %d characters. Longer text can be cut off when it is pasted.
             // - Answer with only the code.
-            """;
+            """, PASTED_TEXT_LENGTH_LIMIT);
 
     /**
      * Custom effect code that shows the video as it is. Used when no effect is selected,
@@ -524,6 +531,32 @@ public final class VideoEffectsPatch {
         cachedCustomEffectCode = code;
         cachedFragmentShader = shader;
         return shader;
+    }
+
+    /**
+     * Code that is cut off while it is pasted ends inside a block or a comment, and then the
+     * compiler errors are about the code that comes after it, which does not help.
+     *
+     * @return If the code has a block or comment that is never closed.
+     */
+    public static boolean isCustomEffectCodeCutOff(String code) {
+        int openBlocks = 0;
+        for (int i = 0, length = code.length(); i < length; i++) {
+            if (code.startsWith("//", i)) {
+                int end = code.indexOf('\n', i);
+                if (end < 0) break;
+                i = end;
+            } else if (code.startsWith("/*", i)) {
+                int end = code.indexOf("*/", i + 2);
+                if (end < 0) return true;
+                i = end + 1;
+            } else {
+                char c = code.charAt(i);
+                if (c == '{') openBlocks++;
+                else if (c == '}') openBlocks--;
+            }
+        }
+        return openBlocks > 0;
     }
 
     /**

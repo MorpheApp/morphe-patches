@@ -11,18 +11,12 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.preference.Preference;
-import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.Pair;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -45,8 +39,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
- * Adds, changes and deletes the custom video effects. The code of an effect is checked when it
- * is saved, and the compiler errors are shown so they can be given back to the AI that wrote it.
+ * Lists the custom video effects to change or delete them, and adds new effects.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class VideoEffectCustomEffectsPreference extends Preference {
@@ -89,7 +82,7 @@ public class VideoEffectCustomEffectsPreference extends Preference {
                     () -> {},
                     null,
                     str("morphe_video_effects_custom_add"),
-                    () -> showEditDialog(null, "", VideoEffectsPatch.CUSTOM_EFFECT_TEMPLATE),
+                    () -> showEditDialog(null),
                     true
             );
             Dialog dialog = dialogPair.first;
@@ -140,7 +133,7 @@ public class VideoEffectCustomEffectsPreference extends Preference {
             row.setGravity(Gravity.CENTER_VERTICAL);
             row.setOnClickListener(v -> {
                 dialog.dismiss();
-                showEditDialog(effect.name, effect.name, effect.code);
+                showEditDialog(effect);
             });
 
             TextView name = new TextView(context);
@@ -164,16 +157,12 @@ public class VideoEffectCustomEffectsPreference extends Preference {
         }
     }
 
-    private static List<CustomEffect> getDefaultEffects() {
-        return VideoEffectsPatch.decodeCustomEffects(SharedYouTubeSettings.VIDEO_EFFECTS_CUSTOM.defaultValue);
-    }
-
     /**
      * @return If a default effect was deleted. An effect with the name of a default effect
      *         counts as that effect, even if the code was changed.
      */
     private static boolean isDefaultEffectMissing() {
-        for (CustomEffect effect : getDefaultEffects()) {
+        for (CustomEffect effect : VideoEffectEditor.getDefaultEffects()) {
             if (VideoEffectsPatch.findCustomEffect(effect.name) == null) return true;
         }
         return false;
@@ -187,8 +176,8 @@ public class VideoEffectCustomEffectsPreference extends Preference {
         try {
             List<CustomEffect> effects = new ArrayList<>(VideoEffectsPatch.getCustomEffects());
             int insertIndex = 0;
-            for (CustomEffect defaultEffect : getDefaultEffects()) {
-                int index = indexOf(effects, defaultEffect.name);
+            for (CustomEffect defaultEffect : VideoEffectEditor.getDefaultEffects()) {
+                int index = VideoEffectEditor.indexOf(effects, defaultEffect.name);
                 if (index >= 0) {
                     insertIndex = index + 1;
                 } else {
@@ -202,35 +191,9 @@ public class VideoEffectCustomEffectsPreference extends Preference {
         }
     }
 
-    private static int indexOf(List<CustomEffect> effects, @Nullable String name) {
-        for (int i = 0, size = effects.size(); i < size; i++) {
-            if (effects.get(i).name.equals(name)) return i;
-        }
-        return -1;
-    }
-
-    /**
-     * Saves the effects in the order of the effect lists.
-     */
     private void saveEffects(List<CustomEffect> effects) {
-        if (isDefault(effects)) {
-            // Not in exported settings.
-            SharedYouTubeSettings.VIDEO_EFFECTS_CUSTOM.resetToDefault();
-        } else {
-            SharedYouTubeSettings.VIDEO_EFFECTS_CUSTOM.save(VideoEffectsPatch.encodeCustomEffects(effects));
-        }
+        VideoEffectEditor.saveEffects(effects);
         updateEffectListPreference();
-    }
-
-    private static boolean isDefault(List<CustomEffect> effects) {
-        List<CustomEffect> defaults = getDefaultEffects();
-        if (effects.size() != defaults.size()) return false;
-        for (int i = 0, size = effects.size(); i < size; i++) {
-            CustomEffect effect = effects.get(i);
-            CustomEffect defaultEffect = defaults.get(i);
-            if (!effect.name.equals(defaultEffect.name) || !effect.code.equals(defaultEffect.code)) return false;
-        }
-        return true;
     }
 
     private void confirmDelete(Context context, String name, Runnable onDeleted) {
@@ -256,7 +219,7 @@ public class VideoEffectCustomEffectsPreference extends Preference {
     }
 
     private void deleteEffect(String name) {
-        if (isSelected(name)) {
+        if (VideoEffectEditor.isSelected(name)) {
             SharedYouTubeSettings.VIDEO_EFFECT.resetToDefault();
         }
 
@@ -265,147 +228,14 @@ public class VideoEffectCustomEffectsPreference extends Preference {
         saveEffects(effects);
     }
 
-    private static boolean isSelected(String name) {
-        return SharedYouTubeSettings.VIDEO_EFFECT.get().equals(name);
-    }
-
     /**
-     * @param originalName The name of the effect that is changed, or null for a new effect.
+     * @param effect The effect to change, or null to add a new effect.
      */
-    private void showEditDialog(@Nullable String originalName, String name, String code) {
-        try {
-            Context context = getContext();
-
-            EditText nameText = CustomDialog.createEditText(context);
-            nameText.setSingleLine(true);
-            nameText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-            nameText.setHint(str("morphe_video_effects_custom_name_hint"));
-            nameText.setText(name);
-
-            EditText codeText = new EditText(context);
-            codeText.setTypeface(Typeface.MONOSPACE);
-            codeText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-            codeText.setGravity(Gravity.TOP | Gravity.START);
-            // Code, so no keyboard suggestions or autocorrect.
-            codeText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE
-                    | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-            codeText.setText(code);
-
-            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                    context,
-                    str(originalName == null
-                            ? "morphe_video_effects_custom_add_title"
-                            : "morphe_video_effects_custom_edit_title"),
-                    null,
-                    codeText,
-                    str("morphe_settings_save"),
-                    () -> saveEffect(originalName, nameText.getText().toString(),
-                            codeText.getText().toString(), false),
-                    this::showEffectsDialog,
-                    str("morphe_video_effects_custom_copy_code"),
-                    () -> Utils.setClipboard(codeText.getText().toString()),
-                    false
-            );
-            Dialog dialog = dialogPair.first;
-            // A tap next to the dialog would lose the code.
-            dialog.setCanceledOnTouchOutside(false);
-
-            LinearLayout.LayoutParams nameParams = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            nameParams.setMargins(0, 0, 0, Dim.dp8);
-            // After the title.
-            dialogPair.second.addView(nameText, 1, nameParams);
-
-            dialog.show();
-
-            Window window = dialog.getWindow();
-            if (window != null) {
-                WindowManager.LayoutParams params = window.getAttributes();
-                params.height = WindowManager.LayoutParams.MATCH_PARENT;
-                window.setAttributes(params);
-                // Keep the buttons above the keyboard.
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "showEditDialog failure", ex);
-        }
-    }
-
-    /**
-     * @param ignoreError If the code is saved even if it has an error.
-     */
-    private void saveEffect(@Nullable String originalName, String name, String code, boolean ignoreError) {
-        try {
-            name = name.trim();
-            code = VideoEffectsPatch.removeCustomEffectInstructions(code);
-
-            String nameError = null;
-            if (name.isEmpty()) {
-                nameError = "morphe_video_effects_custom_name_empty";
-            } else if (!name.equals(originalName) && VideoEffectsPatch.findCustomEffect(name) != null) {
-                nameError = "morphe_video_effects_custom_name_exists";
-            }
-            if (nameError != null) {
-                Utils.showToastShort(str(nameError));
-                showEditDialog(originalName, name, code);
-                return;
-            }
-
-            if (!ignoreError) {
-                String error = findError(code);
-                if (error != null) {
-                    showError(originalName, name, code, error);
-                    return;
-                }
-            }
-
-            List<CustomEffect> effects = new ArrayList<>(VideoEffectsPatch.getCustomEffects());
-            CustomEffect effect = new CustomEffect(name, code);
-            int index = indexOf(effects, originalName);
-            if (index >= 0) {
-                effects.set(index, effect);
-            } else {
-                effects.add(effect);
-            }
-
-            // The name first, so the selected effect is never missing.
-            if (isSelected(originalName)) {
-                SharedYouTubeSettings.VIDEO_EFFECT.save(name);
-            }
-            saveEffects(effects);
-
+    private void showEditDialog(@Nullable CustomEffect effect) {
+        VideoEffectEditor.show(getContext(), effect, () -> {
+            updateEffectListPreference();
             showEffectsDialog();
-        } catch (Exception ex) {
-            Logger.printException(() -> "saveEffect failure", ex);
-        }
-    }
-
-    @Nullable
-    private static String findError(String code) {
-        try {
-            return VideoEffectsPatch.findCustomEffectError(code);
-        } catch (Exception ex) {
-            Logger.printException(() -> "Could not check the custom video effect", ex);
-            return ex.toString();
-        }
-    }
-
-    private void showError(@Nullable String originalName, String name, String code, String error) {
-        Dialog dialog = CustomDialog.create(
-                getContext(),
-                str("morphe_video_effects_custom_error_title"),
-                str("morphe_video_effects_custom_error_message", error),
-                null,
-                str("morphe_video_effects_custom_save_anyway"),
-                () -> saveEffect(originalName, name, code, true),
-                // Back to the code.
-                () -> showEditDialog(originalName, name, code),
-                str("morphe_video_effects_custom_copy_error"),
-                () -> Utils.setClipboard(error),
-                false
-        ).first;
-        dialog.setCancelable(false);
-        dialog.show();
+        });
     }
 
     /**

@@ -244,3 +244,28 @@ internal val mediaViewerFadeAlphaLegacyFilter = methodCall(
     returnType = "J",
     opcodes = listOf(Opcode.INVOKE_STATIC, Opcode.INVOKE_STATIC_RANGE)
 )
+
+private const val MEDIA_CONTEXT_CLASS = "Lcom/reddit/domain/model/media/MediaContext;"
+
+private fun recommendedPostsRequestFilters(endpointClass: String) = listOf(
+    methodCall(definingClass = MEDIA_CONTEXT_CLASS, name = "getSeedSubredditIds"),
+    methodCall(definingClass = MEDIA_CONTEXT_CLASS, name = "getListingType"),
+    fieldAccess(definingClass = endpointClass, name = "COMMUNITY"),
+    methodCall(definingClass = "Lcom/reddit/domain/model/listing/Listing;", name = "<init>")
+)
+
+/**
+ * RemoteGqlLinkDataSource.getRecommendedMedia, which loads the posts of the media viewer.
+ */
+internal object RecommendedMediaRequestFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    filters = recommendedPostsRequestFilters("Lcom/reddit/type/MediaFeedEndpoint;")
+)
+
+/**
+ * RemoteGqlLinkDataSource.getRecommendedVideos, which loads the posts of the video viewer.
+ */
+internal object RecommendedVideosRequestFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    filters = recommendedPostsRequestFilters("Lcom/reddit/type/VideoFeedEndpoint;")
+)

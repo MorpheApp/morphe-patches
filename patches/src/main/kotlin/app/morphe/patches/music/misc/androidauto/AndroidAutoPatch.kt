@@ -37,6 +37,7 @@ import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -97,6 +98,18 @@ val androidAutoPatch = patch(
         IsGoogleSignedFingerprint.method.returnEarly(false)
         // endregion
 
+        AssistantBrowseUiModeFingerprint.let {
+            val result = it.instructionMatches.last()
+            val register = result.getInstruction<OneRegisterInstruction>().registerA
+            it.method.addInstructions(
+                result.index + 1,
+                """
+                    invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getAssistantBrowseUiMode(I)I
+                    move-result v$register
+                """
+            )
+        }
+
         hookPlaylistsTitleMediaIds()
         patchPhoneBrowseClient()
         patchPhoneBrowseResponses()
@@ -106,6 +119,7 @@ val androidAutoPatch = patch(
         patchPlaylistMediaIdBuilder(encodeCommandMediaIdMethod)
         patchCommandEncoder(encodeCommandMediaIdMethod)
         patchSearch()
+        patchSettingsTab()
     }
 }
 
@@ -161,7 +175,7 @@ private fun patchPhoneBrowseClient() {
         phoneBrowseRequestType,
         sendPhoneBrowseRequestMethod,
     )
-    hookPhoneClientOnServiceCreate(
+    hookMusicBrowserServiceDependency(
         phoneBrowseClientType,
         PHONE_BROWSE_CLIENT,
         "$EXTENSION_CLASS->setPhoneBrowseClient($PHONE_BROWSE_CLIENT)V",
@@ -247,25 +261,28 @@ private fun addLibraryPaginationRequestMethod(
     )
 }
 
-// Obtain YTM's phone request clients
+// Obtain dependencies when YTM's media service starts
 
-internal fun hookPhoneClientOnServiceCreate(
-    clientType: String,
-    clientInterface: String,
+/**
+ * Passes a YTM object to the extension when MusicBrowserService starts.
+ *
+ * @param providerReaderClass Limits the provider lookup to this class, if the type alone matches several providers.
+ */
+internal fun hookMusicBrowserServiceDependency(
+    dependencyType: String,
+    extensionInterface: String,
     setter: String,
+    providerReaderClass: String? = null,
 ) {
     val providerCandidates =
-        phoneClientProviderFingerprint(clientType)
+        dependencyProviderFingerprint(dependencyType, providerReaderClass)
             .matchAll()
             .map { match ->
                 val (providerFieldMatch, providerGetMatch) = match.instructionMatches
-                val providerField = providerFieldMatch.fieldReference
-                val providerGetMethod =
-                    providerGetMatch.methodReference
-                providerField to providerGetMethod
+                providerFieldMatch.fieldReference to providerGetMatch.methodReference
             }
             .distinctBy { (field, _) -> field }
-    // Several providers create this request sender. Select the one used when MusicBrowserService starts.
+    // Select the provider on the component used when MusicBrowserService starts.
     val (onCreateMatch, providerField, providerGetMethod) = providerCandidates
         .mapNotNull { (providerField, providerGetMethod) ->
             browserServiceOnCreateFingerprint(
@@ -277,29 +294,25 @@ internal fun hookPhoneClientOnServiceCreate(
         }
         .singleOrNull()
         ?: throw PatchException(
-            "Could not resolve MusicBrowserService's phone client provider: $clientType",
+            "Could not resolve MusicBrowserService's provider for $dependencyType",
         )
     val mutableOnCreateMethod = onCreateMatch.method
-    val generatedComponentReadIndex = onCreateMatch.instructionMatches.single { match ->
-        val field = match.instruction.getReference<FieldReference>()
-        match.instruction.opcode == Opcode.IGET_OBJECT && field?.type == providerField.definingClass
-    }.index
-    val generatedComponentRegister = mutableOnCreateMethod
-        .getInstruction<TwoRegisterInstruction>(generatedComponentReadIndex)
-        .registerA
-    val clientRegister = mutableOnCreateMethod.findFreeRegister(
-        generatedComponentReadIndex + 1,
+    val componentRead = onCreateMatch.instructionMatches[1]
+    val generatedComponentRegister = componentRead.getInstruction<TwoRegisterInstruction>().registerA
+    val insertionIndex = componentRead.index + 1
+    val dependencyRegister = mutableOnCreateMethod.findFreeRegister(
+        insertionIndex,
         mutableOnCreateMethod.p0Register,
     )
 
     mutableOnCreateMethod.addInstructions(
-        generatedComponentReadIndex + 1,
+        insertionIndex,
         """
-            iget-object v$clientRegister, v$generatedComponentRegister, $providerField
-            invoke-interface/range { v$clientRegister .. v$clientRegister }, $providerGetMethod
-            move-result-object v$clientRegister
-            check-cast v$clientRegister, $clientInterface
-            invoke-static/range { v$clientRegister .. v$clientRegister }, $setter
+            iget-object v$dependencyRegister, v$generatedComponentRegister, $providerField
+            invoke-interface/range { v$dependencyRegister .. v$dependencyRegister }, $providerGetMethod
+            move-result-object v$dependencyRegister
+            check-cast v$dependencyRegister, $extensionInterface
+            invoke-static/range { v$dependencyRegister .. v$dependencyRegister }, $setter
         """
     )
 }
