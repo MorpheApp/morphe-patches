@@ -85,6 +85,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_JOIN_CONVERSATION_BUTTON = new BooleanSetting("morphe_hide_join_conversation_button", FALSE);
     public static final BooleanSetting HIDE_MEDIA_VIEWER_OVERLAY = new BooleanSetting("morphe_hide_media_viewer_overlay", FALSE);
     public static final BooleanSetting HIDE_POPULAR_TAB = new BooleanSetting("morphe_hide_popular_tab", FALSE, true, parentNot(DISABLE_MODERN_HOME));
+    public static final BooleanSetting HIDE_RELATED_POSTS_SECTION = new BooleanSetting("morphe_hide_related_posts_section", FALSE, true);
     public static final BooleanSetting HIDE_TRENDING_SHELVES = new BooleanSetting("morphe_hide_trending_shelves", FALSE, true);
     public static final BooleanSetting HIDE_VIDEOS_FOR_YOU_SHELF = new BooleanSetting("morphe_hide_videos_for_you_shelf", FALSE, true);
     public static final BooleanSetting HIGH_QUALITY_AVATARS = new BooleanSetting("morphe_high_quality_avatars", TRUE);
