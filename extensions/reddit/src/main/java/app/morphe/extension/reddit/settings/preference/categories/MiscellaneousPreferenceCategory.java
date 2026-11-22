@@ -14,6 +14,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.AppIconPatch;
+import app.morphe.extension.reddit.patches.DownloadAllFromGalleryPatch;
 import app.morphe.extension.reddit.patches.DownloadLocationPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
@@ -45,6 +46,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     @Override
     public boolean getSettingsStatus() {
         return AppIconPatch.isPatchIncluded() ||
+                DownloadAllFromGalleryPatch.isPatchIncluded() ||
                 DownloadLocationPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
@@ -72,6 +74,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
         if (AppIconPatch.isPatchIncluded()) {
             addPreference(AppIconPatch.getIconPreference(context));
+        }
+        if (DownloadAllFromGalleryPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DOWNLOAD_ALL_FROM_GALLERY
+            ));
         }
         if (DownloadLocationPatch.isPatchIncluded()) {
             addPreference(new DownloadLocationPreference(context));
