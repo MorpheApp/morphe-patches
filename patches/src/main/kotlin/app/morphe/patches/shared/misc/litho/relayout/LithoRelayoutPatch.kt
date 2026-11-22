@@ -43,6 +43,13 @@ val lithoRelayoutPatch = patch(
         classDefBy(COMPONENT_TEXT_CONTENT)
 
         LithoViewOnMeasureFingerprint.let {
+            val (readFlag, clearFlag) = it.instructionMatches.take(2).map { match ->
+                match.fieldReference
+            }
+            if (readFlag != clearFlag) {
+                throw PatchException("Unexpected fields, read: $readFlag clear: $clearFlag")
+            }
+
             // The component tree of the Litho view is the tree that is measured.
             val measureIndex = it.instructionMatches.last().index
             val treeRegister = it.method.getInstruction<FiveRegisterInstruction>(measureIndex).registerC
@@ -57,6 +64,17 @@ val lithoRelayoutPatch = patch(
 
             it.classDef.apply {
                 addPatchInterface(EXTENSION_LITHO_VIEW_INTERFACE, "patch_getComponentTree", treeField)
+
+                addPatchInterface(
+                    EXTENSION_LITHO_VIEW_INTERFACE,
+                    "patch_forceRelayout",
+                    """
+                        const/4 v0, 0x1
+                        iput-boolean v0, p0, $readFlag
+                        invoke-virtual { p0 }, $type->requestLayout()V
+                        return-void
+                    """
+                )
 
                 // Unmounting all content mounts it again with the next layout,
                 // which loads the images again.

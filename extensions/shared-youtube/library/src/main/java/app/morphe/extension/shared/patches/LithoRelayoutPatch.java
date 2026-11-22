@@ -49,7 +49,8 @@ import app.morphe.extension.shared.Utils;
  * only the Litho views of these views are mounted again.
  * <p>
  * The layout of a view is calculated again on the layout thread of its component tree, as Litho does
- * for the layouts of list items, and the main thread only mounts the new layout. The requests made
+ * for the layouts of list items, and the main thread only mounts the new layout. A view that is mounted
+ * again is laid out again on the main thread instead, so it's mounted with its new layout. The requests made
  * while a list scrolls, such as the titles and thumbnails of the elements scrolled on screen,
  * are done with a single pass once the list stops scrolling. The elements bound to a view meanwhile
  * already show what was fetched, and the texts unmounted meanwhile are not laid out again.
@@ -68,6 +69,11 @@ public final class LithoRelayoutPatch {
          */
         @Nullable
         ComponentTreeInterface patch_getComponentTree();
+
+        /**
+         * Forces the Litho view to calculate the layout again on the main thread, when it's measured again.
+         */
+        void patch_forceRelayout();
 
         /**
          * Unmounts all content of the Litho view, which is mounted again by the next layout.
@@ -490,7 +496,12 @@ public final class LithoRelayoutPatch {
             // A recycled view that is no longer attached is laid out again when it's bound again.
             if ((!remount || pendingRelayoutViews.remove(lithoView)) && view.isAttachedToWindow()) {
                 ComponentTreeInterface componentTree = lithoView.patch_getComponentTree();
-                if (componentTree != null) {
+                if (remount) {
+                    // The image requests of a view are created when it's laid out, such as with the
+                    // thumbnail of a video whose DeArrow icon was tapped. A view mounted again is laid out
+                    // again before it's mounted, in the same frame, so it loads the images of the new layout.
+                    lithoView.patch_forceRelayout();
+                } else if (componentTree != null) {
                     componentTree.patch_forceLayoutAsync();
                 }
             }
