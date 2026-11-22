@@ -44,6 +44,7 @@ import app.morphe.extension.reddit.settings.preference.CustomFontFilePreference;
 import app.morphe.extension.reddit.settings.preference.CustomFontTogglePreference;
 import app.morphe.extension.reddit.settings.preference.ForceSystemFontPreference;
 import app.morphe.extension.reddit.settings.preference.NumberSettingPreference;
+import app.morphe.extension.reddit.settings.preference.PostSidePanelWidthPreference;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 
@@ -287,10 +288,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                     context,
                     Settings.POST_SIDE_PANEL
             ));
-            addPreference(new CustomDialogListPreference(
-                    context,
-                    Settings.POST_SIDE_PANEL_WIDTH
-            ));
+            addPreference(new PostSidePanelWidthPreference(context));
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.POST_SIDE_PANEL_REMEMBER_WIDTH
