@@ -12,8 +12,6 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.patches.DisablePlaylistAutoplayPatch;
-import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -46,9 +44,6 @@ public class PlayAllButton {
         }
     }
 
-    private static final String NAVIGATION_INTENT_AUTOPLAY = "AUTOPLAY";
-    private static final String NAVIGATION_INTENT_PREVIOUS = "PREVIOUS";
-
     /**
      * Playlist generated with Reverse order on, or null.
      */
@@ -62,35 +57,11 @@ public class PlayAllButton {
     }
 
     /**
-     * Injection point. Called when the playlist queue looks up the video of a navigation,
-     * such as to show the upcoming video or to autoplay it when the current video ends.
-     *
-     * @return PREVIOUS in place of AUTOPLAY in a playlist generated with Reverse order on,
-     *         so the playlist plays from the last video to the first.
+     * @return If the playlist was generated with Reverse order on.
      */
-    public static Enum<?> getNavigationIntent(Enum<?> navigationIntent) {
-        try {
-            String playlistId = reversePlaylistId;
-            if (playlistId == null || !Settings.PLAY_ALL_BUTTON_REVERSE.get()
-                    || !NAVIGATION_INTENT_AUTOPLAY.equals(navigationIntent.name())) {
-                return navigationIntent;
-            }
-            // YouTube also uses AUTOPLAY to repeat the current video, and the local queue plays its next video.
-            if (DisablePlaylistAutoplayPatch.isRepeatingVideo()
-                    || LocalQueuePatch.hasQueuedVideos()
-                    || !playlistId.equals(VideoInformation.getPlaylistId())) {
-                return navigationIntent;
-            }
-            return previousNavigationIntent(navigationIntent);
-        } catch (Exception ex) {
-            Logger.printException(() -> "getNavigationIntent failure", ex);
-            return navigationIntent;
-        }
-    }
-
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    private static Enum<?> previousNavigationIntent(Enum<?> navigationIntent) {
-        return Enum.valueOf((Class) navigationIntent.getDeclaringClass(), NAVIGATION_INTENT_PREVIOUS);
+    public static boolean isReversePlaylist(@Nullable String playlistId) {
+        String reverseId = reversePlaylistId;
+        return reverseId != null && Settings.PLAY_ALL_BUTTON_REVERSE.get() && reverseId.equals(playlistId);
     }
 
     /**

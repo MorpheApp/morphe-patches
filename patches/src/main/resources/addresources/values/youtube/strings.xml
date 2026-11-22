@@ -1361,6 +1361,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_playlist_autoplay_title">Disable playlist autoplay</string>
     <string name="morphe_disable_playlist_autoplay_summary">Prevents playlists from automatically advancing to the next video</string>
 
+    <!-- layout.playlistautoplay.reversePlaylistAutoplayPatch -->
+    <string name="morphe_reverse_playlist_autoplay_title">Reverse playlist autoplay</string>
+    <string name="morphe_reverse_playlist_autoplay_summary">Playlists autoplay from the last video to the first. Mixes are not reversed</string>
+
     <!-- interaction.autoplay.autoplayControlPatch -->
     <string name="morphe_autoplay_control_title">Autoplay control</string>
     <string name="morphe_autoplay_control_summary">Adds a player button and a rule for the next video. Playlists and queues go on, a Mix stops after a number of videos, a suggested video never plays. Tap the button for the next mode, tap and hold for the list</string>
