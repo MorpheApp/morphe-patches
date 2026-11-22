@@ -125,6 +125,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_TRANSLATE_ONLY = new BooleanSetting("morphe_music_lyrics_translate_only", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TAP_TO_SEEK = new BooleanSetting("morphe_music_lyrics_tap_to_seek", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_COPY_BUTTON = new BooleanSetting("morphe_music_lyrics_show_copy_button", TRUE, false, parent(LYRICS_ENABLED));
+    /** Action mode for the copy/share toolbar button ("copy" or "share"). */
+    public static final StringSetting LYRICS_COPY_BUTTON_MODE = new StringSetting("morphe_music_lyrics_copy_button_mode", "copy", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_COPY_BUTTON)));
     public static final BooleanSetting LYRICS_SHOW_CURRENT_BUTTON = new BooleanSetting("morphe_music_lyrics_show_current_button", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_SECTION = new BooleanSetting("morphe_music_lyrics_show_section", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_TRANSLATE_BUTTON = new BooleanSetting("morphe_music_lyrics_show_translate_button", TRUE, false, parent(LYRICS_ENABLED));
@@ -238,6 +240,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting LYRICS_MINI_NEXT_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_mini_next_offset_ms", -800, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final BooleanSetting LYRICS_USE_EMBEDDED = new BooleanSetting("morphe_music_lyrics_use_embedded", TRUE, true, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_CAPTION_COOKIES = new StringSetting("morphe_music_lyrics_caption_cookies", "", false, parent(LYRICS_ENABLED));
+    /** Preferred offline Japanese analyzer ("kuromoji" or "sudachi") when both are downloaded. */
+    public static final StringSetting LYRICS_JAPANESE_DICT_ENGINE = new StringSetting("morphe_music_lyrics_japanese_dict_engine", "kuromoji", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
+    /** Display name of the user-imported custom lyrics font file, or empty when using system font. */
+    public static final StringSetting LYRICS_CUSTOM_FONT = new StringSetting("morphe_music_lyrics_custom_font", "", false, parent(LYRICS_ENABLED));
+    /** Remembered state for showing or hiding footer branding inside the Share Lyrics editor. */
+    public static final BooleanSetting LYRICS_SHARE_SHOW_BRANDING = new BooleanSetting("morphe_music_lyrics_share_show_branding", TRUE, false, parent(LYRICS_ENABLED));
 
     // Lyrics metadata and line filtering live with the filter itself. Touching that class
     // is what puts the three settings into the framework's registry.

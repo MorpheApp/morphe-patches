@@ -32,6 +32,10 @@ final class LyricsWordBoundaries {
      * <p>Nothing here comes from the source, so every word is marked averaged.
      */
     static List<WordTiming> synthesizeLineWords(String text, long startMs, long endMs) {
+        return synthesizeLineWords(text, startMs, endMs, true);
+    }
+
+    static List<WordTiming> synthesizeLineWords(String text, long startMs, long endMs, boolean averaged) {
         int[] bounds = wordBoundaries(text);
         List<WordTiming> timings = new ArrayList<>();
         // A run and the character after it share a boundary, and the gaps between words are
@@ -56,7 +60,7 @@ final class LyricsWordBoundaries {
             final boolean trailSpace = bounds[i + 1] < text.length()
                     && Character.isWhitespace(text.charAt(bounds[i + 1]));
             timings.add(new WordTiming(bounds[i], bounds[i + 1], wordStart,
-                    Math.max(wordEnd, wordStart + 1), null, trailSpace, true));
+                    Math.max(wordEnd, wordStart + 1), null, trailSpace, averaged));
             seen++;
         }
         return timings;
@@ -179,7 +183,7 @@ final class LyricsWordBoundaries {
     static List<WordTiming> synthesizeLineChars(String text, long startMs, long endMs) {
         int[] boundaries = clusterBoundaries(text);
         final int clusterCount = boundaries.length - 1;
-        if (clusterCount < 2 || endMs <= startMs) {
+        if (clusterCount < 1 || endMs <= startMs) {
             return Collections.emptyList();
         }
         List<WordTiming> timings = new ArrayList<>(clusterCount);
@@ -195,14 +199,26 @@ final class LyricsWordBoundaries {
 
     static int[] clusterBoundaries(String text) {
         BreakIterator iterator = BreakIterator.getCharacterInstance();
-        iterator.setText(text);
         List<Integer> bounds = new ArrayList<>();
         bounds.add(0);
-        for (int boundary = iterator.first();
-             boundary != BreakIterator.DONE;
-             boundary = iterator.next()) {
-            if (boundary > 0) {
-                bounds.add(boundary);
+        if (iterator != null) {
+            iterator.setText(text);
+            for (int boundary = iterator.first();
+                 boundary != BreakIterator.DONE;
+                 boundary = iterator.next()) {
+                if (boundary > 0) {
+                    bounds.add(boundary);
+                }
+            }
+        } else {
+            java.text.BreakIterator fallback = java.text.BreakIterator.getCharacterInstance(Locale.ROOT);
+            fallback.setText(text);
+            for (int boundary = fallback.first();
+                 boundary != java.text.BreakIterator.DONE;
+                 boundary = fallback.next()) {
+                if (boundary > 0) {
+                    bounds.add(boundary);
+                }
             }
         }
         int[] result = new int[bounds.size()];

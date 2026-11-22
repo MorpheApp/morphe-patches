@@ -293,6 +293,15 @@
     </string-array>
     <!-- The character tables a custom Rime word list may fall back to. A build offering another
          reading adds one row beside its token in the values array; nothing else changes. -->
+    <string-array name="morphe_music_lyrics_copy_button_mode_entries">
+        <item>@string/morphe_music_lyrics_copy_mode_copy</item>
+        <item>@string/morphe_music_lyrics_copy_mode_share</item>
+    </string-array>
+    <string-array name="morphe_music_lyrics_copy_button_mode_entry_values">
+        <item>copy</item>
+        <item>share</item>
+    </string-array>
+
     <string-array name="morphe_music_lyrics_rime_char_source_entries">
         <item>@string/morphe_music_lyrics_rime_char_source_auto</item>
         <item>@string/morphe_music_lyrics_rime_char_source_cantonese</item>
