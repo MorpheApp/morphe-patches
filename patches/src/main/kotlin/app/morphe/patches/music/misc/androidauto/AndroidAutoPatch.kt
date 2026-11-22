@@ -602,8 +602,7 @@ private fun addArtworkUriGetter(
 // region Android Auto requests
 
 private fun patchBrowseRequests() {
-    val sendEmptyItemsMethod = SendEmptyMediaItemsFingerprint.originalMethod
-    addBrowseRequestInterface(sendEmptyItemsMethod)
+    addBrowseRequestInterface()
 
     // When the patch handles a page request, skip YTM's handler to avoid returning two results.
     BrowseRequestHandlerFingerprint.method.addInstructionsWithLabels(
@@ -619,38 +618,19 @@ private fun patchBrowseRequests() {
     )
 }
 
-private fun addBrowseRequestInterface(
-    sendEmptyItemsMethod: Method,
-) {
-    val requestType = sendEmptyItemsMethod.parameterTypes.first().toString()
-    val requestClass = mutableClassDefBy(requestType)
-    val requestFields = sendEmptyItemsMethod.instructions.asSequence()
-        .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
-        .distinct()
-        .toList()
-    // YTM's "Invalid media id" log reads the requested Android Auto folder ID through these two fields.
-    val requestedMediaIdHolderField = requestFields.single { field ->
-        field.definingClass == requestType
-    }
-    val requestedMediaIdField = requestFields.single { field ->
-        field.definingClass == requestedMediaIdHolderField.type && field.type == "Ljava/lang/String;"
-    }
+private fun addBrowseRequestInterface() {
+    val (holder, mediaId) = SendEmptyMediaItemsFingerprint.instructionMatches
+    val requestedMediaIdField = mediaId.fieldReference
+    require(holder.fieldReference.type == requestedMediaIdField.definingClass) { "Unexpected browse media ID holder" }
     skipCustomMediaIdDecoding(requestedMediaIdField)
 
-    // YTM 9.15's one-argument overload forwards the list and null to this two-argument method.
-    // Newer supported versions call it directly, so the patch can use the same method for all versions.
-    val deliverItemsMethod = requestClass.methods.single { method ->
-        method.returnType == "V" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes.first().toString() == "Ljava/util/List;" &&
-                method.parameterTypes.last().toString().startsWith("L")
-    }
-
+    val requestClass = DeliverBrowseItemsFingerprint.classDef
+    val deliverItemsMethod = DeliverBrowseItemsFingerprint.method
     requestClass.addPatchInterface(
         BROWSE_REQUEST,
         "patch_getRequestedMediaId",
         """
-            iget-object p0, p0, $requestedMediaIdHolderField
+            iget-object p0, p0, ${holder.fieldReference}
             iget-object p0, p0, $requestedMediaIdField
             return-object p0
         """
@@ -723,9 +703,7 @@ private fun addRequestConnectionGetter(reloadMethod: Method) {
         field.type == connectionType
     }
 
-    val requestType =
-        SendEmptyMediaItemsFingerprint.originalMethod.parameterTypes.first().toString()
-    val requestClass = mutableClassDefBy(requestType)
+    val requestClass = DeliverBrowseItemsFingerprint.classDef
     // The request can hold other result types; check for the result object that stores the Android Auto connection.
     val resultBaseType = folderResultClass.superclass
         ?: throw PatchException("Could not resolve the Android Auto folder result base class")

@@ -116,24 +116,29 @@ internal object BuildMediaItemFingerprint : Fingerprint(
     )
 )
 
-/** Returns an empty list when YTM does not recognize the page Android Auto requested. */
+/** In YTM 9.15.51 and 9.20.53, the overload that takes only the item list forwards to this method. */
+internal object DeliverBrowseItemsFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/util/List;", "L"),
+    filters = listOf(string("MBS: LoadChildrenResult.logCompletion() called before sentTime was set."))
+)
+
+/** YTM reads the requested folder ID through these two fields when it logs an invalid media ID. */
 internal object SendEmptyMediaItemsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("L", "Z"),
+    returnType = { "V" },
+    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef.type, "Z") },
+    strings = listOf(string("Invalid media id: ")),
     filters = listOf(
-        string("Invalid media id: ")
+        fieldAccess(definingClass = { DeliverBrowseItemsFingerprint.originalClassDef }, opcode = Opcode.IGET_OBJECT),
+        fieldAccess(type = "Ljava/lang/String;", opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(8))
     )
 )
 
-/**
- * YTM's handler of the page requests of Android Auto,
- * in the class of [SendEmptyMediaItemsFingerprint] and with the same request parameter.
- */
 internal object BrowseRequestHandlerFingerprint : Fingerprint(
-    definingClass = { SendEmptyMediaItemsFingerprint.originalMethod.definingClass },
+    classFingerprint = SendEmptyMediaItemsFingerprint,
     returnType = { "V" },
-    parameters = { listOf(SendEmptyMediaItemsFingerprint.originalMethod.parameterTypes.first()) },
+    parameters = { listOf(DeliverBrowseItemsFingerprint.originalClassDef) },
     strings = listOf("MBS: Fetching MBFE root for mediaId: `%s`")
 )
 
