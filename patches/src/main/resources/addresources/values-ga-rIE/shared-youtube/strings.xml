@@ -219,7 +219,10 @@ Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
   <string name="morphe_prioritize_video_quality_summary">Tugann sé tosaíocht don chaighdeán físe is airde atá ar fáil thar éifeachtúlacht códaca</string>
   <string name="morphe_prioritize_video_quality_dialog">Má tá an socrú seo múchta, d’fhéadfadh sé nach mbeadh aon roghanna cáilíochta físeáin ar fáil do fhíseáin níos sine.</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Díchumasaigh fuaim DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Díchumasaigh fuaim DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Seinneann sé an audio bunaidh in ionad an leagan le raon dinamiciúil compressed</string>
+  <string name="morphe_disable_loudness_normalization_title">Leanúnaíocht loudness leanúnaigh</string>
+  <string name="morphe_disable_loudness_normalization_summary">Seinneann sé audio ard ag a ownlaíocht bhunaidh in ionad é a laghdú go leibhéal stdard</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Fórsaigh teanga fuaime bhunaidh</string>
   <string name="morphe_force_original_audio_summary">Seinneann sé rian fuaime bunaidh an fhíseáin i gcónaí in ionad leagan dubáilte</string>
@@ -228,6 +231,29 @@ Chun logáil isteach, brúigh 'lean ar aghaidh' thíos"</string>
   <string name="morphe_skip_silence_summary">Scipeálann sé go huathoibríoch sosanna ciúine i bhfuaim físeáin</string>
   <string name="morphe_skip_silence_minimum_pause_title">Fad íosta an tsosa</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Ní ghiorraítear ach sosanna atá chomh fada seo ar a laghad. Tagann sé i bhfeidhm nuair a thosaíonn an chéad fhíseán eile</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Éifeacht físeáin</string>
+  <string name="morphe_video_effect_entry_none">As</string>
+  <string name="morphe_video_effects_custom_title">Déan eagras ar éifeachtaí físeáin</string>
+  <string name="morphe_video_effects_custom_summary">Athraigh, athainmnigh, scrios nó cuir éifeachtaí físeáin leis. Is cód shader iad na héifeachtaí, mar sin is féidir le chatbot AI ones nua a scríobh</string>
+  <string name="morphe_video_effects_custom_empty">Níl aon éifeacht físeáin ann. Tapáil ar Cuir éifeacht leis chun ceann a dhéanamh.</string>
+  <string name="morphe_video_effects_custom_add">Cuir éifeacht leis</string>
+  <string name="morphe_video_effects_custom_restore">Athchóirigh easaíochtacha</string>
+  <string name="morphe_video_effects_custom_add_title">Éifeacht nua</string>
+  <string name="morphe_video_effects_custom_edit_title">Cuir éifeacht i bhfeidhm</string>
+  <string name="morphe_video_effects_custom_name_hint">Ainm</string>
+  <string name="morphe_video_effects_custom_name_empty">Cuir ainm isteach don éifeacht</string>
+  <string name="morphe_video_effects_custom_name_exists">Tá éifeacht leis an ainm seo ann cheana</string>
+  <string name="morphe_video_effects_custom_copy_code">Cóipeáil cód</string>
+  <string name="morphe_video_effects_custom_error_title">Tá anéagart leis an éifeacht</string>
+  <string name="morphe_video_effects_custom_error_message">"Taispeantar físeáin gan an éifeacht go dtí go mbeidh an cód ceartaithe. Tabhair an éagart seo don AI a scríobh an cód:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Earráid chóipeála</string>
+  <string name="morphe_video_effects_custom_save_anyway">Sábháil ar aon nós</string>
+  <string name="morphe_video_effects_custom_delete">Scrios</string>
+  <string name="morphe_video_effects_custom_delete_title">Scrios éifeacht?</string>
+  <string name="morphe_video_effects_custom_delete_message">Scriosfar %s.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Seachfhreastalaí líonra</string>
   <string name="morphe_proxy_screen_summary">Iarratais líonra tacaithe a threorú trí sheachfhreastalaí</string>
@@ -344,6 +370,18 @@ Má dhéantar é a mhúchadh níos déanaí, moltar sonraí an aip a ghlanadh ch
   <string name="morphe_custom_font_file_summary">Roghnaigh comhad cló TTF nó OTF</string>
   <string name="morphe_custom_font_file_invalid">Ní cló TTF ná OTF é an comhad roghnaithe</string>
   <string name="morphe_custom_font_failed_to_load">Níorbh fhéidir an cló saincheaptha a lódáil agus tá sé múchta</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Roghchláir ghloine</string>
+  <string name="morphe_glass_menus_screen_summary">Roghchláir ar nós gloine reoite os cionn an ábhair dhoiléir atá taobh thiar díobh</string>
+  <string name="morphe_glass_menus_title">Cumasaigh roghchláir ghloine</string>
+  <string name="morphe_glass_menus_summary">Taispeánann sé roghchláir agus bileoga bun mar ghloine reoite, agus an t-ábhar taobh thiar díobh doiléir</string>
+  <string name="morphe_glass_menus_user_dialog_message">Taispeántar roghchláir beagnach teimhneach nuair a bhíonn an coigilteoir ceallraí ar siúl, nó mura dtacaíonn an gléas le doiléiriú.</string>
+  <string name="morphe_glass_menus_opacity_title">Teimhneacht ghloine</string>
+  <string name="morphe_glass_menus_opacity_summary">An méid a chlúdaíonn an roghchlár an t-ábhar doiléir (is é 0 an luach do shoiléir, agus is é 100 an luach do dho-thrédhearcach)</string>
+  <string name="morphe_glass_menus_blur_title">Doiléire</string>
+  <string name="morphe_glass_menus_blur_summary">An méid a bhfuil an t-ábhar taobh thiar den roghchlár doiléirithe</string>
+  <string name="morphe_glass_menus_dim_title">Lag</string>
+  <string name="morphe_glass_menus_dim_summary">An méid a dhéantar an scáileán timpeall ar bhileog bhunach a dhorchú</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Níl na \"dí-mhaith\" ar fáil go sealadach (tá an t-am caite ag an API)</string>

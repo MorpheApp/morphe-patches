@@ -219,7 +219,10 @@ Para iniciar sesión, preme continuar abaixo"</string>
   <string name="morphe_prioritize_video_quality_summary">Prioriza a calidade de vídeo máis alta dispoñible sobre a eficiencia do códec</string>
   <string name="morphe_prioritize_video_quality_dialog">Se esta configuración está desactivada, os vídeos máis antigos poden non amosar opcións de calidade de vídeo</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Desactivar o audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Desactivar o audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Reproduce o audio orixinal en lugar da versión con rango dinámico comprimido</string>
+  <string name="morphe_disable_loudness_normalization_title">Desactivar a normalización da sonoridade</string>
+  <string name="morphe_disable_loudness_normalization_summary">Reproduce o audio alto ao seu volume orixinal en lugar de baixalo a un nivel estándar</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forzar o idioma orixinal do audio</string>
   <string name="morphe_force_original_audio_summary">Reproduce sempre a pista de audio orixinal do vídeo en lugar dunha versión doblada</string>
@@ -228,6 +231,29 @@ Para iniciar sesión, preme continuar abaixo"</string>
   <string name="morphe_skip_silence_summary">Salta automaticamente as pausas silenciosas no audio do vídeo</string>
   <string name="morphe_skip_silence_minimum_pause_title">Lonxitude mínima da pausa</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Só se acurtan as pausas que teñan polo menos esta lonxitude. Terá efecto cando comece o seguinte vídeo</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Efecto de vídeo</string>
+  <string name="morphe_video_effect_entry_none">Desactivado</string>
+  <string name="morphe_video_effects_custom_title">Editar efectos de vídeo</string>
+  <string name="morphe_video_effects_custom_summary">Cambia, renomea, elimina ou engade efectos de vídeo. Os efectos son código de shader, polo que un chatbot de IA pode escribir novos</string>
+  <string name="morphe_video_effects_custom_empty">Non hai efectos de vídeo. Toca en Engadir efecto para crear un.</string>
+  <string name="morphe_video_effects_custom_add">Engadir efecto</string>
+  <string name="morphe_video_effects_custom_restore">Restaurar valores predefinidos</string>
+  <string name="morphe_video_effects_custom_add_title">Novo efecto</string>
+  <string name="morphe_video_effects_custom_edit_title">Editar efecto</string>
+  <string name="morphe_video_effects_custom_name_hint">Nome</string>
+  <string name="morphe_video_effects_custom_name_empty">Introduce un nome para o efecto</string>
+  <string name="morphe_video_effects_custom_name_exists">Xa existe un efecto con este nome</string>
+  <string name="morphe_video_effects_custom_copy_code">Copiar código</string>
+  <string name="morphe_video_effects_custom_error_title">O efecto ten un erro</string>
+  <string name="morphe_video_effects_custom_error_message">"Os vídeos móstranse sen o efecto ata que se corrixa o código. Dá este erro á IA que escribiu o código:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Erro ao copiar</string>
+  <string name="morphe_video_effects_custom_save_anyway">Gardar de todos modos</string>
+  <string name="morphe_video_effects_custom_delete">Eliminar</string>
+  <string name="morphe_video_effects_custom_delete_title">Eliminar efecto?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s será eliminado.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy de rede</string>
   <string name="morphe_proxy_screen_summary">Enruta as solicitudes de rede compatibles a través dun proxy</string>
@@ -344,6 +370,18 @@ Se se desactiva posteriormente, recoméndase borrar os datos da aplicación para
   <string name="morphe_custom_font_file_summary">Escolle un ficheiro de fonte TTF ou OTF</string>
   <string name="morphe_custom_font_file_invalid">O ficheiro seleccionado non é unha fonte TTF ou OTF</string>
   <string name="morphe_custom_font_failed_to_load">Non se puido cargar a fonte personalizada e desactivouse</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Menús de vidro</string>
+  <string name="morphe_glass_menus_screen_summary">Menús como vidro fosco sobre o contido borroso que hai detrás</string>
+  <string name="morphe_glass_menus_title">Activar menus de vidro</string>
+  <string name="morphe_glass_menus_summary">Mostra os menus e as follas inferiores como vidro esmerilado, co contido detrás deles desenfocado</string>
+  <string name="morphe_glass_menus_user_dialog_message">Os menus móstranse case opacos cando o ahorro de batería está activo, ou se o dispositivo non soporta o desenfoque</string>
+  <string name="morphe_glass_menus_opacity_title">Opacidade do vidro</string>
+  <string name="morphe_glass_menus_opacity_summary">Quanto cobre o menú o contido desenfocado (0 é transparente, 100 é opaco)</string>
+  <string name="morphe_glass_menus_blur_title">Desenfoque</string>
+  <string name="morphe_glass_menus_blur_summary">Quanto se desenfoca o contido detrás do menú</string>
+  <string name="morphe_glass_menus_dim_title">Escurecer</string>
+  <string name="morphe_glass_menus_dim_summary">Quanto se escurece a pantalla arredor dunha folla inferior</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Os dislikes non están dispoñibles temporalmente (tempo limite da API)</string>

@@ -15,10 +15,20 @@ public class DisablePlaylistAutoplayPatch {
 
     private static volatile boolean isRepeating;
 
+    /**
+     * Injection point.
+     */
     public static void setRepeatMode(int repeatMode) {
         // Native state updates refresh this when playback or repeat mode changes.
         // Mode 2 repeats the current video; mode 1 repeats the playlist.
         isRepeating = repeatMode == 2;
+    }
+
+    /**
+     * @return If the playlist repeats the current video.
+     */
+    public static boolean isRepeatingVideo() {
+        return isRepeating;
     }
 
     /**

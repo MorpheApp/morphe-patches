@@ -219,7 +219,10 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_summary">ໃຫ້ບຸລິມະສິດຄຸນນະພາບວິດີໂອສູງສຸດທີ່ມີ ຫຼາຍກວ່າປະສິດທິພາບຂອງ codec</string>
   <string name="morphe_prioritize_video_quality_dialog">ຖ້າປິດການຕັ້ງຄ່ານີ້, ວິດີໂອເກົ່າອາດຈະບໍ່ສະແດງຕົວເລືອກຄຸນນະພາບວິດີໂອ</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">ປິດການໃຊ້ງານສຽງ DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">ປິດການໃຊ້ງານ DRC audio</string>
+  <string name="morphe_disable_drc_audio_stream_summary">ຫຼິ້ນສຽງຕົ້ນສະບັບ ແທນທີ່ຈະເປັນເວີຊັນທີ່ມີການບີບອັດ dynamic range</string>
+  <string name="morphe_disable_loudness_normalization_title">ປິດການປັບລະດັບຄວາມັງດັງໃຫ້ສະໝ່ຳສະເໝີ</string>
+  <string name="morphe_disable_loudness_normalization_summary">ຫຼິ້ນສຽງທີ່ດັງດ້ວຍລະດັບສຽງຕົ້ນສະບັບ ແທນທີ່ຈະຫຼຸດມັນລົງມາຢູ່ໃນລະດັບມາດຕະຖານ</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">ບັງຄັບໃຊ້ພາສາສຽງດັ້ງເດີມ</string>
   <string name="morphe_force_original_audio_summary">ຫຼິ້ນແທຣັກສຽງດັ້ງເດີມຂອງວິດີໂອສະເໝີ ແທນທີ່ເວີຊັນພາກສຽງ</string>
@@ -228,6 +231,29 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">ຂ້າມຊ່ວງເວລາທີ່ງຽບໃນສຽງຂອງວິດີໂອໂດຍອັດຕະໂນມັດ</string>
   <string name="morphe_skip_silence_minimum_pause_title">ຄວາມຍາວຂອງການຢຸດທີ່ຕ່ຳສຸດ</string>
   <string name="morphe_skip_silence_minimum_pause_summary">ມີພຽງແຕ່ການຢຸດພັກທີ່ຍາວຢ່າງໜ້ອຍເທົ່ານີ້ເທົ່ານັ້ນທີ່ຈະຖືກເຮັດໃຫ້ສັ້ນລົງ. ຈະມີຜົນເມື່ອວິດີໂອຖັດໄປເລີ່ມເຮັດວຽກ</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">ເອັບເຟັກວິດີໂອ</string>
+  <string name="morphe_video_effect_entry_none">ປິດ</string>
+  <string name="morphe_video_effects_custom_title">ແກ້ໄຂເອັບເຟັກວິດີໂອ</string>
+  <string name="morphe_video_effects_custom_summary">ປ່ຽນ, ປ່ຽນຊື່, ລຶບ ຫຼື ເພີ່ມເອັບເຟັກວິດີໂອ. ເອັບເຟັກແມ່ນລະຫັດ shader, ດັ່ງນັ້ນ AI chatbot ສາມາດຂຽນອັນໃໝ່ໄດ້</string>
+  <string name="morphe_video_effects_custom_empty">ບໍ່ມີເອັບເຟັກວິດີໂອ. ແຕະທີ່ ເພີ່ມເອັບເຟັກ ເພື່ອສ້າງອັນໜຶ່ງ.</string>
+  <string name="morphe_video_effects_custom_add">ເພີ່ມເອັບເຟັກ</string>
+  <string name="morphe_video_effects_custom_restore">ຟື້ນຟູຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_video_effects_custom_add_title">ເອັບເຟັກໃໝ່</string>
+  <string name="morphe_video_effects_custom_edit_title">ແກ້ໄຂເອັບເຟັກ</string>
+  <string name="morphe_video_effects_custom_name_hint">ຊື່</string>
+  <string name="morphe_video_effects_custom_name_empty">ປ້ອນຊື່ສຳລັບເອັບເຟັກ</string>
+  <string name="morphe_video_effects_custom_name_exists">ມີເອັບເຟັກທີ່ໃຊ້ຊື່ນີ້ຢູ່ແລ້ວ</string>
+  <string name="morphe_video_effects_custom_copy_code">ຄັດລອກໂຄ້ດ</string>
+  <string name="morphe_video_effects_custom_error_title">ເອັບເຟັກມີຂໍ້ຜິດພາດ</string>
+  <string name="morphe_video_effects_custom_error_message">"ວິດີໂອຈະຖືກສະແດງໂດຍບໍ່ມີເອັບເຟັກ ຈົນກວ່າໂຄ້ດຈະຖືກແກ້ໄຂ. ສົ່ງຂໍ້ຜິດພາດນີ້ໃຫ້ກັບ AI ທີ່ຂຽນໂຄ້ດ:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">ຂໍ້ຜິດພາດໃນການຄັດລອກ</string>
+  <string name="morphe_video_effects_custom_save_anyway">ບັນທຶກທັງໝົດ</string>
+  <string name="morphe_video_effects_custom_delete">ລຶບ</string>
+  <string name="morphe_video_effects_custom_delete_title">ລຶບເອັບເຟັກບໍ?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s ຈະຖືກລຶບ.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">ພຣັອກຊີເຄືອຂ່າຍ</string>
   <string name="morphe_proxy_screen_summary">ກຳນົດເສັ້ນທາງການຮ້ອງຂໍເຄືອຂ່າຍທີ່ຮອງຮັບຜ່ານ proxy</string>
@@ -344,6 +370,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">ເລືອກໄຟລ໌ຟອນ TTF ຫຼື OTF</string>
   <string name="morphe_custom_font_file_invalid">ໄຟລ໌ທີ່ເລືອກບໍ່ແມ່ນຟອນ TTF ຫຼື OTF</string>
   <string name="morphe_custom_font_failed_to_load">ບໍ່ສາມາດໂຫຼດຟອນຕ໌ທີ່ກຳນົດເອງໄດ້ ແລະ ຖືກປິດການໃຊ້ງານ</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">ເມນູແບບແກ້ວ</string>
+  <string name="morphe_glass_menus_screen_summary">ເມນູທີ່ມີລັກສະນະຄືກັບແກ້ວຝ້າ ທັບເທິງເນື້ອຫາທີ່ມົວຢູ່ທາງຫຼັງ</string>
+  <string name="morphe_glass_menus_title">ເປີດໃຊ້ງານເມນູແບບແກ້ວ</string>
+  <string name="morphe_glass_menus_summary">ສະແດງເມນູ ແລະ ແຜງດ້ານລຸ່ມເປັນແບບແກ້ວຝ້າ, ໂດຍທີ່ເນື້ອຫາທາງຫຼັງຈະຖືກເຮັດໃຫ້ເບີ</string>
+  <string name="morphe_glass_menus_user_dialog_message">ເມນູຈະຖືກສະແດງແບບເກືອບທຶບ ໃນຂະນະທີ່ໂໝດປະຢັດແບັດເຕີຣີຖືກເປີດໃຊ້, ຫຼື ຖ້າອຸປະກອນບໍ່ຮອງຮັບການເຮັດໃຫ້ເບີ</string>
+  <string name="morphe_glass_menus_opacity_title">ຄວາມທຶບຂອງແກ້ວ</string>
+  <string name="morphe_glass_menus_opacity_summary">ລະດັບທີ່ເມນູປົກຄຸມເນື້ອຫາທີ່ເບີ (0 ແມ່ນໃສ, 100 ແມ່ນທຶບ)</string>
+  <string name="morphe_glass_menus_blur_title">ຄວາມເບີ</string>
+  <string name="morphe_glass_menus_blur_summary">ລະດັບຄວາມເບີຂອງເນື້ອຫາທີ່ຢູ່ທາງຫຼັງເມນູ</string>
+  <string name="morphe_glass_menus_dim_title">ຄວາມມືດ</string>
+  <string name="morphe_glass_menus_dim_summary">ລະດັບຄວາມມືດຂອງໜ້າຈໍອ້ອມຮອບແຜງດ້ານລຸ່ມ</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">ບໍ່ສາມາດເບິ່ງຈຳນວນ Dislike ໄດ້ຊົ່ວຄາວ (API ໝົດເວລາ)</string>

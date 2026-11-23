@@ -219,7 +219,10 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_prioritize_video_quality_summary">Upřednostňuje nejvyšší dostupnou kvalitu videa před efektivitou kodeku</string>
   <string name="morphe_prioritize_video_quality_dialog">Pokud je toto nastavení vypnuté, u starších videí nemusí být k dispozici žádné možnosti kvality videa</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Vypnout zvuk DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Zakázat audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Přehrává původní audio namísto verze s komprimovaným dynamickým rozsahem</string>
+  <string name="morphe_disable_loudness_normalization_title">Zakázat normalizaci hlasitosti</string>
+  <string name="morphe_disable_loudness_normalization_summary">Přehrává hlasité audio v původní hlasitosti namísto jeho snížení na standardní úroveň</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Vynutit původní jazyk zvuku</string>
   <string name="morphe_force_original_audio_summary">Vždy přehrává původní zvukovou stopu videa namísto dabované verze</string>
@@ -228,6 +231,29 @@ Chcete-li se přihlásit, stiskněte níže tlačítko Pokračovat"</string>
   <string name="morphe_skip_silence_summary">Automaticky přeskakuje tiché pauzy ve zvuku videa</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimální délka pauzy</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Zkracují se pouze pauzy trvající alespoň tak dlouho. Projeví se při spuštění dalšího videa</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Videoefekt</string>
+  <string name="morphe_video_effect_entry_none">Vypnuto</string>
+  <string name="morphe_video_effects_custom_title">Upravit videoefekty</string>
+  <string name="morphe_video_effects_custom_summary">Změňte, přejmenujte, smažte nebo přidejte videoefekty. Efekty jsou shaderové kódy, takže nové může napsat AI chatbot</string>
+  <string name="morphe_video_effects_custom_empty">Žádné videoefekty. Klepněte na Přidat efekt a vytvořte nový.</string>
+  <string name="morphe_video_effects_custom_add">Přidat efekt</string>
+  <string name="morphe_video_effects_custom_restore">Obnovit výchozí nastavení</string>
+  <string name="morphe_video_effects_custom_add_title">Nový efekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Upravit efekt</string>
+  <string name="morphe_video_effects_custom_name_hint">Název</string>
+  <string name="morphe_video_effects_custom_name_empty">Zadejte název efektu</string>
+  <string name="morphe_video_effects_custom_name_exists">Efekt s tímto názvem již existuje</string>
+  <string name="morphe_video_effects_custom_copy_code">Kopírovat kód</string>
+  <string name="morphe_video_effects_custom_error_title">Efekt obsahuje chybu</string>
+  <string name="morphe_video_effects_custom_error_message">"Videa jsou zobrazována bez efektu, dokud nebude kód opraven. Tuto chybu předați AI, která kód napsala:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Kopírovat chybu</string>
+  <string name="morphe_video_effects_custom_save_anyway">Uložit i tak</string>
+  <string name="morphe_video_effects_custom_delete">Smazat</string>
+  <string name="morphe_video_effects_custom_delete_title">Smazat efekt?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s bude smazáno.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Síťový proxy</string>
   <string name="morphe_proxy_screen_summary">Směrování síťových požadavků přes proxy</string>
@@ -344,6 +370,18 @@ Pokud bude později vypnuto, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_custom_font_file_summary">Vyberte soubor písma TTF nebo OTF</string>
   <string name="morphe_custom_font_file_invalid">Vybraný soubor není písmo TTF nebo OTF</string>
   <string name="morphe_custom_font_failed_to_load">Vlastní písmo se nepodařilo načíst a je vypnuto</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Skleněná menu</string>
+  <string name="morphe_glass_menus_screen_summary">Menu jako mléčné sklo nad rozostřeným obsahem za nimi</string>
+  <string name="morphe_glass_menus_title">Zapnout skleněná menu</string>
+  <string name="morphe_glass_menus_summary">Zobrazuje menu a spodní panely jako mléčné sklo, přičemž obsah za nimi je rozmazaný</string>
+  <string name="morphe_glass_menus_user_dialog_message">Při zapnutém úsporném režimu baterie nebo pokud zařízení nepodporuje rozmazání, jsou menu zobrazena téměř neprůhledně</string>
+  <string name="morphe_glass_menus_opacity_title">Neprůhlednost skla</string>
+  <string name="morphe_glass_menus_opacity_summary">Jak moc menu překrývá rozmazaný obsah (0 je čiré, 100 je neprůhledné)</string>
+  <string name="morphe_glass_menus_blur_title">Rozmazání</string>
+  <string name="morphe_glass_menus_blur_summary">Jak moc je obsah za menu rozmazaný</string>
+  <string name="morphe_glass_menus_dim_title">Ztmavení</string>
+  <string name="morphe_glass_menus_dim_summary">Jak moc je obrazovka kolem spodního panelu ztmavena</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Počty „Nelíbí se mi“ jsou dočasně nedostupné (časový limit API)</string>

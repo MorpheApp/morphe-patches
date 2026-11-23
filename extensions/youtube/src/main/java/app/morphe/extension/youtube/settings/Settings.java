@@ -38,8 +38,10 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.youtube.holdgesture.HoldGestureController.LauncherSlotAvailability;
 import app.morphe.extension.youtube.holdgesture.HoldGestureController.Sensitivity;
 import app.morphe.extension.youtube.holdgesture.HoldGestureController.SpeedStep;
+import app.morphe.extension.youtube.holdgesture.LauncherAction;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NativeQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NotLocalQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
@@ -104,6 +106,7 @@ import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitlesAv
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.StillImagesAvailability;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.ThumbnailOption;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.ThumbnailStillTime;
+import app.morphe.extension.youtube.patches.returnyoutubeusername.ReturnYouTubeUsernamePatch;
 import app.morphe.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
 import app.morphe.extension.youtube.patches.theme.ThemePatch.RiveSplashScreenDurationAvailability;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
@@ -312,6 +315,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting FULLSCREEN_PLAYLIST_PANEL = new BooleanSetting("morphe_fullscreen_playlist_panel", FALSE);
     public static final BooleanSetting AUTOPLAY_CONTROL = new BooleanSetting("morphe_autoplay_control", FALSE, true);
     public static final BooleanSetting DISABLE_PLAYLIST_AUTOPLAY = new BooleanSetting("morphe_disable_playlist_autoplay", FALSE, parentNot(AUTOPLAY_CONTROL));
+    public static final BooleanSetting REVERSE_PLAYLIST_AUTOPLAY = new BooleanSetting("morphe_reverse_playlist_autoplay", FALSE);
     public static final EnumSetting<AutoplayRule.Mode> AUTOPLAY_MODE = new EnumSetting<>("morphe_autoplay_mode", AutoplayRule.Mode.AUTO, parent(AUTOPLAY_CONTROL));
     public static final IntegerSetting AUTOPLAY_MIX_STOP_AFTER = new IntegerSetting("morphe_autoplay_mix_stop_after", 10, parent(AUTOPLAY_CONTROL));
     public static final EnumSetting<ContinueWatchingPromptMode> CONTINUE_WATCHING_PROMPT = new EnumSetting<>("morphe_continue_watching_prompt", ContinueWatchingPromptMode.DEFAULT);
@@ -381,6 +385,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting PIP_FLYOUT_BUTTON = new BooleanSetting("morphe_pip_button_flyout", FALSE, new PipButtonPatchAvailability());
     public static final BooleanSetting PLAY_ALL_BUTTON = new BooleanSetting("morphe_play_all_button", FALSE, true);
     public static final EnumSetting<PlaylistIDPrefix> PLAY_ALL_BUTTON_TYPE = new EnumSetting<>("morphe_play_all_button_type", PlaylistIDPrefix.ALL_CONTENTS_WITH_TIME_DESCENDING,  parent(PLAY_ALL_BUTTON));
+    public static final BooleanSetting PLAY_ALL_BUTTON_REVERSE = new BooleanSetting("morphe_play_all_button_reverse", FALSE, parentsAll(parent(PLAY_ALL_BUTTON), parentNot(REVERSE_PLAYLIST_AUTOPLAY)));
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("morphe_playback_speed_dialog_button", FALSE, true);
     public static final BooleanSetting PLAYBACK_SPEED_BUTTON_CYCLE = new BooleanSetting("morphe_playback_speed_button_cycle", FALSE, parent(PLAYBACK_SPEED_DIALOG_BUTTON));
     public static final StringSetting PLAYBACK_SPEED_BUTTON_CYCLE_SPEEDS = new StringSetting("morphe_playback_speed_button_cycle_speeds", "1.0\n1.5\n2.0", parent(PLAYBACK_SPEED_BUTTON_CYCLE));
@@ -391,6 +396,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting RESTORE_OLD_PLAYER_BUTTONS = new BooleanSetting("morphe_restore_old_player_buttons", FALSE, true, new RestoreOldPlayerButtonsAvailability());
     public static final BooleanSetting VIDEO_DELAY_OVERLAY_BUTTON = new BooleanSetting("morphe_video_delay_button_overlay", FALSE, true);
     public static final BooleanSetting VIDEO_DELAY_FLYOUT_BUTTON = new BooleanSetting("morphe_video_delay_button_flyout", FALSE);
+    public static final BooleanSetting VIDEO_EFFECT_FLYOUT_BUTTON = new BooleanSetting("morphe_video_effect_button_flyout", TRUE);
     public static final BooleanSetting SAVE_TO_WATCH_LATER_OVERLAY_BUTTON = new BooleanSetting("morphe_save_to_watch_later_button", FALSE, true);
     public static final BooleanSetting SAVE_TO_WATCH_LATER_FLYOUT_BUTTON = new BooleanSetting("morphe_save_to_watch_later_flyout_button", FALSE);
     /**
@@ -434,6 +440,10 @@ public class Settings extends SharedYouTubeSettings {
     // Post translate
     public static final BooleanSetting POST_TRANSLATE = new BooleanSetting("morphe_post_translate", TRUE, true);
     public static final StringSetting POST_TRANSLATE_LANGUAGE = new StringSetting("morphe_post_translate_language", "default", parent(POST_TRANSLATE));
+
+    // Return YouTube Username
+    public static final BooleanSetting RETURN_YOUTUBE_USERNAME = new BooleanSetting("morphe_return_youtube_username", FALSE, true);
+    public static final EnumSetting<ReturnYouTubeUsernamePatch.DisplayFormat> RETURN_YOUTUBE_USERNAME_DISPLAY_FORMAT = new EnumSetting<>("morphe_return_youtube_username_display_format", ReturnYouTubeUsernamePatch.DisplayFormat.CHANNEL_NAME, true, parent(RETURN_YOUTUBE_USERNAME));
 
     // Feed view count
     public static final BooleanSetting FEED_VIEW_COUNT = new BooleanSetting("morphe_feed_view_count", FALSE, true);
@@ -864,6 +874,13 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HOLD_GESTURE_LOCK = new BooleanSetting("morphe_hold_gesture_lock", TRUE, parent(HOLD_GESTURE));
     public static final BooleanSetting HOLD_GESTURE_LOCK_BADGE_ALWAYS = new BooleanSetting("morphe_hold_gesture_lock_badge_always", FALSE, parent(HOLD_GESTURE_LOCK));
     public static final BooleanSetting HOLD_GESTURE_UNLOCK_ON_VIDEO_CHANGE = new BooleanSetting("morphe_hold_gesture_unlock_on_video_change", TRUE, parent(HOLD_GESTURE_LOCK));
+    public static final BooleanSetting HOLD_GESTURE_LAUNCHER = new BooleanSetting("morphe_hold_gesture_launcher", TRUE, parent(HOLD_GESTURE));
+    public static final IntegerSetting HOLD_GESTURE_LAUNCHER_SLOT_COUNT = new IntegerSetting("morphe_hold_gesture_launcher_slot_count", 4, parent(HOLD_GESTURE_LAUNCHER));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_1 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_1", LauncherAction.SCREEN_LOCK, new LauncherSlotAvailability(1));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_2 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_2", LauncherAction.LOOP, new LauncherSlotAvailability(2));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_3 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_3", LauncherAction.SCREENSHOT, new LauncherSlotAvailability(3));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_4 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_4", LauncherAction.WATCH_LATER, new LauncherSlotAvailability(4));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_5 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_5", LauncherAction.TIMESTAMP_URL, new LauncherSlotAvailability(5));
 
     // Niconico comments
     public static final BooleanSetting NICONICO_COMMENTS = new BooleanSetting("morphe_niconico_comments", FALSE, true);

@@ -1171,17 +1171,6 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">በብርጭቆው የናቪጌሽን ባር እና በስክሪኑ ግርጌ ወይም በሲስተም ናቪጌሽን መካከል ያለውን ክፍተት ያስተካክሉ</string>
   <string name="morphe_navigation_bar_glass_size_title">የብርጭቆ ናቪጌሽን ባር መጠን</string>
   <string name="morphe_navigation_bar_glass_size_summary">የብርጭቆ ናቪጌሽን ባርን ቁመት፣ ስፋት እና የቁልፎች ክፍተት በቅድመ እይታ ያስተካክሉ። በስክሪኑ ስፋት ውስጥ የማይገቡ ቁልፎች ይደበቃሉ</string>
-  <string name="morphe_glass_menus_screen_title">የመስታወት ሜኑዎች</string>
-  <string name="morphe_glass_menus_screen_summary">ከበስተጀርባቸው ባለው የደበዘዘ ይዘት ላይ እንደ በረዶ መስተዋት የሚታዩ ሜኑዎች</string>
-  <string name="morphe_glass_menus_title">የመስታወት ሜኑዎችን አግብር</string>
-  <string name="morphe_glass_menus_summary">ሜኑዎችን እና የታችኛውን ስክሪን እንደ በረዶ መስተዋት ያሳያል፣ ከበስተጀርባቸው ያለው ይዘት ደግሞ ይደበዝዛል</string>
-  <string name="morphe_glass_menus_user_dialog_message">የባትሪ ቆጣቢ ሲበራ ወይም መሳሪያው የደብዘዛ ባህሪን የማይደግፍ ከሆነ ሜኑዎቹ ሙሉ በሙሉ ግልጽ ባልሆነ መልኩ ይታያሉ</string>
-  <string name="morphe_glass_menus_opacity_title">የብርጭቆ ግልጽነት</string>
-  <string name="morphe_glass_menus_opacity_summary">ሜኑው ብዥ ያለውን ይዘት ምን ያህል እንደሚሸፍን (0 ጥርኝ ነው፣ 100 ደግሞ የማይበየን ነው)</string>
-  <string name="morphe_glass_menus_blur_title">ብዥታ</string>
-  <string name="morphe_glass_menus_blur_summary">ከሜኑው በስተጀርባ ያለው ይዘት ምን ያህል ብዥ እንደሚሆን</string>
-  <string name="morphe_glass_menus_dim_title">መጋረድ</string>
-  <string name="morphe_glass_menus_dim_summary">ከታችኛው ስክሪን ዙሪያ ያለው ስክሪን ምን ያህል እንደሚጨልም</string>
   <string name="morphe_navigation_bar_glass_size_height">ቁመት</string>
   <string name="morphe_navigation_bar_glass_size_width">ከፍተኛ ስፋት</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">የቁልፎች ክፍተት</string>
@@ -1658,6 +1647,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_video_delay_button_overlay_summary">መዘግየቱን ወደ 0 ሚሊሰከንድ ለመቀየር ተጭነው ይያዙ</string>
   <string name="morphe_video_delay_button_flyout_title">የቪዲዮ መዘግየት ዝርዝርን አሳይ</string>
   <string name="morphe_video_delay_dialog_input_hint">መዘግየት በሚሊሰከንድ</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">የቪዲዮ ውጤት ሜኑን አሳይ</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">የ Shorts ጥራትን አስታውስ</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">የመረጡትን የጥራት ምርጫ ለወደፊት ለሁሉም Shorts ይጠቀማል</string>

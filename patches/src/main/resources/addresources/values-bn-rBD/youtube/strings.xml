@@ -1171,17 +1171,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">গ্লাস নেভিগেশন বার এবং স্ক্রিনের নিচের অংশ বা সিস্টেম নেভিগেশনের মধ্যবর্তী স্পেস অ্যাডজাস্ট করুন</string>
   <string name="morphe_navigation_bar_glass_size_title">গ্লাস নেভিগেশন বারের আকার</string>
   <string name="morphe_navigation_bar_glass_size_summary">একটি প্রিভিউ-এর সাথে গ্লাস নেভিগেশন বারের উচ্চতা, প্রস্থ এবং বাটনের স্পেসিং অ্যাডজাস্ট করুন। স্ক্রিনের প্রস্থে ধরে না এমন বাটনগুলো লুকানো থাকে</string>
-  <string name="morphe_glass_menus_screen_title">গ্লাস মেনু</string>
-  <string name="morphe_glass_menus_screen_summary">পেছনের ঝাপসা কন্টেন্টের উপর ফ্রস্টেড গ্লাসের মতো মেনু</string>
-  <string name="morphe_glass_menus_title">গ্লাস মেনু সক্রিয় করুন</string>
-  <string name="morphe_glass_menus_summary">মেনু এবং বটম শিটগুলোকে ফ্রস্টেড গ্লাসের মতো দেখাবে, যেখানে পেছনের কন্টেন্ট ঝাপসা থাকবে</string>
-  <string name="morphe_glass_menus_user_dialog_message">ব্যাটারি সেভার চালু থাকলে, অথবা ডিভাইসটি ব্লার সাপোর্ট না করলে মেনুগুলো প্রায় অস্বচ্ছ হিসেবে প্রদর্শিত হবে</string>
-  <string name="morphe_glass_menus_opacity_title">গ্লাসের অস্বচ্ছতা</string>
-  <string name="morphe_glass_menus_opacity_summary">মেনুটি ব্লার করা বিষয়বস্তুকে কতটা ঢেকে রাখবে (০ মানে স্বচ্ছ, ১০০ মানে অস্বচ্ছ)</string>
-  <string name="morphe_glass_menus_blur_title">ব্লার</string>
-  <string name="morphe_glass_menus_blur_summary">মেনুর পিছনের বিষয়বস্তু কতটা ব্লার হবে</string>
-  <string name="morphe_glass_menus_dim_title">ডিম</string>
-  <string name="morphe_glass_menus_dim_summary">বটম শিটের চারপাশের স্ক্রিনটি কতটা অন্ধকার হবে</string>
   <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
   <string name="morphe_navigation_bar_glass_size_width">সর্বোচ্চ প্রস্থ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">বাটন স্পেসিং</string>
@@ -1658,6 +1647,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_video_delay_button_overlay_summary">বিলম্ব ০ মি.সে.-এ পুনরায় সেট করতে ট্যাপ করে ধরে রাখুন</string>
   <string name="morphe_video_delay_button_flyout_title">ভিডিও বিলম্ব মেনু দেখান</string>
   <string name="morphe_video_delay_dialog_input_hint">মিলিসেকেন্ডে বিলম্ব</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">ভিডিও ইফেক্ট মেনু দেখান</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts গুণমান মনে রাখুন</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">আপনার ম্যানুয়াল গুণমান নির্বাচন ভবিষ্যতে সমস্ত Shorts-এ প্রয়োগ করে</string>

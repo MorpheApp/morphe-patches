@@ -1169,17 +1169,6 @@ Sozlamalarga kirish uchun General → Toolbar → Show Settings button orqali So
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Shisha navigatsiya paneli va ekranning pastki qismi yoki tizim navigatsiyasi orasidagi masofani sozlang</string>
   <string name="morphe_navigation_bar_glass_size_title">Shishasimon navigatsiya paneli o\'lchami</string>
   <string name="morphe_navigation_bar_glass_size_summary">Shishasimon navigatsiya panelining balandligi, kengligi va tugmalar oralig\'ini oldindan ko\'rish imkoniyati bilan sozlang. Ekran kengligiga sig\'magan tugmalar yashiriladi</string>
-  <string name="morphe_glass_menus_screen_title">Shisha menyular</string>
-  <string name="morphe_glass_menus_screen_summary">Menyular orqadagi xiralashgan kontent ustida xira shisha ko\'rinishida bo\'ladi</string>
-  <string name="morphe_glass_menus_title">Shisha menyularni yoqish</string>
-  <string name="morphe_glass_menus_summary">Menyular va pastki panellarni xira shisha ko\'rinishida ko\'rsatadi, bunda ularning orqasidagi kontent xiralashadi</string>
-  <string name="morphe_glass_menus_user_dialog_message">Energiya tejash rejimi yoqilganda yoki qurilma xiralashishni qo\'llab-quvvatlamasa, menyular deyarli shaffof bo\'lmagan holda ko\'rsatiladi</string>
-  <string name="morphe_glass_menus_opacity_title">Shishaning shaffofligi</string>
-  <string name="morphe_glass_menus_opacity_summary">Menyu xiralashgan kontentni qanchalik qoplaydi (0 - shaffof, 100 - yopiq)</string>
-  <string name="morphe_glass_menus_blur_title">Xiralashtirish</string>
-  <string name="morphe_glass_menus_blur_summary">Menyu orqasidagi kontent qanchalik xiralashganligi</string>
-  <string name="morphe_glass_menus_dim_title">Xiralashtirish</string>
-  <string name="morphe_glass_menus_dim_summary">Pastki varaq atrofidagi ekranning qanchalik qorong\'i ekanligi</string>
   <string name="morphe_navigation_bar_glass_size_height">Balandligi</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimal kenglik</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Tugmalar oralig\'i</string>
@@ -1656,6 +1645,8 @@ Videolar xeshlangan video ID'sining qisqa prefiksi orqali so'raladi, shuning uch
   <string name="morphe_video_delay_button_overlay_summary">Kechiktirishni 0 ms ga qaytarish uchun bosing va ushlab turing</string>
   <string name="morphe_video_delay_button_flyout_title">Video kechiktirish menyusini ko\'rsatish</string>
   <string name="morphe_video_delay_dialog_input_hint">Kechiktirish millisekundlarda</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Video effektlar menyusini ko\'rsatish</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts sifatini eslash</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Qo\'lda tanlagan sifatingizni kelajakdagi barcha Shortsga qo\'llang</string>

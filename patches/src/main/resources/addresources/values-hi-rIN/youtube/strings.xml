@@ -1170,17 +1170,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ग्लास नेविगेशन बार और स्क्रीन के निचले हिस्से या सिस्टम नेविगेशन के बीच की जगह को एडजस्ट करें</string>
   <string name="morphe_navigation_bar_glass_size_title">ग्लास नेविगेशन बार का आकार</string>
   <string name="morphe_navigation_bar_glass_size_summary">एक प्रिव्यू के साथ, ग्लास नेविगेशन बार की ऊंचाई, चौड़ाई और बटन स्पेसिंग को एडजस्ट करें। वे बटन जो स्क्रीन की चौड़ाई में फिट नहीं होते, वे छिप जाते हैं</string>
-  <string name="morphe_glass_menus_screen_title">ग्लास मेनू</string>
-  <string name="morphe_glass_menus_screen_summary">पीछे की धुंधली सामग्री के ऊपर फ्रॉस्टेड ग्लास के रूप में मेनू</string>
-  <string name="morphe_glass_menus_title">ग्लास मेनू सक्षम करें</string>
-  <string name="morphe_glass_menus_summary">मेनू और बॉटम शीट्स को फ्रॉस्टेड ग्लास के रूप में दिखाता है, जिसमें उनके पीछे की सामग्री धुंधली होती है</string>
-  <string name="morphe_glass_menus_user_dialog_message">बैटरी सेवर ऑन होने पर, या यदि डिवाइस ब्लर का समर्थन नहीं करता है, तो मेनू लगभग अपारदर्शी दिखाई देते हैं</string>
-  <string name="morphe_glass_menus_opacity_title">ग्लास ओपेसिटी</string>
-  <string name="morphe_glass_menus_opacity_summary">मेनू धुंधले कंटेंट को कितना कवर करता है (0 पारदर्शी है, 100 अपारदर्शी है)</string>
-  <string name="morphe_glass_menus_blur_title">ब्लर</string>
-  <string name="morphe_glass_menus_blur_summary">मेनू के पीछे का कंटेंट कितना धुंधला है</string>
-  <string name="morphe_glass_menus_dim_title">डिम</string>
-  <string name="morphe_glass_menus_dim_summary">बॉटम शीट के आसपास की स्क्रीन कितनी गहरी है</string>
   <string name="morphe_navigation_bar_glass_size_height">ऊंचाई</string>
   <string name="morphe_navigation_bar_glass_size_width">अधिकतम चौड़ाई</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">बटन स्पेसिंग</string>
@@ -1657,6 +1646,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_video_delay_button_overlay_summary">विलंब को 0 एमएस पर रीसेट करने के लिए टैप और होल्ड करें</string>
   <string name="morphe_video_delay_button_flyout_title">वीडियो विलंब मेनू दिखाएं</string>
   <string name="morphe_video_delay_dialog_input_hint">मिलीसेकंड में विलंब</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">वीडियो प्रभाव मेनू दिखाएं</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">शॉर्ट्स गुणवत्ता याद रखें</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">सभी भविष्य के शॉर्ट्स पर अपनी मैन्युअल गुणवत्ता चयन लागू करता है</string>

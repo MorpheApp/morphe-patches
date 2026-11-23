@@ -126,7 +126,7 @@ internal fun patchSearch() {
             return-object p0
         """
     )
-    hookPhoneClientOnServiceCreate(
+    hookMusicBrowserServiceDependency(
         clientClass.type, PHONE_SEARCH_CLIENT,
         "$SEARCH_PATCH_CLASS->setPhoneSearchClient($PHONE_SEARCH_CLIENT)V",
     )

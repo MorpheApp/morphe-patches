@@ -33,6 +33,9 @@ public class HoldGestureTest {
         int neutralMoves;
         float lockProgress;
         boolean lockArmed;
+        int launcherMoves;
+        float launcherX;
+        float launcherY;
         Outcome outcome;
         float finalSpeed;
 
@@ -62,6 +65,13 @@ public class HoldGestureTest {
         }
 
         @Override
+        public void onLauncherMoved(float x, float y) {
+            launcherMoves++;
+            launcherX = x;
+            launcherY = y;
+        }
+
+        @Override
         public void onFinished(Outcome outcome, float speed) {
             this.outcome = outcome;
             finalSpeed = speed;
@@ -71,7 +81,11 @@ public class HoldGestureTest {
     private final Recorder recorder = new Recorder();
 
     private HoldGesture gesture(boolean adjustEnabled, boolean lockEnabled, float step) {
-        return new HoldGesture(new HoldGesture.Config(adjustEnabled, lockEnabled,
+        return gesture(adjustEnabled, lockEnabled, true, step);
+    }
+
+    private HoldGesture gesture(boolean adjustEnabled, boolean lockEnabled, boolean launcherEnabled, float step) {
+        return new HoldGesture(new HoldGesture.Config(adjustEnabled, lockEnabled, launcherEnabled,
                 step, 0.25f, 4.0f, STEP_DISTANCE), recorder);
     }
 
@@ -101,6 +115,69 @@ public class HoldGestureTest {
         gesture.move(x + 60 - HoldGesture.CLUTCH_PULL_BACK, Y, 1230);
         assertEquals(Adjust.COASTING, gesture.adjust());
         return x;
+    }
+
+    @Test
+    public void draggingUpOpensTheLauncher() {
+        HoldGesture gesture = held(2.0f, false);
+        gesture.move(X, Y - HoldGesture.LAUNCHER_ENTER, 0);
+        assertEquals("not yet far enough", State.HOLD_SPEED, gesture.state());
+
+        gesture.move(X + 4, Y - HoldGesture.LAUNCHER_ENTER - 1, 10);
+        assertEquals(State.LAUNCHER, gesture.state());
+        assertEquals("the launcher learns where the finger is at once", 1, recorder.launcherMoves);
+
+        gesture.move(X - 50, Y - 60, 20);
+        assertEquals(2, recorder.launcherMoves);
+        assertEquals(X - 50, recorder.launcherX, 0);
+        assertEquals(Y - 60, recorder.launcherY, 0);
+
+        gesture.release();
+        assertEquals(Outcome.LAUNCHER, recorder.outcome);
+        assertEquals(State.IDLE, gesture.state());
+    }
+
+    @Test
+    public void theLauncherStaysOpenWhereverTheFingerGoes() {
+        HoldGesture gesture = held(2.0f, false);
+        gesture.move(X, Y - 40, 0);
+        // Sideways and down are the ways to the speed and to the lock from a plain hold.
+        gesture.move(X + 120, Y - 40, 10);
+        gesture.move(X + 120, Y + 120, 20);
+        assertEquals(State.LAUNCHER, gesture.state());
+        assertEquals(List.of(2.0f), recorder.speeds);
+    }
+
+    @Test
+    public void draggingUpAndSidewaysAtOnceIsASidewaysDragWhenThatIsFarther() {
+        HoldGesture gesture = held(2.0f, false);
+        gesture.move(X + 45, Y - 40, 0);
+        assertEquals(State.SPEED_ADJUST, gesture.state());
+    }
+
+    @Test
+    public void aSidewaysDragDoesNotOpenTheLauncher() {
+        HoldGesture gesture = held(2.0f, false);
+        startAdjusting(gesture);
+        gesture.move(X, Y - 80, 100);
+        assertEquals(State.SPEED_ADJUST, gesture.state());
+        assertEquals(0, recorder.launcherMoves);
+    }
+
+    @Test
+    public void draggingUpDoesNothingWithTheLauncherOff() {
+        HoldGesture gesture = gesture(true, true, false, 0.25f);
+        gesture.begin(X, Y, WIDE, 2.0f, false);
+        gesture.move(X, Y - 80, 0);
+        assertEquals(State.HOLD_SPEED, gesture.state());
+    }
+
+    @Test
+    public void aTouchTakenAwayInTheLauncherRunsNothing() {
+        HoldGesture gesture = held(2.0f, false);
+        gesture.move(X, Y - 40, 0);
+        gesture.cancel();
+        assertEquals(Outcome.RESTORE, recorder.outcome);
     }
 
     @Test
@@ -540,13 +617,6 @@ public class HoldGestureTest {
         gesture.move(X + 100, Y, 0);
         assertEquals(State.HOLD_SPEED, gesture.state());
         gesture.move(X, Y + 100, 0);
-        assertEquals(State.HOLD_SPEED, gesture.state());
-    }
-
-    @Test
-    public void upwardDragKeepsTheHold() {
-        HoldGesture gesture = held(2.0f, false);
-        gesture.move(X, Y - 80, 0);
         assertEquals(State.HOLD_SPEED, gesture.state());
     }
 

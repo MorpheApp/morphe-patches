@@ -219,7 +219,10 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_summary">يعطي الأولوية لأعلى جودة فيديو متاحة على كفاءة الترميز</string>
   <string name="morphe_prioritize_video_quality_dialog">إذا تم إيقاف هذا الإعداد، فقد لا تعرض الفيديوهات القديمة خيارات جودة الفيديو</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">تعطيل صوت DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">تعطيل صوت DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">تشغيل الصوت الأصلي بدلًا من الإصدار ذي النطاق الديناميكي المضغوط</string>
+  <string name="morphe_disable_loudness_normalization_title">تعطيل تسوية مستوى الصوت</string>
+  <string name="morphe_disable_loudness_normalization_summary">تشغيل الصوت العالي بمستوى صوته الأصلي بدلًا من خفضه إلى مستوى قياسي</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">فرض لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary">يقوم دائمًا بتشغيل المقطع الصوتي الأصلي للفيديو بدلًا عن النسخة المدبلجة</string>
@@ -228,6 +231,29 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">يتخطى تلقائيًا فترات الصمت في صوت الفيديو</string>
   <string name="morphe_skip_silence_minimum_pause_title">الحد الأدنى لمدة التوقف</string>
   <string name="morphe_skip_silence_minimum_pause_summary">يتم تقصير فترات التوقف التي تبلغ هذه المدة أو أكثر فقط. ويسري هذا عند بدء الفيديو التالي</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">تأثير الفيديو</string>
+  <string name="morphe_video_effect_entry_none">متوقف</string>
+  <string name="morphe_video_effects_custom_title">تعديل تأثيرات الفيديو</string>
+  <string name="morphe_video_effects_custom_summary">تغيير تأثيرات الفيديو أو إعادة تسميتها أو حذفها أو إضافتها. التأثيرات عبارة عن كود shader، لذا يمكن لروبوت دردشة يعمل بالذكاء الاصطناعي كتابة تأثيرات جديدة</string>
+  <string name="morphe_video_effects_custom_empty">لا توجد تأثيرات فيديو. انقر على إضافة تأثير لإنشاء واحد.</string>
+  <string name="morphe_video_effects_custom_add">إضافة تأثير</string>
+  <string name="morphe_video_effects_custom_restore">استعادة الإعدادات الافتراضية</string>
+  <string name="morphe_video_effects_custom_add_title">تأثير جديد</string>
+  <string name="morphe_video_effects_custom_edit_title">تعديل التأثير</string>
+  <string name="morphe_video_effects_custom_name_hint">الاسم</string>
+  <string name="morphe_video_effects_custom_name_empty">أدخل اسمًا للتأثير</string>
+  <string name="morphe_video_effects_custom_name_exists">يوجد تأثير بهذا الاسم بالفعل</string>
+  <string name="morphe_video_effects_custom_copy_code">نسخ الرمز</string>
+  <string name="morphe_video_effects_custom_error_title">يوجد خطأ في التأثير</string>
+  <string name="morphe_video_effects_custom_error_message">"تظهر الفيديوهات بدون التأثير حتى يتم إصلاح الكود. قدم هذا الخطأ للذكاء الاصطناعي الذي كتب الكود:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">خطأ في النسخ</string>
+  <string name="morphe_video_effects_custom_save_anyway">حفظ على أي حال</string>
+  <string name="morphe_video_effects_custom_delete">حذف</string>
+  <string name="morphe_video_effects_custom_delete_title">حذف التأثير؟</string>
+  <string name="morphe_video_effects_custom_delete_message">سيتم حذف %s.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">وكيل الشبكة</string>
   <string name="morphe_proxy_screen_summary">توجيه طلبات الشبكة المدعومة من خلال وكيل</string>
@@ -344,6 +370,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">اختر ملف خط TTF أو OTF</string>
   <string name="morphe_custom_font_file_invalid">الملف المحدد ليس خط بصيغة TTF أو OTF</string>
   <string name="morphe_custom_font_failed_to_load">تعذر تحميل الخط المخصص وتم إيقاف تشغيله</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">قوائم زجاجية</string>
+  <string name="morphe_glass_menus_screen_summary">تظهر القوائم كزجاج متجمد فوق المحتوى المضبّب خلفها</string>
+  <string name="morphe_glass_menus_title">تمكين القوائم الزجاجية</string>
+  <string name="morphe_glass_menus_summary">عرض القوائم والصفحات السفلية كزجاج متجمد، مع تمويه المحتوى الموجود خلفها</string>
+  <string name="morphe_glass_menus_user_dialog_message">تظهر القوائم معتمة تقريبًا عند تشغيل موفر البطارية، أو إذا كان الجهاز لا يدعم الضبابيّة</string>
+  <string name="morphe_glass_menus_opacity_title">شفافية الزجاج</string>
+  <string name="morphe_glass_menus_opacity_summary">مدى تغطية القائمة للمحتوى المضبّب (0 شفاف، 100 معتم)</string>
+  <string name="morphe_glass_menus_blur_title">الضبابيّة</string>
+  <string name="morphe_glass_menus_blur_summary">مدى ضبابيّة المحتوى الموجود خلف القائمة</string>
+  <string name="morphe_glass_menus_dim_title">تعتيم</string>
+  <string name="morphe_glass_menus_dim_summary">مدى تعتيم الشاشة المحيطة بالنافذة السفلية</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">لم يعجبني غير متاح مؤقتًا (انتهت مهلة API)</string>

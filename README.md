@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.4.0-dev.7](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.7)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;231 patches total
+> **[v2.4.0-dev.8](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.4.0-dev.8)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;234 patches total
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;60 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;62 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -58,7 +58,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Crossfade](#crossfade) | Adds a true dual-player crossfade between consecutive tracks. |  |
 | [Custom branding](#custom-branding) | Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings. | • App name<br>• Custom icon<br>• App icon |
 | [Custom font](#custom-font) | Adds an option to show the app with the device system font or a custom TTF or OTF font file instead of YouTube Sans. |  |
-| [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
+| [Disable DRC audio](#disable-drc-audio) | Adds options to disable DRC (Dynamic Range Compression) audio and loudness normalization. |  |
 | [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
 | [Disable audio ducking](#disable-audio-ducking) | Adds an option to keep the volume unchanged when another app plays a short sound, such as a notification. |  |
 | [Disable auto captions](#disable-auto-captions) | Adds an option to disable captions from being automatically enabled. |  |
@@ -72,6 +72,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Enable swipe to dismiss miniplayer](#enable-swipe-to-dismiss-miniplayer) | Adds an option to enable dismissing the miniplayer by swiping down on it. |  |
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [Force portrait orientation](#force-portrait-orientation) | Adds an option to keep the app in portrait orientation when the device is rotated. |  |
+| [Glass menus](#glass-menus) | Adds an option to show the menus as frosted glass, with the content behind the menu blurred. This patch works on Android 12 and newer. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
 | [Hide ads](#hide-ads) | Adds options to hide fullscreen ads, Premium promotions and video ads. |  |
 | [Hide flyout menu components](#hide-flyout-menu-components) | Adds options to hide individual items from the player and queue flyout menus. |  |
@@ -84,7 +85,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
 | [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. |  |
 | [Pause when muted](#pause-when-muted) | Adds an option to pause playback when the system volume is muted, and to resume it when the volume is raised. |  |
-| [Play albums songs](#play-albums-songs) | Adds an option to play the song version of album tracks instead of music videos. |  |
+| [Play album songs](#play-album-songs) | Adds an option to play the songs of albums instead of their music videos. |  |
 | [Playback speed](#playback-speed) | Adds options to change the playback speed and pitch of tracks. |  |
 | [Playlist tags](#playlist-tags) | Adds an option to tag playlists from their menu, and to filter the Library playlists by tag. |  |
 | [Playlist track tap action](#playlist-track-tap-action) | Adds an option to play only the tapped track of a playlist or album, or to add it to the queue, instead of replacing the queue with the whole playlist. |  |
@@ -107,11 +108,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color |
 | [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics with experience enhancement from 19+ providers in the lyrics panel. |  |
+| [Video effects](#video-effects) | Adds an option to change the colors of videos or add visual effects, such as black and white. |  |
 
 </details>
 
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;123 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;124 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -144,7 +146,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Custom font](#custom-font) | Adds an option to show the app with the device system font or a custom TTF or OTF font file instead of YouTube Sans. |  |
 | [Custom player overlay opacity](#custom-player-overlay-opacity) | Adds an option to change the opacity of the video player background when player controls are visible. |  |
 | [DeArrow](#dearrow) | Adds options to replace video thumbnails and titles using the DeArrow API, or replace video thumbnails with image captures from the video. |  |
-| [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
+| [Disable DRC audio](#disable-drc-audio) | Adds options to disable DRC (Dynamic Range Compression) audio and loudness normalization. |  |
 | [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
 | [Disable Shorts resuming on startup](#disable-shorts-resuming-on-startup) | Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched. |  |
 | [Disable auto feed refresh](#disable-auto-feed-refresh) | Adds an option to stop feeds from refreshing automatically after they become outdated. |  |
@@ -241,6 +243,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Translate posts](#translate-posts) | Adds a menu item to translate the text of posts. |  |
 | [Ungroup notifications](#ungroup-notifications) | Adds an option to show every video of the notifications that YouTube groups by channel as its own notification. |  |
 | [Video delay](#video-delay) | Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio. |  |
+| [Video effects](#video-effects) | Adds an option to change the colors of videos or add visual effects, such as black and white. This patch works with YouTube 20.51 and newer. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 | [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
 | [Wide search bar](#wide-search-bar) | Adds a wide search bar to the top of the home and subscription feed. |  |

@@ -219,7 +219,10 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_summary">優先選擇最高可用的影片品質，而非編碼效率</string>
   <string name="morphe_prioritize_video_quality_dialog">如果關閉此設定，較舊的影片可能不會顯示任何影片品質選項</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">停用 DRC 音效</string>
+  <string name="morphe_disable_drc_audio_stream_title">停用 DRC 音訊</string>
+  <string name="morphe_disable_drc_audio_stream_summary">播放原始音訊，而非動態範圍壓縮版本</string>
+  <string name="morphe_disable_loudness_normalization_title">停用響度標準化</string>
+  <string name="morphe_disable_loudness_normalization_summary">以原始音量播放大聲的音訊，而非將其降低至標準準位</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">強制使用原始音訊語言</string>
   <string name="morphe_force_original_audio_summary">一律播放影片的原始音軌，而非配音版本</string>
@@ -228,6 +231,29 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">自動跳過影片音訊中的無聲停頓</string>
   <string name="morphe_skip_silence_minimum_pause_title">最短無聲停頓長度</string>
   <string name="morphe_skip_silence_minimum_pause_summary">無聲停頓至少要足夠這個時間長度才會被縮短。會在下一段影片開始時生效。</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">影片效果</string>
+  <string name="morphe_video_effect_entry_none">關閉</string>
+  <string name="morphe_video_effects_custom_title">編輯影片效果</string>
+  <string name="morphe_video_effects_custom_summary">變更、重新命名、刪除或新增影片效果。效果是著色器代碼，因此 AI 聊天機器人可以編寫新的效果</string>
+  <string name="morphe_video_effects_custom_empty">沒有影片效果。點擊「新增效果」來建立一個。</string>
+  <string name="morphe_video_effects_custom_add">新增效果</string>
+  <string name="morphe_video_effects_custom_restore">還原預設值</string>
+  <string name="morphe_video_effects_custom_add_title">新效果</string>
+  <string name="morphe_video_effects_custom_edit_title">編輯效果</string>
+  <string name="morphe_video_effects_custom_name_hint">名稱</string>
+  <string name="morphe_video_effects_custom_name_empty">請輸入效果名稱</string>
+  <string name="morphe_video_effects_custom_name_exists">已存在同名的效果</string>
+  <string name="morphe_video_effects_custom_copy_code">複製代碼</string>
+  <string name="morphe_video_effects_custom_error_title">效果發生錯誤</string>
+  <string name="morphe_video_effects_custom_error_message">"在代碼修正之前，影片將在不套用效果的情況下顯示。請將此錯誤提供給撰寫該代碼的 AI：
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">複製錯誤</string>
+  <string name="morphe_video_effects_custom_save_anyway">仍要儲存</string>
+  <string name="morphe_video_effects_custom_delete">刪除</string>
+  <string name="morphe_video_effects_custom_delete_title">刪除效果？</string>
+  <string name="morphe_video_effects_custom_delete_message">%s 將被刪除。</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">網路代理</string>
   <string name="morphe_proxy_screen_summary">透過代理伺服器轉送支援的網路請求</string>
@@ -344,6 +370,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">選取 TTF 或 OTF 字型檔案</string>
   <string name="morphe_custom_font_file_invalid">所選取的檔案不是 TTF 或 OTF 字型</string>
   <string name="morphe_custom_font_failed_to_load">無法載入自訂字型，因此已將其關閉</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">玻璃菜單</string>
+  <string name="morphe_glass_menus_screen_summary">將菜單呈現為覆蓋在後方模糊內容上的磨砂玻璃</string>
+  <string name="morphe_glass_menus_title">啟用玻璃材質選單</string>
+  <string name="morphe_glass_menus_summary">將選單和底部工作表顯示為磨砂玻璃效果，並模糊其後方的內容</string>
+  <string name="morphe_glass_menus_user_dialog_message">當電池省電模式開啟或裝置不支援模糊效果時，選單將顯示為近乎不透明</string>
+  <string name="morphe_glass_menus_opacity_title">玻璃效果的不透明度</string>
+  <string name="morphe_glass_menus_opacity_summary">選單覆蓋模糊內容的程度（0 為透明，100 為不透明）</string>
+  <string name="morphe_glass_menus_blur_title">模糊</string>
+  <string name="morphe_glass_menus_blur_summary">選單後方內容的模糊程度</string>
+  <string name="morphe_glass_menus_dim_title">調暗</string>
+  <string name="morphe_glass_menus_dim_summary">底部工作表周圍螢幕的調暗程度</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">暫時無法顯示不喜歡人數（API 逾時）</string>

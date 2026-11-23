@@ -44,10 +44,24 @@ public class PlayAllButton {
         }
     }
 
+    /**
+     * Playlist generated with Reverse order on, or null.
+     */
+    @Nullable
+    private static volatile String reversePlaylistId;
+
     static {
         if (Settings.PLAY_ALL_BUTTON.get()) {
             LegacyPlayerControlButton.incrementUpperButtonCount();
         }
+    }
+
+    /**
+     * @return If the playlist was generated with Reverse order on.
+     */
+    public static boolean isReversePlaylist(String playlistId) {
+        String reverseId = reversePlaylistId;
+        return reverseId != null && Settings.PLAY_ALL_BUTTON_REVERSE.get() && reverseId.equals(playlistId);
     }
 
     /**
@@ -93,21 +107,22 @@ public class PlayAllButton {
                 sb.append("?t=").append(timeInSeconds);
             }
 
+            String playlistId = null;
             if (playlistIdPrefix != null) {
-                sb.append(timeInSeconds > 0 ? "&" : "?").append("list=").append(playlistIdPrefix.prefixId);
-
                 if (playlistIdPrefix.useChannelId) {
                     if (channelId.startsWith("UC")) {
                         String baseId = channelId.substring(2);
-                        sb.append(baseId);
+                        playlistId = playlistIdPrefix.prefixId + baseId;
                     } else {
                         Logger.printDebug(() -> "Play all button: Invalid or missing Channel ID: " + channelId);
                         Utils.showSnackbarShort(str("morphe_play_all_button_not_available_toast"));
                         return;
                     }
                 } else {
-                    sb.append(videoId);
+                    playlistId = playlistIdPrefix.prefixId + videoId;
                 }
+
+                sb.append(timeInSeconds > 0 ? "&" : "?").append("list=").append(playlistId);
             }
 
             Context activityContext = view.getContext();
@@ -115,6 +130,10 @@ public class PlayAllButton {
                 Logger.printDebug(() -> "Play all button: Activity Context is null. Cannot launch Intent.");
                 return;
             }
+
+            reversePlaylistId = playlistId != null && Settings.PLAY_ALL_BUTTON_REVERSE.get()
+                    ? playlistId
+                    : null;
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sb.toString()));
             intent.setPackage(activityContext.getPackageName());

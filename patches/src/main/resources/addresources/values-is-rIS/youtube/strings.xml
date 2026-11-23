@@ -1171,17 +1171,6 @@ Til að opna stillingar skaltu virkja stillingahnappinn undir Almennt → Tækja
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Stilltu bilið á milli glerstangar stýrinnar og botns skjárins eða kerfisstýrinnar</string>
   <string name="morphe_navigation_bar_glass_size_title">Stærð glerleiðsögustikunnar</string>
   <string name="morphe_navigation_bar_glass_size_summary">Stilltu hæð, breidd og hnappabil glerleiðsögustikunnar með forskoðun. Hnappar sem komast ekki fyrir í breidd skjásins eru faldir</string>
-  <string name="morphe_glass_menus_screen_title">Gler-valmyndir</string>
-  <string name="morphe_glass_menus_screen_summary">Valmyndir sem frostuð gler yfir óskýrum efnum fyrir þeim</string>
-  <string name="morphe_glass_menus_title">Virkja gler-valmyndir</string>
-  <string name="morphe_glass_menus_summary">Sýnir valmyndir og neðri glugga sem frostuð gler, þar sem efnið fyrir þeim er óskýrt</string>
-  <string name="morphe_glass_menus_user_dialog_message">Valmyndir eru sýndar næstum ógegnumNotaðar þegar rafsparnaður er virkur, eða ef tækið styður ekki óskýrðingu</string>
-  <string name="morphe_glass_menus_opacity_title">Gegnsæi glers</string>
-  <string name="morphe_glass_menus_opacity_summary">Hversu mikið valmyndin hylur óskýrt efni (0 er gegnsætt, 100 er ógegnsætt)</string>
-  <string name="morphe_glass_menus_blur_title">Þoka</string>
-  <string name="morphe_glass_menus_blur_summary">Hversu mikið efnið á bak við valmyndina er óskýrt</string>
-  <string name="morphe_glass_menus_dim_title">Dimmari</string>
-  <string name="morphe_glass_menus_dim_summary">Hversu mikið skjónumstigið í kringum neðri glugga er dökkað</string>
   <string name="morphe_navigation_bar_glass_size_height">Hæð</string>
   <string name="morphe_navigation_bar_glass_size_width">Hámarksbreidd</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Hnappabil</string>
@@ -1658,6 +1647,8 @@ Myndskeið eru beðin um með stuttu forskeyti af dulkóðuðu myndskeiðsauðke
   <string name="morphe_video_delay_button_overlay_summary">Ýttu lengi til að endurstilla töfina í 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Sýna valmyndina Töf á myndskeiði</string>
   <string name="morphe_video_delay_dialog_input_hint">Töf í millisekúndum</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Sýna valmynd fyrir myndskeiðaáhrif</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Muna gæði Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Beitir handvöldu gæðavali á öll næstu Shorts</string>

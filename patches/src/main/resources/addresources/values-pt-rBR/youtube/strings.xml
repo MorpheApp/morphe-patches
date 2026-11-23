@@ -1171,17 +1171,6 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Ajuste o espaço entre a barra de navegação de vidro e a parte inferior da tela ou a navegação do sistema</string>
   <string name="morphe_navigation_bar_glass_size_title">Tamanho da barra de navegação de vidro</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajuste a altura, a largura e o espaçamento dos botões da barra de navegação de vidro, com uma prévia. Botões que não cabem na largura da tela são ocultados</string>
-  <string name="morphe_glass_menus_screen_title">Menus de vidro</string>
-  <string name="morphe_glass_menus_screen_summary">Menus como vidro fosco sobre o conteúdo desfocado atrás deles</string>
-  <string name="morphe_glass_menus_title">Ativar menus de vidro</string>
-  <string name="morphe_glass_menus_summary">Exibe menus e painéis inferiores como vidro fosco, com o conteúdo atrás deles desfocados</string>
-  <string name="morphe_glass_menus_user_dialog_message">Os menus são exibidos quase opacos enquanto o economizador de bateria estiver ativado, ou se o dispositivo não suporta desfoque</string>
-  <string name="morphe_glass_menus_opacity_title">Opacidade do vidro</string>
-  <string name="morphe_glass_menus_opacity_summary">Quanto o menu cobre o conteúdo desfocado (0 é transparente, 100 é opaco)</string>
-  <string name="morphe_glass_menus_blur_title">Desfoque</string>
-  <string name="morphe_glass_menus_blur_summary">O quanto do conteúdo atrás do menu é desfocado</string>
-  <string name="morphe_glass_menus_dim_title">Escurecimento</string>
-  <string name="morphe_glass_menus_dim_summary">O quanto da tela ao redor de um painel inferior é escurecida</string>
   <string name="morphe_navigation_bar_glass_size_height">Altura</string>
   <string name="morphe_navigation_bar_glass_size_width">Largura máxima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espaçamento dos botões</string>
@@ -1657,6 +1646,8 @@ Os vídeos são solicitados por um prefixo curto do ID do vídeo com hash, entã
   <string name="morphe_video_delay_button_overlay_summary">Toque e segure para resetar o atraso para 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Mostrar menu de atraso de vídeo</string>
   <string name="morphe_video_delay_dialog_input_hint">Atraso em milissegundos</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Mostrar menu de efeitos de vídeo</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Lembrar qualidade dos Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Aplica sua seleção de qualidade manual a todos os Shorts futuros</string>

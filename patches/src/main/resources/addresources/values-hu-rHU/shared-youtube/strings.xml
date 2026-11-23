@@ -219,7 +219,10 @@ A bejelentkezéshez nyomd meg alul a folytatás gombot"</string>
   <string name="morphe_prioritize_video_quality_summary">A rendelkezésre álló legmagasabb videóminőséget prioritásba helyezi a kódolási hatékonyságnak</string>
   <string name="morphe_prioritize_video_quality_dialog">Ha ez a beállítás ki van kapcsolva, a régebbi videóknál előfordulhat, hogy nem érhető el videóminőségi választás</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC hang letiltása</string>
+  <string name="morphe_disable_drc_audio_stream_title">DRC audio letiltása</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Az eredeti audiót játssza vissza a komprimált dinamikus tartományú verzió helyett</string>
+  <string name="morphe_disable_loudness_normalization_title">Hangszint-normalizálás letiltása</string>
+  <string name="morphe_disable_loudness_normalization_summary">A hangos audiót az eredeti hangerőben játssza vissza, ehelyez a standard szintre csökkentve</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Eredeti hang kikényszerítése</string>
   <string name="morphe_force_original_audio_summary">Mindig a videó eredeti hangsávját játssza le, nem a szinkronizált változatot</string>
@@ -228,6 +231,29 @@ A bejelentkezéshez nyomd meg alul a folytatás gombot"</string>
   <string name="morphe_skip_silence_summary">Automatikusan kihagyja a néma szüneteket a videó hangjában</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimális szünet hossza</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Csak a legalább ilyen hosszú szünetek rövidülnek le. A következő videó indításakor lép érvénybe</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Videóeffekt</string>
+  <string name="morphe_video_effect_entry_none">Ki</string>
+  <string name="morphe_video_effects_custom_title">Videóeffektek szerkesztése</string>
+  <string name="morphe_video_effects_custom_summary">Videóeffektek módosítása, átnevezése, törlése vagy hozzáadása. Az effektek shader-kódok, így egy AI csevegőbot képes újakat írni</string>
+  <string name="morphe_video_effects_custom_empty">Nincsenek videóeffektek. Koppints az Effekt hozzáadása gombra egy létrehozásához.</string>
+  <string name="morphe_video_effects_custom_add">Effekt hozzáadása</string>
+  <string name="morphe_video_effects_custom_restore">Alapértelmezések visszaállítása</string>
+  <string name="morphe_video_effects_custom_add_title">Új effekt</string>
+  <string name="morphe_video_effects_custom_edit_title">Effekt szerkesztése</string>
+  <string name="morphe_video_effects_custom_name_hint">Név</string>
+  <string name="morphe_video_effects_custom_name_empty">Adjon meg egy nevet az effektnek</string>
+  <string name="morphe_video_effects_custom_name_exists">Ezzel a névvel már létezik egy effekt</string>
+  <string name="morphe_video_effects_custom_copy_code">Kód másolása</string>
+  <string name="morphe_video_effects_custom_error_title">Az effektben hiba történt</string>
+  <string name="morphe_video_effects_custom_error_message">"A videók effekt nélkül jelennek meg, amíg a kód nem javul. Add át ezt a hibát annak az AI-nak, amely írta a kódot:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Hiba másolása</string>
+  <string name="morphe_video_effects_custom_save_anyway">Mégis mentés</string>
+  <string name="morphe_video_effects_custom_delete">Törlés</string>
+  <string name="morphe_video_effects_custom_delete_title">Törle lje az effektet?</string>
+  <string name="morphe_video_effects_custom_delete_message">A(z) %s törölve lesz.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Hálózati proxy</string>
   <string name="morphe_proxy_screen_summary">A hálózati kérések proxy-n keresztül történő irányítása.</string>
@@ -344,6 +370,18 @@ Ha később kikapcsolja, ajánlott törölni az alkalmazás adatait a felhaszná
   <string name="morphe_custom_font_file_summary">Válasszon ki egy TTF vagy OTF betűtípusfájlt</string>
   <string name="morphe_custom_font_file_invalid">A kiválasztott fájl nem TTF vagy OTF betűtípus</string>
   <string name="morphe_custom_font_failed_to_load">Az egyéni betűtípus betöltése nem sikerült, ezért ki van kapcsolva</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Üveges menük</string>
+  <string name="morphe_glass_menus_screen_summary">A menük matt üvegként jelennek meg a mögöttük lévő elmosódott tartalom felett</string>
+  <string name="morphe_glass_menus_title">Üveges menük engedélyezése</string>
+  <string name="morphe_glass_menus_summary">A menük és a lapok alsó része matt üvegként jelenik meg, mögöttük lévő tartalom pedig elmosódik</string>
+  <string name="morphe_glass_menus_user_dialog_message">A menük szinte teljesen átfogóan jelennek meg, ha az energiamegtekintő bekapcsolva van, vagy ha az eszköz nem támogatja az elmosódást</string>
+  <string name="morphe_glass_menus_opacity_title">Üveg átlátszatossága</string>
+  <string name="morphe_glass_menus_opacity_summary">Mibennyeg takarja a menü az elmosódott tartalmat (0 az teljesen átlátszó, 100 az átfogó)</string>
+  <string name="morphe_glass_menus_blur_title">Elmosódás</string>
+  <string name="morphe_glass_menus_blur_summary">Mennyire mosódik el a menü mögött lévő tartalom</string>
+  <string name="morphe_glass_menus_dim_title">Sötétítés</string>
+  <string name="morphe_glass_menus_dim_summary">Mennyire sötétül el a képernyő egy alsó lap körül</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">A nem tetszések jelenleg nem elérhetők (az API időtúllépése miatt)</string>

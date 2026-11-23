@@ -219,7 +219,10 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_prioritize_video_quality_summary">Prioritaskan kualitas video tertinggi yang tersedia daripada efisiensi codec</string>
   <string name="morphe_prioritize_video_quality_dialog">Jika setelan ini dimatikan, maka video lama tidak dapat menampilkan pilihan kualitas video</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Nonaktifkan audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">Nonaktifkan audio DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">Memutar audio asli alih-alih versi dengan rentang dinamis yang terkompresi</string>
+  <string name="morphe_disable_loudness_normalization_title">Nonaktifkan normalisasi loudness</string>
+  <string name="morphe_disable_loudness_normalization_summary">Memutar audio keras pada volume aslinya alih-alih menurunkannya ke level standar</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary">Selalu memutar trek audio asli video tersebut daripada versi sulih suara</string>
@@ -228,6 +231,29 @@ Untuk login, tekan lanjutkan di bawah"</string>
   <string name="morphe_skip_silence_summary">Secara otomatis melewati jeda hening di audio video</string>
   <string name="morphe_skip_silence_minimum_pause_title">Durasi jeda minimum</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Hanya jeda yang setidaknya selama ini yang dipersingkat. Berlaku saat video berikutnya dimulai</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">Efek video</string>
+  <string name="morphe_video_effect_entry_none">Nonaktif</string>
+  <string name="morphe_video_effects_custom_title">Edit efek video</string>
+  <string name="morphe_video_effects_custom_summary">Ubah, ganti nama, hapus, atau tambahkan efek video. Efek adalah kode shader, jadi chatbot AI dapat menulis yang baru</string>
+  <string name="morphe_video_effects_custom_empty">Tidak ada efek video. Ketuk Tambahkan efek untuk membuatnya.</string>
+  <string name="morphe_video_effects_custom_add">Tambahkan efek</string>
+  <string name="morphe_video_effects_custom_restore">Pulihkan pengaturan bawaan</string>
+  <string name="morphe_video_effects_custom_add_title">Efek baru</string>
+  <string name="morphe_video_effects_custom_edit_title">Edit efek</string>
+  <string name="morphe_video_effects_custom_name_hint">Nama</string>
+  <string name="morphe_video_effects_custom_name_empty">Masukkan nama untuk efek tersebut</string>
+  <string name="morphe_video_effects_custom_name_exists">Efek dengan nama ini sudah ada</string>
+  <string name="morphe_video_effects_custom_copy_code">Salin kode</string>
+  <string name="morphe_video_effects_custom_error_title">Efek mengalami kesalahan</string>
+  <string name="morphe_video_effects_custom_error_message">"Video ditampilkan tanpa efek sampai kode diperbaiki. Berikan kesalahan ini kepada AI yang menulis kodenya:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">Kesalahan penyalinan</string>
+  <string name="morphe_video_effects_custom_save_anyway">Tetap simpan</string>
+  <string name="morphe_video_effects_custom_delete">Hapus</string>
+  <string name="morphe_video_effects_custom_delete_title">Hapus efek?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s akan dihapus.</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proksi jaringan</string>
   <string name="morphe_proxy_screen_summary">Arahkan permintaan jaringan yang didukung melalui proksi</string>
@@ -344,6 +370,18 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_custom_font_file_summary">Pilih file font TTF atau OTF</string>
   <string name="morphe_custom_font_file_invalid">File yang dipilih bukan font TTF atau OTF</string>
   <string name="morphe_custom_font_failed_to_load">Font kustom tidak dapat dimuat dan dinonaktifkan</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">Menu kaca</string>
+  <string name="morphe_glass_menus_screen_summary">Menu seperti kaca buram di atas konten yang dikaburkan di belakangnya</string>
+  <string name="morphe_glass_menus_title">Aktifkan menu kaca</string>
+  <string name="morphe_glass_menus_summary">Menampilkan menu dan lembar bawah sebagai kaca buram, dengan konten di belakangnya dibuat blur</string>
+  <string name="morphe_glass_menus_user_dialog_message">Menu ditampilkan hampir tidak tembus pandang saat penghemat baterai aktif, atau jika perangkat tidak mendukung blur</string>
+  <string name="morphe_glass_menus_opacity_title">Opasitas kaca</string>
+  <string name="morphe_glass_menus_opacity_summary">Seberapa banyak menu menutupi konten yang blur (0 adalah bening, 100 adalah tidak tembus pandang)</string>
+  <string name="morphe_glass_menus_blur_title">Buram</string>
+  <string name="morphe_glass_menus_blur_summary">Seberapa banyak konten di belakang menu dibuat blur</string>
+  <string name="morphe_glass_menus_dim_title">Redupkan</string>
+  <string name="morphe_glass_menus_dim_summary">Seberapa banyak layar di sekitar lembar bawah digelapkan</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislike sementara tidak tersedia (waktu API habis)</string>

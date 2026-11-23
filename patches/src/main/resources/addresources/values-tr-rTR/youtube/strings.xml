@@ -1171,17 +1171,6 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Cam navigasyon çubuğu ile ekranın altı veya sistem navigasyonu arasındaki boşluğu ayarlayın</string>
   <string name="morphe_navigation_bar_glass_size_title">Cam gezinme çubuğu boyutu</string>
   <string name="morphe_navigation_bar_glass_size_summary">Cam gezinme çubuğunun yüksekliğini, genişliğini ve düğme boşluğunu bir önizleme ile ayarlayın. Ekran genişliğine sığmayan düğmeler gizlenir</string>
-  <string name="morphe_glass_menus_screen_title">Cam menüler</string>
-  <string name="morphe_glass_menus_screen_summary">Arkalarındaki bulanık içeriğin üzerinde buzlu cam şeklinde menüler</string>
-  <string name="morphe_glass_menus_title">Cam menüleri etkinleştir</string>
-  <string name="morphe_glass_menus_summary">Menüleri ve alt sayfaları, arkalarındaki içerik bulanık olacak şekilde buzlu cam olarak gösterir</string>
-  <string name="morphe_glass_menus_user_dialog_message">Pil tasarrufu açıkken veya cihaz bulanıklaştırmayı desteklemiyorsa menüler neredeyse opak olarak gösterilir</string>
-  <string name="morphe_glass_menus_opacity_title">Cam opaklığı</string>
-  <string name="morphe_glass_menus_opacity_summary">Menünün bulanık içeriği ne kadar kapladığı (0 şeffaf, 100 opaktır)</string>
-  <string name="morphe_glass_menus_blur_title">Bulanıklık</string>
-  <string name="morphe_glass_menus_blur_summary">Menünün arkasındaki içeriğin ne kadar bulanık olduğu</string>
-  <string name="morphe_glass_menus_dim_title">Karartma</string>
-  <string name="morphe_glass_menus_dim_summary">Alt sayfanın etrafındaki ekranın ne kadar karartıldığı</string>
   <string name="morphe_navigation_bar_glass_size_height">Yükseklik</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimum genişlik</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Düğme boşluğu</string>
@@ -1658,6 +1647,8 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <string name="morphe_video_delay_button_overlay_summary">Gecikmeyi 0 ms\'ye sıfırlamak için dokunup basılı tutun</string>
   <string name="morphe_video_delay_button_flyout_title">Video gecikmesi menüsünü göster</string>
   <string name="morphe_video_delay_dialog_input_hint">Milisaniye cinsinden gecikme</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Video efekti menüsünü göster</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts kalitesini hatırla</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Manuel kalite seçiminizi gelecekteki tüm Shorts\'lara uygular</string>

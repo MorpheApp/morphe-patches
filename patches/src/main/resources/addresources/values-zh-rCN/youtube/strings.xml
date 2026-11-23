@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">调整玻璃导航栏与屏幕底部或系统导航之间的间距</string>
   <string name="morphe_navigation_bar_glass_size_title">玻璃导航栏尺寸</string>
   <string name="morphe_navigation_bar_glass_size_summary">通过预览来调整玻璃导航栏的高度、宽度和按钮间距。超出屏幕宽度的按钮将被隐藏</string>
-  <string name="morphe_glass_menus_screen_title">玻璃菜单</string>
-  <string name="morphe_glass_menus_screen_summary">菜单在背后的模糊内容之上呈现为磨砂玻璃效果</string>
-  <string name="morphe_glass_menus_title">启用玻璃菜单</string>
-  <string name="morphe_glass_menus_summary">将菜单和底部工作表显示为磨砂玻璃，并使其背后的内容模糊</string>
-  <string name="morphe_glass_menus_user_dialog_message">在开启省电模式或设备不支持模糊效果时，菜单将显示为近乎不透明</string>
-  <string name="morphe_glass_menus_opacity_title">玻璃不透明度</string>
-  <string name="morphe_glass_menus_opacity_summary">菜单覆盖模糊内容的程度（0 为透明，100 为不透明）</string>
-  <string name="morphe_glass_menus_blur_title">模糊</string>
-  <string name="morphe_glass_menus_blur_summary">菜单背后内容的模糊程度</string>
-  <string name="morphe_glass_menus_dim_title">变暗</string>
-  <string name="morphe_glass_menus_dim_summary">底部工作表周围屏幕的变暗程度</string>
   <string name="morphe_navigation_bar_glass_size_height">高度</string>
   <string name="morphe_navigation_bar_glass_size_width">最大宽度</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">按钮间距</string>
@@ -1658,6 +1647,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">点按并按住可将延迟重置为 0 毫秒</string>
   <string name="morphe_video_delay_button_flyout_title">显示视频延迟菜单</string>
   <string name="morphe_video_delay_dialog_input_hint">以毫秒为单位的延迟</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">显示视频效果菜单</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">记住 Shorts 画质</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">将您的手动画质选择应用于所有未来的 Shorts</string>

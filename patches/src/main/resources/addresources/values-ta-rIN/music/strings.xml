@@ -21,7 +21,7 @@ Second \"item\" text"</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- misc.album.albumMusicVideoPatch -->
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">இசை வீடியோக்களுக்குப் பதிலாக ஒரு ஆல்பத்தின் பாடல்களை இயக்கவும்</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_auto_song_version_title">எப்போதும் பாடல் பதிப்பையே இயக்கு</string>
   <string name="morphe_music_auto_song_version_summary">வரிசையில் உள்ள அதிகாரப்பூர்வ இசை வீடியோக்களை அதற்குப் பொருத்தமான பாடலால் மாற்றும். இதற்கு செயலியின் அமைப்பில் \'இசை வீடியோக்களை இயக்காதே\' என்பது ஆன் செய்யப்பட வேண்டும். சரியான பொருத்தம் இல்லாத பாடல்கள் மாற்றப்படாமல் இருக்கும்</string>
@@ -94,6 +94,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_sonos_cast_google_cast_summary">Chromecast, Nest மற்றும் Google TV சாதனங்கள்</string>
   <string name="morphe_music_sonos_cast_connection_failed">%s உடன் இணைக்க முடியவில்லை</string>
   <!-- video.speed.playbackSpeedPatch -->
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_music_video_effect_menu_title">வீடியோ எஃபெக்ட் மெனுவைக் காட்டு</string>
+  <string name="morphe_music_video_effect_menu_summary">வீடியோ இயங்கும்போது பிளேயர் மெனுவில் வீடியோ எஃபெக்டைச் சேர்க்கிறது</string>
+  <string name="morphe_music_video_effect_next_video">அடுத்த வீடியோவில் இருந்து எஃபெக்ட் காட்டப்படும்</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">தானியங்கி தலைப்புகளை முடக்கவும்</string>
   <string name="morphe_music_disable_auto_captions_summary">வீடியோ இயங்கும்போது, வீடியோவில் இயல்பாகவே இருக்கும் தலைப்புகள் உட்பட, தலைப்புகள் தானாகவே இயக்கப்படாது</string>
@@ -320,7 +324,30 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_rime_dict_failed">சொல் பட்டியல் பதிவிறக்கம் தோல்வியடைந்தது - மீண்டும் முயற்சிக்க சேமிக்க மீண்டும் தட்டவும்</string>
   <string name="morphe_music_lyrics_clear_cache_summary">இந்தக் கருவியில் சேமிக்கப்பட்டுள்ள %s MB பாடல் வரிகளை நீக்கவும்</string>
   <string name="morphe_music_lyrics_clear_cache_done">%s MB நீக்கப்பட்டது</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">அசல் பாடல் வரிகளை சாதாரண உரையாக நகலெடுக்கத் தட்டவும்; மூலப் பாடல் வரிக் கோப்பு மற்றும் மாற்றப்பட்ட TTML கோப்பை பதிவிறக்கங்களில் சேமிக்க நீண்ட நேரம் அழுத்தவும்</string>
+  <string name="morphe_music_lyrics_cache_loading_summary">தேக்க நினைவக அளவு கணக்கிடப்படுகிறது…</string>
+  <string name="morphe_music_lyrics_cache_lyrics_category_title">பாடல்களின் தேக்க நினைவகம்</string>
+  <string name="morphe_music_lyrics_cache_clear_lyrics_title">பாடல்களின் தேக்க நினைவகத்தை நீக்கு</string>
+  <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d பாடல்கள்)</string>
+  <string name="morphe_music_lyrics_cache_translation_category_title">மொழிபெயர்ப்பு கேச்</string>
+  <string name="morphe_music_lyrics_cache_clear_translation_title">மொழிபெயர்ப்பு கேச்சை நீக்கு</string>
+  <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d மொழிபெயர்ப்புகள்)</string>
+  <string name="morphe_music_lyrics_cache_transliteration_category_title">லிபியரசேஷன் கேச்</string>
+  <string name="morphe_music_lyrics_cache_clear_transliteration_title">லிபியரசேஷன் கேச்சை நீக்கு</string>
+  <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d லிபியரசேஷன்கள்)</string>
+  <string name="morphe_music_lyrics_cache_total_category_title">மொத்த கேச் பயன்பாடு</string>
+  <string name="morphe_music_lyrics_cache_clear_all_title">அனைத்து கேச்சையும் நீக்கு</string>
+  <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d உருப்படிகள்)</string>
+  <string name="morphe_music_lyrics_cache_clear_action">நீக்கு</string>
+  <string name="morphe_music_lyrics_cache_close_action">மூடு</string>
+  <string name="morphe_music_lyrics_cache_confirm_lyrics">இந்தக் கருவியில் சேமிக்கப்பட்ட %1$s MB (%2$d பாடல்கள்) பாடல் வரிகளை நீக்க வேண்டுமா?</string>
+  <string name="morphe_music_lyrics_cache_confirm_translation">இந்தக் கருவியில் சேமிக்கப்பட்ட %1$s MB (%2$d மொழிபெயர்ப்புகள்) மொழிபெயர்ப்புகளை நீக்க வேண்டுமா?</string>
+  <string name="morphe_music_lyrics_cache_confirm_transliteration">இந்தக் கருவியில் சேமிக்கப்பட்ட %1$s MB (%2$d ஒலிபெயர்ப்புகள்) ஒலிபெயர்ப்புகளை நீக்க வேண்டுமா?</string>
+  <string name="morphe_music_lyrics_cache_confirm_all">இந்தக் கருவியில் சேமிக்கப்பட்ட அனைத்து பாடல் வரிகளின் தரவுகளையும் (%1$s MB, %2$d உருப்படிகள்) நீக்க வேண்டுமா?</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">நகல் / பகிர் பொத்தானைக் காட்டு</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">பாடல் வரிகள் குழு கருவிப்பட்டையில் நகல் அல்லது பகிர் பொத்தானைக் காட்டவும்</string>
+  <string name="morphe_music_lyrics_copy_button_mode_title">நகல் பொத்தான் பயன்முறை</string>
+  <string name="morphe_music_lyrics_copy_mode_copy">நகல் முறை (நகலெடுக்க தட்டவும், சேமிக்க நீண்ட நேரம் அழுத்தவும்)</string>
+  <string name="morphe_music_lyrics_copy_mode_share">பகிர்வு முறை (1-5 வரிகளைத் தேர்ந்தெடுக்க தட்டவும், நகலெடுக்க அல்லது சேமிக்க நீண்ட நேரம் அழுத்தவும்)</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">மொழிபெயர்ப்பை மாற்ற தட்டவும்; மொழிபெயர்ப்புக்கு மட்டும் நீண்ட நேரம் அழுத்தவும். பட்டியலிடப்பட்ட வரிசையில் செயல்படுத்தப்பட்ட மொழிபெயர்ப்பு வழங்குநர்களைப் பயன்படுத்துகிறது</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு பொத்தானைக் காட்டவும்</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பை மாற்ற தட்டவும்; ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்புக்கு மட்டும் நீண்ட நேரம் அழுத்தவும். பட்டியலிடப்பட்ட வரிசையில் செயல்படுத்தப்பட்ட ரோமமயமாக்கல் வழங்குநர்களைப் பயன்படுத்துகிறது</string>
@@ -332,7 +359,48 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_local_romanization_download_started">வாசிப்பு அகராதிகள் பதிவிறக்கப்படுகின்றன…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">வாசிப்புகள் தயாராக உள்ளன (%s பதிவுகள்)</string>
   <string name="morphe_music_lyrics_local_romanization_download_confirm_title">ஆஃப்லைன் அகராதி</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">ஜப்பானிய மொழி (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">ஜப்பானிய மொழி sprach</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — வேகமான உருவவியல் பகுப்பாய்வி &amp; ruby</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — முழுமையான ஜப்பானிய வார்த்தை அகராதி</string>
+  <string name="morphe_music_lyrics_japanese_dict_engine_title">முன்னுரிமை &amp; மாற்று வரிசை</string>
+  <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromoji முன்னுரிமை (SudachiDict மாற்று)</string>
+  <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict முன்னுரிமை (Kuromoji மாற்று)</string>
+  <string name="morphe_music_lyrics_custom_font_title">தனிப்பயன் பாடல் வரிகளின் எழுத்துரு</string>
+  <string name="morphe_music_lyrics_custom_font_summary_default">இயல்பான கணினி எழுத்துரு (.ttf அல்லது .otf எழுத்துருக் கோப்பைப் பதிவேற்றத் தட்டவும்)</string>
+  <string name="morphe_music_lyrics_custom_font_summary_active">செயலில் உள்ள எழுத்துரு: %s</string>
+  <string name="morphe_music_lyrics_custom_font_dialog_message">பாடல் வரிக் காட்சியில் பயன்படுத்த உங்கள் சாதனச் சேமிப்பகத்திலிருந்து .ttf அல்லது .otf எழுத்துருக் கோப்பை (SF Pro Bold, Inter Bold அல்லது Inter ExtraBold போன்றவை) பதிவேற்றவும்.</string>
+  <string name="morphe_music_lyrics_custom_font_choose">எழுத்துருவைப் பதிவேற்று</string>
+  <string name="morphe_music_lyrics_custom_font_reset">இயல்பான நிலைக்கு மீட்டமை</string>
+  <string name="morphe_music_lyrics_custom_font_applied">தனிப்பயன் பாடல் வரிகளின் எழுத்துரு பயன்படுத்தப்பட்டது: %s</string>
+  <string name="morphe_music_lyrics_custom_font_cleared">இயல்பான பாடல் வரிகளின் எழுத்துருவிற்கு மாற்றப்பட்டது</string>
+  <string name="morphe_music_lyrics_custom_font_invalid">செல்லாத அல்லது ஆதரவற்ற எழுத்துருக் கோப்பு (.ttf அல்லது .otf தேவை)</string>
+  <string name="morphe_music_lyrics_share_preview_title">பாடல்களைப் பகிரவும்</string>
+  <string name="morphe_music_lyrics_share_button">பகிர்</string>
+  <string name="morphe_music_lyrics_copy">நகலெடு</string>
+  <string name="morphe_music_lyrics_share_options_title">பாடல் வரிகள் செயல்பாடுகள்</string>
+  <string name="morphe_music_lyrics_copy_plain_option">பாடல் வரிகளை சாதாரண உரை வடிவத்தில் நகலெடு</string>
+  <string name="morphe_music_lyrics_save_file_option">பாடல் வரிகள் &amp; TTML-ஐ பதிவிறக்கங்களில் சேமிக்கவும்</string>
+  <string name="morphe_music_lyrics_share_cancel">ரத்துசெய்</string>
+  <string name="morphe_music_lyrics_share_select_hint">பகிர 1-5 வரிகளைத் தட்டவும்</string>
+  <string name="morphe_music_lyrics_share_max_lines">அதிகபட்சமாக 5 வரிகள் மட்டுமே தேர்ந்தெடுக்கப்பட முடியும்</string>
+  <string name="morphe_music_lyrics_share_failed">பாடல் வரிகள் பகிர்வு அட்டையை உருவாக்க முடியவில்லை</string>
+  <string name="morphe_music_lyrics_share_bg_blur">மங்கலாக்கு</string>
+  <string name="morphe_music_lyrics_share_bg_cover">முகப்புப் படம்</string>
+  <string name="morphe_music_lyrics_share_bg_color">நிறம்</string>
+  <string name="morphe_music_lyrics_share_bg_photo">புகைப்படம்</string>
+  <string name="morphe_music_lyrics_share_branding_logo">YT Music லோகோ</string>
+  <string name="morphe_music_lyrics_share_layer_romaji">ரோமஜி</string>
+  <string name="morphe_music_lyrics_share_layer_translate">மொழிபெயர்ப்பு</string>
+  <string name="morphe_music_lyrics_share_layer_bg">பின்னணி குரல்கள்</string>
+  <string name="morphe_music_lyrics_share_custom_color">தனிப்பயன் நிறம்</string>
+  <string name="morphe_music_lyrics_share_photo_failed">தேர்ந்தெடுக்கப்பட்ட படத்தை ஏற்ற முடியவில்லை</string>
+  <string name="morphe_music_lyrics_share_card_cta">கார்டைப் பகிரவும்</string>
+  <string name="morphe_music_lyrics_copy_text_cta">உரையை நகலெடுக்கவும்</string>
+  <string name="morphe_music_lyrics_share_back">பாடலின் வரிகளைத் தேர்ந்தெடுக்கும் பகுதிக்குத் திரும்பவும்</string>
+  <string name="morphe_music_lyrics_share_loading_photo">படம் ஏற்றப்படுகிறது...</string>
+  <string name="morphe_music_lyrics_share_preparing">கார்டு உருவாக்கப்படுகிறது...</string>
+  <string name="morphe_music_lyrics_share_color_swatch">நிறத் தேர்வு %d</string>
+  <string name="morphe_music_lyrics_share_unknown_track">தெரியாத பாடல்</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">சீன மற்றும் காண்டனீஸ் எழுத்துக்கள் (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">சீன வார்த்தைகள் (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">கிரேக்க, ஸ்லாவிக் சிரிலிக் (ரஷ்யன், உக்ரேனியன், பல்கேரியன், செர்பியன், பெலாரூசியன், மாகிடோனியன் உட்பட), ஜார்ஜியன், அர்மேனியன், ஹீப்ரு, அரபு, அம்ஹாரிக் மற்றும் சிரியாக் ஒலிபெயர்ப்பு (CLDR, ~0.5 MB)</string>

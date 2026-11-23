@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Наладзіце адлегласць паміж шклом панэлі навігацыі і ніжняй часткай экрана або сістэмнай навігацыяй</string>
   <string name="morphe_navigation_bar_glass_size_title">Памер шклянай панэлі навігацыі</string>
   <string name="morphe_navigation_bar_glass_size_summary">Рэгулюйце вышыню, шырыню і інтэрвал паміж кнопкамі шклянай панэлі навігацыі з папярэднім праглядам. Кнопкі, якія не ўмяшчаюцца ў шырыню экрана, схаваныя</string>
-  <string name="morphe_glass_menus_screen_title">Шкляныя меню</string>
-  <string name="morphe_glass_menus_screen_summary">Меню ў выглядзе матавага шкла над размытым зместам за імі</string>
-  <string name="morphe_glass_menus_title">Уключаць шкляныя меню</string>
-  <string name="morphe_glass_menus_summary">Паказвае меню і ніжнія панэлі як матавае шкло, прычым змест за імі размыты</string>
-  <string name="morphe_glass_menus_user_dialog_message">Меню паказваюцца амаль непрозрачнымі, калі ўключаны рэжым эканоміі зарада або калі прылада не падтрымлівае размыццё</string>
-  <string name="morphe_glass_menus_opacity_title">Непразрыстасць шкла</string>
-  <string name="morphe_glass_menus_opacity_summary">Насколько меню перакрывае размыты кантэнт (0 — празрыста, 100 — непрозрачна)</string>
-  <string name="morphe_glass_menus_blur_title">Размыццё</string>
-  <string name="morphe_glass_menus_blur_summary">Насколько размыты кантэнт за менюм</string>
-  <string name="morphe_glass_menus_dim_title">Зацяمنيванне</string>
-  <string name="morphe_glass_menus_dim_summary">Насколько зацямнена экрана вакол ніжняга ліста</string>
   <string name="morphe_navigation_bar_glass_size_height">Вышыня</string>
   <string name="morphe_navigation_bar_glass_size_width">Максімальная шырыня</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Інтэрвал паміж кнопкамі</string>
@@ -1658,6 +1647,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">Націсніце і ўтрымайце, каб скінуць затрымку да 0 мс</string>
   <string name="morphe_video_delay_button_flyout_title">Паказваць меню затрымкі відэа</string>
   <string name="morphe_video_delay_dialog_input_hint">Затрымка ў мілісекундах</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Паказаць меню эфектаў відэа</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Запамятаць якасць Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Прымяняе ваш выбар якасці да ўсіх будучых Shorts</string>

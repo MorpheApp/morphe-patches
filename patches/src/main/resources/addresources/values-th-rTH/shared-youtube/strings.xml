@@ -219,7 +219,10 @@ Second \"item\" text"</string>
   <string name="morphe_prioritize_video_quality_summary">ให้ลำดับความสำคัญกับคุณภาพวิดีโอสูงสุดที่มีอยู่มากกว่าประสิทธิภาพของโคเดก</string>
   <string name="morphe_prioritize_video_quality_dialog">หากปิดการตั้งค่านี้ วิดีโอรุ่นเก่าอาจไม่แสดงตัวเลือกคุณภาพวิดีโอ</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">ปิดใช้งานเสียง DRC</string>
+  <string name="morphe_disable_drc_audio_stream_title">ปิดใช้งานเสียง DRC</string>
+  <string name="morphe_disable_drc_audio_stream_summary">เล่นเสียงต้นฉบับแทนเวอร์ชันที่มีช่วงไดนามิกถูกบีบอัด</string>
+  <string name="morphe_disable_loudness_normalization_title">ปิดการปรับระดับความดังให้เท่ากัน</string>
+  <string name="morphe_disable_loudness_normalization_summary">เล่นเสียงที่ดังด้วยระดับเสียงเดิม แทนที่จะลดลงให้เป็นระดับมาตรฐาน</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">บังคับใช้ภาษาเสียงต้นฉบับ</string>
   <string name="morphe_force_original_audio_summary">เล่นแทร็กเสียงต้นฉบับของวิดีโอเสมอแทนที่จะเป็นฉบับพากย์</string>
@@ -228,6 +231,29 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_summary">ข้ามช่วงความเงียบในเสียงวิดีโอโดยอัตโนมัติ</string>
   <string name="morphe_skip_silence_minimum_pause_title">ระยะเวลาหยุดขั้นต่ำ</string>
   <string name="morphe_skip_silence_minimum_pause_summary">เฉพาะช่วงหยุดที่ยาวอย่างน้อยเท่านี้เท่านั้นที่จะถูกย่อให้สั้นลง จะมีผลเมื่อเริ่มวิดีโอถัดไป</string>
+  <!-- misc.videoeffects.videoEffectsPatch -->
+  <string name="morphe_video_effect_title">เอฟเฟ็กต์วิดีโอ</string>
+  <string name="morphe_video_effect_entry_none">ปิด</string>
+  <string name="morphe_video_effects_custom_title">แก้ไขเอฟเฟ็กต์วิดีโอ</string>
+  <string name="morphe_video_effects_custom_summary">เปลี่ยนชื่อ ลบ หรือเพิ่มเอฟเฟ็กต์วิดีโอ เอฟเฟ็กต์คือรหัสเชเดอร์ ดังนั้นแชทบอท AI สามารถเขียนเอฟเฟ็กต์ใหม่ได้</string>
+  <string name="morphe_video_effects_custom_empty">ไม่มีเอฟเฟ็กต์วิดีโอ แตะที่ \"เพิ่มเอฟเฟ็กต์\" เพื่อสร้าง</string>
+  <string name="morphe_video_effects_custom_add">เพิ่มเอฟเฟ็กต์</string>
+  <string name="morphe_video_effects_custom_restore">คืนค่าเริ่มต้น</string>
+  <string name="morphe_video_effects_custom_add_title">เอฟเฟ็กต์ใหม่</string>
+  <string name="morphe_video_effects_custom_edit_title">แก้ไขเอฟเฟกต์</string>
+  <string name="morphe_video_effects_custom_name_hint">ชื่อ</string>
+  <string name="morphe_video_effects_custom_name_empty">ป้อนชื่อสำหรับเอฟเฟกต์</string>
+  <string name="morphe_video_effects_custom_name_exists">มีเอฟเฟกต์ที่ใช้ชื่อนี้อยู่แล้ว</string>
+  <string name="morphe_video_effects_custom_copy_code">คัดลอกโค้ด</string>
+  <string name="morphe_video_effects_custom_error_title">เอฟเฟกต์มีข้อผิดพลาด</string>
+  <string name="morphe_video_effects_custom_error_message">"วิดีโอจะแสดงโดยไม่มีเอฟเฟกต์จนกว่าโค้ดจะได้รับการแก้ไข โปรดส่งข้อผิดพลาดนี้ให้กับ AI ที่เขียนโค้ด:
+
+%s"</string>
+  <string name="morphe_video_effects_custom_copy_error">คัดลอกข้อผิดพลาด</string>
+  <string name="morphe_video_effects_custom_save_anyway">บันทึกต่อไป</string>
+  <string name="morphe_video_effects_custom_delete">ลบ</string>
+  <string name="morphe_video_effects_custom_delete_title">ลบเอฟเฟกต์หรือไม่?</string>
+  <string name="morphe_video_effects_custom_delete_message">%s จะถูกลบ</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">พร็อกซีเครือข่าย</string>
   <string name="morphe_proxy_screen_summary">กำหนดเส้นทางคำขอเครือข่ายผ่านพร็อกซี</string>
@@ -344,6 +370,18 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_file_summary">เลือกไฟล์แบบอักษร TTF หรือ OTF</string>
   <string name="morphe_custom_font_file_invalid">ไฟล์ที่เลือกไม่ใช่แบบอักษร TTF หรือ OTF</string>
   <string name="morphe_custom_font_failed_to_load">ไม่สามารถโหลดแบบอักษรที่กำหนดเองได้ และถูกปิดใช้งาน</string>
+  <!-- layout.glassmenus.glassMenusPatch -->
+  <string name="morphe_glass_menus_screen_title">เมนูแบบกระจก</string>
+  <string name="morphe_glass_menus_screen_summary">เมนูแบบกระจกฝ้าทับบนเนื้อหาที่เบลออยู่ด้านหลัง</string>
+  <string name="morphe_glass_menus_title">เปิดใช้งานเมนูกระจก</string>
+  <string name="morphe_glass_menus_summary">แสดงเมนูและแผ่นด้านล่างเป็นกระจกฝ้า โดยจะทำให้เนื้อหาด้านหลังเบลอ</string>
+  <string name="morphe_glass_menus_user_dialog_message">เมนูจะแสดงผลแบบเกือบจะทึบแสงในขณะที่เปิดโหมดประหยัดแบตเตอรี่ หรือหากอุปกรณ์ไม่รองรับการเบลอ</string>
+  <string name="morphe_glass_menus_opacity_title">ความทึบแสงของกระจก</string>
+  <string name="morphe_glass_menus_opacity_summary">ระดับที่เมนูจะปกคลุมเนื้อหาที่เบลอ (0 คือใส, 100 คือทึบแสง)</string>
+  <string name="morphe_glass_menus_blur_title">เบลอ</string>
+  <string name="morphe_glass_menus_blur_summary">ระดับความเบลอของเนื้อหาที่อยู่ด้านหลังเมนู</string>
+  <string name="morphe_glass_menus_dim_title">หรี่แสง</string>
+  <string name="morphe_glass_menus_dim_summary">ระดับความมืดของหน้าจอบริเวณรอบๆ แผ่นด้านล่าง</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">ไม่สามารถแสดงความไม่ชอบชั่วคราว (API หมดเวลา)</string>

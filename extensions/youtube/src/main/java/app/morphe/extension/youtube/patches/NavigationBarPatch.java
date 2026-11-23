@@ -513,8 +513,10 @@ public final class NavigationBarPatch {
     }
 
     /**
-     * The navigation bar slides out of the screen, and is then removed from the layout so the page fills
-     * the room it leaves, as the app does when it hides the bar. It is added back before it slides in.
+     * The navigation bar slides out of the screen, and is then removed from the layout, as the app does
+     * when it hides the bar. It is added back before it slides in.
+     * The page fills the room of the bar while the bar slides over it, so the room is removed before the bar
+     * slides out, and added back after the bar has slid in. Otherwise the empty room shows behind the sliding bar.
      */
     private static void animateNavigationBarOnScroll(View container, View list, boolean hide) {
         navigationBarHiddenOnScroll = hide;
@@ -524,8 +526,9 @@ public final class NavigationBarPatch {
         }
         setBottomUiNavigationBarHeight();
 
-        if (!hide) {
-            restorePageRoom();
+        if (hide) {
+            removePageRoom(list, container);
+        } else {
             if (container.getVisibility() == View.GONE) {
                 container.setTranslationY(container.getHeight());
             }
@@ -534,24 +537,24 @@ public final class NavigationBarPatch {
         ObjectAnimator animator = ObjectAnimator.ofFloat(container, View.TRANSLATION_Y,
                 hide ? container.getHeight() : 0);
         animator.setDuration(NAVIGATION_BAR_SCROLL_ANIMATION_MILLISECONDS);
-        if (hide) {
-            animator.addListener(new AnimatorListenerAdapter() {
-                private boolean cancelled;
+        animator.addListener(new AnimatorListenerAdapter() {
+            private boolean cancelled;
 
-                @Override
-                public void onAnimationCancel(Animator animation) {
-                    cancelled = true;
-                }
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                cancelled = true;
+            }
 
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    if (!cancelled) {
-                        container.setVisibility(View.GONE);
-                        removePageRoom(list, container);
-                    }
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (cancelled) return;
+                if (hide) {
+                    container.setVisibility(View.GONE);
+                } else {
+                    restorePageRoom();
                 }
-            });
-        }
+            }
+        });
         navigationBarScrollAnimator = animator;
         animator.start();
     }
@@ -599,9 +602,12 @@ public final class NavigationBarPatch {
     /**
      * The pages that are not laid out behind the navigation bar keep the room for it below them,
      * which the app removes only when it hides the bar itself. The room of the bar is removed from the
-     * container of the pages of the scrolled list, so the page fills the room the hidden bar leaves.
+     * container of the pages of the scrolled list, so the page fills the room the bar leaves while it slides out.
      */
     private static void removePageRoom(View list, View container) {
+        // The room is still removed if the bar was hidden again before it had slid in.
+        if (pageRoomViewRef.get() != null) return;
+
         for (View view = list; view != null; view = view.getParent() instanceof View parent ? parent : null) {
             if (view.getId() != paneFragmentContainerId) continue;
 

@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ປັບໄລຍະຫ່າງລະຫວ່າງແຖບນຳທາງແບບແກ້ວ ແລະ ດ້ານລຸ່ມຂອງໜ້າຈໍ ຫຼື ການນຳທາງຂອງລະບົບ</string>
   <string name="morphe_navigation_bar_glass_size_title">ຂະໜາດຂອງແຖບນຳທາງແບບແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ ແລະ ໄລຍະຫ່າງຂອງປຸ່ມຂອງແຖບນຳທາງແບບແກ້ວ, ພ້ອມກັບການເບິ່ງຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
-  <string name="morphe_glass_menus_screen_title">ເມນູແບບແກ້ວ</string>
-  <string name="morphe_glass_menus_screen_summary">ເມນູທີ່ເປັນຄືກັບແກ້ວຝ້າ ທັບເທິງເນື້ອຫາທີ່ມົວຢູ່ທາງຫຼັງ</string>
-  <string name="morphe_glass_menus_title">ເປີດໃຊ້ງານເມນູແບບແກ້ວ</string>
-  <string name="morphe_glass_menus_summary">ສະແດງເມນູ ແລະ bottom sheets ເປັນແບບແກ້ວຝ້າ, ໂດຍທີ່ເນື້ອຫາທາງຫຼັງຈະຖືກເຮັດໃຫ້ມົວ</string>
-  <string name="morphe_glass_menus_user_dialog_message">ເມນູຈະຖືກສະແດງແບບເກືອບທຶບ ໃນຂະນະທີ່ເປີດໂໝດປະຢັດແບັດເຕີຣີ, ຫຼື ຖ້າອຸປະກອນບໍ່ຮອງຮັບການເຮັດໃຫ້ມົວ</string>
-  <string name="morphe_glass_menus_opacity_title">ຄວາມຂຸ່ນຂອງແກ້ວ</string>
-  <string name="morphe_glass_menus_opacity_summary">ເມນູປິດບັງເນື້ອຫາທີ່ມົວຫຼາຍປານໃດ (0 ແມ່ນໃສ, 100 ແມ່ນຂຸ່ນ)</string>
-  <string name="morphe_glass_menus_blur_title">ຄວາມມົວ</string>
-  <string name="morphe_glass_menus_blur_summary">ເນື້ອຫາທີ່ຢູ່ທາງຫຼັງເມນູມີຄວາມມົວຫຼາຍປານໃດ</string>
-  <string name="morphe_glass_menus_dim_title">ຄວາມມືດ</string>
-  <string name="morphe_glass_menus_dim_summary">ໜ້າຈໍອ້ອມຮອບ bottom sheet ມີຄວາມມືດຫຼາຍປານໃດ</string>
   <string name="morphe_navigation_bar_glass_size_height">ຄວາມສູງ</string>
   <string name="morphe_navigation_bar_glass_size_width">ຄວາມກວ້າງສູງສຸດ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ໄລຍະຫ່າງຂອງປຸ່ມ</string>
@@ -1658,6 +1647,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">ແຕະ ແລະ ຄ້າງໄວ້ເພື່ອຣີເຊັດການໜ່ວງເປັນ 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">ສະແດງເມນູໜ່ວງວິດີໂອ</string>
   <string name="morphe_video_delay_dialog_input_hint">ການໜ່ວງເປັນມິນລິວິນາທີ</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">ສະແດງເມນູເອັບເຟັກວິດີໂອ</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">ຈື່ຄຸນນະພາບ Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">ນຳໃຊ້ການເລືອກຄຸນນະພາບດ້ວຍຕົນເອງຂອງທ່ານກັບທຸກໆ Shorts ໃນອະນາຄົດ</string>

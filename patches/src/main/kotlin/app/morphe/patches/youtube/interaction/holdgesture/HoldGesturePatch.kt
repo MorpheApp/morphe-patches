@@ -35,7 +35,7 @@ private const val EXTENSION_CLASS =
 @Suppress("unused")
 val holdGesturePatch = patch(
     name = "Hold gesture",
-    description = "Adds options to change the playback speed and to keep it " +
+    description = "Adds options to change the playback speed, to keep it and to run actions " +
         "by dragging after tapping and holding the video player.",
 ) {
     dependsOn(
@@ -70,6 +70,16 @@ val holdGesturePatch = patch(
                     SwitchPreference("morphe_hold_gesture_lock", summary = true),
                     SwitchPreference("morphe_hold_gesture_lock_badge_always", summary = true),
                     SwitchPreference("morphe_hold_gesture_unlock_on_video_change", summary = true),
+                    SwitchPreference("morphe_hold_gesture_launcher", summary = true),
+                    ListPreference("morphe_hold_gesture_launcher_slot_count"),
+                    *(1..5).map { slot ->
+                        ListPreference(
+                            key = "morphe_hold_gesture_launcher_slot_$slot",
+                            tag = "app.morphe.extension.youtube.settings.preference.HoldGestureLauncherActionPreference",
+                            entriesKey = "morphe_hold_gesture_launcher_action_entries",
+                            entryValuesKey = "morphe_hold_gesture_launcher_action_entry_values"
+                        )
+                    }.toTypedArray(),
                 )
             )
         )

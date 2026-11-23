@@ -129,8 +129,7 @@ Second \"item\" text"</string>
 
     <!-- misc.album.albumMusicVideoPatch -->
     <string name="morphe_music_play_album_songs_title">Play album audio tracks</string>
-    <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-    <string name="morphe_music_play_album_songs_summary">Play the album audio only version of songs instead of a music video. Requires \'Spoof video streams\'</string>
+    <string name="morphe_music_play_album_songs_summary">Play the songs of an album instead of their music videos</string>
 
     <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
     <string name="morphe_music_enable_audio_video_switch_title">Enable audio/video switch</string>
@@ -311,6 +310,11 @@ Pausing crossfade to watch a music video can leave some videos black. Pausing cr
     <string name="morphe_music_playback_speed_title">Playback speed</string>
     <string name="morphe_music_playback_speed_summary">Speed used for all tracks. At 100% the app speed is used, such as the podcast playback speed</string>
     <string name="morphe_music_playback_speed_change_pitch_title">Change pitch with speed</string>
+
+    <!-- video.effects.videoEffectsPatch -->
+    <string name="morphe_music_video_effect_menu_title">Show Video effect menu</string>
+    <string name="morphe_music_video_effect_menu_summary">Adds Video effect to the player menu while a video plays</string>
+    <string name="morphe_music_video_effect_next_video">The effect shows from the next video</string>
 
     <!-- layout.captions.disableAutoCaptionsPatch -->
     <string name="morphe_music_disable_auto_captions_title">Disable auto captions</string>
@@ -713,6 +717,25 @@ The first column is the word, the second its reading; extra columns and lines wi
     <string name="morphe_music_lyrics_clear_cache_title">Clear stored lyrics</string>
     <string name="morphe_music_lyrics_clear_cache_summary">Delete the %s MB of lyrics kept on this device</string>
     <string name="morphe_music_lyrics_clear_cache_done">Cleared %s MB</string>
+    <string name="morphe_music_lyrics_cache_loading_summary">Calculating cache size…</string>
+    <string name="morphe_music_lyrics_cache_lyrics_category_title">Lyrics Cache</string>
+    <string name="morphe_music_lyrics_cache_clear_lyrics_title">Clear Lyrics Cache</string>
+    <string name="morphe_music_lyrics_cache_lyrics_summary">%1$s MB (%2$d songs)</string>
+    <string name="morphe_music_lyrics_cache_translation_category_title">Translation Cache</string>
+    <string name="morphe_music_lyrics_cache_clear_translation_title">Clear Translation Cache</string>
+    <string name="morphe_music_lyrics_cache_translation_summary">%1$s MB (%2$d translations)</string>
+    <string name="morphe_music_lyrics_cache_transliteration_category_title">Transliteration Cache</string>
+    <string name="morphe_music_lyrics_cache_clear_transliteration_title">Clear Transliteration Cache</string>
+    <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d transliterations)</string>
+    <string name="morphe_music_lyrics_cache_total_category_title">Total Cache Usage</string>
+    <string name="morphe_music_lyrics_cache_clear_all_title">Clear All Cache</string>
+    <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d items)</string>
+    <string name="morphe_music_lyrics_cache_clear_action">Clear</string>
+    <string name="morphe_music_lyrics_cache_close_action">Close</string>
+    <string name="morphe_music_lyrics_cache_confirm_lyrics">Delete %1$s MB (%2$d songs) of cached lyrics kept on this device?</string>
+    <string name="morphe_music_lyrics_cache_confirm_translation">Delete %1$s MB (%2$d translations) of cached translations kept on this device?</string>
+    <string name="morphe_music_lyrics_cache_confirm_transliteration">Delete %1$s MB (%2$d transliterations) of cached transliterations kept on this device?</string>
+    <string name="morphe_music_lyrics_cache_confirm_all">Delete %1$s MB (%2$d items) of all cached lyrics data kept on this device?</string>
     <string name="morphe_music_token_dialog_get_token">Get token</string>
     <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
     <string name="morphe_music_apple_music_token_dialog_instruction">"Paste the media-user-token cookie from music.apple.com
@@ -772,8 +795,11 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_tap_to_seek_summary">Tap a line to jump to that moment in the song, long-press it to copy the word under your finger, or the whole line when the press is not on a word. Off takes both gestures away</string>
     <string name="morphe_music_lyrics_show_section_title">Show section tags</string>
     <string name="morphe_music_lyrics_show_section_summary">Label each new section of the lyrics with a small tag, such as Verse or Chorus</string>
-    <string name="morphe_music_lyrics_show_copy_button_title">Show Copy button</string>
-    <string name="morphe_music_lyrics_show_copy_button_summary">Tap to copy original lyrics as plain text; long-press to save the raw lyrics source file and a converted TTML file to Downloads</string>
+    <string name="morphe_music_lyrics_show_copy_button_title">Show Copy / Share button</string>
+    <string name="morphe_music_lyrics_show_copy_button_summary">Show the Copy or Share button on the lyrics panel toolbar</string>
+    <string name="morphe_music_lyrics_copy_button_mode_title">Copy button mode</string>
+    <string name="morphe_music_lyrics_copy_mode_copy">Copy mode (tap to copy, long-press to save)</string>
+    <string name="morphe_music_lyrics_copy_mode_share">Share mode (tap to select 1-5 lines, long-press for copy or save)</string>
     <string name="morphe_music_lyrics_show_translate_button_title">Show Translate button</string>
     <string name="morphe_music_lyrics_show_translate_button_summary">Tap to toggle translation; long-press for translation only. Uses the enabled translation providers in their listed order</string>
     <string name="morphe_music_lyrics_show_romanize_button_title">Show Romanize or Transliterate button</string>
@@ -787,7 +813,49 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_local_romanization_dict_ready">Readings ready (%s entries)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_failed">Download failed - turn this off and on again to retry</string>
     <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline Dictionary</string>
-    <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japanese (SudachiDict, ~75 MB)</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_ja_parent">Japanese</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_kuromoji">Kuromoji (~17 MB) — fast morphological analyzer &amp; ruby</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_japanese">SudachiDict (~75 MB) — full Japanese word dictionary</string>
+    <string name="morphe_music_lyrics_japanese_dict_engine_title">Priority &amp; fallback order</string>
+    <string name="morphe_music_lyrics_japanese_engine_kuromoji_first">Kuromoji priority (SudachiDict fallback)</string>
+    <string name="morphe_music_lyrics_japanese_engine_sudachi_first">SudachiDict priority (Kuromoji fallback)</string>
+    <string name="morphe_music_lyrics_custom_font_title">Custom lyrics font</string>
+    <string name="morphe_music_lyrics_custom_font_summary_default">Default system font (tap to upload a .ttf or .otf font file)</string>
+    <string name="morphe_music_lyrics_custom_font_summary_active">Active font: %s</string>
+    <string name="morphe_music_lyrics_custom_font_dialog_message">Upload a .ttf or .otf font file (such as SF Pro Bold, Inter Bold, or Inter ExtraBold) from your device storage to use across the lyrics view.</string>
+    <string name="morphe_music_lyrics_custom_font_choose">Upload font</string>
+    <string name="morphe_music_lyrics_custom_font_reset">Reset to default</string>
+    <string name="morphe_music_lyrics_custom_font_applied">Custom lyrics font applied: %s</string>
+    <string name="morphe_music_lyrics_custom_font_cleared">Reverted to default lyrics font</string>
+    <string name="morphe_music_lyrics_custom_font_invalid">Invalid or unsupported font file (.ttf or .otf required)</string>
+    <string name="morphe_music_lyrics_share_preview_title">Share lyrics</string>
+    <string name="morphe_music_lyrics_share_button">Share</string>
+    <string name="morphe_music_lyrics_copy">Copy</string>
+    <string name="morphe_music_lyrics_share_options_title">Lyrics actions</string>
+    <string name="morphe_music_lyrics_copy_plain_option">Copy lyrics as plain text</string>
+    <string name="morphe_music_lyrics_save_file_option">Save lyrics &amp; TTML to Downloads</string>
+    <string name="morphe_music_lyrics_share_cancel">Cancel</string>
+    <string name="morphe_music_lyrics_share_count" translatable="false">%1$d / %2$d</string>
+    <string name="morphe_music_lyrics_share_select_hint">Tap 1–5 lines to share</string>
+    <string name="morphe_music_lyrics_share_max_lines">Maximum 5 lines can be selected</string>
+    <string name="morphe_music_lyrics_share_failed">Could not create lyrics share card</string>
+    <string name="morphe_music_lyrics_share_bg_blur">Blur</string>
+    <string name="morphe_music_lyrics_share_bg_cover">Cover</string>
+    <string name="morphe_music_lyrics_share_bg_color">Color</string>
+    <string name="morphe_music_lyrics_share_bg_photo">Photo</string>
+    <string name="morphe_music_lyrics_share_branding_logo">YT Music logo</string>
+    <string name="morphe_music_lyrics_share_layer_romaji">Romaji</string>
+    <string name="morphe_music_lyrics_share_layer_translate">Translate</string>
+    <string name="morphe_music_lyrics_share_layer_bg">BG vocals</string>
+    <string name="morphe_music_lyrics_share_custom_color">Custom color</string>
+    <string name="morphe_music_lyrics_share_photo_failed">Could not load selected image</string>
+    <string name="morphe_music_lyrics_share_card_cta">Share card</string>
+    <string name="morphe_music_lyrics_copy_text_cta">Copy text</string>
+    <string name="morphe_music_lyrics_share_back">Back to lyric selection</string>
+    <string name="morphe_music_lyrics_share_loading_photo">Loading photo...</string>
+    <string name="morphe_music_lyrics_share_preparing">Creating card...</string>
+    <string name="morphe_music_lyrics_share_color_swatch">Color swatch %d</string>
+    <string name="morphe_music_lyrics_share_unknown_track">Unknown Track</string>
     <string name="morphe_music_lyrics_local_romanization_dict_unidict">Chinese and Cantonese characters (UniDict, ~8 MB)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chinese words (pinyin-pro, ~17 MB)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_cldr">Greek, Slavic Cyrillic (incl. Russian, Ukrainian, Bulgarian, Serbian, Belarusian, Macedonian), Georgian, Armenian, Hebrew, Arabic, Amharic and Syriac transliteration (CLDR, ~0.5 MB)</string>

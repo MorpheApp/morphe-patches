@@ -10,21 +10,30 @@ package app.morphe.extension.youtube.holdgesture;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
+import android.graphics.RectF;
 import android.os.Build;
 import android.os.SystemClock;
 import android.view.HapticFeedbackConstants;
 import android.view.InputDevice;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.window.OnBackInvokedCallback;
+import android.window.OnBackInvokedDispatcher;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.EnumSetting;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.holdgesture.HoldGesture.Adjust;
 import app.morphe.extension.youtube.holdgesture.HoldGesture.Outcome;
 import app.morphe.extension.youtube.holdgesture.HoldGesture.State;
@@ -40,13 +49,14 @@ import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
 
 /**
  * Turns YouTube's "tap and hold for 2x" into a gesture that goes on after the long press:
- * a drag to the side changes the speed, and a drag down keeps the speed after the release.
+ * a drag to the side changes the speed, a drag down keeps the speed after the release,
+ * and a drag up opens a launcher of actions.
  * <p>
  * YouTube still decides when a long press on the player begins. From then on this class takes
  * the touch away from the app until the finger is lifted.
  */
 @SuppressWarnings("unused")
-public final class HoldGestureController implements HoldGesture.Listener {
+public final class HoldGestureController implements HoldGesture.Listener, LauncherAction.Host {
 
     public enum SpeedStep {
         STEP_005(0.05f),
@@ -74,16 +84,46 @@ public final class HoldGestureController implements HoldGesture.Listener {
         }
     }
 
+    /**
+     * A slot of the launcher can be set while the launcher has that many slots.
+     */
+    public static final class LauncherSlotAvailability implements Setting.Availability {
+        private final int slot;
+
+        public LauncherSlotAvailability(int slot) {
+            this.slot = slot;
+        }
+
+        @Override
+        public boolean isAvailable() {
+            return Settings.HOLD_GESTURE.get() && Settings.HOLD_GESTURE_LAUNCHER.get()
+                    && Settings.HOLD_GESTURE_LAUNCHER_SLOT_COUNT.get() >= slot;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.HOLD_GESTURE, Settings.HOLD_GESTURE_LAUNCHER,
+                    Settings.HOLD_GESTURE_LAUNCHER_SLOT_COUNT);
+        }
+    }
+
     private static final float SLOWEST_SPEED = 0.1f;
     private static final long LOCK_FLASH_MS = 1500;
     private static final long UNLOCK_FLASH_MS = 1200;
     /** How long after a new video starts a locked speed is put back when something else changes it. */
     private static final long KEEP_LOCK_AFTER_VIDEO_CHANGE_MS = 5000;
     private static final float BADGE_ALPHA_WITHOUT_CONTROLS = 0.55f;
+    private static final int LAUNCHER_FEWEST_SLOTS = 3;
+    private static final List<EnumSetting<LauncherAction>> LAUNCHER_SLOTS = List.of(
+            Settings.HOLD_GESTURE_LAUNCHER_SLOT_1, Settings.HOLD_GESTURE_LAUNCHER_SLOT_2,
+            Settings.HOLD_GESTURE_LAUNCHER_SLOT_3, Settings.HOLD_GESTURE_LAUNCHER_SLOT_4,
+            Settings.HOLD_GESTURE_LAUNCHER_SLOT_5);
+    private static final long UNLOCK_AFTER_LAUNCHER_MS = 400;
 
     private static final HoldGestureController instance = new HoldGestureController();
 
     private WeakReference<HoldGestureOverlayView> overlayRef = new WeakReference<>(null);
+    private WeakReference<HoldLauncherView> launcherRef = new WeakReference<>(null);
     private WeakReference<Window> windowRef = new WeakReference<>(null);
     @Nullable
     private WindowTouchInterceptor interceptor;
@@ -103,6 +143,21 @@ public final class HoldGestureController implements HoldGesture.Listener {
     private HoldGesture gesture;
     private boolean lockArmed;
     private boolean toldAboutPressToSwipe;
+
+    /** Where the long press was, in the window, in dp. */
+    private float pressX;
+    private float pressY;
+    private LauncherAction[] launcherActions = new LauncherAction[0];
+    /** Null until the launcher is open. */
+    @Nullable
+    private RadialLayout launcherLayout;
+    private int launcherSelected = -1;
+
+    /** While set, the app gets no touches at all, and only the unlock button ends that. */
+    private boolean screenLocked;
+    private boolean unlockPressed;
+    @Nullable
+    private Object backBlocker;
     private final Runnable tickGesture = this::tickGesture;
 
     /** Speed to go back to when the hold ends without a lock. */
@@ -160,7 +215,15 @@ public final class HoldGestureController implements HoldGesture.Listener {
         final Window window = activity.getWindow();
         if (windowRef.get() != window) {
             windowRef = new WeakReference<>(window);
-            interceptor = WindowTouchInterceptor.install(window, this::onWindowTouchEvent);
+            interceptor = WindowTouchInterceptor.install(window, this::onWindowTouchEvent, this::onWindowKeyEvent);
+            if (screenLocked) {
+                // The back gesture is kept from the activity that is gone.
+                blockBack(activity);
+            }
+        }
+        if (gesture != null && launcherLayout != null) {
+            // The launcher is laid out for the player layout that is replaced now.
+            gesture.cancel();
         }
 
         final HoldGestureOverlayView previous = overlayRef.get();
@@ -171,6 +234,15 @@ public final class HoldGestureController implements HoldGesture.Listener {
         overlayRoot.addView(overlay, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         overlayRef = new WeakReference<>(overlay);
+
+        final HoldLauncherView previousLauncher = launcherRef.get();
+        if (previousLauncher != null && previousLauncher.getParent() instanceof ViewGroup parent) {
+            parent.removeView(previousLauncher);
+        }
+        final HoldLauncherView launcher = new HoldLauncherView(overlayRoot.getContext());
+        overlayRoot.addView(launcher, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        launcherRef = new WeakReference<>(launcher);
 
         if (!observersRegistered) {
             observersRegistered = true;
@@ -201,8 +273,21 @@ public final class HoldGestureController implements HoldGesture.Listener {
         }
     }
 
+    private boolean onWindowKeyEvent(WindowTouchInterceptor source, KeyEvent event) {
+        if (source != interceptor || !screenLocked || event.getKeyCode() != KeyEvent.KEYCODE_BACK) return false;
+
+        if (event.getAction() == KeyEvent.ACTION_UP) {
+            onBackWhileLocked();
+        }
+        return true;
+    }
+
     private boolean handleTouch(MotionEvent event) {
         final int action = event.getActionMasked();
+        if (screenLocked) {
+            handleLockedTouch(event);
+            return true;
+        }
         if (action == MotionEvent.ACTION_DOWN) {
             fingerDown = true;
             fingerId = event.getPointerId(0);
@@ -263,6 +348,15 @@ public final class HoldGestureController implements HoldGesture.Listener {
         return overlay.isOnBadge(fingerX - location[0], fingerY - location[1]);
     }
 
+    private boolean isOnUnlock() {
+        final HoldGestureOverlayView overlay = overlayRef.get();
+        if (overlay == null || !overlay.isAttachedToWindow()) return false;
+
+        final int[] location = new int[2];
+        overlay.getLocationInWindow(location);
+        return overlay.isOnUnlock(fingerX - location[0], fingerY - location[1]);
+    }
+
     /**
      * Ends the touch for the views of the app, which saw it begin and now get nothing more of it.
      */
@@ -302,9 +396,11 @@ public final class HoldGestureController implements HoldGesture.Listener {
         final float maxSpeed = Utils.clamp(Settings.HOLD_GESTURE_SPEED_MAX.get(),
                 SLOWEST_SPEED, VideoInformation.PLAYBACK_SPEED_MAXIMUM);
         final float minSpeed = Utils.clamp(Settings.HOLD_GESTURE_SPEED_MIN.get(), SLOWEST_SPEED, maxSpeed);
+        launcherActions = launcherActions();
         final HoldGesture.Config config = new HoldGesture.Config(
                 Settings.HOLD_GESTURE_SPEED_SWIPE.get(),
                 Settings.HOLD_GESTURE_LOCK.get(),
+                launcherActions.length > 0,
                 step.speed, minSpeed, maxSpeed,
                 Settings.HOLD_GESTURE_SPEED_SENSITIVITY.get().stepDistance);
 
@@ -320,13 +416,17 @@ public final class HoldGestureController implements HoldGesture.Listener {
         ownsTouch = true;
         lockArmed = false;
         flashUntil = 0;
+        pressX = fingerX / density;
+        pressY = fingerY / density;
+        launcherLayout = null;
+        launcherSelected = -1;
         overlay.setSpeedRange(step.speed, minSpeed, maxSpeed);
         overlay.post(this::cancelTouchForApp);
 
         Logger.printDebug(() -> "Hold begins at " + holdSpeed + "x, speed before: " + speedBeforeHold
                 + "x, locked: " + locked);
         gesture = new HoldGesture(config, this);
-        gesture.begin(fingerX / density, fingerY / density, room, holdSpeed, locked);
+        gesture.begin(pressX, pressY, room, holdSpeed, locked);
         return true;
     }
 
@@ -381,6 +481,11 @@ public final class HoldGestureController implements HoldGesture.Listener {
                 overlay.postOnAnimation(tickGesture);
             }
             case LOCK_TARGET -> overlay.showLockTarget();
+            case LAUNCHER -> {
+                // The launcher is for the video as it plays without the hold.
+                overlay.hidePill();
+                applySpeed(speedBeforeHold);
+            }
             case IDLE -> {
                 overlay.hidePill();
                 overlay.hideLockTarget();
@@ -450,15 +555,229 @@ public final class HoldGestureController implements HoldGesture.Listener {
     }
 
     @Override
+    public void onLauncherMoved(float x, float y) {
+        final HoldLauncherView launcher = launcherRef.get();
+        if (launcher == null || !launcher.isAttachedToWindow()) return;
+
+        // The launcher is laid out in the coordinates of its view, which is the player.
+        final float density = density();
+        final int[] location = new int[2];
+        launcher.getLocationInWindow(location);
+        final float left = location[0] / density;
+        final float top = location[1] / density;
+        final float fingerInViewX = x - left;
+        final float fingerInViewY = y - top;
+
+        RadialLayout layout = launcherLayout;
+        if (layout == null) {
+            final RectF area = launcher.safeArea();
+            layout = RadialLayout.create(pressX - left, pressY - top, fingerInViewX, fingerInViewY,
+                    area.left, area.top, area.right, area.bottom, launcherActions.length);
+            launcherLayout = layout;
+            final HoldLauncherView.Item[] items = new HoldLauncherView.Item[launcherActions.length];
+            for (int i = 0; i < items.length; i++) {
+                final LauncherAction action = launcherActions[i];
+                items[i] = new HoldLauncherView.Item(new LauncherIcon(action), action.label(), action.isOn());
+            }
+            Logger.printDebug(() -> "Launcher opens with: " + List.of(launcherActions));
+            launcher.open(layout, items, fingerInViewX, fingerInViewY);
+            haptic(HapticFeedbackConstants.KEYBOARD_TAP);
+        }
+
+        final int selected = layout.select(fingerInViewX, fingerInViewY, launcherSelected);
+        if (selected != launcherSelected) {
+            launcherSelected = selected;
+            Logger.printDebug(() -> "Launcher points at: " + (selected < 0 ? "nothing" : launcherActions[selected]));
+            if (selected >= 0) {
+                haptic(HapticFeedbackConstants.CLOCK_TICK);
+            }
+        }
+        launcher.setPointer(fingerInViewX, fingerInViewY, selected);
+    }
+
+    @Override
     public void onFinished(Outcome outcome, float speed) {
         Logger.printDebug(() -> "Hold ends: " + outcome + " at " + speed + "x");
         gesture = null;
+        final LauncherAction picked = outcome == Outcome.LAUNCHER && launcherSelected >= 0
+                ? launcherActions[launcherSelected]
+                : null;
+        if (launcherLayout != null) {
+            launcherLayout = null;
+            launcherSelected = -1;
+            final HoldLauncherView launcher = launcherRef.get();
+            if (launcher != null) {
+                launcher.close(picked != null);
+            }
+        }
         switch (outcome) {
-            case RESTORE -> applySpeed(speedBeforeHold);
+            case RESTORE, LAUNCHER -> applySpeed(speedBeforeHold);
             case LOCK -> lock(speed);
             case UNLOCK -> unlock();
         }
         updateBadge();
+
+        if (picked != null) {
+            haptic(confirmHaptic());
+            // After the touch is done with, so that nothing an action does gets in its way.
+            Utils.runOnMainThread(() -> runLauncherAction(picked));
+        }
+    }
+
+    // endregion
+
+    // region launcher and screen lock
+
+    /**
+     * @return The actions of the slots that are in use, each one once, without those of patches
+     *         that were not used on the app. Empty if the launcher is off.
+     */
+    private static LauncherAction[] launcherActions() {
+        if (!Settings.HOLD_GESTURE_LAUNCHER.get()) return new LauncherAction[0];
+
+        final int count = Utils.clamp(Settings.HOLD_GESTURE_LAUNCHER_SLOT_COUNT.get(),
+                LAUNCHER_FEWEST_SLOTS, LAUNCHER_SLOTS.size());
+        final List<LauncherAction> actions = new ArrayList<>(count);
+        for (EnumSetting<LauncherAction> slot : LAUNCHER_SLOTS.subList(0, count)) {
+            final LauncherAction action = slot.get();
+            if (action.isAvailable() && !actions.contains(action)) {
+                actions.add(action);
+            }
+        }
+        return actions.toArray(new LauncherAction[0]);
+    }
+
+    private void runLauncherAction(LauncherAction action) {
+        try {
+            Logger.printDebug(() -> "Launcher runs: " + action);
+            action.run(this);
+        } catch (Exception ex) {
+            Logger.printException(() -> "runLauncherAction failure", ex);
+        }
+    }
+
+    @Override
+    public View playerView() {
+        return overlayRef.get();
+    }
+
+    @Override
+    public void flashShutter() {
+        final HoldLauncherView launcher = launcherRef.get();
+        if (launcher != null) {
+            launcher.flash();
+        }
+    }
+
+    @Override
+    public void lockScreen() {
+        final HoldGestureOverlayView overlay = overlayRef.get();
+        // The way out of the lock is a button on the player.
+        if (screenLocked || overlay == null || !overlay.isAttachedToWindow()
+                || !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+            return;
+        }
+
+        Logger.printDebug(() -> "Screen locked");
+        screenLocked = true;
+        unlockPressed = false;
+        // Once the launcher is gone, which the unlock button would show through.
+        overlay.postDelayed(() -> {
+            if (screenLocked) {
+                overlay.showUnlock();
+            }
+        }, UNLOCK_AFTER_LAUNCHER_MS);
+        blockBack(Utils.getActivity());
+    }
+
+    private void blockBack(@Nullable Activity activity) {
+        releaseBack();
+        if (activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            backBlocker = BackBlocker.block(activity, this::onBackWhileLocked);
+        }
+    }
+
+    private void releaseBack() {
+        if (backBlocker != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            BackBlocker.release(backBlocker);
+        }
+        backBlocker = null;
+    }
+
+    private void unlockScreen() {
+        if (!screenLocked) return;
+
+        Logger.printDebug(() -> "Screen unlocked");
+        screenLocked = false;
+        unlockPressed = false;
+        final HoldGestureOverlayView overlay = overlayRef.get();
+        if (overlay != null) {
+            overlay.hideUnlock();
+        }
+        releaseBack();
+        haptic(confirmHaptic());
+    }
+
+    /**
+     * Every touch on a locked screen shows the button that unlocks it. A tap on that button unlocks.
+     */
+    private void handleLockedTouch(MotionEvent event) {
+        final HoldGestureOverlayView overlay = overlayRef.get();
+        if (overlay == null || !overlay.isAttachedToWindow()) {
+            // Without the player there is no button to get out with.
+            unlockScreen();
+            return;
+        }
+
+        final int action = event.getActionMasked();
+        fingerX = event.getX();
+        fingerY = event.getY();
+        if (action == MotionEvent.ACTION_DOWN) {
+            unlockPressed = isOnUnlock();
+            overlay.showUnlock();
+            overlay.setUnlockPressed(unlockPressed);
+        } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+            final boolean unlock = action == MotionEvent.ACTION_UP && unlockPressed && isOnUnlock();
+            unlockPressed = false;
+            overlay.setUnlockPressed(false);
+            if (unlock) {
+                unlockScreen();
+            }
+        }
+    }
+
+    private void onBackWhileLocked() {
+        final HoldGestureOverlayView overlay = overlayRef.get();
+        if (overlay != null) {
+            overlay.showUnlock();
+        }
+    }
+
+    /**
+     * Keeps the back gesture from the app on Android versions where it does not come as a key.
+     */
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private static final class BackBlocker {
+        private final OnBackInvokedDispatcher dispatcher;
+        private final OnBackInvokedCallback callback;
+
+        private BackBlocker(OnBackInvokedDispatcher dispatcher, OnBackInvokedCallback callback) {
+            this.dispatcher = dispatcher;
+            this.callback = callback;
+        }
+
+        static Object block(Activity activity, Runnable onBack) {
+            final OnBackInvokedDispatcher dispatcher = activity.getOnBackInvokedDispatcher();
+            final OnBackInvokedCallback callback = onBack::run;
+            dispatcher.registerOnBackInvokedCallback(OnBackInvokedDispatcher.PRIORITY_OVERLAY, callback);
+            return new BackBlocker(dispatcher, callback);
+        }
+
+        static void release(Object blocker) {
+            if (blocker instanceof BackBlocker backBlocker) {
+                backBlocker.dispatcher.unregisterOnBackInvokedCallback(backBlocker.callback);
+            }
+        }
     }
 
     // endregion
@@ -535,8 +854,12 @@ public final class HoldGestureController implements HoldGesture.Listener {
         if (overlay != null) {
             overlay.setFullscreen(type == PlayerType.WATCH_WHILE_FULLSCREEN);
         }
-        if (gesture != null && !type.isMaximizedOrFullscreen()) {
-            gesture.cancel();
+        if (!type.isMaximizedOrFullscreen()) {
+            if (gesture != null) {
+                gesture.cancel();
+            }
+            // The unlock button is on the player.
+            unlockScreen();
         }
     }
 

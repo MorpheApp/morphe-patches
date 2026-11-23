@@ -13,7 +13,13 @@ message MenuRenderer {
 }
 
 message MenuItem {
+    optional MenuServiceItemRenderer menuServiceItemRenderer = 66441108;
     optional MenuNavigationItemRenderer menuNavigationItemRenderer = 66441155;
+}
+
+// Also the items that the app adds to the player menu, such as Quality.
+message MenuServiceItemRenderer {
+    optional MenuIcon icon = 2;
 }
 
 message MenuNavigationItemRenderer {
@@ -28,6 +34,8 @@ message MenuNavigationItemRenderer {
     // Not a field of the app. Marks the export item of a playlist or album added by Morphe,
     // with the playlist it exports.
     optional string morpheExportPlaylistId = 536870909;
+    // Not a field of the app. Marks the video effect item of the player menu added by Morphe.
+    optional bool morpheVideoEffect = 536870908;
 }
 
 message MenuText {

@@ -19,8 +19,6 @@ import androidx.annotation.Nullable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import app.morphe.extension.music.patches.album.PlayAlbumSongsPatch;
-import app.morphe.extension.music.patches.album.PlaylistRequest;
 import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
 import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
 import app.morphe.extension.music.settings.Settings;
@@ -79,14 +77,12 @@ public class ScrobbleManager {
     private Runnable lfRunnable;
 
     private ScrobbleManager() {
-        PlayAlbumSongsPatch.addSubstitutionListener(
-                (videoId, resolvedVideoId) -> reloadCurrentTrack());
         VideoInformation.addVideoIdListener(videoId -> reloadCurrentTrack());
     }
 
     /**
-     * The song of an album, and the video id of the app itself, can both land after the metadata
-     * of a track, so the track is read again whenever either of them arrives.
+     * The video id of the app can land after the metadata of a track, so the track is read again
+     * when it arrives.
      */
     private void reloadCurrentTrack() {
         Utils.runOnMainThread(() -> {
@@ -174,19 +170,10 @@ public class ScrobbleManager {
             String rawTitle = metadata.getString(MediaMetadata.METADATA_KEY_TITLE);
             String rawArtist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST);
 
-            // The metadata of a substituted track still describes the music video, which names
-            // another version of the song and is minutes longer. Only the artist is the same.
-            PlaylistRequest.Song song = PlayAlbumSongsPatch.getSong(VideoInformation.getVideoId());
-            if (song != null && !song.title().isBlank()) {
-                rawTitle = song.title();
-            }
-
             Pair<String, String> resolved = resolveTitleAndArtist(rawTitle, rawArtist);
             String title = resolved.first;
             String artist = resolved.second;
-            final int duration = song != null && song.durationSeconds() > 0
-                    ? song.durationSeconds()
-                    : (int) (metadata.getLong(MediaMetadata.METADATA_KEY_DURATION) / 1000);
+            final int duration = (int) (metadata.getLong(MediaMetadata.METADATA_KEY_DURATION) / 1000);
             Bitmap artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
             if (artwork == null) artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
             if (title == null || title.isBlank() || artist == null || artist.isBlank()) {

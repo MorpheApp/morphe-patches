@@ -14,10 +14,12 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.AppIconPatch;
+import app.morphe.extension.reddit.patches.DownloadAllFromGalleryPatch;
 import app.morphe.extension.reddit.patches.DownloadLocationPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.OpenSystemShareSheetPatch;
+import app.morphe.extension.reddit.patches.PrivateBrowsingModePatch;
 import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.patches.SharePostContentPatch;
@@ -45,10 +47,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     @Override
     public boolean getSettingsStatus() {
         return AppIconPatch.isPatchIncluded() ||
+                DownloadAllFromGalleryPatch.isPatchIncluded() ||
                 DownloadLocationPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
                 OpenSystemShareSheetPatch.isPatchIncluded() ||
+                PrivateBrowsingModePatch.isPatchIncluded() ||
                 RedgifsAudioPatch.isPatchIncluded() ||
                 SanitizeSharingLinksPatch.isPatchIncluded() ||
                 SharePostContentPatch.isPatchIncluded();
@@ -73,6 +77,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         if (AppIconPatch.isPatchIncluded()) {
             addPreference(AppIconPatch.getIconPreference(context));
         }
+        if (DownloadAllFromGalleryPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.DOWNLOAD_ALL_FROM_GALLERY
+            ));
+        }
         if (DownloadLocationPatch.isPatchIncluded()) {
             addPreference(new DownloadLocationPreference(context));
         }
@@ -92,6 +102,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new BooleanSettingPreference(
                     context,
                     SharedSettings.OPEN_SYSTEM_SHARE_SHEET
+            ));
+        }
+        if (PrivateBrowsingModePatch.isPatchIncluded()) {
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.PRIVATE_BROWSING_MODE
             ));
         }
         if (RedgifsAudioPatch.isPatchIncluded()) {

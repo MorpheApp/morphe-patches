@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Προσαρμόστε τον χώρο μεταξύ της γυάλινης γραμμής πλοήγησης και του κάτω μέρους της οθόνης ή της πλοήγησης του συστήματος</string>
   <string name="morphe_navigation_bar_glass_size_title">Μέγεθος γυάλινης γραμμής πλοήγησης</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ρυθμίστε το ύψος, το πλάτος και την απόσταση των κουμπιών της γυάλινης γραμμής πλοήγησης, με προεπισκόπηση. Τα κουμπιά που δεν χωράνε στο πλάτος της οθόνης κρύβονται</string>
-  <string name="morphe_glass_menus_screen_title">Γυάλινα μενού</string>
-  <string name="morphe_glass_menus_screen_summary">Μενού σαν θολό γυαλί πάνω από το θολό περιεχόμενο πίσω τους</string>
-  <string name="morphe_glass_menus_title">Ενεργοποίηση γυάλινων μενού</string>
-  <string name="morphe_glass_menus_summary">Εμφανίζει τα μενού και τα bottom sheets ως θολό γυαλί, με το περιεχόμενο πίσω τους να είναι θολό</string>
-  <string name="morphe_glass_menus_user_dialog_message">Τα μενού εμφανίζονται σχεδόν αδιαφανή όταν είναι ενεργή η εξοικονόμηση μπαταρίας ή εάν η συσκευή δεν υποστηρίζει θόλωμα</string>
-  <string name="morphe_glass_menus_opacity_title">Αδιαφάνεια γυαλιού</string>
-  <string name="morphe_glass_menus_opacity_summary">Το πόσο καλύπτει το μενού το θολό περιεχόμενο (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
-  <string name="morphe_glass_menus_blur_title">Θόλωμα</string>
-  <string name="morphe_glass_menus_blur_summary">Το πόσο θολρίζει το περιεχόμενο πίσω από το μενού</string>
-  <string name="morphe_glass_menus_dim_title">Σκότος</string>
-  <string name="morphe_glass_menus_dim_summary">Το πόσο σκουρόνιασε η οθόνη γύρω από ένα φύλλο στο κάτω μέρος</string>
   <string name="morphe_navigation_bar_glass_size_height">Ύψος</string>
   <string name="morphe_navigation_bar_glass_size_width">Μέγιστο πλάτος</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Απόσταση κουμπιών</string>
@@ -1658,6 +1647,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">Πατήστε και κρατήστε πατημένο για επαναφορά της καθυστέρησης στα 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Εμφάνιση μενού καθυστέρησης βίντεο</string>
   <string name="morphe_video_delay_dialog_input_hint">Καθυστέρηση σε χιλιοστά του δευτερολέπτου</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Εμφάνιση μενού εφέ βίντεο</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Απομνημονεύει την ποιότητα Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Εφαρμόζει την μη αυτόματη επιλογή ποιότητας σε όλα τα μελλοντικά Shorts</string>

@@ -1172,17 +1172,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">بۆشایی نێوان شریتی گەڕانەوەی شیشەیی و خوارەوەی شاشە یان گەڕانەوەی سیستەم ڕێکبخە</string>
   <string name="morphe_navigation_bar_glass_size_title">قەبارەی شریتی گەشتکردنی شووشەیی</string>
   <string name="morphe_navigation_bar_glass_size_summary">بە پێشوەکشانێک، بەرزی، پانی و بۆشایی دوگمەکانی شریتی گەشتکردنی شووشەیی ڕێکبخە. ئەو دوگمانەی لە پانی شاشەکەدا جێگەیان نابێت دەشاردرێنەوە</string>
-  <string name="morphe_glass_menus_screen_title">مێنووە شیشینەکان</string>
-  <string name="morphe_glass_menus_screen_summary">مێنووەکان وەک شیشی لێڵ دەردەکەون بەسەر ناوەڕۆکی لێڵکراوی پشتیاندا</string>
-  <string name="morphe_glass_menus_title">چالاککردنی مێنووە شیشینەکان</string>
-  <string name="morphe_glass_menus_summary">مێنووەکان و پەڕەکانی خوارەوە وەک شیشی لێڵ پیشان دەدات، کە ناوەڕۆکی پشتیان لێڵکراوە</string>
-  <string name="morphe_glass_menus_user_dialog_message">مێنووەکان بە شێوەیەکی نزیک لە لێڵ پیشان دەدرێن کاتێک پارێزەری باتری چالاکە، یان ئەگەر ئامێرەکە پشتگیری لێڵکردن نەکات</string>
-  <string name="morphe_glass_menus_opacity_title">ڕوونی شیش</string>
-  <string name="morphe_glass_menus_opacity_summary">بڕی داپۆشینی ناوەڕۆکە لێڵکراوەکە لەلایەن مینووەوە (0 ڕوونە، 100 لێڵە)</string>
-  <string name="morphe_glass_menus_blur_title">لێڵکردن</string>
-  <string name="morphe_glass_menus_blur_summary">بڕی لێڵبوونی ناوەڕۆکەکەی پشت مینووەکە</string>
-  <string name="morphe_glass_menus_dim_title">تاریککردن</string>
-  <string name="morphe_glass_menus_dim_summary">بڕی تاریکبوونی شاشەکە لە دەوروبەری bottom sheet</string>
   <string name="morphe_navigation_bar_glass_size_height">بەرزی</string>
   <string name="morphe_navigation_bar_glass_size_width">زۆرترین پانی</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">بۆشایی دوگمەکان</string>
@@ -1659,6 +1648,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">پێی بگرە بۆ گەڕاندنەوەی دواکەوتن بۆ 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">پیشاندانی مینیۆی دواکەوتنی ڤیدیۆ</string>
   <string name="morphe_video_delay_dialog_input_hint">دواکەوتن بە میلی چرکە</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">پیشاندەی کاری ڤیدیۆ نیشان بدە</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">بیرهێنانەوەی کوالێتی Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">هەڵبژاردنی دەستی کوالێتی تۆ بۆ هەموو Shorts-ەکانی داهاتوو جێبەجێ دەکات</string>

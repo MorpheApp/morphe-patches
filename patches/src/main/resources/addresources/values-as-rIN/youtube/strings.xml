@@ -1171,17 +1171,6 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">গ্লাছ নেভিগেচন বাৰ আৰু স্ক্ৰীনৰ তলৰ অংশ বা চিষ্টেম নেভিগেচনৰ মাজৰ খালী ঠাইটো মিলাই লওক</string>
   <string name="morphe_navigation_bar_glass_size_title">গ্লাছ নেভিগেচন বাৰৰ আকাৰ</string>
   <string name="morphe_navigation_bar_glass_size_summary">প্ৰিভিউৰ সৈতে গ্লাছ নেভিগেচন বাৰৰ উচ্চতা, প্ৰস্থ আৰু বুটামৰ ব্যৱধান সামঞ্জস্য কৰক। স্ক্ৰীণৰ প্ৰস্থত খাপ নোখোৱা বুটামবোৰ লুকুৱাই ৰখা হয়</string>
-  <string name="morphe_glass_menus_screen_title">গ্লাছ মেনুসমূহ</string>
-  <string name="morphe_glass_menus_screen_summary">ইয়াৰ পিছৰ ধুঁৱাবৰণৰ বিষয়বস্তুৰ ওপৰত ফ্ৰচেড গ্লাছৰ দৰে মেনুসমূহ</string>
-  <string name="morphe_glass_menus_title">গ্লাছ মেনুসমূহ সক্ৰিয় কৰক</string>
-  <string name="morphe_glass_menus_summary">মেনু আৰু বটম শ্বীটসমূহক ফ্ৰচেড গ্লাছৰ দৰে দেখুৱায়, যাৰ পিছৰ বিষয়বস্তু ধুঁৱাবৰণ হয়</string>
-  <string name="morphe_glass_menus_user_dialog_message">বেটাৰী ছেভাৰ অন থাকিলে বা ডিভাইচটোৱে ব্লৰৰ সহায় নকৰিলে মেনুসমূহ প্ৰায় অস্বচ্ছকৈ দেখুৱায়</string>
-  <string name="morphe_glass_menus_opacity_title">গ্লাছ অপাসিটি</string>
-  <string name="morphe_glass_menus_opacity_summary">মেনুৱে ব্লাৰ কৰা বিষয়বস্তুটোক কিমান ঢাকিব (০ মানে স্বচ্ছ, ১০০ মানে অপেক)</string>
-  <string name="morphe_glass_menus_blur_title">ব্লাৰ</string>
-  <string name="morphe_glass_menus_blur_summary">মেনুৰ পিছৰ বিষয়বস্তু কিমান ব্লাৰ হ\'ব</string>
-  <string name="morphe_glass_menus_dim_title">ডিম</string>
-  <string name="morphe_glass_menus_dim_summary">বটম শ্বীটৰ চাৰিওফালৰ স্ক্ৰীণখন কিমান অন্ধকাৰ হ\'ব</string>
   <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
   <string name="morphe_navigation_bar_glass_size_width">সৰ্বোচ্চ প্ৰস্থ</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">বুটামৰ ব্যৱধান</string>
@@ -1658,6 +1647,8 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_video_delay_button_overlay_summary">ডিলে 0 ms লৈ ৰিছেট কৰিবলৈ টেপ কৰি ধৰি ৰাখক</string>
   <string name="morphe_video_delay_button_flyout_title">ভিডিঅ\' ডিলে মেনু দেখুৱাওক</string>
   <string name="morphe_video_delay_dialog_input_hint">মিলিছেকণ্ডত ডিলে</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">ভিডিঅ’ৰ ইফেক্ট মেনু দেখুওক</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts গুণগতমান মনত ৰাখক</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">আপোনাৰ হাতেৰে নিৰ্বাচিত গুণগতমানটো ভৱিষ্যতৰ সকলো Shorts-ৰ ক্ষেত্ৰত প্ৰয়োগ কৰক</string>

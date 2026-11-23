@@ -1171,17 +1171,6 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Sesuaikan jarak antara bilah navigasi kaca dan bagian bawah layar atau navigasi sistem</string>
   <string name="morphe_navigation_bar_glass_size_title">Ukuran bilah navigasi kaca</string>
   <string name="morphe_navigation_bar_glass_size_summary">Sesuaikan tinggi, lebar, dan jarak tombol bilah navigasi kaca, lengkap dengan pratinjau. Tombol yang tidak muat dalam lebar layar akan disembunyikan</string>
-  <string name="morphe_glass_menus_screen_title">Menu kaca</string>
-  <string name="morphe_glass_menus_screen_summary">Menu sebagai kaca buram di atas konten yang dikaburkan di belakangnya</string>
-  <string name="morphe_glass_menus_title">Aktifkan menu kaca</string>
-  <string name="morphe_glass_menus_summary">Menampilkan menu dan lembar bawah sebagai kaca buram, dengan konten di belakangnya dikaburkan</string>
-  <string name="morphe_glass_menus_user_dialog_message">Menu ditampilkan hampir tidak transparan saat penghemat baterai aktif, atau jika perangkat tidak mendukung pengaburan</string>
-  <string name="morphe_glass_menus_opacity_title">Opasitas kaca</string>
-  <string name="morphe_glass_menus_opacity_summary">Seberapa banyak menu menutupi konten yang dikaburkan (0 adalah bening, 100 adalah opak)</string>
-  <string name="morphe_glass_menus_blur_title">Blur</string>
-  <string name="morphe_glass_menus_blur_summary">Seberapa banyak konten di belakang menu dikaburkan</string>
-  <string name="morphe_glass_menus_dim_title">Redup</string>
-  <string name="morphe_glass_menus_dim_summary">Seberapa banyak layar di sekitar lembar bawah digelapkan</string>
   <string name="morphe_navigation_bar_glass_size_height">Tinggi</string>
   <string name="morphe_navigation_bar_glass_size_width">Lebar maksimum</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Jarak tombol</string>
@@ -1657,6 +1646,8 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <string name="morphe_video_delay_button_overlay_summary">Ketuk dan tahan untuk mereset penundaan ke 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Tampilkan menu penundaan video</string>
   <string name="morphe_video_delay_dialog_input_hint">Penundaan dalam milidetik</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Tampilkan menu efek Video</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Ingat kualitas Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Menerapkan pilihan kualitas manual Anda ke semua Shorts mendatang</string>

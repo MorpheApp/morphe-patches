@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">ปรับระยะห่างระหว่างแถบนำทางแบบกระจกกับด้านล่างของหน้าจอหรือการนำทางของระบบ</string>
   <string name="morphe_navigation_bar_glass_size_title">ขนาดแถบนำทางแบบกระจก</string>
   <string name="morphe_navigation_bar_glass_size_summary">ปรับความสูง ความกว้าง และระยะห่างระหว่างปุ่มของแถบนำทางแบบกระจก พร้อมการแสดงตัวอย่าง ปุ่มที่ไม่พอดีกับความกว้างของหน้าจอจะถูกซ่อนไว้</string>
-  <string name="morphe_glass_menus_screen_title">เมนูกระจก</string>
-  <string name="morphe_glass_menus_screen_summary">เมนูจะมีลักษณะเป็นกระจกฝ้าทับบนเนื้อหาที่เบลออยู่ด้านหลัง</string>
-  <string name="morphe_glass_menus_title">เปิดใช้งานเมนูกระจก</string>
-  <string name="morphe_glass_menus_summary">แสดงเมนูและ bottom sheets เป็นกระจกฝ้า โดยจะเบลอเนื้อหาที่อยู่ด้านหลัง</string>
-  <string name="morphe_glass_menus_user_dialog_message">เมนูจะแสดงผลแบบเกือบทึบเมื่อเปิดโหมดประหยัดแบตเตอรี่ หรือหากอุปกรณ์ไม่รองรับการเบลอ</string>
-  <string name="morphe_glass_menus_opacity_title">ความทึบแสงของกระจก</string>
-  <string name="morphe_glass_menus_opacity_summary">ระดับที่เมนูจะบดบังเนื้อหาที่เบลอ (0 คือโปร่งใส, 100 คือทึบแสง)</string>
-  <string name="morphe_glass_menus_blur_title">เบลอ</string>
-  <string name="morphe_glass_menus_blur_summary">ระดับความเบลอของเนื้อหาที่อยู่ด้านหลังเมนู</string>
-  <string name="morphe_glass_menus_dim_title">ลดแสง</string>
-  <string name="morphe_glass_menus_dim_summary">ระดับความมืดของหน้าจอรอบๆ บอตทอมชีต</string>
   <string name="morphe_navigation_bar_glass_size_height">ความสูง</string>
   <string name="morphe_navigation_bar_glass_size_width">ความกว้างสูงสุด</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">ระยะห่างระหว่างปุ่ม</string>
@@ -1658,6 +1647,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">แตะค้างไว้เพื่อรีเซ็ตการชะลอเป็น 0 มิลลิวินาที</string>
   <string name="morphe_video_delay_button_flyout_title">แสดงเมนูความล่าช้าของวิดีโอ</string>
   <string name="morphe_video_delay_dialog_input_hint">ค่าการชะลอเป็นมิลลิวินาที</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">แสดงเมนูเอฟเฟกต์วิดีโอ</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">จำคุณภาพ Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">ใช้การตั้งค่าคุณภาพที่คุณเลือกด้วยตนเองกับ Short ทั้งหมดในอนาคต</string>

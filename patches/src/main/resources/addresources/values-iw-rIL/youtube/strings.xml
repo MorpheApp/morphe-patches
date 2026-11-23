@@ -1171,17 +1171,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">התאם את המרווח בין סרגל הניווט השקוף לבין תחתית המסך או ניווט המערכת</string>
   <string name="morphe_navigation_bar_glass_size_title">גודל סרגל ניווט מזכוכית</string>
   <string name="morphe_navigation_bar_glass_size_summary">התאמת הגובה, הרוחב ומרווח הכפתורים של סרגל הניווט מזכוכית, עם תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים</string>
-  <string name="morphe_glass_menus_screen_title">תפריטי זכוכית</string>
-  <string name="morphe_glass_menus_screen_summary">תפריטים כזכוכית חלבית מעל התוכן המטושטש שמאחוריהם</string>
-  <string name="morphe_glass_menus_title">הפעלת תפריטי זכוכית</string>
-  <string name="morphe_glass_menus_summary">מציג תפריטים וגיליונות תחתונים כזכוכית חלבית, כאשר התוכן שמאחוריהם מטושטש</string>
-  <string name="morphe_glass_menus_user_dialog_message">תפריטים מוצגים כמעט אטומים כאשר חסכון בסוללה מופעל, או אם המכשיר אינו תומך בטשטוש</string>
-  <string name="morphe_glass_menus_opacity_title">אטימות זכוכית</string>
-  <string name="morphe_glass_menus_opacity_summary">עד כמה התפריט מכסה את התוכן המטושטש (0 הוא שקוף, 100 הוא אטום)</string>
-  <string name="morphe_glass_menus_blur_title">טשטוש</string>
-  <string name="morphe_glass_menus_blur_summary">עד כמה התוכן שמאחורי התפריט מטושטש</string>
-  <string name="morphe_glass_menus_dim_title">החשכה</string>
-  <string name="morphe_glass_menus_dim_summary">עד כמה המסך מסביב לגיליון תחתון מוכהשכה</string>
   <string name="morphe_navigation_bar_glass_size_height">גובה</string>
   <string name="morphe_navigation_bar_glass_size_width">רוחב מקסימלי</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">מרווח כפתורים</string>
@@ -1658,6 +1647,8 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_overlay_summary">גע והחזק לאיפוס העיכוב ל-0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">הצג תפריט עיכוב וידאו</string>
   <string name="morphe_video_delay_dialog_input_hint">עיכוב במילישניות</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">הצג תפריט אפקטי וידאו</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">זכור איכות Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">מחילה את בחירת האיכות הידנית שלך על כל ה-Shorts העתידיים</string>

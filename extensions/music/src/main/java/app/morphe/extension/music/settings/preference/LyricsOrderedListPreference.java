@@ -29,6 +29,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -142,7 +144,7 @@ public final class LyricsOrderedListPreference extends Preference {
      * A CheckBox defaults to the dialog theme's own label colour, which the dark app theme leaves
      * black on a dark dialog. Its box follows the text colour too, so both are set from the app.
      */
-    private static void styleCheckBox(CheckBox box, int fg) {
+    private static void styleCheckBox(CompoundButton box, int fg) {
         box.setTextColor(fg);
         final int[][] states = {{android.R.attr.state_checked}, {}};
         box.setButtonTintList(new ColorStateList(states, new int[]{fg, withAlpha(fg, 0x66)}));
@@ -441,10 +443,72 @@ public final class LyricsOrderedListPreference extends Preference {
         hint.setText(str("morphe_music_lyrics_local_romanization_summary"));
         hint.setPadding(0, 0, 0, Dim.dp12);
 
+        final CheckBox jaParent = new CheckBox(context);
+        jaParent.setText(str("morphe_music_lyrics_local_romanization_dict_ja_parent"));
+        jaParent.setChecked(chosen[LyricsLocalRomanizationDownloads.KUROMOJI]
+                || chosen[LyricsLocalRomanizationDownloads.SUDACHI]);
+        styleCheckBox(jaParent, fg);
+
+        final LinearLayout jaOptionsBox = new LinearLayout(context);
+        jaOptionsBox.setOrientation(LinearLayout.VERTICAL);
+        jaOptionsBox.setPadding(Dim.dp24, 0, 0, Dim.dp4);
+
+        final CheckBox kuromoji = new CheckBox(context);
+        kuromoji.setText(str("morphe_music_lyrics_local_romanization_dict_kuromoji"));
+        kuromoji.setChecked(chosen[LyricsLocalRomanizationDownloads.KUROMOJI]);
+        styleCheckBox(kuromoji, fg);
+        jaOptionsBox.addView(kuromoji);
+
         final CheckBox japanese = new CheckBox(context);
         japanese.setText(str("morphe_music_lyrics_local_romanization_dict_japanese"));
         japanese.setChecked(chosen[LyricsLocalRomanizationDownloads.SUDACHI]);
         styleCheckBox(japanese, fg);
+        jaOptionsBox.addView(japanese);
+
+        // When both Japanese dictionaries are ticked, let the user choose priority & fallback order.
+        final LinearLayout jaEngineBox = new LinearLayout(context);
+        jaEngineBox.setOrientation(LinearLayout.VERTICAL);
+        jaEngineBox.setPadding(Dim.dp20, Dim.dp4, 0, Dim.dp6);
+
+        final TextView jaEngineLabel = new TextView(context);
+        jaEngineLabel.setText(str("morphe_music_lyrics_japanese_dict_engine_title"));
+        jaEngineLabel.setTextSize(13);
+        jaEngineLabel.setTextColor(withAlpha(fg, 0xBB));
+        jaEngineBox.addView(jaEngineLabel);
+
+        final RadioGroup jaEngineGroup = new RadioGroup(context);
+        jaEngineGroup.setOrientation(RadioGroup.VERTICAL);
+        final RadioButton useKuromojiRadio = new RadioButton(context);
+        useKuromojiRadio.setId(View.generateViewId());
+        useKuromojiRadio.setText(str("morphe_music_lyrics_japanese_engine_kuromoji_first"));
+        styleCheckBox(useKuromojiRadio, fg);
+        final RadioButton useSudachiRadio = new RadioButton(context);
+        useSudachiRadio.setId(View.generateViewId());
+        useSudachiRadio.setText(str("morphe_music_lyrics_japanese_engine_sudachi_first"));
+        styleCheckBox(useSudachiRadio, fg);
+        jaEngineGroup.addView(useKuromojiRadio);
+        jaEngineGroup.addView(useSudachiRadio);
+        final boolean preferSudachi = "sudachi".equalsIgnoreCase(
+                Settings.LYRICS_JAPANESE_DICT_ENGINE.get());
+        jaEngineGroup.check(preferSudachi ? useSudachiRadio.getId() : useKuromojiRadio.getId());
+        jaEngineBox.addView(jaEngineGroup);
+        jaOptionsBox.addView(jaEngineBox);
+
+        final Runnable updateJaVisibility = () -> {
+            final boolean jaOn = jaParent.isChecked();
+            jaOptionsBox.setVisibility(jaOn ? View.VISIBLE : View.GONE);
+            jaEngineBox.setVisibility(
+                    jaOn && kuromoji.isChecked() && japanese.isChecked() ? View.VISIBLE : View.GONE);
+        };
+        updateJaVisibility.run();
+        jaParent.setOnCheckedChangeListener((b, checked) -> {
+            if (checked && !kuromoji.isChecked() && !japanese.isChecked()) {
+                kuromoji.setChecked(true);
+            }
+            updateJaVisibility.run();
+        });
+        kuromoji.setOnCheckedChangeListener((b, c) -> updateJaVisibility.run());
+        japanese.setOnCheckedChangeListener((b, c) -> updateJaVisibility.run());
 
         final CheckBox unidict = new CheckBox(context);
         unidict.setText(str("morphe_music_lyrics_local_romanization_dict_unidict"));
@@ -473,7 +537,8 @@ public final class LyricsOrderedListPreference extends Preference {
         final LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
         content.addView(hint);
-        content.addView(japanese);
+        content.addView(jaParent);
+        content.addView(jaOptionsBox);
         content.addView(unidict);
         content.addView(chinese);
         content.addView(cldr);
@@ -512,9 +577,20 @@ public final class LyricsOrderedListPreference extends Preference {
         // back if the dialog went away without an agreed choice.
         final Button ok = Objects.requireNonNull(ThemedInput.findButton(mainLayout, str("morphe_settings_save")));
         ok.setOnClickListener(v -> {
+            final boolean saveKuromoji = jaParent.isChecked() && kuromoji.isChecked();
+            final boolean saveSudachi = jaParent.isChecked() && japanese.isChecked();
+            if (saveKuromoji && saveSudachi) {
+                Settings.LYRICS_JAPANESE_DICT_ENGINE.save(
+                        jaEngineGroup.getCheckedRadioButtonId() == useSudachiRadio.getId()
+                                ? "sudachi" : "kuromoji");
+            } else if (saveSudachi) {
+                Settings.LYRICS_JAPANESE_DICT_ENGINE.save("sudachi");
+            } else if (saveKuromoji) {
+                Settings.LYRICS_JAPANESE_DICT_ENGINE.save("kuromoji");
+            }
             // Saving with nothing ticked is a choice of its own: the rules alone.
             LyricsLocalRomanizationDownloads.saveChoice(
-                    japanese.isChecked(), unidict.isChecked(),
+                    saveKuromoji, saveSudachi, unidict.isChecked(),
                     chinese.isChecked(), cldr.isChecked());
             accepted[0] = true;
             if (switchV == null) {

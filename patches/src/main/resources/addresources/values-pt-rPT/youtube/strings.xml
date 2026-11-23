@@ -61,7 +61,7 @@ As alterações incluem:
   <string name="morphe_hide_account_menu_title">Ativar Biblioteca / Filtro do menu inferior</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Ativar Biblioteca / Filtro do menu inferior</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introduza os nomes dos menus da Biblioteca / Você, separados por novas linhas</string>
-  <string name="morphe_hide_account_menu_badges_title">Ocultar emblemas</string>
+  <string name="morphe_hide_account_menu_badges_title">Ocultar selos</string>
   <string name="morphe_hide_account_menu_downloads_title">Ocultar Downloads</string>
   <string name="morphe_hide_account_menu_liked_videos_title">Ocultar \"Vídeos marcados como gostei\"</string>
   <string name="morphe_hide_account_menu_watch_later_title">Ocultar \"Assistir mais tarde\"</string>
@@ -1171,17 +1171,6 @@ Para aceder às Definições, ativa o botão de Definições via Geral → Barra
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Ajuste o espaço entre a barra de navegação de vidro e a parte inferior da tela ou a navegação do sistema</string>
   <string name="morphe_navigation_bar_glass_size_title">Tamanho da barra de navegação de vidro</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajusta a altura, largura e espaçamento entre botões da barra de navegação de vidro, com uma pré-visualização. Botões que não se encaixam na largura da tela serão ocultos</string>
-  <string name="morphe_glass_menus_screen_title">Menus de vidro</string>
-  <string name="morphe_glass_menus_screen_summary">Menus como vidro fosco sobre o conteúdo desfocado atrás deles</string>
-  <string name="morphe_glass_menus_title">Ativar menus de vidro</string>
-  <string name="morphe_glass_menus_summary">Exibe menus e folhas inferiores como vidro fosco, com o conteúdo atrás deles desfocado</string>
-  <string name="morphe_glass_menus_user_dialog_message">Os menus são exibidos quase opacos enquanto o economizador de bateria está ativado, ou se o dispositivo não for compatível com desfoque</string>
-  <string name="morphe_glass_menus_opacity_title">Opacidade do vidro</string>
-  <string name="morphe_glass_menus_opacity_summary">O quanto o menu cobre o conteúdo desfocado (0 é transparente, 100 é opaco)</string>
-  <string name="morphe_glass_menus_blur_title">Desfoque</string>
-  <string name="morphe_glass_menus_blur_summary">O quanto o conteúdo atrás do menu é desfocado</string>
-  <string name="morphe_glass_menus_dim_title">Escurecer</string>
-  <string name="morphe_glass_menus_dim_summary">O quanto a tela ao redor de uma folha inferior é escurecida</string>
   <string name="morphe_navigation_bar_glass_size_height">Altura</string>
   <string name="morphe_navigation_bar_glass_size_width">Largura máxima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Espaçãmento entre botões</string>
@@ -1658,6 +1647,8 @@ Os vídeos são pedidos por um prefixo curto do ID de vídeo com hash, por isso 
   <string name="morphe_video_delay_button_overlay_summary">Toque sem soltar para repor o atraso em 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Mostrar menu de atraso de vídeo</string>
   <string name="morphe_video_delay_dialog_input_hint">Atraso em milissegundos</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Mostrar menu de efeitos de vídeo</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Lembrar qualidade de Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Aplica sua seleção manual de qualidade a todos os Shorts futuros</string>

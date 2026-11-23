@@ -1170,17 +1170,6 @@ Per accedere alle Impostazioni, abilita il pulsante Impostazioni tramite General
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Regola lo spazio tra la barra di navigazione in vetro e la parte inferiore dello schermo o la navigazione di sistema</string>
   <string name="morphe_navigation_bar_glass_size_title">Dimensioni barra di navigazione glass</string>
   <string name="morphe_navigation_bar_glass_size_summary">Regola l\'altezza, la larghezza e la spaziatura dei pulsanti della barra di navigazione glass, con un\'anteprima. I pulsanti che non rientrano nella larghezza dello schermo vengono nascosti</string>
-  <string name="morphe_glass_menus_screen_title">Menu a effetto vetro</string>
-  <string name="morphe_glass_menus_screen_summary">I menu appaiono come vetro satinato sopra il contenuto sfocato sottostante</string>
-  <string name="morphe_glass_menus_title">Abilita menu a effetto vetro</string>
-  <string name="morphe_glass_menus_summary">Mostra i menu e i bottom sheet come vetro satinato, con il contenuto sottostante sfocato</string>
-  <string name="morphe_glass_menus_user_dialog_message">I menu vengono mostrati quasi opachi quando il risparmio energetico è attivo o se il dispositivo non supporta la sfocatura</string>
-  <string name="morphe_glass_menus_opacity_title">Opacità del vetro</string>
-  <string name="morphe_glass_menus_opacity_summary">Quanto il menu copre il contenuto sfocato (0 è trasparente, 100 è opaco)</string>
-  <string name="morphe_glass_menus_blur_title">Sfocatura</string>
-  <string name="morphe_glass_menus_blur_summary">Quanto il contenuto dietro il menu è sfocato</string>
-  <string name="morphe_glass_menus_dim_title">Oscuramento</string>
-  <string name="morphe_glass_menus_dim_summary">Quanto lo schermo intorno a un bottom sheet è oscurato</string>
   <string name="morphe_navigation_bar_glass_size_height">Altezza</string>
   <string name="morphe_navigation_bar_glass_size_width">Larghezza massima</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Spaziatura pulsanti</string>
@@ -1656,6 +1645,8 @@ I video vengono richiesti tramite un breve prefisso dell'ID video con hash, quin
   <string name="morphe_video_delay_button_overlay_summary">Tocca e tieni premuto per reimpostare il ritardo a 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Mostra menu Ritardo video</string>
   <string name="morphe_video_delay_dialog_input_hint">Ritardo in millisecondi</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Mostra menu effetti video</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Ricorda qualità per gli Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Applica la tua selezione manuale della qualità a tutti gli Shorts futuri</string>

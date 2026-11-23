@@ -1171,17 +1171,6 @@ Lai piekļūtu iestatījumiem, iespējojiet iestatījumu pogu sadaļā Vispārē
   <string name="morphe_navigation_bar_glass_bottom_margin_summary">Regulēt atstarpi starp stklaino navigācijas joslu un ekrāna apakšu vai sistēmas navigāciju</string>
   <string name="morphe_navigation_bar_glass_size_title">Stikla navigācijas joslas izmērs</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ar priekšskatījumu pielāgojiet stikla navigācijas joslas augstumu, platumu un pogu attālumu. Pogas, kas neiekļaujas ekrāna platumā, tiek slēptas</string>
-  <string name="morphe_glass_menus_screen_title">Stikla izvēlnes</string>
-  <string name="morphe_glass_menus_screen_summary">Izvēlnes kā matēts stikls pār izplūmējušu saturu aiz tām</string>
-  <string name="morphe_glass_menus_title">Ienable stikla izvēlnes</string>
-  <string name="morphe_glass_menus_summary">Rāda izvēlnes un apakšlapas kā matētu stiklu, izplūminot saturu aiz tām</string>
-  <string name="morphe_glass_menus_user_dialog_message">Izvēlnes tiek rādītas gandrīz necaurspīdīgas, kamēr ir ieslēgts akumulatora taupītājs vai ja ierīce neatbalsta izplūmēšanu</string>
-  <string name="morphe_glass_menus_opacity_title">Stikla caurspīdīgums</string>
-  <string name="morphe_glass_menus_opacity_summary">Cik stipri izvēlne pārklāj izplūmēto saturu (0 ir caurspīdīgs, 100 ir necaurspīdīgs)</string>
-  <string name="morphe_glass_menus_blur_title">Izplūmēšana</string>
-  <string name="morphe_glass_menus_blur_summary">Cik stipri ir izplūmēts saturs aiz izvēlnes</string>
-  <string name="morphe_glass_menus_dim_title">Kārtot</string>
-  <string name="morphe_glass_menus_dim_summary">Cik stipri ekrāns ap apakšlapu tiek aptumšināts</string>
   <string name="morphe_navigation_bar_glass_size_height">Augstums</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimālais platums</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Pogu attālums</string>
@@ -1658,6 +1647,8 @@ Video tiek pieprasīti, izmantojot īsu hašēta video ID prefiksu, tādēļ ser
   <string name="morphe_video_delay_button_overlay_summary">Turiet, lai atiestatītu aizkavējumu uz 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Rādīt video aizkavējuma izvēlni</string>
   <string name="morphe_video_delay_dialog_input_hint">Aizkavējums milisekundēs</string>
+  <!-- video.effects.videoEffectsPatch -->
+  <string name="morphe_video_effect_button_flyout_title">Rādīt video efekta izvēlni</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <string name="morphe_remember_shorts_quality_last_selected_title">Atcerēties Shorts kvalitāti</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Pielieto jūsu manuālo kvalitātes izvēli visiem turpmākajiem Shorts</string>
