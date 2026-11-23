@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.youtube.interaction.searchcomments
+package app.morphe.patches.youtube.interaction.commentsearch
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
@@ -34,8 +34,9 @@ private const val EXTENSION_FILTER =
 private const val SECTION_LIST_ACCESS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/components/CommentsSearchFilter$SectionListAccess;"
 
-val searchCommentsPatch = patch(
-    name = "Search comments",
+@Suppress("unused")
+val commentSearchPatch = patch(
+    name = "Comment search",
     description = "Adds a button to the comments to show only the loaded comments that contain the searched words."
 ) {
     dependsOn(
@@ -48,12 +49,12 @@ val searchCommentsPatch = patch(
         patch {
             execute {
                 copyResources(
-                    "searchcomments",
+                    "commentsearch",
                     ResourceGroup(
                         "drawable",
-                        "morphe_search_comments_button.xml",
-                        "morphe_search_comments_button_active.xml",
-                        "morphe_search_comments_button_idle.xml"
+                        "morphe_comment_search_button.xml",
+                        "morphe_comment_search_button_active.xml",
+                        "morphe_comment_search_button_idle.xml"
                     )
                 )
             }
@@ -64,7 +65,7 @@ val searchCommentsPatch = patch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_search_comments", summary = true)
+            SwitchPreference("morphe_comment_search", summary = true)
         )
 
         addLithoFilter(EXTENSION_FILTER)

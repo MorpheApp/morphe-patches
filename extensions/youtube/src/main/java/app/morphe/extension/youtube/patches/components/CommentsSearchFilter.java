@@ -74,7 +74,7 @@ public final class CommentsSearchFilter extends Filter {
         boolean patch_reload();
     }
 
-    private static final String SEARCH_BUTTON_TAG = "morphe_search_comments_button";
+    private static final String SEARCH_BUTTON_TAG = "morphe_comment_search_button";
 
     /**
      * Start of the ids of the comments panels of videos, posts and Shorts. Newer app versions use
@@ -165,13 +165,13 @@ public final class CommentsSearchFilter extends Filter {
      * The button that shows the replies of a comment is not inside the comment.
      */
     private final StringFilterGroup commentReplies = new StringFilterGroup(
-            Settings.SEARCH_COMMENTS,
+            Settings.COMMENT_SEARCH,
             "repl"
     );
 
     public CommentsSearchFilter() {
         StringFilterGroup commentThread = new StringFilterGroup(
-                Settings.SEARCH_COMMENTS,
+                Settings.COMMENT_SEARCH,
                 COMMENT_THREAD_PATH
         );
         addPathCallbacks(commentThread, commentReplies);
@@ -372,7 +372,7 @@ public final class CommentsSearchFilter extends Filter {
      * Called when the controller of a section list is created.
      */
     public static void onSectionListCreated(SectionListAccess sectionList) {
-        if (!Settings.SEARCH_COMMENTS.get()) {
+        if (!Settings.COMMENT_SEARCH.get()) {
             return;
         }
 
@@ -446,7 +446,7 @@ public final class CommentsSearchFilter extends Filter {
      * @param panel The layout of the panel, which holds its header.
      */
     public static void onPanelHeaderSetUp(View panel) {
-        if (panel == null || !Settings.SEARCH_COMMENTS.get() || ID_CLOSE_BUTTON == 0) {
+        if (panel == null || !Settings.COMMENT_SEARCH.get() || ID_CLOSE_BUTTON == 0) {
             return;
         }
 
@@ -485,9 +485,9 @@ public final class CommentsSearchFilter extends Filter {
     @Nullable
     private static View createSearchButton(ViewGroup header, View closeButton) {
         Context context = header.getContext();
-        Drawable icon = ResourceUtils.getDrawable("morphe_search_comments_button");
+        Drawable icon = ResourceUtils.getDrawable("morphe_comment_search_button");
         if (icon == null) {
-            Logger.printException(() -> "Search comments drawable not found");
+            Logger.printException(() -> "Comment search drawable not found");
             return null;
         }
 
@@ -508,7 +508,7 @@ public final class CommentsSearchFilter extends Filter {
 
         FrameLayout button = new FrameLayout(context);
         button.setTag(SEARCH_BUTTON_TAG);
-        button.setContentDescription(str("morphe_search_comments_dialog_title"));
+        button.setContentDescription(str("morphe_comment_search_dialog_title"));
         button.setClickable(true);
         button.setFocusable(true);
 
@@ -538,8 +538,8 @@ public final class CommentsSearchFilter extends Filter {
     private static void showSearchDialog(Context context, View searchButton) {
         SearchDialog.show(
                 context,
-                str("morphe_search_comments_dialog_title"),
-                str("morphe_search_comments_hint"),
+                str("morphe_comment_search_dialog_title"),
+                str("morphe_comment_search_hint"),
                 isSearching() ? searchText : "",
                 newText -> {
                     setSearch(newText);
@@ -547,16 +547,16 @@ public final class CommentsSearchFilter extends Filter {
                     if (!reloadPanelList(searchButton)) {
                         // Such as only quotes, which are not a search.
                         Utils.showSnackbarLong(str(!isSearching()
-                                ? "morphe_search_comments_cleared"
-                                : "morphe_search_comments_applied"));
+                                ? "morphe_comment_search_cleared"
+                                : "morphe_comment_search_applied"));
                     }
                 },
-                str("morphe_search_comments_clear"),
+                str("morphe_comment_search_clear"),
                 () -> {
                     setSearch("");
                     updateSearchButtonIcon(searchButton);
                     if (!reloadPanelList(searchButton)) {
-                        Utils.showSnackbarLong(str("morphe_search_comments_cleared"));
+                        Utils.showSnackbarLong(str("morphe_comment_search_cleared"));
                     }
                 }
         );
