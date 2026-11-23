@@ -73,6 +73,18 @@
         <item>NESTED_REPLIES</item>
     </string-array>
 
+    <!-- layout.commentlines.colorizeCommentIndentLinesPatch -->
+    <string-array name="morphe_colorize_comment_indent_lines_palette_entries">
+        <item>@string/morphe_colorize_comment_indent_lines_palette_entry_rainbow</item>
+        <item>@string/morphe_colorize_comment_indent_lines_palette_entry_pastel</item>
+        <item>@string/morphe_colorize_comment_indent_lines_palette_entry_muted</item>
+    </string-array>
+    <string-array name="morphe_colorize_comment_indent_lines_palette_entry_values" translatable="false">
+        <item>RAINBOW</item>
+        <item>PASTEL</item>
+        <item>MUTED</item>
+    </string-array>
+
     <!-- misc.privatebrowsing.privateBrowsingModePatch -->
     <string-array name="morphe_private_browsing_mode_entries">
         <item>@string/morphe_private_browsing_mode_entry_default</item>

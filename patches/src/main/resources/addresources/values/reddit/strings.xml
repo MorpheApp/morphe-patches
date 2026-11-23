@@ -265,6 +265,12 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_collapse_all_comments_scope_entry_replies">Replies (top comments stay open)</string>
     <string name="morphe_collapse_all_comments_scope_entry_nested_replies">Replies to replies (direct replies stay open)</string>
     <string name="morphe_collapse_all_comments_button">Collapse or expand all comments</string>
+    <string name="morphe_colorize_comment_indent_lines_title">Colorize comment indent lines</string>
+    <string name="morphe_colorize_comment_indent_lines_summary">Gives each reply level its own line color so long threads are easier to follow</string>
+    <string name="morphe_colorize_comment_indent_lines_palette_title">Line colors</string>
+    <string name="morphe_colorize_comment_indent_lines_palette_entry_rainbow">Rainbow (bright)</string>
+    <string name="morphe_colorize_comment_indent_lines_palette_entry_pastel">Pastel (soft)</string>
+    <string name="morphe_colorize_comment_indent_lines_palette_entry_muted">Muted (blends in with the page)</string>
     <string name="morphe_remember_collapsed_comments_title">Remember collapsed comments</string>
     <string name="morphe_remember_collapsed_comments_summary">Comments you collapse stay collapsed when you reopen the post</string>
     <string name="morphe_app_icon_title">App icon</string>

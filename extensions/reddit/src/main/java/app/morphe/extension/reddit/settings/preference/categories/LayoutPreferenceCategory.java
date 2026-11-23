@@ -14,6 +14,7 @@ import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.AutoModeratorCommentsPatch;
 import app.morphe.extension.reddit.patches.CollapseAllCommentsPatch;
+import app.morphe.extension.reddit.patches.ColorizeCommentIndentLinesPatch;
 import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
@@ -96,6 +97,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 FullScreenReplyPatch.isPatchIncluded() ||
                 AutoModeratorCommentsPatch.isPatchIncluded() ||
                 CollapseAllCommentsPatch.isPatchIncluded() ||
+                ColorizeCommentIndentLinesPatch.isPatchIncluded() ||
                 RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 TabletGridFeedPatch.isPatchIncluded() ||
                 FeedAutoScrollPatch.isPatchIncluded() ||
@@ -336,6 +338,17 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new CustomDialogListPreference(
                     context,
                     Settings.COLLAPSE_ALL_COMMENTS_SCOPE
+            ));
+        }
+
+        if (ColorizeCommentIndentLinesPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.COLORIZE_COMMENT_INDENT_LINES
+            ));
+            addPreference(new CustomDialogListPreference(
+                    context,
+                    Settings.COLORIZE_COMMENT_INDENT_LINES_PALETTE
             ));
         }
 
