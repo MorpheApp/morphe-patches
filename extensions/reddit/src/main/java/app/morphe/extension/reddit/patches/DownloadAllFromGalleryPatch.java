@@ -9,6 +9,7 @@ package app.morphe.extension.reddit.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.content.ContentResolver;
@@ -60,7 +61,7 @@ public final class DownloadAllFromGalleryPatch {
     private static final String REDDIT_PICTURES_FOLDER = Environment.DIRECTORY_PICTURES + "/Reddit";
 
     /**
-     * @param id   Id of the post of the share sheet.
+     * @param id   ID of the post of the share sheet.
      * @param post Post with the content, which is the original post of a crosspost.
      */
     private record SharedPost(String id, Link post) {
@@ -117,6 +118,7 @@ public final class DownloadAllFromGalleryPatch {
      * Injection point. Called when the media viewer is created.
      * The media viewer is used only while it is resumed; a share sheet does not pause it.
      */
+    @SuppressLint("NewApi")
     public static void setMediaViewerActivity(Activity activity) {
         try {
             mediaViewerActivityRef = new WeakReference<>(activity);
@@ -249,7 +251,7 @@ public final class DownloadAllFromGalleryPatch {
      */
     private static void saveItem(ContentResolver resolver, Link post, String url, int itemNumber) throws IOException {
         HttpURLConnection conn = PostMedia.openConnection(url);
-        Uri itemUri = null;
+        Uri itemUri;
         boolean saved = false;
         try {
             String contentType = PostMedia.getContentType(conn);
@@ -292,12 +294,8 @@ public final class DownloadAllFromGalleryPatch {
                 published.put(MediaStore.MediaColumns.IS_PENDING, 0);
                 resolver.update(itemUri, published, null, null);
             }
-            saved = true;
         } finally {
             conn.disconnect();
-            if (!saved && itemUri != null) {
-                deleteItem(resolver, itemUri);
-            }
         }
     }
 

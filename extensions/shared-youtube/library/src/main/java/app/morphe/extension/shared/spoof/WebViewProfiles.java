@@ -7,6 +7,7 @@
 
 package app.morphe.extension.shared.spoof;
 
+import android.annotation.SuppressLint;
 import android.webkit.CookieManager;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
@@ -95,6 +96,7 @@ public final class WebViewProfiles {
      *
      * @return The cookies of Web.
      */
+    @SuppressLint("NewApi")
     private static CookieManager findWebProfile() {
         Utils.verifyOnMainThread();
         CookieManager cookieManager = webCookieManager;
@@ -124,7 +126,6 @@ public final class WebViewProfiles {
             }
         } catch (Exception ex) {
             Logger.printInfo(() -> "Could not use the profiles of the WebView", ex);
-            cookieManager = null;
         }
         if (cookieManager == null) {
             webViewFactory = null;
