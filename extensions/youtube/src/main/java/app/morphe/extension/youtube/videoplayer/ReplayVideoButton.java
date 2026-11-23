@@ -23,7 +23,6 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.playback.speed.ReplayVideoController;
-import app.morphe.extension.youtube.patches.playback.speed.ReplaySwipeGesture;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.VideoState;
@@ -79,7 +78,7 @@ public final class ReplayVideoButton {
 
     private static boolean positionCheckScheduled;
 
-    /** Injection point, set when the replay patch is included. */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;
     }
@@ -208,10 +207,10 @@ public final class ReplayVideoButton {
         });
     }
 
-    /** Starts a new replay with the duration selected by the completed leftward swipe. */
+    /**
+     * Starts a replay with the rewind selected by a swipe, or restarts the active replay.
+     */
     public static void replayFromSwipe(int rewindSeconds) {
-        if (!Settings.REPLAY_VIDEO_BUTTON.get() || !Settings.REPLAY_VIDEO_SWIPE.get()) return;
-        if (rewindSeconds < 1 || rewindSeconds > ReplaySwipeGesture.MAX_REWIND_SECONDS) return;
         runAction(() -> startReplay(rewindSeconds));
     }
 

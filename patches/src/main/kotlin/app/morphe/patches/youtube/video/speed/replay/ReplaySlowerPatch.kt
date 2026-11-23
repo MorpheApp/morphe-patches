@@ -37,7 +37,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/videoplayer/R
 @Suppress("unused")
 val replaySlowerPatch = patch(
     name = "Replay slower button",
-    description = "Adds an option to show a player button that rewinds and plays part of the video at a slower speed.",
+    description = "Adds options to rewind and play part of the video at a slower speed, with a player button or by swiping left on the video.",
 ) {
     dependsOn(
         sharedExtensionPatch,

@@ -139,24 +139,17 @@ public class SwipeControlsHostActivity extends Activity {
 
     @Override
     protected void onStop() {
-        if (replayGesture != null) replayGesture.cancel();
+        if (replayGesture != null) {
+            replayGesture.cancel();
+        }
         super.onStop();
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         ensureInitialized();
-        try {
-            if (Settings.REPLAY_VIDEO_BUTTON.get() && Settings.REPLAY_VIDEO_SWIPE.get()
-                    && ReplayVideoButton.isPatchIncluded()) {
-                if (replayGesture == null) replayGesture = new ReplaySwipeController(this);
-                if (replayGesture.submitTouchEvent(ev)) return true;
-            } else if (replayGesture != null) {
-                replayGesture.cancel();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Replay swipe failure", ex);
-            if (replayGesture != null) replayGesture.cancel();
+        if (submitReplayTouchEvent(ev)) {
+            return true;
         }
         if (gesture.submitTouchEvent(ev)) {
             // The consumed event does not reach Activity.dispatchTouchEvent, which reports the
@@ -168,6 +161,30 @@ public class SwipeControlsHostActivity extends Activity {
             return true;
         }
         return super.dispatchTouchEvent(ev);
+    }
+
+    /**
+     * The replay swipe goes first, and cancels the other gestures once it owns the touch.
+     */
+    private boolean submitReplayTouchEvent(MotionEvent ev) {
+        try {
+            if (ReplayVideoButton.isPatchIncluded() && Settings.REPLAY_VIDEO_BUTTON.get()
+                    && Settings.REPLAY_VIDEO_SWIPE.get()) {
+                if (replayGesture == null) {
+                    replayGesture = new ReplaySwipeController(this);
+                }
+                return replayGesture.submitTouchEvent(ev);
+            }
+            if (replayGesture != null) {
+                replayGesture.cancel();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "submitReplayTouchEvent failure", ex);
+            if (replayGesture != null) {
+                replayGesture.cancel();
+            }
+        }
+        return false;
     }
 
     @Override
