@@ -10,13 +10,16 @@ package app.morphe.extension.reddit.patches;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.reddit.domain.model.Link;
@@ -69,7 +72,38 @@ public final class DownloadAllFromGalleryPatch {
     @Nullable
     private static volatile SharedPost sharedPost;
 
+    /**
+     * The media viewer is used only while it is resumed; a share sheet does not pause it.
+     */
     private static volatile WeakReference<Activity> mediaViewerActivityRef = new WeakReference<>(null);
+
+    private static final Application.ActivityLifecycleCallbacks ACTIVITY_LIFECYCLE_CALLBACKS
+            = new Application.ActivityLifecycleCallbacks() {
+        @Override
+        public void onActivityResumed(@NonNull Activity a) {
+            mediaViewerActivityRef = new WeakReference<>(a);
+        }
+
+        @Override
+        public void onActivityPaused(@NonNull Activity a) {
+            mediaViewerActivityRef = new WeakReference<>(null);
+        }
+
+        @Override
+        public void onActivityCreated(@NonNull Activity a, @Nullable Bundle b) {}
+
+        @Override
+        public void onActivityStarted(@NonNull Activity a) {}
+
+        @Override
+        public void onActivityStopped(@NonNull Activity a) {}
+
+        @Override
+        public void onActivitySaveInstanceState(@NonNull Activity a, @NonNull Bundle b) {}
+
+        @Override
+        public void onActivityDestroyed(@NonNull Activity a) {}
+    };
 
     /**
      * @return If this patch was included during patching.
@@ -81,9 +115,15 @@ public final class DownloadAllFromGalleryPatch {
 
     /**
      * Injection point. Called when the media viewer is created.
+     * The media viewer is used only while it is resumed; a share sheet does not pause it.
      */
     public static void setMediaViewerActivity(Activity activity) {
-        mediaViewerActivityRef = new WeakReference<>(activity);
+        try {
+            mediaViewerActivityRef = new WeakReference<>(activity);
+            activity.registerActivityLifecycleCallbacks(ACTIVITY_LIFECYCLE_CALLBACKS);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setMediaViewerActivity failure", ex);
+        }
     }
 
     /**
