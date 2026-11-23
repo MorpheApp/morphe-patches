@@ -26,6 +26,7 @@ import android.text.TextPaint;
 
 import androidx.annotation.Nullable;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -841,6 +842,31 @@ public final class WordAnimationUtils {
         return Math.max(1f, (float) Math.ceil(Layout.getDesiredWidth(text, configuredPaint)));
     }
 
+    /** Splits text into non-newline grapheme ranges so combining marks stay attached to their base glyph. */
+    public static List<int[]> graphemeRanges(String text) {
+        int len = text.length();
+        List<int[]> ranges = new ArrayList<>(len);
+        if (len == 0) {
+            return ranges;
+        }
+        BreakIterator it = BreakIterator.getCharacterInstance();
+        it.setText(text);
+        int start = it.first();
+        for (int end = it.next(); end != BreakIterator.DONE; start = end, end = it.next()) {
+            int nl = text.indexOf('\n', start);
+            if (nl >= 0 && nl < end) {
+                for (int k = start; k < end; k++) {
+                    if (text.charAt(k) != '\n' && text.charAt(k) != '\r') {
+                        ranges.add(new int[]{k, k + 1});
+                    }
+                }
+            } else {
+                ranges.add(new int[]{start, end});
+            }
+        }
+        return ranges;
+    }
+
     /** Measures a single cluster/word run using a pre-configured {@link TextPaint}. */
     public static Layout measureRunWithConfiguredPaint(
             String text,
@@ -855,7 +881,20 @@ public final class WordAnimationUtils {
                 return BoringLayout.make(text, runPaint, bw, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0f, boring, false);
             }
         }
-        return createStaticLayout(text, runPaint, desiredW, Layout.Alignment.ALIGN_NORMAL, rtl);
+        int width = hasJoiningScript ? desiredW + 2 : desiredW;
+        Layout layout = createStaticLayout(text, runPaint, width, Layout.Alignment.ALIGN_NORMAL, rtl);
+        if (text.indexOf('\n') < 0 && layout.getLineCount() > 1) {
+            Layout wide = createStaticLayout(
+                    text, runPaint, LyricsGlyphMaskCache.MAX_MASK_SIDE_PX, Layout.Alignment.ALIGN_NORMAL, rtl);
+            int tightW = Math.max(
+                    width + 2,
+                    (int) Math.ceil(Math.max(wide.getLineMax(0), wide.getLineWidth(0))) + 4);
+            layout = createStaticLayout(text, runPaint, tightW, Layout.Alignment.ALIGN_NORMAL, rtl);
+            if (layout.getLineCount() > 1 && tightW < LyricsGlyphMaskCache.MAX_MASK_SIDE_PX) {
+                layout = wide;
+            }
+        }
+        return layout;
     }
 
     public static TextPaint createRomanPaint(TextPaint lyricPaint, int color) {

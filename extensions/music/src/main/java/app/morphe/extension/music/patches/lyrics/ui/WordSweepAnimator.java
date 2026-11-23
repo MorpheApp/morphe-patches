@@ -1030,17 +1030,12 @@ public final class WordSweepAnimator {
             int expressiveAccent,
             boolean hasJoining) {
         List<ClusterMeta> metaList = new ArrayList<>();
-        int i = 0;
         int textLen = formattedMainText.length();
-        while (i < textLen) {
-            int start = i;
-            int end = (i + 1 < textLen
-                    && Character.isHighSurrogate(formattedMainText.charAt(i))
-                    && Character.isLowSurrogate(formattedMainText.charAt(i + 1)))
-                    ? (i + 2) : (i + 1);
-            i = end;
-
-            if (formattedMainText.charAt(start) == '\n') continue;
+        List<int[]> graphemeList = WordAnimationUtils.graphemeRanges(formattedMainText);
+        for (int gi = 0; gi < graphemeList.size(); gi++) {
+            int[] range = graphemeList.get(gi);
+            int start = range[0];
+            int end = range[1];
 
             int safeStart = Math.max(0, Math.min(Math.max(0, textLen - 1), start));
             int safeEnd = Math.min(end, Math.max(0, textLen - 1));
@@ -1063,14 +1058,12 @@ public final class WordSweepAnimator {
             ReconstructedWord word = reconstructedWords.get(wIdx);
             if (word.wordLen() <= 0 || word.syllables().isEmpty()) continue;
 
-            String firstSylText = word.syllables().get(0).syllable().text();
-            boolean isJoining = LyricsTextUtils.containsJoiningScript(firstSylText);
-
             StringBuilder wordTextSb = new StringBuilder();
             for (int s = 0; s < word.syllables().size(); s++) {
                 wordTextSb.append(word.syllables().get(s).syllable().text());
             }
             String wordText = wordTextSb.toString();
+            boolean isJoining = LyricsTextUtils.containsJoiningScript(wordText);
 
             List<List<ClusterMeta>> charGroups = new ArrayList<>();
             if (!isBackground && !LyricsSpanBuilder.isRtlText(wordText)) {

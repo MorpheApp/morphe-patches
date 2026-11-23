@@ -279,4 +279,23 @@ public class WordAnimationUtilsTest {
         Assert.assertEquals(10f, out.bandStart, 0.01f);
         Assert.assertEquals(50f, out.bandEnd, 0.01f);
     }
+
+    @Test
+    public void testIndicJoiningDetectionAndGraphemeRanges() {
+        Assert.assertTrue(LyricsTextUtils.containsJoiningScript("रंग"));
+        Assert.assertTrue(LyricsTextUtils.containsJoiningScript("चाँद"));
+        Assert.assertFalse(LyricsTextUtils.containsJoiningScript("तरह"));
+
+        // Combining marks and matras stay grouped with their base character instead of splitting.
+        List<int[]> rang = WordAnimationUtils.graphemeRanges("रंग");
+        Assert.assertEquals(2, rang.size());
+        Assert.assertEquals("रं", "रंग".substring(rang.get(0)[0], rang.get(0)[1]));
+        Assert.assertEquals("ग", "रंग".substring(rang.get(1)[0], rang.get(1)[1]));
+
+        List<int[]> chaand = WordAnimationUtils.graphemeRanges("चाँद\nसा");
+        Assert.assertEquals(3, chaand.size());
+        Assert.assertEquals("चाँ", "चाँद\nसा".substring(chaand.get(0)[0], chaand.get(0)[1]));
+        Assert.assertEquals("द", "चाँद\nसा".substring(chaand.get(1)[0], chaand.get(1)[1]));
+        Assert.assertEquals("सा", "चाँद\nसा".substring(chaand.get(2)[0], chaand.get(2)[1]));
+    }
 }
