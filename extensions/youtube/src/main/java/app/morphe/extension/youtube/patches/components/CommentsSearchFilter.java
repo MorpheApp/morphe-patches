@@ -9,18 +9,12 @@ package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.InputType;
-import android.util.Pair;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -49,9 +43,9 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.theme.ThemeUtils;
-import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.utils.SearchDialog;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 
@@ -542,52 +536,29 @@ public final class CommentsSearchFilter extends Filter {
     }
 
     private static void showSearchDialog(Context context, View searchButton) {
-        try {
-            EditText editText = CustomDialog.createEditText(context);
-            editText.setHint(str("morphe_search_comments_hint"));
-            editText.setSingleLine(true);
-            editText.setInputType(InputType.TYPE_CLASS_TEXT);
-            String text = isSearching() ? searchText : "";
-            editText.setText(text);
-            editText.setSelection(text.length());
-
-            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                    context,
-                    str("morphe_search_comments_dialog_title"),
-                    null,
-                    editText,
-                    str("morphe_search_comments_search"),
-                    () -> {
-                        String newText = editText.getText().toString();
-                        setSearch(newText);
-                        updateSearchButtonIcon(searchButton);
-                        if (!reloadPanelList(searchButton)) {
-                            // Such as only quotes, which are not a search.
-                            Utils.showSnackbarLong(str(!isSearching()
-                                    ? "morphe_search_comments_cleared"
-                                    : "morphe_search_comments_applied"));
-                        }
-                    },
-                    () -> {},
-                    str("morphe_search_comments_clear"),
-                    () -> {
-                        setSearch("");
-                        updateSearchButtonIcon(searchButton);
-                        if (!reloadPanelList(searchButton)) {
-                            Utils.showSnackbarLong(str("morphe_search_comments_cleared"));
-                        }
-                    },
-                    true
-            );
-            Dialog dialog = dialogPair.first;
-            Window window = dialog.getWindow();
-            if (window != null) {
-                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-            }
-            editText.requestFocus();
-            dialog.show();
-        } catch (Exception ex) {
-            Logger.printException(() -> "showSearchDialog failure", ex);
-        }
+        SearchDialog.show(
+                context,
+                str("morphe_search_comments_dialog_title"),
+                str("morphe_search_comments_hint"),
+                isSearching() ? searchText : "",
+                newText -> {
+                    setSearch(newText);
+                    updateSearchButtonIcon(searchButton);
+                    if (!reloadPanelList(searchButton)) {
+                        // Such as only quotes, which are not a search.
+                        Utils.showSnackbarLong(str(!isSearching()
+                                ? "morphe_search_comments_cleared"
+                                : "morphe_search_comments_applied"));
+                    }
+                },
+                str("morphe_search_comments_clear"),
+                () -> {
+                    setSearch("");
+                    updateSearchButtonIcon(searchButton);
+                    if (!reloadPanelList(searchButton)) {
+                        Utils.showSnackbarLong(str("morphe_search_comments_cleared"));
+                    }
+                }
+        );
     }
 }
