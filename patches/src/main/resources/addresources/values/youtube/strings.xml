@@ -1592,6 +1592,8 @@ Automotive layout
     <string name="morphe_playback_in_feeds_entry_always_on">Always on</string>
     <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi only</string>
     <string name="morphe_playback_in_feeds_entry_off">Off</string>
+    <string name="morphe_playback_in_feeds_seek_buttons_title">Show seek buttons in feeds</string>
+    <string name="morphe_playback_in_feeds_seek_buttons_summary">Shows the seek buttons on the videos that play in feeds, also when YouTube does not show them</string>
 
     <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
     <string name="morphe_restore_original_titles_title">Restore original titles</string>
