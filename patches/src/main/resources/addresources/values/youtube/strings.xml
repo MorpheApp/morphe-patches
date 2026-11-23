@@ -600,7 +600,7 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_double_tap_length_180s" translatable="false">180</string>
     <string name="morphe_double_tap_length_240s" translatable="false">240</string>
 
-    <!-- Search dialog of channel search and playlist search. -->
+    <!-- Search dialog of comments search, channel search and playlist search. -->
     <string name="morphe_search_dialog_search">Search</string>
 
     <!-- interaction.channelsearch.channelSearchPatch -->
@@ -736,7 +736,6 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_search_comments_summary">Tap the search button in the comments to show only the loaded comments that contain all the searched words. Put words in quotes to search for a phrase</string>
     <string name="morphe_search_comments_dialog_title">Search comments</string>
     <string name="morphe_search_comments_hint">Words to search for</string>
-    <string name="morphe_search_comments_search">Search</string>
     <string name="morphe_search_comments_clear">Clear</string>
     <string name="morphe_search_comments_applied">Change the sort order or open the comments again to search them</string>
     <string name="morphe_search_comments_cleared">Search cleared. Change the sort order or open the comments again to show all comments</string>

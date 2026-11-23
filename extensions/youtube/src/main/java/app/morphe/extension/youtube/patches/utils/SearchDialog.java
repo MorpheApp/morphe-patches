@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.patches.utils;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.text.InputType;
@@ -36,8 +38,8 @@ public final class SearchDialog {
      *
      * @param onSearch Called with the trimmed words to search, if any were entered.
      */
-    public static void show(Context context, String title, String searchButtonText, Consumer<String> onSearch) {
-        show(context, title, title, "", searchButtonText, text -> {
+    public static void show(Context context, String title, Consumer<String> onSearch) {
+        show(context, title, title, "", text -> {
             String query = text.trim();
             if (!query.isEmpty()) {
                 onSearch.accept(query);
@@ -51,7 +53,7 @@ public final class SearchDialog {
      * @param clearButtonText Text of a button that clears the search, or null for no such button.
      * @param onClear         Called when the search is cleared.
      */
-    public static void show(Context context, String title, String hint, String text, String searchButtonText,
+    public static void show(Context context, String title, String hint, String text,
                             Consumer<String> onSearch,
                             @Nullable String clearButtonText, @Nullable Runnable onClear) {
         try {
@@ -67,7 +69,7 @@ public final class SearchDialog {
                     title,
                     null,
                     editText,
-                    searchButtonText,
+                    str("morphe_search_dialog_search"),
                     () -> onSearch.accept(editText.getText().toString()),
                     () -> {},
                     clearButtonText,

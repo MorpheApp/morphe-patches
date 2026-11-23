@@ -46,7 +46,7 @@ public class GetPlaylistItemsRequest {
 
         try {
             Map<String, String> videos = new HashMap<>();
-            final boolean fetched = fetchPages(PlaylistRoutes.BROWSE_PLAYLIST_VIDEO_IDS, playlistId, requestHeader,
+            final PagesResult result = fetchPages(PlaylistRoutes.BROWSE_PLAYLIST_VIDEO_IDS, playlistId, requestHeader,
                     (response, page) -> {
                         JSONArray contents = page.optJSONArray("contents");
                         if (contents != null) {
@@ -61,7 +61,7 @@ public class GetPlaylistItemsRequest {
                         }
                         return true;
                     });
-            if (!fetched) {
+            if (result == PagesResult.FAILED) {
                 return null;
             }
             Logger.printDebug(() -> "Fetched " + videos.size() + " video ids of playlist: " + playlistId);
@@ -78,6 +78,14 @@ public class GetPlaylistItemsRequest {
         return null;
     }
 
+    enum PagesResult {
+        /** The first page could not be fetched. */
+        FAILED,
+        /** A page after the first could not be fetched, or the callback stopped the pages. */
+        PARTIAL,
+        COMPLETE
+    }
+
     interface PageCallback {
         /**
          * @param response Response the page is in. The response of the first page has the header of the playlist.
@@ -91,19 +99,20 @@ public class GetPlaylistItemsRequest {
      * Fetches the pages of the videos of a playlist one after the other.
      *
      * @param route Browse route, whose field mask keeps the playlist video list renderers and their continuations.
-     * @return Whether the first page could be fetched. A page after it that fails only stops the pages.
+     * @return Whether all pages were fetched. A page after the first that fails only stops the pages,
+     *         as the videos of the pages before it are still valid.
      */
-    static boolean fetchPages(Route.CompiledRoute route, String playlistId, Map<String, String> requestHeader,
-                              PageCallback callback) throws IOException, JSONException {
+    static PagesResult fetchPages(Route.CompiledRoute route, String playlistId, Map<String, String> requestHeader,
+                                  PageCallback callback) throws IOException, JSONException {
         JSONObject response = sendRequest(route, PlaylistRoutes.browsePlaylistBody(playlistId), requestHeader);
         if (response == null) {
-            return false;
+            return PagesResult.FAILED;
         }
 
         JSONObject page = findPlaylistRenderer(response);
         for (int i = 0; page != null && i < MAX_PLAYLIST_PAGES; i++) {
             if (!callback.onPage(response, page)) {
-                break;
+                return PagesResult.PARTIAL;
             }
 
             JSONArray continuations = page.optJSONArray("continuations");
@@ -115,14 +124,14 @@ public class GetPlaylistItemsRequest {
                             .getJSONObject("nextContinuationData").getString("continuation")),
                     requestHeader);
             if (response == null) {
-                break;
+                return PagesResult.PARTIAL;
             }
             JSONObject continuationContents = response.optJSONObject("continuationContents");
             page = continuationContents == null
                     ? null
                     : continuationContents.optJSONObject("playlistVideoListContinuation");
         }
-        return true;
+        return PagesResult.COMPLETE;
     }
 
     @Nullable

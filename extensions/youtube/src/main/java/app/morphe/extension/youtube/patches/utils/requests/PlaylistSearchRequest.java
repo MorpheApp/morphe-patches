@@ -10,8 +10,10 @@ package app.morphe.extension.youtube.patches.utils.requests;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -47,7 +49,8 @@ public final class PlaylistSearchRequest {
          * Called on a background thread.
          *
          * @param results    The matches found so far, or null if the playlist could not be listed.
-         * @param isComplete Whether the whole playlist was searched, or could not be.
+         * @param isComplete Whether the search is done. Pages that could not be listed after the
+         *                   first page are left out.
          */
         void onResults(@Nullable Results results, boolean isComplete);
     }
@@ -91,20 +94,19 @@ public final class PlaylistSearchRequest {
                              BooleanSupplier isCancelled, Callback callback) {
         Utils.runOnBackgroundThread(() -> {
             try {
+                List<String> queryWords = ChannelUploadsRequest.normalizedWords(query);
+
                 ListedPlaylist cached = cache.get(playlistId);
                 if (cached != null && cached.requestHeader.equals(requestHeader)
                         && System.currentTimeMillis() - cached.listedTime < CACHE_MILLISECONDS) {
-                    callback.onResults(new Results(cached.title, matches(cached.videos, query)), true);
+                    callback.onResults(new Results(cached.title, matches(cached.videos, queryWords)), true);
                     return;
                 }
 
-                ListedPlaylist listed = listPlaylist(playlistId, query, requestHeader, isCancelled, callback);
-                if (listed == null) {
-                    callback.onResults(null, true);
-                } else if (!isCancelled.getAsBoolean()) {
-                    cache.put(playlistId, listed);
-                    callback.onResults(new Results(listed.title, matches(listed.videos, query)), true);
-                }
+                listPlaylist(playlistId, queryWords, requestHeader, isCancelled, callback);
+            } catch (IOException ex) {
+                Logger.printInfo(() -> "Could not list playlist: " + playlistId, ex);
+                callback.onResults(null, true);
             } catch (Exception ex) {
                 Logger.printException(() -> "fetch failure", ex);
                 callback.onResults(null, true);
@@ -112,48 +114,53 @@ public final class PlaylistSearchRequest {
         });
     }
 
-    /**
-     * @return The videos of the playlist, or null if it could not be listed or the search was cancelled.
-     */
-    @Nullable
-    private static ListedPlaylist listPlaylist(String playlistId, String query, Map<String, String> requestHeader,
-                                               BooleanSupplier isCancelled, Callback callback) throws Exception {
-        Utils.verifyOffMainThread();
-
+    private static void listPlaylist(String playlistId, List<String> queryWords, Map<String, String> requestHeader,
+                                     BooleanSupplier isCancelled, Callback callback) throws IOException, JSONException {
         final long startTime = System.currentTimeMillis();
         List<Video> videos = new ArrayList<>();
+        List<ChannelSearchResult> matches = new ArrayList<>();
         String[] title = {""};
 
-        final boolean isListed = GetPlaylistItemsRequest.fetchPages(
+        GetPlaylistItemsRequest.PagesResult pagesResult = GetPlaylistItemsRequest.fetchPages(
                 PlaylistRoutes.BROWSE_PLAYLIST_SEARCH_VIDEOS, playlistId, requestHeader, (response, page) -> {
                     if (isCancelled.getAsBoolean()) {
                         return false;
                     }
-                    if (videos.isEmpty()) {
+                    if (title[0].isEmpty()) {
+                        // Only the response of the first page has the header.
                         title[0] = parsePlaylistTitle(response);
                     }
 
                     List<Video> pageVideos = parsePage(page);
                     videos.addAll(pageVideos);
-                    List<ChannelSearchResult> pageMatches = matches(pageVideos, query);
+                    List<ChannelSearchResult> pageMatches = matches(pageVideos, queryWords);
                     if (!pageMatches.isEmpty()) {
-                        callback.onResults(new Results(title[0], matches(videos, query)), false);
+                        matches.addAll(pageMatches);
+                        callback.onResults(new Results(title[0], new ArrayList<>(matches)), false);
                     }
                     return true;
                 });
 
         Logger.printDebug(() -> "Listed " + videos.size() + " videos of playlist: " + playlistId
-                + " took: " + (System.currentTimeMillis() - startTime) + "ms");
-        if (!isListed || isCancelled.getAsBoolean()) {
-            return null;
+                + " result: " + pagesResult + " took: " + (System.currentTimeMillis() - startTime) + "ms");
+        if (isCancelled.getAsBoolean()) {
+            return;
         }
-        return new ListedPlaylist(title[0], videos, requestHeader);
+        if (pagesResult == GetPlaylistItemsRequest.PagesResult.FAILED) {
+            callback.onResults(null, true);
+            return;
+        }
+        if (pagesResult == GetPlaylistItemsRequest.PagesResult.COMPLETE) {
+            // A playlist missing pages is not kept, so the next search lists it again.
+            cache.put(playlistId, new ListedPlaylist(title[0], videos, requestHeader));
+        }
+        callback.onResults(new Results(title[0], matches), true);
     }
 
-    private static List<ChannelSearchResult> matches(List<Video> videos, String query) {
+    private static List<ChannelSearchResult> matches(List<Video> videos, List<String> queryWords) {
         List<ChannelSearchResult> matches = new ArrayList<>();
         for (Video video : videos) {
-            if (ChannelUploadsRequest.matches(video.searchText, query)) {
+            if (ChannelUploadsRequest.matches(video.searchText, queryWords)) {
                 matches.add(video.result);
             }
         }

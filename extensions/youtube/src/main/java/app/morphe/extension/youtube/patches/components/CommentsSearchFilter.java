@@ -541,7 +541,6 @@ public final class CommentsSearchFilter extends Filter {
                 str("morphe_search_comments_dialog_title"),
                 str("morphe_search_comments_hint"),
                 isSearching() ? searchText : "",
-                str("morphe_search_comments_search"),
                 newText -> {
                     setSearch(newText);
                     updateSearchButtonIcon(searchButton);

@@ -222,8 +222,6 @@ public final class ChannelSearchPatch {
     private static WeakReference<ImageView> searchButtonViewRef = new WeakReference<>(null);
     private static WeakReference<View> channelSearchButtonRef = new WeakReference<>(null);
 
-    private static WeakReference<SearchController> activeControllerRef = new WeakReference<>(null);
-
     /**
      * Injection point.
      * Called on main thread.
@@ -317,7 +315,6 @@ public final class ChannelSearchPatch {
                 Activity activity = Utils.getActivity();
                 if (activity != null && isChannelId(channelId)) {
                     SearchDialog.show(activity, str("morphe_channel_search_hint"),
-                            str("morphe_search_dialog_search"),
                             query -> searchInChannel(activity, channelId, query));
                 }
             });
@@ -424,7 +421,7 @@ public final class ChannelSearchPatch {
                     if (resultMode == ResultMode.POSTS) {
                         refreshResults();
                     } else {
-                        showState(str(isSearchFailed
+                        sheet.showState(str(isSearchFailed
                                 ? "morphe_channel_search_failed"
                                 : "morphe_channel_search_no_results"));
                     }
@@ -555,7 +552,7 @@ public final class ChannelSearchPatch {
             if (lastResponse == null) {
                 if (isSearchComplete) {
                     sortLoadingView.setVisibility(View.INVISIBLE);
-                    showState(str(isSearchFailed
+                    sheet.showState(str(isSearchFailed
                             ? "morphe_channel_search_failed"
                             : "morphe_channel_search_no_results"));
                 }
@@ -568,7 +565,7 @@ public final class ChannelSearchPatch {
 
             List<ChannelSearchResult> sorted = activeSort.sort(allResults(), uploads);
             if (sorted.isEmpty()) {
-                showState(loading ? null : str("morphe_channel_search_no_results"));
+                sheet.showState(loading ? null : str("morphe_channel_search_no_results"));
                 return;
             }
 
@@ -589,7 +586,7 @@ public final class ChannelSearchPatch {
                 completeResults();
             }
             if (lastResponse == null && !isSearchComplete && mode == ResultMode.VIDEOS) {
-                showState(null);
+                sheet.showState(null);
             }
             refreshResults();
         }
@@ -621,7 +618,7 @@ public final class ChannelSearchPatch {
             sortLoadingView.setVisibility(loading ? View.VISIBLE : View.INVISIBLE);
 
             if (postsTabMatches.isEmpty()) {
-                showState(loading ? null : str("morphe_channel_search_no_posts"));
+                sheet.showState(loading ? null : str("morphe_channel_search_no_posts"));
                 return;
             }
 
@@ -675,32 +672,14 @@ public final class ChannelSearchPatch {
             });
             popupMenu.show();
         }
-
-        /**
-         * Replaces the results with a loading animation, or with a message.
-         *
-         * @param message Null to show that the results are loading.
-         */
-        private void showState(@Nullable String message) {
-            sheet.showState(message);
-        }
     }
 
     private static void searchInChannel(Activity activity, String channelId, String query) {
         try {
             Logger.printDebug(() -> "Searching channel: " + channelId + " for: " + query);
 
-            SearchController previousController = activeControllerRef.get();
-            if (previousController != null) {
-                previousController.cancel();
-                if (previousController.sheet.isShowing()) {
-                    previousController.sheet.dismiss();
-                }
-            }
-
             // The results show right away, and fill in as the search finds them.
             SearchController controller = new SearchController(activity, channelId, query);
-            activeControllerRef = new WeakReference<>(controller);
             ChannelSearchRequest.fetchProgressive(channelId, query, controller);
         } catch (Exception ex) {
             Logger.printException(() -> "searchInChannel failure", ex);
@@ -785,7 +764,7 @@ public final class ChannelSearchPatch {
 
         for (ChannelPostResult post : posts) {
             String tag = "post:" + post.postId;
-            View row = existingRows.get(tag);
+            View row = existingRows.remove(tag);
             if (row == null) {
                 row = createPostRow(activity, post, query);
                 row.setTag(tag);

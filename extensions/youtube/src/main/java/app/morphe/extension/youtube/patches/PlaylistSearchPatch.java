@@ -55,8 +55,6 @@ public final class PlaylistSearchPatch {
      */
     private static WeakReference<MenuItem> menuItemRef = new WeakReference<>(null);
 
-    private static WeakReference<SearchController> activeControllerRef = new WeakReference<>(null);
-
     /**
      * Injection point.
      * Called on main thread.
@@ -136,23 +134,14 @@ public final class PlaylistSearchPatch {
         }
         String playlistId = browseId.substring(PLAYLIST_BROWSE_ID_PREFIX.length());
 
-        SearchDialog.show(activity, str("morphe_playlist_search_hint"), str("morphe_search_dialog_search"),
+        SearchDialog.show(activity, str("morphe_playlist_search_hint"),
                 query -> search(activity, playlistId, query));
     }
 
     private static void search(Activity activity, String playlistId, String query) {
         Logger.printDebug(() -> "Searching playlist: " + playlistId + " for: " + query);
 
-        SearchController previousController = activeControllerRef.get();
-        if (previousController != null) {
-            previousController.cancel();
-            if (previousController.sheet.isShowing()) {
-                previousController.sheet.dismiss();
-            }
-        }
-
         SearchController controller = new SearchController(activity, playlistId, query);
-        activeControllerRef = new WeakReference<>(controller);
         PlaylistSearchRequest.fetch(playlistId, query, AuthUtils.getRequestHeader(),
                 controller::isCancelled, controller);
     }

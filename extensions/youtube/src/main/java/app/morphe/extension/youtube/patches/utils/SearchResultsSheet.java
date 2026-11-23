@@ -56,7 +56,7 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.
  */
 public final class SearchResultsSheet {
 
-    public static final int THUMBNAIL_CORNER_RADIUS = Dim.dp(8);
+    private static final int THUMBNAIL_CORNER_RADIUS = Dim.dp(8);
 
     private static final int THUMBNAIL_WIDTH = Dim.dp(120);
     private static final int THUMBNAIL_HEIGHT = Dim.dp(68);
@@ -206,7 +206,9 @@ public final class SearchResultsSheet {
     }
 
     /**
-     * @return The rows that are shown, by the tag of their item.
+     * @return The rows that are shown, by the tag of their item. A reused row must be removed from
+     *         the map, as an item can be in the results more than once, such as a video added to a
+     *         playlist twice, and a view can be shown only once.
      */
     public Map<String, View> getRows() {
         final int count = listContainer.getChildCount();
@@ -233,7 +235,7 @@ public final class SearchResultsSheet {
         List<View> rows = new ArrayList<>(results.size() + 1);
 
         for (ChannelSearchResult result : results) {
-            View row = existingRows.get(result.videoId);
+            View row = existingRows.remove(result.videoId);
             if (row == null) {
                 row = createVideoRow(result);
                 row.setTag(result.videoId);
