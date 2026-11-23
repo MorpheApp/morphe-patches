@@ -29,6 +29,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.function.Consumer;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
@@ -41,6 +42,11 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
+/**
+ * Displays total offline lyrics cache usage on the settings row and opens a sectioned dialog to
+ * inspect and clear the Lyrics, Translation, Transliteration, AI section and temporary offset
+ * caches, or all of them, without touching downloaded romanization dictionaries.
+ */
 @SuppressWarnings({"unused", "deprecation"})
 public class LyricsClearCachePreference extends Preference {
 
@@ -171,63 +177,36 @@ public class LyricsClearCachePreference extends Preference {
             final boolean[] confirmOpen = {false};
             final boolean[] clearingInProgress = {false};
             final Runnable[] refreshUi = new Runnable[1];
+            final Consumer<CacheStats> onCleared = updated -> {
+                applyOuterSummary(updated);
+                if (!dialog.isShowing() || isContextInvalid(context)) {
+                    return;
+                }
+                currentStats[0] = updated;
+                refreshUi[0].run();
+            };
             refreshUi[0] = () -> {
                 CacheStats s = currentStats[0];
                 bindCard(lyricsCard, CacheBucket.LYRICS, s.lyrics(),
                         () -> confirmAndClear(context, CacheBucket.LYRICS,
                                 currentStats[0], confirmOpen, clearingInProgress,
-                                updated -> {
-                                    applyOuterSummary(updated);
-                                    if (!dialog.isShowing() || isContextInvalid(context)) {
-                                        return;
-                                    }
-                                    currentStats[0] = updated;
-                                    refreshUi[0].run();
-                                }));
+                                onCleared));
                 bindCard(translationCard, CacheBucket.TRANSLATION, s.translation(),
                         () -> confirmAndClear(context, CacheBucket.TRANSLATION,
                                 currentStats[0], confirmOpen, clearingInProgress,
-                                updated -> {
-                                    applyOuterSummary(updated);
-                                    if (!dialog.isShowing() || isContextInvalid(context)) {
-                                        return;
-                                    }
-                                    currentStats[0] = updated;
-                                    refreshUi[0].run();
-                                }));
+                                onCleared));
                 bindCard(transliterationCard, CacheBucket.TRANSLITERATION, s.transliteration(),
                         () -> confirmAndClear(context, CacheBucket.TRANSLITERATION,
                                 currentStats[0], confirmOpen, clearingInProgress,
-                                updated -> {
-                                    applyOuterSummary(updated);
-                                    if (!dialog.isShowing() || isContextInvalid(context)) {
-                                        return;
-                                    }
-                                    currentStats[0] = updated;
-                                    refreshUi[0].run();
-                                }));
+                                onCleared));
                 bindCard(aiSectionCard, CacheBucket.AI_SECTION, s.aiSection(),
                         () -> confirmAndClear(context, CacheBucket.AI_SECTION,
                                 currentStats[0], confirmOpen, clearingInProgress,
-                                updated -> {
-                                    applyOuterSummary(updated);
-                                    if (!dialog.isShowing() || isContextInvalid(context)) {
-                                        return;
-                                    }
-                                    currentStats[0] = updated;
-                                    refreshUi[0].run();
-                                }));
+                                onCleared));
                 bindCard(offsetCard, CacheBucket.OFFSET, s.offset(),
                         () -> confirmAndClear(context, CacheBucket.OFFSET,
                                 currentStats[0], confirmOpen, clearingInProgress,
-                                updated -> {
-                                    applyOuterSummary(updated);
-                                    if (!dialog.isShowing() || isContextInvalid(context)) {
-                                        return;
-                                    }
-                                    currentStats[0] = updated;
-                                    refreshUi[0].run();
-                                }));
+                                onCleared));
 
                 BucketStats total = s.total();
                 totalCard.summaryView.setText(str("morphe_music_lyrics_cache_total_summary",
@@ -242,14 +221,7 @@ public class LyricsClearCachePreference extends Preference {
 
             if (clearAllBtn != null) {
                 clearAllBtn.setOnClickListener(v -> confirmAndClear(context, CacheBucket.ALL,
-                        currentStats[0], confirmOpen, clearingInProgress, updated -> {
-                            applyOuterSummary(updated);
-                            if (!dialog.isShowing() || isContextInvalid(context)) {
-                                return;
-                            }
-                            currentStats[0] = updated;
-                            refreshUi[0].run();
-                        }));
+                        currentStats[0], confirmOpen, clearingInProgress, onCleared));
             }
 
             refreshUi[0].run();
@@ -265,7 +237,7 @@ public class LyricsClearCachePreference extends Preference {
 
     private void confirmAndClear(Context context, CacheBucket bucket, CacheStats stats,
                                  boolean[] confirmOpen, boolean[] clearingInProgress,
-                                 java.util.function.Consumer<CacheStats> onCleared) {
+                                 Consumer<CacheStats> onCleared) {
         if (confirmOpen[0] || clearingInProgress[0] || isContextInvalid(context)) {
             return;
         }

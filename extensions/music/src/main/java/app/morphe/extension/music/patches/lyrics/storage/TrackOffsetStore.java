@@ -41,15 +41,11 @@ public final class TrackOffsetStore {
     private TrackOffsetStore() {
     }
 
-    /** Bytes are not measured; clearing entries leaves the file. */
-    public record Stats(int items) {
-        public static final Stats EMPTY = new Stats(0);
-    }
-
-    public static Stats stats() {
+    /** {@return how many tracks have an offset saved} */
+    public static int count() {
         SharedPreferences preferences = preferences();
         if (preferences == null) {
-            return Stats.EMPTY;
+            return 0;
         }
         int items = 0;
         for (String key : preferences.getAll().keySet()) {
@@ -57,7 +53,7 @@ public final class TrackOffsetStore {
                 items++;
             }
         }
-        return new Stats(items);
+        return items;
     }
 
     public static void clear() {

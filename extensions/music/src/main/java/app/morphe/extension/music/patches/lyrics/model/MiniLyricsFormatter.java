@@ -52,6 +52,8 @@ package app.morphe.extension.music.patches.lyrics.model;
 
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.shared.Utils;
+
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,8 +62,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import app.morphe.extension.shared.Utils;
 
 /** Text of the miniplayer and the media session. The lyrics themselves are never changed. */
 public final class MiniLyricsFormatter {

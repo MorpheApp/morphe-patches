@@ -293,7 +293,7 @@ final class LyricsReadingCalc {
                 final JapaneseMoraSplitter.AlignedChunk[] koAligned = (jaAligned == null
                         && KoreanReadingAligner.hasKoreanScript(ownWords))
                         ? KoreanReadingAligner.alignKoreanLineToSlots(
-                        strippedWhole, ownWords, isLatinWord, guides)
+                                strippedWhole, ownWords, isLatinWord, guides)
                         : null;
                 final JapaneseMoraSplitter.AlignedChunk[] scriptAligned =
                         jaAligned != null ? jaAligned : koAligned;

@@ -70,8 +70,8 @@ final class LyricsWordTimingCalc {
                 if (lineStart >= 0 && lineEnd > lineStart) {
                     List<WordTiming> synthesized = songWordSynced
                             ? (!hasMultipleSpacedTokens(lineText)
-                               ? LyricsWordBoundaries.synthesizeLineChars(lineText, lineStart, lineEnd)
-                               : LyricsWordBoundaries.synthesizeLineWords(lineText, lineStart, lineEnd, false))
+                                    ? LyricsWordBoundaries.synthesizeLineChars(lineText, lineStart, lineEnd)
+                                    : LyricsWordBoundaries.synthesizeLineWords(lineText, lineStart, lineEnd, false))
                             : LyricsWordBoundaries.synthesizeLineWords(lineText, lineStart, lineEnd);
                     if (!synthesized.isEmpty()) {
                         return synthesized;

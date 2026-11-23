@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
@@ -185,7 +186,6 @@ public final class LyricsFontManager {
 
         return new FontMetadata(true, displayName, weight, italic, hasWeightAxis, hasWidthAxis);
     }
-
     private static String extractDisplayName(ByteBuffer buf, byte[] data, int nameOffset, int nameLen) {
         int count = buf.getShort(nameOffset + 2) & 0xFFFF;
         int stringStorageOffset = buf.getShort(nameOffset + 4) & 0xFFFF;
@@ -248,8 +248,7 @@ public final class LyricsFontManager {
                     if (typographicFamily == null || preferredEnglish) typographicFamily = decoded;
                 }
                 case 17 -> {
-                    if (typographicSubfamily == null || preferredEnglish)
-                        typographicSubfamily = decoded;
+                    if (typographicSubfamily == null || preferredEnglish) typographicSubfamily = decoded;
                 }
                 default -> {
                 }
@@ -275,7 +274,6 @@ public final class LyricsFontManager {
         }
         return "";
     }
-
     static FontMetadata parseFontMetadata(File file) {
         if (!file.isFile()) {
             return FontMetadata.INVALID;

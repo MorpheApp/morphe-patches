@@ -66,10 +66,10 @@ public class TrackOffsetStoreTest {
         TrackInfo track2 = LyricsFixtures.track("Another Song", "Another Artist");
         TrackOffsetStore.put(track, 500);
         TrackOffsetStore.put(track2, 300);
-        assertEquals(2, TrackOffsetStore.stats().items());
+        assertEquals(2, TrackOffsetStore.count());
 
         TrackOffsetStore.clear();
-        assertEquals(0, TrackOffsetStore.stats().items());
+        assertEquals(0, TrackOffsetStore.count());
         assertEquals(0, TrackOffsetStore.get(track));
         assertEquals(0, TrackOffsetStore.get(track2));
     }
@@ -78,6 +78,6 @@ public class TrackOffsetStoreTest {
     public void statsIgnoresZeroOffsets() {
         TrackOffsetStore.put(track, 500);
         TrackOffsetStore.put(track, 0);
-        assertEquals(0, TrackOffsetStore.stats().items());
+        assertEquals(0, TrackOffsetStore.count());
     }
 }

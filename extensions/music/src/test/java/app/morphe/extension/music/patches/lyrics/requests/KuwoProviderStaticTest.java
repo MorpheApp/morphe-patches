@@ -70,18 +70,18 @@ public class KuwoProviderStaticTest {
 
     @Test
     public void parseKuwoLrcNullReturnsNull() {
-        assertNull(KuwoProvider.parseKuwoLrc(null, "t", "a", "al"));
+        assertNull(KuwoProvider.parseKuwoLrc(null, null));
     }
 
     @Test
     public void parseKuwoLrcEmptyReturnsNull() {
-        assertNull(KuwoProvider.parseKuwoLrc("", "t", "a", "al"));
+        assertNull(KuwoProvider.parseKuwoLrc("", null));
     }
 
     @Test
     public void parseKuwoLrcBasicLine() {
         String text = "[00:10.000]<10,20>hello <30,40>world\n";
-        Lyrics lyrics = KuwoProvider.parseKuwoLrc(text, "Title", "Artist", "Album");
+        Lyrics lyrics = KuwoProvider.parseKuwoLrc(text, null);
         assertNotNull(lyrics);
         assertEquals("Kuwo", lyrics.providerName());
         assertEquals(1, lyrics.lines().size());
@@ -95,7 +95,7 @@ public class KuwoProviderStaticTest {
     @Test
     public void parseKuwoLrcTranslationLine() {
         String text = "[00:10.000]<10,20>hello\n[00:10.000]<0,0>你好\n";
-        Lyrics lyrics = KuwoProvider.parseKuwoLrc(text, "Title", "Artist", "Album");
+        Lyrics lyrics = KuwoProvider.parseKuwoLrc(text, null);
         assertNotNull(lyrics);
         assertNotNull(lyrics.translations());
         assertTrue(lyrics.translations().containsKey("default"));
@@ -105,29 +105,29 @@ public class KuwoProviderStaticTest {
 
     @Test
     public void parseKuwoLrcTags() {
-        String text = "[ti:My Title]\n[ar:My Artist]\n[00:05.000]line one\n";
-        Lyrics lyrics = KuwoProvider.parseKuwoLrc(text, "Override", "OverrideA", "OverrideAl");
+        String text = "[ti:My Title]\n[ar:My Artist]\n[by:Writer]\n[00:05.000]line one\n";
+        Lyrics lyrics = KuwoProvider.parseKuwoLrc(text, null);
         assertNotNull(lyrics);
-        // caller-provided title/artist/album override tags
         assertEquals(1, lyrics.lines().size());
+        assertEquals(java.util.List.of("Writer"), lyrics.songwriters());
     }
 
     @Test
     public void parseKuwoLrcScale() {
         String text = "[kuwo:26]\n[00:01.000]<10,20>hi\n";
-        Lyrics lyrics = KuwoProvider.parseKuwoLrc(text, "t", "a", "al");
+        Lyrics lyrics = KuwoProvider.parseKuwoLrc(text, null);
         assertNotNull(lyrics);
         assertEquals(1, lyrics.lines().size());
     }
 
     @Test
     public void parseMobileLrcNullReturnsNull() {
-        assertNull(KuwoProvider.parseMobileLrc(null, "t", "a", "al"));
+        assertNull(KuwoProvider.parseMobileLrc(null, null));
     }
 
     @Test
     public void parseMobileLrcEmptyReturnsNull() {
-        assertNull(KuwoProvider.parseMobileLrc(new JSONArray(), "t", "a", "al"));
+        assertNull(KuwoProvider.parseMobileLrc(new JSONArray(), null));
     }
 
     @Test
@@ -145,7 +145,7 @@ public class KuwoProviderStaticTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        Lyrics lyrics = KuwoProvider.parseMobileLrc(arr, "Title", "Artist", "Album");
+        Lyrics lyrics = KuwoProvider.parseMobileLrc(arr, null);
         assertNotNull(lyrics);
         assertEquals(2, lyrics.lines().size());
         assertEquals(10500, lyrics.lines().get(0).startTimeMs());

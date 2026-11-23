@@ -153,9 +153,10 @@ public final class AppleMusicArtworkPatch {
 
     @Nullable
     public static View attachAnimatedArtwork(ImageView thumbnail) {
-        if (!ENABLED || currentArtworkFile() == null) return null;
+        File file = currentArtworkFile();
+        if (file == null) return null;
         try {
-            AnimatedArtworkView view = AnimatedArtworkView.addAbove(thumbnail, currentArtworkFile());
+            AnimatedArtworkView view = AnimatedArtworkView.addAbove(thumbnail, file);
             extraArtworkViews.add(new WeakReference<>(view));
             view.updatePlayback();
             return view;

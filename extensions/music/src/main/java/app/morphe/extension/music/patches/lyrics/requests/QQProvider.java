@@ -87,26 +87,26 @@ public final class QQProvider implements LyricsProvider {
         return best;
     }
 
+    /** Asks the two musicu hosts, then the web search, and keeps the first that has results. */
     private static List<JSONObject> searchAll(String keyword, TrackInfo track) {
-        String[] musicuUrls = {MUSICU_URL, SHU6_URL};
-        for (String url : musicuUrls) {
+        for (String url : new String[]{MUSICU_URL, SHU6_URL}) {
             try {
                 JSONArray songs = musicuSearch(url, keyword);
                 if (songs != null && songs.length() > 0) {
-                    List<JSONObject> expanded = expandGrpTree(songs);
-                    return softGateSort(expanded, track);
+                    return softGateSort(expandGrpTree(songs), track);
                 }
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "QQ search failed: " + url, ex);
             }
         }
 
         try {
             JSONArray songs = webSearch(keyword);
             if (songs != null && songs.length() > 0) {
-                List<JSONObject> expanded = expandGrpTree(songs);
-                return softGateSort(expanded, track);
+                return softGateSort(expandGrpTree(songs), track);
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "QQ web search failed", ex);
         }
         return new ArrayList<>();
     }
@@ -147,18 +147,13 @@ public final class QQProvider implements LyricsProvider {
 
     @Nullable
     private static JSONArray webSearch(String keyword) throws IOException, JSONException {
-        StringBuilder url = new StringBuilder(WEB_SEARCH_URL);
-        url.append("?format=json&aggr=1&w=").append(java.net.URLEncoder.encode(keyword, "UTF-8"));
-        url.append("&n=5&p=1");
-
-        HttpURLConnection connection = (HttpURLConnection) new java.net.URL(url.toString()).openConnection();
-        connection.setRequestMethod("GET");
-        connection.setRequestProperty("Referer", "https://y.qq.com/");
-        connection.setRequestProperty("User-Agent", "Mozilla/5.0");
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(5000);
-
+        String url = WEB_SEARCH_URL + "?format=json&aggr=1&w=" + LyricsRequests.encode(keyword)
+                + "&n=5&p=1";
+        HttpURLConnection connection = LyricsRequests.openConnection(url, Map.of(
+                "Referer", "https://y.qq.com/",
+                "User-Agent", "Mozilla/5.0"));
         if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
+            LyricsRequests.logFailure("QQ", connection);
             return null;
         }
         JSONObject root = Requester.parseJSONObject(connection);

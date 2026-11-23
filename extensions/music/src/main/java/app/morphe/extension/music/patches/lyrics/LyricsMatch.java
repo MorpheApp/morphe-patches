@@ -110,7 +110,7 @@ public final class LyricsMatch {
 
     static boolean isBlindProvider(LyricsProvider provider) {
         return switch (provider.name()) {
-            case "Spotify", "AMLL", "bLyrics", "LyricsPlus", "BiniLyrics", "Lyricify" -> true;
+            case "Spotify", "AMLL", "bLyrics", "LyricsPlus", "Lyricify" -> true;
             default -> false;
         };
     }

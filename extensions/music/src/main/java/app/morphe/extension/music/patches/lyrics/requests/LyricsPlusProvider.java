@@ -19,6 +19,7 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
@@ -85,6 +86,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
 
         String fullText = textBuf.toString().trim();
 
+        // Words with no spaces between them in a spaced script are joined with spaces.
         if (fullText.indexOf(' ') < 0 && words.size() > 1 && !TTMLParser.isContinuousCjk(words.get(0).text())) {
             StringBuilder reconstructed = new StringBuilder();
             for (int i = 0; i < words.size(); i++) {
@@ -99,6 +101,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
             fullText = reconstructed.toString();
         }
 
+        // The last word ends the line, so it has no space after it.
         if (!words.isEmpty()) {
             Word lastWord = words.get(words.size() - 1);
             if (lastWord.endsWithSpace()) {
@@ -153,6 +156,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
             return FetchResult.of(lyrics, track);
         }
 
+        // A title with a video tag is asked again without it.
         final String cleanTitle = track.title()
                 .replace("(Official Video)", "")
                 .replace("(Official Music Video)", "")
@@ -205,23 +209,16 @@ public final class LyricsPlusProvider implements LyricsProvider {
     @Nullable
     private Lyrics fetchFromApi(TrackInfo track) {
         for (String host : API_HOSTS) {
-            final String currentHost = host;
             try {
-                Lyrics lyrics = fetchFromHost(currentHost, track);
+                Lyrics lyrics = fetchFromUrl(buildUrl(host, track));
                 if (lyrics != null) {
                     return lyrics;
                 }
             } catch (Exception ex) {
-                Logger.printDebug(() -> "LyricsPlus fetch failed: " + currentHost, ex);
+                Logger.printDebug(() -> "LyricsPlus fetch failed: " + host, ex);
             }
         }
         return null;
-    }
-
-    @Nullable
-    private Lyrics fetchFromHost(String host, TrackInfo track)
-            throws IOException, JSONException {
-        return fetchFromUrl(buildUrl(host, track));
     }
 
     /** Look up a candidate by ISRC, then platform id, then title/artist. */
@@ -256,7 +253,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
 
     @Nullable
     private Lyrics fetchLyricsWithParam(String param, String value)
-            throws IOException, JSONException {
+            throws UnsupportedEncodingException {
         for (String host : API_HOSTS) {
             String url = host + "/v1/ttml/get?" + param + "=" + encode(value);
             try {
@@ -377,10 +374,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
 
         JSONObject metadata = root.optJSONObject("metadata");
         String upstreamSource = metadata != null ? metadata.optString("source", "") : "";
-        if (upstreamSource != null && upstreamSource.isEmpty()) {
-            upstreamSource = null;
-        }
-        if (isLyricsPlusSelfSource(upstreamSource)) {
+        if (upstreamSource.isEmpty() || isLyricsPlusSelfSource(upstreamSource)) {
             upstreamSource = null;
         }
         List<String> songwriters = null;
@@ -475,6 +469,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
                     if (!bgLine.words().isEmpty()) hasAnyWordSync = true;
                 }
             } else {
+                // Line synced only, with no word timing.
                 String text = rawLineText.trim();
                 boolean isBg = false;
                 if ((text.startsWith("(") && text.endsWith(")")) || (text.startsWith("（") && text.endsWith("）"))) {
@@ -486,6 +481,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
                 }
             }
 
+            // The transliteration and translation of the line, if any.
             if (transliterationText != null && !transliterationText.trim().isEmpty()) {
                 romanization.add(new LyricsLine(LyricsLine.NO_TIME, transliterationText.trim()));
             }
@@ -514,7 +510,7 @@ public final class LyricsPlusProvider implements LyricsProvider {
 
     private static boolean isLyricsPlusSelfSource(@Nullable String source) {
         if (source == null) return false;
-        String normalized = source.toLowerCase(java.util.Locale.ROOT);
+        String normalized = source.toLowerCase(Locale.ROOT);
         if (normalized.startsWith("q")) {
             normalized = normalized.substring(1);
         }

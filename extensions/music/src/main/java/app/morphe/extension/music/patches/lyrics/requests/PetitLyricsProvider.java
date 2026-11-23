@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -56,30 +57,24 @@ public final class PetitLyricsProvider implements LyricsProvider {
     private static final int LSY_MAX_LINES = 10_000;
     private static final int LSY_WRAP_CS = 65_536;
 
-    @Nullable
-    private static String cleanTitle(@Nullable String raw) {
-        if (raw == null) return null;
-        String text = raw.trim();
-        if (text.isEmpty()) return raw;
+    /** Full-width separators split a title as they are; ASCII ones only with spaces around. */
+    private static final Pattern TITLE_SEPARATOR = Pattern.compile("\\s*[—–／〜]\\s*|\\s+[-/~]\\s+");
 
-        text = text.replaceAll("\\s*[-\u2014\u2013]\\s*", " - ");
-        text = text.replaceAll("\\s*[／/]\\s*", " - ");
-        text = text.replaceAll("\\s*〜\\s*", " - ");
-        text = text.replaceAll("\\s*~\\s*", " - ");
-
-        int firstIdx = text.indexOf(" - ");
-        if (firstIdx < 0) return text;
-
-        StringBuilder cleaned = new StringBuilder(text.substring(0, firstIdx));
-        int cursor = firstIdx + 3;
-        while (cursor < text.length()) {
-            int nextIdx = text.indexOf(" - ", cursor);
-            String tail = (nextIdx < 0 ? text.substring(cursor) : text.substring(cursor, nextIdx)).trim();
-            if (tail.isEmpty() || isBracketed(tail) || isPureAscii(tail)) {
-            } else {
+    /**
+     * Drops the subtitles PetitLyrics does not list, such as an English title or a bracketed
+     * note after the Japanese one.
+     */
+    static String cleanTitle(String raw) {
+        String[] parts = TITLE_SEPARATOR.split(raw.trim());
+        if (parts.length < 2) {
+            return raw;
+        }
+        StringBuilder cleaned = new StringBuilder(parts[0].trim());
+        for (int i = 1; i < parts.length; i++) {
+            String tail = parts[i].trim();
+            if (!tail.isEmpty() && !isBracketed(tail) && !isPureAscii(tail)) {
                 cleaned.append(" - ").append(tail);
             }
-            cursor = nextIdx < 0 ? text.length() : nextIdx + 3;
         }
         String result = cleaned.toString().trim();
         return result.isEmpty() ? raw : result;

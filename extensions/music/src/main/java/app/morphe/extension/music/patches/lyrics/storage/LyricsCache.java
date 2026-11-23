@@ -1427,13 +1427,13 @@ public final class LyricsCache {
                 }
             }
         }
-        final TrackOffsetStore.Stats offsets = TrackOffsetStore.stats();
         return new CacheStats(
                 new BucketStats(lyricsBytes, lyricsItems),
                 new BucketStats(translationBytes, translationItems),
                 new BucketStats(transliterationBytes, transliterationItems),
                 new BucketStats(aiSectionBytes, aiSectionItems),
-                new BucketStats(0, offsets.items()));
+                // Offsets live in preferences, so they take no space of their own here.
+                new BucketStats(0, TrackOffsetStore.count()));
     }
 
     private static boolean isNotFoundFile(File file) {
@@ -1474,7 +1474,7 @@ public final class LyricsCache {
             if (track == null) {
                 return "";
             }
-            return videoId != null ? track + videoId : track;
+            return videoId != null ? track + '\0' + videoId : track;
         } catch (IOException ex) {
             return null;
         }

@@ -243,11 +243,6 @@ public class LyricsMatchTest {
     }
 
     @Test
-    public void isBlindProvider_binilyricsReturnsTrue() {
-        assertTrue(LyricsMatch.isBlindProvider(provider("BiniLyrics")));
-    }
-
-    @Test
     public void isBlindProvider_lyricsPlusReturnsTrue() {
         assertTrue(LyricsMatch.isBlindProvider(provider("LyricsPlus")));
     }

@@ -134,11 +134,9 @@ final class LyricsShareSelection {
     boolean isLimitReached() {
         return limitReached || selectedIndices.size() >= LYRICS_SHARE_LINE_LIMIT;
     }
-
     Set<Integer> selectedIndices() {
         return Collections.unmodifiableSet(selectedIndices);
     }
-
     List<Integer> selectedIndicesInOrder() {
         return new ArrayList<>(selectedIndices);
     }

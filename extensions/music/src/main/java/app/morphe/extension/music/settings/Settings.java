@@ -454,6 +454,9 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_LYRICS_USE_AI_TRANSLATION = new BooleanSetting("morphe_music_lyrics_use_ai_translation", FALSE, false);
     private static final BooleanSetting DEPRECATED_LYRICS_USE_AI_ROMANIZATION = new BooleanSetting("morphe_music_lyrics_use_ai_romanization", FALSE, false);
     private static final BooleanSetting DEPRECATED_LYRICS_LOCAL_ROMANIZATION = new BooleanSetting("morphe_music_lyrics_local_romanization", FALSE, false);
+    private static final BooleanSetting DEPRECATED_LYRICS_FORCE_CENTER = new BooleanSetting("morphe_music_lyrics_force_center", FALSE, false);
+    private static final BooleanSetting DEPRECATED_LYRICS_DUET_OPPOSITE_SIDE = new BooleanSetting("morphe_music_lyrics_duet_opposite_side", TRUE, false);
+    private static final StringSetting DEPRECATED_LYRICS_COPY_BUTTON_MODE = new StringSetting("morphe_music_lyrics_copy_button_mode", "copy", false);
 
     static {
         migrateOldSettingToNew(DEPRECATED_HIDE_LIBRARY_NEW_BUTTON, HIDE_NEW_BUTTON);
@@ -467,6 +470,8 @@ public class Settings extends SharedYouTubeSettings {
         migrateQuickLrcEnabled();
         migrateLyricsProviderSwitches();
         migrateLyricsProviderRename();
+        migrateLyricsAlignment();
+        migrateLyricsCopyButtonMode();
     }
 
     static {
@@ -612,6 +617,28 @@ public class Settings extends SharedYouTubeSettings {
         } else {
             LYRICS_SOURCE.save(migrated);
         }
+    }
+
+    /** Always center lyrics and Opposite-side duet alignment became one alignment list. */
+    private static void migrateLyricsAlignment() {
+        if (DEPRECATED_LYRICS_FORCE_CENTER.get()) {
+            LYRICS_ALIGNMENT_MODE.save(ALIGNMENT_CENTER);
+        } else if (!DEPRECATED_LYRICS_DUET_OPPOSITE_SIDE.get()) {
+            LYRICS_ALIGNMENT_MODE.save(ALIGNMENT_SAME_SIDE);
+        }
+        DEPRECATED_LYRICS_FORCE_CENTER.resetToDefault();
+        DEPRECATED_LYRICS_DUET_OPPOSITE_SIDE.resetToDefault();
+    }
+
+    /**
+     * The share mode of the copy button moved to a long press on a line, so whoever picked it
+     * keeps a way to open the line selection.
+     */
+    private static void migrateLyricsCopyButtonMode() {
+        if ("share".equals(DEPRECATED_LYRICS_COPY_BUTTON_MODE.get())) {
+            LYRICS_LONG_PRESS_SHARE_MODE.save(true);
+        }
+        DEPRECATED_LYRICS_COPY_BUTTON_MODE.resetToDefault();
     }
 
     /**

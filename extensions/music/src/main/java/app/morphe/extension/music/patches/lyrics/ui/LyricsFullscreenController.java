@@ -19,6 +19,7 @@ import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -104,15 +105,11 @@ final class LyricsFullscreenController {
     private ValueAnimator coverAnimator;
     private boolean splitActive;
     private boolean controlsInRow;
-    @Nullable
-    private final ViewGroup buttonHome;
+    // Where the floating buttons go back to after the landscape split, kept from the start so a
+    // toolbar rebuild cannot strand them.
     private final int buttonHomeIndex;
-    @Nullable
     private final ViewGroup.LayoutParams buttonHomeParams;
-    @Nullable
-    private final ViewGroup jumpHome;
     private final int jumpHomeIndex;
-    @Nullable
     private final ViewGroup.LayoutParams jumpHomeParams;
 
     LyricsFullscreenController(LyricsPanelView panel) {
@@ -143,12 +140,9 @@ final class LyricsFullscreenController {
         params.leftMargin = Dim.dp16;
         panel.addView(button, params);
         button.bringToFront();
-        // Lock the floating buttons' home so a toolbar rebuild cannot strand them on exit.
-        buttonHome = panel;
         buttonHomeIndex = panel.indexOfChild(button);
         buttonHomeParams = button.getLayoutParams();
         View jump = panel.getJumpButton();
-        jumpHome = panel;
         jumpHomeIndex = panel.indexOfChild(jump);
         jumpHomeParams = jump.getLayoutParams();
     }
@@ -191,10 +185,8 @@ final class LyricsFullscreenController {
         if (isFullscreen) hideToolbar();
     }
 
-    boolean onBackPressed() {
-        if (!isFullscreen) return false;
-        exit();
-        return true;
+    void onBackPressed() {
+        if (isFullscreen) exit();
     }
 
     void onConfigurationChanged() {
@@ -287,7 +279,6 @@ final class LyricsFullscreenController {
         }
         originalParent = null;
         originalParams = null;
-        isFullscreen = false;
         applyButtonLook();
         panel.restoreButtonRowAfterFullscreen();
         setSystemBarsHidden(false);
@@ -327,14 +318,8 @@ final class LyricsFullscreenController {
             row.addView(jump, rowButtonParams(true));
             panel.normalizeButtonRowSpacing();
         } else {
-            if (buttonHome != null) {
-                buttonHome.addView(button,
-                        Math.min(buttonHomeIndex, buttonHome.getChildCount()), buttonHomeParams);
-            }
-            if (jumpHome != null) {
-                jumpHome.addView(jump,
-                        Math.min(jumpHomeIndex, jumpHome.getChildCount()), jumpHomeParams);
-            }
+            panel.addView(button, Math.min(buttonHomeIndex, panel.getChildCount()), buttonHomeParams);
+            panel.addView(jump, Math.min(jumpHomeIndex, panel.getChildCount()), jumpHomeParams);
         }
         controlsInRow = split;
     }
@@ -361,7 +346,7 @@ final class LyricsFullscreenController {
     private static TextView createMarqueeText(
             Context context, float sizeSp, int style, int color) {
         TextView text = new TextView(context);
-        text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, sizeSp);
+        text.setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp);
         text.setTypeface(null, style);
         text.setTextColor(color);
         text.setSingleLine(true);
@@ -482,8 +467,6 @@ final class LyricsFullscreenController {
                 }
                 return true;
             }
-            case MotionEvent.ACTION_CANCEL:
-                return true;
             default:
                 return true;
         }

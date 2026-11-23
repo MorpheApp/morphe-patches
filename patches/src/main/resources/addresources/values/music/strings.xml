@@ -674,9 +674,9 @@ The database is licensed under the ODC Open Database License (ODbL). Entries fro
     <string name="morphe_music_lyrics_keep_screen_on_title">Keep screen on while viewing lyrics</string>
     <string name="morphe_music_lyrics_keep_screen_on_summary">Prevents the display from turning off while the lyrics panel is open</string>
     <string name="morphe_music_lyrics_section_service_title">Lyrics service</string>
-    <string name="morphe_music_lyrics_section_font_animation_title">Font and Animation</string>
-    <string name="morphe_music_lyrics_section_text_formatting_title">Text Formatting</string>
-    <string name="morphe_music_lyrics_section_visibility_title">Section Visibility</string>
+    <string name="morphe_music_lyrics_section_font_animation_title">Font and animation</string>
+    <string name="morphe_music_lyrics_section_text_formatting_title">Text formatting</string>
+    <string name="morphe_music_lyrics_section_visibility_title">Visibility</string>
     <string name="morphe_music_lyrics_section_sync_title">Synchronisation</string>
     <string name="morphe_music_lyrics_section_panel_title">Panel</string>
 
@@ -734,10 +734,10 @@ The first column is the word, the second its reading; extra columns and lines wi
     <string name="morphe_music_lyrics_cache_transliteration_summary">%1$s MB (%2$d transliterations)</string>
     <string name="morphe_music_lyrics_cache_ai_section_category_title">AI Section Cache</string>
     <string name="morphe_music_lyrics_cache_clear_ai_section_title">Clear AI Section Cache</string>
-    <string name="morphe_music_lyrics_cache_ai_section_summary">%1$s MB (%2$s section sets)</string>
+    <string name="morphe_music_lyrics_cache_ai_section_summary">%1$s MB (%2$d section sets)</string>
     <string name="morphe_music_lyrics_cache_offset_category_title">Temporary Offset Cache</string>
     <string name="morphe_music_lyrics_cache_clear_offset_title">Clear Temporary Offset Cache</string>
-    <string name="morphe_music_lyrics_cache_offset_summary">%2$s saved track offsets</string>
+    <string name="morphe_music_lyrics_cache_offset_summary">%2$d saved track offsets</string>
     <string name="morphe_music_lyrics_cache_total_category_title">Total Cache Usage</string>
     <string name="morphe_music_lyrics_cache_clear_all_title">Clear All Cache</string>
     <string name="morphe_music_lyrics_cache_total_summary">%1$s MB (%2$d items)</string>
@@ -746,8 +746,8 @@ The first column is the word, the second its reading; extra columns and lines wi
     <string name="morphe_music_lyrics_cache_confirm_lyrics">Delete %1$s MB (%2$d songs) of cached lyrics kept on this device?</string>
     <string name="morphe_music_lyrics_cache_confirm_translation">Delete %1$s MB (%2$d translations) of cached translations kept on this device?</string>
     <string name="morphe_music_lyrics_cache_confirm_transliteration">Delete %1$s MB (%2$d transliterations) of cached transliterations kept on this device?</string>
-    <string name="morphe_music_lyrics_cache_confirm_ai_section">Delete %1$s MB (%2$s section sets) of cached AI section labels kept on this device?</string>
-    <string name="morphe_music_lyrics_cache_confirm_offset">Delete %2$s saved track offsets kept on this device?</string>
+    <string name="morphe_music_lyrics_cache_confirm_ai_section">Delete %1$s MB (%2$d section sets) of cached AI section labels kept on this device?</string>
+    <string name="morphe_music_lyrics_cache_confirm_offset">Delete %2$d saved track offsets kept on this device?</string>
     <string name="morphe_music_lyrics_cache_offsets_cleared">Temporary offsets cleared</string>
     <string name="morphe_music_lyrics_cache_confirm_all">Delete %1$s MB (%2$d items) of all cached lyrics data kept on this device?</string>
     <string name="morphe_music_token_dialog_get_token">Get token</string>
@@ -806,7 +806,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies cleared</string>
     <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: invalid cookies - please check and try again</string>
     <string name="morphe_music_lyrics_tap_to_seek_title">Tap and hold a line</string>
-    <string name="morphe_music_lyrics_tap_to_seek_summary">Tap a line to jump to that moment in the song. Long-press copies the word under your finger, or the whole line when the press is not on a word; in share mode it opens the line selection box instead. Off takes both gestures away</string>
+    <string name="morphe_music_lyrics_tap_to_seek_summary">Tap a line to jump to that moment in the song. Long-press copies the word under your finger, or the whole line when the press is not on a word, or opens the line selection when Long-press to select lyrics is on. Off takes both gestures away</string>
     <string name="morphe_music_lyrics_show_section_title">Show section tags</string>
     <string name="morphe_music_lyrics_show_section_summary">Label each new section of the lyrics with a small tag, such as Verse or Chorus</string>
     <string name="morphe_music_lyrics_show_copy_button_title">Show Copy button</string>
@@ -848,9 +848,6 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_share_preview_title">Share lyrics</string>
     <string name="morphe_music_lyrics_share_button">Share</string>
     <string name="morphe_music_lyrics_copy">Copy</string>
-    <string name="morphe_music_lyrics_share_options_title">Lyrics actions</string>
-    <string name="morphe_music_lyrics_copy_plain_option">Copy lyrics as plain text</string>
-    <string name="morphe_music_lyrics_save_file_option">Save lyrics &amp; TTML to Downloads</string>
     <string name="morphe_music_lyrics_share_cancel">Cancel</string>
     <string name="morphe_music_lyrics_share_count" translatable="false">%1$d / %2$d</string>
     <string name="morphe_music_lyrics_share_select_hint">Tap 1–5 lines</string>
@@ -860,7 +857,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_share_bg_cover">Cover</string>
     <string name="morphe_music_lyrics_share_bg_color">Color</string>
     <string name="morphe_music_lyrics_share_bg_photo">Photo</string>
-    <string name="morphe_music_lyrics_share_branding_logo">LOGO</string>
+    <string name="morphe_music_lyrics_share_branding_logo">Logo</string>
     <string name="morphe_music_lyrics_share_layer_romaji">Romaji</string>
     <string name="morphe_music_lyrics_share_layer_translate">Translate</string>
     <string name="morphe_music_lyrics_share_layer_bg">BG vocals</string>
@@ -958,7 +955,8 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
     <string name="morphe_music_lyrics_offset_ms_title">Global timing offset</string>
     <string name="morphe_music_lyrics_offset_ms_summary">Synced lyrics follow playback. If they drift, adjust the timing offset. Shift synced lyrics forwards or backwards. Use a positive value if the lyrics run ahead of the song</string>
-    <string name="morphe_music_lyrics_offset_slider_hint">Swipe horizontally to set temporary offset\nTap below twice to record a SponsorBlock segment</string>
+    <string name="morphe_music_lyrics_offset_slider_hint">"Swipe horizontally to set a temporary offset
+Tap below twice to record a SponsorBlock segment"</string>
     <string name="morphe_music_lyrics_sb_matching_title">Use SponsorBlock segments for lyrics offset</string>
     <string name="morphe_music_lyrics_sb_matching_summary">Match without the segments SponsorBlock skips and shift lyrics onto the released audio. Off ignores SponsorBlock entirely</string>
     <string name="morphe_music_lyrics_sb_no_video">This track has no video id to submit</string>

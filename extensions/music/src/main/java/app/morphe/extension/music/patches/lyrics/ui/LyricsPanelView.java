@@ -21,11 +21,8 @@ import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -212,11 +209,7 @@ public final class LyricsPanelView extends FrameLayout
     private final ImageButton shareSelectionConfirmButton;
     private final LyricsShareSelection shareSelection = new LyricsShareSelection();
     private final Paint sharePillFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint sharePillStrokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final RectF sharePillRect = new RectF();
-    private final LinearGradient sharePillGradient = new LinearGradient(
-            0f, 0f, 0f, 1f, 0x4AFFFFFF, 0x34FFFFFF, Shader.TileMode.CLAMP);
-    private final Matrix sharePillGradientMatrix = new Matrix();
     private boolean isShareSelectionMode;
     private boolean shareExportInProgress;
     private final ProgressBar progressBar;
@@ -497,8 +490,6 @@ public final class LyricsPanelView extends FrameLayout
         final int horizontalPadding = Dim.dp24;
         final int verticalPadding = Dim.dp16;
 
-        sharePillStrokePaint.setStrokeWidth(0f);
-        sharePillFillPaint.setShader(null);
         sharePillFillPaint.setColor(ResourceUtils.getColor(APP_BUTTON_BACKGROUND_COLOR, 0x1AFFFFFF));
 
         linesContainer = new LinearLayout(context) {
@@ -2350,6 +2341,7 @@ public final class LyricsPanelView extends FrameLayout
         });
     }
 
+    /** Copies the line, or the word pressed, on a long press, or opens the line selection. */
     private void setCopyOnLongClick(LyricsLineView lineView, LyricsLine line, int lineIndex,
                                     int mainIndex, boolean isSec, boolean allowCopy) {
         lineView.setOnLongClickListener(v -> {
@@ -6465,7 +6457,6 @@ public final class LyricsPanelView extends FrameLayout
             return;
         }
         final int count = Math.min(lineViews.size(), lineRows.size());
-        final float halfStroke = sharePillStrokePaint.getStrokeWidth() * 0.5f;
         final float padOut = Dim.dp(12);
         final float radiusPx = Dim.dp(16);
 
@@ -6496,17 +6487,14 @@ public final class LyricsPanelView extends FrameLayout
                 childTop = 0;
                 childBottom = row.getHeight();
             }
-            float left = Math.max(halfStroke, row.getLeft() + row.getPaddingLeft() - padOut);
-            float right = Math.min(containerW - halfStroke, row.getRight() - row.getPaddingRight() + padOut);
+            float left = Math.max(0, row.getLeft() + row.getPaddingLeft() - padOut);
+            float right = Math.min(containerW, row.getRight() - row.getPaddingRight() + padOut);
             float top = row.getTop() + Math.max(0, childTop - Dim.dp(2));
             float bottom = row.getTop() + Math.min(row.getHeight(), childBottom + Dim.dp(2));
             if (right <= left || bottom <= top) {
                 continue;
             }
             sharePillRect.set(left, top, right, bottom);
-            sharePillGradientMatrix.setScale(1f, Math.max(1f, sharePillRect.height()));
-            sharePillGradientMatrix.postTranslate(0f, sharePillRect.top);
-            sharePillGradient.setLocalMatrix(sharePillGradientMatrix);
             canvas.drawRoundRect(sharePillRect, radiusPx, radiusPx, sharePillFillPaint);
         }
     }

@@ -18,11 +18,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.InflaterInputStream;
@@ -53,7 +56,7 @@ public final class KuwoProvider implements LyricsProvider {
     private static final Pattern TAG_LINE = Pattern.compile("^\\[([A-Za-z]+):([^\\]]*)\\]$");
     private static final Pattern WORD = Pattern.compile("<(-?\\d+),(-?\\d+)>([^<]*)");
     private static final Pattern SCALE = Pattern.compile("\\[kuwo:(\\d+)\\]");
-    private static final Pattern CHINESE = Pattern.compile("[\\u4E00-\\u9FA5]");
+    private static final Pattern CHINESE = Pattern.compile("[一-龥]");
 
     @Override
     public String name() {
@@ -76,7 +79,7 @@ public final class KuwoProvider implements LyricsProvider {
             return null;
         }
         ScoredCandidate best = candidates.get(0);
-        Lyrics lyrics = fetchLyrics(best.musicId, track, best.title, best.artist, best.album);
+        Lyrics lyrics = fetchLyrics(best.musicId);
         if (lyrics != null && !lyrics.isEmpty()) {
             return FetchResult.of(lyrics, best.title, best.artist, best.duration, track);
         }
@@ -91,7 +94,7 @@ public final class KuwoProvider implements LyricsProvider {
         }
         List<ScoredCandidate> candidates = search(track);
         for (ScoredCandidate c : candidates) {
-            Lyrics lyrics = fetchLyrics(c.musicId, track, c.title, c.artist, c.album);
+            Lyrics lyrics = fetchLyrics(c.musicId);
             if (lyrics != null && !lyrics.isEmpty()) {
                 int score = LyricsRequests.scoreLyricsCandidate(c.title, c.artist, c.duration, lyrics, track);
                 scored.add(new Lyrics.ScoredLyrics(score, lyrics));
@@ -163,12 +166,12 @@ public final class KuwoProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics fetchLyrics(String musicId, TrackInfo track, String title, String artist, String album) {
+    private static Lyrics fetchLyrics(String musicId) {
         String sourceUrl = "https://www.kuwo.cn/play_detail/" + musicId;
         try {
             String encrypted = fetchEncryptedLyrics(musicId);
             if (encrypted != null && !encrypted.isEmpty()) {
-                Lyrics lyrics = parseKuwoLrc(encrypted, title, artist, album, sourceUrl);
+                Lyrics lyrics = parseKuwoLrc(encrypted, sourceUrl);
                 if (lyrics != null && !lyrics.isEmpty()) {
                     return lyrics;
                 }
@@ -179,7 +182,7 @@ public final class KuwoProvider implements LyricsProvider {
         try {
             JSONArray lrclist = fetchMobileLyrics(musicId);
             if (lrclist != null && lrclist.length() > 0) {
-                Lyrics lyrics = parseMobileLrc(lrclist, title, artist, album, sourceUrl);
+                Lyrics lyrics = parseMobileLrc(lrclist, sourceUrl);
                 if (lyrics != null && !lyrics.isEmpty()) {
                     return lyrics;
                 }
@@ -238,7 +241,7 @@ public final class KuwoProvider implements LyricsProvider {
 
     /** XORs the params with the "yeelion" key, then Base64-encodes them. */
     public static String buildLyricParams(String params) {
-        byte[] bytes = params.getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        byte[] bytes = params.getBytes(StandardCharsets.UTF_8);
         byte[] xored = new byte[bytes.length];
         for (int i = 0; i < bytes.length; i++) {
             xored[i] = (byte) (bytes[i] ^ XOR_KEY[i % XOR_KEY.length]);
@@ -256,7 +259,7 @@ public final class KuwoProvider implements LyricsProvider {
         if (!head.toString().toLowerCase(Locale.ROOT).equals("tp=content")) {
             return null;
         }
-        // find \r\n\r\n
+        // The compressed body follows the first blank line of the header.
         int headerEnd = -1;
         for (int j = 0; j < raw.length - 3; j++) {
             if (raw[j] == 13 && raw[j + 1] == 10 && raw[j + 2] == 13 && raw[j + 3] == 10) {
@@ -274,7 +277,7 @@ public final class KuwoProvider implements LyricsProvider {
             while ((n = in.read(buf)) != -1) {
                 out.write(buf, 0, n);
             }
-            inflated = out.toString(java.nio.charset.StandardCharsets.UTF_8.name());
+            inflated = out.toString(StandardCharsets.UTF_8.name());
         } catch (Exception ex) {
             Logger.printDebug(() -> "Kuwo inflate failed", ex);
             return null;
@@ -305,6 +308,7 @@ public final class KuwoProvider implements LyricsProvider {
         try {
             value = Integer.parseInt(m.group(1), 8);
         } catch (NumberFormatException ex) {
+            Logger.printDebug(() -> "Kuwo scale tag is not octal: " + m.group(1));
             return new int[]{1, 1};
         }
         int first = value / 10;
@@ -325,16 +329,13 @@ public final class KuwoProvider implements LyricsProvider {
         }
     }
 
-    public static Lyrics parseKuwoLrc(String text, String title, String artist, String album) {
-        return parseKuwoLrc(text, title, artist, album, null);
-    }
-
-    public static Lyrics parseKuwoLrc(String text, String title, String artist, String album, @Nullable String sourceUrl) {
+    @Nullable
+    public static Lyrics parseKuwoLrc(@Nullable String text, @Nullable String sourceUrl) {
         if (text == null || text.isEmpty()) return null;
 
         int[] scale = parseScale(text);
 
-        Map<String, String> tags = new java.util.HashMap<>();
+        String writer = null;
         List<RawLine> rawLines = new ArrayList<>();
         List<LyricsLine> translationLines = new ArrayList<>();
 
@@ -342,32 +343,22 @@ public final class KuwoProvider implements LyricsProvider {
         for (String rawLine : text.split("\\r?\\n")) {
             String line = rawLine.trim();
             if (line.isEmpty()) continue;
+
             Matcher tagMatch = TAG_LINE.matcher(line);
             if (tagMatch.matches()) {
                 String key = tagMatch.group(1);
-                String value = tagMatch.group(2);
-                if (key != null && value != null) {
-                    if (key.equalsIgnoreCase("offset")) {
-                        try {
-                            fileOffsetMs = -Long.parseLong(value.trim());
-                        } catch (NumberFormatException ex) {
-                            // Invalid offset: keep 0.
-                        }
-                    } else {
-                        tags.put(key.toLowerCase(Locale.ROOT), value);
+                String value = tagMatch.group(2).trim();
+                if (key.equalsIgnoreCase("offset")) {
+                    try {
+                        fileOffsetMs = -Long.parseLong(value);
+                    } catch (NumberFormatException ex) {
+                        Logger.printDebug(() -> "Kuwo offset tag is not a number: " + value);
                     }
+                } else if ((key.equalsIgnoreCase("by") || key.equalsIgnoreCase("lyricist"))
+                        && !value.isEmpty() && writer == null) {
+                    writer = value;
                 }
                 continue;
-            }
-        }
-
-        for (String rawLine : text.split("\\r?\\n")) {
-            String line = rawLine.trim();
-            if (line.isEmpty()) continue;
-
-            Matcher tagMatch = TAG_LINE.matcher(line);
-            if (tagMatch.matches()) {
-                continue; // already handled above
             }
 
             Matcher timeMatch = TIME_LINE.matcher(line);
@@ -398,6 +389,8 @@ public final class KuwoProvider implements LyricsProvider {
                     p1 = Integer.parseInt(wm.group(1));
                     p2 = Integer.parseInt(wm.group(2));
                 } catch (NumberFormatException ex) {
+                    final String timing = wm.group();
+                    Logger.printDebug(() -> "Kuwo word timing out of range: " + timing);
                     continue;
                 }
                 String wordText = wm.group(3);
@@ -414,7 +407,7 @@ public final class KuwoProvider implements LyricsProvider {
         rawLines.sort((a, b) -> Long.compare(a.start, b.start));
 
         List<RawLine> deduped = new ArrayList<>();
-        java.util.Set<String> seen = new java.util.HashSet<>();
+        Set<String> seen = new HashSet<>();
         for (RawLine r : rawLines) {
             String key = r.start + "|" + r.text;
             if (seen.contains(key)) continue;
@@ -462,36 +455,17 @@ public final class KuwoProvider implements LyricsProvider {
             translated.add(new LyricsLine(target.startTimeMs(), target.endTimeMs(), t.text(), List.of(), null, false, false, null));
         }
 
-        // Caller metadata takes priority over the file tags.
-        if (title != null && !title.isEmpty()) tags.put("ti", title);
-        if (artist != null && !artist.isEmpty()) tags.put("ar", artist);
-        if (album != null && !album.isEmpty()) tags.put("al", album);
-
-        List<String> songwriters = new ArrayList<>();
-        if (tags.get("by") != null && !tags.get("by").isEmpty()) songwriters.add(tags.get("by"));
-        if (tags.get("lyricist") != null && !tags.get("lyricist").isEmpty())
-            songwriters.add(tags.get("lyricist"));
-
         List<String> creditLines = LRCParser.extractCreditMetadata(text);
 
         boolean synced = !lines.isEmpty() && lines.get(0).startTimeMs() != LyricsLine.NO_TIME;
-        boolean hasWordSync = false;
-        for (LyricsLine l : lines) {
-            if (!l.words().isEmpty()) {
-                hasWordSync = true;
-                break;
-            }
-        }
 
-        Map<String, List<LyricsLine>> transMap = null;
-        if (!translated.isEmpty()) {
-            transMap = new java.util.HashMap<>();
-            transMap.put("default", translated);
-        }
+        Map<String, List<LyricsLine>> transMap = translated.isEmpty()
+                ? null
+                : Map.of("default", translated);
 
         return new Lyrics(lines, "Kuwo", synced,
                 null, transMap, null,
-                songwriters.isEmpty() ? null : songwriters,
+                writer == null ? null : List.of(writer),
                 creditLines.isEmpty() ? null : creditLines,
                 text,
                 "kw",
@@ -499,11 +473,8 @@ public final class KuwoProvider implements LyricsProvider {
                 null, null);
     }
 
-    public static Lyrics parseMobileLrc(JSONArray lrclist, String title, String artist, String album) {
-        return parseMobileLrc(lrclist, title, artist, album, null);
-    }
-
-    public static Lyrics parseMobileLrc(JSONArray lrclist, String title, String artist, String album, @Nullable String sourceUrl) {
+    @Nullable
+    public static Lyrics parseMobileLrc(@Nullable JSONArray lrclist, @Nullable String sourceUrl) {
         if (lrclist == null || lrclist.length() == 0) return null;
         List<String> texts = new ArrayList<>();
         List<Long> times = new ArrayList<>();
@@ -538,17 +509,7 @@ public final class KuwoProvider implements LyricsProvider {
             lines.add(new LyricsLine(start, end, texts.get(idx), List.of(), null, false, false, null));
         }
 
-        Map<String, String> tags = new java.util.HashMap<>();
-        tags.put("ti", title == null ? "" : title);
-        tags.put("ar", artist == null ? "" : artist);
-        tags.put("al", album == null ? "" : album);
-
-        List<String> songwriters = new ArrayList<>();
-        if (tags.get("by") != null && !tags.get("by").isEmpty()) songwriters.add(tags.get("by"));
-
-        return new Lyrics(lines, "Kuwo", true, null, null, null, null,
-                songwriters.isEmpty() ? null : songwriters,
-                null, "lrc", sourceUrl, null, null);
+        return new Lyrics(lines, "Kuwo", true, null, null, null, null, null, "lrc", sourceUrl);
     }
 
     private static String stripTags(String text) {

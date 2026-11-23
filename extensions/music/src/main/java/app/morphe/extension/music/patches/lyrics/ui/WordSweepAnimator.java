@@ -60,7 +60,7 @@ public final class WordSweepAnimator {
 
     public static float emphasisSpringProgress(float tSec, float responseSec) {
         if (tSec <= 0f) return 0f;
-        float i = (float) (2.0 * Math.PI * tSec) / Math.max(0.001f, responseSec);
+        float i = (2f * (float) Math.PI * tSec) / Math.max(0.001f, responseSec);
         return 1f - (1f + i) * (float) Math.exp(-i);
     }
 
@@ -599,7 +599,7 @@ public final class WordSweepAnimator {
                 : WordAnimationUtils.alignSyllablesForFormatting(shapedWords, formattedMainText);
         this.hasSyllableRomanization = showSyllableRomanization
                 && WordAnimationUtils.hasAnyRomanizedSyllables(
-                alignedSyllables, shapedRomanizedWords, romanizedText, formattedMainText);
+                        alignedSyllables, shapedRomanizedWords, romanizedText, formattedMainText);
         this.hasRuby = rubyActive
                 && WordAnimationUtils.hasAnyRubySyllables(true, alignedSyllables, formattedMainText);
 
@@ -701,7 +701,7 @@ public final class WordSweepAnimator {
         }
         boolean newHasSyl = newShowSylRoma
                 && WordAnimationUtils.hasAnyRomanizedSyllables(
-                alignedSyllables, shapedRomanizedWords, lazyRomanizedText, formattedMainText);
+                        alignedSyllables, shapedRomanizedWords, lazyRomanizedText, formattedMainText);
         float newExtra = newHasSyl ? (fontSizePx * 0.80f) : 0f;
         return Math.abs(newExtra - lineExtraHeight) < 0.01f;
     }
@@ -712,7 +712,7 @@ public final class WordSweepAnimator {
         this.showSyllableRomanization = newShowSylRoma;
         this.hasSyllableRomanization = newShowSylRoma
                 && WordAnimationUtils.hasAnyRomanizedSyllables(
-                alignedSyllables, shapedRomanizedWords, lazyRomanizedText, formattedMainText);
+                        alignedSyllables, shapedRomanizedWords, lazyRomanizedText, formattedMainText);
         this.hasRuby = newRubyActive
                 && WordAnimationUtils.hasAnyRubySyllables(true, alignedSyllables, formattedMainText);
         this.lazyExitingSyllableRomanization = newExitSylRoma;
@@ -939,9 +939,9 @@ public final class WordSweepAnimator {
                 totalWidth, extraPaddingPx, lineRights, lineIsRtl, isRight);
         this.rubyStatics = (hasRuby || (!rubyClusters.isEmpty() && lazyExitingRubyActive))
                 ? WordAnimationUtils.buildRubyStatics(
-                rubyLines, charXMap, romanStartShift, lineBaselines, lineBottoms,
-                lineLefts, lineStarts, lineCount, fontSizePx, lineExtraHeight, firstLineRubyOffset,
-                totalWidth, extraPaddingPx, lineRights, lineIsRtl, isRight)
+                        rubyLines, charXMap, romanStartShift, lineBaselines, lineBottoms,
+                        lineLefts, lineStarts, lineCount, fontSizePx, lineExtraHeight, firstLineRubyOffset,
+                        totalWidth, extraPaddingPx, lineRights, lineIsRtl, isRight)
                 : new RomanStatics(new WordAnimationUtils.RomanLineStatics[0], extraPaddingPx);
     }
 
@@ -1807,8 +1807,8 @@ public final class WordSweepAnimator {
         float shiftProgress = Math.max(0f, Math.min(1f, romaScaleProgress));
         if (shiftProgress < 0.999f
                 && (hasSyllableRomanization || hasRuby
-                || lazyExitingSyllableRomanization || lazyExitingRubyActive
-                || !formattedMainText.equals(mainText))) {
+                        || lazyExitingSyllableRomanization || lazyExitingRubyActive
+                        || !formattedMainText.equals(mainText))) {
             ensureUnromanPositions();
         }
         boolean shiftActive = hasRomanShift && shiftProgress < 0.999f;
