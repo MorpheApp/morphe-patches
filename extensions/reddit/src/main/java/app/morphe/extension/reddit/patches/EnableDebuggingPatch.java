@@ -15,7 +15,6 @@ import androidx.annotation.Nullable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -34,14 +33,15 @@ import app.morphe.extension.shared.settings.preference.FeatureFlagsBisect;
 public final class EnableDebuggingPatch {
 
     /**
-     * Variants that start with this are the default app behavior.
+     * Variants that start with this, ignoring case, are the default app behavior.
+     * Same check the app uses to turn a variant into on or off.
      */
     private static final String CONTROL_VARIANT_PREFIX = "control";
 
     public static final FeatureFlags<String> FEATURE_FLAGS = new FeatureFlags<>() {
         @Override
         public Map<String, Boolean> getLoggedFlags() {
-            if (Utils.isContextSet() && State.LOG_FEATURE_FLAGS) {
+            if (State.LOG_FEATURE_FLAGS) {
                 return Collections.unmodifiableMap(State.experiments);
             }
 
@@ -173,8 +173,8 @@ public final class EnableDebuggingPatch {
                 return null;
             }
 
-            final boolean enabled = variant != null && !variant.toLowerCase(Locale.ROOT)
-                    .startsWith(CONTROL_VARIANT_PREFIX);
+            final boolean enabled = variant != null && !variant.regionMatches(true, 0,
+                    CONTROL_VARIANT_PREFIX, 0, CONTROL_VARIANT_PREFIX.length());
             if (State.experiments.putIfAbsent(experimentName, enabled) == null) {
                 if (variant != null) {
                     State.variants.put(experimentName, variant);
