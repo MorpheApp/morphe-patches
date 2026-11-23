@@ -255,6 +255,14 @@ public final class FlyoutUtils {
                 return;
             }
 
+            // The items are measured for the first time when the scroll view is measured, and the menu
+            // may not measure the scroll view again, so the items are measured before its height is chosen.
+            // Otherwise the minimum height is zero, and the height depends on the space left by the
+            // other items, which can be less than one item.
+            if (itemsContainer.getMeasuredHeight() == 0) {
+                measureChild(itemsContainer, widthMeasureSpec, heightMeasureSpec);
+            }
+
             // The height given by a bottom sheet is ignored, as the bottom sheet can be measured
             // before the injected items are added, and it's resized afterward.
             int maxHeight = getMaxHeight();
