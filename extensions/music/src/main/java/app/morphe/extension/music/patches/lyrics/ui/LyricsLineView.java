@@ -189,16 +189,12 @@ final class LyricsLineView extends TextView {
         invalidate();
     }
 
-    @SuppressWarnings("ConstantValue")
     @Override
     public void setTextSize(int unit, float size) {
         super.setTextSize(unit, size);
         cachedLayout = null;
         exitingTransLayout = null;
         exitingRomaLayout = null;
-        if (fittedState != null) {
-            fittedState.width = -1;
-        }
     }
 
     private final LyricsFit.FittedState fittedState = new LyricsFit.FittedState();

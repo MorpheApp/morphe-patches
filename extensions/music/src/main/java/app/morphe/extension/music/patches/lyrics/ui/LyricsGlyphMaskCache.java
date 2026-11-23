@@ -104,13 +104,6 @@ final class LyricsGlyphMaskCache {
         }
 
         @Nullable
-        public Bitmap peekGlow(int idx) {
-            if (idx < 0 || idx >= glowBitmaps.length) return null;
-            Bitmap existing = glowBitmaps[idx];
-            return (existing != null && !existing.isRecycled()) ? existing : null;
-        }
-
-        @Nullable
         public Bitmap obtain(int idx, @Nullable Layout layout) {
             if (layout == null || idx < 0 || idx >= bitmaps.length) return null;
             Bitmap existing = bitmaps[idx];

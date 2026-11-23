@@ -348,6 +348,9 @@ public final class WordAnimationUtils {
 
     private static final Paint STATIC_MASK_PAINT = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
 
+    /** Transparent margin around a static line mask, so antialiased glyph edges are not clipped. */
+    private static final int STATIC_MASK_PAD_PX = 2;
+
     public static final class RomanLineStatics {
         public final List<RomanizedWordCluster> clusters;
         public final float[] drawX;
@@ -440,9 +443,9 @@ public final class WordAnimationUtils {
             if (minX == Float.MAX_VALUE || maxH == 0) {
                 return false;
             }
-            float originX = (float) Math.floor(minX) - 2f;
-            int bmpW = (int) Math.ceil(maxX - originX) + 2;
-            int bmpH = maxH + 4;
+            float originX = (float) Math.floor(minX) - STATIC_MASK_PAD_PX;
+            int bmpW = (int) Math.ceil(maxX - originX) + STATIC_MASK_PAD_PX;
+            int bmpH = maxH + 2 * STATIC_MASK_PAD_PX;
             if (bmpW <= 0 || bmpH <= 0 || bmpW > LyricsGlyphMaskCache.MAX_MASK_SIDE_PX || bmpH > LyricsGlyphMaskCache.MAX_MASK_SIDE_PX) {
                 return false;
             }
@@ -454,7 +457,7 @@ public final class WordAnimationUtils {
             for (int i = 0; i < n; i++) {
                 Layout sl = clusters.get(i).subLayout;
                 if (sl != null) {
-                    drawLayoutWithPaint(c, sl, drawX[i] - originX, 2f, Color.WHITE, null);
+                    drawLayoutWithPaint(c, sl, drawX[i] - originX, STATIC_MASK_PAD_PX, Color.WHITE, null);
                 }
             }
             staticMask = bmp;
@@ -808,6 +811,12 @@ public final class WordAnimationUtils {
 
     private static final String NON_JOINING_FONT_FEATURES = "\"liga\" 0, \"clig\" 0, \"dlig\" 0";
 
+    /** Extra width for a joining script run, whose shaped width can exceed its measured width. */
+    private static final int JOINING_RUN_SLACK_PX = 2;
+
+    /** Extra width when laying out a run again after it wrapped. */
+    private static final int WRAPPED_RUN_SLACK_PX = 4;
+
     /**
      * Aligns ligature/shaping features between full-line layout paints and split cluster sub-layouts
      * so character-level advances stay consistent on non-joining scripts.
@@ -853,14 +862,8 @@ public final class WordAnimationUtils {
         it.setText(text);
         int start = it.first();
         for (int end = it.next(); end != BreakIterator.DONE; start = end, end = it.next()) {
-            int nl = text.indexOf('\n', start);
-            if (nl >= 0 && nl < end) {
-                for (int k = start; k < end; k++) {
-                    if (text.charAt(k) != '\n' && text.charAt(k) != '\r') {
-                        ranges.add(new int[]{k, k + 1});
-                    }
-                }
-            } else {
+            // A grapheme holding a newline is always only "\n" or "\r\n".
+            if (text.charAt(end - 1) != '\n') {
                 ranges.add(new int[]{start, end});
             }
         }
@@ -881,18 +884,17 @@ public final class WordAnimationUtils {
                 return BoringLayout.make(text, runPaint, bw, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0f, boring, false);
             }
         }
-        int width = hasJoiningScript ? desiredW + 2 : desiredW;
+        int width = hasJoiningScript ? desiredW + JOINING_RUN_SLACK_PX : desiredW;
         Layout layout = createStaticLayout(text, runPaint, width, Layout.Alignment.ALIGN_NORMAL, rtl);
         if (text.indexOf('\n') < 0 && layout.getLineCount() > 1) {
+            // Shaped clusters (Indic conjuncts) can lay out wider than their desired width and wrap.
+            // Measure the unwrapped line and lay out again at that width. The wide layout itself is
+            // not kept, as masks are sized by layout width and RTL text sits at its right edge.
             Layout wide = createStaticLayout(
                     text, runPaint, LyricsGlyphMaskCache.MAX_MASK_SIDE_PX, Layout.Alignment.ALIGN_NORMAL, rtl);
-            int tightW = Math.max(
-                    width + 2,
-                    (int) Math.ceil(Math.max(wide.getLineMax(0), wide.getLineWidth(0))) + 4);
-            layout = createStaticLayout(text, runPaint, tightW, Layout.Alignment.ALIGN_NORMAL, rtl);
-            if (layout.getLineCount() > 1 && tightW < LyricsGlyphMaskCache.MAX_MASK_SIDE_PX) {
-                layout = wide;
-            }
+            int unwrappedW = (int) Math.ceil(wide.getLineWidth(0)) + WRAPPED_RUN_SLACK_PX;
+            layout = createStaticLayout(text, runPaint, Math.max(width + WRAPPED_RUN_SLACK_PX, unwrappedW),
+                    Layout.Alignment.ALIGN_NORMAL, rtl);
         }
         return layout;
     }
@@ -2536,7 +2538,7 @@ public final class WordAnimationUtils {
                         : null;
                 if (existingMask != null) {
                     STATIC_MASK_PAINT.setColor(inactiveColor);
-                    canvas.drawBitmap(existingMask, line.staticMaskOriginX + pad, topY - 2f, STATIC_MASK_PAINT);
+                    canvas.drawBitmap(existingMask, line.staticMaskOriginX + pad, topY - STATIC_MASK_PAD_PX, STATIC_MASK_PAINT);
                 } else {
                     for (int i = 0; i < n; i++) {
                         float drawTopY = topY + ((lineElevY != null && i < lineElevY.length) ? lineElevY[i] : 0f);

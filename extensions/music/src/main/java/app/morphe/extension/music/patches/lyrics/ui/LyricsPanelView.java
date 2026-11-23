@@ -6742,9 +6742,13 @@ public final class LyricsPanelView extends FrameLayout
         for (int i = 0; i < count; i++) {
             final boolean isBackground = Boolean.TRUE.equals(lineIsBackground.get(i));
             TextView lineView = lineViews.get(i);
-            final int scaledSizeSp = LyricsViewSupport.lineTextSizeSp(isBackground, textSize);
-            lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP, scaledSizeSp);
-            lineView.setLetterSpacing(LyricsViewSupport.lineLetterSpacing(lineView.getText(), scaledSizeSp));
+            lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP,
+                    LyricsViewSupport.lineTextSizeSp(isBackground, textSize));
+            // Same inputs as styleLineView, so a resize gives the spacing a rebuild would.
+            LyricsLine line = (lyrics != null && i < lyrics.lines().size()) ? lyrics.lines().get(i) : null;
+            if (line != null) {
+                lineView.setLetterSpacing(LyricsViewSupport.lineLetterSpacing(line.text(), textSize));
+            }
         }
         final int tagSize = LyricsViewSupport.sectionTagTextSizeSp();
         for (TextView tag : sectionTags) {

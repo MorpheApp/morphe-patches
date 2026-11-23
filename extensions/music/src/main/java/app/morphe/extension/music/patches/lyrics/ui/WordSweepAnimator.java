@@ -535,7 +535,6 @@ public final class WordSweepAnimator {
         this.isBackground = isBackground;
         this.alignment = alignment;
         this.fontSizePx = basePaint.getTextSize();
-        WordAnimationUtils.applyClusterFontFeatures(basePaint, LyricsTextUtils.containsJoiningScript(mainText));
 
         this.gradientWidth = fontSizePx;
         this.extraPaddingPx = fontSizePx * 0.4f;
@@ -1660,6 +1659,7 @@ public final class WordSweepAnimator {
             List<RomanizedWordCluster>[] rubyLines,
             List<VisualCluster> mainClusters) {
         int[][][] overlaps = new int[rubyLines.length][][];
+        int[] scratch = new int[mainClusters.size()];
         for (int li = 0; li < rubyLines.length; li++) {
             List<RomanizedWordCluster> lineCs = rubyLines[li];
             int sz = (lineCs != null) ? lineCs.size() : 0;
@@ -1670,18 +1670,10 @@ public final class WordSweepAnimator {
                 for (int k = 0; k < mainClusters.size(); k++) {
                     VisualCluster vc = mainClusters.get(k);
                     if (vc.lineIdx() == li && vc.start() < rc.endIndex() && vc.end() > rc.startIndex()) {
-                        count++;
+                        scratch[count++] = k;
                     }
                 }
-                int[] indices = new int[count];
-                int out = 0;
-                for (int k = 0; k < mainClusters.size(); k++) {
-                    VisualCluster vc = mainClusters.get(k);
-                    if (vc.lineIdx() == li && vc.start() < rc.endIndex() && vc.end() > rc.startIndex()) {
-                        indices[out++] = k;
-                    }
-                }
-                overlaps[li][i] = indices;
+                overlaps[li][i] = Arrays.copyOf(scratch, count);
             }
         }
         return overlaps;
@@ -1701,12 +1693,7 @@ public final class WordSweepAnimator {
         float elev = baseRubyElev;
         for (int k = 0; k < overlapIndices.length; k++) {
             int idx = overlapIndices[k];
-            if (idx >= 0 && idx < drawY.length) {
-                float topDelta = clusterTopDelta(drawY[idx], baseY[idx], scaleX[idx], pivotY[idx]);
-                if (topDelta < elev) {
-                    elev = topDelta;
-                }
-            }
+            elev = Math.min(elev, clusterTopDelta(drawY[idx], baseY[idx], scaleX[idx], pivotY[idx]));
         }
         return elev;
     }
@@ -2297,14 +2284,9 @@ public final class WordSweepAnimator {
                     float tx = drawX + extraPaddingPx;
                     float ty = drawY + extraPaddingPx;
 
-                    Bitmap glowMask = null;
-                    if (maskCache != null && glowFilter != null) {
-                        glowMask = maskCache.peekGlow(idx);
-                        if (glowMask == null) {
-                            // Seek/jump onto an un-prewarmed active cluster rasterizes just this halo on demand.
-                            glowMask = maskCache.obtainGlow(idx, clusters.get(idx).subLayout(), glowBlurRadius);
-                        }
-                    }
+                    // Rasterized on demand when a seek lands on a cluster the prewarm has not reached.
+                    Bitmap glowMask = (maskCache != null && glowFilter != null)
+                            ? maskCache.obtainGlow(idx, clusters.get(idx).subLayout(), glowBlurRadius) : null;
                     if (glowMask != null) {
                         canvas.save();
                         canvas.translate(tx, ty);
