@@ -12,7 +12,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
-private const val EXPERIMENT_VARIANT_CLASS = "Lcom/reddit/common/experiments/ExperimentVariant;"
+internal const val EXPERIMENT_VARIANT_CLASS = "Lcom/reddit/common/experiments/ExperimentVariant;"
 
 /**
  * Feature flag reader that returns if an experiment is enabled.

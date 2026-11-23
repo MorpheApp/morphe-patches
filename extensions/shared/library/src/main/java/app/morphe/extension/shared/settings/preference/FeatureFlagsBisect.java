@@ -18,8 +18,7 @@ import java.util.TreeSet;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.patches.EnableDebuggingPatch;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.SharedSettings;
 
 /**
  * Finds which feature flag causes an app behavior by blocking half of the remaining
@@ -27,9 +26,11 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
  * <p>
  * The candidates are frozen when the search starts, because a blocked flag is never
  * logged again and the set of logged flags would otherwise shrink on every restart.
+ *
+ * @param <K> Type of the flag IDs.
  */
 @SuppressWarnings("unused")
-public final class FeatureFlagsBisect {
+public final class FeatureFlagsBisect<K extends Comparable<K>> {
 
     enum Result {
         /** More steps are needed. */
@@ -43,24 +44,27 @@ public final class FeatureFlagsBisect {
     private static final String FIELD_SEPARATOR = ";";
     private static final char FLAG_SEPARATOR = ',';
 
+    private final FeatureFlags<K> flags;
+
     /**
      * Flags that may still cause the behavior.
      */
-    private final List<Long> candidates;
+    private final List<K> candidates;
 
     /**
      * Candidates blocked for the current step. Always the first half of the candidates.
      */
-    private final List<Long> testing = new ArrayList<>();
+    private final List<K> testing = new ArrayList<>();
 
     /**
      * Flags the user had blocked before the search started. Restored when it ends.
      */
-    private final List<Long> userBlocked;
+    private final List<K> userBlocked;
 
     private int step;
 
-    private long foundFlag;
+    @Nullable
+    private K foundFlag;
 
     /**
      * If the behavior was ever reported as gone. A search that ends with no candidates
@@ -75,40 +79,41 @@ public final class FeatureFlagsBisect {
         }
     }
 
-    private FeatureFlagsBisect(List<Long> candidates, List<Long> userBlocked, int step) {
+    private FeatureFlagsBisect(FeatureFlags<K> flags, List<K> candidates, List<K> userBlocked, int step) {
+        this.flags = flags;
         this.candidates = candidates;
         this.userBlocked = userBlocked;
         this.step = step;
     }
 
     static boolean isActive() {
-        return !SharedYouTubeSettings.FEATURE_FLAGS_BISECT.get().isBlank();
+        return !SharedSettings.FEATURE_FLAGS_BISECT.get().isBlank();
     }
 
     /**
      * @return The search in progress, or null if there is none or the saved state is invalid.
      */
     @Nullable
-    static FeatureFlagsBisect load() {
-        String state = SharedYouTubeSettings.FEATURE_FLAGS_BISECT.get();
+    static <K extends Comparable<K>> FeatureFlagsBisect<K> load(FeatureFlags<K> flags) {
+        String state = SharedSettings.FEATURE_FLAGS_BISECT.get();
         if (state.isBlank()) return null;
 
         try {
             String[] fields = state.split(FIELD_SEPARATOR, -1);
             if (fields.length < 4) throw new IllegalArgumentException("Wrong number of fields");
 
-            FeatureFlagsBisect bisect = new FeatureFlagsBisect(
-                    EnableDebuggingPatch.parseFlagList(fields[1]),
-                    EnableDebuggingPatch.parseFlagList(fields[3]),
+            FeatureFlagsBisect<K> bisect = new FeatureFlagsBisect<>(flags,
+                    new ArrayList<>(flags.parseFlagList(fields[1])),
+                    new ArrayList<>(flags.parseFlagList(fields[3])),
                     Integer.parseInt(fields[0]));
-            bisect.testing.addAll(EnableDebuggingPatch.parseFlagList(fields[2]));
+            bisect.testing.addAll(flags.parseFlagList(fields[2]));
             // A search started before this field existed simply has no absent answer.
             bisect.behaviorEverAbsent = fields.length > 4 && "1".equals(fields[4]);
 
             return bisect;
         } catch (Exception ex) {
             Logger.printException(() -> "Invalid binary search state: " + state, ex);
-            SharedYouTubeSettings.FEATURE_FLAGS_BISECT.resetToDefault();
+            SharedSettings.FEATURE_FLAGS_BISECT.resetToDefault();
 
             return null;
         }
@@ -117,15 +122,15 @@ public final class FeatureFlagsBisect {
     /**
      * Starts a search over the given flags, blocking the first half of them.
      */
-    static void start(Collection<Long> flags) {
-        TreeSet<Long> userBlocked = new TreeSet<>(EnableDebuggingPatch.parseFlags(
-                SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.get()));
+    static <K extends Comparable<K>> void start(FeatureFlags<K> flags, Collection<K> searchFlags) {
+        TreeSet<K> userBlocked = new TreeSet<>(flags.parseFlags(
+                SharedSettings.DISABLED_FEATURE_FLAGS.get()));
 
-        TreeSet<Long> candidates = new TreeSet<>(flags);
+        TreeSet<K> candidates = new TreeSet<>(searchFlags);
         // A flag the user already blocked cannot be the cause of a behavior that is present.
         candidates.removeAll(userBlocked);
 
-        new FeatureFlagsBisect(new ArrayList<>(candidates), new ArrayList<>(userBlocked), 1)
+        new FeatureFlagsBisect<>(flags, new ArrayList<>(candidates), new ArrayList<>(userBlocked), 1)
                 .splitAndApply();
     }
 
@@ -182,7 +187,8 @@ public final class FeatureFlagsBisect {
         return testing.size();
     }
 
-    long getFoundFlag() {
+    @Nullable
+    K getFoundFlag() {
         return foundFlag;
     }
 
@@ -198,14 +204,14 @@ public final class FeatureFlagsBisect {
         // Round up so a single remaining candidate is still tested on its own.
         testing.addAll(candidates.subList(0, (candidates.size() + 1) / 2));
 
-        TreeSet<Long> blocked = new TreeSet<>(userBlocked);
+        TreeSet<K> blocked = new TreeSet<>(userBlocked);
         blocked.addAll(testing);
-        SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.save(EnableDebuggingPatch.serializeFlags(blocked));
+        SharedSettings.DISABLED_FEATURE_FLAGS.save(flags.serializeFlags(blocked));
 
-        SharedYouTubeSettings.FEATURE_FLAGS_BISECT.save(step
-                + FIELD_SEPARATOR + EnableDebuggingPatch.serializeFlags(candidates, FLAG_SEPARATOR)
-                + FIELD_SEPARATOR + EnableDebuggingPatch.serializeFlags(testing, FLAG_SEPARATOR)
-                + FIELD_SEPARATOR + EnableDebuggingPatch.serializeFlags(userBlocked, FLAG_SEPARATOR)
+        SharedSettings.FEATURE_FLAGS_BISECT.save(step
+                + FIELD_SEPARATOR + flags.serializeFlags(candidates, FLAG_SEPARATOR)
+                + FIELD_SEPARATOR + flags.serializeFlags(testing, FLAG_SEPARATOR)
+                + FIELD_SEPARATOR + flags.serializeFlags(userBlocked, FLAG_SEPARATOR)
                 + FIELD_SEPARATOR + (behaviorEverAbsent ? "1" : "0"));
 
         Logger.printDebug(() -> "Binary search step: " + step + " candidates: " + candidates.size()
@@ -215,13 +221,13 @@ public final class FeatureFlagsBisect {
     /**
      * Restores the flags the user had blocked, keeping the found flag blocked if there is one.
      */
-    private void finish(@Nullable Long found) {
-        TreeSet<Long> blocked = new TreeSet<>(userBlocked);
+    private void finish(@Nullable K found) {
+        TreeSet<K> blocked = new TreeSet<>(userBlocked);
         if (found != null) {
             blocked.add(found);
         }
 
-        SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.save(EnableDebuggingPatch.serializeFlags(blocked));
-        SharedYouTubeSettings.FEATURE_FLAGS_BISECT.resetToDefault();
+        SharedSettings.DISABLED_FEATURE_FLAGS.save(flags.serializeFlags(blocked));
+        SharedSettings.FEATURE_FLAGS_BISECT.resetToDefault();
     }
 }
