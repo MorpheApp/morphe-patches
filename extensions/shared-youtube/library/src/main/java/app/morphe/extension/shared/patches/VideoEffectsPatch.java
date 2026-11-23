@@ -55,6 +55,11 @@ public final class VideoEffectsPatch {
     private static final long TIME_WRAP_MILLISECONDS = 600_000;
 
     /**
+     * Name of the view type that the OpenGL renderer draws on.
+     */
+    private static final String SURFACE_VIEW_TYPE = "SURFACE";
+
+    /**
      * The vertex shader of YouTube, plus the untransformed coordinates and the texture
      * transform for the fragment shader. It still works with the original fragment shader.
      * <p>
@@ -722,6 +727,32 @@ public final class VideoEffectsPatch {
      */
     public static boolean useGlVideoRenderer(boolean original) {
         return original || isEnabled();
+    }
+
+    /**
+     * Injection point.
+     * The server can draw videos without DRM on a secure surface view, which the renderer does not draw on.
+     * Videos with DRM still use a secure surface view, as the app picks it for them before.
+     */
+    public static boolean useSecureSurfaceView(boolean original) {
+        return original && !isEnabled();
+    }
+
+    /**
+     * Injection point.
+     * A/B tests can draw videos on other surface views than the one the renderer draws on.
+     *
+     * @param viewType Type of the view that an A/B test picked to draw the video on.
+     */
+    public static <T extends Enum<T>> T getMediaViewType(T viewType) {
+        try {
+            if (isEnabled()) {
+                return Enum.valueOf(viewType.getDeclaringClass(), SURFACE_VIEW_TYPE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getMediaViewType failure", ex);
+        }
+        return viewType;
     }
 
     /**
