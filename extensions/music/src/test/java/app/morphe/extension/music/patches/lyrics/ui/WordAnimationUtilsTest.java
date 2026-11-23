@@ -183,6 +183,24 @@ public class WordAnimationUtilsTest {
     }
 
     @Test
+    public void testRomajiClusterKeepsOneToOneSyllableReadings() {
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "限", "り", 1, 1, false, "kagi", "ri", 1));
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "黒", "い", 1, 1, false, "kuro", "i", 1));
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "爱", "し", 1, 1, false, "ai", "shi", 1));
+
+        Assert.assertTrue(WordAnimationUtils.canMergeRomanSyllable(
+                "限", "りの", 1, 1, false, "kagi", null, 1));
+
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "限", "り", 1, 1, true, "kagi ", null, 1));
+        Assert.assertFalse(WordAnimationUtils.canMergeRomanSyllable(
+                "限", "り", 1, 1, false, "kagi", null, 3));
+    }
+
+    @Test
     public void testIndependentRomanWipeFollowsRomajiSegmentTimings() {
         // Simulates merged cluster "kagiri no" [0..40px="kagi" 100..300ms, 40..90px="ri no" 300..700ms]
         // followed by a gap/space [90..110px], then "nai" [110..150px 800..1200ms]
@@ -230,6 +248,38 @@ public class WordAnimationUtilsTest {
         WordAnimationUtils.computeIndependentRomanWipe(
                 segStartX, segEndX, segStartMs, segEndMs, lastRomEnd, 500L, subGrad, true, out);
         Assert.assertEquals(Float.MAX_VALUE, out[0], 0.01f);
+    }
+
+    @Test
+    public void testResolvedRomanSyllableTextsKeepOneToOneMapping() {
+        String mainText = "限りの";
+        List<WordTimestamp> words = List.of(
+                new WordTimestamp("限", 0.0, 0.4, false, false, null, null),
+                new WordTimestamp("り", 0.4, 0.7, false, false, null, null),
+                new WordTimestamp("の", 0.7, 1.0, false, false, null, null));
+        List<AlignedSyllable> aligned = WordAnimationUtils.alignSyllablesForFormatting(words, mainText);
+
+        // Per-word readings.
+        List<WordTimestamp> romanized = List.of(
+                new WordTimestamp("kagi", 0.0, 0.4, false, false, "kagi", null),
+                new WordTimestamp("ri", 0.4, 0.7, false, false, "ri", null),
+                new WordTimestamp("no", 0.7, 1.0, false, false, "no", null));
+        String[] fromWords = WordAnimationUtils.resolvedRomanSyllableTexts(
+                aligned, romanized, null, mainText);
+        Assert.assertNotNull(fromWords);
+        Assert.assertEquals(3, fromWords.length);
+        Assert.assertEquals("kagi", fromWords[0].trim());
+        Assert.assertEquals("ri", fromWords[1].trim());
+        Assert.assertEquals("no", fromWords[2].trim());
+
+        // Whole-line reading split into the same number of slots.
+        String[] fromLine = WordAnimationUtils.resolvedRomanSyllableTexts(
+                aligned, null, "kagi ri no", mainText);
+        Assert.assertNotNull(fromLine);
+        Assert.assertEquals(3, fromLine.length);
+        Assert.assertEquals("kagi", fromLine[0].trim());
+        Assert.assertEquals("ri", fromLine[1].trim());
+        Assert.assertEquals("no", fromLine[2].trim());
     }
 
     @Test

@@ -1384,6 +1384,17 @@ public final class WordAnimationUtils {
         return resolveRomanSyllables(alignedSyllables, romanizedWords, romanizedText, mainText) != null;
     }
 
+    @Nullable
+    public static String[] resolvedRomanSyllableTexts(
+            List<AlignedSyllable> alignedSyllables,
+            @Nullable List<WordTimestamp> romanizedWords,
+            @Nullable String romanizedText,
+            String mainText) {
+        ResolvedRomanSyllables resolved = resolveRomanSyllables(
+                alignedSyllables, romanizedWords, romanizedText, mainText);
+        return resolved != null ? resolved.texts() : null;
+    }
+
     public static List<RomanizedWordCluster> buildRomanizedWordClusters(
             List<AlignedSyllable> alignedSyllables,
             @Nullable List<WordTimestamp> romanizedWords,
@@ -1413,6 +1424,7 @@ public final class WordAnimationUtils {
                 segments.add(new RomanTimingSegment(0, text.length(), resolved.startMs[idx], resolved.endMs[idx]));
                 AlignedSyllable prevSyl = syl;
                 String prevSlice = safeSubstring(mainText, syl.startOffset, syl.endOffset);
+                int joinedSyllables = 1;
 
                 int nextIdx = idx + 1;
                 while (nextIdx < n) {
@@ -1429,41 +1441,20 @@ public final class WordAnimationUtils {
                     }
                     String nextRom = resolved.texts[nextIdx];
                     String nextSlice = safeSubstring(mainText, nextSyl.startOffset, nextSyl.endOffset);
-                    boolean nextEmpty = (nextRom == null || nextRom.trim().isEmpty());
-                    if (nextEmpty) {
-                        if (!LyricsWordBoundaries.hasCjkCodePoint(nextSlice)) {
-                            break;
-                        }
-                        spanEndOffset = nextSyl.endOffset;
-                        if (resolved.endMs[nextIdx] > spanEndMs) {
-                            spanEndMs = resolved.endMs[nextIdx];
-                            int lastSegIdx = segments.size() - 1;
-                            RomanTimingSegment lastSeg = segments.get(lastSegIdx);
-                            segments.set(lastSegIdx, new RomanTimingSegment(
-                                    lastSeg.charStart, lastSeg.charEnd, lastSeg.startMs, spanEndMs));
-                        }
-                        prevSyl = nextSyl;
-                        prevSlice = nextSlice;
-                        nextIdx++;
-                        continue;
-                    }
-                    // Merge adjacent unspaced Japanese Han/Kana syllables (e.g. "限"+"り" -> "kagiri",
-                    // "黒"+"い" -> "kuroi", "愛"+"し"+"て" -> "aishite") into a single word cluster
-                    // so kanji stems never pull away from their okurigana and romaji stays whole.
-                    if (!canJoinUnspacedJapaneseSyllables(
+                    if (!canMergeRomanSyllable(
                             prevSlice, nextSlice, spanEndOffset, nextSyl.startOffset,
-                            prevSyl.syllable.hasTrailingSpace, joinedText)) {
+                            prevSyl.syllable.hasTrailingSpace, joinedText, nextRom, joinedSyllables)) {
                         break;
                     }
-                    int segStartChar = joinedText.length();
-                    joinedText.append(nextRom);
-                    int segEndChar = joinedText.length();
-                    segments.add(new RomanTimingSegment(
-                            segStartChar, segEndChar, resolved.startMs[nextIdx], resolved.endMs[nextIdx]));
                     spanEndOffset = nextSyl.endOffset;
                     if (resolved.endMs[nextIdx] > spanEndMs) {
                         spanEndMs = resolved.endMs[nextIdx];
+                        int lastSegIdx = segments.size() - 1;
+                        RomanTimingSegment lastSeg = segments.get(lastSegIdx);
+                        segments.set(lastSegIdx, new RomanTimingSegment(
+                                lastSeg.charStart, lastSeg.charEnd, lastSeg.startMs, spanEndMs));
                     }
+                    joinedSyllables++;
                     prevSyl = nextSyl;
                     prevSlice = nextSlice;
                     nextIdx++;
@@ -1499,6 +1490,28 @@ public final class WordAnimationUtils {
         int s = Math.max(0, Math.min(text.length(), start));
         int e = Math.max(s, Math.min(text.length(), end));
         return text.substring(s, e);
+    }
+
+    /** Maximum number of syllables a single okurigana romaji cluster may absorb. */
+    private static final int MAX_JOINED_ROMAN_SYLLABLES = 3;
+
+    static boolean canMergeRomanSyllable(
+            String prevSlice,
+            String nextSlice,
+            int prevEnd,
+            int nextStart,
+            boolean prevHasTrailingSpace,
+            @Nullable CharSequence prevRomaji,
+            @Nullable String nextRomaji,
+            int joinedSyllables) {
+        if (nextRomaji != null && !nextRomaji.trim().isEmpty()) {
+            return false;
+        }
+        if (joinedSyllables >= MAX_JOINED_ROMAN_SYLLABLES) {
+            return false;
+        }
+        return canJoinUnspacedJapaneseSyllables(
+                prevSlice, nextSlice, prevEnd, nextStart, prevHasTrailingSpace, prevRomaji);
     }
 
     static boolean canJoinUnspacedJapaneseSyllables(

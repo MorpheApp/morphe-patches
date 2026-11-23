@@ -1453,9 +1453,8 @@ final class LyricsLineView extends TextView {
                 return syllables.transText;
             }
 
-            // Line-level romanization region (when not inline syllable romanization).
             StaticLayout rLayout = syllables.romaLayout;
-            if (rLayout != null
+            if (!syllables.hasSyllableRomanization && rLayout != null
                     && y >= syllables.romaTopY
                     && y <= syllables.romaTopY + rLayout.getHeight()) {
                 return syllables.romaText;
@@ -1476,9 +1475,19 @@ final class LyricsLineView extends TextView {
             }
             AlignedSyllable syl = syllables.alignedSyllables.get(sylIdx);
 
+            String[] resolvedRomaji = (syllables.hasSyllableRomanization && syllables.mainText != null)
+                    ? WordAnimationUtils.resolvedRomanSyllableTexts(
+                            syllables.alignedSyllables, syllables.rawRomWordsKey,
+                            syllables.animatorRomArgKey, syllables.mainText)
+                    : null;
+
             // Ruby region: above the main text.
             if (y < syllables.mainTopY + syllables.extraRubyHeightPx) {
                 String ruby = syl.syllable().ruby();
+                if ((ruby == null || ruby.isEmpty()) && syllables.rawWordsKey != null
+                        && sylIdx < syllables.rawWordsKey.size()) {
+                    ruby = syllables.rawWordsKey.get(sylIdx).ruby();
+                }
                 if (ruby != null && !ruby.isEmpty()) {
                     return ruby;
                 }
@@ -1486,7 +1495,15 @@ final class LyricsLineView extends TextView {
 
             // Romaji region: below the main text.
             if (y >= syllables.mainTopY + syllables.extraRubyHeightPx + syllables.mainLayoutHeight) {
-                String romaji = syl.syllable().romanized();
+                String romaji = (resolvedRomaji != null && sylIdx < resolvedRomaji.length)
+                        ? resolvedRomaji[sylIdx] : null;
+                if (romaji == null || romaji.isEmpty()) {
+                    romaji = syl.syllable().romanized();
+                }
+                if (romaji == null && syllables.rawRomWordsKey != null
+                        && sylIdx < syllables.rawRomWordsKey.size()) {
+                    romaji = syllables.rawRomWordsKey.get(sylIdx).romanized();
+                }
                 if (romaji != null && !romaji.isEmpty()) {
                     return romaji;
                 }
