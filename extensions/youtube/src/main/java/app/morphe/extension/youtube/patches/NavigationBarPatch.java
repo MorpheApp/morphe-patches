@@ -53,6 +53,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,6 +90,7 @@ import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarIte
 import app.morphe.extension.shared.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
 import app.morphe.extension.shared.innertube.GuideResponseOuterClass.RendererAccessibilityData;
 import app.morphe.extension.shared.innertube.GuideResponseOuterClass.Runs;
+import app.morphe.extension.shared.innertube.GuideResponseOuterClass.SignInEndpoint;
 import app.morphe.extension.shared.innertube.GuideResponseOuterClass.Title;
 import app.morphe.extension.shared.innertube.IconOuterClass.Icon;
 import app.morphe.extension.shared.innertube.IconOuterClass.YTIconType;
@@ -243,34 +245,21 @@ public final class NavigationBarPatch {
         if (SHOW_SETTINGS_BUTTON && button == NavigationBar.NavigationButton.SETTINGS) {
             settingsTabRef = new WeakReference<>(tabView);
             Utils.runOnMainThread(() -> {
-                tabView.setOnClickListener(v -> {
-                    // The tap that ends a long press is not a click.
-                    if (settingsTabLongPressed) {
-                        settingsTabLongPressed = false;
-                        return;
-                    }
-                    if (SHOW_SETTINGS_BUTTON_TYPE) {
-                        openMorpheSettings(v);
-                    } else {
-                        openYouTubeSettings(v);
-                    }
-                });
-                tabView.setOnLongClickListener(v -> {
-                    if (settingsTabTouched) {
-                        // The long press of the navigation bar and of the view itself
-                        // can both be called for the same touch.
-                        if (settingsTabLongPressed) return true;
-                        settingsTabLongPressed = true;
-                    }
-                    if (SHOW_SETTINGS_BUTTON_TYPE) {
-                        openYouTubeSettings(v);
-                    } else {
-                        openMorpheSettings(v);
-                    }
-                    return true;
-                });
+                if (SHOW_SETTINGS_BUTTON_TYPE) {
+                    tabView.setOnClickListener(NavigationBarPatch::openMorpheSettings);
+                    setTabLongPressAction(tabView, NavigationBarPatch::openYouTubeSettings);
+                } else {
+                    tabView.setOnClickListener(NavigationBarPatch::openYouTubeSettings);
+                    setTabLongPressAction(tabView, NavigationBarPatch::openMorpheSettings);
+                }
             });
             return;
+        }
+
+        if (YOU_BUTTON_ACCOUNT_SWITCHER && button == NavigationBar.NavigationButton.LIBRARY) {
+            youTabRef = new WeakReference<>(tabView);
+            // The app sets its own long press listener on the button after the button is created.
+            Utils.runOnMainThread(() -> setTabLongPressAction(tabView, NavigationBarPatch::openAccountSwitcher));
         }
 
         // The dot is a stub that is inflated when the tab has new content, and the app shows and
@@ -516,7 +505,7 @@ public final class NavigationBarPatch {
      * The navigation bar slides out of the screen, and is then removed from the layout, as the app does
      * when it hides the bar. It is added back before it slides in.
      * The page fills the room of the bar while the bar slides over it, so the room is removed before the bar
-     * slides out, and added back after the bar has slid in. Otherwise the empty room shows behind the sliding bar.
+     * slides out, and added back after the bar has slid in. Otherwise, the empty room shows behind the sliding bar.
      */
     private static void animateNavigationBarOnScroll(View container, View list, boolean hide) {
         navigationBarHiddenOnScroll = hide;
@@ -1315,92 +1304,169 @@ public final class NavigationBarPatch {
 
     private static volatile WeakReference<View> settingsTabRef = new WeakReference<>(null);
 
-    /**
-     * If a touch of the navigation bar started on the Settings button and has not ended.
-     * Always accessed from the main thread.
-     */
-    private static boolean settingsTabTouched;
+    // 'You' button account switcher
+    private static final boolean YOU_BUTTON_ACCOUNT_SWITCHER = VersionCheckPatch.IS_21_30_OR_GREATER
+            && Settings.YOU_BUTTON_ACCOUNT_SWITCHER.get();
+
+    private static final String SENDER_VIEW_KEY = "com.google.android.libraries.youtube.rendering.elements.sender_view";
+
+    private static volatile WeakReference<View> youTabRef = new WeakReference<>(null);
 
     /**
-     * If the touch of the Settings button is a long press, so the tap it ends with does not click.
+     * The button with a long press that a touch of the navigation bar started on,
+     * if the touch has not ended. Always accessed from the main thread.
+     */
+    private static WeakReference<View> touchedTabRef = new WeakReference<>(null);
+
+    /**
+     * If the touch of the button is a long press, so the tap it ends with does not click.
      * Always accessed from the main thread.
      */
-    private static boolean settingsTabLongPressed;
+    private static boolean tabLongPressed;
 
-    private static float settingsTabTouchX;
-    private static float settingsTabTouchY;
+    private static float tabTouchX;
+    private static float tabTouchY;
 
     @Nullable
-    private static Handler settingsTabHandler;
+    private static Handler tabLongPressHandler;
 
-    private static final Runnable settingsTabLongPress = () -> {
-        View tab = settingsTabRef.get();
+    private static final Runnable tabLongPress = () -> {
+        View tab = touchedTabRef.get();
         // The long press of the navigation bar can already be called, if its feature flag is on.
-        if (tab != null && settingsTabTouched && !settingsTabLongPressed && tab.isShown()) {
+        if (tab != null && !tabLongPressed && tab.isShown()) {
             tab.performLongClick();
         }
     };
+
+    /**
+     * The long press of the navigation bar and of the button itself can both be called for the
+     * same touch.
+     *
+     * @return If the long press is the first one of the touch.
+     */
+    private static boolean isNewTabLongPress() {
+        if (touchedTabRef.get() == null) {
+            // Not from a touch, such as from accessibility services.
+            return true;
+        }
+        if (tabLongPressed) return false;
+        tabLongPressed = true;
+        return true;
+    }
+
+    /**
+     * Must be called from the main thread.
+     */
+    private static void setTabLongPressAction(View tab, View.OnClickListener action) {
+        tab.setOnLongClickListener(v -> {
+            if (isNewTabLongPress()) {
+                action.onClick(v);
+            }
+            return true;
+        });
+    }
+
+    /**
+     * Runs the command of the account button of the 'You' tab. When signed in it opens the
+     * account switcher, and when incognito it opens the incognito sheet.
+     */
+    private static void openAccountSwitcher(View view) {
+        try {
+            byte[] command = NavigationEndpoint.newBuilder()
+                    .setSignInEndpoint(SignInEndpoint.newBuilder().setUseAccountSwitcher(true))
+                    .build()
+                    .toByteArray();
+            Map<String, Object> context = new HashMap<>();
+            // The app runs the command of the account button with the button as its sender.
+            context.put(SENDER_VIEW_KEY, view);
+            if (!CommandRouterPatch.executeCommand(command, context)) {
+                Logger.printDebug(() -> "Could not open the account switcher, no activity is shown");
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "openAccountSwitcher failure", ex);
+        }
+    }
+
+    @Nullable
+    private static View getLongPressTab(MotionEvent event) {
+        if (SHOW_SETTINGS_BUTTON) {
+            View tab = settingsTabRef.get();
+            if (tab != null && isTouchInView(event, tab)) return tab;
+        }
+        if (YOU_BUTTON_ACCOUNT_SWITCHER) {
+            View tab = youTabRef.get();
+            if (tab != null && isTouchInView(event, tab)) return tab;
+        }
+        return null;
+    }
 
     /**
      * Injection point.
      * <p>
      * The navigation bar handles the touches of its buttons itself, with a gesture detector, so the buttons
      * do not get the touches and their own long press is never called. The gesture detector has long presses
-     * turned off with a feature flag, and then a long press ends as a tap. The long press of the Settings button
-     * is found here instead, and the tap it ends with is ignored by the button.
+     * turned off with a feature flag, and then a long press ends as a tap. The long press of the buttons
+     * is found here instead, and the touch that ends it is changed to a cancel, so the button is not tapped.
+     *
+     * @return The touch the navigation bar handles.
      */
-    public static void navigationBarTouched(MotionEvent event) {
-        if (!SHOW_SETTINGS_BUTTON) return;
+    public static MotionEvent navigationBarTouched(MotionEvent event) {
+        if (!SHOW_SETTINGS_BUTTON && !YOU_BUTTON_ACCOUNT_SWITCHER) return event;
 
         try {
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN -> {
-                    cancelSettingsTabLongPress();
-                    settingsTabLongPressed = false;
-                    View tab = settingsTabRef.get();
-                    settingsTabTouched = tab != null && isTouchInView(event, tab);
-                    if (settingsTabTouched) {
-                        settingsTabTouchX = event.getRawX();
-                        settingsTabTouchY = event.getRawY();
-                        if (settingsTabHandler == null) {
-                            settingsTabHandler = new Handler(Looper.getMainLooper());
+                    cancelTabLongPress();
+                    tabLongPressed = false;
+                    View tab = getLongPressTab(event);
+                    touchedTabRef = new WeakReference<>(tab);
+                    if (tab != null) {
+                        tabTouchX = event.getRawX();
+                        tabTouchY = event.getRawY();
+                        if (tabLongPressHandler == null) {
+                            tabLongPressHandler = new Handler(Looper.getMainLooper());
                         }
-                        settingsTabHandler.postDelayed(settingsTabLongPress, ViewConfiguration.getLongPressTimeout());
+                        tabLongPressHandler.postDelayed(tabLongPress, ViewConfiguration.getLongPressTimeout());
                     }
                 }
                 case MotionEvent.ACTION_MOVE -> {
-                    View tab = settingsTabRef.get();
-                    if (settingsTabTouched && tab != null) {
+                    View tab = touchedTabRef.get();
+                    if (tab != null) {
                         final int touchSlop = ViewConfiguration.get(tab.getContext()).getScaledTouchSlop();
-                        if (Math.abs(event.getRawX() - settingsTabTouchX) > touchSlop
-                                || Math.abs(event.getRawY() - settingsTabTouchY) > touchSlop) {
-                            cancelSettingsTabLongPress();
+                        if (Math.abs(event.getRawX() - tabTouchX) > touchSlop
+                                || Math.abs(event.getRawY() - tabTouchY) > touchSlop) {
+                            cancelTabLongPress();
                         }
                     }
                 }
-                case MotionEvent.ACTION_POINTER_DOWN -> cancelSettingsTabLongPress();
+                case MotionEvent.ACTION_POINTER_DOWN -> cancelTabLongPress();
                 case MotionEvent.ACTION_UP -> {
-                    cancelSettingsTabLongPress();
-                    settingsTabTouched = false;
-                    // The navigation bar clicks the button right after, while handling the same touch.
-                    if (settingsTabLongPressed && settingsTabHandler != null) {
-                        settingsTabHandler.post(() -> settingsTabLongPressed = false);
+                    cancelTabLongPress();
+                    touchedTabRef = new WeakReference<>(null);
+                    if (tabLongPressed) {
+                        tabLongPressed = false;
+                        // The original touch is still used by the views that dispatch it.
+                        MotionEvent cancel = MotionEvent.obtain(event);
+                        cancel.setAction(MotionEvent.ACTION_CANCEL);
+                        return cancel;
                     }
                 }
                 case MotionEvent.ACTION_CANCEL -> {
-                    cancelSettingsTabLongPress();
-                    settingsTabTouched = false;
-                    settingsTabLongPressed = false;
+                    cancelTabLongPress();
+                    touchedTabRef = new WeakReference<>(null);
+                    tabLongPressed = false;
                 }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "navigationBarTouched failure", ex);
         }
+
+        return event;
     }
 
-    private static void cancelSettingsTabLongPress() {
-        if (settingsTabHandler != null) {
-            settingsTabHandler.removeCallbacks(settingsTabLongPress);
+    private static void cancelTabLongPress() {
+        if (tabLongPressHandler != null) {
+            tabLongPressHandler.removeCallbacks(tabLongPress);
         }
     }
 

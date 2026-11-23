@@ -1282,6 +1282,9 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_show_settings_button_title">Show Settings button</string>
     <string name="morphe_show_settings_button_type_title">Settings button action</string>
     <string name="morphe_show_settings_button_type_summary">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
+    <string name="morphe_you_button_account_switcher_title">Account switcher shortcut</string>
+    <!-- 'You' should be translated using the same localized wording YouTube displays for the navigation button. -->
+    <string name="morphe_you_button_account_switcher_summary">Long press the \'You\' button to open the account switcher</string>
     <string name="morphe_navigation_buttons_order_title">Navigation buttons order</string>
     <string name="morphe_navigation_buttons_order_summary">Drag the buttons to change their order in the navigation bar</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create button with Notifications button</string>
