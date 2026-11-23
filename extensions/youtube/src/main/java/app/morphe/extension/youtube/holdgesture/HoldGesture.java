@@ -18,7 +18,9 @@ public final class HoldGesture {
         /** The finger has not picked a direction since the long press. */
         HOLD_SPEED,
         SPEED_ADJUST,
-        LOCK_TARGET
+        LOCK_TARGET,
+        /** A drag up opened the launcher, and the finger picks one of its actions. */
+        LAUNCHER
     }
 
     /** How a sideways drag changes the speed. */
@@ -37,7 +39,9 @@ public final class HoldGesture {
         /** Keep the chosen speed after the release. */
         LOCK,
         /** End the lock that was on when the press began. */
-        UNLOCK
+        UNLOCK,
+        /** Play again at the speed from before the press, and run what the finger picked in the launcher. */
+        LAUNCHER
     }
 
     public interface Listener {
@@ -61,6 +65,9 @@ public final class HoldGesture {
         /** How far the finger is pulled toward the lock, 0 to 1. */
         void onLockProgress(float progress, boolean armed);
 
+        /** Where the finger is while the launcher is open. */
+        void onLauncherMoved(float x, float y);
+
         /** The finger left the screen. */
         void onFinished(Outcome outcome, float speed);
     }
@@ -68,16 +75,18 @@ public final class HoldGesture {
     public static final class Config {
         public final boolean adjustEnabled;
         public final boolean lockEnabled;
+        public final boolean launcherEnabled;
         public final float speedStep;
         public final float minSpeed;
         public final float maxSpeed;
         /** Horizontal distance of one speed step near the neutral point. */
         public final float stepDistance;
 
-        public Config(boolean adjustEnabled, boolean lockEnabled,
+        public Config(boolean adjustEnabled, boolean lockEnabled, boolean launcherEnabled,
                       float speedStep, float minSpeed, float maxSpeed, float stepDistance) {
             this.adjustEnabled = adjustEnabled;
             this.lockEnabled = lockEnabled;
+            this.launcherEnabled = launcherEnabled;
             this.speedStep = speedStep;
             this.minSpeed = minSpeed;
             this.maxSpeed = maxSpeed;
@@ -134,6 +143,8 @@ public final class HoldGesture {
     /** Way back up that leaves the lock target, and that disarms it. */
     static final float LOCK_LEAVE = 12;
     static final float LOCK_DISARM = 6;
+    /** Way up that opens the launcher. */
+    static final float LAUNCHER_ENTER = 30;
 
     private static final int MAX_STEPS = 1000;
     /** Steps to make up for when the throttle was not run for a while. */
@@ -230,6 +241,9 @@ public final class HoldGesture {
                     setState(State.SPEED_ADJUST);
                 } else if (config.lockEnabled && dy > LOCK_ENTER && dy > Math.abs(dx)) {
                     enterLock(LOCK_ENTER, dy);
+                } else if (config.launcherEnabled && -dy > LAUNCHER_ENTER && -dy > Math.abs(dx)) {
+                    setState(State.LAUNCHER);
+                    listener.onLauncherMoved(x, y);
                 }
                 break;
             case SPEED_ADJUST:
@@ -246,6 +260,9 @@ public final class HoldGesture {
                 } else {
                     updateLock(dy);
                 }
+                break;
+            case LAUNCHER:
+                listener.onLauncherMoved(x, y);
                 break;
             case IDLE:
                 break;
@@ -276,13 +293,16 @@ public final class HoldGesture {
             case LOCK_TARGET:
                 finish(lockArmed ? Outcome.LOCK : Outcome.RESTORE);
                 break;
+            case LAUNCHER:
+                finish(Outcome.LAUNCHER);
+                break;
             case IDLE:
                 break;
         }
     }
 
     /**
-     * The touch was taken away, such as by the system. Never locks or unlocks.
+     * The touch was taken away, such as by the system. Never locks, unlocks or runs an action.
      */
     public void cancel() {
         if (state != State.IDLE) {

@@ -38,8 +38,10 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.youtube.holdgesture.HoldGestureController.LauncherSlotAvailability;
 import app.morphe.extension.youtube.holdgesture.HoldGestureController.Sensitivity;
 import app.morphe.extension.youtube.holdgesture.HoldGestureController.SpeedStep;
+import app.morphe.extension.youtube.holdgesture.LauncherAction;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NativeQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NotLocalQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
@@ -872,6 +874,13 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HOLD_GESTURE_LOCK = new BooleanSetting("morphe_hold_gesture_lock", TRUE, parent(HOLD_GESTURE));
     public static final BooleanSetting HOLD_GESTURE_LOCK_BADGE_ALWAYS = new BooleanSetting("morphe_hold_gesture_lock_badge_always", FALSE, parent(HOLD_GESTURE_LOCK));
     public static final BooleanSetting HOLD_GESTURE_UNLOCK_ON_VIDEO_CHANGE = new BooleanSetting("morphe_hold_gesture_unlock_on_video_change", TRUE, parent(HOLD_GESTURE_LOCK));
+    public static final BooleanSetting HOLD_GESTURE_LAUNCHER = new BooleanSetting("morphe_hold_gesture_launcher", TRUE, parent(HOLD_GESTURE));
+    public static final IntegerSetting HOLD_GESTURE_LAUNCHER_SLOT_COUNT = new IntegerSetting("morphe_hold_gesture_launcher_slot_count", 4, parent(HOLD_GESTURE_LAUNCHER));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_1 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_1", LauncherAction.SCREEN_LOCK, new LauncherSlotAvailability(1));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_2 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_2", LauncherAction.LOOP, new LauncherSlotAvailability(2));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_3 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_3", LauncherAction.SCREENSHOT, new LauncherSlotAvailability(3));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_4 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_4", LauncherAction.WATCH_LATER, new LauncherSlotAvailability(4));
+    public static final EnumSetting<LauncherAction> HOLD_GESTURE_LAUNCHER_SLOT_5 = new EnumSetting<>("morphe_hold_gesture_launcher_slot_5", LauncherAction.TIMESTAMP_URL, new LauncherSlotAvailability(5));
 
     // Niconico comments
     public static final BooleanSetting NICONICO_COMMENTS = new BooleanSetting("morphe_niconico_comments", FALSE, true);

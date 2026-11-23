@@ -8,6 +8,10 @@
 package app.morphe.extension.youtube.holdgesture;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.holdgesture.Blend.clamp01;
+import static app.morphe.extension.youtube.holdgesture.Blend.lerp;
+import static app.morphe.extension.youtube.holdgesture.Blend.lerpColor;
+import static app.morphe.extension.youtube.holdgesture.Blend.withAlpha;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -29,8 +33,8 @@ import java.util.List;
 import app.morphe.extension.youtube.patches.VideoInformation;
 
 /**
- * Draws the speed pill, the lock target and the lock badge over the player.
- * Takes no touches. The controller tells it what to show.
+ * Draws the speed pill, the lock target, the lock badge and the way out of a locked screen
+ * over the player. Takes no touches. The controller tells it what to show.
  */
 final class HoldGestureOverlayView extends View {
     private static final int SURFACE = 0xCC101218;
@@ -62,6 +66,9 @@ final class HoldGestureOverlayView extends View {
     /** Larger views are layouts, backgrounds and the video, which the badge may cover. */
     private static final float WIDEST_CONTROL = 0.6f;
     private static final float TALLEST_CONTROL = 0.4f;
+    private static final float UNLOCK_HEIGHT = 30;
+    /** How long the way out of a locked screen shows after a touch. */
+    private static final long UNLOCK_SHOWN_MS = 2500;
     /** Draws texts such as the video title itself, also when it has children. */
     private static final String LITHO_HOST_CLASS = "com.facebook.litho.ComponentHost";
 
@@ -84,6 +91,7 @@ final class HoldGestureOverlayView extends View {
     private final Path path = new Path();
     private final RectF rect = new RectF();
     private final RectF badgeBounds = new RectF();
+    private final RectF unlockBounds = new RectF();
 
     private final Spring pillShown = new Spring(380, 0.7f);
     private final Spring pillExpanded = new Spring(300, 0.85f);
@@ -98,8 +106,11 @@ final class HoldGestureOverlayView extends View {
     private final Spring badgeShiftY = new Spring(300, 0.9f);
     private final Spring throttleGlow = new Spring(380, 1);
     private final Spring coasting = new Spring(380, 1);
+    private final Spring unlockShown = new Spring(300, 1);
+    private final Spring unlockPressed = new Spring(500, 1);
     private final Spring[] springs = {pillShown, pillExpanded, speedBump, rulerPosition, accent,
-            lockShown, lockArmed, badgeShown, badgeShiftX, badgeShiftY, throttleGlow, coasting};
+            lockShown, lockArmed, badgeShown, badgeShiftX, badgeShiftY, throttleGlow, coasting,
+            unlockShown, unlockPressed};
 
     private float speedStep = 0.25f;
     private float minSpeed = 0.25f;
@@ -118,6 +129,8 @@ final class HoldGestureOverlayView extends View {
     private String badgeText = "";
     /** The player controls come and go with a layout pass, and the badge makes room for them. */
     private final ViewTreeObserver.OnGlobalLayoutListener placeBadgeOnLayout = this::placeBadge;
+    private final String unlockText = str("morphe_hold_gesture_screen_unlock");
+    private final Runnable hideUnlock = () -> setUnlockShown(false);
 
     private long lastFrame;
 
@@ -250,6 +263,45 @@ final class HoldGestureOverlayView extends View {
             placeBadge();
         }
         invalidate();
+    }
+
+    /**
+     * Shows the button that ends the screen lock, for a while.
+     */
+    void showUnlock() {
+        setUnlockShown(true);
+        removeCallbacks(hideUnlock);
+        postDelayed(hideUnlock, UNLOCK_SHOWN_MS);
+    }
+
+    void hideUnlock() {
+        removeCallbacks(hideUnlock);
+        setUnlockShown(false);
+        setUnlockPressed(false);
+    }
+
+    /**
+     * @param pressed Whether a finger is on the button that ends the screen lock.
+     */
+    void setUnlockPressed(boolean pressed) {
+        unlockPressed.setTarget(pressed ? 1 : 0);
+        invalidate();
+    }
+
+    private void setUnlockShown(boolean shown) {
+        unlockShown.setTarget(shown ? 1 : 0);
+        invalidate();
+    }
+
+    /**
+     * @return Whether the point, in the coordinates of this view, is on the button that ends the screen lock.
+     */
+    boolean isOnUnlock(float x, float y) {
+        if (unlockShown.target() <= 0 || unlockBounds.isEmpty()) return false;
+        // A finger needs more room than the button is tall.
+        final float grow = Math.max(0, (dp(BADGE_TOUCH_HEIGHT) - unlockBounds.height()) / 2);
+        return x >= unlockBounds.left - grow && x <= unlockBounds.right + grow
+                && y >= unlockBounds.top - grow && y <= unlockBounds.bottom + grow;
     }
 
     private void placeBadge() {
@@ -442,6 +494,7 @@ final class HoldGestureOverlayView extends View {
         drawBadge(canvas);
         drawLockTarget(canvas, now);
         drawPill(canvas, now);
+        drawUnlock(canvas);
 
         // The arrows of the pill and the ripple of the lock move without a spring.
         moving |= pillShown.value() > 0.01f || now - rippleStart < RIPPLE_MS;
@@ -651,6 +704,43 @@ final class HoldGestureOverlayView extends View {
     }
 
     /**
+     * Small and at the bottom of the player, where it is least in the way of the video when
+     * a touch by mistake shows it.
+     */
+    private void drawUnlock(Canvas canvas) {
+        final float shown = unlockShown.value();
+        if (shown <= 0.01f) {
+            unlockBounds.setEmpty();
+            return;
+        }
+        final float pressed = clamp01(unlockPressed.value());
+        final float alpha = clamp01(shown);
+
+        text.setTextSize(dp(11.5f));
+        final float iconSize = dp(13);
+        final float textWidth = text.measureText(unlockText);
+        final float contentWidth = iconSize + dp(6) + textWidth;
+        final float width = contentWidth + dp(24);
+        final float height = dp(UNLOCK_HEIGHT);
+        final float centerX = getWidth() / 2f;
+        final float centerY = getHeight() - dp(fullscreen ? 28 : 18) - height / 2 + (1 - shown) * dp(8);
+
+        unlockBounds.set(centerX - width / 2, centerY - height / 2, centerX + width / 2, centerY + height / 2);
+        canvas.save();
+        final float pop = 1 + 0.06f * pressed;
+        canvas.scale(pop, pop, centerX, centerY);
+        rect.set(unlockBounds);
+        drawSurface(canvas, height / 2, SURFACE, WHITE, BORDER_ALPHA + 0.1f + 0.3f * pressed, alpha);
+
+        final float left = centerX - contentWidth / 2;
+        drawLockIcon(canvas, left + iconSize / 2, centerY, iconSize, 1, withAlpha(WHITE, alpha));
+        text.setColor(withAlpha(WHITE, alpha));
+        canvas.drawText(unlockText, left + iconSize + dp(6) + textWidth / 2,
+                centerY - (text.ascent() + text.descent()) / 2, text);
+        canvas.restore();
+    }
+
+    /**
      * A padlock drawn with lines.
      *
      * @param closed 0 leaves the shackle open on the right, 1 closes it.
@@ -705,25 +795,4 @@ final class HoldGestureOverlayView extends View {
     }
 
     // endregion
-
-    private static float clamp01(float value) {
-        return Math.max(0, Math.min(1, value));
-    }
-
-    private static float lerp(float from, float to, float t) {
-        return from + (to - from) * t;
-    }
-
-    private static int withAlpha(int color, float alpha) {
-        final int scaled = Math.round((color >>> 24) * clamp01(alpha));
-        return (scaled << 24) | (color & 0x00FFFFFF);
-    }
-
-    private static int lerpColor(int from, int to, float t) {
-        final int a = Math.round(lerp(from >>> 24, to >>> 24, t));
-        final int r = Math.round(lerp((from >> 16) & 0xFF, (to >> 16) & 0xFF, t));
-        final int g = Math.round(lerp((from >> 8) & 0xFF, (to >> 8) & 0xFF, t));
-        final int b = Math.round(lerp(from & 0xFF, to & 0xFF, t));
-        return (a << 24) | (r << 16) | (g << 8) | b;
-    }
 }

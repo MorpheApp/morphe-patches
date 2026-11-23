@@ -269,6 +269,30 @@
         <item>NORMAL</item>
         <item>HIGH</item>
     </string-array>
+    <string-array name="morphe_hold_gesture_launcher_slot_count_entries">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_launcher_slot_count_entry_values">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_launcher_action_entries">
+        <item>@string/morphe_hold_gesture_launcher_action_screen_lock</item>
+        <item>@string/morphe_hold_gesture_launcher_action_loop</item>
+        <item>@string/morphe_hold_gesture_launcher_action_screenshot</item>
+        <item>@string/morphe_hold_gesture_launcher_action_watch_later</item>
+        <item>@string/morphe_hold_gesture_launcher_action_timestamp_url</item>
+    </string-array>
+    <string-array name="morphe_hold_gesture_launcher_action_entry_values">
+        <item>SCREEN_LOCK</item>
+        <item>LOOP</item>
+        <item>SCREENSHOT</item>
+        <item>WATCH_LATER</item>
+        <item>TIMESTAMP_URL</item>
+    </string-array>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string-array name="morphe_spoof_app_version_target_entries">
